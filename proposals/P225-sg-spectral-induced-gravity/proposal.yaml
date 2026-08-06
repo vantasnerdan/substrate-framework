@@ -1,0 +1,60 @@
+id: P225
+base_release: v0.159.0
+base_commit: e38ca619
+scientific_base_commit: e38ca619
+source_baseline: substrate@6d1f4e0
+question: 'Construct a single end-to-end, framework-native path from the accepted sine-Gordon microscopic
+  dynamics to a regime reproducing general relativity''s defining low-energy dynamics: derive the gravitational
+  coupling and scale from upstream sG model parameters (closing the dimensionless coordinate C-GRV-001
+  proved free), and demonstrate one static weak-field prediction and one radiative prediction from the
+  same upstream model. A ledger-only audit, no-go, or reduced-scope report is not completion.'
+invariants:
+- Mostly-plus signature and the C-GOR-001 Gordon metric conventions are preserved.
+- C-GRV-001's ceiling stands dimensional analysis forces only G=q*a^2*c^3/hbar with q dimensionless; this
+  campaign must fix q by supplying physics, not by re-running dimensional analysis.
+- C-SG-007's lattice premise is a declared input (action increment h); this campaign does not derive or
+  reinterpret it.
+- C-MED-003's scale identifications (c, omega_0, ell, E_scale, J_scale) are the upstream scales; no rescaling
+  conventions are introduced.
+- C-GW-001..010 TT/quadrupole conventions (A=2G normalized, B=1/(32*pi*G), triple-convention equivalences)
+  are reused unchanged.
+- The optical sector's explicit ceiling (C-OG-003 does not normalize its kappa to G) is respected; no
+  optical-Newton identification is imported.
+allowed_imports:
+- All accepted claims and canonical modules of release v0.159.0.
+- The heat-kernel one-loop induction formula for a real scalar (Seeley-DeWitt a2) induced integral of
+  sqrt(-g) R with coefficient (1/6-xi)*m^2/(2*(4*pi)^2) times the logarithmic regulator factor log(Lambda^2/m^2);
+  imported as a standard result with explicit role and regulator dependence.
+- The Schwarzschild exterior solution and its standard weak-field predictions (Newtonian potential, light-deflection
+  angle 4GM/(c^2 b)); imported with explicit role, evaluated only with the campaign's derived G.
+- The quantum premise J_scale = hbar (one-quantum action identification, conditional per C-SCL-001's precedent)
+  as a declared premise.
+candidates:
+- id: A
+  description: 'Spectral Sakharov induction: one-loop vacuum polarization of the accepted sG mass tower
+    (phonon, kink, and the C-SG-007 breather levels) on the emergent Gordon geometry induces the Einstein-Hilbert
+    term; the tower edge E=8*pi acts as the spectrum''s own cutoff so each level''s log(Lambda^2/m^2)
+    is positive and finite; q is a pure computable number of the upstream model.'
+- id: B
+  description: 'Optical-dilaton direct: the 1+1 optical metric (C-OG-001..003) with coupling from the
+    constitutive map; predicted structural failure: no 3+1 TT sector, hence no radiative prediction.'
+- id: C
+  description: 'Elastic collective-coordinate gravity: metric from lattice strain, coupling from elastic
+    moduli; predicted structural failure: no spin-2 TT structure from scalar elasticity.'
+uniqueness_evidence: null
+selection_criteria:
+- consistency with accepted invariants and conventions (mostly-plus; C-GW conventions; C-GRV-001 ceiling)
+- explanatory reach one upstream model must yield both a static weak-field and a TT radiative prediction
+- assumption and parameter economy no undeclared dimensionless inputs
+- correct symmetries, dimensions, topology, and limits (q dimensionless; h->0 and tower-edge limits diagnosed)
+- compatibility with accepted sectors via reuse, not redefinition
+- numerical robustness and implementability (exact symbolic ledger plus refined numeric evaluation)
+claims_proposed:
+- provisional C-SIG-001 (sG mass-tower induced inverse Newton coupling; q as a pure number)
+- provisional C-SIG-002 (static weak-field regime with derived G Schwarzschild exterior, Newtonian limit,
+  deflection)
+- provisional C-SIG-003 (breather quadrupole radiative power with derived G)
+comparators_blinded_until: No empirical Newton constant, Planck scale, or astrophysical benchmark is inspected
+  or used anywhere in the construction; confrontation with observed values is out of scope. Structural
+  selection freezes before any numeric evaluation of q.
+status: in_review

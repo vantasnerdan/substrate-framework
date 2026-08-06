@@ -686,6 +686,33 @@ from .induced_gravity import (
     newton_dimension_ledger,
     normalized_gravity_source_coupling,
 )
+from .sg_spectral_induction import (
+    KINK_NORMALIZED_MASS,
+    PHONON_NORMALIZED_MASS,
+    TOWER_EDGE_ACTION,
+    TowerSpecies,
+    induced_inverse_g_species,
+    maximum_lattice_level,
+    newton_q_normalized,
+    sg_mass_tower,
+    species_contribution_table,
+    tower_edge_cutoff,
+    tower_inverse_g_normalized,
+)
+from .sg_gravity_chain import (
+    MU_THIRD_POWER_LOWER,
+    MU_THIRD_POWER_MID,
+    MU_THIRD_POWER_UPPER,
+    SGGravityChain,
+    assemble_chain,
+    breather_moment_third_physical_scale,
+    breather_quadrupole_power,
+    dimensionless_summary,
+    light_deflection_angle,
+    newtonian_potential,
+    schwarzschild_areal_radius_factor,
+)
+
 from .flux_tube import (
     charge_for_slope_equality,
     endpoint_force_slope,
@@ -1890,6 +1917,28 @@ __all__ = [
     "degree_two_rational_map_quadratic_form",
     "O4SkyrmePointwiseEvidence",
     "o4_skyrme_pointwise_evidence",
+    "TowerSpecies",
+    "induced_inverse_g_species",
+    "maximum_lattice_level",
+    "newton_q_normalized",
+    "sg_mass_tower",
+    "species_contribution_table",
+    "tower_edge_cutoff",
+    "tower_inverse_g_normalized",
+    "KINK_NORMALIZED_MASS",
+    "PHONON_NORMALIZED_MASS",
+    "TOWER_EDGE_ACTION",
+    "SGGravityChain",
+    "assemble_chain",
+    "breather_moment_third_physical_scale",
+    "breather_quadrupole_power",
+    "dimensionless_summary",
+    "light_deflection_angle",
+    "newtonian_potential",
+    "schwarzschild_areal_radius_factor",
+    "MU_THIRD_POWER_LOWER",
+    "MU_THIRD_POWER_MID",
+    "MU_THIRD_POWER_UPPER",
 ]
 
 __version__ = "0.0.0"
