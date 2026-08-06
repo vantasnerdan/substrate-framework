@@ -1,0 +1,39 @@
+id: P226
+base_release: v0.159.0
+source_baseline: substrate-framework@e38ca619 with accepted source substrate@6d1f4e0
+question: Can accepted sine-Gordon microscopic dynamics construct a coherent path to low-energy general relativity with a derived coupling and static and radiative predictions?
+invariants:
+  - Preserve accepted sine-Gordon equations, scale meanings, and claim authority without reinterpretation.
+  - Construct the 3+1 degrees of freedom, measure, conserved source, metric dynamics, and radiation channel used by the result.
+  - Derive one gravitational coupling from upstream model data with no independent additive baseline or fitted comparator.
+  - Use the same upstream construction for static and radiative predictions.
+allowed_imports:
+  - Accepted claims pinned by release v0.159.0 after source verification.
+  - Standard differential geometry with explicit conventions.
+  - Local-Rindler Clausius-to-Einstein theorem and Unruh temperature for candidate A.
+  - Teleparallel differential identities for candidate B.
+  - Massless-spin-2 consistent-self-coupling theorem for candidate C.
+candidates:
+  - id: A
+    description: Quantized sine-Gordon link-cell entropy plus local causal-horizon equilibrium.
+  - id: B
+    description: Sine-Gordon phase-frame lattice with a continuum teleparallel gravity limit.
+  - id: C
+    description: Sine-Gordon defect condensate with a protected massless helicity-2 collective mode.
+uniqueness_evidence: evidence/candidate-comparison.yaml
+selection_criteria:
+  - accepted-invariant compatibility
+  - explicit 1+1-to-3+1 dependency closure
+  - generated rather than stipulated metric dynamics
+  - no additive or fitted coupling freedom
+  - assumption and parameter economy
+  - correct symmetries dimensions conservation topology and limits
+  - shared upstream source for static and radiative predictions
+  - numerical robustness and reusable implementation
+claims_proposed:
+  - C-EGR-001
+  - C-EGR-002
+  - C-EGR-003
+  - C-EGR-004
+comparators_blinded_until: Candidate comparison, equations, conventions, and structural tests are frozen in proposal evidence.
+status: in_review

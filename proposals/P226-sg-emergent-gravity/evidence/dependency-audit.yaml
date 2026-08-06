@@ -1,0 +1,34 @@
+campaign: P226
+claims_proposed: [C-EGR-001, C-EGR-002, C-EGR-003, C-EGR-004]
+accepted_dependencies:
+  - claim: C-MED-003
+    use: unique_dimensional_sine_gordon_speed_length_energy_and_action_scales
+  - claim: C-SG-011
+    use: exact_parity_related_Q_plus_minus_one_topological_sectors
+  - claim: C-SG-012
+    use: normalized_stress_convention_cross_check
+  - claim: C-SG-017
+    use: exact_physical_breather_energy_profile_and_period
+  - claim: C-GRV-001
+    use: dimension_and_additive_baseline_rejection_guard_only
+  - claim: C-GW-001
+    use: waveform_and_flux_normalization_cross_check_only
+  - claim: C-GW-004
+    use: quadrupole_scope_ceiling_and_rejection_guard_only
+new_theorem_imports:
+  - local_causal_horizon_clausius_to_einstein
+  - standard_tetrad_metric_reconstruction
+  - harmonic_gauge_linearization_and_retarded_green_function
+  - isaacson_tt_flux
+cycles: []
+undeclared_imports: []
+closure:
+  microscopic_model: src/substrate_framework/dimensional_sine_gordon.py
+  collective_metric_and_measure: src/substrate_framework/sine_gordon_weave.py
+  nonlinear_metric_dynamics: src/substrate_framework/local_horizon_gravity.py
+  total_gravitational_coupling: src/substrate_framework/sine_gordon_weave.py
+  isolated_conserved_source: src/substrate_framework/sine_gordon_fiber_source.py
+  static_and_retarded_limits: src/substrate_framework/linearized_einstein.py
+  static_source_prediction: src/substrate_framework/sine_gordon_breather_gravity.py
+  radiative_source_prediction: src/substrate_framework/sine_gordon_breather_radiation.py
+closure_passes: true

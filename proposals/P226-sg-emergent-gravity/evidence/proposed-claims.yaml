@@ -1,0 +1,103 @@
+campaign: P226
+status: proposed_for_maintainer_review
+claims:
+  - id: C-EGR-001
+    statement: >-
+      Conditional on the accepted dimensional sine-Gordon model C-MED-003 and
+      the declared collective weave, four shared length-ell links with
+      tetrahedral directions have zero direction sum and covariance I/3. Haar-
+      distributed coarse orientations give line density 2/ell^2 and plane-
+      crossing density 1/ell^2. The exact parity-related Q=+1 and Q=-1 sectors
+      of C-SG-011 form an equiprobable topological doublet with log(2) entropy
+      per crossing, so eta_A=log(2)/ell^2. A phase-clock covector and the four
+      deformed link covectors reconstruct g=e^T diag(1,-1,-1,-1)e and
+      sqrt(-det(g)), supplying a collective 3+1 Lorentzian metric and measure.
+    dependencies: [C-MED-003, C-SG-011]
+    verification: symbolic_verified
+    review: proposed
+    assumptions:
+      - Four shared sine-Gordon links define a tetrahedral coordination cell of volume ell^3.
+      - Coarse equilibrium cell orientations are Haar distributed.
+      - The two winding sectors form an equiprobable quantum topological doublet.
+      - The coframe is invertible and its first row is the collective phase clock.
+    evidence:
+      - src/substrate_framework/sine_gordon_weave.py
+      - tests/test_sine_gordon_weave.py
+      - proposals/P226-sg-emergent-gravity/verify.py
+  - id: C-EGR-002
+    statement: >-
+      Apply local causal-horizon equilibrium to C-EGR-001 with entropy law
+      delta S=eta_A delta A and Unruh energy T_U=J*c*kappa/(2*pi), where
+      J=sqrt(lambda*T) is the same dimensional sine-Gordon action scale and
+      c=sqrt(T/lambda). Raychaudhuri focusing and delta Q=T_U delta S for every
+      local null generator give the nonlinear equation
+      G_ab+Lambda*g_ab=2*pi*T_ab/(J*c*eta_A). On the flat-equilibrium branch
+      Lambda=0, this fixes kappa_E=2*pi/(mu*log(2)) and the total Newton constant
+      G=T^2/(4*lambda^2*mu*log(2)). The API admits no independent hbar, cutoff,
+      Newton constant, dimensionless coefficient, or additive inverse-coupling
+      baseline. Four-dimensional Einstein dynamics carry two radiative tensor
+      polarizations.
+    dependencies: [C-EGR-001, C-MED-003]
+    verification: symbolic_verified
+    review: proposed
+    assumptions:
+      - Local Lorentz invariance and local causal horizons hold in the coarse weave.
+      - Equilibrium Clausius heat flow and the Raychaudhuri equation apply.
+      - Stress is locally conserved and the contracted Bianchi identity holds.
+      - The unique sine-Gordon action J is the action in the link Unruh response.
+      - The selected equilibrium background has zero cosmological integration constant.
+    evidence:
+      - src/substrate_framework/local_horizon_gravity.py
+      - src/substrate_framework/sine_gordon_weave.py
+      - tests/test_local_horizon_gravity.py
+      - tests/test_sine_gordon_weave.py
+      - proposals/P226-sg-emergent-gravity/evidence/literature-audit.yaml
+  - id: C-EGR-003
+    statement: >-
+      The exact dimensional sine-Gordon Noether stress in coordinates (c*t,x)
+      obeys partial_mu T^(mu nu)=(u_t R/c,-u_x R), and multiplication by
+      delta(y)delta(z) gives an isolated conserved 3+1 source on shell. For one
+      rest breather with eta=sqrt(1-omega^2), its accepted energy 16*eta*E_scale
+      gives mass M=E/c^2. The static linearization of C-EGR-002 yields
+      Phi=-G*M/r and Phi/c^2=-4*eta*ell/(r*log(2)). At the profile length
+      r=ell/eta, the compactness is 8*eta^2/log(2), which is 0.010387404294400536
+      for eta=0.03.
+    dependencies: [C-EGR-002, C-SG-017]
+    verification: symbolic_and_numerical_verified
+    review: proposed
+    assumptions:
+      - The rest breather is placed on one canonical weave fiber with transverse delta density.
+      - The observation radius is outside the source and the reported benchmark is weak field.
+    evidence:
+      - src/substrate_framework/dimensional_sine_gordon.py
+      - src/substrate_framework/linearized_einstein.py
+      - src/substrate_framework/sine_gordon_fiber_source.py
+      - src/substrate_framework/sine_gordon_breather_gravity.py
+      - tests/test_sine_gordon_fiber_source.py
+      - tests/test_sine_gordon_breather_gravity.py
+  - id: C-EGR-004
+    statement: >-
+      The same conserved breather source has a finite-wavelength retarded
+      Einstein field h_TT=(4*G/(c^4*R))*TT[e_x e_x]*H_zeta with
+      H_zeta(t)=integral dx T_xx(t+zeta*x/c,x). Isaacson flux and the exact TT
+      norm give P=G/(2*c^5) integral_-1^1 (1-zeta^2)^2
+      <dot(H_zeta)^2> dzeta. For lambda=T=mu=1 and eta=0.03, temporal-harmonic
+      and spatial-retardation refinement of the exact breather pressure gives
+      P/(mu*c)=0.002606646892787329. The leading small-amplitude transform gives
+      0.002608524438585714 and its eta-to-zero asymptotic is
+      64*pi*eta^3*omega/(3*log(2)). The source-size frequency ratio exceeds 30,
+      so no slow quadrupole approximation is used; the predicted field-cycle
+      energy loss is 0.03413629282664175.
+    dependencies: [C-EGR-002, C-EGR-003]
+    verification: numerical_refinement_and_independent_analytic_verified
+    review: proposed
+    assumptions:
+      - The no-incoming retarded Green function and leading far-zone expansion apply.
+      - Isaacson flux applies to the resulting weak transverse-traceless wave.
+      - Radiation reaction is omitted for one cycle and bounded by the reported loss fraction.
+    evidence:
+      - src/substrate_framework/linearized_einstein.py
+      - src/substrate_framework/sine_gordon_breather_radiation.py
+      - proposals/P226-sg-emergent-gravity/evidence/numerical-audit.yaml
+      - tests/test_sine_gordon_breather_radiation.py
+      - proposals/P226-sg-emergent-gravity/verify.py

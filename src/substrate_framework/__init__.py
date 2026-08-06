@@ -414,6 +414,18 @@ from .retarded_wave import (
     retarded_point_source_radiation,
     static_point_source_countermodel,
 )
+from .local_horizon_gravity import (
+    LocalHorizonEinsteinLedger,
+    local_horizon_einstein_ledger,
+)
+from .linearized_einstein import (
+    HarmonicGaugeEinsteinLedger,
+    LongitudinalLineRadiationLedger,
+    WeakFieldMonopole,
+    harmonic_gauge_einstein_ledger,
+    longitudinal_line_radiation_ledger,
+    weak_field_monopole,
+)
 from .linear_systems import LinearSystemDiagnostics, diagnose_linear_system
 from .lattice_scalar import (
     PhysicalPhaseChainCoefficients,
@@ -491,6 +503,7 @@ from .numerics import (
     solve_ivp_evidence,
     solve_method_of_lines,
     trapezoid_integral,
+    trapezoid_integral_axis,
 )
 from .normalized_overlaps import (
     ConditionalOverlapMassLedger,
@@ -650,6 +663,7 @@ from .dimensional_sine_gordon import (
     DimensionalSineGordonCoefficients,
     DimensionalSineGordonLinearSpectrum,
     DimensionalSineGordonScales,
+    DimensionalSineGordonStress,
     DimensionalSineGordonTimeHarmonicLedger,
     dimensional_breather_field,
     dimensional_breather_observables,
@@ -665,6 +679,7 @@ from .dimensional_sine_gordon import (
     dimensional_sine_gordon_physical_coordinates,
     dimensional_sine_gordon_residual,
     dimensional_sine_gordon_scales,
+    dimensional_sine_gordon_stress,
     dimensional_sine_gordon_tail_coefficient,
     dimensional_sine_gordon_time_harmonic_ledger,
     evanescent_half_line_matching_matrix,
@@ -672,6 +687,27 @@ from .dimensional_sine_gordon import (
     linear_wave_residual,
     linear_wave_traveling_field,
     rescale_dimensional_sine_gordon_coefficients,
+)
+from .sine_gordon_weave import (
+    CollectiveWeaveMetric,
+    SineGordonWeaveGravity,
+    TetrahedralWeaveGeometry,
+    collective_weave_metric,
+    sine_gordon_weave_gravity,
+    tetrahedral_weave_geometry,
+)
+from .sine_gordon_breather_gravity import (
+    BreatherWeakFieldPrediction,
+    breather_weak_field_prediction,
+)
+from .sine_gordon_fiber_source import (
+    CanonicalFiberStress,
+    canonical_sine_gordon_fiber_stress,
+)
+from .sine_gordon_breather_radiation import (
+    BreatherRadiationEvidence,
+    breather_radiation_evidence,
+    leading_small_amplitude_breather_power_ratio,
 )
 from .induced_gravity import (
     GravitySourceNormalizationLedger,
@@ -1249,7 +1285,18 @@ __all__ = [
     "DimensionalSineGordonCoefficients",
     "DimensionalSineGordonLinearSpectrum",
     "DimensionalSineGordonScales",
+    "DimensionalSineGordonStress",
     "DimensionalSineGordonTimeHarmonicLedger",
+    "LocalHorizonEinsteinLedger",
+    "HarmonicGaugeEinsteinLedger",
+    "LongitudinalLineRadiationLedger",
+    "WeakFieldMonopole",
+    "TetrahedralWeaveGeometry",
+    "CollectiveWeaveMetric",
+    "SineGordonWeaveGravity",
+    "CanonicalFiberStress",
+    "BreatherWeakFieldPrediction",
+    "BreatherRadiationEvidence",
     "MixedSineGordonLinearSpectrum",
     "MixedSineGordonScaleChoice",
     "ElectroweakUnificationReconstruction",
@@ -1518,6 +1565,17 @@ __all__ = [
     "induced_inverse_newton_ledger",
     "induced_scaling_log_constraint",
     "induced_scaling_null_rescaling",
+    "local_horizon_einstein_ledger",
+    "harmonic_gauge_einstein_ledger",
+    "longitudinal_line_radiation_ledger",
+    "weak_field_monopole",
+    "tetrahedral_weave_geometry",
+    "collective_weave_metric",
+    "sine_gordon_weave_gravity",
+    "canonical_sine_gordon_fiber_stress",
+    "breather_weak_field_prediction",
+    "breather_radiation_evidence",
+    "leading_small_amplitude_breather_power_ratio",
     "invariant_quartet",
     "integrate_spherical_radial_density",
     "interpolating_spline_time_derivative",
@@ -1754,6 +1812,7 @@ __all__ = [
     "sine_gordon_stress_tensor_contravariant",
     "sine_gordon_stress_tensor_covariant",
     "sine_gordon_stress_trace",
+    "dimensional_sine_gordon_stress",
     "si_constitutive_dimension_ledger",
     "sinusoidal_boundary_sign_correlation",
     "oriented_half_line_parity_ledger",
@@ -1767,6 +1826,7 @@ __all__ = [
     "time_averaged_per_axis_energy_variance",
     "validate_registry",
     "validate_release",
+    "trapezoid_integral_axis",
     "two_level_occupation_variance",
     "two_level_upper_occupation",
     "two_length_log_constraint",

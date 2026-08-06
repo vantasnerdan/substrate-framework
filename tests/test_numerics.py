@@ -13,6 +13,7 @@ from substrate_framework.numerics import (
     solve_ivp_evidence,
     solve_method_of_lines,
     trapezoid_integral,
+    trapezoid_integral_axis,
 )
 
 
@@ -107,6 +108,17 @@ def test_trapezoid_integral_uses_current_numpy_api() -> None:
     assert trapezoid_integral(coordinate**2, coordinate) == pytest.approx(
         1.0 / 3.0, rel=2.0e-6
     )
+
+
+def test_trapezoid_integral_axis_reuses_dispatch_and_validates_shape() -> None:
+    coordinate = np.linspace(0.0, 1.0, 101)
+    values = np.vstack((coordinate, coordinate**2))
+    result = trapezoid_integral_axis(values, coordinate, axis=1)
+    assert result == pytest.approx([0.5, 1.0 / 3.0], abs=2.0e-5)
+    with pytest.raises(ValueError, match="coordinate length"):
+        trapezoid_integral_axis(values, coordinate[:-1], axis=1)
+    with pytest.raises(ValueError, match="axis"):
+        trapezoid_integral_axis(values, coordinate, axis=3)
 
 
 def test_trapezoid_integral_supports_legacy_numpy_name(monkeypatch) -> None:

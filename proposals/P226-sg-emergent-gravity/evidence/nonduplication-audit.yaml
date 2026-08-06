@@ -1,0 +1,29 @@
+campaign: P226
+scope:
+  - src/substrate_framework/dimensional_sine_gordon.py
+  - src/substrate_framework/sine_gordon.py
+  - src/substrate_framework/conserved_moments.py
+  - src/substrate_framework/tt_angular.py
+  - src/substrate_framework/induced_gravity.py
+  - src/substrate_framework/numerics.py
+  - src/substrate_framework/exact_symbolic.py
+  - src/substrate_framework/local_horizon_gravity.py
+  - src/substrate_framework/sine_gordon_weave.py
+  - src/substrate_framework/linearized_einstein.py
+  - src/substrate_framework/sine_gordon_breather_gravity.py
+  - src/substrate_framework/sine_gordon_breather_radiation.py
+  - src/substrate_framework/sine_gordon_fiber_source.py
+semantic_tool: GitNexus index substrate-framework at e38ca619
+decisions:
+  - Exact real and positive symbolic input contracts are shared through exact_symbolic instead of repeated in the two new gravity modules.
+  - Physical stress extends dimensional_sine_gordon instead of copying normalized stress into gravity code.
+  - Full-retardation radiation imports tt_project_symmetric instead of defining a second TT projector.
+  - Sampled integrations extend and reuse numerics trapezoid dispatch.
+  - Entropic total coupling is separate from induced_gravity because the latter is explicitly an additive correction ledger.
+  - New APIs use a canonical x-directed fiber and do not create a third copy of the inherited private three-vector validator.
+inherited_nonblocking_debt:
+  - paths: [src/substrate_framework/conserved_moments.py, src/substrate_framework/tt_angular.py]
+    finding: The private _column_three validator has an identical AST-normalized body in both modules.
+    disposition: No third copy introduced; extraction deferred because issue 1 does not otherwise modify either owner.
+silent_failure_handlers_found: 0
+new_duplicate_function_bodies_found: 0

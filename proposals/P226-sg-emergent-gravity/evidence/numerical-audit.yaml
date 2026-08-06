@@ -1,0 +1,31 @@
+campaign: P226
+benchmark:
+  coefficients: {lambda: 1, T: 1, mu: 1}
+  inverse_width: 0.03
+  frequency: sqrt(9991)/100
+  profile_length: 100/3
+  source_energy: 12/25
+  source_size_frequency_ratio: 33.31832916406272
+static_prediction:
+  potential_over_c_squared_at_profile_length: -0.005193702147200268
+  schwarzschild_radius_over_profile_length: 0.010387404294400536
+radiative_prediction:
+  method: exact_breather_longitudinal_stress_temporal_harmonics_plus_full_spatial_retardation
+  spatial_extent_in_inverse_widths: 15
+  refinements:
+    - {spatial_points: 513, time_points: 65, direction_points: 257, harmonics: 3, power_over_mu_c: 0.0026066470732954436}
+    - {spatial_points: 1025, time_points: 129, direction_points: 501, harmonics: 4, power_over_mu_c: 0.002606646892787329}
+    - {spatial_points: 2049, time_points: 129, direction_points: 1001, harmonics: 4, power_over_mu_c: 0.0026066468927873295}
+  refined_power_over_mu_c: 0.002606646892787329
+  leading_small_amplitude_finite_wavelength: 0.002608524438585714
+  small_width_asymptotic: 0.002609464389497444
+  relative_exact_to_leading_difference: 0.0007197731294412203
+  field_cycle_energy_loss_fraction: 0.03413629282664175
+  harmonic_pressure_maxima: [0.007196758906007666, 0.0000032399996716545, 0.0000000010939922401058974, 0.0000000000003283451112693957]
+quadrupole_approximation_used: false
+quadrature_owner: substrate_framework.numerics.trapezoid_integral_and_axis
+conclusion: >-
+  The nonzero physical flux is stable under simultaneous spatial, temporal,
+  angular, and harmonic refinement. The source is not slow compared with its
+  size, so retaining the full retarded phase is load bearing. Weak compactness
+  and a 3.42 percent one-cycle loss bound the static and one-way radiation uses.

@@ -1,0 +1,11 @@
+campaign: P226
+attempt: '0001'
+timestamp_utc: '2026-08-06T18:22:18Z'
+status: environment_abort
+stage: proposal_manifest_freeze_gate
+command: PYTHONPATH=src .venv/bin/python scripts/validate_repository.py
+exit_status: 127
+stderr: .venv/bin/python was absent in the fresh clone
+scientific_verdict: not_run
+diagnosis: Repository bootstrap had not yet created the required virtual environment.
+next_action: Run scripts/bootstrap.sh and repeat the unchanged manifest validator before accepted-source or comparator inspection.

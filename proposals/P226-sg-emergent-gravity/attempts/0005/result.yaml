@@ -1,0 +1,13 @@
+campaign: P226
+attempt: '0005'
+timestamp_utc: '2026-08-06T19:00:00Z'
+status: validation_failure
+stage: repository_governance_validation
+command: PYTHONPATH=src .venv/bin/python scripts/validate_repository.py
+exit_status: 1
+scientific_verdict: unaffected
+diagnosis: >-
+  proposal.yaml used the descriptive status implemented_pending_terminal_validation,
+  but governance.validate_proposal permits only draft, active, in_review,
+  accepted, rejected, or rework.
+next_action: Change only the proposal status to in_review and repeat the unchanged validator.

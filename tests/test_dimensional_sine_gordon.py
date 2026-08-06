@@ -9,6 +9,7 @@ from substrate_framework.dimensional_sine_gordon import (
     DimensionalSineGordonCoefficients,
     DimensionalSineGordonLinearSpectrum,
     DimensionalSineGordonScales,
+    DimensionalSineGordonStress,
     DimensionalSineGordonTimeHarmonicLedger,
     dimensional_breather_field,
     dimensional_breather_observables,
@@ -24,6 +25,7 @@ from substrate_framework.dimensional_sine_gordon import (
     dimensional_sine_gordon_physical_coordinates,
     dimensional_sine_gordon_residual,
     dimensional_sine_gordon_scales,
+    dimensional_sine_gordon_stress,
     dimensional_sine_gordon_tail_coefficient,
     dimensional_sine_gordon_time_harmonic_ledger,
     evanescent_half_line_matching_matrix,
@@ -37,6 +39,7 @@ from substrate_framework.dimensional_sine_gordon import (
 def test_public_package_exports_dimensional_sine_gordon_api() -> None:
     assert framework.DimensionalSineGordonCoefficients is DimensionalSineGordonCoefficients
     assert framework.DimensionalSineGordonScales is DimensionalSineGordonScales
+    assert framework.DimensionalSineGordonStress is DimensionalSineGordonStress
     assert framework.DimensionalSineGordonLinearSpectrum is DimensionalSineGordonLinearSpectrum
     assert (
         framework.DimensionalSineGordonTimeHarmonicLedger
@@ -45,6 +48,7 @@ def test_public_package_exports_dimensional_sine_gordon_api() -> None:
     assert framework.DimensionalBreatherObservables is DimensionalBreatherObservables
     assert framework.dimensional_breather_field is dimensional_breather_field
     assert framework.dimensional_breather_observables is dimensional_breather_observables
+    assert framework.dimensional_sine_gordon_stress is dimensional_sine_gordon_stress
 
 
 def test_coefficient_ratios_and_inverse_family_retain_the_common_scale() -> None:
@@ -122,6 +126,28 @@ def test_declared_lagrangian_and_hamiltonian_densities_keep_all_coefficients() -
         t,
         coefficients,
     ) == kinetic + 4 * gradient + 18 * potential
+
+
+def test_physical_stress_has_the_exact_off_shell_divergence() -> None:
+    x, t = sp.symbols("x t", real=True)
+    field = sp.Function("u")(x, t)
+    coefficients = dimensional_sine_gordon_coefficients(2, 8, 18)
+    field_t = sp.diff(field, t)
+    field_x = sp.diff(field, x)
+    potential = 1 - sp.cos(field)
+    residual = 2 * sp.diff(field, t, 2) - 8 * sp.diff(field, x, 2) + 18 * sp.sin(field)
+    stress = dimensional_sine_gordon_stress(field, x, t, coefficients)
+    assert stress.energy_density == field_t**2 + 4 * field_x**2 + 18 * potential
+    assert stress.energy_flux == -8 * field_t * field_x
+    assert stress.longitudinal_pressure == field_t**2 + 4 * field_x**2 - 18 * potential
+    assert stress.contravariant == sp.Matrix(
+        [
+            [stress.energy_density, -4 * field_t * field_x],
+            [-4 * field_t * field_x, stress.longitudinal_pressure],
+        ]
+    )
+    assert stress.field_equation_residual == residual
+    assert stress.divergence == sp.Matrix([field_t * residual / 2, -field_x * residual])
 
 
 def test_pulled_back_breather_solves_the_dimensional_equation() -> None:
