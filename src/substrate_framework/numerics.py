@@ -100,6 +100,15 @@ def _real_vector(values: ArrayLike, *, name: str) -> FloatArray:
     return array
 
 
+def _trapezoid_implementation() -> Callable[..., Any]:
+    implementation = getattr(np, "trapezoid", None)
+    if implementation is None:
+        implementation = getattr(np, "trapz", None)
+    if implementation is None:
+        raise NumericalFailure("NumPy provides neither trapezoid nor trapz")
+    return implementation
+
+
 def trapezoid_integral(values: ArrayLike, coordinate: ArrayLike) -> float:
     """Integrate sampled values across supported NumPy API generations.
 
@@ -110,14 +119,39 @@ def trapezoid_integral(values: ArrayLike, coordinate: ArrayLike) -> float:
     inconsistent version probes.
     """
 
-    implementation = getattr(np, "trapezoid", None)
-    if implementation is None:
-        implementation = getattr(np, "trapz", None)
-    if implementation is None:
-        raise NumericalFailure("NumPy provides neither trapezoid nor trapz")
-    result = float(implementation(values, coordinate))
+    result = float(_trapezoid_implementation()(values, coordinate))
     if not np.isfinite(result):
         raise NumericalFailure("trapezoidal integration returned a non-finite value")
+    return result
+
+
+def trapezoid_integral_axis(
+    values: ArrayLike,
+    coordinate: ArrayLike,
+    *,
+    axis: int = -1,
+) -> FloatArray:
+    """Integrate an array along one axis with the shared NumPy dispatch."""
+
+    samples = np.asarray(values, dtype=np.float64)
+    points = _real_vector(coordinate, name="coordinate")
+    if samples.ndim == 0:
+        raise ValueError("values must have at least one dimension")
+    normalized_axis = axis if axis >= 0 else samples.ndim + axis
+    if normalized_axis < 0 or normalized_axis >= samples.ndim:
+        raise ValueError(
+            f"axis must select one of {samples.ndim} dimensions; got {axis}"
+        )
+    if samples.shape[normalized_axis] != points.size:
+        raise ValueError("coordinate length must match the integration axis")
+    if not np.all(np.isfinite(samples)):
+        raise ValueError("values must contain only finite values")
+    result = np.asarray(
+        _trapezoid_implementation()(samples, points, axis=normalized_axis),
+        dtype=np.float64,
+    )
+    if not np.all(np.isfinite(result)):
+        raise NumericalFailure("trapezoidal integration returned non-finite values")
     return result
 
 

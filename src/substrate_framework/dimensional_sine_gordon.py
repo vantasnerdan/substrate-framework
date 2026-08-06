@@ -17,6 +17,8 @@ from typing import Any, Literal
 
 import sympy as sp
 
+from .exact_symbolic import exact_real as _real_exact
+from .exact_symbolic import positive_exact as _positive_exact
 from .sine_gordon import (
     breather_action,
     breather_energy,
@@ -25,30 +27,12 @@ from .sine_gordon import (
 )
 
 
-def _positive_exact(value: Any, name: str) -> sp.Expr:
-    expression = sp.sympify(value)
-    if expression.has(sp.Float):
-        raise ValueError(f"{name} must be exact rather than floating")
-    if expression.is_real is not True or expression.is_positive is not True:
-        raise ValueError(f"{name} must be provably positive and real")
-    return expression
-
-
 def _nonnegative_exact(value: Any, name: str) -> sp.Expr:
     expression = sp.sympify(value)
     if expression.has(sp.Float):
         raise ValueError(f"{name} must be exact rather than floating")
     if expression.is_real is not True or expression.is_nonnegative is not True:
         raise ValueError(f"{name} must be provably nonnegative and real")
-    return expression
-
-
-def _real_exact(value: Any, name: str) -> sp.Expr:
-    expression = sp.sympify(value)
-    if expression.has(sp.Float):
-        raise ValueError(f"{name} must be exact rather than floating")
-    if expression.is_real is not True:
-        raise ValueError(f"{name} must be provably real")
     return expression
 
 
@@ -97,6 +81,18 @@ class DimensionalBreatherObservables:
     profile_length: sp.Expr
     energy: sp.Expr
     action: sp.Expr
+
+
+@dataclass(frozen=True)
+class DimensionalSineGordonStress:
+    """Physical Noether stress in orthonormal coordinates ``(c*t, x)``."""
+
+    energy_density: sp.Expr
+    energy_flux: sp.Expr
+    longitudinal_pressure: sp.Expr
+    contravariant: sp.ImmutableMatrix
+    divergence: sp.ImmutableMatrix
+    field_equation_residual: sp.Expr
 
 
 TailBehavior = Literal["evanescent", "threshold", "oscillatory"]
@@ -244,6 +240,81 @@ def dimensional_sine_gordon_hamiltonian_density(
         validated.inertia * sp.diff(expression, time) ** 2 / 2
         + validated.gradient * sp.diff(expression, coordinate) ** 2 / 2
         + validated.onsite * (1 - sp.cos(expression))
+    )
+
+
+def dimensional_sine_gordon_stress(
+    field: Any,
+    coordinate: sp.Symbol,
+    time: sp.Symbol,
+    coefficients: DimensionalSineGordonCoefficients,
+) -> DimensionalSineGordonStress:
+    r"""Return the exact physical stress and its off-shell divergence.
+
+    Indices refer to the orthonormal coordinates ``(x**0,x**1)=(c*t,x)``.
+    With ``R=lambda*u_tt-T*u_xx+mu*sin(u)``, the exact identity is
+
+    ``partial_mu T**(mu nu) = (u_t*R/c, -u_x*R)``.
+
+    Consequently every solution of the declared dimensional sine-Gordon
+    equation supplies a symmetric conserved 1+1 stress without introducing a
+    second action or source-normalization scale.
+    """
+
+    expression = sp.sympify(field)
+    validated = _validated_coefficients(coefficients)
+    speed = dimensional_sine_gordon_scales(validated).signal_speed
+    time_derivative = sp.diff(expression, time)
+    space_derivative = sp.diff(expression, coordinate)
+    energy_density = dimensional_sine_gordon_hamiltonian_density(
+        expression,
+        coordinate,
+        time,
+        validated,
+    )
+    energy_flux = sp.simplify(
+        -validated.gradient * time_derivative * space_derivative
+    )
+    longitudinal_pressure = sp.simplify(
+        validated.inertia * time_derivative**2 / 2
+        + validated.gradient * space_derivative**2 / 2
+        - validated.onsite * (1 - sp.cos(expression))
+    )
+    contravariant = sp.ImmutableMatrix(
+        [
+            [energy_density, energy_flux / speed],
+            [energy_flux / speed, longitudinal_pressure],
+        ]
+    ).applyfunc(sp.simplify)
+    residual = dimensional_sine_gordon_residual(
+        expression,
+        coordinate,
+        time,
+        validated,
+    )
+    divergence = sp.ImmutableMatrix(
+        [
+            time_derivative * residual / speed,
+            -space_derivative * residual,
+        ]
+    )
+    direct_divergence = sp.ImmutableMatrix(
+        [
+            sp.diff(contravariant[0, 0], time) / speed
+            + sp.diff(contravariant[1, 0], coordinate),
+            sp.diff(contravariant[0, 1], time) / speed
+            + sp.diff(contravariant[1, 1], coordinate),
+        ]
+    ).applyfunc(sp.simplify)
+    if (direct_divergence - divergence).applyfunc(sp.simplify) != sp.zeros(2, 1):
+        raise AssertionError("dimensional sine-Gordon stress divergence failed")
+    return DimensionalSineGordonStress(
+        energy_density=sp.simplify(energy_density),
+        energy_flux=energy_flux,
+        longitudinal_pressure=longitudinal_pressure,
+        contravariant=contravariant,
+        divergence=divergence,
+        field_equation_residual=sp.simplify(residual),
     )
 
 

@@ -491,6 +491,7 @@ from .numerics import (
     solve_ivp_evidence,
     solve_method_of_lines,
     trapezoid_integral,
+    trapezoid_integral_axis,
 )
 from .normalized_overlaps import (
     ConditionalOverlapMassLedger,
@@ -650,6 +651,7 @@ from .dimensional_sine_gordon import (
     DimensionalSineGordonCoefficients,
     DimensionalSineGordonLinearSpectrum,
     DimensionalSineGordonScales,
+    DimensionalSineGordonStress,
     DimensionalSineGordonTimeHarmonicLedger,
     dimensional_breather_field,
     dimensional_breather_observables,
@@ -665,6 +667,7 @@ from .dimensional_sine_gordon import (
     dimensional_sine_gordon_physical_coordinates,
     dimensional_sine_gordon_residual,
     dimensional_sine_gordon_scales,
+    dimensional_sine_gordon_stress,
     dimensional_sine_gordon_tail_coefficient,
     dimensional_sine_gordon_time_harmonic_ledger,
     evanescent_half_line_matching_matrix,
@@ -672,6 +675,10 @@ from .dimensional_sine_gordon import (
     linear_wave_residual,
     linear_wave_traveling_field,
     rescale_dimensional_sine_gordon_coefficients,
+)
+from .sine_gordon_fiber_source import (
+    CanonicalFiberStress,
+    canonical_sine_gordon_fiber_stress,
 )
 from .induced_gravity import (
     GravitySourceNormalizationLedger,
@@ -1249,7 +1256,9 @@ __all__ = [
     "DimensionalSineGordonCoefficients",
     "DimensionalSineGordonLinearSpectrum",
     "DimensionalSineGordonScales",
+    "DimensionalSineGordonStress",
     "DimensionalSineGordonTimeHarmonicLedger",
+    "CanonicalFiberStress",
     "MixedSineGordonLinearSpectrum",
     "MixedSineGordonScaleChoice",
     "ElectroweakUnificationReconstruction",
@@ -1439,6 +1448,7 @@ __all__ = [
     "dimensional_sine_gordon_physical_coordinates",
     "dimensional_sine_gordon_residual",
     "dimensional_sine_gordon_scales",
+    "dimensional_sine_gordon_stress",
     "dimensional_sine_gordon_tail_coefficient",
     "dimensional_sine_gordon_time_harmonic_ledger",
     "evanescent_half_line_matching_matrix",
@@ -1767,6 +1777,7 @@ __all__ = [
     "time_averaged_per_axis_energy_variance",
     "validate_registry",
     "validate_release",
+    "trapezoid_integral_axis",
     "two_level_occupation_variance",
     "two_level_upper_occupation",
     "two_length_log_constraint",
@@ -1837,6 +1848,7 @@ __all__ = [
     "vortex_radial_energy_lagrangian",
     "vortex_tension",
     "winding_parity",
+    "canonical_sine_gordon_fiber_stress",
     "EqualSplitShellLedger",
     "FullPolarDeckTransformation",
     "HalfQuantumPairLedger",
