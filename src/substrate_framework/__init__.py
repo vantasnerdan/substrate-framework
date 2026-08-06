@@ -414,6 +414,14 @@ from .retarded_wave import (
     retarded_point_source_radiation,
     static_point_source_countermodel,
 )
+from .linearized_einstein import (
+    HarmonicGaugeEinsteinLedger,
+    RetardedLineSourceRadiationLedger,
+    WeakFieldMonopole,
+    harmonic_gauge_einstein_ledger,
+    retarded_line_source_radiation_ledger,
+    weak_field_monopole,
+)
 from .linear_systems import LinearSystemDiagnostics, diagnose_linear_system
 from .lattice_scalar import (
     PhysicalPhaseChainCoefficients,
@@ -1270,6 +1278,9 @@ __all__ = [
     "U2InvariantMetric",
     "VectorCurrentSexticMatching",
     "RetardedPointSourceRadiation",
+    "HarmonicGaugeEinsteinLedger",
+    "RetardedLineSourceRadiationLedger",
+    "WeakFieldMonopole",
     "InducedInverseNewtonLedger",
     "IVPEvidence",
     "IsolatedMomentRates",
@@ -1666,6 +1677,9 @@ __all__ = [
     "phase_weighted_self_overlap_limit",
     "singular_value_cluster_bound",
     "retarded_point_source_radiation",
+    "harmonic_gauge_einstein_ledger",
+    "retarded_line_source_radiation_ledger",
+    "weak_field_monopole",
     "project_sine_harmonics",
     "positive_kinetic_mass_evidence",
     "population_activation_scale",
