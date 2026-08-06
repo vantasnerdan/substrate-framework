@@ -102,10 +102,14 @@ def tower_edge_cutoff() -> sp.Expr:
 
 
 def maximum_lattice_level(action_quantum: Any) -> sp.Expr:
-    """Largest admissible integer ``n`` with ``n*h < 8*pi`` (C-SG-007)."""
+    """Largest admissible integer ``n`` with ``n*h < 8*pi`` (C-SG-007).
+
+    The open domain is handled exactly: ``n_max = ceil(8*pi/h) - 1``, so an
+    ``h`` landing exactly on an edge divisor excludes the boundary level.
+    """
 
     h = _positive_exact(action_quantum, "action_quantum")
-    return sp.floor(TOWER_EDGE_ACTION / h - sp.Integer(1) / 10**12)
+    return sp.ceiling(TOWER_EDGE_ACTION / h) - 1
 
 
 @dataclass(frozen=True)

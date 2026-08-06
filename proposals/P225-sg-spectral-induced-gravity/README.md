@@ -103,6 +103,13 @@ sectors without redefinition (attempt 0003).
    blinded throughout); the model's free upstream scales are not identified
    with any observed system.
 
+Independent-review findings (all low severity, none blocking): the C-SG-010
+bracket bounds are literals mirroring the accepted claim's prose (no
+importable C-SG-010 artifact exists; a revision would not propagate
+automatically); `verify.py`'s exact symbolic arithmetic is slow under load
+(minutes); the open-domain level count was made exactly `ceil(8*pi/h) - 1`
+in response to the review.
+
 ## Scope
 
 Claims C-SIG-001..003 are **proposed** (verification: symbolic/formal +
