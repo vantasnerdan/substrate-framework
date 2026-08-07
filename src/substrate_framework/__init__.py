@@ -688,6 +688,21 @@ from .sine_gordon_fiber_source import (
     CanonicalFiberStress,
     canonical_sine_gordon_fiber_stress,
 )
+from .sine_gordon_breather_radiation import (
+    SineGordonBreatherRadiationEvidence,
+    SineGordonBreatherRetardedStressEvidence,
+    leading_small_amplitude_breather_retarded_integral,
+    sine_gordon_breather_radiation_evidence,
+    sine_gordon_breather_retarded_stress_evidence,
+)
+from .teleparallel import (
+    TEGR_INVARIANT_WEIGHTS,
+    TORSION_CHANNELS,
+    TeleparallelCoframeLedger,
+    teleparallel_coframe_ledger,
+    teleparallel_constitutive_matrix_mostly_plus,
+    teleparallel_constitutive_spectral_basis,
+)
 from .induced_gravity import (
     GravitySourceNormalizationLedger,
     InducedInverseNewtonLedger,
@@ -1267,6 +1282,11 @@ __all__ = [
     "DimensionalSineGordonStress",
     "DimensionalSineGordonTimeHarmonicLedger",
     "CanonicalFiberStress",
+    "SineGordonBreatherRadiationEvidence",
+    "SineGordonBreatherRetardedStressEvidence",
+    "TeleparallelCoframeLedger",
+    "TEGR_INVARIANT_WEIGHTS",
+    "TORSION_CHANNELS",
     "MixedSineGordonLinearSpectrum",
     "MixedSineGordonScaleChoice",
     "ElectroweakUnificationReconstruction",
@@ -1466,6 +1486,7 @@ __all__ = [
     "linear_wave_energy_density",
     "linear_wave_residual",
     "linear_wave_traveling_field",
+    "leading_small_amplitude_breather_retarded_integral",
     "leading_hls_connection_reduction",
     "endpoint_charge_coordinate",
     "endpoint_force_slope",
@@ -1768,6 +1789,11 @@ __all__ = [
     "tilted_axisymmetric_stf_rotation_about_z",
     "summarize_censored_first_passage",
     "sine_gordon_residual",
+    "sine_gordon_breather_radiation_evidence",
+    "sine_gordon_breather_retarded_stress_evidence",
+    "teleparallel_coframe_ledger",
+    "teleparallel_constitutive_matrix_mostly_plus",
+    "teleparallel_constitutive_spectral_basis",
     "sine_gordon_chiral_sources",
     "sine_gordon_lagrangian_density",
     "sine_gordon_light_cone_chiral_sources",

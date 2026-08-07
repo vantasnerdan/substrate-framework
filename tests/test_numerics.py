@@ -122,8 +122,10 @@ def test_trapezoid_integral_axis_reuses_dispatch_and_validates_shape() -> None:
 
 
 def test_trapezoid_integral_supports_legacy_numpy_name(monkeypatch) -> None:
-    current = np.trapezoid
-    monkeypatch.setattr(np, "trapezoid", None)
+    current = getattr(np, "trapezoid", None)
+    if current is None:
+        current = getattr(np, "trapz")
+    monkeypatch.setattr(np, "trapezoid", None, raising=False)
     monkeypatch.setattr(np, "trapz", current, raising=False)
     coordinate = np.linspace(0.0, 1.0, 101)
     assert trapezoid_integral(coordinate, coordinate) == 0.5
