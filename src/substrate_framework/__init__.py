@@ -741,6 +741,15 @@ from .induced_gravity import (
     newton_dimension_ledger,
     normalized_gravity_source_coupling,
 )
+from .sine_gordon_induced_newton import (
+    CONFORMAL_COUPLING,
+    InducedNewtonCoefficient,
+    SeeleyDeWittCurvatureCoefficient,
+    SineGordonInducedNewton,
+    induced_newton_coefficient,
+    seeley_dewitt_curvature_coefficient,
+    sine_gordon_induced_newton,
+)
 from .flux_tube import (
     charge_for_slope_equality,
     endpoint_force_slope,
@@ -1583,6 +1592,13 @@ __all__ = [
     "homogeneous_dirichlet_sine_gordon_energy",
     "index_from_potential",
     "induced_inverse_newton_ledger",
+    "CONFORMAL_COUPLING",
+    "InducedNewtonCoefficient",
+    "SeeleyDeWittCurvatureCoefficient",
+    "SineGordonInducedNewton",
+    "induced_newton_coefficient",
+    "seeley_dewitt_curvature_coefficient",
+    "sine_gordon_induced_newton",
     "induced_scaling_log_constraint",
     "induced_scaling_null_rescaling",
     "invariant_quartet",
