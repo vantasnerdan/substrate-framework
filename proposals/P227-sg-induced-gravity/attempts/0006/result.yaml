@@ -1,0 +1,20 @@
+campaign: P227
+attempt: '0006'
+timestamp_utc: '2026-08-07T08:05:00Z'
+status: success
+stage: selected_candidate_implementation_and_focused_verification
+candidate: C
+command: >-
+  PYTHONPATH=src .venv/bin/pytest -q tests/test_sine_gordon_teleparallel.py
+  tests/test_sine_gordon_breather_gravity.py
+  tests/test_sine_gordon_breather_radiation.py &&
+  PYTHONPATH=src .venv/bin/python proposals/P227-sg-induced-gravity/verify.py &&
+  PYTHONPATH=src .venv/bin/python
+  proposals/P227-sg-induced-gravity/reviews/independent_teleparallel_review.py
+exit_status: 0
+scientific_verdict: proposed_chain_passes_focused_oracles
+diagnosis: >-
+  Twenty-seven focused tests, 20 primary checks, and six fresh-review checks pass.
+  The compact and geometric maps are exact; the retarded benchmark converges
+  and agrees with an independent integration method.
+next_action: Complete one review per proposed claim, replay the whole repository, and request maintainer adjudication without self-promotion.

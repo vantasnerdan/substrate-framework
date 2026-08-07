@@ -1,0 +1,34 @@
+campaign: P227
+semantic_baseline:
+  commit: e36f8ca4cae2400934cd66940efdb0bd27b7a204
+  gitnexus_nodes: 34288
+  gitnexus_edges: 53330
+  gitnexus_clusters: 456
+selected_surface:
+  - path: src/substrate_framework/dimensional_sine_gordon.py
+    finding: cohesive owner of exact SG coefficient scale field and stress algebra
+    action: reused without modification
+  - path: src/substrate_framework/sine_gordon_fiber_source.py
+    finding: cohesive owner of the conserved 1+1-to-3+1 source embedding
+    action: reused without modification
+  - path: src/substrate_framework/linearized_einstein.py
+    finding: correctly conditional on supplied G and c
+    action: composed from the new upstream ledger without changing its ceiling
+  - path: src/substrate_framework/sine_gordon_teleparallel.py
+    finding: new owner of link geometry compact constitutive action nonlinear identity and derived coupling
+    action: split tensor contractions curvature and spectral construction into named helpers
+  - path: src/substrate_framework/sine_gordon_breather_gravity.py
+    finding: new exact static source composer
+    action: kept separate from the gravity mechanism and numeric radiation
+  - path: src/substrate_framework/sine_gordon_breather_radiation.py
+    finding: harvested full-retardation kernel with rejected weave coupling removed
+    action: split grid harmonic retardation and physical normalization responsibilities
+duplication:
+  - P226 rejected entropy and weave modules are not copied.
+  - Existing conditional Einstein response coefficients remain single-owned.
+  - The exact numerical pressure kernel is cross-checked against the canonical symbolic stress.
+observability:
+  - exact assertion failures name constitutive spectral chord coframe and coefficient mismatches
+  - numerical evidence records every grid extent resolution harmonic count refinement and backreaction gate
+  - no secret external datum or observed G is logged or accepted
+blocking_findings: []

@@ -1,0 +1,87 @@
+campaign: P227
+criteria_order:
+  - accepted_invariant_compatibility
+  - explicit_microscopic_to_collective_geometry_map
+  - target_equation_not_encoded_as_an_unexplained_input
+  - no_free_fitted_bare_or_regulator_gravitational_coefficient
+  - exact_nonlinear_gr_equivalence_with_a_controlled_regime
+  - one_conserved_source_and_coupling_for_static_and_radiative_outputs
+  - assumption_parameter_symmetry_dimension_sign_limit_and_dof_audit
+  - mutation_sensitive_verification_and_downstream_replay
+comparators_opened: []
+new_empirical_parameters: 0
+decisions:
+  A:
+    decision: rejected
+    structural_output: >-
+      The exact winding-parity result supplies two classical sectors, but no
+      accepted quantum state, probability law, or area entropy. The
+      local-horizon theorem additionally imports equilibrium Clausius flow,
+      Unruh response, local horizons, Raychaudhuri focusing, and the
+      stress/Bianchi completion.
+    rejection_test: >-
+      Removing the declared equiprobable doublet removes log(2), the entropy
+      density, and the Newton coefficient while leaving accepted sine-Gordon
+      claims unchanged.
+  B:
+    decision: rejected
+    structural_output: >-
+      A one-loop determinant necessarily produces curvature terms, but the
+      unrenormalized inverse Newton coefficient contains a bare baseline, a
+      cutoff and spectrum-dependent heat-kernel coefficient, mass-log terms,
+      and finite matching. A physical lattice dispersion could fix a selected
+      regulator only after a complete quantum spectrum and coframe measure are
+      independently derived.
+    rejection_test: >-
+      Changing the cutoff profile or bare inverse coupling changes G without
+      changing the accepted classical sine-Gordon action, so the campaign's
+      no-hidden-baseline criterion fails.
+  C:
+    decision: selected_for_implementation
+    structural_output: >-
+      The general local quadratic coframe action has three invariant weights.
+      Local Lorentz invariance selects the TEGR ratios uniquely up to an overall
+      multiplier. A declared one-channel-per-sine-Gordon-area plaquette action
+      fixes that multiplier: the accepted onsite line density mu times the
+      derived line density ell^-2 and the exact chord map
+      tau=2*sin(q/2)/ell turn each cosine into mu*tau^2/2. The mostly-plus
+      teleparallel identity then maps the low-plaquette action to
+      +mu*R/2, so kappa=1/mu and G=c^4/(8*pi*mu).
+    selection_reason: >-
+      Unlike the other routes, its invariant ratios come from an independent
+      gauge symmetry, its remaining normalization comes from the frozen
+      sine-Gordon cell action rather than a comparator or regulator, and its
+      exact coframe identity reaches the nonlinear Einstein action before
+      static or radiative outputs are inspected.
+    implementation_falsifiers:
+      - a nonzero R+T-B identity residual on independent nonlinear coframes
+      - failure of the cosine-to-chord-torsion identity
+      - any surviving arbitrary overall constitutive multiplier
+      - a wrong-sign Einstein coefficient or extra low-energy coframe mode
+      - different source or coupling provenance in static and radiative consumers
+  D:
+    decision: rejected_control
+    structural_output: >-
+      The accepted Gordon metric is an exact kinematic optical metric, while
+      the accepted scalar compatibility audit permits only its flat vacuum
+      overlap with the canonical Einstein-scalar equations.
+    rejection_test: >-
+      Metric curvature does not imply an Einstein source equation; requiring
+      the exact component residuals rejects the nonflat candidate.
+  E:
+    decision: rejected_control
+    structural_output: >-
+      Direct composition with the accepted Einstein-scalar action supplies
+      nonlinear GR, but its kappa and reduced alpha=kappa*F^2 remain declared
+      inputs and its numerical branch retains a free central amplitude.
+    rejection_test: >-
+      Rescaling kappa changes every gravitational output without changing the
+      physical sine-Gordon coefficients.
+sources:
+  - repository: governance/claims.yaml and governance/releases/current.yaml at v0.159.0
+  - repository: src/substrate_framework/induced_gravity.py
+  - repository: src/substrate_framework/gordon_metric.py and src/substrate_framework/gordon_scalar_compatibility.py
+  - repository: src/substrate_framework/einstein_scalar.py and src/substrate_framework/spherical_einstein_scalar.py
+  - prior_attempt: P226 source commit 3fee2453022cf429942f25ea2a0890fc67c37047
+  - primary: https://arxiv.org/abs/gr-qc/0204062v1
+  - primary: https://arxiv.org/abs/1611.05759

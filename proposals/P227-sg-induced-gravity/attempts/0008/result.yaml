@@ -1,0 +1,13 @@
+campaign: P227
+attempt: '0008'
+timestamp_utc: '2026-08-07T08:33:00Z'
+status: success
+stage: full_repository_replay
+command: PYTHONPATH=src:. .venv/bin/pytest -q
+exit_status: 0
+scientific_verdict: full_consumer_replay_passes
+diagnosis: >-
+  All 1,975 repository tests pass in 427.98 seconds after the import-path-only
+  collection repair. Repository validation, both P227 verifiers, compileall,
+  and diff checks also pass.
+next_action: Complete hygiene checks, commit the bounded branch, and request maintainer review.

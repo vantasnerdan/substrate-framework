@@ -1,0 +1,114 @@
+campaign: P227
+status: proposed_for_maintainer_review
+claims:
+  - id: C-EGR-005
+    statement: >-
+      Conditional on C-MED-003 with positive exact coefficients
+      (lambda,T,mu), define c=sqrt(T/lambda) and ell=sqrt(T/mu). A declared
+      four-link cell maps its physical link covectors L to the nondegenerate
+      collective coframe e=L/ell, metric g=e^T diag(-1,1,1,1)e, and invariant
+      volume. The 24 local torsion channels T^a_bc have the explicit symmetric
+      constitutive matrix K whose quadratic form is
+      T=(1/4)I1+(1/2)I2-I3. Local Lorentz invariance selects this TEGR ratio
+      class up to one multiplier. In an exact orthonormal spectral basis
+      K=U D U^T, put one 2*pi-periodic SG plaquette channel per independent
+      cell channel and per transverse area ell^2, with density
+      -mu/ell^2 sum_I d_I(1-cos(q_I)). The exact chord map
+      s_I=2 sin(q_I/2)/ell and local torsion tau=U s turn this density into
+      -mu tau^T K tau/2=-mu T/2 with no residual. The canonical channel count,
+      ell, and mu leave no independent gravitational multiplier, observed
+      constant, regulator, bare inverse coupling, or fitted comparator.
+    dependencies: [C-MED-003]
+    verification: symbolic_verified
+    review: proposed
+    assumptions:
+      - The microscopic model contains one clock-like and three spatial nondegenerate cell-link covectors with the C-MED-003 length ell.
+      - Plaquette phases are defined only on link configurations whose chord torsions satisfy the coframe integrability and Bianchi constraints.
+      - Local Lorentz invariance is an exact collective frame symmetry and parity-odd torsion invariants are excluded.
+      - There is one spectral channel for each of the 24 independent local torsion components and one channel cell per transverse area ell^2.
+    evidence:
+      - src/substrate_framework/sine_gordon_teleparallel.py
+      - tests/test_sine_gordon_teleparallel.py
+      - proposals/P227-sg-induced-gravity/verify.py
+      - proposals/P227-sg-induced-gravity/reviews/independent_teleparallel_review.py
+  - id: C-EGR-006
+    statement: >-
+      For every sufficiently smooth nondegenerate C-EGR-005 coframe in the
+      mostly-plus convention, let T^rho_mn=e_a^rho(partial_m e^a_n-partial_n
+      e^a_m), v_m=T^n_nm, and B=2/e partial_m(e v^m). Independent construction
+      of the Levi-Civita curvature gives the exact nonlinear identity R+T-B=0.
+      Hence the C-EGR-005 collective density -mu*T/2 equals +mu*R/2 modulo the
+      displayed boundary term. With admissible gravitational boundary data
+      and minimally coupled conserved matter, variation yields
+      G_ab=kappa*T_ab with kappa=1/mu and total
+      G_Newton=c^4/(8*pi*mu)=T^2/(8*pi*lambda^2*mu). This is the TEGR/EH theory,
+      so its smooth low-plaquette sector has the nonlinear GR equations and the
+      same two radiative tensor degrees of freedom; it does not add an f(T)
+      correction or an independent cosmological term.
+    dependencies: [C-EGR-005, C-MED-003]
+    verification: symbolic_verified_with_sourced_teleparallel_theorem
+    review: proposed
+    assumptions:
+      - The coframe is twice differentiable and nondegenerate on the claimed domain.
+      - The flat inertial spin connection or an equivalent covariant teleparallel pair is used consistently.
+      - The boundary divergence is removed by compact variations or the appropriate boundary transaction.
+      - Matter couples minimally to the collective metric and its stress is covariantly conserved.
+    evidence:
+      - src/substrate_framework/sine_gordon_teleparallel.py
+      - tests/test_sine_gordon_teleparallel.py
+      - proposals/P227-sg-induced-gravity/evidence/literature-audit.yaml
+      - proposals/P227-sg-induced-gravity/verify.py
+      - proposals/P227-sg-induced-gravity/reviews/independent_teleparallel_review.py
+  - id: C-EGR-007
+    statement: >-
+      The exact C-SG-017 rest breather with eta=sqrt(1-omega^2) has energy
+      E=16 eta sqrt(T*mu), profile length ell/eta, and source mass M=E/c^2.
+      Its C-SG-012 Noether stress, embedded on one transverse-delta fiber, is
+      conserved on shell. Using only the C-EGR-006 coupling, the mostly-plus
+      static weak field has Phi=-G_Newton*M/r. Its Schwarzschild radius is
+      4*eta*ell/pi and its compactness at the profile length is
+      4*eta^2/pi, with Phi/c^2=-2*eta^2/pi there. For eta=0.03 the compactness
+      is about 0.0011459, so the displayed linearized use is controlled.
+    dependencies: [C-EGR-006, C-SG-012, C-SG-017]
+    verification: symbolic_verified
+    review: proposed
+    assumptions:
+      - The rest breather occupies one canonical link channel with the landed transverse-delta source embedding.
+      - The readout radius is outside the localized profile and satisfies the reported weak-field compactness gate.
+    evidence:
+      - src/substrate_framework/dimensional_sine_gordon.py
+      - src/substrate_framework/sine_gordon_fiber_source.py
+      - src/substrate_framework/linearized_einstein.py
+      - src/substrate_framework/sine_gordon_breather_gravity.py
+      - tests/test_sine_gordon_breather_gravity.py
+      - proposals/P227-sg-induced-gravity/verify.py
+  - id: C-EGR-008
+    statement: >-
+      The same C-EGR-007 conserved stress and C-EGR-006 coupling have the
+      no-incoming far-zone field h_TT=(4*G_Newton/(c^4 R))*TT[e_x e_x]*H_zeta,
+      where H_zeta(t)=integral dx T_xx(t+zeta*x/c,x). The exact TT norm and
+      Isaacson flux give P=G_Newton/(2*c^5) integral_-1^1
+      (1-zeta^2)^2 <dot(H_zeta)^2> dzeta. In normalized SG variables this is
+      P/(mu*c)=1/(16*pi) integral_-1^1 (1-zeta^2)^2
+      <(partial_tau integral dX T_xx/mu)^2> dzeta. For lambda=T=mu=1 and
+      eta=0.03, full temporal-harmonic and spatial-retardation refinement of
+      the exact pressure gives P/(mu*c)=0.0002875595507880884. A fresh Simpson
+      implementation gives 0.0002875595530006727; the analytic leading
+      small-amplitude transform gives 0.0002877666775101088 and tends to
+      32*eta^3*omega/3. The source-size frequency ratio exceeds 33 and the
+      one-cycle loss is about 0.00376584, so full retardation is load bearing
+      and one-way backreaction is bounded in this benchmark.
+    dependencies: [C-EGR-006, C-EGR-007]
+    verification: numerical_refinement_and_independent_quadrature_verified
+    review: proposed
+    assumptions:
+      - The no-incoming retarded Green function and leading far-zone expansion apply.
+      - The weak transverse-traceless field admits the stated Isaacson cycle-averaged flux.
+      - Radiation reaction is omitted for one cycle and bounded by the reported loss fraction.
+    evidence:
+      - src/substrate_framework/linearized_einstein.py
+      - src/substrate_framework/sine_gordon_breather_radiation.py
+      - tests/test_sine_gordon_breather_radiation.py
+      - proposals/P227-sg-induced-gravity/evidence/numerical-audit.yaml
+      - proposals/P227-sg-induced-gravity/verify.py
+      - proposals/P227-sg-induced-gravity/reviews/independent_teleparallel_review.py

@@ -1,0 +1,13 @@
+campaign: P227
+attempt: '0007'
+timestamp_utc: '2026-08-07T08:24:00Z'
+status: environment_abort
+stage: full_repository_replay
+command: PYTHONPATH=src .venv/bin/pytest -q
+exit_status: 2
+scientific_verdict: not_run
+diagnosis: >-
+  Overriding PYTHONPATH with src alone removed the repository root from the
+  pytest launcher import path, so three tests could not import the scripts
+  package during collection. No scientific test executed or failed.
+next_action: Repeat unchanged tests with both src and repository root on PYTHONPATH.

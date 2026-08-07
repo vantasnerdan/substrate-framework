@@ -1,0 +1,34 @@
+campaign: P227
+benchmark:
+  coefficients: {lambda: 1, T: 1, mu: 1}
+  inverse_width: 0.03
+  frequency: sqrt(9991)/100
+  profile_length: 100/3
+  source_energy: 12/25
+  source_size_frequency_ratio: 33.31832916406272
+static_prediction:
+  potential_over_c_squared_at_profile_length: -0.0005729577951308232
+  schwarzschild_radius_over_profile_length: 0.0011459155902616464
+radiative_prediction:
+  method: exact_breather_pressure_temporal_harmonics_plus_full_spatial_retardation
+  spatial_extent_in_inverse_widths: 15
+  refinements:
+    - {spatial_points: 513, time_points: 65, direction_points: 257, harmonics: 3, power_over_mu_c: 0.00028755957070134653}
+    - {spatial_points: 1025, time_points: 129, direction_points: 501, harmonics: 4, power_over_mu_c: 0.0002875595507880884}
+    - {spatial_points: 2049, time_points: 129, direction_points: 1001, harmonics: 4, power_over_mu_c: 0.0002875595507880884}
+  independent_simpson_power_over_mu_c: 0.0002875595530006727
+  refined_power_over_mu_c: 0.0002875595507880884
+  leading_small_amplitude_finite_wavelength: 0.0002877666775101088
+  small_width_asymptotic: 0.0002878703708268706
+  relative_exact_to_leading_difference: 0.0007197731294412504
+  field_cycle_energy_loss_fraction: 0.0037658407273963783
+  harmonic_pressure_maxima: [0.007196758906007666, 0.0000032399996716545003, 0.0000000010939922401058974, 0.0000000000003283451112693957]
+quadrupole_approximation_used: false
+quadrature_owner: substrate_framework.numerics.trapezoid_integral_and_axis
+independent_quadrature: scipy.integrate.simpson_in_fresh_review
+conclusion: >-
+  The positive exact-stress flux is unchanged at the displayed precision under
+  simultaneous spatial, temporal, angular, and harmonic refinement and agrees
+  with a fresh Simpson implementation. The source is not slow relative to its
+  size, so full retardation is essential. Weak compactness and a 0.377 percent
+  cycle-loss estimate bound the static and one-way radiative uses.

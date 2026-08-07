@@ -1,0 +1,36 @@
+campaign: P227
+claims_proposed: [C-EGR-005, C-EGR-006, C-EGR-007, C-EGR-008]
+accepted_dependencies:
+  - claim: C-MED-003
+    use: positive dimensional SG coefficients and derived c ell mu scales
+  - claim: C-SG-012
+    use: exact Noether stress convention and on-shell conservation
+  - claim: C-SG-017
+    use: exact physical breather field energy profile length and period
+  - claim: C-GRV-001
+    use: bare-baseline and regulator-freedom rejection guard only
+  - claim: C-GW-001
+    use: TT projector and normalization ceiling cross-check only
+new_theorem_imports:
+  - local_Lorentz_uniqueness_of_the_quadratic_coframe_constitutive_ratios
+  - mostly_plus_TEGR_identity_R_plus_T_minus_boundary_equals_zero
+  - Einstein_Hilbert_metric_variation_with_admissible_boundary_transaction
+  - harmonic_gauge_no_incoming_retarded_Green_function
+  - Isaacson_weak_TT_flux
+cycles: []
+undeclared_imports: []
+closure:
+  microscopic_coefficients: src/substrate_framework/dimensional_sine_gordon.py
+  microscopic_link_to_collective_metric: src/substrate_framework/sine_gordon_teleparallel.py
+  compact_plaquette_to_local_torsion: src/substrate_framework/sine_gordon_teleparallel.py
+  nonlinear_metric_dynamics_and_total_coupling: src/substrate_framework/sine_gordon_teleparallel.py
+  isolated_conserved_source: src/substrate_framework/sine_gordon_fiber_source.py
+  conditional_static_and_retarded_responses: src/substrate_framework/linearized_einstein.py
+  static_source_prediction: src/substrate_framework/sine_gordon_breather_gravity.py
+  full_retardation_source_prediction: src/substrate_framework/sine_gordon_breather_radiation.py
+closure_passes: true
+authority_note: >-
+  The landed PR4/PR5 APIs remain artifacts at their documented conditional
+  ceilings. P227 proposes new claims but does not edit governance/claims.yaml,
+  a release manifest, generated docs, or accepted memory before maintainer
+  adjudication.
