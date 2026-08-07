@@ -422,6 +422,19 @@ from .linearized_einstein import (
     retarded_line_source_radiation_ledger,
     weak_field_monopole,
 )
+from .emergent_spin2 import (
+    FierzPauliGaugeLedger,
+    SineGordonSpinTwoCouplingLedger,
+    SineGordonSpinTwoLedger,
+    SpinTwoModeLedger,
+    collective_tensor_constraint_matrix,
+    fierz_pauli_gauge_ledger,
+    fierz_pauli_gauge_residual,
+    sine_gordon_spin_two_coupling_ledger,
+    sine_gordon_spin_two_ledger,
+    spin_two_mode_ledger,
+    tensor_mode_count_from_constraints,
+)
 from .linear_systems import LinearSystemDiagnostics, diagnose_linear_system
 from .lattice_scalar import (
     PhysicalPhaseChainCoefficients,
@@ -694,6 +707,22 @@ from .sine_gordon_breather_radiation import (
     leading_small_amplitude_breather_retarded_integral,
     sine_gordon_breather_radiation_evidence,
     sine_gordon_breather_retarded_stress_evidence,
+)
+from .sine_gordon_wall_network import (
+    IcosahedralWallFrameLedger,
+    LocalSineGordonWallNetwork,
+    SineGordonWallNetworkScales,
+    icosahedral_wall_directions,
+    icosahedral_wall_frame_ledger,
+    local_sine_gordon_wall_network,
+    sine_gordon_wall_network_scales,
+    spatial_tensor_from_wall_channels,
+    wall_channels_from_spatial_tensor,
+)
+from .sine_gordon_spin2_predictions import (
+    ControlledStaticBreatherPrediction,
+    controlled_static_breather_prediction,
+    sine_gordon_spin2_radiation_evidence,
 )
 from .teleparallel import (
     TEGR_INVARIANT_WEIGHTS,
@@ -1942,6 +1971,29 @@ __all__ = [
     "degree_two_rational_map_quadratic_form",
     "O4SkyrmePointwiseEvidence",
     "o4_skyrme_pointwise_evidence",
+    "ControlledStaticBreatherPrediction",
+    "FierzPauliGaugeLedger",
+    "IcosahedralWallFrameLedger",
+    "LocalSineGordonWallNetwork",
+    "SineGordonSpinTwoLedger",
+    "SineGordonSpinTwoCouplingLedger",
+    "SineGordonWallNetworkScales",
+    "SpinTwoModeLedger",
+    "collective_tensor_constraint_matrix",
+    "controlled_static_breather_prediction",
+    "fierz_pauli_gauge_ledger",
+    "fierz_pauli_gauge_residual",
+    "icosahedral_wall_directions",
+    "icosahedral_wall_frame_ledger",
+    "local_sine_gordon_wall_network",
+    "sine_gordon_spin_two_ledger",
+    "sine_gordon_spin_two_coupling_ledger",
+    "sine_gordon_spin2_radiation_evidence",
+    "sine_gordon_wall_network_scales",
+    "spatial_tensor_from_wall_channels",
+    "spin_two_mode_ledger",
+    "tensor_mode_count_from_constraints",
+    "wall_channels_from_spatial_tensor",
 ]
 
 __version__ = "0.0.0"
