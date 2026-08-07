@@ -82,9 +82,33 @@ After the final merge boundary is known, update the goal issue—not only the PR
 - Goal state: <open or complete>
 - Landed interfaces: <paths/symbols>
 - Next decisive action: <one executable step or test>
+
+### What closes the goal
+- Objective-level closure: <the positive scientific result and governance gates, independent of the reviewed route>
+- Current-route gap: <verification-only, implementation/representation, or scientific construction; explain why>
+- Necessary obligations: <route-neutral mathematical and physical conditions that remain unsatisfied>
+- One sufficient next move, not an exclusive prescription: <an experiment, derivation, or implementation that would decisively advance one obligation>
+- Grounds for reconsideration: <evidence or argument that would overturn the blocking review conclusion>
+- Reviewer-role boundary: <what was harvested or repaired, and what requires a distinct submitter effort>
 ```
 
 Write rationales at unit level; do not use one blanket explanation for a category. Point to exact files, symbols, evidence, and commits so the next agent can resume without reconstructing the PR. When authorized to mutate GitHub, post this record after the merge or harvest split. Otherwise, return the exact ready-to-post issue comment and state clearly that the issue update remains pending; never imply it was posted.
+
+## State the closure contract without prescribing the solution
+
+The issue handoff must say exactly what remains before the goal may close while preserving legitimate exploration space. State the objective-level obligations independently of the reviewed proposal. A favored lattice, continuum, formal, analytic, or numerical realization is not an issue requirement unless the issue or accepted framework makes it invariant.
+
+Classify each blocking gap explicitly:
+
+- **verification-only** — the claimed object and derivation exist, but a named transformation, limiting case, sensitivity test, error bound, or consumer replay is missing. Identify the exact relation and explain why that finite addition would suffice;
+- **implementation/representation** — the mathematics exists, but the canonical API, convention conversion, integration, or reusable implementation is incomplete;
+- **scientific construction** — a load-bearing map, action, dynamics, mechanism, theorem, approximation regime, or degree-of-freedom argument does not yet exist. Say plainly that adding assertions around declared values cannot supply the missing object.
+
+Do not summarize every scientific shortcoming as “more tests needed.” Explain what each script actually establishes as a mathematical proposition and what physical interpretation it does not establish. In particular, distinguish identities from derivations, kinematics from dynamics, a declared parameter count from a constraint analysis, and a closed-form point-source expression from a controlled approximation. Name the falsifier, independent derivation, convergence study, or error estimate that would make the stronger interpretation reviewable.
+
+For the current route, list necessary proof obligations and the evidence that would discharge them, but present any concrete architecture as one sufficient route rather than the unique repair. If the gap plausibly can be finished, say so. During the same adjudication, however, do not rescue a headline claim by choosing its missing mechanism or new assumptions and then acting as its submitter. Narrow correctness repairs and independently complete harvest units remain appropriate; continuing the rejected or incomplete mechanism belongs in a separately identified submitter effort or proposal.
+
+Treat review conclusions as reasoned and rebuttable, not as accepted scientific authority. For every blocking conclusion, state what counterexample, derivation, constraint count, controlled limit, or other evidence would change the assessment. Invite focused disagreement without weakening the completion gate.
 
 ## Preserve novelty without creating debt
 
