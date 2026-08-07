@@ -1,8 +1,8 @@
 ---
 description: Independent review of nonlinear TEGR-to-Einstein claim C-EGR-006
 author: axis-review
-created: '2026-08-07T08:12:00Z'
-updated: '2026-08-07T08:12:00Z'
+created: '2026-08-07T06:59:00Z'
+updated: '2026-08-07T06:59:00Z'
 tags:
 - substrate-framework
 - claim-review

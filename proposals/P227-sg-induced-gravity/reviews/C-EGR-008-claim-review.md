@@ -1,8 +1,8 @@
 ---
 description: Independent review of full-retardation breather radiation claim C-EGR-008
 author: axis-review
-created: '2026-08-07T08:16:00Z'
-updated: '2026-08-07T08:16:00Z'
+created: '2026-08-07T06:59:00Z'
+updated: '2026-08-07T06:59:00Z'
 tags:
 - substrate-framework
 - claim-review
