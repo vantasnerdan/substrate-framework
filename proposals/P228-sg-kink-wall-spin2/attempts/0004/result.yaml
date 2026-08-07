@@ -1,0 +1,17 @@
+campaign: P228
+attempt: '0004'
+timestamp_utc: '2026-08-07T12:45:00Z'
+status: success
+stage: primary_and_independent_claim_verification
+command: >-
+  PYTHONPATH=src .venv/bin/python proposals/P228-sg-kink-wall-spin2/verify.py
+  && PYTHONPATH=src .venv/bin/python
+  proposals/P228-sg-kink-wall-spin2/reviews/independent_spin2_review.py
+exit_status: 0
+scientific_verdict: nineteen_primary_and_five_independent_checks_pass
+diagnosis: >-
+  Exact frame, kink, gauge, constraint, coupling, source enclosure, numerical
+  refinement, and common-provenance checks pass. The independent route rebuilds
+  the frame, invariant Hessian, constraint matrix, and normalization without
+  the package derivation helpers.
+next_action: Run repository validation and the full test replay.

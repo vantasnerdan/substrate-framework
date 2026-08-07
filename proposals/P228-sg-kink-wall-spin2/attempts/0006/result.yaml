@@ -1,0 +1,14 @@
+campaign: P228
+attempt: '0006'
+timestamp_utc: '2026-08-07T13:01:00Z'
+status: rework
+stage: precommit_scope_review
+command: semantic diff review against issue 9 explicit local 3+1 requirement
+exit_status: 0
+scientific_verdict: prior_full_replay_was_nonterminal
+diagnosis: >-
+  The wall-scale and collective APIs encoded the transverse coefficients, but
+  the public implementation did not expose the six-field local 3+1 density or
+  its Euler-Lagrange residuals. The earlier 1,987-test replay remains valid for
+  that revision but no longer qualifies as the final boundary.
+next_action: Add the explicit local density and transverse-Hessian oracle, then rerun all claim and repository gates.

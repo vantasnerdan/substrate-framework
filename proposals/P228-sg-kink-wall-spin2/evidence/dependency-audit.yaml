@@ -1,0 +1,46 @@
+campaign: P228
+accepted_release: v0.159.0
+base_commit: 62bb785ec3e10a97b60c01798dfedd10e4dde4c9
+claim_edges:
+  C-EGR-009: [C-MED-003]
+  C-EGR-010: [C-EGR-009]
+  C-EGR-011: [C-EGR-009, C-EGR-010]
+  C-EGR-012: [C-EGR-011, C-SG-009, C-SG-017]
+nonclaim_imports:
+  exact_kink_integral:
+    role: standard exact sine-Gordon kink calculation
+    hidden_parameter: false
+  local_3p1_sine_gordon_lift:
+    role: six copies of C-MED-003 with all three spatial gradients and cell cross-section ell^2
+    hidden_parameter: false
+  icosahedral_tight_frame:
+    role: exact finite spherical-design linear algebra
+    hidden_parameter: false
+  fierz_pauli_gauge_solve:
+    role: exact Noether-kernel calculation over the most-general quadratic invariant basis
+    hidden_parameter: false
+  deser_completion:
+    source: https://arxiv.org/abs/gr-qc/0411023
+    role: conditional nonlinear spin-two self-coupling theorem
+    hidden_parameter: false
+    premises_declared_in: evidence/proposed-claims.yaml#C-EGR-011
+  retarded_source_transform:
+    role: landed supplied-coupling consumer; P228 replaces only the supplied coupling with the derived ledger
+    hidden_parameter: false
+parameter_ledger:
+  inherited: [lambda, T, mu, breather_frequency]
+  structural_discrete_choices:
+    - six antipodal icosahedral wall axes
+    - one wall separation cell per ell
+    - nearest-neighbor registry used for cutoff control
+  new_empirical_parameters: []
+  derived:
+    c: sqrt(T/lambda)
+    ell: sqrt(T/mu)
+    B: 32*mu/5
+    kappa: 5/(128*mu)
+    G: 5*T^2/(1024*pi*lambda^2*mu)
+consumer_routes:
+  static: C-MED-003 -> C-EGR-009 -> C-EGR-010 -> C-EGR-011 -> controlled_static_breather_prediction
+  radiative: C-MED-003 -> C-EGR-009 -> C-EGR-010 -> C-EGR-011 -> sine_gordon_spin2_radiation_evidence
+audit_verdict: dependency_closed_at_proposed_claim_ceilings

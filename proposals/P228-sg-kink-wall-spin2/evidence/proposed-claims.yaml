@@ -1,0 +1,110 @@
+campaign: P228
+status: proposed_for_maintainer_review
+claims:
+  - id: C-EGR-009
+    statement: >-
+      Conditional on C-MED-003 with positive exact coefficients
+      (lambda,T,mu), let c=sqrt(T/lambda) and ell=sqrt(T/mu). A declared local
+      3+1 cell has six fields with density sum_alpha
+      [lambda*u_alpha,t^2-T*sum_i u_alpha,i^2]/(2*ell^2)
+      -mu*(1-cos(u_alpha))/ell^2. Its spatial-gradient Hessian is
+      -mu times the rank-18 identity, so no wall family is an uncoupled 1+1
+      channel. There is one kink-wall separation per ell in each of the six
+      antipodal icosahedral directions. Its dimensionless separations
+      q_alpha=n_alpha^i n_alpha^j h_ij reconstruct a unique symmetric spatial
+      tensor because the exact projection has rank six, sum n_alpha n_alpha^T
+      equals 2I, and sum q_alpha^2=2(tr h)^2/5+4 tr(h^2)/5. Lifting the 1+1
+      density through a cell cross-section ell^2 and using
+      integral u_s^2 ds=8/ell gives one-channel inertia
+      8*lambda/ell^2, modulus 8*T/ell^2=8*mu, and trace-free spacetime
+      normalization B=32*mu/5 without a gravitational input.
+    dependencies: [C-MED-003]
+    verification: symbolic_verified
+    review: proposed
+    assumptions:
+      - The microscopic 3+1 construction contains six intersecting antipodal kink-wall families at one separation cell per accepted length ell.
+      - Relative wall separation is the local translational zero mode and the quadratic bending expansion applies below the inverse wall length.
+      - The icosahedral cell is the declared microscopic orientation set; continuum rotational invariance is claimed only at the displayed quadratic order.
+    evidence:
+      - src/substrate_framework/sine_gordon_wall_network.py
+      - tests/test_sine_gordon_wall_network.py
+      - proposals/P228-sg-kink-wall-spin2/verify.py
+  - id: C-EGR-010
+    statement: >-
+      On the C-EGR-009 tensor, declared local wall-cell volume preservation
+      tr(h)=0 and force balance k_i h_ij=0 form a rank-four constraint matrix
+      at every nonzero spatial wavevector, leaving a two-dimensional nullspace
+      with positive Frobenius kinetic form. The continuum symbol has
+      omega^2=c^2|k|^2. A local nearest-neighbor wall registry has
+      omega_lattice^2=4*c^2/ell^2 sum_i sin(k_i ell/2)^2 and leading correction
+      -c^2*ell^2 sum_i k_i^4/12. Independently, linearized relabeling
+      invariance applied to the most-general four two-derivative symmetric
+      tensor invariants gives a rank-three coefficient constraint and the
+      unique Fierz-Pauli ray (1,-2,2,-1). Thus the controlled long-wavelength
+      sector has two massless helicity-two modes, with preferred-frame lattice
+      corrections exposed rather than exact microscopic Lorentz invariance.
+    dependencies: [C-EGR-009]
+    verification: symbolic_verified
+    review: proposed
+    assumptions:
+      - Constant cell volume and local force balance are exact admissibility constraints of the declared wall registry.
+      - Linearized coordinate relabeling is a redundancy of the collective cell description.
+      - The nearest-neighbor registry is used only as a local cutoff control and higher wall interactions do not destabilize the displayed quadratic sector.
+    evidence:
+      - src/substrate_framework/emergent_spin2.py
+      - tests/test_emergent_spin2.py
+      - proposals/P228-sg-kink-wall-spin2/verify.py
+  - id: C-EGR-011
+    statement: >-
+      The C-EGR-010 gauge completion fixes the Fierz-Pauli density coefficient
+      to -B/2 on its normalized ray. With the standard matter variation
+      h_ab*T^ab/2, its trace-reversed equation is
+      box(hbar_ab)=-2*kappa*T_ab with kappa=1/(4B)=5/(128*mu). Hence
+      G=c^4*kappa/(8*pi)=5*c^4/(1024*pi*mu)
+      =5*T^2/(1024*pi*lambda^2*mu), with no observed G, regulator, bare
+      inverse coupling, or new empirical parameter. Conditional on locality,
+      universal conserved source coupling, gauge-current self-coupling, and
+      the other explicit premises of Deser's spin-two completion theorem, the
+      iterative nonlinear completion is Einstein gravity; the theorem does not
+      derive those premises from the wall registry.
+    dependencies: [C-EGR-009, C-EGR-010]
+    verification: symbolic_verified_with_sourced_completion_theorem
+    review: proposed
+    assumptions:
+      - Matter couples universally through the collective metric variation and its stress is conserved.
+      - The long-wavelength gauge symmetry persists through the self-coupling iteration.
+      - Locality and the gauge-current consistency hypotheses of arXiv:gr-qc/0411023 hold in the collective regime.
+      - No independent cosmological term or higher-derivative operator is claimed absent beyond the displayed low-energy order.
+    evidence:
+      - src/substrate_framework/emergent_spin2.py
+      - tests/test_emergent_spin2.py
+      - proposals/P228-sg-kink-wall-spin2/evidence/literature-audit.yaml
+      - proposals/P228-sg-kink-wall-spin2/verify.py
+  - id: C-EGR-012
+    statement: >-
+      The exact C-SG-017 breather with eta=sqrt(1-omega^2) has physical energy
+      E=16*eta*sqrt(T*mu), mass M=E/c^2, and profile length ell/eta. At a
+      transverse radius R=q*ell/eta, positivity of its energy density and its
+      exact cycle-maximum second moment bound the relative difference between
+      the line-source Newton potential and -G*M/R by
+      eta*mu2_max/(32*q^2), where
+      mu2_max=4*pi^2/(3*eta)+16*asinh(eta/omega)^2/eta. The same C-EGR-011 G
+      composes with the accepted no-incoming full-retardation pressure transform
+      to give P=G*mu^2*I/(2*c^3), with the parameter-free ratio
+      G*mu/c^4=5/(1024*pi). For lambda=T=mu=1 and eta=0.03, refined exact-source
+      quadrature gives P/(mu*c)=1.1232794952659703e-5 and one-cycle source-energy
+      loss 1.4710315341392102e-4; the coarser result differs by less than
+      7.8e-13 absolutely.
+    dependencies: [C-EGR-011, C-SG-009, C-SG-017]
+    verification: symbolic_enclosure_and_numerical_refinement_verified
+    review: proposed
+    assumptions:
+      - The accepted breather fiber source is observed in the transverse exterior and the returned finite-profile bound is below one.
+      - The no-incoming retarded Green function and leading far-zone TT flux functional apply.
+      - Radiation reaction is omitted for one cycle and bounded by the reported loss fraction.
+    evidence:
+      - src/substrate_framework/sine_gordon_spin2_predictions.py
+      - src/substrate_framework/sine_gordon_breather_radiation.py
+      - tests/test_sine_gordon_spin2_predictions.py
+      - proposals/P228-sg-kink-wall-spin2/evidence/numerical-audit.yaml
+      - proposals/P228-sg-kink-wall-spin2/verify.py

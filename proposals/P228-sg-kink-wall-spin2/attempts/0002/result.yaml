@@ -1,0 +1,13 @@
+campaign: P228
+attempt: '0002'
+timestamp_utc: '2026-08-07T12:29:00Z'
+status: success
+stage: focused_implementation_verification
+command: .venv/bin/pytest -q tests/test_sine_gordon_wall_network.py tests/test_emergent_spin2.py tests/test_sine_gordon_spin2_predictions.py
+exit_status: 0
+scientific_verdict: nineteen_focused_checks_pass_after_code_audit_refactor
+diagnosis: >-
+  Exact frame, wall scale, gauge rank, constraint nullity, mutation, static
+  enclosure, and shared-coupling radiation tests pass. The code audit moved G
+  out of the wall module so no prediction can bypass gauge completion.
+next_action: Run the campaign verifier, repository validation, and full replay.

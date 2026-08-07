@@ -1,0 +1,87 @@
+campaign: P228
+criteria_order:
+  - accepted_invariant_compatibility
+  - genuine_local_3p1_transverse_dynamics
+  - microscopic_to_collective_map_and_compatibility
+  - derived_constraint_rank_kinetic_sign_and_dispersion
+  - no_target_coefficient_or_polarization_count_as_input
+  - assumption_and_parameter_economy
+  - low_energy_isotropy_and_cutoff_control
+  - common_source_static_radiative_composition
+  - mutation_sensitive_verification_and_replay_cost
+comparators_opened: []
+new_empirical_parameters: 0
+decisions:
+  A:
+    decision: selected_for_implementation
+    structural_output: >-
+      Six full 3+1 sine-Gordon fields have an exact rank-18 spatial-gradient
+      Hessian, so every wall family carries explicit transverse dynamics. Their
+      kink-wall separation channels on the antipodal icosahedral axes give an
+      exact rank-six map to a symmetric spatial tensor. The frame obeys
+      sum q_alpha^2=2(tr h)^2/5+4 tr(h^2)/5. The exact kink integral and the
+      declared one-wall-per-ell cell fix the trace-free spacetime normalization
+      B=32*mu/5. Local volume preservation and force balance have rank four at
+      every nonzero wavevector and leave a positive two-dimensional nullspace.
+      Linearized relabeling invariance independently selects the unique
+      Fierz-Pauli invariant ray (1,-2,2,-1), after which B fixes
+      kappa=5/(128*mu) and G=5*c^4/(1024*pi*mu).
+    selection_reason: >-
+      This is the only candidate in the frozen set that combines an explicit
+      local 3+1 sine-Gordon transverse action, an invertible microscopic tensor
+      map, an exact constraint-rank calculation, a target-blind gauge-coefficient
+      solve, no new empirical parameter, and the accepted common source APIs.
+    implementation_falsifiers:
+      - a rank loss or nonzero tight-frame residual for the six declared axes
+      - loss of any transverse derivative in the rank-18 microscopic Hessian
+      - failure of tensor reconstruction from wall channels
+      - a constraint nullity other than two at a nonzero wavevector
+      - a nonpositive projected kinetic form
+      - survival of a coefficient mutation in the gauge kernel
+      - a hidden common sine-Gordon scale that leaves G unchanged
+      - different coupling provenance in static and radiative consumers
+  B:
+    decision: rejected_control
+    structural_output: >-
+      The accepted radial 3+1 sine-Gordon model and regular ell=2 perturbations
+      provide controlled scalar transverse structure and STF observables, but
+      their dependency graph contains one scalar field and no independent
+      tensor gauge redundancy or four-constraint system.
+    rejection_test: >-
+      TT-projecting or STF-packaging the scalar ell=2 amplitude changes its
+      readout type but not its scalar field content, Hessian, or constraint
+      nullity; it therefore cannot establish a massless helicity-two carrier.
+  C:
+    decision: rejected_in_current_form
+    structural_output: >-
+      A genuine link-curl coframe model could repair the P227 compatibility
+      failure, but no target-blind sine-Gordon link action in the accepted
+      framework derives both the coframe Bianchi structure and the TEGR
+      constitutive ratios. Supplying those ratios would repeat the rejected
+      24-channel diagonalization.
+    rejection_test: >-
+      Treating plaquette phases as independent permits configurations that are
+      not curls of common links; enforcing the Bianchi identity then requires
+      additional microscopic variables and dynamics not present in the frozen
+      candidate.
+  D:
+    decision: rejected_with_published_reliability_ceiling
+    structural_output: >-
+      The Gu-Wen L-type compact tensor model reliably isolates helicity plus
+      and minus two but has omega proportional to k cubed. Its N-type model
+      argues for omega proportional to k while the authors explicitly identify
+      noncommuting constraint and kinetic terms and strongly coupled modes that
+      prevent a reliable low-energy derivation.
+    rejection_test: >-
+      Preserving the published control boundary rejects L-type on the required
+      relativistic dispersion and N-type on the required controlled Hessian;
+      importing its desired linear spectrum would exceed the source ceiling.
+sources:
+  - repository: governance/claims.yaml and governance/releases/current.yaml at v0.159.0
+  - repository: src/substrate_framework/dimensional_sine_gordon.py
+  - repository: src/substrate_framework/radial_sine_gordon.py and src/substrate_framework/radial_modes.py
+  - repository: src/substrate_framework/teleparallel.py
+  - prior_review: https://github.com/vantasnerdan/substrate-framework/pull/6
+  - primary: https://arxiv.org/abs/0907.1203
+  - primary: https://arxiv.org/abs/gr-qc/0411023
+  - primary: https://arxiv.org/abs/1611.05759
