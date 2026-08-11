@@ -1,0 +1,450 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{linstabilituxe0-essenziale-del-vuoto-di-yangmills-riproduzione-machine-checked-del-programma-di-preparata}{%
+\section{L'instabilità essenziale del vuoto di Yang--Mills: riproduzione
+machine-checked del programma di
+Preparata}\label{linstabilituxe0-essenziale-del-vuoto-di-yangmills-riproduzione-machine-checked-del-programma-di-preparata}}
+
+Versione 1.1 --- 11 agosto 2026 (v1.1: testo primario di Preparata
+acquisito e verificato a livello di equazioni --- Sezione 8)
+
+Giuliano (Vantasner AG), per Luca Gamberale
+
+Rapporto tecnico con verifica automatica (substrate-framework, tracker
+\#44)
+
+\hypertarget{sommario}{%
+\subsection{Sommario}\label{sommario}}
+
+Questo rapporto riproduce, con oracoli macchina (SymPy/SciPy/mpmath, 63
+test automatici), il programma di Giuliano Preparata sull'instabilità
+del vuoto perturbativo di Yang--Mills: il potenziale efficace a un loop
+nel fondo cromomagnetico costante (vuoto di Savvidy), il potenziale a
+due loop in funzione di \(b/\Lambda^2\) (con \(b = gH\)), l'analisi di
+stabilità rispetto alle fluttuazioni, la decomposizione per colori e per
+modi trasversi, una configurazione classica migliore di quella di
+Savvidy (il vuoto ``spaghetti'' di Ambjørn--Olesen) con la
+riquantizzazione attorno ad essa, e la verifica equazione per equazione
+del testo primario del 1986 (Sezione 8). Ogni affermazione quantitativa
+è prodotta da codice eseguibile nel repository
+\texttt{vantasnerdan/substrate-framework} (issue \#44--\#50 e \#56, PR
+\#51--\#55 e \#57) o citata esplicitamente dalla letteratura. Risultato
+principale: il risultato a un loop di Savvidy si riproduce esattamente;
+il risultato a due loop pubblicato (Bordag--Skalozub 2022) contiene tre
+errori tipografici/sostanziali che documentiamo con valori esatti; la
+configurazione di Savvidy è instabile alle fluttuazioni a ogni ordine
+perturbativo accessibile, e il condensato di tubi di flusso (reticolo
+triangolare, parametro di Abrikosov \(\beta = 1.159595\)) è
+energeticamente preferito.
+
+\hypertarget{fonti-e-accessibilituxe0}{%
+\subsection{1. Fonti e accessibilità}\label{fonti-e-accessibilituxe0}}
+
+Dichiariamo esattamente cosa è stato verificato e da dove.
+
+\begin{itemize}
+\tightlist
+\item
+  G. Preparata, \emph{Essential Quantum Instability of the Perturbative
+  Yang--Mills Vacuum}, Nuovo Cim. A \textbf{96} (1986) 366, DOI
+  10.1007/BF02833896 --- \textbf{in nostro possesso} (PDF di 28 pp.~con
+  testo estraibile, md5 34f8efc4c056837869cfbe63906ea14d), acquisito
+  l'11 agosto 2026 e fissato come provenance della campagna in
+  \texttt{proposals/P229-preparata-qcd-vacuum-audit/sources/}. La
+  scansione del 1986 degrada le formule in esposizione: nessuna
+  equazione è trascritta dall'OCR come verità; ogni affermazione
+  verificabile è codificata dal suo enunciato testuale più chiaro e poi
+  controllata con oracoli (Sezione 8).
+\item
+  G.K. Savvidy, Phys. Lett. B \textbf{71} (1977) 133 --- il risultato a
+  un loop, ripreso dalle sue riesposizioni aperte (EPJC \textbf{80}
+  (2020) 165, arXiv:1910.00654; la rassegna EPJC 2026). Verificato
+  interamente.
+\item
+  N.K. Nielsen, P. Olesen, Nucl. Phys. B \textbf{144} (1978) 376 ---
+  paywalled; il modo instabile e la parte immaginaria sono stati
+  verificati indipendentemente dal nostro calcolo (zeta dell'operatore e
+  integrale di modo).
+\item
+  M. Bordag, V. Skalozub, EPJC \textbf{82} (2022) 390, arXiv:2112.01043
+  --- \textbf{aperto}; è la fonte del due loop a \(T=0\) (eq. 57--58).
+  Verificato; tre discrepanze documentate (Sezione 5).
+\item
+  M. Bordag, \emph{Symmetry} \textbf{15} (2023) 1137 --- rassegna
+  aperta; fonte della costruzione del reticolo di tubi di flusso (eq.
+  146--152).
+\item
+  P. Cea, arXiv:2311.14791 --- aperto; settori tachiometrici \(SU(3)\).
+\end{itemize}
+
+Metodo: nessun passaggio ``a mano''. Ogni coefficiente è prodotto da
+codice; ogni check ha una mutazione che lo rompe. I moduli:
+\texttt{chromomagnetic\_background.py} (21 test),
+\texttt{chromomagnetic\_two\_loop.py} (13 test),
+\texttt{chromomagnetic\_sectors.py} (10 test),
+\texttt{spaghetti\_vacuum.py} (8 test), \texttt{preparata\_1986.py} (11
+test) --- 63 in totale.
+
+\hypertarget{il-potenziale-a-un-loop-savvidy-verificato}{%
+\subsection{2. Il potenziale a un loop (Savvidy),
+verificato}\label{il-potenziale-a-un-loop-savvidy-verificato}}
+
+Convenzioni congelate: segnatura mostly-plus, gauge di fondo di Feynman
+(\(\xi = 1\)), \(SU(2)\) con fondo in una direzione di Cartan
+(\(a = 3\)), variabile covariante \(b = gH\).
+
+\textbf{Spettro delle fluttuazioni} (derivato dall'operatore
+discretizzato, non asserito): vettore carico
+\[E^2 = p_z^2 + b(2n+1) - 2b\,s_3, \qquad s_3 \in \{+1, 0, 0, -1\},\]
+fantasma carico \(E^2 = p_z^2 + b(2n+1)\). Il livello \(n=0\),
+\(s_3 = +1\) dà \(E^2 = p_z^2 - b\): il \textbf{tachione di
+Nielsen--Olesen}.
+
+\textbf{Cancellazione fantasma}: la traccia di spin \(2\cosh(2bs) + 2\)
+meno il fantasma (\(-2\)) lascia \(2\cosh(2bs)\); il coefficiente di
+Seeley--DeWitt è esatto:
+\[\frac{b}{\sinh(bs)}\,2\cosh(2bs) = \frac{2}{s} + \frac{11}{3}b^2 s + \frac{127}{180}b^4 s^3 + \cdots\]
+
+\textbf{Potenziale a un loop} (MS-bar):
+\[V_1(b) = \frac{11}{48\pi^2}\,b^2\left(\ln\frac{b}{\mu^2} - \frac{1}{2}\right).\]
+Il coefficiente \(11/(48\pi^2)\) è fissato a \(10^{-10}\) dalla rotta
+zeta dell'operatore e a \(10^{-2}\) dalla rotta proper-time con cut-off,
+indipendenti. Il minimo:
+\[\ln\frac{b_{\min}}{\mu^2} = -\frac{24\pi^2}{11 g^2}, \qquad V_{\min} = -\frac{11\mu^4}{96\pi^2}\,e^{-48\pi^2/11g^2} < 0,\]
+identico alla formula pubblicata da Savvidy. Con il running a un loop
+(\(b_0 = 22/3\)): \(b_{\min} = \Lambda^2\) \textbf{esattamente} ---
+contenuto indipendente dallo schema.
+
+\hypertarget{stabilituxe0-rispetto-alle-fluttuazioni}{%
+\subsection{3. Stabilità rispetto alle
+fluttuazioni}\label{stabilituxe0-rispetto-alle-fluttuazioni}}
+
+Il verdetto è \textbf{negativo} e lo enunciamo con precisione:
+
+\begin{itemize}
+\tightlist
+\item
+  Per ogni \(b > 0\) esiste il modo tachiometrico
+  \(E^2 = p_z^2 - b < 0\) per \(p_z^2 < b\).
+\item
+  Parte immaginaria a un loop, derivata dall'integrale di modo e
+  indipendentemente dalla zeta dell'operatore:
+  \[|\,\mathrm{Im}\,V_1| = \frac{b^2}{8\pi}.\]
+\item
+  A due loop la parte immaginaria persiste: dal quadrato complesso
+  \((3g^2/2)B_2^2\) con \(B_2 = -b(\ln 2 - i\pi)/(16\pi^2)\) si ottiene
+  \(\mathrm{Im}\,V_2 = -3g^2 b^2 \ln 2/(256\pi^3) \neq 0\).
+\item
+  La risommazione ad anelli (``daisy'') che rimuove la parte immaginaria
+  a un loop è insufficiente a due loop (Bordag--Skalozub, conclusioni).
+  Non esiste quindi un verdetto di stabilità perturbativo a questo
+  ordine: il vuoto di Savvidy \textbf{non è stabile} contro le
+  fluttuazioni, in accordo con la tesi di ``instabilità essenziale'' di
+  Preparata.
+\end{itemize}
+
+\hypertarget{decomposizione-per-colori-e-modi-trasversi}{%
+\subsection{4. Decomposizione per colori e modi
+trasversi}\label{decomposizione-per-colori-e-modi-trasversi}}
+
+Per settore (coefficienti esatti del nucleo di calore, termine
+\(b^2 s\)):
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+settore & coefficiente & nota \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+trasverso \(s_3 = +1\) & \(11/6\) & contiene il tachione \\
+trasverso \(s_3 = -1\) & \(11/6\) & \\
+coppia longitudinale \(s_3 = 0\) & \(-1/3\) & \\
+fantasma & \(+1/3\) & cancella la coppia longitudinale \\
+\end{longtable}
+
+L'intero logaritmo a un loop è trasverso-paramagnetico: i due settori di
+spin trasverso portano ciascuno \(11/6\), sommando all'\(11/3\) totale;
+settore longitudinale e fantasma si cancellano esattamente.
+
+\textbf{\(SU(3)\)} (fondo lungo \(\lambda_8\)): le radici cariche hanno
+cariche \((1, \tfrac12, \tfrac12)\) in unità di \(gH\) --- i tre settori
+tachiometrici di Cea. Ogni radice contribuisce come un vettore carico
+complesso di \(SU(2)\) con la sua carica; il coefficiente del logaritmo
+totale è \(\tfrac32 C\) con \(C = 11/(48\pi^2)\), più gli spostamenti
+\(\ln q\) per radice.
+
+\hypertarget{il-due-loop-verifica-e-tre-errata-documentate}{%
+\subsection{5. Il due loop: verifica e tre errata
+documentate}\label{il-due-loop-verifica-e-tre-errata-documentate}}
+
+Dal calcolo delle definizioni del paper (loro eq. (3)) a \(T=0\),
+\(\xi = 1\): il contributo a due loop è
+\(W_2 = \tfrac32 g^2 B_2(0,b)^2\) con il ``tadpole'' magnetico
+\[B_2(0,b) = \frac{b}{4\pi}\sum_{n,\sigma=\pm2}\int\frac{d^2k}{(2\pi)^2}\frac{1}{k^2 + b(2n+1+\sigma) - i0} = -\frac{b\,(\ln 2 - i\pi)}{16\pi^2},\]
+esatto via funzione zeta: il polo e i termini \(\ln b\), \(\ln\mu\)
+decadono identicamente perché
+\(G(1) = 1 + \zeta(0,\tfrac12) + \zeta(0,\tfrac32) = 0\) (la
+cancellazione coinvolge il tachione), e la somma residua
+\(\sum \ln(2n+1+\sigma) = \ln 2 - i\pi\) segue dall'identità di Lerch
+\(\zeta'(0,a) = \ln\Gamma(a) - \ln\sqrt{2\pi}\) (verificata
+numericamente a \(10^{-30}\)).
+
+\textbf{Errata candidati} (ciascuno fissato da un test):
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{F1} --- la loro eq. (58) stampa la correzione all'esponente
+  \(3\ln^2 2/(98\pi^2)\) nella forma esponenziale e
+  \(3\ln^2 2/(88\pi^2)\) nell'espansione. La minimizzazione della loro
+  stessa (57) dà \(88\): il \(98\) è un refuso.
+\item
+  \textbf{F2} --- la loro (57) stampa la parte immaginaria a un loop
+  \(-i b^2/(8\pi^2)\); due rotte indipendenti (e Nielsen--Olesen) danno
+  \(b^2/(8\pi)\).
+\item
+  \textbf{F3} --- la loro (57) stampa il due loop
+  \(g^2\ln^2 2\, b^2/(128\pi^4)\). Dalle loro stesse definizioni:
+  \[\mathrm{Re}\,W_2 = \frac{3g^2 b^2 (\ln^2 2 - \pi^2)}{512\pi^4},\]
+  cioè un fattore \(4/3\) sul coefficiente di \(\ln^2 2\) e una
+  struttura \(-\pi^2\) assente nella forma stampata (differenza esatta:
+  \(-g^2b^2(\ln^2 2 + 3\pi^2)/(512\pi^4)\)). Riprodotto
+  indipendentemente dall'estrattore bibliografico della campagna.
+\end{itemize}
+
+\textbf{Minimo a due loop} (con il nostro \(W_2\)):
+\(b_{\min} = \mu^2 \exp\left(-\frac{24\pi^2}{11g^2} - \frac{9(\ln^2 2 - \pi^2)g^2}{352\pi^2}\right)\).
+
+\hypertarget{il-potenziale-in-funzione-di-blambda2}{%
+\subsection{\texorpdfstring{6. Il potenziale in funzione di
+\(b/\Lambda^2\)}{6. Il potenziale in funzione di b/\textbackslash Lambda\^{}2}}\label{il-potenziale-in-funzione-di-blambda2}}
+
+Con running a un loop e miglioramento RG (\(\mu^2 = b\)),
+\(x \equiv b/\Lambda^2\):
+\[\frac{W(x)}{\Lambda^4} = \frac{11}{48\pi^2}\,x^2\left(\ln x - \frac12\right) + \kappa\,\frac{x^2}{\ln x},\qquad \kappa = \frac{9(\ln^2 2 - \pi^2)}{704\pi^2}\ \text{(derivato)},\quad \frac{3\ln^2 2}{176\pi^2}\ \text{(stampato)}.\]
+A un loop il minimo è a \(x = 1\) esattamente: \(b_{\min} = \Lambda^2\);
+\(W_{\min}/\Lambda^4 = -11/(96\pi^2)\).
+
+\hypertarget{la-configurazione-classica-migliorata-il-vuoto-spaghetti}{%
+\subsection{7. La configurazione classica migliorata: il vuoto
+``spaghetti''}\label{la-configurazione-classica-migliorata-il-vuoto-spaghetti}}
+
+Il tachione condensa in un reticolo bidimensionale di tubi di flusso
+(Ambjørn--Olesen; rassegna Bordag eq. (146)--(152)). La densità del
+condensato
+\[\rho(z) = e^{-2\pi(\mathrm{Im}\,z)^2/\mathrm{Im}\,\tau}\,|\vartheta_3(\pi z\,|\,\tau)|^2\]
+è esattamente periodica sotto le traslazioni magnetiche (verificato). Il
+parametro di Abrikosov
+\(\beta = \langle\rho^2\rangle/\langle\rho\rangle^2\), calcolato per
+quadratura diretta dalla definizione: reticolo quadrato
+\(\beta = 1.180340\), triangolare \(\beta = 1.159595\) (ottimale; la
+mutazione obliqua è peggiore). L'energia classica diventa
+\(E_{\rm cl} = \tfrac{H^2}{2}(1 - 1/\beta) < H^2/2\): il reticolo
+\textbf{abbassa} l'energia classica del campo costante.
+
+Riquantizzazione (approssimazione della letteratura: sommare il
+potenziale a un loop del fondo omogeneo):
+\[V(H) = \left(1-\frac1\beta\right)\frac{H^2}{2} + \frac{11}{48\pi^2}(gH)^2\left(\ln\frac{gH}{\mu^2} - \frac12\right),\qquad \ln\frac{gH_{\min}}{\mu^2} = -\left(1-\frac1\beta\right)\frac{24\pi^2}{11g^2},\]
+e il minimo è più profondo di Savvidy del fattore
+\(\exp\left(\frac{48\pi^2}{11 g^2\beta}\right)\) --- esponenzialmente
+più profondo a accoppiamento debole.
+
+Nota di convenzione (documentata, non risolta): la eq. (152) della
+rassegna quota \(\vartheta_3(0, q_0) \simeq 1.2713\) per
+\(q_0 = e^{-\pi}\); nella convenzione standard
+\(\vartheta_3(0, e^{-\pi}) = 1.086434\), mentre
+\(1.2713 = \vartheta_3(0, e^{-2})\). La loro eliminazione dei parametri
+non è ricostruibile dal testo aperto; i nostri numeri sono derivati, non
+trascritti.
+
+\hypertarget{verifica-del-testo-primario-preparata-1986-equazione-per-equazione}{%
+\subsection{8. Verifica del testo primario: Preparata 1986 equazione per
+equazione}\label{verifica-del-testo-primario-preparata-1986-equazione-per-equazione}}
+
+Modulo \texttt{preparata\_1986.py} (11 test; issue \#56, PR \#57). Ogni
+affermazione verificabile del paper è codificata dal suo enunciato
+testuale più chiaro e ricontrollata con oracoli SymPy, in incrocio con
+le primitive verificate delle Sezioni 2--6.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Spettro (1.2).} \(E^2 = p_z^2 + gH(2n+1) - 2gH\,S_z\):
+  coincide con lo spettro verificato della Sezione 2 (controllo numerico
+  su quattro settori); il settore instabile è \(n=0\), \(S_z=1\) con
+  \(p_z^2 < gH\), come da testo.
+\item
+  \textbf{Risultato centrale (5.1).}
+  \(\Delta E = -\frac{11}{48\pi^2}g^2H^2\ln(\Lambda^2/gH) + O(g^2H^2)\).
+  Il segno \textbf{non è trascritto}: è derivato --- solo il segno
+  negativo produce il minimo locale con \(a, b > 0\) delle (5.2)/(5.3)
+  (il segno positivo dà un massimo, in contraddizione con l'abstract).
+  Il coefficiente del logaritmo è identico al \(C = 11/(48\pi^2)\)
+  verificato alla Sezione 2.
+\item
+  \textbf{Minimo (5.2)/(5.3), derivato.} Dalla (5.1) codificata:
+  \(gH^* = a\Lambda^2\) con \(a = e^{-1/2}\) e
+  \(\Delta E^* = -b\Lambda^4\) con \(b = \frac{11}{96\pi^2 e}\) ---
+  entrambi finiti per \(g \to 0\). Con il termine sotto-leading
+  simbolico \(\kappa g^2H^2\): \(a = e^{-1/2 - 48\pi^2\kappa/11}\),
+  ancora finito --- l'instabilità ``essenziale'' è robusta, come
+  asserito nel paper.
+\item
+  \textbf{Algebra AF della Sezione 1.} La (1.1) di Savvidy risolta per
+  \(1/g^2\) dà esattamente il running a un loop (\(b_0 = 22/3\); residuo
+  nullo). Inserendo il running AF nella variazionale del 1985 (1.3)
+  {[}\(gH^* = \Lambda^2 e^{-12\pi^2/11g^2}\){]} l'esponente è
+  esattamente \(-\ln(\Lambda/\Lambda_{\rm QCD})\), quindi
+  \(gH^* = \Lambda\cdot\Lambda_{\rm QCD}\): campo divergente e gap
+  \(\sim\Lambda^2\), come affermato.
+\item
+  \textbf{Distinzione di scala (onestà di convenzione).} La \(\Lambda\)
+  di Preparata è il \textbf{cut-off UV}; la \(\Lambda\) della Sezione 6
+  è la \textbf{scala RG}. I due enunciati
+  (\(gH^* = a\Lambda_{\rm UV}^2\) e \(b_{\min} = \Lambda_{\rm RG}^2\))
+  non vanno confusi: sono compatibili ma non identici.
+\item
+  \textbf{Frontiera dichiarata.} La macchina variazionale completa
+  (funzionali d'onda gaussiani, appendici B--F, il modello
+  \(\lambda\phi^4\) dell'appendice F) non è riprodotta: è un possibile
+  modulo successivo. Le affermazioni sopra coprono la catena logica
+  portante: spettro → (5.1) → minimo → divergenza del gap →
+  sopravvivenza della conclusione.
+\end{enumerate}
+
+\textbf{Verdetto:} l'algebra verificabile di Preparata 1986 è
+internamente consistente e coerente con il coefficiente a un loop
+verificato indipendentemente; la tesi dell'instabilità essenziale segue
+dalla (5.1) codificata.
+
+\hypertarget{risultati-dichiarati}{%
+\subsection{9. Risultati dichiarati}\label{risultati-dichiarati}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Il potenziale di Savvidy a un loop è confermato in ogni coefficiente:
+  \(C = 11/(48\pi^2)\), minimo a \(b = \Lambda^2\),
+  \(V_{\min} = -11\Lambda^4/(96\pi^2)\).
+\item
+  Il vuoto di Savvidy è \textbf{instabile}: tachione per ogni \(b>0\),
+  \(\mathrm{Im}\,V \neq 0\) a uno e due loop. Il testo primario di
+  Preparata è ora verificato a livello di equazioni (Sezione 8):
+  l'algebra portante è consistente, il minimo
+  \(gH^* = e^{-1/2}\Lambda^2\) con
+  \(\Delta E^* = -\frac{11}{96\pi^2 e}\Lambda^4\) è derivato dalla sua
+  (5.1), e l'instabilità essenziale (\(a\), \(b\) finiti per
+  \(g \to 0\)) ne segue. Frontiera dichiarata: la macchina variazionale
+  completa delle appendici B--F.
+\item
+  Il due loop pubblicato (Bordag--Skalozub) contiene tre errori (F1, F2,
+  F3) con i valori corretti esatti sopra; la correzione F3 cambia il
+  coefficiente del termine a due loop e l'esponente del minimo.
+\item
+  Il logaritmo a un loop è interamente trasverso-paramagnetico
+  (\(2 \times 11/6\)); longitudinale e fantasma si cancellano.
+\item
+  La configurazione classica più vicina al vuoto quantistico è il
+  reticolo triangolare di tubi di flusso (\(\beta = 1.159595\)), con
+  energia classica ridotta del fattore \((1 - 1/\beta) = 0.1376\) e
+  minimo esponenzialmente più profondo; la riquantizzazione a un loop
+  attorno ad esso è calcolata sopra.
+\item
+  Il potenziale in funzione di \(b/\Lambda^2\) è la Sezione 6, con il
+  termine a due loop corretto.
+\end{enumerate}
+
+\hypertarget{riferimenti}{%
+\subsection{Riferimenti}\label{riferimenti}}
+
+{[}1{]} G. Preparata, Nuovo Cim. A \textbf{96} (1986) 366. DOI:
+10.1007/BF02833896 (abstract; testo paywalled). {[}2{]} G.K. Savvidy,
+Phys. Lett. B \textbf{71} (1977) 133; riesposizione aperta: EPJC
+\textbf{80} (2020) 165, arXiv:1910.00654. {[}3{]} N.K. Nielsen, P.
+Olesen, Nucl. Phys. B \textbf{144} (1978) 376. {[}4{]} N.K. Nielsen, P.
+Olesen, Phys. Lett. B \textbf{79} (1978) 304 (linee di vortice
+elettriche). {[}5{]} J. Ambjørn, P. Olesen, Nucl. Phys. B \textbf{170}
+(1980) 60 e 265 (condensato ``spaghetti''). {[}6{]} M. Bordag, V.
+Skalozub, EPJC \textbf{82} (2022) 390, arXiv:2112.01043 (aperto).
+{[}7{]} M. Bordag, Symmetry \textbf{15} (2023) 1137 (aperto). {[}8{]} P.
+Cea, arXiv:2311.14791 (aperto). {[}9{]} Repository:
+vantasnerdan/substrate-framework --- tracker \#44, issue \#45--\#50 e
+\#56, PR \#51--\#55 e \#57; moduli
+\texttt{chromomagnetic\_background.py},
+\texttt{chromomagnetic\_two\_loop.py},
+\texttt{chromomagnetic\_sectors.py}, \texttt{spaghetti\_vacuum.py},
+\texttt{preparata\_1986.py} con 63 test; testo primario fissato in
+\texttt{proposals/P229-preparata-qcd-vacuum-audit/sources/}.
+
+\emph{Fine del rapporto.}
+
+\end{document}
