@@ -63,7 +63,7 @@ Per settore (coefficienti esatti del nucleo di calore, termine $b^2 s$):
 
 L'intero logaritmo a un loop è trasverso-paramagnetico: i due settori di spin trasverso portano ciascuno $11/6$, sommando all'$11/3$ totale; settore longitudinale e fantasma si cancellano esattamente.
 
-**$SU(3)$** (fondo lungo $\lambda_8$): le radici cariche hanno cariche $(1, \tfrac12, \tfrac12)$ in unità di $gH$ — i tre settori tachiometrici di Cea. Ogni radice contribuisce come un vettore carico complesso di $SU(2)$ con la sua carica; il coefficiente del logaritmo totale è $\tfrac32 C$ con $C = 11/(48\pi^2)$, più gli spostamenti $\ln q$ per radice.
+**$SU(3)$** (fondo lungo $\lambda_3$): le radici cariche hanno cariche $(1, \tfrac12, \tfrac12)$ in unità di $gH$ — i tre settori tachiometrici di Cea. Ogni radice contribuisce come un vettore carico complesso di $SU(2)$ con la sua carica; il coefficiente del logaritmo totale è $\tfrac32 C$ con $C = 11/(48\pi^2)$, più gli spostamenti $\ln q$ per radice.
 
 ## 5. Il due loop: verifica e tre errata documentate
 

@@ -17,7 +17,7 @@ The exact cancellation (s3=0 pair) + (ghost) = 0 leaves 2 cosh(2 gB s); the
 entire one-loop logarithm is carried by the two transverse spin sectors,
 each contributing b2/2 = 11/6 to the heat-kernel coefficient.
 
-SU(3) color decomposition: a Cartan background along lambda_8 has charged
+SU(3) color decomposition: a Cartan background along lambda_3 has charged
 roots with charges (1, 1/2, 1/2) in units of g H (Cea's three tachyonic
 sectors, arXiv:2311.14791); each root contributes one SU(2)-like complex
 charged vector with its own q g H.
@@ -40,10 +40,7 @@ from __future__ import annotations
 
 import sympy as sp
 
-from substrate_framework.chromomagnetic_background import (
-    heat_kernel_series_coefficients,
-    nielsen_olesen_imaginary_part,
-)
+from substrate_framework.chromomagnetic_background import nielsen_olesen_imaginary_part
 from substrate_framework.chromomagnetic_two_loop import B2_tadpole, b, g
 
 # ---------------------------------------------------------------------------
@@ -98,7 +95,7 @@ def transverse_share_of_log() -> sp.Rational:
 
 
 def su3_charged_roots() -> tuple:
-    """Charges of the off-diagonal SU(3) roots w.r.t. a lambda_8 background.
+    """Charges of the off-diagonal SU(3) roots w.r.t. a lambda_3 background.
 
     (1, 1/2, 1/2) in units of gH: the E_12 root sees the full field, E_13 and
     E_23 see half (Cea arXiv:2311.14791, three tachyonic sectors).
@@ -107,7 +104,7 @@ def su3_charged_roots() -> tuple:
 
 
 def su3_one_loop_potential(gH, mu2):
-    """SU(3) one-loop potential in a lambda_8 background: one SU(2)-like
+    """SU(3) one-loop potential in a lambda_3 background: one SU(2)-like
     complex charged vector per root with charge q, V_q = C (q gH)^2
     [ln(q gH / mu2) - 1/2]."""
     from substrate_framework.chromomagnetic_background import one_loop_log_coefficient

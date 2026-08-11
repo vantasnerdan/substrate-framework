@@ -6,8 +6,7 @@ pinned at proposals/P229-preparata-qcd-vacuum-audit/sources/ (md5
 paper from its clearest textual statement (the 1986 scan garbles displayed
 equations, so nothing is transcribed from OCR as ground truth); every claim
 is checked by SymPy from the encoded inputs, and cross-checked against the
-independently verified primitives chromomagnetic_background (#51) and
-chromomagnetic_two_loop (#52).
+independently verified primitive chromomagnetic_background (#51).
 
 Claims under test:
   (1.2)  fluctuation spectrum and the unstable sector;
@@ -123,7 +122,7 @@ def variational_1985_divergence():
 
 
 # ---------------------------------------------------------------------------
-# Cross-checks against the independently verified primitives (#51, #52)
+# Cross-checks against the independently verified primitive (#51)
 # ---------------------------------------------------------------------------
 
 

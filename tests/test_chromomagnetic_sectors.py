@@ -57,7 +57,7 @@ def test_su3_roots_three_tachyonic_sectors():
 
 
 def test_su3_potential_log_coefficient():
-    """SU(3) lambda_8 background: the (gH)^2 ln(gH) coefficient is 3C/2 —
+    """SU(3) lambda_3 background: the (gH)^2 ln(gH) coefficient is 3C/2 —
     one full-charge root plus two half-charge roots."""
     gH, mu2 = sp.symbols("gH mu2", positive=True)
     v = cs.su3_one_loop_potential(gH, mu2)
@@ -88,3 +88,17 @@ def test_verdict_structure():
     v = cs.stability_verdict()
     assert v["verdict"].startswith("unstable")
     assert v["fluctuation_tachyon"].startswith("E^2")
+
+
+def test_su3_root_charges_from_cartan_matrices():
+    """The root charges must follow from the Cartan generator itself: with
+    T3 = diag(1,-1,0)/2 the E_ij charge is t_ii - t_jj -> (1, 1/2, 1/2) in
+    magnitude (lambda_3 background); T8 = diag(1,1,-2)/(2 sqrt(3)) would give
+    (0, sqrt(3)/2, sqrt(3)/2) — guards the generator label against drift."""
+    t3 = sp.diag(1, -1, 0) / 2
+    t8 = sp.diag(1, 1, -2) / (2 * sp.sqrt(3))
+    pairs = [(0, 1), (0, 2), (1, 2)]
+    q3 = sorted(abs(t3[i, i] - t3[j, j]) for i, j in pairs)
+    q8 = sorted(abs(sp.simplify(t8[i, i] - t8[j, j])) for i, j in pairs)
+    assert q3 == sorted(cs.su3_charged_roots())
+    assert q8 != q3  # mutation guard: the lambda_8 pattern is NOT ours
