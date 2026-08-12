@@ -6,6 +6,7 @@ import pytest
 
 from substrate_framework import chromomagnetic_sectors as cs
 from substrate_framework.chromomagnetic_two_loop import b, g
+from substrate_framework.su3 import fundamental_generators
 
 
 # ---------------------------------------------------------------------------
@@ -95,8 +96,9 @@ def test_su3_root_charges_from_cartan_matrices():
     T3 = diag(1,-1,0)/2 the E_ij charge is t_ii - t_jj -> (1, 1/2, 1/2) in
     magnitude (lambda_3 background); T8 = diag(1,1,-2)/(2 sqrt(3)) would give
     (0, sqrt(3)/2, sqrt(3)/2) — guards the generator label against drift."""
-    t3 = sp.diag(1, -1, 0) / 2
-    t8 = sp.diag(1, 1, -2) / (2 * sp.sqrt(3))
+    generators = fundamental_generators()
+    t3 = generators[2]
+    t8 = generators[7]
     pairs = [(0, 1), (0, 2), (1, 2)]
     q3 = sorted(abs(t3[i, i] - t3[j, j]) for i, j in pairs)
     q8 = sorted(abs(sp.simplify(t8[i, i] - t8[j, j])) for i, j in pairs)

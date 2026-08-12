@@ -1212,6 +1212,7 @@ from .flux_tube_ensemble import (
     tube_transverse_pressure,
 )
 from .chromomagnetic_background import (
+    SU2ChromomagneticBetaBridge,
     charged_ghost_mass2,
     charged_vector_mass2,
     heat_kernel_series_coefficients,
@@ -1225,6 +1226,7 @@ from .chromomagnetic_background import (
     one_loop_potential_zeta,
     savvidy_minimum,
     spin_generator_12,
+    su2_chromomagnetic_beta_bridge,
     total_potential,
 )
 from .lattice_gauge import (
@@ -1969,6 +1971,7 @@ __all__ = [
     "cycle_holonomy",
     "dirichlet_beta",
     "dual_s_sum",
+    "SU2ChromomagneticBetaBridge",
     "charged_ghost_mass2",
     "charged_vector_mass2",
     "epstein_square",
@@ -1993,6 +1996,7 @@ __all__ = [
     "regulated_mode_sum_difference",
     "savvidy_minimum",
     "spin_generator_12",
+    "su2_chromomagnetic_beta_bridge",
     "total_potential",
     "transition_matrices",
     "tube_longitudinal_pressure",

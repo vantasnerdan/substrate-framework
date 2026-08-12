@@ -26,25 +26,54 @@ promotion (AGENTS_START_HERE.md section 7).
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 import numpy as np
 import sympy as sp
 from scipy.integrate import quad
+
+from .gauge_beta import GaugeFactor, product_gauge_coefficients
+from .su2_doublets import su2_fundamental_ledger
+
+
+@dataclass(frozen=True)
+class SU2ChromomagneticBetaBridge:
+    """Exact map between one SU(2) background coefficient and C-RGE-005.
+
+    The beta entry uses ``mu*dg/dmu=b*g**3/(16*pi**2)``.  The background
+    potential uses ``b_field=g*B`` and
+    ``V=b_field**2/(2*g**2)+C*b_field**2*log(b_field/mu**2)+...``.  At fixed
+    ``b_field``, one-loop RG invariance therefore requires
+    ``C=-b/(32*pi**2)``.  This record is a typed special-case bridge, not a
+    derivation of the general group or matter weights imported by C-RGE-005.
+    """
+
+    adjoint_casimir: sp.Expr
+    beta_one_loop_gauge: sp.Expr
+    background_log_coefficient: sp.Expr
+    beta_implied_log_coefficient: sp.Expr
+    tree_scale_derivative_coefficient: sp.Expr
+    loop_scale_derivative_coefficient: sp.Expr
+    rg_scale_residual: sp.Expr
+    beta_convention: str
+    background_potential_convention: str
+
 
 # ---------------------------------------------------------------------------
 # Spectrum encoders (algebraic claims; the operator discretization is the oracle)
 # ---------------------------------------------------------------------------
 
 
-def charged_vector_mass2(gB: float, n: int, s3: int, pz2: float = 0.0) -> float:
+def charged_vector_mass2(gB: float, n: int, s3: int, pz2: float = 0) -> float:
     """Squared eigenvalue of a charged vector mode: pz2 + gB(2n+1) - 2 gB s3."""
     if n < 0:
         raise ValueError("Landau level n must be >= 0")
     if s3 not in (+1, 0, -1):
         raise ValueError("s3 must be +1, 0, or -1")
-    return pz2 + gB * (2 * n + 1) - 2.0 * gB * s3
+    return pz2 + gB * (2 * n + 1) - 2 * gB * s3
 
 
-def charged_ghost_mass2(gB: float, n: int, pz2: float = 0.0) -> float:
+def charged_ghost_mass2(gB: float, n: int, pz2: float = 0) -> float:
     """Squared eigenvalue of a charged ghost (complex scalar) mode."""
     if n < 0:
         raise ValueError("Landau level n must be >= 0")
@@ -208,6 +237,82 @@ def one_loop_log_coefficient() -> sp.Rational:
     return heat_kernel_series_coefficients(2)[2] / (4 * sp.pi) ** 2
 
 
+def _su2_adjoint_casimir_from_fundamental() -> sp.Expr:
+    """Derive ``C_A=2`` from the accepted Pauli-half generator matrices."""
+
+    generators = su2_fundamental_ledger().generators
+    structure_constants = sp.MutableDenseNDimArray.zeros(3, 3, 3)
+    for a in range(3):
+        for b_index in range(3):
+            commutator = (
+                generators[a] * generators[b_index]
+                - generators[b_index] * generators[a]
+            )
+            for c in range(3):
+                structure_constants[a, b_index, c] = sp.simplify(
+                    -2 * sp.I * sp.trace(commutator * generators[c])
+                )
+    adjoint_generators = tuple(
+        sp.ImmutableMatrix(
+            3,
+            3,
+            lambda b_index, c: -sp.I * structure_constants[a, b_index, c],
+        )
+        for a in range(3)
+    )
+    casimir_matrix = sp.simplify(
+        sum(
+            (generator * generator for generator in adjoint_generators),
+            sp.zeros(3),
+        )
+    )
+    if casimir_matrix != casimir_matrix[0, 0] * sp.eye(3):
+        raise AssertionError("SU(2) adjoint Casimir is not scalar")
+    return sp.simplify(casimir_matrix[0, 0])
+
+
+def su2_chromomagnetic_beta_bridge() -> SU2ChromomagneticBetaBridge:
+    """Return the exact pure-SU(2) beta/background coefficient bridge.
+
+    This composes the Pauli-half matrices supporting C-REP-002 with the
+    supplied-Casimir beta convention accepted in C-RGE-005.  It independently
+    compares that typed RG coefficient with the P229 heat-kernel result.  It
+    does not infer the general ``-11*C_A/3`` weight from the background
+    calculation or identify a physical substrate gauge sector.
+    """
+
+    adjoint_casimir = _su2_adjoint_casimir_from_fundamental()
+    beta_ledger = product_gauge_coefficients(
+        (GaugeFactor("SU2", adjoint_casimir),)
+    )
+    beta_coefficient = beta_ledger.one_loop_gauge[0]
+    background_coefficient = one_loop_log_coefficient()
+    beta_implied = sp.simplify(-beta_coefficient / (32 * sp.pi**2))
+
+    # Coefficients of b_field**2 in dV/dlog(mu) at fixed b_field.  The tree
+    # contribution follows from d(1/g**2)/dlog(mu)=-2*beta(g)/g**3, while
+    # d log(b_field/mu**2)/dlog(mu)=-2 for the loop term.
+    tree_scale_derivative = sp.simplify(-beta_coefficient / (16 * sp.pi**2))
+    loop_scale_derivative = sp.simplify(-2 * background_coefficient)
+    residual = sp.simplify(tree_scale_derivative + loop_scale_derivative)
+    if sp.simplify(background_coefficient - beta_implied) != 0 or residual != 0:
+        raise AssertionError("SU(2) beta/background coefficient bridge did not close")
+    return SU2ChromomagneticBetaBridge(
+        adjoint_casimir=adjoint_casimir,
+        beta_one_loop_gauge=beta_coefficient,
+        background_log_coefficient=background_coefficient,
+        beta_implied_log_coefficient=beta_implied,
+        tree_scale_derivative_coefficient=tree_scale_derivative,
+        loop_scale_derivative_coefficient=loop_scale_derivative,
+        rg_scale_residual=residual,
+        beta_convention=beta_ledger.beta_convention,
+        background_potential_convention=(
+            "b_field=g*B; V=b_field**2/(2*g**2) + "
+            "C*b_field**2*log(b_field/mu**2) + ...; fixed b_field"
+        ),
+    )
+
+
 def one_loop_potential_msbar(gB, mu2):
     """V1(B) - V1(0) in MS-bar: C (gB)^2 [ln(gB/mu2) - 1/2]."""
     c = one_loop_log_coefficient()
@@ -233,10 +338,13 @@ def savvidy_minimum(g, mu2):
 
 
 def minimum_at_lambda_scale(g) -> sp.Expr:
-    """Scheme-independent content: with one-loop running b0 = 22/3 (SU(2)),
+    """Return the minimum/scale exponent ratio in one declared scheme.
 
-    1/g^2(mu) = (b0/8 pi^2) ln(mu/Lambda), the minimum sits at gB_min = Lambda^2.
-    Returns the exact exponent ratio ln(gB_min/mu2) / ln(Lambda^2/mu2) = 1.
+    With ``1/g^2(mu)=(b0/8 pi^2) ln(mu/Lambda)`` and ``b0=22/3``, the
+    minimum sits at ``gB_min=Lambda**2`` and the returned exponent ratio is
+    one.  The identity requires the same coupling and Lambda definition on
+    both sides; the numerical value of Lambda is renormalization-scheme
+    dependent.
     """
     mu, lam = sp.symbols("mu Lambda", positive=True)
     b0 = sp.Rational(22, 3)

@@ -134,3 +134,15 @@ def test_rg_improved_two_loop_coefficients():
     coef_d = sp.simplify((w_d - c2.rg_improved_potential("none")) * sp.log(x) / x**2)
     assert sp.simplify(coef_p - 3 * sp.log(2) ** 2 / (176 * sp.pi**2)) == 0
     assert sp.simplify(coef_d - 9 * (sp.log(2) ** 2 - sp.pi**2) / (704 * sp.pi**2)) == 0
+
+
+def test_rg_improved_two_loop_expression_is_singular_at_one_loop_minimum():
+    """The running-coupling substitution cannot define a corrected x=1 minimum."""
+    x = sp.symbols("x", positive=True)
+    derived = c2.rg_improved_potential("derived")
+    printed = c2.rg_improved_potential("printed")
+
+    assert sp.limit(derived, x, 1, dir="-") == sp.oo
+    assert sp.limit(derived, x, 1, dir="+") == -sp.oo
+    assert sp.limit(printed, x, 1, dir="-") == -sp.oo
+    assert sp.limit(printed, x, 1, dir="+") == sp.oo

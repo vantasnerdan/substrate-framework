@@ -163,7 +163,7 @@ def minimum_exponent(w_total) -> sp.Expr:
 
 
 def rg_improved_potential(two_loop: str = "derived"):
-    """W/Lambda^4 as a function of x = b/Lambda^2, one-loop running coupling.
+    """Formal W/Lambda^4 expression with one-loop running substituted.
 
     One-loop running for SU(2), b0 = 22/3: 1/g^2(mu) = (b0/8 pi^2) ln(mu/Lambda).
     Setting mu^2 = b (RG improvement) turns the tree term into
@@ -172,8 +172,12 @@ def rg_improved_potential(two_loop: str = "derived"):
         W/Lambda^4 = (11/(48 pi^2)) x^2 [ln x - 1/2] + (two-loop) x^2 / ln x
 
     with the two-loop coefficient 3 ln^2 2 /(176 pi^2) (printed) or
-    9 (ln^2 2 - pi^2)/(704 pi^2) (derived) — see tests.  One-loop minimum at
-    x = 1 exactly: b_min = Lambda^2 (Savvidy's scheme-independent statement).
+    9 (ln^2 2 - pi^2)/(704 pi^2) (derived) — see tests.  For a nonzero
+    two-loop coefficient this expression is defined only for ``x>0, x!=1``
+    and has opposite-sign infinite one-sided limits at the one-loop minimum
+    ``x=1``.  It therefore supplies neither a global two-loop potential nor a
+    corrected minimum.  The ``two_loop='none'`` expression retains the exact
+    one-loop minimum at ``x=1`` in the declared Lambda scheme.
     """
     x = sp.symbols("x", positive=True)
     one_loop = sp.Rational(11, 1) / (48 * sp.pi**2) * x**2 * (sp.log(x) - sp.Rational(1, 2))
