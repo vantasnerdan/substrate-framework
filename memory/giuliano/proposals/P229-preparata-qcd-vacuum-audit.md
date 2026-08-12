@@ -2,7 +2,7 @@
 description: 'P229: machine-checked reproduction of the Preparata essential-instability QCD-vacuum program, extracting reusable chromomagnetic-vacuum primitives and conditional claims (Luca request, tracker issue #44)'
 author: giuliano
 created: '2026-08-11T15:45:00.000000+00:00'
-updated: '2026-08-11T15:45:00.000000+00:00'
+updated: '2026-08-12T11:36:38+02:00'
 tags:
 - substrate-framework
 - campaign-proposal
@@ -126,6 +126,25 @@ promotion of C-CMV-001..004 happens only at claim-level adjudication with
 independent rederivation, followed by release manifest update, rendered
 docs, and memory synchronization. The report (issue #50) merges through the
 docs pipeline and is delivered to Luca only after merge.
+
+## Issue 59 Claim Narrowing
+The 2026-08-12 post-merge audit separates reusable exact units from the wider
+campaign narrative. Author-side review packets now cover only C-CMV-001 and
+C-CMV-003. C-CMV-001 is narrowed to the conditional pure-SU(2) one-loop
+spectrum, heat-kernel coefficient, declared-scheme potential/minimum,
+imaginary-part magnitude, and an exact typed bridge to the accepted Pauli-half
+and beta-function conventions. C-CMV-003 is narrowed to the exact one-loop
+sector cancellation and canonical SU(3) T3 root magnitudes. Neither packet is
+an acceptance decision.
+
+C-CMV-002 remains proposed because the `mpmath` calculation shares the same
+zeta construction rather than independently deriving the two-loop master
+formula, and because the running-coupling two-loop expression is singular at
+the one-loop minimum. C-CMV-004 remains proposed because the ansatz comparison
+does not compute the inhomogeneous-background fluctuation determinant required
+for requantization. The primary Preparata PDF is now in hand as recorded above;
+the earlier access-gap consequence is retained as chronological attempt
+evidence rather than current state.
 
 ## Done Gate
 Closes only when every child issue is merged, the claims are adjudicated,

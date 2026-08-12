@@ -2,7 +2,9 @@
 
 Conditional, unpromoted primitive (P229, issues #47 and #48). Decomposes the
 one-loop fluctuation determinant around the SU(2) Savvidy background into its
-physical sectors and records the stability verdict.
+physical sectors.  The one-loop sector accounting is exact; the structured
+stability summary also reports conditional P229 two-loop/literature results
+that are not part of the narrow C-CMV-001/C-CMV-003 promotion candidates.
 
 Sectors (background Feynman gauge, one SU(2) Cartan background):
 
@@ -18,19 +20,14 @@ entire one-loop logarithm is carried by the two transverse spin sectors,
 each contributing b2/2 = 11/6 to the heat-kernel coefficient.
 
 SU(3) color decomposition: a Cartan background along lambda_3 has charged
-roots with charges (1, 1/2, 1/2) in units of g H (Cea's three tachyonic
-sectors, arXiv:2311.14791); each root contributes one SU(2)-like complex
-charged vector with its own q g H.
+roots with charges (1, 1/2, 1/2) in units of g H, derived from the canonical
+``T_3=lambda_3/2`` generator supporting C-LIE-001; each root contributes one
+SU(2)-like complex charged vector with its own q g H.
 
-Stability verdict (issue #47): the Savvidy minimum is not stable against
-fluctuations. For every b > 0 the n=0, s3=+1 level is tachyonic; Im V is
-nonzero at one loop (b^2/(8 pi)) and at two loops (from the complex square
-(3 g^2/2) B2^2, Im = -3 g^2 b^2 ln 2/(256 pi^3)); Bordag-Skalozub
-(arXiv:2112.01043) show the ring resummation that removes the one-loop
-imaginary part is insufficient at two loops, so no perturbative stability
-verdict exists at this order. Preparata's "essential instability" (Nuovo
-Cim. A 96 (1986) 366) is the same statement at the variational level; his
-full text is paywalled and only the abstract-level claim is cited.
+At one loop, every b > 0 has the n=0, s3=+1 tachyon and the exact imaginary
+part magnitude b^2/(8 pi).  P229 also records a conditional two-loop result
+and literature interpretation, but those require separate review and are not
+promoted by exposing this module.
 
 This module is conditional infrastructure; presence here implies no claim
 promotion (AGENTS_START_HERE.md section 7).
@@ -40,8 +37,9 @@ from __future__ import annotations
 
 import sympy as sp
 
-from substrate_framework.chromomagnetic_background import nielsen_olesen_imaginary_part
-from substrate_framework.chromomagnetic_two_loop import B2_tadpole, b, g
+from .chromomagnetic_background import nielsen_olesen_imaginary_part
+from .chromomagnetic_two_loop import B2_tadpole, b, g
+from .su3 import fundamental_generators
 
 # ---------------------------------------------------------------------------
 # Per-sector proper-time factors
@@ -97,10 +95,15 @@ def transverse_share_of_log() -> sp.Rational:
 def su3_charged_roots() -> tuple:
     """Charges of the off-diagonal SU(3) roots w.r.t. a lambda_3 background.
 
-    (1, 1/2, 1/2) in units of gH: the E_12 root sees the full field, E_13 and
-    E_23 see half (Cea arXiv:2311.14791, three tachyonic sectors).
+    The values are computed from the canonical ``T_3=lambda_3/2`` matrix:
+    the E_12 root sees the full field, while E_13 and E_23 see half.
     """
-    return (sp.Integer(1), sp.Rational(1, 2), sp.Rational(1, 2))
+    t3 = fundamental_generators()[2]
+    pairs = ((0, 1), (0, 2), (1, 2))
+    return tuple(
+        sp.simplify(abs(t3[first, first] - t3[second, second]))
+        for first, second in pairs
+    )
 
 
 def su3_one_loop_potential(gH, mu2):
@@ -137,7 +140,11 @@ def im_v_two_loop():
 
 
 def stability_verdict() -> dict:
-    """Structured stability statement for the Savvidy configuration."""
+    """Return P229's mixed one-/two-loop stability summary.
+
+    This reporting helper includes conditional two-loop literature results.
+    It is not the verifier for the narrower one-loop promotion candidates.
+    """
     return {
         "classical_minimum_exists": True,
         "fluctuation_tachyon": "E^2 = p_z^2 - gB < 0 for p_z^2 < gB, every gB > 0",

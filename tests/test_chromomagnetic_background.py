@@ -16,6 +16,7 @@ import sympy as sp
 import pytest
 
 from substrate_framework import chromomagnetic_background as cb
+from substrate_framework.gauge_beta import GaugeFactor, product_gauge_coefficients
 
 
 # ---------------------------------------------------------------------------
@@ -50,6 +51,9 @@ def test_algebraic_spectrum_matches_encoder():
     assert cb.charged_vector_mass2(1.3, 0, +1) == pytest.approx(-1.3)
     assert cb.charged_vector_mass2(1.3, 2, -1, pz2=0.4) == pytest.approx(0.4 + 1.3 * 5 + 2.6)
     assert cb.charged_ghost_mass2(1.3, 0) == pytest.approx(1.3)
+    gB = sp.Symbol("gB", positive=True)
+    assert cb.charged_vector_mass2(gB, 0, +1) == -gB
+    assert cb.charged_ghost_mass2(gB, 0) == gB
 
 
 def test_mutation_spin_term_breaks_tachyon():
@@ -71,6 +75,53 @@ def test_heat_kernel_b2_is_11_over_3():
 
 def test_heat_kernel_b4_exact():
     assert cb.heat_kernel_series_coefficients(4)[4] == sp.Rational(127, 180)
+
+
+def test_su2_beta_background_bridge_closes_exactly():
+    bridge = cb.su2_chromomagnetic_beta_bridge()
+
+    assert bridge.adjoint_casimir == 2
+    assert bridge.beta_one_loop_gauge == sp.Rational(-22, 3)
+    assert bridge.background_log_coefficient == 11 / (48 * sp.pi**2)
+    assert bridge.beta_implied_log_coefficient == 11 / (48 * sp.pi**2)
+    assert bridge.tree_scale_derivative_coefficient == 11 / (24 * sp.pi**2)
+    assert bridge.loop_scale_derivative_coefficient == -11 / (24 * sp.pi**2)
+    assert bridge.rg_scale_residual == 0
+    assert "mu*dg_a/dmu" in bridge.beta_convention
+    assert "fixed b_field" in bridge.background_potential_convention
+
+
+def test_su2_beta_background_bridge_is_mutation_sensitive():
+    bridge = cb.su2_chromomagnetic_beta_bridge()
+
+    # Independent adjoint construction from epsilon_abc, rather than the
+    # fundamental traces used by the bridge implementation.
+    adjoint = tuple(
+        sp.Matrix(
+            3,
+            3,
+            lambda row, column: -sp.I * sp.LeviCivita(a, row, column),
+        )
+        for a in range(3)
+    )
+    casimir = sum((generator**2 for generator in adjoint), sp.zeros(3))
+    assert casimir == 2 * sp.eye(3)
+    assert casimir[0, 0] == bridge.adjoint_casimir
+
+    wrong_casimir_beta = product_gauge_coefficients(
+        (GaugeFactor("mutated", sp.Integer(3)),)
+    ).one_loop_gauge[0]
+    assert -wrong_casimir_beta / (32 * sp.pi**2) != (
+        bridge.background_log_coefficient
+    )
+    assert (
+        -bridge.beta_one_loop_gauge / (16 * sp.pi**2)
+        - bridge.background_log_coefficient
+    ) != 0  # mutation: log(b_field/mu), rather than log(b_field/mu**2)
+    assert (
+        bridge.beta_one_loop_gauge / (16 * sp.pi**2)
+        + bridge.loop_scale_derivative_coefficient
+    ) != 0  # mutation: reverse the beta-function sign
 
 
 def test_ghost_cancellation_leaves_pure_spin():

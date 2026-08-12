@@ -2,7 +2,7 @@
 description: Extract exact einbein worldline and Lorentz geometry atoms into claim-ready framework APIs
 author: codex
 created: '2026-08-11T14:14:03+02:00'
-updated: '2026-08-11T14:34:28+02:00'
+updated: '2026-08-12T11:36:38+02:00'
 tags:
 - substrate-framework
 - campaign-proposal
@@ -51,7 +51,7 @@ Attempts are append-only; the first implementation attempt begins only after thi
 The einbein action and positive massive elimination, massless specialization, reparametrization/constant-e gauge/Hamiltonian family, and narrow worldline Weyl identity are implemented as claim-ready exact ledgers under `relativistic_particle.py`. The H2/H3 future-unit-timelike-vector orbit geometry is integrated by dimensionally generalizing the existing unpromoted `lorentz_orbits.py`, while coordinate Christoffel and Ricci construction is refactored into `pseudo_riemannian.py` and replayed through the existing covariant sine-Gordon wrappers. The displayed massive and massless little-group matrices and commutators are harvested narrowly in `lorentz_little_groups.py`. Printed Christoffel tables remain tutorial regression/documentation rather than a new scientific claim. Representation-classification, helicity, parity, anyon, continuous-spin, photon, graviton, Maxwell/Yang-Mills conformal, and substrate interpretations remain only cited tutorial narrative and PR history; they are neither encoded nor proposed for promotion here.
 
 ## Verification Results
-The proposal verifier executes 13 exact checks, including explicit rejection of wrong mass-term and little-group signs. The affected targeted replay passes 89 tests across the new canonical modules, both tutorial consumers, Lorentz orbits, and the covariant sine-Gordon geometry consumer. GitNexus reports low integration risk, no affected execution processes, and only the expected touched geometry/tutorial symbols; the new files are covered directly because the pre-change index cannot map previously nonexistent symbols. `scripts/validate.sh --full` passed all fixed workflow checks and all 2,126 repository tests in 230.50 seconds. A final review then repaired concrete-numeric einbein elimination without changing the symbolic result; the final boundary passed all fixed checks plus the 60 directly affected worldline and tutorial tests.
+The proposal verifier originally executed 13 exact checks, including explicit rejection of wrong mass-term and little-group signs. The affected targeted replay passed 89 tests across the new canonical modules, both tutorial consumers, Lorentz orbits, and the covariant sine-Gordon geometry consumer. GitNexus reported low integration risk, no affected execution processes, and only the expected touched geometry/tutorial symbols; the new files were covered directly because the pre-change index could not map previously nonexistent symbols. `scripts/validate.sh --full` passed all fixed workflow checks and all 2,126 repository tests in 230.50 seconds. A final review then repaired concrete-numeric einbein elimination without changing the symbolic result; that boundary passed all fixed checks plus the 60 directly affected worldline and tutorial tests. The issue #59 pass adds a fourteenth exact check for the positive local constant-e gauge rate and narrows the massive Weyl check to distinguish `Omega=1` from a nontrivial rescaling.
 
 ## Debt Ledger
 This ledger tracks new imports, convention conflicts, unresolved verifier sensitivity, broken consumers, and unsupported interpretation inside the proposed harvest. It remains empty after targeted implementation replay; the proposal deliberately retains claim adjudication as campaign frontier rather than misclassifying it as artifact debt.
@@ -61,6 +61,16 @@ This ledger tracks new imports, convention conflicts, unresolved verifier sensit
 
 ## Review and Promotion Plan
 A distinct agent will review the PR claim by claim using the raw APIs, exact tests, mutations, and affected-consumer replay. The author PR leaves `governance/claims.yaml`, releases, generated docs, accepted memory, and immutable campaigns unchanged. If the reviewer accepts any proposed claim, promotion must be a separate complete governance transaction with adjudication evidence, registry/release closure, generated documentation, accepted-memory synchronization, and full validation. Rejected or narrowed claims retain their provisional identifiers and proposal history.
+
+## Issue 59 Review Integration
+The 2026-08-12 integration pass created one author-side review request for each
+of C-WLN-001, C-WLN-002, C-WLN-003, C-LOR-001, and C-LOR-002. The packets
+state exact domains and exclusions rather than accepting the claims. In
+particular, the constant-e construction is local for smooth positive einbein
+unless global interval coverage is separately shown, and the massive Weyl
+term is an obstruction only for nonidentity positive rescalings. The P227
+verifier now checks those distinctions directly. Issue #59 remains open for a
+distinct review and any later governance transaction.
 
 ## Done Gate
 The harvest PR is ready only when the importable objects exist, the exact and mutation oracles pass, affected consumers replay, the public API and convention maps are documented, repository validation succeeds, and debt inside the harvest boundary is empty. The scientific campaign remains active until an independent review either promotes or rejects each provisional claim; merge provenance alone is not completion.

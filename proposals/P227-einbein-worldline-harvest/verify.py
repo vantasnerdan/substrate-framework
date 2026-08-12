@@ -13,6 +13,7 @@ from substrate_framework.lorentz_orbits import (
     unit_timelike_vector_orbit_metric,
 )
 from substrate_framework.relativistic_particle import (
+    constant_e_gauge_rate,
     einbein_hamiltonian_ledger,
     massive_einbein_ledger,
     massive_mass_term_weyl_change,
@@ -26,8 +27,8 @@ from substrate_framework.verification import CheckLedger
 def run() -> int:
     checks = CheckLedger("P227/worldline-harvest")
     sigma = sp.Symbol("sigma", negative=True)
-    e, mass, speed, rate, omega = sp.symbols(
-        "e mass speed rate omega", positive=True
+    e, target, mass, speed, rate, omega = sp.symbols(
+        "e target mass speed rate omega", positive=True
     )
     massive = massive_einbein_ledger(sigma, e, mass, speed)
     expected_root = sp.sqrt(-sigma) / (mass * speed)
@@ -64,9 +65,15 @@ def run() -> int:
         == 0,
     )
     checks.check(
-        "massless Weyl residual vanishes while the massive term changes",
+        "positive local rate attains a declared constant-e gauge",
+        constant_e_gauge_rate(e, target).is_positive is True
+        and sp.simplify(e / constant_e_gauge_rate(e, target) - target) == 0,
+    )
+    checks.check(
+        "massless Weyl identity and nontrivial massive obstruction are separated",
         massless_worldline_weyl_residual(sigma, e, omega) == 0
-        and massive_mass_term_weyl_change(e, mass, speed, omega) != 0,
+        and massive_mass_term_weyl_change(e, mass, speed, 1) == 0
+        and massive_mass_term_weyl_change(e, mass, speed, 2) != 0,
     )
 
     momentum = sp.Matrix(sp.symbols("p0:3", real=True))

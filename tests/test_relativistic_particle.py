@@ -94,7 +94,8 @@ def test_reparametrization_affine_gauge_and_weyl_transformations() -> None:
     assert sp.simplify(wrong_reparametrized - original) != 0
     wrong_weyl_weight = omega**2 * sigma / (2 * omega * e)
     assert sp.simplify(wrong_weyl_weight - sigma / (2 * e)) != 0
-    assert massive_mass_term_weyl_change(e, mass, speed, omega) != 0
+    assert massive_mass_term_weyl_change(e, mass, speed, 1) == 0
+    assert massive_mass_term_weyl_change(e, mass, speed, 2) != 0
 
 
 @pytest.mark.parametrize("dimension", [3, 4])
