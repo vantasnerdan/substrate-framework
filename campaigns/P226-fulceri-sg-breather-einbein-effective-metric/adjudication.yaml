@@ -84,3 +84,45 @@ open_questions:
   cross-references.'
 - (open) Should the Christoffel-symbols evidence (verifier S12/S13) be cited as part of the C-OG-006 evidence rather than
   as a separate gate? Likely yes, but this is a reviewer decision.
+dimensional_peer_review_findings:
+  tool: campaigns/P226-fulceri-sg-breather-einbein-effective-metric/dimensional_validation.py
+  dimension_basis: (M, L, T) per substrate-framework C-OG-001/C-OG-002 convention
+  summary: 5/9 checks passed; 1 provably false sign error; 3 dimensional inconsistencies requiring author clarification
+  provably_false:
+  - paper_equation: 'eq (105): v = V +/- c0/n (massless null constraint)'
+    sympy_finding: Null constraint g_munu xdot^mu xdot^nu = 0 with metric (69) and t_dot = 1 yields v = -V +/- c0/n (sign-flipped
+      from paper).
+    impact: Paper's massless null-speed formula is OFF BY A SIGN on V. The substrate_metric module correctly implements -V
+      +/- c0/n; the substrate_metric test_flowing_metric_massless_speeds_match_paper test compares against the corrected form,
+      so the substrate-side verifier is unaffected. The paper needs a sign correction at eq (105).
+  dimensional_inconsistencies:
+  - paper_equation: 'eq (12): E0 = 16 * (mu0^2 c0 / omega0) * sqrt(1 - alpha^2)'
+    sympy_finding: Prefactor mu0^2 c0 / omega0 has units of 1/length (L^-1) under standard sine-Gordon mu0 = 1/length, not
+      energy units (M L^2 T^-2).
+    impact: 'Paper does not state explicit dimensional convention for mu0. Possible fixes: redefine mu0 with energy-density
+      dimensions, or include an additional c0^2 factor.'
+  - paper_equation: 'eq (14): P = gamma (v/c0) E0'
+    sympy_finding: P as written has energy units [M L^2 T^-2], not momentum units [M L T^-1]. Lorentz momentum form should
+      be P = gamma (v/c0^2) E0 = gamma m v with m = E0/c0^2.
+    impact: Likely typo in paper (missing one factor of c0 in denominator).
+  - paper_equation: 'eq (69): flowing effective metric components'
+    sympy_finding: 'Metric components mix three dimensional conventions: g_tt [L^2 T^-2], g_tX [L T^-1], g_XX [dimensionless].
+      Paper does not state explicit c0-scaling convention.'
+    impact: Scaling ambiguity. Either all components should be dimensionless (g_tt divided by c0^2, g_tX by c0) or the paper
+      uses a mixed convention. The algebraic identities (det g = -c0^2, massless speeds) are independent of this scaling ambiguity.
+  algebraically_correct_sympy_confirmed:
+  - 'eq (19): k_dB = alpha gamma omega0 v / c0^2 has 1/L units'
+  - 'eq (20): P = hbar_eff k_dB has momentum units'
+  - 'eq (61-62): rho_0 * Theta_0 has impedance^2 units'
+  - 'eq (96): det g = -c0^2 algebraically'
+  passed_gates:
+  - D2 (E branch)
+  - D3
+  - D4
+  - D5
+  - D7
+  failed_or_warn_gates:
+  - D1
+  - D2 (P branch)
+  - D6
+  - D8
