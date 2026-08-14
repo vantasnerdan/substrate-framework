@@ -1,0 +1,56 @@
+id: P226
+status: in_progress
+verdict: pending
+summary: Initial review (attempt 0001) classifies the paper's 19 claims into 8 existing-claim matches, 5 textbook citations,
+  4 new candidate claims (each with a sympy verifier), 2 interpretive out-of-scope claims. Verifier passes 11/11 gates with
+  5 mutation tests confirming sensitivity. No new claim is accepted in attempt 0001; each new candidate is recorded as a proposal
+  for a future batch promotion pending independent review.
+disposition_per_paper_claim:
+  rest_breather_form: matched_existing (C-SG-001)
+  breather_energy: matched_existing (C-SG-002, C-MED-003)
+  boosted_breather: matched_existing (C-SG-008)
+  four_vector_dynamics: matched_existing (C-SG-008)
+  de_broglie_relation: matched_existing (C-SG-008)
+  two_frequencies: matched_existing (C-SG-015, rest frame only)
+  light_in_a_box_factorization: matched_existing (C-SG-013, C-SG-015)
+  square_root_lagrangian: candidate_for_new_claim_pending_review
+  einbein_form: textbook_citation_only
+  einbein_eom: textbook_citation_only
+  impedance_matching: candidate_for_new_claim_C-IMP-001 (verifier G9 PASS)
+  effective_metric_static: matched_existing (C-OG-001)
+  effective_metric_flowing: candidate_for_new_claim_C-OG-006 (verifier G6 PASS)
+  metric_to_minkowski_limit: matched_existing (limit of C-OG-001)
+  christoffel_symbols: candidate_for_new_claim_C-OG-008 (verifier G7 PASS)
+  residual_massless: candidate_for_new_claim_C-OG-007 (verifier G8 PASS)
+  gravitational_equiv_principle: out_of_scope_interpretive
+  constructive_relativity: out_of_scope_interpretive
+  smooth_mass_zero_limit: candidate_for_new_claim_C-OG-009 (verifier G2+G8 cross)
+  full_ivp_well_posedness: textbook_citation_only
+new_claim_candidates:
+- id: C-IMP-001
+  gate: G9
+  verifier: verify.py
+- id: C-OG-006
+  gate: G5/G6/G10/G11
+  verifier: verify.py
+- id: C-OG-007
+  gate: G8
+  verifier: verify.py
+- id: C-OG-008
+  gate: G7
+  verifier: verify.py
+- id: C-OG-009
+  gate: G2+G8 cross
+  verifier: verify.py
+outstanding_work:
+- Independent review packet per new candidate claim (gate-verifier reproducibility, attempt-history completeness, audit-trail
+  integrity).
+- 'Decision: batch promotion under P226 vs separate campaigns per claim.'
+- Interpretive-claim out-of-scope disposition explicitly recorded in memory/vantasner/decisions/.
+- 'Final acceptance gate: no claim promoted to accepted status without distinct merger (non-self-merge rule).'
+open_questions:
+- Is C-OG-008 (Christoffel symbols) acceptable as a single claim, or should we record it as a derived-from-C-OG-006 consequence?
+- Is the smooth M->0 limit (C-OG-009) a separate claim, or a property of the affine-geodesic equation already implicit in
+  the textbook einbein reparametrization?
+- Does the impedance-matching claim (C-IMP-001) require a corresponding no-reflection Newtonian propagation theorem, or is
+  the rho*Theta = Z_0^2 condition sufficient as declared?

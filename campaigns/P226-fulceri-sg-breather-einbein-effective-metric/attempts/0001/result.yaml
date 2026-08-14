@@ -1,0 +1,132 @@
+id: '0001'
+verdict: in_progress
+summary: Per-claim mapping complete. 8 paper claims match existing accepted claims; 5 are textbook identities; 4 are new candidates
+  (each reproducible via sympy); 2 are interpretive and out-of-scope.
+disposition_by_paper_claim:
+- paper_claim: rest_breather_form
+  paper_text: u(x,t) = 4 arctan(eta sin(omega t)/(omega cosh(eta x))) for 0<omega<1
+  substrate_claim: C-SG-001
+  match_type: 'EXACT (parameterization: alpha=omega, eta=sqrt(1-omega^2))'
+  verifier: tests/test_sine_gordon.py + campaigns/P001-sine-gordon-root/verify.py
+  disposition: matched_existing
+- paper_claim: breather_energy
+  paper_text: E0 = 16 (mu_0^2 c0/omega_0) sqrt(1-alpha^2)
+  substrate_claim: C-SG-002 (dimensionless) + C-MED-003 (dimensional)
+  match_type: EXACT (C-SG-002 dimensionless; C-MED-003 dimensional with the same coupling)
+  verifier: tests/test_sine_gordon.py + tests/test_dimensional_sine_gordon.py
+  disposition: matched_existing
+- paper_claim: boosted_breather
+  paper_text: Lorentz-boosted breather with gamma factor
+  substrate_claim: C-SG-008
+  match_type: EXACT
+  verifier: tests/test_sine_gordon.py + campaigns/P012-boosted-breather-kinematics/verify.py
+  disposition: matched_existing
+- paper_claim: four_vector_dynamics
+  paper_text: E = gamma E0, P = gamma E0 v
+  substrate_claim: C-SG-008 (and C-SG-009 for moments)
+  match_type: EXACT
+  verifier: tests/test_sine_gordon.py
+  disposition: matched_existing
+- paper_claim: de_broglie_relation
+  paper_text: P = hbar_eff k_dB, k_dB = omega_carrier v/c0^2
+  substrate_claim: C-SG-008
+  match_type: EXACT
+  verifier: tests/test_sine_gordon.py
+  disposition: matched_existing
+- paper_claim: two_frequencies
+  paper_text: omega_carrier = alpha gamma omega0; omega_clock = alpha omega0/gamma; product invariant
+  substrate_claim: C-SG-015 (temporal field trace, rest frame only)
+  match_type: PARTIAL (paper extends to boosted frame; substrate has rest-frame only)
+  verifier: tests/test_sine_gordon.py
+  disposition: matched_existing_with_extension_potential
+- paper_claim: light_in_a_box_factorization
+  paper_text: Envelope * carrier * de Broglie modulation
+  substrate_claim: C-SG-013 (boundary sign correlation) + C-SG-015 (temporal trace)
+  match_type: PARTIAL
+  verifier: tests/test_sine_gordon.py
+  disposition: matched_existing
+- paper_claim: square_root_lagrangian
+  paper_text: L = -E0 sqrt(1 - Xdot^2/c0^2) after collective coordinate reduction
+  substrate_claim: None (collective-coordinate reduction is novel)
+  match_type: NEW
+  verifier: 'sympy: substitute breather ansatz into field action; integrate spatial; verify resulting L'
+  disposition: candidate_for_new_campaign
+- paper_claim: einbein_form
+  paper_text: L = (1/(2e)) g_munu xdot^mu xdot^nu - e (M c0)^2/2
+  substrate_claim: None
+  match_type: TEXTBOOK (Polyakov 1987 string theory)
+  verifier: 'sympy: substitute e = sqrt(-sigma)/(M c0); verify recovery of square root L'
+  disposition: textbook_citation
+- paper_claim: einbein_eom
+  paper_text: E-L of einbein action = affine geodesic equation of g_munu
+  substrate_claim: None
+  match_type: TEXTBOOK
+  verifier: 'sympy: derive E-L from einbein Lagrangian; show equivalence to geodesic equation'
+  disposition: textbook_citation
+- paper_claim: impedance_matching
+  paper_text: rho*Theta = Z_0^2 = const forbids reflection; permits refraction
+  substrate_claim: None directly (C-OG-001 uses n=1 implicitly via static refractive index)
+  match_type: NEW
+  verifier: 'sympy: confirm rho*Theta invariant under constitutive map'
+  disposition: candidate_for_new_claim_C-IMP-001
+- paper_claim: effective_metric_static
+  paper_text: g = diag(-1/n, n/c0^2) for static n(x)
+  substrate_claim: C-OG-001
+  match_type: EXACT
+  verifier: campaigns/P004-optical-dilaton/verify.py + tests/test_optical_geometry.py
+  disposition: matched_existing
+- paper_claim: effective_metric_flowing
+  paper_text: g_tt = -c0^2/n + n V^2, g_tX = n V, g_XX = n
+  substrate_claim: C-OG-001 (limit V=0, static)
+  match_type: EXTENSION
+  verifier: 'sympy: det g = -c0^2; V=0 limit recovers C-OG-001; n=1, V=0 limit Minkowski'
+  disposition: candidate_for_new_claim_C-OG-006
+- paper_claim: metric_to_minkowski_limit
+  paper_text: n=1, V=0 -> Minkowski
+  substrate_claim: C-OG-001 (in the n=1 limit)
+  match_type: EXACT (limit)
+  verifier: 'sympy: substitute n=1, V=0; verify metric = diag(-c0^2, 1)'
+  disposition: matched_existing
+- paper_claim: christoffel_symbols
+  paper_text: Six explicit Gamma^sigma_rho_nu of metric (69) in lab frame
+  substrate_claim: C-OG-002 (only for TF n, V=0)
+  match_type: EXTENSION
+  verifier: 'sympy: compute Christoffel symbols from metric; cross-check with paper eqs (97-102)'
+  disposition: candidate_for_new_claim_C-OG-008
+- paper_claim: residual_massless
+  paper_text: v = V +/- c0/n for massless signals
+  substrate_claim: None
+  match_type: NEW
+  verifier: 'sympy: null constraint sigma=0; solve lab-time; yield two characteristic speeds'
+  disposition: candidate_for_new_claim_C-OG-007
+- paper_claim: gravitational_equiv_principle
+  paper_text: Equivalence principle recovered as a theorem of continuum mechanics
+  substrate_claim: None
+  match_type: INTERPRETIVE (philosophical; not derivable; no clear pass/fail criterion)
+  verifier: "N/A \u2014 interpretive claim outside the framework's exact-algebraic discipline"
+  disposition: out_of_scope_interpretive
+- paper_claim: constructive_relativity
+  paper_text: Lorentz invariance is dynamical, not fundamental
+  substrate_claim: None
+  match_type: INTERPRETIVE (philosophical; not derivable; references Brown 2005, Bell 1976)
+  verifier: "N/A \u2014 interpretive claim outside the framework's exact-algebraic discipline"
+  disposition: out_of_scope_interpretive
+- paper_claim: smooth_mass_zero_limit
+  paper_text: M->0 transition continuous at the level of the differential system
+  substrate_claim: None
+  match_type: NEW (textbook ODE argument; we can record it as a conditional)
+  verifier: 'sympy: same affine geodesic equation in massive and massless regimes; only the algebraic constraint changes'
+  disposition: candidate_for_new_claim_C-OG-009
+- paper_claim: full_ivp_well_posedness
+  paper_text: Picard-Lindelof guarantees unique local solution
+  substrate_claim: None
+  match_type: TEXTBOOK (ODE existence-uniqueness theorem)
+  verifier: "N/A \u2014 standard textbook result; cite rather than re-derive"
+  disposition: textbook_citation
+outstanding_work:
+- Write sympy gate scripts for the four new candidate claims (C-IMP-001, C-OG-006, C-OG-007, C-OG-008, C-OG-009).
+- Verify each candidate against the paper's equations (eq 11, 12, 13, 14, 17, 18, 19, 23, 24, 26, 27, 39, 41, 42, 43, 45,
+  60, 67, 69, 70, 87, 90, 91, 92, 96, 97-102, 104, 105).
+- Record the disposition of each paper claim in memory/vantasner/decisions/.
+- Document the interpretive-claim out-of-scope disposition explicitly.
+- Decide whether to open separate campaigns for each new claim, or to batch them under P226.

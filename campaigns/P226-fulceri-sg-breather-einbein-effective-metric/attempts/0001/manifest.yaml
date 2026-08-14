@@ -1,0 +1,38 @@
+id: '0001'
+kind: claim-mapping
+objective: Per-claim mapping of Fulceri's paper claims to substrate-framework claims; reproduce or reject each one.
+result: in_progress
+base_release: v0.159.0
+base_commit: 640c47f
+approach: Sympy verification of each candidate claim; mutation tests; explicit disposition per claim.
+started: '2026-08-14'
+status: in_progress
+scope_notes:
+- Every paper claim is recorded below with its disposition.
+- Existing claims are not re-verified but cross-referenced.
+- New claims are written as sympy gate scripts; gate pass = candidate proposal.
+- Interpretive claims are flagged as out-of-scope and not proposed for acceptance.
+disposition_summary:
+  matches_existing:
+  - C-SG-001
+  - C-SG-002
+  - C-SG-008
+  - C-SG-015
+  - C-OG-001
+  - C-OG-002
+  - C-MED-003
+  new_candidates:
+  - C-IMP-001
+  - C-OG-006
+  - C-OG-007
+  - C-OG-008
+  textbook_citations:
+  - einbein_reparametrization
+  - eom_to_geodesic
+  - picard_lindelof
+  out_of_scope_interpretive:
+  - equivalence_principle_as_theorem
+  - constructive_relativity
+  out_of_scope_scope:
+  - GR_recovery_as_fundamental
+  - any_standard_model_particle_id

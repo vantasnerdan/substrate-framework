@@ -1,0 +1,107 @@
+id: P226
+base_release: v0.159.0
+base_commit: 640c47f
+source_baseline: substrate@6d1f4e02f87a0bd1dc326cb68af01872d1e88c64
+source_units:
+- FULCERI_BREATHER_EINBEIN_V1
+question: Does the Fulceri (2026-08-14) 'From 1D Sine-Gordon Energy Lumps to Geodesic Propagation in an Effective Metric Induced
+  by Substrate Inhomogeneity and Flow' synthesis add any distinct accepted claim beyond the individually accepted C-SG-001..018,
+  C-MED-003, and C-OG-001..005 families, and is each paper claim either (a) a verbatim/parameterized restatement of an accepted
+  claim, (b) a new exact algebraic claim that admits a mutation-sensitive verifier, (c) a previously-claimed extension that
+  we have not yet recorded, or (d) a non-derivable interpretive claim that we should mark as out-of-scope?
+invariants:
+- The accepted registry is authoritative; paper chronology is not.
+- C-SG-001 owns the rest-frame breather form; C-SG-002 owns its energy; C-SG-008 owns the boosted breather and the four-vector
+  dynamics; C-SG-015 owns the temporal field trace.
+- C-OG-001 owns the static 1+1 optical metric diag(-1/n, n/c0^2); C-OG-002 owns the TF constitutive map and weak-field dilaton.
+- C-MED-003 owns the dimensional 1+1 sine-Gordon with lambda, T, mu.
+- The impedance-matching condition rho*Theta = Z_0^2 is a separate structural claim not yet in the registry.
+- The flowing effective metric components g_tt = -c0^2/n + n V^2, g_tX = n V, g_XX = n are a V-dependent extension of C-OG-001
+  and not yet in the registry.
+- The einbein reparametrization L = (1/(2e)) g_munu xdot^mu xdot^nu - e (M c0)^2 / 2 is a standard textbook form (Polyakov
+  1987); its EOM-to-geodesic identification is also textbook.
+- The Picard-Lindelof well-posedness statement is a standard textbook result, not a new framework claim.
+- The equivalence-principle-as-continuum-theorem and the Lorentz-dynamical-relativity interpretive claims are philosophical
+  positions, not derivations; they are not eligible for accepted claim status.
+- Honest residual claims (no-go, missing piece, param conflict) are attempt evidence, not completion.
+allowed_imports:
+- C-SG-001 through C-SG-018 at their exact parameterizations and ranges
+- C-MED-003 at the dimensional 1+1 sine-Gordon
+- C-OG-001, C-OG-002, C-OG-003, C-OG-004, C-OG-005 at the static 1+1 optical metric geometry
+- C-CC-001 collective-coordinate acceleration convention
+- C-KIN-001 1+1 two-body threshold kinematics
+- Polyakov (1987) einbein reparametrization as a standard textbook identity
+- Carroll, Wald, Misner-Thorne-Wheeler for the geodesic equation, Christoffel symbols, Levi-Civita connection
+- Rajaraman (1982), Lamb (1980), Drazin-Johnson (1989), Manton-Sutcliffe (2004) for sine-Gordon soliton theory
+- Unruh (1981), Visser (1998), Barcelo-Liberati-Visser (2011) for analog-gravity acoustic metrics
+- Skyrme (1961, 1962), Faddeev-Niemi (1997) for emergent-matter tradition
+- de Broglie (1956), Brown (2005), Bell (1976), Selleri (1996) for the dynamical-Lorentz tradition
+- Sakharov (1967), Jacobson (1995), Padmanabhan (2015), Verlinde (2011) for the emergent-gravity tradition
+- Schmelzer (GLET), Lehmkuhl (2014) for the philosophy-of-physics framing
+- The paper under review as a single hash-pinned primary source, not as a secondary review
+candidates:
+- id: A
+  description: Recognize the rest-frame breather, energy, boosted breather, four-vector dynamics, de Broglie relation, and
+    temporal field trace as already accepted via C-SG-001, C-SG-002, C-SG-008, C-SG-015. No new claim.
+- id: B
+  description: Recognize the static 1+1 optical metric and its TF/dilaton consequences as already accepted via C-OG-001, C-OG-002.
+    No new claim.
+- id: C
+  description: 'Add a new claim C-IMP-001 for the impedance-matching condition rho*Theta = Z_0^2 = const as the no-reflection
+    condition while permitting refraction. Verify by sympy: rho*Theta product is invariant under the constitutive map.'
+- id: D
+  description: 'Add a new claim C-OG-006 for the flowing effective metric g_tt = -c0^2/n + n V^2, g_tX = n V, g_XX = n extending
+    C-OG-001 to V-dependent substrate flow. Verify by sympy: det g = -c0^2, the inverse metric, the six Christoffel symbols,
+    the mass-shell constraint, and the V=0 reduction recovery.'
+- id: E
+  description: 'Add a new claim C-OG-007 for the massless asymptotic v = V +/- c0/n. Verify by sympy: the null constraint
+    g_munu xdot^mu xdot^nu = 0 yields the two characteristic speeds under laboratory-time parametrization.'
+- id: F
+  description: Add a new claim C-OG-008 for the Christoffel symbols of metric (eq 69) in the laboratory frame; record as exact
+    expressions in n, V, and their first derivatives. Verify by sympy.
+- id: G
+  description: 'Add a new claim for the smooth M-to-zero limit: the affine geodesic equation is identical in the massive and
+    massless regimes; only the algebraic constraint (mass-shell vs null) changes. Verify by sympy.'
+- id: H
+  description: Mark the equivalence-principle-as-continuum-theorem and the constructive-relativity interpretive claims as
+    out-of-scope (philosophical; not derivable; no clear pass/fail criterion). Record this disposition explicitly.
+- id: I
+  description: Cite the Picard-Lindelof well-posedness statement as a standard textbook result rather than as a new framework
+    claim; reference the used IVP, the metric factor, and the locality condition.
+- id: J
+  description: 'Refuse the candidate-by-candidate substrate-to-GR derivation claim: the paper''s geodesic identification is
+    correct in the formal/symbolic sense, but the framework does not (and the paper does not) assert that GR is derived; it
+    asserts only that the breather dynamics in a substrate with refractive index and flow mimics geodesic motion in an effective
+    metric. The cosmological, gravitational-wave, and perihelion-precession tests are not in scope.'
+uniqueness_evidence: Among the paper's 19 distinct claims, 8 reproduce accepted substrate claims (C-SG-001..015, C-OG-001..002,
+  C-MED-003) exactly; 5 are text-book standard identities (einbein reparametrization, EOM-to-geodesic, massless limit, Christoffel
+  formula, Picard-Lindelof); 4 are extensions of accepted claims (C-imp-matching, C-flowing-metric, C-christoffel-flowing,
+  C-massless-residual); 2 are interpretive and not derivable (equiv principle as theorem, dynamical Lorentz). Of the 4 extensions,
+  each is a separate exact-algebraic claim that admits a mutation-sensitive sympy verifier. None of the 19 claims identify
+  any Standard Model particle; none derive a particle mass, a coupling, or a force law; none assert that GR is recovered as
+  a fundamental theory.
+selection_criteria:
+- exact consistency with accepted invariants (C-SG-001, C-OG-001, C-MED-003)
+- explanatory reach (does the new claim add a new structural fact, or does it merely restate accepted ones?)
+- assumption cost (C-IMP-001 assumes only the constitutive map; C-OG-006 assumes a local flow field V and positive refractive
+  index n; the textbook claims assume the standard metric formalism)
+- parameter economy (every new claim names its free parameters explicitly)
+- symmetry/dimensions/topology/limits (the dimensional analysis must match C-OG-001 in the V=0, static limit; the n=1, V=0
+  limit must reduce to Minkowski)
+- cross-sector compatibility (the flowing metric must produce the same static limit as C-OG-001)
+- numerics and implementability (every new claim must admit a sympy verifier that closes within seconds on the project's environment)
+verifier_budget:
+- exact symbolic identity or sympy.zero equivalent for each new algebraic claim
+- dimensional/signature check on the metric
+- explicit limit n=1, V=0 reduction to Minkowski
+- explicit limit V=0 reduction to C-OG-001 readout
+- 'parameter mutation: alter the constitutive map and require the no-reflection claim to fail'
+- 'parameter mutation: alter the metric signature and require the Christoffel lookups to fail'
+stop_conditions:
+- 'every paper claim has received one of: (match existing), (new claim with passing verifier), (new claim with failed verifier
+  and explicit no-go), (interpretive, out-of-scope)'
+- the campaign debt ledger is empty
+- no claim is accepted without an independent review packet attached
+- no claim is accepted that identifies a Standard Model particle, recovers GR as a fundamental theory, or asserts Lorentz
+  invariance is derived
+termination_disposition: pending
