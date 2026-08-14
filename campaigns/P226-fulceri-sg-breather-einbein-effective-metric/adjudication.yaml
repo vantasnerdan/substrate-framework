@@ -1,10 +1,14 @@
 id: P226
 status: in_progress
 verdict: pending
-summary: Initial review (attempt 0001) classifies the paper's 19 claims into 8 existing-claim matches, 5 textbook citations,
-  4 new candidate claims (each with a sympy verifier), 2 interpretive out-of-scope claims. Verifier passes 11/11 gates with
-  5 mutation tests confirming sensitivity. No new claim is accepted in attempt 0001; each new candidate is recorded as a proposal
-  for a future batch promotion pending independent review.
+summary: 'Attempt 0001 of the Fulceri (2026-08-14) breather-einbein review. After the overlap audit with already-merged harvest
+  infrastructure, only two genuinely new candidate claims remain: C-OG-006 (flowing 1+1 effective metric) and C-IMP-001 (impedance-matching
+  identity, algebraic only). C-OG-007, C-OG-008, and the smooth M-to-zero candidate are dropped as standalone claims; their
+  content is moved to consequences of C-OG-006 or cited as textbook or already-accepted infrastructure. The einbein reparametrization,
+  the static 1+1 optical metric, and the Levi-Civita connection are already covered by PR #41 (issue #40, P227), C-OG-001,
+  and pseudo_riemannian.py; none is a new framework claim. The substrate_metric.py module delegates its Christoffel-symbols
+  path to pseudo_riemannian.metric_christoffel_from_derivatives so the canonical connection machinery is the single source
+  of truth. No new claim is accepted in attempt 0001; each candidate is recorded as a proposal for independent review.'
 disposition_per_paper_claim:
   rest_breather_form: matched_existing (C-SG-001)
   breather_energy: matched_existing (C-SG-002, C-MED-003)
@@ -13,44 +17,70 @@ disposition_per_paper_claim:
   de_broglie_relation: matched_existing (C-SG-008)
   two_frequencies: matched_existing (C-SG-015, rest frame only)
   light_in_a_box_factorization: matched_existing (C-SG-013, C-SG-015)
-  square_root_lagrangian: candidate_for_new_claim_pending_review
-  einbein_form: textbook_citation_only
-  einbein_eom: textbook_citation_only
-  impedance_matching: candidate_for_new_claim_C-IMP-001 (verifier G9 PASS)
-  effective_metric_static: matched_existing (C-OG-001)
-  effective_metric_flowing: candidate_for_new_claim_C-OG-006 (verifier G6 PASS)
-  metric_to_minkowski_limit: matched_existing (limit of C-OG-001)
-  christoffel_symbols: candidate_for_new_claim_C-OG-008 (verifier G7 PASS)
-  residual_massless: candidate_for_new_claim_C-OG-007 (verifier G8 PASS)
+  square_root_lagrangian: 'cites already-merged harvest infrastructure (PR #41, issue #40, P227)'
+  einbein_form: textbook_citation_only (Polyakov 1987, already imported in relativistic_particle.py)
+  einbein_eom: textbook_citation_only (already covered in tests/test_einbein_3plus1d_tutorial.py::test_eq053_055_printed_christoffels_match_general_formula)
+  impedance_matching: candidate_for_new_claim_C-IMP-001 (verifier S7 PASS); no-reflection propagation theorem is a separate
+    deferred claim
+  effective_metric_static: matched_existing (C-OG-001, optical_geometry.py)
+  effective_metric_flowing: candidate_for_new_claim_C-OG-006 (verifiers S3/S4/S5/S6/S8/S9/S10/S11 PASS)
+  metric_to_minkowski_limit: matched_existing (n=1, V=0 limit of C-OG-001; verifier S8 PASS)
+  christoffel_symbols: drops_to_consequence_of_C-OG-006 (verifier S12/S13 PASS; pseudo_riemannian.metric_christoffel_from_derivatives
+    is the single source of truth)
+  residual_massless: drops_to_consequence_of_C-OG-006 (massless null constraint is the C-OG-006 consequence; verifier S9 PASS)
   gravitational_equiv_principle: out_of_scope_interpretive
   constructive_relativity: out_of_scope_interpretive
-  smooth_mass_zero_limit: candidate_for_new_claim_C-OG-009 (verifier G2+G8 cross)
-  full_ivp_well_posedness: textbook_citation_only
+  smooth_mass_zero_limit: textbook_citation (Polyakov 1987; already covered in tests/test_einbein_3plus1d_tutorial.py::test_eq057_060_massless_chain)
+  full_ivp_well_posedness: textbook_citation_only (Picard-Lindelof, reference used)
 new_claim_candidates:
 - id: C-IMP-001
-  gate: G9
-  verifier: verify.py
+  description: Impedance-matching identity rho*Theta = Z_0^2 = const under the constitutive map rho = rho_0*n, Theta = Theta_0/n.
+    Algebraic identity only; the no-reflection propagation theorem is a separate deferred claim.
+  gate: S7
+  verifier: tests/test_substrate_metric.py::test_impedance_product_vanishes, test_impedance_product_residual_is_zero, test_impedance_product_under_n_mutation
+  infrastructure: src/substrate_framework/substrate_metric.py (impedance_product, impedance_product_residual)
+  promoted: false
 - id: C-OG-006
-  gate: G5/G6/G10/G11
-  verifier: verify.py
+  description: Flowing 1+1 effective metric g_tt = -c0^2/n + n V^2, g_tX = n V, g_XX = n with det = -c0^2, inverse, massless
+    null constraint v = -V +/- c0/n, and lab-frame Christoffel symbols (derived via pseudo_riemannian.metric_christoffel_from_derivatives).
+  gate: S3, S4, S5, S6, S8, S9, S10, S11, S12, S13
+  verifier: tests/test_substrate_metric.py (13 mutation-sensitive gates)
+  infrastructure: src/substrate_framework/substrate_metric.py (flowing_substrate_metric, flowing_metric_determinant, flowing_metric_inverse,
+    flowing_metric_massless_speeds, flowing_metric_minkowski_limit, flowing_metric_static_limit, flowing_metric_ricci_scalar,
+    flowing_christoffel_lab_frame)
+  promoted: false
+dropped_candidates:
 - id: C-OG-007
-  gate: G8
-  verifier: verify.py
+  reason: Massless null constraint (v = V +/- c0/n) is a direct consequence of the C-OG-006 metric; recording as a standalone
+    claim duplicates structure. The massless speeds are tested as verifier S9 (test_flowing_metric_massless_speeds_match_paper)
+    and recorded in the consequences of C-OG-006.
 - id: C-OG-008
-  gate: G7
-  verifier: verify.py
+  reason: Lab-frame Christoffel symbols follow from the C-OG-006 metric via the standard Levi-Civita connection. The new module
+    delegates to pseudo_riemannian.metric_christoffel_from_derivatives so the connection is the single source of truth. The
+    symbols are tested as verifier S12/S13 (test_flowing_christoffel_lab_frame_vanishes_in_minkowski_limit, test_flowing_christoffel_static_limit_recovers_optical_family)
+    and recorded as consequences of C-OG-006.
 - id: C-OG-009
-  gate: G2+G8 cross
-  verifier: verify.py
+  reason: Smooth M->0 limit is a textbook property of the einbein reparametrization (Polyakov 1987); the affine geodesic equation
+    is identical in the massive and massless regimes, only the algebraic constraint changes. The same identity is already
+    covered in tests/test_einbein_3plus1d_tutorial.py::test_eq057_060_massless_chain. Cite as a textbook property rather than
+    accept as a new framework claim.
 outstanding_work:
 - Independent review packet per new candidate claim (gate-verifier reproducibility, attempt-history completeness, audit-trail
   integrity).
 - 'Decision: batch promotion under P226 vs separate campaigns per claim.'
+- The no-reflection propagation theorem (paper claim) is a separate deferred claim and is NOT a consequence of C-IMP-001 alone.
 - Interpretive-claim out-of-scope disposition explicitly recorded in memory/vantasner/decisions/.
 - 'Final acceptance gate: no claim promoted to accepted status without distinct merger (non-self-merge rule).'
 open_questions:
-- Is C-OG-008 (Christoffel symbols) acceptable as a single claim, or should we record it as a derived-from-C-OG-006 consequence?
-- Is the smooth M->0 limit (C-OG-009) a separate claim, or a property of the affine-geodesic equation already implicit in
-  the textbook einbein reparametrization?
-- Does the impedance-matching claim (C-IMP-001) require a corresponding no-reflection Newtonian propagation theorem, or is
-  the rho*Theta = Z_0^2 condition sufficient as declared?
+- '(resolved) Is C-OG-008 (Christoffel symbols) acceptable as a single claim? No: it is a consequence of C-OG-006 via the
+  standard Levi-Civita connection. Drops to consequences of C-OG-006.'
+- '(resolved) Is the smooth M->0 limit (C-OG-009) a separate claim? No: it is a textbook property of the einbein reparametrization.
+  Cite as textbook.'
+- '(resolved) Does C-IMP-001 require a no-reflection propagation theorem? No: C-IMP-001 stands as the algebraic identity only;
+  the propagation theorem is a separate deferred claim requiring additional boundary/scattering analysis.'
+- '(open) What is the precise disposition of the impedance-matching identity vs the impedance-via-c^2 relation already in
+  constitutive.py? The two are distinct statements: constitutive.py asserts epsilon = rho*Theta/c^2 and mu^-1 = rho*Theta
+  as a constitutive mirror; C-IMP-001 asserts the invariance under the constitutive map. Both should coexist, with explicit
+  cross-references.'
+- (open) Should the Christoffel-symbols evidence (verifier S12/S13) be cited as part of the C-OG-006 evidence rather than
+  as a separate gate? Likely yes, but this is a reviewer decision.

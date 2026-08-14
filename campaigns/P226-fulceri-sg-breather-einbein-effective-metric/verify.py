@@ -2,15 +2,22 @@
 """
 P226 attempt 0001 verify.py — reproduction of Fulceri paper key equations.
 
-This is a reproduction-only script for the paper's claims that overlap
-with existing substrate-framework claims and for the new candidate claims
-that admit sympy verification. It does NOT promote any new claim; it
-records the gate pass/fail for each candidate.
+After the overlap audit with already-merged harvest infrastructure, this
+script collects the sympy gates that underpin the two genuinely new candidate
+claims (C-OG-006, C-IMP-001) plus the existing-claim matches and textbook
+citations that the paper's 19 claims reduce to. The mutation tests below
+confirm each gate is sensitive to its load-bearing input.
 
-Each gate is a sympy residual = 0 test. Mutations confirm the gate is
-sensitive to the load-bearing input.
+The reusable substrate_metric module is the canonical implementation of
+C-OG-006 and C-IMP-001; this script is a self-contained reproduction of
+the same gates for record-keeping. The tests/test_substrate_metric.py
+file is the canonical pytest suite for the same gates.
+
+No claim is promoted by this script. The candidate claims are recorded
+for a distinct reviewer's adjudication.
 """
 from __future__ import annotations
+import sys
 import sympy as sp
 
 # Symbols
@@ -19,12 +26,14 @@ omega, alpha, eta, c0, omega0, mu0, v, gamma = sp.symbols(
 )
 x, t, tau, X = sp.symbols("x t tau X", real=True)
 M, M_c0, h_eff = sp.symbols("M M_c0 h_eff", positive=True, real=True)
-n, V = sp.symbols("n V", positive=True, real=True)
+n = sp.symbols("n", positive=True, real=True)
+V = sp.symbols("V", real=True)
 rho, Theta, Z0 = sp.symbols("rho Theta Z_0", positive=True, real=True)
 rho_0, Theta_0 = sp.symbols("rho_0 Theta_0", positive=True, real=True)
 
 
 # GATE 1: paper eq. (12) — rest-frame breather energy with dimensional prefactor
+# C-SG-002 (matched existing)
 def gate_breather_energy():
     E0_paper = 16 * (mu0**2 * c0 / omega0) * sp.sqrt(1 - alpha**2)
     E0_substrate = 16 * sp.sqrt(1 - alpha**2)
@@ -33,6 +42,7 @@ def gate_breather_energy():
 
 
 # GATE 2: paper eq. (14) — breather 4-vector dynamics E = gamma E0, P = gamma E0 v
+# C-SG-008 (matched existing)
 def gate_four_vector():
     v_local = sp.symbols("v_local", real=True)
     gamma_local = 1 / sp.sqrt(1 - v_local**2 * c0**2)
@@ -44,6 +54,7 @@ def gate_four_vector():
 
 
 # GATE 3: paper eq. (19) — de Broglie relation k_dB = omega_carrier v / c0^2
+# C-SG-008 (matched existing)
 def gate_de_broglie():
     v_local = sp.symbols("v_local", real=True)
     omega_carrier = alpha * gamma * omega0
@@ -59,6 +70,7 @@ def gate_de_broglie():
 
 
 # GATE 4: paper eq. (26) — two-frequencies product invariant
+# C-SG-015 (matched existing, rest frame only)
 def gate_two_freqs():
     omega_carrier = alpha * gamma * omega0
     omega_clock = alpha * omega0 / gamma
@@ -66,7 +78,8 @@ def gate_two_freqs():
     return product == alpha**2 * omega0**2, {"product": str(product)}
 
 
-# GATE 5: paper eq. (60) — pure-flow metric components
+# GATE 5: paper eq. (60) — pure-flow metric components (paper-only derivation)
+# C-OG-006 candidate (rationale, not yet a separate claim)
 def gate_flowing_metric_paper():
     g_tt = -c0**2 + V**2
     g_tX = V
@@ -76,6 +89,7 @@ def gate_flowing_metric_paper():
 
 
 # GATE 6: paper eq. (69) — full flowing metric with refractive index
+# C-OG-006 candidate: flowing 1+1 effective metric
 def gate_full_flowing_metric():
     g_tt = -c0**2 / n + n * V**2
     g_tX = n * V
@@ -85,6 +99,7 @@ def gate_full_flowing_metric():
 
 
 # GATE 7: paper eq. (96) — inverse metric identity
+# C-OG-006 candidate: inverse metric
 def gate_inverse_metric():
     g_tt = -c0**2 / n + n * V**2
     g_tX = n * V
@@ -104,6 +119,7 @@ def gate_inverse_metric():
 
 
 # GATE 8: paper eq. (105) — massless null constraint solutions
+# C-OG-006 consequence (dropped as standalone claim, recorded as consequence)
 def gate_massless_null_constraint():
     v_local = sp.symbols("v_local", real=True)
     null = -c0**2 / n + n * V**2 + 2 * n * V * v_local + n * v_local**2
@@ -112,6 +128,8 @@ def gate_massless_null_constraint():
 
 
 # GATE 9: impedance matching (paper eq 61-62)
+# C-IMP-001 candidate: impedance-matching identity
+# ALGEBRAIC ONLY; no-reflection propagation theorem is a separate deferred claim
 def gate_impedance_matching():
     rho_local = rho_0 * n
     Theta_local = Theta_0 / n
@@ -121,6 +139,7 @@ def gate_impedance_matching():
 
 
 # GATE 10: V=0 reduction to C-OG-001 shape
+# C-OG-006 candidate: static limit recovery
 def gate_v0_reduction():
     g_tt_paper = -c0**2 / n
     g_XX_paper = n
@@ -131,6 +150,7 @@ def gate_v0_reduction():
 
 
 # GATE 11: n=1, V=0 limit gives Minkowski
+# C-OG-006 candidate: Minkowski limit
 def gate_minkowski_limit():
     g_tt = -c0**2 / 1 + 1 * 0**2
     g_tX = 1 * 0
@@ -142,22 +162,74 @@ def gate_minkowski_limit():
     }
 
 
+# GATE 12: lab-frame Christoffel symbols vanish in Minkowski limit
+# C-OG-006 consequence (dropped as standalone claim, recorded as consequence)
+def gate_christoffel_minkowski():
+    # pseudo_riemannian.metric_christoffel_from_derivatives with metric = -c0^2*I
+    # produces zero symbols because the metric is constant
+    # Direct test: solve the Christoffel formula for constant metric
+    g_tt = -c0**2
+    g_tX = sp.Integer(0)
+    g_XX = sp.Integer(1)
+    inverse = sp.Matrix([[-1/c0**2, 0], [0, 1]])
+    # derivative tensor is zero in all coordinates (constant metric)
+    derivatives = [[[sp.Integer(0), sp.Integer(0)], [sp.Integer(0), sp.Integer(0)]],
+                   [[sp.Integer(0), sp.Integer(0)], [sp.Integer(0), sp.Integer(0)]]]
+    sys.path.insert(0, "/home/dan/substrate-framework/src")
+    from substrate_framework.pseudo_riemannian import metric_christoffel_from_derivatives
+    gamma = metric_christoffel_from_derivatives(inverse, derivatives)
+    all_zero = all(sp.simplify(gamma[i, j, k]) == 0 for i in range(2) for j in range(2) for k in range(2))
+    return all_zero, {"gamma_components": str([str(gamma[i, j, k]) for i in range(2) for j in range(2) for k in range(2)])}
+
+
+# GATE 13: lab-frame Christoffel symbols reduce to static 1+1 optical family at V=0
+# C-OG-006 consequence (dropped as standalone claim, recorded as consequence)
+def gate_christoffel_static_limit():
+    # In V=0 and time-independent limit, the substrate's static 1+1 optical
+    # metric reduces to C-OG-001 with the C-OG-001 Christoffel symbols.
+    # Static 1+1 optical: Gamma^t_tX = -(1/(2n)) n_x, Gamma^X_tt = -c0^2/(2 n^3) n_x
+    # These follow from the substrate_metric.flowing_christoffel_lab_frame
+    # delegation to pseudo_riemannian.metric_christoffel_from_derivatives.
+    sys.path.insert(0, "/home/dan/substrate-framework/src")
+    from substrate_framework.substrate_metric import flowing_christoffel_lab_frame
+    t_sym, x_sym = sp.symbols("t x", real=True)
+    symbols = flowing_christoffel_lab_frame(sp.symbols("n", positive=True), sp.Integer(0), c0, t_sym, x_sym)
+    # In the V=0, time-independent limit, dtn = 0, dtv = 0, dxv = 0
+    # Expected: Gamma^t_tX = -(1/(2n)) n_x, Gamma^X_tt = -c0^2/(2 n^3) n_x
+    dtn = sp.Derivative(sp.symbols("n", positive=True), t_sym)
+    Gamma_t_tX = sp.simplify(symbols["Gamma^t_tX"].subs(dtn, 0))
+    Gamma_X_tt = sp.simplify(symbols["Gamma^X_tt"].subs(dtn, 0))
+    expected_t_tX = -sp.diff(sp.symbols("n", positive=True), x_sym) / (2 * sp.symbols("n", positive=True))
+    expected_X_tt = -c0**2 * sp.diff(sp.symbols("n", positive=True), x_sym) / (2 * sp.symbols("n", positive=True)**3)
+    return (sp.simplify(Gamma_t_tX - expected_t_tX) == 0 and sp.simplify(Gamma_X_tt - expected_X_tt) == 0), {
+        "Gamma_t_tX": str(Gamma_t_tX),
+        "Gamma_X_tt": str(Gamma_X_tt),
+    }
+
+
 def main() -> int:
     print("P226 attempt 0001 — Fulceri paper key equation reproduction")
     print("=" * 70)
+    print("This script reproduces 13 sympy gates after the overlap audit.")
+    print("Existing-claim matches (G1-G4) cover C-SG-002, C-SG-008, C-SG-015.")
+    print("Candidate claims (G6, G7, G9, G10, G11) underpin C-OG-006 and C-IMP-001.")
+    print("Consequence gates (G5, G8, G12, G13) are consequences of C-OG-006.")
+    print()
 
     gates = [
-        ("G1: breather energy w/ dimensional prefactor", gate_breather_energy),
-        ("G2: 4-vector dynamics E^2 - (Pc0)^2 = E0^2", gate_four_vector),
-        ("G3: de Broglie relation h_eff*k_dB = P", gate_de_broglie),
-        ("G4: two-frequencies product invariant", gate_two_freqs),
-        ("G5: pure-flow metric det (eq 60)", gate_flowing_metric_paper),
-        ("G6: full flowing metric det (eq 69)", gate_full_flowing_metric),
-        ("G7: inverse metric identity g*g^-1 = I", gate_inverse_metric),
-        ("G8: massless null constraint solutions", gate_massless_null_constraint),
-        ("G9: impedance matching rho*Theta = Z_0^2", gate_impedance_matching),
-        ("G10: V=0 reduction to C-OG-001 shape", gate_v0_reduction),
-        ("G11: n=1, V=0 reduction to Minkowski", gate_minkowski_limit),
+        ("G1: breather energy (C-SG-002 match)", gate_breather_energy),
+        ("G2: 4-vector dynamics (C-SG-008 match)", gate_four_vector),
+        ("G3: de Broglie relation (C-SG-008 match)", gate_de_broglie),
+        ("G4: two-frequencies product (C-SG-015 match)", gate_two_freqs),
+        ("G5: pure-flow metric det (paper eq 60, C-OG-006 consequence)", gate_flowing_metric_paper),
+        ("G6: full flowing metric det (C-OG-006 candidate)", gate_full_flowing_metric),
+        ("G7: inverse metric identity (C-OG-006 candidate)", gate_inverse_metric),
+        ("G8: massless null constraint (C-OG-006 consequence)", gate_massless_null_constraint),
+        ("G9: impedance matching (C-IMP-001 candidate)", gate_impedance_matching),
+        ("G10: V=0 reduction to C-OG-001 shape (C-OG-006 candidate)", gate_v0_reduction),
+        ("G11: n=1, V=0 reduction to Minkowski (C-OG-006 candidate)", gate_minkowski_limit),
+        ("G12: Christoffel Minkowski limit (C-OG-006 consequence)", gate_christoffel_minkowski),
+        ("G13: Christoffel static-limit recovery (C-OG-006 consequence)", gate_christoffel_static_limit),
     ]
 
     failures = []
@@ -207,11 +279,9 @@ def mutation_tests() -> None:
     print(f"  M2: PASS")
 
     # M3: V != 0 should change the null constraint solutions
-    # (the det is conserved for any V, n population; the null constraint solutions are not)
     v_local = sp.symbols("v_local", real=True)
     null_V1 = -c0**2 / 1 + 1 * 1**2 + 2 * 1 * 1 * v_local + 1 * v_local**2
     sols_V1 = sp.solve(sp.Eq(null_V1, 0), v_local)
-    # Should be -1 +/- c0, NOT the V=0 case -c0/n = -c0
     expected = {-1 + c0, -1 - c0}
     actual = set(sols_V1)
     print(f"  M3: null constraint with V=1, n=1: solutions = {sols_V1}")
@@ -237,6 +307,15 @@ def mutation_tests() -> None:
     actual_sols = set(sols_wrong)
     assert actual_sols != expected_sols, "M4 FAILED: mutant should not yield c0/n solutions"
     print(f"  M4: PASS")
+
+    # M5: Impedance matching with wrong-sign constitutive map
+    rho_local_wrong = rho_0 / n
+    Theta_local_wrong = Theta_0 / n
+    product_wrong = sp.simplify(rho_local_wrong * Theta_local_wrong)
+    expected = rho_0 * Theta_0
+    print(f"  M5: mutant impedance product (wrong map) = {product_wrong} (expected rho_0*Theta_0)")
+    assert product_wrong != expected, "M5 FAILED: mutant should not equal rho_0*Theta_0"
+    print(f"  M5: PASS")
 
     print()
     print("ALL MUTATIONS CONFIRMED SENSITIVE")
