@@ -53,7 +53,7 @@ the direct embedding calculation remains an independent rederivation.
 
 ## Four-Axis Decision Requested
 
-The proposed axes are verification `symbolic_verified`, review `unaudited`,
+The proposed axes before review were verification `symbolic_verified`, review `unaudited`,
 compatibility `unassessed`, epistemic `proposed`, with no supersession.
 
 ## Promotion Boundary and Continuation

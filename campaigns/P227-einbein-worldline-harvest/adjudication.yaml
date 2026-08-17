@@ -1,0 +1,68 @@
+campaign: P227
+title: Einbein worldline and Lorentz-orbit harvest
+source_baseline: substrate@6d1f4e0
+source_units: []
+base_release: v0.159.0
+accepted_release: v0.160.0
+freeze_commit: ac4ac14939e91edd249887e2de788b36f048aa02
+implementation_commit: 4eb9670ae1c5e3d42051bb1767443ac39a0d16cf
+draft_review_commit: f656749303da71d79c78b25ef2ae5d2478ccbfb6
+adjudicated_at: '2026-08-17T20:45:00Z'
+selected_candidates:
+  - id: A
+    reason: >-
+      Small typed scalar-contraction and matrix ledgers give exact branch
+      separation, dimension-aware reuse, and direct mutation-sensitive tests.
+competing_candidates:
+  - id: B
+    decision: >-
+      Retained as the independent coordinate and direct-matrix oracle, but not
+      as a duplicate public implementation.
+  - id: C
+    decision: rejected_document_local_duplication
+claims:
+  - {id: C-WLN-001, decision: accepted_symbolic_verified_compatible_extension_active}
+  - {id: C-WLN-002, decision: accepted_symbolic_verified_compatible_extension_active}
+  - {id: C-WLN-003, decision: accepted_symbolic_verified_compatible_extension_active}
+  - {id: C-LOR-001, decision: accepted_symbolic_verified_compatible_extension_active}
+  - {id: C-LOR-002, decision: accepted_symbolic_verified_compatible_extension_active}
+unpromoted_surfaces:
+  - {id: background_selection, reason: Every metric is supplied conditional data.}
+  - {id: quantum_particle_content, reason: No quantization or species map is derived.}
+  - {id: field_theory_conformal_symmetry, reason: The Weyl identity is worldline-local only.}
+  - {id: global_lorentz_representations, reason: Only finite matrix stabilizer algebras are proved.}
+  - {id: physical_tube_ensemble, reason: The orbit metric concerns one future unit timelike vector.}
+evidence:
+  primary_verifier: verify.py
+  independent_rederivation: reviews/independent_worldline_lorentz_review.py
+  claim_reviews:
+    - memory/vantasner/decisions/C-WLN-001-review.md
+    - memory/vantasner/decisions/C-WLN-002-review.md
+    - memory/vantasner/decisions/C-WLN-003-review.md
+    - memory/vantasner/decisions/C-LOR-001-review.md
+    - memory/vantasner/decisions/C-LOR-002-review.md
+  campaign_decision: memory/vantasner/decisions/P227-claim-reviews.md
+  failed_draft_review: attempts/0001/result.yaml
+  corrected_promotion_attempt: attempts/0002/result.yaml
+validation_commands:
+  - PYTHONPATH_src_python_campaign_verify
+  - PYTHONPATH_src_python_independent_worldline_lorentz_review
+  - pytest_worldline_lorentz_scope
+  - scripts_validate_sh_full_single_integrated_boundary
+  - git_diff_check
+integrated_gate:
+  status: passed
+  workflow_claims: 207
+  workflow_accepted_claims: 207
+  active_proposals: 2
+  migration_total: 218
+  migration_pending: 0
+  memory_records: 929
+  generated_docs_current: true
+  generated_memory_current: true
+  tests: 2215
+  pytest_seconds: 323.60
+  exit_status: 0
+  terminal_tally: ALL_REPOSITORY_WORKFLOW_CHECKS_PASS
+debt: []
+status: accepted

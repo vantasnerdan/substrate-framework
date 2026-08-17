@@ -144,6 +144,14 @@ claim decisions and any accepted promotion transaction land.
 
 ## Cross-References
 Canonical issue: https://github.com/vantasnerdan/substrate-framework/issues/59.
-Source proposals: `proposals/P227-einbein-worldline-harvest/` and
+Source campaigns/proposals: `campaigns/P227-einbein-worldline-harvest/` and
 `proposals/P229-preparata-qcd-vacuum-audit/`. Source APIs are under
 `src/substrate_framework/{relativistic_particle,lorentz_orbits,lorentz_little_groups,chromomagnetic_background,chromomagnetic_sectors}.py`.
+
+## P227 Closure Update — 2026-08-17
+
+The P227 half of this author handoff is now adjudicated. The first closure
+draft failed review-oracle audit; the corrected independent executable review
+passes 51 exact checks and release `v0.160.0` accepts C-WLN-001 through
+C-WLN-003 and C-LOR-001 through C-LOR-002. P229 remains proposal frontier and
+is unaffected by that decision.

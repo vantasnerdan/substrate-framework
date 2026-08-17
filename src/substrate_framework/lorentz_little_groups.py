@@ -1,6 +1,6 @@
 """Exact stabilizer Lie algebras for standard 2+1D and 3+1D momenta.
 
-Authority status: conditional, unpromoted infrastructure linked to issue #40.
+Authority status: implements accepted claim C-LOR-002 in release v0.160.0.
 The ledgers establish only matrix membership, fixed-vector conditions, and
 commutators in the displayed mostly-plus conventions. They do not classify
 global unitary representations or derive spin, anyons, continuous-spin states,

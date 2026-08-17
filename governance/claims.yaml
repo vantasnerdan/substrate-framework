@@ -11171,3 +11171,170 @@ claims:
     accepted_in: v0.159.0
     challenges: []
     supersedes: []
+  - id: C-WLN-001
+    statement: >-
+      For a supplied nondegenerate pseudo-Riemannian metric in mostly-plus
+      convention, timelike velocity norm sigma<0, and positive exact einbein
+      e, mass m, and signal speed c0, the worldline density
+      L=sigma/(2e)-e*(m*c0)^2/2 has auxiliary equation
+      sigma+e^2*(m*c0)^2=0 with unique positive solution
+      e=sqrt(-sigma)/(m*c0). Eliminating e gives exactly
+      -m*c0*sqrt(-sigma). With canonical covector momentum p_mu, the inverse
+      Legendre map is dot(x)^mu=e*g^(mu nu)*p_nu and the Hamiltonian is the
+      pure constraint e*(g^(mu nu)*p_mu*p_nu+(m*c0)^2)/2. This is a
+      conditional local classical identity; it selects no background,
+      particle species, quantization, or field theory.
+    provenance: campaigns/P227-einbein-worldline-harvest/adjudication.yaml
+    verification: symbolic_verified
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    dependencies: []
+    evidence:
+      - campaigns/P227-einbein-worldline-harvest/verify.py
+      - campaigns/P227-einbein-worldline-harvest/reviews/independent_worldline_lorentz_review.py
+      - campaigns/P227-einbein-worldline-harvest/attempts/0002/result.yaml
+      - memory/vantasner/decisions/C-WLN-001-review.md
+      - src/substrate_framework/relativistic_particle.py
+      - tests/test_relativistic_particle.py
+    assumptions:
+      - The metric is supplied, exact, nondegenerate, and uses the displayed mostly-plus convention.
+      - The velocity norm is provably negative and e, m, and c0 are provably positive.
+      - Momentum is a covector and index raising uses the inverse supplied metric.
+      - The statement is local classical worldline mechanics and includes no background-selection or quantization premise.
+    comparators: []
+    accepted_in: v0.160.0
+    challenges: []
+    supersedes: []
+  - id: C-WLN-002
+    statement: >-
+      Setting m=0 before auxiliary-field elimination gives the regular
+      worldline density L=sigma/(2e), whose einbein equation is exactly the
+      null constraint sigma=0. For a supplied nondegenerate metric, the
+      coordinate Euler equation is
+      ddot(x)^a=-Gamma^a_bc*dot(x)^b*dot(x)^c+(dot(e)/e)*dot(x)^a.
+      Constant positive e therefore gives the affine null-geodesic equation.
+      This is a local conditional classical identity and derives no field
+      equation, particle representation, or singular massless square-root
+      action.
+    provenance: campaigns/P227-einbein-worldline-harvest/adjudication.yaml
+    verification: symbolic_verified
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    dependencies: []
+    evidence:
+      - campaigns/P227-einbein-worldline-harvest/verify.py
+      - campaigns/P227-einbein-worldline-harvest/reviews/independent_worldline_lorentz_review.py
+      - campaigns/P227-einbein-worldline-harvest/attempts/0002/result.yaml
+      - memory/vantasner/decisions/C-WLN-002-review.md
+      - src/substrate_framework/relativistic_particle.py
+      - tests/test_relativistic_particle.py
+    assumptions:
+      - The massless specialization is made before solving the massive auxiliary equation.
+      - The metric is supplied, exact, nondegenerate, differentiable to the required local order, and uses the displayed convention.
+      - The einbein is smooth and positive; its derivative and the coordinate velocity are local exact data.
+      - Affine parametrization is concluded only where the einbein is constant and the null constraint is also imposed.
+    comparators: []
+    accepted_in: v0.160.0
+    challenges: []
+    supersedes: []
+  - id: C-WLN-003
+    statement: >-
+      Under an orientation-preserving local reparametrization tau'=f(tau)
+      with smooth positive rate r=df/dtau, dot(x)'=dot(x)/r and e'=e/r make
+      the massive or massless einbein action exactly invariant after the
+      integration Jacobian. On an interval where e is smooth and positive,
+      df/dtau=e/e0 locally attains any declared constant e0>0; global domain
+      and endpoint coverage remain separate requirements. Under a positive
+      pointwise conformal factor Omega, the massless density is invariant for
+      g->Omega^2*g and e->Omega^2*e, while for m>0 the mass term changes by
+      -(Omega^2-1)*e*(m*c0)^2/2 and is nonzero at each point where positive
+      Omega differs from one. These are worldline action identities, not spacetime
+      field-theory conformal symmetry.
+    provenance: campaigns/P227-einbein-worldline-harvest/adjudication.yaml
+    verification: symbolic_verified
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    dependencies: []
+    evidence:
+      - campaigns/P227-einbein-worldline-harvest/verify.py
+      - campaigns/P227-einbein-worldline-harvest/reviews/independent_worldline_lorentz_review.py
+      - campaigns/P227-einbein-worldline-harvest/attempts/0002/result.yaml
+      - memory/vantasner/decisions/C-WLN-003-review.md
+      - src/substrate_framework/relativistic_particle.py
+      - tests/test_relativistic_particle.py
+    assumptions:
+      - Reparametrizations are smooth, local, orientation preserving, and have strictly positive rate.
+      - The einbein and target constant are positive, and local gauge construction does not imply global interval coverage.
+      - The conformal factor is positive and the massive obstruction assumes positive m and c0.
+      - No Maxwell, Yang-Mills, gravitational, helicity, or spacetime Weyl-gauge conclusion is imported.
+    comparators: []
+    accepted_in: v0.160.0
+    challenges: []
+    supersedes: []
+  - id: C-LOR-001
+    statement: >-
+      In mostly-plus flat spacetime, the future-directed unit timelike-vector
+      orbit has exact induced metric diag(1,sinh(eta)^2) on H^2 in 2+1
+      dimensions and diag(1,sinh(eta)^2,sinh(eta)^2*sin(theta)^2) on H^3 in
+      3+1 dimensions, obtained by pulling back the ambient metric along the
+      standard hyperboloid embeddings. This claim concerns one unit timelike
+      vector only; it is not a timelike-plane or tube-worldsheet orbit, an
+      invariant probability measure, or a physical ensemble.
+    provenance: campaigns/P227-einbein-worldline-harvest/adjudication.yaml
+    verification: symbolic_verified
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    dependencies: []
+    evidence:
+      - campaigns/P227-einbein-worldline-harvest/verify.py
+      - campaigns/P227-einbein-worldline-harvest/reviews/independent_worldline_lorentz_review.py
+      - campaigns/P227-einbein-worldline-harvest/attempts/0002/result.yaml
+      - memory/vantasner/decisions/C-LOR-001-review.md
+      - src/substrate_framework/lorentz_orbits.py
+      - tests/test_lorentz_orbits.py
+    assumptions:
+      - The ambient metrics are diag(-1,1,1) and diag(-1,1,1,1) in the displayed mostly-plus convention.
+      - The embeddings use the standard future sheet and the displayed hyperbolic polar coordinates.
+      - Only spacetime dimensions three and four and only the induced metric are claimed.
+    comparators: []
+    accepted_in: v0.160.0
+    challenges: []
+    supersedes: []
+  - id: C-LOR-002
+    statement: >-
+      In the displayed mostly-plus matrix bases, the exact Lorentz-algebra
+      stabilizer of the standard 2+1-dimensional massive momentum is generated
+      by J12 and the displayed null stabilizer by K2+J12. In 3+1 dimensions,
+      the displayed massive generators close as so(3) with
+      [J1,J2]=-J3, [J2,J3]=-J1, and [J3,J1]=-J2. The displayed null generators
+      T1=K1+J2, T2=K2-J1, and J3 fix (1,0,0,1) and obey
+      [T1,T2]=0, [J3,T1]=-T2, and [J3,T2]=T1, the stated iso(2) convention.
+      This is finite-dimensional matrix Lie algebra only and proves no global
+      topology, unitary representation, spin, anyon, continuous-spin,
+      helicity, photon, graviton, or interaction statement.
+    provenance: campaigns/P227-einbein-worldline-harvest/adjudication.yaml
+    verification: symbolic_verified
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    dependencies: []
+    evidence:
+      - campaigns/P227-einbein-worldline-harvest/verify.py
+      - campaigns/P227-einbein-worldline-harvest/reviews/independent_worldline_lorentz_review.py
+      - campaigns/P227-einbein-worldline-harvest/attempts/0002/result.yaml
+      - memory/vantasner/decisions/C-LOR-002-review.md
+      - src/substrate_framework/lorentz_little_groups.py
+      - tests/test_lorentz_little_groups.py
+    assumptions:
+      - The Minkowski metrics, standard momenta, generator matrices, and commutator orientation are exactly the displayed repository conventions.
+      - Stabilizer means exact matrix Lie-algebra membership and annihilation of the displayed momentum vector.
+      - Overall generator sign or basis changes do not leave the algebra, while the registered mutations change relative signs and fail a fixed-vector or commutator oracle.
+      - No representation classification or physical particle interpretation is inferred.
+    comparators: []
+    accepted_in: v0.160.0
+    challenges: []
+    supersedes: []
