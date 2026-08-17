@@ -19,7 +19,7 @@ with determinant ``-c0**2``, inverse
 
     g^tt = -n/c0**2
     g^tX = n*V/c0**2
-    g^XX = V**2 - n*V**2/c0**2
+    g^XX = 1/n - n*V**2/c0**2  # = (-n*V**2/c0**2 + 1/n) when expanded
 
 The ``n=1, V=0`` limit reduces to the homogeneous non-flowing Minkowski
 metric. The ``V=0`` limit reduces to the static 1+1 optical metric family

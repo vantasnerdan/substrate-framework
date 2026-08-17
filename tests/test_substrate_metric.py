@@ -83,6 +83,47 @@ def test_flowing_metric_inverse_components() -> None:
     assert sp.simplify(product[1, 1] - 1) == 0
 
 
+
+
+def test_flowing_metric_inverse_components_closed_form() -> None:
+    """Lock the literal closed-form expressions from the module docstring.
+
+    The implementation in :func:`flowing_metric_inverse` uses sympy and the
+    docstring at ``substrate_metric.py:22`` exposes the same expressions in
+    closed form. This test reads those closed forms and asserts they match
+    the function output exactly, ruling out any future docstring drift from
+    the implementation. The last assertion explicitly rejects the historical
+    leak ``V**2 - n*V**2/c0**2``.
+    """
+
+    inverse = flowing_metric_inverse(N, V, C0)
+    expected_tt = -N / C0**2
+    expected_tX = N * V / C0**2
+    expected_XX = 1 / N - N * V**2 / C0**2
+    assert sp.simplify(inverse[0, 0] - expected_tt) == 0
+    assert sp.simplify(inverse[0, 1] - expected_tX) == 0
+    assert sp.simplify(inverse[1, 1] - expected_XX) == 0
+    # Guard against the historical docstring leak (V**2 - n*V**2/c0**2)
+    leaked_XX = V**2 - N * V**2 / C0**2
+    assert sp.simplify(inverse[1, 1] - leaked_XX) != 0
+
+
+def test_flowing_metric_inverse_components_closed_form_under_n_mutation() -> None:
+    """Mutation: a sign-flipped or dropped-prefactor closed form breaks the gate.
+
+    Ensures the literal closed-form assertion in
+    ``test_flowing_metric_inverse_components_closed_form`` cannot be
+    satisfied by a stale or rounded expression. Mutating
+    ``1/n - n*V**2/c0**2`` to ``-1/n - n*V**2/c0**2`` (sign flip) or to
+    ``1/n - V**2/c0**2`` (drop ``n``-prefactor) must fail.
+    """
+
+    inverse = flowing_metric_inverse(N, V, C0)
+    wrong_sign = -1 / N - N * V**2 / C0**2
+    wrong_factor = 1 / N - V**2 / C0**2
+    assert sp.simplify(inverse[1, 1] - wrong_sign) != 0
+    assert sp.simplify(inverse[1, 1] - wrong_factor) != 0
+
 def test_flowing_metric_minkowski_limit() -> None:
     """At n=1, V=0 the metric reduces to the homogeneous Minkowski metric."""
 
