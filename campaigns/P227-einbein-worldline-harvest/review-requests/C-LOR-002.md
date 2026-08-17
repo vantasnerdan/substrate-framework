@@ -56,7 +56,7 @@ solution of the stabilizer equations is the independent alternative.
 
 ## Four-Axis Decision Requested
 
-The proposed axes are verification `symbolic_verified`, review `unaudited`,
+The proposed axes before review were verification `symbolic_verified`, review `unaudited`,
 compatibility `unassessed`, epistemic `proposed`, and no replacement relation.
 
 ## Promotion Boundary and Continuation

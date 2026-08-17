@@ -1,7 +1,7 @@
 ---
 description: Independent review and acceptance of C-WLN-003 (worldline reparametrization, local constant-e gauge, massless Weyl identity, massive obstruction)
-author: vantasner-review
-created: '2026-08-17T20:45:00Z'
+author: vantasner-review and codex
+created: '2026-08-17T20:30:58Z'
 updated: '2026-08-17T20:45:00Z'
 tags:
 - substrate-framework
@@ -34,7 +34,7 @@ is nonzero for nontrivial positive `Omega != 1`.
 
 ## Sourced Inputs
 
-The review read release `v0.159.0`, proposal P227, the canonical
+The review read release `v0.159.0`, campaign P227, the canonical
 `worldline_reparametrization_residual`,
 `constant_e_gauge_rate`, `massless_worldline_weyl_residual`, and
 `massive_mass_term_weyl_change` APIs in
@@ -95,6 +95,9 @@ The claim earns `symbolic_verified`.
   `e/r`): the residual `r L' - L` becomes
   `c0^2 e m^2 / 2 (1 - 1/r) + (r - 1) sigma / (2e)`, which is
   nonzero. Mutation rejected.
+- **Wrong constant-gauge rate** (`df/dtau=e/(2e_target)`): the
+  transformed einbein is `2e_target`, not the declared target. Mutation
+  rejected.
 - **Wrong Weyl weight on e** (`e -> Omega e` instead of
   `Omega^2 e`): the residual
   `L_massive' - L` becomes
@@ -140,6 +143,8 @@ worldline action identity, not a field-theory conformal statement.
 
 ## Cross-References
 
-Source proposal: `proposals/P227-einbein-worldline-harvest/proposal.yaml`.
+Source campaign: `campaigns/P227-einbein-worldline-harvest/proposal.yaml`.
 Source PR: PR #60 (merged). Review request:
-`proposals/P227-einbein-worldline-harvest/review-requests/C-WLN-003.md`.
+`campaigns/P227-einbein-worldline-harvest/review-requests/C-WLN-003.md`.
+Executable corrective review:
+`campaigns/P227-einbein-worldline-harvest/reviews/independent_worldline_lorentz_review.py`.

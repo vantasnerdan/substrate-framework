@@ -1,8 +1,8 @@
 ---
 description: Independent review and acceptance of C-WLN-001 (massive einbein density, positive branch elimination, Legendre Hamiltonian)
-author: vantasner-review
-created: '2026-08-17T20:35:00Z'
-updated: '2026-08-17T20:35:00Z'
+author: vantasner-review and codex
+created: '2026-08-17T20:30:58Z'
+updated: '2026-08-17T20:45:00Z'
 tags:
 - substrate-framework
 - claim-review
@@ -29,11 +29,11 @@ is the pure constraint `e*(g^(mu nu)*p_mu*p_nu+(m*c0)^2)/2`.
 
 ## Sourced Inputs
 
-The review read release `v0.159.0`, proposal P227, the canonical
+The review read release `v0.159.0`, campaign P227, the canonical
 `massive_einbein_ledger` and `einbein_hamiltonian_ledger` APIs in
 `src/substrate_framework/relativistic_particle.py`, the existing tests
 in `tests/test_relativistic_particle.py`, and the P227 verifier
-(`proposals/P227-einbein-worldline-harvest/verify.py`). Merged PRs #38
+(`campaigns/P227-einbein-worldline-harvest/verify.py`). Merged PRs #38
 and #39 are provenance only. No accepted scientific claim is proposed
 as a premise.
 
@@ -70,7 +70,7 @@ selection and index placement are verified by direct substitution.
    `H = e*(p^T g^-1 p + (m c0)^2)/2` (the claim's pure constraint).
 
 6. **Non-diagonal metric verification**: on
-   `metric = diag(-2, 3, 1 / 1, 2)`, the closed form
+   `metric = [[-2, 0, 0], [0, 3, 1], [0, 1, 2]]`, the closed form
    `H = e*(p^T g^-1 p + (m c0)^2)/2` is verified to equal the Legendre
    construction `H = p·v - L(v(p))` exactly (diff = 0 after
    `sp.simplify`).
@@ -112,8 +112,11 @@ specialization is reserved for C-WLN-002.
 
 ## Dependency and Consumer Replay
 
-The direct dependency is `pseudo_riemannian.exact_metric_matrix` and
-`pseudo_riemannian.metric_inverse` (both accepted canonical helpers).
+The direct implementation dependency is
+`pseudo_riemannian.exact_metric_matrix` and
+`pseudo_riemannian.metric_inverse`. They are conditional infrastructure,
+not accepted scientific premises; the independent review also inverts the
+displayed exact matrix directly.
 Consumers are `massive_einbein_ledger`, `einbein_hamiltonian_ledger`,
 the canonical worldline tests, and the P227 verifier. All 14 P227
 verifier checks pass on the current main.
@@ -140,7 +143,9 @@ identity, not a quantum-mechanical or field-theoretic statement.
 
 ## Cross-References
 
-Source proposal: `proposals/P227-einbein-worldline-harvest/proposal.yaml`.
+Source campaign: `campaigns/P227-einbein-worldline-harvest/proposal.yaml`.
 Source PR: PR #60 (merged). Review request:
-`proposals/P227-einbein-worldline-harvest/review-requests/C-WLN-001.md`.
+`campaigns/P227-einbein-worldline-harvest/review-requests/C-WLN-001.md`.
 Canonical goal: issue #59.
+Executable corrective review:
+`campaigns/P227-einbein-worldline-harvest/reviews/independent_worldline_lorentz_review.py`.

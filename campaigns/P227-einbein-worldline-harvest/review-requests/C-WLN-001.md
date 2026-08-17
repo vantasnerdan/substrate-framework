@@ -67,7 +67,7 @@ derivation.
 
 ## Four-Axis Decision Requested
 
-The author requests an independent decision, not acceptance by this packet.
+The author requested an independent decision, not acceptance by this packet.
 The proposed axes are verification `symbolic_verified`, review `unaudited`,
 compatibility `unassessed`, epistemic `proposed`, with no `supersedes`
 relationship.

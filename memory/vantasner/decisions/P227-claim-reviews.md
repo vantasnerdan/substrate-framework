@@ -1,8 +1,8 @@
 ---
 description: Independent review and acceptance decisions for C-WLN-001 C-WLN-002 C-WLN-003 C-LOR-001 and C-LOR-002 (P227 worldline harvest)
-author: vantasner
-created: '2026-08-17T21:00:00Z'
-updated: '2026-08-17T21:00:00Z'
+author: vantasner and codex
+created: '2026-08-17T20:30:58Z'
+updated: '2026-08-17T20:45:00Z'
 tags:
 - substrate-framework
 - claim-review
@@ -18,8 +18,8 @@ status: active
 ## Claims Under Review
 
 C-WLN-001, C-WLN-002, C-WLN-003, C-LOR-001, and C-LOR-002 from the
-P227 einbein-worldline-harvest proposal
-(`proposals/P227-einbein-worldline-harvest/`). Each review packet is
+P227 einbein-worldline-harvest campaign
+(`campaigns/P227-einbein-worldline-harvest/`). Each review packet is
 the canonical conditional exact classical statement derived from the
 merged PRs #38 and #39 tutorials, exposed as a small reusable
 ledger in `src/substrate_framework/relativistic_particle.py`,
@@ -30,8 +30,12 @@ decisions.
 
 ## Independence and Sensitivity
 
-The reviewer (`vantasner-review`) rederives each claim without
-importing the proposed helper APIs:
+The draft reviewer (`vantasner-review`) supplied prose rederivations. The
+merger audit found false printed residuals and generator products in the
+C-WLN-002 and C-LOR-002 drafts, corrected them, and added
+`reviews/independent_worldline_lorentz_review.py`. That executable reviewer
+derives the claims before importing the canonical helper APIs and passes 51
+mutation-sensitive checks:
 
 - **C-WLN-001**: derives the `e` Euler equation, solves the auxiliary
   constraint for the positive branch, substitutes back into the
@@ -47,22 +51,21 @@ importing the proposed helper APIs:
 - **C-WLN-003**: transforms the density and integration measure
   directly under reparametrization, integrates the local gauge rate
   ODE, and compares the massless and massive Weyl terms. Rejects
-  wrong reparametrization weight, wrong Weyl weight, and identity /
-  nontrivial `Omega` conflation.
+  wrong reparametrization weight, wrong constant-gauge rate, wrong Weyl
+  weight, and identity / nontrivial `Omega` conflation.
 - **C-LOR-001**: differentiates the displayed hyperboloid embeddings
   and pulls back the ambient metric by hand for both 2+1 and 3+1.
   Rejects sign-flipped ambient metric, wrong dimension, and angular
   swap mutations.
 - **C-LOR-002**: reconstructs the generators from the Lorentz-algebra
   condition `M^T eta + eta M = 0` and the fixed-vector equations,
-  then multiplies matrices directly. Rejects wrong-sign `T1` and
-  `T2` mixing mutations.
+  then multiplies matrices directly. Rejects the relative-sign mutations
+  `K1-J2` and `K2+J1` plus the wrong commutator sign. An overall generator
+  sign is correctly recognized as remaining in the stabilizer.
 
 All five reviews include a comparison of the independent
 rederivation against the canonical helper; in each case the
-independent result agrees (up to a sign-convention choice of
-stabilizer representative, which is allowed by the subgroup
-membership).
+independent result agrees exactly in the displayed repository convention.
 
 ## Four-Axis Decisions
 
@@ -93,15 +96,17 @@ sensitivity, and framework-compatibility checks. No competing
 candidate (B coordinate-function derivation, C document-local
 duplication) overrules the chosen candidate-A ledgers. Proposal P227
 transitions from `in_review` to `accepted`. The implementation
-remains unchanged from PR #60; the closure transaction is review
-evidence plus the proposal status update only.
+remains mathematically unchanged from PR #60. The closure transaction also
+materializes the immutable campaign, accepted registry entries, release
+`v0.160.0`, generated documentation, and accepted memory required to make
+the five four-axis decisions authoritative.
 
 ## Cross-References
 
 See P227, the five per-claim reviews, the P227 verifier
-(`proposals/P227-einbein-worldline-harvest/verify.py`, 14 checks
+(`campaigns/P227-einbein-worldline-harvest/verify.py`, 14 checks
 pass), the canonical modules
 `src/substrate_framework/{relativistic_particle, lorentz_orbits,
 lorentz_little_groups}.py`, and the canonical worldline/Lorentz
-test suites. Accepted base `v0.159.0`; source PR #60 (merged).
+test suites. Accepted base `v0.159.0`; promoted release `v0.160.0`; source PR #60 (merged).
 Canonical goal: issue #59; closure tracker: issue #74.

@@ -1,11 +1,12 @@
 """Exact induced geometry for narrowly named Lorentz-group orbits.
 
-Authority status: conditional, unpromoted infrastructure linked to open goal
-issue #28 (vantasnerdan/substrate-framework), dimensionally generalized under
-issue #40. The current public surface describes only the Lorentz orbit of one
-future-directed unit timelike vector, namely ``H^2`` or ``H^3``. It does not
-describe a timelike two-plane or tube worldsheet orbit and makes no claim about
-a Lorentz-invariant tube ensemble.
+Authority status: ``unit_timelike_vector_orbit_metric`` implements accepted
+claim C-LOR-001 in release v0.160.0. The volume helper remains conditional
+unpromoted infrastructure linked to open goal issue #28. The current public
+surface describes only the Lorentz orbit of one future-directed unit timelike
+vector, namely ``H^2`` or ``H^3``. It does not describe a timelike two-plane or
+tube worldsheet orbit and makes no claim about a Lorentz-invariant tube
+ensemble.
 """
 
 from __future__ import annotations

@@ -2,15 +2,15 @@
 description: Extract exact einbein worldline and Lorentz geometry atoms into claim-ready framework APIs
 author: codex
 created: '2026-08-11T14:14:03+02:00'
-updated: '2026-08-12T11:36:38+02:00'
+updated: '2026-08-17T20:45:00Z'
 tags:
 - substrate-framework
 - campaign-proposal
 - einbein
 - worldline
 category: proposals
-confidence: exploratory
-status: active
+confidence: established
+status: archived
 ---
 
 ## Question and Positive Deliverable
@@ -45,7 +45,7 @@ Attempts are append-only; the first implementation attempt begins only after thi
 
 | Attempt | Candidate or repair | Artifact and command | Verdict | Mechanism | Next attempt |
 | --- | --- | --- | --- | --- | --- |
-| 0001 | Candidate A canonical extraction | `src/substrate_framework/{relativistic_particle,pseudo_riemannian,lorentz_little_groups}.py`; generalized `lorentz_orbits.py`; exact targeted replay and `proposals/P227-einbein-worldline-harvest/verify.py` | Strong milestone | The scalar-contraction ledger, generic geometry layer, and narrowly typed stabilizer ledgers served both tutorial dimensions. Independent derivations and load-bearing mutations all disagreed when signs, weights, or index placement changed. | Submit the artifact boundary for distinct-agent review; do not promote claims in the author PR. |
+| 0001 | Candidate A canonical extraction | `src/substrate_framework/{relativistic_particle,pseudo_riemannian,lorentz_little_groups}.py`; generalized `lorentz_orbits.py`; exact targeted replay and `campaigns/P227-einbein-worldline-harvest/verify.py` | Strong milestone | The scalar-contraction ledger, generic geometry layer, and narrowly typed stabilizer ledgers served both tutorial dimensions. Independent derivations and load-bearing mutations all disagreed when signs, weights, or index placement changed. | Submit the artifact boundary for distinct-agent review; do not promote claims in the author PR. |
 
 ## Unit-Level Harvest Disposition
 The einbein action and positive massive elimination, massless specialization, reparametrization/constant-e gauge/Hamiltonian family, and narrow worldline Weyl identity are implemented as claim-ready exact ledgers under `relativistic_particle.py`. The H2/H3 future-unit-timelike-vector orbit geometry is integrated by dimensionally generalizing the existing unpromoted `lorentz_orbits.py`, while coordinate Christoffel and Ricci construction is refactored into `pseudo_riemannian.py` and replayed through the existing covariant sine-Gordon wrappers. The displayed massive and massless little-group matrices and commutators are harvested narrowly in `lorentz_little_groups.py`. Printed Christoffel tables remain tutorial regression/documentation rather than a new scientific claim. Representation-classification, helicity, parity, anyon, continuous-spin, photon, graviton, Maxwell/Yang-Mills conformal, and substrate interpretations remain only cited tutorial narrative and PR history; they are neither encoded nor proposed for promotion here.
@@ -74,3 +74,15 @@ distinct review and any later governance transaction.
 
 ## Done Gate
 The harvest PR is ready only when the importable objects exist, the exact and mutation oracles pass, affected consumers replay, the public API and convention maps are documented, repository validation succeeds, and debt inside the harvest boundary is empty. The scientific campaign remains active until an independent review either promotes or rejects each provisional claim; merge provenance alone is not completion.
+
+## Adjudication Result — 2026-08-17
+
+P227 moved unchanged into `campaigns/P227-einbein-worldline-harvest/` for
+adjudication. The first prose-review draft failed audit because its C-WLN-002
+Euler residual and C-LOR-002 generator products were false. Attempt 0001
+preserves that failure. A fresh executable independent review repaired the
+oracle, passed 51 exact mutation-sensitive checks, and agreed with the
+canonical APIs. C-WLN-001 through C-WLN-003 and C-LOR-001 through C-LOR-002
+were then promoted individually in release `v0.160.0` with no dependencies or
+supersession edges. The generated registry, documentation, and accepted memory
+are the current authority; this proposal record remains historical provenance.

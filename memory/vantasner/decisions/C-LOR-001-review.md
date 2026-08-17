@@ -1,8 +1,8 @@
 ---
 description: Independent review and acceptance of C-LOR-001 (future unit timelike-vector orbit metrics, exact H^2 and H^3 pullbacks)
-author: vantasner-review
-created: '2026-08-17T20:50:00Z'
-updated: '2026-08-17T20:50:00Z'
+author: vantasner-review and codex
+created: '2026-08-17T20:30:58Z'
+updated: '2026-08-17T20:45:00Z'
 tags:
 - substrate-framework
 - claim-review
@@ -25,7 +25,7 @@ In 2+1 dimensions the standard hyperboloid pullback is
 
 ## Sourced Inputs
 
-The review read release `v0.159.0`, proposal P227, the canonical
+The review read release `v0.159.0`, campaign P227, the canonical
 `unit_timelike_vector_orbit_metric` API in
 `src/substrate_framework/lorentz_orbits.py`, the canonical tests,
 and the P227 verifier.
@@ -100,8 +100,8 @@ field, action, or measure is identified merely by dimension.
 
 ## Dependency and Consumer Replay
 
-The direct dependency is `sympy.diff`, `sympy.trigsimp`, and
-`sympy.Matrix` (all stdlib). Consumers are
+The implementation dependencies are `sympy.diff`, `sympy.trigsimp`, and
+`sympy.Matrix`; no accepted scientific premise is imported. Consumers are
 `unit_timelike_vector_orbit_metric`, the canonical
 `tests/test_lorentz_orbits.py` (3 tests pass), and the P227 verifier
 (all 14 checks pass).
@@ -123,6 +123,8 @@ Any extension beyond these dimensions requires new evidence.
 
 ## Cross-References
 
-Source proposal: `proposals/P227-einbein-worldline-harvest/proposal.yaml`.
+Source campaign: `campaigns/P227-einbein-worldline-harvest/proposal.yaml`.
 Source PR: PR #60 (merged). Review request:
-`proposals/P227-einbein-worldline-harvest/review-requests/C-LOR-001.md`.
+`campaigns/P227-einbein-worldline-harvest/review-requests/C-LOR-001.md`.
+Executable corrective review:
+`campaigns/P227-einbein-worldline-harvest/reviews/independent_worldline_lorentz_review.py`.

@@ -1,8 +1,8 @@
 ---
 description: Independent review and acceptance of C-WLN-002 (massless specialization, null constraint, coordinate Euler equation, affine null-geodesic limit)
-author: vantasner-review
-created: '2026-08-17T20:40:00Z'
-updated: '2026-08-17T20:40:00Z'
+author: vantasner-review and codex
+created: '2026-08-17T20:30:58Z'
+updated: '2026-08-17T20:45:00Z'
 tags:
 - substrate-framework
 - claim-review
@@ -27,7 +27,7 @@ equation.
 
 ## Sourced Inputs
 
-The review read release `v0.159.0`, proposal P227, the canonical
+The review read release `v0.159.0`, campaign P227, the canonical
 `massless_einbein_ledger` and `einbein_geodesic_acceleration` APIs in
 `src/substrate_framework/relativistic_particle.py`, the canonical
 tests, and the P227 verifier. Merged tutorial prose is source
@@ -39,7 +39,7 @@ The review varies the massless action directly with respect to `e`
 and the coordinates, reconstructs Christoffel symbols from metric
 derivatives (via the standard `Gamma_kij = (1/2)(d g_kj/dx^i +
 d g_ki/dx^j - d g_ij/dx^k)` formula), and confirms the lower-index
-Euler residual on a non-diagonal metric without importing any proposed
+Euler residual on a nonconstant metric without importing any canonical
 P227 worldline API. The massive positive root is never used and then
 specialized to `m=0`.
 
@@ -67,20 +67,24 @@ specialized to `m=0`.
    null constraint `sigma = 0`, this is the affine null-geodesic
    equation.
 
-5. **Numerical verification**: on the metric `diag(-1, 2+x^2)` with
-   coordinates `(t, x(t))` and arbitrary `e(t)`, the lower-index
-   Euler residual computed directly from the metric derivatives is
-   `[-x*dot x^2 + (dot e/e), ((x^2+2)(ddot x e - dot e dot x) + x dot x^2 e + 2x dot x e)/e]`,
-   which vanishes identically after substituting the Euler equation
-   `ddot x = -Gamma^1_11 dot x^2 = -x/(x^2+2) dot x^2`. The claim
-   statement is confirmed.
+5. **Exact component verification**: on the nonconstant metric
+   `diag(-1, 2+x^2)`, write the velocity as `(u,w)` and keep arbitrary
+   `dot(e)`. The only nonzero Christoffel symbol is
+   `Gamma^x_xx=x/(x^2+2)`, so the claimed acceleration is
+   `(dot(e)u/e, -x*w^2/(x^2+2)+dot(e)w/e)`. Direct substitution into
+   the lower-index Euler expression makes both the `t` and `x`
+   components vanish identically. Reversing the Christoffel sign leaves
+   the exact residual `(0, 2*x*w^2)`, while omitting the nonaffine term
+   leaves a residual proportional to `-dot(e)*g*v/e`. These calculations
+   execute in the independent review script rather than relying on a
+   printed residual.
 
 ## Verification Status
 
 Exact symbolic substitution proves the `m=0` specialization, the null
 constraint, the coordinate Euler equation (including the
 `(dot e/e) dot x^a` term), and the constant-e reduction. The
-independent lower-index Euler residual on a non-diagonal metric
+independent lower-index Euler residual on a nonconstant metric
 agrees with the upper-index form via `g^ak`. The claim earns
 `symbolic_verified`.
 
@@ -94,10 +98,9 @@ agrees with the upper-index form via `g^ak`. The claim earns
   `+Gamma^a_ij` gives a non-vanishing upper-index residual on
   `diag(-1, 2+x^2)` (the Christoffel `Gamma^1_11 = x/(x^2+2)` is
   nonzero). Mutation rejected.
-- **Forgetting the `(dot e/e) dot x^a` term**: in a metric with
-  explicit `e(tau)` dependence (e.g. an e-dependent conformal
-  rescaling), the residual is nonzero without this term. Mutation
-  rejected.
+- **Forgetting the `(dot e/e) dot x^a` term**: for nonzero `dot(e)` and
+  velocity, the exact lower-index residual is nonzero even though the
+  supplied metric has no einbein dependence. Mutation rejected.
 
 ## Framework Compatibility
 
@@ -130,6 +133,8 @@ supersession.
 
 ## Cross-References
 
-Source proposal: `proposals/P227-einbein-worldline-harvest/proposal.yaml`.
+Source campaign: `campaigns/P227-einbein-worldline-harvest/proposal.yaml`.
 Source PR: PR #60 (merged). Review request:
-`proposals/P227-einbein-worldline-harvest/review-requests/C-WLN-002.md`.
+`campaigns/P227-einbein-worldline-harvest/review-requests/C-WLN-002.md`.
+Executable corrective review:
+`campaigns/P227-einbein-worldline-harvest/reviews/independent_worldline_lorentz_review.py`.

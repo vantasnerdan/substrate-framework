@@ -67,7 +67,7 @@ integration baseline.
 
 ## Four-Axis Decision Requested
 
-The proposed axes are verification `symbolic_verified`, review `unaudited`,
+The proposed axes before review were verification `symbolic_verified`, review `unaudited`,
 compatibility `unassessed`, epistemic `proposed`, and relationship
 `challenges: []`. The reviewer must assign the actual compatibility verdict.
 

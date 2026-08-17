@@ -1,6 +1,7 @@
 """Exact conditional algebra for a relativistic point-particle worldline.
 
-Authority status: conditional, unpromoted infrastructure linked to issue #40.
+Authority status: implements accepted claims C-WLN-001 through C-WLN-003 in
+release v0.160.0.
 The module uses the mostly-plus convention and keeps the positive-mass
 auxiliary-field elimination separate from the zero-mass specialization. It
 does not derive a background metric, quantize a particle, identify a physical

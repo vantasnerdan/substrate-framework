@@ -1,0 +1,24 @@
+attempt: 0001
+status: failed_review_evidence
+recorded_at: '2026-08-17T20:45:00Z'
+source_commit: f656749303da71d79c78b25ef2ae5d2478ccbfb6
+failure_class: implementation
+diagnosis: >-
+  The draft prose review was not an executable independent oracle. Its
+  C-WLN-002 component printed an Euler residual that does not vanish under the
+  stated arbitrary-einbein substitution. Its C-LOR-002 component used
+  incorrect boost products, reversed rotation conventions, claimed the wrong
+  signs for the displayed massive commutators, and incorrectly asserted that
+  an overall generator sign ceases to stabilize a null momentum.
+scientific_disposition: >-
+  The draft review failure does not refute the five proposed claims because
+  the canonical APIs and tests use the correct expressions. Acceptance was
+  withheld pending a fresh independent executable derivation.
+preserved_evidence:
+  - git_commit:f656749303da71d79c78b25ef2ae5d2478ccbfb6
+  - memory/vantasner/decisions/C-WLN-002-review.md
+  - memory/vantasner/decisions/C-LOR-002-review.md
+next_action: >-
+  Rebuild all five claims directly from SymPy primitives, use correct
+  relative-sign mutations, compare with canonical APIs only after the
+  independent derivations, and complete the governance promotion transaction.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact proposal verifier for the issue #40 worldline harvest."""
+"""Exact campaign verifier for the issue #40 worldline harvest."""
 
 from __future__ import annotations
 

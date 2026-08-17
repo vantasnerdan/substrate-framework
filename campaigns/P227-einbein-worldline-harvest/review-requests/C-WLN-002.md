@@ -62,7 +62,7 @@ for the smaller reusable ledger.
 
 ## Four-Axis Decision Requested
 
-The proposed axes before independent review are verification
+The proposed axes before independent review were verification
 `symbolic_verified`, review `unaudited`, compatibility `unassessed`, epistemic
 `proposed`, with no replacement relationship.
 
