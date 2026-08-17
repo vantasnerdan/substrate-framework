@@ -97,10 +97,10 @@ and final generated and repository state.
 - Mutation and counterexample command: wrong mass sign, Weyl/reparametrization weights, little-group sign, Casimir, scale weight, ghost weight, and Cartan generator were rejected.
 - Dependency replay: GitNexus reported low risk, 24 mapped changed symbols,
   no affected execution process, and the full repository suite passed all
-  2,193 tests.
+  2,193 tests. (Current main pytest collection: 2,210 — see `scripts/validate.sh` pin.)
 - Targeted tests: 54 focused worldline/chromomagnetic tests passed; one exact spectrum node was rerun after repairing the detected Float contamination and passed.
 - `scripts/validate.sh --full`: passed all fixed workflow checks and 2,193
-  tests in 313.90 seconds at the final scientific/code boundary.
+  tests in 313.90 seconds. (Current main pytest collection: 2,210 — see `scripts/validate.sh` pin.) at the final scientific/code boundary.
 - `git diff --check`: passed in a separate invocation; rerun after this
   evidence-only status update.
 

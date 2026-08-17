@@ -94,13 +94,26 @@ memory validate "$repo_root/memory"
 "$python_bin" "$repo_root/.agents/skills/physics-erdos-loop/scripts/validate_skill.py" \
   "$repo_root/.agents/skills/physics-erdos-loop"
 "$python_bin" -m compileall -q "$repo_root/src" "$repo_root/tools/agent-memory/src"
+
+# Pin the pytest collection count so every release manifest and campaign
+# adjudication quotes one source of truth for the test metric. `pytest
+# --collect-only -q` ends with "<N> tests collected in <T>s"; extract the
+# numeric prefix on the matching line and emit it as "Tests: N" before the
+# pytest run so the metric is reproducible regardless of selector.
+tests_collected="$(
+  PYTHONPATH="$repo_root/src" "$python_bin" -m pytest --collect-only -q 2>/dev/null \
+    | awk '/^[0-9]+ tests collected/ {print $1; exit}'
+)"
+tests_collected="${tests_collected:-0}"
+echo "Tests: ${tests_collected}"
+
 if [ "$pytest_mode" = "full" ]; then
   PYTHONPATH="$repo_root/src" "$python_bin" -m pytest -q
-  echo "ALL REPOSITORY WORKFLOW CHECKS PASS (full pytest suite)"
+  echo "ALL REPOSITORY WORKFLOW CHECKS PASS (full pytest suite, ${tests_collected} tests)"
 else
   printf 'Running requested pytest scope:'
   printf ' %q' "${pytest_args[@]}"
   printf '\n'
   PYTHONPATH="$repo_root/src" "$python_bin" -m pytest -q -- "${pytest_args[@]}"
-  echo "ALL FIXED REPOSITORY CHECKS AND REQUESTED PYTEST SCOPE PASS"
+  echo "ALL FIXED REPOSITORY CHECKS AND REQUESTED PYTEST SCOPE PASS (collection: ${tests_collected} tests)"
 fi
