@@ -94,6 +94,125 @@ def test_local_frame_cancellation_and_wrong_weight_are_distinguished() -> None:
     assert mutated.einstein_teleparallel_identity_residual == slope**2 / 6
 
 
+
+
+def test_levi_civita_ricci_scalar_matches_pseudo_riemannian() -> None:
+    """Cross-route: the inline 4D Levi-Civita Ricci scalar agrees with the
+    canonical ``pseudo_riemannian.metric_ricci_scalar`` route.
+
+    ``teleparallel._levi_civita_ricci_scalar`` is an intentional
+    independent construction kept separate from the canonical
+    pseudo-Riemannian machinery (per PR #7 — the metric-only Levi-Civita
+    scalar is required for the ``R + T - B = 0`` mostly-plus identity
+    check). This test pins the equivalence so a future drift in either
+    route is detected.
+
+    The non-flat anisotropic coframe
+    ``diag(1, e^(H1 t), e^(H2 t), e^(H3 t))`` produces the metric
+    ``diag(-1, e^(2 H1 t), e^(2 H2 t), e^(2 H3 t))``. Both routes yield
+    ``2*(H1**2 + H2**2 + H3**2 + H1*H2 + H1*H3 + H2*H3)``. The test
+    asserts the symbolic equality after sympy simplify.
+    """
+
+    from substrate_framework.pseudo_riemannian import (
+        coordinate_symbols,
+        metric_ricci_scalar,
+    )
+
+    t, x, y, z = coordinate_symbols(
+        (
+            sp.Symbol("t", real=True),
+            sp.Symbol("x", real=True),
+            sp.Symbol("y", real=True),
+            sp.Symbol("z", real=True),
+        )
+    )
+    hubble_components = sp.symbols("H1 H2 H3", real=True)
+    coframe = sp.Matrix(
+        [
+            [1, 0, 0, 0],
+            [0, sp.exp(hubble_components[0] * t), 0, 0],
+            [0, 0, sp.exp(hubble_components[1] * t), 0],
+            [0, 0, 0, sp.exp(hubble_components[2] * t)],
+        ]
+    )
+    ledger = teleparallel_coframe_ledger(coframe, (t, x, y, z))
+    canonical_ricci = metric_ricci_scalar(
+        ledger.metric_covariant, (t, x, y, z)
+    )
+    assert (
+        sp.simplify(ledger.levi_civita_ricci_scalar - canonical_ricci)
+        == 0
+    )
+    # Pin the analytic value too — both routes must simplify to the
+    # same symbolic expression, so any future drift in either route
+    # shows up as a divergence from this exact answer.
+    expected = (
+        2 * hubble_components[0] ** 2
+        + 2 * hubble_components[0] * hubble_components[1]
+        + 2 * hubble_components[0] * hubble_components[2]
+        + 2 * hubble_components[1] ** 2
+        + 2 * hubble_components[1] * hubble_components[2]
+        + 2 * hubble_components[2] ** 2
+    )
+    assert sp.simplify(ledger.levi_civita_ricci_scalar - expected) == 0
+    assert sp.simplify(canonical_ricci - expected) == 0
+
+
+def test_levi_civita_ricci_scalar_under_sign_mutation() -> None:
+    """Mutation guard: flipping the Ricci sign in either route is rejected.
+
+    A Ricci-sign mutation is a valid general-equivalence mutation: any
+    metric has a true Ricci scalar, and the two routes must agree on
+    it with the same sign. Replacing the ledger's Ricci scalar with
+    its negation (or vice versa) must produce a nonzero residual under
+    the canonical route, which the cross-route comparison catches.
+
+    Note: a metric-determinant mutation is NOT a valid general
+    equivalence mutation (per Dan's #67 technical-assessment comment 2)
+    because changing a metric can simply define another valid metric
+    for which both Ricci implementations still agree. The sign mutation
+    here targets a different invariant: the actual sign of the scalar
+    curvature.
+    """
+
+    from substrate_framework.pseudo_riemannian import (
+        coordinate_symbols,
+        metric_ricci_scalar,
+    )
+
+    t, x, y, z = coordinate_symbols(
+        (
+            sp.Symbol("t", real=True),
+            sp.Symbol("x", real=True),
+            sp.Symbol("y", real=True),
+            sp.Symbol("z", real=True),
+        )
+    )
+    hubble_components = sp.symbols("H1 H2 H3", real=True)
+    coframe = sp.Matrix(
+        [
+            [1, 0, 0, 0],
+            [0, sp.exp(hubble_components[0] * t), 0, 0],
+            [0, 0, sp.exp(hubble_components[1] * t), 0],
+            [0, 0, 0, sp.exp(hubble_components[2] * t)],
+        ]
+    )
+    ledger = teleparallel_coframe_ledger(coframe, (t, x, y, z))
+    canonical_ricci = metric_ricci_scalar(
+        ledger.metric_covariant, (t, x, y, z)
+    )
+
+    # Sign-flipping the ledger Ricci must NOT equal canonical Ricci.
+    negated_ledger_ricci = -ledger.levi_civita_ricci_scalar
+    assert sp.simplify(negated_ledger_ricci - canonical_ricci) != 0
+
+    # Sign-flipping the canonical Ricci must NOT equal ledger Ricci.
+    negated_canonical_ricci = -canonical_ricci
+    assert sp.simplify(negated_canonical_ricci - ledger.levi_civita_ricci_scalar) != 0
+
+
+
 @pytest.mark.parametrize(
     ("operation", "message"),
     [
