@@ -209,3 +209,30 @@ def test_public_api_is_explicit_and_narrow() -> None:
         "flowing_metric_ricci_scalar",
         "flowing_substrate_metric",
     }
+
+
+def test_declared_metric_inverse_rejects_historical_docstring_leak() -> None:
+    """Mutation guard: reject the historical ``V**2 - n*V**2/c0**2`` form.
+
+    The original p226-branch docstring printed the metric inverse component
+    ``g^XX = V**2 - n*V**2/c0**2``; sympy-verified this differs from the
+    correct ``1/n - n*V**2/c0**2`` by ``V**2 - 1/n``. PR #64 rewrote the
+    docstring to a matrix form, but the literal-closed-form literal
+    ``test_declared_metric_inverse_determinant_and_null_roots`` does not
+    explicitly reject the historical leak. This test registers that the
+    leak's exact expression is a wrong answer, and the mutated forms
+    ``-1/n - n*V**2/c0**2`` and ``1/n - V**2/c0**2`` are also wrong.
+    """
+
+    n, c0 = sp.symbols("n c0", positive=True)
+    velocity = sp.symbols("V", real=True)
+    result = flowing_substrate_metric(n, velocity, c0)
+    historical_leak = velocity**2 - n * velocity**2 / c0**2
+    wrong_sign = -1 / n - n * velocity**2 / c0**2
+    wrong_factor = 1 / n - velocity**2 / c0**2
+    assert result.inverse[1, 1] != historical_leak
+    assert result.inverse[1, 1] != wrong_sign
+    assert result.inverse[1, 1] != wrong_factor
+    # And confirm the right form still equals the inverse
+    right_form = 1 / n - n * velocity**2 / c0**2
+    assert result.inverse[1, 1] == right_form
