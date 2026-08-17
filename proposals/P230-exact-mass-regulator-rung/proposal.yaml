@@ -1,0 +1,75 @@
+id: P230
+base_release: v0.160.0
+source_baseline: substrate-framework@1b00c3a
+question: >-
+  For the accepted Route-1 induced-gravity chain (one real scalar on a
+  background metric with Euclidean fluctuation operator
+  D_E = -nabla_E^2 + xi R_E + m^2, m^2 = V''(phi_bg) from
+  covariant_sine_gordon_action), what are the exact closed-form one-loop
+  proper-time coefficients of the induced curvature (inverse-Newton-matching)
+  term and of the mass-dependent cosmopolitan/vacuum sector when the mass is
+  retained exactly rather than UV-asymptotically expanded, for preregistered
+  regulators; and what is the exact scheme spread among those regulators at a
+  common declared scale?
+source_inventory:
+  - source: accepted module src/substrate_framework/scalar_induced_newton.py (PR #14 harvest a562568)
+    access: in hand (repository source, audited at 1b00c3a)
+    extracted: operator convention D_E=-nabla_E^2+xi R_E+m^2; scheme factor 16*pi*(1/2)*(4*pi)^-2=1/(2*pi); leading coefficient s=N*(1-6*xi)/(12*pi); sharp proper-time regulator name; disclaimed finite-mass and logarithmic structure
+  - source: accepted module src/substrate_framework/covariant_sine_gordon_action.py (PR #25 harvest 65e4a7c)
+    access: in hand (repository source, audited at 1b00c3a)
+    extracted: second variation D = -box_g + V''(phi_bg) + xi R with m^2 -> V''(phi_bg); mostly-plus convention; Euclidean-Hessian handoff
+  - source: Vassilevich arXiv:hep-th/0306138 eqs (2.2) and (4.27)
+    access: open (already imported by the accepted scalar_induced_newton docstring)
+    extracted: boundaryless heat-kernel a_2 structure ((1/6-xi)R - m^2 weights) used as accepted convention
+  - source: Visser arXiv:gr-qc/0204062 eqs (8)-(21)
+    access: open (already imported by the accepted scalar_induced_newton docstring)
+    extracted: cutoff-squared, mass-logarithmic, finite, and additive-baseline structure under its conventions
+invariants:
+  - operator and scheme conventions are exactly the accepted scalar_induced_newton ones; the mass is retained exactly (no tau*m^2 expansion inside the proper-time integral)
+  - 'target-blindness: no observed G, Planck mass, or empirical gravity benchmark enters; the cutoff remains a declared formal scale and is not identified with any substrate length in this rung'
+  - no new fitted constant; every closed form is derived and cross-checked against independent quadrature
+  - accepted claims, releases, generated docs, and immutable campaigns remain unchanged until independent claim adjudication
+  - author does not merge; a distinct reviewer or the owner performs any merge
+allowed_imports:
+  - SymPy exact algebra including expint/E1 and Bessel K closed forms
+  - SciPy quadrature (scipy.integrate.quad) and scipy.special cross-checks in tests only
+  - substrate_framework.scalar_induced_newton (SHARP_PROPER_TIME_REGULATOR, scalar_heat_kernel_a2, leading_scalar_newton_shift_coefficient constants and APIs)
+  - substrate_framework.covariant_sine_gordon_action (fluctuation-operator mass slot m^2 = V''(phi_bg)) as the declared upstream composition
+  - substrate_framework.exact_symbolic input contracts
+candidates:
+  - id: A
+    description: >-
+      Sharp proper-time lower cutoff tau_0 = Lambda^-2 with exact mass; closed
+      form Lambda^2*(exp(-z) - z*E1(z)), z = m^2/Lambda^2. This is the exact
+      finite-mass version of the accepted leading cutoff-squared term and
+      quantifies the PR #13 review's load-bearing factor.
+  - id: B
+    description: >-
+      Smooth essential-singularity proper-time weight exp(-1/(Lambda^2*tau))
+      with exact mass; closed form 2*Lambda^2*sqrt(z)*BesselK_1(2*sqrt(z)).
+      Cures the small-tau power divergence without a hard step, so all three
+      heat-kernel weights share one convergent integral family.
+  - id: C
+    description: >-
+      Power-divergence-subtracted (zeta/Mellin finite-part) scheme with a
+      declared renormalization scale mu: closed form
+      m^2*(ln(m^2/mu^2) + gamma_E - 1) for the tau^-2 class. Exhibits the
+      logarithmic-running alternative in which no Lambda^2 term survives.
+selection_criteria:
+  - convention compatibility with accepted scalar_induced_newton APIs and the covariant_sine_gordon_action mass slot
+  - exactness as closed forms in standard special functions with no fitted constants
+  - 'exact-mass integrity: no UV-asymptotic truncation inside the regulated integral'
+  - 'mutation sensitivity: wrong xi sign, wrong prefactor, wrong special-function branch, and unknown regulator must each be detectable'
+  - reuse value as importable primitives feeding the later cutoff-identification and renormalization-condition rungs
+  - 'regulator explicitness: scheme dependence stays visible and quotable rather than hidden'
+claims_proposed:
+  - C-IGR-001
+  - C-IGR-002
+  - C-IGR-003
+comparators_blinded_until: >-
+  Empirical gravitational comparators (observed G, M_Pl, weak-field or
+  radiative benchmarks) stay blinded for this rung and remain blinded until a
+  later renormalization-condition rung freezes scheme, scale, and cutoff
+  identification; the accepted conditional coefficient s=N*(1-6*xi)/(12*pi)
+  is a framework ledger result, not an empirical comparator.
+status: active

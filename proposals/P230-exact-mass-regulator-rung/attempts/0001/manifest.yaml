@@ -1,0 +1,28 @@
+id: attempt-0001
+campaign: P230
+candidate: A+B+C parallel scheme exposure (preregistered in proposal.yaml)
+command: >
+  PYTHONPATH=src .venv/bin/python -m pytest tests/test_scalar_one_loop_mass.py -q
+working_directory: /home/dan/substrate-framework
+base_release: v0.160.0
+source_commit: 1b00c3a
+elapsed_seconds: 5.20
+exit_code: 0
+verdict: pass
+diagnosed_layer: none (first rung attempt succeeded)
+notes: >
+  20/20 targeted tests. Exact oracles: sharp tail-integral uniqueness
+  (derivative identity + exponential decay bound with E1 <= exp(-x)/x),
+  sharp tau^-3 integration-by-parts identity, smooth Bessel family
+  differential recurrence dJ_p/dz = -J_{p-1} with boundary limits J_2(0+)=1
+  and J_3(0+)=1, zeta power-subtraction limits, massless sharp reduction to
+  the accepted s*Lambda^2, small-z series 1 + z(ln z + gamma - 1),
+  40-digit mpmath quadrature corroboration at z in {0.1, 1.0, 2.5},
+  mutation sensitivity (prefactor, Ei-vs-E1 branch, Bessel order, xi sign
+  across 1/6, unknown regulator, defaulted scales, negative mass,
+  non-integer field count, undecidable xi), and target-blindness scan.
+  PR #13 bridge: F(1) = 0.1484955068 reproduces the review's named factor.
+full_boundary: >
+  bash scripts/validate.sh --full -> 2235 passed in 309.16s;
+  ALL REPOSITORY WORKFLOW CHECKS PASS (full pytest suite);
+  git diff --check clean (separate invocation, rc=0).

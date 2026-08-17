@@ -749,6 +749,19 @@ from .scalar_induced_newton import (
     leading_scalar_newton_shift_coefficient,
     scalar_heat_kernel_a2,
 )
+from .scalar_one_loop_mass import (
+    KNOWN_ONE_LOOP_REGULATORS,
+    SMOOTH_PROPER_TIME_REGULATOR,
+    ZETA_POWER_SUBTRACTED_REGULATOR,
+    curvature_proper_time_integral,
+    exact_mass_inverse_newton_shift,
+    exact_mass_vacuum_density_shift,
+    regulator_scheme_ledger,
+    vacuum_proper_time_integral,
+    ExactMassNewtonShift,
+    ExactMassVacuumShift,
+    RegulatorSchemeLedger,
+)
 from .covariant_sine_gordon_action import (
     CovariantSineGordonAction,
     CovariantSineGordonFluctuation,
@@ -2176,6 +2189,17 @@ __all__ = [
     "metric_ricci_scalar",
     "metric_ricci_tensor",
     "worldline_reparametrization_residual",
+    "KNOWN_ONE_LOOP_REGULATORS",
+    "SMOOTH_PROPER_TIME_REGULATOR",
+    "ZETA_POWER_SUBTRACTED_REGULATOR",
+    "curvature_proper_time_integral",
+    "exact_mass_inverse_newton_shift",
+    "exact_mass_vacuum_density_shift",
+    "regulator_scheme_ledger",
+    "vacuum_proper_time_integral",
+    "ExactMassNewtonShift",
+    "ExactMassVacuumShift",
+    "RegulatorSchemeLedger",
 ]
 
 __version__ = "0.0.0"
