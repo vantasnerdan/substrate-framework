@@ -117,3 +117,25 @@ def test_contribution_policy_blocks_sensitive_and_unlicensed_sources() -> None:
     assert "paywalled" in contributing
     assert "redistribution" in contributing
     assert "must not merge" in contributing
+
+
+def test_rights_restricted_preparata_sources_are_not_distributed() -> None:
+    source_directory = (
+        ROOT / "proposals/P229-preparata-qcd-vacuum-audit/sources"
+    )
+    restricted = (
+        "preparata1986-nuovo-cim-a96-366.pdf",
+        "preparata1986-extracted.txt",
+    )
+    for name in restricted:
+        assert not (source_directory / name).exists()
+
+    ignore_rules = (ROOT / ".gitignore").read_text(encoding="utf-8")
+    for name in restricted:
+        path = f"/proposals/P229-preparata-qcd-vacuum-audit/sources/{name}"
+        assert path in ignore_rules
+
+    source_notice = (source_directory / "README.md").read_text(encoding="utf-8")
+    assert "10.1007/BF02833896" in source_notice
+    assert "d712d4a085582ac390701e0a1f43bf21796f0971eda9f355c48da8b0d98b5b8a" in source_notice
+    assert "2cb0a6ca8b929d3e1513a27351173cbe05b354c1bcbc878ccaee77092c2dc961" in source_notice
