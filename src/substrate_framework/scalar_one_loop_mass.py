@@ -39,9 +39,18 @@ exactly --- no expansion of ``exp(-tau*m**2)`` inside the regulated integral
         I_2 = m**2*(ln(m**2/mu**2) + EulerGamma - 1),
         I_3 = -(m**4/2)*(ln(m**2/mu**2) + EulerGamma - 3/2).
 
-Composition with the accepted scheme factor (one real scalar, determinant
-weight 1/2, heat-kernel prefactor ``(4*pi)**-2``, Einstein-Hilbert matching
-factor ``16*pi``) gives the exact-mass induced inverse-Newton shift
+Authority note: ``scalar_induced_newton`` and
+``covariant_sine_gordon_action`` are landed conditional (unpromoted)
+prior-work APIs -- the PR #14 and PR #25 harvests promoted no claims -- and
+the accepted ``C-GRV-001`` supplies only the conditional dimensional and
+additive-baseline ledger, leaving the coefficient, field content, and
+regulator as premises.  Every public symbol in this module is likewise
+conditional, unpromoted infrastructure linked to open goal #76.
+
+Composition with that landed conditional scheme factor (one real scalar,
+determinant weight 1/2, heat-kernel prefactor ``(4*pi)**-2``,
+Einstein-Hilbert matching factor ``16*pi``) gives the exact-mass induced
+inverse-Newton shift
 
     Delta(1/G) = N * coefficient_per_field(xi) * I_2(regulator),
 
@@ -49,12 +58,17 @@ where ``coefficient_per_field`` is taken from the accepted
 ``scalar_induced_newton.leading_scalar_newton_shift_coefficient`` API, so
 the massless sharp limit reproduces the accepted
 ``s*Lambda**2 = N*(1-6*xi)*Lambda**2/(12*pi)`` exactly.  The vacuum sector
-of the same expansion is
+of the same mass-resummed expansion is
 
-    Delta(rho_Gamma) = -(N/2)*(4*pi)**-2 * (I_3 + m**2*I_2)
+    Delta(rho_Gamma) = -(N/2)*(4*pi)**-2 * I_3(m**2)
 
-per scheme, from the heat-kernel weights ``1`` (tau**-3 class) and
-``-m**2`` (tau**-2 class) of the accepted ``scalar_heat_kernel_a2``.
+per scheme.  The ``-m**2`` entry of the landed conditional
+``scalar_heat_kernel_a2`` weights belongs to the *unresummed* organization,
+in which the exponential is expanded and the mass survives only as that
+coefficient; applying it on top of the resummed ``I_3`` double-counts the
+mass.  The two organizations agree to first order through the exact
+derivative identity ``d I_3/d m**2 = -I_2`` (which holds for all three
+schemes and is tested), i.e. ``I_3(m**2) = I_3(0) - m**2*I_2(0) + O(m**4)``.
 
 Declared derivation oracles (all exact, SymPy):
 
@@ -80,6 +94,13 @@ Scheme differences are the deliverable: at z = 1 the smooth regulator
 induces about 1.88 times the sharp curvature coefficient, and the
 power-subtracted scheme changes both the parametric structure and the sign
 at small log; any later usable-normalization claim must cite this spread.
+
+``ExactMassNewtonShift.curvature_weight_sign`` describes only the weight
+``1/6 - xi`` and carries no total-shift verdict; ``value_sign`` is the
+decidable sign of the full returned value (``None`` when symbolic inputs
+leave it undecidable).  For the two cutoff schemes ``I_2 > 0`` always, so
+the two agree there; for the power-subtracted scheme ``I_2`` itself changes
+sign with ``m**2/mu**2`` and the two fields genuinely differ.
 """
 
 from __future__ import annotations
@@ -92,7 +113,7 @@ import sympy as sp
 from .exact_symbolic import exact_real as _exact_real
 from .exact_symbolic import positive_exact as _positive_exact
 from .scalar_induced_newton import SHARP_PROPER_TIME_REGULATOR
-from .scalar_induced_newton import leading_scalar_newton_shift_coefficient
+from .scalar_induced_newton import leading_scalar_newton_shift_coefficient  # conditional landed API
 
 SMOOTH_PROPER_TIME_REGULATOR = "proper_time_smooth_essential"
 ZETA_POWER_SUBTRACTED_REGULATOR = "zeta_power_subtracted"
@@ -278,7 +299,8 @@ class ExactMassNewtonShift:
     value: sp.Expr
     massless_leading_value: sp.Expr
     finite_mass_factor: sp.Expr | None
-    sign: int
+    curvature_weight_sign: int
+    value_sign: int | None
 
 
 def exact_mass_inverse_newton_shift(
@@ -292,12 +314,18 @@ def exact_mass_inverse_newton_shift(
 ) -> ExactMassNewtonShift:
     """Return ``Delta(1/G) = N * coefficient_per_field * I_2`` exactly.
 
-    ``coefficient_per_field`` is the accepted per-field scheme factor
-    ``scheme_factor*(1/6 - xi)`` taken from
-    ``scalar_induced_newton.leading_scalar_newton_shift_coefficient`` (with
-    its massless sharp regulator tag used only to read that factor, which is
-    regulator-independent).  The massless sharp limit reproduces the accepted
-    ``N*(1-6*xi)*Lambda**2/(12*pi)`` exactly.
+    ``coefficient_per_field`` is the per-field scheme factor
+    ``scheme_factor*(1/6 - xi)`` read from the landed conditional
+    ``scalar_induced_newton.leading_scalar_newton_shift_coefficient`` API
+    (its massless sharp regulator tag is used only to read that factor,
+    which is regulator-independent).  The massless sharp limit reproduces
+    that module's ``N*(1-6*xi)*Lambda**2/(12*pi)`` exactly.
+
+    ``curvature_weight_sign`` is the decidable sign of ``1/6 - xi`` only.
+    ``value_sign`` is the decidable sign of the full returned value, or
+    ``None`` when symbolic inputs leave it undecidable; the two coincide
+    for the cutoff schemes (``I_2 > 0``) but differ for the
+    power-subtracted scheme whenever ``I_2 < 0``.
     """
 
     resolved_cutoff, scale = _resolve_regulator(regulator, cutoff, renormalization_scale)
@@ -330,16 +358,24 @@ def exact_mass_inverse_newton_shift(
     value = sp.simplify(count * coefficient_per_field * proper_time_value)
     curvature_weight = sp.simplify(sp.Rational(1, 6) - xi)
     if curvature_weight.is_positive is True:
-        sign = 1
+        curvature_weight_sign = 1
     elif curvature_weight.is_zero is True:
-        sign = 0
+        curvature_weight_sign = 0
     elif curvature_weight.is_negative is True:
-        sign = -1
+        curvature_weight_sign = -1
     else:
         raise ValueError(
             "non_minimal_coupling must have a decidable relation to the "
             "four-dimensional conformal value 1/6"
         )
+    if value.is_positive is True:
+        value_sign: int | None = 1
+    elif value.is_zero is True:
+        value_sign = 0
+    elif value.is_negative is True:
+        value_sign = -1
+    else:
+        value_sign = None
 
     return ExactMassNewtonShift(
         regulator=regulator,
@@ -353,7 +389,8 @@ def exact_mass_inverse_newton_shift(
         value=value,
         massless_leading_value=massless_leading_value,
         finite_mass_factor=finite_mass_factor,
-        sign=sign,
+        curvature_weight_sign=curvature_weight_sign,
+        value_sign=value_sign,
     )
 
 
@@ -369,6 +406,9 @@ class ExactMassVacuumShift:
     tau_minus_two_value: sp.Expr
     tau_minus_three_value: sp.Expr
     value: sp.Expr
+    # tau_minus_two_value is exposed for reference and for the derivative
+    # identity d I_3 / d m**2 = -I_2; the returned value composes only the
+    # mass-resummed tau**-3 class.
 
 
 def exact_mass_vacuum_density_shift(
@@ -379,12 +419,18 @@ def exact_mass_vacuum_density_shift(
     mass_squared: Any = 0,
     renormalization_scale: Any = None,
 ) -> ExactMassVacuumShift:
-    """Return ``Delta(rho) = -(N/2)*(4*pi)**-2*(I_3 + m**2*I_2)`` exactly.
+    """Return ``Delta(rho) = -(N/2)*(4*pi)**-2*I_3(m**2)`` exactly.
 
     This is the vacuum (cosmological-sector) coefficient of the one-loop
-    action density under the accepted heat-kernel weights ``1`` and
-    ``-m**2``; it must be exhibited rather than omitted whenever the
-    curvature-sector shift is quoted.
+    action density in the mass-resummed organization: the trace integrand is
+    ``exp(-tau*m**2)*[tau**-2 + tau**-1*(1/6-xi)*R_E + ...]``, so the vacuum
+    sector is the tau**-3 class with the exponential retained.  The
+    ``-m**2`` heat-kernel weight of the landed conditional
+    ``scalar_heat_kernel_a2`` is the first-order remnant of that same
+    exponential in the unresummed organization and must not be added again;
+    the exact bridge is the derivative identity ``d I_3/d m**2 = -I_2``.
+    The sector is exhibited rather than omitted whenever the curvature-sector
+    shift is quoted.
     """
 
     resolved_cutoff, scale = _resolve_regulator(regulator, cutoff, renormalization_scale)
@@ -407,7 +453,7 @@ def exact_mass_vacuum_density_shift(
         -count
         * sp.Rational(1, 2)
         * _FOUR_DIMENSIONAL_HEAT_KERNEL_PREFACTOR
-        * (tau_minus_three + mass * tau_minus_two)
+        * tau_minus_three
     )
     return ExactMassVacuumShift(
         regulator=regulator,

@@ -243,7 +243,10 @@ def test_exact_mass_shift_composes_the_accepted_scheme_factor() -> None:
     assert sp.simplify(shift.value - N * accepted.coefficient_per_field * shift.proper_time_value) == 0
 
 
-def test_vacuum_shift_composes_both_integral_classes() -> None:
+def test_vacuum_shift_is_the_mass_resummed_determinant_integrand() -> None:
+    # In the mass-resummed organization the trace integrand is
+    # exp(-tau*m^2)*[tau^-2 + tau^-1*(1/6-xi)*R + ...], so the vacuum sector
+    # is the tau^-3 class alone.  The value must compose ONLY I_3.
     N = sp.Integer(4)
     for regulator, kwargs in (
         (SHARP_PROPER_TIME_REGULATOR, {"cutoff": Lam, "mass_squared": m2}),
@@ -254,15 +257,50 @@ def test_vacuum_shift_composes_both_integral_classes() -> None:
         ),
     ):
         vac = exact_mass_vacuum_density_shift(N, regulator=regulator, **kwargs)
-        expected = -N * sp.Rational(1, 2) * (4 * sp.pi) ** -2 * (
-            vac.tau_minus_three_value + m2 * vac.tau_minus_two_value
-        )
+        expected = -N * sp.Rational(1, 2) * (4 * sp.pi) ** -2 * vac.tau_minus_three_value
         assert sp.simplify(vac.value - expected) == 0
-    # Massless sharp vacuum sector: I_3 = Lambda^4/2 and m^2 I_2 = 0.
+    # Massless sharp vacuum sector: I_3 = Lambda^4/2.
     vac0 = exact_mass_vacuum_density_shift(
         1, regulator=SHARP_PROPER_TIME_REGULATOR, cutoff=Lam, mass_squared=0
     )
     assert sp.simplify(vac0.value + Lam**4 / (4 * (4 * sp.pi) ** 2)) == 0
+
+
+def test_double_counted_vacuum_composition_is_rejected_by_the_oracle() -> None:
+    # The reviewed defect: composing the resummed I_3 with the unresummed
+    # -m^2 weight (i.e. I_3 + m^2*I_2) differs from the exact factored
+    # determinant by the generally nonzero term -(N/2)*(4*pi)^-2*m^2*I_2.
+    N = sp.Integer(1)
+    vac = exact_mass_vacuum_density_shift(
+        N, regulator=SHARP_PROPER_TIME_REGULATOR, cutoff=Lam, mass_squared=m2
+    )
+    double_counted = -N * sp.Rational(1, 2) * (4 * sp.pi) ** -2 * (
+        vac.tau_minus_three_value + m2 * vac.tau_minus_two_value
+    )
+    assert sp.simplify(double_counted - vac.value - m2 * vac.tau_minus_two_value * (-N * sp.Rational(1, 2) * (4 * sp.pi) ** -2)) == 0
+    # ... and the spurious term is nonzero for m^2 > 0 (it vanishes only at
+    # m = 0, which is why the massless regression could not catch it).
+    assert sp.simplify(m2 * vac.tau_minus_two_value) != 0
+
+
+@pytest.mark.parametrize(
+    "regulator,kwargs",
+    [
+        (SHARP_PROPER_TIME_REGULATOR, {"cutoff": Lam, "mass_squared": m2}),
+        (SMOOTH_PROPER_TIME_REGULATOR, {"cutoff": Lam, "mass_squared": m2}),
+        (
+            ZETA_POWER_SUBTRACTED_REGULATOR,
+            {"mass_squared": m2, "renormalization_scale": mu},
+        ),
+    ],
+)
+def test_derivative_identity_links_the_two_integral_classes(regulator, kwargs) -> None:
+    # d I_3 / d m^2 = -I_2 holds exactly in every scheme; it is the exact
+    # bridge showing the -m^2 heat-kernel weight is the first-order remnant
+    # of the retained exponential, not an additive piece of I_3.
+    i2 = curvature_proper_time_integral(regulator, **kwargs)
+    i3 = vacuum_proper_time_integral(regulator, **kwargs)
+    assert sp.simplify(sp.diff(i3, m2) + i2) == 0
 
 
 def test_mutations_break_the_oracles() -> None:
@@ -280,16 +318,68 @@ def test_mutations_break_the_oracles() -> None:
     wrong_order = 2 * sp.sqrt(z) * sp.besselk(2, 2 * sp.sqrt(z))
     J1 = 2 * sp.besselk(0, 2 * sp.sqrt(z))
     assert sp.simplify(sp.diff(wrong_order, z) + J1) != 0
-    # Crossing the conformal value 1/6 flips the induced shift sign: the
-    # minimal coupling xi = 0 has 1/6 - xi > 0 while xi = 1 flips it.
+    # Crossing the conformal value 1/6 flips the curvature weight sign: the
+    # minimal coupling xi = 0 has 1/6 - xi > 0 while xi = 1 flips it.  For
+    # the cutoff schemes I_2 > 0, so the value sign follows.
     plus = exact_mass_inverse_newton_shift(
         1, 0, regulator=SHARP_PROPER_TIME_REGULATOR, cutoff=Lam
     )
     minus = exact_mass_inverse_newton_shift(
         1, 1, regulator=SHARP_PROPER_TIME_REGULATOR, cutoff=Lam
     )
-    assert plus.sign == 1 and minus.sign == -1
+    assert plus.curvature_weight_sign == 1 and minus.curvature_weight_sign == -1
+    assert plus.value_sign == 1 and minus.value_sign == -1
     assert sp.simplify(plus.value + minus.value) != 0
+
+
+def test_zeta_value_sign_disagrees_with_the_curvature_weight_sign() -> None:
+    # Reviewer counterexample: N=1, xi=0, m^2 = mu^2 = 1 gives a negative
+    # total shift while the curvature weight is positive.
+    negative = exact_mass_inverse_newton_shift(
+        1,
+        0,
+        regulator=ZETA_POWER_SUBTRACTED_REGULATOR,
+        mass_squared=1,
+        renormalization_scale=1,
+    )
+    assert negative.curvature_weight_sign == 1
+    assert negative.value.is_negative is True
+    assert negative.value_sign == -1
+    assert sp.simplify(negative.value - (sp.EulerGamma - 1) / (12 * sp.pi)) == 0
+
+    # Massless power-subtracted branch: value is exactly zero, so the value
+    # sign is 0 even though the curvature weight stays positive.
+    zero = exact_mass_inverse_newton_shift(
+        1,
+        0,
+        regulator=ZETA_POWER_SUBTRACTED_REGULATOR,
+        mass_squared=0,
+        renormalization_scale=1,
+    )
+    assert zero.value == 0
+    assert zero.curvature_weight_sign == 1
+    assert zero.value_sign == 0
+
+    # Symbolic scale ratio: the value sign is undecidable, not guessed.
+    symbolic = exact_mass_inverse_newton_shift(
+        1,
+        0,
+        regulator=ZETA_POWER_SUBTRACTED_REGULATOR,
+        mass_squared=m2,
+        renormalization_scale=mu,
+    )
+    assert symbolic.value_sign is None
+    assert symbolic.curvature_weight_sign == 1
+
+    # Large-mass zeta branch flips the integral itself positive.
+    positive = exact_mass_inverse_newton_shift(
+        1,
+        0,
+        regulator=ZETA_POWER_SUBTRACTED_REGULATOR,
+        mass_squared=sp.Integer(10),
+        renormalization_scale=1,
+    )
+    assert positive.value_sign == 1
 
 
 def test_input_contracts_reject_ambiguous_schemes() -> None:

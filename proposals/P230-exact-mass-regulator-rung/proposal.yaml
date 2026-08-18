@@ -12,10 +12,10 @@ question: >-
   regulators; and what is the exact scheme spread among those regulators at a
   common declared scale?
 source_inventory:
-  - source: accepted module src/substrate_framework/scalar_induced_newton.py (PR #14 harvest a562568)
+  - source: landed conditional (unpromoted) module src/substrate_framework/scalar_induced_newton.py (PR #14 harvest a562568 promoted no claims)
     access: in hand (repository source, audited at 1b00c3a)
     extracted: operator convention D_E=-nabla_E^2+xi R_E+m^2; scheme factor 16*pi*(1/2)*(4*pi)^-2=1/(2*pi); leading coefficient s=N*(1-6*xi)/(12*pi); sharp proper-time regulator name; disclaimed finite-mass and logarithmic structure
-  - source: accepted module src/substrate_framework/covariant_sine_gordon_action.py (PR #25 harvest 65e4a7c)
+  - source: landed conditional (unpromoted) module src/substrate_framework/covariant_sine_gordon_action.py (PR #25 harvest 65e4a7c promoted no claims)
     access: in hand (repository source, audited at 1b00c3a)
     extracted: second variation D = -box_g + V''(phi_bg) + xi R with m^2 -> V''(phi_bg); mostly-plus convention; Euclidean-Hessian handoff
   - source: Vassilevich arXiv:hep-th/0306138 eqs (2.2) and (4.27)
@@ -29,6 +29,7 @@ invariants:
   - 'target-blindness: no observed G, Planck mass, or empirical gravity benchmark enters; the cutoff remains a declared formal scale and is not identified with any substrate length in this rung'
   - no new fitted constant; every closed form is derived and cross-checked against independent quadrature
   - accepted claims, releases, generated docs, and immutable campaigns remain unchanged until independent claim adjudication
+  - 'authority language invariant: landed conditional prior-work APIs are never described as accepted claim authority; accepted C-GRV-001 supplies only the conditional dimensional and additive-baseline ledger'
   - author does not merge; a distinct reviewer or the owner performs any merge
 allowed_imports:
   - SymPy exact algebra including expint/E1 and Bessel K closed forms

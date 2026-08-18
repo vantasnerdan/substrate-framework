@@ -1,0 +1,48 @@
+id: attempt-0002
+campaign: P230
+candidate: repair of attempt-0001 after independent harvest review (PR #77 review, changes required at 04f26f2)
+command: >
+  PYTHONPATH=src .venv/bin/python -m pytest tests/test_scalar_one_loop_mass.py -q
+working_directory: /home/dan/substrate-framework
+base_release: v0.160.0
+source_commit: 04f26f2 (reviewed head) -> repaired head
+elapsed_seconds: 5.84
+exit_code: 0
+verdict: repaired (25/25)
+diagnosed_layer: implementation/concept boundary in the two composed public APIs; the integral atoms were correct
+review_findings_and_verifications:
+  F1_vacuum_double_count: >
+    VERIFIED INDEPENDENTLY. exact_mass_vacuum_density_shift composed the
+    mass-resummed tau^-3 integral with the unresummed -m^2 weight
+    (value used I_3 + m^2*I_2). The exact factored determinant gives
+    -(N/2)*(4*pi)^-2*I_3 only; the difference is -(N/2)*(4*pi)^-2*m^2*I_2,
+    nonzero for m^2>0 (symbolically: m2*(exp(-m2*tau0)/tau0 - m2*E1(m2*tau0))).
+    The massless regression could not catch it because the spurious term
+    vanishes at m=0. Repair: value composes only I_3; new oracle
+    test_derivative_identity_links_the_two_integral_classes proves
+    d I_3/d m^2 = -I_2 exactly in all three schemes (the exact bridge
+    showing the -m^2 weight is the first-order remnant of the retained
+    exponential); mutation test requires the double-counted composition to
+    differ by the spurious term and that the term is nonzero for m^2>0.
+  F2_zeta_sign_semantics: >
+    VERIFIED INDEPENDENTLY. The sign field described only 1/6-xi while the
+    zeta I_2 changes sign with m^2/mu^2: counterexample N=1, xi=0,
+    m^2=mu^2=1 returned value=(EulerGamma-1)/(12*pi)<0 with sign=+1, and
+    the m^2=0 branch returned 0 with sign=+1. Repair: split into
+    curvature_weight_sign (decidable sign of 1/6-xi, ValueError when
+    undecidable, landed-module precedent) and value_sign (decidable sign of
+    the full value, None when symbolic inputs leave it undecidable). Both
+    reviewer counterexamples plus a large-mass positive branch and a
+    symbolic undecidable branch are now tests.
+  F3_authority_overstatement: >
+    VERIFIED INDEPENDENTLY. scalar_induced_newton (PR #14) and
+    covariant_sine_gordon_action (PR #25) are landed conditional
+    (unpromoted) APIs; both harvest handoffs state 'Claims promoted: none';
+    accepted C-GRV-001 supplies only the conditional dimensional and
+    additive-baseline ledger. Repair: module docstring now carries an
+    explicit authority note; 'accepted module/scheme factor/weights'
+    wording replaced by 'landed conditional' provenance in the module, the
+    proposal manifest source inventory, both memory records, and the PR
+    body; all new public symbols remain explicitly unpromoted conditional
+    infrastructure linked to open goal #76.
+next_materially_different_route: none required for the atoms; advance to the tau^-1 class (curvature-squared sector) after merge adjudication
