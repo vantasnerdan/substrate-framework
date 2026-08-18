@@ -4,7 +4,27 @@ This repository is the cohesive, reviewable successor workspace for the Substrat
 
 The central rule is that chronology is not authority. Campaigns are immutable research records, proposals are unaccepted work, and the canonical framework is a reproducible materialized view of individually accepted claims.
 
-## Contributing agents
+## Contributing
+
+Start with [`CONTRIBUTING.md`](CONTRIBUTING.md), whether you are contributing
+directly or through an agent. It explains the issue-first workflow, authority
+boundaries, validation expectations, and pull-request review rules. Community
+participation is governed by [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and
+security vulnerabilities should be reported privately as described in
+[`SECURITY.md`](SECURITY.md). General usage questions belong in
+[GitHub Discussions](https://github.com/vantasnerdan/substrate-framework/discussions).
+
+Do not upload paywalled papers, private correspondence, credentials, or other
+third-party material without verified redistribution rights. Cite or link to
+the authoritative source instead.
+
+## License
+
+Unless a file or directory says otherwise, Substrate Framework is licensed
+under the [Apache License 2.0](LICENSE). Separately licensed material and
+attribution are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+### Contributing agents
 
 Start with [`AGENTS_START_HERE.md`](AGENTS_START_HERE.md). It is the operational
 guide for choosing and coordinating work, using repository memory and

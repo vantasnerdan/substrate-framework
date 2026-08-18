@@ -1,0 +1,57 @@
+name: Bug report
+description: Report a reproducible implementation, validation, or documentation defect
+title: '[Bug] '
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Search existing issues and pull requests first. Do not include secrets, private correspondence, or unlicensed source material. Security vulnerabilities belong in private vulnerability reporting.
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: State what happened, including the exact error or incorrect result.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior and positive objective
+      description: State the correct behavior or object that would resolve the defect.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include the commit, command, inputs, output, and environment needed to reproduce the problem.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope, dependencies, and affected consumers
+      description: Name relevant files, symbols, claims, conventions, and downstream paths.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Success and validation gates
+      description: State the test, oracle, counterexample, or replay that would demonstrate the fix.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: I searched existing issues and pull requests for this defect.
+          required: true
+        - label: This report contains no secret or material lacking redistribution rights.
+          required: true
+        - label: I will create a branch and pull request only after this canonical issue exists.
+          required: true
