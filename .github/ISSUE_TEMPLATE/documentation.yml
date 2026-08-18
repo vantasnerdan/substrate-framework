@@ -1,0 +1,52 @@
+name: Documentation improvement
+description: Propose a concrete correction or addition to maintained documentation
+title: '[Docs] '
+labels:
+  - documentation
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Positive objective
+      description: State the exact documentation improvement and who it helps.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and write boundary
+      description: Name the maintained source files. Never propose hand-editing generated documentation.
+    validations:
+      required: true
+  - type: textarea
+    id: authority
+    attributes:
+      label: Sources and authority
+      description: Link authoritative claims, APIs, releases, or external sources that support the change.
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Success and validation gates
+      description: State link checks, generation checks, tests, or review needed for completion.
+    validations:
+      required: true
+  - type: textarea
+    id: coordination
+    attributes:
+      label: Coordination and merger handoff
+      description: Name the planned branch/write surfaces and a distinct reviewer or owner handoff.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: I searched existing issues, pull requests, and maintained documentation for overlap.
+          required: true
+        - label: I will not edit files under `docs/generated/` by hand.
+          required: true
+        - label: I will not submit a pull request until this canonical issue exists.
+          required: true
