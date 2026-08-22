@@ -223,6 +223,48 @@ def microscopic_balance_residual(
     return residual
 
 
+def barotropic_balance_residual(
+    velocity: tuple[sp.Expr, sp.Expr],
+    density: Any,
+    pressure: Any,
+    body_force: tuple[sp.Expr, sp.Expr],
+    coordinates: tuple[sp.Symbol, ...],
+    time: sp.Symbol,
+) -> list[sp.Expr]:
+    """Residual of compressible barotropic Euler for declared fields.
+
+    The closure ``pressure = p(rho)`` is a *declared premise*: this helper
+    never assumes a particular equation of state, it only evaluates the
+    momentum balance
+    ``d_t v_i + v_j d_j v_i + d_i p(rho)/rho - f_i`` together with the mass
+    continuity equation ``d_t rho + d_j(rho v_j)``. Unlike the
+    incompressible residual above there is no solenoidality requirement;
+    pressure is here a state function of density, not a constraint
+    multiplier.
+    """
+
+    if len(velocity) != 2 or len(body_force) != 2 or len(coordinates) != 2:
+        raise ValueError("this helper verifies the declared 2-D balance class")
+    rho = sp.sympify(density)
+    p = sp.sympify(pressure)
+    residual: list[sp.Expr] = []
+    for i in range(2):
+        convective = sum(
+            velocity[j] * sp.diff(velocity[i], coordinates[j]) for j in range(2)
+        )
+        residual.append(
+            sp.simplify(
+                sp.diff(velocity[i], time)
+                + convective
+                + sp.diff(p, coordinates[i]) / rho
+                - body_force[i]
+            )
+        )
+    divergence = sum(sp.diff(rho * velocity[a], coordinates[a]) for a in range(2))
+    residual.append(sp.simplify(sp.diff(rho, time) + divergence))
+    return residual
+
+
 def leonard_expansion_residual(
     expression: sp.Expr,
     variable: sp.Symbol,

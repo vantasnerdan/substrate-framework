@@ -12,6 +12,7 @@ from substrate_framework.averaging import (
     filtered_balance_residual,
     kernel_even_moments,
     leonard_expansion_residual,
+    barotropic_balance_residual,
     microscopic_balance_residual,
 )
 
@@ -82,3 +83,29 @@ def test_microscopic_balance_rejects_non_euler_field() -> None:
         microscopic_balance_residual(
             (x, y), sp.Integer(0), (0, 0), 1.0, (x, y), t
         )
+
+
+def test_barotropic_balance_closes_on_diluting_flow() -> None:
+    x, _y, t = sp.symbols("x y t", real=True)
+    a, rho0, k_eos = sp.symbols("a rho0 k_eos", positive=True)
+    velocity = (a * x, 0)
+    density = rho0 * sp.exp(-a * t)
+    pressure = k_eos * density
+    body = (a**2 * x, 0)
+    residual = barotropic_balance_residual(
+        velocity, density, pressure, body, (x, _y), t
+    )
+    assert all(sp.simplify(r) == 0 for r in residual)
+
+
+def test_barotropic_balance_flags_wrong_eos_term() -> None:
+    x, _y, t = sp.symbols("x y t", real=True)
+    a, rho0, k_eos = sp.symbols("a rho0 k_eos", positive=True)
+    velocity = (a * x, 0)
+    density = rho0 * sp.exp(-a * t)
+    body = (sp.Integer(0), 0)
+    residual = barotropic_balance_residual(
+        velocity, density, k_eos * density, body, (x, _y), t
+    )
+    assert sp.simplify(residual[0] - a**2 * x) == 0
+    assert sp.simplify(residual[2]) == 0
