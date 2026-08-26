@@ -468,12 +468,29 @@ from .spherical_einstein_scalar import (
 )
 from .nonlinear_clock_gravity import (
     ExactSphericalMassConstraint,
+    ExactPainleveGullstrandConstraint,
     HomotheticCompactnessMinimum,
     SphericalCompactnessProfile,
     homothetic_compactness_profile,
     integrate_spherical_density_cells,
     minimize_homothetic_max_compactness,
+    painleve_gullstrand_mass_constraint,
     static_spherical_mass_constraint,
+)
+from .m5_self_gravitating_clock import (
+    M5AngularRelaxation,
+    M5ClockAxisymmetricKinematics,
+    M5ClockAxisymmetricStress,
+    M5ClockKinematics,
+    M5ClockProfiles,
+    M5ClockStress,
+    m5_clock_axisymmetric_kinematics,
+    m5_clock_axisymmetric_stress,
+    m5_clock_fixed_j_frequency,
+    m5_clock_kinematics,
+    m5_clock_profiles_from_chebyshev,
+    m5_clock_stress,
+    relax_m5_clock_split_angular_profile,
 )
 from .spherical_einstein_scalar_bvp import (
     StaticSphericalScalarBVPSolution,

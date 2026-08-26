@@ -1,0 +1,30 @@
+id: attempt-0001
+campaign: P246
+canonical_issue: "174"
+candidate: A_covariant_profile_relaxation
+status: in_progress
+objective: >-
+  Reconstruct the certified P240 R=12 clock through the new metric-derived
+  stress API and decide whether its nonzero tangent-splitting channel admits a
+  spherically symmetric stress tensor, before writing a spherical continuation.
+method:
+  - analytic NumPy Chebyshev profile and derivative evaluation
+  - 128-node Gauss-Legendre radial and 64-node angular quadrature
+  - exact pairwise metric variation into orthonormal energy and pressures
+  - split-channel deletion as the load-bearing symmetry mutation
+frozen_gates:
+  inertia_relative_error_max: 2.0e-7
+  total_energy_relative_error_max: 2.0e-7
+  split_pressure_anisotropy_fraction_min: 1.0e-5
+  zero_split_pressure_anisotropy_fraction_max: 1.0e-11
+inputs:
+  root: proposals/P240-m5-kinetic-axis/attempts/0042/largeR-roots.json R12
+  expected_energy: 55.10418259137505
+  expected_inertia: 0.6325964726638463
+  expected_frequency: 0.7903932785058282
+artifacts:
+  - src/substrate_framework/m5_self_gravitating_clock.py
+  - tests/test_m5_self_gravitating_clock.py
+  - proposals/P246-covariant-profile-continuation/attempts/0001/verify_stress_symmetry.py
+  - proposals/P246-covariant-profile-continuation/attempts/0001/execution-error.txt
+  - proposals/P246-covariant-profile-continuation/attempts/0001/result-native-abort.yaml

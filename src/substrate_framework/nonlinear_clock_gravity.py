@@ -47,6 +47,24 @@ class ExactSphericalMassConstraint:
 
 
 @dataclass(frozen=True)
+class ExactPainleveGullstrandConstraint:
+    """Horizon-penetrating spherical initial data for a typed density."""
+
+    radius: sp.Expr
+    polar_angle: sp.Expr
+    enclosed_mass: sp.Expr
+    energy_density: sp.Expr
+    newton_constant: sp.Expr
+    infall_shift: sp.Expr
+    spacetime_metric: sp.ImmutableMatrix
+    radial_extrinsic_curvature: sp.Expr
+    tangential_extrinsic_curvature: sp.Expr
+    hamiltonian_constraint_residual: sp.Expr
+    momentum_constraint_residual: sp.Expr
+    metric_determinant: sp.Expr
+
+
+@dataclass(frozen=True)
 class SphericalCompactnessProfile:
     """Finite-volume Misner--Sharp evidence on radial cell edges."""
 
@@ -97,8 +115,8 @@ class SphericalCompactnessProfile:
         if not crossings.size:
             return None
         index = int(crossings[0])
-        left_r, right_r = self.radius_edges[index:index + 2]
-        left_f, right_f = f[index:index + 2]
+        left_r, right_r = self.radius_edges[index : index + 2]
+        left_f, right_f = f[index : index + 2]
         fraction = left_f / (left_f - right_f)
         return float(left_r + fraction * (right_r - left_r))
 
@@ -153,6 +171,73 @@ def static_spherical_mass_constraint(
     )
 
 
+def painleve_gullstrand_mass_constraint(
+    radius: Any,
+    polar_angle: Any,
+    enclosed_mass: Any,
+    energy_density: Any,
+    newton_constant: Any,
+) -> ExactPainleveGullstrandConstraint:
+    r"""Return a horizon-penetrating constraint solution for ``m'=4*pi*r^2*rho``.
+
+    The metric is
+    ``ds^2=-dt^2+(dr+v dt)^2+r^2 dOmega^2`` with
+    ``v=sqrt(2*G*m/r)``.  Its spatial slices are flat.  The extrinsic-curvature
+    eigenvalues ``(v',v/r,v/r)`` satisfy the Hamiltonian constraint exactly
+    after the mass constraint is imposed, while the radial momentum constraint
+    vanishes identically.  This is initial-data geometry, not a stationary
+    matter Euler solution.
+    """
+
+    r = sp.sympify(radius)
+    theta = sp.sympify(polar_angle)
+    if not isinstance(r, sp.Symbol) or r.is_positive is not True:
+        raise ValueError("radius must be a positive exact symbol")
+    if not isinstance(theta, sp.Symbol) or theta.is_real is not True:
+        raise ValueError("polar_angle must be a real exact symbol")
+    mass = sp.sympify(enclosed_mass)
+    density = sp.sympify(energy_density)
+    gravity = _positive_exact(newton_constant, "newton_constant")
+    shift = sp.sqrt(2 * gravity * mass / r)
+    radial_curvature = sp.diff(shift, r)
+    tangential_curvature = shift / r
+    trace_curvature = radial_curvature + 2 * tangential_curvature
+    hamiltonian = sp.simplify(
+        trace_curvature**2
+        - radial_curvature**2
+        - 2 * tangential_curvature**2
+        - 16 * sp.pi * gravity * density
+    ).subs(sp.diff(mass, r), 4 * sp.pi * r**2 * density)
+    radial_trace_reverse = radial_curvature - trace_curvature
+    tangential_trace_reverse = tangential_curvature - trace_curvature
+    momentum = sp.simplify(
+        sp.diff(radial_trace_reverse, r)
+        + 2 * (radial_trace_reverse - tangential_trace_reverse) / r
+    )
+    metric = sp.ImmutableMatrix(
+        [
+            [-(1 - shift**2), shift, 0, 0],
+            [shift, 1, 0, 0],
+            [0, 0, r**2, 0],
+            [0, 0, 0, r**2 * sp.sin(theta) ** 2],
+        ]
+    )
+    return ExactPainleveGullstrandConstraint(
+        radius=r,
+        polar_angle=theta,
+        enclosed_mass=mass,
+        energy_density=density,
+        newton_constant=gravity,
+        infall_shift=sp.simplify(shift),
+        spacetime_metric=metric,
+        radial_extrinsic_curvature=sp.simplify(radial_curvature),
+        tangential_extrinsic_curvature=sp.simplify(tangential_curvature),
+        hamiltonian_constraint_residual=sp.simplify(hamiltonian),
+        momentum_constraint_residual=sp.simplify(momentum),
+        metric_determinant=sp.factor(metric.det()),
+    )
+
+
 def integrate_spherical_density_cells(
     radius_edges: ArrayLike,
     density_cells: ArrayLike,
@@ -168,9 +253,7 @@ def integrate_spherical_density_cells(
             "radius_edges must have exactly one more entry than density_cells"
         )
     if edges.size < 2 or edges[0] != 0.0 or np.any(np.diff(edges) <= 0.0):
-        raise ValueError(
-            "radius_edges must start at zero and increase strictly"
-        )
+        raise ValueError("radius_edges must start at zero and increase strictly")
     if not np.all(np.isfinite(edges)) or not np.all(np.isfinite(density)):
         raise ValueError("radius and density must be finite")
     if np.any(density < 0.0):
@@ -210,34 +293,23 @@ def homothetic_compactness_profile(
     potential = np.asarray(cumulative_potential_mass, dtype=np.float64)
     if x.ndim != 1 or curvature.shape != x.shape or potential.shape != x.shape:
         raise ValueError(
-            "dimensionless radius and cumulative masses must be "
-            "equal 1-D arrays"
+            "dimensionless radius and cumulative masses must be equal 1-D arrays"
         )
     if x.size < 2 or x[0] != 0.0 or np.any(np.diff(x) <= 0.0):
-        raise ValueError(
-            "dimensionless_radius must start at zero and increase"
-        )
+        raise ValueError("dimensionless_radius must start at zero and increase")
     if np.any(curvature < 0.0) or np.any(potential < 0.0):
         raise ValueError("component masses must be nonnegative")
     if np.any(np.diff(curvature) < 0.0) or np.any(np.diff(potential) < 0.0):
-        raise ValueError(
-            "component masses must be cumulative and nondecreasing"
-        )
+        raise ValueError("component masses must be cumulative and nondecreasing")
     reference = float(reference_radius)
     scale = float(scale_radius)
     gravity = float(newton_constant)
     if not all(
-        np.isfinite(value) and value > 0.0
-        for value in (reference, scale, gravity)
+        np.isfinite(value) and value > 0.0 for value in (reference, scale, gravity)
     ):
-        raise ValueError(
-            "radii and newton_constant must be positive and finite"
-        )
+        raise ValueError("radii and newton_constant must be positive and finite")
 
-    scaled_mass = (
-        curvature * (reference / scale)
-        + potential * (scale / reference) ** 3
-    )
+    scaled_mass = curvature * (reference / scale) + potential * (scale / reference) ** 3
     compactness = np.zeros_like(x)
     compactness[1:] = 2.0 * gravity * scaled_mass[1:] / (scale * x[1:])
     return compactness

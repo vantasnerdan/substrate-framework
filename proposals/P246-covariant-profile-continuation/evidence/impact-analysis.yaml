@@ -1,0 +1,27 @@
+campaign: P246
+base: campaign/p245-nonlinear-self-gravity@552f2f6
+changed_public_surface:
+  - src/substrate_framework/nonlinear_clock_gravity.py adds ExactPainleveGullstrandConstraint and painleve_gullstrand_mass_constraint
+  - src/substrate_framework/m5_self_gravitating_clock.py adds the typed P240 profile, complete stress and angular-relaxation APIs
+  - src/substrate_framework/__init__.py adds exports only; no existing export is removed or renamed
+direct_consumers:
+  - tests/test_nonlinear_clock_gravity.py
+  - tests/test_m5_self_gravitating_clock.py
+  - proposals/P246-covariant-profile-continuation/attempts/0003 through 0009
+indirect_consumers:
+  - governance/claims.yaml and release/generated documentation after promotion
+unchanged_contracts:
+  - existing ExactSphericalMassConstraint and compactness APIs
+  - P240/P243/P244 immutable attempt artifacts and accepted source conventions
+  - spherical Einstein-scalar and shared numerics APIs
+formal_surface: none
+generated_surface:
+  - docs/generated/claims.md
+  - docs/generated/releases.md
+risk: bounded_additive
+notes:
+  - >-
+      GitNexus detect_changes saw three tracked files but no indexed changed
+      symbols because the substantive module is new and untracked; manual
+      public-import and direct-consumer inventory therefore controls the bounded
+      replay.

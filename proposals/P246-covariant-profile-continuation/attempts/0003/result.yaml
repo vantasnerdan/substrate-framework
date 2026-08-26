@@ -1,0 +1,29 @@
+campaign: P246
+attempt: '0003'
+status: complete
+checks: 5
+verdict: established_representation_change
+findings:
+  - >-
+      For a split-free uniaxial field S=tangent*I+q*n*n^T, the local
+      director-axis clock generator commutes with S exactly, so the clock
+      response and inertia vanish. The numerical residual is 2.01e-32.
+  - >-
+      The certified split-active R12 clock has I=0.632595910753 and
+      omega=0.790393980582. Its radial-polar energy varies by 2.3785% and its
+      integrated |p_theta-p_phi| is 7.1874% of the energy scale.
+mechanism: >-
+  Tangent splitting is not an optional deformation: it is what gives this
+  clock nonzero fixed-J inertia, and it also selects an axis in the stress.
+  Therefore a spherical metric cannot be the exact co-solved continuation of
+  the accepted clock.
+consequence: >-
+  Candidate A remains active but changes representation to a stationary
+  axisymmetric Einstein-M5 system with angular profile freedom and the complete
+  stress, including off-diagonal momentum. The prior spherical density average
+  remains a compactness diagnostic only. This is not a no-go for profile
+  relaxation and does not close P246.
+artifacts:
+  - proposals/P246-covariant-profile-continuation/attempts/0003/axisymmetric-source.json
+  - proposals/P246-covariant-profile-continuation/attempts/0003/stdout.txt
+  - src/substrate_framework/m5_self_gravitating_clock.py

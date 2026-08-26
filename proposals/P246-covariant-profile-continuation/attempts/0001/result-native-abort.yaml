@@ -1,0 +1,18 @@
+campaign: P246
+attempt: '0001'
+status: aborted_scientific_gate
+completed_checks: 0
+failed_check: inertia_reproduced
+observed_inertia: 0.632595910753
+expected_inertia: 0.6325964726638463
+relative_difference: 8.88232864047307e-7
+diagnosis: >-
+  The preregistered 2e-7 relative comparator gate was tighter than the
+  difference between the committed root's native quadrature value and the new
+  128x64 refined quadrature. This does not diagnose a stress-map error. Preserve
+  the gate failure and run a quadrature ladder before setting the repaired
+  comparator band.
+next_attempt: >-
+  Evaluate 64x32, 128x64 and 256x96 refinements, require convergence of the new
+  evaluator, and use a disclosed band that covers the immutable native
+  comparator's discretization difference without changing the symmetry gates.

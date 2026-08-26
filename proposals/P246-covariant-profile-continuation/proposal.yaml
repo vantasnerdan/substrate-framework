@@ -1,0 +1,149 @@
+id: P246
+base_release: v0.166.0
+source_baseline: substrate-framework@3e3a6133030b3041515d07cbeef74eeb3624b99b
+canonical_issue: "174"
+predecessor_transaction: P245
+question: >-
+  Can the accepted confined-clock sector at the purely induced B=0, xi=0
+  coupling form a self-consistent nonlinear spherical gravitating object after
+  the M5 matter profile and its stress are varied covariantly rather than frozen
+  to the flat-space C-M5S-004 source?
+positive_objective: >-
+  Construct a typed spherical Einstein-M5 reduced action and stress map, derive
+  its regular-origin or regular-horizon boundary data, and continue a genuinely
+  co-solved matter-plus-metric branch to the accepted coupling. Completion
+  requires a positive nonlinear object: either a regular horizonless confined
+  clock or a self-consistent horizon-bearing M5 configuration. Another
+  frozen-source obstruction or solver termination is attempt evidence only.
+coordination_boundary: >-
+  P246 is stacked on the draft P245 branch only for code provenance. Accepted
+  authority remains v0.166.0 at 3e3a613 until PR #175 lands. P246 owns only
+  proposals/P246-covariant-profile-continuation, its matching durable memory,
+  new typed Einstein-M5 reduction and solver APIs/tests, provisional
+  C-M5S-013/C-M5S-014,
+  and issue #174 continuation updates. It does not rewrite P245 or PR #173.
+source_inventory:
+  - source: governance/claims.yaml C-M5S-003/004/007/010/011
+    access: in-hand repository source
+    extracted: >-
+      Purely induced coupling G_total=46.80699908016004, accepted flat-space
+      clock source and fixed-J conventions, irreducible-baseline dichotomy,
+      and separately typed radiative mass ledger.
+  - source: draft C-M5S-012 and campaigns/P245-nonlinear-self-gravity
+    access: in-hand branch-local proposal evidence
+    extracted: >-
+      Exact frozen-source compactness obstruction and failure of pure
+      homothetic dilation. This is diagnostic evidence, not accepted authority
+      at the pinned base and not an arbitrary-profile theorem.
+  - source: src/substrate_framework/m5_covariant_action.py and m5_stationary_fields.py
+    access: in-hand repository source
+    extracted: >-
+      Covariant spectral-Cartan/projector action primitives and the existing
+      flat stationary ansatz. Their metric variation and local fixed-J stress
+      have not yet been derived.
+  - source: C-STG-001, C-STG-002 and canonical spherical Einstein modules
+    access: in-hand repository source
+    extracted: >-
+      Mostly-plus Einstein-Hilbert normalization, areal-gauge mass/lapse
+      equations, regular-origin expansion, Schwarzschild limit and numerical
+      continuation precedents. No scalar-to-M5 field identification is imported.
+invariants:
+  - accepted mostly-plus Lorentzian and Einstein-Hilbert sign conventions
+  - areal radius and Misner-Sharp f=1-2*G*m/r convention outside any horizon
+  - purely induced B=0 and xi=0 are the target coupling, not fitted outputs
+  - M5 action coefficients, clock topology, boundary spectrum and fixed-J sector are preserved
+  - stress follows metric variation of the typed M5 action; no equation of state is assumed
+  - the global fixed-J reduction is varied before it is localized or used as a gravitational source
+  - regular branches satisfy their full matter equations and covariant stress conservation
+  - small-ratio and near-horizon numerics use nondimensionalization, exact constraints, pseudo-arclength continuation, refinement and an independent route
+allowed_imports:
+  - C-M5S-003
+  - C-M5S-004
+  - C-M5S-007
+  - C-M5S-010
+  - C-M5S-011
+  - C-GRV-002
+  - C-STG-001
+  - C-STG-002
+  - canonical M5 covariant-action, stationary-field, spherical-Einstein and numerics APIs at the pinned base
+  - P245 artifacts only as branch-local attempt evidence until independently merged
+candidates:
+  - id: A_covariant_profile_relaxation
+    description: >-
+      Insert a general spherical stationary M5 ansatz and areal-gauge metric
+      into the covariant action, derive the reduced Euler-Einstein system and
+      continue all independent profiles plus metric from controlled coupling
+      to G_total with pseudo-arclength through folds.
+  - id: B_structural_stress_redistribution
+    description: >-
+      Enlarge the radial profile basis and allow anisotropic pressure and
+      kinetic/potential support to redistribute under the exact fixed-J
+      Routhian, then test whether compactness is expelled from the core while
+      the clock charge and boundary class remain fixed.
+  - id: C_reduced_coupling_continuation
+    description: >-
+      Use G/G_total in [0,1] and, separately, xi approaching 1/6 as controlled
+      continuation coordinates to locate bifurcations and branch loss. This is
+      a path-finding diagnostic; a branch that never returns to B=0, xi=0 does
+      not satisfy the target.
+  - id: D_dominant_baseline_branch
+    description: >-
+      Add the irreducible baseline B required by C-M5S-007, construct the
+      weakly coupled branch, and test whether it connects through a fold to the
+      purely induced endpoint. A disconnected B-dominated object is useful but
+      does not by itself complete the B=0 objective.
+  - id: E_horizon_bearing_completion
+    description: >-
+      If the regular-origin family terminates at f=0, change to a
+      horizon-regular formulation and construct a self-consistent M5
+      horizon/exterior configuration with finite invariants, conserved clock
+      charge where defined, and a matched asymptotic exterior.
+uniqueness_evidence: null
+selection_criteria:
+  - exact derivation from the accepted covariant M5 action and Einstein normalization
+  - preservation of B=0, xi=0, fixed-J topology and boundary class at the target endpoint
+  - no fitted equation of state, hidden baseline, borrowed scalar map or comparator-fed parameter
+  - regular origin or regular horizon, finite invariant stress and conserved on-shell source
+  - continuation reaches the accepted coupling with resolved residuals and correct weak-coupling limit
+  - parameter economy, correct vacuum/Schwarzschild limits and independent-route agreement
+claims_proposed:
+  - C-M5S-013
+  - C-M5S-014
+comparators_blinded_until: >-
+  Accepted and P245 compactness values are already known and are recorded as an
+  unavoidable unblinding exception. No new branch endpoint, fold, central
+  compactness, horizon radius or ADM mass may be inspected until this manifest
+  and matching memory validate. Classification is frozen: a positive branch
+  must solve the full reduced Euler-Einstein residuals, preserve the declared
+  charge/topology, meet regular-origin or regular-horizon conditions, and reach
+  G_total at B=0 and xi=0. Solver failure or a frozen-source crossing does not
+  close P246.
+status: active
+revisions:
+  - date: '2026-08-26'
+    after_attempt: '0003'
+    change: >-
+      The certified split-active clock is not spherically symmetric at stress
+      level. Exact algebra shows that deleting the tangent split makes the
+      director-axis clock response and inertia vanish, while the accepted root
+      has 2.3785% angular energy variation and 7.1874% integrated tangential
+      pressure anisotropy. Candidate A therefore continues in stationary
+      axisymmetry with angular profile freedom and complete off-diagonal stress;
+      spherical averaging is retained only as a compactness diagnostic.
+  - date: '2026-08-26'
+    after_attempt: '0009'
+    change: >-
+      Complete stress variation selected stationary axisymmetry for the
+      fixed-J clock. Four regular even split modes produced no resolved lower
+      flat branch; counterrotation cancels momentum but preserves energy and
+      compactness; weak G requires xi about -148.802 and a baseline escape is
+      892.812 times induced. Candidate E nevertheless constructed a positive
+      horizon-penetrating constraint solution for the accepted classical
+      curvature-plus-potential source, with resolved inner and matched-vacuum
+      outer marginal surfaces. C-M5S-013 types the fixed-J stress boundary;
+      C-M5S-014 carries the positive initial-data construction. The stationary
+      axisymmetric one-clock matter-plus-metric solve remains open frontier.
+phase: promoted_claims_with_stationary_axisymmetric_frontier_open
+promoted_claims:
+  - C-M5S-013
+  - C-M5S-014

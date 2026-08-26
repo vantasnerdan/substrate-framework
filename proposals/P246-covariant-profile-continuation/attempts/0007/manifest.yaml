@@ -1,0 +1,31 @@
+id: attempt-0007
+campaign: P246
+canonical_issue: "174"
+parent_attempts: ["0003", "0004", "0006"]
+candidate: A_covariant_profile_relaxation
+status: in_progress
+objective: >-
+  Relax the accepted clock away from its frozen sin^2(theta) tangent-splitting
+  shape through regular even angular modes, then re-evaluate energy, stress and
+  nonlinear compactness before introducing metric feedback.
+ansatz: >-
+  delta(r,mu)=split(r)*(1-mu^2)*[1+sum_{k=1}^K a_k P_{2k}(mu)] with the accepted
+  q(r), tangent(r), split(r) held as the radial seed. Every deformation remains
+  regular on the axis and preserves the radial boundary class.
+method:
+  - nested K=2,3,4 angular-mode L-BFGS-B solves with bounds [-3,3]
+  - 96-node radial and 72-node angular Gauss objective
+  - 96-node angular refinement and a 1600-cell compactness replay
+frozen_gates:
+  optimizer_success: true
+  gradient_inf_max: 2.0e-6
+  refined_energy_relative_drift_max: 2.0e-7
+  nontrivial_energy_reduction_min: 1.0e-6
+classification:
+  horizonless: maximum_compactness < 1
+  trapped: maximum_compactness >= 1
+interpretation_gate: >-
+  A lower trapped profile advances the profile-relaxation route but does not
+  complete it; the next solve must vary radial modes with the stationary
+  axisymmetric metric. A horizonless profile becomes a seed, not an accepted
+  solution, until metric feedback and full residuals close.

@@ -1,0 +1,31 @@
+id: attempt-0005
+campaign: P246
+canonical_issue: "174"
+parent_attempts: ["0003", "0004"]
+candidate: E_horizon_bearing_completion
+status: in_progress
+objective: >-
+  Replace the static-coordinate failure of the accepted classical source with
+  an explicit horizon-penetrating nonlinear geometry and verify both the inner
+  and matched-vacuum outer marginal surfaces without claiming matter
+  stationarity.
+source_convention: >-
+  Exactly C-M5S-004/C-M5S-012: angular-averaged curvature plus potential density
+  of the P240 R12 order-16 root; the global fixed-J term is excluded, so the
+  initial slice has zero sourced momentum.
+method:
+  - canonical analytic P240 profile and density reconstruction
+  - finite-volume mass ladders at 400, 800 and 1600 cells
+  - exact Painleve-Gullstrand flat-slice constraint construction
+  - matched vacuum Schwarzschild-PG exterior
+frozen_gates:
+  mass_relative_error_max: 1.0e-5
+  inner_crossing_finest_relative_drift_max: 2.0e-3
+  horizon_shift_absolute_error_max: 1.0e-12
+  finite_crossing_extrinsic_curvature: true
+  exterior_kretschmann_finite_positive: true
+interpretation_gate: >-
+  Passing constructs a positive horizon-bearing initial-data geometry for the
+  accepted classical source. It does not establish a stationary fixed-J M5
+  black hole, arbitrary axisymmetric profile relaxation, or nonlinear time
+  evolution, so those P246 routes remain open.

@@ -1,0 +1,18 @@
+campaign: P246
+attempt: '0002'
+status: aborted_mutation_gate
+passed_checks: 5
+failed_check: split_deletion_restores_spherical_stress
+observed_zero_split_pressure_anisotropy_fraction: 0.6276306
+diagnosis: >-
+  The mutation was physically ill-posed at fixed nonzero J. Deleting tangent
+  splitting makes the uniaxial field commute with its local director-axis clock
+  generator, so the clock inertia tends to zero and omega=J/(2I) diverges.
+  Pressures formed after that division are not a spherical branch test. The
+  five preceding checks establish that the refined evaluator converges,
+  reproduces the immutable clock, and detects anisotropic stress.
+next_attempt: >-
+  Prove the split-free zero-inertia identity before division, quantify the
+  accepted root's unaveraged axisymmetric stress, and classify the required
+  gravitational symmetry without pretending the zero-inertia field is a clock.
+stdout: proposals/P246-covariant-profile-continuation/attempts/0002/stdout.txt

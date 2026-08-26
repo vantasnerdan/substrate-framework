@@ -1,0 +1,22 @@
+id: attempt-0004
+campaign: P246
+canonical_issue: "174"
+parent_attempt: "0003"
+candidate: B_structural_stress_redistribution
+status: in_progress
+objective: >-
+  Evaluate the complete metric-derived stress of the certified axisymmetric
+  clock and select static versus stationary axisymmetric gravity from its
+  momentum density rather than assuming either metric class.
+method:
+  - complete pair-Gram metric variation on the 128x64 radial-polar grid
+  - orthonormal T_ab evaluation at the certified fixed-J frequency
+  - omega sign reversal as the load-bearing off-diagonal mutation
+frozen_gates:
+  stress_symmetry_relative_error_max: 1.0e-12
+  trace_identity_relative_error_max: 1.0e-10
+  omega_reversal_diagonal_relative_error_max: 1.0e-12
+  omega_reversal_momentum_relative_error_max: 1.0e-10
+classification:
+  static_axisymmetric: integrated momentum fraction <= 1.0e-10
+  stationary_axisymmetric: integrated momentum fraction > 1.0e-10

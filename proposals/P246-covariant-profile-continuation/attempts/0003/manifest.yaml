@@ -1,0 +1,25 @@
+id: attempt-0003
+campaign: P246
+canonical_issue: "174"
+parent_attempts: ["0001", "0002"]
+candidate: A_covariant_profile_relaxation
+status: in_progress
+objective: >-
+  Prove whether a nonzero-J P240 clock can source a spherical metric and expose
+  the unaveraged stress object required by the correct continuation.
+method:
+  - exact SymPy commutator identity for the uniaxial split-free field
+  - analytic 128x64 radial-polar reconstruction of the certified R12 root
+  - metric-derived pointwise orthonormal energy and pressures
+frozen_gates:
+  split_free_clock_response_exactly_zero: true
+  split_free_numeric_inertia_density_max: 1.0e-24
+  accepted_clock_inertia_min: 0.6
+  angular_energy_variation_fraction_min: 1.0e-6
+  pressure_anisotropy_fraction_min: 1.0e-5
+interpretation_gate: >-
+  If the split-free identity is zero while the accepted split-active root has
+  resolved angular energy and pressure anisotropy, spherical Einstein
+  continuation is rejected as the wrong representation. Candidate A continues
+  as an axisymmetric Einstein-M5 solve; this does not reject arbitrary profile
+  relaxation or complete P246.

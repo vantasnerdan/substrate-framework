@@ -1,0 +1,17 @@
+campaign: P246
+attempt: '0007'
+status: aborted_oracle_definition
+passed_checks: 1
+failed_check: angular_stationarity
+observed_raw_gradient_inf: 1.634248e-5
+diagnosis: >-
+  The attempt used an unscaled raw energy gradient as its stationarity oracle.
+  Energy is approximately 55 in the same units, so the failed number is about
+  3e-7 scale-relative; the raw 2e-6 threshold had no declared energy scale.
+  The first L-BFGS-B Jacobian also used the optimizer's forward-difference
+  estimate rather than an independently centered derivative.
+next_attempt: >-
+  Preserve the failure, extract the relaxation into the canonical module, use
+  three-point optimizer derivatives, and gate an independently centered
+  gradient relative to max(1,|E|) without changing the energy/refinement gates.
+stdout: proposals/P246-covariant-profile-continuation/attempts/0007/stdout.txt

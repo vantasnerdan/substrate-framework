@@ -6,6 +6,7 @@ from substrate_framework.nonlinear_clock_gravity import (
     homothetic_compactness_profile,
     integrate_spherical_density_cells,
     minimize_homothetic_max_compactness,
+    painleve_gullstrand_mass_constraint,
     static_spherical_mass_constraint,
 )
 
@@ -20,6 +21,27 @@ def test_exact_mass_constraint_closes_uniform_sphere_and_sign() -> None:
     assert result.mass_constraint_residual == 0
     assert result.compactness == 8 * sp.pi * gravity * density * r**2 / 3
     assert result.radial_metric_function == 1 - result.compactness
+
+
+def test_painleve_gullstrand_data_crosses_horizon_without_metric_singularity() -> None:
+    r = sp.symbols("r", positive=True)
+    theta = sp.symbols("theta", real=True)
+    density, gravity = sp.symbols("rho G", positive=True)
+    mass = 4 * sp.pi * density * r**3 / 3
+
+    result = painleve_gullstrand_mass_constraint(r, theta, mass, density, gravity)
+
+    assert result.hamiltonian_constraint_residual == 0
+    assert result.momentum_constraint_residual == 0
+    assert (
+        sp.simplify(result.infall_shift**2 - 8 * sp.pi * gravity * density * r**2 / 3)
+        == 0
+    )
+    assert result.metric_determinant == -(r**4) * sp.sin(theta) ** 2
+    horizon_gravity = 3 / (8 * sp.pi * density * r**2)
+    horizon_metric = result.spacetime_metric.subs(gravity, horizon_gravity)
+    assert sp.simplify(horizon_metric[0, 0]) == 0
+    assert sp.simplify(horizon_metric.det() + r**4 * sp.sin(theta) ** 2) == 0
 
 
 def test_piecewise_constant_uniform_sphere_has_exact_shell_mass() -> None:
@@ -93,9 +115,7 @@ def test_homothetic_minimum_matches_single_shell_closed_form() -> None:
 
     assert result.optimizer_success
     assert result.scale_radius == pytest.approx(expected_radius, rel=2.0e-8)
-    assert result.maximum_compactness == pytest.approx(
-        expected_minimum, rel=2.0e-12
-    )
+    assert result.maximum_compactness == pytest.approx(expected_minimum, rel=2.0e-12)
     assert result.critical_newton_constant == pytest.approx(
         gravity / expected_minimum, rel=2.0e-12
     )
@@ -120,12 +140,7 @@ def test_homothetic_reference_scale_recovers_component_sum() -> None:
     )
 
     expected = np.zeros_like(x)
-    expected[1:] = (
-        2.0
-        * gravity
-        * (curvature[1:] + potential[1:])
-        / (radius * x[1:])
-    )
+    expected[1:] = 2.0 * gravity * (curvature[1:] + potential[1:]) / (radius * x[1:])
     assert np.allclose(compactness, expected, rtol=0.0, atol=1.0e-15)
 
 

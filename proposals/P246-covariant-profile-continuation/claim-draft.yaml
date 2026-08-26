@@ -1,0 +1,59 @@
+claims:
+  - id: C-M5S-013
+    statement: >-
+      C-M5S-013 (exact metric variation + numeric evidence): The accepted P240
+      three-profile confined-clock ansatz has a typed complete stress tensor and
+      is stationary axisymmetric rather than spherical when its fixed-J clock
+      motion is retained. For the uniaxial split-free field
+      S=tangent*I+q*n*n^T, the local director-axis clock generator commutes with
+      S exactly, so the clock response and inertia vanish. On the recorded
+      128-by-64 radial/angular Gauss evaluation, the certified R=12 family-S
+      root instead has nonzero tangent splitting, inertia approximately
+      0.632596 and frequency approximately 0.790394. Its unaveraged radial-polar
+      energy varies by approximately 0.02378 of its mean, integrated
+      |p_theta-p_phi| is approximately 0.07187 of its energy scale, its only
+      resolved momentum component is azimuthal with integrated absolute
+      fraction approximately 0.005095, and its r-theta shear fraction is
+      approximately 0.01627. The complete pair-Gram metric variation is
+      symmetric, obeys T^a_a=-4V to 4.44e-16 relative on that grid, and reverses
+      momentum while preserving diagonal stress under omega -> -omega.
+      Therefore an exact stationary gravitational continuation retaining this
+      clock must allow a stationary axisymmetric spacetime with azimuthal frame
+      dragging and enough axisymmetric metric freedom to match every stress
+      component; the C-M5S-004 angular average is a monopole compactness
+      diagnostic, not the full local fixed-J stress.
+    verification: numeric_evidence
+    dependencies: [C-M5S-004, C-M5S-010]
+    exclusions:
+      - No stationary axisymmetric Einstein-M5 field equation is solved.
+      - The exact zero-inertia identity is within the P240 director-axis clock ansatz; it is not a theorem about every M5 clock representation.
+      - The quantified stress uses the frozen R12 order-16 root and flat metric before gravitational feedback.
+      - The quoted root-specific stress values are approximate outputs of the recorded 128-by-64 Gauss grid; no continuum digits beyond that scope are claimed.
+  - id: C-M5S-014
+    statement: >-
+      C-M5S-014 (exact constraint construction + numeric evidence): Let rho be
+      a nonnegative spherical density, let
+      m(r)=4*pi*integral_0^r s^2*rho(s) ds be nonnegative, let G be positive,
+      and assume v(r)=sqrt(2*G*m(r)/r) is real and C1 on the initial-data
+      domain. Then the horizon-penetrating flat-slice Painleve-Gullstrand
+      geometry ds^2=-dt^2+[dr+v dt]^2+r^2*dOmega^2 has orthonormal
+      extrinsic-curvature eigenvalues (v',v/r,v/r);
+      K^2-K_ij*K^ij-16*pi*G*rho=0, the radial momentum constraint vanishes
+      identically, and det(g)=-r^4*sin(theta)^2 is independent of the static
+      horizon factor.
+      Applied to the accepted C-M5S-004/C-M5S-012 curvature-plus-potential source
+      convention, excluding the global fixed-J term and hence sourcing no clock
+      momentum, the 1600-cell construction gives mass 54.709024156957, inner
+      marginal radius 0.09354588511896786 with finite v'=10.691888861746387,
+      maximum compactness 893.8119670378098, and a matched vacuum outer marginal
+      radius 5121.53048678228 with finite Schwarzschild Kretschmann scalar
+      1.7441434323872853e-14. Thus the accepted classical source has a positive
+      nonlinear horizon-bearing initial-data completion whose geometry remains
+      regular at both marginal surfaces, replacing the static-coordinate stop
+      with an explicit black-hole-like object.
+    verification: numeric_evidence
+    dependencies: [C-M5S-004, C-M5S-012, C-M5S-013]
+    exclusions:
+      - This is constraint-satisfying initial data, not a stationary fixed-J M5 black hole, evolved collapse spacetime, event-horizon or singularity theorem.
+      - The source is exactly the accepted angular-averaged classical ledger; C-M5S-013's local fixed-J momentum and anisotropy are not silently included.
+      - Finite-volume locations are resolution-bounded; exactness applies to the analytic constraint identities for a typed density.

@@ -1,0 +1,35 @@
+campaign: P246
+status: passed
+base: 552f2f6
+head: staged-tree-before-receipt-finalization
+validated_tree: 7ee7baa04f1cdb5234beaa81672f89859f8ca604
+impact_surface:
+  - additive m5_self_gravitating_clock public API and tests
+  - additive Painleve-Gullstrand nonlinear-clock API and tests
+  - accepted C-M5S-013/C-M5S-014 registry and v0.168.0 release
+  - generated docs and accepted memory
+scope_selection: >-
+  validate_changed.py --base 552f2f6 --print-only returned fixed-only because
+  the new module and tests were untracked. Manual bounded override adds both new
+  test modules plus the directly reused stationary-field and covariant-action
+  tests. No existing public contract, shared numerics, verification machinery,
+  dependency edge outside the M5 leaf, or formal surface changes.
+commands:
+  - >-
+    scripts/validate.sh --pytest-scope
+    tests/test_m5_self_gravitating_clock.py
+    tests/test_nonlinear_clock_gravity.py
+    tests/test_m5_stationary_fields.py
+    tests/test_m5_covariant_action.py
+  - git diff --check
+results:
+  validate_sh: >-
+    PASS: workflow 236/236 accepted claims, all 1005 memory files valid,
+    requested pytest scope 31 passed, all fixed repository checks passed.
+  diff_check: PASS
+  completed_at: '2026-08-26T17:11:36+00:00'
+post_validation_record_correction: >-
+  Attempt 0001's manifest artifact list was corrected to name its materialized
+  execution-error and native-abort files instead of two outputs never produced
+  after the preregistered first gate failed. No executable or claim input
+  changed; repository/generation and staged diff checks were replayed.

@@ -1,0 +1,25 @@
+id: attempt-0008
+campaign: P246
+canonical_issue: "174"
+parent_attempt: "0007"
+candidate: A_covariant_profile_relaxation
+status: in_progress
+objective: >-
+  Re-run the unchanged four-mode regular angular ansatz with a scale-relative,
+  independently centered stationarity oracle and canonical reusable solver.
+method:
+  - L-BFGS-B with three-point finite differences from three frozen starts
+  - independent centered gradient with component step 1e-5*(1+|a_k|)
+  - 96x72 objective, 96x96 angular refinement, 1600-cell compactness replay
+frozen_gates:
+  optimizer_success: true
+  centered_gradient_scale_relative_max: 1.0e-6
+  refined_energy_relative_drift_max: 2.0e-7
+  nontrivial_energy_reduction_min: 1.0e-6
+classification:
+  horizonless: maximum_compactness < 1
+  trapped: maximum_compactness >= 1
+correction: >-
+  Only the dimensionless stationarity oracle changes from attempt 0007. The
+  profile family, bounds, energy objective, refinement and physical
+  classification are unchanged.

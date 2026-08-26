@@ -1,0 +1,13 @@
+PASS [P246-attempt-0002-stress-symmetry] new_evaluator_refines
+PASS [P246-attempt-0002-stress-symmetry] native_inertia_reproduced
+PASS [P246-attempt-0002-stress-symmetry] native_frequency_reproduced
+PASS [P246-attempt-0002-stress-symmetry] native_total_energy_reproduced
+PASS [P246-attempt-0002-stress-symmetry] accepted_split_stress_is_anisotropic
+Traceback (most recent call last):
+  File "/home/dan/substrate-framework/proposals/P246-covariant-profile-continuation/attempts/0002/verify_stress_symmetry_refined.py", line 169, in main
+    execute()
+  File "/home/dan/substrate-framework/proposals/P246-covariant-profile-continuation/attempts/0002/verify_stress_symmetry_refined.py", line 132, in execute
+    ledger.check(
+  File "/home/dan/substrate-framework/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P246-attempt-0002-stress-symmetry] split_deletion_restores_spherical_stress -- zero-split pressure anisotropy fraction=6.276306e-01
