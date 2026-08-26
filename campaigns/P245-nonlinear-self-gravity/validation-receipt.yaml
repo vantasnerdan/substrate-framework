@@ -1,0 +1,100 @@
+campaign: P245
+canonical_goal_issue: '174'
+parent_frontier_issue: '170'
+base_release: v0.166.0
+base_commit: 3e3a6133030b3041515d07cbeef74eeb3624b99b
+validated_tree_before_receipt: 5b38b362604a0f9633ffec39761cfb5e5c802e43
+validated_at: '2026-08-26T20:30:00+00:00'
+frozen_impact_surface:
+  - src/substrate_framework/nonlinear_clock_gravity.py
+  - src/substrate_framework/__init__.py
+  - tests/test_nonlinear_clock_gravity.py
+  - campaigns/P245-nonlinear-self-gravity
+  - governance/claims.yaml C-M5S-012
+  - governance/releases/v0.167.0.yaml and current.yaml
+  - docs/generated/claim-index.md
+  - memory/framework/claims/C-M5S-012.md
+  - memory/framework/releases/v0.167.0.md
+  - memory/vantasner/proposals/P245-nonlinear-self-gravity.md
+authority_boundary:
+  artifact: adjudicated nonlinear certified-source campaign
+  claim_promotion: C-M5S-012 accepted by ReviewCMM5S012
+  release: v0.167.0
+  goal_completion: >-
+    The user-authorized nonlinear fate classification of the accepted certified
+    source is complete through a positive trapped-surface theorem. Arbitrary
+    covariant profile relaxation remains a separately named frontier object.
+commands:
+  - command: >-
+      PYTHONPATH=src /home/dan/anaconda3/bin/python
+      campaigns/P245-nonlinear-self-gravity/attempts/0002/frozen_source_compactness.py
+    exit_status: 0
+    result: ALL 11 CHECKS PASS; primary trapped-source and homothetic theorem
+  - command: >-
+      PYTHONPATH=src /home/dan/anaconda3/bin/python
+      campaigns/P245-nonlinear-self-gravity/attempts/0003/independent_compactness.py
+    exit_status: 0
+    result: ALL 7 CHECKS PASS; independent analytic NumPy/PCHIP/DOP853/Brent corroboration
+  - command: >-
+      .venv/bin/python -m pytest -q tests/test_nonlinear_clock_gravity.py
+      tests/test_spherical_einstein_scalar.py tests/test_linearized_einstein.py
+    exit_status: 0
+    result: 29 passed
+  - command: >-
+      .venv/bin/python -m pytest -q tests/test_total_gravitational_coupling.py
+      tests/test_m5_induced_coupling.py tests/test_nonlinear_clock_gravity.py
+    exit_status: 0
+    result: 61 passed
+  - command: >-
+      PYTHONPATH=src .venv/bin/python -c "from substrate_framework import
+      integrate_spherical_density_cells; ..."
+    exit_status: 0
+    result: public import smoke returned uniform-sphere mass 4.188790204786 and crossing 0.119366207319
+  - command: scripts/validate_changed.py --base 3e3a6133030b3041515d07cbeef74eeb3624b99b
+    exit_status: 1
+    result: >-
+      Selected fixed-only because path mapping found no pytest scope; workflow
+      validation passed at 234 registered/accepted claims, then repository-wide
+      memory validation correctly rejected proposal status 'established'.
+  - command: memory validate --base "$PWD" "$PWD/memory"
+    exit_status: 0
+    result: all 1001 memory files valid after correction-only landing check
+  - command: git diff --check
+    exit_status: 0
+    result: no whitespace errors
+correction_check:
+  failure: >-
+    Proposal-memory status 'established' is not a valid status enum for category
+    proposals, whose terminal status is 'archived'.
+  correction: >-
+    Changed only P245 proposal-memory status from established to archived;
+    confidence remains established. No claim, evidence, dependency, threshold,
+    implementation or consumer changed.
+  landing_check: >-
+    Repository-local memory validation over the absolute memory path passed all
+    1001 files. Per the frozen-boundary rule, scientific and repository checks
+    whose inputs did not change were not repeated.
+review:
+  reviewer: ReviewCMM5S012
+  transcript: history://ReviewCMM5S012
+  verdict: ACCEPT
+  confidence: 0.97
+  blockers: []
+gitnexus:
+  baseline_index_commit: 3e3a6133030b3041515d07cbeef74eeb3624b99b
+  query: nonlinear self-gravity Einstein spherical clock density ADM mass
+  nearest_existing_apis:
+    - src/substrate_framework/linearized_einstein.py
+    - src/substrate_framework/spherical_einstein_scalar.py
+    - src/substrate_framework/spherical_einstein_scalar_bvp.py
+  change_detection_risk: LOW
+  affected_existing_processes: 0
+  fixed_j_derrick_energy_upstream_risk: LOW
+  limitation: >-
+    The base index cannot enumerate symbols in new uncommitted files; it mapped
+    the touched package export and found no affected execution process. Direct
+    package tests and consumer replay cover the additive API.
+excluded_host_artifacts:
+  - local://p245-review-transaction.md
+  - Python bytecode caches
+  - unmerged P244 branch and PR 173

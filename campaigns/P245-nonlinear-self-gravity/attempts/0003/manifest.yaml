@@ -1,0 +1,39 @@
+attempt: '0003'
+campaign: P245
+candidate: independent_numpy_chebyshev_DOP853_rederivation
+status: preregistered
+registered_at: '2026-08-26T20:00:00+00:00'
+question: >-
+  Does a structurally independent source evaluator and radial integration route
+  reproduce attempt 0002's trapped-surface and homothetic no-escape verdict?
+independence:
+  source_derivatives: analytic Chebyshev and angular-frame derivatives in NumPy; no torch autograd or P240 helper import
+  angular_quadrature: NumPy Legendre-Gauss nodes and weights
+  radial_representation: nonuniform Chebyshev-interior density samples with positivity-preserving PCHIP
+  mass_integrator: SciPy DOP853 on m4'=4*pi*r^2*rho4 and m0'=4*pi*r^2*rho0
+  horizon_finder: scipy.optimize.brentq on dense DOP853 output
+  maximum_finder: dense scan plus bounded scalar refinement
+source_nodes: 801
+angular_nodes: 64
+mass_solver:
+  method: DOP853
+  rtol: 1.0e-11
+  atol: 1.0e-12
+  dense_samples: 4001
+comparison_bands_frozen_before_execution:
+  total_mass_relative_to_attempt_0002: 2.0e-4
+  component_mass_relative_to_attempt_0002: 2.0e-4
+  first_horizon_radius_relative: 5.0e-3
+  maximum_compactness_relative: 5.0e-4
+  homothetic_minimum_compactness_relative: 5.0e-4
+  homothetic_minimizing_scale_relative: 5.0e-4
+  off_grid_mass_ode_relative_residual: 2.0e-4
+  trapped_margin_over_cross_route_difference: 100.0
+command: >-
+  PYTHONPATH=src /home/dan/anaconda3/bin/python
+  proposals/P245-nonlinear-self-gravity/attempts/0003/independent_compactness.py
+  | tee proposals/P245-nonlinear-self-gravity/attempts/0003/stdout.txt
+interpretation_frozen_before_execution:
+  - All comparison bands pass and both independent f profiles cross zero: independently corroborated frozen-source and homothetic trapped-surface theorem.
+  - A band failure diagnoses source evaluation, integration or representation and opens a materially different repair; attempt 0002 is not erased.
+  - This route still does not claim arbitrary covariant M5 profile relaxation.

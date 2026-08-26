@@ -1,0 +1,136 @@
+id: P245
+base_release: v0.166.0
+source_baseline: substrate-framework@3e3a6133030b3041515d07cbeef74eeb3624b99b
+canonical_issue: "174"
+candidate_source_issue: "170"
+question: >-
+  Does the accepted confined-clock sector at the purely induced B=0, xi=0
+  coupling admit a regular horizonless nonlinear spherical gravitational
+  completion, or does the exact nonlinear compactness constraint force a
+  trapped surface before that accepted coupling is reached?
+positive_objective: >-
+  An importable exact areal-gauge Einstein constraint for the clock source,
+  a verified Misner-Sharp compactness and ADM-mass construction, and a
+  nonlinear fate theorem at the accepted coupling: either a regular
+  self-consistent horizonless branch or a refinement-stable trapped-surface
+  crossing with the mechanism and branch boundary located. Solver failure is
+  not an outcome.
+coordination_boundary: >-
+  P245 starts from merged main at 3e3a613. It owns only
+  proposals/P245-nonlinear-self-gravity, its matching durable memory, new
+  canonical nonlinear clock-gravity APIs and tests, provisional C-M5S-012,
+  its review and promotion transaction, and issue #174 updates. P244 and PR
+  #173 remain separate and are not edited or imported as accepted authority.
+source_inventory:
+  - source: governance/claims.yaml C-M5S-003/004/007/010/011
+    access: in-hand repository source
+    extracted: >-
+      Accepted induced coupling G_total=46.80699908016004, classical source
+      mass 54.70900884959007 on R=12, weak-field wall G*M/R=213.397,
+      irreducible-baseline dichotomy, and separately typed zero-point mass
+      shift 72.58859645998888 whose de-boxed consumer attribution is open.
+  - source: src/substrate_framework/m5_covariant_action.py and m5_kinetic_axis.py
+    access: in-hand repository source
+    extracted: >-
+      Covariant spectral-Cartan/projector action primitives and the exact
+      fixed-J homothetic scaling E(R)=A/R+C*R+B*R^3+J^2/(4*I0*R^3).
+  - source: src/substrate_framework/m5_stationary_fields.py and P240/P243 root evidence
+    access: in-hand repository source
+    extracted: >-
+      Biaxial hedgehog profile, angularly averaged static and inertia density
+      decomposition, committed R=12 family-S source coefficients, and the
+      C-M5S-004 density convention excluding the global fixed-J term.
+  - source: C-STG-002, C-PDE-013, spherical_einstein_scalar.py, spherical_einstein_scalar_bvp.py
+    access: in-hand repository source
+    extracted: >-
+      Accepted areal-gauge Einstein mass/lapse conventions, regular-origin
+      pattern, Schwarzschild exterior match, finite-wall collocation and
+      independent shooting precedent. No M5-to-sine-Gordon field map is
+      imported or implied.
+invariants:
+  - accepted mostly-plus gravitational sign and areal-radius convention
+  - Misner-Sharp radial metric function f=1-2*G*m(r)/r with positive mass density increasing compactness
+  - the C-M5S-004 classical source convention stays distinct from the optional C-M5S-011 radiative ledger
+  - no hidden equation of state or untyped M5-to-scalar bridge
+  - fixed-J clock topology, boundary spectrum, action coefficients and radius convention are not reinterpreted
+  - small-ratio and near-horizon numerics use nondimensionalization, pinned threads, cancellation-free cumulative integrals, refinement, residuals and an independent route
+allowed_imports:
+  - C-M5S-003
+  - C-M5S-004
+  - C-M5S-007
+  - C-M5S-010
+  - C-M5S-011
+  - C-GRV-002
+  - C-STG-002
+  - C-PDE-013
+  - canonical M5 covariant-action, kinetic-axis, stationary-field and numerics APIs at the pinned base
+  - committed P240 family-S root only through its accepted C-M5S-004 provenance role
+candidates:
+  - id: A_frozen_source_constraint
+    description: >-
+      Apply the exact spherical Einstein Hamiltonian constraint to the accepted
+      C-M5S-004 radial density, compute the Misner-Sharp mass and compactness
+      without large-number subtraction, and locate any f=0 crossing. This is a
+      necessary nonlinear gate for the frozen clock source, not by itself a
+      co-solved matter branch.
+  - id: B_covariant_m5_continuation
+    description: >-
+      Derive the curved-space reduced stress and field equations from the
+      covariant M5 action and continue the fixed-J clock plus metric from G=0
+      using Newton correction and pseudo-arclength near folds. This is the
+      highest-fidelity positive branch construction.
+  - id: C_homothetic_fixed_j_branch
+    description: >-
+      Retain the accepted clock shape while varying its scale through the exact
+      fixed-J Derrick ledger, couple each scaled density to the nonlinear
+      compactness constraint, and determine whether any stationary homothetic
+      point is horizonless. This isolates the dilation escape without claiming
+      arbitrary shape relaxation.
+uniqueness_evidence: null
+selection_criteria:
+  - exact compatibility with accepted action, stress, sign and areal-gauge conventions
+  - no hidden equation of state, fitted mass, or borrowed scalar-field map
+  - positive nonlinear reach at the accepted coupling or a refinement-stable trapped-surface theorem
+  - correct G-to-zero Poisson and Schwarzschild exterior limits
+  - parameter economy and explicit distinction between frozen-source, homothetic and fully co-solved scope
+  - residual, mesh, domain, continuation and independent-route robustness under pinned float64 execution
+claims_proposed:
+  - C-M5S-012
+comparators_blinded_until: >-
+  C-M5S-004 and C-M5S-011 values are already public accepted canon and were
+  known before P245; this unavoidable exception is recorded. The new objects
+  kept blinded until this manifest validates are the radial compactness
+  profile, horizon-crossing radius, homothetic minimum compactness, critical
+  coupling and any nonlinear continuation branch values. Classification is
+  frozen: regular horizonless requires f(r)>100 times the composed absolute
+  f-error over the full domain; trapped-surface evidence requires a sign-
+  bracketed f=0 crossing stable under radial quadrature and profile-evaluation
+  refinement with the crossing separated from both boundaries by at least ten
+  local mesh spacings. Otherwise the attempt is unresolved and changes method.
+status: active
+revisions:
+  - date: '2026-08-26'
+    after_attempt: '0001'
+    change: >-
+      Primary execution aborted after seven scientific gates passed because an
+      unregistered 1.0e-12 absolute algebraic-identity check sat below the
+      observed float64 accumulation-order floor (1.194e-12). Attempt 0001 is
+      preserved; attempt 0002 changed only that oracle to a disclosed
+      16*eps*max(1,maxC) scale-relative roundoff budget.
+  - date: '2026-08-26'
+    after_attempt: '0003'
+    change: >-
+      Candidate A established a sign-bracketed trapped surface for the
+      accepted frozen C-M5S-004 density (first f=0 near r=0.0935,
+      max 2Gm/r near 893.81, exterior 2GM near 5121.53). Candidate C established
+      that the exact curvature-R^-1 plus potential-R^3 homothetic family has a
+      global minimum maximum compactness near 881.50 at R near 13.027, so
+      dilation cannot restore a horizonless metric. An independent analytic
+      NumPy source evaluator plus PCHIP/DOP853/Brent route corroborated all
+      load-bearing values within frozen bands. Candidate B is not required to
+      classify the user-requested certified source: the Hamiltonian constraint
+      is necessary and already forbids a globally static horizonless metric
+      before lapse or matter Euler equations are reached. Co-relaxing the M5
+      profile would change the certified source and is a separate future
+      object, not an unrun equation needed to decide this transaction.
+phase: claim_C-M5S-012_frozen_for_independent_review

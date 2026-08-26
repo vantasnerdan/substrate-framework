@@ -1,0 +1,48 @@
+attempt: '0003'
+campaign: P245
+candidate: independent_numpy_chebyshev_DOP853_rederivation
+status: established_corroborating_route
+started_at: '2026-08-26T20:02:00+00:00'
+finished_at: '2026-08-26T20:02:02+00:00'
+process:
+  exit_code: 0
+  elapsed_seconds: 1.83
+  runtime_checks: 7
+  terminal_tally: ALL_7_CHECKS_PASS
+verdict: INDEPENDENT_TRAPPED_SURFACE_CORROBORATION
+method:
+  source: analytic NumPy Chebyshev and angular-frame derivatives
+  radial_density_nodes: 801 nonuniform nodes
+  interpolant: positivity-preserving PCHIP
+  mass_integrator: DOP853 at rtol 1.0e-11 and atol 1.0e-12
+  horizon_finder: Brent
+headline:
+  mass: 54.70898650661431
+  first_trapped_surface_radius: 0.09354519751072697
+  maximum_compactness: 893.8100804875089
+  maximum_compactness_radius: 3.5785161365594513
+  minimum_f: -892.8100804875089
+  exterior_horizon_radius: 5121.526962183168
+  homothetic_minimizing_radius: 13.028271438349753
+  homothetic_minimum_maximum_compactness: 881.5037473703186
+  homothetic_critical_newton_constant: 0.0530990358461817
+  mass_ode_residual: 7.848444975051259e-06
+cross_route_relative_differences:
+  mass: 6.88192546183858e-07
+  horizon_radius: 8.003644788120758e-04
+  maximum_compactness: 2.1106791695881772e-06
+  homothetic_minimum: 1.857096994062076e-06
+  homothetic_scale: 1.1639640340207169e-04
+trapped_signal_to_cross_route_difference: 466726.886213674
+scope: >-
+  Independent corroboration for the frozen-source and homothetic necessary
+  trapped-surface theorem. The analytic NumPy evaluator shares the frozen root
+  and density definition but not the autograd derivatives, angular quadrature
+  implementation, radial representation, mass integrator, root finder or
+  optimizer path. Arbitrary covariant M5 profile relaxation remains outside
+  this evidence.
+artifacts:
+  - manifest.yaml
+  - independent_compactness.py
+  - independent-verdict.json
+  - stdout.txt

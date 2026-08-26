@@ -1,0 +1,48 @@
+attempt: '0002'
+campaign: P245
+candidate: A_frozen_source_constraint_and_C_homothetic_fixed_j_branch
+status: established_with_declared_scope
+started_at: '2026-08-26T19:54:00+00:00'
+finished_at: '2026-08-26T19:54:37+00:00'
+process:
+  exit_code: 0
+  elapsed_seconds: 37.48
+  runtime_checks: 11
+  terminal_tally: ALL_11_CHECKS_PASS
+verdict: FROZEN_AND_HOMOTHETIC_TRAPPED_SURFACE_ESTABLISHED
+headline:
+  frozen_source:
+    mass: 54.70902415695694
+    maximum_compactness_2Gm_over_r: 893.8119670378093
+    minimum_f: -892.8119670378093
+    first_trapped_surface_radius: 0.09347038713304487
+    exterior_horizon_radius_2GM: 5121.530486782274
+    critical_newton_constant: 0.0523678366438565
+  homothetic_family:
+    compactness_minimizing_radius: 13.026755170899861
+    minimum_maximum_compactness: 881.5053844113182
+    critical_newton_constant: 0.053098937236121836
+error_budget:
+  mass_relative_to_accepted: 2.7979609198921776e-07
+  horizon_refinement_relative: 0.0014304656713108905
+  maximum_compactness_refinement_relative: 2.7989634983603098e-06
+  trapped_signal_to_error: 356874.3933978125
+  homothetic_minimum_refinement_relative: 7.024518221173812e-06
+  homothetic_signal_to_error: 142196.02383834618
+scope: >-
+  The accepted frozen C-M5S-004 source and every pure homothetic dilation of
+  its separately scaling curvature-plus-potential density fail the necessary
+  horizonless condition at the B=0 coupling. The result does not rule out an
+  arbitrary covariant M5 profile deformation and does not localize the global
+  fixed-J term; both omissions bias mass/compactness downward, not upward, for
+  the evaluated source.
+artifacts:
+  - manifest.yaml
+  - frozen_source_compactness.py
+  - compactness-verdict.json
+  - stdout.txt
+next_attempt: >-
+  Independently reconstruct the density on a nonuniform Chebyshev-interior
+  node set, integrate the Misner-Sharp ODE with DOP853 dense output, bracket
+  f=0 with Brent, and rederive the homothetic minimum. This changes radial
+  representation, integrator and root finder while preserving the source.

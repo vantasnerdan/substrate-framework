@@ -1,0 +1,54 @@
+attempt: '0001'
+campaign: P245
+candidate: A_frozen_source_constraint_and_C_homothetic_fixed_j_branch
+status: preregistered
+registered_at: '2026-08-26T19:45:00+00:00'
+question: >-
+  Does the exact spherical Einstein mass constraint force a trapped surface for
+  the accepted C-M5S-004 density, and can any homothetic curvature-plus-
+  potential dilation of that same clock shape make the source horizonless at
+  the accepted B=0 coupling?
+command: >-
+  PYTHONPATH=src /home/dan/anaconda3/bin/python
+  proposals/P245-nonlinear-self-gravity/attempts/0001/frozen_source_compactness.py
+  | tee proposals/P245-nonlinear-self-gravity/attempts/0001/stdout.txt
+precision: IEEE float64 with torch and BLAS threads pinned to one
+source:
+  release: v0.166.0
+  root: proposals/P240-m5-kinetic-axis/attempts/0042/largeR-roots.json R12
+  radius: 12.0
+  newton_constant: 46.80699908016004
+  accepted_classical_mass: 54.70900884959007
+  convention: C-M5S-004 static curvature plus potential density; global fixed-J term excluded
+meshes:
+  radial_cells: [400, 800, 1600]
+  angular_gauss_legendre_nodes: 64
+  radial_method: midpoint density evaluation with exact spherical shell volumes
+homothetic_scale_bracket: [0.12, 1200.0]
+gates:
+  root_energy_transfer_absolute: 1.0e-9
+  finest_mass_relative_to_accepted: 2.0e-4
+  finest_vs_previous_mass_relative: 2.0e-4
+  finest_vs_previous_horizon_relative: 2.0e-3
+  finest_vs_previous_max_compactness_relative: 2.0e-4
+  trapped_margin_over_f_error: 100.0
+  crossing_boundary_separation_cells: 10
+  homothetic_finest_vs_previous_relative: 2.0e-3
+  homothetic_trapped_margin_over_error: 100.0
+mutations:
+  - set G to 1.0e-6 times the accepted value and require no crossing with minimum f above 0.9
+  - reject negative G
+  - set source density to zero and require exact vacuum f=1
+interpretation_frozen_before_execution:
+  - >-
+    A refinement-stable f=0 crossing establishes a trapped-surface obstruction
+    for the frozen accepted source and supplies a matched exterior horizon
+    radius 2*G*M; it is not a fully relaxed M5 solution.
+  - >-
+    A homothetic minimum compactness above one by the frozen error margin rules
+    out pure dilation of the accepted curvature-plus-potential shape as an
+    escape, but does not rule out arbitrary profile deformation.
+  - >-
+    If either result is unresolved, change discretization or representation;
+    do not move thresholds. Candidate B remains the full covariant branch
+    construction unless a stronger general theorem closes arbitrary relaxation.

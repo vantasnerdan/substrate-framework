@@ -466,6 +466,15 @@ from .spherical_einstein_scalar import (
     sine_gordon_gravity_scaling,
     static_spherical_sine_gordon_reduction,
 )
+from .nonlinear_clock_gravity import (
+    ExactSphericalMassConstraint,
+    HomotheticCompactnessMinimum,
+    SphericalCompactnessProfile,
+    homothetic_compactness_profile,
+    integrate_spherical_density_cells,
+    minimize_homothetic_max_compactness,
+    static_spherical_mass_constraint,
+)
 from .spherical_einstein_scalar_bvp import (
     StaticSphericalScalarBVPSolution,
     StaticSphericalScalarShootingSolution,
@@ -1938,6 +1947,13 @@ __all__ = [
     "RegularOriginSphericalData",
     "SineGordonGravityScaling",
     "StaticSphericalHarmonicReduction",
+    "ExactSphericalMassConstraint",
+    "HomotheticCompactnessMinimum",
+    "SphericalCompactnessProfile",
+    "homothetic_compactness_profile",
+    "integrate_spherical_density_cells",
+    "minimize_homothetic_max_compactness",
+    "static_spherical_mass_constraint",
     "StaticSphericalScalarBVPSolution",
     "StaticSphericalScalarShootingSolution",
     "compare_static_spherical_scalar_solutions",

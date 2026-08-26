@@ -1,0 +1,115 @@
+campaign: P245
+title: Nonlinear self-gravitating confined clock beyond the weak-field wall
+canonical_issue: '174'
+parent_frontier_issue: '170'
+base_release: v0.166.0
+accepted_release: v0.167.0
+base_commit: 3e3a6133030b3041515d07cbeef74eeb3624b99b
+adjudicated_at: '2026-08-26T20:20:00+00:00'
+status: completed
+user_authorized_outcome: >-
+  The user explicitly accepted a decisive no-regular-solution result with the
+  mechanism named as a successful nonlinear classification, provided it is not
+  a solver failure or a disguised weaker question.
+selected_candidates:
+  - id: A_frozen_source_constraint
+    reason: >-
+      The exact areal-gauge Hamiltonian constraint is necessary for any static
+      spherical completion of the accepted certified density and already
+      produces a refinement-stable f=0 crossing by a signal/error margin above
+      3.5e5. Lapse or pressure equations cannot repair the same failed
+      constraint.
+  - id: C_homothetic_fixed_j_branch
+    reason: >-
+      The exact curvature R^-1 and potential R^3 ledgers test the only
+      one-parameter dilation escape without changing source shape. Their
+      maximum compactness is convex/coercive in log scale and has global
+      minimum 881.5, so pure dilation is decisively excluded.
+not_selected_candidates:
+  - id: B_covariant_m5_continuation
+    reason: >-
+      It would co-relax the certified density into a new matter profile. The
+      requested object was the nonlinear fate of the accepted certified
+      source, already decided by a necessary constraint; arbitrary-profile M5
+      continuation remains an adjacent future object and is not silently
+      credited here.
+claims:
+  - id: C-M5S-012
+    decision: accepted_as_exact_constraint_plus_primary_and_independent_numeric_trapped_surface_evidence_with_frozen_and_homothetic_scope
+    verification: numeric_evidence
+    review: accepted
+    compatibility: native
+    epistemic: active
+unchanged_dependencies:
+  - id: C-M5S-003
+    decision: accepted_purely_induced_coupling_reused_unchanged
+  - id: C-M5S-004
+    decision: accepted_density_mass_radius_and_source_convention_reused_unchanged
+  - id: C-M5S-007
+    decision: accepted_nonlinear_escape_branch_sharpened_for_the_certified_source
+attempts:
+  - id: '0001'
+    verdict: failed_oracle_roundoff_gate
+    role: provenance_only
+  - id: '0002'
+    verdict: frozen_and_homothetic_trapped_surface_established
+    role: primary_applicability
+  - id: '0003'
+    verdict: independent_trapped_surface_corroboration
+    role: corroborating_subclaim
+headline:
+  frozen_source:
+    mass: 54.70902415695694
+    first_trapped_surface_radius: 0.09347038713304487
+    maximum_compactness: 893.8119670378093
+    minimum_radial_metric_function: -892.8119670378093
+    exterior_schwarzschild_radius: 5121.530486782274
+    critical_newton_constant: 0.0523678366438565
+  homothetic_family:
+    compactness_minimizing_radius: 13.026755170899861
+    minimum_maximum_compactness: 881.5053844113182
+    critical_newton_constant: 0.053098937236121836
+independent_route:
+  mass_relative_difference: 6.88192546183858e-07
+  first_horizon_relative_difference: 8.003644788120758e-04
+  maximum_compactness_relative_difference: 2.1106791695881772e-06
+  homothetic_minimum_relative_difference: 1.857096994062076e-06
+  mass_ode_residual: 7.848444975051259e-06
+review:
+  reviewer: ReviewCMM5S012
+  transcript: history://ReviewCMM5S012
+  record: campaigns/P245-nonlinear-self-gravity/reviews/C-M5S-012-review.md
+  verdict: ACCEPT
+  confidence: 0.97
+scope:
+  established:
+    - exact_spherical_mass_constraint_and_metric_function
+    - trapped_surface_for_accepted_C_M5S_004_source_at_B0_coupling
+    - no_horizonless_pure_homothetic_dilation_of_that_source_shape
+  excluded:
+    - arbitrary_covariant_M5_profile_relaxation
+    - localized_global_fixed_J_stress
+    - C_M5S_011_quantum_mass_attribution
+    - black_hole_interior_or_dynamics
+    - singularity_uniqueness_or_all_M5_clock_theorem
+consumers:
+  - C-M5S-004
+  - C-M5S-005
+  - C-M5S-007
+  - issue-170
+validation_commands:
+  - .venv/bin/python -m pytest -q tests/test_nonlinear_clock_gravity.py tests/test_spherical_einstein_scalar.py tests/test_linearized_einstein.py
+  - .venv/bin/python -m pytest -q tests/test_total_gravitational_coupling.py tests/test_m5_induced_coupling.py tests/test_nonlinear_clock_gravity.py
+  - scripts/validate_changed.py --base 3e3a6133030b3041515d07cbeef74eeb3624b99b
+  - memory validate --base "$PWD" "$PWD/memory"
+  - git diff --check
+debt: []
+frontier:
+  - >-
+      A future campaign may derive the curved M5 local stress/Euler system and
+      continue an arbitrarily deformed profile; that creates a new nonlinear
+      clock branch rather than changing C-M5S-012's certified-source theorem.
+  - >-
+      A typed local stress map for C-M5S-011 would establish whether its
+      positive mass shift contributes pointwise compactness; it is not needed
+      for the conservative classical trapped result.

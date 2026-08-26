@@ -1,0 +1,29 @@
+attempt: '0001'
+campaign: P245
+candidate: A_frozen_source_constraint_and_C_homothetic_fixed_j_branch
+status: failed_oracle_roundoff_gate
+started_at: '2026-08-26T19:50:00+00:00'
+finished_at: '2026-08-26T19:50:43+00:00'
+process:
+  exit_code: 1
+  elapsed_seconds: 43.19
+  checks_passed_before_failure: 7
+  terminal_tally: absent_due_CheckFailure
+failure_class: implementation_oracle
+failure: >-
+  The reference-scale algebraic identity gate required absolute difference
+  below 1.0e-12, but two equivalent float64 accumulation orders differed by
+  1.194e-12. This is below a scale-relative roundoff allowance formed from
+  machine epsilon times the O(10^2-10^3) compactness, and no physics gate
+  failed. The first seven gates, including source mass, refinement, trapped
+  surface and homothetic minimum, passed before the abort.
+preserved_artifacts:
+  - manifest.yaml
+  - frozen_source_compactness.py
+  - stdout.txt
+next_attempt: >-
+  Attempt 0002 keeps the scientific construction and frozen classification
+  unchanged, replaces only this unregistered absolute identity assertion by a
+  disclosed 16*eps*max(1,max_compactness) roundoff budget, and writes outputs
+  before the final tally. No completed scientific run is being repeated; 0001
+  aborted before materializing its verdict artifact.
