@@ -2,7 +2,7 @@
 description: Certify the confined-clock full-band kinetic-normalized spectrum about the committed R=12 family-S root via independent quadrature families, then compute the blocked zero-point mass shift with an honest error budget
 author: ox-alpha
 created: '2026-08-25T19:30:00+00:00'
-updated: '2026-08-25T21:45:00+00:00'
+updated: '2026-08-26T12:30:00+00:00'
 tags:
 - substrate-framework
 - campaign-proposal
@@ -93,7 +93,7 @@ captured into the attempt directory on first execution.
 
 ## Attempts (2026-08-25 session)
 
-Nine append-only attempts separate defect discovery from repair and each
+Ten append-only attempts separate defect discovery from repair and each
 verdict below is backed by captured stdout and JSON artifacts in its directory.
 
 | Attempt | Content | Verdict |
@@ -106,6 +106,7 @@ verdict below is backed by captured stdout and JSON artifacts in its directory.
 | 0007 | G6 quadrature-exactness by rule injection into the verbatim committed machinery using interior second-kind Chebyshev nodes with solved weights: M entries machine-exact at 3.1e-14; H entries floor at 4.5e-7 from algebraic pole content in the azimuthal channel; pencil 1.04e-7; delta-E replicates to 9.1e-10 | mechanism named; family floor folded into budgets |
 | 0008 | Final certified table with cross-family budgets | 4 of 4 CHECKS PASS; all 32 kept modes certified; dE = 72.58859646 plus minus 3.9e-7 RSS and 9.2e-7 linear; the soft band is EMPTY and every certified frequency is O(1) or above with omega_min = 1.0464, independently reinforcing the C-M5S-006 no-fourth-species verdict at frequency level |
 | 0009 | PR-172 review repairs (erratum exclusions for the preregistered 0007 pencil-gate miss, reviewer-session identifiers, corrected full-mode validation receipt) plus the preregistered Casimir-style empty-window subtraction: verbatim machinery at the all-zero 48-coefficient background, both quadrature families, pairing-free level sums at N=24/32/40 | BLOCKED WITH MECHANISM: clock side reproduces C-M5S-011 bit-exactly (S32 = 145.17719291997776, diff 0.0) and the mutation gate passes (shift 4.5e+29 relative), but the empty window certifies 0 of 32 kept modes -- its kinetic metric carries a resolution-stable soft direction M[16] = 1.910066e-07 (130x softer than the clock's first propagating kinetic eigenvalue 2.503e-05), so raw pencil frequencies are roundoff junk near 4e41 and no certified empty spectrum exists to subtract. The bare delta-E = 72.58859645998888 stands as the defined zero-point quantity within the committed model class; a renormalized comparison needs a construction that does not rely on kinetic normalization of window-only directions (next candidate, not yet designed) |
+| 0010 | De-boxing ladder Delta_E(R) about the window-family roots R10/R12/R14, verbatim machinery with per-rung G0 transfer (worst 7.5e-12 relative), all-mode certification and mutation gates; preregistered bands in the manifest before execution | MIXED per frozen bands: D = 76.369751262 / 72.588596460 (R12 bit-exact C-M5S-011 regression) / 72.536205371; ratios 1.0521 / 0.99928 miss the symmetric plateau window at the inner rung by 0.0021; p = -0.153. Non-monotone shape excludes box decay AND truncated-vacuum growth; per-rung linear half-sum budgets (5.98e-04 / 1.13e-03 / 1.95e-03) sit three orders below the R10 elevation of 3.78 so numerics cannot explain it; omega_min rises outward (1.010 / 1.046 / 1.089), opposite to box quantization. Mechanism: decaying wall-proximity transient atop an apparently flat intrinsic core. Consumer-mass attribution stays formally open; outward extension preregistered as 0011. REVIEW ERRATUM (Reviewer244b): the first draft of this row and of the manifest revision quoted R10's budget as ladder-wide; G0 references for R10/R14 are in-session regression anchors partially corroborated by largeR-roots.json energies to 6.2e-09 / 4.1e-08 relative; the executed script docstring's '4e-13' is 4.1e-10 absolute (7.5e-12 relative); executed artifacts left untouched |
 The soft-direction value was subsequently confirmed digit-stable across a
 further independent ladder: M[16] = 1.9101e-07 identically at 48x24, 96x48,
 144x72 and 192x96 (16x the nodes), while adjacent null-scale eigenvalues
@@ -121,6 +122,26 @@ and is unbounded.
 The PR-172 review also confirmed every headline number digit-exactly and the
 full pytest suite (2440 passed); its three governance findings are repaired
 in this session's commits.
+
+## Blast-Radius Consistency Audit (2026-08-26)
+
+User directive: examine the full blast radius of delta-E = 72.58859645998888
+and resolve framework-wide consistency. Inventory and classification of every
+consumer of the clock sector's energy/mass numbers:
+
+| Consumer | Quantity used | Classification under the open attribution question |
+| --- | --- | --- |
+| C-M5S-004 BVP consumer Phi(R); mass identity M = E_static(mu-avg) = 54.70900884959007 | classical static density, declared convention excluding the fixed-J constraint term | Scope-explicitly-classical claim; unchanged. Whether its sourced mass should gain +Delta_E is exactly the open attribution question -- flagged as frontier-dependent, not an erratum |
+| C-M5S-004/007 strong-coupling wall G_total M / R = 213.397 at B = 0 (C-M5S-007 verdict on the C-M5S-004 BVP solution) | same BVP mass with G_total = 46.807 | INVARIANT under attribution: naive full inclusion gives about 496.6, still >> 1 by over two orders; the dichotomy verdict is untouched (the B_min weak-field bound scales linearly with the chosen M, so its numeric values shift under inclusion, but the induced-versus-bare dichotomy does not) |
+| C-M5S-005 pairing F = G_total M1 M2 / d^2 | per-clock mass twice | Sign and d-dependence unchanged; magnitude would rescale by (1 + delta)^2 if the shift is included; magnitude flagged attribution-dependent |
+| Census thresholds s_b and stiffness band edges (C-M5S-006) | classical Hessian block scales about the root | Already fluctuation-sector objects computed about the classical background; no zero-point input exists at their scope; unchanged |
+| Lambda^2 = E_U - E_S = 0.26847204181661866 induced-gravity cutoff | eigenvalue splitting about the root | Unchanged; no zero-point sum enters its definition |
+| Issue #170 step-1 figure E = 50.45 stable for R in [~8, ~34] | mu-independent fixed-J branch (N=20, R=8, P240 phase1 ladder) | Provenance clarification only: a distinct root family from the window-family E_cl = 55.10418278043526; recorded here so future readers do not read them as one object |
+
+Robustness headline: every accepted gravity-consumer VERDICT survives both
+outcomes of the attribution question -- the strong-coupling wall is 213.4 or
+about 496.6, i.e. >> 1 either way. What awaits attribution is only the precise
+coupling magnitude and force magnitudes, not any accepted verdict.
 
 ## Debt Ledger
 

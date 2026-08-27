@@ -122,38 +122,58 @@ revisions:
       requires a construction independent of kinetic normalization of
       window-only directions -- registered as the next candidate, not yet
       designed.
+  - date: '2026-08-26'
+    after_attempt: '0010'
+    change: >-
+      De-boxing ladder executed as preregistered: verbatim machinery at the
+      window-family roots R10/R12/R14, per-rung G0 transfer (worst
+      7.5e-12 relative),
+      all 32 kept modes certified at every rung, mutation gates passed, and
+      the R12 rung reproducing C-M5S-011 bit-exactly. Delta_E =
+      76.369751262 / 72.588596460 / 72.536205371; ratios 1.0521 and 0.99928;
+      fitted exponent p = -0.153. The frozen plateau band is missed at the
+      inner rung by 0.0021, so the preregistered verdict is MIXED: the shape
+      is non-monotone, excluding both box decay and truncated-vacuum growth,
+      and reads as an apparently flat intrinsic core plus a decaying
+      wall-proximity transient -- the per-rung linear half-sum budgets
+      (5.98e-04 / 1.13e-03 / 1.95e-03, worst 2.0e-03) sit three orders of
+      magnitude below the R10 elevation of 3.78, so resolution systematics
+      cannot explain it, and omega_min rises outward
+      (1.010 / 1.046 / 1.089), opposite to box quantization. Consumer-mass
+      attribution remains formally open under the frozen bands; the next
+      loop extends the ladder outward past the window edge.
 next_loop:
-  attempt: '0009'
+  attempt: '0011'
   question: >-
-    Is the certified bare zero-point shift delta-E_bare = 72.58859645998888 a
-    property of the clock or of the confining window? Compute the Casimir-style
-    box-baseline-subtracted shift about the same root.
+    Does the wall-proximity transient seen at R10 keep decaying outward,
+    leaving a stable intrinsic plateau for Delta_E? Settle the gravity-
+    consumer mass-attribution question with two certified rungs beyond the
+    window edge.
   construction: >-
-    Identical verbatim committed machinery (Oracle static Hessian +
-    corrected_kinetic_hessian kinetic metric + pencil_float64) evaluated at
-    the all-zero order-16 background coefficient vector -- the empty window,
-    no clock -- at the same resolutions (Gauss-Legendre 96x48 primary,
-    interior second-kind Chebyshev 160x80 cross-family) and the same
-    certification gates as C-M5S-010 (entry floors, ten-sigma margins,
-    stiffness-band tolerances), each side deflating its own exact
-    tangent-null family.
+    Reproduce the P240 attempts/0041-0042 root-production chain (d28ada8
+    lineage: scipy hybr on exact-autograd gradients, warm-start continuation
+    from the R14 coefficients under x=r/R invariance) to solve converged
+    window-family roots at R=16 and R=18 under the same relative-gradient
+    convergence gate as the committed family; store them as a durable
+    snapshot file and evaluate each with attempts/0010/debox_ladder.py's
+    evaluate_rung verbatim at 96x48.
   preregistered_quantity: >-
-    Pairing-free level sums: S_N(side) = fsum of the N smallest positive
-    certified omega on that side; delta-E_ren(N) = (S_N(clock) -
-    S_N(empty))/2 reported at N = 32 (primary), 24 and 40 (sensitivity).
-    No pairwise mode matching is asserted; crossings are not identified.
-  budget_rule: sigma_delta(N) = half the quadrature-composed budget of the
-    two sums, RSS and linear bounds, composed from the same per-mode budgets
-    as C-M5S-011.
+    Delta_E(R16) and Delta_E(R18), their ratios to R14, the refitted
+    exponent p over {12, 14, 16, 18}, and a wall-transient fit
+    Delta_E(R) = D_inf + A * R^(-q) over the four outermost rungs.
   interpretation_frozen_before_execution:
-    - '|delta-E_ren| <= budget: the bare shift is window-dominated; the wall narrative must be restated against the subtracted number.'
-    - 'delta-E_ren < -budget: vacuum baseline aids confinement; the B=0 wall narrative flips sign.'
-    - 'delta-E_ren > +budget: radiative worsening survives subtraction and stands.'
-  mutation_gate: >-
-    A single-coefficient perturbation of the empty side must move some
-    certified frequency relatively more than the budget; otherwise the
-    empty computation is degenerate and no verdict may be drawn.
+    - 'PLATEAU_ASYMPTOTIC: |D(16)/D(14) - 1| <= 0.02 and |D(18)/D(16) - 1| <= 0.02 -- clock-intrinsic shift established at this truncation; consumers face E_cl + D_inf with D_inf from the four-rung fit.'
+    - 'PERSISTENT_DECAY: monotone decrease of at least 1 percent per outward rung across both new intervals -- box-dominated trend confirmed; report the extrapolated limit and keep consumer masses classical pending a genuine continuum construction.'
+    - 'OTHER: INCONCLUSIVE with named mechanism; no attribution verdict may be drawn.'
+    - 'PRECEDENCE: when both PLATEAU_ASYMPTOTIC thresholds pass but the decrease is monotone at >= 1 percent across BOTH new intervals, PERSISTENT_DECAY takes precedence -- a consistent outward trend outweighs a threshold technically inside the plateau window.'
+  band_provenance: >-
+    Bands are TIGHTENED relative to attempt 0010 (0.05 symmetric window)
+    using the already-observed outer-pair deviation 7.2e-04; acceptance is
+    made strictly harder, never easier, by this post-observation choice.
+  gates: >-
+    Per new rung: root-solve convergence gate passed; G0 energy transfer
+    within 1e-6 relative of the rung''s own frozen reference; every kept
+    mode certified at 96x48; mutation gate as in 0010.
   scope_note: >-
-    This is a box-baseline REGULARIZATION comparison inside the committed
-    model class, not a continuum renormalization theorem; de-boxing remains
-    campaign frontier (#170 item 3).
+    Order-16 truncated model class throughout; a de-boxing TREND extension,
+    not a continuum renormalization theorem.
