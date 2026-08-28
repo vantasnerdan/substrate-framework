@@ -173,8 +173,9 @@ provenance_notes:
     torch.set_num_threads(1), OMP_NUM_THREADS=1.
   - >-
     The relgrad gate is scale-relative (grad / max(1, |E|)) and reads ~0 for
-    diverged runs with E -> 1e82; a finite-energy sanity bound (E < 1e6) is
-    required alongside it, applied in the g4b/g4c repairs.
+    diverged runs whose energy grows without bound (g4b recorded 5.4e244
+    before overflow); a finite-energy sanity bound (E < 1e6) is required
+    alongside it, applied in the g4b/g4c repairs.
   - >-
     Repair chain recorded append-only: g4-freewall-stdout.txt (dual-seed run),
     g4b-u-family-repair-stdout.txt (0040-projection seed, diverged),
