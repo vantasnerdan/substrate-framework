@@ -36,6 +36,10 @@ commands:
   - repair: g4c-u-family-repair2-stdout.txt (committed root20 seed, converges to 50.5297)
   - addendum: component_decomposition.py > g2b-component-decomposition-stdout.txt
   - rerun: clean_ladder.py > g2-ladder-rerun-stdout.txt (root persistence repair; determinism check)
+  - "audit: small_ratio_audit.py > g5-small-ratio-audit-stdout.txt (small-ratio-numerics
+    skill bindings - asymmetry norms, softest-pair residuals vs the raw
+    operator, lambda_min/lambda_2, quadrature-refinement gauge 72x24 to
+    144x48, jitter sign spreads at 1e-13/1e-11, per-rung error-budget verdict)"
 outputs:
   - g1-symbolic-stdout.txt
   - g1-curvature.json
@@ -50,6 +54,9 @@ outputs:
   - g4-freewall-stdout.txt
   - free-wall.json
   - result.yaml
+  - g5-small-ratio-audit-stdout.txt
+  - g5-small-ratio-audit.json
+  - small_ratio_audit.py
 non_goals:
   - full-action scope beyond the tested radial branch (candidate frontier)
   - any pair-force measurement (milestone 4)

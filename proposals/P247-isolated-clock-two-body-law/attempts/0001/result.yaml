@@ -141,6 +141,32 @@ consequences:
   - >-
     The reported 0044 verdict must not be cited as accepted evidence; the
     materialized reproduction in this attempt directory is the citable record.
+small_ratio_audit:
+  status: addendum (instrumentation only; no verdict above is changed)
+  summary: >-
+    Applied the small-ratio-numerics prescriptions to every floor-adjacent
+    eigenvalue in the G2/G3 adjudication (small_ratio_audit.py,
+    g5-small-ratio-audit.json). Measured per rung R=12..18: the
+    pre-symmetrization asymmetry of A and of the pencil H = R^3 A + R^-1 D
+    is ~8.6e-17 (machine noise); the softest-eigenpair residual against the
+    unsymmetrized operator is <= 1.4e-7 relative; doubling the quadrature
+    (72x24 -> 144x48) shifts lambda_min(A) by <= 2.6e-15; machine-epsilon
+    coefficient jitter at 1e-13 and 1e-11 moves lambda_min(A) by <= 5.6e-15;
+    every rung's lambda_min(A) exceeds ten times the quadrature-plus-jitter
+    budget.
+  reinterpretation: >-
+    The +-1.7e-8 scale at R>=14 is therefore NOT quadrature or roundoff
+    noise: quadrature refinement and jitter leave it unmoved. It is
+    basis-order truncation of the order-16 spectral operator, which only the
+    order-20/24 re-solve bound in the attempt-0002 gates can resolve; the
+    claim wording (flatness-to-floor, not positivity) remains the strongest
+    supported statement.
+  independent_anchor: >-
+    The pencil lambda_min at the R=12 root is 7.450197220877e-05, agreeing
+    with the committed 0042 pencil soft mode 7.450893386599141e-05 to 9.3e-5
+    relative through a separately assembled operator construction,
+    independently corroborating both.
+
 provenance_notes:
   - >-
     Environment: system python3, torch 2.3.0.post301, float64 end to end,

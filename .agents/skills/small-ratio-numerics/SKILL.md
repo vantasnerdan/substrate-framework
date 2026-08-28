@@ -1,6 +1,6 @@
 ---
 name: small-ratio-numerics
-description: Field-tested methods for computing with small ratios — soft modes, weak forces, tiny splittings — drawn from Skyrme, Einstein–Skyrme, boson-star, and multi-scale continuum practice. Use when a quantity of interest is orders of magnitude below the dominant energy scale, or when results move with box size or mesh.
+description: Read BEFORE freezing the design of any numerical verifier whose gates include a soft Hessian eigenvalue, lambda_min or Morse-index claim, a stability-window edge, a force, or an energy difference or splitting that could sit within about three orders of magnitude of the discretization, quadrature, or roundoff floor — including when reproducing prior work or reusing committed machinery, and whenever results move with box size, mesh, basis order, quadrature nodes, or thread count. Field-tested methods for computing with small ratios — soft modes, weak forces, tiny splittings — drawn from Skyrme, Einstein–Skyrme, boson-star, and multi-scale continuum practice — error budgets, zero-mode gauges, eigenpair residuals, observed-order extrapolation, asymptotic matching, and precision ladders.
 ---
 
 # Small-Ratio Numerics

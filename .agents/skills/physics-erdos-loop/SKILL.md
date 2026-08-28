@@ -34,6 +34,25 @@ Success requires the requested object plus all of these gates:
 
 Read [governance.md](references/governance.md) before changing a claim, convention, invariant, or canonical API. Read [oracles.md](references/oracles.md) when selecting or auditing verification.
 
+## Supporting skills
+
+Load these at the moments they change decisions, not after results:
+
+- `small-ratio-numerics/SKILL.md` — required before freezing the verifier
+  design of any gate whose quantity is a soft Hessian eigenvalue, a
+  stability-window edge, a Morse index, a force, or an energy difference
+  within roughly three orders of magnitude of the discretization,
+  quadrature, or roundoff floor — including reproduced gates and gates that
+  reuse committed machinery, where inherited floors otherwise go unmeasured.
+  The attempt manifest records which prescriptions bind (error budget,
+  zero-mode gauge, eigenpair residuals, lambda_min/lambda_2, observed-order
+  extrapolation, jitter sign test) and how each was satisfied: by
+  measurement, a stated bound, or explicit scoping of the claim below the
+  floor.
+- `theorem-synthesis/SKILL.md` — load when composing accepted claims into a
+  higher theorem; reground on it periodically during long synthesis
+  campaigns to keep the composition logic sharp.
+
 ## Core distinctions
 
 - A campaign is an immutable research event, not canonical truth.

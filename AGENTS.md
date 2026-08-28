@@ -83,9 +83,18 @@ Never silently edit an earlier campaign. Never edit files under `docs/generated/
 ## Start every durable task this way
 
 1. Load `.agents/skills/physics-erdos-loop/SKILL.md` for physics, derivation, simulation, formalization, campaign, claim, or framework-reconciliation work. Also load `.agents/skills/theorem-synthesis/SKILL.md` when composing accepted claims into a higher theorem.
-   Load `.agents/skills/small-ratio-numerics/SKILL.md` when the work turns on a
-   small ratio: a soft Hessian eigenvalue, a weak interaction, a tiny energy
-   splitting, or any quantity orders of magnitude below the dominant energy scale.
+   Load `.agents/skills/small-ratio-numerics/SKILL.md` — before freezing the verifier
+   design, and also when reproducing or auditing prior work — whenever any
+   gate's quantity is a soft Hessian eigenvalue, a stability-window edge, a
+   Morse index, a force, or an energy difference that could sit within about
+   three orders of magnitude of the discretization, quadrature, or roundoff
+   floor. This binding does not lapse because the computation reuses committed
+   machinery or reproduces an earlier report: those are exactly the cases
+   where inherited floors go unmeasured. Record in the attempt manifest which
+   skill prescriptions bind (error budget, zero-mode gauge, eigenpair
+   residuals, lambda_min/lambda_2, observed-order extrapolation, jitter sign
+   test) and how each was satisfied — by measurement, by a stated bound, or by
+   explicit scoping of the claim below the floor.
 2. Read `governance/releases/current.yaml`, `governance/claims.yaml`, and the relevant accepted source modules. For predecessor migration, also locate the source unit in `migration/source-claims.yaml` and read its current disposition and scope policy.
 3. Search durable memory with the bundled `memory` CLI, then verify every reused fact at its source. Memory is an index and work record, not authority.
 4. Inspect git status and history. Separate committed baseline, uncommitted work, generated outputs, and attempt artifacts.
