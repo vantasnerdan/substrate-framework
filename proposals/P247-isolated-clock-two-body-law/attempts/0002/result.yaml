@@ -1,0 +1,163 @@
+attempt: '0002'
+verdict: DECISIVE_NO_GO_WITH_STABILITY_RESTORATION
+verdict_meaning: >-
+  All three preregistered questions closed decisively: (1) milestone-1 band
+  PERSISTENT_GROWTH - scoped isolation no-go for the radial de-boxed family;
+  (2) the attempt-0001 order-16 floor claims are VOIDED at every tested rung -
+  the refined lambda_min(A) is negative above the measured budget everywhere,
+  so the branch carries a genuine negative mode; (3) the shear-channel probe
+  establishes candidate A's gradient-only-stiffness premise at the projector
+  and its softening along the branch. Per the frozen bands the search routes
+  to candidate B.
+base: attempts/0001 (verdict MIXED) and merged main 67fcf0d
+environment:
+  interpreter: system python3 (torch 2.3.0.post301, numpy 2.5.1, scipy 1.18.0, sympy 1.14.0)
+  thread_pin: torch.set_num_threads(1); OMP_NUM_THREADS=1
+  precision: float64 end to end
+milestone_1_curvature_continuation:
+  band: PERSISTENT_GROWTH
+  data: >-
+    Clean aliasing-gated continuation R=20..30 from the attempt-0001 R=18 root
+    (all 6 rungs accepted, relgrad <= 2.6e-13, alias <= 8.1e-10, component
+    quadrature cross-checks pass, decomposition reconstruction < 1e-8):
+    C[c] = 830.0, 916.9, 998.5, 1073.1, 1139.5, 1197.1 - monotone growth with
+    no resolved saturation; E(R) = 60.573 to 71.691 with fitted slope 0.855
+    per unit R over R=12..30 (steeper than the 0.685 on R=12..18: the growth
+    is superlinear, not turning over).
+  fit_arithmetic: >-
+    Saturating model A - B exp(-R/xi) loses to the linear model (dAICc = +7.6)
+    with its fitted decay length pinned at the full R-span (asymptote
+    unresolved); the frozen band's PERSISTENT_GROWTH conditions are met.
+  consequence: >-
+    Per the band frozen before execution: the curvature class obstructs
+    isolation in this model class; scoped no-go recorded for the radial
+    de-boxed family; route to candidate B. The R=20..30 lambda_min(A) floor
+    values are recorded but their sign calls are voided a fortiori by the
+    order study below.
+discretization_cross_check:
+  status: FLOOR_CLAIM_VOIDED_ALL_RUNGS
+  per_rung:
+    - {radius: 12, order_16: -1.875068e-06, order_20: -2.097645e-06, order_24: -8.731545e-06,
+        budget: 3.95e-14}
+    - {radius: 14, order_16: +8.117935e-09, order_20: -7.649566e-07, order_24: -8.608338e-07,
+        budget: 9.29e-15}
+    - {radius: 16, order_16: +1.4904e-08, order_20: -2.085832e-07, order_24: -3.399640e-07,
+        budget: 4.23e-15}
+    - {radius: 18, order_16: +1.696019e-08, order_20: +1.968154e-09, order_24: -1.461069e-07,
+        budget: 2.75e-15}
+  method: >-
+    Roots re-solved at orders 20 and 24 from exact Chebyshev reprojection of
+    the order-16 roots (relgrad <= 1e-10; alias gate <= 7.1e-11 at doubled
+    scaled quadrature); lambda_min(A) extrapolated in basis order with
+    eigenpair residuals <= 4.2e-8 relative, asymmetries ~1e-16, quadrature
+    gauges <= 1.4e-15, jitter spreads <= 3.0e-14 (scales 1e-13/1e-11, 3
+    draws, seed 20260828); verdicts applied to the conservative extrapolation
+    interval per the manifest rule.
+  finding: >-
+    At every rung the refined lambda_min(A) is negative and 4-11 orders of
+    magnitude above the error budget: the attempt-0001 non-negativity reading
+    at R>=14 was an order-16 truncation artifact (false stability), and the
+    continuum branch carries a genuine negative mode whose magnitude flattens
+    in the -(1.5e-7 .. 8.7e-6) range across R=12..18.
+  morse_index: >-
+    Order-24 Morse gate is >= 1 at every rung (exactly 1 at R=14..18; the
+    order-24 R=12 root carries a second negative eigenvalue -8.2e-8, index 2).
+  second_mode: >-
+    lambda_2 collapses with basis order (R=14: 1.06e-8 at order 16 to
+    1.97e-10 at order 24; R=18: 3.18e-6 to 3.54e-10): the split channel is a
+    near-null POSITIVE direction converging to zero - the exactly-flat shear
+    physics lives in lambda_2, not in lambda_min.
+channel_attribution:
+  finding: >-
+    At order 24 the negative mode is q-channel-dominated (fractions
+    q/tangent/split = 0.9946/0.0001/0.0053 at R=14 and
+    0.9985/0.0000/0.0015 at R=18), while the near-null positive direction is
+    the split channel (split fraction 0.9999).
+  adjudication_vs_0044: >-
+    The reported 0044 magnitude (negative mode flattening at -(5+-2)e-7) is
+    RESTORED by the refined computation, but its channel attribution
+    ('purely split-channel' negative direction) is REFUTED: the negative
+    direction is the q channel; the split channel is positive near-null.
+  morse_index_1: confirmed at R=14..18.
+shear_probe:
+  control: >-
+    At the direct-construction rank-1 projector the potential part is exactly
+    flat (a2 = +3.3e-8 / +1.9e-7 vs the G1 analytic zero - the probe's own
+    floor), and the static part is POSITIVE (+11.88 np / +8.94 na): the G1
+    flatness and the candidate-A 'gradient-only stiffness' premise are both
+    independently confirmed at the background where G1 makes its claim.
+  roots: >-
+    On the de-boxed backgrounds the potential curvature along np/na is
+    NEGATIVE (-9.67 to -5.53, resolved 5e7x above the floor, monotonically
+    approaching the projector zero), but the total static curvature stays
+    POSITIVE (+9.15 to +3.79 np, +5.52 to +3.79 na): the gradient stiffness
+    dominates, and the whole sector softens toward marginality as R grows.
+  consequence: >-
+    The shear channels are stable-but-soft on the branch and cannot be
+    invoked as an instability; equally they carry no finite-energy de-boxed
+    limit (the isolation obstruction is the C[c] growth, not the shear
+    sector). Candidate A's premise holds; its radial-family route fails on
+    the milestone-1 band.
+g2_g3_readjudication:
+  g2: >-
+    With the order-24 resolution: lambda_min(A) < 0 at every rung (holds);
+    |lambda_min(A)| at the outermost measured rung R=18 is 1.46e-7, inside
+    the frozen [1e-7, 2e-6] band (holds); Morse index exactly 1 at R=14..18
+    (holds; index 2 at the order-24 R=12 root); negative direction
+    split-channel fraction > 0.9 (FAILS - the negative direction is the q
+    channel). Attempt 0001's 'index 0 from R=14' is withdrawn as a
+    truncation artifact; the flatness-to-floor wording in the C-M5S-015
+    draft is superseded by this record (the draft was never accepted; no
+    registry change).
+  g3: >-
+    Reopens. The attempt-0001 'upper edges unbounded for R>=14' conclusion
+    relied on A >= 0 at the floor, which is voided: with lambda_min(A) < 0
+    the pencil A + R^-4 D develops finite upper edges again. The order-24
+    pencil window recomputation is preregistered as attempt-0003 gate W1.
+  review_record_correction: >-
+    The PR #179 merge-gate review adjudicated the 0044 negative-mode structure
+    as 'does not survive'. On the refined resolution the magnitude is
+    restored and only the channel attribution fails; the durable
+    adjudication record must be corrected at the next materialization (issue
+    comment on #178; the merged review comment itself is history).
+candidate_routing:
+  route: B_minimal_extension
+  reason: >-
+    The frozen PERSISTENT_GROWTH band routes the search to candidate B; the
+    restored negative mode sharpens B's target (the smallest Lorentz-covariant
+    structure vanishing on the static 3x3 sector that repairs the q-channel
+    instability and the asymptotics simultaneously).
+next_loop:
+  attempt: '0003'
+  gates_preregistered:
+    - >-
+      W1: order-24 pencil stability windows at R in {12, 14, 18, 24} under
+      the campaign aliasing gate; compare edges with the reported
+      0044 band [~8, ~34] (+-20 percent gate as in G3).
+    - >-
+      W2: candidate-B enumeration on paper first: list all local
+      Lorentz-covariant terms vanishing on the complete arbitrary static 3x3
+      sector to the stated order, with their shear/q-channel signatures,
+      before any numerics; freeze the structural selection criteria scores.
+    - >-
+      W3: order-24 lambda_min(A) at R=20..30 outermost-rung band check
+      (|lambda_min| in [1e-7, 2e-6] with the refined resolution) to fix the
+      instability scale on the extended ladder.
+  question: >-
+    Does the bounded stability window re-emerge at refined resolution, and
+    which minimal candidate-B extension removes the q-channel negative mode
+    without touching the static sector?
+outputs:
+  - m1-continuation-stdout.txt
+  - m1-continuation.json
+  - g6-order-study-stdout.txt
+  - g6-order-study.json
+  - g7-shear-probe-stdout.txt
+  - g7-shear-probe.json
+  - g8-channel-fractions-stdout.txt
+  - g8-channel-fractions.json
+debt_ledger: []
+frontier_not_debt:
+  - full-action scope beyond the tested radial branch (candidates B/C constructions)
+  - two-clock sector and interaction law (milestones 3-6)
+  - C-M5S-015 draft revision lands with the next claim transaction

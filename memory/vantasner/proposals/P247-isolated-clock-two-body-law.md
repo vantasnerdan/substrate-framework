@@ -56,7 +56,39 @@ Attempts are append-only under `proposals/P247-isolated-clock-two-body-law/attem
 
 Attempt 0001 (milestone 0, 2026-08-28) reached a MIXED verdict with the full adjudication materialized in `proposals/P247-isolated-clock-two-body-law/attempts/0001/result.yaml`. Established exactly: the potential second variation about the rank-1 projector background is diag(5,3,3,0,0,6)/2 with exactly flat np/na shear channels; the de-boxed energy grows monotonically without plateau along the clean aliasing-gated ladder R=12..18 (55.1042 to 59.2462, fitted 0.685 per unit R, R^2=0.9984), so the branch has no finite-energy isolated limit; the free-wall R=8 endpoint reproduces (E=50.5233, wall value 0.99631736, index 0, clock sector invariant). Not reproduced, each with a named mechanism: the reported persistent negative split-channel mode (actual: lambda_min(A) = -1.8751e-06 at R=12 and -7.8309e-07 at R=13 with q-channel-dominated negative directions, then the positive +-1.7e-8 resolution floor with index 0 from R=14); the bounded stability window (actual: lower edges rise with background radius, upper edges unbounded for R>=14); the 0.33 slope (actual 0.685); and the pinned 60.17 reference (actual 50.52966035 from every committed seed path; pinning costs 0.012 percent, not 16 percent).
 
-The strongest supported milestone-0 statement: the binding obstruction to an isolated clock in the committed model class is the without-plateau energy growth, not stability; the exactly flat shear channels are the near-null directions of the de-boxed backgrounds and the natural long-range sector for candidate A. The reported 0044 artifacts must not be cited; this materialized reproduction is the citable record.
+Attempt 0002 (milestone 1, 2026-08-28, branch campaign/p247-attempt-0002-two-body-law,
+no PR per owner direction) verdict DECISIVE_NO_GO_WITH_STABILITY_RESTORATION.
+Milestone 1 closed on the frozen PERSISTENT_GROWTH band: C[c] 461 -> 1197
+through R=30 without resolved saturation (saturating fit loses by dAICc 7.6),
+E(R) slope steepens to 0.855 - scoped isolation no-go for the radial de-boxed
+family, route to candidate B. The preregistered basis-order cross-check (16/20/24,
+Richardson with budgets, jitter sign tests) VOIDED attempt 0001's order-16 floor
+claims at every rung: the refined lambda_min(A) is negative above budget everywhere
+(R=14 -8.6e-7, R=16 -3.4e-7, R=18 -1.5e-7, R=12 -8.7e-6 with index 2), restoring
+the reported 0044 magnitude (-5+-2)e-7 while refuting its split-channel attribution
+(the negative mode is q-channel at fraction >= 0.99; the split channel is the
+near-null positive direction converging to +0). G3 window reopens (order-24 pencil
+recomputation = attempt-0003 gate W1); candidate-B term enumeration on paper is
+gate W2. Shear probe (direct projector construction; the projector is not
+representable in the modal ansatz): G1 potential-flatness and the
+gradient-only-stiffness premise confirmed at the projector (static a2 +11.9/+8.9
+np/na, potential ~0); on the branch the shear channels stay statically stable
+(+9.2 to +3.8) while softening toward marginality. C-M5S-015 promotion postponed
+to issue completion per owner direction; its flatness-to-floor draft wording is
+superseded by attempt 0002 (draft never accepted, no registry change).
+
+Strongest supported statement (after attempt 0002): the radial de-boxed branch
+of the committed model class fails both isolation (curvature class grows without
+saturating through R=30) and stability (a genuine q-channel negative mode at
+every rung, magnitude flattening near -(5e-7..1e-6) at refined basis order);
+the exactly flat np/na shear channels are potential-flat with gradient-only
+stiffness, statically stable on the branch and softening toward the projector
+marginality. Candidate A's radial-family route is exhausted; the search routes
+to candidate B (minimal extension) with candidate A's shear sector as the
+measured long-range phenomenology to preserve. The reported 0044 artifacts must
+still not be cited as accepted evidence; this materialized reproduction remains
+the citable record, and the 0044 adjudication must be corrected at the next
+materialization (magnitude restored, channel attribution refuted).
 
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.

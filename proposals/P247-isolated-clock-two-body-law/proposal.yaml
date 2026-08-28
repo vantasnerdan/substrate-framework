@@ -126,7 +126,7 @@ milestone_gates_attempt_0001:
     growth, persistent negative mode, bounded window, invariant clock
     sector) differs.
 status: active
-phase: milestone_0_complete_mixed_next_deboxed_asymptotics
+phase: milestone_1_persistent_growth_routing_candidate_B
 revisions:
   - date: '2026-08-28'
     after_attempt: '0001'
@@ -150,56 +150,57 @@ revisions:
       (C[c] grows 461 to 740 across R=12..18; V[c] falls 9.4e-3 to 3.0e-3).
       The isolation question reduces to whether the curvature class saturates
       in the de-boxed limit.
+  - date: '2026-08-28'
+    after_attempt: '0002'
+    change: >-
+      Attempt 0002 verdict DECISIVE_NO_GO_WITH_STABILITY_RESTORATION
+      (attempts/0002/result.yaml). Milestone 1 closes on the frozen
+      PERSISTENT_GROWTH band: C[c] grows monotonically 461 to 1197 through
+      R=30 (saturating model loses by dAICc 7.6, asymptote unresolved) and
+      E(R) steepens to 0.855 per unit R - a scoped isolation no-go for the
+      radial de-boxed family; route to candidate B. The preregistered
+      discretization cross-check VOIDED the attempt-0001 order-16 floor
+      claims at every rung: at orders 20/24 lambda_min(A) is negative above
+      the measured budget everywhere (R=14: -8.6e-7; R=16: -3.4e-7; R=18:
+      -1.5e-7; R=12: -8.7e-6 with Morse index 2), restoring the reported 0044
+      magnitude while refuting its split-channel attribution (the negative
+      direction is the q channel; the split channel is the near-null positive
+      direction converging to +0). G3 reopens (order-24 pencil windows =
+      attempt-0003 gate W1); the C-M5S-015 draft's flatness-to-floor wording
+      is superseded by this record (the draft was never accepted; no registry
+      change). Shear probe: G1 flatness and the candidate-A
+      gradient-only-stiffness premise confirmed at the projector (static a2
+      +11.9/+8.9 np/na, potential ~0 to 2e-7 floor); on the branch the total
+      static shear curvature stays positive (+9.2 to +3.8) and softens toward
+      marginality. C-M5S-015 promotion (v0.169.0) postponed to issue
+      completion per owner direction 2026-08-28; no PR before #178 closes.
 next_loop:
-  attempt: '0002'
+  attempt: '0003'
   question: >-
-    Does the curvature-class energy of the de-boxed backgrounds saturate, or
-    equivalently, does an asymptotically natural de-boxed solution with
-    finite limiting energy exist in any admissible sector of the accepted
-    action (milestone 1), once the profile is allowed to relax toward the
-    near-null split (shear) channels instead of the pinned wall?
-  construction: >-
-    Continue the clean root chain beyond R=18 under the aliasing gate while
-    fitting the curvature class C[c(R)] against saturation; in parallel,
-    relax the wall-adjacent envelope so the far field can approach the
-    vacuum along the exactly flat np/na shear channels (candidate A's
-    long-range sector), and test whether any stationary de-boxed profile
-    with finite C and finite energy exists; a saturation no-go or a
-    finite-energy de-boxed solution is a decisive milestone-1 verdict.
-  interpretation_frozen_before_execution:
-    - 'SATURATION: C[c(R)] approaches a finite limit within the fitted band, and E(R) turns over or plateaus — milestone 1 opens with a candidate isolated profile.'
-    - 'PERSISTENT_GROWTH: C[c(R)] keeps growing without saturation through R=30 under certification quadrature — the curvature class obstructs isolation in this model class; record the scoped no-go and route to candidate B.'
-    - 'OTHER: inconclusive with the named mechanism; no isolation verdict may be drawn.'
-  gates: >-
-    Roots accepted only under the campaign aliasing gate; C[c] extracted from
-    the radius-free x-space components with quadrature cross-checks; the
-    free-envelope variant must pass the same stationarity and stability
-    certification as attempt 0001 G4.
-  discretization_cross_check: >-
-    The adjudicated disagreement with the reported 0044 structures (persistent
-    negative split-channel mode, bounded stability window) turns on
-    eigenvalues at the +-1.7e-8 order-16 resolution floor, so attempt 0002
-    applies the small-ratio-numerics prescriptions to every floor-adjacent
-    quantity before any floor-based verdict is drawn:
-    (1) re-solve R=12, R=14, and one R>=16 rung at basis orders 16, 20, 24
-    under the aliasing gate; extrapolate lambda_min(A) and the pencil
-    lambda_min in basis order with the observed order measured from the three
-    grids and required to match design order before the continuum limit is
-    quoted (Richardson only in the asymptotic regime);
-    (2) measure the discretized zero-mode gauge explicitly: evaluate the
-    operator on the exact-flat np/na channel directions from the G1
-    construction and record where they land; a claimed lambda_min at or below
-    that gauge is unresolved by construction;
-    (3) report eigenpair residuals ||H v - lambda v|| / |lambda| for every
-    quoted eigenvalue and the pre-symmetrization asymmetry ||H - H^T|| for
-    every operator; quote lambda_min/lambda_2 with each verdict;
-    (4) roundoff-jitter sign test: perturb the converged coefficients at
-    machine-epsilon scale and require the R>=14 lambda_min sign call to hold;
-    a sign that moves under jitter is recorded as unresolved, not negative.
-    The existing order-16 anchors to accepted 0042 canon (R=12 energy
-    agreement 3.2e-9 relative, R=14 4.1e-8) bound the solver chain but not
-    the discretization error of floor eigenvalues. A rung whose extrapolated
-    lambda_min(A) is negative above the measured zero-mode gauge voids the
-    floor claim for that radius and the affected G2/G3 interpretation is
-    re-adjudicated; attempt 0001's floor-scoped wording (flatness-to-floor,
-    not positivity) stands otherwise.
+    Does the bounded stability window re-emerge at refined resolution, and
+    which minimal candidate-B extension removes the q-channel negative mode
+    without touching the accepted static sector?
+  gates_preregistered:
+    - >-
+      W1: order-24 pencil stability windows at R in {12, 14, 18, 24} under
+      the campaign aliasing gate; compare edges with the reported 0044 band
+      [~8, ~34] under the G3 +-20-percent gate.
+    - >-
+      W2: candidate-B enumeration on paper first: all local Lorentz-covariant
+      terms vanishing on the complete arbitrary static 3x3 sector to the
+      stated order, with their q-channel and asymptotic signatures, scored
+      under the frozen structural selection criteria before any numerics.
+    - >-
+      W3: order-24 lambda_min(A) at R=20..30 to fix the instability scale on
+      the extended ladder (outermost-rung band [1e-7, 2e-6]).
+  superseded_blocks:
+    - >-
+      The attempt-0002 next_loop (continuation to R=30, discretization
+      cross-check, free-envelope variant) executed as preregistered; the
+      free-envelope relaxation inside the restricted family is recorded as
+      the named missing construction for a candidate-A azimuthal reduction
+      (attempts/0002/manifest.yaml non_goals). The prior next_loop text
+      (curvature-saturation question, interpretation bands, discretization
+      cross-check prescriptions 1-4) is preserved verbatim in
+      attempts/0002/manifest.yaml and in the revision history above; its
+      bands were applied unchanged.
