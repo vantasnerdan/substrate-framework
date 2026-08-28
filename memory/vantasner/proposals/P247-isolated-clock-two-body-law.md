@@ -158,6 +158,24 @@ rotor solver, specified in attempts/0006/f1-g1-specification.md). The
 extended functional gained a chi-angular-degrees parameter; the C3-0 exact
 regression re-verified after the change.
 
+Attempt 0006 CLOSED (2026-08-28): Yukawa/pair-exchange route REFUTED by two
+independent mechanisms. (1) Exact Z2 evenness of the extended functional -
+E[+chi] = E[-chi] at machine precision on symmetric AND randomized
+backgrounds, all angular channels - so chi = 0 is the exact classical
+minimum for EVERY configuration: no static pair exchanges through the boost
+channel at any order (F_pair_exchange dead; route G's boost-tail dead). (2)
+Box-growth channel-attributed to the S-potential sector (accelerating:
+increments 0.29 -> 0.73 per DeltaR = 2 over R = 20..30; curvature
+saturating; boost sector exactly 0 at chi = 0) - candidate B masses a
+classically inert channel and cannot cure the static isolation no-go. (3)
+No S row fits a massive tail in the accessible box (exp_resid 0.35-0.64) -
+the Yukawa pairing premise fails; the committed-class two-clock law is the
+slowly-decaying S-overlap (confined anchor +456.6 d^-1.696, C-M5S-008).
+Remaining routes: de-boxed S-overlap law exponent (two-centered solver),
+S-potential-localizing isolation construction, route E localized core,
+route G as one-clock existence only. Artifacts: attempts/0006/
+f1-routing-z2.json, f1-law-measurement.json, f1-derivation.md, result.yaml.
+
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.
 

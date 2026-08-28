@@ -1,0 +1,80 @@
+schema_version: 1
+id: P247-attempt-0006
+manifest: attempts/0006/manifest.yaml
+base_commit: f121105
+date: '2026-08-28'
+branch: campaign/p247-attempt-0002-two-body-law
+verdict: DECISIVE_F1_YUKAWA_ROUTE_REFUTED_TWO_MECHANISMS_LAW_IS_SLOW_OVERLAP
+verdict_gates:
+  D1p_axial_source: VANISHES_ALL_CHANNELS
+  F1_z2_routing: EVEN_FUNCTIONAL_Z2_EXACT
+  F1_pairing: NOT_EXECUTABLE_PREMISE_FAILS
+  F2_numeric_check: NOT_EXECUTABLE_PREMISE_FAILS
+headline: >-
+  The Yukawa/pair-exchange route to the interaction law is refuted by two
+  independent measured mechanisms, and the box-growth no-go is now
+  attributed to the S-potential sector, which shows that candidate B
+  masses a classically inert channel.
+measurement:
+  z2_evenness:
+    artifact: f1-routing-z2.json
+    result: E[S,+chi] = E[S,-chi] to machine precision on the symmetric
+      root AND randomized backgrounds, all angular channels
+    consequence: (T1) dE/dchi = 0 at chi = 0 for every background - no
+      configuration class sources the boost field at linear order;
+      (T2) with the chi-quadratic operator positive, chi = 0 is the
+      exact classical minimum for every background - static clocks do
+      not interact through the boost channel at any order.
+    refuted: F_pair_exchange (as a classical channel); route G's
+      boost-tail mechanism.
+  channel_attribution:
+    artifact: f1-law-measurement.json (m0)
+    potential: 16.58 -> 18.98 over R=20..30, increments accelerating
+      (0.289, 0.361, 0.453, 0.573, 0.730 per step)
+    curvature: 41.75 -> 43.09, decelerating (saturating)
+    boost_sector_at_chi0: exactly 0 (boost_mass = 0, sigma = 0)
+    conclusion: the static box-growth no-go is carried by the
+      S-potential component; the boost sector is classically inert.
+  tail_fits:
+    artifact: f1-law-measurement.json (m1)
+    result: no row of the R=24 or R=30 profiles fits an exponential
+      tail (exp_resid 0.35-0.64); power-law exponents unstable across
+      the box (row0 ~22 still relaxing; rows 1-2 unstable 0.3-1.7)
+    conclusion: the massive-tail premise of the Yukawa pairing
+      (core-localized source through e^{-m d}/(4 pi d)) is not met
+      anywhere in the accessible box; the leading two-clock law of the
+      committed class is the slowly-decaying S-overlap, consistent in
+      character with the confined C-M5S-008 power law (+456.6
+      d^-1.696).
+  pairing_ladder: skipped (no fitted mass passed the residual gate;
+    running it against failed fits would manufacture a law)
+mechanism:
+  candidate_b_reassessment: >-
+    Candidate B (boost-alignment mass m^2 = Lambda^2) masses exactly the
+    channel the Z2 symmetry keeps at chi = 0: its mass is classically
+    inert for static configurations. The divergence candidate B was
+    selected to cure lives in the S-potential sector (m0 attribution),
+    which candidate B does not touch. As an isolation mechanism for the
+    static branch, candidate B is refuted by channel attribution; its
+    W2 selection survives only as provenance of the parameter-free
+    normalization (kappa_chi = 1/16) and the exact Z2 structure.
+  law_status: >-
+    The issue's interaction-law milestone, for the committed class, is
+    carried by the slowly-decaying S-overlap channel. A de-boxed
+    exponent measurement requires either a much larger box or the
+    two-centered solver (registered next build); the confined law
+    (+456.6 d^-1.696, C-M5S-008) remains the measured anchor.
+remaining_open:
+  - de-boxed two-clock law exponent via two-centered solver (the
+    moderate/large-d overlap measurement the class actually supports)
+  - isolation construction that localizes the S-potential channel
+    (the true remaining one-clock blocker, now channel-attributed)
+  - route E localized core (unobstructed, unspecified)
+  - route G survives ONLY as a one-clock existence question (non-
+    spherical S-lump); its boost-tail mechanism is refuted by T1/T2.
+skill_bindings_compliance:
+  error_budget: Z2 gaps at machine precision; tail-fit residual gate
+    preregistered at 0.10 and enforced (nothing passed)
+  extrapolation_scoping: no law fitted beyond its premise; the pairing
+    ladder was skipped rather than forced.
+debt_ledger: []
