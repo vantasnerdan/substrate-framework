@@ -176,6 +176,24 @@ S-potential-localizing isolation construction, route E localized core,
 route G as one-clock existence only. Artifacts: attempts/0006/
 f1-routing-z2.json, f1-law-measurement.json, f1-derivation.md, result.yaml.
 
+Attempt 0007 CLOSED (2026-08-28): de-boxed two-clock interaction law
+MEASURED. Machinery: exact V(S) = -0.5 trS^2 - trS^3 + (trS^2)^2 + 0.5
+extracted from the functional, pointwise-validated to 8.5e-13 (an initial
+0.5-quartic transcription error was caught by the validation gate before
+any law was fitted). V(P) = 0 exactly on the radial-projector family.
+Superposing deviations phi_i = S_i - P_i on the common background and
+telescoping gives an attractive saturating law Delta E(d) = -A exp(-gamma d),
+A ~ 6.3 +- 0.2, gamma ~ 0.25 +- 0.03 (box/refinement stable), no repulsive
+core down to d = 6; the confined C-M5S-008 power law is a different regime.
+Projector Hessian: NO moduli - physical masses m^2 = 5, 3, 3, 6; gauge tilts
+exactly flat in V only. Isolation mechanism sharpened: box-growth = branch
+spreading (V-support widens linearly with R on the V zero set; core density
+falls 0.0615 -> 0.0313 over R = 20 -> 30) - the committed-class branch has
+no fixed-width member; obstruction is branch/EOM structure, not a flat
+potential. next_loop 0008: full quadratic-operator spectrum (identify the
+gamma mode), fixed-width branch probe, route E. Artifacts:
+attempts/0007/v-law-measurement.json, v_law.py, manifest, result.yaml.
+
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.
 

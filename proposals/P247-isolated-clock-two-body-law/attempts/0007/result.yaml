@@ -1,0 +1,73 @@
+schema_version: 1
+id: P247-attempt-0007
+manifest: attempts/0007/manifest.yaml
+base_commit: 78daf61
+date: '2026-08-28'
+branch: campaign/p247-attempt-0002-two-body-law
+preregistration: issue #178 comment 5456434681 (direction posted before
+  execution, per owner directive not to gate the direction)
+verdict: DECISIVE_DEBOXED_LAW_MEASURED_ATTRACTIVE_EXPONENTIAL_NO_MODULI_BRANCH_SPREADS
+verdict_gates:
+  V_validation: EXACT (8.5e-13 vs functional)
+  debox_law: MEASURED
+  flat_direction: NONE_IN_V
+  isolation_mechanism: BRANCH_SPREADING_IDENTIFIED
+headline: >-
+  The de-boxed two-clock interaction law is measured through the exact
+  S-potential overlap: attractive, Delta E(d) = -A exp(-gamma d) with
+  A ~ 6.3 +- 0.2 and gamma ~ 0.25 +- 0.03, box- and resolution-refined;
+  the force decays exponentially and no repulsive core appears down to
+  d = 6. The potential has NO flat physical direction (all projector
+  Hessian modes massive), so the isolation obstruction is not a moduli:
+  the committed-class branch delocalizes - its V-support spreads
+  linearly with the box while the density sits on the V zero set.
+measurements:
+  v_structure:
+    density: V(S) = -0.5 tr(S^2) - tr(S^3) + (tr S^2)^2 + 0.5
+      (exact; an initial 0.5-quartic transcription error was caught by
+      the C validation gate and corrected before any law was fitted)
+    validation: pointwise machinery reproduces the functional's
+      potential component to 8.5e-13 on the R=24 root
+    projector_vacuum: V(P) = 0 exactly on the radial-projector family
+    hessian_at_projector:
+      physical_masses_m_squared: {X11: 5, X22: 3, X33: 3, X23: 6}
+      gauge_tilt_directions: exactly flat in V (X12, X13), kinetic-
+        stabilized; no moduli in V
+  debox_law:
+    artifact: v-law-measurement.json (d_ladder)
+    prescription: superpose deviations phi_i = S_i - P_i on the common
+      projector background; telescope
+      E_int = int[V(P1+phi1+phi2) - V(S1) - V(S2) + V(P1)]
+    ladder: d = 6..28, E_int rises 5.25 -> 8.11 saturating
+    fit: E_inf = 8.1133, A = 5.668, gamma = 0.2442 (ssr 6.7e-4)
+    refinement: 2x grid + larger box shifts gamma 0.2524 -> 0.2571,
+      E_inf stable to 0.1 percent
+    force: attractive (E rising in d), decaying as exp(-gamma d);
+      no repulsive core down to d = 6
+    relation_to_confined_anchor: the confined C-M5S-008 law
+      (+456.6 d^-1.696, repulsive) is a different regime; the de-boxed
+      asymptotic law is attractive-exponential, recorded as the new
+      anchor
+  isolation_mechanism:
+    artifact: v-law-measurement.json (a_rresolved)
+    finding: V is zero (to 1e-4) outside the inner ~30 percent of the
+      box on the axis and equator slices; the V-support width grows
+      linearly with R while the core density falls (0.0615, 0.0456,
+      0.0313 at R = 20, 24, 30) - the branch delocalizes with the box
+    conclusion: the committed-class branch has no fixed-width member;
+      combined with no-moduli V, the obstruction is the branch/EOM
+      structure, not a flat potential direction - the precise target
+      for any isolation construction
+open_for_next_attempt:
+  - full quadratic-operator spectrum (potential + curvature) to
+    identify the measured gamma ~ 0.25 mode and derive the law's
+    coefficient at claim level
+  - fixed-width branch search (does ANY member of the de-boxed family
+    hold its width as R grows - variational or Newton probe)
+  - route E localized core remains unobstructed and unspecified
+skill_bindings_compliance:
+  refinement_evidence: box and resolution refinement recorded for the law
+  error_budget: validation gate exact; fit ssr reported
+  extrapolation: field frozen at the box boundary (projector) beyond
+    r = R; tails with the measured masses are dead at r = 24
+debt_ledger: []
