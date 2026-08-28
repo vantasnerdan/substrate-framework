@@ -1,0 +1,115 @@
+schema_version: 1
+id: P247-attempt-0005
+manifest: attempts/0005/manifest.yaml
+base_commit: f121105
+date: '2026-08-28'
+branch: campaign/p247-attempt-0002-two-body-law
+verdict: DECISIVE_D1_VANISHES_ONE_CLOCK_NO_GO_FOR_BOOST_MASS_PAIR_EXCHANGE_OPEN
+verdict_gates:
+  D1_source_survival: VANISHES
+  D2_axial_chi: NOT_REACHED
+  D3_core: ROUTED_ASSESSMENT_RECORDED
+headline: >-
+  The linear boost source vanishes EXACTLY (machine precision, confirmed by
+  numeric central derivative) for BOTH co-aligned and fixed-axis boosts on
+  the symmetric one-clock background: the one-clock source is parity-odd on
+  mu-symmetric roots, so the chi equation of motion about chi = 0 is
+  homogeneous - chi = 0 is the unique small solution and the
+  boost-alignment mass cannot localize the symmetric fixed-J clock at any
+  order. This is a mechanism-named one-clock no-go for the entire
+  B-family in the reduced class. The mechanism itself redirects
+  positively: a CLOCK PAIR breaks the parity and sources the massive boost
+  field between the clocks - the interaction-law milestone has a live
+  route (F_pair_exchange), and the one-clock route reopens through
+  symmetry breaking by the clock itself (G_fixed_axis_rotor).
+d1_measurement:
+  artifact: d1-source.json
+  co_aligned_source_norm: 0.0
+  tilted_source_norm: 0.0
+  jitter_source_norms: [0.0, 0.0, 0.0]
+  sanity:
+    finite_chi_graph_check: >-
+      at chi amplitude 0.05 the boost mass (6.58e-1), sigma (-3.28e-1) and
+      gradient norm (2.65e+1) are all nonzero: the autograd graph is fully
+      connected; the chi=0 vanishing is analytic, not an artifact
+    numeric_central_derivative: 0.000000e+00
+  budget_note: >-
+    sigma and s_m are exactly quadratic in chi, so the chi=0 gradient is
+    pure source signal; exact zeros are analytic statements, not
+    resolution limits
+mechanism:
+  parity_argument: >-
+    the fixed-J root is mu-symmetric (director-radial hedgehog, spherically
+    symmetric isorotation); the boost source contraction is parity-odd
+    under mu -> -mu for any FIXED boost axis, and pointwise zero for the
+    co-aligned axis; either way the integrated linear source vanishes on
+    the symmetric one-clock sector
+  consequence_one_clock: >-
+    the chi EOM about chi = 0 is homogeneous (s_m and sigma are quadratic;
+    the mixed clock-boost contraction is parity-odd): chi = 0 is the exact
+    unique small solution - no boost tail can form around the symmetric
+    one-clock, so the boost mass cannot cure one-clock isolation in this
+    reduction at any order in the tail amplitude
+  consequence_pair: >-
+    a two-clock configuration at finite separation breaks mu-parity: the
+    linear source no longer cancels and each clock sources the massive
+    boost field in the other's direction - the massive exchange channel
+    (Yukawa-type, decay 1/Lambda) is LIVE for the interaction-law
+    milestone, with the small-ratio-numerics asymptotic-matching
+    prescription applying directly (tail amplitudes carried in log space;
+    pairing evaluated analytically; full two-body run only as a
+    sign-and-coefficient check)
+  sigma_sign_observation: >-
+    at finite chi the truncated sigma Hamiltonian evaluates negative
+    (-3.28e-1 at amplitude 0.05) - the spatial-diameter truncation of the
+    sigma term is not the positive Legendre density; any D2-type
+    construction beyond linear response must first restore the proper
+    covariant Hamiltonian completion. Recorded as a reduction defect, not
+    a model defect.
+c4_note: >-
+  no new stationary point exists (C3, attempt 0004), so dynamical
+  stability of a new clock sector remains pending the routed construction.
+registered_concepts:
+  - id: F_pair_exchange
+    description: >-
+      two-clock massive exchange: the parity-broken pair sources the
+      gapped boost field; derive the pairing from the linearized massive
+      field (multipole pairing of the clock's source multipoles, decay
+      e^{-Lambda d}), then one moderate-separation numeric check
+    status: OPEN - the interaction-law milestone route
+  - id: G_fixed_axis_rotor
+    description: >-
+      one-clock symmetry breaking by the clock itself: a fixed-axis rotor
+      (the physical clock has an orientation) is not mu-symmetric and
+      sources its own boost tail; requires a non-spherical background
+      solver (new solver class)
+    status: OPEN - heavier; the honest one-clock route in the extended class
+skill_bindings_compliance:
+  error_budget: exact zeros are analytic; finite-chi cross-checks recorded
+  zero_mode_gauge: not applicable (no eigenvalue quoted)
+  eigenpair_residuals: not applicable
+  lambda_min_over_lambda_2: not applicable
+  observed_order_extrapolation: scoped out
+  jitter_sign_test: jitter confirms the zeros (all draws 0.0)
+debt_ledger: []
+next_loop:
+  attempt: '0006'
+  question: >-
+    does the parity-broken clock pair source the massive boost field with
+    a well-defined Yukawa pairing, giving the extended class a resolved
+    leading interaction law (milestone 4), while the one-clock
+    localization routes through G_fixed_axis_rotor?
+  gates_preregistered:
+    - >-
+      F1: derive the massive-field pairing exactly (linearized massive
+      equation about the vacuum; clock source multipoles from the C1
+      mixed-term coefficients on the committed root; pairing integral in
+      log space per the small-ratio prescription).
+    - >-
+      F2: measure the interaction on one moderate separation with the
+      full functional as the sign-and-coefficient check of F1.
+    - >-
+      G1: specify the non-spherical fixed-axis rotor ansatz and its
+      solver class (preregistration for a later attempt; not executed in
+      0006).
+  non_goals: no PR before issue-178 completes; no fitted constants.

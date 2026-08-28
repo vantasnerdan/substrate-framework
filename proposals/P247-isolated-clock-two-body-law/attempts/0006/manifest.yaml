@@ -1,0 +1,38 @@
+schema_version: 1
+id: P247-attempt-0006
+proposal: P247-isolated-clock-two-body-law
+canonical_issue: "178"
+date_started: '2026-08-28'
+branch: campaign/p247-attempt-0002-two-body-law
+base_commit: HEAD_AT_CLOSE
+question: >-
+  Does the parity-broken clock pair source the massive boost field with a
+  well-defined Yukawa pairing, giving the extended class a resolved leading
+  interaction law (milestone 4)?
+gates:
+  F1_pairing_derivation:
+    scope: >-
+      exact linearized massive-field pairing: clock source multipole from
+      the C1 mixed-term coefficient on the committed root; Green-function
+      pairing of two well-separated clocks; decay e^{-Lambda d}; carried
+      out in log space per the small-ratio prescription
+    bands:
+      - 'DERIVED: closed-form leading pairing with the source coefficient
+         measured on the root'
+      - 'BLOCKED: named missing construction'
+  F2_numeric_check:
+    scope: >-
+      one moderate-separation full-functional evaluation as the
+      sign-and-coefficient check of F1
+    bands: ['CONFIRMS: sign and coefficient within declared tolerance', 'CONTRADICTS: mechanism named']
+small_ratio_skill_bindings:
+  error_budget: measurement on the numeric check
+  zero_mode_gauge: massive sector has no zero mode (gapped); recorded
+  eigenpair_residuals: not applicable
+  lambda_min_over_lambda_2: not applicable
+  observed_order_extrapolation: asymptotic-matching only; no grid extrapolation claimed
+  jitter_sign_test: sign check jittered
+non_goals:
+  - no PR before issue-178 completes
+  - no fitted constants
+  - G1 fixed-axis-rotor solver specified but not executed

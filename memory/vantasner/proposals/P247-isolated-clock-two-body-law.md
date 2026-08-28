@@ -132,6 +132,22 @@ E_localized_core (localized wall-core object; no new breaking, heavier
 existence problem). Attempt-0005 gate D1: sympy full-contraction survival of
 the linear source under non-co-aligned axes decides the routing.
 
+Attempt 0005 (D1 routing, 2026-08-28, same branch, no PR) verdict
+DECISIVE_D1_VANISHES: the linear boost source vanishes EXACTLY for both
+co-aligned and fixed-axis boosts on the symmetric one-clock root (machine
+precision; graph connectivity and numeric central derivative cross-checked;
+finite-chi graph check confirms the functional is live). Mechanism: the
+one-clock source is parity-odd on mu-symmetric roots, so the chi EOM about
+chi = 0 is homogeneous - the boost-alignment mass cannot localize the
+symmetric fixed-J clock at any order. One-clock no-go for the B-family
+reduction, mechanism named. Reduction defect recorded: the truncated sigma
+Hamiltonian evaluates negative at finite chi (not the positive Legendre
+density). Redirect: F_pair_exchange (a parity-broken CLOCK PAIR sources the
+gapped boost field - the interaction-law milestone has a live Yukawa route)
+and G_fixed_axis_rotor (one-clock symmetry breaking by a fixed-axis rotor;
+needs a non-spherical solver). Attempt-0006 gates F1 (pairing derivation) /
+F2 (numeric check) / G1 (rotor specification) preregistered.
+
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.
 

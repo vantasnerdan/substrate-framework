@@ -234,15 +234,17 @@ def extended_static(
     def u_derivative(coordinate):
         rows = []
         for comp in range(4):
-            rows.append(
-                torch.autograd.grad(
-                    u[..., comp],
-                    coordinate,
-                    torch.ones_like(u[..., comp]),
-                    retain_graph=True,
-                    create_graph=True,
-                )[0]
-            )
+            g = torch.autograd.grad(
+                u[..., comp],
+                coordinate,
+                torch.ones_like(u[..., comp]),
+                retain_graph=True,
+                create_graph=True,
+                allow_unused=True,
+            )[0]
+            if g is None:  # u independent of this coordinate (e.g. fixed axis)
+                g = torch.zeros_like(u[..., comp])
+            rows.append(g)
         return torch.stack(rows, dim=-1)
 
     du_r = u_derivative(radius_grid)
