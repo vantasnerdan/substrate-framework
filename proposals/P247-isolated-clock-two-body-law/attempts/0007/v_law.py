@@ -2,7 +2,7 @@
 
 V(S) = -0.5 tr(S^2) - tr(S^3) + 0.5 (tr S^2)^2 + 0.5  (exact form from
 the committed functional). Debox vacuum = radial projector field
-P(x) = n_hat n_hat, V(P) = -0.5 pointwise.
+P(x) = n_hat n_hat, V(P) = 0 pointwise.
 
 Parts:
   A  r-resolved potential density of the committed roots across the

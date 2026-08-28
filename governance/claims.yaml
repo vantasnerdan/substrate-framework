@@ -13185,3 +13185,280 @@ claims:
     accepted_in: v0.168.0
     challenges: []
     supersedes: []
+  - id: C-M5S-015
+    statement: >-
+      C-M5S-015 (numeric_evidence; milestone-0 adjudication): In the committed
+      P240 model class at base release v0.168.0, the de-boxed limit of the
+      confined radial fixed-J clock branch is not a finite-energy stationary
+      isolated clock. Scope: pinned-wall radial minimum ladders at orders 16
+      and 24 with quadrature at least 4x basis order (the aliasing gate),
+      boxes R = 12..30; the np/na shear channels are exactly flat in the
+      potential second variation (exact symbolic diag(5,3,3,0,0,6)/2 about
+      the rank-1 projector background). Evidence: the clean ladder energy
+      grows monotonically without plateau (55.1042 at R=12 to 59.2462 at
+      R=18, fit 0.685 per unit R with R^2 = 0.9984; extended 58.737908 at
+      R=20 to 62.561688 at R=30, monotone with increments increasing from
+      R=22 onward: 0.739, 0.724, 0.737, 0.777, 0.847); the single free-wall
+      order-16 endpoint check at R=8 gives E = 50.5233 with Morse index 0
+      (negligible pinning cost; a pinning-cost endpoint, not a de-boxing
+      ladder); the R=24 root's own window is [19.1991, 60.0], the order-24
+      self-consistent band over the R={14, 18, 24} backgrounds is
+      [19.1991, 29.9578] (lower edge from R=24, upper from R=14), and the
+      frozen isolation gate [8, 34] +/- 20 percent fails at its lower
+      edge; and the repaired-class softest mode is the family-drift width
+      mode (C-M5S-018). The clock sector is realized only in the confined
+      class, whose stability is accepted separately (C-M5S-006,
+      C-M5S-009).
+    provenance: proposals/P247-isolated-clock-two-body-law/proposal.yaml
+    verification: numeric_evidence
+    review: accepted
+    compatibility: native
+    epistemic: active
+    exclusions:
+      - "Radial branches and tested R ranges only; non-spherical fixed-axis rotor ansatzes are untested (attempt-0006 route G remains open there)."
+      - "Order-24 conclusions are aliasing-gated; the R=24 window band is box-relative, not absolute."
+      - "This adjudication does not deny the confined clock's stability; it locates the realized clock sector."
+      - "The free-wall branch is covered only by the single R=8 order-16 endpoint check; no free-wall de-boxing ladder exists."
+      - "The source convention (C-M5S-012) excludes the global fixed-J term from the localized gravitational source, while this claim's variational energy includes it; the two scopes differ deliberately."
+    dependencies:
+      - C-M5S-006
+      - C-M5S-009
+      - C-M5S-012
+    evidence:
+      - proposals/P247-isolated-clock-two-body-law/attempts/0001/clean-ladder.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0001/free-wall.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0001/g1-curvature.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0003/g9-w1w3-order24.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0003/result.yaml
+      - proposals/P247-isolated-clock-two-body-law/attempts/0003/roots24.npz
+      - proposals/P247-isolated-clock-two-body-law/attempts/0009/repair-battery.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0010/width-stiffness-vs-R.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0010/result.yaml
+      - proposals/P247-isolated-clock-two-body-law/reviews/C-M5S-015-review.md
+      - proposals/P247-isolated-clock-two-body-law/reviews/correction-check-0011.md
+    assumptions:
+      - "IEEE float64, torch single-thread, quadrature nodes at least 4x basis order."
+      - "The committed functional's convention (C-M5S-004/C-M5S-012 source ledger, global fixed-J term included)."
+    comparators: []
+    accepted_in: v0.169.0
+    challenges: []
+    supersedes: []
+  - id: C-M5S-016
+    statement: >-
+      C-M5S-016 (numeric_evidence, machine-precision symmetry check): The
+      extended static functional E[S, chi] of the chi-sector reduction is
+      even under chi -> -chi with float64 gap exactly 0.0 on the committed
+      R=24 root and on a seeded randomized background, measured across
+      channels (0,), (1,), and (1,3), both before and after the sigma-sign
+      repair. Consequently chi = 0 is an exactly stationary point in the
+      chi directions on the measured backgrounds, the chi expansion about
+      them contains no odd terms at the measured precision, so no
+      classical static boost sourcing or pair exchange arises at any odd
+      order on these backgrounds, and any interaction law premised on
+      classical massive-boost exchange is excluded; the candidate-B boost
+      mass weighs a classically unsourced (inert) channel at chi = 0.
+    provenance: proposals/P247-isolated-clock-two-body-law/proposal.yaml
+    verification: numeric_evidence
+    review: accepted
+    compatibility: native
+    epistemic: active
+    exclusions:
+      - "Machine-precision evenness of the implemented integrand; a symbolic parity proof covering all backgrounds is not included and would be a stronger modality."
+      - "Evenness establishes stationarity, not minimality; global-minimum status of chi = 0 is not claimed."
+      - "Quantum or real-time boost exchange is not addressed; the statement is classical and static."
+    dependencies:
+      - C-M5S-001
+      - C-M5S-002
+    evidence:
+      - proposals/P247-isolated-clock-two-body-law/attempts/0006/f1-routing-z2.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0006/f1-law-measurement.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0009/repair-battery.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0006/result.yaml
+      - proposals/P247-isolated-clock-two-body-law/attempts/0009/result.yaml
+      - proposals/P247-isolated-clock-two-body-law/reviews/C-M5S-016-review.md
+      - proposals/P247-isolated-clock-two-body-law/reviews/correction-check-0011.md
+    assumptions:
+      - "The reduced functional implements the census-grounded boost kinetic density (positive sigma sign, C-M5S-017)."
+      - "IEEE float64 evaluation; randomized backgrounds drawn in the stated amplitude range of the attempt record."
+    comparators: []
+    accepted_in: v0.169.0
+    challenges: []
+    supersedes: []
+  - id: C-M5S-017
+    statement: >-
+      C-M5S-017 (numeric_evidence; reduction-defect repair record): The
+      chi-sector reduction of the extended functional must carry the boost
+      kinetic density with the positive sign sigma_density = +KAPPA *
+      eta(du, du), census-grounded by C-M5S-001's positive 1/16 boost entry
+      and reducing to the positive |grad chi|^2 census linearization. The
+      negative-sign truncation has 21 of 96 negative Hessian directions at
+      the committed R=24 root with lambda_min = -1.9471e4 on a pure chi-row
+      direction (finite-difference verified at three step sizes), while the
+      repaired class is minimal (Morse index 0, minimum eigenvalue
+      +1.381856e-05, 0 of 96 negative) and preserves S-sector energetics at
+      chi = 0 exactly, Z2 evenness exactly, and source closure exactly.
+      Zero-valued terms at chi = 0 carry nonzero cross-Hessians (block-sum
+      maximum deviation 12354); stability criteria that omit them are invalid
+      for the extended class.
+    provenance: proposals/P247-isolated-clock-two-body-law/proposal.yaml
+    verification: numeric_evidence
+    review: accepted
+    compatibility: native
+    epistemic: active
+    exclusions:
+      - "A repair record and stability statement for the reduced class; not a claim that the reduction is exact in the continuum."
+      - "The coefficient normalization (placement of the census 1/16) is open recorded debt and does not affect the sign verdict."
+    dependencies:
+      - C-M5S-001
+      - C-M5S-012
+      - C-M5S-016
+    evidence:
+      - proposals/P247-isolated-clock-two-body-law/attempts/0008/ghost-diagnosis.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0008/H_1g.npy
+      - proposals/P247-isolated-clock-two-body-law/attempts/0009/repair-battery.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0008/result.yaml
+      - proposals/P247-isolated-clock-two-body-law/attempts/0009/result.yaml
+      - proposals/P247-isolated-clock-two-body-law/reviews/C-M5S-017-review.md
+      - proposals/P247-isolated-clock-two-body-law/reviews/correction-check-0011.md
+    assumptions:
+      - "IEEE float64 autograd Hessians, symmetrized, at quadrature (48, 24); FD arbitration along candidate eigenvectors."
+    comparators: []
+    accepted_in: v0.169.0
+    challenges: []
+    supersedes: []
+  - id: C-M5S-018
+    statement: >-
+      C-M5S-018 (numeric_evidence): In the repaired extended class the
+      de-boxed clock minimum branch is parametrically box-proportional and
+      has no box-independent member. At the R=20, R=24, and R=30 roots the
+      full 96x96 Hessians have zero negative directions, and their softest
+      modes are split-row dominated (m2-row fraction > 0.99 at R=24) and
+      carry large family-drift overlap (0.8645158 against the R24->R26
+      coefficient drift; 0.9059657 against R24->R30), with stiffness
+      rising along the ladder (8.354269440709847e-06,
+      1.3818561570208736e-05, 2.853589833672512e-05): the clock width is a
+      quasi-modulus of the family, not a massive mode. The branch energy
+      grows monotonically with box size, with increments increasing from
+      R=22 onward (58.737908 at R=20 to 62.561688 at R=30), the core
+      width grows far more slowly than the box (1.775 at R=20 to 2.074 at
+      R=30, +17 percent against +50 percent box growth) while the tail
+      dilutes, so no finite-energy box-independent limit exists on the
+      minimum branch.
+    provenance: proposals/P247-isolated-clock-two-body-law/proposal.yaml
+    verification: numeric_evidence
+    review: accepted
+    compatibility: native
+    epistemic: active
+    exclusions:
+      - "Minimum branch only; stationary configurations away from it are C-M5S-019's subject."
+      - "The rising stiffness shows the drift mode is not softening to a modulus; it does not by itself bound the branch energy growth."
+    dependencies:
+      - C-M5S-015
+      - C-M5S-017
+    evidence:
+      - proposals/P247-isolated-clock-two-body-law/attempts/0009/width-mode.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0010/width-stiffness-vs-R.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0007/v-law-measurement.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0003/result.yaml
+      - proposals/P247-isolated-clock-two-body-law/attempts/0010/result.yaml
+      - proposals/P247-isolated-clock-two-body-law/reviews/C-M5S-018-review.md
+      - proposals/P247-isolated-clock-two-body-law/reviews/correction-check-0011.md
+    assumptions:
+      - "IEEE float64 autograd Hessians at (48, 24) quadrature; drift directions from R-ladder coefficient differences (R24->R26 and R24->R30) padded with the chi row."
+    comparators: []
+    accepted_in: v0.169.0
+    challenges: []
+    supersedes: []
+  - id: C-M5S-019
+    statement: >-
+      C-M5S-019 (numeric_evidence): The extended class has no stable
+      fixed-width stationary clock away from the family minimum at the probed
+      rung. Quadratic-tail reprojection of the R=24 root into an R=28 box and
+      Newton relaxation reaches a genuine stationary configuration (relative
+      gradient 1.799e-13) with core width 2.004 and energy 65.705163 (the
+      family R=26 minimum is 60.937590); its repaired-class Hessian has Morse
+      index 14 with lambda_min = -2591.3021027603927, finite-difference
+      confirmed (second difference -2579.4104 at eps = 1e-3 in the committed
+      solver functional, 0.5 percent agreement, bottom-mode chi-row weight
+      exactly zero). The R=26 relaxation does not converge (relative gradient
+      5.6e-2 at the maxfev cap) and no conclusion is drawn from it; order-24
+      reprojection into R >= 30 boxes fails the seed-fidelity gate
+      (E(seed) = 551.9 and 12129.6 against the 100 gate). No stable
+      fixed-width stationary member was found at any probed rung;
+      combined with C-M5S-018's minimum-branch obstruction, no probed
+      construction supports an isolated de-boxed fixed-J clock in the
+      extended class, while the existence question for further
+      stationary branches in deeper boxes remains open (missing
+      construction: exhaustive branch continuation or a uniqueness
+      result).
+    provenance: proposals/P247-isolated-clock-two-body-law/proposal.yaml
+    verification: numeric_evidence
+    review: accepted
+    compatibility: native
+    epistemic: active
+    exclusions:
+      - "Probed rungs only (R = 26, 28 at order 24); deeper boxes need a different parametrization, recorded as the missing construction, not silently covered."
+      - "Other stationary branches at R=28 and beyond are not exhausted; the instability verdict covers the probed construction only."
+      - "The R=26 relaxation is non-convergent and carries no stability conclusion."
+    dependencies:
+      - C-M5S-018
+    evidence:
+      - proposals/P247-isolated-clock-two-body-law/attempts/0010/fixed-width-probe.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0010/narrow-branch.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0010/fd-arbitration.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0010/narrow28.npy
+      - proposals/P247-isolated-clock-two-body-law/attempts/0010/result.yaml
+      - proposals/P247-isolated-clock-two-body-law/reviews/C-M5S-019-review.md
+      - proposals/P247-isolated-clock-two-body-law/reviews/correction-check-0011.md
+    assumptions:
+      - "Newton relaxation with the committed solver (hybr, xtol 1e-14, maxfev 400); repaired-class Hessian by autograd at (48, 24) quadrature."
+      - "Seed fidelity gate E(seed) < 100 before any relaxation is accepted."
+    comparators: []
+    accepted_in: v0.169.0
+    challenges: []
+    supersedes: []
+  - id: C-M5S-020
+    statement: >-
+      C-M5S-020 (numeric_evidence; effective law): The de-boxed two-clock
+      interaction energy of the extended class, measured by superposing the
+      two clocks' deviations on the common projector background and
+      evaluating the exactly extracted potential V(S) = -1/2 trS^2 - trS^3 +
+      (trS^2)^2 + 0.5 (pointwise machinery matched to the functional
+      potential integral to 8.5e-13; V(P) = 0 exactly on the projector
+      family), is attractive and saturating: Delta E(d) = 8.1133 - 5.668 *
+      exp(-0.2442 * d) with fit ssr 6.7e-4; box/resolution refinement (2x
+      grid: gamma = 0.271731, E_inf = 8.08826; 1.5x box: gamma =
+      0.265034, E_inf = 8.095008) shifts the exponent by less than 12
+      percent and E-infinity by less than 0.4 percent. The exponent is an
+      effective overlap rate of the branch structure
+      inside the box (gamma << the potential masses sqrt(3) and sqrt(5)); it
+      is not a Yukawa mass, and classical massive-boost exchange is excluded
+      by C-M5S-016. This de-boxed law is distinct from the confined-class
+      repulsive power law of C-M5S-008.
+    provenance: proposals/P247-isolated-clock-two-body-law/proposal.yaml
+    verification: numeric_evidence
+    review: accepted
+    compatibility: native
+    epistemic: active
+    exclusions:
+      - "Effective overlap rate within the tested box range; extrapolation beyond the measured separations is not covered."
+      - "Field-frozen superposition ansatz on the common projector background; a fully two-centered solver would be a stronger construction."
+    dependencies:
+      - C-M5S-008
+      - C-M5S-015
+      - C-M5S-016
+      - C-M5S-018
+    evidence:
+      - proposals/P247-isolated-clock-two-body-law/attempts/0007/v-law-measurement.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0007/v-law-refinement.json
+      - proposals/P247-isolated-clock-two-body-law/attempts/0007/v_law_refinement.py
+      - proposals/P247-isolated-clock-two-body-law/attempts/0007/result.yaml
+      - proposals/P247-isolated-clock-two-body-law/attempts/0006/f1-law-measurement.json
+      - proposals/P247-isolated-clock-two-body-law/reviews/C-M5S-020-review.md
+      - proposals/P247-isolated-clock-two-body-law/reviews/correction-check-0011.md
+    assumptions:
+      - "IEEE float64; exact potential validated against the functional potential integral to 8.5e-13 before fitting; comparator fits frozen before measurement."
+    comparators: []
+    accepted_in: v0.169.0
+    challenges: []
+    supersedes: []
