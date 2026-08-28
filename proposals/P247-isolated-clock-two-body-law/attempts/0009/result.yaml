@@ -1,0 +1,93 @@
+schema_version: 1
+id: P247-attempt-0009
+base_commit: 7d6452e
+date: '2026-08-28'
+preregistration: "owner-directed continuation - repair the chi-sector reduction and re-derive every defect-dependent conclusion (dependency challenge: which failures survive the repair)"
+verdict: DECISIVE_REPAIR_VERIFIED_CLASS_HEALTHY_WIDTH_QUASI_MODULI_IS_THE_ISOLATION_OBSTRUCTION
+verdict_gates:
+  sigma_sign_repair: APPLIED_CENSUS_GROUNDED
+  s_sector_regression: EXACT
+  sigma_positivity: VERIFIED
+  z2_evenness_post_repair: SURVIVES_EXACTLY
+  ghost: REPAIRED_MORSE_INDEX_0
+  source_closure_post_repair: SURVIVES_EXACTLY
+  width_mode: IDENTIFIED_SOFT_FAMILY_DRIFT
+headline: >-
+  The chi-sector kinetic repair (sigma sign flipped to the positive
+  Legendre density, census-grounded by C-M5S-001's positive 1/16 boost
+  entry) is verified on five gates. The repaired class is healthy: the
+  committed root is a genuine local minimum (Morse index 0, min
+  +1.38e-5, 0/96 negative). Every defect-dependent conclusion survives
+  the repair; the 0008 saddle was the truncation's artifact. The
+  isolation obstruction is now complete and final at mechanism level:
+  the softest mode is the WIDTH mode (pure split-row, stiffness 1.4e-5)
+  with 86 percent overlap on the family-drift direction - the clock's
+  width is a quasi-moduli and the accepted model contains no width-mass
+  term.
+repair:
+  change: sigma_density = +KAPPA * eta(du, du) (was minus) - the
+    positive Legendre density; reduces to the census linearization
+    (positive |grad chi|^2) at small chi; positive at finite chi by
+    construction and measurement
+  grounding: C-M5S-001 census - boost orbit is a positive propagating
+    species (metric entry 1/16); the negative sign contradicted it
+battery:
+  r1_regression:
+    R20/R24/R30 energies identical to the original functional at chi=0
+    (exact) - the committed roots remain exact stationary points
+  r2_sigma_positivity:
+    even-radial and odd-axial channels at amplitudes 0.05/0.2/0.5 all
+    positive, quadratic growth confirmed
+  r3_z2_evenness_post_repair:
+    E[+chi] = E[-chi] exactly on the root AND randomized backgrounds,
+    all channels - the Z2 theorem survives the repair
+  r4_hessian:
+    min = +1.381856e-05, num_negative = 0/96 (was -1.9471e4 with
+    21/96 negative before repair) - the ghost was the truncation's
+    artifact; the repaired class is a valid dynamical sector
+  r5_source_post_repair:
+    "gradient norm dE/dchi = 0 exactly in all channels - the classical static boost channel stays closed (source-free) in the repaired class"
+dependency_table:
+  unconditional_survivors:
+    - Z2 evenness and the closure of the classical boost channel
+      (re-verified post-repair)
+    - de-boxed S-overlap interaction law (attractive exponential;
+      S-sector only)
+    - V-structure (V(P)=0, no moduli) and branch-spreading
+      box-growth attribution (S-sector only)
+    - W3 A-matrix confinement result (S-sector only)
+    - one-clock no-localized-boost conclusions C3/D1/D1p (evenness-
+      driven; evenness survives)
+  repaired:
+    - the 0008 saddle (21 negative directions) - truncation artifact;
+      repaired class Morse index 0
+  unaffected_by_design:
+    - confined-class results (C-M5S-005/008/009 - different machinery)
+width_mode:
+  stiffness: 1.382e-05 (softest of 96; next 3.96e-3)
+  composition: pure split-row
+  family_drift_overlap: 0.8645 (remainder in the next two soft modes;
+    the drift lives in the bottom-3 soft subspace)
+  conclusion: the clock's width is a quasi-moduli; the branch spreading
+    is motion along this mode; the accepted model contains no
+    width-mass term, so box-growth is unavoidable in the de-boxed
+    family
+resolution_paths:
+  - width stabilization within the model (none known - would be a
+    claim-level discovery; winding/topological stabilization is the
+    candidate mechanism, present in the confined class)
+  - confined-class realization - the confined clocks are stable,
+    radiatively stable (C-M5S-009), interact via the measured confined
+    law (C-M5S-008) - the issue's clock may be realized there
+  - claim-level derivation of the S-law exponent (gamma ~ 0.25
+    effective; requires the aligned-vacuum quadratic operator -
+    construction registered)
+skill_bindings_compliance:
+  verification: every gate numerically verified; regression exact;
+    FD-grade spectrum checks inherited from 0008 methodology
+  honesty: the repair is the minimal census-grounded change; the
+    coefficient normalization (1/16 placement) is deferred to the
+    claim-level repair review and recorded as debt
+debt_ledger:
+  - chi-sector coefficient normalization vs the census 1/16 placement
+    (claim-level repair review)

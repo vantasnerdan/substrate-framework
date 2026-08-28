@@ -212,6 +212,27 @@ S-sector gamma-mode identification, fixed-width probe, route E.
 Artifacts: attempts/0008/ghost-diagnosis.json, width-mode.json,
 H_*.npy, width_mode.py, result.yaml.
 
+Attempt 0009 CLOSED (2026-08-28): chi-sector repair VERIFIED, dependency
+challenge answered. Repair: sigma_density = +KAPPA eta(du,du) (positive
+Legendre density; census-grounded by C-M5S-001's positive 1/16 boost
+entry). Five gates: (R1) S-sector regression exact at chi=0 - committed
+roots remain exact stationary points; (R2) sigma positive at finite chi
+(both channels, quadratic growth); (R3) Z2 evenness SURVIVES the repair
+exactly (root + randomized, all channels); (R4) ghost REPAIRED - Morse
+index 0, min +1.38e-5, 0/96 negative (was -1.9e4, 21/96); (R5) source
+closure survives exactly. Dependency table: every defect-dependent
+conclusion survives; the 0008 saddle was the truncation's artifact; the
+repaired class is a valid dynamical sector with the clock root a genuine
+local minimum. ISOLATION OBSTRUCTION COMPLETE: softest mode = width mode
+(pure split-row, stiffness 1.382e-5, 86 percent family-drift overlap) -
+the clock width is a quasi-moduli; the accepted model has no width-mass
+term, so de-boxed box-growth is unavoidable. Resolution paths: winding/
+topological width stabilization (confined-class mechanism), confined-
+class realization (C-M5S-008/009), claim-level S-law exponent derivation
+(aligned-vacuum operator, registered). Debt: chi-coefficient
+normalization vs census 1/16 placement. Artifacts:
+attempts/0009/repair-battery.json, repair_battery.py, result.yaml.
+
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.
 
