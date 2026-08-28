@@ -39,6 +39,7 @@ torch.set_grad_enabled(False)
 
 STEPS = (2.0e-3, 4.0e-3, 8.0e-3)
 NODES = (96, 48)
+RADII = [12.0, 14.0, 16.0, 18.0]
 
 
 def shear_matrix(shear: str, director, polar, azimuthal):

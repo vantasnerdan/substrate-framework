@@ -71,7 +71,9 @@ def alias_energy(values: np.ndarray, radius: float) -> float:
 
 
 def components_at(values, nodes: tuple[int, int]):
-    flat = np.asarray(values, dtype=np.float64)
+    import torch
+
+    flat = torch.tensor(np.asarray(values, dtype=np.float64), dtype=torch.float64)
     curvature, potential, inertia = xspace_energy.xspace_components(
         flat, ORDER, nodes[0], nodes[1]
     )
