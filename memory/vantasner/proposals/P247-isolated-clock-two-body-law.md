@@ -77,18 +77,42 @@ np/na, potential ~0); on the branch the shear channels stay statically stable
 to issue completion per owner direction; its flatness-to-floor draft wording is
 superseded by attempt 0002 (draft never accepted, no registry change).
 
-Strongest supported statement (after attempt 0002): the radial de-boxed branch
-of the committed model class fails both isolation (curvature class grows without
-saturating through R=30) and stability (a genuine q-channel negative mode at
-every rung, magnitude flattening near -(5e-7..1e-6) at refined basis order);
-the exactly flat np/na shear channels are potential-flat with gradient-only
-stiffness, statically stable on the branch and softening toward the projector
-marginality. Candidate A's radial-family route is exhausted; the search routes
-to candidate B (minimal extension) with candidate A's shear sector as the
-measured long-range phenomenology to preserve. The reported 0044 artifacts must
-still not be cited as accepted evidence; this materialized reproduction remains
-the citable record, and the 0044 adjudication must be corrected at the next
-materialization (magnitude restored, channel attribution refuted).
+Attempt 0003 (W1/W2/W3, 2026-08-28, same branch, no PR) verdict
+DECISIVE_PER_GATE. W3 SIGN_CHANGE: at order 24 the q-channel static instability
+is confined - lambda_min(A) = -2.08e-9 at R=20 (q-dominated), zero crossing in
+(20,22), then +5e-10 split-channel floor through R=30 with Morse index 0; the
+de-boxed family is statically stable for R >= 20 at refined resolution. W1
+REFUTED_ORDER24 for the universal band: order-24 windows are background-relative
+(lower edge 0.77-0.80 x R_own, finite upper edges for R <= 18; every background
+stable at its own radius), self-consistent band [19.20, 29.96] fails the frozen
+[8,34]+-20 percent gate at the lower edge while the reported upper edge is
+rehabilitated in-gate. Refined roots carry order-improvement 0.7-12.7 percent
+growing with R (order-16 roots have ~1e-2 stationary error); E(R) stays monotone
+so the isolation no-go survives. W2 SELECTED candidate B: the boost-alignment
+mass s_m = (m^2/2)((u^T eta xi)^2 - 1), m^2 = Lambda^2 (C-M5S-002 scale, no
+fitted parameter) - masses the C-M5S-001 massless boost orbit (the named
+isolation-failure mechanism), vanishes exactly on the static 3x3 sector,
+isorotation-invariant (clock map unchanged); declared cost: explicit internal
+boost-symmetry breaking. Execution honesty: a spurious divergent R=24 basin
+(E=6.9e516) passed the relative alias gate at 3e-8; two preregistered
+amendments (root-continuity gate 0.25 after measuring legitimate
+order-improvement; R-continuation reseeding) plus one in-place band correction
+(tag leak) are recorded in manifest and result. Attempt-0004 gates C1-C4
+preregistered: reduced functional derivation, crossing bisection, one-clock
+existence with Yukawa tail, pencil stability.
+
+Strongest supported statement (after attempt 0003): the radial de-boxed branch
+of the committed model class fails isolation (curvature class grows without
+saturating; E monotone at refined roots through R=30) while its static
+instability is confined to R <~ 20-21 and heals at refined resolution;
+stability windows are background-relative, not universal. The accepted action's
+massless boost orbit (C-M5S-001) is the named isolation mechanism, and the
+selected candidate-B repair is the boost-alignment mass with m^2 = Lambda^2 -
+zero new continuous parameters, exact static-sector survival, isorotation
+invariance. The reported 0044 artifacts must still not be cited as accepted
+evidence; the materialized reproduction remains the citable record (0044
+magnitude and bounded-window-per-background claims rehabilitated, universal
+band and split-channel attribution refuted).
 
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.

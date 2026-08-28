@@ -1,0 +1,183 @@
+schema_version: 1
+id: P247-attempt-0003
+manifest: attempts/0003/manifest.yaml
+base_commit: 70f2e08f0ee23e7cdf05b5f505c7975fbcc2dc52
+date: '2026-08-28'
+branch: campaign/p247-attempt-0002-two-body-law
+verdict: DECISIVE_PER_GATE_INSTABILITY_CONFINED_WINDOW_BACKGROUND_RELATIVE
+verdict_gates:
+  W1_pencil_windows_order24: REFUTED_ORDER24
+  W3_lambda_min_ladder_order24: SIGN_CHANGE
+  W2_candidate_B_enumeration: SELECTED_B1
+headline: >-
+  At refined (order-24) resolution the q-channel static instability is
+  CONFINED to small radii and heals: lambda_min(A) = -2.08e-9 at R = 20
+  (q-dominated, 74 percent) flips positive by R = 22 and settles at the
+  +5e-10 split-channel near-null floor through R = 30 (crossing in
+  (20, 22); bisection is the named follow-up). The reported 0044 universal
+  stability band [~8, ~34] remains REFUTED at refined resolution: windows
+  are background-relative (lower edge ~ 0.77-0.80 x R_own, upper edge
+  finite for R <= 18), the self-consistent band [19.20, 29.96] fails the
+  frozen +-20 percent gate at the lower edge while the upper edge is
+  within gate. Candidate B is SELECTED on paper: the boost-alignment mass
+  s_m = (m^2/2)((u^T eta xi)^2 - 1), zero new continuous parameters
+  (m^2 = Lambda^2 per C-M5S-002), exact static-sector survival,
+  isorotation-invariant, machine-checked.
+execution_history:
+  first_run: >-
+    Spurious divergent stationary basin at R = 24 (E = 6.9e516, relgrad
+    7.2e-70); the relative aliasing gate passed it blind at 3.04e-8.
+    Preserved as g9-first-run-divergent-R24-stdout.txt; amendment 1 added
+    the root-continuity gate and R-continuation reseeding.
+  second_run: >-
+    Continuity gate at 1e-6 misfired on legitimate roots: measured
+    order-improvement |E24 - E16|/E16 = 0.7-12.7 percent, growing with R
+    (attempt-0002 g6 records calibrate 0.7-2.2 percent at R = 12..18).
+    Amendment 2 recalibrated the gate to 0.25 (divergence fails by >500
+    orders). Preserved as g9-second-run-gate-misfire-stdout.txt.
+  third_run: EXIT 0, 36.17 minutes, all nine order-24 roots accepted on
+    the first seed attempt; continuity 0.7-12.7 percent; alias gates
+    <= 3.3e-10.
+  band_correction: >-
+    Inner-set tag filter used the 0001 convention ("R12") against this
+    run's str(radius) tags, leaking R = 12 into the self-consistent set
+    (upper edge 25.17 instead of 29.96). Corrected in place with the
+    recompute recorded in g9-band-correction.json; verdict unchanged
+    (lower edge fails the gate under both variants). Script fixed for
+    future runs.
+w3_refined_instability:
+  protocol: order-24 re-solves of order-16 provenance roots (relgrad
+    1e-10, alias 1e-6, continuity 0.25), lambda_min(A) at (108,36) with
+    doubled-grid (216,72) quadrature gauge, jitter sign tests (scales
+    1e-13/1e-11, 3 draws, seed 20260828)
+  ladder_order24:
+    - {radius: 12, lambda_min_A: -8.731545e-06, source: attempt-0002 g6}
+    - {radius: 14, lambda_min_A: -8.608338e-07, source: attempt-0002 g6}
+    - {radius: 16, lambda_min_A: -3.399640e-07, source: attempt-0002 g6}
+    - {radius: 18, lambda_min_A: -1.461069e-07, source: attempt-0002 g6}
+    - {radius: 20, lambda_min_A: -2.078540e-09, lambda_2: 1.229e-09, q_fraction: 0.7445, split_fraction: 0.2555, budget: 1.8e-15, morse_gate: 0}
+    - {radius: 22, lambda_min_A: +4.297582e-10, lambda_2: 9.688e-08, split_fraction: 0.9999, budget: 8.7e-17, morse_gate: 0}
+    - {radius: 24, lambda_min_A: +4.805453e-10, lambda_2: 1.029e-07, split_fraction: 1.0, budget: 5.9e-17, morse_gate: 0}
+    - {radius: 26, lambda_min_A: +5.200838e-10, lambda_2: 1.073e-07, split_fraction: 1.0, budget: 9.7e-17, morse_gate: 0}
+    - {radius: 28, lambda_min_A: +5.530348e-10, lambda_2: 1.106e-07, split_fraction: 1.0, budget: 7.3e-17, morse_gate: 0}
+    - {radius: 30, lambda_min_A: +5.808141e-10, lambda_2: 1.132e-07, split_fraction: 1.0, budget: 1.9e-17, morse_gate: 0}
+  established: >-
+    The q-channel negative mode decays by roughly three orders per rung
+    near R = 20, crosses zero in (20, 22), and every R >= 22 background
+    has lambda_min(A) > 0 above quadrature and jitter budgets with Morse
+    index 0 under the committed convention. The R >= 22 magnitudes
+    (~5e-10) sit at the near-null split-channel floor: the scoped claim
+    is an upper bound - any residual static instability at R >= 22 is at
+    least 240x weaker than at R = 18 - not a strict positivity claim at
+    the basis-order floor (single order; basis-order floor unmeasured at
+    this scale by preregistered scoping).
+  g2_adjudication_update: >-
+    Attempt-0001/0002's "persistent negative q-channel mode" is replaced
+    by: negative mode confined to R <~ 20-21 with rapidly decaying
+    magnitude; the de-boxed family is statically stable (committed Morse
+    convention) for R >= 20 at refined resolution. The 0044 magnitude
+    claim stays restored (flattening -(5e-7..1e-6) across R = 14..18);
+    its confinement claim ("window R in [~8,~34]") is addressed by W1
+    below.
+w1_pencil_windows_order24:
+  windows:
+    - {radius: 12, window: [9.2296, 25.1663]}
+    - {radius: 14, window: [10.8225, 29.9578]}
+    - {radius: 18, window: [14.0713, 45.1561]}
+    - {radius: 24, window: [19.1991, 60.0]}
+  structure: >-
+    Windows are background-relative: lower edge = 0.77-0.80 x own radius;
+    upper edge finite for R <= 18 (the order-16 "unbounded upper edges"
+    were resolution-limited) and beyond the R = 24 grid end. Every
+    background is stable at its own radius (f_own in +1.0e-9..+2.2e-9)
+    and edge quadrature gauges are ~1e-8 (primary vs doubled grids).
+  self_consistent_band: [19.1991, 29.9578]
+  frozen_gate: '[8, 34] +- 20 percent'
+  gate_result: {low_pass: false, high_pass: true}
+  verdict: REFUTED_ORDER24
+  mechanism: >-
+    No universal band exists: the lower edge tracks the background, so a
+    single [~8, ~34] interval containing all backgrounds is refuted at
+    refined resolution. The reported upper edge ~34 IS rehabilitated
+    (finite, in-gate) for the inner backgrounds; the reported lower edge
+    ~8 is not (any common interval starts at 19.2). The qualitative 0044
+    claim "each background has a bounded stability window containing its
+    own radius" is CONFIRMED at order 24.
+root_order_improvement:
+  finding: >-
+    Order-24 roots improve on order-16 stationary points by 0.7 percent
+    (R = 12) to 12.7 percent (R = 30), monotonically growing with R; the
+    committed order-16 ladder energies carry ~1e-2 root error (gradient
+    small, distance to continuum root not).
+  refined_energy_ladder:
+    - {radius: 20, energy: 58.737908}
+    - {radius: 22, energy: 59.476890}
+    - {radius: 24, energy: 60.200600}
+    - {radius: 26, energy: 60.937584}
+    - {radius: 28, energy: 61.715061}
+    - {radius: 30, energy: 62.561688}
+  consequence: >-
+    E(R) remains monotonically growing with no turnover at refined roots;
+    the milestone-1 isolation no-go (PERSISTENT_GROWTH) survives
+    refinement and stands for the radial de-boxed family. Earlier
+    attempt records keep their order-16 values as provenance; slope
+    numbers quoted from them are order-16-root quantities.
+w2_candidate_b_selection:
+  selected: B1_boost_alignment_mass
+  term: 's_m = (m^2/2) ((u^T eta xi)^2 - 1), m^2 = Lambda^2 (C-M5S-002 scale; no fitted parameter)'
+  machine_checks: w2-property-checks.json (all pass)
+  properties: >-
+    Vanishes identically on the complete arbitrary static 3x3 sector;
+    equals (m^2/2) sinh^2(chi) >= 0 (bounded below); quadratic in boost
+    rapidity (a mass); invariant under the clock isorotation symmetry
+    (residual 0), so omega = 1/(2I) and E_J = E_stat + J^2/(4I) carry
+    over unchanged.
+  mechanism: >-
+    Masses the exactly massless boost-orbit species (C-M5S-001 census)
+    - the named isolation-failure mechanism - turning the clock tail
+    Yukawa-localized. Rejected alternatives B2-B6 with reasons in
+    w2-candidate-b-enumeration.md (B2 companion only; B3 no mass; B4
+    sector-vanishing fails; B5 unbounded; B6 no scale creation).
+  named_assumption_cost: >-
+    Explicit breaking of the internal boost symmetry (alignment
+    covector xi fixed), mirroring the accepted vacuum-alignment pin;
+    spacetime covariance untouched.
+  consumer_impact: >-
+    C-M5S-001/003 (massless census, z_i = 0 collapse) keep their scope
+    as statements about the unextended action; the extended class is a
+    candidate-B proposal model. C-M5S-008 (confined pair law) keeps its
+    scope; the isolated two-clock law is the new object.
+skill_bindings_compliance:
+  error_budget: measured per rung (quadrature gauge, jitter, alias); edge gauges ~1e-8
+  zero_mode_gauge: adapted per attempt-0002 adjudication; scoped claims only above gauge
+  eigenpair_residuals: <= 2.0e-7 all quoted rows; asymmetry <= 8.5e-17
+  lambda_min_over_lambda_2: quoted per row; R >= 22 rows labeled floor-scale
+  observed_order_extrapolation: scoped out (single-order sign claims; two-order edge shifts with gauge)
+  jitter_sign_test: all six sign calls stable (3 draws, 2 scales)
+debt_ledger: []
+next_loop:
+  attempt: '0004'
+  question: >-
+    Does the selected candidate-B extension (boost-alignment mass,
+    m^2 = Lambda^2) yield a localized, finite-energy, dynamically stable
+    fixed-J clock in the reduced radial construction, with every
+    accepted static-sector claim surviving exactly?
+  gates_preregistered:
+    - >-
+      C1: reduced functional derivation - the s_m density and the
+      sigma-projector kinetic reduced to the radial ansatz with boost
+      profile chi(r); sympy sector-survival re-check on the reduced
+      functional; units and conventions block before implementation.
+    - >-
+      C2: order-24 bisection of the static crossing R_c in (20, 22)
+      (named follow-up from W3) to fix the confinement scale.
+    - >-
+      C3: one-clock existence - rotating background with boost tail at
+      fixed J under the aliasing and continuity gates; finite energy;
+      Yukawa tail length 1/Lambda measured.
+    - >-
+      C4: dynamical stability - pencil spectrum of the rotating
+      background (W1 machinery); clock stable iff boost-sector pencil is
+      tachyon-free; static q-degeneracy stays kinetic-free (checked, not
+      assumed).
+  non_goals: "no PR before issue 178 completes; no fitted constants; no reinterpretation of accepted claims' scopes."

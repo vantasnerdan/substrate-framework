@@ -174,33 +174,60 @@ revisions:
       static shear curvature stays positive (+9.2 to +3.8) and softens toward
       marginality. C-M5S-015 promotion (v0.169.0) postponed to issue
       completion per owner direction 2026-08-28; no PR before #178 closes.
+  - date: '2026-08-28'
+    after_attempt: '0003'
+    change: >-
+      Attempt 0003 verdict DECISIVE_PER_GATE (attempts/0003/result.yaml).
+      W3 SIGN_CHANGE: at order 24 the q-channel static instability is
+      confined to small radii - lambda_min(A) = -2.08e-9 at R = 20
+      (q-dominated), crossing zero in (20, 22), then +5e-10 split-channel
+      floor through R = 30 with committed Morse index 0; the de-boxed
+      family is statically stable for R >= 20 at refined resolution, and
+      the 0044 magnitude claim stays restored while its confinement claim
+      is answered. W1 REFUTED_ORDER24: no universal [~8, ~34] band - the
+      order-24 windows are background-relative (lower edge 0.77-0.80 x
+      R_own, finite upper edges for R <= 18), self-consistent band
+      [19.20, 29.96] fails the frozen gate at the lower edge while the
+      reported upper edge is rehabilitated in-gate. Refined roots also
+      showed order-16 stationary error growing 0.7 to 12.7 percent with R;
+      E(R) stays monotone (isolation no-go survives). W2 SELECTED:
+      candidate B = the boost-alignment mass s_m = (m^2/2)((u^T eta
+      xi)^2 - 1), m^2 = Lambda^2 (no fitted parameter), machine-checked
+      sector survival and isorotation invariance; it masses the
+      C-M5S-001 massless boost orbit - the named isolation-failure
+      mechanism - with the explicit internal-boost breaking declared as
+      the assumption cost. Execution notes: two preregistered amendments
+      (spurious divergent basin at R = 24 caught by the new
+      root-continuity gate; gate recalibrated to measured order-
+      improvement 0.7-12.7 percent) and one in-place band correction
+      (tag-format leak), all recorded in the manifest and result.
 next_loop:
-  attempt: '0003'
+  attempt: '0004'
   question: >-
-    Does the bounded stability window re-emerge at refined resolution, and
-    which minimal candidate-B extension removes the q-channel negative mode
-    without touching the accepted static sector?
+    Does the selected candidate-B extension (boost-alignment mass,
+    m^2 = Lambda^2) yield a localized, finite-energy, dynamically stable
+    fixed-J clock in the reduced radial construction, with every accepted
+    static-sector claim surviving exactly?
   gates_preregistered:
     - >-
-      W1: order-24 pencil stability windows at R in {12, 14, 18, 24} under
-      the campaign aliasing gate; compare edges with the reported 0044 band
-      [~8, ~34] under the G3 +-20-percent gate.
+      C1: reduced functional derivation - the s_m density and the
+      sigma-projector kinetic reduced to the radial ansatz with boost
+      profile chi(r); sympy sector-survival re-check on the reduced
+      functional; units and conventions block before implementation.
     - >-
-      W2: candidate-B enumeration on paper first: all local Lorentz-covariant
-      terms vanishing on the complete arbitrary static 3x3 sector to the
-      stated order, with their q-channel and asymptotic signatures, scored
-      under the frozen structural selection criteria before any numerics.
+      C2: order-24 bisection of the static crossing R_c in (20, 22)
+      (named follow-up from W3) to fix the confinement scale.
     - >-
-      W3: order-24 lambda_min(A) at R=20..30 to fix the instability scale on
-      the extended ladder (outermost-rung band [1e-7, 2e-6]).
+      C3: one-clock existence - rotating background with boost tail at
+      fixed J under the aliasing and continuity gates; finite energy;
+      Yukawa tail length 1/Lambda measured.
+    - >-
+      C4: dynamical stability - pencil spectrum of the rotating
+      background (W1 machinery); clock stable iff the boost-sector pencil
+      is tachyon-free; the static q-degeneracy stays kinetic-free
+      (checked, not assumed).
   superseded_blocks:
     - >-
-      The attempt-0002 next_loop (continuation to R=30, discretization
-      cross-check, free-envelope variant) executed as preregistered; the
-      free-envelope relaxation inside the restricted family is recorded as
-      the named missing construction for a candidate-A azimuthal reduction
-      (attempts/0002/manifest.yaml non_goals). The prior next_loop text
-      (curvature-saturation question, interpretation bands, discretization
-      cross-check prescriptions 1-4) is preserved verbatim in
-      attempts/0002/manifest.yaml and in the revision history above; its
-      bands were applied unchanged.
+      The attempt-0003 next_loop (W1/W2/W3) executed as preregistered with
+      two recorded amendments; its full text and frozen bands are preserved
+      in attempts/0003/manifest.yaml and revision history above.

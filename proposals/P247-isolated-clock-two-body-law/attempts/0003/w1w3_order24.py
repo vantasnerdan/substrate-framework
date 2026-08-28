@@ -396,7 +396,7 @@ def main() -> None:
         for tag, rec in usable.items()
         if rec["primary"].get("window") is not None
     }
-    inner_tags = [tag for tag in windows if tag != "R12"]
+    inner_tags = [tag for tag in windows if float(tag) > min(float(x) for x in windows)]
     self_consistent = (
         [
             max(windows[tag][0] for tag in inner_tags),
