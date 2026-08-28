@@ -1,0 +1,96 @@
+schema_version: 1
+id: P247-attempt-0004
+proposal: P247-isolated-clock-two-body-law
+canonical_issue: "178"
+date_started: '2026-08-28'
+branch: campaign/p247-attempt-0002-two-body-law
+base_commit: 2d3e23d
+question: >-
+  Does the selected candidate-B extension (boost-alignment mass s_m =
+  (m^2/2)((u^T eta xi)^2 - 1), m^2 = Lambda^2) yield a localized,
+  finite-energy, dynamically stable fixed-J clock in the reduced radial
+  construction, with every accepted static-sector claim surviving exactly?
+gates:
+  C1_reduction:
+    deliverables:
+      - >-
+        Clock-variable identification from accepted source: pin whether the
+        boost rapidity chi realizes, mixes with, or decouples from the
+        committed P240 clock sector (isorotation about the director), by
+        deriving the M-block content of the boosted configuration from the
+        covariant primitives in src/substrate_framework/m5_covariant_action.py.
+      - >-
+        Reduced radial ansatz: exact reduced functional E[S(r), chi(r)] =
+        E_committed[S] + E_boost[chi] + E_couple[S, chi] with every term
+        derived symbolically (sympy) from the covariant action primitives;
+        chi = 0 must reproduce E_committed exactly (regression check).
+      - sympy sector-survival re-check on the reduced functional.
+    bands:
+      - >-
+        IDENTIFIED: the boost angle couples to the clock sector (a sourcing
+        or mixing term exists in the reduced functional) -> proceed to C3.
+      - >-
+        DECOUPLED: chi is a free spectator (chi = 0 solves its EOM for every
+        committed configuration and no mixed term exists) -> B1's isolation
+        premise fails as stated; register the next concept derived from this
+        mechanism (minimal mass term for the static-tail directions, with
+        explicit static-claim consumer analysis, or clock-gradient x boost
+        mixing), rescore under the frozen criteria, and end the attempt with
+        that decisive registration.
+  C2_crossing_bisection:
+    scope: order-24 bisection of the static-instability crossing R_c in
+      (20, 22) reusing roots24.npz seeds and the attempt-0003 protocol
+      (continuity gate 0.25, alias gate 1e-6, relgrad 1e-10)
+    bands:
+      - 'R_c measured; band recorded with refinement evidence'
+      - >-
+        bisection inconclusive because lambda_min at the bracket ends is
+        below the summed quadrature-plus-jitter budget -> recorded
+        unresolved with budgets quoted
+  C3_one_clock_existence:
+    scope: >-
+      solve the extended radial problem at fixed J for a localized rotating
+      configuration: core + boost tail; aliasing gate 1e-6 at doubled
+      quadrature, continuity-gate analog for new roots (energy bounded:
+      |E| < 10 x E_committed(R_equivalent) preregistered), tail length
+      measured against 1/Lambda
+    bands:
+      - >-
+        LOCALIZED: a stationary fixed-J solution exists with finite energy
+        and exponentially decaying tail; record E, I, omega, tail length
+        with budgets.
+      - >-
+        NO_LOCALIZED_ROOT: no stationary localized solution; name the
+        missing construction.
+      - >-
+        ROOT_BUT_EXTENDED: roots exist but energy still grows without
+        bound under box refinement -> candidate-B isolation premise
+        refuted; back to selection with the mechanism named.
+  C4_dynamical_stability:
+    scope: >-
+      pencil spectrum of the rotating background (attempt-0001 window
+      machinery semantics on the extended functional); clock stable iff
+      the boost-sector pencil is tachyon-free; the static q-degeneracy is
+      checked for vanishing kinetic metric, not assumed
+    bands:
+      - 'STABLE: all pencil eigenvalues positive real part above budgets'
+      - 'TACHYON: named unstable direction with eigenvector channel signature'
+      - 'UNRESOLVED: budget-limited; one-grid escalation then final'
+small_ratio_skill_bindings:
+  error_budget: >-
+    measurement: quadrature gauge (doubled grids), jitter sign tests
+    (scales 1e-13/1e-11, 3 draws, seed 20260828), alias gate 1e-6,
+    continuity gate 0.25; every quoted eigenvalue carries its budget.
+  zero_mode_gauge: adapted (no in-family zero mode; split-channel
+    near-null direction IS the floor gauge at R >= 22 per attempt-0003).
+  eigenpair_residuals: measurement per quoted pencil eigenvalue.
+  lambda_min_over_lambda_2: quoted per verdict.
+  observed_order_extrapolation: scoped out (no continuum extrapolation
+    claimed; C2 is a bisection at fixed order 24).
+  jitter_sign_test: measurement on all C2/C4 sign calls.
+environment: {python: system python3, torch: 2.3.0.post301, numpy: 2.5.1, scipy: 1.18.0, sympy: 1.14.0}
+non_goals:
+  - no PR before issue-178 completes (owner direction)
+  - no two-clock numerics in this attempt (that is the next attempt after C3/C4 land)
+  - no fitted constants (m^2 = Lambda^2 is a convention)
+  - no edits to canonical modules or earlier attempts
