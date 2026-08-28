@@ -194,6 +194,24 @@ potential. next_loop 0008: full quadratic-operator spectrum (identify the
 gamma mode), fixed-width branch probe, route E. Artifacts:
 attempts/0007/v-law-measurement.json, v_law.py, manifest, result.yaml.
 
+Attempt 0008 CLOSED (2026-08-28): GHOST DIAGNOSIS. The full fixed-R
+Hessian of the extended fixed-J energy at the R=24 root has 21 negative
+directions of 96; lambda_min = -1.9471e4 (FD-verified at three step
+sizes) is a PURE chi-row direction: the sigma-truncated boost kinetic
+term has the wrong sign in the reduced functional - the attempt-0005
+reduction defect is the measured leading instability. Block spectra:
+A_pot has exact zero modes (gauge orbits + the marginal W3 structure),
+D_curv positive, D_fixedj min -185. Method lesson: zero-VALUED terms at
+chi=0 carry nonzero cross-Hessians - block-sum Hessians that omit them
+are wrong (caught by FD cross-checks); W3's A-only stability ladder is
+an incomplete criterion for the extended class. The candidate-B class
+cannot deliver stable one-clock or pair-law claims until the chi sector
+is reconstructed from the accepted positive Legendre density.
+next_loop 0009: chi-sector kinetic reconstruction (claim-level repair),
+S-sector gamma-mode identification, fixed-width probe, route E.
+Artifacts: attempts/0008/ghost-diagnosis.json, width-mode.json,
+H_*.npy, width_mode.py, result.yaml.
+
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.
 

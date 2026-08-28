@@ -1,0 +1,36 @@
+{
+  "measurement": "full fixed-R Hessian of the extended fixed-J energy at the R=24 root (order 24, 48x24 nodes)",
+  "verification": [
+    "FD first-derivative check vs H_A action on a random vector: 2.2% (FD noise at |Hv|~6e4)",
+    "FD second derivative along u_bot at eps=1e-3,1e-2,3e-2: -1.947110e+04, -1.947109e+04, -1.947103e+04 - converges to the eigenvalue",
+    "FD second derivative along H_A's bottom eigenvector: converges to +1.380e-05"
+  ],
+  "total_hessian": {
+    "min_eigenvalue": -19471.1005,
+    "num_negative_of_96": 21,
+    "saddle_direction_composition": {
+      "q": 0.0,
+      "tangent": 0.0,
+      "split": 0.0,
+      "chi": 1.0
+    },
+    "top_eigenvalues": [
+      163045,
+      169223,
+      181745,
+      182948,
+      232833
+    ]
+  },
+  "block_spectra": {
+    "A_pot": "min exactly 0 (gauge orbits + the marginal W3 structure); max 2.33e5",
+    "D_curv": "min -1.4e-14 (positive operator)",
+    "D_fixedj": "min -185.1, max +0.0126"
+  },
+  "reconciliation": "The 3-block sum H_pot+H_curv+H_fj (min +1.38e-5, FD-confirmed on its bottom mode) OMITS the sigma and boost_mass Hessians: zero-VALUED terms at chi=0 carry nonzero cross-Hessians (chi<->S and chi<->chi). The full one-graph Hessian is the true fixed-R operator; FD decides in its favor.",
+  "interpretation": {
+    "ghost": "the negative directions are PURE chi-row: the sigma-truncated boost kinetic term has the wrong sign in the reduced functional (the reduction defect recorded in attempt 0005: truncated sigma Hamiltonian goes negative at finite chi). The boost channel is a ghost with 21 negative directions.",
+    "w3_relation": "W3's stability ladder used the A-matrix (x-factored potential Hessian) only; the full fixed-R extended operator is a saddle. A-only stability is an incomplete criterion for the extended class.",
+    "consequence": "the candidate-B extended class cannot deliver a stable one-clock or a stable pair law until the chi-sector kinetic density is reconstructed with the correct positive Legendre density (claim-level repair of the reduction defect). The V-channel overlap law (attempt 0007) is unaffected: V is the exact S-polynomial and the classical classical channel by the Z2 theorem."
+  }
+}

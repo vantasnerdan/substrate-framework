@@ -1,0 +1,65 @@
+schema_version: 1
+id: P247-attempt-0008
+base_commit: 823186e
+date: '2026-08-28'
+preregistration: "continuation of the attempt-0007 direction registered in issue 178 comment 5456434681; width-mode diagnosis followed the evidence to the ghost discovery; per owner directive not to gate the direction"
+verdict: DECISIVE_BOOST_SECTOR_IS_GHOST_TRUNCATION_DEFECT_CONFIRMED_FD
+verdict_gates:
+  width_mode: SUPERSEDED_BY_GHOST_DISCOVERY
+  full_hessian_spectrum: MEASURED_FD_VERIFIED
+  ghost_mechanism: IDENTIFIED
+headline: >-
+  The full fixed-R Hessian of the extended fixed-J energy at the R=24
+  root has 21 negative directions of 96, and the softest
+  (lambda_min = -1.9471e4, finite-difference verified to 6 digits at
+  three step sizes) is a PURE chi-row direction: the sigma-truncated
+  boost kinetic term carries the wrong sign in the reduced functional -
+  the reduction defect recorded in attempt 0005 - making the boost
+  channel a ghost. The candidate-B extended class cannot deliver a
+  stable one-clock or a stable pair law until the chi-sector kinetic
+  density is reconstructed from the accepted positive Legendre density.
+measurements:
+  spectrum:
+    artifact: ghost-diagnosis.json
+    lambda_min: -1.947110e+04 (pure chi direction)
+    negative_directions: 21 of 96
+    block_spectra:
+      A_pot: exact zeros (gauge orbits) + marginal structure (the W3
+        lambda_min ~ +5e-10 ladder lives here)
+      D_curv: positive operator (min -1.4e-14)
+      D_fixedj: min -185.1
+  verification:
+    - FD second derivative along u_bot converges to the eigenvalue at
+      three step sizes (1e-3, 1e-2, 3e-2)
+    - FD second derivative along the H_A bottom mode converges to
+      +1.38e-5 (that mode is real too)
+    - the earlier block-sum (min +1.38e-5) omitted the sigma and
+      boost_mass Hessians - zero-VALUED terms at chi=0 carry nonzero
+      cross-Hessians; the reconciliation is recorded, the full
+      one-graph Hessian is the fixed-R operator
+mechanism:
+  reduction_defect_confirmed: attempt 0005 recorded that the truncated
+    sigma Hamiltonian evaluates negative at finite chi; attempt 0008
+    shows the defect's quadratic consequence - a ghost boost sector -
+    is the leading instability of the extended class at its own root
+  w3_relation: the W3 stability ladder (A-matrix only) is an incomplete
+    stability criterion for the extended class; its marginal modes are
+    real but secondary to the ghost
+  consistency: the C3/D1 one-clock failures and this saddle are one
+    mechanism - the chi sector of the attempt-0004 reduction is not a
+    valid dynamical sector until repaired
+remaining_open:
+  - chi-sector kinetic reconstruction from the accepted positive
+    Legendre density (claim-level repair; reopens stability and the
+    extended-class law after repair)
+  - de-boxed S-overlap law coefficient derivation at claim level
+    (gamma ~ 0.25 mode identification within the S sector)
+  - fixed-width branch probe in the S sector (A-matrix zero-mode
+    structure vs the family drift)
+  - route E localized core
+skill_bindings_compliance:
+  verification: eigenvalues FD-verified at three step sizes; block
+    spectra reported separately; reconciliation documented
+  honesty: the initial 3-block sum was incomplete and the omission was
+    caught by FD cross-checks and recorded
+debt_ledger: []
