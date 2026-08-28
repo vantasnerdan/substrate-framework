@@ -1,0 +1,160 @@
+schema_version: 1
+id: P247-attempt-0004
+manifest: attempts/0004/manifest.yaml
+base_commit: 2d3e23d
+date: '2026-08-28'
+branch: campaign/p247-attempt-0002-two-body-law
+verdict: DECISIVE_PER_GATE_COUPLING_IDENTIFIED_LOCALIZATION_BLOCKED_BY_COALIGNMENT
+verdict_gates:
+  C1_reduction: IDENTIFIED
+  C2_crossing_bisection: MEASURED
+  C3_one_clock_existence: NO_LOCALIZED_ROOT
+  C4_dynamical_stability: NOT_APPLICABLE_WITH_MECHANISM
+headline: >-
+  The candidate-B boost sector is structurally wired to the clock (C1: the
+  clock velocity sources the boost field through the F_{01} mixed term;
+  chi = 0 regression against the committed functional is EXACT, relative
+  diffs 0.0), its normalization is pinned with zero new parameters
+  (C1b: boost-direction projector-current metric entry exactly 1/16,
+  reproducing the accepted census eigenvalues), and the static instability
+  crossing is measured (C2: bracket [20.0, 20.25] at order 24). But the
+  selected director-aligned construction is a SPECTATOR for the radial
+  clock: the linear source of the boost tail vanishes identically at
+  chi = 0 (C3: gradient exactly 0.0 to machine precision) by a co-aligned
+  structural cancellation - boost axis = director = clock rotation axis.
+  No localized clock is produced by B1 as selected; the mechanism-derived
+  successor concepts are registered and scored for attempt 0005.
+execution_notes:
+  - >-
+    C3's first run mislabeled the vacuous case (zero source, zero tail)
+    as LOCALIZED because the convergence band did not exclude the
+    all-zero tail; the verdict logic was corrected to require a nonzero
+    tail and the run rerun (2.7 s). The data were identical; only the
+    band decision changed. c3-solve.json carries the corrected verdict.
+c1_reduction:
+  artifact: c1-reduction.json
+  findings:
+    - r1 chi=0 regression: exact (regression by construction)
+    - >-
+      r2 clock velocity sources the boost field: F_{01} carries a mixed
+      term proportional to Omega * chi' at chi = 0 (matrix nonzero)
+    - >-
+      r3 static-gradient source vanishes for co-aligned axes (structural,
+      pointwise; recorded as the mechanism note that later explains C3)
+    - r4 leading mass coefficient exactly 1 (per m^2/2)
+    - r5 boost-orbit tangent spacelike, eta(du, du) = +1 per unit dchi
+      (sigma kinetic positive, kappa normalization consistent)
+c1b_normalization:
+  artifact: c1b-kappa.json
+  boost_metric_entry: "1/16"
+  census_regression: "eigenvalues {0 x7, 1/16, 100/1369, 1/9} reproduce the accepted C-M5S-001 values exactly"
+  consequence: >-
+    the reduced boost kinetic is kappa_chi = 1/16 with mass Lambda^2 =
+    0.26847204181661866: the C3 functional is parameter-free.
+c3_0_regression:
+  artifact: c3-regression.json
+  result: PASS with relative diffs exactly 0.0 for curvature, potential,
+    and inertia on the committed order-16 R = 18 root at (48, 24) nodes
+c2_crossing:
+  artifact: c2-crossing.json
+  final_bracket: [20.0, 20.25]
+  midpoints:
+    - {radius: 21.0, lambda_min_A: +3.897380e-10, sign: positive}
+    - {radius: 20.5, lambda_min_A: +3.437121e-10, sign: positive}
+    - {radius: 20.25, lambda_min_A: +2.657540e-10, sign: positive}
+  continuity_gates: "6.5e-5, 2.1e-5, 5.8e-6 (all << 0.25)"
+  conclusion: >-
+    the q-channel static instability is confined to R <= 20.0(1): the
+    static branch is stable for R >~ 20.1 at order-24 resolution.
+c3_existence:
+  artifact: c3-solve.json
+  verdict: NO_LOCALIZED_ROOT
+  mechanism: >-
+    co-aligned linear-source cancellation: grad E_J|_{chi=0} = 0.0
+    exactly (machine precision) at both boxes R = 24 and R = 30; the
+    boost-alignment mass is quadratic, the sigma kinetic is quadratic,
+    and the inertia's mixed boost-clock term cancels pointwise because
+    the boost axis coincides with the clock rotation axis (the C1-r3
+    structural cancellation promoted to the full contraction). The
+    origin chi = 0 is the exact stationary point: B1 as selected cannot
+    localize the clock.
+  scope_note: >-
+    S-sector frozen at the committed order-24 R = 24 root; the χ-sector
+    Newton is leading-order in the boost back-reaction. A nonzero source
+    would have been visible at any order, so the cancellation verdict is
+    not an artifact of the frozen S-sector.
+c4_dynamical_stability:
+  status: NOT_APPLICABLE_WITH_MECHANISM
+  note: >-
+    no nontrivial chi* stationary point exists (C3), so there is no new
+    rotating background whose pencil differs from the committed one; the
+    committed background stability at R = 24 was already measured at
+    order 24 in attempt-0003 gate W1 (f_own = +1.0e-9, window
+    [19.1991, 60.0]). C4 reopens when a nontrivial clock-boost
+    construction exists.
+new_concept_registration:
+  failure_mechanism: >-
+    co-aligned cancellation: any boost field aligned with the local
+    director couples to the isorotating clock only through contractions
+    that vanish pointwise when the boost axis equals the rotation axis.
+  registered_concepts:
+    - id: D_tilted_boost
+      description: >-
+        boost the block along a FIXED spacelike axis (the clock's angular
+        momentum axis) instead of the local director: the boost generator
+        no longer commutes with the clock response, so the linear source
+        survives (C1 machinery decides immediately: [boost-gen(ẑ),
+        rotation-gen(n̂)] != 0 for non-co-aligned axes).
+      assumption_cost: >-
+        breaks isorotation covariance - the committed omega = 1/(2I) map
+        is modified; the clock sector is rebuilt rather than extended.
+      sector_survival: exact (chi = 0 unchanged)
+      implementability: the radial ansatz gains an axially symmetric chi
+        channel; existing grids suffice.
+    - id: E_localized_core
+      description: >-
+        change the object, not the coupling: a localized wall-core clock
+        (free core at the origin) plus the massive boost tail; the core
+        supplies localization while the mass confines the dynamical tail;
+        box-independence replaces the E(R) branch test.
+      assumption_cost: none new (B1 kept co-aligned)
+      mechanism_gap: >-
+        must be shown that the mass confines enough energy for the total
+        E to converge with the box - the static shear-tail growth is NOT
+        touched by the boost mass, so this needs the core's own energy to
+        dominate at finite box.
+      implementability: free-boundary core solve in a large box; heavier.
+  selection_deferred: >-
+    attempt-0005 preregisters the decisive test for D_tilted_boost first
+    (sympy: does the full linear-source contraction survive
+    non-co-aligned axes?), then scores D against E under the frozen
+    criteria with that measurement in hand.
+skill_bindings_compliance:
+  error_budget: budgets quoted per C2 midpoint (quadrature + jitter); C3 gradient checked at machine precision
+  zero_mode_gauge: inherited split-channel floor gauge from attempt-0003
+  eigenpair_residuals: not applicable (no new spectrum quoted; C4 not applicable)
+  lambda_min_over_lambda_2: C2 rows quoted with lambda_2 in c2-crossing.json
+  observed_order_extrapolation: scoped out (bisection at fixed order 24)
+  jitter_sign_test: C2 sign calls jitter-stable (recorded in c2-crossing.json)
+debt_ledger: []
+next_loop:
+  attempt: '0005'
+  question: >-
+    does the tilted-boost realization of the boost-alignment mass source a
+    nonvanishing clock tail (linear source survives the full
+    contraction), and does it yield a localized finite-energy fixed-J
+    clock; if yes build it, if no score and build E_localized_core?
+  gates_preregistered:
+    - >-
+      D1: sympy full-contraction check of the linear source with
+      non-co-aligned axes (boost generator along a fixed axis, clock
+      rotation about the director): survives or vanishes; decides
+      D_tilted_boost vs E_localized_core routing.
+    - >-
+      D2: if D_tilted_boost survives: reduced axial-chi functional with
+      the chi=0 regression gate (as C3-0), Newton at fixed J, box-
+      independence at two boxes, tail vs 1/Lambda.
+    - >-
+      D3: if E_localized_core is routed instead: free-core localized
+      solve in a large box with box-independence as the existence gate.
+  non_goals: no PR before issue-178 completes; no fitted constants.

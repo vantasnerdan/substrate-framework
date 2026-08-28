@@ -1,0 +1,13 @@
+[C3 R=24.0 step 0] E=60.200600063 EJ=0.434168 bm=0.000e+00 |g|=0.000e+00
+[C3 R=24.0] final E=60.200600063
+[C3 R=30.0 step 0] E=68.026051189 EJ=0.347334 bm=0.000e+00 |g|=0.000e+00
+[C3 R=30.0] final E=68.026051189
+/home/dan/substrate-framework/proposals/P247-isolated-clock-two-body-law/attempts/0004/c3_solve.py:144: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  _t.tensor(radial_coordinate), tuple(range(ORDER))
+/home/dan/substrate-framework/proposals/P247-isolated-clock-two-body-law/attempts/0004/c3_solve.py:147: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  chi = (_t.tensor(radial) ** 0)  # placeholder replaced below
+/home/dan/substrate-framework/proposals/P247-isolated-clock-two-body-law/attempts/0004/c3_solve.py:149: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  chi = chi * _t.tensor(x) * (1 - _t.tensor(x))
+C3 VERDICT: NO_LOCALIZED_ROOT - co-aligned linear-source cancellation: the gradient of the fixed-J energy in the boost channel vanishes identically at chi = 0 (boost axis = director = clock rotation axis; the same structural cancellation recorded as C1-r3), so no tail is sourced and the origin is the exact stationary point
+WROTE c3-solve.json
+EXIT=0
