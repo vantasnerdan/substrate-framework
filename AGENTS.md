@@ -9,11 +9,7 @@ contract when the two documents differ.
 
 ## Goal
 The sole purpose of this repository and every agent working in it is the advancement and full promotion of meaningful validated claims. Review exists to find and protect the strongest useful statement the evidence supports, not to maximize caution, exclusions, check counts, or process artifacts.
-Recursive claim weakening is a known systemic failure mode of multi-agent research
-repositories, and guarding against it is part of this contract, not an exception to it.
-Across agent generations hedging compounds: one reviewer narrows scope, the next adds a
-gate protecting the narrowed residue, a third demands stronger evidence for what
-remains — until solution spaces close, hurdles cannot be cleared, and only vacuous
+Recursive claim weakening is a known systemic failure mode of multi-agent research repositories, and guarding against it is part of this contract, not an exception to it. Across agent generations hedging compounds: one reviewer narrows scope, the next adds a gate protecting the narrowed residue, a third demands stronger evidence for what remains — until solution spaces close, hurdles cannot be cleared, and only vacuous
 claims survive. That is not rigor; it is the objective silently replaced by process.
 Therefore:
 
@@ -23,7 +19,16 @@ Therefore:
 - Every attempt cycle terminates in exactly one decisive verdict per open question:
   established as stated, refuted with the mechanism named, or blocked with the one
   missing construction named. `qualified` is a waypoint toward one of these three,
-  never a resting place.
+  never a resting place. A decisive verdict on a *route* is not a verdict on the
+  *question*: within a single run, a failed route is a branch point, not a stopping
+  point. Before a run declares an open question blocked or no-go, it must have
+  executed the continuation ladder in-run — at least one method repair, one
+  reformulation or representation change, and one alternative candidate concept
+  attempted and recorded — or explicitly demonstrated that a rung is inapplicable.
+  A verdict reached after one route, with plausible routes untried, is an
+  incomplete attempt, not a decisive verdict. Single-route termination is the
+  mirror image of recursive claim weakening and equally a systemic failure mode
+  of this contract.
 - Scope reduction must argue that the reduction changes what downstream work can
   conclude. Reduction that leaves no consumer better-informed is drift, not honesty.
 - After a claim survives two independent evidence passes, the burden shifts: further
@@ -113,6 +118,8 @@ Before implementation:
 - Register at least two plausible candidate approaches when selecting among scientific mechanisms, unless a uniqueness theorem genuinely removes alternatives. For a fixed theorem target, register at least one complete proof route and compare alternatives only when they materially reduce uncertainty.
 - State selection criteria before inspecting comparison values: structural fit, assumption cost, parameter economy, symmetry, dimensional consistency, limiting behavior, compatibility with accepted sectors, and predictive reach.
 - Separate derivation inputs from empirical comparators. When practical, keep comparator values blinded until equations, conventions, tests, and selection criteria are frozen.
+
+Registering a new candidate concept mid-attempt is normal and encouraged: append it to the candidate set with the observation that motivated it. Preregistration constrains selection — criteria frozen before comparator inspection — never generation. A failed candidate obligates the generation of at least one new concept, derived from the failure mechanism rather than parameter perturbation of the dead route, before the question may be declared blocked.
 
 When a candidate conflicts with accepted structure, diagnose whether the mismatch is a candidate defect or evidence of a pre-existing inconsistency in canon. Reject or reformulate a defective candidate and try another concept. If the mismatch survives independently of the favored candidate, open a `challenges` or foundational-revision proposal and compare repairs. Do not rewrite unrelated earlier claims, rename quantities, mix conventions, or add compensating assumptions merely to preserve the chosen candidate; equally, do not use current acceptance status as a substitute for investigating credible contrary evidence.
 
@@ -266,7 +273,7 @@ helpers.
 
 ## Continuation after failure
 
-Attempts are bounded; the effort is not. Record attempts append-only and preserve enough detail to avoid repeating them. After any failed route:
+Attempts are bounded; the effort is not. Record attempts append-only and preserve enough detail to avoid repeating them; each attempt records routes considered, routes tried, and routes remaining. After any failed route:
 
 Classify environment compatibility before scientific failure. Detect direct `np.trapz`, imported `trapz`, and dynamic `getattr(np, "trapz")` access before execution; an eager nested default such as `getattr(np, "trapezoid", getattr(np, "trapz"))` still aborts when the legacy name is absent. If a run aborts solely for one of these version-only reasons, replace the mutable access with `np.trapezoid` or a safe two-step fallback and rerun the unchanged scientific route. For hash-pinned immutable source, preserve the native hash and diagnostic, then make an explicitly recorded alias-only compatibility replay. The native abort is compatibility provenance—not a rejected candidate, refuted claim, or terminal source disposition—and the repaired replay supplies the scientific verdict.
 
@@ -277,16 +284,24 @@ Classify environment compatibility before scientific failure. Detect direct `np.
 5. Revisit the target when it was misstated, while preserving the user's actual objective.
 6. Open a separately governed foundational revision only when independent evidence requires it.
 
-Before inventing a replacement route, locate the nearest accepted campaign or
-canonical module that solved a related obligation. Verify it at source, extract
-the construction and selection logic that actually succeeded, and record both
-what transfers and what does not. External research may supplement that
+Classification is not the deliverable. After classifying the failure, execute
+the corresponding repair, reformulation, or replacement candidate in the same
+run and report its outcome. End a run on classification alone only for a named
+external blocker — missing authority, environment, or user input.
+
+When constructing a replacement route, search accepted campaigns for
+transferable constructions and generate new concept candidates in parallel;
+neither waits on the other. Reuse supplies context and constraints, not a
+ceiling on novelty. Verify the nearest accepted campaign or canonical module
+that solved a related obligation at source, extract the construction and
+selection logic that actually succeeded, and record both what transfers and
+what does not. External research may supplement that
 reconciliation, but a generic method is not a substitute for restoring the
 framework's dependency, invariant, convention, and consumer context.
 
 Do not lower the bar, inflate tolerances, convert a comparator into an input, or celebrate a no-go. A failure improves the next attempt; it does not finish the task.
 
-Do not make durable progress wait for the final capstone. When a utility, exact local result, solver, source construction, or verifier becomes independently correct and reusable, harvest it through a focused PR or commit. Keep speculative composition and failed-route narration in PR history unless they yield a separately reusable object. An individual agent run may hand off at the last strong milestone; the campaign objective remains open for a fresh run.
+Do not make durable progress wait for the final capstone. When a utility, exact local result, solver, source construction, or verifier becomes independently correct and reusable, harvest it through a focused PR or commit. Keep speculative composition and failed-route narration in PR history unless they yield a separately reusable object. A harvest PR is a checkpoint inside a run, not a terminal state: after opening one, return to the open campaign question in the same run. A run hands off only when its route frontier is exhausted or an external blocker is named; the handoff record must list every plausible untried route with enough detail for the next run to start there, and state why this run did not attempt each one — "it produced a harvestable unit" is not such a reason. The campaign objective remains open for a fresh run.
 
 ## Memory discipline
 
@@ -362,7 +377,10 @@ the author, reviewer, and merger. Run the full suite periodically on integrated
 `main` as an additional backstop, not as a substitute for PR impact analysis.
 Maintain a short validation ledger of command, boundary commit, and result;
 reuse a passing entry while that boundary is unchanged. Counting, recounting,
-or rephrasing evidence is not a reason to rerun a scientific oracle. When the
+or rephrasing evidence is not a reason to rerun a scientific oracle.
+Minimality governs re-validation and review passes; it does not govern
+scientific search — exploring an additional candidate route is never
+duplicate work. When the
 user narrows the task or directs a stop, freeze immediately: preserve real
 blockers already established, drop speculative expansion, and perform no new
 review or validation work outside the narrowed boundary.
