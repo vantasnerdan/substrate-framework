@@ -49,8 +49,9 @@ import order_study as osd  # noqa: E402
 import solve_radial_1d  # noqa: E402
 import stability_window as sw  # noqa: E402
 
-CONTINUITY_GATE = 0.25  # amendment 2: measured order-improvement is 0.7-2.2 percent and grows with R; divergence fails by >500 orders
+REL_GRAD_GATE = 1.0e-10
 ALIAS_GATE = 1.0e-6
+CONTINUITY_GATE = 0.25  # amendment 2: measured order-improvement is 0.7-2.2 percent and grows with R; divergence fails by >500 orders
 CONT_RADII = [20.0, 22.0, 24.0, 26.0, 28.0, 30.0]
 W1_RADII = [12.0, 14.0, 18.0, 24.0]
 ORDER = 24
