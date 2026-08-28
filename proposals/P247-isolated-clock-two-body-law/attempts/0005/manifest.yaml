@@ -1,0 +1,44 @@
+schema_version: 1
+id: P247-attempt-0005
+proposal: P247-isolated-clock-two-body-law
+canonical_issue: "178"
+date_started: '2026-08-28'
+branch: campaign/p247-attempt-0002-two-body-law
+base_commit: 7868c62
+question: >-
+  Does the tilted-boost realization of the boost-alignment mass source a
+  nonvanishing clock tail (D1), and does it yield a localized finite-energy
+  fixed-J clock (D2); if not, is the localized-core object (D3) viable?
+gates:
+  D1_source_survival:
+    method: >-
+      full-contraction measurement through the verified extended functional
+      (c3_functional, regression-gated exact at chi = 0): boost axis fixed
+      to the laboratory z axis instead of the local director; grad of the
+      fixed-J energy in the chi channel at chi = 0 on the committed R = 24
+      root. Method note: the manifest's preregistered sympy check is
+      upgraded to this numerical full contraction (same oracle class, no
+      truncation); the sympy co-algebra explanation is recorded alongside.
+    bands:
+      - 'SURVIVES: source norm above the quadrature-plus-jitter budget -> route D2'
+      - 'VANISHES: route D3'
+  D2_axial_chi:
+    scope: >-
+      reduced axial-chi functional (chi channel with angular modes 0 and 2),
+      chi=0 exact regression gate, Newton at fixed J, box-independence at
+      R = 24 vs 30, tail decay measured against 1/Lambda
+    bands:
+      - 'LOCALIZED / NO_LOCALIZED_ROOT / ROOT_BUT_EXTENDED as in attempt-0004 C3, with the box-independence gap band 5 percent of the tail energy'
+  D3_core:
+    scope: 'routed only if D1 vanishes; free-core localized solve, box-independence as the existence gate'
+small_ratio_skill_bindings:
+  error_budget: measurement (quadrature gauge, jitter, alias, continuity as in 0003/0004)
+  zero_mode_gauge: inherited split-channel floor gauge
+  eigenpair_residuals: quoted for any spectrum computed
+  lambda_min_over_lambda_2: quoted with any eigenvalue verdict
+  observed_order_extrapolation: scoped out
+  jitter_sign_test: source-survival call jitter-checked (3 draws, 2 scales)
+non_goals:
+  - no PR before issue-178 completes
+  - no fitted constants
+  - no edits to canonical modules or earlier attempts
