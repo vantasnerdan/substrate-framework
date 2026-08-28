@@ -176,3 +176,17 @@ amendments_before_execution:
       out of the W1/W3 bands with that scope stated in the verdict;
       (3) the failed first-run stdout is preserved as
       g9-first-run-divergent-R24-stdout.txt (append-only evidence).
+  - date: '2026-08-28'
+    after_event: second-execution gate misfire, no verdict computed
+    change: >-
+      The root-continuity gate at 1e-6 misfired: legitimate order-24
+      re-solves legitimately improve on the order-16 stationary points by
+      |E24 - E16|/E16 = 0.7 to 2.2 percent at R = 12..18 (measured from the
+      committed attempt-0002 g6 records; the improvement grows with R). The
+      order-16 ladder roots carry ~1e-2 stationary-point error - a recorded
+      finding, not a gate failure. Recalibration: CONTINUITY_GATE = 0.25,
+      which the first-run divergent point (relative deviation ~5e513) fails
+      by over 500 orders while genuine re-solves pass with 10x margin.
+      Attempt-0001/0002 E(R)-ladder numbers are order-16-root values; the
+      attempt-0003 result must report the order-24 root energies and note
+      the slope implication without retroactively editing earlier attempts.

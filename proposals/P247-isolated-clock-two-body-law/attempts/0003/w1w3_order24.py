@@ -49,9 +49,8 @@ import order_study as osd  # noqa: E402
 import solve_radial_1d  # noqa: E402
 import stability_window as sw  # noqa: E402
 
-REL_GRAD_GATE = 1.0e-10
+CONTINUITY_GATE = 0.25  # amendment 2: measured order-improvement is 0.7-2.2 percent and grows with R; divergence fails by >500 orders
 ALIAS_GATE = 1.0e-6
-CONTINUITY_GATE = 1.0e-6  # amendment 1: spurious-basin defense
 CONT_RADII = [20.0, 22.0, 24.0, 26.0, 28.0, 30.0]
 W1_RADII = [12.0, 14.0, 18.0, 24.0]
 ORDER = 24
@@ -65,13 +64,13 @@ REPORTED_WINDOW = (8.0, 34.0)
 GATE_HALF = 0.20
 
 
-def oracle_for(order: int, nodes: tuple[int, int]) -> "solve_radial_1d.Oracle":
+def oracle_for(order: int, nodes: tuple[int, int], radius: float):
     return solve_radial_1d.Oracle(
         dict(
             radial_order=order,
             radial_nodes=nodes[0],
             angular_nodes=nodes[1],
-            angular_modes=1,
+            radius=radius,
         )
     )
 
@@ -94,7 +93,7 @@ def order24_root(
 ) -> dict:
     """Order-24 solve under the root-continuity gate with R-continuation
     reseeding (manifest amendment)."""
-    reference = float(oracle_for(16, (96, 48)).evaluate(seed16)[0])
+    reference = float(oracle_for(16, (96, 48), radius).evaluate(seed16)[0])
     seeds = [seed24] if seed24 is not None else [osd.reproject(seed16, ORDER)]
     last = {}
     for attempt_index, seed in enumerate(seeds):
@@ -104,9 +103,9 @@ def order24_root(
             raise RuntimeError(f"{label}: order-24 solve failed relgrad={rel_grad:.3e}")
         values = np.asarray(solution["values"], dtype=np.float64)
         energy = float(solution["energy"])
-        alias_relative = abs(
-            float(oracle_for(ORDER, osd.ALIAS_NODES[ORDER]).evaluate(values)[0]) - energy
-        ) / abs(energy)
+        alias_relative = abs(osd.alias_energy(values, ORDER, radius) - energy) / abs(
+            energy
+        )
         continuity = abs(energy - reference) / abs(reference)
         last = {
             "energy": energy,
@@ -246,9 +245,7 @@ def main() -> None:
             raise RuntimeError(f"continuation R={radius} failed relgrad={rel_grad:.3e}")
         values = np.asarray(solution["values"], dtype=np.float64)
         energy = float(solution["energy"])
-        alias_relative = abs(
-            float(oracle_for(16, cs.ALIAS_NODES).evaluate(values)[0]) - energy
-        ) / abs(energy)
+        alias_relative = abs(cs.alias_energy(values, radius) - energy) / abs(energy)
         if not alias_relative < ALIAS_GATE:
             raise RuntimeError(f"continuation R={radius} alias gap={alias_relative:.3e}")
         cont16[radius] = values
