@@ -1,0 +1,115 @@
+attempt: '0002'
+question: >-
+  Milestone 1 (issue #178): does the curvature-class energy of the de-boxed
+  backgrounds saturate, or does it keep growing through R=30 (persistent-growth
+  no-go routing to candidate B)? Subordinate preregistered cross-check: resolve
+  the measured order-16 basis-truncation floor (+-1.7e-8) of lambda_min(A) at
+  R>=14 by basis-order extrapolation before any floor-based sign verdict is
+  quoted.
+base: attempts/0001 (clean roots R=12..18, verdict MIXED, PR #179 squash 67fcf0d)
+environment:
+  interpreter: system python3 (torch 2.3.0.post301, numpy 2.5.1, scipy 1.18.0, sympy 1.14.0)
+  thread_pin: torch.set_num_threads(1); OMP_NUM_THREADS=1
+  precision: float64 end to end
+construction:
+  continuation_scan: >-
+    Continue the clean order-16 root chain from the attempt-0001 R=18 root
+    through R=20,22,24,26,28,30 (warm seeds, Newton hybr, solve nodes (48,24)),
+    accepting a rung only at relative gradient < 1e-10 and aliasing-gate
+    reproduction at (96,48) to relative 1e-6. Extract the radius-free x-space
+    components C[c], V[c], I at quadratures (48,16) and (72,24) with a 1e-6
+    relative cross-check; fit C[c](R) against the frozen interpretation bands.
+  order_study: >-
+    At R=12,14,16,18 re-solve the root at basis orders 20 and 24 (seeds from
+    least-squares Chebyshev reprojection of the order-16 root, which is exact
+    for order >= 16 since the root's modal coordinate is a Cheb-16 polynomial);
+    solve nodes (60,30) and (72,36); certification Hessians A = d2 V at
+    (90,30)/(180,60) and (108,36)/(216,72) (4.5x/1.5x order radial/angular,
+    plus a doubled-quadrature alias gate at relative 1e-6 on energy). Order-16
+    anchors are the attempt-0001 roots and its g5 audit rows at (72,24)/(144,48).
+    Richardson-extrapolate lambda_min(A) in basis order from the three orders
+    with the observed order measured from the three grids and required to be
+    consistent before any continuum limit is quoted; jitter sign test
+    (machine-epsilon scales 1e-13/1e-11, 3 draws, fixed seed) at every order;
+    eigenpair residuals against the raw (unsymmetrized) operator, the
+    pre-symmetrization asymmetry, and lambda_min/lambda_2 quoted with every
+    verdict.
+  shear_probe: >-
+    Potential-part curvature along the G1 exactly-flat np and na shear
+    directions, evaluated at (i) the rank-1 projector background as an
+    in-situ zero control (analytically zero; its numeric value is the probe's
+    own floor) and (ii) each de-boxed root, by central second differences in
+    the shear amplitude with Richardson in the step. Radial profile
+    f = x^2 (1 - x^2); amplitude steps 1e-3, 1e-4.
+interpretation_frozen_before_execution:
+  - 'SATURATION: C[c(R)] approaches a finite limit within the fitted band and E(R) turns over or plateaus - milestone 1 opens with a candidate isolated profile.'
+  - 'PERSISTENT_GROWTH: C[c(R)] keeps growing without saturation through R=30 under certification quadrature - the curvature class obstructs isolation in this model class; record the scoped no-go and route to candidate B.'
+  - 'OTHER: inconclusive with the named mechanism; no isolation verdict may be drawn.'
+floor_verdict_rule: >-
+  If the Richardson-extrapolated lambda_min(A) at a rung is negative above the
+  measured error budget (quadrature gauge + jitter spread + residual), the
+  order-16 floor claim is voided for that radius and the affected G2/G3
+  interpretation is re-adjudicated; if it is positive above budget, the
+  attempt-0001 flatness-to-floor wording is upgraded to positivity at that
+  radius within the radial family; otherwise the flatness-to-floor scoping
+  stands with the extrapolation recorded.
+small_ratio_skill_bindings:
+  prescription_1_observed_order_richardson: measurement (orders 16/20/24, three grids per radius)
+  prescription_2_zero_mode_gauge: >-
+    adapted with a structural finding recorded BEFORE execution: the G1 flat
+    channels np and na are off-diagonal shears sym(n,p) and sym(n,a) and lie
+    OUTSIDE the spherically symmetric three-channel reduction family, which
+    spans only the diagonal nn/pp/aa deformations; on the projector the
+    restricted quadratic form is (5 c_nn^2 + 3 c_pp^2 + 3 c_aa^2)/2 - strictly
+    positive, so the restricted operator has no in-family zero mode to gauge
+    with. Replacement gauges: (a) the shear probe above measures where the
+    G1-flat channels land at the de-boxed roots, with the projector evaluation
+    as the probe's own zero floor; (b) the projector-background restricted
+    spectrum across orders calibrates truncation of the actual operator
+    family; (c) the basis-order Richardson is the decisive floor resolver.
+    Satisfied by measurement (a), stated structural bound (b), measurement (c).
+  prescription_3_residuals_and_gaps: measurement (per verdict)
+  prescription_4_jitter_sign: measurement (per order)
+  skill_record_note: >-
+    Per AGENTS.md step 1 and the physics-erdos-loop supporting-skills section,
+    this manifest records which prescriptions bind and how each is satisfied
+    before execution; the adaptation in prescription 2 is a preregistered
+    amendment, not a post-hoc substitution.
+commands:
+  - 'PYTHONPATH=src OMP_NUM_THREADS=1 python3 continuation_scan.py > m1-continuation-stdout.txt'
+  - 'PYTHONPATH=src OMP_NUM_THREADS=1 python3 order_study.py > g6-order-study-stdout.txt'
+  - 'PYTHONPATH=src OMP_NUM_THREADS=1 python3 shear_probe.py > g7-shear-probe-stdout.txt'
+outputs:
+  - m1-continuation-stdout.txt
+  - m1-continuation.json
+  - g6-order-study-stdout.txt
+  - g6-order-study.json
+  - g7-shear-probe-stdout.txt
+  - g7-shear-probe.json
+  - result.yaml
+non_goals:
+  - any PR before issue-#178 completion (owner direction 2026-08-28; C-M5S-015 promotion postponed with it)
+  - pair-force measurement (milestone 4)
+  - shear-channel relaxation inside the restricted family (np/na are not representable in it; recorded as the named missing construction for a candidate-A azimuthal reduction)
+  - rewriting immutable attempt-0001 records
+amendments_before_execution:
+  - date: '2026-08-28'
+    change: >-
+      Shear-probe control construction fixed: the rank-1 projector is NOT
+      representable in the modal ansatz (the tangential floor (1-x^2)/3 is
+      hard-wired there; zero coefficients are a different background), so the
+      control evaluates the direct field n n^T + t f (shear) instead.
+      Amplitude steps revised from {1e-3, 1e-4} to {2e-3, 4e-3, 8e-3} with a
+      linear fit in h^2 (Delta2(h)/h^2 = a2 + (a4/12) h^2): the control showed
+      the analytic quartic term dominates naive two-step Richardson, and the
+      three-step intercept floor is ~2e-7 (FD roundoff-consistent).
+  - date: '2026-08-28'
+    change: >-
+      Basis-order extrapolator made total: when successive differences grow
+      (ratio >= 1) the exponential-in-N model fits exactly (b = ln r / 4) with
+      the power-law observed order solved for comparison; when they shrink
+      (0 < ratio < 1) no single-exponential three-point fit exists and the
+      conservative geometric extension bounds lambda_inf by the interval
+      between the order-24 value and lambda_24 + d23/(1-ratio). Verdicts use
+      the conservative interval end-to-end.
+    reason: estimator smoke tests before launch; no scientific datum computed yet
