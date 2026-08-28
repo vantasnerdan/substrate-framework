@@ -1,0 +1,73 @@
+# P247 attempt 0010 — fixed-width existence probe and narrow-branch stability
+attempt: "0010"
+proposal: P247-isolated-clock-two-body-law
+issue: "https://github.com/vantasnerdan/substrate-framework/issues/178"
+date: "2026-08-28"
+status: CLOSED
+question: >
+  Does the extended functional admit a fixed-width (box-independent)
+  stationary clock in a box larger than the de-boxed family's continuation?
+  Decides resolution path 3 (one-clock existence probes) by direct
+  construction rather than parametric argument.
+inputs:
+  - attempts/0003/roots24.npz            # family roots R20..R30 (order 24)
+  - attempts/0004/c3_functional.py       # extended functional (sigma marker flip for repair)
+  - P240 attempts/0041/solve_radial_1d.py  # committed Newton solver (Oracle, solve_order)
+  - attempts/0009 repaired sigma sign    # sigma_density = +KAPPA*eta(du,du)
+constructions:
+  - id: embedding
+    method: >
+      Physical eigenvalue profiles of the R=24 root evaluated for r<=24,
+      continued quadratically to the boundary in the target map
+      (lambda_i -> vac_i + (a_i - vac_i)*(1-n^2)/(1-n24^2), vac=(1,0,0)),
+      inverted to modal functions m0/m1/m2, Chebyshev-fitted at order 24.
+    seed_fidelity_gate: "E(seed) must be < 100; otherwise abort (unfaithful reprojection)."
+  - id: repaired_stability
+    method: >
+      Full 96x96 autograd Hessian of the sigma-repaired extended functional
+      (chi row included, fixed_j term added) at each root; numpy eigh;
+      FD arbitration of the bottom mode at eps in {1e-3, 1e-2, 3e-2}.
+runs:
+  - box: 26
+    solve: "relgrad 5.552e-02 (maxfev cap; NOT stationary); E=64.016194; core width 1.925"
+  - box: 28
+    solve: "relgrad 1.799e-13 (stationary); E=65.705163; core width 2.004"
+    repaired_hessian:
+      lambda_min: -2591.3021027603927
+      morse_index: 14
+      bottom5: [-2591.30, -1097.27, -876.35, -789.73, -587.61]
+      fd_arbitration:
+        solver_functional_second_difference_eps_1e-3: -2579.4104
+        agreement_with_lambda_min: "0.5%"
+        chi_row_weight: 0.0
+        note: >
+          Larger-eps FD (eps=1e-2: -1563.0; eps=3e-2: +1830.1) shows strong
+          anharmonicity along the bottom mode; the eps->0 limit confirms
+          the negative curvature.
+  - box: 30
+    solve: "seed unfaithful (E(seed)=551.9 > 100 gate) — aborted by gate"
+  - box: 36
+    solve: "seed unfaithful (E(seed)=12129.6 > 100 gate) — aborted by gate"
+width_stiffness_ladder:
+  R20: {lambda_min: 8.354269440709847e-06, drift_overlap: -0.4000571498971619}
+  R24: {lambda_min: 1.3818561570208736e-05, drift_overlap: 0.8645157899349575}
+  R30: {lambda_min: 2.853589833672512e-05}
+  reading: >
+    Zero negative directions at every rung; the softest (split-row,
+    family-drift) mode STIFFENS with box size. The minimum branch is
+    parametrically box-proportional: its core width is box-stable
+    (~1.9-2.1 across R=24..30) while the tail dilutes and E(R) grows
+    with accelerating increments (58.7 at R=20 -> 62.6 at R=30).
+family_comparison:
+  family_R26_energy: 60.93759004280179
+  narrow_R28_saddle_energy: 65.705163
+artifacts:
+  - attempts/0010/fixed_width_probe.py
+  - attempts/0010/fixed-width-probe.json
+  - attempts/0010/narrow_branch.py
+  - attempts/0010/narrow_branch_final.py
+  - attempts/0010/narrow-branch.json
+  - attempts/0010/narrow26.npy
+  - attempts/0010/narrow28.npy
+  - attempts/0010/width-stiffness-vs-R.json
+  - attempts/0010/result.yaml

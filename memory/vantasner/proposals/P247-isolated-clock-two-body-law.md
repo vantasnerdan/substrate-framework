@@ -233,6 +233,38 @@ class realization (C-M5S-008/009), claim-level S-law exponent derivation
 normalization vs census 1/16 placement. Artifacts:
 attempts/0009/repair-battery.json, repair_battery.py, result.yaml.
 
+Attempt 0010 CLOSED (2026-08-28): fixed-width existence probe DECISIVE
+NO-GO. (1) Width stiffness ladder (repaired class, 0 negative at every
+rung): 8.35e-6 (R20) -> 1.38e-5 (R24) -> 2.85e-5 (R30) - the softest
+mode STIFFENS with box; drift overlap 0.86 at R24 confirms it is the
+family-drift direction. The minimum branch is parametrically
+box-proportional: core width box-stable (~1.9-2.1 over R24..R30), tail
+dilutes, E(R) grows with accelerating increments - no finite-energy
+isolation limit. (2) Narrow branch: quadratic-tail reprojection of the
+R24 root into bigger boxes; R26 relaxation non-converged (relgrad
+5.6e-2, maxfev cap - no conclusion); R28 CONVERGED stationary narrow
+configuration (relgrad 1.799e-13, E=65.705 vs family-R26 minimum 60.94)
+is a HIGH-ORDER SADDLE of the repaired functional: Morse 14,
+lambda_min -2591.3021, FD-confirmed (-2579.4 at eps=1e-3 in the solver
+functional, 0.5 percent agreement, chi-row weight exactly 0; large-eps
+drift = anharmonicity). (3) Reprojection fidelity gate aborts R30/R36
+(E(seed) 551.9/12129.6 > 100): order-24 ansatz cannot reproject narrow
+profiles much deeper - larger-box narrow rungs need a different
+parametrization. VERDICT: no stable fixed-width member exists; the
+isolated de-boxed fixed-J clock is REFUTED in the extended class; the
+clock sector is realized ONLY in the confined (window-assisted) class.
+Winding channel note: the committed functional already contains the
+azimuthal winding (derivative_phi via rotation_z), so the confined
+mechanism is present de-boxed and does NOT mass the width mode.
+Completion program registered: claims C-M5S-016 (Z2 evenness theorem),
+017 (sigma reduction-defect repair record), 018 (width quasi-moduli /
+box-proportionality obstruction), 019 (narrow-saddle refutation), 020
+(de-boxed attractive exponential law), plus C-M5S-015 promotion;
+release v0.169.0; completion PR.
+Artifacts: attempts/0010/manifest.yaml, result.yaml,
+fixed-width-probe.json, narrow-branch.json, fd-arbitration.json,
+narrow26.npy, narrow28.npy, width-stiffness-vs-R.json.
+
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.
 

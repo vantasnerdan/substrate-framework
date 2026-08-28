@@ -1,0 +1,54 @@
+# P247 attempt 0010 — result
+verdict: DECISIVE_NO_STABLE_FIXED_WIDTH_MEMBER__ISOLATED_DEBOXED_CLOCK_REFUTED
+verdict_detail: >
+  Three independent legs close resolution path 3 (one-clock existence
+  probes) for the de-boxed extended class:
+  (1) Minimum branch: the softest Hessian mode is the family-drift
+      direction (split-row, drift-overlap 0.86 at R=24) with stiffness
+      RISING along the ladder (8.35e-6 at R=20, 1.38e-5 at R=24,
+      2.85e-5 at R=30) and zero negative directions at every rung.
+      The minimum branch is parametrically box-proportional; its
+      box-growth is tail dilution with accelerating energy increments
+      (E 58.7 at R=20 -> 62.6 at R=30), so no finite-energy isolation
+      limit exists on this branch.
+  (2) Narrow branch: a converged stationary configuration away from the
+      family minimum EXISTS at R=28 (relgrad 1.799e-13, E=65.705163,
+      core width 2.004) but is a HIGH-ORDER SADDLE of the sigma-repaired
+      extended functional: Morse index 14, lambda_min = -2591.3021,
+      FD-confirmed (solver-functional second difference along the bottom
+      mode -2579.4 at eps=1e-3, 0.5% agreement; chi-row weight exactly
+      zero). No stable fixed-width member exists at the probed rung; the
+      R=26 relaxation did not converge (relgrad 5.6e-2 at the maxfev
+      cap) and no conclusion is drawn from it.
+  (3) Reprojection bound: order-24 modal reprojection of narrow profiles
+      into much larger boxes fails the fidelity gate (E(seed) 551.9 at
+      R=30, 12129.6 at R=36), consistent with the ansatz's boundary-layer
+      resolution limit; larger-box narrow rungs are not reachable at
+      this order without a different parametrization.
+meaning: >
+  The isolated finite-energy fixed-J clock does not exist in the
+  de-boxed extended class: every stationary configuration in a large
+  box is either the drifting, tail-diluting family minimum
+  (box-dependent energy) or an unstable high-order saddle.  Combined
+  with attempt 0006 (Z2 evenness: no classical boost exchange at any
+  order), attempt 0007 (de-boxed two-body law: attractive saturating
+  exponential, effective overlap rate), and attempt 0009 (chi-sector
+  repair; width quasi-moduli), the model's clock sector is realized
+  ONLY in the confined (window-assisted) class, whose stability and
+  interaction law are already accepted (C-M5S-006/008/009).
+completion_gate_status:
+  isolated_clock: "confined class only; de-boxed isolation refuted (this attempt)"
+  full_stability: "confined class stable and radiatively stable (C-M5S-009); de-boxed minima box-proportional; narrow members saddles"
+  two_clock_sector: "confined pair oracle measured (C-M5S-008); de-boxed pair law measured (attempt 0007)"
+  interaction_law: >
+    Resolved with mechanisms: Z2 evenness excludes classical boost
+    exchange at any order (attempt 0006); the confined law is the
+    repulsive power law E_int = +456.6 d^-1.696 carried by winding
+    composition (C-M5S-008); the de-boxed law is the attractive
+    saturating exponential E_int = 8.113 - 5.668 exp(-0.2442 d)
+    (attempt 0007, box/resolution-refined gamma 0.2524/0.2571) riding
+    S-overlap branch structure.
+next:
+  - "Claim drafting and individual reviews (Z2 theorem; reduction-defect repair; width quasi-moduli; narrow-saddle refutation; de-boxed law)."
+  - "Promote postponed C-M5S-015 with the completion transaction; release v0.169.0."
+  - "Completion PR for issue 178 (Advances/Fixes per owner decision on the confined-realization closure)."
