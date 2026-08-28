@@ -897,6 +897,66 @@ C-M5S-014 (exact constraint construction + numeric evidence): Let rho be a nonne
 - Dependencies: C-M5S-004, C-M5S-012, C-M5S-013
 - Exclusions: This is constraint-satisfying initial data, not a stationary fixed-J M5 black hole, evolved collapse spacetime, event-horizon or singularity theorem., The source is exactly the accepted angular-averaged classical ledger; C-M5S-013's local fixed-J momentum and anisotropy are not silently included., Finite-volume locations are resolution-bounded; exactness applies to the analytic constraint identities for a typed density.
 
+## C-M5S-015
+
+C-M5S-015 (numeric_evidence; milestone-0 adjudication): In the committed P240 model class at base release v0.168.0, the de-boxed limit of the confined radial fixed-J clock branch is not a finite-energy stationary isolated clock. Scope: pinned-wall radial minimum ladders at orders 16 and 24 with quadrature at least 4x basis order (the aliasing gate), boxes R = 12..30; the np/na shear channels are exactly flat in the potential second variation (exact symbolic diag(5,3,3,0,0,6)/2 about the rank-1 projector background). Evidence: the clean ladder energy grows monotonically without plateau (55.1042 at R=12 to 59.2462 at R=18, fit 0.685 per unit R with R^2 = 0.9984; extended 58.737908 at R=20 to 62.561688 at R=30, monotone with increments increasing from R=22 onward: 0.739, 0.724, 0.737, 0.777, 0.847); the single free-wall order-16 endpoint check at R=8 gives E = 50.5233 with Morse index 0 (negligible pinning cost; a pinning-cost endpoint, not a de-boxing ladder); the R=24 root's own window is [19.1991, 60.0], the order-24 self-consistent band over the R={14, 18, 24} backgrounds is [19.1991, 29.9578] (lower edge from R=24, upper from R=14), and the frozen isolation gate [8, 34] +/- 20 percent fails at its lower edge; and the repaired-class softest mode is the family-drift width mode (C-M5S-018). The clock sector is realized only in the confined class, whose stability is accepted separately (C-M5S-006, C-M5S-009).
+
+- Accepted in: `v0.169.0`
+- Verification: `numeric_evidence`
+- Compatibility: `native`
+- Dependencies: C-M5S-006, C-M5S-009, C-M5S-012
+- Exclusions: Radial branches and tested R ranges only; non-spherical fixed-axis rotor ansatzes are untested (attempt-0006 route G remains open there)., Order-24 conclusions are aliasing-gated; the R=24 window band is box-relative, not absolute., This adjudication does not deny the confined clock's stability; it locates the realized clock sector., The free-wall branch is covered only by the single R=8 order-16 endpoint check; no free-wall de-boxing ladder exists., The source convention (C-M5S-012) excludes the global fixed-J term from the localized gravitational source, while this claim's variational energy includes it; the two scopes differ deliberately.
+
+## C-M5S-016
+
+C-M5S-016 (numeric_evidence, machine-precision symmetry check): The extended static functional E[S, chi] of the chi-sector reduction is even under chi -> -chi with float64 gap exactly 0.0 on the committed R=24 root and on a seeded randomized background, measured across channels (0,), (1,), and (1,3), both before and after the sigma-sign repair. Consequently chi = 0 is an exactly stationary point in the chi directions on the measured backgrounds, the chi expansion about them contains no odd terms at the measured precision, so no classical static boost sourcing or pair exchange arises at any odd order on these backgrounds, and any interaction law premised on classical massive-boost exchange is excluded; the candidate-B boost mass weighs a classically unsourced (inert) channel at chi = 0.
+
+- Accepted in: `v0.169.0`
+- Verification: `numeric_evidence`
+- Compatibility: `native`
+- Dependencies: C-M5S-001, C-M5S-002
+- Exclusions: Machine-precision evenness of the implemented integrand; a symbolic parity proof covering all backgrounds is not included and would be a stronger modality., Evenness establishes stationarity, not minimality; global-minimum status of chi = 0 is not claimed., Quantum or real-time boost exchange is not addressed; the statement is classical and static.
+
+## C-M5S-017
+
+C-M5S-017 (numeric_evidence; reduction-defect repair record): The chi-sector reduction of the extended functional must carry the boost kinetic density with the positive sign sigma_density = +KAPPA * eta(du, du), census-grounded by C-M5S-001's positive 1/16 boost entry and reducing to the positive |grad chi|^2 census linearization. The negative-sign truncation has 21 of 96 negative Hessian directions at the committed R=24 root with lambda_min = -1.9471e4 on a pure chi-row direction (finite-difference verified at three step sizes), while the repaired class is minimal (Morse index 0, minimum eigenvalue +1.381856e-05, 0 of 96 negative) and preserves S-sector energetics at chi = 0 exactly, Z2 evenness exactly, and source closure exactly. Zero-valued terms at chi = 0 carry nonzero cross-Hessians (block-sum maximum deviation 12354); stability criteria that omit them are invalid for the extended class.
+
+- Accepted in: `v0.169.0`
+- Verification: `numeric_evidence`
+- Compatibility: `native`
+- Dependencies: C-M5S-001, C-M5S-012, C-M5S-016
+- Exclusions: A repair record and stability statement for the reduced class; not a claim that the reduction is exact in the continuum., The coefficient normalization (placement of the census 1/16) is open recorded debt and does not affect the sign verdict.
+
+## C-M5S-018
+
+C-M5S-018 (numeric_evidence): In the repaired extended class the de-boxed clock minimum branch is parametrically box-proportional and has no box-independent member. At the R=20, R=24, and R=30 roots the full 96x96 Hessians have zero negative directions, and their softest modes are split-row dominated (m2-row fraction > 0.99 at R=24) and carry large family-drift overlap (0.8645158 against the R24->R26 coefficient drift; 0.9059657 against R24->R30), with stiffness rising along the ladder (8.354269440709847e-06, 1.3818561570208736e-05, 2.853589833672512e-05): the clock width is a quasi-modulus of the family, not a massive mode. The branch energy grows monotonically with box size, with increments increasing from R=22 onward (58.737908 at R=20 to 62.561688 at R=30), the core width grows far more slowly than the box (1.775 at R=20 to 2.074 at R=30, +17 percent against +50 percent box growth) while the tail dilutes, so no finite-energy box-independent limit exists on the minimum branch.
+
+- Accepted in: `v0.169.0`
+- Verification: `numeric_evidence`
+- Compatibility: `native`
+- Dependencies: C-M5S-015, C-M5S-017
+- Exclusions: Minimum branch only; stationary configurations away from it are C-M5S-019's subject., The rising stiffness shows the drift mode is not softening to a modulus; it does not by itself bound the branch energy growth.
+
+## C-M5S-019
+
+C-M5S-019 (numeric_evidence): The extended class has no stable fixed-width stationary clock away from the family minimum at the probed rung. Quadratic-tail reprojection of the R=24 root into an R=28 box and Newton relaxation reaches a genuine stationary configuration (relative gradient 1.799e-13) with core width 2.004 and energy 65.705163 (the family R=26 minimum is 60.937590); its repaired-class Hessian has Morse index 14 with lambda_min = -2591.3021027603927, finite-difference confirmed (second difference -2579.4104 at eps = 1e-3 in the committed solver functional, 0.5 percent agreement, bottom-mode chi-row weight exactly zero). The R=26 relaxation does not converge (relative gradient 5.6e-2 at the maxfev cap) and no conclusion is drawn from it; order-24 reprojection into R >= 30 boxes fails the seed-fidelity gate (E(seed) = 551.9 and 12129.6 against the 100 gate). No stable fixed-width stationary member was found at any probed rung; combined with C-M5S-018's minimum-branch obstruction, no probed construction supports an isolated de-boxed fixed-J clock in the extended class, while the existence question for further stationary branches in deeper boxes remains open (missing construction: exhaustive branch continuation or a uniqueness result).
+
+- Accepted in: `v0.169.0`
+- Verification: `numeric_evidence`
+- Compatibility: `native`
+- Dependencies: C-M5S-018
+- Exclusions: Probed rungs only (R = 26, 28 at order 24); deeper boxes need a different parametrization, recorded as the missing construction, not silently covered., Other stationary branches at R=28 and beyond are not exhausted; the instability verdict covers the probed construction only., The R=26 relaxation is non-convergent and carries no stability conclusion.
+
+## C-M5S-020
+
+C-M5S-020 (numeric_evidence; effective law): The de-boxed two-clock interaction energy of the extended class, measured by superposing the two clocks' deviations on the common projector background and evaluating the exactly extracted potential V(S) = -1/2 trS^2 - trS^3 + (trS^2)^2 + 0.5 (pointwise machinery matched to the functional potential integral to 8.5e-13; V(P) = 0 exactly on the projector family), is attractive and saturating: Delta E(d) = 8.1133 - 5.668 * exp(-0.2442 * d) with fit ssr 6.7e-4; box/resolution refinement (2x grid: gamma = 0.271731, E_inf = 8.08826; 1.5x box: gamma = 0.265034, E_inf = 8.095008) shifts the exponent by less than 12 percent and E-infinity by less than 0.4 percent. The exponent is an effective overlap rate of the branch structure inside the box (gamma << the potential masses sqrt(3) and sqrt(5)); it is not a Yukawa mass, and classical massive-boost exchange is excluded by C-M5S-016. This de-boxed law is distinct from the confined-class repulsive power law of C-M5S-008.
+
+- Accepted in: `v0.169.0`
+- Verification: `numeric_evidence`
+- Compatibility: `native`
+- Dependencies: C-M5S-008, C-M5S-015, C-M5S-016, C-M5S-018
+- Exclusions: Effective overlap rate within the tested box range; extrapolation beyond the measured separations is not covered., Field-frozen superposition ansatz on the common projector background; a fully two-centered solver would be a stronger construction.
+
 ## C-MAX-001
 
 Conditional on C-GAU-001's real connection and field-strength convention, a positive integer spatial dimension d, flat (d+1)-dimensional signature (+,-,...,-), a positive supplied kinetic coefficient kappa, and a smooth supplied contravariant current j^mu, the declared action density L=-kappa*F_mu_nu*F^mu_nu/4-j^mu*A_mu has, under compactly supported variations, the exact Euler equation kappa*partial_mu F^mu_nu=j^nu. The Bianchi identity follows from F=dA; the double divergence vanishes identically, so a solution requires partial_nu j^nu=0, which is also the bulk condition for gauge invariance of the source action after its boundary term is removed. Deleting the kinetic term gives only j^nu=0 and does not force A to be pure gauge. In the static convention A_0=phi, A_i=0, j^0=rho, the equation is -kappa*Delta(phi)=rho and E=-grad(phi). Let S_(d-1)=2*pi^(d/2)/Gamma(d/2), let r>0, and separately supply a point source Q with normalized flux kappa*S_(d-1)*r^(d-1)*E_r=Q. For integer d>2 and phi tending to zero at infinity, phi=Q/[kappa*(d-2)*S_(d-1)*r^(d-2)] and E_r=Q/[kappa*S_(d-1)*r^(d-1)]. For d=2, fixing phi=phi0 at positive r0 gives phi=phi0-Q*log(r/r0)/(2*pi*kappa); for the even d=1 full-line branch with phi(0)=phi0, phi=phi0-Q*r/(2*kappa). These branches are harmonic away from the source and have the same normalized radial flux. The potential decays at infinity for every d>2; within this integer family the radial force is inverse-square only for d=3. If a separate test-charge dictionary declares U=q*phi and F=q*E, then like source and test charges repel and opposite signs attract. This theorem imports the action, kappa, current, dimension, point source, boundary data, and force dictionary. It derives no kinetic coefficient, charged matter, electric ontology, preferred dimension, photon, physical electromagnetic or material sector, gravity coupling, observed force, or substrate mechanism.
