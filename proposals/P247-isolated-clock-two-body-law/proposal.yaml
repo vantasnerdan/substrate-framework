@@ -176,14 +176,30 @@ next_loop:
     free-envelope variant must pass the same stationarity and stability
     certification as attempt 0001 G4.
   discretization_cross_check: >-
-    Because the adjudicated disagreement with the reported 0044 structures
-    (persistent negative split-channel mode, bounded stability window) turns
-    on eigenvalues at the +-1.7e-8 order-16 resolution floor, attempt 0002
-    must re-solve at least the R=12 and R=14 rungs at basis order 20 with the
-    aliasing gate reapplied and report lambda_min(A), the pencil lambda_min,
-    and E against the order-16 values before any floor-based verdict is
-    drawn; the existing order-16 anchors to accepted 0042 canon (R=12 energy
-    agreement 3.2e-9 relative, R=14 4.1e-8) bound the solver but not the
-    discretization error of the floor eigenvalues. A rung whose order-20
-    lambda_min(A) disagrees in sign with order-16 voids the floor claim for
-    that radius and the affected G2/G3 interpretation is re-adjudicated.
+    The adjudicated disagreement with the reported 0044 structures (persistent
+    negative split-channel mode, bounded stability window) turns on
+    eigenvalues at the +-1.7e-8 order-16 resolution floor, so attempt 0002
+    applies the small-ratio-numerics prescriptions to every floor-adjacent
+    quantity before any floor-based verdict is drawn:
+    (1) re-solve R=12, R=14, and one R>=16 rung at basis orders 16, 20, 24
+    under the aliasing gate; extrapolate lambda_min(A) and the pencil
+    lambda_min in basis order with the observed order measured from the three
+    grids and required to match design order before the continuum limit is
+    quoted (Richardson only in the asymptotic regime);
+    (2) measure the discretized zero-mode gauge explicitly: evaluate the
+    operator on the exact-flat np/na channel directions from the G1
+    construction and record where they land; a claimed lambda_min at or below
+    that gauge is unresolved by construction;
+    (3) report eigenpair residuals ||H v - lambda v|| / |lambda| for every
+    quoted eigenvalue and the pre-symmetrization asymmetry ||H - H^T|| for
+    every operator; quote lambda_min/lambda_2 with each verdict;
+    (4) roundoff-jitter sign test: perturb the converged coefficients at
+    machine-epsilon scale and require the R>=14 lambda_min sign call to hold;
+    a sign that moves under jitter is recorded as unresolved, not negative.
+    The existing order-16 anchors to accepted 0042 canon (R=12 energy
+    agreement 3.2e-9 relative, R=14 4.1e-8) bound the solver chain but not
+    the discretization error of floor eigenvalues. A rung whose extrapolated
+    lambda_min(A) is negative above the measured zero-mode gauge voids the
+    floor claim for that radius and the affected G2/G3 interpretation is
+    re-adjudicated; attempt 0001's floor-scoped wording (flatness-to-floor,
+    not positivity) stands otherwise.
