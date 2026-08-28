@@ -175,3 +175,15 @@ next_loop:
     the radius-free x-space components with quadrature cross-checks; the
     free-envelope variant must pass the same stationarity and stability
     certification as attempt 0001 G4.
+  discretization_cross_check: >-
+    Because the adjudicated disagreement with the reported 0044 structures
+    (persistent negative split-channel mode, bounded stability window) turns
+    on eigenvalues at the +-1.7e-8 order-16 resolution floor, attempt 0002
+    must re-solve at least the R=12 and R=14 rungs at basis order 20 with the
+    aliasing gate reapplied and report lambda_min(A), the pencil lambda_min,
+    and E against the order-16 values before any floor-based verdict is
+    drawn; the existing order-16 anchors to accepted 0042 canon (R=12 energy
+    agreement 3.2e-9 relative, R=14 4.1e-8) bound the solver but not the
+    discretization error of the floor eigenvalues. A rung whose order-20
+    lambda_min(A) disagrees in sign with order-16 voids the floor claim for
+    that radius and the affected G2/G3 interpretation is re-adjudicated.
