@@ -78,6 +78,20 @@ candidates:
       Alternative completion/topology route: a different Lorentz-covariant 4x4
       completion or topological clock sector under the same static-recovery,
       boundedness, symmetry, and parameter-economy criteria.
+  - id: D_tilted_boost
+    description: >-
+      Registered after attempt 0004 (mid-attempt registration; derived from
+      the co-aligned source-cancellation mechanism): realize the boost field
+      along a FIXED spacelike axis (the clock's angular-momentum axis) so the
+      boost generator no longer commutes with the clock response and the
+      linear tail source survives. Cost: isorotation covariance broken - the
+      clock map is rebuilt, not extended.
+  - id: E_localized_core
+    description: >-
+      Registered after attempt 0004: keep B1 co-aligned and change the object
+      instead - a localized wall-core clock plus the massive boost tail, with
+      box-independence as the existence gate. No new symmetry breaking, but
+      the cure of the static shear-tail growth must come from the core.
 uniqueness_evidence: null
 selection_criteria:
   - bounded Hamiltonian and regular charge-frequency map
@@ -201,31 +215,47 @@ revisions:
       root-continuity gate; gate recalibrated to measured order-
       improvement 0.7-12.7 percent) and one in-place band correction
       (tag-format leak), all recorded in the manifest and result.
+  - date: '2026-08-28'
+    after_attempt: '0004'
+    change: >-
+      Attempt 0004 verdict DECISIVE_PER_GATE (attempts/0004/result.yaml).
+      C1 IDENTIFIED: the boost sector is structurally wired to the clock
+      (clock velocity sources the boost field through the F_{01} mixed
+      term; chi=0 regression against the committed functional exact, diffs
+      0.0). C1b: boost-direction projector-current metric entry exactly
+      1/16 (accepted census eigenvalues reproduced) - the construction is
+      parameter-free (kappa_chi = 1/16, m^2 = Lambda^2). C2 MEASURED:
+      crossing bracket [20.0, 20.25] - the static instability is confined
+      to R <= 20.0(1). C3 NO_LOCALIZED_ROOT: the director-aligned boost
+      field is a spectator for the radial clock - the linear source
+      vanishes identically at chi = 0 by co-aligned structural
+      cancellation (boost axis = director = rotation axis). C4 not
+      applicable (no new stationary point; committed background stability
+      already measured in W1). Successor concepts D_tilted_boost and
+      E_localized_core registered from the failure mechanism; attempt-0005
+      gate D1 decides the routing (sympy full-contraction survival of the
+      linear source under non-co-aligned axes).
 next_loop:
-  attempt: '0004'
+  attempt: '0005'
   question: >-
-    Does the selected candidate-B extension (boost-alignment mass,
-    m^2 = Lambda^2) yield a localized, finite-energy, dynamically stable
-    fixed-J clock in the reduced radial construction, with every accepted
-    static-sector claim surviving exactly?
+    Does the tilted-boost realization of the boost-alignment mass source a
+    nonvanishing clock tail (linear source survives the full contraction
+    under non-co-aligned axes), and does it yield a localized
+    finite-energy fixed-J clock; if not, does the localized-core object?
   gates_preregistered:
     - >-
-      C1: reduced functional derivation - the s_m density and the
-      sigma-projector kinetic reduced to the radial ansatz with boost
-      profile chi(r); sympy sector-survival re-check on the reduced
-      functional; units and conventions block before implementation.
+      D1: sympy full-contraction check of the linear boost source with
+      non-co-aligned axes (boost generator along a fixed axis, clock
+      rotation about the local director): survives or vanishes; decides
+      D_tilted_boost versus E_localized_core routing.
     - >-
-      C2: order-24 bisection of the static crossing R_c in (20, 22)
-      (named follow-up from W3) to fix the confinement scale.
+      D2 (if D_tilted_boost survives): reduced axial-chi functional with
+      the chi=0 exact regression gate, Newton at fixed J in the chi
+      subspace, box-independence at two boxes, tail decay measured
+      against 1/Lambda.
     - >-
-      C3: one-clock existence - rotating background with boost tail at
-      fixed J under the aliasing and continuity gates; finite energy;
-      Yukawa tail length 1/Lambda measured.
-    - >-
-      C4: dynamical stability - pencil spectrum of the rotating
-      background (W1 machinery); clock stable iff the boost-sector pencil
-      is tachyon-free; the static q-degeneracy stays kinetic-free
-      (checked, not assumed).
+      D3 (if routed to E_localized_core): free-core localized solve in a
+      large box with box-independence as the existence gate.
   superseded_blocks:
     - >-
       The attempt-0003 next_loop (W1/W2/W3) executed as preregistered with

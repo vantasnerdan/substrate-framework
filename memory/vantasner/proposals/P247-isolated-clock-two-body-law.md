@@ -114,6 +114,24 @@ evidence; the materialized reproduction remains the citable record (0044
 magnitude and bounded-window-per-background claims rehabilitated, universal
 band and split-channel attribution refuted).
 
+Attempt 0004 (candidate-B construction, 2026-08-28, same branch, no PR)
+verdict DECISIVE_PER_GATE. C1 IDENTIFIED: the boost sector is structurally
+wired to the clock - the clock velocity sources the boost field (F_{01} mixed
+term), the chi=0 regression against the committed functional is exact (diffs
+0.0), and C1b pinned the normalization with zero new parameters (boost
+projector-current metric entry exactly 1/16, accepted census eigenvalues
+reproduced; mass m^2 = Lambda^2). C2 MEASURED: crossing bracket [20.0, 20.25]
+- the static instability is confined to R <= 20.0(1). C3 NO_LOCALIZED_ROOT by
+co-aligned source cancellation: the director-aligned boost field is a
+spectator for the radial clock - grad E_J at chi=0 is exactly zero (boost
+axis = director = rotation axis kills the contraction; the C1-r3 structural
+note promoted to the full contraction). C4 not applicable (no new stationary
+point). Successors registered from the mechanism: D_tilted_boost (fixed-axis
+boost; breaks isorotation covariance - clock map rebuilt) and
+E_localized_core (localized wall-core object; no new breaking, heavier
+existence problem). Attempt-0005 gate D1: sympy full-contraction survival of
+the linear source under non-co-aligned axes decides the routing.
+
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.
 
