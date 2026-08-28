@@ -152,3 +152,27 @@ non_goals:
   - no reinterpretation of the committed E(R) = R^3 V + (C + Phi)/R decomposition or window semantics
   - no new fitted constants; any extension parameter is a scale to be fixed by a stated convention, not fitted to a comparator
   - no edits to canonical src/substrate_framework modules or earlier attempts
+amendments_before_execution:
+  - date: '2026-08-28'
+    after_event: first-execution defect, no verdict computed
+    change: >-
+      First execution exposed a spurious divergent stationary basin: the
+      R = 24 order-24 re-solve from the reprojection seed converged to
+      E = 6.9e516 at relgrad 7.2e-70, and the relative aliasing gate passed
+      it blind (independent-quadrature gap 3.04e-8: both quadratures
+      represent the same divergence, so the relative gate cannot see it).
+      This is the known 0044 failure mode (spurious fixed-order large-R
+      stationary points) surfacing inside the re-solve protocol, a solver
+      and basin defect, NOT a scientific datum about R = 24. Repairs,
+      recorded before rerun, bands unchanged:
+      (1) ROOT CONTINUITY GATE: an order-24 root is accepted only if
+      |E24 - E16| / E16 < 1e-6 (attempt-0002 order-24 roots reproduce the
+      order-16 energies at ~1e-9 relative; the divergent point violates
+      this by ~80 orders);
+      (2) REPAIR PATH on a continuity failure: re-seed by continuing in R
+      at order 24 from the nearest accepted order-24 root (up to 3
+      attempts); a rung that still fails is recorded
+      root-unresolvable-at-order-24 with the mechanism named and is scoped
+      out of the W1/W3 bands with that scope stated in the verdict;
+      (3) the failed first-run stdout is preserved as
+      g9-first-run-divergent-R24-stdout.txt (append-only evidence).
