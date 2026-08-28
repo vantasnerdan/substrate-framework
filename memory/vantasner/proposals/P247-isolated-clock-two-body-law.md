@@ -148,6 +148,16 @@ and G_fixed_axis_rotor (one-clock symmetry breaking by a fixed-axis rotor;
 needs a non-spherical solver). Attempt-0006 gates F1 (pairing derivation) /
 F2 (numeric check) / G1 (rotor specification) preregistered.
 
+Attempt 0006 partial (D1', 2026-08-28): the one-clock no-go is COMPLETE -
+the linear boost source vanishes exactly in EVERY angular channel (odd mu
+1/3, even 0/2, combined) on the symmetric fixed-J root, not only the radial
+channel probed in 0005. The boost-alignment mass cannot localize the
+one-clock in the single-centered reduced class. Remaining extended-class
+routes: F_pair_exchange (two-centered machinery) and route G (non-spherical
+rotor solver, specified in attempts/0006/f1-g1-specification.md). The
+extended functional gained a chi-angular-degrees parameter; the C3-0 exact
+regression re-verified after the change.
+
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.
 

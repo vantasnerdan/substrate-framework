@@ -146,13 +146,15 @@ def extended_static(
     radial_nodes: int,
     angular_nodes: int,
     radius: float,
+    chi_angular_degrees: tuple = (0,),
 ):
     """Extended static energy (no explicit Omega; inertia returned for the
     fixed-J term).  flat = (4, radial_order) coefficient rows: committed
     q, tangent, split channels then the chi channel."""
-    channels = flat.reshape(4, radial_order, 1)
+    n_deg = len(chi_angular_degrees)
+    channels = flat.reshape(3 + n_deg, radial_order, 1)
     c_spatial = channels[:3]
-    c_chi = channels[3:4]
+    c_chi = channels[3:]
 
     radial, radial_weight, mu, angular_weight = gauss_grid(
         radial_nodes, angular_nodes, radius
@@ -165,7 +167,11 @@ def extended_static(
 
     radial_coordinate = 2 * normalized**2 - 1
     radial_basis = chebyshev_stack(radial_coordinate, tuple(range(radial_order)))
-    chi = (radial_basis @ c_chi)[..., 0]
+    chi = torch.zeros_like(radius_grid)
+    for k, degree in enumerate(chi_angular_degrees):
+        angular_k = chebyshev_stack(mu_grid, (degree,))[..., 0]
+        modal_k = (radial_basis @ c_chi[k])[..., 0]
+        chi = chi + modal_k * angular_k
     chi = chi * normalized * (1 - normalized)
 
     R, RmT = boosted_boost_matrix(director, chi)
