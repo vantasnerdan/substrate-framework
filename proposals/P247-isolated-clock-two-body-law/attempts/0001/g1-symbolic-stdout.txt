@@ -1,0 +1,137 @@
+{
+  "gate": "G1_symbolic",
+  "potential_source": "proposals/P240-m5-kinetic-axis/attempts/0041/cpu_energy.py:124 (verbatim)",
+  "background": "rank-1 projector n n^T, local frame (n, p, a)",
+  "channel_order": [
+    "nn",
+    "pp",
+    "aa",
+    "np",
+    "na",
+    "pa"
+  ],
+  "exact_kernel": [
+    [
+      "5/2",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "3/2",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "3/2",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "3"
+    ]
+  ],
+  "expected_kernel": "diag(5,3,3,0,0,6)/2",
+  "kernel_matches_reported": true,
+  "off_diagonal_nonzero": {},
+  "flat_channels": [
+    "np",
+    "na"
+  ],
+  "flat_channels_are_np_and_na": true,
+  "potential_at_background_exact_zero": "0",
+  "massive_channel_speeds": {
+    "nn": "sqrt(10)/2",
+    "pp": "sqrt(6)/2",
+    "aa": "sqrt(6)/2",
+    "pa": "sqrt(3)"
+  },
+  "finite_difference_check": [
+    {
+      "channel": "nn",
+      "exact_kernel_entry": 2.5,
+      "expected_second_derivative": 5.0,
+      "finite_difference": 5.000000000430586,
+      "abs_error": 4.305862333353616e-10,
+      "tolerance": 4.9999999999999996e-06,
+      "pass": true
+    },
+    {
+      "channel": "pp",
+      "exact_kernel_entry": 1.5,
+      "expected_second_derivative": 3.0,
+      "finite_difference": 2.999999999642178,
+      "abs_error": 3.5782221630142885e-10,
+      "tolerance": 3e-06,
+      "pass": true
+    },
+    {
+      "channel": "aa",
+      "exact_kernel_entry": 1.5,
+      "expected_second_derivative": 3.0,
+      "finite_difference": 2.999999999642178,
+      "abs_error": 3.5782221630142885e-10,
+      "tolerance": 3e-06,
+      "pass": true
+    },
+    {
+      "channel": "np",
+      "exact_kernel_entry": 0.0,
+      "expected_second_derivative": 0.0,
+      "finite_difference": -2.220446049250313e-10,
+      "abs_error": 2.220446049250313e-10,
+      "tolerance": 1e-07,
+      "pass": true
+    },
+    {
+      "channel": "na",
+      "exact_kernel_entry": 0.0,
+      "expected_second_derivative": 0.0,
+      "finite_difference": -2.220446049250313e-10,
+      "abs_error": 2.220446049250313e-10,
+      "tolerance": 1e-07,
+      "pass": true
+    },
+    {
+      "channel": "pa",
+      "exact_kernel_entry": 3.0,
+      "expected_second_derivative": 6.0,
+      "finite_difference": 5.999999999173333,
+      "abs_error": 8.266667350653734e-10,
+      "tolerance": 6e-06,
+      "pass": true
+    }
+  ],
+  "finite_difference_all_pass": true,
+  "verdict": "ESTABLISHED"
+}
+G1 VERDICT: ESTABLISHED

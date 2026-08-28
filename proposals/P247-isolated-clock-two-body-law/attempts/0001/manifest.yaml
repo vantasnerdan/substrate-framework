@@ -1,0 +1,56 @@
+attempt: '0001'
+campaign: P247
+milestone: '0_reconcile_unmerged_deboxing_report'
+created: '2026-08-28T11:05:00+00:00'
+question: >-
+  Does the merged P240/P244 machinery reproduce the reported (unmerged,
+  artifacts-lost) attempt 0044 de-boxing verdict: exact flat shear channels,
+  linear E(R) growth, persistent negative potential-curvature direction,
+  bounded pencil stability window, and an invariant clock sector under
+  free-wall variation?
+preregistration: >-
+  Gates G1-G4 and the verdict rule were frozen in
+  memory/vantasner/proposals/P247-isolated-clock-two-body-law.md and
+  proposals/P247-isolated-clock-two-body-law/proposal.yaml
+  (milestone_gates_attempt_0001) before this campaign computed any number.
+  Reported 0044 numbers are transfer references, not comparators.
+provenance:
+  reported_source: >-
+    PR #153 comment 2026-08-22T00:13:32Z and issue #151 comment
+    2026-08-22T00:13:56Z; artifacts appended post-merge to
+    research/p240-phase1-stability which was auto-deleted; absent from main.
+  committed_machinery:
+    - proposals/P240-m5-kinetic-axis/attempts/0041 (cpu_energy.py, solve_radial_1d.py)
+    - proposals/P240-m5-kinetic-axis/attempts/0042 (xspace_energy.py, largeR-roots.json)
+  canonical_modules: src/substrate_framework (read-only)
+environment:
+  interpreter: system python3 (torch 2.3.0.post301, numpy 2.5.1 scipy 1.18.0 sympy 1.14.0)
+  thread_pin: torch.set_num_threads(1); OMP_NUM_THREADS=1
+  precision: float64 end to end
+commands:
+  - PYTHONPATH=src OMP_NUM_THREADS=1 python3 derive_vacuum_curvature.py > g1-symbolic-stdout.txt
+  - PYTHONPATH=src OMP_NUM_THREADS=1 python3 clean_ladder.py > g2-ladder-stdout.txt
+  - PYTHONPATH=src OMP_NUM_THREADS=1 python3 stability_window.py > g3-window-stdout.txt
+  - PYTHONPATH=src OMP_NUM_THREADS=1 python3 free_wall.py > g4-freewall-stdout.txt
+  - repair: g4b-u-family-repair-stdout.txt (0040-projection seed at 32x16, diverged)
+  - repair: g4c-u-family-repair2-stdout.txt (committed root20 seed, converges to 50.5297)
+  - addendum: component_decomposition.py > g2b-component-decomposition-stdout.txt
+  - rerun: clean_ladder.py > g2-ladder-rerun-stdout.txt (root persistence repair; determinism check)
+outputs:
+  - g1-symbolic-stdout.txt
+  - g1-curvature.json
+  - g2-ladder-stdout.txt
+  - g2-ladder-rerun-stdout.txt
+  - g2b-component-decomposition-stdout.txt
+  - clean-roots.json
+  - clean-ladder.json
+  - backgrounds.npz
+  - g3-window-stdout.txt
+  - stability-window.json
+  - g4-freewall-stdout.txt
+  - free-wall.json
+  - result.yaml
+non_goals:
+  - full-action scope beyond the tested radial branch (candidate frontier)
+  - any pair-force measurement (milestone 4)
+  - reinterpretation of accepted confined-clock claims

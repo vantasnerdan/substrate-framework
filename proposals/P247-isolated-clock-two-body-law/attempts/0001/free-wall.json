@@ -1,0 +1,165 @@
+{
+  "gate": "G4_free_wall",
+  "radius": 8.0,
+  "ansatz_change": "q = w*x^2 + x^2(1-x^2)*modal_0; w a free variational coordinate (49th)",
+  "provenance": "verbatim port of solve_radial_1d.energy_radial (0041 lines 48-146), one-envelope change; bit-exact at w=1",
+  "pinned_records": [
+    {
+      "radial_order": 16,
+      "success": true,
+      "energy": 50.52966014756898,
+      "relative_gradient": 3.0121411648794288e-15,
+      "hessian_symmetry": 4.4823717824808334e-17,
+      "lambda_min": 4.5398526524201234e-05,
+      "morse_index": 0,
+      "centered_curvature_scaled": 9.562088066806712e-07,
+      "mode_fractions": [
+        6.532983119755444e-07,
+        1.1169011789126e-09,
+        0.9999993455847869
+      ],
+      "mode_radial_nodes_split": 11,
+      "components": {
+        "curvature": 34.277895487850785,
+        "potential": 15.877032629186019,
+        "static": 50.1549281170368,
+        "inertia": 0.6671433974965038,
+        "fixed_j": 0.3747320305321768,
+        "frequency": 0.7494640610643536
+      },
+      "seed_family": "family_S_from_R10"
+    },
+    {
+      "radial_order": 16,
+      "success": false,
+      "energy": 3.7505918970461576e+244,
+      "relative_gradient": 1.256307865978052e-62,
+      "hessian_symmetry": 9.385244427795792e-17,
+      "lambda_min": 1.4072564807823152e+117,
+      "morse_index": 0,
+      "centered_curvature_scaled": 0.0,
+      "mode_fractions": [
+        5.469055804735066e-06,
+        5.019780788775559e-06,
+        0.9999895111634066
+      ],
+      "mode_radial_nodes_split": 13,
+      "components": {
+        "curvature": 3.263820600931839e+244,
+        "potential": 4.867712961143184e+243,
+        "static": 3.7505918970461576e+244,
+        "inertia": 2.2841326400320223e+245,
+        "fixed_j": 1.094507366246888e-246,
+        "frequency": 2.189014732493776e-246
+      },
+      "seed_family": "family_U_from_0040"
+    }
+  ],
+  "free_records": [
+    {
+      "success": true,
+      "energy": 50.52331125065268,
+      "relative_gradient": 2.5875625995292478e-15,
+      "wall_value": 0.9963173598139432,
+      "inertia": 0.6671409056134905,
+      "omega": 0.7494668604381397,
+      "static_energy": 50.148577820433616,
+      "lambda_min": 4.539120038155875e-05,
+      "morse_index": 0,
+      "components": {
+        "curvature": 34.25863704517742,
+        "potential": 15.88994077525619,
+        "static": 50.148577820433616,
+        "inertia": 0.6671409056134905,
+        "fixed_j": 0.37473343021906985,
+        "frequency": 0.7494668604381397
+      },
+      "seed_family": "family_S_from_R10",
+      "alias_relative_gap": 4.390675049063368e-12
+    },
+    {
+      "success": true,
+      "energy": Infinity,
+      "relative_gradient": 0.0,
+      "wall_value": 9.78003090585085e+74,
+      "inertia": Infinity,
+      "omega": 0.0,
+      "static_energy": Infinity,
+      "lambda_min": -2.626587489249104e+151,
+      "morse_index": 1,
+      "components": {
+        "curvature": Infinity,
+        "potential": 3.5549551759842557e+307,
+        "static": Infinity,
+        "inertia": Infinity,
+        "fixed_j": 0.0,
+        "frequency": 0.0
+      },
+      "seed_family": "family_U_from_0040",
+      "alias_relative_gap": NaN
+    }
+  ],
+  "primary_pinned_family": "family_S_from_R10",
+  "gates": {
+    "pinned_root_accepted": {
+      "pass": true,
+      "families": {
+        "family_S_from_R10": {
+          "relative_gradient": 3.0121411648794288e-15,
+          "energy": 50.52966014756898
+        },
+        "family_U_from_0040": {
+          "relative_gradient": 1.256307865978052e-62,
+          "energy": 3.7505918970461576e+244
+        }
+      }
+    },
+    "pinned_energy": {
+      "value": 50.52966014756898,
+      "reported": 60.17,
+      "family": "family_S_from_R10",
+      "relative_gap": 0.16021837880058198,
+      "pass": false
+    },
+    "free_energy": {
+      "value": 50.52331125065268,
+      "reported": 50.44,
+      "seed_family": "family_S_from_R10",
+      "relative_gap": 0.001651690139823246,
+      "pass": true
+    },
+    "wall_value": {
+      "value": 0.9963173598139432,
+      "band": [
+        0.98,
+        1.01
+      ],
+      "pass": true
+    },
+    "inertia_ratio": {
+      "value": 0.9999962648464744,
+      "reported": 0.9996452957346812,
+      "gap": 0.0003509691117932201,
+      "pass": true
+    },
+    "omega_ratio": {
+      "value": 1.000003735167477,
+      "reported": 0.9999188410501969,
+      "gap": 8.489411728018759e-05,
+      "pass": true
+    },
+    "alias_gate_free": {
+      "relative_gap": 4.390675049063368e-12,
+      "pass": true
+    },
+    "free_stationary_point_quality": {
+      "lambda_min": 4.539120038155875e-05,
+      "morse_index": 0,
+      "reported_minimum": "stable minimum (index 0)",
+      "pass": true
+    }
+  },
+  "gates_all_pass": false,
+  "verdict": "MIXED",
+  "runtime_seconds": 962.4
+}

@@ -1,0 +1,169 @@
+attempt: '0001'
+campaign: P247
+milestone: '0_reconcile_unmerged_deboxing_report'
+completed: '2026-08-28T13:35:00+00:00'
+verdict: MIXED
+headline: >-
+  The reported 0044 de-boxing report is materialized from merged machinery.
+  Its headline isolation no-go REPRODUCES: E(R) grows monotonically with no
+  plateau across a clean aliasing-gated ladder R=12..18, so the de-boxed limit
+  of the confined fixed-J clock branch is not a finite-energy isolated object.
+  Four quantitative structures of the report DO NOT reproduce, each with a
+  named mechanism: the persistent negative split-channel mode, the channel
+  attribution of the negative direction, the bounded stability window, and the
+  60.17 pinned reference with its -16 percent pinning cost.
+inputs:
+  committed_seeds: proposals/P240-m5-kinetic-axis/attempts/0042/largeR-roots.json (R12, R14)
+  committed_functional: attempts/0041 cpu_energy.py + solve_radial_1d.py (verbatim import)
+  x_space_components: attempts/0042 xspace_energy.py (verbatim import)
+  reported_references: PR #153 comment 2026-08-22, issue #151 comment 2026-08-22
+gates:
+  G1_symbolic: ESTABLISHED
+  G2_ladder: MIXED
+  G3_window: MIXED
+  G4_free_wall: MIXED
+established:
+  - gate: G1
+    statement: >-
+      Exact rational second variation of the committed potential
+      V(S) = -Tr(S^2)/2 - Tr(S^3) + (Tr S^2)^2 + 1/2 at the rank-1 projector
+      background in the local frame is exactly diag(5,3,3,0,0,6)/2 on the
+      channel basis [nn, pp, aa, np, na, pa]; the np and na shear channels are
+      exactly flat; V(P)=0 exactly; Richardson finite differences agree to
+      <1e-9 absolute. Matches the reported symbolic claim exactly.
+    evidence: g1-curvature.json, g1-symbolic-stdout.txt
+  - gate: G2 partial
+    statement: >-
+      All seven clean roots accepted at relative gradient <= 5.3e-14 and
+      aliasing-gate energy transfer <= 1.3e-10 (doubled quadrature). E(R) is
+      monotone increasing with no plateau: 55.1042, 55.8996, 56.6282, 57.3112,
+      57.9658, ... (R=12..18); the de-boxed limit is not finite-energy. This
+      is the report's headline consequence, reproduced independently.
+    evidence: clean-ladder.json, g2-ladder-stdout.txt
+  - gate: G4 partial
+    statement: >-
+      Free-wall variation at R=8 converges to a stable minimum (Morse index 0,
+      lambda_min +4.54e-05, alias 4.4e-12) with self-selected wall value
+      w = 0.99631736 (reported 0.99625, gap 7e-5) and E = 50.5233 (reported
+      50.44, gap 0.17 percent); inertia and frequency are invariant under
+      freeing the wall (ratios 0.9999963, 1.0000037). The report's free-wall
+      endpoint and clock-sector invariance reproduce.
+    evidence: free-wall.json, g4-freewall-stdout.txt
+not_reproduced:
+  - claim: persistent lambda_min(A) plateau at -(5+-2)e-7 with no zero crossing
+    observed: >-
+      lambda_min(A) = -1.8751e-06 (R=12), -7.8309e-07 (R=13), then
+      +0.8e-08 to +1.7e-08 (R=14..18), the last at the +-1.7e-8 eigenvalue
+      resolution floor of the order-16 operator (quadrature gap 3.5e-9).
+      The genuinely negative curvature decays and crosses the floor band; the
+      reported persistent negative plateau does not survive. Morse index of A
+      is 1 at R=12,13 and 0 at R=14..18.
+    mechanism: >-
+      Unknown; the 0044 artifacts are absent, so its backgrounds/operator
+      cannot be inspected. From committed window-family seeds the potential
+      curvature approaches marginality from below and reaches the resolution
+      floor within the ladder.
+  - claim: negative direction purely split-channel
+    observed: >-
+      Where A is genuinely negative (R=12,13) the lowest eigenvector is
+      q-channel dominated (split fraction 0.0025, 0.0029 under the committed
+      analyze_mode convention). Where the near-null direction is split-channel
+      (R>=14, fraction 0.969-0.99997) the eigenvalue is at the positive
+      resolution floor, not negative.
+    mechanism: >-
+      Channel attribution does not transfer: the split channel is the
+      near-null direction of the de-boxed backgrounds, consistent with the
+      exactly flat shear channels of G1, but it does not carry a negative
+      eigenvalue on any tested background.
+  - claim: linear energy growth ~0.33 per unit R
+    observed: slope 0.685 per unit R over the accepted ladder with R^2 = 0.9984
+      (visibly concave; per-interval slopes 0.796, 0.728, 0.683, 0.655).
+    mechanism: growth is monotone but sub-linear; the reported slope is not
+      reproduced from committed seeds. The no-plateau conclusion is unaffected.
+  - claim: finite stability window R in [~8, ~34]
+    observed: >-
+      Per-background windows from the exact component decomposition
+      lambda_min(A + R^-4 D): R12 [9.36, 28.64], R13 [10.18, 36.09],
+      R14..R18 [11.02..14.50, unbounded]. Lower edges RISE with background
+      radius; upper edges exist only where A < 0 (R<=13) and are absent
+      (stability unbounded) for R>=14 backgrounds. Self-consistent band over
+      backgrounds 13..18 is [14.50, 36.09]: upper edge in the reported band,
+      lower edge 14.50 vs reported ~8.
+    mechanism: >-
+      Direct consequence of the lambda_min(A) sign flip: with A >= 0 at the
+      floor, R^-4 D only destabilizes a small-R band, and no upper window edge
+      is generated. The bounded-window obstruction does not survive on the
+      de-boxed backgrounds.
+  - claim: pinned R=8 reference E=60.17 with -16 percent pinning cost
+    observed: >-
+      From every committed seed path (R10 window root; 0040 6x5 projection;
+      0041 order-20 R=6 root truncated to 16 — the exact seed of the committed
+      radius scan) the pinned R=8 problem converges to the same stable root
+      E = 50.52966035 (index 0, alias 4.3e-12). Freeing the wall lowers it by
+      only 0.012 percent. The 0040-projection seed diverges (the recorded
+      phase1 failure mode, E ~ 1e244); no merged seed produces 60.17.
+    mechanism: >-
+      The reported 60.17 is not reachable from merged machinery in the
+      order-16 model class at certification quadrature; the branch it
+      describes either requires a lost seed path or does not exist as a
+      distinct order-16 stationary point at R=8. The -16 percent pinning cost
+      presupposed that reference and does not reproduce; the reproduced
+      statement is that pinning costs ~1e-4 relative at R=8 and distorts
+      neither the wall value (self-selects to 0.9963) nor the clock sector.
+gate_summary:
+  G1: ESTABLISHED (exact)
+  G2: MIXED (no-plateau reproduced; slope/lambda/channel structure not)
+  G3: MIXED (upper edge 36.09 in band; lower edge 14.50 and unbounded upper edges not)
+  G4: MIXED (free-wall endpoint and invariance reproduced; pinned 60.17 not)
+strongest_supported_statement: >-
+  In the committed P240 model class (biaxial hedgehog, order 16, structural
+  wall pin) the de-boxed limit of the confined fixed-J clock branch is not a
+  finite-energy isolated object: total energy grows monotonically and without
+  plateau along the clean aliasing-gated ladder R=12..18. The previously
+  reported stability obstruction (persistent negative split-channel mode,
+  bounded stability window, large pinning cost) does not survive reproduction:
+  the de-boxed backgrounds are pencil-stable at and beyond their own radius,
+  carry near-null exactly-flat split channels, and pinning at R=8 costs ~1e-4
+  relative. The binding obstruction to isolation is energy growth, not
+  stability.
+consequences:
+  - >-
+    Candidate A (broader-sector route) is sharpened: the exactly flat np/na
+    shear channels are the natural long-range sector and the de-boxed
+    backgrounds are not saddle-obstructed; the isolation question reduces to
+    whether any sector of the accepted action removes the energy growth.
+  - >-
+    The reported 0044 verdict must not be cited as accepted evidence; the
+    materialized reproduction in this attempt directory is the citable record.
+provenance_notes:
+  - >-
+    Environment: system python3, torch 2.3.0.post301, float64 end to end,
+    torch.set_num_threads(1), OMP_NUM_THREADS=1.
+  - >-
+    The relgrad gate is scale-relative (grad / max(1, |E|)) and reads ~0 for
+    diverged runs with E -> 1e82; a finite-energy sanity bound (E < 1e6) is
+    required alongside it, applied in the g4b/g4c repairs.
+  - >-
+    Repair chain recorded append-only: g4-freewall-stdout.txt (dual-seed run),
+    g4b-u-family-repair-stdout.txt (0040-projection seed, diverged),
+    g4c-u-family-repair2-stdout.txt (committed root20 seed, converges to
+    50.5297).
+addendum_component_decomposition:
+  command: component_decomposition.py > g2b-component-decomposition-stdout.txt
+  method: >-
+    x-space radius-free components of each persisted clean root:
+    E(R) = R^3 V[c] + (C[c] + Phi[c])/R; component sums reproduce E_total
+    exactly at every rung.
+  table:
+    - {R: 12, V: 9.425933e-03, R3V: 16.288012, C_over_R: 38.420974, Phi_over_R: 0.395197}
+    - {R: 18, V: 3.036313e-03, R3V: 17.707775, C_over_R: 41.091949, Phi_over_R: 0.446491}
+  finding: >-
+    The growth is curvature-class: C[c] itself grows (461 to 740) so C/R
+    rises, while the potential bulk coefficient V[c] falls from 9.4e-3 to
+    3.0e-3. Whether C saturates at larger R, opening a finite-energy limit,
+    is the milestone-1 question preregistered as attempt 0002.
+  roots_note: >-
+    First ladder run did not persist root coefficients; the rerun
+    (g2-ladder-rerun-stdout.txt) reproduces every reported digit of the first
+    run under pinned-thread determinism and persists values in
+    clean-ladder.json rows.

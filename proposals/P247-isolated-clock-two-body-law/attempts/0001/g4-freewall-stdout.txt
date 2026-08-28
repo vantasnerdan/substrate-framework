@@ -1,0 +1,68 @@
+[pinned R=8 family_S_from_R10] relgrad=3.012e-15 E=50.52966015 I=0.66714340 omega=0.74946406 lam=4.540e-05 index=0
+[pinned R=8 family_U_from_0040] relgrad=1.256e-62 E=37505918970461575734189211722003305072816635807468532576953838950205943441322257338890732511003547700831597543696949208895590825335854522813831804490028245933025948225698063207281317214742384855555335124451559204607424496419845257517748640022528.00000000 I=228413264003202234067640485916534172231574244320436690964271082880224536606176741840421386590328672672906906907906704935571741360153019915722202156320723396643309190510986053463688466290400822607022584941712121665083737993240135947781427708297216.00000000 omega=0.00000000 lam=1.407e+117 index=0
+[primary pinned family] family_S_from_R10 E=50.52966015
+[free R=8 from family_S_from_R10] relgrad=2.588e-15 E=50.52331125 w=0.99631736 I=0.66714091 omega=0.74946686 lam_min=4.539e-05 index=0 alias=4.391e-12
+[free R=8 from family_U_from_0040] relgrad=0.000e+00 E=inf w=978003090585084907703560063749630008378187699001933960187716808938195255296.00000000 I=inf omega=0.00000000 lam_min=-2.627e+151 index=1 alias=nan
+{
+  "gates": {
+    "pinned_root_accepted": {
+      "pass": true,
+      "families": {
+        "family_S_from_R10": {
+          "relative_gradient": 3.0121411648794288e-15,
+          "energy": 50.52966014756898
+        },
+        "family_U_from_0040": {
+          "relative_gradient": 1.256307865978052e-62,
+          "energy": 3.7505918970461576e+244
+        }
+      }
+    },
+    "pinned_energy": {
+      "value": 50.52966014756898,
+      "reported": 60.17,
+      "family": "family_S_from_R10",
+      "relative_gap": 0.16021837880058198,
+      "pass": false
+    },
+    "free_energy": {
+      "value": 50.52331125065268,
+      "reported": 50.44,
+      "seed_family": "family_S_from_R10",
+      "relative_gap": 0.001651690139823246,
+      "pass": true
+    },
+    "wall_value": {
+      "value": 0.9963173598139432,
+      "band": [
+        0.98,
+        1.01
+      ],
+      "pass": true
+    },
+    "inertia_ratio": {
+      "value": 0.9999962648464744,
+      "reported": 0.9996452957346812,
+      "gap": 0.0003509691117932201,
+      "pass": true
+    },
+    "omega_ratio": {
+      "value": 1.000003735167477,
+      "reported": 0.9999188410501969,
+      "gap": 8.489411728018759e-05,
+      "pass": true
+    },
+    "alias_gate_free": {
+      "relative_gap": 4.390675049063368e-12,
+      "pass": true
+    },
+    "free_stationary_point_quality": {
+      "lambda_min": 4.539120038155875e-05,
+      "morse_index": 0,
+      "reported_minimum": "stable minimum (index 0)",
+      "pass": true
+    }
+  },
+  "verdict": "MIXED"
+}
+G4 VERDICT: MIXED
