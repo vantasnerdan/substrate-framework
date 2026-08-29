@@ -1,0 +1,53 @@
+campaign: P248
+base_commit: 443f1bd6edf0c1997f42b05c3b6719142e7a11c1
+analysis_tool: GitNexus refreshed local index plus repository text search
+changed_canonical_symbols:
+  - additive module src/substrate_framework/optical_gothic.py with no pre-existing callers
+  - additive formal namespace SubstrateFramework.OpticalGothic
+existing_symbols_modified: []
+accepted_dependencies_reused_read_only:
+  minimally_coupled_scalar_stress:
+    source: src/substrate_framework/einstein_scalar.py
+    direct_consumers:
+      - transverse_gordon_scalar_residual
+      - nonzero_boost_scalar_ray_system
+      - rest_boost_scalar_conditions
+  massive_einbein_ledger:
+    source: src/substrate_framework/relativistic_particle.py
+    direct_consumers: []
+  massless_einbein_ledger:
+    source: src/substrate_framework/relativistic_particle.py
+    direct_consumers:
+      - massless_worldline_weyl_residual
+affected_surfaces:
+  direct:
+    - tests/test_optical_gothic.py
+    - formal/SubstrateFramework/OpticalGothic.lean
+    - formal/SubstrateFramework.lean
+    - formal/Audit.lean
+    - proposed C-GOT-001 through C-GOT-006 registry entries
+    - new release manifest and generated claim documentation
+  replayed_dependency_consumers:
+    - tests/test_einstein_scalar.py
+    - tests/test_relativistic_particle.py
+    - tests/test_gordon_scalar_compatibility.py
+    - tests/test_linearized_einstein.py
+  generated:
+    - docs/generated/claims.md via scripts/render_docs.py only
+  durable_memory:
+    - proposal and synthesis records before review
+    - accepted claim and campaign records after promotion
+test_replay:
+  command: PYTHONPATH=src .venv/bin/pytest -q tests/test_optical_gothic.py tests/test_einstein_scalar.py tests/test_relativistic_particle.py tests/test_gordon_scalar_compatibility.py tests/test_linearized_einstein.py
+  result: 62 passed
+formal_replay:
+  command: scripts/check_lean.sh
+  result: build completed and commonMetricComposition has empty axiom footprint
+risk: low_additive_code_with_governance_and_formal_surface_changes
+final_gitnexus_detection:
+  scope: staged after working-tree reindex at the frozen promotion boundary
+  changed_symbols: 208
+  changed_files: 47
+  affected_processes: 0
+  risk_level: low
+final_validation_boundary: full repository validation because governance release generated docs and formal umbrella change

@@ -1,0 +1,284 @@
+proposal: P248
+source_sha256: cfbea3cdebc59da6fd898448cf04088c10b152abdb025702ce807e1c7f54ef89
+inventory_frozen: '2026-08-29T06:25:00+00:00'
+inventory_scope: >-
+  Every load-bearing mathematical, numerical, historical, and physical step is
+  grouped by one argumentative purpose. Repeated statements in section 9 map
+  back to their derivational unit rather than becoming duplicate claims.
+comparator_boundary: >-
+  Structural criteria were frozen before source access. Inline values in
+  equations (26)-(28) were unavoidably visible during extraction; numerical
+  acceptance uses printed significant-digit intervals and independent inputs.
+units:
+  - id: P248-S01
+    anchor: p.2 section 1
+    purpose: Define the note as an operational dictionary rather than a microscopic derivation.
+    statement: The note proposes no new fundamental field equation and does not vary a constitutive action; it transcribes an existing harmonic-GR formulation into optical substrate variables and supplies an iteration.
+    kind: scope
+    dependencies: [source text]
+    oracle: source-fidelity audit
+    acceptance: Later claims must not be credited with deriving the expressly omitted constitutive dynamics.
+  - id: P248-S02
+    anchor: p.2 equation (1)
+    purpose: Establish the Maxwell template for wave equation, gauge condition, and conserved source.
+    statement: For a flat wave equation on a vector potential, commuting derivatives and Lorenz gauge imply ordinary current conservation.
+    kind: exact implication
+    dependencies: [flat partial derivatives, declared wave equation]
+    oracle: SymPy algebra plus Lean finite differential-operator abstraction
+    acceptance: The divergence implication follows without treating the gauge condition itself as conservation.
+  - id: P248-S03
+    anchor: pp.2-3 equations (2)-(5)
+    purpose: State the gothic gravitational analogue and connect it to Einstein gravity.
+    statement: The weight-one gothic inverse metric obeys a flat harmonic wave equation sourced by matter plus a gravitational pseudotensor; with the harmonic condition the pair is equivalent to Einstein's equation, with a convention-dependent coupling normalization.
+    kind: exact formulation and literature bridge
+    dependencies: [Sciama 1964, Papapetrou 1948, Landau-Lifshitz relaxed Einstein equations]
+    oracle: primary-source audit plus clean-room relaxed-equation derivation
+    acceptance: Density weights, sign, coefficient, field variable, and nonlinear source must match one explicit convention exactly.
+  - id: P248-S04
+    anchor: p.3 equations (6)-(7)
+    purpose: Separate harmonic gauge from the conservation law it makes compatible.
+    statement: Diverging the relaxed field equation under harmonic gauge yields ordinary conservation of the total source, while the harmonic condition is equivalently the vanishing coordinate wave operator.
+    kind: exact implication
+    dependencies: [P248-S03]
+    oracle: SymPy tensor-density identity and Lean implication
+    acceptance: Index placement and coordinate convention are consistent and no converse is asserted without hypotheses.
+  - id: P248-S05
+    anchor: p.3 equations (8)-(9) and transformation table
+    purpose: Type the gothic variable, matter density, and gravitational source under coordinate changes.
+    statement: The gothic metric and densitized matter stress are contravariant tensor densities of weight one; the gravitational energy complex is only background-linear covariant, while proper Poincare transformations hide the density weight.
+    kind: exact transformation law
+    dependencies: [Jacobian transformation of metric determinant]
+    oracle: SymPy determinant/Jacobian derivation plus Lean determinant-weight theorem
+    acceptance: General and unit-determinant transformations are distinguished and orientation assumptions are explicit.
+  - id: P248-S06
+    anchor: pp.3-4 section 3.2
+    purpose: Explain why weight one is useful rather than an arbitrary convention.
+    statement: Weight one makes harmonic gauge a coordinate divergence, linearizes to the trace-reversed perturbation on Minkowski background, and pairs naturally with coordinate-volume integration; the LL complex itself has weight two.
+    kind: structural explanation
+    dependencies: [P248-S04, linearized determinant expansion, LL superpotential]
+    oracle: exact series and density-weight audit
+    acceptance: Each of the three distinct roles is established without claiming uniqueness beyond the stated criteria.
+  - id: P248-S07
+    anchor: p.4 section 3.3
+    purpose: Bound the covariance of the background formulation.
+    statement: The relaxed pair is Poincare covariant in inertial background coordinates but not generally diffeomorphism covariant as written; it is a harmonic-coordinate presentation of a covariant theory.
+    kind: covariance classification
+    dependencies: [P248-S03, P248-S05]
+    oracle: transformation audit and primary-source check
+    acceptance: Covariance is not mislabeled invariance and improper transformations are handled consistently.
+  - id: P248-S08
+    anchor: p.4 section 4
+    purpose: Motivate a pseudotensor in metric-only GR.
+    statement: Riemann normal coordinates eliminate first metric derivatives at a point, so no nonzero local tensor built only from first derivatives can represent gravitational energy there; an ordinary total continuity equation therefore uses a coordinate-dependent gravitational complex.
+    kind: conditional no-go
+    dependencies: [existence of normal coordinates, first-derivative construction]
+    oracle: exact hypothesis audit and Lean logical theorem
+    acceptance: Scope stays limited to local first-derivative metric constructions and does not deny curvature-based tensors or quasi-local energy.
+  - id: P248-S09
+    anchor: pp.4-5 equations (10)-(11) and weak-field example
+    purpose: Interpret density factors as reference/current volume conversion while denying that the determinant is the full metric.
+    statement: The tetrad determinant equals the metric volume density and converts covariant divergence to ordinary density divergence; in the displayed weak isotropic metric the determinant has the stated first-order expansion, but rods, clocks, anisotropy, and dragging require the full metric.
+    kind: exact identity and weak-field series
+    dependencies: [nondegenerate tetrad, mostly-plus metric]
+    oracle: SymPy determinant/divergence/series verification
+    acceptance: Orientation absolute value and coordinate-volume caveats are explicit.
+  - id: P248-S10
+    anchor: p.5 section 6.1
+    purpose: Supply the ontology that turns a gauge-fixed GR presentation into an ether interpretation.
+    statement: Continuum mechanics is asserted as a foundation and the Landau-Lifshitz/ADM form is asserted to be physically preferred, with particles as localized medium fields.
+    kind: interpretive premise
+    dependencies: [Comparsi 2025]
+    oracle: primary-source provenance and dependency-gap audit
+    acceptance: Classify as hypothesis unless an independent derivation maps a substrate action to the claimed sectors.
+  - id: P248-S11
+    anchor: pp.5-6 section 6.2
+    purpose: Connect prior lump mechanics to universal effective geometry and the equivalence principle.
+    statement: Prior continuum models are said to provide boosted localized lumps, relativistic energy and two clock scalings, square-root/einbein dynamics, optical geodesics, Schwarzschild/Kerr constitutive profiles, and composition-independent free fall.
+    kind: imported multi-step physical claim
+    dependencies: [references 16-21]
+    oracle: primary-source and accepted-claim scope audit plus reconstruction of the universal-worldline implication
+    acceptance: Each imported step must exist at its stated dimension and scope; common metric coupling may establish conditional universality but not material realization by assertion.
+  - id: P248-S12
+    anchor: p.6 equation (12) and impedance discussion
+    purpose: Separate kinematic wave matching from dynamical gravitational back-reaction.
+    statement: Positive isotropic density and stiffness fix signal speed and mechanical impedance, while impedance matching prevents reflection but does not determine the strength with which lumps deform the medium.
+    kind: exact constitutive algebra plus physical scope
+    dependencies: [linear continuum wave impedance]
+    oracle: dimensional/SymPy derivation and primary-source check
+    acceptance: The no-reflection premise and its dimensional generalization are typed; no value of effective Newton coupling follows.
+  - id: P248-S13
+    anchor: p.6 dictionary and pp.6-7 section 7.2
+    purpose: Translate tensor versus density variables into Cauchy versus Piola reference measures.
+    statement: Densitized matter stress is interpreted as the same effective stress per substrate coordinate cell, and ordinary divergence includes the Jacobian conversion.
+    kind: conditional constitutive dictionary
+    dependencies: [P248-S09, an explicit deformation map]
+    oracle: continuum-mechanics type audit and Piola-transform derivation
+    acceptance: A real deformation gradient and correct Piola index/measure transformation must exist; multiplying by volume alone cannot be called first Piola stress without the remaining deformation factors.
+  - id: P248-S14
+    anchor: pp.6-7 sections 7.1 and 7.3
+    purpose: Reinterpret the gravitational pseudotensor and equivalence principle as medium co-deformation.
+    statement: Local standards made from the medium co-rescale, making the deformation operationally undetectable; the gravitational pseudotensor becomes ordinary substrate stress under the physical background group.
+    kind: interpretive physical claim
+    dependencies: [P248-S10, P248-S11, explicit substrate observables and stress action]
+    oracle: dependency closure and countermodel audit
+    acceptance: Universal matter coupling and an independently derived substrate stress must be shown; a coordinate reinterpretation alone is insufficient.
+  - id: P248-S15
+    anchor: p.7 equations (13)-(14)
+    purpose: Define the optical variables and the algebraic metric map used by all later transcription.
+    statement: A positive density and positive-definite stiffness define an optical tensor, whose determinant mean and flow determine a Lorentzian ADM-form effective metric.
+    kind: exact definition and domain theorem
+    dependencies: [positive-definite matrix square root]
+    oracle: SymPy matrix algebra, Lean finite block-matrix theorem, and numerical SPD mutation tests
+    acceptance: Dimensions, signature, invertibility, and zero-flow homogeneous limit all pass.
+  - id: P248-S16
+    anchor: p.7 equations (15)-(18)
+    purpose: Offer a mechanical stress ansatz and calibrate its conformal weak-field sector.
+    statement: Kinetic, elastic, and gradient terms form a Piola-type medium stress whose static isotropic field-energy density is required to approach negative Newtonian gravitational energy under the declared potential/index map.
+    kind: ansatz plus limiting requirement
+    dependencies: [explicit elastic potential and stress variation]
+    oracle: dimensions, variational stress derivation, weak-field series, and sign mutation
+    acceptance: Energy and stress derive from one action and reproduce the same signed Newtonian limit.
+  - id: P248-S17
+    anchor: pp.7-8 equations (19)-(20)
+    purpose: Select a canonical nonlinear closure by importing the Landau-Lifshitz complex through the optical map.
+    statement: The LL/Papapetrou relaxed identity evaluated on the effective metric defines a specific optical self-source, modulo superpotentials, and reproduces the Newtonian limit.
+    kind: exact closure claim
+    dependencies: [P248-S03, P248-S15, exact LL convention]
+    oracle: clean-room superpotential derivation and symbolic specialization
+    acceptance: Density weight, normalization, second-derivative cancellation, conservation, and Newtonian sign agree in one convention.
+  - id: P248-S18
+    anchor: p.8 equations (21)-(23)
+    purpose: Explain why a flat operator, gothic variable, total source, and coupling occur in the substrate chart.
+    statement: Long-wavelength substrate modulation uses the flat laboratory wave operator; the gothic perturbation is trace reversed; total rather than matter-only stress is required for source conservation; Poisson matching fixes the coupling normalization conditionally.
+    kind: mixed exact and mechanistic claim
+    dependencies: [P248-S03, P248-S12, a constitutive dynamical equation]
+    oracle: exact linearization, divergence implication, dimensional check, and dependency audit
+    acceptance: Kinematic plausibility is not substituted for a derivation of the slow-field operator or source law.
+  - id: P248-S19
+    anchor: pp.8-9 end of section 7.4
+    purpose: Identify ordinary total conservation with covariant matter conservation in the effective geometry.
+    statement: The two conservation laws are asserted to be the same fact after density and connection terms are rearranged because geometry and medium stress share constitutive fields.
+    kind: bridge claim
+    dependencies: [explicit field equations, matter equations, optical map, stress definition]
+    oracle: Noether/Bianchi derivation and counterexample audit
+    acceptance: Equivalence must follow from one action or exact identities, not from shared variable names.
+  - id: P248-S20
+    anchor: p.9 equations (24)-(28)
+    purpose: Show why an extra scale is required and quantify the Planck-cutoff consistency relation.
+    statement: Dimensional matching gives an effective coupling proportional to c0 squared divided by density times cutoff length squared; choosing the Planck length reproduces the displayed density, modulus, and impedance but is circular as a prediction of G.
+    kind: dimensional relation and numerical consistency check
+    dependencies: [declared EH/tension matching ansatz, SI constants]
+    oracle: exact dimension solve, SymPy algebra, SciPy numerical recomputation, and circularity audit against C-GRV-001
+    acceptance: Coefficients remain conventional premises and printed values lie in their significant-digit rounding intervals.
+  - id: P248-S21
+    anchor: pp.9-10 equations (29)-(30)
+    purpose: Offer cosmic and operational alternatives for defining the coupling.
+    statement: A Sciama-scale cosmic potential yields a dimensional coupling relation, while operationally the coupling is the coefficient relating lump density to the optical potential through Poisson's equation and remains phenomenological without back-reaction dynamics.
+    kind: conditional dimensional relation and scope statement
+    dependencies: [Sciama 1953, declared cosmic mass/radius, P248-S12]
+    oracle: primary-source and dimensional audit
+    acceptance: No cosmological equality or independent prediction is claimed without a specified matter model and boundary condition.
+  - id: P248-S22
+    anchor: p.10 equations (31)-(38)
+    purpose: Make the nonlinear dictionary operational through post-Minkowskian iteration.
+    statement: Retarded inversion of a conserved total source generates successive metric, matter, and quadratic gravitational-stress corrections, and a convergent series solves the relaxed pair.
+    kind: conditional recurrence
+    dependencies: [P248-S03, exact order-counting convention, retarded Green operator]
+    oracle: recurrence/type audit, lowest-order SymPy expansion, and a soluble numerical wave-source regression
+    acceptance: No duplicated source orders occur, harmonic preservation is proved from conservation, and convergence remains a hypothesis.
+  - id: P248-S23
+    anchor: pp.10-11 constitutive update and spin-2 discussion
+    purpose: Connect the recurrence to optical primitives and the spin-2 self-coupling result.
+    statement: Each metric iterate can be inverted to optical/constitutive variables, and universal local massless spin-2 self-coupling uniquely completes to Einstein gravity up to a cosmological term; the paper does not derive the massless spin-2 mode or convergence.
+    kind: algebraic update plus literature theorem
+    dependencies: [P248-S15, Deser 1970 and related primary sources]
+    oracle: inverse-map proof, primary-source theorem-scope audit, and hypothesis ledger
+    acceptance: Field-redefinition invertibility is separated from microscopic emergence and uniqueness assumptions.
+  - id: P248-S24
+    anchor: p.11 section 7.7
+    purpose: Turn background covariance into an ontological claim about a homogeneous ether.
+    statement: The substrate theory is asserted to be physically Poincare symmetric and on-shell equivalent to Einstein gravity in harmonic coordinates, while general diffeomorphisms mix relabelling and deformation.
+    kind: interpretive claim
+    dependencies: [P248-S07, P248-S10, P248-S17]
+    oracle: dependency and empirical-distinguishability audit
+    acceptance: Mathematical background covariance may survive without promoting the unproved ether ontology or equivalence of physical theories.
+  - id: P248-S25
+    anchor: pp.11-12 equations (39)-(45)
+    purpose: Eliminate the gothic metric as an independent variable by proving an algebraic bijection with optical data.
+    statement: The ADM-form metric determinant is flow independent; its inverse and gothic components have the displayed block formulas; the inverse map recovers optical tensor and flow; impedance matching recovers density.
+    kind: exact algebraic theorem
+    dependencies: [P248-S12, P248-S15]
+    oracle: SymPy block inversion/determinant, Lean theorem, numerical SPD round trips, and wrong-sign mutations
+    acceptance: Correct inverse placement, positivity domain, coordinate units, and impedance algebra all close.
+  - id: P248-S26
+    anchor: p.12 equation (46)
+    purpose: Prevent an on-shell vacuum identity from being mistaken for an off-shell constitutive closure.
+    statement: Vacuum field equations identify the self-source with minus the flat wave operator on the gothic composite only on solutions; substituting this as an arbitrary-field definition trivializes the sourced equation.
+    kind: exact logical distinction
+    dependencies: [P248-S03, P248-S25]
+    oracle: SymPy substitution and Lean implication/non-equivalence theorem
+    acceptance: On-shell identity and off-shell constitutive functional are separately typed.
+  - id: P248-S27
+    anchor: pp.12-13 equations (47)-(51)
+    purpose: Transcribe the relaxed field equations and harmonic gauge entirely into optical variables.
+    statement: Substitution of the exact gothic composite yields the three displayed wave equations and four harmonic-divergence equations without a third independent geometric unknown.
+    kind: exact substitution
+    dependencies: [P248-S03, P248-S25]
+    oracle: SymPy substitution and dimension audit
+    acceptance: Signs, density weights, free indices, and x0 versus t factors are consistent in every component.
+  - id: P248-S28
+    anchor: p.13 equations (52)-(54)
+    purpose: Compare optical harmonic gauge with material mass and momentum balance without identifying them.
+    statement: Material continuity transports the determinant mean to the first power, whereas the time harmonic condition transports its square; their exact difference gives a compatibility condition involving compression and material change.
+    kind: exact compatibility theorem
+    dependencies: [P248-S27, declared density relation]
+    oracle: SymPy expansion, Lean theorem, and analytic counterexamples
+    acceptance: Necessary and sufficient compatibility is stated; homogeneity is not inferred from a merely sufficient condition.
+  - id: P248-S29
+    anchor: pp.13-14 three consequences after equation (54)
+    purpose: Draw global-chart, static-spherical, and iterative preservation consequences from the compatibility calculation.
+    statement: The paper claims global material-harmonic coincidence only for homogeneous optics, equates the static harmonic identity with vacuum stress conservation on harmonic Schwarzschild data, and requires total-source conservation to preserve gauge in the iteration.
+    kind: mixed global and conditional consequences
+    dependencies: [P248-S17, P248-S22, P248-S28, explicit harmonic Schwarzschild chart]
+    oracle: counterexample for the global claim, exact static specialization, and source-divergence proof
+    acceptance: Each consequence is adjudicated separately; co-occurrence is not called identity without an exact map.
+  - id: P248-S30
+    anchor: p.14 equations (55)-(57)
+    purpose: Propose the minimal weak isotropic mechanical closure.
+    statement: Kinetic flow terms plus a conformal optical-gradient energy and Maxwell-form stress are claimed to reproduce negative Newtonian field energy and the weak spherical vacuum stress.
+    kind: weak-field ansatz
+    dependencies: [P248-S16, potential/index convention]
+    oracle: SymPy weak-field expansion, variational stress derivation, sign mutation, and spherical-profile check
+    acceptance: The energy sign agrees with equation (18), coefficients derive from one action, and the total source obeys its declared balance.
+  - id: P248-S31
+    anchor: pp.14-15 equations (58)-(63)
+    purpose: Extend the weak closure to anisotropic optical deformation.
+    statement: The paper calls the additive deviation from determinant mean a trace-free strain and adds its gradient energy and Maxwell stress as the simplest shear closure reducing to the isotropic system.
+    kind: anisotropic ansatz
+    dependencies: [P248-S30, positive-definite optical tensor]
+    oracle: exact trace/determinant counterexample, representation comparison, and variational stress derivation
+    acceptance: The shear variable is genuinely unimodular or trace-free, avoids conformal double counting, and reduction to the isotropic sector is exact.
+  - id: P248-S32
+    anchor: p.15 equations (64)-(66)
+    purpose: Give the exact nonlinear closure intended to recover Einstein gravity.
+    statement: A displayed LL quadratic density divided to weight one and evaluated on the optical composite is claimed unique, conserved in harmonic gauge, exactly equivalent to Einstein's equation, and to contain the proposed weak closures as linearized sectors.
+    kind: exact formula and uniqueness bridge
+    dependencies: [P248-S03, P248-S17, P248-S25, Deser theorem]
+    oracle: primary-formula comparison, superpotential reconstruction, symbolic weak specialization, and coefficient/sign mutations
+    acceptance: Formula, convention, weight, equivalence, uniqueness scope, and weak-limit claims all match; otherwise a corrected closure is constructed.
+  - id: P248-S33
+    anchor: pp.15-16 section 9 collected claims
+    purpose: Compose the paper's dictionary into its headline physical interpretation.
+    statement: The paper concludes that background-retaining etherodynamics and geometric GR are two presentations of one continuum, with Sciama's pair as the native infrared language and equivalence principle as co-deformation.
+    kind: synthesized interpretive claim
+    dependencies: [P248-S10, P248-S11, P248-S14, P248-S17, P248-S19, P248-S24, P248-S32]
+    oracle: full dependency-closure audit with an explicit interpretive hypothesis if retained
+    acceptance: Only the strongest conclusion supplied by every bridge survives; missing microscopic action or empirical equivalence cannot be hidden.
+  - id: P248-S34
+    anchor: p.16 open problems
+    purpose: Declare what the paper itself leaves unresolved and bound any positive reconstruction.
+    statement: The optical LL expansion, constitutive potential, residual gauge classification, material-harmonic charts, substrate back-reaction action, coupling scale, and double-solution relation are open in the source.
+    kind: scope and debt disclosure
+    dependencies: [source text]
+    oracle: source-fidelity and campaign-completion audit
+    acceptance: P248 either supplies a validated construction for every load-bearing open item needed by the paper's intended infrared mechanism or states a non-load-bearing exclusion without claiming it solved that item.

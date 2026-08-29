@@ -1,0 +1,62 @@
+campaign: P248
+frozen_boundary: claim-draft.yaml plus optical_gothic.py tests formal proof and companion verifiers
+process_status:
+  sympy_aggregator: 0
+  numerical_verifier: 0
+  lean_check: 0
+terminal_tallies:
+  exact_relaxed: 6
+  exact_metric: 11
+  exact_compatibility: 14
+  numerical: 18
+  lean: LEAN CHECK PASS build and axiom audit
+inventories:
+  lexical_check_call_sites:
+    exact_relaxed_checks.py: 6
+    exact_metric_checks.py: 11
+    exact_compatibility_checks.py: 11
+    numerical_checks.py: 11
+  mutation_sensitive_sites:
+    exact_compatibility_checks.py: 1
+  runtime_pass_executions:
+    symbolic_total: 31
+    numerical_total: 18
+  assertion_nodes:
+    tests/test_optical_gothic.py: 39
+    optical_gothic_internal_assertion_raises: 5
+reason_counts_differ: >-
+  mutation_sensitive expands one lexical site to baseline, mutation-presence,
+  and one rejection pass; the fixed-seed numerical loop expands one lexical
+  round-trip check to eight runtime executions. Pytest assertions are API
+  regression nodes and are not CheckLedger calls.
+oracle_roles:
+  sympy:
+    role: exact_proof
+    proposition: block inverse determinant gothic map component Jacobian variational chain compatibility energy sign and shear decomposition
+  lean:
+    role: corroborating_subclaim
+    proposition: finite compatibility sign cancellation tracelessness Jacobian nonzero and composition logic
+    axiom_footprint: commonMetricComposition does not depend on any axioms
+  numpy_scipy:
+    role: regression_and_applicability
+    proposition: SPD round trips printed SI intervals forced-wave convergence source-sign sensitivity and independent modal solve
+numeric_method:
+  precision: IEEE-754 binary64
+  pde: periodic second-order centered spatial difference plus second-order leapfrog
+  pde_domain: x in [0,2*pi) and t in [0,1]
+  pde_data: u(0,x)=0 and partial_t u(0,x)=0
+  pde_source: sin(x)*cos(2*t)
+  pde_meshes: [64, 128, 256]
+  timestep_policy: dt at most 0.2*dx with final step adjusted to t=1
+  error_norm: spatial RMS against u=(cos(t)-cos(2*t))*sin(x)/3
+  acceptance: observed order above 1.8 and finest RMS below 2e-5
+  independent_method: scipy.integrate.solve_ivp DOP853 on the exact modal ODE
+  tolerances: {rtol: 1e-12, atol: 1e-14, amplitude_error: 2e-12}
+  stopping_status: success required before amplitude use
+mutations:
+  - positive instead of negative Newtonian energy sign rejected
+  - reversed forced-wave source sign fails by more than the analytic solution scale
+  - removed lapse column has rank nine and loses one Euler equation
+  - independent-lapse metric diag(-4,1,1,1) lies outside the determinant-slaved image
+  - additive shear witness has nonzero trace
+verdict: passed

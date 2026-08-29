@@ -1,0 +1,86 @@
+campaign: P248
+canonical_goal_issue: '184'
+base_release: v0.169.0
+base_commit: 443f1bd6edf0c1997f42b05c3b6719142e7a11c1
+validated_tree_before_receipt: d9c0a7ab3eaebadb5243311060a8017fa3343a31
+validated_at: '2026-08-29T07:16:51+00:00'
+frozen_impact_surface:
+  - src/substrate_framework/optical_gothic.py
+  - tests/test_optical_gothic.py
+  - formal/SubstrateFramework/OpticalGothic.lean
+  - formal/SubstrateFramework.lean and formal/Audit.lean
+  - campaigns/P248-sciama-gothic-metric-audit
+  - governance/claims.yaml C-GOT-001 through C-GOT-006
+  - governance/releases/v0.170.0.yaml and current.yaml
+  - docs/generated/claim-index.md
+  - memory/framework claims and release v0.170.0 records
+  - memory/vantasner P248 proposal and synthesis records
+authority_boundary:
+  artifact: adjudicated purpose-aware audit and corrected optical-gothic construction
+  claim_promotion: C-GOT-001 through C-GOT-006 accepted after individual independent review and bounded correction check
+  release: v0.170.0
+  goal_completion: >-
+    All 34 manuscript units are decisively resolved, every broken load-bearing
+    role has an executable exact replacement at the strongest supportable
+    scope, the six positive framework claims are reviewed and promoted, and
+    the conditional theorem's microscopic and empirical exclusions are
+    explicit rather than hidden debt.
+commands:
+  - command: >-
+      PYTHONPATH=src .venv/bin/python
+      campaigns/P248-sciama-gothic-metric-audit/companion/sympy_checks.py
+    exit_status: 0
+    result: 6 relaxed plus 11 metric plus 14 compatibility checks passed
+  - command: >-
+      PYTHONPATH=src .venv/bin/python
+      campaigns/P248-sciama-gothic-metric-audit/companion/numerical_checks.py
+    exit_status: 0
+    result: 18 checks passed including eight SPD round trips, refinement, mutation, and independent DOP853 gates
+  - command: scripts/check_lean.sh
+    exit_status: 0
+    result: 8090-job build passed; commonMetricComposition has no axioms
+  - command: >-
+      PYTHONPATH=src .venv/bin/pytest -q tests/test_optical_gothic.py
+      tests/test_einstein_scalar.py tests/test_relativistic_particle.py
+      tests/test_gordon_scalar_compatibility.py tests/test_linearized_einstein.py
+    exit_status: 0
+    result: 62 passed
+  - command: PYTHONPATH=src scripts/validate.sh --full
+    exit_status: 0
+    result: workflow valid at 248 accepted claims; 1022 memory files valid; 2471 pytest tests passed
+  - command: >-
+      memory validate --base "$PWD"
+      "$PWD/memory/vantasner/proposals/P248-sciama-gothic-metric-audit.md"
+      and the P248 synthesis record
+    exit_status: 0
+    result: both durable records valid
+  - command: git diff --cached --check
+    exit_status: 0
+    result: no whitespace errors after record-only whitespace normalization
+review:
+  reviewer: independent fresh Codex review process
+  artifact: reviews/C-GOT-001-C-GOT-006-review.md
+  initial_verdict: request_changes on C-GOT-006 only
+  correction_check: accept at confidence 0.99; both blockers closed
+  final_claim_verdicts:
+    C-GOT-001: accept
+    C-GOT-002: accept
+    C-GOT-003: accept
+    C-GOT-004: accept
+    C-GOT-005: accept
+    C-GOT-006: accept
+gitnexus:
+  baseline_index_commit: 443f1bd6edf0c1997f42b05c3b6719142e7a11c1
+  working_tree_reindexed: true
+  staged_changed_symbols: 208
+  staged_changed_files: 48
+  affected_processes: 0
+  risk: low
+small_ratio_numerics:
+  binding: false
+  reason: >-
+    No promoted gate concerns a soft eigenvalue, stability edge, Morse index,
+    weak force, or energy splitting near a numerical floor; the only energy
+    result is an exact symbolic sign conversion.
+debt: []
+verdict: full_scope_validated_ready_for_distinct_merger

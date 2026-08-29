@@ -390,6 +390,70 @@ Let n(x) be an exact positive twice-differentiable refractive index on a connect
 - Compatibility: `compatible_extension`
 - Dependencies: C-GOR-001, C-STG-001, C-LIN-001
 
+## C-GOT-001
+
+C-GOT-001 (exact constrained optical-gothic map): Let gamma_ij be a real symmetric positive-definite 3-by-3 optical tensor, V^i a real flow, c>0, v=V/c, s in {-1,+1}, nbar=(det gamma)^(1/3), and N=nbar^(-1/2). The mostly-plus block metric g_00=-N^2+gamma_ij v^i v^j, g_0i=s gamma_ij v^j, g_ij=gamma_ij is Lorentzian, has det(g)=-nbar^2 and sqrt(-g)=nbar, and has inverse g^00=-1/N^2, g^0i=s v^i/N^2, g^ij=gamma^-1^ij-v^i v^j/N^2. Therefore its gothic inverse density has components gothic^00=-nbar^2, gothic^0i=s nbar^2 v^i, and gothic^ij=nbar gamma^-1^ij-nbar^2 v^i v^j, reproducing the issue-184 paper for s=+1. The construction is an exact nine-field chart whose image obeys N^2*nbar=1; it is not a bijection to the ten independent components of a general foliation-adapted Lorentzian metric, with diag(-4,1,1,1) at gamma=I and V=0 an explicit excluded witness.
+
+- Accepted in: `v0.170.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: The metric is an algebraic effective geometry; no material action, physical gravity, or microscopic substrate is inferred., The theorem does not call the nine-field image a general metric parameterization.
+
+## C-GOT-002
+
+C-GOT-002 (exact complete optical ADM bijection): Let N>0 be independent, gamma_ij be real symmetric positive definite, V^i be real, c>0, v=V/c, and s in {-1,+1}. The same block formulas define every mostly-plus Lorentzian metric whose chosen spatial block is positive definite and whose temporal Schur complement is negative. The inverse reconstruction is gamma=g_spatial, v=s gamma^-1 g_mixed, N=sqrt(-(g_00-g_mixed^T gamma^-1 g_mixed)), and V=c v. The metric determinant is -N^2 det(gamma), sqrt(-g)=N sqrt(det gamma), and the ten-component point-map Jacobian in coordinates (N,v^1,v^2,v^3,gamma_11,gamma_22,gamma_33,gamma_12,gamma_13,gamma_23) has determinant -2*s*N*det(gamma), hence is nonsingular on the stated domain. Eight fixed-seed nonsingular SPD numerical round trips agree at infinity norm below 2e-13 as regression evidence.
+
+- Accepted in: `v0.170.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: The foliation and shift orientation are declared chart data; no preferred physical foliation is selected., Algebraic surjectivity on the stated ADM domain does not imply that a mechanical medium realizes every field configuration.
+
+## C-GOT-003
+
+C-GOT-003 (exact material-harmonic compatibility): For positive nbar, material residual M=partial_t nbar+V dot grad(nbar)+nbar div(V), and the exact gothic time-gauge residual derived from C-GOT-001, H_s=partial_t(nbar^2)-s div(nbar^2 V), one has H_s=2*nbar*M-2*nbar*(1+s)*V dot grad(nbar) -nbar^2*(2+s)*div(V). For the material-flow sign s=-1 this reduces to H_-=2*nbar*M-nbar^2 div(V), so M=H_-=0 is equivalent to material continuity plus incompressibility; it does not require spatial optical homogeneity, and V=0 with arbitrary static nbar is an exact counterexample to that inference. For the paper's printed s=+1 sign, imposing M=0 gives H_+=-nbar*(4 V dot grad(nbar)+3 nbar div(V)), exposing the paper's inconsistent sign change between its metric and continuity discussion.
+
+- Accepted in: `v0.170.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: C-GOT-001
+- Exclusions: The theorem covers the time harmonic component only; the three spatial gauge equations remain separate constitutive flux conditions., Local compatibility does not assert a global harmonic chart exists for arbitrary topology or boundary data.
+
+## C-GOT-004
+
+C-GOT-004 (exact Newtonian conformal sign ledger): Under the issue paper's weak optical potential map Phi=(c^2/2)*(1-nbar^(-1)), one has |grad Phi|^2=(c^4/4)|grad log(nbar)|^2 at leading weak-field order. Consequently its positive equation-(55) density c^4|grad log(nbar)|^2/(32*pi*G) equals +|grad Phi|^2/(8*pi*G), the opposite of the negative Newtonian field energy required by its equation (18). Its equation-(57) spatial Maxwell coefficient separately converts to +1/(4*pi*G). Thus the printed equations (55)-(57) cannot be one weak mechanical closure that satisfies the paper's own signed energy requirement; flipping the equation-(55) energy sign is the minimum ledger correction, while an action-level stress still requires a separately declared variational construction.
+
+- Accepted in: `v0.170.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: The ledger does not claim a unique local gravitational energy density or identify a coordinate pseudotensor with material energy., The sign correction alone does not derive Poisson dynamics or Newton's constant.
+
+## C-GOT-005
+
+C-GOT-005 (exact conformal/log-shear decomposition): For three positive principal optical indices n_i and nbar=(n_1 n_2 n_3)^(1/3), the paper's additive deviations n_i-nbar are not generally trace-free; the witness (4,2,1) has nbar=2 and trace 1. Define instead lbar=(log n_1+log n_2+log n_3)/3 and E_i=log n_i-lbar. Then sum_i E_i=0, product_i exp(E_i)=1, and E_i=0 in the isotropic sector. This logarithmic unimodular variable separates conformal and shear spectral modes exactly and removes the double counting present in equation (58).
+
+- Accepted in: `v0.170.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: No elastic shear modulus, gradient functional, constitutive stress, or dynamics is selected., The spectral statement assumes a real SPD optical tensor so its principal logarithms are real.
+
+## C-GOT-006
+
+C-GOT-006 (symbolic-verified synthesized core optical action theorem): On the C-GOT-002 domain, pull any differentiable covariant metric action S[g,fields] back through the complete pointwise optical map q=(N,v,gamma) -> g(q), where v=V/c. Its Euler derivatives obey E_q=J^T E_g; because det(J)=-2*s*N*det(gamma) is nonzero, E_q=0 if and only if E_g=0. Specializing S to the accepted mostly-plus Einstein-scalar action C-STG-001 therefore gives exactly its Einstein and scalar equations in the complete optical variables, without losing a metric equation. Supplying the same reconstructed metric to accepted C-WLN-001 and C-WLN-002 simultaneously gives the massive square-root/ Hamiltonian sector and the massless null/affine-geodesic sector at their accepted local scopes. This is a complete conditional infrared optical presentation, not a derivation of a substrate: it derives no microscopic constitutive action, massless spin-two emergence, universal material coupling, preferred foliation, Newton constant, impedance law, ether ontology, or empirical equivalence.
+
+- Accepted in: `v0.170.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: C-STG-001, C-WLN-001, C-WLN-002, C-GOT-002
+- Category: `synthesized`
+- Layer: `core`
+- Structural gap: Closes the missing tenth-field and variational bridges between a complete optical metric chart, accepted covariant field dynamics, and accepted massive and massless supplied-metric worldline sectors.
+- Glue proof: `sympy` at `campaigns/P248-sciama-gothic-metric-audit/companion/exact_metric_checks.py` (`run`)
+- Exclusions: This is a field redefinition of declared covariant dynamics, not bottom-up emergence of those dynamics., The accepted scalar remains a generic canonical real scalar and is not identified with a refractive index, lump, or microscopic substrate mode., Physical coupling, boundary/initial data, material realization, and observation remain separate inputs.
+
 ## C-GRV-001
 
 In M,L,T base-dimension order, for primitive columns consisting of a positive cutoff length a, speed c, and action scale hbar, the exact dimension matrix [[0,0,1],[1,1,2],[0,-1,-1]] has full rank. The unique monomial powers for Newton G are (2,3,-1), and those for 1/G are (-2,-3,1); hence dimensions permit G=q*a^2*c^3/hbar with an arbitrary dimensionless q but do not determine q or derive a cutoff mechanism. If a nonzero real coefficient s and cutoff energy E_cut=hbar*c/a are separately declared, the conditional leading inverse-coupling shift Delta(1/G)=s*hbar/(a^2*c^3)=s*E_cut^2/(hbar*c^5) is exact. Its sign, field and curvature-coupling content, regulator, cutoff identification, and coefficient remain premises. An independent baseline inverse coupling B adds before inversion, 1/G_total=B+Delta(1/G); dimensions do not set B=0, B=target-Delta realizes any supplied total, and B=-Delta cancels it. Only for B=0 and s>0 is the pure formula G=a^2*c^3/(s*hbar) available. With compatible dimensionless references, its log row on (log(a/a_ref),log(s/s_ref)) is (2,-1), whose nullspace spans (1,2); therefore one supplied G ratio identifies neither a nor s, and a=sqrt(s*hbar*G/c^3) is inverse inference after supplying G and s, not a prediction. For any separately declared source equation operator=kappa*source, [kappa]=[operator]-[source]. A direct kappa=alpha*G with dimensionless alpha is allowed only when this equals [G]; for a dimensionless scalar operator of dimension L^-2, mass-density and energy-density sources instead require alpha dimensions c^-2 and c^-4 respectively. C-OG-003 declares neither such source units nor a Newton normalization. AS3's exact power solve and cutoff substitution survive conditionally, but it leaves s free, omits the additive baseline and QFT data, imports kappa=8*pi*G from pending evidence, and does not pin a, kappa, or an over-determined physical scale. This ledger establishes no Sakharov mechanism, quantum spectrum, regulator, 3+1 Einstein dynamics, lattice ontology, medium map, observed constant, or absolute scale.

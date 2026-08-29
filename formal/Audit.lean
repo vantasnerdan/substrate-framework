@@ -5,6 +5,7 @@ import SubstrateFramework
     axiom footprint (the standard Mathlib trio is expected). -/
 
 #print axioms SubstrateFramework.compose_implications
+#print axioms SubstrateFramework.OpticalGothic.commonMetricComposition
 
 #print axioms ActionQuantum.sqrt_one_sub_sq_pos  -- ActionQuantum.lean
 #print axioms SGAmplitudeCondition.amplitudeCondition_feasible  -- AmplitudeCondition.lean
