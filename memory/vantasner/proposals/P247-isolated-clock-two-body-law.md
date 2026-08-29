@@ -265,6 +265,33 @@ Artifacts: attempts/0010/manifest.yaml, result.yaml,
 fixed-width-probe.json, narrow-branch.json, fd-arbitration.json,
 narrow26.npy, narrow28.npy, width-stiffness-vs-R.json.
 
+PR 182 REVIEW CORRECTIONS (2026-08-29, scope repairs on the promoted
+claims; attempt history above preserves its original wording). The
+independent PR review requested changes on two scientific scope
+blockers, and both repairs narrow wording to what the artifacts
+support - they do not change any measurement. (1) C-M5S-015/C-M5S-018
+no longer state asymptotic nonexistence ("de-boxed limit is not
+finite-energy", "realized ONLY in the confined class", "no
+box-independent member exists"): the ladders cover R = 12..30 /
+R = 20..30, attempt-0002 itself records the saturating asymptote as
+unresolved, and the accepted statements now say monotone growth
+without plateau on the tested ladders, isolation-gate failure on the
+tested branch, and no box-independent member found on the tested
+minimum branch, with deeper-box and non-spherical existence open and
+missing constructions named. (2) C-M5S-020 is rescoped to the measured
+frozen-superposition potential cross-term (two frozen R24 profiles,
+common projector background, finite cylindrical box, d = 6..28,
+attractive saturating exponential); the relaxed two-centered
+construction (full kinetic/fixed-J energy, independent phases, inertia
+sector) stays the preregistered open objective
+(attempts/0006/f1-g1-specification.md). (3) C-M5S-016 is restricted to
+odd-order (single-exchange, linearly sourced) classical static
+sourcing on the measured backgrounds - even-order static responses are
+not excluded - and its hidden C-M5S-017 sign assumption is removed
+(sign irrelevant to evenness; dependency graph acyclic again).
+Correction check: reviews/correction-check-0182.md; receipt:
+evidence/validation-receipt.yaml.
+
 ## Debt Ledger
 The milestone-0 reproduction inherits the reported verdict's numbers only as transfer references; any gate that fails is recorded as MIXED with the named mechanism rather than silently narrowed. Open frontier (not debt): the full-action scope beyond the tested radial branch, the isolated-existence question for candidates A-C, the two-clock sector, and the interaction law. The absent 0044 source artifacts are external provenance facts, recorded here and in the attempt record, not hidden assumptions inside any proposed claim.
 

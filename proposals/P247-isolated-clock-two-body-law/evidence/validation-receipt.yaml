@@ -1,0 +1,48 @@
+receipt:
+  recorded_at: '2026-08-29T08:00:41+02:00'
+  boundary: PR #182 review corrections (C-M5S-015/016/018/020 scope repairs)
+  base_commit: 67fcf0d77463972d436ca855fae2784a637e805c
+  frozen_tree: b8c141a14f036767288503f8c7bc5ba36de8f2e5
+  impact_surface:
+    - governance/claims.yaml
+    - docs/generated/claim-index.md
+    - memory/framework/claims/C-M5S-015.md
+    - memory/framework/claims/C-M5S-016.md
+    - memory/framework/claims/C-M5S-018.md
+    - memory/framework/claims/C-M5S-020.md
+    - memory/framework/releases/v0.169.0.md
+    - memory/vantasner/proposals/P247-isolated-clock-two-body-law.md
+    - proposals/P247-isolated-clock-two-body-law/proposal.yaml
+    - proposals/P247-isolated-clock-two-body-law/pr-body.md
+    - proposals/P247-isolated-clock-two-body-law/reviews/correction-check-0182.md
+  mode_decision: >-
+    scripts/validate_changed.py against base 67fcf0d selects --full:
+    governance/claims.yaml modified with changed existing accepted claims
+    (claim governance semantics changed; not an additive leaf promotion).
+  command: scripts/validate.sh --full
+  result:
+    exit_code: 0
+    repository_validator: >-
+      WORKFLOW VALID: 242 claims, 242 accepted, 11 proposals, 4 skills;
+      MIGRATION QUEUE: 218 units, 0 pending, 0 partial
+    file_validation: 1013 files valid
+    memory: >-
+      43 non-fatal advisory warnings (memory validate), unchanged in kind
+      from the pre-correction boundary
+    skill_check: valid
+    pytest: 2454 passed in 415.31s (full suite, including the
+      generalized-Skyrme branch)
+    terminal: ALL REPOSITORY WORKFLOW CHECKS PASS (full pytest suite)
+  correction_check: >-
+    proposals/P247-isolated-clock-two-body-law/reviews/correction-check-0182.md
+    (independent reviewer agent; CORRECTIONS_VERIFIED after two consumer-line
+    fixes in pr-body.md)
+  note: >-
+    This is the single content-addressed receipt promised by next_loop 0011
+    gate C3, recorded at the review-corrected boundary; it supersedes no
+    earlier receipt (none had been materialized at 3f9d6a2/4c13960). The
+    receipt itself and PR metadata do not change the tested surface.
+    Scientific oracles were not re-run: the corrections narrow claim and
+    body wording to what the unchanged, materialized attempt artifacts
+    support (attempts/0002/result.yaml, attempts/0007/v-law-measurement.json,
+    attempts/0007/v-law-refinement.json, attempts/0010/*).
