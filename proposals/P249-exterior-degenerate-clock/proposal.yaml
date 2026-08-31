@@ -1,0 +1,394 @@
+id: P249
+schema_version: 2
+base_release: v0.170.0
+source_baseline: substrate-framework@443f1bd6edf0c1997f42b05c3b6719142e7a11c1
+question: >-
+  Can one explicitly declared local Lorentz-covariant M5 action carry a smooth,
+  globally normalized compact SO(2) clock action that fixes the exterior vacuum,
+  and do its complete fixed-J equations admit a finite-energy, finite-positive-
+  inertia, nonzero-frequency, dynamically width-selected open-space stationary
+  clock with action-specific asymptotic dynamics and physical stability?
+candidate_universe:
+  scope: >-
+    All one-clock constructions within issue #189's declared local
+    Lorentz-covariant M5 field/action boundary that can supply a normalized
+    compact vacuum-fixing action, complete fixed-J relative equilibrium,
+    intrinsic open-space localization, and a licensed stability statement.
+    Two-clock forces, gravity continuation, and particle identifications are out
+    of scope.
+  frozen_from:
+    - issue #189 positive objective and O1-O6 closure map
+    - release v0.170.0 accepted C-M5S scopes and invariants
+    - P239/P240/P244/P247 source inventory and recorded route mechanisms
+    - Discussion #186 opening post and all comments/replies current at campaign freeze
+    - requester direction to exhaust algebra and variational calculus before production numerics
+  route_families:
+    - exterior-degenerate spectral SO(2) clock
+    - bundle-aware disclination-ring clock
+    - auxiliary or gauged amplitude clock
+    - non-spherical or core-selected continuation
+    - M5.32 action-specific dynamics and minimal kinetic completion
+  append_only_expansions:
+    - >-
+      After attempt 0001, A_EXTERIOR_DEGENERATE/noncommuting-core is explicit:
+      the commuting one-profile split collapses, so a surviving core must add
+      noncommuting spatial curvature/topology or a positive completion whose
+      exact scaling prevents the diagnosed amplitude-width collapse.
+    - >-
+      After attempt 0002, the fixed-axis clock split is exact weight two with
+      positive stiffness but zero quadratic kinetic metric. O3 therefore
+      splits into an intrinsically nonlinear relative-equilibrium route and a
+      minimal positive weight-two kinetic-completion route; importing a mass
+      gap is excluded.
+    - >-
+      Attempt 0003 corrected the commuting collapse to remain on the simple
+      timelike branch and proved incompatible scale/amplitude virials even
+      with the historical positive auxiliary-axis lock. The live O3 routes
+      must change to noncommuting static curvature or canonical auxiliary-
+      amplitude volume inertia.
+obligation_graph:
+  nodes:
+    - id: O1
+      positive_intent: >-
+        Construct a smooth global compact SO(2) action with fixed period and
+        generator normalization, pointwise exterior-vacuum fixation, action
+        invariance, conserved Noether current, and a nondegenerate
+        charge-frequency map.
+      requires: []
+      pass_licenses: [L-O1-CLOCK]
+      does_not_license:
+        - localized mode or stationary solution
+        - nonlinear stability or particle interpretation
+      maximum_verdict: ESTABLISHED_SYMMETRY
+      failure_scope: the tested action, topology, generator, and chart construction only
+      unlocks: [O2, O3]
+      status: established
+      license_chain:
+        object: >-
+          A smooth M5 field configuration space with an explicitly normalized
+          global SO(2) action and exterior-degenerate vacuum orbit.
+        symmetry_or_conservation: >-
+          Exact group law, 2*pi period, vacuum fixed pointwise, action
+          invariance, Noether identity, and regular Legendre map.
+        ensemble: symmetry and fixed-charge eligibility, before fixed-J minimization
+        variational_functional: the complete declared local Lorentz-covariant M5 action
+        admissible_space: >-
+          Smooth finite-energy fields in declared global charts or bundle data,
+          with the full exterior and defect-core boundary conditions.
+        representation_coverage: >-
+          Full-field global construction for the selected route; reduced,
+          weighted, tapered, or oriented-chart tangents are excluded unless a
+          proved descent supplies the same action.
+        observable: >-
+          Group action, infinitesimal generator, exact action variation,
+          Noether current, inertia form, and charge-frequency Jacobian.
+        numerical_representation: >-
+          None permitted for the load-bearing symmetry license; exact algebra,
+          differential calculus, and symbolic regression only.
+        permitted_verdict: ESTABLISHED_SYMMETRY
+    - id: O2
+      positive_intent: >-
+        Derive the selected action's channel-resolved asymptotic principal
+        symbol, kinetic metric rank/sign, positive physical subspace, and
+        essential/radiation thresholds.
+      requires: [L-O1-CLOCK]
+      pass_licenses: [L-O2-ASYMPTOTIC]
+      does_not_license:
+        - nonlinear clock existence
+        - fixed-J stationarity or stability
+      maximum_verdict: ASYMPTOTIC_DYNAMICS_ESTABLISHED
+      failure_scope: the tested action and complete linear representation only
+      unlocks: [O5]
+      status: established
+      license_chain:
+        object: the full unreduced second variation about the declared exterior vacuum
+        symmetry_or_conservation: L-O1-CLOCK and the exact linearized constraint identities
+        ensemble: linear dynamics on the physical positive-kinetic subspace
+        variational_functional: second variation of the complete O1 action before background restrictions
+        admissible_space: finite-energy perturbations modulo only proved gauge or symmetry directions
+        representation_coverage: all action channels, constraints, degeneracies, and asymptotic directions
+        observable: kinetic pencil, principal symbol, dispersion branches, and essential-spectrum edges
+        numerical_representation: >-
+          Exact matrix/polynomial derivation first; numerical roots or spectra
+          only for irreducible algebraic quantities after exact rank/sign and
+          branch structure are frozen.
+        permitted_verdict: ASYMPTOTIC_DYNAMICS_ESTABLISHED
+    - id: O3
+      positive_intent: >-
+        Derive and solve the complete fixed-J constrained equations while
+        varying the field, core eigenvalue split, generator dependence, and
+        inertia together, and establish dE/dJ = omega on a stationary branch.
+      requires: [L-O1-CLOCK]
+      pass_licenses: [L-O3-RELATIVE-EQUILIBRIUM]
+      does_not_license:
+        - open-space isolation
+        - perturbative or nonlinear stability
+      maximum_verdict: RELATIVE_EQUILIBRIUM_EXISTS
+      failure_scope: the tested branch, ansatz, and representation only
+      unlocks: [O4]
+      status: active
+      license_chain:
+        object: a stationary relative equilibrium of the O1 compact action at fixed normalized J
+        symmetry_or_conservation: L-O1-CLOCK
+        ensemble: fixed J
+        variational_functional: >-
+          Complete Legendre-reduced fixed-J functional including field-dependent
+          generator, inertia variation, DX terms, constraints, and rank-one
+          second-variation contribution.
+        admissible_space: the route's full declared smooth finite-energy configuration space and constrained tangent space
+        representation_coverage: no post-processed static profile and no omitted zero-background Hessian blocks
+        observable: Euler-Lagrange residual, forward state error, branch identity, E(J), and dE/dJ
+        numerical_representation: >-
+          Algebraic and variational derivation must close first. Any later BVP,
+          PDE, or continuation solve uses crossed h by L refinement, independent
+          boundary treatment, and conditioning-aware error budgets.
+        permitted_verdict: RELATIVE_EQUILIBRIUM_EXISTS
+    - id: O4
+      positive_intent: >-
+        Establish finite limiting energy and inertia, nonzero frequency,
+        core-localized cumulative charge, dynamically selected box-independent
+        width, and a natural unsupported open-space tail.
+      requires: [L-O3-RELATIVE-EQUILIBRIUM]
+      pass_licenses: [L-O4-ISOLATION]
+      does_not_license:
+        - full physical stability
+        - two-clock force or particle identity
+      maximum_verdict: ISOLATED_CLOCK_EXISTS
+      failure_scope: the tested stationary branch and covered function space only
+      unlocks: [O5]
+      status: pending
+      license_chain:
+        object: the O3 stationary fixed-J branch continued to open space
+        symmetry_or_conservation: L-O1-CLOCK and L-O3-RELATIVE-EQUILIBRIUM
+        ensemble: fixed J open-space stationary fields
+        variational_functional: the unchanged complete O3 fixed-J functional
+        admissible_space: natural finite-energy asymptotics without taper, wall, mask, or imposed core support
+        representation_coverage: crossed domain, mesh, basis, and boundary treatments with branch fidelity
+        observable: energy, inertia, omega, cumulative J, core width, virial closure, and action-derived tail
+        numerical_representation: >-
+          Crossed h by L design with observed-order extrapolation, held-out model
+          comparison, independently implemented boundary/discretization route,
+          compensated reductions, and a complete itemized error budget.
+        permitted_verdict: ISOLATED_CLOCK_EXISTS
+    - id: O5
+      positive_intent: >-
+        Establish the complete constrained spectrum and, where licensed by O2,
+        absence of radiative growth for the declared perturbation class.
+      requires: [L-O2-ASYMPTOTIC, L-O4-ISOLATION]
+      pass_licenses: [L-O5-STABILITY]
+      does_not_license:
+        - electron, neutrino, de Broglie, gravity, or two-body interpretation
+      maximum_verdict: STABLE_ISOLATED_CLOCK
+      failure_scope: exactly the represented constrained tangent and dynamical space
+      unlocks: [O6]
+      status: pending
+      license_chain:
+        object: full constrained first- and second-order dynamics about the O4 clock
+        symmetry_or_conservation: O1 zero modes and O2 positive physical subspace
+        ensemble: fixed-J constrained perturbations and released dynamics where licensed
+        variational_functional: full O3 fixed-J Hessian and O1 action evolution equations
+        admissible_space: all declared physical perturbations with explicit gauge/moduli removal
+        representation_coverage: symmetry-breaking, radial, angular, constraint, and radiation channels declared by O2
+        observable: Morse index, low spectrum, eigenvectors, flux, harmonic thresholds, and growth rates
+        numerical_representation: >-
+          Symmetrized operator; K-positive restriction; lambda_min/lambda_2,
+          zero-mode scale, eigenpair residual, crossed h by L extrapolation,
+          second discretization/boundary treatment, nonlinear perturbation check,
+          deterministic evaluator noise and epsilon-jitter sign test.
+        permitted_verdict: STABLE_ISOLATED_CLOCK
+    - id: O6
+      positive_intent: >-
+        Extract reusable APIs/tests, review each proposed claim independently,
+        replay affected consumers, promote accepted claims, pin a release,
+        regenerate documentation and memory, and empty the in-boundary debt ledger.
+      requires:
+        - L-O1-CLOCK
+        - L-O2-ASYMPTOTIC
+        - L-O3-RELATIVE-EQUILIBRIUM
+        - L-O4-ISOLATION
+        - L-O5-STABILITY
+      pass_licenses: [L-O6-PROMOTION]
+      does_not_license:
+        - excluded phenomenology or downstream two-clock/gravity programs
+      maximum_verdict: CAMPAIGN_SUCCESS
+      failure_scope: the frozen C-M5C claim transaction and affected consumers
+      unlocks: []
+      status: pending
+      license_chain:
+        object: canonical importable implementation and accepted C-M5C claim transaction
+        symmetry_or_conservation: all O1-O5 licenses
+        ensemble: governance promotion boundary
+        variational_functional: all promoted exact and numerical constructions at their stated scopes
+        admissible_space: claim-by-claim reviewed scopes with explicit hypotheses and exclusions
+        representation_coverage: impact-bounded direct and indirect consumers of changed claims and symbols
+        observable: accepted registry, release closure, generated docs, durable memory, and validation receipt agreement
+        numerical_representation: strongest practical oracle evidence already earned by O1-O5, without duplicate meta-validation
+        permitted_verdict: CAMPAIGN_SUCCESS
+license_registry:
+  - id: L-O1-CLOCK
+    proposition: >-
+      The selected M5 action carries a normalized global compact vacuum-fixing
+      SO(2) symmetry with conserved Noether charge and regular Legendre map.
+    status: earned
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0001/manifest.yaml
+    earned_by: O1
+  - id: L-O2-ASYMPTOTIC
+    proposition: >-
+      The action-specific complete asymptotic kinetic/principal-symbol problem
+      is typed, has a declared positive physical subspace, and supplies its own
+      essential/radiation thresholds.
+    status: earned
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0002/manifest.yaml
+    earned_by: O2
+  - id: L-O3-RELATIVE-EQUILIBRIUM
+    proposition: >-
+      A branch solves the complete fixed-J equations with regular charge-frequency
+      map and dE/dJ = omega.
+    status: unearned
+  - id: L-O4-ISOLATION
+    proposition: >-
+      The fixed-J branch has finite open-space energy/inertia, nonzero frequency,
+      intrinsic box-independent width, localized cumulative charge, and natural tail.
+    status: unearned
+  - id: L-O5-STABILITY
+    proposition: >-
+      The O4 clock is stable in the complete declared constrained perturbation
+      class and has no unresolved radiative-growth channel within that class.
+    status: unearned
+  - id: L-O6-PROMOTION
+    proposition: >-
+      The O1-O5 results are importable, individually reviewed, consumer-replayed,
+      accepted, release-pinned, rendered, memory-synchronized, and debt-free.
+    status: unearned
+source_inventory:
+  - source: >-
+      governance/releases/current.yaml and governance/claims.yaml at accepted
+      release v0.170.0; sha256 dd55f564e170e3777d6346a5fdcac7b39005a0125aca78d8c441d5aaa9ac91bc
+      and af4f20385c6e967a0bb7c7996b34bef559420ac741989667094ca28ca01f401f
+    access: in-hand repository source
+    extracted: accepted boundary and exact C-M5S-001 through C-M5S-020 scopes
+  - source: >-
+      src/substrate_framework/m5_covariant_action.py,
+      m5_kinetic_axis.py, m5_stationary_fields.py,
+      m5_fluctuation_spectrum.py, and numerics.py at working baseline
+      4071e5d469462b8c77612103d589a764fcc7d8b8 with recorded sha256 hashes
+      8b1a2a51, fbd80aa7, 29356206, a2c8c6e2, and 39f85f24
+    access: in-hand repository source
+    extracted: canonical action, kinetic, stationary, spectrum, and numerical APIs named by issue #189
+  - source: >-
+      proposals P239, P240, P244, and P247 at working baseline 4071e5d;
+      proposal-manifest sha256 23e37e26, db684c7c, 94b71da6, and e8163d32
+    access: in-hand repository source
+    extracted: conditional construction, fixed-J mechanism, spectral machinery, and route verdicts to reproduce before reuse
+  - source: https://github.com/vantasnerdan/substrate-framework/discussions/186
+    access: open URL, full opening post plus current top-level comments and replies read through GitHub GraphQL API
+    extracted: next-step boundary, OpenWave R4-R12 scope, M5.32 provenance caveat, and exterior-degenerate route rationale
+  - source: https://github.com/vantasnerdan/substrate-framework/issues/189
+    access: open URL
+    extracted: frozen objective, O1-O6 closure, candidate universe, gate pedigree, exclusions, and numerical constraints
+invariants:
+  - exact local Lorentz/index validity and declared M5 field types
+  - globally normalized compact period rather than a rescalable weighted tangent
+  - exterior vacuum fixed pointwise and defect core responsible for lifting the degeneracy
+  - Hamiltonian boundedness and regular Legendre map
+  - exact or explicitly challenged static 3x3 recovery
+  - all action-specific thresholds derived from the selected action
+  - no imported M7 0.786 threshold, fitted frequency, imposed localization, or post-processed fixed-J profile
+  - accepted C-M5S scopes remain unchanged unless separately challenged with independent evidence
+allowed_imports:
+  - C-M5S-001 through C-M5S-020 only in their exact accepted scopes
+  - reproduced and source-audited P239/P240 conditional APIs
+  - P244 spectrum machinery only after its representation and floor assumptions are re-audited
+  - P247 attempts as route evidence, never as universal one-clock no-go authority
+  - standard real linear algebra, matrix calculus, variational calculus, Noether theorem, spectral theory, and declared SciPy/SymPy methods
+candidates:
+  - id: A_EXTERIOR_DEGENERATE
+    description: >-
+      A full-field spectral SO(2) conjugation action with two equal exterior
+      eigenvalues and a dynamically lifted defect-core split; reconcile the
+      P239/P240 reduced director-frame action with a global smooth action and
+      exact Noether current.
+  - id: B_BUNDLE_RING
+    description: >-
+      A compact clock action on the disclination-ring sector using explicit
+      director n~-n charts, transition functions, and holonomy rather than an
+      assumed global oriented generator.
+  - id: C_AUXILIARY_GAUGED
+    description: >-
+      A single normalized phase whose amplitude or compensating connection
+      vanishes in the vacuum, with every new field, redundancy, coupling, and
+      Hamiltonian sign explicit.
+  - id: D_NONSYMMETRIC_CORE
+    description: >-
+      A fixed-axis/non-spherical rotor or localized core/wall continuation in
+      which the equations, not a mask or imposed wall, select the width.
+  - id: E_M532_DYNAMICS
+    description: >-
+      Reproduce the certified M5.32 action and derive its exact asymptotic
+      pencil; if the vacuum stabilizer or quadratic kinetic rank obstructs the
+      direct clock, use a nonlinear-mode representation or the smallest
+      covariant kinetic completion preserving the declared static sector.
+uniqueness_evidence: null
+selection_criteria:
+  - exact Lorentz and index validity
+  - global symmetry and topology with fixed compact period
+  - Hamiltonian boundedness and regular Legendre map
+  - exact or explicitly challenged static 3x3 recovery
+  - natural exterior and dynamically selected width
+  - assumption, field, and parameter economy
+  - correct limits and compatibility with accepted sectors
+  - analytic tractability before numerical conditioning and implementability
+  - downstream explanatory and predictive reach
+claims_proposed:
+  - C-M5C-001
+  - C-M5C-002
+  - C-M5C-003
+  - C-M5C-004
+comparators_blinded_until: >-
+  Issue #189 necessarily exposes historical values, so those are provenance
+  references only. Published clock frequencies, de Broglie normalization, and
+  the M7-derived 0.786 value remain excluded from derivation and selection until
+  the action, group normalization, exact variations, asymptotic pencil,
+  structural criteria, numerical observables, tolerances, and error budgets are
+  frozen. The requester additionally requires exact algebra and calculus to be
+  exhausted before production numerics.
+route_frontier:
+  active_obligation: O3
+  considered:
+    - A_EXTERIOR_DEGENERATE
+    - B_BUNDLE_RING
+    - C_AUXILIARY_GAUGED
+    - D_NONSYMMETRIC_CORE
+    - E_M532_DYNAMICS
+  tried:
+    - A_EXTERIOR_DEGENERATE/O1-fixed-axis-global-SO2 established
+    - A_EXTERIOR_DEGENERATE/commuting-radial-split refuted by exact collapse path
+    - A_EXTERIOR_DEGENERATE/exact-asymptotic-pencil established with singular weight-two clock block
+    - A_EXTERIOR_DEGENERATE/commuting-split-plus-axis-lock refuted by incompatible exact virials
+  failure_generated:
+    - A_EXTERIOR_DEGENERATE/noncommuting-core
+    - A_EXTERIOR_DEGENERATE/nonlinear-weight-two-relative-equilibrium
+    - C_AUXILIARY_GAUGED/positive-weight-two-kinetic-completion
+    - C_AUXILIARY_GAUGED/canonical-amplitude-Q-ball
+  remaining:
+    - A_EXTERIOR_DEGENERATE/noncommuting-core
+    - C_AUXILIARY_GAUGED/canonical-amplitude-Q-ball
+    - B_BUNDLE_RING
+    - C_AUXILIARY_GAUGED
+    - D_NONSYMMETRIC_CORE
+    - E_M532_DYNAMICS
+execution_state: active
+objective_state: active
+exhaustion_certificate:
+  historical_routes: []
+  external_routes: []
+  failure_generated_routes: []
+  equivalence_partition: []
+  adversarial_generation_artifact: null
+  adversarial_reviewer: null
+  adversarial_reviewer_role: null
+  infinite_class_coverage: []
+  route_verdicts: []
+  routes_remaining: null
+  review: null
+status: active

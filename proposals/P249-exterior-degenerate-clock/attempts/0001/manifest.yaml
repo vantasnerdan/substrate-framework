@@ -1,0 +1,111 @@
+attempt: '0001'
+status: completed
+active_obligation: O1
+route: A_EXTERIOR_DEGENERATE/commuting-radial-split
+question: >-
+  Does the conditional P239 completed spectral-Cartan action already carry a
+  globally normalized fixed-axis SO(2) that fixes an equal-tangent-eigenvalue
+  exterior, and can its simplest smooth commuting core-split profile select a
+  finite fixed-J width?
+source_baseline: substrate-framework@4071e5d469462b8c77612103d589a764fcc7d8b8
+base_release: v0.170.0
+command: >-
+  PYTHONPATH=src .venv/bin/python
+  proposals/P249-exterior-degenerate-clock/attempts/0001/verify.py
+oracle_order:
+  - exact matrix group/action algebra
+  - exact Noether and Legendre calculus
+  - exact reduced variational and Derrick scaling calculus
+  - no numerical solver or sampled comparator
+licenses_consumed: []
+licenses_targeted:
+  - L-O1-CLOCK
+small_ratio_prescriptions:
+  error_budget: exact symbolic identities; no floating-point observable
+  zero_mode_gauge: exact SO(2) tangent and exterior fixed point are derived algebraically
+  eigenpair_residual: not applicable; no eigenproblem is formed
+  lambda_min_lambda_2: not applicable; no stability verdict is attempted
+  observed_order_extrapolation: not applicable; no discretization is used
+  jitter_sign_test: not applicable; all load-bearing signs are exact polynomials under stated positivity hypotheses
+maximum_verdict: ESTABLISHED_SYMMETRY for O1; route-scoped fixed-width verdict for the commuting split only
+does_not_license:
+  - a stationary core
+  - open-space isolation in the noncommuting or non-spherical class
+  - asymptotic dynamics or stability
+  - claim promotion
+next_if_route_fails: >-
+  Keep O1's exact symmetry construction, then add a noncommuting spatial core
+  or the smallest positive kinetic/topological completion whose static and
+  amplitude scaling prevents the diagnosed collapse.
+execution_notes:
+  - >-
+    Initial execution was preserved in stdout.txt. It passed the group,
+    vacuum, Cartan, and potential checks, then aborted because the verifier
+    called SymPy Expr.coeff on a factored Hamiltonian. This is an oracle
+    extraction defect: expand before coefficient extraction. The repaired
+    execution is captured separately and does not count as a new scientific
+    route.
+route_verdict: >-
+  refuted_with_mechanism: the commuting radial tangent-split representation
+  has exact fixed-J functional E=R^3(3a A1+4a^2 A2)+J^2/(32 a^2 R K), and the
+  admissible path R=a^-1 sends every positive term to zero as a tends to
+  infinity. No finite nonzero-J profile attains that infimum, so this route
+  cannot supply a stationary fixed-width minimum.
+evidence_scope: EXACT_SYMMETRY_PLUS_REPRESENTATION_SCOPED_COLLAPSE
+strongest_positive_result: >-
+  The completed P239 action admits a smooth normalized global fixed-axis SO(2)
+  action with period 2*pi, pointwise fixation of the equal-tangent-eigenvalue
+  exterior, exact action invariance, a conserved Noether current, and a
+  nondegenerate finite-positive charge-frequency map on a nonempty smooth
+  decaying core sector. This earns L-O1-CLOCK but does not establish a
+  stationary core.
+computed_predicate: >-
+  Twenty-four exact SymPy checks establish the SO(2) group identities, vacuum
+  fixation and mutation sensitivity, exact M5.17 core potential, exact
+  curvature coefficient C=32 d^2 |grad d|^2, J=2 C omega, a smooth Gaussian
+  finite-positive-inertia witness, the u=d^2 Euler equation, and the collapse
+  path. The general action-invariance and Noether bridge are derived by exact
+  matrix covariance and localized-parameter variational calculus in
+  derivation.md.
+proposition: >-
+  L-O1-CLOCK holds for the fixed-axis exterior-degenerate SO(2) subgroup of the
+  declared completed P239 action; the commuting radial split is not a
+  fixed-width stationary minimum.
+licenses_earned:
+  - L-O1-CLOCK
+parent_effect: >-
+  O1 is established and unlocks O2 and O3. O2 becomes the active algebraic
+  obligation; O3 retains the noncommuting/core-selected representations.
+cannot_decide:
+  - existence of a noncommuting or non-spherical stationary core
+  - the action-specific asymptotic physical spectrum
+  - isolation and stability
+routes_considered:
+  - fixed-axis global SO(2) on the full symmetric field space
+  - commuting radial tangent split
+routes_tried:
+  - A_EXTERIOR_DEGENERATE/commuting-radial-split
+routes_remaining:
+  - A_EXTERIOR_DEGENERATE/noncommuting-core
+  - B_BUNDLE_RING
+  - C_AUXILIARY_GAUGED
+  - D_NONSYMMETRIC_CORE
+  - E_M532_DYNAMICS
+artifacts:
+  verifier_sha256: f5994a0b832153a6cac2920ac3f15d6b2b63f909e574cda71da7f62c6f5f3b1d
+  derivation_sha256: f5c83d709a52d62b264c9cb183c79a297b08f429d649e26912a9982bba2a3085
+  initial_stdout_sha256: a1bafe382dd8a0d520266f7e76cefcfc40c4aa1a2f9b833d58d26f1c9e430490
+  repaired_stdout_sha256: fc0f5caae7706744416468b089e984d88e38f7bf9ec58b6d3ff53e31bcafd1fd
+  canonical_action_sha256: 8b1a2a51656b73159637ffb17036ed6d538d4d9e2fe5e9d08115467aad78a769
+verification_audit:
+  process_status: 0
+  lexical_check_calls: 24
+  runtime_check_executions: 24
+  python_assert_nodes: 0
+  terminal_tally: ALL 24 CHECKS PASS [P249-O1-0001]
+  sensitivity: >-
+    Exact lost-degeneracy mutation makes the vacuum tangent nonzero; group,
+    potential, curvature normalization, Legendre, and collapse predicates use
+    their defining objects rather than literal booleans or copied outputs.
+  targeted_replay: PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_m5_covariant_action.py
+  targeted_replay_result: 12 passed

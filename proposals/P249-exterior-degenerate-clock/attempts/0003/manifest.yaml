@@ -1,0 +1,96 @@
+attempt: '0003'
+status: completed
+active_obligation: O3
+route: A_EXTERIOR_DEGENERATE/complete-fixed-J-calculus-and-commuting-split
+question: >-
+  What are the complete first and second variations of the fixed-axis SO(2)
+  fixed-J functional, and can the commuting core split (including the
+  auxiliary-axis lock's positive quadratic cost) satisfy the independent
+  scale and amplitude stationarity equations while remaining on the simple
+  timelike branch?
+source_baseline: substrate-framework@4071e5d469462b8c77612103d589a764fcc7d8b8
+base_release: v0.170.0
+command: >-
+  PYTHONPATH=src .venv/bin/python
+  proposals/P249-exterior-degenerate-clock/attempts/0003/verify.py
+oracle_order:
+  - exact Frechet/Legendre calculus
+  - exact scale and amplitude virial identities
+  - exact simple-timelike-branch-preserving route construction
+  - no optimizer or numerical stationary profile
+licenses_consumed: [L-O1-CLOCK, L-O2-ASYMPTOTIC]
+licenses_targeted: [L-O3-RELATIVE-EQUILIBRIUM]
+small_ratio_prescriptions:
+  error_budget: exact symbolic identities; no floating-point observable
+  zero_mode_gauge: the SO(2) group tangent is licensed by O1; no Hessian spectrum is formed
+  eigenpair_residual: not applicable
+  lambda_min_lambda_2: not applicable
+  observed_order_extrapolation: not applicable
+  jitter_sign_test: not applicable; all signs follow exact positivity hypotheses
+maximum_verdict: complete fixed-J calculus plus a commuting-representation route verdict
+does_not_license:
+  - O3 for a noncommuting or auxiliary-amplitude construction
+  - isolation or stability
+  - a universal no-clock theorem
+next_if_commuting_stationarity_fails: >-
+  Use a noncommuting spatial core whose static curvature supplies an independent
+  inverse-scale term, or move to the auxiliary-amplitude Q-ball family with a
+  canonical volume inertia and analytically admissible self-interaction.
+route_verdict: >-
+  refuted_with_mechanism: the commuting split, including a positive quadratic
+  auxiliary-axis lock, cannot satisfy its independent scale and amplitude
+  stationarity identities. Eliminating the rotational energy gives
+  -10 U2 - 8 U4 = 0, impossible for a nonzero core. A corrected collapse path
+  with tau=4+2d remains strictly on the simple timelike branch and confirms the
+  nonattained zero-energy escape.
+evidence_scope: EXACT_COMPLETE_FIXED_J_CALCULUS_AND_COMMUTING_ROUTE_REFUTATION
+strongest_positive_result: >-
+  For the full fixed-axis action, delta E_J=delta E0-omega^2 delta C and
+  delta^2 E_J=delta^2 E0-omega^2 delta^2 C+2 omega^2(delta C)^2/C exactly,
+  with every generator, spectral-projector, Cartan-metric, and inertia
+  dependence retained. The spatial Derrick identity and dE/dJ=omega are exact
+  and reusable for every surviving O3 route.
+computed_predicate: >-
+  Seventeen exact checks cover the Legendre derivatives, mandatory rank-one
+  Hessian term and deletion mutation, complete scale virial, commuting scale
+  and amplitude virials, their incompatible elimination, branch-preserving
+  collapse, strict timelike separation, and axis-lock continuation.
+proposition: >-
+  The full fixed-J calculus is established as a reusable bridge, while the
+  commuting core split and its positive quadratic axis-lock repair are refuted
+  as O3 stationary constructions.
+licenses_earned: []
+parent_effect: >-
+  O3 remains active. The next route must supply noncommuting static curvature
+  or a canonical auxiliary-amplitude inertia; no numerical rerun of the
+  commuting/axis-lock representation is licensed.
+cannot_decide:
+  - noncommuting-core stationarity
+  - auxiliary-amplitude Q-ball existence in the coupled M5 action
+  - isolation or stability
+attempt_0001_scope_correction: >-
+  Attempt 0001's fixed-time-eigenvalue collapse path can cross the simple
+  timelike spectral boundary. The scientific collapse conclusion survives via
+  this attempt's corrected tau=4+2d path, which stays strictly separated. The
+  earlier exact O1 symmetry/Noether license is unchanged.
+routes_remaining:
+  - A_EXTERIOR_DEGENERATE/noncommuting-core
+  - C_AUXILIARY_GAUGED/canonical-amplitude-Q-ball
+  - B_BUNDLE_RING
+  - D_NONSYMMETRIC_CORE
+  - E_M532_DYNAMICS
+artifacts:
+  verifier_sha256: 0dc1be247cf10bd5134ac831094439022555c774b70895ff3dcfb3f2628c7572
+  derivation_sha256: 8bcac1c7230999bfeb63d96929604a8e8b3ab2e06695093495b4655be94f7bc0
+  stdout_sha256: 0522f188f53606a224899703df4e92a503ae1282eb560115622cf620257ef40f
+verification_audit:
+  process_status: 0
+  lexical_check_calls: 17
+  runtime_check_executions: 17
+  python_assert_nodes: 0
+  terminal_tally: ALL 17 CHECKS PASS [P249-O3-0003]
+  sensitivity: dropping the positive rank-one Hessian term fails an explicit defining-object mutation
+  targeted_replay: >-
+    PYTHONPATH=src .venv/bin/python -m pytest -q
+    tests/test_m5_covariant_action.py tests/test_m5_kinetic_axis.py
+  targeted_replay_result: 22 passed

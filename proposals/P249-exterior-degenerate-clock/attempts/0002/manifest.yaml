@@ -1,0 +1,96 @@
+attempt: '0002'
+status: completed
+active_obligation: O2
+route: A_EXTERIOR_DEGENERATE/exact-asymptotic-pencil
+question: >-
+  What is the complete action-specific quadratic kinetic/principal-symbol
+  structure of the completed P239 action about the exterior-degenerate vacuum
+  M0=diag(-4,1,0,0), and does the fixed-axis clock split belong to a positive
+  propagating subspace?
+source_baseline: substrate-framework@4071e5d469462b8c77612103d589a764fcc7d8b8
+base_release: v0.170.0
+command: >-
+  PYTHONPATH=src .venv/bin/python
+  proposals/P249-exterior-degenerate-clock/attempts/0002/verify.py
+oracle_order:
+  - exact second-order perturbation calculus
+  - exact kinetic/stiffness ranks and nullspaces
+  - exact SO(2) representation and principal polynomial
+  - no numerical eigensolver, sampled threshold, or imported mass gap
+licenses_consumed: [L-O1-CLOCK]
+licenses_targeted: [L-O2-ASYMPTOTIC]
+small_ratio_prescriptions:
+  error_budget: exact rational matrices and polynomial identities; no floating-point floor
+  zero_mode_gauge: exact common kernel and SO(2) weight decomposition are reported
+  eigenpair_residual: not applicable; generalized spectrum is solved exactly by subspace restriction
+  lambda_min_lambda_2: not applicable; no finite-background stability sign is claimed
+  observed_order_extrapolation: not applicable; no discretization is used
+  jitter_sign_test: not applicable; rank and signs are exact rational results
+maximum_verdict: ASYMPTOTIC_DYNAMICS_ESTABLISHED for the declared completed P239 action
+does_not_license:
+  - a nonlinear clock solution
+  - a positive clock-channel vacuum mass gap
+  - finite-background stability
+  - radiative stability of a periodic core
+next_if_clock_pencil_is_singular: >-
+  Route O3 through a genuinely nonlinear relative equilibrium or construct the
+  smallest positive covariant kinetic completion that preserves the declared
+  static sector and gives the weight-two clock split a regular Legendre block.
+route_verdict: established_as_stated
+evidence_scope: EXACT_ACTION_SPECIFIC_ASYMPTOTIC_DYNAMICS
+strongest_positive_result: >-
+  About M0=diag(-4,1,0,0), the complete quadratic pencil has exact stiffness
+  K=diag(1,0,0,0,5/2,0,0,3/2,3,3/2) and positive kinetic metric
+  G=kappa*diag(0,1/9,1/16,1/16,0,0,0,0,0,0). The physical kinetic subspace is
+  the three boost channels, all with omega^2=k^2 and zero essential threshold.
+  The two director shears are the exact common inert kernel; five channels are
+  statically stiff and kinetic-free.
+computed_predicate: >-
+  Exact rational stiffness/kinetic matrices, ranks, nullspaces, timelike
+  spectral-projector derivative uniqueness, SO(2) invariance and weights,
+  weight-two split stiffness/kinetic classification, principal polynomial,
+  curvature perturbative order, and target-degeneracy mutation sensitivity.
+proposition: >-
+  L-O2-ASYMPTOTIC holds for the declared completed P239 action. Its clock split
+  is an intrinsically nonlinear channel rather than a linear vacuum mode.
+licenses_earned: [L-O2-ASYMPTOTIC]
+parent_effect: >-
+  O2 is established. O3 becomes active and must derive the full nonlinear
+  fixed-J functional; O5 may later consume the exact zero radiation threshold
+  and positive boost subspace after O4 exists.
+cannot_decide:
+  - nonlinear relative-equilibrium existence
+  - whether nonlinear selection rules suppress massless boost radiation
+  - finite-background Morse index or radiative stability
+routes_considered:
+  - exact completed-P239 quadratic action
+  - imported positive mass gap
+routes_tried:
+  - A_EXTERIOR_DEGENERATE/exact-asymptotic-pencil
+routes_remaining:
+  - A_EXTERIOR_DEGENERATE/nonlinear-weight-two-relative-equilibrium
+  - C_AUXILIARY_GAUGED/positive-weight-two-kinetic-completion
+  - B_BUNDLE_RING
+  - D_NONSYMMETRIC_CORE
+  - E_M532_DYNAMICS
+artifacts:
+  verifier_sha256: 409ede2ea186f9778eb25e660ac170a426f98b2380e41304d4268bd3d17879b0
+  derivation_sha256: 5f9aedf7abfe4ece1e4855a16302a06778f23130bd319e600b037e43e2242742
+  stdout_sha256: 88a32cbefa8da9df5a93c0e4b6306efff21d5118353635869c73c9659a314f09
+  canonical_action_sha256: 8b1a2a51656b73159637ffb17036ed6d538d4d9e2fe5e9d08115467aad78a769
+  canonical_census_sha256: a2c8c6e2e398d233034a2b5faf431947f00b6487b56ee6d4e3faea6bdd663136
+verification_audit:
+  process_status: 0
+  lexical_check_calls: 23
+  runtime_check_executions: 25
+  python_assert_nodes: 0
+  terminal_tally: ALL 25 CHECKS PASS [P249-O2-0002]
+  tally_note: one looped lexical branch check executes once for each of three physical boost channels
+  sensitivity: >-
+    Changing one exterior tangent eigenvalue changes the exact kinetic record;
+    the clock split, principal polynomial, ranks, and curvature order are
+    computed from matrices rather than literal classifications.
+  targeted_replay: >-
+    PYTHONPATH=src .venv/bin/python -m pytest -q
+    tests/test_m5_covariant_action.py tests/test_m5_fluctuation_spectrum.py
+  targeted_replay_result: 21 passed

@@ -1,0 +1,39 @@
+attempt: '0001'
+active_obligation: O1
+route: A_EXTERIOR_DEGENERATE/commuting-radial-split
+route_verdict: refuted_with_collapse_mechanism
+evidence_scope: EXACT_SYMMETRY_PLUS_REPRESENTATION_SCOPED_COLLAPSE
+strongest_positive_result: >-
+  A normalized global fixed-axis SO(2) with exact vacuum fixation, action
+  invariance, Noether current, and a nonempty finite-positive-inertia sector is
+  established for the completed P239 action. L-O1-CLOCK is earned.
+failure_mechanism: >-
+  For the commuting radial split u=d^2, E_J=int(3u+4u^2)+J^2/(32 int|grad
+  u|^2). The family u=a f(x/R), R=a^-1 has strictly positive finite-profile
+  energy tending to zero as a tends to infinity, so the nonzero-J infimum is
+  not attained and no intrinsic fixed-width minimum exists in this
+  representation.
+computed_predicate: >-
+  Exact SO(2), potential, curvature, Legendre, Gaussian witness, Euler, and
+  scaling identities; 24/24 checks pass after one preserved coefficient-
+  extraction repair.
+proposition: >-
+  O1 is established, while only the commuting radial split subroute is
+  refuted for O3.
+licenses_consumed: []
+licenses_earned: [L-O1-CLOCK]
+parent_effect: O2 and O3 unlock; O2 is active under the algebra-first execution order.
+cannot_decide:
+  - noncommuting or non-spherical core existence
+  - O2 asymptotic dynamics
+  - O4 isolation
+  - O5 stability
+method_repair: expand factored SymPy expressions before coefficient extraction
+representation_change: next use noncommuting spatial curvature/topology or a positive kinetic completion
+alternative_concept: A_EXTERIOR_DEGENERATE/noncommuting-core
+routes_remaining:
+  - A_EXTERIOR_DEGENERATE/noncommuting-core
+  - B_BUNDLE_RING
+  - C_AUXILIARY_GAUGED
+  - D_NONSYMMETRIC_CORE
+  - E_M532_DYNAMICS
