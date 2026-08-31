@@ -9,8 +9,8 @@ tags:
 - m5
 - fixed-j-clock
 category: proposals
-confidence: exploratory
-status: active
+confidence: established
+status: archived
 ---
 
 ## Question and Positive Deliverable
@@ -320,8 +320,8 @@ now has potential `45/64`, inertia `1/2`, and squared hylenic ratio `45/16`,
 strictly below the edge by `19/16`; every `B=0` state remains at ratio at least
 four. The theorem bridge is now on canonical `H1 x L2` field/velocity phase
 space with the full Hamiltonian and bilinear Noether charge. Exact correction
-checks report 28 identities and 31 targeted tests passing; the independent
-bounded correction review remains the active promotion gate.
+checks report 28 identities and 31 targeted tests passing. The independent
+bounded correction review accepted all four claims and O6 then completed.
 
 ## Debt Ledger
 There is no in-boundary debt at freeze. Open scientific routes are frontier,
@@ -329,32 +329,18 @@ not debt. Any hidden fitted coefficient, undeclared chart restriction, action
 term omitted before variation, unsupported promotion promise, or broken changed
 consumer becomes debt and must be discharged before O6.
 
-## Review and Promotion Plan
-One independent substantive review will be performed per proposed or changed
-C-M5C claim at the frozen transaction boundary, with one bounded correction
-check if needed. Evidence attachments receive exact-proof, corroborating,
-regression, applicability, or provenance roles and do not generate duplicate
-claim reviews. Accepted reusable logic moves into canonical package modules and
-tests, the registry and new pinned release are updated, generated docs are
-rendered rather than edited, accepted memory is synchronized, affected
-consumers replay, and one impact-selected validation receipt is recorded.
+## Review and Promotion Record
+One independent substantive review covered each C-M5C claim at the frozen
+transaction boundary. It requested changes on all four claims, and the single
+bounded correction check accepted all four after F1--F5 closed. Reusable logic
+is canonical, the registry and release are pinned, generated docs and memory
+are synchronized, affected consumers replayed, and the impact-selected receipt
+is recorded in the immutable campaign.
 
 ## Scientific Exhaustion Certificate
-This section remains incomplete because the positive objective and all route
-families are active. Exhaustion would require a distinct non-author adversarial
-candidate-generation pass from the frozen objective/invariants/source inventory,
-reconciliation against every historical, external, preregistered, and failure-
-generated route, equivalence partitions, coverage/no-go arguments for open
-classes, complete continuation ladders, and no plausible route remaining.
-
-| Candidate class | Routes and equivalence partition | Method repair | Representation change | Alternative concepts | Coverage evidence | Terminal verdict |
-| --- | --- | --- | --- | --- | --- | --- |
-| All issue-#189 route families | active | active | active | active | absent | nonterminal |
-
-- Independent candidate-generation artifact: absent while campaign is active.
-- Infinite-class coverage/no-go artifacts: absent while campaign is active.
-- Routes remaining: A_EXTERIOR_DEGENERATE, B_BUNDLE_RING, C_AUXILIARY_GAUGED, D_NONSYMMETRIC_CORE, E_M532_DYNAMICS.
-- Exhaustion review: not applicable while plausible routes remain.
+Not applicable: the positive campaign success contract passed. Unselected
+candidate families remain historical alternatives rather than obligations
+because one full-scope candidate established every O1--O6 conjunct.
 
 ## Done Gate
 The campaign ends positively only when O1-O6 pass and the promoted statement
@@ -363,3 +349,16 @@ exhaustion certificate passes. No rung, utility, subclaim, clean checkpoint, or
 diminishing-return point opens a PR. The terminal PR links exactly issue #189;
 it uses `Fixes #189` only on positive success and `Advances #189` on certified
 exhaustion.
+
+## Promotion Outcome
+
+P249 completed positively in accepted release `v0.171.0`. The independent
+review first caught the omitted charged shear doublet and rejected all four
+draft claims; the bounded exact repair and correction check then accepted
+`C-M5C-001` through `C-M5C-004`. The canonical result uses the complete
+generator, exact charged edge four, strict split binding margin `19/16`, and
+the phase-space hylomorphic minimizer theorem. The impact-selected final replay
+passed 28 campaign checks, 31 direct and adjacent tests, every fixed repository
+check, registry/release/generated documentation closure, and all 1,028 durable
+memory files. No production numerical solver, discrete Hessian, or time
+evolution was required.

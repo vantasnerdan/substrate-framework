@@ -1,0 +1,82 @@
+campaign: P249
+canonical_goal_issue: '189'
+base_release: v0.170.0
+source_baseline: e24497b0272f8582a71d4189581db818a0e276aa
+validated_tree_before_receipt: 11df79787ca9040b391771e70f9277c61d5f5756
+validated_at: '2026-08-31T13:10:27+00:00'
+frozen_impact_surface:
+  - src/substrate_framework/m5_exterior_clock.py
+  - tests/test_m5_exterior_clock.py
+  - tests/test_m5_covariant_action.py
+  - tests/test_m5_kinetic_axis.py
+  - campaigns/P249-exterior-degenerate-clock
+  - governance/claims.yaml C-M5C-001 through C-M5C-004
+  - governance/releases/v0.171.0.yaml and current.yaml
+  - docs/generated/claim-index.md
+  - memory/framework C-M5C claims and release v0.171.0
+  - memory/vantasner/proposals/P249-exterior-degenerate-clock.md
+authority_boundary:
+  artifact: >-
+    Exact generator-complete full-spatial auxiliary-frame M5 clock action and
+    theorem-backed minimizing family.
+  claim_promotion: >-
+    C-M5C-001 through C-M5C-004 accepted after one independent substantive
+    review and one bounded F1-F5 correction check.
+  release: v0.171.0
+  goal_completion: >-
+    O1-O6 pass: compact symmetry, action-specific complete pencil, full
+    fixed-charge relative equilibrium, intrinsic open-space localization,
+    minimizing-set orbital stability, canonical extraction, review,
+    promotion, release, generated state, memory, and affected replay.
+commands:
+  - command: >-
+      PYTHONPATH=src .venv/bin/python
+      campaigns/P249-exterior-degenerate-clock/companion/exact_checks.py
+    exit_status: 0
+    result: ALL 28 CHECKS PASS [P249-O6-CANONICAL]
+  - command: >-
+      PYTHONPATH=src scripts/validate.sh --pytest-scope
+      tests/test_m5_exterior_clock.py tests/test_m5_covariant_action.py
+      tests/test_m5_kinetic_axis.py
+    exit_status: 0
+    result: >-
+      Workflow valid at 252 accepted claims; all 1028 memory files valid; skill,
+      import, compile, generated-state, and fixed repository checks passed; 31
+      selected direct/adjacent tests passed.
+  - command: git diff --cached --check
+    exit_status: 0
+    result: no whitespace errors
+review:
+  reviewer: independent Codex review agent
+  artifact: reviews/C-M5C-001-C-M5C-004-review.md
+  initial_verdict: request_changes on all four claims at high confidence
+  correction_check: accept all four claims at high confidence; F1-F5 closed
+  final_claim_verdicts:
+    C-M5C-001: accept
+    C-M5C-002: accept
+    C-M5C-003: accept
+    C-M5C-004: accept
+gitnexus:
+  working_tree_reindexed: true
+  compared_to: main
+  changed_symbols: 279
+  changed_files: 59
+  affected_processes: 0
+  risk: low
+validation_scope:
+  mode: impact_selected
+  rationale: >-
+    The canonical module is additive with no pre-existing callers, package
+    root is unchanged, GitNexus reports zero affected flows and low risk, and
+    direct plus adjacent M5 consumers are explicitly replayed. The user
+    directed that this bounded promotion not run the full pytest suite.
+  interrupted_non_evidence: >-
+    A broader full run was stopped at the user's direction after 1696 passing
+    tests; it is not counted as a validation receipt.
+small_ratio_numerics:
+  binding: false
+  reason: >-
+    Stability and all continuum margins are exact theorem/inequality results;
+    no numerical soft sign, force, or splitting is promoted.
+debt: []
+verdict: full_scope_validated_ready_for_distinct_merger
