@@ -1,0 +1,1948 @@
+                                                Hylomorphic solitons and charged Q-balls:
+                                                        existence and stability
+arXiv:1212.3236v1 [math-ph] 13 Dec 2012
+
+
+
+
+                                                               Vieri Benci∗             Donato Fortunato†
+                                                                              June 30, 2018
+
+
+                                                                                   Abstract
+                                                   In this paper we give an abstract definition of solitary wave and soli-
+                                                ton and we develope an abstract existence theory. This theory provides
+                                                a powerful tool to study the existence of solitons for the Klein-Gordon
+                                                equations as well as for gauge theories. Applying this theory, we prove
+                                                the existence of a continuous family of stable charged Q-balls.
+
+
+                                          Contents
+                                          1 Introduction                                                                             2
+
+                                          2 Solitary waves and solitons                                                              3
+                                            2.1 Definitions of solitons . . . . . . . . . . . . . . . . . . . . . . . .              3
+                                            2.2 Definition of hylomorphic solitons . . . . . . . . . . . . . . . . . .               6
+
+                                          3 Existence results of hylomorphic solitons                                                7
+                                            3.1 The abstract framework . . . . . . . . . . . . . . . . . . . . . . .                 7
+                                            3.2 Statement of the abstract existence theorems . . . . . . . . . . .                   9
+                                            3.3 A minimization result . . . . . . . . . . . . . . . . . . . . . . . .               10
+                                            3.4 The stability result . . . . . . . . . . . . . . . . . . . . . . . . . .            15
+
+                                          4 The structure of hylomorphic solitons                                    17
+                                            4.1 The meaning of the hylenic ratio . . . . . . . . . . . . . . . . . . 17
+                                            4.2 The swarm interpretation . . . . . . . . . . . . . . . . . . . . . . 19
+                                             ∗ Dipartimento di Matematica Applicata, Università degli Studi di Pisa, Via F. Buonarroti
+
+                                          1/c, Pisa, ITALY and Department of Mathematics, College of Science, King Saud University,
+                                          Riyadh, 11451, SAUDI ARABIA. e-mail: benci@dma.unipi.it
+                                             † Dipartimento di Matematica, Università degli Studi di Bari, Via Orabona, Bari, ITALY.
+
+                                          e-mail: fortunat@dm.uniba.it,
+
+
+
+
+                                                                                       1
+5 The Nonlinear Klein-Gordon-Maxwell equations                                 20
+  5.1 Basic features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+  5.2 Energy and charge . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+  5.3 Existence of charged Q-balls . . . . . . . . . . . . . . . . . . . . . 25
+  5.4 Analysis of the hylenic ratio . . . . . . . . . . . . . . . . . . . . . 28
+
+
+
+    AMS subject classification: 35C08, 35A15, 37K40, 78M30.
+
+   Key words: Q-balls, Hylomorphic solitons, Nonlinear Klein-Gordon-Maxwell
+equations, variational methods.
+
+
+
+1    Introduction
+Loosely speaking a solitary wave is a solution of a field equation whose energy
+travels as a localized packet and which preserves this localization in time. A
+soliton is a solitary wave which exhibits some strong form of stability so that
+it has a particle-like behavior (see e.g. [35], [38], [37] and the references therein
+contained). We are interested in a class of solitons which, following [6], [4],
+[5], [12], we call hylomorphic. Their existence is due to an interplay between
+energy and charge. These solitons include the Q-balls, which are spherically
+symmetric solutions of the nonlinear Klein-Gordon equation and which have
+been studied since the pioneering papers [36] and [20]. Q-balls arise in a theory
+of bosonic particles (see [29], [30]), when there is an attraction between the
+particles. Roughly speaking, a Q-ball is a finite-sized ”bubble” containing a
+large number of particles. The Q-ball is stable against fission into smaller Q-
+balls since, due to the attractive interaction, the Q-ball is the lowest-energy
+configuration of that number of particles. Q-balls also play an important role
+in the study of the origin of the matter that fills the universe (see [25]).
+    In this paper we give an abstract definition of solitary wave and soliton and
+we develope an abstract existence theory. This theory provides a powerful tool
+to study the existence of solitons for the Klein-Gordon equations as well as for
+gauge theories (see [7]). Most of the existence results in the present literature
+can be deduced in the framework of this theory using Th.18 or 19, as it is shown
+in a forthcoming book [17]. We get a new result applying Th.19 to the study of
+charged Q-balls. Let us describe this result.
+    If the Klein-Gordon equations are coupled with the Maxwell equations (NKGM),
+then the relative solitary waves are called charged, or gauged Q-balls (see e.g.[20]).
+The existence of charged Q-balls is stated in [10], [11], [13], [33]. However, in
+these papers there are not stability results and hence the existence of solitons
+for NKGM (namely stable charged Q-balls) was an open question.
+    The problem with the stability of charged Q-balls is that the electric charge
+tends to brake them since charges of the same sign repel each other. In this
+
+
+                                        2
+respect Coleman, in his celebrated paper [20], says ”I have been unable to con-
+struct Q-balls when the continuous symmetry is gauged. I think what is hap-
+pening physically is that the long-range force caused by the gauge field forces
+the charge inside the Q-ball to migrate to the surface, and this destabilizes the
+system, but I am not sure of this”.
+    A partial answer to this question is in [15] where the existence of stable
+charged Q-balls is established provided that the interaction between matter
+and gauge field is sufficiently small. Theorem 19 allows to extend this result
+and to prove the existence of a continuous family of stable charged Q-balls.
+More precisely, we prove that there is a family of Q-balls {uδ }δ∈(0,δ∞ ) whose
+energy and charge are decreasing with δ.
+
+
+2     Solitary waves and solitons
+In this section we construct a functional abstract framework which allows to
+define solitary waves, solitons and hylomorphic solitons.
+
+2.1    Definitions of solitons
+Solitary waves and solitons are particular states of a dynamical system described
+by one or more partial differential equations. Thus, we assume that the states
+of this system are described by one or more fields which mathematically are
+represented by functions
+                                  u : RN → V
+where V is a vector space with norm | · |V and which is called the internal
+parameters space. We assume the system to be deterministic; this means that
+it can be described as a dynamical system (X, γ) where X is the set of the states
+and γ : R × X → X is the time evolution map. If u0 (x) ∈ X, the evolution of
+the system will be described by the function
+                               u (t, x) := γ t u0 (x).                       (1)
+We assume that the states of X have ”finite energy” so that they decay at ∞
+sufficiently fast and that
+                             X ⊂ L1loc RN , V .
+                                             
+                                                                         (2)
+    Thus we are lead to give the following definition:
+Definition 1 A dynamical system (X, γ) is called of FT type (field-theory-type)
+if X is a Hilbert space of fuctions of type (2).
+    For every τ ∈ RN , and u ∈ X, we set
+                             (Tτ u) (x) = u (x + τ ) .                       (3)
+Clearly, the group
+                               T = T τ | τ ∈ RN
+                                  
+                                                                             (4)
+is a unitary representation of the group of translations.
+
+                                         3
+Definition 2 A set Γ ⊂ X is called compact up to space tanslations or T -
+compact if for any sequence un (x) ∈ Γ there is a subsequence unk and a sequence
+τ k ∈ RN such that unk (x − τ k ) is convergent.
+
+    Now, we want to give a very abstract definition of solitary wave. As we told
+in the introduction, a solitary wave is a field whose energy travels as a localized
+packet and which preserves this localization in time. For example, consider a
+solution of a field equation having the following form:
+
+                u (t, x) = u0 (x − vt − x0 )ei(v·x−ωt) ; u0 ∈ L2 (RN );             (5)
+
+for every x0 , v ∈ RN , ω ∈ R, u (t, x) is a solitary wave. The evolution of a
+solitary wave is a translation plus a mild change of the internal parameters (in
+this case the phase).
+    This situation can be formalized by the following definition:
+
+Definition 3 If u0 ∈ X, we define the closure of the orbit of u0 as follows:
+
+                            O (u0 ) := {γ t u0 (x) | t ∈ R}.
+
+A state u0 ∈ X is called solitary wave if
+
+   • (i) 0 ∈
+           / O (u0 ) ;
+   • (ii) O (u0 ) is T -compact.
+
+   Clearly, (5) describes a solitary wave according to the definition above. The
+standing waves, namely objects of the form
+
+                 γ t u = u(t, x) = u(x)e−iωt , u ∈ L2 (RN ), u 6= 0,                (6)
+
+probably are the ”simplest” solitary waves. In this case the orbit O (u0 ) itself
+is compact.
+    Take X = L2 (RN ) and u ∈ X; if γ t u = u ext , u isnot a solitary wave, since
+                                                       
+
+(i) of the above definition is violated; if γ t u = e1t u ext , u is not a solitary wave
+since (ii) of Def. 3 does not hold. Also, according to our definition, a ”couple”
+of solitary waves is not a solitary wave: for example
+
+                    γ t u = [u0 (x − vt) + u0 (x + vt)] ei(v·x−ωt) ,
+
+is not a solitary wave since (ii) is violated.
+    The solitons are solitary waves characterized by some form of stability. To
+define them at this level of abstractness, we need to recall some well known
+notions in the theory of dynamical systems.
+
+Definition 4 A set Γ ⊂ X is called invariant if ∀u ∈ Γ, ∀t ∈ R, γ t u ∈ Γ.
+
+
+
+
+                                           4
+Definition 5 Let (X, d) be a metric space and let (X, γ) be a dynamical system.
+An invariant set Γ ⊂ X is called stable, if ∀ε > 0, ∃δ > 0, ∀u ∈ X,
+                                   d(u, Γ) ≤ δ,
+implies that
+                              ∀t ≥ 0, d(γ t u,Γ) ≤ ε.
+   Now we are ready to give the definition of soliton:
+Definition 6 A state u ∈ X is called soliton if u ∈ Γ ⊂ X where
+   • (i) Γ is an invariant stable set,
+   • (ii) Γ is T -compact
+   • (iii) 0 ∈
+             / Γ.
+   The above definition needs some explanation. First of all notice that every
+u ∈ Γ is a soliton and that every soliton is a solitary wave. Now for simplicity,
+we assume that Γ is a manifold (actually, in many concrete models, this is the
+generic case). Then (ii) implies that Γ is finite dimensional. Since Γ is invariant,
+u0 ∈ Γ ⇒ γ t u0 ∈ Γ for every time. Thus, since Γ is finite dimensional, the
+evolution of u0 is described by a finite number of parameters. The dynamical
+system (Γ, γ) behaves as a point in a finite dimensional phase space. By the
+stability of Γ, a small perturbation of u0 remains close to Γ. However, in this
+case, its evolution depends on an infinite number of parameters. Thus, this
+system appears as a finite dimensional system with a small perturbation.
+
+   Example. We will illustrate the definition 6 with an example. Consider
+the solitary wave (5) and the set
+               n                                                 o
+          Γv = u(x − x0 )ei(v·x−θ) ∈ H 1 RN , C : x0 ∈ RN ; θ ∈ R .
+                                               
+
+
+(5) is a soliton provided that Γv is stable; in fact the following conditions are
+satisfied:
+   • The dynamics on Γv is given by the following equation:
+                 h                   i
+              γ t u(x − x0 )ei(v·x−θ) = u(x − vt − x0 )ei(v·x−θ−ωt) .
+
+      This dynamics implies that Γv is invariant and that (iii) holds.
+   • we have assumed that Γv is stable; in this case any perturbation of our
+     soliton has the following structure:
+                    u(t, x) = u(x − vt − x0 (t))ei(v·x−θ(t)) + w(t, x)
+      where x0 (t), θ(t)
+                     are suitable functions and w(t, x) is a perturbation small
+      in H 1 RN , C .
+   • Γv is T -compact; actually it is isomorphic to RN × S 1 .
+
+
+                                         5
+2.2     Definition of hylomorphic solitons
+We now assume that the dynamical system (X, γ) has two constants of motion:
+the energy E and the charge C. At the level of abstractness of this section
+(and the next one), the name energy and charge are conventional, but in our
+applications, E and C will be the energy and the charge as defined in section
+5.2.
+Definition 7 A solitary wave u0 ∈ X is called standing hylomorphic soli-
+ton if it is a soliton according to Def. 6 and if Γ has the following structure
+               Γ = Γ (e0 , c0 ) = {u ∈ X | E(u) = e0 , |C(u)| = c0 }               (7)
+where
+                          e0 = min {E(u) | |C(u)| = c0 } .                         (8)
+    Notice that, by (8), we have that a hylomorphic soliton u0 satisfies the
+following nonlinear eigenvalue problem:
+                                 E ′ (u0 ) = λC ′ (u0 ).
+    In general, a minimizer u0 of E on Mc0 = {u ∈ X |C(u)| = c0 } is not a
+soliton; in fact, according to Def. 6, it is necessary to prove the following facts:
+   • (i) The set Γ (e0 , c0 ) is stable.
+   • (ii) The set Γ (e0 , c0 ) is T -compact (i.e. compact up to translations).
+   • (iii) 0 ∈
+             / Γ (e0 , c0 ) , since otherwise, some u ∈ Γ (e0 , c0 ) is not even a
+     solitary wave (see Def. 3,(i)).
+   In concrete cases, the point (i) is the most delicate point to prove. If (i) does
+not hold, according to our definitions, u0 is a solitary wave but not a soliton.
+   Now let us see the general definition of hylomorphic soliton.
+
+Definition 8 Let (X, γ) be a dynamical system of type FT and invariant for
+the action of a Lie group G, namely, for any u ∈ X, ∀g ∈ G,
+                                     gγ t u =γ t gu.
+u is called hylomorphic soliton if u =gu0 where u0 is a standing hylomorphic
+soliton and g is a suitable element of G.
+
+    In the application G will be a representation of the Galileo or of the Lorentz
+group. Now let us illustrate with an example Def. 7 and Def. 8.
+    Example. Let us consider the example (6). The standing wave u(x)e−iωt
+is a hylomorphic soliton if
+             Γ0 = u(x − x0 )e−iθ ∈ H 1 RN , C : x0 ∈ RN ; θ ∈ R
+                                               
+
+satisfies the request in Definition 6 and if Γ0 = Γ (e0 , c0 ) (see (7)) for a suitable
+c0 .
+
+                                           6
+3     Existence results of hylomorphic solitons
+In the previous section, we have seen that the existence of hylomorphic soliton
+is related to the existence of minimizers of the energy. In this section we will
+investigate the following minimization problem
+
+                  min E(u) where Mc := {u ∈ X | |C(u)| = c}                  (9)
+                  u∈Mc
+
+and under which conditions the set of the minimizers
+
+             Γ (e, c) = {u ∈ X | E(u) = e, |C(u)| = c} ; e = min E(u)
+                                                           u∈Mc
+
+is stable.
+
+3.1    The abstract framework
+The following definitions could be given in a more abstract framework. Never-
+theless, for the sake of definitess, in the following we shall assume that
+
+                (X, γ) is a dynamical system of FT-type (see Def 1)
+
+and that
+                          G is a subgroup of T (see(4)).
+
+Definition 9 A subset Γ ⊂ X is called G-invariant if
+
+                             ∀u ∈ Γ, ∀g ∈ G, gu ∈ Γ.
+
+Definition 10 A sequence un in X is called G-compact if there is a subsequence
+unk and a sequence gk ∈ G such that gk unk is convergent. A subset Γ ⊂ X is
+called G-compact if every sequence in Γ is G-compact.
+
+    Observe that the above definition reduces to Definition 2 if G = T . If
+G = {Id} or, more in general, it is a compact group, G-compactness im-
+plies compactness. If G is not compact such as the tranlation group T , G-
+compactness is a weaker notion than compactness.
+
+Definition 11 A G-invariant functional J on X is called G-compact if any
+minimizing sequence un is G-compact.
+
+    Clearly a G-compact functional has a G-compact set of minimizers.
+
+Definition 12 We say that a functional F on X has the splitting property if
+given a sequence un = u + wn ∈ X such that wn converges weakly to 0, we have
+that
+                       F (un ) = F (u) + F (wn ) + o(1).
+
+
+
+
+                                        7
+Remark 13 Every quadratic form, which is continuous and symmetric, satis-
+fies the splitting property; in fact, in this case, we have that F (u) := hLu, ui
+for some continuous selfajoint operator L; then, given a sequence un = u + wn
+with wn ⇀ 0 weakly, we have that
+                  F (un ) = hLu, ui + hLwn , wn i + 2 hLu, wn i
+                         = F (u) + F (wn ) + o(1).
+Definition 14 A sequence un ∈ X is called G-vanishing sequence if it
+is bounded and if for any subsequence unk and for any sequence gk ⊂ G the
+sequence gk unk converges weakly to 0.
+    So, if un → 0 strongly, un is a G-vanishing sequence. However, if un ⇀ 0
+weakly, it might happen that it is not a G-vanishing sequence; namely it might
+exist a subsequence unk and a sequence gk ⊂ G such that gk unk is weakly
+convergent to some ū 6= 0. Let see an example; if u0 ∈ X is a solitary wave and
+tn → +∞, then the sequence γ tn u0 is not a T -vanishing sequence.
+    In the following E and C will denote two constants of the motion for the
+dynamical system (in the applications they will be the energy and the charge).
+We will assume that
+               E and C are C 1 and bounded functionals on X.
+   We set
+                                             E (u)
+                               Λ (u) :=             ,                       (10)
+                                            |C (u)|
+    Since E and C are constants of motion, also Λ is a constant of motion; it
+will be called hylenic ratio (see the definition of charge, sec. 5.2) and, as we
+will see it will play a central role in this theory.
+    The notions of G-vanishing sequence and of hylenic ratio allow to introduce
+the following (important) definition:
+Definition 15 We say that the hylomorphy condition holds if
+                                    E (u)
+                                inf        < Λ0 .                           (11)
+                               u∈X |C (u)|
+
+where
+          Λ0 := inf {lim inf Λ(un ) | un is a G-vanishing sequence} .       (12)
+Moreover, we say that u0 ∈ X satisfies the hylomorphy condition if,
+                                  E (u0 )
+                                           < Λ0 .                           (13)
+                                 |C (u0 )|
+   By this definition, using the above notation, we have the following:
+              lim Λ (un ) < Λ0 ⇒ ∃unk , gk ∈ G : gk unk ⇀ ū 6= 0.
+    In order to apply the existence theorems of sect. 3.2, it is necessary to
+estimate Λ0 ; the following propositons may help to do this.
+
+                                        8
+Proposition 16 Assume that there exists a seminorm kk♯ on X such that
+
+                  {un is a G − vanishing sequence} ⇒ kun k♯ → 0.                           (14)
+
+Then
+                          lim inf Λ(u) ≤ Λ0 ≤ lim inf Λ(u).                                (15)
+                          kuk♯ →0                       kuk→0
+
+
+   Proof. It follows directly from the definition (12) of Λ0 and (14).
+
+   
+
+Proposition 17 If E and C are twice differentiable in 0 and
+
+                        E(0) = C(0) = 0; E ′ (0) = C ′ (0) = 0,
+
+then we have that
+                                                E ′′ (0) [u, u]
+                                 Λ0 ≤ inf                        .
+                                          u6=0 |C ′′ (0) [u, u]|
+
+   Proof. By the above proposition,
+
+                                           E(0) + E ′ (0) [u] + E ′′ (0) [u, u] + o(kuk2 )
+  Λ0   ≤    lim inf Λ(u) = lim inf
+            kuk→0                 kuk→0                                                2
+                                           C(0) + C ′ (0) [u] + C ′′ (0) [u, u] + o(kuk )
+                  E ′′ (0) [u, u]
+       =    inf                    .
+            u6=0 |C ′′ (0) [u, u]|
+
+   
+
+   Now, finally, we can give some abstract theorems relative to the existence of
+hylomorphic solitons.
+
+3.2    Statement of the abstract existence theorems
+We formulate the assumptions on E and C:
+
+   • (EC-0) (Values at 0)
+
+                           E(0) = C(0) = 0; E ′ (0) = C ′ (0) = 0.
+
+   • (EC-1)(Invariance) E(u) and C(u) are G-invariant.
+   • (EC-2)(Splitting property) E and C satisfy the splitting property.
+   • (EC-3)(Coercivity) We assume that
+
+        – (i) ∀u 6= 0, E(u) > 0.
+        – (ii) if kun k → ∞, then E(un ) → ∞;
+
+                                                9
+        – (iii) if E(un ) → 0, then kun k → 0.
+
+   Now we can state the main results:
+
+Theorem 18 Assume that E and C satisfy (EC-0),...,(EC-2) and (EC-3).
+Moreover assume that the hylomorphy condition of Def. 15 is satisfied. Then
+there exists a family of hylomorphic solitons uδ , δ ∈ (0, δ∞ ) , δ ∞ > 0.
+
+Theorem 19 Let the assumptions of theorem 18 hold. Moreover assume that
+
+                          kE ′ (u)k + kC ′ (u)k = 0 ⇔ u = 0.                     (16)
+
+   Then for every δ ∈ (0, δ∞ ) , δ ∞ > 0, there exists a hylomorphic soliton uδ .
+Moreover, if δ 1 < δ 2 , the corresponding solitons uδ1 , uδ2 are distinct, namely
+we have that
+
+   • (a) Λ(uδ 1 ) < Λ(uδ2 )
+   • (b) |C(uδ 1 )| > |C(uδ 2 )| .
+
+   • (c) E(uδ 1 ) > E(uδ 2 )
+
+    The proofs of the above results are in the remaining part of this section. In
+subsection 3.3 we prove the existence of minimizers, namely that Γ(e, c) 6= ∅
+(see (7)) and in subsection 3.4, we prove the stability of Γ(e, c), namely that the
+minimizers are hylomorphic solitons.
+
+3.3    A minimization result
+We start with a technical lemma.
+
+Lemma 20 Let un = u + wn ∈ X be a sequence such that wn converges weakly
+to 0. Then, up to a subsequence, we have
+
+                     lim Λ (u + wn ) ≥ min (Λ (u) , lim Λ (wn ))
+
+and the equality holds if and only if Λ (u) = lim Λ (wn ) .
+
+   Proof. Given four real numbers A, B, a, b, (with B, b > 0), we have that
+                                              
+                           A+a           A a
+                                ≥ min       ,    .                        (17)
+                           B+b           B b
+                      A
+In fact, suppose that B ≥ ab ; then
+                    A
+                      B + ab b   a
+                                   B + ab b
+                                                                        
+              A+a                            a                     A a
+                  = B          ≥ b          = ≥ min                 ,        .
+              B+b     B+b          B+b       b                     B b
+
+
+
+
+                                         10
+                                              A
+Notice that the equality holds if and only if B = ab . Using the splitting property
+and the above inequality, up to a subsequence, we have that
+
+                      lim E (u + wn )      E (u) + lim E (wn )
+ lim Λ (u + wn ) =                     =                        ≥
+                     lim |C (u + wn )|    |C (u) + lim C (wn )|
+                       E (u) + lim E (wn )
+                     |C (u)| + |lim C (wn )|
+                                                 
+                             E (u) lim E (wn )
+                   ≥ min           ,                = min (Λ (u) , lim Λ (wn )) .
+                            |C (u)| lim |C (wn )|
+
+   
+   For any δ > 0, set
+                             Jδ (u) = Λ (u) + δE(u)
+By the hylomorphy condition (11) we have
+
+         δ ∞ = sup {δ > 0 | ∃v : Λ (v) + δE(v) < Λ0 } ∈ R+ ∪ {+∞} .           (18)
+
+   Clearly, if δ ∈ [0, δ∞ ) , ∃v : Λ (v) + δE(v) < Λ0 .
+
+Theorem 21 Assume that E and C satisfy (EC-0),...,(EC-3) and the hylo-
+morphy condition (11). Then, for every δ ∈ (0, δ ∞ ) , Jδ is G-compact and it
+has a minimizer uδ 6= 0. Moreover, uδ ∈ Γ (eδ , cδ ) (see (7)) where eδ = E(uδ ),
+cδ = |C(uδ )| > 0.
+
+   Proof. Let un be a minimizing sequence of Jδ (δ ∈ (0, δ ∞ )). This sequence
+un is bounded in X. In fact, arguing by contradiction, assume that, up to a
+subsequence, kun k → ∞. Then by (EC-3) (ii), E(un ) → ∞ and hence Jδ (un ) →
+∞ which contradicts the fact that un is a minimizing sequence of Jδ .
+   We now set
+                              jδ := inf Jδ (u) .
+                                       u∈X
+
+Since δ ∈ (0, δ ∞ ), where δ ∞ is defined in (18), we have that
+
+                                     jδ < Λ0 .                                (19)
+
+Moreover, since E ≥ 0,we have
+
+                               0 ≤ Λ (un ) ≤ Jδ (un )
+
+and
+                                Jδ (un ) → jδ < Λ0 .
+Then, up to a subsequence, Λ (un ) → λ < Λ0 . So, by definition (12) of Λ0 , un is
+not a G−vanishing sequence. Hence, by Def. 14, we can extract a subsequence
+unk and we can take a sequence gk ⊂ G such that u′k := gk unk is weakly
+convergent to some
+                                    uδ 6= 0.                                  (20)
+
+
+                                        11
+We can write
+                                               u′n = uδ + wn
+with wn ⇀ 0 weakly. We want to prove that wn → 0 strongly.
+   By lemma 20 and by the splitting property of E, we have, up to a subse-
+quence, that
+
+         jδ    =    lim Jδ (uδ + wn ) = lim [Λ (uδ + wn ) + δE (uδ + wn )]
+               ≥    [min {Λ (uδ ) , lim Λ (wn )}] + δE (uδ ) + δ lim E (wn ) .
+
+    Now there are two possibilities (up to subsequences): 1- min {Λ (uδ ) , lim Λ (wn )} =
+lim Λ (wn ); 2- min {Λ (uδ ) , lim Λ (wn )} = Λ (uδ ) . We will show that the possi-
+bility 1 cannot occur. In fact, if it holds, we have that
+
+                    jδ        ≥       lim Λ (wn ) + δE (uδ ) + δ lim E (wn )
+                              =       lim Jδ (wn ) + δE (uδ )
+                              ≥       jδ + δE (uδ )
+
+and hence, we get that E (uδ ) ≤ 0, contradicting (20). Then possibility 2 holds
+and we have that
+
+                         jδ       ≥     Λ (uδ ) + δE (uδ ) + δ lim E (wn )
+                                  =     Jδ (uδ ) + δ lim E (wn )
+                                  ≥     jδ + δ lim E (wn ) .
+
+Then, lim E (wn ) = 0 and, by (EC-3)(iii), wn → 0 strongly. Then Jδ (u′n ) →
+Jδ (uδ ) . So Jδ is G.-compact and uδ is a minimizer.
+    To prove the second part of the theorem, we set:.
+
+
+                               eδ      = E(uδ )
+                               cδ      = |C(uδ )|
+                              Mδ       : = {u ∈ X | |C(u)| = cδ } .
+
+Since                                                              
+                                               E               1
+                                  J δ |M δ =      + δE =          +δ E
+                                               cδ              cδ
+it follows that uδ minimizes also E|Mδ .
+    
+    In the following uδ will denote a minimizer of Jδ .
+
+Lemma 22 Let the assumptions of Theorem 21 be satisfied. If δ 1 , δ 2 ∈ (0, δ∞ )
+δ 1 < δ 2 (δ ∞ as in (18)), then the minimizers uδ 1 , uδ2 of Jδ1 , Jδ2 respectively
+satisfy the following inequalities:
+
+   • (a) Jδ 1 (uδ 1 ) < Jδ 2 (uδ 2 )
+
+
+                                                    12
+   • (b) E(uδ 1 ) ≥ E(uδ 2 ),
+   • (c) Λ(uδ1 ) ≤ Λ(uδ2 ),
+   • (d) |C(uδ 1 )| ≥ |C(uδ 2 )| .
+
+   Proof. (a)
+
+         Jδ1 (uδ1 )   = Λ (uδ1 ) + δ 1 E(uδ 1 )
+                      ≤ Λ (uδ2 ) + δ 1 E(uδ 2 ) (since uδ1 minimizes Jδ1 )
+                      < Λ (uδ2 ) + δ 2 E(uδ 2 ) (since E is positive)
+                      = Jδ 2 (uδ 2 ) .
+
+(b) We set
+
+                                Λ(uδ 1 ) =     Λ(uδ2 ) + a
+                                E(uδ 1 ) =     E(uδ 2 ) + b.
+
+We need to prove that b ≥ 0 and a ≤ 0. We have
+
+                     Jδ2 (uδ2 ) ≤        Jδ2 (uδ1 ) ⇒
+          Λ (uδ2 ) + δ 2 E(uδ2 ) ≤       Λ (uδ1 ) + δ 2 E(uδ1 ) ⇒
+          Λ (uδ2 ) + δ 2 E(uδ2 ) ≤       (Λ (uδ2 ) + a) + δ 2 (E(uδ2 ) + b) ⇒
+                              0 ≤        a + δ 2 b.                              (21)
+
+   On the other hand,
+
+                      Jδ1 (uδ2 ) ≥       Jδ1 (uδ1 ) ⇒
+          Λ (uδ2 ) + δ 1 E(uδ2 ) ≥       Λ (uδ1 ) + δ 1 E(uδ1 ) ⇒
+          Λ (uδ2 ) + δ 1 E(uδ2 ) ≥       (Λ (uδ2 ) + a) + δ 1 (E(uδ2 ) + b) ⇒
+                                0 ≥      a + δ 1 b.                              (22)
+
+   From (21) and (22) we get
+
+                                     (δ 2 − δ 1 ) b ≥ 0
+
+and hence b ≥ 0.
+   Moreover by (21) and (22) we also get
+                                      
+                               1     1
+                                  −      a≥0
+                               δ2   δ1
+
+and hence a ≤ 0. Since |C(u)| = E(u)
+                                Λ(u) , also inequality (d) follows.
+   
+
+Lemma 23 Let the assumptions of Theorem 21 be satisfied and assume that
+also (16) is satisfied. If δ 1 , δ 2 ∈ (0, δ∞ ) (δ ∞ as in (18)), δ 1 < δ 2 , then the
+minimizers uδ 1 , uδ2 of Jδ 1 , Jδ2 respectively satisfy the following inequalities:
+
+                                             13
+   • (a) E(uδ 1 ) > E(uδ2 ),
+   • (b) Λ(uδ1 ) < Λ(uδ2 )
+   • (c) |C(uδ 1 )| > |C(uδ 2 )| .
+
+   Proof: Let δ 1 , δ 2 ∈ (0, δ∞ ) and assume that δ 1 < δ 2 .
+   (a) It is sufficient to prove that E(uδ1 ) 6= E(uδ2 ). We argue indirectly and
+assume that
+                                  E(uδ 1 ) = E(uδ2 ).                         (23)
+   By the previous lemma, we have that
+
+                                      Λ (uδ1 ) ≤ Λ (uδ2 ) .                        (24)
+
+Also, we have that
+
+    Λ (uδ 2 ) + δ 2 E (uδ 2 )   ≤ Λ (uδ1 ) + δ 2 E(uδ 1 ) (since uδ2 minimizes Jδ2 )
+                                = Λ (uδ1 ) + δ 2 E (uδ2 ) (by (23))
+
+and so
+                                      Λ (uδ 2 ) ≤ Λ (uδ1 )
+and by (24) we get
+                                      Λ (uδ1 ) = Λ (uδ2 ) .                        (25)
+   Then, it follows that uδ1 is a minimizer of Jδ2 ;in fact, by (25) and (23))
+
+                   Jδ2 (uδ1 ) =       Λ (uδ1 ) + δ 2 E (uδ1 )
+                                  =   Λ (uδ2 ) + δ 2 E (uδ2 ) = Jδ2 (uδ2 ) .
+
+Then, we have that Jδ′ 2 (uδ1 ) = 0 as well as Jδ′ 1 (uδ 1 ) = 0 which esplicitely give
+
+                                Λ′ (uδ1 ) + δ 2 E ′ (uδ1 ) =    0
+                                Λ′ (uδ1 ) + δ 1 E ′ (uδ1 ) =    0.
+
+The above equations imply that E ′ (uδ 1 ) = 0 and Λ′ (uδ 1 ) = 0, and since Λ (u) =
+ E(u)                 ′
+|C(u)| , we get that C (uδ 1 ) = 0. Then by (16) uδ 1 = 0, and this fact contradicts
+Th. 21.
+   (b) We argue indirectly and assume that
+
+                                      Λ(uδ1 ) = Λ(uδ2 ).                           (26)
+
+   By (a), we have that
+                                      E (uδ1 ) > E (uδ2 ) .                        (27)
+Also, we have that
+
+    Λ (uδ 1 ) + δ 1 E (uδ 1 )   ≤ Λ (uδ2 ) + δ 1 E(uδ 2 ) (since uδ1 minimizes Jδ1 )
+                                = Λ (uδ1 ) + δ 1 E (uδ2 ) (by (26))
+
+                                               14
+and so
+                                E (uδ 1 ) ≤ E (uδ 2 )
+and by (27) we get a contradiction.
+   (c) Since
+                                              E (uδ )
+                               |C (uδ )| =            ,
+                                              Λ (uδ )
+the conclusion follows from (a) and (b).
+   
+
+3.4      The stability result
+In order to prove Theorem 18 it is sufficient to show that the minimizers in Th.
+21 provide solitons, so we have to prove that the set Γ (e, c) is stable. To do
+this, we need the (well known) Liapunov theorem in following form:
+
+Theorem 24 Let Γ be an invariant set and assume that there exists a differ-
+entiable function V (called Liapunov function) defined on a neighborhood of Γ
+such that
+
+   • (a) V (u) ≥ 0 and V (u) = 0 ⇔ u ∈ Γ
+   • (b) ∂t V (γ t (u)) ≤ 0
+   • (c) V (un ) → 0 ⇔ d(un , Γ) → 0.
+
+Then Γ is stable.
+
+   Proof. For completeness, we give a proof of this well known result. Arguing
+by contradiction, assume that Γ, satisfying the assumptions of Th. 24, is not
+stable. Then there exists ε > 0 and sequences un ∈ X and tn > 0 such that
+
+                      d(un , Γ) → 0 and d(γ tn (un ) , Γ) > ε.               (28)
+
+Then we have
+
+  d(un , Γ) → 0 =⇒ V (un ) → 0 =⇒ V (γ tn (un )) → 0 =⇒ d(γ tn (un ) , Γ) → 0
+
+where the first and the third implications are consequence of property (c). The
+second implication follows from property (b). Clearly, this fact contradicts (28).
+   
+
+Lemma 25 Let V be G-compact, continuous functional, V ≥ 0 and let Γ =
+V −1 (0) be the set of minimizers of V. If Γ 6= ∅, then Γ is G-compact and V
+satisfies the point (c) of the previous theorem.
+
+
+
+
+                                         15
+    Proof : The fact that Γ is G-compact, is a trivial consequence of the fact that
+Γ is the set of minimizers of a G-compact functional V . Now we prove (c). First
+we show the implication ⇒ . Let un be a sequence such that V (un ) → 0. By
+contradiction, we assume that d(un , Γ) 9 0, namely that there is a subsequence
+ ′
+un such that
+                                 d(u′n , Γ) ≥ a > 0.                           (29)
+Since V (un ) → 0 also V (u′n ) → 0, and, since V is G compact, there exists a
+sequence gn in G such that, for a subsequence u′′n , we have gn u′′n → u0 . Then
+
+                   d(u′′n , Γ) = d(gn u′′n , Γ) ≤ d(gn u′′n , u0 ) → 0
+
+and this contradicts (29).
+   Now we prove the other implication ⇐ . Let un be a sequence such that
+d(un , Γ) → 0, then there exists vn ∈ Γ s.t.
+                                                          1
+                            d(un , Γ) ≥ d(un , vn ) −       .                 (30)
+                                                          n
+    Since V is G-compact, also Γ is G-compact; so, for a suitable sequence gn ,
+we have gn vn → w̄ ∈ Γ. We get the conclusion if we show that V (un ) → 0. We
+have by (30), that d(un , vn ) → 0 and hence d(gn un , gn vn ) → 0 and so, since
+gn vn → w̄, we have gn un → w̄ ∈ Γ. Therefore, by the continuity of V and since
+w̄ ∈ Γ, we have V (gn un ) → V (w̄) = 0 and we can conclude that V (un ) → 0.
+    
+    Proof of Th. 18. By Theorem 21 for every δ ∈ (0, δ∞ ) Jδ is G−compact
+and it has a minimizer uδ 6= 0 with
+
+                                     E(uδ ) = eδ
+
+where
+                 eδ = min {E(u) : |C(u)| = cδ } , cδ = |C(uδ )| .
+So, in order to show that uδ is an hylomorphic soliton, we need to show that
+
+                 Γ (eδ , cδ ) = {u ∈ X | |C(u)| = cδ , E(u) = eδ }
+
+is G- compact and stable (see Definitions 6 and 7).
+    We set
+                   V (u) = (E(u) − eδ )2 + (|C(u)| − cδ )2 .
+Clearly
+                                Γ (eδ , cδ ) = V −1 (0)
+V is G compact. In fact:
+   Let wn be a minimizing sequence for V, then V (wn ) → 0 and consequently
+E (wn ) → eδ and C (wn ) → cδ . Now, since
+                                             eδ
+                                min Jδ =        + δeδ ,
+                                             cδ
+
+
+                                           16
+we have that wn is a minimizing sequence also for Jδ . Then, since by Theorem
+21 Jδ is G-compact, we get
+
+                                wn is G-compact.                                (31)
+
+So we conclude that V is G-compact.
+    Then, by Lemma 25, we deduce that V −1 (0) = Γ (eδ , cδ ) is G compact and
+that V satisfies the point (c) in Theorem 24. Moreover V satisfies also the points
+(a) and (b) in Theorem 24. So we conclude that Γ (eδ , cδ ) is stable.
+    
+    Proof of Th. 19 By Theorem 18 for any δ ∈ (0, δ ∞ ) there exists a hylo-
+morphic soliton uδ . By using Lemma 23, we get different solitons for different
+values of δ. Namely for δ 1 < δ 2 we have Λ(uδ 1 ) < Λ(uδ2 ), |C(uδ 1 )| > |C(uδ 2 )|
+and E(uδ 1 ) > E(uδ 2 ).
+    
+
+
+4     The structure of hylomorphic solitons
+4.1     The meaning of the hylenic ratio
+Let (X, γ) be a dynamical system of type FT. If u ∈ X is a finite energy field,
+usually it disperses as time goes on, namely
+
+                                 lim kγ t uk⋆ = 0.
+                                 t→∞
+
+where                                        Z
+                          kuk⋆ = sup                  |u|V dx,
+                                      x∈RN   B1 (x)
+
+V is the internal parameter space (cf. pag. 3) and B1 (x) = y ∈ RN : |x − y| < 1 .
+                                                            
+
+However, if the hylomorphy condition (11) is satisfied, this dispersion in general
+does not occur. In fact we have the following result:
+
+Proposition 26 Assume that X is compactly embedded into L1loc RN , V . Let
+                                                                            
+
+u0 ∈ X such that Λ (u0 ) < Λ0 , then
+
+                               min lim ku(t)k⋆ > 0
+                                 t→∞
+
+where u(t) = γ t u and γ 0 u = u0 .
+
+    Proof : Let tn → ∞ be a sequence of times such that
+
+                        lim ku (tn )k⋆ = min lim ku(t)k⋆ .                      (32)
+                       n→∞                       t→∞
+
+    Since Λ is a constant of motion
+
+                             Λ (u (tn )) = Λ (u0 ) < Λ0
+
+
+                                         17
+then, by the definition of Λ0 , may be taking a subsequence, there is a sequence
+of translations Txn such that
+
+                     Txn u (tn ) = u (tn , x − xn ) = ū + wn                                          (33)
+
+where ū 6= 0 and wn ⇀ 0 in X. Without loss of generality, we may assume that
+ū 6= 0 in B1 (0). Since X is compactly embedded into L1loc RN , V , we have
+                                                                   
+that                          Z
+                                   |wn |V dx → 0.                        (34)
+                                     B1 (0)
+
+   By (33), we have that
+
+                           |Txn u (tn )|V ≥ |ū|V − |wn |V .                                           (35)
+
+   Then, using (35), (34), we have that
+                            Z
+                    min lim       |Txn u (tn )|V dx
+                         n→∞         B1 (0)
+                                 Z                             Z                       !
+                 ≥       lim                  |ū|V dx −                 |wn |V dx
+                       n→∞           B1 (0)                     B1 (0)
+                     Z
+                 =              |ū|V dx > 0
+                       B1 (0)
+
+Then                              Z
+                       min lim                 |Txn u (tn )|V dx > 0.                                  (36)
+                         n→∞          B1 (0)
+
+   Finally, by (32) and (36), we get
+
+                                                                           Z
+    min lim ku (t)k⋆      =      lim ku (tn )k⋆ ≥ min lim                              |u (tn )|V dx
+       t→∞                      n→∞                                n→∞
+                                                                            B1 (xn )
+                                               Z
+                          =      min lim                    |Txn u (tn )|V dx > 0.
+                                  n→∞              B1 (0)
+
+    
+    Thus the hylomorphy condition prevents the dispersion. As we have seen
+in the preceding section, (11) is also a fundamental assumption in proving the
+existence of hylomorphic solitons.
+
+    Now, we assume E and C to be local quantities, namely, given u ∈ X, there
+exist the density functions ρE,u (x) and ρC,u (x) ∈ L1 (RN ) such that
+                                      Z
+                             E (u) = ρE,u (x) dx
+                                      Z
+                             C (u) = ρC,u (x) dx
+
+
+                                                   18
+   Energy and hylenic densities ρE,u , ρC,u allow to define the density of binding
+energy as follows:
+                                                                   −
+              β(t, x) = β u (t, x) = ρE,u (t, x) − Λ0 · ρC,u (t, x)             (37)
+         −
+where [f ] denotes the negative part of f.
+   If u satisfies the hylomorphy condition, we have that E (u) < Λ0 |C (u)| and
+hence he have that β u (t, x) 6= 0 for some x ∈ RN .
+   The support of the binding energy density is called bound matter region;
+more precisely we have the following definition
+
+Definition 27 Given any configuration u, we define the bound matter region
+as follows
+                       Σ (u) = {x : β u (t, x) 6= 0}.
+If u0 is a soliton, the set Σ (u0 ) is called support of the soliton at time t.
+
+   In the situation considered in this article, we will see that the solitons satisfy
+the hylomorphy condition. Thus we may think that a soliton u0 consists of
+bound matter localized in a precise region of the space, namely Σ (u0 ). This fact
+gives the name to this type of soliton from the Greek words ”hyle”=”matter ”
+and ”morphe”=”form”.
+
+
+4.2    The swarm interpretation
+Clearly the physical interpretation of hylomorphic solitons depends on the model
+which we are considering. However we can always assume a conventional inter-
+pretations which we will call swarm interpretation since the soliton is regarded
+as a swarm of particles bound together. This iterpretation is consitent with the
+model of the Q-ball.
+    We assume that u is a field which describes a fluid consisting of particles; the
+particles density is given by the function ρC (t, x) = ρC,u (t, x) which, of course
+satisfies a continuity equation
+
+                                ∂t ρC + ∇ · JC = 0                              (38)
+
+where JC is the flow of particles. Hence C is the total number of particles. Here
+the particles are not intended to be as in ”particle theory” but rather as in fluid
+dynamics, so that C does not need to be an integer number. Alternatively, if you
+like, you may think that C is not the number of particles but it is proportional
+to it. Also, in some equations as for example in NKG, C can be negative; in
+this case, the existence of antiparticles is assumed.
+    Thus, the hylomorphy ratio
+
+                                             E (u)
+                                  Λ (u) =
+                                            |C (u)|
+
+
+                                         19
+represents the average energy of each particle (or antiparticle). The number Λ0
+defined in (12) is interpreted as the rest energy of each particle when they do
+not interact with each other. If Λ (u) > Λ0 , then the average energy of each
+particle is bigger than the rest energy; if Λ (u) < Λ0 , the opposite occurs and
+this fact means that particles act with each other with an attractive force.
+    If the particles were at rest and they were not acting on each other, their
+energy density would be
+                                  Λ0 · |ρC (t, x)| .
+If ρE (t, x) denotes the energy density and if
+
+                             ρE (t, x) < Λ0 · |ρC (t, x)| ;
+
+then, in the point x at time t, the particles attract each other with a force which
+is stronger than the repulsive forces; this explains the name density of binding
+energy given to β(t, x) in (37).
+    Thus a soliton relative to the state u can be considered as a ”rigid” object
+occupying the region of space Σ (u) (cf. Def. 27); it consists of particles which
+stick to each other; the energy to destroy the soliton is given by
+                Z                Z
+                  β u (t, x)dx =       (Λ0 |ρC (t, x)| − ρE (t, x)) dx.
+                                   Σ(u)
+
+
+5     The Nonlinear Klein-Gordon-Maxwell equa-
+      tions
+Existence results of solitary waves for the Nonlinear Klein-Gordon-Maxwell
+(NKGM) are stated in many papers (besides the papers quoted in the intro-
+duction see also [8], [19], [23], [21], [22], [1], [2], [13], [15], [31]). As stated in
+the introduction, in this section we prove the existence of a continuous family
+of stable solitary waves of NKGM.
+
+5.1     Basic features
+The nonlinear Klein-Gordon equation for a complex valued field ψ, defined on
+the space-time R4 , can be written as follows:
+
+                                  ψ + W ′ (ψ) = 0                                (39)
+
+where
+                         ∂2ψ                     ∂2ψ    ∂2ψ ∂2ψ
+                  ψ =       − ∆ψ,        ∆ψ =        +      +
+                         ∂t2                     ∂x21   ∂x22   ∂x23
+and, with some abuse of notation,
+                                                       ψ
+                                W ′ (ψ) = W ′ (|ψ|)
+                                                      |ψ|
+
+
+                                           20
+for some smooth function W : [0, ∞) → R. Hereafter x = (x1 , x2 , x3 ) and t will
+denote the space and time variables. The field ψ : R4 → C will be called matter
+field. If W ′ (s) is linear, W ′ (s) = m2 s, m 6= 0, equation (39) reduces to the
+Klein-Gordon equation.
+    Consider the Abelian gauge theory in R4 equipped with the Minkowski met-
+ric and described by the Lagrangian density (see e.g. [9], [38], [37])
+
+                             L = L0 + L1 − W (|ψ|)                          (40)
+
+where
+                               1h                    i
+                           L0 =    |Dt ψ|2 − |Dx ψ|2
+                               2
+                           1             2    1        2
+                     L1 = |∂t A + ∇ϕ| − |∇ × A| .
+                           2                  2
+Here q denotes a positive parameter, ∇× and ∇ denote respectively the curl
+and the gradient operators with respect to the x variable,
+                ∂               ∂
+         Dt =      + iqϕ, Dj =     − iqAj , Dx ψ = (D1 ψ, D2 ψ, D3 ψ)       (41)
+                ∂t             ∂xj
+are the covariant derivatives and finally ϕ ∈ R and A= (A1 , A2 , A3 ) ∈ R3 are
+the gauge potentials.
+   Now consider the total action
+                            Z
+                       S = (L0 + L1 − W (|ψ|)) dxdt.                       (42)
+
+   Making the variation of S with respect to ψ, ϕ and A we get the following
+system of equations
+                         Dt2 ψ − D2x ψ + W ′ (ψ) = 0                    (43)
+                                                    
+                       ∂A                     ∂t ψ          2
+                  ∇·       + ∇ϕ = q Im             + qϕ |ψ|             (44)
+                       ∂t                      ψ
+                                                           
+                         ∂ ∂A                        ∇ψ          2
+          ∇ × (∇ × A) +           + ∇ϕ = q Im            − qA |ψ| .     (45)
+                         ∂t ∂t                        ψ
+    The abelian gauge theory, namely equations (43, 44, 45), provides a very
+elegant way to couple the Maxwell equation with matter if we interpret ψ as a
+matter field.
+    In order to give a more meaningful form to these equations, we will write ψ
+in polar form
+
+                  ψ(x, t) = u(x, t) eiS(x,t) , u ≥ 0, S ∈ R/2πZ
+
+
+
+
+                                       21
+So (42) takes the following form
+                         Z Z "  2                    #
+                                1 ∂u      1   2
+         S(u, S, ϕ, A) =                − |∇u| − W (u) dxdt+
+                                2 ∂t      2
+                           Z Z "         2             #
+                         1        ∂S                   2
+                       +              + qϕ − |∇S − qA| u2 dxdt
+                         2         ∂t
+                                                     !
+                                          2
+                         1        ∂A
+                           Z Z
+                                                   2
+                       +              +∇ϕ − |∇ × A| dxdt
+                         2        ∂t
+
+and the equations (43, 44, 45) take the form:
+                            "                         2 #
+                                         2      ∂S
+             u + W ′ (u) + |∇S − qA| −            + qϕ     u=0            (46)
+                                                ∂t
+                            
+                ∂    ∂S
+                        + qϕ u2 − ∇ · (∇S − qA) u2 = 0
+                                                  
+                                                                           (47)
+                ∂t   ∂t
+                                            
+                         ∂A             ∂S
+                   ∇·        + ∇ϕ = q      + qϕ u2                         (48)
+                         ∂t             ∂t
+                                       
+                            ∂ ∂A
+             ∇ × (∇ × A) +         + ∇ϕ = q (∇S − qA) u2 .                 (49)
+                            ∂t ∂t
+In order to show the relation of the above equations with the Maxwell equations,
+we make the following change of variables:
+                                                 
+                                        ∂A
+                               E=−          + ∇ϕ                            (50)
+                                        ∂t
+
+                               H=∇×A                                       (51)
+                                        
+                                  ∂S
+                            ρ=−      + qϕ qu2                              (52)
+                                  ∂t
+                              j = (∇S − qA) qu2 .                          (53)
+So (48) and (49) are the second couple of the Maxwell equations with respect to
+a matter distribution whose charge and current density are respectively ρ and
+j:
+                                   ∇·E= ρ                              (gauss)
+                                           ∂E
+                               ∇×H−             =j                   (ampere)
+                                            ∂t
+(50) and (51) give rise to the first couple of the Maxwell equations
+                                        ∂H
+                               ∇×E+        =0                       (faraday)
+                                        ∂t
+                                  ∇ · H = 0.                   (nomonopole)
+
+                                      22
+Using the variables j and ρ, equation (46) can be written as follows
+
+                                                             j2 − ρ2
+                                  u + W ′ (u) +                     =0          (matter)
+                                                               q2 u
+
+and finally Equation (47) is the charge continuity equation
+
+                                           ∂
+                                              ρ + ∇ · j = 0.                         (54)
+                                           ∂t
+    Notice that equation (54) is a consequence of (gauss) and (ampere). In
+conclusion, an Abelian gauge theory, via equations (gauss,..,matter), provides
+a model of interaction of the matter field ψ with the electromagnetic field (E, H).
+In fact that equations (gauss,..,matter) are equivalent to (46,..,49).
+
+5.2     Energy and charge
+Let examine the invariants of NKGM which are relevant for us, namely the
+energy and the charge. In this subsection we compute these invariants using the
+gauge invariant variables u, ρ, j, E, H.
+   Energy. Energy, by definition, is the quantity which is preserved by the
+time invariance of the Lagrangian. Using the gauge invariant variables, the
+energy E calculated along the solutions of equation (gauss) takes the following
+form
+                                   E = Em + Ef                             (55)
+where                     Z "             2                             #
+                      1               ∂u                     2   ρ2 + j2
+                 Em =                           + |∇u| + W (u) +            dx
+                      2               ∂t                          2q 2 u2
+and
+                                            1
+                                                Z
+                                                        E2 + H2 dx.
+                                                               
+                                  Ef =
+                                            2
+   Proof. By the Noether’s theorem (see e.g. [28] or [6]), we have that, given
+the Lagrangian
+                                          2
+                              1      1∂u   2
+                        L=                      −
+                                       |∇u| − W (u)+
+                              2      2∂t
+                                    2
+                            1 ∂S          1
+                          +      + qϕ − |∇S − qA|2 u2
+                            2 ∂t          2
+                                                    2
+                              1 ∂A      1       2
+                          +        +∇ϕ − |∇ × A| )
+                              2 ∂t      2
+
+the density of energy takes the following form:
+            ∂L        ∂u    ∂L     ∂S    ∂L  ∂ϕ    ∂L     ∂A
+            ∂u
+                 ·      +   ∂S
+                                ·    +  ·    +   ∂A
+                                                       ·    −L
+        ∂   ∂t
+                      ∂t   ∂ ∂t    ∂t  ∂  ∂ϕ ∂t   ∂ ∂t    ∂t
+                                                             ∂t
+
+
+
+                                                        23
+Now we will compute each term. We have:
+                                                                      2
+                                             ∂L        ∂u         ∂u
+                                             ∂u
+                                                ·        =                     (56)
+                                         ∂   ∂t
+                                                       ∂t         ∂t
+
+                                 
+     ∂L       ∂S          ∂S        ∂S 2
+      ∂S
+         ·        =          + qϕ      u
+ ∂    ∂t
+              ∂t          ∂t         ∂t
+                                                                 
+                          ∂S        ∂S 2       ∂S          2    ∂S
+                   =          + qϕ      u +        + qϕ qϕu −      + ϕ qϕu2
+                          ∂t         ∂t         ∂t              ∂t
+                                 2                
+                          ∂S                 ∂S
+                   =          + qϕ    u2 −       + qϕ qϕu2
+                          ∂t                 ∂t
+                         ρ2
+                   =          + ρϕ.
+                       q 2 u2
+
+Multiplying by ϕ equation (gauss) and integrating, we get
+                              Z          Z
+                            − E·∇ϕ = ρϕ
+
+     Thus, replacing this expression in the above formula, we get
+
+                             ∂L      ∂S       ρ2
+                        Z                  Z
+                              ∂S
+                                   ·    =          − E·∇ϕ                       (57)
+                                             q u2
+                                              2
+                                 
+                           ∂ ∂t      ∂t
+
+Also we have
+                                              ∂L   ∂ϕ
+                                               ·    =0                        (58)
+                                             ∂ ∂ϕ  ∂t
+                                                  ∂t
+
+and                                                    
+                       ∂L  ∂A                     ∂A       ∂A        ∂A
+                     ∂A
+                        ·    =                      +∇ϕ ·    = −E ·            (59)
+                   ∂ ∂t    ∂t                     ∂t       ∂t        ∂t
+Moreover, using the notation (50, 51, 52, 53), we have that
+                                2
+                                                           ρ2 − j2    E2 − H2
+                       
+                  1        ∂u            1
+               L=                    −     |∇u|2 − W (u) +          +
+                  2        ∂t            2                  2q 2 u2      2
+
+
+
+
+                                                       24
+Then, by (56,...,59) and the above expression for L we get
+
+                         ∂L     ∂u       ∂L      ∂S     ∂L        ∂A
+                    Z
+E(u, S, ϕ, A) =           ∂u
+                             ·     +     ∂S
+                                             ·     +    ∂A
+                                                             ·      −L
+                       ∂ ∂t     ∂t     ∂ ∂t      ∂t   ∂ ∂t        ∂t
+                    Z  2
+                         ∂u        ρ2                 ∂A
+                =              + 2 2 − E·∇ϕ−E ·           −L
+                         ∂t      q u                  ∂t
+                    Z  2
+                         ∂u        ρ2
+                =              + 2 2 + E2                                    (60)
+                         ∂t      q u
+                      Z "  2                                                 #
+                           1 ∂u         1      2           ρ2 − j2     E2 − H2
+                    −                − |∇u| − W (u) +                +
+                           2 ∂t         2                   2q 2 u2       2
+                    Z "  2                                                 #
+                        1 ∂u          1      2           ρ2 + j2     E2 + H2
+                =                  + |∇u| + W (u) +                +
+                        2 ∂t          2                   2q 2 u2       2
+
+   
+
+   Charge. Using (54), we see that the electric charge has the following ex-
+pression               Z            Z
+                       Q=       ρdx = −q       (∂t S + qϕ)u2 dx                    (61)
+
+In order to be consistent with the previous literature ([6], [4], [5], [12], [16], [15],
+[13], [17]), we will call charge the following quantity:
+
+                                  Q
+                                          Z
+                          C(u) =    = − (∂t S + qϕ)u2 dx.
+                                  q
+
+C(u) is a dimensionless quantity which, in some interpretation of NKGM, rep-
+resents the number of particles (see [20], [6], [17]). In some of the quoted papers,
+C(u) is called hylenic charge and hence the ratio (10) is called hylenic ratio.
+
+5.3    Existence of charged Q-balls
+We shall make the following assumptions on W :
+
+   • (W-0) (Positivity)
+                                         W (s) ≥ 0;                                (62)
+
+
+
+   • (W-i) (Nondegeneracy) W is a C 2 function s.t. W (0) = W ′ (0) = 0 and
+
+                                     W ′′ (0) = m2 > 0;                            (63)
+
+
+
+
+                                          25
+   • (W-ii) (Hylomorphy) if we set
+                                             1 2 2
+                                 W (s) =       m s + N (s)                      (64)
+                                             2
+      then
+                             ∃s0 ∈ R+ such that N (s0 ) < 0                     (65)
+
+   • (W-iii) (Growth condition)
+
+                      |N ′ (s)| ≤ c1 sr−1 + c2 sq−1 for q, r ∈ (2, 6)           (66)
+
+    (W-0) implies that the energy E in (55) is positive; if this condition does
+not hold, it is possible to have solitary waves, but not hylomorphic solitons.
+    (W-i) In order to have solitary waves it is necessary to have W ′′ (0) ≥ 0.
+There are some results also when W ′′ (0) = 0 (null-mass case, see e.g. [18] and
+[3]), however the most interesting situations occur when W ′′ (0) > 0.
+    (W-ii) is the crucial assumption which characterizes the nonlinearity which
+might produce hylomorphic solitons.
+    The hylomorphy condition (W-ii) can also be written as follows:
+
+                                             W (s)
+                             α0 :=    inf        2   < m2                       (67)
+                                      s∈R+ 1 |s|
+                                           2
+
+    (W-iii) if W and hence N is of class C 3 , then (66) reduces to |N ′ (s)| ≤ csq−1
+for q < 6, and this is the usual subcritical growth condition.
+    Now we introduce the phase space X.
+    First observe that the term ρ2 + j2 /u2 in (55) is singular, so we introduce
+                                         
+new gauge invariant variables which eliminate this singularity:
+                                       ρ       j
+                                 θ=      ; Θ=    .
+                                      qu      qu
+Using these new variables the energy takes the form:
+            1 
+              Z                                         Z
+                        2      2    2    2     2     2
+    E (u) =       |∂t u| + |∇u| + θ + Θ + E + H dx + W (u)dx
+            2
+            1
+              Z h                                         i Z
+                        2      2
+          =      |∂t u| + |∇u| + m2 u2 + θ2 + Θ2 + E2 + H2 + N (u).
+            2
+   The generic point in the phase space X is given by
+
+                               u = (u, û, θ, Θ, E, H)
+
+where û = ∂t u is considered as independent variable; the phase space is given
+by
+                     X = {u ∈ H : ∇ · E = qθu, ∇ · H = 0}                  (68)
+
+
+
+                                            26
+where H is the Hilbert space of the functions
+                                                           11
+                  u = (u, û, θ, Θ, E, H) ∈ H 1 R3 × L2 R3
+                                                  
+
+
+equipped with the norm defined by the quadratic part of the energy, namely:
+                  Z h                                         i
+          kuk2 =      û2 + |∇u|2 + m2 u2 + θ2 + Θ2 + E2 + H2 dx        (69)
+
+    In these new variables the energy and the hylenic charge become two con-
+tinuous functionals on X having the form
+                                  1
+                                           Z
+                                       2
+                         E (u) = kuk + N (u)dx                          (70)
+                                  2
+                                            Z
+                                  C (u) =       θu dx.                        (71)
+
+   Our equations (matter, gauss, ampere, faraday, nomonopole) become
+
+                                       Θ2 − θ 2
+                         u + W ′ (u) +         =0
+                                          u
+                                         ∇ · E = qθu
+                                            ∂E
+                                     ∇×H−       = qΘu                         (72)
+                                            ∂t
+                                           ∂H
+                                     ∇×E+       =0
+                                            ∂t
+                                         ∇ · H = 0.
+
+Remark 28 In the following we shall assume that the Cauchy problem for
+(NKGM) is well posed in X. Actually, in the literature there are few results
+relative to this problem (we know only [26], [32], [34]) and we do not know
+which are the assumptions that W should satisfy. Also we refer to [14] for a
+discussion and some partial results on this issue.
+
+   We have the following existence results.
+
+Theorem 29 Assume that W satisfies assumptions (W-0),(W-i),(W-ii),(W-
+iii). Then there exists q̄ > 0 such that for every q ∈ [0, q̄] the dynamical system
+described by (72) has a family uδ (δ ∈ (0, δ∞ ) , δ ∞ > 0) of standing hylomorphic
+solitons (Definition 7). Moreover if δ 1 < δ 2 we have that
+
+   • (a) Λ(uδ 1 ) < Λ(uδ2 )
+   • (b) |C(uδ 1 )| > |C(uδ2 )|
+   • (c) .E(uδ 1 ) > E(uδ2 )
+
+
+
+                                        27
+Theorem 30 The solitons uδ = (uδ , ûδ , θδ , Θδ , Eδ , Hδ ) in Theorem 29 are sta-
+tionary solutions of (72), this means that ûδ = Θδ = Hδ = 0, Eδ = −∇ϕδ and
+uδ , θδ , ϕδ solve the equations
+
+                                          θ2δ
+                        −∆uδ + W ′ (uδ ) −    =0                              (73)
+                                          uδ
+                                        −∆ϕδ = −qθδ uδ .                      (74)
+
+    We shall prove Theorem 29 by using the abstract Theorem 19. First of all
+observe that the energy and the hylenic charge E and C, defined in (70) and
+(71) are invariant under translations i. e. under the action of the group T
+defined in (4).
+    We shall see that assumptions (62),...,(66) on W permit to show that assump-
+tions (EC-0), (EC-1), (EC-2), (EC-3), (16) and (11) of the abstract theorem 19
+are satisfied.
+    The next two lemmas, whose proofs follow standard arguments, state that
+E satisfies the coercivity assumption (EC-3) and that both E and C satisfy the
+splitting property (EC-2).
+
+Lemma 31 Let the assumptions of Theorem 29 be satisfied, then E defined by
+(70) satisfies (EC-3), namely for any sequence un = (un , ûn , θn , Θn , En , Hn )
+in H such that E(un ) → 0 (respectively E(un ) bounded), we have kun k → 0
+(respectively kun k bounded), where k·k is defined in (69).
+
+   Proof. See proof of Lemma 23 in [15].
+   
+
+Lemma 32 Let the assumptions of Theorem 29 be satisfied, then E and C
+satisfy the splitting property (EC-2).
+
+   Proof. See proof of Lemma 22 in [15].
+   
+   It remains to prove that the hylomorphy condition (11) holds.
+
+5.4    Analysis of the hylenic ratio
+First of all we set:
+
+                kuk♯ = k(u, û, θ, Θ, E, H)k♯ = max (kukLr , kukLq )          (75)
+
+   where r, q are introduced in (66). With some abuse of notation we shall
+write max (kukLr , kukLq ) = kuk♯ .
+
+Lemma 33       The seminorm kuk♯ defined in (75) satisfies the property (14),
+namely
+                 {un is a T −vanishing sequence} ⇒ kun k♯ → 0.
+where T is defined in (4).
+
+                                        28
+   Proof. Let un be a bounded sequence in H 1 R3
+                                                                           
+
+                                               2
+                                        kun kH 1 (R3 ) ≤ M                       (76)
+
+   such that, up to a subsequence,
+
+                                        kun k♯ ≥ a > 0.                          (77)
+
+   . We need to show that un is not T − vanishing.
+   May be taking a subsequence, we have that at least one of the following
+holds:
+
+   • (i) kun k♯ = kun kLr
+
+   • (ii) kun k♯ = kun kLq
+
+   Now suppose that (i) holds (If (ii) holds, we will argue in the same way
+replacing r with q).
+   We set for j ∈ Z3
+
+                              Qj = j + Q = {j + q : q ∈ Q}
+
+where Q is now the cube defined as follows
+
+                    Q = (x1 , .., xn ) ∈ R3 : 0 ≤ xi < 1 .
+                        
+
+
+Clearly                                            [
+                                          R3 =             Qj .
+                                                       j
+
+Now let c be the constant for the Sobolev embedding H 1 (Qj ) ⊂ Lt (Qj ) . We
+have
+                  Z         XZ
+                        r               r          r−2           2
+                                           X
+        0 < ar ≤ |un | =           |un | =    kun kLt (Qj ) kun kLt (Qj )
+                                    j     Qj                      j
+                             X
+                     r−2              2
+          ≤ sup kun kLt (Qj ) ·  kun kLr (Qj )
+                 j
+                                           j
+                               X
+                       r−2              2
+          ≤ c sup kun kLt (Qj ) ·  kun kH 1 (Qj )
+                     j                         j
+                                                            
+                       r−2           2                 r−2
+          = c sup kun kLr (Qj ) kun kH 1 ≤ cM sup kun kLt (Qj ) .
+                 j                                                     j
+
+where M and a are the constants respectively in (76) and (77). Then
+                                                                      1/(t−2)
+                                                                 at
+                                                          
+                             sup kun kLt (Qj )          ≥
+                              j                                 cM
+
+
+                                                   29
+     Then, for any n, there exists jn ∈ Z3 such that
+
+                                kun kLr (Qjn ) ≥ α > 0.                        (78)
+
+Then, since (Tjn un ) (x) = un (x + jn ) (see ( 3)), we have
+
+                     kTjn un kLr (Q0 ) = kun kLr (Qjn ) ≥ α > 0.               (79)
+
+    Since un is bounded, also Tjn un is bounded in H 1 (R3 ). Then we have, up
+to a subsequence, that Tjn un ⇀ u0 weakly in H 1 (R3 ) and hence strongly in
+Lr (Q). By (79), u0 6= 0.
+    So we conclude that un is not T − vanishing.
+    
+    Now, as usual, we set
+
+           Λ0 := inf {lim inf Λ(un ) | un is a T −vanishing sequence}
+
+
+
+Λ♯    =    lim inf Λ(u) =                                                             (80)
+           kuk♯ →0
+                 n                                                       11           o
+          lim inf Λ(εu, û, θ, Θ, E, H) |u ∈ H 1 , (û, θ, Θ, E, H) ∈ L2     ; kuk♯ = 1 .
+          ε→0
+
+     By the definition of Λ0 and Λ♯ and lemma 33, we have that
+
+                                       Λ0 ≥ Λ♯                                 (81)
+
+     The following lemma holds:
+
+Lemma 34 Let W satisfy assumption (66), then the following inequality holds
+
+                                       Λ♯ ≥ m.                                 (82)
+
+     Proof. First of all observe that by (66) we have
+                       Z                 Z          Z
+                                              r
+                          N (|u|)dx ≤ k1 |u| + k2 |u|q
+                                               r          q
+                                      ≤ k1 kuk♯ + k2 kuk♯ .
+
+So, if we take kuk♯ = 1 and ε > 0,we get
+                            Z
+                                N (|εu|)dx ≤ k1 εr + k2 εq .                   (83)
+
+     By the Sobolev embeddings, there is k3 > 0 such that
+                      Z                 
+                              2                       2
+                          |∇u| + m2 u2 dx ≥ k3 kuk♯                            (84)
+
+
+                                          30
+Now, choose
+                                 2 < s < min(r, q).
+Since r, q > s, we have, by (84), (83) and taking ε > 0 small enough, that
+                 Z                      Z
+                         2
+              εs     |∇u| + m2 u2 dx −       N (|εu|)dx
+                            2
+               ≥ εs k3 kψk♯ − k1 εr − k2 εq = k3 εs − k1 εr − k2 εq ≥ 0
+
+So            Z                      Z                
+                                               2
+                  N (ε |u|)dx ≤ εs         |∇u| + m2 u2 dx where s > 2.      (85)
+
+Then, by using (85), for any u = (u, û, θ, Θ, E, H) , with u ∈ H 1 , kuk♯ = 1 and
+                          11
+any (û, θ, Θ, E, H) ∈ L2     , we have, for ε > 0 small
+
+                        1
+                          R 2           2          2
+                                                      
+                             θ + ε2 |∇u| + ε2 m2 |u| dx + N (|εu|)dx
+                                                             R
+                        2
+Λ(εu, û, θ, Θ, E, H) ≥                        R
+                                             ε θu
+                          R 2  ε2       R                  
+                        1
+                        2   θ + 2 − εs        |∇u|2 + m2 |u|2
+                      ≥
+                                    ε kθkL2 kukL2
+                         R 2 1/2       √           R 2 1/2
+                           θ dx    · εm 1 − 2εs−2      u dx        p
+                      ≥                                         = m 1 − 2εs−2 .
+                                     ε kθkL2 kukL2
+Then, since s > 2, we have
+            n                                                       11           o
+Λ♯ = lim inf Λ(εu, û, θ, Θ, E, H) |u ∈ H 1 , (û, θ, Θ, E, H) ∈ L2     ; kuk♯ = 1 ≥ m
+     ε→0
+                                                                             (86)
+     
+     Next we will show that the hylomorphy assumption (11) is satisfied.
+
+Lemma 35 Assume that W satisfies (W-0),...,(W-iii) and (66) then
+
+                                     inf Λ(u) < Λ0 .                         (87)
+                                     u∈X
+
+     Proof. We shall prove that
+
+                                Λ∗ = inf Λ(u) < m                            (88)
+                                       u∈X
+
+
+So (87) will follow from (81) and (82) and (88).
+   Let R > 0; set
+                  
+                                s0                  if |x| < R
+            uR =                  0                if |x| > R + 1    .       (89)
+                   |x|                 R+1
+                      R s 0 − (|x| − R)  R  s 0 if  R  < |x| < R + 1
+
+                                            31
+where R > 1.
+  By the hylomorphy assumption (63) there exist α ∈ (0, m) such that
+                                               1 2 2
+                                  W (s0 ) ≤      α s0                             (90)
+                                               2
+   Now let ϕR ∈ D1,2 denote the solution of the following equation
+
+                                   ∆ϕ = −qαu2R .                                  (91)
+
+   We have
+                   1    2  R
+                   2 kuk +   N (u)dx
+      Λ∗ = inf
+             u∈X            |C (u)|
+                       Rh 2                            i
+                   1
+                         û + |∇u|2 + θ2 + Θ2 + E2 + H2 dx + W (u)dx
+                                                            R
+                   2
+          = inf                            R                         .
+             u∈X                             θu dx
+
+   Now remember that u = (u, û, θ, Θ, E, H) and take u = uR with
+
+                           uR = (uR , 0, αuR , 0, ∇ϕR , 0) .
+
+By (91), uR ∈ X; then we have
+
+              1    2  R                  1      2       R
+              2 kuk +   N (u)dx          2 kuR k +     N (uR )dx
+  Λ∗ = inf                           ≤
+        u∈X        |C (u)|                       |C (uR )|
+       1
+         Rh       2                       2
+                                            i
+            |∇uR | + α2 u2R + |∇ϕR | dx + W (uR )dx
+                                                   R
+       2
+     =
+                             α u2R dx
+                                 R
+               h                    i R
+       1
+         R               2      2 2
+       2 |x|<R |∇uR | + α uR + |x|<R W (uR )
+     ≤
+                       α |x|<R u2R dx
+                         R
+                      h                    i R
+       1
+         R                      2     2 2
+                       |∇u    |   + α  u R + R<|x|<R+1 W (uR )
+                                                                        1          2
+                                                                           R
+                                                                        2 R |∇ϕR |
+       2 R<|x|<R+1          R
+     +                                                              +
+                              α |x|<R u2R                              α |x|<R u2R
+                                  R
+
+       1         2 2
+         R               R                                               2
+       2 |x|<R α s0 + |x|<R W (s0 )
+                                                              1
+                                                                R
+                                                c1 R 2        2   |∇ϕR |
+     =                                     +               +
+                α |x|<R s20                   α |x|<R s20    α |x|<R s20
+                  R                            R                R
+
+                  1
+                     R          2
+            c2          |∇ϕR |
+     ≤α+       + 24        2 3
+                                                                                   (92)
+           αR      3 παs0 R
+
+where the last inequality is a consequence of (90).
+    In order to estimate the term containing ϕR in (92), we remember that ϕR is
+the solution of (91). Observe that u2R has radial symmetry and that the electric
+field outside any spherically symmetric charge distribution is the same as if all
+of the charge were concentrated into a point. So |∇ϕR (r)| corresponds to the
+
+
+                                          32
+strength of an electrostatic field at distance r, created by an electric charge given
+by
+                               Z                   Zr
+                     |Cel | =       qαuR dx = 4π qαu2R v 2 dv
+                                        2
+
+                                       |x|≤r                       0
+
+and located at the origin. So we have
+                                   (
+                            |Cel |      = 34 πqαs20 r                            if r < R
+              |∇ϕR (r)| = 2                            3
+                             r       ≤ 43 πqαs20 (R+1)
+                                                   r2                            if r ≥ R
+
+   Then
+                                                                   (R + 1)6
+           Z                                        Z                 Z           
+                           2
+                  |∇ϕR |       dx ≤ c3 q 2 α2 s40      r dr + 4
+                                                                                dr
+                                                   r<R         r>R     r2
+                                                       (R + 1)6
+                                                               
+                                  ≤ c4 q 2 α2 s40 R5 +            ≤ c5 q 2 α2 s40 R5 .
+                                                          R
+Then
+                                       1
+                                         R         2
+                                           |∇ϕR |
+                                       2
+                                        4     2 R3
+                                                     ≤ c6 q 2 αs20 R2 .                     (93)
+                                        3 παs 0
+
+By (92), we get
+                                                    c1
+                                      Λ∗ ≤ α +         + c6 q 2 αs20 R2 .                   (94)
+                                                    αR
+   Now set
+                                                m − α = 2ε
+and take                                                      s
+                                         c1                         ε3 α
+                                      R=    , 0<q<                           .
+                                         αε                       s20 c21 c6
+With these choices of R and q, a direct calculation shows that
+                                             c1
+                                      α+        + c6 q 2 αs20 R2 < m.                       (95)
+                                             αR
+Then, by (94)q
+             and (95), we get that there exists a positive constant c such that,
+                                  3
+for 0 < q < s̄c     (m − α) α, we have
+
+                                               inf Λ(u) < m.                                (96)
+                                               u∈X
+
+    
+    .
+    Proof of Th.29 Assumptions (EC-0), (EC-1) of Theorem19 are clearly satis-
+fied. By Lemma 32 E and C satisfy the splitting property (EC-2) . . By Lemma
+31 and by Lemma 35 also the coercitivity assumption (EC-3) and hylomorphy
+condition (11) are satisfied.
+
+                                                         33
+   Finally it remains to show that also (16) is satisfied. To this end let
+                                                           11
+                  u = (u, û, θ, Θ, E, H) ∈ H 1 R3 × L2 R3
+                                                  
+
+                  ′
+be a solution
+             of E (u) = 0, then it is easy to see that (û, θ, Θ, E, H) =0 and
+      1   3
+u ∈ H R solves the equation
+
+                                −∆u + W ′ (u) = 0.
+
+So, since W ≥ 0, we have by the Derrick-Pohozaev identity [24] that also u =
+0.We conclude that
+                         u = (u, û, θ, Θ, E, H) = 0.
+    So all the assumptions of the Theorem 19 are satisfied and the conclusion
+follows.
+    .
+    Proof of Th. 30. Let
+
+       uδ = (uδ , 0, θδ , 0, Eδ , 0) ∈ X = {u ∈ H : ∇ · E = qθu, ∇ · H = 0}
+
+be as in Theorem 30.
+   So uδ minimizes the energy E (see (70)) on the manifold
+
+                      Xδ = {u ∈ X : C(u) = C(uδ ) = σ δ } .
+
+If we write E = −∇ϕ, the constraint ∇ · E = qθu becomes
+
+                                    −∆ϕ = qθu.
+
+So uδ is a critical point of E on the manifold (in H) made up by those u =
+(u, 0, θ, 0, ∇ϕ, 0) satisfying the constraints
+
+                                     ∆ϕ = qθu                                    (97)
+
+                                       Z
+                              C(u) =       θu dx = σ δ .                         (98)
+
+    Therefore, for suitable Lagrange multipliers λ ∈ R, ξ ∈ D1,2 (D1,2 is the
+closure of C0∞ with respect to the norm k∇ϕkL2 ), we have that uδ is a critical
+point of                        Z            
+             Eλ,ξ (u) = E(u)+λ         θu dx−σ δ     + hξ, −∆ϕ + qθui            (99)
+
+where h · , · i denotes the duality map in D1,2 . It is easy to show that Eλ,ξ
+                                                                           ′
+                                                                               (uδ ) =
+0 gives the equations
+
+                       −∆uδ + W ′ (uδ ) + λθδ + qξθδ = 0                        (100)
+                                               −∆ϕδ = ∆ξ                        (101)
+                                      θδ + λuδ + qξuδ = 0.                      (102)
+
+
+                                           34
+From (101) we get ξ = −ϕδ , so (100) and (102) become
+
+                    −∆uδ + W ′ (uδ ) + θδ (λ − qϕδ ) = 0
+                                      (λ − qϕδ ) uδ = −θδ .
+
+From the above equations we clearly get (73). (74) is given by the constraint
+(97).
+   
+
+
+
+References
+ [1] A.Azzollini, A.Pomponio, Ground state solutions for the nonlinear
+     Klein-Gordon-Maxwell equations, Topol. Methods Nonlinear Anal., 35,
+     (2010), 33–42.
+ [2] A.Azzollini, L.Pisani, A.Pomponio, Improved estimates and a limit
+     case for the electrostatic Klein-Gordon-Maxwell system, Proc. Roy. Soc.
+     Edinburgh Sect. A, 141, (2011), 449-463.
+ [3] M.Badiale, V.Benci, S.Rolando, A nonlinear elliptic equation with
+     singular potential and applications to nonlinear field equations, J. Eur.
+     Math. Soc., 9 (2007), 355–381
+ [4] J. Bellazzini, V. Benci, C. Bonanno, A.M. Micheletti, Solitons
+     for the Nonlinear Klein-Gordon-Equation, Advances in nonlinear studies,
+     10 (2010), 481-500.
+ [5] J. Bellazzini, V. Benci, C. Bonanno, E. Sinibaldi, Hylomorphic
+     solitons in the nonlinear Klein-Gordon equation, Dynamics in partial dif-
+     ferential equations, 6 (2009), 311-333.
+ [6] V. Benci, Hylomorphic solitons, Milan J. Math., 77 (2009), 271-332.
+ [7] V. Benci, C. Bonanno Solitary waves and vortices in non-Abelian gauge
+     theories with matter, Advanced Nonlinear Studies 12 (2012), 717–735,
+     arXiv:1105.5252
+ [8] V. Benci, D. Fortunato, Solitary waves of the nonlinear Klein-Gordon
+     field equation coupled with the Maxwell equations, Rev. Math. Phys. 14
+     (2002), 409-420.
+ [9] V. Benci, D. Fortunato, Solitary waves in the Nolinear Wave equation
+     and in Gauge Theories, Journal of fixed point theory and Applications, 1,
+     n.1 (2007), 61-86.
+[10] V. Benci, D. Fortunato, Solitary waves in Abelian Gauge Theories,
+     Adv. Nonlinear Stud. 3 (2008), 327-352.
+
+
+                                      35
+[11] V. Benci, D. Fortunato, Existence of hylomorphic solitary waves in
+     Klein-Gordon and in Klein-Gordon-Maxwell equations, Rend. Lincei Mat.
+     Appl. supplemento, 20 (2009), 243-279.
+[12] V. Benci, D. Fortunato, Hylomorphic solitons on lattices, Discrete and
+     continuous Dynamical system, 28 (2010), 875-897.
+[13] V. Benci, D. Fortunato, Spinning Q-balls for the Klein-Gordon-
+     Maxwell equations, Commun. Math. Phys., 295 (2010) 639-668, doi:
+     10.1007/s00220-010-0985-z
+[14] V. Benci, D. Fortunato, Hamiltonian formulation of the Klein-
+     Gordom-Maxwell equations, Rend. Lincei Mat.Appl. 22 (2011), 1-22.
+[15] V. Benci, D. Fortunato, On the existence of stable charged Q-balls, J.
+     Math. Phys. 52, (2011), doi: 10.1063/1.3629848
+[16] V. Benci, D. Fortunato, A minimization method and applications to
+     the study of solitons, Nonlinear Analysis, T.M.A. 75 (2012), 4398—4421.
+[17] V. Benci, D. Fortunato, Hylomorphic Solitons, book in preparation.
+[18] H.Berestycki, P.L. Lions, Nonlinear Scalar Field Equations, I - Exis-
+     tence of a Ground State, Arch. Rat. Mech. Anal., 82 (4) (1983), 313-345.
+[19] D. Cassani, Existence and non-existence of solitary waves for the crit-
+     ical Klein-Gordon equation coupled with Maxwell’s equations, Nonlinear
+     Anal.58 (2004), 733-747.
+[20] S.Coleman, “Q-Balls”, Nucl. Phys. B262 (1985), 263–283; erratum:
+     B269 (1986), 744–745.
+[21] T.D’Aprile, D.Mugnai , Solitary waves for nonlinear Klein-Gordon-
+     Maxwell and Schrödinger -Maxwell equations, Proc. of Royal Soc. of Edin-
+     burgh, section A Mathematics, 134 (2004), 893-906.
+[22] T.D’Aprile, D.Mugnai, Non-existence results for the coupled Klein-
+     Gordon- Maxwell equations, Advanced Nonlinear studies, 4 (2004), 307-
+     322.
+[23] P.D’Avenia, L.Pisani, Nonlinear Klein-Gordon equations coupled with
+     Born-Infeld Equations Electronics J. Differential Equations, 26 (2002),
+     1-13.
+[24] G.H. Derrick, Comments on nonlinear wave equations as models for
+     elementary particles , J. Math. Phys. 5 (1964), 1252-1254.
+[25] S. Dodelson, L. Widrow, Baryon Symmetric Baryogenesis. Physical
+     Review Letters 64, (1990), 340–343.
+
+
+
+                                     36
+[26] D. Eardley, V. Moncrief, The global existence of Yang-Mills-Higgs
+     fields in R3+1 , Comm. Math. Phys. 83 (1982), 171-212.
+[27] K. Enqvist, J. McDonald, Q-Balls and Baryogenesis in the MSSM,
+     Physics Letters B 425, (1998) 309–321. arXiv:hep-ph/9711514.
+[28] I.M. Gelfand, I.M. Fomin ., Calculus of Variations, Prentice-Hall, En-
+     glewood Cliffs, N.J. 1963.
+[29] A. Kusenko, M. Shaposhnikov, Supersymmetric Q balls as dark matter,
+     Physics Letters B 418, (1998), 46–54. arXiv:hep-ph/9709492
+[30] T. D. Lee, Y. Pang, Nontopological solitons, Physics Reports 221, (1992),
+     251–350.
+[31] E .Long, Existence and stability of solitary waves in non-linear Klein-
+     Gordon-Maxwell equations, Rev. Math. Phys. 18 (2006), 747-779.
+[32] S. Klainerman, M: Machedon, On the Maxwell-Klein-Gordon equation
+     with finite energy, Duke Math. J. 74 (1994), 19-44.
+[33] D. Mugnai, Solitary waves in Abelian Gauge Theories with strongly non-
+     linear potentials Ann. Inst. H. Poincaré Anal. Non Linéaire 27 (2010),
+     1055-1071.
+[34] D.M. Petrescu , Time decay of solutions of coupled Maxwell-Klein-
+     Gordon equations, Coomm. Math. Phys., 179 (1996), 11-24.
+[35] R. Rajaraman, Solitons and instantons, North Holland, Amsterdam, Ox-
+     ford, New York, Tokio, 1988.
+[36] G. Rosen, Particle-like solutions to nonlinear complex scalar field theories
+     with positive-definite energy densities, J. Math. Phys. 9 (1968), 996–998
+[37] V. Rubakov., Classical theory of Gauge fields, Princeton University press,
+     Princeton 2002.
+[38] Y. Yang, Solitons in Field Theory and Nonlinear Analysis, Springer, New
+     York, Berlin, 2000.
+
+
+
+
+                                       37
+
