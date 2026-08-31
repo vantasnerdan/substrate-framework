@@ -1,6 +1,6 @@
 ---
 name: research-pr-harvest
-description: Autonomously process goal-directed research or campaign pull requests, preserve the strongest correct reusable progress even when the headline objective is incomplete, and leave a compact handoff on the linked goal issue. Use whenever the user supplies a PR URL or number, asks what to merge from a scientific PR, needs merge eligibility separated from claim promotion and goal completion, wants useful code or proofs salvaged without recursive re-review, or is handing off a long campaign whose later work is diminishing.
+description: Autonomously process externally supplied research pull requests or terminal campaign pull requests after their success-or-exhaustion gate has opened. Use when the user supplies a PR URL or number, asks what to merge from an existing scientific PR, or needs merge eligibility separated from claim promotion and goal completion. Never use it to create a rung, milestone, partial-goal, or diminishing-return PR from an active campaign.
 ---
 
 # Research PR Harvest
@@ -11,13 +11,31 @@ Review for durable value, not only for headline victory. Keep three decisions in
 2. **Claim promotion:** has a scientific statement earned accepted authority?
 3. **Goal completion:** has the whole campaign objective been achieved?
 
-A PR may merge useful progress while its claims remain proposed and its goal issue remains open. A merge establishes provenance and availability, not scientific truth.
+An externally supplied PR may merge useful progress while its claims remain
+proposed and its goal issue remains open. A terminal-exhaustion campaign PR may
+likewise preserve its strongest supported units while the positive objective
+stays open. A merge establishes provenance and availability, not scientific
+truth; this rule never opens an active campaign's PR gate.
+
+## Harvest is not an active-campaign boundary
+
+This skill answers the artifact-merge question for an existing PR or a campaign
+whose terminal PR gate has already opened. It does not authorize an active
+campaign executor to create a partial PR. Finding, correcting, or merging a
+reusable unit does not exhaust a scientific rung, establish or refute the parent
+question, or satisfy the campaign done gate.
+
+Keep intermediate utilities, subclaims, route verdicts, and validation receipts
+as coherent commits and append-only attempts on the campaign branch. Open one
+campaign PR only after the complete positive contract passes or `AGENTS.md`'s
+scientific-exhaustion certificate passes. “Merge and hand off” is an operational
+disposition for an existing PR, never a scientific stopping condition.
 
 ## Establish the boundary
 
 Read the PR, linked goal, base release, accepted claim boundary, diff, tests, and review discussion. For physics work, also load `physics-erdos-loop`; for code impact, use the available PR-review or dependency-graph workflow.
 
-Identify one canonical goal issue and confirm that it existed before the PR was submitted, including before a draft PR. The PR must mention that issue explicitly: use `Advances #N` while the goal remains incomplete and reserve `Fixes #N` for full completion. If the source PR has no pre-existing issue, do not merge it. Create the canonical issue, preserve the source PR as provenance, and place any selected units in a new compliant harvest PR opened after the issue.
+Identify one canonical goal issue and confirm that it existed before the PR was submitted, including before a draft PR. The PR must mention that issue explicitly: use `Advances #N` for a terminal exhaustion campaign or another incomplete higher goal and reserve `Fixes #N` for full positive completion. If an externally supplied source PR has no pre-existing issue, do not merge it. Create the canonical issue, preserve the source PR as provenance, and place any selected units in a new compliant harvest PR opened after the issue. This repair path applies to an already existing external PR; it does not open the PR gate for an active campaign.
 
 In this repository, treat the user's act of supplying a PR URL or number to an agent that did not open, commit to, or materially implement that PR as standing authorization to complete the normal PR lifecycle without further operator prompts: review and comment, edit PR metadata, request changes, create a focused harvest branch or follow-up PR, merge when eligible, close only after the terminal-close test below, and update the linked issue. Use a distinct merger by default. The user or repository owner may explicitly direct an authoring agent to self-merge a named PR; record that operational override without presenting it as independent scientific review. Do not force-push a contributor's branch, delete unrelated branches, broaden the issue objective, or promote unsupported claims. If an external permission or branch rule blocks an action, preserve the exact next action and report the actual blocker.
 
@@ -58,7 +76,14 @@ Merge a unit only when all three answers are yes:
 2. Is it materially novel or reusable enough to avoid future reinvention?
 3. Is it locally complete, proportionately validated, compatible with the repository, and free of unresolved defects inside its own scope?
 
-Do not require the unit to complete the parent campaign. Do require it to stand without borrowed conclusions, hidden parameters, convention conflicts, or tests that merely repeat copied formulas. A narrower evidence attachment may merge as a corroborating subclaim, regression, applicability result, or provenance record; it need not be discarded merely because it does not prove the parent claim.
+For an externally supplied PR, do not require each selected unit to complete the
+parent campaign. For a terminal campaign PR, first require the campaign-level
+success or exhaustion gate; then classify its internal units. In both cases,
+require a unit to stand without borrowed conclusions, hidden parameters,
+convention conflicts, or tests that merely repeat copied formulas. A narrower
+evidence attachment may merge as a corroborating subclaim, regression,
+applicability result, or provenance record; it need not be discarded merely
+because it does not prove the parent claim.
 
 Classify every unit as one of:
 
@@ -80,10 +105,13 @@ repair does not pass this terminal-close test.
 
 ## Build a harvest merge
 
-Prefer a focused harvest commit or follow-up PR over merging an inseparable campaign dump. Include only the selected implementation, tests, and minimal API documentation.
+For an externally supplied existing PR, prefer a focused harvest commit or
+follow-up PR over merging an inseparable campaign dump. This section never
+authorizes the active campaign that produced work locally to open early. Include
+only the selected implementation, tests, and minimal API documentation.
 
 - Keep accepted-claim authority in the registry; do not promote a headline because related code merges. Treat accepted canon as release authority, not an irrevisable premise: a correct conditional API may merge with explicit assumptions while contrary evidence proceeds through `challenges` or a separately governed foundational revision.
-- Create or confirm the canonical goal issue before opening the focused PR. Name it using `Advances #N` for partial progress and use `Fixes #N` only after the full goal passes its completion gate.
+- Create or confirm the canonical goal issue before opening the focused external-harvest PR. Use `Advances #N` when the higher goal remains incomplete and `Fixes #N` only after its full completion gate passes.
 - Record the authoring or implementing agent and intended merger. Use a distinct
   merger unless the user or repository owner explicitly authorizes self-merge;
   that exception never supplies missing scientific review.
@@ -161,16 +189,18 @@ Do not generate parallel memory files, multi-attempt archives, or an active debt
 
 ## Protect long campaigns from context fade
 
-Treat the goal as long-lived and each agent run or PR as bounded.
+Treat the goal as long-lived. For an active campaign, the campaign branch—not a
+PR—is the durable context and checkpoint surface.
 
-- After the canonical issue exists, open a draft PR early enough to preserve reviewable milestones.
-- Keep foundation utilities, verified local results, and speculative composition in separate commits.
-- Harvest a unit as soon as it becomes locally complete; do not hold all value hostage to the capstone.
-- Maintain a short PR frontier with `landed`, `current hypothesis`, and `next decisive test` rather than expanding narrative state.
-- If later work becomes repetitive, weakens claims, substitutes ceremony for new evidence, or only restates earlier results, stop that run at the last strong milestone. Merge the harvest, leave the goal open, and hand the frontier to a fresh agent.
+- Keep foundation utilities, verified local results, and speculative composition in separate campaign-branch commits.
+- Maintain a short attempt frontier with `established`, `active obligation`, `routes tried`, `routes remaining`, and `next executable route` rather than expanding narrative state.
+- If work becomes repetitive, weakens claims, substitutes ceremony for new evidence, or only restates earlier results, stop repeating that route—not the rung or campaign. Preserve its verdict, then change method, representation, or candidate concept.
 - Keep the source PR open while a declared refactor or harvest remains live; reassess closure only after the unit lands or the terminal-close test passes.
 
-An individual run may end at a clean handoff without lowering or closing the campaign objective.
+An existing-PR review run may end at a clean operational disposition. An active
+scientific campaign does not end because a unit is reusable, a route failed, a
+milestone is clean, or returns diminished; it continues to positive completion
+or certified exhaustion before opening its PR.
 
 ## Validate proportionately
 

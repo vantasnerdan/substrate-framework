@@ -101,6 +101,8 @@ Do not commission a second review because counts, review prose, or evidence-role
 labels changed.
 
 A synthesis campaign succeeds only when its higher claim is accepted, entered
-in the registry, and pinned in a release. Supporting implementation PRs may
-merge while the canonical issue remains open; they are useful progress, not a
-substitute for theorem promotion.
+in the registry, and pinned in a release. Keep supporting implementation,
+failed proof routes, and useful subclaims as commits on the synthesis campaign
+branch. They do not open a partial PR gate. Submit one campaign PR only after
+the theorem is positively complete or the proof-route space satisfies the
+scientific-exhaustion certificate in `AGENTS.md`.

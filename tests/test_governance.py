@@ -193,6 +193,185 @@ def test_proposal_requires_immutable_source_baseline() -> None:
         validate_proposal(proposal)
 
 
+def campaign_proposal_v2() -> dict:
+    return {
+        "schema_version": 2,
+        "id": "P900",
+        "base_release": "v-test",
+        "source_baseline": "substrate-framework@abc123",
+        "question": "construct the requested positive object",
+        "invariants": ["preserve the accepted normalization"],
+        "allowed_imports": ["real analysis"],
+        "candidates": [
+            {"id": "A", "description": "direct construction"},
+            {"id": "B", "description": "dual representation"},
+        ],
+        "selection_criteria": ["dependency closure"],
+        "claims_proposed": ["C-P900-001"],
+        "comparators_blinded_until": "structural freeze",
+        "status": "active",
+        "candidate_universe": {
+            "scope": "all constructions allowed by the objective and imports",
+            "frozen_from": ["user objective", "accepted invariants"],
+            "route_families": ["direct", "dual"],
+            "append_only_expansions": [],
+        },
+        "obligation_graph": {
+            "nodes": [
+                {
+                    "id": "O1",
+                    "positive_intent": "license the mathematical object",
+                    "requires": [],
+                    "pass_licenses": ["L-object"],
+                    "does_not_license": ["L-numeric"],
+                    "maximum_verdict": "OBJECT_EXISTS",
+                    "failure_scope": "this candidate representation only",
+                    "unlocks": ["O2"],
+                    "status": "active",
+                    "license_chain": {
+                        "object": "typed candidate object",
+                        "symmetry_or_conservation": "normalization identity",
+                        "ensemble": "statics",
+                        "variational_functional": "complete functional",
+                        "admissible_space": "declared constrained space",
+                        "representation_coverage": "full in-scope representation",
+                        "observable": "existence predicate",
+                        "numerical_representation": "not yet licensed",
+                        "permitted_verdict": "OBJECT_EXISTS",
+                    },
+                },
+                {
+                    "id": "O2",
+                    "positive_intent": "validate the observable",
+                    "requires": ["L-object"],
+                    "pass_licenses": ["L-numeric"],
+                    "does_not_license": [],
+                    "maximum_verdict": "CLAIM_ESTABLISHED",
+                    "failure_scope": "the licensed numerical route",
+                    "unlocks": [],
+                    "status": "exhausted",
+                    "license_chain": {
+                        "object": "typed candidate object",
+                        "symmetry_or_conservation": "normalization identity",
+                        "ensemble": "statics",
+                        "variational_functional": "complete functional",
+                        "admissible_space": "declared constrained space",
+                        "representation_coverage": "full in-scope representation",
+                        "observable": "scale-relative residual",
+                        "numerical_representation": "crossed refinement design",
+                        "permitted_verdict": "CLAIM_ESTABLISHED",
+                    },
+                },
+            ]
+        },
+        "license_registry": [
+            {
+                "id": "L-object",
+                "proposition": "the typed object is admissible",
+                "status": "unearned",
+            },
+            {
+                "id": "L-numeric",
+                "proposition": "the discretization resolves the observable",
+                "status": "unearned",
+            },
+        ],
+        "route_frontier": {
+            "active_obligation": "O1",
+            "considered": ["direct", "dual"],
+            "tried": [],
+            "failure_generated": [],
+            "remaining": ["direct", "dual"],
+        },
+        "execution_state": "active",
+        "objective_state": "active",
+        "exhaustion_certificate": {},
+    }
+
+
+def test_campaign_proposal_v2_accepts_active_continuation_state() -> None:
+    validate_proposal(campaign_proposal_v2())
+
+
+def test_campaign_proposal_v2_requires_machine_terminal_fields() -> None:
+    proposal = campaign_proposal_v2()
+    proposal.pop("route_frontier")
+    with pytest.raises(GovernanceError, match="schema v2 missing fields"):
+        validate_proposal(proposal)
+
+
+def test_campaign_proposal_v2_rejects_unknown_license_edges() -> None:
+    proposal = campaign_proposal_v2()
+    proposal["obligation_graph"]["nodes"][0]["pass_licenses"] = ["L-unknown"]
+    with pytest.raises(GovernanceError, match="unknown license ids"):
+        validate_proposal(proposal)
+
+
+def test_campaign_terminal_success_requires_every_obligation_established() -> None:
+    proposal = campaign_proposal_v2()
+    proposal["execution_state"] = "terminal_success"
+    proposal["objective_state"] = "complete"
+    proposal["route_frontier"]["active_obligation"] = None
+    proposal["route_frontier"]["remaining"] = []
+    proposal["obligation_graph"]["nodes"][0]["status"] = "established"
+    proposal["license_registry"][0].update(
+        {"status": "earned", "evidence": "proof.md", "earned_by": "O1"}
+    )
+    with pytest.raises(GovernanceError, match="every obligation established"):
+        validate_proposal(proposal)
+
+
+def test_campaign_terminal_exhaustion_requires_no_routes_and_independent_adversary() -> None:
+    proposal = campaign_proposal_v2()
+    proposal["execution_state"] = "terminal_exhaustion"
+    proposal["route_frontier"]["active_obligation"] = None
+    proposal["route_frontier"]["remaining"] = []
+    proposal["route_frontier"]["considered"] = [
+        "historical direct route",
+        "external dual route",
+        "failure-derived transform",
+    ]
+    proposal["route_frontier"]["tried"] = list(
+        proposal["route_frontier"]["considered"]
+    )
+    proposal["route_frontier"]["failure_generated"] = [
+        "failure-derived transform"
+    ]
+    proposal["obligation_graph"]["nodes"][0]["status"] = "exhausted"
+    proposal["exhaustion_certificate"] = {
+        "historical_routes": ["historical direct route"],
+        "external_routes": ["external dual route"],
+        "failure_generated_routes": ["failure-derived transform"],
+        "equivalence_partition": [{"class": "direct", "members": ["A"]}],
+        "adversarial_generation_artifact": "attempts/adversarial.md",
+        "adversarial_reviewer": "independent-agent",
+        "adversarial_reviewer_role": "author",
+        "infinite_class_coverage": ["analytic no-go for continuous variants"],
+        "routes_remaining": [],
+        "route_verdicts": [
+            {
+                "route": route,
+                "verdict": "route refuted",
+                "evidence": "attempts/routes.md",
+                "continuation": "method, representation, and concept ladder complete",
+            }
+            for route in proposal["route_frontier"]["considered"]
+        ],
+        "review": "coverage checked against the frozen universe",
+    }
+    with pytest.raises(GovernanceError, match="non-author non-implementer"):
+        validate_proposal(proposal)
+
+    proposal["exhaustion_certificate"]["adversarial_reviewer_role"] = (
+        "non_author_non_implementer"
+    )
+    validate_proposal(proposal)
+
+    proposal["route_frontier"]["remaining"] = ["untried route"]
+    with pytest.raises(GovernanceError, match="cannot retain routes_remaining"):
+        validate_proposal(proposal)
+
+
 def test_fixed_theorem_synthesis_needs_one_route_not_competing_mechanisms() -> None:
     proposal = {
         "id": "P000",

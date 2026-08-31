@@ -93,13 +93,17 @@ review because prose, counts, or evidence roles changed.
 ## Attempts and Frontier
 
 Preserve failed proof routes append-only and state the next materially different
-route. Supporting implementation can merge without closing the theorem issue.
+route. Keep supporting implementation and locally complete lemmas as commits on
+the synthesis campaign branch; do not open a rung or partial theorem PR.
 
 ## Done Gate
 
 Close only when the exact higher claim is individually accepted, registered,
 dependency-closed, pinned in a release, and free of hidden in-scope debt. An
-explicit interpretive hypothesis or honest exclusion is not debt.
+explicit interpretive hypothesis or honest exclusion is not debt. If the
+positive theorem remains unproved, continue materially different proof routes
+until the scientific-exhaustion certificate in `AGENTS.md` passes. Only then may
+the terminal campaign PR open, using `Advances` rather than `Fixes`.
 ```
 
 Matching proposal fields:

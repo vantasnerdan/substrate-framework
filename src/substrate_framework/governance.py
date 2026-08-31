@@ -45,6 +45,16 @@ REQUIRED_PROPOSAL_FIELDS = {
     "status",
 }
 
+REQUIRED_PROPOSAL_V2_FIELDS = {
+    "candidate_universe",
+    "obligation_graph",
+    "license_registry",
+    "route_frontier",
+    "execution_state",
+    "objective_state",
+    "exhaustion_certificate",
+}
+
 REQUIRED_RELEASE_FIELDS = {
     "schema_version",
     "release",
@@ -125,6 +135,243 @@ def _detect_dependency_cycles(graph: dict[str, list[str]]) -> None:
 
     for claim_id in graph:
         visit(claim_id, ())
+
+
+def _validate_proposal_v2(data: dict[str, Any], source: str) -> None:
+    """Validate the machine-readable campaign continuation and terminal gates."""
+
+    missing = REQUIRED_PROPOSAL_V2_FIELDS - data.keys()
+    if missing:
+        raise GovernanceError(f"{source} schema v2 missing fields: {sorted(missing)}")
+
+    universe = data["candidate_universe"]
+    if not isinstance(universe, dict):
+        raise GovernanceError(f"{source}: candidate_universe must be a mapping")
+    _nonempty_string(universe.get("scope"), "candidate_universe.scope", source)
+    frozen_from = _as_string_list(
+        universe.get("frozen_from"), "candidate_universe.frozen_from", source
+    )
+    route_families = _as_string_list(
+        universe.get("route_families"), "candidate_universe.route_families", source
+    )
+    _as_string_list(
+        universe.get("append_only_expansions"),
+        "candidate_universe.append_only_expansions",
+        source,
+    )
+    if not frozen_from or not route_families:
+        raise GovernanceError(
+            f"{source}: candidate_universe needs frozen sources and route families"
+        )
+
+    licenses = data["license_registry"]
+    if not isinstance(licenses, list) or not licenses:
+        raise GovernanceError(f"{source}: license_registry must be a non-empty list")
+    license_ids: set[str] = set()
+    for index, license_record in enumerate(licenses):
+        owner = f"{source}.license_registry[{index}]"
+        if not isinstance(license_record, dict):
+            raise GovernanceError(f"{owner} must be a mapping")
+        license_id = _nonempty_string(license_record.get("id"), "id", owner)
+        if license_id in license_ids:
+            raise GovernanceError(f"{source}: duplicate license id {license_id!r}")
+        license_ids.add(license_id)
+        _nonempty_string(license_record.get("proposition"), "proposition", owner)
+        status = license_record.get("status")
+        if status not in {"unearned", "earned", "refuted", "blocked"}:
+            raise GovernanceError(f"{owner}: invalid status {status!r}")
+        if status != "unearned":
+            _nonempty_string(license_record.get("evidence"), "evidence", owner)
+            _nonempty_string(license_record.get("earned_by"), "earned_by", owner)
+
+    graph = data["obligation_graph"]
+    if not isinstance(graph, dict) or not isinstance(graph.get("nodes"), list):
+        raise GovernanceError(f"{source}: obligation_graph.nodes must be a list")
+    nodes = graph["nodes"]
+    if not nodes:
+        raise GovernanceError(f"{source}: obligation_graph must contain a node")
+    node_ids: set[str] = set()
+    node_records: list[dict[str, Any]] = []
+    chain_fields = (
+        "object",
+        "symmetry_or_conservation",
+        "ensemble",
+        "variational_functional",
+        "admissible_space",
+        "representation_coverage",
+        "observable",
+        "numerical_representation",
+        "permitted_verdict",
+    )
+    for index, node in enumerate(nodes):
+        owner = f"{source}.obligation_graph.nodes[{index}]"
+        if not isinstance(node, dict):
+            raise GovernanceError(f"{owner} must be a mapping")
+        node_id = _nonempty_string(node.get("id"), "id", owner)
+        if node_id in node_ids:
+            raise GovernanceError(f"{source}: duplicate obligation id {node_id!r}")
+        node_ids.add(node_id)
+        node_records.append(node)
+        for field in ("positive_intent", "maximum_verdict", "failure_scope"):
+            _nonempty_string(node.get(field), field, owner)
+        for field in ("requires", "pass_licenses", "does_not_license", "unlocks"):
+            _as_string_list(node.get(field), field, owner)
+        if node.get("status") not in {
+            "pending",
+            "active",
+            "established",
+            "exhausted",
+            "refuted",
+        }:
+            raise GovernanceError(f"{owner}: invalid status {node.get('status')!r}")
+        chain = node.get("license_chain")
+        if not isinstance(chain, dict):
+            raise GovernanceError(f"{owner}: license_chain must be a mapping")
+        for field in chain_fields:
+            _nonempty_string(chain.get(field), f"license_chain.{field}", owner)
+
+    for node in node_records:
+        owner = f"{source}.obligation_graph.{node['id']}"
+        unknown_licenses = (
+            set(node["requires"]) | set(node["pass_licenses"])
+        ) - license_ids
+        if unknown_licenses:
+            raise GovernanceError(
+                f"{owner}: unknown license ids {sorted(unknown_licenses)}"
+            )
+        unknown_nodes = set(node["unlocks"]) - node_ids
+        if unknown_nodes:
+            raise GovernanceError(
+                f"{owner}: unknown unlocked obligations {sorted(unknown_nodes)}"
+            )
+        if node["status"] == "established":
+            unearned_outputs = [
+                license_id
+                for license_id in node["pass_licenses"]
+                if next(
+                    item["status"]
+                    for item in licenses
+                    if item["id"] == license_id
+                )
+                != "earned"
+            ]
+            if unearned_outputs:
+                raise GovernanceError(
+                    f"{owner}: established obligation has unearned pass licenses "
+                    f"{sorted(unearned_outputs)}"
+                )
+
+    frontier = data["route_frontier"]
+    if not isinstance(frontier, dict):
+        raise GovernanceError(f"{source}: route_frontier must be a mapping")
+    for field in ("considered", "tried", "failure_generated", "remaining"):
+        _as_string_list(frontier.get(field), f"route_frontier.{field}", source)
+    active_obligation = frontier.get("active_obligation")
+    if active_obligation is not None and active_obligation not in node_ids:
+        raise GovernanceError(
+            f"{source}: route_frontier.active_obligation is not an obligation id"
+        )
+
+    execution_state = data["execution_state"]
+    objective_state = data["objective_state"]
+    if execution_state not in {"active", "terminal_success", "terminal_exhaustion"}:
+        raise GovernanceError(f"{source}: invalid execution_state {execution_state!r}")
+    if objective_state not in {"active", "complete"}:
+        raise GovernanceError(f"{source}: invalid objective_state {objective_state!r}")
+
+    active_nodes = [node["id"] for node in node_records if node["status"] == "active"]
+    if execution_state == "active":
+        if objective_state != "active" or not active_nodes:
+            raise GovernanceError(
+                f"{source}: active execution needs an active objective and obligation"
+            )
+        if active_obligation not in active_nodes:
+            raise GovernanceError(
+                f"{source}: active_obligation must identify an active obligation"
+            )
+        return
+
+    pending_nodes = [node["id"] for node in node_records if node["status"] == "pending"]
+    if active_nodes or pending_nodes or active_obligation is not None:
+        raise GovernanceError(
+            f"{source}: terminal campaign cannot retain an active or pending obligation"
+        )
+    if frontier["remaining"]:
+        raise GovernanceError(
+            f"{source}: terminal campaign cannot retain routes_remaining"
+        )
+    if execution_state == "terminal_success":
+        if objective_state != "complete" or any(
+            node["status"] != "established" for node in node_records
+        ):
+            raise GovernanceError(
+                f"{source}: terminal success requires the objective and every obligation established"
+            )
+        return
+
+    if objective_state != "active":
+        raise GovernanceError(
+            f"{source}: terminal exhaustion leaves the positive objective active"
+        )
+    certificate = data["exhaustion_certificate"]
+    if not isinstance(certificate, dict):
+        raise GovernanceError(f"{source}: exhaustion_certificate must be a mapping")
+    for field in (
+        "historical_routes",
+        "external_routes",
+        "failure_generated_routes",
+        "infinite_class_coverage",
+        "routes_remaining",
+    ):
+        _as_string_list(certificate.get(field), f"exhaustion_certificate.{field}", source)
+    route_verdicts = certificate.get("route_verdicts")
+    if not isinstance(route_verdicts, list) or not route_verdicts:
+        raise GovernanceError(
+            f"{source}: exhaustion_certificate.route_verdicts must be non-empty"
+        )
+    verdict_routes: set[str] = set()
+    for index, route_verdict in enumerate(route_verdicts):
+        owner = f"{source}.exhaustion_certificate.route_verdicts[{index}]"
+        if not isinstance(route_verdict, dict):
+            raise GovernanceError(f"{owner} must be a mapping")
+        route = _nonempty_string(route_verdict.get("route"), "route", owner)
+        if route in verdict_routes:
+            raise GovernanceError(f"{source}: duplicate route verdict {route!r}")
+        verdict_routes.add(route)
+        _nonempty_string(route_verdict.get("verdict"), "verdict", owner)
+        _nonempty_string(route_verdict.get("evidence"), "evidence", owner)
+        _nonempty_string(route_verdict.get("continuation"), "continuation", owner)
+    considered_routes = set(frontier["considered"])
+    if verdict_routes != considered_routes:
+        raise GovernanceError(
+            f"{source}: exhaustion route verdicts must cover every considered route exactly"
+        )
+    inventoried_routes = set(certificate["historical_routes"]) | set(
+        certificate["external_routes"]
+    ) | set(certificate["failure_generated_routes"])
+    if not inventoried_routes <= considered_routes:
+        raise GovernanceError(
+            f"{source}: exhaustion inventories contain unconsidered routes"
+        )
+    partition = certificate.get("equivalence_partition")
+    if not isinstance(partition, list) or not partition:
+        raise GovernanceError(
+            f"{source}: exhaustion_certificate.equivalence_partition must be non-empty"
+        )
+    if certificate["routes_remaining"]:
+        raise GovernanceError(
+            f"{source}: exhaustion certificate cannot retain routes_remaining"
+        )
+    for field in (
+        "adversarial_generation_artifact",
+        "adversarial_reviewer",
+        "review",
+    ):
+        _nonempty_string(certificate.get(field), f"exhaustion_certificate.{field}", source)
+    if certificate.get("adversarial_reviewer_role") != "non_author_non_implementer":
+        raise GovernanceError(
+            f"{source}: exhaustion adversary must be a non-author non-implementer"
+        )
 
 
 def validate_registry(data: dict[str, Any]) -> list[str]:
@@ -380,6 +627,11 @@ def validate_proposal(data: dict[str, Any], source: str = "proposal") -> None:
             raise GovernanceError(
                 f"{source}: candidates[{index}] needs id and description"
             )
+    schema_version = data.get("schema_version", 1)
+    if schema_version not in {1, 2}:
+        raise GovernanceError(f"{source}: unsupported schema_version {schema_version!r}")
+    if schema_version == 2:
+        _validate_proposal_v2(data, source)
 
 
 def validate_release(

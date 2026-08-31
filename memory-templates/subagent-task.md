@@ -1,6 +1,9 @@
 # Delegated Worker Contract Template
 
-Use only when delegation is authorized. Give each worker one file and a disjoint write surface. Failure is returned as attempt evidence with a next route; it never masquerades as completion.
+Use only when delegation is authorized. Give each worker one bounded route and a
+disjoint write surface. The worker does not open a PR. Failure is returned as
+attempt evidence with its mechanism and next route; it never masquerades as
+completion, exhaustion, or permission for the parent campaign to stop.
 
 ```md
 ---
@@ -48,7 +51,11 @@ Confirm the deliverable and applicable success conditions from `AGENTS.md`; othe
 name the next route as its positive contribution to resolution — the object it
 constructs, the question it closes, or the distinction it establishes, phrased as what
 becomes true in the record when it succeeds. A refutation counts when stated through
-its mechanism; pure avoidance or risk reduction is an unfinished answer.
+its mechanism; pure avoidance or risk reduction is an unfinished answer. A worker
+may finish its assigned route boundary, but the parent executor must reconcile
+the result and continue the active obligation through method repair,
+representation change, and alternative concepts until campaign success or
+certified exhaustion.
 
 ## Cross-References
 Link parent contract, proposal, claims, artifacts, and sibling awareness paths.

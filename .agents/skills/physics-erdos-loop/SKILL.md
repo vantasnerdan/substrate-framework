@@ -1,6 +1,6 @@
 ---
 name: physics-erdos-loop
-description: Run persistent, verifier-backed physics research and framework reconciliation from candidate generation through claim-level promotion. Use for physics derivations, equations, ODE/PDE work, symbolic or numeric checks, simulations, Lean formalization, campaign design, claim migration, framework-wide consistency audits, or any proposal that might change accepted scientific claims. Enforces recall, mechanism comparison when scientifically open, natural framework fit, append-only attempts, one bounded constructive review, claim-appropriate verification, impact-bounded replay, and generated canonical records.
+description: Run persistent, verifier-backed physics research and framework reconciliation from candidate generation through claim-level promotion. Use for physics derivations, equations, ODE/PDE work, symbolic or numeric checks, simulations, Lean formalization, campaign design, claim migration, framework-wide consistency audits, or any proposal that might change accepted scientific claims. Enforces typed problem deconstruction, campaign-terminal PRs, exhaustive route continuation, natural framework fit, append-only attempts, claim-appropriate verification, impact-bounded replay, and generated canonical records.
 ---
 
 # Physics Erdős Loop
@@ -16,9 +16,13 @@ class, formalism, or target statement — rather than re-examine a known route u
 tighter standards; repeating a route with only stricter evidence thresholds is drift,
 not diligence. A new acceptance criterion invented mid-campaign must name the observed
 failure it prevents, be recorded once, and bind future attempts rather than
-retroactively invalidating finished ones. Close each attempt with a decisive verdict on
-its own question — established, refuted with mechanism, or blocked with the missing
-construction named — so the next agent inherits a direction, not a smaller question.
+retroactively invalidating finished ones. Close each attempt with two typed
+fields: `route_verdict` is established, refuted with mechanism, or blocked with
+that route's missing construction; `evidence_scope` states the strongest earned
+scientific meaning, such as `NUMERICALLY_UNRESOLVED` or
+`REPRESENTATION_SCOPED`. Neither field propagates automatically to the
+obligation or campaign. The next attempt inherits a direction, not a smaller
+question.
 
 Success requires the requested object plus all of these gates:
 
@@ -33,6 +37,9 @@ Success requires the requested object plus all of these gates:
 - empty debt ledger.
 
 Read [governance.md](references/governance.md) before changing a claim, convention, invariant, or canonical API. Read [oracles.md](references/oracles.md) when selecting or auditing verification.
+Read [problem-deconstruction.md](references/problem-deconstruction.md) before
+freezing a multi-rung campaign or any numerical representation of a physical
+object, ensemble, localization, mode, stability, force, or interaction claim.
 
 ## Supporting skills
 
@@ -65,10 +72,28 @@ Load these at the moments they change decisions, not after results:
   applicability test, or provenance record. Only the first is expected to prove
   the whole encoded statement; label the others instead of discarding them.
 - Exact proof and empirical applicability are separate obligations: measurement can test nature without becoming the proof of a symbolic or formal implication.
-- A campaign completion decision, scientific claim decision, and PR merge decision are independent. Use `research-pr-harvest` for the merge decision.
+- A campaign completion decision, scientific claim decision, and PR merge decision are independent. An active campaign nevertheless opens no PR until positive completion or certified exhaustion; use `research-pr-harvest` only for an externally supplied PR or after that terminal gate opens.
 - Numeric agreement is a comparator, never a concept-selection mechanism or hidden derivation input.
 - A failed concept is evidence about that concept. It is not permission to retrofit the framework around it.
 - An attempt is bounded and append-only. The effort continues until the success contract is met or the user changes the objective.
+
+### License the object before measuring it
+
+Every computational claim follows the typed chain `mathematical object ->
+symmetry or conservation license -> ensemble -> admissible representation ->
+observable -> numerical approximation -> permitted verdict`. Before a
+downstream node can earn scientific evidence, its manifest records the upstream
+licenses it consumes. A computable tangent, finite quadratic norm, fitted
+frequency, sampled spectrum, or stable discretization does not create a
+symmetry, conserved charge, cyclic coordinate, physical ensemble, or observable.
+
+For each obligation node record `requires`, `pass_licenses`,
+`does_not_license`, `maximum_verdict`, `failure_scope`, and `unlocks`. Passing or
+failing a node changes only the propositions named there. After success, advance
+to the next unsatisfied parent obligation. After route failure, keep the node
+active and continue through method repair, representation change, and
+materially different candidate generation. No fixed number of routes proves
+exhaustion.
 
 ## Phase 0 — establish authority and recall
 
@@ -87,6 +112,7 @@ Run `.agents/skills/physics-erdos-loop/scripts/preflight.sh` to check the local 
 Instantiate `memory-templates/research-arc.md` for physics work or `campaign-proposal.md` for a campaign. State:
 
 - the exact positive deliverable;
+- the parent-to-obligation closure graph and the next dependency each node unlocks;
 - the accepted base release;
 - definitions, variables, units, domains, quantifiers, and conventions;
 - invariants that must survive;
@@ -146,6 +172,17 @@ Use [verify_claim.py](assets/verify_claim.py) for exact or general claim checks 
 
 Create `attempts/0001/`, `0002/`, and so on. Preserve candidate source, command, environment, stdout, stderr, elapsed time, verdict, and diagnosed mechanism. Never overwrite an attempt. Capture stdout into the attempt directory on first execution — records generated by rerunning already-completed verifiers re-spend exactly the compute the records exist to justify.
 
+Each attempt records the active obligation, route verdict, failure scope,
+licenses earned and still missing, routes considered/tried/remaining, and the
+next materially different route. A numerical route may earn `refuted` only when
+its object, ensemble, observable, admissibility, and representation coverage are
+licensed and a converged error enclosure excludes the candidate's success set.
+Nonconvergence, branch loss, continuum drift, unresolved state error, singular
+normalization, imposed boundary support, or an incomplete perturbation space
+sets `evidence_scope: NUMERICALLY_UNRESOLVED` or
+`evidence_scope: REPRESENTATION_SCOPED`; it does not propagate a scientific
+refutation to the obligation.
+
 After failure, choose the next action from the diagnosis:
 
 - legacy-library alias only → detect direct `np.trapz`, imported `trapz`, dynamic `getattr(np, "trapz")`, and eager nested-default access; repair the mutable script to `np.trapezoid` or a safe two-step fallback and rerun the same scientific route; for immutable hash-pinned source, preserve the native abort and run an explicit alias-only compatibility replay, without counting the environment abort as a rejected scientific candidate;
@@ -162,14 +199,22 @@ construction and selection logic that actually worked, and record the
 transferable assumptions and the present mismatch. External research may
 supplement this step but does not replace framework-context reconciliation.
 
-Persistence applies to the scientific objective, not to unbounded expansion of
-one review or PR. At the frozen task boundary, try materially different routes;
-when a clean milestone is ready or the user narrows the task, land or hand off
-that boundary and leave other questions on the campaign frontier.
+Persistence applies to the scientific objective, not repeated work on a dead
+route. Commit clean milestones on the campaign branch and continue immediately;
+do not open, land, or hand off a rung-level PR. Stop repeating a route when its
+mechanism is known, then change method, representation, or concept until the
+obligation is satisfied or the complete solution space meets the exhaustion
+contract in `AGENTS.md`.
 
 ## Phase 5 — audit the verifier once at the frozen boundary
 
 Choose the strongest practical oracle using [oracles.md](references/oracles.md), then audit it against the named claim:
+
+Audit the objective bridge before auditing predicates. Record the computed
+predicate, the mathematical proposition it implies, every upstream license, the
+maximum verdict it can earn, the parent obligations it advances, and the
+questions it cannot decide. A correctly computed predicate with an absent
+bridge is exploratory or provenance evidence only.
 
 The audit asks whether the verifier establishes the named claim and where its
 positive support ends. Do not create a second meta-verifier, add checks for
@@ -263,7 +308,20 @@ For accepted claims:
 
 ## Phase 10 — done gate
 
-Declare the campaign objective complete only when every applicable item in the success contract passes and the in-boundary debt ledger is empty. An honest failure leaves the objective active with a new candidate or repair queued. It does not prevent an individual PR or agent run from ending at a clean harvest checkpoint: use `research-pr-harvest` to merge independently correct, novel, reusable units, name and keep open the canonical goal issue, record the positive result retained, minimum correction if any, and one next decisive action, then hand off the frontier. Keep a source PR open while a finite repair or harvest is live; close it unmerged only after the harvest skill's terminal-close test. Missing work toward the larger goal is frontier rather than debt unless a merged or promoted unit promises it. A pause caused by user authority or an external dependency preserves the active contract and exact next executable action; it is not scientific completion. When a repeated workflow defect or tooling gotcha is discovered, correct and consolidate the relevant instruction in `AGENTS.md`, this skill, and the applicable memory template; do not merely append another overlapping rule.
+Declare the campaign positively complete only when every applicable item in the
+success contract passes and the in-boundary debt ledger is empty. Otherwise
+continue until the scientific-exhaustion certificate in `AGENTS.md` passes. The
+campaign branch is the checkpoint surface; no rung, subclaim, utility, partial
+goal, diminishing-return point, or clean milestone opens the PR gate or ends the
+run. After positive completion or certified exhaustion, freeze and submit one
+terminal campaign PR. An exhaustion PR preserves the strongest supported
+results without claiming the positive objective and uses `Advances`, not
+`Fixes`, unless success also passed. A pause caused by user authority, runtime,
+or an external dependency preserves the active contract and exact next
+executable route; it is not scientific exhaustion. When a repeated workflow
+defect or tooling gotcha is discovered, correct and consolidate the relevant
+instruction in `AGENTS.md`, this skill, and the applicable memory template; do
+not merely append another overlapping rule.
 
 ## Working with delegated agents
 

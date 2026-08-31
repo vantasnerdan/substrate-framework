@@ -15,6 +15,24 @@ verdict, while preserving the strongest useful combined statement. Do not split
 a claim into trivial fragments merely to simplify review. Discover numerically,
 then prove symbolically or formally when the structure permits.
 
+## Audit the objective bridge first
+
+Before selecting or auditing an oracle, record this bridge:
+
+```text
+computed predicate
+-> mathematical proposition
+-> upstream object/ensemble/representation/observable licenses
+-> maximum scientific verdict
+-> exact effect on the parent campaign objective
+```
+
+Also name the nearby questions the predicate cannot decide. A perfectly
+verified finite inertia, sampled spectrum, residual, fit, or energy difference
+does not acquire a missing symmetry, conserved charge, admissible ensemble,
+branch identity, or physical observable through numerical accuracy. With an
+absent bridge, the result is exploratory or provenance evidence only.
+
 Proof establishes the encoded mathematical statement. Measurement, numerics,
 and simulation test applicability or consequences; record them as separate
 evidence scopes rather than treating measurement as the definition of proof.
@@ -33,6 +51,11 @@ An identity that holds only because both sides contain the same copied literal i
 
 ## Numerical checks
 
+- Confirm the background is stationary in the claimed admissible space, the
+  ensemble and observable are licensed, the representation covers the claimed
+  perturbations, and the error enclosure can reach the decision boundary. If
+  any of these fail, use `NUMERICALLY_UNRESOLVED` or a representation-scoped
+  verdict rather than refuting the physical candidate or question.
 - Use the numerical formulation natural to the claim: for example `scipy.integrate.solve_ivp` for an ODE or method-of-lines system, `solve_bvp` for a two-point BVP, `scipy.sparse.linalg` for large sparse spectra, and appropriate SciPy quadrature, root, or optimization routines for those claims.
 - For PDEs, state the spatial method (finite difference, finite volume, finite element, spectral, or another justified discretization), boundary implementation, mesh, time integrator, stability restriction, and error norm. A generic integrator does not validate an unspecified PDE discretization.
 - Record precision, solver, mesh/domain, timestep, tolerances, and stopping criteria.

@@ -1,6 +1,10 @@
-# Delegated Continuation PR Template
+# Terminal Campaign or External PR Template
 
-This template separates a bounded PR or agent run from the long-lived positive framework objective. Partial progress does not complete the goal, but independently correct, novel, reusable work may be harvested and merged without carrying failed-attempt or debt-ledger bloat into main.
+Use this template for an externally supplied PR or after a scientific campaign's
+positive-completion or exhaustion gate has opened. It does not authorize an
+active campaign executor to create a rung, milestone, subclaim, utility, or
+partial-goal PR. Active campaigns checkpoint on their branch and use
+`campaign-proposal.md` or `research-arc.md` until terminal.
 
 ```md
 ---
@@ -28,8 +32,16 @@ Link the proposal manifest, invariants, allowed imports, at least two candidates
 ## Significant Advance
 Describe the importable object, claim, or dependency closure this PR must add. Documentation-only reinterpretation and naive bolt-ons are insufficient.
 
-## Harvest Checkpoints
-Use `$research-pr-harvest` whenever a local unit becomes complete. Keep utilities, verified local results, and speculative composition in separable commits so later context fade cannot erase earlier value.
+## PR Eligibility
+State whether this is an externally supplied PR or a terminal campaign PR. For
+a terminal campaign, attach either the complete positive-success receipt or the
+scientific-exhaustion certificate. A local reusable unit is not eligibility.
+Keep utilities, verified local results, and speculative composition separable
+inside the terminal campaign diff so their evidence roles remain auditable.
+If review exposes an untried plausible route, active obligation, broken license
+edge, or invalid universe-coverage argument, terminal eligibility is revoked:
+return the whole effort to the campaign branch and continue there. Do not merge
+the partial boundary or open a follow-up rung PR.
 
 - Canonical goal issue: <number/link>
 - Issue created before PR: <yes and timestamp/link evidence>
@@ -68,15 +80,18 @@ follow-up; do not assign workers or open a new campaign during this review.
 | --- | --- | --- | --- | --- |
 |  |  |  |  |  |
 
-## Continuation Cycles
-Open a new cycle only after a materially different scientific attempt or a
-correction that changes the claim boundary. Review prose, counts, handoff edits,
-and repeated checks do not create cycles.
+## Correction Cycles
+Open a correction cycle only for a finite repair inside an otherwise eligible
+terminal or external PR. A materially different scientific attempt means the
+campaign was not terminal: revoke eligibility and continue on the campaign
+branch. Review prose, counts, handoff edits, and repeated checks do not create
+cycles.
 
 ### Cycle <n>
 Record the positive result, one remaining decisive gate, changed artifact, and
-the one stale check. The campaign remains active until success, but a bounded
-agent run may land a strong milestone and hand off without repeating the cycle.
+the one stale check. If the campaign is active, this template is premature:
+return to the campaign branch and continue until positive completion or
+certified exhaustion rather than landing or handing off a milestone.
 
 ## Framework-Fit and Foundation Gate
 Record why the selected concept fits naturally. If it does not, determine whether the mismatch is a candidate defect or independent evidence against canon. Reject a defective candidate and try another; route independent canonical inconsistency through a separate `challenges` or foundational-revision proposal with alternate repairs, minimum-change rationale, migration map, and global replay. A conflict blocks promotion, not a correct conditional artifact.
@@ -114,16 +129,17 @@ the goal active. State that action as its positive contribution to resolution â€
 object it constructs, the question it closes, or the distinction it establishes, as
 what becomes true in the record when it succeeds; a refutation counts when stated
 through its mechanism, and pure avoidance or risk reduction is an unfinished answer.
-A clean harvest handoff may end this PR or agent run without pretending the campaign
-is complete.
+Only review of an externally supplied PR may end at a clean harvest handoff
+without completing its higher goal. An active campaign cannot use a handoff as
+its stopping condition and must not have opened this PR.
 
 ## Done Gate
 For campaign completion, check applicable success conditions from `AGENTS.md`
 and run the impact-selected fixed/scoped/full workflow once at the unchanged
-promotion boundary. Full validation is not automatic. For a progress merge,
-require local correctness, a proportional receipt, and either a distinct merger
-or explicit owner self-merge direction; leave unsupported headline claims
-unpromoted and the campaign open.
+promotion boundary. Full validation is not automatic. For a terminal exhaustion
+PR, require the exhaustion certificate, proportional validation of supported
+units, and `Advances` rather than `Fixes`. Progress merges from an active
+campaign are ineligible; checkpoint them on the campaign branch instead.
 
 ## Cross-References
 Link parent/child contracts, proposal, claims, campaigns, source, tests, release, generated docs, and PR.

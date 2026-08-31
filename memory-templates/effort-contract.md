@@ -17,7 +17,7 @@ status: active
 ---
 
 ## Goal and Success Contract
-This effort delivers <exact positive result>. It is complete only when the object exists, accepted dependencies close, framework fit is established, one claim-appropriate oracle with applicable sensitivity evidence passes, affected consumers replay, implementation is importable, canonical records agree, and no hidden in-boundary debt remains. A failed attempt, no-go, residual, bound, or obstruction is not completion. Delivery to the requester happens only after the PRs are reviewed and merged; pre-merge, send status updates only, never a delivery claim.
+This effort delivers <exact positive result>. It is complete only when the object exists, accepted dependencies close, framework fit is established, one claim-appropriate oracle with applicable sensitivity evidence passes, affected consumers replay, implementation is importable, canonical records agree, and no hidden in-boundary debt remains. A failed attempt, no-go, residual, bound, or obstruction is not completion. For a scientific campaign, keep all rungs and milestones on the campaign branch and open one PR only after positive completion or certified exhaustion; pre-merge, send status updates only, never a delivery claim.
 
 ## Accepted Baseline
 The work starts from release <id and commit>. Record accepted claims and source artifacts actually read; chronology and memory prose are not authority.
@@ -30,10 +30,17 @@ Work proceeds through these dependency-ordered steps and continues after failed 
 
 1. [ ] Recall and source verification.
 2. [ ] Candidate and selection-criteria preregistration.
-3. [ ] Importable implementation.
-4. [ ] Verifier and sensitivity audit.
-5. [ ] Framework-fit and downstream replay.
-6. [ ] Claim review, promotion, generation, and memory synchronization.
+3. [ ] Mathematical-object and symmetry/conservation license.
+4. [ ] Ensemble, admissible-representation, and observable license.
+5. [ ] Importable implementation.
+6. [ ] Verifier, objective-bridge, and sensitivity audit.
+7. [ ] Framework-fit and downstream replay.
+8. [ ] Claim review, promotion, generation, and memory synchronization.
+
+For every dependency node record its positive intent, prerequisites, licenses
+earned, nearby interpretations it does not license, maximum verdict, failure
+scope, and what it unlocks. Passing a node activates the next dependency;
+failing one route leaves the node active.
 
 ## Attempts
 Attempts are append-only and individually reproducible. A failed row must name the diagnosed mechanism and next materially different attempt. A missing legacy library alias is environment compatibility, not a failed scientific candidate: detect direct, imported, and dynamic `np.trapz` access, including eagerly evaluated nested `getattr` defaults; repair mutable code to `np.trapezoid` or a safe two-step fallback, or record an alias-only replay for immutable source, before adjudicating the unchanged route.
@@ -43,9 +50,9 @@ attempt also names the nearest accepted analogue, the source-verified
 construction that can transfer, and the mismatch that prevents literal reuse.
 Do not use memory prose or a generic external method as substitute authority.
 
-| Attempt | Candidate or repair | Artifact and command | Verdict | Mechanism | Next attempt |
-| --- | --- | --- | --- | --- | --- |
-| 0001 |  |  |  |  |  |
+| Attempt | Obligation | Candidate or repair | Artifact and command | Route verdict and scope | Licenses missing | Routes remaining |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0001 |  |  |  |  |  |  |
 
 ## Validation
 Validation covers the actual objective, verifier sensitivity, limits, conventions, dependencies, consumers, and generated state—not merely an exit code or check count. No freestyle writing: every claim in any produced document is backed by a machine check (SymPy, Lean, SciPy, or numerical) or by an explicit citation, and check/test names map to the document's equation or claim numbers so text-to-proof agreement is auditable.
@@ -77,8 +84,20 @@ ownership or lifecycle detail only when a handoff is actually required.
 ## Canonicalization
 List claim-registry changes, release manifest, extracted APIs, immutable campaign record, generated docs, and accepted-memory synchronization. Confirm no proposal prose was merged into canonical memory.
 
+## Scientific Exhaustion Certificate
+For a scientific campaign that does not reach positive success, attach the
+candidate-universe definition, complete route/equivalence inventory,
+repair/reformulation/alternative records, independent candidate-generation
+challenge, infinite-class coverage arguments, empty remaining-route list, and
+exhaustion review. Leave this incomplete rather than interpreting effort or a
+finite failure ladder as exhaustion.
+
 ## Done Gate
-All ten success conditions in `AGENTS.md` are checked individually. If any is false, record the next action and leave status active.
+All ten success conditions in `AGENTS.md` are checked individually. If any is
+false, continue the active obligation until the positive contract passes or the
+scientific-exhaustion certificate passes. A clean milestone, reusable unit,
+subclaim, or context boundary does not open a PR or end the effort. The terminal
+campaign PR records either the success receipt or exhaustion certificate.
 
 ## Cross-References
 Link the proposal, claims, source modules, tests, campaign record, release, generated docs, and related memory entries.

@@ -21,8 +21,10 @@ A pinned accepted release and accepted claim registry outrank a newer commit,
 confident prose, a passing script, or an attractive numerical match. Never edit
 `docs/generated/` or `migration/source-claims.yaml` by hand. This authority
 controls release and promotion decisions; canon remains scientifically
-challengeable, and a truthful conditional artifact may merge without claim
-promotion while a challenge is reviewed.
+challengeable, and a truthful conditional artifact may enter main without claim
+promotion while a challenge is reviewed. During an active campaign it remains
+on the campaign branch until the terminal PR gate opens; conditional status does
+not create a partial-PR exception.
 
 ## 2. Coordinate before editing
 
@@ -124,7 +126,7 @@ file from [`memory-templates/`](memory-templates/) before substantive work:
 | Long research program | `research-arc.md` |
 | Independent claim review | `claim-review.md` |
 | Evidence attachment or theorem-group role audit | `evidence-attachment-review.md` |
-| Bounded continuation or harvest PR | `delegated-continuation-pr-template.md` |
+| Terminal campaign or externally supplied harvest PR | `delegated-continuation-pr-template.md` |
 | Explicitly authorized subagent slice | `subagent-task.md` |
 
 Keep attempts append-only. Memory records active plans, decisions, and reusable
@@ -147,9 +149,10 @@ must read the corresponding `SKILL.md` in full and follow the same workflow.
   campaign composes accepted claims into one higher SymPy- or Lean-checked
   theorem, including a conditional interpretive theorem.
 - Use [`research-pr-harvest`](.agents/skills/research-pr-harvest/SKILL.md) when a
-  scientific PR URL or number is supplied, when deciding what is mergeable, or
-  when harvesting durable units from an incomplete campaign. Also load
-  `physics-erdos-loop` when the PR contains physics claims.
+  scientific PR URL or number is supplied or when processing a campaign PR after
+  its success-or-exhaustion gate has opened. It never authorizes an active
+  campaign executor to create rung, milestone, or partial-progress PRs. Also
+  load `physics-erdos-loop` when the PR contains physics claims.
 - Use [`small-ratio-numerics`](.agents/skills/small-ratio-numerics/SKILL.md) when a
   computed quantity of interest is orders of magnitude below the dominant scale —
   soft modes, weak forces, tiny splittings — or when results move with box size,
@@ -185,9 +188,11 @@ campaigns. Do not duplicate canonical helpers in campaign code, edit immutable
 campaign history, commit host-specific artifacts, or mix unrelated cleanup into
 the branch.
 
-Package visibility is not scientific authority. A harvest PR may add a useful
-public API while promoting no claim. Every new or materially changed public
-symbol must be inventoried in the PR as one of:
+Package visibility is not scientific authority. An externally supplied harvest
+PR or terminal campaign PR may add a useful public API while promoting no claim.
+An active campaign keeps intermediate APIs on its branch until the terminal PR
+gate opens. Every new or materially changed public symbol must be inventoried in
+the PR as one of:
 
 - backed by exact accepted claim IDs;
 - conditional, unpromoted infrastructure linked to an open goal;
@@ -257,15 +262,23 @@ a pass count alone is not a review.
 Use [the repository PR template](.github/pull_request_template.md). Record the
 pre-existing canonical issue, authoring agent, and intended merger.
 Link the issue with `Advances #N` while any part of the positive objective
-remains and reserve `Fixes #N` for complete success. A draft PR is appropriate
-while the merge boundary or evidence is still changing, but the issue must exist
-before that draft is opened.
+remains and reserve `Fixes #N` for complete success. For an active scientific
+campaign, do not open even a draft PR while a dependency rung, candidate route,
+or evidence boundary is still changing. Use coherent checkpoint commits on the
+campaign branch. Open the campaign PR only after positive completion or a
+scientific-exhaustion certificate. An exhaustion PR uses `Advances` unless the
+positive objective was also achieved. Classify by ownership, not filename: a
+utility, process edit, test, documentation change, or reusable API created to
+satisfy an active campaign remains campaign work on that branch. Genuinely
+independent non-campaign process and software PRs may still open as drafts after
+their issue exists.
 
 The author must state separately:
 
 1. whether the artifact is locally complete and mergeable;
 2. whether any scientific claim is proposed for promotion;
-3. whether the canonical goal is actually complete.
+3. whether the campaign reached positive completion or certified exhaustion;
+4. whether the canonical goal is actually complete.
 
 The default is a distinct merger for a PR an agent opened, committed to, or
 materially implemented. The user or repository owner may explicitly authorize
@@ -314,6 +327,12 @@ classes of requirements. Another reviewer is used only when scientific
 promotion explicitly requires it, the first reviewer is unavailable or
 conflicted, or the user requests it.
 
+If review discovers an untried plausible route, an active obligation, a broken
+license edge, or invalid candidate-universe coverage in a purported terminal
+campaign, revoke terminal eligibility. Return the work to its campaign branch;
+do not merge the partial boundary and do not treat the finding as an invitation
+to open a follow-up rung PR.
+
 Treat `request changes`, `active refactor`, and `active harvest` as live review
 states. A required-refactor finding must name an owner or handoff, a live source
 or harvest PR, the exact repair, and the landing test. Keep the source PR open
@@ -340,6 +359,11 @@ Next decisive action: one concrete step
 The distinct merger, repository owner, or explicitly authorized author merges
 only the accepted unit boundary. A merge creates provenance and reusable code;
 it does not automatically promote a claim or close the parent issue.
+
+For scientific campaigns, the accepted unit boundary is the terminal campaign,
+not one dependency rung or clean milestone. A campaign PR must carry either the
+complete success receipt or the exhaustion certificate; PR preparation and
+merge are not reasons to stop an otherwise active scientific loop.
 
 After the final disposition:
 

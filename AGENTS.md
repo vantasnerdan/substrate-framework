@@ -16,19 +16,27 @@ Therefore:
 - Every acceptance gate must name the concrete failure mode it prevents and what it
   would have changed in a past attempt. A gate with no such pedigree is removed, not
   enforced. Gates accrete only through named mechanisms, never through caution alone.
-- Every attempt cycle terminates in exactly one decisive verdict per open question:
-  established as stated, refuted with the mechanism named, or blocked with the one
-  missing construction named. `qualified` is a waypoint toward one of these three,
-  never a resting place. A decisive verdict on a *route* is not a verdict on the
-  *question*: within a single run, a failed route is a branch point, not a stopping
-  point. Before a run declares an open question blocked or no-go, it must have
-  executed the continuation ladder in-run — at least one method repair, one
-  reformulation or representation change, and one alternative candidate concept
-  attempted and recorded — or explicitly demonstrated that a rung is inapplicable.
-  A verdict reached after one route, with plausible routes untried, is an
-  incomplete attempt, not a decisive verdict. Single-route termination is the
-  mirror image of recursive claim weakening and equally a systemic failure mode
-  of this contract.
+- Every attempted route terminates in exactly one route-scoped verdict:
+  established as stated, refuted with the mechanism named, or blocked with the
+  route's missing construction named. `qualified` is a waypoint, never a resting
+  place. None of these route verdicts is automatically a verdict on its obligation
+  or parent question. A failed route is a branch point: execute the continuation
+  ladder in-run—method repair, reformulation or representation change, and
+  materially different candidate generation—or demonstrate why a step is
+  inapplicable to that route. This ladder is a minimum continuation response, not
+  permission to block the obligation after three moves. Obligation-level no-go or
+  blocking requires the scientific-exhaustion certificate; a finite ladder with
+  plausible routes untried is an incomplete attempt. Single-route termination is
+  the mirror image of recursive claim weakening and equally a systemic failure
+  mode of this contract.
+- Freeze four distinct levels for decomposed work: the parent campaign
+  objective, each dependency obligation or rung, each candidate route for that
+  obligation, and each concrete attempt. A route verdict answers only its route.
+  A rung remains active until its positive intent is established or its complete
+  in-scope solution space is exhausted. Passing a prerequisite immediately
+  activates the next unsatisfied parent obligation; neither successful nor
+  failed child work inherits upward as campaign completion without the frozen
+  closure map proving that implication.
 - Scope reduction must argue that the reduction changes what downstream work can
   conclude. Reduction that leaves no consumer better-informed is drift, not honesty.
 - After a claim survives two independent evidence passes, the burden shifts: further
@@ -36,9 +44,54 @@ Therefore:
   keep shrinking a claim without such evidence, the review chain — not the claim — is
   failing; escalate to the user instead of narrowing again.
 
-An effort is complete only when its positive claims have passed their applicable success gates, undergone individual review, entered the accepted registry, and been pinned in a release. Partial harvest remains useful progress and keeps the larger objective open, but does not substitute for claim promotion. Merge activity, documentation, and validation are scaffolding; apply only the amount that advances or protects the scientific result.
+An effort is complete only when its positive claims have passed their applicable success gates, undergone individual review, entered the accepted registry, and been pinned in a release. Partial findings remain useful campaign-branch progress, but do not substitute for claim promotion or open a PR gate. Merge activity, documentation, and validation are scaffolding; apply only the amount that advances or protects the scientific result.
 
 Honesty about failure is required. Presenting incomplete work as the requested result is forbidden, but a support gap is not a refutation and a declared hypothesis is not a defect. Reviewers may make the minimum correction needed to state a result truthfully or split core, interpretive, and empirical layers; they may not silently replace the user's objective with a trivial statement. If the strongest supported result does not meet the objective, preserve it as progress and leave the objective open.
+
+## Campaign continuity and terminal pull requests
+
+An active scientific campaign is the indivisible execution and pull-request
+unit. Dependency rungs, route verdicts, useful subclaims, locally complete
+utilities, validation receipts, and clean milestones remain commits and
+append-only attempts on the campaign branch. The campaign executor does not
+open a progress, rung, harvest, goal-fragment, or milestone pull request and
+does not hand off merely because one of those units is locally complete.
+
+The campaign pull-request gate opens only after one of two terminal conditions:
+
+1. **Campaign success:** the complete positive success contract passes.
+2. **Scientific exhaustion:** an exhaustion certificate demonstrates that no
+   plausible in-scope solution route remains.
+
+Scientific exhaustion is an evidence-bearing conclusion, not elapsed effort,
+diminishing returns, a failed optimizer, an unresolved numerical signal, or
+absence of an immediate idea. Freeze the candidate universe and route families
+from the user's original objective, invariants, source inventory, and permitted
+imports at proposal time; expand it append-only with historical, external, and
+failure-generated concepts. The exhaustion certificate may not reduce that
+universe without explicit user approval. It gives every candidate a route
+verdict; executes applicable method repair, representation change, and materially
+different concept generation; partitions equivalent variants; and lists routes
+considered, tried, and remaining. Its adversarial candidate-generation pass is
+performed by a distinct non-author/non-implementer agent or reviewer from the
+frozen objective, invariants, and source inventory before that reviewer sees the
+favored exhaustion conclusion; the signed artifact is reconciled against the
+route ledger. If that independence is unavailable, exhaustion cannot be
+certified. An infinite candidate class requires a coverage or no-go argument over
+the original in-scope class. No fixed number of failures proves exhaustion. If a
+plausible in-scope route remains, or an open-ended class lacks a coverage
+argument, the campaign remains active.
+
+Any change produced to satisfy, enable, validate, preserve, or report an active
+campaign obligation is campaign work regardless of file type. Relabeling its
+solver, utility, documentation, or process support as “non-campaign” does not
+open an intermediate PR exception.
+
+Checkpoint commits are encouraged and do not open the pull-request gate. A
+runtime interruption or external authority/dependency barrier may pause the
+executor, but it is not a terminal campaign state. The durable contract must
+retain the exact active rung and next executable route for automatic
+continuation.
 
 ## Definition of success
 
@@ -46,7 +99,7 @@ Honesty is mandatory, but honesty about failure is not completion. A failed cand
 
 An effort succeeds only when all of the following are true:
 
-1. The requested positive object, mechanism, derivation, or implementation exists in its intended scope.
+1. The requested positive object, mechanism, derivation, or implementation exists in its intended scope, including every conjunct and dependency rung in the frozen parent objective. A kinematic tangent, symmetry action, linear mode, stationary saddle, conditional implication, scoped route no-go, clean milestone, or reusable implementation is not the parent object unless the user's objective asks for exactly that object.
 2. Its dependency closure comes from accepted framework claims and explicitly approved imports; no hidden fitted constant, borrowed answer, or undeclared premise remains.
 3. It fits the framework's accepted invariants naturally, or a separate foundational-revision proposal has shown—independently of the favored candidate—that the invariants themselves require the smallest coherent change.
 4. One strongest practical oracle validates the actual claim, with the smallest sensitivity, counterexample, convergence, limiting-case, or independent-rederivation evidence appropriate to expose a false green result. Evidence attachments do not each require a duplicate oracle.
@@ -59,9 +112,17 @@ An effort succeeds only when all of the following are true:
 
 Only the user may change the objective or accept a reduced scope. Runtime interruption, missing authority, or an external dependency may pause execution, but it does not turn incomplete work into success.
 
-These gates govern declaring the objective complete and promoting its headline claims. They are not a universal pull-request merge gate. Use `.agents/skills/research-pr-harvest/SKILL.md` to extract locally correct, novel, reusable units from an incomplete campaign while leaving its goal open. A merge creates provenance and reusable code, not accepted scientific authority. Missing parts of the larger goal are campaign frontier, not debt; debt is an unresolved defect, hidden assumption, broken consumer, or unsupported promise inside the scope being merged or promoted. Every harvest PR must name its canonical goal issue, and the final disposition must update that issue with a compact record of what landed, the minimum correction still active, what is terminally history-only, and the next decisive action. A `correct then merge` disposition is active work: name the exact repair and one landing check, and keep the source PR open until that unit lands or satisfies the terminal-close test below.
+These gates govern declaring the objective complete and promoting its headline claims. They are not a universal pull-request merge gate, but the terminal campaign-PR rule above binds active scientific executors. Use `.agents/skills/research-pr-harvest/SKILL.md` only to process an externally supplied PR or a campaign PR whose terminal gate has already opened; it does not authorize creation of partial campaign PRs. A merge creates provenance and reusable code, not accepted scientific authority. Missing parts of a larger framework goal are frontier rather than debt, but missing campaign obligations keep the campaign active and its PR gate closed. A terminal exhaustion PR uses `Advances`, not `Fixes`, unless the positive objective was achieved.
 
-Request changes or create a focused harvest when a PR contains valuable work with a finite repair path. Close an unmerged PR only when every reusable atom has landed elsewhere, every remaining atom has been shown incorrect, non-novel, or unmaintainable with unit-level rationale, the author or owner explicitly withdraws it, or a superseding landed implementation makes it redundant. Incomplete accepted dependency closure, a conflict with current canon, absence of a distinct merger, or a pending finite repair is not terminal. Record the qualifying reason and landed links before closure; otherwise keep the PR open in `request changes`, `active refactor`, or `active harvest` state.
+For an eligible existing PR under the preceding paragraph, request changes or create a focused harvest when it contains valuable work with a finite repair path. Close an unmerged PR only when every reusable atom has landed elsewhere, every remaining atom has been shown incorrect, non-novel, or unmaintainable with unit-level rationale, the author or owner explicitly withdraws it, or a superseding landed implementation makes it redundant. Incomplete accepted dependency closure, a conflict with current canon, absence of a distinct merger, or a pending finite repair is not terminal. Record the qualifying reason and landed links before closure; otherwise keep the PR open in `request changes`, `active refactor`, or `active harvest` state.
+
+If review of a purported terminal campaign PR exposes a plausible remaining
+route, missing obligation, or invalid success/exhaustion coverage, terminal
+eligibility is revoked. Do not continue scientific discovery inside that PR.
+Return execution to the campaign branch, close the new route there, recertify the
+terminal gate, and only then reopen or refresh the campaign PR. In-PR corrections
+are limited to bounded repairs that do not reopen the scientific route, claim,
+or obligation boundary.
 
 Every pull request, including documentation, tooling, compatibility, harvest, and scientific work, must name exactly one canonical issue that existed before the PR was submitted. A contributing agent may create that issue. There are no standalone-PR exceptions. The issue must state the positive objective, scope, success gate, dependencies, and coordination boundary; use `Advances #N` while work remains and `Fixes #N` only when the full objective is complete.
 
@@ -81,7 +142,7 @@ Use this authority order:
 4. Active proposals.
 5. Append-only attempts and exploratory memory.
 
-Chronology, commit status, prose confidence, check count, and empirical agreement do not create authority. A commit establishes provenance, not truth. Accepted canon controls releases, promotion, and downstream dependency claims; it is reviewable scientific state, not an irrevisable premise or a reason to discard conflicting evidence. A later campaign may challenge an earlier claim but cannot supersede it until review promotes the replacement claim. Correct conditional APIs and evidence may merge without that promotion when their assumptions and exclusions are explicit.
+Chronology, commit status, prose confidence, check count, and empirical agreement do not create authority. A commit establishes provenance, not truth. Accepted canon controls releases, promotion, and downstream dependency claims; it is reviewable scientific state, not an irrevisable premise or a reason to discard conflicting evidence. A later campaign may challenge an earlier claim but cannot supersede it until review promotes the replacement claim. Correct conditional APIs and evidence may enter main without claim promotion when their assumptions and exclusions are explicit, but an active campaign still carries them on its branch until the terminal campaign PR gate opens; this authority distinction never creates an intermediate PR exception.
 
 Never silently edit an earlier campaign. Never edit files under `docs/generated/`. Generate canonical documentation from the registry with `scripts/render_docs.py`.
 
@@ -119,7 +180,7 @@ Before implementation:
 - State selection criteria before inspecting comparison values: structural fit, assumption cost, parameter economy, symmetry, dimensional consistency, limiting behavior, compatibility with accepted sectors, and predictive reach.
 - Separate derivation inputs from empirical comparators. When practical, keep comparator values blinded until equations, conventions, tests, and selection criteria are frozen.
 
-Registering a new candidate concept mid-attempt is normal and encouraged: append it to the candidate set with the observation that motivated it. Preregistration constrains selection — criteria frozen before comparator inspection — never generation. A failed candidate obligates the generation of at least one new concept, derived from the failure mechanism rather than parameter perturbation of the dead route, before the question may be declared blocked.
+Registering a new candidate concept mid-attempt is normal and encouraged: append it to the candidate set with the observation that motivated it. Preregistration constrains selection — criteria frozen before comparator inspection — never generation. A failed candidate obligates failure-derived concept generation and continued execution; one new concept never licenses question or obligation blocking. Terminal no-go requires certified exhaustion of the frozen and append-only-expanded candidate universe.
 
 When a candidate conflicts with accepted structure, diagnose whether the mismatch is a candidate defect or evidence of a pre-existing inconsistency in canon. Reject or reformulate a defective candidate and try another concept. If the mismatch survives independently of the favored candidate, open a `challenges` or foundational-revision proposal and compare repairs. Do not rewrite unrelated earlier claims, rename quantities, mix conventions, or add compensating assumptions merely to preserve the chosen candidate; equally, do not use current acceptance status as a substitute for investigating credible contrary evidence.
 
@@ -246,6 +307,43 @@ Cross-sector coefficient matching must type the fields, kinetic metrics, action 
 
 Structural checks must evaluate the actual construction. A literal `True`, a stand-in constant that omits the claimed object, a copied expected period, or a bounded sample unrelated to the defining predicate is provenance evidence at most, not a verifier. For differential forms, enumerate every graded Leibniz and cyclic-reordering term before combining coefficients. Test pointwise nonvanishing, local closedness, global non-exactness, period normalization, extension ambiguity, and gauge descent as separate obligations; none implies the next merely because a familiar formula is printed.
 
+Before choosing a discretization or opening production outputs, freeze the typed
+chain `mathematical object -> symmetry or conservation license -> ensemble and
+variational functional -> admissible representation -> observable -> numerical
+approximation -> permitted verdict`. Each obligation records `requires`,
+`pass_licenses`, `does_not_license`, `maximum_verdict`, `failure_scope`, and
+`unlocks`. A computable tangent, finite norm, fitted frequency, sampled spectrum,
+or stable discretization does not create a cyclic coordinate, conserved charge,
+physical ensemble, or observable.
+
+In particular:
+
+- distinguish a symmetry-generated clock, arbitrary tangent, normal mode,
+  stationary solution, relative equilibrium, and nonlinear periodic orbit;
+- distinguish fixed charge, fixed frequency, unconstrained statics, and released
+  dynamics, deriving the correct Legendre transform and varying every
+  field-dependent generator, projector, inertia, and constraint;
+- distinguish decay selected by the equations from support imposed by a taper,
+  mask, pinned wall, cutoff, or box; imposed support cannot establish natural
+  localization or box independence;
+- establish chart smoothness, constraint closure, global or gauge descent,
+  phase period, kinetic rank and sign, and the asymptotic principal symbol before
+  refinement; representation failure is not a physical no-go;
+- demonstrate branch identity across mesh, box, basis, or quadrature changes;
+  a family jump is not refinement, and frozen-field requadrature checks an
+  integral rather than convergence of the stationary branch; and
+- derive the asymptotic form, observable scale, free parameters, and independent
+  validation degrees of freedom before fitting. A fit with as many free
+  parameters as data points is a parametrization, not validation.
+
+If this license chain fails, stop production numerics, record the precise object,
+ensemble, representation, or observable mismatch, repair the construction, and
+continue the active rung. These requirements have concrete pedigree in the
+Discussion #186 and P239-P247 failures: rigid versus tapered clock confusion,
+fixed-frequency versus fixed-charge sign reversal, coordinate-string and
+projector defects, singular phase representations, branch switching,
+zero-valued cross-Hessian omissions, and underdetermined asymptotic fits.
+
 For ODE, BVP, PDE, quadrature, and spectral work, state the equations, domain, initial/boundary data, discretization, floating-point precision, solver, tolerances, mesh, timestep or sampling policy, stopping rule, and error norm. Predeclare thresholds against a dimensional or scale-relative error model; an absolute near-zero threshold is not meaningful without the observable scale. If such a threshold fails, preserve it, demonstrate refinement or roundoff behavior, and only then replace it with a justified scale-sensitive oracle while keeping any exact null as a separate analytic claim. Check solver success before using its output. Run mesh/timestep/domain/tolerance refinement, test conservation or controlled dissipation, compare an independent method or soluble limit, and show that load-bearing input mutations break the relevant verdict. Use sparse operators and method-of-lines or an appropriate finite-difference, finite-volume, finite-element, or spectral method when the PDE requires them; tool choice follows the equation and claim.
 
 Before FFT differentiation or line-power attribution, prove that the sampled window is periodic for every active frequency or quantify endpoint closure and use a nonperiodic method. Multiplying a coefficient from the same FFT by `(i*omega)^n` is an internal identity, not an independent derivative oracle. Resolve mixed or incommensurate frequencies and show the claimed line carries the preregistered fraction of the checked norm or power.
@@ -271,9 +369,9 @@ per-claim modules make every pass and every failure individually addressable
 `src/substrate_framework/verification.py` rather than copying local check
 helpers.
 
-## Continuation after failure
+## Continuation across route outcomes
 
-Attempts are bounded; the effort is not. Record attempts append-only and preserve enough detail to avoid repeating them; each attempt records routes considered, routes tried, and routes remaining. After any failed route:
+Attempts are bounded; the effort is not. Record attempts append-only and preserve enough detail to avoid repeating them; each attempt records the parent objective, active obligation, routes considered, routes tried, routes remaining, and the next unsatisfied dependency. After a successful prerequisite, preserve it and immediately continue to the next parent obligation. After any failed route:
 
 Classify environment compatibility before scientific failure. Detect direct `np.trapz`, imported `trapz`, and dynamic `getattr(np, "trapz")` access before execution; an eager nested default such as `getattr(np, "trapezoid", getattr(np, "trapz"))` still aborts when the legacy name is absent. If a run aborts solely for one of these version-only reasons, replace the mutable access with `np.trapezoid` or a safe two-step fallback and rerun the unchanged scientific route. For hash-pinned immutable source, preserve the native hash and diagnostic, then make an explicitly recorded alias-only compatibility replay. The native abort is compatibility provenance—not a rejected candidate, refuted claim, or terminal source disposition—and the repaired replay supplies the scientific verdict.
 
@@ -301,7 +399,13 @@ framework's dependency, invariant, convention, and consumer context.
 
 Do not lower the bar, inflate tolerances, convert a comparator into an input, or celebrate a no-go. A failure improves the next attempt; it does not finish the task.
 
-Do not make durable progress wait for the final capstone. When a utility, exact local result, solver, source construction, or verifier becomes independently correct and reusable, harvest it through a focused PR or commit. Keep speculative composition and failed-route narration in PR history unless they yield a separately reusable object. A harvest PR is a checkpoint inside a run, not a terminal state: after opening one, return to the open campaign question in the same run. A run hands off only when its route frontier is exhausted or an external blocker is named; the handoff record must list every plausible untried route with enough detail for the next run to start there, and state why this run did not attempt each one — "it produced a harvestable unit" is not such a reason. The campaign objective remains open for a fresh run.
+Preserve durable progress without fragmenting the campaign. Commit each correct
+utility, exact local result, solver, construction, or verifier coherently on the
+campaign branch and continue the active obligation. Do not open a PR for that
+unit. After positive completion or certified exhaustion, submit the campaign as
+one terminal PR containing the strongest supported results and the complete
+attempt record. A merged subclaim, validation receipt, clean milestone, context
+boundary, or well-written handoff is never a scientific stopping condition.
 
 ## Memory discipline
 

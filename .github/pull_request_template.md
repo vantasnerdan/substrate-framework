@@ -6,6 +6,12 @@ Canonical issue: <!-- Required. The issue must exist before even a draft PR is s
 
 Issue relationship: <!-- Use `Advances #N` while work remains; use `Fixes #N` only when the full goal is complete. -->
 
+PR eligibility: <!-- Non-campaign change; externally supplied existing PR; terminal campaign success; or terminal campaign exhaustion. An active campaign rung/milestone is ineligible. -->
+
+Campaign terminal evidence: <!-- N/A, complete positive-success receipt, or scientific-exhaustion certificate. -->
+
+Active campaign relationship: <!-- none, or terminal campaign id; work that enables an active campaign is campaign work regardless of file type. -->
+
 Authoring agent:
 
 Intended merger: <!-- Distinct by default; otherwise link explicit owner/user self-merge direction. -->
@@ -19,7 +25,9 @@ Intended merger: <!-- Distinct by default; otherwise link explicit owner/user se
 - [ ] Documentation or workflow
 - [ ] Scientific proposal or campaign evidence
 - [ ] Claim promotion transaction
-- [ ] Harvest from an incomplete research PR
+- [ ] Harvest from an externally supplied incomplete research PR
+- [ ] Terminal scientific campaign: positive completion
+- [ ] Terminal scientific campaign: certified exhaustion
 - [ ] Compatibility-only repair
 
 ## Authority and scope
@@ -56,6 +64,7 @@ Answer each decision independently:
 
 - Artifact merge: <!-- yes/no and why -->
 - Claim promotion: <!-- none, or exact claim IDs -->
+- Campaign terminal state: <!-- N/A / positive completion / certified exhaustion -->
 - Goal completion: <!-- yes/no and the remaining gate -->
 
 ## Validation receipt
@@ -122,6 +131,7 @@ fields in a formal review.
 
 - Artifact merge: <!-- yes/no with unit-level rationale -->
 - Claim promotion: <!-- none or exact claim IDs and review evidence -->
+- Campaign terminal state: <!-- N/A / positive completion / certified exhaustion, with evidence -->
 - Goal completion: <!-- yes/no and still-open gate -->
 - Merge as written: <!-- yes/no -->
 - Correct or harvest: <!-- exact unit, minimum repair, and one landing check -->
@@ -141,6 +151,9 @@ fields in a formal review.
 - [ ] Every new public symbol has an explicit authority status and owning issue.
 - [ ] Applicable verification sensitivity and numerical/formal limits were audited without duplicate replay.
 - [ ] Merge, claim-promotion, and goal-completion decisions kept independent.
+- [ ] A scientific campaign PR is terminal for the whole campaign, not a rung, milestone, partial goal, utility, or clean checkpoint.
+- [ ] Any work that enables an active campaign stayed on its campaign branch until terminal eligibility opened.
+- [ ] Review found no active obligation, untried plausible route, broken license edge, or invalid coverage argument that revokes terminal eligibility.
 - [ ] A finite correction has the minimum repair and one landing check; ownership is named only when handed off.
 - [ ] Any proposed unmerged closure passes the terminal-close test and records landed replacements.
 - [ ] Canonical issue handoff is posted or preserved ready to post.

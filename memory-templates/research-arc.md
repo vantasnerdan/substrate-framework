@@ -72,36 +72,29 @@ corpus items, and raw theorem counts are outside the transaction.
 ## Claim Ladder
 Build the smallest dependency-first ladder. Each row names the strongest practical oracle and sensitivity test. Use SymPy for exact algebraic obligations, Lean for an auditable formal theorem, and SciPy for root/spectrum/integral/optimization/ODE/BVP/PDE evidence when no tractable closed form exists; do not force every obligation into the same tool.
 
-| Step | Claim | Oracle | Sensitivity/counterexample | Prerequisites | Status |
-| --- | --- | --- | --- | --- | --- |
-| 1 |  |  |  |  | pending |
+| Step | Positive intent | Requires | Pass licenses | Does not license | Oracle | Failure scope | Unlocks | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 |  |  |  |  |  |  |  | pending |
 
 ## Importable Implementation
 Name canonical package APIs to add or reuse. Campaign scripts must call these APIs and must not duplicate constants, solvers, profiles, convention conversions, or check helpers. For numerical work, state whether `substrate_framework.numerics` applies and identify the claim-owned equation, operator, initial/boundary data, mesh, tolerances, and error metric. Route canonical sampled trapezoidal integration through its compatibility helper; mutable standalone scripts for the current environment use `np.trapezoid`, never removed `np.trapz`, and tractable exact integrals stay symbolic. Preflight direct attributes, imported names, and dynamic `getattr` access; nested fallback defaults are eager, so use a two-step `None` fallback.
 Structure the verifier corpus as one small standalone module per claim with a thin aggregator; a monolithic multi-hundred-line script localizes failures poorly.
 
-## Harvest Checkpoints
-Record each locally complete unit as soon as it becomes independently correct and reusable. Use `$research-pr-harvest` to decide whether to merge it unchanged, refactor it into a clean unit, or leave it in PR history. A harvested unit does not complete the parent objective or promote its headline claim. Missing campaign links belong in the active frontier, not the debt ledger.
+## Campaign-Branch Checkpoints
+Record every locally complete unit as a coherent commit and append-only attempt
+on the campaign branch. Do not open a PR for a rung, utility, subclaim, partial
+goal, or clean milestone. These checkpoints preserve value without changing the
+active obligation or terminal state.
 
-- Canonical goal issue: <number/link>
-- PR issue reference: <`Advances #N` or `Fixes #N`>
-- Source PR lifecycle: <request changes, active refactor, active harvest, merged, or terminal closed>
-- Refactor owner/handoff, live PR, and landing test: <details or not applicable>
-- Terminal-close evidence: <not applicable, or qualifying reason plus landed links>
-- Final issue handoff: <posted comment link or ready-to-post pending>
-
-| Unit | Local claim | Independent of headline? | Evidence | Commit/PR | Disposition |
+| Unit | Local proposition | Evidence | Commit | Parent obligation advanced | Downstream claims still unlicensed |
 | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |
-
-At the final harvest boundary, update the canonical issue with unit-level lists and rationales for what merged, what requires refactor plus its owner, live PR, exact change, and landing test, and what remains only in PR history. Include landed paths/commits and the next decisive action so a fresh agent can resume from the issue alone. Keep a source PR open while finite refactor or harvest work is active; close only after the terminal-close test in `AGENTS.md`. State the next decisive action as its positive contribution to resolution — the object it constructs, the question it closes, or the distinction it establishes, phrased as what becomes true in the record when it succeeds. A refutation counts when stated through its mechanism. If the stated action reads entirely as avoidance or risk reduction, keep looking: the next agent inherits a direction, so give one.
 
 ## Attempts
 Append one row per scientific attempt. Preserve source, stdout/stderr, elapsed time, and exact command. A native immutable-source abort caused only by missing direct, imported, or dynamic `np.trapz`—including an eagerly evaluated nested fallback—is compatibility provenance: run an alias-only compatibility replay and use that replay for scientific adjudication rather than consuming or rejecting a candidate. Failure of the repaired scientific route triggers the next route; it never closes the arc.
 
-| Attempt | Candidate/method | Artifact | Verdict | Diagnosed layer | Next materially different route |
-| --- | --- | --- | --- | --- | --- |
-| 0001 |  |  |  |  |  |
+| Attempt | Obligation | Candidate/method | Artifact | Route verdict and scope | Licenses earned/missing | Method repair | Representation change | Alternative concept | Routes remaining |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0001 |  |  |  |  |  |  |  |  |  |
 
 ## Framework-Fit Audit
 Assess each candidate before empirical fit: invariant preservation, imports, free parameters, conventions, known limits, cross-sector consumers, and whether it demands unrelated narrative changes. Determine whether a mismatch is a candidate defect or independent evidence against canon. Reject and replace a defective candidate; route a surviving canonical inconsistency through the separate revision gate without blocking correct conditional artifacts.
@@ -144,22 +137,39 @@ perform one correction check limited to requested changes.
 
 ## Results and Continuation
 Lead with the strongest meaningful positive result and its reproduction command.
-Then record harvested progress, one decisive frontier action, and findings as
+Then record checkpointed progress, the active obligation, complete route
+frontier, and findings as
 `blocking in-boundary`, `minimum correction`, or `follow-up`. Reserve `refuted`
 for an explicit contradiction or counterexample; missing support remains
-unverified or qualified. If a run becomes repetitive, hand off at the last
-strong milestone without changing the objective.
+unverified or qualified. If one route becomes repetitive, stop repeating that
+route and continue through a method repair, representation change, or materially
+different candidate. Do not hand off or open a PR at the milestone.
 
 ## Promotion and Materialization
 Record extracted APIs/tests, accepted registry entries, immutable campaign location, release id, generated docs command, accepted-memory synchronization, and proposal/attempt memory separation.
+
+## Scientific Exhaustion Certificate
+Leave incomplete while any plausible route remains. Define the candidate
+universe; inventory historical, external, preregistered, and failure-generated
+routes; partition equivalent variants; attach each route verdict and
+continuation-ladder record; include an independent adversarial generation pass;
+and provide coverage/no-go evidence for infinite classes. Exhaustion requires
+an empty route frontier and review of this certificate.
+
+| Candidate class | Tried routes | Equivalent variants | Failure-derived routes | Coverage evidence | Verdict |
+| --- | --- | --- | --- | --- | --- |
+
+- Independent candidate-generation artifact:
+- Routes remaining:
+- Exhaustion review:
 
 ## Done Gate
 Check applicable success conditions from `AGENTS.md` once at the unchanged
 promotion boundary. Record one receipt containing the base/head or tree hash,
 impact surface, exact command, and result. Do not rerun it for review prose,
 counts, evidence-role corrections, or generated summaries that cannot affect
-the oracle. A progress harvest records its proportional receipt and leaves the
-arc active.
+the oracle. Open one campaign PR only after the complete positive contract or
+the scientific-exhaustion certificate in `AGENTS.md` passes.
 
 ## Cross-References
 Link the proposal, source artifacts, claims, reviewers, campaign, release, generated outputs, and related memory entries.
