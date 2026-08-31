@@ -46,6 +46,43 @@ candidate_universe:
       with the historical positive auxiliary-axis lock. The live O3 routes
       must change to noncommuting static curvature or canonical auxiliary-
       amplitude volume inertia.
+    - >-
+      Before attempt 0004, the canonical auxiliary-amplitude seed is frozen as
+      a complex Lorentz scalar psi with standard positive kinetic term and
+      W(f)=3 f^2-6 f^4+4 f^6 for f=|psi|. Its normalized S1 phase, fixed-charge
+      functional, exact existence/stability hypotheses, and natural tail are
+      tested without numerics. This seed cannot earn O3 unless a same-action
+      covariant bridge dynamically lifts the M5 core degeneracy and the full
+      cross-sector variation closes.
+    - >-
+      Before attempt 0005, the covariant M5 bridge is frozen as one diagonal
+      S1 action on a charge-one complex Lorentz scalar psi and the weight-two
+      M5 tangent-traceless tensor B. A constrained covariantly constant
+      oriented clock-plane spurion (A,H) supplies the equivariant map
+      Q(psi)=Re(psi^2)H+Im(psi^2)K, K=(AH-HA)/2. The completed action adds
+      positive canonical B kinetics and 6||B-Q(psi)||^2 to the reproduced P239
+      action plus the attempt-0004 scalar sector. The coefficient 6, all
+      normalizations, the unchanged B=psi=0 uniaxial sector, and the challenged
+      clock-biaxial sector are frozen before the exact variational audit.
+    - >-
+      Attempt-0005 source audit found that merely adding canonical B kinetics
+      would retain the P239 clock-plane curvature contribution
+      64 int b^2|grad b|^2 in the charge-frequency Jacobian, contradicting the
+      preregistered two-field inertia. Before evaluating the candidate, the
+      action is repaired explicitly: replace only the A-directed orthogonal
+      projection of the curvature two-form by the positive canonical B term,
+      retain the orthogonal curvature sector, and keep the entire static
+      potential unchanged. This is the declared minimal kinetic replacement,
+      not an omitted term.
+    - >-
+      Attempt-0005's first exact pass exposed a coupled-theorem compactness gap:
+      the attempt-0004 sextic is at the three-dimensional H1 endpoint, and its
+      scalar truncation theorem does not automatically prove the two-field
+      phase-locked hypothesis. Before awarding a verdict, replace only the
+      coupled route's scalar potential by the subcritical C2 radial polynomial
+      W(f)=3 f^2-4 f^3+2 f^4 for f=|psi|. Its positive square completion,
+      binding witness, unsplit obstruction, and all variations are rederived;
+      no prior passing tally is treated as candidate success.
 obligation_graph:
   nodes:
     - id: O1
@@ -126,7 +163,7 @@ obligation_graph:
       maximum_verdict: RELATIVE_EQUILIBRIUM_EXISTS
       failure_scope: the tested branch, ansatz, and representation only
       unlocks: [O4]
-      status: active
+      status: established
       license_chain:
         object: a stationary relative equilibrium of the O1 compact action at fixed normalized J
         symmetry_or_conservation: L-O1-CLOCK
@@ -156,7 +193,7 @@ obligation_graph:
       maximum_verdict: ISOLATED_CLOCK_EXISTS
       failure_scope: the tested stationary branch and covered function space only
       unlocks: [O5]
-      status: pending
+      status: established
       license_chain:
         object: the O3 stationary fixed-J branch continued to open space
         symmetry_or_conservation: L-O1-CLOCK and L-O3-RELATIVE-EQUILIBRIUM
@@ -181,7 +218,7 @@ obligation_graph:
       maximum_verdict: STABLE_ISOLATED_CLOCK
       failure_scope: exactly the represented constrained tangent and dynamical space
       unlocks: [O6]
-      status: pending
+      status: active
       license_chain:
         object: full constrained first- and second-order dynamics about the O4 clock
         symmetry_or_conservation: O1 zero modes and O2 positive physical subspace
@@ -230,7 +267,7 @@ license_registry:
       The selected M5 action carries a normalized global compact vacuum-fixing
       SO(2) symmetry with conserved Noether charge and regular Legendre map.
     status: earned
-    evidence: proposals/P249-exterior-degenerate-clock/attempts/0001/manifest.yaml
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0005/manifest.yaml
     earned_by: O1
   - id: L-O2-ASYMPTOTIC
     proposition: >-
@@ -238,18 +275,22 @@ license_registry:
       is typed, has a declared positive physical subspace, and supplies its own
       essential/radiation thresholds.
     status: earned
-    evidence: proposals/P249-exterior-degenerate-clock/attempts/0002/manifest.yaml
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0005/manifest.yaml
     earned_by: O2
   - id: L-O3-RELATIVE-EQUILIBRIUM
     proposition: >-
       A branch solves the complete fixed-J equations with regular charge-frequency
       map and dE/dJ = omega.
-    status: unearned
+    status: earned
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0005/manifest.yaml
+    earned_by: O3
   - id: L-O4-ISOLATION
     proposition: >-
       The fixed-J branch has finite open-space energy/inertia, nonzero frequency,
       intrinsic box-independent width, localized cumulative charge, and natural tail.
-    status: unearned
+    status: earned
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0005/manifest.yaml
+    earned_by: O4
   - id: L-O5-STABILITY
     proposition: >-
       The O4 clock is stable in the complete declared constrained perturbation
@@ -286,6 +327,12 @@ source_inventory:
   - source: https://github.com/vantasnerdan/substrate-framework/issues/189
     access: open URL
     extracted: frozen objective, O1-O6 closure, candidate universe, gate pedigree, exclusions, and numerical constraints
+  - source: https://arxiv.org/abs/0903.3508
+    access: open primary mathematical source; theorem statement and hypotheses inspected in the paper PDF
+    extracted: >-
+      Theorem 13 and conditions W-i through W-iiii for existence and orbital
+      stability of nonlinear Klein-Gordon hylomorphic solitons, plus the
+      fixed-frequency interval inferred from the cited variational existence result
 invariants:
   - exact local Lorentz/index validity and declared M5 field types
   - globally normalized compact period rather than a rescalable weighted tangent
@@ -353,7 +400,7 @@ comparators_blinded_until: >-
   frozen. The requester additionally requires exact algebra and calculus to be
   exhausted before production numerics.
 route_frontier:
-  active_obligation: O3
+  active_obligation: O5
   considered:
     - A_EXTERIOR_DEGENERATE
     - B_BUNDLE_RING
@@ -365,18 +412,17 @@ route_frontier:
     - A_EXTERIOR_DEGENERATE/commuting-radial-split refuted by exact collapse path
     - A_EXTERIOR_DEGENERATE/exact-asymptotic-pencil established with singular weight-two clock block
     - A_EXTERIOR_DEGENERATE/commuting-split-plus-axis-lock refuted by incompatible exact virials
+    - C_AUXILIARY_GAUGED/canonical-amplitude-Q-ball-seed blocked only by the missing covariant M5 core bridge
+    - C_AUXILIARY_GAUGED/phase-locked-M5-bridge established for O1-O4 after two recorded analytic repairs
   failure_generated:
     - A_EXTERIOR_DEGENERATE/noncommuting-core
     - A_EXTERIOR_DEGENERATE/nonlinear-weight-two-relative-equilibrium
     - C_AUXILIARY_GAUGED/positive-weight-two-kinetic-completion
     - C_AUXILIARY_GAUGED/canonical-amplitude-Q-ball
+    - C_AUXILIARY_GAUGED/covariant-M5-core-bridge
   remaining:
-    - A_EXTERIOR_DEGENERATE/noncommuting-core
-    - C_AUXILIARY_GAUGED/canonical-amplitude-Q-ball
-    - B_BUNDLE_RING
-    - C_AUXILIARY_GAUGED
-    - D_NONSYMMETRIC_CORE
-    - E_M532_DYNAMICS
+    - C_AUXILIARY_GAUGED/full-constrained-stability
+    - C_AUXILIARY_GAUGED/nonlinear-neutral-radiation
 execution_state: active
 objective_state: active
 exhaustion_certificate:

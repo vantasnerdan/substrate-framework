@@ -1,0 +1,114 @@
+attempt: '0004'
+status: completed
+active_obligation: O3
+route: C_AUXILIARY_GAUGED/canonical-amplitude-Q-ball-seed
+question: >-
+  Does the preregistered vacuum-vanishing complex Lorentz scalar supply an
+  exactly normalized compact phase, a bounded fixed-charge functional, an
+  analytically established open-space relative equilibrium with natural tail,
+  and orbital stability; and if so, what precise M5 construction is still
+  missing before this route can earn O3?
+source_baseline: substrate-framework@aa38137
+base_release: v0.170.0
+external_primary_source: https://arxiv.org/abs/0903.3508
+frozen_field_and_action: >-
+  psi is a complex Lorentz scalar in the mostly-plus convention, f=|psi|,
+  with density L=-1/2 eta^munu partial_mu(conj psi) partial_nu psi - W(f) and
+  W(f)=3 f^2-6 f^4+4 f^6. The global action psi -> exp(i q) psi has q in
+  R/(2*pi Z). No M5 coupling is silently included in this attempt.
+command: >-
+  PYTHONPATH=src .venv/bin/python
+  proposals/P249-exterior-degenerate-clock/attempts/0004/verify.py
+oracle_order:
+  - exact polynomial positivity and hylomorphy analysis
+  - exact Noether, Legendre, fixed-charge first/second variation calculus
+  - primary-source theorem-hypothesis bridge for existence and orbital stability
+  - exact far-field calculus
+  - no shooting, optimizer, discretization, or numerical spectrum
+licenses_consumed: []
+licenses_targeted: [L-O3-RELATIVE-EQUILIBRIUM]
+small_ratio_prescriptions:
+  error_budget: exact rational and symbolic identities; no floating-point observable
+  zero_mode_gauge: global phase is retained as the exact S1 orbit; no Hessian spectrum is formed
+  eigenpair_residual: not applicable
+  lambda_min_lambda_2: not applicable
+  observed_order_extrapolation: not applicable
+  jitter_sign_test: not applicable; all inequalities have exact rational margins
+maximum_verdict: >-
+  established auxiliary-scalar hylomorphic soliton seed, but not O3 unless the
+  covariant M5 core-degeneracy bridge and cross-sector variations are supplied
+does_not_license:
+  - a decoupled scalar as an M5 clock
+  - an M5 core split or same-action asymptotic pencil
+  - O3, O4, or O5 for the coupled campaign object
+preregistered_exact_gates:
+  - W is nonnegative with a unique vacuum at f=0 and W''(0)>0
+  - the nonlinear remainder is negative somewhere and satisfies W-iiii(b)
+  - the exact standing-frequency interval is nonempty and contains Omega=2
+  - the fixed-Q first and complete second variations include the Legendre rank-one term
+  - dE/dQ=Omega on the stationary branch
+  - the Omega=2 tail exponent follows from the action and is positive
+  - the theorem bridge establishes a nonempty open charge set and orbital stability in the scalar phase space
+  - no gate claims that the scalar theorem proves a coupled M5 critical point
+next_if_seed_established: >-
+  Construct and vary a local Lorentz-covariant same-action coupling whose
+  nonzero scalar amplitude dynamically lifts the M5 tangent eigenvalue
+  degeneracy, preserves a bounded Hamiltonian and the accepted uniaxial
+  sector, and admits a complete cross-sector stationary/stability analysis.
+next_if_seed_fails: >-
+  Repair the amplitude potential or move to the bundle-aware/noncommuting M5
+  representations without numerical tuning.
+route_verdict: >-
+  blocked_with_missing_construction: the canonical auxiliary scalar seed is
+  established exactly, including a nonempty open set of orbitally stable
+  localized fixed-charge standing waves, but a decoupled scalar is not the
+  requested M5 clock. The missing construction is a local Lorentz-covariant
+  same-action coupling that dynamically lifts the M5 core degeneracy and whose
+  complete cross-sector first and second variations close.
+evidence_scope: EXACT_AUXILIARY_SCALAR_SEED_AND_M5_BRIDGE_BOUNDARY
+strongest_positive_result: >-
+  W(f)=3f^2-6f^4+4f^6 satisfies the exact primary-source hylomorphic-soliton
+  hypotheses. It has mass squared 6, frequency floor squared 3/2, admits
+  Omega=2 with natural sqrt(2) exponential tail, and has the complete
+  fixed-Q Hessian including its positive Legendre rank-one term.
+computed_predicate: >-
+  Twenty-four exact checks cover positivity, nondegeneracy, hylomorphy,
+  alternative growth, the exact frequency window, negative effective well,
+  Noether/Legendre normalization, fixed-Q derivatives, tail, scale virial,
+  and defining-object mutations.
+proposition: >-
+  The canonical vacuum-vanishing scalar phase is a valid analytic soliton
+  seed, but it does not by itself establish any coupled M5 obligation.
+licenses_earned: []
+parent_effect: >-
+  O3 remains active. The next exact route is the covariant M5 core bridge;
+  numerical shooting of the already theorem-established scalar seed is not
+  licensed or useful.
+cannot_decide:
+  - existence of a coupled M5 relative equilibrium
+  - cross-sector asymptotic dynamics or stability
+  - M5 core degeneracy lifting
+  - O3, O4, or O5
+routes_remaining:
+  - C_AUXILIARY_GAUGED/covariant-M5-core-bridge
+  - A_EXTERIOR_DEGENERATE/noncommuting-core
+  - B_BUNDLE_RING
+  - D_NONSYMMETRIC_CORE
+  - E_M532_DYNAMICS
+artifacts:
+  verifier_sha256: 6385bbfa1e9a688facd9b4e9ca7d98a9070ae9e6700ad8765b9e3efe4e63abed
+  derivation_sha256: 69131ec8596ef685b0fac8143a0562e6c99f5c8e518fbbc155f15d6752e7cd1d
+  stdout_sha256: e34b4f8d3c18485056f813f9484e246a0aa9ea9747a41d3a1a645bdfb4b0a52d
+verification_audit:
+  process_status: 0
+  lexical_check_calls: 24
+  runtime_check_executions: 24
+  python_assert_nodes: 0
+  terminal_tally: ALL 24 CHECKS PASS [P249-O3-0004]
+  sensitivity: >-
+    Removing the stabilizing sextic makes the potential unbounded below, and
+    deleting the fixed-charge curvature removes a nonzero rank-one Hessian term.
+  targeted_replay: PYTHONPATH=src .venv/bin/python scripts/validate_repository.py
+  targeted_replay_result: >-
+    WORKFLOW VALID: 248 claims, 248 accepted, 12 proposals, 4 skills;
+    MIGRATION QUEUE: 218 units, 0 pending, 0 partial

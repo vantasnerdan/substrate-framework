@@ -1,0 +1,162 @@
+attempt: '0005'
+status: completed
+active_obligation: O3
+route: C_AUXILIARY_GAUGED/phase-locked-M5-core-bridge
+question: >-
+  Does one explicitly typed diagonal compact action phase-lock the canonical
+  auxiliary amplitude to the M5 tangent split, preserve a bounded Hamiltonian
+  and the uniaxial accepted sector, and satisfy the exact O1/O2 and complete
+  fixed-J O3/O4 existence gates with a necessarily nonzero M5 core split?
+source_baseline: substrate-framework@aa38137
+base_release: v0.170.0
+external_primary_source: https://arxiv.org/abs/0903.3508
+frozen_action_delta: >-
+  Start from the reproduced conditional P239 action, but replace its
+  A-directed orthogonal clock-plane curvature projection by a positive
+  canonical B kinetic term while retaining the orthogonal curvature sector.
+  Add the complex scalar kinetic and the coupled-route subcritical potential
+  W(f)=3f^2-4f^3+2f^4 for f=|psi|. Let A be a normalized
+  covariantly constant rank-two Lorentz generator and H a normalized
+  covariantly constant tangent-traceless symmetric tensor; K=(AH-HA)/2.
+  With B the M5 tangent-traceless mixed tensor and
+  Q(psi)=Re(psi^2)H+Im(psi^2)K, add a positive canonical B kinetic term and
+  V_lock=6||B-Q(psi)||^2. Auxiliary normalization/covariant-constancy
+  constraints use local tensor multipliers and vanish on shell.
+pre_evaluation_action_repair: >-
+  A direct source audit found that additive canonical kinetics would retain
+  the old 64 int b^2|grad b|^2 contribution to the clock inertia. The action
+  therefore uses F_perp=F-P_A(F), where P_A is the field-metric orthogonal
+  projection onto the normalized A clock-plane curvature direction, and
+  replaces that positive square by the canonical B square. Both remaining
+  terms are positive, all static fields have unchanged energy, and no term is
+  discarded from the subsequent variation.
+pre_verdict_compactness_repair: >-
+  The first exact pass used the attempt-0004 sextic. Although its algebra
+  passed, that positive term is at the three-dimensional H1 endpoint and the
+  cited scalar truncation does not automatically prove the coupled H2
+  hypothesis. The passing receipt is preserved but earns nothing. The coupled
+  action is repaired to W(f)=3f^2-4f^3+2f^4, a C2 function of the complex
+  amplitude with only strictly subcritical interactions; the complete audit
+  is rerun to a separate receipt.
+frozen_reduced_normalization: >-
+  On psi=f exp(i q), B=b[cos(2q)H+sin(2q)K], ||B||^2=b^2 and
+  Q has amplitude f^2. The static clock potential is
+  V=3f^2-4f^3+2f^4+3b^2+4b^4+6(b-f^2)^2; the diagonal inertia is
+  I=int(f^2+4b^2), Q_clock=omega I, and E_Q=E0+Q_clock^2/(2I).
+command: >-
+  PYTHONPATH=src .venv/bin/python
+  proposals/P249-exterior-degenerate-clock/attempts/0005/verify.py
+oracle_order:
+  - exact equivariance, period, positivity, and unchanged-sector identities
+  - exact full reduced first and second fixed-charge variations
+  - exact channel-resolved exterior masses and charged continuum edge
+  - abstract hylomorphic-minimizer theorem hypotheses and split/unsplit comparison
+  - exact tail and Derrick/Pohozaev identities
+  - no BVP, optimizer, discretization, or numerical spectrum
+licenses_consumed: []
+licenses_targeted:
+  - L-O1-CLOCK
+  - L-O2-ASYMPTOTIC
+  - L-O3-RELATIVE-EQUILIBRIUM
+  - L-O4-ISOLATION
+small_ratio_prescriptions:
+  error_budget: exact rational, polynomial, and variational identities; no floating-point observable
+  zero_mode_gauge: diagonal S1 phase and translations are exact moduli; no discrete spectrum is formed
+  eigenpair_residual: not applicable
+  lambda_min_lambda_2: not applicable
+  observed_order_extrapolation: not applicable
+  jitter_sign_test: not applicable; split/no-split and threshold margins are exact rationals
+maximum_verdict: >-
+  exact O1/O2 licenses and theorem-backed O3/O4 existence only if the full
+  theorem hypotheses, symmetric-criticality bridge, and necessarily split
+  minimizer all close; O5 remains separate
+does_not_license:
+  - O5 full constrained stability or radiative nonlinear evolution
+  - a two-clock force or particle interpretation
+  - unchanged use of attempt 0002 thresholds after the action delta
+preregistered_exact_gates:
+  - the diagonal action is globally 2*pi-periodic, vacuum fixing, and the lock is equivariant
+  - the Hamiltonian is bounded and the B=psi=0 uniaxial sector is exactly unchanged
+  - the augmented exterior pencil has positive scalar and B kinetic blocks with action-derived masses
+  - the complete fixed-charge Hessian includes every f/b block and its positive Legendre rank-one term
+  - an exact constant-core trial has charged ratio below the lightest charged continuum edge
+  - every B=0 configuration has charged ratio at or above its scalar continuum edge
+  - the abstract variational theorem hypotheses and radial symmetric-criticality bridge are explicit
+  - any earned localized minimizer has nonzero B and hence a dynamically lifted M5 core degeneracy
+  - dE/dQ=omega and the unsupported asymptotic tails follow from the same action
+next_if_success: >-
+  Extract the coupled exact action/variation APIs, then freeze the full
+  constrained O5 Hessian and radiation problem before any numerical oracle.
+next_if_failure: >-
+  Repair the theorem or representation defect; if the diagonal bridge itself
+  is invalid, continue to the bundle-aware or noncommuting-core families.
+route_verdict: >-
+  established_as_stated_for_O1_through_O4: the repaired subcritical diagonal
+  action is a bounded local Lorentz-covariant compact M5 clock completion. The
+  exact abstract variational hypotheses and strict 35/16 binding margin give
+  a nonempty open charge set of finite-energy open-space minimizers; the b
+  equation contains the nonzero source -12 f^2, so every nontrivial clock
+  dynamically lifts the M5 tangent degeneracy. O5 remains open.
+evidence_scope: EXACT_PHASE_LOCKED_M5_SYMMETRY_ASYMPTOTICS_AND_VARIATIONAL_EXISTENCE
+strongest_positive_result: >-
+  One diagonal normalized S1 acts with weights one and two on psi and B. The
+  completed potential is positive, the unsplit sector has ratio at least 5,
+  while the split plateau has J/K=37/16 below the action-derived charged edge
+  9/2. The complete fixed-Q equations/Hessian, dE/dQ=omega, positive tails,
+  finite inertia, and Derrick balance are exact.
+computed_predicate: >-
+  Forty-three final exact checks cover group equivariance, curvature
+  projection/replacement, positivity, unchanged sector, complete variations,
+  exterior masses, charge weights, binding and unsplit margins, tails,
+  Derrick identity, and defining-object mutations. Earlier failed and
+  endpoint-gap receipts remain preserved and earn no license.
+proposition: >-
+  The selected phase-locked auxiliary/M5 action has a theorem-backed,
+  necessarily core-split, intrinsically localized fixed-charge relative
+  equilibrium for a nonempty open charge set.
+licenses_earned:
+  - L-O1-CLOCK
+  - L-O2-ASYMPTOTIC
+  - L-O3-RELATIVE-EQUILIBRIUM
+  - L-O4-ISOLATION
+parent_effect: >-
+  O1-O4 are established for the selected augmented action. O5 activates on
+  its complete constrained tangent, including neutral massless boost channels
+  and nonlinear radiation; no numerical stability oracle is yet licensed
+  until that exact operator transaction is frozen.
+cannot_decide:
+  - full constrained Morse index
+  - stability against orthogonal M5 and auxiliary-spurion perturbations
+  - nonlinear radiation into neutral massless channels
+  - O5 or O6
+routes_remaining:
+  - C_AUXILIARY_GAUGED/full-constrained-stability
+  - C_AUXILIARY_GAUGED/nonlinear-neutral-radiation
+artifacts:
+  verifier_sha256: 0ac8a6bda626829d6bf6e514c72356e4173923e9b41d2ac245ef21e540e5e541
+  derivation_sha256: e34a80de2c07d0d75a9c143f5fca98a32f48281d029d1c89e531bc8b89eb01db
+  initial_stdout_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  endpoint_pass_stdout_sha256: 6c5ffce85c2073f94493533f1ffbcae016e6444bcec5cff2d450bc97d9b646dd
+  final_stdout_sha256: a1571841d7ed37f70597dc1a417de15364dae13586d5c30508cddda0193eaed1
+verification_audit:
+  initial_process_status: 1
+  initial_failure: >-
+    An algebraically equal factored unsplit expression failed a structural
+    equality check; stderr was not redirected and stdout.txt is empty.
+  endpoint_process_status: 0
+  endpoint_tally: ALL 41 CHECKS PASS [P249-O1-O4-0005]
+  endpoint_disposition: >-
+    Preserved but non-licensing because the coupled H1 compactness bridge for
+    the sextic endpoint was not established.
+  final_process_status: 0
+  lexical_check_calls: 43
+  runtime_check_executions: 43
+  python_assert_nodes: 0
+  terminal_tally: ALL 43 CHECKS PASS [P249-O1-O4-0005]
+  sensitivity: >-
+    Deleting the phase lock removes the nonzero split source; treating the
+    weight-two B field as charge one changes the exact continuum edge.
+  targeted_replay: PYTHONPATH=src .venv/bin/python scripts/validate_repository.py
+  targeted_replay_result: >-
+    WORKFLOW VALID: 248 claims, 248 accepted, 12 proposals, 4 skills;
+    MIGRATION QUEUE: 218 units, 0 pending, 0 partial
