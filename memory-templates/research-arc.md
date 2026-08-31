@@ -35,8 +35,20 @@ Record the accepted release, source commit, claim ids, importable modules, campa
 - Campaign evidence:
 - Genuine unresolved objective:
 
-## Definitions and Invariants
-Freeze variables, domains, units, normalizations, symmetries, topology, initial/boundary conditions, regularity assumptions, known limits, and cross-sector invariants before candidate selection. For numerical work also freeze the precision, discretization family, domain truncation, stability condition, and error norm before inspecting results.
+## Definitions, Invariants, and Analytic Specification
+Freeze variables, domains, units, normalizations, symmetries, topology,
+initial/boundary conditions, regularity assumptions, and cross-sector invariants
+before candidate selection. After structural selection and before every planned
+numerical obligation, work and record exact identities and elimination,
+complete variations, conservation
+and symmetry reductions, non-dimensionalization and scaling, analytic bounds,
+virial identities, limits, asymptotics, perturbation theory, and applicable
+existence/uniqueness/compactness/no-go theorems. State the strongest conclusion
+already earned, one residual proposition that still needs computation, and why
+the current analytic ladder does not decide it. Only then freeze precision,
+chart or ansatz, boundary treatment, discretization family, domain truncation,
+fit form, stability condition, error norm, thresholds, and maximum numerical
+verdict before inspecting production results.
 
 ## Permitted Imports and Assumptions
 List every permitted external or framework input with provenance. Distinguish a
@@ -70,11 +82,17 @@ hash, and planned validation receipt. Unchanged accepted dependencies, adjacent
 corpus items, and raw theorem counts are outside the transaction.
 
 ## Claim Ladder
-Build the smallest dependency-first ladder. Each row names the strongest practical oracle and sensitivity test. Use SymPy for exact algebraic obligations, Lean for an auditable formal theorem, and SciPy for root/spectrum/integral/optimization/ODE/BVP/PDE evidence when no tractable closed form exists; do not force every obligation into the same tool.
+Build the smallest dependency-first ladder. Each row names the strongest
+analytic result available, any irreducible numerical remainder, the strongest
+practical oracle, and its sensitivity test. Use SymPy or manual algebra for
+exact obligations, Lean for an auditable formal theorem, and SciPy only for a
+named root/spectrum/integral/optimization/ODE/BVP/PDE remainder after the
+analytic-closure receipt passes. Absence of a convenient closed form is not by
+itself sufficient, and no obligation is forced into one tool.
 
-| Step | Positive intent | Requires | Pass licenses | Does not license | Oracle | Failure scope | Unlocks | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 |  |  |  |  |  |  |  | pending |
+| Step | Positive intent | Requires | Pass licenses | Does not license | Analytic result / numerical remainder | Oracle | Failure scope | Unlocks | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 |  |  |  |  |  |  |  |  | pending |
 
 ## Importable Implementation
 Name canonical package APIs to add or reuse. Campaign scripts must call these APIs and must not duplicate constants, solvers, profiles, convention conversions, or check helpers. For numerical work, state whether `substrate_framework.numerics` applies and identify the claim-owned equation, operator, initial/boundary data, mesh, tolerances, and error metric. Route canonical sampled trapezoidal integration through its compatibility helper; mutable standalone scripts for the current environment use `np.trapezoid`, never removed `np.trapz`, and tractable exact integrals stay symbolic. Preflight direct attributes, imported names, and dynamic `getattr` access; nested fallback defaults are eager, so use a two-step `None` fallback.
@@ -104,8 +122,10 @@ Record the one strongest practical oracle and only the sensitivity evidence
 needed for this claim: statement/axiom audit for Lean; applicable mutation,
 counterexample, or exact limit for custom symbolic work; solver status, error
 model, refinement, and one independent method or soluble limit for numerics.
-Reuse an unchanged receipt. Do not create a verifier for this record or expand
-adjacent observations into the transaction.
+For a numerical oracle, link the analytic-closure receipt and confirm that the
+computed predicate is exactly its named remainder. Reuse an unchanged receipt.
+Do not create a verifier for this record or expand adjacent observations into
+the transaction.
 
 ## Impact-Bounded Dependency Replay
 List only consumers that can change under the declared claim or implementation

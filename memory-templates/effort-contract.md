@@ -32,10 +32,13 @@ Work proceeds through these dependency-ordered steps and continues after failed 
 2. [ ] Candidate and selection-criteria preregistration.
 3. [ ] Mathematical-object and symmetry/conservation license.
 4. [ ] Ensemble, admissible-representation, and observable license.
-5. [ ] Importable implementation.
-6. [ ] Verifier, objective-bridge, and sensitivity audit.
-7. [ ] Framework-fit and downstream replay.
-8. [ ] Claim review, promotion, generation, and memory synchronization.
+5. [ ] Analytic closure: complete variations, scaling, bounds, limits,
+       asymptotics/theorems, strongest exact result, and one named remainder.
+6. [ ] Frozen numerical design for that remainder, when one remains.
+7. [ ] Importable implementation.
+8. [ ] Verifier, objective-bridge, and sensitivity audit.
+9. [ ] Framework-fit and downstream replay.
+10. [ ] Claim review, promotion, generation, and memory synchronization.
 
 For every dependency node record its positive intent, prerequisites, licenses
 earned, nearby interpretations it does not license, maximum verdict, failure
@@ -55,8 +58,16 @@ Do not use memory prose or a generic external method as substitute authority.
 | 0001 |  |  |  |  |  |  |
 
 ## Validation
-Validation covers the actual objective, verifier sensitivity, limits, conventions, dependencies, consumers, and generated state—not merely an exit code or check count. No freestyle writing: every claim in any produced document is backed by a machine check (SymPy, Lean, SciPy, or numerical) or by an explicit citation, and check/test names map to the document's equation or claim numbers so text-to-proof agreement is auditable.
+Validation covers the actual objective, verifier sensitivity, limits,
+conventions, dependencies, consumers, and generated state—not merely an exit
+code or check count. No freestyle writing: every claim in any produced document
+is backed by a sourced exact derivation, an audited formal or machine check, or
+an explicit citation. A numerical check additionally links a passed
+analytic-closure receipt and answers only its named remainder. Check/test names
+map to the document's equation or claim numbers so text-to-proof agreement is
+auditable.
 
+- Analytic-closure receipt: exact equations and variations, symmetries and constraints, scaling and non-dimensional groups, bounds/limits/asymptotics, strongest non-numerical conclusion, irreducible remainder, and frozen numerical design freedoms (when applicable):
 - Targeted scientific command and claim-appropriate oracle (SymPy, Lean, SciPy, or simulation), with process status zero, terminal tally, lexical check-call sites, runtime check executions, and assertion nodes recorded as distinct inventories rather than forced-equal counts:
 - Mutation/counterexample command, including shared-variable elimination for any allegedly independent downstream check and explicit field/measure/coefficient maps for cross-sector matches:
 - Numerical solver-status, refinement, conservation/stability, and independent-route command (when applicable):

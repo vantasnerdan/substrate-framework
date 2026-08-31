@@ -11,6 +11,11 @@ When the check leaves an open question, state the next step as its positive
 contribution to resolution—the object it constructs, question it closes, or
 distinction it establishes.
 
+A production record also requires a passed analytic-closure receipt. A pre-gate
+sample uses `numerical_role: exploratory_only`; it may generate a hypothesis or
+debug an implementation, but it cannot support a claim or anti-claim, set later
+thresholds, or be relabelled as production evidence.
+
 Begin every section with a plain-prose sentence. Inline code, a table, or a list
 does not satisfy the memory index's first-content disclosure contract.
 
@@ -28,6 +33,9 @@ confidence: working
 status: active
 obligation: <obligation-node-id>
 license_ids: []
+analytic_closure_receipt: <path or exploratory_only>
+numerical_remainder: <one proposition left after algebra/calculus/theorems>
+numerical_role: <exploratory_only | numeric_evidence | simulation_evidence>
 computed_predicate: <literal predicate evaluated>
 proposition: <mathematical proposition implied>
 maximum_verdict: <typed maximum verdict>
@@ -38,18 +46,30 @@ evidence_scope: <numeric evidence | unresolved | representation scoped>
 
 What was being computed, and why it was delicate — usually because the quantity of interest is orders of magnitude below the dominant scale.
 
-## Eligibility and Objective Bridge
+## Analytic Eligibility and Objective Bridge
 
 Record the mathematical object, symmetry or conservation license, ensemble,
 admissible representation, observable, and background/branch identity. State
-the computed predicate, proposition it implies, maximum verdict, parent
-obligation it advances, and nearby claims it cannot decide. If an upstream
-license is absent, classify the check as exploratory or representation-scoped
-and return to construction rather than using precision to force a verdict.
+the exact equations and complete variations, non-dimensional groups and scaling,
+analytic bounds and limits, asymptotic operator or continuum threshold, and the
+strongest result already fixed without discretization. Link the receipt, name
+one residual proposition, explain why the current analytic ladder does not
+decide it, and state the computed predicate, proposition it implies, maximum
+verdict, parent obligation it advances, and nearby claims it cannot decide. If
+an upstream license or analytic receipt is absent, classify the check as
+`exploratory_only` or representation-scoped and return to construction rather
+than using precision to force a verdict.
 
 ## Method
 
-How it was computed: the formulation chosen (and rejected alternatives when the choice is instructive), the evaluator used, background forward-error estimate, branch-identity observables, constrained tangent space or gauge, full error budget, and the execution context worth knowing later (thread pins, invocation path, versions) if results sit near the 1e-13-relative level where runner settings matter.
+How it was computed: show how the numerical predicate is compiled from the
+analytic remainder, then record the formulation chosen, frozen design freedoms
+(chart or ansatz, box, boundary condition, mesh/basis, fit form, tolerance),
+rejected alternatives when instructive, evaluator, background forward-error
+estimate, branch-identity observables, constrained tangent space or gauge, full
+error budget, and the execution context worth knowing later (thread pins,
+invocation path, versions) if results sit near the 1e-13-relative level where
+runner settings matter.
 
 ## What Was Seen
 

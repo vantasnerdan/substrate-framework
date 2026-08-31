@@ -293,31 +293,84 @@ Run impact analysis before changing a canonical symbol. Record direct consumers,
 
 An `ALL N CHECKS PASS` tail proves only that those assertions executed successfully. It does not prove that the assertions test the headline claim.
 
-Choose the oracle by the mathematical claim, not by a preferred tool. Use SymPy for exact identities, substitutions, series, and analytic limits; Lean for finite formal statements whose exact encoding and axioms can be audited; and NumPy/SciPy for roots, spectra, quadrature, optimization, ODEs, boundary-value problems, and discretized PDEs without a tractable closed form. Not every proof obligation belongs in SymPy or Lean. Conversely, a SciPy result earns numeric or simulation evidence only: it never becomes exact merely because tolerances are tight.
+Choose the oracle by the mathematical claim, not by a preferred tool. Use SymPy
+for exact identities, substitutions, series, and analytic limits; Lean for
+finite formal statements whose exact encoding and axioms can be audited; and
+NumPy/SciPy for the root, spectrum, quadrature, optimization, ODE,
+boundary-value, or discretized-PDE remainder left after the analytic
+specification gate. Not every proof obligation belongs in SymPy or Lean, but
+absence of a convenient closed form does not itself open production numerics.
+Conversely, a SciPy result earns numeric or simulation evidence only: it never
+becomes exact merely because tolerances are tight.
 
 Proof and measurement answer different questions. An exact symbolic or formal
-proof establishes its encoded implication; measurement, numerical evidence, or
-simulation tests whether assumptions apply and consequences describe nature.
-Neither should be withheld until the other exists, and empirical agreement must
-not be relabeled as proof.
+proof establishes its encoded implication; measurement tests whether assumptions
+apply and consequences describe nature. For a claim whose meaning is defined by
+equations, production numerics comes only after the analytic specification gate
+below: measurement may motivate a candidate or test an already frozen empirical
+consequence, but it may not choose the mathematical object, ensemble,
+representation, observable, scaling law, or acceptance threshold after results
+are visible. Use the phrase “computer-assisted proof” only when discretization,
+truncation, roundoff, and the final verdict are covered by a rigorous enclosure;
+record it within the repository's existing verification taxonomy unless that
+taxonomy is separately revised. Otherwise use `numeric_evidence` or
+`simulation_evidence`, regardless of precision.
 
-Do not simulate a conclusion already fixed by stronger exact evidence. If exact elimination removes a parameter from an ODE right-hand side, local uniqueness—not duplicate integrations with two parameter values—establishes same-data trajectory independence. Before calling a downstream tail, dispersion, normalization, or consistency check independent, eliminate its shared intermediate variables and compare the resulting equations or positive solution sets; an algebraically equivalent condition is regression coverage, even when presented in different coordinates. Prefer exact parameter sensitivity or an initial Taylor-coefficient separation for a counterexample; simulate only behavior that remains analytically unresolved.
+Do not simulate a conclusion already fixed by stronger exact evidence. Work the
+analytic ladder as far as the claim permits: exact identities and elimination;
+complete first and second variation; conservation and symmetry reduction;
+non-dimensionalization and scaling; inequalities, coercivity, monotonicity and
+convexity; virial or Derrick identities; limiting cases, asymptotics and
+perturbation theory; and applicable existence, uniqueness, compactness, or no-go
+theorems. If exact elimination removes a parameter from an ODE right-hand side,
+local uniqueness—not duplicate integrations with two parameter values—establishes
+same-data trajectory independence. Before calling a downstream tail, dispersion,
+normalization, or consistency check independent, eliminate its shared
+intermediate variables and compare the resulting equations or positive solution
+sets; an algebraically equivalent condition is regression coverage, even when
+presented in different coordinates. Prefer exact parameter sensitivity or an
+initial Taylor-coefficient separation for a counterexample. Numerics begins at
+the named analytic remainder, not merely when a convenient closed form is absent.
 
 Cross-sector coefficient matching must type the fields, kinetic metrics, action measures, and coefficient conversions on both sides. A shared symbol, functional shape, or mass dimension is necessary evidence at most; it is not a field map, dimensional-reduction theorem, physical identification, or parameter derivation.
 
 Structural checks must evaluate the actual construction. A literal `True`, a stand-in constant that omits the claimed object, a copied expected period, or a bounded sample unrelated to the defining predicate is provenance evidence at most, not a verifier. For differential forms, enumerate every graded Leibniz and cyclic-reordering term before combining coefficients. Test pointwise nonvanishing, local closedness, global non-exactness, period normalization, extension ambiguity, and gauge descent as separate obligations; none implies the next merely because a familiar formula is printed.
 
-Before choosing a discretization or opening production outputs, freeze the typed
-chain `mathematical object -> symmetry or conservation license -> ensemble and
-variational functional -> admissible representation -> observable -> numerical
-approximation -> permitted verdict`. Each obligation records `requires`,
-`pass_licenses`, `does_not_license`, `maximum_verdict`, `failure_scope`, and
-`unlocks`. A computable tangent, finite norm, fitted frequency, sampled spectrum,
-or stable discretization does not create a cyclic coordinate, conserved charge,
-physical ensemble, or observable.
+Before choosing a discretization, implementing a production numerical verifier,
+or opening outputs that may support a claim or anti-claim, pass an analytic
+specification gate for that obligation. Freeze the typed chain `mathematical
+object -> symmetry or conservation license -> ensemble and exact variational
+functional -> admissible function space and representation -> analytic scale and
+asymptotic structure -> observable -> irreducible numerical remainder ->
+numerical approximation -> permitted verdict`. Each obligation records
+`requires`, `pass_licenses`, `does_not_license`, `maximum_verdict`,
+`failure_scope`, and `unlocks`.
+
+The gate records the exact equations and domains; all admissible variations and
+constraints; the full Euler--Lagrange, Legendre, and second-variation objects
+needed by the claim; symmetries, conserved quantities, gauges and zero modes;
+dimensions, non-dimensional groups, dominant balances and scaling laws;
+analytic bounds, limits, asymptotic operators and continuum thresholds; and the
+strongest conclusion already fixed without discretization. It then names one
+residual proposition that genuinely still needs numerics, why the analytic
+ladder does not decide it at the current boundary, the numerical design degrees
+of freedom that must be frozen, and the maximum verdict that computation may
+earn. This is an analytic-closure receipt, not a demand to prove that no unknown
+analytic method could ever exist.
+
+Exploratory numerical sampling may precede this gate only as explicitly labeled
+hypothesis-generation or implementation-debug evidence. It may not select a
+candidate by fit, set a tolerance, close or refute an obligation, enter claim
+review as scientific evidence, or be relabeled as production evidence later.
+A computable tangent, finite norm, fitted frequency, sampled spectrum, or stable
+discretization does not create a cyclic coordinate, conserved charge, physical
+ensemble, observable, or continuum statement.
 
 In particular:
 
+- derive the exact algebraic identities, complete variations, scaling laws,
+  asymptotic balances, and theorem hypotheses available before declaring a
+  numerical remainder;
 - distinguish a symmetry-generated clock, arbitrary tangent, normal mode,
   stationary solution, relative equilibrium, and nonlinear periodic orbit;
 - distinguish fixed charge, fixed frequency, unconstrained statics, and released
@@ -336,9 +389,13 @@ In particular:
   validation degrees of freedom before fitting. A fit with as many free
   parameters as data points is a parametrization, not validation.
 
-If this license chain fails, stop production numerics, record the precise object,
-ensemble, representation, or observable mismatch, repair the construction, and
-continue the active rung. These requirements have concrete pedigree in the
+If the analytic specification or license chain fails, stop production numerics,
+record the precise object, ensemble, representation, scaling, asymptotic, or
+observable mismatch, repair the construction, and continue the active rung. A
+numerical anti-claim additionally requires that the frozen representation cover
+the claimed candidate class and that a converged error enclosure exclude its
+success set; otherwise the result is exploratory, `NUMERICALLY_UNRESOLVED`, or
+`REPRESENTATION_SCOPED`. These requirements have concrete pedigree in the
 Discussion #186 and P239-P247 failures: rigid versus tapered clock confusion,
 fixed-frequency versus fixed-charge sign reversal, coordinate-string and
 projector defects, singular phase representations, branch switching,

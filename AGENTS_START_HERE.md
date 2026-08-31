@@ -156,7 +156,9 @@ must read the corresponding `SKILL.md` in full and follow the same workflow.
 - Use [`small-ratio-numerics`](.agents/skills/small-ratio-numerics/SKILL.md) when a
   computed quantity of interest is orders of magnitude below the dominant scale —
   soft modes, weak forces, tiny splittings — or when results move with box size,
-  mesh, or execution environment.
+  mesh, or execution environment. Enter it only after the parent obligation has
+  frozen its analytic-closure receipt and named the residual proposition that
+  genuinely needs numerics.
 
 Skills specialize the root contract; they do not relax it. Read any reference
 files the selected skill routes to before taking the corresponding action.
@@ -205,13 +207,16 @@ as accepted framework truth.
 
 For scientific work, freeze candidates and structural selection criteria before
 opening comparator values when a mechanism is genuinely being selected. A
-fixed theorem may proceed with one complete proof route. Use the strongest
-practical oracle, demonstrate applicable verifier sensitivity, record
-assumptions and imports, and replay affected consumers. For kernel-checked Lean,
-audit the exact statement, imports, proof escapes, axioms, and physical encoding
-instead of adding a ceremonial mutation. A failed route is attempt evidence and
-triggers the next materially different attempt; it is not the requested positive
-result.
+fixed theorem may proceed with one complete proof route. Before production
+numerics, work exact algebra, complete variational calculus, scaling, bounds,
+limits, asymptotics, and applicable theorems as far as the claim permits; record
+the strongest analytic result, one unresolved proposition, and the frozen
+numerical design freedoms. Use the strongest practical oracle for that
+remainder, demonstrate applicable verifier sensitivity, record assumptions and
+imports, and replay affected consumers. For kernel-checked Lean, audit the exact
+statement, imports, proof escapes, axioms, and physical encoding instead of
+adding a ceremonial mutation. A failed route is attempt evidence and triggers
+the next materially different attempt; it is not the requested positive result.
 
 Before requesting review:
 

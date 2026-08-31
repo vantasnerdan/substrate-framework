@@ -11,15 +11,28 @@ The field's response was not more precision — it was splitting the question in
 
 ## Eligibility before precision
 
-Do not form a Hessian, generalized eigenproblem, fixed-$J$ functional, force,
-splitting, or radiation threshold until the mathematical object, ensemble,
-admissible representation, and observable have earned their upstream licenses.
+Do not form a production Hessian, generalized eigenproblem, fixed-$J$
+functional, force, splitting, or radiation threshold until the mathematical
+object, ensemble, admissible representation, and observable have earned their
+upstream licenses and the parent campaign has an analytic-closure receipt. That
+receipt must give the exact equations and complete variations; symmetries,
+constraints, gauges and zero modes; non-dimensional groups, dominant balances
+and scaling; available bounds, virial identities, limiting cases and asymptotic
+operators; the strongest conclusion already fixed without discretization; and
+one residual proposition that numerics must decide. “No convenient closed
+form” does not by itself open production numerics, while no proof that every
+unknown analytic route is impossible is required.
+
 The background must satisfy the correct Euler–Lagrange equations in the claimed
 function space; record both its residual and a conditioning-aware forward-error
 estimate. Build the full second variation by differentiating the complete
 functional before restricting zero-valued fields or blocks. Declare the
 constrained tangent space, gauges and moduli, kinetic-metric rank and sign,
-asymptotic operator, and essential-spectrum threshold.
+asymptotic operator, and essential-spectrum threshold. Freeze the remaining
+numerical design freedoms—chart or ansatz, boundary treatment, box, mesh or
+basis family, observable, fit form, tolerance, and permitted verdict—before
+opening production outputs. Earlier samples are hypothesis-generation or
+debugging only and cannot later be relabeled as evidence.
 
 For a collective clock, first establish a globally defined compact action,
 fixed period and generator normalization, action invariance, vacuum fixation,

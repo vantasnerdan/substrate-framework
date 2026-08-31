@@ -104,6 +104,7 @@ observation becomes follow-up.
 | Gate | Command/evidence | Result | Next task if not passed |
 | --- | --- | --- | --- |
 | Positive claim |  |  |  |
+| Analytic-closure receipt and named numerical remainder, when applicable |  |  |  |
 | Claim-appropriate symbolic/formal/numerical oracle |  |  |  |
 | Verifier mutations/counterexamples |  |  |  |
 | Solver status, refinement, conservation/stability, and independent route where numerical |  |  |  |

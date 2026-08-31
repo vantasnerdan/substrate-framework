@@ -6,14 +6,18 @@ Use the strongest practical oracle for each claim and state exactly what verdict
 | --- | --- | --- |
 | Exact identity, ansatz residual, algebra, series, exact limit | SymPy or direct symbolic algebra | `symbolic_verified` |
 | Finite algebraic, order, combinatorial, or topological theorem | Lean with audited axioms | `formal_verified` |
-| Root, eigenvalue, BVP/IVP, integral, optimization without closed form | SciPy root/integration/optimization/sparse-linear-algebra method plus refinement and an independent route | `numeric_evidence` |
+| Analytically unresolved root, eigenvalue, BVP/IVP, integral, or optimization | SciPy root/integration/optimization/sparse-linear-algebra method plus refinement and an independent route | `numeric_evidence` |
 | Time-dependent PDE or nonlinear dynamics | Appropriate spatial discretization plus SciPy time integration, convergence, conservation/stability, and a method cross-check | `simulation_evidence` |
 | Figure or visualization | Rendering tool | artifact only |
 
 Separate genuinely different evidence modalities so each receives the right
 verdict, while preserving the strongest useful combined statement. Do not split
-a claim into trivial fragments merely to simplify review. Discover numerically,
-then prove symbolically or formally when the structure permits.
+a claim into trivial fragments merely to simplify review. Use exploratory
+numerics to generate hypotheses only when useful; before production numerical
+evidence, freeze the analytic specification and work exact algebra, calculus,
+scaling, bounds, asymptotics, and applicable theorems as far as the claim
+permits. Computation answers the named remainder rather than defining the
+question after outputs are visible.
 
 ## Audit the objective bridge first
 
@@ -23,6 +27,7 @@ Before selecting or auditing an oracle, record this bridge:
 computed predicate
 -> mathematical proposition
 -> upstream object/ensemble/representation/observable licenses
+-> analytic-closure receipt and irreducible numerical remainder
 -> maximum scientific verdict
 -> exact effect on the parent campaign objective
 ```
@@ -33,9 +38,12 @@ does not acquire a missing symmetry, conserved charge, admissible ensemble,
 branch identity, or physical observable through numerical accuracy. With an
 absent bridge, the result is exploratory or provenance evidence only.
 
-Proof establishes the encoded mathematical statement. Measurement, numerics,
-and simulation test applicability or consequences; record them as separate
-evidence scopes rather than treating measurement as the definition of proof.
+Proof establishes the encoded mathematical statement. Measurement, ordinary
+numerics, and simulation test applicability or consequences; record them as
+separate evidence scopes rather than treating measurement as the definition of
+proof. Use the phrase “computer-assisted proof” only for a rigorous enclosure
+of the discretization, truncation, roundoff, and claimed continuum conclusion;
+do not silently invent a new verification status outside the registry schema.
 
 ## Symbolic checks
 
@@ -51,6 +59,10 @@ An identity that holds only because both sides contain the same copied literal i
 
 ## Numerical checks
 
+- Link the analytic-closure receipt, state the strongest exact result already
+  obtained, and name the one proposition left for computation. “No convenient
+  closed form” is not enough; equally, no universal proof of analytic
+  impossibility is required.
 - Confirm the background is stationary in the claimed admissible space, the
   ensemble and observable are licensed, the representation covers the claimed
   perturbations, and the error enclosure can reach the decision boundary. If

@@ -69,20 +69,35 @@ Order the structural selection criteria and state the comparator-blinding point.
 ## Proposed Claim Delta
 List claims proposed or challenged, their dependencies, evidence plan, and consumers. Before assigning a claim identifier, search the registry, campaigns, and durable memory; rejected or provisional identifiers remain reserved even when absent from the accepted registry. Do not use `supersedes` before acceptance.
 
-## Mathematical and Numerical Licenses
+## Analytic Specification and Numerical Licenses
 For every obligation separately, freeze `object -> symmetry/conservation ->
-ensemble -> representation -> observable -> numerical approximation ->
-permitted verdict`. Record the configuration space and admissible variations,
-equivalence or gauge, topology and bundle charts, group-action domain/period and
-generator normalization when applicable, invariance and conservation identity,
-Legendre-map rank, ensemble and variational functional, continuum admissibility,
-background residual and forward error, branch identity, tangent space and gauge,
-kinetic-metric rank/sign, asymptotic principal symbol and essential spectrum,
-representation coverage and excluded sectors, observable definition and
-contamination exclusions, imposed support/mask/taper, and maximum verdict. Give
-each license a durable identifier and evidence-backed status. A downstream
-`requires` entry resolves to a license identifier; an absent or unearned license
-blocks production numerics rather than becoming a negative scientific result.
+ensemble and exact variational functional -> admissible function space and
+representation -> analytic scale/asymptotic structure -> observable ->
+irreducible numerical remainder -> numerical approximation -> permitted
+verdict`. Record the configuration space and all admissible variations;
+equivalence or gauge, topology and bundle charts; group-action domain/period and
+generator normalization; invariance and conservation identity; complete
+Euler--Lagrange, Legendre, and second-variation objects required by the claim;
+dimensions, non-dimensional groups, dominant balances and scaling laws;
+available identities, bounds, coercivity/monotonicity results, virial identities,
+limits, perturbative reductions, asymptotic principal symbol and essential
+spectrum; and the strongest conclusion already established by algebra, calculus,
+or an applicable theorem.
+
+Only after that analytic-closure receipt passes may the obligation name one
+residual proposition for production numerics. State why the current analytic
+ladder does not decide it, without pretending to prove that no unknown analytic
+method exists; then freeze background residual and forward error, branch
+identity, tangent space and gauge, kinetic-metric rank/sign, representation
+coverage and excluded sectors, observable and contamination exclusions, imposed
+support/mask/taper, chart or ansatz, box and boundary treatment, discretization
+family, fit form, tolerance, and maximum verdict. Give each license a durable
+identifier and evidence-backed status. A downstream `requires` entry resolves
+to a license identifier; an absent or unearned license blocks production
+numerics rather than becoming a negative scientific result. Pre-gate numerical
+sampling is `exploratory_only`: it may generate hypotheses or debug code but may
+not select the candidate, set gates, support a claim or anti-claim, or later be
+relabelled as production evidence.
 
 ## Implementation and Oracle Plan
 Name importable APIs, claim-appropriate exact/numeric/formal oracles, applicable mutations and counterexamples, refinements, independent routes, and impact-bounded replay commands. A kernel-checked Lean proof calls for statement, import, proof-escape, axiom-footprint, and physical-encoding audits rather than a ceremonial mutation of the kernel. Campaign verifiers run directly with `PYTHONPATH=src`; import reusable package APIs rather than repository scripts, which remain CLI adapters. Pin the campaign's own source, claim, and release evidence, but never make future valid work fail by asserting unrelated queue units stay pending or mutable `current` remains the historical release; replay old campaigns through durable snapshots or their canonical modules/tests. For each replay inventory, record lexical check-call sites, runtime check executions, and assertion nodes separately; loops and dynamic dispatch can make the runtime tally differ legitimately, so equality is not an oracle. Predeclare a compatibility preflight: canonical integration uses `trapezoid_integral`, mutable current-environment scripts use `np.trapezoid`, and executable syntax is checked for direct, imported, and dynamic legacy access. An eager fallback such as `getattr(np, "trapezoid", getattr(np, "trapz"))` is legacy access because the default is evaluated first. Repair mutable code to the current name or a safe two-step fallback; give immutable source an alias-only recorded replay before scientific adjudication. Do not count that native compatibility abort as candidate rejection. State why SymPy, Lean, or a particular SciPy method fits each obligation. Do not plan a numerical rerun as independent evidence when an exact result already fixes its right-hand side or output; classify it as regression coverage and prefer exact sensitivity or Taylor separation for tractable counterexamples. Before labeling a downstream tail, dispersion, normalization, or consistency route independent, eliminate shared intermediate variables and compare the resulting equations or positive solution sets. For cross-sector matches, freeze distinct field types, kinetic metrics, action measures, and coefficient conversions; equal symbols, shapes, or dimensions are not maps. Structural oracles must evaluate the claimed object rather than a literal boolean, stand-in constant, copied period, or unrelated bounded sample. For differential forms, predeclare the full graded Leibniz/cyclic expansion and keep nonvanishing, closedness, global non-exactness, period normalization, filling dependence, and gauge descent as separate gates. For genuinely unresolved ODE/BVP/PDE or quadrature work, specify precision, equations, domain, initial/boundary data, discretization, mesh/time/sample refinement, tolerances, error norm, invariants or controlled dissipation, solver-status gate, and method cross-check. For FFT differentiation or spectral line claims, freeze the active frequencies and window, require commensurability or measured endpoint closure, distinguish an identity on one FFT coefficient from independent evidence, and predeclare the claimed line's minimum norm or power fraction. Express near-zero and agreement thresholds in a declared dimensional or scale-relative error model, and keep exact analytic nulls separate from numerical roundoff regressions.
@@ -93,9 +108,10 @@ write units, signs, and geometric factors as a comment block before code
 and compute test expectations independently of the implementation; capture
 verifier stdout into `attempts/000N/` on first execution rather than
 rerunning completed runs to materialize records; and when a symbolic check
-repeatedly misbehaves, cross-validate the logic numerically through
-`substrate_framework.numerics` instead of rebuilding the symbolic argument
-from memory.
+repeatedly misbehaves, preserve the attempt and rederive it from source with a
+different exact identity, manual calculation, independent CAS route, or formal
+encoding. Numerical samples may debug that derivation but cannot settle or
+refute the exact proposition.
 When patching existing files, anchor by content rather than remembered
 line numbers: search for a unique pattern at the edit site first, prefer
 AST-aware rewrites for nested or multi-site changes, and switch to one
@@ -202,7 +218,7 @@ obligation_graph:
         admissible_space: <smoothness, constraints, gauge, topology, boundaries>
         representation_coverage: <included and excluded sectors>
         observable: <definition and contamination exclusions>
-        numerical_representation: <background, branch, operator, error budget>
+        numerical_representation: <blocked until analytic closure; then background, branch, operator, error budget>
         permitted_verdict: <maximum typed verdict>
 license_registry:
   - id: <license-id>

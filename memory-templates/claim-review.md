@@ -53,10 +53,16 @@ not “the claim is false.”
 
 ## Oracle Audit
 Inspect the one strongest practical oracle for the load-bearing proposition.
-Record only the applicable statement/axiom audit, mutation or counterexample,
-limit, refinement, independent rederivation, and solver/error facts needed to
-exclude a false green. Reuse a passing receipt while its code and inputs are
-unchanged; do not validate this review record.
+For numerical or simulation evidence, first inspect the analytic-closure
+receipt: exact equations and variations, scaling, bounds and limits, asymptotic
+structure, strongest non-numerical conclusion, named numerical remainder, and
+frozen design freedoms. Confirm that the computed predicate answers that
+remainder rather than defining a different question. Then record only the
+applicable statement/axiom audit, mutation or counterexample, limit, refinement,
+independent rederivation, and solver/error facts needed to exclude a false
+green. Pre-gate exploratory samples cannot support acceptance or refutation.
+Reuse a passing receipt while its code and inputs are unchanged; do not validate
+this review record.
 
 ## Findings
 Classify each finding once. A current blocker must be a counterexample or

@@ -71,6 +71,10 @@ Load these at the moments they change decisions, not after results:
 - Evidence can be an exact proof, corroborating subclaim, regression,
   applicability test, or provenance record. Only the first is expected to prove
   the whole encoded statement; label the others instead of discarding them.
+- Exact algebra, calculus, scaling, asymptotics, and applicable theorems define
+  the claim before production numerics. A numerical verifier starts from the
+  named remainder of that analytic specification; it does not supply missing
+  semantics or choose its own continuum question.
 - Exact proof and empirical applicability are separate obligations: measurement can test nature without becoming the proof of a symbolic or formal implication.
 - A campaign completion decision, scientific claim decision, and PR merge decision are independent. An active campaign nevertheless opens no PR until positive completion or certified exhaustion; use `research-pr-harvest` only for an externally supplied PR or after that terminal gate opens.
 - Numeric agreement is a comparator, never a concept-selection mechanism or hidden derivation input.
@@ -80,12 +84,18 @@ Load these at the moments they change decisions, not after results:
 ### License the object before measuring it
 
 Every computational claim follows the typed chain `mathematical object ->
-symmetry or conservation license -> ensemble -> admissible representation ->
-observable -> numerical approximation -> permitted verdict`. Before a
-downstream node can earn scientific evidence, its manifest records the upstream
-licenses it consumes. A computable tangent, finite quadratic norm, fitted
-frequency, sampled spectrum, or stable discretization does not create a
-symmetry, conserved charge, cyclic coordinate, physical ensemble, or observable.
+symmetry or conservation license -> ensemble and exact variational functional ->
+admissible function space and representation -> analytic scale/asymptotic
+structure -> observable -> irreducible numerical remainder -> numerical
+approximation -> permitted verdict`. Before a downstream node can earn
+scientific evidence, its manifest records the upstream licenses it consumes and
+an analytic-closure receipt: exact equations and variations, symmetries and
+constraints, scaling and non-dimensional groups, analytic bounds and limits,
+asymptotic operator or continuum threshold, strongest non-numerical conclusion,
+and the one proposition left for computation. A computable tangent, finite
+quadratic norm, fitted frequency, sampled spectrum, or stable discretization
+does not create a symmetry, conserved charge, cyclic coordinate, physical
+ensemble, observable, or continuum statement.
 
 For each obligation node record `requires`, `pass_licenses`,
 `does_not_license`, `maximum_verdict`, `failure_scope`, and `unlocks`. Passing or
@@ -120,6 +130,9 @@ Instantiate `memory-templates/research-arc.md` for physics work or `campaign-pro
 - the claim delta and downstream consumers;
 - each proposed claim identifier and a repository-wide registry, campaign, and durable-memory collision search, because rejected provisional identifiers remain reserved;
 - what each oracle must establish;
+- the analytic-closure receipt for every planned numerical obligation, including
+  the unresolved proposition, why the current analytic ladder does not decide
+  it, frozen numerical design freedoms, and maximum numerical verdict;
 - the empty-debt and canonicalization gates.
 
 Do not include failure, no-go, residual, or “best effort” as an accepted outcome.
@@ -141,11 +154,36 @@ Freeze selection criteria before inspecting comparison values:
 
 Keep empirical comparators blinded until equations, conventions, criteria, and structural tests are frozen when practical. Record and justify any exception.
 
-## Phase 3 — derive through importable APIs
+## Phase 3 — close the analytic specification, then derive through importable APIs
 
 Build the smallest dependency-first claim ladder. Implement reusable equations, constants, units, solvers, and transformations under `src/substrate_framework/`. Keep proposal scripts thin: import canonical functions and evaluate a candidate.
 
-Match implementation to the claim. Use exact symbolic algebra when an exact residual or identity is available, formal proof when the encoded theorem is the real obligation, and SciPy numerical methods when the claim is an IVP, BVP, spectral, optimization, integration, or PDE problem without a usable closed form. Reuse `substrate_framework.numerics` for common IVP, method-of-lines, BVP, refinement evidence, and sampled trapezoidal integration; canonical modules call its `trapezoid_integral` compatibility API, while mutable standalone scripts targeting the current environment call `np.trapezoid`, never removed `np.trapz`. Preflight executable syntax for direct, imported, and dynamic legacy access. Never use an eager nested fallback such as `getattr(np, "trapezoid", getattr(np, "trapz"))`; use the canonical helper or a two-step `None` fallback. The claim implementation must still own and expose its equation, discretization, boundary data, error norm, and physical acceptance thresholds.
+Before implementing a production numerical verifier, work the analytic ladder as
+far as the claim permits: exact identities and elimination; complete first and
+second variation; conservation and symmetry reduction; non-dimensionalization
+and scaling; bounds, coercivity, monotonicity and convexity; virial identities;
+limits, asymptotics and perturbation theory; and applicable existence,
+uniqueness, compactness, or no-go theorems. Record the strongest result obtained
+and one irreducible remainder. Absence of a convenient closed form is not by
+itself a numerical-necessity argument, and the receipt need not prove that no
+unknown analytic method could ever exist.
+
+Match implementation to that frozen claim. Use exact symbolic algebra for
+tractable identities and reductions, formal proof when the encoded theorem is
+the real obligation, and SciPy only for the named root, spectrum, integral,
+optimization, ODE, BVP, or PDE remainder. Exploratory numerical sampling before
+the receipt is labeled hypothesis-generation or debugging; it cannot choose a
+candidate, set gates, establish or refute an obligation, enter claim review as
+scientific evidence, or later be relabeled as production evidence. Reuse
+`substrate_framework.numerics` for common IVP, method-of-lines, BVP, refinement
+evidence, and sampled trapezoidal integration; canonical modules call its
+`trapezoid_integral` compatibility API, while mutable standalone scripts
+targeting the current environment call `np.trapezoid`, never removed
+`np.trapz`. Preflight executable syntax for direct, imported, and dynamic legacy
+access. Never use an eager nested fallback such as `getattr(np, "trapezoid",
+getattr(np, "trapz"))`; use the canonical helper or a two-step `None` fallback.
+The claim implementation must still own and expose its equation, discretization,
+boundary data, error norm, and physical acceptance thresholds.
 
 Do not:
 
@@ -210,11 +248,13 @@ contract in `AGENTS.md`.
 
 Choose the strongest practical oracle using [oracles.md](references/oracles.md), then audit it against the named claim:
 
-Audit the objective bridge before auditing predicates. Record the computed
+Audit the analytic-closure receipt and objective bridge before auditing
+predicates. Record the computed
 predicate, the mathematical proposition it implies, every upstream license, the
 maximum verdict it can earn, the parent obligations it advances, and the
 questions it cannot decide. A correctly computed predicate with an absent
-bridge is exploratory or provenance evidence only.
+bridge or an unclosed analytic specification is exploratory or provenance
+evidence only.
 
 The audit asks whether the verifier establishes the named claim and where its
 positive support ends. Do not create a second meta-verifier, add checks for

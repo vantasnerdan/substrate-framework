@@ -29,7 +29,15 @@ List exact release, claim ids, paths, equations, data, parent contract, and writ
 State conventions and accepted invariants. Name files the worker may edit and surfaces owned by others.
 
 ## Candidate and Method
-Record the assigned candidate or independent review route, claim-appropriate oracle, selection criteria, and comparator gate. Do not change foundations to rescue the candidate. If numerical, name the SciPy routine or other method, precision, equations/data, discretization, tolerances, status gate, refinement plan, error norm, and independent check.
+Record the assigned candidate or independent review route, claim-appropriate
+oracle, selection criteria, and comparator gate. Do not change foundations to
+rescue the candidate. If numerical, supply the parent's passed analytic-closure
+receipt, strongest exact result, named irreducible remainder, and frozen design
+freedoms before naming the SciPy routine or other method, precision,
+equations/data, discretization, tolerances, status gate, refinement plan, error
+norm, and independent check. Without that receipt the worker may do only
+explicitly exploratory hypothesis-generation or implementation debugging; it
+cannot return scientific evidence or a candidate refutation.
 
 ## Steps
 List dependency-ordered implementation, verification, sensitivity, and consumer checks.
