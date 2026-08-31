@@ -1,0 +1,34 @@
+campaign: P249
+base_commit: 386763e
+analysis_tool: GitNexus refreshed index plus repository text search
+prechange_results:
+  m5_covariant_action:
+    risk: low
+    direct_importers:
+      - src/substrate_framework/m5_kinetic_axis.py
+      - src/substrate_framework/m5_fluctuation_spectrum.py
+    affected_processes: []
+  package_root:
+    risk: critical
+    direct_importers: 56
+    decision: >-
+      Do not edit src/substrate_framework/__init__.py. The new conditional
+      module is imported directly, avoiding package-root behavior changes.
+changed_canonical_symbols:
+  - additive module src/substrate_framework/m5_exterior_clock.py with no pre-existing callers
+existing_symbols_modified: []
+affected_surfaces:
+  direct:
+    - tests/test_m5_exterior_clock.py
+    - proposals/P249-exterior-degenerate-clock/companion/exact_checks.py
+    - C-M5C-001 through C-M5C-004 review and registry records
+  replayed_adjacent_consumers:
+    - tests/test_m5_covariant_action.py
+    - tests/test_m5_kinetic_axis.py
+  generated:
+    - docs/generated/claim-index.md via scripts/render_docs.py only
+  durable_memory:
+    - P249 proposal/campaign record
+    - accepted C-M5C claim and release records after review
+risk: low_additive_module_with_governance_surface_changes
+final_detection: pending staged promotion boundary

@@ -83,6 +83,25 @@ candidate_universe:
       W(f)=3 f^2-4 f^3+2 f^4 for f=|psi|. Its positive square completion,
       binding witness, unsplit obstruction, and all variations are rederived;
       no prior passing tally is treated as candidate success.
+    - >-
+      The post-attempt-0005 O5 audit evaluated the first variation outside the
+      reduced (f,b) ansatz and found dV/de_11=8 b^2 and dV/dt=-6 b^2 at
+      S=diag(1,b,-b). Thus attempt 0005 is not a full M5 critical point and its
+      provisional O3/O4 licenses are revoked. Attempt 0006 changes
+      representation before any spectrum: all six projected-spatial symmetric
+      M5 components vary with a positive canonical Cartan kinetic metric, the
+      exact M5 projected Landau-de Gennes potential is retained, and the
+      auxiliary frame removes only explicitly constrained nonphysical
+      timelike/frame directions.
+    - >-
+      Independent review of attempt 0007 decomposed the complete conjugation
+      generator and found a false-green O2-O5 chain: the axis--tangent shears
+      (u,v) carry weight one, contribute u^2+v^2 to the Noether inertia, and at
+      zeta=1/4 have mass square one. The true charged edge was one, below the
+      39/16 witness. Attempt 0008 therefore retains the field content and exact
+      M5/phase-lock potentials, raises only the positive axis-lock coefficient
+      to the parameter-free unit value, includes the full generator norm, and
+      applies the hylomorphic theorem on canonical H1 x L2 phase space.
 obligation_graph:
   nodes:
     - id: O1
@@ -218,7 +237,7 @@ obligation_graph:
       maximum_verdict: STABLE_ISOLATED_CLOCK
       failure_scope: exactly the represented constrained tangent and dynamical space
       unlocks: [O6]
-      status: active
+      status: established
       license_chain:
         object: full constrained first- and second-order dynamics about the O4 clock
         symmetry_or_conservation: O1 zero modes and O2 positive physical subspace
@@ -250,7 +269,7 @@ obligation_graph:
       maximum_verdict: CAMPAIGN_SUCCESS
       failure_scope: the frozen C-M5C claim transaction and affected consumers
       unlocks: []
-      status: pending
+      status: active
       license_chain:
         object: canonical importable implementation and accepted C-M5C claim transaction
         symmetry_or_conservation: all O1-O5 licenses
@@ -267,7 +286,7 @@ license_registry:
       The selected M5 action carries a normalized global compact vacuum-fixing
       SO(2) symmetry with conserved Noether charge and regular Legendre map.
     status: earned
-    evidence: proposals/P249-exterior-degenerate-clock/attempts/0005/manifest.yaml
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0008/manifest.yaml
     earned_by: O1
   - id: L-O2-ASYMPTOTIC
     proposition: >-
@@ -275,27 +294,29 @@ license_registry:
       is typed, has a declared positive physical subspace, and supplies its own
       essential/radiation thresholds.
     status: earned
-    evidence: proposals/P249-exterior-degenerate-clock/attempts/0005/manifest.yaml
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0008/manifest.yaml
     earned_by: O2
   - id: L-O3-RELATIVE-EQUILIBRIUM
     proposition: >-
       A branch solves the complete fixed-J equations with regular charge-frequency
       map and dE/dJ = omega.
     status: earned
-    evidence: proposals/P249-exterior-degenerate-clock/attempts/0005/manifest.yaml
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0008/manifest.yaml
     earned_by: O3
   - id: L-O4-ISOLATION
     proposition: >-
       The fixed-J branch has finite open-space energy/inertia, nonzero frequency,
       intrinsic box-independent width, localized cumulative charge, and natural tail.
     status: earned
-    evidence: proposals/P249-exterior-degenerate-clock/attempts/0005/manifest.yaml
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0008/manifest.yaml
     earned_by: O4
   - id: L-O5-STABILITY
     proposition: >-
       The O4 clock is stable in the complete declared constrained perturbation
       class and has no unresolved radiative-growth channel within that class.
-    status: unearned
+    status: earned
+    evidence: proposals/P249-exterior-degenerate-clock/attempts/0008/manifest.yaml
+    earned_by: O5
   - id: L-O6-PROMOTION
     proposition: >-
       The O1-O5 results are importable, individually reviewed, consumer-replayed,
@@ -333,6 +354,12 @@ source_inventory:
       Theorem 13 and conditions W-i through W-iiii for existence and orbital
       stability of nonlinear Klein-Gordon hylomorphic solitons, plus the
       fixed-frequency interval inferred from the cited variational existence result
+  - source: https://arxiv.org/abs/1212.3236
+    access: open primary mathematical source; abstract Theorem 18 and stability proof boundary inspected in the paper PDF
+    extracted: >-
+      Translation-compact hylomorphic-soliton existence and stability from
+      EC-0 through EC-3, the splitting property, coercivity, and the strict
+      hylomorphy condition for general finite-dimensional internal field spaces
 invariants:
   - exact local Lorentz/index validity and declared M5 field types
   - globally normalized compact period rather than a rescalable weighted tangent
@@ -400,7 +427,7 @@ comparators_blinded_until: >-
   frozen. The requester additionally requires exact algebra and calculus to be
   exhausted before production numerics.
 route_frontier:
-  active_obligation: O5
+  active_obligation: O6
   considered:
     - A_EXTERIOR_DEGENERATE
     - B_BUNDLE_RING
@@ -414,15 +441,19 @@ route_frontier:
     - A_EXTERIOR_DEGENERATE/commuting-split-plus-axis-lock refuted by incompatible exact virials
     - C_AUXILIARY_GAUGED/canonical-amplitude-Q-ball-seed blocked only by the missing covariant M5 core bridge
     - C_AUXILIARY_GAUGED/phase-locked-M5-bridge established for O1-O4 after two recorded analytic repairs
+    - C_AUXILIARY_GAUGED/reduced-phase-locked-M5-bridge refuted as a full critical point by omitted exact first variations
+    - E_M532_DYNAMICS/full-spatial-canonical-phase-locked-completion blocked at O2 by the omitted weight-one shear channel
+    - E_M532_DYNAMICS/complete-generator-and-phase-space-repair established for O1-O5
   failure_generated:
     - A_EXTERIOR_DEGENERATE/noncommuting-core
     - A_EXTERIOR_DEGENERATE/nonlinear-weight-two-relative-equilibrium
     - C_AUXILIARY_GAUGED/positive-weight-two-kinetic-completion
     - C_AUXILIARY_GAUGED/canonical-amplitude-Q-ball
     - C_AUXILIARY_GAUGED/covariant-M5-core-bridge
+    - E_M532_DYNAMICS/full-spatial-canonical-phase-locked-completion
+    - E_M532_DYNAMICS/complete-generator-and-phase-space-repair
   remaining:
-    - C_AUXILIARY_GAUGED/full-constrained-stability
-    - C_AUXILIARY_GAUGED/nonlinear-neutral-radiation
+    - O6/canonicalization-review-promotion
 execution_state: active
 objective_state: active
 exhaustion_certificate:

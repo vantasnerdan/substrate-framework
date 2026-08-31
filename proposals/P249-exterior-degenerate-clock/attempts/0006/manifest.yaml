@@ -1,0 +1,138 @@
+attempt: '0006'
+status: completed
+active_obligation: O3
+route: E_M532_DYNAMICS/full-spatial-canonical-phase-locked-completion
+question: >-
+  Does the phase-locked clock become a genuine full-field M5 fixed-charge
+  minimizer, intrinsically localized and orbitally stable, when every
+  projected-spatial symmetric component is varied with a positive canonical
+  kinetic metric while the exact M5 static potential is retained?
+source_baseline: substrate-framework@386763e
+base_release: v0.170.0
+external_primary_source: https://arxiv.org/abs/1212.3236
+frozen_field_space: >-
+  A constrained auxiliary orthonormal Lorentz frame supplies a unit timelike
+  U, clock axis N, and oriented tangent clock tensors H,K. Frame/timelike
+  constraints are local covariant multiplier equations and are quotiented as
+  nonpropagating frame gauge. The physical M5 field is an arbitrary symmetric
+  spatial tensor S on U-perp (six real components), with exterior S=N N^T,
+  plus the complex Lorentz scalar psi. No spatial M5 component is frozen.
+frozen_action: >-
+  Use the positive canonical Cartan kinetic metric
+  -1/4 eta^munu Tr(D_mu S D_nu S), the standard scalar kinetic term, the exact
+  projected M5 potential V_M5=-Tr(S^2)/2-Tr(S^3)+Tr(S^2)^2+1/2, the positive
+  axis lock zeta[Tr(S^2)-(N^T S N)^2] with zeta=1/4, the phase lock
+  6||B-Q(psi)||^2, and W(|psi|)=3f^2-4f^3+2f^4. Here B is the tangent-plane
+  traceless projection of S. Every coefficient is frozen before evaluation.
+frozen_symmetry_and_ensemble: >-
+  The one diagonal S1 has weights one on psi and two on B, period 2*pi, and
+  fixes psi=B=0 outside. With the canonical norm its exact inertia is
+  I=int(|psi|^2+4||B||^2), Q=omega I, and E_Q=E0+Q^2/(2I), with all six S
+  components varied in E0 and I.
+command: >-
+  PYTHONPATH=src .venv/bin/python
+  proposals/P249-exterior-degenerate-clock/attempts/0006/verify.py
+oracle_order:
+  - exact global positivity and vacuum classification of the M5 potential
+  - exact full first variation and exterior generalized mass pencil
+  - full-space hylomorphic binding/coercivity/compactness argument
+  - exact energy-charge orbital-stability and radiation inequalities
+  - no profile solve, discretized Hessian, or time evolution unless an analytic gate remains open
+licenses_consumed: [L-O1-CLOCK]
+licenses_targeted:
+  - L-O2-ASYMPTOTIC
+  - L-O3-RELATIVE-EQUILIBRIUM
+  - L-O4-ISOLATION
+  - L-O5-STABILITY
+small_ratio_prescriptions:
+  error_budget: exact inequalities and variational theorems; no floating-point soft observable
+  zero_mode_gauge: translations, diagonal phase, and auxiliary-frame gauge are exact quotient directions
+  eigenpair_residual: not applicable if global constrained-minimum proof closes
+  lambda_min_lambda_2: not applicable if no numerical eigenvalue sign is used
+  observed_order_extrapolation: not applicable unless the analytic stability proof fails
+  jitter_sign_test: not applicable; all binding and radiation margins are exact rationals
+maximum_verdict: >-
+  O2-O5 established for the full declared physical configuration space only if
+  the full minimizer, localization, well-posedness, orbital-stability, and
+  charged/neutral radiation bridges all close
+does_not_license:
+  - unconstrained timelike/frame degrees outside the declared multiplier quotient
+  - particle identification, two-clock force, or gravity
+  - promotion without independent claim review and O6 replay
+preregistered_exact_gates:
+  - V_M5 is globally nonnegative and vanishes exactly on rank-one unit positive spatial projectors
+  - every added term and the canonical Hamiltonian is nonnegative and preserves the aligned uniaxial exterior
+  - all six spatial first variations are included; attempt 0005's two omitted derivatives are reproduced
+  - the complete exterior kinetic metric is positive and every charged threshold is action-derived
+  - a split plateau has J/K below the lightest charged continuum while every B=0 state stays above it
+  - the full physical Hilbert-space minimizer exists modulo translations and solves every S and psi equation
+  - EC-0 through EC-3, translation splitting, coercivity, and strict hylomorphy are discharged for abstract Theorem 18
+  - its exact fixed-Q Hessian is nonnegative modulo declared symmetry orbits
+  - subcritical canonical dynamics is globally energy controlled and the minimizing orbit is Lyapunov stable
+  - every active charged harmonic is below threshold and no neutral periodic source survives the full equations
+next_if_success: >-
+  Extract canonical APIs/tests and freeze the C-M5C review transaction for O6.
+next_if_failure: >-
+  Preserve the exact obstruction and continue through noncommuting, bundle, or
+  nonsymmetric routes; do not reinstate the reduced attempt-0005 claim.
+route_verdict: >-
+  established_as_stated_for_O1_through_O5: the full-spatial canonical action
+  is positive, local and Lorentz-covariantly typed on its explicit auxiliary-
+  frame quotient. Abstract Theorem 18 applies after exact EC-0 through EC-3,
+  splitting, coercivity, and hylomorphy checks, yielding a translation-compact
+  stable minimizing set with necessarily nonzero M5 clock tensor.
+evidence_scope: EXACT_FULL_FIELD_M5_HYLOMORPHIC_SOLITON_AND_ORBITAL_STABILITY
+strongest_positive_result: >-
+  All six spatial M5 components vary. V_M5 is globally nonnegative with the
+  exact aligned rank-one exterior selected by the positive axis lock. The
+  split binding ratio 39/16 lies 37/16 below the charged edge 19/4, while every
+  unsplit state is at least 1/4 above that edge. The complete fixed-Q Hessian
+  is nonnegative on the full physical space because the solution set is the
+  global constrained minimum, and the subcritical conserved dynamics makes
+  that translation/phase orbit Lyapunov stable.
+computed_predicate: >-
+  Forty exact runtime checks cover global M5 positivity, the aligned vacuum,
+  all exterior first derivatives, reproduction of the two omitted reduced
+  derivatives, the six-channel generalized mass pencil, shear repair, binding
+  and unsplit margins, Legendre calculus, tail/radiation inequalities, Derrick
+  closure, and defining-object mutations.
+proposition: >-
+  The selected action has a nonempty family of stable, necessarily core-split,
+  finite-energy fixed-charge M5 relative equilibria on open space with finite
+  inertia, intrinsic scale, natural tails, and action-specific subthreshold
+  charged harmonics.
+licenses_earned:
+  - L-O1-CLOCK
+  - L-O2-ASYMPTOTIC
+  - L-O3-RELATIVE-EQUILIBRIUM
+  - L-O4-ISOLATION
+  - L-O5-STABILITY
+parent_effect: >-
+  O1-O5 are established for the full selected action and physical auxiliary-
+  frame quotient. O6 activates: canonical extraction, tests, independent
+  claim review, affected-consumer replay, registry promotion, release, docs,
+  memory synchronization, and terminal PR remain.
+cannot_decide:
+  - particle identity or de Broglie normalization
+  - two-clock force, gravity, or downstream phenomenology
+  - unconstrained auxiliary-frame dynamics outside the declared quotient
+routes_remaining:
+  - O6/canonicalization-review-promotion
+artifacts:
+  verifier_sha256: 46acb1cd7576b3ddb8821ea06614579648219233f71c1ed7493c06eb46d106f8
+  derivation_sha256: 3b6d6cab386956c47d41e354658632508dda8366eb752f193198a24497950429
+  stdout_sha256: 253dac27b61e197d9472702bc5f691ef9c40d78e0110d37a408d5ab20c2b2579
+verification_audit:
+  process_status: 0
+  lexical_check_calls: 33
+  runtime_check_executions: 40
+  python_assert_nodes: 0
+  terminal_tally: ALL 40 CHECKS PASS [P249-O2-O5-0006]
+  sensitivity: >-
+    Deleting the M5 quartic makes the static energy unbounded; deleting the
+    canonical clock kinetic makes the metric singular; deleting the phase
+    lock removes the nonzero B source.
+  targeted_replay: PYTHONPATH=src .venv/bin/python scripts/validate_repository.py
+  targeted_replay_result: >-
+    WORKFLOW VALID: 248 claims, 248 accepted, 12 proposals, 4 skills;
+    MIGRATION QUEUE: 218 units, 0 pending, 0 partial

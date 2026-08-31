@@ -1,0 +1,90 @@
+claims:
+  - id: C-M5C-001
+    statement: >-
+      C-M5C-001 (symbolic_verified; normalized compact M5 clock action): In a
+      constrained auxiliary orthonormal Lorentz frame with unit timelike U,
+      clock axis N, and oriented tangent tensors H,K, let S be an arbitrary
+      symmetric tensor on U-perp and psi a complex Lorentz scalar. Define the
+      tangent-traceless B and Q(psi)=Re(psi^2)H+Im(psi^2)K. The local action
+      with positive canonical Cartan kinetic terms and potential
+      V_M5(S)+Tr(S^2)-(N^T S N)^2+6||B-Q(psi)||^2
+      +3|psi|^2-4|psi|^3+2|psi|^4 is invariant under the faithful diagonal
+      S1 action psi->exp(iq)psi, S->R(q)S R(q)^T with q modulo 2*pi. The
+      aligned exterior (S,psi)=(N N^T,0) is fixed pointwise. Noether charge on
+      a relative equilibrium is Q_clock=omega I with
+      I=int(|psi|^2+Tr([A,S]^T[A,S])/2)>0 for every nontrivial
+      finite-inertia clock. On canonical H1 x L2 field/velocity phase space the
+      conserved charge density is
+      Im(conj(psi) dot(psi))+Tr(dot(S)[A,S])/2; velocity variation gives the
+      relative-equilibrium flow, Legendre reduction gives
+      E_Q=E0+Q_clock^2/(2I), and dE/dQ_clock=omega.
+    verification: symbolic_verified
+    dependencies: []
+    exclusions:
+      - The auxiliary frame is a declared constrained quotient, not a derived dynamical aether or preferred physical frame.
+      - The theorem supplies one normalized clock only; it makes no particle, two-clock, force, de Broglie, or gravity identification.
+  - id: C-M5C-002
+    statement: >-
+      C-M5C-002 (symbolic_verified; positive action and complete exterior
+      pencil): For every real symmetric spatial S, the exact M5 potential
+      obeys V_M5(S)>=((r-1)^2(2r^2+2r+1))/2>=0 with
+      r^2=Tr(S^2), and equality in the combined potential occurs at the
+      aligned exterior S=N N^T, psi=0. In adapted spatial coordinates
+      (a,t,p,u,v,q), the full six-channel potential Hessian is
+      diag(5,10,22,4,4,22), the canonical kinetic metric is
+      diag(1/2,1,1,1,1,1), and the generalized mass squares are
+      (10,10,22,4,4,22); the two scalar components have mass square 6. The
+      charge-one scalar, charge-one axis--tangent shear, and charge-two clock
+      tensor therefore have the complete exact generator-frequency continuum
+      edge min(6,4,22/4)=4. No M7 threshold or quadratic-inert channel is
+      imported.
+    verification: symbolic_verified
+    dependencies: [C-M5C-001]
+    exclusions:
+      - These thresholds belong only to the C-M5C-001 canonical completion, not to P239/P240/P247 or M7 actions.
+      - Auxiliary-frame gauge directions are constrained quotient directions, not physical zero-norm species.
+  - id: C-M5C-003
+    statement: >-
+      C-M5C-003 (exact theorem-backed full-field existence and intrinsic
+      localization): On the complete canonical physical phase space
+      H1(R^3;Sym(3)+C) x L2(R^3;Sym(3)+C) relative to the aligned exterior and
+      modulo translations/phase, the C-M5C-001 Hamiltonian is positive,
+      coercive, translation-splitting, and energy-subcritical. Its exact split
+      plateau |psi|=1/2, S=diag(1,1/4,-1/4) has J/K=45/16, strictly 19/16
+      below the C-M5C-002 charged edge 4, while every B=0 state has full ratio
+      at least 4 (its scalar contribution is
+      16(|psi|-1/4)^2+5>=5) and the B equation has nonzero source
+      -12 Q(psi). The translation-compact hylomorphic minimizer theorem
+      therefore supplies a nonempty family of full-field fixed-charge relative
+      equilibria with nonzero M5 core split, finite energy and inertia,
+      0<omega^2<4, natural positive-mass tails, integrable cumulative
+      charge, a finite box-independent charge radius, and exact Derrick
+      identity T+3U-3E_rot=0.
+    verification: symbolic_verified
+    dependencies: [C-M5C-001, C-M5C-002]
+    exclusions:
+      - Existence and intrinsic localization are for the declared canonical auxiliary-frame quotient; they do not validate earlier confined or reduced P239-P247 branches.
+      - The theorem establishes a minimizing family and finite charge radii, not a fitted unique numerical width or frequency.
+  - id: C-M5C-004
+    statement: >-
+      C-M5C-004 (exact energy-charge orbital stability and radiation scope):
+      The C-M5C-003 solution set is the translation-compact global energy
+      minimum at fixed normalized charge in the complete declared physical
+      space. Hence its full fixed-charge Hessian
+      delta2E_Q=delta2E0-(omega^2/2)delta2I
+      +(omega^2/I)(delta I)^2 is nonnegative modulo the minimizing set's
+      translation and compact-phase orbit (and the separately constrained
+      frame gauge). The positive energy-subcritical canonical dynamics and
+      conserved energy/charge make that set Lyapunov orbitally stable. Its
+      active laboratory harmonics have weight one in the scalar and
+      axis--tangent shear sectors and weight two in the clock-tensor sector;
+      they obey 6-omega^2>2, 4-omega^2>0, and
+      22-4omega^2>6. The two neutral tensor channels have positive mass square
+      10 and no periodic source after the full equations hold. Perturbations
+      may disperse positive radiation, but no negative constrained mode or
+      radiative growth exists in this declared quotient.
+    verification: symbolic_verified
+    dependencies: [C-M5C-001, C-M5C-002, C-M5C-003]
+    exclusions:
+      - Stability is orbital stability of the full minimizing set; it does not assert uniqueness or a positive spectral gap above every accidental minimizer modulus.
+      - No nonlinear two-clock interaction, particle identity, gravity, or empirical lifetime is inferred.

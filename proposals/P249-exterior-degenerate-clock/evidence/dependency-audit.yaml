@@ -1,0 +1,26 @@
+campaign: P249
+base_release: v0.170.0
+claims:
+  C-M5C-001:
+    accepted_dependencies: []
+    external_bridge: none; compact group and Noether/Legendre calculus are derived in-campaign
+  C-M5C-002:
+    accepted_dependencies: [C-M5C-001]
+    external_bridge: none; positivity and the pencil are exact algebra
+  C-M5C-003:
+    accepted_dependencies: [C-M5C-001, C-M5C-002]
+    external_bridge:
+      source: https://arxiv.org/abs/1212.3236
+      role: abstract translation-compact hylomorphic-soliton Theorem 18
+      discharged_hypotheses: [EC-0, EC-1, EC-2, EC-3, strict_hylomorphy]
+  C-M5C-004:
+    accepted_dependencies: [C-M5C-001, C-M5C-002, C-M5C-003]
+    external_bridge:
+      source: https://arxiv.org/abs/1212.3236
+      role: stability of the translation-compact minimizing set
+undeclared_imports: []
+excluded_comparators:
+  - M7 threshold 0.786
+  - de Broglie frequency
+  - fitted width or frequency
+verdict: closed

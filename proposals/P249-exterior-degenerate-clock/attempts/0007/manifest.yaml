@@ -1,0 +1,72 @@
+attempt: '0007'
+status: completed
+active_obligation: O6
+route: O6/canonicalization-review-promotion
+question: >-
+  Can the exact O1-O5 result be extracted into a pure importable module and
+  independent tests, frozen as four individually reviewable claims, and pass
+  the declared additive impact boundary before promotion?
+source_baseline: substrate-framework@386763e
+base_release: v0.170.0
+frozen_review_transaction:
+  claims:
+    - C-M5C-001 exact compact action, vacuum fixation, Noether and Legendre structure
+    - C-M5C-002 global positivity and complete action-specific exterior pencil
+    - C-M5C-003 full-space hylomorphic existence and intrinsic localization
+    - C-M5C-004 full constrained energy-charge orbital stability and radiation scope
+  implementation:
+    - src/substrate_framework/m5_exterior_clock.py
+    - tests/test_m5_exterior_clock.py
+  evidence:
+    - proposals/P249-exterior-degenerate-clock/attempts/0001 through 0006
+    - proposals/P249-exterior-degenerate-clock/companion/exact_checks.py
+    - proposals/P249-exterior-degenerate-clock/evidence/theorem-bridge.md
+  dependencies: []
+  affected_consumers:
+    - additive direct module tests
+    - existing M5 covariant-action and kinetic-axis regression tests
+    - governance registry, release, generated docs, and durable memory after review
+command: >-
+  PYTHONPATH=src .venv/bin/python
+  proposals/P249-exterior-degenerate-clock/companion/exact_checks.py
+oracle_order:
+  - canonical module exact checks and mutation coverage
+  - dedicated and M5-adjacent tests
+  - independent claim-by-claim review
+  - impact-bounded full repository validation after promotion
+licenses_consumed:
+  - L-O1-CLOCK
+  - L-O2-ASYMPTOTIC
+  - L-O3-RELATIVE-EQUILIBRIUM
+  - L-O4-ISOLATION
+  - L-O5-STABILITY
+licenses_targeted: [L-O6-PROMOTION]
+small_ratio_prescriptions:
+  error_budget: exact symbolic promotion; no numerical soft observable
+  zero_mode_gauge: translations, compact phase, and frame gauge are explicit in C-M5C-004
+  eigenpair_residual: not applicable
+  lambda_min_lambda_2: not applicable; stability follows from a global constrained minimum
+  observed_order_extrapolation: not applicable
+  jitter_sign_test: not applicable; all promotion margins are exact rationals
+maximum_verdict: CAMPAIGN_SUCCESS after review, promotion, release, replay, and terminal PR
+does_not_license:
+  - any excluded particle, two-clock, force, or gravity interpretation
+  - self-review as independent scientific review
+next_if_success: >-
+  Freeze review, correct only bounded findings, promote accepted claims, pin the
+  release, render docs, synchronize memory, validate, and open the terminal PR.
+next_if_failure: >-
+  Repair the exact implementation/review blocker on the campaign branch; if a
+  scientific obligation reopens, revoke terminal eligibility and return to it.
+route_verdict: >-
+  blocked_with_missing_construction_named: the canonical implementation and
+  frozen claims omitted the weight-one (u,v) shear doublet from the Noether
+  inertia and charged continuum. The true provisional edge was one, so the
+  claimed strict hylomorphy and O2-O5 promotion chain failed. Attempt 0008 is
+  the required method and coefficient repair.
+licenses_earned: []
+parent_effect: >-
+  O2-O5 reopen and O6 terminal eligibility is revoked until attempt 0008 and
+  the bounded correction review pass.
+routes_remaining:
+  - E_M532_DYNAMICS/complete-generator-and-phase-space-repair

@@ -1,0 +1,104 @@
+attempt: '0008'
+status: completed
+active_obligation: O2
+route: E_M532_DYNAMICS/complete-generator-and-phase-space-repair
+question: >-
+  Does the full-spatial canonical clock regain strict hylomorphy and the O2-O5
+  licenses after including every generator-weight channel in the Noether
+  inertia and raising the already-declared positive axis lock from 1/4 to one?
+source_baseline: substrate-framework@386763e
+base_release: v0.170.0
+trigger:
+  reviewer_record: reviews/C-M5C-001-C-M5C-004-review.md
+  failure: >-
+    The exact generator sends the axis--tangent shear pair (u,v) with weight
+    one. Attempt 0006 omitted u^2+v^2 from I and therefore reported 19/4
+    instead of the true provisional charged edge 1. Its 39/16 witness was
+    above that edge, so the O2-O5 licenses and attempt-0007 promotion gate are
+    revoked.
+frozen_repair:
+  action: >-
+    Retain the complete six-component canonical spatial tensor, scalar sector,
+    exact M5 potential, and phase-lock coefficient six. Change only the
+    positive axis-lock coefficient zeta from 1/4 to the exact unit value.
+  generator: >-
+    Use the complete tensor generator [A,S], so
+    I=int(|psi|^2+Tr([A,S]^T[A,S])/2) and in adapted coordinates the tensor
+    contribution is u^2+v^2+4p^2+4q^2.
+  phase_space: >-
+    Apply Benci--Fortunato Theorem 18 on canonical H1 x L2 field/velocity phase
+    space with the full conserved Hamiltonian and bilinear Noether charge,
+    not on the static H1 configuration space alone.
+selection_rationale: >-
+  Unit strength is the smallest parameter-free integer repair. It leaves the
+  aligned vacuum and phase-lock mechanism unchanged, makes the weight-one
+  shear mass square four, and is selected before evaluating the repaired
+  witness. No comparator or numerical threshold enters.
+command: >-
+  PYTHONPATH=src .venv/bin/python
+  proposals/P249-exterior-degenerate-clock/companion/exact_checks.py
+oracle_order:
+  - exact representation decomposition and full Noether inertia
+  - exact six-channel Hessian and charged generator-frequency edge
+  - exact split and complete B=0 hylomorphy bounds
+  - canonical phase-space EC-0 through EC-3 and relative-equilibrium bridge
+  - same-reviewer bounded correction check
+licenses_consumed: [L-O1-CLOCK]
+licenses_targeted:
+  - L-O2-ASYMPTOTIC
+  - L-O3-RELATIVE-EQUILIBRIUM
+  - L-O4-ISOLATION
+  - L-O5-STABILITY
+  - L-O6-PROMOTION
+small_ratio_prescriptions:
+  error_budget: exact symbolic identities and inequalities; no floating-point soft observable
+  zero_mode_gauge: translations, compact phase, and auxiliary-frame gauge are exact quotient directions
+  eigenpair_residual: not applicable; no numerical eigenpair is used
+  lambda_min_lambda_2: not applicable; stability is the exact global constrained-minimum theorem
+  observed_order_extrapolation: not applicable; no discretization is used
+  jitter_sign_test: not applicable; every repaired margin is an exact rational
+maximum_verdict: CAMPAIGN_SUCCESS after correction review, promotion, replay, and release
+does_not_license:
+  - rewriting the false-green attempt 0006 or initial attempt 0007 receipt
+  - particle, two-clock, force, de Broglie, or gravity interpretation
+next_if_success: >-
+  Complete O6 with the corrected claims, same-reviewer correction check,
+  governance promotion, release, replay, memory, and terminal PR.
+next_if_failure: >-
+  Preserve the exact failure and continue with a different covariant clock
+  representation; do not restore the revoked threshold.
+route_verdict: >-
+  established_as_stated_for_O1_through_O5: the complete generator norm,
+  unit-strength axis repair, six-channel charged pencil, strict split binding,
+  canonical phase-space theorem bridge, and corrected radiation inequalities
+  close exactly and pass the bounded independent correction check.
+evidence_scope: EXACT_GENERATOR_COMPLETE_HYLOMORPHIC_CLOCK
+licenses_earned:
+  - L-O1-CLOCK
+  - L-O2-ASYMPTOTIC
+  - L-O3-RELATIVE-EQUILIBRIUM
+  - L-O4-ISOLATION
+  - L-O5-STABILITY
+parent_effect: >-
+  O1-O5 are established for the repaired full action. O6 terminal eligibility
+  reopens for the accepted four-claim transaction.
+routes_remaining:
+  - O6/canonicalization-review-promotion
+verification_audit:
+  process_status: 0
+  runtime_exact_checks: 28
+  targeted_tests: 31
+  terminal_tally: ALL 28 CHECKS PASS [P249-O6-CANONICAL]
+  repository_validation: >-
+    WORKFLOW VALID at 248 accepted claims before promotion; migration queue
+    has 218 units, 0 pending, 0 partial.
+review:
+  artifact: reviews/C-M5C-001-C-M5C-004-review.md
+  initial: C-M5C-001 through C-M5C-004 REQUEST_CHANGES
+  correction: C-M5C-001 through C-M5C-004 ACCEPT at high confidence
+artifacts:
+  derivation_sha256: fbef866510166ba06d014f38cb17bc1ebd961d23b9a1f729ffcd1e71daf5a5a7
+  module_sha256: c484acb1ada8e746663123f148ee56f172c32d0e6f4b55fa02becd8eaf518777
+  tests_sha256: 4db9e44d658dad02928b19b72c197cba33310d106bbd57e1c75181a8905aba6b
+  companion_sha256: ce095386917d3cc31ce5c3d41c1399513c60fa32dbcfd66cff35677771af3e0f
+  theorem_bridge_sha256: e7325af2cd8fc0e7d5ffd917fec7bbcbdf27bb2b7e7e68065391961b45273354
