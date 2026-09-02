@@ -168,6 +168,7 @@ failure-generated candidate is executed in the same run.
 | 0001 | S4 | comparison | established: one orbit-fixed-locus wall mechanism, two arrangements, exact limits | all S4 licenses earned | - | - | - | - |
 | 0002 | G1 (S1 value layer) | DIRECT_LONG_BOX_COLLOCATION | blocked as production route: Newton falls into multi-kink trains from every direct long-box guess (basin structure, documented probes) | landscape license earned: V_w >= 0 on the corridor, pass height ~0.309 | L-continuation from short boxes | warm-started Dirichlet continuation | string/NEB paths (string: shelf-stalled, kept as L=2 guess and order-check; NEB: diverged, recorded) | h-ladder, BC cross-check, budget items |
 | 0002 | G1 (S1 value layer) | L_CONTINUATION_KINK | established (numeric, SIGMA0_SLICE_VALUE): sigma_0 = 0.72929841787(21) at omega*^2; profile constructed, monotone, T = V_w pointwise; routes agree 1.6e-11; BC agreement 1.1e-13; budget total 2.0e-7 PASS | tension-value and profile-existence licenses earned; claim candidate C-M5W-006 named | - | - | - | G2 bag, G3 SOS, G4 stability |
+| 0003 | G2 (S3 value layer) | BAG_DELTA_CONTINUATION | established (numeric, BAG_EXISTS slice scope): R(w) family over delta = w^2 - w_*^2 in [1e-3, 7e-3], R: 1217.4 -> 171.1; chi = Rp/(2 sigma_0) -> 1 (0.99956 at delta=0.001, linear beyond-thin-wall deviation ~ -1.75 delta); envelope dE/dQ = omega verified to 2e-4; virial/monotone identities hold; direct singular-term full-domain solves stall (residual metric col_res/h spiral + trivial basin) — domain-reduced clamped windows with amplitude-matched distances (m*dist = 9.2) are the working formulation | bag-family, thin-wall-law, and envelope-value licenses earned; thick-wall continuation (delta > 7e-3) named frontier | Lommel S-formulation replaced by domain reduction | - | - | G3 SOS, G4 stability |
 ## Debt Ledger
 The ledger is empty. Declared hypotheses (thin-wall window, planar
 exactness, spherical leading order, local scope of the Maxwell
@@ -205,14 +206,15 @@ because the concept is sorted, and they must stay concept-first (analytic
 receipt before any solver). The full technical brief with the exact frozen
 state, gap list, priorities, and paid-for gotchas lives in
 `proposals/P250-shell-bubble-clock/continuation.md` — read it first on
-resume. Gap status: G1 DONE (attempt 0002: sigma_0 = 0.72929841787 with
-itemized budget, monotone profile CSV, clean rung residual 2.4e-11,
-fi-drift 4.1e-14; production route = warm-started Dirichlet L-continuation;
-direct long-box solves land in multi-kink trains — basin probes recorded).
-Remaining: G2 the bag (exact radial operator derivation first, then
-R(omega) table); G3 global SOS certificate closing omega_c^2 = omega_*^2
-(corridor now known nonnegative: interior min 0.015 at m=0.1, pass height
-0.309 — supportive for SOS); G4 bag stability.
+resume. Gap status: G1 DONE (attempt 0002), G2 DONE (attempt 0003:
+R(w) family over delta in [1e-3, 7e-3], chi -> 1 thin-wall law verified,
+envelope dE/dQ = omega at 2e-4, bag profiles exported; thick-wall
+continuation delta > 7e-3 named frontier). Remaining: G3 global SOS
+certificate closing omega_c^2 = omega_*^2 (corridor nonnegative, interior
+min 0.015 at m=0.1, pass height 0.309 — supportive); G4 bag stability.
+Claim candidates: C-M5W-006 (numeric tension + profile, G1),
+C-M5W-007 (bag family + law + envelope, G2) — formalize after owner
+checkpoint.
 Attempt records continue under proposals/P250-shell-bubble-clock/attempts/
 (0002 = G1). The terminal PR stays open (Fixes #195) and is extended by
 this work per owner authority; distinct merger still required; no
