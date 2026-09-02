@@ -384,14 +384,36 @@ route_frontier:
     - BAG_THIN_WALL
     - SLIP_LOCUS_DECOUPLING
     - BUNDLE_DIRECTOR_CHART
-  tried: []
-  failure_generated: []
+  tried:
+    - >-
+      WALL_STATIC_PROFILE/slice-static-shell refuted for the objective's
+      purpose: no clock-active interior state exists at omega = 0 (exact
+      unique-zero decomposition) and the radial static shell falls to the
+      exact Derrick residual T + 3U = 0; the planar vacuum-to-vacuum static
+      loop is recorded as open representation frontier, not needed by S1
+    - >-
+      WALL_ROTATING_MAXWELL/rotating-frame-degenerate-kink established
+      structurally: exact slice reduction, EL system, first integral,
+      Maxwell system, exact rational upper witnesses 5/3 and 45/16, exact
+      elimination isolation pending the artifact confirmation
+    - >-
+      SLIP_LOCUS_DECOUPLING/orbit-fixed-locus established exactly: locus
+      orbit-fixation, all density layers orbit-invariant, uniform zero-cost
+      phase slip, mismatch coefficient of (omega1-omega2)^2 exactly zero
+    - >-
+      BAG_THIN_WALL/volume-surface-selection established exactly within the
+      reduced family: Laplace law R = 2 sigma/p, envelope dE/dQ = omega,
+      interior inertia envelope, wall-to-infinity limit
+  failure_generated:
+    - >-
+      WALL_ROTATING_MAXWELL/deep-m0-branch: the rotating-frame interior
+      minimum lives on the m = 0 branch (discovered by the landscape
+      structure), which made the exact Maxwell system rational and the
+      elimination tractable
   remaining:
-    - WALL_STATIC_PROFILE
-    - WALL_ROTATING_MAXWELL
-    - BAG_THIN_WALL
-    - SLIP_LOCUS_DECOUPLING
     - BUNDLE_DIRECTOR_CHART
+    - geometry-ladder curvature corrections
+    - dynamical shells (post-receipt)
 execution_state: active
 objective_state: active
 exhaustion_certificate:
