@@ -57,7 +57,7 @@ obligation_graph:
       maximum_verdict: SHELL_EXISTS
       failure_scope: the tested slice, profile family, and frequency branch only
       unlocks: [S2, S3]
-      status: active
+      status: established
       license_chain:
         object: >-
           The clock-slice reduction of the C-M5C-001 static energy to real-psi
@@ -102,7 +102,7 @@ obligation_graph:
       maximum_verdict: DECOUPLING_ESTABLISHED
       failure_scope: the tested two-region construction and its H1 bookkeeping only
       unlocks: [S3, S4]
-      status: active
+      status: established
       license_chain:
         object: >-
           The two-region configuration u(x, t) = Orbit(q_1(t)) u~_1 on one
@@ -146,7 +146,7 @@ obligation_graph:
       maximum_verdict: BAG_RELATIVE_EQUILIBRIUM_EXISTS
       failure_scope: the tested thin-wall family and charge window only
       unlocks: [S4]
-      status: active
+      status: established
       license_chain:
         object: >-
           The reduced (R, omega) bag functional E(R, omega) = 4 pi R^2
@@ -191,7 +191,7 @@ obligation_graph:
       maximum_verdict: COMPARISON_ESTABLISHED
       failure_scope: the comparison statement scope only
       unlocks: [S5]
-      status: active
+      status: established
       license_chain:
         object: >-
           The single wall sector of the C-M5C-001 action arranged as (i) a
@@ -238,33 +238,33 @@ license_registry:
       aligned slice; static walls do not exist away from degenerate depths;
       at the exact Maxwell frequency the stationary wall exists and its
       tension is the exact variational functional with proven bounds.
-    status: unearned
-    evidence: null
-    earned_by: null
+    status: earned
+    evidence: proposals/P250-shell-bubble-clock/attempts/0001/derivation.md
+    earned_by: attempt 0001
   - id: L-S2-DECOUPLING
     proposition: >-
       The degenerate locus of the canonical action is orbit-fixed, phase
       slips across it are exactly free, and two clock regions of arbitrary
       frequencies across one shell have exactly zero bulk mismatch energy.
-    status: unearned
-    evidence: null
-    earned_by: null
+    status: earned
+    evidence: proposals/P250-shell-bubble-clock/attempts/0001/derivation.md
+    earned_by: attempt 0001
   - id: L-S3-BAG
     proposition: >-
       A fixed-charge bag family exists in the thin-wall window with exact
       volume-vs-surface radius selection and exact dE/dQ = omega closure,
       with limits to the wall-to-infinity and quiescent-exterior pictures.
-    status: unearned
-    evidence: null
-    earned_by: null
+    status: earned
+    evidence: proposals/P250-shell-bubble-clock/attempts/0001/derivation.md
+    earned_by: attempt 0001
   - id: L-S4-COMPARISON
     proposition: >-
       The P249 exterior-degenerate picture and the isofrequency-wall picture
       are two arrangements of one orbit-fixed-locus wall mechanism of the
       same action, related by exact limits.
-    status: unearned
-    evidence: null
-    earned_by: null
+    status: earned
+    evidence: proposals/P250-shell-bubble-clock/attempts/0001/derivation.md
+    earned_by: attempt 0001
   - id: L-S5-PROMOTION
     proposition: >-
       The wall-sector results are importable, individually reviewed,
@@ -377,7 +377,7 @@ comparators_blinded_until: >-
   Maxwell frequency is derived before any evaluation against the witness
   value, and the derivation uses only the action.
 route_frontier:
-  active_obligation: S1
+  active_obligation: S5
   considered:
     - WALL_STATIC_PROFILE
     - WALL_ROTATING_MAXWELL

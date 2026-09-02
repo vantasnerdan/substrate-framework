@@ -79,12 +79,19 @@ for i in range(3):
     gersh.append(min(H[i, i].a, H[i, i].b) - off.b)
 print("Gershgorin lower bounds:", [mp.nstr(g, 10) for g in gersh])
 h_pd = all(g > 0 for g in gersh)
+k_omega_lo = min(32*K[2].a**2 - 12*K[2].a + 6 - 24*K[1].b,
+                 32*K[2].b**2 - 12*K[2].b + 6 - 24*K[1].a)
+k_omega_hi = max(32*K[2].a**2 - 12*K[2].a + 6 - 24*K[1].a,
+                 32*K[2].b**2 - 12*K[2].b + 6 - 24*K[1].b)
 out = {
     "box_halfwidth": "1e-12",
     "krawczyk_strict_interior": bool(strict_inside),
     "hessian_gershgorin_lower_bounds": [mp.nstr(g, 15) for g in gersh],
     "hessian_positive_definite": bool(h_pd),
     "w_interval": [mp.nstr(W.a, 15), mp.nstr(W.b, 15)],
+    "krawczyk_omega_enclosure": [mp.nstr(k_omega_lo, 25),
+                                 mp.nstr(k_omega_hi, 25)],
+    "krawczyk_boxes": [mp.nstr(K[i], 25) for i in range(3)],
 }
 with open("proposals/P250-shell-bubble-clock/attempts/0001/"
           "maxwell_certificate.json", "w") as fh:
