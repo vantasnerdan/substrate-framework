@@ -339,6 +339,31 @@ the new head). MC-2 introduced a new defect, found by this check:
 No other corrected statement, evidence role, dependency edge, or consumer edge
 required attention. Not needed for any other claim.
 
+Closing verification of MC-3 at head 99ea88f (requested by the author; scope
+limited to the corrected certification chain): the two-step Krawczyk iteration
+is rigorous — the operator contains every root of its input box, strict
+inclusion holds at both steps (K2 ⊂ K, reproduced), and the omega enclosure is
+a direct interval evaluation of w over K2 (no corner pairing); the recorded
+enclosure [1.66394570005915029885619300029616144415736458,
+1.66394570005915029885619300029616144428226086] contains this review's
+independent 120-dps monotone corner evaluation over the persisted K2 boxes and
+the 55-digit point's crossing value; artifact reproduces byte-identically;
+24/24 tests green; maxwell_point.json now records residual_max 2.912e-54
+(matching this review's 80-dps evaluation of the stored coordinates exactly),
+precision_dps 55, inaccurate note removed. MC-3 CLOSED. One residual
+micro-defect introduced by the closure rounding:
+
+- MC-4 (one-line micro-correction, same statement-not-implied-by-certificate
+  class as MC-1/MC-3 at the 39th significant digit): the C-M5W-004 statement
+  bracket endpoints are rounded INWARD relative to the recorded rigorous
+  enclosure — statement lower 1.663945700059150298856193000296161444158 >
+  recorded lower ...44415736458, and statement upper
+  ...444282 < recorded upper ...44428226086. A valid bracket must round the
+  recorded endpoints outward (e.g. lower ...444157, upper ...444283 at that
+  digit count) or quote the enclosure endpoints in full. Magnitude ~2.6e-40,
+  at the noise floor of the 40-dps interval arithmetic; claim content
+  unaffected.
+
 ## Result and Frontier
 
 The positive result retained is the full five-claim wall-sector chain at its
@@ -383,22 +408,22 @@ active), C-M5W-003 accepted (verified / accepted / compatible_extension /
 active), C-M5W-004 accepted with minimum corrections (verified at certified
 scope / accepted_with_minimum_corrections / compatible_extension / active),
 C-M5W-005 accepted (verified / accepted / compatible_extension / active).
-Overall merge readiness: the original conditions MC-1 and MC-2 were applied at
-head 84a8db4 and the one permitted correction check is executed; MC-1 verified
-correct, MC-2 partially defective (MC-3). Final readiness: the merged state is
-acceptance-complete for all five claims contingent on the single required
-follow-up correction MC-3 — fix the k_omega_hi corner pairing in certify.py
-(upper endpoint must pair K[2].b with K[1].a), regenerate
-maxwell_certificate.json, and make the C-M5W-004 statement bracket consistent
-with the certified enclosure (widen to the certified upper endpoint
-1.6639457000591502988681629270..., or produce a rigorous tighter bracket via
-one further Krawczyk iteration on the K box); plus reconcile
-maxwell_point.json's residual note (stored-precision residual is 2.912e-54,
-not 2.18e-60) and its precision_dps field (50 vs 55 stored digits).
+Overall merge readiness: all requested corrections have landed and been
+verified — MC-1 (statement reattribution) applied and verified at 84a8db4;
+MC-3 (rigorous two-step Krawczyk enclosure replacing the defective corner
+pairing) applied and independently verified, and closed, at 99ea88f, which
+also reconciled the maxwell_point.json residual/precision metadata. The single
+outstanding item is MC-4, a one-line endpoint-rounding micro-correction in the
+C-M5W-004 statement bracket (round the quoted enclosure endpoints outward, or
+quote them in full); claim content is unaffected. With MC-4 applied, the
+merged state is final and acceptance-complete for all five claims.
 Corrections ledger: MC-1 — statement reattribution — APPLIED AND VERIFIED
 (upgrade to stronger wording: complete the global SOS certificate). MC-2 —
-artifact backfill — APPLIED WITH DEFECT MC-3 (upgrade: fixed pairing plus one
-further Krawczyk iteration for a tight rigorous bracket, and full-precision
-coordinates or a stored-precision residual). Correction check: executed once,
-at 84a8db4, as recorded in the Correction Check section; this review pass is
+artifact backfill — APPLIED WITH DEFECT MC-3, SUPERSEDED. MC-3 — rigorous
+two-step Krawczyk enclosure — APPLIED, INDEPENDENTLY VERIFIED, AND CLOSED at
+99ea88f (residual micro-defect MC-4: statement bracket endpoints rounded
+inward vs the recorded enclosure at the 39th significant digit; fix by
+rounding the quoted endpoints outward or quoting them in full). Correction
+checks: one substantive check at 84a8db4 plus the requested closing
+verification of MC-3 at 99ea88f, both recorded above; this review pass is
 complete.
