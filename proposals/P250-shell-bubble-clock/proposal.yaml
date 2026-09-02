@@ -396,6 +396,9 @@ claims_proposed:
   - C-M5W-003
   - C-M5W-004
   - C-M5W-005
+  - C-M5W-006
+  - C-M5W-007
+  - C-M5W-008
 comparators_blinded_until: >-
   There are no external comparators; every threshold is derived from the
   canonical action. The accepted witness ratio 45/16 and margin 19/16 are
@@ -430,6 +433,13 @@ route_frontier:
       BAG_THIN_WALL/volume-surface-selection established exactly within the
       reduced family: Laplace law R = 2 sigma/p, envelope dE/dQ = omega,
       interior inertia envelope, wall-to-infinity limit
+    - >-
+      BAG_THIN_WALL/radial-stability-split established exactly (C-M5W-008):
+      F''(R_c) = -8 pi sigma < 0, the fixed-omega bag is a reduced-radial
+      Morse-index>=1 saddle, and the certified family satisfies
+      dQ/d omega < 0 at the corrected charge normalization Q = omega I;
+      constrained-minimum conclusion not asserted (no dependency supplies
+      it); full spectrum descoped by owner direction
   failure_generated:
     - >-
       WALL_ROTATING_MAXWELL/deep-m0-branch: the rotating-frame interior
@@ -437,10 +447,14 @@ route_frontier:
       structure), which made the exact Maxwell system rational and the
       elimination tractable
   remaining:
-    - G3 global SOS certificate closing omega_c^2 = omega_*^2
-    - G4 bag stability (fixed-Q Hessian spectrum about the G2 bag)
-    - G3 global SOS certificate closing omega_c^2 = omega_*^2
-    - G4 bag stability (issue-sanctioned successor)
+    - >-
+      G3 case-C certificate completing omega_c^2 = omega_*^2 exactly
+      (attempts/0004: cases A/B closed, mu and enclosure certified; case-C
+      counting parked by owner directive as an independently runnable run)
+    - >-
+      G4 stability remainder: full second-variation spectrum (shape modes,
+      angular-momentum l-lift, thick-wall regime) and the fixed-charge
+      constrained-radial second-variation bridge
     - BUNDLE_DIRECTOR_CHART
     - geometry-ladder curvature corrections
     - dynamical shells (post-receipt)

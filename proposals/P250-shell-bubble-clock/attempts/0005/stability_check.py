@@ -25,10 +25,9 @@ import sympy as sp
 
 HERE = pathlib.Path(__file__).resolve().parent
 BAG = HERE.parent / "0003" / "bag_results.json"
-SIGMA_JSON = HERE.parent / "0002" / "sigma0_results.json"
+SIGMA_JSON = HERE / "sigma0_results_repaired.json"
 
 checks = []
-
 
 def check(name, cond):
     checks.append(bool(cond))

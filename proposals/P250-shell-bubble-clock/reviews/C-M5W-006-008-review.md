@@ -18,11 +18,26 @@ verbatim.
 
 ## Correction check (one pass, corrections and direct edges only)
 
-Performed after the repairs below; scope limited per AGENTS.md to the
-corrected wording, the regenerated status-0 headline and budget, the
-corrected B-tail masses and boundary agreement, the true-charge columns and
-envelope, and the narrowed C-M5W-008 fixed-charge clause. Result:
-(see Correction Check section at the end).
+Performed by a distinct reviewer (CorrectionCheck) after the repairs below;
+scope limited per AGENTS.md to the corrected wording, the regenerated
+status-0 headline and budget, the corrected B-tail masses and boundary
+agreement, the true-charge columns and envelope, and the narrowed
+C-M5W-008 fixed-charge clause.
+
+Result: **Accept** (confidence 0.99). Verbatim: "All requested corrections
+and directly affected edges match the regenerated evidence: C-M5W-006 uses
+the status-0 n=1601 anchor, repaired budget/bracket, B-tail values, absolute
+drift, and sampled-monotonicity wording; C-M5W-007 carries the reconstructed
+strictly decreasing physical charges and corrected envelope while retracting
+the unsupported acceptance conjunct and disclosing status-1 rungs;
+C-M5W-008 removes the constrained-minimum conclusion, fixes the curvature
+and inertia wording, and retains only criterion satisfaction plus the exact
+envelope identity. Every draft evidence path exists, the YAML parses as
+three claims, profile_L12_anchor.csv contains 2001 data samples, and the
+required stability rerun exited zero with ALL 18 CHECKS PASS."
+
+All three claims therefore enter the registry as `review: accepted`,
+`epistemic: active`, `accepted_in: v0.173.0`.
 
 ---
 

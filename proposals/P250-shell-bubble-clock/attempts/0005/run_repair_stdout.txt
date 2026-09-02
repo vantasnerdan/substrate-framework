@@ -20,3 +20,34 @@ n= 3201 nodes=233174 r1=0.72929841787301 resRMS=8.39e-09 fi(abs)=1.97e-11 status
 expfit(corrected): status=0 nodes=10062 r1=0.72929841786203 fi(abs)=3.62e-14
 [PASS] corrected BC agreement |expfit - dirichlet| = 3.734e-13
 [PASS] expfit cross-check converged (status 0)
+
+== repaired headline (status-0 anchor) ==
+  R1 T+V   = 0.729298417862399
+  R2 2V    = 0.729298417862408
+  R3 2T    = 0.729298417862391
+  GK-quad  = 0.729298417862883
+  route spread = 4.925e-13
+  b1_residual_scaled                     5.836e-10
+  b2_truncation_halfspread_L12           2.431e-12
+  b3_domain_L10_to_L12                   1.476e-11
+  b4_certified_box                       8.288e-13
+  b5_quadrature                          4.841e-13
+  b6_evaluator                           4.441e-16
+  b7_bc_agreement_corrected              3.734e-13
+  b8_first_integral_drift_absolute       4.080e-14
+  budget total (max item)               5.836e-10
+  sigma_0 = 0.729298417862520   bracket: 0.72929841786(58)
+  acceptance: total <= 1e-3 sigma_0 -> PASS
+[PASS] repaired budget passes acceptance (total <= 1e-3 sigma0)
+[PASS] numerical monotonicity at the anchor (zero sampled reversals > 1e-8)
+
+== G2 charge normalization repair (Q_true = Q_trap / omega) ==
+[PASS] dQ/domega < 0 at true normalization (strict decrease)
+corrected envelope rel errors: ['1.84e-04', '1.27e-04', '9.29e-05', '6.88e-05', '4.70e-05']
+[PASS] envelope at true normalization: max rel = 1.842e-04 <= 1.9e-4
+[PASS] true normalization strictly better than archived (1.842e-04 < 2.154e-04)
+sigma_0 shift vs archived headline: 8.200e-12 (budget 2e-7 absorbs; chi and E_crit consumers shift <= 3.5e-11 relative — negligible at recorded precision)
+
+wrote sigma0_results_repaired.json, bag_results_corrected.json, profile_L12_anchor.csv
+
+ALL 10 CHECKS PASS

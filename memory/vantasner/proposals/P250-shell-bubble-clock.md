@@ -212,9 +212,31 @@ envelope dE/dQ = omega at 2e-4, bag profiles exported; thick-wall
 continuation delta > 7e-3 named frontier). Remaining: G3 global SOS
 certificate closing omega_c^2 = omega_*^2 (corridor nonnegative, interior
 min 0.015 at m=0.1, pass height 0.309 — supportive); G4 bag stability.
-Claim candidates: C-M5W-006 (numeric tension + profile, G1),
-C-M5W-007 (bag family + law + envelope, G2) — formalize after owner
-checkpoint.
+## G3-G4 extension outcome (2026-09-02, same branch/PR)
+
+The owner-directed continuation closed G1 and G2 into promoted claims, took
+G3 to a certified partial (cases A/B closed exactly; case-C certificate
+parked as an independently runnable run), and established the G4 stability
+split analytically. Three defects found in review were repaired with
+committed evidence. Attempt records:
+
+| Attempt | Gap | Mechanism | Verdict | Repair-defect | New route | Refuted route | Proposal/framework | Claim | Frontier |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0004 | G3 (exact closure of omega_c^2 = omega_*^2) | KKT_EXACT_FIELD | partial: cases A/B closed exactly (grad V == system verified; coercive; mu deg-32 irreducible; enclosure isolates 1 root; case B empty at alpha via exact field signs); case-C counting parked by owner directive as independently runnable future run (runtime, not physics) | resultant symbol collision (two identically printed f symbols) fixed in canonical module + regression test | enclosure denominators transcribed 10^46 vs 10^44 — caught by exact root isolation, fixed to 10^44 | interval-Sturm over EX domain and symbolic Q(t) chains (too slow) | - | C-M5W-008 NOT minted for this (insufficient) — parked | full-space lift; case C |
+| 0005 | G4 (bag stability, analytic) | THIN_WALL_STABILITY_SPLIT | established: F''(R_c) = -8 pi sigma < 0 exact (fixed-omega Morse index >= 1 reduced radial); dQ/d omega < 0 across certified family at corrected charge Q = omega I; constrained-minimum conclusion NOT asserted (no dependency supplies it) | Q_trap carried omega^2 normalization; G1 headline from status-1 solve; B-tail masses at wrong bulk point (m=c* not 0); bracket narrower than budget; per-rung virial/mono acceptance conjunct unsupported — all repaired via committed evidence_repair.py + CORRECTIONS notes | full-spectrum numerics descoped by owner | prose-only derivation (rebuilt as executable) | - | C-M5W-008 (symbolic_verified) | shape modes, l-lift, thick wall, constrained Hessian |
+
+Promotion: C-M5W-006 (numeric_evidence; sigma_0 = 0.72929841786(58),
+status-0 anchor, budget 5.836e-10), C-M5W-007 (numeric_evidence; 7-rung bag
+family, chi -> 1 power law 1.72, envelope <= 1.9e-4 at true charge, E_crit
+0.16%), C-M5W-008 (symbolic_verified; stability split) — individually
+reviewed by three distinct reviewers (request_changes each; findings,
+repairs, and one-pass correction check recorded in
+proposals/P250-shell-bubble-clock/reviews/C-M5W-006-008-review.md);
+accepted into governance/claims.yaml; release v0.173.0 pinned.
+Self-improvement: committed-evidence-chain reward language added to
+AGENTS.md authoring discipline, physics-erdos-loop Phase 4, and
+small-ratio-numerics reproducibility section (the G3/G4 defect class:
+kernel-only derivations, uncommitted results, transcribed constants).
 Attempt records continue under proposals/P250-shell-bubble-clock/attempts/
 (0002 = G1). The terminal PR stays open (Fixes #195) and is extended by
 this work per owner authority; distinct merger still required; no

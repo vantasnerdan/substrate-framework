@@ -260,7 +260,9 @@ out_g2 = {
     "sigma0_shift": sigma_shift,
 }
 (HERE / "bag_results_corrected.json").write_text(json.dumps(out_g2, indent=1))
-(HERE / "sigma0_results_repaired.json").write_text(json.dumps(out, indent=1))
+(HERE / "sigma0_results_repaired.json").write_text(json.dumps(
+    out, indent=1,
+    default=lambda o: bool(o) if isinstance(o, np.bool_) else float(o)))
 print("\nwrote sigma0_results_repaired.json, bag_results_corrected.json, "
       "profile_L12_anchor.csv")
 

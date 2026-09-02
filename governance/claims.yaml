@@ -14176,3 +14176,217 @@ claims:
     accepted_in: v0.172.0
     challenges: []
     supersedes: []
+  - id: C-M5W-006
+    statement: >-
+      C-M5W-006 (numeric_evidence; slice wall profile and tension at the
+      Maxwell frequency): At the certified Maxwell frequency omega*^2 of
+      C-M5W-004 (omega*^2 = 1.663945700059150298856193000296161444157...,
+      enclosed to width 1.25e-37), the C-M5W-001 slice wall BVP on the
+      diagonal S1 sector admits a kink profile connecting the vacuum
+      A = (1,0,0,0) to the wall asymptotics, numerically monotone in all four
+      channels on the sampled production profile (zero sampled reversals
+      above the 1e-8 threshold; a continuum-exact monotonicity statement is
+      not asserted), with absolute first-integral drift max |T - V_omega*| =
+      4.08e-14 on the production solve, and slice tension
+      sigma_0 = 0.72929841786(58), where the parenthetical bracket is the
+      certified error budget read off at print time (total 5.836e-10,
+      dominated by the scaled BVP residual b1 = 5.836e-10; route spread
+      4.9e-13 across the four routes sigma = int(T+V_w) dx, 2 int V_w dx,
+      2 int T dx, and Gauss-Kronrod quadrature; certified-box half-spread
+      8.3e-13; L = 10 to 12 domain shift 1.5e-11; corrected boundary-treatment
+      agreement 3.7e-13). The headline is anchored to a solve_bvp rung that
+      converged with status 0 (n = 1601 of the L = 12 h-ladder); solver
+      success is part of acceptance. The verification status is numeric
+      evidence: SciPy BVP solves with L-continuation and h-refinement; the
+      exact identities used (T = V_omega first integral, sigma = 2 int
+      V_omega = 2 int T) are the symbolic content of C-M5W-001.
+    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+    verification: numeric_evidence
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    exclusions:
+      - >-
+        Slice scope only: no full-space (off-slice) lift of the profile or
+        tension is asserted; non-spherical walls are out of scope.
+      - >-
+        The tension value is numeric evidence, not an exact value; no identity
+        between sigma_0 and the exact critical-value machinery of the parked
+        G3 certificate (attempts/0004) is claimed.
+      - >-
+        The archived attempt-0002 headline (sigma_0 = 0.7292984178707203,
+        bracket 0.7292984178707(21)) is superseded by the repaired evidence
+        (attempts/0005/sigma0_results_repaired.json): its headline row
+        terminated with solver status 1, its B-end asymptotic basis was
+        evaluated at the wrong bulk point, and its displayed bracket did not
+        carry the budget; see attempts/0002/CORRECTIONS-2026-09-02.md.
+      - >-
+        No particle identification, de Broglie normalization, two-clock force,
+        or gravity is inferred.
+    dependencies:
+      - C-M5W-001
+      - C-M5W-003
+      - C-M5W-004
+    evidence:
+      - proposals/P250-shell-bubble-clock/attempts/0005/evidence_repair.py
+      - proposals/P250-shell-bubble-clock/attempts/0005/run_repair_stdout.txt
+      - proposals/P250-shell-bubble-clock/attempts/0005/sigma0_results_repaired.json
+      - proposals/P250-shell-bubble-clock/attempts/0005/profile_L12_anchor.csv
+      - proposals/P250-shell-bubble-clock/attempts/0002/CORRECTIONS-2026-09-02.md
+      - proposals/P250-shell-bubble-clock/attempts/0002/sigma0_wall.py
+      - src/substrate_framework/m5_wall_clock.py
+      - tests/test_m5_wall_clock.py
+    assumptions:
+      - >-
+        The BVP residual bound is the dominant budget term and is certified by
+        mesh h-refinement at the production resolution; tails use the exact
+        linear asymptotics of C-M5W-001 evaluated at the certified endpoint
+        B = (0, c*, b*, f*).
+    comparators: []
+    accepted_in: v0.173.0
+    challenges: []
+    supersedes: []
+  - id: C-M5W-007
+    statement: >-
+      C-M5W-007 (numeric_evidence; rotating S1 bag family above the Maxwell
+      frequency): For omega^2 = omega*^2 + delta with delta in
+      {0.001, 0.002, ..., 0.007}, the C-M5C-001 fixed-charge bag problem on
+      the C-M5W-001 slice admits stationary spherical wall-bag solutions,
+      constructed by delta-continuation with kink-shape seeds and accepted by
+      the predeclared production criteria: solver termination recorded per
+      rung, mesh stability of the extracted radius (|dR_mesh| <= 1.5e-3
+      R_read; largest observed 5.0e-4), and bounded residuals
+      (res_rms 2.9e-5 to 2.0e-3). Across the computed window the family
+      follows the exact C-M5W-005 selection law R = 2 sigma_0/p(omega) with
+      agreement chi = R_read/(2 sigma_0/p) tending to 1 monotonically as
+      delta -> 0+ (|chi - 1| is consistent with a near-quadratic power law,
+      endpoint log-log slope 1.718 across the window; chi = 0.999562 at
+      delta = 0.001 down to 0.987601 at delta = 0.007), the envelope identity
+      dE/dQ = omega holds to <= 1.9e-4 relative at every finite-difference
+      check across the family (delta = 0.002..0.006; truncation-limited)
+      evaluated at the physical charge normalization Q = omega I, and the
+      rung-1 bag energy matches the exact thin-wall critical value E_crit =
+      (16 pi/3) sigma_0^3/p^2 formed at the rung's own pressure to 0.16%. The
+      radius and the physical charge decrease strictly as omega increases
+      across the rungs (Q_true from 2.3351e10 to 6.5152e7), so
+      dQ/d omega < 0 on the certified family. The archived Q_trap column of
+      attempts/0003/bag_results.json was formed as omega^2 times the inertia
+      integral; the corrected columns Q_true = Q_trap/sqrt(w2), the corrected
+      envelope, and their consequences live in
+      attempts/0005/bag_results_corrected.json with the derivation recorded in
+      attempts/0003/CORRECTIONS-2026-09-02.md.
+    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+    verification: numeric_evidence
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    exclusions:
+      - >-
+        Thin-wall window only: delta <= 0.007; thick bags (delta beyond the
+        window) are a named formulation frontier of the clamped
+        domain-reduced construction, not asserted.
+      - >-
+        All agreements are numeric evidence at the certified tolerances; no
+        exact algebraic identity of the constructed family with the selection
+        law is claimed.
+      - >-
+        Per-rung virial residuals and a channel-monotonicity spline residual
+        are recorded diagnostics, not acceptance gates; per-rung channel
+        monotonicity was not independently verified (only endpoint profiles
+        are retained), and no such acceptance conjunct is asserted.
+      - >-
+        No statement about non-spherical bags, dynamical time evolution, or
+        the exact critical frequency value is made.
+    dependencies:
+      - C-M5W-001
+      - C-M5W-005
+      - C-M5W-006
+      - C-M5C-001
+    evidence:
+      - proposals/P250-shell-bubble-clock/attempts/0003/derivation.md
+      - proposals/P250-shell-bubble-clock/attempts/0003/bag_results.json
+      - proposals/P250-shell-bubble-clock/attempts/0003/CORRECTIONS-2026-09-02.md
+      - proposals/P250-shell-bubble-clock/attempts/0005/bag_results_corrected.json
+      - proposals/P250-shell-bubble-clock/attempts/0005/stability_check.py
+      - proposals/P250-shell-bubble-clock/attempts/0005/run_stdout.txt
+      - proposals/P250-shell-bubble-clock/attempts/0003/bag_bvp.py
+      - proposals/P250-shell-bubble-clock/attempts/0003/receipt.md
+      - src/substrate_framework/m5_wall_clock.py
+      - tests/test_m5_wall_clock.py
+    assumptions:
+      - >-
+        Rung acceptance uses mesh-stability of the radius plus residual
+        bounds; rungs 2-7 terminated at the solver mesh ceiling (status 1)
+        and are accepted on the predeclared residual and mesh criteria rather
+        than solver status alone; the radius extraction is averaged over
+        mechanical, tension, and read-off estimators (R_m, R_T, R_read).
+    comparators: []
+    accepted_in: v0.173.0
+    challenges: []
+    supersedes: []
+  - id: C-M5W-008
+    statement: >-
+      C-M5W-008 (symbolic_verified; thin-wall bag stability split): Within the
+      C-M5W-005 reduced thin-wall family at fixed omega, the radius-reduced
+      bag energy F_omega(R) = 4 pi sigma(omega) R^2 - (4 pi/3) p(omega) R^3
+      has exact derivatives F' = 4 pi R (2 sigma - p R) and F'' = 8 pi
+      (sigma - p R); hence at the stationary radius R_c = 2 sigma/p the
+      second variation is F''_omega(R_c) = -8 pi sigma(omega) < 0 exactly,
+      since sigma > 0. The fixed-omega bag is therefore a
+      Morse-index-at-least-one saddle of the reduced radial problem - a
+      critical nucleation bubble, not an energy minimum - closing the radial
+      (volume-vs-surface) part of the linear-stability frontier named in
+      C-M5W-005's exclusions. Further, along the stationary family the
+      physical charge Q(omega) = omega I(omega) with I > 0 (the slice inertia
+      density f^2 + 4b^2 is nonnegative and nonzero on any nontrivial bag;
+      recorded interiors iota_B = 2.395 to 2.404), and across the C-M5W-007
+      rungs R and Q_true decrease strictly as omega increases, so the family
+      satisfies the dQ/d omega < 0 criterion (numeric ingredient, corrected
+      normalization, certified in C-M5W-007), and the envelope identity
+      dE_data/dQ = omega holds on the family by the chain rule on the
+      accepted Legendre scope dE_w/d(omega) = -Q of C-M5C-001. A
+      constrained-minimum conclusion for the fixed-charge ensemble is NOT
+      asserted: C-M5C-001 supplies the Legendre reduction and envelope
+      identity but no constrained radial Hessian theorem, and the exact
+      second-variation calculation that would supply it is open frontier.
+    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+    verification: symbolic_verified
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    exclusions:
+      - >-
+        Reduced radial mode of the thin-wall family only: the full
+        second-variation operator spectrum (shape modes, angular-momentum
+        l-lift, thick-wall regime) is open frontier and is not asserted; that
+        numerics was explicitly descoped by owner direction.
+      - >-
+        No fixed-charge constrained-minimum or constrained-Hessian conclusion
+        is asserted: the fixed-charge statement is criterion satisfaction
+        (dQ/d omega < 0 across the certified family) plus the exact envelope
+        identity, nothing more.
+      - >-
+        No non-spherical, dynamical, or full-space (off-slice) stability
+        statement is made.
+    dependencies:
+      - C-M5W-005
+      - C-M5W-006
+      - C-M5W-007
+      - C-M5C-001
+    evidence:
+      - proposals/P250-shell-bubble-clock/attempts/0005/derivation.md
+      - proposals/P250-shell-bubble-clock/attempts/0005/stability_check.py
+      - proposals/P250-shell-bubble-clock/attempts/0005/run_stdout.txt
+      - proposals/P250-shell-bubble-clock/attempts/0003/bag_results.json
+      - proposals/P250-shell-bubble-clock/attempts/0005/bag_results_corrected.json
+      - src/substrate_framework/m5_wall_clock.py
+      - tests/test_m5_wall_clock.py
+    assumptions:
+      - >-
+        Same reduced-family treatment of the wall as C-M5W-005: the wall enters
+        through its tension and wall-inertia parameters, exact at leading order
+        in wall thickness over R.
+    comparators: []
+    accepted_in: v0.173.0
+    challenges: []
+    supersedes: []
