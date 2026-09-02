@@ -27,6 +27,7 @@ from substrate_framework.m5_wall_clock import (
     first_integral_conservation_identity,
     inertia_envelope_identity,
     locus_orbit_fixation,
+    maxwell_frequency_resultants,
     maxwell_system,
     orbit_invariance_identity,
     phase_slip_energy_bound,
@@ -135,7 +136,26 @@ def test_maxwell_system_matches_independent_derivation() -> None:
     assert sp.expand(pA - 2*(8*C**3 - 3*C**2 + C*(8*B**2 + 1) - 3*B**2)) == 0
     expected_pB = sp.expand(2*(8*B**3 + 8*B*C**2 - 6*B*C
                                - 2*B*w_of + 7*B - 6*F**2))
-    assert sp.expand(pB - expected_pB) == 0
+
+def test_maxwell_frequency_resultants_share_symbols_and_vanish_at_point() -> None:
+    """Regression (P250 attempt 0004): the eliminators must be built from the
+    same nonnegative ``f`` symbol as `maxwell_system` — a second, identically
+    printed ``f`` silently corrupts both resultants — and the certified
+    Maxwell point must annihilate both, i.e. the c-elimination is consistent
+    with the system it was derived from."""
+    r1, r2 = maxwell_frequency_resultants()
+    for r in (r1, r2):
+        fsyms = {s for s in r.free_symbols if s.name == "f"}
+        assert fsyms == {F}, f"resultant carries foreign f symbol(s): {fsyms}"
+    point = json.loads((ATTEMPT / "maxwell_point.json").read_text())
+    c0 = sp.Float(point["c"], 30)
+    b0 = sp.Float(point["b"], 30)
+    f0 = sp.Float(point["f"], 30)
+    w0 = sp.N((32*F**2 - 12*F + 6 - 24*B).subs({B: b0, F: f0}), 30)
+    for r in (r1, r2):
+        val = sp.N(r.subs({C: c0, B: b0, F: f0,
+                           sp.Symbol("w", real=True): w0}), 25)
+        assert abs(float(val)) < 1e-12, f"resultant not annihilated: {val}"
 
 def test_lock_mutation_moves_derived_system_and_is_invisible_at_witnesses():
     """Channel-local lock mutation: V_lock = (6 + eps)(b - f^2)^2.

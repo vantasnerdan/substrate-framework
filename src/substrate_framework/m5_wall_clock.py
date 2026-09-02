@@ -215,7 +215,8 @@ def maxwell_frequency_resultants():
     Maxwell solutions are exactly the common roots of
     ``R1 = Res_c(pA, pB)`` and ``R2 = Res_c(pA, pC)`` in (f, w).
     """
-    c_v, f_v, w_v = sp.symbols('c f w', real=True)
+    c_v, w_v = sp.symbols('c w', real=True)
+    f_v = sp.Symbol('f', nonnegative=True)
     b_sym = sp.Symbol('b', real=True)
     pA, pB, pC, _ = maxwell_system()
     b_sub = (32*f_v**2 - 12*f_v + 6 - w_v)/24
