@@ -408,22 +408,20 @@ active), C-M5W-003 accepted (verified / accepted / compatible_extension /
 active), C-M5W-004 accepted with minimum corrections (verified at certified
 scope / accepted_with_minimum_corrections / compatible_extension / active),
 C-M5W-005 accepted (verified / accepted / compatible_extension / active).
-Overall merge readiness: all requested corrections have landed and been
-verified — MC-1 (statement reattribution) applied and verified at 84a8db4;
-MC-3 (rigorous two-step Krawczyk enclosure replacing the defective corner
-pairing) applied and independently verified, and closed, at 99ea88f, which
-also reconciled the maxwell_point.json residual/precision metadata. The single
-outstanding item is MC-4, a one-line endpoint-rounding micro-correction in the
-C-M5W-004 statement bracket (round the quoted enclosure endpoints outward, or
-quote them in full); claim content is unaffected. With MC-4 applied, the
-merged state is final and acceptance-complete for all five claims.
-Corrections ledger: MC-1 — statement reattribution — APPLIED AND VERIFIED
-(upgrade to stronger wording: complete the global SOS certificate). MC-2 —
-artifact backfill — APPLIED WITH DEFECT MC-3, SUPERSEDED. MC-3 — rigorous
-two-step Krawczyk enclosure — APPLIED, INDEPENDENTLY VERIFIED, AND CLOSED at
-99ea88f (residual micro-defect MC-4: statement bracket endpoints rounded
-inward vs the recorded enclosure at the 39th significant digit; fix by
-rounding the quoted endpoints outward or quoting them in full). Correction
-checks: one substantive check at 84a8db4 plus the requested closing
-verification of MC-3 at 99ea88f, both recorded above; this review pass is
-complete.
+Overall merge readiness: all corrections have landed and been verified —
+MC-1 (statement reattribution) applied and verified at 84a8db4; MC-3 (rigorous
+two-step Krawczyk enclosure replacing the defective corner pairing, plus
+maxwell_point.json residual/precision reconciliation) applied and
+independently verified, and closed, at 99ea88f; MC-4 (outward rounding of the
+quoted enclosure endpoints) applied and verified at 0455f88 — the C-M5W-004
+statement bracket [1.663945700059150298856193000296161444157,
+1.663945700059150298856193000296161444283] outward-contains the recorded
+certificate enclosure, and 24/24 tests are green at 0455f88. The merged state
+is final and acceptance-complete for all five claims. Corrections ledger:
+MC-1 — statement reattribution — APPLIED AND VERIFIED (upgrade to stronger
+wording: complete the global SOS certificate). MC-2 — artifact backfill —
+APPLIED WITH DEFECT MC-3, SUPERSEDED. MC-3 — rigorous two-step Krawczyk
+enclosure — APPLIED, INDEPENDENTLY VERIFIED, AND CLOSED at 99ea88f. MC-4 —
+endpoint rounding — APPLIED AND VERIFIED at 0455f88. Correction checks: one
+substantive check at 84a8db4 plus the MC-3 closing verification at 99ea88f and
+the MC-4 confirmation at 0455f88, all recorded above; this review is closed.
