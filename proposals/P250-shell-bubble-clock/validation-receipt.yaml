@@ -1,0 +1,48 @@
+schema_version: 1
+proposal: P250
+boundary:
+  base: substrate-framework@8b74d3ab5fdd307ba564291ff7bfa702db5d3330
+  head: substrate-framework@0455f88
+  branch: research/P250-shell-bubble-clock
+declared_impact_surface:
+  - src/substrate_framework/m5_wall_clock.py (new module)
+  - tests/test_m5_wall_clock.py (new tests)
+  - governance/claims.yaml (append-only C-M5W-001..005)
+  - governance/releases/v0.172.0.yaml, governance/releases/current.yaml
+  - docs/generated/ (rendered)
+  - memory/framework/ (generated claim/release memory)
+  - memory/vantasner/proposals/P250-shell-bubble-clock.md
+  - proposals/P250-shell-bubble-clock/ (manifest, attempts, review record)
+commands_and_results:
+  - command: >-
+      PYTHONPATH=src .venv/bin/python scripts/validate_repository.py
+    result: >-
+      WORKFLOW VALID: 257 claims, 257 accepted, 12 proposals, 4 skills;
+      MIGRATION QUEUE: 218 units, 0 pending, 0 partial
+  - command: >-
+      bash scripts/validate.sh --pytest-scope tests/test_m5_wall_clock.py
+      tests/test_m5_exterior_clock.py
+    result: >-
+      24 passed (15 wall-clock + 9 exterior-clock consumers);
+      ALL FIXED REPOSITORY CHECKS AND REQUESTED PYTEST SCOPE PASS
+    boundary_note: >-
+      re-run at the MC-3 boundary (99ea88f); the MC-4 commit changes claim
+      statement wording and generated renders only, which does not stale a
+      scientific oracle; pytest scope and registry validation re-run after
+      MC-4
+  - command: PYTHONPATH=src .venv/bin/python -m pytest tests/test_m5_wall_clock.py tests/test_m5_exterior_clock.py -q
+    result: 24 passed
+  - command: proposals/P250-shell-bubble-clock/attempts/0001/certify.py
+    result: >-
+      Krawczyk strict inclusion (two steps); Gershgorin lower bounds 8.17,
+      4.88, 13.13; omega_*^2 enclosure width ~1.2e-43
+  - command: git diff --check
+    result: clean
+scientific_oracle_receipt:
+  mutation_gates: >-
+    lock-strength and scalar-potential mutations in tests/test_m5_wall_clock.py
+    move the derived Maxwell system while vanishing at the witness class
+  independent_review: >-
+    proposals/P250-shell-bubble-clock/reviews/C-M5W-001-005-review.md —
+    review closed after MC-1..MC-4 corrections; all five claims
+    acceptance-complete
