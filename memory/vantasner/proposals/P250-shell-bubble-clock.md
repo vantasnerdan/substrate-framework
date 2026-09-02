@@ -166,7 +166,8 @@ failure-generated candidate is executed in the same run.
 | 0001 | S2 | SLIP_LOCUS_DECOUPLING | established exactly: orbit-fixed locus, all density layers orbit-invariant, zero-cost phase slip, mismatch coefficient exactly zero, no volume term | all S2 licenses earned | - | - | - | curvature corrections |
 | 0001 | S3 | BAG_THIN_WALL | established exactly in the reduced family: R = 2 sigma/p, dE/dQ = omega envelope, iota_int envelope, wall-to-infinity limit | all S3 thin-wall licenses earned | fixed-omega vs fixed-Q ensemble bookkeeping repaired en route | - | - | thick-wall regime |
 | 0001 | S4 | comparison | established: one orbit-fixed-locus wall mechanism, two arrangements, exact limits | all S4 licenses earned | - | - | - | - |
-
+| 0002 | G1 (S1 value layer) | DIRECT_LONG_BOX_COLLOCATION | blocked as production route: Newton falls into multi-kink trains from every direct long-box guess (basin structure, documented probes) | landscape license earned: V_w >= 0 on the corridor, pass height ~0.309 | L-continuation from short boxes | warm-started Dirichlet continuation | string/NEB paths (string: shelf-stalled, kept as L=2 guess and order-check; NEB: diverged, recorded) | h-ladder, BC cross-check, budget items |
+| 0002 | G1 (S1 value layer) | L_CONTINUATION_KINK | established (numeric, SIGMA0_SLICE_VALUE): sigma_0 = 0.72929841787(21) at omega*^2; profile constructed, monotone, T = V_w pointwise; routes agree 1.6e-11; BC agreement 1.1e-13; budget total 2.0e-7 PASS | tension-value and profile-existence licenses earned; claim candidate C-M5W-006 named | - | - | - | G2 bag, G3 SOS, G4 stability |
 ## Debt Ledger
 The ledger is empty. Declared hypotheses (thin-wall window, planar
 exactness, spherical leading order, local scope of the Maxwell
@@ -204,10 +205,14 @@ because the concept is sorted, and they must stay concept-first (analytic
 receipt before any solver). The full technical brief with the exact frozen
 state, gap list, priorities, and paid-for gotchas lives in
 `proposals/P250-shell-bubble-clock/continuation.md` — read it first on
-resume. Gap priorities: G1 sigma_0 value + wall profile (h-converged BVP at
-the certified crossing, wall-localized integrand, itemized error budget);
-G2 the bag (exact radial operator derivation first, then R(omega) table);
-G3 global SOS certificate closing omega_c^2 = omega_*^2; G4 bag stability.
+resume. Gap status: G1 DONE (attempt 0002: sigma_0 = 0.72929841787 with
+itemized budget, monotone profile CSV, clean rung residual 2.4e-11,
+fi-drift 4.1e-14; production route = warm-started Dirichlet L-continuation;
+direct long-box solves land in multi-kink trains — basin probes recorded).
+Remaining: G2 the bag (exact radial operator derivation first, then
+R(omega) table); G3 global SOS certificate closing omega_c^2 = omega_*^2
+(corridor now known nonnegative: interior min 0.015 at m=0.1, pass height
+0.309 — supportive for SOS); G4 bag stability.
 Attempt records continue under proposals/P250-shell-bubble-clock/attempts/
 (0002 = G1). The terminal PR stays open (Fixes #195) and is extended by
 this work per owner authority; distinct merger still required; no

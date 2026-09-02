@@ -1,0 +1,66 @@
+== P250 G1: sigma_0 and the wall profile ==
+python 3.12.2 numpy 2.5.1 scipy 1.18.0 threads pinned to 1
+first-integral identity exact: True
+omega*^2 = 1.6639457000591502
+A-masses [2.082319, 3.162278, 3.162278, 3.91717]  B-masses [0.830988, 3.356512, 3.594512, 7.060428]  m_min 0.830988
+
+-- L-continuation (Dirichlet, warm-started) --
+cont L=  2.0 status=0 nodes=184133 r1=0.730073429365 fi=1.7e-03
+cont L=  3.0 status=0 nodes=  4583 r1=0.729306488504 fi=1.9e-05
+cont L=  4.5 status=1 nodes=259282 r1=0.729298427462 fi=2.8e-06
+cont L=  6.0 status=1 nodes=316745 r1=0.729298417879 fi=5.6e-08
+cont L=  8.0 status=1 nodes=339581 r1=0.729298417905 fi=2.6e-10
+cont L= 10.0 status=0 nodes= 21788 r1=0.729298417863 fi=4.0e-15
+cont L= 12.0 status=1 nodes=343907 r1=0.729298417878 fi=5.8e-12
+
+-- h-crossing at L=10 (Dirichlet, warm chain) --
+n=  401 nodes= 21788 r1=0.72929841786347 resRMS=4.34e-12 fi=4.00e-15 status=0
+n=  801 nodes=276849 r1=0.72929841786177 resRMS=1.15e-08 fi=3.29e-11 status=1
+n= 1601 nodes=316886 r1=0.72929841785598 resRMS=2.59e-08 fi=1.40e-10 status=1
+n= 3201 nodes=387517 r1=0.72929841790789 resRMS=4.87e-09 fi=7.38e-12 status=1
+observed order p = -1.771   richard(sigma_inf) = None
+
+-- h-crossing at L=12 (Dirichlet, warm chain) --
+n=  401 nodes=212866 r1=0.72929841788508 resRMS=6.01e-09 fi=1.22e-11 status=1
+n=  801 nodes=331672 r1=0.72929841786726 resRMS=2.25e-08 fi=8.98e-11 status=1
+n= 1601 nodes= 10191 r1=0.72929841786240 resRMS=2.43e-11 fi=4.08e-14 status=0
+n= 3201 nodes=233174 r1=0.72929841787301 resRMS=8.39e-09 fi=1.97e-11 status=1
+
+-- exponential-fit BC cross-check (L=12, warm from Dirichlet) --
+expfit: status=1 nodes=246450 r1=0.72929841787289 fi=2.26e-11 endA=9.51e-12 endB=2.83e-13
+BC agreement |expfit - dirichlet| = 1.134e-13
+
+-- basin probes (direct guesses land in multi-kink trains) --
+/home/dan/substrate-framework/proposals/P250-shell-bubble-clock/attempts/0002/sigma0_wall.py:226: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  qv, qerr = quad(g_scalar, -L, L, epsabs=1e-13, epsrel=1e-13, limit=800)
+probe tanh   : status=1 r1=2.188019 mono_bad={'m_nondecreasing_violations': 185279, 'c_nonincreasing_violations': 155055, 'b_nonincreasing_violations': 165573, 'f_nonincreasing_violations': 206859}
+probe linear : status=1 r1=0.931706 mono_bad={'m_nondecreasing_violations': 222799, 'c_nonincreasing_violations': 180525, 'b_nonincreasing_violations': 159832, 'f_nonincreasing_violations': 177383}
+probe step   : status=1 r1=2.188065 mono_bad={'m_nondecreasing_violations': 185612, 'c_nonincreasing_violations': 155339, 'b_nonincreasing_violations': 165882, 'f_nonincreasing_violations': 207960}
+
+-- certified-box drift (b4) --
+box up: sigma = 0.72929841783524
+box down: sigma = 0.72929841788613
+-- evaluator noise (b6): fsum fwd/rev 0.0, codepath jitter 4.44e-16
+
+== headline ==
+sigma_0 (finest Dirichlet L=12 n=3201, warm chain):
+  R1 T+V   = 0.729298417873006
+  R2 2V    = 0.729298417879618
+  R3 2T    = 0.729298417866395
+  GK-quad  = 0.729298417863862
+route spread = 1.576e-11
+  b1_residual_scaled                 2.013e-07
+  b2_truncation_halfspread_L12       5.304e-12
+  b3_domain_L10_to_L12               1.476e-11
+  b4_certified_box                   2.544e-11
+  b5_quadrature                      9.145e-12
+  b6_evaluator                       4.441e-16
+  b7_bc_agreement                    1.134e-13
+  b8_first_integral_drift            1.969e-11
+  budget total (max item)            2.013e-07
+acceptance: total <= 1e-3 * sigma_0 = 7.293e-04 -> PASS
+artifact rung: status=0 nodes=10191 r1=0.72929841786240 resRMS=2.43e-11 fi=4.09e-14
+
+wrote sigma0_results.json and profile_L12_n3201.csv

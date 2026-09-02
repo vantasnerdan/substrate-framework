@@ -65,7 +65,9 @@ Aligned real-psi wall slice: S = diag(m, c+b, c-b), psi = f >= 0.
 
 ## Gaps to clear, in priority order (owner-selected)
 
-### G1 — sigma_0 value and the wall profile (START HERE)
+STATUS: G1 DONE (attempt 0002, 2026-09-02): sigma_0 = 0.72929841787(21),
+budget total 2.0e-7 PASS, monotone profile in profile_L12_n3201.csv,
+production route = warm-started Dirichlet L-continuation. Next: G2.
 Solve the planar wall BVP at omega^2 = omega_*^2:
   unknowns u(x) = (m, c, b, f)(x); EL: 2K u'' = dV_w/du;
   BC x -> -infinity: u -> (1,0,0,0); x -> +infinity: u -> (0, c*, b*, f*);
