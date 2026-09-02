@@ -196,7 +196,24 @@ exhaustion evidence.
 - Routes remaining:
 - Exhaustion review:
 
+## Continuation State (owner-directed extension, 2026-09-02)
+
+The owner accepted the promoted claims and directed that the concrete-object
+gaps now be cleared on the SAME branch and PR #196: numerics are authorized
+because the concept is sorted, and they must stay concept-first (analytic
+receipt before any solver). The full technical brief with the exact frozen
+state, gap list, priorities, and paid-for gotchas lives in
+`proposals/P250-shell-bubble-clock/continuation.md` — read it first on
+resume. Gap priorities: G1 sigma_0 value + wall profile (h-converged BVP at
+the certified crossing, wall-localized integrand, itemized error budget);
+G2 the bag (exact radial operator derivation first, then R(omega) table);
+G3 global SOS certificate closing omega_c^2 = omega_*^2; G4 bag stability.
+Attempt records continue under proposals/P250-shell-bubble-clock/attempts/
+(0002 = G1). The terminal PR stays open (Fixes #195) and is extended by
+this work per owner authority; distinct merger still required; no
+issue/discussion comments until PR approval.
+
 ## Done Gate
-The campaign PR gate opens only on complete positive success or the scientific
-exhaustion certificate. Until then the campaign branch banks checkpoint
-commits and the executor continues on the active obligation.
+The campaign PR gate opened on positive success (PR #196, Fixes #195) and is
+extended by owner direction with the G1-G4 continuation. The branch banks
+each gap as a checkpoint; the PR is updated in place; distinct merger only.
