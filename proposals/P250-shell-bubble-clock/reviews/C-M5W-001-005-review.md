@@ -304,12 +304,40 @@ record, and is not part of the claim review itself.
 
 ## Correction Check
 
-Pending: this review requests the minimum corrections MC-1 (C-M5W-004 wording
-reattribution) and MC-2 (certificate artifact backfill). One correction check
-will follow, covering only the corrected C-M5W-004 statement, the two JSON
-artifacts, and the directly affected promotion edges (claims registry entry and
-release listing); no other claim, dependency, or consumer edge is reopened by
-these corrections. Not needed for any other claim.
+Executed at head 84a8db4 (MC-1/MC-2 promotion commit), covering exactly the
+corrected C-M5W-004 statement, the two JSON artifacts, certify.py, the registry
+and release edges, and the unchanged sibling statements. Outcome: MC-1 landed
+correctly in governance/claims.yaml (interval reattributed to omega_*^2,
+omega_c^2 <= omega_*^2 definitional, witnesses global, inf-attainment inside
+the named SOS route; C-M5W-005's two terminology adaptations are consistent
+downstream renamings; C-M5W-001/002/003 content-faithful; 24/24 tests green at
+the new head). MC-2 introduced a new defect, found by this check:
+
+- MC-3 (required follow-up correction, non-blocking to claim content): the new
+  `k_omega_hi` in certify.py pairs the wrong corners — it takes
+  max(w(f_a,b_a), w(f_b,b_b)) instead of the max corner w(f_b,b_a) — so the
+  recorded `krawczyk_omega_enclosure` upper endpoint 1.66394570005915029885691
+  understates the true max of w over the persisted K boxes
+  (1.6639457000591502988681629270496958798642644584868...; gap exactly
+  24 x (b-box width) ~= 1.13e-20). The recorded enclosure therefore does not
+  follow from the Krawczyk operator output it accompanies, and the C-M5W-004
+  statement's bracket upper endpoint (1.6639457000591502988569) inherits it.
+  The bracket remains numerically true of the crossing (true value
+  ~1.663945700059150298856193..., inside the bracket), so nothing is refuted;
+  the statement-artifact-certificate triangle is just inconsistent at the
+  20th decimal. Fix: correct the corner pairing (use K[2].b with K[1].a),
+  regenerate the certificate, and widen the statement bracket to the certified
+  upper endpoint — or produce a rigorous tighter bracket first (one further
+  Krawczyk iteration on the K box, cheap at 40 dps, would certify far tighter
+  than either value). Also fix the related provenance slip: at the new
+  maxwell_point.json's stored 55-digit coordinates the residual evaluates to
+  2.912e-54 (this check, 80 dps), not the recorded 2.18e-60, so the note
+  "residual evaluated at stored precision" is inaccurate; record the
+  stored-precision residual or the full-precision coordinates, and align
+  precision_dps (still 50) with the 55 stored digits.
+
+No other corrected statement, evidence role, dependency edge, or consumer edge
+required attention. Not needed for any other claim.
 
 ## Result and Frontier
 
@@ -342,26 +370,35 @@ eliminate.py, eliminate2.py, eliminate3.py}. Implementation and tests:
 src/substrate_framework/m5_wall_clock.py, tests/test_m5_wall_clock.py;
 consumer replay tests/test_m5_exterior_clock.py. Parent arc: campaign
 P249-exterior-degenerate-clock (adjudication, attempts 0001-0008, C-M5C
-review), issues #195, #190, #186, release v0.171.0. Promotion staging:
-governance/releases/v0.172.0.yaml (draft; must pick up MC-1). Reviewer
+review), issues #195, #190, #186, release v0.171.0. Promotion: head 84a8db4
+(MC-1/MC-2 corrections, registry acceptance, release v0.172.0). Reviewer
 verification scripts were scratch-only (/tmp) and are not part of the record.
 
 ## Verdict
 
-Per-claim four-axis decisions are recorded above: C-M5W-001 accepted (verified
-/ accepted / compatible_extension / active, F3 role note), C-M5W-002 accepted
-(verified / accepted / compatible_extension / active), C-M5W-003 accepted
-(verified / accepted / compatible_extension / active), C-M5W-004 accepted with
-minimum corrections (verified at certified scope / accepted_with_minimum_
-corrections / compatible_extension / active), C-M5W-005 accepted (verified /
-accepted / compatible_extension / active). Overall merge readiness: ready to
-merge conditional on MC-1 and MC-2; no blockers. Minimum corrections with
-upgrade paths: MC-1 — reattribute the certified interval in C-M5W-004 to the
-deep-branch crossing omega_*^2, assert omega_c^2 <= omega_*^2 and the exact
-global witness bounds omega_c^2 < 5/3 < 45/16, and carry "inf attained" in the
-named SOS closing route (upgrade to original wording: complete the global SOS
-certificate); MC-2 — record the K-box omega enclosure in
-maxwell_certificate.json and reconcile maxwell_point.json's recorded precision
-(20 digits, residual ~5.0e-19) with its residual_max 4.81e-50 provenance note
-(upgrade: record >= 50-digit coordinates). Correction check to follow once
-applied.
+Per-claim four-axis decisions are recorded in the Four-Axis Decision section:
+C-M5W-001 accepted (verified / accepted / compatible_extension / active, F3
+role note), C-M5W-002 accepted (verified / accepted / compatible_extension /
+active), C-M5W-003 accepted (verified / accepted / compatible_extension /
+active), C-M5W-004 accepted with minimum corrections (verified at certified
+scope / accepted_with_minimum_corrections / compatible_extension / active),
+C-M5W-005 accepted (verified / accepted / compatible_extension / active).
+Overall merge readiness: the original conditions MC-1 and MC-2 were applied at
+head 84a8db4 and the one permitted correction check is executed; MC-1 verified
+correct, MC-2 partially defective (MC-3). Final readiness: the merged state is
+acceptance-complete for all five claims contingent on the single required
+follow-up correction MC-3 — fix the k_omega_hi corner pairing in certify.py
+(upper endpoint must pair K[2].b with K[1].a), regenerate
+maxwell_certificate.json, and make the C-M5W-004 statement bracket consistent
+with the certified enclosure (widen to the certified upper endpoint
+1.6639457000591502988681629270..., or produce a rigorous tighter bracket via
+one further Krawczyk iteration on the K box); plus reconcile
+maxwell_point.json's residual note (stored-precision residual is 2.912e-54,
+not 2.18e-60) and its precision_dps field (50 vs 55 stored digits).
+Corrections ledger: MC-1 — statement reattribution — APPLIED AND VERIFIED
+(upgrade to stronger wording: complete the global SOS certificate). MC-2 —
+artifact backfill — APPLIED WITH DEFECT MC-3 (upgrade: fixed pairing plus one
+further Krawczyk iteration for a tight rigorous bracket, and full-precision
+coordinates or a stored-precision residual). Correction check: executed once,
+at 84a8db4, as recorded in the Correction Check section; this review pass is
+complete.

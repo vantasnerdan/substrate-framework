@@ -79,19 +79,34 @@ for i in range(3):
     gersh.append(min(H[i, i].a, H[i, i].b) - off.b)
 print("Gershgorin lower bounds:", [mp.nstr(g, 10) for g in gersh])
 h_pd = all(g > 0 for g in gersh)
-k_omega_lo = min(32*K[2].a**2 - 12*K[2].a + 6 - 24*K[1].b,
-                 32*K[2].b**2 - 12*K[2].b + 6 - 24*K[1].a)
-k_omega_hi = max(32*K[2].a**2 - 12*K[2].a + 6 - 24*K[1].a,
-                 32*K[2].b**2 - 12*K[2].b + 6 - 24*K[1].b)
+# Second Krawczyk iteration on the image box K: strictly tighter rigorous
+# enclosure of the unique solution.
+Kmid = [(K[i].a + K[i].b)/2 for i in range(3)]
+J_Kmid = mp.iv.matrix([[J_lam[i][j](*Kmid) for j in range(3)]
+                       for i in range(3)])
+Y2 = J_Kmid**-1
+gy2 = mp.iv.matrix([g_lam[i](*Kmid) for i in range(3)])
+JK = mp.iv.matrix([[J_lam[i][j](*K) for j in range(3)] for i in range(3)])
+Ky = mp.iv.matrix([K[i] - Kmid[i] for i in range(3)])
+K2 = mp.iv.matrix(Kmid) - Y2*gy2 + (I3 - Y2*JK)*Ky
+strict2 = all(K2[i].a > K[i].a and K2[i].b < K[i].b for i in range(3))
+print("Second Krawczyk strict inclusion:", strict2)
+print("K2 boxes:", [mp.nstr(K2[i], 25) for i in range(3)])
+
+# Rigorous omega^2 image of the certified solution box K2: direct interval
+# evaluation of w = 32f^2 - 12f + 6 - 24b (no corner pairing to get wrong).
+WK = 32*K2[2]**2 - 12*K2[2] + 6 - 24*K2[1]
+print("omega^2 enclosure:", mp.nstr(WK, 30))
+
 out = {
     "box_halfwidth": "1e-12",
     "krawczyk_strict_interior": bool(strict_inside),
+    "krawczyk_second_strict_interior": bool(strict2),
     "hessian_gershgorin_lower_bounds": [mp.nstr(g, 15) for g in gersh],
     "hessian_positive_definite": bool(h_pd),
     "w_interval": [mp.nstr(W.a, 15), mp.nstr(W.b, 15)],
-    "krawczyk_omega_enclosure": [mp.nstr(k_omega_lo, 25),
-                                 mp.nstr(k_omega_hi, 25)],
-    "krawczyk_boxes": [mp.nstr(K[i], 25) for i in range(3)],
+    "krawczyk_omega_enclosure": [mp.nstr(WK.a, 30), mp.nstr(WK.b, 30)],
+    "krawczyk_boxes": [mp.nstr(K2[i], 30) for i in range(3)],
 }
 with open("proposals/P250-shell-bubble-clock/attempts/0001/"
           "maxwell_certificate.json", "w") as fh:
