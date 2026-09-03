@@ -8,8 +8,14 @@ tags:
 - claim-review
 category: decisions
 confidence: working
-status: active
+status: superseded
 ---
+
+This grouped review is preserved as review history but is superseded by the
+independent claim-by-claim correction reviews dated 2026-09-03. In particular,
+its acceptance of the universal wall quantifier, scalar-only phase bound,
+exact heteroclinic inference, endpoint-product pressure, and physical-energy
+normalization is not the final adjudication.
 
 ## Claim and Positive Role
 

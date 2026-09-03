@@ -56,8 +56,12 @@ tags:
 - claim-review
 category: decisions
 confidence: working
-status: active
+status: superseded
 ---
+
+This grouped review is preserved as review history but is superseded by the
+independent claim-by-claim correction reviews dated 2026-09-03 and the
+replacement attempt-0006 numerical oracle.
 
 ## Claim and Positive Role
 The reviewed hash-relevant content is the additive C-M5W-006 draft in `proposals/P250-shell-bubble-clock/claims_block_v0173.yaml`: at the C-M5W-004 Maxwell frequency, it asserts a monotone diagonal-S1 slice kink from A = (1,0,0,0), the C-M5W-001 first integral, and numerical tension `sigma_0 = 0.7292984178707(21)`, with `verification: numeric_evidence`, `compatibility: compatible_extension`, and dependencies C-M5W-001, C-M5W-003, and C-M5W-004. Its exclusions restrict the result to the slice, deny an exact tension value or a G3 exact-value identity, and deny particle, de Broglie, force, or gravity conclusions.
