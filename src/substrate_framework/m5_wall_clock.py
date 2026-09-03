@@ -61,6 +61,18 @@ def wall_slice_inertia(m, c, b, f) -> sp.Expr:
     return sp.factor(clock_inertia_density(S, sp.sympify(f), 0))
 
 
+def wall_bulk_pressure(m, c, b, f, omega_sq) -> sp.Expr:
+    """Return the exact rotating-frame pressure ``p = -V_omega``.
+
+    On a stationary bulk branch this is the pressure relative to the exterior
+    vacuum, whose rotating-frame potential is identically zero.  In particular,
+    the envelope theorem gives ``dp/d(omega_sq) = iota/2`` along the branch;
+    pressure is the integral of that derivative from the Maxwell point, not in
+    general the endpoint product ``delta_omega_sq*iota(omega_sq)/2``.
+    """
+    return sp.factor(-wall_slice_potential(m, c, b, f, omega_sq))
+
+
 def wall_slice_gradient_density(dm, dc, db, df) -> sp.Expr:
     """Return the exact static gradient energy density per unit area.
 
@@ -163,20 +175,45 @@ def orbit_invariance_identity() -> bool:
     vel2 = canonical_velocity_energy_density(
         *relative_equilibrium_velocity(S_r, fr, fi, w_g))
     checks.append(sp.trigsimp(sp.expand(vel2 - vel1)))
+    dm_g, dc_g, db_g, df_g, dp_g = sp.symbols(
+        'dm_g dc_g db_g df_g dp_g', real=True)
+    dS_g = clock_slice_tensor(dm_g, dc_g, db_g)
+    dS_r = rotation * dS_g * rotation.T
+    dfr = df_g*sp.cos(q) - dp_g*sp.sin(q)
+    dfi = df_g*sp.sin(q) + dp_g*sp.cos(q)
+    grad1 = sp.trace(dS_g.T*dS_g)/4 + (df_g**2 + dp_g**2)/2
+    grad2 = sp.trace(dS_r.T*dS_r)/4 + (dfr**2 + dfi**2)/2
+    checks.append(sp.trigsimp(sp.expand(grad2 - grad1)))
     return all(sp.simplify(ch) == 0 for ch in checks)
 
 
 def phase_slip_energy_bound(gradient_scale, delta_theta, epsilon) -> sp.Expr:
     """Return the exact uniform phase-slip cost ``L^2 dtheta^2 eps / 4``.
 
-    A phase jump of size ``delta_theta`` at the locus of a profile with
-    scalar-amplitude Lipschitz constant ``gradient_scale`` and f(x*) = 0,
-    realized by a continuous ramp of half-width ``epsilon``, costs at most
-    this much gradient energy; it vanishes uniformly in ``delta_theta``.
+    Here ``gradient_scale`` bounds the *full clock-generator amplitude* near
+    the locus: ``sqrt(iota(x)) <= L |x-x*|`` with
+    ``iota = f^2 + 4 b^2`` on the slice.  A phase jump of size ``delta_theta``
+    realized by a continuous ramp of half-width ``epsilon`` then has excess
+    gradient energy at most the returned (deliberately loose) bound.  It
+    therefore includes both scalar phase and tensor-orientation gradients and
+    vanishes for fixed ``delta_theta`` as the ramp shrinks.
     """
     L, dth, eps = (sp.sympify(v)
                    for v in (gradient_scale, delta_theta, epsilon))
     return sp.factor(L**2 * dth**2 * eps / 4)
+
+
+def phase_twist_gradient_excess(inertia_density, phase_gradient) -> sp.Expr:
+    """Return the exact local gradient excess ``iota*(dq/dx)^2/2``.
+
+    For an aligned slice profile transformed by a spatially varying diagonal
+    S1 angle ``q(x)``, the cross term between the slice derivative and the
+    orbit tangent vanishes.  The remaining tensor and scalar terms combine
+    into half the canonical clock inertia density.
+    """
+    return sp.factor(
+        sp.sympify(inertia_density) * sp.sympify(phase_gradient) ** 2 / 2
+    )
 
 
 def static_shell_derrick_residual(gradient_energy, potential_energy):
@@ -243,6 +280,23 @@ def wall_tension_integrand(dm, dc, db, df, m, c, b, f, omega_sq) -> sp.Expr:
 def thin_wall_bag_radius(sigma, pressure) -> sp.Expr:
     """Return the exact volume-vs-surface selection law ``R = 2 sigma/p``."""
     return sp.factor(2*sp.sympify(sigma)/sp.sympify(pressure))
+
+
+def relative_equilibrium_energies(routhian, inertia, omega):
+    """Return ``(E0, E)`` from a fixed-frequency Routhian ``F_omega``.
+
+    With canonical kinetic normalization, ``F_omega = E0-omega^2 I/2``
+    and ``Q=omega I``.  Consequently the static energy and the physical
+    relative-equilibrium energy are respectively
+    ``E0=F_omega+omega^2 I/2`` and ``E=F_omega+omega Q``.  Keeping these two
+    objects distinct prevents the factor-of-two error that results from
+    calling the static energy the fixed-charge physical energy.
+    """
+    F_omega, I, w = (sp.sympify(value)
+                     for value in (routhian, inertia, omega))
+    static_energy = F_omega + w**2 * I / 2
+    physical_energy = F_omega + w**2 * I
+    return sp.factor(static_energy), sp.factor(physical_energy)
 
 
 def envelope_identity() -> bool:

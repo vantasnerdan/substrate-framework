@@ -31,15 +31,18 @@ from substrate_framework.m5_wall_clock import (
     maxwell_system,
     orbit_invariance_identity,
     phase_slip_energy_bound,
+    phase_twist_gradient_excess,
+    relative_equilibrium_energies,
     static_shell_derrick_residual,
     thin_wall_bag_radius,
     wall_slice_gradient_density,
     wall_slice_inertia,
     wall_slice_potential,
+    wall_bulk_pressure,
 )
 
 ATTEMPT = pathlib.Path(__file__).resolve().parents[1] / (
-    "proposals/P250-shell-bubble-clock/attempts/0001"
+    "campaigns/P250-shell-bubble-clock/attempts/0001"
 )
 
 C, B = sp.symbols("c b", real=True)
@@ -120,6 +123,9 @@ def test_phase_slip_cost_vanishes_uniformly() -> None:
     assert bound == L**2*dth**2*eps/4
     assert sp.limit(bound, eps, 0, "+") == 0
     assert sp.limit(bound.subs(dth, dth**2 + 1), eps, 0, "+") == 0
+    qprime = sp.Symbol("qprime", real=True)
+    assert phase_twist_gradient_excess(F**2 + 4*B**2, qprime) == (
+        F**2 + 4*B**2) * qprime**2 / 2
 
 
 def test_static_radial_shell_derrick_residual() -> None:
@@ -136,6 +142,17 @@ def test_maxwell_system_matches_independent_derivation() -> None:
     assert sp.expand(pA - 2*(8*C**3 - 3*C**2 + C*(8*B**2 + 1) - 3*B**2)) == 0
     expected_pB = sp.expand(2*(8*B**3 + 8*B*C**2 - 6*B*C
                                - 2*B*w_of + 7*B - 6*F**2))
+    assert sp.expand(pB - expected_pB) == 0
+    V = wall_slice_potential(0, C, B, F, W2)
+    assert sp.expand(pC - 2*V.subs(W2, w_of)) == 0
+    assert sp.expand(sp.diff(V, F).subs(W2, w_of)) == 0
+
+
+def test_bulk_pressure_is_derived_from_the_canonical_potential() -> None:
+    pressure = wall_bulk_pressure(M, C, B, F, W2)
+    assert sp.expand(pressure + wall_slice_potential(M, C, B, F, W2)) == 0
+    assert sp.diff(pressure, W2) == wall_slice_inertia(M, C, B, F) / 2
+
 
 def test_maxwell_frequency_resultants_share_symbols_and_vanish_at_point() -> None:
     """Regression (P250 attempt 0004): the eliminators must be built from the
@@ -251,3 +268,14 @@ def test_envelope_and_inertia_identities() -> None:
 def test_thin_wall_selection_law() -> None:
     sigma, p = sp.symbols("sigma p", positive=True)
     assert thin_wall_bag_radius(sigma, p) == 2*sigma/p
+
+
+def test_relative_equilibrium_energy_decomposition() -> None:
+    routhian, inertia, omega = sp.symbols("F_omega I omega", real=True)
+    static, physical = relative_equilibrium_energies(
+        routhian, inertia, omega
+    )
+    charge = omega * inertia
+    assert sp.expand(static - routhian - omega**2 * inertia / 2) == 0
+    assert sp.expand(physical - routhian - omega * charge) == 0
+    assert sp.expand(physical - static - omega**2 * inertia / 2) == 0

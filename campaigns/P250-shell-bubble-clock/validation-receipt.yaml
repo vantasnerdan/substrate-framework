@@ -1,0 +1,77 @@
+schema_version: 1
+proposal: P250
+boundary:
+  base: substrate-framework@8b74d3ab5fdd307ba564291ff7bfa702db5d3330
+  scientific_head: substrate-framework@e5eece659d21d5488d0aa5a9312f2ec56d4100a6
+  branch: harvest/196-scientific-review
+declared_impact_surface:
+  - src/substrate_framework/m5_wall_clock.py
+  - tests/test_m5_wall_clock.py
+  - governance/claims.yaml (corrected C-M5W-001,003,004,005,007,008)
+  - governance/releases/v0.174.0.yaml and current.yaml
+  - docs/generated and memory/framework generated records
+  - campaigns/P250-shell-bubble-clock (attempt 0006, individual reviews,
+    adjudication, and prior immutable attempts)
+  - memory/codex/efforts/pr196-scientific-review.md
+  - memory/vantasner/proposals/P250-shell-bubble-clock.md
+commands_and_results:
+  - command: >-
+      PYTHONPATH=src .venv/bin/python
+      campaigns/P250-shell-bubble-clock/attempts/0006/exact_stitching.py
+    result: ALL 12 CHECKS PASS
+  - command: >-
+      PYTHONPATH=src .venv/bin/python
+      campaigns/P250-shell-bubble-clock/attempts/0006/bag_bvp_repair.py
+    result: >-
+      all seven production rungs solve_bvp status 0; residual max <=1.00e-8;
+      boundary residual <1e-10; radial virial relative <=3.25e-10; all eleven
+      internal result predicates pass
+  - command: >-
+      PYTHONPATH=src .venv/bin/python
+      campaigns/P250-shell-bubble-clock/attempts/0006/stability_recheck.py
+    result: ALL 8 CHECKS PASS
+  - command: >-
+      PYTHONPATH=src .venv/bin/python
+      campaigns/P250-shell-bubble-clock/attempts/0001/certify.py
+    result: >-
+      Krawczyk strict inclusion and interval-Gershgorin positive definiteness
+      reproduce; certificate remains valid
+  - command: >-
+      PYTHONPATH=src .venv/bin/pytest -q tests/test_m5_wall_clock.py
+      tests/test_m5_exterior_clock.py
+    result: 27 passed
+  - command: >-
+      PYTHONPATH=src .venv/bin/python scripts/validate_changed.py
+      --base origin/main --print-only
+    result: >-
+      full validation selected because claim or release governance semantics
+      changed
+  - command: scripts/validate.sh --full
+    result: >-
+      full repository tests and workflow validation pass after correcting the
+      two new review-memory section descriptions; no global omega_c closure
+      computation is part of this command
+  - command: git diff --check
+    result: clean
+scientific_oracle_receipt:
+  mutation_gates: >-
+    Existing lock-strength and scalar-potential mutations remain green; the
+    Maxwell test now asserts pB, pC, and the f-equation instead of constructing
+    an unused expected expression. Exact attempt 0006 derives the slice,
+    rotating shears, phase twist, pressure, Legendre energy factors, radial
+    virial, and Maxwell normalizations directly from canonical primitives.
+  small_ratio_numerics: >-
+    Translation is gauge-fixed by a moving coordinate and phase condition;
+    all production solves have status zero; crossed tolerance and matching-
+    exponent changes, boundary residual, equation residual, radial virial,
+    domain effect, and independent tension-route spread are measured. No
+    numerical soft-eigenvalue sign is promoted.
+  independent_review: >-
+    reviews/C-M5W-001-review-2026-09-03.md through
+    reviews/C-M5W-008-review-2026-09-03.md record the initial findings,
+    minimum corrections, oracle replacement, correction checks, and final
+    acceptance scopes. Earlier grouped reviews are preserved as superseded.
+owner_scope_direction: >-
+  The exact global omega_c^2=omega_*^2 closing route is a separate successor
+  campaign by explicit owner direction on 2026-09-03 and is neither consumed
+  by an accepted claim nor a prerequisite for PR #196.

@@ -13906,41 +13906,42 @@ claims:
     supersedes: []
   - id: C-M5W-001
     statement: >-
-      C-M5W-001 (symbolic_verified; exact wall-slice reduction and mechanical
-      first integral): On the C-M5C-001 canonical action, every planar
-      stationary wall of the diagonal S1 clock sector is carried, up to the
-      exact orbit gauge, by the aligned real-psi slice S = diag(m, c+b, c-b),
-      psi = f >= 0, with slice potential V_omega = V_M5 + 2c^2 + 2b^2 +
-      6(b-f^2)^2 + W(f) - (omega^2/2)(f^2 + 4b^2), exact kinetic metric
-      diag(1/4, 1/2, 1/2, 1/2) in (m, c, b, f), canonical inertia density
-      f^2 + 4b^2, and Euler-Lagrange residuals 2K u'' = dV_omega/du. The
-      mechanical quantity T - V_omega is exactly conserved along any
-      stationary profile (d/dx(T - V_omega) = sum(2K u'' - dV_omega/du) u',
-      identity verified in SymPy); at both wall ends it vanishes, so T =
-      V_omega on any wall and the tension is sigma = int(T + V_omega) dx =
-      2 int V_omega dx = 2 inf_path int sqrt(V_omega) ds_g over paths with
-      metric K. The psi_I = 0 slice is exactly invariant (the psi_I equation
-      is homogeneous with positive coefficient), and the shear and
-      orientation directions have exact positive second variations
-      2(8b^2-3b+8c^2-3c+4m^2-3m+1) and 48 b f^2.
-    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+      C-M5W-001 (symbolic_verified; exact invariant wall slice and mechanical
+      first integral): On the C-M5C-001 canonical action, the aligned
+      real-psi planar sector S = diag(m, c+b, c-b), psi = f >= 0 is an exact
+      invariant reduction up to a constant diagonal-S1 orbit gauge: all four
+      transverse Euler-Lagrange first derivatives vanish on the slice. Its
+      rotating-frame potential is V_omega = V_M5 + 2c^2 + 2b^2 +
+      6(b-f^2)^2 + W(f) - (omega^2/2)(f^2 + 4b^2), its kinetic metric in
+      (m,c,b,f) is diag(1/4,1/2,1/2,1/2), its canonical inertia density is
+      f^2+4b^2, and its stationary equations are 2K u'' = dV_omega/du. The
+      mechanical quantity T-V_omega is exactly conserved, with
+      d(T-V_omega)/dx = sum(2K u''-dV_omega/du)u'. Thus every finite-tension
+      slice solution joining equal-depth endpoints has T=V_omega pointwise
+      and sigma = int(T+V_omega)dx = 2 int V_omega dx = 2 int T dx. For the
+      least wall in a connecting component where V_omega is nonnegative, the
+      same functional has the exact Jacobi-metric form
+      2 inf_path int sqrt(V_omega) ds_g.
+    provenance: campaigns/P250-shell-bubble-clock/proposal.yaml
     verification: symbolic_verified
     review: accepted
     compatibility: compatible_extension
     epistemic: active
     exclusions:
       - >-
-        The slice reduction is for the S1-orbit-gauged planar wall sector; it
-        does not assert that non-spherical or dynamical walls reduce to it.
+        The result proves an invariant planar sector, not that every planar
+        wall of the full field theory is orbit-equivalent to this slice or
+        that transverse Hessians are positive throughout a rotating wall.
       - >-
-        No tension value is asserted: sigma is carried as an exact
-        variational functional; a closed-form or h-converged number is
-        future work, not a debt of this claim.
+        The Jacobi-metric infimum applies to a nonnegative connecting
+        component and its least wall; stationary excited walls need not attain
+        that infimum. No numerical tension value is asserted here.
     dependencies:
       - C-M5C-001
     evidence:
-      - proposals/P250-shell-bubble-clock/attempts/0001/derivation.md
-      - proposals/P250-shell-bubble-clock/attempts/0001/maxwell_point.json
+      - campaigns/P250-shell-bubble-clock/attempts/0001/derivation.md
+      - campaigns/P250-shell-bubble-clock/attempts/0006/exact_stitching.py
+      - campaigns/P250-shell-bubble-clock/attempts/0006/exact_stitching_stdout.txt
       - src/substrate_framework/m5_wall_clock.py
       - tests/test_m5_wall_clock.py
     assumptions:
@@ -13948,13 +13949,6 @@ claims:
         The C-M5C-001 constrained auxiliary frame, unit axis lock, lock
         strength six, and W(f)=3f^2-4f^3+2f^4 are declared model data; the
         absolute-value branch of |psi| is fixed to the nonnegative slice.
-      - >-
-        The every-planar-wall quantifier assembles the exact verified
-        ingredients (real-psi homogeneous equation with positive
-        coefficient, positive shear and orientation stiffness, orbit gauge)
-        with the standard elliptic-uniqueness argument; the explicit
-        assembled derivation entry is recorded as follow-up F3 of the
-        C-M5W-001..005 review.
     comparators: []
     accepted_in: v0.172.0
     challenges: []
@@ -13974,7 +13968,7 @@ claims:
       interior minimum of negative depth. The planar vacuum-to-vacuum static
       homoclinic-loop question is left open as representation frontier; no
       claim of this campaign rests on it.
-    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+    provenance: campaigns/P250-shell-bubble-clock/proposal.yaml
     verification: symbolic_verified
     review: accepted
     compatibility: compatible_extension
@@ -13988,7 +13982,7 @@ claims:
       - C-M5W-001
       - C-M5C-002
     evidence:
-      - proposals/P250-shell-bubble-clock/attempts/0001/derivation.md
+      - campaigns/P250-shell-bubble-clock/attempts/0001/derivation.md
       - src/substrate_framework/m5_wall_clock.py
       - tests/test_m5_wall_clock.py
     assumptions:
@@ -14007,18 +14001,21 @@ claims:
       orbit (R(q) S R(q)^T = S and e^{iq} psi = psi hold exactly), and the
       canonical clock generator norm Tr[A,S]^2/2 + |psi|^2 vanishes there.
       The potential density, inertia density, velocity energy, and static
-      gradient density are exactly orbit-invariant (SymPy identities). Hence
-      a phase jump of any size at a locus point costs zero energy in H1: the
-      uniform ramp bound L^2 (delta theta)^2 eps / 4 tends to zero, and the
-      tensor-orientation jump is exactly free by orbit-fixation. Gluing two
-      clock regions of arbitrary frequencies omega_1 and omega_2 through one
-      static shell along the orbit-fixed locus therefore gives total energy
-      exactly E_1 + E_2 + sigma_0 times the shell area for all times: the
-      mismatch coefficient of (omega_1 - omega_2)^2 is exactly zero, with no
-      bulk (volume or box) contribution, because each region's bulk solves
-      the local field equations exactly by orbit invariance. The decoupling
-      price is exactly the static shell tension of C-M5W-004.
-    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+      gradient density are exactly orbit-invariant (SymPy identities). For a
+      spatially varying orbit angle q(x), the exact extra gradient density is
+      iota(q')^2/2 with iota=f^2+4b^2. Hence a phase jump of any size across a
+      surface whose H1 interface trace lies in the locus costs exactly zero in
+      the piecewise-orbit representative; equivalently, smooth ramps have a
+      full scalar-plus-tensor bound L_iota^2(delta theta)^2 epsilon/4 tending
+      to zero when sqrt(iota)<=L_iota|x-x*|. Applying independent phase
+      histories, including frequencies omega_1 and omega_2, on the two sides
+      therefore adds no mismatch-dependent bulk or box term: the interface
+      energy remains area-localized and the coefficient of
+      (omega_1-omega_2)^2 is exactly zero. The area price is the energy of the
+      chosen underlying interface profile; the theorem does not identify it
+      with a particular stationary-wall tension without a separate profile
+      construction.
+    provenance: campaigns/P250-shell-bubble-clock/proposal.yaml
     verification: symbolic_verified
     review: accepted
     compatibility: compatible_extension
@@ -14026,16 +14023,18 @@ claims:
     exclusions:
       - >-
         The decoupling statement is an energy bookkeeping theorem for the
-        glued configuration family; it does not assert dynamical stability
-        of the two-frequency configuration or any wall-mediated force.
+        H1 cut-and-paste family. It does not assert that the glued field is a
+        global weak solution, a stationary two-frequency wall, dynamically
+        stable, or a wall-mediated force law.
       - >-
         Spherical geometry inherits the area scaling at thin-shell leading
         order; curvature corrections are frontier.
     dependencies:
       - C-M5W-001
-      - C-M5W-004
     evidence:
-      - proposals/P250-shell-bubble-clock/attempts/0001/derivation.md
+      - campaigns/P250-shell-bubble-clock/attempts/0001/derivation.md
+      - campaigns/P250-shell-bubble-clock/attempts/0006/exact_stitching.py
+      - campaigns/P250-shell-bubble-clock/attempts/0006/exact_stitching_stdout.txt
       - src/substrate_framework/m5_wall_clock.py
       - tests/test_m5_wall_clock.py
     assumptions:
@@ -14048,16 +14047,15 @@ claims:
     supersedes: []
   - id: C-M5W-004
     statement: >-
-      C-M5W-004 (symbolic_verified; Maxwell wall existence and exact crossing
-      characterization): The rotating-frame slice potential V_omega has an
-      interior clock-active minimum on the deep branch m = 0 exactly, whose
-      depth crosses zero at the deep-branch crossing frequency omega_*^2:
-      min V_omega = 0 exactly at omega^2 = omega_*^2, where a stationary
-      planar wall exists - V_omega_* is nonnegative on the branch with two
-      nondegenerate zeros (exterior vacuum and interior state; nondegeneracy
-      certified), and the mechanical first integral supplies the kink with
-      tension sigma_c = 2 int V_omega_c dx in (0, infinity), exactly the
-      geodesic length 2 inf_path int sqrt(V_omega_c) ds_g. The global
+      C-M5W-004 (symbolic_verified; exact Maxwell system and certified local
+      crossing): The rotating-frame slice potential V_omega has a
+      clock-active stationary point on the exact deep branch m=0 whose depth
+      crosses the exterior depth at omega^2=omega_*^2. The branch point is a
+      nondegenerate fixed-omega local minimum and V_omega=0 there; together
+      with the exterior vacuum it supplies the equal-depth endpoints for the
+      C-M5W-001 planar wall equations. Any connecting kink has the exact
+      first-integral and tension formulas of C-M5W-001; numerical existence
+      and the tension value are established separately by C-M5W-006. The global
       degenerate-depth value omega_c^2 := 2 inf V0/iota satisfies omega_c^2
       <= omega_*^2 definitionally (every realized ratio bounds the inf), and
       the exact rational witnesses pin the global value: V_omega at
@@ -14065,8 +14063,9 @@ claims:
       omega^2 = 5/3 and -33854777/25000000 < 0 at omega^2 = 45/16, so
       omega_c^2 < 5/3 < 45/16 exactly; the accepted C-M5C-003 witness ratio
       is a strict upper bound, not the degenerate-depth value. On the deep
-      branch the Maxwell system is the rational polynomial system pA = 8c^3
-      - 3c^2 + (8b^2+1)c - 3b^2 = 0, pB = 2(8b^3 + 8bc^2 - 6bc - 2b
+      branch the normalized Maxwell system is the rational polynomial system
+      pA = (1/2)d_c V_omega = 8c^3 - 3c^2 + (8b^2+1)c - 3b^2 = 0,
+      pB = d_b V_omega = 2(8b^3 + 8bc^2 - 6bc - 2b
       omega^2 + 7b - 6f^2) = 0, pC = 2 V_omega = 0 with omega^2 = 32f^2 -
       12f + 6 - 24b, all derived from the canonical potential. Certified
       solution (interval arithmetic): exactly one real solution in the
@@ -14079,8 +14078,9 @@ claims:
       [1.663945700059150298856193000296161444157,
       1.663945700059150298856193000296161444283].
       The identification omega_c^2 = omega_*^2 (the global inf attained at
-      the deep branch) is the named SOS closing route and is not asserted.
-    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+      the deep branch) is not asserted and belongs to a separately scoped
+      successor campaign by owner direction.
+    provenance: campaigns/P250-shell-bubble-clock/proposal.yaml
     verification: symbolic_verified
     review: accepted
     compatibility: compatible_extension
@@ -14089,13 +14089,13 @@ claims:
       - >-
         The Krawczyk certificate isolates the deep-branch solution in its
         rational box; the global identification omega_c^2 = omega_*^2 is
-        certified locally (nondegenerate minimum, positive excluded-
-        direction spectra) with the global SOS certificate recorded as the
-        named closing route, not asserted.
+        not asserted. Local nondegeneracy does not supply the missing global
+        comparison; that comparison belongs to the separately scoped
+        successor campaign approved by owner direction.
       - >-
-        The tension value sigma_c is carried as an exact variational
-        functional with the existence argument; no numeric tension value is
-        claimed.
+        This exact/local claim does not assert global nonnegativity of
+        V_omega_* or an exact heteroclinic-existence theorem. C-M5W-006 carries
+        the successful status-zero slice BVP and its numerical tension.
       - >-
         No M7 threshold, M5.32 number, or external spectrum is imported;
         every constant above derives from the canonical action.
@@ -14104,17 +14104,18 @@ claims:
       - C-M5W-002
       - C-M5C-002
     evidence:
-      - proposals/P250-shell-bubble-clock/attempts/0001/derivation.md
-      - proposals/P250-shell-bubble-clock/attempts/0001/certify.py
-      - proposals/P250-shell-bubble-clock/attempts/0001/maxwell_certificate.json
-      - proposals/P250-shell-bubble-clock/attempts/0001/maxwell_point.json
+      - campaigns/P250-shell-bubble-clock/attempts/0001/derivation.md
+      - campaigns/P250-shell-bubble-clock/attempts/0001/certify.py
+      - campaigns/P250-shell-bubble-clock/attempts/0001/maxwell_certificate.json
+      - campaigns/P250-shell-bubble-clock/attempts/0001/maxwell_point.json
+      - campaigns/P250-shell-bubble-clock/attempts/0006/exact_stitching.py
+      - campaigns/P250-shell-bubble-clock/attempts/0006/exact_stitching_stdout.txt
       - src/substrate_framework/m5_wall_clock.py
       - tests/test_m5_wall_clock.py
     assumptions:
       - >-
-        The wall-existence argument uses the direct method on the tension
-        functional (coercivity of V_omega and completeness of the weighted
-        path metric) with nondegenerate equal-depth zeros certified above.
+        The Krawczyk and interval-Gershgorin calculations use outward-rounded
+        interval arithmetic on the displayed SymPy-derived polynomial system.
     comparators: []
     accepted_in: v0.172.0
     challenges: []
@@ -14123,25 +14124,23 @@ claims:
     statement: >-
       C-M5W-005 (symbolic_verified; thin-wall bag selection, charge closure,
       and comparison): Within the reduced thin-wall family at fixed omega
-      above the deep-branch crossing, the C-M5C-001 fixed-charge bag energy
-      is E = 4 pi R^2 sigma(omega) - (4 pi/3) R^3 p(omega) + (omega^2/2) I
-      with p(omega) = -min V_omega > 0; its exact stationarity in R is the
-      volume-vs-surface law R = 2 sigma/p, the charge is Q = omega I with I
-      = (4 pi/3) R^3 iota_int + 4 pi R^2 iota_wall, the envelope identity
-      dE/dQ = omega holds exactly for any stationary family (general
-      symbolic proof), and the interior inertia obeys iota_int = -2
-      dV_min/d(omega^2) exactly. Limits: as omega^2 approaches the
-      degenerate-depth crossing the pressure p tends to zero and R = 2
-      sigma/p tends to infinity - the wall pushed to infinity with a
-      quiescent ambient, which is exactly the accepted P249
-      exterior-degenerate picture realized by C-M5C-003's hylomorphic
-      family; the isofrequency-wall picture of Discussion #186 (degeneracy
-      only on walls, ambient omega nonzero) is the same wall sector arranged
-      between two ticking regions per C-M5W-003. Both pictures are therefore
-      arrangements of one orbit-fixed-locus wall mechanism of the single
-      canonical action - distinct in arrangement, not in mechanism - and no
-      M5.32 equivalence is implied.
-    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+      above the deep-branch crossing, the rotating-frame thin-wall functional
+      is F_omega = 4 pi R^2 sigma(omega) - (4 pi/3) R^3 p(omega), with the
+      branch pressure p(omega)=-V_omega(B(omega))>0. Its exact stationarity in
+      R is the volume-vs-surface law R=2 sigma/p. The inertia and charge are
+      I=(4 pi/3) R^3 iota_int + 4 pi R^2 iota_wall and Q=omega I. The static
+      energy is E0=F_omega+omega^2 I/2, and the physical
+      relative-equilibrium energy is E=F_omega+omega Q=F_omega+omega^2 I.
+      The envelope identity dE/dQ=omega holds exactly for any nondegenerate
+      stationary family, and the branch pressure obeys
+      dp/d(omega^2)=iota_int/2. If sigma tends to a finite positive limit as
+      omega^2 approaches omega_*^2 from above, p tends to zero and R tends to
+      infinity. This reproduces the wall-at-infinity/quiescent-exterior
+      arrangement of C-M5C-003, while C-M5W-003 supplies the two-sided
+      isofrequency arrangement at the energy-bookkeeping level: two
+      arrangements of the same orbit-fixed-locus mechanism, not an identity
+      of their solution families and not an M5.32 equivalence.
+    provenance: campaigns/P250-shell-bubble-clock/proposal.yaml
     verification: symbolic_verified
     review: accepted
     compatibility: compatible_extension
@@ -14156,6 +14155,10 @@ claims:
         dE/dQ = omega is used at its accepted C-M5C-001 Legendre scope; the
         envelope proof here covers the reduced family only.
       - >-
+        The comparison is at the common action, boundary-condition, and
+        symmetry-mechanism level. It does not identify the reduced thin-wall
+        branch with C-M5C-003's full-field minimizing family.
+      - >-
         No particle identification, de Broglie normalization, two-clock
         force, or gravity is inferred.
     dependencies:
@@ -14163,8 +14166,11 @@ claims:
       - C-M5W-003
       - C-M5W-004
       - C-M5C-003
+      - C-M5C-001
     evidence:
-      - proposals/P250-shell-bubble-clock/attempts/0001/derivation.md
+      - campaigns/P250-shell-bubble-clock/attempts/0001/derivation.md
+      - campaigns/P250-shell-bubble-clock/attempts/0006/exact_stitching.py
+      - campaigns/P250-shell-bubble-clock/attempts/0006/exact_stitching_stdout.txt
       - src/substrate_framework/m5_wall_clock.py
       - tests/test_m5_wall_clock.py
     assumptions:
@@ -14172,6 +14178,10 @@ claims:
         The reduced family treats the wall profile through its tension and
         wall-inertia parameters, exact at leading order in wall thickness
         over R.
+      - >-
+        The wall-to-infinity limit assumes that the branch wall tension tends
+        to a finite positive value at the local deep-branch crossing; this
+        exact reduced-family claim does not itself prove that limit.
     comparators: []
     accepted_in: v0.172.0
     challenges: []
@@ -14200,7 +14210,7 @@ claims:
       evidence: SciPy BVP solves with L-continuation and h-refinement; the
       exact identities used (T = V_omega first integral, sigma = 2 int
       V_omega = 2 int T) are the symbolic content of C-M5W-001.
-    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+    provenance: campaigns/P250-shell-bubble-clock/proposal.yaml
     verification: numeric_evidence
     review: accepted
     compatibility: compatible_extension
@@ -14225,15 +14235,14 @@ claims:
         or gravity is inferred.
     dependencies:
       - C-M5W-001
-      - C-M5W-003
       - C-M5W-004
     evidence:
-      - proposals/P250-shell-bubble-clock/attempts/0005/evidence_repair.py
-      - proposals/P250-shell-bubble-clock/attempts/0005/run_repair_stdout.txt
-      - proposals/P250-shell-bubble-clock/attempts/0005/sigma0_results_repaired.json
-      - proposals/P250-shell-bubble-clock/attempts/0005/profile_L12_anchor.csv
-      - proposals/P250-shell-bubble-clock/attempts/0002/CORRECTIONS-2026-09-02.md
-      - proposals/P250-shell-bubble-clock/attempts/0002/sigma0_wall.py
+      - campaigns/P250-shell-bubble-clock/attempts/0005/evidence_repair.py
+      - campaigns/P250-shell-bubble-clock/attempts/0005/run_repair_stdout.txt
+      - campaigns/P250-shell-bubble-clock/attempts/0005/sigma0_results_repaired.json
+      - campaigns/P250-shell-bubble-clock/attempts/0005/profile_L12_anchor.csv
+      - campaigns/P250-shell-bubble-clock/attempts/0002/CORRECTIONS-2026-09-02.md
+      - campaigns/P250-shell-bubble-clock/attempts/0002/sigma0_wall.py
       - src/substrate_framework/m5_wall_clock.py
       - tests/test_m5_wall_clock.py
     assumptions:
@@ -14252,30 +14261,28 @@ claims:
       frequency): For omega^2 = omega*^2 + delta with delta in
       {0.001, 0.002, ..., 0.007}, the C-M5C-001 fixed-charge bag problem on
       the C-M5W-001 slice admits stationary spherical wall-bag solutions,
-      constructed by delta-continuation with kink-shape seeds and accepted by
-      the predeclared production criteria: solver termination recorded per
-      rung, mesh stability of the extracted radius (|dR_mesh| <= 1.5e-3
-      R_read; largest observed 5.0e-4), and bounded residuals
-      (res_rms 2.9e-5 to 2.0e-3). Across the computed window the family
-      follows the exact C-M5W-005 selection law R = 2 sigma_0/p(omega) with
-      agreement chi = R_read/(2 sigma_0/p) tending to 1 monotonically as
-      delta -> 0+ (|chi - 1| is consistent with a near-quadratic power law,
-      endpoint log-log slope 1.718 across the window; chi = 0.999562 at
-      delta = 0.001 down to 0.987601 at delta = 0.007), the envelope identity
+      constructed with a moving-coordinate, phase-fixed radial BVP and
+      asymptotic Robin data. Every rung terminates with solve_bvp status 0 at
+      tolerance 1e-8 (maximum collocation residual <=1.00e-8 and boundary
+      residual <1e-10), and the corrected radial Derrick residual is
+      <=3.3e-10 relative. Tolerance variation from 1e-6 to 1e-10 moves the
+      mid-rung radius by 1.43e-7 relative, while matching exponents 12 to 16
+      move it by 7.31e-10 relative. Pressure is evaluated as the exact
+      canonical value p=-V_omega(B(omega)), not by the first-order endpoint
+      product. Across the window R_m decreases from 1218.761785 to 174.138125
+      and chi=R_m p/(2 sigma_0) tends to one as delta->0+ (chi=1.000328 at
+      delta=0.001 and 1.002286 at delta=0.007; endpoint log-log slope of
+      |chi-1| is 0.998). The envelope identity
       dE/dQ = omega holds to <= 1.9e-4 relative at every finite-difference
       check across the family (delta = 0.002..0.006; truncation-limited)
-      evaluated at the physical charge normalization Q = omega I, and the
-      rung-1 bag energy matches the exact thin-wall critical value E_crit =
-      (16 pi/3) sigma_0^3/p^2 formed at the rung's own pressure to 0.16%. The
-      radius and the physical charge decrease strictly as omega increases
-      across the rungs (Q_true from 2.3351e10 to 6.5152e7), so
-      dQ/d omega < 0 on the certified family. The archived Q_trap column of
-      attempts/0003/bag_results.json was formed as omega^2 times the inertia
-      integral; the corrected columns Q_true = Q_trap/sqrt(w2), the corrected
-      envelope, and their consequences live in
-      attempts/0005/bag_results_corrected.json with the derivation recorded in
-      attempts/0003/CORRECTIONS-2026-09-02.md.
-    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+      at Q=omega I and physical energy E=F_omega+omega Q. The rung-1
+      rotating-frame energy matches the exact thin-wall critical value
+      E_crit=(16 pi/3)sigma_0^3/p^2, formed with the exact rung pressure, to
+      0.16%. Radius and physical charge decrease strictly across all six
+      adjacent pairs (Q from 2.3430e10 to 6.8628e7). Attempt 0006 supersedes
+      the pressure, charge, virial, boundary, and solver-status defects
+      preserved in attempts 0003 and 0005.
+    provenance: campaigns/P250-shell-bubble-clock/proposal.yaml
     verification: numeric_evidence
     review: accepted
     compatibility: compatible_extension
@@ -14283,17 +14290,16 @@ claims:
     exclusions:
       - >-
         Thin-wall window only: delta <= 0.007; thick bags (delta beyond the
-        window) are a named formulation frontier of the clamped
-        domain-reduced construction, not asserted.
+        window) require a separately designed continuation and are not
+        asserted.
       - >-
         All agreements are numeric evidence at the certified tolerances; no
         exact algebraic identity of the constructed family with the selection
         law is claimed.
       - >-
-        Per-rung virial residuals and a channel-monotonicity spline residual
-        are recorded diagnostics, not acceptance gates; per-rung channel
-        monotonicity was not independently verified (only endpoint profiles
-        are retained), and no such acceptance conjunct is asserted.
+        Strict decrease is a seven-rung numerical statement (six negative
+        secants), not a proof that dQ/domega is negative at every continuum
+        point of the branch.
       - >-
         No statement about non-spherical bags, dynamical time evolution, or
         the exact critical frequency value is made.
@@ -14303,23 +14309,21 @@ claims:
       - C-M5W-006
       - C-M5C-001
     evidence:
-      - proposals/P250-shell-bubble-clock/attempts/0003/derivation.md
-      - proposals/P250-shell-bubble-clock/attempts/0003/bag_results.json
-      - proposals/P250-shell-bubble-clock/attempts/0003/CORRECTIONS-2026-09-02.md
-      - proposals/P250-shell-bubble-clock/attempts/0005/bag_results_corrected.json
-      - proposals/P250-shell-bubble-clock/attempts/0005/stability_check.py
-      - proposals/P250-shell-bubble-clock/attempts/0005/run_stdout.txt
-      - proposals/P250-shell-bubble-clock/attempts/0003/bag_bvp.py
-      - proposals/P250-shell-bubble-clock/attempts/0003/receipt.md
+      - campaigns/P250-shell-bubble-clock/attempts/0006/derivation.md
+      - campaigns/P250-shell-bubble-clock/attempts/0006/receipt.md
+      - campaigns/P250-shell-bubble-clock/attempts/0006/bag_bvp_repair.py
+      - campaigns/P250-shell-bubble-clock/attempts/0006/bag_results_repaired.json
+      - campaigns/P250-shell-bubble-clock/attempts/0006/run_stdout.txt
+      - campaigns/P250-shell-bubble-clock/attempts/0006/profile_thin.csv
+      - campaigns/P250-shell-bubble-clock/attempts/0006/profile_thick.csv
       - src/substrate_framework/m5_wall_clock.py
       - tests/test_m5_wall_clock.py
     assumptions:
       - >-
-        Rung acceptance uses mesh-stability of the radius plus residual
-        bounds; rungs 2-7 terminated at the solver mesh ceiling (status 1)
-        and are accepted on the predeclared residual and mesh criteria rather
-        than solver status alone; the radius extraction is averaged over
-        mechanical, tension, and read-off estimators (R_m, R_T, R_read).
+        The moving-coordinate phase condition fixes the wall translation mode;
+        asymptotic Robin data use the positive matrix square roots of the exact
+        endpoint linearized operators, and the reported radius is the unique
+        m=1/2 crossing R_m.
     comparators: []
     accepted_in: v0.173.0
     challenges: []
@@ -14337,19 +14341,17 @@ claims:
       critical nucleation bubble, not an energy minimum - closing the radial
       (volume-vs-surface) part of the linear-stability frontier named in
       C-M5W-005's exclusions. Further, along the stationary family the
-      physical charge Q(omega) = omega I(omega) with I > 0 (the slice inertia
-      density f^2 + 4b^2 is nonnegative and nonzero on any nontrivial bag;
-      recorded interiors iota_B = 2.395 to 2.404), and across the C-M5W-007
-      rungs R and Q_true decrease strictly as omega increases, so the family
-      satisfies the dQ/d omega < 0 criterion (numeric ingredient, corrected
-      normalization, certified in C-M5W-007), and the envelope identity
+      physical charge Q(omega)=omega I(omega) has I>0, and all six adjacent
+      C-M5W-007 secants have decreasing R and Q as omega increases. This is
+      numerical negative-slope criterion evidence on the certified rungs, and
+      the envelope identity
       dE_data/dQ = omega holds on the family by the chain rule on the
       accepted Legendre scope dE_w/d(omega) = -Q of C-M5C-001. A
       constrained-minimum conclusion for the fixed-charge ensemble is NOT
       asserted: C-M5C-001 supplies the Legendre reduction and envelope
       identity but no constrained radial Hessian theorem, and the exact
       second-variation calculation that would supply it is open frontier.
-    provenance: proposals/P250-shell-bubble-clock/proposal.yaml
+    provenance: campaigns/P250-shell-bubble-clock/proposal.yaml
     verification: symbolic_verified
     review: accepted
     compatibility: compatible_extension
@@ -14362,9 +14364,9 @@ claims:
         numerics was explicitly descoped by owner direction.
       - >-
         No fixed-charge constrained-minimum or constrained-Hessian conclusion
-        is asserted: the fixed-charge statement is criterion satisfaction
-        (dQ/d omega < 0 across the certified family) plus the exact envelope
-        identity, nothing more.
+        is asserted: the fixed-charge statement is six negative numerical
+        secants plus the exact envelope identity, not a continuum derivative
+        theorem.
       - >-
         No non-spherical, dynamical, or full-space (off-slice) stability
         statement is made.
@@ -14374,11 +14376,12 @@ claims:
       - C-M5W-007
       - C-M5C-001
     evidence:
-      - proposals/P250-shell-bubble-clock/attempts/0005/derivation.md
-      - proposals/P250-shell-bubble-clock/attempts/0005/stability_check.py
-      - proposals/P250-shell-bubble-clock/attempts/0005/run_stdout.txt
-      - proposals/P250-shell-bubble-clock/attempts/0003/bag_results.json
-      - proposals/P250-shell-bubble-clock/attempts/0005/bag_results_corrected.json
+      - campaigns/P250-shell-bubble-clock/attempts/0006/derivation.md
+      - campaigns/P250-shell-bubble-clock/attempts/0006/bag_bvp_repair.py
+      - campaigns/P250-shell-bubble-clock/attempts/0006/bag_results_repaired.json
+      - campaigns/P250-shell-bubble-clock/attempts/0006/run_stdout.txt
+      - campaigns/P250-shell-bubble-clock/attempts/0006/stability_recheck.py
+      - campaigns/P250-shell-bubble-clock/attempts/0006/stability_stdout.txt
       - src/substrate_framework/m5_wall_clock.py
       - tests/test_m5_wall_clock.py
     assumptions:
