@@ -42,7 +42,7 @@ from substrate_framework.m5_wall_clock import (
 )
 
 ATTEMPT = pathlib.Path(__file__).resolve().parents[1] / (
-    "proposals/P250-shell-bubble-clock/attempts/0001"
+    "campaigns/P250-shell-bubble-clock/attempts/0001"
 )
 
 C, B = sp.symbols("c b", real=True)

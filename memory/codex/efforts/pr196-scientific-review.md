@@ -42,7 +42,7 @@ analytic and small-ratio error contract.
 
 ## Proposal and Candidate Set
 
-Proposal: `proposals/P250-shell-bubble-clock/proposal.yaml`. The campaign's
+Proposal: `campaigns/P250-shell-bubble-clock/proposal.yaml`. The campaign's
 candidate universe and selection criteria are frozen there and in issue #195.
 This review does not generate a favored replacement concept; it audits the
 actual claim transaction and repairs the strongest supported statement.
@@ -85,6 +85,9 @@ as required by the repository contract. No delegated workers are active.
 
 ## Finding Intake
 
+The owner-supplied boundary decision and each scientific correction are
+recorded here before their claim-level disposition.
+
 | Finding | Source | Meaning | Next materially different action | Owner |
 | --- | --- | --- | --- | --- |
 | Parked omega_c equality is separate future work | Owner direction during review | Explicitly descoped; no blocker unless a current statement silently consumes it | Keep current propositions branch-local and record the separate-campaign frontier | Codex |
@@ -106,6 +109,9 @@ literal-oracle defect already recorded against P249. Natural fit and derived,
 mutation-sensitive quantities are part of this review.
 
 ## Validation Ledger
+
+The validation ledger separates exact algebra, numerical production,
+consumer replay, and repository consistency.
 
 | Gate | Command/evidence | Result | Next task if not passed |
 | --- | --- | --- | --- |
@@ -139,8 +145,10 @@ lifecycle action consistent with those verdicts.
 
 ## Cross-References
 
+The durable source records for this review are listed below.
+
 - Issue #195
 - PR #196
-- `proposals/P250-shell-bubble-clock/proposal.yaml`
+- `campaigns/P250-shell-bubble-clock/proposal.yaml`
 - `src/substrate_framework/m5_wall_clock.py`
 - `tests/test_m5_wall_clock.py`

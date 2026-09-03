@@ -41,7 +41,7 @@ The reviewed transaction is substrate-framework base 8b74d3a, head 5d79e85
 (96caed1 proposal + attempt 0001 derivation; 5d79e85 wall-sector module, tests,
 certification artifacts, proposal update). The claim delta is
 C-M5W-001..005 staged in
-`proposals/P250-shell-bubble-clock/attempts/0001/claims_block.yaml` (working
+`campaigns/P250-shell-bubble-clock/attempts/0001/claims_block.yaml` (working
 tree at review start; not git-tracked at head; the authoring agent confirmed by
 IRC that the statements appended to promotion staging are content-identical to
 the reviewed snapshot, up to leading-indent normalization). Changed
@@ -298,7 +298,7 @@ governance/releases/v0.172.0.yaml (the staged C-M5W-001..005 entries must
 reference the corrected statements); land MC-2 in
 `maxwell_certificate.json`/`maxwell_point.json` before release pinning since
 they are release evidence; update the memory contract page
-(memory/vantasner/proposals/P250-shell-bubble-clock.md) to the promoted state;
+(memory/vantasner/campaigns/P250-shell-bubble-clock.md) to the promoted state;
 no implementation, test, or generated-doc changes are required beyond this —
 module and tests are frozen and green, and the existing content-addressed
 validation receipt (24-pass run, re-executed by this review) remains valid
@@ -391,7 +391,7 @@ dynamical shells, and any particle, force, or gravitational content.
 
 ## Cross-References
 
-Proposal: proposals/P250-shell-bubble-clock/proposal.yaml (frozen at 96caed1,
+Proposal: campaigns/P250-shell-bubble-clock/proposal.yaml (frozen at 96caed1,
 updated 5d79e85). Claims: attempts/0001/claims_block.yaml (working-tree
 snapshot reviewed; content-identical promotion staging confirmed by author).
 Dependencies: governance/claims.yaml C-M5C-001..004 (accepted v0.171.0, outside
