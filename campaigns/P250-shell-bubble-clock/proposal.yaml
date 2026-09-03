@@ -1,0 +1,494 @@
+id: P250
+schema_version: 2
+base_release: v0.171.0
+source_baseline: substrate-framework@8b74d3ab5fdd307ba564291ff7bfa702db5d3330
+question: >-
+  On the accepted exterior-degenerate clock completion (C-M5C-001..004), do
+  finite degenerate interfaces exist and what do they cost: a stationary shell
+  through the degenerate locus with exact tension sigma_0, phase decoupling of
+  two clock regions across such a shell with strictly area-localized (in fact
+  exactly vanishing bulk) mismatch energy in the frequency difference, a
+  fixed-charge shell-bubble whose radius is selected by volume-vs-surface
+  competition with dE/dQ = omega closure, and the strongest honest comparison
+  of the P249 exterior-degenerate picture against the Discussion #186
+  isofrequency-wall picture?
+candidate_universe:
+  scope: >-
+    All finite degenerate-interface constructions within the canonical
+    C-M5C-001 action (constrained auxiliary frame, six spatial tensor
+    components plus complex scalar, unit axis lock, phase-lock strength six,
+    W(f)=3f^2-4f^3+2f^4): one-dimensional degenerate-shell profiles, wall and
+    shell sectors through the orbit-fixed degenerate locus, two-region
+    frequency-mismatch configurations, fixed-charge bags and shells, planar
+    through non-spherical geometry ladders, and representation variants
+    (director/bundle charts with n ~ -n). The two-clock force law, M5.32
+    bridge, particle identification, de Broglie normalization, gravity, and
+    the P249 audit repair are out of scope.
+  frozen_from:
+    - issue #195 positive objective, obligation sketch S1-S5, and gate pedigree table
+    - release v0.171.0 accepted C-M5C-001..004 scopes and invariants
+    - the C-M5C-001 canonical action and its accepted exterior spectrum
+    - Discussion #186 wall picture and the xrodz continuation request recorded in issue #195
+    - requester direction to exhaust algebra and calculus before any numerics
+  route_families:
+    - static degenerate-shell profile of the exact canonical potential
+    - rotating-frame (fixed-frequency) degenerate-wall kink at the Maxwell point
+    - orbit-fixed-locus phase-slip decoupling sector
+    - fixed-charge thin-wall bag with volume-vs-surface selection
+    - "geometry ladder: planar, cylindrical, spherical, multi-shell"
+    - "representation variants: bundle/director charts through the locus"
+  append_only_expansions:
+    - >-
+      Owner directive 2026-09-02: with the concept sorted and C-M5W-001..005
+      accepted, the concrete-object gaps are authorized on the same branch
+      and PR #196: G1 tension value + wall profile, G2 bag construction,
+      G3 global SOS certificate, G4 stability. Technical brief:
+      campaigns/P250-shell-bubble-clock/continuation.md.
+    - >-
+      G1 route verdicts (attempt 0002): DIRECT_LONG_BOX_COLLOCATION blocked
+      (Newton multi-kink-train basins, documented probes); hand-rolled string
+      shelf-stalled (kept as L=2 guess and order-check only); NEB diverged
+      (recorded); L_CONTINUATION_KINK established (numeric,
+      SIGMA0_SLICE_VALUE): sigma_0 = 0.72929841787(21) at omega*^2 with
+      itemized budget total 2.0e-7 PASS, four tension routes agreeing to
+      1.6e-11, BC agreement 1.1e-13, monotone profile constructed with
+      T = V_w pointwise. Corridor landscape: V_w >= 0 sampled, pass height
+      ~0.309. Claim candidate C-M5W-006 (numeric tension + constructed
+      profile) named for individual review.
+    - >-
+      G2 route verdicts (attempt 0003): BAG_DELTA_CONTINUATION established
+      (numeric, BAG_EXISTS slice scope): R(w) family over delta in
+      [1e-3, 7e-3] with chi -> 1 (thin-wall law) and envelope
+      dE/dQ = omega at 2e-4; direct singular-term full-domain solves stall
+      (residual-metric spiral + trivial basin) — domain-reduced clamped
+      windows with amplitude-matched distances adopted; thick-wall
+      continuation (delta > 7e-3) named frontier. Claim candidates
+      C-M5W-006/007 named for individual review.
+    - >-
+      Independent PR review repair (attempt 0006): the fixed-window bag BVP,
+      endpoint-product pressure, omega-squared charge, and archived virial
+      diagnostic were corrected by a moving-coordinate phase-fixed Robin
+      BVP, exact canonical pressure, Q=omega I, physical E=F_omega+omega Q,
+      and the radial Derrick identity. All seven rungs now terminate with
+      solver status zero. Owner directive 2026-09-03 explicitly places the
+      global omega_c^2=omega_*^2 closure route in a separate successor
+      campaign and approves this campaign PR without that long computation.
+obligation_graph:
+  nodes:
+    - id: S1
+      positive_intent: >-
+        A stationary shell profile through the degenerate locus of the
+        canonical action: exact reduced wall sector, Euler-Lagrange system,
+        mechanical first integral, exact nonexistence verdict for static
+        walls, an exactly certified local deep-branch Maxwell crossing,
+        numerical wall existence at that frequency, and a converged numerical
+        value and error budget for the slice tension sigma_0.
+      requires: []
+      pass_licenses: [L-S1-WALL]
+      does_not_license:
+        - phase decoupling of two ticking regions
+        - a bag or charge carrier
+        - stability
+      maximum_verdict: SHELL_EXISTS
+      failure_scope: the tested slice, profile family, and frequency branch only
+      unlocks: [S2, S3]
+      status: established
+      license_chain:
+        object: >-
+          The clock-slice reduction of the C-M5C-001 static energy to real-psi
+          aligned planar/radial profiles (m, c, b, f) with exact potential
+          V_omega and exact kinetic metric.
+        symmetry_or_conservation: >-
+          C-M5C-001 diagonal S1 action; orbit invariance of the energy
+          density; the phase-lock slice invariance under psi_I = 0.
+        ensemble: statics, then fixed frequency (rotating frame) at the Maxwell point
+        variational_functional: >-
+          sigma[u] = int (m'^2+2c'^2+2b'^2)/4 + f'^2/2 + V_omega(m,c,b,f) dx,
+          with the mechanical first integral sum K u'^2 - V_omega = const.
+        admissible_space: >-
+          H1 profiles in the aligned real-psi slice approaching the two
+          V_omega stationary endpoints; the slice is exactly invariant, but
+          no universal full-theory reduction or rotating transverse-positivity
+          theorem is assumed.
+        representation_coverage: >-
+          Full symmetric spatial tensor minus the S1-orbit gauge; tangent
+          trace c retained; shear w retained and verified zero on the wall
+          branch; no imposed support, taper, or mask.
+        observable: >-
+          Euler-Lagrange residuals, first integral, degenerate-depth
+          branch crossing omega_*^2, tension functional, profile, and error
+          budget.
+        numerical_representation: >-
+          Exact polynomial algebra and Sturm/isolation first; any profile or
+          tension evaluation only after the analytic specification receipt,
+          with crossed resolution refinement and an itemized error budget.
+        permitted_verdict: SHELL_EXISTS
+    - id: S2
+      positive_intent: >-
+        Exact phase decoupling across a shell through the orbit-fixed
+        degenerate locus: the locus point is fixed by the whole S1 orbit, the
+        two-region H1 cut-and-paste family has no mismatch-dependent bulk or
+        box energy for arbitrary independent phase histories, and its
+        interface price is the energy of the chosen base profile. No global
+        weak-solution or stationary two-frequency-wall statement is required.
+      requires: [L-S1-WALL]
+      pass_licenses: [L-S2-DECOUPLING]
+      does_not_license:
+        - existence of a bag or charge carrier
+        - two-clock force or interaction law
+      maximum_verdict: DECOUPLING_ESTABLISHED
+      failure_scope: the tested two-region construction and its H1 bookkeeping only
+      unlocks: [S3, S4]
+      status: established
+      license_chain:
+        object: >-
+          The two-region configuration u(x, t) = Orbit(q_1(t)) u~_1 on one
+          side, Orbit(q_2(t)) u~_2 on the other, glued at the orbit-fixed
+          locus point of one static shell profile.
+        symmetry_or_conservation: >-
+          Orbit invariance of the local energy density; the exact vanishing
+          of the clock generator norm Tr[A,S]^2/2 + |psi|^2 on the locus.
+        ensemble: two fixed-frequency regions with a shared static shell
+        variational_functional: >-
+          The canonical C-M5C-001 energy functional evaluated on the
+          cut-and-paste family; no new functional.
+        admissible_space: >-
+          H1 fields whose interface trace lies on the orbit-fixed locus; a
+          smoothed phase ramp is controlled by the full scalar-plus-tensor
+          generator norm iota=f^2+4b^2.
+        representation_coverage: >-
+          Planar geometry exactly; spherical geometry at thin-shell area
+          scaling; no box-averaged observable is used to decide area versus
+          volume.
+        observable: >-
+          Total energy as a function of time and of (omega_1, omega_2); the
+          mismatch coefficient of (omega_1 - omega_2)^2.
+        numerical_representation: >-
+          None required; the statement is an exact symmetry and bookkeeping
+          theorem. Numerics could only illustrate, never decide, it.
+        permitted_verdict: DECOUPLING_ESTABLISHED
+    - id: S3
+      positive_intent: >-
+        Fixed-charge shell-bubble energetics from the full equations: exact
+        thin-wall selection law R=2 sigma/p near the certified branch
+        crossing, exact branch pressure p=-V_omega(B(omega)), correct
+        Routhian/static/physical energy decomposition, exact dE/dQ=omega
+        envelope closure inside the reduced family, and a status-zero
+        seven-rung numerical spherical-bag construction on the slice.
+      requires: [L-S1-WALL]
+      pass_licenses: [L-S3-BAG]
+      does_not_license:
+        - nonlinear stability of the bag
+        - two-clock force or particle identity
+      maximum_verdict: BAG_RELATIVE_EQUILIBRIUM_EXISTS
+      failure_scope: the tested thin-wall family and charge window only
+      unlocks: [S4]
+      status: established
+      license_chain:
+        object: >-
+          The reduced fixed-frequency bag functional F_omega(R)=4 pi R^2
+          sigma_omega-(4 pi/3)R^3p(omega), with Q=omega I and physical
+          energy E=F_omega+omega Q inside the fixed-Q Legendre envelope.
+        symmetry_or_conservation: >-
+          C-M5C-001 Legendre reduction dE/dQ = omega accepted at full scope;
+          the envelope theorem supplies the exact closure inside the reduced
+          family.
+        ensemble: fixed charge Q, thin-wall window near the Maxwell frequency
+        variational_functional: >-
+          The fixed-Q functional E_0 + Q^2/(2I) restricted to the thin-wall
+          family; exact stationarity conditions are the volume-surface law.
+        admissible_space: >-
+          Spherical diagonal-slice family in the displayed seven-rung
+          thin-wall window; no full-space existence is inherited from
+          C-M5C-003.
+        representation_coverage: >-
+          Thin-wall window near omega_*; thick-wall regime stays open
+          frontier, not debt; no fitted radius or fitted frequency.
+        observable: >-
+          R(omega), p(omega), interior inertia, sigma_omega, Q(omega),
+          E(Q), dE/dQ, and the limit statements.
+        numerical_representation: >-
+          Exact algebra and implicit-function characterizations first; the
+          moving-coordinate phase-fixed BVP uses asymptotic Robin data and
+          crossed tolerance/matching-exponent sensitivity checks.
+        permitted_verdict: BAG_RELATIVE_EQUILIBRIUM_EXISTS
+    - id: S4
+      positive_intent: >-
+        The strongest comparison statement between the P249 exterior-degenerate
+        picture (degeneracy everywhere outside, ambient omega = 0) and the
+        Discussion #186 isofrequency-wall picture (degeneracy only on walls,
+        ambient omega != 0): one orbit-fixed-locus wall mechanism, two
+        arrangements, with the exact limit statements R -> infinity at the
+        local branch crossing when the wall tension has a finite positive
+        limit, and the two-sided ticking energy-bookkeeping generalization.
+      requires: [L-S2-DECOUPLING, L-S3-BAG]
+      pass_licenses: [L-S4-COMPARISON]
+      does_not_license:
+        - any M5.32 equivalence claim
+        - two-clock force law
+      maximum_verdict: COMPARISON_ESTABLISHED
+      failure_scope: the comparison statement scope only
+      unlocks: [S5]
+      status: established
+      license_chain:
+        object: >-
+          The single wall sector of the C-M5C-001 action arranged as (i) a
+          bag with quiescent exterior, (ii) a bag at R -> infinity, and
+          (iii) two ticking regions across one shell.
+        symmetry_or_conservation: L-S1-WALL, L-S2-DECOUPLING, L-S3-BAG
+        ensemble: comparison of ensembles at matched wall objects
+        variational_functional: the unchanged canonical energy functional in each arrangement
+        admissible_space: each arrangement's declared admissible space
+        representation_coverage: the three arrangements only; no other model is compared
+        observable: >-
+          Tension, mismatch, radius selection, and limits expressed in the
+          same action-specific objects.
+        numerical_representation: none required
+        permitted_verdict: COMPARISON_ESTABLISHED
+    - id: S5
+      positive_intent: >-
+        Reusable importable APIs and tests under src/substrate_framework/,
+        individual claim review per proposed claim, impact-bounded consumer
+        replay, accepted registry entries, pinned release, generated
+        documentation, memory agreement, and an empty in-boundary debt ledger.
+      requires: [L-S4-COMPARISON]
+      pass_licenses: [L-S5-PROMOTION]
+      does_not_license:
+        - excluded phenomenology
+      maximum_verdict: CAMPAIGN_SUCCESS
+      failure_scope: the frozen C-M5W claim transaction and affected consumers
+      unlocks: []
+      status: established
+      license_chain:
+        object: the canonical importable wall-sector implementation and C-M5W claims
+        symmetry_or_conservation: all S1-S4 licenses
+        ensemble: governance promotion boundary
+        variational_functional: all promoted exact constructions at their stated scopes
+        admissible_space: claim-by-claim reviewed scopes with explicit hypotheses
+        representation_coverage: impact-bounded direct and indirect consumers
+        observable: registry, release, docs, memory, and validation receipt agreement
+        numerical_representation: oracles already earned by S1-S4, without meta-validation
+        permitted_verdict: CAMPAIGN_SUCCESS
+license_registry:
+  - id: L-S1-WALL
+    proposition: >-
+      The real-psi aligned slice is an exact invariant sector of the canonical
+      action; static clock-active interiors do not exist at omega=0; at the
+      certified local deep-branch crossing a status-zero numerical wall
+      exists and has a converged slice tension with an error budget.
+    status: earned
+    evidence: campaigns/P250-shell-bubble-clock/attempts/0006/derivation.md
+    earned_by: attempts 0001, 0002, 0005, and 0006
+  - id: L-S2-DECOUPLING
+    proposition: >-
+      The degenerate locus of the canonical action is orbit-fixed, phase
+      slips whose interface trace lies there add exactly zero
+      mismatch-dependent bulk energy to the H1 cut-and-paste family, with the
+      exact spatial twist cost iota(q')^2/2.
+    status: earned
+    evidence: campaigns/P250-shell-bubble-clock/attempts/0006/exact_stitching_stdout.txt
+    earned_by: attempts 0001 and 0006
+  - id: L-S3-BAG
+    proposition: >-
+      A seven-rung spherical diagonal-slice bag family exists in the thin-wall
+      window with status-zero BVP convergence, exact branch pressure,
+      Routhian/charge normalization, volume-vs-surface selection, and
+      dE/dQ=omega envelope closure at its declared numerical accuracy.
+    status: earned
+    evidence: campaigns/P250-shell-bubble-clock/attempts/0006/derivation.md
+    earned_by: attempts 0001, 0003, 0005, and 0006
+  - id: L-S4-COMPARISON
+    proposition: >-
+      The P249 exterior-degenerate picture and the isofrequency-wall picture
+      use the same action and orbit-fixed-locus mechanism in two arrangements;
+      no identity of their solution families is asserted, and the
+      wall-to-infinity statement is conditional on finite positive limiting
+      tension.
+    status: earned
+    evidence: campaigns/P250-shell-bubble-clock/attempts/0006/derivation.md
+    earned_by: attempts 0001 and 0006
+  - id: L-S5-PROMOTION
+    proposition: >-
+      The wall-sector results are importable, individually reviewed,
+      consumer-replayed, accepted, release-pinned, rendered,
+      memory-synchronized, and debt-free.
+    status: earned
+    evidence: campaigns/P250-shell-bubble-clock/validation-receipt.yaml
+    earned_by: independent PR review correction and release v0.174.0
+source_inventory:
+  - source: >-
+      governance/releases/current.yaml and governance/claims.yaml at accepted
+      release v0.171.0; source_baseline
+      substrate-framework@8b74d3ab5fdd307ba564291ff7bfa702db5d3330
+    access: in-hand repository source
+    extracted: accepted boundary and exact C-M5C-001..004 scopes
+  - source: >-
+      src/substrate_framework/m5_exterior_clock.py and
+      tests/test_m5_exterior_clock.py at the frozen baseline; sha256 recorded
+      in attempts manifests before first execution
+    access: in-hand repository source
+    extracted: canonical action primitives, accepted witness 45/16 and margin 19/16, exterior pencil structure
+  - source: >-
+      campaigns/P249-exterior-degenerate-clock/ (immutable adjudicated record:
+      proposal, adjudication, review, attempts 0001-0008, companion checks)
+    access: in-hand repository source
+    extracted: route history, shear-channel correction, hylomorphic bridge scope, review conventions
+  - source: https://github.com/vantasnerdan/substrate-framework/issues/195
+    access: open URL; body and top comment read via issue cache at freeze
+    extracted: frozen objective S1-S5, candidate universe, gate pedigree, exclusions, executor protocol
+  - source: https://github.com/vantasnerdan/substrate-framework/issues/190 (post-merge audit record referenced by #195)
+    access: open URL, audit findings summarized in issue #195
+    extracted: >-
+      defect class to avoid: literal-returning oracle functions compared
+      against literals; concrete insensitive mutation eps*Tr(T S T)^2 shifting
+      a tangent-trace Hessian by 8*eps; verified at freeze that
+      exterior_channel_pencil/charged_continuum_edge_squared return literals
+      at the frozen baseline (m5_exterior_clock.py:300-311)
+invariants:
+  - >-
+    The C-M5C-001 action is the only source of potentials, spectra, edges,
+    frequencies, and tensions: no threshold is imported from M7, M5.32, or any
+    other model.
+  - >-
+    Every wall-sector oracle is derived symbolically from the canonical
+    potential, and every claimed gate carries a channel-local mutation check
+    that must fail (the #190 defect class is excluded by construction).
+  - >-
+    The auxiliary frame stays a declared constrained quotient; the S1 clock
+    action is a physical internal symmetry; the exterior vacuum is fixed
+    pointwise.
+  - >-
+    Wall energetics come from wall-localized observables (profile functionals,
+    surface-localized integrands), never from large bulk-subtraction.
+  - >-
+    Area versus volume discrimination is decided by exact locality of the
+    energy density and the orbit-fixed locus, never by a box-averaged number
+    alone.
+  - >-
+    C-M5C-001..004 accepted scopes bind every shell statement; C-M5S scopes
+    only where consumed; immutable P239-P249 records are route evidence.
+allowed_imports:
+  - C-M5C-001, C-M5C-002, C-M5C-003, C-M5C-004 in their exact accepted scopes
+  - >-
+    standard real linear algebra, matrix and variational calculus, Noether
+    theorem, ODE existence/monotonicity arguments, real-algebraic root
+    isolation (Sturm), and declared SymPy methods
+candidates:
+  - id: WALL_ROTATING_MAXWELL
+    description: >-
+      The stationary degenerate wall as the exact kink of the rotating-frame
+      slice functional V_omega at the Maxwell frequency where the interior
+      minimum of V_omega reaches zero depth; tension from the exact
+      mechanical/geodesic functional.
+  - id: WALL_STATIC_PROFILE
+    description: >-
+      A static (omega = 0) finite-energy shell profile through the degenerate
+      locus; tested and expected to fall to the exact co-conservation/
+      Derrick-type obstruction, feeding the rotating candidate.
+  - id: BAG_THIN_WALL
+    description: >-
+      The fixed-charge bag as the thin-wall stationary point of the reduced
+      (R, omega) functional with exact Legendre closure; limits to the P249
+      picture.
+  - id: SLIP_LOCUS_DECOUPLING
+    description: >-
+      Phase decoupling through the orbit-fixed locus: exact zero mismatch
+      bookkeeping for two ticking regions sharing one shell.
+  - id: BUNDLE_DIRECTOR_CHART
+    description: >-
+      Bundle-aware director charts with n ~ -n through the locus as an
+      alternate representation of the same wall sector; used to justify the
+      orientation-jump bookkeeping, not to change the physics.
+uniqueness_evidence: null
+selection_criteria:
+  - framework invariant compatibility (canonical action only, no imports)
+  - exact analytic tractability before numerical conditioning
+  - assumption and parameter economy (no new fields or thresholds)
+  - correct limits to the accepted C-M5C sectors
+  - downstream reach for the S4 comparison and the bag claims
+claims_proposed:
+  - C-M5W-001
+  - C-M5W-002
+  - C-M5W-003
+  - C-M5W-004
+  - C-M5W-005
+  - C-M5W-006
+  - C-M5W-007
+  - C-M5W-008
+comparators_blinded_until: >-
+  There are no external comparators; every threshold is derived from the
+  canonical action. The accepted witness ratio 45/16 and margin 19/16 are
+  provenance cross-checks only and are never selection inputs. The exact
+  Maxwell frequency is derived before any evaluation against the witness
+  value, and the derivation uses only the action.
+route_frontier:
+  active_obligation: null
+  considered:
+    - WALL_STATIC_PROFILE
+    - WALL_ROTATING_MAXWELL
+    - BAG_THIN_WALL
+    - SLIP_LOCUS_DECOUPLING
+    - BUNDLE_DIRECTOR_CHART
+  tried:
+    - >-
+      WALL_STATIC_PROFILE/slice-static-shell refuted for the objective's
+      purpose: no clock-active interior state exists at omega = 0 (exact
+      unique-zero decomposition) and the radial static shell falls to the
+      exact Derrick residual T + 3U = 0; the planar vacuum-to-vacuum static
+      loop is recorded as open representation frontier, not needed by S1
+    - >-
+      WALL_ROTATING_MAXWELL/rotating-frame-degenerate-kink established
+      at the approved mixed exact/numerical scope: exact invariant slice, EL
+      system, first integral, locally certified branch crossing, and a
+      status-zero numerical wall with converged tension. Global identification
+      of the branch crossing with the full ratio infimum is a separate owner-
+      approved successor campaign.
+    - >-
+      SLIP_LOCUS_DECOUPLING/orbit-fixed-locus established exactly: locus
+      orbit-fixation, all density layers orbit-invariant, exact spatial twist
+      density iota(q')^2/2, and no mismatch-dependent bulk term for the H1
+      cut-and-paste family
+    - >-
+      BAG_THIN_WALL/volume-surface-selection established exactly within the
+      reduced family and numerically instantiated by attempt 0006: canonical
+      branch pressure, Laplace law R=2 sigma/p, Q=omega I, physical
+      E=F_omega+omega Q, envelope dE/dQ=omega, and a seven-rung status-zero
+      spherical slice family
+    - >-
+      BAG_THIN_WALL/radial-stability-split established exactly (C-M5W-008):
+      F''(R_c) = -8 pi sigma < 0, the fixed-omega bag is a reduced-radial
+      Morse-index>=1 saddle, and all six adjacent repaired-family charge
+      secants are negative at Q=omega I;
+      constrained-minimum conclusion not asserted (no dependency supplies
+      it); full spectrum descoped by owner direction
+  failure_generated:
+    - >-
+      WALL_ROTATING_MAXWELL/deep-m0-branch: the rotating-frame interior
+      minimum lives on the m = 0 branch (discovered by the landscape
+      structure), which made the exact Maxwell system rational and the
+      elimination tractable
+  remaining: []
+  out_of_boundary_successors:
+    - >-
+      A dedicated global-closure campaign may complete the case-C certificate
+      for omega_c^2=omega_*^2. Owner direction 2026-09-03 says its hour-plus
+      computation is not part of this campaign's terminal boundary.
+    - >-
+      Full second-variation spectra, fixed-charge constrained stability,
+      bundle/director chart development, curvature corrections, thick-wall
+      continuation, and dynamics remain explicitly excluded future work.
+execution_state: complete
+objective_state: complete
+exhaustion_certificate:
+  historical_routes: []
+  external_routes: []
+  failure_generated_routes: []
+  equivalence_partition: []
+  adversarial_generation_artifact: null
+  adversarial_reviewer: null
+  adversarial_reviewer_role: null
+  infinite_class_coverage: []
+  route_verdicts: []
+  routes_remaining: null
+  review: null
+status: accepted

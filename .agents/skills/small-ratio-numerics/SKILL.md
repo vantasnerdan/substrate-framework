@@ -145,6 +145,22 @@ Effort on 6–8 before 1–4 is clean is wasted; a two-body sign from a single-s
 
 One practice specific to execution environments, learned the hard way here: results at the 1e-13-relative level and below depend on BLAS thread count through reduction order alone (measured on our certified evaluator: bit-stable at fixed thread count, 1.6e-15 relative drift between 1 and 2+ threads). A check that passes as a script and flips under importlib/harness invocation is usually this. The thread count is one member of a family that moves results at the same scale: compiler flags (`-ffast-math` re-associates and contracts to FMA; flush-to-zero kills the denormal tails above), SIMD width differing across CPUs, non-deterministic GPU reductions and atomics, and OpenMP reduction order. Two remedies outrank pinning: compensated summation on the reductions that matter (precision ladder, rung 2) removes the sensitivity at source, and deterministic modes exist where the environment cannot be frozen (MKL's conditional numerical reproducibility, deterministic cuBLAS/framework flags). Pin and record what remains — threads, seeds, library versions, hardware, flags — at module level (so imports see them), measure the evaluator's noise floor once across thread counts and invocation paths, and quote it alongside any tolerance: a claimed accuracy below the floor is a prediction about the runner, not the physics. Iterative chains (continuation ladders, root-finding on stiff residuals, eigenvalue sign calls) amplify the floor; validate their outputs independently of the chain that produced them.
 
+The same discipline is what makes a number worth claiming. A value earns
+its place in a claim when the oracle's own protocol says it converged:
+solver status, residual, and mesh criteria are part of the value itself, so
+anchor the headline to a successful solve and let the converged state, not
+the finest requested mesh, carry the record — a number read out of an
+unconverged state is a rumor, not a measurement. Type the producer against
+the consumer: every column a downstream claim reads carries the
+normalization the accepted convention defines (charge omega times inertia,
+not omega squared; an enclosure whose digit count matches its denominator),
+and a factor or exponent slip is invisible in prose but instant in a
+replayed script — which is exactly why the replay is the reward. Derive the
+displayed uncertainty from the certified budget at print time instead of
+transcribing a bracket by eye: the budget is the precision the claim is
+allowed to spend, and printing it directly turns the error bar into a
+derived quantity rather than a hope.
+
 ## Sources
 
 The papers behind these practices (methods, not exhaustive bibliography):
