@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-04T18:00:00+02:00'
+updated: '2026-09-05T03:00:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -83,9 +83,74 @@ transverse dispersion through order k^2. Cell density is L_cell=L_v/6.
 The exact smooth-Euler continuum objective remains active. Finite-core
 continuation, the reaction-bearing affine cage/translation closure, and
 stationary EPS compatibility are not supplied by a point-vortex oscillator.
-The user was asked whether a controlled asymptotic scope is acceptable;
-pending a response, the original objective remains the promotion boundary.
+The user reaffirmed the exact smooth-Euler objective and explicitly directed
+continued execution beyond checkpoint commits. No asymptotic scope reduction
+is authorized. Continuation contract 0035 freezes finite-core/spectral,
+material-action and stationary/EPS routes; worker 0036 and main 0037 execute
+in parallel. The original objective remains the promotion boundary.
 The new action gives a concrete candidate to review, not campaign success.
+
+Continuation 0035–0043 (2026-09-05): 0036 constructs an actual C-infinity
+finite-core Euler polygon by a bordered implicit-function argument, and its
+exact two-triangle affine KKS angle action. Independent review establishes
+that stated construction; it does not supply a stationary EPS embedding.
+0037 derives the complete Euler displacement/Jacobi action with transport,
+pressure Hessian and boundary reaction. 0039 derives material parcel mass,
+locked inertia and a separate exact screw/Galilean stationarization identity.
+These definitions are now conditional unpromoted euler_displacement.py APIs.
+
+0038 tests actual stationary tube candidates. Its static Jacobi angle has
+negative stiffness, motivating the representation change 0040 rather than
+closing N3. 0040 derives a positive two-generator isovortical angle/cage
+action on an exact stationary nonaxisymmetric Beltrami tube. Its physical
+angle is the rotation of the quadratic core jet, not a rigid rotation of the
+whole finite cross-section. Independent review establishes this scope and
+adds a flat-torus Leray-transfer proof. The prescribed-knotted-tube bridge
+is not inferred from mere local approximation.
+
+0041 derives the full finite-core 3D Biot–Savart gradient matrix, including
+the second vorticity variation. Its transverse-projector Gram form proves
+positive twist and radial-momentum coefficients. Keeping the conjugate
+radius gradient changes the optical k² coefficient: for the point-limit
+affine-cage map the leading coefficient is 1129/220 times the old twist-only
+value. Earlier 0034 twist-only numbers are superseded by this correction;
+finite-core values are exact integral matrices, not this imposed ratio.
+
+0043 independently derives positive affine shear energy from the same
+stationary Beltrami fluid and its deformed periodic lattice: mu=4E0/15,
+where E0 is the actual unstrained fluid energy density. Its new importable
+euler_affine.py API inverts curl after pushing vorticity and wave covectors
+together. No additional filament spring is postulated. This is an energy
+coefficient, not yet the full joint kinetic reduction.
+
+Active executable routes: 0042 derives common-angle material/orbit reaction
+and repairs the distinction between a periodic spatial RVE and an invariant
+material parcel. 0044 computes the stationary Beltrami sector's full Bloch
+action, including its momentum/kinetic gradient terms before isotropic
+averaging. 0045 constructs a physical core-tilt/cage sector directly inside
+an actual EPS tube using compact negative-helicity generators. These are
+campaign work on research/pr199-completion, not a terminal PR refresh.
+The full common-frame/translational action, all N1–N7 closure, individual
+claim promotion and release still determine completion.
+
+Further completed constructions: 0045 is now independently reviewed as an
+actual-EPS positive physical core-tilt/cage theorem, with explicit finite-k
+norm bounds and exact integral coefficients. 0046 establishes the common
+rotor intrinsically on one Euler orbit in an exact nonaxisymmetric Bessel
+cylinder; review supplies the finite-domain Neumann estimates and requires
+momentum-partner support away from the physical core. Both inertias derive
+from KKS/Routh, avoiding 0042's Kelvin-inconsistent added-body-inertia route.
+Next: 0048 extends this common rotor to the actual EPS relative-energy orbit.
+0047 executes the same-EPS spatial lift; its initial carrier-only curvature
+is negative, so explicit geometry-tied first-gradient cage return is being
+constructed rather than averaging frequency squares into a false positive.
+
+Checkpoint validation: fixed repository checks and the full 2501-test suite
+pass (351.84 seconds), after the changed-scope selector's conservative
+multiple-new-modules rule required full replay. The initial targeted nine
+API tests also passed. Source PDFs are marked binary in their source folder;
+this preserves byte-exact digests and avoids interpreting PDF xref padding
+as source-code whitespace. No accepted registry or release changed.
 
 ## Canonicalization and Completion
 
