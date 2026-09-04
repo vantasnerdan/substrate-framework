@@ -1,0 +1,3832 @@
+arXiv:1210.6271v2  [math.AP]  23 Oct 2014
+EXISTENCE OF KNOTTED VORTEX TUBES
+IN STEADY EULER FLOWS
+ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+Abstract. W e prove the existence of knotted and linked thin vortex tube s for
+steady solutions to the incompressible Euler equation in R3. More precisely,
+given a ﬁnite collection of (possibly linked and knotted) di sjoint thin tubes
+in R3, we show that they can be transformed with a Cm-small diﬀeomorphism
+into a set of vortex tubes of a Beltrami ﬁeld that tends to zero at inﬁnity.
+The structure of the vortex lines in the tubes is extremely ri ch, presenting a
+positive-measure set of invariant tori and inﬁnitely many p eriodic vortex lines.
+The problem of the existence of steady knotted thin vortex tu bes can be traced
+back to Lord Kelvin.
+Keywords: Euler equation, invariant tori, KAM theory, knots, Beltram i
+ﬁelds, Runge-type approximation.
+MSC 2010: 35Q31, 37N10, 37J40, 35J25, 37C55, 57M25.
+Contents
+1. Introduction 2
+2. Strategy of the proof and guide to the paper 5
+3. Geometry of thin tubes 10
+4. Estimates for the Neumann Laplacian in thin tubes 11
+4.1. Estimates for derivatives with respect to the “slow” variable 13
+4.2. Estimates for the “fast” variables 14
+4.3. Pointwise estimates 19
+5. Harmonic ﬁelds in thin tubes 20
+6. Beltrami ﬁelds with prescribed harmonic part 23
+6.1. An existence result for the curl operator 23
+6.2. Estimates for an equation with constant coeﬃcients 26
+6.3. Estimates for Beltrami ﬁelds in thin tubes 30
+7. A KAM theorem for Beltrami ﬁelds with small λ 33
+7.1. Trajectories of the local Beltrami ﬁeld 34
+7.2. Rotation number of the Poincar´ e map of the local Beltrami ﬁeld 39
+7.3. The nondegeneracy condition for the Poincar´ e map 42
+7.4. A KAM theorem for generic tubes 47
+8. Approximation by Beltrami ﬁelds with decay 53
+12 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+9. Proof of the main theorem 57
+10. A comment about the Navier–Stokes equation 59
+Acknowledgments 60
+References 60
+1. Introduction
+The motion of particles in an ideal ﬂuid in R3 is described by its velocity ﬁeld
+u(x,t ), which satisﬁes the Euler equation
+∂tu + (u · ∇)u = −∇P , divu = 0
+for some pressure function P (x,t ). Equivalently, the ﬁeld u satisﬁes the equation
+−∂tu +u ×ω = ∇B, divu = 0,
+where the ﬁeld ω := curl u is the vorticity and B := P + 1
+2 |u|2 is the Bernoulli
+function. The trajectories (or integral curves) of the vorticity ω(x,t ) for ﬁxed t are
+usually called vortex lines . A solution u to the Euler equation is called steady when
+it does not depend on time.
+A domain in R3 that is the union of vortex lines and whose boundary is an em-
+bedded torus is a (closed) vortex tube . The analysis of thin vortex tubes, in a sense
+to be speciﬁed below, for solutions to the Euler equation has attrac ted considerable
+attention. A long-standing problem in this direction is Lord Kelvin’s con jecture [28]
+that knotted and linked thin vortex tubes can arise in steady solutio ns to the Eu-
+ler equation. This conjecture was motivated by results due to Helmh oltz on the
+time-dependent case, which hinge on the mechanism of vorticity tra nsport, and
+Maxwell’s observations of what he called “water twists”.
+Kelvin’s conjecture is basically a question on the existence of knotte d invariant
+tori in steady solutions of the Euler equation. There is a considerab le body of
+literature devoted to the analysis of topological and geometrical s tructures that
+appear in ﬂuid ﬂows, which has led to signiﬁcant results e.g. on particle trajectories
+and vortex lines [2, 13, 21, 11, 25], on the relationship between the E uler equation
+and the group of volume-preserving diﬀeomorphisms [2, 10, 19, 6], a nd on the
+connection of the helicity with the energy functional and the asymp totic linking
+number [3, 16, 17, 29]. However, Kelvin’s conjecture remains wide op en, and indeed
+has been included as a major open problem in topological ﬂuid mechanic s in the
+surveys [27, 23].
+There is strong numerical evidence of the existence of thin vortex tubes, both in
+the case of steady and time-dependent ﬂuid ﬂows. As a matter of f act, thin vortex
+tubes have long played a key role in the construction and numerical e xploration of
+possible blow-up scenarios for the Euler equation, which in turn has le d to rigorous
+results such as [7, 9]. A particularly inﬂuential scenario in this directio n is [26],
+which discusses how an initial condition with a certain set of linked thin v ortex
+tubes might lead to singularity formation in ﬁnite time. As a side remark , let us
+point out that thin vortex tubes of complicated knot topologies hav e been recently
+constructed experimentally in the ﬂuid mechanics laboratory at the University of
+Chicago [20].EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 3
+Our aim in this paper is to prove that there exist steady solutions to t he Euler
+equation in R3 having thin vortex tubes of any link and knot type. The steady
+solutions we construct are Beltrami ﬁelds , that is, they satisfy the equation
+curlu =λu
+in R3 for some nonzero real constant λ. As any Beltrami ﬁeld satisﬁes the equation
+∆ u = −λ2u in R3, it is apparent that the solutions we construct are real analytic
+but do not have ﬁnite energy (i.e., u is not in L2(R3)). However, our construction
+yields solutions with optimal decay at inﬁnity in the class of Beltrami ﬁe lds, which
+fall oﬀ as |u(x)|<C/ |x|. In particular, they are in Lp(R3) for all p> 3.
+The motivation to consider the class of Beltrami solutions to the Eule r equation
+to address the existence of linked vortex tubes comes from Arnold ’s structure the-
+orem [4, Theorem II.1.2]. Under mild technical assumptions, this theo rem ensures
+that the vortex lines of a steady solution to the Euler equation whos e velocity ﬁeld
+is not everywhere collinear with its vorticity are nicely stacked in a rigid structure
+akin to those appearing in the study of integrable Hamiltonian system s. Heuristi-
+cally, this structure should somehow restrict the way the vortex lin es are arranged;
+partial results in this direction have been shown in [12], where it is prov ed that
+under appropriate (strong) hypotheses the vortex lines of stea dy solutions with
+non-collinear velocity and vorticity can only be of certain knot types . In contrast,
+using Beltrami ﬁelds we have recently managed to produce steady s olutions of the
+Euler equation with a set of vortex lines diﬀeomorphic to any locally ﬁnit e link [11].
+Before stating the main result we need some deﬁnitions. We will say th at a
+bounded domain of R3 is a (closed) tube if its boundary is a smoothly embedded
+torus. Therefore, a vortex tube is a tube whose boundary is the u nion of vortex
+lines (or, equivalently, its boundary is an invariant torus of the vort icity ﬁeld). A
+convenient way of constructing thin tubes is as metric neighborhoods of curves.
+Indeed, if γ ⊂ R3 is a closed curve, we will denote by
+(1.1) Tǫ(γ) :=
+{
+x ∈ R3 : dist(x,γ )<ǫ
+}
+the tube of core γ and thickness ǫ. We are interested in the case where ǫ is a small
+positive number, which corresponds to the case of thin tubes. Obv iously any ﬁnite
+collection of disjoint tubes in R3 can be isotoped to a collection of thin tubes of
+this form.
+Let us consider a ﬁnite collection of (possibly knotted and linked) disj oint thin
+tubes, constructed using metric neighborhoods of curves as abo ve. Our main result
+in this paper is that, if the thickness of the tubes is small enough, th is collection
+can be transformed by a Cm-small diﬀeomorphism into a union of vortex tubes of
+a Beltrami ﬁeld in R3. Furthermore, the structure of the vortex lines inside each
+vortex tube is extremely rich: ﬁrstly, the boundary of each vorte x tube is far from
+being the only invariant torus of the ﬂow, as the set of invariant tor i has positive
+Lebesgue measure. Secondly, between any pair of these invariant tori there are
+inﬁnitely many periodic vortex lines. Thirdly, there is a periodic vortex line which
+is close to the core of the initial tube and diﬀeomorphic to it. More pre cisely, we
+have the following statement, where (as always henceforth) all th e diﬀeomorphisms
+are assumed smooth, and all curves and surfaces are smoothly em bedded in R3. It
+should be emphasized that the thinness of the tubes is crucially used in the proof
+of the theorem.4 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+Theorem 1.1. Letγ1,...,γ N beN pairwise disjoint (possibly knotted and linked)
+closed curves in R3. For small enough ǫ, one can transform the collection of pairwise
+disjoint thin tubes Tǫ(γ1),..., Tǫ(γN ) by a diﬀeomorphism Φ of R3, arbitrarily close
+to the identity in any Cm norm, so that Φ[ Tǫ(γ1)],..., Φ[ Tǫ(γN )] are vortex tubes of
+a Beltrami ﬁeld u, which satisﬁes the equation curlu =λu in R3 for some nonzero
+constantλ.
+Moreover, the ﬁeld u decays at inﬁnity as |Dju(x)| < Cj/|x| for all j and has
+the following properties in each vortex tube Φ[ Tǫ(γi)]:
+(i) In the interior of Φ[ Tǫ(γi)] there are uncountably many nested tori invari-
+ant under the Beltrami ﬁeld u. On each of these invariant tori, the ﬁeld u
+is ergodic.
+(ii) The set of invariant tori has positive Lebesgue measure in a s mall neigh-
+borhood of the boundary ∂Φ[ Tǫ(γi)].
+(iii) In the region bounded by any pair of these invariant tori ther e are inﬁnitely
+many closed vortex lines, not necessarily of the same knot ty pe as the
+curve γi.
+(iv) The image of the core curve γi under the diﬀeomorphism Φ is a periodic
+vortex line of u.
+An important property of the structure of the vortex lines inside e ach vortex
+tube, as described above, is that it is stable in the following sense: on the one hand,
+it is robust under small perturbations of the ﬁeld u, meaning that the trajectories
+of any ﬁeld which is close enough to u in a suﬃciently high Ck norm have the
+same structure. On the other hand, the boundary of each vorte x tube ∂Φ[ Tǫ(γi)]
+is Lyapunov-stable under the ﬂow of the Beltrami ﬁeld u. It should be noticed too
+that from Property (iv) in Theorem 1.1 we recover the main theorem of [11] for
+ﬁnite links and improve it by ensuring that the solution falls oﬀ at inﬁnity (while
+in [11] we had no control at all on the growth of the solution at inﬁnity ). Besides,
+the proof of Theorem 1.1 shows that the vortex lines Φ( γi) are elliptic trajectories,
+and therefore linearly stable, while the vortex lines we constructed in [11] were
+hyperbolic, and thus unstable.
+After establishing his structure theorem, Arnold conjectured [2] that, contrary
+to what happens in the non-collinear case, Beltrami ﬁelds could pres ent vortex lines
+of the same topological complexity as the trajectories of any diver gence-free vector
+ﬁeld. By KAM theory, typically these trajectories give rise to a set o f invariant tori
+with positive measure and chaotic regions with homoclinic tangles betw een these
+tori. Theorem 1.1 is fully consistent with this picture, and proves the existence of
+the aforementioned positive-measure set of invariant tori.
+The paper is organized as follows. In Section 2 we will discuss the stra tegy of
+the proof of Theorem 1.1. This section, which serves as a guide to th e paper, also
+allows us to explain the key diﬃculties that appear in the proof of this r esult but
+not in that of [11], which require the introduction of new techniques a nd ideas,
+and make this paper considerably more involved. In Section 3 we intro duce some
+objects associated with the geometry of a thin tube that will be use d throughout
+the paper. In Section 4 we prove some estimates for the Laplacian in a thin tube
+with Neumann boundary conditions. These estimates are used in Sec tion 5 to
+study harmonic ﬁelds in thin tubes. In Section 6 we construct Beltra mi ﬁelds in
+thin tubes with prescribed harmonic part. These ﬁelds are analyzed further inEXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 5
+Section 7, where we prove a KAM theorem for Beltrami ﬁelds in gener ic thin tubes.
+A Runge-type approximation theorem by global Beltrami ﬁelds tend ing to zero at
+inﬁnity is presented in Section 8. With all these ingredients, in Section 9 we prove
+Theorem 1.1. The paper concludes with an easy application to the Nav ier–Stokes
+equation, which we present in Section 10.
+2. Strategy of the proof and guide to the paper
+To prove Theorem 1.1, our basic goal is to establish the existence of a Beltrami
+ﬁeld u, satisfying the equation
+curlu =λu
+in R3 for some nonzero constant λ and falling oﬀ at inﬁnity, such that the ﬁeld u has
+a set of N invariant tori diﬀeomorphic to the surfaces {∂Tǫ(γi)}N
+i=1, with {γi}N
+i=1
+being a set of prescribed (possibly knotted and linked) closed curve s. We recall
+that Tǫ(γi) is a metric neighborhood of the curve γi of small thickness ǫ, as deﬁned
+in Eq. (1.1). By deforming them a little if necessary, we can assume wit hout loss
+of generality that the curves γi are analytic.
+The basic idea behind the proof of Theorem 1.1 is carried out in three in terrelated
+stages. Firstly, we construct a local Beltrami ﬁeld v, which satisﬁes the Beltrami
+equation in a neighborhood of each closed tube
+Tǫ(γi) and has a set of invariant
+tori given by ∂Tǫ(γ1),...,∂ Tǫ(γN ). Secondly, we prove that these invariant tori are
+“robust”, meaning that suitably small perturbations of the local Beltrami ﬁe ld v
+still have a set of invariant tori diﬀeomorphic to ∂Tǫ(γ1),...,∂ Tǫ(γN ). To conclude,
+we show that the local Beltrami ﬁeld v can be approximated in any Ck norm by
+a global Beltrami ﬁeld u, which satisﬁes the Beltrami equation in the whole space
+R3 and falls oﬀ at inﬁnity in an optimal way. The robustness of the invaria nt tori
+of the local Beltrami ﬁeld ensure that u has a set of vortex tubes diﬀeomorphic to
+the initial conﬁguration of thin tubes, and that in fact this diﬀeomor phism can be
+taken close to the identity in a Cm norm.
+However, the implementation of this basic idea turns out to be extre mely subtle.
+To understand why, one can start by noticing that the robustnes s of the invariant
+tori of the local Beltrami ﬁeld relies on a KAM-type argument. To ap ply this
+KAM argument, we need a small perturbation parameter and some c ontrol on the
+dynamics of the local Beltrami ﬁeld in a neighborhood of each invarian t torus,
+which is required in order to show that the local Beltrami ﬁeld is equiva lent to a
+Diophantine rotation on the torus and satisﬁes a suitable nondegen eracy condition.
+To construct local Beltrami ﬁelds in a neighborhood of the tori ∂Tǫ(γi) with con-
+trolled behavior on these surfaces, it is natural to use some varian t of the Cauchy–
+Kowalewski theorem for the curl operator with Cauchy data on th e tori (e.g. [11,
+Theorem 3.1]). This would lead to a local Beltrami ﬁeld deﬁned in a small n eigh-
+borhood Ω i of each torus ∂Tǫ(γi). Unfortunately, the Runge-type approximation
+theorem we prove in this paper does not allow us to approximate a loca l Beltrami
+ﬁeld deﬁned in Ω 1 ∪ · · · ∪ Ω N by a global Beltrami ﬁeld, since the complement
+R3\(Ω 1 ∪ · · · ∪ Ω N ) has compact connected components. As is well known, this
+is not just a technical issue, but a fundamental obstruction in any Runge-type
+theorem.6 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+Therefore, to construct the local Beltrami ﬁeld v we will not consider a Cauchy
+problem but a boundary value problem for the curl operator in each tube. This
+leads to a vector ﬁeld that satisﬁes the Beltrami equation
+curlv =λv
+in a neighborhood of the tubes (because the boundaries are analyt ic), which allows
+us to apply our Runge-type approximation theorem. In this bounda ry value prob-
+lem one can prescribe the normal component of v at each boundary ∂Tǫ(γi), so that
+by setting it to zero we can ensure that each boundary is an invarian t torus of the
+local Beltrami ﬁeld. However, we have no control on the tangentia l component of
+v on each torus, so in principle the local Beltrami ﬁeld does not necess arily satisfy
+the dynamical conditions our KAM-type theorem requires for the in variant tori to
+be preserved under small perturbations.
+To overcome this diﬃculty we resort to a careful analysis of harmon ic ﬁelds in
+thin tubes. Indeed, we show that in the above boundary value prob lem for the
+local Beltrami ﬁeld, one can also prescribe its harmonic part (that is , the L2 pro-
+jection of v into the space of harmonic ﬁelds with tangency boundary conditions ),
+and for small λ one expects the local Beltrami ﬁeld to behave essentially as if it
+were harmonic. Hence, we exploit the small parameter ǫ (that is, the thickness of
+the tubes) to extract detailed analytic information about harmonic ﬁelds through
+energy estimates, and then utilize this knowledge to compute the dy namical prop-
+erties of the local Beltrami ﬁeld that are required in the KAM-type t heorem under
+the assumption that the Beltrami parameter λ is suitably small (in fact, of order
+ǫ3). A key ingredient in the computation of these dynamical propertie s is a set of
+energy estimates for the local Beltrami ﬁelds and all its derivatives that are optimal
+with respect to the geometry of the tubes, i.e., the parameter ǫ.
+The local Beltrami ﬁeld can now be approximated in any Ck norm by a global
+Beltrami ﬁeld u that falls oﬀ at inﬁnity as C/|x| using a Runge-type theorem. When
+using the KAM argument to guarantee that u still has a set of invariant tori diﬀeo-
+morphic to {∂Tǫ(γi)}, one has to face the problem that the local Beltrami ﬁeld is in
+fact a small perturbation of a ﬁeld that does not satisfy the nondegeneracy condi-
+tion (equivalent to a rotation of the disk with constant frequency) , which requires
+a ﬁne analysis of the terms controlled by each small parameter: the thicknessǫ, the
+Beltrami constant λ and the error in the Runge-type approximation.
+We shall next present a sketch of the proof of Theorem 1.1, where we explain
+the diﬀerent intermediate results that are needed in the demonstr ation and their
+interrelations. This short sketch is also intended to serve as a guide to the paper.
+For the sake of clarity, we will divide the proof in three stages:
+Stage 1: Construction of the local Beltrami ﬁeld. The local Beltrami ﬁeld
+v is obtained as the unique solution to certain boundary value problem f or the
+Beltrami equation. Our goal is to estimate various analytic propert ies of this ﬁeld,
+and for this it is natural to introduce coordinates adapted to a Fre net frame in each
+tube Tǫ ≡ T ǫ(γi), which essentially correspond to an arc-length parametrization
+of the curve γi and to rectangular coordinates in a transverse section of the tub e.
+Thus we consider an angular coordinate α, taking values in S1
+ℓ := R/ℓZ (withℓ the
+length of the curve γi), and rectangular coordinates y = (y1,y 2) taking values in
+the unit 2-disk D2. Details are given in Section 3 .EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 7
+To extract information about the local Beltrami ﬁeld, a useful too l is the bound-
+ary value problem for the Laplacian on scalar functions with zero mea n and zero
+Neumann boundary conditions in the thin tube Tǫ:
+∆ ψ =ρ in Tǫ, ∂ νψ|∂Tǫ = 0,
+∫
+Tǫ
+ψdx = 0.
+When written in the natural coordinates ( α,y ), we obtain a boundary value prob-
+lem in the domain S1
+ℓ × D2, the coeﬃcients of the Laplacian in these coordinates
+depending on the geometry of the tube strongly through its thickn ess ǫ and the
+curvature and torsion of the core curve γi.
+It is clear that we have the H k estimate
+‖ψ‖Hk(Tǫ) ⩽ Cǫ,k‖ρ‖Hk−2(Tǫ).
+However this estimate, where the constant Cǫ,k depends on ǫ in an undetermined
+way, is far from being enough to compute the dynamical quantities f or the local
+Beltrami ﬁeld that are needed in the KAM-type theorem. Therefor e, in Section 4
+we prove energy estimates for the function ψ and its derivatives that are optimal
+with respect to the parameter ǫ. In particular, in order to be able to compute
+the desired dynamical quantities for the local Beltrami ﬁeld later on , it is crucial
+to distinguish between estimates for derivatives of ψ with respect to the “slow”
+variable α and the “fast” variable y. The estimates for the function ψ and its
+derivatives that we will need are stated in Theorem 4.11.
+These estimates are immediately put to work in Section 5 to derive a perturbative
+expression for the harmonic ﬁeld in each thin tube Tǫ and small ǫ. (Of course,
+the problem degenerates for ǫ = 0 and the asymptotic results we prove do not
+correspond to a Taylor expansion.) We will use the notation h for the harmonic
+ﬁeld in Tǫ, which is unique up to a multiplicative constant. In fact, we need to
+computeh up to corrections that are suitably small for small ǫ; as before, diﬀerent
+powers of ǫ are required for the slow and fast components of the ﬁeld. To ﬁrst
+order, the harmonic ﬁeld can be written in the coordinates ( α,y ) as
+(2.1) h =∂α +τ (α) (y1∂2 −y2∂1) + O(ǫ),
+where τ stands for the torsion of each curve γi and O(ǫ) denotes some vector
+ﬁeld whose components in these coordinates are bounded by a multip le of ǫ in the
+Ck(S1
+ℓ × D2) norm. By Eq. (2.1), the ﬁeld h is an O(ǫ) perturbation of the rotation
+of constant frequency given by the total torsion
+∫ ℓ
+0 τ (α)dα. From the point of view
+of KAM theory, this is a very degenerate case, so it is not hard to gu ess that one
+needs to compute h (at least) up to order O(ǫ3), as we do in Theorem 5.1. As a
+matter of fact, we will see later on that the nondegeneracy condit ion that appears
+in the KAM theorem is that a certain quantity, called the normal tors ion, must be
+nonzero, and that it actually vanishes modulo terms of order O(ǫ2), which justiﬁes
+why we need good estimates for h.
+In Section 6 we show that, for any nonzero constant λ that is small enough (say,
+smaller than some ﬁxed, ǫ-independent constant), there is a unique vector ﬁeld that
+is tangent to the boundary of each tube Tǫ, satisﬁes the equation
+(2.2) curl v =λv
+in the tube and whose harmonic part (i.e., the L2 projection on the space of har-
+monic ﬁelds) is h. (This is, of course, diﬀerent to what happens in the case of8 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+compact manifolds without boundary, where Beltrami ﬁelds are alwa ys orthogonal
+to harmonic ﬁelds.) We also prove estimates that measure how the ﬁe ldv becomes
+close to h in the Ck norm for small ǫ and λ. The key result is Theorem 6.8, which
+will be crucial in verifying the conditions in the KAM argument for the p reservation
+of invariant tori.
+Stage 2: Preservation of the invariant tori. In Stage 1, for small enough ǫ
+and λ, we have constructed a local Beltrami ﬁeld v, which satisﬁes Eq. (2.2) in
+a neighborhood of ⋃ N
+i=1
+Tǫ(γi) and has a set of invariant tori given by ∂Tǫ(γi).
+Furthermore, the estimates we have proved provide a very conve nient expression
+for the local Beltrami ﬁeld, up to terms that are of order ǫ3 (when λ = ǫ3) in a
+suitable sense.
+In Section 7 we analyze the robustness of the invariant tori using the Poincar´ e
+map Π deﬁned by the local Beltrami ﬁeld at a transverse section of e ach tube. In
+each tube, Π is then a diﬀeomorphism of the disk that preserves cer tain measure,
+while the intersection of each invariant torus with the transverse s ection is an in-
+variant circle of the Poincar´ e map. The persistence of the invarian t tori will rely
+on a KAM theorem for the Poincar´ e map (Theorem 7.6) that applies t o individual
+invariant circles.
+To apply the KAM theorem, one has to verify that the rotation numb er of Π on
+the invariant circle is Diophantine and that Π satisﬁes a nondegenera cy condition
+(namely, that its normal torsion is nonzero). Computing these dyn amical quantities
+using the estimates for the local Beltrami ﬁeld is nontrivial. On the on e hand, the
+rotation number depends on the behavior of the trajectories for arbitrarily large
+times, so a delicate treatment is required in order to control unifor mly the eﬀect of
+the O(ǫ2) terms in the vector ﬁeld. On the other hand, the normal torsion, which
+is required to be nonzero, turns out to be zero modulo O(ǫ2), since the Poincar´ e
+map is a small perturbation of a constant frequency rotation of th e disk, which is
+a highly degenerate case from the point of view of KAM theory.
+The estimates proved at Stage 1 are tailored to permit us to overco me these diﬃ-
+culties, yielding expressions for the rotation number ωΠ and the normal torsion NΠ
+that depend on the geometry of each curve γi through its curvature κ and torsion τ
+(see Theorems 7.4 and 7.8):
+ωΠ =
+∫ ℓ
+0
+τ (α)dα + O(ǫ2),
+NΠ = − 5πǫ2
+8
+∫ ℓ
+0
+κ(α)2τ (α)dα + O(ǫ3).
+These expressions allow us to prove the main result in this Stage 2, wh ich is that
+for “generic” curves γi the hypotheses of the aforementioned KAM theorem are
+satisﬁed, so that the invariant tori of the local Beltrami ﬁeld v are robust: if u is a
+divergence-free vector ﬁeld in a neighborhood of the tubes that is close enough to v
+in a suitable sense (e.g., in a high enough Ck norm), then u also has an invariant
+tube diﬀeomorphic to each Tǫ(γi), and moreover the corresponding diﬀeomorphisms
+can be taken close to the identity. This is proved in Theorem 7.10.EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 9
+Stage 3: Approximation by a global Beltrami ﬁeld. In Section 8 we prove a
+Runge-type approximation theorem for Beltrami ﬁelds that decay at inﬁnity (The-
+orem 8.3). More precisely, we will show that the local Beltrami ﬁeld v, considered
+in the previous stages and deﬁned in a neighborhood of the thin tube s Tǫ(γi), can
+be approximated in any Ck norm by a Beltrami ﬁeld u that falls oﬀ at inﬁnity as
+|Dju(x)|<C j/|x|. This decay is optimal for the class of Beltrami ﬁelds.
+The proof of this theorem consists of two steps. In the ﬁrst step we use functional-
+analytic methods to approximate the ﬁeld ﬁeld v by an auxiliary vector ﬁeld w that
+satisﬁes the elliptic equation ∆ w = −λ2w in a large ball of R3 that contains all
+the tubes. In the second step, we deﬁne the approximating global Beltrami ﬁeld u
+in terms of a truncation of a suitable series representation of the ﬁ eld w, ensuring
+thatu has the desired fall-oﬀ at inﬁnity.
+Completion of the proof of the main theorem. In Section 9 we use all
+previous results to complete the proof of Theorem 1.1. Indeed, fr om the robustness
+of the invariant tori of the local Beltrami ﬁeld, it immediately follows t hat the
+global Beltrami ﬁeld u has a set of thin vortex tubes equivalent through a Cm-
+small diﬀeomorphism Φ to {Tǫ(γi)}, provided ǫ is small enough. More precisely,
+what is proved is that there is some constant ǫ0, which depends only (albeit in
+a rather nontrivial way) on the geometry of the curves γi and on the allowed
+smallness for the diﬀeomorphism Φ, so that the statement of the th eorem holds for
+any thickness ǫ ⩽ ǫ0.
+The remaining properties of the vortex lines stated in Theorem 1.1 ar e established
+in this section too, using results derived throughout the paper. In particular, we
+show that near the curve γi there is an elliptic periodic trajectory of the ﬁeld u.
+As a side remark, notice that this elliptic periodic trajectory is obviou sly linearly
+stable, but is not granted a priori to be Lyapunov stable. Therefore, as shown by
+the counterexample of Anosov and Katok (cf. e.g. [14]), it is not gua ranteed that
+there are invariant tori of the ﬁeld in a neighborhood of the elliptic tr ajectory. A
+careful (and nontrivial) analysis of the dynamics near the elliptic tra jectory for
+small ǫ and λ would be required to prove the existence of these tori.
+Before beginning with the technical part of the paper, it is convenie nt to provide
+a short comparison between the proof of Theorem 1.1 and that of t he main theorem
+in Ref. [11], where we showed that there are steady solutions to the Euler equation
+with a set of vortex lines diﬀeomorphic to any given link. In this refere nce, the
+proof was also based on the construction of a local Beltrami ﬁeld wit h a “robust”
+set of periodic trajectories, which was then approximated by a glob al Beltrami ﬁeld.
+However, the implementation of this basic principle is totally diﬀerent.
+To begin with, the robustness of periodic trajectories in [11] relies o n the hy-
+perbolic permanence theorem (which is essentially an application of th e implicit
+function theorem) instead of a considerably more sophisticated KA M argument.
+To construct a local Beltrami ﬁeld with prescribed periodic traject oriesγi that are
+hyperbolic, as required by the permanence theorem, it is enough to prove a suitable
+analog of the Cauchy–Kowalewski theorem for the curl operator : indeed, since the
+ﬁeld is divergence-free, it is enough to assume that the ﬁeld used as Cauchy datum
+is exponentially contracting into the curve γi on the Cauchy surface to obtain a10 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+local Beltrami ﬁeld that has γi as a hyperbolic periodic trajectory. All this is in
+strong contrast with the case of vortex tubes, where the const ruction of the lo-
+cal solution with a robust set of prescribed invariant tori requires the analysis of
+the boundary value problem and the KAM argument described in Stag es 1 and 2
+(Sections 4 to 7).
+The approximation theorem we use in this paper is also diﬀerent from t he one
+employed in [11]. The reason for this is that in [11] we had no control on the growth
+of the global Beltrami ﬁeld at inﬁnity, even in the case of connected links. On the
+contrary, the approximation theorem we prove in this paper (Theo rem 8.3) yields
+Beltrami ﬁelds with optimal fall-oﬀ at inﬁnity. The proof of these app roximation
+theorems is considerably diﬀerent: the old theorem is based on an ite rative scheme
+that uses a theorem by Lax and Malgrange and works for the curl o perator in any
+Riemannian 3-manifold, while the new one is based on diﬀerent principles and takes
+advantage of the geometry of Euclidean 3-space to ensure that t he global Beltrami
+ﬁeld falls oﬀ at inﬁnity.
+Notice that the main theorem in [11] applies to locally ﬁnite sets of curv es, while
+in Theorem 1.1 in this paper we can only take ﬁnite sets of curves γ1,...,γ N . Some
+comments in this regard are made in Remark 9.2.
+3. Geometry of thin tubes
+In this section we introduce some notation, including a coordinate sy stem, that
+will be used throughout the paper to describe functions and vecto r ﬁelds deﬁned
+on thin tubes. These tubes will be characterized in terms of the cur ve that sits on
+its core and its thickness ǫ, which is a parameter that will be everywhere assumed
+to be suitably small.
+Let us start with a closed analytic curve with an arc-length paramet rization
+γ : S1
+ℓ → R3, with S1
+ℓ := R/ℓZ (throughout the paper, when the period is 2 π we
+will simply write S1 ≡ S1
+2π). This amounts to saying that the tangent ﬁeld ˙ γ has
+unit norm and ℓ is the length of the curve. We will abuse the notation and denote
+also by γ the curve parametrized by the above map (i.e., the image set γ(S1
+ℓ )).
+Let us denote by Tǫ ≡ T ǫ(γ) a metric neighborhood with thickness ǫ of the
+curveγ, that is,
+Tǫ :=
+{
+x ∈ R3 : dist(x,γ )<ǫ
+}
+.
+This is a thin tube having the curve γ as its core. It is standard that, for small ǫ, the
+boundary ∂Tǫ is analytic. The normal bundle of the curve γ being trivial [22], one
+can associate to each α ∈ S1
+ℓ two orthogonal unit vectors ej(α) in R3 perpendicular
+to the curve at the point γ(α). For convenience, we will make the assumption that
+the curvature of the curve γ does not vanish, which allows us to take e1(α),e 2(α)
+as the normal and binormal vectors at the point γ(α). It is well known that the
+assumption that the curvature does not vanish is satisﬁed for gen eric curves [5,
+p. 184] (roughly speaking, “generic” refers to an open and dense set, with respect
+to a reasonable Ck topology, in the space of smooth curves in R3).
+Using the vector ﬁelds ej(α) and denoting by D2 the two-dimensional unit disk,
+we can introduce analytic coordinates ( α,y ) ∈ S1
+ℓ × D2 in the tube Tǫ via the
+diﬀeomorphism
+(α,y ) ↦→γ(α) +ǫy1e1(α) +ǫy2e2(α).EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 11
+In the coordinates (α,y ), a short computation using the Frenet formulas shows that
+the Euclidean metric in the tube reads as
+(3.1) ds2 =Adα 2 + 2ǫ2τ (y2dy1 −y1dy2)dα +ǫ2(
+dy2
+1 +dy2
+2
+)
+,
+where κ ≡κ(α) and τ ≡τ (α) respectively denote the curvature and torsion of the
+curve,
+(3.2) A := (1 −ǫκy1)2 + (ǫτ )2|y|2,
+and |y| stands for the Euclidean norm of y = (y1,y 2). As is customary, we will
+denote by gij and gij the components of the metric tensor and its inverse, respec-
+tively.
+We will sometimes take polar coordinates r ∈ (0, 1), θ ∈ S1 := R/2πZ in the
+disk D2, which are deﬁned so that
+y1 =r cosθ, y 2 =r sinθ.
+The metric then reads
+(3.3) ds2 =Adα 2 − 2ǫ2τr 2dθdα +ǫ2dr2 +ǫ2r2dθ2,
+where we, with a slight abuse of notation, still call A the expression of (3.2) in
+these coordinates, i.e.,
+(3.4) A := (1 −ǫκr cosθ)2 + (ǫτr )2.
+Notice that the coordinate r is simply the distance to the curve γ. For future
+reference, we record that the volume measure is written in these c oordinates as
+(3.5) dV :=Bdαdy =Brdαdrdθ
+up to a factor of ǫ2, where dy :=dy1dy2 and
+(3.6) B := 1 −ǫκy1 = 1 −ǫκr cosθ.
+4. Estimates for the Neumann Laplacian in thin tubes
+In this section we will derive some estimates for the Laplace equation ∆ ψ =ρ in
+the thin tube Tǫ with zero Neumann boundary conditions. As we will see, to gain
+control on the function ψ it is convenient to attack this equation in the coordinates
+(α,y ) ∈ S1
+ℓ × D2 that we introduced in Section 3, in terms of which the Laplace
+equation can be written as
+(4.1a) ∆ ψ =ρ in S1
+ℓ × D2, ∂ νψ = 0 on S1
+ℓ ×∂D2,
+where the Laplacian ∆ is now interpreted as an ǫ-dependent diﬀerential operator
+in the variables ( α,y ) or ( α,r,θ ). In order to ensure the existence of solutions to
+this equation, we suppose that
+∫
+ρdV = 0, which allows us to uniquely determine
+the solution ψ by demanding that it also has zero mean:
+(4.1b)
+∫
+ψdαdy = 0.
+(Here and in what follows, we omit the domain of integration when it is th e whole
+domain S1
+ℓ × D2. We could have used the measure dV in the above formula too,12 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+but this choice is slightly more convenient.) For future reference, w e record here
+the expression of ∆ in the variables ( α,r,θ ):
+∆ ψ = 1
+ǫ2
+(
+ψrr + 1
+rψr + A
+r2B2ψθθ
+)
++ 1
+B2ψαα + 2τ
+B2ψαθ + τ ′ −ǫr(κτ ′ −κ′τ ) cosθ
+B3 ψθ
++ 1
+ǫ
+( κ sinθ(B2 − (ǫτr )2)
+rB3 ψθ − κ cosθ
+B ψr
+)
++ ǫr(κ′ cosθ −τκ sinθ)
+B3 ψα.
+(4.2)
+As usual, we denote partial derivatives by subscripts when there is not risk of
+confusion.
+Given a subset Ω ⊂ S1
+ℓ × D2, we will use the notation
+‖ψ‖Ω :=
+( ∫
+Ω
+ψ2dαdy
+) 1/2
+for the L2(Ω)-norm of the function ψ, omitting the subscript when Ω is the whole
+domain S1
+ℓ × D2. In this section we will use the notation
+(4.3) ‖ψ‖2
+˙H1ǫ
+:= ‖∂αψ‖2 + ‖Dyψ‖2
+ǫ2
+for a homogeneous Sobolev norm in which the derivatives associated with the “small
+directions” of the thin tube are weighted with an appropriate ǫ-dependent factor.
+The usual H k norm of the function ψ(α,y ) will be denoted by ‖ψ‖Hk .
+In what follows, we will assume that ψ is a solution of the Laplace equation (4.1)
+with zero mean and zero Neumann boundary conditions, which ensur es that
+(4.4)
+∫
+gij∂iψ∂ jϕdV = −
+∫
+ρϕdV
+for any ϕ ∈H 1(S1
+ℓ × D2). As usual, the scripts i,j range over the set of coordinates
+{α,y 1,y 2}, and summation over repeated indices is understood. It is importan t to
+notice that, for any function ϕ,
+(4.5)
+∫
+gij∂iϕ∂ jϕdV =
+(
+1 + O(ǫ)
+)
+‖ϕ‖2
+˙H1ǫ
+,
+so that the ˙H 1
+ǫ norm is essentially a more convenient way of dealing with the natural
+˙H 1 norm associated with the metric. We will use this identity many times in t his
+section without further comment.
+The structure of this section is the following. We will start by estimat ing the
+L2 norm of the derivatives of the function ψ with respect to the “slow” variable α
+(Subsection 4.1). The proof of these estimates is standard. We re call that the reason
+whyα is called the slow variable is that it parametrizes the “large” direction o f the
+thin tube Tǫ, as opposed to the “fast” variable y, which is obtained by rescaling
+the small section of the tube. Estimates for the derivatives of ψ with respect to the
+“fast” variable y with optimal dependence in the small parameter ǫ are presented
+in Subsection 4.2. They are more complicated to obtain, basically beca use one has
+to consider an auxiliary function in order to get rid of the contributio ns to ψ that
+only depend on the slow variable. The resulting estimates for ψ, which we will
+often use in forthcoming sections, will be stated in Subsection 4.3.EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 13
+4.1. Estimates for derivatives with respect to the “slow” variab le. In this
+subsection we will prove H k estimates for the derivatives of the function ψ with
+respect to the “slow” variable α (cf. Proposition 4.3). We will begin with the
+following proposition, where we estimate the L2 and ˙H 1
+ǫ norms of the function
+ψ. As is customary, throughout this article we will use the letter C to denote
+ǫ-independent constants that may vary from line to line.
+Proposition 4.1. The function ψ satisﬁes the estimate
+‖ψ‖ + ‖ψ‖ ˙H1
+ǫ
+⩽ C‖ρ‖.
+Proof. By the expression of the metric in the coordinates ( α,y ), it is clear that for
+small enough ǫ one has
+∫
+gij∂iψ∂ jψdV /greaterorequalslant
+(
+1 +O(ǫ)
+) ∫ (
+ψ2
+α + |Dyψ|2
+ǫ2
+)
+dαdy /greaterorequalslant1
+2
+∫ (
+ψ2
+α + |Dyψ|2)
+dαdy.
+The rightmost term in the inequality is bounded from below by 1
+2µ1‖ψ‖2, where µ1
+stands for the ﬁrst nonzero Neumann eigenvalue of the ﬂat solid to rus:
+µ1 := inf
+{ ∫ (
+ϕ2
+α+|Dyϕ|2)
+dαdy :ϕ ∈C∞(S1
+ℓ ×D2),
+∫
+ϕdαdy = 0, ‖ϕ‖ = 1
+}
+> 0.
+Hence we infer that
+(4.6) ‖ψ‖ ⩽ C‖ψ‖ ˙H1ǫ
+for some C >0.
+To conclude, we can now use the weak formulation of the equation (4 .4) with
+ϕ =ψ and the Cauchy–Schwartz inequality to derive that
+‖ψ‖2
+˙H1ǫ
+⩽
+(
+1 + O(ǫ)
+) ∫
+gij∂iψ∂ jψdV ⩽
+(
+1 + O(ǫ)
+)
+‖ρ‖‖ψ‖ ⩽ C‖ρ‖‖ψ‖ ˙H1ǫ
+.
+The proposition then follows from this inequality and the estimate (4.6 ). □
+In the following lemma we record an elementary inequality that will be of use
+several times in this section.
+Lemma 4.2. LetDl
+α,y denote the tensor of lth order derivatives with respect to the
+variables (α,y ). For any well-behaved (e.g., smooth) functions ϕ, ˜ϕ,χ, ˜χ on S1
+ℓ ×D2,
+one has
+∫ ⏐
+⏐Dl
+α,y(Bg ij)∂iϕ∂ j ˜ϕχ ˜χ
+⏐
+⏐dαdy ⩽ ǫCl
+( ∫
+gij∂iϕ∂ jϕχdV
+) 1
+2
+( ∫
+gij∂i ˜ϕ∂ j ˜ϕ ˜χdV
+) 1
+2
+.
+In particular,
+∫ ⏐
+⏐Dl
+α,y(Bg ij)∂iϕ∂ j ˜ϕ
+⏐
+⏐dαdy ⩽ Clǫ‖ϕ‖ ˙H1ǫ
+‖ ˜ϕ‖ ˙H1ǫ
+.
+Proof. It is an immediate consequence of the expression for the metric and the
+function B in the coordinates ( α,y ) (see Eq. (3.1)) and the Cauchy–Schwartz in-
+equality. □
+We are now ready to prove the estimates for the derivatives of ψ with respect to
+the slow variable α that we will need in this paper:14 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+Proposition 4.3. The kth partial derivative of the function ψ with respect to the
+angle α satisﬁes
+‖∂k+1
+α ψ‖ ˙H1ǫ
+⩽ Ck‖ρ‖Hk,
+wherek is any nonnegative integer.
+Proof. Let us take ϕ =ψαα in Eq. (4.4) and integrate by parts to get
+∫
+gij∂iψα∂jψαdV =
+∫
+ρψααdV −
+∫
+∂α(Bg ij)∂iψ∂ jψαdαdy.
+The LHS is bounded from below by (1 + O(ǫ))‖ψα‖2
+˙H1ǫ
+, while from the deﬁnition of
+the norm ˙H 1
+ǫ and Lemma 4.2 it stems that
+⏐
+⏐
+⏐
+⏐
+∫
+ρψααdV
+⏐
+⏐
+⏐
+⏐ ⩽ (1 + O(ǫ)) ‖ρ‖ ‖ψα‖ ˙H1ǫ
+,
+⏐
+⏐
+⏐
+⏐
+∫
+∂α(Bg ij)∂iψ∂ jψαdαdy
+⏐
+⏐
+⏐
+⏐ ⩽ Cǫ‖ψ‖ ˙H1ǫ
+‖ψα‖ ˙H1ǫ
+.
+Using Proposition 4.1 to estimate ‖ψ‖ ˙H1ǫ
+in terms of ‖ρ‖, we infer that
+‖ψα‖2
+˙H1
+ǫ
+⩽ C‖ρ‖‖ψα‖ ˙H1ǫ
+,
+which readily implies the desired bound for k = 0. When k is a positive integer, the
+proof is totally analogous and can be obtained by induction on k usingϕ =∂2k+2
+α ψ,
+the only diﬀerence being that one needs to estimate the term
+∫
+ρϕ as
+⏐
+⏐
+⏐
+⏐
+∫
+ρ∂ 2k+2
+α ψdV
+⏐
+⏐
+⏐
+⏐ ⩽ C‖ρ‖Hk
+k+1∑
+j=1
+‖∂j
+αψ‖ ˙H1
+ǫ
+⩽ C‖ρ‖2
+Hk +C‖ρ‖Hk ‖∂k+1
+α ψ‖ ˙H1
+ǫ
+by the induction hypothesis. □
+4.2. Estimates for the “fast” variables. To estimate the derivates with respect
+to the “fast” variable y in an optimal way, it is crucial to ensure that the terms that
+only depend on α are not considered when estimating the norms of the function.
+A convenient way of doing this is by considering the auxiliary function
+(4.7) ¯ψ(α,y ) := ψ(α,y ) − 1
+π
+∫
+D2
+ψ(α,y ′)dy′,
+which is obtained from ψ by subtracting its average in the fast variable. It should
+be emphasized that, if we were not to subtract this average, the e stimates we would
+obtain would not be strong enough for our needs in later sections. T he key estimate
+in this subsection is Theorem 4.8.
+An immediate observation is that, of course
+(4.8) Dj
+y∂k
+αψ =Dj
+y∂k
+α ¯ψ
+whenever the number j of derivatives we take with respect to y is greater than zero,
+and that ¯ψ has zero mean: ∫
+¯ψdαdy = 0.
+Moreover, the function ¯ψ satisﬁes the equation
+∆ ¯ψ = ¯ρ in S1
+ℓ × D2, ∂ ν ¯ψ = 0 on S1
+ℓ ×∂D2,EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 15
+with
+¯ρ(α,y ) := ρ(α,y ) − 1
+π ∆
+∫
+D2
+ψ(α,y ′)dy′.
+The estimates for ψ we derive in the previous section guarantee that the norm
+of ¯ρ can be bounded by a multiple of the norm of the initial source term ρ:
+Proposition 4.4. The H k norm of ¯ρ is bounded by
+‖ ¯ρ‖Hk ⩽ Ck‖ρ‖Hk.
+Proof. Observe that the action of the Laplacian (which we compute in the co ordi-
+nates (α,y )) on the function ψ(α,y ′) is
+∆ ψ(α,y ′) =
+(
+1 + O(ǫ)
+)
+∂2
+αψ(α,y ′) + O(ǫ)∂αψ(α,y ′),
+where O(ǫn) here stands for an ǫ-dependent quantity Q(α,y ) bounded as
+‖Q‖Hk ⩽ Ckǫn
+for all k. Therefore, one ﬁnds that
+‖Dj
+y∂k
+α ¯ρ‖ =
+‖
+‖
+‖
+‖Dj
+y∂k
+αρ − 1
+πDj
+y∂k
+α∆
+∫
+D2
+ψ(α,y ′)dy′
+‖
+‖
+‖
+‖
+=
+‖
+‖
+‖
+‖Dj
+y∂k
+αρ − 1
+π
+∫
+D2
+∂k+2
+α ψ(α,y ′)dy′ +
+k+2∑
+l=1
+∫
+D2
+O(ǫ)∂l
+αψ(α,y ′)dy′
+‖
+‖
+‖
+‖
+⩽ ‖Dj
+y∂k
+αρ‖ + (1 +Cǫ)‖∂k+2
+α ψ‖ +Cǫ
+k+1∑
+l=1
+‖∂l
+αψ‖
+⩽ C‖ρ‖Hk,
+where in the last step we have used Propositions 4.1 and 4.3. The claim t hen
+follows. □
+To derive energy estimates for ψ, we will use that one obviously has
+(4.9)
+∫
+gij∂i ¯ψ∂ jϕdV = −
+∫
+¯ρϕdV
+for all ϕ ∈ H 1(S1
+ℓ × D2). Our ﬁrst result will be an estimate for the L2 norm
+of ¯ψ and Dy ¯ψ. While we can readily derive a bound for these quantities using
+Proposition 4.1, the estimates we prove here are much sharper for small ǫ. This
+will be crucial in the derivation of optimal estimates for ψ.
+Proposition 4.5. The function ¯ψ satisﬁes the H 1 estimates
+‖ ¯ψ‖ + ‖Dy ¯ψ‖ ⩽ Cǫ 2‖ρ‖, ‖∂α ¯ψ‖ ⩽ Cǫ‖ρ‖.
+Proof. Choosingϕ = ¯ψ in Eq. (4.9) and in view of the expression of the coeﬃcients
+of the metric (3.1), one immediately obtains that
+(4.10) ‖ ¯ψ‖2
+˙H1ǫ
+⩽
+(
+1 + O(ǫ)
+)
+‖ ¯ρ‖‖ ¯ψ‖.
+Since ¯ψ(α, ·) has zero mean in the disk D2 for any ﬁxed α, by Poincar´ e’s inequality
+there is a positive constant C, independent of ǫ and α (namely, the ﬁrst nonzero
+Neumann eigenvalue of the disk), such that∫
+D2
+⏐
+⏐Dy ¯ψ(α,y )
+⏐
+⏐2
+dy /greaterorequalslantC
+∫
+D2
+¯ψ(α,y )2dy.16 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+Integrating this inequality in α, the H 1 norm of ¯ψ can be estimated as
+‖ ¯ψ‖2
+˙H1ǫ
+/greaterorequalslant1
+ǫ2
+∫ ⏐
+⏐Dy ¯ψ(α,y )
+⏐
+⏐2
+dydα /greaterorequalslantC
+ǫ2 ‖ ¯ψ‖2.
+Together with Eq. (4.10), this yields ‖ ¯ψ‖ ⩽ Cǫ 2‖ ¯ρ‖ and ‖ ¯ψ‖ ˙H1ǫ
+⩽ Cǫ‖ ¯ρ‖, so the
+claim follows directly from Proposition 4.4. □
+It is particularly easy to derive preliminary estimates (which will be inst rumental
+in the proof of Proposition 4.7) for the derivatives of ¯ψ with respect to α thanks to
+Proposition 4.3. Notice these bounds will be substantially improved lat er on.
+Proposition 4.6. The derivative of ¯ψ with respect to α satisﬁes
+‖Dy∂k+1
+α ¯ψ‖ ⩽ Cǫ‖ρ‖Hk, ‖∂k+2
+α ¯ψ‖ ⩽ Ck‖ρ‖Hk
+for any nonnegative integer k.
+Proof. The claim is an immediate consequence of the deﬁnition of ¯ψ (cf. Eq. (4.7))
+and Proposition 4.3, since obviously the L2(S1
+ℓ × D2) norm of the function
+∂j
+α
+∫
+D2
+ψ(α,y ′)dy′
+is bounded from above by C‖∂j
+αψ‖, which was in turn estimated in the aforemen-
+tioned proposition. □
+We are ready to show that the second derivatives of ¯ψ with respect to the fast
+variabley are bounded by a factor of order ǫ2. The proof of these estimates makes
+essential use of Propositions 4.5 and 4.6.
+Proposition 4.7. The second derivatives of the function ¯ψ with respect to the fast
+coordinates are bounded by
+‖D2
+y ¯ψ‖ ⩽ Cǫ 2‖ρ‖.
+Proof. We will denote by D2
+R the two-dimensional disk of radius R,R being a ﬁxed
+real smaller than 1. Let us start by proving interior estimates. For this, we will
+denote by ∂a the derivative along a y-direction (that is, ∂1 or ∂2), and consider a
+smooth function χ(|y|) equal to 1 for |y|<R and equal to zero in a neighborhood
+of ∂D2. Taking ϕ = ∂a(χ2∂a ¯ψ) in Eq. (4.9) (here and in what follows we will not
+sum over the index a) and integrating by parts, one readily obtains
+(4.11) I 2 :=
+∫
+gij∂i∂a ¯ψ∂ j∂a ¯ψχ 2dV =I1 −I2 −I3,
+where
+I1 :=
+∫
+¯ρ∂ a(χ2∂a ¯ψ)dV , I 2 :=
+∫
+∂a(Bg ij)∂i ¯ψ∂ j(χ2∂a ¯ψ)dαdy
+I3 :=
+∫
+∂a ¯ψg ij∂j(χ2)∂i∂a ¯ψdV .
+Let us estimate these integrals. The ﬁrst one can be easily controlle d using the
+Cauchy–Schwartz inequality and Propositions 4.4 and 4.5:
+|I1| ⩽
+⏐
+⏐
+⏐
+⏐
+∫
+¯ρχ2∂2
+a ¯ψdV
+⏐
+⏐
+⏐
+⏐+
+⏐
+⏐
+⏐
+⏐
+∫
+¯ρ∂ a(χ2)∂a ¯ψdV
+⏐
+⏐
+⏐
+⏐ ⩽ C‖ ¯ρ‖
+(
+‖χ∂ 2
+a ¯ψ‖ + ‖∂a ¯ψ‖)
+⩽ Cǫ‖ρ‖I +Cǫ 2‖ρ‖2.EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 17
+The integral I2 can be controlled using an analogous argument, Lemma 4.2 and
+Jensen’s inequality. This leads to the estimate
+|I2| ⩽
+⏐
+⏐
+⏐
+⏐
+∫
+∂a(Bg ij)χ2∂i ¯ψ∂ j∂a ¯ψdαdy
+⏐
+⏐
+⏐
+⏐+
+⏐
+⏐
+⏐
+⏐
+∫
+∂a(Bg ij)∂i ¯ψ∂ j(χ2)∂a ¯ψdαdy
+⏐
+⏐
+⏐
+⏐
+⩽ Cǫ‖ ¯ψ‖ ˙H1
+ǫ
+I +C‖∂a ¯ψ‖
+( ∫ (
+∂a(Bg ij)∂i ¯ψ∂ jχ
+) 2
+dαdy
+) 1
+2
+⩽ Cǫ 2‖ρ‖I +Cǫ 2‖ρ‖
+∫ ⏐
+⏐
+⏐∂a(Bg ij)∂i ¯ψ∂ jχ
+⏐
+⏐
+⏐dαdy
+⩽ Cǫ 2‖ρ‖I +Cǫ 3‖ρ‖‖ ¯ψ‖ ˙H1ǫ
+‖χ‖ ˙H1ǫ
+⩽ Cǫ 2‖ρ‖I +Cǫ 3‖ρ‖2,
+where in the fourth line we have used that ‖χ‖ ˙H1ǫ
+= ‖Dyχ‖/ǫ = C/ǫ. A similar
+argument shows that
+|I3| ⩽ C‖∂a ¯ψ‖‖χ‖ ˙H1ǫ
+I ⩽ Cǫ‖ρ‖I.
+Feeding these bounds into Eq. (4.11), we obtain
+I 2 ⩽ Cǫ‖ρ‖I +Cǫ 2‖ρ‖2,
+so that I ⩽ Cǫ‖ρ‖. From the deﬁnition of the function χ and the identity (4.5) it
+then follows that
+(4.12) ‖D2
+y ¯ψ‖S1
+ℓ ×D2
+R
+⩽ Cǫ 2‖ρ‖,
+which is the desired interior estimate.
+To prove the estimates up to the boundary, we begin by showing tha t the
+˙H 1
+ǫ norm of
+∂θ ¯ψ ≡y1∂2 ¯ψ −y2∂1 ¯ψ
+is bounded in terms of ‖ρ‖. For this, we will ﬁnd it convenient to take a smooth
+function χ(|y|), equal to 1 for |y| > R and vanishing in a neighborhood of the
+origin, and use polar coordinates throughout without further not ice. If we now
+takeϕ =χ2 ¯ψθθ in Eq. (4.4) and integrate by parts, we readily ﬁnd that∫
+gij∂i ¯ψθ∂j ¯ψθχ2dV =
+∫
+¯ρ ¯ψθθχ2dV −
+∫
+∂θ(Bg ij)∂i ¯ψ∂ j(χ2 ¯ψθ)dαdy
+−
+∫
+gij∂i ¯ψθ ¯ψθ∂j(χ2)dV ,
+where the indices i,j now range over the set {r,θ,α }. Notice that the reason we
+are now using polar coordinates is that ∂θ does not commute with the derivatives
+with respect to ( y1,y 2). Arguing as above, one ﬁnds that∫
+gij∂i ¯ψθ∂j ¯ψθχ2dV ⩽ Cǫ‖ρ‖,
+which ensures that
+(4.13) ‖ ¯ψθθ‖S1
+ℓ ×AR + ‖ ¯ψrθ‖S1
+ℓ ×AR ⩽ Cǫ 2‖ρ‖,
+where AR := D2\
+D2
+R is the annulus of inner radius R.
+To estimate the derivative ¯ψrr, it now suﬃces to isolate this quantity in the
+equation ∆ ¯ψ = ¯ρ. From the expression of the Laplacian in these coordinates (4.2)
+it is apparent that for r>R one can write ¯ψrr as
+ǫ−2 ¯ψrr − ¯ρ = O(ǫ−2)
+(
+| ¯ψθθ| + | ¯ψr|
+)
++ O(ǫ−1) ¯ψθ + O(1)
+(
+| ¯ψαθ| + | ¯ψαα| + | ¯ψα|
+)
+.18 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+From Propositions 4.5–4.7 and the estimates (4.13), it then follows th at
+‖ ¯ψrr‖S1
+ℓ ×AR ⩽ Cǫ 2‖ρ‖.
+This yields the desired boundary estimates, thus completing the pro of of the propo-
+sition. □
+The results we have established so far show that the derivatives of ¯ψ can be
+bounded in terms of the source ρ as
+‖ ¯ψ‖ + ‖Dy ¯ψ‖ + ‖D2
+y ¯ψ‖ ⩽ Cǫ 2‖ρ‖,(4.14a)
+‖∂α ¯ψ‖ + ‖Dy∂α ¯ψ‖ ⩽ Cǫ‖ρ‖,(4.14b)
+‖∂2
+α ¯ψ‖ ⩽ C‖ρ‖.(4.14c)
+However, having in mind applications in forthcoming sections,we would r ather have
+estimates where the RHS always has a factor of ǫ2.
+In the following theorem we show that this can be achieved by replacin g the
+L2 norm of ρ by its H 1 norm (thus using estimates that are weaker in terms of the
+gain of derivatives), and provide a generalization for higher derivat ives. It is worth
+emphasizing that both the estimates (4.14) and those in the following theorem are
+optimal with respect to its dependence on the small parameter ǫ, as can be checked
+easily.
+Theorem 4.8. For any nonnegative integers j and k we have the bound
+‖Dj
+y∂k
+α ¯ψ‖ ⩽ Cjkǫ2‖ρ‖HJ+k,
+whereJ := max{j − 2, 0}.
+Proof. The proof proceeds by induction on J +k, that is, on the number of deriva-
+tives in the RHS of the inequality. The case J +k = 0 follows from Propositions 4.5
+and 4.7. To avoid cumbersome notations that might obscure the arg ument, we will
+sketch the procedure for the case J +k = 1, where one has to estimate ∂α ¯ψ,Dy∂α ¯ψ
+(improving the bounds in Propositions 4.5 and 4.6), D2
+y∂α ¯ψ and D3
+y ¯ψ. Once this
+case has been worked out in detail, it is straightforward to prove th e general result
+using an induction argument.
+Let us begin by estimating the quantities having derivatives with resp ect to α,
+that is, ∂α ¯ψ,Dy∂α ¯ψ andD2
+y∂α ¯ψ. An easy computation using the expression of the
+Laplacian (4.2) shows that the commutator
+̺ := ∆( ∂α ¯ψ) −∂α(∆ ¯ψ)
+can be written as
+̺ = O(ǫ−1)D2
+y ¯ψ + O(ǫ) ¯ψαα + O(1)Dy∂α ¯ψ + O(ǫ−1)Dy ¯ψ + O(ǫ) ¯ψα.
+Now from the H 2 estimates proved in Propositions 4.5–4.7, one obtains that the
+L2 norm of the commutator is bounded by
+‖̺‖ ⩽ Cǫ‖ρ‖.
+The function ∂α ¯ψ obviously satisﬁes the zero-mean condition
+(4.15a)
+∫
+D2
+∂α ¯ψ(α,y ′)dy′ = 0,EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 19
+the boundary condition
+(4.15b) ∂ν(∂α ¯ψ) = 0
+on S1
+ℓ ×∂D2 and the equation
+(4.15c) ∆( ∂α ¯ψ) = ∂α ¯ρ +̺.
+As the L2 norm of the RHS is bounded by C‖ρ‖H1 , an immediate application
+of Propositions 4.5 and 4.7 (applied to the boundary problem (4.15) ra ther than
+to (4.1)) shows that
+‖ ¯ψα‖ + ‖Dy ¯ψα‖ + ‖D2
+y ¯ψα‖ ⩽ Cǫ 2‖ρ‖H1.
+To estimateD3
+y ¯ψ we will argue essentially as in the proof of Proposition 4.7. One
+starts by proving interior estimates, which are obtained by feeding the test function
+ϕ := ∂2
+a(χ2∂2
+a ¯ψ) in the identity (4.9). As before, χ(y) is a smooth function which
+vanishes in a neighborhood of ∂D2 and is identically equal to 1 in a disk of radius R
+and the script a (which is not summed) denotes any y direction. In order to get
+boundary estimates, one can start by noticing that the same argu ment we have used
+above to control derivatives with respect to α also works for ∂θ ¯ψ ≡y1∂2 ¯ψ −y2∂1 ¯ψ.
+Indeed, the L2 norm of the commutator
+˜̺ := ∆( ∂θ ¯ψ) −∂θ(∆ ¯ψ)
+is also bounded by Cǫ‖ρ‖ as a consequence of Propositions 4.5–4.7, and besides
+∂θ ¯ψ satisﬁes the boundary value problem
+∆( ∂θ ¯ψ) = ∂θ ¯ρ + ˜̺ in S1
+ℓ × D2,
+∂ν (∂θ ¯ψ) = 0 on S1
+ℓ ×∂D2,
+∫
+D2
+∂θ ¯ψ(α,y ′)dy′ = 0.
+It then follows that theL2 norm of the derivativesD2
+y∂θ ¯ψ are bounded byCǫ 2‖ρ‖H1.
+Hence one can now diﬀerentiate the equation ∆ ¯ψ = ¯ρ with respect to r and iso-
+late∂3
+r ¯ψ to show that the norm ‖∂3
+r ¯ψ‖S1
+ℓ ×AR in a neighborhood of the boundary is
+bounded by Cǫ 2‖ρ‖H1, as claimed.
+This proves the induction hypotheses for J +k = 1. For higher values of J +k, the
+idea is exactly the same. Derivatives with respect to α (orθ) are dealt with by taking
+derivatives directly in the equation and invoking the induction hypoth eses. To
+estimates the highest derivative with respect to r, one combines interior estimates
+with test function
+ϕ =∂J+k+1
+a (χ2∂J+k+1
+a ¯ψ)
+with the direct isolation of ∂J+k+2
+r ¯ψ in the equation ∂J+k
+r (∆ ¯ψ − ¯ρ) = 0. □
+4.3. Pointwise estimates. Taking into account that Dy ¯ψ = Dyψ, we can com-
+bine the results in the previous two subsections to obtain H k estimates for ψ in
+which the derivatives with respect to the fast and slow variables are controlled in
+terms of diﬀerent (and optimal) powers of ǫ. To begin with, we can put together
+Propositions 4.3 and 4.6 and Theorem 4.8 to arrive at the following boun ds:
+Theorem 4.9. The functions ψ and ¯ψ satisfy the H k estimate
+‖ψ‖Hk+2 ⩽ Ck‖ρ‖Hk, ‖ ¯ψ‖Hk ⩽ Ckǫ2‖ρ‖Hk.
+for any nonnegative integer k.20 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+Remark 4.10. It is not hard to prove that these estimates are optimal with respe ct
+to the dependence on ǫ. To have a rough idea of why this is true, the reader might
+want to consider the problem
+(4.16)
+ψαα + ∆ yψ
+ǫ2 =ρ in S1
+ℓ × D2, ∂ νψ = 0 on S1
+ℓ ×∂D2,
+∫
+ψdαdy = 0,
+which can be understood as a simpliﬁed version of the problem (4.1). H ere and in
+what follows, ∆ yψ :=∂2
+1ψ+∂2
+2ψ stands for the standard Laplacian in the variables y.
+For future reference, it is convenient to invoke the Sobolev embed ding theorem
+and record the following estimate for the Ck norm of the function ψ:
+Theorem 4.11. The function ψ satisﬁes the Ck estimates
+‖ψ‖C k ⩽ Ck‖ρ‖Hk, ‖Dyψ‖C k ⩽ Ckǫ2‖ρ‖Hk+3
+for any nonnegative integer k.
+Proof. It follows immediately from Theorem 4.9 upon noticing that Dy ¯ψ = Dyψ
+and using the Sobolev inequality ‖ϕ‖C k ⩽ C‖ϕ‖Hk+2. □
+Remark 4.12. It is clear that the same bounds we have proved for the function ψ
+hold true if we assume that ψ solves the model problem (4.16) instead of ∆ ψ =ρ.
+In particular, for future reference we record here that this fun ction also satisﬁes the
+estimates
+(4.17) ‖ψ‖Hk+2 + ‖D2
+yψ‖Hk
+ǫ2 ⩽ Ck‖ρ‖Hk, ‖Dyψ‖Hk ⩽ Ckǫ2‖ρ‖Hk.
+5. Harmonic fields in thin tubes
+In this section we use the estimates proved in Section 4 to compute t he harmonic
+ﬁeld in a thin tube up to terms that are suitably bounded for small ǫ.
+We recall that a vector ﬁeld h in the tube Tǫ is harmonic if it is divergence-free,
+irrotational, and tangent to the boundary. The vector space of a ll harmonic ﬁelds
+in the tube will be denoted by
+(5.1) H(Tǫ) :=
+{
+h ∈C∞(Ω, R3) : div h = 0, curlh = 0, h·ν = 0
+}
+.
+It is standard that the space H(Tǫ) is one-dimensional, as it is isomorphic to the
+ﬁrst cohomology group of the tube with real coeﬃcients.
+Let us consider the vector ﬁeld in S1
+ℓ × D2 deﬁned by
+(5.2) h0 :=B−2(
+∂α +τ∂ θ
+)
+.
+It can be readily checked that h0 is irrotational (with respect to the metric (3.3))
+and tangent to the boundary.
+By the Hodge decomposition [15], there is a function ψ such that
+(5.3) h :=h0 + ∇ψ
+is harmonic. Clearly this is the only harmonic vector ﬁeld in S1
+ℓ × D2 up to a
+multiplicative constant. By ∇ψ we are denoting the gradient of the function ψEXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 21
+with respect to the metric (3.3), that is,
+(5.4) ∇ψ = ψα +τψ θ
+B2 ∂α + ψr
+ǫ2 ∂r + Aψθ +ǫ2r2τψ α
+(ǫrB)2 ∂θ.
+The fact that the ﬁeld h is divergence-free implies that ψ solves the Neumann
+boundary value problem
+∆ ψ =ρ in S1
+ℓ × D2, ∂ νψ = 0 on S1
+ℓ ×∂D2,
+where
+(5.5) ρ :=ǫB−3r(τκ sinθ −κ′ cosθ)
+is minus the divergence of h0 (and, as such, satisﬁes
+∫
+ρdV = 0). We will also
+assume that ∫ ψdαdy = 0 in order to determine ψ uniquely.
+In the following two sections we will need some estimates for the harm onic ﬁeld h
+(or, equivalently, for the function ψ) that depend on the particular form of the
+source term ρ. These estimates are obtained in the following theorem, where we
+calculate, up to some controllable error, some derivatives of the fu nctionψ that we
+will use later on. To simplify the notation, we will write O(ǫn) for any function χ
+satisfying the bound ‖χ‖C k ⩽ Ckǫn for all k (and also for numbers whose absolute
+value is smaller than Cǫ n, but the meaning should be clear from the context).
+Theorem 5.1. Consider the functions
+ϕ0 := ǫ3(r3 − 3r)
+8 (τκ sinθ −κ′ cosθ),(5.6)
+ϕ1 := 13ǫ4(r4 − 2r2)
+96 (τκ 2 sin 2θ −κκ′ cos 2θ),(5.7)
+which are obviously of order O(ǫ3) and O(ǫ4), respectively. Then ψ is related to
+these functions through the estimates
+ψ = O(ǫ2),
+Dyψ =Dyϕ0 + O(ǫ4),
+∂θψ =∂θϕ0 +∂θϕ1 + O(ǫ5).
+Proof. Let ρ0 :=ǫr(τκ sinθ −κ′ cosθ). It is easy to see that the function ϕ0(α,y )
+is the only solution to the problem
+∆ yϕ0 =ǫ2ρ0 in S1
+ℓ × D2, ∂ rϕ0|r=1 = 0,
+∫
+D2
+ϕ0dy = 0
+for any value of the angle α.
+Consider now the function ψ1 := ψ −ϕ0, which obviously has zero normal de-
+rivative on S1
+ℓ ×∂D2 and has zero mean because so do ψ and ϕ0. The Laplacian
+of ψ1 is given by
+∆ ψ1 =ρ − ∆ ϕ0 = (ρ −ρ0) +
+( ∆ yϕ0
+ǫ2 − ∆ ϕ0
+)
+.
+Using Eq. (5.5), the ﬁrst term in brackets can be easily shown to be
+ρ −ρ0 = 3ǫ2κr2 cosθ
+(
+τκ sinθ −κ′ cosθ
+)
++ O(ǫ3),22 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+while the second can be easily dealt with using the formula (4.2) for the Laplacian:
+∆ yϕ0
+ǫ2 − ∆ ϕ0 = κ
+ǫ
+(
+cosθ∂ rϕ0 − sinθ∂ θϕ0
+r
+)
++ O(ǫ3).
+Using the deﬁnition of ϕ0, this yields
+∆ ψ1 =ρ1 +ρ2 + O(ǫ3),
+with
+ρ1 := 13ǫ2κr2
+8
+[
+κτ sin 2θ −κ′ cos 2θ
+]
+,
+ρ2 := ǫ2(3 − 14r2)κκ′
+8
+of order O(ǫ2), so the estimates we proved in Theorem 4.11 then ensure that
+ψ1 = O(ǫ2) and Dyψ1 = O(ǫ4).
+This shows that ψ = O(ǫ2) and Dyψ =Dyϕ0 + O(ǫ4).
+To calculateDyψ up to O(ǫ5) we will consider two auxiliary functions ϕ1 andϕ2.
+The function ϕ1(α,y ) is the solution to the problem
+∆ yϕ1 =ǫ2ρ1 in S1
+ℓ × D2, ∂ rϕ1|r=1 = 0,
+∫
+D2
+ϕ1dy = 0.
+The existence and uniqueness of the solution are standard given th at the RHS
+satisﬁes ∫
+D2
+ρ1dy = 0
+for all α. In fact, the solution can be computed in closed form using separat ion of
+variables, which readily yields the formula for ϕ1 given in the statement (Eq. (5.7)).
+The function ϕ2 is the solution to the problem
+∂2
+αϕ2 + ∆ yϕ2
+ǫ2 =ρ2 in S1
+ℓ × D2, ∂ rϕ2|r=1 = 0,
+∫
+ϕ2dαdy = 0.
+Again, the existence and uniqueness of solutions is standard becau se the RHS sat-
+isﬁes the zero-mean condition ∫
+ρ2dαdy = 0.
+(The reason why we are including derivatives with respect to α in the deﬁnition
+ofϕ2 but not in that of ϕ1 is that the source term ρ2 has zero mean when averaged
+with respect to α and y but not when averaged in y only.) Obviously ϕ2 does not
+depend on θ.
+We can now estimate ψ2 := ψ1 −ϕ1 −ϕ2 using the same argument we used
+withψ1. We start by noticing that, by construction, ∂rψ2 = 0 when r = 1 and the
+integral
+∫
+S1
+ℓ ×D2ψ2dαdy is zero. The Laplacian of ψ2 is
+∆ ψ2 =ρ1 +ρ2 − ∆ ϕ1 − ∆ ϕ2 + O(ǫ3)
+=
+( ∆ yϕ1
+ǫ2 − ∆ ϕ1
+)
++
+(
+∂2
+αϕ2 + ∆ yϕ2
+ǫ2 − ∆ ϕ2
+)
++ O(ǫ3)
+= O(ǫ3).EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 23
+To pass to the third line we have used the expression of the Laplacian in polar
+coordinates (Eq. (4.2)) and of ϕ1, as well as the estimates for ϕ2 that stem from
+Theorem 4.11 and Remark 4.12. Another application of Theorem 4.11 s hows that
+Dyψ2 = O(ǫ5). Since ∂θϕ2 = 0 and
+ψ =ϕ0 +ϕ1 +ϕ2 +ψ2,
+the theorem follows. □
+6. Beltrami fields with prescribed harmonic part
+Our goal in this section is to construct a Beltrami ﬁeld v in the thin tube Tǫ,
+tangent to the boundary, whose harmonic part is a ﬁxed harmonic ﬁ eld h. We will
+be particularly interested in the way the Beltrami ﬁeld v is related to the harmonic
+ﬁeldh as the parameter λ tends to zero, since in the next section it will be crucial to
+have good estimates for this relation in order to compute some dyna mical quantities
+of the ﬁeld v.
+This section is divided in three parts. In the ﬁrst subsection, we pro ve an exis-
+tence result for a boundary value problem for the curl operator in tubes in which
+we can prescribe the harmonic part of the solution (Corollary 6.3). I n the second
+subsection we will provide estimates for an auxiliary vector equation with constant
+coeﬃcients (Proposition 6.6), which are used in the third subsection to prove the
+desired estimates, optimal in ǫ, for the boundary value problem under consideration
+(Theorem 6.8).
+6.1. An existence result for the curl operator. Let us begin by making precise
+what we understand by the harmonic part of a vector ﬁeld w in the thin tube Tǫ
+that is tangent to the boundary. We will deﬁne its harmonic part to be the vector
+ﬁeld
+Pw := h
+‖h‖2
+L2(Tǫ)
+∫
+Tǫ
+h ·wdx,
+that is, its projection to the space of harmonic vector ﬁelds H(Tǫ), as introduced
+in Eq. (5.1). In this subsection, we will denote by
+‖v‖2
+Hk(Tǫ) :=
+k∑
+j=0
+∫
+Tǫ
+|Djv|2dx
+the usualH k norm of a vector ﬁeld in the tube Tǫ ⊂ R3 and writeL2(Tǫ) forH 0(Tǫ).
+Throughout, we will use the notation Cǫ for positive constants, possibly not uni-
+formly bounded in the small parameter ǫ, that may vary from line to line.
+In the following proposition we present the basic existence result th at we will
+use to show the existence of Beltrami ﬁelds with prescribed harmon ic part. The
+result is probably known to some experts but we have not found it in t he literature.
+The proof relies on a duality argument for a suitable energy function al and the
+Fredholm alternative theorem.
+Proposition 6.1. Letf be an L2 vector ﬁeld in Tǫ which is divergence-free. There
+is a countable subset of the real line without accumulation p oints such that, if the
+constantλ does not belong to it, then the equation
+curlw −λw =f, divw = 0(6.1)24 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+has a unique H 1 solution w that is tangent to the boundary ∂Tǫ and has zero
+harmonic part.
+Proof. Let us consider the Hilbert spaces of vector ﬁelds
+F :=
+{
+F ∈L2(Tǫ, R3) : div F = 0
+}
+,
+W :=
+{
+w ∈H 1(Tǫ, R3) : w is tangent to ∂Tǫ
+}
+,
+where the tangency condition is to be understood in terms of trace s. It is well
+known [15] that, because of the tangency condition imposed on W, the H 1 norm is
+equivalent to the norm
+‖w‖2
+W := ‖ curlw‖2
+L2(Tǫ) + ‖ divw‖2
+L2(Tǫ) + ‖Pw‖2
+L2(Tǫ)
+in the sense that, for all w ∈ W ,
+‖w‖W
+Cǫ
+⩽ ‖w‖H1(Tǫ) ⩽ Cǫ‖w‖W.
+Consider the scalar product E : W × W → R associated to the norm ‖ · ‖ W,
+given by
+E[w,u ] :=
+∫
+Tǫ
+(
+curlw · curlu + divw divu + Pw · Pu
+)
+dx.
+By the Riesz representation theorem, for any L2 vector ﬁeld F there is a unique
+wF ∈ W such that
+(6.2) E[wF,u ] =
+∫
+Tǫ
+F · curludx
+for all u ∈ W .
+We claim that, for any F ∈ F , the condition (6.2) is equivalent to demanding
+thatwF be an H 1 solution to the equation
+curlwF =F, divwF = 0(6.3)
+in the tube Tǫ that is tangent to the boundary and has zero harmonic part. One
+side of the implication is obvious, so we only need to prove that if wF satisﬁes the
+condition (6.2) with F ∈ F , then it solves Eq. (6.3).
+For this, let us take suitable choices of the ﬁeld u in Eq. (6.2). Letting u = PwF
+be the harmonic part of wF , we obtain that PwF is zero. To see that div wF is zero
+too, it suﬃces to take u = ∇ψ, with ψ being the solution to the boundary value
+problem
+∆ ψ = divwF in Tǫ, ∂ νψ|∂Tǫ = 0,
+∫
+Tǫ
+ψdx = 0.
+Notice that, in order to show that the solution exists and ∇ψ belongs to the
+space W, we need to use that wF is in H 1 and tangent to the boundary.
+Since PwF and divwF are zero, the condition (6.2) can then be written as
+(6.4)
+∫
+Tǫ
+curlG ·udx +
+∫
+∂Tǫ
+(G ×ν) ·udσ = 0
+for all u ∈ W , where
+G := curlwF −FEXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 25
+anddσ denotes the induced surface measure on the boundary. Letting u vary over
+the space of smooth vector ﬁelds of compact support in Tǫ, we immediately infer
+thatG must be irrotational. Now that we know the ﬁrst term in (6.4) is always zero,
+we can take an arbitrary ﬁeld u tangent to the boundary to derive that G ×ν must
+be zero, so that G is divergence-free, irrotational and orthogonal to the boundar y.
+By the Hodge decomposition theorem, this ensures the ﬁeld G is identically zero.
+Hence we have proved that wF is the only solution to the problem (6.3). Notice
+that, as an immediate consequence of the equivalence of the H 1 norm to ‖ · ‖W on
+W,
+(6.5) ‖wF ‖H1(Tǫ) ⩽ Cǫ‖F ‖L2(Tǫ)
+for some constant that depends on ǫ but not on F .
+Let us consider the operator K mapping a ﬁeld F ∈ F to its solution wF , which
+we regard as a linear map K : F → F whose image lies in W. It is standard in
+view of the estimate (6.5) that the operator K is compact, so by the Fredholm
+alternative the equation
+(6.6) Kw − 1
+λw = ˜f
+has a unique solution for each ˜f ∈ F and any constant 1/λ that does not belong to
+the spectrum of the adjoint operator K ∗. This spectrum is a bounded countable
+set that only accumulates at zero.
+Letw be the only solution to Eq. (6.6) with ˜f = −Kf/λ , for an arbitrary ﬁeld f
+in F . Since w =K(λw +f ) belongs to the image of K, from the above discussion
+it stems that the ﬁeld w is tangent to the boundary, divergence-free and has zero
+harmonic part, and by the deﬁnition of K satisﬁes curlw =λw+f . The proposition
+then follows. □
+Remark 6.2. The proof of the proposition shows that the values of λ for which
+there is not a unique solution to the Eq. (6.1) are given by the recipro cal of the
+eigenvalues of the compact operator K ∗ that we deﬁned in the proof.
+As a direct application of the previous proposition, we derive the follo wing corol-
+lary, which gives the existence result for Beltrami ﬁelds with prescr ibed harmonic
+part that we will use later on. Of course, it is apparent that this cor ollary is totally
+diﬀerent from the results that one has on compact manifolds withou t boundary,
+where the Beltrami equation has no solutions but for λ belonging to a countable
+set and these solutions (i.e., the eigenfunctions of curl) are necess arily orthogonal
+to harmonic ﬁelds.
+Corollary 6.3. For any constant λ not belonging to certain ǫ-dependent countable
+set without accumulation points, there is a unique solution to the equation
+curlv =λv, divv = 0
+in the tube Tǫ that is tangent to the boundary and whose harmonic part is Pv =h.
+Proof. It follows immediately from Proposition 6.1 by taking v = h +w, with w
+being the only solution to Eq. (6.1) with f =λh. □26 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+6.2. Estimates for an equation with constant coeﬃcients. In this section
+we will prove estimates for a curl-type equation with constant coeﬃ cients on the
+domain S1
+ℓ × D2. This equation with constant coeﬃcients is closely related to the
+Beltrami equation on the thin tube Tǫ and will be used subsequently to estimate
+the diﬀerence between the Beltrami ﬁeld v and its harmonic part h. As before, the
+natural coordinates on the domain S1
+ℓ × D2 will be denoted by ( α,y ), and we will
+consider polar coordinates ( α,r,θ ) where convenient.
+Vector ﬁelds on S1
+ℓ × D2 are regarded as functions W : S1
+ℓ × D2 → R3, whose
+components are denoted by
+W = (Wα,W 1,W 2).
+We will sometimes write Wy := (W1,W 2). On these vector ﬁelds we will consider
+the action of the diﬀerential operators
+DivW :=∂αWα +∂1W1 +∂2W2,
+CurlǫW :=
+(
+∂1W2 −∂2W1,∂2Wα
+ǫ2 −∂αW2,∂ αW1 − ∂1Wα
+ǫ2
+)
+,
+and we will say that a vector ﬁeld W is tangent to the boundary if y ·Wy = 0 (in the
+sense of traces) on the torus |y| = 1. Obviously, Div and Curl ǫ are related to the
+standard divergence and curl operators through a rescaling, bu t for our purposes
+this form of the operators is more convenient.
+We will also consider the functional Q that maps each ﬁeld W to the real number
+Q[W ] :=
+∫
+Wαdαdy.
+This is obviously related with the projection onto the space of “harm onic ﬁelds”
+associated to the operators Div and Curl ǫ, which is spanned by the constant ﬁeld
+(1, 0, 0), so when Q[W ] = 0 we will simply say that the harmonic part of Q[v] is
+zero. All integrals are taken over S1
+ℓ × D2 unless otherwise stated. To control the
+behavior of the vector ﬁelds, in addition to the usual H k norms we will consider
+the norms
+(6.7) ‖W ‖2
+Hkǫ
+:= ‖Wα‖2
+Hk +ǫ2‖Wy‖2
+Hk.
+These norms should not be confused with the norm ‖ · ‖ ˙H1ǫ
+that we considered for
+scalar functions in Section 4. We will simply write ‖ · ‖ ǫ for the corresponding
+L2
+ǫ norm (k = 0), and reserve the notation ‖ · ‖ for the usual L2 norm, where factors
+of ǫ do not appear.
+In the following proposition we compute the lowest eigenvalue of a self -adjoint
+operator associated with Curl ǫ to show how the L2
+ǫ norm of a vector ﬁeld W can
+be controlled using that of Curl ǫW :
+Proposition 6.4. LetW be an H 1 vector ﬁeld on S1
+ℓ × D2 with DivW = 0 that is
+tangent to the boundary and has zero harmonic part. Then
+‖ CurlǫW ‖ǫ /greaterorequalslantC ‖W ‖ǫ
+ǫ .
+Proof. It is an easy consequence of [31] that Curl ǫ deﬁnes an unbounded self-adjoint
+operator on the Hilbert space
+H :=
+{
+W ∈L2(S1
+ℓ ×D2, R3) : Div W = 0, Q[W ] = 0, W tangent to the boundary
+}
+,EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 27
+endowed with the scalar product associated with the norm ‖ · ‖ ǫ. The domain of
+this operator consists of the H 1 vector ﬁelds in H such that Curl ǫW is also in
+H. Hence, to prove the proposition it is enough to see that the eigenv alues of this
+operator, in absolute value, satisfy |µ|>C/ǫ .
+Exploiting the symmetry of the equations (that is, rotation of the a nglesα andθ),
+it is not hard to see that the eigenvalue equation
+CurlǫW =µW,
+withW divergence-free, tangent to the boundary and with zero harmon ic part, can
+be solved in closed form. Indeed, the symmetry ensures that the e igenfunctions can
+be chosen of the form
+W = e inα+imθ(
+v1(r)eα +v2(r)er +v3(r)eθ
+)
+,
+where n,m are integers, vj(r) are functions of the radial variable and the unit
+vectorseα,e r,e θ are deﬁned in the obvious way:
+eα := (1, 0, 0), e r := (0, cosθ, sinθ), e θ := (0, − sinθ, cosθ).
+Using this expression, a tedious but straightforward computation shows that the
+eigenvalues with the smallest absolute value are ±j(1)
+1 /ǫ, where j(1)
+1 denotes the
+ﬁrst positive zero of the Bessel function J1. □
+In the proof of the main result of this subsection we will need the follo wing
+identity:
+Lemma 6.5. LetW be a vector ﬁeld tangent to the boundary of S1
+ℓ × D2. Then
+ǫ2‖∂αWy‖2 + ‖DyWy‖2 + ‖∂αWα‖2 +ǫ−2‖DyWα‖2 = ‖ DivW ‖2
++ ‖ CurlǫW ‖2
+ǫ −
+∫
+S1
+ℓ ×∂D2
+|Wy|2dαdθ,
+where we are writing dαdθ for the induced surface measure on S1
+ℓ ×∂D2.
+Proof. One can easily check that
+‖ DivW ‖2 + ‖ CurlǫW ‖2
+ǫ = ‖∂αWα‖2
++
+2∑
+i=1
+(
+ǫ2‖∂αWi‖2 + ‖∂iWα‖2
+ǫ2
+)
++
+2∑
+i,j=1
+‖∂iWj ‖2 +S,
+where
+S :=
+∑
+i,j∈{α,1,2}
+∫ (
+∂iWi∂jWj −∂jWi∂iWj
+)
+dαdy.28 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+We can now integrate by parts to write
+S = −
+2∑
+i,j=1
+∫
+S1
+ℓ ×∂D2
+(yjWi∂iWj +yjWα∂αWj)dαdθ
+=
+2∑
+i,j=1
+∫
+S1
+ℓ ×∂D2
+Wj∂i(yjWi)dαdθ
+=
+2∑
+i=1
+∫
+S1
+ℓ ×∂D2
+W 2
+i dαdθ.
+To pass to the second identity we have used that y ·Wy is zero on the boundary,
+so the second summand in the ﬁrst integrand vanishes, and taken a dvantage of the
+fact that W is tangent to the boundary to integrate by parts a second time. □
+In the following proposition, which is the main result in this subsection, we prove
+an estimate for the operators Div and Curl ǫ that is “optimal” with respect to the
+small parameter ǫ. In the proof of this version of the inequalities we will also derive
+another in which the RHS has one derivative less than the LHS, as is cu stomary.
+However, the estimate we will need later on is the former, which is why it is the one
+that appears in the statement. It is not hard to check that the de pendence on ǫ of
+both estimates is sharp.
+Proposition 6.6. Let W be any vector ﬁeld in S1
+ℓ × D2 that is tangent to the
+boundary and satisﬁes the equation
+CurlǫW =F, DivW =ρ
+for a scalar function ρ and a vector ﬁeld F . Then
+‖Wα‖Hk + ‖DyWα‖Hk ⩽ Ck
+(
+ǫ‖F ‖Hkǫ + ‖ρ‖Hk +
+⏐
+⏐Q[W ]
+⏐
+⏐)
+,
+‖∂αWα‖Hk ⩽ Ck
+(
+‖F ‖Hkǫ + ‖ρ‖Hk
+)
+,
+‖Wy‖Hk +ǫ‖∂αWy‖Hk + ‖DyWy‖Hk ⩽ Ck
+(
+‖F ‖Hkǫ
++ ‖ρ‖Hk +
+⏐
+⏐Q[W ]
+⏐
+⏐)
+for constants that depend on k but not on ǫ.
+Proof. We can write the ﬁeld W as the sum of three ﬁelds:
+(6.8) W =V +
+(
+∂αψ,∂1ψ
+ǫ2 ,∂2ψ
+ǫ2
+)
++
+( Q[W ]
+|S1
+ℓ × D2|, 0, 0
+)
+.
+The scalar function ψ that appears in the second vector ﬁeld is deﬁned as the only
+solution to the Neumann boundary value problem
+(6.9) ∂2
+αψ + ∆ yψ
+ǫ2 =ρ in S1
+ℓ × D2, ∂ νψ|S1
+ℓ ×∂D2 = 0,
+∫
+S1
+ℓ ×D2
+ψdαdy = 0,
+and it should be noticed that the third vector ﬁeld (which correspon ds to the
+harmonic part of W ) is constant. As a consequence of these deﬁnitions and the
+properties of W , the ﬁeld V is tangent to the boundary, has zero harmonic part
+(Q[V ] = 0) and satisﬁes the equation
+(6.10) Curl ǫV =F, DivV = 0.EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 29
+The H k estimates stated in Remark 4.12 (Eq. (4.17)), applied to the bounda ry
+problem (6.9), provide suitable control of the second ﬁeld that app ears in Eq. (6.8)
+(that is, the “gradient” part) and its derivatives, as they show th at
+‖∂αψ‖Hk + ‖∂2
+αψ‖Hk + ‖Dy∂αψ‖Hk
+ǫ ⩽ C‖ρ‖Hk,
+‖Dyψ‖Hk
+ǫ2 + ‖Dy∂αψ‖Hk
+ǫ + ‖D2
+yψ‖Hk
+ǫ2 ⩽ C‖ρ‖Hk.
+The third ﬁeld in Eq. (6.8) is trivial to control as it is constant. There fore, to prove
+the proposition it is enough to derive suitable estimates for the ﬁeld V .
+Hence, our goal is to show that the vector ﬁeld V satisﬁes
+‖Vα‖Hk + ‖DyVα‖Hk ⩽ Cǫ‖F ‖Hk
+ǫ
+,(6.11a)
+‖∂αVα‖Hk ⩽ C‖F ‖Hkǫ ,(6.11b)
+‖Vy‖Hk +ǫ‖∂αVy‖Hk + ‖DyVy‖Hk ⩽ C‖F ‖Hk
+ǫ
+.(6.11c)
+For this we start by noticing that, when applied to Eq. (6.10), the L2 estimate
+proved in Proposition 6.4 yields ‖V ‖ǫ ⩽ Cǫ‖F ‖ǫ, or equivalently
+(6.12) ‖Vα‖ ⩽ Cǫ‖F ‖ǫ, ‖Vy‖ ⩽ C‖F ‖ǫ.
+To prove the inequalities (6.11), we start by using estimates for bou ndary traces
+and interpolation to control the term
+S :=
+∫
+S1
+ℓ ×∂D2
+|Vy|2 = ‖Vy‖2
+L2(S1
+ℓ ×∂D2)
+⩽ C‖Vy‖2
+L2(S1
+ℓ )×H1/2(D2) ⩽ C‖Vy‖
+(
+‖Vy‖ + ‖DyVy‖
+)
+that appears in Lemma 6.5. Together with the L2 estimate (6.12), we can then
+apply Lemma 6.5 to the ﬁeld V to infer that
+‖∂αVα‖ ⩽ C‖F ‖ǫ, ‖DyVα‖ ⩽ Cǫ‖F ‖ǫ,
+‖∂αVy‖ ⩽ C
+ǫ ‖F ‖ǫ, ‖DyVy‖ ⩽ C‖F ‖ǫ.
+This proves the estimate (6.11) for k = 0.
+The derivation of higher-order estimates from these inequalities is s tandard. To
+show the basic ideas, let us sketch the proof of the k = 1 estimates. Interior
+estimates are obtained by considering the identity shown in Lemma 6.5 for the
+vector ﬁeld ∂i(χV ), where i = 1, 2 andχ is a smooth function, compactly supported
+in S1
+ℓ × D2 and equal to one in the region |y|< 1/2. Besides, it is easy to estimate
+derivatives of V with respect to α because the ﬁeld ∂j
+αV is still tangent to the
+boundary, divergence-free, has zero harmonic part and satisﬁe s the equation
+Curlǫ(∂j
+αV ) = ∂j
+αF.
+Analogous properties can be shown too for the globally deﬁned ﬁeld
+∂θV + (0,V 2, −V1),
+with∂θ :=y1∂2 −y2∂1 the angular derivative, so the same argument can be applied
+for this ﬁeld. Since the second summand is obviously controlled by the previous
+estimates, this yields good H 1 estimates for∂θV . To get estimates for the ﬁeld V up
+to the boundary, it now suﬃces to control the radial derivative ∂rV in the region
+|y| > 1/2, and this can be readily done by writing the equation (6.10) in polar30 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+coordinates, taking its derivative with respect to r and isolating the terms having
+two radial derivatives. This process can be readily iterated to get t he desired
+H k estimates. The details, which can be easily ﬁlled using these comments , are
+omitted. □
+6.3. Estimates for Beltrami ﬁelds in thin tubes. In this subsection we es-
+tablish some estimates for Beltrami ﬁelds deﬁned on the tube Tǫ. The point of
+these estimates will be to control the diﬀerence between a Beltram i ﬁeld v and its
+harmonic part h in terms of the Beltrami parameter λ, while ensuring that the
+dependence on ǫ of these estimates is optimal. As we did in Section 4 (but not in
+Subsection 6.1), we will identify Tǫ with S1
+ℓ × D2 through the coordinates ( α,y ).
+Given a vector ﬁeld v in the tube, we will consider its components ( vα,v 1,v 2),
+deﬁned through the relation
+v =vα∂α +v1∂1 +v2∂2.
+We will use these coordinates to deﬁne the norms H k
+ǫ , just as in Eq. (6.7), of vector
+ﬁelds in Tǫ, using the obvious formula:
+‖v‖2
+Hkǫ
+:= ‖vα‖2
+Hk +ǫ2‖vy‖2
+Hk.
+Here the Sobolev norms in the RHS denote the usual scalar norms an d we are using
+the notation vy := (v1,v 2). It should be noticed that these norms reﬂect to some
+extent the eﬀect of the metric on the way vectors are measured; in particular, the
+L2 norm deﬁned by the above formula is obviously equivalent through co nstants
+that do not depend on ǫ to the perhaps more appealing expression
+∫
+g(v,v )dV ,
+where g denotes the expression of the Euclidean metric in these coordinate s and
+dV is the normalized volume (cf. Eq. (3.1) and Eq. (3.5)).
+We will begin with the following result, whose proof hinges on the analog ous
+estimates proved for an equation with constant coeﬃcients that w e established in
+Proposition 6.6:
+Proposition 6.7. Suppose that the vector ﬁeld w is tangent to the boundary, has
+zero harmonic part ( Pw = 0) and satisﬁes the equation
+(6.13) curl w =f, divw = 0
+in Tǫ. Then
+‖w‖Hkǫ
+⩽ Ckǫ‖f ‖Hkǫ
+.
+Proof. In the notation of Subsection 6.2, let us consider the vector ﬁeld W : S1
+ℓ ×
+D2 → R3 given by
+W :=
+(
+Awα +ǫ2τ (y2w1 −y1w2),w 1 +τy 2wα,w 2 −τy 1wα
+)
+,
+where we recall that A is the function deﬁned in Eq. (3.2). It can be checked that W
+is given by the components (in the coordinates ( α,y )) of the 1-form dual to w up
+to a rescaling of the y components by a factor of ǫ−2. It is worth noticing that, as
+the ﬁeld w is tangent to the boundary of the tube Tǫ, a simple computation using
+the deﬁnition of W shows that the ﬁeld W is tangent to the boundary S1
+ℓ ×∂D2,EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 31
+that is, y ·Wy = 0 on |y| = 1. Moreover, the components of the ﬁeld w on the tube
+can be recovered from those of W through the relations
+wα = Wα +ǫ2τ (y1W2 −y2W1)
+B2 ,(6.14a)
+w1 =W1 − τy 2[Wα +ǫ2τ (y1W2 −y2W1)]
+B2 ,(6.14b)
+w2 =W2 + τy 1[Wα +ǫ2τ (y1W2 −y2W1)]
+B2 ,(6.14c)
+where the function B was deﬁned in Eq. (3.6).
+Using the notation
+B1 := B
+B2 +ǫ2τ 2y2
+2
+, B 2 := B
+B2 +ǫ2τ 2y2
+1
+,
+we will also consider the ﬁeld F : S1
+ℓ × D2 → R3 and the function ρW : S1
+ℓ × D2 → R
+deﬁned by
+F :=
+( Afα +ǫ2τ (y2f1 −y1f2)
+B ,f1 +τy 2fα
+B1
+,f2 −τy 1fα
+B2
+)
+,
+ρW :=∂α
+[
+Wα
+(
+1 − 1
+B
+)]
++∂1
+[
+W1
+(
+1 − 1
+B1
+)]
++∂2
+[
+W2
+(
+1 − 1
+B2
+)]
+.
+Notice that, by the deﬁnition of the functions A and B, we trivially have
+‖F ‖Hk
+ǫ
+⩽ C‖f ‖Hk
+ǫ
+,(6.15)
+‖ρW ‖Hk ⩽ Cǫ
+(
+‖W ‖Hk + ‖∂αWα‖Hk + ‖DyWy‖Hk
+)
+.(6.16)
+A straightforward computation shows that Eq. (6.13) can be writt en in terms of
+the ﬁeld W as
+(6.17) Curl ǫW =F, DivW =ρW.
+To derive estimates for W , we start by analyzing Q[W ]. To this end, we recall
+(cf. e.g. [31]) that if dσ denotes the induced surface measure on the disk
+{α =α0} ⊂ T ǫ,
+the fact that the ﬁeld w has zero harmonic part ( Pw = 0) is equivalent to the
+assertion that
+0 =
+∫
+{α=α0}
+g(w,ν )dσ =
+∫
+D2
+Bwα
+⏐
+⏐
+α=α0
+dy
+for each angle α0. Since A −B is of order ǫ, using the above equality one can
+estimate
+|Q[W ]| =
+⏐
+⏐
+⏐
+⏐
+∫
+Wαdαdy
+⏐
+⏐
+⏐
+⏐ =
+⏐
+⏐
+⏐
+⏐
+∫ (
+Awα +ǫ2τ (y2w1 −y1w2)
+)
+dαdy
+⏐
+⏐
+⏐
+⏐
+=
+⏐
+⏐
+⏐
+⏐
+∫ (
+(A −B)wα +ǫ2τ (y2w1 −y1w2)
+)
+dαdy
+⏐
+⏐
+⏐
+⏐
+⩽ Cǫ‖wα‖ +Cǫ 2‖wy‖
+⩽ Cǫ‖Wα‖ +Cǫ 2‖Wy‖,(6.18)
+where to derive the last inequality we have used the expression of th e components
+of w in terms of those of W given in Eq. (6.14).32 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+We are now ready to derive some estimates for the vector ﬁeld W . Since W is
+tangent to S1
+ℓ ×∂D2, we can apply Proposition 6.6 to Eq. (6.17) to obtain
+‖Wα‖Hk ⩽ C
+(
+ǫ‖F ‖Hkǫ + ‖ρW ‖Hk +
+⏐
+⏐Q[W ]
+⏐
+⏐)
+,(6.19a)
+‖∂αWα‖Hk ⩽ C
+(
+‖F ‖Hkǫ + ‖ρW ‖Hk
+)
+,(6.19b)
+‖Wy‖Hk + ‖DyWy‖Hk ⩽ C
+(
+‖F ‖Hkǫ
++ ‖ρW ‖Hk +
+⏐
+⏐Q[W ]
+⏐
+⏐)
+.(6.19c)
+Going back to Eq. (6.16), this yields
+‖ρW ‖Hk ⩽ Cǫ
+(
+‖F ‖Hk
+ǫ
++ ‖Wα‖Hk + ‖Wy‖Hk
+)
+.
+Plugging this inequality and the bound (6.18) for Q[W ] in Eq. (6.19), we immedi-
+ately get
+‖Wα‖Hk ⩽ Cǫ
+(
+‖F ‖Hkǫ + ‖Wα‖Hk + ‖Wy‖Hk
+)
+,
+‖Wy‖Hk ⩽ C
+(
+‖F ‖Hkǫ +ǫ‖Wα‖Hk +ǫ‖Wy‖Hk
+)
+.
+From these estimates one readily infers that, for small ǫ,
+‖Wα‖Hk +ǫ‖Wy‖Hk ⩽ Cǫ‖F ‖Hkǫ .
+In view of the formulas (6.14), ‖w‖Hkǫ
+⩽ C‖W ‖Hkǫ
+, so the proposition follows from
+the bound (6.15) for the H k
+ǫ norm of F . □
+We are now ready to prove the main result in this section, which estima tes the
+diﬀerence between a Beltrami ﬁeld in the tube and its harmonic part in terms of
+the Beltrami parameter λ:
+Theorem 6.8. Letλ be any nonzero real constant that is smaller in absolute valu e
+than some ﬁxed positive constant Λ . For small enough ǫ, the problem
+curlv =λv
+has a unique solution in the tube Tǫ that is tangent to the boundary and whose
+harmonic part Pv is the harmonic ﬁeld h. Moreover, the diﬀerence between the
+ﬁeld v and the harmonic ﬁeld is bounded pointwise by
+‖vα −hα‖C k(S1
+ℓ ×D2) +ǫ‖vy −hy‖C k(S1
+ℓ ×D2) ⩽ Ck,Λǫ |λ|,
+where the constant only depends on k and Λ .
+Proof. Let us write w :=v −h, so that the ﬁeld w is tangent to the boundary, has
+zero harmonic part and satisﬁes the equation
+(6.20) curl w =λw +λh, divw = 0.
+We proved in Proposition 6.1 and Remark 6.2 that this equation has a un ique
+solution if and only if 1 /λ is not an eigenvalue of the operator K ∗ introduced in
+the proof of the aforementioned proposition. As λ is real, this is equivalent to 1 /λ
+being eigenvalue of the operator K, which means that there is a divergence-free
+L2 ﬁeld u such that
+Ku = u
+λ.
+Suppose that 1 /λ is an eigenvalue of K. By the properties of K proved in
+Proposition 6.1, this means that the nonzero vector ﬁeld Ku is tangent to the
+boundary, has zero harmonic part and satisﬁes
+curl(Ku) = λKu, div(Ku) = 0.EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 33
+Applying the estimate proved in Proposition 6.7 to this equation, we ge t
+‖Ku‖L2
+ǫ ⩽ Cǫ|λ|‖Ku‖L2
+ǫ,
+which means that
+|λ|>C/ǫ
+for some positive constant that does not depend on ǫ.
+Therefore the problem (6.20) has a unique solution for all |λ| ⩽ Λ, provided ǫ is
+small enough. Moreover, when applied to Eq. (6.20), Proposition 6.7 ensures that
+‖w‖Hk
+ǫ
+⩽ Ckǫ|λ|
+(
+‖w‖Hk
+ǫ
++ ‖h‖Hk
+ǫ
+)
+,
+which yields
+‖w‖Hkǫ ⩽ Ckǫ|λ|‖h‖Hkǫ
+provided that ǫ is smaller than some constant of the form C/Λ. Since the H k
+ǫ norm
+of the harmonic ﬁeld is bounded uniformly in ǫ as
+‖h‖Hkǫ ⩽ Ck
+due to Eq. (5.3) and the estimates in Theorem 5.1, we obtain
+‖w‖Hkǫ
+⩽ Ckǫ|λ|.
+Cs pointwise estimates for w are immediately obtained from this bound by taking
+k =s + 2 and using Sobolev embeddings. □
+7. A KAM theorem for Beltrami fields with small λ
+Let us consider the harmonic ﬁeld h in the tube Tǫ, as introduced in Eq. (5.3).
+As before, we will assume that the thickness ǫ is small. By Theorem 6.8, for any λ
+smaller in absolute value than some ﬁxed, ǫ-independent constant, there is a unique
+solution v to the Beltrami equation
+curlv =λv
+in Tǫ that is tangent to the boundary and whose harmonic part is h. We are
+interested in the case where the Beltrami constant λ is suitably small. For simplicity
+of notation, throughout this section we will take λ := ǫ3 (although we could have
+taken any nonzero constant λ = O(ǫ3)) and refer to the vector ﬁeld v corresponding
+to this choice of λ as the local Beltrami ﬁeld .
+Our objective in this section is to study some ﬁne dynamical propert ies of the
+local Beltrami ﬁeld v. More precisely, we will show that for small values of ǫ
+and “most” core curves γ, the boundary of the tube Tǫ is an invariant torus of
+the ﬁeld v that is preserved (i.e., there is a small perturbation of ∂Tǫ that is still
+invariant) under suitably small perturbations of v. For this, we will see that the
+key point is the analysis of the harmonic ﬁeld h, which is close to the local Beltrami
+ﬁeld v as a consequence of the estimates proved in Theorem 6.8 and the fa ct that
+the Beltrami parameter λ = ǫ3 is small. At this point, it is worth emphasizing
+that, to some extent, the proofs of the dynamical properties th at we study in this
+section ultimately depend on the estimates derived in Section 4. In pa rticular, if
+the dependence on ǫ of these estimates were worse, we would not be able to check
+the nondegeneracy conditions of the KAM theorem we prove in this s ection.
+This section is divided into four parts. In Subsection 7.1 we consider t he tra-
+jectories of the local Beltrami ﬁeld, after a rescaling of the ﬁeld (w hich does not34 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+alter their geometric structure), and calculate these trajector ies perturbatively in
+a suitable range of time (Proposition 7.1). In Subsections 7.2 and 7.3 w e use these
+perturbative expressions to compute the rotation number and no rmal torsion of
+the Poincar´ e map of the local Beltrami ﬁeld (Theorems 7.4 and 7.8), which are
+the quantities that control the stability of the torus in the KAM the orem that we
+establish in Subsection 7.4 (Theorem 7.10).
+7.1. T rajectories of the local Beltrami ﬁeld. In this subsection we aim to
+compute the trajectories of the local Beltrami ﬁeld v perturbatively in the small
+parameterǫ. From Theorem 6.8 and the fact that the Beltrami parameter is λ =ǫ3,
+it follows that the local Beltrami ﬁeld v is close to the harmonic ﬁeld in the sense
+that
+(7.1) ‖vα −hα‖C k(S1
+ℓ ×D2) <C kǫ4, ‖vy −hy‖C k(S1
+ℓ ×D2) <C kǫ3.
+Since the harmonic ﬁeld can be written as h =h0+∇ψ (withh0 and ∇ψ respectively
+given by (5.2) and (5.4)), from the estimates for ψ proved in Theorem 5.1 we infer
+that
+vα =B−2(1 +ψα +τψ θ) + O(ǫ4)
+= 1 + O(ǫ).
+In particular, as vα does not vanish for small ǫ, we can consider the analytic vector
+ﬁeld
+(7.2) X := v
+vα
+.
+We will use this vector ﬁeld to study the geometric structure of the trajectories of
+the local Beltrami ﬁeld, since both ﬁelds have the same unparametr ized trajectories
+and the vector ﬁeld X presents certain computational advantages, as we shall see
+in the next subsection. Before we go on, and identifying the tube Tǫ with S1
+ℓ × D2
+through the coordinates (α,y ), let us note that the ﬁeld X is well deﬁned in a small
+neighborhood of S1
+ℓ ×
+D2 because so is the local Beltrami ﬁeld v.
+The trajectories of X are given by the parametrization ( α(s),r (s),θ (s)), where
+these functions satisfy the system of ODEs
+˙α = 1,(7.3a)
+˙r = B2ψr
+ǫ2(1 +ψα +τψ θ) + O(ǫ3),(7.3b)
+˙θ = τ + (ǫr)−2Aψθ +τψ α
+1 +ψα +τψ θ
++ O(ǫ3).(7.3c)
+These equations can be read oﬀ from the deﬁnition of the ﬁeld X and its connection
+with the harmonic ﬁeld (Eq. (7.1)) and the formulas (5.3) and (5.4) fo r the harmonic
+ﬁeld and the gradient of ψ. The point of the trajectory not only depends on the “ﬂow
+parameter” s, but also on the initial conditions ( α0,r 0,θ 0) at s = 0. Without loss
+of generality, in this section we will always take α0 = 0, and make the dependence
+of the trajectory on ( r0,θ 0) explicit by writing
+(
+α(s;r0,θ 0),r (s;r0,θ 0),θ (s;r0,θ 0)
+)
+when appropriate.EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 35
+Throughout, it will be convenient to denote by θ not only the angular coordinate
+in S1, but also its lift to the real line. It should be noticed that the formula s we
+will give below are actually valid for the lifted coordinate too, which will b e of use
+in the following subsection.
+In the following lemma we will compute the trajectory of the ﬁeld X at time
+s ∈ [0,ℓ ] up to a controllable error. We will assume that r0 is bounded away from 0
+so that the trajectory cannot reach the coordinate singularity {r = 0} at any time
+s ∈ [0,ℓ ]. This is convenient in view of the terms 1 /r2 that appear in the equations
+and is not a restriction for the applications that we have in mind, as we will be only
+concerned with initial conditions near the invariant torus {r = 1}. For simplicity, in
+this lemma we will abuse the notation and denote by O(ǫj) a quantity Q(r0,θ 0,s )
+that is uniformly bounded as
+⏐
+⏐∂k
+r0∂l
+θ0Q(r0,θ 0,s )
+⏐
+⏐<C klǫj
+for r0 in any ﬁxed compact set of the interval (0 , 1] (which is the domain where
+polar coordinates deﬁne a diﬀeomorphism), θ0 ∈ S1 and s ∈ [0,ℓ ], provided ǫ is
+small enough.
+Proposition 7.1. Consider the solution to the system (7.3) with initial condition
+(0,r 0,θ 0) and r0 > 0. At time s ∈ [0,ℓ ], this solution is given by
+α(s;r0,θ 0) = s,
+r(s;r0,θ 0) = r0 + O(ǫ),
+θ(s;r0,θ 0) = θ(0)(s) +ǫθ (1)(s) +ǫ2θ(2)(s) + O(ǫ3),
+where each quantity θ(j)(s) ≡θ(j)(s;r0,θ 0) is of order O(1) and given by
+θ(0)(s) := θ0 +
+∫ s
+0
+τ (¯s)d¯s,
+θ(1)(s) := r2
+0 − 3
+8r0
+[
+κ(s) sinθ(0)(s) −κ(0) sinθ0
+]
+,
+θ(2)(s) := 12 − 5r2
+0
+32
+∫ s
+0
+κ(¯s)2τ (¯s)d¯s + 3(r4
+0 + 2r2
+0 − 3)κ(s)κ(0)
+64r2
+0
+cosθ0 sinθ(0)(s)
+− (3 −r2
+0)2κ(s)κ(0)
+64r2
+0
+sinθ0 cosθ(0)(s) + (27 − 50r2
+0 + 25r4
+0)κ(s)2
+384r2
+0
+sin 2θ(0)(s)
++ (27 + 14r2
+0 − 31r4
+0)κ(0)2
+384r2
+0
+sin 2θ0.
+Proof. Converting the ODEs (7.3) into integral equations, it is clear that, f or s ∈
+[0,ℓ ],
+α(s;r0,θ 0) = s,(7.4a)
+r(s;r0,θ 0) = r0 +
+∫ s
+0
+B2ψr
+ǫ2(1 +ψα +τψ θ)d¯s + O(ǫ3),(7.4b)
+θ(s;r0,θ 0) = θ0 +
+∫ s
+0
+τ + (ǫr)−2Aψθ +τψ α
+1 +ψα +τψ θ
+d¯s + O(ǫ3).(7.4c)36 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+In these equations all the functions under the integral signs are e valuated along the
+trajectories, i.e., at the point
+(7.5) α = ¯s, r =r(¯s;r0,θ 0), θ =θ(¯s;r0,θ 0).
+Let us solve the equations perturbatively. We start by noticing tha t, as a con-
+sequence of the bounds for ψ derived in Theorem 5.1 (and its connection with the
+functions ϕ0,ϕ 1 introduced in this theorem), the integrands can be expanded in ǫ
+as
+τ + (ǫr)−2Aψθ +τψ α
+1 +ψα +τψ θ
+=
+(
+τ + Aψθ
+ǫ2r2 +τψ α
+) (
+1 −ψα + O(ǫ3)
+)
+=τ + Aψθ
+ǫ2r2 + O(ǫ3).(7.6)
+B2ψr
+ǫ2(1 +ψα +τψ θ) = ∂rϕ0
+ǫ2 + O(ǫ2),(7.7)
+Sincer0 > 0 and s ∈ [0,ℓ ] (which allows us to control the eﬀect of the denominator
+1/r2 for small enough ǫ), we immediately infer from Eqs. (7.4b) and (7.4c) that
+(7.8) r(s;r0,θ 0) = r0 + O(ǫ), θ (s;r0,θ 0) = θ(0)(s) + O(ǫ).
+Of course, we deﬁne each function θ(j)(s) as in the statement of the proposition.
+Now that we have the zeroth-order expression of the trajector ies, we will next
+compute them up to second-order corrections. For convenience we will use the
+notation
+R0(r) := r3 − 3r
+8 , R1(r) := 13(r4 − 2r2)
+96
+for the dependence of ϕ0 and ϕ1 on r, respectively. We start with the analysis of
+the radial coordinate of the trajectories. Using again Eq. (7.7) an d the zeroth-order
+estimates for the trajectories (7.8), we derive that
+r(s;r0,θ 0) = r0 +
+∫ s
+0
+[∂rϕ0(¯s,r 0 + O(ǫ),θ (0)(¯s) + O(ǫ))
+ǫ2 + O(ǫ2)
+]
+d¯s + O(ǫ3)
+=r0 +
+∫ s
+0
+∂rϕ0(¯s,r 0,θ (0)(¯s))
+ǫ2 d¯s + O(ǫ2)
+=r0 +ǫR′
+0(r0)
+∫ s
+0
+[
+τ (¯s)κ(¯s) sinθ(0)(¯s) −κ′(¯s) cosθ(0)(¯s)
+]
+d¯s + O(ǫ2)
+=r0 −ǫR′
+0(r0)
+∫ s
+0
+d
+d¯s
+(
+κ(¯s) cosθ(0)(¯s)
+)
+d¯s + O(ǫ2)
+=r0 +ǫr (1)(s) + O(ǫ2),(7.9)
+where
+r(1)(s) := 3(1 −r2
+0)
+8
+[
+κ(s) cosθ(0)(s) −κ(0) cosθ0
+]
+.
+To pass to the second line we have used the mean value theorem and t he obvious
+Ck bound ϕ0 = O(ǫ3), and to complete the calculation we have just plugged in
+the formulas for ϕ0 (Eq. (5.6)) and the deﬁnition of θ(0)(s). In a totally analogousEXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 37
+manner we can compute θ(s;r0,θ 0) up to O(ǫ2):
+θ(s;r0,θ 0) = θ(0)(s) +
+∫ s
+0
+[Aψθ
+(ǫr)2 + O(ǫ3)
+] ⏐
+⏐
+⏐
+⏐
+(s,r0+O(ǫ),θ(0)(s)+O(ǫ))
+d¯s + O(ǫ3)
+=θ(0)(s) +
+∫ s
+0
+∂θϕ0(¯s,r 0,θ (0)(s))
+(ǫr0)2 d¯s + O(ǫ2)
+=θ(0)(s) + ǫR0(r0)
+r2
+0
+∫ s
+0
+[
+τ (¯s)κ(¯s) cosθ(0)(¯s) +κ′(¯s) sinθ(0)(¯s)
+]
+d¯s
+=θ(0)(s) +ǫθ (1)(s) + O(ǫ2).(7.10)
+To complete the proof we need to calculate θ(s;r0,θ 0) up to O(ǫ3). The proce-
+dure is as above but the computations are more tedious. We start b y noticing that
+the term Aψθ that appears in the integrand (7.6) can be written as
+Aψθ =∂θϕ0 +
+(
+∂θϕ1 − 2ǫκr cosθ∂ θϕ0
+)
++ O(ǫ5)(7.11)
+where we have used the estimates we established in Theorem 5.1 (rec all that ϕ1
+was introduced in Eq. (5.7)). Notice that the ﬁrst summand is of ord er O(ǫ3), while
+the term in brackets is of order O(ǫ4).
+We can now use the integral equation (7.4c) for the trajectories, the expan-
+sion (7.6) for the integrand (together with (7.11)), and the expre ssion for the tra-
+jectories up to second order terms (Eqs. (7.9) and (7.10)) to get
+θ(s;r0,θ 0) = θ(0)(s) +
+∫ s
+0
+∂θϕ0
+ǫ2r2
+⏐
+⏐
+⏐
+⏐
+(¯s,r0+ǫr(1)+O(ǫ2),θ(0)+ǫθ(1)+O(ǫ2))
+d¯s
++
+∫ s
+0
+∂θϕ1 − 2ǫκr cosθ∂ θϕ0
+ǫ2r2
+⏐
+⏐
+⏐
+⏐
+(¯s,r0+ǫr(1)+O(ǫ2),θ(0)+ǫθ(1)+O(ǫ2))
+d¯s + O(ǫ3).
+For simplicity of notation, we omit the argument ¯s when there is no risk of confusion.
+An elementary Taylor expansion and the mean value theorem show th e ﬁrst integral
+(let us call it I1) is given by
+I1 =
+∫ s
+0
+[∂θϕ0
+ǫ2r2 +∂r
+( ∂θϕ0
+ǫr2
+)
+r(1)(¯s) + ∂2
+θϕ0
+ǫr2 θ(1)(¯s)
+] ⏐
+⏐
+⏐
+⏐
+(¯s,r0,θ(0))
+d¯s + O(ǫ3)
+=ǫθ(1)(s) +
+∫ s
+0
+[
+∂r
+( ∂θϕ0
+ǫr2
+)
+r(1)(¯s) + ∂2
+θϕ0
+ǫr2 θ(1)(¯s)
+] ⏐
+⏐
+⏐
+⏐
+(¯s,r0,θ(0))
+d¯s + O(ǫ3).
+The second integral, which we call I2, can be immediately simpliﬁed using the mean
+value theorem, ﬁnding that
+I2 =
+∫ s
+0
+∂θϕ1 − 2ǫκr cosθ∂ θϕ0
+ǫ2r2
+⏐
+⏐
+⏐
+⏐
+(¯s,r0,θ(0))
+d¯s + O(ǫ3).
+The integrals I1 and I2 can be computed in closed form after replacing the
+functions ϕ0,ϕ 1 by their expressions, given in Eqs. (5.6) and (5.7). For example,
+I2 =J1 +J2 + O(ǫ3),38 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+where
+J1 :=
+∫ s
+0
+∂θϕ1
+ǫ2r2
+⏐
+⏐
+⏐
+⏐
+(¯s,r0,θ(0))
+d¯s
+= ǫ2R1(r0)
+r2
+0
+∫ s
+0
+[
+τ (¯s)κ(¯s)2 cos 2θ(0)(s) +κ(¯s)κ′(¯s) sin 2θ(0)(¯s)
+]
+d¯s
+= ǫ2R1(r0)
+2r2
+0
+∫ s
+0
+d
+d¯s
+(
+κ(¯s)2 sin 2θ(0)(¯s)
+)
+d¯s
+= 13ǫ2(r2
+0 − 2)
+96
+[
+κ(s)2 sin 2θ(0)(s) −κ(0)2 sin 2θ0
+]
+and
+J2 := −2
+∫ s
+0
+κ cosθ∂ θϕ0
+ǫr
+⏐
+⏐
+⏐
+⏐
+(¯s,r0,θ(0))
+d¯s
+= − 2ǫ2R0(r0)
+r0
+∫ s
+0
+κ cosθ(0)[
+τκ cosθ(0) +κ′ sinθ(0)]
+d¯s
+= −ǫ2R0(r0)
+r0
+∫ s
+0
+[
+τκ 2 + 1
+2
+d
+d¯s
+(
+κ2 sin 2θ(0)
+) ]
+d¯s
+= ǫ2(3 −r2
+0)
+16
+[
+2
+∫ s
+0
+τκ 2d¯s +κ(s)2 sin 2θ(0)(s) −κ(0)2 sin 2θ0
+]
+.
+The other terms can be dealt with using analogous arguments, arriv ing at the
+formula for θ(2)(s) that appears in the statement. □
+To conclude this subsection, we will show that the trajectories of t he ﬁeld X on
+the invariant torus r = 1 satisfy certain functional equation up to some controllable
+errors. The reason why we need to consider this way of describing t rajectories on
+the invariant torus is that, in order to compute the rotation numbe r later on, we
+will need to understand the trajectories on the torus for arbitra rily large times.
+The expression for the trajectories we obtained in Proposition 7.1 is not well suited
+for this purpose, while the functional equation below turns out to b e much more
+convenient. In order to describe the errors that appear in the fu nctional equation, in
+the following proposition we will use the notation s O(ǫn) for any quantity Q(θ0,s )
+that is bounded as
+⏐
+⏐∂j
+θ0Q(θ0,s )
+⏐
+⏐ ⩽ Cj(1 + |s|)ǫn and
+⏐
+⏐∂s∂j
+θ0Q(θ0,s )
+⏐
+⏐ ⩽ Cjǫn
+for nonnegative integer j (we could have considered higher derivatives with respect
+to s too, but we will not need this feature).
+Proposition 7.2. Consider the trajectories of the system of ODEs (7.3) with ini-
+tial condition (α0,r 0,θ 0) = (0 , 1,θ 0). The function θ(s) ≡ θ(s; 1,θ 0) satisﬁes the
+approximate functional equation
+θ(s) = θ0 +
+∫ s
+0
+τ (¯s)d¯s − ǫ
+4
+[
+κ(s) sinθ(s) −κ(0) sinθ0
+]
++s O(ǫ2).
+Proof. The starting point is the diﬀerential equations for the trajectorie s (7.3) with
+initial radius r0 = 1. It is obvious that the radial component of the trajectory is
+r(s; 1,θ 0) = 1 ,EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 39
+which simply shows that the set {r = 1} is an invariant torus. Therefore, Eq. (7.3c)
+for θ(s) becomes
+(7.12) ˙θ(s) = τ +ǫ−2Aψθ +τψ α
+1 +ψα +τψ θ
++ O(ǫ3) = τ + ǫ−2Aψθ −τ 2ψθ
+1 +ψα +τψ θ
++ O(ǫ3),
+where the functions in the RHS are evaluated along the trajectorie s (s, 1,θ (s)).
+Expanding the fraction that appears in the second identity using th e estimates
+for ψ proved in Theorem 5.1 we therefore arrive at
+(7.13) ˙θ(s) = τ (s) + ∂θϕ0(s, 1,θ (s))
+ǫ2 + O(ǫ2).
+Notice that the fraction is of order O(ǫ). Converting (7.12) into an integral equation,
+an immediate consequence of this estimate is that
+θ(s) = θ(0)(s) +
+∫ s
+0
+∂θϕ0(¯s, 1,θ (¯s))
+ǫ2 d¯s +s O(ǫ2).
+This integral can be evaluated, modulo s O(ǫ2), using the formula (7.13) for the
+derivative ˙θ, the expression for ϕ0, and integration by parts:
+∫ s
+0
+∂θϕ0
+ǫ2 d¯s = −ǫ
+4
+∫ s
+0
+[
+κτ cosθ +κ′ sinθ
+]
+d¯s
+= −ǫ
+4
+∫ s
+0
+[
+κ( ˙θ + O(ǫ)) cosθ +κ′ sinθ
+]
+d¯s
+= −ǫ
+4
+∫ s
+0
+d
+d¯s
+(
+κ sinθ
+)
+d¯s +s O(ǫ2)
+= −ǫ
+4
+[
+κ(s) sinθ(s) −κ(0) sinθ0
+]
++s O(ǫ2).
+Here, of course, all the integrands are evaluated at the point (¯ s, 1,θ (¯s)). □
+7.2. Rotation number of the Poincar´ e map of the local Beltrami ﬁe ld. We
+will denote by φs the time-s ﬂow of the ﬁeld X, which maps each point ( α0,r 0,θ 0)
+to the trajectory of the ODEs (7.3) at time s that has the latter values as initial
+conditions. Since the ﬁeld X, introduced in Eq. (7.2), is tangent to the boundary of
+the domain S1
+ℓ × D2, it is standard that the ﬂow φs is a well deﬁned diﬀeomorphism
+of S1
+ℓ × D2 for all values of s.
+Let us now consider the Poincar´ e map of the ﬁeldX, which is the tool we will use
+to analyze the dynamical properties of the ﬂow (and which coincides with that of
+the local Beltrami ﬁeld v). For this, we start by considering the section {α =α0},
+which is clearly transverse to the vector ﬁeld X. The Poincar´ e map of this section,
+Π α0 :
+D2 → D2, sends each point ( r0,θ 0) ∈ D2 to the ﬁrst point at which the
+trajectory φs(α0,r 0,θ 0) intersects the section {α = α0} (with s >0). The reason
+why we are considering the ﬁeld X is that it is isochronous in the sense that this
+ﬁrst return point is given by the time- ℓ ﬂow of X, that is,
+(7.14) Π α0 (r0,θ 0) = φℓ(α0,r 0,θ 0).
+We will omit the subscript when α0 = 0, and use Cartesian coordinates y in the
+disk when convenient.
+One should notice that, since we are assuming that the curve γ is analytic, the
+boundary of the tube Tǫ is also an analytic surface, so it is standard [24] that40 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+the ﬁeld v is analytic in a neighborhood of the closure
+Tǫ. This ensures that the
+Poincar´ e map is also a well-deﬁned analytic map in a neighborhood of th e closed
+disk D2.
+In the following proposition we will show that the Poincar´ e map of the Beltrami
+ﬁeld preserves a measure on the disk. For later convenience, we will state this result
+in terms of the associated 2-form rather than the measure:
+Proposition 7.3. The Poincar´ e mapΠ preserves the positive measure on the disk
+corresponding to the 2-form
+Λ := GΛ (r,θ )rdr ∧dθ
+on the disk D2, with
+(7.15) GΛ (r,θ ) := Bvα
+⏐
+⏐
+α=0 = 1 + ǫκ(0)r cosθ + O(ǫ2).
+Proof. That the function GΛ (y) := Bvα|α=0 has indeed the form given by the RHS
+of (7.15) is an immediate consequence of the estimates for the func tion ψ proved
+in Theorem 5.1 and Eq. (7.1). Given a Borel set B ⊂
+D2 and a small positive δ, let
+us denote by
+µ(B) :=
+∫
+B
+Λ
+its area and let
+Bδ := (−δ,δ ) × B
+be a small thickening of the set {0} × B in the closed domain S1
+ℓ ×
+D2.
+Since the divergence of v is zero, from the deﬁnition of X it stems that its ﬂow
+preserves the volume
+d ˜V :=vαdV .
+Clearly the ˜V -volume of the set Bδ is
+˜V (Bδ) :=
+∫
+Bδ
+d ˜V =
+∫ δ
+−δ
+∫
+B
+Bvαdydα
+= 2δ
+(
+1 + O(δ)
+) ∫
+B
+Bvα
+⏐
+⏐
+α=0dy = 2δµ(B) + O(δ2).(7.16)
+Let us now observe that the image of the set Bδ under the time-ℓ ﬂow φℓ is given
+by
+(7.17) φℓ(Bδ) =
+⋃
+−δ<α<δ
+{α} × Π α(B).
+By the continuous dependence of the ﬂow on the initial conditions an d Eq. (7.14),
+the Poincar´ e maps corresponding to diﬀerent values of the angle α satisfy
+‖Π α − Π ‖C 0(D2) ⩽ CδEXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 41
+for |α| ⩽ δ, so we can use the decomposition (7.17) to show that the ˜V -volume of
+φℓ(Bδ) is
+˜V (φℓ(Bδ)) =
+∫ δ
+−δ
+∫
+Π α(B)
+Bvαdydα
+=
+∫ δ
+−δ
+( ∫
+Π( B)
+Bvα
+⏐
+⏐
+α=0dy + O(δ)
+)
+dα
+= 2δµ(Π( B)) + O(δ2).(7.18)
+Equating the ˜V -volumes of Bδ and φℓ(Bδ), given by Eqs. (7.16) and (7.18), and
+considering small values of δ we then obtain that
+µ(B) = µ(Π( B)),
+as claimed. □
+Since the local Beltrami ﬁeld v is tangent to the boundary of the domain S1
+ℓ ×D2,
+the image of ∂D2 under the Poincar´ e map Π is also contained in ∂D2. Hence, the
+restriction of Π to ∂D2 deﬁnes an analytic diﬀeomorphism of the circle, which will
+be denoted by
+Π |∂D2 :∂D2 →∂D2.
+Using the coordinate θ to identify the circle ∂D2 with R/2πZ, the latter circle
+diﬀeomorphism can be naturally lifted to a diﬀeomorphism of the real lin e that we
+will denote by ¯Π : R → R. As is well known, a basic tool in the study of circle
+diﬀeomorphisms is the rotation number (or frequency) of the map, which is deﬁned
+as
+(7.19) ωΠ := lim
+n→∞
+¯Π n(θ0) −θ0
+n .
+Here ¯Π n denotes the nth iterate of ¯Π and θ0 is any real number. Since the Poincar´ e
+map of a ﬂow is homotopic to the identity, it is standard that the abov e limit exists
+and is independent of the choice of θ0 [30].
+We shall next compute the rotation number of the circle diﬀeomorph ism Π |∂D2
+using the functional equation satisﬁed (up to controllable errors) by the trajectories
+of the ﬁeld X on the invariant torus. The reason is that, in order to compute the
+rotation number to order O(ǫ2), we need to iterate the Poincar´ e map an arbitrarily
+large number of times, which requires ﬁne control of the growth of the errors for
+large times.
+The following theorem asserts that the rotation number is given by t he total
+torsion not only modulo O(ǫ), as can be shown without relying on the functional
+equation, but also modulo O(ǫ2). The fact that the O(ǫ) correction is zero will be
+important later on.
+Theorem 7.4. The rotation number of the circle diﬀeomorphism Π |∂D2 is
+ωΠ =
+∫ ℓ
+0
+τ (α)dα + O(ǫ2).
+Proof. By the deﬁnition of the ﬂow, Eq. (7.19) simply asserts that
+ωΠ := lim
+n→∞
+θ(nℓ) −θ0
+n ,42 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+whereθ(nℓ) ≡θ(nℓ; 1,θ 0) denotes the angular component of the trajectory solving
+the system (7.3) with initial condition (0 , 1,θ 0), evaluated at time nℓ. Since the
+curvatureκ(α) and torsion τ (α) are ℓ-periodic, Proposition 7.2 then ensures that
+ωΠ = lim
+n→∞
+∫ nℓ
+0 τds − ǫκ(0)
+4 [sinθ(nℓ) − sinθ0
+]
++nℓ O(ǫ2)
+n =
+∫ ℓ
+0
+τds + O(ǫ2).
+□
+7.3. The nondegeneracy condition for the Poincar´ e map. In this subsection
+we will compute a quantity associated with the Poincar´ e map Π (some times called
+the normal torsion of the map) that was introduced to analyze the stability of
+individual invariant tori of symplectic diﬀeomorphisms [18, 8]. As we s hall see, the
+assumption that the normal torsion is nonzero plays a role that is an alogous to the
+twist condition in the classical theorem by Arnold and Moser on pertu rbations of
+integrable symplectic maps. As the name can be misleading, it is worth e mphasizing
+that, in principle, the normal torsion has nothing to do with the tors ion of a curve.
+Let us begin by introducing some notation. We will consider a domain D in the
+plane that contains the closed unit disk D2 and a map ˆΠ : D → R2. (Eventually,
+we will be interested in taking as ˆΠ the Poincar´ e map Π introduced in the previous
+subsection.) A closed curve Γ ⊂ D is invariant if its image ˆΠ(Γ) is contained in
+Γ. If Γ is an invariant curve of ˆΠ, one says that ˆΠ |Γ is conjugate to a rotation of
+frequency ω through the diﬀeomorphism Θ : S1 → Γ if
+Θ −1 ◦ ˆΠ |Γ ◦ Θ(ϑ) = ϑ +ω,
+for all ϑ in S1. When Γ = ∂D2, we will abuse the notation and also denote by Θ
+the diﬀeomorphism S1 → S1 corresponding to the angular component of the above
+diﬀeomorphism S1 →∂D2. (Therefore, in the case of ∂D2 the above diﬀeomorphism
+will read as y = (cos Θ( ϑ), sin Θ(ϑ)) in Cartesian coordinates and ( r,θ ) = (1, Θ(ϑ))
+in polar coordinates.) From the context it will be clear which interpret ation of Θ
+must be considered in each case.
+Deﬁnition 7.5. Let ˆΠ :
+D2 → D2 be a diﬀeomorphism of the disk that preserves
+the measure deﬁned by the 2-form G(r,θ )rdr ∧dθ. We will denote the radial
+and angular components of ˆΠ by ( ˆΠ r, ˆΠ θ), respectively. Assume that ˆΠ |∂D2 is a
+diﬀeomorphism of the circle ∂D2 →∂D2 that is conjugate to a rotation of frequency
+ω through a diﬀeomorphism Θ, which we regard here as a map S1 → S1. The normal
+torsion of the map ˆΠ on the invariant circle ∂D2 is the real number
+N ˆΠ :=
+∫ 2π
+0
+1
+Θ ′(ϑ +ω)Θ ′(ϑ)
+∂r ˆΠ θ(1, Θ(ϑ))
+G(1, Θ(ϑ)) dϑ.
+The reason why we consider the above quantity is that it appears in a nondegen-
+eracy condition of a theorem by de la Llave et al. [8]. In fact, the resu lt [8, Theorem
+1] is much more general, and we will only need a concrete application th at we state
+next in a form that is particularly well suited for our purposes. The n ormal torsion
+was also considered for the same purpose by Herman in [18] when G(r,θ ) = 1 and
+Θ(ϑ) = ϑ. Before stating the theorem, let us recall that a number ω is Diophantine
+if there exist a positive constant C and ν >1 such that
+(7.20)
+⏐
+⏐
+⏐ω
+2π − p
+k
+⏐
+⏐
+⏐ /greaterorequalslantC
+k1+νEXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 43
+for any integers p,k with k /greaterorequalslant1.
+Theorem 7.6 (De la Llave et al. [8]). Consider a small neighborhood D of the closed
+unit disk D2 in R2. Take an analytic map ˆΠ : D → R2 that is a diﬀeomorphism
+onto its image preserving the measure G(r,θ )rdrdθ , with G analytic in D. Suppose
+that the following two conditions hold:
+(i) The circle ∂D2 is invariant, and ˆΠ |∂D2 is conjugate through an analytic
+diﬀeomorphism Θ : S1 →∂D2 to a rotation whose frequency ω satisﬁes a
+Diophantine condition.
+(ii) The normal torsion N ˆΠ of the map ˆΠ on the invariant circle ∂D2 is
+nonzero.
+Then for each δ >0 and positive integer m there are δ′ > 0 and an integer k such
+that, if an analytic map ˜Π : D → R2 preserving the same measure G(r,θ )rdrdθ
+satisﬁes
+‖ ˆΠ − ˜Π ‖C k(D) <δ ′,
+one can transform the circle ∂D2 by a diﬀeomorphism Ψ of R2 so that Ψ(∂D2) is
+an invariant curve for the map ˜Π . Moreover, the map ˜Π |Ψ( ∂D2) is also conjugate to
+a rotation of frequency ω and the diﬀerence Ψ − id can be assumed to be supported
+in a small neighborhood of ∂D2 and such that
+‖Ψ − id‖C m <δ.
+Proof. The statement is simply a rewording of [8, Theorem 47], in the particula r
+case of planar maps and omitting some quantitative estimates that w ill not be
+needed in the rest of the paper. The only point that requires more e laboration is to
+check what the degeneracy condition looks like in the situation we are considering
+in this section.
+For the beneﬁt of the reader, let us give some details about how the statement is
+derived from [8, Theorem 47], borrowing some notation from this ref erence without
+further mention. The map ˆΠ is obviously symplectic with respect to the analytic
+2-form Λ := G(r,θ )rdr ∧dθ. This 2-form is obviously exact, as Λ = dβ with the
+smooth 1-form on D
+β :=
+( ∫ r
+0
+GΛ (¯r,θ ) ¯rd ¯r
+)
+dθ.
+Moreover, the 1-forms ˆΠ ∗β −β and ˜Π ∗β −β are exact because
+∫
+∂D2
+( ˆΠ ∗β −β) =
+∫
+D2
+(d ˆΠ ∗β −dβ) =
+∫
+( ˆΠ ∗Λ − Λ) = 0 ,
+and analogously for ˜Π.
+As before, let us now regard Θ as a diﬀeomorphism of S1. Consider the embed-
+ding K : S1 → D given by
+K(ϑ) :=
+(
+cos Θ(ϑ), sin Θ(ϑ)
+)
+,
+which is analytic by hypothesis.
+Therefore, the only hypothesis of [8, Theorem 47] that is not immed iate is the
+non-degeneracy condition. Let us take Cartesian components ( y1,y 2) in D and call44 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+( ˆΠ 1, ˆΠ 2) the Cartesian components of the map ˆΠ. In the aforementioned reference,
+the condition is that the average of the function
+S(ϑ) := P (ϑ +ω) ·
+[
+D ˆΠ(ϑ)J(ϑ)−1P (ϑ)
+]
+be nonzero, where the dot denotes the Euclidean scalar product. Here P (ϑ) :=
+Θ ′(ϑ)−1(− sin Θ(ϑ), cos Θ(ϑ)),
+(D ˆΠ) ij(ϑ) := ∂ ˆΠ i
+∂yj
+(K(ϑ))
+is the Jacobian matrix of ˆΠ and
+J(ϑ) := G(K(ϑ))
+(
+0 −1
+1 0
+)
+.
+Expressing the Cartesian components in polar coordinates,
+ˆΠ 1 = ˆΠ r cos ˆΠ θ, ˆΠ 2 = ˆΠ r sin ˆΠ θ,
+we immediately obtain that
+S(ϑ) = ∂r ˆΠ r sin( ˆΠ θ − Θ(ϑ +ω)) + ˆΠ r∂r ˆΠ θ cos( ˆΠ θ − Θ(ϑ +ω))
+G Θ ′(ϑ)Θ ′(ϑ +ω) ,
+where the functions whose argument has not been speciﬁed are ev aluated at K(ϑ).
+Since ˆΠ r(K(ϑ)) = 1 because the circle ∂D2 is invariant and, by hypothesis, ˆΠ |∂D2
+is conjugate to the rotation of frequency ω through the diﬀeomorphism Θ (i.e.,
+ˆΠ θ(K(ϑ)) = Θ( ϑ +ω)
+for all ϑ), we get
+S(ϑ) = 1
+Θ ′(ϑ +ω)Θ ′(ϑ)
+∂r ˆΠ θ(K(ϑ))
+G(K(ϑ)) .
+In view of the way we deﬁned the normal torsion (cf. Deﬁnition 7.5), the statement
+then follows immediately from [8, Theorem 47] after realizing that
+ˆΠ(K(ϑ)) = K(ϑ +ω).
+□
+In order to calculate the normal torsion of the Poincar´ e map Π, let us begin by
+computing the diﬀeomorphism that conjugates Π |∂D2 to a rotation when its rotation
+number satisﬁes a Diophantine condition:
+Proposition 7.7. Suppose that the rotation number ωΠ of the Poincar´ e map of
+the local Beltrami ﬁeld is Diophantine. Then the circle diﬀe omorphism Π |∂D2 is
+conjugate to a rotation of frequency ωΠ through an analytic diﬀeomorphism Θ :
+S1 →∂D2 that satisﬁes
+Θ(ϑ) = ϑ − ǫκ(0)
+4 sinϑ + O(ǫ2).
+Proof. As the rotation number ωΠ satisﬁes a Diophantine condition, the map Π |∂D2
+is conjugate to a rotation of frequency ωΠ through an analytic diﬀeomorphism Θ [30,
+Theorem 1.3]. This diﬀeomorphism can be understood as a change of c oordinates
+θ0 = Θ( ϑ).EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 45
+Let us now compute the diﬀeomorphism Θ. Writing θ0 = Θ( ϑ), the fact that
+ˆΠ |∂D2 is conjugate to a rotation of frequency ωΠ through Θ means that the trajec-
+tory θ(ℓ; 1, Θ(ϑ)) at time ℓ corresponds to Θ( ϑ +ωΠ ), for any choice of ϑ. Using
+the equation for the trajectory proved in Proposition 7.2 at time ℓ, this means that
+Θ must satisfy the equation
+(7.21) Θ( ϑ +ωΠ ) = Θ( ϑ) +ωΠ + ǫκ(0)
+4
+[
+sin Θ(ϑ) − sin Θ(ϑ +ωΠ )
+]
++ O(ǫ2).
+Here we have used the expression for ωΠ proved in Theorem 7.4 (which allows us
+to replace
+∫ ℓ
+0 τd ¯s =ωΠ + O(ǫ2)) and that the function κ is ℓ-periodic.
+To analyze this equation, let us write the O(ǫ2) term in the RHS of (7.21)
+as R(ϑ). Let us identify ∂D2 with S1 = R/2πZ through the angular coordinate
+θ0, so that Θ is regarded as a diﬀeomorphism S1 → S1. With a slight abuse of
+notation, let us still denote by Θ its lift R → R. It is standard that this lift can be
+written as
+(7.22) Θ( ϑ) = ϑ +H(ϑ),
+where H(ϑ) is an analytic 2 π-periodic function.
+Let us consider the 2 π-periodic function
+(7.23) F (ϑ) := H(ϑ) + ǫκ(0)
+4 sin Θ(ϑ).
+Eq. (7.21) then reads as
+(7.24) F (ϑ +ωΠ ) = F (ϑ) +R(ϑ),
+with R = O(ǫ2). Consider the Fourier series of the functions F and R:
+F (ϑ) =
+∞∑
+k=−∞
+ˆFk eikϑ, R (ϑ) =
+∞∑
+k=−∞
+ˆRk eikϑ.
+Eq. (7.24) then asserts that for any nonzero integer k the Fourier coeﬃcients of F
+and R are related through the identity
+(7.25) ˆFk =
+ˆRk
+eikωΠ − 1.
+We can obviously take ˆF0 = 0; moreover, ˆR0 = 0 because it is a necessary condition
+for the existence of the diﬀeomorphism Θ.
+Since ωΠ satisﬁes the Diophantine condition (7.20), for large integer values o f k
+we have the elementary inequality
+|eikωΠ − 1|>C |k|−ν,
+so that from Eq. (7.25) the H m norm of F can be estimated by
+‖F ‖Hm ⩽ C
+( ∞∑
+k=−∞
+(1 +k2)m|k|2ν| ˆRk|2
+) 1
+2
+⩽ C‖R‖Hm+ν ⩽ Cmǫ2
+for any nonnegative integer m. To derive the last inequality, which shows that
+F = O(ǫ2), we have used that R = O(ǫ2). In view of Eqs. (7.22) and (7.23), this
+ensures that
+Θ(ϑ) = ϑ − ǫκ(0)
+4 sin Θ(ϑ) + O(ǫ2).46 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+In turn, this readily leads to the expression for the diﬀeomorphism Θ provided in
+the statement. □
+We are ready to provide a closed formula for the normal torsion of t he Poincar´ e
+map, up to terms of order O(ǫ3). The leading term only depends on the geometry
+of the curve (through its curvature and torsion) and, as is to be e xpected, not on
+the section of S1
+ℓ × D2 we used to deﬁne the Poincar´ e map:
+Theorem 7.8. Suppose that the rotation number ωΠ satisﬁes a Diophantine con-
+dition. Then the normal torsion of the Poincar´ e map of the lo cal Beltrami ﬁeld v
+on the invariant circle ∂D2 is
+NΠ = − 5πǫ2
+8
+∫ ℓ
+0
+κ(α)2τ (α)dα + O(ǫ3).
+Proof. By deﬁnition, the normal torsion is
+NΠ :=
+∫ 2π
+0
+1
+Θ ′(ϑ +ωΠ )Θ ′(ϑ)
+∂rΠ θ(1, Θ(ϑ))
+GΛ (1, Θ(ϑ)) dϑ,
+where Π θ(r,θ ) is the angular component of the Poincar´ e map, Θ(ϑ) is the diﬀeomor-
+phism deﬁned in Proposition 7.7 (considered as a map S1 → S1) and the function
+GΛ (r,θ ) is given by Eq. (7.15).
+We have already computed all the terms we need to evaluate the inte grand up
+to an O(ǫ3) error. Indeed, from Propositions 7.1, 7.3 and 7.7 and Theorem 7.4 it
+stems that, setting T :=
+∫ ℓ
+0 τ (α)dα,
+ωΠ =T + O(ǫ2),
+Θ ′(ϑ) = 1 − ǫκ(0)
+4 cosϑ + O(ǫ2),
+Θ ′(ϑ +ωΠ ) = 1 − ǫκ(0)
+4 cos(ϑ +T ) + O(ǫ2),
+GΛ (1, Θ(ϑ)) = 1 + ǫκ(0) cosϑ + O(ǫ2)
+∂Π θ
+∂r (1, Θ(ϑ)) = ǫ∂θ (1)
+∂r0
+(
+ℓ; 1,ϑ − ǫκ(0)
+4 sinϑ
+)
++ǫ2∂θ (2)
+∂r0
+(ℓ; 1,ϑ ) + O(ǫ3),
+the functions θ(j)(s;r0,θ 0) being in Proposition 7.1. Plugging these expressions in
+the integral for the normal torsion and using trigonometric identit ies, one arrives
+at the expression
+NΠ =
+∫ 2π
+0
+[ǫκ(0)
+2
+(
+sin(ϑ +T ) − sinϑ
+)
+− 5ǫ2
+16
+∫ 2π
+0
+κ(α)2τ (α)dα
++ 5κ2ǫ2
+48 sinT cos(2ϑ +T ) + O(ǫ3)
+]
+dϑ
+= − 5πǫ2
+8
+∫ 2π
+0
+κ2τdα + O(ǫ3),
+as claimed. □EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 47
+7.4. A KAM theorem for generic tubes. In this subsection we will use the pre-
+vious results to prove a theorem on the preservation of invariant t ori for divergence-
+free vector ﬁelds that are close to the local Beltrami ﬁeld v for small enough ǫ. As
+we shall see, the hypotheses of the KAM theorem will hold true as lon g as the core
+curve γ of the tube satisﬁes certain generic geometric conditions. Details o n the
+validity of these conditions are given below.
+Since the local Beltrami ﬁeld v is analytic in a neighborhood of the closure of
+the tube, which we identify with S1
+ℓ × D2 via the coordinates ( α,y ), we can assume
+that v is deﬁned in some domain S1
+ℓ × D , with D a neighborhood of the closed
+unit disk in the plane. To measure the smallness of a ﬁeld, we will use the norm
+‖u‖C k(S1
+ℓ ×D), which we deﬁne in terms of its components in the coordinates ( α,y )
+as
+‖u‖C k(S1
+ℓ ×D) := ‖uα‖C k(S1
+ℓ ×D) + ‖uy‖C k(S1
+ℓ ×D).
+We will sometimes ﬁnd it convenient to refer to a domain bounded by an invariant
+torus as an invariant tube of the ﬁeld. We say that a ﬁeld u is orbitally conjugate
+to a rotation of frequency ω on an invariant torus Σ if there are global coordinates
+(˜α, ˜θ) : Σ → S1 × S1 in which the vector ﬁeld is linear with frequency ω up to a
+multiplicative factor, that is,
+u|Σ =F (˜α, ˜θ)
+(
+∂ ˜α +ω∂ ˜θ
+)
+,
+where F : S1 × S1 → R is a nonvanishing function.
+In the following lemma we will show that, for a generic core curve γ, the rotation
+number of the Poincar´ e map of the local Beltrami ﬁeld is Diophantineand its normal
+torsion is nonzero. To make precise what we understand by “gener ic”, we will say
+that certain property holds for a Cm-dense set of closed analytic curves if, given
+any closed analytic curve γ in R3, one can deform it by a diﬀeomorphism Φ of R3,
+with ‖Φ − id‖C m(R3) as small as one wishes, so that the curve Φ( γ) has the desired
+property. Notice that this does not imply that the property holds f or an open set
+of curves.
+Lemma 7.9. Let m be any positive integer. The set of closed analytic curves fo r
+which the Poincar´ e map of the local Beltrami ﬁeld v has a Diophantine rotation
+number ωΠ and nonzero normal torsion NΠ on the invariant circle ∂D2 is Cm-
+dense.
+Proof. The result is not hard to prove using the expressions for the rotat ion number
+and the normal torsion derived in Theorems 7.4 and 7.8:
+ωΠ =
+∫ ℓ
+0
+τdα + O(ǫ2),
+NΠ = − 5πǫ2
+8
+∫ ℓ
+0
+κ2τdα + O(ǫ3).
+A way of making things precise is the following. We will consider deforma tions
+of the curve γ, labeled by a parameter δ. More concretely, let us denote by
+(T (α),N (α),B (α)) the Frenet trihedron of the curve γ at the point γ(α) (one
+should not mistake the binormal vector B(α) for the function B that we intro-
+duced in Eq. (3.6), which will not be used in this proof). Let F (α) be an analytic48 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+ℓ-periodic function and consider the family of curves Γ( α,δ ) in R3 given by
+Γ(α,δ ) := γ(α) +δF (α)B(α).
+If δ is close to zero, γδ ≡ Γ( ·,δ ) is a closed analytic curve. Notice that, for δ ⁄= 0,
+α is no longer an arc-length parametrization of γδ but, due to the properties of the
+binormal ﬁeld,
+|Γ ′| = 1 + O(δ2).
+Here and in what follows, we denote by a prime the derivatives with res pect to α.
+In particular, the length of γδ is ℓ + O(δ2). We will label the geometric quantities
+associated with the curve γδ with a subscript δ (e.g., κδ and τδ for its curvature
+and torsion).
+The results we have presented in this section carry over immediately when one
+does not only consider the tube Tǫ associated with the curve γ, but the family of
+tubes Tǫ(γδ). The dependence of the various quantities on the small paramete r δ
+is smooth and can be controlled easily. A tedious but straightforwar d computation
+using the well-known formulas for the curvature and torsion of a pa rametrized curve
+shows that
+κ2
+δ =κ2 + 2δκ(2F ′τ +Fτ ′) + O(δ2),
+τδ =τ −δ
+[
+κF ′ + d
+dα
+( F ′′ −τ 2F
+κ
+)]
++ O(δ2).
+Since the length of γδ diﬀers from ℓ by an O(δ2) term, one readily ﬁnds that the
+rotation number of the Poincar´ e map Π δ associated with the harmonic ﬁeld of the
+tube Tǫ(γδ) is
+ωΠ δ =
+∫ ℓ
+0
+τδ(α)dα + O(ǫ2 +δ2)
+=ωΠ +δ
+∫ ℓ
+0
+κ′(α)F (α)dα + O(ǫ2 +δ2).
+Similarly, the dependence of the normal torsion on δ can be shown to be
+NΠ δ = NΠ − 5πδǫ 2
+8
+∫ ℓ
+0
+(2κ′′′ + 3κ2κ′ − 6κττ ′ − 6τ 2κ′)Fdα + O(δ2 +ǫ3).
+We recall that, although the Poincar´ e map Π δ depends smoothly on the parame-
+ter δ, the terms O(ǫ2 +δ2) and O(δ2 +ǫ3) are continuous, but possibly not diﬀer-
+entiable, functions of δ.
+Perturbing the curve γ a little if necessary to ensure that the functions κ′ and
+2κ′′′ + 3κ2κ′ − 6κττ ′ − 6τ 2κ′
+are not identically zero, we deduce that the function F can be chosen so that the
+integrals
+∫ ℓ
+0
+κ′Fdα and
+∫ ℓ
+0
+(2κ′′′ + 3κ2κ′ − 6κττ ′ − 6τ 2κ′)Fdα
+are nonzero. For small enough ǫ this ensures that, as δ takes values in a small
+enough interval ( −δ0,δ 0), the values taken by the continuous function ωΠ δ (resp.
+NΠ δ ) cover an interval centered at ωΠ (resp. NΠ ) of radius Cδ 0 (resp.Cǫ 2δ0). Since
+Diophantine numbers have full Lebesgue measure, this immediately im plies thatEXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 49
+one can choose an arbitrarily small δ such that the rotation number ωΠ δ satisﬁes a
+Diophantine condition and the normal torsion NΠ δ is nonzero. □
+We can now show that, for a generic core curve γ and small enough ǫ, a suitably
+small perturbation of the local Beltrami ﬁeld still has an invariant to rus that is
+close to the original one:
+Theorem 7.10. For any positive integer m there is a Cm-dense set of closed
+analytic curves γ with the following KAM-type property: for any δ > 0, there is
+another positive integer k and some δ′ > 0 such that any analytic divergence-free
+vector ﬁeld u whose diﬀerence with the local Beltrami ﬁeld v of the tube Tǫ ≡ Tǫ(γ)
+is bounded by
+(7.26) ‖u −v‖C k(S1
+ℓ ×D) <δ ′
+possesses an invariant tube. Furthermore, one can ﬁnd a diﬀe omorphism Ψ of R3,
+with ‖Ψ − id‖C m(R3) < δ and Ψ − id supported in a small neighborhood of the
+torus ∂Tǫ, such that Ψ( Tǫ) is an invariant tube of u and u is orbitally conjugate on
+the invariant torus ∂Ψ( Tǫ) to a Diophantine rotation.
+Proof. By Lemma 7.9, we can deform the curve that lies at the core of the tu be
+Tǫ by a diﬀeomorphism of R3, arbitrarily close to the identity in the Cm norm, so
+that, if we consider the local Beltrami ﬁeld (which we still denote by v) associated
+to the deformed tube, its rotation number ωΠ satisﬁes a Diophantine condition and
+its normal torsion NΠ is nonzero. As before, we will identify this deformed tube
+with the domain S1
+ℓ × D2 through adapted coordinates ( α,y ).
+Consider the Poincar´ e map Π of the local Beltrami ﬁeld v, which can be safely
+considered as a diﬀeomorphism Π from D onto its image, with D a neighborhood
+of the closed unit disk
+D2. The Poincar´ e map of the ﬁeld u, also deﬁned on the
+section {α = 0}, is another diﬀeomorphism of D onto its image that we will denote
+by ˜Π. The vector ﬁelds u and v being close by (7.26), it is apparent that
+(7.27) ‖Π − ˜Π ‖C k(D)<Cδ ′
+as the Poincar´ e map is simply obtained by integrating the associated vector ﬁeld
+along a trajectory between two consecutive intersections with th e section {α =
+0}. To avoid cumbersome notations related to the intersection of the domains of
+auxiliary maps, wherever appropriate we will assume that the Poinca r´ e maps are
+deﬁned in a domain slightly larger than D without further mention. Obviously
+there is no loss of generality in this assumption.
+We have seen in Proposition 7.3 that the Poincar´ e map Π preserves t he 2-form
+Λ = GΛ (r,θ )rdr ∧dθ, where
+GΛ (r,θ ) := Bvα
+⏐
+⏐
+α=0 = 1 + O(ǫ),
+and vα denotes the α-component of the local Beltrami ﬁeld v. Mimicking the
+proof of this proposition, we immediately obtain that the Poincar´ e m ap ˜Π of the
+divergence-free ﬁeld u preserves the 2-form ˜Λ := G˜Λ (r,θ )rdr ∧dθ, with
+G˜Λ (r,θ ) := Buα
+⏐
+⏐
+α=0.
+Notice that uα does not vanish in {0} × D because the diﬀerence |uα −vα| is small
+and the α-component of the local Beltrami ﬁeld is close to 1.50 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+Our next goal is to relate the above invariant 2-forms to apply Theo rem 7.6.
+More concretely, we will show that there is a Cm-small diﬀeomorphism Φ such that
+(7.28) Λ = Φ ∗ ˜Λ ,
+where Φ ∗ is the pullback of the diﬀeomorphism. This will be done using Moser’s
+trick. We start by noticing that the diﬀerence between these 2-fo rms is obviously
+exact, as
+Λ − ˜Λ = dΓ
+with the 1-form Γ given by
+Γ :=
+( ∫ r
+0
+[
+GΛ (¯r,θ ) −G˜Λ (¯r,θ )
+]
+¯rd ¯r
+)
+dθ.
+Although we are making computations in polar coordinates, it is readily seen that
+all the objects we are considering are well-deﬁned also at the origin, and therefore
+determine smooth forms in the whole disk D.
+Consider the non-autonomous vector ﬁeld of class C∞
+Zs :=
+∫ r
+0 [GΛ (¯r,θ ) −G˜Λ (¯r,θ )] ¯rd ¯r
+r[(1 −s)GΛ (r,θ ) +sG ˜Λ (r,θ )]∂r,
+where s will be the ﬂow parameter. It should be noticed that, by the assump tions
+on the vector ﬁelds, the denominator behaves as r + O(r2) while the numerator is
+of order O(r2). The ﬁeld Zs satisﬁes the Cm bound
+(7.29) ‖Zs‖C m(D)<Cδ ′
+for all s ∈ [0, 1] as a consequence of the estimate (7.26).
+The time-s ﬂow of the non-autonomous ﬁeld Zs, which will be denoted by φs, is
+given by the solution to the initial value problem
+∂
+∂sφsx =Zs(φsx), φ 0x =x.
+Consider the s-dependent 2-form
+Λ s := (1 −s)Λ + s ˜Λ .
+A simple computation shows that
+(7.30) ∂
+∂s
+(
+φ∗
+sΛ s
+)
+=φ∗
+s
+( ∂
+∂s Λ s +LZsΛ s
+)
+=φ∗
+s
+( ˜Λ − Λ + diZsΛ s
+)
+= 0,
+where LZs denotes the Lie derivative along Zs and the last equality follows imme-
+diately from the deﬁnition of Λ s and the fact that the interior product of Zs with
+Λ s is
+iZsΛ s = Γ .
+Therefore, if we set Φ := φ1, we obtain Eq. (7.28) from (7.30) and the deﬁnition of
+Λ s. Moreover,
+(7.31) ‖Φ − id‖C m(D)<Cδ ′
+because Φ is the time-1 ﬂow of the vector ﬁeld Zs, whose Cm norm is controlled by
+Eq. (7.29).
+Let us now consider the map
+ˆΠ := Φ −1 ◦ ˜Π ◦ Φ ,EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 51
+which is a diﬀeomorphism from a neighborhood of D2 (which we still take as D)
+onto its image. We shall next relate the new map ˆΠ to the Poincar´ e map Π. By the
+deﬁnition of Φ and the relation between the invariant 2-forms (7.28) , the map ˆΠ
+preserves the same 2-form Λ as the Poincar´ e map Π, and ˆΠ is close to Π by (7.31):
+(7.32)
+‖
+‖Π − ˆΠ
+‖
+‖
+C m(D)<Cδ ′.
+We are now ready to apply Theorem 7.6 with the maps Π and ˆΠ. Indeed, the
+previous arguments and the way we have deformed the curve γ ensure that the
+following statements hold true:
+(i) The rotation number ωΠ satisﬁes a Diophantine condition, so the map
+Π |∂D2 is analytically conjugate to a rotation of frequency ωΠ (cf. Proposi-
+tion 7.7).
+(ii) The normal torsion NΠ is nonzero.
+(iii) The Ck norm of Π − ˆΠ is at most Cδ ′ by Eq. (7.32), with δ′ arbitrarily
+small.
+Hence Theorem 7.6 ensures that, for any given integer m, if the integer k is large
+enough and δ′ is suﬃciently small there is a diﬀeomorphism ˆΨ of D with ˆΨ − id
+arbitrarily small in the Cm(D) norm and supported in a neighborhood of ∂D2 such
+that the curve ˆΨ(∂D2) is invariant under the map ˆΠ. Furthermore, the restriction
+of ˆΠ to this invariant curve, ˆΠ | ˆΨ( ∂D2), also has rotation number ωΠ .
+The deﬁnition of ˆΠ then ensures that the curve Φ ◦ ˆΨ(∂D2) is invariant under
+the Poincar´ e map˜Π of the ﬁeld u. (As an aside, notice that this invariant curve is
+close to ∂D2 but, in principle, is not contained in the closure of D2, which is the
+reason why we are considering a slightly larger disk D throughout the proof.) It is
+standard that this is equivalent to saying that there is an invariant t orus of u whose
+intersection with the disk {α = 0} is precisely the aforementioned curve. Since the
+Cm(D) norm of the diﬀeomorphism Φ ◦ ˆΨ is arbitrarily small by the properties of ˆΨ
+and Eq. (7.31), one can take a diﬀeomorphism ¯Ψ of S1
+ℓ × D such that ¯Ψ( S1
+ℓ ×∂D2) is
+an invariant torus of the ﬁeld u and ¯Ψ −id is small in the Cm norm and is supported
+in a neighborhood of S1
+ℓ ×D2. Indeed, this diﬀeomorphism can be deﬁned as follows.
+Take the solution to the system of ODEs
+dr
+dα = ur(α,r,θ )
+uα(α,r,θ ),
+dθ
+dα = uθ(α,r,θ )
+uα(α,r,θ ),
+with the trajectory ( r,θ ) parametrized by the angle α and depending on the ini-
+tial conditions ( r0,θ 0). Consider the function ϕα mapping the initial conditions
+(r0,θ 0) to its time- α ﬂow (r(α;r0,θ 0),θ (α;r0,θ 0)). Then it is easy to check that
+the diﬀeomorphism ¯Ψ is given, in polar coordinates, by
+¯Ψ(α,r,θ ) :=
+(
+α,ϕ α ◦ Φ ◦ ˆΨ(r,θ )
+)
+.
+Actually, this formula simply asserts that the intersection of the inv ariant torus of
+the ﬁeld u with each section {α =α0}, understood as a curve in the disk D, is the
+image under ϕα0 of the invariant curve Φ ◦ ˆΨ(∂D2) at {α = 0}. Clearly the formula52 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+for ¯Ψ and the estimates for the maps Φ and ˆΨ imply that
+‖ ¯Ψ − id‖C m(S1
+ℓ ×D) ⩽ C‖Φ ◦ ˆΨ − id‖C m(D)
+can be made arbitrarily small.
+To complete the proof of the theorem, it suﬃces to recall that the map ˆΠ | ˆΨ( ∂D2)
+has rotation number ωΠ . This implies that the Poincar´ e map ˜Π of the vector ﬁeld u,
+restricted to the invariant curve Φ ◦ ˆΨ(∂D2), also has rotation number ωΠ , which
+trivially implies that the vector ﬁeld u itself is orbitally conjugate to a rotation of
+frequency ωΠ on the invariant torus ¯Ψ( S1
+ℓ ×∂D2). The existence of the diﬀeomor-
+phism Ψ of R3 that appears in the statement of the theorem is then immediate. □
+Remark 7.11. Ultimately, Theorem 7.10 is a result on the preservation of invariant
+tori for small perturbations of the harmonic ﬁeld h, rather than of the local Beltrami
+ﬁeld v. Indeed, if we had considered a Beltrami ﬁeld with small but otherwis e
+arbitrary parameter λ (possibly 0), we would have found the same expressions for
+the rotation number and normal torsion of its Poincar´ e map, the o nly change being
+that the error terms would be O(ǫ2 + |λ|) and O(ǫ3 + |λ|), respectively.
+We will conclude this section with a result on the persistence of anoth er invariant
+set: we will show that, for an open and dense set of core curves γ and small enough
+ǫ, any divergence-free vector ﬁeld that is a small perturbation of t he local Beltrami
+ﬁeld v has an elliptic periodic trajectory close to the core curve γ. We recall
+that a periodic trajectory is elliptic if the nontrivial eigenvalues of the associated
+monodromy matrix have all unit modulus but are diﬀerent from 1.
+Proposition 7.12. Suppose that the total torsion of the curve γ satisﬁes
+∫ ℓ
+0
+τ (α)dα ⁄=nπ
+for all integers n. Then for any δ > 0, there exists some δ′ > 0 such that any
+divergence-free vector ﬁeld u in the tube Tǫ which is close to the local Beltrami
+ﬁeld v in the sense that
+‖u −v‖C k(S1
+ℓ ×D2) <δ ′.
+also has an elliptic periodic trajectory diﬀeomorphic to th e curve {y = 0 }. More-
+over, the corresponding diﬀeomorphism Ψ is bounded by
+‖Ψ − id‖C k(S1
+ℓ ×D2) <δ
+and is diﬀerent from the identity only in a small neighborhoo d of the curve {y = 0}.
+Proof. From the expressions (5.2)–(5.4) for the harmonic ﬁeld h, the estimates for
+the functionψ proved in Theorem 5.1 and the connection between the local Beltram i
+ﬁeld and h (see Eq. (7.1)), we infer that the diﬀerence v − ˜
+h0 can be estimated as
+‖v − ˜
+h0‖C k(S1
+ℓ ×D2) <C kǫ,
+with the vector ﬁeld ˜h0 deﬁned as
+˜h0 :=∂α +τ (α) (y1∂2 −y2∂1).
+It is clear that (α(s),y (s)) = (s, 0) is an ℓ-periodic trajectory of the ﬁeld ˜h0. Setting
+T :=
+∫ ℓ
+0
+τ (α)dα,EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 53
+an easy computation shows that the monodromy matrix of this traj ectory for the
+ﬁeld ˜h0 is 
+
+1 0 0
+0 cos T − sinT
+0 sin T cosT
+
+ .
+The nontrivial eigenvalues of this matrix are e ±iT , and hence diﬀerent from ±1 by
+the hypotheses of the theorem, thus showing that {y = 0 } is an elliptic trajectory
+of ˜h0.
+It is then standard that any divergence-free ﬁeld u that is close enough to ˜h0
+(say, ‖u − ˜
+h0‖C k(S1
+ℓ ×D2) <δ 1)) has an elliptic periodic trajectory given by the image
+of {y = 0 } under a diﬀeomorphism Ψ with ‖Ψ − id‖C k(S1
+ℓ ×D2) < δ. There is no
+loss of generality in assuming that Ψ − id is supported in a small neighborhood of
+{y = 0}. Since
+‖u − ˜h0‖C k(S1
+ℓ ×D2) < ‖u −v‖C k(S1
+ℓ ×D2) + ‖v − ˜h0‖C k(S1
+ℓ ×D2) <δ ′ +Ckǫ,
+the theorem then follows by taking ǫ and δ′ small enough. □
+8. Approximation by Beltrami fields with decay
+In this section we prove a result that allows us to approximate a ﬁeld v that
+satisﬁes the Beltrami equation
+curlv =λv
+on a neighborhood of a compact set S, by a global Beltrami ﬁeld u, which satisﬁes
+curlu =λu
+in the whole space R3 and falls oﬀ at inﬁnity as 1 /|x|. Throughout we will assume
+that the complement R3\S is a connected set. It is not hard to see that this
+condition is necessary.
+It will be more convenient for us to work with an auxiliary elliptic equatio n
+instead of considering the Beltrami equation directly. To this end, le t us denote by
+G(x) := cosλ|x|
+4π|x|
+the Green’s function of the operator ∆ + λ2 in R3, which satisﬁes the distributional
+equation
+∆ G +λ2G = −δ0
+withδ0 the Dirac measure supported at 0. We will use the notation BR for the ball
+in R3 centered at the origin and of radius R.
+The following lemma, which shows how to “sweep” the singularities of th e
+Green’s function, will be used in the demonstration of the global app roximation
+theorem. Its proof is based on a duality argument and the Hahn–Ba nach theorem.
+Lemma 8.1. TakeR> 0 and consider a domain U ⊂ R3\B2R and a compact set
+S ⊂ BR whose complement R3\S is connected. Let us consider the vector ﬁeld
+v(x) :=
+M∑
+m=1
+ρmG(x −xm),54 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+where {xm}M
+m=1 is a ﬁnite set of points in BR\S and ρm ∈ R3 are constant vectors.
+Then, for any δ > 0, there is a ﬁnite set of points {zj}J
+j=1 in the domain U and
+constant vectors cj ∈ R3 such that the ﬁnite linear combination
+(8.1) w(x) :=
+J∑
+j=1
+cjG(x −zj)
+approximates the ﬁeld v uniformly in S as
+‖v −w‖C 0(S) <δ.
+Proof. Consider the space U of all vector ﬁelds that are linear combinations of the
+form (8.1), where the points zj belong to the set U and the coeﬃcients cj ∈ R3
+are constant vectors. Restricting these ﬁelds to the set S, U can be regarded as a
+subspace of the Banach space C0(S, R3) of continuous vector ﬁelds on S.
+By the Riesz–Markov theorem, the dual of C0(S, R3) is the space M(S, R3) of
+the ﬁnite vector-valued Borel measures on R3 whose support is contained in the
+setS. Let us take any measure µ ∈ M(S, R3) such that
+∫
+R3f ·dµ = 0 for all f ∈ U .
+Let us now deﬁne a ﬁeld F ∈L1
+loc(R3, R3) as
+F (x) :=
+∫
+R3
+G(x − ˜x)dµ(˜x),
+so that F satisﬁes the equation
+∆ F +λ2F = −µ.
+Notice thatF is identically zero on the open set U by the deﬁnition of the measure µ,
+that R3\S is connected and that F satisﬁes the elliptic equation
+∆ F +λ2F = 0
+in R3\S. Hence the unique continuation theorem ensures that the ﬁeld F vanishes
+on the complement of S. It then follows that the measure µ also annihilates any
+ﬁeld of the form ρmG(x −xm) because, as the points xm do not belong to S,
+0 = F (xm) ·ρm =
+∫
+R3
+G(x −xm)ρm ·dµ(x).
+Therefore ∫
+R3
+v ·dµ = 0,
+which implies that v can be uniformly approximated on S by elements of the sub-
+space U as a consequence of the Hahn–Banach theorem. The lemma then fo l-
+lows. □
+As an intermediate step before proving the global approximation re sult for the
+Beltrami equation, we will establish the following proposition on the ap proximation
+of solutions to the elliptic equation ∆ v = −λ2v by solutions deﬁned in a large ball.
+Throughout, we will say that a diﬀerential equation holds in a closed s et if it holds
+in a neighborhood of this set.
+Proposition 8.2. Letv be a vector ﬁeld which satisﬁes the equation
+(8.2) ∆ v = −λ2vEXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 55
+in a compact subset S of R3. Assume that its complement R3\S is connected and
+that S is contained in the ball BR. Then for any δ >0 and any positive integer k
+there is a vector ﬁeld w satisfying the equation
+∆ w = −λ2w
+in BR that approximates the ﬁeld v in S as
+(8.3) ‖v −w‖C k(S) <δ.
+Hereδ is any ﬁxed positive constant.
+Proof. By hypothesis, there is an open subset Ω ⊃S such that the ﬁeld v satisﬁes
+the equation (8.2) in Ω. We can assume that Ω is contained in the ball BR. Let us
+take a smooth function χ : R3 → R equal to 1 in a closed set S′ ⊂ Ω whose interior
+contains S and identically zero outside Ω. Deﬁning a smooth extension ˜ v of the
+ﬁeld v to Rn by setting ˜v :=χv, we obviously have
+(8.4) ˜ v(x) =
+∫
+R3
+G(x − ˜x)ρ(˜x)d˜x
+with ρ := −∆˜v −λ2˜v.
+The vector ﬁeld ρ is necessarily supported in Ω \S′. Therefore, an easy continuity
+argument ensures that one can approximate the integral (8.4) in t he compact set S′
+by a ﬁnite Riemann sum of the form
+ˆv(x) :=
+M∑
+m=1
+ρmG(x −xm)
+so that, for any constant δ′ > 0,
+‖˜v − ˆv‖C 0(S′) <δ ′.
+Here ρm are constant vectors in R3 and xm are points that lie in Ω \S′.
+Let us take a domain U ⊂ R3\B2R. Lemma 8.1 asserts that there is a vector
+ﬁeld of the form
+w(x) :=
+J∑
+j=1
+cjG(x −zj)
+such that
+‖ˆv −w‖C 0(S′) <δ ′,
+where {zj}J
+j=1 is a ﬁnite set of points in U and cj ∈ R3 are constant vectors.
+Therefore,
+(8.5) ‖v −w‖C 0(S′) < 2δ′.
+To complete the proof of the proposition, notice that the ﬁeld v satisﬁes
+∆ v +λ2v = 0
+in the set S′ (whose interior contains S) and w satisﬁes the same equation in the
+ball B2R. By standard elliptic estimates, it follows that the C0 approximation (8.5)
+can be promoted to the Ck bound
+‖v −w‖C k(S) <C kδ′.
+Choosing δ′ small enough, the result follows. □56 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+We are now ready to prove the global approximation theorem for th e Beltrami
+equation with solutions that decay at inﬁnity. To construct these s olutions, we will
+truncate a suitable series representation for the ﬁelds in a large ba ll obtained using
+Proposition 8.2 and act on them using a convenient diﬀerential opera tor.
+Theorem 8.3. Letv be a vector ﬁeld that satisﬁes the Beltrami equation
+curlv =λv
+in a compact set S ⊂ R3, where λ is a nonzero constant and the complement R3\S
+is connected. Then there is a global Beltrami ﬁeld u, satisfying the equation
+curlu =λu
+in R3, which falls oﬀ at inﬁnity as |Dju(x)|<C j/|x| and approximates the ﬁeld v
+in the Ck norm as
+‖u −v‖C k(S) <δ.
+Hereδ is any positive constant.
+Proof. Let us assume that the compact set S is contained in the ball BR/2. As the
+Beltrami ﬁeld v satisﬁes the equation
+∆ v +λ2v = 0
+inS, by Proposition 8.2 there is a ﬁeld w satisfying
+(8.6) ∆ w +λ2w = 0
+in the ball BR and such that
+(8.7) ‖v −w‖C k+2(S) <δ ′.
+Let us take spherical coordinates ( r,θ,ϕ ) in the ball BR. Writing the ﬁeld w as
+a series of spherical harmonics and using the equation (8.6) we immed iately obtain
+thatw can be written as a series
+w =
+∞∑
+l=0
+l∑
+m=−l
+clmjl(λr)Ylm(θ,ϕ ).
+Herejl is the spherical Bessel function, Ylm are the spherical harmonics and clm ∈
+R3 are constant vectors. Therefore, given any δ′ > 0 there is an integer L such that
+the ﬁnite sum
+ˆu :=
+L∑
+l=0
+l∑
+m=−l
+clmjl(λr)Ylm(θ,ϕ )
+approximates the ﬁeld w in L2 sense:
+(8.8) ‖ˆu −w‖L2(BR) <δ ′.
+By the properties of spherical Bessel functions, the vector ﬁeld ˆu satisﬁes the equa-
+tion
+(8.9) ∆ˆ u +λ2 ˆu = 0
+in R3 and falls oﬀ at inﬁnity as |Dj ˆu(x)|<C j/|x|.
+In view of Eqs. (8.6) and (8.9), standard elliptic estimates allow us to p ass from
+the L2 bound (8.8) to Ck+2 estimate
+‖ˆu −w‖C k+2(BR/2) <C kδ′.EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 57
+From this inequality and the bound (8.7) we infer
+(8.10) ‖ˆu −v‖C k+2(S) <Cδ ′.
+Let us now set
+u := curl curl ˆu +λ curl ˆu
+2λ2 .
+A simple computation shows that the vector ﬁeld thus deﬁned satisﬁ es the Beltrami
+equation
+curlu =λu
+in R3 and falls oﬀ as |Dju(x)|<C j/|x| by the properties of ˆu. Moreover,
+‖u −v‖C k(S) =
+‖
+‖
+‖
+‖
+curl curl ˆu +λ curl ˆu
+2λ2 −v
+‖
+‖
+‖
+‖
+C k(S)
+=
+‖
+‖
+‖
+‖
+(curl +λ) curl(ˆu −v)
+2λ2
+‖
+‖
+‖
+‖
+C k(S)
+⩽ C‖ˆu −v‖C k+2(S)
+<Cδ ′,
+as we wanted to prove. □
+Remark 8.4. The fall-oﬀ at inﬁnity of the global Beltrami ﬁeld u is obtained from the
+truncation of the explicit series representation for the auxiliary ﬁe ldw. This is the
+reason why Theorem 8.3 does not work in arbitrary open Riemannian 3 -manifolds,
+unlike the approximation theorem we used in [11]. Notice that the latte r theorem
+does not yield any control at inﬁnity whatsoever for the global Belt rami ﬁelds.
+9. Proof of the main theorem
+We are now ready to give the proof of Theorem 1.1. Let us begin by co nsidering
+one of the curves (say, γ1) in the statement of the theorem. By perturbing this
+curve with a Cm-small diﬀeomorphism if necessary, we can assume that γ1 is an
+analytic curve whose curvature κ does not vanish anywhere [5, p. 184], and that its
+total torsion satisﬁes ∫ ℓ
+0
+τ (α)dα ⁄=πk
+for all integers k. As before, ℓ denotes the length of the curve γ1. It is worth
+emphasizing that, as these conditions are open, they are obviously preserved if we
+deform the curve γ1 with a diﬀeomorphism that is close enough to the identity in
+the Cm norm (m /greaterorequalslant3).
+Let us consider the tube Tǫ(γ1) of core curve γ1 and thickness ǫ, and the corre-
+sponding harmonic ﬁeld h, given by the expression (5.3) in the coordinates ( α,y )
+adapted to the tube. Throughout we will assume that ǫ is small enough. By The-
+orem 6.8, we can consider the associated local Beltrami ﬁeld v1, which is given by
+the only solution to the Beltrami equation with parameter λ =ǫ3,
+curlv1 =ǫ3v1,
+in the tube Tǫ(γ1) that is tangent to the boundary and whose harmonic part is
+the ﬁeld h. (Notice that in this section v1 will not stand for the component of a
+vector ﬁeld in the direction of the coordinate y1.) Since the boundary of the tube58 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+is analytic, it is well known [24] that the local Beltrami ﬁeld v1 is analytic in the
+closure of a small neighborhood Ω 1 of
+Tǫ(γ1).
+Since the total torsion of the curve is not an integral multiple of π, Theorem 7.10
+and Proposition 7.12 ensure that, given any δ >0, we can deform the curve γ1 by a
+diﬀeomorphism of R3 arbitrarily close to the identity in the Cm norm so that any
+divergence-free vector ﬁeld u in Ω 1 with
+‖u −v1‖C k(Ω 1) <δ ′
+has:
+• An invariant tube given by Ψ 1[Tǫ(γ1)].
+• An elliptic periodic trajectory given by ˜Ψ 1(γ1).
+Moreover, on the invariant torus ∂Ψ 1[Tǫ(γ1)], the ﬁeld u is orbitally conjugate to a
+Diophantine rotation, and therefore ergodic. Here Ψ 1 and ˜Ψ 1 are diﬀeomorphisms
+of R3 with
+‖Ψ 1 − id‖C m(R3) + ‖ ˜Ψ 1 − id‖C m(R3) <δ
+and such that the diﬀerences Ψ 1 − id and ˜Ψ 1 − id are supported on small neighbor-
+hoods U1, ˜U1 of∂Tǫ(γ1) and γ1, respectively. The constants k andδ′ depend on m,
+δ and on the geometry of the curve γ1.
+We can apply the same argument for each curve γi (1 ⩽ i ⩽ N ), thereby ob-
+taining (for small enough ǫ) a collection of local Beltrami ﬁelds vi, satisfying the
+equation
+curlvi =ǫ3vi
+in the closure of a neighborhood Ω i of the closed tube Tǫ(γi) and such that any
+divergence-free vector ﬁeld u in Ω i with ‖u −vi‖C k(Ω i) <δ ′ has an invariant torus,
+where the ﬁeld u is ergodic, and an elliptic periodic trajectory. Furthermore, they
+are respectively given by ∂Ψ i[Tǫ(γi)] and ˜Ψ i(γi), where Ψ i, ˜Ψ i areCm-small diﬀeo-
+morphisms of R3 with Ψ i − id and ˜Ψ i − id supported in small neighborhoods Ui, ˜Ui
+of ∂Tǫ(γi) and γi, in each case. We can assume that the complement
+R3\(Ω 1 ∪ · · · ∪ Ω N )
+is connected and that the sets Ω i are pairwise disjoint.
+Let us deﬁne a vector ﬁeld v in Ω 1 ∪ · · · ∪ Ω N by setting it equal to the local
+Beltrami ﬁeld vi in each set Ω i. By Theorem 8.3, there is a Beltrami ﬁeld u, which
+satisﬁes the equation
+curlu =ǫ3u
+in R3, that falls oﬀ at inﬁnity as |Dju(x)|<C j/|x| and approximates the ﬁeld v as
+‖u −v‖C k(Ω 1∪···∪Ω N ) <δ ′.
+Therefore, if we deﬁne the diﬀeomorphism Φ of R3 as
+Φ(x) :=
+
+
+
+
+
+Ψ i(x) if x ∈Ui,
+˜Ψ i(x) if x ∈ ˜Ui,
+x otherwise,
+it follows that, for each i, Φ[ Tǫ(γi)] is a vortex tube of the Beltrami ﬁeld u, and that
+Φ(γi) is an elliptic periodic trajectory. Besides, the Beltrami ﬁeld u is ergodic (and
+orbitally conjugate to a Diophantine rotation) on each invariant tor us ∂Φ[ Tǫ(γi)].EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 59
+The ﬁeld u being orbitally conjugate to a Diophantine rotation on each invariant
+torus∂Φ[ Tǫ(γi)], it follows [14] that this invariant torus is accumulated by a Cantor-
+like set of invariant tori with positive Lebesgue measure. On these in variant tori,
+the ﬁeld is also orbitally conjugate to Diophantine rotations. The cor responding set
+of Diophantine frequencies is Cantor-like because the normal tors ion NΠ is nonzero.
+Therefore, if we consider the trajectories of the ﬁeld u between two of these invariant
+tori (lying on the same vortex tube Φ[ Tǫ(γi)]), Angenent’s dichotomy [1] asserts that
+either there is a horseshoe-type invariant set between them or th ere are invariant
+tori where the ﬁeld is conjugate to a rotation of rational frequen cy. In both cases,
+there are inﬁnitely many periodic trajectories between these tori. The theorem
+then follows.
+Remark 9.1. It is worth giving some additional details about what we understand
+by a thin tube. What we have proved is that for any set of smooth pe riodic curves
+γ1,...,γ N , δ > 0 and m ∈ N, there is a positive constant ǫ0, depending on δ, m
+and the geometry of the curves, such that the statement of The orem 1.1 holds true
+for any thickness ǫ < ǫ0, the diﬀeomorphism Φ that maps the tubes Tǫ(γi) into
+vortex tubes being bounded by ‖Φ − id‖C m(R3) <δ . It should be noticed that both
+Theorem 1.1 and its proof hold verbatim if one takes tubes Tǫ1 (γ1),..., TǫN (γN ) of
+diﬀerent thickness, as long as ǫ1,...,ǫ N are small enough (that is, smaller than the
+above constant ǫ0).
+Remark 9.2. Contrary to what happened in the main theorem of [11], the proof
+of Theorem 1.1 does not work in general (even if we drop the require ment that
+the ﬁeld u decays at inﬁnity, replacing Theorem 8.3 by [11, Theorem 3.6]) if we
+substitute the ﬁnite set of curves {γi}N
+i=1 by an inﬁnite set {γi}∞
+i=1 that is locally
+ﬁnite. The reason is that the “maximal thickness” ǫ0(γi) associated to each curve γi
+individually does not need to be bounded away from zero: since all the vector
+ﬁelds vi, deﬁned in a neighborhood of the tube
+Tǫi(γi) (whose thickness can vary
+from tube to tube), must satisfy the Beltrami equation
+curlvi =λvi
+with the same constantλ for all i. Since this λ must be of order O[ǫ0(γi)3] for all i,
+it is clear that the construction breaks down if the inﬁmum of the pos itive quantities
+{ǫ0(γi)}∞
+i=1 is 0. On the other hand, if this inﬁmum is positive, we can apply the
+approximation theorem in [11, Theorem 3.6] to construct a global Be ltrami ﬁeld
+with all the properties listed in the statement of Theorem 1.1 with the exception
+that its growth at inﬁnity is not controlled.
+10. A comment about the Navier–Stokes equation
+To conclude, we will present an easy application of Theorem 1.1 to the existence
+of (time-dependent) solutions to the Navier–Stokes equation tha t have a prescribed
+set of stationary (possibly knotted and linked) vortex tubes.
+For this, let us take the global Beltrami ﬁeld u that we considered in Section 9.
+That is, u satisﬁes the equation
+curlu =ǫ3u
+in R3, falls oﬀ at inﬁnity as C/|x| and has a set of thin invariant tubes given by
+{Φ[ Tǫ(γi)]}N
+i=1, where the diﬀeomorphism Φ is close to the identity and ǫ is a small60 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+constant. Then the analytic time-dependent ﬁeld
+w(x,t ) := u(x) e−νǫ6t
+is a solution of the Navier–Stokes equation
+∂tw + (w · ∇)w =ν∆ w − ∇P , divw = 0
+in R3 with pressure P (x,t ) = c − 1
+2 |w(x,t )|2. As the vortex lines of w (which are
+the trajectories of the vorticity curl w(x,t ) for ﬁxed t) coincide with those of u at all
+times, up to a reparametrization, it follows that w is a solution to the Navier–Stokes
+equation with the desired properties.
+Acknowledgments
+This work is supported in part by the Spanish MINECO under grants F IS2011-
+22566 (A.E.) and the ICMAT Severo Ochoa grant SEV-2011-0087 (A.E. and D.P.S.).
+The authors are respectively supported by the Ram´ on y Cajal pr ogram (A.E.) and
+an ERC starting grant 335079 (D.P.S.).
+References
+[1] S.B. Angenent, The topological entropy and invariant ci rcles of an area preserving twist map,
+in: Twist mappings and their applications , Springer, New York, 1992.
+[2] V.I. Arnold, Sur la g´ eom´ etrie diﬀ´ erentielle des grou pes de Lie de dimension inﬁnie et ses
+applications ` a l’hydrodynamique des ﬂuides parfaits, Ann . Inst. Fourier 16 (1966) 319–361.
+[3] V.I. Arnold, The asymptotic Hopf invariant and its appli cations, Sel. Math. Sov. 5 (1986)
+327–345.
+[4] V.I. Arnold, B. Khesin, Topological methods in hydrodynamics , Springer, New York, 1999.
+[5] J.W. Bruce, P.J. Giblin, Curves and singularities , Cambridge University Press, Cambridge,
+1984.
+[6] A. Choﬀrut, V. Sverak, Local structure of the set of stead y-state solutions to the 2D incom-
+pressible Euler equations, Geom. Funct. Anal. 22 (2012) 136 –201.
+[7] D. C´ ordoba, C. Feﬀerman, On the collapse of tubes carrie d by 3D incompressible ﬂows,
+Comm. Math. Phys. 222 (2001) 293–298.
+[8] R. de la Llave, A. Gonz´ alez, Analytic smoothing of geome tric maps with applications to KAM
+theory, J. Diﬀerential Equations 245 (2008) 1243–1298.
+[9] J. Deng, T.Y. Hou, X. Yu, Geometric properties and nonblo wup of 3D incompressible Euler
+ﬂow. Comm. PDE 30 (2005) 225–243.
+[10] D.G. Ebin, J. Marsden, Groups of diﬀeomorphisms and the motion of an incompressible ﬂuid,
+Ann. of Math. 92 (1970) 102–163.
+[11] A. Enciso, D. Peralta-Salas, Knots and links in steady s olutions of the Euler equation, Ann.
+of Math. 175 (2012) 345–367.
+[12] J.B. Etnyre, R.W. Ghrist, Stratiﬁed integrals and unkn ots in inviscid ﬂows, Contemp. Math.
+246 (1999) 99–111.
+[13] J. Etnyre, R. Ghrist, Contact topology and hydrodynami cs III. Knotted orbits, Trans. Amer.
+Math. Soc. 352 (2000) 5781–5794.
+[14] B. Fayad, R. Krikorian, Herman’s last geometric theore m, Ann. Sci. ´Ec. Norm. Sup´ er. 42
+(2009) 193–219.
+[15] C. Foias, R. Temam, Remarques sur les ´ equations de Navi er–Stokes stationnaires et les
+ph´ enom` enes successifs de bifurcation, Ann. Scuola Norm. Sup. Pisa 5 (1978) 28–63.
+[16] M.H. Freedman, Z.X. He, Divergence-free ﬁelds: energy and asymptotic crossing number,
+Ann. of Math. 134 (1991) 189–229.
+[17] J.M. Gambaudo, E. Ghys, Signature asymptotique d’un ch amp de vecteurs en dimension 3,
+Duke Math. J. 106 (2001) 41–79.
+[18] M.R. Herman, Existence et non existence de tores invari ants par des diﬀ´ eomorphismes sym-
+plectiques, S´ eminaire EDP,´Ecole Polytech., Palaiseau, 1988, pp. 1–24.EXISTENCE OF KNOTTED VORTEX TUBES IN STEADY EULER FLOWS 61
+[19] B. Khesin, G. Misiolek, Euler equations on homogeneous spaces and Virasoro orbits, Adv.
+Math. 176 (2003) 116–144.
+[20] D. Kleckner, W.T.M. Irvine, Creation and dynamics of kn otted vortices, Nature Phys. 9
+(2013) 253–258.
+[21] P. Laurence, E.W. Stredulinsky, Two-dimensional magn etohydrodynamic equilibria with pre-
+scribed topology, Comm. Pure Appl. Math. 53 (2000) 1177–120 0.
+[22] W.S. Massey, On the normal bundle of a sphere imbedded in Euclidean space, Proc. Amer.
+Math. Soc. 10 (1959) 959–964.
+[23] H.K. Moﬀatt, Vortex- and magneto-dynamics—a topologi cal perspective, in: Mathematical
+physics 2000 , Imperial College Press, London, 2000, pp. 170–182.
+[24] C.B. Morrey, On the analyticity of the solutions of anal ytic non-linear elliptic systems of
+partial diﬀerential equations. II. Analyticity at the boun dary, Amer. J. Math. 80 (1958) 219–
+237.
+[25] N. Nadirashvili, On stationary solutions of two-dimen sional Euler equation, Arch. Rat. Mech.
+Anal. 209 (2013) 729–745.
+[26] R.B. Pelz, Symmetry and the hydrodynamic blow-up probl em, J. Fluid Mech. 444 (2001)
+299–320.
+[27] R.L. Ricca, New developments in topological ﬂuid mecha nics: from Kelvin’s vortex knots to
+magnetic knots, in: Ideal knots , W orld Sci. Publ., River Edge, NJ, 1998, pp. 255–273.
+[28] W. Thomson (Lord Kelvin), Vortex Statics, Proc. R. Soc. Edinburgh 9 (1875) 59–73 (reprinted
+in: Mathematical and physical papers IV , Cambridge University Press, Cambridge, 2011, pp.
+115–128).
+[29] T. Vogel, On the asymptotic linking number, Proc. Amer. Math. Soc. 131 (2003) 2289–2297.
+[30] J.-C. Yoccoz, Analytic linearization of circle diﬀeom orphisms, Lect. Notes Math. 1784 (2002)
+125–173.
+[31] Z. Yoshida, Y. Giga, Remarks on spectra of operator rot, Math. Z. 204 (1990) 235–245.
+Instituto de Ciencias Matem ´aticas, Consejo Superior de Investigaciones Cient ´ıficas,
+28049 Madrid, Spain
+E-mail address : aenciso@icmat.es, dperalta@icmat.es

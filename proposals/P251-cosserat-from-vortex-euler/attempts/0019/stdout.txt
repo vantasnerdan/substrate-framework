@@ -1,0 +1,29 @@
+--- E_cross(0) candidates (target +1/2):
+      Re[v*.(xi x w0)] conj=False: -a**2/2
+      Re[v*.(xi x w0)] conj=True: -a**2/2
+      Re[v*.(w0 x xi)] conj=False: a**2/2
+      Re[v*.(w0 x xi)] conj=True: a**2/2
+       Re[v.(xi x w0)] conj=False: 0
+       Re[v.(xi x w0)] conj=True: 0
+       Re[v.(w0 x xi)] conj=False: 0
+       Re[v.(w0 x xi)] conj=True: 0
+winner: ('Re[v*.(w0 x xi)]', True, 2*Omega*eta**2*r**2/a**2, True)
+D powers: [-2, 2, 4, 6, 8]
+W series: a**9*k**8*(log(a**6/64) + 6*log(k) - 7 + 6*EulerGamma)/2304 + a**7*k**6*(log(a**4/16) + 4*log(k) - 1 + 4*EulerGamma)/256 - a**3*k**2/4
+
+E_kin_ext: e0 = a**2/4
+  e2 = a**4/48
+  e4 = -a**6*(288*c4d + 18*log(a) + 18*log(k) - 18*log(2) - 1 + 18*EulerGamma)/576
+
+numeric targets: e2 = 1/48 = 0.02083333, clean e4 ~ +0.00607, f_log ~ -0.0305
+E_can/rho/(pi Om^2 eta^2):
+  e0 = a**2
+  e2 = 0
+  e4 = -a**6*(3456*c4d + 72*log(a) + 72*log(k) - 53 - 72*log(2) + 72*EulerGamma)/2304
+
+numeric validation (a=1, c4d=-0.253, Om=rho=eta=1):
+  k=0.05: symbolic +1.00000312  exact +1.00000312  diff 2.49e-10
+  k=0.1: symbolic +1.00004783  exact +1.00004782  diff 1.52e-08
+  k=0.15: symbolic +1.00023584  exact +1.00023568  diff 1.63e-07
+  k=0.2: symbolic +1.00073135  exact +1.00073051  diff 8.38e-07
+exit=0
