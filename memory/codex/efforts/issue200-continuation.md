@@ -85,3 +85,23 @@ extracts the completed periodic bridge. Both pane agents have been asked to
 send completion/findings directly to coordinator w3:p1 using Herdr prompts.
 Long-running verifiers remain in script pane w3:p2 with durable output and
 exit-status capture. No new claim or terminal PR is inferred at this point.
+
+## Branch-local promotion v0.182.0
+
+C-CST-017 now records the reviewed actual prepared periodic joint continuum:
+physical histories, inherited action, full current/virtual work and same-cell
+finite-tube density. The0249 materialization review found no correction.
+The additive symbol API derives the canonical residual; eight direct tests
+and targeted Ruff pass. All four prior euler_joint definitions are unchanged.
+Registry/release/docs/generated memory agree on270 accepted claims, with all
+269 prior claim objects unchanged. Fixed validation passes exit0 after the
+separately completed direct tests. This release is on the research branch;
+it is not yet a main release or completion of issue200.
+
+Attempt0248 is active after central/schema activation. It compares a
+symmetry-balanced compact-ring molecule and compact-support common-carrier
+matching. A newly identified source-transfer issue is the isolated ring's
+actual Galilean frame: balancing total impulse can delete the per-ring
+background needed to cancel self-translation. The geometry executor is
+working that mechanism and failure-derived alternatives with full pressure,
+stationarity and density costs. It is not a campaign no-go.

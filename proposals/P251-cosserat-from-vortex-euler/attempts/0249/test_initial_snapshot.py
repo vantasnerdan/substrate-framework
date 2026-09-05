@@ -118,7 +118,7 @@ def test_joint_residual_keeps_actual_history_errors_and_cubic_mismatch():
     tracked = mass*transform*r+result.defect*z+mass*e.diff(t, 2)+stiffness*e
     assert s.simplify(actual-tracked) == s.zeros(5, 1)
     assert result.defect != s.zeros(5)
-    assert all(s.Poly(value, k).degree() in (-s.oo, 3) for value in result.defect)
+    assert result.defect.applyfunc(lambda value: s.Poly(value, k).degree() in (-s.oo, 3)) == s.ones(5)
     assert s.simplify(result.defect.subs(ct, a+j*nu**2/(4*rho))) == s.zeros(5)
     wrong = s.MutableDenseMatrix(transform)
     wrong[:2, 2:] *= 2

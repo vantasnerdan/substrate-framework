@@ -1,0 +1,44 @@
+......F.                                                                 [100%]
+=================================== FAILURES ===================================
+______ test_joint_residual_keeps_actual_history_errors_and_cubic_mismatch ______
+
+    def test_joint_residual_keeps_actual_history_errors_and_cubic_mismatch():
+        k, t = s.symbols('k t', real=True)
+        rho, j, nu, a, ct, cl = s.symbols('rho j nu a ct cl', positive=True)
+        result = prepared_joint_symbol(k, rho, j, nu, a, ct, cl)
+        transform, mass, stiffness = result.observation, result.mass, result.stiffness
+        z = s.Matrix([s.Function(f'z{i}')(t) for i in range(5)])
+        e = s.Matrix([s.Function(f'e{i}')(t) for i in range(5)])
+        physical = transform*z+e
+        r = z.diff(t, 2)+result.branch_frequency_squared*z
+        actual = mass*physical.diff(t, 2)+stiffness*physical
+        tracked = mass*transform*r+result.defect*z+mass*e.diff(t, 2)+stiffness*e
+        assert s.simplify(actual-tracked) == s.zeros(5, 1)
+        assert result.defect != s.zeros(5)
+>       assert result.defect.applyfunc(lambda value: s.Poly(value, k).degree() in (-s.oo, 3)) == s.ones(5)
+E       assert Matrix([\n[Tru... True, True]]) == Matrix([\n[1, ... 1, 1, 1, 1]])
+E         
+E         Use -v to get more diff
+
+tests/test_euler_joint.py:121: AssertionError
+=============================== warnings summary ===============================
+tests/test_euler_joint.py::test_joint_residual_keeps_actual_history_errors_and_cubic_mismatch
+  /home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/matrices/matrixbase.py:2108: SymPyDeprecationWarning: 
+  
+  non-Expr objects in a Matrix is deprecated. Matrix represents
+  a mathematical matrix. To represent a container of non-numeric
+  entities, Use a list of lists, TableForm, NumPy array, or some
+  other data structure instead.
+  
+  See https://docs.sympy.org/latest/explanation/active-deprecations.html#deprecated-non-expr-in-matrix
+  for details.
+  
+  This has been deprecated since SymPy version 1.9. It
+  will be removed in a future version of SymPy.
+  
+    return self._eval_applyfunc(f)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_euler_joint.py::test_joint_residual_keeps_actual_history_errors_and_cubic_mismatch
+1 failed, 7 passed, 1 warning in 8.17s

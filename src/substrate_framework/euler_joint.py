@@ -1,7 +1,7 @@
-"""Unpromoted joint-observation tools for P251 / issue 200.
+"""Joint-observation tools for P251 / issue 200.
 
-These APIs derive finite material-momentum jets and solve finite passive
-output moments. They do not supply a stationary Euler ensemble, analytic
+These APIs derive finite material-momentum jets, finite passive output
+moments and the physical branch residual. They do not supply a stationary Euler ensemble, analytic
 continuum error bounds, or an inherited action. A continuum use needs the
 actual positive material measures and regular streamline-band moments,
 including ambient reaction, preparation costs and independent action matching.
@@ -14,6 +14,10 @@ import sympy as sp
 from substrate_framework.euler_observation import (
     material_tag_fourier_dipole,
     material_tag_moments,
+)
+from substrate_framework.micropolar import (
+    MicropolarCoefficients,
+    micropolar_fourier_stiffness,
 )
 
 
@@ -68,6 +72,59 @@ class PassiveOutputWeights:
     exponents: tuple[int, ...]
     weights: sp.ImmutableMatrix
     residuals: sp.ImmutableMatrix
+
+
+@dataclass(frozen=True)
+class PreparedJointSymbol:
+    """Five-position reference-axis symbol for the prepared periodic bridge.
+
+    For physical Y=T z+e, branch residual r=z_tt+D z and constant T,
+    M Y_tt+K Y = M T r + defect z + M e_tt + K e. The defect is retained
+    exactly, including its cubic terms; this is not an invariant-manifold
+    construction. Arrays use (Ux, Uy, Phix, Phiy, Phiz), with Kvector=(0,0,k).
+    """
+
+    coefficients: MicropolarCoefficients
+    observation: sp.ImmutableMatrix
+    mass: sp.ImmutableMatrix
+    branch_frequency_squared: sp.ImmutableMatrix
+    stiffness: sp.ImmutableMatrix
+    defect: sp.ImmutableMatrix
+
+
+def prepared_joint_symbol(wavenumber, density, spin_density, optical_frequency,
+                          acoustic_speed_squared, transverse_dispersion,
+                          longitudinal_dispersion):
+    """Derive the physical residual from the canonical micropolar operator.
+
+    Real k and positive rho,j,nu,a,cL with cT>j*nu**2/(4*rho) give the
+    reviewed positive bulk sector. Signs remain available for counterexample
+    probes, as in the canonical coefficient API; rho must be nonzero.
+    Parameters are measured/prepared source inputs, not universal material
+    constants. Proper rotation transfers this reference-axis representation.
+    At k=0 it is its continuous five-position limit with the axis retained.
+    """
+    k, rho, j, nu, a, ct, cl = map(sp.sympify, (
+        wavenumber, density, spin_density, optical_frequency,
+        acoustic_speed_squared, transverse_dispersion, longitudinal_dispersion))
+    if rho.is_zero is True:
+        raise ValueError("density must be nonzero")
+    alpha = j*nu**2/4
+    coefficients = MicropolarCoefficients(
+        0, rho*a, alpha, j*cl/2, 0, j*(ct-alpha/rho))
+    curl = sp.I*sp.Matrix([[0, -k, 0], [k, 0, 0], [0, 0, 0]])
+    retained = [0, 1, 3, 4, 5]
+    observation = sp.BlockMatrix([
+        [sp.eye(3), -j*curl/(2*rho)], [curl/2, sp.eye(3)]
+    ]).as_explicit().extract(retained, retained)
+    mass = sp.diag(rho, rho, j, j, j)
+    frequency = sp.diag(a*k**2, a*k**2, nu**2+ct*k**2,
+                        nu**2+ct*k**2, nu**2+cl*k**2)
+    stiffness = micropolar_fourier_stiffness([0, 0, k], coefficients).extract(
+        retained, retained)
+    defect = sp.simplify(stiffness*observation-mass*observation*frequency)
+    return PreparedJointSymbol(coefficients, *(sp.ImmutableMatrix(value) for value in
+        (observation, mass, frequency, stiffness, defect)))
 
 
 def passive_output_weights(moment_matrix, coefficients, *, parity):
