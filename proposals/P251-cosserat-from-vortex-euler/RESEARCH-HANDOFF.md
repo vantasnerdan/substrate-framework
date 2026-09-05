@@ -10,6 +10,15 @@ is a user-directed scope decision, not a proof of success or exhaustion.
 Research execution is paused by that decision. The scientific objective
 remains open, with no reliable completion estimate.
 
+PR #199 is now merged by a distinct reviewer as
+[`42ef05899cd35b82b717428269294158f240b951`](https://github.com/vantasnerdan/substrate-framework/commit/42ef05899cd35b82b717428269294158f240b951).
+That is the landed base for a future research PR. The complete scientific
+preservation checkpoint is
+[`94114e56a199138df23375b13c6828a79ec94ada`](https://github.com/vantasnerdan/substrate-framework/commit/94114e56a199138df23375b13c6828a79ec94ada);
+it includes all final attempts and pause receipts. The research branch was
+not merged into main. Integrate the landed main by a normal merge when the
+next bounded research PR is prepared; preserve the existing history.
+
 **Bottom line:** there is a useful conditional continuum construction and
 substantial actual-Euler dynamical progress. There is not yet one completed
 proof joining the actual dynamics, physical observations, action, and
@@ -21,7 +30,7 @@ Its complete attempt archive, including unsuccessful routes and their
 corrections, lives under `proposals/P251-cosserat-from-vortex-euler/attempts/`.
 The last checkpoint before this handoff is
 [`e88763a`](https://github.com/vantasnerdan/substrate-framework/commit/e88763a07f4e9a1ad67a9ae849bea237b0119c75).
-The final preservation commit will be linked in this issue. Later research
+The final preservation commit is linked above. Later research
 is **not** being merged into main through the bounded PR #199 repair.
 
 ## Purpose: why this research is worth doing

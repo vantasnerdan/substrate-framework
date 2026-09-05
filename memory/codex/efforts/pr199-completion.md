@@ -11,6 +11,18 @@ status: active
 
 ## Goal and Success Contract
 
+Operational disposition: PR199 merged by distinct reviewer /root/parent_review
+at42ef05899cd35b82b717428269294158f240b951, after approval
+https://github.com/vantasnerdan/substrate-framework/pull/199#pullrequestreview-5122650243.
+The original issue198 remains open; landed/frontier handoff:
+https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5554125616.
+All scientific work is preserved in94114e56a199138df23375b13c6828a79ec94ada;
+issue200 preservation record:
+https://github.com/vantasnerdan/substrate-framework/issues/200#issuecomment-5554121009.
+Future research PR preparation should integrate the landed main normally,
+keeping research history and reviewing the actual new claim/API boundary.
+The bounded PR merge did not include later research or branch-local releases.
+
 Current owner decision,2026-09-05: separate the unfinished research from the
 bounded repair and merge PR199. Research execution is paused, not scientifically
 complete or exhausted. The new continuation issue is
