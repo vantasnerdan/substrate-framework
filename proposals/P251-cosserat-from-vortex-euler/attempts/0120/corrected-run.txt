@@ -1,0 +1,32 @@
+Command: .venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0120/verify.py
+Exit code: 0
+PASS exact cylindrical divergence
+PASS exact first integral
+PASS radial Beltrami component
+PASS axial Beltrami component
+PASS azimuthal component is GS equation
+PASS normalized torus scalar equation
+PASS straight Bessel Dirichlet solution
+PASS straight boundary value
+PASS straight poloidal velocity
+PASS derived Lundquist return-ratio series
+PASS flux-action twist leading coefficient
+PASS transit-time return angle
+PASS core transverse trace
+PASS core elliptic determinant
+PASS Kelvin material gyro reverses particle rotation
+PASS actual shear parcel spin
+PASS two-angle KKS coefficient
+PASS canonical inertia differs by exact factor two
+PASS exact scalar Routh inertia
+PASS rigid material Kelvin equation leaves zero angle rate
+20/20 exact checks passed
+
+Initial Ruff execution: F841, displacement assigned but unused. Repaired
+by deriving displacement_dot through the displacement Jacobian rather
+than repeating its formula. The rigid-rotation check was also expanded
+to differentiate the actual Lin velocity in Cartesian coordinates.
+The final execution and Ruff result are recorded after that local repair.
+
+Final strengthened execution: exit 0, identical 20 PASS lines above.
+Final ruff check: exit 0, All checks passed!

@@ -1,0 +1,15 @@
+PASS [P251-0216-fixed-tag-harmonics] actual a orbit equation through cubic order
+PASS [P251-0216-fixed-tag-harmonics] actual b orbit equation through cubic order
+PASS [P251-0216-fixed-tag-harmonics] orbit energy is independent of the physical time angle
+PASS [P251-0216-fixed-tag-harmonics] actual covariance fourth harmonic includes orbital distortion
+PASS [P251-0216-fixed-tag-harmonics] actual dilation fourth harmonic includes orbital distortion
+PASS [P251-0216-fixed-tag-harmonics] second harmonic dilation has its distinct nonlinear order
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0216/verify.py", line 54, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0216/verify.py", line 41, in main
+    checks.check("fourth harmonic physical spin normalization", spin_ratio4 == rho*q*(1+w**2)/(4*(1-w**2)))
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0216-fixed-tag-harmonics] fourth harmonic physical spin normalization

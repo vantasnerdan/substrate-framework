@@ -1,0 +1,16 @@
+Command: PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0137/verify.py
+Exit status: 1
+Elapsed seconds: 1.436177002
+
+PASS [P251-0137-smooth-column-transfer] bounded first-order system satisfies exact radial momentum
+PASS [P251-0137-smooth-column-transfer] bounded first-order system satisfies exact azimuthal momentum
+PASS [P251-0137-smooth-column-transfer] bounded first-order system satisfies exact axial momentum
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0137/verify.py", line 84, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0137/verify.py", line 30, in main
+    checks.check(f"bounded first-order system satisfies exact {name}",
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0137-smooth-column-transfer] bounded first-order system satisfies exact full incompressibility

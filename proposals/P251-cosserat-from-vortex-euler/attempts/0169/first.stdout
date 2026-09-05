@@ -1,0 +1,13 @@
+PASS [P251-0169-pressure-localization] actual triangular pressure is not transported
+Exact advected-pressure value at registered point: sqrt(6)/8
+PASS [P251-0169-pressure-localization] the actual Bernoulli lift cannot change the pressure residual
+PASS [P251-0169-pressure-localization] nonconstant pressure modulation exposes the full divergence defect
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0169/verify.py", line 48, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0169/verify.py", line 32, in main
+    checks.check("Euler acceleration has the same nonadvected-pressure source",
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0169-pressure-localization] Euler acceleration has the same nonadvected-pressure source

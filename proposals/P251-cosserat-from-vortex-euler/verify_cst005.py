@@ -8,9 +8,9 @@ stiffness and its microinertia are proportional to ``L_v``. At ``L_v = 0`` the
 spin coordinate has no kinetic or potential weight and is removed; assigning
 it an arbitrary nonzero inertia would test a different model.
 
-The Euler-derived physical sector is divergence-free. The longitudinal
-formulas are retained as exact algebraic consequences of the unrestricted
-micropolar extension, not as incompressible-Euler modes.
+The Euler-derived displacement sector is divergence-free. Its longitudinal
+displacement formula belongs only to the formal compressible extension.
+Longitudinal spin remains in the conditional incompressible micropolar system.
 """
 
 import sys
@@ -19,6 +19,7 @@ import numpy as np
 import sympy as sp
 
 from substrate_framework.numerics import SolverTolerances, solve_ivp_evidence
+from substrate_framework.micropolar import MicropolarCoefficients, micropolar_fourier_stiffness
 from substrate_framework.verification import CheckLedger
 
 k, w2 = sp.symbols("k omega2", positive=True)
@@ -26,9 +27,14 @@ rho, lam, mu, alpha = sp.symbols("rho lambda mu alpha", positive=True)
 cs, ca, j = sp.symbols("c_s c_a j", positive=True)
 ctr = sp.Symbol("c_tr", real=True)
 
-K_u = (mu + alpha) * k**2
-K_phi = (cs + ca) * k**2 + 4 * alpha
-coupling = 2 * alpha * k
+coefficients = MicropolarCoefficients(lam, mu, alpha, ctr, cs, ca)
+full_stiffness = micropolar_fourier_stiffness([0, 0, k], coefficients)
+helicity_axis = sp.Matrix([1, sp.I, 0])/sp.sqrt(2)
+helicity_columns = sp.zeros(6, 2)
+helicity_columns[:3, 0], helicity_columns[3:, 1] = helicity_axis, helicity_axis
+projected_stiffness = sp.simplify(helicity_columns.conjugate().T*full_stiffness*helicity_columns)
+K_u, K_phi = projected_stiffness[0, 0], projected_stiffness[1, 1]
+coupling = -projected_stiffness[0, 1]
 
 # Build the generalized eigenproblem instead of re-entering its polynomial.
 transverse_matrix = sp.Matrix([[rho * w2 - K_u, coupling], [coupling, j * w2 - K_phi]])
@@ -70,38 +76,28 @@ def check_branches_and_limits(ledger: CheckLedger) -> None:
         "roots are those of the operator-derived determinant",
     )
 
-    Gamma, outer_radius, core_radius, length_density, density0 = sp.symbols(
-        "Gamma R a L_v rho_0", positive=True
-    )
-    alpha_micro = (
-        length_density
-        * density0
-        * Gamma**2
-        * sp.log(outer_radius / core_radius)
-        / (24 * sp.pi)
-    )
-    j_micro = length_density * sp.pi * density0 * core_radius**4 / 3
+    cell_density, cell_stiffness, cell_inertia = sp.symbols("n_cell K_Psi J_Psi", positive=True)
+    alpha_micro = cell_density*cell_stiffness/12
+    j_micro = cell_density*cell_inertia/3
     optical_gap = sp.simplify(4 * alpha_micro / j_micro)
-    expected_gap = (
-        Gamma**2 * sp.log(outer_radius / core_radius) / (2 * sp.pi**2 * core_radius**4)
-    )
+    expected_gap = cell_stiffness/cell_inertia
     ledger.check(
-        "microscopic substitution gives the corrected optical gap",
+        "same-orbit isotropic substitution preserves the physical optical gap",
         sp.simplify(optical_gap - expected_gap) == 0,
-        "omega_gap^2 = Gamma^2 log(R/a)/(2 pi^2 a^4)",
+        "omega_gap^2 = K_Psi/J_Psi; no retired tension locking or appended rigid inertia",
     )
 
 
 def check_longitudinal_extension(ledger: CheckLedger) -> None:
-    proj_lin = sp.simplify((lam + mu - alpha) + (mu + alpha) - (lam + 2 * mu))
+    proj_lin = sp.simplify(full_stiffness[2, 2]-(lam+2*mu)*k**2)
     ledger.check(
         "unrestricted longitudinal diagonal: rho w^2 = (lambda+2 mu) k^2",
         proj_lin == 0,
         "formal compressible extension; not an incompressible-Euler mode",
     )
-    proj_ang = sp.simplify((cs + ca) - (2 * ctr - ca + cs) - 2 * (ca - ctr))
+    proj_ang = sp.simplify(full_stiffness[5, 5]-(2*(cs+ctr)*k**2+4*alpha))
     ledger.check(
-        "longitudinal spin diagonal: j w^2 = 2(c_a-c_tr) k^2 + 4 alpha",
+        "longitudinal spin diagonal: j w^2 = 2(c_s+c_tr) k^2 + 4 alpha",
         proj_ang == 0,
         "exact projection of the conditional N4 operator",
     )
@@ -139,6 +135,24 @@ def check_structure_free_limit(ledger: CheckLedger) -> None:
         sp.simplify(((cs0 + ca0) * k**2 + 4 * alpha0) / j0) != 0,
         "the spin coordinate is removed, not assigned j=1, at L_v=0",
     )
+
+
+def check_coherence_removal_with_background(ledger: CheckLedger) -> None:
+    fraction = sp.Symbol("coherent_fraction", positive=True)
+    background, a0, c0, j0 = sp.symbols("mu_background a0 c0 j0", positive=True)
+    shear_correction = sp.Symbol("mu_correction", real=True)
+    # The fixed textured Euler background retains its affine shear coefficient.
+    with_background = det_transverse.subs(
+        {mu: background+fraction*shear_correction, alpha: fraction*a0,
+         cs: fraction*c0/2, ca: fraction*c0/2, j: fraction*j0})
+    limit = sp.simplify(sp.limit(with_background/fraction, fraction, 0))
+    target = (rho*w2-background*k**2)*(j0*w2-4*a0-c0*k**2)
+    ledger.check("coherence removal retains the background Navier-Cauchy displacement root",
+                 sp.simplify(limit-target) == 0,
+                 "the finite ratio spin root has zero action weight and is removed")
+    ledger.check("removing the background shear additionally recovers neutral Euler displacement",
+                 sp.simplify((rho*w2-background*k**2).subs(background, 0)-rho*w2) == 0,
+                 "fixed-density empty-fluid limit is distinct from coherence removal")
 
 
 def check_ivp_refinement(ledger: CheckLedger) -> None:
@@ -249,11 +263,11 @@ def check_mutations(ledger: CheckLedger) -> None:
         "two off-diagonal factors 2*alpha*k multiply to 4*alpha^2*k^2",
     )
 
-    wrong_longitudinal = 2 * (ca + ctr)
+    wrong_longitudinal = 2*(ca-ctr)*k**2+4*alpha
     ledger.check(
-        "M3 wrong c_tr sign rejected",
-        sp.simplify(wrong_longitudinal - 2 * (ca - ctr)) == 4 * ctr,
-        "the longitudinal spin coefficient changes for c_tr != 0",
+        "M3 historical wrong longitudinal grad-div sign rejected",
+        sp.simplify(wrong_longitudinal-full_stiffness[5, 5]) != 0,
+        "both Laplacian and grad-div contribute with the same Fourier sign",
     )
 
 
@@ -263,6 +277,7 @@ def main() -> int:
     check_branches_and_limits(ledger)
     check_longitudinal_extension(ledger)
     check_structure_free_limit(ledger)
+    check_coherence_removal_with_background(ledger)
     check_ivp_refinement(ledger)
     check_mutations(ledger)
     return int(ledger.finish())

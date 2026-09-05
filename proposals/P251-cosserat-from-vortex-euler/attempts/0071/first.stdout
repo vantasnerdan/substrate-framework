@@ -1,0 +1,28 @@
+PASS [P251/0071] actual twelve vertices have unit norm
+PASS [P251/0071] second directional moment is exactly isotropic
+PASS [P251/0071] fourth directional moment is exactly isotropic
+PASS [P251/0071] every source quartic spectral weight becomes radial
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0071/verify.py", line 42, in <module>
+    all(sphere_zero(v) for v in projector*projector-projector)
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0071/verify.py", line 42, in <genexpr>
+    all(sphere_zero(v) for v in projector*projector-projector)
+        ^^^^^^^^^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0071/verify.py", line 37, in sphere_zero
+    return (unit_relation.reduce(s.expand(real))[1] == 0
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/polytools.py", line 7784, in reduce
+    poly = Poly._from_expr(expr, self._options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/polytools.py", line 320, in _from_expr
+    return cls._from_dict(rep, opt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/polytools.py", line 267, in _from_dict
+    rep[monom] = domain.convert(coeff)
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/domains/domain.py", line 456, in convert
+    return self.from_sympy(element)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/domains/integerring.py", line 76, in from_sympy
+    raise CoercionFailed("expected an integer, got %s" % a)
+sympy.polys.polyerrors.CoercionFailed: expected an integer, got -1/4

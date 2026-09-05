@@ -1,0 +1,24 @@
+Command: .venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0114/verify.py
+Exit status: 1
+
+PASS [P251-0114-physical-frame-action] source metric fixes its torsion as the negative of the usual Frenet convention
+PASS [P251-0114-physical-frame-action] the fixed geometric uniform-twist registration removes only its zero-winding part
+PASS [P251-0114-physical-frame-action] physical unit-angle columns satisfy the actual transverse Kelvin constraint
+PASS [P251-0114-physical-frame-action] actual KKS sign follows the physical curl sign with no orientation reset
+PASS [P251-0114-physical-frame-action] leading transported KKS density is conserved by the actual amplitude equation
+PASS [P251-0114-physical-frame-action] physical transverse quotient cancels its tangent-displacement contamination
+PASS [P251-0114-physical-frame-action] the registered physical curl-sign candidate gives a positive Hessian
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0114/verify.py", line 137, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0114/verify.py", line 80, in main
+    ledger.check("autonomous angular inertia is derived by eliminating the actual conjugate coordinate",
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0114-physical-frame-action] autonomous angular inertia is derived by eliminating the actual conjugate coordinate
+
+Classification: symbolic checker representation defect. The eliminated
+Lagrangian was factored; the expected equivalent expression was expanded.
+Direct structural == was replaced by simplification of their difference.
+No action, coefficient, candidate or sign changed.

@@ -1,0 +1,26 @@
+Command: env PYTHONPATH=src .venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0147/verify.py
+Exit status:1; elapsed2.24890817s.
+
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0147/verify.py", line 111, in <module>
+PASS [P251-0147] general excited physical Laplace angle
+PASS [P251-0147] n8 physical phase retains negative optical clock
+PASS [P251-0147] n8 natural-scale physical curvature positive
+PASS [P251-0147] n8 KKS Laguerre normalization
+PASS [P251-0147] pressure polynomial has no zero-axis root
+PASS [P251-0147] pressure/log-derivative coprimality
+PASS [P251-0147] all sixteen slow-time carrier rows independent
+PASS [P251-0147] twenty actual radial/background rows have nonzero minor
+PASS [P251-0147] background moment rows are genuinely additional
+PASS [P251-0147] finite-packet carrier/filter square completion
+PASS [P251-0147] actual carrier derivative factor
+PASS [P251-0147] finite packet KKS uses full Plancherel mass
+PASS [P251-0147] two physical axial controls independent
+PASS [P251-0147] dual axial controls preserve reference on every sheet
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0147/verify.py", line 75, in main
+    ledger.check("radial-only packet mismatch exposed", wrong_difference == -2 * gaussian_cost)
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0147] radial-only packet mismatch exposed

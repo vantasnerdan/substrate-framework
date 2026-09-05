@@ -1,0 +1,10 @@
+PASS [P251-0241-actual-joint-residual] Eq6: all physical joint mismatch coefficients below degree3 vanish
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0241/verify_joint.py", line 66, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0241/verify_joint.py", line 31, in main
+    checks.check('Eq6: exact cubic mismatch including both off-diagonal rows', defect == expected)
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0241-actual-joint-residual] Eq6: exact cubic mismatch including both off-diagonal rows

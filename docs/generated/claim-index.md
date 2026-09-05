@@ -201,6 +201,693 @@ Under C-MED-003, let a dimensionless real field be restricted on a fixed spatial
 - Compatibility: `compatible_extension`
 - Dependencies: C-MED-003, C-RG-001
 
+## C-CST-008
+
+Fix rho>0 and a nonzero curl eigenvalue lambda. Within the declared
+stationary finite-variance isotropic Gaussian Beltrami law, there is a
+positive-density stationary marked selection of actual invariant knotted
+vortex-tube neighborhoods with finite volume and a continuous ambient
+complement. On a uniformly bounded good-patch event one can construct
+smooth compact isovortical core/reaction fields Q,S wholly inside each
+tube, whose full-space induced velocities are also compact, with:
+
+    core_angle(Q)=1, core_angle(S)=0,
+    Omega(Q,S)=B!=0,
+    H=[[Hq,N],[N,P]] positive definite,
+    G(Q)=(B^2/P)n, G(S)=0, L(Q)=0, L(S)=B n.
+
+Here G=rho integral r cross xi and L=rho integral r cross v_xi are
+different measured moments, Omega is the Euler KKS form, and H is the
+complete isovortical second variation of Euler kinetic energy. Every
+quantity is constructed from actual field jets, compact profiles and
+Euler integrals. No core mass, locking constant or desired frequency is
+supplied. The core angle is a normalized local vorticity-direction
+observation. It is not asserted to be a global compact symmetry action.
+
+The same event supports additional zero-G/zero-L compact pairs with
+positive reduced stiffness/inertia ratio above any prescribed finite
+bound. Their supports can be made disjoint, so the full H/KKS locality
+used for their reaction blocks is exact. Finite radii, profile norms,
+positive margins, laws and number densities are declared geometric
+inputs; no universal five-scalar filament formula is claimed.
+
+- Accepted in: `v0.175.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+
+## C-CST-009
+
+Use C-CST-008's cells in the explicit phase Cauchy--Born embedding of the
+quadratic Euler material action,
+
+    eta=U+Ez,
+    pi=rho[(u0.grad)eta+V+A Ez],
+    Axi=P(xi cross omega0)-curl(P(xi cross omega0))/lambda.
+
+All ambient fluid is retained. U is the declared coherent tube-centroid
+plus continuous-ambient coordinate; Phi is the registered local core-angle
+field, q=Phi-curl U/2. The ensemble pairs time-reversed and reflected full
+states, with one COMMON macro conjugate variable V and independently varied
+microscopic reaction momenta. Unresolved nonaffine variation/relaxation is
+excluded by the declared Cauchy--Born closure, not silently made into gauge.
+The law and marks are fixed before deformation. The claim concerns the
+linear continuum and its full second spatial jet, not all wave numbers.
+
+Pulling back that ONE action, taking its stated ensemble average and
+eliminating the complete retained momenta yields positive computed
+
+    j=nu E_Palm[B^2/P]/3,
+    kappa=nu E_Palm[Hq-N^2/P]/3, alpha=kappa/4.
+
+The six-moment match gives b=0 in the leading physical mixed mass and
+ell=g-kappa b/j=-kappa/2!=0. Thus the optical branch has nonzero actual
+coarse translation/core-angle transfer
+U/Phi=-j sigma |k|/(2rho)+O(|k|^3) in curl helicity sigma. The leading
+mass density is the total rho, derived also by the exact common Galilean
+translation of the same stationary fluid, not a tube filling fraction.
+
+Zero-moment compact STF and neighbor-angle attachments, with finite
+structurally selected amplitudes, give positive shear mu and positive
+transverse/longitudinal spin curvatures C_T,C_L after retaining all added
+gradient inertia. Their coefficients are full canonical action/Schur
+integrals, including the negative bare material covariance stiffness,
+potential reaction squares and the surviving STF rate-source norm.
+The SAME derivative field normalization transforms both kinetic and
+potential forms. In its stated convention the equations are
+
+    rho U_N,tt=(mu+alpha)Delta U_N+2alpha curl Phi_N-grad p,
+    div U_N=0,
+    j Phi_N,tt=C_T Delta Phi_N+(C_L-C_T)grad div Phi_N
+                    +2alpha curl U_N-4alpha Phi_N.
+
+These equations and their angular-momentum/couple-stress balance are exact
+coefficient identities for the declared second-gradient conditional action.
+The optical gap is4alpha/j; the acoustic transverse speed squared ismu/rho.
+There is no incompressible longitudinal displacement wave. The physical
+gradient masses, finite-radius Fourier filters and macro affine tube-spin
+row accompany the field map. In particular full tube spin is not renamed
+j Phi_dot: its additional affine/shape current is explicitly retained.
+
+Removing the core-angle and angle-gradient populations deletes Phi before
+any zero-inertia division and leaves a positive incompressible Navier--Cauchy
+sector when the independent STF population remains. Removing every attached
+population and the vortical covariance instead leaves linearized Euler.
+The explicit limiting families and unchanged-density bookkeeping are in
+0105/population-limits.md.
+
+This is an exact conditional variational continuum construction from the
+Euler material action. It does NOT claim that unrestricted Euler trajectories
+remain in the chosen finite phase family. Their reconstruction residual is
+R=Udot-V+Ezdot-AEz;0095 supplies its exact complement/memory and the matching
+physical observation correction. Its vanishing is not an unstated premise
+or a conclusion of the finite KKS calculation. The stronger unrestricted
+realization question remains distinct, with0101 as finite-time progress.
+
+- Accepted in: `v0.175.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: C-CST-008
+
+## C-CST-010
+
+For an integrable finite-range orientation energy of complete unresolved
+states with an independent local product-Haar law, independent coherent
+frame shifts leave its averaged energy invariant. Consequently its
+coherent conservative torque and couple stiffness vanish, while quadratic
+fluctuation energy need not vanish. Uniform one-point marginals alone do
+not imply the result: correlated phases supply an explicit counterexample.
+A no-retained-coherent-angular-current closure is separately stated for
+the dynamical no-spin limit; static isotropy alone does not remove memory
+or an angular current.
+
+Exact proof:0058's Haar change of variables and canonical phase integration.
+Corroboration: the already executed200000-sample signed-response Monte Carlo
+with its declared seed, error model and bias mutation, at its narrower
+first-moment scope. This does not assert that the coherent law of C-CST-009
+is product Haar or that stationary Gaussian Euler isotropy by itself
+erases its positive locking. It states the separately declared contrast
+ensemble premise and its consequence, without deleting fluctuations.
+
+- Accepted in: `v0.175.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+
+## C-CST-011
+
+Fix positive constant density rho, curl parameter lambda and core
+speed U. For each fixed finite optical time window, sufficiently
+high but finite carrier admits a finite-action two-phase Kelvin-
+prepared packet of actual smooth incompressible Euler histories on
+a stationary constant-curl background with a robust unknotted
+material vortex torus. The packet occupies that same tube and its
+complete velocity/pressure tails are retained.
+
+There is one fixed nonnegative transported material tag whose angle
+is the registered average of its physical material-sheet quadrupole
+angles, relative to those same sheets in the unperturbed flow. Its
+spin is its literal total angular momentum about its actual centroid,
+projected on the registered axis. The actual moving two-phase action
+has positive mass and retains every time and parameter connection.
+With delta_*=sqrt(lambda/p_*), Omega=lambda*U/2, the n=8 construction
+and fixed positive marker/packet length ratio c give
+
+    p_*^2 partial_p^2 gamma^2
+      = a^2 sqrt(2) Omega^2 delta_*/3
+        + O_T(Omega^2 delta_*^2 polylog),  a=1/(1+c^2).
+
+The full finite KKS is the squared-envelope integral of the actual
+fiber KKS, not an assigned fiber length. Literal tagged spin matches
+the registered action momentum row through two scaled carrier jets
+with relative O_T(delta_*^2 polylog) error, for eta=1 or a predeclared
+eta=1/2 row normalization. The latter does not assert construction of
+a counterpropagating standing pair. Exact finite material-moment
+equations, high-order preparation and the ordered error bounds are
+specified in the analytic construction; no inertia or desired
+frequency is fitted.
+
+Common-circle CK geometry and full weighted pressure transfer retain
+the packet and tube margins, followed by bounded periodic stationary
+approximation. Whole-field phase/rotation averaging gives a stationary
+isotropic finite-energy-density law for the periodic background and
+its registered tube/tag family. A single localized finite-action
+packet is conditioned on a selected tube, not declared itself a
+translation-stationary R^3 random field. Nonlinear amplitude is chosen
+last on the fixed finite window.
+
+This is a controlled prepared-history theorem, not an exact
+monochromatic eigenmode, absolute vorticity director, separately
+conserved tagged spin, Gaussian/ergodic law, unrestricted invariant
+rotor, optical identification in a different distant knot, or a
+completed coupled autonomous Euler-to-Cosserat continuum.
+
+- Accepted in: `v0.176.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+
+## C-CST-012
+
+For positive Psi, lambda and density rho, let
+psi=Psi sum_j cos(b_j.x), where the three planar wavevectors have
+length lambda and sum to zero. On their triangular periodic cell,
+u=(J grad psi,0) is an actual smooth stationary Euler array with
+full-cell velocity covariance C_v=3 Psi^2 lambda^2 I/4. Its
+zero-axial-wavevector horizontal linear Euler group is uniformly
+bounded in L2 vorticity on the real vector isotypic sector under
+sixty-degree rotations, including its translation kernel.
+
+The entire first-shell Arnold complement has lower bound 2/3.
+Bounded centered coordinates on the actual invariant separatrix
+polygons give conserved adjoint translation rows with nonzero
+matrix lambda^2*(-Psi)*[[0,1],[-1,0]]. Together these control
+the complete excited group, without a transport-frequency gap.
+
+For axial Bloch k approaching zero, actual common-velocity V0
+and Kelvin-prepared displacement X0 Euler histories satisfy
+
+  m(t)=cos(|k| c_b t)V0-|k| c_b sin(|k| c_b t)X0
+       +O_T(|k|/lambda)(|V0|+|k X0|),
+  c_b=sqrt(3)*Psi*lambda/2,
+
+uniformly on every fixed slow window 0<=t<=T/|k|, after the
+declared background nondimensionalization, with the corresponding
+matrix-sine estimate for |k|X. Here m is the complete Euler
+horizontal velocity mean and X_t=m, X(0)=X0. Full pressure,
+horizontal return, vertical flow and separatrix contributions
+remain. The compensated current p_c=m+ik<r Z> differs from m
+by the controlled remainder; its derivative, not a derivative
+inferred from uniform closeness of m, licenses the slow action.
+
+The same material action has exact initial symplectic pairing
+rho X0.V0, zero displacement-displacement pairing, and initial
+displacement stiffness rho k^2 lambda^2 C_v/(lambda^2+k^2).
+The complete moving action in the actual compensated-current
+slow chart has leading mass rho and stiffness rho k^2 C_v,
+with O(|k|/lambda) normalized corrections. Common-V has its
+specified initial circulation variation; prepared-D is fixed-
+Kelvin. Each trajectory transports its own circulation data.
+
+This is an analytic actual-Euler acoustic-window theorem, not a
+fitted oscillator, sampled spectrum or assumed group bound.
+Nonlinear amplitude can be chosen last on each finite window;
+no k-uniform nonlinear amplitude or infinite-time nonlinear
+stability is asserted. The integrated velocity X is not silently
+identified with a marked material centroid. Constant-curl lifting,
+nonaxial wavevectors, isotropic optical joining, EPS topology and
+the full autonomous Euler-to-Cosserat continuum remain distinct
+constructions, not conclusions of this planar theorem.
+
+- Accepted in: `v0.177.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+
+## C-CST-013
+
+Let u be a smooth stationary mean-zero periodic incompressible Euler
+field, p its pressure divided by density, A=u.grad, K=k*kappa with
+|kappa|=1, and D,V perpendicular to kappa. Prepare the actual Kelvin
+displacement D and independently specified common velocity V. Their
+zero-order material displacement is U0=D+tV. Write
+eta=U0+i*k*chi+O(k²), where chi is mean-zero and solenoidal.
+With microscopic mean-preserving Leray P, its actual first cell obeys
+
+  chi_tt+2P A chi_t+P(A²+Hess p)chi
+    =-2P[(kappa.u)V]+P[(kappa.grad p)U0+kappa(U0.grad p)],
+  chi(0)=0, chi_t(0)=-P[(kappa.u)D+kappa(u.D)].
+
+For the physical Eulerian velocity mean m, set X=D+integral m dt.
+Put a=kappa.u and P_kappa=I-kappa tensor kappa. Its complete second
+fixed-time directional spatial jet is
+
+  m_t=k² P_kappa{<a²>U0+<a chi_t+u(kappa.chi_t)>
+                   +<(kappa.grad p)chi+grad p(kappa.chi)>}+O(k³).
+
+The corresponding mean material rate differs by
+m-<eta>_t=-k²<a chi-u(kappa.chi)>+O(k³). These exact observed rows
+require no inverse for the unknown second cell: its divergence
+constraint and periodic integration by parts remove it. The identity
+P_K grad f=-i*k*P_K kappa f retains the pressure numerator, including
+the slow harmonic, rather than differentiating a singular bare
+projector estimate.
+
+In0153's bounded constant-curl insertion family u_N=u_wave+h_N,
+normalized H2 defect epsilon_N tends to zero while the global C3
+bound remains fixed and prescribed C-CST-011 local optical/tube
+margins are retained. On each fixed time window, the actual first
+cell Euler/Lin H1 estimate controls the physical observed second
+coefficients by C_T*epsilon_N, uniformly in the quadrature period
+and direction. Low-frequency insertion self-beats are included.
+
+Averaging the actual coherently prepared phase actions over one
+whole-field O(3), phase and time-reversal law before elimination
+gives initial physical symplectic mass rho. For the actual averaged
+transverse solution rows f_N,g_N and W_N=f_N*g_N,t-g_N*f_N,t,
+
+  M_N=rho/W_N,
+  K_N=rho*(f_N,t*g_N,tt-g_N,t*f_N,tt)/W_N².
+
+A selected finite cell and then sufficiently small nonzero k have
+M_N>0 and K_N/(rho*k²)=2*v_wave²/15+O_T(epsilon_N)+O_N,T(k)>0,
+on the fixed window, while retaining the same local optical object.
+The O(epsilon_N*k²) time-dependent mass, full moving connection and
+physical/canonical current difference remain explicit in this action.
+
+This is an actual prepared mean/action transfer theorem, not full
+Bloch-operator C2 convergence, a period-independent analytic radius,
+acoustic-time homogenization, or an autonomous coupled Cosserat law.
+Optical density is positive at the selected finite cell; no positive
+lower bound in an infinite-volume limit is asserted.
+
+- Accepted in: `v0.178.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: C-CST-011
+
+## C-CST-014
+
+There exist two smooth compact-vorticity stationary Euler column
+families with actual nodal m=1 modes, complete decaying radial
+pressure tails and positive physical tilt action per axial period.
+Euler amplitude and geometric scaling give a common frequency
+nu>0, nonzero carrier slopes v_r and v_1² != v_2². The full radial
+matching construction supplies the mode, its first two carrier
+derivatives and a fixed positive stationary material tag with
+displacement and mechanical-spin rows through that order.
+
+For positive probabilities w_1+w_2=1, prepare the same initial
+physical scalar angle/rate (q0,r0) with signed amplitudes
+A_r(p)=a_r+d_r(p-p_r). Set b_r=nu_r'', j_r=M_raw,r/3>0,
+h_r=j_r A_r², J0=sum w_r h_r, J2=sum w_r h_r'', evaluated at
+the reference carriers. Normalization and variance cancellation give
+
+  w_1 a_1=-v_2²/(v_1²-v_2²),
+  w_2 a_2= v_1²/(v_1²-v_2²).
+
+For any declared finite preparation curvature B_*>0, the equations
+
+  sum w_r(a_r b_r+2d_r v_r)=B_*,
+  sum w_r[h_r(v_r²+nu b_r)+2nu h_r' v_r]=J0 nu B_*
+
+uniquely determine finite slopes d_1,d_2. Their determinant is
+8nu w_1w_2v_1v_2(j_2a_2-j_1a_1), which is nonzero. Actual
+mode-mass derivatives remain in h_r'; signed amplitudes are squared
+in the inherited positive phase and physical energy, not treated
+as probability weights.
+
+The actual time-reversed circular modes are paired with tilt axis
+n perpendicular to carrier t: Theta_s=n theta+s(t cross n)theta_t/nu.
+Equal half-weights cancel the conjugate tilt/current and retain
+both complete positive phase forms and Euler energies. For Haar
+frames the observed vector is 3 E[n theta], whereas physical energy
+is averaged without that factor. Thus j=M_raw/3 and Delta=Delta_raw/3,
+and T(K)=3 E[n n^T(t.K)²]=(2|K|² I-K K^T)/5.
+
+The resulting actual observed optical action has, through spatial
+degree two on every fixed time window,
+
+  M(K)=J0 I+J2 T(K)/2,
+  K_opt(K)=nu² M(K)+J0 nu B_* T(K),
+  Omega_opt²(K)=nu² I+nu B_* T(K).
+
+It is stationary at this order and its energy equals the inherited
+physical Euler energy. Gradient mass is retained. Its transverse
+and longitudinal squared-frequency curvatures are respectively
+2nu B_*/5 and nu B_*/5, both positive. Positive tags with equal
+Delta supply the complete physical rows G=Delta Phi and S=Delta Phi_t
+through the same order, retaining the nonzero overlap Delta/J0.
+
+For any positive bulk curvature coefficients C_T,C_L, put
+d0=4C_T+3C_L, c_s=3C_T C_L/d0, c_a=4C_T²/d0,
+c_tr=C_L/2-c_s. The canonical curvature energy
+c_tr(tr grad Phi)²+c_s|sym grad Phi|²+c_a|skew grad Phi|²
+is pointwise positive and has the prescribed bulk symbols.
+Its null-Lagrangian change of representative retains boundary flux.
+
+This is a positive mixture of whole column realizations, not their
+superposition as a stationary field. Its finite-action mode scope
+is per axial period with full radial tails and declared real Bloch
+bands/phase densities. It does not assert a finite-total-energy
+monochromatic R3 mode, same-cell EPS/acoustic embedding, acoustic-time
+uniformity, all-K invariant microscopic plane or a unique intrinsic
+modulus independent of the declared preparation.
+
+- Accepted in: `v0.179.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+
+## C-CST-015
+
+The actual periodic stationary Euler field
+u=(cos Y+A cos Z,A sin Z,-sin Y), A=1/100, curl u=-u,
+admits a finite correlated initial displacement preparation with
+positive whole-law physical restoring response equal to its
+complete inherited displacement energy through spatial order two.
+
+Put psi=cos Y+A cos Z, alpha=cos Y-A cos Z and H=-Delta.
+For n=3,5,7 set w_n=n²(n²+1)/(2(n²-1)²), S=sum n²/w_n,
+c_n=2n/(w_n S). Keep c_5,c_7 fixed and solve the two exact
+first-shell moments for c_1,c_3 in
+f(psi)=c_1 psi+c_3 T_3(psi)+c_5 T_5(psi)+c_7 T_7(psi),
+so <cos Y(alpha+f)>=<cos Z(alpha+f)>=0. The finite inverse
+phi=(H-1)^(-1)(alpha+f) then exists without discarding a mode.
+Its full velocity z_*=(-alpha/2+Hphi,-phi_Z,phi_Y) solves
+Lz_*+F0=0 with the complete pressure, where
+L=-P[(u.grad)·+(·.grad)u] and F0=P(u_Z cross u_Y).
+
+For a common unit laboratory direction kappa and D perpendicular
+to kappa, set T_D=-(D.grad)u, q_D=-kappa cross T_D,
+d=kappa_Y D_Y-kappa_Z D_Z, a_u=kappa.u,
+b=q_D-a_u D+d z_*, and c=a_u D+(u.D)kappa.
+The complete first-shell projection Pi_-=(P-curl)/2 supplies
+z_return=-Pi_- b+t Pi_- c. It is killed by the full Euler
+generator, not only by its planar subsystem. Thus
+z_D=d z_*+z_return is a stationary forced first velocity cell.
+
+Let E=1+A² and R=||z_*,|wave|>1||²/5, computed by exact full
+Fourier convolution from this field. The construction gives
+0<R<13E/1280. Averaging one actual whole-field isotropic law with
+common laboratory data yields independent energy/current coefficients
+
+  h2=E t²/15-47E/240+R,
+  R_D=E(8t+13)/120.
+
+Choosing s=sqrt(100-960R/E), t=-(4+s)/8 gives
+a=E(s-9)/120, E/240<a<E/120, h2=a and R_D=-a.
+The amplitude is derived from the actual finite microgeometry,
+not an empirical fitted coefficient or assigned fluid mass.
+
+In the genuine finite-Bloch preparation eta_D(0)=D,
+w_D(0)=curl_K(T_D/(-1))+ik P_K z_D and K=k kappa.
+Its full constrained cotangent has zero microscopic mean.
+Together with eta_V(0)=0,w_V(0)=V, the complete initial phase
+is rho J and the leading physical V kinetic mass is rho.
+Circulation data are explicitly prepared, not falsely identified
+with the constant-D Kelvin leaf. Real conjugate bands and whole
+translations, rotations, mirrors and time reversal retain the
+physical normalization and transform the helicity sign together.
+
+The actual physical observation X=D+integral(mean w)dt satisfies
+X_D(T)=D-a k²T²D/2+O_T(k³), and its inherited initial energy is
+rho a k²|D|²/2+O(k³). The Hamiltonian calculation includes the
+actual subtraction ||a_u D||² and full pressure terms. X is not
+silently replaced by mean material displacement.
+
+This is a displacement-column theorem on fixed time windows.
+Its initial phase does not fix the common-V history, observed
+Wronskian or autonomous acoustic Hamiltonian. Physical angle/spin
+closure, acoustic-time uniformity, stationary EPS joining and the
+full coupled continuum remain distinct constructions.
+
+- Accepted in: `v0.180.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+
+## C-CST-016
+
+On the SAME fixed smooth periodic stationary Euler cell and positive
+displacement preparation of C-CST-015, actual velocity and material
+configuration returns construct a positive common-D,V physical acoustic
+action through a locally uniform fixed-time diagonal second spatial
+asymptotic. The complete initial phase, conserved Euler Jacobi energy,
+physical mean and raw material-current connection are retained.
+
+For u=(psi,A sinZ,-sinY), psi=cosY+A cosZ, A=1/100, the full
+linearized Euler generator on an X-independent axial perturbation is
+L(g,0,0)=(-Tg,0,0), T=A sinZ partialY-sinY partialZ, with exactly
+zero pressure for this sector. Wrapped regular streamlines with
+c=psi approaching 1-A from below have actual positive frequencies
+omega(c) tending to zero. Their first sine observation coefficient
+s1(c) is nonzero, and their normalized coarea density is
+mu(c)=period(c)/(4pi²).
+
+Given a finite odd output polynomial, choose smooth positive densities
+eta_l on ordered disjoint regular frequency bands. For the same
+common laboratory kappa,V, put f=kappa_Y V_X+kappa_X V_Y and
+g_l=10w_l eta_l cos(theta)/(A mu s1). The actual correlated axial
+velocity return f(g_l,0,0) produces
+P_g(t)=sum_l w_l integral eta_l sin(omega t)dc. Its full velocity
+norm is finite and retained, not identified with an observed mass.
+
+The actual initial material return h_l=T^(-1)g_l/2, on this nonzero
+angular harmonic, cancels its complete additional VV Jacobi energy.
+Its configuration norm, which includes omega^(-2), remains explicit.
+The full initial DV phase correction is
+-rho k² sum_l w_l integral eta_l/omega dc /4. One extra band solves
+this negative-frequency moment to zero simultaneously with every
+selected odd output moment. The exact finite-width moment matrix is
+nonsingular by its strictly signed integrated Vandermonde. Signed
+preparation coefficients do not create signed probabilities.
+
+Consequently, for every fixed finite time window, finite derivative
+order and positive accuracy, actual finite smooth controls approximate
+the required common-V physical acceleration while preserving
+Omega0=rho J+O(k³ C) and
+H0=rho(|V|²+a k²|D|²)/2+O(k³ C)(|D|+|V|)²,
+where a>0 is the actual C-CST-015 coefficient. The bare source includes
+the full three-component pressure derivative, not a substituted lift.
+The D column is unchanged. The additional controls vanish on the
+transported elliptic-core tag at first spatial order.
+
+If H'' is the actual residual V acceleration with H(0)=H'(0)=0,
+the physical mean rows through k² are
+F=1-a k²t²/2 and G=t-a k²t³/6+k²H(t).
+Their inherited action has M=rho(1-k²H'), M_t=-rho k²H'', K=rho a k².
+The separately conserved energy has velocity coefficient
+rho(1-2k²H'); it is not replaced by the moving mechanical energy.
+The raw packet current tP_g/2-integral_0^t P_g/4 is retained before
+restriction and need not be small when the reduced connection is small.
+
+On this FIXED cell, full Bloch Leray/bundle derivatives and Euler/Lin
+Sobolev Duhamel estimates give an actual finite cubic remainder bound
+C_n=C(T,s,u,rho,a)N_n² after each finite control is selected. Taking
+accuracies to zero and then choosing k_n with k_n N_n ->0 and
+k_n C_n ->0 yields actual common physical histories, phase and energy
+F_n=1-a k_n²t²/2+o(k_n²), G_n=t-a k_n²t³/6+o(k_n²),
+Omega0=rho J+o(k_n²), H0=rho(|V|²+a k_n²|D|²)/2+o(k_n²).
+Thus M_n=rho+o(k_n²), its time connection is o(k_n²), and
+K_n=rho a k_n²+o(k_n²), with the prescribed finite time derivatives.
+
+This is an actual prepared second-order continuum asymptotic on fixed
+time windows, not an assertion that a single fixed microscopic
+preparation is C² at its switching scales, an acoustic-time theorem,
+or an unrestricted invariant manifold. Same-field optical coupling,
+full hybrid angle/spin currents and stationary EPS parent closure
+remain separate active constructions.
+
+- Accepted in: `v0.181.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: C-CST-015
+
+## C-CST-017
+
+On the fixed C-CST-015/016 smooth stationary periodic Euler field
+u=(cos Y+A cos Z,A sin Z,-sin Y), A=1/100, one positive whole-field
+O(3)/time-reversal law and one common finite smooth linear Euler/Lin
+preparation join actual hybrid displacement U, covariance angle Phi,
+inherited second-variation action and full physical momentum/angular
+current in a prepared incompressible isotropic micropolar continuum
+through o(|K|^2), with any fixed finite time-derivative inventory on
+each fixed compact time window.
+
+The construction uses the actual acoustic displacement/velocity inputs
+of C-CST-015/016, both quadratures of their wrapped-streamline passive
+Euler sector to repair the complete point-to-hybrid acceleration, the
+same-field two-positive-tag optical angle/full-spin controls, and the
+complete mixed phase/Jacobi-energy normalizer. The whole initial field
+is summed before averaging. All quadratic cross forms and full finite
+source norms are retained. Signed controller amplitudes are physical
+initial data; every probability and material mass fraction stays positive.
+
+With C=i[K cross], transverse acoustic amplitude A0 and unrestricted
+optical amplitude B, the actual observations satisfy
+(U,Phi)=T(A0,B)+e,
+T=[[I,-j C/(2rho)],[C/2,I]],
+A0_tt+a|K|^2 A0=r_A,
+B_tt+[nu^2 I+cT|K|^2 P_T+cL|K|^2 P_L]B=r_B.
+Here rho is the ambient density, j>0 is the measured whole-law spin
+normalization, a>0 is the actual acoustic coefficient and nu>0 is the
+selected actual optical clock. The spatial coefficients cT,cL are
+explicit prepared output targets with cT>j nu^2/(4rho), cL>0.
+The errors e,e_t,e_tt,r_A,r_B are o(|K|^2) in the declared operator
+norms along the common ordered preparation/long-wave sequence.
+
+Set mu=rho a, alpha=j nu^2/4,
+gammaT=j(cT-alpha/rho), gammaL=j cL and M=diag(rho I_T,j I).
+If K2 is the canonical micropolar stiffness, direct substitution gives
+M Y_tt+K2 Y=M T r+(K2 T-M T D)z+M e_tt+K2 e.
+The exact algebraic mismatch is cubic in K. The acoustic and optical
+zero-wave-number state Wronskians equal one, and the five-position
+observation determinant is (1+j|K|^2/(4rho))^2. Thus the bounded state
+inverse makes the coupled equation a statement for every retained
+initial amplitude, not a check along one trajectory. Pulling back BOTH
+inherited phase/kinetic and energy forms through the same physical T
+gives the same M and K2 through second spatial order.
+
+Literal total momentum retains collapsed material tags and continuous
+ambient fluid. Its full stress and couple flux include pressure,
+moving-boundary reaction and convective transport. For the actual
+time-dependent current coefficient q, use
+Q_ij=q epsilon_ijk U_t,k, S_int=S_full-div Q,
+N_int=N_full-Q_t, J_int=J_full, F_int=F_full.
+Then S_int=j Phi_t+o(|K|^2), while momentum is unchanged. Initial
+integrated angular charge and the full q_t memory remain independent
+data; a primitive of spin is not silently identified with a material
+displacement dipole. The corresponding boundary action keeps its
+acceleration and gradient-velocity momentum cancellation.
+
+For canonical F_can=partial W/partial grad U and
+N_can=partial W/partial grad Phi,
+P_T div(F_int-F_can)=o(|K|^2),
+div(N_int-N_can)-ax(F_int-F_can)=o(|K|^2).
+These are the actual periodic bulk constitutive virtual-work class,
+including the local angular torque. Longitudinal force is the pressure
+multiplier; cut-domain surface terms remain explicit. This is not
+pointwise equality of arbitrary free-surface tractions.
+
+The same fixed cell also has an analytic finite invariant tube with
+nondegenerate elliptic core and a Diophantine boundary with nonzero
+flux twist. In coordinates psi=cos b+Omega^2 cos a, Omega=1/10,
+the central flux derivative is
+r_J(0)=(-1+6Omega^2-Omega^4)/(8(1+Omega^2)^3)
+      =-235025/2060602.
+The EPS normal torsion on a chosen nearby boundary is 4pi^2 r_J(J_b).
+Local analytic divergence-free persistence uses the positive section
+flux and its Moser identification. Its reference line density is
+1/(2pi)^2, its fixed-radius tube volume fraction is positive, and a
+per-axial-length tagged coefficient j0 gives whole-law density
+mean_tag_fraction*j0/[3(2pi)^2]. This is the same periodic background;
+the material/action normalization remains the separately computed one.
+
+The tube core is noncontractible in T^3 and lifts to an unbounded line,
+not a compact Euclidean ring. This theorem does not close that remaining
+same-field geometry/density obligation. It also does not assert an
+unrestricted Euler invariant manifold, acoustic-time uniformity,
+nonlinear finite-amplitude stability, a universal unprepared modulus,
+or a single fixed preparation smooth across all switching scales.
+
+- Accepted in: `v0.182.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: C-CST-009, C-CST-015, C-CST-016
+
+## C-CST-018
+
+There exists one fixed smooth stationary constant-density Euler ensemble
+formed from an exact periodic disjoint assembly of compact-velocity,
+axis-separated, finite-radius rings, with nonzero closed Euclidean vortex
+cores, positive-volume invariant tubes, nonzero physical flux-action
+twist, and a fixed positive material-tag density. Its whole-state
+translation/O(3)/time-reversal law and positive tag fractions are fixed
+before every preparation-accuracy and long-wave limit.
+
+On this same ensemble, one common finite smooth linear Euler/Lin
+preparation for every retained initial amplitude yields actual hybrid
+displacement U, the full-vector whole-law covariance angle Phi, inherited
+full KKS/Jacobi action, and literal complete momentum/angular current
+with a coupled incompressible isotropic Cosserat limit through o(|K|^2)
+on every fixed compact time window and finite time-derivative inventory.
+The construction allows finite source norms to grow with accuracy and
+with |K|^-2; it keeps those costs, full pressure and all quadratic cross
+forms in one explicit ordering.
+
+The fixed measured inertia is
+j=2rho E[f] integral chi|x-X|^2/(3L^3)>0. One explicit prepared-law
+coefficient choice is a=integral_cell|u|^2/(3L^3)>0, an actual common-band
+frequency nu>0, ell_tag^2=integral chi|x-X|^2/integral chi,
+cT=jnu^2/(4rho)+nu^2 ell_tag^2, and cL=nu^2 ell_tag^2. The independent
+physical angle/G/S controls realize this measured j in the angular
+current, and the actual full-form normalizer realizes it in the same
+inherited action. The integrals alone are not asserted to establish
+the dynamical law; the constructed preparation supplies that implication.
+
+With C=i[K cross], transverse acoustic A and unrestricted optical B,
+the actual histories satisfy
+(U,Phi)=[[I,-jC/(2rho)],[C/2,I]](A,B)+e,
+A_tt+a|K|^2 A=r_A and
+B_tt+[nu^2 I+cT|K|^2 P_T+cL|K|^2 P_L]B=r_B,
+where e,e_t,e_tt,r_A,r_B=o(|K|^2) in the declared finite-window operator
+norms. The full finite-K gain is inverted before taking carrier limits;
+its acoustic |K|^-2 cost is explicit. Exact cellwise physical source
+phase, the corrected full oblique material tensor and whole-law moments
+give the nonzero acoustic Schur coefficient. No C016 microscopic source
+is substituted for a source on the compact field.
+
+The canonical coefficients are mu=rho a, alpha=jnu^2/4,
+gammaT=j(cT-alpha/rho)>0 and gammaL=j cL>0. Both full inherited forms
+are normalized in the actual initial observed state, and the evolving
+observation-chart connection is o(|K|^2). The exact branch substitution
+has only a cubic spatial mismatch. The bounded observed-state inverse
+makes the coupled equation valid across all retained initial amplitudes.
+
+The physical current retains continuous ambient fluid, pressure,
+convective transport, moving-boundary reaction and initial angular
+charge. With the actual Q_ij=q(t)epsilon_ijk U_t,k,
+S_int=S_full-div Q and N_int=N_full-Q_t, momentum is unchanged and
+S_int=jPhi_t+o(|K|^2). The full lower-endpoint and q_t memory remain.
+For the canonical variational stresses,
+P_T div(F_int-F_can)=o(|K|^2) and
+div(N_int-N_can)-ax(F_int-F_can)=o(|K|^2).
+These give the complete bulk constitutive virtual-work representative;
+the pressure multiplier and cut-domain surface terms remain explicit.
+
+The geometry, actual response, measured coefficients, action and current
+belong to this one fixed ensemble. This prepared linear-response and
+second-variation statement does not assert an unrestricted Euler
+invariant manifold, all-time/acoustic-time uniformity, nonlinear
+finite-amplitude stability, a universal unprepared modulus, or equality
+of arbitrary prescribed surface tractions.
+
+- Accepted in: `v0.183.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: C-CST-009, C-CST-017
+
 ## C-DEF-001
 
 For a real angular field theta of degree q on the annulus xi<r<R with positive stiffness K and energy (K/2)*integral|grad(theta)|^2*d^2x, the uniform winding theta=q*phi has energy pi*K*q^2*log(R/xi), and circlewise Cauchy-Schwarz makes this the sharp lower bound when every concentric circle has that degree. In the separately declared matched-shell model for n positive-concrete equal pieces of fixed total charge Q, with n near annuli xi<r<d and one common far annulus d<r<R, the field energy is pi*K*Q^2*((1/n)*log(d/xi)+log(R/d)); adding piece and unsplit core energies gives split-minus-unsplit -pi*K*Q^2*(1-1/n)*log(d/xi)+n*E_piece-E_integer. Thus the independent- copy field ratio 1/n occurs only when the common far shell vanishes at d=R; it is not a general fixed-boundary interaction ratio. Separately, pi1(RP2)=Z2, while the full polar manifold (S2 x U1)/Z2 has universal cover S2 x R and deck group Z generated by g(director,t)=(-director,t+pi); its square is the nontrivial integer phase vortex, not the identity. For the supplied isolated phase/director functional, two half textures have field energy pi*(K_phase+K_director)*L/2 and one integer phase vortex has pi*K_phase*L, so including cores their pair-minus-integer residual is pi*(K_director-K_phase)*L/2+2*E_half-E_integer. Preference therefore requires that declared residual to be negative. These exact conditional ledgers derive no material stiffness or core, exact finite-domain multi-core solution, equilibrium separation, vortex existence or stability, experiment, atomic realization, or substrate mechanism.

@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_preparation_input_shapes_and_real_amplitude _______________
+
+cell = DisplacementCell(background=({(0, 1, 0): 1/2, (0, -1, 0): 1/2, (0, 0, 1): 1/200, (0, 0, -1): 1/200}, {(0, 0, 1): -I/20...storing_coefficient=-30003/400000 + sqrt(1664167829423641032268897837385326531122611193465)/15916408200000000000000000)
+
+    def test_preparation_input_shapes_and_real_amplitude(cell):
+        with pytest.raises(ValueError, match="three"):
+            prepared_displacement(cell, [1, 0], [0, 1, 0])
+        with pytest.raises(ValueError, match="finite and real"):
+            prepared_displacement(cell, [1, 0, 0], [0, 1, 0], amplitude=sp.I)
+>       with pytest.raises(ValueError, match="finite and real"):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_euler_displacement_preparation.py:121: Failed
+=========================== short test summary info ============================
+FAILED tests/test_euler_displacement_preparation.py::test_preparation_input_shapes_and_real_amplitude
+1 failed in 1.87s

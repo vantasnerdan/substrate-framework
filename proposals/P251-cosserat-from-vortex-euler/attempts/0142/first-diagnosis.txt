@@ -1,0 +1,10 @@
+The first execution stopped on a symbolic limit implementation defect.
+Direct SymPy limit returned0 for (1/2-J1(x)/x)/(1-J0(x)) at x=0.
+The defining entire Bessel series instead give numerator x²/16-x⁴/384
+and denominator x²/4-x⁴/64, hence ratio1/4. No scientific sign, parameter,
+or claim was changed. The exposing check now derives those exact series
+and takes the rational limit. First diagnostic execution output:
+
+direct_limit 0
+numerator_series x**2/16 - x**4/384 + O(x**6)
+denominator_series x**2/4 - x**4/64 + O(x**6)

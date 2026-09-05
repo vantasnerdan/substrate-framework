@@ -1,0 +1,25 @@
+Command: env PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0084/verify.py
+Exit: 1; elapsed 1.652939808 seconds.
+PASS [P251-0084-material-transport] test material field is divergence free
+PASS [P251-0084-material-transport] full material spin differs from local formula only by background boundary flux
+PASS [P251-0084-material-transport] Eulerian velocity spin plus moving-boundary variation equals material spin
+PASS [P251-0084-material-transport] omitting the factor two in the local spin is exposed
+PASS [P251-0084-material-transport] surface displacement obeys density transport including surface divergence
+PASS [P251-0084-material-transport] bare scalar surface advection omits a nonzero geometric contribution
+PASS [P251-0084-material-transport] collar curl is divergence free and has the prescribed normal Laplacian
+PASS [P251-0084-material-transport] material Kelvin one-form equals velocity minus isovortical term modulo exact form
+PASS [P251-0084-material-transport] arbitrary material restriction does not silently fix its Kelvin momentum
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0084/verify.py", line 100, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0084/verify.py", line 76, in main
+    ledger.check("stationary Jacobi stiffness has the full curl-curvature identity and boundary flux",
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0084-material-transport] stationary Jacobi stiffness has the full curl-curvature identity and boundary flux
+
+Diagnosis: test-fixture pressure sign was wrong. For u=(-y,x,0), stationary
+Euler requires p=+rho(x²+y²)/2, not its negative. Repair that fixture and
+add an explicit stationary-Euler residual before testing the derived
+identity. The identity, field-space convention and target are unchanged.

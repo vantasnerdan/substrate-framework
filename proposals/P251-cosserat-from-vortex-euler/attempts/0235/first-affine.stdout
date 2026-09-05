@@ -1,0 +1,12 @@
+PASS [P251-0235-complete-affine-current] axis 0: the complete D lift is the actual rigid rotation
+PASS [P251-0235-complete-affine-current] axis 0: every returned and material-rate skew row vanishes
+PASS [P251-0235-complete-affine-current] axis 0: full pressure turns the rate source into a neutral translation
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0235/verify_affine.py", line 137, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0235/verify_affine.py", line 45, in main
+    checks.check(f"axis {axis}: the complete D lift is the actual rigid rotation",
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0235-complete-affine-current] axis 1: the complete D lift is the actual rigid rotation

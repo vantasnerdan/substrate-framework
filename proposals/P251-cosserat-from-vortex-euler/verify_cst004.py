@@ -10,8 +10,8 @@ linear micropolar system in the Comparsi intake form:
       eps:sigma = +2 alpha rot u - 4 alpha Phi
   sigma = lam (tr es) I + 2 mu es + (skew stress from the alpha term)
   m = dW/d(kappa): c_tr (tr kappa) trace + c_s sym + c_a skew structure
-  j = L_v M_eff a^2 / 3   (M_eff = pi rho a^2, attempt-0011 virial;
-      I_axis = M_eff a^2/2, I_diam = M_eff a^2/4, orientation-averaged)
+  j = n_cell J_Psi / 3, with J_Psi the full same-Euler-orbit Schur inertia
+      (0048/0049), not an independently appended rigid-body mass.
 
 with dW/dPhi = -2 alpha rot u + 4 alpha Phi the intake coupling pair (part 1).
 Mutations must fail.
@@ -21,6 +21,8 @@ import sys
 import sympy as sp
 
 from substrate_framework.homogenization import sphere_second_moment
+from substrate_framework.euler_orbit import affine_cage_rotation_map, reduce_euler_rotor_block
+from substrate_framework.micropolar import MicropolarCoefficients, isotropic_micropolar_energy
 from substrate_framework.verification import CheckLedger
 
 x1, x2, x3 = sp.symbols("x1 x2 x3")
@@ -32,23 +34,14 @@ def build_energy(alpha_sign=1, include_alpha=True):
     Phi = sp.Matrix([sp.Function(f"Phi{a}")(*xs) for a in range(3)])
     hu = sp.Matrix(3, 3, lambda a, b: sp.diff(u[a], xs[b]))
     kp = sp.Matrix(3, 3, lambda a, b: sp.diff(Phi[a], xs[b]))
-    S = sp.Matrix(3, 3, lambda a, b: -sum(sp.LeviCivita(a, b, c) * Phi[c] for c in range(3)))
-    eg = hu - S
-    es = sp.simplify((eg + eg.T) / 2)
     rot_u = sp.Matrix([sp.diff(u[2], x2) - sp.diff(u[1], x3),
                        sp.diff(u[0], x3) - sp.diff(u[2], x1),
                        sp.diff(u[1], x1) - sp.diff(u[0], x2)])
-    lam, mu, alpha, ctr, cs, ca = sp.symbols("lambda mu alpha c_tr c_s c_a", positive=True)
-    al = alpha_sign * alpha
-    W = (lam / 2 * sum(es[a, a] for a in range(3)) ** 2
-         + mu * sum(es[a, b] * es[a, b] for a in range(3) for b in range(3)))
-    if include_alpha:
-        W = W + al / 2 * rot_u.dot(rot_u) - 2 * al * rot_u.dot(Phi) + 2 * al * Phi.dot(Phi)
-    Ssym = (kp + kp.T) / 2
-    Sskw = (kp - kp.T) / 2
-    tr_kp = sum(kp[a, a] for a in range(3))
-    W = W + ctr * tr_kp**2 + cs * sum(Ssym[a, b]**2 for a in range(3) for b in range(3)) \
-        + ca * sum(Sskw[a, b]**2 for a in range(3) for b in range(3))
+    lam, mu, alpha, cs, ca = sp.symbols("lambda mu alpha c_s c_a", positive=True)
+    ctr = sp.Symbol("c_tr", real=True)
+    al = alpha_sign * alpha if include_alpha else 0
+    W = isotropic_micropolar_energy(hu, Phi, kp,
+                                    MicropolarCoefficients(lam, mu, al, ctr, cs, ca))
     sigma = sp.simplify(sp.Matrix(3, 3, lambda a, b: sp.diff(W, hu[a, b])))
     m_st = sp.simplify(sp.Matrix(3, 3, lambda a, b: sp.diff(W, kp[a, b])))
     dW_dPhi = sp.Matrix([sp.diff(W, p) for p in Phi])
@@ -94,7 +87,8 @@ def check_dw_dphi_pair(ledger):
 
 def check_div_m_structure(ledger):
     u, Phi, sigma, m_st, dW_dPhi, rot_u, lam, mu, alpha = build_energy()
-    ctr, cs, ca = sp.symbols("c_tr c_s c_a", positive=True)
+    cs, ca = sp.symbols("c_s c_a", positive=True)
+    ctr = sp.Symbol("c_tr", real=True)
     div_m = [sp.diff(m_st[a, 0], x1) + sp.diff(m_st[a, 1], x2) + sp.diff(m_st[a, 2], x3)
              for a in range(3)]
     divPhi = sum(sp.diff(Phi[b], xs[b]) for b in range(3))
@@ -107,30 +101,21 @@ def check_div_m_structure(ledger):
                  ok, "wryness divergences in the three couple coefficients")
 
 
-def spin_inertia_energy(I_ax, I_dm, P2, Lv, Meff, a_len, Phid):
-    par_avg = sp.expand(sum(Phid[i] * P2[i, j] * Phid[j] for i in range(3) for j in range(3)))
-    abs2 = sum(Phid[i]**2 for i in range(3))
-    return Lv * (sp.Rational(1, 2) * I_ax * par_avg
-                 + sp.Rational(1, 2) * I_dm * (abs2 - par_avg)), abs2
-
-
 def check_microinertia(ledger):
     P2 = sphere_second_moment()
-    Meff, Lv, a_len = sp.symbols("M_eff L_v a", positive=True)
+    density = sp.Symbol("n_cell", positive=True)
     Phid = sp.Matrix(sp.symbols("pd1:4"))
-    KE, abs2 = spin_inertia_energy(Meff * a_len**2 / 2, Meff * a_len**2 / 4,
-                                   P2, Lv, Meff, a_len, Phid)
-    j_ident = sp.simplify(2 * KE / abs2)
-    ledger.check("microinertia j = L_v M_eff a^2 / 3",
-                 sp.simplify(j_ident - Lv * Meff * a_len**2 / 3) == 0,
-                 f"j = {j_ident} (M_eff = pi rho a^2, attempt-0011 virial)")
+    # Full mixed positive Hessian: an algebraic input probe, not an EPS fit.
+    reduction = reduce_euler_rotor_block([[7, 2, 1], [2, 5, -1], [1, -1, 4]], 2, 3)
+    mapped = affine_cage_rotation_map(reduction.kinetic, reduction.stiffness)
+    kinetic = density*mapped.spin_inertia*(Phid.T*P2*Phid)[0]/2
+    j_ident = sp.simplify(2*kinetic/Phid.dot(Phid))
+    ledger.check("same-orbit microinertia average j = n_cell J_Psi/3",
+                 sp.simplify(j_ident-density*mapped.spin_inertia/3) == 0,
+                 "complete mixed KKS/Hessian reduction; microscopic integrals supplied by 0048+")
 
 
 def check_mutations(ledger):
-    P2 = sphere_second_moment()
-    Meff, Lv, a_len = sp.symbols("M_eff L_v a", positive=True)
-    Phid = sp.Matrix(sp.symbols("pd1:4"))
-
     # M1: flipped coupling sign
     u, Phi, sigma, m_st, dW_dPhi, rot_u, lam, mu, alpha = build_energy(alpha_sign=-1)
     eps_sig = sp.Matrix([sigma[2, 1] - sigma[1, 2],
@@ -140,12 +125,14 @@ def check_mutations(ledger):
               for a in range(3))
     ledger.check("M1 flipped coupling sign rejected", not ok1, "spin pair breaks")
 
-    # M2: wrong diameter inertia (I_diam = I_axis)
-    KE_bad, abs2 = spin_inertia_energy(Meff * a_len**2 / 2, Meff * a_len**2 / 2,
-                                       P2, Lv, Meff, a_len, Phid)
-    j_bad = sp.simplify(2 * KE_bad / abs2)
-    ledger.check("M2 wrong diameter inertia rejected (j != L_v M_eff a^2/3)",
-                 sp.simplify(j_bad - Lv * Meff * a_len**2 / 3) != 0, f"j_bad = {j_bad}")
+    # M2: tying the time-reversed reaction momenta before variation cancels KKS.
+    r, s, bd, qd = sp.symbols("r s bd qd", real=True)
+    wrong_tied = sp.expand((2*r*bd+3*s*qd-2*r*bd-3*s*qd)/2)
+    correct = reduce_euler_rotor_block([[7, 2, 1], [2, 5, -1], [1, -1, 4]], 2, 3)
+    ledger.check("M2 premature reaction averaging loses the positive kinetic matrix",
+                 sp.hessian(wrong_tied, [bd, qd]) == sp.zeros(2)
+                 and correct.kinetic.det() > 0,
+                 "reaction momenta must remain independent until their Euler variations")
 
     # M3: dropped alpha term
     u, Phi, sigma, m_st, dW_dPhi, rot_u, lam, mu, alpha = build_energy(include_alpha=False)

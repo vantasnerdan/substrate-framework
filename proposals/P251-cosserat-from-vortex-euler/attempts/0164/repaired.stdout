@@ -1,0 +1,94 @@
+PASS [P251-0164-all-time-physical-joint-jet] the exposing periodic 2D3C field is actual stationary Euler
+PASS [P251-0164-all-time-physical-joint-jet] the full rotational Coriolis field is a pressure gradient
+PASS [P251-0164-all-time-physical-joint-jet] the static rotation is the actual Kelvin affine column
+PASS [P251-0164-all-time-physical-joint-jet] the common-V affine column obeys full material Lin transport
+PASS [P251-0164-all-time-physical-joint-jet] the rotating affine column solves Euler with its full pressure
+PASS [P251-0164-all-time-physical-joint-jet] omitting the microscopic rotating-cell velocity is exposed
+PASS [P251-0164-all-time-physical-joint-jet] the real curl symbol has the correct whole-field axial parity
+PASS [P251-0164-all-time-physical-joint-jet] the chiral scalar second-jet term is removed by mirror pairing
+PASS [P251-0164-all-time-physical-joint-jet] fixed-radius nodal annuli derive their finite first carrier response
+PASS [P251-0164-all-time-physical-joint-jet] the second carrier quotient has the positive nodal susceptibility
+PASS [P251-0164-all-time-physical-joint-jet] positive physical annuli have the actual signed small clock variance
+PASS [P251-0164-all-time-physical-joint-jet] the selected actual Laguerre mode has simple nodal roots
+PASS [P251-0164-all-time-physical-joint-jet] a fixed single annulus really has negative leading curvature
+PASS [P251-0164-all-time-physical-joint-jet] two physical annuli retain positive actual squared-clock curvature
+PASS [P251-0164-all-time-physical-joint-jet] the true acoustic polar moment remains in translational gradient inertia
+PASS [P251-0164-all-time-physical-joint-jet] the full physical potential retains the leading locking coupling
+PASS [P251-0164-all-time-physical-joint-jet] both measured pullbacks preserve the entire dispersion determinant
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0164/verify.py", line 148, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0164/verify.py", line 130, in main
+    chart = physical_configuration_chart(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/pr199-completion/src/substrate_framework/euler_phase.py", line 240, in physical_configuration_chart
+    pulled = moving_phase_pullback(omega, -omega*b, inverse, inverse_rate)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/pr199-completion/src/substrate_framework/euler_phase.py", line 78, in moving_phase_pullback
+    coordinates = reduced_omega.inv() * e.T * omega
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/matrices/matrixbase.py", line 5223, in inv
+    return _inv(self, method=method, iszerofunc=iszerofunc,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/matrices/inverse.py", line 504, in _inv
+    rv = _inv_DM(dM)
+         ^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/matrices/inverse.py", line 326, in _inv_DM
+    dMi, den = dM.inv_den()
+               ^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/matrices/domainmatrix.py", line 2743, in inv_den
+    return self.solve_den(I, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/matrices/domainmatrix.py", line 2883, in solve_den
+    xnum, xden = self.solve_den_rref(b)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/matrices/domainmatrix.py", line 2928, in solve_den_rref
+    Aaug_rref, denom, pivots = Aaug.rref_den()
+                               ^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/matrices/domainmatrix.py", line 2334, in rref_den
+    return _dm_rref_den(self, method=method, keep_domain=keep_domain)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/matrices/rref.py", line 115, in _dm_rref_den
+    M_rref, den, pivots = _dm_rref_den_FF(M)
+                          ^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/matrices/rref.py", line 195, in _dm_rref_den_FF
+    return _dm_rref_den_FF_sparse(M)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/matrices/rref.py", line 220, in _dm_rref_den_FF_sparse
+    M_rref_d, den, pivots = sdm_rref_den(M.rep, M.domain)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/matrices/sdm.py", line 2008, in sdm_rref_den
+    Akl = Aij * Ak[l] - Akj * Ai[l]
+          ~~~~~~~~~~~~^~~~~~~~~~~~~
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/fields.py", line 459, in __sub__
+    return f.new(f.numer*g.denom - f.denom*g.numer, f.denom*g.denom)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/fields.py", line 309, in new
+    return f.raw_new(*numer.cancel(denom))
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/rings.py", line 2325, in cancel
+    _, p, q = f.cofactors(g)
+              ^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/rings.py", line 2241, in cofactors
+    h, cff, cfg = f._gcd(g)
+                  ^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/rings.py", line 2274, in _gcd
+    return f._gcd_ZZ(g)
+           ^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/rings.py", line 2279, in _gcd_ZZ
+    return heugcd(f, g)
+           ^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/heuristicgcd.py", line 80, in heugcd
+    h, cff, cfg = heugcd(ff, gg)
+                  ^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/heuristicgcd.py", line 107, in heugcd
+    h, r = g.div(cfg)
+           ^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/rings.py", line 1558, in div
+    expv =  p.leading_expv()
+            ^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/rings.py", line 1780, in leading_expv
+    return self.ring.leading_expv(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

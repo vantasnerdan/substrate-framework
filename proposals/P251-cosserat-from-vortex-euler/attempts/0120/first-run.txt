@@ -1,0 +1,24 @@
+Command: .venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0120/verify.py
+Exit code: 1
+First execution, preserved before method repair.
+
+PASS exact cylindrical divergence
+PASS exact first integral
+PASS radial Beltrami component
+PASS axial Beltrami component
+PASS azimuthal component is GS equation
+PASS normalized torus scalar equation
+PASS straight Bessel Dirichlet solution
+PASS straight boundary value
+PASS straight poloidal velocity
+
+SymPy raised NotImplementedError in core/power.py::_eval_nseries while
+expanding besselj(1,lambda*t)/(t*besselj(0,lambda*t)) directly.
+The failing line was:
+    series = s.series(quotient, t, 0, 6).removeO()
+
+Classification: symbolic representation support, not a theorem verdict.
+Repair: expand numerator and denominator Bessel functions individually
+using their exact power series, then divide the resulting polynomials.
+This also gives the exact analytic origin limit without asking the
+generic limit engine to rediscover the removable Bessel quotient.

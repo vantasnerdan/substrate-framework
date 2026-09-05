@@ -1,0 +1,39 @@
+......F..                                                                [100%]
+=================================== FAILURES ===================================
+__ test_material_pressure_and_transport_against_independent_physical_calculus __
+
+    def test_material_pressure_and_transport_against_independent_physical_calculus():
+        x, y, z = s.symbols("x y z", real=True)
+        coordinates = (x, y, z)
+        rho = s.Rational(5, 3)
+        u = s.Matrix([-s.Rational(3, 5) * s.sin(2 * y),
+                      s.Rational(2, 3) * s.sin(2 * x),
+                      s.Rational(2, 3) * s.cos(2 * x) + s.Rational(3, 5) * s.cos(2 * y)])
+        xi = (s.Matrix([0, s.cos(2 * x), -s.sin(2 * x)]),
+              s.Matrix([s.cos(2 * y), 0, s.sin(2 * y)]))
+        pressure = -rho * u.dot(u) / 2
+        hessian = s.hessian(pressure, coordinates)
+        convection = tuple(field.jacobian(coordinates) * u for field in xi)
+        assert all(s.simplify(entry) == 0 for entry in u.jacobian(coordinates) * u
+                   + s.Matrix([s.diff(pressure, c) / rho for c in coordinates]))
+    
+        def mean(expression):
+            # Independent real-space exact integrations, not Fourier zero-mode reuse.
+            return s.simplify(s.integrate(s.integrate(s.expand(expression), (x, 0, 2 * s.pi)),
+                                         (y, 0, 2 * s.pi)) / (2 * s.pi) ** 2)
+    
+        direct = s.Matrix(2, 2, lambda i, j: mean((xi[i].T * hessian * xi[j])[0]
+                                                 - rho * convection[i].dot(convection[j])))
+        uf = background()
+        pf = ef.scale(ef.add(*(ef.mul(c, c) for c in uf)), -rho / 2)
+        actual = ef.material_jacobi_matrix(uf, generators(), pf, density=rho)
+        assert actual == direct
+        assert actual != s.zeros(2)
+        missing_pressure_density = ef.material_jacobi_matrix(uf, generators(), ef.scale(pf, 1 / rho), density=rho)
+>       assert missing_pressure_density != actual
+E       assert Matrix([\n[-6/5,      0],\n[   0, -40/27]]) != Matrix([\n[-6/5,      0],\n[   0, -40/27]])
+
+tests/test_euler_fourier.py:99: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_euler_fourier.py::test_material_pressure_and_transport_against_independent_physical_calculus
+1 failed, 8 passed in 3.56s

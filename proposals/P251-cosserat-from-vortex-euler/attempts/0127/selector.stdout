@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/scripts/validate_changed.py", line 410, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/tmp/pr199-completion/scripts/validate_changed.py", line 377, in main
+    decision = decision_for_refs(arguments.base, arguments.head)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/pr199-completion/scripts/validate_changed.py", line 341, in decision_for_refs
+    _git_output("diff", "--name-status", "--find-renames", f"{base}...{head}")
+  File "/tmp/pr199-completion/scripts/validate_changed.py", line 324, in _git_output
+    result = subprocess.run(
+             ^^^^^^^^^^^^^^^
+  File "/home/dan/anaconda3/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'diff', '--name-status', '--find-renames', '959db88...86bcf15ff674483c764fde968d7b33d03d3f4775']' returned non-zero exit status 128.

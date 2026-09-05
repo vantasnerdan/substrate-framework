@@ -1,0 +1,13 @@
+PASS [P251-0143-global-localizable] actual pressure is a first integral of the local Euler field
+PASS [P251-0143-global-localizable] pressure localization preserves complete incompressibility
+PASS [P251-0143-global-localizable] pressure localization preserves all Cartesian Euler components
+PASS [P251-0143-global-localizable] an arbitrary spatial cutoff is detected by divergence
+PASS [P251-0143-global-localizable] wrong pressure without squared cutoff leaves a force residual
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0143/verify.py", line 70, in <module>
+    main()
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0143/verify.py", line 46, in main
+    ledger.check("stationary translation derivative is the full Euler linearization",
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0143-global-localizable] stationary translation derivative is the full Euler linearization

@@ -1,0 +1,39 @@
+.....FF..........                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_action_keeps_gradient_mass_and_truncates_products ____________
+
+    def test_action_keeps_gradient_mass_and_truncates_products():
+        result = example()
+        k, omega = sp.symbols("k omega", real=True)
+        action = transverse_optical_action(result, [0, 0, k])
+        for axis, factor in enumerate((sp.Rational(2, 5), sp.Rational(2, 5), sp.Rational(1, 5))):
+            mass = action.mass[axis, axis]
+            stiffness = action.stiffness[axis, axis]
+            assert mass == result.J0+factor*k**2*result.J2/2
+            assert sp.series(stiffness/mass, k, 0, 3).removeO().expand() == 1+factor*k**2
+            assert sp.Poly(stiffness, k).degree() == 2
+>           assert sp.diff(stiffness-omega**2*mass, omega, 2) == -2*mass
+E           assert -17*(9*k**2 + 800)/1800 == (-2 * 17*k**2/400 + 34/9)
+E            +  where -17*(9*k**2 + 800)/1800 = <function diff at 0x73d4bfbc89a0>((5593*k**2/3600 + 34/9 - ((omega ** 2) * 17*k**2/400 + 34/9)), omega, 2)
+E            +    where <function diff at 0x73d4bfbc89a0> = sp.diff
+
+tests/test_euler_optical_response.py:117: AssertionError
+____ test_positive_representative_matches_canonical_symbol_and_trace_sector ____
+
+    def test_positive_representative_matches_canonical_symbol_and_trace_sector():
+        ct, cl, k = sp.symbols("ct cl k", positive=True)
+        c = positive_optical_curvature(ct, cl)
+        stiffness = micropolar_fourier_stiffness([0, 0, k], c)[3:, 3:]
+        assert sp.simplify(stiffness-sp.diag(ct*k**2, ct*k**2, cl*k**2)) == sp.zeros(3)
+>       assert sp.simplify(3*c.trace_curvature+c.symmetric_curvature) == 9*cl**2/(2*(4*ct+3*cl))
+E       assert 9*cl**2/(2*(3*cl + 4*ct)) == ((9 * (cl ** 2)) / (2 * ((4 * ct) + (3 * cl))))
+E        +  where 9*cl**2/(2*(3*cl + 4*ct)) = <function simplify at 0x73d4bf0065c0>(((3 * -3*cl*ct/(3*cl + 4*ct) + cl/2) + 3*cl*ct/(3*cl + 4*ct)))
+E        +    where <function simplify at 0x73d4bf0065c0> = sp.simplify
+E        +    and   -3*cl*ct/(3*cl + 4*ct) + cl/2 = MicropolarCoefficients(lame=0, shear=0, locking=0, trace_curvature=-3*cl*ct/(3*cl + 4*ct) + cl/2, symmetric_curvature=3*cl*ct/(3*cl + 4*ct), skew_curvature=4*ct**2/(3*cl + 4*ct)).trace_curvature
+E        +    and   3*cl*ct/(3*cl + 4*ct) = MicropolarCoefficients(lame=0, shear=0, locking=0, trace_curvature=-3*cl*ct/(3*cl + 4*ct) + cl/2, symmetric_curvature=3*cl*ct/(3*cl + 4*ct), skew_curvature=4*ct**2/(3*cl + 4*ct)).symmetric_curvature
+
+tests/test_euler_optical_response.py:128: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_euler_optical_response.py::test_action_keeps_gradient_mass_and_truncates_products
+FAILED tests/test_euler_optical_response.py::test_positive_representative_matches_canonical_symbol_and_trace_sector
+2 failed, 15 passed in 2.60s

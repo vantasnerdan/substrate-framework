@@ -1,0 +1,17 @@
+Command: PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0181/verify.py
+Exit: 1
+PASS [P251-0181-stationary-nodal-mode] full radial pressure equation
+PASS [P251-0181-stationary-nodal-mode] full three-dimensional divergence
+PASS [P251-0181-stationary-nodal-mode] sum of actual horizontal displacement rows
+PASS [P251-0181-stationary-nodal-mode] KKS radial norm before integration by parts
+PASS [P251-0181-stationary-nodal-mode] complete determinant transformed without a dropped exterior term
+PASS [P251-0181-stationary-nodal-mode] lab zero-frequency crossing is tau one
+PASS [P251-0181-stationary-nodal-mode] transverse crossing derivative
+Traceback (most recent call last):
+  File "proposals/P251-cosserat-from-vortex-euler/attempts/0181/verify.py", line 104, in <module>
+    raise SystemExit(main())
+  File "proposals/P251-cosserat-from-vortex-euler/attempts/0181/verify.py", line 36, in main
+    checks.check("squared lab frequency has strictly positive curvature at a simple zero", s.diff(nu**2, x, 2).subs(nu, 0).doit() == 2 * s.diff(nu, x)**2)
+  File "src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0181-stationary-nodal-mode] squared lab frequency has strictly positive curvature at a simple zero

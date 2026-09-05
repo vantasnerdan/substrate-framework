@@ -1,0 +1,31 @@
+.F...........                                                            [100%]
+=================================== FAILURES ===================================
+________ test_scalar_reduction_matches_existing_complete_physical_chart ________
+
+    def test_scalar_reduction_matches_existing_complete_physical_chart():
+        t = s.Symbol("t", real=True)
+        omega = s.Matrix([[0, 2], [-2, 0]])
+        b = s.Matrix([[0, 1], [-3, 0]])
+        c = s.Matrix([[1+t, 0]])
+        measured = s.Matrix([[0, 5]])
+        scalar = physical_scalar_chart(
+            omega, b, c, angle_rate=c.diff(t), angle_acceleration=c.diff(t, 2),
+            generator_rate=s.zeros(2), spin=measured,
+        )
+        result = physical_configuration_chart(
+            omega, b, c, configuration_rate=c.diff(t),
+            configuration_acceleration=c.diff(t, 2), generator_rate=s.zeros(2), momentum=measured,
+        )
+        assert result.ordinary_action_condition is s.true
+        assert result.mass[0, 0] == scalar.mass
+        assert result.stiffness[0, 0] == scalar.stiffness
+        assert result.generator == scalar.generator
+>       assert result.hamiltonian == scalar.hamiltonian
+E       assert Matrix([\n[2*(.../(t + 1)**2]]) == Matrix([\n[2*(.../(t + 1)**2]])
+E         
+E         Use -v to get more diff
+
+tests/test_euler_configuration_chart.py:74: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_euler_configuration_chart.py::test_scalar_reduction_matches_existing_complete_physical_chart
+1 failed, 12 passed in 7.37s

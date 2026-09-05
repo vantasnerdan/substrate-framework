@@ -1,0 +1,9 @@
+First syntax preflight, process exit 1:
+  File "proposals/P251-cosserat-from-vortex-euler/attempts/0161/verify.py", line 111
+    covariance = s.simplify(amp**2*sum((jmat*q)*(jmat*q).T for q in vectors,
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: Generator expression must be parenthesized
+
+Classification: implementation syntax only, before scientific execution.
+Repair: parenthesize the generator passed alongside the sum start keyword.
+No equation, selection criterion, or scientific predicate changed.

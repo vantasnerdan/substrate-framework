@@ -1,0 +1,212 @@
+# Reviewed promotion payload, not registry authority until materialized.
+# Exact scientific statements extracted from frozen0105; evidence roles remain explicit.
+  - id: C-CST-008
+    statement: |-
+      Fix rho>0 and a nonzero curl eigenvalue lambda. Within the declared
+      stationary finite-variance isotropic Gaussian Beltrami law, there is a
+      positive-density stationary marked selection of actual invariant knotted
+      vortex-tube neighborhoods with finite volume and a continuous ambient
+      complement. On a uniformly bounded good-patch event one can construct
+      smooth compact isovortical core/reaction fields Q,S wholly inside each
+      tube, whose full-space induced velocities are also compact, with:
+
+          core_angle(Q)=1, core_angle(S)=0,
+          Omega(Q,S)=B!=0,
+          H=[[Hq,N],[N,P]] positive definite,
+          G(Q)=(B^2/P)n, G(S)=0, L(Q)=0, L(S)=B n.
+
+      Here G=rho integral r cross xi and L=rho integral r cross v_xi are
+      different measured moments, Omega is the Euler KKS form, and H is the
+      complete isovortical second variation of Euler kinetic energy. Every
+      quantity is constructed from actual field jets, compact profiles and
+      Euler integrals. No core mass, locking constant or desired frequency is
+      supplied. The core angle is a normalized local vorticity-direction
+      observation. It is not asserted to be a global compact symmetry action.
+
+      The same event supports additional zero-G/zero-L compact pairs with
+      positive reduced stiffness/inertia ratio above any prescribed finite
+      bound. Their supports can be made disjoint, so the full H/KKS locality
+      used for their reaction blocks is exact. Finite radii, profile norms,
+      positive margins, laws and number densities are declared geometric
+      inputs; no universal five-scalar filament formula is claimed.
+    provenance: campaigns/P251-cosserat-from-vortex-euler/adjudication.yaml
+    verification: symbolic_verified
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    dependencies: []
+    evidence:
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0105/claim-transaction.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0108/C-CST-008-review.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0108/shared-scientific-review.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0085/compact-spin-theorem.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0085/positive-compact-pair.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0103/six-moment-construction.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0103/joint_moments.py
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0103/first.stdout
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0102/canonical-coefficient-join.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0098/stationary-compact-assembly.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0071/README.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0060/source-review.md
+      - src/substrate_framework/euler_compact.py
+      - tests/test_euler_compact.py
+      - src/substrate_framework/euler_fourier.py
+      - tests/test_euler_fourier.py
+    assumptions:
+      - "Constant-density incompressible Euler on R^3; real smooth Beltrami samples with a fixed nonzero curl eigenvalue, finite energy density, not finite total energy."
+      - "EPS tube existence and persistence and the Enciso-Peralta-Salas-Romaniega Gaussian support propositions are declared primary mathematical imports, with archived applicability receipt0060. Exact calculus, compactness/measurable selection, Poisson marking and Gaussian covariance/mixing arguments are explicit mathematical imports."
+      - "The bounded good-patch geometry, compact cutoffs, finite carriers, density and field/mark law are fixed before deformation. These are geometric ensemble inputs; no target stiffness or frequency is fitted."
+      - "The normalized local core-vorticity angle is not a global compact group symmetry or an unrestricted Euler invariant mode. Complete finite-core effects are evaluated by actual Euler integrals; no universal filament five-scalar formula is asserted."
+    comparators: []
+    accepted_in: v0.175.0
+    challenges: []
+    supersedes: []
+  - id: C-CST-009
+    statement: |-
+      Use C-CST-008's cells in the explicit phase Cauchy--Born embedding of the
+      quadratic Euler material action,
+
+          eta=U+Ez,
+          pi=rho[(u0.grad)eta+V+A Ez],
+          Axi=P(xi cross omega0)-curl(P(xi cross omega0))/lambda.
+
+      All ambient fluid is retained. U is the declared coherent tube-centroid
+      plus continuous-ambient coordinate; Phi is the registered local core-angle
+      field, q=Phi-curl U/2. The ensemble pairs time-reversed and reflected full
+      states, with one COMMON macro conjugate variable V and independently varied
+      microscopic reaction momenta. Unresolved nonaffine variation/relaxation is
+      excluded by the declared Cauchy--Born closure, not silently made into gauge.
+      The law and marks are fixed before deformation. The claim concerns the
+      linear continuum and its full second spatial jet, not all wave numbers.
+
+      Pulling back that ONE action, taking its stated ensemble average and
+      eliminating the complete retained momenta yields positive computed
+
+          j=nu E_Palm[B^2/P]/3,
+          kappa=nu E_Palm[Hq-N^2/P]/3, alpha=kappa/4.
+
+      The six-moment match gives b=0 in the leading physical mixed mass and
+      ell=g-kappa b/j=-kappa/2!=0. Thus the optical branch has nonzero actual
+      coarse translation/core-angle transfer
+      U/Phi=-j sigma |k|/(2rho)+O(|k|^3) in curl helicity sigma. The leading
+      mass density is the total rho, derived also by the exact common Galilean
+      translation of the same stationary fluid, not a tube filling fraction.
+
+      Zero-moment compact STF and neighbor-angle attachments, with finite
+      structurally selected amplitudes, give positive shear mu and positive
+      transverse/longitudinal spin curvatures C_T,C_L after retaining all added
+      gradient inertia. Their coefficients are full canonical action/Schur
+      integrals, including the negative bare material covariance stiffness,
+      potential reaction squares and the surviving STF rate-source norm.
+      The SAME derivative field normalization transforms both kinetic and
+      potential forms. In its stated convention the equations are
+
+          rho U_N,tt=(mu+alpha)Delta U_N+2alpha curl Phi_N-grad p,
+          div U_N=0,
+          j Phi_N,tt=C_T Delta Phi_N+(C_L-C_T)grad div Phi_N
+                          +2alpha curl U_N-4alpha Phi_N.
+
+      These equations and their angular-momentum/couple-stress balance are exact
+      coefficient identities for the declared second-gradient conditional action.
+      The optical gap is4alpha/j; the acoustic transverse speed squared ismu/rho.
+      There is no incompressible longitudinal displacement wave. The physical
+      gradient masses, finite-radius Fourier filters and macro affine tube-spin
+      row accompany the field map. In particular full tube spin is not renamed
+      j Phi_dot: its additional affine/shape current is explicitly retained.
+
+      Removing the core-angle and angle-gradient populations deletes Phi before
+      any zero-inertia division and leaves a positive incompressible Navier--Cauchy
+      sector when the independent STF population remains. Removing every attached
+      population and the vortical covariance instead leaves linearized Euler.
+      The explicit limiting families and unchanged-density bookkeeping are in
+      0105/population-limits.md.
+
+      This is an exact conditional variational continuum construction from the
+      Euler material action. It does NOT claim that unrestricted Euler trajectories
+      remain in the chosen finite phase family. Their reconstruction residual is
+      R=Udot-V+Ezdot-AEz;0095 supplies its exact complement/memory and the matching
+      physical observation correction. Its vanishing is not an unstated premise
+      or a conclusion of the finite KKS calculation. The stronger unrestricted
+      realization question remains distinct, with0101 as finite-time progress.
+    provenance: campaigns/P251-cosserat-from-vortex-euler/adjudication.yaml
+    verification: symbolic_verified
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    dependencies: [C-CST-008]
+    evidence:
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0105/claim-transaction.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0105/population-limits.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0105/route-closure-map.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0108/C-CST-009-review.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0108/shared-scientific-review.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0097/canonical-phase-pullback.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0097/material-cotangent-bridge.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0097/verify.py
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0097/first-canonical.stdout
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0102/canonical-coefficient-join.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0102/verify.py
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0102/stdout.txt
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0098/stationary-compact-assembly.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0107/README.md
+      - proposals/P251-cosserat-from-vortex-euler/verify_cst004.py
+      - proposals/P251-cosserat-from-vortex-euler/verify_cst005.py
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0056/cst005-first.stdout.txt
+      - src/substrate_framework/euler_orbit.py
+      - tests/test_euler_orbit.py
+      - src/substrate_framework/euler_fourier.py
+      - src/substrate_framework/micropolar.py
+      - tests/test_micropolar.py
+    assumptions:
+      - "All hypotheses of C-CST-008 are retained. The explicit canonical phase Cauchy-Born embedding and fixed coherent marked law are the declared closure; nonaffine relaxation is excluded."
+      - "The common macro momentum is averaged with independently varied microscopic time-reversal reactions before its elimination. Reflection pairs complete laws and reverses curl eigenvalue; it is not claimed to occur within a single fixed-helicity ergodic sample."
+      - "The constitutive statement is the exact linear second-spatial-jet action in its long-wave positive-mass neighborhood. Both kinetic and potential forms undergo the same derivative field map, and physical finite-radius/shape observations remain explicit."
+      - "The full reconstruction residual and free-Euler complement are not assumed zero. No unrestricted trajectory realization, global SO(3) symmetry, all-wave-number dispersion, compressional Euler wave, or old alpha=L_v*T/6 formula is promoted."
+      - "Exact proof:0097/0102 and the independently reviewed construction/limits. Existing DOP853 integration verifies the reduced equations only; no numerical trajectory is relabeled as an Euler-existence proof."
+    comparators: []
+    accepted_in: v0.175.0
+    challenges: []
+    supersedes: []
+  - id: C-CST-010
+    statement: |-
+      For an integrable finite-range orientation energy of complete unresolved
+      states with an independent local product-Haar law, independent coherent
+      frame shifts leave its averaged energy invariant. Consequently its
+      coherent conservative torque and couple stiffness vanish, while quadratic
+      fluctuation energy need not vanish. Uniform one-point marginals alone do
+      not imply the result: correlated phases supply an explicit counterexample.
+      A no-retained-coherent-angular-current closure is separately stated for
+      the dynamical no-spin limit; static isotropy alone does not remove memory
+      or an angular current.
+
+      Exact proof:0058's Haar change of variables and canonical phase integration.
+      Corroboration: the already executed200000-sample signed-response Monte Carlo
+      with its declared seed, error model and bias mutation, at its narrower
+      first-moment scope. This does not assert that the coherent law of C-CST-009
+      is product Haar or that stationary Gaussian Euler isotropy by itself
+      erases its positive locking. It states the separately declared contrast
+      ensemble premise and its consequence, without deleting fluctuations.
+    provenance: campaigns/P251-cosserat-from-vortex-euler/adjudication.yaml
+    verification: symbolic_verified
+    review: accepted
+    compatibility: compatible_extension
+    epistemic: active
+    dependencies: []
+    evidence:
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0105/claim-transaction.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0108/C-CST-010-review.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0108/shared-scientific-review.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0058/haar-contrast.md
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0058/independent-review.md
+      - proposals/P251-cosserat-from-vortex-euler/verify_cst006.py
+      - proposals/P251-cosserat-from-vortex-euler/attempts/0025/stdout.txt
+      - src/substrate_framework/micropolar.py
+      - tests/test_micropolar.py
+    assumptions:
+      - "Complete unresolved orientation states have an independent local product-Haar law; the finite-range orientation energy is integrable. The theorem is not inferred from uniform one-point marginals or Gaussian Euler isotropy."
+      - "No retained coherent angular current is a separate explicit dynamical closure. Static conservative invariance does not remove quadratic fluctuations, viscosity, transient memory or finite-frequency response."
+      - "Exact proof: Haar change of variables and the correlated-phase counterexample. Executed signed-response Monte Carlo is narrower finite-sample first-moment corroboration, not proof of a dynamical no-current law."
+    comparators: []
+    accepted_in: v0.175.0
+    challenges: []
+    supersedes: []

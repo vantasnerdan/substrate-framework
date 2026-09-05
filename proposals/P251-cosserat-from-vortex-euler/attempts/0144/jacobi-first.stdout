@@ -1,0 +1,13 @@
+PASS [P251-0144-full-cell-Jacobi] comparison field is actual stationary incompressible Euler
+PASS [P251-0144-full-cell-Jacobi] comparison is an actual columnar constant-curl field, not a supplied oscillator
+PASS [P251-0144-full-cell-Jacobi] second Bloch divergence correction is derived by periodic inverse Laplacian
+PASS [P251-0144-full-cell-Jacobi] actual pressure border has the required nonzero sign and magnitude
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0144/jacobi_join_verify.py", line 97, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0144/jacobi_join_verify.py", line 68, in main
+    ledger.check("full Euler material action yields the cell response after its exact time boundary",
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0144-full-cell-Jacobi] full Euler material action yields the cell response after its exact time boundary
