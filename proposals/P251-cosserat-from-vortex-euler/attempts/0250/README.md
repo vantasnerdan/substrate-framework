@@ -197,13 +197,24 @@ finite-rank continuation do not preserve dense range.  This does not refute
 unbounded regularized inversion or exact fixed-ring controllability.
 
 The failure-derived Route C target is exact adjoint uniqueness for the full
-pressure-coupled Euler source-to-observation map.  Its WKB/Floquet realization
-owes periodic amplitude solvability, fixed-tag gain and the complete
-inverse-cost/remainder diagonal.  A preparation-dependent oscillatory
-positive tag is recorded only as an explicit possible departure from this
-attempt's fixed-tag route.  The exact 0145 periodic Beltrami field is a
-candidate alternative background, conditional on constructing this response
-and on the distinct geometry owner's scope decision.
+pressure-coupled Euler source-to-observation map on one frozen 0145/0147
+periodic constant-curl background.  Attempt 0147 already supplies its
+contractible compact Euclidean core and an actual finite-action optical
+packet at finite prescribed accuracy; the new burden is arbitrary response
+accuracy on that same fixed field, including the acoustic block.  Its
+WKB/Floquet realization owes periodic amplitude solvability, fixed-tag gain
+and the complete inverse-cost/remainder diagonal.  The substantive proof now
+gives a conditional fixed-tag diagonal: an independent invariant-action WKB
+phase leaves the nonzero clock band fixed, while one frozen positive smooth
+tag contains a sparse summable ladder of dual phases whose gain dominates the
+arbitrary-order Euler residual after every finite band-synthesis cost is
+known.  The unsolved inputs to that diagonal are the actual stable Floquet
+band and full physical gain, not low-frequency coverage.  A preparation-
+dependent oscillatory positive tag is recorded only as an explicit possible
+departure from this attempt's fixed-tag route.  The independent 0252 theorem
+excludes only a localizable-core matching subclass and leaves this
+nonlocalizable periodic background intact; the distinct geometry owner still
+controls the 0248/0253 scope decision.
 
 `route_verdict`: fixed-ring response obligation remains open with its exact
 missing construction named; no parent no-go or exhaustion conclusion.

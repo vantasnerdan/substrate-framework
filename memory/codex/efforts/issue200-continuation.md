@@ -126,3 +126,24 @@ It preserves0211, outer-only/nonlocalizable matching, degenerate cores and
 general compact Euler. Geometry-review begins0253 to execute those materially
 different localization constructions;0250 continues the fixed exact
 background response. No new promoted claim or exhaustion is inferred.
+
+## Fixed-window control and current continuation
+
+0254 supplies a constructive frequency-band bridge: approximate a carrier-
+removed time profile by a polynomial, then realize its powers through
+finite frequency differences entirely inside one open band. The coefficient
+norm is explicit and may diverge. Three new API tests pass first execution,
+targeted Ruff and fixed checks pass exit0; no accepted claim changes.
+The normalized Duhamel estimate requires actual full-generator residuals
+relative to the same measured gain, including necessary graph norms and
+matrix/range constraints. It does not create an Euler band or observer.
+
+0250 has recorded its first substantive result and continues Route C. Root
+supplied a concrete leading Beltrami WKB polarization for the next derivation:
+if k·omega=0, the vorticity amplitude b=k cross a obeys b_dot=Du b;
+b=u and a=-k cross u/|k|^2 give a leading neutral channel. This candidate
+identity still needs its complete periodic/normal-form, higher-order,
+physical-gain and action/current transfer before it licenses a clock band.
+0253 is active after central/schema activation for outer-only localization
+or a nonlocalizable flat-edge Grad-Shafranov compacton. The full compact
+same-field objective remains open; the campaign continues on its branch.
