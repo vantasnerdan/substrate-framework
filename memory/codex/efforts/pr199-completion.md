@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T16:47:00+02:00'
+updated: '2026-09-05T18:34:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -28,6 +28,30 @@ No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
 Newest local governed release is v0.181.0 with269 accepted claims.
+New frozen0218 establishes an ACTUAL field-changing Kelvin lift of0216's
+positive fixed-tag nonlinear clock: xi=(-s,Jgrad s), w=(Ts,0,0), s_t=-Ts.
+The complete phase is positive in its physical clock chart, and full
+Jacobi energy is rho||Ts||²/2, half the label-only value and naturally
+matched to the clock energy.19+17 first-pass canonical checks expose
+the negative physical energy of the h=0 alternative and the positive
+axial repair. Inherited M versus measured j remains distinct; active0221
+constructs genuine opposite-sign Kelvin normalization returns.0219
+derives actual common-K band-center/current corrections, preserving the
+wrapped axial topology. Narrow-band accuracy must beat its actual
+norm-conditioned spatial remainder, not just go to zero separately.
+
+Frozen0216 has24 exact checks for the positive fourth-harmonic physical
+clock on a fixed positive tag and its complete label-phase/energy.
+Frozen0217 has14 for the distinct same-closed-ring material tilt/current
+and phase, explicitly w=0;0222 is activated to construct its actual
+field-changing compact Kelvin lift with full global pressure.0213's22
+checks establish actual curved residual, full straight weighted response
+and lower-order first reaction;0220 executes the complete curved Schur
+feedback. Frozen0209 has37 final affine/tag/axial-jet checks.0214 accepts
+0210 phase controls without correction. These are research checkpoints,
+not the completed parent or a terminal PR. Brief worker service limits
+were transient; work resumed after the user asked to continue.
+
 Newest research progress:0211 constructs a literal constant-curl nonzero
 closed core and robust inner torus on the SAME global smooth Euler ring.
 Independent0215 accepts its new affine-current seed, full radial border,
@@ -190,7 +214,7 @@ inverted translational response for the constant-curl lift and continues
 the generalized Bernoulli-profile repair.0164 retains the actual
 all-time tagged current and0166 derives optics on the same core geometry.
 
-Latest pushed research checkpoint:61ac2ea.0127's full integrated backstop
+Latest pushed research checkpoint:6d907cb.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.

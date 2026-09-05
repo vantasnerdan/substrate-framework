@@ -1,0 +1,18 @@
+PASS [P251-0209-moment-response] the full first-moment equation recovers the independently measured inertia
+actual gradient-forcing constant theta row = pi*I*(5*Omega**4 + 20*Omega**3 + 22*Omega**2 + 20*Omega + 5)/(18*Omega**2*Q*(Omega**2 + 2*Omega + 1))
+actual gradient-forcing constant G row = pi*I*rho*(-Omega**3 - 3*Omega**2 + 3*Omega + 1)/(8*Omega**2*(Omega + 1))
+actual physical G-inertia*theta mismatch = pi*I*rho*(2*Omega**5 + 3*Omega**4 - Omega**3 + Omega**2 - 3*Omega - 2)/(24*Omega**2*(Omega**3 + 2*Omega**2 + 2*Omega + 1))
+PASS [P251-0209-moment-response] the nonzero literal displacement-current mismatch is retained exactly
+PASS [P251-0209-moment-response] common initial-angle normalization derives the stated gradient inertia
+PASS [P251-0209-moment-response] gradient inertia is strictly positive without a floating-point sign test
+PASS [P251-0209-moment-response] the complete linear-in-time forced first-moment response solves its defining equation
+PASS [P251-0209-moment-response] the secular physical-angle coefficient is the positive actual clock derivative
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0209/verify_moment_response.py", line 87, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0209/verify_moment_response.py", line 55, in main
+    checks.check("the full inverse-pressure angular moments give Kmat", all(sp.factor(v) == 0 for v in 2*sp.pi*radial*angular/tau-gradient_moment))
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0209-moment-response] the full inverse-pressure angular moments give Kmat

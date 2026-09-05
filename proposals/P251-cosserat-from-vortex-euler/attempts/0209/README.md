@@ -91,3 +91,8 @@ no full validation is planned. Every route gets one scoped verdict,
 with no inheritance as parent exhaustion. A failed observer or response
 activates its representation/preparation repair and the next actual
 candidate while preserving all positive parent obligations.
+
+Activation: parent confirmed central/schema269 accepted before source
+comparison. Current accepted pin is now v0.181.0 with C-CST-016. The
+stationary-tag route is being derived first; whole-family orbit-phase
+correlations remain a separately registered competitor.

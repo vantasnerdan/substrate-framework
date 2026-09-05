@@ -1,0 +1,123 @@
+PASS [P251-0209-moment-response] the full first-moment equation recovers the independently measured inertia
+actual gradient-forcing constant theta row = pi*I*(5*Omega**4 + 20*Omega**3 + 22*Omega**2 + 20*Omega + 5)/(18*Omega**2*Q*(Omega**2 + 2*Omega + 1))
+actual gradient-forcing constant G row = pi*I*rho*(-Omega**3 - 3*Omega**2 + 3*Omega + 1)/(8*Omega**2*(Omega + 1))
+actual physical G-inertia*theta mismatch = pi*I*rho*(2*Omega**5 + 3*Omega**4 - Omega**3 + Omega**2 - 3*Omega - 2)/(24*Omega**2*(Omega**3 + 2*Omega**2 + 2*Omega + 1))
+PASS [P251-0209-moment-response] the nonzero literal displacement-current mismatch is retained exactly
+PASS [P251-0209-moment-response] common initial-angle normalization derives the stated gradient inertia
+PASS [P251-0209-moment-response] gradient inertia is strictly positive without a floating-point sign test
+PASS [P251-0209-moment-response] the complete linear-in-time forced first-moment response solves its defining equation
+PASS [P251-0209-moment-response] the secular physical-angle coefficient is the positive actual clock derivative
+PASS [P251-0209-moment-response] the full inverse-pressure angular moments give Kmat
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0209/verify_moment_response.py", line 89, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0209/verify_moment_response.py", line 65, in main
+    inverse_moment = sp.integrate(2*cutoff*radius**3*sp.exp(-cutoff*radius**2)*phi_inverse,(radius,0,sp.oo))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/integrals/integrals.py", line 1575, in integrate
+    return integral.doit(**doit_flags)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/integrals/integrals.py", line 619, in doit
+    antideriv = self._eval_integral(
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/integrals/integrals.py", line 1091, in _eval_integral
+    h = heurisch_wrapper(g, x, hints=[])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/integrals/heurisch.py", line 144, in heurisch_wrapper
+    res = heurisch(f, x, rewrite, hints, mappings, retries, degree_offset,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/integrals/heurisch.py", line 764, in heurisch
+    solution = _integrate()
+               ^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/integrals/heurisch.py", line 706, in _integrate
+    h = F - _derivation(candidate) / denom
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/integrals/heurisch.py", line 543, in _derivation
+    return Add(*[ d * h.diff(v) for d, v in zip(numers, V) ])
+                      ^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/expr.py", line 3606, in diff
+    return _derivative_dispatch(self, *symbols, **assumptions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1938, in _derivative_dispatch
+    return Derivative(expr, *variables, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1466, in __new__
+    obj = cls._dispatch_eval_derivative_n_times(expr, v, count)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1927, in _dispatch_eval_derivative_n_times
+    return expr._eval_derivative_n_times(v, count)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/basic.py", line 1975, in _eval_derivative_n_times
+    obj = obj._eval_derivative(s)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/cache.py", line 72, in wrapper
+    retval = cfunc(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/add.py", line 504, in _eval_derivative
+    return self.func(*[a.diff(s) for a in self.args])
+                       ^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/expr.py", line 3606, in diff
+    return _derivative_dispatch(self, *symbols, **assumptions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1938, in _derivative_dispatch
+    return Derivative(expr, *variables, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1466, in __new__
+    obj = cls._dispatch_eval_derivative_n_times(expr, v, count)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1927, in _dispatch_eval_derivative_n_times
+    return expr._eval_derivative_n_times(v, count)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/cache.py", line 72, in wrapper
+    retval = cfunc(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/mul.py", line 1005, in _eval_derivative_n_times
+    p = Mul(*[arg.diff((s, k)) for k, arg in zip(kvals, args)])
+              ^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/expr.py", line 3606, in diff
+    return _derivative_dispatch(self, *symbols, **assumptions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1938, in _derivative_dispatch
+    return Derivative(expr, *variables, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1466, in __new__
+    obj = cls._dispatch_eval_derivative_n_times(expr, v, count)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1927, in _dispatch_eval_derivative_n_times
+    return expr._eval_derivative_n_times(v, count)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/basic.py", line 1975, in _eval_derivative_n_times
+    obj = obj._eval_derivative(s)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/cache.py", line 72, in wrapper
+    retval = cfunc(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/add.py", line 504, in _eval_derivative
+    return self.func(*[a.diff(s) for a in self.args])
+                       ^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/expr.py", line 3606, in diff
+    return _derivative_dispatch(self, *symbols, **assumptions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1938, in _derivative_dispatch
+    return Derivative(expr, *variables, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1466, in __new__
+    obj = cls._dispatch_eval_derivative_n_times(expr, v, count)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/function.py", line 1927, in _dispatch_eval_derivative_n_times
+    return expr._eval_derivative_n_times(v, count)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/cache.py", line 72, in wrapper
+    retval = cfunc(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/mul.py", line 1005, in _eval_derivative_n_times
+    p = Mul(*[arg.diff((s, k)) for k, arg in zip(kvals, args)])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/cache.py", line 72, in wrapper
+    retval = cfunc(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/basic.py", line 315, in __hash__
+    def __hash__(self) -> int:
+
+KeyboardInterrupt
