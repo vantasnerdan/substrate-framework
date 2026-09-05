@@ -106,3 +106,15 @@ separate typed design and small-ratio skill receipt before execution.
 Replay is this additive attempt's actual verifier and directly affected
 consumers only, not a full repository suite. The root records and validates
 the central proposal expansion before substantive work begins.
+
+## Append-only activated route
+
+The root registered this expansion and reported schema success with 267
+accepted claims before substantive work. Direct radial elimination selects
+an m=0 torsional/inertial candidate: a positive phase-speed branch above
+the maximum axial flow. The tempting negative-phase branch is excluded
+by an exact force-free form identity. This is an analytic representation
+change, not numerical branch selection. Its material axial spin is
+explicitly distinguished from the nonzero fixed-section angular momentum
+and its full flux. Those observations activate the preregistered Candidate
+C rather than allowing a canonical-spin relabeling.

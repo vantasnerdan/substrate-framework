@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T14:54:00+02:00'
+updated: '2026-09-05T15:35:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -28,6 +28,32 @@ No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
 Newest local governed release is v0.180.0 with268 accepted claims.
+Post-31bc873 progress is frozen in0196 and0200–0203.0196 constructs the
+actual common-D,V physical acoustic action through a fixed-cell diagonal
+second jet, retaining arbitrarily growing finite preparation norms before
+choosing the macro scale (39 exact checks).0200 constructs an actual
+noncritical positive-action annular Euler mode and stationary cavity
+material angle/G/S with its linked polar centroid retained (24 checks).
+Independent0203 accepts that full supplier statement without correction
+and passes8 independent real-phase/action normalization checks.0202 uses
+actual whole-field mirror pairs to cancel its polar mean, retain its
+quadratic energy and derive the axial1/5,3/5 spatial tensor (12 checks).
+0201 supplies a genuine force-free positive pole/ring continuation and
+physical Eulerian section-angle/spin current (30 checks); its material
+torsional spin is exactly zero, a different observation.
+
+Active0204 transfers actual finite-window optical histories to compact
+closed rings and their array with full pressure, conditioned moments,
+common-lab derivatives and actual density.0205 joins optics to the SAME
+fixed Beltrami acoustic cell: its0155 optical field is exactly the0188
+field after a proper rigid map, and different X Fourier harmonics make
+full acoustic/optical phase-energy cross blocks vanish. Physical tagged
+currents and the laboratory versus transported-clock connection remain
+under construction, not inferred from that orthogonality.0206 derives
+actual low-n global orientation/shape and physical moments on the genuine
+force-free ring, with the joint k=n/R limit distinct from fixed-k poles.
+The parent remains active; no full validations or terminal PR occurred.
+
 Independent0197 accepts C-CST-015 without correction: actual finite
 Euler displacement preparation has positive physical restoring response
 equal to its inherited D energy and initial rho phase.0199's reusable
@@ -125,7 +151,7 @@ inverted translational response for the constant-curl lift and continues
 the generalized Bernoulli-profile repair.0164 retains the actual
 all-time tagged current and0166 derives optics on the same core geometry.
 
-Latest pushed research checkpoint:ee0502c.0127's full integrated backstop
+Latest pushed research checkpoint:31bc873.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.

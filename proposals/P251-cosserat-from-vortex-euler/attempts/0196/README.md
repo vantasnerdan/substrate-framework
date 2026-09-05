@@ -70,3 +70,26 @@ method repair, representation change and materially different candidate
 generation without weakening the parent's objective. The final artifact
 will state exactly which coupled equations have been constructed and
 which remain executable next achievements.
+
+Activation receipt: parent confirmed central expansion/schema267 accepted
+claims after separate C014 materialization. The new derivation starts with
+the exact aggregate planar/axial forcing rows of the same-lift common-V
+operator, before selecting any initial return or finite-dimensional fit.
+
+Failure-derived nonstationary construction inside candidate1: use the
+actual invariant pure-axial passive Euler sector, supported on wrapped
+streamline bands approaching the existing saddle of this same field.
+Its first action-angle harmonic has a genuine nonzero physical-current
+overlap and continuously small transport frequencies. Compare finite
+packets for controlled fixed-window output approximation, retaining their
+finite (possibly large) exact gradient kinetic energy and unchanged
+first-cell response on disjoint transported elliptic-core tags. This is
+not an exact autonomous action claim or an inserted oscillator.
+
+Diagonal continuation: parent recorded and schema268 validated the new
+fixed-cell continuum candidate. After each finite-window accuracy choice,
+retain the actual velocity/configuration Sobolev norms and derivative-level
+Euler/Lin, phase and energy remainder constants, then choose the macro
+k thresholds. Target an actual fixed-T second-jet/action limit with all
+normalized remainders tending to zero. No acoustic-time uniformity or
+uniform norm bound is assumed. The background cell remains fixed.
