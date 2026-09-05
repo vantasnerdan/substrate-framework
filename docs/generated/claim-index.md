@@ -201,6 +201,139 @@ Under C-MED-003, let a dimensionless real field be restricted on a fixed spatial
 - Compatibility: `compatible_extension`
 - Dependencies: C-MED-003, C-RG-001
 
+## C-CST-008
+
+Fix rho>0 and a nonzero curl eigenvalue lambda. Within the declared
+stationary finite-variance isotropic Gaussian Beltrami law, there is a
+positive-density stationary marked selection of actual invariant knotted
+vortex-tube neighborhoods with finite volume and a continuous ambient
+complement. On a uniformly bounded good-patch event one can construct
+smooth compact isovortical core/reaction fields Q,S wholly inside each
+tube, whose full-space induced velocities are also compact, with:
+
+    core_angle(Q)=1, core_angle(S)=0,
+    Omega(Q,S)=B!=0,
+    H=[[Hq,N],[N,P]] positive definite,
+    G(Q)=(B^2/P)n, G(S)=0, L(Q)=0, L(S)=B n.
+
+Here G=rho integral r cross xi and L=rho integral r cross v_xi are
+different measured moments, Omega is the Euler KKS form, and H is the
+complete isovortical second variation of Euler kinetic energy. Every
+quantity is constructed from actual field jets, compact profiles and
+Euler integrals. No core mass, locking constant or desired frequency is
+supplied. The core angle is a normalized local vorticity-direction
+observation. It is not asserted to be a global compact symmetry action.
+
+The same event supports additional zero-G/zero-L compact pairs with
+positive reduced stiffness/inertia ratio above any prescribed finite
+bound. Their supports can be made disjoint, so the full H/KKS locality
+used for their reaction blocks is exact. Finite radii, profile norms,
+positive margins, laws and number densities are declared geometric
+inputs; no universal five-scalar filament formula is claimed.
+
+- Accepted in: `v0.175.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+
+## C-CST-009
+
+Use C-CST-008's cells in the explicit phase Cauchy--Born embedding of the
+quadratic Euler material action,
+
+    eta=U+Ez,
+    pi=rho[(u0.grad)eta+V+A Ez],
+    Axi=P(xi cross omega0)-curl(P(xi cross omega0))/lambda.
+
+All ambient fluid is retained. U is the declared coherent tube-centroid
+plus continuous-ambient coordinate; Phi is the registered local core-angle
+field, q=Phi-curl U/2. The ensemble pairs time-reversed and reflected full
+states, with one COMMON macro conjugate variable V and independently varied
+microscopic reaction momenta. Unresolved nonaffine variation/relaxation is
+excluded by the declared Cauchy--Born closure, not silently made into gauge.
+The law and marks are fixed before deformation. The claim concerns the
+linear continuum and its full second spatial jet, not all wave numbers.
+
+Pulling back that ONE action, taking its stated ensemble average and
+eliminating the complete retained momenta yields positive computed
+
+    j=nu E_Palm[B^2/P]/3,
+    kappa=nu E_Palm[Hq-N^2/P]/3, alpha=kappa/4.
+
+The six-moment match gives b=0 in the leading physical mixed mass and
+ell=g-kappa b/j=-kappa/2!=0. Thus the optical branch has nonzero actual
+coarse translation/core-angle transfer
+U/Phi=-j sigma |k|/(2rho)+O(|k|^3) in curl helicity sigma. The leading
+mass density is the total rho, derived also by the exact common Galilean
+translation of the same stationary fluid, not a tube filling fraction.
+
+Zero-moment compact STF and neighbor-angle attachments, with finite
+structurally selected amplitudes, give positive shear mu and positive
+transverse/longitudinal spin curvatures C_T,C_L after retaining all added
+gradient inertia. Their coefficients are full canonical action/Schur
+integrals, including the negative bare material covariance stiffness,
+potential reaction squares and the surviving STF rate-source norm.
+The SAME derivative field normalization transforms both kinetic and
+potential forms. In its stated convention the equations are
+
+    rho U_N,tt=(mu+alpha)Delta U_N+2alpha curl Phi_N-grad p,
+    div U_N=0,
+    j Phi_N,tt=C_T Delta Phi_N+(C_L-C_T)grad div Phi_N
+                    +2alpha curl U_N-4alpha Phi_N.
+
+These equations and their angular-momentum/couple-stress balance are exact
+coefficient identities for the declared second-gradient conditional action.
+The optical gap is4alpha/j; the acoustic transverse speed squared ismu/rho.
+There is no incompressible longitudinal displacement wave. The physical
+gradient masses, finite-radius Fourier filters and macro affine tube-spin
+row accompany the field map. In particular full tube spin is not renamed
+j Phi_dot: its additional affine/shape current is explicitly retained.
+
+Removing the core-angle and angle-gradient populations deletes Phi before
+any zero-inertia division and leaves a positive incompressible Navier--Cauchy
+sector when the independent STF population remains. Removing every attached
+population and the vortical covariance instead leaves linearized Euler.
+The explicit limiting families and unchanged-density bookkeeping are in
+0105/population-limits.md.
+
+This is an exact conditional variational continuum construction from the
+Euler material action. It does NOT claim that unrestricted Euler trajectories
+remain in the chosen finite phase family. Their reconstruction residual is
+R=Udot-V+Ezdot-AEz;0095 supplies its exact complement/memory and the matching
+physical observation correction. Its vanishing is not an unstated premise
+or a conclusion of the finite KKS calculation. The stronger unrestricted
+realization question remains distinct, with0101 as finite-time progress.
+
+- Accepted in: `v0.175.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: C-CST-008
+
+## C-CST-010
+
+For an integrable finite-range orientation energy of complete unresolved
+states with an independent local product-Haar law, independent coherent
+frame shifts leave its averaged energy invariant. Consequently its
+coherent conservative torque and couple stiffness vanish, while quadratic
+fluctuation energy need not vanish. Uniform one-point marginals alone do
+not imply the result: correlated phases supply an explicit counterexample.
+A no-retained-coherent-angular-current closure is separately stated for
+the dynamical no-spin limit; static isotropy alone does not remove memory
+or an angular current.
+
+Exact proof:0058's Haar change of variables and canonical phase integration.
+Corroboration: the already executed200000-sample signed-response Monte Carlo
+with its declared seed, error model and bias mutation, at its narrower
+first-moment scope. This does not assert that the coherent law of C-CST-009
+is product Haar or that stationary Gaussian Euler isotropy by itself
+erases its positive locking. It states the separately declared contrast
+ensemble premise and its consequence, without deleting fluctuations.
+
+- Accepted in: `v0.175.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+
 ## C-DEF-001
 
 For a real angular field theta of degree q on the annulus xi<r<R with positive stiffness K and energy (K/2)*integral|grad(theta)|^2*d^2x, the uniform winding theta=q*phi has energy pi*K*q^2*log(R/xi), and circlewise Cauchy-Schwarz makes this the sharp lower bound when every concentric circle has that degree. In the separately declared matched-shell model for n positive-concrete equal pieces of fixed total charge Q, with n near annuli xi<r<d and one common far annulus d<r<R, the field energy is pi*K*Q^2*((1/n)*log(d/xi)+log(R/d)); adding piece and unsplit core energies gives split-minus-unsplit -pi*K*Q^2*(1-1/n)*log(d/xi)+n*E_piece-E_integer. Thus the independent- copy field ratio 1/n occurs only when the common far shell vanishes at d=R; it is not a general fixed-boundary interaction ratio. Separately, pi1(RP2)=Z2, while the full polar manifold (S2 x U1)/Z2 has universal cover S2 x R and deck group Z generated by g(director,t)=(-director,t+pi); its square is the nontrivial integer phase vortex, not the identity. For the supplied isolated phase/director functional, two half textures have field energy pi*(K_phase+K_director)*L/2 and one integer phase vortex has pi*K_phase*L, so including cores their pair-minus-integer residual is pi*(K_director-K_phase)*L/2+2*E_half-E_integer. Preference therefore requires that declared residual to be negative. These exact conditional ledgers derive no material stiffness or core, exact finite-domain multi-core solution, equilibrium separation, vortex existence or stability, experiment, atomic realization, or substrate mechanism.

@@ -1,5 +1,8 @@
 """Conditional exact compact-isovortical operator algebra (P251/0085, 0103).
 
+This is the coefficient algebra used by accepted C-CST-008; the field
+existence and positivity proof retains the additional hypotheses below.
+
 For a scalar test function f, write a vector differential operator in RIGHT
 normal form, S_j f = sum_alpha d^alpha(s_{j,alpha} f).  This module forms
 the coefficient matrix of D S, where D xi=(div xi, div(xi cross omega)).

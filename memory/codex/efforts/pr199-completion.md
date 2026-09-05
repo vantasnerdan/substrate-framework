@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T05:00:00+02:00'
+updated: '2026-09-05T05:20:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -16,12 +16,21 @@ seven-node objective and explicit Euler, isotropy, and ensemble premises in
 P251/proposal.yaml. Completion includes the microscopic action construction,
 individual claim review, reusable implementation, and release promotion.
 
+Current authority checkpoint: independent0108 accepts C-CST-008..010
+exactly as frozen, and0113 materializes them in v0.175.0. These establish
+the original conditional scientific roles through the reconciled finite-core
+route. Full unrestricted same-cell Euler realization remains active; its
+current route0112 constructs the actual core-streamline Floquet transport,
+not an assumed invariant cage action. No terminal PR or full-user-objective
+completion is asserted by this partial promotion checkpoint.
+
 ## Accepted Baseline
 
 Frozen review head: 10a0f31bf0122f4c744a81dfe1cfa66506d57ad7. Campaign base:
 v0.171.0 at e24497b0272f8582a71d4189581db818a0e276aa. The separate main
 worktree pins v0.174.0 and has a user-owned AGENTS.md change; work here uses
-research/pr199-completion in an isolated worktree. P251 has no accepted claim.
+research/pr199-completion in an isolated worktree. At opening P251 had no
+accepted claim; the current008..010 promotion is recorded above.
 P242 homogenization is conditional imported infrastructure. Its sphere moments,
 line tension integral and affine matching were read at source.
 
@@ -366,6 +375,24 @@ a nonzero actual parcel-spin/translation realization with its full return
 flow retained. The asynchronous scope question remains unanswered; no
 unrestricted-Euler realization is inferred from conditional Cauchy--Born.
 Checkpoint dfe7939 remains pushed; commits continue to be checkpoints only.
+
+Independent0108 accepts each of008,009,010 without a scientific correction.
+It explicitly closes the averaged physical core-angle map and separates
+the old0098 spin placeholders from0102's full current statement. The
+original conditional scientific objective is established; the same-cell
+unrestricted realization is not. Full integrated validation0111 passes
+all2568 tests in360.43s. Source checkpoint223f131 merges origin/main v174
+without changing any Euler implementation; it is pushed. Promotion0113
+adds the three reviewed claims and release175, preserving every prior
+accepted claim and keeping the broader campaign active.
+
+0109 now supplies a genuinely transported optical parcel with nonzero
+centroid momentum and full moving-boundary spin j=MR²/5, with an explicit
+full Euler error over an optical period. Its pressure-gradient repair is
+needed for small-moment accuracy;21 exact checks pass. The packet's global
+compensating returns and its distinction from the EPS knot remain explicit.
+0112 next adds exact Galilean independent centroid data and executes a
+source-derived geometric-optics/Floquet route on the actual EPS core.
 
 ## Cross-References
 

@@ -1,7 +1,8 @@
-"""Conditional, unpromoted isotropic micropolar action (P251/0056).
+"""Conditional isotropic micropolar action (P251/0056).
 
-This module encodes the action and its Fourier operator, not the microscopic
-Euler construction or an accepted claim. Coefficients must come from that
+This module encodes the action and its Fourier operator used by C-CST-009,
+and the phase integral used by C-CST-010, not the microscopic construction.
+Coefficients must come from that
 construction when the caller makes a microscopic claim. Incompressible Euler
 uses div U=0 and a pressure multiplier; the optional Lame coefficient describes
 only the formal compressible extension. Rotation itself need not be solenoidal.

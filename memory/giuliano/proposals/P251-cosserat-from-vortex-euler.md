@@ -2,7 +2,7 @@
 description: 'P251: derive Cosserat (micropolar) equations from coarse-grained Euler with vortex-structure rotational degrees of freedom (issue 198, Comparsi item via Dan)'
 author: giuliano
 created: '2026-09-03T14:40:00+00:00'
-updated: '2026-09-04T17:20:00+02:00'
+updated: '2026-09-05T05:20:00+02:00'
 tags:
 - substrate-framework
 - campaign-proposal
@@ -134,3 +134,21 @@ whose translation, orientation and spatial coefficients share the derived
 Euler symplectic structure. Neither a green local oscillator nor an unbounded
 ambient-flow model closes that objective; the new constructions are preserved
 as executable progress on the campaign branch.
+
+## Reviewed conditional construction checkpoint 0108--0113
+
+Codex continuation constructs the full conditional finite-core alternative:
+compact Euler angular pairs inside actual stationary EPS tubes, one canonical
+material phase action, common-mean momentum reduction, nonzero physical
+translation/core-angle coupling, positive shear/curvatures and explicit
+population limits. Independent0108 accepts new C-CST-008..010 exactly as
+frozen in0105;0113 records their release175 promotion. Original001..007
+identifiers remain bound to the earlier statements, and the old five-scalar
+straight-tube formula is not revived. The alternative role closure is in
+0105/route-closure-map.md and0108/goal-closure-assessment.md.
+
+This does not close the stronger unrestricted same-cell Euler realization.
+The exact complement/current remains in0095,0109 gives controlled actual
+parcel spin and translation, and0112 continues on the actual EPS periodic
+core. The campaign branch remains active beyond the promotion checkpoint;
+no terminal PR or full-unrestricted-objective verdict is asserted.

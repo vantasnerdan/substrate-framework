@@ -1,4 +1,9 @@
-"""Conditional, unpromoted joint Euler-orbit reduction (P251/0049).
+"""Conditional joint Euler-orbit reduction (P251/0049, 0102).
+
+``paired_euler_mean_reduction`` implements the exact reaction algebra used
+by accepted C-CST-009. The earlier generic orbit helpers retain their
+conditional infrastructure scope; that claim does not approve every
+possible microscopic interpretation of their inputs.
 
 Inputs are complete Hessian/KKS integrals of an independently constructed
 Euler orbit, not freely supplied physical moduli. These algebraic helpers

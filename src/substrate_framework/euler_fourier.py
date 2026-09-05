@@ -1,4 +1,8 @@
-"""Conditional exact finite-Fourier Euler algebra (no claim promotion).
+"""Conditional exact finite-Fourier Euler algebra.
+
+The signed operator and quadratic-form identities support C-CST-008/009.
+Their accepted scopes do not identify an arbitrary Fourier field with an
+EPS tube or promote a numerical Fourier truncation to an exact continuum.
 
 Scalar fields map commensurate rational wavevectors to SymPy coefficients
 of exp(i k.x); vectors are triples of scalar fields. Products and ``inner``
