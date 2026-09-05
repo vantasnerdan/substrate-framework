@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T15:57:00+02:00'
+updated: '2026-09-05T16:47:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -28,6 +28,25 @@ No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
 Newest local governed release is v0.181.0 with269 accepted claims.
+Newest research progress:0211 constructs a literal constant-curl nonzero
+closed core and robust inner torus on the SAME global smooth Euler ring.
+Independent0215 accepts its new affine-current seed, full radial border,
+actual frame, flux-normalized twist and EPS persistence bridge without
+correction;24 exact checks pass, with the recorded all-angular strengthening.
+0206's44 exact checks establish the rigid orbit and reflected weighted
+coadjoint response.0213 is activated to calculate the actual curved Kelvin
+residual/current on the new seed, including the full fast pressure reaction.
+This is the actual same-field dynamical continuation, not geometry promoted
+as the full continuum.
+
+Independent0212 accepts0204's full-pressure compact-ring transfer and
+density-preserving packing at fixed accuracy, reusing25 valid checks.
+Frozen0210 constructs actual zero-energy quadrature phase controls on
+the SAME C016 cell (16 checks);0214 independently reviews them.0209
+continues the observed stationary-tag optical clock and actual axial
+second jets. Own-scale density and the common-field parent action remain
+active. No full validation or terminal PR was run.
+
 Independent0207 accepts C-CST-016's full actual common-D,V fixed-cell
 diagonal acoustic action without correction. Its8 independent checks
 use the full accepted displacement API, including all high harmonics.
@@ -171,7 +190,7 @@ inverted translational response for the constant-curl lift and continues
 the generalized Bernoulli-profile repair.0164 retains the actual
 all-time tagged current and0166 derives optics on the same core geometry.
 
-Latest pushed research checkpoint:6a58392.0127's full integrated backstop
+Latest pushed research checkpoint:61ac2ea.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.

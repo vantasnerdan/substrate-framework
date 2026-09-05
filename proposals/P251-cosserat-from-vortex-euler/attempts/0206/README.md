@@ -94,3 +94,21 @@ then run only the changed attempt and its actual affected consumers.
 No full repository suite, commits, canonical extraction or promotion
 is authorized in this child. A scoped route result activates its next
 construction, not scientific exhaustion or campaign completion.
+
+## Failure-generated whole-field parity repair
+
+Activated after the first low-carrier operator deconstruction, before
+executing its new threshold estimate: reflect the ENTIRE stationary
+ring in a meridional plane. This exact Euler symmetry preserves its
+closed core, torus geometry, translation and all physical transforms,
+while reversing the toroidal swirl. For a fixed positive toroidal n,
+compare the positive-energy positive-frequency bending branch with
+the now nonpositive axisymmetric axial-transport interval. This changes
+the spectral representation, not a physical frequency by declaration.
+
+The exposing question is whether the exact force-free weighted form
+and the actual source/pressure factors control the edge resolvent
+when W vanishes flatly. Merely moving the branch outside the band is
+not a uniform bound. The same actual angular-momentum, phase and
+Euclidean observation rows remain required; reflection is applied to
+the complete field and preparations, not selected coefficients.
