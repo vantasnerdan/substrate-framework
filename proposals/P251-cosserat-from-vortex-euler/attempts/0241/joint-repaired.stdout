@@ -1,0 +1,13 @@
+PASS [P251-0241-actual-joint-residual] Eq6: all physical joint mismatch coefficients below degree3 vanish
+PASS [P251-0241-actual-joint-residual] Eq6: exact cubic mismatch including both off-diagonal rows
+PASS [P251-0241-actual-joint-residual] Eq5: actual history and physical observation errors both remain
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0241/verify_joint.py", line 80, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0241/verify_joint.py", line 40, in main
+    mutated[:2, 2:] *= 2
+    ~~~~~~~^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/matrices/immutable.py", line 69, in __setitem__
+    raise TypeError("Cannot set values of {}".format(self.__class__))
+TypeError: Cannot set values of <class 'sympy.matrices.immutable.ImmutableDenseMatrix'>

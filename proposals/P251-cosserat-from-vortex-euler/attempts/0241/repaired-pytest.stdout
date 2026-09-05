@@ -1,0 +1,86 @@
+..FF.                                                                    [100%]
+=================================== FAILURES ===================================
+_ test_parity_controls_from_actual_angular_transport_and_finite_band_moments[0] _
+
+parity = 0
+
+    @pytest.mark.parametrize('parity', [0, 1])
+    def test_parity_controls_from_actual_angular_transport_and_finite_band_moments(parity):
+        theta, t = s.symbols('theta t', real=True)
+        omega = s.Symbol('omega', positive=True)
+        base = passive_packet(1, omega, theta, t)
+        packet = base.euler_velocity
+        if parity == 0:
+            packet = packet.subs(theta, theta-s.pi/2)
+        observed = s.integrate(s.sin(theta)*packet, (theta, 0, 2*s.pi))/s.pi
+        expected = s.cos(omega*t) if parity == 0 else s.sin(omega*t)
+        assert s.trigsimp(observed-expected) == 0
+        # Finite-width positive band fixtures; exact integrals, not point bands.
+        bands = [(s.Rational(1, 10), s.Rational(1, 8)),
+                 (s.Rational(1, 5), s.Rational(1, 4)),
+                 (s.Rational(3, 10), s.Rational(3, 8))]
+        moments = s.Matrix([[s.integrate(omega**(2*j+parity), (omega, lo, hi))/(hi-lo)
+                             for lo, hi in bands] for j in range(3)])
+        coeff = [s.Rational(2, 3), -1, s.Rational(1, 7)]
+        result = passive_output_weights(moments, coeff, parity=parity)
+        actual = sum(w*s.integrate(expected, (omega, lo, hi))/(hi-lo)
+                     for w, (lo, hi) in zip(result.weights, bands))
+        for j, c in enumerate(coeff):
+            power = 2*j+parity
+>           assert s.simplify(s.limit(s.diff(actual, t, power), t, 0)
+                              -s.factorial(power)*c) == 0
+E           assert 2 == 0
+E            +  where 2 = <function simplify at 0x702dbef6eca0>((0 - (2 * -1)))
+E            +    where <function simplify at 0x702dbef6eca0> = s.simplify
+E            +    and   0 = <function limit at 0x702dbf227f60>(8*(31734932715*Piecewise(((sin(t/10)/100 - sin(t/8)/64 + cos(t/10)/(5*t) - cos(t/8)/(4*t) - 2*sin(t/10)/t**2 + 2*sin(t... + 3*cos(3*t/10)/(5*t) - 3*cos(3*t/8)/(4*t) - 2*sin(3*t/10)/t**2 + 2*sin(3*t/8)/t**2)/t, Ne(t, 0)), (0, True)))/8074143, t, 0)
+E            +      where <function limit at 0x702dbf227f60> = s.limit
+E            +      and   8*(31734932715*Piecewise(((sin(t/10)/100 - sin(t/8)/64 + cos(t/10)/(5*t) - cos(t/8)/(4*t) - 2*sin(t/10)/t**2 + 2*sin(t... + 3*cos(3*t/10)/(5*t) - 3*cos(3*t/8)/(4*t) - 2*sin(3*t/10)/t**2 + 2*sin(3*t/8)/t**2)/t, Ne(t, 0)), (0, True)))/8074143 = <function diff at 0x702dbfd41080>(28208829080*Piecewise((-sin(t/10)/t + sin(t/8)/t, Ne(t, 0)), (1/40, True))/897127 - 23110281016*Piecewise((-sin(t/5)/t...e(t, 0)), (1/20, True))/897127 + 54106969016*Piecewise((-sin(3*t/10)/t + sin(3*t/8)/t, Ne(t, 0)), (3/40, True))/8074143, t, 2)
+E            +        where <function diff at 0x702dbfd41080> = s.diff
+E            +    and   2 = factorial(2)
+E            +      where factorial = s.factorial
+
+tests/test_euler_joint.py:70: AssertionError
+_ test_parity_controls_from_actual_angular_transport_and_finite_band_moments[1] _
+
+parity = 1
+
+    @pytest.mark.parametrize('parity', [0, 1])
+    def test_parity_controls_from_actual_angular_transport_and_finite_band_moments(parity):
+        theta, t = s.symbols('theta t', real=True)
+        omega = s.Symbol('omega', positive=True)
+        base = passive_packet(1, omega, theta, t)
+        packet = base.euler_velocity
+        if parity == 0:
+            packet = packet.subs(theta, theta-s.pi/2)
+        observed = s.integrate(s.sin(theta)*packet, (theta, 0, 2*s.pi))/s.pi
+        expected = s.cos(omega*t) if parity == 0 else s.sin(omega*t)
+        assert s.trigsimp(observed-expected) == 0
+        # Finite-width positive band fixtures; exact integrals, not point bands.
+        bands = [(s.Rational(1, 10), s.Rational(1, 8)),
+                 (s.Rational(1, 5), s.Rational(1, 4)),
+                 (s.Rational(3, 10), s.Rational(3, 8))]
+        moments = s.Matrix([[s.integrate(omega**(2*j+parity), (omega, lo, hi))/(hi-lo)
+                             for lo, hi in bands] for j in range(3)])
+        coeff = [s.Rational(2, 3), -1, s.Rational(1, 7)]
+        result = passive_output_weights(moments, coeff, parity=parity)
+        actual = sum(w*s.integrate(expected, (omega, lo, hi))/(hi-lo)
+                     for w, (lo, hi) in zip(result.weights, bands))
+        for j, c in enumerate(coeff):
+            power = 2*j+parity
+>           assert s.simplify(s.limit(s.diff(actual, t, power), t, 0)
+                              -s.factorial(power)*c) == 0
+E           assert -2/3 == 0
+E            +  where -2/3 = <function simplify at 0x702dbef6eca0>((0 - (1 * 2/3)))
+E            +    where <function simplify at 0x702dbef6eca0> = s.simplify
+E            +    and   0 = <function limit at 0x702dbf227f60>(1580278236800*Piecewise((-sin(t/10)/(10*t) + sin(t/8)/(8*t) - cos(t/10)/t**2 + cos(t/8)/t**2, Ne(t, 0)), (0, True))/11...cewise((-3*sin(3*t/10)/(10*t) + 3*sin(3*t/8)/(8*t) - cos(3*t/10)/t**2 + cos(3*t/8)/t**2, Ne(t, 0)), (0, True))/29779407, t, 0)
+E            +      where <function limit at 0x702dbf227f60> = s.limit
+E            +      and   1580278236800*Piecewise((-sin(t/10)/(10*t) + sin(t/8)/(8*t) - cos(t/10)/t**2 + cos(t/8)/t**2, Ne(t, 0)), (0, True))/11...cewise((-3*sin(3*t/10)/(10*t) + 3*sin(3*t/8)/(8*t) - cos(3*t/10)/t**2 + cos(3*t/8)/t**2, Ne(t, 0)), (0, True))/29779407 = <function diff at 0x702dbfd41080>(1580278236800*Piecewise((cos(t/10)/t - cos(t/8)/t, Ne(t, 0)), (0, True))/1102941 - 641175855680*Piecewise((cos(t/5)/t ..., Ne(t, 0)), (0, True))/1102941 + 2954059871360*Piecewise((cos(3*t/10)/t - cos(3*t/8)/t, Ne(t, 0)), (0, True))/29779407, t, 1)
+E            +        where <function diff at 0x702dbfd41080> = s.diff
+E            +    and   1 = factorial(1)
+E            +      where factorial = s.factorial
+
+tests/test_euler_joint.py:70: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_euler_joint.py::test_parity_controls_from_actual_angular_transport_and_finite_band_moments[0]
+FAILED tests/test_euler_joint.py::test_parity_controls_from_actual_angular_transport_and_finite_band_moments[1]
+2 failed, 3 passed in 4.70s
