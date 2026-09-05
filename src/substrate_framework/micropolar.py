@@ -90,6 +90,23 @@ def micropolar_fourier_stiffness(wave_vector, coefficients):
     return sp.ImmutableMatrix(sp.BlockMatrix([[u, coupling], [coupling, phi]]))
 
 
+def relative_angle_field_map(wave_vector):
+    """Map physical (U,Phi) to (U,q), q=Phi-curl U/2, for exp(i k.x).
+
+    This exact triangular coordinate map is not a microscopic coupling
+    construction. Pull BOTH kinetic and potential forms back with T.H*A*T.
+    Pulling back gradient energy creates third/fourth spatial-order entries;
+    keep them when claiming an exact determinant, rather than only its slow
+    second-order jet. U remains the physical displacement in this map.
+    A subsequent mass normal form may change it and needs its own observable
+    map. Real wave vectors are intended.
+    """
+    k = _matrix(wave_vector, (3, 1))
+    cross = sp.Matrix([[0, -k[2], k[1]], [k[2], 0, -k[0]], [-k[1], k[0], 0]])
+    return sp.ImmutableMatrix(sp.BlockMatrix(
+        [[sp.eye(3), sp.zeros(3)], [-sp.I*cross/2, sp.eye(3)]]))
+
+
 def uniform_phase_average(expression, phases):
     """Exact product-uniform phase integral, one normalized circle per symbol.
 

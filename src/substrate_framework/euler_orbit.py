@@ -184,3 +184,54 @@ def micropolar_kinetic_normal_form(
                                     [0, 1-residual*k*k/(2*j)]])
     corrected = sp.simplify(c+4*alpha*b/rho-4*alpha*residual/j)
     return MicropolarKineticNormalForm(transform, corrected, residual)
+
+
+@dataclass(frozen=True)
+class SchurComplementJet:
+    """Taylor coefficients through k², with no factorial in coefficient two."""
+
+    inverse_momentum: tuple[sp.ImmutableMatrix, ...]
+    reduced: tuple[sp.ImmutableMatrix, ...]
+
+
+def hermitian_schur_jet(momentum, coupling, retained):
+    """Return complete jets of P^-1 and H-N^*P^-1N through k².
+
+    Each argument is a three-matrix sequence in ascending powers of real k.
+    P and H coefficients are Hermitian; N has shape (momentum, retained).
+    P0 is positive definite (undecidable symbolic positivity is a hypothesis).
+    This is exact coefficient algebra, not a proof of input differentiability,
+    locality, microscopic origin, or positivity of the reduced action.
+    """
+    data = [tuple(sp.Matrix(entry) for entry in values)
+            for values in (momentum, coupling, retained)]
+    if any(len(values) != 3 for values in data):
+        raise ValueError("each jet needs three matrix coefficients")
+    p, n, h = data
+    rows, cols = p[0].rows, h[0].rows
+    if (rows == 0 or cols == 0 or any(entry.shape != (rows, rows) for entry in p)
+            or any(entry.shape != (cols, cols) for entry in h)
+            or any(entry.shape != (rows, cols) for entry in n)):
+        raise ValueError("incompatible jet matrix dimensions")
+    if any(value.is_finite is False or value.has(sp.nan, sp.zoo)
+           for matrices in data for entry in matrices for value in entry):
+        raise ValueError("jet matrices must be finite")
+    if any(sp.simplify(entry-entry.conjugate().T) != sp.zeros(entry.rows)
+           for entry in (*p, *h)):
+        raise ValueError("momentum and retained jets must be Hermitian")
+    for size in range(1, rows+1):
+        if sp.simplify(p[0][:size, :size].det()).is_positive is False:
+            raise ValueError("zeroth momentum coefficient must be positive definite")
+    inverse0 = p[0].inv()
+    inverse = [inverse0, -inverse0*p[1]*inverse0,
+               inverse0*p[1]*inverse0*p[1]*inverse0-inverse0*p[2]*inverse0]
+    reduced = []
+    for order in range(3):
+        value = h[order].copy()
+        for left in range(order+1):
+            for middle in range(order-left+1):
+                right = order-left-middle
+                value -= n[left].conjugate().T*inverse[middle]*n[right]
+        reduced.append(sp.ImmutableMatrix(sp.simplify(value)))
+    return SchurComplementJet(tuple(sp.ImmutableMatrix(sp.simplify(value)) for value in inverse),
+                              tuple(reduced))

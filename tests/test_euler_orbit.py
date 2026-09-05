@@ -5,6 +5,7 @@ import sympy as s
 
 from substrate_framework.euler_orbit import (
     affine_cage_rotation_map,
+    hermitian_schur_jet,
     isotropic_axis_gradient,
     micropolar_kinetic_normal_form,
     reduce_euler_rotor_block,
@@ -153,3 +154,27 @@ def test_normal_form_exposes_structure_free_and_helicity_boundaries():
         micropolar_kinetic_normal_form(1, 0, 1, 1, 1, 1, 1, 1)
     with pytest.raises(ValueError, match="helicity"):
         micropolar_kinetic_normal_form(1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+
+def test_full_noncommuting_schur_jet_against_exact_inverse():
+    k = s.Symbol("k", real=True)
+    p = [s.diag(2, 3), s.Matrix([[0, s.I], [-s.I, 0]]), s.Matrix([[1, 1], [1, 2]])]
+    n = [s.Matrix([[1, 2], [0, 1]]), s.I*s.eye(2), s.Matrix([[1, 0], [1, -1]])]
+    h = [s.diag(10, 8), s.Matrix([[0, s.I], [-s.I, 0]]), 5*s.eye(2)]
+    result = hermitian_schur_jet(p, n, h)
+    p_exact = sum((entry*k**i for i, entry in enumerate(p)), s.zeros(2))
+    n_exact = sum((entry*k**i for i, entry in enumerate(n)), s.zeros(2))
+    h_exact = sum((entry*k**i for i, entry in enumerate(h)), s.zeros(2))
+    inverse_exact = p_exact.inv()
+    reduced_exact = h_exact-n_exact.conjugate().T*inverse_exact*n_exact
+    for exact, coefficients in ((inverse_exact, result.inverse_momentum),
+                                 (reduced_exact, result.reduced)):
+        for order, coefficient in enumerate(coefficients):
+            derived = exact.diff(k, order).subs(k, 0)/s.factorial(order)
+            assert s.simplify(derived-coefficient) == s.zeros(2)
+    omitted = -p[0].inv()*p[2]*p[0].inv()
+    assert s.simplify(result.inverse_momentum[2]-omitted) != s.zeros(2)
+    with pytest.raises(ValueError, match="Hermitian"):
+        hermitian_schur_jet([p[0], s.Matrix([[0, 1], [0, 0]]), p[2]], n, h)
+    with pytest.raises(ValueError, match="positive"):
+        hermitian_schur_jet([s.zeros(2), p[1], p[2]], n, h)

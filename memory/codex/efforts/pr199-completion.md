@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T03:00:00+02:00'
+updated: '2026-09-05T02:37:01+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -47,8 +47,10 @@ neither an elastic potential nor its canonical coordinate/kinetic metric.
 Codex owns repair implementation and attempt 0029+. An independent analytic
 worker explores orientation interactions read-only, following AGENTS.md's
 parallel replacement-candidate instruction. Existing attempts stay immutable.
-GitNexus does not index P251 in this worktree; direct consumers are the seven
-proposal verifiers and their new attempt receipts. No accepted API changes yet.
+GitNexus now indexes this worktree as pr199-completion at c9e1c0f; direct rg
+still supplies omitted test/attempt call edges. Direct consumers are the
+seven proposal verifiers and their new attempt receipts. No accepted API
+changes yet.
 
 ## Attempts and Validation
 
@@ -188,6 +190,55 @@ a separately named dynamical closure premise.
 
 No claim promoted; no release change. Full completion and scientific exhaustion
 are both unearned. Review and promotion follow construction, not a green tally.
+
+Checkpoint c9e1c0f is pushed to research/pr199-completion. Its complete suite
+passes 2515 tests; receipt and source tree hash are in 0056/checkpoint-validation.md.
+This is a checkpoint, not the user's completion condition.
+
+0057/0059 now contain the actual normalized stationary Gaussian Euler
+assembly, positive-density EPS good patches, full nonlocal reaction-operator
+reduction, corrected same-field affine shear, and complete second slow jets.
+0060 independently checks the primary source and the Haar-mixture/ergodicity
+distinction. 0062 and0063 are individually reviewed exact noncommuting Schur
+jets and distinct coherence/background removal limits. 0067 supplies the
+canonical physical-relative-angle map with six micropolar tests passing.
+
+The current physical joining failure is explicit: 0066 proves that the
+fully affine-orthogonal relative-angle route's leading optical centroid
+response cancels, even though its second-gradient action has a Cosserat
+normal form. This is a route limitation, not a parent no-go. 0070 now retains
+the Euler rotational KKS moment against the actual local affine rotation,
+aiming at absolute-angle inertia and genuine translation-spin response
+without adding a global rigid rotor. 0069 proves that canceling only three
+translation and five symmetric-tracefree moments still licenses full C2
+slow jets: the retained antisymmetric force moment is a compact curl, and
+the remaining force is a compact double divergence. Seven exact checks pass.
+0065 constructs positive gradient-only cage contributions with the full
+stationary inverse and unchanged kinetic jets. No old five-scalar filament
+formula is inferred from the new explicitly marked ensemble; the issue's
+original declared-ensemble objective remains the parent review boundary.
+
+Further continuation: 0064 and0074 independently establish the completed
+stationary, locality and gradient constructions at their stated scopes.
+0071 replaces optional global-Haar law mixing by a finite sum of twelve
+independent rotated Gaussian Beltrami fields: exact icosahedral spectral
+moments give an isotropic ergodic law with unchanged normalization and full
+local support. Its first verifier run had a rational-vs-integer Groebner
+domain error; the preserved QQ repair passes seven exact checks.
+
+0070 constructed a physical ambient-inclusive angular KKS moment, but its
+mean-action join omitted the induced polar velocity. 0072 restores the
+full mean kinetic cross and one-form, cancelling the apparent new leading
+point-mean coupling and changing the second-gradient reaction operator.
+This is a route-class cancellation, not parent exhaustion. 0073 proves the
+actual material-centroid momentum map, including half-curl spin and shape
+rate (five exact checks). The active route is now0075: a finite material
+partition with physical centroids and complete intrinsic spin, including
+ambient parcels, and/or compact induced velocities. Its object/action
+bridge remains to be constructed. No coordinate rename counts as closure.
+0076 corrects stale EPS manifest scope descriptions from the archived
+Theorem1.1 statements; PDF bytes and previous equation regressions remain
+unchanged. No accepted claim, release or terminal PR refresh has occurred.
 
 ## Cross-References
 

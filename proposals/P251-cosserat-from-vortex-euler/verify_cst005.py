@@ -137,6 +137,24 @@ def check_structure_free_limit(ledger: CheckLedger) -> None:
     )
 
 
+def check_coherence_removal_with_background(ledger: CheckLedger) -> None:
+    fraction = sp.Symbol("coherent_fraction", positive=True)
+    background, a0, c0, j0 = sp.symbols("mu_background a0 c0 j0", positive=True)
+    shear_correction = sp.Symbol("mu_correction", real=True)
+    # The fixed textured Euler background retains its affine shear coefficient.
+    with_background = det_transverse.subs(
+        {mu: background+fraction*shear_correction, alpha: fraction*a0,
+         cs: fraction*c0/2, ca: fraction*c0/2, j: fraction*j0})
+    limit = sp.simplify(sp.limit(with_background/fraction, fraction, 0))
+    target = (rho*w2-background*k**2)*(j0*w2-4*a0-c0*k**2)
+    ledger.check("coherence removal retains the background Navier-Cauchy displacement root",
+                 sp.simplify(limit-target) == 0,
+                 "the finite ratio spin root has zero action weight and is removed")
+    ledger.check("removing the background shear additionally recovers neutral Euler displacement",
+                 sp.simplify((rho*w2-background*k**2).subs(background, 0)-rho*w2) == 0,
+                 "fixed-density empty-fluid limit is distinct from coherence removal")
+
+
 def check_ivp_refinement(ledger: CheckLedger) -> None:
     """Replay a well-conditioned transverse normal mode with SciPy DOP853."""
 
@@ -259,6 +277,7 @@ def main() -> int:
     check_branches_and_limits(ledger)
     check_longitudinal_extension(ledger)
     check_structure_free_limit(ledger)
+    check_coherence_removal_with_background(ledger)
     check_ivp_refinement(ledger)
     check_mutations(ledger)
     return int(ledger.finish())

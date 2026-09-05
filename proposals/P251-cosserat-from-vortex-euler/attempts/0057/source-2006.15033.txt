@@ -1,0 +1,2552 @@
+                                                                    BELTRAMI FIELDS EXHIBIT
+                                                                 KNOTS AND CHAOS ALMOST SURELY
+
+                                                      ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+arXiv:2006.15033v1 [math.SP] 26 Jun 2020
+
+
+
+
+                                                  Abstract. In this paper we show that, with probability 1, a random Beltrami field exhibits
+                                                  chaotic regions that coexist with invariant tori of complicated topologies. The motivation to
+                                                  consider this question, which arises in the study of stationary Euler flows in dimension 3, is
+                                                  V.I. Arnold’s 1965 conjecture that a typical Beltrami field exhibits the same complexity as
+                                                  the restriction to an energy hypersurface of a generic Hamiltonian system with two degrees
+                                                  of freedom. The proof hinges on the obtention of asymptotic bounds for the number of horse-
+                                                  shoes, zeros, and knotted invariant tori and periodic trajectories that a Gaussian random
+                                                  Beltrami field exhibits, which we obtain through a nontrivial extension of the Nazarov–Sodin
+                                                  theory for Gaussian random monochromatic waves and the application of different tools from
+                                                  the theory of dynamical systems, including KAM theory, Melnikov analysis and hyperbolic-
+                                                  ity. Our results hold both in the case of Beltrami fields on R3 and of high-frequency Beltrami
+                                                  fields on the 3-torus.
+
+
+                                                                                     1. Introduction
+
+                                             Beltrami fields, that is, eigenfunctions of the curl operator satisfying
+                                                                                          curl u = λu                                              (1.1)
+                                           on R3 or on the flat torus T3 for some nonzero constant λ, are a classical family of stationary
+                                           solutions to the Euler equation in three dimensions. However, the significance of Beltrami
+                                           fields in the context of ideal fluids in equilibrium was only unveiled by V.I. Arnold in his
+                                           influential work on stationary Euler flows. Indeed, Arnold’s structure theorem [1, 2] ensures
+                                           that, under suitable technical assumptions, a smooth stationary solution to the 3D Euler
+                                           equation is either integrable or a Beltrami field. In the language of fluid mechanics, an
+                                           integrable flow is usually called laminar, so complex dynamics (as expected in Lagrangian
+                                           turbulence) can only appear in a fluid in equilibrium through Beltrami fields. This connection
+                                           between Lagrangian turbulence and Beltrami fields is so direct that physicists have even
+                                           coined the term “Beltramization” to describe the experimentally observed phenomenon that
+                                           the velocity field and its curl (i.e., the vorticity) tend to align in turbulent regions (see
+                                           e.g. [17, 28]).
+                                              Motivated by Hénon’s numerical studies of ABC flows [23], which are the easiest examples
+                                           of Beltrami fields, Arnold conjectured [1, 2] that Beltrami fields exhibit the same complexity
+                                           as the restriction to an energy level of a typical mechanical system with two degrees of
+                                           freedom. To put it differently, a typical Beltrami field should then exhibit chaotic regions
+                                           coexisting with a positive measure set of invariant tori of complicated topology.
+                                              Although specific instances of chaotic ABC flows in the nearly integrable regime have been
+                                           known for a long time [35], the conjecture is wide open. A major step towards the proof of
+                                           this claim was the construction of Beltrami fields on R3 with periodic orbits and invariant
+                                           tori (possibly with homoclinic intersections [11] inside) of arbitrary knotted topology [13, 14].
+                                           In fluid mechanics, these periodic orbits and invariant tori are usually called vortex lines and
+                                           vortex tubes, respectively, and in fact the existence of vortex lines of any topology had also
+                                                                                                1
+2             ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+been conjectured by Arnold in the same papers. These results also hold [16] in the case of
+Beltrami fields on T3 , which, contrary to what happens in the case of R3 , have finite energy;
+this is important for applications because R3 and T3 are the two main settings in which
+mathematical fluid mechanics is studied. The main drawback of the approach we developed
+to prove these results is that, while we managed to construct structurally stable Beltrami
+fields exhibiting complex behavior, the method of proof provides no information whatsoever
+about to what extent complex behavior is typical for Beltrami fields.
+   Our objective in this paper is to establish Arnold’s view of complexity in Beltrami fields.
+To do so, the key new tool is a theory of random Beltrami fields, which we develop here in
+order to estimate the probability that a Beltrami field exhibits certain complex dynamics.
+The blueprint for this is the Nazarov–Sodin theory for Gaussian random monochromatic
+waves, which yields asymptotic laws for the number of connected nodal components of the
+wave. Heuristically, the basic idea is that a Beltrami field satisfying (1.1) can be thought of
+as a vector-valued monochromatic wave; however, the vector-valued nature of the solutions
+and the fact that we aim to control much more sophisticated geometric objects introduces
+essential new difficulties from the very beginning.
+
+1.1. Overview of the Nazarov–Sodin theory for Gaussian random monochromatic
+waves. The Nazarov–Sodin theory [30], whose original motivation was to understand the
+nodal set of random spherical harmonics of large order [29], provides a very efficient tool
+to derive asymptotic laws for the distribution of the zero set of smooth Gaussian functions
+of several variables. The primary examples are various Gaussian ensembles of large-degree
+polynomials on the sphere or on the torus and the restriction to large balls of translation-
+invariant Gaussian functions on Rd . Most useful for our purposes are their asymptotic results
+for Gaussian random monochromatic waves, which are random solutions to the Helmholtz
+equation
+                                         ∆F + F = 0                                      (1.2)
+      d
+on R . We will henceforth restrict ourselves to the case d = 3 for the sake of concreteness.
+   As the Fourier transform of a solution to the Helmholtz equation (1.2) must be supported
+on the sphere of radius 1, the way one constructs random monochromatic waves is the fol-
+lowing [8]. One starts with a real-valued orthonormal basis of the space of square-integrable
+functions on the unit two-dimensional sphere S. Although the choice of basis is immaterial,
+for concreteness we can think of the basis of spherical harmonics, which we denote by Ylm .
+Hence Ylm is an eigenfunction of the spherical Laplacian with eigenvalue l(l + 1), the index l
+is a non-negative integer and m ranges from −l to l. The degeneracy of the eigenvalue l(l + 1)
+is therefore 2l + 1. To consider a Gaussian random monochromatic wave, one now sets
+                                          ∞ X
+                                          X l
+                                ϕ(ξ) :=              il alm Ylm (ξ)                     (1.3a)
+                                          l=0 m=−l
+
+on the unit sphere |ξ| = 1, ξ ∈ R3 , where alm are independent standard Gaussian random
+variables. One then defines F as the Fourier transform of the measure ϕ dσ, where dσ is the
+area measure of the unit sphere. This is tantamount to setting
+                                       ∞   l             J 1 (|x|)
+                                    3 X X                x   l+ 2
+                      F (x) := (2π) 2          alm Ylm            1  .              (1.3b)
+                                                        |x|   |x| 2
+                                      l=0 m=−l
+
+   The central known result concerning the asymptotic distribution of the nodal components
+of Gaussian random monochromatic waves is that, almost surely, the number of connected
+components of the nodal set that are contained in a large ball (and even those of any fixed
+                         BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                3
+
+compact topology) grows asymptotically like the volume of the ball. More precisely, let us
+denote by NF (R) (respectively, NF (R; [Σ])) the number of connected components of the nodal
+set F −1 (0) that are contained in the ball centered at the origin of radius R (respectively,
+and diffeomorphic to Σ). Here Σ is any smooth, closed, orientable surface Σ ⊂ R3 . It is
+obvious from the definition that NF (R; [Σ]) only depends on the diffeomorphism class of the
+surface, [Σ]. The main result of the theory —which is due to Nazarov and Sodin [30] in the
+case of nodal sets of any topology, and to Sarnak and Wigman when the topology of the
+nodal sets is controlled [32]— can then be stated as follows. Here and in what follows, the
+         L1
+symbol −−→ will be used to denote that a certain sequence of random variables converges
+        a.s.
+both almost surely and in mean. Morally speaking, this is a law of large numbers for the
+number of connected components associated with the Gaussian field F .
+Theorem 1.1. Let F be a monochromatic random wave. Then there are positive constants
+ν, ν([Σ]) such that, as R → ∞,
+                         NF (R) L1            NF (R; [Σ]) L1
+                                −−→ ν ,                   −−→ ν([Σ]) .
+                          |BR | a.s.             |BR |     a.s.
+
+Here Σ ⊂ R3 is any compact surface as above.
+1.2. Gaussian random Beltrami fields on R3 . Our goal is then to obtain an extension
+of the Nazarov–Sodin theory that applies to random Beltrami fields. As we will discuss later
+in the Introduction, this is far from trivial because there are essential new difficulties that
+make the analysis of the problem rather involved.
+   The origin of many of these difficulties is strongly geometric. In contrast to the case of
+random monochromatic waves (or any other scalar Gaussian field), where the main geometric
+objects of interest are the components of its nodal set, in the study of random vector fields we
+aim to understand structures of a much subtler geometric nature. Among these structures,
+and in increasing order of complexity, one should certainly consider the following:
+     (i) Zeros, i.e., points where the vector field vanishes.
+    (ii) Periodic orbits, which can be knotted in complicated ways.
+   (iii) Invariant tori , that is, surfaces diffeomorphic to a 2-torus that are invariant under
+         the flow of the field. They can be knotted too.
+   (iv) Compact chaotic invariant sets, which exhibit horseshoe-type dynamics and have, in
+         particular, positive topological entropy.
+Recall that a horseshoe is defined as a compact hyperbolic invariant set on which the time-T
+flow of u is topologically conjugate to a Bernoulli shift [22], for some T . Consequently, let us
+define the following quantities:
+     (i) Nuz (R) denotes the number of zeros of u contained in the ball BR .
+    (ii) Given a (possibly knotted) closed curve γ ⊂ R3 , Nuo (R; [γ]) denotes the number of
+         periodic orbits of u contained in BR that are isotopic to γ.
+   (iii) Given a (possibly knotted) torus T ⊂ R3 , Vut (R; [T ]) is the volume (understood as
+         the inner measure) of the set of ergodic invariant tori of u that are contained in BR
+         and are isotopic to T . Ergodic means that we consider invariant tori on which the
+         orbits of u are dense.
+   (iv) Nuh (R) denotes the number of horseshoes of u contained in the ball BR .
+Clearly, these quantities only depend on the isotopy class of γ and T .
+   It is not hard to believe that these geometric subtleties give rise to a number of analytic
+difficulties. One should mention, however, that there also appear other unexpected analytic
+4              ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+difficulties whose origin is less obvious. They are related to the fact that it is not clear how
+to define a random Beltrami field through an analog of (1.3b). This is because the charac-
+terization of a monochromatic wave as the Fourier transform of a distribution supported on
+a sphere is the conceptual base of the simple definition (1.3a), which underlies the equivalent
+but considerably more awkward expression (1.3b). Heuristically, analytic difficulties stem
+from the fact that there is not such a clean formula in Fourier space for a general Beltrami
+field. This is because the three components of the Beltrami field (which are monochromatic
+waves) are not independent, so the reduction to a Fourier formulation with independent vari-
+ables is not trivial. We refer the reader to Section 3, where we explain in detail how to define
+Gaussian random Beltrami fields in a way that is strongly reminiscent of (1.3b). Later in this
+Introduction we shall also informally discuss the aforementioned difficulties and discuss how
+we manage to circumvent them using a combination of ideas from PDE, dynamical systems
+and probability
+   We can now state our main result for Gaussian random Beltrami fields on R3 , as defined
+in Section 3. Let us emphasize that the picture that emerges from this theorem is fully
+consistent with Arnold’s view of complexity in Beltrami fields; with probability 1, we show
+that a random Beltrami field is “partially integrable” in that there is a large volume of
+invariant tori, and simultaneously features many compact chaotic invariant sets and periodic
+orbits of arbitrarily complex topologies. This coexistence of chaos and order is indeed the
+essential feature of the restriction to an energy hypersurface of a generic Hamiltonian system
+with two degrees of freedom, as Arnold put it. In this direction, Corollary 1.3 below is quite
+illustrative.
+Theorem 1.2. Let u be a Gaussian random Beltrami field. Then:
+     (i) The topological entropy of u is positive almost surely. In fact, with probability 1,
+                                            Nuh (R)
+                                       lim inf      > νh .
+                                     R→∞ |BR |
+
+    (ii) With probability 1, the volume of ergodic invariant tori of u isotopic to a given
+         embedded torus T ⊂ R3 and the number of periodic orbits of u isotopic to a given
+         closed curve γ ⊂ R3 satisfy the volumetric growth estimate
+                     Vut (R; [T ])                        Nuo (R; [γ])
+                lim inf            > ν t ([T ]) ,     lim inf          > ν o ([γ]) .
+                 R→∞     |BR |                        R→∞    |BR |
+The constants ν h , ν t ([T ]) and ν o ([γ]) above are all positive, for any choice of the curve γ and
+the torus T .
+Corollary 1.3. With probability 1, a Gaussian random Beltrami field on R3 exhibits infinitely
+many horseshoes coexisting with an infinite volume of ergodic invariant tori of each isotopy
+type. Moreover, the set of periodic orbits contains all knot types.
+Remark 1.4. The result we prove (see Theorem 6.2) is in fact considerably stronger: we
+do not only prescribe the topology of the periodic orbits and the invariant tori we count,
+but also other important dynamical quantities. Specifically, in the case of periodic orbits
+we have control over the periods (which we can pick in a certain interval (T1 , T2 )) and the
+maximal Lyapunov exponents (which we can also pick in an interval (Λ1 , Λ2 )). In the case
+of the ergodic invariant tori, we can control the associated arithmetic and nondegeneracy
+conditions. Details are provided in Section 6.
+
+  Unlike the case of nodal set components considered in the context of the Nazarov–Sodin
+theory for Gaussian random monochromatic waves, we do not prove exact asymptotics for
+                          BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                  5
+
+the quantities we study, but only nontrivial lower bounds that hold almost surely. Without
+getting technicalities at this stage, let us point out that this is related to analytic difficulties
+arising fron the fact that we are dealing with quantities that are rather geometrically non-
+trivial. If one considers a simpler quantity such as the number of zeros of a Gaussian random
+Beltrami field, one can obtain an asymptotic distribution law similar to that of the nodal
+components of a random monochromatic wave, whose corresponding asymptotic constant can
+even be computed explicitly:
+Theorem 1.5. With probability 1, the number of zeros of a Gaussian random Beltrami field
+satisfies
+                                      Nuz (R) L1 z
+                                              −−→ ν
+                                       |BR | a.s.
+as R → ∞. The constant is explicitly given by
+                             Z
+                     z     z                e
+                    ν := c       |Q(z)| e−Q(z)) dz = 0.00872538 . . . ,           (1.4)
+                                     R5
+                       √
+                                        e are the following homogeneous polynomials in five
+where cz := 215/2 /[143 5 π 4 ], and Q, Q
+variables:
+                  Q(z) := z1 z22 + z23 − z12 z4 − z1 z2 z4 − z32 z4 + 2z2 z3 z5 − z1 z52 ,    (1.5)
+                  e       189 2 42 2                     42
+                  Q(z) :=       z1 + (z2 + z32 ) + (z42 + z1 z4 + z52 ) .                     (1.6)
+                           65         11                 13
+1.3. Random Beltrami fields on the torus. A Beltrami field on the flat 3-torus T3 :=
+(R/2πZ)3 (or, equivalently, on the cube of R3 of side length 2π with periodic boundary
+conditions) is a vector field on T3 satisfying the eigenvalue equation
+                                               curl v = λv
+for some real number λ 6= 0. It is well-known (see e.g. [10]) that the spectrum of the curl
+operator on the 3-torus consists of the numbers of the form λ = ±|k| for some vector with
+integer coefficients k ∈ Z3 . Restricting our attention to the case of positive eigenvalues for the
+sake of concreteness, one can therefore label the eigenvalue by a positive integer L such that
+λL = L1/2 . The multiplicity of the eigenvalue is given by the cardinality of the corresponding
+set of spatial frequencies,
+                                    ZL := {k ∈ Z3 : |k|2 = L} .
+By Legendre’s three-square theorem, ZL is nonempty (and therefore λL is an eigenvalue of
+the curl operator) if and only if L is not of the form 4a (8b + 7) for nonnegative integers a
+and b.
+   The Beltrami fields corresponding to the eigenvalue λL must obviously be of the form
+                                              X
+                                        uL =       VkL eik·x ,
+                                                 k∈ZL
+
+for some vectors VkL ∈ C3 , where VkL = V−kL to ensure that the Beltrami field is real-valued.
+
+Starting from this formula, in Section 7 we define the Gaussian ensemble of random Beltrami
+fields uL of frequency λL , which we parametrize by L. The natural length scale of the problem
+is L1/2 .
+   Our objective is to study to what extent the appearance of the various dynamical objects
+described above (i.e., horseshoes, zeros, and periodic orbits and ergodic invariant tori of
+prescribed topology) is typical in high-frequency Beltrami fields, which corresponds to the
+limit L → ∞. When taking this limit, we shall always assume that the integer L is admissible,
+6             ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+by which we mean that it is congruent with 1, 2, 3, 5 or 6 modulo 8. We will see in Section 7
+(see also [31]) that this number-theoretic condition ensures that the dimension of the space
+of Beltrami fields with eigenvalue λL tends to infinity as L → ∞.
+   To state our main result about high-frequency random Beltrami fields in the torus we
+need to introduce some notation. In parallel with the previous subsection, for any closed
+curve γ and any embedded torus T , let us respectively denote by NuzL , NuhL , NuoL ([γ]) and
+Nut L ([T ]) the number of zeros, horseshoes, periodic orbits isotopic to γ and ergodic invariant
+tori isotopic to T of the field uL , as well as the volume (i.e., inner measure) of these tori,
+which we denote by VutL ([T ]). To further control the distribution of these objects, let us
+define the number of approximately equidistributed ergodic invariant tori, Nut,e   L ([T ]), as the
+                                L
+largest integer m for which u has m ergodic invariant tori isotopic to T that are at a distance
+greater than m−1/3 apart from one another. The number of approximately equidistributed
+horseshoes Nuh,e                                             o,e                  z,e
+                  L , periodic orbits isotopic to a curve NuL ([γ]) and zeros NuL are defined
+analogously. Note that, again, the asymptotic information that we obtain is perfectly aligned
+with Arnold’s view of complex behavior in typical Beltrami fields.
+Theorem 1.6. Let us denote by (uL ) the parametric Gaussian ensemble of random Beltrami
+fields on T3 , where L ranges over the set of admissible integers. Consider any contractible
+closed curve γ and any contractible embedded torus T in T3 . Then:
+     (i) With a probability tending to 1 as L → ∞, the field uL exhibits an arbitrarily large
+         number of approximately distributed horseshoes, zeros, periodic orbits isotopic to γ
+         and ergodic invariant tori isotopic to T . More precisely, for any integer m,
+                         n                                            o
+                   lim P min Nuh,e       t,e         o,e        z,e
+                                    L , NuL ([T ]), NuL ([γ]), NuL  > m = 1.
+                   L→∞
+         Furthermore, the probability that the topological entropy of the field grows at least
+         as L1/2 and that there are infinitely many ergodic invariant tori of uL isotopic to T
+         also tends to 1:
+                          
+                     lim P Nut L ([T ]) = ∞ and htop (uL ) > ν∗h L1/2 = 1 .
+                    L→∞
+
+    (ii) The expected volume of the ergodic invariant tori of uL isotopic to T is uniformly
+         bounded from below, and the expected number of horseshoes and periodic orbits iso-
+         topic to γ is at least of order L3/2 :
+                              (                                )
+                                ENuhL ENuoL ([γ])     t
+                  lim inf min          ,          , EVuL ([T ]) > ν∗ ([γ], [T ]) .
+                   L→∞           L3/2     L3/2
+         In the case of zeros, the asymptotic expectation is explicit, with ν z given by (1.4):
+                                            ENuzL
+                                        lim         = (2π)3 ν z .
+                                       L→∞ L3/2
+
+Here ν∗h and ν∗ ([γ], [T ]) are positive constants.
+Remark 1.7. As in the case of R3 , the result we prove in Section 7 is actually stronger in the
+sense that we have control over important dynamical quantities (which now depend strongly
+on L) describing the flow near the above invariant tori and periodic orbits.
+
+1.4. Some technical remarks. In a way, the cornerstone of the Nazarov–Sodin theory
+is their very clever (and non-probabilistic) “sandwich estimate”, which relates the number
+NF (R) of connected components of the nodal set of the Gaussian random field F that are
+contained in an arbitrarily large ball BR with ergodic averages of the same quantity involving
+                         BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                 7
+
+the number of components contained in balls of fixed radius. Two ingredients are key to
+effectively apply this sandwich estimate. On the one hand, each nodal component cannot be
+too small by the Faber–Krahn inequality, which ensures, in dimension 3, that its volume is at
+least cλ−3 if ∆F + λ2 F = 0. On the other hand, to control the connected components that
+intersect a large ball but are not contained in it, it suffices to employ the Kac–Rice formula
+to derive bounds for the number of critical points of a certain family of Gaussian random
+functions.
+   In the setting of random Beltrami fields, the need for new ideas becomes apparent the
+moment one realizes that there are no reasonable substitutes for these two key ingredients.
+That is, the frequency λ does not provide bounds for the size of the more sophisticated
+geometric objects considered in this context (i.e., periodic orbits, invariant tori or horseshoes),
+and one cannot estimate the objects that intersect a ball but are not contained in it using a
+Kac–Rice formula. As a matter of fact, we have not managed to obtain any useful bounds for
+these quantities and, while we do use a sandwich inequality of sorts (or at least lower bounds
+that can be regarded as a weaker substitute thereof), even the measurability of the various
+objects of interest becomes a nontrivial issue due to their complicated geometric properties.
+   To circumvent these problems, we employ different kinds of techniques. Firstly, ideas from
+the theory of dynamical systems play a substantial role in our proofs. On the one hand,
+KAM theory and hyperbolic dynamics are important to prove that certain carefully chosen
+functionals are lower semicontinuous, which is key to solve measurability issues that would
+be very hard to deal with otherwise. Furthermore, to prove that Beltrami fields exhibit
+chaotic behavior almost surely, it is essential to have at least one example of a Beltrami field
+that features a horseshoe, and even that was not known. Indeed, the available examples of
+non-integrable ABC flows are known to be chaotic on T3 due to the non-contractibility of
+the domain, but not on R3 . This technical point is fundamental, and makes them unsuitable
+for the study of random Beltrami fields. Therefore, an important step in our proof is to
+construct, using Melnikov theory, a Beltrami field on R3 that has a horseshoe. Techniques
+from Fourier analysis and from the global approximation theory for Beltrami fields are also
+necessary to handle the inherent difficulties that stem from the fact that the equation under
+consideration is more complicated than that of a monochromatic wave. As an aside, the only
+point of the paper where we use the Kac–Rice formula is to compute the constant ν z in closed
+form.
+   In the case of Beltrami fields on the torus, the results we prove concern not only the
+expected values of the quantities of interest, but also the probability of events. In the case
+of random monochromatic waves on the torus, Nazarov and Sodin [30] had proved results
+for the expectation (which apply to very general parametric scalar Gaussian ensembles), and
+Rozenshein [31] had derived very precise exponential bounds for the probability akin to those
+established by Nazarov and Sodin [29] for random spherical harmonics. However, both results
+use in a crucial way that the size of nodal components can be effectively estimated in terms of
+the frequency: the Faber–Krahn inequality provides a lower bound for the volume and large
+diameter components can be ruled out using a Crofton-type formula and Bézout’s theorem.
+No such bounds hold in the case of Beltrami fields, so the way we pass from the information
+that the rescaled covariant kernel of uL tends to that of u to asymptotics for the distribution
+of invariant tori, horseshoes or periodic orbits is completely different. Specifically, we rely on
+a direct argument ensuring the weak convergence of sequences of probability measures, on
+spaces of smooth functions, provided that suitable tightness conditions are satisfied.
+
+1.5. Outline of the paper. In Section 2, we start by describing Beltrami fields in R3 from
+the point of view of Fourier analysis and provide some results about global approximation.
+8              ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+Gaussian random Beltrami fields on R3 are introduced in Section 3, where we also establish
+several results about the structure of the corresponding covariance matrix and about the
+induced probability measure on the space of smooth vector fields. In Section 4 we recall, in a
+form that will be useful in later sections, several previous results about ergodic invariant tori
+and periodic orbits arising in Beltrami fields. Section 5 is devoted to constructing a Beltrami
+field on R3 that is stably chaotic. Finally, in Sections 6 and 7 we complete the proofs of our
+main results in the case of R3 and T3 , respectively. The paper concludes with an Appendix
+where we provide a fairly complete Fourier-theoretic characterization of Beltrami fields.
+
+              2. Fourier analysis and approximation of Beltrami fields
+
+    In what follows, we will say that a vector field u on R3 is a Beltrami field if
+                                                curl u = u .
+Taking the curl of this equation and using that necessarily div u = 0, it is easy to see that u
+must also satisfy the Helmholtz equation:
+                                                ∆u + u = 0 .
+To put it differently, the components of this vector field are monochromatic waves. An
+immediate consequence of this is that the Fourier transform u   b of a polynomially bounded
+Beltrami field is a (vector-valued) distribution supported on the unit sphere
+                                       S := {ξ ∈ R3 : |ξ| = 1} .
+Since u is real-valued, u  b must be Hermitian, i.e., ub(ξ) = ub(−ξ). Furthermore, a classical
+result due to Herglotz [26, Theorem 7.1.28] ensures that if u is a Beltrami field with the
+sharp fall off at infinity, then there is a Hermitian vector-valued function f ∈ L2 (S, C3 ) such
+that ub = f dσ; for the benefit of the reader, details on this and other related matters are
+summarized in Appendix A. For short, we shall simply write this relation as u = Uf , with
+                                             Z
+                                   Uf (x) := f (ξ) eiξ·x dσ(ξ) .                             (2.1)
+                                                  S
+Obviously Uf is a Beltrami field if and only if f is Hermitian (which makes Uf real valued)
+and if it satisfies the distributional equation on the sphere
+                                           iξ × f (ξ) = f (ξ) .                              (2.2)
+   In this paper, we are particularly interested in Beltrami fields of the form u = Uf , where
+now f is a general Hermitian vector-valued distribution on the sphere. The corresponding
+integral, which is convergent if f is integrable, must be understood in the sense of distributions
+for less regular f (that is to say, for f in the scale of Sobolev spaces H s (S, C3 ) with s < 0).
+We recall, in particular, that for any integer k ⩾ 0 the field Uf is bounded as [15, Appendix A]
+                                   Z
+                                 1       |Uf (x)|2
+                            sup                 2k
+                                                   dx ⩽ Ckf kH −k (S,C3 ) .                  (2.3)
+                            R>0 R BR 1 + |x|
+We recall that, for any real s, the H s (S) norm of a function f can be computed as
+                                                ∞ X
+                                                X l
+                               kf k2H s (S) =              (l + 1)2s |flm |2 ,
+                                                l=0 m=−l
+where flm are the coefficients of the spherical harmonics expansion of f .
+                               √
+  With q(t) := 81 ( 15
+                    π)
+                       1/2 (1 + 7i t), let us consider the vector-valued polynomial
+
+                           p(ξ) := q(ξ1 ) (ξ12 − 1, ξ1 ξ2 − iξ3 , ξ1 ξ3 + iξ2 ) ,            (2.4)
+                         BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                 9
+
+which we will regard as a Hermitian function p : R3 → C3 . Note that the restriction of p
+to the sphere vanishes exactly at the poles ξ± := (±1, 0, 0). The inessential nonvanishing
+normalization factor q(ξ1 ) has been introduced for later convenience: when we define random
+Beltrami fields via the function p in Section 3, this choice of p will ensure that the associated
+covariance matrix is the identity on the diagonal (see Corollary 3.5).
+   We next show that, away from the poles, the density f of a Beltrami field Uf must point
+in the same direction as p:
+Proposition 2.1. The following statements hold:
+     (i) If the vector field Uf is a Beltrami field, then p×f = 0 as a distribution on S. Further-
+         more, if χ is a smooth real-valued function on the sphere supported in S\{ξ+ , ξ− } and
+         f ∈ H s (S, C3 ) for some real s, then there is a Hermitian scalar function ϕ ∈ H s (S)
+         such that χ f = ϕ p.
+    (ii) Conversely, for any Hermitian ϕ ∈ H s (S), the associated field Uϕp is a Beltrami
+         field.
+
+Proof. In view of Equation (2.2), for each vector ξ ∈ S, consider the linear map Mξ on C3
+defined as
+                                   Mξ V := V − iξ × V .
+More explicitly, Mξ is the matrix
+                                                   
+                                       −1 −iξ3 iξ2
+                                Mξ =  iξ3  −1 −iξ1  .
+                                       −iξ2 iξ1 −1
+The determinant of this matrix is det Mξ = ξ12 + ξ22 + ξ32 − 1, and in fact it is easy to see that
+Mξ has rank 2 for any unit vector ξ. Since Mξ p(ξ) = 0 for all ξ ∈ S and p(ξ) only vanishes
+if ξ = ξ± , we then obtain that the kernel of Mξ is spanned by the vector p(ξ) whenever ξ is
+not one of the poles ξ± . In a neighborhood of the poles, the kernel of Mξ can be described
+as the linear span of pe(ξ) := q(ξ2 ) (ξ1 ξ2 + iξ3 , ξ22 − 1, ξ2 ξ3 − iξ1 ).
+   Since Mξ f (ξ) = 0 in the sense of distributions by (2.2), it stems from the above analysis
+that one can write
+                                           f (ξ) = α(ξ) p(ξ)
+for ξ away from the poles, and
+                                        f (ξ) = β(ξ) pe(ξ)
+in a neighborhood of the poles; here α and β are complex-valued scalars. As p(ξ) × pe(ξ) = 0
+for all ξ ∈ S, we immediately infer that
+                                           p × f = 0.
+Also, as the support of a function is a closed set, p is bounded away from zero on the support
+of χ, so we have that
+                                             f ·p
+                                     ϕ := χ 2 ∈ H s (S) .
+                                             |p|
+As f is Hermitian, this proves the first part of the proposition. The second statement follows
+immediately from the fact that
+                               Mξ [ϕ(ξ)p(ξ)] = ϕ(ξ) Mξ p(ξ) = 0 .
+                                                                                                
+10            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+Remark 2.2.  A Beltrami field of the form Uϕp can be written in terms of the scalar function
+         R iξ·x
+ψ(x) := − S e q(ξ1 ) ϕ(ξ) dσ(ξ) (which satisfies the equation ∆ψ + ψ = 0) as
+                                Uϕp = (curl curl + curl)(ψ, 0, 0) .
+Also, it has the sharp decay bound |Uϕp (x)| ⩽ CkϕkL2 (S) /(1 + |x|).
+Remark 2.3. Not any Beltrami field of the form Uf can be written as Uϕp for some scalar
+function ϕ: an obvious counterexample is given by
+                           f (ξ) := (0, 1, i) δξ+ (ξ) + (0, 1, −i) δξ− (ξ) ,                 (2.5)
+where δξ± is the Dirac measure supported on the pole ξ± = (±1, 0, 0). The reason for which
+we cannot hope to describe all Beltrami fields using just scalar multiples of a fixed complex-
+valued continuous vector field p′ is topological. Indeed, as u is divergence-free, we have that
+ξ · p′ (ξ) = 0, so p′ must be a tangent complex-valued vector field on S. By the hairy ball
+theorem, the real part of p′ must then have at least one zero ξ ∗ . The equation iξ×p′ (ξ) = p′ (ξ)
+implies that the imaginary part of p′ also vanishes at ξ ∗ , so in fact p′ (ξ ∗ ) = 0. This means
+that densities f such as (2.5), where we can take ξ ∗ := ξ+ without any loss of generality,
+cannot be written in the form ϕp′ .
+  Intuitively speaking, Proposition 2.1 means that any Beltrami field Uf whose density f is
+not too concentrated on ξ± can be approximated globally by a field of the form Uϕp . More
+precisely, one can prove the following:
+Proposition 2.4. Consider a Hermitian vector-valued distribution f on S that satisfies the
+distributional equation (2.2), and define
+                            
+                 εf,k := inf kΘf kH −k (S) : Θ ∈ C ∞ (S), Θ(ξ+ ) = Θ(ξ− ) = 1 .
+If εf,k is finite and ε > εf,k , one can then take a Hermitian scalar distribution on the sphere
+ϕ, which is in fact a finite linear combination of spherical harmonics if f ∈ H −k (S, C3 ), such
+that                                 Z
+                                   1      |Uf (x) − Uϕp (x)|2
+                              sup                             dx < Cε .
+                              R>0 R BR         1 + |x|2k
+Furthermore, εf,0 = 0 if f ∈ L2 (S, C3 ).
+
+Proof. The first assertion is a straightforward consequence of the first part of Proposition 2.1
+and of the estimate (2.3). Indeed, since f is a compactly supported distribution, then f ∈
+H s (S, C3 ) for some s. Take any ε′ ∈ (εf,k , ε) and let us consider a function Θ as above such
+that kΘf kH −k (S) < ε′ . Since ε′ > εf,k , it is obvious that we can assume that Θ = 1 in a
+small neighborhood of the poles ξ± . Applying Proposition 2.1 we infer that χf = ϕp with
+χ := 1 − Θ and some Hermitian scalar function ϕ ∈ H s (S). In view of the fact that the map
+f 7→ Uf is linear and of the bound (2.3), we then have
+            Z                                     Z
+         1        |Uf (x) − Uϕp (x)|2          1      |UΘf (x)|2
+    sup                               dx = sup                   dx ⩽ CkΘf kH −k (S,C3 ) < Cε′ .
+    R>0 R BR           1 + |x|2k           R>0 R BR 1 + |x|
+                                                              2k
+
+  As finite linear combinations of spherical harmonics are dense in H s (S), if s = −k we can
+approximate ϕ in the H −k (S) norm by a Hermitian function ϕ′ of this form; then
+         Z
+       1       |Uf (x) − Uϕ′ p (x)|2
+  sup                                dx
+  R>0 R BR          1 + |x|2k
+                                Z                                   Z
+                            1        |Uf (x) − Uϕp (x)|2          1    |U(ϕ′ −ϕ)p (x)|2
+                     ⩽ sup                               dx + sup                       dx < Cε
+                       R>0 R BR           1 + |x|2k           R>0 R BR    1 + |x|2k
+                          BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                               11
+
+provided that kϕ − ϕ′ kH −k (S) < ε − ε′ .
+  Finally, to see that εf,0 = 0 if f ∈ L2 (S, C3 ), let us take a smooth function Θ : R3 → [0, 1]
+supported in the unit ball and such that Θ(0) = 1. Setting
+                             Θn (ξ) := Θ(nξ − nξ+ ) + Θ(nξ − nξ− ) ,
+we trivially get that kΘn f kL2 (S) ⩽ kf kL2 (S) for all n ⩾ 2 and that Θn f tends to zero al-
+most everywhere in S as n → ∞. The dominated convergence theorem then shows that
+kΘn f kL2 (S) → 0 as n → ∞, thus proving the claim.                                         
+
+   Another, rather different in spirit, formulation of the principle that densities of the form ϕp
+can approximate general Beltrami fields is presented in the following theorem. Unlike the
+previous corollary, the approximation is considered only locally in space, and in this direction
+one shows that even considering smooth functions ϕ is enough to obtain a subset of Beltrami
+fields that is dense in the C k compact-open topology:
+Proposition 2.5. Fix any positive reals ε and k and a compact set K ⊂ R3 such that
+R3 \K is connected. Then, given any vector field v satisfying the equation curl v = v in
+an open neighborhood of K, there exists a Hermitian finite linear combination of spherical
+harmonics ϕ such that the Beltrami field Uϕp approximates v in the set K as
+                                       kUϕp − vkC k (K) < ε .
+
+Proof. Let us fix an open set V ⊃ K whose closure is contained in the open neighborhood
+where v is defined, and a large ball BR ⊃ V . Since R3 \K is connected, it is obvious that we
+can take V so that R3 \V is connected as well. By the approximation theorem with decay for
+Beltrami fields [14, Theorem 8.3], there is a Beltrami field w that approximates v as
+                                        kw − vkC k (V ) < ε
+and is bounded as |w(x)| < C/|x|. As the Fourier transform of w is supported on S, Herglotz’s
+theorem [26, Theorem 7.1.28] shows that one can write w = Uf for some vector-valued
+Hermitian field f ∈ L2 (S, C3 ) that satisfies the distributional equation (2.2). Proposition 2.4
+then shows that there exists some Hermitian scalar function ϕ ∈ C ∞ (S) such that
+                                    kUf − Uϕp kL2 (BR ) < Cε ,
+so that kv − Uϕp kL2 (V ) < Cε. As the difference v − Uϕp satisfies the Helmholtz equation
+                                    ∆(v − Uϕp ) + v − Uϕp = 0
+in V , and K ⊂⊂ V , standard elliptic estimates then allow us to promote this bound to
+                                      kv − Uϕp kC k (K) < Cε ,
+as we wished to prove.                                                                          
+
+                           3. Gaussian random Beltrami fields
+
+  The Fourier-theoretical characterization of Beltrami fields presented in the previous section
+paves the way to the definition of random Beltrami fields.
+  In parallel with (1.3a) (see Appendix A for further heuristics), let us start by setting
+                                             ∞ X
+                                             X l
+                                 ϕ(ξ) :=                il alm Ylm (ξ) ,
+                                             l=0 m=−l
+12            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+where alm are normally distributed independent standard Gaussian random variables and Ylm
+is an orthonormal basis of (real-valued) spherical harmonics on S. Note that ϕ is Hermitian
+because of the identity Ylm (−ξ) = (−1)l Ylm (ξ). We now define a Gaussian random Beltrami
+field as
+                                          u := Uϕp ,
+where we recall that Uf and p were respectively defined in (2.1) and (2.4).
+Remark 3.1. As discussed in Proposition 2.1, the role of the vector field p is to ensure that
+the density f := ϕp satisfies the Beltrami equation in Fourier space, iξ × f (ξ) = f (ξ). Hence
+one could replace p(ξ) by any nonvanishing multiple of it, that is, by pe(ξ) := Λ(ξ) p(ξ) where
+Λ : R3 → C is a smooth scalar Hermitian function that does not vanish on S. All the results
+of the paper about random Beltrami fields remain valid if one defines a Gaussian random
+Beltrami field as u := Uϕep with ϕ as above, provided that one replaces p by pe in the formulas.
+Also, the results do not change if one replaces the basis of spherical harmonics by any other
+orthonormal basis of L2 (S), but this choice leads to slightly more explicit formulas for certain
+intermediate objects that appear in the proofs.
+
+   In what follows, we will use the notation D := −i∇. An important role will be played by
+the vector-valued differential operator with real coefficients p(D), whose expression in Fourier
+space is
+                                       \
+                                       p(D)ψ(ξ)         b ,
+                                                 = p(ξ) ψ(ξ)
+                                   3
+for any scalar function ψ in R . Equivalently, by Remark 2.2, the operator p(D) reads, in
+physical space, as
+                             p(D)ψ = −(curl curl + curl)(q(D1 )ψ, 0, 0) ,
+where D1 := −i∂x1 .
+   The first result of this section shows that a Gaussian random Beltrami field is a well defined
+object both in Fourier and physical spaces:
+Proposition 3.2. With probability 1, the function ϕ is in H −1−δ (S)\L2 (S) for any δ > 0.
+In particular, almost surely, u is a C ∞ vector field and can be written as
+                                  ∞    l
+                                                    "      J 1 (|x|) #
+                               3 X X                        x    l+ 2
+                  u(x) = (2π) 2           alm p(D) Ylm                      .         (3.1)
+                                 l=0 m=−l
+                                                           |x|    |x|1/2
+
+The series converges in C k uniformly on compact sets almost surely, for any k.
+
+Proof. For l ⩾ 0 and −l ⩽ m ⩽ l, a2lm are independent, identically distributed random
+variables with expected value 1. As the number of these variables with l ⩽ n is
+                                    n X
+                                    X l
+                                                1 = (n + 1)2 ,
+                                     l=0 m=−l
+the strong law of large numbers ensures that the sample average, i.e., the random variable
+                                                  X X  n    l
+                                            1
+                                 Xn :=                a2lm ,
+                                         (n + 1)2
+                                                   l=0 m=−l
+converges to 1 almost surely as n → ∞. Now consider the truncation
+                                            n X
+                                            X l
+                                ϕn (ξ) :=              il alm Ylm (ξ) .
+                                            l=0 m=−l
+                            BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                                 13
+
+As the spherical harmonics Ylm are orthonormal, the L2 norm of ϕn is
+                                                n X
+                                                X l
+                               kϕn k2L2 (S) =                a2lm = (n + 1)2 Xn ,
+                                                l=0 m=−l
+
+and kϕn k2L2 (S) tends to kϕk2L2 (S) (which may be infinite) as n → ∞. Since Xn → 1 almost
+surely, we obtain from the above formula that (n + 1)−2 kϕn k2L2 (S) tends to 1 almost surely.
+Therefore, ϕ is not in L2 (S) with probability 1.
+  On the other hand, since
+                                                     ∞ X
+                                                     X l
+                                                                     a2lm
+                                    kϕk2H −s (S) =                          ,
+                                                                  (l + 1)2s
+                                                     l=0 m=−l
+it is straightforward to see that the expected value
+                                             X l
+                                             ∞ X                           ∞
+                                                                      X 2l + 1
+                                                           Ea2lm
+                     Ekϕk2H −1−δ (S) =                              =
+                                                        (l + 1)2+2δ    (l + 1)2+2δ
+                                             l=0 m=−l                     l=0
+
+is finite for all δ > 0. Hence ϕ ∈ H −1−δ (S) almost surely, so u := Uϕp is well defined with
+probability 1.
+   To prove the representation formula for u and its convergence, let us begin by noting that
+                                           Z
+                           Uil Ylm p (x) = il p(ξ) Ylm (ξ) eiξ·x dσ(ξ)
+                                             S
+                                               Z
+                                         = p(D) il Ylm (ξ) eiξ·x dσ(ξ) .
+                                                        S
+Using either the theory of point pair invariants and zonal spherical functions [8, Proposition 4]
+or special function identities [15, Proposition 2.1], the Fourier transform of Ylm dσ has been
+shown to be                                                  J 1 (|x|)
+                      Z
+                           l         iξ·x             3      x    l+ 2
+                          i Ylm (ξ) e     dσ(ξ) = (2π) Ylm
+                                                      2                   .
+                        S                                   |x|    |x|1/2
+This permits to formally write u as (3.1). To show that this series converges in C k on compact
+sets, for any large n, any N > n and any fixed positive integer k consider the quantity
+                                 N X   l
+                                                     "       J 1 (|x|) #
+                            X X                                x     l+ 2
+                                               α
+                qn,N (x) :=               alm D p(D) Ylm                        ,
+                                                              |x|     |x|1/2
+                               |α|⩽k l=n m=−l
+
+where we are using the standard multiindex notation. Since p(D) is a third-order operator,
+for all |x| < R we obviously have
+                X l
+                N X                                Jl+ 1 (r)
+                                                        2
+qn,N (x) ⩽ Ck              |alm |kYlm kC k+3 (S)
+                l=n m=−l
+                                                     r 1/2
+                                                                C k+3 ((0,R))
+                                      ! N
+                                         1                                                                          1
+            X l
+            N X
+                            a2lm
+                                         2  l
+                                          X X                                             Jl+ 1 (r) 2                    2
+
+     ⩽ Ck                                    (l + 1)2+2δ kYlm k2 k+3           C   (S)
+                                                                                             2                      
+                        (l + 1)2+2δ                                                        r 1/2
+             l=n m=−l                           l=n m=−l                                            C k+3 ((0,R))
+
+where here r := |x| and we have used the Cauchy–Schwartz inequality to pass to the second
+line. The Sobolev inequality immediately gives
+                           kYlm kC k+3 (S) ⩽ CkYlm kH k+5 (S) ⩽ C(l + 1)k+5 .
+14            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+To estimate the Bessel function, recall the large-degree asymptotics
+                                                  1
+                                                     er ν
+                                  Jν (r) ∼ (2πν)− 2         ,
+                                                      2ν
+which holds as ν → ∞ for uniformly bounded r. As the derivative of a Bessel function can
+be written in terms of Bessel functions via the recurrence relation
+                                d                      ν
+                                   Jν (r) = −Jν+1 (r) + Jν (r) ,
+                                dr                     r
+it follows that the C k+3 norm of Jl+ 1 (r)/r 1/2 tends to 0 exponentially as l → ∞ on compact
+                                       2
+sets:
+                              Jl+ 1 (r)                     
+                                   2
+                                                         CR l−k−3
+                                                    ⩽               .
+                                r 1/2     k+3
+                                                          l
+                                        C       ((0,R))
+
+Since we have proven that
+                                   ∞ X
+                                   X l
+                                                    a2lm
+                                                            <∞
+                                                (l + 1)2+2δ
+                                   l=0 m=−l
+
+almost surely, now one only has to put together the estimates above to see that, almost surely,
+qn,N (x) tends to 0 as n → ∞ uniformly for all N > n and for all x in a compact subset of R3 .
+This establishes the convergence of the series and completes the proof of the proposition. 
+                                                                   x
+Remark 3.3. Note that each summand Uil Ylm p = (2π)3/2 p(D)[Ylm ( |x| )|x|−1/2 Jl+ 1 (|x|)] of
+                                                                                   2
+the series (3.1) is a Beltrami field.
+
+   Since alm are standard Gaussian variables, it is obvious that the vector-valued Gaussian
+field u has zero mean. Our next goal is to compute its covariance kernel, κ, which maps each
+pair of points (x, y) ∈ R3 × R3 to the symmetric 3 × 3 matrix
+
+                                   κ(x, y) := E[u(x) ⊗ u(y)] .                            (3.2)
+
+In particular, we show that this kernel is translationally invariant, meaning that it only
+depends on the difference:
+                                      κ(x, y) = κ(x − y) .
+We recall that, by Bochner’s theorem, there exists a nonnegative-definite matrix-valued mea-
+sure ρ such that κ is the Fourier transform of ρ: this is the spectral measure of the Gaussian
+random field u. In the statement, pj is the j th component of the vector field p.
+
+Proposition 3.4. The components of the covariance kernel of the Gaussian random field u
+are
+                                     κjk (x, y) = κjk (x − y)
+with
+                                            3                 J1/2 (|x|)
+                            κjk (x) := (2π) 2 pj (D)pk (−D)              .
+                                                               |x|1/2
+
+The spectral measure is dρ(ξ) = p(ξ) ⊗ p(ξ) dσ(ξ).
+                              BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                    15
+
+Proof. As alm are independent standard Gaussian variables, E(alm al′ m′ ) = δll′ δmm′ , so the
+covariance matrix is
+κjk (x, y) = E[uj (x)uk (y)] = E[uj (x)uk (y)]
+        X∞ X l  X ∞ X  l′                       Z Z
+                                ′
+     =                      il−l E(alm al′ m′ )     eix·ξ−iy·η pj (ξ) pk (η) Ylm (ξ) Yl′ m′ (η) dσ(ξ) dσ(η)
+        l=0 m=−l l′ =0 m=−l′                       S       S
+
+        ∞ X
+        X l Z Z
+    =                     eix·ξ−iy·η pj (ξ) pk (η) Ylm (ξ) Ylm (η) dσ(ξ) dσ(η) .
+        l=0 m=−l S    S
+
+Here we have used that u and the spherical harmonics Ylm are real-valued. Since Ylm is an
+orthonormal basis, one has that
+          X∞ X  l   Z Z                                         Z
+                         ψ(ξ) φ(η) Ylm (ξ) Ylm (η) dσ(ξ) dσ(η) = ψ(ξ) φ(ξ) dσ(ξ)
+             l=0 m=−l     S   S                                              S
+
+for any functions ψ, φ ∈ L2 (S). Hence we can get rid of the sums in the above formula and
+write
+                                      Z
+                          κjk (x, y) = ei(x−y)·ξ pj (ξ) pk (ξ) dσ(ξ) ,                (3.3)
+                                               S
+which yields the formula for the spectral measure of u. Using now that p is Hermitian (i.e.,
+p(ξ) = p(−ξ)) and a well-known representation formula for the Bessel function J1/2 , the
+above integral can be equivalently written as
+                  Z                                            Z
+                     eix·ξ pj (ξ) pk (ξ) dσ(ξ) = pj (D) pk (−D) eix·ξ dσ(ξ)
+                      S                                                 S
+                                                               3             J1/2 (|x|)
+                                                   = (2π) pj (D) pk (−D)
+                                                               2                        .
+                                                                              |x|1/2
+The proposition then follows.                                                                            
+
+  A straightforward corollary is that the Gaussian random Beltrami field u is normalized so
+that its covariance matrix is the identity on the diagonal:
+Corollary 3.5. For any x ∈ R3 , κ(x, x) = I.
+
+Proof. The formula for the spectral measure computed in Proposition 3.4 implies that
+                                         Z
+                             κjk (x, x) = pj (ξ) pk (ξ) dσ(ξ) .
+                                                       S
+
+RAs pα is a polynomial, the computation then boils down αto evaluating α1 α2 α3
+                                                                                integrals of the form
+  S ξ  dσ(ξ), where   α = (α1 , α2 , α3 ) is a multiindex and  ξ  := ξ   ξ
+                                                                       1 2 3ξ   . These integrals can
+ be computed in closed form [18]:
+               Z               (  Q3           αj +1   |α|+3
+                    α
+                                 2      j=1  Γ(   2 ) /Γ( 2 ) if α1 , α2 , α3 are even,
+                   ξ dσ(ξ) =                                                                     (3.4)
+                 S               0                               otherwise.
+Here Γ denotes the Gamma function.
+  Armed with this formula and taking into account the explicit expression of the polynomial
+p(ξ) (cf. Equation (2.4)), a tedious but straightforward computation shows
+                                  Z
+                                     pj (ξ) pk (ξ) dσ(ξ) = δjk .
+                                         S
+16             ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+The result then follows.                                                                          
+Remark 3.6. The probability density function of the Gaussian random vector u(x) is there-
+                   3    1    2                        R
+fore ρ(y) := (2π)− 2 e− 2 |y| . That is, P{u(x) ∈ Ω} = Ω ρ(y) dy for any x ∈ R3 and any Borel
+subset Ω ⊂ R3 .
+
+  Since the Gaussian field u is of class C ∞ with probability 1 by Proposition 3.2, it is standard
+that it defines a Gaussian probability measure, which we henceforth denote by µu , on the
+space of C k vector fields on R3 , where k is any fixed positive integer. This space is endowed
+with its usual Borel σ-algebra S, which is the minimal σ-algebra containing the “squares”
+               I(x, a, b) := {w ∈ C k (R3 , R3 ) : w(x) ∈ [a1 , b1 ) × [a2 , b2 ) × [a3 , b3 )}
+for all x, a, b, ∈ R3 . To spell out the details, let us denote by Ω the sample space of the random
+variables alm and show that the random field u is a measurable map from Ω to C k (R3 , R3 ).
+Since the σ-algebra of C k (R3 , R3 ) is generated by point evaluations, it suffices to show that
+                                             ∞ X
+                                             X l
+                                    u(x) =              alm Uil Ylm p (x)
+                                             l=0 m=−l
+
+is a measurable function Ω → R3 for each x ∈ R3 . But this is obvious because u(x) is the
+limit of finite linear combinations (with coefficients in R3 ) of the random variables alm , which
+are of course measurable. In what follows, we will not mention the σ-algebra explicitly to
+keep the notation simple. Also, in view of the later applications to invariant tori, we will
+henceforth assume that k ⩾ 4.
+   Following Nazarov and Sodin [30], the next proposition shows that from the facts that
+the covariance kernel κ(x, y) only depends on x − y and that the spectral measure has no
+atoms one can infer two useful properties of our Gaussian probability measure that will be
+extensively employ in the rest of the paper. Before stating the result, let us recall that
+the probability measure µu is said to be translationally invariant if µu (τy A) = µu (A) for
+all A ⊂ S and all y ∈ R3 . Here τy denotes the translation operator on C k fields, defined as
+τy w(x) := w(x + y).
+Proposition 3.7. The probability measure µu is translationally invariant. Furthermore, if Φ
+is an L1 random variable on the probability space (C k (R3 , R3 ), S, µu ) , then
+                                       Z
+                                  lim − Φ ◦ τy dy = EΦ
+                                        R→∞
+                                                BR
+
+both µu -almost surely and in L1 (C k (R3 , R3 ), µu ).
+
+Proof. Since the covariance kernel κ(x, y) only depends on x − y, the probability measure µu
+is translationally invariant. Also, note that (y, w) 7→ τy w defines a continuous map
+                                   R3 × C k (R3 , R3 ) → C k (R3 , R3 ) ,
+so the map (y, w) 7→ Φ(τy w) is measurable on the product space R3 × C k (R3 , R3 ). Wiener’s
+ergodic theorem [30, 5] then ensures that, for Φ as in the statement, there is a random variable
+Φ∗ ∈ L1 (C k (R3 × R3 ), µu ) such that
+                                        Z
+                                                     L1
+                                        − Φ ◦ τy dy −−→ Φ∗
+                                                          a.s.
+                                           BR
+                          BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                                  17
+
+as R → ∞. Furthermore, Φ∗ is translationally invariant (i.e., Φ∗ ◦ τy = Φ∗ for all y ∈ R3
+almost surely) and EΦ∗ = EΦ.
+   Also, as the spectral measure (computed in Proposition 3.4 above) has no atoms, a theorem
+of Grenander, Fomin and Maruyama (see e.g. [30, Appendix B] or [21] and note that the
+proof carries over to the multivariate and vector-valued case) ensures that the action of the
+translations {τy : y ∈ R3 } on the probability space (C k (R3 , R3 ), S, µu ) is ergodic. As the
+measurable function Φ∗ is translationally invariant, one then infers that Φ∗ is constant µu -
+almost surely. As Φ and Φ∗ have the same expectation, then Φ∗ = EΦ almost surely. The
+proposition then follows.                                                                     
+
+   It is clear that the support of the probability measure µu must be contained in the space
+of Beltrami fields. In the last result of this section, we show that the support is in fact the
+whole space. This property will be key in the following sections.
+Proposition 3.8. The support of the Gaussian probability measure µu is the space of Beltrami
+fields. More precisely, let v be a Beltrami field. For any compact set K ⊂ R3 and each ε > 0,
+                                                                 
+                        µu w ∈ C k (R3 , R3 ) : kv − wkC k (K) < ε > 0 .
+
+Proof. By Proposition 2.5, there exists a Hermitian finite linear combination of spherical
+harmonics,
+                                      Xn X l
+                                 ϕ=           il αlm Ylm ,
+                                             l=0 m=−l
+where αlm are real numbers (not random variables), such that kv − Uϕp kC k (K) < ε/4. Hence
+                                                                              
+                                                                            ε
+        µu w ∈ C k (R3 , R3 ) : kw − vkC k (K) < ε ⩾ P ku − Uϕp kC k (K) <         ,
+                                                                             4
+where P denotes the natural Gaussian probability measure on the space of sequences (alm ).
+  Proposition 3.2 shows that the series
+                                          ∞ X
+                                          X l
+                                                     alm Uil Ylm p
+                                          l=0 m=−l
+
+converges in C k (K) almost surely, so for any fixed δ > 0 there exists some number N (which
+one can assume larger than n) such that
+                        X  ∞    X l                             
+                                                                ε
+                     P                  alm Uil Ylm p         <      > 1−δ.
+                                                      C k (K)   8
+                            l=N +1 m=−l
+With the convention that αlm := 0 for l > n, note that
+                        X l
+                        N X                                             ∞
+                                                                        X    l
+                                                                             X
+  ku − Uϕp kC k (K) ⩽              |alm − αlm |kUil Ylm p kC k (K) +                 alm Uil Ylm p             .
+                        l=0 m=−l                                       l=N +1 m=−l                   C k (K)
+
+Therefore, if we set M := 8(N + 1)2 maxl⩽N max−l⩽m⩽l kUil Ylm p kC k (K) , it follows that
+   n                    ε o
+ P ku − Uϕp kC k (K) <
+                         4
+               X                                      Y      n                     ε o
+                     ∞   Xl                                 l
+                                                          N Y
+                                                     ε
+         ⩾P                  alm Uil Ylm p         <           P |alm − αlm | <              ,
+                                           C k (K)   8                                 M
+                  l=N +1 m=−l                                    l=0 m=−l
+18            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+which is strictly positive. The proposition then follows.                                         
+
+
+     4. Preliminaries about hyperbolic periodic orbits and invariant tori
+
+   In this section we construct Beltrami fields that exhibit hyperbolic periodic orbits or a
+positive measure set of ergodic invariant tori of arbitrary topology. Our constructions are
+robust in the sense that these properties hold for any other divergence-free field that is C 4 -
+close to the Beltrami field. Additionally, we recall some basic notions and results about
+periodic orbits and invariant tori that will be useful in the following sections.
+
+4.1. Hyperbolic periodic orbits. We recall that a periodic integral curve, or periodic
+orbit, γ of a vector field u is hyperbolic if all the (possibly complex) eigenvalues λj of the
+monodromy matrix of u at γ have modulus |λj | =      6 1. Since we are interested in divergence-free
+vector fields in dimension 3, in this case the eigenvalues are of the form λ, λ−1 for some real
+λ > 1. The maximal Lyapunov exponent of the periodic orbit γ is defined as Λ := logT λ > 0,
+where T is the period of γ.
+   Given a closed curve γ0 smoothly embedded in R3 , we say that γ has the knot type [γ0 ]
+if γ is isotopic to γ0 . It is well known that the number of knot types is countable. Given a
+set of four positive numbers I = (T1 , T2 , Λ1 , Λ2 ), with 0 < T1 < T2 and 0 < Λ1 < Λ2 , we
+denote by Nuo (R; [γ], I) the number of hyperbolic periodic orbits of a vector field u contained
+in the ball BR , of knot type [γ], whose periods and maximal Lyapunov exponents are in the
+intervals (T1 , T2 ) and (Λ1 , Λ2 ), respectively. Since we have fixed the intervals of the periods
+and Lyapunov exponents, there is a neighborhood of thickness η0 of each periodic orbit (η0
+independent of the orbit) such that no other periodic orbit of this type intersects it. The
+compactness of BR then immediately implies that Nuo (R, [γ], I) is finite, although the total
+number of hyperbolic periodic orbits in BR may be countable.
+   An easy application of the hyperbolic permanence theorem [24, Theorem 1.1] implies that
+the above periodic orbits are robust under C 1 -small perturbations, so that
+                                  Nvo (R; [γ], I) ⩾ Nuo (R; [γ], I)
+for any vector field v that is close enough to u in the C 1 norm. Indeed, if ku − vkC 1 (BR ) < δ,
+then v has a periodic orbit γδ that is isotopic to, and contained in a tubular neighborhood
+of width Cδ of, each periodic orbit γ of u that has the aforementioned properties. Moreover,
+the period and maximal Lyapunov exponent of γδ is also δ-close to that of γ, so choosing δ
+small enough they still lie in the intervals (T1 , T2 ) and (Λ1 , Λ2 ), respectively. Thus we have
+proved the following:
+Proposition 4.1. The functional u 7→ Nuo (R; [γ], I) is lower semicontinuous in the C k com-
+pact open topology for vector fields, for any k ⩾ 1. Furthermore, Nuo (R; [γ], I) < ∞ for any
+C 1 vector field u.
+
+   The following result ensures that, for any fixed knot type [γ] and any quadruple I, there is
+a Beltrami field u for which Nuo (R; [γ], I) ⩾ 1. This result is a consequence of [13, Theorem
+1.1], so we just give a short sketch of the proof.
+Proposition 4.2. Given a closed curve γ0 ⊂ R3 and a set of numbers I as above, there
+exists a Hermitian finite linear combination of spherical harmonics ϕ such that the Beltrami
+field u0 := Uϕp has a hyperbolic periodic orbit γ isotopic to γ0 , whose period and maximal
+Lyapunov exponent lie in the intervals (T1 , T2 ) and (Λ1 , Λ2 ), respectively.
+                         BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                19
+
+Proof. Proceeding as in [13, Section 3, Step 2], after perturbing slightly the curve γ0 to make
+it real analytic (let us also call γ0 the new curve), we construct a narrow strip Σ that contains
+the curve γ0 . Using the same coordinates (z, θ) as introduced in [13, Section 5], we define an
+analytic vector field
+                                             |γ0 |
+                                       w :=        ∇θ − Λ z∇z ,
+                                              T
+where |γ0 | is the length of γ0 and T ∈ (T1 , T2 ), Λ ∈ (Λ1 , Λ2 ). Using the Cauchy–Kovalevskaya
+theorem for Beltrami fields [13, Theorem 3.1], we obtain a Beltrami field v on a neighborhood
+of γ0 such that v|Σ = w. A straightforward computation shows that γ0 is a hyperbolic periodic
+orbit of v of period T and maximal Lyapunov exponent Λ. The result immediately follows
+by applying Proposition 2.5.                                                                    
+Corollary 4.3. There exists R0 > 0 and δ > 0 such that Nwo (R0 ; [γ], I) ⩾ 1 for any vector
+field w such that kw − u0 kC k (BR ) < δ, provided that k ⩾ 1.
+                                 0
+
+
+Proof. Taking R0 large enough so that the periodic orbit γ is contained in BR0 , the result is a
+straightforward consequence of the lower semicontinuity of Nuo (R; [γ], I), cf. Proposition 4.1.
+                                                                                              
+
+4.2. Nondegenerate invariant tori. We recall that an invariant torus T of a vector field u
+is a compact surface diffeomorphic to the 2-torus, smoothly embedded in R3 , and such that,
+the field u is tangent to T and does not vanish on T . In other words, T is invariant under
+the flow of u. Given an embedded torus T0 , we say that T has the knot type [T0 ] if T is
+isotopic to T0 . It is well known that the number of knot types of embedded tori is countable.
+   To study the robustness of the invariant tori of a vector field it is customary to introduce
+two concepts: an arithmetic condition (called Diophantine), which is related to the dynamics
+of u on T , and a nondegeneracy condition (called twist) that is related to the dynamics of u
+in the normal direction to T .
+   We say that the invariant torus T is Diophantine with Diophantine frequency ω if there
+exist global coordinates on the torus (θ1 , θ2 ) ∈ (R/Z)2 such that the restriction of the field u
+to T reads in these coordinates as
+                                      u|T = a eθ1 + b eθ2 ,                                 (4.1)
+for some nonzero real constants a, b, and ω := a/b modulo 1 is a Diophantine number. This
+means that there exist constants c > 0 and ν > 1 such that
+                                            p       c
+                                       ω−      ⩾ ν+1
+                                            m     m
+for any integers p, m with m ⩾ 1. Here eθj (often denoted by ∂θj ) denotes the tangent vector
+in the direction of θj . We recall that the set of Diophantine numbers (with all c > 0 and
+all ν > 1) has full measure. The value of the frequency ω, modulo 1, is independent of the
+choice of coordinates.
+   Let us now introduce the notion of twist, which is more involved. To this end, we parame-
+terize a neighborhood of T with a coordinate system (ρ, θ1 , θ2 ) ∈ (−δ, δ) × (R/Z)2 such that
+T = {ρ = 0} and u|ρ=0 has the form (4.1). Let us now compute the Poincaré map π defined
+by the flow of u on a transverse section Σ ⊂ {θ2 = 0} (which exists if δ is small enough
+because b 6= 0):
+                         π : (−δ′ , δ′ ) × (R/Z) → (−δ, δ) × (R/Z)                          (4.2)
+                                        (ρ, θ1 ) 7→ (π1 (ρ, θ1 ), π2 (ρ, θ1 )) ,            (4.3)
+20             ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+for δ′ < δ. Obviously, π(0, θ1 ) = (0, θ1 + ω). Since u is divergence-free, the map π preserves
+an area form σ on Σ, which one can write in these coordinates as
+                                        σ = F (ρ, θ1 ) dρ ∧ dθ1 ,                                  (4.4)
+for some positive function F . Notice that the area form σ is exact because it can be written
+as σ = dA, where A is the 1-form
+                                                          Z ρ
+                      A := h(ρ, θ1 ) dθ1 ,   h(ρ, θ1 ) :=     F (s, θ1 ) ds ,
+                                                                −δ
+and the map π is also exact in the sense that π ∗ A − A is an exact 1-form. Indeed, the area
+preservation implies that d(π ∗ A − A) = 0; moreover the periodicity of h in θ1 readily implies
+that              Z 1                   Z 1
+                        ∗
+                      (π A − A)|ρ=0 =       (h(0, θ1 + ω) − h(0, θ1 )) dθ1 = 0 ,
+                     0                       0
+so the claim follows from De Rham’s theorem. The exactness of both σ and π is a crucial
+ingredient to apply the KAM theory.
+Remark 4.4. It was shown in [14, Proposition 7.3] that if the Euclidean volume form dx
+reads as H(ρ, θ1 , θ2 ) dρ ∧ dθ1 ∧ dθ2 in coordinates (ρ, θ1 , θ2 ) for some positive function H,
+then the factor F that defines the area form σ is F (ρ, θ1 ) = H(ρ, θ1 , 0)uθ2 (ρ, θ1 , 0), where uθ2
+denotes the θ2 -component of the vector field u.
+
+   The twist of the invariant torus T is then defined as the number
+                                        Z 1
+                                            ∂ρ π2 (0, θ1 )
+                                   τ :=                    dθ1 .                               (4.5)
+                                         0   F (0, θ1 )
+The reason for which we consider this quantity is that it crucially appears in the KAM
+nondegeneracy condition of [20], cf. Ref. [14, Definition 7.5] for this particular case.
+   In the present paper we are interested in the volume of the set of invariant tori of a
+divergence-free vector field u. More precisely, given a quadruple J := (ω1 , ω2 , τ1 , τ2 ), where
+0 < ω1 < ω2 , 0 < τ1 < τ2 , we denote by Vut (R; [T ], J ) the inner measure of the set of
+Diophantine invariant tori of a vector field u contained in the ball BR , of knot type [T ],
+whose frequencies and twists are in the intervals (ω1 , ω2 ) and (τ1 , τ2 ), respectively. One must
+employ the inner measure of this set (as opposed to its usual volume) because this set does
+not need to be measurable. When we speak of the volume of this set, it should always be
+understood in this sense. An efficient way of providing a lower bound for this volume is by
+considering, for each V0 > 0, the number Nut (R; [T ], J , V0 ) of pairwise disjoint (closed) solid
+tori contained in BR whose boundaries are Diophantine invariant tori with parameters in J
+and which contain a set of Diophantine invariant tori with parameters in J of inner measure
+greater that V0 .
+Remark 4.5. The twist defined in Equation (4.5) depends on several choices we made to
+construct the Poincaré map (i.e., the transverse section and the coordinate system). Accord-
+ingly, the functional Vut (R; [T ], J ) has to be understood as the inner measure of the set of
+Diophantine invariant tori whose twists lie in the interval (τ1 , τ2 ) for some choice of (suitably
+bounded) coordinates and sections, and similarly with Nut (R; [T ], J , V0 ). It is well known
+that the property of nonzero twist is independent of the aforementioned choices.
+
+   Since the Poincaré map π that we introduced above is exact, we can apply the KAM
+theorem for divergence-free vector fields [27, Theorem 3.2] to show that the above invariant
+tori are robust for C 4 -small perturbations, so that Vvt (R; [T ], J ) ⩾ Vut (R; [T ], J ) + o(1) and
+Nvt (R; [T ], J , V0 ) ⩾ Nut (R; [T ], J , V0 ) for any divergence-free vector field v that is C 4 -close
+                           BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                   21
+
+to u. Indeed, if ku − vkC 4 (BR ) < δ, then v has a set of Diophantine invariant tori of knot
+type [T ] and of volume
+                               Vvt (R; [T ], J ) ⩾ Vut (R; [T ], J ) − Cδ1/2 .
+Here we have used that the frequency and twist of each of these invariant tori is δ-close
+to those of u, so by choosing δ small enough they lie in the intervals (ω1 , ω2 ) and (τ1 , τ2 ),
+respectively. The argument for Nut (R; [T ], J , V0 ) is analogous. Summing up, we have proved
+the following:
+Proposition 4.6. The functionals u 7→ Nut (R; [T ], J , V0 ) and u 7→ Vut (R; [T ], J ) are lower
+semicontinuous in the C k compact open topology for divergence-free vector fields, for any
+k ⩾ 4.
+
+   We next show that, for any knot type [T ], one can pick a quadruple J and some V0 > 0
+for which there is a Beltrami field u with Nut (R; [T ], J , V0 ) ⩾ 1. This is a straightforward
+consequence of [14, Theorem 1.1] (see also [11, Section 3]), so we just sketch the proof.
+Proposition 4.7. Given an embedded torus T ⊂ R3 , there exists a set of numbers J , V0
+as above, and a Hermitian finite linear combination of spherical harmonics ϕ such that the
+Beltrami field u0 := Uϕp has a set of inner measure greater than V0 > 0 that consists of
+Diophantine invariant tori of knot type [T ] whose frequencies and twists lie in the intervals
+(ω1 , ω2 ) and (τ1 , τ2 ), respectively.
+
+Proof. It follows from [14, Theorem 1.1] that there exists a Beltrami field v that satisfies
+curl v = λv in R3 for some small constant λ > 0, which has a positive measure set of invariant
+tori of knot type [T ]. These tori are Diophantine and have positive twist. It is obvious that the
+field u(x) := v(x/λ) satisfies the equation curl u = u in R3 , and still has a set of Diophantine
+invariant tori of knot type [T ] of measure bigger than some constant V0 , and positive twist.
+The result follows taking the intervals (ω1 , ω2 ) and (τ1 , τ2 ) in the definition of J , so that
+they contain the frequencies and twists of these tori of u, and applying Proposition 2.5 to
+approximate u by a Beltrami field Uϕp in a large ball containing the aforementioned set of
+invariant tori.                                                                                 
+Corollary 4.8. Take J and V0 as in Proposition 4.7. There exists R0 > 0 and δ > 0 such
+that Nwt (R0 ; [T ], J , V0 ) ⩾ 1 and Vwt (R0 ; [T ], J ) > V0 /2 for any divergence-free vector field w
+such that kw − u0 kC k (BR ) < δ, provided that k ⩾ 4.
+                           0
+
+
+Proof. Taking R0 large enough so that the aforementioned set of invariant tori of u0 is con-
+tained in BR0 , the result is a straightforward consequence of the lower semicontinuity of
+Nut (R; [T ], J , V0 ) and Vut (R; [T ], J ), cf. Proposition 4.6.                        
+
+                   5. A Beltrami field on R3 that is stably chaotic
+
+   Our objective in this section is to construct a Beltrami field u in R3 that exhibits a
+horseshoe, that is, a compact (normally) hyperbolic invariant set on which the time-T flow of
+u (or of a suitable reparametrization thereof) is topologically conjugate to a Bernoulli shift.
+It is standard that a horseshoe of a three-dimensional flow is a connected branched surface,
+and that the existence of a horseshoe is stable in the sense that any other field that is C 1 -close
+to u has a horseshoe too [22, Theorem 5.1.2]. Moreover, the existence of a horseshoe implies
+that the field has positive topological entropy; recall that the topological entropy of the field,
+which we denote as htop (u), is defined as the entropy of its time-1 flow. Summarizing, we
+22            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+have the following result for the number of (pairwise disjoint) horseshoes of u contained in
+BR , Nuh (R):
+Proposition 5.1. The functional u 7→ Nuh (R) is lower semicontinuous in the C k compact
+open topology for vector fields, for any k ⩾ 1. Moreover, if u has a horseshoe, its topological
+entropy is positive.
+
+   In short, the basic idea to construct a Beltrami field with a horseshoe, is to construct
+first “an integrable” Beltrami field having a heteroclinic cycle between two hyperbolic pe-
+riodic orbits, which we subsequently perturb within the Beltrami class to produce a trans-
+verse heteroclinic intersection. By the Birkhoff–Smale theorem, this ensures the existence of
+horseshoe-type dynamics.
+Proposition 5.2. There exists a Hermitian finite linear combination of spherical harmon-
+ics ϕ such that the Beltrami field u0 := Uϕp exhibits a horseshoe. In other words, Nuh0 (R0 ) ⩾ 1
+for all large enough R0 > 0.
+
+Proof. Let us take cylindrical coordinates (z, r, θ) ∈ R × R+ × T, with T := R/2πZ, defined
+as
+                          z := x3 ,    (r cos θ, r sin θ) := (x1 , x2 ) .
+We now consider the axisymmetric vector field v in R3 given by
+                               1                      ψ 
+                          v :=    ∂r ψ Ez − ∂z ψ Er + Eθ .                                  (5.1)
+                               r                       r
+Here
+                                 ψ := cos z + 3rJ1 (r)
+with J1 being the Bessel function of the first kind and order 1, and the vector fields
+                                            1
+               Ez := (0, 0, 1) ,    Er := (x1 , x2 , 0) ,  Eθ := (−x2 , x1 , 0) ,
+                                            r
+which are often denoted by ∂z , ∂r , ∂θ in the dynamical systems literature, have been chosen
+so that
+                  Ez · ∇φ = ∂z φ ,       Er · ∇φ = ∂r φ ,   Eθ · ∇φ = ∂θ φ
+for any function φ. Notice that v · ∇ψ = 0, so the scalar function ψ is a first integral of v.
+This means that the trajectories of the field v are tangent to the level sets of ψ.
+   The vector field v is not defined on the z-axis, so we shall consider the domain in Euclidean
+3-space
+                               Ω := {(z, r, θ) : (z, r) ∈ D , θ ∈ T} ,
+where D is the domain in the (z, r)-plane given by
+                                                            
+                                                    9     18
+                      D := (z, r) : −10 < z < 10,     <r<      .
+                                                   10     5
+The reason for choosing this particular domain of R3 will become clear later in the proof; for
+the time being, let us just note that ψ(z, r) > 0 if (z, r) ∈ D.
+  Also, observe that, away from the axis r = 0, the vector field v is smooth and satisfies the
+Beltrami field equation curl v = v.
+  We claim that, in Ω, v has two hyperbolic periodic orbits joined by a heteroclinic cycle.
+Indeed, noticing that
+                               (∂z ψ, ∂r ψ) = (− sin z, 3rJ0 (r)) ,
+                          BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                 23
+
+where we have used the identity ∂r [rJ1 (r)] = rJ0 (r), it follows that the points p± :=
+(±π, j0,1 ) ∈ D are critical points of ψ. Here j0,1 = 2.4048 . . . is the first zero of the Bessel
+function J0 . Plugging this fact in Equation (5.1), this implies that, on the circles in 3-space
+                              γ± := {(z, r, θ) : (z, r) = p± , θ ∈ T} ,
+the field v takes the form
+                                                       c0
+                                        v(p± , θ) =    2 Eθ
+                                                      j0,1
+with c0 := 3j0,1 J1 (j0,1 ) − 1 > 0. Therefore, we conclude that the circles γ± are periodic orbits
+of v contained in Ω.
+   It is standard that the stability of these periodic orbits can be analyzed using the associated
+normal variational equation. Denoting by (vz , vr , vθ ) the components of the field v in the basis
+{Ez , Er , Eθ }, this is the linear ODE
+                                               η̇ = Aη ,
+where η takes values in R2 and A is the constant matrix
+                                                                    
+                          ∂(vz , vr )             0     3J0′ (j0,1 )
+                     A :=                  =                           .
+                           ∂(z, r) (z,r)=p      −1/j0,1      0
+                                             ±
+
+The Lyapunov exponents of the periodic orbit γ± are the eigenvalues of the matrix A. There-
+fore, since J0′ (j0,1 ) < 0, these periodic orbits have a positive and a negative Lyapunov expo-
+nent, so they are hyperbolic periodic orbits of saddle type.
+   Since ψ is a first integral of v and ψ(p± ) = c0 , the set
+                                     {(z, r, θ) : ψ(z, r) = c0 }
+is an invariant singular surface of the vector field v. This set contains two regular surfaces Γ1
+and Γ2 diffeomorphic to a cylinder. We label them so Γ1 is contained in the half space {r ⩽
+j0,1 } and Γ2 in {r ⩾ j0,1 }. The boundaries of these cylinders are the periodic orbits γ± . The
+surface Γ1 is the stable manifold of γ+ that coincides with an unstable manifold of γ− , while
+Γ2 is the unstable manifold of γ+ that coincides with a stable manifold of γ− . Hence the
+union Γ1 ∪ Γ2 of both cylinders then form an heteroclinic cycle between the periodic orbits γ+
+and γ− , and one can see that it is contained in Ω.
+   Let us now perturb the Beltrami field v in Ω by adding a vector field w (to be fixed later)
+that also satisfies the Beltrami field equation curl w = w. Our goal is to break the heteroclinic
+cycle Γ1 ∪ Γ2 in order to produce transverse intersections of the stable and unstable manifolds
+of γ+ ε and γ ε , where γ ε denote the hyperbolic periodic orbits of the perturbed vector field
+             −           ±
+                                                                             
+                              ∂r ψ                  ∂z ψ                 ψ
+          X := v + εw =            + εwz Ez + −          + εwr Er +         + εwθ Eθ .
+                               r                      r                  r2
+As before, (wz , wr , wθ ) denote the components of the vector field w in the basis {Ez , Er , Eθ },
+which are functions of all three cylindrical coordinates (z, r, θ). If ε > 0 is small enough,
+the θ-component of X is positive on the domain Ω, so we can divide X by the factor Xθ :=
+ ψ
+r2
+   + εwθ > 0 to obtain another vector field Y that has the same integral curves up to a
+reparametrization:
+                          X    r∂r ψ + εr 2 wz      −r∂z ψ + εr 2 wr
+                   Y :=      =                 Ez +                  Er + Eθ .                (5.2)
+                          Xθ    ψ + εr 2 wθ           ψ + εr 2 wθ
+   Substituting the expression of ψ(z, r) and expanding in the small parameter ε, the analysis
+of the integral curves of Y reduces to that of the following non-autonomous system of ODEs
+24             ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+in the planar domain D:
+                                    2                                      
+               dz   3r 2 J0 (r)      r wz (z, r, t) 3r 4 J0 (r)wθ (z, r, t)
+                  =             +ε                  −                         + O(ε2 ) ,        (5.3)
+               dt    ψ(z, r)           ψ(z, r)             ψ(z, r)2
+                                  2                                     
+               dr   r sin z        r wr (z, r, t) r 3 sin z wθ (z, r, t)
+                  =           +ε                  −                        + O(ε2 ) .           (5.4)
+               dt   ψ(z, r)           ψ(z, r)           ψ(z, r)2
+Notice that the dependence on t is 2π-periodic, and that we have replaced θ by t in the
+function wz (z, r, θ) (and similarly wr , wθ ) because the θ-component of the vector field Y is 1.
+When ε = 0, one has
+                                                 3r 2 J0 (r)
+                                            ż =             ,                                  (5.5)
+                                                  ψ(z, r)
+                                                 r sin z
+                                            ṙ =           .                                    (5.6)
+                                                 ψ(z, r)
+Hence the unperturbed system is Hamiltonian with symplectic form ω := r −1 dz ∧ dr and
+Hamiltonian function H(z, r) := log ψ(z, r). The periodic orbits γ± of v and their heteroclinic
+cycle Γ1 ∪ Γ2 correspond to the (hyperbolic) fixed points p± of the unperturbed system joined
+by two heteroclinic connections Γ e k := Γk ∩ {θ = 0}, k = 1, 2. These are precisely the two
+pieces of the level curve {H(z, r) = log c0 } that are contained in D. Let us denote by
+                                 γk (t) = (Zk (t; 0, rk ), Rk (t; 0, rk ))
+the integral curves of the separatrices that solve Equations (5.5)-(5.6) with initial conditions
+           e k . Of course, the closure of the set {γk (t) : t ∈ R} is Γ
+(0, rk ) ∈ Γ                                                           ek , and the stability analysis
+of the periodic integral curves γ± readily implies that limt→±(−1)k+1 ∞ γk (t) = p± .
+   By the implicit function theorem, the perturbed system (5.3)-(5.4) has exactly two hy-
+perbolic fixed points pε± ∈ D so that pε± → p± as ε → 0. The technical tool to prove that
+the unstable (resp. stable) manifold of pε+ and the stable (resp. unstable) manifold of pε−
+intersect transversely when ε > 0 is small is the Melnikov function. We define the vector
+fields Y0 , Y1 , respectively, as the unperturbed system and the first order in ε perturbation,
+i.e.,
+                     3r 2 J0 (r)        r sin z
+               Y0 :=             Ez +           Er ,
+                      ψ(z, r)          ψ(z, r)
+                      2                                2                    
+                        r wz       3r 4 J0 (r)wθ          r wr     r 3 sin zwθ
+               Y1 :=             −                 Ez +          −               Er .
+                       ψ(z, r)       ψ(z, r)2            ψ(z, r)    ψ(z, r)2
+Since the unperturbed system is Hamiltonian, we can apply Lemma 5.4 below (which is a
+variation on known results in Melnikov theory) to conclude that if the Melnikov functions
+                                        Z ∞
+                            Mk (t0 ) :=     ω(Y0 , Y1 )|γk (t−t0 ) dt ,                (5.7)
+                                              −∞
+have simple zeros for each k = 1, 2, then the aforementioned transverse intersections exist, and
+that actually the heteroclinic connections intersect at infinitely many points. The integrand
+ω(Y0 , Y1 ) denotes the action of the symplectic 2-form ω on the vector fields Y0 , Y1 , evaluated
+on the integral curve γk (t − t0 ). It is standard that the improper integral in the definition
+of the Melnikov functions is absolutely convergent because of the hyperbolicity of the fixed
+points joined by the separatrices (see e.g. [22, Section 4.5]). Also notice that although [22,
+Section 4.5] concerns transverse intersections of homoclinic connections, the analysis applies
+verbatim to transverse intersections of heteroclinic connections.
+                           BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                    25
+
+ More explicitly, the Melnikov functions are given by
+             Z
+           1 ∞                                                                                    
+Mk (t0 ) = 2     Rk (t)2 wz (Zk (t), Rk (t), t) sin Zk (t)−3Rk (t)J0 (Rk (t))wr (Zk (t), Rk (t), t) dt ,
+          c0 −∞
+where Rk (t) ≡ Rk (t; 0, rk ) and Zk (t) ≡ Zk (t; 0, rk ). It is well known that the existence of
+transverse intersections is independent of the choice of initial condition.
+   To analyze these Melnikov integrals, let us now choose the particular perturbation
+                                               J1 (r)           J ′ (r) sin θ
+                       w = J1 (r) sin θ Ez +          cos θ Er − 1            Eθ .                 (5.8)
+                                                 r                    r
+It is easy to check that curl w = w in R3 ; in fact w = (curl curl + curl)(J0 (r), 0, 0) (or, to
+put it differently, w = Uϕ′ q(ξ1 )−1 p , where the distribution ϕ′ on the sphere S is the Lebesgue
+measure of the equator, normalized to unit mass). With this choice, the Melnikov functions
+take the form
+                Z ∞
+                                                                                                     
+ c20 Mk (t0 ) =     Rk (t)2 J1 (Rk (t)) sin Zk (t) sin(t + t0 ) − 3J0 (Rk (t))J1 (Rk (t)) cos(t + t0 ) dt
+                −∞
+            =: ak sin t0 + bk cos t0 ,
+where the constants ak , bk are given by the integrals
+               Z ∞
+                                                                                      
+         ak =      Rk (t)2 J1 (Rk (t)) sin Zk (t) cos t + 3J0 (Rk (t))J1 (Rk (t)) sin t dt ,
+               Z−∞
+                 ∞                                                                    
+          bk =     Rk (t)2 J1 (Rk (t)) sin Zk (t) sin t − 3J0 (Rk (t))J1 (Rk (t)) cos t dt .
+                  −∞
+
+Since the Hamiltonian function has the symmetry H(−z, r) = H(z, r), it follows that Rk (t) =
+Rk (−t) and Zk (t) = −Zk (−t). This immediately yields that a1 = a2 = 0. Moreover, it is not
+hard to compute the constants b1 and b2 numerically:
+                                   b1 = 3.5508 . . . ,   b2 = 0.2497 . . .
+
+   Therefore, the function Mk (t0 ) = bk cos t0 is a nonzero multiple of the cosine, so it obviously
+has exactly two zeros in the interval [0, 2π), which are nondegenerate. It then follows from
+Lemma 5.4 below that the two heteroclinic connections joining pε± intersect transversely.
+In turn, this implies [33, Theorem 26.1.3] that each hyperbolic fixed point pε± has transverse
+homoclinic intersections, so by the Birkhoff–Smale theorem [22, Theorem 5.3.5] the perturbed
+system (5.3)-(5.4) (with w given by Equation (5.8)) has a compact hyperbolic invariant set
+on which the dynamics is topologically conjugate to a Bernoulli shift. This set is contained in
+a neighborhood of the heteroclinic cycle Γ e1 ∪ Γe 2 , and hence in the planar domain D where the
+system is defined. This immediately implies that the vector field Y defined in Equation (5.2),
+which is the suspension of the non-autonomous planar system (5.3), has a compact normally
+hyperbolic invariant set K on which its time-T flow is topologically conjugate to a Bernoulli
+shift, where T := 2πN for some positive integer N > 0. The invariant set K is contained
+in Ω because it lies in a small neighborhood of the invariant set Γ1 ∪ Γ2 . Since the integral
+curves of X and Y are the same, up to a reparametrization, K is also a chaotic invariant set
+of the Beltrami field X in Ω.
+   Finally, since R3 \Ω is connected, and of course the vector field X satisfies the Beltrami
+equation in an open neighborhood of Ω, for each δ > 0, Proposition 2.5 shows that there is
+a Hermitian finite linear combination of spherical harmonics ϕ such that
+                                         kX − Uϕp kC 1 (Ω) < δ .
+26            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+If δ is small enough, the stability of transverse intersections implies that the Beltrami field
+Uϕp has a compact chaotic invariant set Kδ in a small neighborhood of K on which a suitable
+reparametrization of its time-T flow is conjugate to a Bernoulli shift, so the proposition
+follows.                                                                                     
+Corollary 5.3. There exists R0 > 0 and δ > 0 such that Nwh (R0 ) ⩾ 1 for any vector field w
+such that kw − u0 kC k (BR ) < δ, provided that k ⩾ 1.
+                          0
+
+
+Proof. Taking R0 so that the horseshoe of u0 is contained in BR0 , the result is a straightfor-
+ward consequence of the lower semicontinuity of Nuh (R), cf. Proposition 5.1.                
+
+   To conclude, the following lemma gives the formula for the Melnikov function that we
+employed in the proof of Proposition 5.2 above. This is an expression for the Melnikov
+function of perturbations of a planar system that is Hamiltonian with respect to an arbitrary
+symplectic form. This is a minor generalization of the well-known formulas [22, Theorem
+4.5.3] and [25, Equation (23)], which assume that the symplectic form is the standard one.
+Lemma 5.4. Let Y0 be a smooth Hamiltonian vector field defined on a domain D ⊂ R2 with
+Hamiltonian function H and symplectic form ω. Assume that this system has two hyperbolic
+                                                     e Take a smooth non-autonomous planar
+fixed points p± joined by a heteroclinic connection Γ.
+field Y1 , which we assume 2π-periodic in time, and consider the perturbed system Y0 + εY1 +
+O(ε2 ). Then the simple zeros of the Melnikov function
+                                        Z ∞
+                             M (t0 ) :=     ω(Y0 , Y1 )|γ(t−t0 ;p0 ) dt ,
+                                         −∞
+where the integrand is evaluated at the integral curve γ(t − t0 ; p0 ) of Y0 parametrizing the
+           e give rise to a transverse heteroclinic intersection of the perturbed system, for
+separatrix Γ,
+any small enough ε.
+
+Proof. If ε is small enough, the perturbed system has two hyperbolic fixed points pε± . To
+analyze how the heteroclinic connection is perturbed, we take a point p0 ∈ Γ     e and we compute
+the so-called displacement (or distance) function ∆(t0 ) on a section Σ based at p0 and trans-
+         e Recall that the function ε∆(t0 ) gives the distance of the splitting, up to order
+verse to Γ.
+     2
+O(ε ), between the corresponding stable and unstable manifolds of the perturbed system at
+the section Σ.
+   A standard analysis, cf. [25, Equation (22)] or the proof of [22, Theorem 4.5.3], yields the
+following formula for ∆(t0 ):
+                           Z ∞                                    R t−t0
+                     1
+       ∆(t0 ) =                Y1 (γ(t − t0 )) × Y0 (γ(t − t0 ))e− 0 Tr DY0 (γ(s)) ds dt ,   (5.9)
+                 |Y0 (p0 )| −∞
+where we have omitted the dependence of the integral curve on the initial condition p0 ∈ Γ.  e
+                                                                               2
+Here we are using the notation X × Y := X1 Y2 − X2 Y1 for vectors X, Y ∈ R and Tr DY0 is
+the trace of the Jacobian matrix of the unperturbed field Y0 .
+  Take coordinates in D, which we will call (z, r) just as in the proof of Proposition 5.2, and
+write the symplectic form as ω = ρ(z, r) dz ∧ dr, where ρ(z, r) is a smooth function that does
+not vanish. Let us call here {ez , er } the basis of vector fields dual to {dz, dr} (which are
+usually denoted by ∂z and ∂r , as they correspond to the partial derivatives with respect to
+the coordinates z and r). The Hamiltonian field Y0 reads in these coordinates as
+                                        1                    
+                              Y0 =           ∂r H ez − ∂z H er .
+                                     ρ(z, r)
+                         BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                           27
+
+Noting that
+                                                                     ω(Y0 , Y1 )|γ(t−t0 )
+                       Y1 (γ(t − t0 )) × Y0 (γ(t − t0 )) =
+                                                                       ρ(γ(t − t0 ))
+and
+                     R t−t0                        R t−t0
+                  e− 0        Tr DY0 (γ(s)) ds
+                                                 =e 0       Y0 (γ(s))·∇ log ρ(γ(s)) ds
+                                                                                                       (5.10)
+                                                   R t−t0 d log ρ(γ(s))            ρ(γ(t − t0 ))
+                                                                          ds
+                                                 =e 0           ds             =                 ,     (5.11)
+                                                                                      ρ(p0 )
+Equation (5.9) implies that
+                                                         M (t0 )
+                                         ∆(t0 ) =                     ,
+                                                     |Y0 (p0 )|ρ(p0 )
+so the claim follows because M (t0 ) coincides with the displacement function up to a constant
+proportionality factor.                                                                     
+
+                 6. Asymptotics for random Beltrami fields on R3
+
+   We are now ready to prove our main results about random Beltrami fields on R3 , Theo-
+rems 1.2 and 1.5. To do this, as we saw in the two previous sections, we need to handle sets
+that have a rather geometrically complicated structure, which gives rise to several measura-
+bility issues. For this reason, we start this section by proving a version of the Nazarov–Sodin
+sandwich estimate [30, Lemma 1] that circumvents some of these issues and which is suitable
+for our purposes.
+
+6.1. A sandwich estimate for sets of points and for arbitrary closed sets. For any
+subset Γ ⊂ R3 , we denote by N (x, r; Γ) the number of connected components of Γ that are
+contained in the ball Br (x). Also, if X := {xj : j ∈ J }, where xj ∈ R3 , is a countable set of
+points (which is not necessarily a closed subset of R3 ), then we define
+                                      N (x, r; X ) := #[X ∩ Br (x)]
+as the number of points of X contained in the open ball Br (x). For the ease of notation, we
+will write N (r; Γ) := N (0, r; Γ) and similarly N (r; X ). We remark that these numbers may
+be infinite.
+Lemma 6.1. Let Γ be any subset of R3 whose connected components are all closed and let
+X := {xj : j ∈ J }, with xj ∈ R3 , be a countable set of points of R3 . Then the functions
+N (·, r; X ) and N (·, r; Γ) are measurable, and for any 0 < r < R one has
+                    Z                                      Z
+                             N (y, r; X )                        N (y, r; X )
+                                          dy ⩽ N (R; X ) ⩽                    dy ,
+                       BR−r     |B r |                      BR+r    |Br |
+                      Z
+                              N (y, r; Γ)
+                                          dy ⩽ N (R; Γ) .
+                        BR−r     |Br |
+
+Proof. Let us start by noticing that
+                                                                               X
+                   N (y, r; X ) = #{j ∈ J : xj ∈ B(y, r)} =                          1Br (xj ) (y) .
+                                                                               j∈J
+
+As the ball Br (x) is an open set, it is clear that 1Br (x) (·) is a lower semicontinuous func-
+tion. Recall that lower semicontinuity is preserved under sums, and that the supremum of
+28            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+an arbitrary set (not necessarily countable) of lower semicontinuous functions is also lower
+semicontinuous. Therefore, from the formula
+                                                           X
+                                   N (·, r; X ) = sup            1Br (xj ) (·) ,
+                                                     J ′ j∈J ′
+
+
+where J ′ ranges over all finite subsets of J , we deduce that the function N (·, r; X ) is lower
+semicontinuous, and therefore measurable.
+  Now let JR := {j ∈ J : xj ∈ BR } and note that
+
+                                                   X Z
+                           |Br |N (R; X ) =                       1Br (xj ) (y) dy .
+                                                   j∈JR    BR+r
+
+
+As we can interchange the sum and the integral by the monotone convergence theorem and
+                        X                        X
+                               1Br (xj ) (y) ⩽         1Br (xj ) (y) = N (y, r; X ) ,
+                        j∈JR                     j∈J
+
+
+one immediately obtains the upper bound for N (R; X ). Likewise, using now that
+
+                                    X Z
+               |Br |N (R; X ) =                    1Br (xj ) (y) dy
+                                   j∈JR     BR+r
+                                    X Z
+                               ⩾                   1Br (xj ) (y) dy
+                                   j∈JR     BR−r
+                                   XZ                                   Z
+                               =                 1Br (xj ) (y) dy =                N (y, r; X ) dy ,
+                                   j∈J    BR−r                              BR−r
+
+
+we derive the lower bound. The sandwich estimate for N (R; X ) is then proved.
+  Now let γ be a connected component of Γ, which is a closed set by hypothesis. Since
+γ ⊂ Br (y) if and only if y ∈ Br (x) for all x ∈ γ, one has that
+                                                          X
+                                         N (y, r; Γ) =          1γ r (y) ,                             (6.1)
+                                                          γ⊂Γ
+
+
+where the sum is over the connected components of Γ and the set γ r is defined, for each
+connected component γ of Γ, as
+                                          \
+                                   γ r :=   Br (x) ,
+                                                     x∈γ
+
+
+that is, as the set of points in R3 whose distance to any point of γ is less than r. Obviously,
+the set γ r is open, so 1γ r is lower semicontinuous, and contained in the ball Br (x0 ), where
+x0 is any point of γ. Also notice that γ r is not the empty set provided that 2r is larger
+than the diameter of γ. Therefore, by the same argument as before, if follows from the
+expression (6.1) that the function N (·, r; Γ) is measurable. If we now define the set ΓR
+consisting of the connected components of Γ that are contained in the ball BR , the same
+                           BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                   29
+
+argument as before shows that
+                                               X              Z
+                                                      1
+                               N (R; Γ) ⩾                            1γ r (y) dy
+                                                     |γ r |   BR+r
+                                              γ⊂ΓR
+                                               X          Z
+                                                      1
+                                            ⩾                    1γ r (y) dy
+                                                    |γ r | BR−r
+                                              γ⊂ΓR
+                                              X 1 Z
+                                            =                   1γ r (y) dy
+                                                  |γ r | BR−r
+                                              γ⊂Γ
+                                              Z
+                                                       N (y, r; Γ)
+                                            ⩾                    r
+                                                                     dy
+                                                BR−r supγ⊂Γ |γ |
+                                              Z
+                                                      N (y, r; Γ)
+                                            ⩾                      dy .
+                                                BR−r      |Br |
+In the first inequality we are summing over components γ whose diameter is smaller than
+2r, and to pass to the last inequality we have used the obvious volume bound |γ r | ⩽ |Br |.
+Note that the proof of the upper bound for N (R; X ) does not apply in this case, essentially
+because we do not have lower bounds for |γ r | in terms of |Br |.                          
+
+6.2. Proof of Theorem 1.2 and Corollary 1.3. We are ready to prove Theorem 1.2.
+In fact, we will establish a stronger result which permits to control the parameters of the
+periodic orbits and the invariant tori. In what follows, we shall use the notation introduced in
+Sections 4 and 5 for the number of periodic orbits Nuo (R; [γ], I), the number of Diophantine
+toroidal sets Nut (R; [T ], J , V0 ) (and the volume of the set of invariant tori Vut (R; [T ], J )) and
+the number of horseshoes Nuh (R). This is useful in itself, since we showed in Section 4.1
+that the quantity Nuo (R; [γ], I) is finite but this does not need to be the case if one just
+counts Nuo (R; [γ]). Also, the choice of counting the volume of invariant tori instead of its
+number (which one definitely expect to be infinite) provides the trivial bound Vut (R; [T ], J ) ⩽
+|BR |. Specifically, the result we prove is the following:
+Theorem 6.2. Consider a closed curve γ and an embedded torus T of R3 . Then for any
+I = (T1 , T2 , Λ1 , Λ2 ), some J = (ω1 , ω2 , τ1 , τ2 ) and some V0 > 0, where
+                  0 < T1 < T2 ,       0 < Λ1 < Λ2 ,       0 < ω1 < ω2 ,        0 < τ1 < τ2 ,
+a Gaussian random Beltrami field u satisfies
+                                                Nuh (R)
+                                         lim inf        ⩾ νh ,
+                                            R→∞ |BR |
+
+                                 Nut (R; [T ], J , V0 )
+                            lim inf                     ⩾ ν t ([T ], J , V0 ) ,
+                             R→∞        |BR |
+                                      Nuo (R; [γ], I)
+                                  lim inf             ⩾ ν o ([γ], I)
+                                  R→∞      |BR |
+with probability 1, with constants that are all positive. In particular, the topological entropy
+of u is positive almost surely, and
+                                 Vut (R; [T ], J )
+                             lim inf               ⩾ V0 ν t ([T ], J , V0 ) ,
+                             R→∞      |BR |
+with probability 1.
+30            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+Proof. For the ease of notation, let us denote by ΦR (u) the quantities Nuh (R), Nuo (R; [γ], I)
+and Nut (R; [T ], J , V0 ), in each case. Horseshoes are closed, and so are the set of periodic
+orbits isotopic to γ with parameters in I and the set of closed invariant solid tori of the kind
+counted by Nut (R; [T ], J , V0 ). Therefore, the lower bound for sets Γ whose components are
+closed proved in Lemma 6.1 ensures that, for any 0 < r < R,
+                                    Z                         Z
+                   ΦR (u)        1        Φr (τy u)        1       Φmr (τy u)
+                            ⩾                       dy ⩾                      dy ,
+                    |BR |      |BR | BR−r |Br |          |BR | BR−r |Br |
+where for any large m > 1 we have defined the truncation
+                                   Φm
+                                    r (w) := min{Φr (w), m} .
+We recall that the translation operator is defined as τy u(·) = u(· + y).
+  As the truncated random variable Φm           1   k   3   3
+                                      r is in L (C (R , R ), µu ) for any m, one can consider
+the limit R → ∞ and apply Proposition 3.7 to conclude that
+                                                  Z
+                       ΦR (u)           |BR−r |       Φm
+                                                       r (τy u)       1
+               lim inf        ⩾ lim inf           −             dy =       EΦm
+                                                                             r
+                R→∞ |BR |        R→∞ |BR |              |Br |        |Br |
+                                                     BR−r
+
+µu -almost surely, for any r and m. Corollaries 4.3, 4.8 and 5.3 imply that (for any I in
+the case of periodic orbits, for some J and some V0 > 0 in the case of invariant tori, and
+unconditionally in the case of horseshoes), there exists some r > 0, some δ > 0 and a Beltrami
+field u0 such that
+                                              Φr (w) ⩾ 1
+for any divergence-free vector field w ∈ C k (R3 , R3 ) with kw − u0 kC 4 (Br ) < δ. As the random
+variable Φr is nonnegative, and the measure µu is supported on Beltrami fields (cf. Proposi-
+tion 3.8), which are divergence-free, it is then immediate that, when picking the parameters I,
+J and V0 as above, one has for k ⩾ 4
+                                                                    
+              EΦm                 k    3    3
+                  r ⩾ µu {w ∈ C (R , R ) : kw − u0 kC k (Br ) < δ} =: M(u0 , δ) .
+This is positive again by Proposition 3.8. So defining the constant, in each case, as
+                                             M(u0 , δ)
+                                       ν :=             >0
+                                                |Br |
+the first part of the theorem follows.
+   Finally, the topological entropy of u is positive almost surely because u has a horseshoe with
+probability 1, see Proposition 5.1. The estimate for the growth of the volume of Diophantine
+invariant tori follows from the trivial lower bound
+                             Vut (R; [T ], J ) > V0 Nut (R; [T ], J , V0 ) .
+                                                                                                 
+Remark 6.3. A simple variation of the proof of Theorem 6.2 provides an analogous result
+for links. We recall that a link L is a finite set of pairwise disjoint closed curves in R3 , which
+can be knotted and linked among them. More precisely, if N l (R; [L], I) is the number of
+unions of hyperbolic periodic orbits of u that are contained in BR , isotopic to the link L, and
+whose periods and maximal Lyapunov exponents are in the intervals prescribed by I, then
+                                   N l (R; [L], I)
+                             lim inf               ⩾ ν l ([L], I) > 0 .
+                             R→∞        |BR |
+To apply the lower bound obtained in Lemma 6.1 to estimate the number of links, it is enough
+to transform each link into a connected set by joining its different components by closed arcs.
+                         BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                             31
+
+The proof then goes exactly as in Theorem 6.2 upon noticing that analogs of Proposition 4.2
+and Corollary 4.3 also hold for links (the proof easily carries over to this case).
+
+Proof of Corollary 1.3. The corollary is now an immediate consequence of the fact that the
+number of isotopy classes of closed curves and embedded tori is countable. Indeed, by Theo-
+rem 1.2, with probability 1, a Gaussian random Beltrami field has infinitely many horseshoes,
+an infinite volume of ergodic invariant tori isotopic to a given embedded torus T , and infin-
+itely many periodic orbits isotopic to a given closed curve γ. Since the countable intersection
+of sets of probability 1 also has probability 1, the claim follows.                           
+
+6.3. Proof of Theorem 1.5. We are now ready to prove the asymptotics for the number of
+zeros of the Gaussian random Beltrami field u. Let us start by noticing that, almost surely,
+the zeros of u are nondegenerate. This is because
+                                                                            
+         µu w ∈ C k (R3 , R3 ) : det ∇w(x) = 0 and w(x) = 0 for some x ∈ R3 = 0 ,
+which is a consequence of the boundedness of the probability density function (cf. Remark 3.6)
+and that u is C ∞ almost surely, see [4, Proposition 6.5]. Hence the intersection of the zero
+set
+                                 Xw := {x ∈ R3 : w(x) = 0}
+with a ball BR is a finite set of points almost surely. The implicit function theorem then
+implies that these zeros are robust under C 1 -small perturbations, so that with probability
+1, N (R; Xv ) ⩾ N (R; Xw ) for any vector field v that is close enough to w in the C 1 norm.
+Summarizing, we have the following:
+Proposition 6.4. Almost surely, the functional w 7→ N (R; Xw ) is lower semicontinuous in
+the C k compact open topology for vector fields, for any k ⩾ 1. Furthermore, N (R; Xw ) < ∞
+with probability 1.
+
+   Since the variance E[u(x) ⊗ u(x)] is the identity matrix by Corollary 3.5, the Kac–Rice
+formula [4, Proposition 6.2] then enables us to compute the expected value of the random
+variable
+                                              N (r; Xw )
+                                    Φr (w) :=                                         (6.2)
+                                                 |Br |
+as
+                               Z
+                        EΦr = − E{| det ∇w(x)| : w(x) = 0} ρ(0) dx
+                                Br
+                                      3
+                              = (2π)− 2 E{| det ∇w(x)| : w(x) = 0} .                      (6.3)
+
+Here we have used that the above conditional expectation is independent of the point x ∈ R3
+by the translational invariance of the probability measure. We recall that the probability
+                               3    1    2
+density function ρ(y) := (2π)− 2 e− 2 |y| was introduced in Remark 3.6.
+  To compute the above conditional expectation value, one can argue as follows:
+Lemma 6.5. For any x ∈ R3 ,
+                                                                3
+                            E{| det ∇u(x)| : u(x) = 0} = (2π) 2 ν z ,
+where the constant ν z is given by (1.4).
+32            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+Proof. Let us first reduce the computation of the conditional expectation to that of an ordi-
+nary expectation by introducing a new random variable ζ. Just like ∇u(x), this new variable
+takes values in the space of 3 × 3 matrices, which we will identify with R9 by labeling the
+matrix entries as
+                                                     
+                                          ζ1 ζ2 ζ3
+                                   ζ =:  ζ4 ζ5 ζ6  .                                  (6.4)
+                                          ζ7 ζ8 ζ9
+
+This variable is defined as
+
+                                      ζ := ∇u(x) − Bu(x) ,                                     (6.5)
+
+where the linear operator B (which is a 9 × 3 matrix if we identify ∇u(x) with a vector in R9 )
+is chosen so that the covariance matrix of u(x) and ζ is 0:
+                                                 −1
+               B := E(∇u(x) ⊗ u(x)) E(u(x) ⊗ u(x))    = E(∇u(x) ⊗ u(x)) .
+
+Here we have used that the second matrix is in fact the identity by Corollary 3.5. An easy
+computation shows that then
+
+                                        E(ζ ⊗ u(x)) = 0 ;
+
+as u(x) and ζ are Gaussian vectors with zero mean, this condition ensures that they are inde-
+pendent random variables. Therefore, we can use the identity (6.5) to write the conditional
+expectation as
+
+          E{| det ∇u(x)| : u(x) = 0} = E{| det[ζ + Bu(x)]| : u(x) = 0} = E| det ζ| .
+
+  Our next goal is to compute the covariance matrix of ζ in closed form, which will enable
+us to find the expectation of | det ζ|. By definition,
+
+             E(ζ ⊗ ζ) = E[(∇u(x) − Bu(x)) ⊗ (∇u(x) − Bu(x))]
+                      = E[∇u(x) ⊗ ∇u(x)] − E[∇u(x) ⊗ u(x)] E[u(x) ⊗ ∇u(x)] .
+
+The basic observation now is that, for any Hermitian polynomials in three variables q(ξ) and
+q ′ (ξ), the argument that we used to establish the formula (3.3) and Corollary 3.5 shows that
+
+         E[(q(D)uj (x)) (q ′ (D)uk (x))] = E[q(Dx )uj (x) q ′ (Dy )uk (y)]|y=x
+                                           Z
+                                         = q(ξ) q ′ (−ξ) pj (ξ) pk (ξ) eiξ·(x−y) dσ(ξ)
+                                            S                                            y=x
+                                            Z
+                                        =       q(ξ) q ′ (−ξ) pj (ξ) pk (ξ) dσ(ξ) .
+                                            S
+
+Here we have used that q ′ (D)uk is real-valued because q ′ is Hermitian. As all the matrix
+integrals in the calculation of E(ζ ⊗ ζ) are of this form
+                                                      R with q(ξ) = iξ or 1, the computation
+again boils down to evaluating integrals of the form S ξ α dσ(ξ), which can be computed using
+the formula (3.4).
+                           BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                 33
+
+  Tedious but straightforward computations then yield the following explicit formula for the
+covariance matrix of ζ:
+                              5                      5                   5 
+                                 21  0 0 0 − 42          0 0 0 − 42
+                                     11
+                              0
+                                    84   0 1184    0    0 0 0          0  
+                              0     0   11
+                                              0     0    0    11
+                                                                  0     0   
+                                        84                   84            
+                              0     11
+                                          0 8411
+                                                    0    0 0 0          0 
+                                    84                                     
+            Σ := E(ζ ⊗ ζ) =       5
+                              − 42 0 0 0
+                                                    3
+                                                    14   0 0 0 − 21       2 
+                                                                            
+                              0     0    0   0     0    13
+                                                               0  13
+                                                                        0   
+                                                        84       84        
+                              0         11
+                                     0 84 0         0         11
+                                                         0 84 0         0 
+                                                                           
+                              0     0 0 0          0    13
+                                                               0 13     0 
+                                                         84       84
+                                   5                  2                 3
+                                − 42 0 0 0 − 21          0 0 0         14
+Note that this matrix is not invertible: it has rank 5, and an orthogonal basis for the (4-
+dimensional) kernel is
+                            {e1 + e5 + e9 , e2 − e4 , e3 − e7 , e6 − e8 } ,
+where {ej }9j=1 denotes the canonical basis of R9 . As we are dealing with Gaussian vectors,
+this is equivalent to the assertion that
+                       ζ1 + ζ5 + ζ9 = 0 ,      ζ2 = ζ4 ,   ζ3 = ζ7 ,   ζ6 = ζ8                 (6.6)
+almost surely (which amounts to saying that ζ is a traceless symmetric matrix). Notice
+that these equations define a 5-dimensional subspace orthogonal to the kernel of Σ. The
+remaining random variables ζ ′ := (ζ1 , ζ2 , ζ3 , ζ5 , ζ6 ) are independent Gaussians with zero mean
+and covariance matrix
+                                              5                        5
+                                                                             
+                                                   21       0 0 − 42      0
+                                              0            11
+                                                                 0    0   0 
+                                                           84               
+                     Σ := E(ζ ⊗ ζ ) = 
+                       ′        ′    ′
+                                                   0       0    11
+                                                                 84   0   0  
+                                                                             
+                                              −5 0 0                 3
+                                                                          0  
+                                                     42               14
+                                                                          13
+                                                    0       0 0       0   84
+By construction, Σ′ is an invertible matrix, so we can immediately write down a formula for
+the expectation value of | det ζ|:
+                                                                           
+                                         Z              ζ 1   ζ 2       ζ 3
+                          5            1                                         1
+        E| det ζ| = (2π)− 2 (det Σ′ )− 2       det  ζ2 ζ5              ζ6   e− 2 ζ ′ ·Σ′−1 ζ ′ dζ ′
+                                           R5           ζ3 ζ6 −ζ1 − ζ4
+                                         Z
+                          5            1                    1 ′   ′−1 ′
+                  = (2π)− 2 (det Σ′ )− 2      |Q(ζ ′ )| e− 2 ζ ·Σ ζ dζ ′ ,
+                                          R5
+                                                                                 e ′ ), where the
+with the cubic polynomial Q being defined as in (1.5). Since 12 ζ ′ · Σ′−1 ζ ′ = Q(ζ
+                     e was defined in (1.6), and
+quadratic polynomial Q
+                                                    5 · 1432
+                                         det Σ′ =            ,
+                                                    28 · 215
+we therefore have
+                                                           3
+                                        E| det ζ| = (2π) 2 ν z .
+The result then follows.                                                                           
+Remark 6.6. If one keeps track of the connection between ζ and ∇u(x), it is not hard to
+see that the first condition ζ1 + ζ5 + ζ9 = 0 in (6.6) is equivalent to div u(x) = 0, while the
+remaining three just mean that curl u(x) = u(x), at the points x ∈ R3 where u(x) = 0.
+34            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+  In particular, this shows that ΦR ∈ L1 (C k (R3 , R3 ), µu ). For the ease of notation, let us
+define the ergodic mean operator
+                                               Z
+                                          1
+                             AR Φ(w) :=              Φ(τy w) dy .
+                                        |BR | BR
+Since N (R, Xw ) is finite almost surely, cf. Proposition 6.4, the sandwich estimate proved in
+Lemma 6.1 implies that, almost surely,
+                        Z                                    Z
+                    1                                     1
+                              Φr (τy w) dy ⩽ ΦR (w) ⩽              Φr (τy w) dy
+                  |BR | BR−r                            |BR | BR+r
+for any 0 < r < R. Therefore, and using that |BR±r |/|BR | = (1 ± r/R)3 , one has
+                                                             
+                              r 3                             r 3
+       |ΦR − AR Φr | ⩽ 1 +        AR+r Φr − AR Φr + 1 −           AR−r Φr − AR Φr .
+                             R                               R
+For fixed r, Equation (6.3) and Proposition 3.7 ensure that
+                                             L1
+                                      AR Φr −−→ EΦr = ν z                                    (6.7)
+                                             a.s.
+
+as R → ∞; also, note that the limit (which is independent of r) has been computed in
+Lemma 6.5 above.
+   Therefore, if we let R → ∞ while r is held fixed, the RHS of the estimate before Equa-
+tion (6.7) tends to 0 µu -almost surely and in L1 (µu ), so that
+                                                     L1
+                                       ΦR − AR Φr −−→ 0
+                                                     a.s.
+
+                        L1
+as R → ∞. As AR Φr −−→ ν z by (6.7), Theorem 1.5 is proven.
+                       a.s.
+
+
+            7. The Gaussian ensemble of Beltrami fields on the torus
+
+7.1. Gaussian random Beltrami fields on the torus. As introduced in Section 1.3, a
+Beltrami field on the flat 3-torus T3 := (R/2πZ)3 (or, equivalently, on the cube of R3 of side
+length 2π with periodic boundary conditions) is a vector field on T3 satisfying the equation
+                                           curl v = λv
+for some real number λ 6= 0. To put it differently, Beltrami fields on the torus are the
+eigenfields of the curl operator.
+                         R        It is easy to see that such an eigenfield is divergence-free and
+has zero mean, that is, T3 v dx = 0.
+  Since ∆v + λ2 v = 0, it is well-known (see e.g. [10]) that the spectrum of the curl operator
+on the 3-torus consists of the numbers of the form λ = ±|k| for some vector with integer
+coefficients k ∈ Z3 . For concreteness, we will henceforth assume that λ > 0; the case of
+negative frequencies is completely analogous. Since k has integer coefficients, one can label
+the positive eigenvalues of curl by a positive integer L such that λL = L1/2 . Let us define
+                                   ZL := {k ∈ Z3 : |k|2 = L}
+and note that the set ZL is invariant under reflections (i.e., −k ∈ ZL if k ∈ ZL ).
+  The Beltrami fields corresponding to the eigenvalue λL must be of the form
+                                          X
+                                      v=       Vk eik·x ,                                    (7.1)
+                                            k∈ZL
+                         BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                               35
+
+for some Vk ∈ C3 . Conversely, this expression defines a Beltrami field with frequency λL if
+and only if Vk = V−k (which ensures that v is real valued) and
+                                         ik
+                                             × Vk = Vk .
+                                        L1/2
+Since |k| = L1/2 , we infer from the proof of Proposition 2.1 that the vector Vk must be of the
+form
+                                       Vk = αk p(k/L1/2 )                                 (7.2)
+unless k = (±L1/2 , 0, 0). Here αk ∈ C is an arbitrary complex number and the Hermitian
+vector field p(ξ) was defined in (2.4).
+   The multiplicity of the eigenvalue λL is given by the cardinality dL := #ZL . By Legendre’s
+three-square theorem, ZL is nonempty (and therefore λL is an eigenvalue of the curl operator)
+if and only if L is not of the form 4a (8b + 7) for nonnegative integers a and b.
+   Based on the formulas (7.1)-(7.2), we are now ready to define a Gaussian random Beltrami
+field on the torus with frequency λL as
+                                     1/2 X
+                            L         2π
+                           u (x) :=                 aL
+                                                     k p(k/L
+                                                             1/2 ik·x
+                                                                )e    ,                  (7.3)
+                                      dL
+                                               k∈ZL
+
+where the real and imaginary parts of the complex-valued random variable aL      k are standard
+Gaussian variables. We also assume that these random variables are independent except for
+the constraint aL     L
+                k = a−k . The inessential normalization factor (2π/dL )
+                                                                        1/2 has been introduced
+
+for later convenience.
+   Note that uL (x) is a smooth R3 -valued function of the variable x, so it induces a Gaussian
+probability measure µL on the space of C k -smooth vector fields on the torus, C k (T3 , R3 ). As
+before, we will always assume that k ⩾ 4 to apply results from KAM theory. We will also
+employ the rescaled Gaussian random field
+                                                          
+                                    L,z       L         x
+                                  u (x) := u z + 1/2
+                                                      L
+for any fixed point z ∈ T3 .
+
+7.2. Estimates for the rescaled covariance matrix. In what follows, we will restrict our
+attention to the positive integers L, which we will henceforth call admissible, that are not
+congruent with 0, 4 or 7 modulo 8. When L is congruent with 0 or 7 modulo 8, Legendre’s
+three-square theorem immediately implies that ZL is empty. The reason to rule out numbers
+congruent with 4 modulo 8 is more subtle: a deep theorem of Duke [9], which addresses a
+question raised by Linnik, ensures that the set ZL /L1/2 becomes uniformly distributed on
+the unit sphere as L → ∞ through integers that are congruent to 1, 2, 3, 5 or 6 modulo 8.
+This ensures that                                 Z
+                              4π X         1/2
+                                      φ(k/L ) → φ(ξ) dσ(ξ)                              (7.4)
+                              dL                    S
+                                 k∈ZL
+as L → ∞ through admissible values, for any continuous function φ on S. A particular case
+is when L goes to infinity through squares of odd values, that is, when L = (2m + 1)2 and
+m → ∞.
+   The covariance kernel of the Gaussian random variable uL is the matrix-valued function
+                                κL (x, y) := EL [uL (x) ⊗ uL (y)] .
+36               ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+Following Nazarov and Sodin [30], we will be most interested in the covariance kernel of the
+rescaled field uL,z at a point z ∈ T3 , which is given by
+                                                               
+                                                  x              y
+                      κL,z (x, y) = EL uL z + 1/2 ⊗ uL z + 1/2         .
+                                                 L             L
+The following proposition ensures that, for large admissible frequencies L, the rescaled co-
+variance kernel, and suitable generalizations thereof, tend to those of a Gaussian random
+Beltrami field on R3 , κ(x, y), defined in (3.2):
+Proposition 7.1. For any z ∈ T3 , the rescaled covariance kernel κL,z (x, y) has the following
+properties:
+     (i) It is invariant under translations and independent of z. That is, there exists some
+         function κ L such that
+                                       κL,z (x, y) = κ L (x − y) .
+     (ii) Given any compact set K ⊂ R3 , the covariance kernel satisfies
+                                         κL,z (x, y) → κ(x, y)
+         in C s (K × K) as L → ∞ through admissible values.
+
+Proof. Let α, β be any multiindices, and recall the operator D = −i∇ introduced in Section 3.
+By definition, and using the fact that uL is real,
+                                                                
+                                           x                     y
+Dxα Dyβ κL,z (x, y) = EL Dxα uL z + 1/2 ⊗ Dyβ uL z + 1/2
+                                         L                     L
+                                                
+                       x                        y
+= EL Dxα uL z + 1/2 ⊗ Dyβ uL z + 1/2
+                      L                       L
+                                               ′           α        
+    2π   X     X
+                      L L L          k             k       k         −k′ β ik·(z+ 1/2
+                                                                                   x               y
+                                                                                      )−ik ′ ·(z+ 1/2 )
+=                   E (ak ak′ ) p     1/2
+                                            ⊗ p     1/2     1/2        1/2
+                                                                             e   L               L      .
+    dL                              L             L       L          L
+        k∈Z k ′ ∈Z
+           L       L
+
+The independence properties of the Gaussian variables aLk (which have zero mean) imply that
+EL (aL aL ) = 0 if k ′ 6∈ {k, −k}. When k ′ = k one has
+     k k′
+                            EL [|aL  2     L      L 2      L      L 2
+                                  k | ] = E [(Re ak ) ] + E [(Im ak ) ] = 2 ,
+and when k′ = −k,
+               EL [(aL  2     L      L 2      L      L 2         L      L       L
+                     k ) ] = E [(Re ak ) ] − E [(Im ak ) ] + 2i E [(Re ak )(Im ak )] = 0 .
+
+Therefore, EL (aL  L
+                k ak ′ ) = 2δkk ′ and we obtain
+                                                              α        β
+     α β L,z              4π X          k            k        k           k                 1/2
+   Dx Dy κ (x, y) =                p     1/2
+                                               ⊗p     1/2      1/2
+                                                                        − 1/2    eik·(x−y)/L .
+                          dL           L            L        L           L
+                             k∈Z  L
+
+In particular, this formula shows that κL,z (x, y) is independent of z and translation-invariant.
+   Using now the fact that ZL becomes uniformly distributed on S as L → ∞ through
+admissible values, we obtain via Equation (7.4) that
+                                          Z
+                    Dxα Dyβ κL,z (x, y) → ξ α (−ξ)β p(ξ) ⊗ p(ξ) eiξ·(x−y) dσ(ξ)
+                                            S
+                                                Z
+                                            α β
+                                        = Dx Dy   p(ξ) ⊗ p(ξ) eiξ·(x−y) dσ(ξ) .
+                                           S
+                                    α  β
+By Proposition 3.4, the RHS equals Dx Dy κ(x, y), so the result follows.                              
+                            BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                     37
+
+7.3. A convergence result for probability measures. We shall next present a result
+showing that the probability measure defined by the rescaled field uL,z converges, as L → ∞,
+to that defined by the Gaussian random Beltrami field on R3 , u, on compact sets of R3 :
+Lemma 7.2. Fix some R > 0 and denote by µL,z       R and µu,R , respectively, the probability
+measures on C k (BR , R3 ) defined by the Gaussian random fields uL,z and u. Then the mea-
+sures µL,z
+       R converge weakly to µu,R as L → ∞ through the admissible integers.
+
+Proof. Let us start by noting that all the finite dimensional distributions of the fields uL,z
+converge to those of u as L → ∞. Specifically, consider any finite number of points
+x1 , . . . , xn ∈ R3 , any indices j 1 , . . . , j n ∈ {1, 2, 3}, and any multiindices with |αj | ⩽ k. Then
+it is not hard to see that the Gaussian vectors of zero expectation
+                                     1                     n
+                                (∂ α uL,z
+                                      j1
+                                          (x1 ), . . . , ∂ α uL,z   n
+                                                              j n (x )) ∈ R
+                                                                            n
+
+converge in distribution to the Gaussian vector
+                                         1                     n
+                                     (∂ α uj 1 (x1 ), . . . , ∂ α uj n (xn ))                        (7.5)
+as L → ∞. This follows from the fact that their probability density functions are completely
+determined by the n × n variance matrix
+                             l m                                 
+                     ΣL := ∂xα ∂yα κL,z
+                                      jljm
+                                           (x, y) (x,y)=(xl ,xm )
+                                                                     ,
+                                                                                1⩽l,m⩽n
+                            l   m
+which converges to Σ := (∂xα ∂yα κj l j m (x, y)|(x,y)=(xl ,xm ) ) as L → ∞ by Proposition 7.1. The
+latter, of course, is the covariance matrix of the Gaussian vector (7.5).
+   It is well known that this convergence of arbitrary Gaussian vectors is not enough to
+conclude that µL,zR converges weakly to µu,R . However, notice that, for any integer s ⩾ 0, the
+mean of the H -norm of uL,z is uniformly bounded:
+                s
+
+                                    X Z
+               EL,z kwk2H s (BR ) =   E     |D α uL,z (x)|2 dx
+                                     |α|⩽s      BR
+                                     XZ                                   
+                                 =               tr Dxα Dyα κL,z (x, y) y=x dx
+                                     |α|⩽s BR
+                                             XZ                              
+                                 −−−−→                  tr Dxα Dyα κ(x, y) y=x dx < Ms,R .
+                                  L→∞
+                                             |α|⩽s BR
+
+To pass to the last line, we have used Proposition 7.1 once more. As the constant Ms,R is
+independent of L, Sobolev’s inequality ensures that
+                       sup EL,z kwk2C k+1 (BR ) ⩽ C sup EL,z kwk2H k+3 (BR ) < M
+                        L                                 L
+for some constant M that only depends on R. For any ε > 0, this implies that for all
+admissible L large enough
+                                                                   
+                    µL,z
+                     R    w ∈ C k (BR , R3 ) : kwk2C k+1 (BR ) > M/ε < ε .
+As the set {w ∈ C k (BR , R3 ) : kwk2C k+1 (B ) ⩽ M/ε} is compact by the Arzelà–Ascoli theorem,
+                                                R
+
+we conclude that the sequence of probability measures µL,z R is tight. Therefore, a straight-
+forward extension to jet spaces of the classical results about the convergence of probability
+measures on the space of continuous functions [7, Theorem 7.1], carried out in [34], per-
+mits to conclude that µL,z
+                        R indeed converges weakly to µu,R as L → ∞. The lemma is then
+proven.                                                                                    
+38            ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+7.4. Proof of Theorem 1.6. We are now ready to prove our asymptotic estimates for
+high-frequency Beltrami fields on the torus. The basic idea is that, by the definition of the
+rescaling,
+                                                                                
+          µL w ∈ C k (T3 , R3 ) : Nwh > m ⩾ µL,z
+                                              R   w ∈ C k (BR , R3 ) : Nwh (r) > m
+provided that r < R < L1/2 : this just means that the number of horseshoes that uL has in
+the whole torus is certainly not less than those that are contained in a ball centered at any
+given point z ∈ T3 of radius r/L1/2 < 1. The same is clearly true as well when one counts
+invariant solid tori, periodic orbits or zeros instead.
+   For the ease of notation, let us denote by Φr (w) the quantity Nwh (r), Nwt (r; [T ], J , V0 ),
+Nw (r; [γ], I) or Nwz (r) (that is, the number of nondegenerate zeros of w in Br ), in each
+  o
+
+case. See Sections 4 and 5 for precise definitions. We recall that Nwz (r) = N (r; Xw ) with
+probability 1, cf. Section 6.3. Theorems 6.2 (for periodic orbits, invariant tori and horseshoes)
+and 1.5 (for zeros) ensure that, given any m1 > 0, any δ1 > 0, any closed curve γ and any
+embedded torus T , one can find some parameters I, J , V0 and r > 0 such that
+                                                            
+                         µu w ∈ C k (R3 , R3 ) : Φr (w) > m1 > 1 − δ1 .
+Of course, here we are simply using that the volume |Br |, which appears in the statements
+of Theorems 6.2 and 1.5 but not here, can be made arbitrarily large by taking a large r.
+   Let us now fix some R > r and some point z ∈ T3 . We showed in Propositions 4.1, 4.6, 5.1
+and 6.4 that the functionals that we are now denoting by Φr are lower semicontinuous on the
+space C k (R3 , R3 ) of divergence-free fields for k ⩾ 4. This implies that the set
+                          Ωr,R,m1 := {w ∈ C k (BR , R3 ) : Φr (w) > m1 }
+is open in C k (BR , R3 ). Lemma 7.2 ensures that the measure µL,z
+                                                               R converges weakly to µu,R
+as L → ∞ through the admissible integers. As the set Ωr,R,m1 is open, this is well known to
+imply (see e.g. [7, Theorem 2.1.iv]) that
+                 lim inf µL,z
+                          R (Ωr,R,m1 ) ⩾ µu,R (Ωr,R,m1 )
+                  L→∞
+                                                                            
+                                       = µu w ∈ C k (R3 , R3 ) : Φr (w) > m1
+                                       > 1 − δ1 .
+We observe that δ1 > 0 can be taken arbitrarily small if r is large enough (and r/L1/2 <
+R/L1/2 < 1). Now, for any A ⩾ 1 and L large enough, we can take A pairwise disjoint balls
+in T3 of radius r/L1/2 < A−1/3 centered at points {z a }A         3
+                                                          a=1 ⊂ T . Setting m := Am1 , the
+previous analysis, which is independent of the point z, readily implies that
+                                                   
+                   µL w ∈ C k (T3 , R3 ) : NwX,e > m ⩾ 1 − 2Aδ1 > 1 − δ ,
+where the superscript X stands for h, t, o or z, thus proving the part of the statement con-
+cerning the number of approximately equidistributed horseshoes, invariant tori isotopic to T ,
+periodic orbits isotopic to γ or zeros. In fact, concerning invariant tori, we observe that
+obviously Nwt (r; [T ]) = ∞ if Nwt (r; [T ], J , V0 ) ⩾ 1. Since the previous estimate ensures that
+Nwt (r; [T ], J , V0 ) > m1 with probability 1 as L → ∞, we infer that the probability of having
+an infinite number of (Diophantine) invariant tori isotopic to T also tends to 1 as L → ∞
+through the admissible integers. However this does not provide any information about the
+expected volume of the invariant tori.
+   The result about the topological entropy follows from the following observation. If we
+denote by φL                                              L
+               t the time-t flow of the Beltrami field u (z + ·), and by φt the flow of the rescaled
+                           BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                               39
+
+field uL,z , it is evident that
+                                                     1
+                                           φL
+                                            t =            φL1/2 t .
+                                                    L1/2
+Then, the topological entropy htop (uL ), which is defined as the entropy of its time-1 flow,
+satisfies
+                                             1          
+           htop (uL ) = htop (φL
+                               1 ) = htop         φL 1/2   = htop (φL1/2 ) = L1/2 htop (φ1 ) (7.6)
+                                             L1/2
+                      = L1/2 htop (uL,z ) .                                                  (7.7)
+
+In the third equality we have used that the topological entropy does not depend on the space
+scale (or equivalently, on the metric), and in the fourth equality we have used Abramov’s
+well-known formula (see e.g. [19]). Since the rescaled field has a horseshoe in a ball of radius r
+with probability 1 as L → ∞, and a horseshoe has positive topological entropy, say larger
+than some constant ν∗h (see Proposition 5.1), Equation (7.6) implies that the topological
+entropy of uL is at least ν∗h L1/2 .
+   Finally, we prove the statement about the expected values. As above, we use the functional
+Φr (w) to denote the number of different objects (horseshoes, solid tori or periodic orbits).
+The case of zeros will be considered later. Note that, since Φr is lower semicontinuous, and
+µL,z converges weakly to µu as L → ∞ by Lemma 7.2, it is standard that [7, Exercise 2.6]
+
+                                                  Φr       Φr
+                                  lim inf EL,z         ⩾E       ⩾ η > 0,
+                                  L→∞            |Br |    |Br |
+
+where we have picked some fixed, large enough r. Here we have used the asymptotics in R3 ,
+given by Theorem 6.2, to infer that the last expectation is positive if r is large. Notice that the
+constant η depends on [γ], [T ], I or J depending on the functional the we are considering,
+but we shall not write this dependence explicitly. Furthermore, as the distribution of the
+measure µL,z
+          R is in fact independent of z by Proposition 7.1, this ensures that there is some L0
+independent of z such that
+                                                     Φr     η
+                                             EL,z         >
+                                                    |Br |   2
+
+for all admissible L > L0 and all z ∈ T3 .
+   Now, given any admissible L > L0 , it is standard that we can cover the torus T3 by balls
+{BrL (z a ) : 1 ⩽ a ⩽ AL } of radius rL := 2r/L1/2 centered at z a ∈ T3 such that the smaller
+                                                                      3
+balls BrL /2 (z a ) are pairwise disjoint. This implies that AL ⩾ cL 2 for some dimensional
+constant c. The expected value of, say, the number of horseshoes of uL in T3 can then be
+controlled as follows, for any admissible L > L0 :
+                                              AL
+                                     EL N h X     |Br | L,z a Φr
+                                        3/2
+                                            ⩾          E
+                                      L       a=1
+                                                  L3/2       |Br |
+                                                  c|Br |η
+                                             ⩾            > ν∗
+                                                     2
+for some positive constant ν∗ independent of L. An analogous estimate holds for the expected
+value EL N o ([γ]).
+40             ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+  To estimate the volume of ergodic invariant tori isotopic to T we can proceed as follows.
+For any admissible L > L0 we have:
+                                              AL
+                                              X
+                                L   t                                a   V t (r; [T ], J )
+                               E V ([T ]) ⩾         |BrL /2 | EL,z
+                                                                               |Br |
+                                              a=1
+                                              AL
+                                              X                           a    Φr
+                                         ⩾          |BrL /2 | V0 EL,z
+                                                                              |Br |
+                                              a=1
+                                                     A
+                                              V0 η XL
+
+                                         ⩾            |BrL /2 | > ν∗t ([T ])
+                                               2
+                                                    a=1
+
+for some positive constant ν∗t ([T ]) independent of L. Here we have used that the balls
+BrL /2 (z a ) are pairwise disjoint and the sum of their volumes is, by construction, larger
+than |T3 |/8.
+   Lastly, in the following lemma we consider the case of zeros:
+                       3
+Lemma 7.3. EL (L− 2 NuzL ) → (2π)3 ν z as L → ∞ through admissible values.
+
+Proof. Let us use the notation
+                           QR := (−Rπ, Rπ) × (−Rπ, Rπ) × (−Rπ, Rπ)
+for the open cube of side 2πR in R3 and call Nuz,∗    L the number of zeros of u
+                                                                                 L (or rather of its
+
+periodic lift to R3 ) that are contained in Q1 . By Bulinskaya’s lemma [4, Proposition 6.11],
+with probability 1 the zero set of uL is nondegenerate (and hence a finite set of points) and
+the lift of uL does not have any zeros on the boundary ∂Q1 . Therefore, for any positive
+integer R,
+                                             NuzL = Nuz,∗
+                                                        L
+
+almost surely. In particular, both quantities have the same expectation.
+   Let us now take some small positive real r and denote by NuzL (y, r) the number of zeros of
+uL (or rather of its lift to R3 ) that are contained in the ball Br (y). The argument we used to
+prove the estimate for N (R; X ) in Lemma 6.1 (starting now from the number of zeros in Q1
+instead of in BR ) shows that
+                         Z                               Z
+                               NuzL (z, r)        z,∗           NuzL (z, r)
+                                           dz ⩽ NuL ⩽                       dz .
+                          Q1−r     |Br |                   Q1+r    |Br |
+     Note now that
+                           Z                               Z
+                                NuzL (z, r)        3                NuzL,z (rL1/2 )
+                                            dz = L 2                                dz .
+                           Q1±r    |Br |                       Q1±r    |BrL1/2 |
+The expected value of this quantity is
+                      Z                          Z
+                    L       NuzL,z (rL1/2 )             EL,z NuzL,z (rL1/2 )
+                  E                         dz =                             dz
+                       Q1±r    |BrL1/2 |           Q1±r      |BrL1/2 |
+                                                                   EL,z NuzL,z (rL1/2 )
+                                                         = |Q1±r |                      .
+                                                                        |BrL1/2 |
+To pass to the second line we have used that the expected value inside the integral is in-
+dependent of the point z by Proposition 7.1; in particular, this value is independent of the
+point z one considers.
+                           BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                 41
+
+   We can now argue just as in the case of R3 , discussed in detail in Subsection 6.3, so we
+will just sketch the arguments and refer to that subsection for the notation. The Kac–Rice
+formula ensures
+               EL,z NuzL,z (rL1/2 )         3                                    
+                                    = (2π)− 2 EL,z | det ∇uL,z (0)| : uL,z (0) = 0 ,
+                    |BrL1/2 |
+and this conditional expectation can be transformed into an unconditional one just as in the
+proof of Lemma 6.5:
+           EL,z NuzL,z (rL1/2 )
+                                = (2π)−3/2 EL,z (| det ζ L,z |)
+                |BrL1/2 |
+                                                           Z
+                                        (2π)−3/2                                1 ′    ′L,z −1 ′
+                                =     5/2        ′L,z 1/2
+                                                                 QL,z (ζ ′ ) e− 2 ζ ·(Σ ) ζ dζ ′
+                                  (2π) (det Σ )              R 5
+
+                                =: ν z,L,z .
+The fact that the covariance matrix of uL,z converges to that of u as L → ∞ by Proposition 7.1
+implies that
+                                        lim ν z,L,z = ν z .
+                                               L→∞
+  Hence, writing the aforementioned sandwich estimate as
+                                        EL NuzL
+                               |Q1−r |ν z,L,z ⩽ ⩽ |Q1+r |ν z,L,z
+                                         L3/2
+and letting L → ∞ and then r → 0, we infer that
+                                        EL NuzL
+                                  lim                = |Q1 |ν z = (2π)3 ν z .
+                                 L→∞      L3/2
+The lemma follows.                                                                                 
+
+  Theorem 1.6 is then proven.
+
+                                        Acknowledgements
+
+  The authors are deeply indebted to Alejandro Luque for the numerical computation of
+the Melnikov constants in Section 5. A.E. is supported by the ERC Starting Grant 633152.
+D.P.-S. is supported by the grants MTM-2016-76702-P (MINECO/FEDER) and Europa
+Excelencia EUR2019-103821 (MCIU). A.R. is supported by the grant MTM-2016-76702-P
+(MINECO/FEDER). This work is supported in part by the ICMAT–Severo Ochoa grant
+SEV-2015-0554 and the CSIC grant 20205CEX001.
+
+      Appendix A. Fourier-theoretic characterization of Beltrami fields
+
+   For the benefit of the reader, in this appendix we describe what polynomially bounded Bel-
+trami fields look like in Fourier space. As Beltrami fields are a particular class of vector-valued
+monochromatic waves, it is convenient to start the discussion by considering polynomially
+bounded solutions to the Helmholtz equation
+                                               ∆F + F = 0 .
+As before, we consider the case of monochromatic waves on R3 , but the analysis applies
+essentially verbatim to any other dimension. The Fourier transform of this equation shows
+that
+                                    (1 − |ξ|2 )Fb(ξ) = 0 ,
+42              ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+
+so the support of Fb must be contained in the unit sphere, S. In spherical coordinates ρ :=
+|ξ| ∈ R+ and ω := ξ/|ξ| ∈ S, it is standard that this is equivalent to saying that Fb is a finite
+sum of the form
+                                       XN
+                                   b
+                                  F =     Fn (ω) δ(n) (ρ − 1) .
+                                     n=1
+      (n)         th
+Here δ is the n derivative of the Dirac measure and Fn is a distribution on the sphere, so
+Fn ∈ H sn (S) for some sn ∈ R (because any compactly supported distribution is in a Sobolev
+space, possibly of negative order). Note that F is real valued if and only if the functions Fn
+are Hermitian. Of course, there √ are also monochromatic waves that are not polynomially
+                          x
+bounded, such as F := e cos( 2 x2 ).
+                            1
+
+
+  A classical result due to Herglotz [26, Theorem 7.1.28] ensures that if F is a monochromatic
+wave with the sharp fall off at infinity, i.e., such that
+                                               Z
+                                            1
+                                  lim sup          F 2 dx < ∞ ,
+                                    R→∞ R BR
+
+then there is a Hermitian vector-valued function f ∈ L2 (S) such that Fb = f δ(ρ−1). Further-
+more, the value of the above limit is in the interval [C1 kF kL2 (S) , C2 kF kL2 (S) ] for some con-
+stants C1 , C2 . This bound means that, on an average sense, |F (x)| decays as C/|x|. The prime
+example of this behavior is given by f = 1, which corresponds to F (x) = c|x|−1/2 J1/2 (|x|).
+   The expression (1.3) corresponds to the case N = 0 above, since the function F0 with
+Fb0 = f (ω) δ(ρ − 1) is precisely
+                                          Z
+                                  F0 (x) = eix·ω f (ω) dσ(ω) .
+                                     S
+Also, if f ∈ H (S) with k ⩾ 0 but not necessarily in L2 (S), the function F0 is bounded
+              −k
+
+as [15, Appendix A]
+                                     Z
+                                 1           F0 (x)2
+                             sup                   2k
+                                                      dx ⩽ Ckf kH −k (S) .                     (A.1)
+                             R>0 R       BR 1 + |x|
+Hence in this case, F0 is bounded, on an average sense, by C|x|k−1 . Therefore, if f ∈ H −1 (S),
+F0 is uniformly bounded in average sense.
+   If f is a Gaussian random field, as considered in the Nazarov–Sodin theory (see Equa-
+tion (1.3a)), we showed in Proposition 3.2 that f is almost surely in H −1−δ (S) for all δ > 0
+and not in L2 (S). This behavior morally corresponds to functions that are bounded on a av-
+erage sense but do not decay at infinity, as illustrated by the function F0 := cos x1 generated
+by f := 21 [δξ+ (ξ) + δξ− (ξ)]. This is the kind of behavior one needs to describe the expected
+local behavior of a high energy eigenfunction on a compact manifold as one zooms in at a
+given point.
+   The monochromatic wave defined as Fbn := f (ω) δ(n) (ρ − 1) reads, in physical space, as
+            Z Z ∞                                               Z
+                     iρx·ω        2 (n)                       n
+  Fn (x) =          e      f (ω) ρ δ (ρ − 1) dρ dσ(ω) = (−1)      f (ω) ∂ρn |ρ=1 (ρ2 eiρx·ω ) dσ(ω) .
+            S   0                                                    S
+
+Note that the nth derivative term involves an nth power of x. Therefore, using the bound (A.1),
+one easily finds that Fn is bounded on average as C|x|n+k−1 if f ∈ H −k (S); explicit examples
+with this growth can be easily constructed by taking f to be either a constant for k = 0 or
+the (k − 1)th derivative of the Dirac measure for k ⩾ 1. Consequently, picking f as in (1.3a),
+the bound (A.1) morally leads to thinking of Fn as a function that grows as |x|n at infinity,
+which cannot be the localized behavior of an eigenfunction. This is the rationale for defining
+                             BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                                            43
+
+a random monochromatic wave as in (1.3a)-(1.3b). In this direction, let us recall that the
+relation between random monochromatic waves and zoomed-in high energy eigenfunctions on
+a various compact manifolds is an influential long-standing conjecture of Berry [6]. A precise
+form of this relation has been recently established in the case of the round sphere and of
+the flat torus [29, 30, 31], which heuristically shows that (1.3a)-(1.3b) is indeed the proper
+definition of random monochromatic waves for this purpose.
+   The reasoning leading to the definition of a random Beltrami field as (1.3) is completely
+analogous, and the fact that one can relate Gaussian random Beltrami fields on R3 to high-
+frequency Beltrami fields on the torus just as in the case of the Nazarov–Sodin theory heuris-
+tically ensures that this is indeed the appropriate definition. For completeness, let us record
+that, just as in the case of monochromatic random waves, the Fourier transform of a polyno-
+mially bounded Beltrami field u is a finite sum of the form
+                                               N
+                                               X
+                                         u
+                                         b=            fn (ω) δ(n) (ρ − 1) ,
+                                               n=1
+
+where now fn     is a Hermitian C3 -valued distribution on S. For u to be a Beltrami field, there
+is an additional constraint on fn coming from the fact that not every distribution supported
+on S satisfies the equation iξ × u
+                                 b(ξ) = ub(ξ). A straightforward computation shows that this
+constraint amounts to imposing that
+                       XN                         XN  
+                            n                             n
+                               αn−j,2 fn (ω) = iω ×         αn−j,3 fn (ω)
+                            j                             j
+                           n=j                                   n=j
+                                             Qk−1
+on S for all 0 ⩽ j ⩽ N . Here αk,l := m=0 (l − m) with the convention that α0,l := 1. To see
+                                             b and iξ × u
+this, it suffices to note that the action of u              b on a vector field w ∈ Cc∞ (R3 , R3 ) is
+                               XN         Z
+                                        n
+                                                                      
+                      hb
+                       u, wi =    (−1)      fn (ω) · ∂ρn |ρ=1 ρ2 w(ρω) dσ(ω) ,
+                                   n=0             S
+
+                                   XN          Z
+                                                                                     
+                  hiξ × u
+                        b, wi =        (−1)n           iω × fn (ω) · ∂ρn |ρ=1 ρ3 w(ρω) dσ(ω) ,
+                                   n=0             S
+
+expand the nth derivative using the binomial formula and note that αk,l is the kth derivative
+of ρl at ρ = 1.
+
+                                                   References
+ [1] V.I. Arnold, Sur la topologie des écoulements stationnaires des fluides parfaits, C. R. Acad. Sci. Paris
+     261 (1965) 17–20.
+ [2] V.I. Arnold, Sur la géométrie différentielle des groupes de Lie de dimension infinie et ses applications à
+     l’hydrodynamique des fluides parfaits, Ann. Inst. Fourier 16 (1966) 319–361.
+ [3] V.I. Arnold, B. Khesin, Topological Methods in Hydrodynamics. Springer, New York, 1999.
+ [4] J.M. Azais, M. Wschebor, Level Sets and Extrema of Random Processes and Fields, Wiley, New York,
+     2009.
+ [5] M.E. Becker, Multiparameter Groups of Measure-Preserving Transformations: A Simple Proof of Wiener’s
+     Ergodic Theorem, Ann. Probab. 9 (1981) 504–509.
+ [6] M.V. Berry, Regular and irregular semiclassical wave functions, J. Phys. A 10 (1977) 2083–2091.
+ [7] P. Billingsley, Convergence of probability measures, Wiley, New York, 2013.
+ [8] Y. Canzani, P. Sarnak, Topology and nesting of the zero set components of monochromatic random waves,
+     Comm. Pure Appl. Math. 72 (2019) 343–374.
+ [9] W. Duke, Hyperbolic distribution problems and half-integral weight Maass forms, Invent. Math. 92 (1988)
+     73–90.
+44              ALBERTO ENCISO, DANIEL PERALTA-SALAS, AND ÁLVARO ROMANIEGA
+
+[10] A. Enciso, R. Lucà, D. Peralta-Salas, Vortex reconnection in the three dimensional Navier-Stokes equa-
+     tions, Adv. Math. 309 (2017) 452–486.
+[11] A. Enciso, A. Luque, D. Peralta-Salas, Beltrami fields with hyperbolic periodic orbits enclosed by knotted
+     invariant tori, arXiv:1909.07448.
+[12] A. Enciso, D. Peralta-Salas, Submanifolds that are level sets of solutions to a second-order elliptic PDE,
+     Adv. Math. 249 (2013) 204–249.
+[13] A. Enciso, D. Peralta-Salas, Knots and links in steady solutions of the Euler equation, Ann. of Math. 175
+     (2012) 345–367.
+[14] A. Enciso, D. Peralta-Salas, Existence of knotted vortex tubes in steady Euler flows, Acta Math. 214
+     (2015) 61–134.
+[15] A. Enciso, D. Peralta-Salas, A. Romaniega, Asymptotics for the nodal components of non-identically
+     distributed monochromatic random waves, 1910.14622.
+[16] A. Enciso, D. Peralta-Salas, F. Torres de Lizaur, Knotted structures in high-energy Beltrami fields on
+     the torus and the sphere, Ann. Sci. Éc. Norm. Sup. 50 (2017) 995–1016.
+[17] M. Farge, G. Pellegrino, K. Schneider, Coherent vortex extraction in 3D turbulent flows using orthogonal
+     wavelets, Phys. Rev. Lett. 87 (2001) 054501.
+[18] G.B. Folland, How to integrate a polynomial over a sphere, Amer. Math. Month. 108 (2001) 446–448.
+[19] K. Gelfert, A.E. Motter, (Non)Invariance of dynamical quantities for orbit equivalent flows, Comm. Math.
+     Phys. 300 (2010) 411–433.
+[20] A. González-Enrı́quez, R. de la Llave, Analytic smoothing of geometric maps with applications to KAM
+     theory, J. Differential Equations 245 (2008) 1243–1298.
+[21] U. Grenander, Stochastic processes and statistical inference, Ark. Mat. 1 (1950) 195–277.
+[22] J. Guckenheimer, P. Holmes, Nonlinear oscillations, dynamical systems, and bifurcations of vector fields,
+     Springer-Verlag, New York, 1990.
+[23] M. Hénon, Sur la topologie des lignes de courant dans un cas particulier, C. R. Acad. Sci. Paris 262 (1966)
+     312–314.
+[24] M.W. Hirsch, C.C. Pugh, M. Shub, Invariant manifolds, Lecture Notes Math. 583 (1977) 1–149.
+[25] P.J. Holmes, Averaging and chaotic motions in forced oscillations, SIAM J. Appl. Math. 38 (1980) 65–80.
+[26] L. Hörmander. The analysis of linear partial differential operators I. Springer, New York, 2015.
+[27] B. Khesin, S. Kuksin, D. Peralta-Salas, KAM theory and the 3D Euler equation, Adv. Math. 267 (2014)
+     498–522.
+[28] R. Monchaux, F. Ravelet, B. Dubrulle, A. Chiffaudel, F. Daviaud, Properties of steady states in turbulent
+     axisymmetric flows, Phys. Rev. Lett. 96 (2006) 124502.
+[29] F. Nazarov, M. Sodin, On the number of nodal domains of random spherical harmonics, Amer. J. Math.
+     131 (2009) 1337–1357.
+[30] F. Nazarov, M. Sodin, Asymptotic laws for the spatial distribution and the number of connected compo-
+     nents of zero sets of gaussian random functions, J. Math. Phys. Anal. Geom. 12 (2016) 205–278.
+[31] Y. Rozenshein, The number of nodal components of arithmetic random waves, Int. Math. Res. Not. 2017,
+     6990–7027.
+[32] P. Sarnak, I. Wigman, Topologies of nodal sets of random band-limited functions, Comm. Pure Appl.
+     Math. 72 (2019) 275–342.
+[33] S. Wiggins, Introduction to Applied Nonlinear Dynamical Systems and Chaos, Springer-Verlag, New York,
+     2003.
+[34] R.J. Wilson, Weak convergence of probability measures in spaces of smooth functions, Stochastic Proc.
+     Appl. 23 (1986) 333–337.
+[35] X.H. Zhao, K.H. Kwek, J.B. Li, K.L. Huang, Chaotic and resonant streamlines in the ABC flow, SIAM
+     J. Appl. Math. 53 (1993) 71–77.
+                         BELTRAMI FIELDS EXHIBIT KNOTS AND CHAOS                           45
+
+  Instituto de Ciencias Matemáticas, Consejo Superior de Investigaciones Cientı́ficas, 28049
+Madrid, Spain
+  E-mail address: aenciso@icmat.es
+
+  Instituto de Ciencias Matemáticas, Consejo Superior de Investigaciones Cientı́ficas, 28049
+Madrid, Spain
+  E-mail address: dperalta@icmat.es
+
+  Instituto de Ciencias Matemáticas, Consejo Superior de Investigaciones Cientı́ficas, 28049
+Madrid, Spain
+  E-mail address: alvaro.romaniega@icmat.es
+

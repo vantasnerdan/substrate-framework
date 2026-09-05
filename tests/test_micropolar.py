@@ -7,6 +7,7 @@ from substrate_framework.micropolar import (
     MicropolarCoefficients,
     isotropic_micropolar_energy,
     micropolar_fourier_stiffness,
+    relative_angle_field_map,
     uniform_phase_average,
 )
 
@@ -90,3 +91,32 @@ def test_product_phase_closure_retains_energy_but_not_conservative_stiffness():
     assert s.simplify(correlated-stiffness*(1-s.cos(q1-q2))) == 0
     with pytest.raises(ValueError, match="distinct"):
         uniform_phase_average(energy, (p, p))
+
+
+def test_relative_angle_map_preserves_full_action_and_exposes_gradient_orders():
+    k, rho, j, alpha, mu, ct, cl, w2 = s.symbols(
+        "k rho j alpha mu ct cl w2", positive=True)
+    transform = relative_angle_field_map([0, 0, k])
+    mass = s.diag(rho, rho, rho, j, j, j)
+    stiffness = s.diag(mu*k*k, mu*k*k, 0,
+                       4*alpha+ct*k*k, 4*alpha+ct*k*k, 4*alpha+cl*k*k)
+    physical_mass = transform.H*mass*transform
+    physical_stiffness = transform.H*stiffness*transform
+    assert transform.det() == 1
+    assert physical_mass.H == physical_mass
+    for helicity in (-1, 1):
+        axis = s.Matrix([1, s.I*helicity, 0])/s.sqrt(2)
+        columns = s.zeros(6, 2)
+        columns[:3, 0], columns[3:, 1] = axis, axis
+        m = s.simplify(columns.H*physical_mass*columns)
+        a = s.simplify(columns.H*physical_stiffness*columns)
+        assert m == s.Matrix([[rho+j*k*k/4, -j*helicity*k/2],
+                              [-j*helicity*k/2, j]])
+        assert s.expand(a[0, 1]+2*alpha*helicity*k) == -ct*helicity*k**3/2
+        assert s.expand(a[0, 0]-(mu+alpha)*k*k) == ct*k**4/4
+        expected = (mu*k*k-rho*w2)*(4*alpha+ct*k*k-j*w2)
+        assert s.expand((a-w2*m).det()-expected) == 0
+        # Throwing away the kinetic cross changes the optical dispersion.
+        assert s.expand((a-w2*s.diag(rho, j)).det()-expected) != 0
+    with pytest.raises(ValueError, match="shape"):
+        relative_angle_field_map([1, 2])
