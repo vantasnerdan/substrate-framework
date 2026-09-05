@@ -1,0 +1,10 @@
+Implementation failure on first execution:
+
+FAIL [C-M5W-review-stitching] Maxwell b and depth equations remain canonical derivatives
+
+Mechanism: the independent comparison reused a real-only `f` symbol while
+`maxwell_system()` deliberately returns a nonnegative `f` symbol.  The two
+identically printed SymPy symbols are not equal, so substitution left the
+frequency relation unapplied.  This is the same symbol-assumption collision
+class already exposed by the campaign's resultant regression.  The repaired
+script binds its comparison to the returned expressions' own typed symbols.

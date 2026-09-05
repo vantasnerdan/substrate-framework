@@ -1,0 +1,79 @@
+schema_version: 1
+campaign: P250
+canonical_issue: https://github.com/vantasnerdan/substrate-framework/issues/195
+base_release: v0.171.0
+base_commit: 8b74d3ab5fdd307ba564291ff7bfa702db5d3330
+source_baseline: e5eece659d21d5488d0aa5a9312f2ec56d4100a6
+adjudicated_at: '2026-09-03T11:06:47+00:00'
+objective: >-
+  Establish and price the canonical M5 degenerate-interface sector at the
+  approved exact/local and numerical slice boundary: invariant wall
+  reduction, orbit-fixed phase decoupling, a certified local Maxwell crossing,
+  a converged wall/tension, spherical bag selection and construction, and the
+  reduced radial stability split.
+route_verdicts:
+  static_radial_shell: refuted_by_exact_nonnegative_derrick_identity
+  invariant_rotating_wall_slice: established_exactly
+  local_deep_branch_maxwell_crossing: established_by_exact_interval_certificate
+  slice_kink_and_tension: established_numerically
+  orbit_fixed_locus_decoupling: established_as_exact_H1_energy_bookkeeping
+  thin_wall_bag_selection: established_exactly_in_reduced_family
+  seven_rung_spherical_slice_bag: established_by_status_zero_BVPs
+  reduced_radial_stability_split: established_exactly_with_six_numeric_secants
+claims_promoted:
+  - C-M5W-001
+  - C-M5W-002
+  - C-M5W-003
+  - C-M5W-004
+  - C-M5W-005
+  - C-M5W-006
+  - C-M5W-007
+  - C-M5W-008
+review:
+  record: reviews/C-M5W-001-review-2026-09-03.md through C-M5W-008-review-2026-09-03.md
+  initial: >-
+    REQUEST_CHANGES: unsupported universal wall reduction; incomplete phase
+    gradient; local-to-global Maxwell and heteroclinic inference;
+    endpoint-product pressure; factor-of-two physical energy; and defective
+    bag solver, charge, virial, and boundary treatment.
+  correction: >-
+    ACCEPT at the corrected scopes after exact attempt-0006 stitching and a
+    replacement phase-fixed Robin bag computation.
+verification:
+  exact_runtime_passes: 12
+  targeted_tests: 27
+  numerical_production_runs: 7
+  strongest_oracle: >-
+    Exact SymPy differentiation of the canonical full potential and gradient,
+    rigorous Krawczyk/interval-Gershgorin local crossing certification, and a
+    moving-coordinate phase-fixed radial BVP with crossed tolerance and
+    matching-exponent sensitivity.
+positive_result: >-
+  The canonical action has an exact invariant diagonal wall sector and
+  orbit-fixed phase-slip mechanism. Its deep branch has a rigorously isolated
+  local equal-depth crossing and a converged slice kink with
+  sigma_0=0.72929841786(58). Seven status-zero spherical slice bags obey the
+  corrected canonical pressure, Q=omega I, physical E=F_omega+omega Q,
+  thin-wall scaling, and envelope relation; their fixed-frequency reduced
+  radius is exactly a saddle direction.
+exclusions:
+  - >-
+    Exact global identification omega_c^2=omega_*^2 is a separate successor
+    campaign by explicit owner direction and is not consumed by these claims.
+  - >-
+    No universal full-theory wall classification, global stationary
+    two-frequency interface, fixed-charge constrained minimum, full
+    second-variation spectrum, thick-wall continuation, dynamics, particle
+    identification, two-clock force, or gravity is asserted.
+small_ratio_numerics:
+  binding: true
+  reason: >-
+    Numerical BVP residuals and a translation soft mode are material to the
+    wall/bag evidence.
+  satisfaction: >-
+    The moving-coordinate phase condition fixes translation; every production
+    solve has status zero; residual, boundary, virial, tolerance, matching-
+    exponent, domain, and independent tension-route effects are measured and
+    reported. No numerical Hessian eigenvalue sign is promoted.
+in_boundary_debt: []
+goal_verdict: complete
