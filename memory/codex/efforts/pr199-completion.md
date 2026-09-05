@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T15:35:00+02:00'
+updated: '2026-09-05T15:57:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -27,7 +27,27 @@ The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
-Newest local governed release is v0.180.0 with268 accepted claims.
+Newest local governed release is v0.181.0 with269 accepted claims.
+Independent0207 accepts C-CST-016's full actual common-D,V fixed-cell
+diagonal acoustic action without correction. Its8 independent checks
+use the full accepted displacement API, including all high harmonics.
+0208's new passive Euler/Lin/controller/physical-chart module passes12
+direct tests first execution. Exact delta audit leaves all268 prior
+claim objects and185 prior source files unchanged. Fixed checks pass:
+269 accepted,1060 memory files,43 existing warnings; no full suite.
+The module is already used by0205's11-check actual energy-return oracle.
+
+Frozen0205 establishes the exact same-cell optical isometry, harmonic
+cross-action selection and actual phase-null signed-Jacobi-energy returns
+with finite initial cross constraints and arbitrarily small off-flow tag
+jets. All23 final checks pass. These returns leave the moving optical
+clock unchanged, so0209 actively constructs the genuinely observed
+horizontal response, stationary full-X tag and whole-family physical-clock
+correlations. The full EPS/coupled parent is not inferred from this API
+promotion.0204's density-preserving compact-ring packing and0206's actual
+low-n force-free response continue in parallel.
+
+The preceding governed release v0.180.0 has268 accepted claims.
 Post-31bc873 progress is frozen in0196 and0200–0203.0196 constructs the
 actual common-D,V physical acoustic action through a fixed-cell diagonal
 second jet, retaining arbitrarily growing finite preparation norms before
@@ -151,7 +171,7 @@ inverted translational response for the constant-curl lift and continues
 the generalized Bernoulli-profile repair.0164 retains the actual
 all-time tagged current and0166 derives optics on the same core geometry.
 
-Latest pushed research checkpoint:31bc873.0127's full integrated backstop
+Latest pushed research checkpoint:6a58392.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
@@ -265,7 +285,7 @@ its constant-curl lift is a distinct transfer with full axial terms retained.
 Root completes reviewed packet integration and continues the common
 continuum join. b6257a6's committed selector is fixed-only and agrees
 with0149's banked fixed-check receipt. Latest issue progress link:
-https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5551811173.
+https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5552200494.
 
 Post-checkpoint construction:0155 fixed-cell calibrated optical proof
 and cutoff addendum are frozen;0158 supplies actual15 exterior moment

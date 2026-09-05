@@ -101,3 +101,10 @@ repair and materially different candidate; it does not weaken the parent
 or retrospectively change accepted optical/acoustic claims. The final
 record names exactly which same-cell coupled rows exist and activates the
 next unresolved parent dependency.
+
+Activation: parent confirmed central expansion/schema268 accepted. The
+source comparison begins after that receipt. The earlier0155 fixed-cell
+construction is an additional explicitly inspected import: its exact
+rigid equivalence to the present field, rather than an assumed local
+approximation, is tested first. Its calibrated physical shape and its
+unpromoted construction status remain explicit.

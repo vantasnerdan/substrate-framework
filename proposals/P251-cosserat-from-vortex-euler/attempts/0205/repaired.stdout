@@ -1,0 +1,15 @@
+PASS [P251-0205-same-cell] the same acoustic cell satisfies complete stationary Euler
+PASS [P251-0205-same-cell] the elliptic optical source is this exact cell under a proper isometry
+PASS [P251-0205-same-cell] wrong transverse reflection does not transfer the physical vector field
+PASS [P251-0205-same-cell] the actual core pressure has its isotropic physical Hessian
+PASS [P251-0205-same-cell] the tube boundary is an actual Euler first-integral surface
+PASS [P251-0205-same-cell] the Birkhoff quartic follows from the actual cosine cell
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0205/verify_same_cell.py", line 74, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0205/verify_same_cell.py", line 42, in main
+    checks.check("the actual fixed acoustic cell has nonzero section twist", twist == small/(small+1)**2-sp.Rational(1, 8) and twist.subs(small, sp.Rational(1, 100)) != 0)
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0205-same-cell] the actual fixed acoustic cell has nonzero section twist
