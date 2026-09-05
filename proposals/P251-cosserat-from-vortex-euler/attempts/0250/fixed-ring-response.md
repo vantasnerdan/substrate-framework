@@ -360,13 +360,18 @@ compact-Euclidean scope; 0250 does not decide the 0248/0253 transaction.
 ## 6. Route verdicts and strongest supported scope
 
 - **Route A, exact fixed-ring transport-frequency bands:** the neutral
-  constant-curl polarization has an exact divergence-free finite-`N`
-  isovortical realization and arbitrary-order full-pressure continuation on
-  0211's exact fixed-ring flux-action annulus, as derived in
-  `neutral-polarization.md` and `isovortical-channel.md`.  The route remains
-  open at the common acoustic/optical physical gain and full normalizer Gram
-  calculation.  The straight field-changing band and Baldi's fixed-geometry
-  passive band remain additional positive inputs.
+  constant-curl polarization has an exact finite-`N` isovortical realization
+  and arbitrary-order full-pressure continuation on 0211's exact fixed-ring
+  action annulus.  The root-authored 0260 source adds its exact two-vector
+  cohomological lift.  `two-polarization.md` uses those inputs to establish
+  same-frequency full-vector optical `(theta,G,S)` history control, and
+  `axisymmetric-hybrid.md` establishes a literal point-to-hybrid acoustic
+  response band with full-vector whole-law reconstruction.  Reflected O(3)
+  parity makes their common-band even-order gain block diagonal, while the
+  explicit odd curl/current rows are a small finite-`K` perturbation; hence
+  the joint physical history inverse is also established.  The route remains
+  open at the full normalizer Gram.  The straight field-changing band and
+  Baldi's passive band remain additional positive inputs.
 - **Route B, analytic continuation with a bounded right inverse:** refuted as
   stated in the natural smooth band spaces by compactness.  Finite-rank
   continuation and a small curvature operator error cannot substitute for
@@ -376,15 +381,18 @@ compact-Euclidean scope; 0250 does not decide the 0248/0253 transaction.
   0145/0147 periodic constant-curl background:** open.  A stable
   two-dimensional Floquet band is no longer an input, but the final periodic
   field still needs an exact invariant action or a controlled normal-form
-  eikonal/cohomological inverse, and the measured joint gain/action/current
-  rows.  Equations (8)--(9) remain the exact alternative adjoint criterion.
+  eikonal/cohomological inverse, followed by transfer of the joint
+  gain/action/current rows.  Equations (8)--(9) remain the exact alternative
+  adjoint criterion.
 
-The strongest new supported statements are the exact arbitrary-finite-window
-linear angle controllability of the fixed straight field-changing
-constant-curl supplier, and an exact finite-`N` divergence-free isovortical
-Euler response band with arbitrary-order full pressure on 0211's fixed
-compact ring.  The latter has nonzero transverse centroid, covariance-angle
-and individual `G/S` coefficients, but not yet the longitudinal covariance
-component, common angle/current determinant, complete hybrid pressure row or
-full action/current normalizer.  The compact Euclidean parent and the
-distinct 0248 stationary geometry/density obligation therefore stay open.
+The strongest new supported statement is an exact finite-`N`, divergence-free
+isovortical Euler response family on 0211's fixed compact ring with
+arbitrary-order full pressure, arbitrary finite-window full-vector optical
+`(theta,G,S)` histories and arbitrary finite-window acoustic point-to-hybrid
+correction histories.  The optical determinant uses the leading material
+spin correction rather than assuming `S=-i nu G`.  The acoustic determinant
+uses the complete Lagrangian second-momentum variation rather than centroid
+inference.  Their cross-contaminations are inverted together by the reflected
+common-band block, with the allowed odd 0241/0246 rows retained.  The full
+action/current normalizer is separate.  The compact Euclidean parent and the
+distinct geometry/density obligation therefore stay open.

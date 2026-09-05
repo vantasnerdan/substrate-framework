@@ -200,3 +200,43 @@ direct bracket/divergence/domain tests; exact symbolic checks pass exit0.
 0250 is using these sources for actual angle/G separation and the remaining
 full ambient hybrid row. Neither a leading matrix nor a nonzero symplectic
 entry is being substituted for the physical history/action/current join.
+
+## Exact normalizer and compact-carrier continuation, 2026-09-06
+
+0261 establishes constrained radial nondegeneracy with exact A/Q restoration;
+0263 constructs the radial full-normal trace and proposes a coefficient-
+uniform entrance/stopped-resolvent inverse, finite-R compact Euler carrier,
+twist and disjoint-copy density. Its new finite-R closure is under the
+independent0268 review; read its actual verdict before consuming it.
+
+Root0262 constructs actual opposite-sign helical Kelvin blocks on a local
+constant-curl patch. Its common null/dual frame realizes both Hermitian
+energy and skew-Hermitian phase forms exactly, including complex diagonal
+phase rows. The additive euler_joint_normalizer API passes eight tests.
+0264 accepts the local construction and, after one bounded correction,
+the periodic carrier-uniform finite-K continuation. The explicit Bloch
+product cancellation, homogeneous unit-kernel constraints, full Fourier
+projector bounds and baseline cross estimates are in periodic-supplier.md.
+The current/actual-observation implication remains a separately stated
+consumer of actual physical histories and background inputs.
+
+0250's local material second-moment gain and optical gain survive, but its
+joint Neumann argument omitted an order-K-squared Schur product: acoustic
+O(K^2) and two odd O(K) cross blocks cannot be normalized independently.
+schur-correction.md preserves that mechanism. Root0266 chooses microscopic
+source phase constant within each ring, retaining Bloch phase between
+cells. Its exact Cartesian oracle obtains B_xzx=-B_zzz/2 and the full
+averaged transverse coefficient (4B_zxx+2B_zzz)/15, with a positive
+large-R leading margin. Source/centroid and finite-window pressure transfer
+are independently reviewed in0267; do not consume the old joint Neumann
+claim as closed.0265 gives the conditional exact compact assembly and
+actual action-angle/frequency/density transfer from the finite-R field.
+The full issue200 objective remains active, with no terminal PR or
+scientific-exhaustion certificate.
+
+0268 now independently accepts0263 finite-R compact Euler existence as
+stated in its explicit intrinsic-scale/profile/entrance domain. The
+same-field response/action/current is outside that review.0266's full
+Cartesian oracle passes after repairing only structural-versus-algebraic
+SymPy equality; the original failing script/output is preserved. The
+whole-law transverse coefficient is4 i pi^2 C V^2(R^2+s^2)/(15s).

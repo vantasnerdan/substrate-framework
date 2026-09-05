@@ -182,81 +182,77 @@ The coordinator subsequently registered 0250 and captured
 proof are in `fixed-ring-response.md`; provenance, source hashes and supplier
 boundary are in `receipt.md`.
 
-Route A is blocked at the exact fixed-ring projected-Euler intertwiner or its
-equivalent adjoint uniqueness theorem, plus the full acoustic/optical physical
-gain and Gram calculation.  The calculation does establish dense
-arbitrary-finite-window linear angle histories for the fixed straight
-field-changing constant-curl supplier, and 0251 adds an exact fixed-geometry
-passive action-angle frequency band.  Neither is the missing compact-ring
-full-Euler lift.
-
 Route B's bounded-right-inverse implementation is refuted in its natural
-smooth band spaces because the synthesis operator is compact.  A concrete
-diagonal counterexample shows why arbitrarily small curvature error and every
-finite-rank continuation do not preserve dense range.  This does not refute
-unbounded regularized inversion or exact fixed-ring controllability.
+smooth band spaces by compactness; this does not refute unbounded regularized
+inversion or exact fixed-ring controllability.  Route A instead acquired an
+exact field-changing response band.  `neutral-polarization.md` derives its
+full-pressure leading polarization, `isovortical-channel.md` gives the first
+exact divergence-free lift, and the root-authored 0260 construction supplies
+the complete two-vector cohomological lift on the exact 0211 constant-curl
+annulus.  The source norms lose one carrier power, which is retained by the
+fixed-tag/WKB diagonal rather than hidden in a bounded-inverse claim.
 
-The failure-derived Route C target is exact adjoint uniqueness for the full
-pressure-coupled Euler source-to-observation map on one frozen 0145/0147
-periodic constant-curl background.  Attempt 0147 already supplies its
-contractible compact Euclidean core and an actual finite-action optical
-packet at finite prescribed accuracy; the new burden is arbitrary response
-accuracy on that same fixed field, including the acoustic block.  Its
-WKB realization owes periodic amplitude/higher-order solvability, fixed-tag
-gain and the complete action/current calculation.  The exact calculation in
-`neutral-polarization.md` establishes a full-pressure neutral
-constant-curl leading polarization: for invariant `I`, `k=grad I` and
-`k.omega=0`, the velocity amplitude
-`a=-k cross u/|k|^2` has vorticity amplitude `k cross a=u` and accepts every
-transported scalar multiplier.  Thus no stable two-dimensional Floquet band
-is needed for the leading scalar channel.  On the exact 0211 axisymmetric
-ring its twisted flux-action annulus supplies this band on one fixed ring.
+`two-polarization.md` performs 0250's physical use of 0260.  The normal and
+tangential columns, together with two fixed positive fractions, have a
+nonzero same-frequency `(theta,G,S)` determinant.  The material correction
+to `S=-i nu G` is leading for the tangential column and is precisely what
+makes the determinant nonzero.  The cross-polarization KKS entry is nonzero,
+but no positive Jacobi normalization is inferred.  The 0254 band theorem and
+full-pressure diagonal then give arbitrary finite-window optical
+`(theta,G,S)` histories on the same fixed ring.  The independently completed
+0257 transaction reconstructs all three axial-vector components with Gram
+`2I/3` and uniform rotated costs.
 
-The same calculation exposes the finite-`N` burden: the ordinary principal
-Kelvin symbol vanishes at `k.omega=0`; adding the fixed transport harmonic
-makes the total pairing nonzero but forces the Lin displacement norm to grow
-like `N`.  `isovortical-channel.md` now repairs this initial-data obstruction
-on the exact 0211 ring.  The normal generator
-`-grad I f/(lambda|grad I|^2)` maps to the desired polarization exactly, and
-an `O(N)` tangential `beta u` correction solves divergence by a torus
-cohomological equation without changing `xi cross omega`.  Axisymmetry and a
-fixed nonzero toroidal harmonic reduce possible small divisors to finitely
-many twist resonances, so a smaller open action annulus has a uniform smooth
-inverse.  Starting from the actual Leray field then permits 0112's arbitrary-
-order full-pressure recurrence.  Thus an exact field-changing isovortical
-Euler response band, rather than only its principal symbol, exists on one
-fixed compact ring.
+The append-only `n=0,m=+/-1` extension is evaluated in
+`axisymmetric-hybrid.md`.  An exact same-frequency combination cancels axial
+`G` while retaining a nonzero axial tagged centroid.  More importantly, the
+literal Lagrangian variation of 0241's central second momentum has nonzero
+parallel and transverse quadratic contractions with the same phase/sign;
+the tangential column has no leading contribution, so the `G` cancellation
+does not cancel the hybrid row.  The complete pressure/lower-carrier terms are
+smaller after the frozen large-radius and sparse-carrier choices.  A
+frequency- and orientation-dependent inverse followed by isotropic averaging
+therefore reconstructs arbitrary polar acoustic correction histories with
+uniform orientation cost.  The symbolic check in
+`verify_axisymmetric_hybrid.py` exposes the false velocity-only mutation.
 
-The fixed-tag diagonal remains available: an independent invariant-action
-WKB phase leaves the nonzero clock band fixed, while one frozen positive
-smooth tag contains a sparse summable ladder of dual phases.  The new
-artifact computes the exact centroid and covariance-angle rows and the
-literal `G`/mechanical-spin functionals.  Suitable ring harmonics give
-nonzero transverse centroid, tilt-angle and individual `G/S` gains.  The
-axisymmetric action-only tag has no longitudinal covariance Gram angle, and
-the same-frequency joint determinant is not yet proved.  It also finds that the two real
-transport quadratures have identically zero mutual KKS pairing.  That zero
-requires separate phase/energy normalizer columns; it is not a passive-field
-or parent no-go.  The remaining inputs are the nonzero common physical-gain
-matrix—including the complete point-to-hybrid acceleration and optical full
-current and the missing longitudinal observation—and all cross forms with the
-separate normalizer.  The constructive
-0254 theorem supplies the exact band-only approximation and normalized graph-
-residual/gain estimate; it does not prove those gain ranks.
-A preparation-dependent oscillatory positive tag is recorded only as an
-explicit possible departure from this attempt's fixed-tag route.  The
-independent 0252 theorem
-excludes only a localizable-core matching subclass and leaves this
-nonlocalizable periodic background intact; the distinct geometry owner still
-controls the 0248/0253 scope decision.
+The permitted reflected O(3) law closes the joint four-output gain without an
+adjoint-entire detour.  At even spatial order, optical axial-to-polar hybrid
+leakage and acoustic polar-to-axial angle/current leakage cancel exactly
+between `R` and `-R`; the positive fractions and the acoustic quadratic gain
+retain their signs.  The surviving odd rows are the explicit 0241/0246 curl
+map and full `Q` endpoint-memory current, not zeros.  Moreover the acoustic
+`m=1,n=0` and optical `m=1,n=-1` bands overlap once the single fixed radius
+makes `sup|Omega_2|` smaller than the interior `Omega_1` bandwidth.  Their
+even-order gain is block diagonal and invertible, so the retained odd
+`O(|K|)` rows preserve the exact finite-`K` inverse.  The separate full
+KKS/Jacobi normalizer, transfer to the final 0145/0147 periodic field and the
+independent geometry/density obligation remain open.
+
+The parent diagonal is now explicit in `measured-third-jets.md`.  After unit
+physical-gain normalization by `N c_N`, the complete measured third-`K` jets
+are uniformly bounded: resonant material terms are `O(N c_N)`, while all
+nonresonant tag and ambient terms are `O(N^-q)` by action integration by
+parts.  At graph derivative order `s`, the raw normalized source cost is
+`O(N^(j+s))` and is recorded separately from the measured jet bound. Choose
+`K` from the measured third-jet bound first; then choose
+WKB order/carrier so the exact-evolution-minus-parametrix error is `o(K^2)`.
+No `K=N^-D` restriction is inferred from an unnormalized `O(1/N)` term.
 
 `route_verdict`: fixed-ring response obligation remains open with its exact
 missing construction named; no parent no-go or exhaustion conclusion.
 
-`evidence_scope`: exact straight field-changing linear-angle density,
-compactness obstruction to a bounded inverse, and an exact fixed-ring adjoint
-criterion; exact neutral constant-curl polarization and an exact
-divergence-free isovortical response band on the fixed 0211 ring, with
-arbitrary-order pressure continuation, fixed-tag observation formulas and
-the exact null mutual KKS row; physical joint-gain and final-periodic
-normal-form closure remain open.
+`evidence_scope`: exact fixed-ring full-pressure response lift; arbitrary
+finite-window joint acoustic-hybrid and full-vector optical `(theta,G,S)`
+histories; complete reflected parity with the odd curl/current rows retained;
+exact source, tag and orientation costs; full-form normalization and
+uniform measured third-`K` jets and explicit parent diagonal; full-form
+normalization and final-periodic transfer remain open.
+
+Coordinator continuation: the local gain and optical determinant remain
+supported. The original joint finite-K Neumann conclusion needs the
+actual acoustic Schur coefficient, as recorded in schur-correction.md.
+Root0266 supplies a failure-derived cellwise physical-phase preparation
+and the full oblique material tensor; its independent review is0267.
+The original joint conclusion is not used as an already closed parent
+supplier while that correction is being evaluated.
