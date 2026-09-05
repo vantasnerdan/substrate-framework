@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T18:34:00+02:00'
+updated: '2026-09-05T19:35:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -28,13 +28,43 @@ No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
 Newest local governed release is v0.181.0 with269 accepted claims.
+Frozen0221 now constructs genuine Kelvin phase/energy normalization
+with full Bloch pressure and remote physical-error bounds; independent
+0224 accepts it without correction and adds8 mixed-sector exact checks.
+The new full-field energy probe passed8 rows before its mixed-phase
+sensitivity premise failed; the preserved two diagnostics lead to the
+correct general-fraction phase with7 final scoped checks.14 original
+zero-wave checks remain valid. No failed whole process is labeled green.
+
+Frozen0222 constructs the SAME closed-core actual field-changing Kelvin
+response with compact divergence completion, full global pressure and
+positive physically normalized phase/energy. Independent0225 accepts
+the construction without correction, reusing16 checks. Frozen0219's30
+checks give a fixed-tag material optical/current/action window; its
+tag source remains label-only and is not confused with the Kelvin lift.
+
+Frozen0227 derives the exact joint physical branch/action implication
+(12 first-pass checks): alpha=j nu²/4, required second-gradient branch
+masses, and gamma_T=j(c_T-alpha/rho), with boundary-divergence freedom
+explicit. Frozen0228 constructs complete joint Kelvin phase/energy
+second jets, including allowed odd polar/axial cross forms (16 first-
+pass checks). These normalize actual forms; they do not supply absent
+Euler angle/current or EPS geometry. Their coherent review is0230.
+0223 constructs the actual finite-K pressure-coupled Kelvin supplier;
+0226 constructs the same-ring physical acoustic/current and density
+join. Independent0229 accepts0220's full curved pressure/Hardy/KKS
+feedback and positive bending pole without correction, reusing25 exact
+checks. Its actual n=2 quadrupole is nonzero but linear global spin is
+zero; it does not replace the independent director/current supplier.
+Parent remains active, with no full validation or terminal PR.
+
 New frozen0218 establishes an ACTUAL field-changing Kelvin lift of0216's
 positive fixed-tag nonlinear clock: xi=(-s,Jgrad s), w=(Ts,0,0), s_t=-Ts.
 The complete phase is positive in its physical clock chart, and full
 Jacobi energy is rho||Ts||²/2, half the label-only value and naturally
 matched to the clock energy.19+17 first-pass canonical checks expose
 the negative physical energy of the h=0 alternative and the positive
-axial repair. Inherited M versus measured j remains distinct; active0221
+axial repair. Inherited M versus measured j remains distinct;0221
 constructs genuine opposite-sign Kelvin normalization returns.0219
 derives actual common-K band-center/current corrections, preserving the
 wrapped axial topology. Narrow-band accuracy must beat its actual
@@ -43,7 +73,7 @@ norm-conditioned spatial remainder, not just go to zero separately.
 Frozen0216 has24 exact checks for the positive fourth-harmonic physical
 clock on a fixed positive tag and its complete label-phase/energy.
 Frozen0217 has14 for the distinct same-closed-ring material tilt/current
-and phase, explicitly w=0;0222 is activated to construct its actual
+and phase, explicitly w=0;0222 constructs its actual
 field-changing compact Kelvin lift with full global pressure.0213's22
 checks establish actual curved residual, full straight weighted response
 and lower-order first reaction;0220 executes the complete curved Schur
@@ -214,7 +244,7 @@ inverted translational response for the constant-curl lift and continues
 the generalized Bernoulli-profile repair.0164 retains the actual
 all-time tagged current and0166 derives optics on the same core geometry.
 
-Latest pushed research checkpoint:6d907cb.0127's full integrated backstop
+Latest pushed research checkpoint:4bae709.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
@@ -328,7 +358,7 @@ its constant-curl lift is a distinct transfer with full axial terms retained.
 Root completes reviewed packet integration and continues the common
 continuum join. b6257a6's committed selector is fixed-only and agrees
 with0149's banked fixed-check receipt. Latest issue progress link:
-https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5552200494.
+https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5553268124.
 
 Post-checkpoint construction:0155 fixed-cell calibrated optical proof
 and cutoff addendum are frozen;0158 supplies actual15 exterior moment

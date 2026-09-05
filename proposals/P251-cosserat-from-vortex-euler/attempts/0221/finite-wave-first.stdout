@@ -1,0 +1,19 @@
+PASS [P251-0221-kelvin-finite-wave] sector -1 exact full Bloch divergence vanishes
+PASS [P251-0221-kelvin-finite-wave] sector -1 retains every full-pressure solenoidal sideband
+PASS [P251-0221-kelvin-finite-wave] sector -1 actual energy second jet has carrier order at most zero
+PASS [P251-0221-kelvin-finite-wave] sector -1 normalized energy second coefficient vanishes
+sector -1 actual full-pressure H2: 15003/5000
+PASS [P251-0221-kelvin-finite-wave] sector 0 exact full Bloch divergence vanishes
+PASS [P251-0221-kelvin-finite-wave] sector 0 retains every full-pressure solenoidal sideband
+PASS [P251-0221-kelvin-finite-wave] sector 0 actual energy second jet has carrier order at most zero
+PASS [P251-0221-kelvin-finite-wave] sector 0 normalized energy second coefficient vanishes
+sector 0 actual full-pressure H2: -(N + 1)**2*(10002*N**8 + 80016*N**7 + 315055*N**6 + 770106*N**5 + 1120110*N**4 + 840032*N**3 + 239932*N**2 - 88*N - 40)/(5000*N**2*(N + 2)**2*(N**2 + 2*N + 2)**3)
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0221/verify_finite_wave.py", line 95, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0221/verify_finite_wave.py", line 71, in main
+    checks.check("actual mixed-sector phase is not suppressed by a zero mean surrogate",
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0221-kelvin-finite-wave] actual mixed-sector phase is not suppressed by a zero mean surrogate
