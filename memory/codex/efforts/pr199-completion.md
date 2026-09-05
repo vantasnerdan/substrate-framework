@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T09:00:55+02:00'
+updated: '2026-09-05T09:28:46+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -27,7 +27,7 @@ The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
-Latest pushed research checkpoint:bf508e1.0127's full integrated backstop
+Latest pushed research checkpoint:dcd7ab0.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
@@ -89,6 +89,32 @@ averaging is a separate next route, not inferred from a fixed-time jet.
 The0136 scoped6-test/fixed workflow passes; its initial wrong-environment
 invocation and repair are preserved. The committed selector confirms
 that scope. No new claim promotion or terminal PR is asserted.
+
+Further frozen constructions0142/0144/0146/0148/0149: the constant-curl
+Lundquist physical marker has positive finite-time second-carrier curvature
+with21 exact checks, explicitly Fourier-fiber normalized. Actual generic3D
+Euler cell action/current retains its complete temporal kernel; both physical
+transverse polarizations have mass rho and positive whole-field isotropic
+initial coefficient2<|u|²>/15 (0144,39checks).0146 derives full acoustic
+current normal forms and a response-specific pressure primitive without a
+separatrix gap (23checks); finite-k forcing remains for0150.0148's14checks
+derive actual material-angle response and the complete field chart: a passive
+tag is not universally the macro polar frame, but the optical/centroid
+first-gradient dynamical coupling remains -kappa/2 independently of that
+frame chart when all mixed inertia is kept.0149 supplies a vorticity-tied
+stationary square-pair director with positive exact Green/KKS action and
+actual smooth Euler finite-time continuation (12checks); its material-spin
+boundary response is still a separate construction. These are not promoted
+new claims or a replacement for the unchanged full objective.
+
+Current active constructions:0147 finite-action distributed optical packet
+and high-order multi-CK toroidal normal-jet match;0150 actual array acoustic
+finite-k forcing;0151 full one-wave isotropic Euler response beyond initial
+jets, retaining orientation dephasing and the geometry join. Root continues
+the actual material-spin/physical-director and same-field constitutive join.
+dcd7ab0's committed selector is fixed-only and agrees with0145's banked
+fixed-check receipt. Latest issue progress link:
+https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5550143460.
 
 ## Accepted Baseline
 

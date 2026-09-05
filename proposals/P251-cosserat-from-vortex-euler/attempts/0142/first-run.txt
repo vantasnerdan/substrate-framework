@@ -1,0 +1,18 @@
+Command: env PYTHONPATH=src .venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0142/verify.py
+Exit status: 1
+Elapsed: 1.813250861 s
+
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0142/verify.py", line 123, in <module>
+PASS [P251-0142] full radial oscillator eigenvalue12
+PASS [P251-0142] wrong oscillator eigenvalue rejected
+PASS [P251-0142] positive n2 Laguerre KKS norm
+PASS [P251-0142] nonlocal Leray small parameter
+PASS [P251-0142] axial Doppler trap scale
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0142/verify.py", line 38, in main
+    ledger.check("no-critical-radius ratio regular at axis", sp.limit(ratio, x, 0) == sp.Rational(1, 4))
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0142] no-critical-radius ratio regular at axis

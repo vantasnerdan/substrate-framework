@@ -65,3 +65,20 @@ The parent's central proposal registration and validation unlock new
 source bodies and substantive derivation. A failed candidate activates
 its method repair or a registered different family. Neither a local
 success nor a route obstruction closes the full parent objective.
+
+## Executed local route and next obligation
+
+The selected route is a pressure-resolved, arbitrary finite-order
+counterpropagating Laguerre packet on the entire Lundquist column,
+with exact Kelvin initial preparation and actual finite-time Euler
+evolution. The ground-packet simultaneous momentum/time matching
+fails by an explicit row dependence; n=1 remains rank deficient;
+n=2 gives six independent spin/time carrier rows. A seventh fixed
+reference marker row constructs one nonnegative material tag.
+
+See lundquist-packet.md and physical-marker.md for the full action,
+moving-material spin, physical positive curvature and natural-scale
+error bounds. The full goal's global stationary/toroidal transfer is
+an active parent0145 construction, not earned merely by this local
+constant-lambda field. The local route verdict and validation evidence
+are in receipt.md; no accepted scientific claim is changed here.

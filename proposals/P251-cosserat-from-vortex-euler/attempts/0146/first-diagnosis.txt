@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0146/verify.py", line 122, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0146/verify.py", line 19, in main
+    checks.check("smooth fixture satisfies stationary Euler with physical pressure",
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0146-acoustic-normal-form] smooth fixture satisfies stationary Euler with physical pressure
+
+Process exit: 1
+Diagnosis: the verifier fixture pressure had the opposite sign to its
+defined Taylor-Green velocity. The first exact stationary Euler residual
+exposed this implementation error before any downstream assertion ran.
+Repair: p=-(cos(2x)+cos(2y))/4. No source theorem or normal-form sign changed.

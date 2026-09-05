@@ -103,3 +103,34 @@ are retained explicitly. Its leading kinetic mass is the actual total
 rho, not a rescaled SH fraction. The first full-phase calculation is the
 actual mean response and its cell-correlation memory, not an assumed
 acoustic oscillator.
+
+## Delivered construction boundary
+
+`full-cell-response.md` derives the actual generic-K Euler/Lin cell
+action, complete divergence-pressure border, full-fluid mean-current
+map, compensation bending, positive axial covariance stiffness, and
+the matched-state nonplanar SH preparation. It retains the actual cell
+kernel and the complementary polarization. The Bernoulli lift and
+all mean pressure/ambient rows stay explicit.
+
+`isotropic-initial-response.md` constructs the full-phase common-V
+representation with mass rho, and proves that BOTH transverse
+polarizations have the positive whole-field initial response
+coefficient 2〈|u|²〉/15. It also gives the exact fixed-time isotropic
+second-jet Volterra law. This initial coefficient is not silently
+extended to an instantaneous constitutive law at acoustic times.
+
+The actual SH-only raw-mean normalization gives mass 2rho, exposing why
+the full-phase continuation was needed. The axial common-V correlation
+memory and the passive complementary polarization are explicit.
+The five exact scripts supply 39 passing checks; native diagnostic
+failures and their repaired runs are preserved.
+
+Route verdicts: the generic actual retained-cell/action/physical-mean
+construction is established in its stated finite-time second-jet
+scope; the SH-only mass-rho shortcut is refuted by normalization; the
+full-phase initial isotropic response and memory law are established.
+The autonomous full-array Cosserat route still needs the actual
+two-polarization kernel reduction, acoustic-time remainder and optical
+material-angle/hybrid-current join. 0146 and 0148 own those next
+constructions. This child does not close the parent or assert exhaustion.
