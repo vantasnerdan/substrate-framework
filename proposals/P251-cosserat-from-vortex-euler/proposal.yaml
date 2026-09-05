@@ -54,6 +54,17 @@ candidate_universe:
     - ergodic no-topology closure (no-Cosserat contrast side; degenerate limit)
   append_only_expansions:
     - >-
+      2026-09-05 attempts 0049-0059: exact material-pressure and angular
+      boundary-current balances; full mixed Euler-orbit reduction and
+      same-map kinetic-gradient normal form; finite-coherence common-frame
+      returns, same-EPS positive affine shear and exterior-response
+      centering; nonlinear product-Haar conservative contrast. The remaining
+      volume-normalized material assembly activates both a full material
+      partition route and a stationary finite-variance Gaussian Beltrami
+      ensemble route (Enciso-Peralta-Salas-Romaniega 2006.15033). The latter
+      reconstructs local coefficients and common KKS density; it does not
+      copy coefficients from the decaying single-field construction.
+    - >-
       2026-09-05 attempts 0046-0048: replace the Kelvin-inconsistent added
       material rotor by an intrinsic common-angle Euler KKS pair; first on
       an exact Bessel/Beltrami invariant cylinder, then on the actual EPS
@@ -458,6 +469,13 @@ allowed_imports:
   - sympy/numpy/scipy stack in .venv
   - MIT 2.25 Section 9 classical statements (Kelvin theorem, Biot-Savart field, frozen-line transport) as declared classical mechanics
   - EPS existence theorems (1210.6271, 1003.3122, 1505.01605) as declared existence input for the N7 premise layer only
+  - >-
+    Candidate continuation import 2006.15033 (Enciso-Peralta-Salas-Romaniega):
+    Theorem 1.2 and Propositions 3.2, 3.7, 3.8 supply smooth stationary
+    Gaussian Beltrami fields, translation-stationary finite-variance measure,
+    full local support and positive-density knotted invariant tori. Explicit
+    source applicability and review are required for its use in the new
+    volume-normalized assembly; it supplies no Cosserat action or modulus.
   - src/substrate_framework/homogenization.py sphere moments and coefficient-matching pattern (conditional unpromoted infrastructure, P242 provenance)
   - src/substrate_framework/numerics.py and verification.py (CheckLedger, IVP evidence) shared machinery
 candidates:
@@ -517,6 +535,26 @@ route_frontier:
     - "Review-directed attempt 0026 (post-PR199-review): inter-tube Biot-Savart crossing route BLOCKED WITH MECHANISM for the quadratic locking sector -- exact crossing energy E_int(theta) = -(rho Gamma^2/2) tan(theta) (symbolic reduction + 30-digit mpmath, attempts/0026/parts/crossing_energy.py) is PARITY-ODD (E_int(-theta) = -E_int(theta), E'' nonzero pointwise but odd), so a parity-symmetric isotropic ensemble has <E''> = 0: no quadratic |rot u - 2 Phi|² locking from crossings; objectivity itself is structural (relative geometry only). Core-polarization route SPECIFIED: candidate exact locking energy E_lock/L = (pi rho/2)(Omega_amb - Omega_self)^2 a^2 eta^2 (frozen-vorticity/Cauchy construction, two-frame sheet jump gamma' = 2(Omega_amb - Omega_self)eta), exactly relative and objective by construction; execution requires the 0027 momentum-residual-correct two-frame replay (attempt 0019 forms) before claiming."
     - "Attempt 0028 (parts 1-2): Euler-derived frame-locking interaction CONSTRUCTED — contour-dynamics composition exact (w = m Om_o + w_Love(Om_i-Om_o); m=2 k->0 = Om_i + Om_o, both limits exact); cross-term selection rule (m=1 background x m=2 mode angular orthogonality) => E_lock/L = (pi rho/2)(Om_i-Om_o)^2 a^2 eta^2 EXACTLY relative, objective by construction (no rotation-measure truncation; review's R^TR=I cancellation inapplicable), positive stiffness pi rho a^2 eta^2; couplings split: alpha_energy = L_v pi rho a^2 <eta^2>/4 (declared polarization-intensity moment) vs alpha_gap = j (Om_i-Om_o)^2/4 (contrast-set Doppler gap w_gap = Om_i-Om_o replaces material 4 alpha/j); verify_cst003 rebuilt 30 checks PASS (M4 wrong-contrast, M5 conflation, M6 retired tension-alpha all rejected); N4 balance form alpha-generic (verify_cst004 8/8 unchanged); N5 symbolic model checks hold (17/17) with physical gap evaluation corrected to contrast-set; N6/N7 unaffected (N6 strengthens: zero polarization intensity => no locking sector)."
   failure_generated:
+    - >-
+      0056 operator reconciliation establishes the full action/Fourier
+      pencil and fixes the historical longitudinal spin coefficient to
+      2(c_s+c_tr), by adding both Laplacian and grad-div contributions.
+      CST004/005 now use the same-orbit J_Psi/K_Psi map, not an added rigid
+      inertia or retired line-tension locking formula; 8/17 checks pass.
+      0058 proves the nonlinear product-Haar conservative contrast with
+      retained positive fluctuation energy and a correlated-marginal
+      counterexample; zero angular current remains a separate closure.
+    - >-
+      0047-0055 establish same-EPS positive gradient-cage returns and a
+      complete common/internal relative-orbit action with independently
+      varied time-reversed reaction momenta. 0050 includes finite outer
+      coherence and exterior kinetic reaction. 0051/0052 derive material
+      pressure balances, exact centroid bookkeeping and boundary-spin
+      current improvement. 0054 derives positive STF shear from the same
+      field, and 0055 supplies four exterior dual responses that center the
+      invariant tube while preserving the full KKS exactly. Ambient impulse
+      is retained; these results do not alone normalize a full-fluid RVE.
+      That remaining assembly is actively executed in 0057/0059.
     - >-
       0045 directly constructs a positive physical core-tilt/cage action
       inside an actual EPS tube with explicit finite-carrier full-Hessian

@@ -1,0 +1,29 @@
+..F.                                                                     [100%]
+=================================== FAILURES ===================================
+____________ test_both_transverse_helicities_and_longitudinal_spin _____________
+
+    def test_both_transverse_helicities_and_longitudinal_spin():
+        c = coefficients()
+        k = s.symbols("k", positive=True)
+        operator = micropolar_fourier_stiffness([0, 0, k], c)
+        for helicity in (-1, 1):
+            axis = s.Matrix([1, s.I*helicity, 0])/s.sqrt(2)
+            columns = s.zeros(6, 2)
+            columns[:3, 0], columns[3:, 1] = axis, axis
+            projected = s.simplify(columns.conjugate().T*operator*columns)
+            target = s.Matrix([[(c.shear+c.locking)*k*k, -2*c.locking*helicity*k],
+                                [-2*c.locking*helicity*k,
+                                 c.transverse_curvature*k*k+4*c.locking]])
+            assert s.simplify(projected-target) == s.zeros(2)
+>       assert s.expand(operator[5, 5]-4*c.locking) == 2*(c.symmetric_curvature+c.trace_curvature)*k*k
+E       assert 2*cs*k**2 + 2*ctr*k**2 == (((2 * (cs + ctr)) * k) * k)
+E        +  where 2*cs*k**2 + 2*ctr*k**2 = <function expand at 0x7efb927993a0>((4*alpha + k**2*(ca + cs) + k**2*(-ca + cs + 2*ctr) - (4 * alpha)))
+E        +    where <function expand at 0x7efb927993a0> = s.expand
+E        +    and   alpha = MicropolarCoefficients(lame=lam, shear=mu, locking=alpha, trace_curvature=ctr, symmetric_curvature=cs, skew_curvature=ca).locking
+E        +  and   cs = MicropolarCoefficients(lame=lam, shear=mu, locking=alpha, trace_curvature=ctr, symmetric_curvature=cs, skew_curvature=ca).symmetric_curvature
+E        +  and   ctr = MicropolarCoefficients(lame=lam, shear=mu, locking=alpha, trace_curvature=ctr, symmetric_curvature=cs, skew_curvature=ca).trace_curvature
+
+tests/test_micropolar.py:63: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_micropolar.py::test_both_transverse_helicities_and_longitudinal_spin
+1 failed, 3 passed in 2.10s

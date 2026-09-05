@@ -154,6 +154,38 @@ as source-code whitespace. No accepted registry or release changed.
 
 ## Canonicalization and Completion
 
+Continuation 0047–0058 is now substantially constructed and independently
+reviewed. 0048 gives a positive full common/internal action on the actual EPS
+relative-energy orbit, with mixed Hessian terms and independently varied
+time-reversed fluid reactions. 0049 extracts its reduction into euler_orbit.py.
+0047/0050 keep finite-coherence gradient returns, full momentum reduction and
+exterior kinetic energy. 0051/0052 derive exact material force/couple balances,
+centroid kinetic bookkeeping and the physical-to-canonical boundary-current
+map. 0055 proves a nondegenerate exterior response Gram and exact full KKS
+centering with four disjoint response supports; its ambient impulse is retained.
+0054 constructs positive shear from that same EPS field rather than copying
+the periodic 0043 coefficient. 0053 derives the full simultaneous-rotation
+average and same-map kinetic/potential gradient normal form.
+
+The full-fluid assembly is still active, not inferred from a finite tube's
+mass or from a whole-space relative energy. 0057 now executes both exact
+material-partition accounting and a source-backed stationary Gaussian
+Beltrami ensemble (2006.15033), whose finite-variance volume measure and
+positive-density knotted invariant tori can supply the missing normalization.
+0059 independently investigates its origin-independent common-rotation KKS
+density. This new route reconstructs local coefficients and symmetry action;
+single-decaying-field coefficients are not silently transplanted.
+
+0056 found and repaired an additional old operator defect: longitudinal spin
+has coefficient 2(c_s+c_tr), not 2(c_a-c_tr). The new unpromoted micropolar.py
+action and full Fourier matrix are tested by direct real-field variation.
+CST004/005 now use the same-orbit inertia/locking map, with 8/17 checks passing,
+including DOP853 refinement. 0058 strengthens N6 through a full nonlinear
+product-Haar energy argument: conservative coherent response vanishes while
+positive fluctuations remain; correlated uniform marginals expose why
+one-point isotropy alone is insufficient. A zero angular current is still
+a separately named dynamical closure premise.
+
 No claim promoted; no release change. Full completion and scientific exhaustion
 are both unearned. Review and promotion follow construction, not a green tally.
 

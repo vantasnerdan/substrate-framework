@@ -11,6 +11,13 @@ ergodic closure: no coherent microrotation field is retained after the signed
 response is averaged. Under that explicit closure the remaining constitutive
 state is the translational Navier--Cauchy sector. The Monte Carlo check measures
 the same signed first-moment observable as the exact calculation.
+
+Attempt 0058 additionally proves the nonlinear conservative-response result:
+a LOCAL PRODUCT Haar law is invariant under independent coherent frame
+shifts. Averaged interaction energy can stay positive while its coherent
+torque and couple stiffness vanish. Correlated uniform marginal phases do
+not satisfy that premise and can retain nonzero locking. A no-coherent-
+angular-current premise remains separate from this static theorem.
 """
 
 import sys
@@ -19,6 +26,7 @@ import numpy as np
 import sympy as sp
 
 from substrate_framework.verification import CheckLedger
+from substrate_framework.micropolar import uniform_phase_average
 
 
 def phase_rotation(phi: sp.Expr) -> sp.Matrix:
@@ -89,6 +97,23 @@ def check_coherent_response_closure(ledger: CheckLedger) -> None:
     )
 
 
+def check_nonlinear_product_closure(ledger: CheckLedger) -> None:
+    theta1, theta2, q1, q2 = sp.symbols("theta1 theta2 q1 q2", real=True)
+    stiffness = sp.Symbol("K", positive=True)
+    energy = stiffness*(1-sp.cos(theta1-theta2+q1-q2))
+    independent = uniform_phase_average(energy, (theta1, theta2))
+    ledger.check("independent uniform relative phases retain positive fluctuation energy",
+                 independent == stiffness)
+    ledger.check("nonlinear product-Haar conservative torque and stiffness vanish",
+                 sp.diff(independent, q1) == 0
+                 and sp.hessian(independent, [q1, q2]) == sp.zeros(2),
+                 "finite-angle energy averaged before differentiation; 0058 gives general SO(3) proof")
+    correlated = uniform_phase_average(energy.subs(theta2, theta1), (theta1,))
+    ledger.check("correlated uniform marginal phases retain locking stiffness",
+                 sp.diff(correlated, q1, 2).subs({q1: 0, q2: 0}) == stiffness,
+                 "zero one-point mean alone is not the product-Haar closure")
+
+
 def sample_signed_response(
     seed: int, count: int, bias: float = 0.0
 ) -> tuple[np.ndarray, np.ndarray]:
@@ -150,6 +175,7 @@ def main() -> int:
     check_phase_average(ledger)
     check_factorization(ledger)
     check_coherent_response_closure(ledger)
+    check_nonlinear_product_closure(ledger)
     check_simulation(ledger)
     check_mutations(ledger)
     return int(ledger.finish())

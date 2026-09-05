@@ -1,0 +1,22 @@
+...F                                                                     [100%]
+=================================== FAILURES ===================================
+____________ test_singular_cage_and_invalid_orbit_data_are_exposed _____________
+
+    def test_singular_cage_and_invalid_orbit_data_are_exposed():
+        with pytest.raises(ValueError, match="singular"):
+            affine_cage_rotation_map([[1, -1], [-1, 2]], 1)
+        with pytest.raises(ValueError, match="positive definite"):
+            reduce_euler_rotor_block(s.diag(1, -1, 1), 1, 1)
+        with pytest.raises(ValueError, match="nonzero"):
+            reduce_euler_rotor_block(s.eye(3), 0, 1)
+        with pytest.raises(ValueError, match="symmetric"):
+            reduce_euler_rotor_block([[1, 1, 0], [0, 1, 0], [0, 0, 1]], 1, 1)
+>       with pytest.raises(ValueError, match="finite"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'finite'
+E         Actual message: 'matrix must be symmetric 3x3'
+
+tests/test_euler_orbit.py:70: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_euler_orbit.py::test_singular_cage_and_invalid_orbit_data_are_exposed
+1 failed, 3 passed in 1.81s

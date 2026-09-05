@@ -1,0 +1,98 @@
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0047/principal_symbol.py", line 129, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0047/principal_symbol.py", line 38, in main
+    hessian[i, j] += sp.cancel(sp.expand(entry))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/polytools.py", line 7410, in cancel
+    c, (P, Q) = 1, F.cancel(G)
+                   ^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/rings.py", line 2325, in cancel
+    _, p, q = f.cofactors(g)
+              ^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/rings.py", line 2241, in cofactors
+    h, cff, cfg = f._gcd(g)
+                  ^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/rings.py", line 2276, in _gcd
+    return ring.dmp_inner_gcd(f, g)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/compatibility.py", line 677, in dmp_inner_gcd
+    H, F, G = dmp_inner_gcd(self.to_dense(f), self.to_dense(g), self.ngens-1, self.domain)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1598, in dmp_inner_gcd
+    h, cff, cfg = _dmp_inner_gcd(f, g, u, K)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1571, in _dmp_inner_gcd
+    return dmp_rr_prs_gcd(f, g, u, K)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1065, in dmp_rr_prs_gcd
+    fc, F = dmp_primitive(f, u, K)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1837, in dmp_primitive
+    cont, v = dmp_content(f, u, K), u - 1
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1812, in dmp_content
+    cont = dmp_gcd(cont, c, v, K)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1639, in dmp_gcd
+    return dmp_inner_gcd(f, g, u, K)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1598, in dmp_inner_gcd
+    h, cff, cfg = _dmp_inner_gcd(f, g, u, K)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1571, in _dmp_inner_gcd
+    return dmp_rr_prs_gcd(f, g, u, K)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1069, in dmp_rr_prs_gcd
+    c, _, _ = dmp_rr_prs_gcd(fc, gc, u - 1, K)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1066, in dmp_rr_prs_gcd
+    gc, G = dmp_primitive(g, u, K)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1837, in dmp_primitive
+    cont, v = dmp_content(f, u, K), u - 1
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1812, in dmp_content
+    cont = dmp_gcd(cont, c, v, K)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1639, in dmp_gcd
+    return dmp_inner_gcd(f, g, u, K)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1598, in dmp_inner_gcd
+    h, cff, cfg = _dmp_inner_gcd(f, g, u, K)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1571, in _dmp_inner_gcd
+    return dmp_rr_prs_gcd(f, g, u, K)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 1068, in dmp_rr_prs_gcd
+    h = dmp_subresultants(F, G, u, K)[-1]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 549, in dmp_subresultants
+    return dmp_inner_subresultants(f, g, u, K)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/euclidtools.py", line 512, in dmp_inner_subresultants
+    h = dmp_prem(f, g, u, K)
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/densearith.py", line 1238, in dmp_prem
+    G = dmp_mul_term(g, lc_r, j, u, K)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/densearith.py", line 184, in dmp_mul_term
+    return [ dmp_mul(cf, c, v, K) for cf in f ] + dmp_zeros(i, v, K)
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/densearith.py", line 828, in dmp_mul
+    coeff = dmp_add(coeff, dmp_mul(f[j], g[i - j], v, K), v, K)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/densearith.py", line 807, in dmp_mul
+    return dup_mul(f, g, K)
+           ^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/densearith.py", line 767, in dup_mul
+    coeff += f[j]*g[i - j]
+             ~~~~^~~~~~~~~
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/domains/gaussiandomains.py", line 98, in __mul__
+    x, y = self._get_xy(other)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/dan/substrate-framework/.venv/lib/python3.12/site-packages/sympy/polys/domains/gaussiandomains.py", line 65, in _get_xy
+    @classmethod
+
+KeyboardInterrupt
