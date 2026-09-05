@@ -1,0 +1,35 @@
+Command: env PYTHONPATH=src .venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0174/verify.py
+Exit status: 1
+PASS [P251-0174] compact-potential phase compensation is an exact physical curl identity
+PASS [P251-0174] full corrected preparation is exactly Bloch solenoidal
+PASS [P251-0174] omitting the Bloch curl term changes the actual displacement
+PASS [P251-0174] curved-arc phase compensation retains the full transport derivative
+PASS [P251-0174] frozen-tangent subtraction would leave a curvature derivative
+PASS [P251-0174] actual force-control map is the gradient Gram with correct sign
+PASS [P251-0174] three-dimensional comparison exposes a nonsingular return map
+PASS [P251-0174] all three force defects are removed by the solved return
+PASS [P251-0174] high toroidal harmonic has exactly zero Cartesian force shift-1
+PASS [P251-0174] high toroidal harmonic has exactly zero Cartesian force shift0
+PASS [P251-0174] high toroidal harmonic has exactly zero Cartesian force shift1
+PASS [P251-0174] low toroidal harmonic cannot use that cancellation
+PASS [P251-0174] full Euler stress symbol has degree1-minus-0 jet
+PASS [P251-0174] full Euler stress symbol has degree1-minus-1 jet
+PASS [P251-0174] full Euler stress symbol has degree1-minus-2 jet
+PASS [P251-0174] bare Kelvin projection really has the stronger second-jet singularity
+PASS [P251-0174] zero-integral initial force restores integrable inverse-first-power behavior
+PASS [P251-0174] second pressure jet is square integrable in three dimensions
+PASS [P251-0174] the same infrared argument is dimension-sensitive
+PASS [P251-0174] actual phase derivative0 has an admissible weighted L2 tail
+PASS [P251-0174] actual phase derivative1 has an admissible weighted L2 tail
+PASS [P251-0174] actual phase derivative2 has an admissible weighted L2 tail
+PASS [P251-0174] one common laboratory K gives the fourth Haar tensor
+PASS [P251-0174] the longitudinal/transverse weights use the actual kinetic mark
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0174/verify.py", line 94, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0174/verify.py", line 87, in main
+    ledger.check("actual preparation rather than rotated K supplies the axial tensor", second == normal * normal.T * sp.diff(clock(p), p, 2))
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0174] actual preparation rather than rotated K supplies the axial tensor

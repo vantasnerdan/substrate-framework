@@ -9,6 +9,8 @@ from dataclasses import dataclass
 
 import sympy as sp
 
+from substrate_framework import euler_fourier as ef
+
 
 def _positive(value, name):
     value = sp.sympify(value)
@@ -140,4 +142,124 @@ def axial_kelvin_initial_phase(wavevectors, sine_velocities, axial_wavenumber, d
     return AxialKelvinInitialPhase(
         *map(sp.ImmutableMatrix, (mass, stiffness, omega, hamiltonian)),
         sp.And(*conditions),
+    )
+
+
+def _stationary_response_inputs(background, pressure, direction, *macro_vectors):
+    """Validate exact periodic inputs; pressure is pressure divided by density."""
+    if len(background) != 3 or ef.divergence(background):
+        raise ValueError("background must have three solenoidal components")
+    if any(sp.simplify(v.get(ef.ZERO, 0)) != 0 for v in background):
+        raise ValueError("the prepared response requires a mean-zero background")
+    for field in (*background, pressure):
+        for wave, value in field.items():
+            if (len(wave) != 3 or any(sp.sympify(q).is_Rational is not True for q in wave)
+                    or sp.simplify(sp.sympify(value).conjugate()
+                                   - field.get(tuple(-q for q in wave), 0)) != 0):
+                raise ValueError("fields must be real, commensurate finite Fourier fields")
+    gradient = tuple(ef.derivative(pressure, i) for i in range(3))
+    advected = ef.transport(background, background)
+    if any(ef.add(advected[i], gradient[i]) for i in range(3)):
+        raise ValueError("the supplied pressure per density must satisfy stationary Euler")
+    kappa = sp.Matrix(direction)
+    vectors = [sp.Matrix(v) for v in macro_vectors]
+    if kappa.shape != (3, 1) or any(v.shape != (3, 1) for v in vectors):
+        raise ValueError("direction and macro vectors must have three components")
+    if any(q.is_real is False or q.is_finite is False
+           or q.has(sp.nan, sp.zoo, sp.oo, -sp.oo) for v in [kappa, *vectors] for q in v):
+        raise ValueError("macro vectors must be finite and real")
+    if sp.simplify(kappa.dot(kappa)-1) != 0:
+        raise ValueError("the Bloch direction must be a unit vector")
+    if any(sp.simplify(kappa.dot(v)) != 0 for v in vectors):
+        raise ValueError("macro preparation must be transverse to the common direction")
+    return kappa, vectors, gradient
+
+
+@dataclass(frozen=True)
+class PreparedAcousticCellRows:
+    """First-cell data: chi(0)=0, chi_t(0), and F(t)=F0+t*F1.
+
+    These rows enter chi_tt+2P(u.grad)chi_t+
+    P[(u.grad)^2+Hess(pressure/rho)]chi=F(t).
+    The pressure return is the full mean-preserving microscopic Leray.
+    No PDE evolution or autonomous constitutive closure is returned.
+    """
+
+    initial_rate: tuple
+    forcing_constant: tuple
+    forcing_rate: tuple
+
+
+def prepared_acoustic_cell_rows(background, pressure_per_density, direction, displacement, velocity):
+    """Derive the actual Kelvin-D / independent-common-V first-cell rows.
+
+    The Fourier convention is exp(i*q.x), K=k*direction and
+    eta=D+t*V+i*k*chi+O(k²). The two macro vectors are transverse;
+    their initial circulation classes are independently specified.
+    Inputs are exact real finite Fourier fields on a common periodic cell.
+    Symbolic coefficients denote fixed real physical parameters; the
+    defining reality and stationary Euler identities must simplify exactly.
+    """
+    kappa, (d, v), grad_p = _stationary_response_inputs(
+        background, pressure_per_density, direction, displacement, velocity)
+    a = ef.add(*(ef.scale(background[i], kappa[i]) for i in range(3)))
+    ud = ef.add(*(ef.scale(background[i], d[i]) for i in range(3)))
+    kp = ef.add(*(ef.scale(grad_p[i], kappa[i]) for i in range(3)))
+
+    def pressure_row(vector):
+        vp = ef.add(*(ef.scale(grad_p[i], vector[i]) for i in range(3)))
+        return tuple(ef.add(ef.scale(kp, vector[i]), ef.scale(vp, kappa[i]))
+                     for i in range(3))
+
+    initial = ef.leray(tuple(ef.add(ef.scale(a, -d[i]), ef.scale(ud, -kappa[i]))
+                             for i in range(3)))
+    fd = pressure_row(d)
+    constant = ef.leray(tuple(ef.add(fd[i], ef.scale(a, -2*v[i])) for i in range(3)))
+    return PreparedAcousticCellRows(initial, constant, ef.leray(pressure_row(v)))
+
+
+@dataclass(frozen=True)
+class ObservedAcousticCellRows:
+    """Coefficients of m_t/k² and (m-<eta>_t)/k², respectively."""
+
+    acceleration: sp.ImmutableMatrix
+    current_correction: sp.ImmutableMatrix
+
+
+def observed_acoustic_cell_rows(background, pressure_per_density, direction,
+                                zeroth_displacement, cell, cell_rate):
+    """Compute the physical second-jet stress and Lin current, not a closure.
+
+    ``cell`` and ``cell_rate`` must be mean-zero solenoidal Fourier fields.
+    For trajectory interpretation they must solve the actual first-cell
+    problem above; this algebraic function does not assume or verify that
+    evolution. The second unknown cell cancels by periodic integration by
+    parts. Both pressure rows and the separate harmonic slow projector are
+    retained. Current correction is to the mean MATERIAL displacement rate,
+    not to X_t when X is defined by integrating the Eulerian velocity mean.
+    """
+    kappa, (u0,), grad_p = _stationary_response_inputs(
+        background, pressure_per_density, direction, zeroth_displacement)
+    for field in (cell, cell_rate):
+        if len(field) != 3 or ef.divergence(field) or any(
+                sp.simplify(component.get(ef.ZERO, 0)) != 0 for component in field):
+            raise ValueError("first cell and its rate must be mean-zero and solenoidal")
+    a = ef.add(*(ef.scale(background[i], kappa[i]) for i in range(3)))
+    kchi = ef.add(*(ef.scale(cell[i], kappa[i]) for i in range(3)))
+    krate = ef.add(*(ef.scale(cell_rate[i], kappa[i]) for i in range(3)))
+    kp = ef.add(*(ef.scale(grad_p[i], kappa[i]) for i in range(3)))
+
+    def mean_product(left, right):
+        return ef.mul(left, right).get(ef.ZERO, 0)
+
+    force = sp.Matrix([
+        mean_product(a, a)*u0[i] + mean_product(a, cell_rate[i])
+        + mean_product(background[i], krate) + mean_product(kp, cell[i])
+        + mean_product(grad_p[i], kchi) for i in range(3)])
+    correction = sp.Matrix([-mean_product(a, cell[i])+mean_product(background[i], kchi)
+                            for i in range(3)])
+    slow = sp.eye(3)-kappa*kappa.T
+    return ObservedAcousticCellRows(
+        sp.ImmutableMatrix(sp.simplify(slow*force)),
+        sp.ImmutableMatrix(sp.simplify(slow*correction)),
     )

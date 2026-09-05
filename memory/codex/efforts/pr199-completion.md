@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T11:08:47+02:00'
+updated: '2026-09-05T12:33:08+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -27,7 +27,17 @@ The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
-Newest local governed release is v0.177.0 with265 accepted claims:
+Newest local governed release is v0.178.0 with266 accepted claims.
+Independent0173 accepts C-CST-013 without correction: the actual prepared
+physical mean pressure/current cancellation licenses uniform-period
+second-jet transfer to a selected same-EPS field.0177's four new direct
+API tests pass first execution;0178's semantic audit preserves all265
+prior claim objects and all five earlier acoustic definitions. Its fixed
+canonical validation passes:266 accepted claims,1054 valid memory files,
+43 unchanged warnings, all fixed checks. Full time-dependent action and
+physical current terms remain explicit; no full suite is repeated.
+
+The preceding v0.177.0 checkpoint contains:
 C-CST-011 is the reviewed physical finite optical packet, and new
 C-CST-012 is the independently reviewed actual triangular planar-array
 acoustic-time theorem.0167's five direct tests and0162's thirteen affected
@@ -38,7 +48,7 @@ inverted translational response for the constant-curl lift and continues
 the generalized Bernoulli-profile repair.0164 retains the actual
 all-time tagged current and0166 derives optics on the same core geometry.
 
-Latest pushed research checkpoint:dbf0c04.0127's full integrated backstop
+Latest pushed research checkpoint:dfe495c.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
@@ -152,7 +162,7 @@ its constant-curl lift is a distinct transfer with full axial terms retained.
 Root completes reviewed packet integration and continues the common
 continuum join. b6257a6's committed selector is fixed-only and agrees
 with0149's banked fixed-check receipt. Latest issue progress link:
-https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5550665717.
+https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5550946812.
 
 Post-checkpoint construction:0155 fixed-cell calibrated optical proof
 and cutoff addendum are frozen;0158 supplies actual15 exterior moment
@@ -165,6 +175,47 @@ with one preserved assertion-only repair. Active next routes are0163
 constant-curl triangular acoustics,0164 all-time physical joint current,
 and0166 optics on the same actual triangular lifted field. They are
 registered and centrally validated; none inherits parent completion.
+
+Post-dfe495c:0166 is frozen with30 exact checks, ordinary Euclidean
+m2/n2 optical material angle/spin on the actual triangular core and a
+three-carrier-jet cutoff repair.0163 derives fixed-C generalized-profile
+acoustic correctors after its full constant-curl cosh sign result.
+0164 has protected O(3) physical configuration jets, the actual I_tag
+acoustic spin/current and a two-annulus optical-current construction.
+Root's exact P(n cross u)=-(partial_n u)/lambda identity is being used
+there to replace the curved-EPS nonlocal-pressure gap by a local Lin
+trajectory bound.0170 derives response-specific C2 bulk transfer rather
+than assuming a general Bloch-operator norm bound.0169 records primary
+localization/ring source licenses, six exact checks and the precise
+pressure-cutoff/disjoint-static-interaction route mechanisms. The full
+same-EPS coupled continuum remains active, not exhausted or complete.
+
+Next frozen progress:0163 proves positive fixed-C generalized-profile
+acoustics, and0171 supplies optics on that SAME periodic field (32 exact
+checks), without claiming Euclidean EPS transfer.0164's exact affine
+constant-curl pressure identity and local Lin correction are frozen.
+0170's same-EPS acoustic transfer has19 exact checks and independent0173
+acceptance.0174 supplies actual common-vector optical paired sidebands,
+finite compact-potential corrections and retained pressure/harmonic tails
+(30 exact checks). Its1/5,3/5 orientation factors apply to full action jets,
+not to independently eliminated squared frequencies.
+
+0175 derives actual isotropic stress memory on a smooth two-wave Beltrami
+field: the bare Kelvin-D response has R_D''(0)=0 but R_D''''(0)=-2/25 at
+unit amplitudes. Full Fourier products and two independent contractions
+give23 exact checks; no numerical truncation is used. This refutes only
+automatic temporal closure for that preparation, not C-CST-013 or every
+joint Cosserat realization. Root continues the actual stationary/current
+corrector in0179;0176 tests physical band edges and stationary observations
+after initial two-annulus slope matching develops a real time dependence.
+0172 joins the full action, gradient masses and actual I_tag/G/spin rows.
+0180 retains its inherited Euler/Lin stress kernel and tests whether
+physical angle/spin moments close it. Isolated-mean autonomy is not added
+as a condition on a genuinely coupled theory. The campaign remains active.
+
+GitNexus refreshed after dfe495c on the active worktree:46850 nodes,
+73611 edges,767 clusters,2 flows. Direct source checks still cover omitted
+large registry/import surfaces. This index is navigation, not authority.
 
 ## Accepted Baseline
 

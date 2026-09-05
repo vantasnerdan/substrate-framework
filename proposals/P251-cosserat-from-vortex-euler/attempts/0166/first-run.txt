@@ -1,0 +1,25 @@
+Command: env PYTHONPATH=src .venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0166/verify.py
+Exit: 1
+Wall time: 2.583672096 s
+
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0166/verify.py", line 110, in <module>
+PASS [P251-0166] actual triangular field is incompressible
+PASS [P251-0166] all components have the same constant curl eigenvalue
+PASS [P251-0166] full stationary Euler pressure including axial field
+PASS [P251-0166] actual circular core Hessian
+PASS [P251-0166] axial core speed is derived, not prescribed
+PASS [P251-0166] full sixth-order Cartesian triangular jet
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0166/verify.py", line 34, in main
+    ledger.check("first nonradial term really is harmonic six", sp.diff(sixth_harmonic, x, 2) + sp.diff(sixth_harmonic, y, 2) == 0)
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0166] first nonradial term really is harmonic six
+
+Diagnosis: the two differentiated polynomial expressions cancel after
+expansion; structural equality was tested before that exact algebraic
+normalization. Repair only the zero comparison with sp.expand. The
+background and sixth-order jet checks passed before this implementation
+failure. It is not a harmonic or physical failure.

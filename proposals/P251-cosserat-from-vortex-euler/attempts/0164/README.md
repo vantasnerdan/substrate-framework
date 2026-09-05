@@ -27,4 +27,16 @@ After a route verdict continue the next failure-generated candidate.
 Use exact identities first and targeted exposing checks only, preserving
 first execution. Parent objective stays active after this child closes.
 
-Status: preregistered; central schema validation precedes implementation.
+Status: parent confirmed central schema validation (264 accepted claims)
+before implementation. Parent subsequently registered and validated the
+whole-field equal-weight mirror extension. This is an additional declared
+ensemble premise, not a consequence of SO(3) plus time reversal. Reflect
+the entire Euler field, material tags, polar positions, axial angles/spin
+and phase preparations together; no independently reflected pieces occur.
+
+Failure-generated observer continuation: a single fixed physical annulus
+has negative leading carrier curvature despite a favorable instantaneous
+clock. Two positive material-weight annuli straddling a simple actual mode
+node are tested instead. The signed response comes from the Euler mode,
+not negative material density. Their fixed-radius carrier derivatives,
+clock variance, exact material moment controls and conditioning are retained.

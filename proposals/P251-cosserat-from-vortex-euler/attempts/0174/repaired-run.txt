@@ -1,0 +1,31 @@
+Command: env PYTHONPATH=src .venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0174/verify.py
+Exit status: 0
+Implementation repair: evaluate SymPy Subs(Derivative(...)) with doit() before structural equality. The raw difference simplified to zero before the repair; no mathematical predicate or selected formula changed.
+PASS [P251-0174] compact-potential phase compensation is an exact physical curl identity
+PASS [P251-0174] full corrected preparation is exactly Bloch solenoidal
+PASS [P251-0174] omitting the Bloch curl term changes the actual displacement
+PASS [P251-0174] curved-arc phase compensation retains the full transport derivative
+PASS [P251-0174] frozen-tangent subtraction would leave a curvature derivative
+PASS [P251-0174] actual force-control map is the gradient Gram with correct sign
+PASS [P251-0174] three-dimensional comparison exposes a nonsingular return map
+PASS [P251-0174] all three force defects are removed by the solved return
+PASS [P251-0174] high toroidal harmonic has exactly zero Cartesian force shift-1
+PASS [P251-0174] high toroidal harmonic has exactly zero Cartesian force shift0
+PASS [P251-0174] high toroidal harmonic has exactly zero Cartesian force shift1
+PASS [P251-0174] low toroidal harmonic cannot use that cancellation
+PASS [P251-0174] full Euler stress symbol has degree1-minus-0 jet
+PASS [P251-0174] full Euler stress symbol has degree1-minus-1 jet
+PASS [P251-0174] full Euler stress symbol has degree1-minus-2 jet
+PASS [P251-0174] bare Kelvin projection really has the stronger second-jet singularity
+PASS [P251-0174] zero-integral initial force restores integrable inverse-first-power behavior
+PASS [P251-0174] second pressure jet is square integrable in three dimensions
+PASS [P251-0174] the same infrared argument is dimension-sensitive
+PASS [P251-0174] actual phase derivative0 has an admissible weighted L2 tail
+PASS [P251-0174] actual phase derivative1 has an admissible weighted L2 tail
+PASS [P251-0174] actual phase derivative2 has an admissible weighted L2 tail
+PASS [P251-0174] one common laboratory K gives the fourth Haar tensor
+PASS [P251-0174] the longitudinal/transverse weights use the actual kinetic mark
+PASS [P251-0174] actual preparation rather than rotated K supplies the axial tensor
+force Gram=Matrix([[4, 0, 0], [0, 9, 0], [0, 0, 1]]); solved finite correction=[1/28, -2/45, 3/11]
+infrared squared norm=4*pi*h; orientation weights=3/5, 1/5
+ALL 25 CHECKS PASS [P251-0174]
