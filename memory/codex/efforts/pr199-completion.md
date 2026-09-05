@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T03:46:55+02:00'
+updated: '2026-09-05T04:30:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -285,6 +285,55 @@ action. The latter must derive physical fluctuation spin and Kelvin
 reduction from the new material metric, not identify it with an old
 coadjoint coefficient by name. Full parent completion and promotion remain
 unearned; execution continues beyond the checkpoint.
+
+Checkpoint861da15 is pushed; its fixed-check and child-verifier receipt is
+0092/README.md. The canonical changed-file selector reported fixed-only
+against b8fe186...861da15. Main's user-owned worktree remains untouched.
+
+0085 now constructs actual compact induced velocities inside invariant
+EPS tubes by an exact order-six differential syzygy: ranks235/236/238
+have exact arithmetic and an analytic universal bound. The corrected WKB
+symbol retains its quadrature return, supplies positive coadjoint H and
+nonzero KKS, and attaches a physical core angle plus exact mechanical-spin
+rows. Its16 structural and9 WKB checks pass. The final pair is compact in
+BOTH generator and induced velocity, not an exterior-pressure-tail model.
+0096 derives zero-spin compact gradient/strain cages with arbitrarily
+large finite optical ratio after full momentum reduction;22 checks pass.
+
+The materially distinct0091 route constructs A=M=j from a finite moment
+root and positive true Jacobi stiffness;14 checks pass. 0093 retains its
+added gradient inertia and physical filters (23 checks), and0094 derives
+positive material shear while retaining the negative bare Euler background
+term. These positive material coefficients are not copied into orbit H.
+0087 constructs an actual volume-preserving mean and retains its complete
+fluctuation/shape maps (17 checks), without naming its spin a rotor inertia.
+
+0095 closes the exact restriction-versus-reduction calculation, not the
+parent objective: the actual complement gives a Volterra memory equation,
+a full frequency-dependent Schur action and the SAME corrected physical
+observation (14 exact checks). The original N3 nonaffine exclusion licenses
+a conditional constitutive action. It does not prove unrestricted Euler
+response has no memory; no new nonlinear/all-k invariance condition is
+being imposed. The user was asked asynchronously to distinguish the
+original exact-conditional target from the stronger unrestricted dynamical
+realization while work continues on both. No scope change is assumed.
+
+Main0098 gives uniform positive-probability stationary compact assembly,
+an explicit compact-fiber measurable invariant-domain selection, and the
+exact Fourier hybrid/point momentum map with its finite third-order
+remainder. A domain mark alone is not used as a measurability proof.
+0097 continues the actual tagged material/cotangent join, including the
+exact Galilean translation mass rho and all slow-gradient terms. 0101
+investigates genuine Euler-compatible core-angle dynamics from the exact
+complement, rather than assuming zero initial complement stays absent.
+
+0100 extracts conditional euler_fourier.py and16 targeted tests. Main's
+integration check caught a sign that the norm identity H-K=rho||A||²
+could not see: fixed-Kelvin reconstruction uses A=v-curl(xi cross u),
+not its negative. The corrected API and an independent signed zero-mode
+test pass; all earlier outputs and the correction receipt are preserved.
+No existing API, claim, release or PR head has been changed by this utility.
+The full objective and promotion remain active, not inferred from counts.
 
 ## Cross-References
 
