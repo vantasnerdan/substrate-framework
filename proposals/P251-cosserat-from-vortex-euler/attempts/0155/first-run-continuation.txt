@@ -1,0 +1,22 @@
+Command: env PYTHONPATH=src .venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0155/verify_continuation.py
+Exit: 0
+Wall time: 2.48017676 s
+
+PASS [P251-0155-continuation] general Laguerre second moment
+PASS [P251-0155-continuation] positive slow clock enforces one-third overlap bound
+PASS [P251-0155-continuation] half-overlap has a fixed analytic margin
+PASS [P251-0155-continuation] larger actual parcel initial spin functional
+PASS [P251-0155-continuation] parcel overlap increases monotonically with outer radius
+PASS [P251-0155-continuation] six actual radial time/carrier functionals independent
+PASS [P251-0155-continuation] reference and background rows extend the actual moment rank
+PASS [P251-0155-continuation] computed second-order source keeps finite angular grading
+eight-row moment Wronskian=21793729569341556988161*x**8/41943040 - 152556106985390898917127*x**7/2621440 + 1373004962868518090254143*x**6/524288 - 5034351530517899664265191*x**5/81920 + 427919880094021471462541235*x**4/524288 - 407782473971949872805480471*x**3/65536 + 860874111718560842589347661*x**2/32768 - 226545818873305484891933595*x/4096 + 2854477317803649109638363297/65536
+second-order opposite resonant source=0
+The printed source is a continuation diagnostic, not an eigenvalue or spectral verdict.
+ALL 8 CHECKS PASS [P251-0155-continuation]
+
+Post-run implementation diagnosis: the intended zero-point Wronskian
+still contained x because the unexpanded row x*P was passed to .coeff.
+The rank check is re-executed after expanding every row, with an explicit
+constant-jet assertion. This first receipt is preserved rather than
+silently treating its unexpected polynomial as the intended scalar.

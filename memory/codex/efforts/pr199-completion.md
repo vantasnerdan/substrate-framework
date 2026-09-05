@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T10:24:53+02:00'
+updated: '2026-09-05T11:08:47+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -27,7 +27,18 @@ The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
-Latest pushed research checkpoint:b6257a6.0127's full integrated backstop
+Newest local governed release is v0.177.0 with265 accepted claims:
+C-CST-011 is the reviewed physical finite optical packet, and new
+C-CST-012 is the independently reviewed actual triangular planar-array
+acoustic-time theorem.0167's five direct tests and0162's thirteen affected
+phase tests pass;0168's fixed registry/generated/memory checks pass with
+all264 prior claim records unchanged. No full suite was rerun.
+The planar theorem does not assert lifted stability:0163 finds an
+inverted translational response for the constant-curl lift and continues
+the generalized Bernoulli-profile repair.0164 retains the actual
+all-time tagged current and0166 derives optics on the same core geometry.
+
+Latest pushed research checkpoint:dbf0c04.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
@@ -141,7 +152,19 @@ its constant-curl lift is a distinct transfer with full axial terms retained.
 Root completes reviewed packet integration and continues the common
 continuum join. b6257a6's committed selector is fixed-only and agrees
 with0149's banked fixed-check receipt. Latest issue progress link:
-https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5550143460.
+https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5550665717.
+
+Post-checkpoint construction:0155 fixed-cell calibrated optical proof
+and cutoff addendum are frozen;0158 supplies actual15 exterior moment
+controls and a41st in-tag displacement row, positive initial physical
+mass and the complete retained joint action.0161 proves an actual
+triangular planar-array bounded group and acoustic-time response.
+Root independently reviews that new theorem in0165 (C-CST-012 reserved).
+0162's additive coupled physical chart has13/13 affected tests passing
+with one preserved assertion-only repair. Active next routes are0163
+constant-curl triangular acoustics,0164 all-time physical joint current,
+and0166 optics on the same actual triangular lifted field. They are
+registered and centrally validated; none inherits parent completion.
 
 ## Accepted Baseline
 
@@ -159,6 +182,13 @@ Inherit N1–N7 and L1–L5 from the validated proposal, without reducing the
 objective. N2/N3 are active. First repair the Euler momentum correspondence;
 then construct angle-dependent interaction and its reduced action; replay
 N3–N7, review each proposed claim and promote supported full results.
+
+User instruction on2026-09-05 after dbf0c04: validation follows the actual
+blast radius; routine full runs are unnecessary. Reuse the completed
+0160 full receipt, and select changed definitions/claims plus their direct
+and impact-bounded downstream consumers. A conservative selector requesting
+a full run solely for registry/release metadata is not a reason to repeat
+the entire suite under this instruction. Record the actual scoped decision.
 
 ## Candidate Set and Analytic Receipt
 

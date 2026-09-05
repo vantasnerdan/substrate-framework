@@ -163,3 +163,96 @@ def physical_scalar_chart(symplectic, generator, angle, *, angle_rate,
         *map(_immutable, (coordinates, chart_generator, phase, hamiltonian)),
         *map(sp.simplify, (wronskian, mass, mass_rate, stiffness,
                           spin_row[0, 1], spin_row[0, 0], bracket)))
+
+
+@dataclass(frozen=True)
+class PhysicalConfigurationChart:
+    """Complete physical position/rate phase action, without imposed closure.
+
+    Where ``ordinary_action_condition`` holds throughout the time window,
+    L=v.T*mass*v/2-q.T*gyroscopic_form*v/2-q.T*stiffness*q/2 is an
+    ordinary mechanical action. Its canonical momentum is [A/2,M]*(q,v).
+    Otherwise the full returned phase action remains valid, including its
+    nonzero rate/rate symplectic block; the candidate mechanical blocks do
+    not supply a second-order Lagrangian. No positivity is inferred.
+    """
+
+    coordinates: sp.ImmutableMatrix
+    generator: sp.ImmutableMatrix
+    symplectic: sp.ImmutableMatrix
+    symplectic_rate: sp.ImmutableMatrix
+    hamiltonian: sp.ImmutableMatrix
+    configuration_bracket: sp.ImmutableMatrix
+    rate_rate_form: sp.ImmutableMatrix
+    ordinary_action_condition: sp.Expr
+    mass: sp.ImmutableMatrix
+    stiffness: sp.ImmutableMatrix
+    gyroscopic_form: sp.ImmutableMatrix
+    canonical_momentum: sp.ImmutableMatrix
+    measured_momentum: sp.ImmutableMatrix
+    momentum_difference: sp.ImmutableMatrix
+
+
+def physical_configuration_chart(symplectic, generator, configuration, *,
+                                 configuration_rate, configuration_acceleration,
+                                 generator_rate, momentum):
+    """Chart n actual physical observations and rates on a 2n-dimensional phase.
+
+    This is conditional, unpromoted infrastructure (P251/0162). Omega is
+    constant, nondegenerate and skew. B and Bdot are Hamiltonian for Omega.
+    C, Cdot, Cddot and P are actual position and measured-momentum rows;
+    their microscopic meanings and true derivatives are caller obligations.
+    An exact algebraic condition records whether positions form an ordinary
+    mechanical configuration throughout the chosen window. Checking that
+    condition only at one time does not establish its all-time hypothesis.
+
+    Every moving term is obtained through moving_phase_pullback. No Euler
+    invariant family, moment matching, spin normalization, kinetic sign or
+    autonomous continuum is inferred by this finite-dimensional identity.
+    """
+    omega = _matrix(symplectic, "symplectic form")
+    if (omega.rows != omega.cols or not omega.rows or omega.rows % 2
+            or not _zero(omega+omega.T)):
+        raise ValueError("symplectic form must be nonempty, even-dimensional and skew")
+    if sp.simplify(omega.det()).is_zero is True:
+        raise ValueError("symplectic form must be nondegenerate")
+    n = omega.rows // 2
+    b = _matrix(generator, "generator")
+    bd = _matrix(generator_rate, "generator rate")
+    for matrix in (b, bd):
+        if matrix.shape != omega.shape or not _zero(matrix.T*omega+omega*matrix):
+            raise ValueError("generator and its rate must be Hamiltonian for Omega")
+    c, cd, cdd, measured = [_matrix(value, name) for value, name in (
+        (configuration, "configuration"),
+        (configuration_rate, "configuration rate"),
+        (configuration_acceleration, "configuration acceleration"),
+        (momentum, "measured momentum"),
+    )]
+    if any(row.shape != (n, 2*n) for row in (c, cd, cdd, measured)):
+        raise ValueError("configuration, derivatives and momentum must be n by 2n")
+    rate = cd+c*b
+    coordinates = c.col_join(rate)
+    coordinates_rate = cd.col_join(cdd+cd*b+c*bd)
+    if sp.simplify(coordinates.det()).is_zero is True:
+        raise ValueError("physical configuration/rate chart must be nondegenerate")
+    inverse = coordinates.inv()
+    inverse_rate = -inverse*coordinates_rate*inverse
+    pulled = moving_phase_pullback(omega, -omega*b, inverse, inverse_rate)
+    phase, phase_rate, h = pulled.symplectic, pulled.symplectic_rate, pulled.hamiltonian
+    mass = phase[:n, n:]
+    mass_rate = phase_rate[:n, n:]
+    magnetic = phase[:n, :n]
+    stiffness = h[:n, :n]
+    rate_form = phase[n:, n:]
+    # Its derivative matters: initial position commutation alone need not
+    # persist and need not even give a symmetric instantaneous mass block.
+    obstruction = sp.Matrix.hstack(rate_form, phase_rate[n:, n:], mass-mass.T,
+                                  h[n:, n:]-mass, h[:n, n:]-mass_rate/2)
+    condition = sp.And(*(sp.Eq(sp.simplify(value), 0) for value in obstruction))
+    canonical = sp.Matrix.hstack(magnetic/2, mass)
+    actual = measured*inverse
+    return PhysicalConfigurationChart(
+        *map(_immutable, (coordinates, pulled.generator, phase, phase_rate, h,
+                          -c*omega.inv()*c.T, rate_form)), condition,
+        *map(_immutable, (mass, stiffness, magnetic, canonical, actual, actual-canonical)),
+    )
