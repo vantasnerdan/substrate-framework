@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T14:27:00+02:00'
+updated: '2026-09-05T14:54:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -27,7 +27,29 @@ The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
-Newest local governed release is v0.179.0 with267 accepted claims.
+Newest local governed release is v0.180.0 with268 accepted claims.
+Independent0197 accepts C-CST-015 without correction: actual finite
+Euler displacement preparation has positive physical restoring response
+equal to its inherited D energy and initial rho phase.0199's reusable
+field/return/energy/current API passes10 direct tests. An additional NaN
+probe and its domain-only repair are preserved. Semantic audit leaves
+all267 prior claims and184 old source files unchanged. Fixed checks pass:
+268 accepted,1058 memory files,43 existing warnings; no full suite.
+The common-V history and full parent closure are not inferred.
+
+New frozen0195 constructs a small-swirl closed ring with positive mode/
+current, and a genuine smooth generalized-force-free endpoint with a
+nonzero twisted core by a uniform large-R Green homotopy (35 exact
+checks). The endpoint optical operator changes by O(1), so0201 actively
+constructs its own mode and physical flux/current.0198 derives an actual
+pressure-localizable thin-ring supplier and its full annular radial
+operator (11 exact checks after a terminal-reporting-only repair);
+0200 constructs its actual optical mode/current.0196 now retains true
+external-current configuration returns, full phase and energy, and their
+finite-window/continuum-limit distinction. These remain active research,
+not separate examples asserted to be the same completed continuum.
+
+The preceding local v0.179.0 checkpoint has267 accepted claims.
 Independent0190 accepts C-CST-014 after0191's single transverse-frame
 correction: actual smooth nodal column modes and positive stationary
 tags supply a correlated optical response whose stationary second-jet
@@ -103,7 +125,7 @@ inverted translational response for the constant-curl lift and continues
 the generalized Bernoulli-profile repair.0164 retains the actual
 all-time tagged current and0166 derives optics on the same core geometry.
 
-Latest pushed research checkpoint:6131db5.0127's full integrated backstop
+Latest pushed research checkpoint:ee0502c.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
@@ -217,7 +239,7 @@ its constant-curl lift is a distinct transfer with full axial terms retained.
 Root completes reviewed packet integration and continues the common
 continuum join. b6257a6's committed selector is fixed-only and agrees
 with0149's banked fixed-check receipt. Latest issue progress link:
-https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5551246147.
+https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5551811173.
 
 Post-checkpoint construction:0155 fixed-cell calibrated optical proof
 and cutoff addendum are frozen;0158 supplies actual15 exterior moment

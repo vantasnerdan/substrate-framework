@@ -92,3 +92,26 @@ attempt's checks alone are the scientific replay boundary; no full suite.
 
 The root registers this exact expansion and validates the matching central
 proposal before new source bodies or substantive derivations are opened.
+
+## Append-only execution license and failure-derived refinement
+
+The root reported central registration and schema success for 266 claims,
+266 accepted entries, 12 proposals and four skills before substantive work.
+The exact swirl transport gives chi_t=chi_0(I,varphi-V(I)t), exposing why
+generic finite-arc tags shear. Candidate A therefore includes an explicit
+inner-supported swirl law that vanishes on open neighborhoods of the two
+positive tag annuli. This constructs true stationary material tags while
+preserving a nonzero periodic core and twisted inner tori on the same field.
+The tag annuli are not relabeled as lying inside the inner KAM boundary.
+This is a profile/observable repair inside the frozen candidate, not a
+change to the parent objective or an omitted transport term.
+
+The same source equation generates a materially different Candidate B
+construction: G(phi)^2=2 integral_0^phi f, F=R sqrt(tau)G and
+B'=-(1-tau)f/R give a full Green source
+[1-tau+tau R²/r²]f, uniformly close to the no-swirl source at large R
+for every tau in [0,1]. The root explicitly authorized executing this
+global generalized-force-free endpoint route here. Source square-root
+flatness, global axis regularity and the actual O(1) optical-operator
+change are retained. This expands the construction, not its completion
+claim or its validation radius.
