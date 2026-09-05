@@ -83,3 +83,83 @@ def moving_phase_pullback(symplectic, hamiltonian, embedding, embedding_rate):
     return MovingPhasePullback(*map(_immutable, (
         reduced_omega, omega_rate, effective_h, generator,
         coordinates, projection, residual)))
+
+
+@dataclass(frozen=True)
+class PhysicalScalarChart:
+    """Actual scalar angle/rate action and separately measured spin.
+
+    ``coordinates`` maps the original phase to (theta, theta_dot).
+    The scalar action is mass*theta_dot**2/2-stiffness*theta**2/2.
+    Its equation includes mass_rate*theta_dot. The measured spin is
+    spin_inertia*theta_dot+spin_connection*theta; it equals canonical
+    momentum only with the independently checked normalization/current.
+    """
+
+    coordinates: sp.ImmutableMatrix
+    generator: sp.ImmutableMatrix
+    symplectic: sp.ImmutableMatrix
+    hamiltonian: sp.ImmutableMatrix
+    wronskian: sp.Expr
+    mass: sp.Expr
+    mass_rate: sp.Expr
+    stiffness: sp.Expr
+    spin_inertia: sp.Expr
+    spin_connection: sp.Expr
+    angle_spin_bracket: sp.Expr
+
+
+def physical_scalar_chart(symplectic, generator, angle, *, angle_rate,
+                          angle_acceleration, generator_rate, spin):
+    """Derive a two-dimensional physical observation chart, P251 frontier.
+
+    Omega is constant, invertible and skew; B and Bdot are Hamiltonian
+    for Omega. c, cdot, cddot and s are actual 1x2 angle/derivative/spin
+    rows on zdot=Bz. The caller supplies their true derivatives and
+    microscopic meaning; this algebra cannot license those observations.
+    Undecidable symbolic nondegeneracy remains a caller hypothesis.
+
+    A nonzero angle row need not give a chart: det[c;cdot+cB] must be
+    nonzero. Positivity of mass or spin_inertia is not inferred, and their
+    equality is not imposed. All moving-action and measured-current terms
+    are returned, including when a winding changes the physical clock.
+    """
+    omega = _matrix(symplectic, "symplectic form")
+    b = _matrix(generator, "generator")
+    bd = _matrix(generator_rate, "generator rate")
+    if omega.shape != (2, 2) or not _zero(omega+omega.T):
+        raise ValueError("symplectic form must be two by two and skew")
+    if sp.simplify(omega.det()).is_zero is True:
+        raise ValueError("symplectic form must be nondegenerate")
+    for matrix in (b, bd):
+        if matrix.shape != (2, 2) or not _zero(matrix.T*omega+omega*matrix):
+            raise ValueError("generator and its rate must be Hamiltonian for Omega")
+    c, cd, cdd, measured = [_matrix(value, name) for value, name in (
+        (angle, "angle"), (angle_rate, "angle rate"),
+        (angle_acceleration, "angle acceleration"), (spin, "spin"))]
+    if any(row.shape != (1, 2) for row in (c, cd, cdd, measured)):
+        raise ValueError("angle, its derivatives and spin must be one by two rows")
+    d = cd+c*b
+    dd = cdd+cd*b+c*bd
+    coordinates = c.col_join(d)
+    coordinates_rate = cd.col_join(dd)
+    wronskian = sp.simplify(coordinates.det())
+    if wronskian.is_zero is True:
+        raise ValueError("physical angle/rate Wronskian must be nonzero")
+    inverse = coordinates.inv()
+    phase = inverse.T*omega*inverse
+    chart_generator = (coordinates_rate+coordinates*b)*inverse
+    mass = sp.simplify(phase[0, 1])
+    # Differentiating T^-T*Omega*T^-1 at constant Omega gives the complete
+    # physical mass rate. The scalar damping is -mass_rate/mass.
+    inverse_rate = -inverse*coordinates_rate*inverse
+    phase_rate = inverse_rate.T*omega*inverse+inverse.T*omega*inverse_rate
+    mass_rate = sp.simplify(phase_rate[0, 1])
+    stiffness = sp.simplify(-mass*chart_generator[1, 0])
+    hamiltonian = -phase*chart_generator-phase_rate/2
+    spin_row = measured*inverse
+    bracket = -(c*omega.inv()*measured.T)[0]
+    return PhysicalScalarChart(
+        *map(_immutable, (coordinates, chart_generator, phase, hamiltonian)),
+        *map(sp.simplify, (wronskian, mass, mass_rate, stiffness,
+                          spin_row[0, 1], spin_row[0, 0], bracket)))

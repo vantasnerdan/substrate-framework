@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T06:00:39+02:00'
+updated: '2026-09-05T06:56:22+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -26,6 +26,23 @@ periodic/Bloch backgrounds with the actual centroid/ambient response.
 The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
+
+Latest pushed research checkpoint:959db88.0122's full integrated backstop
+passes2576 tests in359.72s, with all fixed checks;263 accepted claims
+remain unchanged.0119's physical charts,0120's fixed-lambda force-free
+torus and0123's actual compact reference-time moment match are now frozen.
+0123 retains a controlled finite-time spin/shape remainder.0126 joins
+actual laboratory time-reversed profiles and their isotropic angle
+reconstruction;0127 extracts the physical chart into a tested API and
+passes2580 tests in361.42s plus every fixed repository check.0124 now
+transfers through an actual affine Euler core jet with controlled global
+nonlocal pressure and transported-tag errors. Active0125/0128 construct
+the spatial response and an admissible three-Omega sideband correction;
+0129 explores the independent low-frequency translational branch.
+0121's frequency-average
+counterexample and0125's additional physical-polarization line are route
+results, not campaign exhaustion. No autonomous full constitutive claim
+has been added by these attempts.
 
 ## Accepted Baseline
 
@@ -59,10 +76,11 @@ neither an elastic potential nor its canonical coordinate/kinetic metric.
 Codex owns repair implementation and attempt 0029+. An independent analytic
 worker explores orientation interactions read-only, following AGENTS.md's
 parallel replacement-candidate instruction. Existing attempts stay immutable.
-GitNexus indexes this worktree as pr199-completion at223f131; direct rg
+GitNexus indexes this worktree as pr199-completion at959db88; direct rg
 supplies omitted test/attempt call edges. The additive0115 euler_phase
-and0117 euler_observation APIs have only their own tests and0114's new
-direct import as consumers. They are unpromoted infrastructure; accepted
+and0117 euler_observation APIs have their own tests and0114/0119/0126
+direct imports as consumers.0127 adds the physical scalar chart without
+changing the prior pullback. They are unpromoted infrastructure; accepted
 008..010 definitions and statements are unchanged by this continuation.
 
 ## Attempts and Validation

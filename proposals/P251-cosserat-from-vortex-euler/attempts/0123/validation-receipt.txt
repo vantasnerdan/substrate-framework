@@ -1,0 +1,22 @@
+Scientific oracle command:
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0123/verify.py
+First execution: exit 0, 24/24 checks, 2.397130788 seconds.
+Output retained in first-run.txt.
+
+Initial lint command:
+ruff check proposals/P251-cosserat-from-vortex-euler/attempts/0123/verify.py
+Exit 1: E731 for two assigned lambda functions, polynomial and rot.
+Correction: replace each lambda by an identical local def/return.
+No scientific formula, input, or predicate changed; no scientific rerun.
+
+Corrected lint command: same command.
+Exit 0.
+All checks passed!
+
+Whitespace check: git diff --no-index --check /dev/null on new proof.
+No whitespace diagnostics. Exit 1 denotes a new-file diff.
+
+Final verifier SHA256:
+2378d18332f67b7e35b6380ce4c6c1fa0b71f73f5a21b118cc0b6298bfa96e59
+
+Parent's concurrent full validation is not this attempt's oracle.
