@@ -171,3 +171,32 @@ with common exact core/edge can tune a simple zero; its signed transition g
 is essential. Exact symbolic corroboration passes first run exit0. This is
 a constructive scalar border, not a finite-ring existence theorem. Geometry
 continues the actual inverse; the full campaign and main landing stay open.
+
+0258 computes the retained Bessel-core twist directly: for normalized
+velocity flux J_u=c rho J1(lambda rho), the derivative of rotation_number/R
+at the core is lambda^2/(8c), and the vorticity-flux convention divides by
+lambda. Exact symbolic corroboration passes first run exit0. Actual finite-R
+contour quadratures preserve this on a fixed regular core annulus under C4
+convergence; no long-time trajectory estimate or extra twist parameter is
+needed. The finite stationary inverse itself remains unproved.0250's exact
+isovortical channel and the compacton balance are committed/pushed at47b1d25;
+both Herdr executors continue their actual remaining constructions.
+
+0259 independently accepts the fixed-ring0250 isovortical preparation and
+finite-window asymptotic response as stated, with no scientific repair.
+0257 is activated for the actual isotropic covariance-vector reconstruction.
+0255 supplies an exact balanced first shape correction, its flat-edge
+eikonal match and higher-angular-mode quadratic-form control. Its direct
+unconstrained minimization subroute is refuted by dilation; constrained
+critical-point and nonlinear inverse routes remain active.0261 is the next
+radial-nondegeneracy/compatible-free-boundary construction.
+
+0260 adds the second commuting tangent polarization and an exact full-vector
+Kelvin lift, including the angular shear. It has a zero-normal-displacement
+column at the same frequency as the first angle column, and a nonzero
+distinct-polarization KKS pairing. A mean-zero n=0 extension supplies an
+axisymmetric source sector. The additive euler_action_angle API passes three
+direct bracket/divergence/domain tests; exact symbolic checks pass exit0.
+0250 is using these sources for actual angle/G separation and the remaining
+full ambient hybrid row. Neither a leading matrix nor a nonzero symplectic
+entry is being substituted for the physical history/action/current join.
