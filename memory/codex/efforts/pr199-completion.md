@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T20:26:00+02:00'
+updated: '2026-09-05T21:04:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -10,6 +10,25 @@ status: active
 ---
 
 ## Goal and Success Contract
+
+Current owner decision,2026-09-05: separate the unfinished research from the
+bounded repair and merge PR199. Research execution is paused, not scientifically
+complete or exhausted. The new continuation issue is
+https://github.com/vantasnerdan/substrate-framework/issues/200 and its full
+progress/value/use/restart guide is
+proposals/P251-cosserat-from-vortex-euler/RESEARCH-HANDOFF.md. A future research
+PR is to build on the repaired PR199 merge; the research branch is preserved
+separately and is not included in that merge. New exploration requires an
+explicit effort boundary. Historical active-language below records earlier
+campaign state, not authority to ignore the new user direction.
+
+Final research frontier:0233 preserves38 executed exact checks but an unfinished
+curved common-K/density construction;0234 freezes34 output-control checks;
+0235 freezes39 full-spin/boundary-action checks;0236 freezes15 same-cell periodic
+core and8 corrected image-expansion checks.0237 and0240 remain README-only
+unexecuted independent review contracts.0238/0239 were reserved but not executed.
+All claims retain their recorded scope and review status; no parent completion
+or new scientific promotion is made by the preservation checkpoint.
 
 Meet the full positive objective of issue #198 and PR #199, preserving the
 seven-node objective and explicit Euler, isotropy, and ensemble premises in
@@ -28,7 +47,9 @@ No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
 Newest local governed release is v0.181.0 with269 accepted claims.
-Latest pushed research checkpoint is0160721f854723d53a9e2f229ca674a0a9eed15f.
+Latest pushed research checkpoint before the final preservation commit is
+e88763a07f4e9a1ad67a9ae849bea237b0119c75; its issue198 checkpoint is
+https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5553998381.
 New frozen0223 supplies54 exact pressure/current/action checks and a
 transport-norm repair. Frozen0226 supplies29 actual closed-core symmetry,
 positive quadratic normalization, compact-pressure and direct current
