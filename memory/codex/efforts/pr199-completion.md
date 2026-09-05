@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T19:35:00+02:00'
+updated: '2026-09-05T20:26:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -28,6 +28,25 @@ No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
 Newest local governed release is v0.181.0 with269 accepted claims.
+Latest pushed research checkpoint is0160721f854723d53a9e2f229ca674a0a9eed15f.
+New frozen0223 supplies54 exact pressure/current/action checks and a
+transport-norm repair. Frozen0226 supplies29 actual closed-core symmetry,
+positive quadratic normalization, compact-pressure and direct current
+checks. Frozen0232 supplies17 actual torque/boundary/current-equivalence
+checks; original periodic scope does not require a third bulk modulus.
+Frozen0231 supplies19 actual acoustic-angle and axial-spin-return checks,
+retaining the distinction from complete baseline transverse current.
+0236 candidateC supplies15 first-pass exact same-C016 finite periodic
+tube/flux-twist checks and fixed positive density. Its noncontractible
+T3 core is not a compact Euclidean knot; those density candidates remain
+active. Full optical second/current construction0234 now tests two
+positive tag fractions on the same field for actual same-frequency
+angle/spin rank;0235 derives complete acoustic currents and0233 actual
+curved Kelvin rows. Parent remains active, with no full validation.
+Independent0230 accepts the coherent0227/0228 conditional joint action
+interface without correction. Active0231 now derives the physical
+acoustic angle reconstruction;0223/0226 continue actual optical pressure,
+current and same-ring density. The full parent is still active.
 Frozen0221 now constructs genuine Kelvin phase/energy normalization
 with full Bloch pressure and remote physical-error bounds; independent
 0224 accepts it without correction and adds8 mixed-sector exact checks.
