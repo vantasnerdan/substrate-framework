@@ -1,0 +1,21 @@
+First execution; exit 1. Exact radial constraint checker defect: replacing z² in an expanded expression did not reduce its z³ term. Repaired by polynomial remainder modulo x²+y²+z²-r², without changing the velocity or boundary equation.
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0078/verify.py", line 123, in <module>
+PASS [P251-0078-finite-parcel-reduction] shape-momentum Routh reduction retains the mechanical connection
+PASS [P251-0078-finite-parcel-reduction] geometric mechanical connection is the exact kinetic square completion
+PASS [P251-0078-finite-parcel-reduction] explicit centered affine shape remains in the polar/Eckart slice
+PASS [P251-0078-finite-parcel-reduction] actual geometric inertia and shape connection are both retained
+PASS [P251-0078-finite-parcel-reduction] computed example has positive reduced inertia different from the locked inertia
+PASS [P251-0078-finite-parcel-reduction] material mass-centroid kinetic split is exact without discarding affine motion
+PASS [P251-0078-finite-parcel-reduction] physical spin equals locked inertia times frame rate plus shape momentum
+PASS [P251-0078-finite-parcel-reduction] adding geometric rigid velocity changes Kelvin vorticity by exactly 2Omega
+PASS [P251-0078-finite-parcel-reduction] material-label rigid rotation is volume preserving and can be a relabeling
+PASS [P251-0078-finite-parcel-reduction] explicit spherical-Bessel radial profile obeys its exact Helmholtz ODE
+PASS [P251-0078-finite-parcel-reduction] finite-ball Beltrami example is smooth with nonzero core velocity
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0078/verify.py", line 91, in main
+    ledger.check("j1 boundary zero gives exact tangent velocity on the material sphere",
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0078-finite-parcel-reduction] j1 boundary zero gives exact tangent velocity on the material sphere

@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T02:37:01+02:00'
+updated: '2026-09-05T03:46:55+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -239,6 +239,52 @@ bridge remains to be constructed. No coordinate rename counts as closure.
 0076 corrects stale EPS manifest scope descriptions from the archived
 Theorem1.1 statements; PDF bytes and previous equation regressions remain
 unchanged. No accepted claim, release or terminal PR refresh has occurred.
+
+Checkpoint b8fe186 is pushed to research/pr199-completion; its bounded
+validation receipt is 0077/checkpoint-validation.md. Execution continued.
+0075 establishes exact finite-parcel splitting and complete tail bounds,
+but arbitrary advected cubes do not give stationary material shapes. The
+finite smooth Beltrami ball in 0078 has an actual positive selected
+fixed-Kelvin spin action; independent review0081 establishes its stated
+boundary-constrained scope and the0073 moment bridge without corrections.
+It does not establish a glued EPS assembly.
+
+Active continuation0080/0082 uses invariant EPS tube domains as finite
+material parcels and their continuous ambient complement. Its physical
+macro momentum is tube-centroid plus ambient-point momentum, distinct
+from the whole-fluid point mean that cancelled in0072. The new construction
+prescribes actual tube spin, centroid and shape moments through exterior
+responses and computes the same-action hybrid cotangent lift. Main0083
+establishes stationary tag/mass identities and the full kinetic-Gram
+centering bound (eight exact checks, first execution exit zero), conditional
+on that actual action identification. The joint construction and complete
+second-gradient closure remain active; no parent claim is promoted yet.
+
+0080's reference moment construction is now preserved separately from
+material reconstruction: compact vorticity generators can still induce
+normal boundary velocity. 0082 solves the actual boundary transport and
+its spin response; 0084 supplies a divergence-free collar lift, the exact
+moving-boundary spin map, and the complete material Jacobi/Kelvin forms.
+The old positive orbit-Hessian sign does not automatically transfer to
+that material action. 0086 audits the material averaging source and derives
+the exact reconstruction equation rather than assuming that transfer.
+
+A new positive mechanism is concrete: 0089 converts an incompressible
+force-free trial from primary arXiv1503.04793v3 into an exact rational
+Euler material displacement, with K/(rho V)=5008301/1250000000>0.
+Independent pressure-Hessian and curl calculations agree (eight checks).
+Main0090 gives a compact vector-potential localization bound and places
+that cage on the same EPS seed plus a small same-eigenvalue periodic field,
+retaining the knot and positive material stiffness at finite separation.
+0088 search outputs are only hypothesis generation; no finite-basis
+negative result is called a continuum no-go.
+
+Active routes are0085 compact induced velocity with actual interior spin,
+and0087/0091 actual volume-preserving material-mean and varied material
+action. The latter must derive physical fluctuation spin and Kelvin
+reduction from the new material metric, not identify it with an old
+coadjoint coefficient by name. Full parent completion and promotion remain
+unearned; execution continues beyond the checkpoint.
 
 ## Cross-References
 
