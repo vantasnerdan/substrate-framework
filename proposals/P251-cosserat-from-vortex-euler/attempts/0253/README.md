@@ -380,3 +380,30 @@ regularity obligations and density contract only`.
 Next coordination achievement: the coordinator in `w3:p1` adds the central
 0253 manifest entry and schema receipt.  Only then may this pane open the
 located source bodies or advance either candidate beyond this frozen contract.
+
+## Append-only activated result
+
+The central entry and successful schema receipt (`WORKFLOW VALID: 270 claims`,
+exit zero) activated the substantive work.  See `source-transfer.md` for the
+primary-source scope and `construction.md` for the derivation.
+
+Candidate B now has an exact physically `C-infinity` straight compacton with a
+nonzero nondegenerate constant-curl core.  Its logarithmic label derivative is
+nonsmooth at label zero while velocity, vorticity and full pressure are flat in
+space.  The exact finite-radius equation has been isolated, together with a
+nonzero curvature residual that rules out literal circular bending and a
+regular defining-function formulation of the remaining degenerate
+free-boundary inverse.  This does not yet give compact Euclidean support.
+
+For Candidate A, analytic continuation from a localizable collar to the
+retained core is incompatible with 0252; only a genuinely nonanalytic
+`C-infinity` mixed matching remains.  This is an analytic-subroute refutation,
+not a refutation of the smooth route.
+
+`route_verdict: Candidate A blocked at nonanalytic mixed collar matching;
+Candidate B blocked at the finite-radius degenerate free-boundary inverse after
+an exact straight compacton and all edge/pressure identities were established`.
+
+`evidence_scope: exact analytic precursor, exact finite-curvature residual,
+and precise minimum repair; no compact Euclidean carrier, density supplier,
+response/action/current join, parent completion, or exhaustion conclusion`.

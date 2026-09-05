@@ -147,3 +147,27 @@ physical-gain and action/current transfer before it licenses a clock band.
 0253 is active after central/schema activation for outer-only localization
 or a nonlocalizable flat-edge Grad-Shafranov compacton. The full compact
 same-field objective remains open; the campaign continues on its branch.
+
+## Neutral response channel and balanced compacton continuation
+
+0250 now establishes the exact leading full-pressure neutral polarization
+b=u, a=-k cross u/|k|^2 on an invariant constant-curl annulus. Its finite-N
+Kelvin lift loses one power of N; the actual higher-order isovortical,
+physical-gain and action/current rows remain active. A periodic approximant
+also needs actual invariant action or controlled eikonal closure. The exact
+0211 ring has the leading action-angle band without that extra approximation.
+
+0253 constructs an exact smooth straight logarithmic compacton with the
+nonzero Bessel/constant-curl core and smooth pressure. Its circular bend has
+a non-absorbable curvature residual; transformed defining-function equations
+retain the true free-boundary problem. Analytic core/collar localization is
+excluded by0252, while genuinely smooth nonanalytic matching remains open.
+
+0255 is centrally/schema activated for the finite-radius degenerate inverse
+and weighted variational alternatives.0256 derives the missing radial
+translation row Q=integral Phi_x^2-lambda^2 integral Phi^2 and its independent
+finite-radius stress/virial origin. A declared monotone convex profile family
+with common exact core/edge can tune a simple zero; its signed transition g
+is essential. Exact symbolic corroboration passes first run exit0. This is
+a constructive scalar border, not a finite-ring existence theorem. Geometry
+continues the actual inverse; the full campaign and main landing stay open.

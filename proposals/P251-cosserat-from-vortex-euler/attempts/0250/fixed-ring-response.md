@@ -278,8 +278,9 @@ where `sigma(I)` is invariant under the base flow.  The temporal band in
 approximant has been selected, its finite source cost therefore does not
 change when `j` is increased.
 
-One fixed positive material tag can, in principle, contain all the matching
-dual phases.  For bounded smooth dual profiles `q_j`, set
+One fixed positive stationary material tag can, in principle, contain all the
+matching invariant-action phases.  For bounded smooth invariant profiles
+`q_j(I)`, set
 
     chi=chi_0[1+epsilon sum_j a_j Re(q_j exp(-iN_j sigma(I)))]. (13)
 
@@ -304,12 +305,35 @@ explicit repair of the inverse-versus-remainder ordering and does not require
 a frequency band approaching zero.
 
 Equations (12)--(14) are conditional on the still-load-bearing physical
-facts: a stable continuous Floquet branch on an open action interval, smooth
-dual profiles with a nonzero full acoustic/optical gain matrix, and a Kelvin
-packet whose measured leading coefficient is actually the selected `a_j`
-term.  They do not manufacture those gains.  If those conditions fail, the
-preparation-dependent `chi_N` family above remains only the separately
-declared scope departure.
+facts: an all-order actual Euler/Kelvin response channel over an invariant
+action-frequency set, smooth dual profiles with a nonzero full
+acoustic/optical gain matrix, and a packet whose measured leading coefficient
+is actually the selected `a_j` term.  The neutral constant-curl polarization
+in `neutral-polarization.md` removes the need to assume a stable
+two-dimensional Floquet band at leading order.
+`isovortical-channel.md` further supplies its exact divergence-free finite-
+`N` generator and arbitrary-order pressure continuation on the fixed 0211
+ring, with the one-power source cost retained.  The diagonal does not
+manufacture the remaining joint physical gain or separate action normalizer.
+If those fail, the preparation-dependent `chi_N` family above remains only
+the separately declared scope departure.
+
+The tag in (13) contains no transported angle phase.  The required fixed
+`ell` harmonic must come from the laboratory centroid/covariance/current
+weight; copying the source's transported angular phase into the material tag
+would cancel its clock.  `isovortical-channel.md` derives the exact scalar-
+moment and `G`/spin functionals.  It proves nonzero transverse centroid,
+tilt-angle and individual `G/S` coefficients for suitable harmonics, while
+exposing the axisymmetric tag's missing longitudinal covariance angle and the
+still-unproved same-frequency angle/current determinant.
+
+The independently completed 0254 bridge now replaces the abstract density
+step by a constructive finite formula inside any one nonempty real band.  It
+also gives the exact normalized group estimate in graph norms: the physical
+Euler residual divided by its measured gain must be selected after the finite
+coherent coefficient sum is known.  Equations (12)--(14) are the fixed-tag
+diagonal intended to meet that estimate once the remaining physical gain and
+normalizer ranks exist; 0254 does not create either one.
 
 The exact periodic Beltrami construction in 0145, strengthened by 0147, is
 the strongest materially different candidate background.  It gives an exact
@@ -335,28 +359,32 @@ compact-Euclidean scope; 0250 does not decide the 0248/0253 transaction.
 
 ## 6. Route verdicts and strongest supported scope
 
-- **Route A, exact fixed-ring transport-frequency bands:** blocked at the
-  exact projected-Euler intertwiner or equivalent adjoint uniqueness (9), and
-  at the full physical gain/Gram calculation.  The straight field-changing
-  band and Baldi's fixed-geometry passive band are established positive
-  inputs; neither is silently relabeled as the compact-ring full response.
+- **Route A, exact fixed-ring transport-frequency bands:** the neutral
+  constant-curl polarization has an exact divergence-free finite-`N`
+  isovortical realization and arbitrary-order full-pressure continuation on
+  0211's exact fixed-ring flux-action annulus, as derived in
+  `neutral-polarization.md` and `isovortical-channel.md`.  The route remains
+  open at the common acoustic/optical physical gain and full normalizer Gram
+  calculation.  The straight field-changing band and Baldi's fixed-geometry
+  passive band remain additional positive inputs.
 - **Route B, analytic continuation with a bounded right inverse:** refuted as
   stated in the natural smooth band spaces by compactness.  Finite-rank
   continuation and a small curvature operator error cannot substitute for
   dense-range stability, as (7) shows.  Unbounded regularized inversion or an
   exact spectral theorem remains viable.
-- **Failure-derived Route C, exact adjoint uniqueness/full Euler spectral
-  band on one frozen 0145/0147 periodic constant-curl background:** open with
-  (8)--(9) as its precise construction target.  A WKB implementation
-  additionally owes its periodic Floquet amplitude and the cost diagonal
-  (11).
+- **Failure-derived Route C, neutral-polarization WKB on one frozen
+  0145/0147 periodic constant-curl background:** open.  A stable
+  two-dimensional Floquet band is no longer an input, but the final periodic
+  field still needs an exact invariant action or a controlled normal-form
+  eikonal/cohomological inverse, and the measured joint gain/action/current
+  rows.  Equations (8)--(9) remain the exact alternative adjoint criterion.
 
-The strongest new supported statement is the exact arbitrary-finite-window
+The strongest new supported statements are the exact arbitrary-finite-window
 linear angle controllability of the fixed straight field-changing
-constant-curl supplier, together with a necessary-and-sufficient exact dual
-criterion for transferring that achievement to one compact ring.  The fixed
-compact ring already has actual field-changing finite-window responses and
-finite-order full-pressure corrections, but no reviewed source establishes
-their arbitrary-accuracy range at one radius.  The compact Euclidean parent
-and the distinct 0248 stationary geometry/density obligation therefore stay
-open.
+constant-curl supplier, and an exact finite-`N` divergence-free isovortical
+Euler response band with arbitrary-order full pressure on 0211's fixed
+compact ring.  The latter has nonzero transverse centroid, covariance-angle
+and individual `G/S` coefficients, but not yet the longitudinal covariance
+component, common angle/current determinant, complete hybrid pressure row or
+full action/current normalizer.  The compact Euclidean parent and the
+distinct 0248 stationary geometry/density obligation therefore stay open.

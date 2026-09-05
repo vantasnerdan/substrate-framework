@@ -1,0 +1,7 @@
+edge_ratio = (1 - 2*d)/d**4
+radial_laplacian_ratio = (-rho*(2*a - 2*rho - 1) - (a - rho)**2)/(rho*(a - rho)**4)
+finite_R_residual = x*(2*R**2*lam**2*phi*rho + 2*R**2*laplace_2*rho + R**2*phi_prime + 3*R*lam**2*phi*rho*x + 3*R*laplace_2*rho*x + lam**2*phi*rho*x**2 + laplace_2*rho*x**2)/(R**2*rho*(R + x))
+d3_dx3[x/(R+x)] = 6*R/(R + x)**4
+regularized_G(T) = (T**4*lam**2*(T - a) + T**2 + 2*T*(-T + a) + T - a)/(T - a)
+regularized_G(0+) = 1
+EXACT symbolic checks: PASS

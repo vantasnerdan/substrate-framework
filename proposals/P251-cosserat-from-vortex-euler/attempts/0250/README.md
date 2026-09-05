@@ -202,16 +202,50 @@ periodic constant-curl background.  Attempt 0147 already supplies its
 contractible compact Euclidean core and an actual finite-action optical
 packet at finite prescribed accuracy; the new burden is arbitrary response
 accuracy on that same fixed field, including the acoustic block.  Its
-WKB/Floquet realization owes periodic amplitude solvability, fixed-tag gain
-and the complete inverse-cost/remainder diagonal.  The substantive proof now
-gives a conditional fixed-tag diagonal: an independent invariant-action WKB
-phase leaves the nonzero clock band fixed, while one frozen positive smooth
-tag contains a sparse summable ladder of dual phases whose gain dominates the
-arbitrary-order Euler residual after every finite band-synthesis cost is
-known.  The unsolved inputs to that diagonal are the actual stable Floquet
-band and full physical gain, not low-frequency coverage.  A preparation-
-dependent oscillatory positive tag is recorded only as an explicit possible
-departure from this attempt's fixed-tag route.  The independent 0252 theorem
+WKB realization owes periodic amplitude/higher-order solvability, fixed-tag
+gain and the complete action/current calculation.  The exact calculation in
+`neutral-polarization.md` establishes a full-pressure neutral
+constant-curl leading polarization: for invariant `I`, `k=grad I` and
+`k.omega=0`, the velocity amplitude
+`a=-k cross u/|k|^2` has vorticity amplitude `k cross a=u` and accepts every
+transported scalar multiplier.  Thus no stable two-dimensional Floquet band
+is needed for the leading scalar channel.  On the exact 0211 axisymmetric
+ring its twisted flux-action annulus supplies this band on one fixed ring.
+
+The same calculation exposes the finite-`N` burden: the ordinary principal
+Kelvin symbol vanishes at `k.omega=0`; adding the fixed transport harmonic
+makes the total pairing nonzero but forces the Lin displacement norm to grow
+like `N`.  `isovortical-channel.md` now repairs this initial-data obstruction
+on the exact 0211 ring.  The normal generator
+`-grad I f/(lambda|grad I|^2)` maps to the desired polarization exactly, and
+an `O(N)` tangential `beta u` correction solves divergence by a torus
+cohomological equation without changing `xi cross omega`.  Axisymmetry and a
+fixed nonzero toroidal harmonic reduce possible small divisors to finitely
+many twist resonances, so a smaller open action annulus has a uniform smooth
+inverse.  Starting from the actual Leray field then permits 0112's arbitrary-
+order full-pressure recurrence.  Thus an exact field-changing isovortical
+Euler response band, rather than only its principal symbol, exists on one
+fixed compact ring.
+
+The fixed-tag diagonal remains available: an independent invariant-action
+WKB phase leaves the nonzero clock band fixed, while one frozen positive
+smooth tag contains a sparse summable ladder of dual phases.  The new
+artifact computes the exact centroid and covariance-angle rows and the
+literal `G`/mechanical-spin functionals.  Suitable ring harmonics give
+nonzero transverse centroid, tilt-angle and individual `G/S` gains.  The
+axisymmetric action-only tag has no longitudinal covariance Gram angle, and
+the same-frequency joint determinant is not yet proved.  It also finds that the two real
+transport quadratures have identically zero mutual KKS pairing.  That zero
+requires separate phase/energy normalizer columns; it is not a passive-field
+or parent no-go.  The remaining inputs are the nonzero common physical-gain
+matrix—including the complete point-to-hybrid acceleration and optical full
+current and the missing longitudinal observation—and all cross forms with the
+separate normalizer.  The constructive
+0254 theorem supplies the exact band-only approximation and normalized graph-
+residual/gain estimate; it does not prove those gain ranks.
+A preparation-dependent oscillatory positive tag is recorded only as an
+explicit possible departure from this attempt's fixed-tag route.  The
+independent 0252 theorem
 excludes only a localizable-core matching subclass and leaves this
 nonlocalizable periodic background intact; the distinct geometry owner still
 controls the 0248/0253 scope decision.
@@ -221,4 +255,8 @@ missing construction named; no parent no-go or exhaustion conclusion.
 
 `evidence_scope`: exact straight field-changing linear-angle density,
 compactness obstruction to a bounded inverse, and an exact fixed-ring adjoint
-criterion with failure-generated WKB/Floquet continuation.
+criterion; exact neutral constant-curl polarization and an exact
+divergence-free isovortical response band on the fixed 0211 ring, with
+arbitrary-order pressure continuation, fixed-tag observation formulas and
+the exact null mutual KKS row; physical joint-gain and final-periodic
+normal-form closure remain open.
