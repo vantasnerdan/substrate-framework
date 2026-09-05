@@ -8,6 +8,7 @@ from substrate_framework.euler_orbit import (
     hermitian_schur_jet,
     isotropic_axis_gradient,
     micropolar_kinetic_normal_form,
+    paired_euler_mean_reduction,
     reduce_euler_rotor_block,
 )
 
@@ -178,3 +179,72 @@ def test_full_noncommuting_schur_jet_against_exact_inverse():
         hermitian_schur_jet([p[0], s.Matrix([[0, 1], [0, 0]]), p[2]], n, h)
     with pytest.raises(ValueError, match="positive"):
         hermitian_schur_jet([s.zeros(2), p[1], p[2]], n, h)
+
+
+@pytest.mark.parametrize("helicity", [-1, 1])
+def test_paired_common_mean_reduction_against_direct_independent_reactions(helicity):
+    rho, hq, n, p, B, C = map(s.sympify, (5, 7, 2, 3, 2, s.Rational(5, 7)))
+    k = s.Symbol("k", real=True)
+    t = helicity*k/2
+    q, qd, ud, V, plus, minus = s.symbols("q qd ud V plus minus", real=True)
+    action_plus = B*plus*qd-(hq*q*q+2*n*q*plus+p*plus*plus)/2
+    action_minus = -B*minus*qd-(hq*q*q+2*n*q*minus+p*minus*minus)/2
+    odd = (plus-minus)/2
+    # Direct original variables: pair BEFORE varying common V or either s.
+    action = ((action_plus+action_minus)/2+rho*V*ud+t*C*V*qd+t*B*odd*ud
+              -rho*V*V/2-t*B*odd*V)
+    solutions = s.solve([s.diff(action, variable) for variable in (V, plus, minus)],
+                        (V, plus, minus))
+    actual = s.simplify(action.subs(solutions))
+    result = paired_euler_mean_reduction(rho, hq, n, p, B, C, k, helicity)
+    phid = s.Symbol("phid", real=True)
+    velocity = s.Matrix([ud, phid])
+    expected = (velocity.T*result.kinetic*velocity)[0]/2-result.stiffness*q*q/2
+    assert s.simplify(actual.subs(qd, phid-t*ud)-expected) == 0
+    assert result.stiffness == s.Rational(17, 3)
+    for actual_entry, jet_entry in zip(result.kinetic, result.kinetic_jet, strict=True):
+        for order in range(3):
+            assert s.simplify(s.diff(actual_entry-jet_entry, k, order).subs(k, 0)) == 0
+    U, Phi = s.symbols("U Phi", real=True)
+    position = s.Matrix([U, Phi])
+    assert s.simplify((position.T*result.locking_matrix*position)[0]
+                      -result.stiffness*(Phi-t*U)**2) == 0
+    # Tying the opposite-circulation reactions destroys the zeroth spin inertia.
+    wrong = action.subs(minus, plus)
+    wrong_solution = s.solve([s.diff(wrong, variable) for variable in (V, plus)], (V, plus))
+    assert s.diff(wrong.subs(wrong_solution), qd, qd).subs(k, 0) == 0
+    assert result.spin_inertia > 0
+
+
+@pytest.mark.parametrize("helicity", [-1, 1])
+def test_matched_generator_moment_and_unmatched_cancellation_are_derived(helicity):
+    k = s.Symbol("k", real=True)
+    rho, P, B = s.Integer(5), s.Integer(3), s.Integer(2)
+    j = B**2/P
+    matched = paired_euler_mean_reduction(rho, 7, 2, P, B, j, k, helicity)
+    assert matched.kinetic == s.diag(rho-j*k*k/4, j)
+    assert matched.kinetic_jet == matched.kinetic
+    assert matched.coupling_invariant == -matched.stiffness/2
+    assert matched.reaction_margin == P-B**2*k*k/(4*rho)
+    unmatched = paired_euler_mean_reduction(rho, 7, 2, P, B, 0, k, helicity)
+    assert unmatched.coupling_invariant == 0
+    assert s.expand(unmatched.kinetic_jet[0, 1]).coeff(k, 1) == -helicity*j/2
+    assert s.expand(unmatched.kinetic_jet[1, 1]).coeff(k, 2) == j*j/(4*rho)
+    assert unmatched.kinetic != unmatched.kinetic_jet
+
+
+def test_paired_mean_reaction_domain_and_nondegenerate_symbolic_hypotheses():
+    for wave in (2, 3):
+        with pytest.raises(ValueError, match="reaction margin"):
+            paired_euler_mean_reduction(1, 2, 0, 1, 1, 1, wave)
+    with pytest.raises(ValueError, match="positive"):
+        paired_euler_mean_reduction(1, 1, 2, 1, 1, 1, 0)
+    with pytest.raises(ValueError, match="nonzero"):
+        paired_euler_mean_reduction(1, 2, 0, 1, 0, 1, 0)
+    with pytest.raises(ValueError, match="finite"):
+        paired_euler_mean_reduction(1, 2, 0, 1, 1, s.nan, 0)
+    with pytest.raises(ValueError, match="helicity"):
+        paired_euler_mean_reduction(1, 2, 0, 1, 1, 1, 0, 0)
+    numeric = paired_euler_mean_reduction(5, 7, 2, 3, 2, s.Rational(4, 3), s.Rational(1, 2))
+    assert numeric.reaction_margin > 0
+    assert numeric.kinetic == s.diag(s.Rational(59, 12), s.Rational(4, 3))

@@ -1,0 +1,42 @@
+Command: uv run python proposals/P251-cosserat-from-vortex-euler/attempts/0101/verify.py
+Exit status: 0
+The first execution created a local ignored .venv and uv.lock; the incidental
+lockfile was removed immediately. No scientific source was changed by setup.
+
+Using CPython 3.12.2 interpreter at: /home/dan/anaconda3/bin/python3
+Creating virtual environment at: .venv
+   Building substrate-framework @ file:///tmp/pr199-completion
+Downloading numpy (15.9MiB)
+Downloading sympy (6.0MiB)
+Downloading scipy (33.7MiB)
+      Built substrate-framework @ file:///tmp/pr199-completion
+ Downloaded sympy
+ Downloaded numpy
+ Downloaded scipy
+Installed 6 packages in 18ms
+PASS [P251-0101-Kelvin-optical-packet] full compact curl contains the horizontal tilt and vertical return
+PASS [P251-0101-Kelvin-optical-packet] packet is exactly divergence free, not only at leading carrier order
+PASS [P251-0101-Kelvin-optical-packet] the full rotating-Euler residual is precisely the retained return
+PASS [P251-0101-Kelvin-optical-packet] compact return residual is not silently certified as an exact mode
+PASS [P251-0101-Kelvin-optical-packet] discarding the return would violate incompressibility
+PASS [P251-0101-Kelvin-optical-packet] compact primitive differentiates to the actual packet
+PASS [P251-0101-Kelvin-optical-packet] Kelvin preparer is exactly solenoidal
+PASS [P251-0101-Kelvin-optical-packet] Kelvin preparation matches curl before global Leray uniqueness
+PASS [P251-0101-Kelvin-optical-packet] Leray gradient correction has not been replaced by raw pointwise equality
+PASS [P251-0101-Kelvin-optical-packet] physical core vorticity tilt follows directly from the velocity curl
+PASS [P251-0101-Kelvin-optical-packet] intrinsic fixed-axis optical frequency is Omega, not axial carrier Doppler
+PASS [P251-0101-Kelvin-optical-packet] material corotating axes see the separate frequency two Omega
+PASS [P251-0101-Kelvin-optical-packet] smooth Lundquist axial and azimuthal components obey Beltrami recurrences
+PASS [P251-0101-Kelvin-optical-packet] near-axis rotation and axial shear orders are derived from Bessel series
+PASS [P251-0101-Kelvin-optical-packet] positive-weight optical observable has the derived nonzero core curvature
+PASS [P251-0101-Kelvin-optical-packet] separated return residual has the claimed inverse-aspect-ratio scale
+PASS [P251-0101-Kelvin-optical-packet] finite localization and carrier selection balance the actual residual terms
+PASS [P251-0101-Kelvin-optical-packet] moving-tag gradient correction is smaller than the optical carrier
+PASS [P251-0101-Kelvin-optical-packet] actual weak-curl angle error has no hidden inverse packet-size penalty
+PASS [P251-0101-Kelvin-optical-packet] the explicit primitive is odd and its differentiated profile even
+EXACT rotation residual: -2 Omega/k (J b dot grad F_a) h(kz) e_z
+EXACT finite parameter choice: a=delta/lambda, k=lambda*delta^(-3/2)
+EXACT dimensionless residual bound: 6*CD*sqrt(delta) + Crot*sqrt(delta) + 8*delta
+EXACT core h''(0): -6*exp(-1)
+SCOPE: finite-time actual Euler material tilt; not knotted-torus angle or total-spin rotor
+ALL 20 CHECKS PASS [P251-0101-Kelvin-optical-packet]

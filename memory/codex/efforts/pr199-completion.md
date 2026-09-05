@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T04:30:00+02:00'
+updated: '2026-09-05T05:00:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -47,8 +47,9 @@ neither an elastic potential nor its canonical coordinate/kinetic metric.
 Codex owns repair implementation and attempt 0029+. An independent analytic
 worker explores orientation interactions read-only, following AGENTS.md's
 parallel replacement-candidate instruction. Existing attempts stay immutable.
-GitNexus now indexes this worktree as pr199-completion at c9e1c0f; direct rg
-still supplies omitted test/attempt call edges. Direct consumers are the
+GitNexus now indexes this worktree as pr199-completion at dfe7939; direct rg
+still supplies omitted test/attempt call edges and the newly appended0107
+symbol that arrived during indexing. Direct consumers are the
 seven proposal verifiers and their new attempt receipts. No accepted API
 changes yet.
 
@@ -334,6 +335,37 @@ not its negative. The corrected API and an independent signed zero-mode
 test pass; all earlier outputs and the correction receipt are preserved.
 No existing API, claim, release or PR head has been changed by this utility.
 The full objective and promotion remain active, not inferred from counts.
+
+0102 completes the one-action coefficient join: the distinct generator
+and velocity angular moments are jointly controllable by0103's exact
+rank241 construction. The triangular completion sets GQ=B²/P, GS=0,
+LQ=0 and LS=B without fitting or an implicit inertia root. Pairing the
+full states before varying their COMMON macro momentum and independent
+microscopic reactions yields physical mixed mass b=0 and nonzero coupling
+ell=-kappa/2. All surviving STF rate and potential reaction squares remain;
+positive shear and spin gradients use finite zero-moment cages. The actual
+tube-spin/current map remains separate from the canonical spin density.
+Its26 exact checks pass. 0097 derives the single canonical phase pullback
+with signed KKS, complete material Hessian and mass rho (21 checks).
+
+0106 extracts exact compact-operator/moment algebra, with12 tests and a
+four-check canonical replay of the actual six-moment prototype. 0107 adds
+the full paired common-mean Schur reduction; all15 euler_orbit tests pass.
+No old API is changed. 0105 binds new proposed C-CST-008..010 and freezes
+their complete claim/evidence transaction by hash, including both distinct
+structure-removal limits. A fresh non-author reviewer owns0108, one
+substantive parent pass and one directly affected correction check.
+The parent objective remains active until that construction, review,
+canonicalization and final validation genuinely close; no PR refresh yet.
+
+0101 separately constructs a genuine finite-time Euler optical packet on
+an EPS-compatible background with an explicit error bound over an optical
+period. Its complete leading packet spin is zero, so it is not substituted
+for the claimed total-spin rotor. The stronger continuation0109 now seeks
+a nonzero actual parcel-spin/translation realization with its full return
+flow retained. The asynchronous scope question remains unanswered; no
+unrestricted-Euler realization is inferred from conditional Cauchy--Born.
+Checkpoint dfe7939 remains pushed; commits continue to be checkpoints only.
 
 ## Cross-References
 

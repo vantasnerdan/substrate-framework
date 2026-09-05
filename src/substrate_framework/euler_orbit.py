@@ -235,3 +235,92 @@ def hermitian_schur_jet(momentum, coupling, retained):
         reduced.append(sp.ImmutableMatrix(sp.simplify(value)))
     return SchurComplementJet(tuple(sp.ImmutableMatrix(sp.simplify(value)) for value in inverse),
                               tuple(reduced))
+
+
+@dataclass(frozen=True)
+class PairedEulerMeanReduction:
+    """Exact and second-order physical (U,Phi) mass of the paired mean action.
+
+    ``locking_matrix`` contains only kappa*(Phi-curl(U)/2)^2/2; a separately
+    computed macro shear/curvature is not supplied by this reduction.
+    ``coupling_invariant`` is g-kappa*b/j from the leading physical jets.
+    """
+
+    kinetic: sp.ImmutableMatrix
+    kinetic_jet: sp.ImmutableMatrix
+    locking_matrix: sp.ImmutableMatrix
+    stiffness: sp.Expr
+    spin_inertia: sp.Expr
+    coupling_invariant: sp.Expr
+    reaction_margin: sp.Expr
+
+
+def paired_euler_mean_reduction(
+        density, coordinate_hessian, mixed_hessian, momentum_hessian,
+        pairing, generator_moment, wave_number, helicity=1):
+    """Reduce the full common-macro-momentum action of P251/0102.
+
+    Set t=h*k/2, q=Phi-t*U. The two independent fluid reactions s+ and s-
+    have actions +/-B*s*qdot-(Hq*q²+2N*q*s+P*s²)/2. Average these actions
+    with equal weights BEFORE varying the COMMON macro momentum V.
+    Their odd reaction p=(s+-s-)/2 couples to V through the extra terms
+    rho*V*Udot+t*C*V*qdot+t*B*p*Udot-rho*V²/2-t*B*p*V.
+
+    The function Schur-reduces V and BOTH reaction combinations together,
+    then pulls the result back to physical (U,Phi). No old diagonal inertia
+    is appended and N is retained. Hq,N,P are the complete same-action
+    internal Hessian, C the generator angular moment, B the nonzero KKS
+    pairing, and rho the full fluid density. Coefficients are independent
+    of the formal spatial wave number. No mean/geometry existence theorem
+    or unrestricted Euler invariant truncation is implied.
+
+    Domain: real finite inputs, rho>0, [[Hq,N],[N,P]] positive definite,
+    B!=0, and P-B²*t²/rho>0. Undecidable symbolic signs remain explicit
+    caller hypotheses. The exact returned mass can additionally degenerate
+    at rho=C*t²; the positive small-k branch avoids that point. Only the
+    returned spatial jet, not an all-k constitutive law, is the continuum
+    statement. ``kinetic`` retains the rational terms beyond that jet.
+    """
+    rho = _positive_scalar(density, "density")
+    hessian = _positive_symmetric(
+        [[coordinate_hessian, mixed_hessian], [mixed_hessian, momentum_hessian]], 2)
+    hq, n, p_hessian = hessian[0, 0], hessian[0, 1], hessian[1, 1]
+    b_pair, c, k_value = map(sp.sympify, (pairing, generator_moment, wave_number))
+    if any(value.is_real is False or value.is_finite is False
+           or value.has(sp.nan, sp.zoo) for value in (b_pair, c, k_value)):
+        raise ValueError("pairing, generator moment and wave number must be real and finite")
+    if b_pair.is_zero is True:
+        raise ValueError("KKS pairing must be nonzero")
+    h = sp.sympify(helicity)
+    if h not in (-1, 1):
+        raise ValueError("helicity must be +1 or -1")
+    margin = _positive_scalar(p_hessian-b_pair**2*k_value**2/(4*rho), "reaction margin")
+
+    k = sp.Dummy("wave", real=True)
+    t = h*k/2
+    # The paired reactions are p=(s+-s-)/2 and r=(s++s-)/2. In the full
+    # negative quadratic form, reaction coordinates are (V,p,r), while the
+    # retained sources are (Udot,qdot,q). This is the actual Schur block.
+    reaction = sp.Matrix([[rho, t*b_pair, 0],
+                          [t*b_pair, p_hessian, 0], [0, 0, p_hessian]])
+    source = sp.Matrix([[rho, t*c, 0], [t*b_pair, b_pair, 0], [0, 0, -n]])
+    retained = sp.diag(0, 0, -hq)
+    reduced = sp.simplify(retained+source.T*reaction.inv()*source)
+    relative_mass = reduced[:2, :2]
+    stiffness = sp.simplify(-reduced[2, 2])
+    physical_to_relative = sp.Matrix([[1, 0], [-t, 1]])
+    mass = sp.simplify(physical_to_relative.T*relative_mass*physical_to_relative)
+    locking = sp.simplify(physical_to_relative.T*sp.diag(0, stiffness)*physical_to_relative)
+    mass_jet = mass.applyfunc(lambda value: sp.simplify(sum(
+        sp.diff(value, k, order).subs(k, 0)*k**order/sp.factorial(order)
+        for order in range(3))))
+    inertia = sp.simplify(mass_jet[1, 1].subs(k, 0))
+    mixed_mass = sp.simplify(sp.diff(mass_jet[0, 1], k).subs(k, 0)/h)
+    mixed_stiffness = sp.simplify(sp.diff(locking[0, 1], k).subs(k, 0)/h)
+    coupling = sp.simplify(mixed_stiffness-stiffness*mixed_mass/inertia)
+
+    def at_wave(matrix):
+        return sp.ImmutableMatrix(matrix.subs(k, k_value))
+
+    return PairedEulerMeanReduction(at_wave(mass), at_wave(mass_jet), at_wave(locking),
+                                    stiffness, inertia, coupling, margin)
