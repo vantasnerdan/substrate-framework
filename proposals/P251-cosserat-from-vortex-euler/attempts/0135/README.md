@@ -36,3 +36,29 @@ and its actual background correspondence. It does not license promotion,
 arbitrary-knot EPS realization, or an autonomous Cosserat pencil merely
 from a positive interaction energy. Route failures remain route-scoped;
 the parent objective stays active.
+
+## Frozen result
+
+`intrinsic-response.md` derives the exact dynamical Schur interface and
+an actual finite-radius Rankine surface-mode alternative. The latter has
+positive intrinsic material-angle curvature and positive canonical
+action, with an exact mechanical-spin match using a nonnegative signed
+radial-lobe tag at any sufficiently small fixed nonzero axial carrier.
+The moment-control matrix degenerates quadratically at zero carrier;
+the proof identifies that endpoint rather than extending the match
+through a singular observable. The smooth force-free column transfer
+and complete coherent translational assembly remain next constructions.
+
+Route verdicts: `established` for the exact reduction and fixed-carrier
+Rankine mode/action/moment construction; `blocked` for the polygon's
+actual three-dimensional spectral transfer, with its optical-frequency
+inverse named; `refuted` for a nonsingular zero-carrier matched tag in
+the stated signed-lobe family, by radial-row proportionality.
+Evidence scope: exact domain-scoped Euler mode and symbolic verified
+identities, not smooth EPS or parent constitutive completion.
+
+The verifier imports canonical Euler/core-pressure equations and checks
+20 exact identities, including sign, moving-tag, physical rotation and
+static-reaction mutations. First execution and exit status are retained
+in `first-run.txt`; Ruff passes. No numerical design, numerical oracle,
+canonical change, or scientific promotion was made.

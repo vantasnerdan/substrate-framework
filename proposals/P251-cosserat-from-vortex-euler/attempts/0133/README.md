@@ -70,5 +70,24 @@ norm, a conditional memory equation nor a cylinder result becomes parent
 completion. A route decision will name its exact mechanism and strongest
 positive evidence; plausible remaining routes keep the parent active.
 
-Status: waiting for parent proposal-validator confirmation. No source
-body has been reopened and no 0133 derivation has begun.
+The parent confirmed proposal validation (263 claims / 12 proposals)
+before source opening and derivation. The delivered result is in
+`intrinsic-response.md`: exact nonuniform intrinsic Euler/Lin operator,
+actual translation/material-angle distinction, nonuniform full-pressure
+response with actual Kelvin preparation, and a finite-cylinder pressure
+repair that resolves the comparison's nonuniform zero-sector limit.
+
+Evidence is carried by `verify.py` and `kelvin-run.txt` (19 checks),
+`symmetry_verify.py` and `symmetry-first-run.txt` (9 checks), and
+`pressure_verify.py` and `pressure-first-run.txt` (3 checks). The initial
+expression-simplification check failure is preserved in `first-run.txt`;
+`repaired-run.txt` records the repair before the additional Kelvin
+preparation checks. No numerical design was used.
+
+The family-based optical route is refuted by its actual neutral/charge
+and material-translation mechanism. The off-shell positive spatial
+coefficient remains a named missing finite-domain observed-branch
+construction, not a no-go. Parent work now has a materially different
+positive finite-core candidate in 0135; the next child will apply the
+physical finite-carrier/TR response join there, without discarding
+0133's exact nonuniform operator or claiming parent completion.

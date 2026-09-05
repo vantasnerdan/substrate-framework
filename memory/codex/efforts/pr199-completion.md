@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T07:39:08+02:00'
+updated: '2026-09-05T08:22:21+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -27,7 +27,7 @@ The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
-Latest pushed research checkpoint:dbc2bf3.0127's full integrated backstop
+Latest pushed research checkpoint:a93e78e.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
@@ -51,6 +51,24 @@ cells;0135 explores actual finite-core spatial spin interactions.
 counterexample and0125's additional physical-polarization line are route
 results, not campaign exhaustion. No autonomous full constitutive claim
 has been added by these attempts.
+
+Continuation0133–0140 now supplies actual finite-core advances.0135's
+nonzero-carrier material m2 mode has positive intrinsic curvature;
+0137 continues its full pressure/Evans equation to smooth compact cores.
+0136 constructs exact shaped force-free columns, local closed tori and
+the global planar Bernoulli lift, preserving the actual planar Euler
+subsystem and its action. Its new unpromoted API passes6 direct tests
+and the construction verifier passes24 exact checks.0140 transfers the
+physical angle/spin carrier jets with full axial-shear KKS terms and
+finite-time dephasing bounds.0139 derives positive triangular-lattice
+shear and actual fluid mass rho, then realizes fixed acoustic histories
+in genuine smooth stationary-base Euler data. These are not separate
+examples being presented as the same continuum. Active0138 joins the
+standing carriers with the coherent half-weight normalization;0141
+constructs optics in the SAME Bernoulli-lifted acoustic array;0142 tests
+a constant-lambda Lundquist background for direct EPS compatibility.
+Same-field isotropy, full constitutive joining and global stationary
+EPS geometry remain active obligations.
 
 ## Accepted Baseline
 
