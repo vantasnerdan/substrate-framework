@@ -54,3 +54,23 @@ finite-window response proved here. Global stationary EPS/torus
 geometry and autonomous all-time constitutive closure are separate
 parent achievements. No canonical edits or new independent claim
 review are planned at this child boundary.
+
+## Frozen construction
+
+`same-array-response.md` establishes the thin-Rankine core seed's
+bordered inverse, then uses0139's actual stationary array and its exact
+Bernoulli lift. Full-pressure exponentially weighted Euler estimates
+give actual finite-window optical histories and their first two axial
+carrier derivatives. The same-field transverse Bloch terms are retained
+with an exponential local-response bound; their sign is not assumed.
+Symmetric axial carrier differences have error proportional to K² times
+the controlled background/pressure discrepancy, not an unscaled
+localization error. Physical Fourier mean cell moments and the true
+axial Fourier sector are kept distinct from those local tagged bounds.
+
+Route verdict: established as stated for the controlled same-array
+anisotropic finite-window optical response. The full transverse sign,
+mean/optical coupling, same-field isotropic architecture and global
+stationary knotted geometry remain separate constructions. First
+execution passes12/12; Ruff and scoped diff checks pass. No numerical
+soft-mode design, canonical edit or new review was undertaken.

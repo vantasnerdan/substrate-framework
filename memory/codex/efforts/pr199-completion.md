@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T08:22:21+02:00'
+updated: '2026-09-05T09:00:55+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -27,7 +27,7 @@ The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
-Latest pushed research checkpoint:a93e78e.0127's full integrated backstop
+Latest pushed research checkpoint:bf508e1.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
@@ -70,6 +70,26 @@ a constant-lambda Lundquist background for direct EPS compatibility.
 Same-field isotropy, full constitutive joining and global stationary
 EPS geometry remain active obligations.
 
+Further continuation:0141 now establishes controlled optical histories
+on the SAME stationary Bernoulli-lifted array as0139, with full pressure
+and a C² carrier error whose symmetric difference is small at the K²
+gradient scale (12 exact checks).0143 constructs exact globally smooth
+stationary isotropic compact-cell fields, but their freely variable
+rigid poses have exactly zero stiffness; that route-specific mechanism
+does not close the parent.0145 supplies an explicit global constant-curl
+toroidal field, actual flux-action twist, arithmetic-free circular-core
+selection and bounded periodic Herglotz approximation (28 checks).
+Its uniform global norms license full-pressure C² finite-time transfer
+of already established localized response.0142 is still closing the
+physical marker/action of a radial excited trapped mode.0144 derives
+generic3D mean response and now uses full Euler/Lin common-velocity
+data instead of imposing identical initial Casimirs on all macro data;
+each actual trajectory keeps its Kelvin conservation. Acoustic-time
+averaging is a separate next route, not inferred from a fixed-time jet.
+The0136 scoped6-test/fixed workflow passes; its initial wrong-environment
+invocation and repair are preserved. The committed selector confirms
+that scope. No new claim promotion or terminal PR is asserted.
+
 ## Accepted Baseline
 
 Frozen review head: 10a0f31bf0122f4c744a81dfe1cfa66506d57ad7. Campaign base:
@@ -102,7 +122,7 @@ neither an elastic potential nor its canonical coordinate/kinetic metric.
 Codex owns repair implementation and attempt 0029+. An independent analytic
 worker explores orientation interactions read-only, following AGENTS.md's
 parallel replacement-candidate instruction. Existing attempts stay immutable.
-GitNexus indexes this worktree as pr199-completion atdbc2bf3; direct rg
+GitNexus indexes this worktree as pr199-completion atbf508e1; direct rg
 supplies omitted test/attempt call edges. The additive0115 euler_phase
 and0117 euler_observation APIs have their own tests and0114/0119/0126
 direct imports as consumers.0127 adds the physical scalar chart without
