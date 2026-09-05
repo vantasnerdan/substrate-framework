@@ -38,3 +38,31 @@ comparator or numerical spectral design is selected. If an irreducible
 spectral remainder remains, first freeze its genuine admissible operator,
 observables and approximation scope under the small-ratio skill. Scoped
 verifier and directly affected consumers only; no full validation.
+
+Registration receipt: parent confirmed central schema266, exit0, before
+the source/derivation work below. Failure-generated method repair within
+the declared unequal-wave family: its first-integral moment matrix differs
+from the equal-wave0179 case and admits an explicit finite-Fourier
+stationary velocity corrector. This is evaluated together with the
+registered leading-state/phase and common-V constructions, not assumed to
+be a positive complete action from its existence alone.
+
+Append-only repair contract: parent registered/schema266 validated finite
+Chebyshev first-integral expansions, then explicitly authorized the actual
+nonlinear axial first-integral return in this same broader candidate.
+The initial comparison showed that planar range-cost reduction alone
+cannot reach positive action while r=-d alpha/2+d zeta psi. Compare instead
+r=-d alpha/2+d g(psi), with fixed finite polynomial g whose two independent
+first-shell moments exist for A!=B. Derive the complete physical energy,
+observed current and common-V equation; an axial correction is a genuine
+Euler preparation, not an assigned constitutive constant. If needed,
+compare actual initial configuration returns with their full same-D,V
+mean, phase and energy constraints. Earlier first-pass records remain.
+
+Second representation repair: parent registered and schema266 validated
+the COMPLETE correlated stationary first-shell Beltrami kernel. Use actual
+curl=-1 spectral projectors on the finite first Fourier shell, with all
+coefficients derived from the full lab (kappa,D) material-rate and current
+rows. Their stationary Euler property is checked, their initial mean and
+phase are retained, and their energy is compared before any observation
+elimination. Routine analytic variants within this kernel are authorized.

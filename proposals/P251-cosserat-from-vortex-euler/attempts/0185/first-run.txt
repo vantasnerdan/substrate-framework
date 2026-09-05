@@ -1,0 +1,21 @@
+Command: env PYTHONPATH=src .venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0185/verify.py
+Exit status: 1
+PASS [P251-0185] constant helical momentum is derived from the profile
+PASS [P251-0185] reduced velocity is exactly incompressible in the helical metric
+PASS [P251-0185] nonzero-frequency velocity has zero helical momentum
+PASS [P251-0185] physical kinetic metric retains the axial velocity
+PASS [P251-0185] full pressure compatibility gives the actual active-vorticity equation
+PASS [P251-0185] background quotient vorticity has the restoring gradient
+PASS [P251-0185] the degenerating radial metric still has a strict compact tail bound
+PASS [P251-0185] full helical momentum equation retains the off-carrier pressure term
+PASS [P251-0185] actual Kelvin reconstruction includes the new tau-pressure cancellation
+PASS [P251-0185] silently keeping tau zero away from resonance loses a real row
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0185/verify.py", line 95, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0185/verify.py", line 57, in main
+    ledger.check("full physical velocity cross product fixes the KKS orientation", sp.trigsimp(h.dot(va.cross(vb)) - angular_index * c * amplitude * slope / r) == 0)
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0185] full physical velocity cross product fixes the KKS orientation

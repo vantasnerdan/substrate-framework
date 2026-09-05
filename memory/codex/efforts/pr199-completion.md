@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T13:16:00+02:00'
+updated: '2026-09-05T14:27:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -27,7 +27,36 @@ The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
-Newest local governed release is v0.178.0 with266 accepted claims.
+Newest local governed release is v0.179.0 with267 accepted claims.
+Independent0190 accepts C-CST-014 after0191's single transverse-frame
+correction: actual smooth nodal column modes and positive stationary
+tags supply a correlated optical response whose stationary second-jet
+action equals its inherited Euler energy. The actual tilt factors are
+2/5 and1/5, with raw phase/current divided by3.0192's new reusable API
+passes17 direct tests; its two first-execution assertion-representation
+failures and test-only repair are preserved.0194 proves all266 prior
+claim objects and183 old canonical source files byte-identical. Fixed
+canonical checks pass:267 accepted,1056 memory records,43 unchanged
+warnings. No full suite is repeated. Same-cell EPS/acoustic coupling is
+not a conclusion of this promoted optical leaf.
+
+New frozen research progress:0185 constructs a genuine helical mode and
+nearby-carrier branch (23 exact checks);0189 supplies its full all-time
+displacement/spin tag (7).0193 proves actual localized positive-action
+poles on compact-velocity and generalized-force-free compact-vorticity
+backgrounds by full fixed-sector norm convergence (20).0186 constructs
+a global ordinary closed Euler ring, full-poloidal mode and discrete
+harmonic tag transfer (28), not literal constant-curl EPS.0188 constructs
+an actual finite correlated D preparation with positive observed
+stiffness exactly equal to its Euler energy and initial rho phase
+(28 corrected interface checks plus12 positive construction checks).
+Active0195 continues the actual swirling ring/transported tag,0196 the
+same-lift common-V output and physical currents, and independent0197
+reviews0188's displacement-only statement. The full parent remains
+active; checkpoint commits and claim promotions are followed by these
+next constructions, not a terminal PR or handoff.
+
+The preceding v0.178.0 checkpoint contains266 accepted claims.
 Independent0173 accepts C-CST-013 without correction: the actual prepared
 physical mean pressure/current cancellation licenses uniform-period
 second-jet transfer to a selected same-EPS field.0177's four new direct
@@ -74,7 +103,7 @@ inverted translational response for the constant-curl lift and continues
 the generalized Bernoulli-profile repair.0164 retains the actual
 all-time tagged current and0166 derives optics on the same core geometry.
 
-Latest pushed research checkpoint:7b89db7.0127's full integrated backstop
+Latest pushed research checkpoint:6131db5.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
