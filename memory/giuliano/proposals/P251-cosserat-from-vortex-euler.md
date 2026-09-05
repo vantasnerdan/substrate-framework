@@ -2,7 +2,7 @@
 description: 'P251: derive Cosserat (micropolar) equations from coarse-grained Euler with vortex-structure rotational degrees of freedom (issue 198, Comparsi item via Dan)'
 author: giuliano
 created: '2026-09-03T14:40:00+00:00'
-updated: '2026-09-05T05:20:00+02:00'
+updated: '2026-09-05T06:00:39+02:00'
 tags:
 - substrate-framework
 - campaign-proposal
@@ -152,3 +152,18 @@ The exact complement/current remains in0095,0109 gives controlled actual
 parcel spin and translation, and0112 continues on the actual EPS periodic
 core. The campaign branch remains active beyond the promotion checkpoint;
 no terminal PR or full-unrestricted-objective verdict is asserted.
+
+## Actual same-core continuation 0112--0117
+
+0112/0114 construct actual Euler amplitude transport on the EPS periodic
+core, a positive action in a fixed zero-winding geometric frame, and a
+nonzero actual material-spin change over one core period.0115 supplies
+the exact moving symplectic/complement bookkeeping used in that action.
+0116 continues with identical periodic knotted cells and complete Bloch
+stress transfer.0117 retains the actual spin AND symmetric shape-rate
+dipoles in the centroid-plus-ambient Fourier momentum. With the declared
+isotropic full response this yields a first-gradient physical centroid
+response to the changing spin, even when the resolved point dipole cancels.
+The stronger autonomous spin/action coefficient and full spatial-dynamics
+join remain active; none of these observations is renamed C-CST-009's
+constant constitutive law. Accepted008..010 are unchanged.

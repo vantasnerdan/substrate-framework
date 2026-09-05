@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T05:20:00+02:00'
+updated: '2026-09-05T06:00:39+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -20,8 +20,11 @@ Current authority checkpoint: independent0108 accepts C-CST-008..010
 exactly as frozen, and0113 materializes them in v0.175.0. These establish
 the original conditional scientific roles through the reconciled finite-core
 route. Full unrestricted same-cell Euler realization remains active; its
-current route0112 constructs the actual core-streamline Floquet transport,
-not an assumed invariant cage action. No terminal PR or full-user-objective
+current route0112/0114 constructs actual core-streamline Euler transport,
+positive fixed-frame action and nonconstant material spin.0116/0117 join
+periodic/Bloch backgrounds with the actual centroid/ambient response.
+The full autonomous constitutive identification remains distinct.
+No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
 ## Accepted Baseline
@@ -56,11 +59,11 @@ neither an elastic potential nor its canonical coordinate/kinetic metric.
 Codex owns repair implementation and attempt 0029+. An independent analytic
 worker explores orientation interactions read-only, following AGENTS.md's
 parallel replacement-candidate instruction. Existing attempts stay immutable.
-GitNexus now indexes this worktree as pr199-completion at dfe7939; direct rg
-still supplies omitted test/attempt call edges and the newly appended0107
-symbol that arrived during indexing. Direct consumers are the
-seven proposal verifiers and their new attempt receipts. No accepted API
-changes yet.
+GitNexus indexes this worktree as pr199-completion at223f131; direct rg
+supplies omitted test/attempt call edges. The additive0115 euler_phase
+and0117 euler_observation APIs have only their own tests and0114's new
+direct import as consumers. They are unpromoted infrastructure; accepted
+008..010 definitions and statements are unchanged by this continuation.
 
 ## Attempts and Validation
 
@@ -393,6 +396,34 @@ needed for small-moment accuracy;21 exact checks pass. The packet's global
 compensating returns and its distinction from the EPS knot remain explicit.
 0112 next adds exact Galilean independent centroid data and executes a
 source-derived geometric-optics/Floquet route on the actual EPS core.
+
+0112 constructs an actual Euler elliptic amplitude on the same EPS core,
+using the source's free small nonzero curl eigenvalue at fixed tube
+thickness.0114 derives the full positive fixed-frame action after exact
+carrier cancellation; its near-identity normalization transforms every
+physical row. A periodic particle covariance and the Euler return give a
+nonzero actual endpoint spin change, not merely a nonzero spin norm.
+0115's moving-action/complement API passes four independent variation
+tests.0117's material Fourier identity retains BOTH spin and shape-rate;
+four exact tests pass, including the omitted-shape mutation. Combined
+with isotropic full Euler stress, it supplies a genuine first-gradient
+centroid-plus-ambient response to changing spin. Neither the full-point
+current nor canonical momentum is silently renamed that observation.
+
+0116 establishes identical periodic knotted cells, the complete Bloch
+stress and a compact zero-mean/nonzero-stress channel (18 exact checks).
+Its bounded transported seed joins actual finite-time coarse transfer
+to the angular family, without claiming an autonomous optical pole.
+The stronger remaining construction is the actual spin/action coefficient
+and slow spatial-dynamics join. Finite-carrier packet estimates are not
+claimed to leave a nonzero dimensional inertia in the N-to-infinity limit.
+The accepted original conditional result remains banked at ef41e48; no
+unrestricted autonomous continuum or terminal PR readiness is inferred.
+0118 validates the two new APIs (eight tests) and all fixed checks at
+tree e9ddca13cdbafcb203502a199c0e123e6f4cf87e.0119 next derives physical
+angle/rate/spin coordinates with their actual connection terms;0120
+executes a distinct fixed-lambda thin-tube gyro-dominant construction
+and its source-appropriate twist/persistence calculation.
 
 ## Cross-References
 
