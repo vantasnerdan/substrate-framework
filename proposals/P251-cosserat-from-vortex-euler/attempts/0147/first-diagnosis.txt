@@ -1,0 +1,11 @@
+The first verifier stopped on structural equality of algebraically
+equal rational expressions, not a physical mismatch. Diagnostic output:
+
+-2*L**2*c**2/(c**2 + 1)
+-2*L**4*c**2/(L**2*c**2 + L**2)
+0
+
+The third line simplifies the difference exactly. The predicate now
+checks that zero residual; the analogous expanded/factored quartic
+predicate was repaired at the same implementation boundary. No value,
+scope, sign or tolerance changed. First output remains preserved.

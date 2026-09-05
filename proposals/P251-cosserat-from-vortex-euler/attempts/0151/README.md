@@ -64,5 +64,6 @@ node activates that same-field geometry/optical perturbation test.
 0148/0149 angle/director construction remain independent live routes.
 No new reviewer or subagent is commissioned here.
 
-Status: awaiting parent central registration and validator confirmation;
-source bodies and comparison values remain unopened for this attempt.
+Registration receipt: parent confirmed the central expansion and repository
+validator (263 claims, 12 proposals, exit 0) before the required 0129/0132
+source bodies were opened. Exact construction and verification now proceed.

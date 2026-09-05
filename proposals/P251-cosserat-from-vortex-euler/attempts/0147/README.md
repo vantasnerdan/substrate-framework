@@ -67,3 +67,20 @@ or empirical comparators. The parent will register and validate this
 expansion before new0145 source bodies are opened. An established local
 route activates the remaining parent obligations; it does not itself
 close the unchanged continuum objective.
+
+## Executed failure-derived expansion and result
+
+The parent also registered and validated the positive multi-CK common-
+circle geometry expansion before its construction. The selected route
+is finite-band actual Euler preparation, n=8/J=7 physical time-moment
+matching, two axial and20 radial controls including background-phase
+moments, and positive many-CK angular quadrature on one exact circle.
+intermediate-candidate.md records why the simpler n2/first-time and
+fixed-TG versions do not control the natural finite-packet error.
+
+The final proofs are finite-packet.md and toroidal-transfer.md. The
+canonical-ledger exact verifier passes24/24; the first implementation
+failure and repaired first full output are preserved separately.
+receipt.md records the local/global finite-time theorem and its explicit
+registered-angle (not absolute-director) observation boundary. Parent
+coupled continuum completion remains unchanged and active.

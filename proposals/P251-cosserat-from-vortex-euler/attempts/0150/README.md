@@ -42,3 +42,11 @@ precise finite-k remainders after the physical current corrections. Close
 that feedback by a same-array core/ambient energy or pressure-resolvent
 construction, allowing a declared finite-band/core-last limit but retaining
 its actual action, physical observable and acoustic-time error.
+
+Central registration was validated by root (263 claims /12 proposals,
+process0) before source execution. Failure-generated representation:
+retain the actual vertical material displacement chi and use the
+Ertel/rearrangement variable q=delta(omega_z)-ik zeta chi. Its core
+support is invariant even though the physical vertical vorticity is
+not core-supported. This exposes compact Green couplings and the exact
+translation/ambient current before taking the acoustic limit.

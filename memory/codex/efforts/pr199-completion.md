@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T09:28:46+02:00'
+updated: '2026-09-05T10:24:53+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -27,7 +27,7 @@ The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
-Latest pushed research checkpoint:dcd7ab0.0127's full integrated backstop
+Latest pushed research checkpoint:b6257a6.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
@@ -107,13 +107,40 @@ actual smooth Euler finite-time continuation (12checks); its material-spin
 boundary response is still a separate construction. These are not promoted
 new claims or a replacement for the unchanged full objective.
 
-Current active constructions:0147 finite-action distributed optical packet
-and high-order multi-CK toroidal normal-jet match;0150 actual array acoustic
-finite-k forcing;0151 full one-wave isotropic Euler response beyond initial
-jets, retaining orientation dephasing and the geometry join. Root continues
-the actual material-spin/physical-director and same-field constitutive join.
-dcd7ab0's committed selector is fixed-only and agrees with0145's banked
-fixed-check receipt. Latest issue progress link:
+Current construction boundary:0147's actual finite-action physical packet,
+distributed material tag and same-tube multi-CK/global transfer are frozen;
+24 exact checks pass. Independent0157 accepts C-CST-011 after two precise
+wording corrections: the stationary law belongs to the background/tube
+family, not one localized packet; eta=1/2 is an available row normalization,
+not a constructed counterpropagating standing pair.0159 extracts its
+coefficient and material-moment API (11 tests,6 thin replay checks).
+0160 materializes this corrected claim in v0.176.0; its integrated
+promotion validation passes2597 tests in368.27s and every fixed check
+(264 accepted,1050 memory records,43 existing warnings). The complete user objective remains
+open, and no terminal PR or merge is authorized by this child success.
+
+Other frozen progress:0150 retains actual material-label/ambient zero
+modes and proves the low-frequency acoustic Schur limit, leaving actual
+acoustic-time histories for active0156.0151 derives the full fixed-time
+isotropic second spatial jet and a weakly elliptic fixed-period tube.
+0154 pulls back the actual Euler phase action to its physical mean chart,
+retaining Wronskian/current connections.0153 constructs a same-field
+finite-K local-optics/bulk-response join with dilute but positive optical
+inertia; it does not close uniform long-wave homogenization.0152's exact
+material-boundary torque exposes why the square-pair tag cannot supply
+the proposed all-time spin/action identity; that route result changes
+neither0147 nor the full objective.
+
+Active next work:0155 constructs actual optics on0151's SAME fixed-period
+elliptic field,0156 constructs the actual acoustic-time response/action,
+and0158 constructs the joint physical phase/current including actual
+packet mean returns and the independent initial hybrid-position moment.
+0161 is a failure-generated smooth triangular eigenshell array aiming
+to prove the full horizontal group bound and actual acoustic-time response;
+its constant-curl lift is a distinct transfer with full axial terms retained.
+Root completes reviewed packet integration and continues the common
+continuum join. b6257a6's committed selector is fixed-only and agrees
+with0149's banked fixed-check receipt. Latest issue progress link:
 https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5550143460.
 
 ## Accepted Baseline
