@@ -105,3 +105,24 @@ actual Galilean frame: balancing total impulse can delete the per-ring
 background needed to cancel self-translation. The geometry executor is
 working that mechanism and failure-derived alternatives with full pressure,
 stationarity and density costs. It is not a campaign no-go.
+
+## Actual route discrimination after the periodic promotion
+
+0248 derives the balanced-ring self-frame deficit and repairs the geometry
+concept to a parallel/common-frame array; its full3D zero-frequency stationary
+shape inverse and pressure-period rows remain unconstructed.0251's primary
+source audit adds Baldi's exact compact-flow particle action-angle chart, with
+its field-changing response limitation.0250 is actively constructing a
+fixed-radius response operator; exact periodic Beltrami compact-core fields
+are a direct alternative background without the missing stationary inverse.
+
+0252 establishes a new exact local compatibility theorem, independently
+reviewed without correction: pressure-localizable C2 axisymmetric steady
+Euler at a nondegenerate poloidal center r0>0 has zero swirl and hence zero
+velocity on that circle. The radial Euler centripetal pressure and the
+first-integral derivative give the result; eight exact checks pass exit0.
+This refutes only0248B's nonzero core inside its localizable matching region.
+It preserves0211, outer-only/nonlocalizable matching, degenerate cores and
+general compact Euler. Geometry-review begins0253 to execute those materially
+different localization constructions;0250 continues the fixed exact
+background response. No new promoted claim or exhaustion is inferred.

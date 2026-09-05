@@ -236,3 +236,53 @@ typed analytic target and located historical source inventory only`.
 Next coordination achievement: coordinator adds the 0248 central manifest
 entry and schema receipt, after which this pane may open the named source
 bodies and perform the substantive audit.
+
+## Activated substantive result
+
+The coordinator subsequently added the central entry and generated
+`schema.stdout` with `WORKFLOW VALID: 269 claims` and `schema.exit` equal to
+zero in the designated script pane.  Checkpoint `1edefee` preserves the
+completed 0245/0247 periodic join.  The source bodies were opened only after
+that activation.
+
+The completed audit and derivation are in `source-transfer.md`.  Its strongest
+result is not a compact-array claim.  The preregistered balanced molecule is
+refuted at route scope because cancellation of its uniform far fields removes
+the (O(\Gamma\log R/R)) translating frame required at every 0211 core, while
+distant impulse drift is only (O(\Gamma/(d^3R))).  The failure generates a
+viable one-orientation/common-frame periodic-ring candidate: absorb the
+uniform image velocity into the one global frame, leaving the genuinely small
+shape source (O(|\Gamma|R^4/P^5)).  The exact density, ambient-energy,
+pressure-period and persistence/observation costs are recorded there.
+
+`route_verdict`: balanced Candidate A **refuted as stated**; generated
+Candidate A1 **blocked on its three-dimensional bordered zero-frequency
+stationary inverse**; Candidate B **blocked on its common localizable-profile
+theorem**.  These are route verdicts only.  No exhaustion conclusion follows.
+
+`evidence_scope`: exact source-transfer audit and analytic frame/forcing,
+pressure and density derivation.  The parent may use the corrected A1
+continuation contract, but it may not yet import an exact stationary compact
+Euclidean array or the missing same-ring coupled history/action/current.
+
+Supplemental source guidance subsequently recorded in `0251/source-transfer.md`
+is reconciled in section 7 of this attempt's `source-transfer.md`.  The new
+analytic localizable-flow symmetry theorem is compatible with axisymmetric
+Candidate B and constrains its boundary hypotheses; it is not a refutation or
+a matching construction.  Baldi's compact-flow action-angle chart is an exact
+particle-transport frequency supplier for 0250, not the missing steady inverse
+or full Euler/Lin pressure/action/current lift.  The route verdicts above are
+therefore unchanged.
+
+## Later exact compatibility result0252
+
+After the foregoing source audit, root constructed a new local theorem and
+geometry-review independently accepted it in0252/review.md. For C2
+axisymmetric steady Euler with an invertible poloidal derivative at a center
+r0>0, pressure localizability forces the full core velocity to vanish.
+This changes Candidate B's verdict for the specific subclass that places
+its promised nonzero elliptic core inside the localizable region: that
+subclass is refuted. The earlier2026 source theorem did not imply this
+result; it is new exact contrary evidence. Outer-only localization or a
+nonlocalizable compact profile remains a distinct construction, now0253.
+Candidate A1 and the unchanged parent remain active with their stated gaps.
