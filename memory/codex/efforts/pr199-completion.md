@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T06:56:22+02:00'
+updated: '2026-09-05T07:39:08+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -27,8 +27,8 @@ The full autonomous constitutive identification remains distinct.
 No terminal PR or full-user-objective
 completion is asserted by this partial promotion checkpoint.
 
-Latest pushed research checkpoint:959db88.0122's full integrated backstop
-passes2576 tests in359.72s, with all fixed checks;263 accepted claims
+Latest pushed research checkpoint:dbc2bf3.0127's full integrated backstop
+passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
 0123 retains a controlled finite-time spin/shape remainder.0126 joins
@@ -36,9 +36,17 @@ actual laboratory time-reversed profiles and their isotropic angle
 reconstruction;0127 extracts the physical chart into a tested API and
 passes2580 tests in361.42s plus every fixed repository check.0124 now
 transfers through an actual affine Euler core jet with controlled global
-nonlocal pressure and transported-tag errors. Active0125/0128 construct
-the spatial response and an admissible three-Omega sideband correction;
-0129 explores the independent low-frequency translational branch.
+nonlocal pressure and transported-tag errors. Frozen0125/0128 construct
+the spatial response and an admissible three-Omega sideband correction
+with independent angle/spin/KKS-cross controls.0129 derives actual
+mean-translation modes on a helical background, with negative stiffness
+on that route.0130 constructs a nonempty actual finite-time first-jet
+spin/centroid window and a quasiperiodic nonlinear Euler lift.0131's
+higher-azimuthal modes have a physical inertia/curvature sign tradeoff.
+0132 distinguishes exact Euler energy/initial stress from magnetic
+elasticity. Active0133 changes the actual background to a finite-amplitude
+nonuniform relative equilibrium;0134 seeks positive stationary pressure
+cells;0135 explores actual finite-core spatial spin interactions.
 0121's frequency-average
 counterexample and0125's additional physical-polarization line are route
 results, not campaign exhaustion. No autonomous full constitutive claim
@@ -76,7 +84,7 @@ neither an elastic potential nor its canonical coordinate/kinetic metric.
 Codex owns repair implementation and attempt 0029+. An independent analytic
 worker explores orientation interactions read-only, following AGENTS.md's
 parallel replacement-candidate instruction. Existing attempts stay immutable.
-GitNexus indexes this worktree as pr199-completion at959db88; direct rg
+GitNexus indexes this worktree as pr199-completion atdbc2bf3; direct rg
 supplies omitted test/attempt call edges. The additive0115 euler_phase
 and0117 euler_observation APIs have their own tests and0114/0119/0126
 direct imports as consumers.0127 adds the physical scalar chart without
