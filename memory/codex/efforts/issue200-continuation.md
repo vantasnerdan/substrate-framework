@@ -2,7 +2,7 @@
 description: Construct the common actual smooth-Euler Cosserat history, action and current supplier
 author: codex
 created: '2026-09-05T20:00:00Z'
-updated: '2026-09-05T20:00:00Z'
+updated: '2026-09-05T23:22:36+00:00'
 tags: [substrate-framework, effort, P251, issue200]
 category: efforts
 confidence: working
@@ -10,7 +10,7 @@ status: active
 ---
 
 ## Goal and Success Contract
-Resume the full issue200 campaign on research/pr199-completion. Completion means the actual common continuum, claim review, release and final main integration. The next achievement is the joint supplier residual in attempt0241; a mismatch triggers the next repair in this run.
+Resume the full issue200 campaign on research/pr199-completion. Completion means the actual common continuum, claim review, release and final main integration. The reviewed compact same-field theorem is now C-CST-018 in v0.183.0. Final campaign validation and distinct operational main integration remain active; see attempts/0271 for the current receipt and closure map.
 
 ## Accepted Baseline
 Main42ef058 carries v0.174.0. Preserved branch4dc8692 carries branch-local v0.181.0 and scoped C-CST-008..016; normal merge a2fcb46 preserves both histories. Review branch de980dc is already an ancestor of main. Research is not yet landed.
@@ -253,3 +253,14 @@ measured inertia, observation connection and full current on one ensemble.
 The active transaction is additive C-CST-018/v0.183.0 promotion, generated
 state and terminal reconciliation, followed by a distinct operational merger.
 Historical N1..N7 route formulas are not newly certified by this result.
+
+## 2026-09-06 terminal scientific/promotion success
+
+C-CST-018 is accepted in v0.183.0 with271 claims. All prior270 branch
+claim objects and260 main objects are unchanged. The full main-comparison
+suite passes2677 tests, and final registry/generated/memory checks pass.
+0271/receipt.md and closure-map.md close P200-G/R/A/P with empty in-boundary
+debt. The source baseline is b39f392. One terminal PR and its fresh
+non-author merge now perform the remaining operational main integration.
+This effort remains active only for that integration; no scientific route
+is left implicitly open inside the promoted prepared statement.
