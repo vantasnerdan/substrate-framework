@@ -2,7 +2,7 @@
 description: Complete the Euler to Cosserat construction and repairs for PR 199
 author: codex
 created: '2026-09-04T18:00:00+02:00'
-updated: '2026-09-05T12:33:08+02:00'
+updated: '2026-09-05T13:16:00+02:00'
 tags: [substrate-framework, p251, pr-199]
 category: efforts
 confidence: working
@@ -38,6 +38,32 @@ canonical validation passes:266 accepted claims,1054 valid memory files,
 physical current terms remain explicit; no full suite is repeated.
 
 The preceding v0.177.0 checkpoint contains:
+Post-7b89db7 continuation has frozen0176 (38 exact checks),0179 (26),
+0180 (25),0181 (19),0182 (8), and0183 (15).0181 constructs an actual
+smooth compact-vorticity nodal column mode with positive laboratory
+action/curvature and one positive stationary material tag satisfying the
+angle–spin–current identities through carrier two.0182 keeps nonunit
+positive spin overlap in the physical displacement reconstruction while
+normalizing both inherited forms.0183 changes to a constant-pitch Euler
+column with an exact stationary helical material phase; its weighted
+current is explicitly not inferred to be mechanical spin.0180 derives
+the stationary inherited internal action and complete physical stress
+memory. Active0184 tests correlated whole-law preparation,0185 the actual
+helical quotient operator/action, and0186 closed-tube spectral transfer.
+EPS mode persistence, coherent nonzero band-edge/closure and the full
+same-cell autonomous physical continuum are still achievements in progress.
+0184's complete correlated-current quotient is now frozen (22 exact
+checks): arbitrary first-cell velocity controls of the translation-leading
+two-wave comparison cannot supply even a bounded finite positive optical
+stress response.0188 changes the leading microscopic state and derives
+both physical D/V columns.0187 (10 exact checks) constructs a positive-
+action two-family preparation that cancels coherent optical variance AND
+matches the inherited Euler energy, using actual carrier-gradient initial
+correlations. Its actual0181 column-mode supplier retains positive literal
+spin overlap; it is a mixture of whole column families, not a same-cell
+EPS transplantation. No full validations are run; existing unchanged-
+surface receipts are reused.
+
 C-CST-011 is the reviewed physical finite optical packet, and new
 C-CST-012 is the independently reviewed actual triangular planar-array
 acoustic-time theorem.0167's five direct tests and0162's thirteen affected
@@ -48,7 +74,7 @@ inverted translational response for the constant-curl lift and continues
 the generalized Bernoulli-profile repair.0164 retains the actual
 all-time tagged current and0166 derives optics on the same core geometry.
 
-Latest pushed research checkpoint:dfe495c.0127's full integrated backstop
+Latest pushed research checkpoint:7b89db7.0127's full integrated backstop
 passes2580 tests in361.42s, with all fixed checks;263 accepted claims
 remain unchanged.0119's physical charts,0120's fixed-lambda force-free
 torus and0123's actual compact reference-time moment match are now frozen.
@@ -162,7 +188,7 @@ its constant-curl lift is a distinct transfer with full axial terms retained.
 Root completes reviewed packet integration and continues the common
 continuum join. b6257a6's committed selector is fixed-only and agrees
 with0149's banked fixed-check receipt. Latest issue progress link:
-https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5550946812.
+https://github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5551246147.
 
 Post-checkpoint construction:0155 fixed-cell calibrated optical proof
 and cutoff addendum are frozen;0158 supplies actual15 exterior moment
@@ -212,6 +238,19 @@ after initial two-annulus slope matching develops a real time dependence.
 0180 retains its inherited Euler/Lin stress kernel and tests whether
 physical angle/spin moments close it. Isolated-mean autonomy is not added
 as a condition on a genuinely coupled theory. The campaign remains active.
+
+Checkpoint7b89db7 is pushed with C-CST-013/v0.178.0 and frozen0172's
+complete physical coupled reference (27 exact checks), plus0174/0175.
+Its staged tree6af6f64db1cfd535cd06212dd660d8949a8fd721 passes whitespace
+checks without exceptions.0176 is subsequently frozen with38 exact checks:
+positive initial band-edge and variance controls, explicit dephasing/current
+mechanisms, and a different positive stationary-shape initial observer.
+0182 proves the full nonunit-overlap current normalization (8 exact checks):
+the physical angle remains unrescaled, standard normal coefficients remain,
+and literal physical translation transfer is proportional to eta>0.
+0181 now constructs the actual stationary-domain mode/current;0180 derives
+the inherited internal Euler action and physical stress closure;0179 tests
+actual corrected velocity/current preparations. All remain active routes.
 
 GitNexus refreshed after dfe495c on the active worktree:46850 nodes,
 73611 edges,767 clusters,2 flows. Direct source checks still cover omitted

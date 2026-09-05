@@ -1,0 +1,21 @@
+Command: PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python proposals/P251-cosserat-from-vortex-euler/attempts/0181/verify.py
+Exit: 1
+PASS [P251-0181-stationary-nodal-mode] full radial pressure equation
+PASS [P251-0181-stationary-nodal-mode] full three-dimensional divergence
+PASS [P251-0181-stationary-nodal-mode] sum of actual horizontal displacement rows
+PASS [P251-0181-stationary-nodal-mode] KKS radial norm before integration by parts
+PASS [P251-0181-stationary-nodal-mode] complete determinant transformed without a dropped exterior term
+PASS [P251-0181-stationary-nodal-mode] lab zero-frequency crossing is tau one
+PASS [P251-0181-stationary-nodal-mode] transverse crossing derivative
+PASS [P251-0181-stationary-nodal-mode] squared lab frequency has strictly positive curvature at a simple zero
+PASS [P251-0181-stationary-nodal-mode] actual lab generator and KKS determine the Hamiltonian sign
+PASS [P251-0181-stationary-nodal-mode] one-coordinate inertia derives by reaction elimination
+PASS [P251-0181-stationary-nodal-mode] Cartesian shape row includes axial displacement
+Traceback (most recent call last):
+  File "proposals/P251-cosserat-from-vortex-euler/attempts/0181/verify.py", line 106, in <module>
+    raise SystemExit(main())
+  File "proposals/P251-cosserat-from-vortex-euler/attempts/0181/verify.py", line 68, in main
+    checks.check("Cartesian displacement moment includes both cross terms", s.simplify(displacement - s.pi * (s.I * z * (aa + bb) + r * p * pp / sig**2) * ep) == s.zeros(2, 1))
+  File "src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0181-stationary-nodal-mode] Cartesian displacement moment includes both cross terms
