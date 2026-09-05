@@ -48,28 +48,6 @@ def main():
                 theta_integrand = sp.cancel(phi_integral.subs(r, radius+minor*ct))*(ct+sp.I*st)
                 value = sp.simplify(circle_integral(theta_integrand, ct, st))
                 tensor[i, j, ell] = tensor[i, ell, j] = value
-    # Center the full tensor with independently retained, radially integrated
-    # baseline spin and centroid variation, not shell-fitted values.
-    a_spin, z_shift = sp.symbols("a_spin delta_X_z", real=True)
-    baseline_first = sp.zeros(3)
-    for i in range(3):
-        for j in range(3):
-            phi_value = circle_integral(velocity[i]*position[j], cp, snp)
-            baseline_first[i, j] = circle_integral(
-                phi_value.subs(r, radius+minor*ct), ct, st
-            )
-    assert baseline_first == sp.Matrix([
-        [0, -2*sp.pi**2*radius*swirl, 0],
-        [2*sp.pi**2*radius*swirl, 0, 0], [0, 0, 0],
-    ])
-    integrated_first = sp.Matrix([[0, -a_spin, 0], [a_spin, 0, 0], [0, 0, 0]])
-    centroid = sp.Matrix([0, 0, z_shift])
-    uncentered = dict(tensor)
-    for i, j, ell in tensor:
-        tensor[i, j, ell] -= (
-            centroid[j]*integrated_first[i, ell]+centroid[ell]*integrated_first[i, j]
-        )
-    assert tensor[1, 2, 0]-uncentered[1, 2, 0] == -a_spin*z_shift
     parallel = sp.I*sp.pi**2*coefficient*speed**2*minor/2
     perpendicular = sp.I*sp.pi**2*coefficient*speed**2*(radius**2/minor+3*minor/4)
     print("Derived diagonal and mixed entries:", tensor[2, 2, 2],
@@ -79,9 +57,7 @@ def main():
     assert sp.simplify(tensor[2, 1, 1]-perpendicular) == 0
     assert sp.simplify(tensor[0, 2, 0]+parallel/2) == 0
     assert sp.simplify(tensor[1, 2, 1]+parallel/2) == 0
-    assert sp.simplify(
-        tensor[1, 2, 0]+sp.pi**2*coefficient*speed*swirl*radius+a_spin*z_shift
-    ) == 0
+    assert sp.simplify(tensor[1, 2, 0]+sp.pi**2*coefficient*speed*swirl*radius) == 0
 
     kx, ky, kz = sp.symbols("kx ky kz", real=True)
     wave = sp.Matrix([kx, ky, kz])
@@ -90,9 +66,7 @@ def main():
         for i in range(3)
     ])
     # The parity-even part is derived by reversing the swirl in the full tensor.
-    even_output = sp.simplify((
-        full_output+full_output.subs({swirl: -swirl, a_spin: -a_spin}, simultaneous=True)
-    )/2)
+    even_output = sp.simplify((full_output+full_output.subs(swirl, -swirl))/2)
     expected = sp.Matrix([-parallel*kx*kz, -parallel*ky*kz,
                           perpendicular*(kx**2+ky**2)+parallel*kz**2])
     assert sp.simplify(even_output-expected) == sp.zeros(3, 1)
@@ -114,7 +88,7 @@ def main():
     # Deleting the oblique mixed entries changes the measured transverse row.
     axial_only = sp.Matrix([0, 0, expected[2]])
     assert sp.simplify(transverse*(even_output-axial_only)) != sp.zeros(3, 1)
-    print("Full centered Cartesian material tensor (all 18 symmetric entries), oblique "
+    print("Full Cartesian material tensor (all 18 symmetric entries), oblique "
           "projection, swirl parity, sphere moments, and mixed-row mutation: PASS")
     print("b_parallel =", parallel)
     print("b_perp =", perpendicular)

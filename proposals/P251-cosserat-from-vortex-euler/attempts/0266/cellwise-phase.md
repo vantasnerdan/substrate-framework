@@ -103,10 +103,24 @@ fixed s, after dividing out f,
     Du xi=C[(V^2/s)(-cos(theta)e_r+sin(theta)e_z)
        +(W_a/r)(-V sin(theta)e_varphi-W e_r)].           (6)
 
-Substitute (5)-(6) into the literal material tensor
+Substitute (5)-(6) into the uncentered part of the material variation
 
-    delta B_ijl=integral rho chi [
-       (Du xi)_i x_j x_l+u_i(xi_j x_l+x_j xi_l)].        (7)
+    delta B_unc,ijl=integral rho chi [
+       (Du xi)_i x_j x_l+u_i(xi_j x_l+x_j xi_l)],
+    delta B_ijl=delta B_unc,ijl
+                       -delta X_j A_0,il-delta X_l A_0,ij.       (7)
+
+Here A_0,ij=integral rho chi u_i x_j is the actual background first
+moment and delta X=M_tag^-1 integral rho chi xi. This is the centering
+correction identified in0267. Axisymmetry and stationarity give
+A_0,xy=-a_spin, A_0,yx=a_spin, with all other entries zero, and
+delta X=delta X_z e_z for this acoustic column. Thus the correction
+changes the chiral entries B_yzx and B_xzy, but not any of the three
+even coefficients in (8). Its whole-law polar response has a third
+orientation moment and vanishes, as does the moving-centroid phase of
+the background antisymmetric first moment. The actual a_spin and
+delta X_z include their distinct radial integrals; they are not set
+equal to their single-shell diagnostic values.
 
 The source is physically K independent, so (7) is now the actual
 second-moment contribution in 0241; the removed first-moment source jet
@@ -180,8 +194,10 @@ diagonal blocks. Actual lower carrier and periodic-image pressure
 terms are then controlled after choosing K; their effect on the
 Schur coefficient is retained rather than called automatically small.
 
-The exposing symbolic check must differentiate (7) in Cartesian
-components with one common angular measure and evaluate the sphere
-moment in (10). Independent review of this new source-family and
-centroid-row transfer remains to be performed. The compact stationary
-field and final same-field normalization remain separate parent inputs.
+The exposing symbolic check differentiates (7) in Cartesian components
+with one common angular measure and evaluates the sphere moment in
+(10).0267 independently supports the new source-family and Schur gain;
+its bounded centering correction is now explicit in (7) and in the
+active oracle. The prior uncentered script/output remains preserved.
+The compact stationary field and final same-field normalization remain
+separate parent inputs.

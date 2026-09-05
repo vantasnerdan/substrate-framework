@@ -240,3 +240,16 @@ same-field response/action/current is outside that review.0266's full
 Cartesian oracle passes after repairing only structural-versus-algebraic
 SymPy equality; the original failing script/output is preserved. The
 whole-law transverse coefficient is4 i pi^2 C V^2(R^2+s^2)/(15s).
+
+## 2026-09-06 compact joint scientific closure; promotion executing
+
+0269 independently establishes the proposed C-CST-018 compact same-field
+prepared finite-window, nonzero-K linear-response/second-variation theorem.
+0268 supports the finite-R carrier;0267 accepts the centered oblique gain;
+0264 supports the full finite-K normalizer.0265 joins their actual sources,
+measured inertia, observation connection and full current on one ensemble.
+0270's original E-versus-Q normalization false green is preserved and repaired;
+0271/reuse-pytest.stdout records21 passing direct and canonical-consumer tests.
+The active transaction is additive C-CST-018/v0.183.0 promotion, generated
+state and terminal reconciliation, followed by a distinct operational merger.
+Historical N1..N7 route formulas are not newly certified by this result.
