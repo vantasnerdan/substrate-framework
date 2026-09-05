@@ -1,0 +1,1035 @@
+KNOTS AND LINKS IN STEADY SOLUTIONS
+OF THE EULER EQUATION
+ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+Abstract. Given any possibly unbounded, locally ﬁnite link, we show that
+there exists a smooth diﬀeomorphism transforming this link into a set of stream
+(or vortex) lines of a vector ﬁeld that solves the steady incompressible Euler
+equation in R3. Furthermore, the diﬀeomorphism can be chosen arbitrarily
+close to the identity in any Cr norm.
+Keywords: Knots, Euler equation, hyperbolic periodic orbit, dynamical sys-
+tems, better-than-uniform approximation.
+MSC 2010: 37N10, 37C27, 37C10, 35Q31, 57M25.
+1. Introduction
+The three-dimensional incompressible Euler equation
+∂u
+∂t + (u·∇ )u =−∇P, divu = 0
+describes the motion of an inviscid incompressible ﬂuid. A steady solution of the
+Euler equation is a time-independent vector ﬁeldu that satisﬁes the above equation
+for some pressure function P . Equivalently, the vector ﬁeld u satisﬁes
+u∧ curlu =∇B,
+whereB :=P +|u|2/2 is the Bernoulli function. In ﬂuid mechanics, the trajectories
+of the velocity ﬁeld u and of its curl (i.e., the vorticity) are called stream lines and
+vortex lines, respectively.
+Since Lord Kelvin, steady solutions of the Euler equation having knotted and
+linked stream (or vortex) lines have attracted considerable attention, partly be-
+cause of their connections with turbulence and hydrodynamic instability [3, 12].
+Because of the connection of the steady Euler equation with variations of the en-
+ergy functional under volume-preserving diﬀeomorphisms, the presence of periodic
+trajectories of prescribed link type has also been considered to derive lower bounds
+for the energy functional in certain natural classes of vector ﬁelds. These bounds
+can actually be expressed in terms of the helicity and asymptotic linking number
+of a ﬁxed vector ﬁeld of the class (cf. e.g. [7, 22] and references therein).
+Despite the large body of related literature, there are surprisingly few results of
+existence of steady solutions with linked stream lines, and in fact our knowledge
+is mostly based on numerical simulations and exact solutions. In the mid eight-
+ies, Moﬀatt [20] proposed an appealing heuristic approach to the construction of
+steady solutions with stream lines diﬀeomorphic to a given link. Unfortunately,
+this approach requires global well-posedness for a magnetohydrodynamic system of
+1
+arXiv:1003.3122v2  [math-ph]  11 Apr 20112 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+PDEs including a Navier–Stokes equation (which, as is well known, is very far from
+obvious) and makes strong topological assumptions on the asymptotic behavior of
+the solutions as t→∞ .
+To our best knowledge, there are only two existence results of steady solutions
+with prescribed topological properties. Firstly, using contact topology, Etnyre and
+Ghrist [6] showed that, given a certain link, there exists a (possibly incomplete)
+Riemannian metric in R3 adapted to it such that the Euler equation in this metric
+admits a steady solution having this link as a set of periodic stream lines. Consid-
+ering the Euler equation for arbitrary Riemannian metrics is key in order to make
+the problem amenable to a purely topological approach, so this method cannot be
+used to derive existence results for a ﬁxed (e.g., Euclidean) metric.
+The second result, by Laurence and Stredulinsky [16], utilizes variational tech-
+niques to analyze steady solutions of the Euler equation with axial symmetry. This
+symmetry makes the problem eﬀectively two-dimensional and allows to formulate
+it in terms of the scalar stream function. In this case, the authors prove the ex-
+istence of continuous, energy-class solutions in a bounded domain with level sets
+of a given topological type. This approach cannot be modiﬁed to prescribe stream
+lines because it provides some (weak) control over the poloidal component of the
+velocity ﬁeld but does not yield any information on its axial component. Moreover,
+at most the so-called torus knots could be possibly realized as stream lines of an
+axisymmetric solution.
+In this paper we aim to ﬁll this gap by proving the existence of steady solutions
+in R3 with stream or vortex lines of prescribed link type. Here by a link we mean
+a disjoint union of tame knots, that is, of smoothly embedded circles in R3. The
+steady solutions we construct belong to the class of (strong) Beltrami ﬁelds [17,
+Section 2.3], i.e., they satisfy
+curlu =λu
+with λ being a nonzero constant. Beltrami ﬁelds also play a preponderant role in
+magnetohydrodynamics, where they are called force-free ﬁelds. It should be noticed
+that the stream lines of a Beltrami ﬁeld are also vortex lines.
+The motivation to consider Beltrami ﬁelds to produce steady solutions with
+stream or vortex lines of arbitrary link type comes from Arnold’s and Etnyre and
+Ghrist’s studies of solutions to the steady incompressible Euler equation when the
+Bernoulli function B is analytic and nonconstant [1, 5]. Under certain dynamical
+assumptions, these authors showed that in this case the only knots that could
+possibly be stream or vortex lines of a steady solution to the Euler equation in a
+bounded domain are those of Wada type; this result also holds in the whole R3
+provided that the solution vector ﬁeld satisﬁes the estimate |u(x)| +| curlu(x)|⩽
+A +B|x| for some constants A and B. That a similar result does not hold for
+Beltrami ﬁelds was well known through the analysis of particular instances of ABC
+ﬂows [9]. Our main result in this paper is that actually there are no restrictions on
+the knot types that can be realized as stream lines of a Beltrami ﬁeld:
+Theorem 1.1. Let L⊂ R3 be a possibly unbounded, locally ﬁnite link. Then for
+any real constant λ⁄= 0 one can transform L by a C∞ diﬀeomorphism Φ of R3
+arbitrarily close to the identity in any Cr norm, so that Φ(L) is a set of stream
+lines of a Beltrami ﬁeld u, which satisﬁes curlu =λu in R3.KNOTS AND LINKS IN STEADY SOLUTIONS OF THE EULER EQUATION 3
+The proof of this theorem is given in Section 3, the demonstrations of several
+intermediate results being postponed to Sections 4–7. An informal guide to the
+proof of the theorem is presented in Section 2. The proof combines techniques from
+ordinary and partial diﬀerential equations with diﬀerential topology. While it is
+not easy to ﬁnd parts of the proof purely relying on methods from just one of these
+areas, the basic philosophy is to use diﬀerential topology and ordinary diﬀerential
+equations (as opposed to Laurence–Stredulinsky) to gain control on the trajectories
+of various auxiliary vector ﬁelds, and partial diﬀerential equations to relate these
+auxiliary vector ﬁelds to the Beltrami equation (as opposed to Etnyre–Ghrist).
+Theorem 1.1 provides a rigorous proof of Moﬀatt’s heuristic insight [20] that any
+knot should be realizable as a stream line (or vortex line) of a steady solution of the
+Euler equation. It also furnishes a positive answer to Etnyre and Ghrist’s question
+of whether there exists a steady solution in R3 having linked stream lines of all
+isotopy types; details and further applications will be given in Section 8.
+It should be noticed that any vector ﬁeld satisfying curl u = λu has inﬁnite
+energy, since in this case ∆ u =−λ2u and the Laplacian does not have any L2
+eigenfunctions in R3. While there are L∞ solutions of the equation curl u = λu
+in R3, such as the ABC ﬂows [17], the solutions given by Theorem 1.1 are not
+granted to be bounded either. Incidentally, the related problem of whether there are
+any nonzero L∞ steady solutions to the three-dimensional Navier–Stokes equation
+is wide open; the fact that no bounded solutions exist either in two dimensions or
+in the axisymmetric case has been established recently [13].
+2. Strategy of proof
+Leaving technicalities aside for the moment, the strategy of the proof of the
+main theorem is the following. We take a connected component La of the link
+L, which is a smooth knot, and perturb it a little if necessary to make it real
+analytic. We then embed the perturbed knot into an analytic two-dimensional
+strip and construct a vector ﬁeld on this strip having the latter knot as a stable
+hyperbolic limit cycle. Next we extend this vector ﬁeld on the strip to a local
+Beltrami ﬁeld va, deﬁned in a tubular neighborhood of the cycle. By construction,
+the ﬁeld va has a periodic orbit diﬀeomorphic to the link component La, which is
+granted to be hyperbolic by the choice of the ﬁeld on the strip and the fact that
+the local Beltrami ﬁeld va is divergence-free. The above procedure is then repeated
+for all the components of the link. To conclude, we show that there exists a global
+Beltrami ﬁeld u that approximates each local ﬁeld va; the ﬁeld u will then have a
+stream line diﬀeomorphic to each link component La because of the robustness of
+the limit cycle of va.
+Three main diﬃculties arise when trying to carry out this program. In the
+ﬁrst place, it seems natural to deﬁne the local Beltrami ﬁeld va as the solution to
+some Cauchy problem for the curl operator, but the fact that the symbol of curl
+is an antisymmetric matrix (and thus there are no non-characteristic surfaces of
+curl) precludes a straightforward application of the Cauchy–Kowalewski theorem.
+In the second place, the approximation result connecting the global Beltrami ﬁeld
+u and the local ﬁelds va should be suﬃciently ﬁne to eﬀectively deal with the
+noncompactness of the link L. Thirdly and related, the vector ﬁeld on the strip
+used as “Cauchy data” to deﬁne the local Beltrami ﬁeldva must be delicately chosen4 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+in order to ensure that the limit cycle of va diﬀeomorphic to the link component
+La is “robust enough” to be preserved by the latter approximation.
+The proof of Theorem 1.1, which we present in the following section, is divided
+into ﬁve steps. Let us very brieﬂy comment on the purpose of each step:
+(i) First of all, in Step 1 we present an abstract local existence theorem (The-
+orem 3.1) for the equation curl v =λv with data v|Σ =w on a surface Σ
+that will be subsequently applied to deﬁne the local Beltrami ﬁeld va in
+terms of a prescribed vector ﬁeld on a strip at the link component La. To
+circumvent the lack of ellipticity of curl (or of its counterpart ⋆d acting on
+1-forms, with ⋆ the Hodge operator), we resort to an indirect argument
+with the Dirac-type operatord+d∗ acting on the space of diﬀerential forms
+of mixed degrees. Here d∗ is the codiﬀerential; the operator d +d∗ is then
+elliptic (thus allowing us to invoke the Cauchy–Kowalewski theorem), but
+it does not preserve the space of 1-forms. Ultimately, this reﬂects itself in
+the necessity of imposing some technical conditions on the vector ﬁeld on
+the strip that will serve as Cauchy data.
+(ii) Appropriate Cauchy data (that is, the vector ﬁeld on the strip at each link
+component La previously mentioned) are carefully constructed in Step 2
+(Lemma 3.4). Each ﬁeld is required to satisfy the technical conditions
+demanded by the existence theorem proved in Step 1 and, besides, to have
+a stable hyperbolic limit cycle diﬀeomorphic to the link component La.
+This construction is considerably simpliﬁed by the introduction of a local
+coordinate system adapted to the link component.
+(iii) The choice of Cauchy data on the strip we made in Step 2 ensures that the
+associated local Beltrami ﬁeld va obtained using the existence theorem
+of Step 1 also has a periodic orbit diﬀeomorphic to the link component
+La. In Step 3 we show that this periodic orbit is robust under suitably
+small perturbations of the vector ﬁeld because our choice of Cauchy data
+guarantees that there is a stable manifold tangent to the strip and, the
+ﬁeld va being divergence-free, there must also be an unstable manifold,
+thereby granting that the periodic orbit is hyperbolic (Theorem 3.5).
+(iv) In Step 4 we prove an abstract result on approximation of local Beltrami
+ﬁelds by global Beltrami ﬁelds (Theorem 3.6) adapted to the kind of per-
+turbations that were allowed in Step 3. This result relies on a better-than-
+uniform approximation theorem for the auxiliary scalar elliptic equation
+∆f =−λ2f, which in turn hinges on an iterative scheme that employs the
+Lax–Malgrange theorem.
+(v) To conclude, in Step 5 we use the latter approximation theorem to con-
+struct a global Beltrami ﬁeldu that approximates each local Beltrami ﬁeld
+va in a neighborhood of the link component La and show that therefore
+the ﬁeld u has a set of periodic trajectories diﬀeomorphic to the link L on
+account of the hyperbolic permanence theorem.
+3. Proof of the main theorem
+In this section we shall present the proof of Theorem 1.1, which, as we have just
+mentioned, is divided into ﬁve steps. We will henceforth assume that the parameter
+λ that appears in the Beltrami equation curl u = λu is positive (which can beKNOTS AND LINKS IN STEADY SOLUTIONS OF THE EULER EQUATION 5
+accomplished by mapping x↦→− x if necessary) and that all the diﬀeomorphisms
+are of class C∞.
+Step 1 (Local existence for the Cauchy problem). A natural way of obtaining local
+solutions of the Beltrami equation with partially prescribed behavior is to consider
+the Cauchy problem
+curlv =λv, v |Σ =w,
+where Σ is an embedded oriented surface in R3 of class Cω (where, as customary,
+Cω stands for real analytic). Therefore, our goal in this step is to establish the
+following abstract existence theorem for the above Cauchy problem, which grants
+the existence of a solution under suitable hypotheses on the vector ﬁeld w used as
+Cauchy data:
+Theorem 3.1. Let Σ be an embedded oriented analytic surface in R3. Let w be a
+Cω vector ﬁeld tangent to Σ and let us denote by γ its associated 1-form. If the
+pullback of the 1-formγ to the surface Σ is closed (i.e.,dj∗
+Σ(γ) = 0 withjΣ : Σ→ R3
+the inclusion map), then the equation curlv =λv with Cauchy data v|Σ =w has a
+unique solution in a neighborhood of the surface Σ. This solution is analytic.
+The proof of this result is given in Section 4. To understand the content of
+the theorem, it is worth discussing at this point the theorem’s hypothesis that the
+pulled-back 1-form j∗
+Σ(γ) is closed. To this end, let us take Cω local coordinates
+(ρ,ξ 1,ξ 2) in a neighborhood of the surface Σ, where ρ denotes the signed distance
+to this surface [14]. In these coordinates, the Euclidean metric reads
+(3.1) ds2 =dρ2 +hij(ρ,ξ )dξidξj,
+and obviously the surface Σ is the zero set of the coordinate ρ. We will denote by
+hij the inverse matrix of hij and by|h| := det(hij) its determinant. Let us write
+the vector ﬁeld v in these coordinates as
+v =χ(ρ,ξ ) ∂
+∂ρ +bi(ρ,ξ ) ∂
+∂ξi ;
+setting ai :=hijbj, its associated 1-form can be written as
+β :=χ(ρ,ξ )dρ +ai(ρ,ξ )dξi.
+Let us suppose that the ﬁeld v satisﬁes the equation curl v =λv and is tangent
+to the surface Σ, as claimed in the theorem. Since the coordinate vector ﬁeld ∂/∂ρ
+is orthogonal to ∂/∂ξi by the coordinate expression of the metric (cf. Eq. (3.1)),
+the condition that the ﬁeld v be tangent to the surface is obviously tantamount to
+demanding that the function χ appearing in the coordinate expression of v satisﬁes
+χ(0,ξ ) = 0 for all ξ.
+It is slightly more convenient to attack the equation curlv =λv using diﬀerential
+forms, in terms of which it can be rewritten as ⋆dβ = λβ, where β is the 1-form
+dual to the ﬁeld v, ⋆ denotes the Hodge operator and d is the exterior derivative.
+The action of ⋆d on the 1-form β is given in coordinates by
+⋆dβ =|h|1/2h1ih2j
+(∂aj
+∂ξi− ∂ai
+∂ξj
+)
+dρ +|h|1/2h2i
+(∂χ
+∂ξi− ∂ai
+∂ρ
+)
+dξ1
++|h|1/2h1i
+(∂ai
+∂ρ − ∂χ
+∂ξi
+)
+dξ2.6 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+Accordingly, the equation ⋆dβ = λβ and the condition χ(0,ξ ) = 0 imply that the
+coeﬃcients ai(ρ,ξ ) of the 1-form β satisfy
+∂aj
+∂ξi (0,ξ )− ∂ai
+∂ξj (0,ξ ) = 0.
+This means that the pullback j∗
+Σ(β) to the surface of the 1-form β must be closed.
+Hence the content of Theorem 3.1 is that this condition (which we state in terms
+of the Cauchy data) is not only necessary, as the calculations above show, but also
+suﬃcient.
+Step 2 (Construction of appropriate Cauchy data). In view of the local existence
+theorem proved in Step 1, our goal in this step is to construct vector ﬁelds tangent to
+certain analytic surfaces that satisfy the hypotheses of the aforementioned theorem
+and, in addition, possess certain convenient dynamical properties on these surfaces
+that will be discussed later. Since we will need to work in the analytic category,
+as a preliminary technical result we start by recording that there is a “small”
+diﬀeomorphism ˜Φ of R3 which transforms the linkL into an analytically embedded
+submanifold ˜Φ(L). More precisely,
+Lemma 3.2. Given the locally ﬁnite link L, we can transform it by a diﬀeomor-
+phism ˜Φ of R3 arbitrarily close to the identity in any Cr norm, so that ˜Φ(L) is a
+real analytic link.
+We omit the proof of this result, which is a straightforward consequence of
+Thom’s isotopy theorem (cf. e.g. [4, Theorem 14.1.1]). Replacing the link L by
+its transformed image ˜Φ(L) if necessary, by the above lemma we can (and will)
+assume that the link L is analytic without loss of generality. We will denote the
+connected components of the link by La, where the labeling index a ranges over an
+at most countable set A.
+In order to apply the Existence Theorem 3.1 later on, we need to introduce an
+appropriate surface Σa containing the link componentLa. As the normal bundle of
+La is trivial [19], a technically convenient way of doing this is via a Cω trivializing
+map Θa whose 0-ﬁber is La:
+Deﬁnition 3.3. We say that an embedded analytic surface Σa is a strip at the link
+componentLa if there is a tubular neighborhood Na of the link component and an
+associated Cω trivializing map Θa : Na→ R2 whose 0-ﬁber is La and such that
+the surface Σa is given by Θ−1
+a ((−1, 1)×{ 0}). Obviously the link component La is
+contained in the strip Σa.
+Clearly the surface Σ a is diﬀeomorphic to the cylinder S1× R, so it will be
+assumed to be oriented. The following lemma provides a way of choosing a vector
+ﬁeld wa tangent to a strip at a link component La so that, on the one hand,
+satisﬁes the hypotheses of the Existence Theorem 3.1 that we stated in Step 1 and,
+on the other hand, its pullback to the surface has the link component La as a stable
+hyperbolic limit cycle . This simply means that there exists a neighborhood of the
+link component in the strip Σa whose ω-limit set along the local ﬂow of the pulled
+back vector ﬁeld is this component and that the associated monodromy matrix does
+not have any nontrivial eigenvalues of modulus 1.KNOTS AND LINKS IN STEADY SOLUTIONS OF THE EULER EQUATION 7
+Lemma 3.4. Given a link component La, one can take a tubular neighborhood
+Na of La and an associated strip Σa such that there is an analytic vector ﬁeld wa
+in Na tangent to the strip and whose pullback to the strip (i.e., j∗
+a(wa) with ja :
+Σa→Na the inclusion map) has the link component La as a stable hyperbolic limit
+cycle. Furthermore, one can assume that the pullback to the strip Σa of the 1-form
+associated to the ﬁeld wa is closed and that tubular neighborhoods corresponding to
+distinct link components have disjoint closures.
+The proof of Lemma 3.4 is presented in Section 5. One should note that the fact
+that the tubular neighborhoods corresponding to distinct link components have
+disjoint closures will be used in Step 5 to construct the diﬀeomorphism Φ which
+transforms the link into a set of stream lines.
+Step 3 (Stability of periodic stream lines). Given a link component La, we showed
+in Step 2 (Lemma 3.4) that one can take an appropriate surface Σ a containingLa,
+which we called a strip, and a vector ﬁeld wa tangent to the strip which has certain
+convenient dynamical properties and satisﬁes the requirements of the Existence
+Theorem 3.1 proved in Step 1. Therefore, there is a unique analytic local Beltrami
+ﬁeldva, which satisﬁes the equation curlva =λva in a small enough tubular neigh-
+borhood Na of the link component, whose restriction to the strip is va|Σa =wa.
+By construction, the link component La is a periodic orbit of the local Beltrami
+ﬁeld va. Our main result in this step is the following theorem, which asserts that
+this periodic orbit is robust under suitably small perturbations. The basic idea is
+that, as our choice of the vector ﬁeld wa on the strip guarantees that the cycle La
+of the ﬁeld va has a stable manifold (which is tangent to the strip), the fact that
+the ﬁeld va preserves volume implies that the cycle also has an unstable manifold,
+thus ensuring its hyperbolicity. The proof of this result is given in Section 6.
+Theorem 3.5. Consider a tubular neighborhood Na of the link component La,
+and an associated strip Σa. Let the ﬁeld va be the unique solution to the equation
+curlva = λva in this neighborhood taking the value va|Σa = wa, where wa is the
+vector ﬁeld constructed in Lemma 3.4. Then if ˜v is any vector ﬁeld Cr-close to
+the ﬁeld va in the neighborhood Na with r> 1, there is a diﬀeomorphism Φa of R3
+Cr-close to the identity transforming the link component La (which is a periodic
+orbit of the ﬁeld va) into a periodic orbit Φa(La) of the perturbed vector ﬁeld ˜v.
+Furthermore, one can assume that the diﬀeomorphismΦa coincides with the identity
+outside the open set Na.
+Step 4 (Better-than-uniform approximation by global solutions). Our goal in this
+section is to present an abstract theorem that permits to approximate a local Bel-
+trami ﬁeld by a global Beltrami ﬁeld. The paradigmatic result on the approximation
+of local solutions of an analytic diﬀerential equation by global solutions is the cele-
+brated Lax–Malgrange theorem [15, 18], which applies to linear elliptic diﬀerential
+operators and yields uniform approximation on compact sets. The hypotheses of
+compactness and, most importantly, ellipticity are certainly not satisﬁed by the
+Beltrami equation, so our analysis requires some further elaboration. Moreover,
+better-than-uniform approximation is necessary in order to exploit the stability
+results we carefully established in Step 3.
+Better-than-uniform approximation refers to the fact that we do not only wish
+to prove that theCr norm of the diﬀerence of two vector ﬁelds is small (say, smaller8 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+than a certain number ϵ) but, rather, that the Cr-approximation can be actually
+improved as one moves away from a ﬁxed point (e.g., the origin). This is usually
+expressed using an “error function” ϵ(x) and pointwise bounds, as we do in the
+statement of this theorem. Its proof will be provided in Section 7.
+Theorem 3.6. Let the closed setS be a locally ﬁnite union of pairwise disjoint com-
+pact subsets of R3 whose complements are connected, and let v be a local Beltrami
+ﬁeld that satisﬁes curlv = λv in S. Then one can ﬁnd a Cr better-than-uniform
+approximation of the ﬁeld v by a global Beltrami ﬁeld ˜v, i.e., for any integer r and
+any positive continuous function ϵ(x) fromS to (0,∞) there is a ﬁeld ˜v which sat-
+isﬁes the equation curl ˜v = λ˜v in R3 and such that its diﬀerence with the ﬁeld v
+admits the pointwise Cr bound
+∑
+|α|⩽r
+⏐⏐Dαv(x)−Dα˜v(x)
+⏐⏐<ϵ (x)
+in the set S.
+Regarding the hypotheses on the setS in the statement of the theorem, it should
+be mentioned that the condition that the complement of each compact subset be
+connected is necessary in order to apply the Lax–Malgrange theorem for an auxiliary
+elliptic equation, while the fact that the set S is the locally ﬁnite union of disjoint
+compact sets is used to attack the full problem using an iterative scheme. The
+assumption that the equation curl v = λv holds in the closed set S (which means
+that it holds in an open neighborhood of S and is also a hypothesis of the Lax–
+Malgrange theorem) is required to ensure that the ﬁelds do not have a pathological
+behavior at the boundary.
+Step 5 (Construction of the global Beltrami ﬁeld). Finally, in this step we will obtain
+the desired global Beltrami ﬁeldu having a set of periodic stream lines diﬀeomorphic
+to the link L using the local Beltrami ﬁelds va constructed in Step 3 and the
+approximation theorem established in Step 4. By taking smaller neighborhoods if
+necessary, we will assume that the latter ﬁelds satisfy the equation curl va = λva
+in the closure Na of a tubular neighborhood of the link component La. In order
+to apply the Approximation Theorem 3.6, we deﬁne a vector ﬁeld v in the union
+S :=⋃
+a∈ANa of all these sets by letting it be equal to the local Beltrami ﬁeld va
+in each set Na. Here we are using that these sets Na can be assumed disjoint for
+distinct link components, as we saw in Lemma 3.4.
+Since the ﬁeld v thus deﬁned satisﬁes the Beltrami equation curl v = λv in the
+closed set S and S veriﬁes the hypotheses of the Approximation Theorem 3.6, we
+infer that there is a global Beltrami ﬁeld u that approximates the ﬁeld v in the Cr
+better-than-uniform sense. That is, given any continuous functionϵ(x) mapping the
+set S into the positive reals (0,∞) and an integer r (the order of approximation),
+one can choose the global Beltrami ﬁeldu so that in the setS we have the pointwise
+Cr bound ∑
+|α|⩽r
+⏐⏐Dαv(x)−Dαu(x)
+⏐⏐<ϵ (x).
+We shall next show that the global Beltrami ﬁeld u has a set of stream lines
+diﬀeomorphic to the linkL. This will hinge on the robustness of the periodic orbits
+corresponding to each link component La of the local Beltrami ﬁelds va, provedKNOTS AND LINKS IN STEADY SOLUTIONS OF THE EULER EQUATION 9
+in Theorem 3.5 of Step 3 for suitably Cr-small perturbations with r> 1. More
+precisely, in the present situation this theorem asserts that for any δ >0 and any
+link component La one can take a positive constant ϵa (depending on δ and on the
+component) such that, if the vector ﬁeld u is ϵa-close in the Cr norm (with r> 1)
+to the local Beltrami ﬁeld va in the set Na, then there is a diﬀeomorphism Φ a of
+R3 transforming the link component La into a periodic stream line Φ a(La) of the
+global Beltrami ﬁeld u and which lies in a δ-neighborhood of the identity (that is,
+‖Φa− id‖Cr(R3) < δ). Since the ﬁeld v coincides with the local Beltrami ﬁeld va
+in the set Na (for each labeling index a), one can certainly ensure that the global
+Beltrami ﬁeldu is suﬃciently close to the ﬁeldva in each neighborhoodNa by using
+the aforementioned Cr better-than-uniform approximation result. (More precisely,
+this amounts to taking an order of approximation r> 1 and an “error function”
+ϵ(x) which is bounded from above by the previously introduced constant ϵa in each
+set Na.) It should be noticed that better-than-uniform approximation is essential
+for the argument, as the constants ϵa might not be uniformly bounded away from
+zero (with respect to the index a).
+We saw in the Stability Theorem 3.5 that the above diﬀeomorphism Φa was only
+diﬀerent from the identity in the open neighborhood Na of the link component La,
+so these diﬀeomorphisms can be trivially “glued together”, deﬁning a diﬀeomor-
+phism Φ of R3 as
+Φ(x) :=
+{
+Φa(x) if x∈Na,
+x if x⁄∈⋃
+a∈ANa.
+This is the diﬀeomorphism whose existence was claimed in the Main Theorem 1.1,
+for it transforms the linkL into a set of periodic stream lines Φ(L) of the global Bel-
+trami ﬁeld u (which satisﬁes the equation curl u =λu in R3) and, by construction,
+the Cr-distance between this diﬀeomorphism and the identity is at most δ.
+4. Proof of Theorem 3.1
+In this section we will prove Theorem 3.1 of Step 1, which ensures existence and
+uniqueness of solutions to the equation curl v =λv with Cauchy data v|Σ =w on
+the surface Σ (or, in terms of the associated 1-forms, ⋆dβ =λβ andβ|Σ =γ) under
+appropriate hypotheses on the vector ﬁeld w. We will need to use diﬀerential forms
+of mixed degrees, so for any domain V ⊂ R3 we use the notation
+Ω•(V ) :=
+3⨁
+p=0
+Ωp(V )
+for the graded algebra of C∞ diﬀerential forms in this domain. The elements of
+Ω•(V ) will be denoted as
+ψ =ψ0⊕ψ1⊕ψ2⊕ψ3,
+and we henceforth identify ap-form with its natural inclusion in Ω•(V ). The parity
+operator Q : Ω•(V )→ Ω•(V ) is deﬁned by
+Qψ :=ψ0⊕−ψ1⊕ψ2⊕−ψ3.
+Clearly the diﬀerential operator curl (or its counterpart⋆d, which maps the space
+of 1-forms Ω 1(R3) into itself) is not immediately amenable to an approach based
+on the Cauchy–Kowalewski theorem because it has a degenerate symbol. Hence,10 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+we ﬁnd it convenient to consider the Dirac-type operator d +d∗ acting on Ω•(R3),
+where d∗ denotes the codiﬀerential. Notice that the operator d +d∗ is elliptic, as
+its iterated square equals the Laplacian −∆, but the price to pay for this is that,
+unlike the “curl” ⋆d, d +d∗ does not generally map 1-forms into 1-forms.
+We can invoke the Cauchy–Kowalewski theorem to derive that, for some neigh-
+borhood V of the surface Σ, there exists a unique Cω solution ψ∈ Ω•(V ) of the
+following auxiliary Cauchy problem:
+(d +d∗)ψ =λ⋆ψ, ψ |Σ =γ,
+whereγ is the 1-form associated with the vector ﬁeld w appearing in the statement
+of Theorem 3.1 as Cauchy data.
+A crucial observation is the following technical lemma, which asserts that the
+hypotheses made on the Cauchy data imply that the unique solution of the above
+problem is co-closed (i.e., d∗ψ = 0). This will be used to relate solutions of the
+above auxiliary Cauchy problem to solutions of the equation curl v =λv, v|Σ =w:
+Lemma 4.1. Under the hypotheses on the 1-form γ imposed in Theorem 3.1
+(namely, that its pullback to the surface is closed and that its dual vector ﬁeld
+is tangent to the surface), the solution of the Cauchy problem (d +d∗)ψ = λ⋆ψ
+with ψ|Σ =γ is co-closed, i.e., d∗ψ = 0.
+Proof. By the identity ⋆d⋆ =−Qd∗, taking the action of ⋆d on the equation (d +
+d∗)ψ =λ⋆ψ we readily obtain that the form d∗ψ satisﬁes the PDE
+(d +d∗)d∗ψ =−λ⋆Qd ∗ψ.
+The Cauchy–Kowalewski theorem will then yield that the codiﬀerential of the form
+ψ is identically zero in its domain V provided that it vanishes on the surface Σ.
+In order to show that the codiﬀerential d∗ψ is zero on Σ, let us use the local
+coordinates (ρ,ξ 1,ξ 2) introduced in Step 1 of Section 3 and denote by ¯d the exterior
+derivative in the variables (ξ1,ξ 2), so that the hypothesis that the 1-form j∗
+Σ(γ) is
+closed is equivalent to the condition ¯dγ|Σ = 0. Let us decompose the form ψ as
+ψ =: Ψ +dρ∧~Ψ
+for some forms Ψ ,~Ψ∈ Ω•(V ) without dρ (by which we mean that the interior
+product of the coordinate vector ﬁeld ∂/∂ρ with them vanishes identically). As
+ψ|Σ = γ is a 1-form without dρ and one has ¯dγ|Σ = 0 by hypothesis, it is easy to
+check that, on the surface, the star of the form ψ can be written as
+⋆ψ|Σ =⋆γ|Σ =:dρ∧ ˜γ
+for some 1-form ˜γ, while its diﬀerential reads as
+dψ|Σ =
+[
+¯dΨ +dρ∧
+(∂Ψ
+∂ρ − ¯d~Ψ
+)]⏐⏐⏐⏐
+Σ
+=dρ∧ ∂Ψ
+∂ρ .
+The codiﬀerential of the form ψ on the surface can then be computed using the
+equation (d +d∗)ψ =λ⋆ψ , ﬁnding that
+(4.1) d∗ψ|Σ =
+(
+λ⋆ψ −dψ
+)⏐⏐
+Σ =dρ∧
+(
+λ˜γ− ∂Ψ
+∂ρ
+)
+.
+The degree-0 component of the right hand side of the above equation is necessar-
+ily 0, which implies that the codiﬀerential of the degree-1 component of ψ vanishesKNOTS AND LINKS IN STEADY SOLUTIONS OF THE EULER EQUATION 11
+on the surface, i.e., d∗(ψ1)|Σ = 0. For degrees p = 2, 3, the fact that the form ψp is
+zero on the surface Σ implies that
+d∗(ψp)|Σ = (−1)p(
+⋆d⋆ψ p)⏐⏐
+Σ = (−1)p⋆
+(
+dρ∧ ∂⋆ψ p
+∂ρ
+)
+,
+which is a (p− 1)-form withoutdρ. Comparison with the degree-(p− 1) component
+of d∗ψ, computed in Eq. (4.1), then shows that d∗(ψp)|Σ = 0 for p = 2, 3 and the
+lemma follows. □
+As the form of mixed degreeψ solving (d+d∗)ψ =λ⋆ψ withψ|Σ =γ is co-closed
+by Lemma 4.1 above, from the identity ⋆(⋆ψ) =ψ we deduce that the form ψ also
+satisﬁes the equation ⋆dψ =λψ. Since ⋆d maps 1-forms into 1-forms, the degree-1
+component β :=ψ1 is then the unique solution of the Cauchy problem
+⋆dβ =λβ, β |Σ =γ
+in a neighborhood of the surface, and hence Theorem 3.1 follows by letting v be
+the vector ﬁeld associated to the 1-form β via the Euclidean metric.
+5. Proof of Lemma 3.4
+In this section we construct a vector ﬁeld wa, tangent to a strip Σa contained in
+a tubular neighborhood Na of the link component La, which satisﬁes the hypothe-
+ses of the Existence Theorem 3.1 and whose pullback to the surface has the link
+component as a hyperbolic limit cycle. As we will see, the 1-form γa dual to the
+desired ﬁeld wa is simply given by dθ−zdz in a natural coordinate system; hence,
+we will start by carefully deﬁning these coordinates on the neighborhood Na. The
+coordinates we shall use are ( ρ,z,θ ), where ρ is the signed distance to the surface
+Σa and, roughly speaking, z andθ are suitable extensions of the signed distance to
+the link component La as measured on the surface and of the arc-length parameter
+of La, respectively.
+To construct the coordinates, we begin with an arc-length parametrization of the
+link component La, which is a periodic function θ mapping the component to the
+reals modulo the length |La| of the link component (i.e., R/|La|Z). By taking the
+strip small enough, we can safely assume that the signed distance function to the
+link component La, as measured along the surface Σ a with respect to the metric
+h inherited from its embedding in R3, is analytic. Let us denote this function by
+z : Σa→ R. The gradient operator associated to the metric h on the strip will be
+denoted by ¯∇.
+We can extend the parametrization θ of the link component to a Cω function
+on the surface, which we still call θ with a slight abuse of notation. Calling ˆφt the
+local ﬂow of the gradient ﬁeld ¯∇z in the surface Σ a, this extension is deﬁned by
+setting
+θ(ˆφtx) :=θ(x)
+for all points x in the link component La and all t for which ˆφtx is a well-deﬁned
+point in the surface Σ a. By periodicity, this extension takes values in the reals
+modulo the length |La|. Obviously ¯∇θ⁄= 0 in the surface Σ a, and for any point
+y∈ Σa there is a unique pair (x,t )∈La× R such thaty = ˆφtx (in fact, heret is the12 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+signed distance z(y) because h( ¯∇z, ¯∇z) = 1). Since the gradients of the functions
+θ and z are orthogonal by construction, i.e.,
+(5.1) h
+( ¯∇θ, ¯∇z
+)
+= 0,
+it is apparent that (z,θ ) is a coordinate system on the surface Σ a.
+To construct the adapted coordinate system in the tubular neighborhood Na,
+let us begin by considering the signed distance function to the surface Σ a in Na,
+which we denote by ρ. This function is analytic if the neighborhood Na is small
+enough [14]. We now extend the coordinate z (resp. θ) on the surface to a Cω
+function mapping the neighborhood Na into the reals (resp., by periodicity, the
+reals modulo the length|La|); for simplicity, we still denote the extended functions
+byz andθ. This extension is performed using the local ﬂow φt of the gradient ﬁeld
+∇ρ as
+z(φtx) :=z(x), θ (φtx) :=θ(x),
+for all points x∈ Σa and valuest such thatφtx∈Na is deﬁned. Arguing as above,
+it can be readily established that ( ρ,z,θ ) is an analytic coordinate system in the
+open set Na verifying the conditions
+(5.2) ⟨∇ρ,∇θ⟩ =⟨∇ρ,∇z⟩ = 0, |∇ρ| = 1.
+It should be noticed that the surface Σ a is given by the zero set {ρ = 0} and the
+link component La is{ρ =z = 0}, which implies the relations
+(5.3) ⟨∇z,∇θ⟩
+⏐⏐
+Σa
+= 0, |∇θ|
+⏐⏐
+La
+= 1
+as a consequence of the orthogonality condition (5.1) and the fact that θ|La is an
+arc-length parametrization of the link component La.
+As we mentioned, in this coordinate system we can deﬁne the 1-form associated
+to the desired ﬁeld wa as
+γa :=dθ−zdz.
+The pullback to the strip of this 1-form is obviously closed. The associated vector
+ﬁeld, wa :=∇θ−z∇z, is clearly tangent to the strip Σ a because it is orthogonal
+to∇ρ by Eq. (5.2). Moreover, by the relations (5.3) it follows that the ﬁeld wa is
+nonvanishing and orthogonal to∇z on the link component La, which implies that
+this component is a periodic orbit of the ﬁeld wa.
+That the link component La is an asymptotically stable periodic orbit of the
+pullback j∗
+a(wa) of the ﬁeld wa to the surface will stem from the existence of an
+appropriate Lyapunov function. This Lyapunov function is simply z2, since it is
+nonnegative, vanishes exactly on the cycle and its scalar product with the ﬁeld wa,
+⟨wa,∇(z2)⟩|Σa = 2
+(
+z⟨∇z,∇θ⟩− z2|∇z|2)⏐⏐
+Σa
+=−2z2|∇z|2|Σa,
+is zero on the cycle La = {z = 0}∩ Σa and strictly negative in its comple-
+ment Σa\La.
+To prove the hyperbolicity of the cycle La, we start by observing that the ﬁeld
+wa on the surface has the form
+(5.4) j∗
+a(wa) =g(z,θ ) ∂
+∂θ−z ∂
+∂z
+on account of the relations (5.2) and (5.3), where the function g(z,θ ) is deﬁned in
+terms of the gradient ofθ and the metrich on the surface asg :=h( ¯∇θ, ¯∇θ). Hence,
+the integral curve Γ(t) of the ﬁeld j∗
+a(wa) corresponding to the link component LaKNOTS AND LINKS IN STEADY SOLUTIONS OF THE EULER EQUATION 13
+is parametrized by z(t) = 0 and θ(t) =t modulo the length|La|. The monodromy
+matrix along this orbit has only one nontrivial eigenvalue µ, which by Liouville’s
+formula (cf. e.g. [8, Theorem IV.1.2]) can be expressed as
+µ = exp
+[∫ |La|
+0
+(∂g
+∂θ◦ Γ(t)− 1
+)
+dt
+]
+= e−|La| < 1
+using that the function g◦ Γ is|La|-periodic. Hyperbolicity then follows.
+6. Proof of Theorem 3.5
+We shall prove the Stability Theorem 3.5, which ensures that the link compo-
+nent La is a robust periodic stream line of the local ﬁeld va, which solves the
+equation curlva = λva with Cauchy data va|Σa = wa chosen as in Step 2. To do
+this, we will use the same coordinate system ( ρ,z,θ ) we introduced in the proof of
+Lemma 3.4, deﬁned in a tubular neighborhood Na of the cycle.
+From the construction of the vector ﬁeldwa used as Cauchy data (cf. Lemma 3.4),
+it stems that the local Beltrami ﬁeld va can be written as
+va =
+(
+g(θ) +O(z) +O(ρ)
+) ∂
+∂θ−
+(
+zf (θ) +O(ρ) +O(z2)
+) ∂
+∂z +O(ρ) ∂
+∂ρ .
+In fact, from the expression for the pulled back ﬁeld j∗
+a(wa) given in Eq. (5.4) it
+follows that we can set f(θ) = 1 above. As the ﬁeld va is analytic, the small terms
+behave like symbols in the sense that, e.g.,⏐⏐⏐⏐
+∂n+m+l
+∂ρn∂zm∂θlO(ρs)
+⏐⏐⏐⏐⩽Fmnl(z,θ )|ρ|s−n
+for some smooth function Fmnl. The function g(θ) entering the above expression
+for the ﬁeld va is nonvanishing and|La|-periodic,|La| being the length of the link
+component, which means that we can rescale the coordinate θ to have g(θ) = 1.
+The integral curve Γ( t) of the ﬁeld va corresponding to the link component La,
+which will have certain period T after the rescaling, is given in these coordinates
+byρ(t) = 0, z(t) = 0 and θ(t) =t modulo T .
+A key intermediate result is that the cycle La is hyperbolic. The proof is based
+on a monodromy matrix computation:
+Lemma 6.1. The link component La is a hyperbolic periodic orbit of the local
+Beltrami ﬁeld va.
+Proof. The variational equation associated with the integral curve Γ(t) correspond-
+ing to the link component can be written as
+dy
+dt =Dva(Γ(t))y(t),
+where y(t) is a three-component vector and
+Dva(Γ(t)) =
+
+
+F1(t) 0 0
+F2(t) −1 0
+F3(t) F4(t) 0
+
+
+is the Jacobian matrix of the ﬁeld va in the coordinates ( ρ,z,θ ) evaluated at the
+integral curve Γ(t). Here Fj(t) (1⩽j⩽ 4) are some analytic T -periodic functions
+whose explicit expression we will not need.14 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+The solution of the variational equation above is given by y(t) = M(t)y(0),
+where
+M(t) :=
+
+
+G1(t) 0 0
+G2(t) e −t 0
+G3(t) G4(t) 1
+
+
+is the fundamental matrix and Gj(t) are analytic functions. By deﬁnition, the
+monodromy matrix is M(T ), with T being the period, so its nontrivial eigenvalues
+are µ1 :=G1(T ) and µ2 := e−T .
+The ﬁeld va is divergence-free because it satisﬁes the equation curl va = λva,
+so a direct application of the Liouville formula shows that the determinant of the
+monodromy matrix is given by
+µ1µ2 = exp
+(∫ T
+0
+(divva)◦ Γ(t)dt
+)
+= 1.
+As the eigenvalue µ2 = e−T is smaller than 1, we deduce that the other eigenvalue
+µ1 is bigger than 1, thus establishing the hyperbolicity of the cycle. □
+Let us now conclude the proof of the Stability Theorem 3.5. Since the link compo-
+nentLa is a hyperbolic periodic orbit of the ﬁeld va, a straightforward application
+of the hyperbolic permanence theorem [11, Theorem 4.1] shows that any vector
+ﬁeld ˜v suﬃciently Cr-close to the ﬁeld va in the neighborhood Na has a periodic
+orbit which is a Cr-small deformation of the component La, provided r> 1. More
+precisely, for any integerr> 1 and anyδ >0 there exists some ϵ> 0 such that any
+vector ﬁeld ˜v with‖va− ˜v‖Cr(Na) < ϵhas a periodic orbit Λ in the neighborhood
+Na, and moreover the cycles La and Λ admit smooth trivializing maps Θ a and ~Θ
+fromNa to R2 such that the orbitLa (resp. Λ) is the zero ﬁber of the map Θa (resp.
+of ~Θ) and the diﬀerence of the latter maps is Cr-bounded as‖Θa−~Θ‖Cr(Na) <δ .
+The existence of the desired diﬀeomorphism Φ a of R3 then follows from Thom’s
+isotopy theorem [4, Theorem 14.1.1].
+7. Proof of Theorem 3.6
+In this section we shall prove Theorem 3.6, which guarantees that any local
+Beltrami ﬁeld v deﬁned in a closed set S satisfying certain technical conditions can
+be approximated in this set by a global Beltrami ﬁeld ˜ v in the Cr better-than-
+uniform sense. Let us denote by Sb the connected components of the closed set S,
+withb ranging over an at most countable set B. Since the set S is the locally ﬁnite
+union of Sb, it is clear that there exists an exhaustion ∅ =: K0⊂ K1⊂ K2⊂···
+by compact sets of R3 such that:
+(i) The union of the interiors of the sets Kn, with n∈ N, is R3.
+(ii) For each n, the complements of the sets Kn and of S∪Kn are connected.
+(iii) If the set Kn meets a component Sb of S, then Sb is contained in the
+interior of Kn+1.
+A key technical lemma is the following better-than-uniform approximation result
+for the auxiliary scalar elliptic equation (∆ + λ2)f = 0, which is modeled upon a
+theorem of Bagby and Gauthier [2]. The proof is based on an indirect induction ar-
+gument that uses the Lax–Malgrange theorem and the properties of the exhaustion
+we have just introduced.KNOTS AND LINKS IN STEADY SOLUTIONS OF THE EULER EQUATION 15
+Lemma 7.1. Let the closed set S be a locally ﬁnite union of pairwise disjoint
+compact subsets of R3 whose complements are connected. If the scalar function f
+veriﬁes the equation (∆+λ2)f = 0 in the set S, then one can ﬁnd a Cs better-than-
+uniform approximation of the functionf by a global solutiong of the aforementioned
+equation. That is, for any integer s and any positive continuous function ˜ϵ(x) from
+the set S to (0,∞) there is a function g satisfying the equation (∆ +λ2)g = 0 in
+R3 and such that its diﬀerence with the function f has the pointwise Cs-bound
+∑
+|α|⩽s
+⏐⏐Dαf(x)−Dαg(x)
+⏐⏐< ˜ϵ(x)
+in the set S.
+Proof. The proof relies on an induction argument that is conveniently presented in
+terms of a sequence of positive numbers ( ϵn)∞
+n=1 related to the error function ˜ϵ(x)
+and to the above exhaustion by compact sets Kn through the conditions
+(7.1) ϵm < 1
+6σ min
+x∈Km+1
+˜ϵ(x) and
+∞∑
+n=m+1
+ϵn <ϵ m,
+which are required to hold for all m> 1. For later convenience, we set ϵ0 := 0 and
+we are dividing by the number σ := card{α :|α|⩽ s} of multiindices α with|α|
+smaller than or equal to the order of approximation s.
+The induction hypothesis is that there are functions gn : R3→ R satisfying the
+equation (∆ +λ2)gn = 0 in R3 and such that, for any integer p> 1, the following
+Cs estimates hold:
+sup
+S∩(Kp+1\Kp)
+⏐⏐⏐⏐Dα
+(
+f−
+p∑
+n=1
+gn
+)⏐⏐⏐⏐<ϵ p,(7.2a)
+sup
+S∩(Kp\Kp−1)
+⏐⏐⏐⏐Dα
+(
+f−
+p∑
+n=1
+gn
+)⏐⏐⏐⏐<ϵ p + 2ϵp−1,(7.2b)
+sup
+Kp−1
+⏐⏐Dαgp
+⏐⏐<ϵ p +ϵp−1.(7.2c)
+Here and throughout the proof of this lemma, all the multiindices will be assumed
+to range over the set |α|⩽s without further mention.
+Let us start by noticing that, by the Lax–Malgrange theorem [15, 18], there
+exists a function g1 : R3→ R satisfying the equation (∆ + λ2)g1 = 0 in R3 and
+the Cs estimate|Dα(f−g1)|< ϵ1 in the set S∩K2. Since we chose K0 =∅ and
+ϵ0 = 0, it is a trivial matter that the induction hypotheses (7.2) hold for p = 1. We
+shall hence assume that the induction hypotheses hold for all 1 ⩽ p⩽ m and use
+this assumption to prove that they also hold for p =m + 1.
+To this end, let us construct a function fm on the set S∪Km by settingfm := 0
+in the set Km and deﬁning fm on each component Sb of the set S as
+fm|Sb :=
+
+
+
+f−
+m∑
+n=1
+gn if Sb∩ (Km+2\
+◦
+Km+1)⁄=∅,
+0 if Sb∩ (Km+2\
+◦
+Km+1) =∅.
+Here
+◦
+Kn stands for the interior of the set Kn. The deﬁnition of the exhaustion
+and the ﬁrst induction hypothesis (7.2a) guarantee that the function fm satisﬁes16 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+the equation (∆ +λ2)fm = 0 in its domain and that one has the Cs estimate
+(7.3) sup
+Km∪(S∩Km+1)
+⏐⏐Dαfm
+⏐⏐⩽ sup
+S∩(Km+1\Km)
+⏐⏐⏐⏐Dα
+(
+f−
+m∑
+n=1
+gn
+)⏐⏐⏐⏐<ϵ m.
+A further application of the Lax–Malgrange theorem allows us to take a function
+gm+1 which satisﬁes the equation (∆ +λ2)gm+1 = 0 in R3 and which is close to the
+above function fm in the sense that
+(7.4) sup
+Km+2∩(S∪Km)
+⏐⏐Dα(fm−gm+1)
+⏐⏐<ϵ m+1.
+Eq. (7.4) above and the way we have deﬁned the functionfm in the setKm+2\Km+1
+ensure that the ﬁrst induction hypothesis (7.2a) also holds forp =m+1. Moreover,
+from the relations (7.2a), (7.3) and (7.4) one ﬁnds the following pointwise estimate
+in the set S∩ (Km+1\Km):
+⏐⏐⏐⏐Dα
+(
+f−
+m+1∑
+n=1
+gn
+)⏐⏐⏐⏐⩽
+⏐⏐⏐⏐Dα
+(
+f−
+m∑
+n=1
+gn
+)⏐⏐⏐⏐ +
+⏐⏐Dαgm+1
+⏐⏐
+<ϵ m +
+⏐⏐Dα(fm−gm+1)
+⏐⏐ +
+⏐⏐Dαfm
+⏐⏐<ϵ m+1 + 2ϵm.
+This proves the second induction hypothesis (7.2b) for p =m + 1. Furthermore,
+sup
+Km
+⏐⏐Dαgm+1
+⏐⏐⩽ sup
+Km
+⏐⏐Dα(fm−gm+1)
+⏐⏐ + sup
+Km
+⏐⏐Dαfm
+⏐⏐<ϵ m+1 +ϵm
+by the relations (7.3) and (7.4), so the third induction hypothesis (7.2c) also holds
+for p =m + 1. This completes the induction argument.
+The desired global solution g can now be deﬁned as
+g :=
+∞∑
+n=1
+gn,
+with this sum converging Cs-uniformly by the deﬁnition of the constants ϵn (see
+conditions (7.1)) and the third induction hypothesis (7.2c). As the functions gn
+verify the equation, it is easily checked that the functiong also satisﬁes the equation
+(∆ +λ2)g = 0 in R3, which in turn ensures that g is analytic by elliptic regularity.
+In addition to this, from the deﬁnition of the constants (7.1) and the induction
+hypotheses (7.2) it follows that, for any integer m, in the set S∩ (Km+1\Km) we
+have the pointwise Cs estimate
+∑
+|α|⩽s
+⏐⏐Dα(f−g)
+⏐⏐⩽
+∑
+|α|⩽s
+(⏐⏐⏐⏐Dα
+(
+f−
+m+1∑
+n=1
+gn
+)⏐⏐⏐⏐ +
+⏐⏐Dαgm+2
+⏐⏐ +
+⏐⏐⏐⏐Dα
+( ∞∑
+n=m+3
+gn
+)⏐⏐⏐⏐
+)
+<σ
+[
+(ϵm+1 + 2ϵm) + (ϵm+2 +ϵm+1) +
+∞∑
+n=m+3
+(ϵn +ϵn−1)
+]
+< 2σ(ϵm + 2ϵm+1)< min
+x∈S∩(Km+1\Km)
+˜ϵ(x),
+where σ was the number of multiindices α with|α|⩽s. The better-than-uniform
+approximation lemma then follows. □
+Let us now complete the proof of the Approximation Theorem 3.6. As the
+local Beltrami ﬁeld v satisﬁes div v = 0 in the set S, acting with the operator
+curl +λ on the equation curl v = λv we readily derive that (∆ + λ2)v = 0, i.e.,KNOTS AND LINKS IN STEADY SOLUTIONS OF THE EULER EQUATION 17
+that each component vi of the vector ﬁeld (in Cartesian coordinates) satisﬁes the
+scalar equation (∆ + λ2)vi = 0. By Lemma 7.1 above, we can then approximate
+the function vi by a global solution wi of the equation (∆ + λ2)wi = 0 in the Cs
+better-than-uniform sense. To be more concrete, for later convenience we shall take
+s =r + 2 (with r the order of approximation in Theorem 3.6) and choose an error
+function ˜ϵ(x) to be speciﬁed later, thereby assuming that the global solution wi
+approximates the function vi pointwise in the set S as
+∑
+|α|⩽r+2
+⏐⏐Dαvi(x)−Dαwi(x)
+⏐⏐< ˜ϵ(x), x ∈S.
+Let us now denote by w the vector ﬁeld in R3 whose Cartesian components are
+wi. Deﬁning the auxiliary vector ﬁeld ˜ w := curlw/λ, an easy computation using
+the above Cr+2 estimate for the diﬀerence vi−wi yields that the diﬀerence of the
+ﬁelds v and ˜w satisﬁes the following Cr+1 pointwise bound in the set S:
+(7.5)
+∑
+|α|⩽r+1
+⏐⏐Dαv(x)−Dα ˜w(x)
+⏐⏐ = 1
+λ
+∑
+|α|⩽r+1
+⏐⏐Dα curlv(x)−Dα curlw(x)
+⏐⏐< 6˜ϵ(x)
+λ .
+By construction, the vector ﬁeld ˜w obviously satisﬁes the equations (∆ +λ2) ˜w = 0
+and div ˜w = 0, which in turn implies that
+(curl +λ)(curl−λ) ˜w = 0
+because, being divergence-free, the Laplacian of this ﬁeld is ∆ ˜ w =− curl curl ˜w.
+Hence the analytic vector ﬁeld ˜v := (curl +λ) ˜w/(2λ) satisﬁes the Beltrami equation
+curl ˜v =λ˜v and, as a consequence of the estimate (7.5), the pointwise Cr bound
+∑
+|α|⩽r
+⏐⏐Dα˜v(x)−Dαv(x)
+⏐⏐ = 1
+2λ
+∑
+|α|⩽r
+⏐⏐Dα(curl +λ)( ˜w(x)−v(x))
+⏐⏐< (6 + 3λ)˜ϵ(x)
+λ2
+in the set S. Thus ˜v is the ﬁeld whose existence was claimed in the theorem,
+provided that the error function ˜ϵ(x) is chosen small enough (e.g., smaller than
+λ2ϵ(x)/(6 + 3λ), where ϵ(x) is the error function in the statement of Theorem 3.6).
+Remark 7.2. It should be noticed that we have used that the parameterλ is nonzero
+in the last part of the proof; in fact, if λ = 0 one cannot hope to approximate the
+local solutions by global ones because an irrotational vector ﬁeld deﬁned in a simply
+connected region cannot have a periodic trajectory.
+8. Applications and examples
+To illustrate the Main Theorem 1.1, we shall address a problem of Etnyre and
+Ghrist concerning the existence of steady solutions of the Euler equation having
+stream lines of all knot and link types. We shall also indicate how Theorem 1.1 can
+be extended to any open analytic Riemannian 3-manifold.
+Example 8.1. While in the literature one can explicitly ﬁnd questions regarding
+the existence of solutions whose stream or vortex lines are simple links (e.g., the
+Borromean rings in [20]), a particularly attractive question on the complexity of
+steady Euler ﬂows was formulated by Etnyre and Ghrist in [6]: Are there any steady
+solutions to the Euler equation having stream lines of all knot and link types in
+Euclidean 3-space?18 ALBERTO ENCISO AND DANIEL PERALTA-SALAS
+Figure 1. Example of a locally ﬁnite link containing the Bor-
+romean rings, the trefoil, the ﬁgure eight and the (7 , 4) knots.
+Theorem 1.1 readily provides a positive answer to Etnyre and Ghrist’s question
+for locally ﬁnite links. To see this, it suﬃces to notice that there is a countable
+number of isotopy classes of tame knots and locally ﬁnite links in R3 [21], which
+allows us to construct a locally ﬁnite link L containing a sublink of each isotopy
+class by the noncompactness of R3 (cf. Figure 1 for an example of this kind of
+construction).
+Example 8.2. A straightforward modiﬁcation of the proof of Theorem 1.1 actu-
+ally works for the Euler equation in a general Riemannian open 3-manifold M of
+class Cω. Let us brieﬂy elaborate on this point. The Euler equation automatically
+makes sense on a Riemannian manifold, with ∇ being the covariant derivative as-
+sociated to the metric g and u a vector ﬁeld in M. A Beltrami ﬁeld is most easily
+characterized in this context in terms of the associated 1-formβ, which satisﬁes the
+equation ⋆dβ =λβ.
+Mutatis mutandis, both the statements and proofs in the Steps 1 to 3 of the proof
+of Theorem 1.1 remain valid in this more general situation. This is not surprising,
+as they correspond to a (rather delicate) local construction which does not make
+use of any particular feature of the Euclidean metric.
+Step 4 is also valid after minor modiﬁcations. In the non-Euclidean setting, it
+is convenient to work directly with the 1-form β, so that the role of the Euclidean
+Laplacian in Section 7 is now played by the Hodge Laplacian ∆ :=−(dd∗ +d∗d). It
+is evident that better-than-uniform approximation of vector ﬁelds can be painlessly
+translated into better-than-uniform approximation of the associated 1-forms (gen-
+erally with diﬀerent error functions). The 1-form β then satisﬁes the equation
+(∆ +λ2)β = 0, for which Lemma 7.1 and its proof can be easily adapted. The
+remaining parts of Step 4 remain unchanged, and so does Step 5. The analog of
+Theorem 1.1 on M thus follows.
+Acknowledgments
+The authors are grateful to an anonymous referee for valuable suggestions that
+improved the presentation of the article. The authors are indebted to Javier
+Rodr´ ıguez-Laguna for producing Figure 1. The source code of the programme he de-
+signed for drawing ﬁnite links can be found athttp://saraswati.uc3m.es/xknots/.
+The second author thanks the ETH Z¨ urich for hospitality and support. This
+work is supported in part by the MICINN under grants no. FIS2008-00209 (A.E.)KNOTS AND LINKS IN STEADY SOLUTIONS OF THE EULER EQUATION 19
+and MTM2007-62478 (D.P.-S.) and by Banco Santander–UCM under grant no.
+GR58/08-910556 (A.E.). The authors acknowledge the MICINN’s ﬁnancial sup-
+port through the Ram´ on y Cajal program.
+References
+[1] V.I. Arnold, Sur la g´ eom´ etrie diﬀ´ erentielle des groupes de Lie de dimension inﬁnie et ses
+applications ` a l’hydrodynamique des ﬂuides parfaits, Ann. Inst. Fourier 16 (1966) 319–361.
+[2] T. Bagby, P.M. Gauthier, Approximation by harmonic functions on closed subsets of Riemann
+surfaces, J. Anal. Math. 51 (1988) 259–284.
+[3] M.A. Berger, R.L. Ricca, Topological ideas and ﬂuid mechanics, Phys. Today 49 (1996) 28–34.
+[4] J. Bochnak, M. Coste, M.F. Roy, Real algebraic geometry, Springer-Verlag, Berlin, 1998.
+[5] J. Etnyre, R. Ghrist, Stratiﬁed integrals and unknots in inviscid ﬂows, Contemp. Math. 246
+(1999) 99–111.
+[6] J. Etnyre, R. Ghrist, Contact topology and hydrodynamics III. Knotted orbits, Trans. Amer.
+Math. Soc. 352 (2000) 5781–5794.
+[7] M.H. Freedman, Z.X. He, Divergence-free ﬁelds: energy and asymptotic crossing number,
+Ann. of Math. 134 (1991) 189–229.
+[8] P. Hartman, Ordinary diﬀerential equations, Birkh¨ auser, Boston, 1982.
+[9] M. H´ enon, Sur la topologie des lignes de courant dans un cas particulier, C. R. Acad. Sci.
+Paris 262 (1966) 312-314.
+[10] M.W. Hirsch, Diﬀerential topology, Springer-Verlag, New York, 1976.
+[11] M.W. Hirsch, C.C. Pugh, M. Shub, Invariant Manifolds, Lecture Notes in Mathematics 583,
+Springer-Verlag, New York, 1977.
+[12] B. Khesin, Topological ﬂuid dynamics, Notices AMS 52 (2005) 9–19.
+[13] G. Koch, N. Nadirashvili, G.A. Seregin, V. Sver´ ak, Liouville theorems for the Navier–Stokes
+equations and applications, Acta Math. 203 (2009) 83–105.
+[14] S.G. Krantz, H.R. Parks, Distance to Ck hypersurfaces, J. Diﬀerential Equations 40 (1981)
+116–120.
+[15] P.D. Lax, A stability theorem for solutions of abstract diﬀerential equations, and its applica-
+tion to the study of the local behavior of solutions of elliptic equations, Comm. Pure Appl.
+Math. 9 (1956) 747–766.
+[16] P. Laurence, E.W. Stredulinsky, Two-dimensional magnetohydrodynamic equilibria with pre-
+scribed topology, Comm. Pure Appl. Math. 53 (2000) 1177–1200.
+[17] A.J. Majda, A.L. Bertozzi, Vorticity and incompressible ﬂow , Cambridge University Press,
+Cambridge, 2002.
+[18] B. Malgrange, Existence et approximation des solutions des ´ equations aux d´ eriv´ ees partielles
+et des ´ equations de convolution, Ann. Inst. Fourier 6 (1955–1956) 271–355.
+[19] W.S. Massey, On the normal bundle of a sphere imbedded in Euclidean space, Proc. Amer.
+Math. Soc. 10 (1959) 959–964.
+[20] H.K. Moﬀatt, Magnetostatic equilibria and analogous Euler ﬂows of arbitrarily complex topol-
+ogy. I. Fundamentals, J. Fluid Mech. 159 (1985) 359–378; II. Stability considerations, ibid.
+166 (1986) 359–378.
+[21] D. Rolfsen, Knots and links , Publish or Perish, Houston, 1990.
+[22] T. Vogel, On the asymptotic linking number, Proc. Amer. Math. Soc. 131 (2003) 2289–2297.
+Instituto de Ciencias Matem ´aticas, CSIC-UAM-UC3M-UCM, C/ Serrano 123, 28006
+Madrid, Spain
+E-mail address: aenciso@icmat.es, dperalta@icmat.es

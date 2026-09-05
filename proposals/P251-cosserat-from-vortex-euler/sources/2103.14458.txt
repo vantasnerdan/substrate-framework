@@ -1,0 +1,1335 @@
+A micropolar continuum model of diﬀusion creep
+John F. Rudge
+Bullard Laboratories, Department of Earth Sciences, Madingley Road, Cambridge, CB3 0EZ,
+UK.
+AR TICLE HISTOR Y
+Compiled June 1, 2021
+ABSTRACT
+Solid polycrystalline materials undergoing diﬀusion creep are usually described
+by Cauchy continuum models with a Newtonian viscous rheology dependent on
+the grain size. Such a continuum lacks the rotational degrees of freedom needed
+to describe grain rotation. Here we provide a more general continuum description
+of diﬀusion creep that includes grain rotation, and identiﬁes the deformation of the
+material with that of a micropolar (Cosserat) ﬂuid. We derive expressions for the mi-
+cropolar constitutive tensors by a homogenisation of the physics describing a discrete
+collection of rigid grains, demanding an equivalent dissipation between the discrete
+and continuum descriptions. General constitutive laws are derived for both Coble
+(grain-boundary diﬀusion) and Nabarro-Herring (volume diﬀusion) creep. Detailed
+calculations are performed for a two-dimensional tiling of irregular hexagonal grains,
+which illustrates a potential coupling between the rotational and translational de-
+grees of freedom. If only the plating out or removal of material at grain boundaries is
+considered, the constitutive laws are degenerate: modes of deformation that involve
+pure tangential motion at the grain boundaries are not resisted. This degeneracy can
+be removed by including the resistance to grain-boundary sliding, or by imposing
+additional constraints on the deformation.
+KEYWORDS
+micropolar; creep; diﬀusion; grain boundaries; grain rotation
+1. Introduction
+At high temperatures, solid polycrystalline materials can deform by diﬀusion creep,
+where defects within the crystalline lattice move by diﬀusion. At scales much larger
+than the grain scale the material behaves as if it were a Newtonian viscous ﬂuid, with
+an eﬀective shear viscosity which depends on the grain size [1–4]. At the microscale
+individual grains can be considered as rigid bodies, which interact by the plating out
+or removal of material at grain boundaries, leading to a macroscale strain. Rigid bodies
+have both translational (velocity) and rotational (angular velocity) degrees of freedom
+to describe their motion. However, when a material is treated as a Newtonian viscous
+ﬂuid at the macroscale, the microscale rotational degrees of freedom are lost, as the
+classical Cauchy continuum is based on point particles with only translational degrees
+of freedom.
+Email: jfr23@cam.ac.uk
+arXiv:2103.14458v3  [cond-mat.mtrl-sci]  31 May 2021The aim of this paper is to present a model of diﬀusion creep that goes beyond the
+classical Cauchy continuum model, and instead identiﬁes an appropriate micropolar
+(Cosserat) continuum. A micropolar continuum contains both translational and ro-
+tational degrees of freedom, and allows one to better describe phenomena associated
+with grain rotations and anisotropic microstructure. Micropolar models are used in
+a diverse range of disciplines e.g. to describe masonry [5, 6], granular media [7], the
+motion of fault-bounded blocks [8, 9], rotational seismology [10, 11], disclinations [12],
+but as yet do not appear to have been used to describe diﬀusion creep.
+The present work is a natural generalisation of the work of Wheeler [13], who studied
+the two-dimensional anisotropic Cauchy continuum arising from a periodic array of
+irregular hexagonal grains undergoing Coble (grain-boundary diﬀusion) creep. As will
+be discussed in detail later, the Cauchy continuum of Wheeler [13] can be seen as a
+reduced version of the more general micropolar continuum considered here.
+The manuscript is organized as follows. Section 2 gives a brief overview of the
+governing equations of a micropolar continuum. Section 3 describes the microscale
+kinematics of a collection of rigid grains. Section 4 describes the microscale physics
+of diﬀusion. Section 5 determines the dissipation associated with diﬀusion creep, and
+uses this as a basis for identifying the constitutive tensors for the equivalent microp-
+olar continuum. Section 6 rescales the equations for the constitutive tensors into a
+dimensionless form. Simpliﬁed equations for Coble (grain-boundary diﬀusion) creep
+are given in section 7, followed by speciﬁc calculations for hexagonal grains in section
+8. An important degeneracy in the constitutive laws in discussed in section 9, and
+ﬁnal conclusions are in section 10. Three appendices give additional mathematical de-
+tails on the resistance to grain-boundary sliding, and simpliﬁcations of the micropolar
+continuum under additional assumptions.
+2. Micropolar continuum
+In this section we brieﬂy review the governing equations for a micropolar continuum,
+and a more detailed description can be found in e.g. [7, 14–17]. A micropolar (Cosserat)
+continuum represents a continuous collection of particles which have both translational
+(velocity ﬁeld v) and rotational (microrotation-rate ﬁeld ω) degrees of freedom. At
+each point in the continuum we deﬁne both a force-stress tensor σ and a couple-stress
+tensorχ. In the absence of body-forces and body-couples, and with negligible inertia,
+the governing equations of a micropolar continuum are
+σij,j = 0, (1)
+χij,j−ϵijkσjk = 0, (2)
+where (·),j≡∂(·)/∂xj and ϵijk is the Levi-Civita symbol. Equation (1) is the balance
+of linear momentum, and is identical to that of the classical Cauchy continuum. For
+a micropolar continuum the force-stress tensor σ need not be symmetric, and one
+must be careful in how one assigns the indices. Here we adopt the convention that the
+traction vectorti on an inﬁnitesimal patch with surface area dS and normalnj is given
+by ti = σijnj. Similarly the moment vector mi is given by mi = χijnj. Equation (2)
+is the balance of angular momentum: in the absence of couple-stresses this reduces to
+usual statement for the Cauchy continuum that the force-stress tensor is symmetric.
+But here we will not assume vanishing couple-stresses.
+2The balance of linear and angular momentum can equivalently be written as integral
+statements. The linear momentum statement is the force-balance
+∫
+σijnj dS = 0, (3)
+and the angular momentum statement is the torque-balance
+∫
+χijnj +ϵijkxjσklnl dS = 0, (4)
+where the integrals are over the bounding surface S of any arbitrary volume V of the
+continuum, and x represents the position vector. By dotting equation (1) with v and
+(2) with ω and integrating over a volume V , the following equation of mechanical
+energy balance can be obtained
+∫
+viσijnj +ωiχijnj dS =
+∫
+Γijσij +Kijχij dV. (5)
+The left-hand side in (5) represents the rate of working by tractions and moments at the
+boundary of the given volume, and the right-hand side represents the internal power.
+The tensors Γ and K are the natural measures of deformation rate in a micropolar
+continuum, and are deﬁned by
+Γij =vi,j +ϵkijωk, (6)
+Kij =ωi,j. (7)
+These tensors can be shown to be objective measures of deformation rate. Note that
+unlike the traditional strain-rate tensor, the Cosserat tensor Γ is not symmetric in
+general. However, it can be decomposed into symmetric and antisymmetric parts as
+Γij = Γ(ij) + Γ[ij], (8)
+Γ(ij) = 1
+2 (vi,j +vj,i), (9)
+Γ[ij] =ϵijk
+(
+ωk− 1
+2Ωk
+)
+, (10)
+where Ω represent the classical vorticity
+Ωk = (∇× v)k =ϵklmvm,l. (11)
+Round brackets (ij) are used to represent the symmetric part of a tensor, and square
+brackets [ij] are used to represent the antisymmetric part. The additional measures of
+deformation-rate a micropolar continuum has over a classical Cauchy continuum are
+the relative microrotation-rate measure in (10) and the gradient in microrotation-rate
+in (7).
+Finally, constitutive laws are needed to relate the force- and couple-stress tensors
+to the measures of deformation rate. The most general linear constitutive laws take
+3Figure 1. The geometry of a grain boundary.
+the form
+σij =CijklΓkl +BijklKkl, (12)
+χij =BklijΓkl +DijklKkl, (13)
+with fourth-rank tensorsCijkl,Bijkl andDijkl describing the resistance of the medium
+to deformation. These tensors satisfy the major symmetries Cijkl =Cklij and Dijkl =
+Dklij. Bijkl is formally a pseudo-tensor, whereas Cijkl and Dijkl are proper tensors.
+With the constitutive laws in (12) and (13) the viscous dissipation per unit volume in
+(5) can be written as
+Ψ≡σijΓij +χijKij
+= ΓijCijklΓkl + 2ΓijBijklKkl +KijDijklKkl. (14)
+The main aim of the present work is to determine expressions for the tensors Cijkl,
+Bijkl and Dijkl from a homogenisation of the grain-scale physics describing diﬀusion
+creep.
+3. Kinematics of rigid grains
+Our microscale model consists of a set of identical rigid grains in motion, where the
+relative motion normal to grain boundaries is accommodated by the plating out or
+removal of material. Each grain has a reference point xi, which we will choose to
+be the centroid of the grain. The rigid body motion of the grain is described by the
+velocity vi of the reference point, and the angular velocityωi about the reference point
+xi. The velocity v inside each grain is given by
+v = vi +ωi× (x− xi) (15)
+where x is the position vector.
+Consider the grain boundary between two grains, which we label as 1 and 2 (Fig-
+ure 1). The diﬀerence in velocities between the two grains can be written as
+∆v = (v2− v1)−ω1× (x2− x1) + (ω2−ω1)× (x− x2). (16)
+4Let R = x2−x1 be the vector joining the two grain centres. Suppose that the diﬀerence
+in velocities of the centroids and angular velocities is linearly related to R, such that
+v2− v1 =D· R, (17)
+ω2−ω1 =K· R, (18)
+where D is a second rank tensor and K is a second rank pseudo-tensor. After ho-
+mogenisation we will identify D with the velocity gradient tensor, and K with the
+gradient of microrotation-rate. Equation (16) can then be written as
+∆v =D· R−ω1× R +
+(
+K· R
+)
+× (x− x2). (19)
+It is helpful to rewrite (19) in terms of the natural deformation-rate measureΓ, deﬁned
+by
+Γij =Dij +ϵijkω1
+k, (20)
+in a similar manner to the deﬁnition for the micropolar continuum in (6). Equation
+(19) then becomes
+∆v = Γ· R +
+(
+K· R
+)
+× d (21)
+where d = x− x2. In diﬀusion creep, relative motion normal to the grain boundary is
+accommodated by plating. What is most of interest is then the normal component of
+(21), given by
+∆v· n = n· Γ· R + (d× n)·
+(
+K· R
+)
+(22)
+= Γ : Rn +K : R (d× n) (23)
+We will use the symbol ˙r to denote the plating rate on a given grain boundary for a
+given grain. If we assume that material is plated out symmetrically,
+˙r = 1
+2∆v· n = 1
+2
+(
+Γ : Rn +K : R (d× n)
+)
+(24)
+The above equation represents the key result of the kinematics: it gives the linear
+relation between the plating rate and the deformation-rate measures Γ andK.
+4. Diﬀusion
+Plating out or removal of material at grain boundaries can only occur by the diﬀusion
+of vacancies, either diﬀusion within the grains (leading to Nabarro-Herring creep),
+or diﬀusion along the grain boundaries (leading to Coble creep). In this section we
+will determine the relationships between the plating rates and the variations in va-
+cancy concentration (or equivalently, chemical potential) that arise from the physics
+of diﬀusion. The motion of each grain relative to its neighbours is assumed to be
+well-described by constant values of the deformation rate measures Γ andK for each
+grain. Since the vacancy concentration is linearly dependent on the plating rate, and
+the plating rate depends linearly on the deformation rate measures Γ and K, the
+5vacancy concentration c also depends linearly on Γ and K. This linear relationship
+can be written as
+c =γklΓkl +νklKkl (25)
+where γkl and νkl are spatially-variable second-rank tensors that are determined by
+the geometry of the grains and the equations describing the diﬀusion.
+4.1. Nabarro-Herring creep (volume diﬀusion)
+In Nabarro-Herring creep diﬀusion only takes place within the body of the grains. The
+ﬂux of vacancies jv within each grain is described by Fick’s law,
+jv =−Dv∇c, (26)
+whereDv is the diﬀusivity of vacancies, and c is the concentration of vacancies. With
+a quasi-steady approximation, conservation of vacancies within the grain can be ex-
+pressed as∇· jv = 0, from which it follows that the concentration of vacancies c sat-
+isﬁes Laplace’s equation
+∇2c = 0 in V, (27)
+where V is the volume of a grain. Consideration of the boundary ﬂux required to
+produce a certain plating rate yields
+˙r =−Ωjv· n (28)
+where Ω is the atomic volume, and n is the outward normal to the grain. Substitution
+of (26) into (28) yields the boundary condition
+∂c
+∂n = ˙r
+ΩDv
+on S (29)
+where S is the surface of the grain. For a given plating rate distribution ˙ r, the linear
+equations (27) and (29) can be solved to give the concentration of vacancies c inside
+the grain. The plating rate in turn depends linearly on the deformation rate measures
+Γ andK through the kinematic relationship of (24), where Γ andK are assumed to
+be constant for the grain. The overall relationship between the concentration c and
+the deformation rate measures can be written as a general linear relationship of the
+form in (25). Combining (24), (25), (27), and (29) then yields the following problems
+for the tensors γkl and νkl,
+∇2γkl = 0 in V, (30)
+∂γkl
+∂n = 1
+2ΩDv
+nkRl on S, (31)
+6and
+∇2νkl = 0 in V, (32)
+∂νkl
+∂n = 1
+2ΩDv
+(d× n)kRl on S. (33)
+4.2. Coble creep (grain boundary diﬀusion)
+Diﬀusion along grain boundaries can be described by Fick’s law in the form
+jv =−Dgb
+v∇⊥c, (34)
+where jv is the ﬂux of vacancies, Dgb
+v is the diﬀusivity of vacancies along the grain
+boundary, andc is the concentration of vacancies.∇⊥ represents the surface gradient
+operator (the gradient operator with the component normal to the grain boundary
+removed). Conservation of mass can be written as
+1
+2Ωδ∇⊥· jv = ˙r on S (35)
+where δ is the grain boundary thickness. The factor of 1/2 arises because each grain
+boundary borders two grains. Substitution of (34) into (35) yield the governing equa-
+tion
+− 1
+2ΩδDgb
+v∇2
+⊥c = ˙r on S (36)
+where∇2
+⊥ represents the surface Laplacian operator. Equation (36) has to be sup-
+plemented by boundary conditions at the junctions where grain boundaries meet.
+Combining (36) with (24) and (25) leads to the following problems for the tensors γkl
+and νkl,
+−∇ 2
+⊥γkl = 1
+ΩδDgb
+v
+nkRl on S, (37)
+and
+−∇ 2
+⊥νkl = 1
+ΩδDgb
+v
+(d× n)kRl on S. (38)
+5. Dissipation
+The upscaling technique used in this work is based on the notion of a homogeneous
+equivalent continuum [18]. The discrete collection of grains is replaced with a microp-
+olar continuum that (1) shares the same kinematics as the discrete collection and (2)
+shares the same dissipation of energy. The kinematic mapping is achieved by the con-
+tinuum ﬁeld for the velocities v and angular velocitiesω matching the grain velocities
+vi andωi at the reference points xi of each grain. The energetics of diﬀusion can be
+7described by the balance law
+Ψ = kT
+c0Ω
+1
+V
+∫
+˙rc dS (39)
+where Ψ is the dissipation and the right hand side represents the rate of working at the
+grain boundaries. c0 is the equilibrium concentration of vacancies, k is the Boltzmann
+constant, T is temperature, and V is the grain volume. The surface integral is over
+the boundary of the grain. Explicit integral expressions for the dissipation Ψ due to
+Nabarro-Herring creep and Coble creep are given below in (43) and (47).
+The condition of equal dissipation between the discrete collection of grains and the
+continuum is imposed by demanding that the micropolar dissipation in (14) matches
+that in the balance law (39). By substituting the linear relationships (24) and (25)
+into the rate of working integral in (39), one can obtain expressions for the tensors
+Cijkl, Bijkl, and Dijkl as
+Cijkl = kT
+2c0ΩV
+∫
+niRjγkl dS, (40)
+Bijkl = kT
+2c0ΩV
+∫
+niRjνkl dS = kT
+2c0ΩV
+∫
+γij (d× n)kRl dS, (41)
+Dijkl = kT
+2c0ΩV
+∫
+(d× n)iRjνkl dS. (42)
+Since the expression for the rate of working is the same for both Nabarro-Herring and
+Coble creep, the above expressions for the constitutive tensors are valid for both forms
+of creep. However, one can also express these tensors in alternative, equivalent forms
+based on the explicit integral expressions of the dissipation for the two forms of creep.
+5.1. Nabarro-Herring creep
+For Nabarro-Herring creep we can write the dissipation in (39) explicitly as
+Ψ≡ kTD v
+c0
+1
+V
+∫
+|∇c|2 dV, (43)
+where the balance law in (39) is as a consequence of the divergence theorem and
+the governing equations (27) and (29). Matching (43) with (14) gives an alternative
+expression for the tensors for Nabarro-Herring creep as
+Cijkl = kTD v
+c0
+1
+V
+∫
+∇γij·∇γkl dV, (44)
+Bijkl = kTD v
+c0
+1
+V
+∫
+∇γij·∇νkl dV, (45)
+Dijkl = kTD v
+c0
+1
+V
+∫
+∇νij·∇νkl dV. (46)
+In this representation the major symmetries Cijkl =Cklij and Dijkl =Dklij are clear.
+85.2. Coble creep
+For Coble creep we can write the dissipation in (39) explicitly as
+Ψ≡ kTδD gb
+v
+c0
+1
+2V
+∫
+|∇⊥c|2 dS, (47)
+where the balance law in (39) is a consequence of the divergence theorem and the
+governing equation in (36). Matching (47) with (14) gives an alternative expression
+for the tensors for Coble creep as
+Cijkl = kTδD gb
+v
+c0
+1
+2V
+∫
+∇⊥γij·∇⊥γkl dS, (48)
+Bijkl = kTδD gb
+v
+c0
+1
+2V
+∫
+∇⊥γij·∇⊥νkl dS, (49)
+Dijkl = kTδD gb
+v
+c0
+1
+2V
+∫
+∇⊥νij·∇⊥νkl dS, (50)
+where again the major symmetries are clear.
+6. Dimensionless equations
+It is helpful to make the equations dimensionless to separate out the part of the
+behaviour that can be determined simply by scaling, and that which describes the
+geometrical eﬀects of the microstructure. If d is a typical measure of grain size, then
+a scaling for a typical viscosity is η0 = kTd 2/(ΩD) for Nabarro-Herring creep and
+η0 = kTd 3/(ΩδDgb) for Coble creep, where D = Ωc0Dv and Dgb = Ωc0Dgb
+v are
+the self-diﬀusion coeﬃcients. Dimensionless versions of the fourth-rank tensors can be
+obtained by scalingCijkl byη0,Bijkl bydη0 andDijkl byd2η0. In dimensionless form,
+(40), (41), (42) become
+Cijkl = 1
+2V
+∫
+niRjγkl dS, (51)
+Bijkl = 1
+2V
+∫
+niRjνkl dS = 1
+2V
+∫
+γij (d× n)kRl dS, (52)
+Dijkl = 1
+2V
+∫
+(d× n)iRjνkl dS. (53)
+6.1. Nabarro-Herring creep (dimensionless)
+The corresponding dimensionless problem for Nabarro-Herring creep is
+∇2γkl = 0 in V, (54)
+∂γkl
+∂n = 1
+2nkRl on S, (55)
+9and
+∇2νkl = 0 in V, (56)
+∂νkl
+∂n = 1
+2 (d× n)kRl on S. (57)
+6.2. Coble creep (dimensionless)
+The corresponding dimensionless problem for Coble creep is
+−∇ 2
+⊥γkl =nkRl on S, (58)
+and
+−∇ 2
+⊥νkl = (d× n)kRl on S. (59)
+7. Simpliﬁed Coble creep calculations
+Further simpliﬁcations can be made for Coble creep, where with additional assump-
+tions simpler expressions for the relevant tensors can be obtained. We will assume
+now that all grain boundaries are planar, and that the triple lines where diﬀerent
+grain boundaries meet are at a constant chemical potential (“shorted” in the lan-
+guage of Rudge [19]). In the work of Rudge [19], shorted boundary conditions were
+introduced to mimic the eﬀect of a small amount of melt lying along the triple lines.
+The melt acts as a fast path for diﬀusion, and allows for bulk deformation to occur.
+With shorted boundary conditions, the diﬀusion problem for each grain boundary is
+independent of the other boundaries. Let us label each grain boundary by an index α.
+Since the normal vector n and the vector R joining centroids are constant over each
+grain boundary, the Coble creep problem in (58) can be reduced to
+γkl =wnkRl, (60)
+−∇2
+⊥w = 1 on S(α), (61)
+where the shorted boundary conditions imply that w vanishes along the bounding
+curve of the grain boundary. Similarly, the problem (59) can be reduced to
+νkl =gkRl, (62)
+−∇2
+⊥gk = (d× n)k on S(α), (63)
+where the vector gk vanishes on the bounding curve of each grain boundary.
+10The fourth-rank tensors can then be expressed as
+Cijkl = 1
+2V
+∑
+α
+n(α)
+i R(α)
+j n(α)
+k R(α)
+l W (α), (64)
+Bijkl = 1
+2V
+∑
+α
+n(α)
+i R(α)
+j F (α)
+k R(α)
+l , (65)
+Dijkl = 1
+2V
+∑
+α
+G(α)
+ik R(α)
+j R(α)
+l , (66)
+where the sums are over each of the grain boundaries for the given grain, and
+W (α) =
+∫
+S(α)
+w dS, (67)
+F (α)
+k =
+∫
+S(α)
+w (d× n)k dS =
+∫
+S(α)
+gk dS, (68)
+G(α)
+ik =
+∫
+S(α)
+(d× n)igk dS, (69)
+where it should be noted that the tensor G(α)
+ik is symmetric.
+8. Coble creep of hexagons
+To give a concrete example, we now consider the speciﬁc case of Coble creep of a tiling
+of hexagonal grains. We restrict the motion to two-dimensions, so that v = (v1,v 2, 0)
+andω = (0, 0,ω 3). In two-dimensions Γ3j = Γi3 = 0, and the only non-zero components
+ofKij areK31 andK32. Thus onlyCijkl,Bij3l, andD3j3l are non-zero fori,j,k,l = 1, 2.
+With two-dimensional grains, the Coble creep diﬀusion problems are one-dimensional
+and are simple to solve analytically.
+8.1. Regular hexagons
+The simplest hexagonal tiling is that of regular hexagons, with the wallpaper group
+p6m. With this hexagonal symmetry, Neumann’s principle implies that the tensors
+Cijkl and D3j3l are isotropic, and the pseudo-tensor Bij3l vanishes. Moreover, for the
+regular hexagons, the vector R between centroids is in the same direction as the
+normal vector n. It follows from (64) that there are the further minor symmetries
+Cijkl = Cjikl = Cijlk, along with the Cauchy relation symmetry Cijkl = Cikjl. As a
+consequence of these symmetries, the constitutive tensors reduce to
+Cijkl =η (δijδkl +δikδjl +δilδjk), (70)
+Bij3l = 0, (71)
+D3j3l =µδjl, (72)
+in terms of two constantsη andµ, whereδij represents the two-dimensional Kronecker
+delta. η represents the eﬀective shear viscosity. The eﬀective bulk viscosity ζ = 2η, a
+consequence of the Cauchy relation symmetry [19]. Solution of the diﬀusion problem
+11Figure 2. Periodic tiling of irregular hexagonal grains as considered by Wheeler [13]. Note that the centroid
+of each grain, and the midpoint of each grain boundary is a rotation centre of order two (the tiling is invariant
+under a rotation by 180 ◦ about these points). The symmetry of the tiling is the wallpaper group p2. All triple
+junctions in the tiling are indistinguishable owing to this symmetry.
+leads to η = 1/144 if lengths are made dimensionless on the perpendicular distance
+between opposite sides of the hexagon. This value is exact agreement with previous
+calculations (e.g. [19–21]). The new behaviour is captured by the constant µ, which
+describes the resistance to relative rotation of the grains. As will be seen in the next
+section, µ =η/45 in the dimensionless variables.
+8.2. Irregular hexagons
+Wheeler [13] presented a thorough discussion of Coble creep for a periodic tiling of
+irregular hexagonal grains and determined the constitutive laws for an equivalent
+Cauchy continuum. In this section, we determine the corresponding micropolar consti-
+tutive tensors for these irregular hexagons. The grain shape is a hexagon with parallel
+sides, where the sides are given by the three vectors B1, B2, and B3 (Figure 2). The
+vectors joining grain centroids are given by
+R1 = B2− B3, (73)
+R2 = B3− B1, (74)
+R3 = B1− B2. (75)
+The area of the hexagon is
+V = 1
+2
+3∑
+i=1
+|Ri× Bi|, (76)
+12and unit normal vectors to the grain boundaries are given by
+Nf = ˆz× ˆBf (77)
+for f = 1, 2, 3, where ˆBf = Bf/| ˆBf| is a unit vector.
+8.2.1. Diﬀusion problems
+Suppose the centroid of the grain is the origin of the coordinate system. The position
+vector along the edge with normal N1 in Figure 2 is
+x = 1
+2R1−s ˆB1, −l1
+2 ≤s≤ l1
+2, (78)
+where l1 =|B1|. Now d1 = x− R1, from which it follows that
+d1× n =
+(
+d1· ˆB1
+)
+ˆz =−
+(
+R1· ˆB1
+2 +s
+)
+ˆz. (79)
+The diﬀusion problem in (61) becomes
+− d2w
+ds2 = 1, w = 0 at s =±l1
+2 (80)
+with solution
+w = 1
+8
+(
+l2
+1− 4s2)
+. (81)
+The diﬀusion problem in (63) becomes
+− d2g3
+ds2 =−
+(
+R1· ˆB1
+2 +s
+)
+, g 3 = 0 at s =±l1
+2 (82)
+with solution
+g3 =− 1
+48
+(
+3R1· ˆB1 + 2s
+)(
+l2
+1− 4s2)
+. (83)
+From (81) and (83) it follows that the relevant moments in equations (67), (68), and
+(69) are
+W =
+∫ l1/2
+−l1/2
+w ds = l3
+1
+12, (84)
+F3 =
+∫ l1/2
+−l1/2
+w (d1× n)3 ds =
+∫ l1/2
+−l1/2
+g3 ds =−(R1· B1)l2
+1
+24 , (85)
+G33 =
+∫ l1/2
+−l1/2
+g3 (d1× n)3 ds = 1
+720
+(
+15 (R1· B1)2l1 +l5
+1
+)
+. (86)
+13Thus from (64), (65), and (66) the constitutive tensors are
+Cijkl = 1
+12V
+3∑
+f=1
+Nf
+i Rf
+jNf
+kRf
+ll3
+f, (87)
+Bij3l =− 1
+24V
+3∑
+f=1
+Nf
+i Rf
+jRf
+l (Rf· Bf)l2
+f, (88)
+D3j3l = 1
+720V
+3∑
+f=1
+Rf
+jRf
+l
+(
+15 (Rf· Bf)2lf +l5
+f
+)
+, (89)
+where Nf
+i denotes the ith component of the vector Nf, and Rf
+j denotes the jth com-
+ponent of the vector Rf.
+For the case of regular hexagons, the expressions in (87), (88), and (89) simplify
+to those in (70), (71), and (72). For regular hexagons Rf· Bf = 0. In dimensionless
+units where the perpendicular distance between sides is 1, Rf = Nf, V =
+√
+3/2 and
+lf = 1/
+√
+3. One can calculate η in (70) from the invariant Ciikk = 1/18 = 8η, to yield
+η = 1/144. µ in (72) can be calculated from the invariant D3j3j = 1/3240 = 2µ and
+hence µ = 1/6480 =η/45.
+The constitutive tensors in (87), (88), and (89) can be seen as a generalisation of
+the constitutive tensors derived by Wheeler [13]. Appendix B describes how the con-
+stitutive tensors here reduce to those of Wheeler [13] with the additional assumptions
+that are made in that work.
+9. Degeneracy
+In this section we will show that the constitutive laws that have been derived are in
+some sense unsatisfactory because they are degenerate. Ultimately this arises because
+there are modes of deformation that can occur without plating, and thus without any
+dissipation.
+It is helpful to begin by noting the diﬀerence between the isotropic constitutive
+laws derived for the 2D tiling of regular hexagons in (70), (71), and (72) and that of
+the most general two-dimensional linear isotropic micropolar continuum, which can be
+written in terms of four material constants as
+Cijkl =ζδijδkl +η (δikδjl +δilδjk−δijδkl) +κ (δikδjl−δilδjk), (90)
+Bij3l = 0, (91)
+D3j3l =µδjl. (92)
+By comparing the above to (70), (71), and (72), we see that the Coble creep model of
+regular hexagons here is a special case of the general two-dimensional linear isotropic
+micropolar continuum with ζ = 2η, andκ = 0. The degeneracy in the rheology is that
+associated with κ = 0. Substitution of (90), (91), and (92) into (12) and (13) yields
+the isotropic constitutive laws
+σij =ζΓkkδij + 2ηΓ{(ij)} + 2κΓ[ij], (93)
+χ3j =µK3j, (94)
+14where Γ{(ij)} denotes the trace-free part of the symmetric tensor Γ (ij), given explicitly
+in 2D by
+Γ{(ij)} = 1
+2 (Γij + Γji− Γkkδij). (95)
+ζ and η represent the conventional bulk and shear viscosities; κ and µ are the new
+constants associated with the micropolar medium. We will refer to κ as the microro-
+tational viscosity, andµ as the angular viscosity. Substitution of the constitutive laws
+(93) and (94) into the conservation laws (1) and (2) leads to the 2D isotropic governing
+equations
+ζ∇ (∇· v) +η∇2v +κ∇× (2ω−∇× v) = 0, (96)
+µ∇2ω− 2κ (2ω−∇× v) = 0. (97)
+Note that since in 2D, v = (v1,v 2, 0) and ω = (0, 0,ω 3), the angular momentum bal-
+ance in (97) reduces to a scalar equation for ω3. When κ = 0, the governing equation
+for the velocity ﬁeld v in (96) is decoupled from that for the microrotation rate ﬁeld
+ω in (97). Whenκ = 0, (93) shows that the stress tensor is symmetric, and the combi-
+nation of (93) and (1) gives the 2D Navier equation for the velocity ﬁeld v. Equations
+(94) and (2) then lead simply to a 2D Laplace’s equation for the microrotation rate
+ω3.
+To formulate a full problem for the ﬂow of a micropolar ﬂuid, the governing equa-
+tions in (96) and (97) have to be supplemented with boundary conditions. For a mi-
+cropolar ﬂuid, possible choices include setting on the boundaries the velocities v and
+microrotation-rateω, or the tractions σ· n and the moments χ· n. For the 2D case,
+only the ω3 component of the microrotation-rate is non-zero, and the corresponding
+non-zero moment is µ∂ω 3/∂n.
+Even withκ = 0, (96) and (97) can be solved to give unique velocity and microrota-
+tion ﬁelds if the velocities and microrotations are set along the boundary. However, if
+instead the tractions and moments are speciﬁed at the boundaries, then the solutions
+are non-unique. With κ = 0, the solution for v in the Navier equation in (96) is then
+only unique up to a rigid body motion, and the solution to Laplace’s equation for ω3
+in (97) is only unique up to an arbitrary constant, and thus the microrotations can
+be arbitrarily large. This non-uniqueness under certain choices of boundary condition
+has been noted in previous grain-scale models of Coble creep [e.g. 22–24].
+To see why the microrotation viscosity κ vanishes for regular hexagonal grains,
+consider a situation where all the grain centres are ﬁxed, and all grains have the same
+constant microrotation rate ω. At the grain boundaries the relative motion between
+grains is purely tangential, and thus involves no plating, and no dissipation. There is
+thus no resistance to such a motion in the model. The plating rate is independent of
+the antisymmetric tensor Γ [ij].
+The independence of the plating rate (and thus the constitutive laws) on the anti-
+symmetric tensor Γ[ij] will be seen for a number of grain geometries, in particular those
+geometries where the vectors R joining grain centres are parallel to the normals n of
+the grain boundaries. Mathematically, this is straightforward to see from the plating
+rate expression in (24): the second rank tensor Rinj is a symmetric tensor if R is
+parallel to n, and thus will yield zero when contracted with the antisymmetric tensor
+Γ[ij]. Again, with the grain centres ﬁxed, a uniform microrotation of the grains leads
+to purely tangential motion at the grain boundary.
+15In 3D there is an additional degeneracy in the rheology. When R and n are parallel,
+the plating rate (24) is also independent of Kkk =∇·ω, and thus so is the dissipation.
+This arises because a relative rotation of neighbouring grains about an axis perpen-
+dicular to the grain boundary involves purely tangential motion at the boundary, and
+thus no plating. Such a mode of deformation does not occur in 2D. For a 2D isotropic
+medium there is only a single angular viscosity coeﬃcient that describes the resistance
+to relative rotation of grains; for a 3D isotropic medium there are in general three such
+viscosity coeﬃcients, where the one associated with ∇· ω will vanish when R and n
+are parallel.
+A wide range of artiﬁcial grain geometries have the property that the vectors R
+joining grain centres are parallel to the normalsn of the grain boundaries. For example,
+an artiﬁcial grain geometry could be obtained from a Voronoi tessellation, and this
+tessellation has the property that the lines joining the generator points across each
+cell boundary are normal to the boundary, and thus allow pure tangential motion to
+occur with a uniform microrotation of the grains [23]. Moreover, generalisations of the
+Voronoi tessellation, such as Laguerre tessellations, also have this property, and thus
+grain geometries produced by software such as Neper [25] would also allow uniform
+microrotations of grains about their generator points to occur without plating. In 3D,
+all normal tessellations with convex grains are Laguerre tessellations (see Theorem 3.2
+of [26]).
+However, not all artiﬁcial grain geometries have R and n parallel, and indeed the
+2D irregular hexagons described by Wheeler [13] give an example where R and n are
+not parallel. The tiling of irregular hexagons is not in a general a Voronoi or Laguerre
+tiling, although a subset are. Even for the geometries where R and n are not parallel
+there are modes of deformation that can occur without plating. However, these modes
+now include both the symmetric and antisymmetric parts of the tensor Γ ij. It was
+shown in [13] that for the irregular hexagon any constant multiple of
+Γ =
+(
+ˆB2· N3
+)
+B1⊗ N1 +
+(
+ˆB3· N1
+)
+B2⊗ N2 +
+(
+ˆB1· N2
+)
+B3⊗ N3 (98)
+can occur without plating.
+9.1. Grain boundary sliding
+It seems rather unsatisfactory to have a rheological model that allows some modes
+of deformation to occur without any resistance. It suggests that additional physical
+processes should be considered that describe resistance to such modes. An obvious
+example of such an additional process is the resistance to grain boundary sliding
+[4, 27]. This is often modelled as if there were a thin layer of ﬂuid of viscosity ηgb at
+the grain boundary that resists shearing motion. The eﬀective viscosity tensors for this
+process can be derived in exactly the same way as those for the plating resistance by
+matching the dissipation, and the detailed calculations are given in Appendix A. In the
+case of 2D regular hexagons, the relevant viscosities including both plating resistance
+16and sliding resistance are given in dimensional form as
+ζ = 1
+72
+kTd 3
+δDgbΩ, (99)
+η = 1
+144
+kTd 3
+δDgbΩ + 1
+4ηgb
+d
+δ, (100)
+κ = 1
+2ηgb
+d
+δ, (101)
+µ = 1
+6480
+kTd 5
+δDgbΩ + 1
+4ηgb
+d3
+δ . (102)
+Figure 3 illustrates the grain-scale deformation associated with each viscosity coef-
+ﬁcient. The expressions for the eﬀective bulk and shear viscosity for regular hexagons
+are well-established results (e.g. [20, 21, 27]); the novel results here are explicitly iden-
+tifying the microrotational viscosity κ and the angular viscosity µ. Both the plating
+and sliding resistance to relative rotation of grains has been described by other authors
+in the context of determining the rotation rate of an individual grain when a torque is
+applied [28–30]. The novelty here is to relate this resistance to relative rotation to the
+angular viscosity µ of a micropolar ﬂuid. The inclusion of resistance to grain bound-
+ary sliding leads to a non-zero microrotational viscosity κ, and formally removes the
+degeneracy in the rheology. However, having signiﬁcant resistance to grain boundary
+sliding also changes the eﬀective shear viscosity (100), with the consequence that if
+ηgb≫ kTd 2/(DgbΩ) the eﬀective shear viscosity depends linearly on the grain size
+rather than the cubic dependence typical for Coble creep. But if the resistance to
+sliding is weak, one will still then ﬁnd modes of deformation which are only weakly
+resisted [13].
+An important feature of a micropolar continuum that is distinct from a classical
+Cauchy continuum is the existence of a characteristic length scale of the medium. One
+way of deﬁning this characteristic length scale is from the balance of the terms µ∇2ω
+and 4κω in equation (97), which deﬁnes the characteristic length scale
+l = 1
+2
+√µ
+κ. (103)
+The behaviour of the micropolar medium is diﬀerent depending on whether the im-
+posed scales of deformationL are signiﬁcantly larger or smaller than the characteristic
+length scale l of the medium. If L≫ l, then the resistance to relative rotation of
+the grains can be neglected throughout most of the ﬂuid, with the exception of thin
+boundary layers of thickness l. Signiﬁcant gradients in the microrotation rate only
+occur across these boundary layers. Outside these boundary layers, the equations de-
+scribing the medium can simpliﬁed to those of a reduced micropolar continuum (see
+Appendix B for a detailed discussion of this limit). On the other hand, if L≪l, then
+angular resistance dominates, and a gradient in microrotation rate can exist across
+the domain.
+The characteristic length scale l depends on the grain size, but is potentially much
+larger than the grain size. Consider the case where resistance to grain-boundary sliding
+17Bulk Shear
+Microrotational Angular
+Figure 3. Examples of the diﬀerent modes of deformation for a tiling of regular hexagons. In each case the
+frame of reference is such that the central grain is stationary (neither translating nor rotating). Straight arrows
+indicate the velocities of the centres of each grain, curved arrows indicate the sense of grain rotation. The
+hexagonal grains have been displaced by ﬁnite amounts to show their motions, but the theory described in the
+text concerns inﬁnitesimal motions only. Regions of overlap and gaps between grains must be accommodated
+by plating out or removal of material. Bulk deformation involves purely plating; there is no sliding between
+grains. Shear deformation involves both plating and sliding. Microrotational deformation involves pure sliding;
+in the example shown none of the individual grains rotate, but the grain centres undergo a rotation. Angular
+deformation occurs when there is relative rotation between neighbouring grains; such deformation involves both
+plating and sliding.
+18is weak, ηgb≪kTd 2/(DgbΩ). Substitution of (101) and (102) into (103) then yields
+l = d2
+36
+√
+10
+√
+kT
+ηgbDgbΩ (104)
+which demonstrates explicitly that the characteristic length scale of the micropolar
+medium is not simply the grain size. Another way of writing (104) is in terms of the
+eﬀective shear viscosity for pure Coble creep,ηCoble =kTd 3/(144δDgbΩ), and for pure
+grain-boundary-sliding, ηgbs =ηgbd/(4δ),
+l = d
+6
+√
+10
+√ηCoble
+ηgbs
+(105)
+which demonstrates that the characteristic length scale l can be signiﬁcantly greater
+than the grain size if the resistance to grain boundary sliding is weak ( ηgbs≪ηCoble).
+9.2. Constraints
+An alternative method for removing the degeneracy without invoking resistance to
+grain boundary sliding is by imposing additional constraints on the allowable de-
+formation. A simple example of a constraint is that of incompressibility where one
+demands that∇· v = 0 everywhere, or equivalently that Γ kk = 0, and the bulk vis-
+cosity ζ becomes eﬀectively inﬁnite (see appendix C). A similar constraint is added
+in some micropolar models to demand that rotations are constrained as ω = 1
+2∇× v
+everywhere, or equivalently that Γ[ij] = 0, and the microrotational viscosityκ becomes
+eﬀectively inﬁnite.
+In adding constraints on the deformation, one should justify them based on the
+microscale physics. It is straightforward to consider microphysical assumptions that
+impose incompressibility. While here the constitutive laws were derived under the as-
+sumption that the triple lines where grain boundary meet act as sources and sinks of
+vacancies [19, 21, 31], one can instead consider microphysical models where this is not
+the case and one has to balance ﬂuxes of vacancies at the triple lines and this natu-
+rally leads to a incompressible rheology [13, 19, 20]. While having constrained rotations
+would remove the degeneracy without invoking the resistance to grain boundary slid-
+ing, there does not seem to be an obvious micromechanical mechanism that imposes
+such a constraint.
+10. Conclusions
+Here we have presented a new perspective on diﬀusion creep by identifying an equiv-
+alent micropolar ﬂuid model that shares the same dissipation and kinematics as the
+discrete collection of grains. We have shown how the eﬀective constitutive tensors can
+be obtained for both Nabarro-Herring (volume diﬀusion) and Coble (grain-boundary
+diﬀusion) creep. Speciﬁc calculations have been performed for a periodic array of
+hexagons undergoing Coble creep in two dimensions.
+For most practical purposes identifying a material undergoing diﬀusion creep with a
+Newtonian viscous ﬂuid in the classical Cauchy continuum framework is appropriate.
+19However, there are cases where using the more general micropolar framework devel-
+oped here may be beneﬁcial. Most obviously, the addition of rotational degrees of
+freedom to the continuum description allows one to describe grain rotation. Including
+micropolar eﬀects will be particularly important whenever the length scales of deforma-
+tion approach those of the characteristic length scale of the micropolar medium; this
+may be important in problems where localisation of deformation occurs (e.g. shear
+banding). Even in problems where deformation occurs at length scales much larger
+than the characteristic length scale, inclusion of rotational degree of freedoms are im-
+portant for determining the eﬀective viscosities when the microstructure is anisotropic
+(Appendix B, [6, 32]).
+There are several natural avenues for future research. In this work speciﬁc calcula-
+tions were only performed in the very simplest case of Coble creep in two-dimensions
+because it is straightforward to solve the relevant equations analytically. Detailed
+calculations could be performed in 3D for both Coble creep and Nabarro-Herring
+creep, but these involve numerical computation. We demonstrated that consideration
+of plating resistance alone leads to a degenerate rheology, and consideration of other
+physical processes, such as the resistance to grain boundary sliding, are necessary to
+remove this degeneracy. The physics of grain boundaries were treated here in a very
+simple-minded way, oﬀering just a Newtonian viscous resistance to sliding. Future
+work should consider a better description of the physics of the grain boundaries, e.g. a
+detailed consideration of grain boundary energies and grain boundary migration. We
+have also addressed here only the instantaneous deformation of the material; there
+is a lot of work that still that needs to be done to explore how the microstructure
+evolves during deformation, and how that inﬂuences subsequent deformation. Finally,
+there is the prospect that future laboratory experiments may place constraints on the
+appropriate micropolar constitutive tensors for diﬀusion creep.
+References
+[1] R.L. Coble, A Model for Boundary Diﬀusion Controlled Creep in Polycrystalline Materi-
+als, J. Appl. Phys. 34 (1963), pp. 1679–1682.
+[2] F.R.N. Nabarro, Deformation of crystals by the motion of single ions , in Rep. a Conf.
+Strength Solids. Physical Society, London, 1948, pp. 75–90.
+[3] C. Herring, Diﬀusional Viscosity of a Polycrystalline Solid , J. Appl. Phys. 21 (1950), pp.
+437–445.
+[4] I.M. Lifshitz, On the theory of diﬀusion-viscous ﬂow of polycrystalline bodies , Sov. Phys.
+JETP 17 (1963), pp. 1349–1367.
+[5] M. Godio, I. Stefanou, K. Sab, J. Sulem, and S. Sakji, A limit analysis approach based on
+Cosserat continuum for the evaluation of the in-plane strength of discrete media: Appli-
+cation to masonry , Eur. J. Mech. A/Solids 66 (2017), pp. 168–192.
+[6] P. Trovalusci and R. Masiani, Non-linear micropolar and classical continua for anisotropic
+discontinous materials, Int. J. Solids Struct. 40 (2003), pp. 1281–1297.
+[7] I. Vardoulakis, Cosserat Continuum Mechanics, Lecture Notes in Applied and Computa-
+tional Mechanics Vol. 87, Springer International Publishing, Cham, 2019.
+[8] R.J. Twiss, B.J. Souter, and J.R. Unruh, The eﬀect of block rotations on the global seismic
+moment tensor and the patterns of seismic P and T axes , J. Geophys. Res. Solid Earth
+98 (1993), pp. 645–674.
+[9] R.J. Twiss, An asymmetric micropolar moment tensor derived from a discrete-block model
+for a rotating granular substructure , Bull. Seismol. Soc. Am. 99 (2009), pp. 1103–1131.
+[10] R. Abreu, J. Kamm, and A.S. Reiß, Micropolar modelling of rotational waves in seismol-
+ogy, Geophys. J. Int. 210 (2017), pp. 1021–1046.
+20[11] R. Abreu, C. Thomas, and S. Durand, Eﬀect of observed micropolar motions on wave
+propagation in deep Earth minerals , Phys. Earth Planet. Inter. 276 (2018), pp. 215–225.
+[12] P. Cordier, S. Demouchy, B. Beausir, V. Taupin, F. Barou, and C. Fressengeas, Discli-
+nations provide the missing mechanism for deforming olivine-rich rocks in the mantle ,
+Nature 507 (2014), pp. 51–56.
+[13] J. Wheeler, Anisotropic rheology during grain boundary diﬀusion creep and its relation
+to grain rotation, grain boundary sliding and superplasticity , Philos. Mag. 90 (2010), pp.
+2841–2864.
+[14] A.C. Eringen, Theory of Micropolar Fluids , J. Math. Mech. 16 (1966).
+[15] V.A. Eremeyev, L.P. Lebedev, and H. Altenbach, Foundations of Micropolar Mechanics,
+SpringerBriefs in Applied Sciences and Technology, Springer Berlin Heidelberg, Berlin,
+Heidelberg, 2013.
+[16] I. Stefanou, J. Sulem, and H. Rattez, Cosserat Approach to Localization in Geomaterials,
+in Handb. Nonlocal Contin. Mech. Mater. Struct., Springer International Publishing, 2017,
+pp. 1–25.
+[17] G.  Lukaszewicz, Micropolar Fluids, Modeling and Simulation in Science, Engineering and
+Technology, Birkh¨ auser Boston, Boston, MA, 1999.
+[18] N. Charalambakis, Homogenization techniques and micromechanics. A survey and per-
+spectives, Appl. Mech. Rev. 63 (2010), pp. 1–10.
+[19] J.F. Rudge, The Viscosities of Partially Molten Materials Undergoing Diﬀusion Creep , J.
+Geophys. Res. Solid Earth 123 (2018), pp. 10,534–10,562.
+[20] J.R. Spingarn and W.D. Nix, Diﬀusional creep and diﬀusionally accommodated grain
+rearrangement, Acta Metall. 26 (1978), pp. 1389–1398.
+[21] A.C.F. Cocks and A.A. Searle, Cavity growth in ceramic materials under multiaxial stress
+states, Acta Metall. Mater. 38 (1990), pp. 2493–2505.
+[22] P.M. Hazzledine and J.H. Schneibel, Theory of coble creep for irregular grain structures ,
+Acta Metall. Mater. 41 (1993), pp. 1253–1262.
+[23] H. Weber, H. Balke, and W. Pompe, High temperature creep of polycrystals with randomly
+oriented grain boundaries, Comput. Mater. Sci. 5 (1996), pp. 238–242.
+[24] J.M. Ford, J. Wheeler, and A.B. Movchan, Computer simulation of grain-boundary diﬀu-
+sion creep, Acta Mater. 50 (2002), pp. 3941–3955.
+[25] R. Quey and L. Renversade, Optimal polyhedral description of 3D polycrystals: Method
+and application to statistical and synchrotron X-ray diﬀraction data , Comput. Methods
+Appl. Mech. Eng. 330 (2018), pp. 308–333.
+[26] C. Lautensack and S. Zuyev, Random Laguerre tessellations , Adv. Appl. Probab. 40
+(2008), pp. 630–650.
+[27] W. Beere, Stresses and deformation at grain boundaries , Philos. Trans. R. Soc. London.
+Ser. A, Math. Phys. Sci. 288 (1978), pp. 177–196.
+[28] D. Moldovan, D. Wolf, and S.R. Phillpot,Theory of diﬀusion-accommodated grain rotation
+in columnar polycrystalline microstructures , Acta Mater. 49 (2001), pp. 3521–3532.
+[29] K. Harris, V. Singh, and A. King, Grain rotation in thin ﬁlms of gold , Acta Mater. 46
+(1998), pp. 2623–2633.
+[30] B.N. Kim, K. Hiraga, and K. Morita, Viscous grain-boundary sliding and grain rotation
+accommodated by grain-boundary diﬀusion, Acta Mater. 53 (2005), pp. 1791–1798.
+[31] Y. Takei and B.K. Holtzman, Viscous constitutive relations of solid-liquid composites in
+terms of grain boundary contiguity: 1. Grain boundary diﬀusion control model, J. Geophys.
+Res. Solid Earth 114 (2009), pp. 1–19.
+[32] N. Fantuzzi, P. Trovalusci, and R. Luciano, Material Symmetries in Homogenized
+Hexagonal-Shaped Composites as Cosserat Continua , Symmetry (Basel). 12 (2020), p.
+441.
+[33] B.N. Kim, K. Hiraga, K. Morita, H. Yoshida, and B.W. Ahn, Viscous grain-boundary
+sliding with rotating particles or grains , Acta Mater. 57 (2009), pp. 5730–5738.
+[34] E.F. Grekova, M.A. Kulesh, and G.C. Herman, Waves in linear elastic media with mi-
+crorotations, part 2: Isotropic reduced Cosserat model, Bull. Seismol. Soc. Am. 99 (2009),
+21pp. 1423–1428.
+[35] E.F. Grekova and R. Abreu, Isotropic Linear Viscoelastic Reduced Cosserat Medium: an
+Acoustic Metamaterial and a First Step to Model Geomedium , in Adv. Struct. Mater. ,
+Vol. 108, Springer Verlag, 2019, pp. 165–185.
+[36] M.D. Graham, Microhydrodynamics, Brownian Motion, and Complex Fluids , Cambridge
+University Press, 2018 sep.
+[37] ´E. Guazzelli and J.F. Morris, A physical introduction to suspension dynamics, Cambridge
+University Press, 2011 jan.
+Appendix A. Resistance to grain-boundary sliding
+A simple way to model grain-boundary sliding is to treat the interface between grains
+as if it were a thin layer of viscous ﬂuid that oﬀers resistance to being sheared [e.g.
+4, 27, 33]. The resistance can be characterised by averaged dissipation over the grain
+in the form
+Ψ = ηgb
+2Vδ
+∫
+|n× ∆v|2 dS (A1)
+where ηgb is the eﬀective shear viscosity of the grain boundary, and δ is its eﬀective
+thickness. Using the notion of equivalent dissipation, the eﬀective constitutive tensors
+can be obtained by matching (A1) and (21) with (14). In what follows we will use
+dimensionless variables, whereCijkl is scaled on ηgbd/δ,Bijkl onηgbd2/δ andDijkl on
+ηgbd3/δ. From (21) it follows that
+(n× ∆v)p =apklΓkl +bpklKkl (A2)
+where
+apkl =ϵpqknqRl, (A3)
+bpkl =cpkRl, (A4)
+cpk = (d· n)δpk−dpnk. (A5)
+It follows that
+Cijkl = 1
+2V
+∫
+(δik−nink)RjRl dS, (A6)
+Bijkl =− 1
+2V
+∫
+(d× n)inkRjRl dS, (A7)
+Dijkl = 1
+2V
+∫
+cpicpkRjRl dS. (A8)
+22A.1. Irregular hexagons
+For the irregular hexagons described in subsection 8.2, the expressions in (A6), (A7),
+and (A8) reduce to
+Cijkl = 1
+V
+3∑
+f=1
+(
+δik−Nf
+i Nf
+k
+)
+Rf
+jRf
+llf, (A9)
+B3jkl = 1
+2V
+3∑
+f=1
+(Rf· Bf)Nf
+kRf
+jRf
+l, (A10)
+D3j3l = 1
+4V
+3∑
+f=1
+(Rf· Nf)2Rf
+jRf
+llf. (A11)
+A.2. Regular hexagons
+In the special case of regular hexagons, isotropy imposes that the constitutive tensors
+take the form in (90), (91), and (92) in terms of the four constants ζ, η, κ, and µ.
+These constants can be determined from the tensor invariants,
+Ciikk = 4ζ = 0, (A12)
+Cijij = 2ζ + 4η + 2κ = 2, (A13)
+Cijji = 2ζ + 4η− 2κ = 0, (A14)
+D3j3j = 2µ = 1
+2, (A15)
+where the units are such that the perpendicular distance between opposite sides of the
+hexagon equals 1. It follows that
+ζ = 0, η = 1
+4, κ = 1
+2, µ = 1
+4, (A16)
+where it should be noted that ζ,η, and κ are scaled by ηgbd/δ andµ byηgbd3/δ. The
+result that η = 1/4 is in complete agreement with the results obtained by [13, 27, 33].
+The new results here are for the micropolar constants κ and µ.
+Appendix B. Reduced micropolar continuum
+A micropolar medium has an intrinsic characteristic length scale l. If variations in
+the ﬂow happen on much longer scales, say a length scale L, with L≫ l, then the
+constitutive laws can be further simpliﬁed to a reduced micropolar model outside any
+boundary layers (e.g. [34, 35]). If η is a typical viscosity, the constitutive tensors in
+(12) and (13) scale as Cijkl∼ η, Bijkl∼ ηl, and Dijkl∼ ηl2. If ˙ε is a typical strain
+rate, then Γij∼ ˙ε andKij∼ ˙ε/L. By keeping terms only at leading order in the small
+parameter l/L, the balance laws (1) and (2) become
+σij,j = 0, (B1)
+ϵijkσjk = 0, (B2)
+23and the constitutive law simpliﬁes to
+σij =CijklΓkl. (B3)
+In this reduced micropolar continuum, couple stresses are negligible ( χij = 0), the
+dissipation is independent of Kij (the gradient in microrotation rate), and the force-
+stress tensor σij is symmetric (equation (B2)). It was under these assumptions that
+the calculations of Wheeler [13] were made, and we will show now that the more
+general micropolar continuum considered here reduces to that of Wheeler [13] with
+these additional assumptions.
+It is helpful to decompose both the Cosserat tensor Γ ij and the force-stress tensor
+σij into their symmetric and antisymmetric parts, as illustrated for Γ ij in equations
+(8), (9), and (10). The constitutive law in (B3) can be written as
+σ(ij) =C(ij)(kl)Γ(kl) +C(ij)[kl]Γ[kl], (B4)
+σ[ij] =C[ij](kl)Γ(kl) +C[ij][kl]Γ[kl], (B5)
+where round brackets (ij) represent the symmetric part, and square brackets [ij] rep-
+resent the antisymmetric part. Note that due to the major symmetry Cijkl = Cklij,
+we have that C[ij](kl) =C(kl)[ij].
+Antisymmetric second-rank tensors can be conveniently represented using pseudo-
+vectors, which we will deﬁne for the Cosserat tensor Γ ij as
+Γ×
+k = 1
+2ϵkijΓij, (B6)
+Γ[ij] =ϵijkΓ×
+k, (B7)
+using the superscript × to denote the pseudo-vector. The pseudo-vector σ×
+k similarly
+relates to the antisymmetric part of the force-stress tensor σ[ij]. Note from (10) that
+Γ×
+k =ωk− 1
+2Ωk, and so Γ×
+k represents the relative rate of grain rotation with respect
+to the rotation of the grain centres.
+The viscosity tensors in (B4) and (B5) can be simpliﬁed by introducing a symmetric
+second-rank tensor Apq as
+Apq = 1
+4ϵpijϵqklCijkl, (B8)
+C[ij][kl] =ϵpijϵqklApq, (B9)
+and a third-rank pseudo-tensor Epij as
+Epij = 1
+2ϵpklC(ij)kl, (B10)
+C(ij)[kl] =ϵpklEpij. (B11)
+Note that Epij is symmetric on its last two indices, Epij = Epji. For an isotropic
+medium, Apq = κδpq where κ is the microrotation viscosity, and Epij vanishes. The
+24constitutive laws in (B4) and (B5) can be written as
+σ(ij) =C(ij)(kl)Γ(kl) + 2EkijΓ×
+k, (B12)
+σ×
+i =EiklΓ(kl) + 2AikΓ×
+k. (B13)
+Equation (B2) implies that σ×
+i = 0, which when combined with (B13) places a con-
+straint on the allowable motions. If the second-rank symmetric tensorAik is invertible,
+this constraint can be explicitly written as giving the relative rotation rate pseudo-
+vector Γ×
+k in terms of the symmetric strain-rate tensor as
+Γ×
+k =−1
+2A−1
+kpEpijΓ(ij). (B14)
+The result in (B14) is analogous to the expressions which determine the rotation rate
+of a rigid particle embedded in a viscous ﬂuid undergoing shear (e.g. [36, 37]). In these
+analogous problems the torque on the rigid particle can be related to the relative
+rotation rate of the particle and the far-ﬁeld strain rate through resistance tensors,
+and the particle rotation rate can be determined by a condition of zero net torque.
+Equation (B14) can substituted into the constitutive law (B12) for the symmetric
+part of the stress tensor and thus show that the medium behaves as a classical Cauchy
+continuum governed by
+σ(ij),j = 0, (B15)
+σ(ij) = ˜CijklΓ(kl), (B16)
+˜Cijkl =C(ij)(kl)−EpijA−1
+pqEqkl, (B17)
+where the degrees of freedom associated with the microrotations have been eliminated.
+Note that the eﬀective viscosity tensor ˜Cijkl satisﬁes both the major and the minor
+symmetries ( ˜Cijkl = ˜Cjikl), and that it diﬀers in general from C(ij)(kl). Thus while the
+eﬀective medium behaves as a Cauchy continuum, one cannot neglect the rotational
+degrees of freedom when determining the eﬀective viscosity tensor. Only when the
+third-rank pseudo-tensor Ekij vanishes will ˜Cijkl = C(ij)(kl), which can occur when
+certain symmetries are present. For example, in 3D, Ekij vanishes when the grain
+geometry is invariant under the crystallographic point groups 432,43m, or m3m. If only
+plating resistance is considered, both Ekij and Aij vanish for any grain geometry for
+which the vector R joining grain centres is parallel to the grain boundary normal n, as
+the plating rate (and thus dissipation) is then independent of Γ×
+k . WhenEkij vanishes,
+the translational motion is decoupled from the rotational motion, and provided Aij is
+invertible, the microrotation rate is constrained to be half the vorticity,ω = 1
+2 (∇× v).
+If, however, both the tensor Ekij and the tensor Aij vanish (e.g. zero microrotation
+viscosityκ in the isotropic case), the microrotation rate ω is unconstrained.
+When the grain geometry has R parallel to n, and the resistance to grain boundary
+sliding is included, but relatively weak compared with the plating resistance, then
+the eﬀective viscosity tensor is dominated by the plating resistance, with ˜Cijkl ≈
+C(ij)(kl). However, the relative rotation rate Γ×
+k of the grains is determined purely by
+the resistance to grain boundary sliding (Appendix A), as the tensors Aij and Ekij
+depend only on the sliding resistance. The third-rank pseudo-tensor A−1
+kpEpij in (B14)
+is independent of the grain boundary sliding viscosity ηgb and depends only on the
+geometry of the grain.
+25Wheeler [13] performed the same eliminations leading to (B14) and (B17) for the
+speciﬁc case of hexagons in 2D. In a 2D medium, there is only a single non-zero
+component Γ×
+3 representing the relative rotation rate, and only the A33 and E3ij
+components of the appropriate viscosity tensors are non-zero. The 2D eliminations
+yield
+Γ×
+3 =−1
+2
+E3ij
+A33
+Γ(ij), (B18)
+˜Cijkl =C(ij)(kl)− E3ijE3kl
+A33
+, (B19)
+and the dimensionless tensors describing plating resistance for hexagons are given
+explicitly as
+C(ij)(kl) = 1
+48V
+3∑
+f=1
+(
+Nf
+i Rf
+j +Nf
+jRf
+i
+)(
+Nf
+kRf
+l +Nf
+l Rf
+k
+)
+l3
+f, (B20)
+E3ij = 1
+24V
+3∑
+f=1
+(
+Nf
+i Rf
+j +Nf
+jRf
+i
+)
+(Nf× Rf)3l3
+f, (B21)
+A33 = 1
+48V
+3∑
+f=1
+(Nf× Rf)3 (Nf× Rf)3l3
+f. (B22)
+Equation (23) in [13] is a special case of (B18), and equation (B19) can be used to
+reproduce the same constitutive laws as found by [13] for the cases where A33⁄= 0. As
+remarked above, for plating resistance both E3ij andA33 vanish when Nf and Rf are
+parallel, which can be seen in the expressions in (B21) and (B22) in the dependence on
+the cross product Nf×Rf. In such cases, one cannot make the elimination leading to
+(B19), and instead we simply have that the eﬀective viscosity tensor is ˜Cijkl =C(ij)(kl).
+Wheeler [13] states that “no unique value of viscosity exists for the rheology of an
+array of regular hexagons” when only plating resistance is considered. He arrives at
+this conclusion based on taking diﬀerent limits of an elimination similar to that in
+(B19); however such an elimination is not possible when A33 vanishes. By Neumann’s
+principle the eﬀective viscosity tensor of an array of regular hexagonal grains is always
+isotropic. The shear viscosity is well deﬁned and strictly positive; the degeneracy is
+simply that the microrotational viscosity vanishes when the only resistance to motion
+is plating.
+Appendix C. Constraints
+C.1. Incompressibility
+Material models can be supplemented by constraints which forbid certain modes of
+deformation. An important example of this is an incompressibility constraint, which
+forbids bulk deformation (∇· v = Γkk = 0). The viscosity tensors here are derived
+assuming bulk deformation is possible, with potential sources and sinks of vacancies
+where grain boundaries meet [19, 21, 31]. The bulk deformation can be separated from
+the rest of the deformation by splitting the Cosserat tensor Γ ij into an isotropic part
+26and a trace-free part as
+Γij = 1
+N Γkkδij + Γ{ij} (C1)
+Γ{ij} = Γij− 1
+N Γkkδij, (C2)
+where N is the dimension of the space. Here curly brackets indicate a tensor that
+yields zero when contracted over the indices within the curly brackets.
+For an incompressible medium, the dissipation depends only on the trace-free tensor
+Γ{ij}. The constitutive laws in (12) and (13) are replaced by
+σij =−Pδij +σ{ij}, (C3)
+σ{ij} =C{ij}{kl}Γ{kl} +B{ij}klKkl, (C4)
+χij =B{kl}ijΓ{kl} +DijklKkl, (C5)
+where P is the pressure, a Lagrange multiplier enforcing the incompressibility con-
+straint [15]. The viscosity tensors derived here can be reduced to those for an incom-
+pressible medium as
+C{ij}{kl} =Cijkl− 1
+NCppklδij− 1
+NCijqqδkl + 1
+N 2Cppqqδijδkl, (C6)
+B{ij}kl =Bijkl− 1
+NBppklδij. (C7)
+For the 2D isotropic medium considered in (96) and (97), the eﬀect of adding an
+incompressibility constraint is to replace the ζ∇ (∇· v) term in (96) by a−∇P term.
+C.2. Constrained rotations
+Another constraint that can be considered is that of constrained rotations, where we
+demand that ω = 1
+2∇× v everywhere, or equivalently that Γ [ij] = 0. It follows that
+Kkk =∇·ω = 0. A pseudo-vector Lagrange multiplierQk is introduced to enforce the
+pseudo-vector constraint that Γ×
+k = 0 [15]. The constitutive laws in (12) and (13) are
+replaced by
+σij =Qkϵkij +σ(ij), (C8)
+σ(ij) =C(ij)(kl)Γ(kl) +B(ij)klKkl, (C9)
+χij =B(kl)ijΓ(kl) +DijklKkl, (C10)
+where the Lagrange multiplier represents the antisymmetric part of the stress tensor
+since Qk = σ×
+k . For micropolar media with constrained rotations, the microrotation
+velocityω can be eliminated from the governing equations as follows. The antisym-
+metric part of the force-stress tensor can be eliminated from the conservation laws (1)
+and (2) to yield
+σ(ij),j + 1
+2ϵijkχkl,lj = 0. (C11)
+27The above equation, combined with the constitutive laws (C9) and (C10) describes
+the micropolar medium with constrained rotations. In the case of the 2D isotropic
+medium considered in (96) and (97) the above can be simpliﬁed to
+ζ∇ (∇· v) +η∇2v− µ
+4∇4v = 0. (C12)
+This diﬀers from the usual 2D Navier equation by the fourth order term, representing
+the resistance to relative rotations of the grains.
+Acknowledgments
+I thank Prof. Samuel Forest for his editorial handling, and two anonymous reviewers
+for their helpful comments.
+28

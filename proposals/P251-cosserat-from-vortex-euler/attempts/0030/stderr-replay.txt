@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0030/kida_angle_construction.py", line 123, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/pr199-completion/proposals/P251-cosserat-from-vortex-euler/attempts/0030/kida_angle_construction.py", line 50, in main
+    ledger.check("positive angle stiffness for Q>2", stiffness.subs(q, q_excess + 2).is_positive)
+  File "/tmp/pr199-completion/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P251-0030-local-angle] positive angle stiffness for Q>2

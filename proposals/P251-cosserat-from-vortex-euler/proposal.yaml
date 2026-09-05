@@ -1,0 +1,566 @@
+id: P251
+schema_version: 2
+base_release: v0.171.0
+source_baseline: substrate-framework@e24497b0272f8582a71d4189581db818a0e276aa
+canonical_issue: "198"
+research_continuation_issue: "200"
+owner_scope_decision:
+  date: "2026-09-05"
+  artifact_scope: repaired PR199 proposal artifacts and conditional Rankine API
+  research_scope: full actual smooth-Euler coupled continuum retained in issue200
+  authorization: >-
+    The owner explicitly approved separating the unfinished research,
+    preserving all progress in a new issue and research branch, and merging
+    the repaired existing PR199. This is not scientific success or exhaustion.
+  publication_boundary: attempts0001-0034 and existing repaired verifiers only
+campaign_type: discovery
+target_kind: mechanism_selection
+question: >-
+  Does coarse-graining a declared ensemble of vortex structures whose
+  rotational degrees of freedom (segment-frame orientation and twist) are
+  carried by exact stationary vortex tubes of the Enciso-Peralta-Salas type
+  yield an exact conditional derivation of the linear Cosserat (micropolar)
+  equations - independent microrotation field, couple stress, asymmetric
+  stress, balance of angular momentum with microinertia, and isotropic
+  constitutive relations with effective moduli computed from the Biot-Savart
+  self-energy of the structures - with every ensemble premise named and
+  independently falsifiable, no hidden fitted constant, and with the
+  no-Cosserat side (orientation-ergodic ensembles) shown to yield vanishing
+  net couple stress and microrotation stiffness?
+positive_objective: >-
+  A governed claim ladder C-CST-001..007 deriving the linear micropolar
+  equations from constant-density incompressible Euler coarse-grained over
+  the declared vortex-structure ensemble: each premise declared and
+  falsifiable, each exact statement SymPy-verified with mutation probes, each
+  dynamical statement SciPy-verified with refinement, the fluid limit
+  recovering Euler and the structure-free limit recovering the P242
+  Navier-Cauchy sector, promoted claim by claim through independent review.
+coordination_boundary: >-
+  P251 owns the Cosserat-from-Euler derivation (issue #198), the proposal
+  directory proposals/P251-cosserat-from-vortex-euler, new importable APIs it
+  extracts into src/substrate_framework/ (triad moments, micropolar moduli,
+  wave checks) called out in its PR, and claims C-CST-001..007. It imports
+  P242 machinery (homogenization.py, numerics.py, CheckLedger) as conditional
+  unpromoted infrastructure without reopening C-ELS claims, does not edit
+  immutable campaigns, and does not claim electron/neutrino/Standard-Model
+  phenomenology. Federico Comparsi (@Splinterrone) is the item source; his
+  sketch/conventions (requested by email 2026-09-03, tagged on #198) land as
+  intake context and must not override frozen structural criteria after
+  attempts begin.
+candidate_universe:
+  scope: >-
+    Original user objective (issue #198, relayed from Federico Comparsi by
+    Dan 2026-09-03): derive the Cosserat equations from a coarse-graining of
+    the Euler equations with the rotational degrees of freedom associated to
+    vortex structures in the energetic fluid, with Enciso-Peralta-Salas
+    (2012-2015) stationary knotted vortex tubes as the structural existence
+    backbone. In-scope class: exact conditional derivations whose microscopic
+    dynamics is constant-density incompressible Euler and whose target is the
+    linear micropolar (Cosserat) continuum system.
+  frozen_from: [objective, invariants, source inventory, permitted imports]
+  route_families:
+    - filament-triad affine transport (rotational DOF = centerline-frame bend/twist)
+    - core-polarization patch (rotational DOF = cross-section vorticity-polarization rotation)
+    - ergodic no-topology closure (no-Cosserat contrast side; degenerate limit)
+  append_only_expansions:
+    - >-
+      2026-09-04 PR199 completion, attempts 0029-0034: repair the Cartesian
+      Euler operator correspondence, derive angle-dependent elliptic-patch
+      and closed vortex-cluster actions, and use the kinetic-energy
+      tangent-dot-tangent Biot-Savart kernel for mutual interactions.
+      Motivated by 0028's rate/angle dimensional mismatch and 0026's use of
+      a helicity integrand as energy. Existing candidate families remain.
+obligation_graph:
+  nodes:
+    - id: N1
+      positive_intent: >-
+        Exact frame-transport kinematics: an orthonormal triad transported
+        along a filament centerline obeys the SO(3) transport identity whose
+        twist rate about the tangent splits into material twist and geometric
+        torsion (Bishop frame as twist-free gauge); the microrotation variable
+        of the coarse-grained theory is this frame-rotation angle.
+      requires: []
+      pass_licenses: []
+      does_not_license: [any modulus claim, any balance-law claim]
+      maximum_verdict: established
+      failure_scope: filament-triad route family only
+      unlocks: [N3, N5]
+      status: established
+      license_chain:
+        object: >-
+          transported orthonormal triad (t, q1, q2) along a smooth centerline;
+          twist angle chi(s); Frenet torsion tau(s)
+        symmetry_or_conservation: SO(3) frame covariance of the transport law
+        ensemble: single declared filament (deterministic geometry)
+        variational_functional: not applicable (kinematic identity)
+        admissible_space: smooth unit-speed curves, closed or periodic box
+        representation_coverage: includes Frenet and Bishop gauges; excludes
+          self-intersecting centerlines
+        observable: twist rate chi'(s) vs geometric torsion; helix closed form
+        numerical_representation: blocked (exact claim; SymPy only)
+        permitted_verdict: established
+    - id: N2
+      positive_intent: >-
+        Bending and twist stiffness per unit length of one straight vortex
+        tube segment, derived - not postulated - from the regularized
+        Biot-Savart self-energy under slow centerline bending and core twist,
+        as exact symbolic expressions with declared outer/inner cutoffs
+        (log(R/a) running).
+      requires: []
+      pass_licenses: [L1]
+      does_not_license: [ensemble moduli, balance laws]
+      maximum_verdict: established
+      failure_scope: both route families (shared micro-elasticity input)
+      unlocks: [N3]
+      status: active
+      license_chain:
+        object: >-
+          straight-tube self-energy E(L; R, a) and its O(a^0) variations under
+          bend curvature kappa and twist rate chi'
+        symmetry_or_conservation: >-
+          rotational and translational invariance of the Biot-Savart kernel;
+          Kelvin circulation theorem (Gamma fixed)
+        ensemble: single straight tube, fixed circulation Gamma, core radius a
+        variational_functional: >-
+          regularized Biot-Savart self-energy
+          (rho*Gamma^2/4pi) double-line integral with core mollifier
+        admissible_space: >-
+          slowly varying perturbations, kappa*a << 1, a << R (scale
+          separation premise, declared)
+        representation_coverage: >-
+          includes centerline bend and rigid core twist; excludes
+          core-internal reconnection and wave-like core modes
+        observable: bending modulus B(Gamma, rho, R, a), twist modulus
+          C(Gamma, rho, R, a)
+        numerical_representation: blocked (exact claim; SymPy integration)
+        permitted_verdict: established
+    - id: N3
+      positive_intent: >-
+        Ensemble Cauchy-Born coarse-graining with triads: the declared
+        isotropic tube ensemble under affine ambient transport
+        (displacement gradient h = grad u, microrotation W) produces an exact
+        micropolar energy density; coefficient matching yields effective
+        moduli (lambda, mu, kappa, alpha, beta, gamma)_eff in terms of
+        (Gamma, a, R, L_v, rho) with no fitted constant.
+      requires: [L1]
+      pass_licenses: [L2]
+      does_not_license: [balance-law form, wave speeds, EPS bridge]
+      maximum_verdict: established
+      failure_scope: selected candidate route (A or B)
+      unlocks: [N4]
+      license_chain:
+        object: >-
+          W(eps_gamma, kappa_gamma) isotropic micropolar energy density with
+          computed moduli; eps_gamma = grad u - W (asymmetric), kappa_gamma =
+          grad W
+        symmetry_or_conservation: >-
+          material frame indifference; isotropy via exact sphere moments
+          (reuse homogenization sphere moments; add joint tangent-triad
+          moments)
+        ensemble: >-
+          declared isotropic tube ensemble, length density L_v, fixed Gamma,
+          a, R; orientation distribution isotropic WITH triad locking
+          (candidate-ruled)
+        variational_functional: E = integral W(eps_gamma, kappa_gamma) dV
+        admissible_space: >-
+          slowly varying u, W on periodic box; affine segment transport;
+          scale separation a << coarse-graining window << field scale
+        representation_coverage: >-
+          includes affine transport of triads; excludes nonaffine relaxation
+          (declared exclusion, falsifiable)
+        observable: >-
+          coefficient-matched moduli; residual of the coefficient matching
+          under general asymmetric strain/curvature probes
+        numerical_representation: blocked (exact claim; SymPy moments + matching)
+        permitted_verdict: established
+      status: active
+    - id: N4
+      positive_intent: >-
+        Balance-law identification: the Euler-Lagrange equations of the
+        averaged action (kinetic 1/2 rho |u_dot|^2 + 1/2 j |phi_dot|^2 with
+        microinertia j derived from the tube rotational self-energy;
+        potential W from N3) are exactly the linear micropolar system -
+        balance of linear momentum div sigma = rho u_ddot and balance of
+        angular momentum div m + eps:sigma = j phi_ddot - in the form stated
+        by the Comparsi intake form (issue #198, 2026-09-03), with the
+        in-hand Rudge statement as the consistent secondary reference.
+      requires: [L2]
+      pass_licenses: [L3]
+      does_not_license: [wave speeds, EPS bridge]
+      maximum_verdict: established
+      failure_scope: selected candidate route (A or B)
+      unlocks: [N5, N6]
+      status: active
+      license_chain:
+        object: >-
+          sigma = dW/d(eps_gamma), m = dW/d(kappa_gamma), j(Gamma, rho, R, a);
+          residual of balance laws under arbitrary test fields
+        symmetry_or_conservation: >-
+          translational and rotational invariance of the action (Noether);
+          rigid-rotation limit recovering classical angular momentum
+        ensemble: declared ensemble of N3
+        variational_functional: >-
+          S = integral (1/2 rho |u_dot|^2 + 1/2 j |phi_dot|^2 -
+          W(eps_gamma, kappa_gamma)) dV
+        admissible_space: >-
+          C^2 fields on a periodic box; variations delta u, delta phi
+          compactly supported
+        representation_coverage: includes linear micropolar sector; excludes
+          nonlinear finite-rotation terms (declared exclusion)
+        observable: >-
+          symbolic residuals of both balance equations under random smooth
+          probes; mutation: skew-symmetric stress part must be load-bearing
+        numerical_representation: blocked (exact claim; SymPy EL derivation)
+        permitted_verdict: established
+    - id: N5
+      positive_intent: >-
+        Rotational wave dynamics: symbolic plane-wave dispersion of the
+        linearized system exhibits the two micropolar branches (displacement-
+        coupled rotational wave and microrotation wave with speed from couple
+        moduli and j); SciPy IVP time integration measures the symbolic
+        frequencies with refinement stability and mutation failure.
+      requires: [L3]
+      pass_licenses: [L4]
+      does_not_license: [EPS bridge]
+      maximum_verdict: established
+      failure_scope: selected candidate route (A or B)
+      unlocks: [N7]
+      status: active
+      license_chain:
+        object: dispersion relation omega_+(k), omega_-(k) and phase speeds
+        symmetry_or_conservation: rotational invariance; energy conservation
+          of the closed linear system
+        ensemble: declared ensemble of N3 (moduli symbolic)
+        variational_functional: linearized action of N4 about rest
+        admissible_space: periodic plane waves, k real
+        representation_coverage: >-
+          includes the physical divergence-free transverse sector and its
+          pure-spin limit; retains the longitudinal-coupled formulas only as
+          an unrestricted micropolar extension, not as incompressible-Euler
+          modes; excludes damping (inviscid premise)
+        observable: measured vs symbolic omega; refinement-stable error
+        numerical_representation: >-
+          blocked until L4 (symbolic dispersion) is earned; then
+          solve_ivp via substrate_framework.numerics, rtol/atol declared,
+          window nonperiodicity excluded by construction (harmonic mode)
+        permitted_verdict: established
+    - id: N6
+      positive_intent: >-
+        No-Cosserat side: for the orientation-ergodic ensemble (no triad
+        locking; isotropic decorrelated frame distribution), the coherent
+        signed frame response vanishes exactly and a simulated decorrelated
+        ensemble confirms the same zero first moment within its declared
+        tolerance. The no-Cosserat closure additionally removes the incoherent
+        frame variable; zero mean is not used to claim zero quadratic
+        fluctuation energy.
+      requires: [L2]
+      pass_licenses: []
+      does_not_license: [positive Cosserat derivation]
+      maximum_verdict: established
+      failure_scope: >-
+        no-Cosserat contrast family only; a nonzero residual refutes the
+        ergodic closure premise of the contrast family, not candidate A/B
+      unlocks: []
+      status: active
+      license_chain:
+        object: zero coherent signed couple response under the declared
+          orientation-ergodic closure
+        symmetry_or_conservation: exact isotropy of the decorrelated frame measure
+        ensemble: orientation-ergodic ensemble (declared decorrelation)
+        variational_functional: >-
+          coherent first-moment response closure; quadratic fluctuations are
+          retained as a separate observable and do not define a coherent Phi
+        admissible_space: same as N3
+        representation_coverage: includes the P242 C-ELS degenerate limit;
+          excludes partial locking
+        observable: vanishing coherent response; simulated signed-response average
+        numerical_representation: >-
+          blocked until analytic isotropy argument; then Monte-Carlo average
+          with declared seed, sample count, and scale-relative tolerance
+        permitted_verdict: established
+    - id: N7
+      positive_intent: >-
+        Enciso-Peralta-Salas conditional bridge: the persistence premise
+        (structures are exact stationary Euler solutions and materialize the
+        frozen-in rotational DOF over the coarse-graining window) is stated
+        as an explicit conditional hypothesis with the EPS vortex-tube
+        theorems imported from hash-pinned in-hand sources. A separate simple
+        periodic Beltrami field checks the Beltrami-to-steady-Euler identity
+        without being presented as a localized tube.
+      requires: [L1, L4]
+      pass_licenses: [L5]
+      does_not_license: [any re-proof of EPS results]
+      maximum_verdict: established
+      failure_scope: >-
+        EPS-bridge node only; an inconsistency between the realized example
+        and the declared premises scopes to the bridge premise, not to N1-N6
+        exact claims
+      unlocks: []
+      status: active
+      license_chain:
+        object: >-
+          audited EPS vortex-tube existence statements plus a separate exact
+          periodic Beltrami-to-steady-Euler regression
+        symmetry_or_conservation: >-
+          Beltrami property (curl u = lambda u) making the tube a stationary
+          Euler solution; helicity conservation
+        ensemble: EPS existence class as declared import; elementary periodic
+          Beltrami field used only as an equation regression
+        variational_functional: not varied (stationary solution; extraction only)
+        admissible_space: smooth Beltrami fields on the domains of the cited
+          theorems; periodic plane-wave regression on a torus
+        representation_coverage: >-
+          the regression covers the Euler identity only; vortex-tube topology
+          is supplied by the imported theorem statement
+        observable: source digest and theorem-statement locations; exact
+          divergence, curl, helicity, and stationary Euler residuals
+        numerical_representation: blocked (the repaired bridge is analytic and
+          provenance-scoped; it makes no sampled tube-statistics claim)
+        permitted_verdict: established
+license_registry:
+  - id: L1
+    proposition: >-
+      Biot-Savart micro-moduli B, C and microinertia-scale j are exact
+      symbolic consequences of the regularized self-energy with declared
+      cutoffs (earned by N2)
+    status: unearned
+    evidence: null
+    earned_by: null
+  - id: L2
+    proposition: >-
+      Ensemble moduli (lambda, mu, kappa, alpha, beta, gamma)_eff are exact
+      coefficient-matching consequences of the declared affine triad transport
+      (earned by N3)
+    status: unearned
+    evidence: null
+    earned_by: null
+  - id: L3
+    proposition: >-
+      The balance-law identification (linear + angular momentum with couple
+      stress and microinertia) is an exact consequence of the averaged action
+      (earned by N4)
+    status: unearned
+    evidence: null
+    earned_by: null
+  - id: L4
+    proposition: >-
+      Symbolic two-branch dispersion fixes the production IVP observable
+      (earned by N5)
+    status: unearned
+    evidence: null
+    earned_by: null
+  - id: L5
+    proposition: >-
+      EPS existence input is imported from in-hand verified sources and the
+      separate periodic Beltrami regression verifies the steady-Euler identity
+      without standing in for a localized vortex tube (earned by N7)
+    status: unearned
+    evidence: null
+    earned_by: null
+source_inventory:
+  - source: >-
+      Enciso & Peralta-Salas, "Existence of knotted vortex tubes in steady
+      Euler flows" (arXiv:1210.6271, 2012)
+    access: in-hand proposals/P251-cosserat-from-vortex-euler/sources/1210.6271.pdf (md5 6349631cfdfe0d71a4673340f1056f29)
+    extracted: >-
+      Main theorem: steady Euler flows on bounded/periodic domains containing
+      vortex tubes of arbitrary knotted topology with prescribed flux, stable
+      under perturbation (statements re-locatable in the sidecar text); used
+      ONLY as the declared existence layer of the persistence premise (N7).
+  - source: >-
+      Enciso & Peralta-Salas, "Knots and links in steady solutions of the
+      Euler equation" (arXiv:1003.3122; Ann. Math. 175 (2012))
+    access: in-hand proposals/P251-cosserat-from-vortex-euler/sources/1003.3122.pdf (md5 a179105fd823baecc71b10b37cab5a3f)
+    extracted: >-
+      For any (possibly infinitely many) linked/knotted curves there is a
+      steady Euler solution with vortex lines of those knot/link types
+      (re-locatable in sidecar text); declared existence layer for knotted
+      vortex LINES (N7 premise context).
+  - source: >-
+      Enciso, Peralta-Salas & Torres de Lizaur, "Knotted structures in
+      high-energy Beltrami fields on the torus and the sphere"
+      (arXiv:1505.01605, 2015)
+    access: in-hand proposals/P251-cosserat-from-vortex-euler/sources/1505.01605.pdf (md5 af8e5f917bd5dc1f52642426f6de48f1)
+    extracted: >-
+      High-energy Beltrami eigenfields on torus/sphere contain vortex lines/
+      tubes of every knot/link type; supplies the explicit eigenfamily used by
+      the N7 realized example (Chandrasekhar-Kendall-type modes).
+  - source: >-
+      Rudge, "A micropolar continuum model of diffusion creep"
+      (arXiv:2103.14458, 2021)
+    access: in-hand proposals/P251-cosserat-from-vortex-euler/sources/2103.14458.pdf (md5 b17eb18a88112f5ade137804a657e473)
+    extracted: >-
+      In-hand statement of the linear micropolar system: velocity +
+      microrotation-rate fields, relative microrotation measure, couple
+      stress, moment tractions (sections re-locatable in sidecar text); the
+      structural target-form cross-check for N4 identification (primary
+      target: Comparsi intake 2026-09-03); also the methodology
+      precedent (micropolar continuum from discrete rotational DOF). No
+      formula imported as truth - the target equations are re-derived here.
+  - source: >-
+      Tekinalp, Bhosale, Cui, Chan & Gazzola, "Soft, slender and active
+      structures in fluids: embedding Cosserat rods in vortex methods"
+      (arXiv:2401.09506, 2024)
+    access: >-
+      in-hand locally (~/sources/cosserat-euler/2401.09506.pdf, md5
+      08ba02c27846ec110d9c1a21bf5381cc); txt committed; PDF not committed
+      (37 MB context-only)
+    extracted: >-
+      Context only: rod-vortex coupling methods; no claim imports from it.
+  - source: >-
+      MIT 2.25 Advanced Fluid Dynamics Section 9 (vorticity and circulation)
+    access: open https://web.mit.edu/2.25/www/225_sect_9.html (verified 2026-09-03)
+    extracted: >-
+      Circulation and Biot-Savart (9.2), Kelvin theorem (9.3), vortex lines
+      move with the fluid (9.4a); declared classical mechanics input
+      (P242 precedent).
+  - source: >-
+      Eringen, "Linear theory of micropolar elasticity", J. Math. Mech. 15(6)
+      (1966) 909-923; Cosserat & Cosserat, Theorie des corps deformables (1909)
+    access: paywalled / historical - cited for provenance, NOT load-bearing
+    extracted: >-
+      Nothing imported; the target equations are carried by in-hand
+      2103.14458 and re-derived by this campaign.
+  - source: >-
+      F. Comparsi (@Splinterrone), issue #198 intake comment 2026-09-03
+      (github.com/vantasnerdan/substrate-framework/issues/198#issuecomment-5526924549)
+    access: open GitHub comment (captured verbatim in issue thread)
+    extracted: >-
+      Authoritative target form: Eq (1) rho u_ddot - (lambda+2mu) grad div u
+      + (mu+alpha) rot rot u - 2 alpha rot Phi = 0; Eq (2) J_i Phi_ddot -
+      (beta+2gamma) grad div Phi + (gamma+epsilon_c) rot rot Phi - 2 alpha
+      rot u + 4 alpha Phi = 0. Micro-decomposition v = V_macro + Phi x r +
+      v', omega = 2 Phi + omega'; RVE averages; J_i = <rho_0 r_i^2>.
+      Premises asserted, not derived (nonsymmetric stress, couple stress,
+      2alpha/4alpha coupling) - deriving them from Biot-Savart self-energy
+      is precisely this campaign's job. Secondary-LLM-output triage per
+      P242 precedent: not load-bearing for any exact claim; its premises
+      are absorbed as explicitly declared hypotheses; the target equations
+      are identification comparators for N4, frozen 2026-09-03 before
+      attempts.
+invariants:
+  - no edits to accepted claims, campaigns, generated docs, or migration queues
+  - constant-density incompressible Euler is the sole microscopic dynamics
+  - every emergent Cosserat statement is conditional on explicitly declared ensemble premises; no hidden fitted constant; bending/twist moduli and microinertia are derived from the Biot-Savart self-energy, never postulated
+  - material frame indifference and isotropy of the coarse-grained energy; SO(3) frame covariance of triad transport
+  - the structure-free limit removes the spin coordinate and recovers the divergence-free linearized-Euler displacement sector; ratios of spin stiffness to microinertia may remain finite as L_v -> 0 and are not physical modes at L_v = 0
+  - exact claims use SymPy oracles; numeric claims use scipy with declared refinement and mutation probes; the incompressible branch and compressible branch are never mixed
+  - EPS theorems are imported as declared existence input from in-hand verified sources; this campaign does not reprove or weaken them
+allowed_imports:
+  - sympy/numpy/scipy stack in .venv
+  - MIT 2.25 Section 9 classical statements (Kelvin theorem, Biot-Savart field, frozen-line transport) as declared classical mechanics
+  - EPS existence theorems (1210.6271, 1003.3122, 1505.01605) as declared existence input for the N7 premise layer only
+  - src/substrate_framework/homogenization.py sphere moments and coefficient-matching pattern (conditional unpromoted infrastructure, P242 provenance)
+  - src/substrate_framework/numerics.py and verification.py (CheckLedger, IVP evidence) shared machinery
+candidates:
+  - id: A
+    description: >-
+      Bishop-triad affine transport: rotational DOF live on segment centerline
+      frames (bend from centerline curvature, twist from Bishop-frame phase);
+      microrotation = frame rotation field; moduli from N2 via affine
+      transport of curved/twisted segments
+  - id: B
+    description: >-
+      Core-polarization patch: rotational DOF live in the tube cross-section
+      (rotation of the vorticity-polarization profile inside the core);
+      microrotation = polarization rotation; torsion stiffness from
+      cross-section profile distortion energy under the same Biot-Savart
+      functional
+uniqueness_evidence: null
+selection_criteria:
+  - framework invariant compatibility (Euler microdynamics, Kelvin frozen-in, frame indifference)
+  - assumption and parameter economy (no postulated modulus; fewer declared premises)
+  - correct limits and cross-sector composition (fluid limit Euler; structure-free C-ELS Navier-Cauchy; rigid rotation classical spin)
+  - symmetry and dimensional consistency of every effective coefficient
+  - implementability with claim-appropriate oracles
+claims_proposed:
+  - C-CST-001
+  - C-CST-002
+  - C-CST-003
+  - C-CST-004
+  - C-CST-005
+  - C-CST-006
+  - C-CST-007
+comparators_blinded_until: >-
+  no empirical comparator is used: every claim is exact-conditional or
+  simulation-against-declared-model. The structural target form (linear
+  micropolar system) is identified from in-hand 2103.14458 BEFORE attempts;
+  the blinding point is the structural freeze of the moduli derivations
+  (N3/N4 contracts), after which no numerical value may alter any candidate
+  or criterion.
+route_frontier:
+  active_obligation: N2
+  considered:
+    - A (Bishop-triad affine transport)
+    - B (core-polarization patch)
+    - ergodic no-topology closure (contrast side, feeds N6)
+  tried:
+    - "N1 frame-transport kinematics: attempts 0001 (symbol-identity defect), 0002 (brute-simplification explosion), 0003 composed route ESTABLISHED (verify_cst001.py 12/12, exit 0); N2 block B1 straight-tube energy derived two-route: E0/L = rho G^2/(4pi) ln(R/a) + rho G^2/(16pi) top-hat (matches harvested straight_line_tension log coefficient)"
+    - "N2/B2 attempt 0004 axisymmetric twist redistribution REFUTED (negative Delta E = -rho G^2 chi'^2 a^2/(96pi)): mechanism named -- axisymmetric reduction is an inward z-flux redistribution sector, not the twist DOF; the twist energy lives in the theta-dependent polarization sector; next route 0005 = coaxial-helix bundle kernel (declared long-wave regime), both moduli expected log-running in the declared window"
+    - "N2/B2 attempt 0008: exact inside lambda-piece (+pi rho Om^2 eta^2 a^4 k^2/72) and exact sum at fixed sheet displacement = NEGATIVE (-73 pi rho Om^2 eta^2 a^4 k^2/576) -- mechanism named: kinetic energy is not the wave energy on a rotating background (Krein signature); C_tw not claimable from the fixed-eta isolated tube; licensed routes = canonical wave-action receipt or constrained-ensemble definition (couple modulus likely an N3 ensemble quantity)"
+    - "N2/B3 attempt 0009 bend channel: exterior gradient-energy identity int x[K1'^2+(1+1/x^2)K1^2]dx = -x0 K1 K1' machine-verified; outer m=1 energy (rho G^2 xi^2/4pi)[(ka)^-2 - 1/2 + O((ka)^2 log)]; B(k) log structure + Euler-constant bookkeeping exact; c_inner assembly owed (must use corrected interior dynamics per 0010)"
+    - "N2 attempt 0010 DEFECT CASCADE FOUND AND CORRECTED: 0006-0008 momentum solution dropped the basis-rotation term in (v0.grad)v' (Coriolis 2*Om not Om; D_tile = 4Om^2-wt^2 not wt^2-Om^2); corrected interior Poincare lam^2 = k^2(4Om^2-wt^2)/(w wt) (mu^2 = 3k^2 on branch); corrected dispersion omega = Om(m-1) - Om(ka)^2/12 + O((ka)^4) established THREE-route (3D elimination, pure-2D contour-dynamics, numeric transcendental root with F~4e-29); 0006 omega = m Om branch REFUTED (violates frozen-vorticity tangential condition, residual 2 Om eta); Kirchhoff probe corrected: pattern speed Om/2 = zeta/4 = epsilon->0 Kirchhoff rate (0006's Om/4 failed); 0008 soft-sign/Krein finding RECLASSIFIED as defective-input artifact; C_tw extraction unblocked on corrected fields (0011)"
+    - "N2 attempt 0011 VIRIAL CLOSURE + C_tw = 0: k->0 sector Delta V_static = T_max = pi rho Om^2 a^2 eta^2/2, M_eff(0) = pi rho a^2 (virial exact); finite-k dynamic mode energy T_max(k) k-INDEPENDENT (Bessel-exact, 10+ digits over k = 0.001..0.15) => M_eff(k) = pi rho a^2 (1-(ka)^2/12)^-2, stiffness K = M_eff wt^2 = pi rho a^2 Om^2 k-independent, SINGLE-TUBE C_tw = 0 exactly at O(k^2); sheet-only static config slope -1/3 incomplete (bulk tilt 2 Om i k xi cancels it in the mode config); rod-level couple modulus = ensemble quantity (N3 kernel); verifier mutations m1-m5 enumerated"
+    - "N2 attempt 0012 RECEIPT + m=1 DIAGNOSIS: canonical action A = (1/2)Im int rho xi*.vprime dV, E_canon = -wt A; m=2 channel: xi = (r eta/a)(r_hat + I th_hat), A = pi rho Om a^2 eta^2/2, E_canon = +pi rho Om^2 a^2 eta^2/2 = T_max (receipt-grade confirmation of virial closure; C_tw = 0 REINSTATED for m=2 - the second-order mean-flow sector v2_0 vanishes for quadrupole polarization: source-free exterior + traceless interior); m=1: the v2 sector is REQUIRED (translation-invariance test fails without it) and the truncated 3-residual BC system does NOT close at finite k (F_min finite at both LIA and 0.35k scales) - missing construction named: axial sheet-strength sector of the full helical matching; c_inner blocked on it; route 0013 = full helical matching + action-based modulus; verifier mutation m6 added"
+    - "N2 attempt 0013 m=1 BRANCH STRUCTURE CORRECTED: full-range residual scans show both consistency conditions share ONE global minimum at omega = 0.0003522958 (k=1e-3), linear in k: omega = sqrt(2)/4 * Om (ka) + O((ka)^2) with residuals -> 0 (5e-4 at k=0.01, 2.2e-6 at k=0.001) [NUMERIC_EVIDENCE, Coriolis-inertial branch of the corrected 2Om system, wt -> -Om family]; the textbook LIA k^2 ln branch is NOT a zero of the current 4-condition set (F ~ 7e-3 at LIA scale, not a local minimum) - named missing construction: the O(k eta) tilt correction of the frozen-vorticity sheet-strength transport (enters at leading O(k^2 ln) for m=1, higher order for m=2, which is why the m=2 channel closed exactly); route 0014 = tilt-corrected transport -> LIA branch + its constant on the action-based functional, plus classical corroboration (Kelvin/Saffman-level source); verifier mutation m7: untilted transport must FAIL to produce the k^2 ln branch"
+    - "N2 attempt 0014 POSE GAP RESOLVED BY CORRECTION: interior Poincare wavenumber rederived from source by two exact routes — kappa_int^2 = k^2 (1 - 4 Om^2/wt^2) (classical Poincare equation, reproduces plane-wave inertial dispersion); the 0008-era mu^2 = -k^2(4 Om^2 - wt^2)/(omega wt) carried 1/omega instead of 1/wt^2 [implementation defect: invisible at m=2 (omega ~ Om there), pathologized m=1 (mu -> inf as omega -> 0), manufacturing the 0012-0013 no-root diagnosis and the 0.35k quasi-branch]; 0013 sectors (1) tilt and (2) exterior impulse adjudicated EMPTY by rigorous argument; with the corrected interior the two consistency conditions are exactly proportional r1 = rho a Om r2 (verified numerically, r1 = r2 to 4 digits at every root) and the m=1 LIA branch closes: omega = -(Gamma k^2/4pi)(ln(2/(ka)) - gamma - 1/8) + o(1), log-coefficient exactly 1x [NUMERIC_EVIDENCE, ASYMPTOTIC: root tracked k = 1e-2..1e-5, |r| -> 2.5e-12, c1 numeric -0.82+-0.15 vs analytic -0.702]; m=2 control closes at 4.4e-13 in the corrected system; recorded m=2 O((ka)^2) results unchanged; route verdict established as stated with the o(1) t^{3/2} remainder named. Route 0015 = frozen verifier verify_cst002.py: both m=1 helicities + m=2 channel; mandatory mutation m8: the defective 1/omega wavenumber must FAIL (it survived three probe batteries, attempts 0008-0013); classical corroboration of c1(Rankine) from a Kelvin/Saffman-level source"
+    - "N2 attempt 0015 FROZEN: verify_cst002.py ALL 29 CHECKS PASS (exit 0) with 5-mutation battery (M1 defective wavenumber, M2 single-Omega, M3 flipped strength, M4 wrong Doppler, M5 growing harmonic — all rejected). Verifier caught three further defects in-run: (1) interior species = J_m(lam r), lam^2 = k^2(4Om^2-wt^2)/wt^2 (I-species not incompressibility-consistent — symbolic structure check), (2) m=1 constant c1 = 1/2 - gamma (sympy-exact truncation, supersedes manual -1/8), (3) m=2 coefficient DOUBLED: omega = Om(m-1) - Om(ka)^2/6 (species-dependent via (lam a)^4 terms entering through (lam a)^-2 amplitude denominators; supersedes recorded -1/12; Kirchhoff k^0 limit and static virial unaffected; O(k^2) C_tw receipt flagged for N3 recomputation). Route verdict: established as stated for the C-CST-002 branch structure. Owed: classical corroboration (c1, m=2 coefficient); C_tw recomputation; N3"
+    - "N2 attempt 0016 CLASSICAL CORROBORATION (Kelvin 1880 via MWR 149 2021 review Eq. 96, source archived+md5): m=2 coefficient CONFIRMED EXACTLY — Kelvin (96) own roots give c = -1/6 at three decades; m=1 SHARP SPLIT: Kelvin two-condition pose gives c1 = 1/4 - gamma vs campaign four-condition pose (frozen sheet strength) 1/2 - gamma, K96-residual at campaign root = constant +0.25 = exactly the tangential-condition content; evidence_scope REPRESENTATION_SCOPED on the matching pose. Route 0017 = direct numerical linearized-Euler eigen-solve on the Rankine profile as the named arbiter between 1/4 - gamma and 1/2 - gamma; feeds verify_cst002 as an additional oracle; N2 attempt 0017: pose arbitration — from-source sympy rederivation (corrected 2-Omega lab-frame components with basis-rotation terms) gives R_tang ~ k^2 Om (-2 c1 - 2 gamma + 1) -> c1 = 1/2 - gamma EXACT (sympy-verified), vindicating the 0015 verifier conventions; grid eigen-solve instruments failed twice with named mechanisms (shift-invert echo; exterior-shear continuum pollution + ka-independent artifact modes) and are VOID as evidence; m=1 pose split vs restated-(96) pinned to the frozen-strength condition at linear order, k=0 exactness as tiebreaker; evidence_scope REPRESENTATION_SCOPED (unchanged); N2 attempt 0018: canonical-energy receipt, E_can = E_kin + E_cross with E_cross = (rho/4)Int Re[v-prime dot (xi x omega_0)] (Coriolis/Arnold term): E_kin_total(0) = (pi/2)rho Om^2 eta^2 a^2 matches 0007 EXACTLY (the 0007 functional is the kinetic energy); E_can(0) = pi rho Om^2 eta^2 a^2 = 2x kinetic - Krein paradox RESOLVED with mechanism (missing cross-term now quantified, +pi/2 and positive for wt < 0); validated by two independent forms (v-prime form and Arnold/Dt form agree at k=0); dE_can/dk^2 < 0 REFRAMED: the k^2 coefficient is rotation-coupling (Krein signature), NOT C_tw - the m=2 polarization is an angle-wave and C_tw sits at O(k^4) under twist-strain normalization; action route coradial-singular (r_c = a sqrt(2Om/w)), energy route finite; 0019 = O(k^4) receipt; 0019 opened: m=2 O(k^4) dispersion coefficient c4 is a NEW pose-split arbiter observable - (96)-pose roots give c4 ~ -0.25 (k->0 extrapolation, bisection ka=0.025..0.1), campaign 4-condition pose at current scan resolution consistent with c4 = 0 but unresolved; O(k^4) E_can receipt and C_tw number pending c4-arbitration; c4-arbitration RESOLVED: campaign det_124 bracket and restated-(96) condition are algebraically DISTINCT functions (ratio not constant off-root) with IDENTICAL zero-sets on the physical branch (roots equal to 14 digits at ka = 0.025..0.3) - the m=2 poses are dynamically equivalent at ALL orders (tangential condition exactly implied in the twist channel, extending 0016); shared branch omega_m2 = Om[1 - (ka)^2/6 - 0.253 (ka)^4 + O((ka)^6)], c4 = -0.253 +- 0.015 pose-independent; 0019 remainder = O(k^4) E_can assembly under twist-strain normalization, absolute C_tw convention deferred to N4 identification; 0019 COMPLETE: parts-built sympy assembly (mode solution -> fields -> energies -> Laurent-inverted exterior), all anchors pass, exact-field numerics agree to 1e-10..1e-6; RESULT: E_can/rho = pi Om^2 eta^2 a^2 [1 + 0 + e4 k^4], e2 = 0 EXACTLY (supersedes 0018 dE/dk2 = -0.53 artifact; no k^2 term exists), e4 = -a^6(3456 c4d + 72 log(ka) - 53 - 72 log2 + 72 gamma)/2304 with log coefficient -a^6/32 matching 4-param fits; C_tw couple energy = the O((ka)^4) coefficient under dphi/dz = -k/2 strain, absolute convention fixed at N4; N4 OPENED (0021): EL of averaged action with N3 moduli yields the micropolar balance structure — div sigma = classical + 2 alpha rot Phi (skew-stress coupling), eps:sigma = +2 alpha rot u - 4 alpha Phi (action-reaction with part-1 pair), div m with c_tr/c_s/c_a wryness divergences; full component match + j identification in progress"
+    - "Review-directed attempt 0026 (post-PR199-review): inter-tube Biot-Savart crossing route BLOCKED WITH MECHANISM for the quadratic locking sector -- exact crossing energy E_int(theta) = -(rho Gamma^2/2) tan(theta) (symbolic reduction + 30-digit mpmath, attempts/0026/parts/crossing_energy.py) is PARITY-ODD (E_int(-theta) = -E_int(theta), E'' nonzero pointwise but odd), so a parity-symmetric isotropic ensemble has <E''> = 0: no quadratic |rot u - 2 Phi|² locking from crossings; objectivity itself is structural (relative geometry only). Core-polarization route SPECIFIED: candidate exact locking energy E_lock/L = (pi rho/2)(Omega_amb - Omega_self)^2 a^2 eta^2 (frozen-vorticity/Cauchy construction, two-frame sheet jump gamma' = 2(Omega_amb - Omega_self)eta), exactly relative and objective by construction; execution requires the 0027 momentum-residual-correct two-frame replay (attempt 0019 forms) before claiming."
+    - "Attempt 0028 (parts 1-2): Euler-derived frame-locking interaction CONSTRUCTED — contour-dynamics composition exact (w = m Om_o + w_Love(Om_i-Om_o); m=2 k->0 = Om_i + Om_o, both limits exact); cross-term selection rule (m=1 background x m=2 mode angular orthogonality) => E_lock/L = (pi rho/2)(Om_i-Om_o)^2 a^2 eta^2 EXACTLY relative, objective by construction (no rotation-measure truncation; review's R^TR=I cancellation inapplicable), positive stiffness pi rho a^2 eta^2; couplings split: alpha_energy = L_v pi rho a^2 <eta^2>/4 (declared polarization-intensity moment) vs alpha_gap = j (Om_i-Om_o)^2/4 (contrast-set Doppler gap w_gap = Om_i-Om_o replaces material 4 alpha/j); verify_cst003 rebuilt 30 checks PASS (M4 wrong-contrast, M5 conflation, M6 retired tension-alpha all rejected); N4 balance form alpha-generic (verify_cst004 8/8 unchanged); N5 symbolic model checks hold (17/17) with physical gap evaluation corrected to contrast-set; N6/N7 unaffected (N6 strengthens: zero polarization intensity => no locking sector)."
+  failure_generated:
+    - >-
+      Completion attempts 0030/0032/0034 construct actual angle actions:
+      prescribed-flow elliptic Euler patch, closed six-point-vortex
+      collective action, and a covariant field map with conditional
+      local-induction gradients. The latter supplies one consistent alpha/j
+      pair and standard transverse dispersion through k^2, with molecule
+      density L_cell=L_v/6. The exact smooth-Euler campaign remains active:
+      finite-core spectral continuation, joint translation/affine-cage action
+      and stationary EPS compatibility are distinct remaining constructions.
+    - >-
+      Completion attempt 0029: original verify_cst002 velocity forms satisfy
+      Cartesian-derived Euler exactly; attempt 0019's alternative residual
+      reverses Coriolis signs. The prior review's reliance on 0019 is
+      corrected. Rate-quadratic alpha_E in 0028 has inertia units and cannot
+      enter the angle potential in N4. Finite-k contrast-only composition
+      omits ambient Coriolis; the planar k=0 identity remains valid.
+    - >-
+      Completion attempt 0031: symbolic differentiation of K1 supplies the
+      omitted 1/4 derivative term; the corrected m=1 dispersion constant is
+      1/4-EulerGamma, while m=2 retains -1/6. Signed Bessel roots at 40/60
+      digits corroborate these expansions. Earlier contrary constants in
+      the append-only tried ledger are superseded by this exact receipt.
+    - >-
+      Completion attempt 0033: mutual kinetic energy uses t1.dot(t2)/R,
+      not the velocity-circulation/helicity kernel used in 0026. Correct
+      geometry and even angular parity reopen the inter-tube energy route;
+      finite opposite-circulation segments have positive relative-tilt
+      Hessian, with closed-vorticity completion still required.
+    - >-
+      Review correction 0025: exact relative Green-Lagrange line stretch is
+      independent of a free frame rotation. The N3 alpha term therefore needs
+      an Euler-derived frame-locking or core-polarization interaction; replacing
+      the exact relative deformation by h-skew(Phi) at first order does not
+      supply that interaction.
+    - >-
+      Review correction 0025: a zero first moment under phase decorrelation
+      does not erase quadratic fluctuation energy. N6 is scoped to the coherent
+      signed-response closure, and a positive no-Cosserat result must keep that
+      closure explicit.
+  remaining: [N2, N3, N4, N5, N6, N7]
+execution_state: active
+objective_state: active
+exhaustion_certificate:
+  historical_routes: []
+  external_routes: []
+  failure_generated_routes: []
+  equivalence_partition: []
+  adversarial_generation_artifact: null
+  adversarial_reviewer: null
+  adversarial_reviewer_role: null
+  infinite_class_coverage: []
+  route_verdicts: []
+  routes_remaining: null
+  review: null
+status: draft
