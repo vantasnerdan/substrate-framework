@@ -1,0 +1,50 @@
+attempt: '0004'
+reviewer: particle-balance-review
+reviewer_independence:
+  authored_reviewed_source: false
+  authored_reviewed_module: false
+  authored_reviewed_tests: false
+target_kind: fixed_theorem
+active_obligation: P1
+advances: [P1, P3-initial-input]
+route: R3 exact material balances and bounded initial pressure interaction
+route_verdict: established
+evidence_scope: EXACT_SMOOTH_LOCAL_EULER_AND_INITIAL_RESPONSE
+strongest_positive_result: >-
+  The centered material moment, spin, pressure and kinetic-energy balances are
+  exact for smooth constant-density Euler material tags. Smooth compact radial
+  swirl data have the exact exterior pressure quadrupole, give a separated
+  harmonic-ball tag nonzero exact centroid and trace-free shape acceleration
+  despite identical local initial velocity observations, and yield the exact
+  anisotropic formula (13) for two disjoint swirls at initial time.
+maximum_verdict: symbolic_verified
+compatibility: native
+review_status: audited
+epistemic_status: proposed
+blocking_findings: []
+minimum_correction: none
+does_not_license:
+  - invariant finite-dimensional or moment-only closure
+  - persistent carrier or restoring stability
+  - all-time two-object force or reciprocal Newtonian pair law
+  - Coulomb law, charge sign, or particle mass
+  - electron or neutrino identification
+  - global three-dimensional Euler regularity
+parent_inheritance: none
+remaining_dependency: >-
+  Construct an actual P1/R3 projected or retained-ambient dynamics and test its
+  closure or controlled limit on an actual carrier; for P3, establish
+  persistence and a controlled same-family interaction law on a stable R1
+  carrier. P2 and P4-P7 remain independently open.
+evidence:
+  review: proposals/P253-euler-particle-mechanisms/attempts/0004/review.md
+  source: proposals/P253-euler-particle-mechanisms/attempts/0001/material-balances.md
+  module: src/substrate_framework/euler_material_balance.py
+  tests: tests/test_euler_material_balance.py
+  validation_receipt: proposals/P253-euler-particle-mechanisms/attempts/0001/validation-receipt.md
+  recorded_test_exit: 0
+reviewed_hashes:
+  material_balances: 9171a613dc7626fa59360d73cda709e17f445bba31422c3ceee12125898dc5dc
+  module: 5ded2b458ccf46d7f32fe87618b96f414477c9069e4115aad342ffec7a84876b
+  tests: cb2ba5ba2c2a78ace4b3c75bd1891f03e807626b1f1c9500fd8a9cde118b0a51
+  receipt: 8db82442d246837ff2fd9c805ab736aa23b9f5854f81d4b8279540d0a6eace23

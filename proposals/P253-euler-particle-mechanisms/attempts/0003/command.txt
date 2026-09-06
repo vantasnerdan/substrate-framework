@@ -1,0 +1,7 @@
+PYTHONPATH=src .venv/bin/python proposals/P253-euler-particle-mechanisms/attempts/0003/verify_euler_skyrme_bridge.py > proposals/P253-euler-particle-mechanisms/attempts/0003/stdout.txt 2> proposals/P253-euler-particle-mechanisms/attempts/0003/stderr.txt
+# exit 127: project-local interpreter absent; diagnostic preserved above.
+PYTHONPATH=src python3 proposals/P253-euler-particle-mechanisms/attempts/0003/verify_euler_skyrme_bridge.py > proposals/P253-euler-particle-mechanisms/attempts/0003/stdout.python3.txt 2> proposals/P253-euler-particle-mechanisms/attempts/0003/stderr.python3.txt
+# exit 1: verifier bug diagnosed; deltaS was incorrectly assumed nonzero.
+PYTHONPATH=src python3 proposals/P253-euler-particle-mechanisms/attempts/0003/verify_euler_skyrme_bridge.py > proposals/P253-euler-particle-mechanisms/attempts/0003/stdout.corrected.txt 2> proposals/P253-euler-particle-mechanisms/attempts/0003/stderr.corrected.txt
+# exit 0: exact checks passed; final replay adds explicit source domain/measure output only.
+PYTHONPATH=src python3 proposals/P253-euler-particle-mechanisms/attempts/0003/verify_euler_skyrme_bridge.py > proposals/P253-euler-particle-mechanisms/attempts/0003/stdout.final.txt 2> proposals/P253-euler-particle-mechanisms/attempts/0003/stderr.final.txt

@@ -59,3 +59,13 @@ The parent remains active through route failures. Execute repair, representation
 
 ## Debt and Canonicalization
 No new accepted claim exists. All P0–P7 remain frontier. A classical vortex, a conditional API, an electron alone or a formal Dirac equation does not satisfy the parent.
+
+## Checkpoint after the first substantive routes
+
+The first exact material/pressure theorem is independently established in0004: full nonlinear centered balances, an exact compact-swirl pressure quadrupole, identical-local-state/different-acceleration counterexample and exact initial two-swirl interaction. The additive material API and existing observation consumer pass9 focused tests. This supplies exact P1/P3 evidence, not persistent particles or an autonomous finite-dimensional closure.
+
+The0002 R1 audit establishes source-scoped single-ring persistence and separate interacting constructions; direct theorem stitching fails because profiles and stability problems differ. The0006 continuation now compares quantitative coercivity with qualitative conserved-deficit control on two copies of the actual Cao family.
+
+The0003 R2 audit preserves the exact stationary Euler–Skyrme/topological dictionary, exposes the direct unsteady velocity-flux failure, and executes a vorticity-label repair on a local nonisolated exact Euler flow. The0005 continuation derives the full vorticity-orbit/Hodge action and tests physical quantum descent. Forty-one symbolic checks are algebra evidence, not a quantum or PDE existence theorem.
+
+The0007 particle-facing calculus derives the compact-vorticity impulse/dipole cross-energy and tests no-swirl spin/physical orientation and quiescent Euler propagation. Three exposing symbolic tests pass; independent0008 review is active. Swirl/internal state and structured energetic background are explicit candidate continuations. No electron or neutrino comparator was fitted, no claim is promoted, and the full P0–P7 objective remains active.

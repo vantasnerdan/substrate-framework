@@ -1,0 +1,61 @@
+attempt: P253/0003
+owner: particle-foundations
+scope:
+  obligations: [P0, P4]
+  route: R2
+base_release: v0.183.0
+base_commit: b6fc902a0942d07996f12a81028fbd3f7c909a43
+source:
+  title: Steady Euler flows and the Faddeev-Skyrme model with mass term
+  arxiv: 1405.3469v3
+  url: https://arxiv.org/abs/1405.3469
+  pdf_sha256: fdc453ac26b0568e5b1344940c537aa547829f8542d3a0da015ff226aa1a81bf
+route_verdict: blocked_with_missing_construction
+evidence_scope: EXACT_STATIONARY_AND_TOPOLOGICAL_TRANSFER_WITH_DYNAMICAL_ACTION_GAP
+strongest_positive_result:
+  - The source map B=phi^*omega=i_u nu is an exact global field-to-steady-Euler map under the declared regularity and target hypotheses, with only a local converse absent S-integrability.
+  - The quartic static density equals the unit-density Euler kinetic density, and global based maps carry the exact Hopf/flux-helicity relation H_flux=16Q in the source normalization.
+  - The based Hopf-field configuration components have fundamental group Z2 and odd Hopf charge has a noncontractible 2pi rotation loop, permitting a conditional Finkelstein-Rubinstein sign quantization.
+  - The failure-derived vorticity pullback is executed exactly by u=(exp(y-ct),c,0), alpha=exp(y-ct), beta=x-t*exp(y-ct), for which D_t alpha=D_t beta=0 and d_alpha wedge d_beta=d_u_flat; this is a genuine unsteady Euler representation but is nonlocalized.
+exact_transfer_test:
+  - A time-indexed family of instantaneous sigma2 critical fields that also obeys isolated time-dependent Euler has partial_t_u=0.
+  - If phi is materially advected by the same u generated through phi^*omega=i_u_nu, frozen-in transport also gives partial_t_u=0.
+  - Substitution into the Euler kinetic action produces a spatial sigma2 functional with no phi time derivative and does not reproduce Euler-Poincare constrained variations.
+missing_construction:
+  - An action-preserving dynamical map from actual Euler histories to a field/collective state space.
+  - A full ambient velocity/pressure state or proved invariant elimination reproducing attempt 0001's finite-energy quadrupolar pressure-tail acceleration; local carrier moments do not close it.
+  - Descent of the nontrivial Z2 rotation/exchange loop through target relabeling to one actual stable localized Euler carrier and its two-body sector.
+  - A derived or explicitly licensed quantum line bundle, Hilbert structure, and physical action normalization.
+  - A derived finite invariant speed and collective relativistic dispersion/current on the same carrier.
+scale_ledger:
+  energy_scale: rho*U^2*L^3
+  time_scale: L/U
+  circulation_scale: U*L
+  action_scale: rho*U*L^4
+  unresolved_dimensionless_ratio: rho*U*L^4/hbar
+accepted_api_scope_checked:
+  - C-ACT-001
+  - C-DIM-001
+  - C-DIM-002
+  - C-DIM-003
+  - C-TOP-001
+  - C-REP-002
+  - C-SKY-002
+  - C-WLN-001
+  - C-WLN-002
+  - C-WLN-003
+  - C-LOR-001
+  - C-LOR-002
+does_not_license:
+  - electron or neutrino identification
+  - physical fermionic statistics
+  - electric or weak charge/current
+  - Lorentz invariance or an invariant signal speed
+  - absolute hbar, mass, or length selection
+failure_classification: representation_and_action
+failure_generated_route:
+  id: R2b
+  name: Euler vorticity coadjoint-orbit quantization
+  next_dependency: LP2 same-family stable localized Euler carrier, followed by pullback of the Euler KKS form, its period/integrality ledger, physical exchange-loop descent, and collective dispersion.
+parent_state: active
+exhaustion_claimed: false
