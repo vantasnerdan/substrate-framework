@@ -15,3 +15,12 @@ No source states the finite-window theorem below. Its Sturm--Liouville
 normalization, coupling estimate, resonance count, core-jet recurrence, and
 Hamiltonian block estimate are derived in this attempt. No production
 numerical values or empirical comparators are used.
+
+Here `finite window` means the finite spectral coupling window near one
+bending/Kelvin crossing, not a temporal Duhamel interval.  The exact Cao cells
+and the `m=0` sequence asymptotics are source-scoped positive results.  Neither
+Cao nor Gallay--Smets supplies the missing orientation-preserving
+Hanzawa/Piola common-domain chart, two-sided physical graph equivalence,
+all-`m` compact-DA contour resolvent, exact density/Fourier KKS normalization,
+or twice differentiated moving-boundary full Green/Leray graph jet.  Those
+claims are conditional in the corrected attempt and are active in `0052`.

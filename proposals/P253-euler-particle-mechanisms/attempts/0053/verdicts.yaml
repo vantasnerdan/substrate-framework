@@ -1,0 +1,194 @@
+schema_version: 1
+attempt: P253/0053
+reviewer: particle-balance-review
+review_kind: fixed_claim_non_author_operator_review
+independence:
+  non_author: true
+  non_implementer: true
+  excluded_attempts:
+    - P253/0052
+  excluded_claims:
+    - nonlinear branch or stability
+    - P2 or P4 completion
+    - particle or quantum conclusions
+
+activation:
+  readme_sha256: eb216dc45df9b98f4e9935bdaf96b780c43506281458d6d9efc1cb2ad5777de3
+  schema_exit: 0
+  schema_command_sha256: 5469bc1a4e263e5211cc04b02d369ba48f98d4da7a5d5cd5a40c24476426451f
+  schema_stdout_sha256: d7a6df70d40116eccbc5ef95222bcd39f56874086284528ed1e49c9c2cd6676f
+  schema_stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  schema_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+
+target_0048:
+  review_status: established_after_one_bounded_scope_correction
+  evidence_scope: EXACT_CAO_CELLS_AND_FINITE_SPECTRAL_WINDOW_SEQUENCE_SCALING
+  strongest_supported_statement: >-
+    The exact rescaled Cao equation yields the stated odd first and even
+    second local profile-cell recurrences. For each fixed l at the thin-ring
+    endpoint, physical energy normalization gives curvature coupling
+    O(delta^2/n), corrected crossing index
+    l*L_Phi/(pi*c_l*delta*log(1/delta)) with absolute remainder
+    O(1/(delta*log(1/delta)^2)+1), coupling-to-spacing and dyadic relative
+    bad-measure ratios O(1/log(1/delta)), and an axisymmetric Schur tail
+    O(delta^3*log(1/delta)).
+
+checks:
+  corrected_resonance_and_window:
+    route_verdict: established
+    quantifiers: fixed integer l at least 2 and sufficiently small delta
+    crossing_index: >-
+      l*L_Phi/(pi*c_l*delta*L_delta)
+      + O(1/(delta*L_delta^2)+1)
+    coupling: O(delta^2/n)
+    local_spacing_ratio: O(1/L_delta)
+    relative_bad_measure: O(1/L_delta)
+    boundary: spectral coupling window, not a temporal propagation interval
+
+  fixed_domain_chart_and_graph_equivalence:
+    route_verdict: blocked
+    missing_construction: >-
+      Construct an orientation-preserving Hanzawa map and Piola pullback for
+      velocity, pressure, vorticity, and accessible tangents, including axis,
+      interface, collar, exterior, gauge and decay conditions, and prove
+      two-sided physical energy/graph-norm equivalence.
+    conditional_name: HJ2
+
+  full_complement_resolvent:
+    route_verdict: blocked
+    positive_subclaim:
+      route_verdict: established
+      evidence_scope: AXISYMMETRIC_SEQUENCE_SCHUR_ESTIMATE
+      schur_tail: O(delta^3*L_delta)
+      homological_sequence_norm_squared: O(delta/L_delta)
+    missing_construction: >-
+      Prove a uniform graph resolvent across all azimuthal sectors, the axis,
+      collar and interface traces, whole-space exterior pressure, neutral
+      modes, adjoint domain, kernel and cokernel on the claimed contour.
+
+  kks_energy_generator_normalization:
+    route_verdict: blocked
+    positive_subclaim:
+      route_verdict: established
+      statement: >-
+        With A e=-i sigma e, the column mode has positive constrained-energy
+        signature and KKS magnitude 1/abs(sigma); the same-Krein sign is
+        fixed.
+    missing_construction: >-
+      Carry density, Jacobian, axial and azimuthal Fourier-volume, and
+      real-to-complex factors through both bending and Kelvin coordinates in
+      one physical canonical convention.
+
+  cao_cells_and_global_graph_jet:
+    route_verdict: blocked
+    positive_subclaim:
+      route_verdict: established
+      evidence_scope: EXACT_LOCAL_PROFILE_CELL_CALCULUS
+      statement: >-
+        The first cell V is odd, the second cell Z is even, and the centered
+        fixed-circulation local q^2 log(q) homogeneous cell vanishes by the
+        limiting nondegeneracy.
+    missing_construction: >-
+      Twice differentiate the complete pulled-back moving-boundary
+      whole-space Green/Leray operator, including pressure, Piola factors,
+      interface, collar and exterior terms, with an o(delta^2) graph
+      remainder.
+
+  fixed_order_residual:
+    route_verdict: established
+    evidence_scope: CONDITIONAL_FORMAL_FIXED_ORDER_RESIDUAL
+    hypotheses:
+      - HJ2 fixed-domain graph construction
+      - full complement inverse
+      - physical Riesz projection and KKS normalization
+      - fixed N at most p minus 2
+      - N*l*abs(Omega_pattern) less than Omega(a)/2
+    statement: >-
+      Equations (52)-(53) are a formal residual of order O(abs(a)^(N+1));
+      they are not coefficients of a constructed Euler branch.
+    critical_harmonic_scale: Theta(1/(delta^2*L_delta))
+    does_not_license:
+      - approximate Euler evolution on a time interval
+      - convergent nonlinear branch
+      - all-time decoupling or stability
+
+  conditional_finite_matrix:
+    route_verdict: established
+    evidence_scope: CONDITIONAL_SAME_KREIN_AVOIDED_CROSSING
+    hypotheses:
+      - exact physical KKS normalization
+      - HJ2 graph jet
+      - full graph-Riesz realization
+    statement: >-
+      Two positive-signature oscillators with the displayed Hermitian
+      coupling have an elliptic avoided crossing rather than the
+      opposite-Krein Hamiltonian-Hopf discriminant.
+
+sources:
+  cao_2206_10165_v2:
+    pdf_sha256: 6d90be6b7aab2ea7d92dba843b06e72e319cad50b0a2e39cfe5589cf6aa528ca
+    applicability: exact local rescaled equation, cells, and limiting nondegeneracy
+    does_not_supply: moving-boundary whole-space Euler graph jet or Riesz family
+  gallay_smets_1805_05064_v3:
+    pdf_sha256: 081e93124ad0a8e04a51842848eb220180f904f6c3eec27e9b985a9a636a5797
+    applicability: column equations, axisymmetric energy, and Biot-Savart estimates
+    does_not_supply: compact-DA all-sector graph-contour resolvent
+  fischer_schopohl_cond_mat_0008215_v3:
+    pdf_sha256: 0b69b8cae5e758d860dcf8188260bfd79839555d173797d0a74ee487f30e5977
+    applicability: filament-spectrum comparator only
+
+verifier:
+  source_sha256: 3762c1d3c238f3e7d5e02fe7a2d2700547cdb0b41da5d9d95863e6a1514221cf
+  final_stdout_sha256: 0edb7b7a3e962cb34a3a72dbec5e96b9bb4531555bd9aab80701125bd28f24f4
+  final_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+  recorded_result: fifteen exact symbolic predicates passed
+  evidence_role: algebraic regression only
+  reviewer_rerun: false
+
+supplier_code:
+  api_sha256: f2a2c58235a0f2c8ee358123b383b8e919d22ad095bc0f70b67142c7fdbd5214
+  tests_sha256: f7ae11d6a2bfc292675740e43357d9140257f5a206a582fafb903d03042956cc
+  evidence_role: unchanged previously reviewed algebraic supplier
+  reviewer_rerun: false
+
+correction:
+  status: passed
+  receipt_sha256: 8c4437042bfe37270673bc295653b931ab700bf6be988f185eb4d3c4b2a49d55
+  all_requested_repairs_supported: true
+  derivation_post_sha256: 381c59e5debe1886847acd296c795192605576cdf55afc721688d2aea9783b25
+  result_post_sha256: e6b09d0f5e01d80c03aeba2987f0406695ca83f7abf546524d16e837d1cf894b
+  source_audit_post_sha256: 4db69ddded6fd2d84e749271e2f13efb293c00645a8c8efe311cb35820971b03
+  validation_post_sha256: 9ac3c21c514e4024a48f57b0fcc30599f64316aec037008357a87b15ab6490b5
+  api_tests_or_verifier_changed: false
+  oracle_rerun: false
+  stale_claim_scan: passed
+  additional_correction_needed: false
+
+overall:
+  route_verdict: established
+  review_status: established_after_one_bounded_scope_correction
+  evidence_scope: EXACT_CAO_CELLS_AND_FINITE_SPECTRAL_WINDOW_SEQUENCE_SCALING
+  stronger_operator_objective:
+    route_verdict: blocked
+    missing_construction: >-
+      Supply HJ2, exact physical KKS normalization, and the full
+      all-sector/collar/interface/exterior-pressure complement; then prove
+      critical-layer transparency or enlarge the streamline-vorticity range
+      before seeking convergence.
+  next_dependency: >-
+    Construct and review the orientation-preserving Hanzawa/Piola fixed-domain
+    Euler graph with the complete Green/Leray jet, close its full complement
+    contour and physical KKS normalization, and only then revisit the
+    finite-matrix projection and nonlinear critical-harmonic range.
+
+does_not_license:
+  - a graph-domain Riesz family in 0048
+  - exact physical KKS normalization
+  - a temporal finite-window propagation theorem
+  - a constructed approximate or exact Euler branch
+  - nonlinear stability
+  - P2 or P4 completion
+  - particle or quantum claims
+  - evidence imported from active P253/0052
+  - parent campaign completion
+exhaustion_claimed: false

@@ -15,25 +15,57 @@ import numpy as np
 
 
 def canonical_doublet(
-    coordinates: Sequence[float], *, kks_scale: float
+    coordinates: Sequence[float],
+    *,
+    kks_scale: float,
+    frequencies: Sequence[float],
 ) -> np.ndarray:
-    """Return ``z_a=sqrt(B/2)(q_a+i p_a)`` for two canonical pairs."""
+    """Return a doublet from supplied diagonal energy-action coordinates.
+
+    For each positive mode, use ``Q=sqrt(nu)q`` and ``P=p/sqrt(nu)``
+    before forming ``z=sqrt(B/2)(Q+iP)``.  A nondiagonal positive Hessian
+    must first be put into physical Williamson coordinates by the caller.
+    """
 
     if kks_scale <= 0:
         raise ValueError("kks_scale must be strictly positive")
     values = np.asarray(coordinates, dtype=float)
     if values.shape != (4,) or not np.all(np.isfinite(values)):
         raise ValueError("coordinates must be four finite values (q1,p1,q2,p2)")
+    mode_frequencies = np.asarray(frequencies, dtype=float)
+    if (
+        mode_frequencies.shape != (2,)
+        or not np.all(np.isfinite(mode_frequencies))
+        or np.any(mode_frequencies <= 0)
+    ):
+        raise ValueError("frequencies must be two finite positive values")
     q1, p1, q2, p2 = values
     factor = sqrt(kks_scale / 2.0)
-    return factor * np.array([q1 + 1j * p1, q2 + 1j * p2])
+    nu1, nu2 = mode_frequencies
+    return factor * np.array(
+        [sqrt(nu1) * q1 + 1j * p1 / sqrt(nu1), sqrt(nu2) * q2 + 1j * p2 / sqrt(nu2)]
+    )
 
 
 def total_action(z: Sequence[complex]) -> float:
-    """Return ``I=(|z1|^2+|z2|^2)/2``."""
+    """Return the physical common-phase action ``J=sum_a |z_a|^2``."""
 
     vector = _doublet(z)
-    return float(np.vdot(vector, vector).real / 2.0)
+    return float(np.vdot(vector, vector).real)
+
+
+def diagonal_mode_energy(z: Sequence[complex], frequencies: Sequence[float]) -> float:
+    """Return ``H=sum_a nu_a*|z_a|^2`` for diagonal positive modes."""
+
+    vector = _doublet(z)
+    mode_frequencies = np.asarray(frequencies, dtype=float)
+    if (
+        mode_frequencies.shape != (2,)
+        or not np.all(np.isfinite(mode_frequencies))
+        or np.any(mode_frequencies <= 0)
+    ):
+        raise ValueError("frequencies must be two finite positive values")
+    return float(np.dot(mode_frequencies, np.abs(vector) ** 2))
 
 
 def stokes_vector(z: Sequence[complex]) -> np.ndarray:
@@ -48,19 +80,19 @@ def stokes_vector(z: Sequence[complex]) -> np.ndarray:
 
 
 def hopf_identity_residual(z: Sequence[complex]) -> float:
-    """Return ``|S|^2-I^2``, which vanishes for every supplied doublet."""
+    """Return ``|S|^2-(J/2)^2``, which vanishes for every doublet."""
 
     stokes = stokes_vector(z)
     action = total_action(z)
-    return float(np.dot(stokes, stokes) - action**2)
+    return float(np.dot(stokes, stokes) - (action / 2.0) ** 2)
 
 
 def reduced_kks_area(action: float) -> float:
-    """Return the area ``4*pi*I`` of the reduced radius-I KKS sphere."""
+    """Return ``2*pi*J`` for reduction at physical total action ``J``."""
 
     if action <= 0:
         raise ValueError("action must be strictly positive")
-    return 4.0 * pi * action
+    return 2.0 * pi * action
 
 
 def apply_mode_mixing(z: Sequence[complex], mixing: Sequence[Sequence[complex]]) -> np.ndarray:

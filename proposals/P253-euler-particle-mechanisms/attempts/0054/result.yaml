@@ -1,0 +1,88 @@
+attempt: P253/0054
+owner: particle-foundations
+active_obligation: actual_cao_common_domain_HJ2
+activation_schema_exit: 0
+evidence_scope: EXACT_ANALYTIC_GRAPH_JET_AND_CONTOUR_RELATIVE_RESOLVENT
+fixed_parameters:
+  carrier: polynomial-profile Cao smooth vortex ring
+  profile_exponent: integer p>=6
+  toroidal_mode: ell>=2
+  thinness: delta=a_delta/R_delta
+  logarithm: L=log(1/delta)
+preserved_0052_boundary:
+  crossing_index: >-
+    n*=A/(c*delta*L)-A*d/(c^2*delta*L^2)+(B/A-beta0)
+    +o(1/(delta*L^2))+O(1)
+  coupling: O(delta^3*L)
+  spacing: Theta(delta^3*L^2)
+  coupling_to_spacing: O(1/L)
+route_verdicts:
+  carrier_free_boundary_jet:
+    verdict: established
+    positive_result: >-
+      The exact rescaled Cao equation and source Green kernel define a C3
+      augmented map in independent variables (q,tau), tau=q^2*log(q).
+      Lane-Emden nondegeneracy, evenness, centering, circulation, and the
+      nonzero Hopf/far-log rows make its derivative invertible. The resulting
+      polyhomogeneous C2 branch has C3-alpha remainder O(q^3*abs(log(q))) and
+      is identified with the actual Cao family by source uniqueness.
+  common_DA_domain:
+    verdict: established
+    positive_result: >-
+      Relative Hodge decomposition on the fixed solid torus retains the
+      harmonic circulation row. The common d^p boundary factor and a weighted
+      Hardy estimate identify the gauge-fixed stabilizer quotients and their
+      closed DA energy ranges uniformly. Cross-delta maps are operator
+      identifications; only same-carrier displacements are coadjoint motions.
+  moving_boundary_hodge_leray_jet:
+    verdict: established
+    positive_result: >-
+      The exact Piola-conjugated Biot-Savart kernel cancels its volume
+      Jacobian. Its first two shape derivatives contain h(y)-h(yprime), retain
+      order minus one, and include every deformation tensor. The exact
+      toroidal distance and matched angular split retain k_delta and give an
+      order-minus-one remainder O(delta^3*L). Metric Leray inverse derivatives
+      retain all Jacobian, cofactor, divergence, gradient, and pressure terms.
+  interface_collar_exterior:
+    verdict: established
+    positive_result: >-
+      For p>=6 two parameter derivatives of the positive-part vorticity and
+      DA tangents have vanishing interface traces and create no vortex sheet.
+      The variable-Jacobian collar map is orientation preserving and identity
+      outside a compact set; the decaying whole-space Hodge operator supplies
+      the unique exterior velocity and pressure closure.
+  modewise_graph_bounds:
+    verdict: established
+    positive_result: >-
+      Three commutators with the fixed Kelvin/streamline elliptic weight give
+      summable off-diagonal order-minus-one bounds. Eliminating nonzero
+      streamline sectors makes the m=0 Schur correction order minus two. At
+      n*=Theta(1/(delta*L)), Hodge and Schur errors are O(delta) relative to
+      the contour gap and the full local graph remainder is O(1/L).
+  norm_resolvent_fallback:
+    verdict: established
+    positive_result: >-
+      The exact remainder times the 0052 approximate resolvent is O(1/L)+o(1)
+      on the full contour. A Neumann-resolvent identity gives graph resolvent
+      difference O(1/(L*r_delta)) and Riesz projection difference O(1/L),
+      preserving real rank and KKS nondegeneracy.
+strongest_exact_result: >-
+  For the actual centered p>=6 Cao subfamily, the fixed action-angle/Hanzawa
+  chart, full DA Hodge quotient, and whole-space Green/Leray closure have a
+  common graph domain and a polyhomogeneous second jet whose remainder is
+  contour-small at the diverging Kelvin index. This discharges the HJ2
+  condition isolated in 0052 and transfers its full-sector Riesz family to the
+  exact Cao generator, conditional only on the finite-core spectral inputs
+  already declared by 0052.
+remaining_dependency: >-
+  Use the exact graph-bounded KKS Riesz cluster in a nonlinear
+  Lyapunov-Schmidt or reversible Lyapunov-center construction. Prove the
+  nonlinear Euler range/transparency estimates and convergence on the physical
+  same-carrier DA leaf; fixed-order formal residuals remain insufficient.
+does_not_license:
+  - an exact nonlinear rotating-wave or relative-periodic Cao branch
+  - nonlinear stability of such a branch
+  - geometric quantization, quantum measurement, electron, or neutrino claims
+  - replacement of the finite-core operator by a universal filament matrix
+parent_state: active
+exhaustion_claimed: false

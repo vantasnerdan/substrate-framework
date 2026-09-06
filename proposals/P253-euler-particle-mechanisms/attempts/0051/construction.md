@@ -7,9 +7,13 @@ canonical pairs `(q_a,p_a)`, `a=1,2`, with identical KKS normalization
 
     Omega = B sum_a dq_a wedge dp_a,       B>0.          (1)
 
-Define
+The symplectic form alone does not canonically select a complex coordinate:
+`q_a->c_a q_a`, `p_a->p_a/c_a` preserves (1).  The positive Hessian and its
+compatible complex structure must also be supplied.  In a diagonal physical
+normal form with positive frequencies `nu_a`, put
 
-    z_a=sqrt(B/2)(q_a+i p_a),
+    Q_a=sqrt(nu_a) q_a,  P_a=p_a/sqrt(nu_a),
+    z_a=sqrt(B/2)(Q_a+i P_a),
     {z_a,conj(z_b)}=-i delta_ab,            (2)
 
 using the physical bracket
@@ -18,20 +22,26 @@ using the physical bracket
 
 Put
 
-    I=(|z_1|^2+|z_2|^2)/2,
+    J=|z_1|^2+|z_2|^2,
     S_i=z^dagger sigma_i z/2.               (4)
 
 Direct differentiation gives
 
     {S_i,S_j}=epsilon_ijk S_k,
-    {I,S_i}=0,
-    S_x^2+S_y^2+S_z^2=I^2.                 (5)
+    {J,S_i}=0,
+    S_x^2+S_y^2+S_z^2=(J/2)^2.             (5)
 
-For `I=I_0>0`, the level set is `S3`.  The common phase
+For `J=J_0>0`, the level set is `S3`.  The common phase
 `z -> exp(i alpha)z` is a free `U(1)` action, and its quotient is
-`CP1=S2`.  The reduced KKS sphere has radius `I_0` in (5) and area
+`CP1=S2`.  Here `J` is the physical common-phase moment map and total
+oscillator action.  For the diagonal positive Hamiltonian,
 
-    integral_S2 Omega_red=4 pi I_0.         (6)
+    H=sum_a nu_a |z_a|^2=sum_a nu_a J_a,   J_a=H_a/nu_a, (5a)
+
+and `{z_a,J}=-i z_a`, so its flow has period `2 pi` up to orientation.
+The reduced sphere has Stokes radius `J_0/2` and KKS area
+
+    integral_S2 Omega_red=2 pi J_0.         (6)
 
 Thus the Schwinger representation supplies the compact `su(2)` algebra that
 one noncompact plane lacked in `0046`.  It also exposes the load-bearing
@@ -42,13 +52,29 @@ If the autonomous quadratic Hamiltonian is
 
     H_2=omega_1 |z_1|^2+omega_2 |z_2|^2,   (7)
 
-then `I` is conserved even when the frequencies differ.  Exact degeneracy
-`omega_1=omega_2` makes (7) proportional to `I` and leaves every Stokes vector
+then `J` is conserved even when the frequencies differ.  Exact degeneracy
+`omega_1=omega_2` makes (7) proportional to `J` and leaves every Stokes vector
 fixed under free evolution.  A Hermitian mixing Hamiltonian
-`H_h=z^dagger h z` produces `zdot=-i h z`, preserves `I`, and rotates `S`.
+`H_h=z^dagger h z` produces `zdot=-i h z`, preserves `J`, and rotates `S`.
 But each off-diagonal entry of `h` is a physical cross-mode interaction which
 must be derived from Euler.  Writing down `U in U(2)` is only a coordinate or
 control prescription until that interaction and its complement are built.
+
+There is a sharper dynamical test.  Let `J` be the positive-sector compatible
+complex structure and `V` a real Hamiltonian deformation compressed to the
+four-real-dimensional cluster.  Its complex-linear and antilinear parts are
+
+    V_C=(V-J V J)/2,       V_A=(V+J V J)/2,           (8)
+
+so `[V_C,J]=0` and `{V_A,J}=0`.  The `V_C` part is number-preserving; `V_A`
+mixes `z` with `conj(z)` and produces squeezing/action drift.  A physical
+`CP1` analyzer therefore needs `V_A=0` exactly or a bound on its integrated
+effect over the actual gate time.  It also needs two number-preserving
+traceless compressed deformations whose Pauli vectors are noncollinear; one
+avoided-crossing matrix supplies only one rotation axis.  The full evolution
+must bound both `Q U(T)P` leakage and total-action drift.  Varying a carrier
+parameter by hand is external control unless an analyzer field produces that
+variation autonomously.
 
 ## 2. Route A: the reviewed single-carrier inputs do not yet contain a doublet
 
@@ -120,10 +146,10 @@ invariant projection, physical `U(2)` mixing, and complement estimate.
 
 Suppose a future carrier earns (1)--(6).  Geometric quantization would require
 
-    (1/(2 pi hbar)) integral Omega_red=2 I_0/hbar=N in Z. (8)
+    (1/(2 pi hbar)) integral Omega_red=J_0/hbar=N in Z.   (9)
 
 This is the same integral class exposed in `0043/0047`.  Euler similarity
-rescales the physical KKS action continuously, so neither `I_0` nor `hbar` is
+rescales the physical KKS action continuously, so neither `J_0` nor `hbar` is
 selected by (8).  The `N=1` Hilbert space has dimension two only after the
 action class and quantization rule are supplied.  The classical Stokes
 functions do not become measurement operators merely because their Poisson
@@ -152,9 +178,10 @@ either one oscillator counted twice, a prepared finite-window response, or
 two disconnected carriers without coherent mixing.
 
 The next positive construction is therefore specific: on the persistent
-carrier sought by P2, exhibit two independent positive Riesz modes; derive
-their physical KKS normalization and exact or controlled frequency matrix;
-compute an Euler interaction that spans two noncommuting Stokes rotations;
-and bound the complement in the same energy/graph norm.  Only then should the
-detector, integral action class, exchange path, and finite-speed band be
-joined.  This route remains active and is not a P4 no-go.
+carrier sought by P2, exhibit two independent positive Riesz modes; use their
+positive Hessian to construct the physical compatible complex coordinates;
+derive the KKS-normalized frequency matrix; compute two number-preserving
+Euler interactions that span noncommuting Stokes rotations; and bound
+squeezing, action drift and complement leakage over the gate time.  Only then
+should the detector, integral action class, exchange path, and finite-speed
+band be joined.  This route remains active and is not a P4 no-go.

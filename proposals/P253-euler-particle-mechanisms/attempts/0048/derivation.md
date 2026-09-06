@@ -73,15 +73,19 @@ The positive wave equation behind (5) is
     H_k partial_t^2 u+k^2 Phi u=0.                         (11)
 
 Consequently every nonzero axisymmetric pair has positive constrained-energy
-signature. If `e_n^+` denotes its positive-frequency energy-unit vector, the
-Hamiltonian identity gives
+signature. Choose the positive temporal-frequency convention
+`A e_n^+=-i sigma_n e_n^+`. For an energy-unit complex vector, the Hamiltonian
+identity gives
 
     Omega_KKS(e_n^+,conjugate(e_n^+))=i/sigma_n            (12)
 
-up to the fixed real-to-complex factor used for both translation and Kelvin
-coordinates. Hence `sqrt(|sigma_n|)e_n^E` is the corresponding unit KKS
-coordinate. Equation (12), rather than radial `L2` normalization, is used in
-the enlarged block.
+in one common complex Fourier convention. The sign reverses for the
+`+i sigma_n` generator convention. Because this attempt does not explicitly
+carry the physical density, Fourier-volume, and real-to-complex factors
+through both bending and Kelvin coordinates, the unconditional conclusion is
+only the magnitude `|Omega_KKS|=1/|sigma_n|` and the positive Krein sign.
+`sqrt(|sigma_n|)e_n^E` gives the magnitude scaling; exact physical KKS
+normalization remains a named construction.
 
 ## 3. Discreteness, Weyl scale, and spacing
 
@@ -157,13 +161,15 @@ required order at the edge. The boundary term is zero for `p>=2`. This proves
 (22) for the complete source-defined first block, while (20) is the explicit
 constant for its noncancelling `W/2` piece.
 
-In KKS-unit coordinates the Hessian coefficient is obtained from (12):
+At the magnitude-scaling level suggested by (12), the Hessian coefficient is
 
     h_n=sqrt(tau_l sigma_n) b_n^E,                          (23)
 
 where `b_n^E` is the energy-metric off-diagonal coefficient. This conversion
 is important: KKS normalization changes individual matrix entries, but the
-Schur product and the spectral window are invariant.
+Schur product and the spectral window are invariant. Equation (23) is
+conditional until density, Jacobian, Fourier-volume, and real/complex factors
+are carried through in one canonical `dq wedge dp` convention.
 
 ## 5. Actual second Cao core cell and the logarithmic split
 
@@ -212,10 +218,12 @@ circulation, so Cao's limiting nondegeneracy forces
     Z_log=0.                                               (30)
 
 Thus the **profile** second core jet has no logarithmic cell. The actual
-whole-space velocity/operator does have a `q^2 log q` term: it comes from the
-small-`rho` Green kernel and is the local-induction term whose translation
-compression was independently evaluated in 0044. Splitting the exact Green
-integral into `|x-y|<r_0` and its regular complement gives
+whole-space velocity/operator is expected to have a `q^2 log q` term from the
+small-`rho` Green kernel and local induction. Introduce the additional
+hypothesis `HJ2`: an orientation-preserving Hanzawa chart with all Piola
+Jacobian/cofactor factors places the physical operator on one fixed domain
+with two-sided energy/graph equivalence, and differentiating the full
+field-dependent Leray/Green operator gives
 
     A_delta=A_col(k_delta)+delta C_1^curv
        +delta^2 log(delta) C_(2,log)+delta^2 C_2+R_delta,
@@ -227,14 +235,14 @@ the exact longitudinal wave number `k_delta=l delta`; this prevents the
 Here `C_(2,log)` is the universal local-induction
 operator, while `C_2` is the sum of: the cell (28), the finite part of the
 exact Green integral (2.2), the second toroidal connection, and the exact
-second Leray expression of 0044. Calderon--Zygmund estimates on the fixed
-core chart, the `C^2` Nemytskii map `w -> (w_+)^p`, and the exterior harmonic
-trace estimate give the graph remainder in (31). For `p=2` the cell remains a
-valid weak second derivative, but this argument earns only a fractional graph
-remainder; 0048 therefore selects any fixed Cao member with integer `p>=3`.
-
-This constructs the source-defined second jet as explicit invertible cell
-problems. It does not replace it by the universal filament matrix.
+second Leray expression of 0044. Calderon--Zygmund estimates on a fixed core
+chart, the `C^2` Nemytskii map `w -> (w_+)^p`, and an exterior trace estimate
+motivate (31), but they do not construct its Hanzawa/Piola derivative,
+interface domain, or full Green/Leray graph estimate. Therefore (31) is
+conditional on `HJ2`. Unconditionally, (27)--(30) construct the local profile
+cells and show that Cao itself supplies only its stated
+`O(epsilon^2 |log epsilon|)` remainder. The universal filament matrix cannot
+replace the missing graph jet.
 
 ## 6. Resonant scale and the finite window
 
@@ -245,8 +253,8 @@ In core time units the positive bending frequency is
 
 Equations (16) and (32) place a crossing at
 
-    n_*(delta)=L_Phi/(pi c_l delta L_delta)+O(L_delta^-1).
-                                                                  (33)
+    n_*(delta)=l L_Phi/(pi c_l delta L_delta)
+       +O(1/(delta L_delta^2)+1).                          (33)
 
 The full first curvature map from the translation pair into the energy-unit
 `m=0` sector has norm `O(delta |k|)=O(delta^2)` and coefficients
@@ -262,9 +270,9 @@ so
 
     |g_n|/(sigma_n-sigma_(n+1))=O(1/L_delta).              (36)
 
-The second core jet does not spoil this comparison. After Liouville
-conjugation, its diagonal `m=0` part is an order-zero coefficient operator on
-the finite interval. The two-term WKB diagonal matrix element has the form
+Conditional on `HJ2`, the second core jet does not spoil this comparison.
+After Liouville conjugation, its diagonal `m=0` part is an order-zero
+coefficient operator on the finite interval. The two-term WKB diagonal matrix element has the form
 `beta_infinity+beta_1/n+O(n^-2)`; its constant part is absorbed into the exact
 renormalized `sigma_n(delta)`, and successive finite-part shifts are
 `O(delta^2 n^-2)`. At (33) this is `O(delta^4L_delta^2)`, one factor `delta`
@@ -272,8 +280,8 @@ below (35). Off-diagonal entries obey the corresponding Fourier-coefficient
 decay supplied by the `p>=3` cell regularity. Thus (35)--(36) apply to the
 source-defined renormalized levels, not only the unperturbed column list.
 
-This is the decisive finite-`delta` result: for sufficiently small `delta`,
-the frozen four-coupling window contains at most one positive-frequency
+This is the decisive finite spectral-window scaling result: for sufficiently
+small `delta`, the four-coupling window contains at most one positive-frequency
 `m=0` mode and its real/Hamiltonian conjugate. Therefore `P_delta` has real
 symplectic rank at most four: one bending oscillator and one Kelvin
 oscillator. Its complexification contains the associated two positive- and
@@ -314,10 +322,11 @@ thin-ring endpoint. On a good `delta`, the enlarged window is empty; on a bad
 one, retaining its unique conjugate Kelvin pair produces the finite enlarged
 block. This is a measure alternative, not deletion of exact resonances.
 
-## 8. Enlarged Hamiltonian block and exact resonances
+## 8. Conditional enlarged Hamiltonian block and exact resonances
 
 Let `z_0` denote a positive bending coordinate and `z_n` the selected
-axisymmetric coordinate, each normalized by (3) and (12). Up to the real
+axisymmetric coordinate, with the exact physical normalization still to be
+constructed as stated after (12). Up to the real
 conjugate block, the quadratic Hamiltonian is
 
     H_2=tau_l |z_0|^2+sigma_n |z_n|^2
@@ -339,20 +348,26 @@ and remain real and nonzero. The Euler generator has the simple imaginary
 pairs `+/- i nu_+`, `+/- i nu_-`, except at the codimension-one equality
 where the exact finite `C_2` entry must be used to split an accidental double
 root. Opposite Krein signs would replace the plus sign under the square root
-by a minus sign; (11) rules out that mechanism for this `m=0` channel.
+by a minus sign; (11) rules out that mechanism for this `m=0` channel. This
+finite-matrix conclusion is conditional on `HJ2`, the exact normalization,
+and the full-complement realization below.
 
-Define `P_delta` using the KKS duals of the translation pair and every mode in
+Define `P_delta` formally using the KKS duals of the translation pair and every mode in
 the four-coupling window. On the complement, (17), (31), and (37) give the
-weighted graph resolvent after the diagonal `m=0` finite correction is
-absorbed into `sigma_n(delta)`. Analytic Fredholm reconstruction then yields
+weighted `m=0` Schur estimate after the diagonal finite correction is
+absorbed into `sigma_n(delta)`. It does not give the all-`m`, axis, collar,
+interface, exterior-pressure graph resolvent. If that full complement
+estimate and the fixed-domain `HJ2` chart are supplied, analytic Fredholm
+reconstruction would yield
 
     Pi_delta=(2 pi i)^-1 integral_Gamma
                    (z-A_delta)^-1 dz                      (44)
 
-as a finite-rank projection bounded on both `X_E` and `D_G(A_delta)`. Its
-range consists of compact-core DA vorticity and the exact global exterior
-velocity. The finite part of its matrix is defined by (28), (31), and the
-Feshbach formula, not by (2).
+as a finite-rank projection bounded on both `X_E` and `D_G(A_delta)`. No such
+projection is established in 0048. Gallay--Smets' off-imaginary-axis column
+resolvent on its enstrophy realization does not supply this compact-DA graph
+contour. The conditional finite part would be defined by (28), (31), and the
+Feshbach formula, not by the filament comparator.
 
 The alternative infinite-block route is also controlled: (34) is in weighted
 `ell^2_1`, and (37) is precisely the one-step tame Schur estimate. Repeating
@@ -366,15 +381,15 @@ For `n<n_*`, each summand is `O(delta^2)`; for `n>n_*`, it is
 `O((n L_delta)^-2)`. Thus the transformation is
 `O(sqrt(delta/L_delta))` in the physical energy sequence norm. It converges
 on the scale relevant to (32) unless a finite resonant pair is retained.
-Route B is not needed to establish the finite-window spectral family, but it
-supplies the same complement when parameters are followed through successive
-window exchanges.
+This sequence estimate is an exact asymptotic input to Route B. It does not
+supply the missing full Euler complement when parameters cross successive
+windows.
 
 ## 9. Nonlinear branch bridge and its remaining construction
 
-For every good `delta`, and for every resonant `delta` where (43) is simple,
-(44) supplies the exact finite-dimensional kernel/range splitting for the
-relative-equilibrium map
+Conditional on `HJ2`, the full complement inverse, and the physical Riesz
+projection, (44) would supply a finite-dimensional kernel/range splitting for
+the relative-equilibrium map
 
     F(V,c,Omega)=P_L[(V dot grad)V]
                   -c partial_z V-Omega[R,V].               (46)
@@ -394,15 +409,16 @@ gives
 
 for the fixed `delta` chart. Smooth the divergence-free displacement, apply a
 collar Bogovskii correction, and subtract the finite impulse/center
-components. With the fixed spectral projector, replace this smoother by
+components. With such a fixed spectral projector, one would replace this smoother by
 
     S_N^Pi=Pi_delta+(1-Pi_delta)S_N(1-Pi_delta).            (48)
 
-Finite-rank commutators have the required tame bounds, and exterior velocity
+Finite-rank commutators would have the required tame bounds, and exterior velocity
 is reconstructed after smoothing by whole-space Biot--Savart. For a chosen
 integer `p` larger than the finite Sobolev index used in the iteration, the
 free-boundary coefficient `(w_+)^p` has the required finite differentiability.
-Thus (47)--(48) construct the local tame chart and compatible smoother.
+Thus (47)--(48) specify a conditional local tame chart and compatible
+smoother; 0048 does not construct the required fixed-domain projector.
 
 The actual obstruction appears in the inverse at the nonlinear harmonics.
 In straight-core action--angle variables, a cross-sectional mode `m` in the
@@ -429,9 +445,9 @@ keep that carrier fixed), and choose `delta_N` so that
 
     N l |Omega_pat|<Omega(a)/2.                            (51)
 
-Then every `m!=0`, `|j|<=N` transport divisor is bounded away from zero;
-the `m=0` equations use the enlarged Riesz/Feshbach inverse above. Induction
-on the quadratic equation (46) constructs source-defined coefficients
+Then every `m!=0`, `|j|<=N` transport divisor is bounded away from zero.
+Conditional on the missing `m=0` Riesz/Feshbach inverse and fixed-domain graph
+chart, formal induction on the quadratic equation (46) gives coefficients
 
     V(a)=V_0+sum_(r=1)^N a^r V_r,
     c(a)=c_0+sum_(r=1)^N a^r c_r,
@@ -443,11 +459,10 @@ and
     ||F(V(a),c(a),Omega(a))||_(s-N)
        <=C_(N,delta)|a|^(N+1).                             (53)
 
-Thus 0048 earns a relative-equilibrium expansion through every preassigned
-finite order permitted by the one fixed carrier, and an arbitrary
-preassigned order can be earned by choosing the polynomial exponent once
-before constructing that carrier. This is not an all-orders statement for a
-single finite `p`. For fixed `delta`, the first unavoidable critical harmonic is
+This is an approximate formal residual through a preassigned finite order,
+not a constructed Euler branch expansion. It is conditional on the missing
+operator/chart hypotheses even before convergence is considered. For fixed
+`delta`, the first unavoidable critical harmonic is
 
     j_crit=Theta((delta^2 L_delta)^-1),                    (54)
 
@@ -464,32 +479,30 @@ function and solve the resulting infinite range conditions by a tame
 Lyapunov--Schmidt scheme. A generic Nash--Moser inverse cannot cross (50)
 without one of these mechanisms.
 
-Thus 0048 closes the finite-`delta` enlarged spectral mechanism and its exact
-linear bridge, including true resonances, and constructs the nonlinear branch
-through every preassigned carrier-regularity-compatible order under (51). It
-does **not** yet establish the
-exact nonlinear Cao rotating branch: the next executable dependency is the
-critical-layer transparency/range construction following (54), followed by
-convergence and physical period/KKS-action reconstruction. No quantum or
+Thus 0048 closes the local cell recurrences and finite spectral-window scaling
+algebra, including the same-Krein sign of its conditional finite matrix. It
+does not establish the fixed-domain graph Riesz family or an Euler branch
+expansion. The next executable dependencies are the `HJ2` chart/graph jet,
+the all-sector complement and exact normalization, followed by the critical-
+layer transparency/range construction and convergence. No quantum or
 particle inference follows.
 
 ## 10. Route verdicts
 
-- Route A is **established** at the linear level: the coupling decay, finite
-  window, asymptotically full-measure alternative, enlarged positive
-  Hamiltonian block, graph-domain Riesz reconstruction, and its fixed-`delta`
-  quantifiers are explicit.
-- Route B is **established as a tame linear continuation**: the infinite tail
-  Schur sum is one weight smoothing and smaller than the bending scale by
-  `O(delta)`. It is not claimed as a completed nonlinear KAM theorem.
-- Route C is **established for the physical axisymmetric resonance**: equal
-  positive Krein signatures turn a crossing into an elliptic avoided crossing,
-  not a Hamiltonian--Hopf quartet.
+- Route A is **established at finite spectral-window scaling scope**: the
+  coupling decay, corrected resonance scale, asymptotically full-measure
+  algebra and one-window count are explicit. The graph-domain Riesz
+  reconstruction is blocked on `HJ2` and the full complement.
+- Route B is **established as a sequence-level Schur estimate**: the infinite
+  `m=0` tail is one weight smoothing and smaller than the bending scale by
+  `O(delta)`. It is not a full Euler complement or nonlinear KAM theorem.
+- Route C is **conditional at finite-matrix scope**: equal positive Krein
+  signatures give an elliptic avoided crossing once the exact normalization,
+  graph jet, and full Riesz realization are supplied.
 - The nonlinear solid-torus bridge is **blocked by the named construction
-  following (54)**. Equations (47)--(53) establish the tame chart and every
-  carrier-regularity-compatible fixed-order branch; only the fixed-`delta`
-  critical-layer range condition and convergence remain. Formal CR
-  consequences are not called an exact branch.
+  following (54)**, as well as the prior graph/chart construction. Equations
+  (47)--(53) are a conditional formal residual calculation, not a constructed
+  fixed-order Euler branch.
 
 The parent P253/LP2/P4 objective remains active. The 0044 fixed-rank
 refutation and the limited scope of the universal filament matrix are

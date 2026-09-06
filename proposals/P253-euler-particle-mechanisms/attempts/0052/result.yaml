@@ -1,0 +1,98 @@
+attempt: P253/0052
+owner: particle-foundations
+active_obligation: fixed_domain_full_sector_cao_graph_riesz
+activation_schema_exit: 0
+evidence_scope: EXACT_SCALING_DOMAIN_NORMALIZATION_AND_CONDITIONAL_GRAPH_RIESZ
+preserved_0048_result:
+  - physical translation-to-Kelvin coupling O(delta^2/n)
+  - one-mode finite interaction window at high index
+  - coupling-to-local-spacing ratio O(1/log(1/delta))
+corrections:
+  resonant_index: >-
+    n*=A/(c*delta*L)-A*d/(c^2*delta*L^2)+(B/A-beta0)
+    +o(1/(delta*L^2))+O(1), hence the concise remainder is
+    O(1/(delta*L^2)+1), not O(L^-1).
+  physical_clock: >-
+    With Gamma=2*pi*F(a) and Omega_a=F(a)/a^2, the dimensionless
+    leading bending coefficient is c_l=l*sqrt(l^2-1)/2.
+  kks_sign: >-
+    Under i_X Omega=dH, L(q,qbar)=i*nu*Omega(q,qbar). An
+    energy-unit positive-frequency vector has Omega(q,qbar)=-i/nu,
+    and multiplication by sqrt(nu) gives KKS pairing -i.
+route_verdicts:
+  fixed_domain_action_angle_piola:
+    verdict: established
+    positive_result: >-
+      Weighted enclosed area and normalized streamline time give an exact
+      action-angle chart with dA=dI wedge d beta and transport
+      omega_delta(I)*partial_beta. Factoring the unequal cross-delta physical
+      volume and applying a normalized Hanzawa-Moser correction gives an
+      orientation-preserving constant-relative-Jacobian Piola conjugacy with
+      full determinant factors, preserves DA curl support, and retains
+      whole-space Biot-Savart velocity. Only displacements within one fixed
+      carrier are asserted volume preserving and coadjoint.
+      Logarithmic rescaling of the centerline displacement block gives uniform
+      physical energy equivalence on the fixed space.
+    boundary: >-
+      Uniform generator graph equivalence requires HJ2.
+  exact_normalization:
+    verdict: established
+    positive_result: >-
+      Density, toroidal Fourier measure, physical core clock, energy norm,
+      KKS sign, generator eigenvalue, and energy-to-KKS mode scaling are
+      connected by exact identities and the canonical oscillator oracle.
+  all_sector_complement:
+    verdict: established_for_limiting_polyhomogeneous_operator
+    positive_result: >-
+      The exact streamline chart makes local transport/shear block diagonal in
+      m. Large abs(m) follows from the explicit triangular inverse, finite
+      m=1 from the translation-removed ground-state gap, abs(m)>=2 from the
+      positive form increment, and m=0 from an all-sector Grushin operator.
+      Nonzero-m elimination is order -2 on the m=0 effective block, preserving
+      the A*delta/n principal law and the delta^3*L^2 window spacing.
+    exact_cao_transfer: conditional_on_HJ2
+  direct_global_euler_graph_jet:
+    verdict: blocked_by_named_construction
+    positive_result: >-
+      The exact elliptic-integral Green expansion is evaluated through its
+      rho_G*log(rho_G) and finite rho_G coefficients, and the exact first and
+      second Cao local profile cells are displayed. The missing objects are
+      therefore estimates, not undetermined coefficients.
+    missing_construction: >-
+      Prove uniform graph equivalence and modewise D_* to X_* remainder bounds
+      for the twice-differentiated moving-boundary whole-space
+      Biot-Savart/Leray generator. The published elliptic
+      O(epsilon^2*abs(log epsilon)) remainder does not control the resonant
+      index tending to infinity.
+  full_physical_graph_riesz:
+    verdict: established_conditional_on_HJ2
+    positive_result: >-
+      HJ2 plus the all-sector Grushin bounds gives a complement inverse of
+      scale O(1/(delta^3*L^2)), the enlarged physical Feshbach matrix, and a
+      finite-rank graph-bounded KKS-nondegenerate Riesz projection reconstructed
+      to compact DA vorticity and exact exterior velocity.
+  nonlinear_fixed_order_residual:
+    verdict: established_as_approximation_only
+    positive_result: >-
+      The finite-order coefficients may yield a residual O(a^(N+1)) at the
+      earned regularity. They are not an exact solution or branch.
+strongest_exact_result: >-
+  The correct fixed-domain representation is a weighted streamline
+  action-angle Hanzawa-Moser chart followed by a constant-Jacobian Piola map
+  and logarithmic centerline energy rescaling. It diagonalizes the full local
+  transport/shear by cross-sectional m and reduces every nonzero sector before
+  the compact m=0 Kelvin block. This constructs the full-sector limiting
+  resolvent and proves the exact Cao graph-Riesz theorem conditional on one
+  explicit modewise global-Euler graph-jet hypothesis HJ2.
+next_executable_dependency: >-
+  Prove HJ2 by differentiating the exact moving-boundary Green/Leray operator
+  in the action-angle Piola chart and deriving the modewise order-minus-one and
+  order-minus-two bounds uniformly at n*=Theta(1/(delta*log(1/delta))). If
+  strong graph differentiation fails at finite p, construct a weighted
+  norm-resolvent estimate with the same modewise rates.
+does_not_license:
+  - unconditional exact-Cao graph-Riesz theorem
+  - exact nonlinear solid-torus branch
+  - stability, quantization, electron, or neutrino interpretation
+parent_state: active
+exhaustion_claimed: false

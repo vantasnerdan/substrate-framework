@@ -78,19 +78,34 @@ and the source/complement leakage is bounded.
 
 ## Exact Schwinger--Hopf calculation
 
-For any physically earned canonical doublet, independently derive
+For any physically earned canonical doublet, first use the positive Hessian
+and its compatible complex structure to put each mode in physical
+energy-action coordinates.  KKS normalization alone is insufficient because
+`q->c q`, `p->p/c` preserves the symplectic form.  For a diagonal normal form
+use `Q_a=sqrt(nu_a)q_a`, `P_a=p_a/sqrt(nu_a)` with every density and unit
+factor retained.  Then independently derive
 
-    I = (|z_1|^2+|z_2|^2)/2,
+    J = |z_1|^2+|z_2|^2,
     S_i = z^dagger sigma_i z/2,
     {S_i,S_j} = epsilon_ijk S_k,
-    |S|^2 = I^2.
+    |S|^2 = (J/2)^2.
 
-Fix `I=I_0>0` and divide by the common phase only after showing that both are
+Fix `J=J_0>0` and divide by the common phase only after showing that both are
 physical invariants/gauges on the actual Euler bundle.  Record every density,
 `2*pi`, KKS, and sign factor before rescaling to the displayed convention.
 The strongest exposing checks are: unequal frequencies, a nonzero
 mode-complement block, failure of exact total-action conservation, and the
 finite-dimensional CCR trace obstruction.
+
+For a compressed real Hamiltonian perturbation `V` on the doublet, derive
+
+    V_C=(V-J V J)/2,     V_A=(V+J V J)/2.
+
+The first part commutes with the compatible complex structure and is
+number-preserving; the second anticommutes and produces squeezing/action
+drift.  A physical analyzer needs `V_A=0` or a bound over its actual gate
+time, plus two number-preserving traceless compressions with noncollinear
+Pauli vectors.  Static isolation or one avoided-crossing axis is insufficient.
 
 ## Measurement, scale, and propagation continuation
 

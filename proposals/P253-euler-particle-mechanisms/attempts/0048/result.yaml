@@ -2,81 +2,79 @@ attempt: P253/0048
 owner: particle-foundations
 active_obligation: finite_delta_enlarged_cao_kks_feshbach
 activation_schema_exit: 0
-evidence_scope: ANALYTIC_FINITE_DELTA_DA_GRAPH_KKS_AND_SOURCE_CELL
+evidence_scope: EXACT_SOURCE_CELLS_AND_FINITE_SPECTRAL_WINDOW_SCALING_WITH_CONDITIONAL_GRAPH_RIESZ
 route_verdicts:
   route_A_quantitative_nonresonance:
-    verdict: established
+    verdict: established_at_scaling_scope
     positive_result: >-
-      On the exact compact-core DA energy/graph realization, physical
-      normalization of the axisymmetric Kelvin modes gives full first-block
+      Physical energy normalization of the axisymmetric Kelvin modes gives
+      first-block magnitude coefficients
       coefficients O(k/n). The bending resonance occurs at
       n~1/(delta log(1/delta)); the curvature coupling is smaller than the
       local Kelvin spacing by O(1/log(1/delta)). Thus the four-coupling window
       contains at most one conjugate m=0 pair for small fixed delta. The bad
       subset of each dyadic delta shell has relative measure O(1/log(1/delta)).
     quantifiers: >-
-      Any fixed azimuthal l>=2 and sufficiently small exact Cao member with
-      integer profile exponent p>=3; the spectral projection may exchange one
-      internal Kelvin pair as delta varies and is not uniform rank two.
+      Any fixed azimuthal l>=2 in the declared column/toroidal asymptotic. The
+      corrected crossing remainder is O(1/(delta log(1/delta)^2)+1). A physical
+      graph spectral projection remains conditional on HJ2 and the full
+      complement estimate.
   route_B_tame_infinite_block:
-    verdict: established
+    verdict: established_as_sequence_schur_estimate
     positive_result: >-
       The complete translation-to-axisymmetric coefficient sequence is in the
       weighted square-summable class O(delta^2/n). Away from the retained
-      window its Schur tail is O(delta^3 log(1/delta)), one factor delta below
-      the bending scale. The repeated linear block elimination loses one
-      Kelvin weight and gains one delta, furnishing the tame linear
-      complement through window exchanges.
-    does_not_license: nonlinear_KAM_or_Nash_Moser_iteration
+      window its m=0 Schur tail is O(delta^3 log(1/delta)), one factor delta
+      below the bending scale. This does not furnish the all-m, axis, collar,
+      interface and exterior-pressure Euler complement through window
+      exchanges.
+    does_not_license: full_Euler_complement_or_nonlinear_iteration
   route_C_exact_resonance:
-    verdict: established
+    verdict: conditional_finite_matrix_result
     positive_result: >-
       The m=0 Kelvin oscillator has positive constrained-energy signature, as
       does the l>=2 translation bending mode. The enlarged exact-resonance
-      block is therefore positive definite for small delta and has an elliptic
-      avoided crossing, not a Hamiltonian-Hopf quartet. Its KKS-normalized
-      entries are obtained from the physical energy modes by the exact
-      sqrt(frequency) conversion.
+      finite matrix therefore has an elliptic avoided crossing rather than a
+      Hamiltonian-Hopf quartet once the physical KKS normalization, HJ2 graph
+      jet and full graph-Riesz realization are supplied. The exact physical
+      density/Fourier/real-complex normalization is not completed in 0048.
   cao_second_core_jet:
-    verdict: established
+    verdict: local_profile_cells_established_full_graph_jet_blocked
     positive_result: >-
       Differentiating the exact Cao rescaled equation gives explicit odd first
       and even second Lane-Emden cell equations. Centering and limiting
       nondegeneracy invert both cells. Any centered fixed-circulation local
       delta^2 log(delta) profile cell is an even homogeneous kernel element
-      and hence vanishes. The actual logarithm belongs to the whole-space
-      Green/local-induction operator; subtracting it leaves an o(delta^2)
-      graph remainder for integer p>=3.
+      and hence vanishes. Cao itself supplies only an
+      O(epsilon^2*abs(log(epsilon))) remainder. The moving-boundary full
+      Green/Leray o(delta^2) graph jet requires the separately named HJ2
+      construction.
   nonlinear_solid_torus_bridge:
     verdict: blocked_by_named_construction
     positive_result: >-
-      The finite-window graph Riesz family supplies the kernel, KKS crossing,
-      compact-core reconstruction, and linear complement required by the
-      relative-equilibrium problem. The whole-space Leray product estimate,
-      DA-compatible smoothing construction, and harmonic induction construct
-      the same-leaf relative equilibrium expansion through every fixed order
-      N<=p-2 satisfying N*l*|Omega_pattern|<Omega_core(a)/2. Any prescribed
-      finite N can be reached by choosing the Cao polynomial exponent once
-      before fixing the carrier; this is not an all-orders claim at finite p.
+      The elementary product estimate and divisor condition define a formal
+      residual calculation through fixed N<=p-2 when
+      N*l*|Omega_pattern|<Omega_core(a)/2. It is conditional on the missing
+      fixed-domain chart, full graph inverse, physical Riesz projection and
+      HJ2; it is not a constructed Euler branch expansion.
     missing_construction: >-
-      At fixed nonzero delta, generated harmonics eventually meet genuine
+      First construct HJ2, the fixed-domain graph equivalence, exact physical
+      KKS normalization, and the all-sector complement. At fixed nonzero delta,
+      generated harmonics eventually meet genuine
       internal critical radii m*Omega(r)=j*l*Omega_pattern at
       j=Theta(1/(delta^2 log(1/delta))). Prove that every generated numerator
       is divisible by this transport factor on the fixed Cao leaf, or enlarge
       the streamline-vorticity unknown to solve the infinite range conditions;
       then prove convergence of the formal branch.
 strongest_exact_result: >-
-  The internal m=0 accumulation does not destroy the fixed-delta bending
-  sector. Physical normalization forces its curvature coefficients to decay
-  as O(k/n), making each resonant window finite and its bad-parameter measure
-  asymptotically negligible. Exact resonances enlarge the positive KKS block
-  by at most one conjugate Kelvin pair and remain elliptic. This replaces the
-  invalid uniform rank-two reduction by a source-defined finite-delta graph
-  Riesz family. The solid-torus equations can then be solved through every
-  carrier-regularity-compatible preassigned finite order in the thin-core
-  limit; exact fixed-delta convergence encounters an internal critical-layer
-  range condition at harmonic order
-  Theta(1/(delta^2 log(1/delta))).
+  Exact Cao first/second local profile-cell recurrences and their parity are
+  established. Physical magnitude normalization gives curvature coefficients
+  O(k/n), so the finite spectral coupling window contains at most one
+  conjugate Kelvin pair, with O(1/log(1/delta)) coupling-to-spacing and
+  bad-measure ratios and an O(delta^3 log(1/delta)) m=0 Schur tail. The
+  same-Krein avoided-crossing matrix is conditional on the missing graph
+  realization and exact physical normalization. The first internal critical
+  harmonic has exact scale Theta(1/(delta^2 log(1/delta))).
 correction_to_interim_scratch: >-
   O(k/n^2) was not promoted: q=1/(4 Omega) fails the radial axis form-domain
   condition. The proved and sufficient coefficient decay is O(k/n).
@@ -86,10 +84,10 @@ preserved_boundaries:
   - passive exterior vorticity is absent but global exterior velocity remains
   - no nonlinear stability, quantization, electron, or neutrino claim follows
 next_executable_dependency: >-
-  Derive the nonlinear streamline-coordinate numerator at the first critical
-  harmonic, test exact divisibility by m*Omega-j*l*Omega_pattern on the fixed
-  Cao leaf, and, if it is not automatic, introduce the minimal permitted
-  streamline-vorticity profile variable and construct the tame infinite range
-  solver. Then converge the already constructed fixed-order expansion.
+  Construct the orientation-preserving Hanzawa/Piola fixed-domain chart with
+  uniform graph equivalence, twice differentiate the full moving-boundary
+  Green/Leray operator to prove HJ2, close every m/collar/exterior complement
+  sector and exact KKS normalization, then revisit the critical-harmonic range
+  and convergence problem.
 parent_state: active
 exhaustion_claimed: false

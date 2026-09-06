@@ -34,10 +34,12 @@ equation through `q^2` and checks both cell recurrences. It also checks:
    `j_crit=1/(delta^2 log(1/delta))`, while every fixed order remains below
    that scale as `delta->0`.
 
-The functional-analytic statements—DA support closure, Sturm--Liouville Weyl
-law, graph-domain Green-kernel expansion, KKS reconstruction, and analytic
-Fredholm projection—are proved in `derivation.md`; the script does not replace
-them with a finite sampled matrix.
+The DA support closure, Sturm--Liouville Weyl law, local Cao cell recurrences,
+and sequence-level scaling are derived in `derivation.md`; the script does not
+replace them with a finite sampled matrix. The fixed-domain Hanzawa/Piola
+graph equivalence, full Green/Leray graph jet, exact physical KKS
+normalization, all-sector complement, and analytic Fredholm projection are
+explicitly unproved constructions.
 
 ## Exposing failures
 
@@ -54,12 +56,11 @@ them with a finite sampled matrix.
 
 ## Verdict boundary
 
-The receipts license the exact local Cao second-cell recurrence and the
-finite-window scaling algebra. They support, but do not alone establish, the
-analytic graph-domain Riesz argument. The attempt establishes the linear
-finite-`delta` enlarged spectral construction and every preassigned nonlinear
-order `N<=p-2` for a fixed Cao member. Any larger finite `N` requires choosing
-a correspondingly larger `p` before the carrier is fixed. It does
-not license the exact nonlinear rotating branch: convergence at fixed
-`delta` requires the critical-layer transparency/range theorem stated in the
-derivation. It licenses no stability, quantum, or particle claim.
+The receipts license the exact local Cao cell recurrences and finite spectral-
+window scaling algebra, including the corrected crossing remainder,
+`O(delta^2/n)` coupling, `O(1/log(1/delta))` ratios, sequence Schur tail and
+critical-harmonic scale. They do not establish the analytic graph-domain Riesz
+argument or a temporal finite-window theorem. Equations (52)--(53) are a
+conditional formal residual calculation, not a constructed fixed-order Euler
+branch. The full operator claims remain active in `0052`; no stability,
+quantum, or particle claim is licensed.

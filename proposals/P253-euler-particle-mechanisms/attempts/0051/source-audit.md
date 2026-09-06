@@ -39,4 +39,10 @@ exists.
 No external value of `hbar`, particle mass, charge, detector rate, or signal
 speed enters this attempt.  The only new reusable object is the exact
 finite-dimensional algebra conditional on a supplied physical canonical
-doublet.
+doublet.  The positive Hessian/compatible complex structure, rather than the
+KKS scale alone, fixes its energy-action complex coordinates; reciprocal
+symplectic rescalings otherwise change the apparent `z` normalization.  In
+those physical coordinates `J_a=|z_a|^2=H_a/nu_a`; the common-phase moment
+map is `J=J_1+J_2`, the Stokes radius is `J/2`, and the reduced area is
+`2*pi*J`.  This normalization is derived here and is not an additional
+quantization premise.
