@@ -1,0 +1,13 @@
+Tprime_weighted_integrand = r**2*(r*Derivative(Omega(r), (r, 2)) + 3*Derivative(Omega(r), r))
+Tprime_pairing_after_core_edge = -2*F(a)
+ground_state_transform_remainder = 0
+minus_inverse_D_log_remainder_limit = 0
+toroidal_divergence_C1 = I*ell*Vt(sr, alpha) - Va(sr, alpha)*sin(alpha) + Vs(sr, alpha)*cos(alpha)
+toroidal_divergence_C2 = -sr*(I*ell*Vt(sr, alpha) - Va(sr, alpha)*sin(alpha) + Vs(sr, alpha)*cos(alpha))*cos(alpha)
+toroidal_scalar_laplacian_C1 = cos(alpha)*Derivative(scalar(sr, alpha), sr) - sin(alpha)*Derivative(scalar(sr, alpha), alpha)/sr
+toroidal_scalar_laplacian_C2 = -ell**2*scalar(sr, alpha) - sr*(cos(alpha)*Derivative(scalar(sr, alpha), sr) - sin(alpha)*Derivative(scalar(sr, alpha), alpha)/sr)*cos(alpha)
+translation_to_m0_coefficient = sr*Derivative(Omega_s(sr), sr)/2 + Omega_s(sr)
+translation_to_m2_coefficient = sr*Derivative(Omega_s(sr), sr)/2
+leading_centerline_matrix = Matrix([[0, Gamma*Log*(ell**2 - 1)/(4*pi*R**2)], [-Gamma*Log*ell**2/(4*pi*R**2), 0]])
+leading_centerline_characteristic = (Gamma**2*Log**2*ell**4 - Gamma**2*Log**2*ell**2 + 16*pi**2*R**4*lambda**2)/(16*pi**2*R**4)
+ALL 22 EXACT CURVED-FESHBACH CHECKS PASSED

@@ -2,26 +2,32 @@
 
 ## 1. Route A: what the Koopman state does and does not encode
 
-Let `Gamma` be an invariant classical Euler-carrier phase space, let `mu` be
-an Euler-invariant probability measure, and let `Phi_t` be its flow. On
+Assume a specified invariant classical Euler-carrier phase space `Gamma`, a
+global measure-preserving flow `Phi_t`, and an invariant probability measure
+`mu`. No such global three-dimensional Euler flow/measure is constructed in
+this attempt. For a normalized `Psi` on
 
     H_K=L2(Gamma,mu),
     (U_t Psi)(x)=Psi(Phi_(-t)(x)),                      (1)
 
-`U_t` is exactly linear and unitary. A real physical classical observable
-`f` acts as `(M_f Psi)(x)=f(x)Psi(x)`, so
+`U_t` is exactly linear and unitary. A bounded real physical classical
+observable `f` acts as `(M_f Psi)(x)=f(x)Psi(x)`, so for bounded `f,g`
 
     [M_f,M_g]=0,
     <Psi,M_f Psi>=integral_Gamma f |Psi|^2 dmu.        (2)
 
-This is a complete positive classical ensemble representation. Multiplying
+For unbounded real multiplication observables the commutator statement holds
+on their common multiplication/product domain; their self-adjoint domains are
+not implicit. Under the stated hypotheses this is a complete positive
+classical ensemble representation. Multiplying
 `Psi` by an arbitrary state-dependent phase leaves every expectation in (2)
 unchanged. Differential generators on `H_K` can fail to commute with
 multiplication operators, but that algebraic fact does not turn them into
 physically implemented Euler measurement operations.
 
-Route A is therefore **established as a classical Hilbert/state/dynamics
-representation and refuted as an automatic P4 quantum completion**. The
+Route A is therefore **established conditionally as a classical
+Hilbert/state/dynamics representation and refuted as an automatic P4 quantum
+completion**. The
 mechanism is explicit: the physical observable algebra inherited from
 classical functions is commutative, the Hilbert phase has no declared Euler
 observable, and composition remains classical product probability. A Born
@@ -30,7 +36,8 @@ rule for noncommuting alternatives is not derived by rewriting a density as
 
 ## 2. Route B1: exact sphere quantization and continuous action scaling
 
-For the physical Euler rotation suborbit from `0005`,
+For the nondegenerate physical Euler rotation suborbit from `0005`, with
+`j>0`,
 
     Omega_j=j sin(theta)dtheta wedge dphi,
     integral_(S2) Omega_j=4*pi*j.                      (3)
@@ -83,18 +90,21 @@ two identical internal line bundles also admits two swap equivariant
 structures differing by (8). Neither the one-carrier Chern number (4) nor the
 classical Euler equations choose between them.
 
-The Finkelstein--Rubinstein route is more structured. If a persistent Euler
+The Finkelstein--Rubinstein route is more structured. The source proves that
+the `2*pi` spatial-rotation loop has class `Q mod 2`. If a persistent Euler
 carrier supplied a based map `n:S3->S2` of Hopf charge `Q`, if its accessible
-phase space embedded into the corresponding full map component with the
-nontrivial fundamental-group class preserved, and if the odd deck character
-were chosen, then the source theorem gives
+phase space embedded into the corresponding full map component with that
+class preserved, and if the odd deck character were chosen, then
 
-    phase(2*pi rotation)=phase(exchange)=(-1)^Q.      (9)
+    phase(2*pi rotation)=(-1)^Q.                      (9)
 
-Thus odd `Q` supports a consistent spinorial and fermionic quantization. But
-each italicized physical bridge is open for Euler, and the source itself
-chooses the deck-odd wavefunctions. Equation (9) relates rotation and exchange
-after quantization; it does not derive why nature selects `chi_-`.
+An exchange has the same phase only under the additional hypothesis that the
+realized physical exchange loop maps to class `Q mod 2`. Abstract `RP2`
+supplies its generator and both characters, not that Euler-to-Hopf loop map.
+Thus odd `Q` supports a consistent spinorial and, conditionally on that
+exchange-loop transfer, fermionic quantization. Each physical bridge remains
+open for Euler, and the source itself chooses the deck-odd wavefunctions.
+Equation (9) does not derive why nature selects `chi_-`.
 
 Route B2 is **established as the exact center/Hopf topology and conditional
 exchange descent, but blocked as Euler-selected fermionic statistics**. Its
@@ -104,20 +114,30 @@ by a dynamical or locality principle selecting the deck character.
 
 ## 4. Route C: positive-frequency linear modes
 
-Let a stable linearized carrier sector have real symplectic form `Omega`, a
-positive conserved quadratic energy `g`, and an invertible generator `A` that
-is skew-adjoint in `g`. When the polar decomposition defines
+Let a stable linearized carrier sector have real symplectic form `Omega`,
+positive energy Hessian `K`, and a densely defined invertible generator `A`
+on a declared real Hilbert domain. Use the inherited convention
 
-    J=A(-A^2)^(-1/2),  J^2=-1,                         (10)
+    Omega(Ax,y)=K(x,y),                               (10)
 
-the compatible complex inner product constructed from `g,Omega,J` gives an
-exact one-particle Hilbert completion and the classical linear flow is
-unitary. This is the precise positive-frequency structure that a stable
-carrier could supply dynamically. The hyperbolic returned sector established
+require `A` to be skew-adjoint on that domain, and define by spectral calculus
+
+    J=A(-A^2)^(-1/2),  J^2=-1.                        (11)
+
+When
+
+    G_J(x,y)=Omega(Jx,y)                              (12)
+
+is positive, the compatible complex inner product gives a one-particle
+Hilbert completion and the classical linear flow is unitary. A convention
+using `Omega(x,Jy)>0` chooses `-J` instead. No actual positive carrier sector
+meeting these global domain hypotheses is constructed here. This is the
+precise positive-frequency structure that a stable carrier could supply
+dynamically. The hyperbolic returned sector established
 in `0032/0038/0039` does not satisfy this premise and is an adverse carrier
 selection result.
 
-Canonical quantization of (10) still adds the CCR representation and an
+Canonical quantization of (10)--(12) still adds the CCR representation and an
 action unit; its Fock functor is bosonic. A CAR/fermionic Fock space does not
 follow from a real classical symplectic wave phase space. Nor does the
 classical norm derive projective measurement probabilities. Route C is
@@ -133,8 +153,10 @@ Incompressible Euler is invariant under the Galilean transformation
     u_U(x,t)=u(x-U t,t)+U,
     p_U(x,t)=p(x-U t,t).                               (11)
 
-Around a quiescent state, Leray projection gives `delta u_t=0`; around a
-uniform background `U`, transverse Fourier modes obey
+Around a quiescent whole-space finite-energy state, Leray projection gives
+`delta u_t=0`. A nonzero uniform `U` on `R3` lies outside the absolute
+finite-energy class; on a periodic domain or in a relative-background
+formulation its transverse Fourier modes obey
 
     omega(k)=U dot k                                  (12)
 
@@ -152,10 +174,13 @@ blocked positively on a same-substrate effective-band construction**.
 
 ## 6. Joined verdict
 
-Euler now supplies an exact classical Koopman representation, a physical KKS
-action, a conditionally polarized finite-dimensional spin representation, and
-topologies on which fermionic exchange is mathematically consistent. These
-are more than analogy. They also expose the irreducible missing physics:
+Under a separately specified global invariant phase space, flow and measure,
+Euler admits the conditional classical Koopman representation above. The
+campaign also supplies a physical KKS action, a conditionally polarized
+finite-dimensional spin representation, and topologies on which fermionic
+exchange is mathematically consistent after the required exchange-loop
+transfer. These are more than analogy. They also expose the irreducible
+missing physics:
 
 - continuous Euler scaling does not select `hbar` or the `N=1` orbit;
 - topology permits two exchange characters and does not select the odd one;

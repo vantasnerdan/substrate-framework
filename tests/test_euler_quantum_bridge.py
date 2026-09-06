@@ -40,6 +40,8 @@ def test_bare_uniform_euler_has_one_convective_frequency_for_both_polarizations(
 
 
 def test_quantization_and_character_domains_are_exposing():
+    with pytest.raises(ValueError, match="positive"):
+        spin_orbit_quantization(0, 1)
     with pytest.raises(ValueError, match="integer"):
         spin_orbit_quantization(sp.Rational(1, 3), 1)
     with pytest.raises(ValueError, match="deck_character"):

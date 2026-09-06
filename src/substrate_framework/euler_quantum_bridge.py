@@ -21,11 +21,11 @@ class SpinOrbitQuantization:
 
 
 def spin_orbit_quantization(angular_momentum, action_unit):
-    """Return ``N=2*j/hbar`` data, requiring a nonnegative integral class."""
+    """Return ``N=2*j/hbar`` data for a nondegenerate positive KKS sphere."""
     j = sp.sympify(angular_momentum)
     hbar = sp.sympify(action_unit)
-    if j.is_real is False or j.is_negative is True:
-        raise ValueError("angular_momentum must be nonnegative real")
+    if j.is_positive is not True:
+        raise ValueError("angular_momentum must be positive for the KKS sphere")
     if hbar.is_positive is not True:
         raise ValueError("action_unit must be positive")
     number = sp.simplify(2 * j / hbar)
@@ -55,10 +55,12 @@ def exchange_characters():
 
 
 def hopf_fr_phase(hopf_charge, *, deck_character):
-    """Return the conditional FR rotation/exchange phase ``chi**(Q mod 2)``.
+    """Return the conditional FR phase ``chi**(Q mod 2)``.
 
     The caller supplies the deck character; topology permits both signs and
-    this function deliberately does not choose one.
+    this function deliberately does not choose one.  The source proves this
+    class for spatial rotation.  Using it for exchange additionally assumes
+    that the physical exchange loop maps to the same Hopf-space class.
     """
     charge = sp.sympify(hopf_charge)
     character = sp.sympify(deck_character)

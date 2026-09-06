@@ -29,11 +29,14 @@ groups through the Hopf fibration; for `S3`, every Hopf-charge component has
 fundamental group `Z2`. Section 4 then defines wavefunctions on the universal
 double cover. The source explicitly says that one must consistently choose
 the deck-even or deck-odd rule and chooses the odd rule to allow fermionic
-solitons. Its rotation/exchange result says odd Hopf charge permits a
-spinorial/fermionic Finkelstein--Rubinstein quantization. The conclusion again
-states that bosonic quantization is used for even charge and fermionic for odd
-charge and warns that a collective-coordinate subspace can have the wrong
-fundamental group.
+solitons. Its integer criterion
+`N=Q(Q alpha-beta)/(2*pi)` shows that a `2*pi` spatial rotation has loop class
+`Q mod 2`. Nearby prose contains an apparent reversed contractible-iff-odd
+sentence, contradicted by this formula and the conclusion. The source does
+not establish that an independently defined two-center exchange loop, or an
+Euler exchange loop, maps to that same class. That equality is an additional
+physical-map hypothesis. The conclusion warns that a collective-coordinate
+subspace can have the wrong fundamental group.
 
 This source does not establish the missing Euler transfer. Its configuration
 space is the full based-map space of the Faddeev--Hopf model, its dynamics and
@@ -52,26 +55,31 @@ arXiv:1909.12485v2, for fluid coadjoint-orbit prequantization, and Ritter,
 arXiv:math-ph/0208008v3, for the integrality and polarization boundary. No
 new theorem is imported beyond the reviewed source audit there.
 
-The Koopman result used in `0013/0018` is algebraic: a measure-preserving
-classical flow acts unitarily on `L2` of classical state space, and physical
-classical functions act by commuting multiplication operators. It supplies a
-linear Hilbert representation of classical probability. It does not supply a
-physical noncommutative measurement algebra or make a local Hilbert phase an
-observable.
+The Koopman result used in `0013/0018` is conditional algebra: a specified
+global measure-preserving classical flow with invariant probability measure
+acts unitarily on `L2` of classical state space. Bounded physical functions
+act by commuting multiplication operators; unbounded real functions require
+their common multiplication/product and self-adjoint domains. This attempt
+constructs no global three-dimensional Euler invariant measure. The
+conditional representation does not supply a physical noncommutative
+measurement algebra or make a local Hilbert phase observable.
 
 ## Applicability ledger
 
 - The physical Euler KKS sphere and its action period are actual Euler
   calculations, but the compact swirl supporting them is not a persistent
   particle.
-- The Hopf configuration-space `Z2` is exact for based maps `S3->S2`, but its
-  injection into a persistent Euler-carrier phase space is open.
+- The Hopf configuration-space `Z2` and rotation class `Q mod 2` are exact for
+  based maps `S3->S2`, but the Euler phase-space injection and physical
+  exchange-loop class are open.
 - Even after that injection, the nontrivial deck character is a consistent
   choice, not selected by classical topology alone.
 - Euler scaling changes `j` continuously without changing a dimensionless
   carrier topology, so topology does not by itself select `hbar` or `N=1`.
 - Bare incompressible Euler is Galilean and its pressure reconstruction is
-  elliptic. A finite-speed relativistic band requires additional same-substrate
-  structure and a controlled reduction.
+  elliptic. A nonzero uniform whole-space background is a relative/infinite-
+  energy formulation; only rest lies in the absolute finite-energy class. A
+  finite-speed relativistic band requires additional same-substrate structure
+  and a controlled reduction.
 
 No electron/neutrino comparator or measured constant enters this audit.

@@ -1,0 +1,220 @@
+schema_version: 1
+attempt: P253/0050
+reviewer: particle-balance-review
+review_kind: joined_fixed_claim_non_author
+independence:
+  non_author: true
+  non_implementer: true
+  separate_unit_verdicts: true
+  excluded_attempts:
+    - P253/0048
+  excluded_obligations:
+    - P4 completion or no-go
+    - LP4
+    - particle or quantum completion
+
+activation:
+  readme_sha256: 1e0907acdb95e4acb8add50248703efb9104fadee786b7d7bb44557f21c74ccf
+  schema_exit: 0
+  schema_command_sha256: 5469bc1a4e263e5211cc04b02d369ba48f98d4da7a5d5cd5a40c24476426451f
+  schema_stdout_sha256: d7a6df70d40116eccbc5ef95222bcd39f56874086284528ed1e49c9c2cd6676f
+  schema_stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  schema_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+
+unit_a_0046:
+  unit_verdict: established
+  review_status: established_after_bounded_precision_correction
+  evidence_scope: EXACT_CLASSICAL_KKS_HEISENBERG_AND_FINITE_CCR_BOUNDARY
+  kks_plane:
+    route_verdict: established
+    hypotheses:
+      - B is nonzero
+      - Hq is positive
+      - Hq times P minus N squared is positive
+    generator: one_over_B times matrix_rows_N_P_and_minus_Hq_minus_N
+    frequency_squared: (Hq times P minus N squared) divided by B squared
+    maximum_verdict: exact positive classical tangent oscillator
+    invariant_nonlinear_euler_manifold:
+      route_verdict: blocked
+      missing_construction: >-
+        Prove that the physical tangent plane extends to an invariant carrier
+        manifold under unrestricted nonlinear Euler evolution.
+  affine_observation_algebra:
+    route_verdict: established
+    brackets:
+      theta_L: 1
+      G_L: B squared divided by P
+      theta_G: 0
+    algebra: affine Heisenberg translation algebra
+    compact_su2_in_this_block: refuted
+  finite_ccr_truncation:
+    route_verdict: refuted
+    mechanism: >-
+      The noncompact oscillator has an infinite ladder and every finite matrix
+      commutator has zero trace, contradicting [Q,P]=i hbar I for nonzero
+      hbar.
+    failure_scope: EXACT_CCR_TRUNCATION_OF_THIS_NONCOMPACT_PLANE
+    does_not_refute: >-
+      A separately constructed physical compact su2 KKS orbit or reduction
+      with its own Euler realization.
+  two_copy_exchange:
+    route_verdict: blocked
+    missing_construction: >-
+      Construct a collision-free invariant same-field two-carrier exchange
+      path, endpoint identification, and physical KKS or line-bundle holonomy.
+  stochastic_variational_extension:
+    conditional_route_verdict: established
+    evidence_scope: DECLARED_EXTENDED_SUBSTRATE_LAW
+    new_inputs:
+      - configuration probability density
+      - diffusion coefficient D
+      - mass and action scale hbar_ext equals 2mD
+      - osmotic dynamics and probability interpretation
+  circulation_selection:
+    route_verdict: refuted
+    failure_scope: BARE_UNIVERSAL_TOPOLOGY_ONLY_SELECTION
+    mechanism: circulation scales continuously as A divided by B
+    remains_open:
+      - a background-selected action scale
+      - a separately axiomatized circulation quantum
+
+unit_b_0049:
+  unit_verdict: established
+  review_status: established_after_bounded_precision_correction
+  evidence_scope: EXACT_CONDITIONAL_EXPONENTIAL_FIRST_EVENT_AND_RESET_THEOREM
+  analyzer_intensities:
+    conditional_route_verdict: established
+    hypotheses:
+      - normalized nonzero state
+      - exactly unitary analyzer
+    statement: nonnegative channel intensities sum exactly to one
+    actual_euler_analyzer:
+      route_verdict: blocked
+      missing_construction: >-
+        Construct an autonomous same-carrier analyzer evolution producing the
+        claimed unitary channel map and physical nonnegative energy readouts.
+  exponential_race:
+    conditional_route_verdict: established
+    hypotheses:
+      - independent exponential temporal clocks
+      - rates lambda_i equal common positive kappa times intensity I_i
+      - exclusive first capture
+    infinite_window_winner: lambda_i divided by total_rate
+    finite_window_outcome: >-
+      lambda_i divided by total_rate times one minus exp of negative
+      total_rate times T
+    finite_window_no_event: exp of negative total_rate times T
+    ties: probability zero for independent continuous positive-rate clocks
+    zero_channel: never wins
+    all_zero: no finite event and conditional winner undefined
+  deterministic_threshold:
+    route_verdict: established_as_exposing_identity
+    convention: event threshold lambda is at most I
+    probability: F(I) for F(x) equal P(lambda at most x)
+    implication: Born fraction I requires the uniform CDF or a derived equivalent
+    physical_basin_measure:
+      route_verdict: blocked
+      missing_construction: >-
+        Derive exclusive detector basins with those measures under one fixed
+        unresolved-state law for every state and analyzer setting.
+  reset_and_sequential_transition:
+    conditional_route_verdict: established
+    hypotheses:
+      - projective reset to the selected output ray
+      - fresh independent clock preparation for the next trial
+    transition_probability: absolute_squared_V_ji
+    autonomous_finite_volume_euler_reset:
+      route_verdict: refuted
+      mechanism: >-
+        A reversible measure-preserving time map on finite invariant phase
+        volume cannot be many-to-one or attract positive-volume basins onto a
+        projective reset state.
+    first_exit_or_scattering:
+      route_verdict: open
+      boundary: >-
+        Reversible first-exit or scattering may retain escaped degrees and
+        select an outcome, but does not itself reprepare sequential trials.
+  deterministic_rare_event_detector:
+    route_verdict: blocked
+    missing_construction: >-
+      Prove a joint intensity-proportional temporal hitting law with exclusive
+      finite-energy capture on the same retained Euler carrier.
+  retained_state_and_pressure:
+    route_verdict: required_supplier_boundary_established
+    statement: >-
+      Any physical detector must retain its load-bearing w0 and reconstruct
+      pressure from the full field v+w on the same local Euler interval.
+  action_and_finite_speed:
+    route_verdict: active
+    statement: >-
+      The common clock rate cancels and selects no action scale; the
+      first-event law supplies no finite-speed theorem and does not remove the
+      elliptic full-pressure coupling.
+
+api_and_tests:
+  unit_a:
+    api_sha256: fed1fe8a0b181cd00db27be5dfae8da29c00b49fbe052d73992e156f8a24836a
+    tests_sha256: 992b45164ce7feed1cbb9d86662c3a04c70e46987ea9070a63521898070ceba0
+    focused_stdout_sha256: bb898df9e07ec11703c009f863b6b7daad87d5158e37c1e77a008e0a3e081f64
+    focused_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+    focused_result: 5 passed in 1.61s
+    evidence_role: finite algebraic regression
+  unit_b:
+    api_sha256: 89d459c0121459584a8cab39f0db8e1bec2c20a6ef161c98551e4d51f34f4180
+    tests_sha256: 19d3a4723b8bbfb8e8f4150118a25444b225df53d496a8f1f5c052d7dff00b5d
+    focused_stdout_sha256: d5579e263d3cf70acb717b91007b4e8f4a22f00eeaa6558ee55446d3ad9d35d1
+    focused_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+    focused_result: 5 passed in 1.59s
+    evidence_role: finite algebraic regression
+  reviewer_rerun: false
+
+correction:
+  status: passed
+  receipt_sha256: 03ed2b9d32e9af51177cb0e381aaf62c9b7af1eaf009d0176311990aa6c156fd
+  all_requested_repairs_supported: true
+  unit_a_construction_post_sha256: 7ee4b9d9679a9e2880b49a1efa4294a46f0c88be573124074dc39b55985a6d63
+  unit_a_result_post_sha256: 698841744a5ac7e1ed9a5e8a57fe3669cecbe31fe35b0338416293b303df5f69
+  unit_a_source_audit_post_sha256: 74accea1e7b3a11410c8cf38c536936b36990ff517f61af47d57402cc3d671c2
+  unit_a_validation_post_sha256: c47ca3107b8fe6079f33758b0e3a62a2ddcab9ccb5a2c3619e2b237f15cac86b
+  unit_b_construction_post_sha256: b207eac0378998336d26af863b3467c6bbfc2f2cf9c7b6156427889c4b26a06c
+  unit_b_result_post_sha256: b248708fa624b02bb478ae2ae02161ffc0f1b17a009120ac441dbaac40d3ca27
+  unit_b_source_audit_post_sha256: f85f0dcd4aa831d010d05ce4ff0dbab9b7d50ae6974ba7369a9634430338c6f8
+  unit_b_validation_post_sha256: 282cc57296e77bbe2c3889a70bfc9311190d43090d1cc9c18a6d0ba32e096ae5
+  api_or_tests_changed: false
+  oracle_rerun: false
+  stale_claim_scan: passed
+  additional_correction_needed: false
+
+joined_result:
+  route_verdict: established
+  review_status: established_after_one_bounded_precision_correction
+  evidence_scope: EXACT_CLASSICAL_TWO_STATE_BOUNDARY_AND_CONDITIONAL_FIRST_EVENT_DETECTOR
+  strongest_supported_statement: >-
+    The accepted compact pair is an exact classical KKS oscillator with an
+    affine Heisenberg observation algebra; exact finite CCR truncation of that
+    plane fails, without refuting a different compact su2 reduction. Separately,
+    normalized unitary channel energies yield exact first-event and sequential
+    projective probability tables under explicit independent-clock, exclusive-
+    capture, reset, and renewal hypotheses. Current Euler suppliers do not
+    construct those detector laws or an autonomous reset.
+  next_dependency: >-
+    Construct a physical analyzer and deterministic first-exit or scattering
+    detector on one persistent compact carrier, derive its joint
+    intensity-proportional hitting law from the retained Euler state including
+    w0 and full pressure, retain escaped degrees for reversibility, and supply
+    an explicit enlarged-state or external repreparation mechanism. A compact
+    su2 carrier reduction remains a separate positive state-space route.
+
+does_not_license:
+  - P4 completion or no-go
+  - LP4
+  - a finite-dimensional autonomous quantum Euler system
+  - Born probabilities without the declared detector law
+  - autonomous projective reset in finite-volume Euler
+  - exchange statistics
+  - a selected universal action quantum
+  - finite propagation speed or a Lorentz cone
+  - a particle, electron, or neutrino claim
+  - active P253/0048
+  - parent campaign completion
+exhaustion_claimed: false
