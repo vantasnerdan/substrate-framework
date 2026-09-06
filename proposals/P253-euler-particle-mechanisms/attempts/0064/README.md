@@ -98,7 +98,8 @@ charge or fine-structure number is used as a derivation input.
 
 An analytic verifier will derive rather than hard-code:
 
-- zero total vorticity for smooth compact support and the leading Biot--Savart
+- zero total vorticity for smooth compact support and the first permitted
+  Biot--Savart
   moment contraction;
 - the absence or presence of pressure source monopole and dipole moments;
 - the flux obstruction for a smooth divergence-free whole-space monopole;

@@ -16,13 +16,15 @@ With hydrodynamic impulse
     I_a=(1/2) epsilon_(aij) M_ij,                         (3)
 
 (2) gives `M_ij=epsilon_(aij) I_a`. Expanding the exact whole-space
-Biot--Savart potential and then taking its curl yields
+Biot--Savart potential and then taking its curl yields the first permitted
+coefficient
 
     u(x)={3 n(I dot n)-I}/(4 pi r^3)+O(r^-4).             (4)
 
 There is no `r^-1` or `r^-2` velocity term for a smooth compact-vorticity
-carrier. Impulse changes the anisotropic dipole coefficient; it does not act
-as a scalar Coulomb monopole.
+carrier. The `r^-3` term is leading when `I!=0`; if it vanishes, decay is
+faster. Impulse changes the anisotropic dipole coefficient; it does not act as
+a scalar Coulomb monopole.
 
 For two such carriers separated by `d n`, integration by parts in the kinetic
 cross term gives
@@ -33,7 +35,8 @@ cross term gives
         =rho{3(I_1 dot n)(I_2 dot n)-I_1 dot I_2}
              /(4 pi d^3)+O(d^-4).                        (5)
 
-The translation force is `-grad_d E_12=O(d^-4)`. It is orientation dependent
+When the displayed contraction is nonzero, the translation force is
+`-grad_d E_12=O(d^-4)`; cancellations give faster decay. It is orientation dependent
 and has neither the `d^-1` energy nor `d^-2` force of a scalar electric charge.
 This exact route verdict applies to localized compact-vorticity Biot--Savart
 interaction, not to a separately constructed collective mediator.
@@ -66,15 +69,16 @@ pressure obeys
 
 Under those weighted hypotheses the source and its first moment vanish by two
 integrations by parts, and the Taylor remainder is `o(r^-3)`. Moving the
-derivatives onto `G` gives the leading pressure field
+derivatives onto `G` gives the first permitted pressure coefficient
 
     p(x)=rho partial_i partial_j G(x)
                integral u_i u_j dy+o(r^-3)
         =rho{3 n_i n_j-delta_ij}M^u_ij/(4 pi r^3)
              +o(r^-3).                                   (8)
 
-Thus the generic localized pressure begins at quadrupole order and its force
-begins at `r^-4`. The density factor in (8) is physical. The stationary
+Thus quadrupole order is the first permitted localized pressure term and its
+gradient is first permitted at `r^-4`; the displayed coefficient can vanish,
+giving faster decay. The density factor in (8) is physical. The stationary
 compact-velocity supplier is stronger: outside its support Euler gives
 `grad p=0`, so all exterior pressure multipoles vanish. In the virial identity
 this reads
@@ -160,8 +164,10 @@ required isotropic scalar electric source within the accepted field content.
 
 ## 6. Route verdicts and continuation
 
-- Route A is refuted as a Coulomb mechanism by the exact `d^-3` cross-energy
-  and `d^-4` force, while preserving impulse as a real anisotropic interaction.
+- Route A is refuted as a Coulomb mechanism by the first permitted exact
+  `d^-3` cross-energy and `d^-4` force for compact vorticity, while preserving
+  impulse as a real anisotropic interaction; coefficient cancellation gives
+  faster decay.
 - Route B is refuted for smooth source-free whole-space Euler by flux and
   finite-energy identities. Punctured/source models remain distinct candidates.
 - Route C is refuted as a Coulomb mechanism by the exact pressure source
@@ -181,6 +187,29 @@ The continuation ladder leaves three explicit candidates:
    0042 state/observable map; and
 3. a nonlocal or topological transverse source, whose locality, finite-energy,
    superposition, and extra-structure costs must be frozen before use.
+
+The compact-vorticity hypothesis is load bearing for the power conclusion.
+For a constant vector `a`, the smooth divergence-free field
+
+    u_a(x)=(a cross x)/(1+|x|^2)^(3/2)                  (14a)
+
+has zero spherical flux, belongs to `H^s(R^3)` for every finite `s`, and has
+finite kinetic norm `||u_a||_2^2=pi^2|a|^2/2`, but it has an oriented
+transverse `r^-2` tail and nonintegrable `r^-3` vorticity. Its Fourier
+transform is
+
+    uhat_a(k)=4*pi*i (k cross a) K_1(|k|)/|k|,          (14b)
+
+so two translated copies satisfy
+
+    E_ab(d)=2*pi*rho [a dot b+(a dot n)(b dot n)]/d
+             +o(d^-1).                                 (14c)
+
+This is admissible smooth finite-energy local Euler initial data and a genuine
+escape from the compact-vorticity power law. It remains oriented and
+anisotropic, and supplies no scalar sign, conserved charge/current, Gauss law,
+or persistent carrier. Therefore it strengthens the continuation universe
+without repairing the electric-charge mechanism.
 
 For candidate 1 the joint quadratic action is
 

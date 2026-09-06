@@ -13,6 +13,10 @@ def test_uniform_euler_and_maxwell_characteristics_are_distinct():
     ledger = uniform_symbol_ledger(lam, k, adv, c)
     assert ledger.euler_characteristic == sp.expand((lam + sp.I * adv) ** 2)
     assert ledger.maxwell_characteristic == sp.expand((lam**2 + c**2 * k**2) ** 2)
+    assert ledger.euler_tag_characteristic == sp.expand((lam + sp.I * adv) ** 3)
+    assert ledger.maxwell_tag_characteristic == sp.expand(
+        (lam + sp.I * adv) * (lam**2 + c**2 * k**2) ** 2
+    )
     assert ledger.maxwell_temporal_frequencies == (-c * k, c * k)
 
 

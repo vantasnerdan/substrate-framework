@@ -1,0 +1,128 @@
+schema_version: 1
+attempt: P253/0071
+reviewer: particle-balance-review
+review_kind: fixed_claim_non_author_review
+independence:
+  non_author: true
+  non_implementer: true
+  target_owner: root
+  target: P253/0068
+  excluded_attempts:
+    - P253/0070
+  excluded_claims:
+    - LP4 or P4 or P5 completion
+    - electron or particle identification
+    - quantum statistics or magnetic-moment normalization
+    - stationary charged carrier existence
+
+activation:
+  readme_sha256: 70dd4e2324173548bdca2b73a3f1b61b6c24998cc9b794c476615139c4d646a6
+  schema_exit: 0
+  schema_command_sha256: 0b8bcc78ad3e326535d62e436c7e5f623fef1e2c3c8d7c12ef1a792f07e8e1c8
+  schema_stdout_sha256: d7a6df70d40116eccbc5ef95222bcd39f56874086284528ed1e49c9c2cd6676f
+  schema_stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  schema_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+
+unit_0068:
+  unit_verdict: established
+  review_status: corrected_exact_foundation_extension_established_charged_carrier_open
+  transported_current:
+    route_verdict: established
+    identity: rho_q_equals_g_chi_and_J_equals_g_chi_u_with_exact_continuity
+    boundary: compact_or_integrable_tag_and_vanishing_spatial_flux
+  joint_action:
+    route_verdict: established
+    statement: one_material_map_and_gauge_action_yields_Maxwell_source_and_incompressible_Lorentz_backreaction
+    balances:
+      - total classical energy under smooth decay
+      - total matter plus Maxwell momentum under convergent stress flux
+  constraint_PDE:
+    route_verdict: established
+    domain: compatible_Hs_R3_data_with_s_greater_than_5_over_2_and_declared_decay
+    constraint: div_u_zero_div_B_zero_epsilon_div_E_minus_g_chi_zero
+    time_scope: common_local_smooth_interval
+    does_not_supply: all_time_regular_or_strict_full_state_propagation_cone
+  retained_history:
+    route_verdict: established
+    strongest_supported: >-
+      A bounded finite-rank idempotent with smooth range, the declared
+      Hs/Hs-minus-one bounds, and Pi/Q reduction of the joint constraint gives
+      the exact causal resolved/unresolved map with load-bearing initial w0.
+    correction: raw_mixed_state_L2_orthogonality_requires_typed_product_norm_or_deletion
+  static_Coulomb:
+    route_verdict: established
+    statement: smooth_compact_profiles_have_finite_self_energy_and_q1_q2_over_4pi_epsilon_d_cross_asymptotic
+    boundary: supplied_static_profiles_not_stationary_charged_carrier
+  small_g_continuation:
+    route_verdict: blocked
+    established_scaling:
+      - fixed_tag_integral_C_chi_and_Q_g_equals_g_C_chi
+      - Maxwell_fields_O_g
+      - field_energy_and_Lorentz_backreaction_O_g_squared
+      - comoving_operator_elliptic_for_abs_c0_less_than_c_EM
+    missing_construction:
+      - persistent_carrier_KKS_Hessian_complement
+      - actual_translation_cokernel_pairing_and_neutral_rows
+      - stabilizer_preserving_global_tag_profile
+      - joint_relative_energy_Casimir_and_electric_H_minus_one_coercivity
+  translation_Noether:
+    route_verdict: established_as_distinction
+    statement: action_translation_invariance_and_evolutionary_momentum_conservation_do_not_prove_stationary_cokernel_solvability
+  stabilizer:
+    route_verdict: blocked
+    required_identity: bracket_xi_omega0_zero_implies_xi_dot_grad_chi0_zero
+  normalization:
+    route_verdict: established
+    invariants:
+      - epsilon_times_mu
+      - g_squared_over_epsilon_under_gauge_potential_rescaling
+      - Q_g_equals_g_C_chi_after_fixed_tag_normalization
+    unselected:
+      - g
+      - epsilon
+      - mu
+      - overall_action_scale
+      - quantum_action_or_smallest_charge
+
+oracle:
+  API_algebra: supported
+  Coulomb_derivative_and_speed: supported
+  continuity_and_gauge_rows: consistency_regression
+  Poynting_row: tautological_placeholder_not_independent_derivation
+  constraint_propagation_row: tautological_placeholder_not_independent_derivation
+  analytic_derivation_remains_load_bearing: true
+  unchanged_oracle_rerun_by_reviewer: false
+
+strongest_supported_statement: >-
+  An explicit constrained U1 extension of incompressible material transport
+  has an exact signed conserved current, joint Euler-Lorentz/Maxwell action and
+  energy exchange, static Coulomb sign, local constraint-preserving Hs
+  evolution, and exact retained-state/history map. It is a changed-foundation
+  comparator with free normalization inputs, not bare Euler or a stationary
+  charged particle theorem.
+
+next_dependency: >-
+  Construct the small-g stationary continuation on a persistent carrier with
+  the actual complement, translation cokernel, stabilizer-preserving tag, and
+  joint localization coercivity; address action/charge selection separately.
+
+correction:
+  status: passed
+  receipt_sha256: 265714b42208c3d2532ec4a916387e2da71cfd2c00089e012acc818b188dfdf5
+  requested_repairs:
+    - type a nondimensional weighted mixed-state inner product or drop orthogonal while retaining bounded Pi/Q reduction of K
+    - relabel tautological Poynting and constraint oracle rows as regression or replace them with genuine symbolic derivations
+    - state finite propagation explicitly for the Maxwell subsystem
+  requested_repairs_supported: true
+  stale_claim_scan: passed
+  unchanged_API_or_oracle_rerun: false
+  second_substantive_pass_performed: false
+  additional_correction_needed: false
+
+post_hashes:
+  P253_0068_derivation: 41bfff94e0c72d0c028564b2ee7c04d231fc3ea3eca75d1d7c556facb86d7816
+  P253_0068_validation: 15a83b8888a4737264d3f877ea0030fcbf52e400ce79692c8c587ffcd28c6a58
+  P253_0068_pre_review_precision: c41c7236be4f8c8db14655805b28dc353139437139d8f05d41c1356aee2161a6
+  P253_0068_artifact_manifest: 0e86b493f0361f6806e187b1c8c02ec226a4ffc66ee47ea5a775c48c8f3c7683
+
+exhaustion_claimed: false

@@ -45,12 +45,13 @@ circulation class. Locally around a thin core of radius `a`,
 
 so the ideal line limit has logarithmic core energy. A finite-radius vortex
 tube makes the energy finite and realizes circulation by smooth vorticity.
-However a closed compact tube has `integral omega=0`. Its far velocity is the
-impulse dipole already derived in 0064,
+However a closed compact tube has `integral omega=0`. Its first permitted far
+velocity is the impulse dipole already derived in 0064,
 
     u(x)={3n(I dot n)-I}/(4*pi*r^3)+O(r^-4).             (6)
 
-The nontrivial meridional `H^1` class controls near-core circulation. It does
+The `r^-3` coefficient is leading when the impulse is nonzero; otherwise the
+decay is faster. The nontrivial meridional `H^1` class controls near-core circulation. It does
 not become the `H^2` flux of a point complement and does not generate a
 `1/r` pair energy. Route B is established as a genuine topological Euler
 label and refuted as a scalar Coulomb mechanism.

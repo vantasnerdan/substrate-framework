@@ -60,11 +60,24 @@ polarizations on each temporal branch
 
     omega=+c_EM |k|,    omega=-c_EM |k|.                 (8)
 
-Writing `lambda` for the time-generator spectral parameter, the physical
-characteristic factors are
+Writing `lambda` for the time-generator spectral parameter, the velocity-only
+and Maxwell-transverse characteristic factors are
 
     chi_Euler=(lambda+i U dot k)^2,
     chi_Maxwell=(lambda^2+c_EM^2 |k|^2)^2.               (9)
+
+Including the one physical transported-tag amplitude gives the source-state
+and proposed gauge-plus-tag factors
+
+    chi_(Euler+tag)=(lambda+i U dot k)^3,
+    chi_(Maxwell+tag)=(lambda+i U dot k)
+                         (lambda^2+c_EM^2 |k|^2)^2.      (9a)
+
+Gauss law determines the longitudinal electric component and does not add a
+propagating canonical coordinate. Thus (9a) displays both the incompatible
+roots and the stronger physical-dimension mismatch. The complete 0068
+extended state additionally retains the original Euler velocity variables;
+that is an enlargement, not a conjugacy.
 
 At rest the Euler root is zero; at uniform flow it is a repeated one-sided
 convective root.  It is neither the isotropic two-sided cone (8) nor a Gauss
@@ -128,9 +141,18 @@ Attempt 0068 adds precisely the structures absent above:
     div(epsilon E)=rho_q,
     (1/mu)curl B-epsilon E_t=J.                          (12)
 
-The current follows from an existing transported Euler tag, but `(E,B)`, its
-positive field energy, and `epsilon,mu` are new.  The coupling `g` is also a
-new normalization.  A common material-map plus gauge action then supplies the
+The current follows from an existing transported Euler tag, but `(E,B)` and
+its positive field energy are new. The coefficients `g,epsilon,mu` are
+explicit inputs, but calling all three physically independent requires a
+field/tag normalization convention. Under the harmless coordinate rescaling
+
+    (A,phi)->a(A,phi),  epsilon->epsilon/a^2,
+    mu->mu a^2,        g->g/a,                           (13)
+
+the identifiable combinations `epsilon*mu` and `g^2/epsilon` are unchanged.
+Rescaling the tag changes the convention for `g` again. No value of any
+coefficient or invariant combination is selected by Euler. A common
+material-map plus gauge action then supplies the
 Lorentz force and electric-sign Coulomb energy.  The construction is a
 coherent minimal extension because deleting the independent gauge state
 returns the characteristic and projector obstructions above.
@@ -143,7 +165,8 @@ not an electron.
 
 **Route D verdict:** established as a minimal-delta ledger for the routes
 covered here.  The exact added objects are one constrained U(1) field, its
-positive action, and three independent constants.  Adoption remains a user
+positive action, and three explicit input coefficients with
+normalization-invariant combinations. Adoption remains a user
 foundation decision; bare-Euler carrier and doublet routes continue in 0066.
 
 ## 5. Continuation toward the particle objective

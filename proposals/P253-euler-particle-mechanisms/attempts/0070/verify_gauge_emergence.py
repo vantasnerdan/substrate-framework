@@ -12,6 +12,10 @@ ledger = uniform_symbol_ledger(lam, k, adv, c)
 
 assert ledger.euler_characteristic == sp.expand((lam + sp.I * adv) ** 2)
 assert ledger.maxwell_characteristic == sp.expand((lam**2 + c**2 * k**2) ** 2)
+assert ledger.euler_tag_characteristic == sp.expand((lam + sp.I * adv) ** 3)
+assert ledger.maxwell_tag_characteristic == sp.expand(
+    (lam + sp.I * adv) * (lam**2 + c**2 * k**2) ** 2
+)
 assert ledger.euler_temporal_frequencies == (adv, adv)
 assert ledger.maxwell_temporal_frequencies == (-c * k, c * k)
 
@@ -25,4 +29,4 @@ assert source == sp.zeros(3, 1)
 
 assert clebsch_shift_kernel([1, 2, 3], fp) == sp.zeros(3, 1)
 
-print("P253/0070 exact checks: 8 passed")
+print("P253/0070 exact checks: 10 passed")

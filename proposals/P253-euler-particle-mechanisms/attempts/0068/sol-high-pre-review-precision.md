@@ -11,15 +11,23 @@ review:
 2. The characteristic speed applies to the Maxwell subsystem.  The joined
    incompressible system retains its elliptic pressure projection and therefore
    has no strict finite propagation cone for the complete state.
-3. The retained-state projection is explicitly finite-rank and `L^2`
-   orthogonal, reduces the full joint divergence/Gauss constraint kernel, is
-   bounded on `H^s`, and is smoothing from `H^(s-1)` to `H^s` through its
-   smooth finite-dimensional range. The resolved path and unresolved datum
-   are placed in their exact constraint subspaces.
+3. The retained-state projection is a bounded finite-rank idempotent with
+   smooth range. Both `Pi` and `Q=I-Pi` are bounded on the dimensionally typed
+   product `H^s` and `H^(s-1)` spaces and reduce the full joint
+   divergence/Gauss constraint kernel; the finite-dimensional range supplies
+   the stated `H^(s-1)` to `H^s` smoothing. Orthogonality across the
+   dimensionally mixed `(u,chi,E,B)` state is neither assumed nor used. The
+   resolved path and unresolved datum lie in their exact constraint
+   subspaces.
 4. Gauge functions have vanishing spacetime boundary terms; the Coulomb
    asymptotic has compact-support/finite-first-moment hypotheses. The static
    calculation is separated from a persistent charged-carrier theorem, and
    the next small-coupling carrier continuation is explicit.
+5. The small-coupling route freezes the material tag leaf while
+   `Q_g=g integral chi` varies with `g`; only variations at a fixed branch
+   member use a fixed `Q_g`. The coefficient ledger records the gauge-field
+   and tag normalization freedom and the invariant combinations
+   `epsilon*mu` and `g^2/epsilon`.
 
 The arbitrary-tag defect generated that continuation after preregistration:
 an invariant core label, sub-gauge-speed carrier, comoving elliptic Maxwell

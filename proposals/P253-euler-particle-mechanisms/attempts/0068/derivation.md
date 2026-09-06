@@ -19,7 +19,8 @@ Then
 and `Q=integral rho_q dx` is conserved under the stated decay. A signed
 initial tag gives exact opposite charges. The normalization `g` is a new
 constant; material transport selects neither its magnitude nor a smallest
-nonzero tag integral.
+nonzero tag integral. Its individual value depends on the chosen tag and
+gauge-potential normalization.
 
 With `E=-grad phi-partial_t A`, `B=curl A`, separate the free field
 Lagrangian from its coupling:
@@ -35,7 +36,7 @@ changes, up to spacetime boundary terms, by
     -integral lambda(partial_t rho_q+div J) dx dt=0.      (4)
 
 Thus the transported tag supplies the precise current identity needed for
-gauge invariance; it does not supply the gauge field or constants.
+gauge invariance; it does not supply the gauge field or coefficient values.
 
 Variation of `L_gauge` gives
 
@@ -72,7 +73,7 @@ propagating scalar with a linear source.
 
 **Route A verdict:** established exactly for the declared U(1) extension.
 It supplies signed conserved charge, gauge invariance, Coulomb sign and finite
-propagation, with `g,epsilon,mu` explicit new inputs.
+propagation for the Maxwell subsystem, with `g,epsilon,mu` explicit new inputs.
 
 ## 3. One material-map action gives backreaction
 
@@ -130,9 +131,10 @@ Let
 
     K={div u=0, div B=0, div(epsilon E)-g chi=0}.        (14a)
 
-For any finite-rank `L^2`-orthogonal projection `Pi` that reduces `K`, with
-smooth range, bounded on `H^s`, and with the finite-rank smoothing bound
-needed from `H^(s-1)` to `H^s`, write the product state
+For any bounded finite-rank idempotent `Pi` that reduces `K`, with smooth
+range, with both `Pi` and `Q=I-Pi` bounded on the declared product `H^s` and
+`H^(s-1)` spaces, and with the finite-rank smoothing bound needed from
+`H^(s-1)` to `H^s`, write the product state
 `Y=(u,chi,E,B)=v+w`, `w=QY`. Given
 `v in [C(H^s) intersection C^1(H^(s-1))] intersection Ran(Pi) intersection K`
 and `w_0 in Ran(Q) intersection K intersection H^s`, the unresolved equation
@@ -150,9 +152,10 @@ charge form factors, not a stationary charged-carrier theorem. For a generic
 transported `chi`, the self-force `rho_q E` need not be a gradient and its
 deviatoric part can deform or disperse the Euler carrier. A particle
 application needs a separate small-`g` continuation with `chi` locked to a
-carrier material invariant, fixed total charge, translations quotiented, and
-the `O(g^2)` Maxwell self-field controlled in the carrier KKS/Hessian
-complement.
+carrier material invariant, the tag leaf fixed while `Q_g=g integral chi`
+varies along the branch, translations quotiented, and the `O(g^2)` Maxwell
+self-field controlled in the carrier KKS/Hessian complement. Admissible
+variations at each fixed `g` stay on that branch member's fixed `Q_g` level.
 
 **Route C verdict:** established at local smooth retained-state scope for the
 declared extended equations, not inherited as a bare-Euler theorem. The
@@ -171,7 +174,11 @@ magnetic Lorentz coupling, and a finite field speed. It does not supply:
 - a persistent carrier or its scale; or
 - a weak chiral current, neutrino mixing, or oscillations.
 
-Multiplying a classical action by an overall constant does not change (5),
+Under `(A,phi)->a(A,phi)`, the same theory is parametrized by
+`epsilon->epsilon/a^2`, `mu->mu*a^2`, and `g->g/a`; hence `epsilon*mu` and
+`g^2/epsilon` are invariant while the three displayed coefficients separately
+require a field/tag normalization convention. Multiplying a classical action
+by an overall constant does not change (5),
 (11), or (14) while it rescales symplectic/action periods. Independently,
 `epsilon*mu` fixes the wave speed. The gauge speed therefore does not select
 the quantum action normalization. Route D is established as an exact

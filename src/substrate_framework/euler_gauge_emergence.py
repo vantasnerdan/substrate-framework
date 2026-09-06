@@ -16,6 +16,8 @@ class UniformSymbolLedger:
 
     euler_characteristic: sp.Expr
     maxwell_characteristic: sp.Expr
+    euler_tag_characteristic: sp.Expr
+    maxwell_tag_characteristic: sp.Expr
     euler_temporal_frequencies: tuple[sp.Expr, sp.Expr]
     maxwell_temporal_frequencies: tuple[sp.Expr, sp.Expr]
 
@@ -44,6 +46,10 @@ def uniform_symbol_ledger(
     return UniformSymbolLedger(
         euler_characteristic=euler,
         maxwell_characteristic=maxwell,
+        euler_tag_characteristic=sp.expand((lam + sp.I * adv) ** 3),
+        maxwell_tag_characteristic=sp.expand(
+            (lam + sp.I * adv) * (lam**2 + speed**2 * k**2) ** 2
+        ),
         euler_temporal_frequencies=(adv, adv),
         maxwell_temporal_frequencies=(-speed * k, speed * k),
     )

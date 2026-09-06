@@ -32,8 +32,10 @@ and the positive free-field plus source Lagrangian
     L_field=integral {epsilon |E|^2/2-|B|^2/(2 mu)} dx,
     L_gauge=L_field+integral {J dot A-rho_q phi} dx.
 
-The new constants `g`, `epsilon`, and `mu` are independent inputs unless a
-later substrate derivation selects them. The gauge-field characteristic speed
+The coefficients `g`, `epsilon`, and `mu` are explicit inputs unless a later
+substrate derivation selects them. Their individual numerical values require a
+field/tag normalization convention; `epsilon*mu` and `g^2/epsilon` are
+invariant under constant gauge-potential rescaling. The gauge-field characteristic speed
 is `c=1/sqrt(epsilon*mu)` and does not select the charge/action normalization;
 the coupled incompressible pressure sector remains elliptic and instantaneous.
 
