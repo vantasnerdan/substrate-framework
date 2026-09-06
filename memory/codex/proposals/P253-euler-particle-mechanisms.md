@@ -13,7 +13,7 @@ status: active
 Complete the full issue203 electron AND neutrino particle mechanism contract frozen verbatim in issue203-frozen.md; P0–P7 are conjunctive, electron first does not reduce scope.
 
 ## Obligation Graph and Closure Map
-The matching proposal manifest records each exact node, prerequisites and non-implications. All LP0–LP7 are unearned.
+The matching proposal manifest records each exact node, prerequisites and non-implications. LP0 is earned at initial source/inventory scope; LP1–LP7 remain unearned.
 
 - P0: Verify source/foundation maps, accepted API applicability, and preregister competing particle mechanisms.
 - P1: Derive exact nonlinear material energy, momentum, angular momentum, inertia, shape and pressure-current balances with an honest closure or retained-memory construction.
@@ -69,3 +69,13 @@ The0002 R1 audit establishes source-scoped single-ring persistence and separate 
 The0003 R2 audit preserves the exact stationary Euler–Skyrme/topological dictionary, exposes the direct unsteady velocity-flux failure, and executes a vorticity-label repair on a local nonisolated exact Euler flow. The0005 continuation derives the full vorticity-orbit/Hodge action and tests physical quantum descent. Forty-one symbolic checks are algebra evidence, not a quantum or PDE existence theorem.
 
 The0007 particle-facing calculus derives the compact-vorticity impulse/dipole cross-energy and tests no-swirl spin/physical orientation and quiescent Euler propagation. Three exposing symbolic tests pass; independent0008 review is active. Swirl/internal state and structured energetic background are explicit candidate continuations. No electron or neutrino comparator was fitted, no claim is promoted, and the full P0–P7 objective remains active.
+
+## Exact-action and interacting-carrier checkpoint
+
+0005 establishes the actual full Euler orbit action and a conditional rotational KKS sphere;0011 identifies the missing general-H1 circulation row in the separate Clebsch completion and distinguishes compact tangent lifts from a rigid rotation subgroup. Bounded corrections preserve the full Euler action.0009 executes exact nonlinear Euler projection with a derived Bessel memory kernel and unresolved-initial-state forcing;0011 establishes its periodic scope. Its four API tests pass.
+
+0006/0012 establish conserved-deficit control on a genuine nearby same-rearrangement-leaf two-ring neighborhood, including a positive source-supported time interval after exact Euler scaling. All-time recurrence and full3D/swirl stability remain frontier.0010 supplies actual localized swirling Euler carriers, nonzero classical rotation action and an exact Schur-complement conserved functional; the dynamically accessible Hessian is the next construction.0008 correction review is complete.
+
+0013 establishes exact Lamb current and scalar Madelung energy identities, with four exposing API tests. Direct compact-vorticity Lamb charge is zero; single regular scalar phase cannot represent a nonzero-vorticity carrier. Multicomponent Euler coordinates and actual physical state/measurement dynamics are active continuations. No quantum or particle claim is inferred.
+
+Checkpoint a7676b7 passed the full2685-test suite in410.03s with exit0, captured in0001/checkpoint-full. New shear-memory and field-map modules have separate focused receipts; that earlier full-suite receipt does not cover their later additions. The active branch continues; no terminal PR or accepted claim promotion has occurred.

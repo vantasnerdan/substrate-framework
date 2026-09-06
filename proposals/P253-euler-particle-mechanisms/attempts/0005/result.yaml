@@ -1,0 +1,75 @@
+attempt: P253/0005
+owner: particle-foundations
+scope:
+  obligations: [P4]
+  route: R2b
+base_release: v0.183.0
+base_commit: b6fc902a0942d07996f12a81028fbd3f7c909a43
+activation_schema_exit: 0
+route_verdict: established_orbit_action_particle_implication_open
+evidence_scope: EXACT_EULER_ORBIT_ACTION_KKS_PERIOD_AND_LOCAL_SCOPED_CLEBSCH_PULLBACK
+strongest_positive_result:
+  - The physical Euler regular dual is Omega1/dOmega0 with m=[rho*u_flat]; its kinetic Hamiltonian, right-reduced KKS form, and first-order orbit action are derived with one consistent sign and density convention.
+  - Vorticity B=d(u_flat), with velocity recovered by the Hodge/Biot-Savart inverse plus boundary and harmonic circulation data, yields actual time-dependent Euler rather than the velocity-flux freeze in attempt 0003; for general H1 the full orbit action supplies h_dot=-P_H(i_u B), while fixed-basis harmonic coefficients are not presumed invariant.
+  - Local/scoped Clebsch labels give a canonical action whose relabeling quotient pulls back exactly to the same physical KKS form on regular H1=0/decaying or separately proved global coverage; a single regular chart has zero integrated helicity under closed/decay boundary conditions. The displayed bulk labels do not prove arbitrary-H1 completion.
+  - The compact radial swirl from attempt 0001 has a physical SO3/SO2=S2 rotation suborbit with j=(8*pi*rho/3)*integral(r^4*f)dr and KKS period 4*pi*j; genuine rigid SO3 acts in the larger volume-preserving group, while compact cutoffs are tangent/path lifts rather than an so3 subalgebra.
+  - Conditional prequantization has Chern number N=2*j/hbar; odd N gives a spinorial SU2 lift of a physical 2pi rotation, while prequantization alone does not derive quantum mechanics or exchange statistics.
+route_scoped_negative:
+  route: no_swirl_orientation_FR
+  verdict: refuted_with_mechanism_named
+  mechanism:
+    - The centered axisymmetric no-swirl carrier has pointwise zero kinetic helicity and zero centered-tag angular momentum.
+    - Its connected rigid stabilizer is SO2 and its unframed orientation orbit is S2 with trivial fundamental group, so the framed SO3 Z2 loop is killed by quotient.
+    - Where global angular momentum converges, its pure rotational KKS restriction is zero.
+representation_B_scope:
+  established: local_regular_clebsch_pullback_on_H1_zero_decay_or_separately_proved_sector
+  route_verdict_for_arbitrary_H1_completion: refuted_with_mechanism_named
+  mechanism: >-
+    Taking d of the momentum equation omits the harmonic component. The displayed bulk
+    Clebsch action and overlap constants do not vary that row; on a flat torus B=0 would
+    permit arbitrary h(t) locally although Euler requires h_dot=0.
+  complete_general_route: >-
+    Use the Euler-Poincare or representation-A orbit action with
+    h_dot=-P_H(i_u B), or separately construct and vary the missing global variables.
+physical_action_normalization:
+  energy_scale: rho*U^2*L^3
+  time_scale: L/U
+  action_and_KKS_scale: rho*U*L^4
+  cern_condition: 2*j/hbar in Z
+  unresolved_selection: Classical Euler amplitude scaling continuously changes j and does not select hbar, N=1, or a carrier scale.
+missing_physical_construction:
+  - A nonlinearly stable localized intrinsic-swirl/twist Euler carrier with finite nonzero j and a controlled rotational/internal symplectic sector.
+  - A scale-selection mechanism that fixes rho*U*L^4 and selects an odd integral class.
+  - LP2 stable two-carrier collision/exclusion embedding for an actual exchange-loop descent and spin-statistics test.
+  - A polarization/Hilbert/composition/probability completion; prequantization is only a conditional first step.
+  - A collective energy-momentum and boost Poisson algebra realizing an emergent invariant speed on the same carrier sector.
+does_not_license:
+  - electron or neutrino identification
+  - Born rule or a complete quantum theory
+  - fermionic exchange statistics
+  - selection of hbar, N=1, mass, or length
+  - Lorentz invariance or a finite invariant speed
+next_executable_route: Audit a steady intrinsic-swirl ring family, compute its full physical KKS pullback and finite angular momentum, then prove or test the stability and two-carrier LP2 sector before exchange or relativistic claims.
+parent_state: active
+exhaustion_claimed: false
+correction_receipt_0011:
+  review: proposals/P253-euler-particle-mechanisms/attempts/0011/review.md
+  reviewed_derivation_sha256: 0cde70fc4fe089654d42af7095d15380bab26a5f8b4cb8c3d1b81846913ff294
+  disposition: bounded_representation_repair_applied
+  repairs:
+    - >-
+      General nonzero H1 now uses the full Euler-Poincare/coadjoint-orbit action and the
+      explicit harmonic row h_dot=-P_H(i_u B); Clebsch is scoped to H1=0/decay or a
+      separately proved circulation/cocycle sector.
+    - >-
+      Compact cutoff rotations are described as tangent and time-dependent path lifts;
+      the global S2 homogeneous orbit uses genuine rigid SO3 in the larger group.
+  preserved_findings:
+    - Euler coadjoint sign and density
+    - Hodge/Biot-Savart reconstruction
+    - Euler-Poincare and representation-A actions
+    - local regular Clebsch KKS pullback
+    - compact-swirl j and KKS period
+    - conditional prequantum and SU2 statements
+    - scaling and no-swirl quotient verdicts
+  verifier_action: six_unchanged_symbolic_checks_not_rerun

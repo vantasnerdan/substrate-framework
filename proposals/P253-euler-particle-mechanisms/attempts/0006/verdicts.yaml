@@ -1,0 +1,67 @@
+attempt: P253/0006
+candidate: R1-C
+active_obligations: [P2, P3]
+routes:
+  - id: A
+    target: quantitative constrained Hessian coercivity modulo axial translation
+    route_verdict: blocked
+    evidence_scope: EXACT_VARIATION_NO_GAP
+    strongest_result: >-
+      The exact source-admissible isovortical Hessian is the Green quadratic form minus the
+      inverse-profile-derivative term, and axial translation is an exact zero mode.
+    missing_construction: >-
+      A completed tangent space and norm with a proved positive coercivity constant after removing
+      translation; source uniqueness and compactness do not imply this gap.
+  - id: B1
+    target: qualitative-modulus two-ring persistence on a derived separated interval
+    route_verdict: established
+    evidence_scope: EXACT_CONDITIONAL_ANALYTIC
+    strongest_result: >-
+      Each label stays in the exact Cao rearrangement class, each one-ring deficit is nonnegative,
+      their sum equals E12(t)-E12(0), and source kernel/moment control plus the compactness modulus
+      yields full orbital deformation control for 0<=t<=T_* under the displayed separation inequality.
+  - id: B2
+    target: close the lower-separation exit using cross energy and conserved impulse alone
+    route_verdict: refuted
+    evidence_scope: METHOD_SCOPED_EXACT
+    mechanism: >-
+      The source estimate is an upper bound proportional to separation^-3; it excludes unbounded
+      ordered axial scattering when E12(0)>0 but weakens as separation tends to zero and supplies no
+      collision barrier.
+  - id: C1
+    target: transfer the published arbitrary-fixed-T concentrated-ring theorem to the frozen identical Cao pair
+    route_verdict: refuted
+    evidence_scope: EXACT_SOURCE_HYPOTHESIS_MISMATCH
+    mechanism: >-
+      Published Theorem 1.1 requires distinct fixed radii separated by at least 2D and intensities
+      a_i/abs(log epsilon). Two axial translates of one fixed-circulation Cao member have equal radii
+      and circulation kappa; the source additionally states that its inter-ring interaction vanishes
+      in the singular limit.
+  - id: C2
+    target: use the published reduced one-ring theorem to continue the equal-radius pair past the separation exit
+    route_verdict: blocked
+    evidence_scope: EXACT_CIRCULAR_DEPENDENCY
+    missing_construction: >-
+      The source external-field reduction is available only while the full supports are separated,
+      whereas its conclusion localizes the radial support but only concentrates axial mass. An
+      independent axial-support or tail-interaction estimate is required.
+licenses_earned:
+  - Exact individual rearrangement preservation under the common total velocity.
+  - Exact individual impulse exchange with conserved sum.
+  - Exact nonnegative-deficit and deficit-sum/cross-energy identities.
+  - Exact moment-based cross-energy bound while supports are axially separated.
+  - Source-derived positive qualitative compactness modulus without a fabricated rate.
+  - Autonomous finite-time same-Cao-family orbital deformation control under explicit separation.
+  - Exact published-source exclusion of the ZAMP arbitrary-T theorem as a direct equal-radius Cao-pair transfer.
+remaining_dependency: >-
+  Audit the short-time strong two-direction support-localization theorem arXiv:1904.04785 for an
+  equal-radius Euler-scaled Cao pair, then combine any admissible support-gap interval with the exact
+  Route B deficit identity; otherwise prove a pair-orbit modulus for the exact periodic same-family pair.
+does_not_license:
+  - quantitative Hessian gap
+  - all-time pair stability
+  - full three-dimensional perturbations
+  - restoring frequency
+  - electron or neutrino identification
+  - helicity, nontrivial rotation orbit, intrinsic spin, or spin one-half
+  - parent completion or global no-go

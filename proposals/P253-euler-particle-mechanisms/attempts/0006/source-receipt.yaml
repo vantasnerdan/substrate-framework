@@ -1,0 +1,75 @@
+attempt: P253/0006
+cache_policy: >-
+  Full primary-source bodies are retained only in /tmp/p253-primary-source-cache;
+  no downloaded paper body is a campaign artifact.
+sources:
+  - id: CaoEtAl2206.10165
+    role: named one-ring family, rearrangement compactness, and Green-kernel bounds
+    inventory:
+      title: Uniqueness and stability of steady vortex rings for 3D incompressible Euler equation
+      arxiv: https://arxiv.org/abs/2206.10165
+      version_used: cached primary-source PDF audited in P253/0002
+      cache_pdf: /tmp/p253-primary-source-cache/CaoEtAl2206.10165.pdf
+      cache_text: /tmp/p253-primary-source-cache/CaoEtAl2206.10165.txt
+      pdf_sha256: 6d90be6b7aab2ea7d92dba843b06e72e319cad50b0a2e39cfe5589cf6aa528ca
+      text_sha256: aa808fcf435a307c40815d4fdf81d4711c4a2750275e9810fbfc9b501f6085fd
+    body_status: previously_audited
+    page_map:
+      - pages: 5-7
+        content: Proposition 1.4, Theorems 1.6 and 1.8
+      - pages: 11-17
+        content: Theorems 2.9 and 2.10, compactness and orbital stability
+      - pages: 37-38
+        content: Proposition 4.1 and Theorems 4.2-4.3 for the polynomial family
+  - id: ButtaCavallaroMarchioro2102.07807
+    role: candidate arbitrary-fixed-time concentrated multi-ring evolution theorem
+    inventory:
+      title: Global time evolution of concentrated vortex rings
+      authors: [Paolo Butta, Guido Cavallaro, Carlo Marchioro]
+      journal: Zeitschrift fuer angewandte Mathematik und Physik 73, article 70 (2022)
+      doi: https://doi.org/10.1007/s00033-022-01708-w
+      arxiv_abstract: https://arxiv.org/abs/2102.07807
+      publication_date: 2022-03-08
+      access: open_access_CC_BY_4.0
+    inventory_basis: publisher and arXiv metadata/abstract only
+    body_status_at_inventory: unopened_for_attempt_0006
+    audit_questions:
+      - exact initial-data family, signs, norms, support, circulation scaling, and separation
+      - exact time quantifier and localization conclusion
+      - whether two scaled Cao polynomial-profile rings satisfy every hypothesis
+      - whether the theorem retains nontrivial mutual interaction or only a vanishing-interaction limit
+      - whether its conclusion controls shape or only concentration
+    audited_bodies:
+      - version: published_ZAMP_73_article_70
+        url: https://link.springer.com/content/pdf/10.1007/s00033-022-01708-w.pdf
+        cache_pdf: /tmp/p253-primary-source-cache/ButtaCavallaroMarchioro-ZAMP2022-published.pdf
+        cache_text: /tmp/p253-primary-source-cache/ButtaCavallaroMarchioro-ZAMP2022-published.txt
+        pages: 24
+        pdf_sha256: 3774c65e4cd4d5023b99c7dcc81534aa84c0b4b741ecd1eafb800e2544eb56bb
+        text_sha256: 6069f8f38600b56f723f4b7ad82d3b2d875f6200e54ecc23d40bf20152a01b4b
+        authority_for_transfer: true
+      - version: arXiv_2102.07807v3_2022-02-05
+        url: https://arxiv.org/pdf/2102.07807v3
+        cache_pdf: /tmp/p253-primary-source-cache/ButtaCavallaroMarchioro2102.07807.pdf
+        cache_text: /tmp/p253-primary-source-cache/ButtaCavallaroMarchioro2102.07807.txt
+        pages: 23
+        pdf_sha256: bc8022261743808cc17ce0daa0ba3de4b87f36fb0b40b5bcad94873e80c3ec18
+        text_sha256: c8f4fff443032574c57e4a8307f86d4673d83b607b2083d28c32aa16278f0f9b
+        authority_for_transfer: false
+    page_map:
+      - published_pages: 3-4
+        content: hypotheses (1.10)-(1.16), Theorem 1.1, and essential radial-separation Remark 1.1
+      - published_pages: 5-7
+        content: Assumption 2.1, Theorem 2.2, and interaction-field Lemma 2.3
+    version_delta: >-
+      arXiv v3 Remark 1.1 informally allowed any limiting trajectories that remain separated.
+      The published article instead declares the distinct-radius condition (1.12) essential because
+      it has no axial support-localization estimate. The published statement controls this transfer.
+    audit_result:
+      time_quantifier: every prescribed finite T, with epsilon then chosen sufficiently small
+      intensity_scaling: integral omega_i dz dr equals a_i divided by abs(log epsilon)
+      interaction_scaling: bounded and Lipschitz of order abs(log epsilon)^-1 while radial supports separate
+      support_result: uniform sharp radial support localization only
+      axial_result: concentration of mass near a moving center, not localization of the whole support
+      pair_admissibility: requires centers at distinct fixed radii separated by at least 2D
+      same_cao_pair_transfer: false

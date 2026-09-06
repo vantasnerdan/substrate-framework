@@ -64,11 +64,11 @@ Linearizing actual constant-density Euler about u_0=0 gives
 
     partial_t v=-grad pi/rho, div v=0.                   (9)
 
-For a nonzero Fourier wave k, incompressibility and divergence of(9) force pi_hat=0 under the usual decaying or periodic pressure normalization. Thus on the transverse two-dimensional velocity space the exact linear generator is zero. A uniform background U_0 merely gives
+For a nonzero Fourier wave k, incompressibility and divergence of(9) force pi_hat=0 under the usual decaying or periodic pressure normalization. Thus on the transverse two-dimensional velocity space the exact linear generator is zero. For a periodic cell or perturbations relative to a uniform background (not finite-total-energy U_0 on R^3), a constant U_0 gives
 
     (partial_t+U_0 dot grad)v=0                          (10)
 
-after pressure elimination: the frequency is U_0 dot k, a convective shift removable by a Galilean change of frame, not two propagating photon helicities with omega=+/-c|k|.
+after pressure elimination: the frequency is U_0 dot k, a convective shift removable by a Galilean change of frame, not a transverse wave equation with omega=+/-c|k|. The two transverse polarizations are a separate count from the positive/negative temporal-frequency branches.
 
 This is an exact test of the bare quiescent/uniform Euler sector, not a global prohibition of emergent propagation. A structured energetic Euler background can supply nonzero gradients, vorticity and collective restoring effects. Its actual linear/nonlinear spectrum, currents and same-carrier coupling must be derived; the prepared target-frequency response of C-CST-017/018 does not supply an autonomous photon or neutrino band.
 
@@ -81,3 +81,7 @@ The no-swirl helicity and finite-tag angular momentum vanish as stated. An orien
 The quiescent/uniform Euler transverse generator has only rest/convective frequencies as stated. Identifying it directly with finite-speed electromagnetic or relativistic particle propagation is refuted for that background.
 
 These results activate intrinsic swirl/twist and structured-background routes. Neither particle objective is reduced or refuted; both still require an actual shared quantum/relativistic realization and measured electric/weak currents.
+
+## Independent review reconciliation
+
+Attempt0008 establishes the stated exact/asymptotic scope. Its two wording refinements are applied: nonzero uniform background is periodic/relative-background scope, and transverse polarizations are distinct from temporal-frequency signs. No equations, API or oracle changed.

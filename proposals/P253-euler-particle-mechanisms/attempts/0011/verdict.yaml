@@ -1,0 +1,103 @@
+attempt: '0011'
+reviewer: particle-balance-review
+reviewer_independence:
+  authored_0005: false
+  implemented_0005: false
+  authored_0009: false
+  implemented_euler_shear_memory: false
+  authored_euler_shear_memory_tests: false
+target_kind: two_separately_adjudicated_fixed_units
+base_release: v0.183.0
+base_commit: b6fc902a0942d07996f12a81028fbd3f7c909a43
+activation_schema_exit: 0
+units:
+  A0005:
+    disposition: required_bounded_refactor
+    route_verdicts:
+      full_euler_poincare_and_orbit_action: established
+      hodge_biot_savart_state_completion: established
+      local_regular_clebsch_pullback: established
+      arbitrary_H1_global_clebsch_completion: refuted_with_mechanism_named
+      compact_swirl_rotation_kks_sphere: established
+      conditional_prequantum_su2_lift: established_conditionally
+    failure_mechanism: >-
+      On T3, u=h(t) and B=0 satisfies the displayed local Clebsch/curl rows for
+      arbitrary h(t), while periodic Euler requires hdot=0. The bulk label
+      action and stated overlap cocycle do not explicitly vary or evolve this
+      harmonic/circulation row.
+    strongest_positive_result: >-
+      The density-normalized Euler-Poincare and local coadjoint-orbit actions,
+      full Hodge state reconstruction, local regular Clebsch KKS pullback, and
+      the compact radial swirl S2 KKS form and 4*pi*j period are exact. With an
+      imported hbar, integral N=2*j/hbar gives the standard conditional SU2
+      central action (-1)^N; it is not a particle or quantum completion.
+    minimum_corrections:
+      - >-
+        Scope the Clebsch action/descent to H1=0/decaying Euclidean data or an
+        explicitly fixed admissible cocycle sector, or add and vary the missing
+        harmonic/circulation variables.
+      - >-
+        Describe radial-cutoff rotations as valid tangent and time-dependent
+        orbit lifts, not an SO3 subgroup of Diff_c; use the ordinary rigid SO3
+        action in the larger volume-preserving group for the global sphere.
+      - >-
+        Keep h as global instantaneous reconstruction data and Kelvin
+        circulation information; do not call fixed-basis harmonic coefficients
+        time invariants without a separate evolution proof.
+  B0009:
+    disposition: established_with_nonloadbearing_wording_correction
+    route_verdicts:
+      exact_nonlinear_split_and_energy_exchange: established
+      exact_triangular_euler_family: established
+      bounded_operator_volterra_elimination: established
+      bessel_kernel_and_initial_sine_forcing: established
+      finite_constant_coefficient_linear_realization: refuted_with_mechanism_named
+    strongest_positive_result: >-
+      The periodic triangular finite-amplitude Euler family has an exact bounded
+      resolved/unresolved elimination with kernel beta*J1(beta*t)/t and
+      deterministic forcing +/-epsilon*J1(beta*t)/t. Natural equal-energy
+      nearby initial profiles with the same resolved amplitude have opposite
+      resolved slopes, and the non-rational square-root resolvent excludes only
+      exact all-time finite-dimensional constant-coefficient linear
+      realizations.
+    minimum_corrections:
+      - >-
+        Attribute the real arcsine interval [-|beta|,|beta|] to the
+        self-adjoint frequency operator i*L_k=beta*sin(y); the skew-adjoint L_k
+        has spectrum i[-|beta|,|beta|].
+maximum_verdict: symbolic_verified
+review_status: audited
+epistemic_status: proposed
+parent_inheritance: none
+does_not_license:
+  - localized or persistent particle carrier
+  - mechanical force or interaction law
+  - full global Clebsch action on arbitrary nontrivial H1
+  - selection of hbar, N, mass, length, or action scale
+  - quantum Hilbert space, Born rule, spin statistics, or exchange law
+  - relativistic dispersion or invariant speed
+  - generic three-dimensional stability or closure
+  - electron or neutrino mechanism
+  - parent campaign completion or global no-go
+remaining_dependency: >-
+  For A, construct a stable localized intrinsic-swirl carrier and controlled
+  symplectic sector, supply scale selection and full phase-space
+  quantization/exchange descent, and explicitly close any nontrivial-H1
+  harmonic row used. For B, project an actual localized carrier/background
+  system with controlled complement, pressure/current and energy exchange.
+  P1-P7 remain active at their central scopes.
+evidence:
+  review: proposals/P253-euler-particle-mechanisms/attempts/0011/review.md
+  A_source: proposals/P253-euler-particle-mechanisms/attempts/0005/derivation.md
+  B_source: proposals/P253-euler-particle-mechanisms/attempts/0009/retained-euler-memory.md
+  B_module: src/substrate_framework/euler_shear_memory.py
+  B_tests: tests/test_euler_shear_memory.py
+  A_recorded_verifier_exit: 0
+  B_recorded_test_exit: 0
+reviewed_hashes:
+  A_derivation: 0cde70fc4fe089654d42af7095d15380bab26a5f8b4cb8c3d1b81846913ff294
+  B_derivation: ee560e1b12fbd94609f0867e9385ae9a2252f6a24663bd6e8606622f6e2b81be
+  B_module: 821778ccd55e3f01ba55f769c33b6de7e5f5df745369fd51fe8d7a53e0b4d17f
+  B_tests: ff8183a92d69b367b6c426e37e2245f9917657949572fd772cefbcbf359ca698
+  A_verifier_output: 378927d90259d43e2b95edfc18ef4bb31694c6595ce49917abc188af7a24d2ae
+  B_test_output: 9e4592019d9488a1b7ba853a93f4aa7e844f2f0b02615724b9c863ec28699691

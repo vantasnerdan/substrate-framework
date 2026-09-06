@@ -1,0 +1,70 @@
+attempt: '0008'
+reviewer: particle-balance-review
+reviewer_independence:
+  authored_reviewed_source: false
+  authored_reviewed_module: false
+  authored_reviewed_tests: false
+target_kind: fixed_theorem
+route_verdict: established
+evidence_scope: EXACT_IMPULSE_ASYMPTOTIC_FINITE_TAG_ORIENTATION_AND_BARE_SYMBOL
+strongest_positive_result: >-
+  Smooth compact divergence-free vorticity has the stated impulse dipole and
+  differentiated Newton remainder; two separated fixed cores have the positive
+  Euler kinetic cross coefficient and third-moment remainder. Axisymmetric
+  no-swirl helicity and finite-tag centered angular momentum vanish, a directed
+  nonzero-impulse carrier has orientation orbit S2, and rest/uniform Euler has
+  only zero/convective transverse frequency.
+maximum_verdict: symbolic_verified
+review_status: audited
+compatibility:
+  compact_vorticity_finite_tag_rest: native
+  nonzero_uniform_background: compatible_extension_periodic_or_relative_energy
+epistemic_status: proposed
+blocking_findings: []
+minimum_corrections:
+  - Explicitly type nonzero uniform flow as periodic or relative-background,
+    not finite-total-energy Euclidean data.
+  - Describe Maxwell's two transverse polarizations separately from the
+    positive/negative temporal branches of its wave cone.
+does_not_license:
+  - mechanical force from negative separation gradient
+  - Coulomb or electromagnetic interaction
+  - whole-space angular momentum without weighted convergence
+  - quantum spin or statistics from finite-tag spin or orientation alone
+  - full Euler-orbit topology
+  - full-orbit, nonlinear, or all-time carrier dynamics
+  - global particle no-go
+  - electron or neutrino mechanism
+parent_inheritance: none
+remaining_dependency: >-
+  Construct a persistent same-carrier interaction reduction with actual
+  symplectic/kinetic mechanics, controlled shape and ambient terms, and any
+  licensed force observable. Construct a physically nontrivial internal/swirl
+  or collective quantum sector and a structured-background autonomous
+  propagation/current mechanism on that same carrier. P2 and P4-P7 remain open.
+evidence:
+  review: proposals/P253-euler-particle-mechanisms/attempts/0008/review.md
+  source: proposals/P253-euler-particle-mechanisms/attempts/0007/particle-facing-calculus.md
+  module: src/substrate_framework/euler_impulse.py
+  tests: tests/test_euler_impulse.py
+  recorded_test_output: proposals/P253-euler-particle-mechanisms/attempts/0007/impulse-pytest.stdout
+  recorded_test_exit: 0
+reviewed_hashes:
+  particle_facing_calculus: fdb47e5129c797ae02a0c6da11509161e7863181845bbe17c77668fc0a5aedc8
+  module: e194baa950dba46140bce4f94c52bef621f6162bb61e0ea61b1b27d075caf85e
+  tests: 39df617a91fb4b804424550c1d14dc08a1cf2323e4fd53820c276fb7e7f46ffd
+  test_output: ea9106f92819092b5d3e8ea219b43794355bb75051142f4e0c91ab4c03bf17f9
+correction_check:
+  status: passed
+  amended_source_hash: 8f35441acdd64b0738a1dac0241db32ce82e28529de6970add9e2df710dd00ef
+  checked_boundary: section 3 wording and directly affected route summary only
+  corrections_closed:
+    - Nonzero uniform flow is explicitly periodic or relative-background,
+      not finite-total-energy Euclidean data.
+    - Transverse polarization count is explicitly separated from
+      positive/negative temporal-frequency branches.
+  equations_changed: false
+  api_changed: false
+  tests_changed: false
+  test_rerun: not indicated; existing exact receipt remains applicable
+post_correction_verdict: established_as_corrected

@@ -1,0 +1,17 @@
+attempt: P253/0012
+numerical_production: false
+checks:
+  - command: python proposals/P253-euler-particle-mechanisms/attempts/0012/verify_exact_identities.py
+    exit: 0
+    stdout: exact-check.stdout
+    verified:
+      - nonzero-initial-deficit evolution identity
+      - total-impulse product bound under individual exchange
+      - half-gap cross-energy coefficient
+      - two-parameter Euler energy-impulse functional scaling
+      - azimuthal-vorticity intensity scaling
+source_oracle:
+  source: arXiv:1904.04785v2
+  pdf_sha256: bdbc75defd6d5fb230e6784f0bd9566bbac69d2f4e831045d0a56478a86f7fb4
+  controlling_pages: [3, 4, 5, 6, 7, 15, 16, 17]
+maximum_verdict: exact conditional analytic same-leaf support and deformation control

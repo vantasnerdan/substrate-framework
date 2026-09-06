@@ -1,0 +1,9 @@
+# Exact field-map API validation
+
+Command: `PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_field_maps.py`, run by `/tmp/particle_field_map_checks.sh` in Herdr scripts pane w3:p2. Captured field-map-pytest.stdout records four tests passed in 2.22s; field-map-pytest.exit is zero.
+
+The exposing fixtures check the nonzero defined current on exact stationary shear, a field satisfying formal Maxwell identities while failing actual Euler and incompressibility, independent Gaussian wavefunction gradient energy, and the variational derivative of the density-gradient energy. These exact symbolic checks validate the conditional API and its convention boundaries. They do not derive electric charge, quantum dynamics or particle persistence. No numerical small-ratio calculation was made. No accepted claim or existing API changed.
+
+The multicomponent continuation extends the same API to a normalized spinor Berry velocity and the exact subtracted-texture kinetic energy. Initial six-test spinor-pytest.stdout/exit records one structural-equality failure: SymPy left a half-angle identity unevaluated. No physical equation changed. The API now applies exact Fu trigonometric reduction; spinor-pytest-repaired.stdout/exit records all six passed. Original failure is preserved. The new checks expose the texture-energy term and execute a genuinely vortical Euler shear with advected spinor labels.
+
+`PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python proposals/P253-euler-particle-mechanisms/attempts/0013/verify_flat_interface.py` produced flat-interface.stdout and exit0. It differentiates the actual Heaviside ansatz, integrates its residual against an unrestricted exposing test, and contrasts a zero-normal-derivative test. The nonzero distribution refutes only the stated map. No discretization or numerical error floor enters.
