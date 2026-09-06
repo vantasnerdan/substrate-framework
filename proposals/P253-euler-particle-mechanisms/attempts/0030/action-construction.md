@@ -29,9 +29,19 @@ Its first variations are
     A_xi=xi/r^2-zeta Psi'(xi)-(B composed Psi)'(xi).    (4)
 
 Using(2), both vanish on the actual wave in the regular interior. This is a
-physical full-field statement; outside the invertible label interval one must
-retain the corresponding boundary/variational inequality rather than assign
-an inverse to a constant exterior label.
+pointwise statement only on the regular invertible-label set. In the flat
+exterior, `xi=L_infinity`, `zeta=0`, while `psi_frame` varies, so no
+single-valued choice of `Psi(L_infinity)` makes `A_zeta` vanish pointwise.
+The physical statement there is orbitwise: for every compact smooth
+axisymmetric coadjoint generator `(g,a)`,
+
+    chi={xi,g}=0,  eta={zeta,g}+{xi,a}=0              (4a)
+
+through the constant-label exterior, and flat matching creates no interface
+distribution. Hence `delta A` vanishes on the true dynamically accessible
+tangent even though the unrestricted full-field first variation does not.
+Endpoint Casimirs are retained orbitwise, or through a separately declared
+extension, rather than by assigning an inverse to the flat label.
 
 The quadratic form on q=(eta,chi) is
 
@@ -44,11 +54,14 @@ Physical Q is2pi rho_m times(5). The exact accessible axisymmetric tangent is
     {f,g}=(f_r g_z-f_z g_r)/r.                       (6)
 
 Arbitrary eta,chi are not automatically independent physical directions.
-However where xi_r!=0, high-z-frequency g and a vary their leading ratio
-independently. Since K has order minus two, the off-diagonal term in(5) has
-both unbounded signs in the kinetic norm eta K eta+chi^2/r^2. This rules out
-using this particular full-leaf traveling functional as a uniformly positive
-kinetic metric. It does not prove instability of the wave.
+However on compact subsets strictly inside the regular region `F'!=0`,
+high-z-frequency `g` and `a` vary their leading ratio independently. There
+the quadratic form (5) is the physical accessible second variation. Since K
+has order minus two, its off-diagonal term has both unbounded signs in the
+kinetic norm `eta K eta+chi^2/r^2`. This rules out using this particular
+regular-interior, accessible traveling form as a uniformly positive kinetic
+metric. It does not assert a Frechet Hessian on arbitrary exterior fields and
+does not prove instability of the wave.
 
 ## A positive background functional is available in a different frame
 

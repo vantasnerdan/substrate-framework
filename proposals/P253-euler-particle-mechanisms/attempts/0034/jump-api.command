@@ -1,0 +1,1 @@
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_axisymmetric_action.py; final exact jump coefficient added

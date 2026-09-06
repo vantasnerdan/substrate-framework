@@ -2,14 +2,15 @@
 
 The strongest oracle is the direct functional/operator proof in the three derivations. Seven focused tests of the importable column module pass in4.03s, exit0, in Herdr scripts pane w3:p2. They independently derive the linear equations from cylindrical Euler, eliminate pressure by curl, test the energy flux and centrifugal-factor mutation, and recover the same radial dispersion equation. Four existing exterior/existence structure tests remain passing. These symbolic identities corroborate the proof; they do not prove its spectral, domain, profile-closure or nonlinear assertions.
 
-No production numerics, soft eigenvalue estimate, force or small energy splitting was computed. No small-ratio floor is inferred from exact algebra. The full-suite2705 receipt atbd61f48 predates this API extension;614cdc6 scoped validation passed its then-four column tests in3.74s. A new checkpoint receives the affected seven-test workflow scope. Independent0030 review is pending.
+No production numerics, soft eigenvalue estimate, force or small energy splitting was computed. No small-ratio floor is inferred from exact algebra. The full-suite2705 receipt atbd61f48 predates this API extension;614cdc6 scoped validation passed its then-four column tests in3.74s. Checkpoint1d378f9 received the affected workflow scope and passed2712 tests in455.12s. Independent0035 establishes0030 after the bounded exterior accessible-domain correction recorded in `review-correction-0035.md`; the unchanged oracle was not rerun.
 
 Physical density is the common2pi rho_m multiplier. Profile closure uses the named versioned primary source and an explicit C1 approximation, not guessed membership. The energy domain retains the flat-edge weight; the full nonlinear Lyapunov inequality is conditional on classical evolution and convergent conserved fluxes.
 
 ## Pinned boundary
 
 - `README.md` SHA256 `1728735f7d6aa91179f3b264ee7b1b52c1430c186b9df03efdc80fabbb35180e`
-- `action-construction.md` SHA256 `56ee231804c1ccfbd60b44546a7943f6518731f52bdd7a8ab95f777ce1aa1fe6`
+- `action-construction.md` pre-correction SHA256 `56ee231804c1ccfbd60b44546a7943f6518731f52bdd7a8ab95f777ce1aa1fe6`; post-correction SHA256 `ad59399682c9de070a4b0102b0b893d4a2408b9dccb996eaf6f9228fa197c24e`
+- `review-correction-0035.md` SHA256 `537b54751a7c98257267478e034bbe1cba360e69a28165c077be6fbe7a25add8`
 - `column-propagation.md` SHA256 `d50facb41126c1b0f31609dee04d733dfff720d34df4e83b59c5ca707f69de2e`
 - `column-profile-transfer.md` SHA256 `c4c9acc3ec29e709a0124a402e85ad688055cc945365b1788ceea23a95bd5fba`
 - `source-inventory.md` SHA256 `d47f5faf690c99f4e0703e184f4e015e135479a094a734d04e880ba2aeceff15`
