@@ -65,3 +65,42 @@ def column_exterior(wavenumber, matching_radius, radius):
     trace = r*sp.besselk(1, q*r)/(R*sp.besselk(1, q*R))
     derivative = -q*sp.besselk(0, q*R)/sp.besselk(1, q*R)
     return ColumnExterior(trace, derivative, -derivative/R)
+
+
+@dataclass(frozen=True)
+class ColumnLinearDynamics:
+    vorticity_rhs: sp.Expr
+    angular_momentum_rhs: sp.Expr
+    casimir_second_derivative: sp.Expr
+    swirl_energy_weight: sp.Expr
+
+
+def column_linear_dynamics(angular_momentum, poloidal_streamfunction,
+                           swirl_perturbation, radius, axial_coordinate):
+    """Axisymmetric Euler linearization at the pure-swirl column L(r)/r.
+
+    eta=delta(omega_theta/r), chi=delta(r*u_theta), and psi=K eta.
+    The returned RHSs retain the whole-space pressure through this Hodge
+    relation. The normalized conserved quadratic density is
+    (eta*psi+swirl_energy_weight*chi**2)/2, integrated with r dr dz;
+    its physical multiplier is 2*pi*rho. The weight applies on L'>0;
+    the weighted domain at a flat edge is part of the caller's hypotheses.
+    Positivity additionally uses L>0. Nonlinear wave stability is not implied.
+    """
+    r, z = radius, axial_coordinate
+    if not isinstance(r, sp.Symbol) or r.is_nonpositive is True:
+        raise ValueError("radius must be a symbol on r>0")
+    if not isinstance(z, sp.Symbol) or z == r:
+        raise ValueError("axial coordinate must be a distinct symbol")
+    L, psi, chi = map(sp.sympify, (angular_momentum,
+                                 poloidal_streamfunction, swirl_perturbation))
+    Lr = sp.diff(L, r)
+    if L.has(z) or Lr.is_nonpositive is True:
+        raise ValueError("column L depends only on r and needs L'>0")
+    Csecond = -sp.diff(L/r**2, r)/Lr
+    return ColumnLinearDynamics(
+        2*L*sp.diff(chi, z)/r**4,
+        Lr*sp.diff(psi, z)/r,
+        sp.simplify(Csecond),
+        sp.simplify(1/r**2+Csecond),
+    )

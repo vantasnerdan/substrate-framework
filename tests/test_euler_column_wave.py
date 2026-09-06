@@ -2,7 +2,9 @@
 
 import sympy as sp
 
-from substrate_framework.euler_column_wave import column_exterior, column_wave_coefficients
+from substrate_framework.euler_column_wave import (
+    column_exterior, column_wave_coefficients, column_linear_dynamics,
+)
 from substrate_framework.euler_compact_ring import compact_ring_fields
 
 
@@ -67,3 +69,57 @@ def test_exact_rank_one_inverse_and_limiting_homoclinic_zero_mode():
     assert reduce(A-A.diff(X, 2)-beta*A*A) == 0
     assert reduce(-A.diff(X, 3)+(1-2*beta*A)*A.diff(X)) == 0
     assert sp.simplify(A.diff(X).subs(X, -X)+A.diff(X)) == 0
+
+
+def test_column_dynamics_from_full_cylindrical_euler_and_energy_flux():
+    r = sp.Symbol("r", positive=True)
+    z, t, amplitude = sp.symbols("z t amplitude", real=True)
+    L = sp.Function("L")(r)
+    psi, chi, p = (sp.Function(name)(r, z, t) for name in ("psi", "chi", "p"))
+    ur, ut, uz = -amplitude*psi.diff(z)/r, (L+amplitude*chi)/r, amplitude*psi.diff(r)/r
+    ar = ur.diff(t)+ur*ur.diff(r)+uz*ur.diff(z)-ut**2/r+amplitude*p.diff(r)
+    at = ut.diff(t)+ur*ut.diff(r)+uz*ut.diff(z)+ur*ut/r
+    az = uz.diff(t)+ur*uz.diff(r)+uz*uz.diff(z)+amplitude*p.diff(z)
+    eta = -(psi.diff(r, 2)-psi.diff(r)/r+psi.diff(z, 2))/r**2
+    curl_row = sp.diff(ar, z)-sp.diff(az, r)
+    linear_curl = sp.diff(curl_row, amplitude).subs(amplitude, 0)/r
+    linear_swirl = r*sp.diff(at, amplitude).subs(amplitude, 0)
+    data = column_linear_dynamics(L, psi, chi, r, z)
+    assert sp.simplify(linear_curl-eta.diff(t)+data.vorticity_rhs) == 0
+    assert sp.simplify(linear_swirl-chi.diff(t)+data.angular_momentum_rhs) == 0
+    energy_rate = psi*data.vorticity_rhs+data.swirl_energy_weight*chi*data.angular_momentum_rhs
+    assert sp.simplify(energy_rate-sp.diff(2*L*psi*chi/r**4, z)) == 0
+    # An omitted centrifugal factor cannot pass either curl or energy row.
+    assert sp.simplify(psi*data.vorticity_rhs/2+
+                       data.swirl_energy_weight*chi*data.angular_momentum_rhs-
+                       sp.diff(2*L*psi*chi/r**4, z)) != 0
+
+
+def test_column_metric_and_pressure_dispersion_are_the_same_physical_system():
+    r = sp.Symbol("r", positive=True)
+    z = sp.Symbol("z", real=True)
+    k, omega = sp.symbols("k omega", nonzero=True, real=True)
+    L, f = sp.Function("L")(r), sp.Function("f")(r)
+    phase = sp.exp(sp.I*k*z)
+    psi = f*phase
+    chi = -k/omega*L.diff(r)/r*psi
+    data = column_linear_dynamics(L, psi, chi, r, z)
+    eta = -(f.diff(r, 2)-f.diff(r)/r-k*k*f)*phase/r**2
+    Phi = 2*L*L.diff(r)/r**3
+    dispersion = (omega/k)**2*(-f.diff(r, 2)+f.diff(r)/r+k*k*f)-Phi*f
+    assert sp.simplify((-sp.I*omega*eta-data.vorticity_rhs)*
+                       (omega*r*r/( -sp.I*k*k*phase))-dispersion) == 0
+    assert sp.simplify(-sp.I*omega*chi-data.angular_momentum_rhs) == 0
+    assert sp.simplify(data.swirl_energy_weight-2*L/(r**3*L.diff(r))) == 0
+    solid = column_linear_dynamics(r*r, psi, chi, r, z)
+    assert solid.casimir_second_derivative == 0
+    assert solid.swirl_energy_weight == 1/r**2
+
+
+def test_column_metric_rejects_flat_or_negative_circulation_slope():
+    import pytest
+    r = sp.Symbol("r", positive=True)
+    z = sp.Symbol("z", real=True)
+    for L in (1, -r, r*r+z):
+        with pytest.raises(ValueError):
+            column_linear_dynamics(L, r*r*z, r*z, r, z)

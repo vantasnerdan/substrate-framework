@@ -1,0 +1,144 @@
+attempt: P253/0029
+audit_date: 2026-09-06
+cache_policy: >-
+  Complete primary-source files and extracted text remain only under
+  /tmp/p253-primary-source-cache. This receipt retains versions, hashes,
+  page mappings, exact theorem scopes, and original transfer calculations.
+
+sources:
+  - id: GarciaHassainiaHmidi2603.21644
+    title: Time-periodic leapfrogging vortex rings in the 3D Euler equations
+    version: arXiv:2603.21644v1
+    abstract_url: https://arxiv.org/abs/2603.21644
+    pdf_url: https://arxiv.org/pdf/2603.21644v1
+    pdf_sha256: 7ba22ef57ba9453dd2631c33b1ad094a35ce2be171426cecce80fba8a5cdfac6
+    text_sha256: f6461cfc68e2aa3b08cadc3409a36f4f0267c5a7c73fdb03e46f9636c121c871
+    pdf_pages: 150
+    page_map:
+      - pages: 21-24
+        content: canonical rho=r^2/2 Hamiltonian transport and exact two-contour equation
+      - pages: 93-95
+        content: Proposition 8.3, restricted normal operator, diagonal frequencies, order-minus-three term, finite-step residual
+      - pages: 100-119
+        content: four periodic reductions and their restricted-space tame estimates
+      - pages: 128-131
+        content: final first-Melnikov Cantor measure proof and coefficient/transversality bounds
+    exact_scope_used: >-
+      On the reversible higher-mode periodic space, Proposition 8.3 gives a
+      bounded isomorphism to epsilon^2*L*omega*partial_phi plus the real
+      multiplier mu_j, an OPS^(-3) term, and an n-dependent residual E_(4,n).
+      Lemma 10.1 proves an O(L^(delta-1)) exclusion only for the scalar
+      first-Melnikov divisors indexed by (ell,j). It does not treat pairwise
+      differences, two independent labels, a full IVP, or monodromy powers.
+    transferred_facts:
+      - mu_j=c1*j+c2*sign(j)+epsilon^2*c3*d_j for abs(j)>=2
+      - d_j=-j/(4*(j^2-1)*abs(j)) and abs(d_j)<=1/12
+      - -2/3<=c1<=-1/3 and 1/3<=c2<=13/24 at the final solution
+      - omega is positive, strictly decreasing, and has derivative bounded away from zero on the compact source interval
+      - c1=-1/2+O(epsilon^2*sqrt(L)), c2=1/2+O(epsilon^2), with corresponding bounded parameter derivatives
+    exclusions:
+      - no full-label second-Melnikov theorem
+      - no block eigenvalue-shift or pairwise Lipschitz estimate
+      - no positive periodic metric or Krein classification
+      - no operator-norm limit eliminating E_(4,n)
+
+  - id: HassainiaHmidiMasmoudi2311.15765
+    title: Rigorous derivation of the leapfrogging motion for planar Euler equations
+    version: arXiv:2311.15765v2
+    published: Inventiones Mathematicae 242 (2025), 725-825
+    doi: 10.1007/s00222-025-01368-3
+    abstract_url: https://arxiv.org/abs/2311.15765
+    pdf_url: https://arxiv.org/pdf/2311.15765v2
+    pdf_sha256: 5c3ecff79051ab5bff9baebe2a634c00b5cd46f6045adf65337911aca9ad0afe
+    text_sha256: f7c4c7eb5ab50e43c75be022ff1efcc1c52327913336919dc694eb78ef8db646
+    pdf_pages: 81
+    page_map:
+      - pages: 37-39
+        content: Proposition 4.2 finite-step symplectic transport reduction and residual E_n
+      - pages: 52-55
+        content: approximate inverse using that finite-step reduction
+    exact_scope_used: >-
+      Proposition 4.2 constructs, for each chosen integer n and on a finite
+      Cantor set, a symplectic change reducing a planar scalar transport
+      operator up to E_n. It is an approximate-inverse ingredient; it does
+      not state convergence of the transformations or full-IVP stability.
+    transfer: finite-step transport architecture only
+
+  - id: HassainiaHmidiMasmoudi2110.08615
+    title: KAM theory for active scalar equations
+    version: arXiv:2110.08615v2
+    published: Memoirs of the American Mathematical Society 314 (2025), no. 1596
+    abstract_url: https://arxiv.org/abs/2110.08615
+    pdf_url: https://arxiv.org/pdf/2110.08615v2
+    pdf_sha256: 91babe5306f13fc73f6d43b38e5ea8e1d00bd48e11c8a3bfc84ba993d742d7ef
+    text_sha256: c3a5242bdfa51d79d836ecb594c8e9027953d27a2d0125af05f85eab866dc5b1
+    pdf_pages: 229
+    page_map:
+      - pages: 13-15
+        content: scalar normal reducibility strategy and second-Melnikov role
+      - pages: 179-199
+        content: Proposition 9.6 scalar normal KAM reduction and residual estimates
+    exact_scope_used: >-
+      The reducibility is for a scalar normal operator around a gSQG KAM
+      torus with external parameters, reversible spaces, finite regularity,
+      and a Nash-Moser approximate inverse. It supplies a scalar method
+      template, not the equal-principal-spectrum two-label block theorem.
+    transfer: no direct theorem transfer; audited as a scalar comparator
+
+  - id: HassainiaHmidiRoulley2302.01311
+    title: Invariant KAM tori around annular vortex patches for 2D Euler equations
+    version: arXiv:2302.01311v1
+    published: Communications in Mathematical Physics 405 (2024), article 270
+    abstract_url: https://arxiv.org/abs/2302.01311
+    pdf_url: https://arxiv.org/pdf/2302.01311v1
+    pdf_sha256: 394af598aa77ed3e8646e6a6d28e85c6fd3de9b02725781ccf5045f17665775d
+    text_sha256: 3618be96f0b0a50a213e8c131ded9a0435b4db8f0dcab0e6851762cd0c746c79
+    pdf_pages: 107
+    page_map:
+      - pages: 34-38
+        content: exact two-interface 2-by-2 Fourier matrices, discriminant, elliptic high modes, and hyperbolic low-mode exclusion by m-fold symmetry
+      - pages: 38-40
+        content: uniformly bounded symplectic block diagonalizer Q_j with 0<=a_j<1-delta
+      - pages: 69-78
+        content: Proposition 7.5 matrix KAM reduction with same- and cross-interface second-Melnikov sets
+      - pages: 79-84
+        content: approximate inverse built from Proposition 7.5
+      - pages: 94-107
+        content: final Cantor measure estimates using external parameters and the imposed symmetry class
+    exact_scope_used: >-
+      Proposition 7.5 treats a vector normal operator for the two boundaries
+      of one planar annulus. It constructs an invertible matrix reduction on
+      m-fold reversible spaces and imposes same-branch and cross-branch
+      second-Melnikov inequalities, but its displayed conjugacy still has a
+      finite-step error E_n^1. Corollary 4.1 obtains uniformly elliptic high
+      blocks only after an explicit discriminant calculation and removes
+      hyperbolic low modes by choosing m>=m_*(b_*).
+    transferred_method:
+      - retain a two-component Fourier block before solving off-block Sylvester equations
+      - impose both same-branch and cross-branch second-Melnikov conditions
+      - demand a uniform block diagonalizer or positive block metric
+    nontransferable_features:
+      - its two components are nested annulus boundaries, not two disjoint 3D rings
+      - the two equilibrium transports differ, whereas the ring label principal spectra coincide
+      - its parameters are (b,omega), not the single Garcia orbit parameter lambda
+      - m-fold symmetry deletes actual low modes and is unavailable on the full P253 perturbation space
+      - the finite-step residual is used for an approximate inverse, not all-power IVP control
+
+source_theorem_table:
+  - theorem: GHH Proposition 8.3 and Lemma 10.1
+    useful_exact_transfer: diagonal frequency and first-divisor transversality scale
+    missing_for_0029: pairwise block shifts, full-label convergence, and power control
+  - theorem: HHM planar Proposition 4.2
+    useful_exact_transfer: finite-step symplectic transport conjugation
+    missing_for_0029: infinite-step full-IVP limit
+  - theorem: HHM active-scalar Proposition 9.6
+    useful_exact_transfer: scalar smoothing KAM bookkeeping template
+    missing_for_0029: degenerate two-label matrix domain and actual source parameters
+  - theorem: HHR annular Corollary 4.1 and Proposition 7.5
+    useful_exact_transfer: explicit matrix blocks, second-Melnikov split, and uniform-conditioning criterion
+    missing_for_0029: actual ring block discriminant, full modes, and zero residual
+
+quotation_policy: >-
+  No extended source passage is retained. Formulas and theorem scopes are
+  paraphrased; all transfer identities and estimates in construction.md are
+  original calculations.

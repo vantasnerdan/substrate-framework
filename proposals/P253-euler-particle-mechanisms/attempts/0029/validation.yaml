@@ -1,0 +1,46 @@
+attempt: P253/0029
+validation_date: 2026-09-06
+activation_schema_exit: 0
+
+checks:
+  - name: exact_block_algebra
+    command: python proposals/P253-euler-particle-mechanisms/attempts/0029/verify_exact_blocks.py
+    exit: 0
+    assertions: 14
+    covers:
+      - d_j parity and sharp bounds
+      - autonomous same-sign and opposite-sign gap constants
+      - principal positive-metric constants and condition ratio
+      - homological-equation sign
+      - resonant transversality elimination identity
+      - finite Hamiltonian/KKS and positive-metric identities
+      - common physical normalization cancellation
+  - name: yaml_parse
+    exit: 0
+    covers:
+      - source-inventory.yaml
+      - source-receipt.yaml
+      - verdicts.yaml
+
+artifact_sha256:
+  README.md: 22964dbcb9a594bedeba15b692b196e3eb78dc06af9094bdc19b32bf2d220ddf
+  source-inventory.yaml: 71ed4929cfefbf762b18c9795c4291d30c7583c7fe3fbdba3b49e611ef2681ef
+  source-receipt.yaml: 4f7eabc9ab86577a6f0fa815366d2e1a53b12b2f2c1946058904ebea07319a34
+  construction.md: ff0b18f27d76a2778ac70fb26043b72cb32a1159ca42793db3da5b75469f622a
+  verdicts.yaml: 9ed79edb24559719cb63391068330a00acac65bd79c6147f7ffc4d2a65378874
+  verify_exact_blocks.py: 6695726901475b27724a5fca5450633bf6b2e60b1d07cd854b13d2484fe745f2
+  exact-check.stdout: 68a809a42410362895c555e3cd98319808b69835fa35b6b4bd54241edd231f10
+  exact-check.exit: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+
+scientific_oracle: >-
+  Exact algebra on the actual two-label block representation, supplemented
+  by claim-level source-scope audit. No numerical spectrum, soft ratio, or
+  production computation was used.
+
+strongest_exact_verdict: >-
+  Principal full-label block divisors are autonomously separated and
+  parameter-transversal; finite cutoffs admit exact symplectic homological
+  solves; and the diagonal high-mode evolution has a positive metric with
+  explicit bounds. Infinite-step actual-monodromy power control remains open
+  because full-label iterated block shifts and residual convergence are not
+  published or constructed.
