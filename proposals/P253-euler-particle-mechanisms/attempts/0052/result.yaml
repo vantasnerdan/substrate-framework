@@ -2,10 +2,10 @@ attempt: P253/0052
 owner: particle-foundations
 active_obligation: fixed_domain_full_sector_cao_graph_riesz
 activation_schema_exit: 0
-evidence_scope: EXACT_SCALING_DOMAIN_NORMALIZATION_AND_CONDITIONAL_GRAPH_RIESZ
+evidence_scope: EXACT_SCALING_REPRESENTATION_NORMALIZATION_AND_DOUBLY_CONDITIONAL_GRAPH_RIESZ
 preserved_0048_result:
   - physical translation-to-Kelvin coupling O(delta^2/n)
-  - one-mode finite interaction window at high index
+  - one-mode finite spectral interaction window at high index
   - coupling-to-local-spacing ratio O(1/log(1/delta))
 corrections:
   resonant_index: >-
@@ -21,75 +21,63 @@ corrections:
     and multiplication by sqrt(nu) gives KKS pairing -i.
 route_verdicts:
   fixed_domain_action_angle_piola:
-    verdict: established
+    verdict: established_at_representation_and_energy_scope
     positive_result: >-
-      Weighted enclosed area and normalized streamline time give an exact
-      action-angle chart with dA=dI wedge d beta and transport
-      omega_delta(I)*partial_beta. Factoring the unequal cross-delta physical
-      volume and applying a normalized Hanzawa-Moser correction gives an
-      orientation-preserving constant-relative-Jacobian Piola conjugacy with
-      full determinant factors, preserves DA curl support, and retains
-      whole-space Biot-Savart velocity. Only displacements within one fixed
-      carrier are asserted volume preserving and coadjoint.
-      Logarithmic rescaling of the centerline displacement block gives uniform
-      physical energy equivalence on the fixed space.
+      Weighted enclosed area and normalized streamline time give the exact
+      action-angle form and transport clock. Factoring unequal physical volumes
+      and retaining full Piola determinant factors gives the correct
+      orientation-preserving cross-delta representation. Only displacements
+      within one fixed carrier are volume preserving and coadjoint.
     boundary: >-
-      Uniform generator graph equivalence requires HJ2.
+      Uniform closed generator graph equivalence and closed DA range require HJ2.
   exact_normalization:
     verdict: established
     positive_result: >-
       Density, toroidal Fourier measure, physical core clock, energy norm,
-      KKS sign, generator eigenvalue, and energy-to-KKS mode scaling are
-      connected by exact identities and the canonical oscillator oracle.
+      KKS sign, generator eigenvalue, and energy-to-KKS scaling obey the
+      displayed exact identities.
   all_sector_complement:
-    verdict: established_for_limiting_polyhomogeneous_operator
+    verdict: conditional_on_GR
     positive_result: >-
-      The exact streamline chart makes local transport/shear block diagonal in
-      m. Large abs(m) follows from the explicit triangular inverse, finite
-      m=1 from the translation-removed ground-state gap, abs(m)>=2 from the
-      positive form increment, and m=0 from an all-sector Grushin operator.
-      Nonzero-m elimination is order -2 on the m=0 effective block, preserving
-      the A*delta/n principal law and the delta^3*L^2 window spacing.
-    exact_cao_transfer: conditional_on_HJ2
-  direct_global_euler_graph_jet:
-    verdict: blocked_by_named_construction
-    positive_result: >-
-      The exact elliptic-integral Green expansion is evaluated through its
-      rho_G*log(rho_G) and finite rho_G coefficients, and the exact first and
-      second Cao local profile cells are displayed. The missing objects are
-      therefore estimates, not undetermined coefficients.
+      Scalar and sectorwise limiting calculations give the large-m triangular
+      inverse, translation-removed m=1 gap, positive fixed abs(m)>=2 form, and
+      the m=0 finite-window scaling.
     missing_construction: >-
-      Prove uniform graph equivalence and modewise D_* to X_* remainder bounds
-      for the twice-differentiated moving-boundary whole-space
-      Biot-Savart/Leray generator. The published elliptic
-      O(epsilon^2*abs(log epsilon)) remainder does not control the resonant
-      index tending to infinity.
+      Prove the coupled nonnormal all-sector X_* to D_* graph-resolvent/Grushin
+      estimate, including low modes, global pressure/Hodge, axis, interface,
+      collar, exterior, and KKS projection constants. Scalar gaps and spectral
+      separation do not establish it.
+  direct_global_euler_graph_jet:
+    verdict: blocked_by_HJ2
+    positive_result: >-
+      The exact elliptic-integral Green expansion and the exact first and second
+      local Cao cells fix candidate coefficients rather than free constants.
+    missing_construction: >-
+      Prove uniform graph equivalence and modewise moving-boundary whole-space
+      Green/Leray remainder bounds. Cao's printed elliptic remainder is
+      insufficient at the diverging resonant index.
   full_physical_graph_riesz:
-    verdict: established_conditional_on_HJ2
+    verdict: conditional_implication_on_HJ2_and_GR
     positive_result: >-
-      HJ2 plus the all-sector Grushin bounds gives a complement inverse of
-      scale O(1/(delta^3*L^2)), the enlarged physical Feshbach matrix, and a
-      finite-rank graph-bounded KKS-nondegenerate Riesz projection reconstructed
-      to compact DA vorticity and exact exterior velocity.
+      If HJ2 and the independent nonnormal all-sector estimate GR hold, the
+      Feshbach and contour identities construct the finite-rank graph-bounded
+      KKS-nondegenerate physical Riesz projection.
   nonlinear_fixed_order_residual:
-    verdict: established_as_approximation_only
+    verdict: conditional_formal_approximation_only
     positive_result: >-
-      The finite-order coefficients may yield a residual O(a^(N+1)) at the
-      earned regularity. They are not an exact solution or branch.
+      Given the missing graph inverse, finite-order product estimates define a
+      formal residual through each fixed order. They are not an exact Euler
+      solution or branch.
 strongest_exact_result: >-
-  The correct fixed-domain representation is a weighted streamline
-  action-angle Hanzawa-Moser chart followed by a constant-Jacobian Piola map
-  and logarithmic centerline energy rescaling. It diagonalizes the full local
-  transport/shear by cross-sectional m and reduces every nonzero sector before
-  the compact m=0 Kelvin block. This constructs the full-sector limiting
-  resolvent and proves the exact Cao graph-Riesz theorem conditional on one
-  explicit modewise global-Euler graph-jet hypothesis HJ2.
+  The corrected crossing law and logarithmic scale, exact local Cao cells,
+  unequal-volume action-angle/Piola representation, toroidal distance, and
+  physical KKS normalization are established. The all-sector nonnormal graph
+  inverse GR and global moving-boundary graph jet HJ2 are independent missing
+  constructions; the exact Cao graph-Riesz theorem is conditional on both.
 next_executable_dependency: >-
-  Prove HJ2 by differentiating the exact moving-boundary Green/Leray operator
-  in the action-angle Piola chart and deriving the modewise order-minus-one and
-  order-minus-two bounds uniformly at n*=Theta(1/(delta*log(1/delta))). If
-  strong graph differentiation fails at finite p, construct a weighted
-  norm-resolvent estimate with the same modewise rates.
+  Construct HJ2 on a common closed DA graph domain and prove GR for the full
+  coupled nonnormal operator. Only then apply the exact conditional Feshbach
+  and contour algebra.
 does_not_license:
   - unconditional exact-Cao graph-Riesz theorem
   - exact nonlinear solid-torus branch

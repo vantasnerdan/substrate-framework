@@ -16,31 +16,24 @@ The sign in (1) follows by differentiating
 `partial_t Omega=curl(u cross Omega)`. The decaying whole-space operator (2),
 not an interior inverse, defines velocity and pressure closure.
 
-For an integer Cao exponent `p>=6`, after centering, fixing circulation and
-factoring the exact physical `R_delta,a_delta`, the following objects are
-constructed below:
+For integer Cao exponent `p>=6`, this attempt establishes the exact local Cao
+cells, the pulled-back Biot--Savart first and second shape identities, the
+exact toroidal distance, and a limited no-vortex-sheet trace fact for the
+vorticity and its DA tangent. It also derives the candidate expansion
 
-1. a polyhomogeneous `C^2` carrier/free-boundary chart with independent
-   variables `(delta,tau)`, restricted at the end to
-   `tau=delta^2 log(delta)`;
-2. a fixed Hodge representation of the complete DA quotient, including its
-   harmonic circulation row;
-3. the twice-differentiated three-dimensional whole-space Hodge and metric
-   Leray operators on one graph domain; and
-4. the expansion
+    Ahat_delta=A_col(k_delta)+delta C_1
+       +delta^2 L C_(2,log)+delta^2 C_2+R_delta.           (3)
 
-       Ahat_delta=A_col(k_delta)+delta C_1
-          +delta^2 L C_(2,log)+delta^2 C_2+R_delta,        (3)
+The claimed estimates
 
-   with
+    ||R_delta^loc||_(D_* -> X_*)<=C delta^3 L,
+    ||R_delta^H||_(Psi^(-1))<=C delta^3 L                 (4)
 
-       ||R_delta^loc||_(D_* -> X_*)<=C delta^3 L,
-       ||R_delta^H||_(Psi^(-1))<=C delta^3 L.             (4)
-
-The order-minus-one mode estimates and their order-minus-two Schur products
-then imply the contour-relative estimate required by 0052. This is an HJ2
-theorem for the frozen `p>=6` subfamily. It is not a nonlinear rotating-wave
-existence theorem.
+remain conditional on four named constructions: an exact augmented Cao
+carrier map, a uniform common DA graph domain, genuine two-index symbol
+bounds, and the full nonnormal all-sector graph resolvent. Consequently 0054
+does not discharge `HJ2` and is not a nonlinear rotating-wave existence
+theorem.
 
 ## 2. The exact carrier jet rather than differentiability by assertion
 
@@ -92,138 +85,122 @@ constant. Its remainder through the displayed second cells is
 `O(q^4|log q|)`; the larger order in this statement comes from the geometric
 prefactors and the first cell.
 
-### 2.2 Augmented implicit map
+### 2.2 Candidate augmented implicit map and the source gap
 
-Work on `B_2` in the affine logarithmic-potential space
+Work formally on `B_2` in the affine logarithmic-potential space
 
     W={w in C^(3,alpha): w-c_log log|y| is harmonic off B_2},   (12)
 
 with fixed `c_log` (circulation), even symmetry in `y_2`, and center gauge
 `partial_1 w(0)=0`. The exact core integral equation, circulation condition,
-center condition, and the two physical scale/speed equations obtained from
-source system (3.36) define
+and center condition are available. Cao's system (3.36), however, is an
+auxiliary two-parameter asymptotic system defining comparison parameters. It
+is not an exact scale/speed row of the steady problem: Corollary 3.12 supplies
+the true equations only with `O(epsilon^2|log epsilon|)` errors, and
+Proposition 3.13 records nonzero differences between the actual and auxiliary
+parameters.
 
-    F(q,tau;w,mu,c_log)=0.                                (13)
+A successful continuation must construct from the exact steady integral
+equation and exact parameter relation an augmented map
 
-Because `p>=6`, `w -> (w_+)^p` is `C^4` between the spaces needed for two
-parameter derivatives and one graph derivative. The kernel calculation
-following (10) makes `F` `C^3` in `(q,tau,w,mu,c_log)` near
-`(0,0,U,mu_0,c_0)`.
+    F(q,tau;w,mu,c_log)=0,                                (13)
 
-The profile part of `D F` is `L_U`. Source Lemma 3.8 says its bounded kernel
-is exactly
+with an explicit Banach domain/codomain and exact restriction relating
+`epsilon`, `q`, `tau`, circulation, and prescribed speed. The formal kernel
+expansion following (10) identifies the candidate `(q,tau)` coefficients, but
+does not prove that `F` is a `C^3` map on an open neighborhood.
+
+The limiting profile part would be `L_U`. Source Lemma 3.8 gives
 
     ker L_U=span{partial_1 U,partial_2 U}.                (14)
 
-Evenness removes `partial_2 U`, and the center gauge removes
-`partial_1 U`. The far-log/circulation row is nonzero because
+Evenness removes `partial_2 U`, the center gauge removes `partial_1 U`, and
 
-    -2 pi U'(1)=integral_(B_1) U^p dy>0,                 (15)
+    -2 pi U'(1)=integral_(B_1) U^p dy>0                  (15)
 
-while the boundary/scale row is nonzero by the Hopf sign `U'(1)<0`. The
-derivative of the first source (3.36) row with respect to the centered major
-radius has leading coefficient `W log(1/epsilon)`, while the second row has a
-nonzero scale derivative by (15); after using `q=s/R`, these rows are uniformly
-triangular in the factored physical variables. Consequently the augmented
-derivative is triangular modulo a compact
-potential perturbation, has index zero, and has trivial kernel by (14)--(15);
-it is an isomorphism. This is the missing surjectivity step that uniqueness
-alone would not supply.
+provides a nonzero limiting boundary coefficient. Lemma 3.9 is an a-priori
+estimate for the source operator `L_epsilon`; it does not prove Fredholm index
+zero or surjectivity of the newly lifted augmented derivative. The
+low-frequency/far-log compatibility, index, and parameter-row Schur
+determinant remain to be constructed.
 
-The Banach implicit-function theorem applied with `(q,tau)` independent gives
-a unique `C^3` solution
+If those exact mapping and invertibility statements were proved, the implicit
+function theorem would produce the candidate expansion
 
     w(q,tau)=U+qV+tau Z_log+q^2 Z+Rem_w,                 (16)
     ||Rem_w||_(C^(3,alpha))
-       <=C(|q|^3+|q tau|+tau^2).                         (17)
+       <=C(|q|^3+|q tau|+tau^2),                         (17)
 
-Restricting `tau=q^2 log q` turns (17) into
+and restriction `tau=q^2 log q` would give
 
     ||Rem_w||_(C^(3,alpha))<=C q^3 |log q|.              (18)
 
-The source's centered estimate in Lemma 3.9 supplies uniformity of the
-inverse as `q->0`; (14)--(15) identify its limit. The constructed solution has
-the concentration, circulation, symmetry, and speed class of Theorem 1.6, so
-the source uniqueness theorem identifies it, up to the removed axial
-translation, with the actual Cao family. Thus (16)--(18) are a newly derived
-carrier jet, not a differentiability claim imported from the source's
-`O(epsilon^2|log epsilon|)` estimate.
+Equations (16)--(18) are therefore a formal polyhomogeneous candidate, not a
+constructed Cao branch. Theorem 1.6 can identify an independently constructed
+exact family only after its concentration and parameter hypotheses have been
+verified; it cannot create the missing branch or supply augmented
+surjectivity. The exact cells (7)--(8) remain established. The claimed smooth
+conversion from `q` to the physical thinness `delta=a_delta/R_delta` also
+belongs to the missing exact augmented-map construction.
 
-The physical thinness `delta=a_delta/R_delta` and `q` differ by the smooth
-free-boundary radius gauge `delta=q(1+O(q))`; its inverse has the same
-`(q,q^2 log q)` regularity. Hence (16)--(18) hold with `delta` after a change
-of the finite coefficients. Slowly varying exact major-radius and clock
-factors are retained in the physical normalization rather than Taylor-expanded
-as if they were constants.
+### 2.3 Limited interface regularity and absence of a generated sheet
 
-### 2.3 Interface regularity and absence of a generated sheet
-
-In the fixed Hanzawa coordinate let `d=1-s` be inward normal distance. Hopf's
-lemma and (16) give
+In a fixed Hanzawa coordinate let `d=1-s` be inward normal distance. For the
+source's actual smooth polynomial profile, Hopf behavior gives
 
     Omega_delta=d_+^p a_delta(s,beta) tau_delta,
-    0<c<=a_delta<=C,                                     (19)
+    0<c<=a_delta<=C.                                     (19)
 
-with `a_delta` uniformly `C^(3,alpha)`. Parameter differentiation yields
+Formal parameter differentiation yields
 
     partial_delta Omega_delta
        =p d_+^(p-1)(partial_delta d)a_delta
           +d_+^p partial_delta a_delta,                  (20)
 
-and a second derivative whose lowest power is `d_+^(p-2)`. For `p>=6`, (20)
-and its second derivative have all traces needed by the graph calculation;
-distributional differentiation creates no boundary delta measure. For a DA
-tangent
+and a second derivative whose lowest power is `d_+^(p-2)`. For `p>=6`, these
+coefficients have zero-extension traces and create no interface delta measure.
+For a DA tangent
 
     eta=-L_xi Omega_delta=d(i_xi Omega_delta),            (21)
 
 the lowest boundary power is `d_+^(p-1)`, again with zero vortex-sheet trace.
-This closes the physical core/interface support statement before applying the
-global Hodge operator.
+This establishes the limited no-sheet statement for `Omega_delta` and `eta`.
+It does not establish the required traces of `A_delta eta` after two parameter
+derivatives or freeze the full Sobolev interval of the graph calculation.
 
-## 3. A genuine common DA quotient
+## 3. Candidate common DA quotient
 
 Let `mu_delta` and `varpi_delta=i_(Omega_delta)mu_delta` denote the pulled-back
 volume and vorticity two-forms. A no-normal-flow displacement satisfies
 
     d(i_xi mu_delta)=0.                                  (22)
 
-On a solid torus, the relative Hodge decomposition of the closed two-form in
-(22) is
+On a solid torus, the relative Hodge decomposition would take the form
 
     i_xi mu_delta=d alpha+h xi_harm,                     (23)
 
-where the single harmonic row records meridional flux/circulation. Retaining
-`h` is essential; (23) is not a local Clebsch completion.
+where the harmonic row records meridional flux/circulation. In action--angle
+coordinates the candidate density is
 
-In the action--angle chart,
+    varpi_delta=f_delta(I)dI wedge d beta.                (24)
 
-    varpi_delta=f_delta(I)dI wedge d beta,                (24)
-
-and `f_delta/f_0` extends as a positive `C^2` function to the boundary after
-the common factor `d^p` in (19) is removed. Equations (21)--(24) identify the
-stabilizer as the closed-one-form kernel of `d(i_xi varpi_delta)`. Fix its
-orthogonal complement together with the impulse and centering rows.
-
-The one-dimensional Hardy estimate
+The one-dimensional estimate
 
     ||d^(p-1)g||_(H^-1(0,1))
        <=C ||partial_d(d^p g)||_(H^-1(0,1))               (25)
 
-and its tangential Fourier version show that multiplication by
-`f_delta/f_0`, the Hodge projections in (23), and their inverses are uniformly
-bounded on the quotient completion. The finite harmonic row is controlled
-directly by circulation. Therefore
+is compatible with this weighted representation. It does not by itself prove
+the reverse estimate, closedness of the DA energy range, uniform boundedness
+of multiplication by `f_delta/f_0` and its inverse on the `H^-1`/graph
+completion, or boundary/gauge control of the harmonic row. Therefore
 
     T_delta:[Y_*/Stab_*] -> [Y_delta/Stab_delta]          (26)
 
-is an isomorphism with uniform norms, and so is the induced map of closed DA
-energy ranges. This constructs the fixed `X_*`; it does not assume all
-divergence-free vorticities are dynamically accessible.
-
-Cross-`delta` maps in (26) are operator identifications. Only the physical
-same-carrier displacement generating (21) is volume preserving and belongs to
-one coadjoint orbit.
+is the required common-domain isomorphism, not an established conclusion.
+Its proof must freeze a Sobolev interval, retain tangential zero modes and the
+harmonic row, and estimate the composite whole-space Hodge projectors on the
+actual zero-moment/DA spaces. Cross-`delta` maps remain operator
+identifications; only physical same-carrier displacements are coadjoint.
 
 ## 4. Exact moving-coordinate Biot--Savart derivatives
 
@@ -302,22 +279,27 @@ More precisely, after the homogeneous order-minus-one kernel is factored,
 the front-face remainder (`vartheta=delta t`) and the side-face remainder
 (`vartheta` fixed) are both bounded by the integrand in (36a), with the same
 bound after the cross-sectional derivatives defining the order-minus-one
-symbol seminorms. Their overlap coefficients agree because both are Taylor
-expansions of the exact expression (34). A partition of unity on these two
-regions therefore leaves no unmatched intermediate scale and gives
+symbol seminorms. Their overlap coefficients agree formally because both are Taylor
+expansions of the exact expression (34). The scalar bound (36a) does not by
+itself prove the cross-sectional derivative seminorms required for
 
     ||R_delta^H||_(H^s -> H^(s+1))
-       <=C_s delta^3 L,                                  (37)
+       <=C_s delta^3 L.                                  (37)
 
-uniformly for the finite Sobolev interval used below. The axisymmetric Cao
+That estimate remains conditional on explicit front, side, and overlap symbol
+bounds with every anisotropic `delta` factor retained on a frozen Sobolev
+interval. The axisymmetric Cao
 kernel (2.2) gives the carrier coefficients; (34)--(37) give the actual
 nonaxisymmetric perturbation operator.
 
-Combining (31)--(37), the collar Hanzawa map, and its identity exterior
-extension proves
+The desired consequence of (31)--(37), the collar map, and the exterior
+extension is
 
     ||Lambda^(s+1) partial_(delta,tau)^j
           B_delta Lambda^(-s)||<=C_s,  |j|<=2.            (38)
+
+but (38) is not established until the missing symbol seminorm estimates and
+interface graph domains are supplied.
 
 The global construction has no artificial interface boundary condition:
 compact vorticity is extended by zero, (2) is applied in all of `R^3`, and
@@ -347,8 +329,11 @@ Substitution of (41) into (40) gives, for example,
 
 with the second derivative obtained by differentiating these three displayed
 products. All `J`, cofactor, gradient, divergence, and inverse-Laplacian terms
-are therefore present. Uniform ellipticity and the identity exterior extension
-give the same `H^s` bounds as (38), at Leray order zero.
+are therefore present. The algebraic identities are exact, but `Delta^-1` is not separately
+bounded on general inhomogeneous whole-space Sobolev spaces. Bounds must be
+proved for the composite Hodge/Leray operators on the actual zero-moment or
+homogeneous DA domain. Uniform ellipticity alone does not give the asserted
+global estimates.
 
 For divergence-free compact vorticity, `v=B_delta eta` satisfies
 `curl_g v=eta`, `D_delta v=0`, and decay. Uniqueness of this Hodge system gives
@@ -359,144 +344,104 @@ Thus (29) and (40) are the vorticity and velocity representations of one
 global closure; pressure has not been discarded merely because (1) is written
 in vorticity form.
 
-## 6. Common graph domain and the full jet
+## 6. Conditional common graph domain and full jet
 
-Differential-form covariance rewrites (1) on the fixed domain as
+Differential-form covariance formally rewrites (1) as
 
     Ahat_delta eta=-L_(uhat_delta)eta
                     -L_(B_delta eta)varpi_delta.          (44)
 
-The action coordinate makes
+The action coordinate would make
 
     uhat_delta=omega_delta(I) partial_beta.               (45)
 
-For `m!=0`, `omega_delta>=omega_min>0` makes the graph norm of the first term
-uniformly equivalent to one `beta` derivative. For `m=0`, it vanishes and the
-compact Kelvin graph from the DA quotient is used. The remaining stretching,
-connection, Hodge, collar, and exterior terms are relatively graph bounded.
-Equations (16)--(18), (31)--(38), and (44)--(45) consequently give one domain
+A proof of one common closed graph domain
 
     D(Ahat_delta)=D_*                                    (46)
 
-and the expansion (3).
+requires the missing two-sided DA isomorphism (26), traces for
+`A_delta eta`, composite whole-space Hodge bounds, and uniform control of the
+metric pressure operator. The exact identities (31)--(35) are inputs to that
+proof, not a substitute for it. Accordingly the remainders
 
-Separate the local graph and Hodge remainders. Taylor's formula in the smooth
-variables `(delta,tau)` and `tau=delta^2 log delta` gives
+    ||R_delta^loc||_(D_* -> X_*)<=C delta^3 L,            (47)
 
-    ||R_delta^loc||_(D_* -> X_*)<=C delta^3 L.            (47)
+and (37), as well as twice differentiable KKS dual projections on the same
+domain, remain conditional graph estimates. The exact streamline and Fourier
+selection rules remain valid formal bookkeeping: longitudinal `i ell delta`
+stays in `A_col(k_delta)`, curvature factors proportional to
+`cos beta,sin beta` shift `m` by one, and connection terms without those
+factors preserve `m`.
 
-The matched kernel calculation gives (37). Hence (4) follows. The local
-transport coefficient variations are block diagonal in exact streamline
-Fourier number; longitudinal `i ell delta` terms remain inside
-`A_col(k_delta)`. Curvature factors proportional to `cos beta,sin beta` shift
-`m` by one, while connection terms without those factors preserve `m`. This
-derivation replaces the false rule that all of `C_1` shifts `m`.
+## 7. Required two-index mode bounds
 
-The pulled-back KKS form is a coefficient integral of (19)--(24). It is `C^2`
-on the same quotient; the harmonic and impulse duals remain finite dimensional.
-Thus the KKS-biorthogonal projections used by 0052 share the domain (46).
-
-## 7. Modewise order and the resonant estimate
-
-Let `Lambda` be the positive first-order elliptic weight obtained from the
-fixed Kelvin Sturm--Liouville operator and the streamline Fourier weight, with
-eigenvectors `e_(m,n)` and eigenvalues comparable to `1+|m|+n`. For an
-order-minus-one block `B_j`, repeated commutation gives
+Let `Lambda` be a candidate positive first-order elliptic weight with
+`lambda_(m,n)` comparable to `1+|m|+n`. The exact commutator identity is
 
     (lambda_a-lambda_b)^N <e_a,B_j e_b>
        =<e_a,ad_Lambda^N(B_j)e_b>.                        (48)
 
-The kernel bounds (33), (37), and `p>=6` control the three commutators needed
-for summation. Therefore, for `N=0,1,2,3`,
+A single `Lambda` controls only the combined eigenvalue difference. Large
+changes in `m` and `n` can cancel, so (48) does not imply the product bound in
+the former equation (49). The required repair is either separate bounded
+commutators with `M=-i partial_beta` and a radial Kelvin weight, including
+mixed commutators, or one directly proved summable two-dimensional bound in
+`|m-m'|+|n-n'|`, together with uniform eigenbasis/Riesz-basis constants.
 
-    |<e_(m,n),B_j e_(m',n')>_E|
-      <=C_N <m-m'>^-N <n-n'>^-N
-       /<|m|+|m'|+n+n'>.                                 (49)
-
-First curvature maps between the appropriate neighboring streamline sectors.
-The inverse nonzero-`m` transport block is order zero in the Kelvin variable,
-so the product
-
-    P_0 C_1 Q_perp[Q_perp(A_0-z)Q_perp]^-1
-        Q_perp C_1 P_0                                  (50)
-
-is order minus two. Equation (49) with the last denominator squared follows
-by convolution; `N=3` makes the double mode sum finite.
-
-The remainder obeys (49) with coefficient `C delta^3 L`. In particular, at
+Conditional on those bounds and the common graph domain, two first-curvature
+factors would make the nonzero-`m` Schur product order minus two. At
 
     n_*=Theta(1/(delta L)),                               (51)
 
-the Hodge remainder on a Kelvin vector is
+its target scale is `O(delta^4 L^2)`, while the contour distance is
 
-    O(delta^3 L/n_*)=O(delta^4 L^2),                     (52)
+    r_delta=gamma delta^3 L^2.                            (53)
 
-while the entire local graph remainder is `O(delta^3 L)`. Both are smaller
-than the 0052 contour distance
+These scale comparisons are preserved. The actual product-decay convolution,
+modewise Hodge remainder, and full order-minus-two Schur estimate remain
+unproved.
 
-    r_delta=gamma delta^3 L^2                            (53)
+## 8. Conditional contour algebra and missing nonnormal inverse
 
-by respectively `O(delta)` and `O(1/L)`. An order-minus-two second Schur block
-is `O(delta^2/n_*^2)=O(delta^4L^2)`, also `O(delta)` relative to (53).
-
-This proves the precise resonant bridge. No unweighted `o(delta^2)` is compared
-directly with (53).
-
-## 8. Contour-relative resolvent conclusion
-
-Let `A_app,delta` be (3) without `R_delta`, with the exact diagonal Kelvin
-frequencies and every mode in the 0052 four-coupling window retained. The
-all-sector Grushin result of 0052 gives
+Let `A_app,delta` denote the formal truncation of (3), retaining every mode in
+the finite coupling window. The necessary estimate is
 
     sup_(z in Gamma_delta)
       ||(A_app,delta-z)^-1||_(X_* -> D_*)<=C/r_delta.     (54)
 
-Equations (47), (52), and the far-from-resonance spectral split yield
+Scalar form gaps and spectral separation do not prove (54) for this nonnormal
+Hamiltonian operator. It requires an all-sector graph-resolvent/Grushin
+construction including every low `m`, the full pressure/Hodge block,
+axis/interface/collar/exterior pieces, and uniform KKS projection constants.
+This is an independent condition in addition to `HJ2`.
 
-    sup_(z in Gamma_delta)
-      ||R_delta(A_app,delta-z)^-1||_(X_* -> X_*)
-       <=C/L+o(1)<1/2                                   (55)
-
-for small `delta`. The resolvent identity then gives
+If (37), (47), the two-index estimates, and (54) are established, the standard
+Neumann-resolvent algebra would give
 
     (Ahat_delta-z)^-1=(A_app,delta-z)^-1
        [I+R_delta(A_app,delta-z)^-1]^-1,                 (56)
 
-and
-
-    sup_(z in Gamma_delta)
-      ||(Ahat_delta-z)^-1-(A_app,delta-z)^-1||_(X_* -> D_*)
-       <=C/[L r_delta].                                  (57)
-
-Since the contour length is `Theta(r_delta)`, its Riesz projection differs in
-graph norm by `O(1/L)`. Rank, real conjugation, and KKS nondegeneracy persist.
-Transport by (26)--(29) reconstructs compact DA vorticity and its exact
-finite-energy exterior velocity.
-
-Equations (54)--(57) also execute the frozen norm-resolvent fallback. Here it
-is a consequence of the strong jet, not a replacement invoked without the
-modewise estimate.
+and the advertised graph-resolvent and Riesz differences. Those implications
+are exact conditional algebra. Their hypotheses have not been proved here,
+so no exact Cao Riesz projection is constructed in 0054.
 
 ## 9. Exact and conditional boundaries
 
-Established in 0054 for the frozen `p>=6` Cao subfamily:
+Established in 0054:
 
-- the centered polyhomogeneous carrier/free-boundary jet (16)--(18), identified
-  with the actual source family by uniqueness;
-- the full Hodge DA quotient with its harmonic circulation row;
-- exact Piola shape derivatives (31)--(32), the genuine nonaxisymmetric
-  toroidal distance expansion (34)--(37), and the metric Leray derivatives;
-- one common graph domain and the order-minus-one/order-minus-two estimates;
-- the contour-relative norm-resolvent and Riesz transfer (55)--(57).
+- the exact Cao local cells (7)--(8) and the source's actual
+  `O(epsilon^2|log epsilon|)` parameter remainder;
+- the limited `p>=6` zero-extension/no-sheet fact for `Omega_delta` and its DA
+  tangent `eta`, without the stronger `A_delta eta` graph traces;
+- the exact Piola-conjugated Biot--Savart shape identities (29)--(33), including
+  the point-difference cancellation;
+- the exact nonaxisymmetric toroidal distance and retained phase (34)--(36);
+- the exact algebraic metric-Leray differentiation identities (39)--(43).
 
-Consequently the `HJ2` condition isolated in 0052 is discharged for this
-subfamily. The retained crossing, coupling, spacing, and `O(1/L)` bad-window
-scales are unchanged.
-
-Still conditional on the earlier finite-core spectral inputs are the existence
-and positivity of the particular bending/Kelvin cluster selected by the 0052
-Feshbach theorem. This attempt supplies the graph transfer, not an independent
-reproof of those spectral inputs. Even with that cluster, the fixed-order
-nonlinear residual is not an exact solution: a nonlinear solid-torus
-relative-periodic branch still requires the separate range/transparency and
-convergent bifurcation construction. No quantum or particle inference follows.
+Blocked by named constructions are the exact augmented `C^3` Cao carrier map,
+the common closed DA graph domain, the full symbol seminorm estimate, genuine
+two-index mode decay and order-minus-two Schur bound, and the nonnormal
+all-sector graph resolvent. Thus `HJ2`, the norm-resolvent/Riesz transfer, and
+the exact nonlinear branch remain open. The corrected crossing, coupling,
+spacing, and `O(1/L)` scale algebra from 0052 is unchanged. This route verdict
+does not imply instability, quantization, an electron, or a neutrino.

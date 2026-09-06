@@ -341,3 +341,14 @@ commands and outputs for exposing symbolic checks, route verdicts, and the
 strongest supported theorem. No production numerics are part of this attempt.
 The parent P253 objective remains active, and no nonlinear branch claim is made
 by either success alternative.
+
+## Post-execution correction boundary (P253/0057)
+
+Independent source and operator review found that Cao (3.36) is an auxiliary
+asymptotic parameter system, not an exact row of a new augmented steady map.
+The exact local cells, Piola Biot--Savart shape identities, toroidal distance,
+and limited `p>=6` no-sheet trace result survive. The exact augmented carrier
+map, common closed DA graph range, full symbol seminorms, two-index commutator
+and Schur estimates, and nonnormal all-sector graph resolvent remain named
+constructions. Therefore 0054 does not discharge `HJ2` or establish the exact
+Cao Riesz transfer.

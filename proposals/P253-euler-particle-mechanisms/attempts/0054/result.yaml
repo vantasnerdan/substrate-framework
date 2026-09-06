@@ -2,13 +2,7 @@ attempt: P253/0054
 owner: particle-foundations
 active_obligation: actual_cao_common_domain_HJ2
 activation_schema_exit: 0
-evidence_scope: EXACT_ANALYTIC_GRAPH_JET_AND_CONTOUR_RELATIVE_RESOLVENT
-fixed_parameters:
-  carrier: polynomial-profile Cao smooth vortex ring
-  profile_exponent: integer p>=6
-  toroidal_mode: ell>=2
-  thinness: delta=a_delta/R_delta
-  logarithm: L=log(1/delta)
+evidence_scope: EXACT_CELLS_SHAPE_IDENTITIES_GEOMETRY_AND_LIMITED_INTERFACE_TRACE
 preserved_0052_boundary:
   crossing_index: >-
     n*=A/(c*delta*L)-A*d/(c^2*delta*L^2)+(B/A-beta0)
@@ -17,72 +11,66 @@ preserved_0052_boundary:
   spacing: Theta(delta^3*L^2)
   coupling_to_spacing: O(1/L)
 route_verdicts:
-  carrier_free_boundary_jet:
+  exact_cao_local_cells:
     verdict: established
     positive_result: >-
-      The exact rescaled Cao equation and source Green kernel define a C3
-      augmented map in independent variables (q,tau), tau=q^2*log(q).
-      Lane-Emden nondegeneracy, evenness, centering, circulation, and the
-      nonzero Hopf/far-log rows make its derivative invertible. The resulting
-      polyhomogeneous C2 branch has C3-alpha remainder O(q^3*abs(log(q))) and
-      is identified with the actual Cao family by source uniqueness.
-  common_DA_domain:
+      Direct expansion of the exact rescaled Cao equation gives the displayed
+      first and second Lane-Emden profile cells. Cao's true parameter equations
+      retain their published O(epsilon^2*abs(log epsilon)) remainder.
+  augmented_carrier_branch:
+    verdict: blocked_by_exact_augmented_map
+    positive_result: >-
+      The q and tau kernel expansion supplies a formal polyhomogeneous candidate.
+      Source equation (3.36) is an auxiliary asymptotic system, not an exact
+      scale/speed row, and source uniqueness cannot construct the missing branch.
+    missing_construction: >-
+      Build the exact steady integral/parameter map on declared Banach spaces,
+      prove its C3 lift, Fredholm index and parameter-row Schur determinant, and
+      verify the source uniqueness hypotheses after construction.
+  interface_trace:
+    verdict: established_at_limited_scope
+    positive_result: >-
+      For p>=6 the zero extensions of Omega_delta, its first two formal
+      coefficient derivatives, and the DA tangent eta create no vortex sheet.
+    boundary: >-
+      Traces of A_delta eta on a frozen graph Sobolev interval remain open.
+  biot_savart_shape_and_toroidal_geometry:
     verdict: established
     positive_result: >-
-      Relative Hodge decomposition on the fixed solid torus retains the
-      harmonic circulation row. The common d^p boundary factor and a weighted
-      Hardy estimate identify the gauge-fixed stabilizer quotients and their
-      closed DA energy ranges uniformly. Cross-delta maps are operator
-      identifications; only same-carrier displacements are coadjoint motions.
-  moving_boundary_hodge_leray_jet:
-    verdict: established
+      The exact Piola-conjugated first and second Biot-Savart derivatives retain
+      h(y)-h(yprime), preserve the kernel order pointwise, and the exact toroidal
+      distance retains k_delta=ell*delta.
+  common_DA_graph_and_symbol_bounds:
+    verdict: blocked_by_named_domain_and_symbol_constructions
+    missing_construction: >-
+      Prove the two-sided Hardy/common-range map including harmonic and
+      stabilizer rows, composite zero-frequency Hodge bounds, A_delta eta
+      traces, front/side/overlap Hs symbol seminorms, and separate or mixed
+      two-index commutator bounds with uniform basis constants.
+  full_graph_riesz_transfer:
+    verdict: conditional_algebra_only
     positive_result: >-
-      The exact Piola-conjugated Biot-Savart kernel cancels its volume
-      Jacobian. Its first two shape derivatives contain h(y)-h(yprime), retain
-      order minus one, and include every deformation tensor. The exact
-      toroidal distance and matched angular split retain k_delta and give an
-      order-minus-one remainder O(delta^3*L). Metric Leray inverse derivatives
-      retain all Jacobian, cofactor, divergence, gradient, and pressure terms.
-  interface_collar_exterior:
-    verdict: established
-    positive_result: >-
-      For p>=6 two parameter derivatives of the positive-part vorticity and
-      DA tangents have vanishing interface traces and create no vortex sheet.
-      The variable-Jacobian collar map is orientation preserving and identity
-      outside a compact set; the decaying whole-space Hodge operator supplies
-      the unique exterior velocity and pressure closure.
-  modewise_graph_bounds:
-    verdict: established
-    positive_result: >-
-      Three commutators with the fixed Kelvin/streamline elliptic weight give
-      summable off-diagonal order-minus-one bounds. Eliminating nonzero
-      streamline sectors makes the m=0 Schur correction order minus two. At
-      n*=Theta(1/(delta*L)), Hodge and Schur errors are O(delta) relative to
-      the contour gap and the full local graph remainder is O(1/L).
-  norm_resolvent_fallback:
-    verdict: established
-    positive_result: >-
-      The exact remainder times the 0052 approximate resolvent is O(1/L)+o(1)
-      on the full contour. A Neumann-resolvent identity gives graph resolvent
-      difference O(1/(L*r_delta)) and Riesz projection difference O(1/L),
-      preserving real rank and KKS nondegeneracy.
+      Given the missing graph remainder and a full nonnormal all-sector
+      X_* to D_* resolvent of size C/r_delta, the displayed Neumann and contour
+      identities imply the claimed graph-resolvent and Riesz differences.
+    missing_construction: >-
+      Construct that all-sector Grushin/resolvent including low m, global
+      pressure/Hodge, axis, interface, collar, exterior, and KKS projection
+      constants. HJ2 alone is insufficient.
 strongest_exact_result: >-
-  For the actual centered p>=6 Cao subfamily, the fixed action-angle/Hanzawa
-  chart, full DA Hodge quotient, and whole-space Green/Leray closure have a
-  common graph domain and a polyhomogeneous second jet whose remainder is
-  contour-small at the diverging Kelvin index. This discharges the HJ2
-  condition isolated in 0052 and transfers its full-sector Riesz family to the
-  exact Cao generator, conditional only on the finite-core spectral inputs
-  already declared by 0052.
+  The exact Cao local cells, Piola-conjugated Biot-Savart shape identities,
+  nonaxisymmetric toroidal distance, metric-Leray differentiation algebra, and
+  limited p>=6 no-sheet trace fact are established. The common graph jet,
+  two-index Schur estimate, nonnormal complement resolvent, and exact Cao
+  Riesz transfer remain named constructions.
 remaining_dependency: >-
-  Use the exact graph-bounded KKS Riesz cluster in a nonlinear
-  Lyapunov-Schmidt or reversible Lyapunov-center construction. Prove the
-  nonlinear Euler range/transparency estimates and convergence on the physical
-  same-carrier DA leaf; fixed-order formal residuals remain insufficient.
+  Construct the exact augmented Cao map and the common-domain all-sector
+  Green/Leray graph-resolvent estimates before using this route in a nonlinear
+  same-leaf branch construction.
 does_not_license:
-  - an exact nonlinear rotating-wave or relative-periodic Cao branch
-  - nonlinear stability of such a branch
-  - geometric quantization, quantum measurement, electron, or neutrino claims
-  - replacement of the finite-core operator by a universal filament matrix
+  - discharge of HJ2
+  - an exact Cao graph-Riesz family
+  - an exact nonlinear rotating-wave or relative-periodic branch
+  - stability, quantization, electron, or neutrino claims
 parent_state: active
 exhaustion_claimed: false

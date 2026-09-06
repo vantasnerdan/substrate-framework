@@ -160,3 +160,61 @@ Independent0053 establishes the strongest corrected0048 result: the two local Ca
 0052 constructs the unequal-volume orientation-preserving weighted action-angle/Hanzawa-Piola representation and the limiting all-sector Grushin reduction. The exact Cao transfer remains conditional on `HJ2`, the common-domain twice differentiated moving-boundary whole-space Green/Leray graph theorem. Activated0054 now executes that theorem directly, with a contour-relative norm-resolvent route retained if strong graph differentiability loses an interface derivative. The fixed-order nonlinear expressions remain formal residuals until the critical-harmonic range and convergence are built.
 
 Root0055 establishes two exact P4 boundaries. Euler similarity preserves knot/Hopf topology while continuously scaling circulation and physical KKS action, so topology and conserved initial labels do not select a universal nonzero action. Independently, an explicit compact smooth axisymmetric swirl has a nonzero `r^-3` pressure quadrupole and `r^-4` Euler acceleration at arbitrarily large distance, excluding a strict full-field finite propagation cone. A restricted carrier band with bounded group velocity and quantified algebraic leakage remains a useful positive route. The smallest explicit continuation presently needs separate action-scale and hyperbolic/causal structure; neither is silently imported into Euler. This is author evidence awaiting independent review and does not close P4, electron, neutrino, or the parent campaign.
+
+## Corrected graph frontier, nonlinear critical layer, and neutral-cell route
+
+Independent0056 establishes the corrected Schwinger--Hopf normalization:
+`J=sum_a |z_a|^2` is physical total action and the common-phase moment map,
+`H=sum_a nu_a |z_a|^2`, `|S|=J/2`, the reduced sphere has area `2*pi*J`, and
+prequantization would require `J/hbar` integral. The algebra is exact, while
+one localized invariant Euler doublet, two noncollinear physical mixing axes,
+and a gate-time leakage/action-drift bound remain absent. This does not select
+an action quantum or earn P4.
+
+The joined0057 source/operator audit exposed that Cao equation (3.36) is an
+auxiliary asymptotic parameter system rather than an exact augmented steady
+row. The corrected0052/0054 target package preserves the resonance inversion,
+logarithmic finite-window scaling, exact local Cao cells, unequal-volume
+Hanzawa/Piola representation, physical KKS normalization, exact pulled-back
+Biot--Savart shape identities, toroidal distance, and limited `p>=6` no-sheet
+trace result. It now names two independent analytic dependencies: `HJ2`, the
+common-domain moving-boundary Green/Leray graph jet, and `GR`, the coupled
+nonnormal all-sector `X_* -> D_*` graph-resolvent/Grushin estimate. Neither the
+source uniqueness theorem, a scalar matched integral, one combined
+commutator, nor spectral separation supplies these results. The exact Cao
+Riesz transfer is conditional on both; independent bounded review is active.
+
+Author0058 rewrites the nonlinear same-leaf rotating problem exactly as the
+whole-space carrier map
+`v_g-c e_z-Omega R=g_*Y`, `[Y,omega_0]=0`. For the positive no-swirl Cao core,
+the nonzero angular-harmonic centralizer determinant is
+`i*n^3*zeta^3`, so centralizer variables cannot provide arbitrary
+nonaxisymmetric trace data. An exact Fourier example refutes universal raw
+transport-divisor cancellation, while the full Biot--Savart/Hodge adjoint
+critical trace remains uncomputed. The failure-derived positive continuation
+is a volume-preserving same-leaf nonlinear pendulum layer with half-width
+`2*sqrt(|epsilon V_*/alpha|)` and clock
+`sqrt(|alpha epsilon V_*|)`. Attempt0062 continues by constructing the physical
+full-Hodge resonant coefficient and convergent inner/outer separatrix match;
+0058 itself establishes no branch or restoring neighborhood.
+
+Root0060 adds a materially different propagation route. A physical proper-
+octahedral orbit of compact-core DA tangents cancels the Hodge dipole and
+quadrupole, giving the corrected robust velocity tail `O(r^-5)` and gradient
+`O(r^-6)`, sufficient for finite zeroth and first spatial lattice moments.
+The original stronger decay was exposed and repaired in the exact tensor
+oracle and API tests. Exact compact stationary velocity components instead
+have constant exterior pressure, so their static pressure multipoles vanish
+and cannot couple cells. A physical Bloch band remains open at an autonomous
+positive invariant cell mode, isolation, and full symmetry-breaking complement
+control. This is author evidence awaiting independent review, with no strict
+Lorentz cone, action selection, electron, neutrino, or parent conclusion.
+
+The independent0057 review is final. `0057/review.md` SHA-256
+`c3a01215f13a4ea1bce9ac4b9c86d88f491458c412381a12b86b2e87853d4293`
+and `0057/verdicts.yaml` SHA-256
+`ba850f0fe814a165f5620e5da4f7e1a76109846ec9557981971a92c4de758cd6`
+establish the retained exact atoms and the implication
+`HJ2 + GR => graph-Riesz transfer`, while confirming that neither antecedent
+nor an actual Cao Riesz family is constructed. The correction receipt is
+`4659cb522e3f46cd01099405bd12a7841aeb3cff2274e4a689f03bacc25cceeb`.

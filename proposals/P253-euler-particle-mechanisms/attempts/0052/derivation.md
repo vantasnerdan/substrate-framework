@@ -370,7 +370,7 @@ for a fixed `gamma>0` on the good parameter set. The leading translation-tail
 Schur sum remains `O(delta^3 L)`, but (40) now proves that this is the Schur
 complement of **all** nonzero sectors, rather than a scalar-tail surrogate.
 
-Combining (38)--(41) gives the formal full complement bound
+Combining (38)--(41) motivates the formal full complement bound
 
     sup_(z in Gamma_delta)
       ||[Q_delta(Ahat_delta-z)Q_delta]^-1||_(X_* -> D_*)
@@ -379,10 +379,12 @@ Combining (38)--(41) gives the formal full complement bound
 The collar and exterior velocity enter `K_delta` through (21); fixed-core
 support removes passive exterior vorticity but not this global operator.
 
-The limiting estimates (38)--(41) are unconditional. Upgrading (42) to the
-exact Cao generator requires the modewise remainder and common graph control
-in `HJ2`; an `o(delta^2)` unstructured operator norm is insufficient compared
-with (41).
+The scalar and sectorwise estimates in (38)--(41) do not by themselves prove
+(42) for the nonnormal coupled operator. In addition to the modewise remainder
+and common graph control in `HJ2`, one needs a proved all-sector graph
+resolvent/Grushin estimate, denoted `GR`, including all finite low modes,
+axis/interface/collar/exterior Hodge blocks, and uniform KKS projection
+constants. Spectral separation and scalar form gaps are insufficient.
 
 ## 7. The exact hypothesis needed for the Cao graph jet
 
@@ -465,7 +467,7 @@ contour (41). The failure is a rate/domain gap, not physical nonexistence.
 
 ## 8. Conditional full graph-Riesz theorem
 
-Assume `HJ2`. Equations (38)--(45) make the all-sector remainder smaller than
+Assume both `HJ2` and `GR`. Equations (38)--(45) then make the all-sector remainder smaller than
 the local gap (41), after the retained window is enlarged by any pole whose
 actual coupling reaches four times its separation. The exact complement
 inverse (42) then exists. The physical Feshbach map is
@@ -486,11 +488,12 @@ The reconstructed Riesz projection
 is finite rank, bounded on `X_*` and `D_*`, KKS nondegenerate, and transported
 by (23) to compact DA vorticity with the exact exterior velocity (21).
 
-Thus the full graph-Riesz theorem is **established conditional on HJ2**. The
+Thus the full graph-Riesz theorem is **established conditional on HJ2 and
+GR**. The
 unconditional achievements are the corrected crossing law, explicit
-action--angle/Hanzawa--Moser/Piola energy chart, exact normalization, and
-all-sector limiting Grushin reduction. The missing construction is exactly
-(43)--(45).
+action--angle/Hanzawa--Moser/Piola representation, and exact normalization.
+The missing constructions are the common graph jet (43)--(45) and the
+nonnormal all-sector inverse (42).
 
 ## 9. Nonlinear scope
 
@@ -514,14 +517,15 @@ and convergence construction.
   equivalence is isolated inside `HJ2`, not silently included.
 - KKS/energy/generator normalization: **established** by (28)--(36), including
   the canonical negative-`i` sign.
-- All-sector complement: **established for the source-defined limiting and
-  polyhomogeneous operator**, with its exact Grushin structure (37)--(42);
-  transfer to the exact Cao generator is conditional on `HJ2`.
+- All-sector complement: the scalar/sectorwise limiting estimates and formal
+  Grushin structure (37)--(41) are **established at calculation scope**; the
+  nonnormal coupled graph inverse (42) remains conditional on `GR`, and exact
+  Cao transfer additionally requires `HJ2`.
 - Direct moving-boundary/global-Green graph jet: **blocked by the named
   modewise common-domain construction (43)--(45)**. Cao's elliptic remainder
   is not enough at `n_*(delta)`.
-- Full physical graph-Riesz theorem: **established conditional on HJ2**, not
-  unconditionally.
+- Full physical graph-Riesz theorem: **established as an implication
+  conditional on HJ2 and GR**, not as a constructed Riesz family.
 - The fixed-order nonlinear calculation remains **approximate only** as in
   (48); no exact branch is claimed.
 

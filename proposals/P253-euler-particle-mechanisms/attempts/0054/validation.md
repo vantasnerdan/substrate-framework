@@ -1,43 +1,27 @@
-# Validation and oracle boundary
+# Validation
 
-## First exact execution
+The existing `hj2.*` symbolic receipt remains immutable evidence for the exact
+algebraic identities checked by `verify_hj2.py`; the verifier was not rerun for
+this wording/domain correction.
 
-The first execution used the repository interpreter:
+## Established checks
 
-    PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python proposals/P253-euler-particle-mechanisms/attempts/0054/verify_hj2.py
+The receipt continues to corroborate the exact source rescaling and first and
+second local Cao cells, the Piola determinant/Jacobian cancellation, the first
+and second point-difference Biot--Savart shape formulas, the toroidal-distance
+and phase expansion, and the algebraic inverse/Leray differentiation signs.
+It also checks the scalar resonance and remainder scale arithmetic.
 
-The exact command, complete stdout, empty stderr, and exit `0` are preserved in
-the `hj2.*` receipt quartet. It was a short local symbolic execution; no long
-scripts-pane job or production numerics was used.
+## Analytic boundary exposed by review 0057
 
-Seventeen exact predicates check:
+The finite symbolic tally does not prove that Cao's auxiliary system (3.36) is
+an exact augmented steady row, a C3 carrier branch, a common closed DA graph
+range, front/side/overlap Hs symbol seminorms, product decay in two independent
+mode indices, or a nonnormal all-sector X_* to D_* graph resolvent. Those
+claims are reclassified as blocked or conditional in `derivation.md` and
+`result.yaml`. In particular, the scalar matched integral and one-Lambda
+commutator checks are necessary identities but not the operator estimates
+formerly inferred from them.
 
-1. the source rescaling from Cao's divergence-form equation to the fixed-core
-   equation;
-2. the genuine three-dimensional toroidal distance through second order,
-   including the negative `t^4/12` term;
-3. retention of `k_delta=ell delta` in the near-column phase;
-4. the determinant trace-square and matrix-square terms in the Piola
-   expansion;
-5. both inverse-Laplacian derivative signs;
-6. preservation of the order-minus-one Biot--Savart singularity by the first
-   and second shape derivatives;
-7. the exposed order loss if `h(y)-h(y')` is omitted;
-8. the `delta^3 L` polyhomogeneous remainder;
-9. the Hodge, local-graph, and order-minus-two Schur errors relative to the
-   `delta^3 L^2` contour gap;
-10. divergence of the old unweighted `delta^2/r_delta` shortcut; and
-11. the eigenbasis commutator identity producing off-diagonal mode decay.
-
-## What the verifier establishes
-
-The verifier is an exact oracle for the algebraic signs, tensor scalings, and
-resonant comparisons used in `derivation.md`. The analytic theorem additionally
-uses the source nondegeneracy/center gauges, the explicit fixed-domain Hodge
-decomposition, singular-integral estimates, and the matched front/side kernel
-argument. Those are prose derivations, not replaced by the symbolic tally.
-
-The result discharges 0052's graph-jet hypothesis for the frozen `p>=6` Cao
-subfamily while retaining the earlier finite-core spectral inputs at their own
-scope. It does not validate a nonlinear branch, stability, or particle/quantum
-interpretation.
+No formula predicate or implementation changed, so rerunning the unchanged
+oracle would not test the corrected functional-analytic statements.

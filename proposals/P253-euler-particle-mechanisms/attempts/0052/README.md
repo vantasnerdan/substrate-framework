@@ -315,3 +315,13 @@ conditional theorem whose one unproved graph-jet hypothesis is visible. It
 does not require or imply the nonlinear solid-torus branch. P253, LP2, and P4
 remain active, and no global impossibility is inferred from a failed graph
 representation.
+
+## Post-execution correction boundary (P253/0057)
+
+The corrected resonance law, exact local Cao cells, unequal-volume
+Hanzawa/Piola representation, toroidal distance, and KKS normalization remain
+established. The former limiting/polyhomogeneous all-sector complement claim
+is reduced to its scalar and sectorwise calculations: a nonnormal coupled
+`X_* -> D_*` graph-resolvent/Grushin estimate `GR` is independently required.
+The exact physical graph-Riesz statement is therefore the conditional
+implication `HJ2 + GR => Riesz transfer`; `HJ2` alone is insufficient.

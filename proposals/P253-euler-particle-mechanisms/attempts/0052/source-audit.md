@@ -13,3 +13,11 @@ The action--angle/Piola construction and full-sector Grushin reduction below
 are new derivations. Standard Hanzawa, Moser, Piola, pseudodifferential, and
 analytic-Fredholm facts are used only in their explicitly derived local form;
 no external theorem is cited as if it supplied the Cao graph jet.
+
+## P253/0057 source correction
+
+Cao (3.36) is an auxiliary asymptotic parameter system; Corollary 3.12 and
+Proposition 3.13 retain the true equation's remainder and parameter mismatch.
+No cited source supplies the missing common-domain nonnormal all-sector graph
+resolvent `GR`. Gallay--Smets' column enstrophy realization cannot be imported
+as that compact-DA solid-torus estimate.
