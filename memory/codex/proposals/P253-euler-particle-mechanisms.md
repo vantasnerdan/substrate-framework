@@ -258,3 +258,57 @@ carrier/background recoil laboratory inside the current field content and a
 scalar/longitudinal Gauss field as a clearly typed foundational alternative,
 not as an incompressible-Euler derivation. P2, P4, the electron mechanism and
 all neutrino obligations remain active.
+
+## Corrected carrier topology and precise electromagnetic fork
+
+Independent0063 establishes the strongest corrected0058/0062 carrier result.
+On the positive Cao core, the nonzero-harmonic full-Hodge coordinate block has
+the exact dynamically accessible inverse, intertwiner `A_0 C_0=C_0 M_0`, and
+KKS density `2*pi*rho_0*r^2*zeta dr dz`; the cylindrical Hodge kernel now
+includes its input/output metric factors and regular-axis limit. At the flat
+edge, an explicit `s=4`, `p>=6`, `|n|>=2` collar sequence has unit ordinary
+`H^5` displacement quotient while its ambient `H^3` vorticity and generator
+graph norms vanish. Thus the ordinary unweighted inverse is refuted, while the
+positive-core, weighted-orbit, and ambient-vorticity sandwiched topologies
+remain distinct live routes. The next carrier object is one smooth fixed-`n`
+DA seed and its first source-bearing whole-space Hodge/Grushin adjoint trace.
+Review artifacts are `0063/review.md` SHA-256
+`5a29cd617d65929afd7707a9c72d7c86efda4f9e228b9be8815e702dd63f1752`
+and `0063/verdicts.yaml` SHA-256
+`c65ffb500b472bbc85ad97a0a0bb347c3c606bb361f5eba9289521937d767f0e`.
+
+Root0067 closes the smooth transverse-recoil laboratory. A joint
+carrier--medium action with smooth form factors gives reciprocal force,
+finite self energy, translation-Noether recoil and a `1/d` vector cross term
+conditionally on the supplied carrier action/source law. One transverse
+vector remains orientation dependent and has the attractive positive-field
+sign. Isotropy requires a triplet, meaning two additional sectors beyond the
+accepted one plus identification and common-frame locking; neutral
+compensation removes the external monopole. This does not create scalar
+electric charge.
+
+Root0068 constructs the precise positive foundation comparator: the reviewed
+transported tag supplies `rho_q=g chi`, `J=g chi u`, while an added constrained
+`U(1)` field supplies Gauss law, electric-sign Coulomb energy, magnetic Lorentz
+coupling, reciprocal backreaction and Maxwell speed. The full incompressible
+system still has instantaneous elliptic pressure. The state and constants
+`g,epsilon,mu` are additions, and the algebraic oracle does not prove the
+local PDE or Noether domains. A physical charged-carrier continuation is now
+explicit: freeze an invariant tag leaf, take `Q_g=g integral chi`, solve the
+sub-gauge-speed comoving Maxwell problem at order `g`, and solve the carrier
+correction at order `g^2` on each fixed-`Q_g` level. It remains dependent on
+0066 carrier complement/coercivity, the actual translation cokernel identity,
+stabilizer preservation of the tag, and joint localization control.
+
+Root0070 shows why this is a real foundation fork rather than a notation
+change. Clebsch shifts are exact coordinate-kernel directions with zero
+physical velocity, energy and KKS content. Rest or uniform-flow Euler has only
+zero or repeated convective physical roots, whereas Maxwell has two-sided
+`+/-c|k|` branches and an independent Gauss row; an invertible time-local
+principal-symbol change cannot alter those roots or physical dimension. The
+accepted prepared collective sector is transverse and annihilates a local
+isotropic scalar source. These are route-scoped homogeneous/local results:
+nonlinear, nonlocal, singular and new structured-background emergence remain
+active. The exact 0070 oracle passes eight checks and its focused API tests
+pass three. Independent review is still required. No electron, neutrino,
+accepted claim, release, or terminal campaign state follows.

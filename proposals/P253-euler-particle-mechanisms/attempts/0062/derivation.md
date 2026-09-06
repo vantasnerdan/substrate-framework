@@ -61,19 +61,28 @@ The velocity is fixed by the global system
     h(x)->0 as |x|->infinity.                             (7)
 
 Equivalently, at the representative point `x=(r,0,z)`, put
-`y=(r' cos vartheta,r' sin vartheta,z')` and let
-`Q_vartheta` rotate cylindrical components into Cartesian components. Then
-the exact harmonic kernel is
+`y=(r' cos vartheta,r' sin vartheta,z')`. For coordinate-basis coefficients
+in `(partial_r,partial_theta,partial_z)`, the exact harmonic kernel is
 
     (B_n eta_n)(r,z)
-      =(1/(4 pi)) integral r' dr' dz' d vartheta
+      =D(r)^(-1)(1/(4 pi)) integral r' dr' dz' d vartheta
         e^(i n vartheta)
-        [Q_vartheta eta_n(r',z') cross (x-y)]/|x-y|^3.   (7a)
+        [R_vartheta D(r') eta_n(r',z') cross (x-y)]
+          /|x-y|^3,
+
+    D(a)=diag(1,a,1).                                   (7a)
 
 The integration is over the whole physical support and the full angle. Formula
-(7a) retains the vector-component rotation, physical Jacobian `r'`, toroidal
+(7a) first converts source coordinate coefficients to the orthonormal
+cylindrical frame by `D(r')`, rotates them into Cartesian components by
+`R_vartheta`, and converts the Cartesian output at `(r,0,z)` back to coordinate
+coefficients by `D(r)^(-1)`. It retains the physical Jacobian `r'`, toroidal
 curvature, and exterior tail; none is present in a scalar core Green
-substitution.
+substitution. This coordinate repair leaves the abstract whole-space system
+(7), its Biot--Savart sign, and every use of `B_R3` below unchanged.
+Here `D(r)^(-1)` is evaluated directly for `r>0`. At `r=0`, (7a) means the
+regular-axis compatibility limit of the physical `n`-harmonic Cartesian
+field; it is not an uncontrolled division by `r`.
 
 Outside `K_0`, `curl h=0`. Hence
 
@@ -152,12 +161,25 @@ in that exterior collar. The corrected compact lift differs from `M_0 xi`
 only where `C_0=0`, so (15) is unchanged. This supplies the exact tangent lift;
 uniform graph bounds for that lift remain part of the collar theorem below.
 
+For a selected nonzero toroidal harmonic, the axial translation/rotation
+slice rows lie in characters `0` or `+/-1` and hence vanish automatically
+when `|n|>=2`. If a chosen finite slice contains a row in the same character,
+take finitely many independent collar profiles below and select a unit vector
+in the common kernel of those finitely many functionals. Thus finite
+same-character rows are removed or restored by finite-dimensional profile
+corrections. Bogovskii repairs only divergence introduced by a cutoff or by
+those corrections, and is chosen to preserve the already imposed rows; it
+does not alter the powers of the collar width.
+
 ### The boundary obstruction is explicit
 
 For the Cao power law, a boundary defining function `d` gives at the reviewed
-limited scope
+limited scope only
 
-    zeta=O(d^p),             grad zeta=O(d^(p-1)).        (16)
+    zeta=O(d^p).                                           (16)
+
+The derivative estimate used below is derived separately from the exact
+positive-part source representation, not by differentiating (16).
 
 For smooth `xi`, (11) therefore requires
 
@@ -175,6 +197,84 @@ space. The reviewed no-sheet statement gives only the forward behavior in
 of `A_0 eta`, or closedness of the range. Thus (15) is an exact interior
 intertwiner but not the global graph isomorphism `HJ2` or the all-sector
 resolvent `GR`.
+
+### An exact ordinary-graph counterexample at the free boundary
+
+This construction uses only the reviewed upper vanishing order, not a
+nonzero boundary jet. Freeze the integer Sobolev index `s=4`, the Cao exponent
+`p>=6`, and a fixed toroidal character `|n|>=2`. In a smooth boundary chart
+`(d,y,theta)` with volume density `J(d,y,theta)` bounded above and below,
+choose nonzero `chi,phi` compactly supported away from the chart edges and set
+
+    Psi_h=h^(s+1) chi(d/h) phi((y-y_0)/h) exp(i n theta),
+    xi_h^d=J^(-1) partial_y Psi_h,
+    xi_h^y=-J^(-1) partial_d Psi_h,
+    xi_h^theta=0.                                      (18a)
+
+Then `div xi_h=0` exactly. Its meridional support is an `h`-by-`h` box,
+its point amplitude is `Theta(h^s)`, its `L^2` support factor is `h`, and
+each meridional derivative costs `h^(-1)`. Consequently
+
+    ||xi_h||_(H^(s+1))=Theta(1).                       (18b)
+
+The lower bound also holds in the displacement quotient. On the positive
+core, (11) makes `ker C_0` trivial for nonzero `n`. Exterior stabilizers are
+supported where `omega_0=0` and are separated from the interior collar box.
+Sobolev support orthogonality therefore prevents them from cancelling the
+box. Characters `0,+/-1` are orthogonal to `|n|>=2`; any remaining finite
+same-character slice rows are removed by the finite-profile construction
+above. Thus, for some `c>0` independent of `h`,
+
+    xi_h in intersection_j ker ell_j,
+    inf_(k in ker C_0 intersect X_n)
+       ||xi_h+k||_(H^(s+1)) >= c,                      (18c)
+
+where the `ell_j` are the finitely many slice rows.
+
+For the Cao source one has the exact positive-part representation
+`zeta=(F_+)^p`, with smooth `F`, `F=0` at the free boundary, and `F=O(d)`.
+The chain and product rules, rather than differentiation of a bare
+`O(d^p)`, give
+
+    |D^j zeta| <= C_j d^(p-j),       0<=j<=5.           (18d)
+
+No nonzero leading coefficient or two-sided comparison is used. Substitution
+of (18a) into the exact formula (11) now gives
+
+    ||C_0 xi_h||_(H^(s-1))=O(h^(p+1)),
+    ||C_0 xi_h||_(H^s)=O(h^p).                         (18e)
+
+For the full Hodge row put `F_h=xi_h cross omega_0`. Since
+`C_0 xi_h=curl F_h`, the exact Fourier-multiplier identity gives
+
+    B_R3 C_0 xi_h=P_L F_h,                             (18f)
+
+where `P_L` is the Leray projection. The compact curl has zero spatial
+moment, and the decaying whole-space convention fixes the low-frequency
+harmonic row. Hence the order-zero Leray bound and the same product ledger
+give
+
+    ||B_R3 C_0 xi_h||_(H^s)=O(h^(p+1)).                (18g)
+
+This is not an unconditional inhomogeneous
+`H^(s-1)->H^s` Biot--Savart estimate at zero frequency. Finally, smooth
+boundary tangency gives `W_0^normal=O(h)`. In (6), the extra normal transport
+derivative is offset by this factor, tangential transport uses the second
+estimate in (18e), and the Hodge commutator uses (18g). Therefore
+
+    ||A_0 C_0 xi_h||_(H^(s-1))=O(h^p).                 (18h)
+
+Equations (18b)--(18h) prove that neither the ordinary ambient-vorticity norm
+nor the ordinary generator graph norm bounds the displacement quotient:
+
+    ||C_0 xi_h||_(H^(s-1))
+      +||A_0 C_0 xi_h||_(H^(s-1)) ->0,
+    ||[xi_h]||_(H^(s+1)/ker C_0) >= c.                 (18i)
+
+This route verdict is narrow: the unweighted lower graph bound is refuted.
+The positive-core inverse with its `zeta_min^(-1)` constant, the weighted
+orbit norm below, and a source-specific sandwiched trace are three different
+constructions and are not refuted by (18i).
 
 For clarity, the positive-core inverse fixes the candidate weighted norm
 
@@ -274,6 +374,13 @@ the missing input is the physical adjoint functional itself, not an absent
 printed Taylor coefficient. The raw estimate
 `j_*=Theta((delta^2 log(1/delta))^-1)` remains only a localization scale.
 
+The next trace construction need not assume an all-sector theorem or a
+pre-existing `q_*`. It may begin with one explicitly constructed smooth DA
+seed in one fixed nonzero `n` block, derive its first source-bearing
+resonance, and prove only the sandwiched rigged-space Hodge/LAP and adjoint
+Green identity needed for that source. Until that construction is made, both
+`q_*` and `V_*` remain undefined.
+
 **Route-A operator verdict.** The exact harmonic differential block (6),
 whole-space Hodge/exterior closure (7)--(9), positive-core DA inverse
 (11)--(13), carrier-map intertwiner (15), and KKS density (21)--(22) are
@@ -369,6 +476,13 @@ cutoff construction. If a non-volume chart or non-flat cutoff is used, the
 Bogovskii correction must carry the same scales derived next; it is not an
 `O(epsilon)` afterthought.
 
+The slice convention is equally local: for the selected harmonic the
+translation/rotation rows vanish by character orthogonality, while any
+remaining finite row is restored explicitly by a finite-dimensional
+profile correction. Bogovskii is used only if that correction or a cutoff
+introduces divergence, and its finite-dimensional choice preserves the rows.
+No all-sector or infinite-row Bogovskii inverse is asserted.
+
 Let a nontrivial self-similar layer have amplitude `A_h` and radial profile
 `chi((I-I_*)/h)` on a region whose other dimensions are fixed. Smooth bounded
 Jacobian above and below gives, for every integer `r` reached by the profile,
@@ -462,13 +576,13 @@ failure of the inverse (18), and the combined topology/Sobolev exclusion of a
 generic smooth localized pendulum repair. These results turn the next task
 from an unevaluated `V_*` into a precise construction:
 
-> Build the two-sided weighted DA boundary isomorphism for (11)--(18), the
-> core/exterior matrix Hodge transmission and separate two-index commutators,
-> then prove the nonnormal limiting-absorption/Grushin theorem for `M_0` on the
-> integrable centralizer-compatible codomain. Its distorted adjoint trace will
-> either prove Euler transparency and unlock a smooth carrier-map iteration,
-> or produce a source-specific nonzero obstruction to this Cao same-leaf
-> branch.
+> Construct one smooth physical DA seed in a fixed `|n|>=2` block and its first
+> source-bearing resonance. Then prove the source-specific sandwiched
+> full-Hodge Green/Grushin trace, including core/interface/exterior and the
+> finite circulation rows. Its KKS-normalized left functional will either
+> prove transparency for that source or produce the first defined nonzero
+> obstruction. The weighted orbit topology is developed separately; the
+> refuted ordinary graph lower bound is not silently reintroduced.
 
 No exact rotating branch, stability neighborhood, particle mechanism, or
 quantum/relativistic bridge is claimed. P2 and P253 remain active.

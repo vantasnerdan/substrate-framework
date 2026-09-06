@@ -75,3 +75,29 @@ They do not validate:
 
 This separation prevents a passing finite algebra tally from being used as a
 continuum resolvent or nonlinear existence oracle.
+
+## 0063 bounded correction validation
+
+The existing thirteen-predicate oracle was not rerun: none of its predicates
+contains the coordinate-basis realization of the Biot--Savart integral, the
+free-boundary collar family, or a claimed spectral seed. The correction is
+instead exposed by exact analytic checks in `derivation.md`:
+
+- conversion of cylindrical coordinate coefficients to and from an
+  orthonormal Cartesian frame supplies the two `D` factors in (7a);
+- the h-by-h support measure and one-derivative cost reproduce each exponent
+  in (18b), (18e), (18g), and (18h);
+- fixed `|n|>=2` character orthogonality, positive-core injectivity of `C_0`,
+  and support separation from exterior stabilizers give the quotient lower
+  bound (18c);
+- `C_0 xi=curl(xi cross omega_0)` gives
+  `B_R3 C_0 xi=P_L(xi cross omega_0)` and explicitly resolves the zero-moment
+  low-frequency row without invoking an unconditional inhomogeneous Hodge
+  gain.
+
+The correction therefore changes the continuum route verdict: the ordinary
+ambient and generator graph lower bounds are refuted at `s=4`, `p>=6`, while
+the positive-core inverse, weighted orbit topology, and source-specific
+sandwiched trace remain separate live constructions. It introduces no
+`q_*`, `V_*`, branch, or stability claim. Exact pre/post hashes and unchanged
+oracle hashes are recorded in `0063-bounded-correction-receipt.md`.

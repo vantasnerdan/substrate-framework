@@ -1,11 +1,11 @@
 # P253/0066: Cao carrier topology, one-resonance trace, and gap-mode routes
 
-Status: **README-only preregistration awaiting central registration and schema
-activation.** Until `0066/activation-schema.exit` exists and contains exactly
-`0`, this README is the sole authorized 0066 artifact. No derivation, source
-download, API, verifier, numerical output, or result may be opened. Root owns
-the central proposal/attempt registry, activation receipts, memory, commits,
-review, and promotion; this attempt owns only its post-activation artifacts.
+Status: **centrally registered and schema-activated.** The materialized
+`0066/activation-schema.exit` contains exactly `0`; the activated frozen hash
+and both bounded post-activation precision corrections are preserved in
+`postactivation-supervisor-precision.md`. Root owns the central
+proposal/attempt registry, activation receipts, memory, commits, review, and
+promotion; this attempt owns only its post-activation artifacts.
 
 ## Unchanged parent objective and attempt achievement
 
@@ -48,22 +48,27 @@ finite-energy, axisymmetric translating Cao ring; the source does not supply a
 nonaxisymmetric graph domain, Kelvin eigenmode, limiting-absorption theorem,
 nonlinear rotating branch, or stability theorem.
 
-The following author-stage inputs are used only at their exact current scope:
+The following current scoped inputs are used only at their exact stated review
+status:
 
-- 0057 preserves the local Cao cells, unequal-volume representation, physical
+- 0057 is an independent review. It preserves the local Cao cells,
+  unequal-volume representation, physical
   KKS convention, and selected pointwise Hodge identities while leaving the
   common DA graph, all-sector nonnormal inverse, HJ2, and physical Riesz family
   conditional.
-- 0058 supplies the same-leaf carrier map, positive-core centralizer,
+- 0058 currently supplies at author scope the same-leaf carrier map,
+  positive-core centralizer,
   reverser/KKS sign, harmonic selection algebra, and an exact raw
   nondivisibility witness. Its pendulum coefficients and invariant layer are
   conditional.
-- 0062 supplies the exact nonzero-toroidal full-Hodge differential block,
+- 0062 currently supplies at author scope the exact nonzero-toroidal
+  full-Hodge differential block,
   positive-core pointwise DA inverse, intertwiner `A_0 C_0=C_0 M_0`, physical
   KKS density, regular-core centralizer topology, and cutoff scaling. It does
   not supply a global unweighted DA inverse, mode `q`, `V_*`, all-sector
   limiting absorption, or nonlinear branch.
-- 0051 supplies the exact conditional Schwinger--Hopf reduction from two
+- 0051 supplies at its recorded current scope the exact conditional
+  Schwinger--Hopf reduction from two
   independent positive KKS modes. It supplies neither those physical modes nor
   their noncommuting Euler couplings.
 
@@ -84,10 +89,10 @@ the curved Cao ring without proof.
 ## Fixed carrier, operators, and three distinct topologies
 
 Let `K_0` be the physical solid-torus vorticity support and write, in the
-translating/rotating bookkeeping frame,
+translating **nonrotating** frame,
 
     omega_0=zeta(r,z) partial_theta,
-    W_0=B_R3 omega_0-c_0 e_z-Omega_0 R,
+    W_0=B_R3 omega_0-c_0 e_z,             Omega_0=0,
     A_0 eta=-[W_0,eta]-[B_R3 eta,omega_0],                (1)
 
 where `B_R3=curl(-Delta_R3)^-1` is the whole-space decaying Biot--Savart
@@ -95,17 +100,23 @@ operator. A same-leaf displacement gives
 
     C_0 xi=-[xi,omega_0]=curl(xi cross omega_0).           (2)
 
-Every route retains the axis, interface, support edge, flat collar, exterior
+Freeze `p>=6` and `s=4` throughout this attempt. Thus the ordinary displacement
+space is `H^5`, ambient vorticity is measured first in `H^3`, and any broader
+Sobolev interval is an output requiring a proof of the exact zero-extension,
+multiplier, Hodge, and trace regularity. Every route retains the axis,
+interface, support edge, flat collar, exterior
 irrotational velocity, whole-space pressure/Leray operator, translation,
 rotation, impulse, center, phase, stabilizer, circulation, and harmonic rows.
 The following topologies are never identified by notation alone:
 
-- `X_disp^(s+1)`: the ordinary unweighted divergence-free displacement
+- `X_disp^5=X_disp^(s+1)`: the ordinary unweighted divergence-free displacement
   quotient modulo `ker C_0`, with all finite rows;
-- `X_orb,w^(s+1)`: a vorticity-induced weighted orbit/displacement topology
-  carrying the degeneracy `zeta~kappa d^p` at the support edge and equipped
-  with a proved nonlinear volume-preserving composition/inversion law; and
-- `X_+ subset X_amb^(s-1) subset X_-`: an ambient-vorticity rigging used only
+- `X_orb,w^5=X_orb,w^(s+1)`: a vorticity-induced weighted orbit/displacement topology
+  carrying the reviewed vanishing `zeta=O(d^p)` at the support edge and
+  equipped with a proved nonlinear volume-preserving composition/inversion
+  law; a two-sided `d^p` weight is used only if the nonzero
+  `kappa`/comparability output is proved; and
+- `X_+ subset X_amb^3 subset X_-`: an ambient-vorticity rigging used only
   for a named source-specific sandwiched resolvent or trace.
 
 A local inverse where `zeta>0`, a weighted orbit chart, and a bounded
@@ -117,25 +128,30 @@ Choose boundary distance `d` and construct an explicit meridional,
 divergence-free, nonzero-toroidal displacement `xi_h`, supported in
 `{h<=d<=2h}`, satisfying every finite row and normalized by
 
-    ||[xi_h]||_(X_disp^(s+1))=1.                          (3)
+    ||[xi_h]||_(X_disp^5)=1.                              (3)
 
 Derive the cutoff amplitudes and normal/tangential derivatives from the actual
-Cao boundary jet `zeta=kappa d^p+O(d^(p+1))`. Compute with uniform constants
+Cao free-boundary equation. The only reviewed input is
+`zeta=O(d^p)`. A nonzero leading coefficient
+`zeta=kappa d^p+O(d^(p+1))`, `kappa!=0`, or any two-sided comparability
+`c d^p<=zeta<=C d^p` is an output to prove from the source free-boundary/Hopf
+data, not an input. The upper bound alone suffices for the collar
+counterexample. Compute with uniform constants
 
-    ||C_0 xi_h||_(H^(s-1)),
-    ||C_0 xi_h||_(H^s),
-    ||A_0 C_0 xi_h||_(H^(s-1)),                          (4)
+    ||C_0 xi_h||_(H^3),
+    ||C_0 xi_h||_(H^4),
+    ||A_0 C_0 xi_h||_(H^3),                              (4)
 
 including `-[W_0,C_0 xi_h]`, `-[B_R3 C_0 xi_h,omega_0]`, support tangency,
 Biot--Savart gain, collar correction, interface, and exterior pressure. The
 expected powers `O(h^(p+1))`, `O(h^p)`, and `O(h^p)` are exposing targets, not
 assumed conclusions. If (3)--(4) prove that either the ambient base norm or
-generator graph norm fails to control `X_disp^(s+1)`, record that exact
+generator graph norm fails to control `X_disp^5`, record that exact
 unweighted lower-bound failure without extending it to the other topologies.
 
 Then execute both surviving positive continuations:
 
-1. define the completion `X_orb,w^(s+1)` from the exact degeneracy-weighted
+1. define the completion `X_orb,w^5` from the exact degeneracy-weighted
    norm, prove density and separation modulo `ker C_0`, and construct local
    nonlinear volume-preserving composition and inversion with tame product
    estimates; prove the full whole-space Hodge/pressure map into the declared
@@ -188,6 +204,15 @@ vanishes or supplies an additional trace. Use (6) to obtain the left state
 from symplectic duality only on a domain where that duality and flux identity
 are proved; otherwise construct the adjoint domain directly.
 
+Here `E_2` is not an unspecified positive form. It is the relative Hessian of
+the translating augmented Hamiltonian on the fixed coadjoint leaf,
+
+    E_2(u,v)=d^2(H-c_0 P_z)|_(omega_0,orbit)(u,v),
+    E_2(u,v)=Omega_KKS(A_0 u,v)                           (6a)
+
+on the common domain, with translation/rotation/phase/circulation rows fixed.
+Any boundary term in extending (6a) is exactly the flux retained in (6).
+
 Freeze one rigged triple around this one block and prove a source-specific
 Grushin/limiting-absorption estimate for the source generated above. The block
 must retain all three vorticity/velocity components, global Biot--Savart and
@@ -214,7 +239,7 @@ At the same fixed finite `delta`, derive the full Cao harmonic operator's
 essential spectral set before searching for eigenvalues. In source-defined
 streamline/action coordinates, calculate the closures of the transport ranges
 
-    Sigma_(m,n)^tr=closure{m omega_delta(I)-n Omega_0:
+    Sigma_(m,n)^tr=closure{m omega_delta(I):
                            I in I_delta},                (8)
 
 then add the effects of curvature mixing, whole-space Hodge/pressure,
@@ -224,6 +249,16 @@ there is a nonempty open interval `G_delta` above the `m=0` zero accumulation
 and below the first `m>=1` transport band that remains in the resolvent of the
 essential operator. A filament asymptotic, boxed spectrum, or straight-column
 interval does not define `G_delta`.
+
+The gap is therefore a relative spectral gap in the translating nonrotating
+frame, not an artifact of a prospective pattern speed. If a later rotating
+frame is introduced, then for an `e^(i n theta)` block
+
+    A_Omega=A_0+Omega[R,slot]=A_0+i n Omega,
+    sigma(A_Omega|_n)=sigma(A_0|_n)+i n Omega.            (8a)
+
+This exact shift covariance translates the entire `n`-block and its contour;
+it cannot open or close an internal gap within that block.
 
 If the gap exists, search analytically first for one, preferably two,
 isolated internal Kelvin eigenmodes

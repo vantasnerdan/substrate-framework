@@ -19,3 +19,21 @@ Primary URLs and versions:
 No production numerics, comparator fitting, or filament substitution is used.
 The only executable check is exact SymPy algebra with the repository
 interpreter, so the small-ratio numerical protocol is not activated.
+
+## 0063 bounded correction scope
+
+The post-review correction changes no imported scientific claim and adds no
+paper. It repairs the cylindrical coordinate realization of the already
+abstract whole-space Biot--Savart block: coordinate coefficients require
+`D(r')=diag(1,r',1)` before the orthonormal rotation and `D(r)^(-1)` on the
+output. The abstract Cartesian `B_R3` operator and every sign are unchanged.
+
+The free-boundary collar proof uses Cao's exact positive-part source form
+`zeta=(F_+)^p`, smoothness of `F`, and `F=O(d)` to obtain the finite derivative
+upper bounds needed at the frozen integer index `s=4`, `p>=6`. It does not
+formally differentiate the reviewed statement `zeta=O(d^p)` and does not
+assume a nonzero boundary coefficient or two-sided `d^p` comparability. The
+Hodge estimate is the exact identity
+`B_R3 curl(xi cross omega_0)=P_L(xi cross omega_0)` with the compact-curl zero
+moment and decaying low-frequency convention, not an unconditional
+inhomogeneous Biot--Savart gain at spatial frequency zero.

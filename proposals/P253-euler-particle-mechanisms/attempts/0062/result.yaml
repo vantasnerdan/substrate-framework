@@ -47,8 +47,23 @@ exact_results:
       displacement.
     boundary: >-
       At zeta=0 the inverse contains singular division and a theta-component
-      cancellation. The reviewed forward no-sheet behavior does not prove the
-      reverse weighted Hardy or closed graph theorem.
+      cancellation. The reviewed forward no-sheet behavior does not prove a
+      reverse weighted Hardy theorem, and the explicit s=4 collar sequence
+      below refutes the ordinary unweighted graph lower bound.
+  ordinary_boundary_graph_lower_bound:
+    route_verdict: refuted
+    scope: fixed_integer_s_4_p_at_least_6_and_fixed_toroidal_abs_n_at_least_2
+    mechanism: >-
+      An exact divergence-free h-by-h collar displacement has point amplitude
+      h^s and displacement quotient bounded below, while C_0 xi in H^(s-1),
+      C_0 xi in H^s, B C_0 xi in H^s, and A_0 C_0 xi in H^(s-1) scale as
+      O(h^(p+1)), O(h^p), O(h^(p+1)), and O(h^p), respectively. Harmonic
+      orthogonality, positive-core injectivity, and support separation from
+      exterior stabilizers prove the quotient lower bound.
+    does_not_refute:
+      - positive_core_inverse_with_zeta_min_constant
+      - weighted_orbit_displacement_topology
+      - source_specific_sandwiched_trace
   carrier_map_intertwining:
     route_verdict: established
     identity: A_0 C_0 = C_0 M_0
@@ -69,10 +84,10 @@ exact_results:
       The raw Sokhotski boundary value, slope-weighted delta trace, and exact
       distorted Lippmann-Schwinger adjoint equation are derived.
     missing_construction: >-
-      Two-sided boundary DA isomorphism with A_0 traces; bounded global
-      core/exterior Hodge transmission; separate and mixed two-index
-      commutators; low and zero harmonic kernel/cokernel with circulation; and
-      the full nonnormal graph limiting-absorption or Grushin estimate.
+      One fixed-n smooth DA seed and its first source-bearing resonance,
+      followed by the source-specific sandwiched core/interface/exterior Hodge
+      Green or Grushin trace and its finite circulation rows. An all-sector
+      graph theorem is not presumed.
   resonant_coefficient_V_star:
     route_verdict: blocked
     status: undefined_not_zero
@@ -122,7 +137,7 @@ route_verdicts:
   route_A_direct_full_block:
     route_verdict: blocked
     evidence_scope: EXACT_DIFFERENTIAL_AND_INTERIOR_CONJUGACY_SCOPE
-    missing_construction: global_DA_graph_HJ2_GR_and_distorted_adjoint
+    missing_construction: fixed_n_seed_and_source_specific_sandwiched_adjoint
   route_A_generic_smooth_pendulum:
     route_verdict: refuted
     evidence_scope: REGULAR_POSITIVE_CORE_CONJUGACY_TOPOLOGY
@@ -137,19 +152,21 @@ route_verdicts:
 strongest_exact_verdict: >-
   0062 establishes the exact physical harmonic block, positive-core DA
   inverse, carrier-map intertwiner A_0 C_0=C_0 M_0, KKS density, integrable
-  centralizer topology, and exact cutoff ledger. It refutes a generic
+  centralizer topology, and exact cutoff ledger. Its s=4, p>=6 collar family
+  refutes an ordinary ambient-vorticity or generator-graph lower bound on the
+  displacement quotient. It also refutes a generic
   topology-creating smooth pendulum layer on a regular core annulus and the
   self-similar sqrt(epsilon) layer in the frozen smooth DA norm. It does not
   evaluate V_star or construct the rotating branch because the full boundary
   graph, nonnormal limiting-absorption and distorted adjoint remain absent.
 
 next_executable_dependency: >-
-  Construct the explicit two-sided weighted DA boundary isomorphism and
-  core/exterior matrix Hodge transmission for M_0, prove separate two-index
-  commutator and nonnormal limiting-absorption or Grushin estimates, then
-  evaluate the distorted transparency trace. A vanishing trace unlocks a
-  smooth integrable carrier-map iteration; a nonzero source-specific trace
-  refutes only that Cao same-leaf smooth branch route.
+  Construct one smooth physical DA seed in a fixed nonzero-n block and its
+  first source-bearing resonance. Prove the source-specific sandwiched
+  core/interface/exterior Hodge Green or Grushin trace with finite
+  circulation rows, then evaluate its KKS-normalized left functional. The
+  weighted orbit topology is a separate construction because the ordinary
+  graph lower bound is now refuted.
 
 does_not_license:
   - HJ2 or GR
