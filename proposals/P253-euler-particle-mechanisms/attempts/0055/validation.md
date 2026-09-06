@@ -34,3 +34,12 @@ the repository-interpreter replay printed six passes with stdout
 `ea56f577a3df62732bcb84c6e363a91d3f890b61851084313290a218916ccbe2`,
 empty stderr, and exit `0`.  The initial receipt remains preserved rather than
 being relabeled as evidence for the added assertion.
+
+The bounded 0061 correction changes only claim quantifiers: it restricts the
+no-cone and similarity conclusions to bare fixed-density whole-space Euler
+and removes the false universal wording about fixing any one dimensionful
+label. The existing oracle continues to establish the unchanged similarity,
+pressure, action-prefactor, and lattice identities; it does not test the new
+scope prose and was not rerun for this correction.
+The joined pre/post hashes and bounded textual/schema checks are recorded in
+`../0060/0061-bounded-correction-receipt.md`.

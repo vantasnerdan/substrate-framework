@@ -85,3 +85,15 @@ no-go.  Structured invariant sectors and explicit extended foundations remain
 positive candidates.  LP4 requires the state, measurement, action, exchange,
 and propagation mechanisms to meet on one carrier; this attempt addresses
 only the action/causal conjuncts.
+
+## 0061 bounded scope correction
+
+The theorem tested here is about **bare, fixed-density, whole-space**
+incompressible Euler and universal selection from topology and conserved
+labels alone. It does not range over boundaries, backgrounds, constitutive
+terms, or other scale-breaking environments. Prescribing the action `J`
+itself fixes `J` tautologically; the relevant similarity witnesses instead
+show that topology, circulation, helicity, energy, impulse, and other
+non-action labels do not make a universal action value emerge dynamically.
+Any prescribed numerical invariant is initial/boundary data unless a separate
+selection mechanism is constructed.

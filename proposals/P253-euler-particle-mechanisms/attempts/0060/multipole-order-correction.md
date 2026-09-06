@@ -9,10 +9,16 @@ its two spatial indices, and produces the `r^-4` quadrupole. Equations (4)
 cancel both. The third spatial moment has rank four; the proper octahedral
 group admits a cubic rank-four invariant, so an `r^-5` octupole can survive.
 
-The corrected robust result is therefore `v=O(r^-5)`, `grad v=O(r^-6)`. This
-still gives finite zeroth and first lattice moments in three dimensions. The
-API rank-two projector was strengthened to accept the physical antisymmetric
-vorticity moment, and its test now exposes that trace-free orbit explicitly.
+For any nonzero trivial-sector compact DA tangent whose exact translated
+zeroth, first, and second vorticity moments have the stated octahedral
+cancellations, the corrected robust result is therefore `v=O(r^-5)`,
+`grad v=O(r^-6)`. This still gives finite scalar zeroth and first lattice
+moments in three dimensions. The API rank-two projector was strengthened to
+accept the physical antisymmetric vorticity moment, and its test exposes that
+trace-free orbit explicitly. The later 0061 audit leaves this exponent and
+projector intact but shows that a generic seed on the six `O/C4` sites need not
+have a nonzero stabilizer average; the nonzero neutral-cell tangent remains a
+conditional candidate.
 
 The initial `exact-check.*` and `focused-pytest.*` receipts are retained as an
 exposing false green. The corrected repository-interpreter receipts are

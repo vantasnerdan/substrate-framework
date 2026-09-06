@@ -1,0 +1,62 @@
+attempt: P253/0064
+owner: root
+scope:
+  obligations: [P3, P5]
+  object: localized Euler charge and Coulomb interaction
+route_verdicts:
+  compact_vorticity_biot_savart:
+    verdict: refuted_as_scalar_coulomb_mechanism
+    positive_result: >-
+      Smooth compact divergence-free vorticity has zero total vorticity and an
+      antisymmetric first moment fixed by hydrodynamic impulse. Its velocity
+      begins with the exact anisotropic r^-3 dipole. Two-carrier kinetic cross
+      energy is d^-3 and its translation force is d^-4.
+    mechanism: wrong_power_and_orientation_dependence
+  smooth_harmonic_flux_monopole:
+    verdict: refuted_on_smooth_source_free_R3
+    mechanism: >-
+      The q*x/r^3 field has spherical flux 4*pi*q, distributional divergence
+      4*pi*q*delta_0, and divergent core energy. Smooth whole-space
+      incompressibility forces q=0.
+    remaining_candidates: [punctured_domain, source_or_density_field]
+  pressure_poisson:
+    verdict: refuted_as_scalar_coulomb_mechanism
+    positive_result: >-
+      For compact velocity, or weighted localized velocity with finite first
+      kinetic moments and the required boundary decay, the pressure source has
+      zero monopole and first moment. Physical pressure begins at r^-3 with rho
+      times the kinetic quadrupole, so its gradient is r^-4. Exact stationary
+      compact velocity has constant exterior pressure.
+  accepted_collective_transverse_channel:
+    verdict: refuted_as_isotropic_scalar_mediator_in_accepted_field_content
+    positive_result: >-
+      The accepted prepared continuum contains a massless transverse static
+      Green tensor proportional to 1/r.
+    missing_construction: >-
+      Translation invariance makes a compact internal source a stress
+      divergence with zero force monopole. The general local isotropic scalar
+      source is longitudinal i*k*F(k^2)*q and is annihilated by the transverse
+      projector. Globally compensated oriented vector forces may retain a 1/r
+      cross response and reciprocal prescribed-source action, but do not yet
+      define autonomous carrier recoil or scalar charge.
+strongest_exact_result: >-
+  Direct smooth localized incompressible-Euler velocity and pressure fields do
+  not produce Coulomb scaling: compact-vorticity kinetic interaction has
+  d^-3 energy and d^-4 force, a smooth r^-2 flux monopole is excluded, and
+  pressure begins at quadrupole order. The accepted collective background has
+  a prepared massless transverse 1/r response, but the translation Ward
+  identity removes the compact internal force monopole and isotropy removes a
+  scalar-to-vector source. No same-Euler scalar/Gauss mediator is derived.
+next_dependency: >-
+  Smooth the compensated vector source, adjoin the actual carrier action and
+  derive total translation momentum/recoil, while searching for a same-Euler
+  emergent scalar or Gauss-type topological sector. If the scalar route does
+  not survive source/representation audit, a new scalar or gauge field is a
+  separately authorized foundation revision rather than an Euler derivation.
+does_not_license:
+  - electric charge or electromagnetism
+  - a magnetic moment
+  - electron, neutrino, P5, or parent completion
+  - a no-go for explicitly changed substrates or scale-breaking environments
+parent_state: active
+exhaustion_claimed: false

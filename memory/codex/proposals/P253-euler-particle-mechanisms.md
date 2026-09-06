@@ -218,3 +218,43 @@ establish the retained exact atoms and the implication
 `HJ2 + GR => graph-Riesz transfer`, while confirming that neither antecedent
 nor an actual Cao Riesz family is constructed. The correction receipt is
 `4659cb522e3f46cd01099405bd12a7841aeb3cff2274e4a689f03bacc25cceeb`.
+
+## Full-Hodge carrier boundary and electron-charge route expansion
+
+Author0062 constructs the exact nonzero-toroidal-harmonic full-Hodge
+coordinate block on the positive Cao core. The dynamically accessible map is
+explicitly invertible where `zeta>0`, satisfies the exact intertwiner
+`A_0 C_0=C_0 M_0`, and carries KKS density
+`2*pi*rho_0*r^2*zeta dr dz`. At the flat free boundary its inverse requires
+stronger normal vanishing and a tangential cancellation that the reviewed
+no-sheet estimate does not provide. Smooth carrier-map conjugacy preserves
+the regular positive-core level-torus topology, excluding a generic new
+pendulum saddle/center there, and a nontrivial amplitude-`sqrt(epsilon)`
+self-similar layer leaves the frozen smooth DA class. The global adjoint trace
+and coefficient `V_*` remain undefined rather than zero. Independent0063 is
+being frozen to review the ordinary unweighted collar failure separately from
+weighted-orbit and ambient-vorticity sandwiched topologies.
+
+Root0064 opens the electron charge requirement directly. Exact whole-space
+moments give an anisotropic impulse velocity `O(r^-3)`, two-carrier kinetic
+energy `O(d^-3)` and force `O(d^-4)`; localized pressure starts at quadrupole
+order. A smooth radial flux monopole is excluded by divergence and core
+energy. The accepted massless collective mode has a transverse `1/r` Green
+tensor, but translation invariance makes a compact internal source a stress
+divergence and rotational covariance makes a scalar source longitudinal, so
+the transverse projector annihilates it. A prescribed compensated vector
+source has an exact reciprocal `1/r` cross response, but autonomous recoil
+still needs smooth form factors, the actual carrier action, a constitutive
+source and total Noether momentum.
+
+Failure-derived0065 tests the topological/nonlocal alternatives without
+changing the parent objective. A point complement has signed `H^2` flux only
+with a distributional source and `1/epsilon` core energy; a compact loop has
+genuine `H^1` circulation but dipolar far interaction; helicity/Hopf data are
+nonlocal conserved internal labels rather than an Euler Gauss source. Even a
+singular translation-invariant isotropic scalar Fourier multiplier is
+longitudinal and cannot source the transverse sector. This leaves an oriented
+carrier/background recoil laboratory inside the current field content and a
+scalar/longitudinal Gauss field as a clearly typed foundational alternative,
+not as an incompressible-Euler derivation. P2, P4, the electron mechanism and
+all neutrino obligations remain active.

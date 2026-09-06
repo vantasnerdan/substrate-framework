@@ -1,7 +1,7 @@
 # Source and authority audit
 
 This attempt derives its load-bearing statements directly from the
-constant-density incompressible Euler equations
+bare constant-density incompressible Euler equations on whole-space `R^3`
 
     partial_t u+(u dot grad)u=-grad p/rho,   div u=0,
     p=rho(-Delta)^-1 partial_i partial_j(u_i u_j),
@@ -35,3 +35,11 @@ imports.  A finite group velocity, a circulation/action postulate, a
 compressible hyperbolic law, or a scale-setting background would each be a
 new hypothesis until separately constructed and reviewed on the same
 carrier.
+
+The 0061 scope audit excludes those new hypotheses from the similarity and
+strict-cone verdicts. It also separates conserved non-action labels from the
+action itself: fixing `J` prescribes `J`, whereas the displayed circulation,
+helicity, energy, and impulse subfamilies retain continuous action freedom.
+The established statement is therefore a topology/conservation-only
+selection boundary for bare whole-space Euler, not a theorem about every
+scale-breaking Euler environment.

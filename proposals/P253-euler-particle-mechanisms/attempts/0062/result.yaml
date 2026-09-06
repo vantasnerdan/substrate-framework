@@ -1,0 +1,162 @@
+attempt: P253/0062
+owner: particle-foundations
+activation_schema_exit: 0
+status: route_execution_complete_positive_branch_open
+active_obligation: full_hodge_cao_trace_and_same_leaf_matching
+evidence_scope: EXACT_LOCAL_BLOCK_INTERTWINER_KKS_TOPOLOGY_AND_CUTOFF_SCALING
+
+dependency_boundary:
+  accepted_release: v0.183.0
+  fixed_cao_carrier: source_supported_at_one_member
+  P253_0052:
+    imported_exact:
+      - corrected resonance scaling
+      - local Cao cells
+      - unequal-volume representation
+      - physical KKS normalization convention
+    conditional_not_assumed:
+      - common closed DA graph
+      - GR all-sector nonnormal inverse
+      - physical Riesz family
+  P253_0054:
+    imported_exact:
+      - pointwise first and second Biot-Savart shape identities
+      - metric-Leray algebra
+      - limited p>=6 no-sheet trace
+    conditional_not_assumed:
+      - exact augmented carrier map
+      - HJ2
+      - global graph estimates
+      - two-index commutator bounds
+      - norm-resolvent or Riesz transfer
+
+exact_results:
+  harmonic_block:
+    route_verdict: established
+    statement: >-
+      The nonzero-toroidal harmonic of the physical vorticity generator is
+      computed componentwise as -[W_0,eta]-[B_R3 eta,omega_0], with global
+      Biot-Savart velocity entering all three components. The exterior field,
+      pressure, interface transmission and zero-harmonic circulation row are
+      retained exactly at representation scope.
+  positive_core_DA_map:
+    route_verdict: established
+    statement: >-
+      For n nonzero and zeta positive, C_0 xi=-[xi,omega_0] has an explicit
+      pointwise inverse. Divergence-free vorticity recovers a divergence-free
+      displacement.
+    boundary: >-
+      At zeta=0 the inverse contains singular division and a theta-component
+      cancellation. The reviewed forward no-sheet behavior does not prove the
+      reverse weighted Hardy or closed graph theorem.
+  carrier_map_intertwining:
+    route_verdict: established
+    identity: A_0 C_0 = C_0 M_0
+    M_0: B_R3 C_0 plus ad_(dot,W_0)
+    significance: >-
+      Direct full-Hodge and invariant carrier-map routes have the same
+      nonnormal range. A compact tangent lift can be chosen by cutoff and an
+      exterior-collar divergence correction without changing C_0 M_0.
+  physical_KKS_measure:
+    route_verdict: established
+    measure: 2*pi*rho_0*r^2*zeta*dr*dz
+    boundary: >-
+      The measure fixes density and sign but does not create a mode q or its
+      residue-normalized adjoint.
+  limiting_absorption_trace:
+    route_verdict: blocked
+    strongest_positive: >-
+      The raw Sokhotski boundary value, slope-weighted delta trace, and exact
+      distorted Lippmann-Schwinger adjoint equation are derived.
+    missing_construction: >-
+      Two-sided boundary DA isomorphism with A_0 traces; bounded global
+      core/exterior Hodge transmission; separate and mixed two-index
+      commutators; low and zero harmonic kernel/cokernel with circulation; and
+      the full nonnormal graph limiting-absorption or Grushin estimate.
+  resonant_coefficient_V_star:
+    route_verdict: blocked
+    status: undefined_not_zero
+    reason: >-
+      The exact first critical pair, right mode and distorted adjoint
+      functional are not constructed until the full limiting-absorption block
+      exists. The missing datum is not an absent printed source coefficient.
+  centralizer_topology:
+    route_verdict: established
+    statement: >-
+      On a regular positive-core annulus every smooth centralizer has
+      poloidal streamfunction F(zeta), preserves every zeta torus, and has an
+      integrable return map. Smooth W=g_*Y is flow conjugate to Y and cannot
+      create a pendulum island chain absent compatible topology in Y.
+    scope: regular_interior_zeta_positive_only
+  generic_smooth_pendulum:
+    route_verdict: refuted
+    mechanism: >-
+      A nonzero pendulum coefficient gives one saddle and one center with a
+      separatrix, contradicting smooth flow conjugacy to the regular
+      centralizer foliation unless transparency or a compatible centralizer
+      critical set is present.
+    failure_scope: topology_creating_layer_at_regular_positive_core_resonance
+  exact_volume_inner_generator:
+    route_verdict: established
+    statement: >-
+      The J-weighted Hamiltonian generator is exactly divergence free and,
+      with a flat chart-boundary cutoff, needs no Bogovskii correction.
+  self_similar_square_root_layer:
+    route_verdict: refuted_in_frozen_smooth_DA_class
+    mechanism: >-
+      For h=sqrt(epsilon) and displacement amplitude Theta(h), the H^s,
+      H^(s+1), and induced H^(s-1) vorticity norms scale respectively as
+      h^(3/2-s), h^(1/2-s), and h^(5/2-s). They diverge for s>7/2.
+    retained_route: separately_licensed_weaker_or_singular_layer
+  smooth_invariant_carrier_map:
+    route_verdict: blocked
+    strongest_positive: >-
+      The exact topology-compatible nonlinear map, centralizer variables,
+      derivative M_0 and equivalence to the direct block are constructed.
+    missing_construction: >-
+      The same global boundary-Hodge limiting-absorption adjoint trace, now on
+      the integrable centralizer-compatible codomain, followed by proof of all
+      transparency rows and a tame nonlinear inverse.
+
+route_verdicts:
+  route_A_direct_full_block:
+    route_verdict: blocked
+    evidence_scope: EXACT_DIFFERENTIAL_AND_INTERIOR_CONJUGACY_SCOPE
+    missing_construction: global_DA_graph_HJ2_GR_and_distorted_adjoint
+  route_A_generic_smooth_pendulum:
+    route_verdict: refuted
+    evidence_scope: REGULAR_POSITIVE_CORE_CONJUGACY_TOPOLOGY
+  route_A_singular_layer:
+    route_verdict: refuted_in_declared_smooth_space
+    evidence_scope: SELF_SIMILAR_SQRT_EPSILON_CUTOFF_FAMILY
+  route_B_invariant_carrier_map:
+    route_verdict: blocked
+    evidence_scope: EXACT_NONLINEAR_REPRESENTATION_AND_TOPOLOGY
+    missing_construction: transparency_trace_and_tame_integrable_inverse
+
+strongest_exact_verdict: >-
+  0062 establishes the exact physical harmonic block, positive-core DA
+  inverse, carrier-map intertwiner A_0 C_0=C_0 M_0, KKS density, integrable
+  centralizer topology, and exact cutoff ledger. It refutes a generic
+  topology-creating smooth pendulum layer on a regular core annulus and the
+  self-similar sqrt(epsilon) layer in the frozen smooth DA norm. It does not
+  evaluate V_star or construct the rotating branch because the full boundary
+  graph, nonnormal limiting-absorption and distorted adjoint remain absent.
+
+next_executable_dependency: >-
+  Construct the explicit two-sided weighted DA boundary isomorphism and
+  core/exterior matrix Hodge transmission for M_0, prove separate two-index
+  commutator and nonnormal limiting-absorption or Grushin estimates, then
+  evaluate the distorted transparency trace. A vanishing trace unlocks a
+  smooth integrable carrier-map iteration; a nonzero source-specific trace
+  refutes only that Cao same-leaf smooth branch route.
+
+does_not_license:
+  - HJ2 or GR
+  - an exact Cao Riesz family
+  - an evaluated V_star
+  - an exact rotating or relative-periodic Cao branch
+  - nonlinear stability or P2 completion
+  - particle, electron, neutrino, quantum, or relativistic conclusions
+parent_campaign_state: active
+exhaustion_claimed: false

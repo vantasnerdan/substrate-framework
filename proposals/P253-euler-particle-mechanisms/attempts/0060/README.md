@@ -1,10 +1,9 @@
 # P253/0060: neutral compact-ring composite and controlled effective band
 
-Status: **README-only preregistration awaiting central registration and schema
-activation.** This README is the sole 0060 artifact before
-`0060/activation-schema.exit` contains exactly `0`. Root owns the attempt and
-central integration. No body, API, verifier, numerical calculation, or claim
-is opened before activation.
+Status: **activated and author-complete, with the bounded 0061 review
+correction recorded below.** The preregistered activation boundary was met by
+`0060/activation-schema.exit=0` before any body or calculation was opened.
+Root owns the attempt and central integration.
 
 ## Parent purpose and fixed boundary
 
@@ -16,7 +15,7 @@ finite first spatial moment requires `p>4`. This attempt executes the positive
 failure-derived candidate rather than stopping at that obstruction.
 
 Construct an exact same-substrate neutral composite cell from a finite
-proper-rotation/inversion orbit of one accepted compact-velocity stationary
+proper-rotation orbit of one accepted compact-velocity stationary
 Euler ring, with disjoint supports and matched exterior pressure constants.
 The field sum must itself solve Euler. Use its actual quadratic stress moments
 to cancel the pressure quadrupole and the next odd spatial moment, derive the
@@ -131,3 +130,17 @@ Even success supplies only a propagation/composite-carrier ingredient. The
 physical positive doublet, action selection, detector, exchange character,
 charge/current, electron and neutrino mechanisms remain separate P253
 obligations, and the parent campaign remains active.
+
+## 0061 bounded orbit/domain correction
+
+The stationary six-site cell and the 24-element proper-octahedral tensor
+identities remain exact, but they are different objects. The six signed-axis
+sites form `O/C4`; four rotations stabilize each physical component. Thus a
+generic nonzero seed need not have a nonzero `C4` average. The neutral
+`r^-5` tangent remains a concrete candidate conditional on exhibiting a
+nonzero `C4`-invariant compact DA tangent (then summing six cosets), using a
+free 24-site orbit, or directly proving a nonzero overlapping-stabilizer
+average. The repaired construction also retains translated vorticity moments,
+componentwise circulation/center/harmonic rows, and the full pressure/Leray
+graph-domain estimate still needed before the scalar `r^-5` lattice bound can
+be promoted to a `C^1` Bloch operator.

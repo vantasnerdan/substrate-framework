@@ -25,19 +25,26 @@ orbit one-form `rho integral u dot xi dx`: a physical displacement scales as
 degree labels.  It therefore moves dimensionful action continuously inside
 one topological class.
 
-For any carrier with nonzero action `J` and any target `J_*>0`, taking `B=1`
-and `A=J_*/J` produces the same topology with action `J_*`.  Fixed
-circulation only fixes `A/B`; then `J` still scales as `B^-3`.  Fixed helicity
-fixes `A/B` up to a square root and has the same residual size freedom.  Two
-independently prescribed dimensionful invariants can select one member of a
-similarity family, but their numerical values are then initial/boundary data;
-Euler supplies no mechanism that chooses the same values for a neighborhood
-of initial conditions.
+For any carrier with nonzero positive action `J` and any target `J_*>0`,
+taking `B=1` and `A=J_*/J` produces the same topology with action `J_*`.
+Fixing circulation only fixes `A/B`; then `J` still scales as `B^-3`.
+Fixing nonzero helicity likewise fixes `A/B` up to its positive square root
+and leaves the same residual size freedom. At fixed energy,
+`A proportional B^(3/2)` and `J proportional B^(-5/2)`; at fixed nonzero
+linear impulse, `A proportional B^3` and `J proportional B^-1`. These are
+explicit non-action-label witnesses, not a claim about every possible single
+constraint. In particular, prescribing `J` itself fixes `J` tautologically.
+Two independently prescribed dimensionful invariants may select one member
+of a similarity family, but their numerical values are then initial/boundary
+data; bare Euler supplies no mechanism choosing the same values throughout a
+neighborhood of initial conditions.
 
-**Route A verdict.** Topology-only and conservation-only universal nonzero
-action selection are refuted by the explicit same-topology similarity orbit.
-This is route scoped.  A scale-breaking carrier constraint or a new discrete
-action law remains a positive candidate.
+**Route A verdict.** On bare fixed-density whole-space Euler, topology-only
+and conservation-label-only universal nonzero action selection are refuted by
+the explicit same-topology similarity orbit and the witnesses above. This is
+route scoped. A prescribed action value, a scale-breaking carrier constraint,
+or a new discrete action law is not refuted; each is an additional datum or
+mechanism rather than a selection derived here.
 
 ## 2. Exact compact-source pressure response
 
@@ -105,9 +112,11 @@ an `r^-5` leading multipole is a concrete neutral-cell target.  Every such
 tail remains instantaneous in the full field.
 
 **Route B verdict.** A restricted finite-group-velocity sector is a viable
-positive construction.  Bare incompressible Euler cannot supply an exact
-full-observable Lorentz cone because its pressure response is elliptic and
-instantaneous.  P253 still needs the actual same-carrier band and tail bound.
+positive construction. Bare whole-space incompressible Euler cannot supply an
+exact full-observable Lorentz cone because its pressure response is elliptic
+and instantaneous. This does not address a boundary, background, compressible
+law, or other scale-breaking environment. P253 still needs the actual
+same-carrier band and tail bound.
 
 ## 4. Minimal foundation extensions and their ledgers
 
@@ -166,6 +175,7 @@ join:
 - a controlled effective propagation band with explicit algebraic leakage,
   or a declared hyperbolic foundation extension.
 
-Nothing here refutes such a joined construction.  It proves that topology and
-bare incompressible Euler alone do not provide its action or exact causal
-conjuncts.
+Nothing here refutes such a joined construction. It proves that topology and
+conserved non-action labels in bare whole-space incompressible Euler do not
+provide its universal action value, and that the same bare whole-space theory
+does not provide an exact full-field causal conjunct.

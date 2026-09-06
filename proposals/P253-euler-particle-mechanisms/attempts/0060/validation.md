@@ -36,3 +36,14 @@ as one order too strong. `multipole-order-correction.md` preserves the false
 green and derives the corrected `r^-5` velocity order. The changed verifier
 and strengthened antisymmetric-rank-two API test were rerun with the repository
 interpreter; four exact assertions and four focused tests pass, both exit `0`.
+
+The bounded 0061 correction does not change those algebraic identities or the
+repaired multipole exponent, so neither oracle was rerun. Their exact scope is
+narrower than the corrected continuum claim: they enumerate the 24 group
+matrices and tensor averages, but do not test the six-site `C4` stabilizer,
+nonvanishing of a projected DA tangent, translated physical moments,
+componentwise support/circulation/center/harmonic rows, or a graph-domain
+pressure/Leray `J(R)` bound. The neutral-cell tangent and Bloch `C^1` result
+remain conditional on those constructions.
+The joined pre/post hashes and bounded textual/schema checks are recorded in
+`0061-bounded-correction-receipt.md`.
