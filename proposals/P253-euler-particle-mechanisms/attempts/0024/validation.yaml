@@ -1,0 +1,84 @@
+attempt: P253/0024
+date: 2026-09-06
+
+activation_schema:
+  command_owner: root
+  exit_file: activation-schema.exit
+  exit_code: 0
+
+readme_typography_correction:
+  equation: 12
+  before_literal: I,qquad N_k
+  after_literal: I,\qquad N_k
+  pre_sha256: 73f211f59f34e84fa74400420f121e84e15c80664b4e7f1ae25ffc583032921a
+  post_sha256: 108937eada3c5696cc57160e831f61231821286e7f72a7fa9b3ccdcc9a20403c
+  scientific_effect: none
+
+source_receipt:
+  file: source-receipt.yaml
+  sha256: 21397f05f237e2376a77f6af875088c2204092fdd3e000a6c80d6f82dd29548d
+  cached_pdf_sha256_rechecked: 7ba22ef57ba9453dd2631c33b1ad094a35ce2be171426cecce80fba8a5cdfac6
+  cached_text_sha256_rechecked: f6461cfc68e2aa3b08cadc3409a36f4f0267c5a7c73fdb03e46f9636c121c871
+
+analytic_checks:
+  - check: physical normalization retained
+    result: pass
+    evidence: >-
+      construction.md equations (1)-(2) keep the common 2*pi*rho_m factor
+      on kinetic energy, axial impulse, KKS form, and action, with material
+      density rho_m distinct from canonical rho=r^2/2.
+  - check: source operator order and domain audited
+    result: pass
+    evidence: >-
+      construction.md equations (6)-(10) and source-receipt.yaml distinguish
+      the OPS^(-3) compact term from the finite-step E_(4,n) tame residual.
+  - check: no periodic-inverse to evolution-control inference
+    result: pass
+    evidence: >-
+      The actual compact monodromy transfer is explicitly conditional on CT;
+      no full-label compactness or operator-norm convergence is attributed to
+      the source.
+  - check: exact limiting Cantor consequence
+    result: pass
+    evidence: >-
+      construction.md equations (13)-(16) first passes from membership in
+      O_m^1(g_m) and g_m to g_infinity before deriving irrationality and the
+      diagonal model's dense unit-circle essential spectrum.
+  - check: full physical invariant flag retained
+    result: pass
+    evidence: >-
+      construction.md equations (21)-(25) retain phase/translation and both
+      energy/impulse companion directions rather than deleting their shears.
+  - check: one verdict per tested route
+    result: pass
+    evidence: verdicts.yaml records A blocked, B blocked, and C blocked
+
+exact_oracle:
+  script: verify_exact_monodromy.py
+  script_sha256: e65b01fb26933799c702d1a6c7759628232331be6d03cfad0b12d21bb790b817
+  stdout: exact-check.stdout
+  stdout_sha256: fbec630c74d6deb1b776412363fede725b495e3f9002a9961596d66d3aecaff8
+  exit_file: exact-check.exit
+  exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+  exit_code: 0
+  arithmetic: exact_sympy_only
+  checks:
+    - cancellation of the common physical Hamiltonian/KKS factor
+    - symplecticity and powers of the hyperbolic counterexample block
+    - exact invariant-flag block powers for n=1 through n=6
+    - exact coboundary telescope for n=1 through n=6
+
+artifact_hashes:
+  readme_sha256: 108937eada3c5696cc57160e831f61231821286e7f72a7fa9b3ccdcc9a20403c
+  construction_sha256: 8f078bf1d895167bed15813a0a492b92242c287e1f25a66b985e2563e91799ad
+  verdicts_sha256: 0f952392fb91fab0b6b70142125dc2b2bf48af6e6d68c142069a91d49bbaea42
+
+numerics:
+  used: false
+  small_ratio_license_needed: false
+
+non_inheritance: >-
+  The attempt establishes neither reduced all-power boundedness nor an
+  unconditional essential-spectrum theorem for the actual monodromy. It
+  supplies no nonlinear/global Euler stability, swirl, helicity, spin,
+  electron, neutrino, parent-completion, or global-no-go conclusion.

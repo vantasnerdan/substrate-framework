@@ -28,9 +28,11 @@ route_verdicts:
       solvable helical shear. The full Leray amplitude return is the
       symplectic nonsemisimple shear [[1,0],[-sqrt(2)pi,1]], giving squared
       energy gain 1+2pi^2 for the normal polarization. Coefficient continuity
-      and a fixed-time WKB/Duhamel construction transfer a strict gain to exact
-      finite-energy dynamically accessible solutions of each sufficiently
-      small fixed compact Gavrilov member.
+      and a fixed-time WKB/Duhamel construction, applied after normalizing each
+      packet by its exact Biot--Savart velocity norm, transfers a strict gain
+      to exact finite-energy dynamically accessible solutions of each
+      sufficiently small fixed compact Gavrilov member. The residual and
+      Duhamel errors are relative O(N^-1) times the initial velocity norm.
   all_time_lp2_route:
     verdict: open_specific_skew_product_dependency
     mechanism: >-
@@ -50,9 +52,11 @@ strongest_exact_result:
     radial-to-azimuthal shear and wave-covector transport.
   pde_bridge: >-
     For sufficiently small fixed sigma there are finite-energy axisymmetric
-    initial data in the exact coadjoint-orbit tangent, modulo the neutral axial
-    translation, whose exact global linearized Euler solutions satisfy
-    rho0||v(Tsigma)||2^2>(1+pi^2/2)rho0||v(0)||2^2.
+    initial data, normalized by their exact Biot--Savart velocity norm, in the
+    exact coadjoint-orbit tangent, modulo the neutral axial translation, whose
+    exact global linearized Euler solutions satisfy
+    rho0||v(Tsigma)||2^2>(1+pi^2/2)rho0||v(0)||2^2; the continuum-transfer
+    error is relative O(N^-1)||v(0)||2.
   weighted_symbol: >-
     In y=(eta/|k|,chi), the retained inverse-elliptic pressure/shear entries
     have product -2 xi b_xi k_z/(r^2|k|^2), so they remain order zero and are

@@ -298,14 +298,20 @@ vartheta)` and the real part of
 `a_N=N^-1 A exp(iN vartheta)` in the exact coadjoint generator of 0014, with
 `g_N=0`.  Then
 
-    q_N=J_*(0,a_N)=({xi,a_N},0)                                     (36)
+    q_N=J_*(0,a_N)=({xi,a_N},0),
+    qhat_N=q_N/||v[q_N]||_2.                                        (36)
 
-is exactly dynamically accessible.  Its Biot--Savart velocity has leading
-polarization normal to the meridional circuit and wave covector tangent to it,
-which is precisely `(k,A)=(e_t,e_n)` in (28).  The exact Biot--Savart
-reconstruction is divergence free and finite energy.  The order-minus-one
-symbol gives the desired unit leading velocity amplitude; its longitudinal
-and coefficient-gradient corrections are `O(N^-1)`.
+Here `q_N` is exactly dynamically accessible.  Its Biot--Savart velocity has
+leading polarization normal to the meridional circuit and wave covector
+tangent to it, which is precisely `(k,A)=(e_t,e_n)` in (28).  The exact
+Biot--Savart reconstruction is divergence free and finite energy.  With the
+displayed fixed tube amplitude, however, the order-minus-one symbol gives
+`||v[q_N]||_2` comparable to `N^-1`, not to one.  The second definition in
+(36) is therefore essential: `qhat_N` is the scalar-normalized orbit tangent
+(equivalently one may multiply the generator by a factor comparable to `N`).
+Scalar normalization preserves exact dynamic accessibility, axisymmetry,
+finite energy, and the gain ratio.  Relative to its normalized leading
+velocity, longitudinal and coefficient-gradient corrections are `O(N^-1)`.
 
 For completeness, the fixed-time continuum bridge used here is obtained by
 inserting
@@ -321,32 +327,38 @@ Fourier multiplier for `P` leaves an `L^2` residual `O(N^-1)`, uniformly on
 one circuit.  This also shows explicitly where global pressure, rather than a
 local pressure closure, enters the estimate.
 
-Let `v_N(t)=S_sigma(t)v_N(0)` be the exact solution of the global operator
-(1), not a truncated ray.  Substitution of the WKB transport (27) produces a
-residual `R_N` satisfying on the fixed interval `[0,T_sigma]`
+Let `vhat_N(t)=S_sigma(t)v[qhat_N]` be the exact solution of the global
+operator (1), not a truncated ray, and let `vhat_N^WKB` denote the
+correspondingly normalized two-term ansatz.  Substitution of the WKB transport
+(27) produces a residual `Rhat_N` satisfying on the fixed interval
+`[0,T_sigma]`
 
-    sup_t ||R_N(t)||_2 <= C_sigma/N,
-    sup_t ||v_N(t)-v_N^WKB(t)||_2
-       <= (C_sigma/N)T_sigma exp(C_sigma T_sigma).                   (37)
+    sup_t ||Rhat_N(t)||_2
+       <= (C_sigma/N)||vhat_N(0)||_2,
+    sup_t ||vhat_N(t)-vhat_N^WKB(t)||_2
+       <= (C_sigma/N)T_sigma exp(C_sigma T_sigma)
+          ||vhat_N(0)||_2.                                         (37)
 
 This is the Duhamel estimate from the exact semigroup (3).  Choose `sigma`
-first so that (35) holds, then choose the tube and `N` so that the squared-norm
-error is less than `pi^2/2`.  The resulting exact, finite-energy,
-dynamically-accessible axisymmetric linearized Euler solution satisfies
+first so that (35) holds, then choose the tube and `N` so that the relative
+squared-norm error is less than `pi^2/2`.  The resulting exact,
+finite-energy, dynamically-accessible axisymmetric linearized Euler solution
+satisfies
 
-    rho0||v_N(T_sigma)||_2^2
-       > (1+pi^2/2)rho0||v_N(0)||_2^2.                              (38)
+    rho0||vhat_N(T_sigma)||_2^2
+       > (1+pi^2/2)rho0||vhat_N(0)||_2^2.                           (38)
 
 The axial-translation tangent is an exact neutral accessible solution.  Its
-pairing with this oscillatory packet is `O(N^-m)` for every fixed `m`; subtracting
-that component enforces the modulation gauge without changing (38) for large
-`N`.  Equation (38) is therefore the promised physical quotient-space growing
-wave packet with its continuum bridge.  It occurs on the same smooth compact
-finite-`j` Gavrilov carrier and retains the global pressure.  It proves robust
-one-circuit transient energy amplification.  It does **not** prove exponential
-spectral instability or unbounded all-time growth: (34) controls one return,
-while twist and the cotangent shear (22)/(26) generally move later packets
-between fibres.
+pairing with the normalized oscillatory packet remains `O(N^-m)` for every
+fixed `m` after relabelling the arbitrary integration-by-parts order;
+subtracting that component enforces the modulation gauge without changing
+(38) for large `N`.  Equation (38) is therefore the promised physical
+quotient-space growing wave packet with its continuum bridge.  It occurs on
+the same smooth compact finite-`j` Gavrilov carrier and retains the global
+pressure.  It proves robust one-circuit transient energy amplification.  It
+does **not** prove exponential spectral instability or unbounded all-time
+growth: (34) controls one return, while twist and the cotangent shear (22)/(26)
+generally move later packets between fibres.
 
 ## 5. What the actual return decides and what remains
 

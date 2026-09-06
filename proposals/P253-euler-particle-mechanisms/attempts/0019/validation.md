@@ -64,3 +64,17 @@ construction is the repeated moving-covector/nonlocal return: control the full
 skew product through arbitrarily many circuits, including collars and exterior,
 or produce a sequence of exact accessible packets whose gains persist.  This
 is a route gap, not a physical impossibility claim.
+
+## Bounded normalization correction after independent review
+
+The independent `0026` Unit A review found one normalization omission in the
+prose bridge, without contrary evidence to the theorem.  For the displayed
+fixed tube generator `a_N=N^-1 A exp(iN vartheta)`, Biot--Savart is order minus
+one and the raw velocity norm is comparable to `N^-1`; it is not already a
+unit packet.  Equations (36)--(38) now explicitly use
+`qhat_N=q_N/||v[q_N]||_2`, and state both the WKB residual and Duhamel error as
+relative `O(N^-1)||vhat_N(0)||_2`.  Scalar normalization leaves accessibility,
+axisymmetry, finite energy, translation modulation, and the gain ratio
+unchanged.  This correction changes no predicate in `verify_return.py`, so the
+unchanged oracle was not rerun and its original first-execution receipt remains
+the only execution receipt.
