@@ -1,0 +1,117 @@
+attempt: P253/0021
+audit_date: 2026-09-06
+cache_policy: >-
+  Complete primary-source files remain in /tmp/p253-primary-source-cache.
+  This attempt retains provenance, page mappings, short scope descriptions,
+  and original calculations only.
+
+sources:
+  - id: GarciaHassainiaHmidi2603.21644
+    title: Time-periodic leapfrogging vortex rings in the 3D Euler equations
+    authors:
+      - Claudia Garcia
+      - Zineb Hassainia
+      - Taoufik Hmidi
+    version: arXiv:2603.21644v1
+    submitted: 2026-03-23
+    abstract_url: https://arxiv.org/abs/2603.21644
+    pdf_url: https://arxiv.org/pdf/2603.21644v1
+    cache_pdf: /tmp/p253-primary-source-cache/GarciaEtAl2603.21644.pdf
+    cache_text: /tmp/p253-primary-source-cache/GarciaEtAl2603.21644.txt
+    pdf_sha256: 7ba22ef57ba9453dd2631c33b1ad094a35ce2be171426cecce80fba8a5cdfac6
+    text_sha256: f6461cfc68e2aa3b08cadc3409a36f4f0267c5a7c73fdb03e46f9636c121c871
+    pdf_pages: 150
+    audit_status: full_body_audited_after_0021_activation
+    page_map:
+      - pages: 3-7
+        role: >-
+          Theorem 1.1 quantifiers, actual axisymmetric no-swirl two-patch
+          family, translating drift, physical period, and non-rigid motion.
+      - pages: 21-24
+        role: >-
+          Canonical half-plane Green kernel, two-patch ansatz (2.8),
+          independent contour equation (2.10), radial-square boundary
+          coordinate (2.9), and exact self/cross integrals (2.11)-(2.13).
+      - pages: 35-37
+        role: >-
+          Lemma 4.1 imposes the half-period exchange only for the existence
+          construction. This is not an admissible restriction on physical
+          perturbations in the present propagator.
+      - pages: 48-49
+        role: >-
+          Periodic Sobolev, zero-area, reversibility, and first-mode spaces
+          used by the source boundary-value construction.
+      - pages: 60-63
+        role: >-
+          Lemma 6.1 gives the exact C1 contour linearization, with separate
+          self operator I1 and cross operator I2, before its later asymptotic
+          reduction. The displayed source chart already has the label-shift
+          symmetry, so only the labelwise kernel calculation transfers.
+      - pages: 70-72
+        role: >-
+          Proposition 6.2 decomposes the linearized contour operator into
+          time transport, variable angular transport, Hilbert, nonlocal,
+          logarithmic, and infinitely smoothing terms and states tame
+          estimates for the smoothing remainder.
+      - pages: 86-88
+        role: >-
+          Corollary 7.2 states the renormalized map X_s to Y_(s-1), retains
+          first-mode modulation and all nonlocal terms, and bounds the
+          infinitely smoothing part.
+      - pages: 87-100
+        role: >-
+          The source splits first and higher angular modes and constructs a
+          periodic approximate inverse. This is a boundary-value operator,
+          not an initial-value evolution family.
+      - pages: 102-118
+        role: >-
+          Periodic symplectic conjugations and normal-mode reductions on the
+          reversible, half-period-reduced source space.
+      - pages: 119-131
+        role: >-
+          Nash-Moser iteration on a Cantor parameter set. It proves
+          existence, not Floquet or orbital stability.
+    exact_scope_used:
+      family: >-
+        For fixed 0<a<b and kappa>0, sufficiently small epsilon, and each
+        lambda in the source Borel Cantor set C_epsilon, there is a smooth
+        translating-frame-periodic pair of labeled patches with amplitude
+        epsilon^(-2), disjoint smooth boundaries, and sufficiently high
+        Sobolev regularity.
+      contour_identity: >-
+        In physical time and the translating frame, each label separately
+        obeys gamma_t dot J gamma_theta = partial_theta(Psi-c_epsilon rho),
+        up to tangential reparametrization. Psi contains the sum of both
+        label contributions.
+      transferable_interface_estimate: >-
+        The self-interaction calculation is local to each contour and has a
+        first-order transport principal part plus order-zero Hilbert and tame
+        lower/smoothing terms. For two independent labels it can be applied
+        label by label. Because the source contours have positive separation,
+        the cross kernels are smooth and bounded between all Sobolev spaces
+        used here.
+      nontransferable_restrictions: >-
+        Reversibility, the half-period relation between labels, removal of
+        first modes, parameter-Lipschitz norms, Cantor small-divisor
+        conditions, and the periodic approximate inverse are not used to
+        define or bound the initial-value propagator.
+
+source_to_claim_boundary:
+  source_supplies:
+    - the actual periodic base pair and its exact two-contour equation
+    - enough smoothness, positive axis distance, and positive label separation
+    - the singular self-kernel decomposition and smoothing estimates
+  derived_here:
+    - the independent-label full normal chart and exact Jacobi interface equation
+    - a zero-loss one-period initial-value energy estimate and propagator
+    - symplectic transport, monodromy, conserved-level flag, and reduced map
+  source_does_not_supply:
+    - full non-reversible Floquet spectral stability
+    - power boundedness of monodromy iterates
+    - nonlinear orbital stability
+    - a differentiable patch family across the Cantor parameter set
+
+inventory_change_after_activation: none
+body_excerpt_policy: >-
+  No extended source quotation is retained. Formula use is limited to named
+  equations and short operator descriptions; all transfer proofs are original.

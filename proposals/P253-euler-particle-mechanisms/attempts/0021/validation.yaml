@@ -1,0 +1,42 @@
+attempt: P253/0021
+date: 2026-09-06
+activation_schema:
+  command_owner: root
+  exit_file: activation-schema.exit
+  exit_code: 0
+source_receipt:
+  file: source-receipt.yaml
+  pdf_sha256_rechecked: 7ba22ef57ba9453dd2631c33b1ad094a35ce2be171426cecce80fba8a5cdfac6
+  text_sha256_rechecked: f6461cfc68e2aa3b08cadc3409a36f4f0267c5a7c73fdb03e46f9636c121c871
+analytic_checks:
+  - check: full physical contour class
+    result: pass
+    evidence: >-
+      construction.md equations (3)-(8) retain two independent labels, all
+      first modes, exact individual area, and quotient only tangential gauge.
+  - check: direct and Hamiltonian linearizations agree
+    result: pass
+    evidence: construction.md equations (9)-(13)
+  - check: source/interface estimates precede any computation
+    result: pass
+    evidence: construction.md equations (14)-(20); no numerical computation used
+  - check: initial-value evolution rather than periodic inverse
+    result: pass
+    evidence: construction.md equations (21)-(24)
+  - check: phase, translation, energy, and impulse correctly reduced
+    result: pass
+    evidence: construction.md equations (27)-(38)
+exact_oracle:
+  script: verify_exact_structure.py
+  stdout: exact-check.stdout
+  exit_file: exact-check.exit
+  exit_code: 0
+  arithmetic: exact_sympy_only
+  checks:
+    - corrected quadratic action sign
+    - companion normalization and fixed-level projection
+    - invariant-flag block form
+numerics:
+  used: false
+  small_ratio_license_needed: false
+route_verdicts: verdicts.yaml

@@ -26,6 +26,12 @@ and let
  \qquad \nabla^\perp a=(-a_z,a_\rho).
 \]
 
+Let \(\rho_m>0\) denote the constant material mass density; it is distinct
+from the canonical coordinate \(\rho=r^2/2\). Throughout this attempt the
+unsubscripted symbols \(E,P,\Omega,\mathscr A\) are normalized by the common
+physical factor \(2\pi\rho_m\). Their physical counterparts are displayed at
+the defining equations below.
+
 The source equation is
 
 \[
@@ -114,7 +120,8 @@ pair is a nonconstant periodic orbit, not a relative equilibrium.
 ## 2. Actual invariant labeled leaf and conserved functional
 
 Let \(D_{j,0}\) be the translating-frame source domains at \(t=0\). The
-smooth material coadjoint leaf is
+source-regular material coadjoint leaf, with smooth compact Hamiltonian
+tangents as a dense core, is
 
 \[
  \mathcal O_j=
@@ -127,11 +134,34 @@ smooth material coadjoint leaf is
 
 Only a sufficiently small open subset with disjoint supports is needed for
 the independent variations below. Its equimeasurable weak closure can be
-used for compactness questions, but it is not the smooth KKS leaf and is not
-used to manufacture a first variation.
+used for compactness questions, but it is not this regular KKS leaf and is
+not used to manufacture a first variation.
 
-The common Euler flow, followed by the common axial translation (4), is an
-area-preserving diffeomorphism. Therefore
+The uniform axial translation in (4) is not compactly supported, but it does
+not obstruct membership in (7). Periodicity and positive distance from the
+axis give the compact support tube
+
+\[
+ K=\bigcup_{0\le t\le\mathcal T_\epsilon}\bigcup_{j=1}^2
+       \overline{D_{j,*}(t)}\Subset\Pi.
+\]
+
+Choose \(K\Subset O\Subset\Pi\) and
+\(\chi\in C_c^\infty(\Pi)\) with \(\chi=1\) on \(O\). The time-dependent
+compact Hamiltonian extension
+
+\[
+ \widetilde h_t(\rho,z)=
+ \chi(\rho,z)\bigl(\Psi[q_*(t)](\rho,z)-c_\epsilon\rho\bigr)  \tag{7a}
+\]
+
+equals \(\Psi-c_\epsilon\rho\), together with its gradient, on a
+neighborhood of every patch support. Its compactly supported
+area-preserving flow therefore transports each \(D_{j,0}\) to the actual
+\(D_{j,*}(t)\). At the source Sobolev regularity this is the corresponding
+regular \(\operatorname{Diff}_{c,\rm area}\) class; the smooth leaf tangent
+identities below follow by smooth compact Hamiltonian approximation.
+Therefore
 
 \[
  (q_1(t),q_2(t))\in\mathcal O_{\rm pair}
@@ -141,13 +171,16 @@ for every source time. Independent elements of the product leaf are not
 claimed to evolve by independent velocities: both labels obey the same
 total stream function.
 
-With \(q=q_1+q_2\), define
+With \(q=q_1+q_2\), define the normalized kinetic energy and axial impulse
 
 \[
- E(q)=\frac12\int_\Pi q\Psi[q]\,dx
- =\frac1{2\sqrt2\,\pi}\iint_{\Pi^2}G(x,y)q(x)q(y)\,dxdy,
- \qquad
- P(q)=\int_\Pi\rho q(x)\,dx.                                  \tag{8}
+\begin{aligned}
+ E(q)&=\frac12\int_\Pi q\Psi[q]\,dx
+ =\frac1{2\sqrt2\,\pi}\iint_{\Pi^2}G(x,y)q(x)q(y)\,dxdy,\\
+ P(q)&=\int_\Pi\rho q(x)\,dx,\\
+ E_{\rm kin}^{\rm phys}(q)&=2\pi\rho_mE(q),\qquad
+ I_z^{\rm phys}(q)=2\pi\rho_mP(q).
+\end{aligned}                                                  \tag{8}
 \]
 
 The last expression is Cao's
@@ -157,7 +190,13 @@ translation invariance gives conservation of \(P\), and Euler transport
 conserves \(E\). Thus the actual translating Hamiltonian
 
 \[
- \boxed{\mathscr H_c(q_1,q_2)=E(q_1+q_2)-c_\epsilon P(q_1+q_2)} \tag{9}
+\boxed{\begin{aligned}
+ \mathscr H_c(q_1,q_2)
+   &=E(q_1+q_2)-c_\epsilon P(q_1+q_2),\\
+ \mathscr H_c^{\rm phys}
+   &=E_{\rm kin}^{\rm phys}-c_\epsilon I_z^{\rm phys}
+     =2\pi\rho_m\mathscr H_c.
+\end{aligned}}                                                 \tag{9}
 \]
 
 is conserved and contains both self energies and the full cross energy.
@@ -245,11 +284,16 @@ one-ring maximizer theorem cannot transfer across this obstruction.
 
 ## 4. Route B1: the correct local KKS loop action
 
-For tangents (12), define the product-leaf KKS form
+For tangents (12), define the normalized product-leaf KKS form and its
+physical counterpart
 
 \[
+\begin{aligned}
  \Omega_q(\delta_\chi q,\delta_\psi q)
- =-\sum_{j=1}^2\int_\Pi q_j\{\chi_j,\psi_j\}\,dx.               \tag{16}
+   &=-\sum_{j=1}^2\int_\Pi q_j\{\chi_j,\psi_j\}\,dx,\\
+ \Omega_q^{\rm phys}
+   &=2\pi\rho_m\Omega_q.
+\end{aligned}                                                   \tag{16}
 \]
 
 The quotient by generators that stabilize \(q_j\) makes (16) well defined
@@ -269,10 +313,15 @@ reference loop to \(q\), use a local potential satisfying
 \(-d\Theta=\Omega\) and define the relative/local action
 
 \[
-\boxed{
+\boxed{\begin{aligned}
  \mathscr A_{c,\mathcal T}[q;Q]
- =-\int_{[0,1]\times S^1_{\mathcal T}}Q^*\Omega
-  -\int_0^{\mathcal T}\mathscr H_c(q(t))\,dt.}                 \tag{18}
+ &=-\int_{[0,1]\times S^1_{\mathcal T}}Q^*\Omega
+   -\int_0^{\mathcal T}\mathscr H_c(q(t))\,dt,\\
+ \mathscr A_{c,\mathcal T}^{\rm phys}[q;Q]
+ &=2\pi\rho_m\mathscr A_{c,\mathcal T}[q;Q]\\
+ &=-\int_{[0,1]\times S^1_{\mathcal T}}Q^*\Omega^{\rm phys}
+   -\int_0^{\mathcal T}\mathscr H_c^{\rm phys}(q(t))\,dt.
+\end{aligned}}                                                 \tag{18}
 \]
 
 Changing the filling can change the value by a symplectic period, but not

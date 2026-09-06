@@ -1,0 +1,3 @@
+# Checkpoint formatting provenance
+
+The staged diff check exposed two trailing Markdown hard-break spaces on the date line of normalization-compact-extension-correction.md. Root removed only those spaces before checkpointing. The independent0023 review retains its exact historical reviewed hash `ffb8d67400089e55046643d714c9c375d50460d38257daba5a849a85f6f993f5`; the formatting-only successor hash is `2083641ac4c4ff78d678d521426a43e428c3d8bc43f19939ee236db804f1c12f`. The actual scientific construction hash90eec03cd419ca92e6796e6e4d3839b6c6d2152ffa2b04ef49048eacd3a5bff9 is unchanged. No equation, statement, oracle or scientific review was rerun.
