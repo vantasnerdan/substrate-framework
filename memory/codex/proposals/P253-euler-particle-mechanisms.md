@@ -1,0 +1,61 @@
+---
+description: Derive electron and neutrino mechanisms from actual Euler substrate dynamics
+author: codex
+created: "2026-09-06T00:00:00+00:00"
+updated: "2026-09-06T00:00:00+00:00"
+tags: [substrate-framework, campaign-proposal, P253]
+category: proposals
+confidence: exploratory
+status: active
+---
+
+## Question and Positive Deliverable
+Complete the full issue203 electron AND neutrino particle mechanism contract frozen verbatim in issue203-frozen.md; P0–P7 are conjunctive, electron first does not reduce scope.
+
+## Obligation Graph and Closure Map
+The matching proposal manifest records each exact node, prerequisites and non-implications. All LP0–LP7 are unearned.
+
+- P0: Verify source/foundation maps, accepted API applicability, and preregister competing particle mechanisms.
+- P1: Derive exact nonlinear material energy, momentum, angular momentum, inertia, shape and pressure-current balances with an honest closure or retained-memory construction.
+- P2: Construct a localized persistent Euler excitation with a derived restoring mechanism and an appropriate nonlinear perturbation neighborhood.
+- P3: Derive interactions, ambient tails, deformation, scale and conserved-label selection for the same carrier family.
+- P4: Derive a physically realized shared quantum/statistical and relativistic bridge from the allowed substrate, including action normalization.
+- P5: Derive the electron mechanism: robust carrier, inertia/dispersion, spin half and fermionic statistics, electric current and opposite charge, magnetic coupling, and independent quantitative relation.
+- P6: Derive the neutrino mechanism: neutral spin half, shared bridge, chiral weak current linked to electron, distinct flavor/propagation states and mass/mixing/oscillation, and independent quantitative relation.
+- P7: Join both mechanisms, validate and independently review the same-field claims, materialize reusable APIs, and reconcile registry/release/generated records.
+
+## Base Release and Provenance
+The base is v0.183.0 at b6fc902a0942d07996f12a81028fbd3f7c909a43. P252 c6e950df is a separate audit input, not accepted authority. Main retains C-CST-018; its geometry support is challenged and its response is prepared/nonzero-K/finite-window.
+
+## Source Inventory and Access Gate
+The proposal inventories accessible primary sources and prior exposure. Their exact theorem hypotheses are the first substantive audits, not assumed transfers. The issue is a new mechanism investigation rather than reproduction of an inaccessible source.
+
+## Invariants, Conventions, and Allowed Imports
+The manifest fixes Euler, same-family observables/action, natural perturbation neighborhoods, decaying tails and explicit quantum/relativistic obligations. Pressure is physical p and density rho>0 unless a source explicitly uses kinematic pressure.
+
+## Frozen Candidate Universe
+The initial families are R1 stable Euler rings, R2 exact steady Euler–Skyrme correspondence, and R3 projected shape/memory dynamics. Append-only generation expands the universe; no candidate count closes it.
+
+## Candidate Preregistration
+Attempts0001,0002,0003 respectively freeze exact material balances, carrier/interaction source transfer, and the shared foundation/Skyrme transfer. Worker write ownership is disjoint.
+
+## Selection Criteria and Blinding
+Structural criteria frozen here before new derivation. Literature and familiar PDG values were already inspected during issue framing; this exposure is disclosed, not claimed blinded. New quantitative comparisons follow an explicit prediction/input ledger. Criteria prioritize physical mechanism, robustness, assumption economy and predictive reach.
+
+## Proposed Claim Delta
+No claim identifier is proposed or accepted at opening. New exact results require individual review; old campaign records remain unchanged.
+
+## Analytic Specification and Numerical Licenses
+Each node carries the full typed chain in proposal.yaml. The opening permits exact calculus and source audits only. A later irreducible numerical proposition will freeze its own ensemble, scale/error budget, gauge and representation after analytic closure; small-ratio prescriptions apply before any force or soft-stability verifier.
+
+## Implementation and Oracle Plan
+Search canonical APIs before implementation. New reusable exact definitions will have exposing analytic fixtures and focused tests. Long scripts run in Herdr scripts pane. Documentation opening receives schema, memory and whitespace checks; no scientific/full-suite claim is made.
+
+## Execution and Coordination
+The branch is research/203-euler-particles. Root owns central artifacts and checkpoint commits; Sol High workers own0002/0003. Workers start with bypass approvals/sandbox and message root on completion. No PR opens at a rung.
+
+## Continuation and Exhaustion
+The parent remains active through route failures. Execute repair, representation change and failure-generated concept construction. No exhaustion is asserted; a distinct adversarial pass and coverage of the full expanded universe would be required.
+
+## Debt and Canonicalization
+No new accepted claim exists. All P0–P7 remain frontier. A classical vortex, a conditional API, an electron alone or a formal Dirac equation does not satisfy the parent.
