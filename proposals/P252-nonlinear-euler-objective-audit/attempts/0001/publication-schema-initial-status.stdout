@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/tmp/substrate-nonlinear-audit/scripts/validate_repository.py", line 389, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/substrate-nonlinear-audit/scripts/validate_repository.py", line 334, in main
+    validate_proposal(load_yaml(manifest), str(manifest.relative_to(root)))
+  File "/tmp/substrate-nonlinear-audit/src/substrate_framework/governance.py", line 583, in validate_proposal
+    raise GovernanceError(f"{source}: invalid status {data['status']!r}")
+substrate_framework.governance.GovernanceError: proposals/P252-nonlinear-euler-objective-audit/proposal.yaml: invalid status 'complete'

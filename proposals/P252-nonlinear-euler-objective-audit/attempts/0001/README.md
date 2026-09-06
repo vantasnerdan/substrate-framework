@@ -76,3 +76,11 @@ Vikulin continuation routes. See the four reports and `receipt.md`.
 At this checkpoint A0–A3 are established as audit obligations; A4 remains
 active until the requested discussion is published and verified. This status
 does not close or exhaust the full nonlinear scientific objective.
+
+## Publication completion
+
+The requested audit discussion is published and verified at https://github.com/vantasnerdan/substrate-framework/discussions/202.
+A4 and the bounded audit/discussion objective are established. The full
+nonlinear derivation remains open, and the C-CST-018 geometry proof challenge
+remains explicit. Exact source checkpoint, body hash, and readback checks are
+recorded in `publication.json`; no accepted claim or historical record changed.
