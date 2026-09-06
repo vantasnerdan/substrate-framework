@@ -1,0 +1,7 @@
+# Exact twisted-carrier verification
+
+Command: `PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_twisted_carrier.py`, executed in Herdr scripts pane w3:p2 by `/tmp/particle_twisted_checks.sh`. First captured twisted-pytest.stdout records four tests passed in3.46s; twisted-pytest.exit is zero.
+
+The strongest oracle is the exact construction in global-carrier.md. Tests independently differentiate the actual unit spinor and use spherical metric factors, differentiate the full Green integral for arbitrary forcing and recover divergence-free velocity, integrate the actual helicity three-form with oriented profile limits, and expose the incompatible two flat-edge conditions for a common translation. They do not certify smooth global Euler existence by sampling or assert nonlinear persistence. The latter local-time existence is the smooth H^s Euler import already licensed0001; no all-time theorem is imported.
+
+Source search found existing Berry loop/gauge helpers but no radial l=1 Hodge or physical twisted-initial-carrier API. New euler_twisted_carrier.py is conditional and unpromoted; its profile regularity, flat edges and integral convergence are caller hypotheses. It changes no existing module or accepted claim. This code was added after collection of the e38a8e9 full suite; the2695-test receipt covers the preceding modules, while the four-test receipt here covers this addition. No numerical discretization, spectral solver, small force or energy splitting was used.

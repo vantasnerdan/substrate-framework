@@ -1,0 +1,131 @@
+attempt: '0018'
+reviewer: particle-balance-review
+reviewer_independence:
+  authored_0013: false
+  implemented_0013: false
+  authored_0017: false
+  implemented_0017: false
+  preregistration_disclosure: isolated_target_search_snippets_seen_before_activation
+target_kind: two_separately_adjudicated_fixed_units
+base_release: v0.183.0
+base_commit: b6fc902a0942d07996f12a81028fbd3f7c909a43
+activation_schema_exit: 0
+units:
+  A0013:
+    disposition: established_at_exact_classical_map_scope
+    route_verdicts:
+      lamb_homogeneous_identities_and_defined_current: established
+      nonzero_localized_compact_vorticity_lamb_charge: refuted_with_mechanism_named
+      scalar_madelung_action_and_gradient_energy: established
+      regular_scalar_phase_for_vortical_euler_carrier: refuted_with_mechanism_named
+      local_normalized_spinor_euler_action: established
+      unrestricted_flat_heaviside_schrodinger_transfer: refuted_with_mechanism_named
+    strongest_positive_result: >-
+      The exact Lamb identities and their defined conserved current, the scalar
+      Madelung kinetic/action decomposition, and the regular local normalized
+      spinor chart with the subtracted texture energy reproduce their stated
+      classical equations. The spinor action executes a genuinely vortical
+      Euler shear. A flat resting Heaviside interface has the exact nonzero
+      residual -(kappa^2/2) delta-prime.
+    mechanisms:
+      lamb_charge: >-
+        omega cross u vanishes on every enclosing surface outside compact
+        vorticity, so the component integral of div(omega cross u) is zero.
+      scalar_vorticity: a regular single scalar phase is locally curl-free
+      heaviside: >-
+        unrestricted distributional second differentiation retains a
+        delta-prime double layer that the source's zero-normal-derivative test
+        class suppresses.
+    correction_required: false
+    verification: symbolic_verified
+    review: audited
+    compatibility: native_or_scoped_extension
+    epistemic: proposed
+  B0017:
+    disposition: established_initial_carrier_with_radial_relative_equilibrium_refuted
+    route_verdicts:
+      global_unit_spinor_and_hodge_corrected_initial_field: established
+      smooth_compact_vorticity_and_finite_energy: established
+      same_field_helicity_axial_moment_and_dipole_tail: established
+      local_time_euler_and_global_spinor_lift: established
+      stationary_radial_hopf_hodge_realization: refuted_with_mechanism_named
+      uniformly_translating_radial_hopf_hodge_realization: refuted_with_mechanism_named
+      nonlinear_persistence_or_stability: blocked_with_missing_construction
+    strongest_positive_result: >-
+      A smooth degree-minus-one unit-spinor profile, corrected by its exact
+      decaying l=1 Hodge phase, gives one divergence-free Hs-for-all-finite-s
+      finite-energy whole-space Euler datum with smooth compact vorticity,
+      helicity -4*pi^2*kappa^2, finite positive axial angular momentum, and an
+      exact r^-3 dipole exterior. Standard local Euler evolution admits a
+      global-in-space transported spinor lift of that same solution.
+    stationary_failure_mechanism: >-
+      Angular swirl transport would require G=c*sin(F)^2 at the flat edge, but
+      the full Hodge solution has G(b)=-C/(3b). In a translating frame Q(b)=0
+      fixes U=-2*kappa*C/(3*b^3), after which Q'(b)=kappa*C/b^2 is nonzero,
+      contradicting flat-edge matching.
+    missing_stability_construction: >-
+      A controlled same-leaf neighborhood and nonlinear
+      persistence/modulation, recurrent-orbit, or suitable stationary-carrier
+      theorem.
+    correction_required: false
+    verification: symbolic_verified
+    review: audited
+    compatibility: native_or_scoped_extension
+    epistemic: proposed
+maximum_verdict: symbolic_verified
+parent_inheritance: none
+oracle_receipts:
+  tests_rerun: false
+  A_focused_tests: 6_passed
+  A_flat_interface_script_exit: 0
+  A_full_suite_at_e38a8e9: 2695_passed
+  B_focused_tests: 4_passed_in_3.46_seconds
+  B_full_suite_coverage: false_module_and_tests_postdate_e38a8e9
+  numerical_production: false
+  small_ratio_skill_binds: false
+does_not_license:
+  - universal Euler-quantum equivalence or a linear quantum Hamiltonian
+  - source-free Maxwell dynamics, nonzero electric charge, or invariant speed
+  - selected hbar, circulation, mass, or length scale
+  - physical spin one-half, Born rule, measurement, or exchange statistics
+  - nonlinear stability, persistent localization, or all-time regularity
+  - exact particle force, collision, or exchange dynamics
+  - electron or neutrino identification
+  - parent campaign completion or global no-go
+remaining_dependency: >-
+  Unit A still needs a physical Hilbert/polarization and observable/measurement
+  construction tied to the actual Euler carrier and Hamiltonian, plus any
+  electromagnetic or weak-current sector with derived nonzero flux and
+  propagation. Unit B needs a controlled same-leaf neighborhood and a genuine
+  nonlinear persistence/modulation or recurrent-orbit theorem for a twisted
+  carrier; the radial stationary and common-translation subroutes are closed.
+evidence:
+  review: proposals/P253-euler-particle-mechanisms/attempts/0018/review.md
+  A_current_and_quantum_maps: proposals/P253-euler-particle-mechanisms/attempts/0013/current-and-quantum-maps.md
+  A_spinor_action: proposals/P253-euler-particle-mechanisms/attempts/0013/spinor-euler-action.md
+  A_flat_interface: proposals/P253-euler-particle-mechanisms/attempts/0013/free-surface-transfer.md
+  A_module: src/substrate_framework/euler_field_maps.py
+  A_tests: tests/test_euler_field_maps.py
+  B_global_carrier: proposals/P253-euler-particle-mechanisms/attempts/0017/global-carrier.md
+  B_module: src/substrate_framework/euler_twisted_carrier.py
+  B_tests: tests/test_euler_twisted_carrier.py
+reviewed_hashes:
+  frozen_README: 88729f438dacf7983c88330c4bf547b06a6e1230816ead93fec34f266f7d09f3
+  A_current_and_quantum_maps: f4e6649db04a0c2b4f3c5d0851322b6b2333007f67bd4e944753a47bf4272a50
+  A_spinor_action: e7ae72bb9ce6a7ec27c9ab38a67c8c00a99a9e5deb57f16dd92b0518e70c0687
+  A_flat_interface: 9a391eaf332cdddc884e921b45cca9d18907e76c001388c323a4af62e0aa9398
+  A_flat_verifier: 1f9e2505edd400121b72f9bd91e9e5c4f1c5dff12491c63750789ce4e93e737e
+  A_module: 9bcbce1ea601a931262546860a0b35d2f2e1f31b4ee035a05282213d619ceaeb
+  A_tests: 5f9647b546b3c97914673d1de8d12706ef346f80d0751737ff74268793281ed5
+  A_focused_output: d60afc9b9508772542ec9b87015fa992c581d45d880821bdc863beb64eff9456
+  A_flat_output: 30735e19455d4d5da918287b9db47601b93fb538e247bf612843a35c39d37e1d
+  A_full_output: d05fe2b298550adabaa686bb2adf5807a432593f3f2765a870a12016694f5951
+  B_global_carrier: 2206f7ec86f4c4caca0f12bf7850a119d8050c85004bc8ecbbf7a7180fa3b0c3
+  B_module: f2a2c58235a0f2c8ee358123b383b8e919d22ad095bc0f70b67142c7fdbd5214
+  B_tests: f7ae11d6a2bfc292675740e43357d9140257f5a206a582fafb903d03042956cc
+  B_focused_output: 9738b3b65cda689d92a2be08bd5122594b171550def98a33e28b15e4fc4aaaac
+primary_source_hashes:
+  Marmanis_author_pdf: 3f9d317c0f4e0617a30a0937c2e79d1363c679c4508ba98a9d812bae33bf12f0
+  Fusca_1512_04611v2_pdf: e9c13297c2d406e3416034db50c0fa87abdd02f5368472b3d91aea1fe77c6ba7
+  Meng_Yang_2302_09741v1_pdf: 052d97dfc7a8becfd0771ee6e70db7d64353767ac5ad60561b7bf0a1b91f2d5f
+  Zareei_2105_12253v1_pdf: c703983aef60861edd1559781b09042d88cee6662770f8b98dc0c011834b8660

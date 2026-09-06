@@ -448,3 +448,51 @@ pressure/current, and energy exchange. Neither unit inherits upward to the
 electron or neutrino objective, and P1--P7 remain active at their existing
 central scopes.
 
+## Bounded correction check
+
+The requested single correction pass inspected only the repaired passages and
+their synchronized result/source-audit receipts. It did not reopen the
+preserved calculations and did not rerun either unchanged oracle.
+
+For unit A, the full Euler--Poincare/orbit equation now supplies
+
+    partial_t h=-P_H(L_u u^flat)=-P_H(i_u B).
+
+The sign follows by harmonic projection of
+`partial_t u^flat+L_u u^flat=-dPi`; Cartan's formula makes the remainder exact
+and hence annihilated by `P_H`. In particular, `B=0` and spatially constant
+`u=h(t)` on the flat torus now gives `partial_t h=0`. The local Clebsch section
+is expressly limited to `H^1=0`/decay or a separately proved global sector,
+while arbitrary nonzero `H^1` uses the full Euler--Poincare/representation-A
+system. The global rotation sphere now uses the genuine rigid `SO(3)` action
+in the larger volume-preserving group; radial cutoffs are described only as
+tangent and time-dependent path lifts. These changes close both required
+repairs without changing the established coadjoint, Hodge, KKS, period, or
+conditional lift calculations.
+
+For unit B, the corrected text assigns the real arcsine spectral support
+`[-|beta|,|beta|]` to the self-adjoint frequency operator `iL_k` and the
+imaginary support `i[-|beta|,|beta|]` to the skew-adjoint generator `L_k`.
+The Bessel kernel, initial-sine forcing, Euler residual, and finite-linear
+realization boundary are unchanged. The wording correction is therefore
+complete and non-load-bearing.
+
+Corrected artifacts inspected:
+
+- `attempts/0005/derivation.md`:
+  `90e17874b928e6ccda19b9e745346836f1c4a2140ced8a3e434fbc44eb70abc2`;
+- `attempts/0005/result.yaml`:
+  `ae1b9fa001a9dfab37d884cd08a5a0ce39a57b1c33174290db1e0cd5ee02e3e5`;
+- `attempts/0005/source-audit.md`:
+  `2434db2e0d875cd2c917ecf166cc5c6c59bb9f780609d9764626e5dbf264e85e`;
+- `attempts/0009/retained-euler-memory.md`:
+  `d5b36b813fa3fc73d5dc25a2c0bba8c64b686b2847de1cf27c3a52aa9ee194c6`.
+
+The final correction verdict is `established_after_bounded_correction` for
+unit A and `established_after_nonloadbearing_wording_correction` for unit B,
+within the original exclusions and remaining dependencies.
+
+The correction artifacts YAML-safe-load successfully. The final scoped
+`git diff --check HEAD -- attempts/0011/review.md attempts/0011/verdict.yaml`
+receipt is clean, and this review has exactly one terminal newline. No source,
+API, test, or oracle was rerun or changed.

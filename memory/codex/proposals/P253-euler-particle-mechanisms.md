@@ -79,3 +79,15 @@ The0007 particle-facing calculus derives the compact-vorticity impulse/dipole cr
 0013 establishes exact Lamb current and scalar Madelung energy identities, with four exposing API tests. Direct compact-vorticity Lamb charge is zero; single regular scalar phase cannot represent a nonzero-vorticity carrier. Multicomponent Euler coordinates and actual physical state/measurement dynamics are active continuations. No quantum or particle claim is inferred.
 
 Checkpoint a7676b7 passed the full2685-test suite in410.03s with exit0, captured in0001/checkpoint-full. New shear-memory and field-map modules have separate focused receipts; that earlier full-suite receipt does not cover their later additions. The active branch continues; no terminal PR or accepted claim promotion has occurred.
+
+## Global twisted carrier and dynamical continuation checkpoint
+
+Checkpoint e38a8e9 is pushed and passed the full2695-test suite in458.66s (0013/checkpoint-full.stdout/exit0).0011 corrections are independently accepted, and0016 establishes the same-family finite-time pair theorem with support-controlled C1 geometric topology; this is not open in the full Cao orbital norm.
+
+0017 constructs an actual smooth whole-space Hodge-corrected compact-vorticity initial field with finite energy, nonzero helicity, finite axial angular momentum and exact local-time global spinor lift. Its radial ansatz cannot be steady or repaired by common axial translation; two-meridional-coordinate stationary or controlled recurrent carriers remain.0018 independently establishes0013 and0017 at their actual scopes. Four exposing twisted-carrier API tests pass separately; the earlier2695 full suite predates this new module.
+
+0014 derives the physical swirl coadjoint tangent. Independent0020 preserves and strengthens its energy obstruction: the Cao quadratic form is unbounded in both signs in the frozen X energy norm. It repairs the quadratic action sign, retains the global deltaJ/interface contribution, and identifies the orderzero pressure coupling in energy-weighted high-frequency amplitudes. This is not exponential instability or no-growth. Activated0019 now constructs actual trajectory/return/global propagation.
+
+0015 establishes the actual periodic pair as a critical KKS action loop, refutes its use as an autonomous energy maximizer and retains its period-twist Jordan chain. Its action sign is bounded-repaired. Activated0021 constructs the full non-reversible two-contour return and reduced Floquet problem.0018 reviewer is preregistering0023 independent0015 review.
+
+The failure-derived0022 route audits localized Hasimoto/Kelvin waves on a justified vortex background and actual helical Euler suppliers, with the distinction between exact filament-model solitons and a controlled same-family Euler transfer frozen before bodies. No quantum action, charge, scale or particle identification is inferred from geometric spinor coordinates. P2/P4 are the active scientific frontiers and P1–P7 remain unearned at full parent scope. No accepted claim, release or terminal PR changed.

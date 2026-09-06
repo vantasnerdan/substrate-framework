@@ -12,7 +12,7 @@ base_commit: b6fc902a0942d07996f12a81028fbd3f7c909a43
 activation_schema_exit: 0
 units:
   A0005:
-    disposition: required_bounded_refactor
+    disposition: established_after_bounded_correction
     route_verdicts:
       full_euler_poincare_and_orbit_action: established
       hodge_biot_savart_state_completion: established
@@ -45,7 +45,7 @@ units:
         circulation information; do not call fixed-basis harmonic coefficients
         time invariants without a separate evolution proof.
   B0009:
-    disposition: established_with_nonloadbearing_wording_correction
+    disposition: established_after_nonloadbearing_wording_correction
     route_verdicts:
       exact_nonlinear_split_and_energy_exchange: established
       exact_triangular_euler_family: established
@@ -101,3 +101,22 @@ reviewed_hashes:
   B_tests: ff8183a92d69b367b6c426e37e2245f9917657949572fd772cefbcbf359ca698
   A_verifier_output: 378927d90259d43e2b95edfc18ef4bb31694c6595ce49917abc188af7a24d2ae
   B_test_output: 9e4592019d9488a1b7ba853a93f4aa7e844f2f0b02615724b9c863ec28699691
+bounded_correction_check:
+  status: complete
+  scope: corrected_0005_and_0009_wording_only
+  unchanged_oracles_rerun: false
+  conclusions_reopened: false
+  A_harmonic_row:
+    verdict: established
+    equation: h_dot=-P_H(L_u_u_flat)=-P_H(i_u_B)
+    torus_limit: B=0_and_spatially_constant_u_implies_h_dot=0
+  A_clebsch_scope: H1_zero_decay_or_separately_proved_global_sector
+  A_rotation_scope: genuine_rigid_SO3_globally_and_cutoff_tangent_path_lifts_only
+  B_spectrum_scope:
+    frequency_operator_iLk: real_interval_minus_abs_beta_to_abs_beta
+    generator_Lk: imaginary_interval_minus_i_abs_beta_to_i_abs_beta
+  corrected_hashes:
+    A_derivation: 90e17874b928e6ccda19b9e745346836f1c4a2140ced8a3e434fbc44eb70abc2
+    A_result: ae1b9fa001a9dfab37d884cd08a5a0ce39a57b1c33174290db1e0cd5ee02e3e5
+    A_source_audit: 2434db2e0d875cd2c917ecf166cc5c6c59bb9f780609d9764626e5dbf264e85e
+    B_derivation: d5b36b813fa3fc73d5dc25a2c0bba8c64b686b2847de1cf27c3a52aa9ee194c6

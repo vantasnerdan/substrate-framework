@@ -1,0 +1,52 @@
+attempt: P253/0015
+numerical_production: false
+bounded_correction:
+  artifact: action-sign-correction.md
+  reason: >-
+    Align the internally consistent 0015 KKS/action signs with the shared
+    convention i_X Omega=dH and -dTheta=Omega.
+  scientific_effect: >-
+    Critical-loop and strong-indefiniteness verdicts are unchanged; the KKS
+    form, symplectic-area term, and quadratic kinetic sign were flipped
+    together.
+  exact_oracle_rerun: true
+activation:
+  schema_exit_file: activation-schema.exit
+  schema_exit: 0
+checks:
+  - command: >-
+      PYTHONDONTWRITEBYTECODE=1 python
+      proposals/P253-euler-particle-mechanisms/attempts/0015/verify_exact_structure.py
+    exit: 0
+    stdout: exact-check.stdout
+    verified:
+      - translating-frame Hamiltonian generator sign
+      - Poisson cyclic integration-by-parts identity
+      - local action sign for i_X Omega=dH and -dTheta=Omega
+      - opposite high-time-frequency loop-action Hessian signs
+      - symplectic period-twist monodromy normal form
+      - nontrivial nilpotent Jordan part
+  - command: >-
+      PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python
+      scripts/validate_repository.py
+    exit: 0
+    result: >-
+      WORKFLOW VALID: 271 claims, 271 accepted, 13 proposals, 4 skills;
+      MIGRATION QUEUE: 218 units, 0 pending, 0 partial
+    note: >-
+      An initial invocation without PYTHONPATH=src produced only an
+      environment import error; the correctly configured validator passed.
+source_oracle:
+  source: arXiv:2603.21644v1
+  pdf_sha256: 7ba22ef57ba9453dd2631c33b1ad094a35ce2be171426cecce80fba8a5cdfac6
+  controlling_pages: [5, 6, 7, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 48, 49, 87, 88, 93, 94, 99, 100, 102, 117, 118]
+strongest_positive_verdict: >-
+  The actual published labeled patch pair is a critical loop of the local
+  translating-frame KKS action, with an exact full Jacobi equation and two
+  symmetry-generated periodic modes.
+strongest_negative_route_verdict: >-
+  The same nonstationary orbit is not critical, hence not maximizing, for
+  autonomous E-cP on its labeled leaf; the raw loop action is also strongly
+  indefinite.
+remaining_dependency: >-
+  Full non-reversible patch monodromy and reduced transverse/all-time control.
