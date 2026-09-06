@@ -7,11 +7,14 @@ from substrate_framework.euler_asymptotic_tails import (
     gaussian_tail_cross_potential,
     l1_multiplicity_cross_block,
     l1_homogeneous_tail,
+    newton_pressure_kernel,
     oriented_tail_cross_kernel,
+    pressure_stress_gradient,
     radial_tail_fourier_coefficient,
     scalar_homogeneous_fourier_coefficient,
     toroidal_tail_fourier_coefficient,
     steady_curl_residual,
+    tail_evolution_order_ledger,
 )
 
 
@@ -123,3 +126,35 @@ def test_fixed_frame_minimal_realization_violates_stationary_stress_row():
     assert sp.simplify(stress[0, 0] - stress[1, 1]) == sp.pi * (
         16 - 3 * sp.pi
     ) / 3
+
+
+def test_pressure_stress_kernel_and_gradient_have_exact_far_field_orders():
+    x, y, z, scale = sp.symbols("x y z scale", positive=True)
+    point = (x, y, z)
+    kernel = newton_pressure_kernel(point)
+    scaled_kernel = newton_pressure_kernel((scale * x, scale * y, scale * z))
+    assert all(
+        sp.simplify(scaled_kernel[i, j] - kernel[i, j] / scale**3) == 0
+        for i in range(3)
+        for j in range(3)
+    )
+    stress = sp.diag(1, 2, 4)
+    gradient = pressure_stress_gradient(point, stress)
+    scaled_gradient = gradient.subs(
+        {x: scale * x, y: scale * y, z: scale * z}, simultaneous=True
+    )
+    assert all(
+        sp.simplify(scaled_gradient[i] - gradient[i] / scale**4) == 0
+        for i in range(3)
+    )
+    assert sp.simplify(sp.trace(kernel)) == 0
+
+
+def test_tail_evolution_order_ledger_retains_borderline_moment():
+    ledger = tail_evolution_order_ledger()
+    assert ledger.stress == 4
+    assert ledger.pressure == 3
+    assert ledger.pressure_gradient == 4
+    assert ledger.transport == 5
+    assert ledger.velocity_time_derivative == 4
+    assert ledger.stress_first_moment_is_logarithmic

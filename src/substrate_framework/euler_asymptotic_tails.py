@@ -26,6 +26,23 @@ class TailDomainLedger:
     finite_helicity_at_infinity: bool
 
 
+@dataclass(frozen=True)
+class TailEvolutionOrderLedger:
+    """Far-field orders used by the affine weighted Euler argument.
+
+    A positive integer ``m`` denotes decay ``O(r**(-m))``.  The logarithmic
+    row records the borderline first moment of an ``r**-4`` stress in three
+    dimensions.
+    """
+
+    stress: int
+    pressure: int
+    pressure_gradient: int
+    transport: int
+    velocity_time_derivative: int
+    stress_first_moment_is_logarithmic: bool
+
+
 def scalar_homogeneous_fourier_coefficient(l: int, degree: int) -> sp.Expr:
     """Coefficient in ``FT[r**(-degree) Y_l]`` for the stated convention.
 
@@ -149,6 +166,49 @@ def fixed_frame_angular_stress() -> sp.ImmutableMatrix:
         sp.pi * (8 - sp.pi) / 2,
         sp.pi * (-8 + 3 * sp.pi) / 6,
         4 * sp.pi / 3,
+    )
+
+
+def newton_pressure_kernel(position: Sequence[sp.Expr]) -> sp.ImmutableMatrix:
+    """Return ``partial_i partial_j (1/(4*pi*|x|))`` exactly."""
+
+    x = sp.ImmutableMatrix(position)
+    if x.shape != (3, 1):
+        raise ValueError("position must have three components")
+    r2 = sp.simplify(x.dot(x))
+    return sp.ImmutableMatrix(
+        (3 * x * x.T - r2 * sp.eye(3)) / (4 * sp.pi * r2 ** sp.Rational(5, 2))
+    )
+
+
+def pressure_stress_gradient(
+    position: Sequence[sp.Expr], stress: Sequence[Sequence[sp.Expr]]
+) -> sp.ImmutableMatrix:
+    """Gradient of the leading pressure stress multipole ``K_ij M_ij``."""
+
+    x = sp.ImmutableMatrix(position)
+    matrix = sp.ImmutableMatrix(stress)
+    if x.shape != (3, 1) or matrix.shape != (3, 3):
+        raise ValueError("position must be length three and stress must be 3 by 3")
+    if not all(isinstance(coordinate, sp.Symbol) for coordinate in x):
+        raise ValueError("position components must be independent symbols")
+    kernel = newton_pressure_kernel(x)
+    scalar = sp.simplify(
+        sum(kernel[i, j] * matrix[i, j] for i in range(3) for j in range(3))
+    )
+    return sp.ImmutableMatrix([sp.diff(scalar, coordinate) for coordinate in x])
+
+
+def tail_evolution_order_ledger() -> TailEvolutionOrderLedger:
+    """Exact decay bookkeeping for a degree-minus-two Euler velocity."""
+
+    return TailEvolutionOrderLedger(
+        stress=4,
+        pressure=3,
+        pressure_gradient=4,
+        transport=5,
+        velocity_time_derivative=4,
+        stress_first_moment_is_logarithmic=True,
     )
 
 

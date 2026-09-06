@@ -58,26 +58,61 @@ cross-section, the Cao profile obeys
        =(1+delta y_1)^2(w_delta)_+^p.                    (6a)
 
 Proposition 3.2 gives `w_delta->U` in `C^1` there. Since `(t_+)^p` is `C^5`
-for `p>=6`, the right-hand side of the difference of (6a) and
-`-Delta U=U_+^p` converges in `C^(0,alpha)`; interior Schauder estimates on a
-slightly larger fixed ball give
+for `p>=6`, the required Schauder upgrade is obtained on nested balls rather
+than directly from `C^1` convergence. Choose
+`B_L compactly contained in B_(L+1) compactly contained in B_(L+2)`. The
+uniform `L^infinity` bound on `w_delta` makes the semilinear right-hand side
+uniformly `L^infinity`; the coefficient
+`delta/(1+delta y_1)` and its derivatives are uniformly bounded on
+`B_(L+2)`. Interior two-dimensional elliptic estimates first give, for any
+fixed `q>2`,
 
-    ||w_delta-U||_(C^(2,alpha)(B_L))->0.                 (6b)
+    ||w_delta||_(W^(2,q)(B_(L+1)))<=C_(L,q),
+    ||w_delta||_(C^(1,gamma)(B_(L+1)))<=C_L,
+    gamma=1-2/q>0.                                      (6b)
+
+Fix `0<alpha<gamma`. Interpolation of the uniform `C^(1,gamma)` bound with
+the source `C^1` convergence shows convergence of the nonlinear term in
+`C^(0,alpha)`. The full lower-order term is retained:
+
+    [delta/(1+delta y_1)]partial_1 w_delta
+       ->0 in C^(0,alpha)(B_(L+1)),                       (6c)
+
+because its coefficient is `O(delta)` in `C^1` and
+`partial_1w_delta` is uniformly `C^(0,gamma)`. Thus the complete right-hand
+side of the difference of (6a) and `-Delta U=U_+^p` tends to zero in
+`C^(0,alpha)`. Interior Schauder on the smaller ball gives
+
+    ||w_delta-U||_(C^(2,alpha)(B_L))->0.                 (6d)
 
 The support is contained in `B_L` for fixed large `L`, and the outer regular
 level is covered by (3), so this fixed-domain estimate covers the center,
 every positive level, and its boundary. The radial ground state has one
-nondegenerate maximum at the origin. On a small center ball, (6b) and the
-implicit-function theorem give one and only one nearby nondegenerate critical
-point. On its compact complement, `|grad U|` has a positive lower bound, so
-(6b) excludes every secondary critical point. The boundary is a single
+nondegenerate maximum at the origin. On a small center ball, (6d) and the
+quantitative implicit-function theorem give one and only one nearby critical
+point `y_delta`, with
+
+    D^2w_delta(y_delta)->D^2U(0)=-lambda_c I,
+    lambda_c>0.                                         (6e)
+
+On its compact complement, `|grad U|` has a positive lower bound, so (6d)
+excludes every secondary critical point. The boundary is a single
 regular closed curve by Lemma A.2. Hence every intermediate positive level is
 a regular closed curve and there is no separatrix.
 
-The period integral is continuous on regular levels. At the center it tends
-to the finite period of the nondegenerate linear elliptic field; at the
-boundary, (3) and compactness bound the speed away from zero and the curve
-length stays finite. Thus, in the fixed carrier's action--angle coordinates,
+The period integral is continuous on regular levels. At the center, (6e) and
+the fixed positive cylindrical weight give two-sided bounds on the
+linearized elliptic frequency, hence on the limiting center period. At the
+outer level, (3) gives two-sided bounds on `|grad P_epsilon|`; the ring stays
+away from the axis and the regular boundary lengths have positive lower and
+finite upper bounds, so
+
+    0<T_c^-<=lim_(I->0)T(I)<=T_c^+<infinity,
+    0<T_b^-<=lim_(I->I_b)T(I)<=T_b^+<infinity.           (6f)
+
+Continuity on the intervening compact interval supplies the same two-sided
+bound there. Thus, with `omega=2*pi/T`, in the fixed carrier's action--angle
+coordinates,
 
     W_0=omega(I) partial_beta,
     0<omega_min<=omega(I)<=omega_max<infinity.            (7)
@@ -256,12 +291,30 @@ source-bearing resonance is named by (24).
 
 ## 4. Route C: the fixed-`n` essential gap
 
-Let `X_n^3` be the fixed toroidal harmonic of the ambient DA closure, and let
+For a fixed integer `n!=0`, define the ambient physical DA space by
+
+    X_n^3=closure_(H^3(R3)){
+      C_0 xi: xi smooth, divergence-free, n-harmonic,
+      C_0xi compactly supported in K_0, finite rows fixed}. (25a)
+
+All elements are zero-extended physical vorticities; no displacement norm is
+put on `X_n^3`. Define
 
     T_n eta=-[W_0,eta],       K_n eta=-[B_n eta,omega_0]. (25)
 
-The domain is `D(T_n)={eta in X_n^3:T_n eta in X_n^3}` with the finite rows
-removed.  In the action--angle frame, the local flow is
+The closed transport domain and full generator domain are
+
+    D(T_n)={eta in X_n^3:T_n eta in X_n^3},
+    D(A_n)=D(T_n),             A_n=T_n+K_n,               (25b)
+
+where equality in (25b) follows from the bounded compactness result below.
+Use the upper-semi-Fredholm essential spectrum
+
+    sigma_ess^+(A_n)={lambda:A_n-lambda is not left Fredholm}. (25c)
+
+Failure of left Fredholmness implies failure of Fredholmness, so (25c) is
+contained in every standard non-Fredholm essential spectrum used here. In the
+action--angle frame, the local flow is
 
     (I,beta,theta) -> (I,beta+omega(I)t,theta),
     D phi_t=[[1,0,0],[t omega'(I),1,0],[0,0,1]].          (26)
@@ -270,16 +323,43 @@ Thus the vector transport monodromy is unipotent.  In streamline harmonic
 `m`, `T_n` is multiplication by `-i m omega(I)` plus a nilpotent shear; the
 shear changes Jordan growth but not the spectral set.
 
-For fixed `n`, `K_n:X_n^3->X_n^3` is compact.  Indeed
-`B_n:H^3_comp->H^4_loc`; in
+For fixed `n`, `K_n:X_n^3->X_n^3` is compact. Every bounded sequence in
+`X_n^3` has curl support in the same compact `K_0`. Divergence freedom and
+compact support give
+
+    integral_R3 eta dx=0,
+    eta_hat(k)=O(|k|),                                  (26-)
+
+with the first moments controlled uniformly by the fixed-support `H^3` norm.
+Thus the whole-space multiplier `i k cross/|k|^2` has no low-frequency
+singularity on this sequence. The decaying harmonic/circulation row is fixed,
+so
+
+    B_n:H^3_(K_0)->H^4(R3)
+
+is bounded, including the low-frequency part. Its restriction to a fixed
+neighborhood of `K_0` is compact into `H^3` by Rellich. In
 
     [B_n eta,zeta partial_theta]
 
 the only derivative falling on `B_n eta` in the second bracket leg is the
-fixed multiplier `i n` plus the cylindrical connection.  Multiplication by
-the `C^4` carrier coefficients followed by the compact embedding
-`H^4(K_0)->H^3(K_0)` proves compactness.  Formula (7a) of corrected 0062 keeps
-the exterior velocity and regular-axis compatibility in this argument.
+fixed multiplier `i n` plus the cylindrical connection, hence is zero order
+for this fixed fiber. Multiplication by the `C^4` carrier coefficients and
+the local Rellich embedding prove compactness of `K_n`; the exterior velocity
+and regular-axis limit are retained by the global `B_n` construction. This is
+a fixed-`n` statement only and gives no bound uniform in a varying `n_0`.
+
+The action coordinate is not an arbitrary streamline label. Define
+
+    I(s)=(2*pi)^(-1) integral_{P_0>s} r dr dz,            (26-0)
+
+with orientation chosen so `I` increases outward, and choose periodic
+`beta in R/(2*pi Z)` by normalized travel time. Then
+
+    r dr dz=dI d beta,
+    dV=dI d beta d theta,
+
+and both streamline and toroidal characters `m,n` are integers.
 The constrained band inclusion can be proved on every regular cell. Use
 volume action--angle coordinates, normalized so that the physical volume form
 on the cell is `dI d beta d theta`. Fix a regular `I_0`, choose
@@ -289,7 +369,9 @@ on the cell is `dI d beta d theta`. Fix a regular `I_0`, choose
     xi_j=A_j a_(m,n) exp(i m beta+i n theta)
           exp(i N_j(I-I_0)) chi((I-I_0)/epsilon_j).       (26a)
 
-Here `n!=0`. This polarization is exactly tangent to `I=constant`, lies in
+Here `m,n` are integers and `n!=0`; the cutoff is supported in a compact
+subannulus of the regular cell. This polarization is exactly tangent to
+`I=constant`, lies in
 the kernel of the nilpotent shear in (26), and is exactly divergence-free:
 `partial_beta xi_j^beta+partial_theta xi_j^theta=0`, while
 `xi_j^I=0`. Thus no merely formal high-frequency divergence projection is
@@ -308,7 +390,8 @@ Equivalence of coordinate and physical Sobolev norms on the compact cell and
        =Theta(A_j N_j^3 epsilon_j^(1/2)).                 (26c)
 
 Choose `A_j=(N_j^3 epsilon_j^(1/2))^(-1)` and divide by the remaining fixed
-Theta-factor, so the resulting raw packet `q_j^0=C_0xi_j` has `H^3` norm one.
+Theta-factor, so the resulting raw packet `q_j^0=C_0xi_j` is smooth, compact,
+belongs to `D(A_n)`, and has `H^3` norm one.
 Because `q_j^{0,I}=0`, the shear term also vanishes exactly and the product
 rule gives the exposing estimate
 
@@ -326,10 +409,13 @@ All divergence correction is therefore exactly zero in this volume
 action--angle gauge. The fixed toroidal character already annihilates the
 axisymmetric symmetry, impulse, circulation and center rows. If the chosen DA
 closure contains additional continuous same-character finite rows, their
-values on `q_j^0` are `o(1)` by weak convergence. Subtracting those
-coefficients times fixed smooth compact DA profiles with an invertible row
-matrix produces normalized packets `q_j=q_j^0+o_(H^3)(1)` and changes
-`(T_n+i m omega(I_0))q_j` by `o_(H^3)(1)`. Hence
+values on `q_j^0` are `o(1)` by weak convergence. Choose the correcting
+profiles in the same fixed-`n` smooth compact DA sector and in `D(A_n)`, with
+an invertible row matrix. Since
+`A_nq_j^0=-i*m*omega(I_0)q_j^0+o_(H^3)(1)`, the packets are weakly null also
+in the graph topology. Subtracting the row coefficients times those profiles
+therefore produces normalized packets `q_j=q_j^0+o_(D(A_n))(1)` and changes
+the residual by `o_(H^3)(1)`. Hence
 
     ||q_j||_(H^3)=1,
     q_j weakly ->0,
@@ -341,8 +427,17 @@ Compactness of `K_n` gives `K_nq_j->0`. Hence, with the sign absorbed into
 
     i m omega(I_0) in sigma_ess(A_0|X_n^3)               (27)
 
-for every regular cell, regular `I_0`, and integer `m`. This is the required
-constrained DA Weyl inclusion. It does not prove the converse
+for every regular cell, regular `I_0`, and integer `m`. To expose the
+essential-spectrum implication, suppose `A_n-lambda` had a bounded left
+regularizer modulo compact operators on its graph: then
+
+    R(A_n-lambda)=1-C,       C compact.                  (27a)
+
+Applying (27a) to the normalized graph-weak packet gives a right-hand side
+tending to zero, contradicting `||q_j||_(H^3)=1`. Thus `A_n-lambda` is not
+left Fredholm, so `lambda` lies in `sigma_ess^+(A_n)` and hence in the
+standard non-Fredholm essential spectrum. This is the required constrained DA
+Weyl inclusion. It does not prove the converse
 direct-integral/domain inclusion, nor classify boundary or separatrix
 spectrum. Conditional on the missing converse constrained-domain theorem, the
 positive essential-gap candidate from the established period bound (7) is
@@ -376,8 +471,22 @@ Sturm--Liouville pencil
     H_k=-partial_r partial_r^*+k^2,
     Phi=2 Omega W>0,                                     (30)
 
-with regular axis and decaying `K_1(kr)` exterior matching.  Its eigenvalues
-are simple and
+with regular axis and decaying `K_1(kr)` exterior matching. Multiplication by
+`r` gives the generalized Sturm--Liouville problem
+
+    -(r u')'+(r^(-1)+k^2 r)u=lambda r Phi u,
+    L_Phi=integral_0^a sqrt(Phi(r))dr.                   (30a)
+
+Here `0<L_Phi<infinity`; the compact-edge weight vanishes like `(a-r)^p`.
+Dirichlet--Robin bracketing away from the regular-axis and vanishing-weight
+endpoints, followed by shrinking the endpoint collars, gives the generalized
+Sturm--Liouville Weyl law
+
+    sqrt(lambda_j(k))=pi*j/L_Phi+O(1).                  (30b)
+
+This is the 0048 equation (13)--(16) calculation retained by the independent
+0053 review, now with `L_Phi` explicit. Endpoint singularities alter the
+bounded phase, not the coefficient. The eigenvalues are simple and therefore
 
     sigma_j(k_0)=k_0 L_Phi/(pi j)+O(j^(-2)) ->0.          (31)
 
