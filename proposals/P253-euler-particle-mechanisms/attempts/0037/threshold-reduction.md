@@ -55,8 +55,9 @@ The right-moving critical vector has
     psi=mu f0 A+...,
     chi=-mu L'f0 A/(c0 r)+... .                      (7)
 
-Projection of the quadratic terms in (6) onto the normalized radial kernel
-gives the same coefficient already exposed by the exact steady reduction,
+The established steady branch, together with the assumed local conservative
+KdV form, fixes the compatible coefficient already exposed by the exact
+steady reduction,
 
     beta=(1/2) int J_c0(r) f0(r)^3 dr/r>0.           (8)
 
@@ -72,9 +73,12 @@ as
 
     A_T+sigma partial_X(A_XX+beta A^2)=0.            (10)
 
-Indeed a wave `A(X-sigma T)` reduces (10) exactly to (9). This coefficient
-match is an Euler solvability identity. The claim that the full Euler flow is
-approximated by (10) on `T=O(1)` still requires the complement estimate below.
+Indeed a wave `A(X-sigma T)` reduces (10) exactly to (9). This is an exact
+compatibility identity for the steady branch. Equations (6)--(9) do not yet
+construct the time-dependent full-Euler adjoint projection, its pairing, or
+its complement normalization. Those are part of the open dynamic remainder;
+until they are supplied, (10) is the unique compatible conservative leading
+form rather than a completed Euler modulation theorem.
 
 ## 3. Exact scalar restoring structure
 

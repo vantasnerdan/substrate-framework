@@ -1,0 +1,84 @@
+attempt: P253/0040
+owner: particle-foundations
+scope:
+  route: cao_nonaxisymmetric_rotating_wave_bifurcation
+  carrier: fixed_polynomial_profile_no_swirl_cao_ring
+  target_kind: positive_exact_euler_branch
+  parent_objective: robust_localized_euler_carrier_for_electron_then_neutrino
+activation_schema_exit: 0
+route_verdicts:
+  route_A_exact_reduced_cr_lyapunov:
+    verdict: blocked_by_named_construction
+    positive_result: >-
+      For a simple isolated signed l-mode, the exact rotating-frame kernel is
+      at Omega=-nu_l/l, rotation-parameter CR transversality is automatic,
+      and the same KKS signature fixes a nonzero quadratic angular impulse.
+    missing_construction: >-
+      A simple isolated eigenvalue and codimension-one Fredholm range for the
+      full Leray/Hodge generator on the dynamically accessible Cao leaf,
+      followed by a differentiable volume-preserving solid-torus chart.
+  route_B_filament_model:
+    verdict: established_within_declared_model
+    positive_result: >-
+      For every fixed l>=2 and sufficiently thin core, the opened cutoff
+      filament Hamiltonian has A_l,B_l>0, frequency
+      |Gamma|*l*sqrt(l^2-1)*log(4R/xi)/(4*pi*R^2)*(1+O(1/log)),
+      and nonzero J_z=pi*rho_0*Gamma*R*l*(nu_l/B_l)*a^2+O(a^3).
+    boundary: >-
+      This is an exact result in the source's geometrically cut-off filament
+      model, not a smooth finite-core Euler branch.
+  route_B_cao_finite_core_transfer:
+    verdict: blocked_by_named_construction
+    positive_result: >-
+      The correct local carrier is the Cao Lane-Emden column W_p=U_+^p, and
+      the bending mode is its cross-sectional m=1 translation branch at
+      longitudinal wave number k=l*a_epsilon/R. This identifies the exact
+      threshold spectral object rather than assuming a hollow-core transfer.
+      The Lane-Emden ODE proves the Richardson sign J_p'<0, while the exact
+      exterior m=1 Dirichlet-to-Neumann map supplies the universal
+      k^2*[log(k*a/2)+gamma_E] threshold coefficient.
+    missing_construction: >-
+      A scaled critical-layer Feshbach resolvent/Riesz projection for the
+      curved full ring at the k^2*log(1/k) endpoint bifurcation. The Cao
+      Lane-Emden profile's Richardson sign J_p'<0 is established exactly.
+  route_C_helical_contour_direct_transfer:
+    verdict: refuted_with_mechanism_named
+    mechanism: >-
+      Exact helical symmetry implies translation by 2*pi*h after a full
+      rotation, so every nonzero solution repeats infinitely along the axis;
+      it cannot have compact support or finite total energy on R3.
+  route_C_reversible_or_solid_torus:
+    verdict: blocked_by_named_construction
+    positive_result: >-
+      The helical source proves that an exact Euler contour functional can
+      satisfy one-dimensional kernel, closed range, and transversality, so CR
+      is a real mechanism rather than merely an abstract API.
+    missing_construction: >-
+      A threshold tame normal form for reversible/KAM, or a full solid-torus
+      Cauchy-invariant functional; a boundary-only contour does not close
+      nonaxisymmetric 3D vector vorticity.
+strongest_exact_result: >-
+  The actual branch is not yet constructed. The exact reduction proves that
+  spectral isolation is the decisive missing input: once a simple signed mode
+  is supplied, both CR transversality and nonzero classical KKS/angular action
+  follow automatically with the physical sign j_2=+l*sigma_l/2. The
+  source-derived positive Kelvin pair maps to the m=1 threshold branch of the
+  actual Cao limiting column; the exact profile sign and exterior logarithmic
+  coefficient now supply the correct frequency/action targets for a
+  finite-core theorem.
+does_not_license:
+  - existence or nonlinear stability of the Cao rotating-wave branch
+  - transfer of a hollow or cut-off filament mode without a finite-core inverse
+  - compactness or finite total energy of a helical screw-periodic wave
+  - half-integer spin, FR sign, hbar, Born rule, or geometric quantization
+  - electron or neutrino identification
+next_executable_dependency: >-
+  Prove the Cao-ring threshold spectral theorem: construct the m=1
+  translation-bundle Feshbach map and obtain a scaled critical-layer
+  resolvent/Riesz projection for the curved full Leray operator. The exact
+  Cao-profile Richardson estimate and exterior logarithmic coefficient are
+  already established; the unresolved entries are the finite-core response,
+  curvature-coupled translation matrix, and uniform complement bound. Then
+  run a tame solid-torus CR/Nash-Moser reconstruction.
+parent_state: active
+exhaustion_claimed: false

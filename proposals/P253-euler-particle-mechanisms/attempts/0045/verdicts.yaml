@@ -1,0 +1,135 @@
+schema_version: 1
+attempt: P253/0045
+reviewer: particle-balance-review
+review_kind: fixed_claim_non_author
+independence:
+  non_author: true
+  non_implementer: true
+  excluded_attempts:
+    - P253/0043
+  excluded_obligations:
+    - P2
+    - P4
+activation:
+  readme_sha256: 6743a12978fcad28d15ca3c900975f0135b897312b10414b1775c1a8f706314f
+  schema_exit: 0
+  schema_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+
+pressure_and_retained_state:
+  route_verdict: established
+  review_status: established_after_bounded_domain_correction
+  evidence_scope: EXACT_PHYSICAL_PRESSURE_AND_FINITE_RANK_RETAINED_STATE
+  established:
+    - physical pressure sign, density, derivative order, and crossed index contraction
+    - exact Pi/Q Euler equivalence with pressure evaluated on the full field
+    - exact resolved/complement L2 kinetic-energy exchange
+    - full ambient field retention
+    - integrated ambient momentum under an additional L1 or equivalent decay hypothesis
+  hypotheses:
+    - s greater than 5/2 on the common local smooth Euler interval
+    - finite-rank L2-orthogonal smooth-range solenoidal Pi
+    - Pi bounded on Hs_sigma and smoothing from Hs_minus_1_sigma to Hs_sigma
+    - finite-moment transported material tag with the boundary regularity required by 0001
+
+forced_euler_response:
+  route_verdict: established
+  review_status: established_after_bounded_domain_correction
+  evidence_scope: EXACT_LOCAL_CAUSAL_UNRESOLVED_RESPONSE
+  strongest_supported_statement: >-
+    For v in C1_t Ran Pi and w0 in Q Hs_sigma, the forced-Euler
+    transport/energy method constructs a unique local W[v,w0], preserves its
+    Q range, and gives an exact causal resolved-history equation. Literal
+    Euler is recovered when the resolved history also satisfies that equation.
+  material_substitution: >-
+    The same full velocity transports the finite-moment tag and reconstructs
+    pressure, so all 0001/0004 material balances are exact on the common local
+    interval.
+
+unresolved_initial_state:
+  route_verdict: established
+  evidence_scope: LOAD_BEARING_INITIAL_COMPLEMENT
+  strongest_supported_statement: >-
+    The pressure-quadrupole construction and periodic-shear pair independently
+    show that local tag or resolved initial observations do not generally
+    determine the future without the unresolved initial datum or an exactly
+    equivalent encoding.
+  does_not_imply:
+    - nonuniqueness of the full local Euler solution
+    - impossibility of closure on a special invariant family
+    - a generic finite-dimensional no-go theorem
+
+full_observable_dyson:
+  conditional_route_verdict: established
+  evidence_scope: CONDITIONAL_FULL_OBSERVABLE_DYSON_IDENTITY
+  hypotheses:
+    - bounded linear idempotent observable projection P_obs distinct from Pi
+    - Q_obs equals I minus P_obs
+    - common invariant domain for L and Q_obs_L
+    - generation of every displayed evolution and validity of all compositions
+    - complete material observables belong to that domain when the identity is applied to them
+  algebra:
+    signs_and_order: passed
+    t_zero_derivative: passed
+    unresolved_noise_unprojected: true
+  generic_infinite_dimensional_euler_semigroup:
+    route_verdict: blocked
+    missing_construction: >-
+      Construct an observable space and common generator domain on which
+      Q_obs L generates the required Euler orthogonal evolution.
+
+api_and_tests:
+  route_verdict: established
+  evidence_scope: FINITE_ALGEBRA_ONLY
+  api_sha256: 75ab59d079de41481f1bb85d6f9a97a7d230ab00d3458236e43456f4f9362f0d
+  tests_sha256: 46159071e1c7b90952643c2f24efb626ec3e2e26e63b435abea1f0dddf422e92
+  focused_stdout_sha256: 4095c3a2c9393f1fc49c7273a9083197179e91f6bb23de146808ec4b1bdcf57c
+  focused_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+  focused_result: 12 passed in 5.06s
+  unchanged_oracle_rerun: false
+  role: >-
+    The API and tests corroborate the crossed pressure contraction and exact
+    finite-matrix Markov/noise/memory algebra only.
+
+correction:
+  status: passed
+  all_four_requested_domain_repairs_supported: true
+  receipt_sha256: 4dd1802f582a1033f242e0e37715b8bf8d175f8eec62f9d9e494fd6d0c39b0cf
+  readme_pre_sha256: 9c37f046edde581edd3e03e0c69fadaffb5d5ef91c7b1001c87bc1797c013a87
+  readme_post_sha256: 416423a720c879f9fd98666292305e2d9492b685fad424a4f53e437f7310fa84
+  construction_pre_sha256: 6e9993547fea6617150e4a7f8f72cefa75dc443026b4215f1e173e2767d1d277
+  construction_post_sha256: b573d04f0d3a46819e569568c73c69c4d79a70cabb845f35e15dc56f93fa7061
+  result_pre_sha256: d23ebb23b0dc755ecb83926580ab49a932d689bfafa6e78f8037e80e6e8d6424
+  result_post_sha256: 319b248ee41e84a9753198b57de016dcf98003c83744bb80d575ef8416a7ebd7
+  validation_pre_sha256: e8efa13afae3422c4e4526394c9dfb35da08fed4709fe66233c97a612758de28
+  validation_post_sha256: 226bfd5cdf9330a3e2adc55780d5b52adbb2b8e091757153f13a437db7ee7934
+  api_or_tests_changed: false
+  oracle_rerun: false
+
+joined_result:
+  route_verdict: established
+  review_status: established_after_one_bounded_analytic_domain_correction
+  evidence_scope: EXACT_LOCAL_RETAINED_EULER_STATE_AND_CAUSAL_HISTORY_WITH_CONDITIONAL_DYSON
+  strongest_supported_statement: >-
+    On the corrected local Sobolev and finite-material domain, the exact
+    Pi/Q state system, physical unresolved response map, same-field pressure,
+    transported tag observables, and load-bearing initial complement form an
+    exact retained Euler state and causal history representation. The
+    full-observable Dyson formula is additionally exact on its explicit
+    generator domain, without a generic infinite-dimensional Q_obs L claim.
+  next_dependency: >-
+    Instantiate this retained state and its unresolved initial datum on the
+    same independently supported persistent carrier used by later interaction
+    or state/action work. A generic Q_obs L semigroup requires a separate
+    observable-space generator/domain construction.
+
+does_not_license:
+  - a generic infinite-dimensional Q_obs L Euler semigroup
+  - a finite-dimensional autonomous material or particle law
+  - all-time three-dimensional Euler regularity
+  - carrier persistence, stability, or P2
+  - a reciprocal pair potential
+  - active P253/0043 or P4
+  - electromagnetic or weak current
+  - quantum mechanics, electron identity, or neutrino identity
+  - parent campaign completion
+exhaustion_claimed: false

@@ -55,10 +55,14 @@ ratio=s.sqrt(2)/e*(1-s.Rational(63,8)*e**2) # H'(c)/sqrt(H(c))
 upr=ratio*s.diff(a,X)*invr/8-sqrtH*(1-2*X+3*X**2)/4
 upz=ratio*s.diff(a,Z)*invr/8
 sub={X:xx,Z:zz}
-L=s.Matrix([[s.diff(ur,X),-up*invr,s.diff(ur,Z)],
-            [upr,ur*invr,upz],
-            [s.diff(uz,X),0,s.diff(uz,Z)]])
-L=L.applyfunc(lambda z:ep(mp(z,3).subs(sub),3))
+Lraw=s.Matrix([[s.diff(ur,X),-up*invr,s.diff(ur,Z)],
+               [upr,ur*invr,upz],
+               [s.diff(uz,X),0,s.diff(uz,Z)]])
+# The H'(c)/sqrt(H(c)) factor in upr is O(e^-1).  Consequently a spatial
+# cubic in Lraw contributes at order e^2 after X,Z=O(e) are substituted.
+# mp(...,4), rather than mp(...,3), is therefore required for C2.
+L=Lraw.applyfunc(lambda z:ep(mp(z,4).subs(sub),3))
+L_spatial_quadratic=Lraw.applyfunc(lambda z:ep(mp(z,3).subs(sub),3))
 
 # k is the returned sigma covector: grad sigma || (z_I,-rho_I).
 ki=s.Matrix([s.diff(zz,e),0,-s.diff(xx,e)])
@@ -68,14 +72,26 @@ invkn=1-e*n1/2+e**2*(-n22/2+3*n1**2/8)
 kh=ki.applyfunc(lambda z:ep(z*invkn,3))
 p=s.Matrix([-kh[2],0,kh[0]])
 E=s.Matrix.hstack(p,s.Matrix([0,1,0]))
-M=-L+2*kh*(kh.T*L)
 phidot=ep(up.subs(sub)*(1-xx+xx**2),3)
 Oc=s.Matrix([[0,-phidot,0],[phidot,0,0],[0,0,0]])
 Edot=E.diff(q) # Omega_1=1+O(e^4) on the flat cutoff plateau
-C=(E.T*(M-Oc)*E-E.T*Edot).applyfunc(lambda z:ep(z,3))
+
+def pulled_coefficient(Ljet):
+    M=-Ljet+2*kh*(kh.T*Ljet)
+    return (E.T*(M-Oc)*E-E.T*Edot).applyfunc(lambda z:ep(z,3))
+
+C=pulled_coefficient(L)
+C_spatial_quadratic=pulled_coefficient(L_spatial_quadratic)
 C0=C.applyfunc(lambda z:s.simplify(z.coeff(e,0)))
 C1=C.applyfunc(lambda z:s.trigsimp(z.coeff(e,1),method='fu'))
 C2=C.applyfunc(lambda z:s.trigsimp(z.coeff(e,2),method='fu'))
+C2_spatial_quadratic=C_spatial_quadratic.applyfunc(
+    lambda z:s.trigsimp(z.coeff(e,2),method='fu'))
+C210_increment=s.sqrt(2)*(s.Rational(3,2)*s.cos(q)**4
+                          -s.Rational(13,8)*s.cos(q)**2
+                          -s.Rational(9,16))
+assert s.trigsimp(C2[1,0]-C2_spatial_quadratic[1,0]
+                  -C210_increment,method='fu')==0
 print('W2 =',W2)
 print('g1 =',d1)
 print('g2 =',d2)
@@ -88,6 +104,7 @@ C1s=s.Matrix([[s.cos(q)-s.Rational(3,2)*s.cos(3*q),s.sqrt(2)*s.sin(q)],
               [s.sqrt(2)*s.sin(q)/8+3*s.sqrt(2)*s.sin(3*q)/8,-s.cos(q)]])
 assert all(s.simplify(s.expand_trig(x))==0 for x in C1-C1s)
 print('C1 =',C1s)
+print('C2[1,0]_cubic_spatial_increment =',C210_increment)
 single=s.integrate(C2[0,0]+C2[1,1]-T/s.sqrt(2)*C2[0,1],(q,0,T))
 u=s.symbols('u', real=True)
 C1u=C1s.subs(q,u)
@@ -101,4 +118,4 @@ print('double_C1_trace =',s.trigsimp(double))
 print('epsilon2_trace =',total)
 print('I_trace =',s.simplify(2*total))
 print('I_discriminant =',s.simplify(4*2*total))
-print('ALL 7 SOURCE-RECURRENCE CHECKS PASSED')
+print('ALL 8 SOURCE-RECURRENCE CHECKS PASSED')

@@ -162,7 +162,7 @@ obligation_graph:
     unlocks:
     - P2
     - P3
-    status: active
+    status: established
     license_chain:
       object: Exact constant-density incompressible Euler solutions and their explicitly defined material/particle
         observations
@@ -410,9 +410,12 @@ license_registry:
 - id: LP1
   proposition: Derive exact nonlinear material energy, momentum, angular momentum, inertia, shape and
     pressure-current balances with an honest closure or retained-memory construction.
-  status: unearned
-  evidence: null
-  earned_by: null
+  status: earned
+  evidence: attempts/0042/construction.md; attempts/0042/result.yaml; attempts/0045/review.md;
+    attempts/0045/verdicts.yaml
+  earned_by: Exact local retained Euler state and causal unresolved-history representation with same-field
+    pressure and finite-moment material observables, independently established after one bounded analytic-domain
+    correction; abstract observable Dyson evolution remains conditional on its explicit generator domain.
 - id: LP2
   proposition: Construct a localized persistent Euler excitation with a derived restoring mechanism and
     an appropriate nonlinear perturbation neighborhood.
@@ -477,6 +480,15 @@ route_frontier:
     steady/translation obstruction
   - 0013/0018 independent field/action map and sharp-interface counterexample review complete
   - 0016 bounded topology correction verifies same-family finite-time interacting-ring theorem
+  - 0027/0028 exact whole-space Euler solitary-wave existence with same-fluid Bessel exterior and finite kinetic excess
+  - 0030/0035 exact column metric, solitary action and fixed-mode speed ceiling, with the accessible action domain corrected
+  - 0034/0036 exact solitary canonical dynamics, nonzero mixed-Casimir end data and relative material Routh reduction
+  - 0032/0038/0039 exact hyperbolic accessible Kelvin return and whole-space essential semigroup growth on one compact Gavrilov carrier
+  - 0037 active fixed-Casimir threshold/KdV, one-pass and bounded regular-label projection construction
+  - 0040 compact-core translation response, Lane-Emden comparison and physical filament action; curved-ring cross-mode Feshbach continuation active
+  - 0042/0045 exact retained Euler state and causal unresolved-history construction independently established;
+    generic observable orthogonal-dynamics semigroup remains outside the earned physical response map
+  - 0043 exact Koopman/KKS/exchange/action-scaling/Galilean quantum-bridge boundary; independent review pending
   failure_generated:
   - R2b
   - R1-C
@@ -486,6 +498,9 @@ route_frontier:
   - Global compact-vorticity Hopf-spinor candidate with actual Hodge velocity and Euler time transport
   - Localized Kelvin/Hasimoto excitation on justified vortex background, compared with actual helical
     Euler family
+  - Supercritical whole-space column solitary wave with exact Bessel threshold and one-pass scattering
+  - Nonaxisymmetric rotating-wave continuation from the orbitally stable Cao ring, retaining a physical compact phase orbit
+  - Persistent odd-Hopf Euler carrier with full-map exchange-loop transfer, same-substrate action/character selection, and a positive two-sided collective band
   remaining:
   - R1
   - R2
@@ -610,6 +625,30 @@ attempt_registry:
 - id: '0037'
   owner: root
   scope: P2/P3 fixed-Casimir threshold propagation and modulation of the exact whole-space Euler solitary wave
+- id: '0038'
+  owner: particle-balance-review
+  scope: Independent joined0032/0039 resonant-cocycle and accessible whole-space Euler semigroup-growth review
 - id: '0039'
   owner: particle-foundations
   scope: P2 global dynamically accessible Euler semigroup lower bound from the same-carrier hyperbolic Kelvin cocycle
+- id: '0040'
+  owner: particle-foundations
+  scope: P2/P4 exact nonaxisymmetric rotating-wave bifurcation and compact physical phase orbit on a Cao vortex ring
+- id: '0041'
+  owner: particle-balance-review
+  scope: Independent 0037 threshold, one-pass, mixed-Casimir projection and conditional block-lemma review
+- id: '0042'
+  owner: root
+  scope: P1 exact nonlinear material observables with full-field pressure and retained Euler state or Mori-Zwanzig memory
+- id: '0043'
+  owner: root
+  scope: P4 physical quantum state, observable, exchange-statistics, action-selection and relativistic dynamics bridge on the same Euler carrier
+- id: '0044'
+  owner: particle-foundations
+  scope: P2/P4 dynamically accessible compact-core Cao translation pencil and curved-ring cross-mode Feshbach/Riesz continuation
+- id: '0045'
+  owner: particle-balance-review
+  scope: Independent 0042 exact retained Euler state, causal unresolved history, material-observable and conditional Mori-Zwanzig synthesis review
+- id: '0046'
+  owner: root
+  scope: P4 exact test of accepted compact-pair two-polarization KKS/action/current blocks as a physical quantum two-state mechanism

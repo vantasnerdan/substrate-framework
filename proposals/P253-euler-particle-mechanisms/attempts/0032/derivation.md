@@ -336,3 +336,34 @@ for sufficiently small positive resonant `I`.  Thus the actual returned
 polarization cocycle is hyperbolic on that sequence.  This is a linear
 geometric-optics/accessible-packet mechanism; it does not by itself prove
 nonlinear instability or create a particle/quantum interpretation.
+
+## Bounded 0038 correction: cubic spatial jet in `C2[1,0]`
+
+The source-recurrence oracle originally applied `mp(z,3)` to the physical
+velocity-gradient jet before substituting `X,Z=O(epsilon)`.  That truncation
+retains spatial degree at most two.  In the `u_phi,r` entry, however,
+`H'(c)/sqrt(H(c))=O(epsilon^-1)`, so spatial degree three contributes at order
+`epsilon^2` and belongs to `C2`.  The corrected oracle applies `mp(z,4)` and
+proves exactly that the restored increment is
+
+    Delta C2[1,0]
+      =sqrt(2)*(3*cos(sigma)^4/2
+                 -13*cos(sigma)^2/8-9/16).                 (20)
+
+No other displayed `C0`, `C1`, or `C2` entry changes.  In particular the
+single-`C2` trace functional depends on `C2[0,0]`, `C2[0,1]`, and `C2[1,1]`,
+not `C2[1,0]`.  Therefore its value remains `9*pi^2`; the double-`C1` term
+remains `2*pi^2`, and the established conclusions
+
+    tr M=2+22*pi^2*I+O(I^(3/2)),
+    Delta=88*pi^2*I+O(I^(3/2))
+
+are unchanged.  The first corrected execution is preserved in
+`c2-corrected-spatial-jet.*`; the original successful receipt remains as
+append-only provenance.
+
+The same corrected oracle was then executed with the repository interpreter
+`/home/dan/substrate-framework/.venv/bin/python`; its command, identical
+stdout, empty stderr, and exit-zero files are named
+`c2-repository-interpreter.*`.  All pre/post and execution hashes are pinned
+in `c2-spatial-jet-correction-receipt.md`.

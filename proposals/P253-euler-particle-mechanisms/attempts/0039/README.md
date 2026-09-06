@@ -63,22 +63,24 @@ Euclidean symmetry tangents are removed by quotient distance. Invariance of
 `X_DA` and the quotient under `S(t)` is proved from the coadjoint evolution,
 not assumed from the ray system.
 
-For a compact packet amplitude `a` and an advected integral phase `phi`, the
-injection is constructed at vorticity level,
+For a compact packet amplitude `a` and an advected integral angle `phi`, take
+an integer `N>=1`, put `h=N^-1`, and construct the injection at vorticity
+level,
 
-    delta omega_h=curl(xi_h cross omega_*),
-    v_h=BiotSavart(delta omega_h)=P_L V_h,
-    xi_h=h Re[a exp(i phi/h)],                              (5)
+    delta omega_N=curl(xi_N cross omega_*),
+    v_N=BiotSavart(delta omega_N)=P_L V_N,
+    xi_N=N^-1 Re[a exp(i N phi)].                          (5)
 
-with any needed lower-order divergence correction included. Normalize the
-actual velocity, not the formal amplitude:
+The integer frequency makes the oscillation globally single-valued on the
+action-angle torus.  Include any needed lower-order divergence correction and
+normalize the actual velocity, not the formal amplitude:
 
-    q_h=v_h/||v_h||_X,   ||q_h||_X=1,   q_h in D_DA.          (6)
+    q_N=v_N/||v_N||_X,   ||q_N||_X=1,   q_N in D_DA.          (6)
 
 Record separately the graph size
-`||q_h||_D=||q_h||_X+||Gq_h||_X=O(h^-1)`; no bounded graph-norm claim is
+`||q_N||_D=||q_N||_X+||Gq_N||_X=O(N)`; no bounded graph-norm claim is
 inferred from energy normalization. The WKB remainder is always relative to
-`||v_h(0)||_X` before (6).
+`||v_N(0)||_X` before (6).
 
 The proof retains the complete pressure reconstruction: the order-zero
 principal Leray term in the Kelvin amplitude, subprincipal Leray symbols,
@@ -102,8 +104,9 @@ and consequently
 
 The quantifiers are
 
-    for every j, choose delta_j>0, then choose h_j<h_0(j,delta_j),
-    construct q_{h_j,j} with ||q_{h_j,j}||_X=1.              (9)
+    for every j, choose delta_j>0, then choose an integer
+    N_j>N_0(j,delta_j), and construct q_{N_j,j}
+    with ||q_{N_j,j}||_X=1.                                 (9)
 
 This proves one fixed semigroup has arbitrarily large operator norms; it does
 not assert one frequency expansion uniform as `j->infinity`, nor one fixed
@@ -112,27 +115,27 @@ result is recorded only if a derived remainder closes that stronger order of
 quantifiers.
 
 The support width is chosen so the exact profile cocycle and base return vary
-by at most `r_j lambda_+^j/4` on the tube. Only afterward is `h_j` chosen so
+by at most `r_j lambda_+^j/4` on the tube. Only afterward is `N_j` chosen so
 the finite-time microlocal remainder is at most the same amount. Every
 constant may depend explicitly on `j` and `delta_j`; it may not depend on
-`h_j`. This is sufficient for (7)--(8) because the semigroup norm permits a
+`N_j`. This is sufficient for (7)--(8) because the semigroup norm permits a
 different normalized input at each time.
 
 ## Route A: direct Gaussian beam and Egorov propagation
 
 Construct a divergence-free/coadjoint Gaussian beam centered on the exact
 closed resonant bicharacteristic `z_*(t)=(x_*(t),k_*(t))`, with transverse
-width `delta_j` and semiclassical scale `h`. Prove a finite-time Euler Egorov
+width `delta_j` and integer semiclassical scale `N^-1`. Prove a finite-time Euler Egorov
 formula on `[0,t_j]`,
 
-    S(t) I_h(a)=I_{h,t}(C(t)a)+R_h(t)a,                      (10)
+    S(t) I_N(a)=I_{N,t}(C(t)a)+R_N(t)a,                      (10)
 
 where `C(t)` is the full pressure-retaining Kelvin cocycle and `I_{h,t}` uses
 the advected phase, physical energy metric, transported density, and Hodge
 normalization. The required estimate is
 
-    sup_{0<=t<=t_j} ||R_h(t)a||_X
-      <= h C_j delta_j^-s_j exp(B_j t_j)||a||_{Y_j}.         (11)
+    sup_{0<=t<=t_j} ||R_N(t)a||_X
+      <= N^-1 C_j delta_j^-s_j exp(B_j t_j)||a||_{Y_j}.      (11)
 
 Derive `s_j`, `B_j`, and `Y_j` from symbol derivatives; do not insert them as
 fit parameters. Propagate support through every chart, show the central tube
@@ -154,10 +157,11 @@ orbit. With Floquet exponent `gamma_*`, freeze candidate generator parameters
     z_l=gamma_*+i(2*pi*l+theta_F)/T_*,   l in Z,              (12)
 
 where `theta_F` includes the returned phase/Maslov and polarization sign and
-is derived rather than chosen. Seek `q_h in D_DA`, `||q_h||_X=1`, weakly
+is derived rather than chosen. Seek integer-frequency `q_N in D_DA`,
+`||q_N||_X=1`, weakly
 convergent to zero modulo symmetries, such that
 
-    ||(G-z_l)q_h||_X -> 0.                                   (13)
+    ||(G-z_l)q_N||_X -> 0.                                   (13)
 
 The longitudinal cutoff is closed around the genuine periodic orbit; the
 transverse localization, Hodge tail, Leray commutators, and graph-domain

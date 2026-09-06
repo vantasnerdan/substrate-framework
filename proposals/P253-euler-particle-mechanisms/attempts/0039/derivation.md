@@ -24,10 +24,11 @@ polarization with `k dot A=0`, choose the leading displacement amplitude
 
     a=(k cross A)/(k dot omega_*).                            (3)
 
-Then `k dot a=0`, and the principal symbol of the exact orbit tangent
+Then `k dot a=0`.  The action angle `phi` is periodic, so choose an integer
+`N>=1`, set `h=N^-1`, and use the globally single-valued exact orbit tangent
 
     delta omega=curl(xi cross omega_*),
-    xi_h=h chi_delta Re[a exp(i phi/h)]                     (4)
+    xi_N=N^-1 chi_delta Re[a exp(i N phi)].                 (4)
 
 is
 
@@ -40,16 +41,16 @@ the principal symbol of genuine dynamically accessible data. Apply a
 compactly supported solenoidal correction to `xi_h`; it is one order lower
 because `k dot a=0`, and (4) remains an exact coadjoint tangent.
 
-The raw reconstructed velocity `v_h=BiotSavart(delta omega_h)` is `O(h)` in
-`L^2`. Define
+The raw reconstructed velocity `v_N=BiotSavart(delta omega_N)` is `O(N^-1)`
+in `L^2`. Define
 
-    q_h=v_h/||v_h||_X.                                       (6)
+    q_N=v_N/||v_N||_X.                                       (6)
 
 Scalar normalization preserves accessibility. The leading symbol is nonzero,
-so `c_delta h <= ||v_h||_X <= C_delta h`. Smooth compact vorticity makes
-`q_h` a smooth finite-energy member of the maximal domain and
+so `c_delta/N <= ||v_N||_X <= C_delta/N`. Smooth compact vorticity makes
+`q_N` a smooth finite-energy member of the maximal domain and
 
-    ||q_h||_D=||q_h||_X+||Gq_h||_X <= C_delta h^-1.          (7)
+    ||q_N||_D=||q_N||_X+||Gq_N||_X <= C_delta N.             (7)
 
 Equation (7) records graph size; it is not a uniform graph-norm claim.
 
@@ -70,10 +71,10 @@ projection. A first corrector cancels the longitudinal and order-zero
 residual. Standard symbol composition for the constant-coefficient multiplier
 `P_L` then gives, on every fixed interval `[0,T]`,
 
-    sup_{0<=t<=T} ||r_h(t)||_X
-       <= C_T h^2 ||chi_delta a||_{H^3},                    (10)
+    sup_{0<=t<=T} ||r_N(t)||_X
+       <= C_T N^-2 ||chi_delta a||_{H^3},                   (10)
 
-for the unnormalized accessible velocity, whose norm is `Theta(h)`. Three
+for the unnormalized accessible velocity, whose norm is `Theta(N^-1)`. Three
 profile derivatives suffice: two for the order-zero multiplier expansion and
 one for the solenoidal/accessibility corrector. For a tube cutoff of width
 `delta`,
@@ -82,17 +83,18 @@ one for the solenoidal/accessibility corrector. For a tube cutoff of width
 
 After (6), Duhamel and (2) therefore give the relative estimate
 
-    sup_{0<=t<=T} ||S(t)q_h-q_h^WKB(t)||_X
-      <= h C_T delta^-3 T exp(T||grad u_*||_infinity).      (12)
+    sup_{0<=t<=T} ||S(t)q_N-q_N^WKB(t)||_X
+      <= N^-1 C_T delta^-3 T exp(T||grad u_*||_infinity).   (12)
 
-All constants are independent of `h` after `T,delta` are fixed.
+All constants are independent of `N` after `T,delta` are fixed.
 
 The oscillatory source in (4) is supported in an invariant action tube a
 positive distance from the flat carrier collars and chart boundary. The
 velocity is not compactly supported. The local part of `P_L` is already in
 (9). Between the tube and a separated collar/exterior cutoff, its kernel and
 the Biot--Savart kernel are smooth; repeated integration by parts with
-`|d phi_t|>0` gives `C_{N,T,delta}h^N` for every fixed `N`. Commutators with
+`|d phi_t|>0` gives `C_{M,T,delta}N^-M` for every fixed integer `M`.
+Commutators with
 the tube cutoff are order minus one and are included in (10)--(12). Hence the
 Hodge tail, collar, and exterior are retained rather than set to zero.
 
@@ -111,18 +113,18 @@ energy ratio differs from the central value `lambda_+^j` by at most
 an isometry and returns the carrier, frame convention, and density; derivative
 resonance returns the covector.
 
-With `T=t_j` and `delta=delta_j` in (12), choose
+With `T=t_j` and `delta=delta_j` in (12), choose an integer
 
-    0<h_j< r lambda_+^j delta_j^3
-             /[4 C_tj t_j exp(t_j||grad u_*||_infinity)].   (13)
+    N_j>4 C_tj t_j exp(t_j||grad u_*||_infinity)
+             /[r lambda_+^j delta_j^3].                     (13)
 
 Then the exact normalized accessible solution satisfies
 
-    ||S(t_j)q_hj||_X >= (1-r/2)lambda_+^j.                  (14)
+    ||S(t_j)q_Nj||_X >= (1-r/2)lambda_+^j.                  (14)
 
 This is the frozen quantifier
 
-    for every j, choose delta_j, then choose h_j.            (15)
+    for every j, choose delta_j, then choose integer N_j.    (15)
 
 No constant in a single WKB expansion is claimed uniform as `j` grows.
 Taking the supremum over unit inputs in (14), and then `r downarrow 0`, yields
@@ -137,7 +139,7 @@ Therefore
 ## 5. Weak packets, quotient, and essential norm
 
 For a fixed `j`, take a diagonal sequence `delta_l downarrow 0` and then
-`h_l/delta_l^3 downarrow 0` satisfying (13). The normalized packets concentrate
+integers `N_l` with `N_l delta_l^3 -> infinity` satisfying (13). The normalized packets concentrate
 on the one-dimensional orbit and oscillate with nonzero covector, so
 `q_l weakly ->0` in `X`. Their exact images have the same property at `t_j`.
 For every compact operator `K` on the accessible closure,
@@ -153,7 +155,7 @@ Euclidean symmetry tangents span a finite-dimensional smooth space. Weak
 nullness makes their projections vanish at input and output, so (16)--(19)
 hold unchanged on `X_DA/sym` when its norm is quotient distance. This proves
 the time-domain version of preregistered Route B. It does not prove the
-generator Weyl statement `(G-z)q_h ->0`; longitudinal closure around the
+generator Weyl statement `(G-z)q_N ->0`; longitudinal closure around the
 orbit would be an additional construction and is unnecessary for (17),(19).
 
 The exact Euler evolution maps smooth coadjoint tangents to smooth coadjoint

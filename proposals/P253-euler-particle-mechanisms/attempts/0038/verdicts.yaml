@@ -1,0 +1,147 @@
+schema_version: 1
+attempt: P253/0038
+reviewer: particle-balance-review
+review_kind: joined_fixed_claim_non_author
+independence:
+  non_author: true
+  non_implementer: true
+  excluded_attempts:
+    - P253/0037
+activation:
+  readme_sha256: 5a7d63ac6b4ad62d9320ffb7ac52f9d07d208c6e062f4523ad11ea6ae4f3d7c1
+  schema_exit: 0
+  schema_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+
+unit_A:
+  target: P253/0032
+  route_verdict: established
+  review_status: established_after_bounded_source_oracle_correction
+  evidence_scope: EXACT_SOURCE_RECURRENCE_ACCESSIBLE_HYPERBOLIC_KELVIN_RETURN
+  strongest_supported_statement: >-
+    There exists one smooth compact Gavrilov carrier and one sufficiently
+    small derivative-resonant regular shell on a flat pressure plateau for
+    which the full-pressure dynamically accessible physical Kelvin return has
+    det(M)=1, tr(M)=2+22*pi^2*I+O(I^(3/2)), and
+    Delta=88*pi^2*I+O(I^(3/2))>0. Its returned polarization map is
+    hyperbolic with reciprocal positive real multipliers.
+  source_scope:
+    gavrilov: arXiv:1810.08020v1
+    gavrilov_pdf_sha256: fcaca85faa77e3876b11d16718037169fc026112dfd3e4248e03e963a0ebc3c9
+    baldi: arXiv:2302.02982v1
+    baldi_pdf_sha256: 4fe82be0db15a7f117017e505e6682b3438ed14ebcf56225bd7e74bc759136f3
+  accessibility:
+    status: established
+    mechanism: >-
+      The leading normalized scalar omega_* dot khat is
+      -1/sqrt(2)+O(epsilon), so every transverse velocity polarization is in
+      the principal image of compact divergence-free coadjoint generators.
+  frame_and_density:
+    status: established
+    statement: >-
+      The physical cylindrical-frame angular velocity, moving transverse
+      frame, cotangent lift, metric, and returned orientation are retained.
+  correction:
+    status: passed
+    mechanism: >-
+      The original spatial degree-at-most-two truncation omitted an
+      O(epsilon^2) contribution to pointwise C2[1,0]. The repaired mp(z,4)
+      oracle restores it and asserts the exact increment. That component is
+      absent from the single-C2 trace functional, so the 22*pi^2 trace and
+      88*pi^2 discriminant coefficients are unchanged.
+    verifier_pre_sha256: 194fa4b83f08689bd77dae3cc0da6f0a26b12ffe72dd570e716367754a5d95c8
+    verifier_post_sha256: 74535827251d9cb3edc23e2a9c016984f7cc0e7b2df70f16fecb0d16d218ddc2
+    receipt_sha256: 3d51f187262a14c5b13bc957080a77efe4a5b34021220ebb0835cf0a656fa297
+    repository_interpreter_stdout_sha256: 712618c03a43aa2d931608120af61e7b184a9b9a7102ad604e7fc61a89e0a247
+    repository_interpreter_exit: 0
+
+unit_B:
+  target: P253/0039
+  route_verdict: established
+  review_status: established_after_bounded_torus_frequency_correction
+  evidence_scope: EXACT_LINEAR_WHOLE_SPACE_ACCESSIBLE_ESSENTIAL_NORM_GROWTH
+  strongest_supported_statement: >-
+    On the same fixed carrier and shell, if lambda_+>1 is the expanding
+    Kelvin multiplier and T_* the meridional return time, then the exact
+    whole-space linearized Euler group restricted to the kinetic closure of
+    dynamically accessible tangents, modulo Euclidean symmetry tangents,
+    satisfies ||S(j*T_*)||_ess >= lambda_+^j for every integer j>=1. Hence
+    its semigroup growth bound is at least log(lambda_+)/T_*>0.
+  operator_domain:
+    status: established
+    statement: >-
+      The maximal projected-transport domain, bounded shear, invariant
+      accessible part domain, whole-space Leray pressure, Biot-Savart tails,
+      and potentially unbounded normalized packet graph norms are retained.
+  quantifiers:
+    status: established
+    statement: >-
+      For each fixed circuit count j, choose the tube width and then an
+      integer frequency N_j. Neither one uniform growing-time WKB expansion
+      nor one all-time growing initial datum is asserted.
+  essential_norm_and_quotient:
+    status: established
+    statement: >-
+      For every fixed j a normalized weakly-null accessible sequence retains
+      lambda_+^j gain modulo compact operators. Finite-dimensional invariant
+      Euclidean symmetry projections vanish on the sequence at input and
+      output, so the bound descends to the quotient.
+  source_applicability:
+    source: Shvydkoy--Vishik, Dynamics of PDE 1 (2004), 49--63
+    pdf_sha256: 9307efc6096565f74c5a099af25c834af09ba93b3e56ff34dd076ba289551592
+    verdict: correctly_scoped_corroboration_only
+    statement: >-
+      The published theorem is on T^3 and full L2_div. It is not imported as
+      an R^3, dynamically accessible, quotient, or graph-domain theorem; the
+      whole-space bridge is derived directly.
+  generator_pseudomode:
+    verdict: blocked_with_missing_construction
+    statement: >-
+      No generator Weyl sequence or approximate-spectrum claim is needed or
+      made; that route would require longitudinal phase closure and a graph
+      residual.
+  correction:
+    status: passed
+    mechanism: >-
+      The action-angle oscillation is now exp(i*N*phi) with positive integer
+      N and h=N^-1 throughout. Integer N_j can exceed every fixed per-circuit
+      threshold, so all remainder and weak-null limits are unchanged.
+    readme_pre_sha256: be8db67ef25fc542ef5721f87958386041ad1f70c8fe7ca95157076c54943fe4
+    readme_post_sha256: c4f51f772e5eb17c134df23a47304560944693e828594ab761a1e9b654374b94
+    derivation_pre_sha256: 0a47bea9732796586208d31f38490eee16e2d72c8a4a315ffee4e7a7bdea4fbb
+    derivation_post_sha256: 4f78aa4a3f2057c2c883c17a885c13d76a6b95d64f44f4807e99af471cf90845
+    receipt_sha256: b1e226025ef3a9fce36ae86fd39b65ce11c20accfcc1d1ac4ce8ec41899319ae
+
+joined_result:
+  route_verdict: established
+  review_status: established_after_one_bounded_correction_package
+  evidence_scope: EXACT_LINEAR_FIXED_CARRIER_COCYCLE_TO_ESSENTIAL_NORM_THEOREM
+  implication: >-
+    The independently checked source recurrence supplies the exact expanding
+    accessible Kelvin multiplier consumed by the independently checked
+    whole-space weak-packet construction. No claim from either unit supplies
+    a missing bridge in the other.
+  next_dependency: >-
+    For the robust-carrier objective, construct a different carrier or
+    restoring sector with a positive periodic physical metric on the complete
+    accessible cocycle. A nonlinear instability transfer, if pursued, is a
+    separate campaign requiring a topology, differentiable Euler flow map,
+    modulation, and controlled nonlinear remainder.
+
+oracle:
+  strongest: primary_source_recurrence_plus_physical_frame_and_whole_space_microlocal_analysis
+  existing_unchanged_receipts_rerun: false
+  changed_source_oracle_rerun: true
+  changed_source_oracle_checks: 8
+  changed_source_oracle_exit: 0
+  small_ratio_numerics_bind: false
+
+does_not_license:
+  - generator approximate spectrum or a Weyl sequence
+  - one fixed initial datum with an unbounded all-time orbit
+  - nonlinear Lyapunov instability or carrier breakup
+  - a no-go for all Euler carriers or restoring sectors
+  - a stable particle embedding or mechanical particle dynamics
+  - quantum spin, statistics, exchange, Born rule, or relativity
+  - electron or neutrino identity
+  - parent campaign completion
+exhaustion_claimed: false

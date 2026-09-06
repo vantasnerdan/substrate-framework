@@ -79,3 +79,29 @@ The development transcript contained two interrupted symbolic expansions and
 one recurrence-transcription assertion failure before the final source-solved
 verifier. They were implementation/OCR diagnostics, not scientific attempts.
 The first successful frozen execution is preserved in `c2-first-success.*`.
+
+## Bounded 0038 oracle correction receipt
+
+The previous execution remains preserved, but its printed `C2[1,0]` omitted a
+spatial cubic in the physical velocity gradient.  Because that term is
+multiplied by `H'(c)/sqrt(H(c))=O(epsilon^-1)`, the order-correct truncation is
+`mp(z,4)`.  The repaired verifier compares against its former spatial-degree
+two truncation and asserts the exact restored increment
+
+    sqrt(2)*(3*cos(q)^4/2-13*cos(q)^2/8-9/16).
+
+The first corrected execution is captured verbatim in
+`c2-corrected-spatial-jet.command.txt`,
+`c2-corrected-spatial-jet.stdout.txt`, and
+`c2-corrected-spatial-jet.exit`.  It exits `0` with all eight exact checks
+passing.  The correction changes only `C2[1,0]`; the trace oracle again returns
+`single_C2_trace=9*pi^2`, `double_C1_trace=2*pi^2`, and
+`I_discriminant=88*pi^2`.  No numerical computation or unchanged downstream
+oracle was run.
+
+Because the first corrected command resolved to the ambient Anaconda
+interpreter, the oracle was executed once more with the explicit repository
+interpreter.  The `c2-repository-interpreter.*` quartet captures command,
+stdout, empty stderr, and exit `0`; stdout is byte-identical to the first
+corrected run.  `c2-spatial-jet-correction-receipt.md` pins the requested
+pre-verifier, pre-stdout, post-verifier, and both corrected-run hash sets.

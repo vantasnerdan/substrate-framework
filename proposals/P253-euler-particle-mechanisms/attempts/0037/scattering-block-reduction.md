@@ -84,7 +84,8 @@ by constructing a bounded near-identity graph
 for the actual solitary generator, such that:
 
 1. the `q_P` generator converges in the graph norm to the KdV linearization
-   `-sigma partial_X L_*` with the translation pole and the physical
+   `+sigma partial_y L_*` in the right-moving coordinate `y=X-sigma T`, with
+   the translation pole and the physical
    Casimir/momentum rows retained;
 2. `r_Q` has the one-pass estimate obtained from (2)--(4), uniformly for all
    time;

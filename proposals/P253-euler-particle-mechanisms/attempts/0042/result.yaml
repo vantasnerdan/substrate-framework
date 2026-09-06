@@ -1,0 +1,56 @@
+attempt: P253/0042
+owner: root
+scope:
+  obligation: P1
+  state: smooth finite-energy Euler field plus transported material tag
+  time: common local smooth-existence interval
+route_verdicts:
+  retained_state:
+    verdict: established
+    statement: >-
+      For a finite-rank L2-orthogonal smooth-range solenoidal projection with
+      the stated Sobolev smoothing bound, the resolved velocity, full
+      complementary velocity and finite-moment material tag obey an exact coupled
+      Markov system equivalent to Euler, with same-field pressure and exact
+      total energy retained. Scalar ambient momentum additionally requires
+      L1/decay, while the full ambient field is always retained.
+  causal_unresolved_history:
+    verdict: established
+    statement: >-
+      Given v in C1_t Ran Pi and w0 in Q Hs_sigma for s>5/2, the complementary
+      equation has a unique local Sobolev solution by the forced-Euler
+      transport/energy method; the Q range is preserved. Substitution gives
+      an exact causal history functional for the resolved field, tag and every
+      finite material balance on their common local interval.
+  universal_mori_zwanzig_semigroup:
+    verdict: blocked_with_missing_construction
+    statement: >-
+      For a bounded observable-space idempotent P_obs distinct from Pi, the
+      exact Dyson identity holds on a common invariant domain when both L and
+      Q_obs L generate the declared evolutions, including bounded/Galerkin
+      systems and the 0009 shear block. Generic infinite-dimensional Euler
+      local well-posedness does not construct exp(t Q_obs L); the physical W[v,w0] route avoids that
+      unsupported shortcut.
+strongest_exact_result: >-
+  The reviewed material mass, momentum, angular momentum, inertia, shape,
+  pressure-force, pressure-moment, pressure-torque and pressure-energy balances
+  have an exact same-field nonlinear retained-state and causal retained-history
+  closure on the common local Euler interval. The unresolved initial state is
+  load-bearing and cannot be inferred from the listed local tag moments.
+licenses_if_independently_reviewed:
+  - LP1 exact state and observation map
+  - explicit same-field pressure, full ambient field and conditional finite ambient-momentum accounting
+  - honest non-Markovian input for carrier and interaction reductions
+does_not_license:
+  - a finite-dimensional autonomous material or particle law
+  - all-time three-dimensional Euler regularity
+  - a persistent localized carrier or LP2
+  - a reciprocal pair potential or LP3
+  - electric or weak current, quantum theory, electron or neutrino identity
+  - parent completion
+next_dependency: >-
+  Independently review the P1 synthesis and, in parallel, continue P2 carrier
+  restoration and P4 physical state/observable/action selection. Later
+  reductions must instantiate this retained state on the same chosen carrier.
+parent_state: active
+exhaustion_claimed: false
