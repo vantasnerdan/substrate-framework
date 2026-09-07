@@ -1,196 +1,102 @@
-# Physics Research Arc Template
+# Physics Research Achievement Arc
 
-Use with `$physics-erdos-loop`. The contract is the live plan, append-only research history, continuation state, and promotion record for one positive physics objective.
+Use with physics-erdos-loop as the live objective, append-only evidence index,
+continuation state and promotion record. The reward is scientific consumer value,
+not another attempt row.
+Apply the shared reward and evidence contract in `AGENTS.md` and the applicable
+skill. Fill sections with concrete evidence, not repeated policy. Begin each
+section with a prose sentence for memory-index disclosure.
 
 ```md
 ---
-description: <exact physics object, mechanism, or derivation sought>
+description: <physics object, mechanism or derivation>
 author: <agent-id>
 created: '<ISO-8601>'
 updated: '<ISO-8601>'
 tags:
 - substrate-framework
 - research-arc
-- <topic>
 category: efforts
 confidence: exploratory
 status: active
 ---
 
-## Positive Objective and Success
-State the requested result precisely and explain why it is scientifically useful.
-Completion requires the result itself, accepted dependency closure, natural
-framework fit, one claim-appropriate verifier audit, mechanism comparison only
-when genuinely open, impact-bounded replay, importable implementation, accepted
-promotion, synchronized records, and no unresolved defect inside the promoted
-scope. Honest failure is attempt evidence; an explicit hypothesis is not debt.
+## Objective and Authority
+State the complete useful result and ten-achievement success contract. Pin release,
+commit, accepted claims/modules/campaigns read, memory searches and graph/source
+queries. Distinguish accepted, proposal and attempt state; independent contrary
+evidence earns a canon challenge rather than erasure.
 
-## Authority and Prior Work
-Record the accepted release, source commit, claim ids, importable modules, campaigns, memory searches, and graph/source queries actually checked. Distinguish accepted state, proposal state, and attempt state. Accepted canon controls release and promotion; it remains falsifiable, so record credible independent challenges rather than treating conflict as automatic rejection.
+## Definitions and Analytic Construction
+Freeze domains, units, normalizations, symmetries/topology, initial/boundary data,
+regularity, invariants and permitted imports. Apply the physics skill's complete
+analytic ladder and typed object-to-verdict chain. Record strongest exact result,
+one remaining computational proposition and frozen numerical design/error model.
+Explicit hypotheses retain their honest scope; hidden premises enter repairs.
 
-- Accepted release:
-- Accepted claims reused:
-- Source modules read:
-- Memory searches:
-- Campaign evidence:
-- Genuine unresolved objective:
+## Candidates and Structural Selection
+Register competing open mechanisms or one complete fixed-theorem/construction
+route. Freeze structural fit, explanatory reach, assumptions/parameters, symmetry,
+dimensions/limits, cross-sector maps and robustness before empirical comparison.
+Record comparator access and any exception; expand candidates append-only.
 
-## Definitions, Invariants, and Analytic Specification
-Freeze variables, domains, units, normalizations, symmetries, topology,
-initial/boundary conditions, regularity assumptions, and cross-sector invariants
-before candidate selection. After structural selection and before every planned
-numerical obligation, work and record exact identities and elimination,
-complete variations, conservation
-and symmetry reductions, non-dimensionalization and scaling, analytic bounds,
-virial identities, limits, asymptotics, perturbation theory, and applicable
-existence/uniqueness/compactness/no-go theorems. State the strongest conclusion
-already earned, one residual proposition that still needs computation, and why
-the current analytic ladder does not decide it. Only then freeze precision,
-chart or ansatz, boundary treatment, discretization family, domain truncation,
-fit form, stability condition, error norm, thresholds, and maximum numerical
-verdict before inspecting production results.
-
-## Permitted Imports and Assumptions
-List every permitted external or framework input with provenance. Distinguish a
-declared hypothesis or interpretive assumption from a hidden premise. Only a
-hidden or promised-but-undischarged input enters the debt ledger.
-
-## Candidate Set
-Register at least two plausible concepts only when selecting an open scientific
-mechanism. For a fixed theorem or specified construction, register one complete
-route and add another only when it materially reduces uncertainty.
-
-| Candidate | Construction | New objects/parameters | Natural-fit case | Expected falsifier | Status |
-| --- | --- | --- | --- | --- | --- |
-| A |  |  |  |  | untested |
-| B |  |  |  |  | untested |
-
-## Selection Criteria and Comparator Gate
-Freeze the ordered structural criteria before seeing comparison values: invariant compatibility, explanatory reach, assumption cost, parameter economy, symmetry/topology, dimensions, limits, cross-sector composition, robustness, then empirical prediction. State when comparator values may be opened and any justified exception.
-
-## Claim Delta
-List each claim proposed, challenged, qualified, or potentially superseded. A proposal uses `challenges`; only accepted replacements use `supersedes`.
-
-| Claim id | Exact statement | Dependencies | Relationship | Oracle | Consumers |
-| --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |
-
-## Frozen Review Transaction
-Name the exact claim delta, changed implementation, new or changed evidence
-groups, declared dependency propositions, affected consumers, base/head or tree
-hash, and planned validation receipt. Unchanged accepted dependencies, adjacent
-corpus items, and raw theorem counts are outside the transaction.
-
-## Claim Ladder
-Build the smallest dependency-first ladder. Each row names the strongest
-analytic result available, any irreducible numerical remainder, the strongest
-practical oracle, and its sensitivity test. Use SymPy or manual algebra for
-exact obligations, Lean for an auditable formal theorem, and SciPy only for a
-named root/spectrum/integral/optimization/ODE/BVP/PDE remainder after the
-analytic-closure receipt passes. Absence of a convenient closed form is not by
-itself sufficient, and no obligation is forced into one tool.
-
-| Step | Positive intent | Requires | Pass licenses | Does not license | Analytic result / numerical remainder | Oracle | Failure scope | Unlocks | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 |  |  |  |  |  |  |  |  | pending |
-
-## Importable Implementation
-Name canonical package APIs to add or reuse. Campaign scripts must call these APIs and must not duplicate constants, solvers, profiles, convention conversions, or check helpers. For numerical work, state whether `substrate_framework.numerics` applies and identify the claim-owned equation, operator, initial/boundary data, mesh, tolerances, and error metric. Route canonical sampled trapezoidal integration through its compatibility helper; mutable standalone scripts for the current environment use `np.trapezoid`, never removed `np.trapz`, and tractable exact integrals stay symbolic. Preflight direct attributes, imported names, and dynamic `getattr` access; nested fallback defaults are eager, so use a two-step `None` fallback.
-Structure the verifier corpus as one small standalone module per claim with a thin aggregator; a monolithic multi-hundred-line script localizes failures poorly.
-
-## Campaign-Branch Checkpoints
-Record every locally complete unit as a coherent commit and append-only attempt
-on the campaign branch. Do not open a PR for a rung, utility, subclaim, partial
-goal, or clean milestone. These checkpoints preserve value without changing the
-active obligation or terminal state.
-
-| Unit | Local proposition | Evidence | Commit | Parent obligation advanced | Downstream claims still unlicensed |
+| Candidate | Construction | New inputs | Fit/limits | Exposing test | Status |
 | --- | --- | --- | --- | --- | --- |
 
-## Attempts
-Append one row per scientific attempt. Preserve source, stdout/stderr, elapsed time, and exact command. A native immutable-source abort caused only by missing direct, imported, or dynamic `np.trapz`—including an eagerly evaluated nested fallback—is compatibility provenance: run an alias-only compatibility replay and use that replay for scientific adjudication rather than consuming or rejecting a candidate. Failure of the repaired scientific route triggers the next route; it never closes the arc.
+## Claim Delta and Frozen Review
+List exact claims, relationships, dependencies, oracle and consumers. Pin changed
+implementation/evidence groups, used propositions, base/head/tree and receipt.
+Use challenges before accepted supersedes; preserve unchanged acceptance.
 
-| Attempt | Obligation | Candidate/method | Artifact | Route verdict and scope | Licenses earned/missing | Method repair | Representation change | Alternative concept | Routes remaining |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0001 |  |  |  |  |  |  |  |  |  |
+## Dependency Achievements
+Map the parent objective to obligations, routes and attempts with maximum
+verdict and coverage. Each success activates the next unsatisfied dependency.
 
-## Framework-Fit Audit
-Assess each candidate before empirical fit: invariant preservation, imports, free parameters, conventions, known limits, cross-sector consumers, and whether it demands unrelated narrative changes. Determine whether a mismatch is a candidate defect or independent evidence against canon. Reject and replace a defective candidate; route a surviving canonical inconsistency through the separate revision gate without blocking correct conditional artifacts.
+| Node | Positive intent | Requires | Pass licenses | Does not license | Exact result/remainder | Oracle/max verdict | Failure scope | Unlocks |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-## Verifier Audit
-Record the one strongest practical oracle and only the sensitivity evidence
-needed for this claim: statement/axiom audit for Lean; applicable mutation,
-counterexample, or exact limit for custom symbolic work; solver status, error
-model, refinement, and one independent method or soluble limit for numerics.
-For a numerical oracle, link the analytic-closure receipt and confirm that the
-computed predicate is exactly its named remainder. Reuse an unchanged receipt.
-Do not create a verifier for this record or expand adjacent observations into
-the transaction.
+## Implementation and Supervision
+Name reused/new canonical APIs and small per-claim verifiers with a thin
+aggregator. Use the physics skill's numerical helpers/compatibility preflight;
+claim code owns equations/operators/data/norms. Record bounded worker assignments
+and the supervisor's current GitNexus or AST/source dependency inspection,
+independent mathematical approach audit, alternatives and consumer decision.
 
-## Impact-Bounded Dependency Replay
-List only consumers that can change under the declared claim or implementation
-delta and their replay command. Preflight relevant compatibility hazards before
-assigning a scientific verdict. Do not replay unrelated sectors merely because
-they share a corpus, registry, or historical campaign.
+## Attempts and Campaign Checkpoints
+Capture source/command/environment/first stdout/stderr/time/status append-only.
+Keep scientific verdicts separate from compatibility aborts. Each route earns
+one verdict with evidence_scope and a named failure or missing construction.
+Link branch commits, exact propositions and consumers reached; parent completion
+does not follow from a checkpoint.
 
-| Consumer | Why affected | Command or proof | Result | Repair if needed |
-| --- | --- | --- | --- | --- |
-|  |  |  |  |  |
+| Attempt/commit | Obligation/route | Evidence/verdict/scope | Earned/next constructions | Repair/reformulation | Alternative | Remaining |
+| --- | --- | --- | --- | --- | --- | --- |
 
-## Foundational Revision Gate
-Leave empty unless independent evidence shows accepted foundations are inconsistent. If opened, link a separate proposal containing the pre-existing inconsistency, two or more repair candidates, minimum-change decision, migration map, independent review, and full replay. This is an active advancement route when the evidence qualifies; never use it merely to rescue a favored concept.
+## Fit, Oracle and Consumer Evidence
+Assess structural fit before data. Independently surviving canon inconsistency
+earns a separate proposal with two repairs, minimum-change migration, independent
+review and full replay. Useful conditional artifacts retain explicit hypotheses.
+Record strongest oracle/objective bridge and appropriate sensitivity or
+statement/axiom audit, numerical closure/refinement/error and independence.
+List affected consumers, commands/results/repairs, validate_changed.py scope,
+and one content-addressed receipt; reuse unchanged evidence.
 
-## Debt Ledger
-Track hidden assumptions, unresolved promises, unexplained fitted parameters,
-broken affected consumers, or contradictory accepted narration created inside
-the promoted scope. Declared hypotheses, honest exclusions, the still-open
-parent objective, adjacent observations, and unselected routes are not debt.
+## Strongest Result and Next Achievement
+State the strongest meaningful result and reproduction command. Name direct
+in-scope repairs, minimum corrections and compact adjacent follow-up; record
+what evidence restores stronger scope. Explicit hypotheses/exclusions and open
+parent work are frontier, not hidden debt. Review each new/changed claim once
+with one correction check, grouping attachment roles appropriately.
 
-| Debt | Source | Effect | Discharge | Status |
-| --- | --- | --- | --- | --- |
-
-## Independent Claim Review
-Link one `claim-review.md` instance per claim proposed for acceptance or changed
-accepted statement. Use `evidence-attachment-review.md` for changed attachment
-roles; one record may cover a coherent set of entrypoints. Review once, then
-perform one correction check limited to requested changes.
-
-## Results and Continuation
-Lead with the strongest meaningful positive result and its reproduction command.
-Then record checkpointed progress, the active obligation, complete route
-frontier, and findings as
-`blocking in-boundary`, `minimum correction`, or `follow-up`. Reserve `refuted`
-for an explicit contradiction or counterexample; missing support remains
-unverified or qualified. If one route becomes repetitive, stop repeating that
-route and continue through a method repair, representation change, or materially
-different candidate. Do not hand off or open a PR at the milestone.
-
-## Promotion and Materialization
-Record extracted APIs/tests, accepted registry entries, immutable campaign location, release id, generated docs command, accepted-memory synchronization, and proposal/attempt memory separation.
-
-## Scientific Exhaustion Certificate
-Leave incomplete while any plausible route remains. Define the candidate
-universe; inventory historical, external, preregistered, and failure-generated
-routes; partition equivalent variants; attach each route verdict and
-continuation-ladder record; include an independent adversarial generation pass;
-and provide coverage/no-go evidence for infinite classes. Exhaustion requires
-an empty route frontier and review of this certificate.
-
-| Candidate class | Tried routes | Equivalent variants | Failure-derived routes | Coverage evidence | Verdict |
-| --- | --- | --- | --- | --- | --- |
-
-- Independent candidate-generation artifact:
-- Routes remaining:
-- Exhaustion review:
-
-## Done Gate
-Check applicable success conditions from `AGENTS.md` once at the unchanged
-promotion boundary. Record one receipt containing the base/head or tree hash,
-impact surface, exact command, and result. Do not rerun it for review prose,
-counts, evidence-role corrections, or generated summaries that cannot affect
-the oracle. Open one campaign PR only after the complete positive contract or
-the scientific-exhaustion certificate in `AGENTS.md` passes.
+## Promotion, Continuation and Pause
+Record APIs/tests, registry, pinned release, immutable campaign, generated docs
+and synchronized accepted memory separately from proposal memory.
+Positive completion earns all ten achievements; otherwise execute the next
+decisive route. Exhaustion links the full expanded universe/equivalence inventory,
+continuation records, distinct alternative-generation challenge, infinite-class
+coverage, reviewed empty frontier. Keep intermediate progress on the campaign
+branch. Honor explicit pauses with all drafts/receipts and exact next work.
 
 ## Cross-References
-Link the proposal, source artifacts, claims, reviewers, campaign, release, generated outputs, and related memory entries.
+Link contracts, source, claims, reviewers, attempts, tests, release and issue.
 ```

@@ -1,16 +1,16 @@
-# Claim Review and Promotion Template
+# Constructive Claim Review
 
-Use one instance for each claim proposed for acceptance or changed accepted
-statement. Do not create one per evidence attachment or theorem entrypoint; use
-`evidence-attachment-review.md` for a lightweight evidence-role audit.
-
-Begin every section with a plain-prose sentence so the memory index can disclose
-it correctly.
+Use one record per proposed/changed claim, grouping coherent entrypoints.
+Evidence-role changes can use evidence-attachment-review.md. The reward is the
+strongest meaningful supported statement and the minimum repair that lands it.
+Apply the shared reward and evidence contract in `AGENTS.md` and the applicable
+skill. Fill sections with concrete evidence, not repeated policy. Begin each
+section with a prose sentence for memory-index disclosure.
 
 ```md
 ---
 description: Constructive review of <claim-id>
-author: <reviewer-id>
+author: <agent-id>
 created: '<ISO-8601>'
 updated: '<ISO-8601>'
 tags:
@@ -21,99 +21,59 @@ confidence: working
 status: active
 ---
 
-## Claim and Positive Role
-Quote the exact statement, hypotheses, quantifiers, regime, conventions, and
-the useful framework question it answers. A claim that only restates a
-definition, literal, or vacuous special case has not met the meaningfulness
-floor.
+## Claim and Useful Role
+Quote exact statement, hypotheses, quantifiers, regime and conventions; name
+the real downstream question it answers beyond a definition or special numeral.
 
 ## Frozen Transaction
-Record the base/head or tree hash, exact claim delta, changed implementation or
-evidence records, accepted dependency propositions actually used, affected
-consumers, and existing validation receipt. Unchanged accepted dependencies and
-adjacent corpus records are outside this review.
+Pin base/head or tree, claim delta, implementation/evidence, used dependency
+propositions, affected consumers and existing receipt. Preserve unchanged
+dependencies' acceptance. Reviewer receives raw artifacts and criteria.
 
-## Strongest Supported Positive Statement
-State the strongest meaningful result supported by the sourced artifacts. If it
-differs from the proposal, preserve as much useful scope as the evidence permits
-and identify the smallest honest change: quantifier correction, explicit
-hypothesis, core/interpretive split, or evidence-role relabel.
+## Strongest Supported Statement
+State the useful positive result first. Identify any unsupported extension,
+minimum quantifier/hypothesis/layer/evidence-role repair, consumer effect and
+specific evidence restoring stronger scope.
 
 ## Evidence Map
-Classify what each coherent evidence group actually contributes. One row may
-cover related entrypoints proving the same proposition.
+Group related entrypoints by the proposition and scope they actually establish.
 
-| Evidence | Proposition established | Role: exact proof / corroborating subclaim / regression / applicability / provenance | Bridge to claim | Limit |
+| Evidence | Proposition | Role: exact proof / corroboration / regression / applicability / provenance | Bridge | Limit |
 | --- | --- | --- | --- | --- |
-|  |  |  |  |  |
 
-An attachment need not prove the parent claim in full. It must not be credited
-beyond its role. Missing a bridge means “not established by this attachment,”
-not “the claim is false.”
+## Oracle and Approach Audit
+Inspect the strongest practical oracle and logical bridge; independently reason
+about load-bearing mathematics, assumptions and missed approaches. Inspect
+current GitNexus or AST/source for changed implementations/consumers when useful.
+For numerics audit analytic closure, frozen remainder/design, error/refinement
+and the actual predicate. Use appropriate mutation/counterexample or
+statement/import/axiom evidence. Exploratory samples retain their role.
+Reuse unchanged receipts; review prose is not a new scientific oracle.
 
-## Oracle Audit
-Inspect the one strongest practical oracle for the load-bearing proposition.
-For numerical or simulation evidence, first inspect the analytic-closure
-receipt: exact equations and variations, scaling, bounds and limits, asymptotic
-structure, strongest non-numerical conclusion, named numerical remainder, and
-frozen design freedoms. Confirm that the computed predicate answers that
-remainder rather than defining a different question. Then record only the
-applicable statement/axiom audit, mutation or counterexample, limit, refinement,
-independent rederivation, and solver/error facts needed to exclude a false
-green. Pre-gate exploratory samples cannot support acceptance or refutation.
-Reuse a passing receipt while its code and inputs are unchanged; do not validate
-this review record.
+## Minimum Corrections and Next Achievements
+Record direct falsifiers, absent/circular steps, unsupported used dependencies
+and affected-consumer defects as current repairs; adjacent concerns as follow-up.
 
-## Findings
-Classify each finding once. A current blocker must be a counterexample or
-contradiction, an absent/circular load-bearing step, a declared dependency that
-does not supply what is used, or an affected-consumer failure.
-
-| Finding | Direct evidence | Blocking in boundary / minimum correction / follow-up | What would resolve or overturn it |
+| Finding | Direct evidence | In-scope repair / follow-up | Minimum correction and evidence restoring stronger scope |
 | --- | --- | --- | --- |
-|  |  |  |  |
 
-Reserve `refuted` for an explicit falsifier under the stated hypotheses. Use
-`unverified`, `qualified`, or a narrower evidence role for missing support.
-Every narrowing finding carries its upgrade path in the same row: what specific
-evidence would restore or extend the stronger form. A finding without an upgrade path
-is incomplete, because it hands the next agent a smaller question instead of a next
-step. If prior reviews of this claim already reduced its scope without new contrary
-evidence arriving in between, say so here and escalate to the user rather than narrow
-a third time.
+Reserve refuted for a falsifier under the stated hypotheses; missing support
+earns an explicit open construction or accurate evidence role. After two
+independent evidence passes, further narrowing earns its place through new
+contrary evidence; escalate repeated unsupported shrinking to the user.
 
-## Compatibility and Consumers
-Record assumptions, imports, units, conventions, invariants, and the result of
-the impact-bounded consumer replay. Declared hypotheses and unfinished parent
-work are not debt. Record only defects introduced inside this transaction.
+## Compatibility and Four-Axis Decision
+Record assumptions, imports, units/invariants, consumer replay and in-scope
+repairs. Set verification, review, compatibility and epistemic statuses
+independently; record relationship and strongest accepted/proposed statement.
 
-## Four-Axis Decision
-State the decision without inflating one axis from another.
-
-- Verification:
-- Review:
-- Compatibility:
-- Epistemic:
-- Relationship:
-- Strongest accepted or proposed statement:
-
-## Promotion Transaction
-List only the registry, implementation/test, campaign, release, generated-doc,
-memory, migration, and validation changes actually required by this claim. Use
-the existing content-addressed validation receipt when the boundary is unchanged.
-
-## Correction Check
-After requested changes, check only the corrected statements, altered evidence
-roles, and directly affected dependency or consumer edges. This is the final
-review pass, not a new corpus audit. Record `not needed` when no correction was
-requested.
+## Promotion and Correction Check
+List applicable registry/API/tests/campaign/release/docs/memory/migration changes.
+Use one substantive review and one correction check on changed statements and
+affected edges; record not needed if no repair. Reuse content-addressed evidence.
 
 ## Result and Frontier
-Lead with the positive result retained. If the claim is not accepted, state one
-decisive missing construction or test and leave the parent objective open.
-Adjacent findings appear once as follow-up and do not expand this transaction.
-
-## Cross-References
-Link proposal, claim, dependencies, evidence, consumers, release, validation
-receipt, and parent research arc.
+State the retained positive result, one decisive next construction if acceptance
+remains open, and compact adjacent follow-up. Link proposal, claim, dependencies,
+artifacts, consumers, release, receipt and parent objective.
 ```

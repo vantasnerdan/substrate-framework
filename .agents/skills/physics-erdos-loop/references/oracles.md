@@ -11,8 +11,7 @@ Use the strongest practical oracle for each claim and state exactly what verdict
 | Figure or visualization | Rendering tool | artifact only |
 
 Separate genuinely different evidence modalities so each receives the right
-verdict, while preserving the strongest useful combined statement. Do not split
-a claim into trivial fragments merely to simplify review. Use exploratory
+verdict, while preserving the strongest useful combined statement. Keep a useful coherent proposition intact through review. Use exploratory
 numerics to generate hypotheses only when useful; before production numerical
 evidence, freeze the analytic specification and work exact algebra, calculus,
 scaling, bounds, asymptotics, and applicable theorems as far as the claim
@@ -71,7 +70,7 @@ An identity that holds only because both sides contain the same copied literal i
 - Use the numerical formulation natural to the claim: for example `scipy.integrate.solve_ivp` for an ODE or method-of-lines system, `solve_bvp` for a two-point BVP, `scipy.sparse.linalg` for large sparse spectra, and appropriate SciPy quadrature, root, or optimization routines for those claims.
 - For PDEs, state the spatial method (finite difference, finite volume, finite element, spectral, or another justified discretization), boundary implementation, mesh, time integrator, stability restriction, and error norm. A generic integrator does not validate an unspecified PDE discretization.
 - Record precision, solver, mesh/domain, timestep, tolerances, and stopping criteria.
-- Require the library's success/status result and finite outputs before evaluating physics assertions.
+- Earn a usable numerical state with successful solver status and finite outputs before evaluating physics assertions.
 - Refine resolution, timestep, domain, and tolerance independently.
 - Compare two methods or an analytically soluble limit.
 - Track conserved quantities and discretization error.
@@ -107,8 +106,8 @@ or translation layer:
 - fabricated fitted parameter;
 - broken boundary or initial condition.
 
-Each selected mutation must fail a relevant assertion. Do not mutate every
-parameter when one mutation exercises the same failure channel. If headline
+Each selected mutation earns its value by exposing a relevant assertion.
+Use one representative mutation per shared failure channel. If headline
 numbers move while the tally stays green, the verifier does not establish the
 headline claim. A kernel-checked Lean theorem instead requires exact statement,
 import, proof-escape, axiom-footprint, and physical-encoding audits; do not add a
@@ -122,13 +121,9 @@ evidence do not already close that risk. Reuse a valid recorded rederivation at
 the same boundary. Agreement between two calls to the same copied formula is
 not independence.
 
-## Comparator gate
+## Achievement — a genuinely predictive comparison
 
-Empirical data may test a frozen prediction. It must not:
-
-- choose among concepts before structural criteria are applied;
-- appear as a derivation input under a new name;
-- determine a tolerance or free parameter after results are seen;
-- become a pass condition for a supposedly first-principles derivation.
-
-Open the comparator gate after equations, conventions, selection criteria, and structural tests are frozen. Report disagreement, then continue improving the candidate set; do not refit the framework narrative.
+Freeze equations, conventions, structural criteria/tests, parameters and tolerances
+before empirical comparison. Keep data as a test of the resulting prediction,
+separate from first-principles derivation inputs. Report disagreement honestly
+and use it to generate better candidates; preserve the framework's meanings.
