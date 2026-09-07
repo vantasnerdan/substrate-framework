@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -u
+cd /tmp/substrate-particles
+ATTEMPT=proposals/P253-euler-particle-mechanisms/attempts/0075
+PY=/home/dan/substrate-framework/.venv/bin/python
+printf '%s\n' 'PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python proposals/P253-euler-particle-mechanisms/attempts/0075/verify_weighted_tail.py' > "$ATTEMPT/stationary-residual.command.txt"
+PYTHONPATH=src "$PY" "$ATTEMPT/verify_weighted_tail.py" > "$ATTEMPT/stationary-residual.stdout" 2> "$ATTEMPT/stationary-residual.stderr"
+status=$?
+printf '%s\n' "$status" > "$ATTEMPT/stationary-residual.exit"
+exit "$status"

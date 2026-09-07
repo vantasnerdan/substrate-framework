@@ -1,0 +1,9 @@
+#!/bin/bash
+cd /tmp/substrate-particles || exit 2
+receipt=proposals/P253-euler-particle-mechanisms/attempts/0034
+printf '%s\n' 'PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_axisymmetric_action.py; after adding full physical linear operator' > "$receipt/full-operator-api.command"
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_axisymmetric_action.py > "$receipt/full-operator-api.stdout" 2> "$receipt/full-operator-api.stderr"
+result=$?
+printf '%s\n' "$result" > "$receipt/full-operator-api.exit"
+herdr agent prompt w3:p1 "0034 full operator API checks completed exit=$result; receipt0034/full-operator-api.stdout"
+exit "$result"

@@ -12,6 +12,12 @@ status: active
 ## Question and Positive Deliverable
 Complete the full issue203 electron AND neutrino particle mechanism contract frozen verbatim in issue203-frozen.md; P0–P7 are conjunctive, electron first does not reduce scope.
 
+Execution is paused at the user's explicit request on 2026-09-07. Start future
+recovery at `proposals/P253-euler-particle-mechanisms/PAUSED.md` and its linked
+0107 pause state. The last reviewed boundary is 0104/0106; 0107 is interrupted
+author work. The campaign remains scientifically open, with no terminal PR or
+claim promotion implied by this checkpoint.
+
 ## Obligation Graph and Closure Map
 The matching proposal manifest records each exact node, prerequisites and non-implications. LP0 is earned at initial source/inventory scope; LP1–LP7 remain unearned.
 

@@ -1,0 +1,14 @@
+#!/bin/bash
+cd /tmp/substrate-particles || exit 1
+receipt=proposals/P253-euler-particle-mechanisms/attempts/0001
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python scripts/validate_repository.py > "$receipt/opening-schema.stdout" 2>&1
+schema_status=$?
+echo "$schema_status" > "$receipt/opening-schema.exit"
+memory validate --base "$PWD" "$PWD/memory/codex/proposals/P253-euler-particle-mechanisms.md" > "$receipt/opening-memory.stdout" 2>&1
+memory_status=$?
+echo "$memory_status" > "$receipt/opening-memory.exit"
+echo "Opening schema=$schema_status memory=$memory_status"
+if [ "$schema_status" -eq 0 ] && [ "$memory_status" -eq 0 ]; then
+  gitnexus analyze --index-only --name substrate-particles > /tmp/particle-gitnexus-index.stdout 2>&1
+  echo $? > /tmp/particle-gitnexus-index.exit
+fi

@@ -1,0 +1,9 @@
+#!/bin/bash
+cd /tmp/substrate-particles || exit 1
+out=proposals/P253-euler-particle-mechanisms/attempts/0027
+sha256sum src/substrate_framework/euler_column_wave.py tests/test_euler_column_wave.py > "$out/column-api.source-hashes"
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_column_wave.py > "$out/column-api.stdout" 2> "$out/column-api.stderr"
+status=$?
+printf '%s\n' "$status" > "$out/column-api.exit"
+herdr agent prompt w3:p1 "0027 column API exact checks completed exit=$status; receipt0027/column-api.stdout"
+exit "$status"

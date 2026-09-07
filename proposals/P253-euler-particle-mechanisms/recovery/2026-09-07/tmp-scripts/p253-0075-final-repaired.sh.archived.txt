@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -u
+cd /tmp/substrate-particles
+ATTEMPT=proposals/P253-euler-particle-mechanisms/attempts/0075
+PY=/home/dan/substrate-framework/.venv/bin/python
+printf '%s\n' 'PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python proposals/P253-euler-particle-mechanisms/attempts/0075/verify_weighted_tail.py' > "$ATTEMPT/final-weighted-tail.command.txt"
+PYTHONPATH=src "$PY" "$ATTEMPT/verify_weighted_tail.py" > "$ATTEMPT/final-weighted-tail.stdout" 2> "$ATTEMPT/final-weighted-tail.stderr"
+status=$?
+printf '%s\n' "$status" > "$ATTEMPT/final-weighted-tail.exit"
+if [ "$status" -ne 0 ]; then exit "$status"; fi
+printf '%s\n' 'PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_asymptotic_tails.py' > "$ATTEMPT/final-focused-tests.command.txt"
+PYTHONPATH=src "$PY" -m pytest -q tests/test_euler_asymptotic_tails.py > "$ATTEMPT/final-focused-tests.stdout" 2> "$ATTEMPT/final-focused-tests.stderr"
+status=$?
+printf '%s\n' "$status" > "$ATTEMPT/final-focused-tests.exit"
+exit "$status"

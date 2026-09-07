@@ -1,0 +1,9 @@
+#!/bin/bash
+cd /tmp/substrate-particles || exit 1
+out=proposals/P253-euler-particle-mechanisms/attempts/0022
+sha256sum src/substrate_framework/binormal_hasimoto.py tests/test_binormal_hasimoto.py > "$out/exact-check.source-hashes"
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_binormal_hasimoto.py > "$out/exact-check.stdout" 2> "$out/exact-check.stderr"
+status=$?
+printf '%s\n' "$status" > "$out/exact-check.exit"
+herdr agent prompt w3:p1 "0022 exact filament checks completed exit=$status; receipt in attempts/0022/exact-check.stdout"
+exit "$status"

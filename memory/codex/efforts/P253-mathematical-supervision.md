@@ -2,7 +2,7 @@
 description: Active mathematical direction of P253 while preserving the full electron and neutrino objective
 author: codex-supervisor
 created: '2026-09-06T17:50:15+00:00'
-updated: '2026-09-06T17:50:15+00:00'
+updated: '2026-09-07T05:24:11+00:00'
 tags: [substrate-framework, effort, P253, mathematical-supervision]
 category: efforts
 confidence: exploratory
@@ -10,6 +10,12 @@ status: active
 ---
 
 ## Goal and Success Contract
+
+Execution was paused explicitly by the user on 2026-09-07. The historical
+directions below are preserved; the current recovery entry point is
+`proposals/P253-euler-particle-mechanisms/PAUSED.md`, with interrupted 0107
+details in `attempts/0107/pause-state.md`. All other Herdr agents were stopped.
+Resume only on the user's instruction. The campaign objective remains open.
 
 The user explicitly asked the main model to supervise the workers' logic,
 solution methods and usefulness to the entire particle objective. The main

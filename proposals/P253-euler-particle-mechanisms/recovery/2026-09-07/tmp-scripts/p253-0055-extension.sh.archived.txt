@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -u
+cd /tmp/substrate-particles
+attempt=proposals/P253-euler-particle-mechanisms/attempts/0055
+python=/home/dan/substrate-framework/.venv/bin/python
+cmd="PYTHONPATH=src $python $attempt/verify_scale_causality.py"
+printf '%s\n' "$cmd" > "$attempt/extension-ledger.command.txt"
+: > "$attempt/extension-ledger.stderr"
+PYTHONPATH=src "$python" "$attempt/verify_scale_causality.py" > "$attempt/extension-ledger.stdout" 2> "$attempt/extension-ledger.stderr"
+rc=$?
+printf '%s\n' "$rc" > "$attempt/extension-ledger.exit"
+printf 'P253_0055_EXTENSION_EXIT=%s\n' "$rc"
+exit "$rc"

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -u
+validation_tree=/tmp/substrate-particles-validate-bd42096
+receipt_dir=/tmp/substrate-particles/proposals/P253-euler-particle-mechanisms/attempts/0057
+rm -rf "$validation_tree"
+git -C /tmp/substrate-particles worktree add --detach "$validation_tree" bd42096 >/tmp/p253-bd42096-worktree.stdout 2>/tmp/p253-bd42096-worktree.stderr
+setup_status=$?
+if [ "$setup_status" -ne 0 ]; then
+  cat /tmp/p253-bd42096-worktree.stderr
+  printf '%s\n' "$setup_status" > "$receipt_dir/checkpoint-validation.exit"
+  exit "$setup_status"
+fi
+command_text='PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python scripts/validate_changed.py --base 8e4fc62 --head bd42096'
+printf '%s\n' "$command_text" > "$receipt_dir/checkpoint-validation.command.txt"
+cd "$validation_tree" || exit 98
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python scripts/validate_changed.py --base 8e4fc62 --head bd42096 > "$receipt_dir/checkpoint-validation.stdout" 2> "$receipt_dir/checkpoint-validation.stderr"
+status=$?
+printf '%s\n' "$status" > "$receipt_dir/checkpoint-validation.exit"
+printf 'P253_VALIDATION_BD42096_DONE exit=%s\n' "$status"
+exit "$status"

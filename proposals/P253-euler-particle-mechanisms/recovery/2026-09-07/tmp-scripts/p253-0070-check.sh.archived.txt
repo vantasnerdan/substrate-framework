@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -u
+cd /tmp/substrate-particles
+base=proposals/P253-euler-particle-mechanisms/attempts/0070
+py=/home/dan/substrate-framework/.venv/bin/python
+cmd="$py $base/verify_gauge_emergence.py"
+printf '%s\n' "$cmd" > "$base/exact-check.command.txt"
+PYTHONPATH=src "$py" "$base/verify_gauge_emergence.py" > "$base/exact-check.stdout" 2> "$base/exact-check.stderr"
+e=$?
+printf '%s\n' "$e" > "$base/exact-check.exit"
+ptest="$py -m pytest -q tests/test_euler_gauge_emergence.py"
+printf '%s\n' "$ptest" > "$base/focused-pytest.command.txt"
+PYTHONPATH=src "$py" -m pytest -q tests/test_euler_gauge_emergence.py > "$base/focused-pytest.stdout" 2> "$base/focused-pytest.stderr"
+p=$?
+printf '%s\n' "$p" > "$base/focused-pytest.exit"
+printf 'P253_0070_CHECKS exact=%s tests=%s\n' "$e" "$p"
+if [ "$e" -ne 0 ] || [ "$p" -ne 0 ]; then exit 1; fi

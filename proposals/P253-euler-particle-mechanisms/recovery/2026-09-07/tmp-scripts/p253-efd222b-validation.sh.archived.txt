@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -o pipefail
+cd /tmp/substrate-validate-efd222b
+receipt=/tmp/substrate-particles/proposals/P253-euler-particle-mechanisms/attempts/0050/checkpoint-validation
+cat > "${receipt}.command.txt" <<'EOF'
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python scripts/validate_changed.py --base 591a642 --head efd222b
+EOF
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python scripts/validate_changed.py \
+  --base 591a642 --head efd222b \
+  > "${receipt}.stdout" 2> "${receipt}.stderr"
+status=$?
+printf '%s\n' "$status" > "${receipt}.exit"
+cat "${receipt}.stdout"
+cat "${receipt}.stderr" >&2
+printf 'P253_EFD222B_VALIDATION_EXIT=%s\n' "$status"
+exit "$status"

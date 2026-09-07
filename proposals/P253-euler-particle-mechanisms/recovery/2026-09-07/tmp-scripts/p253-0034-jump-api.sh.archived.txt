@@ -1,0 +1,9 @@
+#!/bin/bash
+cd /tmp/substrate-particles || exit 2
+receipt=proposals/P253-euler-particle-mechanisms/attempts/0034
+printf '%s\n' 'PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_axisymmetric_action.py; final exact jump coefficient added' > "$receipt/jump-api.command"
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_axisymmetric_action.py > "$receipt/jump-api.stdout" 2> "$receipt/jump-api.stderr"
+result=$?
+printf '%s\n' "$result" > "$receipt/jump-api.exit"
+herdr agent prompt w4:p2 "0034 final canonical/jump API checks completed exit=$result; receipt0034/jump-api.stdout"
+exit "$result"

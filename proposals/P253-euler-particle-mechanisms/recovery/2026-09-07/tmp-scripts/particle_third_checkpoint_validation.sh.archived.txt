@@ -1,0 +1,7 @@
+#!/bin/bash
+cd /tmp/substrate-particles || exit 1
+receipt=proposals/P253-euler-particle-mechanisms/attempts/0017
+PYTHON=/home/dan/substrate-framework/.venv/bin/python /home/dan/substrate-framework/.venv/bin/python scripts/validate_changed.py --base e38a8e9 --head 5a4343d > "$receipt/checkpoint-validation.stdout" 2>&1
+validation_status=$?
+echo "$validation_status" > "$receipt/checkpoint-validation.exit"
+exit "$validation_status"

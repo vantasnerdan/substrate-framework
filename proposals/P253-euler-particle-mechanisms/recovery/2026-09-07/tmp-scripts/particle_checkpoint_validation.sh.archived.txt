@@ -1,0 +1,7 @@
+#!/bin/bash
+cd /tmp/substrate-particles || exit 1
+receipt=proposals/P253-euler-particle-mechanisms/attempts/0001
+PYTHON=/home/dan/substrate-framework/.venv/bin/python /home/dan/substrate-framework/.venv/bin/python scripts/validate_changed.py --base 4620bf0 --head a7676b7 > "$receipt/checkpoint-full.stdout" 2>&1
+echo $? > "$receipt/checkpoint-full.exit"
+gitnexus analyze --index-only --name substrate-particles > /tmp/particle-gitnexus-refresh.stdout 2>&1
+echo $? > /tmp/particle-gitnexus-refresh.exit
