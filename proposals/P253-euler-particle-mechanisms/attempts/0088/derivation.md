@@ -951,25 +951,62 @@ in (35a.10)--(35a.16) are the required bridge.
 For the one compact seed above, the common-domain remainder can be derived
 without claiming an operator-norm derivative for every control.  Let
 `U_N` be the reviewed 0074/0078 action-flow/Piola intertwiner at an exact Cao
-crossing on the independently reviewed 0083/0089 path.  In the fixed massive fibers,
+crossing on the independently reviewed 0083/0089 path.  The physical core
+clock on its `N`th member is
 
-    ||U_N^(-1)A_(a,N)U_N-A_(a,col)||_(D_col->X)->0,
+    Omega_N=kappa/(2 pi a_N^2)>0.
+
+The reviewed column limit is in core time.  Define, on each of the two
+physical fibers,
+
+    Ahat_(a,N)=Aphys_(a,N)/Omega_N,
+    Vhat_N[h]=Vphys_N[h]/Omega_N.                        (35l.0)
+
+The compact control seed has zero circulation, carrier-scale, speed, and
+centering rows, so `d Omega_N[h_N]=0`; no derivative of the clock is
+hidden in the second definition.  In the fixed massive fibers,
+
+    ||U_N^(-1)Ahat_(a,N)U_N-A_(a,col)||_(D_col->X)->0,
     ||U_N^(-1)P_(a,N)U_N-P_(a,col)||_(X->D_col)->0.      (35l)
 
 The second convergence uses the fixed simple contours.  Choose the incoming
 KKS frame by these Riesz maps.  Formula (8), pulled back by the same unitary
 half-density/Piola chart, has only two terms: the whole-space Hodge kinetic
-pair and the compact-core second-orbit pair.  The reviewed Hodge convergence,
-carrier `C4` convergence on the support, and exterior energy-tail estimate
-give, on the two finite Riesz ranges,
+pair and the compact-core second-orbit pair.  The column normalization is in
+core time, so define
 
-    E2_N(U_N q,U_N p)=E2_col(q,p)+o(1)||q||_D||p||_D.   (35m)
+    E2hat_N:=E2phys_N/Omega_N.                           (35m.0)
+
+The reviewed Hodge convergence, carrier `C4` convergence on the support, and
+exterior energy-tail estimate give, on the two finite Riesz ranges,
+
+    E2hat_N(U_N q,U_N p)
+       =E2hat_col(q,p)+o(1)||q||_D||p||_D.              (35m)
 
 No kinetic-energy identification is made: the second term of (8) is included
-in (35m).  Positivity and finite rank make the Gram matrices uniformly
-invertible, so physical Hessian normalization commutes with the limit and
-the left rows `lambda_(a,N)` converge to `lambda_(a,col)` in the dual graph
-norm.
+in (35m).  Choose the convergent core-time unit frame and its dual rows by
+
+    E2hat_N(ehat_(a,N),conjugate(ehat_(b,N)))=delta_(ab),
+    ellhat_(a,N)(q):=E2hat_N(q,conjugate(ehat_(a,N))).   (35m.1)
+
+On every member the physical unit frame and Hessian rows are instead
+
+    ephys_(a,N)=ehat_(a,N)/sqrt(Omega_N),
+    ellphys_(a,N)=sqrt(Omega_N) ellhat_(a,N),
+    E2phys_N(ephys_(a,N),conjugate(ephys_(b,N)))=delta_(ab),
+    OmegaKKS_N(ephys_(a,N),conjugate(ephys_(b,N)))
+       =i delta_(ab)/nu_(a,N),
+    nu_(a,N)=Omega_N sigma_(a,N).                        (35m.2)
+
+These identities follow directly from
+`E2phys_N=Omega_N E2hat_N`; equivalently
+`OmegaKKS_N(ehat_a,conjugate(ehat_b))=i delta_ab/sigma_a`.
+Positivity and finite rank make the scaled Gram matrices uniformly
+invertible, so `ehat_(a,N)` and `ellhat_(a,N)` converge on the two Riesz
+ranges.  No convergence of the unscaled physical left rows is claimed:
+`ellphys_(a,N)` contains `sqrt(Omega_N)`, while
+`Omega_N=Theta(a_N^(-2))`.  Nor is this a uniform norm estimate for the
+control seed `h_N`.
 
 Now push the compact displacement (35j), not the velocity, through the
 volume action-flow chart and denote it by `xi_N`.  Then
@@ -994,21 +1031,32 @@ and the full pulled-back covariant derivatives contain only the already
 retained fixed masses `k_1,k_2,k_h` plus `o(1)` metric/frame coefficients.
 Equations (35l),(35o)--(35p) therefore give the source-specific remainder
 
-    U_N^(-1)V_N[h_N]e_(2,N)
-       =V_col[h_col]e_(2,col)+o_(H3)(1).                 (35q)
+    U_N^(-1)Vhat_N[h_N]ehat_(2,N)
+       =Vhat_col[h_col]ehat_(2,col)+o_(H3)(1).           (35q)
 
-Pairing (35q) with the convergent physical Hessian row in (35m) yields
+Pairing (35q) with the convergent scaled Hessian row in (35m)--(35m.1), and
+using `Vphys_N=Omega_N Vhat_N`, gives
 
-    M_(12,N)(h_N)=M_12^col(h_col)+o(1).                 (35r)
+    Mphys_(12,N)(h_N)/Omega_N
+       =Mhat_(12,N)(h_N)
+       =Mhat_12^col(h_col)+o(1),
+    Mhat_12^col(h_col)!=0.                              (35r)
 
-The right side is nonzero by (35g)--(35k), so every sufficiently thin exact
-crossing on that connected path has an actual compact DA seed with
+Indeed,
+`ellphys(Vphys ephys)=sqrt(Omega) ellhat(Omega Vhat
+ehat/sqrt(Omega))=Omega ellhat(Vhat ehat)`.  Thus no unscaled physical mode
+or left row is inserted into the column convergence statement.
 
-    M_(12,N)(h_N)!=0.                                   (35s)
+The column quantity is nonzero by (35g)--(35k).  Since `Omega_N>0`, there
+is `N_0` such that every `N>=N_0` in the constructed rational-ray exact
+crossing sequence has an actual compact DA seed with
+
+    Mphys_(12,N)(h_N)!=0.                               (35s)
 
 Thus the off-diagonal nonvanishing transfers at source-specific fixed-`k`
-scope.  The exact-crossing supplier is the reviewed 0083/0089 path.  The
-transfer still does not provide a two-sided
+core-time scope, and only on the sufficiently large tail of the exact
+rational-ray sequence supplied by the reviewed 0083/0089 path.  The transfer
+still does not provide a two-sided
 bound after normalizing `h_N` in the physical `Y^4` norm: the residual
 `r=R_Nq`, Piola factors, and possible `N` dependence of that norm remain the
 separate high-index ledger in Section 8.
@@ -1102,10 +1150,14 @@ licenses those later conclusions.
   KKS cancellation, rank-one dual Riesz identification, global adjoint Sturm
   row, and singular-axis recurrence.  Equations (35b)--(35k) then give a
   nonzero constrained DA seed.  The reviewed 0083/0089 path then transfers
-  it to sufficiently thin exact same-family Cao crossings.  No uniform
-  normalized high-index response is claimed.
-- **Route C (uniform high-index useful response): blocked** until (33), (35),
-  and the physical mode/dual bounds are uniform in the rational-ray sequence.
+  it to every sufficiently large member of the constructed rational-ray
+  exact-crossing sequence, as
+  `Mphys_(12,N)/Omega_N->Mhat_12^col!=0`.  Each physical mode retains its
+  per-member `E2phys/KKS` normalization; no uniform physical `Y4`-normalized
+  control-seed response is claimed.
+- **Route C (uniform high-index useful response): blocked** until a uniform
+  physical `Y4` control-seed normalization, normalized response lower bound,
+  and the two-sided complement/nonlinear gate estimates are constructed.
 - **Two independent off-diagonal histories: blocked at physical
   realization,** while the exact noncommutation criterion (37) is
   established.  It avoids the curvature loss only if two histories, not two

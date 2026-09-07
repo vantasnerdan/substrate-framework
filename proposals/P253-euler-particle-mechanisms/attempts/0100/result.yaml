@@ -1,0 +1,113 @@
+attempt: P253/0100
+title: Ertel axial current and same-carrier chiral-lock test
+route_verdicts:
+  route_A0:
+    route: exact Ertel material axial current
+    verdict: established
+    strongest_result: >-
+      For a transported true scalar, q_E=omega dot grad chi is a transported
+      pseudoscalar and (q_E,q_E u) is an exact Galilean axial continuity
+      current. It is also div(chi omega), so its global integral vanishes for
+      globally smooth single-valued decaying whole-space data.
+  route_A1:
+    route: exact forced Ertel continuity current
+    verdict: established
+    strongest_result: >-
+      For rho_m D_t u=-grad p+rho_m f, the density obeys
+      D_t q_E=(curl f) dot grad chi=div(f cross grad chi), so the exact
+      conserved spatial flux is q_E u-f cross grad chi.
+  route_B0:
+    route: nonzero real constant constitutive lock q_E=lambda chi on closed vorticity lines
+    verdict: refuted_on_nonzero_tagged_closed_lines
+    strongest_result: >-
+      In unforced Euler preservation requires D_t lambda=0 where chi is
+      nonzero. Closed-line
+      single-valuedness requires exp(integral lambda d tau)=1; for real lambda
+      the integral must vanish, excluding a nonzero constant lock while
+      retaining variable zero-integral and compact-connection candidates.
+  route_B1:
+    route: exact forced constitutive-lock evolution equation
+    verdict: established
+    strongest_result: >-
+      Under forcing, an imposed lock obeys
+      chi D_t lambda=(curl f) dot grad chi. The closed-line monodromy still
+      applies kinematically, but D_t lambda need not vanish.
+  route_B2:
+    route: force-selected variable vector-axial lock
+    verdict: blocked_at_same_carrier_solution_and_action
+    missing_construction: >-
+      Solve the forced lock equation together with the closed-line monodromy,
+      parity, material leaf, action, and electron-linked endpoint interaction
+      on one persistent carrier.
+  route_C0:
+    route: Ertel axial current on the axisymmetric no-swirl tagged Cao carrier
+    verdict: refuted_by_toroidal_poloidal_orthogonality
+    strongest_result: >-
+      With omega=r zeta e_theta=zeta partial_theta and axisymmetric chi=F(I),
+      q_E=zeta partial_theta chi=0 exactly on the tagged regular band.
+  route_C1:
+    route: forced Euler-Maxwell Ertel flux on the charged Cao carrier
+    verdict: established_as_local_superpotential_current
+    strongest_result: >-
+      Although q_E=0, the corrected spatial flux is
+      (g/rho_m)chi chi'(P) grad Phi cross grad P, equivalently
+      curl[(g Phi/(2rho_m))grad(chi^2)]. It is a potentially nonzero toroidal
+      axial magnetization current with pointwise zero divergence and only a
+      boundary-row global transport content.
+  route_D1:
+    route: azimuthal circle-valued label on the punctured Cao domain
+    verdict: established_at_defect_domain_equilibrium_scope
+    strongest_result: >-
+      On R3 minus the symmetry axis, dtheta is a global closed non-exact
+      one-form material at the no-swirl Cao equilibrium. It gives
+      q_theta=dtheta(omega)=zeta and the exact equilibrium integral
+      Q_theta=2*pi*kappa. General perturbations require an independently
+      advected circle phase and a moving-defect flux theorem.
+  route_D2:
+    route: physical nonaxisymmetric, defect, or compact-connection continuation
+    verdict: blocked_at_persistent_same_carrier_construction
+    missing_construction: >-
+      Construct a persistent nonaxisymmetric carrier or a finite-energy
+      advected defect/non-global label with nonzero local or integrated axial
+      current, prove the moving-boundary flux rows, then derive its shared
+      action and electron-linked interaction representation.
+evidence_scope:
+  - exact_Ertel_material_invariant
+  - exact_forced_Ertel_continuity_current
+  - exact_true_scalar_O3_axial_parity
+  - exact_global_boundary_flux_identity
+  - exact_closed_vorticity_line_monodromy
+  - exact_axisymmetric_Cao_zero_density
+  - exact_charged_Cao_magnetization_superpotential
+  - exact_punctured_domain_Cao_azimuthal_charge
+strongest_exact_result: >-
+  Euler plus one transported true scalar supplies an exact local Galilean
+  axial continuity current, and forcing changes its spatial flux exactly by
+  -f cross grad chi. Its whole-space total charge vanishes in the
+  regular globally single-valued decaying class, a real nonzero constant
+  vector/axial lock is incompatible with nonzero tags on closed vorticity
+  lines, and the regular Ertel density and convective q_E u part vanish on the
+  axisymmetric Cao tag geometry, while the charged branch has a potentially nonzero local
+  toroidal magnetization superpotential current with zero density and
+  divergence. The distinct circle-valued azimuthal label on the punctured
+  domain gives q_theta=zeta and equilibrium integral 2*pi*kappa exactly. A
+  general perturbation does not transport fixed geometric theta. Its
+  continuous magnitude, moving-defect domain, action, endpoint interaction,
+  and nonaxisymmetric-carrier continuations remain active.
+does_not_license:
+  - a nonzero regular whole-space Ertel charge
+  - a Lorentz chiral four-current or one-handed projector
+  - a selected constitutive lock or weak coupling
+  - quantization of the continuous circulation charge 2*pi*kappa
+  - identification of q_theta with electromagnetic charge g*chi_c
+  - spin one-half, fermionic exchange, mass, or mixing
+  - a persistent neutral particle carrier
+  - LP2, LP4, LP5, LP6, electron, neutrino, or parent completion
+next_dependency: >-
+  Construct and test a persistent nonaxisymmetric same-carrier current and,
+  independently, an advected moving-defect or compact material-connection
+  realization with a derived global flux, symplectic action, and
+  electron-linked endpoint interaction. Reconcile either with the shared P4
+  state before P6 use.
+parent_status: active
+exhaustion_claimed: false

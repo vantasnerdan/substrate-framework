@@ -126,10 +126,16 @@ from Krein positivity.  Its nonzero
 and rational-character row exclusion prove `gamma_12^col>0`.
 Reviewed 0074/0078 common-graph/Riesz/Hodge convergence, applied only to this
 explicit smooth seed, plus direct convergence of both terms of the physical
-orbit Hessian prove the source-specific fixed-`k` remainder
-`M_(12,N)=M_12^col+o(1)`.  This transfers nonvanishing to sufficiently thin
-exact crossings supplied by the independently reviewed 0083/0089 path, but
-not to a normalized high-`N` lower bound.  The fixed-`k`
+orbit Hessian after core-time rescaling prove the source-specific fixed-`k`
+remainder
+`Mphys_(12,N)/Omega_N=Mhat_12^col+o(1)`, with `Omega_N>0`.  Here
+`E2hat=E2phys/Omega_N`; the convergent frame is `E2hat`-unit, while
+`ephys=ehat/sqrt(Omega_N)` and `ellphys=sqrt(Omega_N)ellhat` give the
+per-member physical normalization.
+No convergence of the unscaled physical left rows is asserted.  This
+transfers nonvanishing to every sufficiently large member of the rational-ray
+exact-crossing sequence supplied by independently reviewed 0083/0089, but
+not to a physical `Y4`-normalized high-`N` control-seed lower bound.  The fixed-`k`
 massive curvature rows are independently rederived from P253/0074's exact
 cylindrical operators; P253/0044 equations (13)--(23) are used only as the
 fixed-integer geometric cross-check `W/2,s Omega'/2`, not as a uniform

@@ -1,0 +1,109 @@
+attempt: P253/0098
+reviewer: particle-balance-review
+target: P253/0094
+review_kind: independent_non_author_fixed_boundary
+activated_readme_sha256: 2cab0310da57712bc684811dcd30aadff15b699ebc06ec232131ad0ddb2ff17e
+target_manifest_sha256: 7d60b60e930e65ecad8d9ded97834095228ce57f897f0485f19e89f72415e0c3
+excluded_attempts:
+  - P253/0095
+  - P253/0097
+  - P253/0100
+correction:
+  count: 0
+  status: not_required
+manifest:
+  convention: mixed_base
+  verification: passed
+  resolution: >-
+    Bare names resolve under attempts/0094; src and tests selectors resolve
+    from the repository root. Every frozen entry matches under that declared
+    resolution.
+units:
+  A0_local_reduced_energy_sign:
+    verdict: established
+    strongest_result: >-
+      The stated C2 remainder bounds and a2>0 give a unique positive strict
+      local minimum J(nu)=-nu/(2*a2)+O(nu^2) for sufficiently small negative
+      nu, while zero is the local boundary minimum for positive nu.
+  A1_actual_Cao_reduction:
+    verdict: blocked
+    strongest_positive: >-
+      The direct fourth-variation, complement-slaving, and real
+      principal-value Maxwell coefficient ledger is identified.
+    missing_construction: >-
+      A same-carrier invariant or constrained reduction, its nonlinear
+      coefficients and complement solution, and a renormalized reciprocal
+      principal-value Feshbach term with remainder bounds.
+  B_compact_phase_character:
+    verdict: refuted
+    mechanism: >-
+      Integer character m leaves the classical number N and action coefficient
+      S0 continuous; the dimensionless normalization C0 remains arbitrary.
+    scope: classical_action_selection_only
+  C1_Euler_vorticity_BF:
+    verdict: refuted
+    mechanism: >-
+      Real exact Euler vorticity is not a compact two-form connection and does
+      not supply a large-gauge BF level.
+  C2_smooth_two_label_BF:
+    verdict: refuted
+    mechanism: >-
+      The smooth pullback d_alpha wedge d_beta is closed away from defects,
+      while a ring complement has H1 but no electric Gauss-surface H2 row.
+  C3_compact_carrier_defect:
+    verdict: blocked
+    missing_construction: >-
+      Compact periods, distributional source, finite core energy, gauge
+      boundary terms, BF level, and same-carrier symplectic coefficient.
+  D_coupled_defect_energy:
+    verdict: blocked
+    strongest_positive: >-
+      The calculation shows why an integer branch label plus positive
+      oscillator and Coulomb terms still selects zero internal action.
+    missing_construction: >-
+      A carrier-derived negative detuning, binding, chemical-potential,
+      anomaly-inflow, or discrete-energy row consistent with the charge
+      constraint.
+  E0_fixed_aspect_ring_balance:
+    verdict: established
+    scope: leading_slender_ring_fluid_plus_electrostatic_asymptotic
+    strongest_result: >-
+      The exact leading coefficients give a unique positive radius and the
+      stated translational axial impulse at fixed aspect and profile.
+    boundary: >-
+      This is not the full charged Cao energy, internal KKS action, action
+      selection, or P2.
+  E1_finite_core_charged_Cao_scale:
+    verdict: blocked
+    strongest_positive: >-
+      E0 supplies an explicit comparison target for the full fixed-label
+      radius derivative.
+    missing_construction: >-
+      The fixed-label finite-core energy including tag, magnetic/current,
+      aspect/core, logarithmic and subluminal rows, followed by a separate map
+      from translational impulse to internal action.
+combined_verdict: established_at_route_scoped_author_boundary
+strongest_exact_result: >-
+  A0 proves the conditional local reduced-energy minimum theorem, and E0
+  proves a fixed-aspect leading fluid/Coulomb radius and translational-impulse
+  balance. Compact character, smooth Euler-vorticity BF, and smooth two-label
+  BF routes are refuted by named mechanisms. The actual Cao nonlinear
+  reduction, genuine compact defect, coupled nonzero binding, and exact
+  finite-core charged scale remain constructive frontiers.
+next_dependency: >-
+  Derive the exact fixed-label charged Cao energy derivative and test E0 after
+  tag, magnetic/current, finite-core and subluminal terms; independently
+  construct either the nonlinear same-carrier reduction supplying A0's
+  coefficients or a genuine compact defect with a carrier-derived BF/action
+  coefficient.
+does_not_license:
+  - internal_action_selection_from_E0
+  - universal_action_or_hbar
+  - exact_finite_core_charged_Cao_minimum
+  - compact_Euler_BF_connection_or_level
+  - invariant_manifold_or_P2_persistence
+  - Born_reset_exchange_or_statistics
+  - P4_or_P5_completion
+  - particle_electron_or_neutrino_claim
+parent_campaign_state: active
+exhaustion_claimed: false

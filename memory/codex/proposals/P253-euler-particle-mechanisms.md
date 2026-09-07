@@ -675,3 +675,97 @@ competition between complete-channel nonlinear Euler--Maxwell persistence and
 a materially distinct carrier with a coercive full DA Hessian. A
 positive-codimension center-stable manifold or prepared finite-time doublet
 does not meet LP2's open-leaf all-time persistence observable.
+
+## Corrected response review, final P2 topology, and neutrino supplier
+
+Independent review0096 is final at review SHA-256
+`007192e514160c3ee8f19406f0569cb0183f9c463633b313dc3ea8e9ded760a6`
+and verdict SHA-256
+`92d6099203d30a2a2de007d4f8459681a6675c179aec2fb50b6ccfd57832e170`.
+The bounded core-clock correction is pinned by receipt SHA-256
+`abbff0c243e76ff3486e4b1c1677f53e53b5e9b2bb58c8ae8ae896b01c4ae88e`
+and manifest SHA-256
+`d594e2c9b715d5b3f130a1a510b58819bd82ffcb38948b90fd9837512475c4c7`.
+With `E2hat=E2phys/Omega_N`, the physical units satisfy
+`ephys=ehat/sqrt(Omega_N)` and `ellphys=sqrt(Omega_N)ellhat`, so
+`Mphys/Omega_N` converges to the nonzero normalized column response for every
+sufficiently large member of the constructed rational-ray exact-crossing
+sequence. Per-member physical E2/KKS normalization is established. The
+uniform physical `Y4` control-seed norm and response, independent stored
+histories, and two-sided nonlinear gate remain open.
+
+Attempt0095 is authoritatively activated only at README SHA-256
+`9cbc9ef9773d102b6ee1c52c6af9af8345277cb23c020e1a5e76af54674290e8`.
+Its all-time distance uses the affine fixed-charge zero-monopole tangent,
+unweighted positive comoving field energy, and the vorticity tail. Any
+cumulative local-radiation term acts only on a proved modulation-covariant
+continuous projection `P_rad`; a persistent internal Maxwell component is
+measured instantaneously. Without that spectral split the cumulative term is
+deferred. Positive spatial weights remain initial-data/resolvent topology and
+do not enter an all-time norm of an outgoing translated packet. Foundations
+is executing the complete-channel charged Cao route and the materially
+different coercive-carrier route; a positive-codimension center-stable set or
+finite-time analyzer does not satisfy LP2.
+
+Root0097 supplies an author-stage P6 decomposition without claiming a
+neutrino. A passive transported tag cannot oscillate autonomously. The exact
+Euler helicity density and flux form a conserved axial Galilean tuple, while
+the wider first-derivative chiral-current classification stays open. A
+prepared two-state system gives the exact momentum-dependent beating,
+coherence functional, and shared-action relativistic phase
+`Delta m^2 c^3 L/(2 E S_*)`; turning that kinematics into a same-carrier
+neutrino requires a persistent neutral carrier, the shared P4 spin/action
+space, a derived propagation/interaction basis and mass matrix, and an
+electron-linked current. A declared chiral gauge representation is an
+extension input, not an Euler consequence. The final author manifest is
+SHA-256
+`0fd97e6c7e452f0c5d590cdd447cae37ce182893cd6b808ab7cb182893cd6a582`;
+independent review0099 remains pending.
+
+Root0100 is the next P6 supplier route. It tests the exact Ertel material
+current `q_E=omega dot grad chi=div(chi omega)`. The local continuity law can
+hold while the total charge vanishes for smooth decaying whole-space data;
+nonzero integrated charge therefore activates boundary flux, a puncture or
+distributional defect, or a non-global/multivalued label; topology alone does
+not evade Stokes for a global smooth label. The proposed vector/axial lock also carries
+the exact advected-variable and closed-line monodromy rows rather than a
+pointwise constant-lock shortcut.
+
+Independent review0098 is final at review SHA-256
+`c42be8429945ba9cbdcdc251030a9fa9f52444dd03d5eba279a8d72a53af8536`
+and verdict SHA-256
+`2d0499a0c21d352c397a80439f1965053e60f4a5c01f65beb31573c650dea5c3`.
+It preserves0094 A0 and E0 as exact conditional/asymptotic model results,
+while the actual Cao invariant reduction, compact defect, coupled nonzero
+binding, and finite-core scale/action promotion remain individually open.
+The leading fixed-aspect charged-ring minimum selects a radius and signed
+translational impulse; it is not internal action or P2.
+
+Independent review0099 is final at review SHA-256
+`ae3d5495baca1e3fbf6c50a56903b13f9fdcde9712117a4297431e2b703e58b7`
+and verdict SHA-256
+`d9102986bb05ccb150aaf0de50a8b4e9fe41ab4849abddc66ad1538362775b75`.
+It accepts0097's passive-tag no-oscillation, Euler helicity axial current,
+and conditional two-state propagation/coherence/relativistic phase at their
+separate scopes. The complete first-derivative current classification,
+physical Cao flavor supplier, material holonomy, and chiral extension remain
+separate active routes.
+
+Root0100 continued after the regular-tag no-charge result. For unforced Euler,
+`q_E=omega dot grad chi` is an exact material pseudoscalar for a transported
+true scalar. For forced Euler,
+`partial_t q_E+div(q_E u-f cross grad chi)=0`. On the charged Cao branch the
+regular density vanishes but the correction is the exact divergence-free
+toroidal magnetization superpotential
+`(g/(2rho_m)) grad Phi cross grad(chi_c^2)`. On the punctured axis domain the
+fixed azimuthal phase gives the equilibrium density `zeta` and integral
+`2*pi*kappa`; it is material only in the axisymmetric no-swirl class since
+`D_t theta=u_theta/r`. General persistence requires an independently advected
+circle phase, moving defect, and inner/outer flux proof. The Ertel density is
+not electromagnetic charge. Unforced constitutive-lock preservation requires
+`D_t lambda=0`, whereas forced Euler requires
+`chi D_t lambda=(curl f) dot grad chi`; a force-selected variable lock remains
+open even though the real nonzero constant lock is excluded on tagged closed
+vorticity lines. The author manifest is SHA-256
+`dff6ddccd1166019720f6a545344d246195075f9cf462833ea68886c6af8d54f`;
+independent review0101 is pending.

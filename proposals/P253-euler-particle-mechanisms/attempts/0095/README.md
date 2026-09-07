@@ -2,7 +2,7 @@
 
 Owner: `particle-foundations`
 
-Status: **README-only preregistration awaiting central schema activation.**
+Status: **README-only postactivation precision awaiting schema replay.**
 The central ledger reserves 0095 to this owner, but no source body, verifier,
 or numerical work may open until the repository schema is replayed and
 `attempts/0095/activation-schema.exit` contains exactly `0`.  Root owns the
@@ -13,7 +13,16 @@ An activation run raced the affine fixed-charge precision correction and
 targeted superseded README SHA-256
 `1db743b77fe8304417d8ced53cb1d2a536f02df735de6970d9e0a731f82e1afd`.
 Its receipts remain provenance but do not activate source bodies.  A new
-schema replay must target the current README hash.
+schema replay against corrected SHA-256
+`be4a0c671e52707322fa0187302cb5274c163dd2da1ce120fea1c905951550a7`
+subsequently exited zero.  Before any source body opened, the positive-weight
+radiation defect below required this second bounded precision correction.
+The `be4a0c...` receipts remain valid provenance but are superseded for body
+activation.  The subsequent replay against README SHA-256
+`84924589b6e46b925fc7ba53915058afc7301a75f985e0fe10f133f39f99286f`
+also exited zero.  Before any source body opened, the internal-mode/BIC
+cumulative-radiation defect required the final bounded precision below.  A
+new schema replay must target the resulting current README hash.
 
 ## Frozen parent objective and target kind
 
@@ -116,9 +125,10 @@ The perturbation topology must be strong enough to generate the nonlinear
 Euler flow and weak/localized enough to retain the whole-space radiation
 channel.  Freeze an integer `s>=4` and a weight exponent `sigma>1/2`; the body
 must derive the exact admissible interval.  The named full-three-dimensional
-topology is the conserved-leaf completion
+**initial-data and limiting-absorption topology** is the conserved-leaf
+completion
 
-    mathcal X_(DA,sigma)^s[Z_g] = X_DA,fluid^s
+    mathcal X_(in;DA,sigma)^s[Z_g] = X_DA,fluid,sigma^s
        x H_tag,DA^s
        x {delta E in H_sigma^s intersect H_sigma^s(curl):
             difference Gauss law and zero monopole}
@@ -128,31 +138,73 @@ topology is the conserved-leaf completion
 with the anisotropic action-flow graph norm retained wherever isotropic `H^s`
 is not the generator domain.  The tag component must use the actual
 semidirect-product same-leaf displacement, not an independent scalar norm.
+The positive spatial weight in (1) is used to localize initial data and as the
+dual weight in resolvent/local-energy estimates.  It is not an instantaneous
+all-time radiation norm: a freely translated Maxwell packet has weighted norm
+of order `t^sigma`.
 
 For the uncharged Route-B problem, omit the field factors until the tag and
 Maxwell attachment is constructed.  Let `M` be the orbit under the carrier's
-actual Euclidean symmetries and its
-genuine carrier-parameter family, restricted to the same fixed values of the
-conserved rows.  Let `Pi_core` be a fixed smooth window equal to one on the
-vorticity core.  The persistence observable is
+actual Euclidean symmetries and its genuine carrier-parameter family,
+restricted to the same fixed values of the conserved rows.  Let `mathfrak A_t`
+be the admissible `C^1` modulation paths `a:[0,t]->M` selected by the declared
+orthogonality/conservation rows; the body must prove existence, uniqueness up
+to stabilizer, and chart equivalence.  Let `Pi_core` be a fixed smooth window
+equal to one on the vorticity core, and let `Pi_R` be a fixed larger
+moving-frame localization.  For a modulated field difference
+`delta F_a(tau)=((E,B)(tau)-a(tau)(E_*,B_*))`, let
+`||delta F_a||_(E_c,s-1)` denote the unweighted positive subluminal comoving
+Maxwell energy norm (with derivatives through `s-1`).  Its work exchange is
+retained in the exact conserved total comoving energy--momentum balance; it is
+the conserved free-channel norm when the current vanishes and is not silently
+declared separately conserved in the coupled system.
 
-    D(t)=inf_(a in M){
-       ||omega(t)-a omega_*||_(X_DA,loc)
-       +||Pi_core[chi(t)-a chi_*]||_(H^(s-1))
-       +||Pi_loc[(E,B)(t)-a(E_*,B_*)]||_(H^(s-1))
-       +Tail_R((E,B)(t)-a(E_*,B_*),
-               omega(t)-a omega_*)},                     (2)
+Let `delta Z_a` denote the full modulated tangent.  Only after Route A proves
+a bounded, modulation-covariant center decomposition
+`P_c=P_int+P_rad` on the declared graph/energy space define
+
+    delta F_(int,a)=[P_int delta Z_a]_(EM),
+    delta F_(rad,a)=[P_rad delta Z_a]_(EM),
+
+where `[...]_(EM)` takes the Maxwell components.  The cumulative radiation
+seminorm then acts only on the proved continuous/radiative component:
+
+    Rad_a[0,t]^2=
+      integral_0^t ||<x>^(-sigma)delta F_(rad,a)(tau)||_(H^(s-1)_loc)^2 d tau,
+    Tail_R^omega(t,a)=
+      ||(1-Pi_R)[omega(t)-a omega_*]||_(H^(s-1)).         (2a)
+
+Until that bounded split is proved, `Rad_a` is a conditional/deferred part of
+the target observable rather than a norm assigned to the unsplit field.
+Localized internal eigenmodes or BICs are never integrated in `Rad_a`: they
+remain in the instantaneous unweighted local and comoving-energy terms of
+(2), and Route A2 controls them by a bounded Hamiltonian normal form, a proved
+Fermi-golden-rule transfer into radiation, or exact decoupling.
+
+The persistence observable is
+
+    D(t)=inf_(a(.) in mathfrak A_t){
+       ||omega(t)-a(t) omega_*||_(X_DA,loc)
+       +||Pi_core[chi(t)-a(t) chi_*]||_(H^(s-1))
+       +||Pi_loc delta F_a(t)||_(H^(s-1))
+       +||delta F_a(t)||_(E_c,s-1)
+       +Rad_a[0,t]+Tail_R^omega(t,a(t))},                 (2)
 
 where every electromagnetic term acts on the modulated difference, never on
-the Coulomb base by itself.  `Tail_R` separately measures vorticity escape,
-weighted/radiative energy of `(delta E,delta B)` with zero monopole, and the
-decaying exterior Hodge difference.  The body must specify every weight,
-window, and modulation row and prove that (2) is independent of the chosen
-chart.
+the Coulomb base by itself.  The global Maxwell term is unweighted; positive
+weights occur only in (1) and the inverse local weight in (2a).  Vorticity
+escape is the explicit unweighted `H^(s-1)` tail in (2a), not an unexplained
+instantaneous positive-weight moment.  The decaying exterior fluid Hodge
+difference is controlled through `X_DA,fluid,sigma^s` initially and the
+unweighted velocity/graph rows propagated by the route.  The body must specify
+every weight, window, modulation row and prove that (2) is independent of the
+chosen chart.  The two instantaneous terms involving `delta F_a` include the
+entire internal component `delta F_(int,a)`; no cumulative local-decay
+requirement is imposed on a neutral localized internal mode.
 
 The full P2 success statement sought is: there are `epsilon_0,C>0` such that
 every initial datum in an open ball `N_epsilon` of the fixed conserved/DA leaf
-in the affine tangent topology `mathcal X_(DA,sigma)^s[Z_g]` satisfies the
+in the affine tangent topology `mathcal X_(in;DA,sigma)^s[Z_g]` satisfies the
 all-time estimate
 
     sup_(0<=t<infinity) D(t)<=C epsilon.                 (3)
@@ -205,14 +257,17 @@ resolvent/propagator estimate actually used by the nonlinear map only on the
 continuous/radiative part:
 
     ||<x>^(-sigma)e^(tA_c)P_rad f||_(L2_t X_loc)
-       <=C||f||_(mathcal X_(DA,sigma)^s[Z_g]),           (4)
+       <=C||f||_(mathcal X_(in;DA,sigma)^s[Z_g]),        (4)
 
 or an explicitly stated Euler phase-mixing plus Maxwell local-energy
 replacement.  Include thresholds at zero, the full real Maxwell shell,
 embedded internal modes, and any bound state in the continuum.  Neutral
 internal eigenmodes or BICs in `P_int` require a bounded Hamiltonian normal
 form, a proved Fermi-golden-rule/radiative damping mechanism, or exact
-decoupling; their constant local norm cannot satisfy (4).  A formal Fourier
+decoupling; their constant local norm cannot satisfy (4).  The boundedness and
+modulation covariance of this split are also the typing condition that
+activates `Rad_a` in (2a); without them the cumulative term is deferred and no
+all-time estimate (3) has been earned.  A formal Fourier
 radiation condition is insufficient.  If the passive tag creates a
 zero-speed advective continuum, either control it by the exact material
 conjugacy and nonlinear remainder estimate or show the topology in (1) cannot

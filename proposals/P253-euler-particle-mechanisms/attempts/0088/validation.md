@@ -92,11 +92,15 @@ quantity, so the small-ratio numerical protocol is not activated.
   calculation alone is not its Cao transfer.
 - Equations (35l)--(35s) then derive the source-specific fixed-`k` transfer:
   the reviewed graph/Riesz/Hodge intertwiners, direct convergence of both
-  terms of the physical orbit Hessian, exact action-flow pushforward of the
-  displacement, and the smooth bilinear bracket estimate give
-  `M_(12,N)=M_12^col+o(1)`.  This proves nonvanishing on any sufficiently
-  thin exact crossing furnished by the reviewed 0083/0089 path, but does not
-  supply a physical `Y4`-normalized high-`N` bound.
+  terms of the core-time Hessian `E2hat=E2phys/Omega_N`, exact action-flow
+  pushforward of the displacement, and the smooth bilinear bracket estimate
+  give `Mphys_(12,N)/Omega_N=Mhat_12^col+o(1)`.  The algebraic conversion
+  is exposed by `ephys=ehat/sqrt(Omega_N)` and
+  `ellphys=sqrt(Omega_N)ellhat`; only the scaled frame/dual is claimed to
+  converge.  Since `Omega_N>0`, this proves nonvanishing for every
+  sufficiently large member of the rational-ray exact-crossing sequence
+  furnished by reviewed 0083/0089, but does not supply a physical
+  `Y4`-normalized high-`N` control-seed bound.
 - Equations (36)--(37a) derive the distinct two-off-diagonal alternative and
   identify the first autonomous retained-sector amplitude equation.  They do
   not count two phases of one static seed as two controls.
@@ -108,6 +112,12 @@ and final oracle exits, parses `result.yaml`, checks the physical KKS and
 fixed-`k` phrases, excludes the stale leading-order and non-adjoint witness
 phrases, confirms the active campaign boundary, and scans all owned files for
 trailing whitespace.  Its command/output/exit are preserved separately.
+
+The bounded 0096 clock correction changes no symbolic-oracle predicate, so
+the unchanged oracle and static validator were not rerun for tally.  The
+correction is checked instead by YAML parsing, stale-claim scanning, and
+`git diff --check`; their first captured outputs are recorded in the bounded
+correction receipt.
 
 ## Claim boundary
 

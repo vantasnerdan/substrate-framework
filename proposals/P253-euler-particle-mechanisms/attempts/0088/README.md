@@ -120,7 +120,7 @@ and recorded by URL, version, SHA-256, and exact theorem/equation location.
 Fix one sufficiently thin axisymmetric Cao carrier in its translating,
 nonrotating frame.  Write
 
-    bar_omega=zeta(r,z)e_theta,
+    bar_omega=r zeta(r,z)e_theta,
     bar_u=B bar_omega,
     W=bar_u-c_g e_z,                                    (1)
 
