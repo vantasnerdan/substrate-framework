@@ -15,7 +15,7 @@ Every claim carries four independent status axes:
 | Compatibility | `unassessed`, `native`, `compatible_extension`, `conflict` |
 | Epistemic | `proposed`, `active`, `qualified`, `superseded`, `refuted` |
 
-Do not infer one axis from another. In particular, committed does not imply reviewed; verified does not imply framework-compatible; later does not imply superseding; and empirical agreement does not imply derived.
+Earn each axis independently: commits supply provenance, review supplies its own evidence, compatibility supplies framework fit, and derivation remains distinct from empirical agreement.
 
 ## Artifact roles
 
@@ -29,9 +29,9 @@ Do not infer one axis from another. In particular, committed does not imply revi
 - memory `efforts`/`proposals`/`attempts`: work state and recall pointers.
 - memory `claims`/`releases`: generated or synchronized accepted-state summaries.
 
-## Proposal admissibility
+## Achievement — a sourced proposal
 
-Before calculating, require a proposal manifest with:
+Before calculating, earn a frozen proposal by recording:
 
 - base release and source commit;
 - exact question and positive completion object;
@@ -43,8 +43,8 @@ Before calculating, require a proposal manifest with:
 - comparator-blinding point;
 - validation and impact-bounded replay plan.
 
-A candidate cannot alter these fields retroactively without a recorded proposal
-revision. Rerun only gates whose inputs or asserted proposition changed.
+Preserve the freeze through an explicit proposal revision when these fields
+change. Replay only checks whose inputs or proposition changed.
 
 For synthesis campaigns, set `campaign_type: synthesis` and
 `target_kind: fixed_theorem`, name one higher claim and the structural gap, and
@@ -54,7 +54,7 @@ SymPy or Lean glue proof, assumptions, and exclusions. An optional
 `layer: interpretive` theorem must state hypothesis H explicitly and cannot feed
 the core layer.
 
-## Natural-fit test
+## Achievement — natural framework fit
 
 A candidate fits naturally when it:
 
@@ -65,18 +65,18 @@ A candidate fits naturally when it:
 - produces consequences without importing their desired values;
 - requires no unrelated narrative rewrite to appear compatible.
 
-Reject or reformulate a candidate that fails this test. Try another concept before changing the framework.
+Use a concrete mismatch to reformulate the candidate or generate another concept; the reward is a better fit, not rescuing the favorite.
 
 ## Foundational revisions
 
-Treat foundation changes as separate proposals. Require evidence of a pre-existing inconsistency that does not depend on the proposed replacement. Compare at least two repairs, identify the smallest coherent change, list every affected claim and consumer, obtain independent review, and replay the whole dependency closure.
+Earn a separate foundation proposal with evidence of a pre-existing inconsistency that does not depend on the proposed replacement. Compare at least two repairs, identify the smallest coherent change, list every affected claim and consumer, obtain independent review, and replay the whole dependency closure.
 
-Do not bundle foundation changes into a candidate campaign. That makes it impossible to tell whether the framework needed revision or the candidate merely needed rejection.
+Keep this proposal separate from the favored candidate so independent evidence decides whether the foundation itself needs revision.
 
 ## Promotion transaction
 
-Promote each proposed or changed claim individually. Do not reopen unchanged
-accepted dependencies or turn evidence attachments into new claim reviews:
+Promote each proposed/changed claim individually while retaining unchanged
+acceptance and accurate attachment roles:
 
 1. Freeze the proposal and its attempt history.
 2. Audit the exact claim and verifier sensitivity.
@@ -101,4 +101,4 @@ Before acceptance, a proposal may record `challenges`. Only an accepted claim ma
 
 ## Success and continuation
 
-Transparency about a failed route is good scientific practice, but it does not satisfy a positive objective. Store it as `failed_attempt`, extract the reusable mechanism, and continue with a repaired or different candidate. Never conceal contradictions or manufacture success; resolve them through better concepts, better methods, or separately governed foundation work.
+Bank a failed route as honest `failed_attempt` evidence, extract its reusable mechanism, and pursue a repaired or different candidate. The elite achievement is resolving the positive objective through better constructions; truthful contradictions remain visible. Honor user pauses under AGENTS.md.
