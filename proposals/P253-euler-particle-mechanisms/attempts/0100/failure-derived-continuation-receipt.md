@@ -10,7 +10,7 @@ azimuthal phase on the punctured Cao domain. The global closed non-exact
 one-form `dtheta` gives `q_theta=zeta` and total `2*pi*kappa`; its magnitude is
 continuous and its physical action/interaction representation remains open.
 The second continuation retains the Euler--Maxwell force. It derives the exact
-forced flux and the nonzero local Cao magnetization superpotential while
+forced flux and the potentially nonzero local Cao magnetization superpotential while
 preserving zero density and zero global regular Ertel charge.
 
 The original exact/focused/repository captures are preserved. The intermediate

@@ -769,3 +769,78 @@ open even though the real nonzero constant lock is excluded on tagged closed
 vorticity lines. The author manifest is SHA-256
 `dff6ddccd1166019720f6a545344d246195075f9cf462833ea68886c6af8d54f`;
 independent review0101 is pending.
+
+## Final Ertel review, two-label lock continuation, and active P2 audit
+
+Independent review0101 is final at review SHA-256
+`1ed8266d2a6c8487fbdaf5b629fd2d22ac77232c9912c84feeb71b7c0b569ebb`
+and verdict SHA-256
+`1a9b89788bbe5458b134445e708de660125cdaf6408922513246151562f0cbe3`.
+The bounded wording correction is pinned by receipt
+`5473d007777030b6c4f6c3641808dd3a1fa5da2d8988a24d48717065c1636fc2`
+and final 0100 manifest
+`45baf6fce79b861f4dbde1543a92e1ead0161d88ab2547a11439e23eba63666c`.
+The exact unforced/forced Ertel rows, closed-line constant-lock obstruction,
+regular Cao zero density, potentially nonzero magnetization superpotential,
+and punctured-axis equilibrium charge survive at their separate scopes.  A
+force-selected lock and moving defect remain open.
+
+Root0102 takes the failure-derived two-label route: the electromagnetic tag
+`chi_c` and an independent circle phase `Theta` obey
+`chi_c D_t lambda=(curl f) dot grad Theta`.  On the steady charged Cao band,
+`Theta=theta` and the modified Grad--Shafranov identity make the variable
+ratio `lambda=zeta/chi_c` automatic wherever the tag is nonzero.  The existing
+strictly band-supported tag cannot satisfy a global constant lock because
+`zeta` occupies the full core.  Constant locking reduces exactly to
+`Q_P[chi_0' Phi_hat-chi_0 H_hat]=0` at order `g^2`, with the
+signed-charge-factored Lorenz source and Ampere primitive in one physical
+`epsilon_EM,mu_EM,c_EM` normalization.
+
+Author audit rejected an apparent universal response sign: positive Cao
+vorticity gives the physical sign of `P_s/(R s)` opposite to the scratch
+`Omega>0` convention, so the electric and magnetic pieces can cancel.  The
+failure produced a positive representation change.  A global straight-column
+law `zeta_0'(P)=a_0 zeta_0(P)` cancels the first-speed response exactly.  Its
+explicit Liouville realization
+`P_b=P_0-(2/a_0)log(1+b s^2)`,
+`zeta_b=8b/[a_0 R^2(1+b s^2)^2]` solves both the Poisson and exponential
+profile equations.  Its cross-sectional vorticity is integrable, but its
+support is noncompact and its velocity gives logarithmically divergent
+infinite-column kinetic energy, so it is not a Cao free-boundary carrier. On an annulus, compact
+matching leaves `A s+B/s`; inner and outer source moments independently
+control `B` and `A`, with determinant `-1/4`.  Lifting that source-space range
+through `delta chi_0=delta(zeta_0/lambda_0)`, the streamfunction/free boundary,
+circulation, mean radius and material-leaf rows is the next active
+construction.  The final author manifest is SHA-256
+`ffb741bc9850ded93e1a0cb984fc68226dd3c51c2b23b457e81e2f84fdde19b1`;
+the post-Liouville completion receipt is
+`3945247c073a267c0fac5b92e82a74c69ef46bfcfecb5fe1b2396773473083ae`;
+independent review0103 is final at review SHA-256
+`c506400fac1377c545cb9e94666a36964b1a802f8b4f35753779674ae0c2485f`
+and verdict SHA-256
+`03fa9b87bef653f8bc11f04e00c5a812f20fb5dbc1061e7042b29ad02e167293`.
+It independently establishes the exact equilibrium lock, normalized
+Lorenz/Ampere contour reduction, Liouville representation and unconstrained
+annular source range.  The actual normalized Cao response, finite-Cao
+transfer and admissible fixed-leaf map to the two annular moments remain
+active.  All 70 immutable manifest entries verify; only the expected mutable
+proposal registry row changed when 0103 was centrally registered.
+
+For `Theta=theta`, the defect is the entire noncompact symmetry axis and a
+bare `|dtheta|^2` energy needs explicit axis-core and outer treatment.  A
+compact ring defect needs another phase and does not inherit `q_A=zeta`.
+Thus 0102 remains a P6 supplier and establishes no P2, P4, chiral interaction,
+electron or neutrino.
+
+Attempt0095 remains active and unfrozen.  Repeated observed Luna-Low fallbacks
+quarantined the intermediate `255/1024` coefficient, Hattori--Fukumoto helper
+edits and claimed global lift receipts.  The newest verified worker context is
+rollout line 16532, ordinal 16530, timestamp
+`2026-09-07T03:30:44.692Z`, with model `gpt-5.6-sol`, effort high, approval
+never and danger-full-access.  The primary Hattori--Fukumoto invariant Hill
+coefficient `15/256` is being rederived together with the physical packet
+normalization, coupled Maxwell Sylvester correction, DA/tag/Gauss and finite
+rows, same-norm observation estimate, and finite-dimensional modulation
+quotient.  Any charged conclusion is per fixed sufficiently thin carrier with
+`C(delta)g^2<c_HF delta` unless a uniform small-core bound is separately
+proved.  No quarantined 0095 package is consumed as evidence.

@@ -17,7 +17,7 @@ fa0a44de2aff51b1cccab740fe35dc2688d4fb3673c2552f5c411e158066962b  README.md
 f1edc4ca9148cc930a44e312ade60ed03ea380a09e786d93ef394546466e7697  result.yaml
 2fa59c5788a07c1902770d804208d520d77883a5f12c734d1a8510510370e4d0  validation.md
 acb960106b55886e52ea5b6314af4edbe2616cc8b8e66390ed42e52acdded4f9  verify_ertel_current.py
-c32d1298554a36074fb38fdde67269d67dffb0fd22c8906784bd2aef9029a3ed  failure-derived-continuation-receipt.md
+e44fcde0af9cb45217045cd0a94ccfcb0ca5c2f99f5c834f7cbebe123154e978  failure-derived-continuation-receipt.md
 7f1f8233416d2bb817818fdabc72a27480864e86740269cd133483f7497c2ec3  src/substrate_framework/euler_ertel_current.py
 f2d200423d5f36cdd4cb83299ca712f90b027f598a8a85d6e9a2a65f89ed1bb4  tests/test_euler_ertel_current.py
 ```
@@ -25,3 +25,8 @@ f2d200423d5f36cdd4cb83299ca712f90b027f598a8a85d6e9a2a65f89ed1bb4  tests/test_eul
 The final exact verifier derives eleven symbolic/vector-calculus predicates and exits `0` with empty stderr. The focused public API suite passes twelve tests. Repository validation exits `0` with the standard `WORKFLOW VALID` line and empty stderr. Earlier captures and superseded completion snapshots remain preserved as derivation chronology. No production numerics ran.
 
 This attempt does not establish a Lorentz chiral current, selected or quantized charge/action, force-selected lock, persistent nonaxisymmetric carrier, spin one half, fermionic exchange, weak coupling, neutrino mass or mixing, LP2, LP4, LP6, an electron, a neutrino, or parent completion. The campaign remains active on the forced lock, physical defect action/interaction, nonaxisymmetric same-carrier current, and shared P4/P6 synthesis.
+
+P253/0101 requested one bounded evidence-ledger correction: the derived Cao
+magnetization superpotential is **potentially** nonzero; actual nonvanishing on
+the charged branch was not proved. The equations, route verdicts, API, tests,
+verifier, and captured outputs are unchanged.

@@ -1,0 +1,131 @@
+attempt: P253/0103
+reviewer: particle-balance-review
+target: P253/0102
+review_kind: independent_non_author_fixed_boundary
+activated_readme_sha256: d28e70bc7d738c85d91da53cce88541a76040fba8b99e0e7ff2ab4afd363c1c2
+target_manifest_sha256: ffb741bc9850ded93e1a0cb984fc68226dd3c51c2b23b457e81e2f84fdde19b1
+target_completion_v2_sha256: 3945247c073a267c0fac5b92e82a74c69ef46bfcfecb5fe1b2396773473083ae
+excluded:
+  - P253/0095
+  - P4_P2_chiral_flavor_particle_and_parent_conclusions
+correction:
+  count: 0
+  status: not_required
+evidence:
+  manifest_check:
+    status: passed_with_expected_mutable_registry_drift
+    immutable_entries_verified: 70
+    mutable_entry: proposals/P253-euler-particle-mechanisms/proposal.yaml
+    frozen_sha256: 9622c808412f71ecf08b309bdd81e476b3f4abd104798840bfca7bfbcddd122f
+    current_sha256: 1f7388df8633b251e144afec34a941d3f16c156d38de47b60576a440bc3cedd4
+    scientific_target_changed: false
+  exact_v2:
+    status: passed_recorded_evidence
+    predicates: 13
+    scope: algebra_vector_calculus_Green_Liouville_and_source_moment_identities
+  focused_v2:
+    status: passed_recorded_evidence
+    tests: 14
+    scope: importable_API_regression
+  static_v3:
+    status: passed_recorded_evidence
+    scope: artifact_agreement_only
+  repository_v3:
+    status: passed_recorded_evidence
+    scope: workflow_and_schema_only
+  rerun_by_reviewer: false
+units:
+  A_variable_two_label_lock:
+    verdict: established
+    scope: nonzero_tagged_equilibrium_band
+    strongest_result: >-
+      Distinct transported labels obey the undivided forced compatibility law
+      chi_c D_t lambda=(curl f) dot grad Theta. On the no-swirl charged Cao
+      equilibrium, lambda=zeta/chi_c satisfies it wherever chi_c is nonzero.
+    support_result: >-
+      The existing strict-band tag cannot support a global constant lock
+      because zeta remains nonzero elsewhere in the Cao vorticity core.
+    boundary: no_force_selection_moving_phase_or_persistence
+  B0_contour_Maxwell_reduction:
+    verdict: established
+    strongest_result: >-
+      Constant locking has the exact order-g-squared necessary condition
+      Q_P[chi_0_prime Phi_hat-chi_0 H_hat]=0, with the Lorenz source and Ampere
+      elimination carrying the stated epsilon_EM, c_EM and radius factors.
+    boundary: exact_compatibility_reduction_not_response_nonvanishing
+  B1_normalized_Cao_response:
+    verdict: blocked
+    missing_construction: >-
+      Evaluate the Volterra coefficient S_1 for the actual normalized
+      Lane--Emden/Cao profile, physical P orientation, major-radius scaling and
+      annular tag cutoff in the physical pairing.
+  B2_finite_Cao_transfer:
+    verdict: blocked
+    missing_construction: >-
+      Uniform coupled Maxwell Green convergence on a subluminal finite-Cao
+      path, including the curved radius row, common contour domain and tag-band
+      boundary.
+  C0_Liouville_column:
+    verdict: established
+    scope: global_straight_column_first_speed_representation
+    strongest_result: >-
+      The explicit Liouville pair solves the radial Poisson and exponential
+      profile laws and makes the electric-dipole and Ampere first-speed terms
+      cancel exactly under one global Green normalization.
+    domain: >-
+      Cross-sectional vorticity is finite, but support is noncompact, velocity
+      has a one-over-radius tail and kinetic energy per unit length diverges
+      logarithmically; this is not a finite-energy Cao carrier.
+  C1_annular_Maxwell_source_range:
+    verdict: established
+    scope: unconstrained_radial_Maxwell_source_space_only
+    strongest_result: >-
+      Inner and outer source moments independently control B and A in the
+      annular A s+B/s mismatch; the source-to-matching determinant is exactly
+      -1/4.
+    boundary: no_admissible_Cao_leaf_or_universal_sign_inference
+  C2_physical_Cao_lift:
+    verdict: blocked
+    missing_construction: >-
+      A bounded map from admissible fixed-leaf
+      (delta P,delta zeta,delta chi) variations to (A,B), enforcing
+      delta chi=delta(zeta/lambda), profile, free-boundary, circulation,
+      mean-radius, charge, Casimir, stabilizer, center and Hodge rows.
+  D_compact_defect:
+    verdict: blocked
+    missing_construction: >-
+      A new compact circle phase, advected moving defect domain, and controlled
+      inner/outer flux and finite action. Theta=theta removes the full
+      noncompact axis and does not supply this object.
+  E_flavor_supplier_boundary:
+    verdict: blocked
+    strongest_positive: >-
+      The target maintains explicit and consistent non-licenses for its exact
+      equilibrium and source-space atoms.
+    missing_construction: >-
+      Persistent P2 carrier, shared normalized P4 action, noncommuting
+      propagation/interaction basis, and Lorentz chiral electron-linked
+      current.
+combined_verdict: established_at_exact_equilibrium_contour_Liouville_and_source_range_boundary
+strongest_exact_result: >-
+  P253/0102 establishes a variable two-label forced equilibrium lock on the
+  nonzero tag band, the support obstruction to the existing global constant
+  lock, the exact Maxwell contour compatibility reduction, a nonlocalized
+  Liouville first-speed cancellation, and a two-dimensional unconstrained
+  annular Maxwell-source range. It does not establish the normalized Cao
+  response, finite-Cao transfer, admissible material-leaf lift, compact moving
+  phase, P4/P2 bridge, flavor or particle conclusion.
+next_dependency: >-
+  Construct the admissible fixed-material-leaf map to the two annular moments,
+  evaluate the normalized Cao response, and prove uniform finite-curvature
+  Maxwell Green transfer; treat the compact moving phase and P4/P2 bridge as
+  independent downstream constructions.
+does_not_license:
+  - universal_response_sign
+  - normalized_Cao_response_or_finite_Cao_constant_lock
+  - admissible_profile_or_material_leaf_surjectivity
+  - localized_finite_energy_Liouville_carrier
+  - compact_moving_defect_or_finite_phase_action
+  - P4_P2_chiral_flavor_weak_particle_electron_neutrino_or_parent_completion
+parent_campaign_state: active
+exhaustion_claimed: false
