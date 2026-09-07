@@ -26,6 +26,14 @@ module/tests were created.  Its launch snapshot therefore makes it a
 pre-0087 checkpoint receipt, not validation evidence for this attempt.  The
 focused and exact receipts above are the applicable executable evidence.
 
+The bounded 0089 agreement repair changed only the public docstring, focused
+verifier print label, and focused test name for
+`high_index_limiting_bessel_ratio`: they now call it a finite-`J` leading
+predictor at the supplied carrier speed.  The formula, API name, assertions,
+and scientific predicates are unchanged, so the existing receipts are
+preserved and those checks were deliberately not rerun.  Their historical
+stdout retains its original label.
+
 No production numerics are used.  The fixed-`J` route earns a finite-ceiling
 theorem.  The fixed-`ell` route earns the finite-`J` predictor `q_0(J)`; an
 exact Debye margin requires the open same-carrier supplier to provide a

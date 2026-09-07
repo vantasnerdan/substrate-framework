@@ -54,7 +54,7 @@ def test_fixed_mode_ratio_has_core_support_and_n_minus_one_order():
     assert sp.simplify(ratio - expected) == 0
 
 
-def test_high_index_fixed_ell_ratio_and_speed_ceiling():
+def test_finite_j_leading_predictor_at_supplied_speed_and_ceiling():
     kappa, ell, l_phi, radius, k, c_em, speed = sp.symbols(
         "kappa ell l_phi radius k c_em speed", positive=True
     )

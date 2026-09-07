@@ -51,23 +51,27 @@ analyzer hierarchy.
 
 ## Attempt inputs and authority boundary
 
-### P253/0080 at author scope
+### Corrected P253/0080 with independent P253/0084 review
 
 - `0080/derivation.md` SHA-256
-  `f36d577639f07fbd649e9b97f450dafe4d67c667a82d554d62f5668dba4958f2`;
+  `d2823746db0ef12e9a9d3df334031de3e3ac45e3841e402b13bbbb5f905ae479`;
 - `0080/result.yaml` SHA-256
-  `b4e9f4d2dd69bc322182ed3f564ce5190b85b1da9ac6019d810cc1ee114ef8e3`;
+  `dc84da15d2ebe68cd5a3f9330b5dd9351f8ba3ae1b8715cdb4530cfc0045a5ec`;
 - `0080/source-audit.md` SHA-256
-  `0f5aff991e941de0a4bc7a9e9b4638f9f57dbec71084b50d55a8bf0c4c88d4d7`;
-- `0080/author-completion-receipt.md` SHA-256
-  `83d28c1b51e70127bb6fcbdc58a3c37f949133d8b2cd1f35eff84bb07e92a9fc`.
+  `3920cc313cc54e70d4ceb80d66b2dcfb12d6c3f15a2a4e60be86a474569ac5df`;
+- `0080/0084-bounded-correction-receipt.md` SHA-256
+  `c107a5d2b7d841ef2decd925c43138436b9e8341dffc88cbacc0a8dfcd452e74`;
+- `0084/review.md` SHA-256
+  `3fb7d2a69489668f6168d7f57eb9b4e86e35621064dd5f55172ca24270279aac`;
+- `0084/verdicts.yaml` SHA-256
+  `7793688a23156d1b015ed82505f5e48b88223e19e8a36563c2f57ef63f0a74c7`.
 
-Only the distinct circulation--mean-radius bordered isomorphism and its
-uniform rescaled inverse are used.  They supply local continuity with
-`epsilon` external.  No 0080 sharp Schur sign, standalone HSE, stability, or
-charged analyzer conclusion is imported.  Because 0080 lacks an independent
-review at this boundary, every 0083 path theorem depending on it remains
-author-stage conditional for promotion.
+Only the independently accepted circulation--mean-radius bordered
+isomorphism and uniform rescaled inverse are used.  They supply local
+continuity with `epsilon` external.  No 0080 sharp Schur sign, stability, or
+charged analyzer conclusion is imported.  The 0083 continuation and coverage
+argument remains author-stage until 0089 adjudicates it; the input inverse no
+longer has a pending-review qualification.
 
 ### Reviewed P253/0074/0078
 
@@ -122,13 +126,25 @@ The following are not imported claims:
   `s_area=C_s epsilon+O(epsilon^2)` without assuming cancellation of the
   entire first-order angular mean or differentiating a remainder;
 - a fixed-mean seed plus uniform relative-epsilon 0080 charts, overlap, and
-  local uniqueness construct one connected thin component; buffered endpoint
+  local uniqueness construct one connected thin component on the exact
+  fixed-compact-source positive-part space, conjugated by its explicit
+  parameter-only `(R,epsilon)` dilation/centering isomorphism to one fixed
+  `X_*` while the physical scale remains an output; the explicit Green/log
+  residual modulus, uniform `C^(2,beta)` bound with `beta>alpha`, compact
+  embedding, and uniform inverse prevent positive-epsilon chart termination;
+  a preliminary `1/N` band and sequential compactness/common-domain
+  resolvent contradiction, with every limit identified by normalized
+  Lane--Emden uniqueness under the fixed rows, prove the noncircular
+  path-uniform error envelope tends to zero on the actual integer fibers
+  `n_1=LP,n_2=LQ`; the massive `k` compacts serve only as uniform containers;
+  buffered endpoint
   choices on that component give exact geometric-delta coverage, with the condition
   `1/N=o(h_N)` after multiplication by `n=NP`;
 - the finite subluminal ceiling and explicit hierarchy inequality; and
 - the local integration-by-parts representation of the constrained response
-  through `F_12`, with actual curl nonvanishing and absolute KKS normalization
-  left open.
+  through `F_12`, with the adjoint `P_row^*` of the bounded primal finite-row
+  projection; actual curl nonvanishing and absolute KKS normalization remain
+  open.
 
 No production numerics, empirical comparator, or fitted physical constant is
 used.

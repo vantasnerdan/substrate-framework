@@ -8,11 +8,12 @@ only its append-only attempt artifacts.  The original activation, bounded
 precision repair, and corrected replay chronology are preserved in
 `postactivation-precision-receipt.md`.
 
-P253/0080 is an active, disjoint construction.  Before activation, 0083 may use
-only the coordinator-supplied boundary that 0080 contains a *distinct*
-`B_R`-bordered candidate realization.  No 0080 body, formula, conclusion, or
-unreviewed calculation is imported or inspected.  After activation, any 0080
-input remains explicitly author scope until its independent review closes.
+P253/0080 was disjoint when this contract froze.  Its corrected bordered
+construction has since passed independent P253/0084 review.  Execution may
+consume only the accepted circulation--mean-radius `B_R` isomorphism and
+uniform rescaled inverse pinned in `source-audit.md`; no stability or analyzer
+claim is inherited.  P253/0083 itself remains author-stage until its own
+independent review.
 
 ## Frozen parent objective and target kind
 
@@ -304,13 +305,14 @@ velocity, pressure/Leray contribution, coefficient variation, interface
 cancellation, and every center/circulation/mean-radius row.  It is not the
 local transport term alone.
 
-Let `P_DA` denote the projection/quotient onto compact divergence-free
-displacements tangent to the selected regular core cell and satisfying the
-finite physical rows.  If (17) vanished for every such `xi`, then the DA
-Helmholtz projection of `F_12` would lie in the gradient plus finite-constraint
-annihilator.  The exposing analytic predicate is therefore
+Let `P_row` be a bounded primal oblique projection onto compact
+divergence-free displacements tangent to the selected regular core cell and
+satisfying the finite physical rows.  A self-adjoint `P_DA` may replace it
+only after self-adjointness is proved in the physical pairing.  If (17)
+vanished for every such `xi`, the dual witness would vanish modulo gradients.
+The exposing analytic predicate is therefore
 
-    curl(P_DA F_12)(x_*) != 0                           (18)
+    curl(P_row^* F_12)(x_*) != 0                        (18)
 
 at one regular-cell point, with the curl interpreted in the reduced
 meridional slice and the toroidal character retained.  Prove the local DA
@@ -328,7 +330,7 @@ Repeat the same calculation for the traceless diagonal functional
       -<e_2^#,delta L_[xi,Omega]e_2>
         = integral_(core) xi dot (F_11-F_22),           (20)
 
-and test `curl(P_DA(F_11-F_22))` on an allowed axisymmetric or otherwise
+and test `curl(P_row^*(F_11-F_22))` on an allowed axisymmetric or otherwise
 selection-compatible slice.  Nonzero (18) and its diagonal analogue supply
 actual compact seed existence and two algebraically distinct compressed
 directions; they do not by themselves prove two autonomous histories or the

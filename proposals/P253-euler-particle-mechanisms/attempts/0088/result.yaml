@@ -1,0 +1,216 @@
+attempt: P253/0088
+owner: particle-foundations
+activation_schema_exit: 0
+readme_sha256: 6b01cbe08fc0321610b64315725e46c6c582be7592939d58b9795a44c5a65393
+status: fixed_column_and_source_specific_Cao_response_nonzero_uniform_normalized_response_open
+evidence_scope: EXACT_PHYSICAL_KKS_HESSIAN_DUAL_RIESZ_COLUMN_RESPONSE_AND_SOURCE_SPECIFIC_FIXED_K_TRANSFER
+
+dependency_boundary:
+  P253_0074_0078:
+    authority: independently_reviewed
+    consumed: two_simple_positive_Krein_massive_modes_and_common_graph_Riesz_transfer
+  P253_0079_0082:
+    authority: independently_reviewed_after_bounded_correction
+    consumed: exact_generator_derivative_selection_and_two_sided_control_algebra
+  P253_0080_0084:
+    authority: independently_reviewed_after_bounded_correction
+    consumed: projected_HSE_two_bordered_isomorphisms_and_finite_window_only
+  P253_0083:
+    authority: independently_reviewed_by_P253_0089_after_bounded_correction
+    consumed: connected_fixed_mean_thin_path_noncircular_actual_fiber_envelope_and_exact_same_family_crossing
+    review_sha256: da2d96384e1de7c018880d67a35f33a084515a4a80b58756233446cc2d2e01da
+    verdicts_sha256: 36afcb332e6c5629b411fc84d17085be5fe3eeba03124629d4a6c323625a4be8
+
+exact_results:
+  cylindrical_KKS_measure:
+    statement: >-
+      With bar omega=r*zeta*e_theta, dx=r dr dz dtheta, and normalized
+      toroidal characters, the physical KKS density is rho0*r^2*zeta in
+      dr dz. After the unitary half density it retains rho0*r*zeta in dy;
+      the residual r=R*q is not dropped.
+  actual_relative_Hessian:
+    statement: >-
+      The physical relative orbit Hessian is the kinetic Biot-Savart second
+      derivative plus the symmetrized second push-forward paired with the
+      energy-impulse first derivative. This retains the orbit constraint term
+      and is not kinetic L2 energy.
+  physical_left_covector:
+    statement: >-
+      For A_phys e_a=-i*nu_star*e_a and actual-E2 unit normalization,
+      ell_a(q)=E2_phys(q,bar e_a)=-i*nu_star*Omega_KKS(q,bar e_a), with
+      nu_star=Omega_a*sigma_star. Hence Omega(e_a,bar e_b)=i*delta_ab/nu_star.
+  degenerate_compression:
+    statement: >-
+      In the KKS frame continued from the incoming simple branches, the full
+      covariant compression M(h)_ab=ell_a((nabla_h A)e_b) is anti-Hermitian
+      at the exact double eigenvalue. Two seeds are an invariant noncommuting
+      pair exactly when their compression commutator is nonzero.
+  Feynman_Hellmann:
+    statement: >-
+      Along a differentiable steady operator/eigenbranch,
+      ell_a((nabla_h A)e_a)=-i*D_h nu_a. For an arbitrary same-leaf DA seed
+      this remains an exact instantaneous compression but is not called an
+      eigenfrequency derivative.
+  full_Hodge_dual_density:
+    statement: >-
+      If the KKS-derived left row has local density a, exact whole-space
+      integration by parts gives g=B[-(grad e)^T a-(e dot grad)a]
+      +(Be dot grad)a+(grad Be)^T a, and C0^*g=(grad baromega)^Tg
+      +(baromega dot grad)g modulo the actual row annihilator.
+  patch_lower_bound:
+    statement: >-
+      For an explicit bounded primal row projection P_row, a curl witness of
+      P_row^* C0^*g on a meridional patch of radius rp gives the exact
+      fixed-carrier H5-response scale c*gamma*rp^7. The adjoint identity
+      prevents row restoration from cancelling the numerator. This is not a
+      uniform high-N estimate before all physical Piola factors are carried.
+  diagonal_zero_zero_stabilizer:
+    statement: >-
+      In volume action-angle variables every compact divergence-free
+      ell=d=0 displacement has xi^I=0 and commutes with zeta(I)partial_theta.
+      Therefore the frozen Y_(0,0)^4 tangent and G3 on it vanish identically.
+    verdict: refuted_route
+  curvature_character_and_loss:
+    statement: >-
+      The exact first cylindrical curvature rows have meridional characters
+      d=plus_or_minus_1. A diagonal response from the m-zero column modes
+      therefore has first symmetry-allowed order delta times D_curv.
+      Regrading the exact operators
+      in a two-parameter A(delta,k) extension at fixed massive k gives
+      explicit G1,D1,L1,P1,B1,A1 blocks and reduces
+      D_curv to a one-dimensional source-mode integral containing the direct
+      pressure/frame row and both reduced-resolvent mode corrections. The
+      regular-band DA map supplies arbitrary compact radial coefficients and
+      the direct massive term gives the explicit multiplication constituent
+      sI. The full branch-dependent order-zero symbols and shrinking-gap
+      reduced-resolvent bounds are not yet controlled. If a normalized
+      nonzero coefficient is proved and transfers uniformly on delta_N
+      asymptotic 1/N, the diagonal response loses N^-1.
+      Physical samples use k_N=delta_N*n_N and retain A0(k_N)-A0(k_star)
+      separately unless k_N-k_star=o(delta_N).
+    boundary: fixed_pair_cokernel_or_collective_symbol_theorem_and_actual_Cao_graph_C1_transfer_not_established
+  offdiagonal_column_response:
+    statement: >-
+      The KKS identity cancels the apparent 1/W orbit inverse and gives an
+      explicit L2 vorticity covector for the actual Hessian row. Sobolev
+      extension makes its velocity functional global and extension
+      independent on the physical velocity image. The rank-one dual Riesz
+      range and the regular-axis/interface/decaying-K1 adjoint Sturm problem
+      identify the cutoff-independent physical left functional. Its explicit
+      singular-axis recurrence and core relation Asharp1=rho0*A1 make the
+      leading radial amplitude nonzero. Hence the full Hessian-row compression
+      density F=(v2 dot grad)lambda1-(grad v2)^T lambda1 has a nonzero alpha
+      coefficient proportional to A2*Asharp1*(k1/k2-1)*s. A punctured regular
+      annulus supplies an explicit compact DA seed, and rational-ray character
+      exclusion removes all finite rows, proving gamma_12^col>0.
+    transfer: >-
+      For the explicit seed, reviewed common-graph/Riesz/Hodge convergence,
+      direct convergence of both terms of the physical orbit Hessian, exact
+      action-flow pushforward of the displacement, and the smooth bilinear
+      bracket estimate give M12_N=M12_col+o(1). Thus every sufficiently thin
+      exact crossing on the reviewed 0083/0089 path has an actual compact DA
+      seed with nonzero response.
+    boundary: uniform_physical_Y4_normalization_not_established
+  two_offdiagonal_alternative:
+    statement: >-
+      Two independently realized off-diagonal histories with coefficients
+      c1,c2 have nonzero compression commutator iff Im(c1*conjugate(c2)) is
+      nonzero. This avoids curvature loss algebraically but is not supplied
+      by two hand-selected phases of one seed.
+
+route_verdicts:
+  route_A_global_C0_adjoint_potential:
+    verdict: blocked
+    strongest_positive: exact_full_Hodge_density_and_quantitative_patch_theorem
+    missing_construction: >-
+      A globally regular constrained solution of the C0-adjoint equation on
+      the whole-space graph, including stabilizer and finite rows.
+  route_B_Hessian_Lagrange_row:
+    verdict: established
+    strongest_positive: >-
+      The physical left covector, absolute integral normalization algorithm,
+      covariant Feynman-Hellmann identity, and invariant skew-Hermitian
+      compression follow directly from the actual relative Hessian.
+  route_B_zero_zero_diagonal_seed:
+    verdict: refuted
+    mechanism: compact_ell_zero_d_zero_displacements_are_stabilizers
+  route_B_curvature_mixed_diagonal_seed:
+    verdict: blocked
+    strongest_positive: >-
+      Smallest character d=plus_or_minus_1, leading delta power, fixed-k
+      massive pressure/convection blocks, and the explicit radial
+      source-mode/resolvent integral for D_curv are derived. The regular-band
+      orbit map supplies arbitrary compact radial coefficients and the direct
+      massive row gives the multiplication constituent sI. The exact
+      fixed-pair adjoint/cokernel equation is exposed without assuming
+      collective compactness across shrinking Sturm gaps. Delta is the actual
+      Cao leading order only if nonidentity and the full graph C1 remainder
+      close.
+    missing_construction: >-
+      Prove one fixed-pair adjoint cokernel contradiction or a full
+      order-zero symbol plus collective high-J resolvent-gap estimate, then
+      the action-flow graph C1 response remainder and uniform physical
+      normalization on the selected Cao rational-ray sequence.
+  route_B_offdiagonal_response:
+    verdict: established
+    strongest_positive: >-
+      Exact KKS cancellation, an extension-independent global velocity
+      functional, rank-one dual Riesz uniqueness, and the whole-space adjoint
+      Sturm row close the representation bridge. The resulting near-axis
+      coefficient and punctured-annulus DA seed prove gamma_12^col positive
+      for every equal-frequency m-zero column pair with distinct nonzero
+      axial wave numbers. The source-specific common-domain identity transfers
+      this to every sufficiently thin crossing supplied by the independently
+      reviewed 0083/0089 path.
+    remaining_achievement: >-
+      Quantify the seed response after normalization in the physical high-N
+      Y4 norm.
+  route_B_two_independent_offdiagonal_histories:
+    verdict: blocked
+    strongest_positive: >-
+      Exact noncommutation criterion without curvature loss and the retained
+      amplitude equation that two phase-locked sectors must solve.
+    missing_construction: two_independently_switchable_phase_locked_same_carrier_Euler_sectors_solving_the_retained_amplitude_equations
+  route_C_high_index_response_and_gate:
+    verdict: blocked
+    missing_construction: >-
+      Uniform physical raw-Hessian and dual bounds carrying the residual
+      r=R*q factor, nonzero source coefficients, two histories, and two-sided
+      complement/nonlinear control through one gate interval.
+
+strongest_exact_verdict: >-
+  The actual physical KKS dual of each positive Cao mode is exactly its
+  relative-Hessian row, with the physical core clock and cylindrical radius
+  retained. At an exact crossing the full covariant two-mode compression is
+  anti-Hermitian, so noncommuting analyzer directions have a basis-invariant
+  matrix criterion. Exact KKS cancellation and dual-Riesz/Sturm uniqueness
+  provide the global physical left functional. The fixed-column
+  off-diagonal coefficient is proved nonzero by its complete near-axis density
+  and an explicit compact constrained DA seed; a source-specific common-domain estimate
+  transfers that nonvanishing to sufficiently thin exact Cao crossings on
+  the reviewed 0083/0089 path. The preregistered ell=d=0 diagonal seed is
+  exactly a stabilizer and is refuted; the first curvature-mixed replacement
+  has d=plus_or_minus_1 and is reduced to an explicit fixed-pair
+  adjoint/cokernel condition without a false shrinking-gap compactness claim.
+  Two independent
+  off-diagonal histories provide a distinct no-curvature-loss alternative.
+  A uniform normalized high-N scale, an independent second axis, and an
+  autonomous gate remain open.
+
+next_dependency: >-
+  Derive the two-sided physical Y4-normalized scale of the transferred
+  off-diagonal response, and
+  close either the fixed-pair D_curv cokernel or two independently switchable
+  phase-locked off-diagonal Euler histories. Then prove the two-sided
+  complement/action-drift bounds before any gate claim.
+
+does_not_license:
+  - a_uniform_Y4_normalized_Cao_response_lower_bound
+  - a_quantitative_uniform_high_index_response
+  - two_autonomous_controls_or_a_gate
+  - action_drift_or_nonlinear_stability
+  - charged_Euler_Maxwell_analyzer
+  - P2_or_P4_completion
+  - particle_quantum_measurement_exchange_spin_or_relativity_claim
+parent_campaign_state: active
+exhaustion_claimed: false

@@ -32,9 +32,18 @@ fixed-`J`, fixed-massive-`k` graph/Riesz transfer and two positive-Krein Cao
 modes.  Final reviewed P253/0079/0082 supplies rational-ray column crossings,
 the fixed-`ell`, high-`J` alternative, and the two-sided gate ledger, but does
 not supply the joint high-`J`/thin-ring transfer or physical mixer
-normalization.  P253/0085 may be used only at author scope pending independent
-review: it supplies the exact Maxwell radiation shell and its necessary dark
-current trace condition, not a resonance theorem.  Active P253/0083 is not an
+normalization.  Corrected P253/0085 has passed independent P253/0086 review:
+`0085/derivation.md` SHA-256
+`3bca39e05d66891d5392390f371a84a7c748893f2fe2c5dec915523a9c67a01e`,
+`0085/result.yaml` SHA-256
+`7fb6c0af9a7530506471c1f69a3fe271c09bd4792ec95c32cc8ad85eb264d299`,
+`0086/review.md` SHA-256
+`4c5c535e60a134ba589ac066aa906249952d47d843c96e7f6a3764686f85ea67`,
+and `0086/verdicts.yaml` SHA-256
+`afd7e563d782d56f8d9f383a8611caf41cf4f2f4bbeb1410dc089262348f9c3d`.
+Only its exact Maxwell radiation shell, necessary transverse dark-current
+condition, and reviewed full constrained-generator essential inclusion are
+consumed here; it supplies no resonance theorem.  Active P253/0083 is not an
 accepted input; its finite-window notation may be reconciled only after its
 own review.
 

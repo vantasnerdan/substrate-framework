@@ -9,12 +9,14 @@
 | P253/0074 with independent P253/0078 review | `0074/derivation.md` `ab7695b026e3008a05869a9887cb114c06c6d736e5c6fc0ea95fd8459c50dace`; `0074/result.yaml` `b2ca7ddeacf3ea88e0f1e560ce03c756afa535e66788e4e712c6884c6430a09f`; `0078/review.md` `676fd487d310690cfe89246a5f0a8ba71c676c39c02aa69b4dd2a393a4b2c95e`; `0078/verdicts.yaml` `33725bbee5e149ca152146583614a8b8cc02bcad6ec49ed9e24ea77a06c2fe3f` | Supplies fixed-`J`, fixed-massive-`k` graph/Riesz transfer and positive-Krein modes. It does not supply equal frequency, high-`J` uniformity, or Maxwell radiation control. |
 | P253/0079 with independent P253/0082 review | `0079/derivation.md` `ad80c2804798c9144b33bb78d1b9438af0e6f23928edc970825179eb597ad038`; `0079/result.yaml` `8f9747fcba0dfa7698de066d63c8641b501880b9c6274169b2db2e8f5a355cde`; `0082/review.md` `75e55672e359fdf91b91017d6098e266eb605f4ac7e289132153e22a4f7cf334`; `0082/verdicts.yaml` `69eee8688f986e7ee0463d92d9a115f6e397a74f2bbc13370d8d0ba414e175a4` | Supplies the rational-ray crossing atoms, the adjacent fixed-`ell`/high-`J` candidate, and the two-sided gate ledger. The exact same-carrier crossing, physical KKS response, and gate time remain open. |
 
-## Author-stage input
+## Corrected and independently reviewed input
 
 P253/0085 derivation SHA-256
-`da2bd59eb3e26a17fa81955d889bc3e0b2b1f0137e8c6a00b3061e7c173a5082`
+`3bca39e05d66891d5392390f371a84a7c748893f2fe2c5dec915523a9c67a01e`
 and result SHA-256
-`e86304d7682b4fb532b8c3324077f1c7259e1b5a9f7e9841d54f4330a18c295b`
+`7fb6c0af9a7530506471c1f69a3fe271c09bd4792ec95c32cc8ad85eb264d299`,
+with corrected source-audit SHA-256
+`fa0e570fea2554354e50d4340b1884f769cadb7de62785eb0e2dc68189648f37`,
 are now consumed through independent P253/0086 review
 `4c5c535e60a134ba589ac066aa906249952d47d843c96e7f6a3764686f85ea67`
 and verdict
@@ -28,7 +30,8 @@ stability or resonance conclusion is imported.
 The exact `Gamma=kappa` convention, sharp transverse shell maximum, covariant
 three-order vector Bessel ledger, optimized fixed-margin contour bound,
 fixed-`J` finite radiation ceiling, and fixed-`ell` finite-`J` leading
-predictor and speed ceiling are derived here.  The helper module checks these
+predictor at the supplied carrier speed and speed ceiling are derived here.
+The helper module checks these
 algebraic identities only; it does not supply the joint-transfer remainder.
 
 No value from active P253/0083 is used as authority.  No external empirical

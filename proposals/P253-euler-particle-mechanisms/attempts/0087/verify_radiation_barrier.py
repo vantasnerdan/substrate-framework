@@ -57,7 +57,7 @@ def main() -> None:
         * l_phi
         / (2 * sp.pi**2 * radius * k * sp.sqrt(c_em**2 - speed**2))
     ) == 0
-    print("PASS 5: fixed-ell high-J limiting ratio")
+    print("PASS 5: finite-J leading predictor at supplied carrier speed")
 
     q = sp.Rational(4, 5)
     assert sp.simplify(

@@ -57,12 +57,30 @@ stderr is empty and exit is exactly `0`.
   without a separate Fourier calculation, eliminate its full constant mode.
   Validation therefore uses only the safe `O(epsilon^2)` physical
   area-radius error in (23); the sharper cancellation is not claimed.
-- The connectedness step consumes the author-scoped 0080 uniform rescaled
+- The connectedness step consumes the independently reviewed 0080/0084
+  uniform rescaled
   `B_R` inverse.  Beginning from one seed, local charts have a uniform radius
   in relative epsilon; at each endpoint a new chart exists, and local
   uniqueness identifies the two solutions on their overlap.  Iteration
   constructs one connected thin component rather than merely a collection of
-  local charts.  This is the one promotion-sensitive external dependency.
+  local charts.  The corrected proof stays on the reviewed fixed-K source
+  space, conjugated by the parameter-only `(R,epsilon)` dilation/centering
+  source isomorphism to one fixed `X_*` while the physical scale remains an
+  output: its explicit rescaled Green/log residual modulus and uniform
+  `C^(2,beta)` bound with `beta>alpha`, hence compactness in `C^(2,alpha)`,
+  prevent interface-map overreach and chart drift.
+- The error envelope is defined on fixed preliminary
+  `[c_minus/L,c_plus/L]` bands before `h_N`, using only the actual integer
+  harmonics `n_1=LP,n_2=LQ` and their admissible
+  `k_i=delta(epsilon)n_i`.  The fixed massive compacts are only uniform
+  containers.  If the envelope did not tend to zero,
+  subsequential carrier/profile compactness and `k_j->k_infinity` would
+  combine with normalized Lane--Emden uniqueness under the fixed rows, the
+  reviewed common-domain graph limit, fixed-contour resolvent identity, and
+  rank-one simplicity to contradict the selected nonvanishing error.  The
+  actual buffered interval is subsequently proved to lie inside that
+  preliminary band using the single sufficient threshold
+  `N>4 P A_cov/k_*`.
 - The buffered endpoints use only the value error (24).  Multiplying
   `O(1/N^2)` by `n_1=NP` gives `O(1/N)`; no remainder derivative or
   monotonicity is invoked.
@@ -73,8 +91,8 @@ stderr is empty and exit is exactly `0`.
 ## Claim boundary
 
 Validation establishes the algebra and exposes the exact analytic
-dependencies.  It does not independently review 0080, prove the blocked
-weighted-`C^1` Route A, evaluate `curl(P_DA F_12)`, normalize the physical KKS
+dependencies.  It does not independently review 0083 itself, prove the blocked
+  weighted-`C^1` Route A, evaluate `curl(P_row^* F_12)`, normalize the physical KKS
 dual, construct autonomous controls, determine `N_response`, or show that the
 finite charged hierarchy is nonempty.  It validates no stability, P2/P4,
 particle, quantum, or relativistic claim.

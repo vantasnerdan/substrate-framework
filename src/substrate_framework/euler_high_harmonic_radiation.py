@@ -136,7 +136,7 @@ def high_index_limiting_bessel_ratio(
     maxwell_speed,
     carrier_speed,
 ):
-    """Return the fixed-ell/high-J limit of the Bessel argument/order ratio."""
+    """Return the finite-J leading predictor at the supplied carrier speed."""
 
     kappa = sp.sympify(circulation)
     ell = sp.sympify(harmonic_step)

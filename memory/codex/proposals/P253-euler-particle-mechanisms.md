@@ -2,7 +2,7 @@
 description: Derive electron and neutrino mechanisms from actual Euler substrate dynamics
 author: codex
 created: "2026-09-06T00:00:00+00:00"
-updated: "2026-09-06T00:00:00+00:00"
+updated: "2026-09-07T00:00:00+00:00"
 tags: [substrate-framework, campaign-proposal, P253]
 category: proposals
 confidence: exploratory
@@ -492,3 +492,186 @@ supported by its own focused seven-test and exact six-assertion receipts.
 The campaign remains active on the physical response/gate construction,
 radiative Feshbach or time-flux conversion, full carrier persistence, action
 and charge selection, and the unchanged neutrino obligations.
+
+## Recovered Sol-High context and exact shell-to-flux continuation
+
+The live coordinator context was reverified after the later workstation
+recovery rather than inferred from process arguments.  The last
+`turn_context` in
+`/home/dan/.codex/sessions/2026/09/05/rollout-2026-09-05T21-11-11-01a072fb-5fef-7ba0-b14b-d81851b87575.jsonl`
+at ordinal 18703 records model `gpt-5.6-sol`, effort `high`, approval policy
+`never`, and sandbox `danger-full-access`.  Herdr panes remain coordinator
+`w4:p2`, foundations `w4:p3`, independent reviewer `w4:p4`, and supervisor
+`w4:p1`; all scientific workers report to `w4:p2`.
+
+Root0090 now supplies the exact classical radiation conversion requested by
+the0085/0086 continuum boundary.  For a nonzero-frequency net-neutral
+comoving current with `<x>J_omega` in `L2`, retarded Maxwell evolution gives
+
+`P_out=pi/(2 epsilon_EM) integral |Omega| delta(D_omega)
+|P_T J_hat|^2 dk`.
+
+The full shell gradient is uniformly nonzero at fixed subluminal margin, and
+coarea gives the exact sphere weight
+`pi|omega|^2/[4 epsilon_EM(c_EM-sign(omega)c_g n_z)^3]`.  The physical
+real-phasor half already includes the conjugate component.  A Gaussian curl
+current provides an exact positive closed-form normalization oracle.
+
+A finite envelope is conserved only after adding `a_prime K` with
+`div K=-rho`; its late outgoing transverse free-field energy is an exact
+oscillator spectral norm.  Fixed smooth ramps plus an integrable first
+spectral-correlation moment give `E_late=T P_out+O(1)`.  A sharp switch is a
+separately typed weak source with endpoint energy, and the equivalent moving
+observable uses relative flux `(S-c_g u_EM e_z) dot n`.  For a reciprocal
+mode, the amplitude width is `P_out/(2 nu_phys A_mode)` while the fractional
+energy-decay rate is `P_out/(nu_phys A_mode)`.
+
+The author package is frozen at derivation SHA-256
+`20c882b24bc788ea4bb6c962d89b789efbec1e19300b0a35e76cfd5c4a11e802`,
+completion receipt
+`9ff5b80f0855fc0aa74a9c33ba5d7b9dd21fdfc7bc9060c338f03b370e75ee0e`,
+and manifest
+`53acca1d5d7a54e6246c686c3c8794f7be52fe90fcb31fc802bcbd97b8edc3e4`.
+Independent review0091 is being preregistered.  This result does not supply a
+Cao current, KKS response, resonance, universal action, Born/reset rule, or
+fermionic character.  The promising U(1) dimensional combination
+`q^2/(4 pi epsilon_EM c_EM)` becomes a selected action only if a compact gauge
+character fixes `q/g` integrally and same-carrier dynamics selects the mode
+action in proportion to it.  Those achievements and every neutrino obligation
+remain active.
+
+## Reviewed crossing and radiation, compact-character audit, and recovery
+
+Independent0089 is final at review SHA-256
+`da2d96384e1de7c018880d67a35f33a084515a4a80b58756233446cc2d2e01da`
+and verdict SHA-256
+`36afcb332e6c5629b411fc84d17085be5fe3eeba03124629d4a6c323625a4be8`.
+It establishes the connected fixed-circulation, fixed-mean-radius Cao carrier
+path and exact distinct-sector crossing supplier. It also preserves the exact
+physical-clock, Doppler-shell, vector-Bessel, and finite-integer-window
+criteria from0087. The compact-cell dual-row response, physical KKS
+normalization, actual shell current, and leakage/gate synthesis remain open.
+
+Independent0091 is final at review SHA-256
+`221e541128419201182f2f0aa73876a07a1dd68b25a48dca1e7f9c9842904a9c`
+and verdict SHA-256
+`6f7b88977b60ca02e5e8c168085a2a47c4bfff6f6e3d7a7dfbf460236fa2e195`.
+Corrected0090 establishes the exact prescribed-current outgoing Maxwell
+power, shell, coarea, Gaussian-curl, conserved switching, full-real late-field
+norm, and `E_late(T)=T P_out+O(1)` theorem under the explicit correlation and
+endpoint hypotheses. It does not supply an actual Cao current, a reciprocal
+Feshbach amplitude equation, a sharp-switch endpoint theorem, or P4.
+
+Root0092 audits compact gauge character and action selection. The existing
+transported-tag coupling is `g_tag`. A dimensionally complete compact-phase
+convention uses a dimensionless number density `n`, imported action
+coefficient `S_0`, charge unit `g_0`, integer character `m`, and
+`kappa_m=g_0*m/S_0`, so
+`J_phase=S_0*N_phase` and
+`Q=g_0*m*N_phase=kappa_m*J_phase`. The classical number and action remain
+continuous. Smooth whole-space `U(1)` topology supplies no electric Chern
+class; direct Euler vorticity is not a compact two-form connection; and the
+fixed-charge action counterdirection survives. Imposing both
+`Q=kappa_m J` and `J=S_EM(Q)` gives the conditional root
+`4*pi*epsilon_EM*c_EM/kappa_m^2`, but imports the missing relation and action
+normalization. The single0093 bounded dimension/notation correction is at
+receipt SHA-256
+`15c9d1cab6b221f4bda166d6f7330905de8753d161b4e2e70e32dbf25d6d7fe8`,
+completion SHA-256
+`3d72173f592ade4096ebd230a1d6f76d83f683901f3c81ee690a753258c739c4`,
+and manifest SHA-256
+`f5421864a03c018e2fa7e0136c2c47e2bdca39bad96c4f79bd7752dbb96c4ff0`.
+Independent0093 is final at review SHA-256
+`93c1910c2810d00839e1dc66503cc6e4571968ab96dcd97cb734bd49ed2013c3`
+and verdict SHA-256
+`bbaa96c16964def65233441c3fc7f1ad802cf31f88ba14c8f26fd52c8681631e`.
+It preserves every exact normalization, continuous-character, topology, BF,
+and fixed-charge-rank conclusion at the corrected typed scope.
+
+Root0094 is centrally activated at corrected README SHA-256
+`86743ac588138114f8ce6c695b1edb5f74529f8e117df6eea6f5cd98a510e90a`.
+It compares an actual reduced fixed-charge nonlinear energy minimum, a compact
+phase moment-map coupling with explicit imported scale, and a compact
+two-form/BF route. The Maxwell outgoing shell law supplies an imaginary
+readout coefficient only; a renormalized principal-value self-energy remains
+unconstructed. A nonzero reduced minimum requires an earned nonlinear term,
+controlled analytic remainder, small-detuning IFT, and positive second
+derivative. This action work proceeds in parallel with a separate P2
+persistence route; the small-charge strong saddle and Maxwell essential
+continuum prevent treating the prepared crossing/readout chain as a restoring
+proof.
+
+The foundations worker experienced an observed fallback to `gpt-5.6-luna`
+with low effort during the0088 `H_L2` bridge. Every conclusion and edit made
+after that fallback is quarantined as scratch. The preserved session
+`01a07656-64cf-74e2-ac94-9ba86652daef` was fully exited and resumed. The
+newest actual `turn_context` in
+`/home/dan/.codex/sessions/2026/09/06/rollout-2026-09-06T12-49-28-01a07656-64cf-74e2-ac94-9ba86652daef.jsonl`,
+line13774, ordinal13772, timestamp `2026-09-07T01:38:09.080Z`, records model
+`gpt-5.6-sol`, effort `high`, approval policy `never`, sandbox
+`danger-full-access`, and cwd `/tmp/substrate-particles`. The worker is now
+re-deriving the local/global orbit-Hessian representer, singular-axis
+coefficient, and dual-Riesz uniqueness route under that verified context.
+Attempt0088 cannot freeze and attempt0095 cannot open bodies until this audit
+is reconciled. Attempt0095 remains a README-only P2 competition between a
+full DA Euler--Maxwell center-stable/invariant-manifold route and a materially
+different carrier with coercive constrained Hessian.
+
+## Sol-High 0088 freeze, 0094 action/scale result, and active P2/review routes
+
+P253/0088 is frozen after the fallback-era edits were quarantined and the
+dual-Riesz argument was rederived under the verified Sol-High turn context.
+Its final derivation SHA-256 is
+`f9852decae5879980f2d93d3ba3f85213ef61a5956c4308302fd95e68c89edd7`,
+result SHA-256
+`7f7c5ac3e90c0feb6f6cb2fb9c64cc08fa59341cf3344f7bed106c224c9edf3a`,
+review target SHA-256
+`0af89036bb4c2e87fbf3d6c77795036438c86944a3af9631f231cb1d6730d34c`,
+and manifest SHA-256
+`5457920afcbcf67eaac38cc7828dc31286c42805e635ad003e7f63cd3aa8d2e0`.
+It establishes the unique intrinsic dual functional, rather than a unique
+ambient `L2` representative, the exact positive column coefficient
+`gamma_12,col`, and source-specific unnormalized nonzero response for every
+sufficiently large member of the reviewed rational-ray Cao crossing sequence.
+The uniform physical `Y4` control-seed norm, uniform lower response,
+autonomous histories, complement/action drift, and gate remain open.
+
+Independent review0096 is centrally registered and schema-activated against
+corrected README SHA-256
+`580278e559fef8e5f754130beeefac36aab96125fd547a06d946421acfa27479`.
+The raced preprecision activation is preserved. The corrected contract
+recognizes the established physical E2/KKS mode and left-covector
+normalization, and confines the remaining normalization frontier to the
+control seed and uniform gate estimates.
+
+Root0094 is author-complete. Its local reduced-energy route A0 proves the
+controlled scalar IFT theorem for a nonzero strict action minimum, while the
+actual Cao invariant reduction A1 remains open. Ordinary Euler vorticity and
+smooth two-label pullbacks are refuted as compact electric BF suppliers at
+their exact scopes; a genuine compact defect remains an active construction.
+The direct fixed-aspect circular-filament plus line-charge asymptotic model E0
+has the exact strict scale minimum
+`R_*=|Q|/(2*pi*|kappa|*sqrt(rho_m*epsilon_EM))` and
+`I_z,*=Q^2/(4*pi*epsilon_EM*kappa)`. Exact fixed-label finite-core charged Cao
+promotion and a map to internal KKS action are the separate open route E1.
+The fluid coefficient is derived directly from the filament Biot--Savart
+double energy; fixed circulation is not treated as a fixed-Casimir path.
+Core hashes are derivation
+`cf896386c0ec179ac468ad972be6918d00d66231b84bed2d276a370a26b6299b`,
+result
+`f22d96a2b9f890eeeecf4d1d81104fab8c1089d3fe67f6edf91e7de6133042de`,
+completion receipt
+`a5a85d7820a2b591a36fd0d2c3c05536d2fada751e2cff7d4748bb2f88b9f6a9`,
+and manifest
+`7d60b60e930e65ecad8d9ded97834095228ce57f897f0485f19e89f72415e0c3`.
+The exact verifier emitted twelve PASS rows and the focused API suite passed
+eight tests; repository validation exited zero. No production numerics ran.
+
+P253/0095 is centrally activated only against corrected README SHA-256
+`be4a0c671e52707322fa0187302cb5274c163dd2da1ce120fea1c905951550a7`.
+The charged carrier is an affine fixed-charge base with Coulomb tail; weighted
+field tangents are zero-monopole differences. It now executes the explicit P2
+competition between complete-channel nonlinear Euler--Maxwell persistence and
+a materially distinct carrier with a coercive full DA Hessian. A
+positive-codimension center-stable manifold or prepared finite-time doublet
+does not meet LP2's open-leaf all-time persistence observable.
