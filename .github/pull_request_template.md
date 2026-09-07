@@ -79,11 +79,12 @@ not stale it.
 # exit status and meaningful verdict
 ```
 
-## GitNexus impact
+## Structural impact
 
-Record index freshness, pre-change symbol/API impact when applicable, and final
-diff change detection. For documentation-only work, state that no graph-mapped
-symbol or process was expected or found.
+Record the pre-change `ripwire . --impact=<file>:<symbol>` view for touched
+framework symbols when applicable, and the final `ripwire . --test-gate` result
+for the diff. For documentation-only work, state that no mapped symbol or test
+was expected or found.
 
 ## Memory, governance, and generated state
 
@@ -147,7 +148,7 @@ fields in a formal review.
 - [ ] The canonical issue existed before the PR was submitted.
 - [ ] The merger is distinct or explicit owner/user self-merge direction is linked.
 - [ ] The load-bearing result and existing validation receipt were checked once at the frozen boundary.
-- [ ] Dependencies, conventions, imports, consumers, and GitNexus impact audited.
+- [ ] Dependencies, conventions, imports, consumers, and structural impact audited.
 - [ ] Every new public symbol has an explicit authority status and owning issue.
 - [ ] Applicable verification sensitivity and numerical/formal limits were audited without duplicate replay.
 - [ ] Merge, claim-promotion, and goal-completion decisions kept independent.

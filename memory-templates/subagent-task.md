@@ -52,7 +52,7 @@ Capture first-run source/output/status and failed attempts append-only.
 Return at assignment completion or the first structural obstruction. Report
 what is established, exact missing construction, promising alternatives,
 changed paths, reproduction commands, and in-scope repairs. The supervisor
-checks current GitNexus or AST/source dependencies plus independent mathematics
+checks current ripwire or AST/source dependencies plus independent mathematics
 and decides consume, repair, representation change, or candidate change.
 Broader work begins with a new supervisor-owned assignment.
 

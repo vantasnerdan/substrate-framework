@@ -66,7 +66,7 @@ an explanation.
 
 Use [the pull-request template](.github/pull_request_template.md). Keep artifact
 merge, claim promotion, and goal completion as separate decisions. Describe the
-smallest coherent units, exact validation commands, GitNexus impact, authority
+smallest coherent units, exact validation commands, structural impact, authority
 status, remaining frontier, and any debt inside the proposed merge scope.
 
 A person or agent must not merge a pull request that they opened, authored a

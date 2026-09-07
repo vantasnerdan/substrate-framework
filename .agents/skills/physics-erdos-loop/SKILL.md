@@ -83,7 +83,7 @@ method impossible. Earlier sampling retains its hypothesis-generation/debugging
 role; fresh frozen design and execution earn production evidence.
 
 The supervisor reviews equations, function spaces, quantifiers, excluded modes,
-and alternative approaches before implementation grows. Use current GitNexus
+and alternative approaches before implementation grows. Use current ripwire
 or AST/source impact analysis for dependencies and omitted implementation paths;
 direct mathematical reasoning supplies the separate proof/approach audit.
 

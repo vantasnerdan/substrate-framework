@@ -59,7 +59,7 @@ verdict and coverage. Each success activates the next unsatisfied dependency.
 Name reused/new canonical APIs and small per-claim verifiers with a thin
 aggregator. Use the physics skill's numerical helpers/compatibility preflight;
 claim code owns equations/operators/data/norms. Record bounded worker assignments
-and the supervisor's current GitNexus or AST/source dependency inspection,
+and the supervisor's current ripwire or AST/source dependency inspection,
 independent mathematical approach audit, alternatives and consumer decision.
 
 ## Attempts and Campaign Checkpoints

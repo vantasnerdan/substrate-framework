@@ -61,22 +61,32 @@ a return condition. Keep approach selection with the supervisor. Use the user's
 model/effort/permission settings and verify actual context when exposed.
 
 Before consuming a worker result or extending its route, trace its equations
-and implementation to actual consumers. Use GitNexus `query`, `context`,
-`impact`, and `detect_changes`; inspect index freshness and source paths.
-When unavailable/stale or unsuitable, inspect AST definitions, calls, imports,
-branches and test assertions against current source. Name this limitation in
-the result; a stale graph is a lead, not current evidence.
+and implementation to actual consumers. The structural view is `ripwire`
+(installed by `scripts/bootstrap.sh`). It reads the working tree directly, so
+its answer is always current and byte-identical across machines, and it sees
+the module-level calls that campaign attempts make into the framework. These
+calls earn the view in under a second:
 
 ```bash
-node .gitnexus/run.cjs status
-node .gitnexus/run.cjs analyze
+ripwire . --impact=src/substrate_framework/<file>.py:<symbol>  # blast radius, campaign callers included
+ripwire . --situ=<file>        # what an edit to this file reaches, tests to run, co-changed files
+ripwire . --test-gate          # the same for the whole working diff, before a commit
+ripwire . --top-k=0 --expand=<file>:<symbol>  # one body with callee signatures, not the whole file
+ripwire . --grep=<claim ID or mechanism> --grep-in=any  # hits with their enclosing YAML key or heading
+ripwire . --recall="<claim ID or question>"   # the ranked pages themselves
 ```
 
-On fresh setups without that runner, use `npx gitnexus analyze` (or installed
-`gitnexus`); inspect generated changes and preserve user instructions.
-MCP discovery starts at `gitnexus://repo/<name>/context`. Refresh after
-substantial code changes. Documentation-only changes can have no symbol impact;
-their links, schema consumers, and process tests are the relevant structure.
+Name a symbol as `file:name`; a bare name merges every same-named local copy
+in attempts into one answer. Read counts as floors: call edges are name-based,
+campaign verify scripts run as subprocesses and never show as tested, and a
+zero means "none found". `governance/claims.yaml`,
+`migration/dispositions.yaml`, and `migration/source-claims.yaml` sit above
+ripwire's fixed YAML ceiling; read the registry with `rg` or through
+`memory/framework/claims/`. When the tool is unavailable, inspect AST
+definitions, calls, imports, branches and test assertions against current
+source, and name that limitation in the result. Documentation-only changes can
+have no symbol impact; their links, schema consumers, and process tests are the
+relevant structure.
 
 The supervisor separately checks mathematical logic, omitted perturbation
 classes, alternative representations and the parent-objective payoff. Great

@@ -63,8 +63,8 @@ Before dependent work or another specialist continuation, inspect:
 
 1. The exact equations, hypotheses, topology, quantifiers, and operator that
    the worker actually used; independently rederive load-bearing implications.
-2. GitNexus query/context/impact and change detection, or AST-based inspection
-   when the graph is unavailable, stale, or unsuitable. Trace implementations,
+2. ripwire impact, situational-awareness, and test-gate output, or AST-based
+   inspection when the tool is unavailable or unsuitable. Trace implementations,
    imported formulas, branches, omitted components, callers, and available
    reusable constructions. Verify findings against the current source.
 3. Alternative representations and mechanisms, including those the chosen

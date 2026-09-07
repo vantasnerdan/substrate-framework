@@ -19,7 +19,7 @@ commits while continuing their parent objective.
 
 Read the PR, goal issue, base release, accepted scope, diff, tests, and discussion.
 Load `physics-erdos-loop` for physics and the applicable code-review/impact
-workflow. Use current GitNexus or AST/source analysis for changed symbols and
+workflow. Use current ripwire or AST/source analysis for changed symbols and
 consumers; independently reason about the science and omitted alternatives.
 
 Identify exactly one canonical issue that predates even the draft PR.

@@ -44,7 +44,7 @@ Group related entrypoints by the proposition and scope they actually establish.
 ## Oracle and Approach Audit
 Inspect the strongest practical oracle and logical bridge; independently reason
 about load-bearing mathematics, assumptions and missed approaches. Inspect
-current GitNexus or AST/source for changed implementations/consumers when useful.
+current ripwire or AST/source for changed implementations/consumers when useful.
 For numerics audit analytic closure, frozen remainder/design, error/refinement
 and the actual predicate. Use appropriate mutation/counterexample or
 statement/import/axiom evidence. Exploratory samples retain their role.

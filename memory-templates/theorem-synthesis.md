@@ -54,7 +54,7 @@ unless they directly invalidate composition. Preserve unchanged atom acceptance.
 
 Record category synthesized, composition/glue metadata, individual acceptance,
 dependency closure, registry/release, generated docs and memory. Record current
-GitNexus or AST/source impact, targeted theorem/API/consumer tests and
+ripwire or AST/source impact, targeted theorem/API/consumer tests and
 scripts/validate_changed.py scope. Additive leaves may stay scoped; cross-cutting
 or uncertain impact earns full replay. Reuse unchanged receipts through prose edits.
 
