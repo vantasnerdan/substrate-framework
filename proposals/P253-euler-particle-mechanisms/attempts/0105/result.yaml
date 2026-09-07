@@ -1,0 +1,95 @@
+attempt: P253/0105
+title: Normalized Cao lock response and admissible source lift
+route_verdicts:
+  A0_regular_full_core_classification:
+    verdict: established
+    strongest_result: >-
+      For every smooth positive full-core constitutive source chi=h(P), exact
+      first-speed cancellation and a regular dipole imply the first integral
+      s P_s^3 G_P=constant for G=h/h_P. Center regularity forces the constant
+      to vanish, so h_P=a h and the unique nontrivial regular kernel is
+      exponential. The power-law moment formula is an exact special case with
+      negative center and positive edge signs.
+  A1_compact_full_core_fixed_ratio_lock:
+    verdict: refuted
+    mechanism: >-
+      The unique regular cancellation profile A exp(aP) is nonzero at the
+      finite free boundary P=0, so no smooth positive compact full-core
+      fixed-ratio constitutive tag cancels the first-speed response. The
+      power-law response supplies an independent exposing corollary.
+    boundary: formal_redesigned_tag_not_an_established_charged_carrier
+  A2_existing_strict_band_response:
+    verdict: blocked
+    missing_construction: >-
+      Evaluate the physical Volterra and Ampere response including both tag
+      cutoff transition regions and the actual Cao normalization.
+  B0_radial_annular_leaf_lift:
+    verdict: refuted
+    mechanism: >-
+      Divergence-free compact material displacements have zero weighted
+      contour-normal flux, so radial mean delta zeta and delta chi vanish.
+      The two unconstrained radial A/B source controls are not first-order
+      tangents of the fixed coadjoint/material leaf.
+  B1_raw_zero_mean_material_tangent:
+    verdict: established
+    strongest_result: >-
+      In a straight circular cell, every smooth zero-mean target supported
+      where chi_s is nonzero has an explicit divergence-free realization. In
+      finite-Cao regular coordinates with r dr dz=J dI d alpha, the exact
+      condition is integral J T d alpha=0 on every contour; it is necessary
+      and sufficient for a smooth compactly supported periodic displacement
+      realizing delta chi=T. On a fixed regular band the right inverse is
+      bounded from C^(k+1,alpha) to C^(k,alpha), and analogously H^(k+1) to
+      H^k; no same-order bounded inverse is claimed.
+    boundary: raw_tangent_not_steady_free_boundary_solution
+  B2_full_response_operator:
+    verdict: blocked
+    missing_construction: >-
+      Construct the common-domain linearized steady Euler-Maxwell/free-boundary
+      operator L_full, prove closed range or a bounded right inverse, and test
+      the full target T_0 against its exact range rather than only its closure.
+  C_redesigned_tag_or_defect:
+    verdict: blocked
+    missing_construction: >-
+      A full-core tag or compact moving phase must satisfy the charged carrier
+      existence, stabilizer, charge, regularity, topology and finite-action
+      rows.
+  D_curvature_or_second_order_response:
+    verdict: blocked
+    missing_construction: >-
+      Lift the zero-mean material tangent through the finite-Cao steady map and
+      compute the first curvature or second-order nonaxisymmetric response;
+      continue to the next harmonic at a zero.
+evidence_scope:
+  - exact_regular_full_core_cancellation_classification
+  - exact_compact_full_core_fixed_ratio_no_go
+  - exact_full_core_power_law_response
+  - exact_negative_center_and_positive_edge_signs
+  - exact_fixed_leaf_weighted_flux_obstruction
+  - exact_finite_cao_regular_band_zero_mean_material_tangent
+strongest_exact_result: >-
+  Exact cancellation for any regular positive full-core constitutive tag
+  forces the exponential law, which cannot vanish at a finite compact-core
+  edge. The actual analytic Lane-Emden power-law response independently changes
+  sign and cannot vanish on any open core band. The unconstrained
+  radial A/B controls cannot be realized on
+  the compact fixed material leaf, although arbitrary smooth zero-mean tag
+  tangents do have a local divergence-free realization on every regular
+  finite-Cao band. Exact cancellation
+  now reduces to the full steady/free-boundary range problem, with exact and
+  closure-of-range membership kept distinct.
+does_not_license:
+  - evaluation of the existing strict-band cutoff response
+  - a charged full-core-tag carrier branch
+  - exact or approximate solvability of the full steady response equation
+  - finite-Cao curvature response or admissible A/B control
+  - compact moving defect or finite phase action
+  - P2, P4, P5, P6, electron, neutrino, flavor, chiral, or parent completion
+next_dependency: >-
+  Evaluate the strict-band cutoff moments and construct the linearized steady
+  finite-Cao map on the explicit zero-mean material tangent. Prove its range
+  estimate and pair the actual full-band target with every adjoint cokernel;
+  then execute curvature or a redesigned carrier leaf according to the
+  residual class.
+parent_status: active
+exhaustion_claimed: false

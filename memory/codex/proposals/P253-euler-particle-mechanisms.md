@@ -613,7 +613,7 @@ line13774, ordinal13772, timestamp `2026-09-07T01:38:09.080Z`, records model
 re-deriving the local/global orbit-Hessian representer, singular-axis
 coefficient, and dual-Riesz uniqueness route under that verified context.
 Attempt0088 cannot freeze and attempt0095 cannot open bodies until this audit
-is reconciled. Attempt0095 remains a README-only P2 competition between a
+is reconciled. At that checkpoint, attempt0095 was a README-only P2 competition between a
 full DA Euler--Maxwell center-stable/invariant-manifold route and a materially
 different carrier with coercive constrained Hessian.
 
@@ -832,15 +832,72 @@ compact ring defect needs another phase and does not inherit `q_A=zeta`.
 Thus 0102 remains a P6 supplier and establishes no P2, P4, chiral interaction,
 electron or neutrino.
 
-Attempt0095 remains active and unfrozen.  Repeated observed Luna-Low fallbacks
-quarantined the intermediate `255/1024` coefficient, Hattori--Fukumoto helper
-edits and claimed global lift receipts.  The newest verified worker context is
-rollout line 16532, ordinal 16530, timestamp
-`2026-09-07T03:30:44.692Z`, with model `gpt-5.6-sol`, effort high, approval
-never and danger-full-access.  The primary Hattori--Fukumoto invariant Hill
-coefficient `15/256` is being rederived together with the physical packet
-normalization, coupled Maxwell Sylvester correction, DA/tag/Gauss and finite
-rows, same-norm observation estimate, and finite-dimensional modulation
-quotient.  Any charged conclusion is per fixed sufficiently thin carrier with
-`C(delta)g^2<c_HF delta` unless a uniform small-core bound is separately
-proved.  No quarantined 0095 package is consumed as evidence.
+## Regular full-core lock classification and fixed-member P2 review
+
+Root0105 closed a stronger failure-derived P6 supplier before attempting the
+full steady lift. For a regular positive full-core constitutive tag
+`chi=h(P)=zeta/lambda_0`, the matched radial Maxwell and Lane--Emden equations
+reduce exact first-speed cancellation to
+`partial_s[s P_s^3 G_P]=0`, `G=h/h_P`. A nonzero first-integral constant
+forces `G=O(s^-2)` and the dipole `v=O(s^-1)` at the smooth nondegenerate
+center. Regularity therefore makes `G` constant and the unique nontrivial
+kernel `h=A exp(aP)`. It cannot vanish at a finite Cao free boundary, so the
+smooth positive compact full-core fixed-ratio route is refuted at class
+scope. The exact power-law Lane--Emden response independently changes sign
+and cannot vanish identically on an open core band; the `P=1-s^2` check is
+only an algebra regression. Strict band cutoffs remain separate because
+their transition source is not the same full-core constitutive law.
+
+The same attempt proves that compact divergence-free fixed-leaf displacements
+have zero weighted contour-normal flux, excluding the two unconstrained
+axisymmetric radial A/B controls. In finite-Cao regular coordinates
+`r dr dz=J dI d alpha`, every smooth compact target with
+`integral J T d alpha=0` and `chi'(I)!=0` has a periodic divergence-free raw
+material realization with `delta chi=T`. Its bounded right inverse loses one
+normal derivative, `C^(k+1,alpha)->C^(k,alpha)` and `H^(k+1)->H^k`; all finite
+rows and the steady/free-boundary map remain in the open `L_full` theorem.
+Exact range and closure of range are kept distinct.
+
+Independent review0106 is final after one correction-only race reconciliation.
+The author correction receipt is SHA-256
+`e33526e3a1f13fb2a87023072ac3c74d125c7f8482433f69183ca60b6ce174cb`,
+the verified 65-row manifest is
+`94d27a679d2844c45d2aceedbb30fdd250a476b1a9eae4956174387072c24819`,
+the final review is
+`2779962eb6b290b8685335da8bb617bf09e2eb73a5a36352716b6d3b5b11e71a`,
+and the verdicts are
+`4d1483f5289fcc0c0cd3fe7efc6335bd544cab9ea846f2d4e0f6d1ab20de1e65`.
+Units A--D and F are established at their exact route scopes; the full
+steady `L_full` construction/range theorem remains active.
+
+P253/0095 was author-frozen after the final Sol-High recovery. The newest
+verified rollout context before finalization was line 17126, ordinal 17124,
+timestamp `2026-09-07T03:54:30.206Z`, model `gpt-5.6-sol`, effort high,
+approval never and danger-full-access. Independent review0104 required one
+bounded Unit-G correction. Its final correction receipt is
+`1e6afd6f20c9d41e850f1a3d8c42bab06226d1de74f9c71ba7c9817b37c82a5b`
+and its byte-clean final 63-row manifest is
+`22f0aeffa4c0b3a74b64a266eb3185beb066fc1178cdebd171c2883bcdc9f5c6`.
+The EOF-only integration receipt is
+`c67e2653b3867837adf04fc8bea72ae6605d75d44dad93b029ef4142a63bc338`.
+
+The reviewed route-scoped theorem is linear. For each fixed sufficiently thin
+Cao member, sufficiently small nonzero signed charge preserves a real
+hyperbolic pair and expanding multiplier. The operator target is
+`J_loc S_g:X_in^s->X_DA,loc^s/sym`, with one fixed observation window and
+`c_obs` independent of circuit count. Units A--F and H are established. The
+full fixed-row leaf path and combined nonlinear uniform-Lipschitz refutation
+remain blocked because total momentum is not typed continuously on the
+declared `sigma<3/2` weighted topology and no carrier-specific compact witness
+matrix/determinant has been constructed. The raw coadjoint/tag/Gauss curve
+survives. Exact reciprocity is established only at `g=0`; at nonzero small
+charge continuity gives hyperbolic persistence, while `det M=1+O(g^4)` does
+not supply an invariant symplectic two-dimensional reduction.
+
+Independent review0104 is final at review SHA-256
+`f4cfcf3284037641e6696d6fbcc86ce53bde613b59eaf268f0aa8ae1c879dbe6`
+and verdict SHA-256
+`d6224fc58cfe6bf9f044253b6b1a8bdd2b1b02dc4b7ef819803863ed59eb8f6e`.
+Complementary charge, the whole-core `K=4ZR/Omega^2` and `b` classification,
+the zero-frequency sector, exact relative-momentum leaf restoration, complete
+P2, and alternative coercive carriers remain active.

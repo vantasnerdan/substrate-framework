@@ -245,3 +245,171 @@ def annular_dipole_matching_shift(inner_second_moment, outer_zeroth_moment):
     inner = sp.sympify(inner_second_moment)
     outer = sp.sympify(outer_zeroth_moment)
     return sp.simplify(-outer / 2), sp.simplify(-inner / 2)
+
+
+def lane_emden_full_core_response(
+    profile_value,
+    profile_power,
+    profile_amplitude,
+    lock_ratio,
+    permittivity,
+    wave_speed,
+    major_radius,
+    radial_coordinate,
+    profile_moment_p,
+    profile_moment_p_plus_one,
+):
+    """Return the exact first-speed response for ``zeta=C*P**p``.
+
+    Here ``chi=zeta/lock_ratio`` and the supplied moments are
+
+    ``M_p(s)=integral_0^s t*P(t)**p dt`` and
+    ``M_(p+1)(s)=integral_0^s t*P(t)**(p+1) dt``.
+
+    The formula uses the globally matched regular/decaying dipole Green row.
+    It is a full-core power-law-tag comparator; it does not describe a strict
+    interior cutoff or prove that the tag belongs to the charged Cao leaf.
+    """
+
+    profile = sp.sympify(profile_value)
+    power = sp.sympify(profile_power)
+    amplitude = sp.sympify(profile_amplitude)
+    ratio = sp.sympify(lock_ratio)
+    eps = sp.sympify(permittivity)
+    c_em = sp.sympify(wave_speed)
+    radius = sp.sympify(major_radius)
+    s = sp.sympify(radial_coordinate)
+    moment_p = sp.sympify(profile_moment_p)
+    moment_p1 = sp.sympify(profile_moment_p_plus_one)
+    if (power + 1).is_zero is True:
+        raise ValueError("profile_power must not equal -1")
+    if any(
+        value.is_zero is True for value in (ratio, eps, c_em, radius, s)
+    ):
+        raise ValueError(
+            "lock_ratio, permittivity, wave_speed, major_radius, and "
+            "radial_coordinate must be nonzero"
+        )
+    return sp.simplify(
+        amplitude**2
+        / (ratio**2 * eps * c_em**2 * radius * s)
+        * (
+            power * profile ** (power - 1) * moment_p1 / (power + 1)
+            - profile**power * moment_p
+        )
+    )
+
+
+def lane_emden_center_response_slope(
+    center_profile,
+    profile_power,
+    profile_amplitude,
+    lock_ratio,
+    permittivity,
+    wave_speed,
+    major_radius,
+):
+    """Return the smooth-center coefficient in ``S_1(s)=s*slope+O(s**3)``.
+
+    It is strictly negative when the listed physical magnitudes and the
+    Lane--Emden center value are positive.
+    """
+
+    center = sp.sympify(center_profile)
+    power = sp.sympify(profile_power)
+    amplitude = sp.sympify(profile_amplitude)
+    ratio = sp.sympify(lock_ratio)
+    eps = sp.sympify(permittivity)
+    c_em = sp.sympify(wave_speed)
+    radius = sp.sympify(major_radius)
+    if (power + 1).is_zero is True:
+        raise ValueError("profile_power must not equal -1")
+    if any(value.is_zero is True for value in (ratio, eps, c_em, radius)):
+        raise ValueError(
+            "lock_ratio, permittivity, wave_speed, and major_radius must "
+            "be nonzero"
+        )
+    return sp.simplify(
+        -amplitude**2
+        * center ** (2 * power)
+        / (2 * (power + 1) * ratio**2 * eps * c_em**2 * radius)
+    )
+
+
+def full_core_cancellation_residual(
+    profile_radial_derivative,
+    profile_radial_second_derivative,
+    ratio_profile_derivative,
+    ratio_profile_second_derivative,
+    radial_coordinate,
+):
+    """Return the regular full-core first-speed cancellation residual.
+
+    Write ``G(P)=h(P)/h_P(P)`` for a positive constitutive tag/source
+    ``h(P)``. After the radial Lane--Emden and matched Maxwell equations are
+    used, exact cancellation reduces to
+
+    ``G_PP*P_s**2 + G_P*(3*P_ss + P_s/s) = 0``.
+
+    This does not apply across a strict tag cutoff, where ``chi`` is no longer
+    the same full-core constitutive source.
+    """
+
+    p_s = sp.sympify(profile_radial_derivative)
+    p_ss = sp.sympify(profile_radial_second_derivative)
+    g_p = sp.sympify(ratio_profile_derivative)
+    g_pp = sp.sympify(ratio_profile_second_derivative)
+    s = sp.sympify(radial_coordinate)
+    if s.is_zero is True:
+        raise ValueError("radial_coordinate must be nonzero")
+    return sp.simplify(g_pp * p_s**2 + g_p * (3 * p_ss + p_s / s))
+
+
+def full_core_cancellation_first_integral(
+    radial_coordinate, profile_radial_derivative, ratio_profile_derivative
+):
+    """Return the first integral ``s*P_s**3*G_P`` of cancellation.
+
+    Its radial derivative is ``s*P_s**2`` times the cancellation residual.
+    A smooth nondegenerate center and regular dipole field force this constant
+    to vanish.
+    """
+
+    s = sp.sympify(radial_coordinate)
+    p_s = sp.sympify(profile_radial_derivative)
+    g_p = sp.sympify(ratio_profile_derivative)
+    return sp.simplify(s * p_s**3 * g_p)
+
+
+def material_contour_mean_tangent(profile_derivative, weighted_normal_flux):
+    """Return the contour integral of a coadjoint vorticity tangent.
+
+    For ``zeta=F(P)`` and ``delta zeta=-xi.grad(zeta)``, the physical contour
+    integral is ``-F'(P)*integral r*xi.n ds``.  A regular compactly supported
+    divergence-free displacement has zero weighted normal flux, so this row
+    vanishes.  The helper exposes the exact pairing but does not manufacture
+    a divergence-free displacement or a free-boundary lift.
+    """
+
+    return sp.simplify(
+        -sp.sympify(profile_derivative) * sp.sympify(weighted_normal_flux)
+    )
+
+
+def material_radial_displacement_for_tag_tangent(
+    zero_mean_target, tag_radial_derivative
+):
+    """Return the radial displacement producing a local tag tangent.
+
+    On a circular band, ``delta chi=-xi_s*partial_s chi``.  A target with
+    zero angular mean admits a periodic angular component solving
+    ``partial_alpha xi_alpha=-partial_s(s*xi_s)``.  This helper returns the
+    radial row.  It requires a nonzero tag derivative and does not by itself
+    solve the steady Euler--Maxwell/free-boundary equations.
+    """
+
+    target = sp.sympify(zero_mean_target)
+    derivative = sp.sympify(tag_radial_derivative)
+    if derivative.is_zero is True:
+        raise ValueError("tag_radial_derivative must be nonzero")
+    return sp.simplify(-target / derivative)

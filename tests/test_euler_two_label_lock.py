@@ -9,7 +9,13 @@ from substrate_framework.euler_two_label_lock import (
     comoving_lorenz_scalar_source,
     constant_ratio_residual,
     fixed_profile_maxwell_obstruction,
+    full_core_cancellation_first_integral,
+    full_core_cancellation_residual,
     exponential_column_profile,
+    lane_emden_center_response_slope,
+    lane_emden_full_core_response,
+    material_contour_mean_tangent,
+    material_radial_displacement_for_tag_tangent,
     two_label_forced_lock_residual,
     weighted_contour_zero_mean,
 )
@@ -149,3 +155,73 @@ def test_explicit_exponential_column_rejects_bad_scales():
         exponential_column_profile(1, 1, 1, 0, 1)
     with pytest.raises(ValueError):
         exponential_column_profile(1, 1, 1, 1, 0)
+
+
+def test_lane_emden_full_core_response_has_negative_center_slope():
+    s, t = sp.symbols("s t", positive=True)
+    power = 6
+    profile = 1 - s**2
+    moment_p = sp.integrate(t * (1 - t**2) ** power, (t, 0, s))
+    moment_p1 = sp.integrate(t * (1 - t**2) ** (power + 1), (t, 0, s))
+    response = lane_emden_full_core_response(
+        profile, power, 1, 1, 1, 1, 1, s, moment_p, moment_p1
+    )
+    slope = lane_emden_center_response_slope(1, power, 1, 1, 1, 1, 1)
+    assert sp.simplify(sp.limit(response / s, s, 0) - slope) == 0
+    assert slope == -sp.Rational(1, 14)
+
+
+def test_polynomial_profile_sign_change_is_algebraic_regression_only():
+    s, t = sp.symbols("s t", positive=True)
+    power = 6
+    profile = 1 - s**2
+    moment_p = sp.integrate(t * (1 - t**2) ** power, (t, 0, s))
+    moment_p1 = sp.integrate(t * (1 - t**2) ** (power + 1), (t, 0, s))
+    response = lane_emden_full_core_response(
+        profile, power, 1, 1, 1, 1, 1, s, moment_p, moment_p1
+    )
+    assert response.subs(s, sp.Rational(1, 10)) < 0
+    assert response.subs(s, sp.Rational(9, 10)) > 0
+
+
+def test_lane_emden_response_rejects_singular_power():
+    with pytest.raises(ValueError):
+        lane_emden_full_core_response(1, -1, 1, 1, 1, 1, 1, 1, 1, 1)
+    with pytest.raises(ValueError):
+        lane_emden_center_response_slope(1, -1, 1, 1, 1, 1, 1)
+
+
+def test_full_core_cancellation_residual_has_exact_first_integral():
+    s = sp.symbols("s", positive=True)
+    profile = sp.Function("P")(s)
+    ratio = sp.Function("G")
+    p_s = sp.diff(profile, s)
+    p_ss = sp.diff(profile, s, 2)
+    g_p = sp.diff(ratio(profile), profile)
+    g_pp = sp.diff(ratio(profile), profile, 2)
+    residual = full_core_cancellation_residual(p_s, p_ss, g_p, g_pp, s)
+    invariant = full_core_cancellation_first_integral(s, p_s, g_p)
+    assert sp.simplify(sp.diff(invariant, s) - s * p_s**2 * residual) == 0
+
+
+def test_full_core_cancellation_residual_rejects_axis_evaluation():
+    with pytest.raises(ValueError):
+        full_core_cancellation_residual(1, 1, 1, 1, 0)
+
+
+def test_material_leaf_contour_mean_is_flux_pairing():
+    profile_derivative, flux = sp.symbols("profile_derivative flux")
+    assert material_contour_mean_tangent(profile_derivative, flux) == (
+        -profile_derivative * flux
+    )
+    assert material_contour_mean_tangent(profile_derivative, 0) == 0
+
+
+def test_zero_mean_material_tag_tangent_has_explicit_radial_row():
+    target, tag_derivative = sp.symbols("target tag_derivative", nonzero=True)
+    radial = material_radial_displacement_for_tag_tangent(
+        target, tag_derivative
+    )
+    assert sp.simplify(-radial * tag_derivative - target) == 0
+    with pytest.raises(ValueError):
+        material_radial_displacement_for_tag_tangent(target, 0)
