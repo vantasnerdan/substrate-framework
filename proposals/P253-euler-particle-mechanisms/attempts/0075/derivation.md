@@ -234,7 +234,7 @@ consistent with (17). The reusable exact kernel is
 
     K_ij=[3x_i x_j-r^2 delta_ij]/(4 pi r^5).            (21)
 
-## 6. Consequences and remaining stationary route
+## 6. Consequences of the weighted theorem
 
 The `0072` fixed-frame Gaussian field belongs to the affine class associated
 with its inverse-VSH coefficient. Its tail is therefore locally persistent
@@ -252,15 +252,79 @@ cross energy acquires a repulsive-sign effective-potential interpretation only
 after `d` is constructed as an admissible relative coordinate in a finite or
 renormalized KKS phase space, or material labels supply a joint action.
 
-The fixed-frame stationary test remains active. Its inverse coefficients
-carry `i^l`, so the inverse is a rotational spectral multiplier rather than a
-classical pseudodifferential symbol. Split `l mod 4`, factor the elliptic
-magnitude from the quarter-period phase, and evaluate the exact Shvydkoy
-sphere residual. A rigorously tail-bounded nonzero projection refutes this tail
-as steady and no core can repair it. Exact cancellation instead activates the
-global isotropic-stress repair and full steady gluing problem.
+## 7. Exact fixed-frame stationary residual
 
-**Route verdicts.** Route C is established by (7), (12)--(17). Routes A/B
-remain active on the fixed-frame stationary residual. Nothing here licenses
-all-time persistence, a stationary carrier, Euler force, scalar charge, action
-selection, P5, electron, neutrino, or parent completion.
+The stationary test can be completed without treating the oscillatory `i^l`
+factor as a classical symbol. Put `n=k/|k|` and
+
+    a(k)=(k_1^2+k_2^2+2k_3^2)^(1/2).
+
+For the `0072` constant-norm symbol,
+
+    F(n)/|k|=P_n e_1/a(k)+i(k cross e_2)/(|k|a(k)).     (23)
+
+Define scalar distributions
+
+    phi=FT^(-1)[a^(-1)],
+    chi=FT^(-1)[|k|^(-2)a^(-1)],
+    psi=FT^(-1)[|k|^(-1)a^(-1)].                       (24)
+
+Then the complete real homogeneous tail is
+
+    u=P_L(phi e_1)+curl(psi e_2)
+      =phi e_1+nabla partial_1 chi+nabla psi cross e_2. (25)
+
+With `s=(x_1^2+x_2^2)^(1/2)`, `t=x_3/s`, and
+
+    C=1/(2*pi^2*sqrt(2)),
+    phi=s^(-2) f(t),       f(t)=C/(1+t^2/2),
+    chi=c log s+h(t),      psi=s^(-1)g(t),              (26)
+
+the anisotropic Riesz kernel and Feynman parameter identity give
+
+    c=-C sqrt(2) atanh(1/sqrt(2))<0,
+    g(t)=1/(4*pi^2) integral_0^1
+       [tau(1-tau)(2-tau)]^(-1/2)
+       [1+t^2/(2-tau)]^(-1/2) d tau.                   (27)
+
+The relation `-Delta chi=phi` gives
+
+    -(1+t^2)h''-t h'=f.                                (28)
+
+All three profiles are even. In cylindrical components the exact field is
+
+    u_s=cos(theta)s^(-2)[-c+t^2h''+2t h'+f-g'],
+    u_theta=sin(theta)s^(-2)[-c+t h'-f+g'],
+    u_z=cos(theta)s^(-2)[-t g'-t h''-g-h'].             (29)
+
+Differentiate (29), form `curl((u dot nabla)u)`, and restrict to the positive
+`x_1` axis in the equatorial plane. Its only potentially nonzero component is
+
+    [curl((u dot nabla)u)]_2
+      =x_1^(-6){g_0(-10c+7C)+g_2(-5c+3C)},             (30)
+
+where
+
+    g_0=I_0/(4*pi^2),       g_2=-I_1/(4*pi^2),
+    I_0=integral_0^1[tau(1-tau)(2-tau)]^(-1/2)d tau,
+    I_1=integral_0^1[tau(1-tau)(2-tau)]^(-1/2)
+                         /(2-tau)d tau.                (31)
+
+Here `0<I_1<I_0`, `B=-5c+3C>0`, and
+`A-B=-5c+4C>0` for `A=-10c+7C`. Therefore the brace in (30) equals
+
+    (I_0-I_1)B/(4*pi^2)+I_0(A-B)/(4*pi^2)>0.           (32)
+
+The fixed-frame degree-minus-two tail fails the leading stationary Euler
+equation. This is a homogeneous degree-minus-six obstruction, so no
+faster-decaying core can repair it. The smooth Gaussian field remains valid
+finite-energy initial data with the exact positive locked-frame cross energy,
+and Section 4 proves its tail coefficient persists locally while evolving.
+
+**Route verdicts.** Route C is established by (7), (12)--(17). The exact
+spectral-multiplier Route B refutes the fixed-frame stationary candidate by
+(30)--(32); an explicit VSH summation is no longer needed for that candidate.
+The failure activates a different angular texture, a controlled periodic tail,
+or a materially labelled/asymptotic KKS carrier construction. Nothing here
+licenses all-time persistence, a stationary carrier, Euler force, scalar
+charge, action selection, P5, electron, neutrino, or parent completion.

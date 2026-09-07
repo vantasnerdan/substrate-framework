@@ -2,12 +2,15 @@ attempt: P253/0075
 owner: root
 route_verdicts:
   inverse_vsh_stationary_filter:
-    verdict: active
+    verdict: refuted_by_nonzero_homogeneous_euler_residual
     statement: >-
       The fixed-frame inverse is an exact rotational spectral multiplier with
-      an oscillatory i^l phase. Its full Shvydkoy sphere residual remains to be
-      evaluated with a convergent harmonic-tail bound. A faster core cannot
-      repair a nonzero homogeneous degree-minus-six residual.
+      an oscillatory i^l phase. Factoring it into anisotropic Riesz kernels and
+      evaluating the equatorial projection gives
+      curl((u dot grad)u)_2=x_1^-6[(I0-I1)B+I0(A-B)]/(4*pi^2)>0, with
+      0<I1<I0, B=-5c+3C>0, and A-B=-5c+4C>0. Thus the complete fixed-frame
+      degree-minus-two tail is not stationary Euler, and no faster core can
+      repair its degree-minus-six residual.
   affine_weighted_propagation:
     verdict: established_as_stated
     statement: >-
@@ -35,13 +38,15 @@ strongest_exact_result: >-
   Biot--Savart reconstruction, and the vorticity transport/stretching estimate
   constructs rather than assumes the common weighted interval. This makes the
   fixed-frame and oriented Coulomb-power atoms locally persistent asymptotic
-  boundary data even when their cores are nonstationary.
+  boundary data even when their cores are nonstationary. An exact inverse
+  spectral-multiplier calculation independently refutes the fixed-frame tail
+  as a stationary Euler asymptotic profile.
 next_dependency: >-
-  Evaluate the full inverse-VSH fixed-frame sphere residual after splitting
-  the i^l phase. Then construct either a stationary smooth-core gluing when it
-  vanishes or a different angular texture when it does not. In parallel build
-  a finite or renormalized asymptotic KKS phase space or transported-label
-  action that makes relative separation an admissible mechanical coordinate.
+  Generate a different angular texture or a controlled periodic tail that
+  satisfies the exact alpha=2 sphere equation; the fixed-frame candidate is
+  closed by its nonzero homogeneous residual. In parallel build a finite or
+  renormalized asymptotic KKS phase space or transported-label action that
+  makes relative separation an admissible mechanical coordinate.
 does_not_license:
   - all-time persistence or a stationary localized carrier
   - scalar electric charge or a force law

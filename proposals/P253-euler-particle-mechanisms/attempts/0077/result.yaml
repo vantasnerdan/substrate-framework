@@ -1,0 +1,81 @@
+attempt: P253/0077
+title: fixed-tail periodic compatibility and charged Cao steady reduction
+route_verdicts:
+  unit_A:
+    route: fixed-leading-tail periodic compatibility
+    verdict: established_as_stated
+    strongest_result: >-
+      For an exact period with uniform affine weighted bounds, integration of
+      the vorticity equation cancels the time derivative and leaves the exact
+      degree-minus-six row [U_{-2},curl U_{-2}]=0. A bounded faster dressing
+      therefore cannot repair a nonzero leading stationary residual. A
+      relative-periodic endpoint must act trivially through order r^-6; a
+      generic translation or rotation is not included.
+  unit_B_exact_reduction:
+    route: axisymmetric steady Euler-Maxwell elimination
+    verdict: established_as_stated
+    strongest_result: >-
+      For a subluminal translating axisymmetric no-swirl tagged carrier, the
+      Maxwell system reduces exactly to the elliptic scalar Phi equation and
+      algebraic toroidal-H row (22)-(23). The Lorentz curl integrates to
+      zeta=h(P)+(g/rho_m)[chi'(P)Phi-chi(P)H], and Bernoulli is
+      p+rho_m|W|^2/2+g chi Phi=b(P). The tag distribution is fixed by enclosed
+      volume action and its stabilizer is locked on a regular band where both
+      zeta(I) and zeta'(I) are bounded away from zero.
+  route_B1:
+    route: exact steady-map Lyapunov-Schmidt and IFT
+    verdict: blocked
+    missing_construction: >-
+      First construct HSE: the complement Fredholm/index-zero isomorphism on
+      fully specified axis-weighted, affine/decaying, core-interface
+      streamfunction spaces, including smooth P-to-I_P-to-chi_P dependence.
+      Then evaluate and sign the exact finite-core 2x2 speed-impulse Schur
+      determinant S_epsilon in (31). Cao Lemma 3.9 and auxiliary system (3.36)
+      do not supply either theorem automatically. Conditional on both, the
+      charged branch has fluid and speed corrections O(g^2) and Maxwell
+      fields O(g).
+  route_B2:
+    route: constrained joint variational continuation
+    verdict: blocked
+    missing_construction: >-
+      Construct the exact reduced Maxwell functional on the joint tag,
+      circulation, impulse and center class and prove compactness plus the
+      signed fluid-Maxwell Schur form. The uncharged maximizer does not by
+      itself control passive tag directions.
+  route_B3:
+    route: kernel-driven charged bifurcation
+    verdict: blocked
+    missing_construction: >-
+      This route activates if S_epsilon vanishes. It requires the actual
+      finite-core radial kernel, its KKS/cokernel normalization, and the first
+      nonzero bifurcation coefficient.
+evidence_scope:
+  - exact_calculus
+  - exact_axisymmetric_elliptic_reduction
+  - source_scoped_limiting_kernel
+  - conditional_fredholm_branch_implication
+strongest_exact_result: >-
+  A faster periodic core cannot repair a nonstationary fixed r^-2 Euler tail.
+  In the declared U(1) extension, one exact Cao carrier admits a fully explicit
+  subluminal axisymmetric charged steady map with correct Lorentz curl,
+  Grad-Shafranov, Bernoulli, Maxwell, affine-tail, charge, and tag-stabilizer
+  rows. Exact branch existence has been reduced to one named finite-core
+  steady complement theorem HSE and the speed-impulse Schur determinant; it is
+  not yet established. Factoring the
+  Maxwell fields by g makes the reduced fluid map smooth in tau=g^2, so the
+  conditional fluid and speed corrections are even and O(g^2).
+does_not_license:
+  - exact charged Cao branch before HSE and S_epsilon are proved
+  - nonlinear or orbital charge-profile persistence
+  - use of the dynamical zero-frequency Kelvin resolvent
+  - action or charge quantization
+  - analyzer, Born rule, reset, exchange, or particle identity
+  - full-field finite propagation or Lorentz invariance
+  - electron or neutrino completion
+next_dependency: >-
+  Construct HSE on explicit axis-weighted affine/decaying steady-map spaces,
+  then compute S_epsilon from the exact finite-epsilon Cao Green equation and
+  physical impulse/circulation rows. In parallel derive the reduced joint
+  variational Schur form so a vanishing determinant activates a constructive
+  kernel branch rather than terminating the carrier route.
+parent_status: active

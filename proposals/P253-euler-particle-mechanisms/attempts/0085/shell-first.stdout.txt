@@ -1,0 +1,17 @@
+.....F.                                                                  [100%]
+=================================== FAILURES ===================================
+____________ test_comoving_radiation_shell_coarea_weight_is_derived ____________
+
+    def test_comoving_radiation_shell_coarea_weight_is_derived():
+        c_em, c, omega_abs, n_z = sp.symbols(
+            "c_em c omega_abs n_z", positive=True
+        )
+        shell = comoving_radiation_shell(c_em, c, omega_abs, 1, n_z)
+>       assert shell.radius == omega_abs / (c_em - c * n_z)
+E       assert -omega_abs/(c*n_z - c_em) == (omega_abs / (c_em - (c * n_z)))
+E        +  where -omega_abs/(c*n_z - c_em) = ComovingRadiationShell(radius=-omega_abs/(c*n_z - c_em), radial_derivative_magnitude=2*omega_abs/c_em, coarea_weight=c_em*omega_abs/(2*(c*n_z - c_em)**2)).radius
+
+tests/test_euler_charged_hessian.py:120: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_euler_charged_hessian.py::test_comoving_radiation_shell_coarea_weight_is_derived
+1 failed, 6 passed in 1.81s

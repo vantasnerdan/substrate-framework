@@ -1,0 +1,22 @@
+....F.                                                                   [100%]
+=================================== FAILURES ===================================
+__________ test_comoving_radiation_shell_and_steady_subluminal_limit ___________
+
+    def test_comoving_radiation_shell_and_steady_subluminal_limit():
+        c_em, c, omega, kz = sp.symbols(
+            "c_em c omega kz", positive=True
+        )
+        denominator = comoving_maxwell_radiation_denominator(
+            c_em, c, omega, [0, 0, kz]
+        )
+        assert sp.simplify(
+            denominator - (kz**2 - (c * kz + omega) ** 2 / c_em**2)
+        ) == 0
+        steady = sp.factor(denominator.subs(omega, 0))
+>       assert steady == kz**2 * (c_em - c) * (c_em + c) / c_em**2
+E       assert -kz**2*(c - c_em)*(c + c_em)/c_em**2 == ((((kz ** 2) * (c_em - c)) * (c_em + c)) / (c_em ** 2))
+
+tests/test_euler_charged_hessian.py:109: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_euler_charged_hessian.py::test_comoving_radiation_shell_and_steady_subluminal_limit
+1 failed, 5 passed in 1.80s

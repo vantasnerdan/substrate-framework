@@ -35,10 +35,13 @@ Before reconciliation:
 
 After the vorticity repair and reconciliation:
 
-- `derivation.md`: `55b51d2769b821848ddbbd64be70df0a4b85320cda2e808d6e98c0c82fe4bea5`
-- `result.yaml`: `f63e8797bcc74f9d32a55689eacee4389c4a0b36188c2ba845d17778bf4104c6`
-- `source-audit.md`: `8bec4f6e251f85e61c30286062832e3dcfe2380e1efdce8a201890a0e3a49eaf`
-- `validation.md`: `f98a7a28a1753ef25af35515898761fb420f98c590e2eb19860fc1b9dc78be0d`
+- `derivation.md`: `65304289a1b0e1c5bf6888b3824e7295c4bde58ea4c90f10c27a6628e04f8b45`
+- `result.yaml`: `9c393445787ec013c255b244df74d86567d42182a204b9fd6e6caaa38b18cdc4`
+- `source-audit.md`: `19b2ea0556af968e22e59151b3a93b78139547df10b55f4ca1335270d1e91990`
+- `validation.md`: `d691765474b5c3f2c0c35537b1c47afc9d67b557f62bc2c4012412dafdfc305e`
+
+These final hashes include the subsequent append-only stationary-candidate
+continuation; the vorticity repair itself is unchanged.
 
 The first execution attempted the nonexistent worktree-local interpreter and
 is preserved as `weighted-tail.{command.txt,stderr,exit}` with exit `127`.

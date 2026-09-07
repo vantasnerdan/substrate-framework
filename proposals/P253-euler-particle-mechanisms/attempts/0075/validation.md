@@ -29,6 +29,10 @@ The first exact command used a nonexistent worktree-local `.venv` and exited
 repository-interpreter receipts report the exact verifier exit `0` and the
 focused suite `12 passed`, exit `0`, with empty stderr.
 
-The stationary fixed-frame residual remains active. No validation result may
-be read as a stationary carrier, a relative-translation/KKS coordinate, an
-Euler force, scalar charge, all-time persistence, or particle identity.
+The final exact verifier additionally derives the equatorial
+`curl((u dot grad)u)` projection from the even profile jets and checks its
+positive decomposition. This refutes the fixed-frame stationary candidate;
+it does not classify all nonaxisymmetric degree-minus-two sphere fields. No
+validation result may be read as a stationary carrier, a
+relative-translation/KKS coordinate, an Euler force, scalar charge, all-time
+persistence, or particle identity.

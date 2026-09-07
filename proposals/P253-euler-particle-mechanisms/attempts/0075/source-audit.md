@@ -32,7 +32,11 @@ Roman Shvydkoy, *Homogeneous solutions to the 3D Euler system*,
 arXiv:1510.03378v1, supplies the exact stationary sphere system at
 `alpha=2` and only the axisymmetric classification. It does not establish a
 general nonaxisymmetric no-go and is not used to prove weighted local
-propagation. Cached source and version remain those pinned in `0072`.
+propagation. The fixed-frame candidate is instead decided directly: its exact
+anisotropic-Riesz inverse has a strictly nonzero equatorial component of
+`curl((u dot grad)u)`. This refutes that one nonaxisymmetric texture and is not
+promoted to the source's open general classification. Cached source and
+version remain those pinned in `0072`.
 
 No empirical comparator, production numerical result, KKS theorem, particle
 force, or quantum premise is imported.

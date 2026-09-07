@@ -1,0 +1,80 @@
+attempt: P253/0087
+title: physical high-harmonic radiation barrier for the Cao analyzer
+route_verdicts:
+  route_A:
+    route: fixed-J massive rational-ray Bessel suppression
+    verdict: established_as_finite_ceiling_theorem
+    strongest_result: >-
+      With Gamma=kappa, Omega_a=kappa/(2*pi*a^2), a=R*k/n, and the sharp
+      transverse shell maximum |omega|/sqrt(c_EM^2-c_g^2), the exact worst
+      vector-frame Bessel ratio is
+      kappa*|sigma(k)|*n*(n+C_core*k)/
+      [2*pi*R*k^2*sqrt(c_EM^2-c_g^2)*(n-1)]. It grows linearly in n, so
+      fixed-J massive modes have only a finite N_rad ceiling, not an
+      N-to-infinity radiation barrier. A nonempty finite interval below both
+      N_EM and N_rad remains possible but is not established without the
+      crossing, response, and integer-window constructions.
+  route_B:
+    route: fixed-ell high-J adjacent-pair Bessel suppression
+    verdict: blocked_at_joint_transfer_with_positive_structural_regime
+    strongest_result: >-
+      For the adjacent pair (J,J+1) with n_1=J*ell, n_2=(J+1)*ell and fixed
+      massive k, q_0(J)=kappa*ell*L_Phi/
+      [2*pi^2*R*k*sqrt(c_EM^2-c_g(J)^2)] is a finite-J leading predictor.
+      The open joint transfer must prove Q_i(J)=q_0(J)+R_i(J), with a uniform
+      |R_i(J)|<=C_asym/J. An actual integer with q_0(J)<=1-2*eta_rad and
+      J>=J_asym>=C_asym/eta_rad gives the exact Q_i<=1-eta_rad Debye margin.
+      No fixed-c_EM subluminal J-to-infinity limit exists. Exact crossing,
+      physical KKS/current normalization, and quantitative gate thresholds
+      remain open.
+  route_C:
+    route: shell trace to finite-gate loss or resonance
+    verdict: blocked_at_flux_LAP_and_gate_normalization
+    strongest_result: >-
+      If the physical current and gate norms are polynomial in the harmonic,
+      a quantitative constant-dependent threshold H_loss can make the Debye
+      factor dominate them only if an integer remains between the enlarged
+      lower threshold max(H_graph,H_Riesz,H_KKS,H_gate,H_asym,H_loss,...)
+      and the
+      finite upper ceiling min(H_EM,H_rad). Nonemptiness of that intersection
+      is open. A weighted outgoing LAP/FGR or time-domain flux identity must
+      still convert the shell trace to power or width and compare
+      T_gate*P_rad with physical mode action. A nonzero exponentially small
+      trace does not produce an exact L2 Maxwell eigenmode; exact dark/BIC
+      cancellation remains distinct.
+evidence_scope:
+  - exact_Gamma_equals_kappa_convention
+  - exact_physical_core_clock
+  - exact_transverse_Doppler_shell_maximum
+  - covariant_n_minus_1_n_n_plus_1_vector_Bessel_ledger
+  - rigorous_fixed_margin_Debye_contour_bound
+  - exact_fixed_J_finite_radiation_ceiling
+  - fixed_ell_high_J_finite_J_predictor_and_speed_ceiling
+strongest_exact_result: >-
+  High toroidal order suppresses Maxwell radiation only inside an explicit
+  physical window. Fixed-J massive Cao modes acquire physical frequency of
+  order n^2 and therefore have a finite N_rad ceiling. The fixed-ell/high-J
+  alternative lowers the dimensionless frequency enough to give a finite-J
+  leading predictor q_0(J). Exponential shell-trace suppression requires an
+  actual integer below the speed ceilings and above a quantified J_asym from
+  the still-missing same-carrier high-J transfer, as well as physical gate
+  normalization.
+does_not_license:
+  - an exact dark-current or L2 Maxwell eigenmode from a merely small shell trace
+  - a resonance existence, width, or damping sign without outgoing LAP/Feshbach analysis
+  - an unconditional N-to-infinity or J-to-infinity charged family at fixed c_EM
+  - a protected gate without quantitative KKS, response, action, and gate-time bounds
+  - the joint high-J/thin-ring Cao Riesz crossing
+  - charged-carrier stability or all-time material-tag persistence
+  - a bare-Euler light cone or adoption of the U1 extension
+  - charge, action, or statistics selection
+  - electron, neutrino, or parent-campaign completion
+next_dependency: >-
+  First close the fixed-ell joint high-J/thin-ring Riesz crossing and physical
+  KKS/current normalization, including C_asym and J_asym, then determine all
+  lower graph, response, and gate thresholds and test whether an integer lies
+  below min(J_EM,J_rad). In
+  parallel derive the outgoing shell-flux identity for the source-specific
+  current. If the finite Bessel window is empty, execute the full one-block
+  Maxwell LAP/Feshbach trace rather than inferring generic radiation.
+parent_status: active

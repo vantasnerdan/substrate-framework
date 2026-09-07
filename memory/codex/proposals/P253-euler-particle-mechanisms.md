@@ -312,3 +312,183 @@ nonlinear, nonlocal, singular and new structured-background emergence remain
 active. The exact 0070 oracle passes eight checks and its focused API tests
 pass three. Independent review is still required. No electron, neutrino,
 accepted claim, release, or terminal campaign state follows.
+
+## Sol-High restart recovery and charged-carrier/doublet frontier
+
+After the workstation restart, the coordinator recovered the original P253
+worktree at checkpoint `1cdf81be` and inspected every uncommitted attempt and
+append-only receipt before replaying anything. Herdr coordinator pane `w4:p2`
+and scientific panes `w4:p3` and `w4:p4` display `gpt-5.6-sol high`; the latest
+coordinator `turn_context` in
+`/home/dan/.codex/sessions/2026/09/06/rollout-2026-09-06T12-59-03-01a0765f-2a58-7392-a004-439250e666e6.jsonl`
+records model `gpt-5.6-sol`, effort `high`, approval policy `never`, and
+`danger-full-access`. Every worker reports to `w4:p2`; mathematical findings
+and blockers are relayed to supervisor pane `w4:p1`. The unrelated dirty
+`AGENTS.md` in `/home/dan/substrate-framework` remains untouched.
+
+Independent0078 establishes final0074 at its exact fixed-carrier/fixed-fiber
+scope: the physical fiber/Piola/global compact-source Hodge ledger, common
+action-flow graph convergence, Fredholm essential equality and punctured gap,
+finite-streamline zero exclusion, and transfer of two distinct simple
+positive-Krein modes. Equal-frequency matching, absolute physical KKS
+normalization and noncommuting mixing controls remain open.
+
+Independent0076 establishes the exact Euler degree-minus-two static kernels
+and the local affine weighted-vorticity propagation theorem with the leading
+tail fixed in inertial coordinates; it separately refutes the proposed
+fixed-frame stationary texture. Independent0081 establishes the exact-period
+tail compatibility, traveling Lorenz-gauge Euler--Maxwell reduction, and
+band-local material-tag lock from0077, while leaving charged branch existence
+open at its frozen HSE/Schur route.
+
+Author0079 supplies exact symmetry/simple-Sturm no-go atoms, a rational
+massive-ray distinct-sector crossing mechanism, a second bending-polarization
+crossing candidate, full Euler harmonic-selection rows, and a corrected
+two-sided Volterra gate ledger. Its exact Cao crossing remains dependent on a
+fixed-circulation/fixed-mean-radius external-core path, physical bending KKS
+sign, response lower bounds and gate-time histories. Independent0082 is
+activated on that frozen package.
+
+Root0080 repairs the charged existence route by replacing the unnecessary
+fixed-parameter inverse with two bordered Green realizations. The
+circulation--impulse border yields a candidate exact local charged
+Euler--Maxwell branch inside an explicit nonempty subluminal logarithmic
+window; the distinct circulation--mean-radius border gives the correct
+external-core path for0079. The normalized contradiction includes
+parameter-dominated sequences, the extended-growth Lane--Emden cell
+classification, exact scaling/translation density moments, physical Jacobian
+factors, and a positive constant-linear affine matching matrix. The sharp
+standalone HSE/Schur sign is secondary and remains open. Highest-value
+continuations are the joint charged Euler--Maxwell constrained Hessian/full
+three-dimensional status and the physical doublet KKS/mixing-response
+construction. The added `U(1)` field and coefficients are an explicit
+foundation extension, not a bare-Euler derivation or owner adoption;
+bare-Euler persistence and action-selection routes remain active. No electron,
+neutrino, accepted-claim, release or terminal campaign conclusion is asserted.
+
+## Reviewed doublet boundary and charged-Hessian classification
+
+Independent0082 is final at review SHA-256
+`75e55672e359fdf91b91017d6098e266eb605f4ac7e289132153e22a4f7cf334`
+and verdict SHA-256
+`69eee8688f986e7ee0463d92d9a115f6e397a74f2bbc13370d8d0ba414e175a4`.
+It preserves the rational-ray and distinct-polarization crossing atoms and the
+two-sided Volterra algebra, while confirming that the exact Cao crossing still
+requires the fixed-circulation/fixed-mean-radius external-core path plus its
+route-specific Krein/nonidentity row. Physical KKS normalization, response
+lower bounds, and autonomous gate-time histories remain open. Activated0083
+is executing the exact path/coverage and finite-subluminal hierarchy.
+
+Root0085 derives the exact next charged-carrier stability boundary. For
+`beta^2=epsilon_EM*mu_EM*c_g^2<1`, the comoving Maxwell relative energy is a
+positive completed square. Minimizing it over the instantaneous Gauss and
+`div B` tangent gives the positive anisotropic form
+`(1-beta^2)|qhat|^2/[2*epsilon_EM*
+(|k_perp|^2+(1-beta^2)k_z^2)]`, equivalent to homogeneous `H^-1` for a fixed
+subluminal margin and of size `g^2` on material-tag variations. On a common
+untagged regular Cao cell, however, the axisymmetric rearrangement Hessian is
+a strictly negative multiplication operator plus a compact Green operator,
+so it has infinite negative index. Independent free Maxwell variations give
+infinite positive index even after finite momentum/gauge rows. The full joint
+relative Hessian is therefore a strong saddle for small charge, conditional
+on reviewed branch existence; this is not a spectral-instability conclusion.
+
+The same attempt records the exact spectral reason ordinary Riesz persistence
+cannot rescue an internal charged mode: whole-space Maxwell radiation puts
+`i R` in the full joint essential spectrum. A comoving frequency `omega` has
+the smooth star-shaped shell
+`|k|^2=(omega+c_g k_z)^2/c_EM^2`; a localized eigenfield necessarily requires
+the transverse current `g(chi delta_u+u delta_chi)` to vanish to sufficient
+order on every shell component. The shell coarea weight is explicit and
+nonnegative. A nonzero trace excludes the prescribed real-frequency `L2`
+field and activates a weighted limiting-absorption/Feshbach construction; it
+does not by itself construct a resonance or determine its width. The immediate
+positive continuation is the source-specific shell trace for the two0079
+modes and a modulated local-decay theorem retaining radiation. The steady
+slaved axisymmetric high-frequency form remains one-sign modulo a finite low
+block, but it is not a full-dynamics stability theorem. Independent0084 is
+reviewing the final0080 charged-branch existence package. All neutrino,
+action-selection, and bare-Euler obligations remain active.
+
+## Reviewed charged existence, joint continuum, and finite radiation window
+
+Independent0084 establishes the final0080 functional-analytic package.  The
+global compact-source hydrodynamic/tag map and subluminal Maxwell elimination,
+the projected radial-cell `Q A Q` HSE complement, the allowed-growth
+Lane--Emden exhaustion, and both physical bordered derivatives `B_I` and
+frozen-target `B_R` are index-zero isomorphisms.  The finite-logarithmic-window
+transported-tag Euler--Maxwell branch is therefore established inside the
+declared `U(1)` extension.  Fixed-parameter full `A_epsilon` invertibility, the
+full-kernel-to-sharp-Schur bridge, and the differentiated finite-core Schur
+sign remain open.  Review SHA-256 is
+`3fb7d2a69489668f6168d7f57eb9b4e86e35621064dd5f55172ca24270279aac`;
+verdict SHA-256 is
+`7793688a23156d1b015ed82505f5e48b88223e19e8a36563c2f57ef63f0a74c7`.
+
+Author0083 then constructs the fixed-circulation, exact
+vorticity-weighted-mean-radius Cao path required by0079.  Uniform
+relative-core charts, overlap uniqueness, and
+`delta=D epsilon_core+O(epsilon_core^2)` give the buffered `C^0` IVT carrier
+coverage without differentiating an unavailable value remainder.  Its exact
+response reduction to `integral xi dot F_12` is retained, while physical KKS
+normalization and nonvanishing of the dynamically accessible projected curl
+remain open.  Independent review0089 is being frozen jointly with0087, with
+separate route verdict units.
+
+Independent0086 establishes final0085, including the repaired whole-space
+spectral statement.  Compact-curl cutoff plane waves on expanding remote
+balls form normalized weak-null joint graph sequences: the residual is
+`O(L^-1)` at nonzero frequency and `O(L^-1/2)` at zero frequency after taking
+`|k_L|=L^-1/2`.  Exact Gauss/divergence rows, decaying carrier coupling, and
+finite graph rows are preserved.  The left-parametrix contradiction yields
+`i R` contained in the Fredholm essential spectrum of the full constrained
+localized generator.  Together with the exact positive Maxwell Schur form
+and infinite positive/negative Hessian indices, this fixes the useful
+strong-saddle/embedded-continuum boundary without implying spectral
+instability, a resonance width, a BIC, or a particle result.  Review SHA-256
+is `4c5c535e60a134ba589ac066aa906249952d47d843c96e7f6a3764686f85ea67`;
+verdict SHA-256 is
+`afd7e563d782d56f8d9f383a8611caf41cf4f2f4bbeb1410dc089262348f9c3d`.
+
+Author0087 translates that continuum boundary into a precise radiation
+window.  With `Gamma=kappa`, the physical mode clock is
+`Omega_a=kappa/(2*pi*a^2)` and `omega_phys=Omega_a sigma`.  The comoving shell
+has sharp transverse maximum
+`|omega|/sqrt(c_EM^2-c_g^2)`.  A cylindrical vector character contains only
+the covariant Bessel orders `n-1,n,n+1`.  Fixed radial index gives only a
+finite high-harmonic ceiling.  For adjacent fixed-ell/high-radial-index modes,
+the exact leading predictor at a finite subluminal integer is
+`q_0(J)=kappa*ell*L_Phi/
+[2*pi^2*R*k_*sqrt(c_EM^2-c_g(J)^2)]`.  The open joint transfer must prove
+`Q_i(J)=q_0(J)+R_i(J)`, `|R_i(J)|<=C_asym/J`; there is no fixed-`c_EM`
+subluminal `J`-to-infinity limit because the logarithmically growing Cao speed
+imposes finite `J_EM` and `J_rad` ceilings.  Finite-gate suppression requires
+a constant-aware integer intersection
+`max(H_graph,H_Riesz,H_KKS,H_gate,H_asym,H_loss,...)
+< H < min(H_EM,H_rad)` and `J_asym>=C_asym/eta_rad`; exponential asymptotics
+alone do not prove that intersection nonempty.  The final bounded correction
+receipt is
+`57266e35b156be0ac7a15385d0083ec6afe8dcb4d037bdf192f458e686828109`
+and the refreshed manifest is
+`59ee0447972152f70bfe579539f4b4b7200d020b4a71b90d157135a4e211108e`.
+0087 remains author-stage pending independent review.
+
+Activated0088 now pursues the physical response achievement on the reviewed
+action-flow graph domain.  The invariant target is two real compact
+same-orbit DA seeds whose positive-Krein compression matrices, expressed in
+one covariantly continued KKS frame at the exact crossing, have nonzero
+commutator.  Individual `G_12`/`G_3` entries are basis dependent;
+Feynman--Hellmann needs a differentiable branch; the IVT crossing supplies no
+transverse lower bound; and carrier-parameter derivatives require explicit
+circulation/impulse correction before they count as same-orbit seeds.  The
+0088 README is frozen at
+`6b01cbe08fc0321610b64315725e46c6c582be7592939d58b9795a44c5a65393`
+and its restoration chronology at
+`d52be29fbf061e102df4fec8f672d5a3d48ba378afb84d94be947fba50e1e6e7`.
+
+The repository-wide `2784 passed` receipt was launched before the0087 module
+and tests existed.  It is retained as a pre-0087 checkpoint only;0087 is
+supported by its own focused seven-test and exact six-assertion receipts.
+The campaign remains active on the physical response/gate construction,
+radiative Feshbach or time-flux conversion, full carrier persistence, action
+and charge selection, and the unchanged neutrino obligations.
