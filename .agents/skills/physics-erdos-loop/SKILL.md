@@ -14,6 +14,9 @@ adds the execution details rather than duplicating that contract.
 
 ## Load the decision-changing references
 
+- Load `../physics-discovery/SKILL.md` before choosing an open mechanism or
+  constructing a replacement route; it owns focused briefs, analogies and
+  generation methods. Fixed proofs and routine checks can proceed directly.
 - Read [governance.md](references/governance.md) for claim, convention, invariant,
   release, or canonical-API changes.
 - Read [oracles.md](references/oracles.md) when selecting or auditing verification.
@@ -44,8 +47,9 @@ memory validate --base "$PWD" "$PWD/memory"
 
 For migration, locate the hash-pinned unit in `migration/source-claims.yaml`;
 its dossiers, frozen rungs, formalizations, and memory are one source lineage,
-not independent claims. Search source, tests, consumers, and the nearest accepted
-analogue for constructions worth reusing and the precise mismatch.
+not independent claims. Search source, tests and consumers for reusable
+constructions. Use the discovery brief to retrieve structural analogues as well
+as nearby accepted work, recording what transfers and the precise mismatch.
 
 Instantiate `memory-templates/research-arc.md` or `campaign-proposal.md`.
 Freeze the four levels (parent, obligation, route, attempt), closure graph, exact
@@ -57,13 +61,16 @@ Validate the matching proposal with
 body/comparator access. Preserve a schema failure and its correction; disclose
 prior exposure and keep prose/YAML synchronized.
 
-When choosing mechanisms, preregister at least two plausible candidates unless
-uniqueness is proved; a `target_kind: fixed_theorem` needs one complete proof
-route. Freeze structural fit, predictive reach, assumption/parameter economy,
-symmetries/dimensions/topology/limits, cross-sector compatibility, and numerical
-robustness before comparison values. Keep empirical comparators blinded until
-the structural choice is frozen, or record the reason for an exception.
-Mid-run failure-derived candidates expand the universe append-only.
+When choosing mechanisms, develop seeds using physics-discovery, then preregister
+at least two plausible concepts unless uniqueness is proved; a
+`target_kind: fixed_theorem` needs one complete proof route. Freeze structural
+fit, predictive reach, assumption/parameter economy, symmetries/dimensions/
+topology/limits, cross-sector compatibility and numerical robustness before
+selection. Record observations that inspired the candidates and comparator
+exposure; reserve fresh consequences for predictive evaluation. Mid-run
+failure-derived candidates expand the universe append-only. The existing
+contract carries the brief, promising seeds and missing bridges; each seed
+does not require a separate campaign or completed promotion plan.
 
 ## Achievement 2 — the analytic bridge that earns the computation
 
@@ -120,7 +127,10 @@ singular normalization, imposed support, or incomplete perturbations instead
 earn `NUMERICALLY_UNRESOLVED` or `REPRESENTATION_SCOPED` evidence.
 Diagnose implementation, method, representation, candidate, target, or foundation;
 repair, reformulate, and generate materially different candidates accordingly.
-Each new attempt changes a real scientific choice, not just its evidence threshold.
+Use physics-discovery when the next construction is unclear. Preserve the
+assumption or transformation that explains the outcome and the alternatives
+it opens. Each new attempt changes a real scientific choice, not just its
+evidence threshold; established results also seed new constructions.
 
 ## Achievement 4 — an exposing oracle, not a green counter
 

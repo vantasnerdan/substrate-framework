@@ -29,6 +29,9 @@ List raw release/claims/equations/data, paths/hashes, parent contract, assumptio
 invariants, and the disjoint edit surface. Give reviewers evidence and criteria
 without the author's preferred conclusion. Return PR/registry coordination to
 the supervisor or designated owner.
+For an authorized discovery assignment, use physics-discovery's compact brief;
+record the inputs visible on the first look and reveal the favored route/history
+after the first construction. Preserve sourced physical constraints throughout.
 
 ## Runtime
 Record requested model/effort/permissions, actual-context evidence or uncertainty.
@@ -42,6 +45,9 @@ available alternatives, structural selection criteria, and comparator exposure.
 For numerics link analytic closure, strongest exact result, named remainder,
 frozen design, and applicable small-ratio prescriptions before choosing a solver.
 Exploratory work returns hypotheses/debugging evidence at that scope.
+For discovery, return a concrete seed, useful consequence, missing bridge and
+informative next check. Reconcile it with the revealed history before development;
+different personalities alone supply neither distinct mechanisms nor independence.
 
 ## Execution and Evidence
 List dependency-ordered steps, defining equations/units/signs/geometric factors,

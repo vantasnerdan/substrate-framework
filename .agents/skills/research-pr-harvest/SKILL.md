@@ -91,7 +91,9 @@ in a purported terminal campaign returns scientific work to its campaign branch.
 
 Keep the parent goal open when incomplete. Preserve speculative value in one
 compact issue/PR frontier note: mechanism, hypotheses, strongest consequence,
-decisive open question, and source/API links. Open parent work is frontier;
+the insight or failed assumption that motivates the next construction, its
+decisive check, and source/API links. Route renewed scientific generation to
+`../physics-discovery/SKILL.md` on the campaign branch. Open parent work is frontier;
 hidden assumptions, unsupported promises, or broken consumers inside the
 selected unit are repairs to finish before landing.
 
