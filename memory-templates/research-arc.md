@@ -34,13 +34,17 @@ analytic ladder and typed object-to-verdict chain. Record strongest exact result
 one remaining computational proposition and frozen numerical design/error model.
 Explicit hypotheses retain their honest scope; hidden premises enter repairs.
 
-## Candidates and Structural Selection
-Register competing open mechanisms or one complete fixed-theorem/construction
-route. Freeze structural fit, explanatory reach, assumptions/parameters, symmetry,
-dimensions/limits, cross-sector maps and robustness before empirical comparison.
-Record comparator access and any exception; expand candidates append-only.
+## Discovery, Candidates and Structural Selection
+Refresh physics-discovery's compact brief here for an open mechanism or a new
+route: question/tension, sourced constraints vs ansatz choices, structural
+analogues and next informative calculation. Preserve seeds with their missing
+bridges. Register competing open mechanisms or one complete fixed-theorem route.
+Freeze structural fit, explanatory reach, assumptions/parameters, symmetry,
+dimensions/limits, cross-sector maps and robustness before selection. Record
+discovery/comparator exposure and fresh predictive tests; expand candidates
+append-only, keeping variants within their mechanism family.
 
-| Candidate | Construction | New inputs | Fit/limits | Exposing test | Status |
+| Candidate/family | Insight and construction | New inputs | Consequence / missing bridge | Next check | Status |
 | --- | --- | --- | --- | --- | --- |
 
 ## Claim Delta and Frozen Review
@@ -67,7 +71,8 @@ Capture source/command/environment/first stdout/stderr/time/status append-only.
 Keep scientific verdicts separate from compatibility aborts. Each route earns
 one verdict with evidence_scope and a named failure or missing construction.
 Link branch commits, exact propositions and consumers reached; parent completion
-does not follow from a checkpoint.
+does not follow from a checkpoint. Preserve the assumption that caused failure
+or the transformation that unlocked success, with the alternatives it opens.
 
 | Attempt/commit | Obligation/route | Evidence/verdict/scope | Earned/next constructions | Repair/reformulation | Alternative | Remaining |
 | --- | --- | --- | --- | --- | --- | --- |

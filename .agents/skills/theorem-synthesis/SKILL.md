@@ -19,11 +19,15 @@ Audit dependency use against accepted scope; prior acceptance remains intact.
 An explicit hypothesis earns a useful conditional interpretive theorem. A missing
 bridge is an open construction, not a refutation of the atoms.
 
-A fixed theorem uses `target_kind: fixed_theorem` and one sound proof route;
-open mechanisms compete under frozen structural criteria. Use
-`scripts/find_synthesis_candidates.py` and current graph/AST structure for
-discovery hints; the supervisor reasons independently about omitted approaches.
-The explicit assumption boundary, not a statement-length cap, controls scope.
+A fixed theorem uses `target_kind: fixed_theorem` and one sound proof route.
+When the higher theorem or bridge is still being discovered, use
+`../physics-discovery/SKILL.md`. Complement `scripts/find_synthesis_candidates.py`
+and current graph/AST hints with structural correspondences between sectors
+that have no accepted dependency edge yet. Write the object, field/metric/action
+map, hypotheses and missing implication before treating a resemblance as glue.
+Open mechanisms compete under frozen structural criteria; a straightforward
+fixed proof can proceed without a discovery exercise. The explicit assumption
+boundary, not a statement-length cap, controls scope.
 
 ## Achievement — prove the composition
 
