@@ -1,16 +1,15 @@
-# Evidence Attachment Review Template
+# Evidence Contribution Review
 
-Use this lightweight record only when a claim transaction adds or changes
-evidence attachments. It classifies evidence; it does not reopen claim
-acceptance or require every attachment to prove the parent claim.
-
-Group related theorem entrypoints or artifacts when they establish the same
-proposition. Begin every section with a plain-prose sentence.
+Use for new/changed evidence groups. Earn accurate credit for each useful role
+while preserving parent acceptance and grouping related entrypoints.
+Apply the shared reward and evidence contract in `AGENTS.md` and the applicable
+skill. Fill sections with concrete evidence, not repeated policy. Begin each
+section with a prose sentence for memory-index disclosure.
 
 ```md
 ---
-description: Evidence-role review for <claim-id or transaction>
-author: <reviewer-id>
+description: Evidence-role review for <claim or transaction>
+author: <agent-id>
 created: '<ISO-8601>'
 updated: '<ISO-8601>'
 tags:
@@ -21,33 +20,27 @@ confidence: working
 status: active
 ---
 
-## Frozen Attachment Boundary
-Record the base/head or tree hash, parent claim IDs, and only the new or changed
-attachment groups. Unchanged claims, accepted dependencies, and neighboring
-corpus records are outside this review.
+## Frozen Boundary
+Pin tree/base/head, parent claims and changed attachment groups; keep unchanged
+claims/dependencies and adjacent corpus outside this transaction.
 
-## Attachment Roles
-State the exact proposition each group establishes and its honest role.
+## Positive Evidence Roles
+State the exact proposition, bridge and contribution of each coherent group.
 
-| Attachment group | Entrypoints | Exact proposition | Role: exact proof / corroborating subclaim / regression / applicability / provenance | Typed or logical bridge | Verdict |
-| --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  | keep / relabel / correct / remove |
+| Group/entrypoints | Proposition | Role: exact proof / corroboration / regression / applicability / provenance | Bridge | keep / relabel / correct / remove |
+| --- | --- | --- | --- | --- |
 
-`Keep` means the recorded role is accurate. `Relabel` or `correct` is preferred
-when useful evidence remains. `Remove` is reserved for an attachment that is
-factually wrong, unrelated even as provenance, or misleading after relabeling.
+Keep accurate roles; prefer relabel/correct when useful evidence survives.
+Remove only factually wrong, unrelated-even-as-provenance, or still-misleading
+attachments. A narrower attachment earns its stated contribution, not full
+parent coverage.
 
-## Blocking Corrections
-List only attachments whose current role would materially overstate the parent
-claim or corrupt accepted dependency closure. Give the minimum correction and
-one check. Missing full-parent coverage is not a blocker when the narrower role
-is explicit.
+## Minimum Corrections
+Name only material overstatements or corrupted dependency closure, the minimum
+repair, and one check. State the strongest meaningful positive result preserved.
 
-## Follow-Up
-Record adjacent observations once without expanding this transaction. Use
-`None` when empty.
-
-## Correction Check
-Check only requested attachment-role or bridge corrections. Do not rerun the
-parent oracle, recount unrelated theorems, or begin a second substantive review.
+## Follow-Up and Correction Check
+Record adjacent observations once (None if empty). Check requested role/bridge
+repairs only; reuse unchanged parent oracles. This completes the bounded
+correction check rather than starting another substantive review.
 ```

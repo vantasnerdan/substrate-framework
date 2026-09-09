@@ -1,8 +1,8 @@
 # Scientific problem deconstruction
 
 Use this reference before a campaign turns a physical question into symbolic or
-numerical predicates. The purpose is to prevent a correct computation on the
-wrong object from terminating the scientific search.
+numerical predicates. The elite result is a computation of the right object that advances the
+scientific objective.
 
 ## Build an obligation graph, not a milestone list
 
@@ -80,8 +80,9 @@ State what the observable measures and what could contaminate it. A support
 restriction, taper, wall pin, mask, compact extension, or core cutoff used to
 define the candidate cannot establish natural localization or open-space box
 independence. A quadratic inertia is not a Noether charge; a frozen potential
-cross-term is not a relaxed pair law; a negative mode refutes stability rather
-than stationary-point existence.
+cross-term is not a relaxed pair law; a negative Hessian direction refutes an energy minimum, while dynamical
+instability requires its dynamics bridge and stationary-point existence remains
+separate.
 
 ### Analytic remainder and numerical representation
 
@@ -97,12 +98,12 @@ analytic ladder does not decide it, the remaining design freedoms, and the
 maximum verdict. “No convenient closed form” alone is not a receipt, while the
 receipt is not required to prove that no unknown analytic method exists.
 
-Only then choose a representation. Require a stationary background in the
-claimed admissible class, a conditioning-aware state-error estimate,
+The analytic receipt earns representation choice. Construct a stationary
+background in the claimed admissible class with a conditioning-aware state-error estimate,
 branch-identity observables across refinement, and a crossed mesh-by-domain
 design: vary mesh scale at fixed domain and domain size at fixed mesh scale,
 with basis/order crossed as needed. A single path that co-varies mesh and box
-cannot separate truncation from boundary error. Require the full
+cannot separate truncation from boundary error. Earn the spectral conclusion with the full
 correct-ensemble Hessian, the constrained tangent space and zero-mode gauge,
 and an error budget that reaches the verdict quantity. Derive a fit model and
 its free parameters before reading values; a fit with no validation degrees of
@@ -110,7 +111,7 @@ freedom is not evidence. Earlier numerical sampling is hypothesis-generation
 or debugging only and cannot be promoted later without a fresh frozen design
 and execution.
 
-## Exhaustion and PR boundary
+## Achievement — the next construction or complete coverage
 
 The continuation ladder—method repair, representation change, and alternative
 concept—is applied after every failed route. It is a minimum response, not proof

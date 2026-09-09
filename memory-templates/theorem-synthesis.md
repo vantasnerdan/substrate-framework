@@ -1,8 +1,10 @@
-# Theorem Synthesis Contract Template
+# Theorem Synthesis Achievement
 
-Use for a campaign whose positive objective is one higher theorem composed from
-accepted framework claims. Instantiate it in memory and create a matching
-proposal manifest before substantive proof work.
+Use theorem-synthesis and physics-erdos-loop for one higher theorem composed
+from accepted claims. Freeze memory plus matching proposal before proof work.
+Apply the shared reward and evidence contract in `AGENTS.md` and the applicable
+skill. Fill sections with concrete evidence, not repeated policy. Begin each
+section with a prose sentence for memory-index disclosure.
 
 ```md
 ---
@@ -18,92 +20,51 @@ confidence: exploratory
 status: active
 ---
 
-## Exact Theorem Target
+## Useful Exact Target
+State the full theorem, core/interpretive layer, exact hypothesis H when applicable,
+and the downstream structural question it closes. The reward is a new useful
+implication rather than a tautology, definition or isolated numeral.
 
-State one positive theorem precisely enough to encode in SymPy or Lean. Say
-whether it is `core` or `interpretive`; an interpretive target names hypothesis
-H in the statement itself. Explain the useful structural gap it closes. Do not
-shrink the target to a tautology, definition, or isolated numeral merely to make
-verification easy.
+## Accepted Atoms and Missing Glue
+Pin release/source and at least two distinct accepted claims' exact used scope.
+Name the missing identity/elimination/convention map. Accepted atoms retain their
+authority; the new composition earns its own proof and review.
 
-## Accepted Composition Boundary
+## Assumptions and Proof Route
+Declare imports/exclusions and interpretive hypotheses, keeping their consequences
+separate from core dependency closure. A fixed_theorem earns one complete route;
+compare genuine competing mechanisms or materially useful alternatives.
+Name SymPy/Lean artifact and entrypoint. Lean evidence includes statement/import/
+proof-escape/axiom/physical-encoding audit; custom translators earn appropriate
+sensitivity checks. The supervisor checks approach and consumer payoff.
 
-List at least two distinct accepted claim IDs and quote only the exact portions
-used. Record the pinned release and source modules. These atoms are inputs, not
-objects of renewed acceptance review.
+## Evidence Contributions
+Separate exact implication from empirical applicability and simulation consequences.
 
-## Structural Gap
-
-Name the implication, identity, elimination, convention map, or other glue that
-is not already an accepted theorem. Explain what downstream question becomes
-answerable when it closes.
-
-## Assumptions and Exclusions
-
-List every added assumption and explicit exclusion. For an interpretive
-theorem, record the hypothesis label and statement and keep its consequences
-out of the core dependency layer. A real declared hypothesis is not a defect;
-prefer an honest conditional theorem to rejecting useful composition.
-
-## Proof Route
-
-Declare `target_kind: fixed_theorem` when the statement is fixed. One complete
-proof route is sufficient; compare alternatives only when mechanisms are
-actually competing or a second route materially reduces risk. Select SymPy for
-exact algebraic glue or Lean for a finite formal theorem, and name the artifact
-and entrypoint. For Lean, record imports, statement audit, axiom footprint, and
-the mapping to the physics statement.
-
-## Evidence Ledger
-
-Separate each modality and its scope. Exact proof establishes the encoded
-statement. Measurement, numerics, or simulation test applicability or empirical
-adequacy and never retroactively become the proof. A support gap is not a
-refutation of either accepted dependency.
-
-| Method | Artifact | Exact scope | Verdict |
+| Method | Artifact/entrypoint | Exact scope/bridge | Verdict |
 | --- | --- | --- | --- |
-| SymPy or Lean |  | glue theorem |  |
-| Measurement/numeric/simulation if useful |  | applicability or consequence |  |
+| SymPy or Lean | | glue theorem | |
+| Applicability evidence when useful | | hypothesis/consequence | |
 
-## Promotion Transaction
+## Review and Promotion
+Freeze new claim, dependencies used, implementation/evidence, consumers and tree.
+Use one substantive review plus one correction check; lead with strongest useful
+theorem, minimum repair and upgrade path. Keep unrelated observations as follow-up
+unless they directly invalidate composition. Preserve unchanged atom acceptance.
 
-Record the synthesized claim entry, individual review of the new theorem,
-dependency closure, affected consumers, release pin, generated docs, and
-accepted-memory synchronization. Do not re-review the accepted atoms.
+Record category synthesized, composition/glue metadata, individual acceptance,
+dependency closure, registry/release, generated docs and memory. Record current
+GitNexus or AST/source impact, targeted theorem/API/consumer tests and
+scripts/validate_changed.py scope. Additive leaves may stay scoped; cross-cutting
+or uncertain impact earns full replay. Reuse unchanged receipts through prose edits.
 
-## Proportional Validation
-
-Record the exact theorem verifier, statement/axiom audit, affected tests and
-consumers, GitNexus impact, and the `scripts/validate_changed.py` decision. An
-additive leaf theorem may use scoped validation when no existing contract is
-changed; use full replay for cross-cutting or uncertain impact. Do not repeat an
-equivalent validation at the same unchanged boundary. Freeze the composition
-boundary before review; adjacent defects become follow-up unless they directly
-invalidate the new glue, and review prose never triggers another oracle run.
-
-## Constructive Review
-
-Use one substantive review and one correction check. Lead with the strongest
-meaningful theorem the glue proves, then identify any unsupported extension and
-the minimum repair. Recheck only corrected glue and affected consumers. Do not
-reopen accepted atoms, audit every historical attachment, or commission another
-review because prose, counts, or evidence roles changed.
-
-## Attempts and Frontier
-
-Preserve failed proof routes append-only and state the next materially different
-route. Keep supporting implementation and locally complete lemmas as commits on
-the synthesis campaign branch; do not open a rung or partial theorem PR.
-
-## Done Gate
-
-Close only when the exact higher claim is individually accepted, registered,
-dependency-closed, pinned in a release, and free of hidden in-scope debt. An
-explicit interpretive hypothesis or honest exclusion is not debt. If the
-positive theorem remains unproved, continue materially different proof routes
-until the scientific-exhaustion certificate in `AGENTS.md` passes. Only then may
-the terminal campaign PR open, using `Advances` rather than `Fixes`.
+## Attempts, Completion and Next Construction
+Preserve proof-route attempts append-only and supporting lemmas in campaign
+commits. Earn complete accepted, registered, release-pinned higher theorem with
+in-scope repairs resolved; explicit hypotheses/exclusions remain honest scope.
+Otherwise continue the next materially different proof route, or link the full
+AGENTS.md exhaustion certificate for the terminal Advances PR. Honor a user pause
+with artifacts and an exact resume action rather than a completion claim.
 ```
 
 Matching proposal fields:
