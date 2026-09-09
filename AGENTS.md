@@ -22,7 +22,10 @@ Under RL/token pressure, the cheap substitute for success is to finish a form,
 weaken a statement, collect passing checks, or declare a route exhausted.
 Counter that pull explicitly: **the great reward is the strongest true useful
 result and the next decisive construction.** Honesty banks progress; invented
-success forfeits it. Rewards here express priorities, not measured model scores.
+success forfeits it. Rewards here express priorities, not measured model scores
+or changes to training weights. Put those priorities into practice by spending
+exploration on informative constructions and feeding their results into the next
+decision. Context design is a testable intervention, not a guarantee of novelty.
 
 **Standing language-editing achievement.** Whenever editing this contract, a
 skill, or a memory template, inspect negative/gating language: “must not,”
@@ -81,6 +84,14 @@ with evidence and the next useful construction. A worker finishes its bounded
 assignment and returns discoveries; the supervisor chooses expansions. Broad
 delegation and worker self-certification do not transfer this responsibility.
 Use [subagent-task.md](memory-templates/subagent-task.md).
+
+Continuity preserves conventions and hard-won results; a fresh perspective can
+expose inherited assumptions. For authorized discovery workers, give the sourced
+objective and constraints before the favored route/history, then reconcile
+their first constructions with that history. Keep known physical constraints
+visible. Different inputs and mathematical representations earn diversity;
+different role names alone supply no independent evidence. Without delegation,
+reframe locally and describe that pass honestly as the same agent's work.
 
 ## Four levels and continuing achievements
 
@@ -142,7 +153,10 @@ At the start of durable work:
    campaigns, proposals, and memory, including rejected/provisional IDs.
 3. Load [.agents/skills/physics-erdos-loop/SKILL.md](.agents/skills/physics-erdos-loop/SKILL.md)
    for physics/claim work; add [.agents/skills/theorem-synthesis/SKILL.md](.agents/skills/theorem-synthesis/SKILL.md)
-   for composing accepted claims. Use `small-ratio-numerics` before designing or
+   for composing accepted claims. Use
+   [.agents/skills/physics-discovery/SKILL.md](.agents/skills/physics-discovery/SKILL.md)
+   before choosing an open mechanism and when a route needs a new construction.
+   Use `small-ratio-numerics` before designing or
    auditing near-floor force, splitting, soft-spectrum, or stability evidence,
    including reused machinery.
 4. Instantiate the appropriate `memory-templates/` contract: base, objective,
@@ -153,12 +167,35 @@ At the start of durable work:
    the requested objective is inaccessible, seek that source or a user-approved
    substitution while progressing independent authorized work.
 
+## Discovery: earn a useful change in how the problem is seen
+
+Start generation from a compact sourced brief: the physical question, exact
+constraints, current tension, and useful mathematical structures. Distinguish
+user-owned invariants, accepted premises, and choices introduced by an ansatz.
+Keep required authority and instructions intact; use the brief to focus working
+attention and consult technical detail at the decision it serves.
+
+The discovery skill owns the method repertoire: structural analogies, changes
+of variables and admissible class, controlled limits, inverse constructions,
+and failure-derived mechanisms. A candidate earns attention through an explicit
+construction, a useful consequence, or a discriminating calculation. Early
+sketches can carry a named missing bridge; preserve them in the existing proposal
+or attempt rather than making every sketch a new campaign or acceptance task.
+
 Open mechanisms register at least two plausible concepts unless uniqueness is
-proved. Fixed theorems register one complete route. Structural fit, assumptions,
-parameter economy, symmetry, dimensions, limits, composition, and predictive
-reach select concepts before empirical comparison. Comparators test a frozen
-prediction; they are not disguised derivation inputs or post-hoc tolerances.
-A new candidate is welcome; silently changing the objective is not.
+proved. Fixed theorems can use one complete proof route. Freeze structural
+criteria before selection and distinguish genuinely different mechanisms from
+variants. Observations and exploratory calculations can inspire conjectures;
+record that exposure and test frozen consequences with fresh evidence. A fitted
+comparator stays a derivation input, never independent predictive validation.
+
+An assumption change is a conditional research question with an explicit delta.
+It earns exploration within the user's scope; changing a user-owned invariant
+needs their authority, and changing accepted canon earns the existing challenge
+and promotion process. Novelty may be a new implication, mechanism, or empirical
+prediction: name which, and earn the corresponding proof or test. Preserve what
+made an idea work or fail so the next context contains reusable constructions,
+not just verdicts. Research success keeps all ten completion achievements.
 
 ## Earn the analytic construction before its numerical remainder
 

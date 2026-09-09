@@ -31,20 +31,24 @@ Earn each axis independently: commits supply provenance, review supplies its own
 
 ## Achievement — a sourced proposal
 
-Before calculating, earn a frozen proposal by recording:
+Earn a frozen proposal for claim-bearing calculations by recording:
 
 - base release and source commit;
 - exact question and positive completion object;
 - accepted invariants and conventions;
 - permitted imports and assumptions;
 - at least two candidate concepts when a scientific mechanism is being selected, unless uniqueness is proved; a fixed theorem target may register one complete proof route;
-- selection criteria fixed before comparator values are used;
+- structural criteria fixed before selection;
 - proposed claim delta and anticipated consumers;
-- comparator-blinding point;
+- discovery inputs, prior exposure, and the reserved comparator-blinding point;
 - validation and impact-bounded replay plan.
 
 Preserve the freeze through an explicit proposal revision when these fields
 change. Replay only checks whose inputs or proposition changed.
+Preliminary seeds and exploratory observations belong in the existing discovery
+record under physics-discovery. They can motivate a conjecture; a fresh frozen
+consequence and check earn its support. Values used to fit or construct the
+candidate remain declared inputs rather than independent predictive evidence.
 
 For synthesis campaigns, set `campaign_type: synthesis` and
 `target_kind: fixed_theorem`, name one higher claim and the structural gap, and

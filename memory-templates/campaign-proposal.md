@@ -1,7 +1,9 @@
 # Campaign Achievement Proposal
 
-Freeze before computation or source-body/comparator access; use theorem-synthesis.md
-for a higher fixed theorem. Store prose in memory and matching proposal.yaml.
+Freeze before claim-bearing computation or reserved source-body/comparator access;
+use theorem-synthesis.md for a higher fixed theorem. Keep preliminary discovery
+seeds and declared exposure in this same record. Store the frozen prose in memory
+and matching proposal.yaml.
 Earn the schema/access milestone with
 `PYTHONPATH=src .venv/bin/python scripts/validate_repository.py` and
 `memory validate --base "$PWD" "$PWD/memory"`; retain failed receipts and repairs.
@@ -56,12 +58,16 @@ a smaller universe requires user approval.
 | Family | Why in scope | Concepts and assumptions/parameters | Coverage strategy |
 | --- | --- | --- | --- |
 
-## Candidate Choice
-Preregister two plausible open mechanisms unless uniqueness is proved; a fixed
-theorem earns one complete proof route. Freeze ordered structural criteria and
-comparator access point/exception before comparison values.
+## Discovery and Candidate Choice
+Use physics-discovery for an open mechanism or a route needing a new construction.
+Keep its compact brief here: physical question/tension, sourced constraints vs
+ansatz choices, useful structural analogues and next informative calculation.
+Record seeds and missing bridges without separate contracts. Preregister two
+plausible open mechanisms unless uniqueness is proved; a fixed theorem earns one
+complete proof route. Freeze structural criteria before selection, declare
+discovery/comparator exposure, and name the fresh consequence reserved for testing.
 
-| Candidate | Construction | Assumptions/parameters | Framework fit/limits | Decisive oracle |
+| Candidate/family | Motivating insight and construction | Assumptions/parameters | Useful consequence and missing bridge | Next check / later oracle |
 | --- | --- | --- | --- | --- |
 
 ## Claim Delta and Consumer Payoff
@@ -98,7 +104,9 @@ downstream use. Dependency waves consume settled inputs rather than racing them.
 Record computed_predicate, proposition, consumed/earned licenses, parent_effect,
 cannot_decide and maximum verdict for each result.
 Diagnose failed routes, apply repair/reformulation/new candidates, and retain the
-complete frontier. A canon conflict earns its separate revision route.
+complete frontier. Record the assumption responsible for an obstruction or the
+transformation that unlocked a success, and what it makes worth trying next.
+A canon conflict earns its separate revision route.
 
 | Attempt | Obligation/route | Verdict/scope | Earned/next constructions | Repair | Representation | Alternative | Remaining |
 | --- | --- | --- | --- | --- | --- | --- | --- |
