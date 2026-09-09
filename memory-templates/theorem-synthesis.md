@@ -29,6 +29,10 @@ implication rather than a tautology, definition or isolated numeral.
 Pin release/source and at least two distinct accepted claims' exact used scope.
 Name the missing identity/elimination/convention map. Accepted atoms retain their
 authority; the new composition earns its own proof and review.
+When the theorem or bridge needs discovery, keep the physics-discovery brief
+here: structural correspondence, mapped objects/hypotheses, motivating insight,
+missing bridge and next informative check. Graph edges are hints; a proposed
+connection between previously unlinked sectors earns an explicit map and proof.
 
 ## Assumptions and Proof Route
 Declare imports/exclusions and interpretive hypotheses, keeping their consequences
@@ -60,7 +64,9 @@ or uncertain impact earns full replay. Reuse unchanged receipts through prose ed
 
 ## Attempts, Completion and Next Construction
 Preserve proof-route attempts append-only and supporting lemmas in campaign
-commits. Earn complete accepted, registered, release-pinned higher theorem with
+commits. Record the variable, analogy or identity that unlocked progress and
+the assumptions behind obstructions so later attempts inherit usable ideas.
+Earn complete accepted, registered, release-pinned higher theorem with
 in-scope repairs resolved; explicit hypotheses/exclusions remain honest scope.
 Otherwise continue the next materially different proof route, or link the full
 AGENTS.md exhaustion certificate for the terminal Advances PR. Honor a user pause

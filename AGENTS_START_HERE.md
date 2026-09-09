@@ -42,6 +42,7 @@ prose description for memory indexing.
 | Task | Skill / contract |
 | --- | --- |
 | Physics, claims, framework reconciliation | `.agents/skills/physics-erdos-loop/SKILL.md`; `campaign-proposal.md` or `research-arc.md` |
+| Open mechanisms, new constructions, or a stalled route | `.agents/skills/physics-discovery/SKILL.md`; existing contract's discovery/candidate section |
 | Higher theorem from accepted claims | `theorem-synthesis`; `memory-templates/theorem-synthesis.md` |
 | Near-floor force, spectrum or splitting | `small-ratio-numerics`; `numerical-check.md` |
 | Authorized bounded worker | `subagent-task.md` |
@@ -53,6 +54,13 @@ prose description for memory indexing.
 Validate the matching scientific proposal before its frozen source/comparator
 access: `PYTHONPATH=src .venv/bin/python scripts/validate_repository.py`.
 Primary-source availability and previously exposed values are recorded honestly.
+
+On a new or resumed research session, load `physics-discovery` before selecting
+an open mechanism or replacing a route. Refresh the compact discovery brief in
+the existing contract from the actual branch frontier; use its next informative
+construction to begin work. A paused campaign resumes only on the user's
+authority. Native skill discovery and direct file reading use the same local
+SKILL.md; this routing also serves agents without native skill support.
 
 ## 3. Supervise structure and strategy
 

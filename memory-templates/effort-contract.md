@@ -33,16 +33,19 @@ analytic closure, numerical remainder if needed, implementation, exposing
 verification, consumers, and applicable promotion.
 
 ## Approach and Supervision
-Preregister actual competing mechanisms (or one fixed-theorem route), criteria,
-and comparator exposure. Link bounded worker contracts. Record the supervisor's
+For scientific discovery, keep physics-discovery's brief and promising seeds here
+or link the existing campaign brief. Preregister actual competing mechanisms
+(or one fixed-theorem route), criteria, discovery exposure and fresh tests.
+Link bounded worker contracts. Record the supervisor's
 equation/quantifier audit, current graph/AST dependency analysis, alternatives,
 consumer payoff, and decision before dependent work.
 
 ## Attempts and Continuation
 Preserve commands/source/first output and mechanisms append-only. Use the physics
 skill's compatibility preflight and repair ladder; an environment abort is
-provenance, not scientific rejection. Verify the nearest accepted analogue and
-its transferable construction before reinventing it.
+provenance, not scientific rejection. Retrieve nearby and structurally related
+constructions alongside new generation. Record what transfers, the assumption
+behind a failure or transformation behind a success, and the next useful check.
 
 | Attempt | Obligation | Candidate/repair | Artifact/command | Route verdict/evidence scope | Next construction | Remaining routes |
 | --- | --- | --- | --- | --- | --- | --- |
