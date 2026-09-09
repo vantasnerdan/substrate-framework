@@ -1,13 +1,21 @@
-# Campaign Proposal Template
+# Campaign Achievement Proposal
 
-Instantiate before a campaign computes or inspects comparator values. Use `theorem-synthesis.md` instead when the target is a fixed higher theorem composed from accepted claims. Store the prose contract in memory and create a matching `proposals/<id>/proposal.yaml` manifest. Run `PYTHONPATH=src .venv/bin/python scripts/validate_repository.py`, validate repository-local memory with `memory validate --base "$PWD" "$PWD/memory"`, and preserve any schema or memory failure before opening the source body or comparator values; a prose contract alone is not the freeze gate. The memory path is a required positional target; `--base` alone does not select it.
-
-Begin every section with a plain-prose sentence. Inline code, a table, or a
-list does not satisfy the memory index's first-content disclosure contract.
+Freeze before claim-bearing computation or reserved source-body/comparator access;
+use theorem-synthesis.md for a higher fixed theorem. Keep preliminary discovery
+seeds and declared exposure in this same record. Store the frozen prose in memory
+and matching proposal.yaml.
+Earn the schema/access milestone with
+`PYTHONPATH=src .venv/bin/python scripts/validate_repository.py` and
+`memory validate --base "$PWD" "$PWD/memory"`; retain failed receipts and repairs.
+The memory target is positional. Read physics-erdos-loop and its routed technical
+references; this form records their application rather than duplicating them.
+Apply the shared reward and evidence contract in `AGENTS.md` and the applicable
+skill. Fill sections with concrete evidence, not repeated policy. Begin each
+section with a prose sentence for memory-index disclosure.
 
 ```md
 ---
-description: <positive campaign objective>
+description: <complete positive campaign objective>
 author: <agent-id>
 created: '<ISO-8601>'
 updated: '<ISO-8601>'
@@ -19,171 +27,106 @@ confidence: exploratory
 status: active
 ---
 
-## Question and Positive Deliverable
-State the exact question and object to derive. A no-go, failed concept, residual, or honest account of an obstruction does not complete this campaign.
-
-## Obligation Graph and Closure Map
-Decompose the parent objective into dependency obligations, not milestone-sized
-deliverables. For each node record its positive intent, prerequisites,
-`pass_licenses`, `does_not_license`, maximum verdict, failure scope, and the next
-nodes it unlocks. A successful node activates its next unsatisfied dependency; a
-failed route leaves the node active. No node, subclaim, utility, or clean result
-opens a PR or terminates the campaign.
+## Objective and Achievement Graph
+State the exact requested object, usefulness and whole-parent success contract.
+Freeze parent, obligations, routes and attempts; each node records positive
+intent, requires, pass_licenses, does_not_license, maximum_verdict, failure_scope,
+unlocks and status. A node's success activates its next dependency.
 
 | Node | Positive intent | Requires | Pass licenses | Does not license | Maximum verdict | Failure scope | Unlocks | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-## Base Release and Provenance
-Record the accepted release and commit. Resolve inventory paths against the pinned source root, record both locations, and verify the source checkout commit and file hash before execution; a queue path need not be relative to the framework working directory. List source claims and modules actually read. For predecessor work, name each hash-pinned `migration/source-claims.yaml` unit and its current disposition; its bridge is the candidate unit while linked dossiers, formalizations, and legacy rungs are evidence rather than extra claims. Newer directories and working-tree prose are not authority.
+## Baseline and Source Access
+Pin accepted release/commit, source root and resolved inventory paths/hashes,
+modules actually read, and migration units/dispositions. Linked dossiers and
+formalizations remain evidence of their source unit, not extra claims.
+Inventory primary sources and access before preregistration; record pages/equations
+actually read and prior exposure. An indispensable inaccessible source earns
+a request for the document or user-approved substitution/reframing before work
+that depends on it. Independent authorized tasks can continue.
 
-## Source Inventory and Access Gate
-For campaigns whose objective is external literature (a paper, a theory, a dataset): enumerate every load-bearing external source with verified access status BEFORE preregistration — in hand (local path), open (URL), paywalled, or missing — and the exact claims and page/equation numbers extracted from each. An inaccessible primary source blocks the campaign objective as written: escalate to the requester with options (supply the document, restate the objective against the accessible corpus, substitute) before any computation. Auditing secondary literature about an unchecked primary is a defect (skill `quantitative-verification`, AP-14), not a partial result.
-
-| Source | Access status | Extracted claims (with page/eq) |
+| Source | Access: local/open/paywalled/missing | Claims/pages read or access resolution |
 | --- | --- | --- |
 
-## Invariants, Conventions, and Allowed Imports
-Freeze what the campaign must preserve and every input it may use. Accepted canon governs the base release but remains challengeable. Record evidence that would distinguish a candidate defect from an independent canonical inconsistency; anything added later becomes explicit debt and requires proposal revision.
+## Invariants, Imports and Candidate Universe
+Freeze conventions, units, dependencies and allowed hypotheses. Distinguish
+candidate defects from independently reproducible canon conflicts.
+Derive route families from the original objective, invariants, source inventory
+and imports. Expand historical/external/failure-generated candidates append-only;
+a smaller universe requires user approval.
 
-## Frozen Candidate Universe
-Derive the in-scope route families from the user's original objective,
-invariants, source inventory, and permitted imports before attempts begin. This
-boundary expands append-only when historical, external, or failure-generated
-concepts are discovered. It may not shrink during an exhaustion audit without
-explicit user approval.
-
-| Route family | Why in scope | Known concepts | Coverage strategy |
+| Family | Why in scope | Concepts and assumptions/parameters | Coverage strategy |
 | --- | --- | --- | --- |
 
-## Candidate Preregistration
-Register at least two plausible concepts when selecting among scientific mechanisms unless uniqueness is proved. If the statement is a fixed theorem, declare that target kind and use one complete proof route rather than inventing a competitor. Do not retrofit the framework after selecting a mechanism.
+## Discovery and Candidate Choice
+Use physics-discovery for an open mechanism or a route needing a new construction.
+Keep its compact brief here: physical question/tension, sourced constraints vs
+ansatz choices, useful structural analogues and next informative calculation.
+Record seeds and missing bridges without separate contracts. Preregister two
+plausible open mechanisms unless uniqueness is proved; a fixed theorem earns one
+complete proof route. Freeze structural criteria before selection, declare
+discovery/comparator exposure, and name the fresh consequence reserved for testing.
 
-| Candidate | Description | Assumptions | Parameters | Framework-fit prediction | Decisive test |
-| --- | --- | --- | --- | --- | --- |
-| A |  |  |  |  |  |
-| B |  |  |  |  |  |
+| Candidate/family | Motivating insight and construction | Assumptions/parameters | Useful consequence and missing bridge | Next check / later oracle |
+| --- | --- | --- | --- | --- |
 
-## Selection Criteria and Blinding
-Order the structural selection criteria and state the comparator-blinding point. Numerical agreement is evaluated only after structural selection freezes.
+## Claim Delta and Consumer Payoff
+List proposed/challenged claims, dependencies and consumers. Search IDs across
+registry/campaigns/memory including rejected/provisional IDs; acceptance earns
+supersedes. Explain what each result makes possible for the parent.
 
-## Proposed Claim Delta
-List claims proposed or challenged, their dependencies, evidence plan, and consumers. Before assigning a claim identifier, search the registry, campaigns, and durable memory; rejected or provisional identifiers remain reserved even when absent from the accepted registry. Do not use `supersedes` before acceptance.
+## Analytic Construction and Numerical Remainder
+Apply the full typed chain and analytic-closure receipt in the physics skill's
+problem-deconstruction reference: object, symmetry, full functional/variations,
+admissible space, scales/bounds/limits/asymptotic operator, observable, strongest
+exact conclusion, one irreducible remainder, approximation and maximum verdict.
+Give upstream licenses durable IDs/evidence. Freeze numerical design, branch/
+forward error, tangent/metric/coverage/support, box/boundary/mesh/fit/tolerance,
+and applicable small-ratio prescriptions before production output.
+Earlier samples keep exploratory_only scope; fresh design/execution earns
+production evidence. A missing construction is not a negative physical result.
 
-## Analytic Specification and Numerical Licenses
-For every obligation separately, freeze `object -> symmetry/conservation ->
-ensemble and exact variational functional -> admissible function space and
-representation -> analytic scale/asymptotic structure -> observable ->
-irreducible numerical remainder -> numerical approximation -> permitted
-verdict`. Record the configuration space and all admissible variations;
-equivalence or gauge, topology and bundle charts; group-action domain/period and
-generator normalization; invariance and conservation identity; complete
-Euler--Lagrange, Legendre, and second-variation objects required by the claim;
-dimensions, non-dimensional groups, dominant balances and scaling laws;
-available identities, bounds, coercivity/monotonicity results, virial identities,
-limits, perturbative reductions, asymptotic principal symbol and essential
-spectrum; and the strongest conclusion already established by algebra, calculus,
-or an applicable theorem.
+## Implementation and Exposing Oracle
+Name canonical APIs and per-claim verifiers, equations/units/signs/geometric
+factors, independent test expectations, sensitivity and affected consumers.
+Apply the physics skill's oracle reference: statement/axiom vs mutation audit,
+defining-object checks, independence by elimination, field/metric/action maps,
+graded forms, FFT closure, solver/refinement/error records and status inventories.
+Record historical snapshot and compatibility replay policy, direct PYTHONPATH=src
+commands, first-run capture, and content/AST-anchored editing. Package APIs own
+reusable logic; CLI scripts adapt it. Keep historical checks independent of
+unrelated future queue states or mutable current-release pointers.
 
-Only after that analytic-closure receipt passes may the obligation name one
-residual proposition for production numerics. State why the current analytic
-ladder does not decide it, without pretending to prove that no unknown analytic
-method exists; then freeze background residual and forward error, branch
-identity, tangent space and gauge, kinetic-metric rank/sign, representation
-coverage and excluded sectors, observable and contamination exclusions, imposed
-support/mask/taper, chart or ansatz, box and boundary treatment, discretization
-family, fit form, tolerance, and maximum verdict. Give each license a durable
-identifier and evidence-backed status. A downstream `requires` entry resolves
-to a license identifier; an absent or unearned license blocks production
-numerics rather than becoming a negative scientific result. Pre-gate numerical
-sampling is `exploratory_only`: it may generate hypotheses or debug code but may
-not select the candidate, set gates, support a claim or anti-claim, or later be
-relabelled as production evidence.
+## Supervised Execution and Continuation
+Assign bounded disjoint workers only when authorized; raw inputs, requested
+runtime settings, return point and supervisor approach/alternative audit precede
+downstream use. Dependency waves consume settled inputs rather than racing them.
+Record computed_predicate, proposition, consumed/earned licenses, parent_effect,
+cannot_decide and maximum verdict for each result.
+Diagnose failed routes, apply repair/reformulation/new candidates, and retain the
+complete frontier. Record the assumption responsible for an obstruction or the
+transformation that unlocked a success, and what it makes worth trying next.
+A canon conflict earns its separate revision route.
 
-## Implementation and Oracle Plan
-Name importable APIs, claim-appropriate exact/numeric/formal oracles, applicable mutations and counterexamples, refinements, independent routes, and impact-bounded replay commands. A kernel-checked Lean proof calls for statement, import, proof-escape, axiom-footprint, and physical-encoding audits rather than a ceremonial mutation of the kernel. Campaign verifiers run directly with `PYTHONPATH=src`; import reusable package APIs rather than repository scripts, which remain CLI adapters. Pin the campaign's own source, claim, and release evidence, but never make future valid work fail by asserting unrelated queue units stay pending or mutable `current` remains the historical release; replay old campaigns through durable snapshots or their canonical modules/tests. For each replay inventory, record lexical check-call sites, runtime check executions, and assertion nodes separately; loops and dynamic dispatch can make the runtime tally differ legitimately, so equality is not an oracle. Predeclare a compatibility preflight: canonical integration uses `trapezoid_integral`, mutable current-environment scripts use `np.trapezoid`, and executable syntax is checked for direct, imported, and dynamic legacy access. An eager fallback such as `getattr(np, "trapezoid", getattr(np, "trapz"))` is legacy access because the default is evaluated first. Repair mutable code to the current name or a safe two-step fallback; give immutable source an alias-only recorded replay before scientific adjudication. Do not count that native compatibility abort as candidate rejection. State why SymPy, Lean, or a particular SciPy method fits each obligation. Do not plan a numerical rerun as independent evidence when an exact result already fixes its right-hand side or output; classify it as regression coverage and prefer exact sensitivity or Taylor separation for tractable counterexamples. Before labeling a downstream tail, dispersion, normalization, or consistency route independent, eliminate shared intermediate variables and compare the resulting equations or positive solution sets. For cross-sector matches, freeze distinct field types, kinetic metrics, action measures, and coefficient conversions; equal symbols, shapes, or dimensions are not maps. Structural oracles must evaluate the claimed object rather than a literal boolean, stand-in constant, copied period, or unrelated bounded sample. For differential forms, predeclare the full graded Leibniz/cyclic expansion and keep nonvanishing, closedness, global non-exactness, period normalization, filling dependence, and gauge descent as separate gates. For genuinely unresolved ODE/BVP/PDE or quadrature work, specify precision, equations, domain, initial/boundary data, discretization, mesh/time/sample refinement, tolerances, error norm, invariants or controlled dissipation, solver-status gate, and method cross-check. For FFT differentiation or spectral line claims, freeze the active frequencies and window, require commensurability or measured endpoint closure, distinguish an identity on one FFT coefficient from independent evidence, and predeclare the claimed line's minimum norm or power fraction. Express near-zero and agreement thresholds in a declared dimensional or scale-relative error model, and keep exact analytic nulls separate from numerical roundoff regressions.
-Authoring practices from reviewed campaign defects: before implementing
-any numerical scheme, search installed skills for its regime (soft modes,
-small ratios, stiff-plus-soft optimization) and apply those prescriptions;
-write units, signs, and geometric factors as a comment block before code
-and compute test expectations independently of the implementation; capture
-verifier stdout into `attempts/000N/` on first execution rather than
-rerunning completed runs to materialize records; and when a symbolic check
-repeatedly misbehaves, preserve the attempt and rederive it from source with a
-different exact identity, manual calculation, independent CAS route, or formal
-encoding. Numerical samples may debug that derivation but cannot settle or
-refute the exact proposition.
-When patching existing files, anchor by content rather than remembered
-line numbers: search for a unique pattern at the edit site first, prefer
-AST-aware rewrites for nested or multi-site changes, and switch to one
-full rewrite from a full read after repeated failed patch rounds — stale
-anchors were the largest single source of P242 rework.
+| Attempt | Obligation/route | Verdict/scope | Earned/next constructions | Repair | Representation | Alternative | Remaining |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 
-## Attempts and Continuation
-Append every route with its active obligation, verdict, diagnosed layer,
-licenses earned/missing, method repair, representation change,
-failure-generated alternative, and routes considered/tried/remaining. Stop
-repeating a dead route but continue the obligation. An ill-fitting concept is
-rejected or reformulated; unrelated earlier work is not rewritten to save it.
-If a conflict survives independently of the candidate, open a separate
-`challenges` or foundational-revision proposal rather than treating canon as
-irrevisable or silently changing it. Execution runs in declared waves whose
-inputs are explicit; research/grounding is wave 0 and a dependent wave
-(implementation, verification, report) opens only after every input its wave
-declares has settled—a research subagent's output is a hard prerequisite, never
-a race (AP-15).
+## In-Scope Repairs and Review
+Resolve hidden inputs, unexplained fitted parameters, promises and broken
+consumers inside the proposed statement; keep explicit hypotheses/exclusions
+and open parent work as frontier. Plan one review per new/changed claim, coherent
+attachment roles, one minimum correction check, and evidence restoring stronger
+scope. Record extraction, registry/release, generated docs/memory and migration
+disposition regeneration. Reuse an unchanged impact-selected validation receipt.
 
-Every symbolic or numerical result also records `computed_predicate`, the exact
-`proposition` it implies, licenses consumed and earned, `parent_effect`,
-`cannot_decide`, and its maximum verdict. Agreement on an unlicensed object or
-background cannot supply the missing bridge.
-
-| Attempt | Obligation | Route | Verdict and failure scope | Licenses earned/missing | Method repair | Representation change | Alternative concept | Routes remaining |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
-## Debt Ledger
-Track hidden assumptions, unexplained fitted parameters, unsupported promises,
-convention conflicts, and broken affected consumers inside the proposed claim.
-Declared hypotheses, honest exclusions, open candidate routes, and adjacent
-repository observations are frontier rather than debt.
-
-## Review and Promotion Plan
-Name one claim-level review per proposed or changed claim, the frozen transaction,
-package extraction, release update, generated documentation, and accepted-memory
-synchronization. Classify changed attachments by evidence role; do not turn them
-into additional claim reviews. Preserve the strongest meaningful positive
-statement and use the minimum correction before rejecting it. Reserve
-`refuted` for a contradiction or counterexample. For predecessor migration,
-edit `migration/dispositions.yaml` and regenerate `migration/source-claims.yaml`;
-never hand-edit the queue. Record one impact-selected validation receipt and
-reuse it. After corrections, check only changed statements and affected edges.
-
-## Scientific Exhaustion Certificate
-Leave this section active and incomplete unless positive success passes first.
-To claim exhaustion, define the full in-scope candidate universe; inventory
-preregistered, historical, external, and failure-generated concepts; partition
-equivalent variants; give every route a verdict and continuation-ladder record;
-attach the independent adversarial candidate-generation result; supply coverage
-or no-go arguments for infinite classes; and show `routes_remaining: []`. A
-failed optimizer, soft signal, nonconvergence, elapsed effort, or finite route
-count cannot satisfy this section.
-
-| Candidate class | Routes and equivalence partition | Method repair | Representation change | Alternative concepts | Coverage evidence | Terminal verdict |
-| --- | --- | --- | --- | --- | --- | --- |
-
-- Independent candidate-generation artifact:
-- Infinite-class coverage/no-go artifacts:
-- Routes remaining:
-- Exhaustion review:
-
-## Done Gate
-The campaign PR gate opens only on complete positive success or the scientific
-exhaustion certificate in `AGENTS.md`. Until then, checkpoint with commits and
-continue; do not open a rung, milestone, subclaim, utility, or progress PR. Each
-next step states its positive contribution to resolution: name the object it
-constructs, question it closes, or distinction it establishes. A refutation
-counts only after the object, ensemble, observable, admissibility, and
-representation-coverage prerequisites pass, and only at its declared failure
-scope. Avoidance and risk reduction do not describe a next route.
+## Completion or Continuation
+Earn all ten achievements for positive completion. Otherwise keep the campaign
+active on its branch until the AGENTS.md exhaustion certificate: original
+expanded universe, full route/equivalence/continuation records, distinct blinded
+alternative-generation challenge, infinite-class coverage, empty frontier and
+review. Link each artifact; route counts or failed optimizers do not replace it.
+Honor explicit user pauses with durable state and the next positive construction.
+The terminal PR records success or certified exhaustion, not a milestone.
 ```
 
 Matching manifest:
@@ -218,7 +161,7 @@ obligation_graph:
         admissible_space: <smoothness, constraints, gauge, topology, boundaries>
         representation_coverage: <included and excluded sectors>
         observable: <definition and contamination exclusions>
-        numerical_representation: <blocked until analytic closure; then background, branch, operator, error budget>
+        numerical_representation: <earned analytic closure; background, branch, operator, error budget>
         permitted_verdict: <maximum typed verdict>
 license_registry:
   - id: <license-id>
@@ -246,7 +189,7 @@ selection_criteria:
   - correct limits and cross-sector composition
 claims_proposed:
   - <claim id>
-comparators_blinded_until: <artifact or gate>
+comparators_blinded_until: <frozen structural-choice artifact>
 route_frontier:
   active_obligation: <node-id>
   considered: []

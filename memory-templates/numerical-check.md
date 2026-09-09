@@ -1,23 +1,13 @@
-# Numerical Check Template
+# Numerical Evidence Achievement
 
-Instantiate whenever a numerical check produces evidence worth remembering — a
-technique that worked, a failure mode worth naming, a number another attempt will
-cite. It is a lab notebook page, not a compliance form, but any record cited as
-scientific evidence must retain Question, Eligibility and Objective Bridge,
-Method, What Was Seen, error budget/refinement, scoped Reading, and Artifacts.
-Only a provenance-only note may omit those evidence sections. Store the filled
-record in memory under `efforts` (or link it from the attempt's result file).
-When the check leaves an open question, state the next step as its positive
-contribution to resolution—the object it constructs, question it closes, or
-distinction it establishes.
-
-A production record also requires a passed analytic-closure receipt. A pre-gate
-sample uses `numerical_role: exploratory_only`; it may generate a hypothesis or
-debug an implementation, but it cannot support a claim or anti-claim, set later
-thresholds, or be relabelled as production evidence.
-
-Begin every section with a plain-prose sentence. Inline code, a table, or a list
-does not satisfy the memory index's first-content disclosure contract.
+Use for a reusable numerical result or diagnosed method. Read the physics oracle
+reference and applicable small-ratio skill. Earn scientific evidence with the
+Question, Analytic Construction and Objective Bridge, Method, Observations,
+Error Budget/Refinement, Reading and Artifacts below; provenance-only notes may
+omit evidence sections. Store in memory efforts or link from the attempt.
+Production evidence consumes analytic closure and a frozen remainder/design;
+exploratory_only samples retain hypothesis/debugging scope. Name the next step
+as the construction or distinction it earns. Begin sections with prose for indexing.
 
 ```md
 ---
@@ -46,7 +36,7 @@ evidence_scope: <numeric evidence | unresolved | representation scoped>
 
 What was being computed, and why it was delicate — usually because the quantity of interest is orders of magnitude below the dominant scale.
 
-## Analytic Eligibility and Objective Bridge
+## Analytic Construction and Objective Bridge
 
 Record the mathematical object, symmetry or conservation license, ensemble,
 admissible representation, observable, and background/branch identity. State
@@ -71,7 +61,7 @@ error budget, and the execution context worth knowing later (thread pins,
 invocation path, versions) if results sit near the 1e-13-relative level where
 runner settings matter.
 
-## What Was Seen
+## Observations
 
 The numbers and behaviour actually observed — including how values moved under changes of mesh, domain, quadrature, or method, since that movement is often the most informative part.
 
