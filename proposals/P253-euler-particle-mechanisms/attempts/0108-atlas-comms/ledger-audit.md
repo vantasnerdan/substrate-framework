@@ -42,3 +42,15 @@ dangling-path sweep. Read-only on attempt dirs; no herd/ repairs needed.
   `review-beacon-0122pre.md`; folded, no mapping change needed.
 
 ## Herd/ repairs made: none (nothing herd-side mispoints)
+
+## Addendum (4dc2d4c2): L-1 closed, with correction to this audit
+
+Drift's retro-review (`review-beacon-0116retro.md`) verdicts 0116 SOUND on
+all three parts. It also corrects my "unconsumed" claim: shepherd's Route-A
+ruling consumed 0116's acceptance and 0117/0120/0121/0122 derive from it via
+the ruling chain (cited through STATUS/ruling language, not `attempts/0116`
+paths — which is why my path-grep missed it). Lesson: consumption flows
+through rulings as well as file cites; future audits grep STATUS ruling
+lines for the attempt number too. The "unreviewed" half stands and is now
+closed; severity reassessment: it was load-bearing-unreviewed, now
+load-bearing-reviewed. No herd repairs needed.
