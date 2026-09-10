@@ -26,16 +26,14 @@ No PR opened. One verdict per item. Evidence pointers inline.
 - **Shadowing scope**: A1/A2 closed, H4-proof current token.
 
 ## Claim-promotion backlog
-- Nothing awaits the registry: the campaign banks attempts; promotion happens
-  *through* the terminal PR. Backlog = drafting the claim delta: which units
-  promote (0104 G-blocked/H-established-linear, 0109 core re-verified), which
-  negatives certify (0119, 0121), and what stays conditional (J1–J4, trust
-  rows-met, S9, A3). No hidden debt found by the ledger audit.
+- Drafts EXIST: attempts/0126-beacon-claims/drafts.yaml (C-EUL-001/002, registry schema, `review: draft` — no registry writes, namespace free as of 2026-09-10).
+- Path to promotion: drift firewall + individual review first (0123/0124 verdicts + /6 correction cited in-entry), then R-EM2 scope decision sets what the claims may license.
+- No hidden debt: ledger audit clean; negatives bank (0119/0121/0124) rides as certified no-go records.
 
 ## Bottom line
-Two owner-visible actions stand between now and a joinable PR: (1) the R-EM2
-ruling (approve/amend/decline — sets the PR's claim scope); (2) beacon landing
-0122 + drift landing-verdict (closes the G-a2 number state). Everything else
-is in-flight work the PR can carry as named open tracks. Recommended PR shape
-if both land: close #198, advance #203 with one-way + trust-region results,
-certified negatives, and B-R1..B-R5 bridges explicit.
+Two actions stand between now and a joinable PR: (1) the R-EM2 ruling
+(approve/amend/decline — sets the PR's claim scope and what C-EUL-001/002 may
+license); (2) drift's A3 re-verdict (cipher repairs landed). G-a2 is fully
+banked (0125 conditional PASS, 0124 re-certified, R1–R3 done, drafts filed).
+Recommended PR shape: close #198, advance #203 with the conditional lemma,
+certified negatives (0119/0121/0124), and B-R1..B-R5 bridges explicit.
