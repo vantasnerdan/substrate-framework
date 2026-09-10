@@ -19,7 +19,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
   unlocks two-way claims.
 
 ## IN PROGRESS (carry, don't block)
-- **M2-B1 H4-proof + A3 filament — VERDICTED SPLIT** (drift review-cipher-a3landing, all rerun, R1–R5 receipts): A3 PASS-in-model m1–6, m0 UNRESOLVED (window-fragile, downgrade filed stands). M2-B1 track: A1/A2/A3-transfer banked, A3 landed with split verdict; current token H4-proof (+owner-review).
+- **M2-B1 H4-proof + A3 filament — VERDICTED SPLIT, m0 attacked** (drift review-cipher-a3landing, all rerun): A3 PASS-in-model m1–6, m0 UNRESOLVED; cipher closed R1–R5 receipts cd4f8da5 (N128 npz, window evidence, D5 reframe, PoC-2 cross-pointer) and started section-m0 build 82e47d45. M2-B1 track otherwise banked; current token H4-proof (+owner-review).
 - **G-a2 numbers — 0125 PASS CONDITIONAL** (beacon + drift review-beacon-0124correction): conditional lemma rho*~0.03 banked; 0124 RE-CERTIFIED STRONGER with /6 correction; R1–R3 DONE 37625ab1 (stale framing fixed, corrected receipts, sweep banked). G-a2 construction track complete — remaining: R-EM2 scope decision governs what it licenses.
 - **IDEA-01..08**: all ADOPTED with owners (cipher/drift/atlas/beacon+cipher);
   IDEA-03 (R9-start) 1/3 closed — gates G-a2 trust-region start, rides with (a).
