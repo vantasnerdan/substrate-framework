@@ -5,6 +5,7 @@
 - beacon: memory/search-steered P0/P1 source transfer.
 - cipher: radical outside routes, naive voice.
 - drift: critic, tautology/fault firewall.
+- 2026-09-10 beacon: P0/P1 on fixed thin Cao ring in attempts/0108-beacon-sources (P0 map + P1 observables + ledger + receipts); graph stale/empty, AST-used; blocked on S3-S9 primaries + Unit G (shepherd-owned).
 
 - 2026-09-10 drift: baseline firewall active, no beacon/cipher 0108 claims yet; auditing 0107 drafts + 0104/0106 boundaries.
 
