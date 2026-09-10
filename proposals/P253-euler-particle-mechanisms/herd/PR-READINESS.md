@@ -7,10 +7,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
   Nothing outstanding except the closing act itself.
 - **Comms/ledger**: audit clean (ledger-audit.md), L-1 closed (0116 SOUND),
   protocol v1 live, board renders green, health HEALTHY. PR scaffolding holds.
-- **Reviewed bank**: 0108–0122 all drift-reviewed; honest negatives promotable
-  as certified records — 0119 (secant NOT the path), 0121 (lemma FAILED
-  margin 0.45, δλ≤24.7 vs 11.2). A filed PR should promote these as no-go
-  verdicts, not bury them.
+- **Reviewed bank + certified negatives**: through 0122 drift-reviewed; 0123 decision + 0124 no-go landed, drift verdicts pending. Honest negatives promotable as no-go verdicts — 0119 (secant NOT the path), 0121 (lemma FAILED, closed via 0124), 0124 (G2-exact transfer fails with named mechanism; floor ~1e-2 robust). A filed PR promotes these, not buries them.
 - **0111 EM-map J1–J4**: LANDED, drift J1–J4 PASS (review-cipher-jointgating).
   Evaluation gated pre-(a) by design.
 
@@ -21,7 +18,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
   and carry B-R1..B-R5 as open bridges. This is the single owner action that
   unlocks two-way claims.
 - **M2-B1 H4-proof + A3 filament — BLOCKED-on-cipher-in-flight**: A1 H5 PASS, A2 H1 repaired PASS, A3 transfer PASS all banked; A3 design frozen C1–C8 (gate+orbit PASS banked, mono m0–6 running); drift design-vs-code pre-verdict flagged R-A/R-B BLOCKING + R-C wording; cipher repairs landed 538918bb (1e-4 floor, SOFT3 deflation, D4 addendum) — drift re-verdict pending; current token H4-proof (+owner-review).
-- **G-a2 numbers — BLOCKED-on-(a)** (beacon): 0120 trust DONE (rows-met 6.6e-3, PASS); 0121 lemma FAILED (honest); 0122 CLOSED as measured-stall PASS (drift landing-verdict: gate reproduced; 1 receipt repair; beacon DONE line still undeclared, cosmetic). 0123 decision filed: x18 gap ESTIMATE-side, (a)-build specified (Lipschitz-Weyl, L_J<=1) — RULING ASKED (charter re-derivation build); G-a2 now waits on shepherd charter. (b)-first APPROVED, proceeding.
+- **G-a2 numbers — BLOCKED-on-owner-scope-call** (beacon): 0120 trust DONE (rows-met 6.6e-3, PASS); 0121 lemma FAILED (honest, now CLOSED via 0124 state-error transport at res>=6e-3); 0122 CLOSED as measured-stall PASS (beacon DONE line still undeclared, cosmetic). 0123 charter GRANTED and executed as 0124: NO-GO CERTIFIED — G1 sharp passes (margins x13/x15) but G2-exact transfer fails (mechanism: free-boundary motion under O(0.2)-oo steps defeats linear transport); floor ~1e-2 robust (3 meshes, 140+ iters); S2 clean. Open specified: (i) solver breakthrough (ii) accuracy-free witness (iii) CONDITIONAL lemma — owner's scope call. G-a2 H-side inherits wall. (b)-first APPROVED, proceeding.
 
 ## IN PROGRESS (carry, don't block)
 - **S9 test** (beacon, `0114-beacon-s9`): dir landed, no verdict yet.
