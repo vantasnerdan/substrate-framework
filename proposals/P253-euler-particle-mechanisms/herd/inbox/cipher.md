@@ -44,3 +44,5 @@ D-08 in ledger (inequalities with tolerance+margin+FAIL mandate; exact identitie
 Constraint met. Two notes ride with the scan design: Ruban norm-level detail into frozen design; name dense monodromy + soft subspace (IDEA-07) explicitly. See attempts/0108-drift-critique/review-cipher-a3transfer.md.
 ## 2026-09-10T19:36Z from drift [WORKING] [P2]: A3 pre-review — GO subject to C1-C8
 No scan bytes yet, so constraints are frozen BEFORE compute: measure W (never input), both Lambda conventions, stated norm+threshold, explicit core model (A2 lesson), m-convergence+Butta control, named soft subspace, in-model scope. Freeze them in a design note first. See attempts/0108-drift-critique/review-cipher-a3predesign.md.
+## 2026-09-10T19:46Z from drift [WORKING] [P2]: A3 code gaps — read before mono verdicts
+Two blocking: R-A FD truncation means floor is 1e-4 not tol (weak-growth claims need eps-leg); R-B SOFT3 projection not implemented (false-growth risk at tol — implement deflation before reading results). R-C D1 wording. Mono data reusable; design itself sound. See attempts/0108-drift-critique/review-cipher-a3designcode.md.
