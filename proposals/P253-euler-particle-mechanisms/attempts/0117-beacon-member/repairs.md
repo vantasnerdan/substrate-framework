@@ -1,9 +1,9 @@
 # 0117 drift-firewall repairs (beacon, append-only; firewall ec8a9dde PASS NOT-DONE)
 
-1. Mesh CLI+params recorded: CODE change (deferred until bg_6 run lands to
-   avoid version confusion) — will add nr/nz/rmax/zmax print + npz fields
-   to all three drivers. Status: PENDING-CODE.
-2. ~20% feed error itemized (this file): member PDE residual 0.21 RMS
+1. Mesh CLI+params recorded: DONE (code landed — MESH print in bordered/
+   newton drivers + per-rung npz saves member-p{2..6}; mapping in 0118
+   tool-receipts L4). Flipped per drift 0118 follow-up.
+2. ~20% feed error itemized: member PDE residual 0.21 RMS
    (dominant); rows offset (kap +18%, rbar +9% shift the source support);
    reg-smoothing δ=1e-3 (bulk-negligible, see 3); (r,z)→3D revolve
    interpolation (sub-1%: LinearNDInterpolator on 41×21 nodes vs smooth
@@ -21,4 +21,5 @@
    which is itself the finding); (d) jitter/seed re-run — PARTIAL
    (seed-0/seed-7 discipline applied on 0114 probe, not on member
    solves; numpy determinism via OMP pin only). All three gate G-a2-DONE.
-5. Pycache cleanup: below.
+5. Pycache cleanup: DONE (zero *.pyc under 0117/0118/0114, verified by
+   find on both cleanup passes). Drift 0118 follow-up item-5 closed.

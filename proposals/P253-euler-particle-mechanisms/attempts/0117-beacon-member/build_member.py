@@ -129,6 +129,9 @@ def main(argv=None) -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--bordered", action="store_true")
     ap.add_argument("--newton", action="store_true")
+    ap.add_argument("--nested", action="store_true")
+    ap.add_argument("--warm-npz", type=str, default="")
+    ap.add_argument("--pp", type=int, default=0)
     ap.add_argument("--nr", type=int, default=80)
     ap.add_argument("--nz", type=int, default=40)
     ap.add_argument("--reg", type=float, default=0.0)
@@ -151,6 +154,22 @@ def main(argv=None) -> None:
                      u=out["u"], mu=out["mu"], c=out["c"],
                      kap=out["kap"], rbar=out["rbar"], iz=out["iz"],
                      res=out["res"])
+        return
+    if args.nested:
+        uu, mm, cc = None, None, None
+        if args.warm_npz:
+            w = np.load(args.warm_npz)
+            uu, mm, cc = w["u"], float(w["mu"]), float(w["c"])
+            print(f"WARM {args.warm_npz} mu={mm:.4f} c={cc:.5f}",
+                  flush=True)
+        out = solve_nested(nr=args.nr, nz=args.nz, reg=1e-3,
+                           p_pw=args.pp or 3, u0=uu, mu0=mm, c0=cc)
+        print(f"NESTED rows=({out['rows'][0]:+.2e},{out['rows'][1]:+.2e}) "
+              f"mu={out['mu']:.4f} c={out['c']:.5f}", flush=True)
+        np.savez("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
+                 "member-nested-exploratory.npz",
+                 u=out["u"], mu=out["mu"], c=out["c"],
+                 rows=out["rows"])
         return
     if args.newton:
         print(f"MESH nr={args.nr} nz={args.nz} box=6x3", flush=True)
@@ -180,7 +199,9 @@ def main(argv=None) -> None:
              u=out["u"], kappa_hat=out["kappa_hat"], res=out["res"])
 
 def solve_newton(rmax=6.0, zmax=3.0, nr=80, nz=40, itmax=30, tol=1e-9,
-                 verbose=True, mu=MU, u0=None, reg=0.0):
+                 verbose=True, mu=MU, u0=None, reg=0.0, p_pw=None):
+    if p_pw is None:
+        p_pw = P
     from skfem import BilinearForm, LinearForm
     from skfem.helpers import dot, grad, inner
     mesh = build_mesh(rmax, zmax, nr, nz)
@@ -208,7 +229,7 @@ def solve_newton(rmax=6.0, zmax=3.0, nr=80, nz=40, itmax=30, tol=1e-9,
         src = u - C_SPEED * rn**2 / 2 - mu
         with np.errstate(over="ignore", invalid="ignore"):
             s, _ = smax(src)
-            f = EPS**-2 * s ** P
+            f = EPS**-2 * s ** p_pw
         fi = basis.interpolator(f)
         @LinearForm
         def load(v, w):
@@ -223,7 +244,7 @@ def solve_newton(rmax=6.0, zmax=3.0, nr=80, nz=40, itmax=30, tol=1e-9,
     nrm = n0
     for it in range(itmax):
         s, ds = smax(src)
-        jac_w = 6 * EPS**-2 * s ** 5 * ds
+        jac_w = p_pw * EPS**-2 * s ** (p_pw - 1) * ds
         ji = basis.interpolator(jac_w)
 
         @BilinearForm
@@ -406,5 +427,74 @@ def solve_bordered(rmax=6.0, zmax=3.0, nr=40, nz=20, itmax=20, tol=1e-9,
     return {"u": u, "mu": mu, "c": c, "res": nrm, "iters": it + 1,
             "kap": kap, "rbar": rbar, "iz": iz, "mesh": mesh,
             "basis": basis, "f": f, "reg": reg}
+def solve_nested(rmax=6.0, zmax=3.0, nr=40, nz=20, outer_itmax=8,
+                 inner_itmax=6, verbose=True, reg=1e-3, rbar_target=None,
+                 p_pw=None, u0=None, mu0=None, c0=None):
+    """Nested secant (0119): alternate short unbordered PDE-Newton runs at
+    frozen (mu, c) with exact 2x2 row-Newton at frozen u. The rows-vs-params
+    map is well-conditioned at stall (det~1e3); the PDE block keeps its own
+    floor. Each half-step is verifiable independently."""
+    import math as _math
+    from skfem import BilinearForm, asm
+    from skfem.helpers import inner
+    if rbar_target is None:
+        rbar_target = 1.0
+    if p_pw is None:
+        p_pw = P
+    mesh = build_mesh(rmax, zmax, nr, nz)
+    basis = Basis(mesh, ElementTriP1())
+    rn = basis.doflocs[0]
+    zn = basis.doflocs[1]
+    u = (u0 if u0 is not None
+         else 1.5 * np.exp(-(((rn - R_RING) ** 2 + zn**2) / 0.25**2)))
+    mu = MU if mu0 is None else mu0
+    c = C_SPEED if c0 is None else c0
+
+    @BilinearForm
+    def massr(a, b, w):
+        return w.x[0] * inner(a, b)
+
+    Mr = asm(massr, basis)
+
+    def smax(src):
+        root = np.sqrt(src**2 + reg**2)
+        return (src + root) / 2, 0.5 * (1 + src / root)
+
+    def rows_of(uu, mm, cc):
+        src = uu - cc * rn**2 / 2 - mm
+        with np.errstate(over="ignore", invalid="ignore"):
+            s, _ = smax(src)
+            f = EPS**-2 * s ** p_pw
+        kap = float(_math.fsum((Mr @ f).tolist()))
+        num = float(_math.fsum((Mr @ (f * rn)).tolist()))
+        return np.array([kap - 1.0, num / max(kap, 1e-300) - rbar_target])
+
+    for outer in range(outer_itmax):
+        inner = solve_newton(rmax=rmax, zmax=zmax, nr=nr, nz=nz,
+                             itmax=inner_itmax, verbose=False,
+                             mu=mu, u0=u, reg=reg, p_pw=p_pw)
+        u = inner["u"]
+        r = rows_of(u, mu, c)
+        if r[0] < -0.8:
+            print(f"nest outer={outer} NO-ROW-INFO (kap~{r[0]+1:.2f}); "
+                  f"inner fell to trivial root", flush=True)
+            break
+        J2 = np.stack([(rows_of(u, mu + 1e-6, c) - r) / 1e-6,
+                       (rows_of(u, mu, c + 1e-7) - r) / 1e-7], axis=1)
+        try:
+            dp = np.linalg.solve(J2, -r)
+        except np.linalg.LinAlgError:
+            print(f"nest outer={outer} SINGULAR 2x2", flush=True)
+            break
+        mu, c = mu + dp[0], c + dp[1]
+        if verbose:
+            print(f"nest outer={outer} rows=({r[0]:+.2e},{r[1]:+.2e}) "
+                  f"dp=({dp[0]:+.2e},{dp[1]:+.2e}) "
+                  f"pde_res={inner['res']:.2e} umax={u.max():.4f} "
+                  f"mu={mu:.4f} c={c:.5f}", flush=True)
+        if np.max(np.abs(r)) < 1e-8:
+            break
+    return {"u": u, "mu": mu, "c": c, "rows": r,
+            "mesh": mesh, "basis": basis, "p_pw": p_pw, "reg": reg}
 if __name__ == "__main__":
     main()
