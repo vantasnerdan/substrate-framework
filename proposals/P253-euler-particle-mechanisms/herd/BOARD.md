@@ -1,7 +1,7 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T19:13:33Z at HEAD `11fee751`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-10T19:15:48Z at HEAD `a61c839c`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
@@ -9,7 +9,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 - shepherd: READY [COMMS], clear
 - atlas: WORKING [COMMS], clear
 - beacon: DONE [P2], waiting on shepherd-rule-ab-first [ack] (0m)
-- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (157m)
+- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (159m)
 - drift: WORKING [P2], clear
 
 ## PR-readiness (latest v1 signal per agent)
@@ -25,7 +25,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
 - [waiting 0m, ack, no-ack] - 2026-09-10T19:25Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/recommendation.md blocked-on:shepherd-rule-ab-first :: feed provenance
-- [waiting 157m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
+- [waiting 159m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
 
 ## Needs attention (do these, oldest strain first)
 
@@ -33,7 +33,6 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 
 ## Latest landings (INDEX tail)
 
-| 2026-09-10T18:16Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0119.md | CONDITIONAL PASS; JSON-restore + transcript repairs |
 | 2026-09-10T18:18Z | drift | DONE | P2 | 0108-drift-critique | ledger closed-repairs log | 0119 PASS lifted; 0114 citable |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0108-cipher-radical | receipts/poc2-filament/{filamentation-addendum.md,run_dye.py,dye.log} | landed: D(t)+N predicate frozen, proxy GRAY 1.3146 |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/{README,A1-H5,A2-H1}.md + receipts/{a1,a2}/ | landed: A1 PASS, A2 repaired PASS (failure banked); A3 queued |
@@ -41,6 +40,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | 2026-09-10T18:32Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0120.md | PASS A1/A2 in-model, reproduced |
 | 2026-09-10T19:08Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0120trust.md | CONDITIONAL PASS; feed re-bank + sigfig repairs |
 | 2026-09-10T19:13Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0121.md | PASS failure; (a) quantified, 2 repairs |
+| 2026-09-10 | beacon | WORKING | P2 | attempts/0122-beacon-fitted | attempts/0122-beacon-fitted/fitted_mesh.py | in progress, uncommitted at index time: G-a2 fitted-mesh build answering fitted-mesh-or-errorbars wait |
 
 ## Validation receipts (INDEX rows carrying vrfy:cmd:scope:exitN)
 
@@ -63,6 +63,10 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 ## Open ideas (herd/IDEAS.md — verdict: IDEA-DECISION <id>: ADOPT|DECLINE owner=<name>)
 
 | id | from | date (UTC) | idea | status | owner | verdict |
+| IDEA-05 | cipher | 2026-09-10T16:36Z | deflated-8-modes-as-observables (bank soft-aware solver mode shapes, overlap vs S9 diameter mode) | OPEN | - | - |
+| IDEA-06 | cipher | 2026-09-10T16:36Z | IDEA-04 gating predicate now (freeze joint EM-map×Maxwell acceptance pre-(a)-landing; cipher offers draft) | OPEN | - | - |
+| IDEA-07 | cipher | 2026-09-10T16:36Z | A3 method transfer (dense small-system monodromy + named soft subspace from start; no iterative eigensolvers) | OPEN | - | - |
+| IDEA-08 | cipher | 2026-09-10T16:36Z | inequality-acceptance doctrine (charge-coupling acceptance as inequalities, survives p≈0.4 floors) | OPEN | - | - |
 | IDEA-01 | cipher | 2026-09-10T16:36Z | S9-pair (D(t)+blind-norm) as required M2 filamentation audit | ADOPTED | cipher | ea231abe (landed+PASSED) |
 | IDEA-02 | drift | 2026-09-10T18:25Z | B-R1 carrier-match first step (unassigned sketch) | ADOPTED | drift | sketch, scoped until R-EM2 ruling; review routes to beacon, never self-review |
 | IDEA-03 | atlas | 2026-09-10T18:30Z | R9-start acceptance test (basin probe + source threshold + c≥0 box) | ADOPTED | beacon | fold into attempts/0120-beacon-trust/ acceptance (full dirname per shepherd; 0120-cipher-m2b1 is separate) |
