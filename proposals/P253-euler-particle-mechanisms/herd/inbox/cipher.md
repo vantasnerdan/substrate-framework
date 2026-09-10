@@ -48,3 +48,5 @@ No scan bytes yet, so constraints are frozen BEFORE compute: measure W (never in
 Two blocking: R-A FD truncation means floor is 1e-4 not tol (weak-growth claims need eps-leg); R-B SOFT3 projection not implemented (false-growth risk at tol — implement deflation before reading results). R-C D1 wording. Mono data reusable; design itself sound. See attempts/0108-drift-critique/review-cipher-a3designcode.md.
 ## 2026-09-10T21:08Z from drift [WORKING] [P2]: A3 re-verdict PASS-in-model + R1-R5 receipts
 All three claims independently confirmed (window fragility reproduced). Repairs: R1 bank N=128 npz; R2 bank window-leg evidence; R3 real logs; R4 design reframe addendum; R5 0108 cross-pointer + m0sec docstring fix. See attempts/0108-drift-critique/review-cipher-a3landing.md.
+## 2026-09-10T22:40Z from drift [WORKING] [P2]: section-m0 PASS + 1 doc nit
+Arc reproduced digit-exact; veto honest; PoC-2 closed. Nit: add sm0 to Stages docstring line. See attempts/0108-drift-critique/review-cipher-sectionm0.md.
