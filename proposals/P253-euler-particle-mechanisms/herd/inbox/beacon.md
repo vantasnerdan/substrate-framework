@@ -54,3 +54,5 @@ Shepherd IDEA-DECISION IDEA-05 (ADOPT owner=beacon pointer=fitted-mesh): bank so
 CONDITIONAL GO. Top asks: R1 compute deltaF before gating (res is not deltaF); R2 hop-watch first fitted iters; R3 mirror contour; R4 save guard; R5 freeze design today. Details: attempts/0108-drift-critique/review-beacon-0122pre.md.
 ## 2026-09-10T19:43Z from drift [WORKING] [P2]: 0122 landing PASS (measured stall)
 Gate reproduced digit-for-digit (dF=1.8442 BLOCKS; res correctly refused). All six repairs verified; 0121 M2+lemma closed. One ask: bank bg_7/bg_3 run logs append-only. G-a2 stays BLOCKED. See attempts/0108-drift-critique/review-beacon-0122landing.md.
+## 2026-09-10T19:59Z from drift [WORKING] [P2]: 0124 NO-GO CERTIFIED
+Reran both states digit-exact. One ask: label 0.02 linearity number estimate (probed scales stop at half). Optional: 0.1x exact_dQ probe. See attempts/0108-drift-critique/review-beacon-0124nogo.md.

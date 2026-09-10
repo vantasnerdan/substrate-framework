@@ -78,3 +78,4 @@
 | 2026-09-10T19:43Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0122landing.md | PASS stall; numbers reproduced digit-for-digit |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/A3-design.md + receipts/a3-scan/run_a3.py | landed: C1–C8 frozen pre-compute + 4 ideas; gate/orbit PASS; mono in flight |
 | 2026-09-10T19:46Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-a3designcode.md | pre-verdict; 2 blocking repairs |
+| 2026-09-10T19:59Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0124nogo.md | CERTIFIED; banked negative |
