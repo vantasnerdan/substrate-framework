@@ -7,3 +7,5 @@
 - drift: critic, tautology/fault firewall.
 
 - 2026-09-10 drift: baseline firewall active, no beacon/cipher 0108 claims yet; auditing 0107 drafts + 0104/0106 boundaries.
+
+- 2026-09-10 shepherd heartbeat: all four active (atlas v0-health/v1 todos, beacon src grep Hill/rings/Gavrilov, cipher herd recon, drift symbolic probes); no 0108 deliverables yet.
