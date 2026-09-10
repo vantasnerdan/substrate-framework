@@ -1,15 +1,15 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T19:08:39Z at HEAD `27b8a55c`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-10T19:10:39Z at HEAD `2be6a124`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
 
 - shepherd: READY [COMMS], clear
 - atlas: WORKING [COMMS], clear
-- beacon: DONE [P2], waiting on G-a2-fitted-mesh-or-errorbars [ack] (3m)
-- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (152m)
+- beacon: DONE [P2], waiting on shepherd-rule-ab-first [ack] (0m)
+- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (154m)
 - drift: WORKING [P2], clear
 
 ## PR-readiness (latest v1 signal per agent)
@@ -18,18 +18,18 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 |-------|--------|------------|----------|------------|-----------|
 | shepherd | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/IDEAS.md | - | IDEA-DECISION IDEA-04: ADOPT owner=beacon+cipher pointer=joint-work (already started; report jointly) |
 | atlas | WORKING | COMMS | proposals/P253-euler-particle-mechanisms/herd/watch.sh | - | watch fix: own-commit fallback bypass paged me about my own landing; filter-then-silence repaired (loop structure restored after edits), syn |
-| beacon | DONE | P2 | attempts/0120-beacon-trust/trust-report.md | G-a2-fitted-mesh-or-errorbars | trust 2e-2→6.6e-3 rows-met; floor structural p≈0.4; basin narrow; repro ~6pct; IDEA-03 closed (1/3); feed λω exploratory |
+| beacon | DONE | P2 | attempts/0120-beacon-trust/recommendation.md | shepherd-rule-ab-first | feed provenance repaired (CLI banked, sigfigs, sensitivity); RECOMMEND (b)-first with costed evidence; ruling asked |
 | cipher | WORKING | P2 | attempts/0120-cipher-m2b1/A2-H1.md | M2-B1-H4-proof+owner-review | A3 3D-filament in flight, no escalation (shepherd ruling); a-minus-1 pin landed per drift note |
-| drift | WORKING | P2 | attempts/0108-drift-critique/review-beacon-0120trust.md | - | 0120 CONDITIONAL PASS (floor licensed, frozen intact) + MAJOR feed-provenance gap (13.60 vs 11.13). |
+| drift | WORKING | P2 | attempts/0108-drift-critique/ledger.md | - | feed repairs verified by rerun, 0120 PASS; grid-convergence note banked. |
 
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
-- [waiting 3m, ack, no-ack] - 2026-09-10T19:05Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/trust-report.md blocked-on:G-a2-fitted-mesh-or-errorbars :: trust 2e-2
-- [waiting 152m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
+- [waiting 0m, ack, no-ack] - 2026-09-10T19:25Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/recommendation.md blocked-on:shepherd-rule-ab-first :: feed provenance
+- [waiting 154m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
 
 ## Needs attention (do these, oldest strain first)
 
-- UNACKED: whoever starts on beacon's block, post a STATUS line containing `ack:G-a2-fitted-mesh-or-errorbars` (§9)
+- UNACKED: whoever starts on beacon's block, post a STATUS line containing `ack:shepherd-rule-ab-first` (§9)
 
 ## Latest landings (INDEX tail)
 
@@ -54,7 +54,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 ## Gap closure (herd/GAPS.md: gap → next artifact → owner/class)
 
 | gap | next artifact | owner | class | waits (verbatim tokens) | status |
-| G-a2 numerics | attempts/0111-beacon-ga-field G-a2 charged-branch member build (field arrays + norm certs; frontier ga-status.md) + attempts/0120-beacon-trust/trust-report.md | beacon | agent | G-a2-branch-numerics, bg_7-trust, G-a2-fitted-mesh-or-errorbars | trust rows-met 6.6e-3, floor structural p≈0.4; next: fitted mesh or errorbars; IDEA-03 1/3 closed |
+| G-a2 numerics | attempts/0111-beacon-ga-field G-a2 charged-branch member build (field arrays + norm certs; frontier ga-status.md) + attempts/0120-beacon-trust/trust-report.md | beacon | agent | G-a2-branch-numerics, bg_7-trust, G-a2-fitted-mesh-or-errorbars, shepherd-rule-ab-first | trust rows-met 6.6e-3; RECOMMEND (b)-first, ruling asked of shepherd (recommendation.md); IDEA-03 1/3 closed |
 | R-EM2 decision | owner approve/amend/decline of attempts/0112-cipher-rem2-draft | owner | owner | owner-review, R-EM2-decision, R-EM2-import | awaiting ruling; drift 0112 draft-technical PASS banked |
 | S9 test | attempts/0114-beacon-s9/s9_probe.py (+design.md) | beacon | agent | S9 | in progress (dir landed, no wait token yet) |
 | shadowing scope | attempts/0113-cipher-shadow (README + receipts) + attempts/0120-cipher-m2b1 (A1-H5, A2-H1) | cipher | agent | shadowing, M2-B1-proof, M2-B1-H4, M2-B1-H4-proof | A1 H5 PASS, A2 H1 repaired PASS; A3 queued; current token H4-proof |
