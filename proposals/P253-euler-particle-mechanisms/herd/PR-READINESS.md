@@ -27,7 +27,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 
 ## Claim-promotion backlog
 - Drafts EXIST: attempts/0126-beacon-claims/drafts.yaml (C-EUL-001/002, registry schema, `review: draft` — no registry writes, namespace free as of 2026-09-10).
-- Path to promotion: drift firewall + individual review first (0123/0124 verdicts + /6 correction cited in-entry), then R-EM2 scope decision sets what the claims may license.
+- Path to promotion: drift firewall PASSED 5152755e (faithful, bounded, typed; R1–R3 closed) — remaining: individual review, then R-EM2 scope decision sets what the claims may license.
 - No hidden debt: ledger audit clean; negatives bank (0119/0121/0124) rides as certified no-go records.
 
 ## Bottom line
