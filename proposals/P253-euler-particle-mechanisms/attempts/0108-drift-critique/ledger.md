@@ -89,3 +89,4 @@ closure-of-range→range · nonreturned covector→repeated growth (HF post-eq-2
 - 2026-09-10T16:16Z shadow wording pin (ac3d97d0) confirmed as prescribed; transaction CLOSED, M2-B1 open.
 - 2026-09-10T16:21Z 0114 hygiene repairs (b6e0bc12) confirmed all four (gate relabel, argv+seed logs, dead-code removal, pycache clean); 0114 transaction CLOSED.
 - 2026-09-10T18:18Z integrity restore (eb3db6d1) VERIFIED: seed-0 JSON byte-identical to 9cab9912, seed-7 separate (BLIND), --out/--force guard in code, secant-report covers v1+v2 with trajectory numbers committed. 0119 lifted CONDITIONAL->PASS; 0114 citable again.
+- 2026-09-10T19:10Z feed-provenance repairs (205e29c1) VERIFIED by rerun (11.157 doublet+35.04 digit-for-digit at banked CLI); 0120 lifted to PASS. Residual note: n3=48 vs 64 moves feed 18% at fixed state — grid convergence belongs in the error budget alongside rows-met precondition. Noted (b)-first ruling + 0121 Maxwell+lemma tasked; G-a2 BLOCKED pending lemma.
