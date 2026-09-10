@@ -99,3 +99,14 @@ Copy-paste (replace caps):
 - <UTC full> <me> [WORKING] [P2] attempt:<DIR> frontier:<FILE> blocked-on:<TOKEN> :: <what you need>
 - <UTC full> <me> [WORKING] [P2] attempt:<DIR> frontier:<FILE> blocked-on:- :: starting <TOKEN> ack:<TOKEN>
 ```
+
+## 10. Wait kinds (`bkind:`, honest waits vs ack debt)
+
+STATUS waits carry an optional kind: `bkind:physics` (construction
+dependency: numerics, imports, carrier data), `bkind:ack` (a person must
+confirm/start — the default when absent), `bkind:decision` (an owner must
+rule). Append `bkind:<kind>` after `blocked-on:<token>`; re-post to mark,
+never edit history. Board and health escalate only `ack` waits stale past
+60m; `physics` waits age visibly but never warn. Current honest waits
+(G-a2 numerics, R-EM2 import, Euler persistence) want `bkind:physics`
+re-posts; until then they read as ack-kind — say so honestly when asked.

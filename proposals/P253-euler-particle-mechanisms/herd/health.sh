@@ -86,10 +86,13 @@ for n in shepherd atlas beacon cipher drift; do
   [ -z "$last" ] && continue
   case "$last" in *'blocked-on:-'*) continue;; esac
   blo="$(echo "$last" | sed -n 's/.*blocked-on:\([^ ]*\).*/\1/p')"
+  kind="$(echo "$last" | sed -n 's/.*bkind:\([^ ]*\).*/\1/p')"
+  case "$kind" in physics|ack|decision) ;; *) kind="ack";; esac
   ts="$(echo "$last" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z' | head -n 1)"
-  if [ -z "$ts" ]; then say "$n waits on $blo (age unknown, undated line)"; continue; fi
+  if [ -z "$ts" ]; then say "$n waits on $blo [$kind] (age unknown, undated line)"; continue; fi
   age=$(( (now - $(date -u -d "$ts" +%s)) / 60 ))
   [ "$age" -lt 0 ] && age=0
+  if [ "$kind" != "ack" ]; then say "$n waits on $blo [$kind] (${age}m dependency, no warn)"; continue; fi
   if [ "$age" -gt 60 ]; then say "$n waits on $blo (${age}m STUCK-warn)"; warn=1; else say "$n waits on $blo (${age}m)"; fi
 done
 if [ "$fail" -eq 0 ]; then
