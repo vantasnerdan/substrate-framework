@@ -134,6 +134,7 @@ def main(argv=None) -> None:
     ap.add_argument("--reg", type=float, default=0.0)
     args = ap.parse_args(argv)
     if args.bordered:
+        print(f"MESH nr={args.nr} nz={args.nz} box=6x3 p-chain", flush=True)
         uu, mm, cc = None, None, None
         out = None
         for pp in (2, 3, 4, 5, 6):
@@ -145,13 +146,14 @@ def main(argv=None) -> None:
                   f"iz={out['iz']:.4f} mu={out['mu']:.4f} c={out['c']:.4f}",
                   flush=True)
             uu, mm, cc = out["u"], out["mu"], out["c"]
-        np.savez("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
-                 "member-bordered-exploratory.npz",
-                 u=out["u"], mu=out["mu"], c=out["c"],
-                 kap=out["kap"], rbar=out["rbar"], iz=out["iz"],
-                 res=out["res"])
+            np.savez("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
+                     f"member-p{pp}-exploratory.npz",
+                     u=out["u"], mu=out["mu"], c=out["c"],
+                     kap=out["kap"], rbar=out["rbar"], iz=out["iz"],
+                     res=out["res"])
         return
     if args.newton:
+        print(f"MESH nr={args.nr} nz={args.nz} box=6x3", flush=True)
         out = solve_newton(nr=args.nr, nz=args.nz, reg=args.reg)
         print(f"NEWTON res={out['res']:.3e} iters={out['iters']} "
               f"umax={out['u'].max():.4f} r0={out['r0']:.3e} "
@@ -378,7 +380,7 @@ def solve_bordered(rmax=6.0, zmax=3.0, nr=40, nz=20, itmax=20, tol=1e-9,
         cur = nrm
         improved = False
         ray = []
-        for _ in range(30):
+        for _ in range(64):
             u_t = u + step * (t0 + T @ dp)
             u_t[dd] = 0.0
             F_t, _, _, _, k_t, rb_t, _ = full(u_t, mu + step * dp[0],
