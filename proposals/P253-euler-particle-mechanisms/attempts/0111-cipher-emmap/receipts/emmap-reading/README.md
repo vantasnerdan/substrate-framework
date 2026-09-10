@@ -10,7 +10,6 @@ Env: CPython 3.12.2, numpy 1.26.4.
 - Design correction: AB quantization demo moved to confined-flux reading (test disks enclosing tube); current-loop reading kept as the failing contrast.
 
 ## stdout (replay, matches eval)
-flux_tube/Phi = 1.00733 / 1.00659 / 1.01391 at test r = 0.15/0.2/0.3 (pixelation ~1%, size-independent → R-EM4(i) PASS at 1% level); current-loop toroidal flux = 0; self-disk L = 3.07517; motional E_φ read-off tabulated.
-
-## Verdicts
-R-EM5 selection: PASS (confinement required for quantization). R-EM1 one-way map: derived. R-EM2/R-EM3: open imports, untouched. No comparator contact. Lint style-only; bytes frozen.
+flux_tube/Phi = 1.00733 / 1.00659 / 1.01391 at test r = 0.15/0.2/0.3; current-loop toroidal flux = 0 (printed analytic zero); self-disk L = 3.07517; motional E_φ tabulated. Full text: run.log.
+## Verdicts (downgraded per drift ed67f69d: predicate-level, not measurement)
+R-EM5 selection SOUND as conditional logic; script role = analytic illustration + quadrature regression (1% pixelation consistency). R-EM1 one-way map: derived under QUASI-STATIC scope (instantaneous BS kernel, v≪c_EM, no radiation — named, not smuggled). R-EM2/R-EM3: open imports, untouched. No comparator contact. Lint style-only; bytes frozen.
