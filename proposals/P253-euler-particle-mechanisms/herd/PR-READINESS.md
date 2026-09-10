@@ -17,7 +17,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
   approve/amend/decline, the PR MUST scope to one-way + conditional framing
   and carry B-R1..B-R5 as open bridges. This is the single owner action that
   unlocks two-way claims.
-- **M2-B1 H4-proof + A3 filament — BLOCKED-on-cipher-in-flight**: A1 H5 PASS, A2 H1 repaired PASS, A3 transfer PASS all banked; A3 design frozen C1–C8 (gate+orbit PASS banked, mono m0–6 running); drift design-vs-code pre-verdict flagged R-A/R-B BLOCKING + R-C wording; cipher repairs landed 538918bb (1e-4 floor, SOFT3 deflation, D4 addendum) — drift re-verdict pending; current token H4-proof (+owner-review).
+- **M2-B1 H4-proof + A3 filament — LANDED, re-verdict pending** (cipher 9bc3bd6a): A1 H5 PASS, A2 H1 repaired PASS, A3 transfer PASS banked; A3 design frozen C1–C8, R-A/R-B repairs landed (1e-4 floor, SOFT3 deflation, D4 addendum); A3 LANDED — m1–6 PASS N64+128 deflated, m0 window-fragile with PoC-2 Floquet downgrade filed; drift re-verdict requested; current token H4-proof (+owner-review).
 
 ## IN PROGRESS (carry, don't block)
 - **G-a2 numbers — 0125 PASS CONDITIONAL** (beacon + drift review-beacon-0124correction): conditional lemma rho*~0.03 banked; 0124 RE-CERTIFIED STRONGER with /6 correction; R1–R3 DONE 37625ab1 (stale framing fixed, corrected receipts, sweep banked). G-a2 construction track complete — remaining: R-EM2 scope decision governs what it licenses.
