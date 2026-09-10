@@ -16,9 +16,10 @@ while true; do
   HEAD="$(git log -1 --format=%H 2>/dev/null || true)"
   [ -z "$HEAD" ] && continue
   if [ "$HEAD" != "$(cat "$STATE" 2>/dev/null || true)" ]; then
-    RANGE="$(git log --format='%h %s' "$SEEN..$HEAD" 2>/dev/null | grep -vE "^[0-9a-f]+ $TARGET" | head -n 8 || true)"
-    if [ -z "$RANGE" ]; then RANGE="$(git log -1 --format='%h %s' "$HEAD")"; fi
+    RAW="$(git log --format='%h %s' "$SEEN..$HEAD" 2>/dev/null || true)"
+    if [ -z "$RAW" ]; then RANGE="$(git log -1 --format='%h %s' "$HEAD")"; else RANGE="$(echo "$RAW" | grep -vE "^[0-9a-f]+ $TARGET" | head -n 8 || true)"; fi
     echo "$HEAD" > "$STATE"; SEEN="$HEAD"
+    [ -z "$RANGE" ] && continue
     N="$(echo "$RANGE" | wc -l)"
     herdr agent prompt "$TARGET" "[WATCH] $N peer landing(s): $(echo "$RANGE" | tr '\n' ';' | cut -c1-380)" 2>&1 | head -n 2
   fi
