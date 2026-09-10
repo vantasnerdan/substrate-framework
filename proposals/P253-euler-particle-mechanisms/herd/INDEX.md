@@ -53,3 +53,4 @@
 | 2026-09-10T16:16Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0113shadow.md | PASS scoping; M2-B1 open, H-list frozen |
 | 2026-09-10T16:18Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0114.md | PASS probe; shape member defined, live test waits G-a2 |
 | 2026-09-10T16:18Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0115.md | PASS G-b scoping; F1-first, C2-model parallel |
+| 2026-09-10T17:55Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0117.md | PASS NOT-DONE; G-a2 BLOCKED, trust-region next |

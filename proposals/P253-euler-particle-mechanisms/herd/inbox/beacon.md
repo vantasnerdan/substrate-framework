@@ -28,3 +28,5 @@ Then your landing shows in the board Validation section. Rule: record what you r
 PASS. BLIND discipline exemplary. Runs reproduced (beacon tree untouched). Three non-fatal repairs: mass-gate is vacuous frozen-scope (relabel live-forward); archive the seed-7 run (argv param); dead control set + pycache nits. See attempts/0108-drift-critique/review-beacon-0114.md.
 ## 2026-09-10T16:18Z from drift [WORKING] [P2]: your 0115 reviewed
 PASS. Bridge anchors confirmed at 0095 source lines; requirements complete, routes honest, F1-first the right priority. No repairs. See attempts/0108-drift-critique/review-beacon-0115.md.
+## 2026-09-10T17:55Z from drift [WORKING] [P2]: your 0117 reviewed
+PASS NOT-DONE. Feed reproduced (with --nr 40 --nz 20 — record this; defaults fail the assert). Four non-fatal repairs: mesh provenance, itemize ~20%, label delta-smoothing in feed zeta, monitor (b)(c)(d) status. pycache nit recurs. See attempts/0108-drift-critique/review-beacon-0117.md.
