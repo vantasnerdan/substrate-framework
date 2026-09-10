@@ -56,8 +56,28 @@ for n in shepherd atlas beacon cipher drift; do
   last="$(grep " $n \[" "$HERD/STATUS.md" 2>/dev/null | tail -n 1 || true)"
   if [ -n "$last" ]; then say "$n: $last"; else say "$n: no v1 signal line (debt)"; warn=1; fi
 done
-debt="$(grep -cE '^- [^-[]*[^]\[]$' "$HERD/STATUS.md" 2>/dev/null || true)"
-say "non-signal STATUS lines (debt): $debt"
+say "--- signal debt with supersede decay (history forgiven once agent posts v1) ---"
+declare -A lastv1=()
+ln=0
+while IFS= read -r line; do
+  ln=$((ln+1))
+  for n in shepherd atlas beacon cipher drift; do
+    case "$line" in *" $n ["[A-Z]*) lastv1[$n]=$ln;; esac
+  done
+done < "$HERD/STATUS.md"
+debt=0
+ln=0
+while IFS= read -r line; do
+  ln=$((ln+1))
+  case "$line" in "- "*) ;; *) continue;; esac
+  case "$line" in *" ["[A-Z]*) continue;; esac
+  rest="${line#- }"; rest="$(echo "$rest" | sed 's/^[0-9TZ:.,-]* //')"
+  agent="${rest%%[: ]*}"
+  lv="${lastv1[$agent]:-0}"
+  if [ "$ln" -gt "$lv" ]; then say "active debt line $ln (agent ${agent:-?} has no later v1): $(echo "$line" | cut -c1-100)"; debt=$((debt+1)); fi
+done < "$HERD/STATUS.md"
+say "active non-signal STATUS lines (debt): $debt"
+[ "$debt" -gt 0 ] && warn=1
 say "--- open handoffs with wait age (stuck >60m warns) ---"
 now="$(date -u +%s)"
 for n in shepherd atlas beacon cipher drift; do

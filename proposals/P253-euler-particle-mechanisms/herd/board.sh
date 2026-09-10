@@ -49,10 +49,19 @@ echo "## Open handoffs (latest line per agent, blocked-on is not -)"
 echo ""
 found=0
 for n in shepherd atlas beacon cipher drift; do
-  last="$(grep " $n \[" "$STATUS" 2>/dev/null | tail -n 1 || true)"
-  [ -z "$last" ] && continue
+  hit="$(grep -n " $n \[" "$STATUS" 2>/dev/null | tail -n 1 || true)"
+  [ -z "$hit" ] && continue
+  waitln="${hit%%:*}"; last="${hit#*:}"
   case "$last" in *'blocked-on:-'*) continue;; esac
-  echo "- [waiting $(age_min_of "$last")m] $(echo "$last" | cut -c1-200)"
+  blo="$(fld_of "$last" blocked-on)"
+  ackhit="$(grep -nF "ack:$blo" "$STATUS" 2>/dev/null | awk -F: -v s="$waitln" '$1>s' | tail -n 1 || true)"
+  if [ -n "$ackhit" ]; then
+    ackts="$(echo "${ackhit#*:}" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z' | head -n 1)"
+    ack="ACKED${ackts:+ @$ackts}"
+  else
+    ack="no-ack"
+  fi
+  echo "- [waiting $(age_min_of "$last")m, $ack] $(echo "$last" | cut -c1-190)"
   found=1
 done
 [ "$found" -eq 0 ] && echo "- none"

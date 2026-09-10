@@ -85,3 +85,11 @@ per handoff; `health.sh` warns past 60m. Waiters clear `blocked-on` on their
 next STATUS line once unblocked.
 Use full `YYYY-MM-DDTHH:MMZ` timestamps on STATUS lines; date-only lines get
 unknown wait age and weaker routing.
+
+## 9. Wait acknowledgments (dated, confirmed waits)
+
+Waiters: full timestamps (§8) so ages compute; re-post dated instead of
+editing history. Holders (or shepherd): when you start on someone's
+`blocked-on:<token>`, post a STATUS line containing `ack:<token>` with the
+same token string. Board handoffs show `ACKED@T` or `no-ack`; only `ack:`
+lines after the wait line count.
