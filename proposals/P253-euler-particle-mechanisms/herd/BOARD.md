@@ -1,15 +1,15 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T19:07:48Z at HEAD `78775e5c`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-10T19:08:39Z at HEAD `27b8a55c`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
 
 - shepherd: READY [COMMS], clear
 - atlas: WORKING [COMMS], clear
-- beacon: DONE [P2], waiting on G-a2-fitted-mesh-or-errorbars [ack] (2m)
-- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (151m)
+- beacon: DONE [P2], waiting on G-a2-fitted-mesh-or-errorbars [ack] (3m)
+- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (152m)
 - drift: WORKING [P2], clear
 
 ## PR-readiness (latest v1 signal per agent)
@@ -20,12 +20,12 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | atlas | WORKING | COMMS | proposals/P253-euler-particle-mechanisms/herd/watch.sh | - | watch fix: own-commit fallback bypass paged me about my own landing; filter-then-silence repaired (loop structure restored after edits), syn |
 | beacon | DONE | P2 | attempts/0120-beacon-trust/trust-report.md | G-a2-fitted-mesh-or-errorbars | trust 2e-2→6.6e-3 rows-met; floor structural p≈0.4; basin narrow; repro ~6pct; IDEA-03 closed (1/3); feed λω exploratory |
 | cipher | WORKING | P2 | attempts/0120-cipher-m2b1/A2-H1.md | M2-B1-H4-proof+owner-review | A3 3D-filament in flight, no escalation (shepherd ruling); a-minus-1 pin landed per drift note |
-| drift | WORKING | P2 | attempts/0108-drift-critique/review-cipher-0120.md | - | dye GRAY PASS (reproduced) + 0120 A1/A2 PASS-in-model (reproduced, Rankine legitimate). |
+| drift | WORKING | P2 | attempts/0108-drift-critique/review-beacon-0120trust.md | - | 0120 CONDITIONAL PASS (floor licensed, frozen intact) + MAJOR feed-provenance gap (13.60 vs 11.13). |
 
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
-- [waiting 2m, ack, no-ack] - 2026-09-10T19:05Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/trust-report.md blocked-on:G-a2-fitted-mesh-or-errorbars :: trust 2e-2
-- [waiting 151m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
+- [waiting 3m, ack, no-ack] - 2026-09-10T19:05Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/trust-report.md blocked-on:G-a2-fitted-mesh-or-errorbars :: trust 2e-2
+- [waiting 152m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
 
 ## Needs attention (do these, oldest strain first)
 
@@ -33,7 +33,6 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 
 ## Latest landings (INDEX tail)
 
-| 2026-09-10T17:55Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0117.md | PASS NOT-DONE; G-a2 BLOCKED, trust-region next |
 | 2026-09-10T18:06Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0118.md | PASS negative; c-branch + status-hygiene repairs |
 | 2026-09-10T18:16Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0119.md | CONDITIONAL PASS; JSON-restore + transcript repairs |
 | 2026-09-10T18:18Z | drift | DONE | P2 | 0108-drift-critique | ledger closed-repairs log | 0119 PASS lifted; 0114 citable |
@@ -41,6 +40,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/{README,A1-H5,A2-H1}.md + receipts/{a1,a2}/ | landed: A1 PASS, A2 repaired PASS (failure banked); A3 queued |
 | 2026-09-10T18:32Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-dye.md | PASS informative GRAY, reproduced |
 | 2026-09-10T18:32Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0120.md | PASS A1/A2 in-model, reproduced |
+| 2026-09-10T19:08Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0120trust.md | CONDITIONAL PASS; feed re-bank + sigfig repairs |
 
 ## Validation receipts (INDEX rows carrying vrfy:cmd:scope:exitN)
 
@@ -57,8 +57,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | G-a2 numerics | attempts/0111-beacon-ga-field G-a2 charged-branch member build (field arrays + norm certs; frontier ga-status.md) + attempts/0120-beacon-trust/trust-report.md | beacon | agent | G-a2-branch-numerics, bg_7-trust, G-a2-fitted-mesh-or-errorbars | trust rows-met 6.6e-3, floor structural p≈0.4; next: fitted mesh or errorbars; IDEA-03 1/3 closed |
 | R-EM2 decision | owner approve/amend/decline of attempts/0112-cipher-rem2-draft | owner | owner | owner-review, R-EM2-decision, R-EM2-import | awaiting ruling; drift 0112 draft-technical PASS banked |
 | S9 test | attempts/0114-beacon-s9/s9_probe.py (+design.md) | beacon | agent | S9 | in progress (dir landed, no wait token yet) |
-| shadowing scope | attempts/0113-cipher-shadow (README + receipts) + attempts/0120-cipher-m2b1 (A1-H5, A2-H1) | cipher | agent | shadowing, M2-B1-proof, M2-B1-H4 | A1 H5 PASS, A2 H1 repaired PASS; A3 queued; H4 = current proof token |
-| EM key-and-lock | TBD — cipher 0111 follow-up? | cipher? | agent | - | DRAFT seeded from shepherd gap list; mapping unconfirmed, correct me |
+| shadowing scope | attempts/0113-cipher-shadow (README + receipts) + attempts/0120-cipher-m2b1 (A1-H5, A2-H1) | cipher | agent | shadowing, M2-B1-proof, M2-B1-H4, M2-B1-H4-proof | A1 H5 PASS, A2 H1 repaired PASS; A3 queued; current token H4-proof |
 | Euler persistence | joined-PR supervision bundle (tracks G-a2 + R-EM2) | shepherd | owner | Euler-persistence | open supervision umbrella, not a build |
 
 ## Open ideas (herd/IDEAS.md — verdict: IDEA-DECISION <id>: ADOPT|DECLINE owner=<name>)
