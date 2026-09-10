@@ -1,7 +1,7 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T19:12:38Z at HEAD `a23830ce`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-10T19:13:33Z at HEAD `11fee751`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
@@ -9,7 +9,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 - shepherd: READY [COMMS], clear
 - atlas: WORKING [COMMS], clear
 - beacon: DONE [P2], waiting on shepherd-rule-ab-first [ack] (0m)
-- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (156m)
+- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (157m)
 - drift: WORKING [P2], clear
 
 ## PR-readiness (latest v1 signal per agent)
@@ -20,12 +20,12 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | atlas | WORKING | COMMS | proposals/P253-euler-particle-mechanisms/herd/watch.sh | - | watch fix: own-commit fallback bypass paged me about my own landing; filter-then-silence repaired (loop structure restored after edits), syn |
 | beacon | DONE | P2 | attempts/0120-beacon-trust/recommendation.md | shepherd-rule-ab-first | feed provenance repaired (CLI banked, sigfigs, sensitivity); RECOMMEND (b)-first with costed evidence; ruling asked |
 | cipher | WORKING | P2 | attempts/0120-cipher-m2b1/A2-H1.md | M2-B1-H4-proof+owner-review | A3 3D-filament in flight, no escalation (shepherd ruling); a-minus-1 pin landed per drift note |
-| drift | WORKING | P2 | attempts/0108-drift-critique/ledger.md | - | feed repairs verified by rerun, 0120 PASS; grid-convergence note banked. |
+| drift | WORKING | P2 | attempts/0108-drift-critique/review-beacon-0121.md | - | 0121 PASS measured-failure (margin exact, deferral sound, 2 archival repairs). |
 
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
 - [waiting 0m, ack, no-ack] - 2026-09-10T19:25Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/recommendation.md blocked-on:shepherd-rule-ab-first :: feed provenance
-- [waiting 156m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
+- [waiting 157m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
 
 ## Needs attention (do these, oldest strain first)
 
@@ -33,7 +33,6 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 
 ## Latest landings (INDEX tail)
 
-| 2026-09-10T18:06Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0118.md | PASS negative; c-branch + status-hygiene repairs |
 | 2026-09-10T18:16Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0119.md | CONDITIONAL PASS; JSON-restore + transcript repairs |
 | 2026-09-10T18:18Z | drift | DONE | P2 | 0108-drift-critique | ledger closed-repairs log | 0119 PASS lifted; 0114 citable |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0108-cipher-radical | receipts/poc2-filament/{filamentation-addendum.md,run_dye.py,dye.log} | landed: D(t)+N predicate frozen, proxy GRAY 1.3146 |
@@ -41,6 +40,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | 2026-09-10T18:32Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-dye.md | PASS informative GRAY, reproduced |
 | 2026-09-10T18:32Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0120.md | PASS A1/A2 in-model, reproduced |
 | 2026-09-10T19:08Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0120trust.md | CONDITIONAL PASS; feed re-bank + sigfig repairs |
+| 2026-09-10T19:13Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0121.md | PASS failure; (a) quantified, 2 repairs |
 
 ## Validation receipts (INDEX rows carrying vrfy:cmd:scope:exitN)
 
