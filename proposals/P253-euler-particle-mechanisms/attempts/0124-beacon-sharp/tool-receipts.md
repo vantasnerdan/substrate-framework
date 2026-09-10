@@ -11,3 +11,7 @@
   P2 rms 0.008902 max 0.143701.
 - P2/ElementTriP2 + Basis intorder/quadrature API verified present
   (skfem 12.0.2) via import probe, exit 0.
+- CORRECTED reruns (append-only; v1 lines 6,9 SUPERSEDED by /6 fix,
+  history preserved): fitted G1 = 4.1588, margin x2.6 (exit 0);
+  trust G1 = 5.2052, margin x2.1 (exit 0). G2'/S2/Q entries above
+  unaffected (never used /6; drift reruns match).

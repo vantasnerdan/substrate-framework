@@ -5,8 +5,11 @@ Pending: drift verdicts on 0123/0124 — build firewall-clean.
 
 ## Frozen design
 
-One conditional result framing 0124's two findings:
-- G1 sharp-pass (0.87 trust / 0.69 fitted, margins x13/x15).
+One conditional result framing 0124's two findings (CORRECTED: G1 v1
+/6 withdrawn — true G1 = 5.21 trust / 4.16 fitted, charter gate
+FAILS, margins only x2.1/x2.6 linearized):
+- G1 sharp-instrument (exact bilinear, no norm chain — "sharp" is an
+  instrument property; "pass" withdrawn).
 - Boundary-motion no-go mechanism (floor ~1e-2, 3 meshes, S2 clean).
 
 Condition C (checkable per state by the instrument): exact nonlinear

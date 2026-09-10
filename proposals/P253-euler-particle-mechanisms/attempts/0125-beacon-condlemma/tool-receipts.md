@@ -13,6 +13,8 @@
 - FD-vs-einsum check (inline, exit 0): diff O(eps) exact-theory
   convergence (1.04e-3/1.04e-4/1.04e-5) — pipeline exonerated, error
   localized to the dzeta factor.
+- sweep_C.py banked (drift R3): exit 0, reproduces all 8 sweep numbers
+  digit-exact (9.1750/3.4895/1.5141/0.7030/0.3383 + 0.1054/0.0261/0.0052).
 - Corrected reruns: sharp_dQ.py tensor+trust-r3 (exit 0): G1 =
   5.2052, margin x2.1. sharp_dQ.py fitted default (exit 0): G1 =
   4.1588, margin x2.6. G2'/sweep numbers unchanged (never used /6).
