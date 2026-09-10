@@ -156,3 +156,10 @@ STATUS line with `offers:<token>` echoing the waiter's token verbatim
 with waits (`OFFER agent:token`) and tells the waiter to respond
 take/decline on their next line. Offers are bids, not deliveries; the
 artifact + firewall verdict still earn the landing.
+
+## 16. Sweep rule (triple-source before escalating)
+
+Prompts deliver rulings that sometimes never hit STATUS. Before escalating
+a wait as unruled, check all three: STATUS lines, inbox/shepherd.md ruling
+outcomes, recent commits landing on it. A STATUS-only gap still licenses
+escalation; the triple check keeps it from misfiring.
