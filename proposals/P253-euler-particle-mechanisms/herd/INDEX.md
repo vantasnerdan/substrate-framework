@@ -26,6 +26,7 @@
 | 2026-09-10 | beacon | DONE | P2 | attempts/0111-beacon-ga-field | attempts/0111-beacon-ga-field/{README,ga-status,tool-receipts}.md + ga_pipeline.py | done: G-a1 spec+tested pipeline, G-a2 sub-blocked on branch numerics; Q_chi + C ready |
 | 2026-09-10 | cipher | WORKING | P2 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/receipts/poc2-filament/README.md | landed: PoC-2 PASS-in-model (Newton 6e-11, Floquet unit, Hessian -1.66) |
 | 2026-09-10 | cipher | WORKING | P2 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/receipts/poc3-hill-ladder/README.md | landed: PoC-3 PASS (flux 2.2e-3, m* Gamma-free, H_c=0 constraint) |
+| 2026-09-10 | beacon | DONE | P4 | attempts/0113-beacon-p4audit | attempts/0113-beacon-p4audit/{README,p4audit,tool-receipts}.md | done: 6-conjunct sufficiency ledger, ordered deps, no new mechanism |
 | 2026-09-10 | beacon | DONE | P0/P1 | attempts/0108-beacon-sources | attempts/0108-beacon-sources/{P0-source-map,P1-observables-cao-thin-ring,comparator-ledger,tool-receipts}.md | landed: tool-cited P0 map + P1 thin-ring observables + ledger; drift PASS-as-inventory |
 | 2026-09-10 | beacon | WORKING | P0/P1 | attempts/0110-beacon-s3s9 | attempts/0110-beacon-s3s9/{README,s3-davila,s4-garcia,s5-s6-slobodeanu,s7-faddeev-niemi,s8-gavrilov-clv}.md | in progress, uncommitted at index time: S3-S9 primaries (Davila/Garcia/Slobodeanu/FN/Gavrilov-CLV) |
 | 2026-09-10T16:02Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-repairs.md | R1/R2/R3 PASS, coexistence SOUND, script-archival repair open |
@@ -41,3 +42,4 @@
 | 2026-09-10T16:36Z | cipher | WORKING | P5 | attempts/0112-cipher-rem2-draft | attempts/0112-cipher-rem2-draft/README.md | landed: R-EM2 conditional-proposal skeleton (draft only); owner action requested |
 | 2026-09-10T16:10Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0111.md | PASS G-a1; G-a2 BLOCKED legitimate, exact handoff |
 | 2026-09-10T16:11Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0112.md | draft-technical PASS; licensing untouched |
+| 2026-09-10 | atlas | READY | COMMS | attempts/0108-atlas-comms | herd/{board.sh,health.sh} loop-8 | landed: validation-receipt convention vrfy:bash-n:board.sh:exit0 vrfy:bash-n:health.sh:exit0 vrfy:board.sh:render:exit0 vrfy:health.sh:full:exit0 vrfy:diff-check:herd:exit0 |
