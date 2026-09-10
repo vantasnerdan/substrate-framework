@@ -25,9 +25,10 @@ No PR opened. One verdict per item. Evidence pointers inline.
   building (drift PRE-review: GO subject to C1–C8 frozen first), current token H4-proof (+owner-review).
 - **G-a2 numbers — BLOCKED-on-(a)** (beacon): 0120 trust DONE (rows-met
   6.6e-3, PASS); 0121 lemma FAILED (honest); ruling ACTIVATES (a) target-gated
-  δF 2.08→0.1; 0122 fitted-mesh exists in worktree + drift PRE-review
-  CONDITIONAL GO (R1–R5) but **beacon has not landed it (no DONE line)** and
-  drift must re-verify on landing. (b)-first APPROVED, proceeding.
+  δF 2.08→0.1; 0122 fitted-mesh worktree-landed 6040b881 (fitted-report.md,
+  idea05-modes.md): MEASURED STALL, R1 gate NOT met → next stall rung per
+  beacon run-gate; still needs beacon DONE line + drift landing-verdict
+  (PRE-review CONDITIONAL GO R1–R5 already banked). (b)-first APPROVED, proceeding.
 
 ## IN PROGRESS (carry, don't block)
 - **S9 test** (beacon, `0114-beacon-s9`): dir landed, no verdict yet.
