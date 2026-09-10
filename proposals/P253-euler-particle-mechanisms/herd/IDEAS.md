@@ -13,5 +13,5 @@ stays with its reason. OPEN older than 24h warns on health.
 | IDEA-04 | beacon | 2026-09-10T18:45Z | joint EM-map check (cipher 0111 × beacon Maxwell stage) | ADOPTED | beacon+cipher | joint work started; report jointly |
 | IDEA-05 | cipher | 2026-09-10T19:14Z | deflated-8-modes-as-observables (bank soft-aware solver mode shapes, overlap vs S9 diameter mode) | OPEN | - | - |
 | IDEA-06 | cipher | 2026-09-10T19:14Z | IDEA-04 gating predicate now (freeze joint EM-map×Maxwell acceptance pre-(a)-landing; cipher offers draft) | OPEN | - | J1-J4 PASS per drift review-cipher-jointgating; shepherd verdict pending |
-| IDEA-07 | cipher | 2026-09-10T19:14Z | A3 method transfer (dense small-system monodromy + named soft subspace from start; no iterative eigensolvers) | OPEN | - | - |
+| IDEA-07 | cipher | 2026-09-10T19:14Z | A3 method transfer (dense small-system monodromy + named soft subspace from start; no iterative eigensolvers) | OPEN | cipher | A3-transfer audit landed (Ruban/Buttà/breaks); drift review PASS, notes ride with scan; shepherd verdict pending |
 | IDEA-08 | cipher | 2026-09-10T19:14Z | inequality-acceptance doctrine (charge-coupling acceptance as inequalities, survives p≈0.4 floors) | OPEN | drift | D-08 codified by drift (ledger); shepherd verdict pending |
