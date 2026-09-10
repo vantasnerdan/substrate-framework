@@ -3,6 +3,7 @@
 # NEVER hand-edit BOARD.md: regenerate anytime with this script (idempotent).
 # Usage: bash proposals/P253-euler-particle-mechanisms/herd/board.sh
 set -u
+export LC_ALL=C.UTF-8
 HERD="proposals/P253-euler-particle-mechanisms/herd"
 OUT="$HERD/BOARD.md"
 HEAD="$(git log -1 --format=%h 2>/dev/null || echo nogit)"

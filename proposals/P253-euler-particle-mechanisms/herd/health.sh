@@ -2,6 +2,7 @@
 # herd/health.sh — v0+v1 comms health. Exit 0 = healthy, 1 = broken v0.
 # Usage: bash proposals/P253-euler-particle-mechanisms/herd/health.sh
 set -u
+export LC_ALL=C.UTF-8
 HERD="proposals/P253-euler-particle-mechanisms/herd"
 fail=0; warn=0
 say() { printf '%s\n' "$*"; }
