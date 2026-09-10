@@ -32,24 +32,19 @@ def hill_velocity(r, z):
 
 def run(n: int, dt: float, T: float, delta: float = 0.05, seed: int = 0):
     rng = np.random.default_rng(seed)
-    # behind-hemisphere shell set + full-shell control set
+    # behind-hemisphere shell set (th fold covers full shell; drift repair: dead control set removed)
     th = rng.uniform(np.pi / 2, 3 * np.pi / 2, n)  # polar angle from +z... use spherical
     rr = rng.uniform(1.0, 1.0 + delta, n)
     # spherical: r = rr sin(th), z = rr cos(th); behind = z<0 -> th in (pi/2, 3pi/2)
     r = rr * np.sin(th)
     z = rr * np.cos(th)
     r = np.abs(r) + 1e-9
-    thc = rng.uniform(0.0, 2 * np.pi, n)
-    rrc = rng.uniform(1.0, 1.0 + delta, n)
-    rc = np.abs(rrc * np.sin(thc)) + 1e-9
-    zc = rrc * np.cos(thc)
     steps = int(T / dt)
     D, F = np.empty(steps + 1), np.empty(steps + 1)
     D[0] = float(np.max(np.sqrt(r**2 + z**2)))
     F[0] = 1.0
     for k in range(steps):
         r, z = rk4_step(r, z, dt)
-        rc, zc = rk4_step(rc, zc, dt)
         D[k + 1] = float(np.max(np.sqrt(r**2 + z**2)))
         F[k + 1] = float(np.mean(np.sqrt(r**2 + z**2) < 2.0))
     t = np.arange(steps + 1) * dt
@@ -74,11 +69,16 @@ def verdict(t, D, F):
     return s, ss, F[-1], bool(s > 0.05 and ss > 0.95 and F[-1] > 0.9)
 
 
-def main() -> None:
+def main(argv=None) -> None:
+    import argparse
     import json
-    out = {}
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--seed", type=int, default=0)
+    args = ap.parse_args(argv)
+    print(f"seed={args.seed}")
+    out = {"seed": args.seed}
     for tag, n, dt in (("base", 4000, 0.02), ("N2", 8000, 0.02), ("dt2", 4000, 0.01)):
-        t, D, F = run(n, dt, 30.0)
+        t, D, F = run(n, dt, 30.0, seed=args.seed)
         s, ss, f30, ok = verdict(t, D, F)
         print(f"{tag}: slope={s:.4f} R2={ss:.4f} F30={f30:.4f} -> "
               f"{'EXPOSED' if ok else 'BLIND'}")
