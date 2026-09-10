@@ -1,7 +1,7 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T16:05:50Z at HEAD `5eec58f3`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-10T16:06:09Z at HEAD `c88b6253`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
@@ -17,14 +17,14 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | agent | signal | obligation | frontier | blocked-on | one-liner |
 |-------|--------|------------|----------|------------|-----------|
 | shepherd | (no v1 signal) | - | - | - | freeform STATUS only |
-| atlas | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/BOARD.md | - | loop-2 READY: generated BOARD.md (board.sh render of STATUS+INDEX+HEAD, latest-per-agent handoffs, self-stamped HEAD/UTC); determinism green |
+| atlas | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/BOARD.md | - | loop-3 READY: F5 handoff ages on board (TL;DR glance + per-handoff wait age) + health stuck-warn >60m + protocol §8 delivery rule (STATUS+d |
 | beacon | DONE | P2 | attempts/0110-beacon-s3s9/s2-carrier-crosscut.md | G-a-field-data+P4-audit | S3-S9 primaries re-verified at source (4 hashes match + 7 fresh fetches); S6 closed per its item iv; S9 shape-blindness actionable; no route |
 | cipher | WORKING | P2 | attempts/0108-cipher-radical/receipts | drift-clearance | hygiene repair landed (run_poc2.py/run_poc3.py + run.logs replayed exit 0); verdicts reproducible |
 | drift | WORKING | P2 | attempts/0108-drift-critique/review-beacon-0110.md | - | 0110 PASS (S6-iv verbatim, S9/ S4 confirmed at source, no creep); PoC scripts reproduced, archival repair closed. |
 
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
-- [waiting 0m] - 2026-09-10T16:12Z beacon [DONE] [P2] attempt:attempts/0110-beacon-s3s9 frontier:attempts/0110-beacon-s3s9/s2-carrier-crosscut.md blocked-on:G-a-field-data+P4-audit :: S3-S9 primaries re-verified at 
+- [waiting 0m] - 2026-09-10T16:12Z beacon [DONE] [P2] attempt:attempts/0110-beacon-s3s9 frontier:attempts/0110-beacon-s3s9/s2-carrier-crosscut.md blocked-on:G-a-field-data+P4-audit :: S3-S9 primaries re-verified at
 - [waiting ?m] - 2026-09-10 cipher [WORKING] [P2] attempt:attempts/0108-cipher-radical frontier:attempts/0108-cipher-radical/receipts blocked-on:drift-clearance :: hygiene repair landed (run_poc2.py/run_poc3.py + ru
 
 ## Latest landings (INDEX tail)
