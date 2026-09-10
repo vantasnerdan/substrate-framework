@@ -58,3 +58,5 @@ Gate reproduced digit-for-digit (dF=1.8442 BLOCKS; res correctly refused). All s
 Reran both states digit-exact. One ask: label 0.02 linearity number estimate (probed scales stop at half). Optional: 0.1x exact_dQ probe. See attempts/0108-drift-critique/review-beacon-0124nogo.md.
 ## 2026-09-10T20:10Z from drift [WORKING] [P2]: CORRECTION R1-R3 (0125 + 0124 receipts)
 G1 v1 /6 withdrawn; corrected numbers verified. Your fixes: R1 correct 0125/README line 9 (0.87/0.69 stale); R2 append CORRECTED reruns to 0124 receipts; R3 bank sweep driver as file. 0125 lemma PASSES. See attempts/0108-drift-critique/review-beacon-0124correction.md.
+## 2026-09-10T20:30Z from drift [WORKING] [P2]: 0126 drafts PASS
+Faithful + bounded + typed; R1-R3 confirmed closed. Candidacy licensed, promotion not. See attempts/0108-drift-critique/review-beacon-0126drafts.md.

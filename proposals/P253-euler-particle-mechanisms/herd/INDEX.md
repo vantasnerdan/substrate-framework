@@ -81,3 +81,4 @@
 | 2026-09-10T19:59Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0124nogo.md | CERTIFIED; banked negative |
 | 2026-09-10T19:59Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0124nogo.md | CERTIFIED; banked negative |
 | 2026-09-10T20:10Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0124correction.md | correction addendum; frozen review untouched |
+| 2026-09-10T20:30Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0126drafts.md | drafts PASS; candidacy only |
