@@ -26,3 +26,12 @@ Full-3D filament, Euler shadowing [M2-B1], label graft [M2-B2], statistics [M2-B
 Source: run_poc2.py (this dir). Command: `python3 poc2-filament/run_poc2.py` from receipts/. Env: CPython 3.12.2, numpy 1.26.4. Stdout/stderr: run.log (exit 0, 13.9 s). Replay matches eval verdicts digit-for-digit. Lint: pycodestyle/Ruff style warnings only (long lines, E731/E741) — bytes frozen for receipt fidelity; thin script, not canonical API.
 ## Second resolution (drift standing item, closed)
 `python3 run_poc2.py 400` → run-res2.log, exit 0: Newton 6.42e-11, eigs 0.92751472±0.37378077i / 1.0000 (|.|=1±2e-6), Hessian −1.66259 — match default to 7 dp. Verdict robust at two quadrature resolutions. Edit trail: argv override added post-archival (defaults byte-identical path); a botched range edit once dropped `import time/numpy`, restored + default replay re-verified exit 0 before res2. Full trail kept.
+
+## Downgrade pointer (R5, drift re-verdict b003b63e — do not remove)
+The Floquet verdict above ("|μ|=1±2e-6 → PASS (elliptic, in-model)") is
+SUPERSEDED as a stability claim: cipher A3 showed the fixed-T monodromy swings
+elliptic→marginal→saddle(1.46) across ±1 RK4 step of integration window
+(1021/1022/1023 steps; evidence: 0120-cipher-m2b1/receipts/a3-scan/
+window1021-1023.npz + README.md). The numbers above stand as the recorded
+computation at the 1021-step window; the PASS verdict is UNRESOLVED pending
+phase-free (section-based) m=0 stability. A3 m≥1 PASS-in-model unaffected.

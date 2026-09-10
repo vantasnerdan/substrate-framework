@@ -63,3 +63,11 @@ Floquet ρ per m from eig(M_m); growth verdict per m, never aggregated (J1–J4)
 - R-B: SOFT3 deflation + eigenvector-overlap attribution implemented in
   stage_verdicts; stage_mono raw counts stamped UNLICENSED-nodeflate, never consumed.
 - R-C: this addendum is the wording correction; D1 above retained as frozen history.
+
+## D5 — reframe addendum (drift re-verdict b003b63e, A3 landing)
+Design-stage legs a-ladder / Buttà-control / Rankine-variant are REQUEUED behind
+a window-robust m=0 diagnostic (currently specified, unbuilt: section-based m0,
+phase-free stability). Rationale (accepted): laddering a window-fragile
+diagnostic measures integration windows, not Ruban bands. m≥1 PASS-in-model
+stands without ladder (two resolutions + eps + T-window legs over-determine it).
+Nothing else in D1–D4 changes; frozen inputs stay frozen.

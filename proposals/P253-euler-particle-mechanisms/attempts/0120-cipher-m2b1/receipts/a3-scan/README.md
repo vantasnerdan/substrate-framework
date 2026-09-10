@@ -60,3 +60,13 @@ m=1 soft-attrib=4 (x/y-translate pairs, as designed); eps-leg 3.15e-9/3.77e-9.
 Two resolutions (N=64/128) + T-window (±1 step) + eps-halving all agree:
 m≥1 PASS-in-model (stable) is the most over-determined verdict of the campaign.
 m=0 stays UNRESOLVED (window-fragile); PoC-2 downgrade stands as filed.
+
+## R1–R5 closure (drift re-verdict)
+- R1: Mono_N128_e1e-06_m06.npz (N-tagged copy of landing npz; |ρ|−1 ~1e-10–1e-9).
+- R2: window1021-1023.npz + numbers above (downgrade evidence banked as artifact).
+- R3: no run.log exists — compute ran under harness auto-background with output
+  delivered to transcript (captured verbatim in the numbers above); empty
+  dead-launch logs were committed once by accident and removed the next commit.
+  Rerun commands reproduce every number (see header).
+- R4: D5 reframe in A3-design.md.
+- R5: cross-pointer appended at the 0108 PoC-2 receipt (see that file).

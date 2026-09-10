@@ -5,8 +5,7 @@ Method history (honest trail): one-sided FD monodromy (R-A floor 1e-4 + eps-leg)
 m=0 wrong-subspace block retired (measured non-axisym leak, found all-zero);
 GAUGE2 named (azimuthal per-ring exact kernel); crossing-detect Newton retired
 (branch jumps) -> smooth 3x3 single shooting (res 2.9e-12); lab-frame fixed-T m=0
-kept as data, centered-Schur variant retired as artifact (2.0 eigenvalue).
-Stages: gate | orbit | mono | m0 | m0sec | newton3 | verdicts
+Stages: gate | orbit | mono | m0 | newton3 | verdicts
 Usage: python3 run_a3.py <stage> [aa [N]]
 """
 import os
