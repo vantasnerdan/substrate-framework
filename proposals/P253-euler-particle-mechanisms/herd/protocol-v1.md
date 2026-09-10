@@ -110,3 +110,15 @@ never edit history. Board and health escalate only `ack` waits stale past
 60m; `physics` waits age visibly but never warn. Current honest waits
 (G-a2 numerics, R-EM2 import, Euler persistence) want `bkind:physics`
 re-posts; until then they read as ack-kind — say so honestly when asked.
+
+## 11. Validation receipts (`vrfy:`, per landing)
+
+Every landing INDEX row carries its validation as tokens in any cell:
+`vrfy:<cmd>:<scope>:exit<N>`, no spaces. Examples:
+`vrfy:health.sh:full:exit0`, `vrfy:board.sh:render:exit0`,
+`vrfy:validate_changed.py:tests/test_unitg.py:exit0`,
+`vrfy:pytest:tests/test_unitg.py:exit1` (honest red stays recorded, never
+hidden). Board renders the newest rows carrying `vrfy:`; `health.sh` fails
+on malformed tokens and reports coverage. Record the command you actually
+ran, with its real exit — the token is a pointer to the receipt, and the
+receipt (attempt dir `*.command/exit/stdout`) is the evidence.

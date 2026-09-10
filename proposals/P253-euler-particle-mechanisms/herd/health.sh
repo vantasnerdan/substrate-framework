@@ -95,6 +95,21 @@ for n in shepherd atlas beacon cipher drift; do
   if [ "$kind" != "ack" ]; then say "$n waits on $blo [$kind] (${age}m dependency, no warn)"; continue; fi
   if [ "$age" -gt 60 ]; then say "$n waits on $blo (${age}m STUCK-warn)"; warn=1; else say "$n waits on $blo (${age}m)"; fi
 done
+say "--- validation receipts (vrfy:cmd:scope:exitN in INDEX) ---"
+bad=0; with=0; total=0
+while IFS= read -r row; do
+  case "$row" in *'UTC | agent'*|*'|---'*|'') continue;; esac
+  total=$((total+1))
+  toks="$(echo "$row" | grep -oE 'vrfy:[^ |]*' || true)"
+  [ -z "$toks" ] && continue
+  with=$((with+1))
+  for t in $toks; do
+    case "$t" in vrfy:*:*:exit*) ;; *) say "malformed receipt token: $t"; bad=1;; esac
+    case "$t" in *':exit'[0-9]*) ;; *) say "receipt without numeric exit: $t"; bad=1;; esac
+  done
+done < "$HERD/INDEX.md"
+say "receipt coverage: $with/$total INDEX data rows carry vrfy tokens"
+[ "$bad" -eq 1 ] && { say "receipt format BROKEN"; fail=1; }
 if [ "$fail" -eq 0 ]; then
   [ "$warn" -eq 0 ] && say "HEALTHY: v0+v1" || say "HEALTHY: v0 (v1 partial)"
   exit 0
