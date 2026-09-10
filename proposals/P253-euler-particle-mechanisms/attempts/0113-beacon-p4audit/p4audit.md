@@ -17,8 +17,7 @@ constants; no quantization, no derived coupling, no back-derived scale).
 | 3 | Exchange rules / fermionic statistics | MISSING-entirely | Seeds only: M1 belt-trick framing (M1-B1 open: phase ≠ statistics), M2 Hannay phase (M2-B3 open), M3 bosonic H_c (M3-B2 open). 0094: "exchange statistics or fermionic character" unlicensed. |
 | 4 | Action normalization (derived ħ) | REFUTED-classical / MISSING | 0094-B refuted: integer character m leaves continuous N and S0; S0 = C₀g₀²/(4πεc) for EVERY C₀ — normalization invariance selects nothing. E0 leading scale minimum established but E1 finite-core blocked; "universal action or identification with hbar" unlicensed. Needs: derived discrete unit (C3-compact-defect route blocked at core/level/coefficient). |
 | 5 | Effective relativistic propagation | MISSING-entirely | c_EM imported constant; subluminality an assumed window (a_c > 0, 0080 (36)(37)); euler_scale_causality: carrier band ≠ causal cone. No Lorentz-cone / finite-speed-observable derivation in-tree. |
-| 6 | Observable currents (shared; chiral weak for ν) | HALF-classical / MISSING-rest | HAVE (classical): material/Noether currents (0068/0071), EM coupling via imported U(1). MISSING: derived charge quantization, and EVERYTHING neutrino-side (no neutral spin-1/2 sector; no chiral current; no mass/mixing — P6 untouched). |
-
+| 6 | Observable currents (shared; chiral weak for ν) | HALF-classical / MISSING-rest | HAVE (classical): material/Noether currents — NOT re-read at 0113 boundary; inherited via 0095 source-audit §§(0068/0071 reviewed inputs), qualifier per drift 0113 review. EM coupling via imported U(1). MISSING: derived charge quantization, and EVERYTHING neutrino-side (no neutral spin-1/2 sector; no chiral current; no mass/mixing — P6 untouched). |
 ## M2/KAM candidacy assessment (shepherd-named input)
 
 M2's P4 relevance is real but narrow: a KAM-confined periodic orbit would
