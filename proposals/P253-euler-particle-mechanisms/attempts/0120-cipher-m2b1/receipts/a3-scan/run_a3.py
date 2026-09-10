@@ -115,8 +115,8 @@ def monodromy(X0, T, mmax=6, eps=1e-6, dt=DT, **kw):
             F = basis_field(m, *dir_index(m, i))
             XT = flow(X0 + eps * F, T, dt=dt, **kw)
             col = (project(XT - axisym_of(XT))[m] - pB[m]) / eps
-            M[:, i] = col[:nd] if m > 0 else col
         Mono[m] = M
+    np.savez("Mono_e%s_m%02d.npz" % (eps, mmax), **{"m%d" % m: Mono[m] for m in Mono})
     return Mono, XB
 
 
@@ -177,8 +177,8 @@ def stage_mono():
         am = abs(ev)
         order = np.argsort(-am)
         top = " ".join(f"{am[j]:.6f}" for j in order[:4])
-        grow = am[am > 1 + 1e-6]
-        print(f"m={m}: |rho|max4 [{top}] n_grow={len(grow)}")
+        # R-B: RAW counts, UNLICENSED (no SOFT3 deflation) — do not consume; see verdicts
+        print(f"m={m}: RAW|rho|max4 [{top}] UNLICENSED-nodeflate")
     # C1: W MEASURED — max relative convergence rate x Rbar^2/Gamma over base period
     X = X0.copy()
     n = int(round(T / DT))
@@ -195,6 +195,105 @@ def stage_mono():
     print(f"W_MEASURED={Wmax:.4f} Lambda_Saff={np.log(8*Rm/AA):.3f} Lambda_ln={np.log(Rm/AA):.3f} ({time.time()-t0:.1f}s)")
 
 
+# ---- parameterized axisymmetric model (ladder/control need own Newton per (Gam,aa)) ----
+def mut_a(Rt, Zt, Rs, Zs, Gam, aa, nq):
+    ph = np.linspace(0, 2 * np.pi, nq, endpoint=False)
+    dph = 2 * np.pi / nq
+    sx, sy = Rs * np.cos(ph), Rs * np.sin(ph)
+    rx, ry, rz = Rt - sx, -sy, Zt - Zs
+    r = np.sqrt(rx * rx + ry * ry + rz * rz + aa * aa)
+    dlx, dly = -Rs * np.sin(ph) * dph, Rs * np.cos(ph) * dph
+    f = Gam / (4 * np.pi * r ** 3)
+    return np.array([np.sum(f * dly * rz), 0.0, np.sum(f * (dlx * ry - dly * rx))])
+
+
+def rhs2a(s, Gam, aa, nq):
+    R1, Z1, R2, Z2 = s
+    m12 = mut_a(R1, Z1, R2, Z2, Gam, aa, nq)
+    m21 = mut_a(R2, Z2, R1, Z1, Gam, aa, nq)
+    V1 = Gam / (4 * np.pi * R1) * (np.log(8 * R1 / aa) - 0.25)
+    V2 = Gam / (4 * np.pi * R2) * (np.log(8 * R2 / aa) - 0.25)
+    return np.array([m12[0], V1 + m12[2], m21[0], V2 + m21[2]])
+
+
+def rk4_2a(s, dt, Gam, aa, nq):
+    f = lambda q: rhs2a(q, Gam, aa, nq)
+    k1 = f(s)
+    k2 = f(s + dt / 2 * k1)
+    k3 = f(s + dt / 2 * k2)
+    k4 = f(s + dt * k3)
+    return s + dt / 6 * (k1 + 2 * k2 + 2 * k3 + k4)
+
+
+def section_map(x, Gam, aa, nq, dt=0.005, tmax=12.0):
+    # from (R1,R2) at Z1=Z2 section, flow to next same-sense crossing; return shape+T
+    s = np.array([x[0], 0.05, x[1], -0.05])
+    prev = s.copy()
+    t = 0.0
+    while t < tmax:
+        s = rk4_2a(s, dt, Gam, aa, nq)
+        t += dt
+        if (prev[1] - prev[3]) * (s[1] - s[3]) < 0 and t > 0.5:
+            return np.array([s[0], s[2], s[1] - s[3]]), t
+        prev = s.copy()
+    return None, None
+
+
+def newton_orbit(xguess, Gam, aa, nq):
+    x = np.array(xguess, dtype=float)
+    for it in range(12):
+        sh, T = section_map(x, Gam, aa, nq)
+        r = sh - np.array([x[0], x[1], 0.0])
+        rn = np.linalg.norm(r)
+        if rn < 1e-9:
+            break
+        J = np.zeros((3, 2))
+        e = 1e-6
+        for j in range(2):
+            dx = np.zeros(2)
+            dx[j] = e
+            sh2, _ = section_map(x + dx, Gam, aa, nq)
+            J[:, j] = (sh2 - np.array([x[0] + dx[0], x[1] + dx[1], 0.0]) - r) / e
+        dx, *_ = np.linalg.lstsq(J, -r, rcond=None)
+        x = x + dx
+    return x, T, rn
+
+def stage_verdicts():
+    # R-A: license floor 1e-4 (one-sided FD truncation); R-B: SOFT3 deflation + overlap
+    R1, R2, T = 0.773723, 1.185226, 4.08800
+    X0 = ring_state(R1, 0.0, R2, 0.0)
+    D = np.load("Mono_e1e-06_m06.npz")
+    tS, px, py = soft3_vectors(X0)
+    Q = {0: tS / np.linalg.norm(tS)}
+    Qp = np.stack([px, py], axis=1)
+    Qp, _ = np.linalg.qr(Qp)
+    Q[1] = Qp
+    print("SOFT3: m=0 dim1 (time-shift); m=1 dim2 (x/y-translate), orthonormalized")
+    for m in range(7):
+        M = D["m%d" % m]
+        ev, EV = np.linalg.eig(M)
+        am = abs(ev)
+        if m in Q:
+            P = np.eye(M.shape[0]) - Q[m] @ Q[m].T
+            evd = np.linalg.eigvals(P @ M @ P)
+            amd = abs(evd)
+        else:
+            amd = am
+        ov = []
+        if m in Q:
+            for j in range(len(ev)):
+                ov.append(float(np.linalg.norm(Q[m].T @ (EV[:, j] / np.linalg.norm(EV[:, j])))))
+        top = " ".join(f"{a:.6f}" for a in sorted(amd)[-4:][::-1])
+        ng = int((amd > 1 + 1e-4).sum())
+        nsoft = sum(1 for o in ov if o > 0.5) if ov else 0
+        print(f"m={m}: deflated|rho| [{top}] n_grow(1e-4)={ng} soft-attrib={nsoft}")
+    # R-A eps-leg: halve eps on m=1,2, report entry diff (truncation estimate)
+    for m in (1, 2):
+        M1 = D["m%d" % m]
+        Mono2, _ = monodromy(X0, T, mmax=m, eps=5e-7)
+        M2 = Mono2[m]
+        print(f"m={m} eps-leg: max|M(eps)-M(eps/2)|={abs(M1-M2).max():.2e}")
+
 if __name__ == "__main__":
     stage = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1][0].isalpha() else "gate"
-    {"gate": stage_gate, "orbit": stage_orbit, "mono": stage_mono}[stage]()
+    {"gate": stage_gate, "orbit": stage_orbit, "mono": stage_mono, "verdicts": stage_verdicts}[stage]()

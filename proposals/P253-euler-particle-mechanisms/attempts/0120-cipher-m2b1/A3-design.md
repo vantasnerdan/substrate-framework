@@ -54,3 +54,12 @@ Floquet ρ per m from eig(M_m); growth verdict per m, never aggregated (J1–J4)
    compute; unnamed soft modes are where false growths hide.
 4. Core-variant leg as break-quantifier: when a transfer names a stiffness break,
    the scan carries the two cores side by side and the DIFFERENCE is the result.
+
+## D4 — addendum (drift design-vs-code fbe19593, pre-verdict)
+- R-A: FD is ONE-SIDED at eps=1e-6 (D1 wording corrected: finite-difference, not
+  tangent-linear). Verdict license restricted to |ρ|−1>1e-4; weak-growth band
+  (1e-6,1e-4) UNLICENSED pending eps-leg (halving on m=1,2 in stage_verdicts).
+  Primary Ruban test (|ρ|−1~O(1) in unstable bands) survives the floor.
+- R-B: SOFT3 deflation + eigenvector-overlap attribution implemented in
+  stage_verdicts; stage_mono raw counts stamped UNLICENSED-nodeflate, never consumed.
+- R-C: this addendum is the wording correction; D1 above retained as frozen history.
