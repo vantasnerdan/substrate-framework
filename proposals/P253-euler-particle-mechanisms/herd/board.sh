@@ -69,8 +69,21 @@ for n in shepherd atlas beacon cipher drift; do
     fi
   fi
   [ "$kind" = "decision" ] && ack="owner-decision"
+  offer=""
+  while IFS= read -r oline; do
+    [ -n "$oline" ] || continue
+    oln="${oline%%:*}"; otext="${oline#*:}"
+    [ "$oln" -gt "$waitln" ] || continue
+    otok="$(echo "$otext" | sed -n 's/.*offers:\([^ ]*\).*/\1/p')"
+    [ -z "$otok" ] && continue
+    case "$blo" in *"$otok"*) offer="$(echo "$otext" | sed -n 's/.* \([a-z]*\) \[[A-Z].*/\1/p'):$otok";; esac
+    case "$otok" in *"$blo"*) offer="$(echo "$otext" | sed -n 's/.* \([a-z]*\) \[[A-Z].*/\1/p'):$otok";; esac
+    [ -n "$offer" ] && break
+  done <<EOF
+$(grep -nF "offers:" "$STATUS" 2>/dev/null || true)
+EOF
   wage="$(age_min_of "$last")"
-  echo "- [waiting ${wage}m, $kind, $ack] $(echo "$last" | cut -c1-180)"
+  [ -n "$offer" ] && echo "- [waiting ${wage}m, $kind, $ack, OFFER $offer] $(echo "$last" | cut -c1-170)" || echo "- [waiting ${wage}m, $kind, $ack] $(echo "$last" | cut -c1-180)"
   [ "$wage" = "?" ] && attn="${attn}- UNDATED: $n re-post this wait with a full YYYY-MM-DDTHH:MMZ timestamp (§8), then it can age
 "
   if [ "$kind" = "ack" ] && [ "$ack" = "no-ack" ]; then
@@ -78,6 +91,8 @@ for n in shepherd atlas beacon cipher drift; do
     attn="${attn}- UNACKED: whoever starts on $n's block, post a STATUS line containing \`ack:$blo\` (§9)$esc
 "
   fi
+  [ -n "$offer" ] && attn="${attn}- OFFER on table for $n's block ($offer) — waiter respond take/decline on next STATUS line
+"
   found=1
 done
 [ "$found" -eq 0 ] && echo "- none"
@@ -104,5 +119,19 @@ echo "## Open ideas (herd/IDEAS.md — verdict: IDEA-DECISION <id>: ADOPT|DECLIN
 echo ""
 irows="$(grep '^| id |' "$HERD/IDEAS.md" 2>/dev/null; grep '| OPEN |' "$HERD/IDEAS.md" 2>/dev/null; grep '^|' "$HERD/IDEAS.md" 2>/dev/null | grep -v '^|---' | grep -v '| OPEN |' | grep -v '^| id |' || true)"
 if [ -z "$irows" ]; then echo "- IDEAS.md missing"; else echo "$irows"; fi
+echo ""
+echo "## Novelty throughput (cipher novelty engine; cadence: >=1 filed idea per firewall verdict)"
+echo ""
+now="$(date -u +%s)"
+for a in cipher beacon drift atlas; do
+  f="$(grep -c "^| IDEA-[0-9]* | $a |" "$HERD/IDEAS.md" 2>/dev/null || true)"
+  d="$(grep "^| IDEA-[0-9]* | $a |" "$HERD/IDEAS.md" 2>/dev/null | grep -c 'ADOPTED\|DECLINED' || true)"
+  echo "- $a: filed $f, decided $d"
+done
+clast="$(grep '^| IDEA-[0-9]* | cipher |' "$HERD/IDEAS.md" 2>/dev/null | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z' | sort | tail -n 1 || true)"
+vlast="$(grep '^[^|]*drift \[' "$STATUS" 2>/dev/null | grep -i cipher | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z' | sort | tail -n 1 || true)"
+cs="0"; [ -n "$clast" ] && cs="$(date -u -d "$clast" +%s)"
+vs="0"; [ -n "$vlast" ] && vs="$(date -u -d "$vlast" +%s)"
+if [ -z "$clast" ]; then echo "- cipher cadence: no ideas filed yet"; elif [ "$vs" -gt "$cs" ]; then echo "- cipher cadence: QUIET — latest drift verdict ($vlast) newer than latest idea ($clast); nag owed"; else echo "- cipher cadence: kept — latest idea ($clast) covers latest verdict ($vlast)"; fi
 } | sed 's/[[:space:]]*$//' > "$OUT"
 echo "board rendered: $OUT @ $HEAD"
