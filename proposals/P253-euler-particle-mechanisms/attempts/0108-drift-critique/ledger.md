@@ -90,3 +90,16 @@ closure-of-range→range · nonreturned covector→repeated growth (HF post-eq-2
 - 2026-09-10T16:21Z 0114 hygiene repairs (b6e0bc12) confirmed all four (gate relabel, argv+seed logs, dead-code removal, pycache clean); 0114 transaction CLOSED.
 - 2026-09-10T18:18Z integrity restore (eb3db6d1) VERIFIED: seed-0 JSON byte-identical to 9cab9912, seed-7 separate (BLIND), --out/--force guard in code, secant-report covers v1+v2 with trajectory numbers committed. 0119 lifted CONDITIONAL->PASS; 0114 citable again.
 - 2026-09-10T19:10Z feed-provenance repairs (205e29c1) VERIFIED by rerun (11.157 doublet+35.04 digit-for-digit at banked CLI); 0120 lifted to PASS. Residual note: n3=48 vs 64 moves feed 18% at fixed state — grid convergence belongs in the error budget alongside rows-met precondition. Noted (b)-first ruling + 0121 Maxwell+lemma tasked; G-a2 BLOCKED pending lemma.
+
+## Doctrine D-08 (IDEA-08, adopted owner=drift 2026-09-10): inequality acceptance — CODIFIED
+
+Empirical/numerical acceptance predicates are INEQUALITIES (sign/gap preservation,
+tolerance-bounded size-independence, margins), never equalities: equality-demands on
+computed quantities invite fitted-constant fraud and are unachievable in floating point.
+Test cases already conforming: R-EM4(i) 1% size-independence, rows-met kap/rbar ≤ ~1%,
+0121 margin 0.45<1, 0114 slope/R² conjunction gates. Boundary (declined half): EXACT
+analytic identities stay equalities (conservation laws, determinant factorizations,
+classifications) — the doctrine never demotes proof to tolerance. Every inequality
+predicate MUST carry preregistered tolerance + margin + explicit FAIL side, else it is
+not a predicate and firewall will reject it as unfalsifiable. Applies to residual-floor
+acceptance identically (floor below stated bound with budget, not floor equals number).
