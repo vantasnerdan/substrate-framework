@@ -87,3 +87,4 @@ closure-of-range→range · nonreturned covector→repeated growth (HF post-eq-2
   everywhere + quasi-static scope named + dups cut, verified in diff. Drift-clearance block
   lifted (one-way half); R-EM2-import stays owner-side. Combo still BLOCKED on the import.
 - 2026-09-10T16:16Z shadow wording pin (ac3d97d0) confirmed as prescribed; transaction CLOSED, M2-B1 open.
+- 2026-09-10T16:21Z 0114 hygiene repairs (b6e0bc12) confirmed all four (gate relabel, argv+seed logs, dead-code removal, pycache clean); 0114 transaction CLOSED.
