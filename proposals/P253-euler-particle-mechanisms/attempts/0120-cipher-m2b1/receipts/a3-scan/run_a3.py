@@ -179,7 +179,7 @@ def shoot(R1g=0.773723, R2g=1.185226, Tg=4.08800, quiet=True):
 
     def res3(yy):
         X0 = ring_state(yy[0], 0.0, yy[1], 0.0)
-        XT = flow(X0, yy[2])
+        XT, _ = flow_frac(X0, yy[2])
         S = shape4(XT)
         return np.array([S[0] - yy[0], S[2] - yy[1], S[1] - S[3]])
 
@@ -260,8 +260,83 @@ def stage_mono():
           f"Lambda_ln={np.log(Rm/AA):.3f} ({time.time()-t0:.1f}s)")
 
 
+def _stage_m0_stub_retired():
+    pass
+
+def mut_a(Rt, Zt, Rs, Zs, Gam, aa, nq):
+    ph = np.linspace(0, 2 * np.pi, nq, endpoint=False)
+    dph = 2 * np.pi / nq
+    sx, sy = Rs * np.cos(ph), Rs * np.sin(ph)
+    rx, ry, rz = Rt - sx, -sy, Zt - Zs
+    r = np.sqrt(rx * rx + ry * ry + rz * rz + aa * aa)
+    dlx, dly = -Rs * np.sin(ph) * dph, Rs * np.cos(ph) * dph
+    f = Gam / (4 * np.pi * r ** 3)
+    return np.array([np.sum(f * dly * rz), 0.0, np.sum(f * (dlx * ry - dly * rx))])
+
+
+def rhs2a(s, Gam, aa, nq):
+    R1, Z1, R2, Z2 = s
+    m12 = mut_a(R1, Z1, R2, Z2, Gam, aa, nq)
+    m21 = mut_a(R2, Z2, R1, Z1, Gam, aa, nq)
+    V1 = Gam / (4 * np.pi * R1) * (np.log(8 * R1 / aa) - 0.25)
+    V2 = Gam / (4 * np.pi * R2) * (np.log(8 * R2 / aa) - 0.25)
+    return np.array([m12[0], V1 + m12[2], m21[0], V2 + m21[2]])
+
+
+def rk4_2a(s, dt, Gam, aa, nq):
+    k1 = rhs2a(s, Gam, aa, nq)
+    k2 = rhs2a(s + dt / 2 * k1, Gam, aa, nq)
+    k3 = rhs2a(s + dt / 2 * k2, Gam, aa, nq)
+    k4 = rhs2a(s + dt * k3, Gam, aa, nq)
+    return s + dt / 6 * (k1 + 2 * k2 + 2 * k3 + k4)
+
+
+def flow_frac(X0, T, dt=DT, **kw):
+    """window-exact flow: full steps + one fractional RK4 step landing EXACTLY at T."""
+    n = int(T / dt)
+    X = X0.copy()
+    for _ in range(n):
+        X = rk4_3(X, dt, **kw)
+    h = T - n * dt
+    if h > 1e-12:
+        X = rk4_3(X, h, **kw)
+    return X, n * dt + h
+
+def stage_sm0():
+    # D6r2: window-EXACT centered section-flow 3x3 (fractional last step) at shot
+    # orbit + fractional-T legs (T + k*dt/4): smooth multiplier-vs-T curve decides
+    # genuine adjacency (swings persist) vs truncation artifact (swings vanish).
+    import numpy as np
+    R1, R2, T, rn = shoot()
+    print(f"sm0: shot R1={R1:.6f} R2={R2:.6f} T={T:.5f} |res|={rn:.1e}", flush=True)
+    t0 = time.time()
+
+    def secflow(sh, TT):
+        X0 = ring_state(sh[0], sh[2] / 2, sh[1], -sh[2] / 2)
+        XT, Teff = flow_frac(X0, TT)
+        R = [np.sqrt(XT[k, :, 0] ** 2 + XT[k, :, 1] ** 2).mean() for k in range(2)]
+        Z = [XT[k, :, 2].mean() for k in range(2)]
+        return np.array([R[0], R[1], Z[0] - Z[1]]), Teff
+
+    sh_star = np.array([R1, R2, 0.0])
+    for k in (-2, -1, 0, 1, 2):
+        TT = T + k * DT / 4
+        F0, Teff = secflow(sh_star, TT)
+        M = np.zeros((3, 3))
+        e = 1e-6
+        for j in range(3):
+            dp = np.zeros(3)
+            dp[j] = e
+            M[:, j] = (secflow(sh_star + dp, TT)[0] - secflow(sh_star - dp, TT)[0]) / (2 * e)
+        ev = np.linalg.eigvals(M)
+        print(f"sm0 T+{k}*dt/4 (Teff={Teff:.5f}): eigs",
+              " ".join(f"{v.real:.6f}{v.imag:+.6f}j" for v in ev),
+              "|.|=", " ".join(f"{abs(v):.6f}" for v in ev), flush=True)
+    print(f"(sm0 done {time.time()-t0:.1f}s)")
+
+
 def stage_m0():
-    # CENTERED section-map 3x3 monodromy at SHOT orbit (mirrors PoC-2 flow_shape).
+    # fixed-T centered section-flow 3x3 (legacy diagnostic; window-fragile — see sm0)
     R1, R2, T, rn = shoot()
     print(f"m0 base: shot R1={R1:.6f} R2={R2:.6f} T={T:.5f} |res|={rn:.1e}", flush=True)
     t0 = time.time()
@@ -325,4 +400,4 @@ def stage_verdicts():
 
 if __name__ == "__main__":
     {"gate": stage_gate, "orbit": stage_orbit, "mono": stage_mono, "m0": stage_m0,
-     "newton3": stage_newton3, "verdicts": stage_verdicts}[_stage0]()
+     "newton3": stage_newton3, "sm0": stage_sm0, "verdicts": stage_verdicts}[_stage0]()

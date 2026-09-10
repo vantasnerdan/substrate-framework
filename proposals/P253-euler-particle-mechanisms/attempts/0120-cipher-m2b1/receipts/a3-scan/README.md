@@ -70,3 +70,18 @@ m=0 stays UNRESOLVED (window-fragile); PoC-2 downgrade stands as filed.
   Rerun commands reproduce every number (see header).
 - R4: D5 reframe in A3-design.md.
 - R5: cross-pointer appended at the 0108 PoC-2 receipt (see that file).
+
+## Section-m0 landing (D6r2 window-exact flow_frac + fractional-T legs, N=200)
+Shot orbit re-converged by window-exact shooting to BANKED values
+(0.773723, 1.185227) T=4.08803 res 6.4e-11 — the 0.4% shift was itself
+truncation artifact. Krein arc (section-flow 3x3, Teff exact):
+T−2: 0.9547±0.2976i (|.|=1) · T−1: 0.9773±0.2117i (|.|=1) ·
+T+0: 1.000183/0.999817/1.0 · T+1: 1.2367/1.0/0.8086 ·
+T+2: 1.3498/1.0/0.7409. Elliptic pair collides at 1 then splits reciprocal-real
+across ~0.1% of period: the orbit sits AT a Hamiltonian-Hopf point in m=0.
+eps-leg at T+0: 1e-6/5e-7 agree; 2.5e-7 roundoff-fogged (flow roundoff/eps ~ 4).
+N=64 own-shot-T gives {1,1,1} flat — cross-resolution spread ±2e-4 VETOES any
+growth reading of N=200's 1.000183 (D-08: floor necessary, not sufficient).
+m=0 verdict: MARGINAL-COLLISION (mechanism mapped both sides; exact-period pair
+within 2e-4 of unit circle; growth UNLICENSED). Banked elliptic PASS mechanism
+explained: 1021-step window lands on the arc's elliptic side.

@@ -84,3 +84,4 @@
 | 2026-09-10T20:30Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0126drafts.md | drafts PASS; candidacy only |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/receipts/a3-scan/README.md + run_a3.py | landed: m1-6 PASS-in-model (2 resol, deflated, eps+T-window legs); m0 UNRESOLVED window-fragile; PoC-2 Floquet downgrade |
 | 2026-09-10T21:08Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-a3landing.md | re-verdict; watch discharged |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/receipts/a3-scan/README.md + run_a3.py sm0/flow_frac | landed: Krein arc T-2..T+2, m0 MARGINAL-COLLISION, banked-orbit reconverged |

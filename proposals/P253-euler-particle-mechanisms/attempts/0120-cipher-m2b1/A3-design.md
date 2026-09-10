@@ -71,3 +71,25 @@ phase-free stability). Rationale (accepted): laddering a window-fragile
 diagnostic measures integration windows, not Ruban bands. m≥1 PASS-in-model
 stands without ladder (two resolutions + eps + T-window legs over-determine it).
 Nothing else in D1–D4 changes; frozen inputs stay frozen.
+
+## D6 — section-based m0 design (chartered; phase-free stability)
+Object: m=0 stability via crossing-triggered Poincaré section map (no fixed-T
+window). Section: Z1=Z2 same-sense (every 2nd crossing = unswapped return);
+state (R1,R2) at shot orbit; map by rk4_2a flow with CUBIC crossing
+interpolation (linear-interp leg as refinement check). FD: centered 2x2 on
+(R1,R2) + 3rd dim Zd (mirrors PoC-2 flow_shape dims) — full 3x3, expect
+{section pair, 1}. Branch-safety (lesson from crossing-Newton failure): every
+FD run asserts crossing count == base count and |T−T_base| < 5% else ABORT
+(branch jump, not data). Predicates (D-08): PASS-in-model iff all |ρ|−1 ≤ 1e-4
+AND interp leg (linear vs cubic agree to 1e-6 on multipliers) AND N-leg
+(nq=64 vs 200 agree on verdict). Base: shot orbit per-N (re-shoot per nq;
+no banked-orbit reuse across discretizations — lesson from 0.4% shift).
+Receipts: stage_sm0 + log + this D6. ETA compute ~10 min at nq=200.
+
+## D6r2 — amendment (as-built 2026-09-11)
+Detection-based section map retired (two failure modes banked in receipts:
+branch-jump aborts; FD-amplified O(dt) phase error, eig −2351 ∝ 1/dt).
+As-built: window-EXACT flow (fractional last RK4 step, flow_frac) + centered
+section-flow 3x3 + fractional-T legs (T±k·dt/4) + window-exact shooting
+(res3 via flow_frac). Cubic-interp leg dropped (superseded by dt-exactness).
+Finding it enabled: Krein arc + marginal-collision verdict (see receipt).
