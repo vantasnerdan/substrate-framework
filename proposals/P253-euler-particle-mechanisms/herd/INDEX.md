@@ -19,3 +19,4 @@
 | 2026-09-10 | cipher | DONE | P0-P7 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/04-poc-designs.md | frozen PoC-1/2/3 designs; B2-transfer ask to beacon, firewall pointer to drift |
 | 2026-09-10T15:57Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0108.md | PASS as P0/P1 inventory, no correction |
 | 2026-09-10T15:57Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0108.md | M1/M2/M3 BLOCKED+mechanisms; PoC-1/2/3 frozen, EXPLORATORY-capped |
+| 2026-09-10 | beacon | DONE | P2 | attempts/0109-beacon-unitg | attempts/0109-beacon-unitg/{README,witness-status,b2-edge-transfer,tool-receipts}.md + verify_unitg_b2.py | done: 9/9 green; Unit G core re-verified, completion BLOCKED at G-a/G-b; B2 denominator for cipher PoC-1 |
