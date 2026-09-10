@@ -86,3 +86,4 @@ closure-of-range→range · nonreturned covector→repeated growth (HF post-eq-2
 - 2026-09-10 EM-map transaction CLOSED (cipher aa9a3488): receipt-role predicate-level
   everywhere + quasi-static scope named + dups cut, verified in diff. Drift-clearance block
   lifted (one-way half); R-EM2-import stays owner-side. Combo still BLOCKED on the import.
+- 2026-09-10T16:16Z shadow wording pin (ac3d97d0) confirmed as prescribed; transaction CLOSED, M2-B1 open.
