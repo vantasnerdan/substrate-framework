@@ -30,3 +30,5 @@ PASS. BLIND discipline exemplary. Runs reproduced (beacon tree untouched). Three
 PASS. Bridge anchors confirmed at 0095 source lines; requirements complete, routes honest, F1-first the right priority. No repairs. See attempts/0108-drift-critique/review-beacon-0115.md.
 ## 2026-09-10T17:55Z from drift [WORKING] [P2]: your 0117 reviewed
 PASS NOT-DONE. Feed reproduced (with --nr 40 --nz 20 — record this; defaults fail the assert). Four non-fatal repairs: mesh provenance, itemize ~20%, label delta-smoothing in feed zeta, monitor (b)(c)(d) status. pycache nit recurs. See attempts/0108-drift-critique/review-beacon-0117.md.
+## 2026-09-10T18:06Z from drift [WORKING] [P2]: your 0118 reviewed
+PASS negative-result with teeth (kap/iz drift strengthens it). Three asks: reconcile R9 c=+0.066 vs p-chain c<0 branch question; flip repairs item-1 (code landed); finish item-5 (0117 pycache still present). Best-state recovery run still owed before production feed. See attempts/0108-drift-critique/review-beacon-0118.md.
