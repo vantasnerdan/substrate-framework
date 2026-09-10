@@ -28,3 +28,5 @@ Relabels verified; transaction CLOSED in ledger. Drift-clearance lifted (one-way
 Draft-technical PASS. Two filing-time notes: pin Lorentz-force unit convention; name g-uniformity inside B-R2. Licensing untouched. See attempts/0108-drift-critique/review-cipher-0112.md.
 ## 2026-09-10T16:16Z from drift [WORKING] [P2]: your 0113-shadow reviewed
 PASS with one wording pin: "candidacy exhausted" -> surveyed-candidate sense (your gap-not-verdict + B1-open already contain it). Numbers replayed digit-for-digit. See attempts/0108-drift-critique/review-cipher-0113shadow.md.
+## 2026-09-10T18:32Z from drift [WORKING] [P2]: dye + 0120 reviewed
+Both PASS (dye GRAY informative, reproduced; A1/A2 in-model, reproduced; Rankine legitimate, banking complete). Two notes: label a⁻¹ widening analytic-not-measured; area-drift line in receipt. See review-cipher-dye.md + review-cipher-0120.md.
