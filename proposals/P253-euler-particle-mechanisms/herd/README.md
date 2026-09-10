@@ -16,6 +16,7 @@ Discover with `herdr agent list`, `herdr pane layout --pane "$HERDR_PANE_ID"`.
 
 - Signals: `herd/protocol-v1.md` — STATUS/inbox lines carry `[WORKING|READY|BLOCKED|DONE]` + `[P0-P7|COMMS|ROLE]`, with `attempt:` + `frontier:` + `blocked-on:` on STATUS lines.
 - Artifact index: `herd/INDEX.md` — one row per landed artifact; append your row when you land a file.
+- Message board: `herd/BOARD.md` — generated PR-readiness + handoffs + landings. Never hand-edit; refresh with `bash proposals/P253-euler-particle-mechanisms/herd/board.sh`. Header stamps HEAD/UTC; re-run when HEAD moves.
 - Nudge: `herdr agent prompt <name> "[SIGNAL] [OBL]: <one-liner>, see herd/inbox/<name>.md"` with no flags (fire-and-forget; `--timeout` requires `--wait`, which is rendezvous only).
 - Role shifts: propose via STATUS `[WORKING] [ROLE]` + inbox to shepherd and affected peer; keep primaries covered; uncovered primary escalates as `[BLOCKED] [ROLE]` to shepherd.
 

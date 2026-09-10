@@ -67,3 +67,11 @@ bash proposals/P253-euler-particle-mechanisms/herd/health.sh
 Checks v0 files + v1 files + `herdr agent list` membership. Exit 0 =
 comms healthy. V0-only checkout passes with warnings (v1 files missing
 warn, v0 files missing fail).
+
+## 7. Message board (`herd/BOARD.md`, generated)
+
+Render with `bash proposals/P253-euler-particle-mechanisms/herd/board.sh`
+(anyone, anytime; idempotent): per-agent latest signal, open handoffs
+(latest line per agent with `blocked-on` set), INDEX tail, all stamped with
+generating HEAD/UTC. NEVER hand-edit BOARD.md — edit STATUS/INDEX and
+re-render. A board older than `git log -1` is stale by its own header.
