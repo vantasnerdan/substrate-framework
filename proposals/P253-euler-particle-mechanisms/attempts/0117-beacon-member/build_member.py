@@ -20,7 +20,7 @@ import numpy as np
 from scipy.sparse.linalg import spsolve
 
 from skfem import Basis, ElementTriP1, MeshTri, asm
-from skfem.helpers import ddot, grad
+from skfem.helpers import grad  # NOTE: ddot deliberately absent (0117 R2: nelements-scale corruption)
 from skfem.models.poisson import unit_load  # noqa: F401 (documents API family)
 
 
@@ -124,13 +124,28 @@ def solve_stage1(rmax=6.0, zmax=3.0, nr=80, nz=40, itmax=300,
             "bnd": bnd, "rmax": rmax, "zmax": zmax, "nr": nr, "nz": nz,
             "res": hist[-1][1], "du": hist[-1][0], "iters": len(hist)}
 
+def save_npz(path, force=False, **kw):
+    """Refuse to overwrite existing member states (0116 integrity repair
+    extended to build_member.py per shepherd: silent npz overwrites already
+    destroyed the R9 state once)."""
+    import os
+    if os.path.exists(path) and not force:
+        raise SystemExit(
+            f"REFUSING to overwrite {path}: pass --force (states are "
+            f"evidence; write a new tagged name or archive first)")
+    np.savez(path, **kw)
 def main(argv=None) -> None:
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--bordered", action="store_true")
     ap.add_argument("--newton", action="store_true")
     ap.add_argument("--nested", action="store_true")
+    ap.add_argument("--single-p", type=int, default=0)
+    ap.add_argument("--trust-from", type=str, default="")
+    ap.add_argument("--out-npz", type=str, default="")
     ap.add_argument("--warm-npz", type=str, default="")
+    ap.add_argument("--force", action="store_true",
+                    help="allow overwriting existing member npz files")
     ap.add_argument("--pp", type=int, default=0)
     ap.add_argument("--nr", type=int, default=80)
     ap.add_argument("--nz", type=int, default=40)
@@ -149,8 +164,8 @@ def main(argv=None) -> None:
                   f"iz={out['iz']:.4f} mu={out['mu']:.4f} c={out['c']:.4f}",
                   flush=True)
             uu, mm, cc = out["u"], out["mu"], out["c"]
-            np.savez("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
-                     f"member-p{pp}-exploratory.npz",
+            save_npz("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
+                     f"member-p{pp}-exploratory.npz", force=args.force,
                      u=out["u"], mu=out["mu"], c=out["c"],
                      kap=out["kap"], rbar=out["rbar"], iz=out["iz"],
                      res=out["res"])
@@ -166,10 +181,43 @@ def main(argv=None) -> None:
                            p_pw=args.pp or 3, u0=uu, mu0=mm, c0=cc)
         print(f"NESTED rows=({out['rows'][0]:+.2e},{out['rows'][1]:+.2e}) "
               f"mu={out['mu']:.4f} c={out['c']:.5f}", flush=True)
-        np.savez("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
-                 "member-nested-exploratory.npz",
+        save_npz("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
+                 "member-nested-exploratory.npz", force=args.force,
                  u=out["u"], mu=out["mu"], c=out["c"],
                  rows=out["rows"])
+        return
+    if args.single_p:
+        print(f"MESH nr={args.nr} nz={args.nz} box=6x3 single-p",
+              flush=True)
+        out = solve_bordered(nr=args.nr, nz=args.nz, reg=1e-3,
+                             p_pw=args.single_p)
+        print(f"SINGLE-P{args.single_p} res={out['res']:.3e} "
+              f"kap={out['kap']:.4f} rbar={out['rbar']:.4f} "
+              f"mu={out['mu']:.4f} c={out['c']:.5f}", flush=True)
+        save_npz("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
+                 "member-recover-exploratory.npz", force=args.force,
+                 u=out["u"], mu=out["mu"], c=out["c"],
+                 kap=out["kap"], rbar=out["rbar"], iz=out["iz"],
+                 res=out["res"])
+        return
+    if args.trust_from:
+        w = np.load(args.trust_from)
+        print(f"TRUSTFROM {args.trust_from} "
+              f"kap={float(w['kap']):.4f} rbar={float(w['rbar']):.4f} "
+              f"res={float(w['res']):.2e}", flush=True)
+        out = solve_bordered(nr=args.nr, nz=args.nz, reg=1e-3,
+                             p_pw=args.pp or 6,
+                             u0=w["u"], mu0=float(w["mu"]),
+                             c0=float(w["c"]))
+        print(f"TRUST res={out['res']:.3e} kap={out['kap']:.4f} "
+              f"rbar={out['rbar']:.4f} mu={out['mu']:.4f} "
+              f"c={out['c']:.5f}", flush=True)
+        outpath = (args.out_npz or "proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
+                   "member-trust-exploratory.npz")
+        save_npz(outpath, force=args.force,
+                 u=out["u"], mu=out["mu"], c=out["c"],
+                 kap=out["kap"], rbar=out["rbar"], iz=out["iz"],
+                 res=out["res"])
         return
     if args.newton:
         print(f"MESH nr={args.nr} nz={args.nz} box=6x3", flush=True)
@@ -177,8 +225,8 @@ def main(argv=None) -> None:
         print(f"NEWTON res={out['res']:.3e} iters={out['iters']} "
               f"umax={out['u'].max():.4f} r0={out['r0']:.3e} "
               f"kappa={out['kappa_hat']:.4f} reg={args.reg}", flush=True)
-        np.savez("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
-                 "member-newton-exploratory.npz",
+        save_npz("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
+                 "member-newton-exploratory.npz", force=args.force,
                  u=out["u"], res=out["res"])
         return
     u0 = None
@@ -194,10 +242,9 @@ def main(argv=None) -> None:
     print(f"kappa_hat={out['kappa_hat']:.6f} (target 1)")
     print(f"umax={out['umax']:.4f} rcore={out['rcore']:.4f} bnd={out['bnd']:.2e}")
     print(f"res={out['res']:.3e} iters={out['iters']}")
-    np.savez("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
-             "member-stage1-exploratory.npz",
+    save_npz("proposals/P253-euler-particle-mechanisms/attempts/0117-beacon-member/"
+             "member-stage1-exploratory.npz", force=args.force,
              u=out["u"], kappa_hat=out["kappa_hat"], res=out["res"])
-
 def solve_newton(rmax=6.0, zmax=3.0, nr=80, nz=40, itmax=30, tol=1e-9,
                  verbose=True, mu=MU, u0=None, reg=0.0, p_pw=None):
     if p_pw is None:
@@ -365,9 +412,10 @@ def solve_bordered(rmax=6.0, zmax=3.0, nr=40, nz=20, itmax=20, tol=1e-9,
         rows = np.array([kap - 1.0, rbar - rbar_target])
         nrm = float(np.sqrt(F[free] @ F[free] / free.size + rows @ rows))
         if verbose:
+            share = float((Mr @ (f * (rn > 2.0))).sum()) / max(kap, 1e-300)
             print(f"bord it={it} res={nrm:.3e} umax={u.max():.4f} "
                   f"kap={kap:.4f} rbar={rbar:.4f} iz={iz:.4f} "
-                  f"mu={mu:.4f} c={c:.4f}", flush=True)
+                  f"mu={mu:.4f} c={c:.4f} outersrc={share:.1e}", flush=True)
         jf = p_pw * EPS**-2 * s ** (p_pw - 1) * ds
         ji = basis.interpolator(jf)
 
@@ -402,10 +450,14 @@ def solve_bordered(rmax=6.0, zmax=3.0, nr=40, nz=20, itmax=20, tol=1e-9,
         improved = False
         ray = []
         for _ in range(64):
+            c_try = c + step * dp[1]
+            if c_try < 1e-3:
+                step *= 0.5
+                continue
             u_t = u + step * (t0 + T @ dp)
             u_t[dd] = 0.0
             F_t, _, _, _, k_t, rb_t, _ = full(u_t, mu + step * dp[0],
-                                             c + step * dp[1])
+                                             c_try)
             r_t = np.array([k_t - 1.0, rb_t - rbar_target])
             n_t = float(np.sqrt(F_t[free] @ F_t[free] / free.size
                                 + r_t @ r_t))
@@ -415,9 +467,43 @@ def solve_bordered(rmax=6.0, zmax=3.0, nr=40, nz=20, itmax=20, tol=1e-9,
                 break
             step *= 0.5
         if not improved:
-            print(f"bord it={it} STALL (|t0|={t0n:.2e} |dp|={dpn:.2e} "
-                  f"detS={np.linalg.det(S):.2e} ray={ray})", flush=True)
-            break
+            # gradient fallback (J symmetric): g_u = J(F/N) + C'rows,
+            # g_p = B'(F/N). A failed Newton + failed gradient step
+            # certifies a merit-stationary point (new mechanism).
+            Nf = float(free.size)
+            gu = np.zeros(basis.N)
+            gu[free] = (J[free][:, free] @ (F[free] / Nf)
+                        + (Crow.T @ rows)[free])
+            gp = B.T @ (F / Nf)
+            gn = float(np.sqrt(gu[free] @ gu[free] + gp @ gp))
+            gst = 1.0
+            gok = False
+            for _ in range(40):
+                c_try = c - gst * gp[1]
+                if c_try < 1e-3:
+                    gst *= 0.5
+                    continue
+                u_t = u - gst * gu
+                u_t[dd] = 0.0
+                F_t, _, _, _, k_t, rb_t, _ = full(u_t, mu - gst * gp[0],
+                                                 c_try)
+                r_t = np.array([k_t - 1.0, rb_t - rbar_target])
+                n_t = float(np.sqrt(F_t[free] @ F_t[free] / free.size
+                                    + r_t @ r_t))
+                if n_t < cur:
+                    gok = True
+                    break
+                gst *= 0.5
+            print(f"bord it={it} STALL-NEWTON (|t0|={t0n:.2e} "
+                  f"|dp|={dpn:.2e} detS={np.linalg.det(S):.2e}); "
+                  f"grad |g|={gn:.2e} step={gst:.1e} "
+                  f"{'GSTEP-OK' if gok else 'GSTATIONARY'}", flush=True)
+            if not gok:
+                break
+            u = u - gst * gu
+            u[dd] = 0.0
+            mu, c = mu - gst * gp[0], c - gst * gp[1]
+            continue
         u = u + step * (t0 + T @ dp)
         u[dd] = 0.0
         mu, c = mu + step * dp[0], c + step * dp[1]
