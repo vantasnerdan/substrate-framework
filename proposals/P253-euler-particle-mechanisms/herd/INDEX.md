@@ -57,3 +57,4 @@
 | 2026-09-10T16:18Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0115.md | PASS G-b scoping; F1-first, C2-model parallel |
 | 2026-09-10T17:55Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0117.md | PASS NOT-DONE; G-a2 BLOCKED, trust-region next |
 | 2026-09-10T18:06Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0118.md | PASS negative; c-branch + status-hygiene repairs |
+| 2026-09-10T18:16Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0119.md | CONDITIONAL PASS; JSON-restore + transcript repairs |
