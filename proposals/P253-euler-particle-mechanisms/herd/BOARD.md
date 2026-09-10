@@ -1,32 +1,31 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T18:41:32Z at HEAD `1de2b8d5`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-10T18:43:28Z at HEAD `f149cb97`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
 
-- shepherd: WORKING [P2], waiting on Euler-persistence+G-a2-numerics+R-EM2-decision [physics] (150m)
-- atlas: WORKING [COMMS], clear
+- shepherd: READY [COMMS], clear
+- atlas: READY [COMMS], clear
 - beacon: WORKING [P2], waiting on bg_7-trust [ack] (0m)
-- cipher: WORKING [P2], waiting on M2-B1-H4+owner-review [ack] (125m)
+- cipher: WORKING [P2], waiting on M2-B1-H4+owner-review [ack] (127m)
 - drift: WORKING [P2], clear
 
 ## PR-readiness (latest v1 signal per agent)
 
 | agent | signal | obligation | frontier | blocked-on | one-liner |
 |-------|--------|------------|----------|------------|-----------|
-| shepherd | WORKING | P2 | proposals/P253-euler-particle-mechanisms/herd/BOARD.md | Euler-persistence+G-a2-numerics+R-EM2-decision | re-post with bkind per loop-7; honest physics waits, no warn |
-| atlas | WORKING | COMMS | proposals/P253-euler-particle-mechanisms/herd/BOARD.md | - | measure CLOSED: beacon self-repaired all 7 tokens to 3-seg (runs split pass/fail, honest exit1s kept); receipt format clean, coverage 8/62;  |
+| shepherd | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/IDEAS.md | - | IDEA-DECISION IDEA-04: ADOPT owner=beacon+cipher pointer=joint-work (already started; report jointly) |
+| atlas | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/IDEAS.md | - | idea threading live: IDEAS.md (4 OPEN seeded, 0 verdicts = the leak), board section OPEN-first, health 24h stale warn, protocol §13; 4 verd |
 | beacon | WORKING | P2 | attempts/0111-beacon-ga-field/ga-status.md | bg_7-trust | [STANDBYREVIEW] applied drift 0111 precision note (row-7 conditional-scope qualifier); 0119 review needs nothing new (integrity items alread |
 | cipher | WORKING | P2 | attempts/0120-cipher-m2b1/A2-H1.md | M2-B1-H4+owner-review | A1 H5 PASS (d/a≥8.23), A2 H1 repaired PASS (ell≤1.017); A3 3D-filament queued |
 | drift | WORKING | P2 | attempts/0108-drift-critique/review-cipher-0120.md | - | dye GRAY PASS (reproduced) + 0120 A1/A2 PASS-in-model (reproduced, Rankine legitimate). |
 
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
-- [waiting 150m, physics, dep] - 2026-09-10T16:11Z shepherd [WORKING] [P2] bkind:physics attempt:- frontier:proposals/P253-euler-particle-mechanisms/herd/BOARD.md blocked-on:Euler-persistence+G-a2-numerics+R-EM2
 - [waiting 0m, ack, no-ack] - 2026-09-10T18:55Z beacon [WORKING] [P2] attempt:attempts/0111-beacon-ga-field frontier:attempts/0111-beacon-ga-field/ga-status.md blocked-on:bg_7-trust :: [STANDBYREVIEW] applied
-- [waiting 125m, ack, no-ack] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4+owner-review :: A1 H5 PASS (d/a≥8.23),
+- [waiting 127m, ack, no-ack] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4+owner-review :: A1 H5 PASS (d/a≥8.23),
 
 ## Needs attention (do these, oldest strain first)
 
@@ -66,7 +65,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 ## Open ideas (herd/IDEAS.md — verdict: IDEA-DECISION <id>: ADOPT|DECLINE owner=<name>)
 
 | id | from | date (UTC) | idea | status | owner | verdict |
-| IDEA-01 | cipher | 2026-09-10T16:36Z | S9-pair (D(t)+blind-norm) as required M2 filamentation audit | OPEN | - | - |
-| IDEA-02 | drift | 2026-09-10T18:25Z | B-R1 carrier-match first step (unassigned sketch) | OPEN | - | - |
-| IDEA-03 | atlas | 2026-09-10T18:30Z | R9-start acceptance test (basin probe + source threshold + c≥0 box) | OPEN | - | - |
-| IDEA-04 | beacon | 2026-09-10T18:45Z | joint EM-map check (cipher 0111 × beacon Maxwell stage) | OPEN | beacon+cipher | joint work started per commit msg |
+| IDEA-01 | cipher | 2026-09-10T16:36Z | S9-pair (D(t)+blind-norm) as required M2 filamentation audit | ADOPTED | cipher | ea231abe (landed+PASSED) |
+| IDEA-02 | drift | 2026-09-10T18:25Z | B-R1 carrier-match first step (unassigned sketch) | ADOPTED | drift | sketch, scoped until R-EM2 ruling; review routes to beacon, never self-review |
+| IDEA-03 | atlas | 2026-09-10T18:30Z | R9-start acceptance test (basin probe + source threshold + c≥0 box) | ADOPTED | beacon | fold into 0120 acceptance criteria (note: 0120 is cipher's dir — confirm target with shepherd) |
+| IDEA-04 | beacon | 2026-09-10T18:45Z | joint EM-map check (cipher 0111 × beacon Maxwell stage) | ADOPTED | beacon+cipher | joint work started; report jointly |
