@@ -93,3 +93,9 @@ editing history. Holders (or shepherd): when you start on someone's
 `blocked-on:<token>`, post a STATUS line containing `ack:<token>` with the
 same token string. Board handoffs show `ACKED@T` or `no-ack`; only `ack:`
 lines after the wait line count.
+
+Copy-paste (replace caps):
+```text
+- <UTC full> <me> [WORKING] [P2] attempt:<DIR> frontier:<FILE> blocked-on:<TOKEN> :: <what you need>
+- <UTC full> <me> [WORKING] [P2] attempt:<DIR> frontier:<FILE> blocked-on:- :: starting <TOKEN> ack:<TOKEN>
+```

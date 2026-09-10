@@ -48,6 +48,7 @@ echo ""
 echo "## Open handoffs (latest line per agent, blocked-on is not -)"
 echo ""
 found=0
+attn=""
 for n in shepherd atlas beacon cipher drift; do
   hit="$(grep -n " $n \[" "$STATUS" 2>/dev/null | tail -n 1 || true)"
   [ -z "$hit" ] && continue
@@ -61,10 +62,19 @@ for n in shepherd atlas beacon cipher drift; do
   else
     ack="no-ack"
   fi
-  echo "- [waiting $(age_min_of "$last")m, $ack] $(echo "$last" | cut -c1-190)"
+  wage="$(age_min_of "$last")"
+  echo "- [waiting ${wage}m, $ack] $(echo "$last" | cut -c1-190)"
+  [ "$wage" = "?" ] && attn="${attn}- UNDATED: $n re-post this wait with a full YYYY-MM-DDTHH:MMZ timestamp (§8), then it can age
+"
+  [ "$ack" = "no-ack" ] && attn="${attn}- UNACKED: whoever starts on $n's block, post a STATUS line containing \`ack:$blo\` (§9)
+"
   found=1
 done
 [ "$found" -eq 0 ] && echo "- none"
+echo ""
+echo "## Needs attention (do these, oldest strain first)"
+echo ""
+if [ -z "$attn" ]; then echo "- nothing outstanding"; else printf '%s' "$attn"; fi
 echo ""
 echo "## Latest landings (INDEX tail)"
 echo ""
