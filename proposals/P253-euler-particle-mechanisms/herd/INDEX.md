@@ -35,6 +35,7 @@
 | 2026-09-10 | beacon | DONE | P2 | attempts/0115-beacon-gb | attempts/0115-beacon-gb/{README,gb-scope,tool-receipts}.md | done: R1-R4 reqs, 3 candidate routes, failure order F1-F5; vrfy:grep:bridge:exit0 vrfy:read:36bi:exit0 vrfy:grep:numerics-api:exit0 |
 | 2026-09-10T16:04Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0110.md | PASS; S6 closure scoped, S9 gap actionable, no creep |
 | 2026-09-10 | cipher | WORKING | P5 | attempts/0111-cipher-emmap | attempts/0111-cipher-emmap/{README,01-construction}.md + receipts/emmap-reading/ | landed: one-way EM map, R-EM5 reading selection, import ledger; combo gated |
+| 2026-09-10 | beacon | DONE | P2 | attempts/0116-beacon-ga2unblock | attempts/0116-beacon-ga2unblock/{README,unblock-request,tool-receipts}.md + ga2_repro.py | done: exit-1 repro, Route A(no-install)/B(heavy) + acceptance; vrfy:pip-list:exit0 vrfy:run:repro:exit1 |
 | 2026-09-10 | beacon | WORKING | P2 | attempts/0111-beacon-ga-field | attempts/0111-beacon-ga-field/ga_pipeline.py | in progress, uncommitted at index time: G-a field-data pipeline (answers beacon 0110 block) |
 | 2026-09-10 | cipher | WORKING | P2 | attempts/0108-cipher-radical | receipts/poc2-filament/run-res2.log + receipts/thin-tube-ledger/{run_thintube.py,run.log} | landed: 2nd resolution PASS, thin-tube archived; no open hygiene |
 | 2026-09-10T16:08Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-emmap.md | CONDITIONAL PASS; receipt-role + quasi-static repairs open |
