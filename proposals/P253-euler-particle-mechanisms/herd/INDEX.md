@@ -80,3 +80,4 @@
 | 2026-09-10T19:46Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-a3designcode.md | pre-verdict; 2 blocking repairs |
 | 2026-09-10T19:59Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0124nogo.md | CERTIFIED; banked negative |
 | 2026-09-10T19:59Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0124nogo.md | CERTIFIED; banked negative |
+| 2026-09-10T20:10Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0124correction.md | correction addendum; frozen review untouched |
