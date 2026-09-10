@@ -22,7 +22,9 @@ No PR opened. One verdict per item. Evidence pointers inline.
   unlocks two-way claims.
 - **M2-B1 H4-proof + A3 filament — BLOCKED-on-cipher-in-flight**: A1 H5 PASS,
   A2 H1 repaired PASS, A3 transfer PASS all banked; A3 design frozen C1–C8
-  (gate+orbit PASS banked, mono m0–6 running), current token H4-proof (+owner-review).
+  (gate+orbit PASS banked, mono m0–6 running) but drift design-vs-code
+  pre-verdict flags R-A (floor 1e-4) + R-B (SOFT3 unimplemented) BLOCKING,
+  R-C wording; current token H4-proof (+owner-review).
 - **G-a2 numbers — BLOCKED-on-(a)** (beacon): 0120 trust DONE (rows-met
   6.6e-3, PASS); 0121 lemma FAILED (honest); 0122 CLOSED as measured-stall
   PASS (drift review-beacon-0122landing: gate reproduced; 1 receipt repair;
