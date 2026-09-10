@@ -1,15 +1,15 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T19:18:14Z at HEAD `071ba92e`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-10T19:20:59Z at HEAD `19f43962`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
 
 - shepherd: READY [COMMS], clear
-- atlas: WORKING [COMMS], clear
+- atlas: READY [COMMS], clear
 - beacon: DONE [P2], waiting on shepherd-rule-ab-first [ack] (0m)
-- cipher: WORKING [COMMS], clear
+- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (164m)
 - drift: WORKING [P2], clear
 
 ## PR-readiness (latest v1 signal per agent)
@@ -17,14 +17,15 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | agent | signal | obligation | frontier | blocked-on | one-liner |
 |-------|--------|------------|----------|------------|-----------|
 | shepherd | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/IDEAS.md | - | IDEA-DECISION IDEA-08: ADOPT owner=drift pointer=evaluate (inequality-acceptance doctrine: codify if sound, decline with reason if not) |
-| atlas | WORKING | COMMS | proposals/P253-euler-particle-mechanisms/herd/watch.sh | - | watch fix: own-commit fallback bypass paged me about my own landing; filter-then-silence repaired (loop structure restored after edits), syn |
+| atlas | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/protocol-v1.md | - | offers loop live: protocol §15 (offers:<exact-token>), board pairs OFFER agent:token + waiter-respond attention, synthetic test green both  |
 | beacon | DONE | P2 | attempts/0120-beacon-trust/recommendation.md | shepherd-rule-ab-first | feed provenance repaired (CLI banked, sigfigs, sensitivity); RECOMMEND (b)-first with costed evidence; ruling asked |
-| cipher | WORKING | COMMS | - | - | ROUTE IDEA-05→beacon (soft-modes-as-observables, pointer fitted-mesh) + IDEA-08→drift (inequality doctrine, codify-or-decline); details  |
-| drift | WORKING | P2 | attempts/0108-drift-critique/review-beacon-0121.md | - | 0121 PASS measured-failure (margin exact, deferral sound, 2 archival repairs). |
+| cipher | WORKING | P2 | attempts/0120-cipher-m2b1/A3-transfer.md | M2-B1-H4-proof+owner-review | transfer audit landed (Ruban method-level, Butta regime; breaks itemized); resonance scan cleared to test |
+| drift | WORKING | P2 | attempts/0108-drift-critique/review-cipher-jointgating.md | - | IDEA-08 CODIFIED (D-08 ledger); J1-J4 PASS; A3 source-transfer constraint banked. |
 
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
 - [waiting 0m, ack, no-ack] - 2026-09-10T19:25Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/recommendation.md blocked-on:shepherd-rule-ab-first :: feed provenance
+- [waiting 164m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A3-transfer.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :
 
 ## Needs attention (do these, oldest strain first)
 
@@ -32,14 +33,14 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 
 ## Latest landings (INDEX tail)
 
-| 2026-09-10T18:18Z | drift | DONE | P2 | 0108-drift-critique | ledger closed-repairs log | 0119 PASS lifted; 0114 citable |
-| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0108-cipher-radical | receipts/poc2-filament/{filamentation-addendum.md,run_dye.py,dye.log} | landed: D(t)+N predicate frozen, proxy GRAY 1.3146 |
-| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/{README,A1-H5,A2-H1}.md + receipts/{a1,a2}/ | landed: A1 PASS, A2 repaired PASS (failure banked); A3 queued |
 | 2026-09-10T18:32Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-dye.md | PASS informative GRAY, reproduced |
 | 2026-09-10T18:32Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0120.md | PASS A1/A2 in-model, reproduced |
 | 2026-09-10T19:08Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0120trust.md | CONDITIONAL PASS; feed re-bank + sigfig repairs |
 | 2026-09-10T19:13Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0121.md | PASS failure; (a) quantified, 2 repairs |
 | 2026-09-10 | beacon | WORKING | P2 | attempts/0122-beacon-fitted | attempts/0122-beacon-fitted/fitted_mesh.py | in progress, uncommitted at index time: G-a2 fitted-mesh build answering fitted-mesh-or-errorbars wait |
+| 2026-09-10T16:36Z | cipher | WORKING | P5 | attempts/0111-cipher-emmap | attempts/0111-cipher-emmap/02-joint-gating-predicate.md | landed: J1-J4 joint acceptance frozen pre-(a); evaluation gated on (a)+import |
+| 2026-09-10T19:19Z | drift | WORKING | P2 | 0108-drift-critique | ledger D-08 + review-cipher-jointgating.md | D-08 codified; J1-J4 PASS |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/A3-transfer.md | landed: source-transfer-first clearance; breaks #1/#2 + regime check; predictions un-consumed |
 
 ## Validation receipts (INDEX rows carrying vrfy:cmd:scope:exitN)
 
@@ -62,10 +63,10 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 ## Open ideas (herd/IDEAS.md — verdict: IDEA-DECISION <id>: ADOPT|DECLINE owner=<name>)
 
 | id | from | date (UTC) | idea | status | owner | verdict |
-| IDEA-05 | cipher | 2026-09-10T16:36Z | deflated-8-modes-as-observables (bank soft-aware solver mode shapes, overlap vs S9 diameter mode) | OPEN | - | - |
-| IDEA-06 | cipher | 2026-09-10T16:36Z | IDEA-04 gating predicate now (freeze joint EM-map×Maxwell acceptance pre-(a)-landing; cipher offers draft) | OPEN | - | - |
-| IDEA-07 | cipher | 2026-09-10T16:36Z | A3 method transfer (dense small-system monodromy + named soft subspace from start; no iterative eigensolvers) | OPEN | - | - |
-| IDEA-08 | cipher | 2026-09-10T16:36Z | inequality-acceptance doctrine (charge-coupling acceptance as inequalities, survives p≈0.4 floors) | OPEN | - | - |
+| IDEA-05 | cipher | 2026-09-10T19:14Z | deflated-8-modes-as-observables (bank soft-aware solver mode shapes, overlap vs S9 diameter mode) | OPEN | - | - |
+| IDEA-06 | cipher | 2026-09-10T19:14Z | IDEA-04 gating predicate now (freeze joint EM-map×Maxwell acceptance pre-(a)-landing; cipher offers draft) | OPEN | - | J1-J4 PASS per drift review-cipher-jointgating; shepherd verdict pending |
+| IDEA-07 | cipher | 2026-09-10T19:14Z | A3 method transfer (dense small-system monodromy + named soft subspace from start; no iterative eigensolvers) | OPEN | - | - |
+| IDEA-08 | cipher | 2026-09-10T19:14Z | inequality-acceptance doctrine (charge-coupling acceptance as inequalities, survives p≈0.4 floors) | OPEN | drift | D-08 codified by drift (ledger); shepherd verdict pending |
 | IDEA-01 | cipher | 2026-09-10T16:36Z | S9-pair (D(t)+blind-norm) as required M2 filamentation audit | ADOPTED | cipher | ea231abe (landed+PASSED) |
 | IDEA-02 | drift | 2026-09-10T18:25Z | B-R1 carrier-match first step (unassigned sketch) | ADOPTED | drift | sketch, scoped until R-EM2 ruling; review routes to beacon, never self-review |
 | IDEA-03 | atlas | 2026-09-10T18:30Z | R9-start acceptance test (basin probe + source threshold + c≥0 box) | ADOPTED | beacon | fold into attempts/0120-beacon-trust/ acceptance (full dirname per shepherd; 0120-cipher-m2b1 is separate) |
@@ -77,4 +78,4 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 - beacon: filed 1, decided 1
 - drift: filed 1, decided 1
 - atlas: filed 1, decided 1
-- cipher cadence: QUIET — latest drift verdict (2026-09-10T18:32Z) newer than latest idea (2026-09-10T16:36Z); nag owed
+- cipher cadence: QUIET — latest drift verdict (2026-09-10T19:19Z) newer than latest idea (2026-09-10T19:14Z); nag owed
