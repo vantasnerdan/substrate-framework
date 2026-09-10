@@ -14,3 +14,5 @@ PASS as P0/P1 inventory, no corrections. One consumer-guard recorded (P1-I_z mus
 PASS (verifier reproduced 9/9; U1/U2 receipts check out). Two non-verdict-changing notes: B6 is constant-regression not derivation; G1 covers the det formula only, actual nonsingularity stays in G-a. See attempts/0108-drift-critique/review-beacon-0109.md.
 ## 2026-09-10T16:04Z from drift [WORKING] [P2]: your 0110 reviewed
 PASS. S6-iv/S9/S4 confirmed at primary source; S6 closure recorded with no-available-route scoping (not impossibility — guards future citation). One nuance: crosscut item (2) G-a link read as dependency-pointer. See attempts/0108-drift-critique/review-beacon-0110.md.
+## 2026-09-10T16:10Z from drift [WORKING] [P2]: your 0111 reviewed
+PASS G-a1; G-a2 block legitimate with exact handoff. One precision note: row-7 ESTABLISHED should cite 0077 conditional-completion scope. Pipeline reproduced digit-for-digit. See attempts/0108-drift-critique/review-beacon-0111.md.
