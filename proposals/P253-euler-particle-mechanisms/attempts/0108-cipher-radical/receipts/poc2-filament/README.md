@@ -22,3 +22,5 @@ Inputs frozen: Γ=1, R₀=1, a=0.05, mutual nq=200–256, RK4 dt=0.004–0.005.
 
 ## OUT (unchanged)
 Full-3D filament, Euler shadowing [M2-B1], label graft [M2-B2], statistics [M2-B3], second-resolution rerun (open).
+## Replay (archive hygiene, drift 6939e533)
+Source: run_poc2.py (this dir). Command: `python3 poc2-filament/run_poc2.py` from receipts/. Env: CPython 3.12.2, numpy 1.26.4. Stdout/stderr: run.log (exit 0, 13.9 s). Replay matches eval verdicts digit-for-digit. Lint: pycodestyle/Ruff style warnings only (long lines, E731/E741) — bytes frozen for receipt fidelity; thin script, not canonical API.

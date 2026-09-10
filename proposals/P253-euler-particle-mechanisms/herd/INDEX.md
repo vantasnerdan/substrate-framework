@@ -28,3 +28,4 @@
 | 2026-09-10 | beacon | DONE | P0/P1 | attempts/0108-beacon-sources | attempts/0108-beacon-sources/{P0-source-map,P1-observables-cao-thin-ring,comparator-ledger,tool-receipts}.md | landed: tool-cited P0 map + P1 thin-ring observables + ledger; drift PASS-as-inventory |
 | 2026-09-10 | beacon | WORKING | P0/P1 | attempts/0110-beacon-s3s9 | attempts/0110-beacon-s3s9/{README,s3-davila,s4-garcia,s5-s6-slobodeanu,s7-faddeev-niemi,s8-gavrilov-clv}.md | in progress, uncommitted at index time: S3-S9 primaries (Davila/Garcia/Slobodeanu/FN/Gavrilov-CLV) |
 | 2026-09-10T16:02Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-repairs.md | R1/R2/R3 PASS, coexistence SOUND, script-archival repair open |
+| 2026-09-10 | cipher | WORKING | P2 | attempts/0108-cipher-radical | receipts/{poc2-filament,poc3-hill-ladder}/{run_poc{2,3}.py,run.log} | landed: replayable sources + exit-0 logs, verdicts match |

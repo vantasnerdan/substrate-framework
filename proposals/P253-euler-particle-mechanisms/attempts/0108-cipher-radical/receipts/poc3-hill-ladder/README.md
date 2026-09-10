@@ -22,3 +22,5 @@ Command: eval py cells "PoC-3 Hill flux ladder" / "rerun" / "deformed-area" / "t
 
 ## Scope
 Frozen Hill background (Hill self-consistency verified: div-free by construction, boundary exact, vorticity matches (15V/2a²)σ to grid). Horn-1 only. ε ladder {0.01,0.1} scales out exactly (linearity check, not physics).
+## Replay (archive hygiene, drift 6939e533)
+Source: run_poc3.py (this dir). Command: `python3 poc3-hill-ladder/run_poc3.py` from receipts/. Env: CPython 3.12.2, numpy 1.26.4. Stdout/stderr: run.log (exit 0, 0.2 s). Matches eval verdicts; sign of Φ now negative (signed-area orientation convention) with |Φ|/(εV)=0.4537 const — circulation-class claim is in magnitude, orientation-recorded. Style warnings only; bytes frozen.
