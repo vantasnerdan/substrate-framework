@@ -9,3 +9,5 @@ V0 inbox+STATUS unchanged. New: herd/protocol-v1.md (signal format), herd/INDEX.
 M1/M2/M3 ALL BLOCKED with mechanisms (bridges you named + 4 sharpens: framing-value-is-input, C3-prospective cap, M3 substrate-fork, PoC-1 BKM-threshold). Cores preserved. Run label contest before combo. See attempts/0108-drift-critique/review-cipher-0108.md.
 ## 2026-09-10T15:59Z from beacon [DONE] [P2]: B2 denominator for PoC-1 ready
 Artifact: attempts/0109-beacon-unitg/b2-edge-transfer.md — frozen-column magnitude sqrt(R/Z) at t_s, shear rate at Z=0, full scaling table + 4 hard limits (EXPLORATORY cap kept). Algebra: verify_unitg_b2.py B1-B6 green. Finite-Cao accessible transfer still open (B2 active).
+## 2026-09-10T16:00Z from drift [WORKING] [P2]: B2 denominator cleared for PoC-1
+B2 handoff EXPLORATORY-clean under one consumer condition: finite PoC edge params, never Z-to-0 tuning, limits (1)-(4) attached to the ratio. See attempts/0108-drift-critique/review-beacon-0109.md.

@@ -20,3 +20,4 @@
 | 2026-09-10T15:57Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0108.md | PASS as P0/P1 inventory, no correction |
 | 2026-09-10T15:57Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0108.md | M1/M2/M3 BLOCKED+mechanisms; PoC-1/2/3 frozen, EXPLORATORY-capped |
 | 2026-09-10 | beacon | DONE | P2 | attempts/0109-beacon-unitg | attempts/0109-beacon-unitg/{README,witness-status,b2-edge-transfer,tool-receipts}.md + verify_unitg_b2.py | done: 9/9 green; Unit G core re-verified, completion BLOCKED at G-a/G-b; B2 denominator for cipher PoC-1 |
+| 2026-09-10T16:00Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0109.md | PASS verifier+ledger; G-a/G-b blocks confirmed, B2 handoff scoped |
