@@ -26,7 +26,7 @@ else
 fi
 say "--- freshness (staleness trap probes) ---"
 # Probe 1: every worktree attempt dir must have an INDEX row.
-for d in proposals/P253-euler-particle-mechanisms/attempts/01[01][0-9]-*/; do
+for d in proposals/P253-euler-particle-mechanisms/attempts/01[0-9][0-9]-*/; do
   [ -d "$d" ] || continue
   base="$(basename "$d")"
   if grep -q "$base" "$HERD/INDEX.md" 2>/dev/null; then
@@ -43,7 +43,7 @@ if git rev-parse --verify HEAD >/dev/null 2>&1; then
   headgaps=0
   while IFS= read -r f; do
     [ -n "$f" ] || continue
-    case "$f" in proposals/P253-euler-particle-mechanisms/attempts/01[01][0-9]-*/*)
+    case "$f" in proposals/P253-euler-particle-mechanisms/attempts/01[0-9][0-9]-*/*)
       dir="$(echo "$f" | cut -d/ -f3)"
       grep -q "$dir" "$HERD/INDEX.md" 2>/dev/null || { say "HEAD gap: $f landed, $dir unindexed (STALE)"; headgaps=1; } ;;
     esac
