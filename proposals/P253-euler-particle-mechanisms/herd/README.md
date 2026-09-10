@@ -6,7 +6,7 @@ Discover with `herdr agent list`, `herdr pane layout --pane "$HERDR_PANE_ID"`.
 
 ## Simple start (use now, improve later)
 
-- Direct nudge: `herdr agent prompt <name> "<one-line>: inbox/herd update, see proposals/P253-euler-particle-mechanisms/herd/inbox/<name>.md" --timeout 15000`
+- Direct nudge: `herdr agent prompt <name> "<one-line>: inbox/herd update, see proposals/P253-euler-particle-mechanisms/herd/inbox/<name>.md"` (no flags; `--timeout` requires `--wait`, which is rendezvous only)
   Never block on another agent: send without `--wait` unless you must rendezvous.
 - Shared board: `herd/STATUS.md` — one line per agent: current obligation, frontier file, blocked-on.
 - Mailboxes: `herd/inbox/<name>.md` — append `## <date> from <me>: <subject>` + body. Keep entries short, link artifact paths.

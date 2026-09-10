@@ -15,3 +15,5 @@
 | 2026-09-10 | cipher | DONE | P0-P7 | attempts/0108-cipher-radical | attempts/0108-cipher-radical | done: M1 framed-filament / M2 KAM-breather / M3 flux-charge, blinded-then-reconciled |
 | 2026-09-10 | cipher | DONE | P0-P7 | attempts/0108-cipher-radical | herd/checkpoints/cipher-20260910-1555.md | done: cipher checkpoint, no role shift |
 | 2026-09-10T16:01Z | cipher | WORKING | P2 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/04-poc-designs.md | landed: frozen PoC-1/2/3 designs; PoC-1 needs B2 denominator |
+| 2026-09-10 | cipher | DONE | P0-P7 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/{00-brief,01-mechanisms,02-criteria,03-reconciliation}.md | complete: 3 blinded sketches, M2-carrier x (M1\|M3-label) x M3-inertia recommended, kill nothing |
+| 2026-09-10 | cipher | DONE | P0-P7 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/04-poc-designs.md | frozen PoC-1/2/3 designs; B2-transfer ask to beacon, firewall pointer to drift |
