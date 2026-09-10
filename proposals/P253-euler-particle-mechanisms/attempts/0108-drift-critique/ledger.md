@@ -2,9 +2,10 @@
 
 Role: critic / tautology-fault firewall. Primary stays firewall per orchestrator update;
 any proposed shift will keep independent review coverage and be logged here + STATUS + inbox.
-No beacon/cipher 0108 claims exist yet (verified: `attempts/0108*` absent). This file freezes
-the baseline they will be firewalled against. 0107 drafts are interrupted author work
-(working statements, no verdict). 0104/0106 verdicts below are the preserved truth.
+Baseline frozen 2026-09-10 (sibling 0108 dirs landed after: beacon 7107011c, cipher fbf3ebb2 —
+see review-beacon-0108.md, review-cipher-0108.md). This file holds the standing scope freeze.
+0107 drafts are interrupted author work (working statements, no verdict).
+0104/0106 verdicts below are the preserved truth.
 
 ## Preserved established scope (do not relitigate without new contrary evidence)
 

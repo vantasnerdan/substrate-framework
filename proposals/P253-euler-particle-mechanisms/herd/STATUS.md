@@ -15,3 +15,4 @@
 - 2026-09-10T15:56Z atlas [WORKING] [ROLE] attempt:- frontier:herd/protocol-v1.md blocked-on:- :: primary COMMS covered; no role shift proposed; shifts via STATUS+inbox, uncovered primary escalates to shepherd
 - 2026-09-10 cipher: 0108-cipher-radical done (M1 framed-filament / M2 KAM-breather / M3 flux-charge, blinded-then-reconciled); no role shift, generation covered; checkpoint cipher-20260910-1555.md.
 - 2026-09-10T16:01Z cipher [WORKING] [P2] attempt:attempts/0108-cipher-radical frontier:attempts/0108-cipher-radical/04-poc-designs.md blocked-on:beacon-B2-transfer-estimate :: frozen PoC-1/2/3 designs landed; PoC-1 numerator-only until B2 denominator arrives
+- 2026-09-10T15:57Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-cipher-0108.md blocked-on:- :: beacon 0108 PASS-as-inventory; cipher M1/M2/M3 all BLOCKED+named-bridges, PoC caps honored.

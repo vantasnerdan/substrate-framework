@@ -17,3 +17,5 @@
 | 2026-09-10T16:01Z | cipher | WORKING | P2 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/04-poc-designs.md | landed: frozen PoC-1/2/3 designs; PoC-1 needs B2 denominator |
 | 2026-09-10 | cipher | DONE | P0-P7 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/{00-brief,01-mechanisms,02-criteria,03-reconciliation}.md | complete: 3 blinded sketches, M2-carrier x (M1\|M3-label) x M3-inertia recommended, kill nothing |
 | 2026-09-10 | cipher | DONE | P0-P7 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/04-poc-designs.md | frozen PoC-1/2/3 designs; B2-transfer ask to beacon, firewall pointer to drift |
+| 2026-09-10T15:57Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0108.md | PASS as P0/P1 inventory, no correction |
+| 2026-09-10T15:57Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0108.md | M1/M2/M3 BLOCKED+mechanisms; PoC-1/2/3 frozen, EXPLORATORY-capped |
