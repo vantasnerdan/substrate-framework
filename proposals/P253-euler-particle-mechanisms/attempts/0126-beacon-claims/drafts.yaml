@@ -1,0 +1,86 @@
+# DRAFT claim-promotion entries — NOT registry writes (beacon 0126).
+# Firewall + individual review required before any promotion.
+# Proposed IDs C-EUL-001/002: namespace C-EUL-* has zero hits in
+# governance/claims.yaml as of 2026-09-10; re-check at promotion.
+schema_version: 1
+claims:
+  - id: C-EUL-001
+    statement: >-
+      State-error transport cannot protect the Q-omega witness gap from
+      p=6 bordered-Newton Euler members at residual floor res >= 6.6e-3.
+      Sharp linearized transport gives max|eig(dQ_lin)| = 5.21
+      (trust-r3 state) / 4.16 (contour-fitted state) against gaps
+      11.16 / 10.77 (margins x2.1/x2.6 — the charter gate <= 0.9
+      fails on both), and exact nonlinear transfer gives |dQ| = 9.18 /
+      9.10 ~ lambda_min at the full gauged Newton step. Mechanism:
+      s^6 skirt-curvature plus free-boundary (src=0) motion under
+      ||du||_oo ~ 0.2: the exact response is O(1)-nonsmooth while the
+      linearized response is O(1)-smooth, so no estimate-side repair
+      can close the gap. The res ~1e-2 floor is robust across three
+      meshes (40x20 tensor, two contour-fitted refinement levels),
+      P1/P2 discretizations (P2 residual only x1.16 smaller:
+      quadrature under-integration excluded), and 140+ Newton plus
+      gradient iterations from two warm starts. This does not close
+      other member constructions, accuracy-free witnesses, or the
+      conditional form of the bound (see C-EUL-002); it closes only
+      state-error transport from members at or above this floor.
+    provenance: proposals/P253-euler-particle-mechanisms/attempts/0124-beacon-sharp/nogo.md
+    verification: numeric_evidence
+    review: draft
+    compatibility: native
+    epistemic: qualified
+    dependencies: []
+    evidence:
+      - proposals/P253-euler-particle-mechanisms/attempts/0124-beacon-sharp/sharp_dQ.py
+      - proposals/P253-euler-particle-mechanisms/attempts/0124-beacon-sharp/nogo.md
+      - proposals/P253-euler-particle-mechanisms/attempts/0124-beacon-sharp/tool-receipts.md
+      - proposals/P253-euler-particle-mechanisms/attempts/0122-beacon-fitted/measure_deltaf.py
+      - proposals/P253-euler-particle-mechanisms/attempts/0122-beacon-fitted/fitted-report.md
+      - proposals/P253-euler-particle-mechanisms/attempts/0123-beacon-fitted/x18_probes.py
+      - proposals/P253-euler-particle-mechanisms/attempts/0108-drift-critique/review-beacon-0124nogo.md
+      - proposals/P253-euler-particle-mechanisms/attempts/0108-drift-critique/review-beacon-0124correction.md
+    assumptions:
+      - p=6 focusing nonlinearity with eps=0.35 layer width and 1e-6 src regularization (0117 build_member.py conventions).
+      - Rows-met precondition (kappa, rbar within ~1% of row targets); Dirichlet outer box 6x3 (decay approximation).
+      - OMP-pinned deterministic execution; skfem 12.0.2 P1 (P2 probe only); feed grid n3=64, L3=8.0 via tested ga_pipeline FFT path.
+      - Translation-gauge projection uses the discrete nodal-gradient plane (measured overlap 0.89 with the softest fitted mode).
+      - The v1 /6 factor error in G1 (0.87/0.69 story) was caught by asymptotic-slope self-consistency, fixed, and rerun; corrected numbers above are post-fix (see correction review in evidence).
+    comparators: []
+    challenges: []
+    supersedes: []
+  - id: C-EUL-002
+    statement: >-
+      Conditional Q-omega gap protection. Let (u_h, mu, c) be a
+      rows-met bordered state with symmetric positive 3x3 H-matrix
+      budget Q(u_h), lam_h = lam_min(Q) > 0, and S1-gauged linearized
+      step du. Let dQ_exact(e) = Q(u_h+e) - Q(u_h) through the same
+      assembly pipeline. If condition C(e): max|eig(dQ_exact(e))| <=
+      0.9 holds for the candidate error e = u* - u_h, then (Q
+      symmetric, Weyl) |dlam| <= 0.9, protecting lam_h with margin >=
+      x12 at lam_h ~ 11. Measured trigger: C fires at ||e||_oo ≲ 0.03
+      (rho*, trust-r3 scale sweep 9.18/3.49/1.51/0.70/0.34 at scales
+      1/.5/.25/.125/.0625; asymptotic slope 5.21 reproduces G1).
+      Condition C is CURRENTLY UNSATISFIED (9.1-9.2 at full steps) —
+      this is an unsatisfied conditional asset with a quantified,
+      per-state-checkable trigger, not a closed bound. It promotes no
+      member, lifts no deferral, and licenses no deflation or QOI use.
+    provenance: proposals/P253-euler-particle-mechanisms/attempts/0125-beacon-condlemma/lemma.md
+    verification: numeric_evidence
+    review: draft
+    compatibility: native
+    epistemic: qualified
+    dependencies:
+      - C-EUL-001
+    evidence:
+      - proposals/P253-euler-particle-mechanisms/attempts/0125-beacon-condlemma/lemma.md
+      - proposals/P253-euler-particle-mechanisms/attempts/0125-beacon-condlemma/sweep_C.py
+      - proposals/P253-euler-particle-mechanisms/attempts/0125-beacon-condlemma/tool-receipts.md
+      - proposals/P253-euler-particle-mechanisms/attempts/0124-beacon-sharp/sharp_dQ.py
+      - proposals/P253-euler-particle-mechanisms/attempts/0108-drift-critique/review-beacon-0124correction.md
+    assumptions:
+      - Same assembly conventions as C-EUL-001.
+      - The trigger rho* ≈ 0.03 was measured on the trust-r3 tensor state; transfer to other states requires re-running sweep_C.py per state (instrument provided).
+      - The 0.9 threshold is a charter-gate inheritance (L_J<=1 at ||dF||~0.9 scale), not a derived optimum.
+    comparators: []
+    challenges: []
+    supersedes: []
