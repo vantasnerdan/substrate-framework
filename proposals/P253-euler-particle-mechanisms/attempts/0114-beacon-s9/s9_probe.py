@@ -74,7 +74,19 @@ def main(argv=None) -> None:
     import json
     ap = argparse.ArgumentParser()
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--out", type=str, default="probe-result.json")
+    ap.add_argument("--force", action="store_true",
+                    help="allow overwriting an existing output file")
     args = ap.parse_args(argv)
+    import os
+    outpath = os.path.join(
+        "proposals/P253-euler-particle-mechanisms/attempts/0114-beacon-s9",
+        os.path.basename(args.out))
+    if os.path.exists(outpath) and not args.force:
+        raise SystemExit(
+            f"REFUSING to overwrite {outpath}: pass --out <new-name> "
+            f"or --force (0116 integrity repair: frozen outputs are "
+            f"append-only-by-default)")
     print(f"seed={args.seed}")
     out = {"seed": args.seed}
     for tag, n, dt in (("base", 4000, 0.02), ("N2", 8000, 0.02), ("dt2", 4000, 0.01)):
@@ -84,8 +96,7 @@ def main(argv=None) -> None:
               f"{'EXPOSED' if ok else 'BLIND'}")
         out[tag] = {"slope": s, "R2": ss, "F30": f30,
                     "verdict": "EXPOSED" if ok else "BLIND"}
-    with open("proposals/P253-euler-particle-mechanisms/attempts/0114-beacon-s9/"
-              "probe-result.json", "w") as fh:
+    with open(outpath, "w") as fh:
         json.dump(out, fh, indent=2)
     base, n2, d2 = out["base"], out["N2"], out["dt2"]
     conv = (abs(n2["slope"] - base["slope"]) / base["slope"] < 0.2
