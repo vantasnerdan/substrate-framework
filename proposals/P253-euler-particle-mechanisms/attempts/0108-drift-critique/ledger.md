@@ -78,3 +78,8 @@ closure-of-range→range · nonreturned covector→repeated growth (HF post-eq-2
 - 2026-09-10 script-archival (cipher 83f72313): run_poc2.py/run_poc3.py + logs committed;
   drift reproduced digit-for-digit (PoC-2 13.4 s, PoC-3 0.3 s). PoC verdicts now rest on
   reproducibility. Standing: PoC-2 2nd-resolution rerun; thin-tube-ledger script still unarchived.
+- 2026-09-10 PoC-2 2nd resolution (cipher 4bd32513, run-res2.log NQ=400): Newton 6.42e-11,
+  eigs + Hessian match — frozen two-resolution predicate MET, item closed.
+- 2026-09-10 thin-tube archival (cipher 4bd32513, run_thintube.py + log match receipt digits):
+  item closed. EM-map (4bd32513): CONDITIONAL PASS per review-cipher-emmap.md (receipt-role +
+  quasi-static repairs open, R-EM2 import not drift-clearable).
