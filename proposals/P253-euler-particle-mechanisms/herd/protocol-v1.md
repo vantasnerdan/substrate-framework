@@ -122,3 +122,11 @@ hidden). Board renders the newest rows carrying `vrfy:`; `health.sh` fails
 on malformed tokens and reports coverage. Record the command you actually
 ran, with its real exit — the token is a pointer to the receipt, and the
 receipt (attempt dir `*.command/exit/stdout`) is the evidence.
+
+## 12. Gap closure (`herd/GAPS.md`, readiness view)
+
+One row per open terminal-PR gap: next artifact, owner, class
+(agent|owner|physics), verbatim `blocked-on` tokens it discharges, status.
+Board renders it; `health.sh` warns on any open wait whose first token is
+unmapped. Update rows on landing; close with the closing artifact, never
+delete. DRAFT rows are explicit guesses awaiting correction, not claims.

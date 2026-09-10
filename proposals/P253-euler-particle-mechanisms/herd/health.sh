@@ -109,6 +109,21 @@ while IFS= read -r row; do
   done
 done < "$HERD/INDEX.md"
 say "receipt coverage: $with/$total INDEX data rows carry vrfy tokens"
+say "--- gap mapping (every open wait token lands in GAPS.md) ---"
+if [ -f "$HERD/GAPS.md" ]; then
+  for n in shepherd atlas beacon cipher drift; do
+    last="$(grep " $n \[" "$HERD/STATUS.md" 2>/dev/null | tail -n 1 || true)"
+    [ -z "$last" ] && continue
+    case "$last" in *'blocked-on:-'*) continue;; esac
+    blo="$(echo "$last" | sed -n 's/.*blocked-on:\([^ ]*\).*/\1/p')"
+    first="${blo%%+*}"
+    if grep -qF "$first" "$HERD/GAPS.md" 2>/dev/null; then say "mapped: $n waits $first"; else say "UNMAPPED wait: $n waits $first (add to GAPS.md)"; warn=1; fi
+    rest="${blo#*+}"
+    [ "$rest" != "$blo" ] && say "info: $n also waits $rest"
+  done
+else
+  say "GAPS.md missing"; warn=1
+fi
 [ "$bad" -eq 1 ] && { say "receipt format BROKEN"; fail=1; }
 if [ "$fail" -eq 0 ]; then
   [ "$warn" -eq 0 ] && say "HEALTHY: v0+v1" || say "HEALTHY: v0 (v1 partial)"

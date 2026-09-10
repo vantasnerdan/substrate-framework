@@ -94,5 +94,10 @@ echo "## Validation receipts (INDEX rows carrying vrfy:cmd:scope:exitN)"
 echo ""
 vrows="$(grep 'vrfy:' "$INDEX" 2>/dev/null | tail -n 6 || true)"
 if [ -z "$vrows" ]; then echo "- none yet — add \`vrfy:<cmd>:<scope>:exit<N>\` to your landing INDEX row (§11)"; else echo "$vrows"; fi
+echo ""
+echo "## Gap closure (herd/GAPS.md: gap → next artifact → owner/class)"
+echo ""
+grows="$(grep '^|' "$HERD/GAPS.md" 2>/dev/null | grep -v '^|---' || true)"
+if [ -z "$grows" ]; then echo "- GAPS.md missing"; else echo "$grows"; fi
 } | sed 's/[[:space:]]*$//' > "$OUT"
 echo "board rendered: $OUT @ $HEAD"
