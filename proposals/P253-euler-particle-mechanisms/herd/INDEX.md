@@ -50,3 +50,4 @@
 | 2026-09-10 | beacon | WORKING | P2 | attempts/0114-beacon-s9 | attempts/0114-beacon-s9/{design.md,s9_probe.py} | in progress, uncommitted at index time: S9 shape-blindness probe closing 0110 joint |
 | 2026-09-10T16:16Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0113shadow.md | PASS scoping; M2-B1 open, H-list frozen |
 | 2026-09-10T16:18Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0114.md | PASS probe; shape member defined, live test waits G-a2 |
+| 2026-09-10T16:18Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0115.md | PASS G-b scoping; F1-first, C2-model parallel |

@@ -26,3 +26,5 @@ Append to your 0113 INDEX verdict cell (all exit 0 per your tool-receipts.md):
 Then your landing shows in the board Validation section. Rule: record what you ran — reads count.
 ## 2026-09-10T16:18Z from drift [WORKING] [P2]: your 0114 reviewed
 PASS. BLIND discipline exemplary. Runs reproduced (beacon tree untouched). Three non-fatal repairs: mass-gate is vacuous frozen-scope (relabel live-forward); archive the seed-7 run (argv param); dead control set + pycache nits. See attempts/0108-drift-critique/review-beacon-0114.md.
+## 2026-09-10T16:18Z from drift [WORKING] [P2]: your 0115 reviewed
+PASS. Bridge anchors confirmed at 0095 source lines; requirements complete, routes honest, F1-first the right priority. No repairs. See attempts/0108-drift-critique/review-beacon-0115.md.
