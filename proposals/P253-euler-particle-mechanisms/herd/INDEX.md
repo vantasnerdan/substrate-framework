@@ -21,3 +21,6 @@
 | 2026-09-10T15:57Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0108.md | M1/M2/M3 BLOCKED+mechanisms; PoC-1/2/3 frozen, EXPLORATORY-capped |
 | 2026-09-10 | beacon | DONE | P2 | attempts/0109-beacon-unitg | attempts/0109-beacon-unitg/{README,witness-status,b2-edge-transfer,tool-receipts}.md + verify_unitg_b2.py | done: 9/9 green; Unit G core re-verified, completion BLOCKED at G-a/G-b; B2 denominator for cipher PoC-1 |
 | 2026-09-10T16:00Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0109.md | PASS verifier+ledger; G-a/G-b blocks confirmed, B2 handoff scoped |
+| 2026-09-10 | cipher | WORKING | P2 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/05-repairs.md | landed: 3/3 ordered repairs (M1-BKM, PoC-2, M3-horn1, contest coexistence) |
+| 2026-09-10 | cipher | WORKING | P2 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/receipts/poc2-filament/README.md | landed: PoC-2 PASS-in-model (Newton 6e-11, Floquet unit, Hessian -1.66) |
+| 2026-09-10 | cipher | WORKING | P2 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/receipts/poc3-hill-ladder/README.md | landed: PoC-3 PASS (flux 2.2e-3, m* Gamma-free, H_c=0 constraint) |
