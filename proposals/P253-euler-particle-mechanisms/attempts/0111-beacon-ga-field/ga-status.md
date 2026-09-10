@@ -13,7 +13,7 @@ Notation per 0107 derivation; reviewed sources: 0077 (field structure),
 | 4 | `Q_B, λ_B, s_B` | (15)(17), `F = B_g` | B_g field | PIPELINE-READY, data-awaiting |
 | 5 | `G, det G, ‖G⁻¹‖` | (26)(27), `c = ε_EM` | same | PIPELINE-READY; g-ledger: `λ_B = O(g²)`, NO g-uniform inverse (recorded, matches 0107) |
 | 6 | `C = I_3` | (32)–(34): cutoff core translations, `∫ω_g = 0` | support locations only | READY NOW (structural; 0107 verifier checks the core potentials axis-by-axis, U2) |
-| 7 | `Q_χ ≠ 0` | tag mass (31) | — | ESTABLISHED by construction: 0077 (20) normalizes `∫χ_P = 1` |
+| 7 | `Q_χ ≠ 0` | tag mass (31) | — | per 0077 (20) within its conditional completion scope: `∫χ_P = 1` by normalization choice (precision qualifier per drift 0111 review; low-risk) |
 | 8 | (25a) orbit integral | `∮ gχ_g u_g·dx ≠ 0` on closed strict-band streamline | W_g orbits + χ_g support | FORMULA-READY (gradient-vs-loop argument is data-agnostic); evaluation awaits fields |
 | 9 | `K_I, K_C` | (37) tag-Gauss displacement derivatives | χ_g gradients + Gauss kernel | PIPELINE-EXTENSIBLE (same quadrature path); awaits fields |
 

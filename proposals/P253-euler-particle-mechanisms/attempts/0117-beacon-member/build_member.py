@@ -337,7 +337,7 @@ def solve_newton(rmax=6.0, zmax=3.0, nr=80, nz=40, itmax=30, tol=1e-9,
 
 def solve_bordered(rmax=6.0, zmax=3.0, nr=40, nz=20, itmax=20, tol=1e-9,
                    verbose=True, reg=1e-3, rbar_target=None,
-                   u0=None, mu0=None, c0=None, p_pw=None):
+                   u0=None, mu0=None, c0=None, p_pw=None, mesh=None):
     """Bordered Newton: unknowns (u, mu, c), rows (kappa, mean-radius).
     0080 BR-border numerically: (kappa, I_z) are near-parallel at frozen
     geometry (r~=r^2 over a thin core at R=1, measured det ratio 3.23 vs
@@ -350,7 +350,8 @@ def solve_bordered(rmax=6.0, zmax=3.0, nr=40, nz=20, itmax=20, tol=1e-9,
         p_pw = P
     if rbar_target is None:
         rbar_target = 1.0
-    mesh = build_mesh(rmax, zmax, nr, nz)
+    if mesh is None:
+        mesh = build_mesh(rmax, zmax, nr, nz)
     basis = Basis(mesh, ElementTriP1())
     rn = basis.doflocs[0]
     zn = basis.doflocs[1]

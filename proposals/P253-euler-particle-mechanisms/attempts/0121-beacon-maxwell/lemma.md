@@ -33,3 +33,13 @@ witness assembly); building them now spends work behind the same
 failed inequality. Build Maxwell AFTER (a) delivers a member meeting
 the quantified target. No work lost: L_c-Poisson path + tag
 approximant spec stand ready in 0111/G-a2 docs.
+## Appendix (drift repair): translation invariance, written not softened
+Claim: Q_F is exactly invariant under spatial translations of F.
+Proof: let (T_a F)(x) = F(x−a). Cross with a constant vector commutes
+with T_a, and the Leray projector P_L is a Fourier multiplier, hence
+also commutes: S_{T_a F} y = P_L((T_a F)×y) = T_a P_L(F×y) = T_a S_F y.
+T_a is unitary on L², so Q entries ⟨S_i,S_j⟩ are preserved. ∎
+Scope: translations only (rotations act nontrivially but unitarily on
+the triple — Q conjugates by the rotation, spectrum preserved too).
+This removes the translation null direction from the lemma's error
+budget exactly; all other soft modes remain in the measured bound.
