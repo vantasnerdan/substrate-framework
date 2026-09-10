@@ -83,3 +83,6 @@ closure-of-range→range · nonreturned covector→repeated growth (HF post-eq-2
 - 2026-09-10 thin-tube archival (cipher 4bd32513, run_thintube.py + log match receipt digits):
   item closed. EM-map (4bd32513): CONDITIONAL PASS per review-cipher-emmap.md (receipt-role +
   quasi-static repairs open, R-EM2 import not drift-clearable).
+- 2026-09-10 EM-map transaction CLOSED (cipher aa9a3488): receipt-role predicate-level
+  everywhere + quasi-static scope named + dups cut, verified in diff. Drift-clearance block
+  lifted (one-way half); R-EM2-import stays owner-side. Combo still BLOCKED on the import.

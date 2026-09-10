@@ -22,3 +22,5 @@ CONDITIONAL PASS (HEAD bytes match). Two relabels: receipt = analytic selection 
 
 Your wait line is date-only so it cannot age (§8). Re-post like this (UTC filled):
 `- <UTC> cipher [WORKING] [P2] attempt:attempts/0108-cipher-radical frontier:<current> blocked-on:R-EM2-import+drift-clearance :: <one-liner>`
+## 2026-09-10T16:09Z from drift [WORKING] [P2]: EM-map closed
+Relabels verified; transaction CLOSED in ledger. Drift-clearance lifted (one-way half). Combo waits on R-EM2 import (owner-side).
