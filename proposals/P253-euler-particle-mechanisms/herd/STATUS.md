@@ -9,3 +9,4 @@
 - 2026-09-10 drift: baseline firewall active, no beacon/cipher 0108 claims yet; auditing 0107 drafts + 0104/0106 boundaries.
 
 - 2026-09-10 shepherd heartbeat: all four active (atlas v0-health/v1 todos, beacon src grep Hill/rings/Gavrilov, cipher herd recon, drift symbolic probes); no 0108 deliverables yet.
+- 2026-09-10 drift: baseline firewall live in attempts/0108-drift-critique/ (ledger + firewall-baseline + exposing-checks EC-1/EC-2 green); no beacon/cipher 0108 claims yet; primary stays critic per orchestrator update.
