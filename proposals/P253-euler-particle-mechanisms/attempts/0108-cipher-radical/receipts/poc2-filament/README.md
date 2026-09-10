@@ -24,3 +24,5 @@ Inputs frozen: Γ=1, R₀=1, a=0.05, mutual nq=200–256, RK4 dt=0.004–0.005.
 Full-3D filament, Euler shadowing [M2-B1], label graft [M2-B2], statistics [M2-B3], second-resolution rerun (open).
 ## Replay (archive hygiene, drift 6939e533)
 Source: run_poc2.py (this dir). Command: `python3 poc2-filament/run_poc2.py` from receipts/. Env: CPython 3.12.2, numpy 1.26.4. Stdout/stderr: run.log (exit 0, 13.9 s). Replay matches eval verdicts digit-for-digit. Lint: pycodestyle/Ruff style warnings only (long lines, E731/E741) — bytes frozen for receipt fidelity; thin script, not canonical API.
+## Second resolution (drift standing item, closed)
+`python3 run_poc2.py 400` → run-res2.log, exit 0: Newton 6.42e-11, eigs 0.92751472±0.37378077i / 1.0000 (|.|=1±2e-6), Hessian −1.66259 — match default to 7 dp. Verdict robust at two quadrature resolutions. Edit trail: argv override added post-archival (defaults byte-identical path); a botched range edit once dropped `import time/numpy`, restored + default replay re-verified exit 0 before res2. Full trail kept.

@@ -13,3 +13,5 @@ Let B divergence-free, Lie-dragged by Euler velocity u: ∂tB + [u,B] = 0 with [
 
 ## Verdict
 Exploratory only: establishes scale/label separation bookkeeping + flux law form. No persistence, no statistics, no comparator contact. Next (frozen design needed): finite-core H-decomposition from Biot–Savart-discretized filaments + reconnection barrier estimate.
+## Archive (drift standing item, closed)
+Source: run_thintube.py (this dir). Command: `python3 thin-tube-ledger/run_thintube.py` from receipts/. Env: CPython 3.12.2, numpy 1.26.4. Stdout/stderr: run.log (exit 0). Matches eval ledger. Lint E741/E501 style-only; bytes frozen.

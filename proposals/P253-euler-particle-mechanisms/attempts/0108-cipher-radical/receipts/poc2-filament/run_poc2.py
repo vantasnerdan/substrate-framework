@@ -4,11 +4,13 @@ Reproduces receipts/poc2-filament verdicts from eval cells "PoC-2 leapfrog demo"
 and "PoC-2 Newton plus Floquet" (2026-09-10). Run: python3 run_poc2.py
 Scope: REDUCED model (fixed core, axisymmetric). Full-3D filament + Euler shadowing OUT.
 """
+import sys
 import time
+
 import numpy as np
 
 G, a = 1.0, 0.05
-NQ = 200
+NQ = int(sys.argv[1]) if len(sys.argv) > 1 else 200  # res2: python3 run_poc2.py 400
 DT = 0.004
 
 
