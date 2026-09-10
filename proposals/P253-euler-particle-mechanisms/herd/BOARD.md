@@ -1,7 +1,7 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T19:11:32Z at HEAD `b50c621c`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-10T19:12:38Z at HEAD `a23830ce`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
@@ -9,7 +9,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 - shepherd: READY [COMMS], clear
 - atlas: WORKING [COMMS], clear
 - beacon: DONE [P2], waiting on shepherd-rule-ab-first [ack] (0m)
-- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (155m)
+- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (156m)
 - drift: WORKING [P2], clear
 
 ## PR-readiness (latest v1 signal per agent)
@@ -25,7 +25,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
 - [waiting 0m, ack, no-ack] - 2026-09-10T19:25Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/recommendation.md blocked-on:shepherd-rule-ab-first :: feed provenance
-- [waiting 155m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
+- [waiting 156m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
 
 ## Needs attention (do these, oldest strain first)
 
@@ -44,12 +44,12 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 
 ## Validation receipts (INDEX rows carrying vrfy:cmd:scope:exitN)
 
-| 2026-09-10 | beacon | DONE | P2 | attempts/0116-beacon-ga2unblock | attempts/0116-beacon-ga2unblock/{README,unblock-request,tool-receipts}.md + ga2_repro.py | done: exit-1 repro, Route A(no-install)/B(heavy) + acceptance; vrfy:pip-list:0116-inventory:exit0 vrfy:run:repro:exit1 |
 | 2026-09-10 | beacon | DONE | P2 | attempts/0117-beacon-member | attempts/0117-beacon-member/{README,design,build_member,feed_member,rung-log,tool-receipts}.md + *.npz | located-not-done: bordered state 2% rows, feed λω exploratory; vrfy:runs:0117-ladder-pass:exit0 vrfy:runs:0117-ladder-fail:exit1 vrfy:feed:0117-member:exit0 |
 | 2026-09-10 | beacon | DONE | P2 | attempts/0118-beacon-polish | attempts/0118-beacon-polish/{README,polish-report,tool-receipts}.md | negative-result: 4 probes same signature, mesh-independent stall; vrfy:chain:0118-recovery:exit0 |
 | 2026-09-10 | beacon | DONE | P2 | attempts/0119-beacon-secant | attempts/0119-beacon-secant/{README,tool-receipts}.md | audit+secant+c-sign done; nested diverges by branch-hop; vrfy:audit:0119-stall:exit0 vrfy:nested:0119-secant:exit0 |
 | 2026-09-10 | beacon | DONE | P2 | attempts/0120-beacon-trust | attempts/0120-beacon-trust/{README,trust-report,tool-receipts}.md | trust verdict: rows-met floor-6e-3, basin/repro logged; vrfy:trust:0120-rounds:exit0 vrfy:feed:0120-trust:exit0 vrfy:refine:0120-diag:exit0 |
 | 2026-09-10 | atlas | READY | COMMS | attempts/0108-atlas-comms | herd/{board.sh,health.sh} loop-8 | landed: validation-receipt convention vrfy:bash-n:board.sh:exit0 vrfy:bash-n:health.sh:exit0 vrfy:board.sh:render:exit0 vrfy:health.sh:full:exit0 vrfy:diff-check:herd:exit0 |
+| 2026-09-10 | beacon | DONE | P2 | attempts/0121-beacon-maxwell | attempts/0121-beacon-maxwell/{README,lemma,tool-receipts}.md | lemma measured+failed, (a) activates quantified; vrfy:eig:0121-gap:exit0 vrfy:lemma:0121-bound:exit0 |
 
 ## Gap closure (herd/GAPS.md: gap → next artifact → owner/class)
 
