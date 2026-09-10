@@ -130,8 +130,8 @@ def main() -> None:
     Qt, _ = np.linalg.qr(np.stack([gg[0][free], gg[1][free]], axis=1))
     du[free] = du[free] - Qt @ (Qt.T @ du[free])
     print(f"||du_gauged||_oo = {np.abs(du).max():.4e}", flush=True)
-    # dF field: dzeta = (jf/6) du (P = 6)
-    dzeta = (jf / 6) * du
+    # dF field: dzeta = jf du (zeta = EPS^-2 s^6 = f; d/du = 6 EPS^-2 s^5 ds = jf)
+    dzeta = jf * du
     dF, _ = build_F(basis, rn, zn, rn * dzeta, n3, L3, make_grid)
     XYZ, K, dx = grid
     k2 = K[0]**2 + K[1]**2 + K[2]**2
@@ -143,7 +143,6 @@ def main() -> None:
         dH = np.stack([np.fft.fftn(dFxej[a]) for a in range(3)]) * dV
         dS_all.append(np.fft.ifftn(leray(dH, np.stack(K), k2),
                                    axes=(1, 2, 3)) / dV)
-    dS_all = np.stack(dS_all)
     dQ = (np.real(np.einsum("jaxyz,iaxyz->ji", np.conj(dS_all), Sphys))
           + np.real(np.einsum("jaxyz,iaxyz->ji", np.conj(Sphys), dS_all))) * dV
     dQ = (dQ + dQ.T) / 2
@@ -161,7 +160,7 @@ def main() -> None:
     E = 2 * float(np.abs(du).max())
     rem_zeta = 0.5 * float(np.abs(d2z).max()) * E**2
     # remainder field scale vs linearized: compare representative scales
-    lin_zeta = float(np.abs(jf / 6 * du).max())
+    lin_zeta = float(np.abs(jf * du).max())
     print(f"G2: tube E = {E:.4e}, quad remainder zeta-scale {rem_zeta:.4e} "
           f"vs linearized {lin_zeta:.4e}", flush=True)
     # G2': EXACT nonlinear transfer (no Taylor remainder theory).
