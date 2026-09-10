@@ -20,7 +20,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 - **M2-B1 H4-proof + A3 filament — BLOCKED-on-cipher-in-flight**: A1 H5 PASS, A2 H1 repaired PASS, A3 transfer PASS all banked; A3 design frozen C1–C8 (gate+orbit PASS banked, mono m0–6 running); drift design-vs-code pre-verdict flagged R-A/R-B BLOCKING + R-C wording; cipher repairs landed 538918bb (1e-4 floor, SOFT3 deflation, D4 addendum) — drift re-verdict pending; current token H4-proof (+owner-review).
 
 ## IN PROGRESS (carry, don't block)
-- **G-a2 numbers — 0125 PASS CONDITIONAL** (beacon + drift review-beacon-0124correction): conditional lemma rho*~0.03 banked; 0124 RE-CERTIFIED STRONGER with /6 correction; R1–R3 ride. G-a2 construction track complete — remaining: R-EM2 scope decision governs what it licenses.
+- **G-a2 numbers — 0125 PASS CONDITIONAL** (beacon + drift review-beacon-0124correction): conditional lemma rho*~0.03 banked; 0124 RE-CERTIFIED STRONGER with /6 correction; R1–R3 DONE 37625ab1 (stale framing fixed, corrected receipts, sweep banked). G-a2 construction track complete — remaining: R-EM2 scope decision governs what it licenses.
 - **IDEA-01..08**: all ADOPTED with owners (cipher/drift/atlas/beacon+cipher);
   IDEA-03 (R9-start) 1/3 closed — gates G-a2 trust-region start, rides with (a).
 - **Shadowing scope**: A1/A2 closed, H4-proof current token.
