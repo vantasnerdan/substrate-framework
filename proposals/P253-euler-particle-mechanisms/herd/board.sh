@@ -99,5 +99,10 @@ echo "## Gap closure (herd/GAPS.md: gap → next artifact → owner/class)"
 echo ""
 grows="$(grep '^|' "$HERD/GAPS.md" 2>/dev/null | grep -v '^|---' || true)"
 if [ -z "$grows" ]; then echo "- GAPS.md missing"; else echo "$grows"; fi
+echo ""
+echo "## Open ideas (herd/IDEAS.md — verdict: IDEA-DECISION <id>: ADOPT|DECLINE owner=<name>)"
+echo ""
+irows="$(grep '^| id |' "$HERD/IDEAS.md" 2>/dev/null; grep '| OPEN |' "$HERD/IDEAS.md" 2>/dev/null; grep '^|' "$HERD/IDEAS.md" 2>/dev/null | grep -v '^|---' | grep -v '| OPEN |' | grep -v '^| id |' || true)"
+if [ -z "$irows" ]; then echo "- IDEAS.md missing"; else echo "$irows"; fi
 } | sed 's/[[:space:]]*$//' > "$OUT"
 echo "board rendered: $OUT @ $HEAD"

@@ -125,6 +125,24 @@ else
   say "GAPS.md missing"; warn=1
 fi
 [ "$bad" -eq 1 ] && { say "receipt format BROKEN"; fail=1; }
+say "--- idea threads (OPEN older than 24h warns) ---"
+if [ -f "$HERD/IDEAS.md" ]; then
+  now="$(date -u +%s)"
+  open=0
+  while IFS= read -r row; do
+    case "$row" in *'| OPEN |'*) ;; *) continue;; esac
+    open=$((open+1))
+    ts="$(echo "$row" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z' | head -n 1)"
+    id="$(echo "$row" | sed -n 's/^| \([^ ]*\) |.*/\1/p')"
+    if [ -z "$ts" ]; then say "idea $id OPEN undated"; continue; fi
+    age=$(( (now - $(date -u -d "$ts" +%s)) / 3600 ))
+    [ "$age" -lt 0 ] && age=0
+    if [ "$age" -gt 24 ]; then say "idea $id OPEN stale (${age}h, verdict owed)"; warn=1; else say "idea $id OPEN (${age}h)"; fi
+  done < "$HERD/IDEAS.md"
+  say "open ideas: $open"
+else
+  say "IDEAS.md missing"; warn=1
+fi
 if [ "$fail" -eq 0 ]; then
   [ "$warn" -eq 0 ] && say "HEALTHY: v0+v1" || say "HEALTHY: v0 (v1 partial)"
   exit 0

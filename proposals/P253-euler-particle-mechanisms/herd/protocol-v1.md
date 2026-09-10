@@ -130,3 +130,12 @@ One row per open terminal-PR gap: next artifact, owner, class
 Board renders it; `health.sh` warns on any open wait whose first token is
 unmapped. Update rows on landing; close with the closing artifact, never
 delete. DRAFT rows are explicit guesses awaiting correction, not claims.
+
+## 13. Idea threads (`herd/IDEAS.md`, no sketch dies quietly)
+
+Posting is unchanged (`[STANDBYIDEA]` inbox line); atlas files it as an
+`IDEA-<nn>` row (status OPEN). Verdict belongs to shepherd or the taking
+owner: post `IDEA-DECISION <id>: ADOPT|DECLINE owner=<name> <pointer>` to
+STATUS or the author's inbox; the ledger row flips (never deleted).
+Board shows OPEN rows first; `health.sh` warns past 24h OPEN. Filers owe
+nothing further; shepherd owes every OPEN idea a verdict.
