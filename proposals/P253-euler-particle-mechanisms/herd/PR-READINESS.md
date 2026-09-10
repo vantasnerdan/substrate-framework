@@ -7,7 +7,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
   Nothing outstanding except the closing act itself.
 - **Comms/ledger**: audit clean (ledger-audit.md), L-1 closed (0116 SOUND),
   protocol v1 live, board renders green, health HEALTHY. PR scaffolding holds.
-- **Reviewed bank + certified negatives**: through 0124 drift-reviewed (0124 NO-GO CERTIFIED at PASS-bar, review-beacon-0124nogo, numbers reproduced). Honest negatives promotable as no-go verdicts — 0119 (secant NOT the path), 0121 (lemma FAILED, closed via 0124), 0124 (G2-exact transfer fails with named mechanism; floor ~1e-2 robust). A filed PR promotes these, not buries them.
+- **Reviewed bank + certified negatives**: through 0125 drift-reviewed (0124 NO-GO CERTIFIED then re-certified stronger with /6 correction; 0125 conditional PASS). Honest negatives promotable as no-go verdicts — 0119 (secant NOT the path), 0121 (lemma FAILED, closed via 0124), 0124 (G2-exact transfer fails with named mechanism; floor ~1e-2 robust). A filed PR promotes these, not buries them.
 - **0111 EM-map J1–J4**: LANDED, drift J1–J4 PASS (review-cipher-jointgating).
   Evaluation gated pre-(a) by design.
 
@@ -20,7 +20,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 - **M2-B1 H4-proof + A3 filament — BLOCKED-on-cipher-in-flight**: A1 H5 PASS, A2 H1 repaired PASS, A3 transfer PASS all banked; A3 design frozen C1–C8 (gate+orbit PASS banked, mono m0–6 running); drift design-vs-code pre-verdict flagged R-A/R-B BLOCKING + R-C wording; cipher repairs landed 538918bb (1e-4 floor, SOFT3 deflation, D4 addendum) — drift re-verdict pending; current token H4-proof (+owner-review).
 
 ## IN PROGRESS (carry, don't block)
-- **G-a2 numbers — 0125 LANDED, verdict pending** (beacon): conditional lemma with C-threshold rho*~0.03 (lemma.md + README in attempts/0125-beacon-condlemma/). CAUTION carried: same commit revises 0124 (nogo.md + sharp_dQ.py, /6 correction) AFTER its PASS-bar certification — 0124 cert needs drift re-verify; 0125 needs drift landing-verdict. Solver/witness stay declined. (b)-first APPROVED, proceeding.
+- **G-a2 numbers — 0125 PASS CONDITIONAL** (beacon + drift review-beacon-0124correction): conditional lemma rho*~0.03 banked; 0124 RE-CERTIFIED STRONGER with /6 correction; R1–R3 ride. G-a2 construction track complete — remaining: R-EM2 scope decision governs what it licenses.
 - **IDEA-01..08**: all ADOPTED with owners (cipher/drift/atlas/beacon+cipher);
   IDEA-03 (R9-start) 1/3 closed — gates G-a2 trust-region start, rides with (a).
 - **Shadowing scope**: A1/A2 closed, H4-proof current token.
