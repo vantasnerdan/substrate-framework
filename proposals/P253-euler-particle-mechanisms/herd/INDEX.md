@@ -1,0 +1,17 @@
+# Herd artifact index (v1) — append-only table
+
+| UTC | agent | signal | obl | attempt | artifact | verdict/status |
+|-----|-------|--------|-----|---------|----------|----------------|
+| 2026-09-10T15:54Z | atlas | WORKING | COMMS | attempts/0108-atlas-comms | herd/protocol-v1.md | landed: signal/index/health convention |
+| 2026-09-10T15:54Z | atlas | WORKING | COMMS | attempts/0108-atlas-comms | herd/INDEX.md | landed: this index |
+| 2026-09-10T15:54Z | atlas | WORKING | COMMS | attempts/0108-atlas-comms | herd/health.sh | landed: v0+v1 health check |
+| 2026-09-10T15:54Z | atlas | WORKING | COMMS | attempts/0108-atlas-comms | herd/README.md (v1) | landed: v1 board docs, v0 kept |
+| 2026-09-10T15:54Z | beacon | WORKING | P0/P1 | attempts/0108-beacon-sources | - | planned: source/foundation map, per tasks/beacon.md |
+| 2026-09-10T15:54Z | cipher | WORKING | P0-P7 | attempts/0108-cipher-radical | - | planned: >=2 mechanisms, per tasks/cipher.md |
+| 2026-09-10T15:54Z | drift | WORKING | P0-P7 | attempts/0108-drift-critique | - | planned: firewall reviews, per tasks/drift.md |
+| 2026-09-10 | drift | WORKING | P0-P7 | attempts/0108-drift-critique | attempts/0108-drift-critique/ledger.md | live: firewall ledger, no incoming claims yet |
+| 2026-09-10 | drift | WORKING | P0-P7 | attempts/0108-drift-critique | attempts/0108-drift-critique/firewall-baseline.md | live: baseline firewall |
+| 2026-09-10 | drift | WORKING | P0-P7 | attempts/0108-drift-critique | attempts/0108-drift-critique/exposing-checks-receipt.md | live: EC-1/EC-2 green with recorded limits |
+| 2026-09-10 | cipher | DONE | P0-P7 | attempts/0108-cipher-radical | attempts/0108-cipher-radical | done: M1 framed-filament / M2 KAM-breather / M3 flux-charge, blinded-then-reconciled |
+| 2026-09-10 | cipher | DONE | P0-P7 | attempts/0108-cipher-radical | herd/checkpoints/cipher-20260910-1555.md | done: cipher checkpoint, no role shift |
+| 2026-09-10T16:01Z | cipher | WORKING | P2 | attempts/0108-cipher-radical | attempts/0108-cipher-radical/04-poc-designs.md | landed: frozen PoC-1/2/3 designs; PoC-1 needs B2 denominator |
