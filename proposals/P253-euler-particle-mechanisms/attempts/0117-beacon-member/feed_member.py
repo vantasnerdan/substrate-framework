@@ -31,6 +31,7 @@ def main() -> None:
     ap.add_argument("--nr", type=int, default=80)
     ap.add_argument("--nz", type=int, default=40)
     ap.add_argument("--n3", type=int, default=48)
+    ap.add_argument("--L3", type=float, default=8.0)
     args = ap.parse_args()
 
     sys.path.insert(0, f"{ATTEMPT}")
@@ -55,7 +56,8 @@ def main() -> None:
     zn = basis.doflocs[1]
     interp = LinearNDInterpolator(np.stack([rn, zn], axis=1), wth,
                                   fill_value=0.0)
-    n3, L3 = args.n3, 8.0
+    n3, L3 = args.n3, args.L3
+    print(f"FEED npz={args.npz} mesh={args.nr}x{args.nz} grid={n3}^3 L3={L3}", flush=True)
     XYZ, K, dx = make_grid(n3, L3)
     X, Y, Z = XYZ
     R = np.sqrt(X**2 + Y**2)

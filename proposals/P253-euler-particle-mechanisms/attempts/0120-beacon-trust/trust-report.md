@@ -51,3 +51,10 @@ reproduction is basin-level, NOT bitwise (solver path-dependence in
 stall micro-steps). Error bars must carry ≥10% for solver-path
 sensitivity. member-trust-r3.npz holds this state; member-trust npz
 untouched (separate-file discipline after the overwrite lesson).
+## Feed provenance repair + state sensitivity (drift 0120 follow-up)
+Banked: feed-trust-r3.log (explicit CLI: trust-r3 npz, 40×20 member,
+64³ grid, L3=8.0). Sig-figs discipline: λ_ω ≈ 11.2 (doublet) +
+axial ≈ 35.0 — no more 8-digit quotes. State sensitivity DEMONSTRATED:
+p6-spurious feed gave 4.72 vs trust 11.2 (2.4×) → feed numbers are
+meaningless without rows-met precondition (kap/rbar ≤ ~1%); the
+precondition is now part of the feed contract.
