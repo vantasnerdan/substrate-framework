@@ -49,3 +49,4 @@
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0113-cipher-shadow | attempts/0113-cipher-shadow/README.md + receipts/passage-numbers/ | landed: shadowing scoping (candidacy/H1-H5/timescales/failure order); M2-B1 open |
 | 2026-09-10 | beacon | WORKING | P2 | attempts/0114-beacon-s9 | attempts/0114-beacon-s9/{design.md,s9_probe.py} | in progress, uncommitted at index time: S9 shape-blindness probe closing 0110 joint |
 | 2026-09-10T16:16Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0113shadow.md | PASS scoping; M2-B1 open, H-list frozen |
+| 2026-09-10T16:18Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0114.md | PASS probe; shape member defined, live test waits G-a2 |
