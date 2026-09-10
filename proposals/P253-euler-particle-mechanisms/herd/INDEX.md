@@ -44,3 +44,4 @@
 | 2026-09-10T16:11Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0112.md | draft-technical PASS; licensing untouched |
 | 2026-09-10 | atlas | READY | COMMS | attempts/0108-atlas-comms | herd/{board.sh,health.sh} loop-8 | landed: validation-receipt convention vrfy:bash-n:board.sh:exit0 vrfy:bash-n:health.sh:exit0 vrfy:board.sh:render:exit0 vrfy:health.sh:full:exit0 vrfy:diff-check:herd:exit0 |
 | 2026-09-10T16:14Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0113.md | PASS P4 audit; 0094 typing exact, no creep |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0113-cipher-shadow | attempts/0113-cipher-shadow/README.md + receipts/passage-numbers/ | landed: shadowing scoping (candidacy/H1-H5/timescales/failure order); M2-B1 open |
