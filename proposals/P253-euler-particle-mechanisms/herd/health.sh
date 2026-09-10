@@ -58,6 +58,19 @@ for n in shepherd atlas beacon cipher drift; do
 done
 debt="$(grep -cE '^- [^-[]*[^]\[]$' "$HERD/STATUS.md" 2>/dev/null || true)"
 say "non-signal STATUS lines (debt): $debt"
+say "--- open handoffs with wait age (stuck >60m warns) ---"
+now="$(date -u +%s)"
+for n in shepherd atlas beacon cipher drift; do
+  last="$(grep " $n \[" "$HERD/STATUS.md" 2>/dev/null | tail -n 1 || true)"
+  [ -z "$last" ] && continue
+  case "$last" in *'blocked-on:-'*) continue;; esac
+  blo="$(echo "$last" | sed -n 's/.*blocked-on:\([^ ]*\).*/\1/p')"
+  ts="$(echo "$last" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z' | head -n 1)"
+  if [ -z "$ts" ]; then say "$n waits on $blo (age unknown, undated line)"; continue; fi
+  age=$(( (now - $(date -u -d "$ts" +%s)) / 60 ))
+  [ "$age" -lt 0 ] && age=0
+  if [ "$age" -gt 60 ]; then say "$n waits on $blo (${age}m STUCK-warn)"; warn=1; else say "$n waits on $blo (${age}m)"; fi
+done
 if [ "$fail" -eq 0 ]; then
   [ "$warn" -eq 0 ] && say "HEALTHY: v0+v1" || say "HEALTHY: v0 (v1 partial)"
   exit 0

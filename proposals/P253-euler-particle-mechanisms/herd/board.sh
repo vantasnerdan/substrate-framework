@@ -14,6 +14,7 @@ sig_of()  { echo "$1" | sed -n 's/.*\[\([A-Z]*\)\] \[.*/\1/p'; }
 obl_of()  { echo "$1" | sed -n 's/.*\] \[\([^]]*\)\].*/\1/p'; }
 fld_of()  { echo "$1" | sed -n "s/.*$2:\\([^ ]*\\).*/\\1/p"; }
 msg_of()  { echo "$1" | sed -n 's/.*:: //p' | cut -c1-140; }
+age_min_of() { ts="$(echo "$1" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z' | head -n 1)"; [ -z "$ts" ] && { echo "?"; return 0; }; age=$(( ($(date -u +%s) - $(date -u -d "$ts" +%s)) / 60 )); [ "$age" -lt 0 ] && age=0; echo "$age"; }
 
 {
 echo "# Herd board — GENERATED, do not hand-edit"
@@ -21,6 +22,15 @@ echo ""
 echo "Regenerate: \`bash $HERD/board.sh\` (anyone, anytime; idempotent)."
 echo "Generated: $NOW at HEAD \`$HEAD\`. If \`git log -1\` shows a newer commit, re-run — this board predates the branch."
 echo "Sources: STATUS v1 \`[SIGNAL] [OBL]\` lines + INDEX + HEAD. Freeform lines are debt, not state."
+echo ""
+echo "## TL;DR (10-second scan)"
+echo ""
+for n in shepherd atlas beacon cipher drift; do
+  last="$(grep " $n \[" "$STATUS" 2>/dev/null | tail -n 1 || true)"
+  if [ -z "$last" ]; then echo "- $n: no v1 signal"; continue; fi
+  blo="$(fld_of "$last" blocked-on)"
+  if [ "$blo" = "-" ] || [ -z "$blo" ]; then echo "- $n: $(sig_of "$last") [$(obl_of "$last")], clear"; else echo "- $n: $(sig_of "$last") [$(obl_of "$last")], waiting on $blo ($(age_min_of "$last")m)"; fi
+done
 echo ""
 echo "## PR-readiness (latest v1 signal per agent)"
 echo ""
@@ -42,7 +52,7 @@ for n in shepherd atlas beacon cipher drift; do
   last="$(grep " $n \[" "$STATUS" 2>/dev/null | tail -n 1 || true)"
   [ -z "$last" ] && continue
   case "$last" in *'blocked-on:-'*) continue;; esac
-  echo "- $(echo "$last" | cut -c1-220)"
+  echo "- [waiting $(age_min_of "$last")m] $(echo "$last" | cut -c1-200)"
   found=1
 done
 [ "$found" -eq 0 ] && echo "- none"

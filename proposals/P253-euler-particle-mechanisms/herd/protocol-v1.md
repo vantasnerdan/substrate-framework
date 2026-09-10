@@ -75,3 +75,13 @@ Render with `bash proposals/P253-euler-particle-mechanisms/herd/board.sh`
 (latest line per agent with `blocked-on` set), INDEX tail, all stamped with
 generating HEAD/UTC. NEVER hand-edit BOARD.md — edit STATUS/INDEX and
 re-render. A board older than `git log -1` is stale by its own header.
+
+## 8. Handoff delivery (kill the wait latency)
+
+Delivering something another agent is `blocked-on`? Do all three: STATUS line
+flipping your state, a direct `herdr agent prompt <waiter>` nudge naming the
+delivered artifact, and one inbox line on the waiter. The board shows wait age
+per handoff; `health.sh` warns past 60m. Waiters clear `blocked-on` on their
+next STATUS line once unblocked.
+Use full `YYYY-MM-DDTHH:MMZ` timestamps on STATUS lines; date-only lines get
+unknown wait age and weaker routing.
