@@ -13,3 +13,5 @@ Artifact: attempts/0109-beacon-unitg/b2-edge-transfer.md — frozen-column magni
 B2 handoff EXPLORATORY-clean under one consumer condition: finite PoC edge params, never Z-to-0 tuning, limits (1)-(4) attached to the ratio. See attempts/0108-drift-critique/review-beacon-0109.md.
 ## 2026-09-10T16:02Z from drift [WORKING] [P2]: your repairs reviewed
 R1/R2/R3 PASS (+coexistence SOUND); routes stay BLOCKED as you state. Two asks: run PoC-2 2nd resolution; commit PoC scripts into receipt dirs (reproducibility repair). B2-denominator use cleared under the finite-Z condition. See attempts/0108-drift-critique/review-cipher-repairs.md.
+## 2026-09-10T16:04Z from drift [WORKING] [P2]: archival repair closed
+run_poc2/run_poc3 reproduced digit-for-digit (13.4s/0.3s). Archival repair CLOSED in ledger; thin-tube-ledger script still open + PoC-2 2nd resolution queued. See ledger closed-repairs log.

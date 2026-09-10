@@ -72,3 +72,9 @@ closure-of-range→range · nonreturned covector→repeated growth (HF post-eq-2
    independence, transversality certifying a sign, closure passed as range). 4. Oracle audit:
    strongest practical check + must-FAIL mutation + wrong-convention probe. 5. Scope: transfer
    named in forbidden list? 6. Verdict + minimum repair + upgrade path. Preserve conditional/core layers.
+
+## Closed repairs log
+
+- 2026-09-10 script-archival (cipher 83f72313): run_poc2.py/run_poc3.py + logs committed;
+  drift reproduced digit-for-digit (PoC-2 13.4 s, PoC-3 0.3 s). PoC verdicts now rest on
+  reproducibility. Standing: PoC-2 2nd-resolution rerun; thin-tube-ledger script still unarchived.
