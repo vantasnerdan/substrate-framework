@@ -72,3 +72,4 @@
 | 2026-09-10T19:19Z | drift | WORKING | P2 | 0108-drift-critique | ledger D-08 + review-cipher-jointgating.md | D-08 codified; J1-J4 PASS |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/A3-transfer.md | landed: source-transfer-first clearance; breaks #1/#2 + regime check; predictions un-consumed |
 | 2026-09-10T19:21Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-a3transfer.md | PASS transfer; norm+IDEA-07 notes ride with scan |
+| 2026-09-10T19:28Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0122pre.md | PRE-review worktree bytes; re-verify on landing |
