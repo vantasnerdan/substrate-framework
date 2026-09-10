@@ -20,18 +20,8 @@ No PR opened. One verdict per item. Evidence pointers inline.
   approve/amend/decline, the PR MUST scope to one-way + conditional framing
   and carry B-R1..B-R5 as open bridges. This is the single owner action that
   unlocks two-way claims.
-- **M2-B1 H4-proof + A3 filament — BLOCKED-on-cipher-in-flight**: A1 H5 PASS,
-  A2 H1 repaired PASS, A3 transfer PASS all banked; A3 design frozen C1–C8
-  (gate+orbit PASS banked, mono m0–6 running) but drift design-vs-code
-  pre-verdict flags R-A (floor 1e-4) + R-B (SOFT3 unimplemented) BLOCKING,
-  R-C wording (cipher: R-A/B/C applied, deflated rerun in flight, unverified);
-  current token H4-proof (+owner-review).
-- **G-a2 numbers — BLOCKED-on-(a)** (beacon): 0120 trust DONE (rows-met
-  6.6e-3, PASS); 0121 lemma FAILED (honest); 0122 CLOSED as measured-stall
-  PASS (drift review-beacon-0122landing: gate reproduced; 1 receipt repair;
-  beacon DONE line still undeclared, cosmetic). (a) next rung 0123 spec
-  landed 46586bc6 (x18 decision, estimate-side Lipschitz-Weyl, x18_probes.py
-  in tree), building. (b)-first APPROVED, proceeding.
+- **M2-B1 H4-proof + A3 filament — BLOCKED-on-cipher-in-flight**: A1 H5 PASS, A2 H1 repaired PASS, A3 transfer PASS all banked; A3 design frozen C1–C8 (gate+orbit PASS banked, mono m0–6 running); drift design-vs-code pre-verdict flagged R-A/R-B BLOCKING + R-C wording; cipher repairs landed 538918bb (1e-4 floor, SOFT3 deflation, D4 addendum) — drift re-verdict pending; current token H4-proof (+owner-review).
+- **G-a2 numbers — BLOCKED-on-(a)** (beacon): 0120 trust DONE (rows-met 6.6e-3, PASS); 0121 lemma FAILED (honest); 0122 CLOSED as measured-stall PASS (drift landing-verdict: gate reproduced; 1 receipt repair; beacon DONE line still undeclared, cosmetic). 0123 decision filed: x18 gap ESTIMATE-side, (a)-build specified (Lipschitz-Weyl, L_J<=1) — RULING ASKED (charter re-derivation build); G-a2 now waits on shepherd charter. (b)-first APPROVED, proceeding.
 
 ## IN PROGRESS (carry, don't block)
 - **S9 test** (beacon, `0114-beacon-s9`): dir landed, no verdict yet.
