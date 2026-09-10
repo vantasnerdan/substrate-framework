@@ -1,7 +1,7 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T19:10:39Z at HEAD `2be6a124`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-10T19:11:32Z at HEAD `b50c621c`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
@@ -9,7 +9,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 - shepherd: READY [COMMS], clear
 - atlas: WORKING [COMMS], clear
 - beacon: DONE [P2], waiting on shepherd-rule-ab-first [ack] (0m)
-- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (154m)
+- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (155m)
 - drift: WORKING [P2], clear
 
 ## PR-readiness (latest v1 signal per agent)
@@ -25,7 +25,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
 - [waiting 0m, ack, no-ack] - 2026-09-10T19:25Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/recommendation.md blocked-on:shepherd-rule-ab-first :: feed provenance
-- [waiting 154m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
+- [waiting 155m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :: A3 3
 
 ## Needs attention (do these, oldest strain first)
 
