@@ -82,3 +82,4 @@
 | 2026-09-10T19:59Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0124nogo.md | CERTIFIED; banked negative |
 | 2026-09-10T20:10Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0124correction.md | correction addendum; frozen review untouched |
 | 2026-09-10T20:30Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0126drafts.md | drafts PASS; candidacy only |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/receipts/a3-scan/README.md + run_a3.py | landed: m1-6 PASS-in-model (2 resol, deflated, eps+T-window legs); m0 UNRESOLVED window-fragile; PoC-2 Floquet downgrade |

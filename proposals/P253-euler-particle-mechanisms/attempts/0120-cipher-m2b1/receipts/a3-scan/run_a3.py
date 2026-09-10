@@ -1,22 +1,33 @@
-"""A3 archive: 3D filament resonance scan (FROZEN design A3-design.md, C1-C8).
+"""A3 archive: 3D filament resonance scan (FROZEN design A3-design.md, C1-C8 + D4).
 Core model (C4 explicit): Saffman-local self-induction + Rosenhead-Moore mutual.
 Scope: reduced filament model; verdicts -in-model; live-field gap uncrossed (C7).
-Stages: gate | orbit | mono | ladder | control  (argv[1]; default gate)
+Method history (honest trail): one-sided FD monodromy (R-A floor 1e-4 + eps-leg);
+m=0 wrong-subspace block retired (measured non-axisym leak, found all-zero);
+GAUGE2 named (azimuthal per-ring exact kernel); crossing-detect Newton retired
+(branch jumps) -> smooth 3x3 single shooting (res 2.9e-12); lab-frame fixed-T m=0
+kept as data, centered-Schur variant retired as artifact (2.0 eigenvalue).
+Stages: gate | orbit | mono | m0 | m0sec | newton3 | verdicts
+Usage: python3 run_a3.py <stage> [aa [N]]
 """
-import sys, time
-import numpy as np
-
 import os
+import sys
+import time
+
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "..", "..", "..", "0108-cipher-radical", "receipts", "poc2-filament"))
+import numpy as np
+
 G = 1.0
-AA = float(sys.argv[2]) if len(sys.argv) > 2 else 0.05
-N = int(sys.argv[3]) if len(sys.argv) > 3 else 64
+_args = sys.argv[1:]
+_stage0 = _args[0] if _args and _args[0][:1].isalpha() else "gate"
+_rest = _args[1:] if _args and _args[0] == _stage0 else _args
+AA = float(_rest[0]) if len(_rest) > 0 else 0.05
+N = int(_rest[1]) if len(_rest) > 1 else 64
 DT = 0.005
 PH = np.linspace(0, 2 * np.pi, N, endpoint=False)
 DPH = 2 * np.pi / N
-RUNIT = np.stack([np.cos(PH), np.sin(PH), np.zeros(N)], axis=1)   # radial unit
-AUNIT = np.stack([-np.sin(PH), np.cos(PH), np.zeros(N)], axis=1)  # azimuthal unit
+RUNIT = np.stack([np.cos(PH), np.sin(PH), np.zeros(N)], axis=1)
+AUNIT = np.stack([-np.sin(PH), np.cos(PH), np.zeros(N)], axis=1)
 ZUNIT = np.tile(np.array([0.0, 0.0, 1.0]), (N, 1))
 
 
@@ -63,9 +74,8 @@ def flow(X0, T, dt=DT, **kw):
     return X
 
 
-# ---- per-m basis (C5): dirs per m; m=0 -> 6 real, m>0 -> 12 real ----
 def basis_field(m, n, k, part):
-    """unit perturbation field on ring n, direction k (0=rad,1=azi,2=ax), Re/Im part."""
+    """unit perturbation on ring n, dir k (0=rad,1=azi,2=ax), Re/Im part."""
     F = np.zeros((2, N, 3))
     U = [RUNIT, AUNIT, ZUNIT][k]
     if m == 0:
@@ -86,7 +96,7 @@ def dir_index(m, i):
 
 
 def project(Xd):
-    """project displacement field onto all (m,n,k,part) comps -> dict m: vec."""
+    """project displacement field onto (m,n,k,part) comps -> dict m: vec."""
     out = {}
     v0 = np.zeros(6)
     for n in range(2):
@@ -104,24 +114,7 @@ def project(Xd):
     return out
 
 
-def monodromy(X0, T, mmax=6, eps=1e-6, dt=DT, **kw):
-    XB = flow(X0, T, dt=dt, **kw)
-    pB = project(XB - axisym_of(XB))
-    Mono = {}
-    for m in range(0, mmax + 1):
-        nd = ndirs(m)
-        M = np.zeros((nd, nd))
-        for i in range(nd):
-            F = basis_field(m, *dir_index(m, i))
-            XT = flow(X0 + eps * F, T, dt=dt, **kw)
-            col = (project(XT - axisym_of(XT))[m] - pB[m]) / eps
-        Mono[m] = M
-    np.savez("Mono_e%s_m%02d.npz" % (eps, mmax), **{"m%d" % m: Mono[m] for m in Mono})
-    return Mono, XB
-
-
 def axisym_of(X):
-    """axisymmetric part (m=0 reconstruction) of a state."""
     Y = np.zeros_like(X)
     for n in range(2):
         R = np.sqrt(X[n, :, 0] ** 2 + X[n, :, 1] ** 2).mean()
@@ -132,168 +125,205 @@ def axisym_of(X):
     return Y
 
 
+def monodromy(X0, T, mmax=6, eps=1e-6, dt=DT, **kw):
+    """per-m FD monodromy. m=0 block RETIRED (wrong subspace) — Quasi-static scope:
+    use only m>=1 columns; m=0 covered by stage_m0 (centered section map)."""
+    XB = flow(X0, T, dt=dt, **kw)
+    pB = project(XB - axisym_of(XB))
+    Mono = {}
+    for m in range(1, mmax + 1):
+        nd = ndirs(m)
+        M = np.zeros((nd, nd))
+        for i in range(nd):
+            F = basis_field(m, *dir_index(m, i))
+            XT = flow(X0 + eps * F, T, dt=dt, **kw)
+            col = (project(XT - axisym_of(XT))[m] - pB[m]) / eps
+            M[:, i] = col[:nd]
+        Mono[m] = M
+    np.savez("Mono_e%s_m%02d.npz" % (eps, mmax),
+             **{"m%d" % m: Mono[m] for m in Mono})
+    return Mono, XB
+
+
 def soft3_vectors(X0):
-    """NAMED soft subspace SOFT3 (C6): time-shift + x/y translates as m=0/m=1 fields."""
-    t = project(rhs3(X0))[0]          # time-shift tangent, m=0
-    ex = np.zeros((2, N, 3)); ex[:, :, 0] = 1.0
-    ey = np.zeros((2, N, 3)); ey[:, :, 1] = 1.0
-    px = project(ex)  # lives in m=1
+    t = project(rhs3(X0))[0]
+    ex = np.zeros((2, N, 3))
+    ex[:, :, 0] = 1.0
+    ey = np.zeros((2, N, 3))
+    ey[:, :, 1] = 1.0
+    px = project(ex)
     py = project(ey)
     return t, px[1], py[1]
 
 
 def stage_gate():
     _av, sys.argv = sys.argv, ["run_poc2.py"]
-    from run_poc2 import mutual, rhs2
+    from run_poc2 import mutual
     sys.argv = _av
     V = rhs3(ring_state(1.0, 0.5, 1.0, -0.5))
     m = mutual(1.0, 0.5, 1.0, -0.5, nq=N)
     rad = V[:, :, 0] * np.cos(PH)[None, :] + V[:, :, 1] * np.sin(PH)[None, :]
     azi = -V[:, :, 0] * np.sin(PH)[None, :] + V[:, :, 1] * np.cos(PH)[None, :]
     ok = abs(rad[0, 0] - m[0]) < 1e-9 and abs(azi).max() < 1e-12
-    print(f"gate radial {rad[0,0]:.12f} vs {m[0]:.12f}; azim {abs(azi).max():.1e}; GATE {'PASS' if ok else 'FAIL'}")
+    print(f"gate radial {rad[0,0]:.12f} vs {m[0]:.12f}; "
+          f"azim {abs(azi).max():.1e}; GATE {'PASS' if ok else 'FAIL'}")
+
+
+def shape4(X):
+    return np.array([np.sqrt(X[0, :, 0] ** 2 + X[0, :, 1] ** 2).mean(), X[0, :, 2].mean(),
+                     np.sqrt(X[1, :, 0] ** 2 + X[1, :, 1] ** 2).mean(), X[1, :, 2].mean()])
+
+
+def shoot(R1g=0.773723, R2g=1.185226, Tg=4.08800, quiet=True):
+    """smooth 3x3 single shooting: unknowns (R1,R2,T), section start Z1=Z2=0."""
+    y = np.array([R1g, R2g, Tg])
+
+    def res3(yy):
+        X0 = ring_state(yy[0], 0.0, yy[1], 0.0)
+        XT = flow(X0, yy[2])
+        S = shape4(XT)
+        return np.array([S[0] - yy[0], S[2] - yy[1], S[1] - S[3]])
+
+    r = res3(y)
+    for it in range(12):
+        rn = np.linalg.norm(r)
+        if not quiet:
+            print(f"  shoot it{it}: |res|={rn:.3e} "
+                  f"R1={y[0]:.6f} R2={y[1]:.6f} T={y[2]:.5f}", flush=True)
+        if rn < 1e-10:
+            break
+        J = np.zeros((3, 3))
+        e = np.array([1e-6, 1e-6, 1e-7])
+        for j in range(3):
+            dy = np.zeros(3)
+            dy[j] = e[j]
+            J[:, j] = (res3(y + dy) - r) / e[j]
+        dy, *_ = np.linalg.lstsq(J, -r, rcond=None)
+        y = y + dy
+        r = res3(y)
+    if not quiet:
+        print(f"SHOOTING converged: R1={y[0]:.6f} R2={y[1]:.6f} "
+              f"T={y[2]:.5f} |res|={np.linalg.norm(r):.2e}")
+    return y[0], y[1], y[2], np.linalg.norm(r)
+
+
+def stage_newton3():
+    R1, R2, T, rn = shoot(quiet=False)
+    print(f"NEWTON3: R1={R1:.6f} R2={R2:.6f} T={T:.5f} |res|={rn:.1e}")
+
 
 def stage_orbit():
-    # banked PoC-2 section orbit; section return (Z1-Z2) + radii (pair drift is physical)
-    R1, R2, T = 0.773723, 1.185226, 4.08800
+    R1, R2, T, rn = shoot()
     X0 = ring_state(R1, 0.0, R2, 0.0)
     t0 = time.time()
     XT = flow(X0, T)
     R = [np.sqrt(XT[n, :, 0] ** 2 + XT[n, :, 1] ** 2).mean() for n in range(2)]
     Z = [XT[n, :, 2].mean() for n in range(2)]
     print(f"orbit return: dR1={R[0]-R1:.2e} dR2={R[1]-R2:.2e} d(Z1-Z2)={Z[0]-Z[1]:.2e} "
-          f"pair-drift={(Z[0]+Z[1])/2:.4f} nonaxisym={abs(XT - axisym_of(XT)).max():.1e} ({time.time()-t0:.1f}s)")
+          f"pair-drift={(Z[0]+Z[1])/2:.4f} nonaxisym={abs(XT - axisym_of(XT)).max():.1e} "
+          f"({time.time()-t0:.1f}s)")
 
 
 def stage_mono():
-    R1, R2, T = 0.773723, 1.185226, 4.08800
+    R1, R2, T, rn = shoot()
+    print(f"mono base: shot R1={R1:.6f} R2={R2:.6f} T={T:.5f} |res|={rn:.1e}", flush=True)
     X0 = ring_state(R1, 0.0, R2, 0.0)
     t0 = time.time()
     Mono, XB = monodromy(X0, T, mmax=6)
     tS, px, py = soft3_vectors(X0)
-    print(f"SOFT3 norms: |t-shift|={np.linalg.norm(tS):.3f} |px|={np.linalg.norm(px):.3f} |py|={np.linalg.norm(py):.3f}")
-    for m in range(7):
+    print(f"SOFT3 norms: |t-shift|={np.linalg.norm(tS):.3f} "
+          f"|px|={np.linalg.norm(px):.3f} |py|={np.linalg.norm(py):.3f}")
+    for m in range(1, 7):
         ev = np.linalg.eigvals(Mono[m])
         am = abs(ev)
         order = np.argsort(-am)
         top = " ".join(f"{am[j]:.6f}" for j in order[:4])
         # R-B: RAW counts, UNLICENSED (no SOFT3 deflation) — do not consume; see verdicts
         print(f"m={m}: RAW|rho|max4 [{top}] UNLICENSED-nodeflate")
-    # C1: W MEASURED — max relative convergence rate x Rbar^2/Gamma over base period
+    # C1: W MEASURED — dimensionless velocity-gradient operator norm along orbit
+    rng = np.random.default_rng(0)
     X = X0.copy()
     n = int(round(T / DT))
     Wmax = 0.0
-    for _ in range(n):
-        R = [np.sqrt(X[k, :, 0] ** 2 + X[k, :, 1] ** 2).mean() for k in range(2)]
-        Z = [X[k, :, 2].mean() for k in range(2)]
-        V = rhs3(X)
-        rR = [(V[k, :, 0] * np.cos(PH) + V[k, :, 1] * np.sin(PH)).mean() for k in range(2)]
-        if abs(R[0] - R[1]) > 1e-9:
-            Wmax = max(Wmax, abs(rR[0] - rR[1]) / abs(R[0] - R[1]) * np.mean(R) ** 2 / G)
+    for step in range(n + 1):
+        if step % max(n // 8, 1) == 0:
+            Rm = float(np.mean([np.sqrt(X[k, :, 0] ** 2 + X[k, :, 1] ** 2).mean()
+                                for k in range(2)]))
+            V0 = rhs3(X)
+            for _ in range(6):
+                F = rng.normal(size=X.shape)
+                F /= np.sqrt((F ** 2).sum() / F.size)
+                dV = (rhs3(X + 1e-7 * F) - V0) / 1e-7
+                Wmax = max(Wmax, np.sqrt((dV ** 2).sum() / dV.size) * Rm ** 2 / G)
         X = rk4_3(X, DT)
     Rm = float(np.mean([R1, R2]))
-    print(f"W_MEASURED={Wmax:.4f} Lambda_Saff={np.log(8*Rm/AA):.3f} Lambda_ln={np.log(Rm/AA):.3f} ({time.time()-t0:.1f}s)")
+    print(f"W_MEASURED={Wmax:.4f} Lambda_Saff={np.log(8*Rm/AA):.3f} "
+          f"Lambda_ln={np.log(Rm/AA):.3f} ({time.time()-t0:.1f}s)")
 
 
-# ---- parameterized axisymmetric model (ladder/control need own Newton per (Gam,aa)) ----
-def mut_a(Rt, Zt, Rs, Zs, Gam, aa, nq):
-    ph = np.linspace(0, 2 * np.pi, nq, endpoint=False)
-    dph = 2 * np.pi / nq
-    sx, sy = Rs * np.cos(ph), Rs * np.sin(ph)
-    rx, ry, rz = Rt - sx, -sy, Zt - Zs
-    r = np.sqrt(rx * rx + ry * ry + rz * rz + aa * aa)
-    dlx, dly = -Rs * np.sin(ph) * dph, Rs * np.cos(ph) * dph
-    f = Gam / (4 * np.pi * r ** 3)
-    return np.array([np.sum(f * dly * rz), 0.0, np.sum(f * (dlx * ry - dly * rx))])
+def stage_m0():
+    # CENTERED section-map 3x3 monodromy at SHOT orbit (mirrors PoC-2 flow_shape).
+    R1, R2, T, rn = shoot()
+    print(f"m0 base: shot R1={R1:.6f} R2={R2:.6f} T={T:.5f} |res|={rn:.1e}", flush=True)
+    t0 = time.time()
 
+    def secflow(sh):
+        # sh=(R1,R2,Zd): start Z1=+Zd/2,Z2=-Zd/2, flow fixed T, return shape
+        X0 = ring_state(sh[0], sh[2] / 2, sh[1], -sh[2] / 2)
+        XT = flow(X0, T)
+        R = [np.sqrt(XT[k, :, 0] ** 2 + XT[k, :, 1] ** 2).mean() for k in range(2)]
+        Z = [XT[k, :, 2].mean() for k in range(2)]
+        return np.array([R[0], R[1], Z[0] - Z[1]])
 
-def rhs2a(s, Gam, aa, nq):
-    R1, Z1, R2, Z2 = s
-    m12 = mut_a(R1, Z1, R2, Z2, Gam, aa, nq)
-    m21 = mut_a(R2, Z2, R1, Z1, Gam, aa, nq)
-    V1 = Gam / (4 * np.pi * R1) * (np.log(8 * R1 / aa) - 0.25)
-    V2 = Gam / (4 * np.pi * R2) * (np.log(8 * R2 / aa) - 0.25)
-    return np.array([m12[0], V1 + m12[2], m21[0], V2 + m21[2]])
+    sh_star = np.array([R1, R2, 0.0])
+    F0 = secflow(sh_star)
+    print(f"m0 section return res: {np.linalg.norm(F0 - sh_star):.1e}")
+    M = np.zeros((3, 3))
+    e = 1e-6
+    for j in range(3):
+        dp = np.zeros(3)
+        dp[j] = e
+        M[:, j] = (secflow(sh_star + dp) - secflow(sh_star - dp)) / (2 * e)
+    ev = np.linalg.eigvals(M)
+    print("m=0 section-flow eigs:", " ".join(f"{v.real:.6f}{v.imag:+.6f}j" for v in ev),
+          "|.|=", " ".join(f"{abs(v):.6f}" for v in ev))
+    print(f"(expect PoC-2 0.9275+-0.3738i + 1; GAUGE2 kernel by construction) "
+          f"({time.time()-t0:.1f}s)")
 
-
-def rk4_2a(s, dt, Gam, aa, nq):
-    f = lambda q: rhs2a(q, Gam, aa, nq)
-    k1 = f(s)
-    k2 = f(s + dt / 2 * k1)
-    k3 = f(s + dt / 2 * k2)
-    k4 = f(s + dt * k3)
-    return s + dt / 6 * (k1 + 2 * k2 + 2 * k3 + k4)
-
-
-def section_map(x, Gam, aa, nq, dt=0.005, tmax=12.0):
-    # from (R1,R2) at Z1=Z2 section, flow to next same-sense crossing; return shape+T
-    s = np.array([x[0], 0.05, x[1], -0.05])
-    prev = s.copy()
-    t = 0.0
-    while t < tmax:
-        s = rk4_2a(s, dt, Gam, aa, nq)
-        t += dt
-        if (prev[1] - prev[3]) * (s[1] - s[3]) < 0 and t > 0.5:
-            return np.array([s[0], s[2], s[1] - s[3]]), t
-        prev = s.copy()
-    return None, None
-
-
-def newton_orbit(xguess, Gam, aa, nq):
-    x = np.array(xguess, dtype=float)
-    for it in range(12):
-        sh, T = section_map(x, Gam, aa, nq)
-        r = sh - np.array([x[0], x[1], 0.0])
-        rn = np.linalg.norm(r)
-        if rn < 1e-9:
-            break
-        J = np.zeros((3, 2))
-        e = 1e-6
-        for j in range(2):
-            dx = np.zeros(2)
-            dx[j] = e
-            sh2, _ = section_map(x + dx, Gam, aa, nq)
-            J[:, j] = (sh2 - np.array([x[0] + dx[0], x[1] + dx[1], 0.0]) - r) / e
-        dx, *_ = np.linalg.lstsq(J, -r, rcond=None)
-        x = x + dx
-    return x, T, rn
 
 def stage_verdicts():
-    # R-A: license floor 1e-4 (one-sided FD truncation); R-B: SOFT3 deflation + overlap
-    R1, R2, T = 0.773723, 1.185226, 4.08800
+    # R-A floor 1e-4 + eps-leg; R-B SOFT3 deflation (m=1); m=0 via stage_m0.
+    R1, R2, T, rn = shoot()
+    print(f"verdicts base: shot R1={R1:.6f} R2={R2:.6f} T={T:.5f} |res|={rn:.1e}", flush=True)
     X0 = ring_state(R1, 0.0, R2, 0.0)
     D = np.load("Mono_e1e-06_m06.npz")
     tS, px, py = soft3_vectors(X0)
-    Q = {0: tS / np.linalg.norm(tS)}
     Qp = np.stack([px, py], axis=1)
     Qp, _ = np.linalg.qr(Qp)
-    Q[1] = Qp
-    print("SOFT3: m=0 dim1 (time-shift); m=1 dim2 (x/y-translate), orthonormalized")
-    for m in range(7):
+    print("SOFT3: m=1 dim2 (x/y-translate), orthonormalized; m=0 via stage_m0")
+    for m in range(1, 7):
         M = D["m%d" % m]
         ev, EV = np.linalg.eig(M)
         am = abs(ev)
-        if m in Q:
-            P = np.eye(M.shape[0]) - Q[m] @ Q[m].T
-            evd = np.linalg.eigvals(P @ M @ P)
-            amd = abs(evd)
+        if m == 1:
+            P = np.eye(M.shape[0]) - Qp @ Qp.T
+            amd = abs(np.linalg.eigvals(P @ M @ P))
+            ov = [float(np.linalg.norm(Qp.T @ (EV[:, j] / np.linalg.norm(EV[:, j]))))
+                  for j in range(len(ev))]
+            nsoft = sum(1 for o in ov if o > 0.5)
         else:
             amd = am
-        ov = []
-        if m in Q:
-            for j in range(len(ev)):
-                ov.append(float(np.linalg.norm(Q[m].T @ (EV[:, j] / np.linalg.norm(EV[:, j])))))
+            nsoft = 0
         top = " ".join(f"{a:.6f}" for a in sorted(amd)[-4:][::-1])
         ng = int((amd > 1 + 1e-4).sum())
-        nsoft = sum(1 for o in ov if o > 0.5) if ov else 0
         print(f"m={m}: deflated|rho| [{top}] n_grow(1e-4)={ng} soft-attrib={nsoft}")
-    # R-A eps-leg: halve eps on m=1,2, report entry diff (truncation estimate)
     for m in (1, 2):
         M1 = D["m%d" % m]
         Mono2, _ = monodromy(X0, T, mmax=m, eps=5e-7)
         M2 = Mono2[m]
-        print(f"m={m} eps-leg: max|M(eps)-M(eps/2)|={abs(M1-M2).max():.2e}")
+        print(f"m={m} eps-leg: max|M(eps)-M(eps/2)|={abs(M1 - M2).max():.2e}")
+
 
 if __name__ == "__main__":
-    stage = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1][0].isalpha() else "gate"
-    {"gate": stage_gate, "orbit": stage_orbit, "mono": stage_mono, "verdicts": stage_verdicts}[stage]()
+    {"gate": stage_gate, "orbit": stage_orbit, "mono": stage_mono, "m0": stage_m0,
+     "newton3": stage_newton3, "verdicts": stage_verdicts}[_stage0]()
