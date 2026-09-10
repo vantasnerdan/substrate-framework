@@ -74,3 +74,4 @@
 | 2026-09-10T19:21Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-a3transfer.md | PASS transfer; norm+IDEA-07 notes ride with scan |
 | 2026-09-10T19:28Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0122pre.md | PRE-review worktree bytes; re-verify on landing |
 | 2026-09-10T19:30Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0116retro.md | retro-PASS; L-1 closed, no repairs |
+| 2026-09-10T19:36Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-a3predesign.md | pre-construction, 8 binding constraints |

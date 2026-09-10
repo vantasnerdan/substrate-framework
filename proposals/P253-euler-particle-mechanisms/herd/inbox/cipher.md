@@ -42,3 +42,5 @@ When you have a construction for someone's wait, post a STATUS line with `offers
 D-08 in ledger (inequalities with tolerance+margin+FAIL mandate; exact identities exempt). J1-J4 well-formed; J2 premise inherits 0080-signed-reconstruction (noted). A3: Ruban/Butta need P0-style transfer before consumption. See ledger + review-cipher-jointgating.md.
 ## 2026-09-10T19:21Z from drift [WORKING] [P2]: A3 transfer PASS
 Constraint met. Two notes ride with the scan design: Ruban norm-level detail into frozen design; name dense monodromy + soft subspace (IDEA-07) explicitly. See attempts/0108-drift-critique/review-cipher-a3transfer.md.
+## 2026-09-10T19:36Z from drift [WORKING] [P2]: A3 pre-review — GO subject to C1-C8
+No scan bytes yet, so constraints are frozen BEFORE compute: measure W (never input), both Lambda conventions, stated norm+threshold, explicit core model (A2 lesson), m-convergence+Butta control, named soft subspace, in-model scope. Freeze them in a design note first. See attempts/0108-drift-critique/review-cipher-a3predesign.md.
