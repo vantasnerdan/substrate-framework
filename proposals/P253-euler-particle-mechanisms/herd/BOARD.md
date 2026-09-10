@@ -1,15 +1,15 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T18:32:20Z at HEAD `9da41e54`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-10T18:33:06Z at HEAD `eb21ce64`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
 
-- shepherd: WORKING [P2], waiting on Euler-persistence+G-a2-numerics+R-EM2-decision [physics] (141m)
-- atlas: READY [COMMS], clear
+- shepherd: WORKING [P2], waiting on Euler-persistence+G-a2-numerics+R-EM2-decision [physics] (142m)
+- atlas: WORKING [COMMS], clear
 - beacon: WORKING [P2], waiting on bg_7-trust [ack] (0m)
-- cipher: WORKING [P2], waiting on M2-B1-H4+owner-review [ack] (116m)
+- cipher: WORKING [P2], waiting on M2-B1-H4+owner-review [ack] (117m)
 - drift: WORKING [P2], clear
 
 ## PR-readiness (latest v1 signal per agent)
@@ -17,16 +17,16 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | agent | signal | obligation | frontier | blocked-on | one-liner |
 |-------|--------|------------|----------|------------|-----------|
 | shepherd | WORKING | P2 | proposals/P253-euler-particle-mechanisms/herd/BOARD.md | Euler-persistence+G-a2-numerics+R-EM2-decision | re-post with bkind per loop-7; honest physics waits, no warn |
-| atlas | READY | COMMS | proposals/P253-euler-particle-mechanisms/attempts/0108-atlas-comms/promo-dryrun-report.md | - | promotion dry run GREEN on scratch clone (272/272): 7-path chain mapped, every gate fired on live probes (evidence/provenance existence, pin |
+| atlas | WORKING | COMMS | proposals/P253-euler-particle-mechanisms/herd/GAPS.md | - | watch: mapped M2-B1-H4 + bg_7-trust live; handed beacon 7-token scope-repair list (inbox+prompt, exit1s praised); receipt BROKEN is beacon-d |
 | beacon | WORKING | P2 | attempts/0111-beacon-ga-field/ga-status.md | bg_7-trust | [STANDBYREVIEW] applied drift 0111 precision note (row-7 conditional-scope qualifier); 0119 review needs nothing new (integrity items alread |
 | cipher | WORKING | P2 | attempts/0120-cipher-m2b1/A2-H1.md | M2-B1-H4+owner-review | A1 H5 PASS (d/a≥8.23), A2 H1 repaired PASS (ell≤1.017); A3 3D-filament queued |
-| drift | WORKING | P2 | herd/inbox/shepherd.md | - | [STANDBYIDEA] B-R1 carrier-match sketch banked; queue empty, awaiting routing. |
+| drift | WORKING | P2 | attempts/0108-drift-critique/review-cipher-0120.md | - | dye GRAY PASS (reproduced) + 0120 A1/A2 PASS-in-model (reproduced, Rankine legitimate). |
 
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
-- [waiting 141m, physics, dep] - 2026-09-10T16:11Z shepherd [WORKING] [P2] bkind:physics attempt:- frontier:proposals/P253-euler-particle-mechanisms/herd/BOARD.md blocked-on:Euler-persistence+G-a2-numerics+R-EM2
+- [waiting 142m, physics, dep] - 2026-09-10T16:11Z shepherd [WORKING] [P2] bkind:physics attempt:- frontier:proposals/P253-euler-particle-mechanisms/herd/BOARD.md blocked-on:Euler-persistence+G-a2-numerics+R-EM2
 - [waiting 0m, ack, no-ack] - 2026-09-10T18:55Z beacon [WORKING] [P2] attempt:attempts/0111-beacon-ga-field frontier:attempts/0111-beacon-ga-field/ga-status.md blocked-on:bg_7-trust :: [STANDBYREVIEW] applied
-- [waiting 116m, ack, no-ack] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4+owner-review :: A1 H5 PASS (d/a≥8.23),
+- [waiting 117m, ack, no-ack] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A2-H1.md blocked-on:M2-B1-H4+owner-review :: A1 H5 PASS (d/a≥8.23),
 
 ## Needs attention (do these, oldest strain first)
 
@@ -35,28 +35,28 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 
 ## Latest landings (INDEX tail)
 
-| 2026-09-10T16:18Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0114.md | PASS probe; shape member defined, live test waits G-a2 |
-| 2026-09-10T16:18Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0115.md | PASS G-b scoping; F1-first, C2-model parallel |
 | 2026-09-10T17:55Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0117.md | PASS NOT-DONE; G-a2 BLOCKED, trust-region next |
 | 2026-09-10T18:06Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0118.md | PASS negative; c-branch + status-hygiene repairs |
 | 2026-09-10T18:16Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0119.md | CONDITIONAL PASS; JSON-restore + transcript repairs |
 | 2026-09-10T18:18Z | drift | DONE | P2 | 0108-drift-critique | ledger closed-repairs log | 0119 PASS lifted; 0114 citable |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0108-cipher-radical | receipts/poc2-filament/{filamentation-addendum.md,run_dye.py,dye.log} | landed: D(t)+N predicate frozen, proxy GRAY 1.3146 |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/{README,A1-H5,A2-H1}.md + receipts/{a1,a2}/ | landed: A1 PASS, A2 repaired PASS (failure banked); A3 queued |
+| 2026-09-10T18:32Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-dye.md | PASS informative GRAY, reproduced |
+| 2026-09-10T18:32Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0120.md | PASS A1/A2 in-model, reproduced |
 
 ## Validation receipts (INDEX rows carrying vrfy:cmd:scope:exitN)
 
 | 2026-09-10 | beacon | DONE | P2 | attempts/0115-beacon-gb | attempts/0115-beacon-gb/{README,gb-scope,tool-receipts}.md | done: R1-R4 reqs, 3 candidate routes, failure order F1-F5; vrfy:grep:bridge:exit0 vrfy:read:36bi:exit0 vrfy:grep:numerics-api:exit0 |
-| 2026-09-10 | beacon | DONE | P2 | attempts/0116-beacon-ga2unblock | attempts/0116-beacon-ga2unblock/{README,unblock-request,tool-receipts}.md + ga2_repro.py | done: exit-1 repro, Route A(no-install)/B(heavy) + acceptance; vrfy:pip-list:exit0 vrfy:run:repro:exit1 |
-| 2026-09-10 | beacon | DONE | P2 | attempts/0117-beacon-member | attempts/0117-beacon-member/{README,design,build_member,feed_member,rung-log,tool-receipts}.md + *.npz | located-not-done: bordered state 2% rows, feed λω exploratory; vrfy:runs:R0-R13 vrfy:feed:exit0 |
-| 2026-09-10 | beacon | DONE | P2 | attempts/0118-beacon-polish | attempts/0118-beacon-polish/{README,polish-report,tool-receipts}.md | negative-result: 4 probes same signature, mesh-independent stall; vrfy:chain:exit0 |
-| 2026-09-10 | beacon | DONE | P2 | attempts/0119-beacon-secant | attempts/0119-beacon-secant/{README,tool-receipts}.md | audit+secant+c-sign done; nested diverges by branch-hop; vrfy:audit:exit0 vrfy:nested:exit0 |
+| 2026-09-10 | beacon | DONE | P2 | attempts/0116-beacon-ga2unblock | attempts/0116-beacon-ga2unblock/{README,unblock-request,tool-receipts}.md + ga2_repro.py | done: exit-1 repro, Route A(no-install)/B(heavy) + acceptance; vrfy:pip-list:0116-inventory:exit0 vrfy:run:repro:exit1 |
+| 2026-09-10 | beacon | DONE | P2 | attempts/0117-beacon-member | attempts/0117-beacon-member/{README,design,build_member,feed_member,rung-log,tool-receipts}.md + *.npz | located-not-done: bordered state 2% rows, feed λω exploratory; vrfy:runs:0117-ladder-pass:exit0 vrfy:runs:0117-ladder-fail:exit1 vrfy:feed:0117-member:exit0 |
+| 2026-09-10 | beacon | DONE | P2 | attempts/0118-beacon-polish | attempts/0118-beacon-polish/{README,polish-report,tool-receipts}.md | negative-result: 4 probes same signature, mesh-independent stall; vrfy:chain:0118-recovery:exit0 |
+| 2026-09-10 | beacon | DONE | P2 | attempts/0119-beacon-secant | attempts/0119-beacon-secant/{README,tool-receipts}.md | audit+secant+c-sign done; nested diverges by branch-hop; vrfy:audit:0119-stall:exit0 vrfy:nested:0119-secant:exit0 |
 | 2026-09-10 | atlas | READY | COMMS | attempts/0108-atlas-comms | herd/{board.sh,health.sh} loop-8 | landed: validation-receipt convention vrfy:bash-n:board.sh:exit0 vrfy:bash-n:health.sh:exit0 vrfy:board.sh:render:exit0 vrfy:health.sh:full:exit0 vrfy:diff-check:herd:exit0 |
 
 ## Gap closure (herd/GAPS.md: gap → next artifact → owner/class)
 
 | gap | next artifact | owner | class | waits (verbatim tokens) | status |
-| G-a2 numerics | attempts/0111-beacon-ga-field G-a2 charged-branch member build (field arrays + norm certs; frontier ga-status.md) | beacon | agent | G-a2-branch-numerics | BLOCKED building (G-a1 green) |
+| G-a2 numerics | attempts/0111-beacon-ga-field G-a2 charged-branch member build (field arrays + norm certs; frontier ga-status.md) | beacon | agent | G-a2-branch-numerics, bg_7-trust | BLOCKED building (G-a1 green); trust-region run in pane bg_7 |
 | R-EM2 decision | owner approve/amend/decline of attempts/0112-cipher-rem2-draft | owner | owner | owner-review, R-EM2-decision, R-EM2-import | awaiting ruling; drift 0112 draft-technical PASS banked |
 | S9 test | attempts/0114-beacon-s9/s9_probe.py (+design.md) | beacon | agent | S9 | in progress (dir landed, no wait token yet) |
 | shadowing scope | attempts/0113-cipher-shadow (README + receipts) + attempts/0120-cipher-m2b1 (A1-H5, A2-H1) | cipher | agent | shadowing, M2-B1-proof, M2-B1-H4 | A1 H5 PASS, A2 H1 repaired PASS; A3 queued; H4 = current proof token |
