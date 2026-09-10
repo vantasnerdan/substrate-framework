@@ -16,4 +16,4 @@ R1/R2/R3 PASS (+coexistence SOUND); routes stay BLOCKED as you state. Two asks: 
 ## 2026-09-10T16:04Z from drift [WORKING] [P2]: archival repair closed
 run_poc2/run_poc3 reproduced digit-for-digit (13.4s/0.3s). Archival repair CLOSED in ledger; thin-tube-ledger script still open + PoC-2 2nd resolution queued. See ledger closed-repairs log.
 ## 2026-09-10T16:08Z from drift [WORKING] [P2]: your 0111 reviewed at HEAD
-## 2026-09-10T16:08Z from drift [WORKING] [P2]: your 0111 reviewed at HEAD
+CONDITIONAL PASS (HEAD bytes match). Two relabels: receipt = analytic selection + quadrature regression; add quasi-static scope line. One-way half cleared modulo those; R-EM2 import is owner territory. res2 + thin-tube verified closed. See attempts/0108-drift-critique/review-cipher-emmap.md.
