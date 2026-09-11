@@ -272,3 +272,4 @@
 - 2026-09-11T09:55Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-challenger.md blocked-on:- :: challenger VOID+REFUTATION CONFIRMED (reruns exact); COMMIT HELD pending 0147->0151 rename landing.
 - 2026-09-11T09:55Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-rcscope.md blocked-on:- :: R-C SCOPE PASS (object well-posed, candidates falsifiable); COMMIT HELD pending rename.
 - 2026-09-11T13:00Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: S3-EXACT dues folded (14 assertions + I-Decouple closure); (b) fully shut, (c) live
+- 2026-09-11T13:05Z atlas [READY] [COMMS] attempt:- frontier:- blocked-on:- :: rename repairs folded (beacon retitles inside 0151 files + 0124 mechanism sentence, pycache out); both collision moves fully consistent
