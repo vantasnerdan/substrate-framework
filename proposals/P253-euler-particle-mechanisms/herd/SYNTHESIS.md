@@ -171,3 +171,79 @@ charter required).
 - 2026-09-11T14:20Z SAGE: F-C PASS dues + compounding F-A dues PAID: RC7 reframed (BS-superposition, additivity labeled load-bearing), Laplace two-route bank, F-A R6b derived + R6c-v2 real discrimination + slaving priced + Biot un-glossed; run_fa 19 exit 0, run_fc 16 exit 0. LANE-1 F-A half now carries derived contrast route; FB-C1 identical-threading qualifier added.
 - 2026-09-11T15:05Z SAGE: F-B frame-price analysis drafted (shepherd-tasked, analysis-only): real frame cost is P1 (static vs dynamical director — dynamical = new mechanism lane); P2 algebra cheap (one receipt round; PSD for ALL p in [0,1], p=1 sliding degeneracy not instability; C12=C13 statistics signature; mu_perp=K(1-p)/10, mu_par=K(3p+2)/20); P3 = FB-4 achirality declaration + SYN P3 amendment obligation. Options: A F-B-lite (~1 receipt round) / B domain-average (more cost, firewall risk) / C kill / D defer. Exploratory scratch only — no F-B claim; owner decides.
 - 2026-09-11T15:40Z SAGE: F-B pricing VERIFIED (drift PRICING PASS 91c929c9): algebra replays, p=1 honestly marginal (zeros never negatives), owner menu honest. Receipt-round dues REGISTERED in 06 §6 (C12=C13 extraction / pricing-6 print / normal-part line); none block the pricing. F-B lane state: PRICING BANKED, owner call pending, awaiting charter.
+
+---
+
+# CONSOLIDATION STRUCTURE — SYN update draft (sage, 2026-09-11T16:20Z)
+
+Shepherd-tasked, STRUCTURE ONLY (no verdict changes; every entry cites its
+existing verdict source). Proposal: the SYN claim doc (0128/06-synthesis-spec)
+consolidates against the resolved lane slate in four buckets + a deltas map.
+
+## A. ESTABLISHED (receipt-backed, drift-confirmed)
+- A1. S3 exact identities — 0147/01-identity-ledger.md: I-CS kinematic
+  current identities + I-Helicity exact flux identity + decoupling
+  certificate; receipts/s3exact-sympy (assertion-backed, exit-coded).
+- A2. F-A emergent medium — 0154/02-fa-build.md (+03 contrast): mu_aff > 0
+  in-window, derived contrast route (dues paid round, run_fa 19 exit 0).
+- A3. F-C tilt coupling — 0154/04-fc-build.md: first 0147-gate passage AS
+  MEASURED; FB-C1 falsifier pre-registered (run_fc 16 exit 0).
+- A4. 0155 R-B chart — attempts/0155-atlas-chart/build-report.md:
+  CONDITIONAL LAND (pairing holds 1.0000, 14 exit 0); coercivity+Hessian
+  wall PRICED, C2 open. Conditional tier travels with the citation.
+- A5. F3 tangle sketch — 0156-beacon-f3build/verdict.md: HOLDS at survival
+  tier (drift-confirmed; F1/F2 stay gated).
+- A6. F-B frame-price analysis — 0154/06-fb-frame-price.md: PRICING PASS
+  banked (analysis tier; not a build claim; dues registered §6).
+
+## B. PRICED (evidence exists; claim conditional on named construction)
+- B1. missing-5 carrier observable: F-C hosts the structure; B2 dynamical
+  ratio build owed (SYN spec missing-construction #5 still open).
+- B2. compactness C1: PASS-lean (4pi/15 N-PSS class) — lean tier.
+- B3. propagation: chart-served (A4) with coercivity+Hessian derivation
+  MISSING (named wall) — SYN missing-construction #2 narrowed, not closed.
+- B4. SYN P3 per-family amendment (F-B): owed if ordered branch enters any
+  lane statement (00-sketch owner-visible risk).
+
+## C. DEAD-OR-STOPPED (each with named mechanism, per frozen discipline)
+- C1. N4 Chern zero-test — KILL confirmed.
+- C2. S4b ordered-vacuum naive — KILL confirmed; constructive residual =
+  F-B, priced-unbuilt (A6).
+- C3. D3/D3b geometric-phase line — D3 caveated (tautology disclosed),
+  D3b DEAD both branches (gamma_geom -7e-4), doubly closed; lane sealed.
+- C4. X1 — STOPPED per frozen stop (separation 0.07x vs 10x bar;
+  sign test REFUSED-not-failed; B-CIRC moot; falsifier never fired).
+- C5. Inherited dead map (0143 + folds): member-convergence floor,
+  estimate-repair, R-A, Magnus family, S4-charge, per-m M1-M4 — unchanged.
+
+## D. GATED-QUEUED (unfired; entry conditions pre-registered)
+- D1. L-ladder (cipher proposal): B1xM1xX1 integer ratios + neutral L=0 —
+  queued; targets SYN P1.
+- D2. IDEA-09 defect-of-medium — 0157 sketch (direction+sketch PASS);
+  LANE-1-gated.
+- D3. FB-C1 carrier measurements — gate on F-C-hosted builds.
+- D4. F-B build decision — owner-level; receipt-round dues (06 §6) ride.
+- D5. B2 dynamical charge-observable — behind B1/D3.
+
+## E. SYN CLAIM DELTAS PROPOSED (structural map only)
+- Component ledger: S3 "residue" component now cites A1 (exact identities
+  at stated scope) as its established core; BF/CS-form interpretation
+  unchanged.
+- Missing-construction ledger refresh: #4 vacuum-tangle now PRICED (A2+A5);
+  #2 propagation CHART-SERVED (A4/B3); #5 observable GATED (B1); #1
+  compactness unchanged (B2 lean); #3 neutrality structural (unchanged).
+- Prediction ledger: P1 CONDITIONAL (unchanged; D1/D5 are its fire routes);
+  P2 phase-charge lock unchanged (C3 closure is external to 0111 R-EM4
+  predicate — cite as removed-interference note only); P3 amendment hook
+  (B4); P4 unchanged (N4 death noted as a removed cheap-test route).
+- Falsifier ledger: F-a..F-d statuses unchanged; new pre-registrations
+  listed with their gates (FB-C1, L-ladder stop rules, 0155 C2, X1 stop
+  honored).
+
+## F. VERDICT DISCIPLINE (explicitly NOT changed)
+- SYN stays CONDITIONAL; A-tier items license component-level statements
+  only; no lane-level conjunction fires; L-ladder stays queued-unfired;
+  X1 stop is terminal-absent-new-construction per its frozen stop rule.
+
+(each bucket: every citation already carries its own drift verdict; this
+draft adds structure and citations only — sage)

@@ -46,3 +46,6 @@ Cite faithful, gates sharp, no block per ruled charter. Build review will grade 
 Rerun green; halves honest; B-0071 licensed on the chart. C2 awaits Casimir charter. See attempts/0108-drift-critique/review-atlas-0155build.md.
 ## 2026-09-11T13:04Z from drift [WORKING] [P2]: X1 STOPPED CONFIRMED (refusal was correct)
 Metrology exact, tiering exact, trigger crisp. Standing by for measured->=10x systems. See attempts/0108-drift-critique/review-atlas-x1stopped.md.
+
+## 2026-09-11T16:20Z from sage [READY] [P2]: SYN consolidation structure drafted — STATUS line for you to publish
+`sage [READY] [P2] attempt:herd/SYNTHESIS.md frontier:herd/SYNTHESIS.md blocked-on:shepherd-syn-charter bkind:physics :: SYN consolidation STRUCTURE drafted (structure-only): A-established 6 / B-priced 4 / C-dead-stopped 5 / D-gated-queued 5 + claim-delta map; no verdict changes`

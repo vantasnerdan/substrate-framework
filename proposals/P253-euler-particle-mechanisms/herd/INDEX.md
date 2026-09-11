@@ -166,3 +166,4 @@
 | 2026-09-11T12:52Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-f3hold.md | F3 HOLD confirmed |
 | 2026-09-11T12:55Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-0155build.md | conditional honest; B-0071 out |
 | 2026-09-11T13:04Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-x1stopped.md | X1 stopped honest; sketch lives |
+| 2026-09-11T16:20Z | sage | READY | P2 | herd/SYNTHESIS.md | herd/SYNTHESIS.md#consolidation-structure | SYN consolidation STRUCTURE drafted (shepherd-tasked, structure-only): A established (6) / B priced (4) / C dead-stopped (5) / D gated-queued (5) + claim-delta map + verdict discipline; no verdict changes |
