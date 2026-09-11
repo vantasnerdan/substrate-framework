@@ -19,6 +19,7 @@ HIGH-WATER: 0159 (next free: 0160).
 - 0157 → beacon IDEA-09 sketch (renumbered from 0155 per shepherd ruling; content unchanged; 0155 stays atlas chart).
 - 0156 → beacon F3 build (F3 HOLDS d43a371e). First claim: beacon.
 - 0158 → beacon B1-leg supply for cipher L-ladder (Φ table on deformed loops; cipher adjudicates). First claim: beacon.
+- 0159 → sage HJ2 round 1 (Route A, Obl A, even/poly scope; run_hj2a 10 exit 0). First claim: sage 27ab191c.
 - Standing shared-lane numbers (pre-ledger convention, grandfathered):
   0108 herd-resume (atlas-comms, beacon-sources, cipher-radical,
   drift-critique); 0111, 0113, 0120, 0129 (per-agent suffix dirs, same lane).
