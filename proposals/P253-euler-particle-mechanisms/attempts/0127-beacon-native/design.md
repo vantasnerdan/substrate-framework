@@ -76,6 +76,27 @@ Each route carries its own stop above; any HOLD goes to drift
 firewall before downstream use. C(e)/rho* instruments reused
 unchanged as the per-state checkers.
 
+## Phase-2 amendments (drift 0127 review, folded pre-charter)
+
+- Expectation sequencing: R-A expected FAST KILL (banked G2' 9.1/3.5
+  already spans the tube) — run first anyway (cheapest verdict +
+  min-Q map); real action R-B/R-C. Kill-resistance R-B>R-C>R-A.
+- R-A tube radius E: inherit G2's E = 2||du||_oo ≈ 0.43 (fitted 0.41,
+  trust 0.43). Protection-cost note: smaller E weakens containment
+  (u* may lie outside); any smaller-E survey states its weakened
+  claim explicitly.
+- R-A survey coordinates (F2): span{8 softest J-modes + mu/c bordered
+  dirs} (d ≈ 10 collective coords — adversarial by 0121 evidence:
+  error concentrates in the soft cluster; G2' corner shows bordered
+  dirs matter) + 32 random full-space interior samples. A HOLD on
+  anything less licenses nothing.
+- R-B HOLD: pre-registered TWO points — half-scale 3.49 ±20% AND
+  quarter-scale 1.51 ±20% (both printed). One more assembly defeats
+  point-tuning.
+- R-B fallback retargeted: miss -> skirt-obstruction record (R-C
+  motive), NOT R-A.
+- Lesson adopted (correction-review firewall pattern): every printed
+  bound in Phase 2 gets a slope- or degeneracy-limit check.
 ## Non-scope (explicit)
 
 - No member solves, mesh builds, or feed runs in Phase 1 (this file
