@@ -41,8 +41,13 @@ def curl(a):
             - sp.diff(a[(i+1) % 3], coords[(i+2) % 3]).doit() for i in range(3)]
 
 
+COUNTS = {"identity": 0, "mutation": 0}
+
+
 def check(label, cond):
-    print(f"[{'PASS' if cond else 'FAIL'}] {label}")
+    kind = "mutation" if label.startswith("M") else "identity"
+    COUNTS[kind] += 1
+    print(f"[{'PASS' if cond else 'FAIL'}] [{kind} #{COUNTS[kind]}] {label}")
     assert cond, f"VALIDATION FAILURE: {label}"
 
 
@@ -146,4 +151,6 @@ n_bad2 = sum(1 for dv1 in dvars for dv2 in dvars if sp.diff(T2, dv1, dv2) != 0)
 check("M5 mutation: added (eps/2)|curl A|^2 gives nonzero Hessian entries",
       n_bad2 > 0)
 
-print("ALL CHECKS GREEN: 7 identities + 6 mutations (13 assertions).")
+total = COUNTS["identity"] + COUNTS["mutation"]
+print(f"ALL CHECKS GREEN: {COUNTS['identity']} identity-assertions "
+      f"+ {COUNTS['mutation']} mutations = {total} assertions (self-counted).")

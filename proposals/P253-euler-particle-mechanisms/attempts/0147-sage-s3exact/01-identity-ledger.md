@@ -128,6 +128,14 @@ conserved-current algebra is exactly:
 - relabeling Casimirs — built from (α, β, ω) Jacobian-type integrals
   (∫f(α,β)-moments and H = ∫u·ω).
 
+Scale covariance closes the enumeration: the bare Euler equations admit
+the scaling u_λ(x,t) = λ u(λx, λ²t) (Π_λ = λ³Π), under which the action
+scales homogeneously (S → λ⁻³S) — yielding virial-type identities rather
+than a new conserved charge; the virial functionals are built from
+(x, u, Π) and carry no Lk-dependence, while H itself is scale-invariant
+on this branch (H_λ = λ⁰H). Scale invariance therefore supplies no
+charge–motion coupling either, and with it the enumeration is closed.
+
 
 This is an absence claim INSIDE the bare action only — licensed by the
 completeness of the symmetry enumeration for this action (the enumeration

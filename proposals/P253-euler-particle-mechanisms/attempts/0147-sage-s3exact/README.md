@@ -40,8 +40,9 @@ deliberately; keep the integer class). [02]
 
 ## Evidence
 
-- receipts/s3exact-sympy/run_s3exact.py + run.log: 13 hard assertions
-  (7 identities + 6 must-FAIL mutations), exit 0, 2.5 s, sympy only,
+- receipts/s3exact-sympy/run_s3exact.py + run.log: 14 hard assertions
+  (8 identity-assertions + 6 must-FAIL mutations — the script counts
+  itself), exit 0, 2.6 s, sympy only,
   self-contained. The file IS the proof; any assertion failure withdraws
   the corresponding ESTABLISHED per 00-scope.
 - Inputs consumed at source (never recomputed): cipher 04-s3-bridge +

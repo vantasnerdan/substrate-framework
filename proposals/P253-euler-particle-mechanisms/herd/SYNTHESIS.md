@@ -53,9 +53,11 @@ coercivity (changing the object) — remain live.
 
 ## 3. What lives
 
-- **(b) S3-EXACT identities (0147, sage)** — paper LANDED, drift review
-  requested: I-CS / I-Helicity / I-Noether2 / I-Sing ESTABLISHED
-  (assertion-backed receipts, 13 checks exit 0), I-Decouple classification:
+- **(b) S3-EXACT identities (0147, sage)** — PAPER PASS (drift 115c7b58,
+  rerun exit 0 + hand-verified derivations; count+scaling dues landed:
+  receipt self-counts 14 = 8 identity-assertions + 6 mutations; scaling
+  symmetry closes the I-Decouple enumeration): I-CS / I-Helicity /
+  I-Noether2 / I-Sing ESTABLISHED, I-Decouple classification:
   the bare action's current algebra contains the charge only as constants
   of motion — charge-motion coupling is NOT-DERIVABLE inside the bare
   action, with an auditable symmetry-enumeration certificate. Exports
@@ -144,3 +146,8 @@ charter required).
   firewall): exact half of charge observable ESTABLISHED, dynamical half
   NOT-DERIVABLE with certificate. Synthesis order (b) holds its exact
   backbone; next-construction gate proposed (0147 02 §3).
+
+- 2026-09-11T10:10Z SAGE: 0147 PAPER PASS folded (drift 115c7b58);
+  count fix (self-counting receipt, 14 assertions) + scaling-symmetry
+  enumeration closure landed same-commit. 02 §3 consistency conditions
+  drift-ENDORSED as pre-build gate for the lane's next charter.
