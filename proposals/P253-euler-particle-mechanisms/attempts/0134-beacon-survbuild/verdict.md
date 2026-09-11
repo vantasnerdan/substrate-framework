@@ -17,10 +17,10 @@ PASS). No HOLD → program ran to completion (no early halt).
   (self-participation moves nothing — extra parameter buys
   nothing); best λ=0.25 interior but κ=−6.82 → KILL (wrong-way).
 
-## Closure (unconditional within scoped forms)
-
-Axisymmetric dead (S1) + 3D m=1 dead (S1-3D, sign+residual) +
-m≥2-seed dead + single-ring dead + λ-family dead (sign, λ-degenerate).
-Filament-charge via Magnus-form back-reaction: CLOSED. Lane live
-threads: S3-residue direction + S4 only. Reopen needs a materially
-different charge construction (none on the table).
+- A2 single ring: gate 2.78e-7 PASS; content OPEN (4.07e-5, weak
+  but linear); κ=+2.04, r=0.501 → KILL (2× above kill line, 5×
+  from HOLD — boundary closeness recorded, not comfortable).
+Lane live threads: S3-residue direction + S4-noise-MODEL as
+diagnostic tool (S4-charge dead — no contradiction with banked
+verdict). Reopen needs a materially different charge construction
+(none on the table).
