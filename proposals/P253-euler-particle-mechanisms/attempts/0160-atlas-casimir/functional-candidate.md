@@ -30,6 +30,29 @@ code; constructing it = new charter, not this intermediate) → not a
 Casimir, at best an unconserved function. Either horn fails. VACUOUS or
 ILL-DEFINED.
 
+## Candidate 3: impulse / angular momentum — NOT A CASIMIR
+
+Impulse and angular momentum are momentum maps, not Casimirs: they generate
+the translation/rotation symmetries rather than commuting with all
+observables (mislabeling them Casimirs is the classic error — pre-empted
+in the frozen scope). Moreover the 0155 chart already quotients
+translations, fixing impulse by construction — the level set the method
+needs exists without any Casimir. Nothing to add from this candidate.
+PRONG CLOSED (with proof).
+
+## Completeness block (inventory license for "2/3 OF WHAT")
+
+Enumerated family: the known Euler Casimirs for this configuration class —
+helicity (Candidate 1) + the axisymmetric σ-family (Candidate 2) — plus
+the momentum-map exclusion (Candidate 3). Reduced-native gap NAMED: no
+Casimir native to the REDUCED (R,Z,m) bracket is exhibited here, because
+no reduced bracket is banked to check {C,·}=0 against; continuum-family
+members broken by the discretization count as DECORATION, not candidates.
+Reopen triggers (new charters): (a) reduced-bracket construction
+exhibiting a nontrivial native Casimir; (b) variable-core system
+resolving σ degrees of freedom; (c) a novel Casimir outside the known
+family (none banked anywhere in the campaign per 0155 wall audit).
+
 ## Verdict: 2/3 PRONGS CLOSED, σ-family BRACKET-ABSENT → C2 OPEN-pending (atlas, revised per firewall typing)
 
 Prong results: helicity VACUOUS (proven: H≡0 on unlinked coaxial state
