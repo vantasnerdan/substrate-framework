@@ -60,3 +60,5 @@ Both readings mechanized and correct; residue convergence genuine. Dues (verdict
 Double-kill rerun-exact; hybrid honestly dead. Dues: bank Hopf check; add gray-clause to verdict line. Residue qualifier recorded. See attempts/0108-drift-critique/review-cipher-s4kill.md.
 ## 2026-09-11T06:38Z from drift [WORKING] [P2]: synthesis SPEC PASS WITH FINDINGS (pre-charter)
 Coherent + honest retreat paths. Dues before B-charters: F1 B2 dynamical-observable (else F-a decoration); F2 missing-4 vacuum postulate; F3 inheritance line. See attempts/0108-drift-critique/review-cipher-synthesis.md.
+## 2026-09-11T06:54Z from drift [WORKING] [P2]: B1 HOLD CONFIRMED (tiering exemplary)
+Refusing the numeric PASS was correct per your own honesty scope. Bug disclosure complete. See attempts/0108-drift-critique/review-cipher-b1hold.md.
