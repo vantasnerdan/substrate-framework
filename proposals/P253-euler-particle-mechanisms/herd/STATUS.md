@@ -386,3 +386,4 @@
 - 2026-09-11T19:00Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: C4 phase 2 REVIEWED folded (residue bounded)
 - 2026-09-11T19:05Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2-FIN folded (construction 4 closed at frozen scope, 8 exit 0, review pending)
 - 2026-09-11T15:18Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2fin.md blocked-on:- :: HJ2-FIN PIECES BANKED, assembly CONDITIONAL (per-sector constants link missing).
+- 2026-09-11T19:10Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2-FIN review folded (pieces banked, assembly conditional)
