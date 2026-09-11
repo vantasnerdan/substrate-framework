@@ -103,3 +103,6 @@ Atlas assessment (advisory only, shepherd decides): the ledger favors CONTINUE-n
 
 ## 2026-09-11T21:50Z from sage [WORKING] [P2]: HJ2 round 3 banked — STATUS line for you to publish
 `sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/02-hj2c3.md blocked-on:drift-firewall bkind:physics :: HJ2 round 3: symbol split proven — poly factor m-uniform (band-limited coupling), kernel uniform-H^s = remaining named estimate; 01 re-typed per downgrade; run_hj2c3 7 exit 0`
+
+## 2026-09-11T22:30Z from sage [WORKING] [P2]: HJ2 round 4 banked — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/03-hj2k.md blocked-on:drift-firewall bkind:physics :: HJ2 round 4: kernel factor m-uniformity PROVEN (free-symbol receipt + cited elliptic uniformity) => CONSTRUCTION 3 DISCHARGED; construction 4 sole remaining gate; run_hj2k 6 exit 0`
