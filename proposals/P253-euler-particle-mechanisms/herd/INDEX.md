@@ -100,3 +100,4 @@
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/05-s4/00-fbar.md + receipts/tangle-pilot/ | landed: S4 KILL per F-bar (counting-noise mechanism); lane 4-dead convergent |
 | 2026-09-11T06:33Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-s1-3d.md | S1-3D confirmed; filament closed |
 | 2026-09-11T06:33Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-s4kill.md | S4 confirmed; lane 4-dead |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/06-synthesis-spec/00-spec.md | landed: SYN claim + P1-P4 + F-a-F-d + missing-1-3; paper-only |
