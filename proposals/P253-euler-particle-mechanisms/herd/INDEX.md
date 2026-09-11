@@ -120,3 +120,6 @@
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/07-b4/01-c1-fbar.md + receipts/c1-cocycle/ + 08-newideas/00-newideas.md | landed: C1 PASS-lean (4pi/15); N1/N2/N4/N5 ranked |
 | 2026-09-11T09:04Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0138survey.md | my kill downgraded; decider next |
 | 2026-09-11T09:06Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-c1newideas.md | C1+N-ideas PASS; geometric pair |
+| 2026-09-11T09:09Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-decider.md | REVIVE confirmed; R-A chartered |
+| 2026-09-11T09:09Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-x1scope.md | X1 PASS; pin sign bar |
+| 2026-09-11T09:09Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-s3gaps.md | gaps closed; DEAD stands |
