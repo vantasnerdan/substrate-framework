@@ -31,5 +31,5 @@ NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
 - B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASS e9299ef1 (zero-test decisive, X1-coordination disjoint — converges with X1 B-CIRC need).
 - missing-5 M-ideas: M-lane CONCLUDED inside bare action (synthesis fold: M1/M3 KILL, M4 VOID, M2 down; reopen gate = 0147-sage 02 §3 conditions).
-- Synthesis order: (a) M1 done → (b) S3-EXACT PAPER PASS 115c7b58 (sage 0147 keeps number — arrived 11:49:12 vs challenger 11:50:50; rerun green + hand-verified; count fix + scaling sentence dues) → (c) R-C SCOPED 0150 (coercivity object B≥9.0 native, candidates + 3 falsified) → (d) B4 background. Challenger CLOSED: trigger void, decomposition refutes front, STOP fortified (hunt B2 shut, R-B stays dead).
+- Synthesis order: (a) M1 done → (b) S3-EXACT PAPER PASS + DUES LANDED e480757d (self-counting receipt 14 assertions + scaling-symmetry I-Decouple closure) → (c) R-C SCOPED 0150 (B≥9.0 object, 3 falsified) → (d) B4 background. Challenger CLOSED (hunt B2 shut, R-B stays dead).
 Recommended-shape section RETIRED until solution lands — no queued PR shape.
