@@ -18,11 +18,10 @@ partner answers both drives alike — the charge-like signature).
 
 KILL iff (a) |R_A − R_B|/mean > 25% (ratio varies with drive — no
 reciprocal partner), or (b) either |ΔP| within 10× of assembly
-noise (nothing measured). HOLD iff ratios agree ≤ 25% with both
-responses well above noise → recoil reciprocity LIVES as
-conditional (supplied-carrier label travels; never derived
-charge). Gray rule: 15–25% band → third drive (new center),
-no verdict.
+noise (nothing measured). HOLD iff agreement < 15% with both
+responses well above noise (drift pin: HOLD band must sit below
+the 15–25% gray band, no overlap). Gray 15–25% → third drive (new
+center), no verdict.
 
 ## Stop rule + routing (frozen)
 
