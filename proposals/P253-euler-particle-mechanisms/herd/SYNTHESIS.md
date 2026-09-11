@@ -195,6 +195,29 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
   tier (drift-confirmed; F1/F2 stay gated).
 - A6. F-B frame-price analysis — 0154/06-fb-frame-price.md: PRICING PASS
   banked (analysis tier; not a build claim; dues registered §6).
+- A7. Medium-first defect ALIVE (scoped) — 0157/dipole-run
+  (verdict.md, B1/B2/B3 HOLD) + 0157/dynamics (D1/D2/D3) +
+  0157/persist (texture stability, charge robustness): 4-conjunct
+  determination, drift-CONFIRMED (#100):
+  (i) PERSISTENT — perturbed defect restores E to 5dp + charge
+  0.993 under gradient flow; single charge conserved (I-Sing
+  0147); only pairs annihilate (D1 E''<0, barrier-free reach
+  of 2a, collapse t_c analytic=numeric).
+  (ii) CHARGED — Burgers circuit reads b0 (0.993 on-grid);
+  dipole moment analytic mu.b^2/2pi reproduced numerically
+  (dE/dd 0.01881 vs 0.01592).
+  (iii) MOBILE — Peach-Koehler glide under imposed shear,
+  overdamped estimate v~0.087 (tau-import tiered, stated).
+  (iv) DISTINCT-FROM-TRIVIAL — same bump on trivial background
+  decays to 0.0000; dipole tail exponent −2.000 (B3).
+  Tier notes travel: B2-HOLD constitution-tiered (bare continuum
+  favors split; selection by I-Sing license, stated not hidden);
+  D3 tau-import tiered; topology analytic input (persist scope).
+  Fences (ride A7): ALIVE does NOT license electron identity,
+  carrier status, measurement/counting claims, or LANE-1 passage.
+  Those need their own charters + falsifiers. ALIVE-scoped object
+  = persistent charged mobile medium-defect, distinct from
+  trivial — nothing more.
 
 ## B. PRICED (evidence exists; claim conditional on named construction)
 - B1. missing-5 carrier observable: F-C hosts the structure; missing-construction #5 still open — owed via NEW
@@ -219,8 +242,11 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
 ## D. GATED-QUEUED (unfired; entry conditions pre-registered)
 - D1. L-ladder (cipher proposal): B1xM1xX1 integer ratios + neutral L=0 —
   queued; targets SYN P1.
-- D2. IDEA-09 defect-of-medium — 0157 sketch (direction+sketch PASS);
-  LANE-1-gated.
+- D2. IDEA-09 defect-of-medium — GRADUATED to A7 (ALIVE-scoped,
+  drift-CONFIRMED #100; fold gate OPEN): was "0157 sketch
+  (direction+sketch PASS); LANE-1-gated" — the LANE-1 gate was
+  consumed by F-A PASS + F2-HOLDS. Recorded history stands (no
+  rewrite).
 - D3. FB-C1 carrier measurements — gate on F-C-hosted builds.
 - D4. F-B build decision — owner-level; receipt-round dues (06 §6) ride.
 - D5. missing-5 new-observable IDEAS — behind B1/D3 results; B2 is DEAD (banked kill: observable-absent, residual 1.0, structural mismatch), NOT queued — no rerun licensed; any successor is a new construction, not a B2 revival.
@@ -308,3 +334,4 @@ Lane's only open item. Proposal for chartering (no claims, no derivation run):
 - 2026-09-12T05:05Z SAGE: FBDYN D1 REPAIRS R1-R3 PAID (drift CONDITIONAL PASS c5b7b854; ledger commit): R1 pair premise U prop p^2 labeled D1-declaration (RD1-4 + dated delta (iii)); R2 deltas (i)/(ii) dated per the freeze's amendment rule; R3 spectrum overreach RETRACTED — D1 claims the stiffness, not the spectrum: "no negative mode FROM THE STIFFNESS TERM at D1 order", kill (iii) NARROWED not closed (paper RD1-5 + verdict block + receipt RD1-5 label reworded; run_fbd1 rerun 8 exit 0 unchanged). Bankable content stands (K_n formula, p-scaling, k^1 exclusion). D2 PROCEEDS unblocked per routing (needs only K_n + k-exclusion).
 - 2026-09-12T05:40Z SAGE: FBDYN D2 BANKED (0160/02 + run_fbd2 8 assertions exit 0): leading strain-director coupling DERIVED — COUNTING receipt: NO bulk O(eps)(grad n) scalar exists (5-index odd; even candidates = constraint zero identically), coupling starts at O(eps)(grad n)^2; leading class W_coup = (K p^2 xi^2 M4 4pi/15)[4 eps_ij + 7(tr eps)delta_ij] d_i n.d_j n (Vikulin J(eps) analog, medium side; count = 2 allowed structures; coefficients from declared kernel, number model-level stated); objectivity joint-covariance receipted exact (RB9 analog extended to grad n); reduction to F-B-lite exact (W_coup=0 at uniform n, localized prestress = RB6 term). Mutations live: eps-only rotation breaks covariance, parity-odd insertion detected, single-gradient insertion = exact zero. NO kill, NO stop rule triggered. R-discipline held: coupling claimed, spectrum NOT claimed (D3 object). Drift review requested; D3 dispersion next.
 - 2026-09-12T06:15Z SAGE: FBDYN D2 REPAIRS R1-R2 PAID (drift CONDITIONAL PASS 540d2c3b; receipt check ready): R1 REAL HOLE closed — the 0-n-hat 4-index family (tr(eps grad n), tr(eps grad n^T), (tr eps)(div n)) added to the receipt as RD2-1c with the divergence proof (each = exact total divergence at uniform eps, symbolic director field), MB-D2-3 "only even candidate" corrected to "only even N-CARRYING", COUNT amended to 2 bulk O(eps)(grad n)^2 + 3 divergence-silent O(eps)(grad n); D3 acknowledgment line registered (non-uniform strain activates O((grad eps)n) bulk pieces + anchoring terms, flexo-analog; uniform-rest bulk unaffected; kill-(iii) narrowing STANDS); R2 tautology closed — RD2-5(a) substitutes zero gradient into the ACTUAL W_coup closed formula (no 0==0). run_fbd2 rerun 9 assertions (6 identity + 3 mutations) exit 0. Bulk coupling + count-2 + objectivity + RB6 continuity stand. D3 PROCEEDS per routing.
+- 2026-09-12T07:30Z SAGE: A7 FOLD LANDED per beacon proposal 918f240f (0157/syn-fold-proposal.md, structure-only text): A7 medium-first defect ALIVE (scoped) entered in A-bucket (4-conjunct determination, drift-CONFIRMED #100; tier notes travel; fences explicit — no electron/carrier/measurement/LANE-1 licensing); D2 (IDEA-09) GRADUATED to A7 with fold gate OPEN, LANE-1 gate consumed (F-A PASS + F2-HOLDS), history preserved. B1 #5 posture unchanged (ALIVE gives the observable program a live address, does not close it). Drift reviews with the next round per routing.
