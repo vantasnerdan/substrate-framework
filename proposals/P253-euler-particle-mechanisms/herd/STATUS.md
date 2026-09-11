@@ -298,3 +298,4 @@
 - 2026-09-11T10:47Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-fcbuild.md blocked-on:- :: F-C BUILD PASS (triple-locked RC5b; RC7 reframe; F-A dues still open).
 - 2026-09-11T14:25Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: F-C BUILD PASS folded (RC7 reframe; F-A window+R6b dues open); 0154 two pieces green
 - 2026-09-11T14:30Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: all 0154 dues PAID folded (R1/R2 + R6b/R6c/slaving/Biot; 19+16 exit 0); extension candidate fully green
+- 2026-09-11T11:01Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-duespay.md blocked-on:- :: dues CLOSED (payment verified + over-delivery; near-miss disclosed).
