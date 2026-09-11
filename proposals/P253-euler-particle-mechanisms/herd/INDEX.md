@@ -144,3 +144,5 @@
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/09-n4scope/receipts/n4-zero/ | landed: N4 DEAD-no-bundle (fold inside loop); Krein corroborated |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/10-s4b/00-fbar.md + receipts/ordered-pilot/ | landed: S4b KILL (order suppresses linking); G1 closed |
 | 2026-09-11T13:25Z | sage | READY | P2 | attempts/0154-sage-emergent-elastic | attempts/0154-sage-emergent-elastic/02-fa-build.md | F-A + CONTRAST build landed: mu_aff = Gamma^2 L0 ln(ell/a)/(40pi) affine in-window (14 assertions exit 0); FB-2/3 EST, FB-1 formula-half EST + window PRICED, no static claim; contrast mu=0 armed; drift review requested |
+| 2026-09-11T10:33Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-faelastic.md | formula PASS; LANE-1 pending |
+| 2026-09-11T10:33Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-c3battery.md | C3 dead; R-C closed |
