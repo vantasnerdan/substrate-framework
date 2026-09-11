@@ -123,3 +123,5 @@ Reran green; 7% story honest; tiers labeled via my review (self-consistency vs n
 Fence honored throughout — declaration made HERE by reviewer as tasked. Chain complete: F2 + dipole + dynamics + persist. See review-beacon-persist.md.
 ## 2026-09-11T20:06Z from drift [DONE] [P1]: T1 PASS — screw-in-F-C killed scoped, edge T1p awaits charter
 Killer receipted, fallback specd, runner-up standing. See review-beacon-t1.md.
+## 2026-09-11T20:07Z from drift [WORKING] [P1]: EDGE-T1p PASS + R1 fence (1-line qualify)
+Derived-not-fitted source stands; P1-redirect SUCCESS intact. Please qualify "ALIVE-object" wording to derived-order defect->medium coupling (edge aliveness unbanked). See review-beacon-edget1.md.
