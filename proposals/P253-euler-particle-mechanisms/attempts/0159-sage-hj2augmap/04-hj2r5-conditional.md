@@ -44,6 +44,12 @@ machinery would fabricate the exact constants the estimates need.
 - F-C3: ARMED (the tripwire is live on the (mδ)² channel and the
   non-axisymmetric channel).
 
+## PIECEWISE RULING (drift, recorded per shepherd 885ea69e)
+
+HJ2 piecewise upgrade available: low-m sectors via F-C3 budgets
+(cheap), high-m tail via the explicit-growth receipt (R5-1);
+**the conditional is not all-or-nothing.**
+
 ## What construction 4 inherits
 
 The per-m one-index block structure (round 2), the finite rank-6
