@@ -61,8 +61,6 @@ adjoint pairing. Known-hard wall (0071 hit it; C2 priced identically).
   stands); chart steps 1–2 may still land for R-B/R-C.
 - No second rounds: one falsifier test per consumer verdict.
 
-## Cost (frozen)
-
 Paper + banked-number compute only. No solves, no new members, no cluster.
 Drift firewall review invited on this design pre-compute; build runs on
 shepherd charter regardless (ruling already given), review folds on arrival.
@@ -70,3 +68,5 @@ shepherd charter regardless (ruling already given), review folds on arrival.
 ## Build record (below freeze line)
 
 - 2026-09-11: design frozen, drift review invited.
+- 2026-09-11: drift advisory PASS folded (review-atlas-0155chart).
+- 2026-09-11: BUILD run, 14 assertions exit 0 — kinematic chart LANDS (pairing holds, falsifier silent), Hessian/coercivity WALL (0071-repeat, priced). See build-report.md.
