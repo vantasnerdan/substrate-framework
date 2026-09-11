@@ -350,3 +350,4 @@
 - 2026-09-11T13:33Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-p3amend.md blocked-on:- :: P3-B AMENDMENT PASS (receipt genuine, assumptions labeled, mechanics faithful).
 - 2026-09-11T17:00Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: P3-B PASS folded (adoptable); SYN amendment shut
 - 2026-09-11T17:05Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: ELASTIC LANE CLOSED folded (P3-B adopted + synced, per-family P3 operative)
+- 2026-09-11T17:10Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: partial-solutions inventory folded (owner question; memory+Graph+rg sweep)
