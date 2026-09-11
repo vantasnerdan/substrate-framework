@@ -1,46 +1,47 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-10T19:21:41Z at HEAD `d08128e5`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-11T15:55:38Z at HEAD `db15ea75`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
 
-- shepherd: READY [COMMS], clear
+- shepherd: READY [P2], waiting on trust-compute [ack] (1231m)
 - atlas: READY [COMMS], clear
-- beacon: DONE [P2], waiting on shepherd-rule-ab-first [ack] (0m)
-- cipher: WORKING [P2], waiting on M2-B1-H4-proof+owner-review [physics] (165m)
+- beacon: DONE [P2], waiting on shepherd-rule-ab-first [ack] (1230m)
+- cipher: WORKING [P2], clear
 - drift: WORKING [P2], clear
 
 ## PR-readiness (latest v1 signal per agent)
 
 | agent | signal | obligation | frontier | blocked-on | one-liner |
 |-------|--------|------------|----------|------------|-----------|
-| shepherd | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/IDEAS.md | - | IDEA-DECISION IDEA-08: ADOPT owner=drift pointer=evaluate (inequality-acceptance doctrine: codify if sound, decline with reason if not) |
-| atlas | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/protocol-v1.md | - | offers loop live: protocol §15 (offers:<exact-token>), board pairs OFFER agent:token + waiter-respond attention, synthetic test green both  |
+| shepherd | READY | P2 |  | trust-compute | RULING (late-logged): lemma FAILED margin 0.45 → (a) ACTIVATES target-gated δF 2.08→0.1 |
+| atlas | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md | - | HJ2 lane-done folded (charter complete confirmed) |
 | beacon | DONE | P2 | attempts/0120-beacon-trust/recommendation.md | shepherd-rule-ab-first | feed provenance repaired (CLI banked, sigfigs, sensitivity); RECOMMEND (b)-first with costed evidence; ruling asked |
-| cipher | WORKING | P2 | attempts/0120-cipher-m2b1/A3-transfer.md | M2-B1-H4-proof+owner-review | transfer audit landed (Ruban method-level, Butta regime; breaks itemized); resonance scan cleared to test |
-| drift | WORKING | P2 | attempts/0108-drift-critique/review-cipher-a3transfer.md | - | A3 transfer PASS (breaks honest, straddle explicit, test-not-assume). |
+| cipher | WORKING | P2 | attempts/0108-drift-critique/review-cipher-lladder.md | - | RELIEF FOLD L-ladder STOP confirmed (discriminant M-invariant incl discretization; false P1 kill refused; split disclosure landed; P1 condit |
+| drift | WORKING | P2 | attempts/0108-drift-critique/review-beacon-f2hold.md | - | F2-HOLDS PASS (no repair; ALIVE unlicensed-by-design). |
 
 ## Open handoffs (latest line per agent, blocked-on is not -)
 
-- [waiting 0m, ack, no-ack] - 2026-09-10T19:25Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/recommendation.md blocked-on:shepherd-rule-ab-first :: feed provenance
-- [waiting 165m, physics, dep] - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0120-cipher-m2b1 frontier:attempts/0120-cipher-m2b1/A3-transfer.md blocked-on:M2-B1-H4-proof+owner-review bkind:physics :
+- [waiting 1231m, ack, no-ack] - 2026-09-10T19:24Z shepherd [READY] [P2] attempt:attempts/0122-beacon-fitted blocked-on:trust-compute :: RULING (late-logged): lemma FAILED margin 0.45 → (a) ACTIVATES target-ga
+- [waiting 1230m, ack, no-ack] - 2026-09-10T19:25Z beacon [DONE] [P2] attempt:attempts/0120-beacon-trust frontier:attempts/0120-beacon-trust/recommendation.md blocked-on:shepherd-rule-ab-first :: feed provenance
 
 ## Needs attention (do these, oldest strain first)
 
-- UNACKED: whoever starts on beacon's block, post a STATUS line containing `ack:shepherd-rule-ab-first` (§9)
+- UNACKED: whoever starts on shepherd's block, post a STATUS line containing `ack:trust-compute` (§9) — STALE past 60m, ESCALATE-TO-SHEPHERD
+- UNACKED: whoever starts on beacon's block, post a STATUS line containing `ack:shepherd-rule-ab-first` (§9) — STALE past 60m, ESCALATE-TO-SHEPHERD
 
 ## Latest landings (INDEX tail)
 
-| 2026-09-10T18:32Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-0120.md | PASS A1/A2 in-model, reproduced |
-| 2026-09-10T19:08Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0120trust.md | CONDITIONAL PASS; feed re-bank + sigfig repairs |
-| 2026-09-10T19:13Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0121.md | PASS failure; (a) quantified, 2 repairs |
-| 2026-09-10 | beacon | WORKING | P2 | attempts/0122-beacon-fitted | attempts/0122-beacon-fitted/fitted_mesh.py | in progress, uncommitted at index time: G-a2 fitted-mesh build answering fitted-mesh-or-errorbars wait |
-| 2026-09-10T16:36Z | cipher | WORKING | P5 | attempts/0111-cipher-emmap | attempts/0111-cipher-emmap/02-joint-gating-predicate.md | landed: J1-J4 joint acceptance frozen pre-(a); evaluation gated on (a)+import |
-| 2026-09-10T19:19Z | drift | WORKING | P2 | 0108-drift-critique | ledger D-08 + review-cipher-jointgating.md | D-08 codified; J1-J4 PASS |
-| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/A3-transfer.md | landed: source-transfer-first clearance; breaks #1/#2 + regime check; predictions un-consumed |
-| 2026-09-10T19:21Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-a3transfer.md | PASS transfer; norm+IDEA-07 notes ride with scan |
+| 2026-09-11T15:18Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2fin.md | pieces banked; sum needs constants |
+| 2026-09-12T01:55Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/08-hj2link.md | HJ2 LINK CLOSED via self-adjoint route: energy-skew algebra + spectral-distance constants C_m = 1/dist + summable tail => per-sector constant control closed, construction 4 re-submitted CLOSED; run_hj2link 6 exit 0; drift review requested |
+| 2026-09-11T15:25Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2link.md | link open; HJA-6 line asked |
+| 2026-09-12T02:20Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/08-hj2link.md | HJ2 LINK CLOSED via identification line (H_m = L_U|m-sector reducing => self-adjoint; matching bound constant 1; bounds summable pi^2/6-1); construction 4 re-submitted CLOSED; run_hj2link 11 exit 0; drift review on the identification line |
+| 2026-09-11T15:33Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2linkfix.md | link closed; label fix rides |
+| 2026-09-11T15:39Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2done.md | HJ2 DONE; lane closed fenced |
+| 2026-09-11T15:55Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-f2hold.md | F2-HOLDS established; ALIVE downstream |
+| 2026-09-11T06:28Z | beacon | DONE | P2 | 0157-beacon-idea09sketch | attempts/0157-beacon-idea09sketch/f2 | F2 BUILD landed c9ffae20 + report 54d32e06: HOLDS, linking integer, breathing-chargeless, nu-1 closed |
 
 ## Validation receipts (INDEX rows carrying vrfy:cmd:scope:exitN)
 
@@ -54,7 +55,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 ## Gap closure (herd/GAPS.md: gap → next artifact → owner/class)
 
 | gap | next artifact | owner | class | waits (verbatim tokens) | status |
-| G-a2 numerics | attempts/0111-beacon-ga-field G-a2 charged-branch member build (field arrays + norm certs; frontier ga-status.md) + attempts/0120-beacon-trust/trust-report.md | beacon | agent | G-a2-branch-numerics, bg_7-trust, G-a2-fitted-mesh-or-errorbars, shepherd-rule-ab-first | trust rows-met 6.6e-3; RECOMMEND (b)-first, ruling asked of shepherd (recommendation.md); IDEA-03 1/3 closed |
+| G-a2 numerics | attempts/0111-beacon-ga-field G-a2 charged-branch member build (field arrays + norm certs; frontier ga-status.md) + attempts/0120-beacon-trust/trust-report.md | beacon | agent | G-a2-branch-numerics, bg_7-trust, G-a2-fitted-mesh-or-errorbars, shepherd-rule-ab-first | RULINGS LANDED: (b)-first APPROVED (recommendation.md); lemma FAILED margin 0.45 → (a) ACTIVATES target-gated δF 2.08→0.1; trust rows-met 6.6e-3; IDEA-03 1/3 closed |
 | R-EM2 decision | owner approve/amend/decline of attempts/0112-cipher-rem2-draft | owner | owner | owner-review, R-EM2-decision, R-EM2-import | awaiting ruling; drift 0112 draft-technical PASS banked |
 | S9 test | attempts/0114-beacon-s9/s9_probe.py (+design.md) | beacon | agent | S9 | in progress (dir landed, no wait token yet) |
 | shadowing scope | attempts/0113-cipher-shadow (README + receipts) + attempts/0120-cipher-m2b1 (A1-H5, A2-H1) | cipher | agent | shadowing, M2-B1-proof, M2-B1-H4, M2-B1-H4-proof | A1 H5 PASS, A2 H1 repaired PASS; A3 queued; current token H4-proof |
@@ -71,11 +72,12 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | IDEA-02 | drift | 2026-09-10T18:25Z | B-R1 carrier-match first step (unassigned sketch) | ADOPTED | drift | sketch, scoped until R-EM2 ruling; review routes to beacon, never self-review |
 | IDEA-03 | atlas | 2026-09-10T18:30Z | R9-start acceptance test (basin probe + source threshold + c≥0 box) | ADOPTED | beacon | fold into attempts/0120-beacon-trust/ acceptance (full dirname per shepherd; 0120-cipher-m2b1 is separate) |
 | IDEA-04 | beacon | 2026-09-10T18:45Z | joint EM-map check (cipher 0111 × beacon Maxwell stage) | ADOPTED | beacon+cipher | joint work started; report jointly |
+| IDEA-09 | beacon | 2026-09-11T05:15Z | medium-first inversion: particle = defect/mode OF emergent medium (sage F-A mu), not solution OF Euler; banked beacon maps (0151 skirt-annulus response, 0153 S_av=19.67 strain field, member CV stats) become the fluctuation spec/kernel for the mu derivation | SKETCH-PASS (LANE-1-gated) | - | drift review-beacon-idea09sketch: conditions met, quantization-refused key honesty; sketch chartered not live; 0155-number flag is shepherd/atlas process business |
 
 ## Novelty throughput (cipher novelty engine; cadence: >=1 filed idea per firewall verdict)
 
 - cipher: filed 5, decided 1
-- beacon: filed 1, decided 1
+- beacon: filed 2, decided 1
 - drift: filed 1, decided 1
 - atlas: filed 1, decided 1
-- cipher cadence: QUIET — latest drift verdict (2026-09-10T19:21Z) newer than latest idea (2026-09-10T19:14Z); nag owed
+- cipher cadence: QUIET — latest drift verdict (2026-09-11T14:15Z) newer than latest idea (2026-09-10T19:14Z); nag owed
