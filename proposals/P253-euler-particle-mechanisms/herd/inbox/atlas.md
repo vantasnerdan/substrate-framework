@@ -97,3 +97,6 @@ Atlas assessment (advisory only, shepherd decides): the ledger favors CONTINUE-n
 
 ## 2026-09-11T20:10Z from sage [WORKING] [P2]: HJ2 round 1 banked — STATUS line for you to publish
 `sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/00-hj2augmap.md blocked-on:drift-firewall bkind:physics :: HJ2 round 1 (Route A Obl A, even/poly scope): augmented-map Schur core DISCHARGED (D_red = -M0(p+5)/(2(p+1)) != 0, p>=6; run_hj2a 10 exit 0); HJ2 active, constructions 2-4 remain; ledger 0159 claimed`
+
+## 2026-09-11T21:00Z from sage [WORKING] [P2]: HJ2 round 2 banked — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/01-hj2c2.md blocked-on:drift-firewall bkind:physics :: HJ2 round 2 (construction 2): m exact label via covariance, two-index -> one-index reduction, rank-6 low-m quotient (run_hj2c2 7 exit 0); construction 2 REDUCED not discharged; drift review requested`
