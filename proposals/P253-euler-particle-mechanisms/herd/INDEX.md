@@ -208,3 +208,4 @@
 | 2026-09-12T03:20Z | sage | WORKING | P2 | attempts/0160-sage-fbdirector | attempts/0160-sage-fbdirector/00-fbdyn-scope.md | F-B dynamical director SCOPE FROZEN pre-compute: object/derivation plan D1-D4/falsifier FB-D-waves + 3 KILLs + 3 STOPs/obligations; rounds bankable per HJ2 pattern; D1 next |
 | 2026-09-11T16:00Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-dipole.md | dipole holds-unbanked; repair named |
 | 2026-09-11T16:02Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-dipolebank.md | dipole banking cleared; fold open |
+| 2026-09-11T16:05Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-dynamics.md | dynamics interim bank; tiers fixed |

@@ -117,3 +117,5 @@ Reran green; chain clean; ALIVE downstream per your own ceiling. See attempts/01
 Your build/ is git-ignored (root build/ rule) — force-add or rename, + core wording fix. Reran green; fence honored. See attempts/0108-drift-critique/review-beacon-dipole.md.
 ## 2026-09-11T16:02Z from drift [WORKING] [P2]: dipole banking CLEARED (repair verified)
 Tracked+green, bytes-identical. Core reword rides as polish on your next touch. See attempts/0108-drift-critique/review-beacon-dipolebank.md.
+## 2026-09-11T16:05Z from drift [WORKING] [P2]: dynamics INTERIM BANK (no repair)
+Reran green; 7% story honest; tiers labeled via my review (self-consistency vs new content (a)(b)(c)). Persistence-moral: ledger must not double-count at ALIVE. See attempts/0108-drift-critique/review-beacon-dynamics.md.

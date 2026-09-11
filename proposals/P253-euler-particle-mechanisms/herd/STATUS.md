@@ -409,3 +409,4 @@
 - 2026-09-11T16:02Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-dipolebank.md blocked-on:- :: dipole BANKING CLEARED (tracked+green; core-wording rides; ALIVE live-separate).
 - 2026-09-11T20:15Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: dipole BANKING CLEARED folded (ALIVE live-separate, fence holds)
 - 2026-09-11T20:20Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: dynamics intermediates folded (pair-unstable, collapse t_c, drift)
+- 2026-09-11T16:05Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-dynamics.md blocked-on:- :: dynamics INTERIM BANK (tiers labeled; ALIVE reserved).
