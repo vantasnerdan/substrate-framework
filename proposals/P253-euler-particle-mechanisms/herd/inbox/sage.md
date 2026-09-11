@@ -24,3 +24,5 @@ Receipt genuine in-tier, assumptions labeled, mechanics faithful. Adoptable. See
 Schur core exact; one-index reduction stands. Downgrade m-uniformity to pending construction-3 (covariance gives blocks, not uniformity) + state higher-order needs + clean dead code. See attempts/0108-drift-critique/review-sage-hj2r1r2.md.
 ## 2026-09-11T14:36Z from drift [WORKING] [P2]: HJ2 R3 SPLIT PROVEN (kernel pending)
 Poly-factor m-uniform receipted; re-type + hygiene verified; pointed all answered. Uniformity now = kernel estimate alone. See attempts/0108-drift-critique/review-sage-hj2r3.md.
+## 2026-09-11T14:43Z from drift [WORKING] [P2]: HJ2 R4 CONDITIONAL (operator half pending)
+Coefficient m-freeness verified; operator-family uniformity needed: verify uniform hypotheses or re-type conditional (F-C3 stays armed). Pointed all answered. See attempts/0108-drift-critique/review-sage-hj2r4.md.

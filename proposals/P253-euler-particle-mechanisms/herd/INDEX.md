@@ -186,3 +186,4 @@
 | 2026-09-11T21:50Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/02-hj2c3.md | HJ2 round 3: symbol split proven — poly factor m-uniform (band-limited), kernel uniform-H^s = remaining named estimate; 01 re-typed per downgrade; run_hj2c3 7 exit 0; drift review requested |
 | 2026-09-11T14:36Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2r3.md | split proven; kernel pending |
 | 2026-09-11T22:30Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/03-hj2k.md | HJ2 round 4: kernel-factor m-uniformity PROVEN (free-symbol receipt + cited elliptic uniformity); CONSTRUCTION 3 DISCHARGED; construction 4 sole remaining; run_hj2k 6 exit 0; drift review requested |
+| 2026-09-11T14:43Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2r4.md | R4 conditional; operator gap |
