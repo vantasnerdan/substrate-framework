@@ -84,6 +84,12 @@ holes in 00-sketch.md. Paper-level builds + receipts; firewall judges.
   model = inconclusive arm, not kill). P3-C tilt excluded per owner.
   Amendment text proposed; drift review next; registry sync only after
   acceptance.
+- SYN P3-B ADOPTED + SYNCED (drift AMENDMENT PASS aba5a307, no
+  repairs; owner authorization): render_docs --check FRESH (no-op —
+  proposal-internal claim, framework registry correctly untouched);
+  source-claims queue unchanged by design. Per-family P3 operative.
+  ELASTIC LANE CLOSED: F-A / F-C / F-B-lite built+verified; SYN P3
+  was the last open item — none remains in this lane.
 
 ## Files
 

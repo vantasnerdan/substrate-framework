@@ -78,3 +78,22 @@ Predictions section). This note is the amendment text proposed; per
 charter: drift review → owner adoption → registry/generated sync after
 acceptance. Until adoption, the SYN spec's original single-spectrum P3
 remains the operative claim.
+
+## ADOPTED + registry/generated sync record (2026-09-11)
+
+- Drift: AMENDMENT PASS, adoptable (review-sage-p3amend.md, aba5a307):
+  theorem receipt genuine at stated tier, direction-blindness labeled
+  x2, inconclusive arm airtight, mechanics faithful, F-B regression
+  clean (15 exit 0). No repairs.
+- Owner adoption: shepherd authorization this round ("PASS adoptable;
+  execute registry/generated sync per charter").
+- Sync executed: scripts/render_docs.py --check FRESH (no-op diff —
+  P253 SYN is proposal-internal; framework claims.yaml correctly
+  untouched, promotion not chartered and not performed). Migration
+  source-claims queue: no changed inputs (pinned corpus b6fc902a-
+  lineage/6d1f4e0, dispositions untouched) — no regeneration required.
+- Operative state: the per-family P3 (P3-A unchanged / P3-B
+  p-independent at model order / P3-C charge-only) is now the SYN
+  claim's operative P3. F-P3 stands pre-registered family-wide.
+  Original single-spectrum text in 0128/06 remains the historical
+  record (attempt dirs append-only).
