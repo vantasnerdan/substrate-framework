@@ -1,0 +1,55 @@
+== CHECKS ==
+[PASS] B1/C1a so(1,3): J antisymmetric, K symmetric
+[PASS] B1/C1b so(4): all generators (incl. boost analogue) antisymmetric
+[PASS] B1/C1c so(1,3): [K,K] sign = -[J,J] sign in the eps convention  (s_JJ=-1, s_KK=1)
+[PASS] B1/C1d so(4): [Khat,Khat] sign = +[Jhat,Jhat] sign in the eps convention  (s_JJ=-1, s_KK=-1)
+[PASS] B2/C2a {K,K} symmetric, [K,K] antisymmetric
+[PASS] B2/C2b trace part is spin-0 under rotations
+[PASS] B2/C2d commutator part is spin-1 (closes in the rotation sector, every pair)
+[PASS] B2/C2c traceless symmetric {K,K} obeys the spin-2 transformation law
+[PASS] B3/C5 trace identity exact on general symbolic 4x4 entries
+[PASS] B3/C5 trace identity exact on integer matrices (n=2,3,5)
+[PASS] B4/C6 eps^{mu nu rh si} tr(X_mu {X_nu, X_rh}) vanishes exactly
+[PASS] B4/C6-contrast commutator version (Skyrme-type) generically nonzero  (current=-24)
+[PASS] B5/kernel (-nabla^2) 1/(4 pi r) = 0 off origin
+[PASS] B5/kernel (-nabla^2 + m^2) e^{-mr}/(4 pi r) = 0 off origin
+[PASS] B5/kernel massive FT numeric r=1.0 m=0.7  (rel=1.76e-16)
+[PASS] B5/kernel massive FT numeric r=2.5 m=1.3  (rel=5.27e-16)
+[PASS] B5/C4 scalar exchange interaction energy negative (attractive)
+[PASS] B5/C4 vector exchange interaction energy positive (like charges repel)
+[PASS] B5/C4 Fierz-Pauli 00-00 projector contraction strictly positive  (amp=1/2)
+[PASS] B5/C4 spin-2 exchange attractive (amplitude x kernel sign)
+[PASS] B5/routeB Phi = -G m / r harmonic off origin
+[PASS] B5/routeB Newton potential negative (attractive)
+[PASS] B6/C8 dipole-dipole tail = (3 x_i x_j - r^2 delta_ij)/(4 pi r^5) ~ 1/r^3
+[PASS] B6/C8 dipole-dipole trace vanishes off origin (isotropic piece is contact-only)
+[PASS] B6/C8 quadrupole-quadrupole tail is homogeneous of degree -5 (1/r^5)
+[PASS] B6/C7 zero-derivative vertex is 1/r (the kernel itself)
+[PASS] B7/C9 G^(1) annihilates pure-gauge perturbations exactly
+[PASS] B7/C9 linearized Bianchi d^mu G_{mu nu} = 0 exactly
+[PASS] B7/scaling (d^1 f)^2 texture energy scales as R^(3-21)  (exponent 1, const=pi)
+[PASS] B7/scaling (d^2 f)^2 texture energy scales as R^(3-22)  (exponent -1, const=pi)
+[PASS] B8/C10 O(x,z) lies in SO(1,3) exactly (O^T eta O = eta)
+[PASS] B8/C10 Maurer-Cartan curvature dG + [G,G] vanishes identically
+[PASS] B8/C3 boost x boost structure coefficient flips sign (Lorentz vs Euclid)  (Lorentz {0: 1}, Euclid {0: -1})
+[PASS] B9/C11 He4 EM mass fraction matches the quoted number (5%)  (computed 4.869e-04, quoted 4.870e-04)
+[PASS] B9/C11 Fe56 EM mass fraction matches the quoted number (5%)  (computed 2.439e-03, quoted 2.440e-03)
+[PASS] B9/C11 U238 EM mass fraction matches the quoted number (5%)  (computed 4.436e-03, quoted 4.440e-03)
+[PASS] B9/C11 spread across the table is about 9.1x (10%)  (ratio=9.11)
+CHECKS: 37/37 PASS
+== MUTATIONS ==
+[BROKE] B1/M1 wrong eta_00 sign breaks boost symmetry
+[BROKE] B1/M2 same-sign relation demanded in so(1,3) fails (flip destroyed)
+[BROKE] B2/M1 mixed-symmetry inputs break the {A,B}-symmetry claim
+[BROKE] B3/M1 coefficient 4 -> 2 leaves a nonzero remainder
+[BROKE] B4/M1 symmetric contraction tensor in (nu,rh) breaks the vanishing
+[BROKE] B5/M1 scalar coupling sign flipped -> attraction flips to repulsion
+[BROKE] B5/M2 antisymmetrized projector kills the 00-00 contraction
+[BROKE] B5/M3 Newton route sign flipped -> potential positive
+[BROKE] B6/M1 quadrupole tail is not degree -3
+[BROKE] B7/M1 claiming exponent 3-p instead of 3-2p fails for p=2
+[BROKE] B7/M2 a physical (non pure-gauge) perturbation does not annihilate G
+[BROKE] B8/M1 Lorentzian K's in the Euclidean slot remove the flip
+[BROKE] B9/M1 Z(Z-1) convention breaks the quoted He-4 number (20%)
+MUTATIONS: 13/13 BREAK
+ALL 37 CHECKS PASS; ALL 13 MUTATIONS BREAK
