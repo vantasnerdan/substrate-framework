@@ -117,3 +117,4 @@
 | 2026-09-11T09:01Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/assumption-hunt.md | ideation: ranked breakers |
 | 2026-09-11T09:03Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0136ideas.md | 0136 PASS; M1 first |
 | 2026-09-11T09:03Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-0137survey.md | 0137 PASS; X1 first |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/07-b4/01-c1-fbar.md + receipts/c1-cocycle/ + 08-newideas/00-newideas.md | landed: C1 PASS-lean (4pi/15); N1/N2/N4/N5 ranked |
