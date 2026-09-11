@@ -17,22 +17,20 @@ No PR opened. One verdict per item. Evidence pointers inline.
 ## IN PROGRESS (carry, don't block)
 - **M2-B1 H4-proof + A3 filament — COMPLETE, ALL VERDICTED** (drift review-cipher-sectionm0): section-m0 PASS (arc reproduced digit-exact, veto honest; 1 doc nit); A3 m1–6 PASS-in-model; A1/A2/A3-transfer banked; R1–R5 closed. Triple complete, bounded. Remaining token: H4-proof (+owner-review).
 - **G-a2 numbers — 0125 PASS CONDITIONAL** (beacon + drift review-beacon-0124correction): conditional lemma rho*~0.03 banked; 0124 RE-CERTIFIED STRONGER with /6 correction; R1–R3 DONE 37625ab1 (stale framing fixed, corrected receipts, sweep banked). G-a2 construction track complete — remaining: R-EM2 scope decision governs what it licenses.
-- **Residue synthesis SPEC — FINDINGS CLOSED** (cipher a7f1c267: dynamical B2, missing-4/5, inheritance; drift CONFIRMED verdict-safe, no re-review): combined SYN claim stands; predictions ordered; builds wait for survivors program. 0133 scope drift-PASS.
+- **Residue synthesis SPEC — FINDINGS CLOSED** (cipher a7f1c267: dynamical B2, missing-4/5, inheritance; drift CONFIRMED verdict-safe, no re-review): combined SYN claim stands; predictions ordered; survivors program CLOSED under it (0134) — builds gated on materially different charge construction (none on table). 0133 scope drift-PASS.
 - **IDEA-01..08**: all ADOPTED with owners (cipher/drift/atlas/beacon+cipher);
-  IDEA-03 (R9-start) 1/3 closed — gates G-a2 trust-region start, rides with (a).
-- **0127 native back-reaction — R-B CLOSED(MISS), R-A SURVEY NEXT** (beacon 277b058b + drift CONFIRMED + adjudication correction b57ecd9f): front ~2/3, skirt ~1/3 to R-C; gates held; archaeology cited at source. Sketches dead+confirmed (S1/S2/S3/S4/S1-3D, alignment reconciled); S4 banking nits e2ce6ab8 (Hopf gate in-script, gray clause, qualifier). SURVIVORS SCOPED 0133 (shepherd charter, closure-conditioned): three addresses with frozen falsifiers/stops. Live: R-A survey + 0133 addresses. Route order: R-A survey → R-B closed → R-C stiffening → R-D diagnostic.
+- **0127 native back-reaction — CLOSURE COMPLETE (drift verdict pending)** (beacon 0134 verdict): all three survivor addresses KILL under frozen 0133 falsifiers — A1 m≥2-seed (κ=+3.58, residual), A2 single-ring (κ=+2.04, 2× above line; reproduces S1 κ_B=2.0406 to 4 digits), A3 λ-family (r flat 0.9026–0.9079, κ=−6.82 wrong-way). Filament-charge via Magnus-form back-reaction CLOSED unconditional within scoped forms. Behind it: R-B CLOSED(MISS), sketches all dead+confirmed, S1-3D dead+confirmed, SPEC findings closed. Live threads: S3-residue direction + S4 only. Reopen needs materially different charge construction (none on table).
 - **S9 test — CLOSED-complete** (beacon 0114): drift-PASS, repairs a–d landed, integrity repaired+citable (eb3db6d1); EXPOSED verdict + P1 shape-member folded into 0122/IDEA-05; zero open items.
 - **Shadowing scope**: A1/A2 closed, H4-proof current token.
 
 ## Claim-promotion backlog
 - Drafts EXIST: attempts/0126-beacon-claims/drafts.yaml (C-EUL-001 no-go / C-EUL-002 conditional, UNSATISFIED honest; registry schema, `review: draft` — no registry writes, namespace free as of 2026-09-10).
-- Path to promotion: drift firewall PASSED 5152755e — promotion HELD by shepherd sequencing until 0127 design lands (team concentrated). Then: individual review. R-EM2 DECLINED changes nothing in the drafts (both Euler-native); it forbids any two-way reading of 0111.
+- Path to promotion: drift firewall PASSED 5152755e — promotion HELD by shepherd sequencing through native closure. Then: individual review. R-EM2 DECLINED changes nothing in the drafts (both Euler-native); it forbids any two-way reading of 0111.
 - No hidden debt: ledger audit clean; negatives bank (0119/0121/0124) rides as certified no-go records.
 ## Bottom line
-PR HELD until the native back-reaction program resolves (owner direction).
-Readiness now tracks 0127 scoping as the front item with PR assembly queued
-behind it — NOT zero actions. Banked and waiting: G-a2 fully built (0125
-conditional PASS, 0124 re-certified, R1–R3 done, drafts firewall-PASSed),
-M2-B1/A3 triple-complete, S9 closed, negatives certified (0119/0121/0124),
-R-EM2 DECLINED with reversion applied. Queued PR shape (when 0127 resolves):
-close #198, advance #203 Euler-native only.
+Native back-reaction program CLOSED by construction (0134: all routes/kills
+banked, drift closure-verdict pending) — PR HELD only on that verdict plus
+shepherd's sequencing call. When both land: close #198, advance #203
+Euler-native only — conditional lemma (C UNSATISFIED, honest), certified
+negatives (0119/0121/0124 + native kills), 0111 as one-way observation,
+charge work BLOCKED per reversion, SYN SPEC paper-only.
