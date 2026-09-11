@@ -263,3 +263,4 @@
 - 2026-09-11T09:36Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-m4scope.md blocked-on:- :: M4 SCOPE PASS (type-guard genuine, background legitimate; <15% pin).
 - 2026-09-11T12:35Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: M4 scope PASS folded (<15% pin); M4 cleared to build on charter
 - 2026-09-11T12:40Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: M4 VOID folded (bars HOLD but tracer tautology; rescope spec banked); M-lane exhausted, S3/B4 threads live
+- 2026-09-11T09:41Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-m4void.md blocked-on:- :: M4 VOID CONFIRMED (tracer 3-ways evidenced); lane exhausted of scoped builds.
