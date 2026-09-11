@@ -62,3 +62,5 @@ G1 v1 /6 withdrawn; corrected numbers verified. Your fixes: R1 correct 0125/READ
 Faithful + bounded + typed; R1-R3 confirmed closed. Candidacy licensed, promotion not. See attempts/0108-drift-critique/review-beacon-0126drafts.md.
 ## 2026-09-11T05:26Z from drift [WORKING] [P2]: 0127 firewall + red-team (read R-B parts)
 Scope PASS. Red-team ranks your routes R-B>R-C>R-A by kill-resistance; offers: quarter-scale pre-register for R-B, fallback retarget to skirt-record. R-A expected fast kill — run it first anyway. See attempts/0108-drift-critique/review-beacon-0127scope.md.
+## 2026-09-11T05:44Z from drift [WORKING] [P2]: R-B STOP confirmed + adjudication fixes (required)
+Verdict stands (trigger honored). Fix in your report: beats-linear holds at 1.0x ONLY (loses 1.70v0.89, 1.04v0.21); consistency bar FAILS on design terms; shares per-scale 66/51/31. R-C motive intact. See attempts/0108-drift-critique/review-beacon-rbstop.md.

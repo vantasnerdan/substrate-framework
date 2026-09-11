@@ -89,3 +89,4 @@
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/00-sketches.md | landed: S1/S2/S3 native back-reaction sketches + falsifiers + 0124-addressing; no builds |
 | 2026-09-11T05:26Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0127scope.md | scope PASS + red-team appendix |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/01-cross-critique.md | landed: Q1–Q9 naive interrogation of 0127 (drift-disjoint), beacon answers in R-A prep |
+| 2026-09-11T05:44Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-rbstop.md | STOP confirmed; err-vs-pred fix |
