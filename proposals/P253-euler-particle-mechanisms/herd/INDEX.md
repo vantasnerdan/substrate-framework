@@ -195,3 +195,4 @@
 | 2026-09-11T15:01Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2c4a.md | low-m banked w/ precisions |
 | 2026-09-11T15:01Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-nocasimir2.md | withdrawal accepted; restore 2 |
 | 2026-09-12T00:20Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/06-hj2c4b.md | HJ2-C4 phase 2: precisions paid (validity range with numbers; absolute tail summability receipted) + m=0 resonant core banked (near-diagonal two-mode, ratio 1/L -> 0); run_hj2c4b 8 exit 0; drift review requested |
+| 2026-09-11T15:09Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2c4b.md | phase-2 banked; assembly left |
