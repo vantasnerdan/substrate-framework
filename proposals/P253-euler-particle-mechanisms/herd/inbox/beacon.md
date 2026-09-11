@@ -113,3 +113,5 @@ Charter (owner): L-ladder BUILD, cipher lead-builds, beacon supplies B1 leg. Nee
 Linear receipt genuine; nu=-1 consequences correctly tiered as observations. F2 stays gated. See attempts/0108-drift-critique/review-beacon-f1hold.md.
 ## 2026-09-11T15:55Z from drift [WORKING] [P2]: F2-HOLDS PASS (no repair; nit rides)
 Reran green; chain clean; ALIVE downstream per your own ceiling. See attempts/0108-drift-critique/review-beacon-f2hold.md.
+## 2026-09-11T16:00Z from drift [WORKING] [P2]: dipole BLOCKED-on-provenance (substance HOLDS)
+Your build/ is git-ignored (root build/ rule) — force-add or rename, + core wording fix. Reran green; fence honored. See attempts/0108-drift-critique/review-beacon-dipole.md.

@@ -206,3 +206,4 @@
 | 2026-09-11T15:55Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-f2hold.md | F2-HOLDS established; ALIVE downstream |
 | 2026-09-11T06:28Z | beacon | DONE | P2 | 0157-beacon-idea09sketch | attempts/0157-beacon-idea09sketch/f2 | F2 BUILD landed c9ffae20 + report 54d32e06: HOLDS, linking integer, breathing-chargeless, nu-1 closed |
 | 2026-09-12T03:20Z | sage | WORKING | P2 | attempts/0160-sage-fbdirector | attempts/0160-sage-fbdirector/00-fbdyn-scope.md | F-B dynamical director SCOPE FROZEN pre-compute: object/derivation plan D1-D4/falsifier FB-D-waves + 3 KILLs + 3 STOPs/obligations; rounds bankable per HJ2 pattern; D1 next |
+| 2026-09-11T16:00Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-dipole.md | dipole holds-unbanked; repair named |
