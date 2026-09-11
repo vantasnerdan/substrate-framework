@@ -143,8 +143,9 @@ check("identity", "RD1-5 k-structure: the only O(k) scalar n . curl n "
       "is PARITY-ODD (concrete axial tilt field: T = +alpha flips to "
       "-alpha under inversion) while the receipted |grad n|^2 is "
       "parity-EVEN (invariant) — the achirality declaration excludes "
-      "every linear-in-gradient term; omega^2 ~ k^2 at small k is "
-      "DERIVED (kill (iii) structurally closed)",
+      "every linear-in-gradient term; W's gradient structure is k^2 "
+      "at D1 (kill (iii) NARROWED, not closed — closure awaits D3 "
+      "kinetics + independent-p fireability; R3, c5b7b854)",
       sp.simplify(sp.series(T, alpha, 0, 2).removeO() - alpha) == 0
       and sp.simplify(T + T_parity) == 0
       and sp.simplify(w2 - w2_parity) == 0
