@@ -30,6 +30,6 @@ No PR opened. One verdict per item. Evidence pointers inline.
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
 - B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASS e9299ef1 (zero-test decisive, X1-coordination disjoint — converges with X1 B-CIRC need).
-- missing-5 M-ideas: M1 done(KILL confirmed); M3 done(KILL CONFIRMED); M2 down; M4 BUILT + VOIDED 0149 (bars read HOLD K=+0.99999 but kinematic tautology — tracer not vortex response; rescope spec banked). M-lane EXHAUSTED pending rescoped-M4 or S3/B4 threads (shepherd). Synthesis order: (b) S3 exact identities next.
+- missing-5 M-ideas: M1 done(KILL confirmed); M3 done(KILL CONFIRMED); M2 down; M4 VOID CONFIRMED 2004c914 (tracer tautology; rescope spec banked). M-lane EXHAUSTED, drift-certified. Live: S3 exact identities → R-C → B4.
 - Failure synthesis 0143 ORDERS next: (a) M1 done(KILL) → (b) S3 exact identities → (c) R-C coercivity → (d) B4 background; floor pattern holds; NOT-next respected. Synthesis CONDITIONAL banked.
 Recommended-shape section RETIRED until solution lands — no queued PR shape.
