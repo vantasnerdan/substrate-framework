@@ -173,3 +173,4 @@
 | 2026-09-11T13:17Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-fblite.md | F-B-LITE PASS; caveat noted |
 | 2026-09-11T17:40Z | sage | READY | P2 | attempts/0154-sage-emergent-elastic | attempts/0154-sage-emergent-elastic/07-fb-lite-build.md | F-B-lite caveat ADDED (drift 749179cd): RB10 material-statement relabel + RB10b prestress-sign receipt + falsifier hygiene (geometric miss = inconclusive); run_fb 15 exit 0 |
 | 2026-09-11T13:24Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-rb10bcaveat.md | caveat closed; vacuity note |
+| 2026-09-11T18:00Z | sage | READY | P2 | attempts/0154-sage-emergent-elastic | herd/SYNTHESIS.md | RB10b vacuity CLOSED + fixed (gradient-at-origin, run_fb 15 exit 0); standing vacuity rule adopted; SYN P3 amendment SCOPE PROPOSAL drafted (P3-A unchanged, P3-B p-spectrum derivable, P3-C owner scope question) |

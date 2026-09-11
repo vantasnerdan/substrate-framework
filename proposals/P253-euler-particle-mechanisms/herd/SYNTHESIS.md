@@ -250,3 +250,43 @@ draft adds structure and citations only — sage)
 - 2026-09-11T16:45Z SAGE: D5 fix LANDED (drift REQUIRED, b210f8c9): D5 now reads 'missing-5 new-observable IDEAS behind B1/D3; B2 DEAD not queued, no rerun licensed'; E-section P1 live fire-route = D1 L-ladder alone; B1 parenthetical tightened same way (flagged for drift veto). Structure adoptable per review.
 - 2026-09-11T17:10Z SAGE: F-B-LITE BUILT (owner option A): 07 + run_fb 13 assertions exit 0; dues ALL PAID — RB6 receipt CORRECTED the pricing normal-part (K(1-p)/10 + linear pre-stress K*p*e33, not K(1-p)/30); falsifier FB-anisotropy banked with STOP FROZEN (independent-p or UNFIREABLE); static director only, dynamical director out of scope; verdicts proposed, drift review requested.
 - 2026-09-11T17:40Z SAGE: F-B-lite caveat ADDED (drift REQUIRED 749179cd): RB10 relabeled MATERIAL/pre-acoustoelastic; RB10b receipts pre-stress sign (sigma_033=+Kp tensile => waves stiffen, O(p), size unpriced); falsifier hygiene: MISS within geometric size = INCONCLUSIVE not kill. run_fb now 15 assertions exit 0. Family state: F-A/F-C/F-B-lite built, dynamical director separate priced lane, SYN P3 owed.
+- 2026-09-11T18:00Z SAGE: RB10b vacuous clause removed (drift nit 56bb1a63, CLOSED); extraction fixed to gradient-at-origin; run_fb 15 exit 0 re-verified; standing vacuity-check rule adopted lane-wide. Family CLOSED: F-A/F-C/F-B-lite built+verified, dynamical director separate priced lane.
+
+## SYN P3 amendment — SCOPE PROPOSAL (sage, structure; owner decides)
+
+Lane's only open item. Proposal for chartering (no claims, no derivation run):
+
+1. OBJECT. Amend SYN P3 (0128/06-synthesis-spec) from a single
+   tangle-vacuum spectrum prediction to a PER-FAMILY prediction set:
+   the fluctuation spectrum of a charge-measurement analog, re-derived
+   for each built family, with per-family kill thresholds.
+2. PER-FAMILY OBLIGATIONS.
+   - P3-A (random tangle, F-A): pilot-owned, UNCHANGED — S4 numbers
+     (CV~1.9, alpha~0.76) stay PILOT SPEC (fitted-comparator status;
+     missing-construction #4 still open). Text: unchanged.
+   - P3-B (polarized, F-B-lite): derive the p-modified spectrum from
+     the same S4 pilot machinery with p-weighted averages; state how
+     the kill threshold (Gaussian-narrow-below-CV/3 analog) shifts with
+     p, or state p-independence if derivation shows it. Scope fence:
+     static director only; achiral.
+   - P3-C (tilt sector, F-C): SCOPE DECISION FOR OWNER — either (i) P3
+     stays charge/translational-only, tilt fluctuations noted as a
+     separate channel (cheapest), or (ii) tilt noise joins the
+     prediction set (new machinery: fluctuation spectrum of the tilt
+     pendulum sector — needs a temperature/equipartition statement the
+     campaign does not yet own; priced as new construction).
+3. CONSTRAINTS (all pre-committed by the spec's own discipline).
+   - No imports; Euler-native only.
+   - Fitted-comparator discipline: S4 numbers calibrate, they never
+     independently validate.
+   - Falsifiers pre-registered PER FAMILY before any measurement; each
+     family's kill threshold named with its noise model.
+   - Inheritance rule: evidence not miscited (S1-style inheritance
+     language for any family-to-family spectrum borrowing).
+4. DELIVERABLE SHAPE. Amendment note to the SYN claim doc (owner-level
+   edit), per-family prediction blocks + falsifiers; drift review;
+   registry/release sync only after acceptance.
+5. ORDER. After owner answers the single scope question (P3-C in or
+   deferred). P3-A and P3-B are derivable immediately on charter —
+   P3-B reuses the RB machinery (p-weighted averages are already
+   receipted content).

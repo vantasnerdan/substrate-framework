@@ -183,9 +183,8 @@ W_diag_lin = sp.expand(W_aniso(
 check("identity", "RB10b pre-stress tensile + p-proportional (traceless "
       "projection, RB6 form): linear part == K*p*e33 — geometric wave "
       "correction stiffens (sign receipted), size O(p) UNPRICED",
-      sp.simplify(W_diag_lin.coeff(xd, 1) + K * p) == 0
-      and sp.simplify(W_diag_lin.coeff(yd, 1) + K * p) == 0
-      and not W_diag_lin.coeff(xd, 1).has(p) or True)
+      sp.simplify(sp.diff(W_diag_lin, xd).subs({xd: 0, yd: 0}) + K * p) == 0
+      and sp.simplify(sp.diff(W_diag_lin, yd).subs({xd: 0, yd: 0}) + K * p) == 0)
 lin13 = sp.expand(W_aniso(eps, ez, p)).coeff(e13, 1)
 check("identity", "RB10b-axis: no shear linear terms (pre-stress is "
       "axis-diagonal only)",

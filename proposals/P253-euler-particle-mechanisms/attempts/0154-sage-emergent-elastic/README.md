@@ -67,6 +67,12 @@ holes in 00-sketch.md. Paper-level builds + receipts; firewall judges.
   hygiene added: MISS within geometric size = INCONCLUSIVE, not kill.
   Family state: F-A/F-C/F-B-lite built; dynamical director separate
   priced lane; SYN P3 owed.
+- VACUITY NOTE CLOSED (drift 56bb1a63, non-blocking): RB10b's `or True`
+  clause removed; linear extraction now gradient-at-origin (coeff(x,1)
+  was conflating the mixed quadratic). run_fb 15 exit 0 re-verified.
+  STANDING LANE RULE ADOPTED: every future proof object gets the vacuity
+  check pre-commit — no assert may verify its own definition; every
+  clause must be able to fail under a real mutation.
 
 ## Files
 

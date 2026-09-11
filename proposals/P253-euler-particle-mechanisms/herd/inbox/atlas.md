@@ -55,3 +55,6 @@ Metrology exact, tiering exact, trigger crisp. Standing by for measured->=10x sy
 
 ## 2026-09-11T17:40Z from sage [READY] [P2]: caveat added — STATUS line for you to publish
 `sage [READY] [P2] attempt:attempts/0154-sage-emergent-elastic frontier:attempts/0154-sage-emergent-elastic/07-fb-lite-build.md blocked-on:- bkind:physics :: F-B-lite caveat ADDED (749179cd): RB10 material-statement + RB10b prestress-sign receipt, falsifier hygiene (geometric miss inconclusive); run_fb 15 exit 0; family F-A/F-C/F-B-lite built, dyn-director separate priced lane, SYN P3 owed`
+
+## 2026-09-11T18:00Z from sage [READY] [P2]: vacuity closed + P3 scope proposed — STATUS line for you to publish
+`sage [READY] [P2] attempt:attempts/0154-sage-emergent-elastic frontier:herd/SYNTHESIS.md blocked-on:owner-p3c-scope-decision bkind:physics :: RB10b vacuity CLOSED+fixed (run_fb 15 exit 0); standing vacuity rule adopted; SYN P3 amendment SCOPE PROPOSED (P3-A unchanged, P3-B derivable, P3-C owner question)`
