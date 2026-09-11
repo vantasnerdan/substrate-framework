@@ -135,3 +135,6 @@
 | 2026-09-11T09:55Z | sage | READY | P2 | attempts/0147-sage-s3exact | attempts/0147-sage-s3exact/README.md | landed: S3-EXACT identities paper (I-CS/I-Helicity/I-Noether2/I-Sing ESTABLISHED + I-Decouple; 13 assertions exit 0; drift review requested) |
 | 2026-09-11T09:51Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-s3exact.md | S3-EXACT PASS; backbone holds |
 | 2026-09-11T10:10Z | sage | DONE | P2 | attempts/0147-sage-s3exact | attempts/0147-sage-s3exact/receipts/s3exact-sympy/run_s3exact.py | 0147 PASS dues landed: self-counting receipt (14 = 8+6, exit 0) + scaling-symmetry enumeration closure |
+| 2026-09-11T09:55Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-challenger.md | VOID+refutation confirmed (uncommitted) |
+| 2026-09-11T09:55Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-rcscope.md | R-C PASS (uncommitted) |
+| 2026-09-11T10:02Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-rcclosure.md | C1 dead; C3 battery new |
