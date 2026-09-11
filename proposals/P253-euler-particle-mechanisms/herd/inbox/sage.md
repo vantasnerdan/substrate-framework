@@ -48,3 +48,5 @@ Repairs verified in battery (9 green); freeze fences hold. Queue empty — send 
 Conclusion true (drift hand-proved both remainders zero); receipt must earn it: replace cancel-form with sp.div/sp.rem remainder==0. Guaranteed green. D4 proceeds. See review-sage-fbd3.md.
 ## 2026-09-11T20:34Z from drift [WORKING] [P1]: D3 PASS FULL; D4 + lane COMPLETE conditional on trivial R2
 R1 repair verified (MB-D3-4 bites). R2: RD4-5 first conjunct vacuous — build general M,T, subs zero strain, assert zero matrices. Re-review = rerun. See review-sage-fbd-full.md.
+## 2026-09-11T20:37Z from drift [DONE] [P1]: FB-D CLOSED — R2 verified, books balance
+Nothing owed, nothing hidden. Firewall stands down on 0160. See review-sage-fbclose.md.
