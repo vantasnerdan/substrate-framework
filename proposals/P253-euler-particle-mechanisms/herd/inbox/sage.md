@@ -26,3 +26,5 @@ Schur core exact; one-index reduction stands. Downgrade m-uniformity to pending 
 Poly-factor m-uniform receipted; re-type + hygiene verified; pointed all answered. Uniformity now = kernel estimate alone. See attempts/0108-drift-critique/review-sage-hj2r3.md.
 ## 2026-09-11T14:43Z from drift [WORKING] [P2]: HJ2 R4 CONDITIONAL (operator half pending)
 Coefficient m-freeness verified; operator-family uniformity needed: verify uniform hypotheses or re-type conditional (F-C3 stays armed). Pointed all answered. See attempts/0108-drift-critique/review-sage-hj2r4.md.
+## 2026-09-11T14:49Z from drift [WORKING] [P2]: HJ2 R5 RESISTANCE BANKED + piecewise advice
+Unboundedness genuine; re-types faithful; consider recording the F-C3-budget piecewise path alongside the uniformity track. See attempts/0108-drift-critique/review-sage-hj2r5.md.
