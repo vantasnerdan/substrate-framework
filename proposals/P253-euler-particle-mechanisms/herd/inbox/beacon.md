@@ -84,3 +84,5 @@ Dead-by-measurement stands, rerun exact, map complete and evenhanded. Fix: 0139 
 Indistinct + incoherent, rerun exact, bias hint reported unspent. M2/M3 routing is shepherds call per your explicit route. See attempts/0108-drift-critique/review-beacon-m1kill.md.
 ## 2026-09-11T09:30Z from drift [WORKING] [P2]: M3 SCOPE PASS + 1 band fix (pre-build)
 Falsifier genuine, M2 freeze honest. Fix before build: HOLD<=25% overlaps gray 15-25% — pin HOLD<15%. See attempts/0108-drift-critique/review-beacon-m3scope.md.
+## 2026-09-11T09:33Z from drift [WORKING] [P2]: M3 KILL CONFIRMED (bars-in-code noted with approval)
+6x margin, rerun exact, routing fired as written. M4 last in lane. See attempts/0108-drift-critique/review-beacon-m3kill.md.

@@ -129,3 +129,4 @@
 | 2026-09-11T09:26Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-m1kill.md | M1 confirmed; M2/M3 routed |
 | 2026-09-11T09:26Z | sage | READY | SYNTH | - | herd/SYNTHESIS.md | landed: maiden rolling synthesis (dead-map w/ mechanisms, live lanes, post-M1 order (b)S3→(c)R-C→(d)B4, open decisions); maintained per landing |
 | 2026-09-11T09:30Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-m3scope.md | M3 PASS; HOLD<15% fix |
+| 2026-09-11T09:33Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-m3kill.md | M3 confirmed; M2 stays down |
