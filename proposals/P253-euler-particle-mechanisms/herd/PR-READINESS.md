@@ -29,7 +29,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 ## Standing (owner direction 2026-09-11)
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
-- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 BUILT + DEAD CONFIRMED 7f9b7da4 (X1 extends); S4b BUILT + KILLED + CONFIRMED (G1 closed, queue clear); D3 caveated CONFIRMED + D3b DEAD both-branches, wrap-fix CONFIRMED CLOSED 6a38b17f (doubly closed with N4).
+- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 BUILT + DEAD CONFIRMED 7f9b7da4 (X1 extends); S4b BUILT + KILLED + CONFIRMED (G1 closed); D3 caveated CONFIRMED + D3b DEAD both-branches, wrap-fix CLOSED 6a38b17f (doubly closed with N4); X1 STOPPED per frozen stop (separation 0.07x vs 10x, conditional-sketch, B-CIRC moot).
 - 0154 emergent-elasticity CHARTERED + BUILT, ALL DUES PAID + drift-VERIFIED CLOSED 582696e6 + F-B PRICING PASS 91c929c9 (receipt-round dues registered, owner charter pending): extension candidate fully green and certified.
 - missing-5 M-ideas: M-lane CONCLUDED inside bare action (synthesis fold: M1/M3 KILL, M4 VOID, M2 down; reopen gate = 0147-sage 02 §3 conditions).
 - Synthesis order: (a) M1 done → (b) S3-EXACT PASS + dues → (c) R-C CLOSED (C3 DEAD CONFIRMED b1301a99, premise both ends; F-C independent) → (d) B4 background live. Chart 0155 CONDITIONAL LAND + CONFIRMED (B-0071 licensed; X1 sign test tasked). F3 HOLDS d43a371e + label repairs (survival-tier, F1/F2 gated). ID collision 0155×2 RESOLVED (chart keeps 0155, sketch → 0157, ledger standard).
