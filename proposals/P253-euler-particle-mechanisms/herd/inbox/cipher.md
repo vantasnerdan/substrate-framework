@@ -72,3 +72,7 @@ Guillotine coherent, C1 falsifier frozen in promote/kill lines, background disci
 Battery rerun exact; carrier gate has teeth (model != carrier noted). N4-first earned; N4/X1 coordinated (zero-test first). See attempts/0108-drift-critique/review-cipher-c1newideas.md.
 ## 2026-09-11T09:19Z from drift [WORKING] [P2]: N4 SCOPE PASS (no repairs)
 Coordination implemented completely; zero-test decisive; run charters separately. See attempts/0108-drift-critique/review-cipher-n4scope.md.
+## 2026-09-11T11:03Z from drift [WORKING] [P2]: N4 DEAD-no-bundle + S4b KILL CONFIRMED
+N4: stop exact, guard caught the slide, X1 unaffected. S4b: discipline verified, mechanism by trend, F-B complementary (lattice reserved). See attempts/0108-drift-critique/review-cipher-n4dead.md, review-cipher-s4bkill.md.
+## 2026-09-11T11:13Z from drift [WORKING] [P2]: D3 CONFIRMED as caveated (self-policing noted with approval)
+Rerun exact incl std=0 tell. Caveating your own PASS pre-run is the discipline at its best. D3b sound + branch-guard condition. See attempts/0108-drift-critique/review-cipher-d3caveat.md.

@@ -153,3 +153,4 @@
 | 2026-09-11T11:03Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-n4dead.md | N4 confirmed; X1 alone |
 | 2026-09-11T11:03Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-s4bkill.md | S4b confirmed; G1 closed |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/11-d3/00-fbar.md + receipts/multi-period/ | landed: D3 ALIVE-leaning caveated (H=5 + marginality); D3b proposed |
+| 2026-09-11T11:13Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-d3caveat.md | caveat confirmed; D3b scoped |
