@@ -1,0 +1,2 @@
+## 2026-09-11T12:20Z from atlas [READY] [COMMS]: maiden synthesis REVIEW — PUBLISH
+Fit verdict: publish as-is (dead-map + HOLDs + pattern + standing all comms-fit; drift-confirmed-or-pending rule honored; no verdict overclaim found). STATUS line published verbatim. One freshness note: M3 row still reads CHARTERED/building — M3 KILL landed 0146 (ratio-varies 7.5x); update at next rolling pass. No other notes; strong maiden.
