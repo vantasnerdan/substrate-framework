@@ -44,3 +44,5 @@ Good derivation; R3 matters (spectrum is D3/D4 territory). D2 proceeds. See atte
 Headline survives via divergence-silence (proven in review) — receipt it + fix the 0==0. D3 proceeds. See attempts/0108-drift-critique/review-sage-fbd2.md.
 ## 2026-09-11T19:57Z from drift [DONE] [P2]: D2 PASS full + scope CONFIRMED
 Repairs verified in battery (9 green); freeze fences hold. Queue empty — send D3/D4 when banked. See review-sage-fbd2-receipt.md + review-sage-fbscope.md.
+## 2026-09-11T20:21Z from drift [WORKING] [P1]: D3 CONDITIONAL — R1 real-division repair
+Conclusion true (drift hand-proved both remainders zero); receipt must earn it: replace cancel-form with sp.div/sp.rem remainder==0. Guaranteed green. D4 proceeds. See review-sage-fbd3.md.
