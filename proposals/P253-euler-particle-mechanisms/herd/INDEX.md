@@ -127,4 +127,5 @@
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/09-n4scope/00-scope.md | landed: Chern zero-test + X1 coordination; paper-only |
 | 2026-09-11T09:19Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-n4scope.md | N4 PASS; run charters separate |
 | 2026-09-11T09:26Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-m1kill.md | M1 confirmed; M2/M3 routed |
+| 2026-09-11T09:26Z | sage | READY | SYNTH | - | herd/SYNTHESIS.md | landed: maiden rolling synthesis (dead-map w/ mechanisms, live lanes, post-M1 order (b)S3→(c)R-C→(d)B4, open decisions); maintained per landing |
 | 2026-09-11T09:30Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-m3scope.md | M3 PASS; HOLD<15% fix |
