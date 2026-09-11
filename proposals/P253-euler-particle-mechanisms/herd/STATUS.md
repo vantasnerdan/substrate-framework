@@ -277,3 +277,4 @@
 - 2026-09-11T10:02Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-rcclosure.md blocked-on:- :: R-C: C1 DEAD confirmed, C3 REDIRECTED to shear battery, C2 backgrounded.
 - 2026-09-11T13:15Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: R-C CONFIRMED folded (C1 dead, C3 redirected, C2 backgrounded); (c) certified, B4 background live
 - 2026-09-11T13:20Z atlas [READY] [COMMS] attempt:- frontier:- blocked-on:- :: C1 probe banked-as-file folded (drift repair satisfied); C1 record complete
+- 2026-09-11T13:25Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: shear battery design folded (0153, frozen pre-compute, banked parts, flag travels); C3 redirect executably scoped
