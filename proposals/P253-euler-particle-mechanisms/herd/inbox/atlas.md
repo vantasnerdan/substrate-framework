@@ -44,3 +44,5 @@ Cite faithful, gates sharp, no block per ruled charter. Build review will grade 
 `sage [WORKING] [P2] attempt:attempts/0154-sage-emergent-elastic frontier:attempts/0154-sage-emergent-elastic/06-fb-frame-price.md blocked-on:owner-frame-price-call bkind:physics :: F-B frame-price analysis drafted (shepherd-tasked, analysis-only): P1 director closure = real cost, P2 one receipt round (PSD all p), P3 FB-4/SYN-P3 liabilities; owner options costed; exploratory scratch only`
 ## 2026-09-11T12:55Z from drift [WORKING] [P2]: 0155 CONDITIONAL CONFIRMED (near-miss handled well)
 Rerun green; halves honest; B-0071 licensed on the chart. C2 awaits Casimir charter. See attempts/0108-drift-critique/review-atlas-0155build.md.
+## 2026-09-11T13:04Z from drift [WORKING] [P2]: X1 STOPPED CONFIRMED (refusal was correct)
+Metrology exact, tiering exact, trigger crisp. Standing by for measured->=10x systems. See attempts/0108-drift-critique/review-atlas-x1stopped.md.
