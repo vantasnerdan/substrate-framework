@@ -41,7 +41,10 @@ labeled LANE-*.
   identical in form to F-A plus the tilt-sector inheritance (FB-4
   substantive). No F-C claim of any kind before its own build.
 - **F-B polarized tangle**: HELD for the owner frame-price call. No
-  computation, no verdict, no text beyond this row.
+  computation, no verdict, no text beyond this row. (Amendment note,
+  2026-09-11: shepherd-tasked frame-price ANALYSIS drafted at
+  0154/06-fb-frame-price.md + exploratory scratch; no F-B claim, verdict
+  or receipt created; owner call stands.)
 
 ## Lane-level statements (explicit conjunctions only)
 

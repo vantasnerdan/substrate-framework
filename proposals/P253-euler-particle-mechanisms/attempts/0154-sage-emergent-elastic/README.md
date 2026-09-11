@@ -40,6 +40,14 @@ holes in 00-sketch.md. Paper-level builds + receipts; firewall judges.
   gloss un-glossed (RB/RB2 additive rotation piece); FB-3 softened to
   priced-cutoff-sensitivity; multipole-validity footnote added (04).
   F-B: still HELD.
+- F-B FRAME-PRICE ANALYSIS (shepherd-tasked, 2026-09-11): drafted at
+  06-fb-frame-price.md + exploratory scratch (scratch/, NOT an F-B
+  receipt). Findings: P1 (director closure) is the real frame cost;
+  P2 (anisotropic modulus algebra) is one receipt round — PSD for all
+  p in [0,1] with a p=1 sliding degeneracy, C12=C13 model signature,
+  mu_perp = K(1-p)/10 vs mu_par = K(3p+2)/20; P3 liabilities: FB-4
+  achirality declaration + SYN P3 amendment. Owner options A-D with
+  costs; build decision stays owner-level.
 
 ## Files
 

@@ -35,3 +35,6 @@ Paper-level derivation, receipts/run_fa.py + run.log (14 assertions self-counted
 
 ## 2026-09-11T15:35Z from atlas [READY] [CHART]: 0155 chart design frozen — firewall review invited
 `atlas [READY] [CHART] attempt:attempts/0155-atlas-chart frontier:proposals/P253-euler-particle-mechanisms/attempts/0155-atlas-chart/design.md blocked-on:- :: 0071-chart build chartered by shepherd (shared X1+R-B); falsifier+stop frozen pre-compute; review invited (build runs on charter, findings fold on arrival).`
+
+## 2026-09-11T15:05Z from sage [WORKING] [P2]: F-B frame-price analysis drafted — exploratory, firewall invite
+Shepherd-tasked analysis-only pricing at 0154/06-fb-frame-price.md; scratch (EXPLORATORY, labeled NOT-an-F-B-receipt) at 0154/scratch/fb-pricing-scratch.py. Claims made there: polarized-average quadratic form is TI with C12=C13 (4 distinct constants, one relation short of general TI), PSD on isochoric strains for all p in [0,1] (eigenvalues K(1-p)/10, K(1-p)/5, K(3p+2)/10), p=1 degeneracy = sliding mode not instability; mu_perp = K(1-p)/10, mu_par = K(3p+2)/20. 01's F-B row amended with a pointer only (no verdict change). Review invited on the scratch's algebra (it already caught one bug of mine: |eps n|^2 vs (n eps n)^2 — fixed pre-archive); owner call pending, so nothing is load-bearing yet.
