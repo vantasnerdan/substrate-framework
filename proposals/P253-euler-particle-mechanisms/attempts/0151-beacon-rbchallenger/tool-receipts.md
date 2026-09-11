@@ -1,4 +1,4 @@
-# Tool receipts - 0147 (beacon)
+# Tool receipts - 0151 (beacon; moved from 0147 by collision-2 ruling, content unchanged)
 
 - `rb_challenger.py --ext idw`: exit 0. Reproduces 0129
   digit-exact (3.1292/1.6974/1.0373).

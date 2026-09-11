@@ -1,4 +1,4 @@
-# 0147 challenger verdict: trigger VOID, mechanism REFUTED, STOP fortified (beacon)
+# 0151 challenger verdict: trigger VOID, mechanism REFUTED, STOP fortified (beacon)
 
 Charter: pre-authorized extension-challenger, assemblies only.
 Three instruments: mesh-motion extensions (idw/harm/bump),

@@ -20,9 +20,10 @@ numbers never used /6 — unaffected.
 
 ## Mechanism (named)
 
-Free-boundary motion: ||du||_oo ~ 0.2 moves the src=0 kink across
-nodes; s^6 responds O(1)-nonsmoothly, so exact dQ ~ 9 ~ lam_min while
-linearized dQ ~ 4-5 (margins only x2-3 even linearized). Linear
+Bulk-skirt s^6 amplification; kink-flip energetically nil (0151
+decomposition: exact response lives in 0.3 < |src| < 1.0, kink band
+~0.2%): exact dQ ~ 9 ~ lam_min while linearized dQ ~ 4-5 (margins
+only x2-3 even linearized). Verdict untouched.
 transport needs ||e||_oo ≲ 0.03 (measured C-threshold, 0125 sweep).
 Estimate-side repair EXHAUSTED (G1 already sharp — no further
 looseness to harvest).
