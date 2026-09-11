@@ -30,6 +30,6 @@ No PR opened. One verdict per item. Evidence pointers inline.
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
 - B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASS e9299ef1 (zero-test decisive, X1-coordination disjoint — converges with X1 B-CIRC need).
-- missing-5 M-ideas: M1 done(KILL confirmed); M3 done(KILL CONFIRMED); M2 down; M4 VOID CONFIRMED 2004c914 (tracer tautology; rescope spec banked). M-lane EXHAUSTED, drift-certified. Live: S3 exact identities → R-C → B4.
-- Failure synthesis 0143 ORDERS next: (a) M1 done(KILL) → (b) S3 exact identities → (c) R-C coercivity → (d) B4 background; floor pattern holds; NOT-next respected. Synthesis CONDITIONAL banked.
+- missing-5 M-ideas: M-lane CONCLUDED inside bare action (synthesis fold: M1/M3 KILL, M4 VOID, M2 down; reopen gate = 0147-sage 02 §3 conditions).
+- Synthesis order: (a) M1 done → (b) S3-EXACT IDENTITIES PAPER LANDED 5d89a30e (sage 0147: I-CS/I-Helicity/I-Noether2/I-Sing ESTABLISHED, I-Decouple certificate, 13 assertions exit 0; drift verdict pending) → (c) R-C → (d) B4. NOTE second number collision: 0147-beacon-rbchallenger vs 0147-sage-s3exact (flagged to shepherd).
 Recommended-shape section RETIRED until solution lands — no queued PR shape.
