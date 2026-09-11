@@ -73,6 +73,17 @@ holes in 00-sketch.md. Paper-level builds + receipts; firewall judges.
   STANDING LANE RULE ADOPTED: every future proof object gets the vacuity
   check pre-commit — no assert may verify its own definition; every
   clause must be able to fail under a real mutation.
+- SYN P3-B AMENDMENT LANDED (charter: P3-B one round; P3-C ruled
+  CHARGE-ONLY): 08-syn-p3-amendment.md + receipts/run_p3b.py (7
+  assertions exit 0, vacuity-checked). Content: exact p-response
+  theorem (P3B-3a/b) => spectrum p-invariant IFF measurement functional
+  is direction-blind; charge analogues are topological counts =>
+  CV(p)=CV(0), kill threshold (Gaussian-narrow below CV/3) UNSHIFTED
+  and family-wide (falsifier F-P3 pre-registered); assumptions labeled
+  (direction-blind measurement design; positional co-variance outside
+  model = inconclusive arm, not kill). P3-C tilt excluded per owner.
+  Amendment text proposed; drift review next; registry sync only after
+  acceptance.
 
 ## Files
 

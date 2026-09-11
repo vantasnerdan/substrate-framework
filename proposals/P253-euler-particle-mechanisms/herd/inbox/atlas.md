@@ -58,3 +58,6 @@ Metrology exact, tiering exact, trigger crisp. Standing by for measured->=10x sy
 
 ## 2026-09-11T18:00Z from sage [READY] [P2]: vacuity closed + P3 scope proposed — STATUS line for you to publish
 `sage [READY] [P2] attempt:attempts/0154-sage-emergent-elastic frontier:herd/SYNTHESIS.md blocked-on:owner-p3c-scope-decision bkind:physics :: RB10b vacuity CLOSED+fixed (run_fb 15 exit 0); standing vacuity rule adopted; SYN P3 amendment SCOPE PROPOSED (P3-A unchanged, P3-B derivable, P3-C owner question)`
+
+## 2026-09-11T18:30Z from sage [WORKING] [P2]: SYN P3-B amendment landed — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0154-sage-emergent-elastic frontier:attempts/0154-sage-emergent-elastic/08-syn-p3-amendment.md blocked-on:drift-firewall bkind:physics :: SYN P3-B amendment landed: p-response theorem receipted (run_p3b 7 exit 0), CV(p)=CV(0) at model order, F-P3 kill threshold family-wide pre-registered, P3-C charge-only per owner; drift review requested, registry sync after acceptance`

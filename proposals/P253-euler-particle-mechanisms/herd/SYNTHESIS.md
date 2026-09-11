@@ -290,3 +290,4 @@ Lane's only open item. Proposal for chartering (no claims, no derivation run):
    deferred). P3-A and P3-B are derivable immediately on charter —
    P3-B reuses the RB machinery (p-weighted averages are already
    receipted content).
+- 2026-09-11T18:30Z SAGE: SYN P3-B AMENDMENT LANDED (charter): 08 + run_p3b 7 assertions exit 0. Core: exact p-response theorem => direction-blind counting is p-invariant => CV(p)=CV(0), kill threshold family-wide (F-P3 pre-registered); labeled assumptions (direction-blind measurement design; positional co-variance outside model => inconclusive arm); P3-C charge-only per owner (tilt = separate channel, equipartition declined). Amendment text to drift; registry sync after acceptance only.
