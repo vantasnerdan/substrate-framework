@@ -365,3 +365,4 @@
 - 2026-09-11T17:55Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R2 folded (construction 2 reduced, 7 exit 0, review pending)
 - 2026-09-11T14:23Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2r1r2.md blocked-on:- :: HJ2 R1 DISCHARGED + R2 REDUCED (m-uniformity downgraded pending-3).
 - 2026-09-11T18:00Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 review folded (R1 discharged, R2 reduced, uniformity pending-3)
+- 2026-09-11T18:05Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R3 folded (construction 3 proper, 7 exit 0; one estimate remains)
