@@ -30,6 +30,6 @@ No PR opened. One verdict per item. Evidence pointers inline.
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
 - B4 C1 building (first-ranked background candidate; shepherd-declared track).
-- missing-5 idea lane OPEN (dynamics debt from SYN capstone; call open).
+- missing-5 idea lane FILLED 0136 (beacon 4109f454): M1 interaction-energy dynamics (0069 E_12 made dynamical), M2 scattering-law charge (0071 sign made dynamical), M3 recoil reciprocity (0067 template as observable), M4 precession scaling (Larmor analogy, type-guarded); falsifiers + dead-checks + cheapest-first order. M1–M3 converge with 0129 archaeology finds.
 - Synthesis CONDITIONAL banked (stages in-branch; builds wait).
 Recommended-shape section RETIRED until solution lands — no queued PR shape.
