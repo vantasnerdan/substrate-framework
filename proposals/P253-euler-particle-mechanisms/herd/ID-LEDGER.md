@@ -8,7 +8,7 @@ and append your claim row. Never reuse a bound number for a new object —
 that is the collision this prevents. Citation stays collision-proof via
 full paths regardless.
 
-HIGH-WATER: 0159 (next free: 0160).
+HIGH-WATER: 0160 (next free: 0161).
   COLLISION RESOLVED per shepherd ruling (no rename — rename churn is the
   disease): 0155 stays the chart; sketch takes 0157 (0156 = beacon F3 build).
   Ledger ACCEPTED as herd standard.
@@ -20,6 +20,7 @@ HIGH-WATER: 0159 (next free: 0160).
 - 0156 → beacon F3 build (F3 HOLDS d43a371e). First claim: beacon.
 - 0158 → beacon B1-leg supply for cipher L-ladder (Φ table on deformed loops; cipher adjudicates). First claim: beacon.
 - 0159 → sage HJ2 round 1 (Route A, Obl A, even/poly scope; run_hj2a 10 exit 0). First claim: sage 27ab191c.
+- 0160 → atlas Casimir functional + discretization (climb 0155 wall; serves R-B coercivity + R-C C2). First claim: atlas, shepherd sequencing charter 2026-09-11.
 - Standing shared-lane numbers (pre-ledger convention, grandfathered):
   0108 herd-resume (atlas-comms, beacon-sources, cipher-radical,
   drift-critique); 0111, 0113, 0120, 0129 (per-agent suffix dirs, same lane).
