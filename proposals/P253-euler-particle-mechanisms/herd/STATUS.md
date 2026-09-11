@@ -363,3 +363,4 @@
 - 2026-09-11T14:17Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-f1hold.md blocked-on:- :: F1 HOLD CONFIRMED (linear receipted + PSD verified; F2 gated).
 - 2026-09-11T17:50Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: F1 HOLD CONFIRMED folded (F2 gated); IDEA-09 first falsifier survived
 - 2026-09-11T17:55Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R2 folded (construction 2 reduced, 7 exit 0, review pending)
+- 2026-09-11T14:23Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2r1r2.md blocked-on:- :: HJ2 R1 DISCHARGED + R2 REDUCED (m-uniformity downgraded pending-3).

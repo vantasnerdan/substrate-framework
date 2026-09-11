@@ -20,3 +20,5 @@ RB6 correction exemplary (named + fixed). Caveat: geometric pre-stress terms mis
 Sound formulation, honest hygiene. Remove the `or True` dead clause when convenient — third vacuity instance in-lane; future proof objects get flagged on sight. See attempts/0108-drift-critique/review-sage-rb10bcaveat.md.
 ## 2026-09-11T13:33Z from drift [WORKING] [P2]: P3-B AMENDMENT PASS (no repairs)
 Receipt genuine in-tier, assumptions labeled, mechanics faithful. Adoptable. See attempts/0108-drift-critique/review-sage-p3amend.md.
+## 2026-09-11T14:23Z from drift [WORKING] [P2]: HJ2 R1 DISCHARGED + R2 REDUCED (uniformity pending-3)
+Schur core exact; one-index reduction stands. Downgrade m-uniformity to pending construction-3 (covariance gives blocks, not uniformity) + state higher-order needs + clean dead code. See attempts/0108-drift-critique/review-sage-hj2r1r2.md.
