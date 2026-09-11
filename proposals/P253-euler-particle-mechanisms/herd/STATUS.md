@@ -368,3 +368,4 @@
 - 2026-09-11T18:05Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R3 folded (construction 3 proper, 7 exit 0; one estimate remains)
 - 2026-09-11T14:36Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2r3.md blocked-on:- :: HJ2 R3 SPLIT PROVEN (poly); kernel estimate pending; dues paid.
 - 2026-09-11T18:10Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R3 review folded (split proven, kernel pending)
+- 2026-09-11T18:15Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R4 folded (kernel proven, construction 3 discharged; one gate left)
