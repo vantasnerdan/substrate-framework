@@ -146,9 +146,13 @@ check("identity", "RD4-4 compression bound exact: isotropic "
 
 # ---------------------------------------------------------------
 # RD4-5 (identity — static consistency + p-chain)
-w2_eps0 = (Kn*kk**2)/In
-check("identity", "RD4-5 static consistency + p-chain: at eps = 0 "
-      "omega^2 = Kn k^2 / In, Kn = 64 pi K p^2 xi^2 >= 0 on "
+w2_eps0 = w2m.subs({eperp: 0, epar: 0})  # zero strain into the
+# ACTUAL window object (drift R2 105/a0a411e3 — was defined-then-
+# asserted); the reduction rides the RD4-1 margin identity
+check("identity", "RD4-5 static consistency + p-chain: ZERO STRAIN "
+      "substituted into the ACTUAL omega^2_- window object reduces "
+      "it to Kn k^2 / In exactly (via the structural margin "
+      "khMk + 5 with khMk = 0), Kn = 64 pi K p^2 xi^2 >= 0 on "
       "p in (0, 1) with equality ONLY at p = 0 (no waves "
       "unpolarized — MB-D1-2 echo; Kn(1/2) strictly positive); "
       "W_coup = 0 at zero gradient (D2 RD2-5) — the dynamical "

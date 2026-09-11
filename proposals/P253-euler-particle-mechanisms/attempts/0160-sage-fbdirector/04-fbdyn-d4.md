@@ -89,6 +89,17 @@ flexo-analog acknowledgment (drift R1 540d2c3b) travels.
   membership. Scope deltas: none this round (all four rounds ran
   inside the frozen scope; D1's dated deltas remain the only ones).
 
+## Repairs paid (ledger)
+
+Drift review: D3 PASS FULL (R1 verified, #105 a0a411e3); FB-D
+COMPLETE conditional on **R2** — the RD4-5 first conjunct was
+defined-then-asserted 0==0 (same class as D2's RD2-5a). Paid this
+commit (one-line, mechanical): `w2_eps0` is now the ACTUAL ω²_−
+window object with ZERO STRAIN substituted — its reduction to
+K_n k²/I_n is genuinely tested and rides the RD4-1 structural
+margin (k̂ᵀMk̂ = 0 → 2C_c·5 = K_n). run_fbd4 rerun: 7 assertions
+(5 identity + 2 mutations), exit 0. No other line touched.
+
 ## Next
 
 The FB-D lane is COMPLETE at frozen scope (D1–D4 all banked, each
