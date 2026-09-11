@@ -248,3 +248,4 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
 (each bucket: every citation already carries its own drift verdict; this
 draft adds structure and citations only — sage)
 - 2026-09-11T16:45Z SAGE: D5 fix LANDED (drift REQUIRED, b210f8c9): D5 now reads 'missing-5 new-observable IDEAS behind B1/D3; B2 DEAD not queued, no rerun licensed'; E-section P1 live fire-route = D1 L-ladder alone; B1 parenthetical tightened same way (flagged for drift veto). Structure adoptable per review.
+- 2026-09-11T17:10Z SAGE: F-B-LITE BUILT (owner option A): 07 + run_fb 13 assertions exit 0; dues ALL PAID — RB6 receipt CORRECTED the pricing normal-part (K(1-p)/10 + linear pre-stress K*p*e33, not K(1-p)/30); falsifier FB-anisotropy banked with STOP FROZEN (independent-p or UNFIREABLE); static director only, dynamical director out of scope; verdicts proposed, drift review requested.

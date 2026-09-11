@@ -51,6 +51,15 @@ holes in 00-sketch.md. Paper-level builds + receipts; firewall judges.
 - F-B pricing VERIFIED: drift PRICING PASS (91c929c9); receipt-round
   dues (C12=C13 extraction, pricing-6 print, normal-part line)
   REGISTERED in 06 section 6 — fall due with any F-B build round.
+- F-B-LITE BUILT (owner option A chartered): 07-fb-lite-build.md +
+  receipts/run_fb.py + run_fb.log (13 assertions exit 0). ALL THREE
+  registered dues PAID (RB3 C12=C13; RB7 print repair; RB6 normal part
+  — which CORRECTED the pricing value to K(1-p)/10*sum(e_i^2) + linear
+  pre-stress K*p*e33, 06 corrected inline). Static director ONLY
+  (dynamical director = separate priced lane). Falsifier
+  FB-anisotropy (3p+2)/(2(1-p)) banked with STOP FROZEN pre-compute.
+  Verdicts PROPOSED, drift review requested. F-B-lite licenses
+  component-level statements ONLY; SYN P3 amendment owed.
 
 ## Files
 

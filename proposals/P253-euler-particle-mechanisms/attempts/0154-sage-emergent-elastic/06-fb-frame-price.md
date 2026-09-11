@@ -45,7 +45,10 @@ symbolic):
   factored in scratch). No internal instability kill at dipole-statistics
   order; the window CLOSES at p = 1: μ⊥ = 0 — a degeneracy (sliding mode
   of perfectly aligned filaments), not a negative mode.
-- Normal part: normal = K(1−p)/30 on traceless strains (all p).
+- Normal part: CORRECTED by receipt RB6 (07 build round; drift due-3):
+  the original "K(1−p)/30" was WRONG — the receipted decomposition on
+  traceless-diagonal strains is linear pre-stress K·p·e₃₃ + quadratic
+  K(1−p)/10·(e₁₁²+e₂₂²+e₃₃²). See 07 §RB6.
 So P2 ≈ ONE receipt round (anisotropic R1a–c analog + 2nd-variation +
 objectivity-covariance check + wrong-4th-moment mutation), reusing the
 F-A machinery wholesale. The interesting physics (anisotropy ratio, p→1

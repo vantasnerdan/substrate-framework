@@ -72,6 +72,11 @@ t = sp.Symbol('tau', real=True)
 for mode, sub in [("mu_perp (e12)", e12), ("mu_par (e13)", e13)]:
     muq = sp.simplify(sp.expand(W_of(eps.subs(sub, t), ez, p)).coeff(t, 2))
     print(f"[pricing 5] 2*{mode}(p) = {sp.factor(muq)}")
-print("[pricing 6] p=1 degeneracy: mu_perp -> 0 (sliding mode);",
-      "normal part -> 0; mu_par = 3K/10*... ",
-      sp.simplify(K*sp.Rational(3, 10)) == sp.Rational(3, 10)*K)
+# REPAIRED (due-2, drift review-sage-fbpricing; F-B-lite round): state
+# mu_par(1) = K/4 with a REAL assert against pricing-5's own formula,
+# replacing the truncated print + tautological assert.
+mu_par_formula = sp.factor(sp.simplify(
+    sp.expand(W_of(eps.subs(e13, t), ez, p)).coeff(t, 2))) / 2
+print("[pricing 6] p=1 degeneracy: mu_perp -> 0 (sliding mode);")
+print("[pricing 6] mu_par(p=1) == K/4:",
+      sp.simplify(mu_par_formula.subs(p, 1) - K / 4) == 0)

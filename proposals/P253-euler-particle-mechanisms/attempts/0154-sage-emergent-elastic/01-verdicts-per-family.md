@@ -40,11 +40,19 @@ labeled LANE-*.
 - **F-C ring crystal**: not built in this charter round; verdict paths
   identical in form to F-A plus the tilt-sector inheritance (FB-4
   substantive). No F-C claim of any kind before its own build.
-- **F-B polarized tangle**: HELD for the owner frame-price call. No
-  computation, no verdict, no text beyond this row. (Amendment note,
-  2026-09-11: shepherd-tasked frame-price ANALYSIS drafted at
-  0154/06-fb-frame-price.md + exploratory scratch; no F-B claim, verdict
-  or receipt created; owner call stands.)
+- **F-B polarized tangle (F-B-LITE, static director)**: owner option A
+  CHARTERED (pricing 150c795d PASS); build LANDED — 0154/07-fb-lite-
+  build.md + receipts/run_fb.py (13 assertions exit 0; registered dues
+  paid: C12=C13 extraction RB3, pricing-6 repair RB7+scratch, normal
+  part RB6 which CORRECTED the pricing value). Proposed verdicts pending
+  drift: FB-1 formula-half ESTABLISHED at model order (p-window explicit;
+  p=1 sliding degeneracy), window-half PRICED; FB-2 ESTABLISHED (joint
+  covariance + load-bearing mutation); FB-4 achirality DECLARED (re-
+  verdict clause standing); FB-5 direction dispersion RECEIPTED; FB-6
+  HOLD travels. Falsifier FB-anisotropy (3p+2)/(2(1-p)) pre-registered,
+  STOP FROZEN: fireable only with independently-measured p, else
+  UNFIREABLE-declared. Scope fence: dynamical director = separate priced
+  lane, NOT built; SYN P3 amendment owed before any mixed lane claim.
 
 ## Lane-level statements (explicit conjunctions only)
 
