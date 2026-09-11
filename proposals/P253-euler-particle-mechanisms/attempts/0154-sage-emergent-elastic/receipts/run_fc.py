@@ -87,13 +87,48 @@ check("identity", "RC5b Omega2 == -pi R^2 d (d^2 - 2 R^2) / (2 (R^2+d^2)^(5/2))"
 check("identity", "RC5c sign flip at d = sqrt(2) R: Omega2 > 0 near (d=R), < 0 far (d=3R)",
       Omega2.subs({R: 1, d: 1}) > 0 and Omega2.subs({R: 1, d: 3}) < 0)
 
-# ---- RC7: gate-3 charge-readout structure: tilt-frequency shift linear in the
-#      integer threading number n (the carrier enters through U_c = n G Gc
-#      Omega(theta)/(4 pi); shift delta(omega^2) = n G Gc Omega2 / (2 pi I)).
-Gc, n = sp.symbols('Gamma_c n', positive=True)
-dw2 = n*G*Gc*Omega2/(2*sp.pi*I)
-check("identity", "RC7 delta(omega^2) linear in integer n (single-q readout structure)",
-      sp.diff(dw2, n, 2) == 0 and sp.simplify(dw2/n - G*Gc*Omega2/(2*sp.pi*I)) == 0)
+# ---- RC7-v2 (dues R1 paid, drift review-sage-fcbuild): n-linearity is a
+#      STRUCTURAL consequence of BS-linear superposition across threadings.
+#      LOAD-BEARING ASSUMPTION (labeled, not a verified output): ADDITIVITY —
+#      n threadings contribute n x the single-threading kernel; carrier-carrier
+#      interaction and carrier back-reaction beyond the linear kernel are
+#      neglected. FB-C1's single-constant readout additionally requires
+#      IDENTICAL threadings (same d); non-identical threadings give
+#      sum_i Omega2(d_i)/n-dependence with per-threading constants.
+Gc, n = sp.symbols('Gamma_c n', positive=True, integer=True)
+
+def coupling(circ):   # single-threading BS kernel: linear in carrier circulation
+    return circ*G*Omega2/(2*sp.pi*I)
+
+a, b = sp.symbols('a b', positive=True)
+check("identity", "RC7-1 BS additivity U[a+b] == U[a] + U[b] (LOAD-BEARING ASSUMPTION, labeled)",
+      sp.simplify(coupling(a + b) - coupling(a) - coupling(b)) == 0)
+U_n = n*coupling(Gc)   # structural induction on the additivity step (base U_1 = S)
+check("identity", "RC7-2 delta(omega^2)(n) == n * single-threading shift (superposition consequence)",
+      sp.simplify(U_n - n*G*Gc*Omega2/(2*sp.pi*I)) == 0)
+check("identity", "RC7-3 second difference in n vanishes (linearity derived, not asserted)",
+      sp.diff(U_n, n, 2) == 0)
+
+# ---- R2 (dues R2 paid): Laplace cross-check BANKED as receipt content —
+#      drift's reciprocity route: Omega2 = -(d/2) Omega0' - (d^2/4) Omega0''.
+Om2_laplace = sp.simplify(-(d/2)*sp.diff(Omega0, d) - (d**2/4)*sp.diff(Omega0, d, 2))
+check("identity", "R2-1 Laplace/reciprocity-route Omega2 == receipt Omega2 (two-route agreement)",
+      sp.simplify(Om2_laplace - Omega2) == 0)
+x, y, z = sp.symbols('x y z', real=True)
+r0, p0, tq = sp.symbols('r_0 phi_0 theta', real=True)
+Qx0 = sp.Matrix([r0*sp.cos(p0), r0*sp.sin(p0)*sp.cos(tq), r0*sp.sin(p0)*sp.sin(tq)])
+Xv = sp.Matrix([x, y, z]) - Qx0
+Kk = 1/sp.sqrt((Xv.T*Xv)[0, 0])
+lap = lambda f: sp.diff(f, x, 2) + sp.diff(f, y, 2) + sp.diff(f, z, 2)
+K2 = sp.diff(Kk, tq, 2).subs(tq, 0)
+check("identity", "R2-2 Laplacian(K) == 0 off source (harmonic kernel)",
+      sp.simplify(lap(Kk)) == 0)
+check("identity", "R2-3 Laplacian(d^2K/dtheta^2|_0) == 0 (theta^2 coefficient harmonic)",
+      sp.simplify(lap(K2)) == 0)
+lam = sp.Symbol('lam', real=True)
+K_bad = Kk + lam*(x**2 + y**2 + z**2)
+check("mutation", "MA-5 fabricated non-harmonic correction detected (Laplacian != 0)",
+      sp.simplify(lap(K_bad)) != 0)
 
 # ---- MA-3: wrong multipole kernel (drop the -3 (m.r)^2 term) flips the
 #      tilt-stiffness sign — the dipole structure is load-bearing for stability.

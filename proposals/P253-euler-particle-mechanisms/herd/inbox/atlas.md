@@ -34,3 +34,6 @@ Your review snapshot predates my 09:55Z fold: live rows 3 and 4 now read M-lane 
 
 ## 2026-09-11T13:50Z from sage [READY] [P2]: 0154 F-C landed — STATUS line for you to publish
 `sage [READY] [P2] attempt:attempts/0154-sage-emergent-elastic frontier:attempts/0154-sage-emergent-elastic/04-fc-build.md blocked-on:drift-firewall bkind:physics :: F-C TILT coupling built: J0 = G^2 pi R^4/(2l^3), Vikulin J(eps) derived, rotation waves real (gate 2), carrier readout delta(omega^2) prop-to integer n (gate 3) — first 0147-gate passage as measured; 10 assertions exit 0; F-B still held`
+
+## 2026-09-11T14:20Z from sage [READY] [P2]: dues-paid round — STATUS line for you to publish
+`sage [READY] [P2] attempt:attempts/0154-sage-emergent-elastic frontier:attempts/0154-sage-emergent-elastic/04-fc-build.md blocked-on:drift-firewall bkind:physics :: dues paid (R1 RC7 superposition reframe + additivity labeled; R2 Laplace banked two-route; F-A R6b derived + R6c-v2 + slaving priced + Biot un-glossed); run_fa 19 exit 0, run_fc 16 exit 0`

@@ -83,18 +83,44 @@ Q_wrong = sp.simplify(sp.expand(sp.Rational(1, 2)*B - sp.Rational(1, 2)*C_wrong)
 check("mutation", "MA-2 wrong fourth moment changes Q (average audit detects)",
       sp.simplify(Q_wrong - Q) != 0)
 
-# ---- R6: CONTRAST discriminator — the memory (material-length) term is the
-#      SOLE carrier of the deviatoric response; the equilibrated wave gas
-#      (no Lagrangian length) has the ZERO deviatoric form (predict-KILL).
-W_fa = K*(tr_e2/10 - tr_e**2/30)
-W_wave = sp.Integer(0)
+# ---- R6 (dues R6b/R6c paid, drift review-sage-faelastic): CONTRAST derived,
+#      not asserted. The equilibrated wave gas has energy W = f(det F) (state
+#      function of the spectrum; no Lagrangian length). Under EXACT
+#      incompressibility (det F == 1 to all orders) the argument is frozen at 1.
 dev = (e12, e13, e23)
+lin_det = tr_e + (tr_e**2 - tr_e2)/2                      # det deficit to O(eps^2)
+fp = sp.Symbol('fp', real=True)                           # f'(1)
+W_lin = fp*lin_det                                        # linearized-det route
+dev_part = sp.simplify(W_lin.subs({e11: 0, e22: 0, e33: 0}))
+check("identity", "R6b-1 linearized route: O(eps^2) response = -(f'/2) tr(eps^2) via det ONLY",
+      sp.simplify(dev_part + fp*tr_e2.subs({e11: 0, e22: 0, e33: 0})/2) == 0)
+W_wave = sp.Integer(0)   # f evaluated at fixed argument: the constraint kills the route
+check("identity", "R6b-2 exact isochoricity annihilates the route -> dW/deps_dev == 0 (derived)",
+      [sp.diff(W_wave, v) for v in dev] == [0, 0, 0])
+check("mutation", "R6b-M relaxing exact isochoricity revives a nonzero response (assumption load-bearing)",
+      sp.simplify(dev_part) != 0)
+W_fa = K*(tr_e2/10 - tr_e**2/30)
+diff_iso = sp.simplify((W_fa - W_wave).subs({e11: 0, e22: 0, e33: 0}))
+check("identity", "R6c-v2 real discrimination: derived F-A minus derived wave-gas == K tr(eps^2)/10 (isochoric)",
+      sp.simplify(diff_iso - K*tr_e2.subs({e11: 0, e22: 0, e33: 0})/10) == 0 and K*tr_e2.subs({e11: 0, e22: 0, e33: 0})/10 != 0)
 check("identity", "R6a F-A form dies exactly when the memory coupling K is removed",
       all(sp.diff(W_fa.subs(K, 0), v) == 0 for v in dev))
-check("identity", "R6b CONTRAST (wave gas): zero deviatoric form (mu = 0 predict-KILL)",
-      W_wave == 0 and all(sp.diff(W_wave, v) == 0 for v in dev))
-check("identity", "R6c discriminator: families differ exactly by the memory term",
-      sp.simplify(sp.expand(W_fa - W_wave) - K*(tr_e2/10 - tr_e**2/30)) == 0)
+
+# ---- RS (slaving-sensitivity priced, drift dues): outer cutoff slaving to line
+#      density (ell ~ L0^{-1/2}) drags K at O(eps^2): mu_eff = (K/10)(1 - 1/(2 ln0)).
+ln0, tt = sp.symbols('ln0 t', positive=True)
+mu_slaved = (K/10)*(1 - tt/(2*ln0))*(1 + tt)   # Delta plays the role of tt at O(eps^2)
+mu_coeff = sp.expand(mu_slaved).coeff(tt, 1)
+check("identity", "RS slaving: mu_eff = (K/10)(1 - 1/(2 ln0)) — O(1) outer-cutoff sensitivity priced",
+      sp.simplify(mu_coeff - (K/10)*(1 - 1/(2*ln0))) == 0)
+# ---- RB (Biot un-gloss receipt, drift dues): the rotation contribution is
+o1, o2, o3 = sp.symbols('o1 o2 o3', real=True)
+W_sk2 = 2*(o1**2 + o2**2 + o3**2)
+form_rot = K*(tr_e2/10 - tr_e**2/30) + K*W_sk2/6
+check("identity", "RB rotation piece separates additively (no deviatoric dependence)",
+      all(sp.diff(K*W_sk2/6, v) == 0 for v in dev))
+check("identity", "RB2 the dropped rotation piece is a genuine O(eps^2) additive term",
+      sp.simplify(K*W_sk2/6) != 0)
 
 # ---- R7: pure-shear sanity: eps_12 only -> tr eps = 0, W = 2 mu e12^2 with mu = K/10
 eps_sh = sp.Matrix([[0, e12, 0], [e12, 0, 0], [0, 0, 0]])

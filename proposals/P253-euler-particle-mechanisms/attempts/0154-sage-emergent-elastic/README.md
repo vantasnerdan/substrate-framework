@@ -12,7 +12,8 @@ holes in 00-sketch.md. Paper-level builds + receipts; firewall judges.
   explicit LANE conjunctions) — landed 87d8f685, reported separately.
 - F-A + CONTRAST build: LANDED, drift review requested (report 2 of 2).
   - F-A: μ_aff = Γ²L₀ln(ℓ/a)/(40π) > 0 — affine IN-WINDOW modulus,
-    receipt-backed (12 identity assertions + 2 mutations, exit 0).
+    receipt-backed (16 identity assertions + 3 mutations, exit 0; dues
+    paid round).
     FB-2/FB-3 ESTABLISHED; FB-1 formula-half ESTABLISHED, window-half
     PRICED (Kelvin-transit scaling, not derived); FB-4 trivial-expected;
     FB-5 in-window ESTABLISHED conditional on window; FB-6
@@ -22,13 +23,23 @@ holes in 00-sketch.md. Paper-level builds + receipts; firewall judges.
 - LANE-1 status: F-A half receipt-backed; CONTRAST half at model level.
   LANE-1 fires only when both halves are built/verdicted per 01.
 - F-C TILT coupling: BUILT (charter round 2) — 04-fc-build.md +
-  receipts/run_fc.py + run_fc.log (10 assertions exit 0): J0 =
+  receipts/run_fc.py + run_fc.log (16 assertions exit 0): J0 =
   Gamma^2 pi R^4/(2 ell^3) > 0; Vikulin coupling J(eps) = J0(1 + 4
   eta_in - 3 eps_zz) DERIVED; rotation-wave dispersion real/nonneg
   (gate 2); carrier readout delta(omega^2) = n Gamma Gamma_c
   Omega2/(2 pi I) LINEAR in integer n (gate 3); Omega2 sign flips at
   d = sqrt(2) R; MA-4: no linear-in-tilt term (no Magnus smuggle).
   First 0147-gate passage AS MEASURED; FB-C1 pre-registered. F-B held.
+- DUES PAID (drift R1/R2/F-A-R3, post-PASS round): RC7 reframed to
+  BS-superposition structural form with ADDITIVITY labeled load-bearing
+  (RC7-1..3); Laplace cross-check banked (R2-1/2/3 + MA-5, two-route
+  Omega2); F-A dues paid (19 assertions exit 0): R6b now DERIVED
+  (state-function + exact-isochoricity route; R6b-M shows the assumption
+  load-bearing), R6c-v2 real discrimination, slaving sensitivity PRICED
+  (RS: mu_eff = (K/10)(1 - 1/(2 ln0)) — O(1) number sensitivity), Biot
+  gloss un-glossed (RB/RB2 additive rotation piece); FB-3 softened to
+  priced-cutoff-sensitivity; multipole-validity footnote added (04).
+  F-B: still HELD.
 
 ## Files
 

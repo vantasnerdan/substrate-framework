@@ -3,7 +3,8 @@
 Charter: shepherd 0154 F-A (0153-adjacent shear work is a different
 surface: imposed background ON the carrier; this derives the medium FROM
 the family). Verdict vocabulary per 01-verdicts-per-family.md. Receipts:
-receipts/run_fa.py + run.log (14 assertions, self-counted, exit 0).
+receipts/run_fa.py + run.log (19 assertions, self-counted, exit 0; F-A
+dues paid — see FB-1b, FB-3, CONTRAST below).
 
 ## Model assumptions (stated, all model-level)
 
@@ -24,8 +25,14 @@ receipts/run_fa.py + run.log (14 assertions, self-counted, exit 0).
 ## Derivation
 
 Material line elements stretch by |Fn|; with F = RU (polar), |Fn| = |Un|
-— objectivity automatic; U = (I + 2ε)^{1/2} with ε = sym(displacement
-gradient) to O(ε). Expansion:
+— objectivity automatic. STRAIN IDENTIFICATION (Biot, un-glossed per
+drift dues): the expansion is exact in the rotation-free Biot strain
+ε_B = U − I; to the certified order ε_B = sym(F − I) + O(ε²)-rotation
+corrections (a |W|²_F/6-class piece), which enter |Fn| only additively —
+receipts RB/RB2 verify the rotation piece separates with no deviatoric
+strain dependence, so the deviatoric coefficients below are unaffected
+and the form works purely in symmetric-ε space (R4 conjugation). With
+that identification, expansion:
 
   |Fn| = 1 + n·εn + ½[n·ε²n − (n·εn)²] + O(ε³).
 
@@ -58,9 +65,17 @@ dependence — mutation MA-1 detects the error); average audit MA-2
   derived. FB-1 verdict PENDING window; no static μ(0) claim.
 - FB-2 objectivity: ESTABLISHED (R4, R5).
 - FB-3 bookkeeping: ESTABLISHED at the stated order — expansion exact
-  through O(ε²) with explicit O(ε³) remainder; log-argument drift
-  ℓ(ε)/ℓ absorbed as an O(ε²) constant into K (stated convention, no
-  unaccounted sink).
+  through O(ε²) with explicit O(ε³) remainder; SOFTENED per drift dues:
+  the O(ε²) log-argument drift is NOT a silent constant — it is a PRICED
+  cutoff-slaving sensitivity (next bullet). No unaccounted sink beyond
+  that priced channel.
+- FB-1b cutoff-slaving sensitivity (PRICED, drift dues): if the outer
+  cutoff slaves to line density (ℓ ~ L₀^{−1/2}), K drifts at O(ε²) WITH
+  the stretch and feeds the quadratic form at O(1)-relative: receipt RS
+  gives μ_eff = (K/10)(1 − 1/(2·ln₀)) — same order, same sign, number
+  moves by an O(1) factor (~2× for ln₀ ≈ 1). μ's SIGN and FORM are
+  robust under either slaving; μ's NUMBER carries O(1) outer-cutoff
+  sensitivity — stated as the priced caveat it is.
 - FB-4 inheritance (gate 1): trivially expected for F-A — ⟨H⟩_bg = 0 as
   an ensemble property of the isotropic family (cited model property,
   the S4 pilot's own statistics); elastic waves of the medium carry no
@@ -77,4 +92,12 @@ dependence — mutation MA-1 detects the error); average audit MA-2
 
 The F-A half of LANE-1 (μ > 0 in-window) is now receipt-backed at
 paper level. LANE-1 fires only with the CONTRAST half (03) — neither
-half alone licenses anything (01).
+half alone licenses anything (01). CONTRAST receipt REPAIRED per drift
+dues (R6b was vacuous-as-coded): the wave-gas zero is now DERIVED —
+W_wave = f(det F) with the EXACT incompressibility constraint det F ≡ 1
+freezing the state-function argument (R6b-1: the only O(ε²) route is the
+det-deficit, worth −(f′/2)·tr(ε²); R6b-2: the constraint annihilates it;
+R6b-M: relaxing the constraint revives the response — the assumption is
+load-bearing and labeled); R6c-v2 compares the two DERIVED forms
+(difference = the memory term on isochoric strains — real discrimination,
+not internal consistency).

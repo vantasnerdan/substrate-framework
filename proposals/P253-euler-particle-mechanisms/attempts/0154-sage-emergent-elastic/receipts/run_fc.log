@@ -5,7 +5,13 @@
 [PASS] [identity #5] RC5a Omega(0) == 2 pi (1 - d/sqrt(R^2+d^2)) (classical)
 [PASS] [identity #6] RC5b Omega2 == -pi R^2 d (d^2 - 2 R^2) / (2 (R^2+d^2)^(5/2))
 [PASS] [identity #7] RC5c sign flip at d = sqrt(2) R: Omega2 > 0 near (d=R), < 0 far (d=3R)
-[PASS] [identity #8] RC7 delta(omega^2) linear in integer n (single-q readout structure)
-[PASS] [mutation #1] MA-3 wrong kernel halves-and-flips the tilt stiffness (stability detected)
-[PASS] [mutation #2] MA-4 Omega(theta) has no linear term (no smuggled force template)
-ALL F-C RECEIPTS GREEN: 8 identity-assertions + 2 mutations = 10 assertions (self-counted).
+[PASS] [identity #8] RC7-1 BS additivity U[a+b] == U[a] + U[b] (LOAD-BEARING ASSUMPTION, labeled)
+[PASS] [identity #9] RC7-2 delta(omega^2)(n) == n * single-threading shift (superposition consequence)
+[PASS] [identity #10] RC7-3 second difference in n vanishes (linearity derived, not asserted)
+[PASS] [identity #11] R2-1 Laplace/reciprocity-route Omega2 == receipt Omega2 (two-route agreement)
+[PASS] [identity #12] R2-2 Laplacian(K) == 0 off source (harmonic kernel)
+[PASS] [identity #13] R2-3 Laplacian(d^2K/dtheta^2|_0) == 0 (theta^2 coefficient harmonic)
+[PASS] [mutation #1] MA-5 fabricated non-harmonic correction detected (Laplacian != 0)
+[PASS] [mutation #2] MA-3 wrong kernel halves-and-flips the tilt stiffness (stability detected)
+[PASS] [mutation #3] MA-4 Omega(theta) has no linear term (no smuggled force template)
+ALL F-C RECEIPTS GREEN: 13 identity-assertions + 3 mutations = 16 assertions (self-counted).
