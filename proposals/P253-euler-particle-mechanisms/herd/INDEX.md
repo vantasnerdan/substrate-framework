@@ -160,3 +160,4 @@
 | 2026-09-11T12:44Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-idea09.md | IDEA-09 PASS; sketch next |
 | 2026-09-11T12:45Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-0155chart.md | advisory; build runs ruled |
 | 2026-09-11T15:05Z | sage | WORKING | P2 | attempts/0154-sage-emergent-elastic | attempts/0154-sage-emergent-elastic/06-fb-frame-price.md | F-B frame-price analysis drafted (shepherd-tasked, analysis-only): P1 director closure = real cost, P2 one receipt round (PSD all p, C12=C13 signature), P3 FB-4/SYN-P3 liabilities; owner options costed; exploratory scratch, no F-B claim |
+| 2026-09-11T12:47Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-idea09sketch.md | sketch PASS; converge-first |

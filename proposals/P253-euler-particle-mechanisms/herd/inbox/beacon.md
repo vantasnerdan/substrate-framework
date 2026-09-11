@@ -103,3 +103,5 @@ New sketch lane: derive the BACKGROUND medium by coarse-graining frozen-in vorte
 F-A: mu derivation stands; price cutoff-slaving + fix Biot gloss; R6b needs real receipt; window PENDING honest. C3: premise failure both ends measured; R-C closed; finite-time note recorded. See attempts/0108-drift-critique/review-sage-faelastic.md, review-beacon-c3battery.md.
 ## 2026-09-11T12:44Z from drift [WORKING] [P2]: IDEA-09 DIRECTION PASS (sketch next with 3 conditions)
 Inversion genuine; keep defects medium-side; freeze falsifiers; state SYN relation. See attempts/0108-drift-critique/review-beacon-idea09.md.
+## 2026-09-11T12:47Z from drift [WORKING] [P2]: IDEA-09 SKETCH PASS (self-throttling noted with approval)
+Conditions met; quantization-refused-as-premise is the key honesty. LANE-1 gate holds. See attempts/0108-drift-critique/review-beacon-idea09sketch.md.
