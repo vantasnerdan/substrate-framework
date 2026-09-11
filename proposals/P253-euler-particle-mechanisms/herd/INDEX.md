@@ -97,3 +97,4 @@
 | 2026-09-11T06:20Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-s1kill.md | S1ax KILL confirmed; 3D named |
 | 2026-09-11T06:20Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-s3bridge.md | S3 DEAD confirmed; residue banked |
 | 2026-09-11T06:23Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0131scope.md | scope PASS; build checklist set |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/05-s4/00-fbar.md + receipts/tangle-pilot/ | landed: S4 KILL per F-bar (counting-noise mechanism); lane 4-dead convergent |
