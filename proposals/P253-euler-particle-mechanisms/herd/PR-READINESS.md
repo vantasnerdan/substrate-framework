@@ -30,7 +30,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
 - B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASSed, then BUILT + DEAD-no-bundle (X1 extends); S4b BUILT + KILLED 53c97445 (order suppresses linking; G1 breaker CLOSED).
-- 0154 emergent-elasticity BUILT 38512dbb (F-A: mu_aff = Γ²L₀ln(ℓ/a)/(40π) affine in-window, 14 assertions exit 0; CONTRAST discriminator armed; drift verdict pending): first extension candidate through the certificate, now under test.
+- 0154 emergent-elasticity CHARTERED + BUILT (F-A: mu_aff affine in-window, 14 assertions exit 0; CONTRAST armed; drift verdict pending): first extension candidate through the certificate, under test.
 - missing-5 M-ideas: M-lane CONCLUDED inside bare action (synthesis fold: M1/M3 KILL, M4 VOID, M2 down; reopen gate = 0147-sage 02 §3 conditions).
 - Synthesis order: (a) M1 done → (b) S3-EXACT PASS + dues → (c) R-C CONFIRMED + C3 shear battery DESIGNED 0153 (frozen pre-compute, banked parts, M4-genus flag travels) → (d) B4 background live.
 Recommended-shape section RETIRED until solution lands — no queued PR shape.
