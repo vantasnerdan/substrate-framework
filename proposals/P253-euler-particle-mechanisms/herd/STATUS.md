@@ -391,3 +391,4 @@
 - 2026-09-11T15:25Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2link.md blocked-on:- :: HJ2 link NOT CLOSED (JH-inference invalid; HJA-6 line missing).
 - 2026-09-11T19:20Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: LINK NOT-CLOSED folded (HJA-6 line missing; prior closure claim corrected)
 - 2026-09-11T19:25Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: LINK REPAIR folded (H_m line, bounds summable, 11 exit 0; review pending)
+- 2026-09-11T15:33Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2linkfix.md blocked-on:- :: HJ2 link CLOSED (HJA-6 line + bound + sum green); L-1 label fix rides.
