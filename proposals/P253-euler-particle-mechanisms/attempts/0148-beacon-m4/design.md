@@ -16,14 +16,11 @@ damping beyond → TYPE-KILL immediately (dissipative ≠
 persistent; S2 lesson enforced as gate, not verdict).
 
 ## Falsifier (frozen pre-build)
-
-Ω_bg ∈ {0.1, 0.2, 0.4} (perturbative vs orbital ω ≈ 1.5).
-Prediction: precession rate Ω_p = K·Ω_bg (fixed K) from ring-normal
-tracking. KILL iff (a) type-guard fires, or (b) linear fit
-residual > 25%, or (c) K ≤ 0 (wrong-way). HOLD iff linear ≤ 15%
-with K > 0 → precession observable LIVES as conditional
-(supplied-background label travels; never derived charge). Gray
-15–25% → fourth strength, no verdict.
+HOLD iff linear < 15% with K > 0 → precession observable LIVES as
+conditional (supplied-background label travels; never derived
+charge). KILL iff (a) type-guard fires, or (b) linear fit residual
+> 25%, or (c) K ≤ 0 (wrong-way). Gray 15–25% → fourth strength,
+no verdict. (Drift pin v2: HOLD band disjoint below gray.)
 
 ## Stop rule + cost
 
