@@ -43,3 +43,6 @@ Recommended: (a) — the chart is the lane's highest-leverage shared object
 Mono_N128_e1e-06_m06 (keys m1–m6 as available); |ρ|−1 = 0 to 6dp all;
 phases paired ± to 4dp all. Script: rerun the one-liner in session
 receipt; inputs are cipher banked npz (unmodified).
+
+## Addendum 2026-09-11 (liveness tasking)
+Pre-build text gates closed: sign-bar pinned to reproduction (design), falsifier (a) wording aligned to the pin, N4-order line updated (N4 DEAD confirmed — X1 extends, no duplication), D3-line closure noted (X1 construction differs, un-closed). Remaining blocker purely constructive: B-0071 chart + B-CIRC assemblies. Question for shepherd: charter the 0071-chart construction (shared X1+R-B object, highest-leverage in lane) or stand X1 down to conditional-sketch.

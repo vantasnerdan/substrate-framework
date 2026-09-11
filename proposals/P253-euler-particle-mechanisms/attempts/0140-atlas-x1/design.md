@@ -4,14 +4,14 @@ Charter: shepherd X1 SCOPE (ideation PASS 5bf1ad57 verified, X1 first).
 Scope-first: falsifier + stop + cost frozen here. Design only — no builds,
 no assemblies; build charters separately. Converges with drift D3
 (multi-period geometric phase) — independent angles, reconcile at build.
+D3-line CLOSED since scoping (D3 caveated CONFIRMED, D3b DEAD both-branches 048a3e1e, wrap-fix closed 6a38b17f — no geometric accumulation): X1's adiabatic-circuit Hannay angle is a different construction, un-closed by that verdict.
 
 ## Construction (what the build will do)
 Fast subsystem: banked A3 monodromy modes m1–6 (deflated, N64+128) as fibers.
 Slow base: vortex-filament position/shape collective coordinates (the same
 collective variables the κ-fits already parametrize). Adiabatic circuit of
 the slow variables → Hannay holonomy 1-form from the fast mode shapes →
-effective Lorentz-like deflection on the slow drift. Coordination (N4-order
-per drift review): N4-zero-test runs FIRST with X1 extending it.
+Coordination (N4-order per drift review; N4 BUILT + DEAD-no-bundle CONFIRMED 7f9b7da4): zero-test complete, X1 extends on the dead lane — no duplication.
 Sign bar (pinned per drift review-atlas-x1scope, reproduction not corrective):
 bar = holonomy sign EQUALS the S1-3D observed wrong-way sign (mechanism
 explains data → candidacy confirmed); any other sign, including right-way,
@@ -24,8 +24,7 @@ nothing observed.)
 - 0071 orbit chart — NOT banked: budgeted below as explicit dependency.
 
 ## Falsifier (frozen)
-X1 is DEAD if either: (a) computed holonomy sign disagrees with the
-required corrective direction (the S1-3D wrong-way record sets the bar);
+X1 is DEAD if either: (a) computed holonomy sign disagrees with the pinned reproduction bar above (must EQUAL the S1-3D observed wrong-way sign; any other sign, including right-way, KILLS X1);
 (b) holonomy vanishes identically (flat connection — then reduction gives
 no force, mechanism absent, not merely small). Both decided on paper +
 banked numbers, zero new solves.
