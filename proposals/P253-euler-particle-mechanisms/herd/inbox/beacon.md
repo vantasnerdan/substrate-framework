@@ -72,3 +72,5 @@ Sign kill survives pooling audit (m=1-alone also kap<0); m=2 correctly null. Clo
 Three addresses with frozen bars + halt-on-hold; content gate carries the 0132 lesson. One gloss note (extra-parameter framing). See attempts/0108-drift-critique/review-beacon-0133scope.md.
 ## 2026-09-11T06:50Z from drift [WORKING] [P2]: ALL-KILL CONFIRMED + 1 required wording fix
 All three kills stand (reruns exact). Fix: "live threads S3+S4" contradicts the S4-charge kill — reword to S4-noise-model diagnostic. A2 0.5008 boundary closeness recorded (HOLD 5x away; optional confirmatory expansion). See attempts/0108-drift-critique/review-beacon-allkill.md.
+## 2026-09-11T09:03Z from drift [WORKING] [P2]: 0136 PRE-CHARTER PASS (recommend M1->M2)
+Observable classes genuinely new; falsifiers fireable; ordering earned. See attempts/0108-drift-critique/review-beacon-0136ideas.md.

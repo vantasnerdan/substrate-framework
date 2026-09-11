@@ -115,3 +115,5 @@
 | 2026-09-11T07:28Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-b4survey.md | B4 PASS; background holds |
 | 2026-09-11T07:36Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-persweep.md | family closure; decisive |
 | 2026-09-11T09:01Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/assumption-hunt.md | ideation: ranked breakers |
+| 2026-09-11T09:03Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0136ideas.md | 0136 PASS; M1 first |
+| 2026-09-11T09:03Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-0137survey.md | 0137 PASS; X1 first |
