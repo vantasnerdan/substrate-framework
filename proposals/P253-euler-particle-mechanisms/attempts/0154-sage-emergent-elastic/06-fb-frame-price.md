@@ -115,3 +115,24 @@ new prediction (shear anisotropy, p→1 sliding degeneracy). If the owner
 wants the ordered-vacuum answer, Option A is proportionate (one receipt
 round); Options B and C are priced in the table; nothing here builds F-B
 or touches 01's F-B verdict row.
+
+## 6. Registered receipt-round dues (drift PRICING PASS 91c929c9, review-sage-fbpricing)
+
+Pricing BANKED 2026-09-11; owner call rides on it. The following dues are
+pre-registered by the analysis ("one receipt round") and fall due WITH
+any F-B build round — none blocks the pricing:
+
+1. C12 = C13 relation RECEIPT: extract-and-compare the e11·e22 vs
+   e11·e33 cross coefficients (the doc offers the relation as
+   "falsifiable as stated" — it needs the extraction line), or soften
+   to "4-constant subspace, relation TBD".
+2. Pricing-6 print repair: state mu_par(1) = K/4 (consistent with
+   pricing-5's own formula) with a REAL assert; the current line prints
+   truncated text beside a tautological assert.
+3. Normal-part receipt line: K(1−p)/30 on traceless strains is
+   text-only — add the (tr eps)^2-extraction line or label
+   derived-elsewhere.
+
+Review pointer: attempts/0108-drift-critique/review-sage-fbpricing.md
+(91c929c9). No reviewed content above is edited post-review; this
+section only banks the obligations.

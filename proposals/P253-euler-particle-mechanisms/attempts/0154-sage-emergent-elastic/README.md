@@ -48,6 +48,9 @@ holes in 00-sketch.md. Paper-level builds + receipts; firewall judges.
   mu_perp = K(1-p)/10 vs mu_par = K(3p+2)/20; P3 liabilities: FB-4
   achirality declaration + SYN P3 amendment. Owner options A-D with
   costs; build decision stays owner-level.
+- F-B pricing VERIFIED: drift PRICING PASS (91c929c9); receipt-round
+  dues (C12=C13 extraction, pricing-6 print, normal-part line)
+  REGISTERED in 06 section 6 — fall due with any F-B build round.
 
 ## Files
 
