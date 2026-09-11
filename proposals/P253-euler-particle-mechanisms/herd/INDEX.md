@@ -197,3 +197,4 @@
 | 2026-09-12T00:20Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/06-hj2c4b.md | HJ2-C4 phase 2: precisions paid (validity range with numbers; absolute tail summability receipted) + m=0 resonant core banked (near-diagonal two-mode, ratio 1/L -> 0); run_hj2c4b 8 exit 0; drift review requested |
 | 2026-09-11T15:09Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2c4b.md | phase-2 banked; assembly left |
 | 2026-09-12T01:05Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/07-hj2fin.md | HJ2-FIN: contour assembly complete over three banked pieces, R5 pending item resolved summably, CONSTRUCTION 4 CLOSED at frozen scope (residue = 0052-owned constants); run_hj2fin 8 exit 0; drift review requested |
+| 2026-09-11T15:18Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2fin.md | pieces banked; sum needs constants |

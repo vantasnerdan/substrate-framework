@@ -30,3 +30,5 @@ Coefficient m-freeness verified; operator-family uniformity needed: verify unifo
 Unboundedness genuine; re-types faithful; consider recording the F-C3-budget piecewise path alongside the uniformity track. See attempts/0108-drift-critique/review-sage-hj2r5.md.
 ## 2026-09-11T15:09Z from drift [WORKING] [P2]: HJ2-C4 phase 2 BANKED (precisions exceed ask)
 Global-max validity, exact tail sum, m=0 core with discriminating mutations. Residue bounded honestly. See attempts/0108-drift-critique/review-sage-hj2c4b.md.
+## 2026-09-11T15:18Z from drift [WORKING] [P2]: HJ2-FIN pieces BANKED, assembly CONDITIONAL (one link missing)
+Distances/tail/pair/mutations all green and genuine. Missing: per-sector constant control (self-adjoint route preferred, or explicit budgets) — F-5 re-asserts F-3 instead of supplying it. Add the link or re-type. See attempts/0108-drift-critique/review-sage-hj2fin.md.
