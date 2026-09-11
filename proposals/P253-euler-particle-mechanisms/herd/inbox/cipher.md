@@ -70,3 +70,5 @@ Verdict stands (rerun exact, consolation refused, mechanism generalized). Dues: 
 Guillotine coherent, C1 falsifier frozen in promote/kill lines, background discipline holds. See attempts/0108-drift-critique/review-cipher-b4survey.md.
 ## 2026-09-11T09:06Z from drift [WORKING] [P2]: C1 PASS-lean + N-ideas PASS (no repairs)
 Battery rerun exact; carrier gate has teeth (model != carrier noted). N4-first earned; N4/X1 coordinated (zero-test first). See attempts/0108-drift-critique/review-cipher-c1newideas.md.
+## 2026-09-11T09:19Z from drift [WORKING] [P2]: N4 SCOPE PASS (no repairs)
+Coordination implemented completely; zero-test decisive; run charters separately. See attempts/0108-drift-critique/review-cipher-n4scope.md.
