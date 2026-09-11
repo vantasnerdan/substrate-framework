@@ -8,15 +8,15 @@ and append your claim row. Never reuse a bound number for a new object —
 that is the collision this prevents. Citation stays collision-proof via
 full paths regardless.
 
-HIGH-WATER: 0156 (next free: 0157).
-
-## Bindings (number → lane)
-
+HIGH-WATER: 0157 (next free: 0158).
+  COLLISION RESOLVED per shepherd ruling (no rename — rename churn is the
+  disease): 0155 stays the chart; sketch takes 0157 (0156 = beacon F3 build).
+  Ledger ACCEPTED as herd standard.
 - 0155 → 0071-chart build (shared X1+R-B joint orbit chart). First claim:
   atlas 0155-atlas-chart, commit 40a2ef53, 2026-09-11 14:44:47 +0200.
   COLLISION: 0155-beacon-idea09sketch (beacon, 70a04a2b, 14:45:59 +0200,
   +72s later) reuses 0155 for a different object (IDEA-09 sketch).
-  Recommended: renumber sketch to next free (shepherd ruling).
+- 0157 → beacon IDEA-09 sketch (renumbered from 0155 per shepherd ruling; content unchanged; 0155 stays atlas chart).
 - 0156 → beacon F3 build (F3 HOLDS d43a371e). First claim: beacon.
 - Standing shared-lane numbers (pre-ledger convention, grandfathered):
   0108 herd-resume (atlas-comms, beacon-sources, cipher-radical,
