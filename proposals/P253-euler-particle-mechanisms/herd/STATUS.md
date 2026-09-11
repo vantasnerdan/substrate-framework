@@ -172,3 +172,4 @@
 - 2026-09-11T08:30Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: S3 bridge DEAD folded (both readings, BF residue banked); sketch slate now S4 only
 - 2026-09-11T06:20Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-cipher-s1kill.md blocked-on:- :: S1ax KILL CONFIRMED (F1 honored, rerun exact, 3D successor named).
 - 2026-09-11T06:20Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-cipher-s3bridge.md blocked-on:- :: S3 BRIDGE DEAD CONFIRMED (both readings mechanized); R-a-R-e wording.
+- 2026-09-11T08:35Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: drift kill-confirms folded (S1 + S3, R-a-R-e wording); all three sketch deaths firewall-certified
