@@ -53,16 +53,22 @@ coercivity (changing the object) — remain live.
 
 ## 3. What lives
 
-- **(b) S3 exact identities** — Noether/action-level, bypasses the
-  regularization trap entirely (D-08-exempt). Conditioned by S3-gaps:
-  G1 negative, G2 printed; Kelvin-gauge coupling is the reopen price.
-  Next executable: F²-bridge computation + F2 core treatment (paper).
-  UNOWNED as of this writing — needs shepherd assignment.
-- **Missing-5 M-lane**: M3 recoil reciprocity CHARTERED and building
-  (0145: R_A=R_B prediction, frozen KILL/HOLD bars; drift SCOPE PASS
-  09:30Z with pre-build band fix HOLD<15%; 0067 honest-label
-  CONDITIONAL on supplied carrier). M2 scattering-law charge stands
-  behind on the same rig (beacon recommendation, ordering honored).
+- **(b) S3-EXACT identities (0147, sage)** — paper LANDED, drift review
+  requested: I-CS / I-Helicity / I-Noether2 / I-Sing ESTABLISHED
+  (assertion-backed receipts, 13 checks exit 0), I-Decouple classification:
+  the bare action's current algebra contains the charge only as constants
+  of motion — charge-motion coupling is NOT-DERIVABLE inside the bare
+  action, with an auditable symmetry-enumeration certificate. Exports
+  three equality-level consistency conditions for any coupling extension
+  (preserve CS current + helicity; break the Hessian degeneracy
+  deliberately; keep the integer class). missing-5 upgraded from
+  empirical hunt to structural hole.
+- **Missing-5 M-lane: CONCLUDED inside the bare action** — M1 KILL
+  (0141), M2 down, M3 KILL CONFIRMED (09:33Z), M4 VOID confirmed
+  (09:41Z). The measured kills converge with 0147's I-Decouple:
+  the coupling they hunted is absent from the identity algebra, not
+  hidden below the floor. Reopen only via an extension that satisfies
+  0147's consistency conditions (02 §3).
 - **R-C native stiffening** — coercivity instead of accuracy (exhibit
   B ≥ 9): changes the object so the floor does not matter. Priced,
   not killed. Hardest analytic object in the program.
@@ -79,10 +85,9 @@ coercivity (changing the object) — remain live.
 
 ## 4. Ordered next (synthesis order 0143, updated post-M1)
 
-(a) M1 — done, KILL.
-(b) **S3 exact identities** — next in the synthesis order; M3 runs
-  first in the missing-5 lane per shepherd routing. S3 needs owner +
-  F²-bridge start; still UNOWNED.
+(a) M1 — done, KILL; M-lane concluded (M2 down, M3 KILL, M4 VOID).
+(b) S3-EXACT — 0147 landed, drift review pending; on PASS the lane's
+  next construction is gated by the 0147 consistency conditions.
 (c) R-C coercivity.
 (d) B4 background (capped value while dynamics conditional).
 NOT next (each closed with mechanism; reopen needs a named new
@@ -103,7 +108,8 @@ charter required).
 ## 5. Open decisions (shepherd/owner)
 
 1. X1 charter: 0071-chart (a) vs stand-down (b) — atlas recommends (a).
-2. M-lane ordering: M3 (beacon-recommended) vs M2 vs parallel.
+2. M-lane ordering: RESOLVED by events — lane concluded (M1/M3 KILL,
+   M4 VOID, M2 down); reopen gate = 0147 02 §3 conditions.
 3. Route/hold the four unrouted breakers above.
 4. Owner standing unchanged: solution-or-nothing gates everything;
    PR readiness tracks the solution program only.
@@ -132,3 +138,9 @@ charter required).
 
 - 2026-09-11T12:10Z SAGE: M3 CHARTERED (0145) folded — missing-5 lane
   active again; (b) S3-exact remains next in the 0143 order, unowned.
+
+- 2026-09-11T09:55Z SAGE: M-lane CONCLUDED folded (M3 KILL 09:33Z,
+  M4 VOID 09:41Z, M2 down); 0147 S3-EXACT paper landed (pending drift
+  firewall): exact half of charge observable ESTABLISHED, dynamical half
+  NOT-DERIVABLE with certificate. Synthesis order (b) holds its exact
+  backbone; next-construction gate proposed (0147 02 §3).
