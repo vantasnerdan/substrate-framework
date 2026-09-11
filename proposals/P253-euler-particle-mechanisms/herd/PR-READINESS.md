@@ -29,7 +29,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 ## Standing (owner direction 2026-09-11)
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
-- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 BUILT + DEAD CONFIRMED 7f9b7da4 (X1 extends); S4b BUILT + KILLED + CONFIRMED (G1 closed, queue clear); D3 caveated CONFIRMED + D3b BUILT + DEAD + wrap-fix bf699313 (mod-2pi adjudication, verdict-safe d8546281; doubly closed with N4).
+- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 BUILT + DEAD CONFIRMED 7f9b7da4 (X1 extends); S4b BUILT + KILLED + CONFIRMED (G1 closed, queue clear); D3 caveated CONFIRMED + D3b DEAD both-branches + wrap-fix + determinism banked 048a3e1e (doubly closed with N4).
 - 0154 emergent-elasticity CHARTERED + BUILT, ALL DUES PAID + drift-VERIFIED CLOSED 582696e6: extension candidate fully green and certified.
 - missing-5 M-ideas: M-lane CONCLUDED inside bare action (synthesis fold: M1/M3 KILL, M4 VOID, M2 down; reopen gate = 0147-sage 02 §3 conditions).
 - Synthesis order: (a) M1 done → (b) S3-EXACT PASS + dues → (c) R-C CLOSED (C3 DEAD CONFIRMED b1301a99, premise both ends; F-C independent) → (d) B4 background live.
