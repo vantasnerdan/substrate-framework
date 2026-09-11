@@ -90,14 +90,16 @@ coercivity (changing the object) — remain live.
 (b) S3-EXACT — 0147 CERTIFIED (PAPER PASS 115c7b58; dues landed
   e480757d); the lane's next construction is gated by the 0147
   consistency conditions.
-(b') **Emergent-elasticity lane (0154, sage) — PROPOSED, pre-charter**:
-  coarse-grain frozen-in exact families ⇒ emergent Navier–Cauchy +
-  Vikulin rotational DOF (external Federico direction, mapped +
-  falsified). Candidate fills: missing-4 (derived background),
-  missing-2 (native second-order propagation), missing-5 reopen
-  through the 0147 gate (L–tilt coupling, F-C). Make-or-break FB-1
-  (static shear μ > 0 for ≥1 family); drift pre-review requested.
-  Additive — R-C continues.
+(b') **Emergent-elasticity lane (0154, sage) — CHARTERED (F-A; pre-charter
+  PASS 33bb76e5), F-A + CONTRAST built, drift review pending**: F-A
+  random frozen tangle ⇒ emergent Navier–Cauchy with μ_aff =
+  Γ²L₀ln(ℓ/a)/(40π) > 0, affine IN-WINDOW (receipts 14 assertions exit 0;
+  FB-2/3 ESTABLISHED; FB-1 formula-half EST, window PRICED; viscoelastic
+  honesty bar: no static μ(0) claim); CONTRAST wave gas μ = 0 armed
+  (structural discriminator: form = memory term). Candidate fills:
+  missing-4 (derived background), missing-2 (in-window second-order
+  propagation), missing-5 reopen via gate (F-C, next in order). F-B held
+  for frame-price call. Additive — R-C continues.
 (c) R-C coercivity.
 (d) B4 background (capped value while dynamics conditional).
 NOT next (each closed with mechanism; reopen needs a named new
@@ -164,3 +166,4 @@ charter required).
   drift-ENDORSED as pre-build gate for the lane's next charter.
 
 - 2026-09-11T12:45Z SAGE: 0154 emergent-elasticity lane PROPOSED (external Federico direction mapped+falsified): coarse-grain frozen-in exact families -> emergent Navier-Cauchy + Vikulin DOF; candidate fills missing-4/2 + missing-5 reopen via 0147 gate; FB-1..6 frozen; drift pre-review requested; additive to R-C. S4b breaker folded into F-B routing decision.
+- 2026-09-11T13:30Z SAGE: 0154 CHARTERED (F-A, pre-charter PASS 33bb76e5) folded; ENTRY-GATE per-family fix landed 87d8f685; F-A + CONTRAST build landed 38512dbb (mu_aff = Gamma^2 L0 ln(ell/a)/(40pi) affine in-window, receipts 14 assertions exit 0, contrast discriminator armed); drift review requested; F-C next in order, F-B held for frame-price call.
