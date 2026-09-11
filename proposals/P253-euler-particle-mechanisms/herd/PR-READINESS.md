@@ -29,7 +29,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 ## Standing (owner direction 2026-09-11)
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
-- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASSed, then N4 BUILT + DEAD-no-bundle 03a6c408 (fold inside loop dR/dG~24, Krein corroborated; X1 extends per cipher, S4b queued).
+- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASSed, then BUILT + DEAD-no-bundle (X1 extends, S4b queued → now FROZEN 2c741d24: ordered vacuum, F4 price table, pre-compute).
 - 0154 emergent-elasticity PROPOSED + drift-PASS + ENTRY-GATE FIX 87d8f685 (per-family verdict disaggregation, charter step 1): first extension candidate through the certificate; charter pending.
 - missing-5 M-ideas: M-lane CONCLUDED inside bare action (synthesis fold: M1/M3 KILL, M4 VOID, M2 down; reopen gate = 0147-sage 02 §3 conditions).
 - Synthesis order: (a) M1 done → (b) S3-EXACT PASS + dues → (c) R-C CONFIRMED + C3 shear battery DESIGNED 0153 (frozen pre-compute, banked parts, M4-genus flag travels) → (d) B4 background live.
