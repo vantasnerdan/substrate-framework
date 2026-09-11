@@ -1,7 +1,7 @@
 # Herd board — GENERATED, do not hand-edit
 
 Regenerate: `bash proposals/P253-euler-particle-mechanisms/herd/board.sh` (anyone, anytime; idempotent).
-Generated: 2026-09-11T15:55:38Z at HEAD `db15ea75`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
+Generated: 2026-09-11T15:55:49Z at HEAD `bf8d6cb5`. If `git log -1` shows a newer commit, re-run — this board predates the branch.
 Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are debt, not state.
 
 ## TL;DR (10-second scan)
