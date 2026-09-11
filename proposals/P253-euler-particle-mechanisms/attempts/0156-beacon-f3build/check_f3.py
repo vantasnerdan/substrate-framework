@@ -15,6 +15,7 @@ def main() -> None:
     print(f"window [{lo:.3f}, {hi:.3f}] vs response [{RESP_LO}, {RESP_HI}]")
     clash = (RESP_HI < lo) or (RESP_LO > hi)
     print(f"kink {KINK} vs a/3 = {lo:.3f}: "
+          f"{'below-window' if KINK < lo else 'in-window'}")
     print("F3 verdict:", "F3-FIRES (sketch DEAD)" if clash
           else "F3-HOLDS (sketch survives F3; F1/F2 still gated)")
 
