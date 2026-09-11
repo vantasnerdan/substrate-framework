@@ -24,13 +24,12 @@ No PR opened. One verdict per item. Evidence pointers inline.
 - **Shadowing scope**: A1/A2 closed, H4-proof current token.
 
 ## Claim-promotion backlog
-- Drafts EXIST: attempts/0126-beacon-claims/drafts.yaml (C-EUL-001 no-go / C-EUL-002 conditional, UNSATISFIED honest; registry schema, `review: draft` — no registry writes, namespace free as of 2026-09-10).
-- Path to promotion: drift firewall PASSED 5152755e — promotion HELD by shepherd sequencing through native closure. Then: individual review. R-EM2 DECLINED changes nothing in the drafts (both Euler-native); it forbids any two-way reading of 0111.
-- No hidden debt: ledger audit clean; negatives bank (0119/0121/0124) rides as certified no-go records.
-## Bottom line
-Native back-reaction program CLOSED and CERTIFIED (0134 + ALL-KILL confirm,
-3 reruns exact) — PR HELD only on shepherd's sequencing call. When it lands:
-close #198, advance #203 Euler-native only — conditional lemma (C
-UNSATISFIED, honest), certified negatives (0119/0121/0124 + native kills),
-0111 as one-way observation, charge work BLOCKED per reversion, SYN SPEC
-paper-only.
+- Drafts EXIST: attempts/0126-beacon-claims/drafts.yaml (C-EUL-001 no-go / C-EUL-002 conditional, UNSATISFIED honest; registry schema, `review: draft` — no registry writes). Promotion STOOD DOWN with PR assembly (below).
+- No hidden debt: ledger audit clean; negatives bank (0119/0121/0124 + native kills) rides as certified no-go records.
+## Standing (owner direction 2026-09-11)
+NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
+(not held-pending). Readiness tracks the SOLUTION PROGRAM:
+- B4 C1 building (first-ranked background candidate; shepherd-declared track).
+- missing-5 idea lane OPEN (dynamics debt from SYN capstone; call open).
+- Synthesis CONDITIONAL banked (stages in-branch; builds wait).
+Recommended-shape section RETIRED until solution lands — no queued PR shape.
