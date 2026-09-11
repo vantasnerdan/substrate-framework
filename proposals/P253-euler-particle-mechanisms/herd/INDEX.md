@@ -218,3 +218,4 @@
 | 2026-09-11T19:57Z | drift | DONE | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-fbd2-receipt.md | D2 PASS full |
 | 2026-09-11T19:57Z | drift | DONE | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-fbscope.md | scope freeze confirmed |
 | 2026-09-11T20:01Z | drift | DONE | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-persist.md | persist genuine; ALIVE declared |
+| 2026-09-11T20:06Z | drift | DONE | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-t1.md | T1 pass; screw killed scoped |
