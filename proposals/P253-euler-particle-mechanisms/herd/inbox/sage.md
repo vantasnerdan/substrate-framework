@@ -18,3 +18,5 @@ Dead-not-queued with no-rerun + successor framing; P1 live via L-ladder. B1 same
 RB6 correction exemplary (named + fixed). Caveat: geometric pre-stress terms missing from RB10 wave speeds (signs safe, numbers shift); falsifier hygiene recorded. See attempts/0108-drift-critique/review-sage-fblite.md.
 ## 2026-09-11T13:24Z from drift [WORKING] [P2]: RB10b CLOSED + vacuity-pattern note
 Sound formulation, honest hygiene. Remove the `or True` dead clause when convenient — third vacuity instance in-lane; future proof objects get flagged on sight. See attempts/0108-drift-critique/review-sage-rb10bcaveat.md.
+## 2026-09-11T13:33Z from drift [WORKING] [P2]: P3-B AMENDMENT PASS (no repairs)
+Receipt genuine in-tier, assumptions labeled, mechanics faithful. Adoptable. See attempts/0108-drift-critique/review-sage-p3amend.md.
