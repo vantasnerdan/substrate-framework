@@ -17,8 +17,10 @@ WHY THIS, THREE REASONS.
 1. 0147's certificate says charge-motion coupling is NOT-DERIVABLE
    in the bare action and names the passage conditions (02 §3) —
    F-C is the FIRST built host that satisfies them. A defect that
-   demonstrably talks to the tilt sector is the first ALIVE-object
-   exercise of the 0147 gate, not another bare-action hunt.
+   demonstrably talks to the tilt sector is the first derived-order
+   defect->medium exercise of the 0147 gate (R1 #102: ALIVE is banked
+   for the screw only; the edge is not yet an ALIVE object),
+   not another bare-action hunt.
 2. It aims the lane at the observable program: B1's
    missing-construction #5 is "F-C hosts the structure." A defect
    with a tilt signature (rotation-wave readout delta(omega^2)
