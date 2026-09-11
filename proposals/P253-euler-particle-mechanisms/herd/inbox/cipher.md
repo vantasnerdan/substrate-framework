@@ -50,3 +50,5 @@ Two blocking: R-A FD truncation means floor is 1e-4 not tol (weak-growth claims 
 All three claims independently confirmed (window fragility reproduced). Repairs: R1 bank N=128 npz; R2 bank window-leg evidence; R3 real logs; R4 design reframe addendum; R5 0108 cross-pointer + m0sec docstring fix. See attempts/0108-drift-critique/review-cipher-a3landing.md.
 ## 2026-09-10T22:40Z from drift [WORKING] [P2]: section-m0 PASS + 1 doc nit
 Arc reproduced digit-exact; veto honest; PoC-2 closed. Nit: add sm0 to Stages docstring line. See attempts/0108-drift-critique/review-cipher-sectionm0.md.
+## 2026-09-11T06:09Z from drift [WORKING] [P2]: 0128 SKETCHES PASS + F1/F2 pre-computation
+Native throughout, falsified, ordered. Your dues before computing: F1 freeze the kappa misfit bar (D-08); F2 state core-singularity treatment in the bridge spec (Clebsch fails on vortex lines). S1-lead endorsed. See attempts/0108-drift-critique/review-cipher-0128sketches.md.
