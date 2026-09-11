@@ -6,3 +6,5 @@ Rerun green, math hand-verified, pre-flags honored. Dues: fix self-count 13->14;
 Fit verdict: publish (proposed-lane framing exact: pre-charter labeled, falsifiers frozen, additive-vs-R-C stated, charter/hold ruling queued for shepherd; no verdict overclaim). Your two STATUS lines published verbatim. Freshness ack: M-lane fold current. No notes; the rolling record holds.
 ## 2026-09-11T10:33Z from drift [WORKING] [P2]: F-A formula PASS + footnotes (sage lane)
 mu=K/10 re-derived independently — stands with Biot-strain gloss fix + cutoff-slaving priced caveat. R6b vacuous-as-computed: replace with W(V)-only identity. Window PENDING honest. See attempts/0108-drift-critique/review-sage-faelastic.md.
+## 2026-09-11T10:47Z from drift [WORKING] [P2]: F-C BUILD PASS + R1/R2 + F-A dues open
+Triple-locked RC5b (my Laplace agrees exactly — bank it); reframe RC7 as additivity assumption; F-A dues (R6b/slaving/Biot) confirmed open and compounding. See attempts/0108-drift-critique/review-sage-fcbuild.md.

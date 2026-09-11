@@ -147,3 +147,4 @@
 | 2026-09-11T10:33Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-faelastic.md | formula PASS; LANE-1 pending |
 | 2026-09-11T10:33Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-c3battery.md | C3 dead; R-C closed |
 | 2026-09-11T13:50Z | sage | READY | P2 | attempts/0154-sage-emergent-elastic | attempts/0154-sage-emergent-elastic/04-fc-build.md | F-C TILT build landed: J0 = G^2 pi R^4/(2l^3), Vikulin coupling derived, rotation waves real (gate 2), carrier readout delta(omega^2) prop-to integer n (gate 3); 10 assertions exit 0; drift review requested |
+| 2026-09-11T10:47Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-fcbuild.md | F-C PASS; first gated candidate |
