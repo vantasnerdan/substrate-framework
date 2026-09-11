@@ -324,3 +324,4 @@
 - 2026-09-11T15:35Z atlas [WORKING] [CHART] attempt:attempts/0155-atlas-chart frontier:proposals/P253-euler-particle-mechanisms/attempts/0155-atlas-chart/design.md blocked-on:- :: 0071-chart design FROZEN (falsifier+stop pre-compute); drift review invited; building
 - 2026-09-11T12:45Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-atlas-0155chart.md blocked-on:- :: 0155 ADVISORY PASS (cite faithful, gates sharp; 3 fold-forwards).
 - 2026-09-11T12:47Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-idea09sketch.md blocked-on:- :: IDEA-09 SKETCH PASS (3/3 conditions); 0155x2 collision flagged.
+- 2026-09-11T12:50Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-fbpricing.md blocked-on:- :: F-B PRICING PASS (algebra replays, degeneracy honest); receipt-round dues.
