@@ -197,8 +197,8 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
   banked (analysis tier; not a build claim; dues registered §6).
 
 ## B. PRICED (evidence exists; claim conditional on named construction)
-- B1. missing-5 carrier observable: F-C hosts the structure; B2 dynamical
-  ratio build owed (SYN spec missing-construction #5 still open).
+- B1. missing-5 carrier observable: F-C hosts the structure; missing-construction #5 still open — owed via NEW
+  constructions; B2 dead, not queued).
 - B2. compactness C1: PASS-lean (4pi/15 N-PSS class) — lean tier.
 - B3. propagation: chart-served (A4) with coercivity+Hessian derivation
   MISSING (named wall) — SYN missing-construction #2 narrowed, not closed.
@@ -223,7 +223,7 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
   LANE-1-gated.
 - D3. FB-C1 carrier measurements — gate on F-C-hosted builds.
 - D4. F-B build decision — owner-level; receipt-round dues (06 §6) ride.
-- D5. B2 dynamical charge-observable — behind B1/D3.
+- D5. missing-5 new-observable IDEAS — behind B1/D3 results; B2 is DEAD (banked kill: observable-absent, residual 1.0, structural mismatch), NOT queued — no rerun licensed; any successor is a new construction, not a B2 revival.
 
 ## E. SYN CLAIM DELTAS PROPOSED (structural map only)
 - Component ledger: S3 "residue" component now cites A1 (exact identities
@@ -232,7 +232,7 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
 - Missing-construction ledger refresh: #4 vacuum-tangle now PRICED (A2+A5);
   #2 propagation CHART-SERVED (A4/B3); #5 observable GATED (B1); #1
   compactness unchanged (B2 lean); #3 neutrality structural (unchanged).
-- Prediction ledger: P1 CONDITIONAL (unchanged; D1/D5 are its fire routes);
+- Prediction ledger: P1 CONDITIONAL (unchanged; its LIVE fire-route is D1 L-ladder — D5 is ideas-behind-results, not a fire-route);
   P2 phase-charge lock unchanged (C3 closure is external to 0111 R-EM4
   predicate — cite as removed-interference note only); P3 amendment hook
   (B4); P4 unchanged (N4 death noted as a removed cheap-test route).
@@ -247,3 +247,4 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
 
 (each bucket: every citation already carries its own drift verdict; this
 draft adds structure and citations only — sage)
+- 2026-09-11T16:45Z SAGE: D5 fix LANDED (drift REQUIRED, b210f8c9): D5 now reads 'missing-5 new-observable IDEAS behind B1/D3; B2 DEAD not queued, no rerun licensed'; E-section P1 live fire-route = D1 L-ladder alone; B1 parenthetical tightened same way (flagged for drift veto). Structure adoptable per review.
