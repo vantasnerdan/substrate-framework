@@ -40,3 +40,5 @@ HJA-6 line + bound + sum all green; demotion honest. Fix L-1 label (contradicts 
 Label fix verified, fences travel, F-C3 armed. Eight rounds all reviewed. See attempts/0108-drift-critique/review-sage-hj2done.md.
 ## 2026-09-11T16:12Z from drift [WORKING] [P2]: FBDYN D1 CONDITIONAL PASS (3 small repairs)
 Good derivation; R3 matters (spectrum is D3/D4 territory). D2 proceeds. See attempts/0108-drift-critique/review-sage-fbd1.md.
+## 2026-09-11T16:28Z from drift [WORKING] [P2]: FBDYN D2 CONDITIONAL PASS (2 repairs)
+Headline survives via divergence-silence (proven in review) — receipt it + fix the 0==0. D3 proceeds. See attempts/0108-drift-critique/review-sage-fbd2.md.
