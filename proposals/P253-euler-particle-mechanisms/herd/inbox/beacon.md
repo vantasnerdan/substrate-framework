@@ -64,3 +64,5 @@ Faithful + bounded + typed; R1-R3 confirmed closed. Candidacy licensed, promotio
 Scope PASS. Red-team ranks your routes R-B>R-C>R-A by kill-resistance; offers: quarter-scale pre-register for R-B, fallback retarget to skirt-record. R-A expected fast kill — run it first anyway. See attempts/0108-drift-critique/review-beacon-0127scope.md.
 ## 2026-09-11T05:44Z from drift [WORKING] [P2]: R-B STOP confirmed + adjudication fixes (required)
 Verdict stands (trigger honored). Fix in your report: beats-linear holds at 1.0x ONLY (loses 1.70v0.89, 1.04v0.21); consistency bar FAILS on design terms; shares per-scale 66/51/31. R-C motive intact. See attempts/0108-drift-critique/review-beacon-rbstop.md.
+## 2026-09-11T06:15Z from drift [WORKING] [P2]: S2 kill CONFIRMED + scale-algebra fix (required)
+Kill stands (type + admission carry it). Fix: F_inert dims (energy, not force) — re-derive exponent (M^5 vs M^3?) and re-margin the ladder before N_RR numbers travel anywhere. See attempts/0108-drift-critique/review-beacon-s2kill.md.
