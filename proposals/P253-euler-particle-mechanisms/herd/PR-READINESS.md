@@ -29,8 +29,8 @@ No PR opened. One verdict per item. Evidence pointers inline.
 ## Standing (owner direction 2026-09-11)
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
-- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASS e9299ef1 (zero-test decisive, X1-coordination disjoint — converges with X1 B-CIRC need).
-- 0154 emergent-elasticity PROPOSED + drift-PASS 33bb76e5 (per-family fix; Federico direction, Navier-Cauchy + Vikulin DOF, missing-4/2 + missing-5 via 0147 gate, FB-1..6 frozen, paper-only): first extension candidate through the certificate; charter pending.
+- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASSed, then N4 BUILT + DEAD-no-bundle 03a6c408 (fold inside loop dR/dG~24, Krein corroborated; X1 extends per cipher, S4b queued).
+- 0154 emergent-elasticity PROPOSED + drift-PASS + ENTRY-GATE FIX 87d8f685 (per-family verdict disaggregation, charter step 1): first extension candidate through the certificate; charter pending.
 - missing-5 M-ideas: M-lane CONCLUDED inside bare action (synthesis fold: M1/M3 KILL, M4 VOID, M2 down; reopen gate = 0147-sage 02 §3 conditions).
 - Synthesis order: (a) M1 done → (b) S3-EXACT PASS + dues → (c) R-C CONFIRMED + C3 shear battery DESIGNED 0153 (frozen pre-compute, banked parts, M4-genus flag travels) → (d) B4 background live.
 Recommended-shape section RETIRED until solution lands — no queued PR shape.
