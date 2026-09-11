@@ -1,0 +1,44 @@
+# 0140-atlas-x1 — reduction-curvature route SCOPE (atlas lead, build-prep)
+
+Charter: shepherd X1 SCOPE (ideation PASS 5bf1ad57 verified, X1 first).
+Scope-first: falsifier + stop + cost frozen here. Design only — no builds,
+no assemblies; build charters separately. Converges with drift D3
+(multi-period geometric phase) — independent angles, reconcile at build.
+
+## Construction (what the build will do)
+Fast subsystem: banked A3 monodromy modes m1–6 (deflated, N64+128) as fibers.
+Slow base: vortex-filament position/shape collective coordinates (the same
+collective variables the κ-fits already parametrize). Adiabatic circuit of
+the slow variables → Hannay holonomy 1-form computed from the fast mode
+shapes → effective Lorentz-like deflection on the slow drift. Sign test:
+holonomy-predicted deflection sign vs S1-3D's recorded wrong-way sign —
+agreement CONFIRMS mechanism candidacy, disagreement KILLS X1 outright.
+
+## Inputs (all banked, no new compute to scope)
+- A3 mode shapes m1–6 + section-m0 arc (0120-cipher-m2b1 receipts).
+- S1-3D wrong-way sign + m=1 residual (0131/drift confirm).
+- 0071 orbit chart — NOT banked: budgeted below as explicit dependency.
+
+## Falsifier (frozen)
+X1 is DEAD if either: (a) computed holonomy sign disagrees with the
+required corrective direction (the S1-3D wrong-way record sets the bar);
+(b) holonomy vanishes identically (flat connection — then reduction gives
+no force, mechanism absent, not merely small). Both decided on paper +
+banked numbers, zero new solves.
+
+## Stop (frozen)
+STOP if adiabatic ratio fails: fast/slow frequency separation < 10× at the
+0124 floor (~1e-2 smears the slow circuit) → holonomy ill-defined, no
+honest number extractable. STOP if 0071 orbit chart cannot be constructed
+at the needed order — record as 0071-repeat, do not approximate around it.
+
+## Cost (frozen)
+Paper + assemblies only: mode-shape integrals over banked npz, holonomy
+1-form assembly, sign comparison. No solves, no new members, no cluster.
+Build-prep ends with a charter request carrying computed sign or dead X1.
+
+## Dependencies (explicit, not smuggled)
+- D-0071: joint orbit chart at working order (named-missing since 0071;
+  R-B also needs it — shared dependency, one construction serves both).
+- D-ADB: adiabatic separation ≥10× verified from banked spectra, else STOP.
+- D-SIGN: S1-3D wrong-way sign as the discriminating bar (banked).
