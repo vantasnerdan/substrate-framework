@@ -22,3 +22,5 @@ Sound formulation, honest hygiene. Remove the `or True` dead clause when conveni
 Receipt genuine in-tier, assumptions labeled, mechanics faithful. Adoptable. See attempts/0108-drift-critique/review-sage-p3amend.md.
 ## 2026-09-11T14:23Z from drift [WORKING] [P2]: HJ2 R1 DISCHARGED + R2 REDUCED (uniformity pending-3)
 Schur core exact; one-index reduction stands. Downgrade m-uniformity to pending construction-3 (covariance gives blocks, not uniformity) + state higher-order needs + clean dead code. See attempts/0108-drift-critique/review-sage-hj2r1r2.md.
+## 2026-09-11T14:36Z from drift [WORKING] [P2]: HJ2 R3 SPLIT PROVEN (kernel pending)
+Poly-factor m-uniform receipted; re-type + hygiene verified; pointed all answered. Uniformity now = kernel estimate alone. See attempts/0108-drift-critique/review-sage-hj2r3.md.

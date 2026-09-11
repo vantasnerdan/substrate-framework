@@ -184,3 +184,4 @@
 | 2026-09-11T21:00Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/01-hj2c2.md | HJ2 round 2: construction 2 structural core — m exact label (covariance), two-index -> one-index reduction, rank-6 low-m quotient (run_hj2c2 7 exit 0); construction 2 REDUCED; drift review requested |
 | 2026-09-11T14:23Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2r1r2.md | R1 done; R2 uniformity pending-3 |
 | 2026-09-11T21:50Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/02-hj2c3.md | HJ2 round 3: symbol split proven — poly factor m-uniform (band-limited), kernel uniform-H^s = remaining named estimate; 01 re-typed per downgrade; run_hj2c3 7 exit 0; drift review requested |
+| 2026-09-11T14:36Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2r3.md | split proven; kernel pending |
