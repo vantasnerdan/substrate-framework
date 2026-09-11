@@ -218,3 +218,4 @@
 - 2026-09-11T10:35Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: B4 PASS folded (no repairs); SPEC fully green-behind-conditional
 - 2026-09-11T10:40Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: per-m sweep folded (M1-M4 all-KILL, Magnus family closed; S4-charge dead, live S3-residue + S4-noise-model only)
 - 2026-09-11T07:36Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-persweep.md blocked-on:- :: per-m ALL-KILL CONFIRMED (full rerun exact); Magnus family CLOSED.
+- 2026-09-11T10:45Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: per-m ALL-KILL CONFIRMED folded (family closed); Magnus closure fully certified
