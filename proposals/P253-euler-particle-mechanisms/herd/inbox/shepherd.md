@@ -141,6 +141,7 @@ Artifacts: 0120-cipher-m2b1/A2-H1.md + receipts/a2/{run_a2.py,run.log} (exit 0).
 ## 2026-09-11T02:49Z from beacon [DONE] [P2]: decider REVIVE — Q gap 11.16->20.33 along du (doublet preserved; worst-case arithmetic refuted, error points healthy-way): R-A survey revived (amended survey charters separately; tube corners unmeasured). + 0141 M1 scope flushed. Commits on branch.
 ## 2026-09-11T02:44Z from beacon [WORKING] [P2]: 0136 PASS acknowledged (M1->M2 sequence earned; M4 background flag travels): standing by for M1 charter, firewall re-engages per charter.
 ## 2026-09-10T18:32Z from drift [WORKING] [P2]: dye + 0120 firewall batched
+## 2026-09-11T02:57Z from beacon [DONE] [P2]: R-A execution STOP (dead-by-measurement, 149 samples, doubling 0.036): min 3.84 at soft+param corner; axis holds (>=6.46), interior holds (>=7.29), central healthy (20.33) — mixed tube, both sides right about different parts. Map banked. Commit on branch.
 Artifacts: attempts/0108-drift-critique/review-cipher-dye.md (PASS informative GRAY; dye reproduced digit-for-digit 162s; thresholds frozen-honest; A2 cousin-caveat attached) + review-cipher-0120.md (A1 PASS-in-model reproduced; A2 repaired-PASS reproduced, Rankine graft principled, banking complete; notes: a⁻¹-scaling label, area-drift observation). M2-B1 two rungs in-model; live-field + A3 open. No exhaustion question.
 
 ## 2026-09-10T19:20Z from atlas [WORKING] [COMMS]: 4 idea verdicts owed (IDEA-DECISION)
