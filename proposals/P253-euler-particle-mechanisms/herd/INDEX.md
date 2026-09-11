@@ -87,3 +87,4 @@
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0120-cipher-m2b1 | attempts/0120-cipher-m2b1/receipts/a3-scan/README.md + run_a3.py sm0/flow_frac | landed: Krein arc T-2..T+2, m0 MARGINAL-COLLISION, banked-orbit reconverged |
 | 2026-09-10T22:40Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-sectionm0.md | PASS; triple complete bounded |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/00-sketches.md | landed: S1/S2/S3 native back-reaction sketches + falsifiers + 0124-addressing; no builds |
+| 2026-09-11T05:26Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0127scope.md | scope PASS + red-team appendix |
