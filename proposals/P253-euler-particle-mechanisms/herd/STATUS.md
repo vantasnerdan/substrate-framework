@@ -205,3 +205,4 @@
 - 2026-09-10T16:36Z cipher [WORKING] [P2] attempt:attempts/0128-cipher-nativem frontier:attempts/0128-cipher-nativem/06-synthesis-spec/receipts/b3-spectrum/README.md blocked-on:drift-firewall bkind:physics :: B3 HOLD (Fano 0.845 Poisson-like; noise-only); B2 needs missing-5
 - 2026-09-11T10:05Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: B3 HOLD folded (Fano 0.845 Poisson-like, noise-only); predictions B1+B3 held
 - 2026-09-11T07:16Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-cipher-b3hold.md blocked-on:- :: B3 HOLD CONFIRMED (rerun exact, band met x3, scope bounded).
+- 2026-09-11T10:10Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: B3 HOLD CONFIRMED folded; predictions B1+B3 green, B2 open on missing-5
