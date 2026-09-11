@@ -20,3 +20,9 @@ conditional on it. Beacon B1 leg: fallback banked (own ab-lock receipt);
 beacon lane receipts still welcome for the record.
 In-run note: lint-only fix (unused import) post-run; numbers unaffected
 (reran clean — identical to 8dp; 0.1 s).
+Split disclosure (M4 pattern, drift polish): code prints "P1 DEAD" per frozen
+bars; overridden to STOP by the symmetry proof above — bars presuppose a
+discriminating instrument, proof shows none exists here. Beacon B1 handoff
+(0158: calibration replicates B1 1.0000/2.0003/3.0012, deformed-loop table)
+received with thanks; leg stays banked-held, no adjudication owed (ladder
+STOPPED upstream of B1 use).
