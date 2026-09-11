@@ -19,7 +19,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 - **G-a2 numbers — 0125 PASS CONDITIONAL** (beacon + drift review-beacon-0124correction): conditional lemma rho*~0.03 banked; 0124 RE-CERTIFIED STRONGER with /6 correction; R1–R3 DONE 37625ab1 (stale framing fixed, corrected receipts, sweep banked). G-a2 construction track complete — remaining: R-EM2 scope decision governs what it licenses.
 - **IDEA-01..08**: all ADOPTED with owners (cipher/drift/atlas/beacon+cipher);
   IDEA-03 (R9-start) 1/3 closed — gates G-a2 trust-region start, rides with (a).
-- **0127 native back-reaction — R-B CLOSED(MISS), R-A SURVEY NEXT** (beacon 277b058b + drift CONFIRMED + adjudication correction b57ecd9f): front ~2/3, skirt ~1/3 to R-C; gates held; archaeology cited at source. Cipher 0128 sketches drift-PASS (F1 misfit bar + F2 core-singularity pre-computation); determination stands (S1 lead, S3 repaired, S4). Route order: R-A survey → R-B closed → R-C stiffening → R-D diagnostic.
+- **0127 native back-reaction — R-B CLOSED(MISS), R-A SURVEY NEXT** (beacon 277b058b + drift CONFIRMED + adjudication correction b57ecd9f): front ~2/3, skirt ~1/3 to R-C; gates held; archaeology cited at source. Cipher 0128 sketches drift-PASS; F1/F2 pre-compute frozen d24f3658 (kappa bar + core treatment); determination stands (S1 lead, S3 repaired, S4). Route order: R-A survey → R-B closed → R-C stiffening → R-D diagnostic.
 - **S9 test — CLOSED-complete** (beacon 0114): drift-PASS, repairs a–d landed, integrity repaired+citable (eb3db6d1); EXPOSED verdict + P1 shape-member folded into 0122/IDEA-05; zero open items.
 - **Shadowing scope**: A1/A2 closed, H4-proof current token.
 
