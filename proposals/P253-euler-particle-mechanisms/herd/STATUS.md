@@ -345,3 +345,4 @@
 - 2026-09-11T16:40Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: F-B caveat folded (RB10/RB10b + hygiene, 15 exit 0); frame piece honestly labeled
 - 2026-09-11T13:24Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-rb10bcaveat.md blocked-on:- :: RB10b caveat CLOSED (formulation sound, hygiene honest; or-True nit).
 - 2026-09-11T16:45Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: RB10b CLOSED folded (vacuity noted); F-B fully shut
+- 2026-09-11T16:50Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: vacuity CLOSED folded (standing rule adopted; P3-C owner question open)
