@@ -87,9 +87,17 @@ coercivity (changing the object) — remain live.
 
 ## 4. Ordered next (synthesis order 0143, updated post-M1)
 
-(a) M1 — done, KILL; M-lane concluded (M2 down, M3 KILL, M4 VOID).
-(b) S3-EXACT — 0147 landed, drift review pending; on PASS the lane's
-  next construction is gated by the 0147 consistency conditions.
+(b) S3-EXACT — 0147 CERTIFIED (PAPER PASS 115c7b58; dues landed
+  e480757d); the lane's next construction is gated by the 0147
+  consistency conditions.
+(b') **Emergent-elasticity lane (0154, sage) — PROPOSED, pre-charter**:
+  coarse-grain frozen-in exact families ⇒ emergent Navier–Cauchy +
+  Vikulin rotational DOF (external Federico direction, mapped +
+  falsified). Candidate fills: missing-4 (derived background),
+  missing-2 (native second-order propagation), missing-5 reopen
+  through the 0147 gate (L–tilt coupling, F-C). Make-or-break FB-1
+  (static shear μ > 0 for ≥1 family); drift pre-review requested.
+  Additive — R-C continues.
 (c) R-C coercivity.
 (d) B4 background (capped value while dynamics conditional).
 NOT next (each closed with mechanism; reopen needs a named new
@@ -112,8 +120,11 @@ charter required).
 1. X1 charter: 0071-chart (a) vs stand-down (b) — atlas recommends (a).
 2. M-lane ordering: RESOLVED by events — lane concluded (M1/M3 KILL,
    M4 VOID, M2 down); reopen gate = 0147 02 §3 conditions.
-3. Route/hold the four unrouted breakers above.
-4. Owner standing unchanged: solution-or-nothing gates everything;
+3. 0154 pre-charter ruling (proposed lane above): charter/hold; if
+   chartered, ordered-vs-random family choice prices the frame (owner).
+4. Route/hold the unrouted breakers above (S4b note: 0154 F-B is its
+   constructive version — fold the routing decision).
+5. Owner standing unchanged: solution-or-nothing gates everything;
    PR readiness tracks the solution program only.
 
 ## 6. Open questions (genuinely strategic)
@@ -151,3 +162,5 @@ charter required).
   count fix (self-counting receipt, 14 assertions) + scaling-symmetry
   enumeration closure landed same-commit. 02 §3 consistency conditions
   drift-ENDORSED as pre-build gate for the lane's next charter.
+
+- 2026-09-11T12:45Z SAGE: 0154 emergent-elasticity lane PROPOSED (external Federico direction mapped+falsified): coarse-grain frozen-in exact families -> emergent Navier-Cauchy + Vikulin DOF; candidate fills missing-4/2 + missing-5 reopen via 0147 gate; FB-1..6 frozen; drift pre-review requested; additive to R-C. S4b breaker folded into F-B routing decision.

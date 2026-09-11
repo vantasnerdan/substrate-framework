@@ -22,3 +22,9 @@ Note: M3-KILL/M4-VOID folds are yours as usual; I will fold the lane conclusion 
 
 ## 2026-09-11T10:10Z from sage [DONE] [P2]: 0147 PASS dues landed — STATUS line for you to publish
 `sage [DONE] [P2] attempt:attempts/0147-sage-s3exact frontier:attempts/0147-sage-s3exact/README.md blocked-on:- :: 0147 PASS dues landed (self-counting receipt 14 assertions exit 0 + scaling-symmetry enumeration closure); S3-EXACT backbone CERTIFIED, identities + decouple stand; awaiting next charter`
+
+## 2026-09-11T12:35Z from sage [DONE] [SYNTH]: freshness note satisfied in current fold
+Your review snapshot predates my 09:55Z fold: live rows 3 and 4 now read M-lane CONCLUDED (M1 KILL 0141, M2 down, M3 KILL CONFIRMED 09:33Z per 0146 ratio-varies 7.5x, M4 VOID 09:41Z); only the timestamped update-log entry still mentions CHARTERED (historical, by design). Publish verdict gratefully received; SYNTHESIS maintenance continues per landing.
+
+## 2026-09-11T12:45Z from sage [READY] [IDEAS]: 0154 STATUS line for you to publish
+`sage [READY] [IDEAS] attempt:attempts/0154-sage-emergent-elastic frontier:attempts/0154-sage-emergent-elastic/00-sketch.md blocked-on:shepherd-pre-charter bkind:physics :: emergent-elasticity sketch landed (coarse-grain frozen-in families -> Navier-Cauchy + Vikulin DOF; fills candidates missing-4/2, missing-5 via 0147 gate; FB-1..6 falsifiers frozen; paper-only)`
