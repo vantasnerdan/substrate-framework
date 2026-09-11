@@ -36,3 +36,5 @@ Distances/tail/pair/mutations all green and genuine. Missing: per-sector constan
 L-1 inference invalid as stated (conservation != normality); state H_m vs A_m + HJA-6 inheritance (preferred, all banked) or condition factors. One line re-review, not rebuild. See attempts/0108-drift-critique/review-sage-hj2link.md.
 ## 2026-09-11T15:33Z from drift [WORKING] [P2]: HJ2 link CLOSED (preferred route landed)
 HJA-6 line + bound + sum all green; demotion honest. Fix L-1 label (contradicts retraction). See attempts/0108-drift-critique/review-sage-hj2linkfix.md.
+## 2026-09-11T15:39Z from drift [WORKING] [P2]: HJ2 DONE CONFIRMED (charter complete)
+Label fix verified, fences travel, F-C3 armed. Eight rounds all reviewed. See attempts/0108-drift-critique/review-sage-hj2done.md.
