@@ -29,7 +29,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 ## Standing (owner direction 2026-09-11)
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
-- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first.
-- missing-5 idea lane FILLED 0136 (beacon 4109f454): M1 interaction-energy dynamics (0069 E_12 made dynamical), M2 scattering-law charge (0071 sign made dynamical), M3 recoil reciprocity (0067 template as observable), M4 precession scaling (Larmor analogy, type-guarded); falsifiers + dead-checks + cheapest-first order. M1–M3 converge with 0129 archaeology finds.
-- Synthesis CONDITIONAL banked (stages in-branch; builds wait).
+- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASS e9299ef1 (zero-test decisive, X1-coordination disjoint — converges with X1 B-CIRC need).
+- missing-5 M-ideas: M1 interaction-energy dynamics, M2 scattering-law, M3 recoil reciprocity, M4 precession scaling (0136, falsifiers + order).
+- Failure synthesis 0143 ORDERS next: (a) M1 build first (observable-class change, cheapest rig), (b) S3 exact identities, (c) R-C coercivity, (d) B4 background; floor pattern = small quantities through singular structures (~1e-2 attractor, refinement closed six ways). NOT-next: re-solves, refinements, force-fits, imposed backgrounds. Synthesis CONDITIONAL banked.
 Recommended-shape section RETIRED until solution lands — no queued PR shape.
