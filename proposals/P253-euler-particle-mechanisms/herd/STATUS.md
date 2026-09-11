@@ -373,3 +373,4 @@
 - 2026-09-11T18:20Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R4 review folded (conditional, operator gap pending)
 - 2026-09-11T18:25Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R5 folded (operator resists, conditional re-type, F-C3 armed)
 - 2026-09-11T14:49Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2r5.md blocked-on:- :: HJ2 R5 RESISTANCE BANKED (genuine unboundedness); piecewise recommended.
+- 2026-09-11T18:30Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 piecewise HOLD folded (pending owner sequencing alongside F2)
