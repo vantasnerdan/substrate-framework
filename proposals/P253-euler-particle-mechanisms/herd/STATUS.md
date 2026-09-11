@@ -348,3 +348,4 @@
 - 2026-09-11T16:50Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: vacuity CLOSED folded (standing rule adopted; P3-C owner question open)
 - 2026-09-11T16:55Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: P3-B AMENDMENT folded (P3-C charge-only per owner, 7 exit 0, review pending)
 - 2026-09-11T13:33Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-p3amend.md blocked-on:- :: P3-B AMENDMENT PASS (receipt genuine, assumptions labeled, mechanics faithful).
+- 2026-09-11T17:00Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: P3-B PASS folded (adoptable); SYN amendment shut
