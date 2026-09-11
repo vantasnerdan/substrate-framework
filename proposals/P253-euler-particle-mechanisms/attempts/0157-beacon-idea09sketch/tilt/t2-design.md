@@ -1,3 +1,11 @@
+> R2 (#103) reconciliation: freeze sketched F_climb = +2(J0/ell^3)th^2.b;
+> receipted exact (t2_backreaction.py, T2 PASS) is F = [0,-J0.b.th^2/ell^3,0]
+> (tensile in-plane prestress -> climb toward -y for +b xhat). Verdicts are
+> magnitude-safe (F2/F3 use |.|); the receipted sign+coefficient govern.
+> Thinness fence: 10.3x headroom is fiducial-conditional (s=1, R/ell=0.1,
+> ell/a=100, th=0.1) vs the 10x reopen sensitivity — no rounding up; the
+> parametric inequality beta.th^2.s > 7e-4 is the verdict, not the number.
+
 # T2 back-reaction mini-freeze — FROZEN PRE-COMPUTE (beacon, 0157/tilt)
 
 Status: FROZEN 2026-09-12. Charter: shepherd T2 BACK-REACTION
