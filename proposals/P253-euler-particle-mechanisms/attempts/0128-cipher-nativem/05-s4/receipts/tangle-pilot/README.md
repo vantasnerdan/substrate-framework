@@ -25,3 +25,12 @@ cannot stabilize a fluctuating magnitude).
 Tangle-linking statistics as a DECOHERENCE/noise source for filament carriers
 (Poisson counting noise with measured CV/α scaling) — a reusable noise model,
 not a charge. Filed for any future stochastic-carrier work; no claims beyond.
+
+## Qualifier (drift: within-paradigm convergence)
+Residue convergence (integer-linking + BF-form + this noise model) holds
+WITHIN the shared linking-paradigm framing (M1 labels assumed throughout) —
+independent angles agreeing inside one paradigm ≠ independent confirmation of
+it. This qualifier travels with the convergence claim. Discipline note: F-bar
+freeze and run shared one commit (content-attested, weaker than F1 two-commit;
+future bars freeze-commit first). Gate now banked in-script (Hopf −1.004);
+gray clause coded, untriggered.

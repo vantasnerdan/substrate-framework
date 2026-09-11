@@ -55,6 +55,16 @@ def tangle(rng, Nt, Rb, Rt):
 def stats(C, rings):
     return sum(gauss_link(C, Q) for Q in rings)
 
+def stage_gate():
+    import numpy as np
+    P = carrier()
+    th = np.linspace(0, 2 * np.pi, 32, endpoint=False)
+    Q = np.stack([1 + 0.3 * np.cos(th), 0.3 * np.sin(th), 0.3 * np.sin(th)], axis=1)
+    hopf = gauss_link(P, Q)
+    far = gauss_link(P, Q + np.array([5.0, 0, 0]))
+    print(f"gate: Hopf {hopf:.3f} (expect ~+-1) far {far:.3f} (expect ~0) -> "
+          f"{'PASS' if abs(abs(hopf) - 1) < 0.05 and abs(far) < 0.05 else 'FAIL'}")
+
 
 def run_case(Rb, Nt, S, Rot=np.eye(3)):
     C = carrier(Rot)
@@ -96,8 +106,22 @@ def main():
              qs.std() > 2 * sd / np.sqrt(S)]
     passes = [cv <= 0.25, 0.5 <= m15 / m1 <= 2.0, alpha <= 0.25,
               qs.std() <= 2 * sd / np.sqrt(S)]
-    print(f"F-bar verdict: {'KILL' if any(kills[1:]) or kills[0] else ('FIT-PASS' if all(passes) else 'UNRESOLVED-gray')} ({time.time()-t0:.1f}s)")
+    # gray clause (drift nit): marginal single-line crossing (<20% over a kill
+    # line with all other lines passing) = UNRESOLVED, not KILL. Untriggered
+    # today (52%/280% over); evaluated if the script ever reruns near boundary.
+    margins = [cv / 0.50, (m1 / m15 if m15 / m1 < 0.5 else m15 / m1) / 2.0,
+               alpha / 0.5, (qs.std() / (2 * sd / np.sqrt(S))) if sd > 0 else 0.0]
+    marginal = [k and (m < 1.2) for k, m in zip(kills, margins)]
+    others_pass = [all(passes[:i] + passes[i + 1:]) for i in range(4)]
+    gray = any(m and o for m, o in zip(marginal, others_pass))
+    verdict = "UNRESOLVED-gray" if gray else (
+        "KILL" if any(kills[1:]) or kills[0] else ("FIT-PASS" if all(passes) else "UNRESOLVED-gray"))
+    print(f"F-bar verdict: {verdict} ({time.time()-t0:.1f}s)")
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "gate":
+        stage_gate()
+    else:
+        main()
