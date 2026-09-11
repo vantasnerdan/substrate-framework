@@ -371,3 +371,4 @@
 - 2026-09-11T18:15Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R4 folded (kernel proven, construction 3 discharged; one gate left)
 - 2026-09-11T14:43Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2r4.md blocked-on:- :: HJ2 R4 CONDITIONAL (operator-uniformity gap; F-C3 armed; needs verify-or-retype).
 - 2026-09-11T18:20Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R4 review folded (conditional, operator gap pending)
+- 2026-09-11T18:25Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 R5 folded (operator resists, conditional re-type, F-C3 armed)
