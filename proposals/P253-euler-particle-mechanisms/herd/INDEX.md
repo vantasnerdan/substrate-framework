@@ -108,3 +108,4 @@
 | 2026-09-11T06:54Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-b1hold.md | B1 HOLD confirmed; tiering exemplary |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/06-synthesis-spec/02-b3-fbar.md + receipts/b3-spectrum/ | landed: B3 HOLD (Fano 0.845, noise-only) |
 | 2026-09-11T07:16Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-b3hold.md | B3 HOLD confirmed |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/06-synthesis-spec/03-b2-fbar.md + receipts/b2-observable/ | landed: B2 KILL-observable-absent; missing-5 stands, P1/F-a conditional |

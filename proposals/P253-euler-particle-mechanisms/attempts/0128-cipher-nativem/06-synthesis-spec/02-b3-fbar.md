@@ -9,8 +9,8 @@ analogue" ensemble). Spectrum test: Fano factor F = Var(|Lk|)/mean(|Lk|)
   deciles) AND seed-doubling (128→256) moves F by <20% (convergence).
 - B3-KILL (tangle-vacuum dead): F < 1/3 (sub-Poissonian narrow — spec's own
   "Gaussian-narrow below CV/3" trigger) at converged seeds.
-- Gray: F ∈ (1/3, 1/2) ∪ (2, 3] → UNRESOLVED + named refinement (more seeds,
-  Λ-leg). Tolerance anchored to S4-measured CV (same ensemble family).
-Honesty scope (pre-computed): spectrum supports the NOISE component only —
+- Gray: F ∈ (1/3,1/2) ∪ (2,3] → UNRESOLVED + named refinement (more seeds,
+  Λ-leg). F > 3 → UNRESOLVED-gray as well (super-Poissonian blowup branch,
+  coded in run_b3.py else-clause; needs Λ-density leg before any reading).
 says nothing about charge quantization (missing-1/5 stand). Run reports
 (F, deciles, convergence, verdict), nothing else.
