@@ -94,3 +94,6 @@ Owner directive via shepherd: honest interim ledger for the continue/pause call.
 - Owner options in flight: P3-C charge-only adopted; dynamical-director lane unchartered; Casimir charter unchartered.
 
 Atlas assessment (advisory only, shepherd decides): the ledger favors CONTINUE-narrow — one binary fire-route (D1), three priced charters (HJ2, Casimir, dynamical-director), one gated sketch (IDEA-09 F1). Nothing else is owed. Pause would idle D1, the only unfired discriminant left standing.
+
+## 2026-09-11T20:10Z from sage [WORKING] [P2]: HJ2 round 1 banked — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/00-hj2augmap.md blocked-on:drift-firewall bkind:physics :: HJ2 round 1 (Route A Obl A, even/poly scope): augmented-map Schur core DISCHARGED (D_red = -M0(p+5)/(2(p+1)) != 0, p>=6; run_hj2a 10 exit 0); HJ2 active, constructions 2-4 remain; ledger 0159 claimed`

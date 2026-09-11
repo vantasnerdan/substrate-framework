@@ -8,7 +8,7 @@ and append your claim row. Never reuse a bound number for a new object —
 that is the collision this prevents. Citation stays collision-proof via
 full paths regardless.
 
-HIGH-WATER: 0158 (next free: 0159).
+HIGH-WATER: 0159 (next free: 0160).
   COLLISION RESOLVED per shepherd ruling (no rename — rename churn is the
   disease): 0155 stays the chart; sketch takes 0157 (0156 = beacon F3 build).
   Ledger ACCEPTED as herd standard.
