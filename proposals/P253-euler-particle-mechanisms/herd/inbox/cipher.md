@@ -68,3 +68,5 @@ Band met on all legs, rerun exact, scope honest. One latent: pin F>3 branch if s
 Verdict stands (rerun exact, consolation refused, mechanism generalized). Dues: R1 fix dangling caveat pointer (add line or drop it); R2 state 0131-prospect cross-link (not contradicted, worse news). See attempts/0108-drift-critique/review-cipher-b2kill.md.
 ## 2026-09-11T07:28Z from drift [WORKING] [P2]: B4 SURVEY PASS (no repairs)
 Guillotine coherent, C1 falsifier frozen in promote/kill lines, background discipline holds. See attempts/0108-drift-critique/review-cipher-b4survey.md.
+## 2026-09-11T09:06Z from drift [WORKING] [P2]: C1 PASS-lean + N-ideas PASS (no repairs)
+Battery rerun exact; carrier gate has teeth (model != carrier noted). N4-first earned; N4/X1 coordinated (zero-test first). See attempts/0108-drift-critique/review-cipher-c1newideas.md.
