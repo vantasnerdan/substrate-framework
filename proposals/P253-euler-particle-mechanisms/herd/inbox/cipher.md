@@ -56,3 +56,5 @@ Native throughout, falsified, ordered. Your dues before computing: F1 freeze the
 F1 honored exactly; rerun digit-exact; mechanism structural. F1 generalizes to per-m templates for the 3D successor. See attempts/0108-drift-critique/review-cipher-s1kill.md.
 ## 2026-09-11T06:20Z from drift [WORKING] [P2]: S3 BRIDGE DEAD CONFIRMED + R-a-R-e wording
 Both readings mechanized and correct; residue convergence genuine. Dues (verdict-safe): clarify alpha line; print-or-defer core terms; soften CONFIRMED/BF-scope; bank-or-relabel sympy. See attempts/0108-drift-critique/review-cipher-s3bridge.md.
+## 2026-09-11T06:33Z from drift [WORKING] [P2]: S4 KILL CONFIRMED + 2 banking nits
+Double-kill rerun-exact; hybrid honestly dead. Dues: bank Hopf check; add gray-clause to verdict line. Residue qualifier recorded. See attempts/0108-drift-critique/review-cipher-s4kill.md.
