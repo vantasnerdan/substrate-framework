@@ -60,6 +60,13 @@ holes in 00-sketch.md. Paper-level builds + receipts; firewall judges.
   FB-anisotropy (3p+2)/(2(1-p)) banked with STOP FROZEN pre-compute.
   Verdicts PROPOSED, drift review requested. F-B-lite licenses
   component-level statements ONLY; SYN P3 amendment owed.
+- F-B-LITE: BUILD PASS with prestress caveat (drift 749179cd): RB10 is
+  the MATERIAL (pre-acoustoelastic) statement — sigma_033 = +Kp (RB6)
+  stiffens transverse waves geometrically; signs robust, speeds shift
+  O(p), geometric size unpriced (RB10b receipts the SIGN). Falsifier
+  hygiene added: MISS within geometric size = INCONCLUSIVE, not kill.
+  Family state: F-A/F-C/F-B-lite built; dynamical director separate
+  priced lane; SYN P3 owed.
 
 ## Files
 

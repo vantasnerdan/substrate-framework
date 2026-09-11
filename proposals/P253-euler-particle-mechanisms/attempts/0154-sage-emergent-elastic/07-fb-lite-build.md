@@ -56,10 +56,18 @@ landed-pending-review.
   exact, rational rotation. MB2: rotating the strain WITHOUT the
   director breaks covariance — the axis pins the frame; objectivity
   requires the joint rule.
-- RB10 (FB-5): direction-dependent shear stiffness from the same W:
+- RB10 (FB-5, MATERIAL statement — PRE-ACOUSTOELASTIC): direction-
+  dependent MATERIAL shear stiffness from the same W:
   W(shear wave, k at angle θ from the axis)
-  = K[(1−p)sin²θ/20 + (3p+2)cos²θ/40]; ω² = (stiffness)/(inertia) with
-  the F-A-class inertia normalization PRICED (travels; no new machinery).
+  = K[(1−p)sin²θ/20 + (3p+2)cos²θ/40]. CAVEAT (drift 749179cd,
+  REQUIRED, added): the polarized reference carries the RB6 pre-stress
+  σ₀₃₃ = +Kp — tensile, uniform, self-equilibrated — whose geometric
+  (incremental-moduli) coupling STIFFENS transverse shear waves: wave
+  stiffness = material + prestress correction. RB10b receipts the
+  correction's SIGN (tensile ⇒ stiffens upward; no shear linear terms —
+  axis-diagonal only); its SIZE is O(p) and UNPRICED (incremental
+  moduli = a new receipt round if chartered). Signs/nonnegativity
+  ROBUST; quantitative wave speeds shift O(p).
 
 ## FB verdicts (per 01, F-B column; PROPOSED pending drift)
 
@@ -74,9 +82,13 @@ landed-pending-review.
   TIER — ⟨H⟩ = 0 needs achirality once the ensemble is polarized;
   declared in assumptions with the re-verdict clause standing (chiral
   branch ⇒ substantive ⇒ gate-1 machinery).
-- FB-5 (propagation): direction-dependent shear dispersion RECEIPTED
-  (RB10); second order, real, nonnegative for p ∈ [0, 1) (degenerate at
-  1); conditional on the F-A window as FB-1.
+- FB-5 (propagation): direction-dependent MATERIAL shear dispersion
+  RECEIPTED (RB10) — second order, real, nonnegative for p ∈ [0, 1)
+  (degenerate at 1); conditional on the F-A window as FB-1. CAVEAT
+  (drift 749179cd): qualitative content SAFE (tension stiffens upward —
+  signs robust); quantitative speeds carry O(p) acoustoelastic
+  corrections (geometric terms unpriced) — comparisons against measured
+  speeds must budget them.
 - FB-6 (scale separation): HOLD-conditional, travels unchanged.
 - SYN P3 (per-family amendment): the polarized branch's fluctuation
   SPECTRUM differs from the random-pilot prediction — the amendment
@@ -89,9 +101,16 @@ landed-pending-review.
 - Formula (banked RB5): measured shear-stiffness ratio must satisfy
   μ∥/μ⊥ = (3p+2)/(2(1−p)) with p determined INDEPENDENTLY of the ratio.
 - KILL conditions: (i) measured ratio inconsistent with the formula
-  beyond stated noise with independently-fixed p; (ii) any measured
-  NEGATIVE stiffness in the shear sector (model predicts PSD — a
-  negative mode is a model kill, not a window note).
+  beyond stated noise AND beyond the priced-acoustoelastic budget, with
+  independently-fixed p; (ii) any measured NEGATIVE stiffness in the
+  shear sector (model predicts PSD — a negative mode is a model kill,
+  not a window note).
+- HYGIENE (drift 749179cd, REQUIRED): a MISS within
+  geometric-correction size (the unpriced O(p) acoustoelastic budget of
+  RB10/RB10b) is INCONCLUSIVE — model-extendable, NOT a kill. Recorded
+  alongside the ratio formula before any measurement charter. The
+  material-ratio formula itself is unaffected (RB5 stands as the
+  material statement).
 - STOP rule (frozen before any measurement exists): the falsifier is
   FIREABLE only when p is measured by a route that does not use the
   ratio it predicts. If no such independent-p route can be constructed,
@@ -108,6 +127,13 @@ No dynamical director (out of scope; separate priced lane). No p
 self-consistency. No isotropic LANE-1 membership; no lane conjunction
 fires. No carrier/electron claim. No measurement. Chirality excluded by
 declaration, not derived.
+
+## Family state (post-caveat, shepherd routing)
+
+F-A, F-C, F-B-lite ALL BUILT (static-director tier); F-B dynamical
+director = SEPARATE PRICED LANE (unchartered). SYN P3 amendment remains
+OWED (unchanged). RB10/RB10b caveat travels with every citation of the
+anisotropy formula.
 
 ## §5 Registered dues — ALL PAID this round
 

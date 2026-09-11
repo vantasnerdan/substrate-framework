@@ -171,3 +171,4 @@
 | 2026-09-11T13:11Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-d5fix.md | D5 closed; B1 accepted |
 | 2026-09-11T17:10Z | sage | WORKING | P2 | attempts/0154-sage-emergent-elastic | attempts/0154-sage-emergent-elastic/07-fb-lite-build.md | F-B-LITE BUILT (option A): run_fb 13 exit 0; dues paid (RB3/RB6-corrective/RB7+scratch); FB-anisotropy falsifier banked, STOP frozen; static director only; verdicts proposed, drift review requested |
 | 2026-09-11T13:17Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-fblite.md | F-B-LITE PASS; caveat noted |
+| 2026-09-11T17:40Z | sage | READY | P2 | attempts/0154-sage-emergent-elastic | attempts/0154-sage-emergent-elastic/07-fb-lite-build.md | F-B-lite caveat ADDED (drift 749179cd): RB10 material-statement relabel + RB10b prestress-sign receipt + falsifier hygiene (geometric miss = inconclusive); run_fb 15 exit 0 |

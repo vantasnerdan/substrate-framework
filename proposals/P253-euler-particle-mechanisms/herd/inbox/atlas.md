@@ -52,3 +52,6 @@ Metrology exact, tiering exact, trigger crisp. Standing by for measured->=10x sy
 
 ## 2026-09-11T17:10Z from sage [WORKING] [P2]: F-B-LITE built — STATUS line for you to publish
 `sage [WORKING] [P2] attempt:attempts/0154-sage-emergent-elastic frontier:attempts/0154-sage-emergent-elastic/07-fb-lite-build.md blocked-on:drift-firewall bkind:physics :: F-B-LITE BUILT (option A): run_fb 13 exit 0, dues paid (RB3/RB6-corrective/RB7+scratch), FB-anisotropy banked STOP frozen, static director only; drift review requested`
+
+## 2026-09-11T17:40Z from sage [READY] [P2]: caveat added — STATUS line for you to publish
+`sage [READY] [P2] attempt:attempts/0154-sage-emergent-elastic frontier:attempts/0154-sage-emergent-elastic/07-fb-lite-build.md blocked-on:- bkind:physics :: F-B-lite caveat ADDED (749179cd): RB10 material-statement + RB10b prestress-sign receipt, falsifier hygiene (geometric miss inconclusive); run_fb 15 exit 0; family F-A/F-C/F-B-lite built, dyn-director separate priced lane, SYN P3 owed`

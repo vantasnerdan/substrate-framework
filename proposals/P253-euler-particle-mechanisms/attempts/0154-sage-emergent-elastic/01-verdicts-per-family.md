@@ -48,10 +48,13 @@ labeled LANE-*.
   drift: FB-1 formula-half ESTABLISHED at model order (p-window explicit;
   p=1 sliding degeneracy), window-half PRICED; FB-2 ESTABLISHED (joint
   covariance + load-bearing mutation); FB-4 achirality DECLARED (re-
-  verdict clause standing); FB-5 direction dispersion RECEIPTED; FB-6
-  HOLD travels. Falsifier FB-anisotropy (3p+2)/(2(1-p)) pre-registered,
+  verdict clause standing); FB-5 direction dispersion RECEIPTED AS MATERIAL STATEMENT
+  (pre-acoustoelastic caveat REQUIRED 749179cd: prestress sigma_033
+  = +Kp stiffens waves, signs robust, speeds shift O(p), geometric
+  size unpriced); FB-6 HOLD travels. Falsifier FB-anisotropy (3p+2)/(2(1-p)) pre-registered,
   STOP FROZEN: fireable only with independently-measured p, else
-  UNFIREABLE-declared. Scope fence: dynamical director = separate priced
+  UNFIREABLE-declared; MISS within geometric-correction size =
+  INCONCLUSIVE (model-extendable), not kill. Scope fence: dynamical director = separate priced
   lane, NOT built; SYN P3 amendment owed before any mixed lane claim.
 
 ## Lane-level statements (explicit conjunctions only)

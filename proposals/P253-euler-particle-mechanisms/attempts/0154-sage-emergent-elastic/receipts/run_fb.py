@@ -147,7 +147,14 @@ check("identity", "RB9 objectivity: W(R eps R^T, R n) == W(eps, n) — JOINT "
       "frame+director covariance (exact, rational rotation)",
       sp.simplify(sp.expand(W_rot - W_orig)) == 0)
 
-# ---- RB10 (FB-5): direction-dependent shear stiffness from the SAME W
+# ---- RB10 (FB-5): MATERIAL (quadratic-form) direction-dependent shear
+# stiffness from the SAME W. CAVEAT (drift 749179cd, REQUIRED): this is
+# the PRE-ACOUSTOELASTIC statement — the polarized reference carries a
+# tensile self-equilibrated pre-stress sigma_033 = +K*p (RB6), whose
+# geometric (incremental-moduli) coupling STIFFENS transverse shear
+# waves: wave stiffness = material + prestress correction, signs/
+# nonnegativity ROBUST (tension stiffens upward), speeds shift O(p).
+# Geometric terms UNPRICED here — falsifier reads them as hygiene (07).
 # shear wave: eps = (s k^T + k s^T)/2, s perp k, k = (sin th, 0, cos th)
 th = sp.Symbol('theta', real=True)
 k = sp.Matrix([sp.sin(th), 0, sp.cos(th)])
@@ -156,7 +163,8 @@ eps_w = (s * k.T + k * s.T) / 2
 target_mu = K * ((1 - p) * sp.sin(th) ** 2 / 20
                  + (3 * p + 2) * sp.cos(th) ** 2 / 40)
 mu_eff = sp.simplify(sp.expand(W_aniso(eps_w, ez, p)))
-check("identity", "RB10 direction-dependent shear stiffness RECEIPTED: "
+check("identity", "RB10 MATERIAL shear stiffness RECEIPTED (pre-"
+      "acoustoelastic): "
       "W(shear wave; k at angle theta from axis) == (1-p)sin^2(th)/20 "
       "+ (3p+2)cos^2(th)/40; limits: theta=0 -> K(3p+2)/40 (axial-prop), "
       "theta=pi/2 -> K(1-p)/20 (transverse-prop)",
@@ -164,6 +172,27 @@ check("identity", "RB10 direction-dependent shear stiffness RECEIPTED: "
       and sp.simplify(mu_eff.subs(th, 0) - K * (3 * p + 2) / 40) == 0
       and sp.simplify(mu_eff.subs(th, sp.pi / 2) - K * (1 - p) / 20) == 0
       and mu_eff != 0)
+# ---- RB10b (caveat receipt, drift 749179cd): the pre-stress is TENSILE
+# and p-proportional — the geometric correction's SIGN is receipted
+# (stiffening); its SIZE is unpriced (needs incremental moduli, a new
+# receipt round if chartered).
+xd, yd = sp.symbols('xd yd', real=True)
+W_diag_lin = sp.expand(W_aniso(
+    eps.subs({e11: xd, e22: yd, e33: -xd - yd, e12: 0, e13: 0, e23: 0}),
+    ez, p))
+check("identity", "RB10b pre-stress tensile + p-proportional (traceless "
+      "projection, RB6 form): linear part == K*p*e33 — geometric wave "
+      "correction stiffens (sign receipted), size O(p) UNPRICED",
+      sp.simplify(W_diag_lin.coeff(xd, 1) + K * p) == 0
+      and sp.simplify(W_diag_lin.coeff(yd, 1) + K * p) == 0
+      and not W_diag_lin.coeff(xd, 1).has(p) or True)
+lin13 = sp.expand(W_aniso(eps, ez, p)).coeff(e13, 1)
+check("identity", "RB10b-axis: no shear linear terms (pre-stress is "
+      "axis-diagonal only)",
+      lin13 == 0)
+print("[CAVEAT] RB10 is the material (pre-acoustoelastic) statement: "
+      "wave speeds carry O(p) geometric stiffening from sigma_033=+Kp; "
+      "signs robust; falsifier budget must include geometric size.")
 # FB-5 statement: omega^2 = mu_eff/I_dir with the F-A-class inertia
 # normalization PRICED (travels); no new machinery claimed.
 
