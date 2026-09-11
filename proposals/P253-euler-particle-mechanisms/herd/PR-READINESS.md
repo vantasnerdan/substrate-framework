@@ -30,6 +30,6 @@ No PR opened. One verdict per item. Evidence pointers inline.
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
 - B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASS e9299ef1 (zero-test decisive, X1-coordination disjoint — converges with X1 B-CIRC need).
-- missing-5 M-ideas: M1 BUILT + KILLED 4c757ba1 (indistinct, divergent-trajectory mechanism; drift verdict pending); M2/M3/M4 stand. Synthesis order advances: (b) S3 exact identities next.
+- missing-5 M-ideas: M1 BUILT + KILLED 4c757ba1 (indistinct at 0.1x-noise, divergent trajectories poison passage laws; constitutive-aa(χ) fails as phenomenology; drift verdict pending; beacon recommends M3 next over M2). M2/M3/M4 stand. Synthesis order advances: (b) S3 exact identities next (M3-recommendation noted for shepherd ordering).
 - Failure synthesis 0143 ORDERS next: (a) M1 done(KILL) → (b) S3 exact identities → (c) R-C coercivity → (d) B4 background; floor pattern holds; NOT-next respected. Synthesis CONDITIONAL banked.
 Recommended-shape section RETIRED until solution lands — no queued PR shape.
