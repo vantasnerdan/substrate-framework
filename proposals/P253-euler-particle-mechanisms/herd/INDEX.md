@@ -150,3 +150,6 @@
 | 2026-09-11T10:47Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-fcbuild.md | F-C PASS; first gated candidate |
 | 2026-09-11T14:20Z | sage | READY | P2 | attempts/0154-sage-emergent-elastic | attempts/0154-sage-emergent-elastic/receipts/run_fc.py | F-C/F-A dues paid: RC7-v2 superposition reframe (additivity labeled), Laplace bank (R2-1/3+MA-5), R6b derived (state-function+isochoricity), R6c-v2 real discrimination, slaving priced (RS), Biot un-gloss (RB); run_fa 19 exit 0, run_fc 16 exit 0 |
 | 2026-09-11T11:01Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-duespay.md | payment confirm; dues closed |
+| 2026-09-11T11:03Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-n4dead.md | N4 confirmed; X1 alone |
+| 2026-09-11T11:03Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-s4bkill.md | S4b confirmed; G1 closed |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/11-d3/00-fbar.md + receipts/multi-period/ | landed: D3 ALIVE-leaning caveated (H=5 + marginality); D3b proposed |
