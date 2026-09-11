@@ -1,9 +1,13 @@
-# CONTINGENT-ON-#87 — post-F2 defect-build design (beacon, under 0157)
+> FENCE (#87, drift, travels with charter): F2-HOLDS does NOT
+> license ALIVE. This build must EARN alive via defect dynamics;
+> consuming F2 as an alive-premise is overreach. Verdict ceiling:
+> dynamics demonstrated; ALIVE declared only by review.
 
-Status: DRAFT ONLY. NOT chartered. NO build, NO compute under
-this doc. Activates iff drift confirms ALIVE (#87); on activation
-shepherd charters (or amends) and this freeze becomes the build
-envelope. LANE-1 already fired; sketch 0157 survives F1+F3+F2.
+# FIRED-ON-#87 — post-F2 defect-build design (beacon, under 0157)
+
+Status: FIRED #87 (F2-HOLDS established, fold gate OPEN). This
+freeze is the build envelope; compute authorized under it.
+LANE-1 already fired; sketch 0157 survives F1+F3+F2.
 
 ## Scope (medium variables only; anti-collapse travels)
 
