@@ -9,10 +9,14 @@ no assemblies; build charters separately. Converges with drift D3
 Fast subsystem: banked A3 monodromy modes m1–6 (deflated, N64+128) as fibers.
 Slow base: vortex-filament position/shape collective coordinates (the same
 collective variables the κ-fits already parametrize). Adiabatic circuit of
-the slow variables → Hannay holonomy 1-form computed from the fast mode
-shapes → effective Lorentz-like deflection on the slow drift. Sign test:
-holonomy-predicted deflection sign vs S1-3D's recorded wrong-way sign —
-agreement CONFIRMS mechanism candidacy, disagreement KILLS X1 outright.
+the slow variables → Hannay holonomy 1-form from the fast mode shapes →
+effective Lorentz-like deflection on the slow drift. Coordination (N4-order
+per drift review): N4-zero-test runs FIRST with X1 extending it.
+Sign bar (pinned per drift review-atlas-x1scope, reproduction not corrective):
+bar = holonomy sign EQUALS the S1-3D observed wrong-way sign (mechanism
+explains data → candidacy confirmed); any other sign, including right-way,
+KILLS X1. (Drift's reading adopted: a holonomy predicting right-way explains
+nothing observed.)
 
 ## Inputs (all banked, no new compute to scope)
 - A3 mode shapes m1–6 + section-m0 arc (0120-cipher-m2b1 receipts).
