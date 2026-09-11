@@ -19,7 +19,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 - **G-a2 numbers — 0125 PASS CONDITIONAL** (beacon + drift review-beacon-0124correction): conditional lemma rho*~0.03 banked; 0124 RE-CERTIFIED STRONGER with /6 correction; R1–R3 DONE 37625ab1 (stale framing fixed, corrected receipts, sweep banked). G-a2 construction track complete — remaining: R-EM2 scope decision governs what it licenses.
 - **Residue synthesis SPEC — FINDINGS CLOSED** (cipher a7f1c267: dynamical B2, missing-4/5, inheritance; drift CONFIRMED verdict-safe, no re-review): combined SYN claim stands; predictions ordered; survivors program CLOSED under it (0134) — builds gated on materially different charge construction (none on table). 0133 scope drift-PASS.
 - **IDEA-01..08**: all ADOPTED with owners (cipher/drift/atlas/beacon+cipher);
-- **0127 native back-reaction — CLOSURE COMPLETE (drift verdict pending)** (beacon 0134 verdict): all three survivor addresses KILL under frozen 0133 falsifiers — A1 m≥2-seed (κ=+3.58, residual), A2 single-ring (κ=+2.04, 2× above line; reproduces S1 κ_B=2.0406 to 4 digits), A3 λ-family (r flat 0.9026–0.9079, κ=−6.82 wrong-way). Filament-charge via Magnus-form back-reaction CLOSED unconditional within scoped forms. Behind it: R-B CLOSED(MISS), sketches all dead+confirmed, S1-3D dead+confirmed, SPEC findings closed. Live threads: S3-residue direction + S4 only. Reopen needs materially different charge construction (none on table).
+- **0127 native back-reaction — CLOSURE CERTIFIED** (beacon 0134 + drift review-beacon-allkill CONFIRMED, 3 reruns exact, S4-line repair + A2 note): all three survivor addresses KILL; filament-charge via Magnus-form back-reaction CLOSED unconditional within scoped forms. Behind it: R-B CLOSED(MISS), sketches all dead+confirmed, S1-3D dead+confirmed, SPEC findings closed. Live threads: S3-residue direction + S4 only. Reopen needs materially different charge construction (none on table).
 - **S9 test — CLOSED-complete** (beacon 0114): drift-PASS, repairs a–d landed, integrity repaired+citable (eb3db6d1); EXPOSED verdict + P1 shape-member folded into 0122/IDEA-05; zero open items.
 - **Shadowing scope**: A1/A2 closed, H4-proof current token.
 
@@ -28,9 +28,9 @@ No PR opened. One verdict per item. Evidence pointers inline.
 - Path to promotion: drift firewall PASSED 5152755e — promotion HELD by shepherd sequencing through native closure. Then: individual review. R-EM2 DECLINED changes nothing in the drafts (both Euler-native); it forbids any two-way reading of 0111.
 - No hidden debt: ledger audit clean; negatives bank (0119/0121/0124) rides as certified no-go records.
 ## Bottom line
-Native back-reaction program CLOSED by construction (0134: all routes/kills
-banked, drift closure-verdict pending) — PR HELD only on that verdict plus
-shepherd's sequencing call. When both land: close #198, advance #203
-Euler-native only — conditional lemma (C UNSATISFIED, honest), certified
-negatives (0119/0121/0124 + native kills), 0111 as one-way observation,
-charge work BLOCKED per reversion, SYN SPEC paper-only.
+Native back-reaction program CLOSED and CERTIFIED (0134 + ALL-KILL confirm,
+3 reruns exact) — PR HELD only on shepherd's sequencing call. When it lands:
+close #198, advance #203 Euler-native only — conditional lemma (C
+UNSATISFIED, honest), certified negatives (0119/0121/0124 + native kills),
+0111 as one-way observation, charge work BLOCKED per reversion, SYN SPEC
+paper-only.
