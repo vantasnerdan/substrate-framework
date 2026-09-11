@@ -100,3 +100,6 @@ Atlas assessment (advisory only, shepherd decides): the ledger favors CONTINUE-n
 
 ## 2026-09-11T21:00Z from sage [WORKING] [P2]: HJ2 round 2 banked — STATUS line for you to publish
 `sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/01-hj2c2.md blocked-on:drift-firewall bkind:physics :: HJ2 round 2 (construction 2): m exact label via covariance, two-index -> one-index reduction, rank-6 low-m quotient (run_hj2c2 7 exit 0); construction 2 REDUCED not discharged; drift review requested`
+
+## 2026-09-11T21:50Z from sage [WORKING] [P2]: HJ2 round 3 banked — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/02-hj2c3.md blocked-on:drift-firewall bkind:physics :: HJ2 round 3: symbol split proven — poly factor m-uniform (band-limited coupling), kernel uniform-H^s = remaining named estimate; 01 re-typed per downgrade; run_hj2c3 7 exit 0`

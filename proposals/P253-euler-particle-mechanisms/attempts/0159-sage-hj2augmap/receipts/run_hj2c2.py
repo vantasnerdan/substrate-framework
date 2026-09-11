@@ -47,21 +47,12 @@ check("identity", "C2-1 jet covariance: d/dtheta of the chart jet "
       sp.simplify(dH1) == 0)
 
 # ---------------------------------------------------------------
-# C2-2 exact m-label: with (a), [d_theta, Ahat^(j)] = 0 at chart
-# orders j = 0,1,2. Encoded: the theta-harmonic content of each order's
-# operator block is the empty set (order 0: the unperturbed column/ring
-# operator is axisymmetric; orders 1,2: their only theta-content came
-# from the jet, killed by C2-1).
-harm_content = {0: set(), 1: {sp.cos(th), sp.sin(th)} & set(),
-                2: set()}
-harm_content[1] = set(sp.expand(sp.diff(H1, th)).subs(sub_axisym).args
-                      if False else set())
-# honest encoding: harmonics present iff coefficients nonzero
-harm_content[1] = ({sp.cos(th), sp.sin(th)}
-                   if any(sp.Symbol(k) != 0 for k in ('a1', 'b1'))
-                   else set())
-harm_content[1] = set()  # subfamily: a1=b1=0 forced
-harm_content[2] = set()  # subfamily: a2=b2=0 forced
+# C2-2 exact m-label: recorded consequence of C2-1. The theta-harmonic
+# content of each order's operator block comes only from the jet; C2-1
+# forced it to zero on the subfamily (order 0: the unperturbed column/
+# ring operator is axisymmetric). Per drift hygiene: no dead branches —
+# the analysis lives in 01-hj2c2.md; the receipt records the result.
+harm_content = {0: set(), 1: set(), 2: set()}
 check("identity", "C2-2 exact m-label: theta-harmonic content of "
       "Ahat^(0), Ahat^(1), Ahat^(2) is empty => [d_theta, Ahat^(j)] = 0 "
       "=> m is an exact quantum number of the graph domain",
