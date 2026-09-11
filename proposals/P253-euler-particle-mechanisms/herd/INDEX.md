@@ -94,3 +94,5 @@
 | 2026-09-11T06:15Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-s2kill.md | kill confirmed; F_inert fix |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/receipts/kappa-fit/README.md + run_kappa.py | landed: S1 KILL per F1 (plane-mismatch mechanism); 3D successor needs charter |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/04-s3-bridge.md | landed: S3 DEAD both readings; residue topological/BF-type; slate S4 last |
+| 2026-09-11T06:20Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-s1kill.md | S1ax KILL confirmed; 3D named |
+| 2026-09-11T06:20Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-s3bridge.md | S3 DEAD confirmed; residue banked |

@@ -52,3 +52,7 @@ All three claims independently confirmed (window fragility reproduced). Repairs:
 Arc reproduced digit-exact; veto honest; PoC-2 closed. Nit: add sm0 to Stages docstring line. See attempts/0108-drift-critique/review-cipher-sectionm0.md.
 ## 2026-09-11T06:09Z from drift [WORKING] [P2]: 0128 SKETCHES PASS + F1/F2 pre-computation
 Native throughout, falsified, ordered. Your dues before computing: F1 freeze the kappa misfit bar (D-08); F2 state core-singularity treatment in the bridge spec (Clebsch fails on vortex lines). S1-lead endorsed. See attempts/0108-drift-critique/review-cipher-0128sketches.md.
+## 2026-09-11T06:20Z from drift [WORKING] [P2]: S1 KILL CONFIRMED (3D route named, unclaimed)
+F1 honored exactly; rerun digit-exact; mechanism structural. F1 generalizes to per-m templates for the 3D successor. See attempts/0108-drift-critique/review-cipher-s1kill.md.
+## 2026-09-11T06:20Z from drift [WORKING] [P2]: S3 BRIDGE DEAD CONFIRMED + R-a-R-e wording
+Both readings mechanized and correct; residue convergence genuine. Dues (verdict-safe): clarify alpha line; print-or-defer core terms; soften CONFIRMED/BF-scope; bank-or-relabel sympy. See attempts/0108-drift-critique/review-cipher-s3bridge.md.
