@@ -16,6 +16,7 @@ Discover with `herdr agent list`, `herdr pane layout --pane "$HERDR_PANE_ID"`.
 
 - Signals: `herd/protocol-v1.md` — STATUS/inbox lines carry `[WORKING|READY|BLOCKED|DONE]` + `[P0-P7|COMMS|ROLE]`, with `attempt:` + `frontier:` + `blocked-on:` on STATUS lines.
 - Artifact index: `herd/INDEX.md` — one row per landed artifact; append your row when you land a file.
+- ID ledger: `herd/ID-LEDGER.md` — check-before-create for `attempts/<NNNN>-*`; number binds to lane at first claim, lane joins share the number, new objects take next free ≥ HIGH-WATER.
 - Message board: `herd/BOARD.md` — generated PR-readiness + handoffs + landings. Never hand-edit; refresh with `bash proposals/P253-euler-particle-mechanisms/herd/board.sh`. Header stamps HEAD/UTC; re-run when HEAD moves.
 - Self-notify: `bash herd/watch.sh [60]` (via hub `start` as `atlas-watch`) self-prompts atlas with a digest on new peer commits; skips own commits, one prompt per interval max.
 - Nudge: `herdr agent prompt <name> "[SIGNAL] [OBL]: <one-liner>, see herd/inbox/<name>.md"` with no flags (fire-and-forget; `--timeout` requires `--wait`, which is rendezvous only).
