@@ -22,6 +22,16 @@ slope agreement 1.05). Breaking axisymmetry did not open a
 fittable toroidal channel: the Magnus-form template remains
 structurally orthogonal to the response, with wrong-way best fit.
 m ≥ 3 response norms ≤ 1e-7 (no content at this seed).
+## Confirmation alignment (drift review-beacon-s1-3d, KILL CONFIRMED)
+
+Over-determined: m=1-alone own-best fit reproduces pooled kappa*
+exactly (pooling-proof sign); residual at own-best-fit (stronger
+than shared-kappa reading). Discipline adopted going forward:
+exclude-empty-channels-from-pool (moot here by 1000x weight).
+Surviving addresses (unbuilt, none claimed): m>=2-seeded charge
+tests; non-leapfrog carriers; non-Magnus filament back-reaction
+forms. Full-v×B template correction carries to any future filament
+build.
 
 ## Scope (no overreach)
 
