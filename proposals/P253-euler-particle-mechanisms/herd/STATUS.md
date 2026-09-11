@@ -388,3 +388,4 @@
 - 2026-09-11T15:18Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2fin.md blocked-on:- :: HJ2-FIN PIECES BANKED, assembly CONDITIONAL (per-sector constants link missing).
 - 2026-09-11T19:10Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2-FIN review folded (pieces banked, assembly conditional)
 - 2026-09-11T19:15Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: HJ2 LINK CLOSED folded (self-adjoint route, construction 4 re-submitted closed)
+- 2026-09-11T15:25Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2link.md blocked-on:- :: HJ2 link NOT CLOSED (JH-inference invalid; HJA-6 line missing).
