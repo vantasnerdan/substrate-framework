@@ -19,19 +19,19 @@ No PR opened. One verdict per item. Evidence pointers inline.
 - **G-a2 numbers — 0125 PASS CONDITIONAL** (beacon + drift review-beacon-0124correction): conditional lemma rho*~0.03 banked; 0124 RE-CERTIFIED STRONGER with /6 correction; R1–R3 DONE 37625ab1 (stale framing fixed, corrected receipts, sweep banked). G-a2 construction track complete — remaining: R-EM2 scope decision governs what it licenses.
 - **IDEA-01..08**: all ADOPTED with owners (cipher/drift/atlas/beacon+cipher);
   IDEA-03 (R9-start) 1/3 closed — gates G-a2 trust-region start, rides with (a).
+- **0127 native back-reaction — FRONT ITEM** (beacon, Phase-1 SCOPING ONLY, c9154726): owner declined R-EM2 import; program thesis — stop pushing state error through the kink (0124 mechanism), change what is transported or what carries the boundary. Routes: R-A tube-uniformity (witness on sets, no transport), R-B shape-calculus split (bulk + boundary-motion), third route + diagnostic in design.md. No solves/compute in 0127; builds charter separately. Team concentrated here per shepherd.
 - **S9 test — CLOSED-complete** (beacon 0114): drift-PASS, repairs a–d landed, integrity repaired+citable (eb3db6d1); EXPOSED verdict + P1 shape-member folded into 0122/IDEA-05; zero open items.
 - **Shadowing scope**: A1/A2 closed, H4-proof current token.
 
 ## Claim-promotion backlog
 - Drafts EXIST: attempts/0126-beacon-claims/drafts.yaml (C-EUL-001 no-go / C-EUL-002 conditional, UNSATISFIED honest; registry schema, `review: draft` — no registry writes, namespace free as of 2026-09-10).
-- Path to promotion: drift firewall PASSED 5152755e (faithful, bounded, typed; R1–R3 closed) — remaining: individual review. R-EM2 DECLINED changes nothing in the drafts (both Euler-native); it forbids any two-way reading of 0111.
+- Path to promotion: drift firewall PASSED 5152755e — promotion HELD by shepherd sequencing until 0127 design lands (team concentrated). Then: individual review. R-EM2 DECLINED changes nothing in the drafts (both Euler-native); it forbids any two-way reading of 0111.
 - No hidden debt: ledger audit clean; negatives bank (0119/0121/0124) rides as certified no-go records.
 ## Bottom line
-Zero actions stand between now and a joinable PR: every gate decided, every
-track banked or carried. G-a2 fully built (0125 conditional PASS, 0124
-re-certified, R1–R3 done, drafts firewall-PASSed), M2-B1/A3 triple-complete
-(m0 PASS), S9 closed, negatives certified (0119/0121/0124), R-EM2 DECLINED
-with reversion applied. Recommended PR shape: close #198, advance #203 with
-Euler-native results only — the conditional lemma (C UNSATISFIED, honest),
-certified negatives, 0111 as one-way observation; charge work marked BLOCKED
-per reversion, no import, no debt.
+PR HELD until the native back-reaction program resolves (owner direction).
+Readiness now tracks 0127 scoping as the front item with PR assembly queued
+behind it — NOT zero actions. Banked and waiting: G-a2 fully built (0125
+conditional PASS, 0124 re-certified, R1–R3 done, drafts firewall-PASSed),
+M2-B1/A3 triple-complete, S9 closed, negatives certified (0119/0121/0124),
+R-EM2 DECLINED with reversion applied. Queued PR shape (when 0127 resolves):
+close #198, advance #203 Euler-native only.
