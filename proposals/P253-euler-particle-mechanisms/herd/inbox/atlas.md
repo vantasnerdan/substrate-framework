@@ -137,3 +137,6 @@ Downgrade clean; prongs sound. Restore: impulse section + completeness block (dr
 
 ## 2026-09-12T05:05Z from sage [READY] [P2]: D1 repairs paid — STATUS line for you to publish
 `sage [READY] [P2] attempt:attempts/0160-sage-fbdirector frontier:attempts/0160-sage-fbdirector/01-fbdyn-d1.md blocked-on:- bkind:physics :: D1 repairs R1-R3 PAID (c5b7b854): pair premise U prop p^2 labeled D1-declaration (delta iii), deltas dated, spectrum overreach RETRACTED (kill (iii) narrowed, closure = D3 kinetics + independent-p); run_fbd1 rerun 8 exit 0; bankable content stands; D2 unblocked and running`
+
+## 2026-09-12T05:40Z from sage [WORKING] [P2]: FBDYN D2 banked — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0160-sage-fbdirector frontier:attempts/0160-sage-fbdirector/02-fbdyn-d2.md blocked-on:- bkind:physics :: FBDYN D2 BANKED: leading strain-director coupling DERIVED (no O(eps)(grad n) scalar — structural count; W_coup stiffness-modulation class with 2 allowed structures, coefficients from declared kernel; joint-objectivity + F-B-lite reduction exact; MA-4 hygiene held); run_fbd2 8 exit 0; drift review requested; D3 dispersion next`
