@@ -2,22 +2,24 @@
 
 Experiment: rb_experiment.py, exit 0, trust-r3 tensor state.
 Semi-Lagrangian front advection (43-pt contour by normal(du),
-IDW extension 0065-fenced smooth, detJ-relative gate: zero drops).
+## Measured (printed; CORRECTED per drift review-beacon-rbstop)
 
-## Measured (printed)
-
-- 1.0x: shape-err 3.13 vs exact 9.18 (34%; bar <= 20%) vs linear
-  3.97. MISS-PT (beats linear, misses bar).
-- 0.5x: shape-err 1.70 vs exact 3.49 (49%) vs linear 2.60. MISS-PT.
-- 0.25x: shape-err 1.04 vs exact 1.51 (69%) vs linear 1.30.
-  Consistency bar (<= linear) PASSES.
+CORRECTION: the report v1 compared shape-err against the linear
+PREDICTION (5.21/2.60/1.30). Design G-Q5 bars use linear-ERR
+(|pred-exact| = 3.97/0.89/0.21). Honest recomputation:
+- 1.0x: shape-err 3.13 vs exact 9.18 (34%; bar <= 20%) vs linear-err
+  3.97. MISS-PT (beats linear — ONLY scale where shape wins).
+- 0.5x: 1.70 vs 3.49 (49%) vs linear-err 0.89. MISS-PT (LOSES).
+- 0.25x: 1.04 vs 1.51 (69%) vs linear-err 0.21. Consistency bar
+  FAILS on design terms.
 
 ## Adjudication (frozen trigger)
 
-STOP FIRES (1.0x and 0.5x miss 20%). Front advection explains a
-MAJORITY (~60-70%) of the exact response at every scale and beats
-linearized transport everywhere — but a ~1/3 residual stands that
-front motion cannot supply.
+STOP FIRES (1.0x and 0.5x miss 20%; quarter-scale misses too).
+Explained shares ((exact-shape)/exact): 66%/51%/31% per scale —
+falling trend supports the mechanism (front dominates large
+displacement; bulk-linear wins small). Residual stands that front
+motion cannot supply; every correction points the stop harder.
 
 ## Skirt-obstruction record (amended fallback; R-C motive)
 
