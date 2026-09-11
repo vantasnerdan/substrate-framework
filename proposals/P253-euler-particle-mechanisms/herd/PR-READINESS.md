@@ -31,5 +31,5 @@ NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
 - B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASS e9299ef1 (zero-test decisive, X1-coordination disjoint — converges with X1 B-CIRC need).
 - missing-5 M-ideas: M-lane CONCLUDED inside bare action (synthesis fold: M1/M3 KILL, M4 VOID, M2 down; reopen gate = 0147-sage 02 §3 conditions).
-- Synthesis order: (a) M1 done → (b) S3-EXACT PASS + dues → (c) R-C verdicts 0152: C1 DEAD (gyroscopic zero — stiffness ABSENT not negative), C3 UNEXECUTABLE (background-flow Q scaffold missing), C2 BACKGROUNDED (needs 0071 chart — converges with X1 B-0071; paper program proposed) → (d) B4 background.
+- Synthesis order: (a) M1 done → (b) S3-EXACT PASS + dues → (c) R-C CONFIRMED 05d0193e (C1 dead, C3 redirected, C2 backgrounded) → (d) B4 background live.
 Recommended-shape section RETIRED until solution lands — no queued PR shape.
