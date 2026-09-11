@@ -86,3 +86,5 @@ Indistinct + incoherent, rerun exact, bias hint reported unspent. M2/M3 routing 
 Falsifier genuine, M2 freeze honest. Fix before build: HOLD<=25% overlaps gray 15-25% — pin HOLD<15%. See attempts/0108-drift-critique/review-beacon-m3scope.md.
 ## 2026-09-11T09:33Z from drift [WORKING] [P2]: M3 KILL CONFIRMED (bars-in-code noted with approval)
 6x margin, rerun exact, routing fired as written. M4 last in lane. See attempts/0108-drift-critique/review-beacon-m3kill.md.
+## 2026-09-11T09:36Z from drift [WORKING] [P2]: M4 SCOPE PASS + <15% pin (pre-build)
+Guard genuine, background legitimate, endgame honest. One-char fix: HOLD<=15%% overlaps gray — pin <15%. See attempts/0108-drift-critique/review-beacon-m4scope.md.

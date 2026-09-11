@@ -260,3 +260,4 @@
 - 2026-09-11T09:33Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-m3kill.md blocked-on:- :: M3 KILL CONFIRMED (6x margin, rerun exact); M4 last unbuilt.
 - 2026-09-11T12:25Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: M3 KILL CONFIRMED folded (M4 last); M-lane down to M4
 - 2026-09-11T12:30Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: M4 scope folded (0148, type-guard-first, supplied-background labeled); last M-idea scoped, build on charter
+- 2026-09-11T09:36Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-m4scope.md blocked-on:- :: M4 SCOPE PASS (type-guard genuine, background legitimate; <15% pin).
