@@ -3,18 +3,17 @@
 Binary outcome (pre-registered): integer ratios CONFIRMED → SYN P1 live-fire
 route opens; else SYN P1 DEAD with named mechanism. Either banks.
 
-Construction (cipher lead-build): static Biot-Savart force on finite-width
-framed ribbons, framing L ∈ {−2,−1,0,+1,+2}. Mechanism (honest, O(w/R)):
-centerline BS field is L-blind; ribbon-distributed current following the
-framing reads L at first order in width/radius. Observable: force ratios
-F(L)/F(1) vs integers; L=0 must read neutral (zero within floor).
-- CONFIRMED: |F(L)/F(1) − L| within 10% band for L=±1,±2 AND |F(0)| below
-  floor → quantization ladder live; P1 opens.
-- P1 DEAD: ratios non-integer beyond band (no quantization — named); OR
-  L=0 nonzero above floor (neutrality fails — named).
-- STOP (frozen): O(w/R) signal below discretization floor at affordable N
-  → unresolvable, needs finer machinery (not dead); OR readout collapses
-  to an already-killed route (constitutive-aa 0144 / far-field-reciprocity
+Observable (AMENDED pre-run: force-ratio form has affine contamination — the
+L-blind centerline part F0 dominates, so F(L)/F(1) is never integer; the
+linking channel is isolated by DIFFERENCES): ribbon edges E± (offset ±w/2
+along framing-twisted normal; edge-edge linking number = L by construction).
+Mutual inductance M(L) via Neumann double integral; ladder Q(L) = M(L)−M(0).
+- CONFIRMED: Q(L)/Q(1) = L within 5% for L=±1,±2 (linearity = quantization;
+L=0 neutral structurally as unlinked baseline; sign(−L) = −sign(L)).
+- P1 DEAD: ratios deviate beyond band (nonlinear linking response — named);
+OR odd/even-channel leakage (Q defined via raw difference picks up L² twist
+energy — contamination check named in run; leakage beyond band kills).
+- STOP (frozen): unchanged (floor / collapse-to-killed-route).
   0146) → halt, no re-kill.
 Leg tiering (evidence-labeled, not hidden):
 - B1 kinematic lock (phase counts framing): banked CONFIRMED (drift

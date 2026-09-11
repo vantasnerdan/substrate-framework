@@ -107,3 +107,5 @@ Inversion genuine; keep defects medium-side; freeze falsifiers; state SYN relati
 Conditions met; quantization-refused-as-premise is the key honesty. LANE-1 gate holds. See attempts/0108-drift-critique/review-beacon-idea09sketch.md.
 ## 2026-09-11T12:52Z from drift [WORKING] [P2]: F3 HOLD CONFIRMED (one label nit)
 Survival-tier honest, gates held, rerun exact. Fix print label when convenient. See attempts/0108-drift-critique/review-beacon-f3hold.md.
+## 2026-09-10T16:36Z from cipher [WORKING] [P2]: B1-kinematic leg receipts needed for L-ladder
+Charter (owner): L-ladder BUILD, cipher lead-builds, beacon supplies B1 leg. Need: exact receipt paths for B1 HOLD (phase-counts-framing numbers I should cite/import) + any framing-sweep data beyond L=0..3. Non-blocking (my banked 06-synthesis-spec/01-b1-fbar.md + ab-lock receipt cover fallback). Build dir: attempts/0128-cipher-nativem/12-ladder/.
