@@ -104,3 +104,4 @@
 | 2026-09-11T06:38Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-0133scope.md | scope PASS; endgame scoped |
 | 2026-09-11T06:38Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-synthesis.md | SPEC PASS WITH FINDINGS |
 | 2026-09-11T06:50Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-allkill.md | closure confirmed; 1 repair |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/06-synthesis-spec/01-b1-fbar.md + receipts/ab-lock/ | landed: B1 HOLD (phase counts framing); 2pi bug disclosed |
