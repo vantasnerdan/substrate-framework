@@ -14,3 +14,18 @@ Consequence: missing-5 NOT supplied; P1/F-a stays CONDITIONAL (no decoration).
 S1-3D successor lane (0131) unaffected — different observable (per-m), not
 contradicted. No N-leg run (2.5 s verdict at N=64; N-dependence moot under
 residual-1.0 kill — recorded, not hidden).
+
+## R1 caveat (template-geometry coupling; pointer landing site)
+Template T = v×B uses the helix's OWN Biot–Savart field B — geometry couples
+into BOTH response (via Magnus on helical tangent) and template (via helical
+B). The ratio-tracking (1.96/2.85/1.45) may partly reflect shared geometry
+rather than charge physics; the residual-1.0 kill is unaffected (orthogonal
+directions don't care about shared scale). Logged, not quantified.
+
+## R2 prospect cross-link (0131 honesty)
+B2's structural mismatch (Magnus-t̂×V vs Lorentz-v×B on 3D filament geometry)
+BEARS on 0131's prospects: 0131 now tests whether per-m decomposition escapes
+what full-3D helical response could not. "0131 unaffected" (different
+observable, own bars) is logically true and NOT good news — its run carries
+extra information value either way (escape-or-confirmation). 0131 scope/bars
+stand unchanged; this sentence prevents misreading.
