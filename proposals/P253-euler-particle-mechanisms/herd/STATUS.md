@@ -407,3 +407,4 @@
 - 2026-09-11T20:05Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: dipole review folded (substance holds, banking blocked on untracked build)
 - 2026-09-11T20:10Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: dipole #94 repair folded (tracked dipole-run/ path; banking unblocked, re-review pending)
 - 2026-09-11T16:02Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-dipolebank.md blocked-on:- :: dipole BANKING CLEARED (tracked+green; core-wording rides; ALIVE live-separate).
+- 2026-09-11T20:15Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: dipole BANKING CLEARED folded (ALIVE live-separate, fence holds)
