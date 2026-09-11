@@ -112,3 +112,4 @@
 | 2026-09-11T07:23Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-b2kill.md | B2 confirmed; structural mismatch |
 | 2026-09-11T07:24Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-capstone-syn.md | CAPSTONE: CONDITIONAL + end-state |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/07-b4/00-compactness-survey.md | landed: negative result + C1-C4 ranked with promote/kill; caps hold |
+| 2026-09-11T07:28Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-b4survey.md | B4 PASS; background holds |
