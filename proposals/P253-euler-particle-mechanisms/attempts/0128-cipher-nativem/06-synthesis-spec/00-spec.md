@@ -16,11 +16,19 @@ noise floor (S4 numbers: CV≈1.9, α≈0.76 at Λ≈0.67 — reused as noise sp
 the kill inverted into a prediction of fluctuations). Neutrality (neutrino
 direction): zero linking class (unframed, unlinked carrier) ⇒ q=0 BY
 CONSTRUCTION — the synthesis predicts neutrality structurally, not by tuning.
+Inheritance (F3): S1's integer was MUTUAL linking; SYN's charge is
+SELF-linking/framing (single-carrier sector; CWF relation). S1's force route
+is dead; its integer-form candidacy is inherited — evidence not miscited.
 
 ## Predictions (ordered, cheapest first)
 - P1 (exact, no fit): charge ratios between carriers = ratios of small
   integers (linking numbers). Any measured ratio inconsistent with ℚ-small
-  kills SYN outright.
+  kills SYN outright. F1 amendment: B2 must measure a DYNAMICAL quantity —
+  the ratio of Magnus-response slopes of two carriers with different framing
+  integers (S1 κ-machinery, slope per carrier) — against the topological
+  integer ratio, comparison frozen pre-run. Until that observable exists,
+  P1/F-a are CONDITIONAL on missing-5 (dynamical charge-observable
+  construction); an unfireable falsifier is decoration.
 - P2 (preregistered reuse): Aharonov–Bohm phase around a linking circuit =
   2π×integer (0111 R-EM4 predicate, already frozen): SYN predicts the integer
   is the SAME L as the charge (phase-charge lock, zero free parameters).
@@ -33,7 +41,7 @@ CONSTRUCTION — the synthesis predicts neutrality structurally, not by tuning.
   kills the integer program (does not kill Euler particles — different lane).
 
 ## Falsifiers (each sufficient, pre-registered)
-- F-a: non-integer charge ratio (P1 fails).
+- F-a: non-integer charge ratio (P1 fails; CONDITIONAL on missing-5 until the B2 dynamical observable exists).
 - F-b: AB phase ≠ 2π×(charge integer) beyond the P3 noise floor (phase-charge
   lock breaks).
 - F-c: Maxwell F² dynamics DEMANDED by an observation the BF sector cannot
@@ -49,9 +57,16 @@ CONSTRUCTION — the synthesis predicts neutrality structurally, not by tuning.
 2. Propagation principle (second-order dynamics — unchanged #2).
 3. Electron-vs-neutrino full split (neutrality structural per above; mass/
    spin/statistics split NOT in this spec — P253 parent scope, not smuggled).
+4. Vacuum-tangle model/existence (F2: SYN's P3/B3 noise component assumes the
+   S4 tangle as background; S4 numbers are its pilot spec, not its
+   establishment — buried assumption surfaced).
+5. Dynamical charge-observable (F1: response-slope ratio construction for B2;
+   until built, P1/F-a CONDITIONAL — an unfireable falsifier is decoration).
 
 ## Build order (when chartered, not now)
-B1: P2 phase-charge lock (0111 predicates exist; cheapest). B2: P1 integer
-ratios on two-carrier filament runs (A3 code family). B3: P3 fluctuation
-spectrum (tangle pilot extended). B4: compactness search (analytic program).
+B1: P2 phase-charge lock (0111 predicates exist; cheapest). B2: DYNAMICAL
+ratio (Magnus-response slopes of two framing-distinct carriers vs integer
+ratio; missing-5 builds the observable first). B3: P3 fluctuation spectrum
+(tangle pilot extended; needs missing-4 for full license). B4: compactness
+search (analytic program).
 No builds in this spec; no verdicts claimed. S4-verdict + nits ride separately.
