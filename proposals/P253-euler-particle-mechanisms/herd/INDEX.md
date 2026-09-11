@@ -155,3 +155,4 @@
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/11-d3/00-fbar.md + receipts/multi-period/ | landed: D3 ALIVE-leaning caveated (H=5 + marginality); D3b proposed |
 | 2026-09-11T11:13Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-d3caveat.md | caveat confirmed; D3b scoped |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/11-d3/01-d3b-fbar.md + receipts/d3b-berry/ | landed: D3b DEAD (no geometric accumulation); doubly closed |
+| 2026-09-11T11:50Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-d3bdead.md | DEAD stands; wrap-fix needed |
