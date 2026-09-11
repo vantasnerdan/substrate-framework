@@ -30,7 +30,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
 - B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first; N4 scope drift-PASSed, then BUILT + DEAD-no-bundle (X1 extends); S4b BUILT + KILLED 53c97445 (order suppresses linking; G1 breaker CLOSED).
-- 0154 emergent-elasticity CHARTERED + BUILT (F-A formula-half PASS, window+R6b dues open) + F-C BUILD PASS 282962e9 (RC7 reframe): extension candidate advancing, dues tracked.
+- 0154 emergent-elasticity CHARTERED + BUILT, ALL DUES PAID 16792f15 (F-C: R1 RC7-v2 superposition + additivity labeled, R2 Laplace banked; F-A: R6b derived, R6c-v2, slaving priced, Biot un-glossed; run_fa 19 + run_fc 16 exit 0): extension candidate fully green.
 - missing-5 M-ideas: M-lane CONCLUDED inside bare action (synthesis fold: M1/M3 KILL, M4 VOID, M2 down; reopen gate = 0147-sage 02 §3 conditions).
 - Synthesis order: (a) M1 done → (b) S3-EXACT PASS + dues → (c) R-C CLOSED (C3 DEAD CONFIRMED b1301a99, premise both ends; F-C independent) → (d) B4 background live.
 Recommended-shape section RETIRED until solution lands — no queued PR shape.
