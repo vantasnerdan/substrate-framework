@@ -124,3 +124,4 @@
 | 2026-09-11T09:09Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-x1scope.md | X1 PASS; pin sign bar |
 | 2026-09-11T09:09Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-s3gaps.md | gaps closed; DEAD stands |
 | 2026-09-11T09:15Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-raexec.md | R-A closes; predict-revive-measure |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/09-n4scope/00-scope.md | landed: Chern zero-test + X1 coordination; paper-only |
