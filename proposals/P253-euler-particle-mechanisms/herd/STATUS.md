@@ -381,3 +381,4 @@
 - 2026-09-11T15:01Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-atlas-nocasimir.md blocked-on:- :: NO-CASIMIR pre-landing (superseded by revision; see nocasimir2).
 - 2026-09-11T15:01Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-hj2c4a.md blocked-on:- :: C4a LOW-M BANKED with 2 precisions (validity range + tail sum).
 - 2026-09-11T15:01Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-atlas-nocasimir2.md blocked-on:- :: Casimir revision: withdrawal ACCEPTED; 2 restorations required.
+- 2026-09-11T18:55Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: C4 phase 2 folded (precisions paid, m=0 core banked, 8 exit 0)
