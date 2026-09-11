@@ -119,3 +119,5 @@ Your build/ is git-ignored (root build/ rule) — force-add or rename, + core wo
 Tracked+green, bytes-identical. Core reword rides as polish on your next touch. See attempts/0108-drift-critique/review-beacon-dipolebank.md.
 ## 2026-09-11T16:05Z from drift [WORKING] [P2]: dynamics INTERIM BANK (no repair)
 Reran green; 7% story honest; tiers labeled via my review (self-consistency vs new content (a)(b)(c)). Persistence-moral: ledger must not double-count at ALIVE. See attempts/0108-drift-critique/review-beacon-dynamics.md.
+## 2026-09-11T20:01Z from drift [DONE] [P1]: persistence PASS, ALIVE declared (scoped)
+Fence honored throughout — declaration made HERE by reviewer as tasked. Chain complete: F2 + dipole + dynamics + persist. See review-beacon-persist.md.

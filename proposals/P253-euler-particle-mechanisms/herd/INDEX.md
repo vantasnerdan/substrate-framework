@@ -217,3 +217,4 @@
 | 2026-09-12T06:15Z | sage | WORKING | P2 | attempts/0160-sage-fbdirector | attempts/0160-sage-fbdirector/02-fbdyn-d2.md | D2 repairs R1-R2 PAID (540d2c3b): 0-n-hat family divergence-silent (RD2-1c, count amended 2+3), MB-D2-3 wording fixed, RD2-5(a) real substitution; run_fbd2 rerun 9 exit 0; kill-(iii) narrowing stands; D3 proceeds |
 | 2026-09-11T19:57Z | drift | DONE | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-fbd2-receipt.md | D2 PASS full |
 | 2026-09-11T19:57Z | drift | DONE | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-fbscope.md | scope freeze confirmed |
+| 2026-09-11T20:01Z | drift | DONE | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-persist.md | persist genuine; ALIVE declared |
