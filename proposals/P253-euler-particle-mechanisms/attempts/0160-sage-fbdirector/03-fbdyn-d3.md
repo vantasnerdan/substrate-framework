@@ -71,6 +71,24 @@ uniform-ε formula.
   is carried by ε's anisotropy alone (uniaxial: d/dθ = −8(ε∥−ε⊥)
   sinθcosθ ≠ 0): signal, not artifact.
 
+## Repairs paid (ledger)
+
+Drift review: D3 verdict (CONDITIONAL PASS, 4acc20c1).
+**R1 REQUIRED** — the RD3-2 cone-divisibility check as coded was
+VACUOUS: `cancel(res/cone)·cone − res` is 0==0 for ANY residual
+(the cancel round-trip); drift demonstrated it passes for
+non-divisible input. The mathematical content itself HOLDS: drift
+hand-ran sp.Poly.div in (kx, ky, kz) — both remainders EXACTLY
+ZERO. Paid: RD3-2 re-typed to the structure tier (symmetry,
+realness, kinetics); divisibility moved to **RD3-2b** — genuine
+quotient/remainder form: sp.div of each residual by (1 − |k̂|²) in
+(kx, ky, kz) leaves remainder EXACTLY ZERO, quotients kept and
+verified by substitution back. New **MB-D3-4**: injecting a
+non-divisible kx term (drift's counterexample class) leaves
+remainder exactly kx ≠ 0 — the repaired form detects what the
+vacuous form passed. run_fbd3 rerun: 10 assertions (6 identity +
+4 mutations), exit 0. A7 fold: faithful, no repair.
+
 ## D3 verdicts (PROPOSED — drift review requested)
 
 - **FB-D-waves (formula tier):** the director-wave dispersion is

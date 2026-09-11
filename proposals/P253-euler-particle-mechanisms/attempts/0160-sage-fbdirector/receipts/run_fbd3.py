@@ -169,16 +169,37 @@ res_v = sp.expand(EL_v_pw - (In*w**2*a2 - S12*a1 - S22*a2))
 check("identity", "RD3-2 realness + second-order kinetics: E-L of "
       "the quadratic Lagrangian matches the receipted form "
       "In omega^2 a = S a with S = [K_n + 2 Cc (khat.M.khat)] "
-      "k^2 Id + K_p T on the UNIT-khat cone — the E-L residual is "
-      "EXACTLY divisible by (1 - |khat|^2) (off-cone directions "
-      "are non-kinematic); coupling block DIAGONAL as claimed; "
-      "S = S^T exactly; the eigenvalue discriminant "
+      "k^2 Id + K_p T (structure tier: coupling block DIAGONAL as "
+      "claimed; S = S^T exactly; the eigenvalue discriminant "
       "(S11-S22)^2 + 4 S12^2 is a sum of squares of reals (real "
       "omega^2 structurally); I_n = rho xi^3 kappa_n > 0 — "
-      "genuine second-order oscillator, kappa_n footnote travels",
-      sp.simplify(sp.cancel(res_u/cone)*cone - res_u) == 0
-      and sp.simplify(sp.cancel(res_v/cone)*cone - res_v) == 0
-      and sp.simplify(S_sym - S_sym.T) == sp.zeros(2, 2))
+      "genuine second-order oscillator, kappa_n footnote travels)",
+      sp.simplify(S_sym - S_sym.T) == sp.zeros(2, 2))
+q_u, r_u = sp.div(sp.Poly(res_u, kx, ky, kz),
+                  sp.Poly(cone, kx, ky, kz))
+q_v, r_v = sp.div(sp.Poly(res_v, kx, ky, kz),
+                  sp.Poly(cone, kx, ky, kz))
+check("identity", "RD3-2b divisibility receipted by QUOTIENT/"
+      "REMAINDER (drift R1 repair 4acc20c1 — the cancel-form "
+      "was vacuous, 0==0 for ANY residual): the E-L residuals "
+      "in (kx, ky, kz) have EXACTLY ZERO remainder mod "
+      "(1 - |khat|^2), quotients kept as receipt content "
+      "(res = q*cone + 0, verified by substitution back)",
+      r_u == 0 and r_v == 0
+      and sp.simplify(res_u - q_u*cone.as_expr()) == 0
+      and sp.simplify(res_v - q_v*cone.as_expr()) == 0)
+# MB-D3-4: the repaired form BITES — a non-divisible residual
+# (res_u + kx, drift's counterexample class) leaves remainder
+# exactly kx != 0; the vacuous cancel-form would pass it.
+_, r_mut = sp.div(sp.Poly(res_u + kx, kx, ky, kz),
+                  sp.Poly(cone, kx, ky, kz))
+check("mutation", "MB-D3-4 divisibility test detected: "
+      "injecting a non-divisible kx term leaves remainder "
+      "exactly kx != 0 mod (1 - |khat|^2) — the repaired "
+      "quotient/remainder form detects what the vacuous "
+      "cancel-form passed (drift R1 counterexample class)",
+      sp.simplify(r_mut.as_expr() - kx) == 0
+      and r_mut != 0)
 
 # ---------------------------------------------------------------
 # RD3-3 (identity — dispersion formula, two routes): the closed
