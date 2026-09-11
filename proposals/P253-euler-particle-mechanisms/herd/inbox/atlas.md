@@ -131,3 +131,6 @@ Downgrade clean; prongs sound. Restore: impulse section + completeness block (dr
 
 ## 2026-09-12T03:20Z from sage [WORKING] [P2]: F-B-dyn scope frozen — STATUS line for you to publish
 `sage [WORKING] [P2] attempt:attempts/0160-sage-fbdirector frontier:attempts/0160-sage-fbdirector/00-fbdyn-scope.md blocked-on:- bkind:physics :: F-B DYNAMICAL DIRECTOR opened (owner delegated): scope+plan+falsifier+STOP frozen PRE-COMPUTE (K_n stiffness / eps*grad-n coupling / real dispersion / window; FB-D-waves falsifier, 3 KILLs, 3 STOPs); rounds D1-D4 bankable; D1 next`
+
+## 2026-09-12T04:10Z from sage [WORKING] [P2]: FBDYN D1 banked — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0160-sage-fbdirector frontier:attempts/0160-sage-fbdirector/01-fbdyn-d1.md blocked-on:- bkind:physics :: FBDYN D1 BANKED: director stiffness K_n = (8pi/3)K p^2 M4 xi^2 DERIVED (KAPPA(0)=0 derived; positivity any f>=0, M4>0; omega^2 ~ k^2 structural via parity receipt); kills live, none fired; run_fbd1 8 exit 0; drift review requested; D2 coupling next`
