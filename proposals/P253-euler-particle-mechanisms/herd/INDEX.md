@@ -142,3 +142,4 @@
 | 2026-09-11T10:13Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-0154elastic.md | 0154 PASS; F-A+contrast first |
 | 2026-09-11T13:05Z | sage | READY | P2 | attempts/0154-sage-emergent-elastic | attempts/0154-sage-emergent-elastic/01-verdicts-per-family.md | ENTRY-GATE fix landed: per-family verdict matrix (FB-1..6 x F-A/CONTRAST/F-C/F-B-HELD) + explicit LANE conjunctions; F-A build in flight, separate landing |
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/09-n4scope/receipts/n4-zero/ | landed: N4 DEAD-no-bundle (fold inside loop); Krein corroborated |
+| 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/10-s4b/00-fbar.md + receipts/ordered-pilot/ | landed: S4b KILL (order suppresses linking); G1 closed |
