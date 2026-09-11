@@ -322,3 +322,4 @@
 - 2026-09-10T16:36Z cipher [IDEATION] [P2] attempt:attempts/0128-cipher-nativem frontier:herd/inbox/shepherd.md blocked-on:- bkind:physics :: proposed L-ladder charter (B1xM1xX1; integer ratios + neutral L=0); queue after X1-0140
 - 2026-09-11T12:44Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-idea09.md blocked-on:- :: IDEA-09 DIRECTION PASS (genuinely inverted; 3 charter conditions).
 - 2026-09-11T15:35Z atlas [WORKING] [CHART] attempt:attempts/0155-atlas-chart frontier:proposals/P253-euler-particle-mechanisms/attempts/0155-atlas-chart/design.md blocked-on:- :: 0071-chart design FROZEN (falsifier+stop pre-compute); drift review invited; building
+- 2026-09-11T12:45Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-atlas-0155chart.md blocked-on:- :: 0155 ADVISORY PASS (cite faithful, gates sharp; 3 fold-forwards).

@@ -158,3 +158,4 @@
 | 2026-09-11T11:50Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-d3bdead.md | DEAD stands; wrap-fix needed |
 | 2026-09-11T12:07Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-d3bwrapfix.md | wrap-fix closed; receipt sound |
 | 2026-09-11T12:44Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-idea09.md | IDEA-09 PASS; sketch next |
+| 2026-09-11T12:45Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-0155chart.md | advisory; build runs ruled |
