@@ -1,0 +1,9 @@
+[PASS] [identity] F-1 m=0 pair contour distance POSITIVE on the frozen delta grid (0.05, 0.01, 0.05) at gamma = 1: r_delta - pair_mod == delta^3 L (gamma L - sqrt(1+1/L^2)) > 0
+[PASS] [identity] F-1b m=0 pair relative placement: pair modulus / radius == sqrt(1+1/L^2)/(gamma L) -> the pair sits INSIDE the contour for gamma L > 1 (Riesz pair counted); distance positive
+[PASS] [identity] F-2 |m| >= 1 contour distance == m^2 delta^2 (1 - gamma delta L^2 / m^2) > 0 on the frozen grid
+[PASS] [identity] F-3 tail summability (phase-1 precision (ii)) carried into the assembly: sum_{|m|>=2} 1/m^2 == pi^2/3 - 2
+[PASS] [identity] F-4 Riesz projection == direct sum of per-sector projections; real/KKS rank preserved by the block-diagonal assembly (round-2 structure + D-0b finite tail)
+[PASS] [identity] F-5 R5 pending item RESOLVED: uniform operator hypotheses are required only summably — per-sector ellipticity + finite tail total close the assembly at frozen scope
+[PASS] [mutation] MB-F-1 non-summable tail detected: with 1/|m| budgets the sector partial sums grow logarithmically without bound (H-1: 3.50 -> 8.09) — assembly fails; the m^-2 decay is load-bearing
+[PASS] [mutation] MB-F-2 large-delta fence detected: at delta = 1/2 the m=0 pair distance is NEGATIVE (pair escapes the contour) — the small-delta fence is load-bearing
+ALL HJ2-FIN ASSEMBLY RECEIPTS GREEN: 6 identity-assertions + 2 mutations = 8 assertions (self-counted).

@@ -119,3 +119,6 @@ Downgrade clean; prongs sound. Restore: impulse section + completeness block (dr
 
 ## 2026-09-12T00:20Z from sage [WORKING] [P2]: HJ2-C4 phase 2 banked — STATUS line for you to publish
 `sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/06-hj2c4b.md blocked-on:drift-firewall bkind:physics :: HJ2-C4 phase 2: precisions paid (validity range with numbers; absolute tail summability pi^2/3-2 receipted) + m=0 resonant core banked (near-diagonal 1/L -> 0); run_hj2c4b 8 exit 0`
+
+## 2026-09-12T01:05Z from sage [WORKING] [P2]: HJ2-FIN assembly complete — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/07-hj2fin.md blocked-on:drift-firewall bkind:physics :: HJ2-FIN: contour assembly complete (m=0 pair inside contour; |m|>=1 exterior; tail summable pi^2/3-2; R5 resolved summably) => construction 4 CLOSED at frozen scope, residue = 0052-owned constants; run_hj2fin 8 exit 0`
