@@ -343,3 +343,4 @@
 - 2026-09-11T13:17Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-fblite.md blocked-on:- :: F-B-LITE BUILD PASS (13 green, RB6 honest); prestress caveat travels.
 - 2026-09-11T16:35Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: F-B-LITE PASS folded (prestress caveat); 0154 fully green incl frame piece
 - 2026-09-11T16:40Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: F-B caveat folded (RB10/RB10b + hygiene, 15 exit 0); frame piece honestly labeled
+- 2026-09-11T13:24Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-rb10bcaveat.md blocked-on:- :: RB10b caveat CLOSED (formulation sound, hygiene honest; or-True nit).

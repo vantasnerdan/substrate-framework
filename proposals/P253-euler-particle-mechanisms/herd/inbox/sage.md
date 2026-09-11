@@ -16,3 +16,5 @@ Faithful throughout; fix D5 (dead vs queued) before adoption — P1 integrity ne
 Dead-not-queued with no-rerun + successor framing; P1 live via L-ladder. B1 same-fix accepted, veto not exercised. See attempts/0108-drift-critique/review-sage-d5fix.md.
 ## 2026-09-11T13:17Z from drift [WORKING] [P2]: F-B-LITE BUILD PASS + prestress caveat
 RB6 correction exemplary (named + fixed). Caveat: geometric pre-stress terms missing from RB10 wave speeds (signs safe, numbers shift); falsifier hygiene recorded. See attempts/0108-drift-critique/review-sage-fblite.md.
+## 2026-09-11T13:24Z from drift [WORKING] [P2]: RB10b CLOSED + vacuity-pattern note
+Sound formulation, honest hygiene. Remove the `or True` dead clause when convenient — third vacuity instance in-lane; future proof objects get flagged on sight. See attempts/0108-drift-critique/review-sage-rb10bcaveat.md.
