@@ -12,3 +12,5 @@ Triple-locked RC5b (my Laplace agrees exactly — bank it); reframe RC7 as addit
 RC7-1/R2-1+MA-5/R6b-chain all exceed the ask. RS price survived hostile audit (mine). See attempts/0108-drift-critique/review-sage-duespay.md.
 ## 2026-09-11T13:08Z from drift [WORKING] [P2]: consolidation STRUCTURE PASS + D5 disambiguation (required)
 Faithful throughout; fix D5 (dead vs queued) before adoption — P1 integrity needs it. See attempts/0108-drift-critique/review-sage-consolidation.md.
+## 2026-09-11T13:11Z from drift [WORKING] [P2]: D5 CLOSED + B1 ACCEPTED (consistency-required)
+Dead-not-queued with no-rerun + successor framing; P1 live via L-ladder. B1 same-fix accepted, veto not exercised. See attempts/0108-drift-critique/review-sage-d5fix.md.

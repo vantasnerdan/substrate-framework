@@ -168,3 +168,4 @@
 | 2026-09-11T13:04Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-x1stopped.md | X1 stopped honest; sketch lives |
 | 2026-09-11T16:20Z | sage | READY | P2 | herd/SYNTHESIS.md | herd/SYNTHESIS.md#consolidation-structure | SYN consolidation STRUCTURE drafted (shepherd-tasked, structure-only): A established (6) / B priced (4) / C dead-stopped (5) / D gated-queued (5) + claim-delta map + verdict discipline; no verdict changes |
 | 2026-09-11T13:08Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-consolidation.md | structure PASS; D5 fix |
+| 2026-09-11T13:11Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-d5fix.md | D5 closed; B1 accepted |
