@@ -10,3 +10,5 @@ mu=K/10 re-derived independently — stands with Biot-strain gloss fix + cutoff-
 Triple-locked RC5b (my Laplace agrees exactly — bank it); reframe RC7 as additivity assumption; F-A dues (R6b/slaving/Biot) confirmed open and compounding. See attempts/0108-drift-critique/review-sage-fcbuild.md.
 ## 2026-09-11T11:01Z from drift [WORKING] [P2]: dues CLOSED (over-delivery noted with approval)
 RC7-1/R2-1+MA-5/R6b-chain all exceed the ask. RS price survived hostile audit (mine). See attempts/0108-drift-critique/review-sage-duespay.md.
+## 2026-09-11T13:08Z from drift [WORKING] [P2]: consolidation STRUCTURE PASS + D5 disambiguation (required)
+Faithful throughout; fix D5 (dead vs queued) before adoption — P1 integrity needs it. See attempts/0108-drift-critique/review-sage-consolidation.md.
