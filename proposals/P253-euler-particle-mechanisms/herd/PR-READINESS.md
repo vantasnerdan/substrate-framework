@@ -11,12 +11,8 @@ No PR opened. One verdict per item. Evidence pointers inline.
 - **0111 EM-map J1–J4**: LANDED, drift J1–J4 PASS (review-cipher-jointgating).
   Evaluation gated pre-(a) by design.
 
-## BLOCKED (critical path)
-- **R-EM2 gate — BLOCKED-on-owner** (`attempts/0112-cipher-rem2-draft/README.md`,
-  DRAFT ONLY; drift draft-technical PASS banked). Without a user
-  approve/amend/decline, the PR MUST scope to one-way + conditional framing
-  and carry B-R1..B-R5 as open bridges. This is the single owner action that
-  unlocks two-way claims.
+## Decided gates (scope-setting, no action open)
+- **R-EM2 gate — DECLINED by owner** (no import; debt refused). Reversion applies: charge work BLOCKED, 0111 stays CONDITIONAL one-way observation (never a two-way claim), B-R1..B-R5 stand down as bridges. Drafts survive: C-EUL-001 (no-go) and C-EUL-002 (conditional, condition C UNSATISFIED) are Euler-native, no import dependency. PR scope: Euler-native results + certified negatives only.
 
 ## IN PROGRESS (carry, don't block)
 - **M2-B1 H4-proof + A3 filament — COMPLETE, ALL VERDICTED** (drift review-cipher-sectionm0): section-m0 PASS (arc reproduced digit-exact, veto honest; 1 doc nit); A3 m1–6 PASS-in-model; A1/A2/A3-transfer banked; R1–R5 closed. Triple complete, bounded. Remaining token: H4-proof (+owner-review).
@@ -28,13 +24,14 @@ No PR opened. One verdict per item. Evidence pointers inline.
 
 ## Claim-promotion backlog
 - Drafts EXIST: attempts/0126-beacon-claims/drafts.yaml (C-EUL-001 no-go / C-EUL-002 conditional, UNSATISFIED honest; registry schema, `review: draft` — no registry writes, namespace free as of 2026-09-10).
-- Path to promotion: drift firewall PASSED 5152755e (faithful, bounded, typed; R1–R3 closed) — remaining: individual review, then R-EM2 scope decision sets what the claims may license.
+- Path to promotion: drift firewall PASSED 5152755e (faithful, bounded, typed; R1–R3 closed) — remaining: individual review. R-EM2 DECLINED changes nothing in the drafts (both Euler-native); it forbids any two-way reading of 0111.
 - No hidden debt: ledger audit clean; negatives bank (0119/0121/0124) rides as certified no-go records.
 ## Bottom line
-One action stands between now and a joinable PR: the R-EM2 ruling
-(approve/amend/decline — sets the PR's claim scope and what C-EUL-001/002 may
-license). Everything else is banked: G-a2 fully built (0125 conditional PASS,
-0124 re-certified, R1–R3 done, drafts firewall-PASSed), M2-B1/A3 landed with a
-split verdict (m1–6 PASS-in-model, m0 UNRESOLVED), S9 closed, negatives
-certified (0119/0121/0124). Recommended PR shape: close #198, advance #203
-with the conditional lemma, certified negatives, and B-R1..B-R5 bridges explicit.
+Zero actions stand between now and a joinable PR: every gate decided, every
+track banked or carried. G-a2 fully built (0125 conditional PASS, 0124
+re-certified, R1–R3 done, drafts firewall-PASSed), M2-B1/A3 triple-complete
+(m0 PASS), S9 closed, negatives certified (0119/0121/0124), R-EM2 DECLINED
+with reversion applied. Recommended PR shape: close #198, advance #203 with
+Euler-native results only — the conditional lemma (C UNSATISFIED, honest),
+certified negatives, 0111 as one-way observation; charge work marked BLOCKED
+per reversion, no import, no debt.
