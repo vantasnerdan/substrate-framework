@@ -19,7 +19,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 - **G-a2 numbers — 0125 PASS CONDITIONAL** (beacon + drift review-beacon-0124correction): conditional lemma rho*~0.03 banked; 0124 RE-CERTIFIED STRONGER with /6 correction; R1–R3 DONE 37625ab1 (stale framing fixed, corrected receipts, sweep banked). G-a2 construction track complete — remaining: R-EM2 scope decision governs what it licenses.
 - **Residue synthesis SPEC — CAPSTONE CONDITIONAL** (drift review-capstone-syn a523605e: stages in-branch; dynamics owes missing-5): combined SYN claim stands conditional; survivors program CLOSED under it (0134). Predictions: B1 HOLD CONFIRMED; B3 HOLD CONFIRMED; B2 KILL CONFIRMED + dues banked. B4 survey NEGATIVE + drift-PASS fbd878c8 (no repairs). 0133 scope drift-PASS.
 - **IDEA-01..08**: all ADOPTED with owners (cipher/drift/atlas/beacon+cipher);
-- **0127 native back-reaction — CLOSURE CERTIFIED + EXTENDED** (beacon 0134/0135 + drift ALL-KILL + per-m ALL-KILL CONFIRMED 93957879, family closed): survivor addresses all KILL; per-m sweep all-KILL M1–M4 → Magnus family CLOSED. Filament-charge via Magnus-form back-reaction closed unconditional within scoped forms. Behind it: R-B CLOSED(MISS), sketches all dead+confirmed, S1-3D dead+confirmed, SPEC findings closed. Live threads NARROWED: S3-residue direction + S4-noise-MODEL diagnostic only (S4-charge dead). Reopen needs materially different charge construction (none on table).
+- **0127 native back-reaction — CLOSURE CERTIFIED + EXTENDED, R-A PAPER DONE** (beacon 0134/0135/0138 + drift confirms): survivors all KILL; per-m M1–M4 all-KILL, Magnus family CLOSED. R-A paper survey EXPECT-CONFIRM (A1 worst-alignment gap real but A2 alignment-miracle sustains expectation) + drift PASS c2aafa3c — one-assembly decider pending. Filament-charge closed within scoped forms. Live: R-A decider → R-C → R-D. Survivors: loss estimator, C-CST-018, type distinction, BF residue.
 - **S9 test — CLOSED-complete** (beacon 0114): drift-PASS, repairs a–d landed, integrity repaired+citable (eb3db6d1); EXPOSED verdict + P1 shape-member folded into 0122/IDEA-05; zero open items.
 - **Shadowing scope**: A1/A2 closed, H4-proof current token.
 
@@ -29,7 +29,7 @@ No PR opened. One verdict per item. Evidence pointers inline.
 ## Standing (owner direction 2026-09-11)
 NO PR until native solution + issue goals complete. PR assembly STOOD DOWN
 (not held-pending). Readiness tracks the SOLUTION PROGRAM:
-- B4 C1 building (first-ranked background candidate; shepherd-declared track).
+- B4 C1 building → PASS-LEAN (4pi/15 class, cipher token); N1/N2/N4/N5 ideation ranked N4 first.
 - missing-5 idea lane FILLED 0136 (beacon 4109f454): M1 interaction-energy dynamics (0069 E_12 made dynamical), M2 scattering-law charge (0071 sign made dynamical), M3 recoil reciprocity (0067 template as observable), M4 precession scaling (Larmor analogy, type-guarded); falsifiers + dead-checks + cheapest-first order. M1–M3 converge with 0129 archaeology finds.
 - Synthesis CONDITIONAL banked (stages in-branch; builds wait).
 Recommended-shape section RETIRED until solution lands — no queued PR shape.

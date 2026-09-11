@@ -34,20 +34,19 @@ must yield quantized selection + back-reaction, but Magnus-filament closed
 - Importable math: abelian BF action `∫B∧dA`; observables = linking of
   surfaces/lines; first-order (no F²) — matches S3 residue exactly.
 - Bridge sketch: Euler helicity + vortex-tube linking as the charge
-  variable (integer by topology); dynamics = linking-preserving flow with
-  reconnection as the charge-changing event. Next check: is total
-  linking-class drift measurable in banked member states (0117 npz)?
-  Quantized selection would come free; back-reaction = reconnection jumps.
-- Wall-check: S3 bridge died as Maxwell-replacement (auxiliary-A,
-  CS-instead-of-Maxwell) — this sketch does NOT revive S3 as dynamics; it
-  keeps BF as kinematics + asks reconnection physics for dynamics
-  (missing-5's neighborhood). Rank 2: kinematics native-exact, dynamics open.
-
+  variable (integer by topology). DYNAMICS AS CONSERVATION TEST (drift
+  reword — frozen-in vorticity forbids reconnection jumps in ideal Euler):
+  linking-class conservation becomes the PREDICTION (charge conserved
+  exactly); any charge-changing event needs non-ideal physics, which is
+  itself the discriminating test. Next check: measure linking-class drift
+  in banked member states (0117 npz) — zero drift CONFIRMS, nonzero drift
+  bounds non-ideality.
+- Wall-check: S3 bridge died as Maxwell-replacement — this sketch does NOT
+  revive S3 as dynamics; BF is kinematics + conservation law. Rank 2:
+  kinematics native-exact, prediction sharp.
 ## X3 — Ponderomotive separation (plasma; HONEST NEGATIVE with residue)
 - Mechanism: neutral high-frequency wave fields separate charges by
-  mass/mobility (ponderomotive force ∝ −∇|E|²/m) — effective charge
-  separation from neutral drive.
-- Importable math: ponderomotive potential from two-timing averaging.
+  mass/mobility (ponderomotive force); effective separation from neutral drive.
 - Bridge sketch: Euler acoustic/strain field as the pump; tag-density
   contrast as the separated quantity. KILLED as charge mechanism: single
   Euler fluid has no second species — nothing to separate. This is the
