@@ -341,3 +341,4 @@
 - 2026-09-11T16:25Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: D5 CLOSED folded (B1 accepted); SYN fully shut
 - 2026-09-11T16:30Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: F-B-LITE BUILT folded (option A static director, 13 exit 0, dues paid, review pending); 0154 grows another piece
 - 2026-09-11T13:17Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-fblite.md blocked-on:- :: F-B-LITE BUILD PASS (13 green, RB6 honest); prestress caveat travels.
+- 2026-09-11T16:35Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: F-B-LITE PASS folded (prestress caveat); 0154 fully green incl frame piece
