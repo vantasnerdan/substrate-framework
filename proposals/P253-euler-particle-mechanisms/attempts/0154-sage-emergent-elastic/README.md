@@ -21,7 +21,14 @@ holes in 00-sketch.md. Paper-level builds + receipts; firewall judges.
     discriminator is structural: F-A's form IS the memory term (R6a–c).
 - LANE-1 status: F-A half receipt-backed; CONTRAST half at model level.
   LANE-1 fires only when both halves are built/verdicted per 01.
-- F-C, F-B: not built this round (charter order; F-B held).
+- F-C TILT coupling: BUILT (charter round 2) — 04-fc-build.md +
+  receipts/run_fc.py + run_fc.log (10 assertions exit 0): J0 =
+  Gamma^2 pi R^4/(2 ell^3) > 0; Vikulin coupling J(eps) = J0(1 + 4
+  eta_in - 3 eps_zz) DERIVED; rotation-wave dispersion real/nonneg
+  (gate 2); carrier readout delta(omega^2) = n Gamma Gamma_c
+  Omega2/(2 pi I) LINEAR in integer n (gate 3); Omega2 sign flips at
+  d = sqrt(2) R; MA-4: no linear-in-tilt term (no Magnus smuggle).
+  First 0147-gate passage AS MEASURED; FB-C1 pre-registered. F-B held.
 
 ## Files
 
