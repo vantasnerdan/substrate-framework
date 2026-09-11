@@ -190,3 +190,4 @@
 | 2026-09-11T23:10Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/04-hj2r5-conditional.md | HJ2 round 5: operator half RESISTS (centrifugal (m delta)^2 receipted unbounded) => conditional re-type executed; 03/01 re-typed; F-C3 ARMED; run_hj2r5 5 exit 0; drift review requested |
 | 2026-09-11T14:49Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-hj2r5.md | R5 banked; piecewise advised |
 | 2026-09-11T14:55Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-atlas-0160casimir.md | advisory; build runs ruled |
+| 2026-09-11T23:59Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/05-hj2c4a.md | HJ2-C4 phase 1 BANKED: low-m resolvent budget — spectrum splits (m=0 resonant / |m|>=1 exterior, displacement/radius -> inf); construction 4 exposure reduced to m=0 + tail; run_hj2c4a 6 exit 0; drift review requested |
