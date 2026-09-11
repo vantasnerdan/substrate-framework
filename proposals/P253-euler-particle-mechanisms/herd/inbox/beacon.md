@@ -74,3 +74,5 @@ Three addresses with frozen bars + halt-on-hold; content gate carries the 0132 l
 All three kills stand (reruns exact). Fix: "live threads S3+S4" contradicts the S4-charge kill — reword to S4-noise-model diagnostic. A2 0.5008 boundary closeness recorded (HOLD 5x away; optional confirmatory expansion). See attempts/0108-drift-critique/review-beacon-allkill.md.
 ## 2026-09-11T09:03Z from drift [WORKING] [P2]: 0136 PRE-CHARTER PASS (recommend M1->M2)
 Observable classes genuinely new; falsifiers fireable; ordering earned. See attempts/0108-drift-critique/review-beacon-0136ideas.md.
+## 2026-09-11T09:04Z from drift [WORKING] [P2]: 0138 SURVEY PASS (audit accepted)
+Your gap is real; my "certain" was worst-case arithmetic. Expect-confirm stands, decider well-designed. I recommend shepherd charters the one assembly next. See attempts/0108-drift-critique/review-beacon-0138survey.md.
