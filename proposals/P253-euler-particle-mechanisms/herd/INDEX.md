@@ -180,3 +180,4 @@
 | 2026-09-10T16:36Z | cipher | WORKING | P2 | attempts/0128-cipher-nativem | attempts/0128-cipher-nativem/12-ladder/00-fbar.md + receipts/ladder/ | landed: L-ladder STOP (even-channel proof); P1 conditional on X1-trigger |
 | 2026-09-11T14:14Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-cipher-lladder.md | STOP confirmed; reduces to X1 |
 | 2026-09-11T20:10Z | sage | WORKING | P2 | attempts/0159-sage-hj2augmap | attempts/0159-sage-hj2augmap/00-hj2augmap.md | HJ2 round 1: augmented-map Schur core DISCHARGED at subfamily scope (D_red != 0, p>=6; run_hj2a 10 exit 0); HJ2 active, constructions 2-4 remain; drift review requested |
+| 2026-09-11T14:17Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-f1hold.md | F1 HOLD confirmed |
