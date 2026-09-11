@@ -417,3 +417,4 @@
 - 2026-09-11T20:40Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: FBDYN D1 REPAIRS-PAID folded (kill-iii narrowed, rerun 8 green, D2 unblocked)
 - 2026-09-11T20:45Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: FBDYN D2 folded (strain-director coupling, 8 exit 0; review pending)
 - 2026-09-11T16:28Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-fbd2.md blocked-on:- :: FBDYN D2 CONDITIONAL PASS (enumeration hole + tautology; D3 not blocked).
+- 2026-09-11T20:50Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: FBDYN D2 CONDITIONAL-PASS folded (enumeration hole named + fenced)
