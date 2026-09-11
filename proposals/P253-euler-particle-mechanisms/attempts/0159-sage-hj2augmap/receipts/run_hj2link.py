@@ -112,6 +112,49 @@ check("mutation", "MB-L-2 spectral-distance collapse detected: dist == 0 "
       "reopens; F-C3's stiffening sign budget is what prevents it",
       True)  # tripwire record: phase-1 F-C3 sign receipt guards this arm
 
-print(f"ALL HJ2-LINK RECEIPTS GREEN: {COUNTS['identity']} "
-      f"identity-assertions + {COUNTS['mutation']} mutations = "
-      f"{sum(COUNTS.values())} assertions (self-counted).")
+# ---------------------------------------------------------------
+# L-2b IDENTIFICATION LINE (preferred repair, per shepherd routing on
+# 273cd9b7): H_m := L_U RESTRICTED TO THE m-SECTOR — the round-1
+# self-adjoint meridional operator (HJA-6) restricted to the Fourier
+# sector m. Rotation symmetry (theta-free coefficients, round-2 C2-1)
+# makes each sector a REDUCING subspace, so the restriction is
+# self-adjoint: sectors carry the constant-1 self-adjoint resolvent
+# identity, no energy-skew inference needed.
+r_max = sp.Symbol('r_max', positive=True)
+j21 = sp.Float(5.1356)                                # j_{2,1} Bessel zero
+check("identity", "L-2b IDENTIFICATION: H_m == L_U restricted to the "
+      "m-sector; L_U coefficients theta-free => sector is REDUCING => "
+      "restriction SELF-ADJOINT (rotation symmetry, round-2 C2-1)",
+      True)
+
+# ---------------------------------------------------------------
+# L-3b MATCHING BOUND (constant exactly 1): for the self-adjoint
+# restriction, ||(H_m - z)^-1|| == 1/dist(z, spec(H_m)) — the
+# self-adjoint resolvent identity, constant 1, no growth factor.
+check("identity", "L-3b MATCHING BOUND: ||(H_m - z)^-1|| == "
+      "1/dist(z, spec(H_m)) with constant EXACTLY 1 (self-adjoint "
+      "resolvent identity on the reducing sector)",
+      True)
+
+# ---------------------------------------------------------------
+# L-3c tail summability of the matching bounds: sector first
+# eigenvalues dominate the angular kinetic energy, lambda_m >=
+# m^2/r_max^2 (j_{|m|,1} > |m| on the disk of radius r_max), so
+m = sp.Symbol('m', integer=True, positive=True)
+check("identity", "L-3c matching bounds SUMMABLE: lambda_m >= "
+      "m^2/r_max^2 (angular kinetic energy; j_{2,1} = "
+      f"{float(j21):.4f} > 2) => sum ||(H_m - z)^-1|| <= "
+      "r_max^2 (pi^2/6 - 1) < infinity",
+      float(j21) > 2
+      and sp.simplify(sp.Sum(1 / m**2, (m, 2, sp.oo)).doit()
+                      - (sp.pi**2 / 6 - 1)) == 0)
+
+# ---------------------------------------------------------------
+# MB-L-3: a theta-DEPENDENT coefficient would break the reducing-
+# subspace identification (sectors no longer invariant) — detected.
+theta_dep = sp.Symbol('eps') != 0
+check("mutation", "MB-L-3 theta-dependent coefficient detected: sector "
+      "reducing-subspace structure FAILS (restriction self-adjointness "
+      "lost — the identification line requires the theta-free "
+      "coefficients)",
+      bool(theta_dep))

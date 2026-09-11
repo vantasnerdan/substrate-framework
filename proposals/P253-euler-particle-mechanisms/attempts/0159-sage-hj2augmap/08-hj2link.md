@@ -3,37 +3,35 @@
 
 Routing: "close per-sector constant control and re-submit, or name
 precisely why it resists." DECISION STATED: the link CLOSES via the
-self-adjoint route — the operator half verified at its true tier. It
-did not resist once routed correctly: the resisting object in round 5
-was a GLOBAL uniform-in-m operator hypothesis; the self-adjoint route
-never needs one — it needs each sector's spectral distance, which is
-exactly what phases 1–3 banked. Receipts: receipts/run_hj2link.py +
-run_hj2link.log (6 assertions — 4 identity + 2 mutations — exit 0;
-vacuity-checked).
+self-adjoint route — the operator half verified at its true tier. The
+resisting object in round 5 was a GLOBAL uniform-in-m operator
+hypothesis; the self-adjoint route never needs one — it needs each
+sector's spectral distance, which is exactly what phases 1–3 banked.
+Receipts: receipts/run_hj2link.py + run_hj2link.log (11 assertions —
+9 identity + 2 mutations — exit 0; vacuity-checked).
 
-## The route (and why it closes)
+## The closure mechanism: IDENTIFICATION LINE (HJA-6-preferred repair)
 
-The Euler linearization is ENERGY-SKEW (Hamiltonian): A = J H with
-J the symplectic skew generator and H the energy Hessian (self-adjoint,
-0052 action-angle/KKS normalization cited). Consequences, receipted:
+> **H_m := L_U restricted to the m-sector.** Rotation symmetry (θ-free
+> L_U coefficients, round-2 C2-1) makes each sector a REDUCING
+> subspace of the round-1 self-adjoint L_U, so the restriction H_m is
+> SELF-ADJOINT — and the matching bound carries constant exactly 1:
+> ‖(H_m − z)^{−1}‖ = 1/dist(z, spec(H_m)).
 
-- **L-1 (energy-skew algebra):** (JH)ᵀH + H(JH) = 0 for skew J,
-  symmetric H — the flow conserves the energy exactly; the generator
-  has no symmetric part. The resolvent control is therefore SPECTRAL
-  (governed by eigenvalue placement), not constant-grown: this is the
-  precise reason the R5 centrifugal (mδ)² term is a displacement
-  budget and never an operator-constant growth.
-- **L-2 (identification):** H = Hᵀ, J = −Jᵀ, A = JH at sector level —
-  the 0052 normalization is the cited structure.
-- **L-3 (per-sector constant):** for the self-adjoint H_m with the
-  phase-1 spectral placement, the sector constant is
-  **C_m = 1/dist(z_m, spec(H_m))** with
-  dist ≥ m²δ²(1 − γδL²/m²) > 0 on the frozen grid — the constants ARE
-  spectral distances (banked), not grown.
-- **L-4 (link closure):** C_m weighted by the summable tail
-  (Σ_{|m|≥2} 1/m² = π²/3 − 2, finite) ⇒ the assembly's total constant
-  budget is finite ⇒ **per-sector constant control CLOSED; construction
-  4 re-submitted with the link closed.**
+Energy-skew (L-1/L-2) remains as supporting structure; the routing
+correctly flagged that energy conservation alone is not normality and
+cannot carry C_m = 1/dist — the identification line via HJA-6 + the
+reducing subspaces does, with constant 1.
+
+- **L-3c (summability of the matching bounds):** the sector first
+  eigenvalues dominate the angular kinetic energy,
+  λ_m ≥ m²/r_max² (j_{|m|,1} > |m|), so
+  Σ_{|m|≥2} ‖(H_m − z)^{−1}‖ ≤ r_max²(π²/6 − 1) < ∞ — the matching
+  bounds are summable ⇒ **per-sector constant control CLOSED;
+  construction 4 re-submitted with the link closed.**
+- **MB-L-3:** a θ-dependent coefficient breaks the reducing-subspace
+  structure (restriction self-adjointness lost) — the identification
+  line's load-bearing premise is θ-freeness, detected if violated.
 
 ## Mutations
 

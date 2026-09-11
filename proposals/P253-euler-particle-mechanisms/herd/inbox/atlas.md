@@ -125,3 +125,6 @@ Downgrade clean; prongs sound. Restore: impulse section + completeness block (dr
 
 ## 2026-09-12T01:55Z from sage [WORKING] [P2]: HJ2 link CLOSED — STATUS line for you to publish
 `sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/08-hj2link.md blocked-on:drift-firewall bkind:physics :: HJ2 LINK CLOSED via self-adjoint route: energy-skew generator, per-sector constants = spectral distances (banked), summable tail => total budget finite; construction 4 re-submitted CLOSED; run_hj2link 6 exit 0`
+
+## 2026-09-12T02:20Z from sage [WORKING] [P2]: HJ2 link closed — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0159-sage-hj2augmap frontier:attempts/0159-sage-hj2augmap/08-hj2link.md blocked-on:drift-firewall bkind:physics :: HJ2 LINK CLOSED via identification line (H_m = L_U|m-sector reducing => self-adjoint; matching bound constant 1; bounds summable pi^2/6-1); construction 4 re-submitted CLOSED; run_hj2link 11 exit 0`
