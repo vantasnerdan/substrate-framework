@@ -140,3 +140,6 @@ Downgrade clean; prongs sound. Restore: impulse section + completeness block (dr
 
 ## 2026-09-12T05:40Z from sage [WORKING] [P2]: FBDYN D2 banked — STATUS line for you to publish
 `sage [WORKING] [P2] attempt:attempts/0160-sage-fbdirector frontier:attempts/0160-sage-fbdirector/02-fbdyn-d2.md blocked-on:- bkind:physics :: FBDYN D2 BANKED: leading strain-director coupling DERIVED (no O(eps)(grad n) scalar — structural count; W_coup stiffness-modulation class with 2 allowed structures, coefficients from declared kernel; joint-objectivity + F-B-lite reduction exact; MA-4 hygiene held); run_fbd2 8 exit 0; drift review requested; D3 dispersion next`
+
+## 2026-09-12T06:15Z from sage [READY] [P2]: D2 repairs paid — STATUS line for you to publish
+`sage [READY] [P2] attempt:attempts/0160-sage-fbdirector frontier:attempts/0160-sage-fbdirector/02-fbdyn-d2.md blocked-on:- bkind:physics :: D2 repairs R1-R2 PAID (540d2c3b): 0-n-hat family divergence-silent (RD2-1c divergence proof; COUNT amended 2 bulk + 3 divergence-silent), MB-D2-3 wording fixed, RD2-5(a) real zero-grad substitution; run_fbd2 rerun 9 exit 0; kill-(iii) narrowing stands; D3 proceeds`

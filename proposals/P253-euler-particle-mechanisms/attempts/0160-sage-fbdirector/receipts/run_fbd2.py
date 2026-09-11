@@ -77,6 +77,40 @@ check("identity", "RD2-1 COUNTING: at O(eps)(grad n) no bulk scalar "
       and sp.simplify(nn - 1) == 0 and sp.simplify(cand) == 0)
 
 # ---------------------------------------------------------------
+# RD2-1c (identity — the 0-n-hat family, drift R1 540d2c3b): the
+# symmetry filters ALSO allow three N-FREE 4-index O(eps)(grad n)
+# scalars — tr(eps grad n), tr(eps (grad n)^T), (tr eps)(div n) —
+# generically nonzero. At UNIFORM eps each is EXACTLY a total
+# divergence: cand - div(vector) == 0 — bulk-silent in the EOM
+# (boundary/anchoring-like only; non-uniform strain activates
+# O((grad eps) n) bulk pieces — flexo-analog, acknowledged to D3).
+# Receipt: symbolic director field n(x,y,z), uniform symbolic eps,
+# one check per candidate against the explicit divergence.
+x, y, z = sp.symbols('x y z', real=True)
+nf = [sp.Function('n1')(x, y, z), sp.Function('n2')(x, y, z),
+      sp.Function('n3')(x, y, z)]
+coords = [x, y, z]
+candA = sum(E[i, j_]*sp.diff(nf[j_], coords[i])
+            for i in range(3) for j_ in range(3))          # tr(eps grad n)
+candB = sum(E[i, j_]*sp.diff(nf[i], coords[j_])
+            for i in range(3) for j_ in range(3))          # tr(eps grad n^T)
+candC = trE*sum(sp.diff(nf[k_], coords[k_]) for k_ in range(3))
+divB = sum(sp.diff(E[i, j_]*nf[i], coords[j_]
+           ) for i in range(3) for j_ in range(3))
+divC = sum(sp.diff(trE*nf[k_], coords[k_]) for k_ in range(3))
+divA = sum(sp.diff(E[i, j_]*nf[j_], coords[i])
+           for i in range(3) for j_ in range(3))
+check("identity", "RD2-1c 0-n-hat family dispositioned (drift R1): "
+      "tr(eps grad n) - div(eps^T n) == 0, tr(eps grad n^T) - "
+      "div(eps n) == 0, (tr eps)(div n) - div((tr eps) n) == 0 — "
+      "all three are EXACT total divergences at uniform eps: "
+      "bulk-silent, NOT bulk couplings; COUNT amended to 2 bulk "
+      "O(eps)(grad n)^2 + 3 divergence-silent O(eps)(grad n)",
+      sp.simplify(candA - divA) == 0
+      and sp.simplify(candB - divB) == 0
+      and sp.simplify(candC - divC) == 0)
+
+# ---------------------------------------------------------------
 # RD2-2 (identity): the angular 4-tensor, exact:
 # int dOmega sh_i sh_j sh_k sh_l = (4pi/15)(d_ij d_kl + d_ik d_jl
 # + d_il d_jk). Representative components by direct integration.
@@ -163,7 +197,11 @@ check("identity", "RD2-4 objectivity: W_coup invariant under the "
 # identically at zero gradient (uniform director); (b) the
 # localized pre-stress K p (n.eps n - tr eps/3) at uniform n0 = z
 # reproduces RB6's built linear term exactly.
-W_coup_at_uniform = 0                      # zero gradient block
+W_coup_closed = sp.Rational(4, 15)*sp.pi*(K*p**2*xi**2*M4) * sum(
+    (4*E[i, j_] + 7*trE*(1 if i == j_ else 0)
+     )*D[i, k_]*D[j_, k_]
+    for i in range(3) for j_ in range(3) for k_ in range(3))
+W_coup_at_uniform = W_coup_closed.subs({d: 0 for d in list(D)})
 prestress = K*p*(E[2, 2] - trE/3)
 check("identity", "RD2-5 reduction exact: W_coup == 0 at zero "
       "gradient (uniform director — the static tier is recovered "
@@ -206,12 +244,12 @@ check("mutation", "MB-D2-2 parity-odd insertion detected: any "
 # MB-D2-3 (mutation): the forbidden single-gradient candidate —
 # eps_ij n_i d_j(n.n)/2 — is IDENTICALLY zero on the unit sphere
 # (n.n == 1 constant): a bulk O(eps)(grad n) coupling claim would
-# be this exact zero, detectable as zero, not a fitted small value.
 check("mutation", "MB-D2-3 single-gradient insertion detected: the "
-      "only even O(eps)(grad n) candidate reduces to the "
-      "constraint zero EXACTLY (receipted RD2-1b) — any bulk "
-      "linear coupling claim contradicts this identity and is "
-      "caught as identically zero",
+      "only even N-CARRYING O(eps)(grad n) candidate reduces to "
+      "the constraint zero EXACTLY (receipted RD2-1b) — any bulk "
+      "linear coupling claim on that family contradicts this "
+      "identity; the N-FREE 4-index family is handled separately "
+      "as divergence-silent (RD2-1c) — neither is a bulk coupling",
       sp.simplify(cand) == 0 and n_pairings_5 == 0)
 
 print(f"ALL FBDYN-D2 RECEIPTS GREEN: {COUNTS['identity']} "
