@@ -73,10 +73,11 @@ def main():
             return
         gam += np.angle(np.vdot(vecs[k], vecs[k + 1]))
     ggeom = gam - float(np.sum(phis[:-1]))
-    print(f"chain {gam:.5f} sum-phi {float(np.sum(phis[:-1])):.5f} geom {ggeom:.5f}")
-    if abs(ggeom) > 0.05:
+    gw = (ggeom + np.pi) % (2 * np.pi) - np.pi  # wrap-fix (drift review): Berry phase defined mod 2pi
+    print(f"chain {gam:.5f} sum-phi {float(np.sum(phis[:-1])):.5f} geom {ggeom:.5f} wrapped {gw:.5f}")
+    if abs(gw) > 0.05:
         vd = "ALIVE-leaning (geometric accumulation)"
-    elif abs(ggeom) <= 0.01:
+    elif abs(gw) <= 0.01:
         vd = "DEAD (no geometric accumulation)"
     else:
         vd = "UNRESOLVED-gray"
