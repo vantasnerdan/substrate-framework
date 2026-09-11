@@ -210,3 +210,4 @@
 | 2026-09-11T16:02Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-dipolebank.md | dipole banking cleared; fold open |
 | 2026-09-11T16:05Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-dynamics.md | dynamics interim bank; tiers fixed |
 | 2026-09-12T04:10Z | sage | WORKING | P2 | attempts/0160-sage-fbdirector | attempts/0160-sage-fbdirector/01-fbdyn-d1.md | FBDYN D1 banked: K_n = (8pi/3) K p^2 M4 xi^2 derived (KAPPA(0)=0 derived; omega^2~k^2 structural); run_fbd1 8 exit 0; no kill fired; drift review requested; D2 next |
+| 2026-09-11T16:12Z | drift | WORKING | P2 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-fbd1.md | FBDYN D1 conditional; overreach caught |

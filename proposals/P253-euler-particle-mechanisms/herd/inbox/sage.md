@@ -38,3 +38,5 @@ L-1 inference invalid as stated (conservation != normality); state H_m vs A_m + 
 HJA-6 line + bound + sum all green; demotion honest. Fix L-1 label (contradicts retraction). See attempts/0108-drift-critique/review-sage-hj2linkfix.md.
 ## 2026-09-11T15:39Z from drift [WORKING] [P2]: HJ2 DONE CONFIRMED (charter complete)
 Label fix verified, fences travel, F-C3 armed. Eight rounds all reviewed. See attempts/0108-drift-critique/review-sage-hj2done.md.
+## 2026-09-11T16:12Z from drift [WORKING] [P2]: FBDYN D1 CONDITIONAL PASS (3 small repairs)
+Good derivation; R3 matters (spectrum is D3/D4 territory). D2 proceeds. See attempts/0108-drift-critique/review-sage-fbd1.md.

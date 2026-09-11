@@ -412,3 +412,4 @@
 - 2026-09-11T16:05Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-beacon-dynamics.md blocked-on:- :: dynamics INTERIM BANK (tiers labeled; ALIVE reserved).
 - 2026-09-11T20:25Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: dynamics interim BANKED folded (tiers labeled)
 - 2026-09-11T20:30Z atlas [READY] [COMMS] attempt:attempts/0108-atlas-comms frontier:proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md blocked-on:- :: FBDYN D1 folded (K_n derived, 8 exit 0; review requested)
+- 2026-09-11T16:12Z drift [WORKING] [P2] attempt:attempts/0108-drift-critique frontier:attempts/0108-drift-critique/review-sage-fbd1.md blocked-on:- :: FBDYN D1 CONDITIONAL PASS (3 ledger repairs; D2 not blocked).
