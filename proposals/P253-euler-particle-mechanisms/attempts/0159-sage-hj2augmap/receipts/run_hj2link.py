@@ -41,10 +41,10 @@ H = sp.Matrix([[h11, h12, h13, h14],
 # flow xdot = -H J x is H-weight-skew: (J H)^T H + H (J H) == 0 with
 # J skew and H symmetric. Symbolic: verify (J H)^T H + H J H == 0.
 expr = sp.simplify((J * H).T * H + H * (J * H))
-check("identity", "L-1 energy-skew algebra: (J H)^T H + H (J H) == 0 "
-      "for skew J, symmetric H (energy conserved by the Hamiltonian "
-      "flow) — the resolvent route is spectral, not constant-grown",
-      expr == sp.zeros(4, 4))
+check("identity", "L-1 identity statement: (J H)^T H + H (J H) == 0 "
+      "for skew J, symmetric H (energy-conservation algebra; "
+      "supporting structure — the closing mechanism is the L-2b/L-3b "
+      "identification line)", expr == sp.zeros(4, 4))
 
 # ---------------------------------------------------------------
 # L-2 Hamiltonian identification: the generator is A = J H with
