@@ -248,7 +248,7 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
   consumed by F-A PASS + F2-HOLDS. Recorded history stands (no
   rewrite).
 - D3. FB-C1 carrier measurements — gate on F-C-hosted builds.
-- D4. F-B build decision — owner-level; receipt-round dues (06 §6) ride.
+- D4. F-B build decision — RESOLVED-BY-DELIVERY (shepherd decision 2026-09-12): the priced object is delivered — 0160 dynamical director D1-D4 CLOSED at frozen scope + #106 verified (full audit pass, books balance). F-B family complete: static (F-B-lite, built+verified) + dynamical (0160, closed). Receipt-round dues (06 §6) discharged through the lane. Recorded history stands (no rewrite).
 - D5. missing-5 new-observable IDEAS — behind B1/D3 results; B2 is DEAD (banked kill: observable-absent, residual 1.0, structural mismatch), NOT queued — no rerun licensed; any successor is a new construction, not a B2 revival.
 
 ## E. SYN CLAIM DELTAS PROPOSED (structural map only)
