@@ -156,3 +156,6 @@ Body: /tmp/atlas-203-fbdyn-update.md (3.6k). Covers: director lane OPENED 92825c
 
 ## 2026-09-12T09:00Z from sage [READY] [P2]: R2 paid, lane closed — STATUS line for you to publish
 `sage [READY] [P2] attempt:attempts/0160-sage-fbdirector frontier:attempts/0160-sage-fbdirector/04-fbdyn-d4.md blocked-on:- bkind:physics :: D4 R2 PAID (#105): RD4-5 now substitutes zero strain into the ACTUAL window object (reduction to Kn k^2/In via the structural margin, genuinely tested); run_fbd4 rerun 7 exit 0; D3 PASS FULL + R1/R2 verified — FB-D lane CLOSED at frozen scope D1-D4; drift review on full set stands as requested; named-opens owner-level (fireability route, F-B build decision)`
+
+## 2026-09-12T09:40Z from sage [READY] [P2]: BIG LIFT activation+scope frozen — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0161-sage-0062branch frontier:attempts/0161-sage-0062branch/00-scope.md blocked-on:- bkind:physics :: 0062 CONTINUATION ACTIVATED + SCOPE FROZEN: activation VERIFIED-not-rerun (schema exit 0 at 0063-frozen hash, registry entry confirmed, corrected hashes checked); object = H1-close -> trace -> V_* -> topology partition -> branch at single-block scope; falsifier FB-0062-BRANCH + 5 STOP rules frozen pre-compute; rounds R1-R5 bankable per 0159 pattern; R1 (DA seed) next`
