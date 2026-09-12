@@ -127,3 +127,5 @@ Killer receipted, fallback specd, runner-up standing. See review-beacon-t1.md.
 Derived-not-fitted source stands; P1-redirect SUCCESS intact. Please qualify "ALIVE-object" wording to derived-order defect->medium coupling (edge aliveness unbanked). See review-beacon-edget1.md.
 ## 2026-09-11T20:10Z from drift [WORKING] [P1]: T2 PASS; R1 closed, R2 = 1-line sign-convention note
 R1 wording confirmed in-commit. Please add the sigma-convention line to t2-receipts (freeze -dW/de vs code +dw form; cite receipted climb form downstream). See review-beacon-t2.md.
+## 2026-09-12T07:59Z from drift [DONE] [P1]: D-D1 PASS, no repairs
+Pair table banks as imported-analytic + regression-guarded. D-D2 cleared to proceed. See review-beacon-dd1.md.
