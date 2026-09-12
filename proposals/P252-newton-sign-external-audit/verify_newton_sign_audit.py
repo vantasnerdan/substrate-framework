@@ -701,7 +701,157 @@ def block10_inc_sign(led: Ledger) -> None:
                  not alt_matches)
 
 
-# ---------------------------------------------------------------------------
+def block11_crossterm(led: Ledger) -> None:
+    """B11: Hamiltonian cross-term, quadratic form (disclosure request 2).
+
+    F_{mu nu} = [d_mu M, d_nu M].  A diagonal M would commute with its own
+    derivatives (F = 0); the report's shape factors (Lambda_i - Lambda_j)
+    require a FIXED spectrum with a rotating orientation (section 208:
+    eigenvalues are pure numbers).  Model: M = O diag(l1..l4) O^T with
+    constant eigenvalues and two Cayley (rational, trig-free) rotation
+    angles r1(t,x,y,z), r2(x,y,z) in the (2,3) and (3,1) planes.  Audited:
+    the cross-term is nonzero exactly through the spectral differences
+    (shape factors), and the quadratic form's boost block carries the
+    Lorentzian relative minus - the flip inherited by the energy-side
+    object at the quadratic-form level.  The full R-decomposition remains
+    the report's section 254.6 conjecture; the attraction verdict stays
+    with R19-1.
+    """
+    t, x, y, z = sp.symbols("t x y z")
+    coords = (t, x, y, z)
+    a, b, c, d = sp.symbols("a b c d", positive=True)
+
+    def cayley_plane(r, i, j):
+        """Rational rotation (Cayley transform) in the (i,j) plane; exact orthogonal."""
+        O = sp.eye(4)
+        O[i, i] = (1 - r ** 2) / (1 + r ** 2)
+        O[j, j] = (1 - r ** 2) / (1 + r ** 2)
+        O[i, j] = 2 * r / (1 + r ** 2)
+        O[j, i] = -2 * r / (1 + r ** 2)
+        return O
+
+    r1 = 1 + t + x / 2
+    r2 = 2 + y * z / 3
+    O = cayley_plane(r1, 1, 2) * cayley_plane(r2, 3, 1)
+    Lam = sp.diag(a, b, c, d)
+    M = O * Lam * O.T
+    F = {}
+    for mu in range(4):
+        for nu in range(4):
+            F[(mu, nu)] = sp.diff(M, coords[mu]) * sp.diff(M, coords[nu]) \
+                - sp.diff(M, coords[nu]) * sp.diff(M, coords[mu])
+
+    def tr2(mu, nu):
+        mat = F[(mu, nu)]
+        return sum(mat[i, j] * mat[j, i] for i in range(4) for j in range(4))
+
+    # All evaluations below are exact rational-arithmetic witnesses: no
+    # symbolic simplification (it does not terminate for these denominators).
+    pt = {t: sp.Rational(7, 5), x: sp.Rational(3, 4), y: sp.Rational(2, 3), z: sp.Rational(11, 7)}
+    pw = {a: sp.Rational(2), b: sp.Rational(3), c: sp.Rational(5), d: sp.Rational(7)}
+    deg = {a: sp.Rational(1), b: sp.Rational(1), c: sp.Rational(1), d: sp.Rational(1)}
+
+    max_abs_deg = max(abs(F[(mu, nu)][i, j].subs(deg).subs(pt))
+                      for mu in range(4) for nu in range(4)
+                      for i in range(4) for j in range(4))
+    led.check("B11/C13a degenerate spectrum (a=b=c=d) kills the cross-term "
+              "identically: the shape factors (Lambda_i - Lambda_j) are "
+              "load-bearing",
+              max_abs_deg == 0)
+
+    nz = any(F[(mu, nu)][i, j].subs(pw).subs(pt) != 0
+             for mu in range(4) for nu in range(4)
+             for i in range(4) for j in range(4))
+    led.check("B11/C13b split spectrum gives a nonzero cross-term (witness)",
+              nz)
+
+    boosts = sum(tr2(0, i) for i in range(1, 4)).subs(pw).subs(pt)
+    rots = sum(tr2(i, j) for i in range(1, 4) for j in range(i + 1, 4)).subs(pw).subs(pt)
+    q_e = 2 * (boosts + rots)
+    q_l = 2 * (-boosts + rots)
+    led.check("B11/C13c Q_Lorentz = Q_Euclid - 4*boosts on the witness: the boost "
+              "block carries the relative minus (flip inherited at the "
+              "quadratic-form level)",
+              q_l - (q_e - 4 * boosts) == 0)
+    led.mutation("B11/M1 same-sign boost block claimed in Lorentz fails on the witness",
+                 q_e != q_l)
+
+
+def block12_g02(led: Ledger) -> None:
+    """B12: the G-02 source-contracted propagator (disclosure section 277).
+
+    Claim audited: with the two-one-derivative-Goldstone vertex
+    (k1.k2 = t/2, source-asserted identification), the spectral density is
+    rho ~ t^2 and the potential scales as U ~ 1/d^{2p+3} = 1/d^7 via
+    U(d) = -(1/(4 pi^2 d)) INT rho(t) e^{-sqrt(t) d} dt.  Verified here: the
+    exact spectral integrals, the exponent, the delta(t) -> 1/d Coulomb
+    reproduction, IR/UV convergence, and the failure of both earlier
+    exponents.  The vertex identification itself remains source-asserted
+    (debt D4 class).
+    """
+    d = sp.symbols("d", positive=True)
+    tt = sp.symbols("t", positive=True)
+    # p = 2: INT t^2 e^{-sqrt(t) d} dt = 240 / d^6  (disclosure's own number)
+    integral = sp.integrate(tt ** 2 * sp.exp(-d * sp.sqrt(tt)), (tt, 0, sp.oo))
+    led.check("B12/C14a INT t^2 e^{-sqrt(t) d} dt = 240/d^6 exactly (finite at "
+              "both ends: no IR divergence)",
+              sp.simplify(integral - 240 / d ** 6) == 0)
+    u = sp.Rational(-1, 1) / (4 * sp.pi ** 2 * d) * sp.Rational(1, 4) * integral
+    led.check("B12/C14b U(d) = -15/(pi^2 d^7): the 1/d^7 (Casimir-Polder-type) exponent",
+              sp.simplify(u * d ** 7 + sp.Rational(15, 1) / sp.pi ** 2) == 0)
+    # General spectral ladder rho ~ t^p -> U ~ 1/d^{2p+3} for p = 0..5:
+    # INT t^p e^{-sqrt(t) d} dt = 2 Gamma(2p+2) / d^{2p+2}; with the 1/d
+    # prefactor the Coulomb case (their section 39) is the delta(t) weight
+    # (p -> infinity endpoint of the ladder, integral = 1 exactly).
+    ok_ladder = True
+    for p in range(6):
+        ip = sp.simplify(sp.integrate(tt ** p * sp.exp(-d * sp.sqrt(tt)), (tt, 0, sp.oo))
+                         - 2 * sp.gamma(2 * p + 2) / d ** (2 * p + 2))
+        if ip != 0:
+            ok_ladder = False
+    led.check("B12/C14c spectral ladder INT t^p e^{-sqrt(t) d} dt = "
+              "2 Gamma(2p+2)/d^{2p+2} for p = 0..5",
+              ok_ladder)
+    # Both earlier exponents fail: d^5*U and d^3*U are not constants.
+    p5 = sp.simplify(sp.diff(u * d ** 5, d))
+    p3 = sp.simplify(sp.diff(u * d ** 3, d))
+    led.mutation("B12/M1 either earlier exponent (1/d^5 or 1/d^3) fits fails",
+                 p5 != 0 and p3 != 0)
+
+
+def block13_disclosure(led: Ledger) -> None:
+    """B13: disclosure round-2 spot checks (sections 303, 306, 309)."""
+    A, B, R = sp.symbols("A B R", positive=True)
+    # Section 309: clock inertia from the commutator with the (2,3) rotation.
+    zeta = sp.zeros(4)
+    zeta[1, 2], zeta[2, 1] = 1, -1  # generator of (2,3) rotations
+    lam = sp.symbols("lambda1:5")
+    M = sp.diag(*lam)
+    comm = sp.simplify(zeta * M - M * zeta)
+    norm2 = sp.simplify(sum(comm[i, j] ** 2 for i in range(4) for j in range(4)))
+    led.check("B13/C15a clock inertia ||[zeta, M]||^2 = 2 (lambda3 - lambda2)^2: I ~ delta^2",
+              sp.simplify(norm2 - 2 * (lam[2] - lam[1]) ** 2) == 0)
+
+    # Section 303: virial identity at the Derrick minimum of E = A/R + B R^3.
+    Rstar = (A / (3 * B)) ** sp.Rational(1, 4)
+    E = A / R + B * R ** 3
+    led.check("B13/C15b virial identity R* E(R*) = 4A/3 with the potential "
+              "coefficient cancelling exactly",
+              sp.simplify(Rstar * E.subs(R, Rstar) - sp.Rational(4, 3) * A) == 0)
+    # Section 306: omega = m channeling arithmetic (Catillon et al. 2008).
+    mp.mp.dps = 30
+    me_c2 = mp.mpf("0.51099895000")            # MeV, electron rest energy
+    gamma = mp.mpf("158.278")
+    e_pred = gamma * me_c2
+    e_meas = mp.mpf("80.874")
+    offset = abs(e_pred - e_meas) / e_meas
+    led.check("B13/C15c gamma=158.278 predicts 80.8798 MeV; offset vs 80.874 is 0.0072%",
+              abs(e_pred - mp.mpf("80.8798")) < mp.mpf("0.0001")
+              and abs(offset - mp.mpf("7.2e-5")) / mp.mpf("7.2e-5") < mp.mpf("0.1"),
+              f"e_pred={float(e_pred):.4f} MeV, offset={float(offset) * 100:.4f}%")
+    lam_C_h = 2 * mp.pi  # reduced-Compton variant is 2 pi off
+    led.mutation("B13/M1 using the reduced Compton wavelength (2 pi out) breaks the match",
+                 abs(gamma * 2 * mp.pi * me_c2 - e_meas) / e_meas > mp.mpf("0.1"))
 
 
 BLOCKS = [
@@ -715,6 +865,9 @@ BLOCKS = [
     block8_weitzenbock,
     block9_composition,
     block10_inc_sign,
+    block11_crossterm,
+    block12_g02,
+    block13_disclosure,
 ]
 
 

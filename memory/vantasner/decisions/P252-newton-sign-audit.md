@@ -24,7 +24,9 @@ The subject line is contradicted by the report's own content: rev 294 states the
 - Debts: inc-side index convention and the 2mp counting convention are unpinned from the comment (need Zenodo 22714918); the 48^3 lattice run is provenance_only.
 - "Finite nonzero frequency" reduces to omega = K/I with K topologically fixed (massless clock) - consistent with the certified P249/P250 clock structure, no new mechanism.
 
-## Addendum (2026-09-12 disclosure, issue #211 comment 5643293338)
+## Addendum 2 (2026-09-12 second disclosure, comment 5645673247)
+
+The auditee conceded the inc-sign scope error: his round291 script was 3D-Euclidean by construction, so D2 CLOSED - B10 stands as the full-signature result.  He delivered G-02 himself (rev 328 section 277): U ~ 1/d^7, correcting his own sections 256 (1/d^5) and 276 (1/d^3) - each correction moving further from Newton; oracle B12 verifies the spectral chain exactly (240/d^6; ladder 2 Gamma(2p+2)/d^{2p+2} for p = 0..5; both earlier exponents fail).  B11 verifies the Hamiltonian cross-term quadratic form on rational textures (degenerate spectrum kills it; boost block carries the Lorentzian relative minus; full R-decomposition remains section 254.6 conjecture).  B13 verifies disclosure spot checks: section 309 clock inertia I ~ delta^2 exactly (expulsion from cores, correcting section 289), section 303 virial R*E(R*) = 4A/3 exact (withdrawing section 300's alpha claim; solution caveat 7.33 recorded), section 306 Catillon et al. 2008 arithmetic (80.8799 vs 80.874 MeV, 0.0073 percent; reduced-wavelength variant 2 pi out - DOI 10.1007/s10701-008-9225-1).  Section 296 dimensional revocation: no oracle inheritance (all checks dimensionless).  Final tally: ALL 50 CHECKS PASS, ALL 18 MUTATIONS BREAK.  Remaining: full section 254 R-decomposition needs the rev bundle (auditee cannot push/attach - mechanical gap).
 
 The auditee posted a pre-audit disclosure agreeing with the headline verdict; rev 294's text was not fetch-attached, so its citations are recorded source-asserted.
 

@@ -40,7 +40,16 @@
 [PASS] B10/C12b same operator = -2 G^(1)[h] in Lorentz (-,+,+,+): the identity sign is signature-carried (the flip, second instance)
 [PASS] B10/C12c inc is exactly invariant under the global eps sign (double-eps product): the +2/-2 split is signature-carried, not eps-fixable
 [PASS] B10/C12d source 2mp counting reduces to the verified 3-2p law at m=1
-CHECKS: 41/41 PASS
+[PASS] B11/C13a degenerate spectrum (a=b=c=d) kills the cross-term identically: the shape factors (Lambda_i - Lambda_j) are load-bearing
+[PASS] B11/C13b split spectrum gives a nonzero cross-term (witness)
+[PASS] B11/C13c Q_Lorentz = Q_Euclid - 4*boosts on the witness: the boost block carries the relative minus (flip inherited at the quadratic-form level)
+[PASS] B12/C14a INT t^2 e^{-sqrt(t) d} dt = 240/d^6 exactly (finite at both ends: no IR divergence)
+[PASS] B12/C14b U(d) = -15/(pi^2 d^7): the 1/d^7 (Casimir-Polder-type) exponent
+[PASS] B12/C14c spectral ladder INT t^p e^{-sqrt(t) d} dt = 2 Gamma(2p+2)/d^{2p+2} for p = 0..5
+[PASS] B13/C15a clock inertia ||[zeta, M]||^2 = 2 (lambda3 - lambda2)^2: I ~ delta^2
+[PASS] B13/C15b virial identity R* E(R*) = 4A/3 with the potential coefficient cancelling exactly
+[PASS] B13/C15c gamma=158.278 predicts 80.8798 MeV; offset vs 80.874 is 0.0072%  (e_pred=80.8799 MeV, offset=0.0073%)
+CHECKS: 50/50 PASS
 == MUTATIONS ==
 [BROKE] B1/M1 wrong eta_00 sign breaks boost symmetry
 [BROKE] B1/M2 same-sign relation demanded in so(1,3) fails (flip destroyed)
@@ -57,5 +66,8 @@ CHECKS: 41/41 PASS
 [BROKE] B9/M1 Z(Z-1) convention breaks the quoted He-4 number (20%)
 [BROKE] B10/M2 m=0 counting (no derivatives) contradicts the divergent claim
 [BROKE] B10/M1 re-slotting h onto the eta pair destroys the identity
-MUTATIONS: 15/15 BREAK
-ALL 41 CHECKS PASS; ALL 15 MUTATIONS BREAK
+[BROKE] B11/M1 same-sign boost block claimed in Lorentz fails on the witness
+[BROKE] B12/M1 either earlier exponent (1/d^5 or 1/d^3) fits fails
+[BROKE] B13/M1 using the reduced Compton wavelength (2 pi out) breaks the match
+MUTATIONS: 18/18 BREAK
+ALL 50 CHECKS PASS; ALL 18 MUTATIONS BREAK

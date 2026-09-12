@@ -89,7 +89,7 @@ MUTATIONS BREAK", exit 0 (main audit 37/13; addendum block B10 adds
 
 | Debt | Introduced by | Disposition |
 |------|---------------|-------------|
-| D2 the "inc M = 2 G^(1)[M]" identity is asserted without an index convention in the comment; three independent double-eps arrangements failed to reproduce it against a pure-gauge-validated G^(1) | the comment (details live in rev 294 sections) | SHARPENED by B10 (addendum): the canonical double-eps operator gives +2 G^(1) in Euclid and -2 G^(1) in Lorentz exactly - the split is signature-carried, not eps-fixable (B10/C12c), and not re-slot-fixable (B10/M1). The Lorentzian +2 pin needs the round291/rev-294 operator definition; fetch Zenodo 22714918 before any framework use of the EH-analogue term |
+| D2 the "inc M = 2 G^(1)[M]" identity is asserted without an index convention in the comment; three independent double-eps arrangements failed to reproduce it against a pure-gauge-validated G^(1) | the comment (details live in rev 294 sections) | CLOSED by Addendum 2: the source's round291 script was 3D-Euclidean by construction (its own concession); B10 is the full-signature result (+2 Euclid / -2 Lorentz, exact, not eps-fixable).  No framework use of the EH-analogue term before pinning rev-328 definitions |
 | D3 the winding-divergence exponent ("2mp = 2 < 3") is a counting convention not present in the comment; the generic R^{3-2p} law is verified, the specific 2mp claim is not | the comment | PINNED at comment level by the disclosure (m = 1, p = 1 -> 2 < 3), consistent with the verified R^{3-2p} law at m = 1 (B10/C12d); rev-294 definitions still required for framework use |
 | D4 the M5-internal mode identifications (dual photon = vector, amplitude/split and clock/twist = scalar, symmetric boost bilinear = spin-2) are source identifications, not audited here | the comment | recorded; any framework use requires its own claim work |
 | D5 the 48^3 lattice sign check is not reproducible without the run bundle (Zenodo 22714918, scripts round267-round285) | the comment | provenance_only; not audited by proxy (AP-8/AP-14 gate) |
@@ -208,17 +208,89 @@ pending rev-294 text.  Processing of the disclosure:
    energy - order-of-magnitude support for the universality exclusion
    (twelve orders of margin), not a precision prediction.
 
-### Blocked-on-artifact (formally requested, cannot proceed from INBOX-reachable material)
+### Blocked-on-artifact (status: updated by Addendum 2)
 
-- G-02 source-contracted propagator for a two-derivative vertex against a
-  stress tensor (settles sections 256/261) - needs the rev-294 vertex
-  definitions.
-- Hamiltonian cross-term flip oracle (F_{mu nu} shape factors) - needs the
-  section 254 R-decomposition.
+- G-02 source-contracted propagator: DELIVERED by the auditee (rev 328
+  section 277, U ~ 1/d^7) and independently verified in B12 - see
+  Addendum 2.
+- Hamiltonian cross-term oracle: PARTIALLY delivered (B11, quadratic-form
+  level with rational textures); the full R-decomposition version still
+  needs the section 254 definitions from the rev bundle.
 
-Both are one message away: the rev-294 bundle, if re-shared on issue #211
-or pushed to the repository, unblocks them and this audit extends by one
-slice under the same oracle discipline.
+The rev-294/328 bundle remains unfetchable (the auditee cannot push or
+attach; a mechanical gap).  Everything self-contained in the inline
+disclosures has been audited; the remaining M5-internal identifications
+stay provenance-recorded.
 
-Final tally with B10: ALL 41 CHECKS PASS; ALL 15 MUTATIONS BREAK
-(`attempts/0001/full_run.log`, exit 0).
+
+## Addendum 2: second disclosure - D2 closes, G-02 verified at 1/d^7 (2026-09-12)
+
+Second disclosure on issue #211 (comment 5645673247), replying to this
+audit's addendum.  Cited rev-294/328 facts below remain source-asserted
+(the bundle is still not fetchable: the auditee produces files into a
+working container and can neither push to a repository nor attach to an
+issue - a mechanical gap, recorded verbatim).
+
+1. **D2 - CLOSED.**  The auditee re-read `round291_inc_sign.py`: it builds
+   h as a 3x3 spatial matrix with the 3D Levi-Civita symbol and no metric
+   signature anywhere - **the +2 pin was the Euclidean case by
+   construction**; B10's Lorentzian -2 is the case the script never
+   computed.  Scope error on the source's side, conceded; both oracles
+   agree.  D2's disposition changes from "sharpened, open" to "closed:
+   Euclidean-by-construction pin; B10 is the full-signature result."
+   Per the disclosure, section 245 survives with a narrower statement
+   (the EH-analogue identification and the sign-independent convergence
+   counting), and the Lorentzian sign of that term is -2 per B10 - the
+   auditee records that correction.
+2. **G-02 - computed by the source (rev 328 section 277), independently
+   verified here (B12).**  Claim: the source-contracted propagator for the
+   two-one-derivative-Goldstone vertex gives U ~ 1/d^7 via the spectral
+   representation U(d) = -(1/(4 pi^2 d)) INT rho(t) e^{-sqrt(t) d} dt with
+   rho ~ t^2 (vertex factor k1.k2 = t/2).  This corrects the report's own
+   section 256 (1/d^5) and section 276 (1/d^3).  Oracle B12 verifies the
+   mathematical chain exactly: INT t^2 e^{-sqrt(t) d} dt = 240/d^6 (the
+   disclosure's own constant), U = -15/(pi^2 d^7), the general ladder
+   INT t^p e^{-sqrt(t) d} dt = 2 Gamma(2p+2)/d^{2p+2} for p = 0..5, and
+   that both earlier exponents fail (mutation).  The Coulomb reproduction
+   case (delta(t) weight -> 1/d) is this audit's B5 kernel check; the
+   1/d^3 case is B6.  The vertex identification itself remains
+   source-asserted (debt D4 class).  Net effect per the disclosure: each
+   correction moved the range FURTHER from Newton.
+3. **Hamiltonian cross-term - partial delivery (B11).**  For the
+   quadratic form of F_{mu nu} = [d_mu M, d_nu M] with a fixed spectrum
+   and rotating orientation (a diagonal M would commute with its own
+   derivatives - F = 0 identically - so the orientation texture is the
+   only nontrivial case): (a) a degenerate spectrum kills the cross-term
+   identically, so the shape factors are load-bearing; (b) the boost
+   block carries the Lorentzian relative minus exactly
+   (Q_Lorentz = Q_Euclid - 4 x boosts on an exact rational witness).  The
+   full R-decomposition claim remains the report's section 254.6
+   conjecture; the attraction verdict stays with R19-1.
+4. **Disclosure spot checks (B13) - all verify.**  Section 309: the
+   clock's inertia is exactly ||[zeta, M]||^2 = 2 (lambda3 - lambda2)^2,
+   so omega = K/I DIVERGES as the splitting closes and a charged clock is
+   expelled from vortex cores (correcting the report's section 289).
+   Section 303: the virial identity R* E(R*) = 4A/3 holds exactly for
+   E = A/R + BR^3 with the potential coefficient cancelling - withdrawing
+   section 300's alpha discrepancy claim; the disclosed caveat (relaxed
+   solution at E_grad/3E_pot = 7.33, not the two-term minimum) is
+   recorded.  Section 306: the omega = m channeling arithmetic verifies -
+   gamma = 158.278 with the unreduced Compton wavelength predicts
+   80.8799 MeV against the quoted 80.874 MeV (offset 0.0073%), and the
+   reduced-wavelength variant is 2 pi out (mutation).  Citation pinned:
+   Catillon et al., Foundations of Physics 38(7), 659-664 (2008),
+   DOI 10.1007/s10701-008-9225-1.
+5. **Section 296 (M dimensionless) - no inheritance.**  Every oracle in
+   this audit is a dimensionless sign/exponent/identity check; none used
+   the revoked rev-294 dimensional assignment ([mu] = 2, [kappa6] = -2).
+   Recorded as a scope note.
+6. **Reliability datum updated.**  The disclosure itself states the report's
+   error rate is high and its self-correction mostly reactive (four
+   corrections since rev 294 - dimensions, alpha claim, vortex-core clock,
+   propagator - three prompted from outside).  Factored into the verdict
+   framing: the sector algebra verifies, but the report's headline remains
+   unsupported while its parts continue to be corrected under external
+   review.
+
+Addendum-1 tally (superseded by Addendum 2): ALL 41 CHECKS PASS; ALL 15
+MUTATIONS BREAK.
