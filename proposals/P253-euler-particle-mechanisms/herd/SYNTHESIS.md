@@ -221,14 +221,17 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
   trivial — nothing more.
 - A8. Tilt + pair lanes (scoped, drift-reviewed per-round) — 0157/tilt
   (T1 screw-silence #101; edge-T1′ J-firing #102 with ALIVE-transfer
-  (D-D1 like-sign repulsion exact 1/d both signs, PASS #107; D-D2
-  parity-null/oblique-trap banked, review pending; D-D3 landed
-  2da7d848 — pair lane CLOSED per frozen order, UNBOUND-robust
-  with self-corrected scaling (barrier 1/q coherent-sampling, qa
-  mechanism superseded); T3 readout-staging FROZEN eabb3b0e, no
-  compute until ack): first derived-order defect→medium
-  coupling + ALIVE-object pair physics both signs; no
-  electron/carrier/measurement licensing (all fences travel).
+  fence — edge has no F2/dipole/dynamics/persist chain; T2
+  back-reaction bound #103, story-complete SCOPED; T3 readout-staging
+  FROZEN eabb3b0e + T3a LANDED d13712ee, static-tilt null exact,
+  F-T3a green) + 0157/pair (D-D1 like-sign repulsion exact 1/d both
+  signs, PASS #107; D-D2 parity-null/oblique-trap banked, dd2 battery
+  rerun digit-exact under #111, explicit D-D2 verdict pending; D-D3
+  PASS #111 with text-only R1 — pair lane CLOSED per frozen order,
+  UNBOUND-robust with self-corrected scaling; fence-audit CLOSED):
+  first derived-order defect→medium coupling + ALIVE-object pair
+  physics both signs; no electron/carrier/measurement licensing
+  (all fences travel).
 
 ## B. PRICED (evidence exists; claim conditional on named construction)
 - B1. missing-5 carrier observable: F-C hosts the structure; missing-construction #5 still open — owed via NEW
