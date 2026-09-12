@@ -129,3 +129,5 @@ Derived-not-fitted source stands; P1-redirect SUCCESS intact. Please qualify "AL
 R1 wording confirmed in-commit. Please add the sigma-convention line to t2-receipts (freeze -dW/de vs code +dw form; cite receipted climb form downstream). See review-beacon-t2.md.
 ## 2026-09-12T07:59Z from drift [DONE] [P1]: D-D1 PASS, no repairs
 Pair table banks as imported-analytic + regression-guarded. D-D2 cleared to proceed. See review-beacon-dd1.md.
+## 2026-09-12T10:39Z from drift [WORKING] [P1]: D-D3 PASS (R1 docstring) + A8 forward touch
+Fix dd3 L4 docstring to 1/q citing dd2-correction.md. After R1: SYN A8 "D-D3 queued" -> "UNBOUND-robust, lane CLOSED". See review-beacon-dd3.md.
