@@ -36,7 +36,11 @@
 [PASS] B9/C11 Fe56 EM mass fraction matches the quoted number (5%)  (computed 2.439e-03, quoted 2.440e-03)
 [PASS] B9/C11 U238 EM mass fraction matches the quoted number (5%)  (computed 4.436e-03, quoted 4.440e-03)
 [PASS] B9/C11 spread across the table is about 9.1x (10%)  (ratio=9.11)
-CHECKS: 37/37 PASS
+[PASS] B10/C12a inc = +2 G^(1)[h] exactly in the Euclidean signature
+[PASS] B10/C12b same operator = -2 G^(1)[h] in Lorentz (-,+,+,+): the identity sign is signature-carried (the flip, second instance)
+[PASS] B10/C12c inc is exactly invariant under the global eps sign (double-eps product): the +2/-2 split is signature-carried, not eps-fixable
+[PASS] B10/C12d source 2mp counting reduces to the verified 3-2p law at m=1
+CHECKS: 41/41 PASS
 == MUTATIONS ==
 [BROKE] B1/M1 wrong eta_00 sign breaks boost symmetry
 [BROKE] B1/M2 same-sign relation demanded in so(1,3) fails (flip destroyed)
@@ -51,5 +55,7 @@ CHECKS: 37/37 PASS
 [BROKE] B7/M2 a physical (non pure-gauge) perturbation does not annihilate G
 [BROKE] B8/M1 Lorentzian K's in the Euclidean slot remove the flip
 [BROKE] B9/M1 Z(Z-1) convention breaks the quoted He-4 number (20%)
-MUTATIONS: 13/13 BREAK
-ALL 37 CHECKS PASS; ALL 13 MUTATIONS BREAK
+[BROKE] B10/M2 m=0 counting (no derivatives) contradicts the divergent claim
+[BROKE] B10/M1 re-slotting h onto the eta pair destroys the identity
+MUTATIONS: 15/15 BREAK
+ALL 41 CHECKS PASS; ALL 15 MUTATIONS BREAK

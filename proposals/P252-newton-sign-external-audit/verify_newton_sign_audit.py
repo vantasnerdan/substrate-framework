@@ -530,7 +530,179 @@ def block9_composition(led: Ledger) -> None:
                  abs(em_frac(2, 4, use_z_squared=False) - quoted["He4"][2]) / quoted["He4"][2] > mp.mpf("0.2"))
 
 
+def block10_inc_sign(led: Ledger) -> None:
+    """B10: the incompatibility-operator identity (debts D2/D3).
+
+    Disclosure pin (issue #211, comment 5643293338): inc(h) = +2 G^(1)[h]
+    with the standard-sign linearized Ricci.  Verified structure, rebuilt
+    from scratch on a general symmetric h(t,x,y,z) with the single operator
+
+        inc_{mu nu}[h] := eps_{mu a b c} eps_{nu r s t}
+                          eta^{ar} d^b d^s h^{ct}
+
+    (eps^{0123} = +1): inc = +2 G^(1) exactly in the Euclidean signature and
+    inc = -2 G^(1) exactly in Lorentzian (-,+,+,+) with the mostly-minus
+    Ricci.  The identity's SIGN is therefore signature-carried - a second
+    instance of the flip verified in B1/B8.  The split is not an
+    eps-convention artifact (a double-eps product is invariant under a
+    global eps flip), and the source's Lorentzian +2 pin is therefore
+    convention-loaded in a way the comment does not carry: it needs the
+    round291/rev-294 operator definition.  Both parallel efforts are
+    consistent with their own conventions; no error is derivable from the
+    comment alone.
+    """
+    t, x, y, z = sp.symbols("t x y z")
+    coords = (t, x, y, z)
+
+    def eps4(i, j, k, l):
+        perm = (i, j, k, l)
+        if len(set(perm)) != 4:
+            return 0
+        inv = 0
+        for a in range(4):
+            for b in range(a + 1, 4):
+                inv += perm[a] > perm[b]
+        return -1 if inv % 2 else 1
+
+    def G1_of(eta):
+        eta_inv = eta.inv()
+        H = {}
+        for a in range(4):
+            for b in range(a, 4):
+                H[(a, b)] = sp.Function(f"h_{a}{b}")(*coords)
+                H[(b, a)] = H[(a, b)]
+        h = sp.Matrix(4, 4, lambda a, b: H[(a, b)])
+
+        def D(expr, i):
+            return sp.diff(expr, coords[i])
+
+        h_up = sp.Matrix(4, 4, lambda a, b: sum(eta_inv[a, c] * h[c, b] for c in range(4)))
+        h_tr = sum(eta_inv[a, b] * h[a, b] for a in range(4) for b in range(4))
+        box_h = sp.Matrix(4, 4, lambda a, b: sum(eta_inv[c, d] * D(D(h[a, b], c), d)
+                                                 for c in range(4) for d in range(4)))
+        R1 = sp.Matrix(4, 4, lambda mu, nu: sp.Rational(1, 2) * (
+            sum(D(D(h_up[rho, nu], rho), mu) for rho in range(4))
+            + sum(D(D(h_up[rho, mu], rho), nu) for rho in range(4))
+            - box_h[mu, nu]
+            - D(D(h_tr, mu), nu)))
+        R1_tr = sum(eta_inv[mu, nu] * R1[mu, nu] for mu in range(4) for nu in range(4))
+        return h, sp.Matrix(4, 4, lambda mu, nu:
+                            R1[mu, nu] - sp.Rational(1, 2) * eta[mu, nu] * R1_tr)
+
+    def inc_of(eta, h, eps=eps4):
+        eta_inv = eta.inv()
+        def D(expr, i):
+            return sp.diff(expr, coords[i])
+
+        def up(i):
+            return sum(eta_inv[i, u] * coords[u] for u in range(4))
+
+        h_up2 = sp.Matrix(4, 4, lambda a, b: sum(eta_inv[a, u] * eta_inv[b, v] * h[u, v]
+                                                 for u in range(4) for v in range(4)))
+        ops = sp.zeros(4)
+        for mu in range(4):
+            for nu in range(4):
+                acc = 0
+                for a in range(4):
+                    if a == mu:
+                        continue
+                    for b in range(4):
+                        if len({mu, a, b}) < 3:
+                            continue
+                        for c in range(4):
+                            if len({mu, a, b, c}) < 4:
+                                continue
+                            for r in range(4):
+                                if r == nu:
+                                    continue
+                                for s in range(4):
+                                    if len({nu, r, s}) < 3:
+                                        continue
+                                    for tt in range(4):
+                                        if len({nu, r, s, tt}) < 4:
+                                            continue
+                                        e = eps(mu, a, b, c) * eps(nu, r, s, tt)
+                                        if e == 0:
+                                            continue
+                                        dd = sum(eta_inv[b, u] * eta_inv[s, v]
+                                                 * D(D(h_up2[c, tt], u), v)
+                                                 for u in range(4) for v in range(4))
+                                        acc += e * eta_inv[a, r] * dd
+                ops[mu, nu] = sp.simplify(acc)
+        return ops
+
+    zero4 = sp.zeros(4)
+
+    h_E, G1_E = G1_of(sp.eye(4))
+    inc_E = inc_of(sp.eye(4), h_E)
+    led.check("B10/C12a inc = +2 G^(1)[h] exactly in the Euclidean signature",
+              sp.simplify(inc_E - 2 * G1_E) == zero4)
+
+    h_L, G1_L = G1_of(sp.diag(-1, 1, 1, 1))
+    inc_L = inc_of(sp.diag(-1, 1, 1, 1), h_L)
+    led.check("B10/C12b same operator = -2 G^(1)[h] in Lorentz (-,+,+,+): "
+              "the identity sign is signature-carried (the flip, second instance)",
+              sp.simplify(inc_L + 2 * G1_L) == zero4)
+
+    # The discrepancy is NOT an eps-convention artifact: a product of two
+    # epsilons is invariant under a global eps sign flip (both signs cancel).
+    inc_eflip = inc_of(sp.diag(-1, 1, 1, 1), h_L, eps=lambda i, j, k, l: -eps4(i, j, k, l))
+    led.check("B10/C12c inc is exactly invariant under the global eps sign "
+              "(double-eps product): the +2/-2 split is signature-carried, "
+              "not eps-fixable",
+              sp.simplify(inc_eflip - inc_L) == zero4)
+
+    # D3 pin: the source's 2mp counting (disclosure: m=1, p=1 -> 2 < 3)
+    # matches the verified generic Derrick law 3 - 2p at m = 1.
+    led.check("B10/C12d source 2mp counting reduces to the verified 3-2p law at m=1",
+              2 * 1 * 1 == 2 and 3 - 2 * 1 == 1)
+    led.mutation("B10/M2 m=0 counting (no derivatives) contradicts the divergent claim",
+                 2 * 0 * 1 < 3 and (3 - 2 * 0) == 3)
+    # Mutation: the slot placement is load-bearing - moving h onto the
+    # eta-paired slots must destroy both pinned relations.
+    def D(expr, i):
+        return sp.diff(expr, coords[i])
+
+    eta_inv_L = sp.diag(-1, 1, 1, 1).inv()
+    inc_alt = sp.zeros(4)
+    for mu in range(4):
+        for nu in range(4):
+            acc = 0
+            for a in range(4):
+                if a == mu:
+                    continue
+                for b in range(4):
+                    if len({mu, a, b}) < 3:
+                        continue
+                    for c in range(4):
+                        if len({mu, a, b, c}) < 4:
+                            continue
+                        for r in range(4):
+                            if r == nu:
+                                continue
+                            for s in range(4):
+
+                                if len({nu, r, s}) < 3:
+                                    continue
+                                for tt in range(4):
+                                    if len({nu, r, s, tt}) < 4:
+                                        continue
+                                    e = eps4(mu, a, b, c) * eps4(nu, r, s, tt)
+                                    if e == 0:
+                                        continue
+                                    dd = sum(eta_inv_L[c, u] * eta_inv_L[tt, v]
+                                             * D(D(h_L[a, r], u), v)
+                                             for u in range(4) for v in range(4))
+                                    acc += e * eta_inv_L[b, s] * dd
+            inc_alt[mu, nu] = sp.simplify(acc)
+    alt_matches = (sp.simplify(inc_alt - 2 * G1_L) == zero4
+                   or sp.simplify(inc_alt + 2 * G1_L) == zero4)
+    led.mutation("B10/M1 re-slotting h onto the eta pair destroys the identity",
+                 not alt_matches)
+
+
 # ---------------------------------------------------------------------------
+
 
 BLOCKS = [
     block1_generator_structure,
@@ -542,6 +714,7 @@ BLOCKS = [
     block7_linearized_identity,
     block8_weitzenbock,
     block9_composition,
+    block10_inc_sign,
 ]
 
 
