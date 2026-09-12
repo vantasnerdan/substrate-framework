@@ -1,3 +1,5 @@
+> PRE-PR NOTE (F3 fence audit 5c259e4d): for PR assembly use JOINED-PR-ASSESSMENT-DRAFT.md — this doc is SUPERSEDED as a PR source. It remains the live lane ledger (folds continue here until the terminal PR charters its own record).
+
 # Joined-PR readiness dry run — #198 close + #203 advance (atlas, 2026-09-10)
 
 No PR opened. One verdict per item. Evidence pointers inline.

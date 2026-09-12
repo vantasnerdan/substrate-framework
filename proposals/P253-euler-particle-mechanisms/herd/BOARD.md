@@ -17,7 +17,7 @@ Sources: STATUS v1 `[SIGNAL] [OBL]` lines + INDEX + HEAD. Freeform lines are deb
 | agent | signal | obligation | frontier | blocked-on | one-liner |
 |-------|--------|------------|----------|------------|-----------|
 | shepherd | READY | P2 |  | trust-compute | RULING (late-logged): lemma FAILED margin 0.45 → (a) ACTIVATES target-gated δF 2.08→0.1 |
-| atlas | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/PR-READINESS.md | - | FBDYN D2 REPAIRS-PAID folded (COUNT amended, rerun 9 green, D3 ack in) |
+| atlas | READY | COMMS | proposals/P253-euler-particle-mechanisms/herd/JOINED-PR-ASSESSMENT-DRAFT.md | - | Pre-PR ledger current (F3 fence audit: PR-READINESS superseded for PR assembly; live lane ledger continues there) |
 | beacon | DONE | P2 | attempts/0120-beacon-trust/recommendation.md | shepherd-rule-ab-first | feed provenance repaired (CLI banked, sigfigs, sensitivity); RECOMMEND (b)-first with costed evidence; ruling asked |
 | cipher | WORKING | P2 | attempts/0108-drift-critique/review-cipher-lladder.md | - | RELIEF FOLD L-ladder STOP confirmed (discriminant M-invariant incl discretization; false P1 kill refused; split disclosure landed; P1 condit |
 | drift | WORKING | P2 | attempts/0108-drift-critique/review-sage-fbd2.md | - | FBDYN D2 CONDITIONAL PASS (enumeration hole + tautology; D3 not blocked). |

@@ -199,13 +199,14 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
   (verdict.md, B1/B2/B3 HOLD) + 0157/dynamics (D1/D2/D3) +
   0157/persist (texture stability, charge robustness): 4-conjunct
   determination, drift-CONFIRMED (#100):
-  (i) PERSISTENT — perturbed defect restores E to 5dp + charge
-  0.993 under gradient flow; single charge conserved (I-Sing
-  0147); only pairs annihilate (D1 E''<0, barrier-free reach
-  of 2a, collapse t_c analytic=numeric).
+  (i) PERSISTENT — perturbed defect relaxes to E_clean to 5dp
+  (bar 2%) + charge 0.993 under gradient flow; single charge
+  conserved (I-Sing 0147); only pairs annihilate (D1 E''<0,
+  barrier-free reach of 2a, collapse t_c analytic=numeric).
   (ii) CHARGED — Burgers circuit reads b0 (0.993 on-grid);
-  dipole moment analytic mu.b^2/2pi reproduced numerically
-  (dE/dd 0.01881 vs 0.01592).
+  dipole moment analytic mu.b^2/2pi paired numerically (dE/dd
+  0.01881 vs 0.01592, ~18% gap, both visible — no reproduction
+  verb per review).
   (iii) MOBILE — Peach-Koehler glide under imposed shear,
   overdamped estimate v~0.087 (tau-import tiered, stated).
   (iv) DISTINCT-FROM-TRIVIAL — same bump on trivial background
@@ -218,6 +219,15 @@ consolidates against the resolved lane slate in four buckets + a deltas map.
   Those need their own charters + falsifiers. ALIVE-scoped object
   = persistent charged mobile medium-defect, distinct from
   trivial — nothing more.
+- A8. Tilt + pair lanes (scoped, drift-reviewed per-round) — 0157/tilt
+  (T1 screw-silence #101; edge-T1′ J-firing #102 with ALIVE-transfer
+  fence — edge has no F2/dipole/dynamics/persist chain; T2
+  back-reaction bound #103, story-complete SCOPED) + 0157/pair
+  (D-D1 like-sign repulsion exact 1/d both signs, PASS #107; D-D2
+  parity-null/oblique-trap banked, review pending; D-D3 ledger
+  queued per ordered rounds): first derived-order defect→medium
+  coupling + ALIVE-object pair physics both signs; no
+  electron/carrier/measurement licensing (all fences travel).
 
 ## B. PRICED (evidence exists; claim conditional on named construction)
 - B1. missing-5 carrier observable: F-C hosts the structure; missing-construction #5 still open — owed via NEW
