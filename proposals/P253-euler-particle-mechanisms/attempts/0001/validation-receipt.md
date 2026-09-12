@@ -1,0 +1,11 @@
+# P253/0001 exact-calculus implementation receipt
+
+The opening checkpoint is4620bf0 on research/203-euler-particles. Opening schema and campaign-memory checks pass. GitNexus indexed this isolated worktree with index-only mode; staged opening detection reported11 document/receipt files, low risk and no affected execution processes. The opening changed no scientific API or accepted claim.
+
+The additive euler_material_balance.py imports the existing material_tag_moments algebra. Source inventory also inspected conserved_moments.isolated_conserved_stress_moment_rates (isolated relativistic stress/surface-free assumptions) and euler_fourier.material_jacobi_matrix (linearized Fourier form); neither supplies the nonlinear material pressure-boundary rate API. Existing symbols remain unchanged. Upstream graph impact for material_tag_moments reported low risk, one canonical direct consumer; direct source search additionally identifies its tests and campaign callers.
+
+The exact oracle differentiates nontrivial material trajectories with nonzero centroid acceleration and torque, derives a radial Poisson source from an explicit Cartesian field, integrates its spherical harmonics exactly, and differentiates the exterior pressure to expose density/sign/shape terms. Uniform acceleration tests expose incorrect centering. Circulation reversal and harmonic Laplacian tests expose a false pressure monopole or signed-charge inference. The polynomial source fixture verifies the Green coefficients; the document supplies smooth bump admissibility analytically rather than claiming the polynomial cutoff is C-infinity.
+
+Command and complete output are in material-pytest.stdout/exit: PYTHONPATH=src with the project interpreter, pytest -q tests/test_euler_material_balance.py tests/test_euler_observation.py. Result9 passed in4.64s, exit0. This is symbolic algebra/contract validation, not numerical Euler existence, long-time stability or a particle test. No small-ratio numerical production claim is made. The two-swirl continuation follows exact source additivity and the same harmonic pressure gradient; its support/time restriction is explicit.
+
+Independent review is active in0004. No new claim is accepted and no parent license has been earned by this receipt alone.

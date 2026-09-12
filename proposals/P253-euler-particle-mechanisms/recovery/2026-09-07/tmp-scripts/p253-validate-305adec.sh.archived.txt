@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -uo pipefail
+root=/tmp/substrate-particles
+check=/tmp/substrate-particles-validate-305adec
+receipt="$root/proposals/P253-euler-particle-mechanisms/attempts/0065/checkpoint-validation"
+rm -rf "$check"
+git -C "$root" worktree add --detach "$check" 305adec
+cmd='PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python scripts/validate_changed.py --base bd42096 --head 305adec'
+printf '%s\n' "$cmd" > "${receipt}.command.txt"
+(cd "$check" && eval "$cmd") > "${receipt}.stdout" 2> "${receipt}.stderr"
+status=$?
+printf '%s\n' "$status" > "${receipt}.exit"
+git -C "$root" worktree remove --force "$check"
+printf 'P253_VALIDATION_305ADEC_DONE exit=%s\n' "$status"
+exit "$status"

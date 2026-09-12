@@ -1,0 +1,57 @@
+.FF.                                                                     [100%]
+=================================== FAILURES ===================================
+_______ test_actual_hasimoto_pde_and_independently_integrated_invariants _______
+
+    def test_actual_hasimoto_pde_and_independently_integrated_invariants():
+        s, t = sp.symbols("s t", real=True)
+        eta = sp.Symbol("eta", positive=True)
+        xi = sp.Symbol("xi", real=True)
+        psi = binormal_soliton(s, t, eta=eta, xi=xi).hasimoto_field
+        residual = sp.I*psi.diff(t)+psi.diff(s, 2)+sp.conjugate(psi)*psi**2/2
+        assert reduce_hyperbolic(residual/psi) == 0
+        mass, momentum, energy = nls_densities(psi.subs(t, 0), s)
+        # z=tanh(eta*s) integrates the actual densities, not supplied totals.
+        z = sp.Symbol("z", real=True)
+        jacobian = 1/(eta*(1-z*z))
+        def integrate_density(density):
+            density = sp.simplify(sp.expand_complex(density))
+            rational = sp.simplify(density.subs(s, sp.atanh(z)/eta)*jacobian)
+            return sp.simplify(sp.integrate(rational, (z, -1, 1)))
+        assert integrate_density(mass) == 8*eta
+        assert integrate_density(momentum) == 8*eta*xi
+>       assert integrate_density(energy) == 8*eta*xi**2-sp.Rational(8, 3)*eta**3
+E       AssertionError: assert 8*eta*(-eta**2 + 3*xi**2)/3 == (((8 * eta) * (xi ** 2)) - (8/3 * (eta ** 3)))
+E        +  where 8*eta*(-eta**2 + 3*xi**2)/3 = <function test_actual_hasimoto_pde_and_independently_integrated_invariants.<locals>.integrate_density at 0x73d318001260>(-4*eta**4*sech(eta*s)**4 + (-2*eta**2*exp(-I*s*xi)*tanh(eta*s)*sech(eta*s) - 2*I*eta*xi*exp(-I*s*xi)*sech(eta*s))*(-2*eta**2*exp(I*s*xi)*tanh(eta*s)*sech(eta*s) + 2*I*eta*xi*exp(I*s*xi)*sech(eta*s)))
+E        +  and   8/3 = <class 'sympy.core.numbers.Rational'>(8, 3)
+E        +    where <class 'sympy.core.numbers.Rational'> = sp.Rational
+
+tests/test_binormal_hasimoto.py:56: AssertionError
+__________ test_square_identity_quantile_factor_and_wrong_coefficient __________
+
+    def test_square_identity_quantile_factor_and_wrong_coefficient():
+        s = sp.Symbol("s", real=True)
+        M = sp.Symbol("M", positive=True)
+        amplitude = sp.Function("a", real=True)(s)
+        phase = sp.Function("theta", real=True)(s)
+        F = sp.Function("F", real=True)(s)
+        q = amplitude*sp.exp(sp.I*phase)
+        square = nls_deficit_square(q, s, cumulative_mass=F, total_mass=M)
+        _, _, energy = nls_densities(q, s)
+        W = F-M/2
+        boundary = sp.diff(W*amplitude**2/4, s)
+        # Equality as local densities modulo the explicit boundary derivative.
+        expected = energy+W**2*amplitude**2/16+boundary
+>       assert sp.simplify((square-expected).subs(sp.diff(F, s), amplitude**2)) == 0
+E       assert (I*M*a(s)*conjugate(Derivative(theta(s), s)) - I*M*a(s)*Derivative(theta(s), s) - M*conjugate(Derivative(a(s), s)) + M...)) + 2*I*F(s)*a(s)*Derivative(theta(s), s) + 2*F(s)*conjugate(Derivative(a(s), s)) - 2*F(s)*Derivative(a(s), s))*a(s)/8 == 0
+E        +  where (I*M*a(s)*conjugate(Derivative(theta(s), s)) - I*M*a(s)*Derivative(theta(s), s) - M*conjugate(Derivative(a(s), s)) + M...)) + 2*I*F(s)*a(s)*Derivative(theta(s), s) + 2*F(s)*conjugate(Derivative(a(s), s)) - 2*F(s)*Derivative(a(s), s))*a(s)/8 = <function simplify at 0x73d35ce27600>(-(-M/2 + F(s))**2*a(s)**2/16 - (-M/2 + F(s))*a(s)*Derivative(a(s), s)/2 - (-I*a(s)*exp(-I*theta(s))*conjugate(Derivati... + F(s))*a(s)*exp(I*theta(s))/4 + I*a(s)*exp(I*theta(s))*Derivative(theta(s), s) + exp(I*theta(s))*Derivative(a(s), s)))
+E        +    where <function simplify at 0x73d35ce27600> = sp.simplify
+E        +    and   -(-M/2 + F(s))**2*a(s)**2/16 - (-M/2 + F(s))*a(s)*Derivative(a(s), s)/2 - (-I*a(s)*exp(-I*theta(s))*conjugate(Derivati... + F(s))*a(s)*exp(I*theta(s))/4 + I*a(s)*exp(I*theta(s))*Derivative(theta(s), s) + exp(I*theta(s))*Derivative(a(s), s)) = subs(Derivative(F(s), s), (a(s) ** 2))
+E        +      where subs = (((-M/2 + F(s))*a(s)*exp(-I*theta(s))/4 - I*a(s)*exp(-I*theta(s))*conjugate(Derivative(theta(s), s)) + exp(-I*theta(s))... + F(s))*a(s)*exp(I*theta(s))/4 + I*a(s)*exp(I*theta(s))*Derivative(theta(s), s) + exp(I*theta(s))*Derivative(a(s), s)) - (-M/2 + F(s))**2*a(s)**2/16 + (-M/2 + F(s))*a(s)*Derivative(a(s), s)/2 + (-I*a(s)*exp(-I*theta(s))*conjugate(Derivativ...(I*theta(s))*Derivative(theta(s), s) + exp(I*theta(s))*Derivative(a(s), s)) - a(s)**4/4 + a(s)**2*Derivative(F(s), s)/4).subs
+E        +      and   Derivative(F(s), s) = <function diff at 0x73d35d9fd9e0>(F(s), s)
+E        +        where <function diff at 0x73d35d9fd9e0> = sp.diff
+
+tests/test_binormal_hasimoto.py:72: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_binormal_hasimoto.py::test_actual_hasimoto_pde_and_independently_integrated_invariants
+FAILED tests/test_binormal_hasimoto.py::test_square_identity_quantile_factor_and_wrong_coefficient
+2 failed, 2 passed in 8.04s

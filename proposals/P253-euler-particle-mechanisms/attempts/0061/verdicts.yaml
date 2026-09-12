@@ -1,0 +1,124 @@
+schema_version: 1
+attempt: P253/0061
+reviewer: particle-balance-review
+review_kind: joined_fixed_claim_non_author_review
+independence:
+  non_author: true
+  non_implementer: true
+  target_units:
+    - P253/0055
+    - P253/0060
+  excluded_claims:
+    - invariant positive Euler mode or Bloch band
+    - strict propagation cone
+    - action selection
+    - particle or P4 conclusion
+    - parent campaign completion
+
+activation:
+  readme_sha256: 94d1a9c7dedf1080bbb07f6ad03b9870ba6eaf2bfaf5f7bf3684c8c1afff2d5a
+  schema_exit: 0
+  schema_command_sha256: 0b8bcc78ad3e326535d62e436c7e5f623fef1e2c3c8d7c12ef1a792f07e8e1c8
+  schema_stdout_sha256: d7a6df70d40116eccbc5ef95222bcd39f56874086284528ed1e49c9c2cd6676f
+  schema_stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  schema_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+
+unit_A_0055:
+  unit_verdict: established
+  review_status: established_at_corrected_bare_euler_scope
+  similarity_and_topology:
+    route_verdict: established
+    positive_result: >-
+      The exact three-dimensional Euler similarity weights and the continuous
+      action rescaling inside a fixed discrete topological class are correct.
+    boundary: >-
+      Prescribing J fixes J tautologically. The no-selection result concerns
+      topology and conserved non-action labels in bare fixed-density
+      whole-space Euler, not every scale-breaking environment.
+  compact_swirl_pressure:
+    route_verdict: established
+    positive_result: >-
+      The Cartesian pressure source has a convergent nonzero trace-free
+      quadrupole, giving a directional r^-3 kinematic-pressure term and r^-4
+      acceleration tail with the stated sign and density conversion.
+  hyperbolic_extension:
+    route_verdict: established
+    evidence_scope: conditional_classical_extension
+    positive_result: >-
+      The overall action factor K and characteristic speed c are independent
+      classical inputs; the extension is not derived from Euler.
+  lattice_thresholds:
+    route_verdict: established
+    absolute_sum: p_greater_than_3
+    first_spatial_moment: p_greater_than_4
+
+unit_B_0060:
+  unit_verdict: blocked
+  review_status: exact_geometry_and_conditional_neutral_tail_established_band_blocked
+  stationary_composite:
+    route_verdict: established
+    positive_result: >-
+      Disjoint compact stationary velocity components with flat collars and
+      matched exterior pressure constants form an exact stationary Euler sum;
+      its exterior pressure is constant and has no static multipole coupling.
+  pressure_convention:
+    route_verdict: established
+    identity: M_ik=-(delta_ik/rho_0)*integral(p-p_infinity)
+    kinematic_identity: M_ik=-delta_ik*integral(pi)
+  octahedral_tangent:
+    route_verdict: blocked
+    positive_result: >-
+      The translated proper-octahedral tensor projector and its conditional
+      r^-5 velocity and r^-6 gradient upper bounds are exact.
+    missing_construction: >-
+      A nonzero C4-invariant compact DA seed on the six-site O/C4 orbit, or a
+      proved free-24-site or overlapping-stabilizer alternative.
+  direct_product_geometry:
+    route_verdict: established
+    boundary: >-
+      Componentwise support, collar, circulation, harmonic, centering, and
+      stabilizer rows give a product-leaf tangent and split KKS form, but global
+      Hodge, pressure, and kinetic-Hessian cross terms remain.
+  bloch_band:
+    route_verdict: blocked
+    positive_result: >-
+      Scalar r^-5 coupling has finite zeroth and first lattice moments.
+    missing_construction: >-
+      Normalized invariant modes, uniform full pressure/Leray D(A_0)-to-X
+      r^-5 coupling, graph-resolvent isolation, and complement leakage control.
+
+joined_verdict:
+  route_verdict: blocked
+  strongest_supported_statement: >-
+    The bare-Euler scale and pressure theorem and the exact stationary
+    octahedral geometry are mutually consistent. A nonzero neutral tangent has
+    the stated r^-5/r^-6 bounds conditionally, but no positive invariant mode,
+    Bloch band, strict cone, or action-selection mechanism is constructed.
+  next_dependency: >-
+    Construct a nonzero C4-invariant compact DA tangent or free-orbit
+    replacement, then an actual positive internal mode with uniform full
+    Euler/Leray graph-domain coupling and complement control.
+
+correction:
+  status: passed
+  receipt_sha256: 3ad8b9f174c9bb779daed8f8f7ea79ba4226272a214dcba2e1b88d249c002bbf
+  all_requested_repairs_supported: true
+  stale_claim_scan: passed
+  unchanged_oracle_rerun_by_reviewer: false
+  second_substantive_pass_performed: false
+  additional_correction_needed: false
+
+post_hashes:
+  P253_0055_README: bf46ea2c9c82d16e26cede0a699447ba79a2e69bdafedf5d1aa38fe6b7cb358a
+  P253_0055_construction: 5351f8bf3abd7b622c0902419f6c99200e5f142fd48e7e59e492625df41dca96
+  P253_0055_result: 938ad472fe8dad612877276da562285a2b6a9d3f5223ccee906a4ab47e3c81ef
+  P253_0055_source_audit: db20e8e969613341d46db73bdc360d92b8d4d6044275586d97bc73d7720117c9
+  P253_0055_validation: 745335c8577b32c07319278c4caeae17614ba13301d9173825df31d0054ace08
+  P253_0060_README: 44ed68373f5307247bb3b79fd1a72646fd84fdc09a95b760f31ecef9cfd63dc3
+  P253_0060_construction: 487891b43cf40b810f6d547909adfdc37a23c64c6a2e868d1b007885ca12ec6e
+  P253_0060_result: 0eac38f436c384248e2c69fd31a9d8c0a41e892b6fa6d6d1cb02fc6401de1edb
+  P253_0060_source_audit: 91afbf5c4a6159cc8dc2cece066377a7c1fa193466de6c64c575ce77c289c06b
+  P253_0060_validation: bef8cde5d00cd77989d2bff8b28802f78154387dd24404d1e05627e85751215d
+  P253_0060_multipole_order_correction: 2d72ea85ffa3623cc45adbe57a4e4b6bff0bea8fd33af480c6491f4e6fde3640
+
+exhaustion_claimed: false

@@ -1,0 +1,120 @@
+attempt: P253/0031
+owner: particle-balance-review
+status: bounded_same_field_observable_derivation_complete
+supplier:
+  attempt: P253/0027
+  independent_review: P253/0028
+  review_status: established_as_stated
+  scope: >-
+    Smooth nonzero axisymmetric whole-space Euler solitary waves on a fixed
+    infinite-energy pure-swirl column, with exact same-fluid exterior and
+    absolutely finite literal kinetic excess.
+route_verdicts:
+  fixed_background_relative_moment_and_kks:
+    verdict: established
+    evidence_scope: EXACT_FIELD_INTEGRALS_SURFACE_LIMITS_AND_LOCAL_KKS_CALCULUS
+  internal_mode_or_cyclic_coordinate:
+    verdict: blocked
+    missing_construction: >-
+      An actual same-background non-axisymmetric or otherwise internal S1
+      family of exact Euler states with nonzero tangent modulo stabilizer,
+      derived least period, finite KKS pullback, and nonzero symplectic period.
+strongest_exact_result: >-
+  Every sufficiently small nonzero member of the positive P253/0027 solitary
+  branch has an absolutely convergent literal axial relative angular momentum,
+  an absolutely convergent literal helicity, an absolutely convergent axial
+  hydrodynamic impulse, and the already established literal kinetic excess.
+  Its background-subtracted material action is finite on every finite time
+  interval. The fixed-background compact-generator orbit has a finite
+  density-normalized local KKS form, finite relative Hamiltonian, and the weak
+  Hamiltonian identity against compact generators. The exact axial-translation
+  orbit is a relative equilibrium and makes E_rel-c*I_z stationary. Axial SO2
+  is a stabilizer, tilted rotations leave the finite-excess phase space, and
+  the translating orbit is noncompact; no nontrivial compact internal action is
+  supplied by the existing family.
+exact_integrals:
+  axial_angular_momentum: >-
+    J_z_rel=2*pi*rho_m*integral r*[F_c(psi_0+f)-L] dr dz.
+  helicity_kinematic: >-
+    H_kin=4*pi*integral F_c'(psi_0+f)*[(f_r^2+f_z^2)/r-c*f_r]
+    dr dz; rho_m*H_kin is the density-weighted convention.
+  axial_impulse: >-
+    I_z=-pi*rho_m*integral r*Delta_*f dr dz
+    =2*pi*rho_m*integral f(R,z) dz. The second equality is the retained
+    exterior zero-Fourier surface row.
+  kinetic_excess: >-
+    E_rel=pi*rho_m*integral
+    [f_r^2+f_z^2+2*L*G+G^2] dr dz/r, with G=F_c(psi_0+f)-L.
+  finite_time_material_action: S_mat_rel[0,T]=T*E_rel.
+leading_transfer:
+  definitions: >-
+    C_J=integral r*w*f_0 dr, C_H=integral w*f_0' dr,
+    C_E=integral L*w*f_0 dr/r, h_0=f_0(R); all are strictly positive and
+    integral A_*=6/beta.
+  common_scale: >-
+    mu*L_mu=h_0*sqrt(mu*log(L_mu)) tends to zero on the positive branch.
+  axial_angular_momentum: >-
+    J_z_rel=-(12*pi*rho_m/(beta*c_0))*C_J*mu*L_mu+o(mu*L_mu)<0.
+  helicity_kinematic: >-
+    H_kin=(24*pi/beta)*C_H*mu*L_mu+o(mu*L_mu)>0.
+  axial_impulse: >-
+    I_z=(12*pi*rho_m/beta)*h_0*mu*L_mu+o(mu*L_mu)>0.
+  kinetic_excess: >-
+    E_rel=-(12*pi*rho_m/(beta*c_0))*C_E*mu*L_mu+o(mu*L_mu)<0.
+  augmented_hamiltonian: >-
+    E_rel-c*I_z=-(12*pi*rho_m/beta)*(C_E/c_0+c_0*h_0)*mu*L_mu
+    +o(mu*L_mu)<0.
+exact_vs_asymptotic: >-
+  The displayed field integrals are exact at finite mu. The leading-transfer
+  formulas are controlled asymptotics, not closed forms for those integrals;
+  their strictly nonzero coefficients and little-o bounds imply eventual
+  exact nonvanishing for sufficiently small nonzero mu.
+coadjoint_boundary:
+  phase_space: >-
+    Affine fixed-background states U+v with the P253/0027 regularity and
+    finite-excess behavior, acted on locally by compactly supported
+    volume-preserving generators. Axial translations and rotations preserving
+    U supply the two exact symmetry rows at the solitary state; a general
+    nearby asymptotic diffeomorphism group is not established.
+  kks_convention: >-
+    X_xi=-ad*_xi m and Omega_m(X_xi,X_eta)=-<m,[xi,eta]>, with
+    m=[rho_m*u_flat]; this gives i_XH Omega=dH and positive momentum pairings.
+  global_limit: >-
+    The result establishes a finite local compact-generator orbit action, weak
+    Hamiltonian identity, exact solitary translation orbit, and finite
+    augmented Hamiltonian. Diff_c is not claimed to contain a general
+    noncompact Euler generator. No arbitrary-nearby asymptotic group, nonzero
+    global KKS period, or nonconstant compact state-space loop is established.
+normalization:
+  angular_momentum_and_action_scale: rho_m*U_0*ell_0^4
+  kinematic_helicity_scale: U_0^2*ell_0^2
+  density_weighted_helicity_scale: rho_m*U_0^2*ell_0^2
+  impulse_scale: rho_m*U_0*ell_0^3
+  energy_scale: rho_m*U_0^2*ell_0^3
+  azimuthal_factors: exact_2pi_or_4pi_as_displayed
+oracle:
+  strongest: direct_analytic_field_surface_and_coadjoint_calculus
+  exact_symbolic_role: normalization_and_identity_corroboration
+  final_symbolic_exit: 0
+  final_symbolic_result: 7_exact_checks_plus_4_exposing_mutations_passed
+  production_numerics: none
+  small_ratio_numerics_bind: false
+four_axis:
+  verification: exact_analytic_calculus_with_sensitive_symbolic_corroboration
+  review: independent_review_required_for_new_0031_claims
+  compatibility: compatible_proposal_evidence_no_central_claim_delta
+  epistemic: exact_at_fixed_background_axisymmetric_small_branch_scope
+next_executable_construction: >-
+  Continue a non-axisymmetric azimuthal mode of the exact solitary wave to a
+  same-background relative-periodic Euler family and derive its least period
+  and finite KKS pullback before assigning any internal action.
+parent_objective_state: active
+scientific_exhaustion: false
+does_not_license:
+  - an absolutely convergent full three-vector first moment of the exterior poloidal tail
+  - a localized material mass centroid or rigid-body intrinsic spin
+  - a nontrivial compact orbit or nonzero global KKS period
+  - stability, restoring dynamics, or interaction-carrier control
+  - quantum spin, statistics, hbar, or spin one-half
+  - electron or neutrino completion
+  - parent-campaign completion or a global Euler no-go

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -u
+root=/tmp/substrate-particles
+check=/tmp/substrate-validate-6269e87
+attempt="$root/proposals/P253-euler-particle-mechanisms/attempts/0055"
+if [ ! -d "$check/.git" ]; then
+  git -C "$root" worktree add --detach "$check" 6269e87
+fi
+cmd="PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python scripts/validate_changed.py --base efd222b --head 6269e87"
+printf '%s\n' "$cmd" > "$attempt/checkpoint-validation.command.txt"
+: > "$attempt/checkpoint-validation.stderr"
+cd "$check"
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python scripts/validate_changed.py --base efd222b --head 6269e87 > "$attempt/checkpoint-validation.stdout" 2> "$attempt/checkpoint-validation.stderr"
+rc=$?
+printf '%s\n' "$rc" > "$attempt/checkpoint-validation.exit"
+printf 'P253_6269E87_VALIDATION_EXIT=%s\n' "$rc"
+exit "$rc"

@@ -1,0 +1,47 @@
+attempt: P253/0039
+owner: particle-foundations
+scope:
+  carrier: fixed_compact_gavrilov_flat_pressure_plateau
+  sector: derivative_resonant_dynamically_accessible_packets
+  norm: whole_space_kinetic_L2_mod_euclidean_symmetries
+  target: all_circuit_linear_euler_semigroup_lower_bound
+activation_schema_exit: 0
+route_verdicts:
+  gaussian_beam_egorov:
+    verdict: established
+    statement: >-
+      For every circuit count j, a tube width is chosen first and a frequency
+      afterward so that exact normalized accessible Euler data achieve gain
+      arbitrarily close to lambda_+^j at t_j=j*T_*.
+  weak_packet_essential_norm:
+    verdict: established
+    statement: >-
+      A diagonal concentrating, oscillating, weak-null accessible sequence
+      gives essential norm at least lambda_+^j for every circuit count.
+  generator_pseudomode:
+    verdict: blocked_with_missing_construction
+    statement: >-
+      A generator Weyl sequence would need longitudinal phase closure and a
+      graph residual; it is not needed for the established semigroup theorem.
+strongest_exact_result: >-
+  On the same fixed Gavrilov carrier and derivative-resonant shell,
+  ||S(j*T_*)||_ess on X_DA modulo Euclidean symmetries is at least
+  lambda_+^j for every integer j>=1, hence the semigroup growth bound is at
+  least gamma_*=(log lambda_+)/T_*>0.
+licenses:
+  - exact linear semigroup norm growth on one fixed carrier
+  - exact essential-norm lower bound through weak accessible packets
+  - full whole-space Leray/Hodge and finite-energy normalization bridge
+does_not_license:
+  - nonlinear Lyapunov instability
+  - carrier breakup or failure of every stable Euler carrier
+  - LP2 stable-particle embedding
+  - quantum mechanics, exchange, Born rule, or relativity
+  - electron or neutrino identity
+next_executable_dependency: >-
+  For LP2, replace this hyperbolic carrier sector by a carrier or internal
+  restoring mechanism whose complete accessible cocycle has a positive
+  periodic physical metric; a separate nonlinear campaign may test whether
+  the established linear growth transfers to nonlinear orbital instability.
+parent_state: active
+exhaustion_claimed: false

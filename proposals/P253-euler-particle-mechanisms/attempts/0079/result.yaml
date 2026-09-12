@@ -1,0 +1,191 @@
+attempt: P253/0079
+owner: particle-foundations
+activation_schema_exit: 0
+status: analyzer_supplier_open_with_exact_rational_ray_crossing_reduction
+evidence_scope: EXACT_SYMMETRY_STURM_SELECTION_RESPONSE_AND_FINITE_DIMENSIONAL_LEDGER
+
+dependency_boundary:
+  P253_0074_0078: independently_reviewed_five_scoped_units
+  P253_0051: conditional_classical_Schwinger_Hopf_algebra_only
+  excluded:
+    - equal_frequency_Cao_doublet_as_an_input
+    - absolute_Sturm_to_physical_KKS_conversion
+    - autonomous_external_forcing
+    - hand_tuned_parameter_as_a_control_axis
+    - plus_minus_n_or_cosine_sine_as_two_complex_modes
+    - low_k_torus_transfer_from_the_massive_0074_theorem
+    - quantum_particle_or_relativity_inference
+
+exact_results:
+  symmetry_representation:
+    statement: >-
+      The oriented translating nonrotating Cao carrier has axial SO(2)
+      one-dimensional complex characters. Radial Sturm labels give multiple
+      copies of a character, but SO(2) supplies no equality constraint among
+      their eigenfrequencies. A cosine/sine plane is one complex oscillator;
+      plus/minus n are reality partners; reversibility gives the opposite-
+      frequency partner. None is a second positive complex mode.
+  Sturm_ordering:
+    statement: >-
+      Hellmann--Feynman gives lambda_J prime equal to the unweighted radial
+      norm, and d(sigma_J squared)/d(k squared) equals the positive H0 wave
+      form divided by lambda_J squared. Each branch is strictly increasing,
+      while simple Sturm order makes distinct J frequencies strictly ordered
+      at one common k.
+  rational_ray_crossing_reduction:
+    statement: >-
+      A nonconstant analytic matching ratio r12(k) contains a rational regular
+      value q/p. For n1=Np, n2=Nq and delta0=kstar/(Np), the column mismatch
+      vanishes exactly in the fixed-positive-k massive regime. The uniform C0
+      graph-Riesz error from 0074 permits an endpoint scale hN with error
+      o(hN). Conditional on a connected exact-carrier path covering that
+      geometric-delta bracket, continuous simple eigenvalues have opposite
+      mismatch signs and IVT gives an exact crossing at
+      deltaN=delta0+o(1/N). No C1 curvature expansion is needed.
+    remaining_input: >-
+      Prove one exact nonidentity witness for r12 from the source Sturm
+      coefficients and prove centered carrier continuity plus local geometric-
+      delta coverage or import the corresponding uncharged HSE branch from
+      0080. Reviewed 0074/0078 supplies the uniform graph theorem but not this
+      carrier-path statement.
+  polarization_column_crossing:
+    statement: >-
+      Pairing an m-zero Kelvin mode, sigmaJ(k)=AJ*k+O(k^3), with the m-one
+      translation-bending magnitude tau1(k)=(F(a)/2)*k^2*log(1/(ka))+O(k^2)
+      forces a sign-changing positive column crossing on every sufficiently
+      large rational ray r=q/p. This removes the m-zero/m-zero nonidentity
+      test without differentiating the value-level remainder.
+    remaining_input: >-
+      The actual constrained Hessian/KKS sign of the m-one bending branch and
+      the same continuous exact-carrier geometric-delta bracket are required
+      before this is a positive Cao doublet.
+  full_Euler_interaction:
+    statement: >-
+      On the fixed translating constrained slice the exact derivative is
+      V_h e2=-[B h,e2]-[B e2,h]. Toroidal harmonic ell maps n to n plus ell.
+      G12 is defined only as the continuous dual functional h maps to
+      Omega_KKS(e1sharp,V_h e2) on Y_ell^s, and G3 analogously on Y_0^s.
+    boundary: >-
+      No expanded ad/adstar representative is proved. Harmonic selection and
+      mode unique continuation do not prove either constrained response
+      functional is nonzero.
+  analyzer_algebra:
+    statement: >-
+      The exact split VC=(V-JVJ)/2 and VA=(V+JVJ)/2 separates complex-linear
+      mode mixing from squeezing. Conditional nonzero diagonal and
+      off-diagonal physical responses have noncollinear Pauli vectors, while
+      hand-rotating one quadrature is not an independent autonomous control.
+  coupled_gate_ledger:
+    statement: >-
+      The isolated internal Bogoliubov coefficient is bounded by sinh(epsA).
+      Full P-plus-Q evolution requires separate outbound and return kernels.
+      If kappa_back is below one, the P gain is at most
+      exp(epsA)/(1-kappa_back), Q leakage is at most eps_out times that gain,
+      and the isolated inverse bound plus return closeness gives an absolute
+      two-sided P-action change bounded by the squared gain minus one plus the
+      nonlinear remainder.
+  high_harmonic_usefulness:
+    statement: >-
+      The rational ray requires mixer order ellN=N(p-q). Physical covariant
+      derivatives see deltaN*ellN=O(1), not an artificial N^s loss. Conditional
+      on the still-open uniform physical KKS-dual normalization, unit pure
+      harmonics have a three-wave upper scale O((R*a_core^2)^(-1/2)), hence
+      O(N^-1/2) at fixed core scale. A pi/2 gate must satisfy the explicit
+      response, gate-time, squeezing, outbound leakage and return-kernel
+      inequalities in derivation (18f)-(18g).
+  fixed_harmonic_alternative:
+    statement: >-
+      The 0066 calculation independently retained by 0073 supplies only the
+      fixed-k limiting-column law sigma_J=k*L_Phi/(pi*J)+O(k/J^2). Taking
+      J1=J, J2=J+1, n1=J*ell and n2=(J+1)*ell therefore keeps the mixer
+      harmonic fixed and makes the leading terms equal at
+      deltaJ=kstar/(J*ell). The unresolved splitting is O(J^-2).
+    remaining_input: >-
+      A joint high-J/thin-ring graph-Riesz error o(J^-2), the signed next Weyl
+      coefficient, and physical KKS normalization of the oscillatory modes.
+
+route_verdicts:
+  route_A_symmetry_enforced_multiplicity:
+    verdict: refuted
+    mechanism: >-
+      The physical commuting SO(2) representation consists of one-dimensional
+      characters and imposes no frequency equality among radial copies; its
+      real quadratures and reality partners do not form a two-mode positive-
+      frequency doublet.
+  route_B_distinct_sector_crossing_and_controls:
+    verdict: blocked
+    strongest_positive: >-
+      Same-k radial crossings are excluded, while the massive rational-ray
+      construction reduces an exact Cao crossing to one scalar Sturm
+      nonidentity and one continuous exact-carrier delta bracket. The distinct-
+      polarization variant proves a sign-changing rational column root from
+      unequal k versus k^2*log(k) asymptotics, but leaves its bending Krein sign
+      open. Given the applicable sign and carrier path, reviewed uniform C0
+      transfer and IVT give exact crossings with deltaN=delta0+o(1/N). The
+      interaction, normalized response and two-sided gate tests are derived.
+    missing_construction: >-
+      Either source-level m-zero ratio nonconstancy or the bending-branch
+      positive Krein sign; exact-carrier continuity/delta coverage; uniform
+      physical KKS-dual normalization; lower response bounds; and two coherent
+      independently realizable histories.
+  route_C_two_carrier_exchange:
+    verdict: blocked
+    mechanism: >-
+      Exchange symmetry diagonalizes the coupling but does not force its
+      symmetric/antisymmetric splitting to vanish. No two-Cao-ring equilibrium,
+      zero-splitting transversality, or controlled pair of relative motions is
+      constructed.
+  route_D_autonomous_three_wave_Floquet:
+    verdict: blocked
+    strongest_positive: >-
+      The frequency and toroidal selection equations identify a materially
+      different resonant conversion route. Complex conjugation alone does not
+      classify its counter-rotating row; the positive/negative-frequency
+      projection followed by the VC/VA split is required.
+    missing_construction: >-
+      One auxiliary physical eigenmode satisfying the three-sector resonance,
+      a nonzero trilinear KKS response, and a full autonomous gate-time
+      pump-depletion, return-kernel, and nonlinear remainder bound.
+  route_E_fixed_harmonic_high_radial_index:
+    verdict: blocked
+    strongest_positive: >-
+      The Weyl law gives a concrete leading resonance with bounded mixer
+      harmonic: J and J+1 paired with toroidal indices J*ell and (J+1)*ell.
+    missing_construction: >-
+      The current transfer fixes J first. It does not control J=Theta(1/delta),
+      the shrinking O(J^-2) contours, or the signed next Weyl coefficient.
+
+strongest_exact_verdict: >-
+  0079 refutes the SO2-symmetry-enforced and same-k Sturm doublet routes but gives
+  a concrete fixed-massive-k rational-ray continuation: conditional only on a
+  source-defined scalar nonidentity, a connected carrier delta bracket, and
+  the reviewed 0074/0078 uniform C0 transfer, IVT produces exact crossings at
+  delta_N=delta_N^0+o(1/N). It also defines the exact full-Hodge harmonic
+  interaction dual tests, the high-harmonic response/gate-time scale, a corrected two-sided
+  leakage ledger, and a fixed-mixer-harmonic high-J alternative. The rational
+  ray has not been selected from the source coefficients and no physical pair
+  of noncommuting autonomous controls has been constructed.
+
+next_dependency: >-
+  Either evaluate a first unequal coefficient of the m-zero Sturm matching
+  ratio or derive the actual constrained Hessian/KKS sign of the forced
+  m-zero/m-one polarization crossing. Construct the continuous geometric-delta
+  carrier bracket directly or through 0080 at fixed circulation and mean radius
+  before applying C0-IVT. Then derive uniform physical KKS-dual normalization,
+  evaluate lower bounds for G12 and G3 relative to the DA graph, and build
+  coherent Euler histories satisfying the growing-time two-sided ledger. If
+  high-ell response is too weak, execute the fixed-ell joint high-J transfer;
+  in parallel retain the projected three-wave resonance route. A later charged
+  continuation must separately exhibit an integer above all graph/IVT/response
+  thresholds but below the finite subluminal N_EM scale.
+
+does_not_license:
+  - an_equal_frequency_positive_Cao_doublet
+  - two_autonomous_noncommuting_Euler_controls
+  - a_number_preserving_gate_or_QUP_error_smallness
+  - a_nonlinear_persistent_carrier_or_restoring_neighborhood
+  - P2_or_P4_completion
+  - electron_neutrino_quantum_measurement_exchange_or_relativity_claim
+  - an_N_to_infinity_charged_Euler_Maxwell_crossing_sequence_without_a_subluminal_threshold_hierarchy
+parent_campaign_state: active
+exhaustion_claimed: false

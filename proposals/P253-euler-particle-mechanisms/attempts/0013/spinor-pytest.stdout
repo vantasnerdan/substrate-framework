@@ -1,0 +1,20 @@
+....F.                                                                   [100%]
+=================================== FAILURES ===================================
+__________ test_unit_spinor_velocity_and_texture_energy_are_distinct ___________
+
+    def test_unit_spinor_velocity_and_texture_energy_are_distinct():
+        x, y, z = sp.symbols("x y z", real=True)
+        rho, kappa = sp.symbols("rho kappa", positive=True)
+        spinor = [sp.cos(y/2), sp.exp(sp.I*x)*sp.sin(y/2)]
+        result = spinor_euler_terms(spinor, [x, y, z], density=rho, circulation_scale=kappa)
+        assert result.normalization_residual == 0
+        assert result.velocity == sp.Matrix([kappa*sp.sin(y/2)**2, 0, 0])
+        assert result.texture == sp.Matrix([sp.sin(y)*sp.cos(x), sp.sin(y)*sp.sin(x), sp.cos(y)])
+>       assert result.energy_identity_residual == 0
+E       assert kappa**2*rho*(-4*sin(y/2)**4 - sin(y)**2 - 2*cos(y) + 2)/8 == 0
+E        +  where kappa**2*rho*(-4*sin(y/2)**4 - sin(y)**2 - 2*cos(y) + 2)/8 = SpinorEulerTerms(velocity=Matrix([\n[kappa*sin(y/2)**2],\n[                0],\n[                0]]), texture=Matrix([\n[...ty=kappa**2*rho*(sin(y)**2 + 1)/8, energy_identity_residual=kappa**2*rho*(-4*sin(y/2)**4 - sin(y)**2 - 2*cos(y) + 2)/8).energy_identity_residual
+
+tests/test_euler_field_maps.py:69: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_euler_field_maps.py::test_unit_spinor_velocity_and_texture_energy_are_distinct
+1 failed, 5 passed in 2.71s

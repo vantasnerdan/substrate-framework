@@ -1,0 +1,184 @@
+schema_version: 1
+attempt: P253/0047
+reviewer: particle-balance-review
+review_kind: fixed_claim_non_author
+independence:
+  non_author: true
+  non_implementer: true
+  excluded_attempts:
+    - P253/0044
+    - P253/0046
+  excluded_obligations:
+    - P4 completion
+    - particle or quantum completion
+
+activation:
+  readme_sha256: 31ebe83cc906f6a79b3ef4bb5ed4debf8cfccd84a6eebc32e70049e40dd26c8a
+  schema_exit: 0
+  schema_command_sha256: 5469bc1a4e263e5211cc04b02d369ba48f98d4da7a5d5cd5a40c24476426451f
+  schema_stdout_sha256: d7a6df70d40116eccbc5ef95222bcd39f56874086284528ed1e49c9c2cd6676f
+  schema_stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  schema_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+
+koopman_representation:
+  conditional_route_verdict: established
+  evidence_scope: CONDITIONAL_CLASSICAL_KOOPMAN_REPRESENTATION
+  hypotheses:
+    - specified measurable Euler phase space Gamma
+    - global measurable Euler flow Phi_t on Gamma
+    - invariant probability measure mu
+    - normalized L2 state
+    - bounded multiplication observables or declared common domains
+  established:
+    - unitary Koopman group under the invariant-measure hypotheses
+    - commuting classical physical multiplication observables
+    - normalized expectation integral f times abs_psi_squared dmu
+  actual_euler_measure_and_flow:
+    route_verdict: blocked
+    missing_construction: >-
+      Construct the declared global invariant probability and global flow for
+      the actual Euler carrier phase space.
+  does_not_imply:
+    - noncommutative measurement algebra
+    - Born-rule or measure selection
+    - quantum completion
+
+kks_sphere_quantization:
+  route_verdict: established
+  evidence_scope: EXACT_POSITIVE_J_EULER_KKS_SPHERE_AND_CONDITIONAL_CP1_QUANTIZATION
+  exact_normalization:
+    angular_momentum: j times n
+    kks_form: j sin(theta) dtheta wedge dphi
+    symplectic_period: 4 pi j
+    cern_integer: N equals 2j divided by hbar
+    representation_dimension: N plus 1
+    representation_spin: N divided by 2
+  hypotheses:
+    - j strictly greater than zero
+    - N is a positive integer
+    - ordinary holomorphic quantization with O(N) and no half-form shift
+  euler_scaling: j maps to A times B^-4 times j
+  selection_status:
+    route_verdict: blocked
+    missing_construction: >-
+      Derive an action unit, integer N, polarization, and physical state
+      selection from the Euler carrier rather than choosing them externally.
+
+two_carrier_and_hopf_topology:
+  abstract_unordered_centers:
+    route_verdict: established
+    evidence_scope: RP2_WITH_PI1_Z2_AND_TWO_UNITARY_CHARACTERS
+  hopf_source:
+    route_verdict: established
+    evidence_scope: BASED_HOPF_SECTOR_ROTATION_CLASS_Q_MOD_2
+    source_note: >-
+      The displayed integer formula and source conclusion support rotation
+      class Q mod 2; nearby contrary parity prose is an apparent source typo.
+  actual_euler_inclusion:
+    route_verdict: blocked
+    missing_construction: >-
+      Give a continuous collision-free inclusion into the admissible same-field
+      Euler configuration space and prove that the exchange loop maps to and
+      remains in the nontrivial Hopf or RP2 class.
+  character_selection:
+    route_verdict: blocked
+    missing_construction: >-
+      Select the positive or negative Z2 character by actual Euler dynamics or
+      state-space structure.
+  does_not_imply:
+    - Euler exchange phase
+    - fermionic statistics
+    - a relativistic spin-statistics theorem
+
+positive_symplectic_mode:
+  conditional_route_verdict: established
+  evidence_scope: CONDITIONAL_POSITIVE_CLASSICAL_COMPLEX_STRUCTURE
+  convention:
+    generator_relation: Omega(Ax,y) equals K(x,y)
+    complex_structure: J equals A times negative_A_squared_to_minus_one_half
+    positive_metric: G_J(x,y) equals Omega(Jx,y)
+  hypotheses:
+    - densely defined invertible skew-adjoint A on a real Hilbert domain
+    - valid functional calculus for negative A squared
+    - positive Hessian after quotienting neutral and stabilizer directions
+  actual_carrier_mode:
+    route_verdict: blocked
+    missing_construction: >-
+      Exhibit an actual Euler carrier sector satisfying the operator-domain,
+      quotient, and positivity hypotheses.
+  imported_structures_not_derived:
+    - action unit
+    - CCR and bosonic Fock representation
+    - CAR and fermionic Fock representation
+    - vacuum or Born rule
+
+galilean_dispersion:
+  route_verdict: established
+  evidence_scope: EXACT_GALILEAN_AND_NO_BARE_LORENTZ_BOUNDARY
+  exact_symbol:
+    finite_energy_whole_space_rest: omega equals zero
+    periodic_or_relative_uniform_background: omega equals U dot k
+    transverse_polarizations: same advection frequency
+  refuted_route: >-
+    The unmodified bare incompressible Euler transverse symbol does not yield
+    an exact acoustic or Lorentz cone.
+  remains_open:
+    - emergent relativistic bands in a separately constructed sector
+    - homogenized or medium-induced Lorentz behavior
+    - the broader P4 obligation
+
+api_and_tests:
+  route_verdict: established
+  evidence_scope: FINITE_ALGEBRA_ONLY
+  api_sha256: b773d255b4adbf1419a3c8a94cbcbadeb29386aedd4edb0bff33c75a408c19f4
+  tests_sha256: 979218834d05afc39dfc1178221418cf1aa8395daf4f1db65d0f54e87890d90c
+  focused_command_sha256: dd0baad1c919492417ce6ed66564aade29c992fe7e430db97bd2f015d13b2f18
+  focused_stdout_sha256: a2d60f5309db0bc78c093a7442afc289bccb1d2826f0e993fc4d0896fc659aa6
+  focused_stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  focused_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+  focused_result: 11 passed in 2.70s
+  reviewer_rerun: false
+  role: >-
+    The focused inventory corroborates the finite Chern, spin, scaling,
+    character, Hopf-parity, Galilean-frequency, and strict-positive-j algebra.
+
+correction:
+  status: passed
+  receipt_sha256: e583d280976a96c2a2b0904eafd1bd7cf8362f0b62ff7aafb6ca06b2b6ffa40a
+  all_five_requested_repairs_supported: true
+  construction_post_sha256: 0558d180f013c2c15f0223fb65a5fae60cc4ae7427132814862ec46fff0c4ea1
+  result_post_sha256: a0f3fcb7b627de1434e3761b4d22b29a7bd2892f778f67f5f4e2ff9ae0e17efb
+  source_audit_post_sha256: 7acfe4f8454e616efa55df3a68cc4caae067553e9184967382374f4cf4e119de
+  validation_post_sha256: bb97402f9418831da7c51f87cd2853e670b9526c9e71aa8bd9273648ef5b8a61
+  api_post_sha256: b773d255b4adbf1419a3c8a94cbcbadeb29386aedd4edb0bff33c75a408c19f4
+  tests_post_sha256: 979218834d05afc39dfc1178221418cf1aa8395daf4f1db65d0f54e87890d90c
+  additional_correction_needed: false
+
+joined_result:
+  route_verdict: established
+  review_status: established_after_one_bounded_precision_correction
+  evidence_scope: EXACT_EULER_QUANTUM_SUFFICIENCY_AND_NONSELECTION_BOUNDARY
+  strongest_supported_statement: >-
+    The corrected attempt gives a conditional classical Koopman
+    representation, an exact positive-j Euler KKS sphere with conditional CP1
+    quantization, exact abstract RP2 and Hopf rotation topology, a conditional
+    positive classical complex structure, and the exact Galilean/no-bare-
+    Lorentz boundary. It identifies rather than supplies the missing measures,
+    Euler loop inclusion, character and action selection, actual positive
+    carrier mode, quantum observable algebra, and emergent Lorentz structure.
+  next_dependency: >-
+    Construct on one persistent Euler carrier an actual state-space bridge
+    that selects at least one of the missing structures: invariant measure and
+    flow, nontrivial Euler exchange/Hopf inclusion and character, or positive
+    symplectic mode with derived action scale and observable algebra.
+
+does_not_license:
+  - a stable material particle
+  - quantum mechanics or a Born rule
+  - spin-half or fermionic character selection
+  - an Euler spin-statistics theorem
+  - Lorentz kinematics
+  - P4 completion or no-go
+  - active P253/0044 or P253/0046
+  - parent campaign completion
+exhaustion_claimed: false

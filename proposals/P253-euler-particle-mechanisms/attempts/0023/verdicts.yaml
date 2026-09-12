@@ -1,0 +1,103 @@
+attempt: P253/0023
+review_type: independent_fixed_theorem
+reviewer: particle-balance-review
+target: P253/0015
+transaction: coherent_source_action_claim
+activation:
+  schema_exit: 0
+  frozen_readme_sha256: 217f5e82527168e528443f7c696b1f2ecfd750008dc95adb77e3a7e013497178
+independence:
+  non_author: true
+  non_implementer: true
+  preactivation_target_body_opened: false
+  excluded_attempts:
+    - P253/0021
+route_verdict: established
+evidence_scope: EXACT_SOURCE_APPLICABILITY_AND_LOCAL_VARIATIONAL_CALCULUS
+strongest_supported_statement: >-
+  For the Garcia-Hassainia-Hmidi axisymmetric no-swirl two-patch family at the
+  exact v1 source quantifiers, the translating-frame labeled pair is a
+  nonconstant closed critical loop of the correctly signed local KKS action.
+  It is noncritical, hence nonmaximizing, for the autonomous E-cP on its
+  labeled leaf; the raw full-loop action Hessian has both signs at arbitrarily
+  high temporal frequency. The full formal Jacobi equation retains cross
+  interaction and has independent phase and axial-translation periodic modes.
+  The source planar filament/center return map, and only that map, has the
+  exact period-twist Jordan chain at multiplier one.
+component_results:
+  source_pair_and_period:
+    status: established
+    scope: >-
+      Global selected patch solution, periodic in the uniformly translating
+      frame with physical period T/abs(log epsilon), for sufficiently small
+      epsilon and lambda in the source Cantor/Borel set.
+  autonomous_maximizer:
+    status: refuted
+    mechanism: >-
+      D(E-cP)[delta_chi q] is minus the pairing of chi with the nonzero
+      translating-frame state velocity, so the nonconstant orbit is not
+      leafwise critical.
+  corrected_local_kks_loop:
+    status: established
+    scope: >-
+      Local/relative source-regular patch action with i_X Omega=dH and
+      -dTheta=Omega; physical H, Omega, and action are the displayed normalized
+      quantities multiplied by 2*pi*rho_m.
+  raw_loop_action_maximum:
+    status: refuted
+    mechanism: >-
+      Admissible real periodic variations on a non-stabilizer symplectic
+      two-plane have opposite O(k) KKS kinetic terms while all fixed-spatial
+      Hessian and frame terms remain O(1).
+  jacobi_and_symmetry_modes:
+    status: established
+    scope: >-
+      Exact full formal two-label linearization, KKS conservation on smooth
+      solutions, and independent phase/translation periodic Jacobi fields;
+      bounded full monodromy is not inherited.
+  filament_period_twist:
+    status: established
+    scope: >-
+      The source planar reduced system satisfies
+      (M-I)v_lambda=-T'(lambda)v_phase with T'>0 for small epsilon, giving a
+      genuine size-two unit-multiplier Jordan chain; no finite-core transfer.
+bounded_correction:
+  status: accepted
+  corrected_artifact: attempts/0015/construction.md
+  pre_sha256: 1d146f6e1d68175a3844e0d27ea3acda6bbe41bb85e88af93905d65fb2a38eb6
+  post_sha256: 90eec03cd419ca92e6796e6e4d3839b6c6d2152ffa2b04ef49048eacd3a5bff9
+  receipt: attempts/0015/normalization-compact-extension-correction.md
+  receipt_sha256: ffb8d67400089e55046643d714c9c375d50460d38257daba5a849a85f6f993f5
+  effect: >-
+    Declares the common 2*pi*rho_m physical normalization and supplies the
+    compact Hamiltonian extension realizing the periodic patch path in the
+    stated Diff_c leaf. Dynamics, signs, Jacobi equations, Hessian
+    indefiniteness, source scope, and verdicts are unchanged.
+oracle:
+  strongest: primary_source_and_independent_exact_calculus
+  exact_script_role: regression
+  rerun: false
+  reason_not_rerun: >-
+    The correction changes only a common positive normalization and the
+    compact-support realization; no executed scientific predicate changed.
+four_axis:
+  verification: exact_source_applicability_and_calculus_verified
+  review: established_after_bounded_correction
+  compatibility: compatible_proposal_evidence
+  epistemic: exact_at_declared_local_and_filament_scopes
+remaining_dependency: >-
+  At the frozen 0015 boundary, construct a bounded full-source-space
+  non-reversible two-label contour propagator and a reduced transverse estimate
+  controlling powers of the finite-core patch monodromy; nonlinear orbital
+  stability additionally requires a matching modulation/bootstrap argument.
+does_not_license:
+  - full finite-core Floquet or spectral stability
+  - nonlinear or orbital stability of the patch pair
+  - an all-time open initial-data neighborhood
+  - global contour propagation from excluded attempt 0021
+  - three-dimensional or swirl stability
+  - mechanical force or particle identity
+  - physical spin or quantum statistics
+  - electron or neutrino completion
+  - parent-campaign completion
+  - global no-go

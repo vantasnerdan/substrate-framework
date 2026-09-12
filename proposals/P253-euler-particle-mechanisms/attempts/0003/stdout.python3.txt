@@ -1,0 +1,62 @@
+SOURCE: Slobodeanu, arXiv:1405.3469v3 (2019 correction)
+SOURCE_SHA256: fdc453ac26b0568e5b1344940c537aa547829f8542d3a0da015ff226aa1a81bf
+SOURCE_BOUNDARY: Proposition 2 is a steady 3D Riemannian theorem;
+  phi: (M^3,g)->(N^2,h), phi C^2, omega target area form,
+  V^flat = star(phi^*omega), with converse local near V != 0.
+PASS [P253-0003-EULER-SKYRME-EXACT] Hodge star isometry gives |V|^2=|phi^*omega|^2
+PASS [P253-0003-EULER-SKYRME-EXACT] Hodge component map: baseline
+PASS [P253-0003-EULER-SKYRME-EXACT] Hodge component map: mutations supplied
+PASS [P253-0003-EULER-SKYRME-EXACT] Hodge component map: mutation 1 rejected
+PASS [P253-0003-EULER-SKYRME-EXACT] fluid kinetic energy equals only the sigma2 quartic contribution
+PASS [P253-0003-EULER-SKYRME-EXACT] potential contribution is additional, not kinetic energy
+PASS [P253-0003-EULER-SKYRME-EXACT] local example is divergence free
+PASS [P253-0003-EULER-SKYRME-EXACT] local example obeys steady Euler with p=P-|V|^2/2=0
+PASS [P253-0003-EULER-SKYRME-EXACT] Bernoulli identity V cross curl(V)=grad(P)
+STATIC_EXAMPLE: phi=(exp(y-a),z), phi^*omega=exp(y-a)dy^dz,
+  V=exp(y-a)e_x, target P(q,z)=q^2/2, fluid pressure p=0.
+PASS [P253-0003-EULER-SKYRME-EXACT] each time slice retains the steady spatial equations
+PASS [P253-0003-EULER-SKYRME-EXACT] time-dependent Euler acceleration has nonzero exact curl obstruction
+PASS [P253-0003-EULER-SKYRME-EXACT] time-transfer obstruction detects a moving slice: baseline
+PASS [P253-0003-EULER-SKYRME-EXACT] time-transfer obstruction detects a moving slice: mutations supplied
+PASS [P253-0003-EULER-SKYRME-EXACT] time-transfer obstruction detects a moving slice: mutation 1 rejected
+TIME_COUNTEREXAMPLE: a'(t)!=0 gives curl[partial_t V+(V.grad)V]
+  = (0,0,a'(t)exp(y-a(t))); no scalar pressure can cancel it.
+GENERAL_TRANSFER_CONDITION: for slice-wise steady maps, Euler requires
+  partial_t(V^flat)=-d(B-P); hence d partial_t(V^flat)=0.
+  With exact+co-closed rigidity on the stated domain, partial_t V=0.
+PASS [P253-0003-EULER-SKYRME-EXACT] Lorentz two-form contraction differs from static spatial norm
+PASS [P253-0003-EULER-SKYRME-EXACT] temporal pullback term vanishes exactly in stationary limit
+PASS [P253-0003-EULER-SKYRME-EXACT] Lorentz signature exposes the temporal sign: baseline
+PASS [P253-0003-EULER-SKYRME-EXACT] Lorentz signature exposes the temporal sign: mutations supplied
+PASS [P253-0003-EULER-SKYRME-EXACT] Lorentz signature exposes the temporal sign: mutation 1 rejected
+SPACETIME_SPLIT: phi^*omega=q dy^dz-a'(t)q dt^dz;
+  (1/2)F_mn F^mn=q^2-a'(t)^2 q^2, while the 3D theorem uses q^2.
+PASS [P253-0003-EULER-SKYRME-EXACT] Galilean-translated shear is exact Euler
+PASS [P253-0003-EULER-SKYRME-EXACT] dynamic repair remains incompressible
+PASS [P253-0003-EULER-SKYRME-EXACT] Clebsch alpha is materially advected
+PASS [P253-0003-EULER-SKYRME-EXACT] Clebsch beta is materially advected
+PASS [P253-0003-EULER-SKYRME-EXACT] advected pullback d(alpha)^d(beta) equals Euler vorticity two-form
+PASS [P253-0003-EULER-SKYRME-EXACT] velocity-flux pullback and vorticity pullback are different objects
+DYNAMIC_ROUTE: Omega=du=d(alpha)^d(beta), D_t alpha=D_t beta=0,
+  for v=(exp(y-ct),c,0), alpha=exp(y-ct), beta=x-t exp(y-ct).
+  Recovering u from Omega requires the Hodge/Biot-Savart inverse and
+  boundary/harmonic data; its energy is nonlocal <Omega,G Omega>/2.
+PASS [P253-0003-EULER-SKYRME-EXACT] kappa converts pullback to velocity
+PASS [P253-0003-EULER-SKYRME-EXACT] quartic coefficient rho*kappa^2 has physical dimension
+PASS [P253-0003-EULER-SKYRME-EXACT] integrated quartic term has energy dimension
+PASS [P253-0003-EULER-SKYRME-EXACT] time-integrated energy has action dimension
+NORMALIZATION: v=kappa(*phi^*omega)^sharp, [kappa]=L^3/T;
+  C4=rho*kappa^2. Euler velocity equations do not fix overall rho.
+PASS [P253-0003-EULER-SKYRME-EXACT] Derrick stationary size requires A4=3*A0*lambda^4
+PASS [P253-0003-EULER-SKYRME-EXACT] Derrick curvature is positive when both terms are positive
+PASS [P253-0003-EULER-SKYRME-EXACT] pure quartic energy has no finite stationary size
+PASS [P253-0003-EULER-SKYRME-EXACT] Euler time/transport/pressure-gradient scaling agrees
+PASS [P253-0003-EULER-SKYRME-EXACT] pullback velocity scaling fixes Euler amplitude A=B^2
+PASS [P253-0003-EULER-SKYRME-EXACT] mapped Bernoulli/potential must scale as B^4
+SCALE_RESULT: fixed potential can select lambda=(A4/(3A0))^(1/4),
+  but correspondence-preserving Euler rescaling requires P->B^4 P.
+  A charge-/solution-tailored potential therefore inputs the scale.
+PASS [P253-0003-EULER-SKYRME-EXACT] Z2 admits two real one-dimensional exchange characters
+PASS [P253-0003-EULER-SKYRME-EXACT] Z2 relation does not force fermionic sign: baseline
+PASS [P253-0003-EULER-SKYRME-EXACT] Z2 relation does not force fermionic sign: mutations supplied
+PASS [P253-0003-EULER-SKYRME-EXACT] Z2 relation does not force fermionic sign: mutation 1 rejected

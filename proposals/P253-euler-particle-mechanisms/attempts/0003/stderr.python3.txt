@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/tmp/substrate-particles/proposals/P253-euler-particle-mechanisms/attempts/0003/verify_euler_skyrme_bridge.py", line 360, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/tmp/substrate-particles/proposals/P253-euler-particle-mechanisms/attempts/0003/verify_euler_skyrme_bridge.py", line 340, in main
+    ledger.check("nonzero action multiplier leaves classical stationary set", sp.solve(sp.Eq(scaled_variation, 0), variation) == [0])
+  File "/tmp/substrate-particles/src/substrate_framework/verification.py", line 52, in check
+    raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+substrate_framework.verification.CheckFailure: FAIL [P253-0003-EULER-SKYRME-EXACT] nonzero action multiplier leaves classical stationary set

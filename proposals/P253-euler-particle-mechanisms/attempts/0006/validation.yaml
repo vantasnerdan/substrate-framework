@@ -1,0 +1,23 @@
+attempt: P253/0006
+numerical_production: false
+checks:
+  - command: python proposals/P253-euler-particle-mechanisms/attempts/0006/verify_exact_identities.py
+    first_exit: 1
+    first_stdout: exact-check-initial.stdout
+    classification: verifier_implementation
+    cause: structural SymPy equality was used for two algebraically equal polynomial forms
+    repair: compare the simplified symbolic difference with zero
+    final_exit: 0
+    final_stdout: exact-check.stdout
+    verified:
+      - deficit-sum algebra with common speed coefficient
+      - exchanged-impulse product bound
+      - separated-support cross-energy constant
+      - optimized three-dimensional Biot-Savart split constant
+  - command: YAML safe-load source-receipt.yaml and verdicts.yaml
+    exit: 0
+    result: both mappings parse successfully
+source_audit:
+  published_pdf_sha256: 3774c65e4cd4d5023b99c7dcc81534aa84c0b4b741ecd1eafb800e2544eb56bb
+  arxiv_v3_pdf_sha256: bc8022261743808cc17ce0daa0ba3de4b87f36fb0b40b5bcad94873e80c3ec18
+  controlling_version: published_ZAMP_73_article_70

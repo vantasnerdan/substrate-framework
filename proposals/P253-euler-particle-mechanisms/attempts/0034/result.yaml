@@ -1,0 +1,61 @@
+attempt: '0034'
+parent_state: active
+review_status: established_after_bounded_material_domain_correction_0036
+strongest_exact_result: >-
+  The actual axisymmetric Euler system has an exact physical Clebsch/Routh
+  action with its pressure-Hodge coupling and boundary momentum row retained.
+  The reviewed 0027 solitary branch has a nonzero mixed-Casimir end-jump
+  distribution on every compact regular label annulus, with a controlled
+  positive leading coefficient.  Its full linearized Euler operator,
+  translation zero mode, and branch/Casimir companion are explicit.
+routes:
+  - id: A
+    route_verdict: established
+    evidence_scope: >-
+      Exact regular-strip canonical Euler equations, finite-domain impulse
+      surface term, mixed-Casimir end distribution, and exact material Routh
+      reduction with physical 2*pi*rho_m normalization and explicit
+      whole-space reference-column subtraction.
+  - id: B
+    route_verdict: blocked
+    positive_result: >-
+      The actual full solitary Euler linearization and its exact translation
+      and branch-derivative identities are derived without a scalar-model
+      substitution.
+    missing_construction: >-
+      A positive propagation/scattering estimate for the localized operator
+      on a fixed mixed-Casimir leaf, retaining its zero-frequency threshold,
+      exterior Hodge kernel, and all three-dimensional sectors.
+  - id: C
+    route_verdict: blocked
+    positive_result: >-
+      The branch-speed derivative is separated from the fixed-leaf tangent by
+      its explicitly nonzero Casimir-distribution variation.
+    missing_construction: >-
+      A modulation and complement theorem with the Casimir companion and
+      physical Euler energy/current map retained.
+source_transfer:
+  varholm_wahlen_walsh:
+    route_verdict: refuted
+    mechanism: >-
+      Their abstract conditional orbital-stability theorem assumes one simple
+      negative Hessian direction, one symmetry zero, and a positive remainder;
+      the actual 0030 traveling Euler form has accessible high-frequency
+      directions of both signs.  Their water-wave physical terms do not
+      transfer to the same-fluid column.
+verification:
+  kind: analytic_derivation_with_symbolic_exposing_checks
+  tests: 6 passed in 3.44s
+  exit: 0
+  independent_review: '0036'
+  independent_review_verdict: established_after_bounded_material_domain_correction
+  production_numerics: false
+does_not_license:
+  - nonlinear stability of the solitary excitation
+  - a single global Clebsch chart across flat labels
+  - compact internal phase or quantum action
+  - electron or neutrino identification
+  - parent completion
+next: >-
+  Construct the fixed-Casimir solitary-wave threshold resolvent/modulation
+  problem from the full operator, then extend beyond axisymmetry.

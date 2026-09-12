@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -o pipefail
+cd /tmp/substrate-particles
+attempt_dir=proposals/P253-euler-particle-mechanisms/attempts/0051
+cat > "$attempt_dir/normalization-correction.command.txt" <<'EOF'
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_schwinger_hopf.py tests/test_euler_quantum_two_state.py tests/test_euler_measurement_bridge.py
+EOF
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q \
+  tests/test_euler_schwinger_hopf.py \
+  tests/test_euler_quantum_two_state.py \
+  tests/test_euler_measurement_bridge.py \
+  > "$attempt_dir/normalization-correction.stdout" \
+  2> "$attempt_dir/normalization-correction.stderr"
+status=$?
+printf '%s\n' "$status" > "$attempt_dir/normalization-correction.exit"
+cat "$attempt_dir/normalization-correction.stdout"
+cat "$attempt_dir/normalization-correction.stderr" >&2
+printf 'P253_0051_NORMALIZATION_EXIT=%s\n' "$status"
+exit "$status"

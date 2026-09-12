@@ -1,0 +1,127 @@
+attempt: P253/0084
+reviewer: particle-balance-review
+review_type: independent_non_author_final
+activation:
+  readme_sha256: 1389ed9e68cbe63fd5d6d82959f68f07c946542f8991b44d667ee6bc64ce57a0
+  schema_exit: 0
+integrity:
+  frozen_target_hashes_matched: true
+  target_authorship: false
+  target_implementation: false
+  excluded_attempts_opened: false
+  production_numerics_run: false
+  unchanged_oracle_rerun: false
+  bounded_correction_required: true
+  bounded_correction_status: complete_passed
+bounded_correction:
+  scope: HSE_and_full_fixed_parameter_ledger_distinction
+  receipt_sha256: c107a5d2b7d841ef2decd925c43138436b9e8341dffc88cbacc0a8dfcd452e74
+  derivation_post_sha256: d2823746db0ef12e9a9d3df334031de3e3ac45e3841e402b13bbbb5f905ae479
+  source_audit_post_sha256: 3920cc313cc54e70d4ceb80d66b2dcfb12d6c3f15a2a4e60be86a474569ac5df
+  result_post_sha256: dc84da15d2ebe68cd5a3f9330b5dd9351f8ba3ae1b8715cdb4530cfc0045a5ec
+  validation_post_sha256: a5460ad8b66d937a727d41631d2caa2eff78cd07ad069f82ab47f66e5721670d
+  completion_receipt_post_sha256: 4a93be6526c7920454eed58af33d6b18fd50b30dd64098c4aeecff4e75c3957d
+  manifest_post_sha256: 6ffb80da10a09c3212c8297911f0ff4c53fc45617e4dffea24f060086115ec0b
+  equations_api_tests_or_oracle_changed: false
+source_applicability:
+  cao_2206_10165v2:
+    sha256: 6d90be6b7aab2ea7d92dba843b06e72e319cad50b0a2e39cfe5589cf6aa528ca
+    supported:
+      - axisymmetric_Green_kernel_measure_and_decay
+      - exact_uncharged_steady_equation_and_concentration_class
+      - bounded_Lane_Emden_translation_kernel
+      - concentrated_apriori_contradiction_mechanism
+      - value_level_local_Pohozaev_asymptotics
+    not_supported:
+      - C2_compact_source_Banach_map
+      - Maxwell_eliminated_mapping
+      - projected_complement_surjectivity_on_target_spaces
+      - bordered_BI_or_BR_isomorphism
+      - differentiated_finite_core_Schur_sign
+      - charged_branch
+verdict_units:
+  A_global_map:
+    verdict: established_as_stated
+    statement: >-
+      On the globally zero-extendible even compact C2-alpha source space away
+      from the axis, the local Green gain and supported coefficient give an
+      identity-minus-compact derivative. For p at least six the hydrodynamic
+      and regular-band tag map is C2; the interior-supported, uniformly
+      subluminal Maxwell insertion is C1 into the same source space.
+    source_precision: >-
+      Cao Lemma 3.9 is used only for its concentrated apriori mechanism, not
+      as a source-space Schauder or Banach-map theorem.
+  B_projected_HSE:
+    verdict: established_as_stated
+    statement: >-
+      The normalized right translation cell and left Green pairing define a
+      bounded projection. The compact blow-up contradiction removes the
+      bounded translations, and index zero upgrades the complement estimate
+      to the QAQ isomorphism.
+    earned_name: projected_complement_HSE
+    boundary: no_full_fixed_mu_c_A_epsilon_inverse
+  C_cells_and_physical_matrices:
+    verdict: established_as_stated
+    statement: >-
+      Logarithmic m-zero scaling and even m-one radial translation exhaust the
+      allowed-growth limit. Exact density moments and the r dr dz Jacobian give
+      nonzero, distinct circulation-impulse and circulation-mean-radius finite
+      matrices with the correct 2*pi*rho_m factor.
+  D_bordered_isomorphisms:
+    verdict: established_as_stated
+    established:
+      - BI_fixed_circulation_and_physical_impulse
+      - BR_fixed_circulation_and_exact_mean_radius
+      - profile_dominated_sequence_exclusion
+      - parameter_dominated_sequence_exclusion
+      - index_zero_surjectivity
+    boundary: neither_uses_full_fixed_parameter_A_epsilon_invertibility
+  E_charged_branch:
+    verdict: established_at_declared_window
+    statement: >-
+      Assuming the explicitly nonempty finite logarithmic window, the C1 map
+      and BI inverse give an exact local charged relative-equilibrium branch
+      in the transported-tag Euler-Maxwell extension with O(g^2) fluid, speed,
+      and tag changes and O(g) finite-energy Maxwell fields.
+    boundary:
+      - finite_L_and_uniformly_subluminal_only
+      - not_bare_Euler
+      - no_stability_or_action_charge_selection
+  F_leading_Schur_jet:
+    verdict: leading_algebra_established_sharp_theorem_blocked
+    established:
+      - value_level_c_mu_I_asymptotics
+      - source_derived_S_lead
+      - exact_physical_density_and_2pi_normalization
+    blocked:
+      - differentiated_C1_remainder_theorem
+      - exact_finite_core_Schur_nonvanishing
+      - LS_full_kernel_to_sharp_Schur_tangent_identity
+      - quantitative_epsilon_core_to_thickness_coverage
+strongest_exact_result: >-
+  Corrected 0080 establishes the projected-complement HSE and two distinct
+  physical bordered isomorphisms on the compact even source space. In the
+  declared nonempty finite subluminal window, the circulation-impulse border
+  yields an exact local tagged Euler-Maxwell charged relative-equilibrium
+  branch, while the mean-radius border yields a separate local exact uncharged
+  path. The formal leading Schur coefficient is exact algebra but its
+  finite-core sign is not established.
+remaining_dependency: >-
+  Establish the charged branch's joint constrained Hessian and full
+  three-dimensional spectral or coercive status, quantitative fixed-mean-
+  radius thickness coverage, and a nonempty finite response-harmonic interval
+  below the subluminal ceiling. Construct the full fixed-parameter LS bridge
+  and differentiated Schur remainder only if the sharp determinant is needed.
+does_not_license:
+  - full_fixed_mu_c_A_epsilon_inverse
+  - exact_finite_core_two_by_two_Schur_sign
+  - quantitative_spectral_crossing_coverage
+  - infinite_frequency_or_all_small_core_charged_branch
+  - bare_Euler_charged_carrier
+  - nonlinear_stability_or_all_time_tag_persistence
+  - action_or_charge_selection
+  - analyzer_Born_reset_or_exchange
+  - P4_P5_completion
+  - electron_neutrino_particle_or_relativity_conclusion
+parent_campaign_state: active
+exhaustion_claimed: false

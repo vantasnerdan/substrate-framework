@@ -1,0 +1,130 @@
+attempt: P253/0035
+review_type: independent_fixed_claim_action_operator_source_review
+reviewer: particle-balance-review
+target: P253/0030
+target_commit: 1d378f9aebd10a8ff0dd91f26bf15d371f3e243e
+activation:
+  schema_exit: 0
+  frozen_readme_sha256: f1d6d5036585219cdfb058f365a8ee52553b0ba66bb59ad7a6ccd0441653269b
+independence:
+  non_author: true
+  non_implementer: true
+  excluded_attempts:
+    - P253/0031
+    - P253/0034
+    - P253/0032
+    - P253/0033
+runtime:
+  agent: particle-balance-review
+  pane: w4:p4
+  model: gpt-5.6-sol
+  reasoning_effort: high
+  approval_policy: never
+  sandbox_mode: danger-full-access
+route_verdict: established
+review_status: established_after_bounded_domain_wording_correction
+evidence_scope: DIRECT_PHYSICAL_VARIATION_HILBERT_GENERATOR_SPEED_AND_PRIMARY_SOURCE_CLOSURE_AUDIT
+strongest_supported_statement: >-
+  For the explicit smooth flat-core, compact-axial-vorticity pure-swirl
+  column shared with the accepted 0027/0028 existence theorem: (i) the
+  solitary translating energy-impulse-Casimir variation is exact on regular
+  invertible-label patches and the corresponding compact-generator
+  coadjoint-accessible tangents, and its accessible high-axial-frequency
+  Hessian directions have both signs; (ii) the stationary column has a
+  positive physical energy-Casimir form whose full-pressure axisymmetric
+  linearization generates a unitary group on the weighted accessible
+  column-energy completion; (iii) all nonzero axisymmetric phase speeds are
+  strictly below c0 and all corresponding group-speed magnitudes are no
+  larger than their phase speed, hence no larger than c0; and (iv) the
+  explicit profile belongs to the global C_b^1 closure in Gallay--Smets
+  arXiv:1805.05064v3, giving imaginary spectrum for every fixed integer m and
+  fixed k nonzero in X_mk. None of these statements is stability of the
+  nonzero solitary wave.
+components:
+  physical_action:
+    status: established_after_bounded_correction
+    scope: >-
+      Physical 2*pi*rho_m normalization, translating sign, Casimirs,
+      coadjoint tangent, regular-patch first/second variation, background
+      convex inequality, and mixed-sign accessible Hessian are correct.
+      Exterior criticality is orbitwise on compact-generator tangents, not an
+      unrestricted pointwise or Frechet first variation.
+  weighted_column_propagation:
+    status: established
+    scope: >-
+      Exact two-sided unitary full-pressure m=0 evolution on the positive
+      weighted accessible energy completion, retaining the flat-edge weight
+      and poloidal Hodge exterior. This is not all axisymmetric unweighted L2
+      data and not a nonaxisymmetric theorem.
+  speed_ceiling:
+    status: established
+    scope: >-
+      Exact phase bound from A_k>A_0 and exact group bound from the exterior
+      envelope derivative and generalized-eigenpair differentiation. The
+      Doppler lower bound is (c-c0)|k| and degenerates at k=0.
+  compact_profile_transfer:
+    status: established
+    scope: >-
+      Explicit strict approximants converge globally in C_b^1, so Remark 1.9
+      of arXiv:1805.05064v3 applies mode by mode for k nonzero. The C2
+      all-mode velocity-energy result of arXiv:1811.07584v2 is not transferred.
+  nonlinear_background_bound:
+    status: established_conditionally
+    scope: >-
+      Holds during classical axisymmetric evolution under 0<=xi<=L_infinity,
+      convergent relative energy/Casimir integrals, and vanishing fluxes; it
+      supplies neither global regularity nor solitary-wave stability.
+correction:
+  required: true
+  checked: true
+  fully_closes_finding: true
+  mechanism: >-
+    The original prose called equation (4) a physical full-field statement,
+    but no single-valued Psi(L_infinity) cancels A_zeta throughout the
+    constant-label exterior. The corrected body shows chi=eta=0 there on
+    compact smooth coadjoint-accessible tangents, uses flatness to exclude an
+    interface distribution, treats endpoint Casimirs orbitwise or by a
+    declared extension, and confines Q and the high-frequency construction to
+    compact support inside F' nonzero.
+  before_sha256: 56ee231804c1ccfbd60b44546a7943f6518731f52bdd7a8ab95f777ce1aa1fe6
+  after_sha256: ad59399682c9de070a4b0102b0b893d4a2408b9dccb996eaf6f9228fa197c24e
+  receipt_sha256: 537b54751a7c98257267478e034bbe1cba360e69a28165c077be6fbe7a25add8
+  equation_api_oracle_changed: false
+sources:
+  gallay_smets_spectral:
+    version: arXiv:1805.05064v3
+    pdf_sha256: 081e93124ad0a8e04a51842848eb220180f904f6c3eec27e9b985a9a636a5797
+    role: fixed_mode_C_b1_closure_theorem
+  gallay_smets_energy:
+    version: arXiv:1811.07584v2
+    pdf_sha256: a895efa1acf6066c0b50881fe08002be5d0a73f92f413ec8c02bebcf31b370d8
+    role: strict_C2_full_velocity_group_boundary_only
+oracle:
+  strongest: direct_calculus_operator_domain_speed_derivative_and_primary_source_applicability
+  focused_receipt: 7_passed_in_4.03s_exit_0
+  checkpoint_receipt: 2712_passed_in_455.12s_exit_0_at_1d378f9
+  rerun: false
+  reason_not_rerun: >-
+    The bounded correction changed only action-domain wording; all equations,
+    API predicates, tests, and source-transfer calculations were unchanged.
+  small_ratio_numerics_bind: false
+four_axis:
+  verification: exact_analytic_with_reused_exposing_regressions
+  review: established_after_one_bounded_correction
+  compatibility: compatible_proposal_evidence_on_accepted_0027_0028_supplier
+  epistemic: exact_at_accessible_axisymmetric_and_fixed_mode_column_scope
+review_artifact_sha256: 27b08aac13fea701145a90445dd9fdd64d1068d13e5bbd7048301c5305ab1ef0
+remaining_dependency: >-
+  Construct and control the actual nonzero solitary-wave Leray generator,
+  including the k=0 translation/speed modulation pair, the full Bessel
+  pressure kernel, and a continuum-complement estimate; then extend beyond
+  axisymmetry if the parent objective requires it.
+does_not_license:
+  - nonlinear or orbital stability of the nonzero solitary excitation
+  - all-time control of arbitrary nearby data
+  - an all-mode three-dimensional unitary group
+  - global regularity for arbitrary axisymmetric swirl
+  - particle identity or mechanical force
+  - physical or quantum spin and statistics
+  - electron or neutrino completion
+  - parent-campaign completion

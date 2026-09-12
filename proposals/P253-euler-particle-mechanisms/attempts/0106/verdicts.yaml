@@ -1,0 +1,142 @@
+attempt: P253/0106
+reviewer: particle-balance-review
+target: P253/0105
+review_kind: independent_non_author_fixed_boundary
+activated_readme_sha256: a038c3287010b21b4a24a92785689c6682a23261055f6cb52a24e869250246d0
+target_manifest_sha256: 5d25796e2cd5b16c9e6c9503c222fb1016a9828cad5a82334a577ab2f854667e
+target_completion_sha256: a4f3743849cdffa313a44b230cfff23f7181b050de14bd8a55fd38a8afe04eec
+post_correction_manifest_sha256: 94d27a679d2844c45d2aceedbb30fdd250a476b1a9eae4956174387072c24819
+post_correction_completion_sha256: 97a4af171191e52ca626e39c62e00c7ebee9a37631b08487f007e9242ff8ab38
+excluded:
+  - P253/0095
+  - P253/0104
+  - P2_P4_P5_P6_particle_and_parent_conclusions
+correction:
+  count: 1
+  status: passed
+  receipt: proposals/P253-euler-particle-mechanisms/attempts/0105/0106-bounded-correction-receipt.md
+  receipt_sha256: e33526e3a1f13fb2a87023072ac3c74d125c7f8482433f69183ca60b6ce174cb
+  scope: typed_one_normal_derivative_loss_and_denial_of_same_order_inverse
+  equations_API_tests_or_verifier_changed: false
+  oracle_rerun: false
+evidence:
+  manifest_check:
+    status: passed_at_opening_and_after_single_bounded_correction
+    initial_total_entries: 60
+    immutable_entries_verified_at_opening: 59
+    mutable_entry: proposals/P253-euler-particle-mechanisms/proposal.yaml
+    frozen_sha256: bceab0bc3aebda18f00024a85b17c602466f9cffe4349c505f7af0f4f50b56fb
+    current_sha256: aac4015dd4170a1ec55621f0613cfceb10492c8b49044c71c754381f68a4b2a2
+    scientific_target_changed: false
+    review_applies_to_activated_frozen_selectors: true
+    postreview_target_drift:
+      consumed_by_initial_review: false
+      correction_only_check: passed
+      derivation:
+        frozen_sha256: cef7ec8a5c08a4c43e8908ad82d1a6bc9ed83e784e01dc50b7c1ee4ec0129020
+        observed_sha256: db32c1c49a4196828d508c60c4613fdf35ecfb07fad2fa26e521e9eda9d485cb
+      result:
+        frozen_sha256: e2dc4b443aa6d35d351b7d4a86ac690112aaf72a54ce44c33665d7e6ae02d0ab
+        observed_sha256: 1033bbe1da359f954faf3dd5372df9c6a32bcc6fb0a45d30e8f2829c4efe7077
+      source_audit:
+        frozen_sha256: e9a9ab0ed02ed4dd15c8756bf9a6f929b96cc7e8805067a3fc9a34f1f3039bb3
+        observed_sha256: e187d718d6735016069da4bf214427f90f8af43d1142c40b73f8d4fe82169f5b
+      validation:
+        frozen_sha256: 188c0277e7cd3840e3a2dff77e7a2f53e1ad4674e9ebbcd31c4fe1c50503ab90
+        observed_sha256: 3d20ff269e90ddbc2e03614ff3eb46d86732db750c5f2cdddf32785d4639d10c
+    refreshed_manifest:
+      sha256: 94d27a679d2844c45d2aceedbb30fdd250a476b1a9eae4956174387072c24819
+      entries_verified: 65
+      failed_entries: 0
+  exact_v2:
+    status: passed_recorded_evidence
+    predicates: 11
+    scope: algebraic_Green_moment_cancellation_flux_and_finite_weighted_rows
+  focused_v2:
+    status: passed_recorded_evidence
+    tests: 21
+    scope: importable_API_regression
+  static_v3:
+    status: passed_recorded_evidence
+    scope: artifact_agreement_only
+  repository_validation_v2:
+    status: passed_recorded_evidence
+    scope: workflow_and_schema_only
+  static_v2_failure:
+    status: preserved_chronology
+    scope: prose_line_wrapping_only
+  rerun_by_reviewer: false
+units:
+  A_full_core_cancellation:
+    verdict: established
+    strongest_result: >-
+      On a regular positive full-core component, exact first-speed cancellation
+      and a regular matched dipole force s P_s^3 G_P to vanish for G=h/h_P,
+      hence h=A exp(aP). A nontrivial exponential cannot vanish at the finite
+      P=0 free edge, refuting the smooth compact full-core fixed-ratio route.
+    boundary: componentwise_positive_full_core_not_strict_cutoff_or_charged_branch
+  B_power_law_Lane_Emden_response:
+    verdict: established
+    strongest_result: >-
+      The exact globally matched response has sign factor
+      D=p M_(p+1)/(p+1)-P M_p. It is negative near the smooth center and
+      positive near the edge, has an interior zero, and on the analytic core
+      cannot vanish identically on any open sub-band.
+    boundary: no_pointwise_nonvanishing_uniform_lower_bound_or_strict_cutoff_result
+  C_fixed_leaf_flux:
+    verdict: established
+    route_consequence: radial_A_B_fixed_leaf_lift_refuted
+    strongest_result: >-
+      Compact divergence-free material displacements have zero weighted normal
+      flux across every regular P contour, in both the straight area measure
+      and exact finite-torus r dr dz measure. Thus nonzero radial mean source
+      controls are not first-order tangents of the fixed material leaf.
+    boundary: no_nonradial_other_leaf_or_full_operator_coverage
+  D_raw_material_tangent:
+    verdict: established
+    strongest_result: >-
+      On a compact regular finite-Cao band with chi_prime bounded away from
+      zero, a smooth compact target T is a material tag tangent exactly when
+      its J-weighted mean vanishes on every contour. An explicit periodic
+      divergence-free displacement realizes every such T.
+    mapping_scope: smooth_Frechet_surjectivity_with_one_normal_derivative_loss
+    estimate: C_k_times_C_k_plus_1_and_H_s_times_H_s_plus_1
+    boundary: no_finite_rows_steady_free_boundary_or_normalized_response_inference
+  E_full_response_operator:
+    verdict: blocked
+    missing_construction: >-
+      Define and construct the bounded common-domain linearized steady
+      Euler-Maxwell/free-boundary operator L_full:X_leaf to Y_band x R^2,
+      including induced fields and finite rows; then prove closed range,
+      Fredholm control or a bounded right inverse and pair the actual target
+      with its full adjoint cokernel.
+    exact_range_distinction: preserved
+  F_evidence_API_and_boundaries:
+    verdict: established
+    strongest_result: >-
+      The importable API and exact verifier support precisely the finite
+      algebraic identities they encode, while the focused, static and
+      repository receipts are correctly scoped as regression and agreement
+      evidence. Claim-bearing artifacts contain no stale full-range or parent
+      promotion.
+combined_verdict: established_at_exact_full_core_response_flux_and_raw_tangent_scope
+strongest_exact_result: >-
+  P253/0105 establishes the exponential classification of every regular
+  positive full-core first-speed cancellation law and its compact-edge
+  obstruction, the exact sign-changing power-law Lane-Emden response, the
+  fixed-leaf radial flux obstruction, and the smooth weighted-zero-mean raw
+  material-tangent characterization on regular finite-Cao bands. The full
+  steady/free-boundary response operator and exact cancellation remain open.
+next_dependency: >-
+  Construct L_full on the explicit zero-mean tangent class with its induced
+  fields and finite rows, prove its exact range theorem, and evaluate the
+  existing strict-band cutoff moments in the same physical normalization.
+does_not_license:
+  - existing_strict_band_response
+  - charged_redesigned_full_core_tag_branch
+  - full_steady_or_free_boundary_surjectivity
+  - finite_Cao_curvature_or_normalized_response
+  - compact_phase_defect_or_finite_action
+  - P2_P4_P5_P6_particle_electron_neutrino_flavor_chiral_or_parent_completion
+parent_campaign_state: active
+exhaustion_claimed: false

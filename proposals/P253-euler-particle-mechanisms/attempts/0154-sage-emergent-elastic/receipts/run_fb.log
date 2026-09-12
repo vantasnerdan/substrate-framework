@@ -1,0 +1,17 @@
+[PASS] [identity] RB1 p->0 quadratic == F-A form (family bridge continuous)
+[PASS] [identity] RB2 TI symmetries: e11^2==e22^2, e13^2==e23^2, no strain-shear mixed terms
+[PASS] [identity] RB3 C12=C13 relation RECEIPTED: cross(e11,e22) == cross(e11,e33) == K(p-1)/15 (nonzero, one relation short of general TI)
+[PASS] [identity] RB4 traceless spectrum == {K(1-p)/10, K(1-p)/5, K(3p+2)/10} and PSD on rational p-grid (linear-in-p form => analytic PSD, p in [0,1])
+[PASS] [identity] RB5 mu_perp = K(1-p)/10, mu_par = K(3p+2)/20; FB-anisotropy ratio mu_par/mu_perp == (3p+2)/(2(1-p)) BANKED
+[PASS] [identity] RB6 normal part RECEIPTED (corrects doc): W_diag|traceless == K*p*e33 (linear pre-stress) + K(1-p)/10*(e11^2+e22^2+e33^2)
+[PASS] [identity] RB7 mu_par(p=1) == K/4 exactly (formula match; repairs pricing-6 truncated print + tautology)
+[PASS] [identity] RB8 p=1 spectrum {0, 0, 1/2}·K: degeneracy (sliding mode), never negative on [0,1]
+[PASS] [identity] RB9 objectivity: W(R eps R^T, R n) == W(eps, n) — JOINT frame+director covariance (exact, rational rotation)
+[PASS] [identity] RB10 MATERIAL shear stiffness RECEIPTED (pre-acoustoelastic): W(shear wave; k at angle theta from axis) == (1-p)sin^2(th)/20 + (3p+2)cos^2(th)/40; limits: theta=0 -> K(3p+2)/40 (axial-prop), theta=pi/2 -> K(1-p)/20 (transverse-prop)
+[PASS] [identity] RB10b pre-stress tensile + p-proportional (traceless projection, RB6 form): linear part == K*p*e33 — geometric wave correction stiffens (sign receipted), size O(p) UNPRICED
+[PASS] [identity] RB10b-axis: no shear linear terms (pre-stress is axis-diagonal only)
+[CAVEAT] RB10 is the material (pre-acoustoelastic) statement: wave speeds carry O(p) geometric stiffening from sigma_033=+Kp; signs robust; falsifier budget must include geometric size.
+[PASS] [mutation] MB1 wrong aligned 4th moment => mu_par == mu_perp (anisotropy LOST — the aligned moment is load-bearing for FB-anisotropy)
+[PASS] [mutation] MB2 eps-only rotation detected: W(R eps R^T, n) != W(eps, n) for generic eps (director must rotate with the frame)
+[PASS] [mutation] MB3 wrong-sign polarization p = -3/4 yields a negative traceless eigenvalue (PSD broken — the p-window is load-bearing)
+ALL F-B-LITE RECEIPTS GREEN: 12 identity-assertions + 3 mutations = 15 assertions (self-counted).

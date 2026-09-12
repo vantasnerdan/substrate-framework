@@ -1,0 +1,37 @@
+attempt: '0013'
+epistemic: proposed
+parent_state: active
+routes:
+- id: Lamb-identities
+  route_verdict: established
+  evidence_scope: exact Euler homogeneous and defined-current identities
+- id: Lamb-electron-charge
+  route_verdict: refuted
+  mechanism: Lamb vector vanishes outside compact vorticity, hence component net flux is zero
+- id: scalar-Madelung-action
+  route_verdict: established
+  evidence_scope: exact scalar kinetic and additional density-gradient action decomposition
+- id: scalar-vortical-carrier
+  route_verdict: refuted
+  mechanism: regular scalar phase is locally curl-free
+- id: local-spinor-Euler-action
+  route_verdict: established
+  evidence_scope: regular local chart, actual subtracted-texture Euler action and executed shear; global
+    gluing remains separate
+- id: Heaviside-free-surface-map
+  route_verdict: refuted
+  mechanism: flat resting interface has nonzero delta-prime Schrodinger residual
+- id: physical-quantum-completion
+  route_verdict: blocked
+  missing_construction: controlled global carrier phase space with actual quantum measurement, action
+    scale and exchange dynamics
+next_routes:
+- carrier chart/orbit gluing under actual Euler action
+- structured-background physical charge and autonomous propagation
+- same-carrier stability and scale selection
+verification:
+  field_map_tests: 4
+  extended_field_map_tests: 6
+  extended_receipt: spinor-pytest-repaired.stdout
+  flat_distribution: flat-interface.stdout
+  no_production_numerics: true

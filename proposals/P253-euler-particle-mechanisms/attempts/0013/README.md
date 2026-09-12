@@ -1,0 +1,13 @@
+# P253/0013: physical charge/current and hydrodynamic quantum maps
+
+This root P4/P5/P6 attempt tests two existing mechanism proposals before reusing their particle language. A audits the Euler/Lamb-vector Maxwell analogy: the exact homogeneous equations, charge/current definitions, their full-space integrals for actual localized vortical carriers, the independent status of Ampere closure and a propagation speed, and the source action/energy measure. B audits the Madelung/Koopman-style hydrodynamic quantum bridge: invertible field/state domain, density versus constant material density, quantum-gradient energy/action normalization, physical observable algebra and actual measurement-probability interpretation.
+
+The initial primary inventory is Marmanis1996 arxivhep-th/9602081 and1998 Physics of Fluids DOI10.1063/1.869762 (open author paper at academicweb.nd.edu/~powers/ame.60635/marmanis.pdf, inspect erratum before relying on a corrected current); Madelung1927 DOI10.1007/BF01400372 (open translation inventory) and modern primary momentum-map work DOI10.3934/jgm.2017006. Exact algebra is independently derived; inaccessible historical text is not silently attributed.
+
+The positive target is an actual licensed electric/weak-current or quantum-state map from the same Euler degrees of freedom. Formal similarity, a defined source that makes an equation true, a circulation renamed charge, or a wavefunction imposed by hand is not this target. A localized zero-net-charge identity can refute only the declared direct map, not every emergent electromagnetic construction. If it fails, retain the surviving exact identity and execute a structured-background or physical-state-space reformulation within the same substrate.
+
+No fitted electron/neutrino comparator, production numerical calculation or foundational replacement is licensed. Root registers before new bodies. The full particle goal remains active; this is its mechanism test, not a reduced objective.
+
+## Failure-derived source expansion before body inspection
+
+The scalar irrotational coverage failure and current-neutrality identity motivate multicomponent Euler coordinates with all extra gradient/pressure terms retained. Primary bodies to audit: Meng--Yang2302.09741, Chern2017 thesis (ISF; primary abstract explicitly states a Landau--Lifshitz modification), and Zareei2105.12253 (primary abstract identifies a free surface and surface tension). Selection remains exact action/field coverage and same-substrate dynamics, not agreement with a known wave equation. Surface tension is an additional boundary law unless it is derived; no microscopic-law replacement is authorized.

@@ -1,0 +1,115 @@
+attempt: P253/0025
+owner: particle-foundations
+scope:
+  obligations: [P2, P4]
+  route: repeated_moving_fibre_kelvin_leray_on_fixed_gavrilov_carrier
+base_release: v0.183.0
+activation_schema_exit: 0
+route_verdicts:
+  source_action_angle_and_covector:
+    verdict: established
+    mechanism: >-
+      Baldi's exact action chart gives F_t with its inverse-transpose covector
+      shear. The published frequency expansions make Omega2'/Omega1'
+      nonconstant, so an exact integral nonaxisymmetric phase can be selected
+      whose covector returns after every meridional circuit modulo the genuine
+      rigid axial rotation.
+  naive_cauchy_growth:
+    verdict: refuted_with_mechanism_named
+    mechanism: >-
+      For c=k cross A the full Kelvin--Leray system gives
+      c_dot=Lc+(vorticity dot k)A, not c_dot=Lc. Dynamic accessibility of a
+      general transverse polarization requires the same nonzero
+      vorticity-dot-k factor, so derivative resonance cannot delete this term.
+  normal_invariant_phase:
+    verdict: established_bounded_principal_cocycle
+    mechanism: >-
+      For k=grad P, steady Euler and localizability make A1=u and
+      A2=(k cross u)/(|k|^2|u|^2) two exact bounded Kelvin amplitudes. Density
+      of irrational source trajectories and continuity give |u|^2=S(P),
+      removing the only shear coefficient in the second solution.
+  resonant_returned_fibre:
+    verdict: exact_monodromy_constructed_discriminant_open
+    mechanism: >-
+      In a physically returned frame the complete pressure-retaining
+      amplitude equation is periodic and its conserved polarization triple
+      area puts the one-circuit map in SL(2,R). Hyperbolic, parabolic, and
+      elliptic outcomes are decided by Delta_res=(tr M_res)^2-4. Available
+      source expansions give M_res->[[1,0],[-sqrt(2)pi,1]] but do not fix the
+      first nonzero sign of Delta_res.
+  fixed_time_diagonal_pde_transfer:
+    verdict: established_conditional_bridge
+    mechanism: >-
+      Any unbounded exact ray-gain sequence on the fixed carrier transfers to
+      exact normalized dynamically accessible global Euler packets using the
+      quantifiers for every finite circuit count j, choose a profile width,
+      then choose frequency N_j. The relative WKB/Duhamel error is
+      C(j,delta_j)N_j^-1 times the initial physical norm; no uniform
+      growing-time WKB expansion is assumed.
+  axisymmetric_angle_phase:
+    verdict: one_return_powering_refuted_global_bound_open
+    mechanism: >-
+      Nonzero twist moves the axisymmetric angle covector, so powers of 0019's
+      fixed-fibre Jordan matrix are not the actual repeated object. No global
+      axisymmetric semigroup upper bound is inferred.
+strongest_exact_result:
+  returned_object: >-
+    One fixed compact Gavrilov carrier admits an exact source-defined resonant
+    integral phase and a complete periodic Kelvin--Leray polarization
+    monodromy M_res in a physically returned frame, with det M_res=1 and all
+    metric, covector, and pressure terms retained.
+  exposing_identity: >-
+    The exact identity c_dot=Lc+(vorticity dot k)A isolates the missing term in
+    a tempting deformation-gradient proof and prevents a false unboundedness
+    conclusion.
+  positive_bounded_sector: >-
+    Pressure-normal phases have an explicit two-polarization bounded principal
+    basis (u,(grad P cross u)/(|grad P|^2|u|^2)).
+  bridge_quantifiers: >-
+    If gains G_j of the exact returned physical cocycle diverge, then exact
+    accessible unit data q_j exist with ||S(t_j)q_j||>=G_j/4. The order is
+    forall j exists delta_j exists N_j, with relative O(N_j^-1) error.
+physical_structures:
+  orbit_action: >-
+    On the smooth stabilizer quotient the sign is
+    integral[-Omega(q,qdot)/2-Q(q,q)/2]dt. KKS is not promoted to a strong
+    kinetic-space form.
+  ray_form: >-
+    The action-angle deformation and inverse-transpose covector map form a
+    canonical cotangent lift.
+  polarization_area: >-
+    (A1 cross A2) dot k is conserved and yields the SL(2,R) returned map.
+    It is not identified with KKS.
+  physical_norm: >-
+    Packet normalization uses the exact Biot--Savart kinetic norm; the raw
+    N^-1 coadjoint generator has velocity norm comparable to N^-1.
+global_terms:
+  - whole-space Leray pressure retained in the coefficient-two amplitude row
+  - adjacent cutoff commutators retained at relative order N^-1
+  - separated collar/exterior kernels controlled by arbitrary fixed-order oscillatory integration by parts
+  - flat carrier boundary distinguished from the nonlocal perturbation tail
+  - symmetry removed by quotient distance with fixed-time oscillatory leakage estimates
+physical_interpretation:
+  established: >-
+    The repeated physical ray problem is now an exact source-computable
+    SL(2,R) monodromy, and the continuum transfer no longer requires a uniform
+    expansion on growing time intervals. A real bounded principal sector is
+    also identified.
+  not_established: >-
+    No sign for the resonant discriminant, no unconditional unbounded global
+    semigroup, and no global axisymmetric propagation bound are proved.
+does_not_license:
+  - nonlinear Lyapunov or orbital stability
+  - an LP2 stable-particle embedding
+  - a growing eigenmode or essential spectral radius claim
+  - a single explicit smooth datum with unbounded time sequence
+  - hbar normalization, Born probabilities, or exchange statistics
+  - relativity or electron/neutrino identity
+next_executable_dependency: >-
+  Compute the first nonzero term, or a rigorous interval enclosure, of
+  Delta_res=(tr M_res)^2-4 for the exact source-defined resonant torus. If it
+  is negative, continue with nearby-profile and subprincipal nonlocal control;
+  if nonnegative and nontrivial, the established fixed-time diagonal bridge
+  immediately produces exact global accessible packet growth.
+parent_state: active
+exhaustion_claimed: false

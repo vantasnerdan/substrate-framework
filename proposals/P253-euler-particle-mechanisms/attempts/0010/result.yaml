@@ -1,0 +1,79 @@
+attempt: P253/0010
+owner: particle-foundations
+scope:
+  obligations: [P2, P4]
+  route: localized_intrinsic_swirl_and_twist
+base_release: v0.183.0
+observed_head: a7676b7b9260d36e3d52616b65ad491e34fc7770
+activation_schema_exit: 0
+route_verdict: classical_carrier_and_action_established_LP2_open
+strongest_exact_result:
+  - >-
+    For the Cao--Zhan Turkington generator H(psi)=psi_+ and -B'(psi)=alpha,
+    the published reduced zeta functional is exactly the Schur complement obtained by
+    eliminating swirl from a conserved Euler energy--impulse--angular-momentum--helicity
+    functional, with joint Hessian
+    Q=int[eta K eta-epsilon^2 r^2 eta^2]+int(chi/r-epsilon r eta)^2.
+  - >-
+    The Cao--Zhan steady-frame ring transfers by an exact Galilean map to a translating,
+    finite-energy time-dependent Euler solution. Every fixed thin member has finite nonzero
+    axial j and rotation-sphere KKS period 4*pi*j, while profile scaling gives j proportional
+    to epsilon, helicity proportional to 1/epsilon, and energy proportional to log(1/epsilon)
+    along convergent subsequences.
+  - >-
+    Gavrilov supplies a smooth compactly supported exact steady Euler carrier with real
+    meridional flow and swirl. A nonnegative pressure cutoff gives strictly positive finite
+    axial angular momentum, finite energy, zero exterior velocity/pressure-gradient tail,
+    connected rigid stabilizer SO2, and finite KKS period 4*pi*j.
+  - >-
+    Any scaled compact steady template satisfies H*T_gamma=(E0*tau_gamma/J0)*j for a
+    periodic internal streamline, so the field action, KKS action, and energy-period product
+    have one exact classical normalization rho0*U*L^4.
+variational_bridge:
+  conserved_functional: >-
+    A=E-U*I-mu*int(zeta)+(alpha/epsilon)*int(xi)-epsilon*int(zeta*xi).
+  reduced_functional: >-
+    E_e(zeta)=0.5*int(zeta*K*zeta)-0.5*U*int(r^2*zeta)
+    -(1/epsilon^2)*int[0.5*r^2*(epsilon^2*zeta-alpha)_+^2].
+  exact_remainder: >-
+    Determine the sign and a uniform coercive gap of the joint Hessian on the dynamically
+    accessible Euler tangent, modulo axial translation, then treat non-axisymmetric sectors.
+same_family_observables:
+  cao_zhan:
+    impulse_limit: pi*rho0*kappa*r_star^2
+    velocity_tail: dipole_O(R^-3)
+    pressure_tail: quadrupole_O(R^-3)
+    intrinsic_j: finite_positive_for_each_epsilon_and_asymptotically_O(epsilon)
+    stability: not_established_by_source_or_reduced_maximization
+  gavrilov:
+    velocity_tail: exactly_zero_outside_compact_support
+    pressure_gradient_tail: exactly_zero_outside_compact_support
+    intrinsic_j: strictly_positive_finite_for_nonnegative_nonzero_cutoff
+    stability: not_established
+route_scoped_negative:
+  route: global_prescribed_knotted_beltrami_1210_6271
+  verdict: refuted_for_finite_action_carrier
+  mechanism: >-
+    The cited global Beltrami field is not finite-energy; its KAM/vortex-tube stability is
+    trajectory-structure stability under a fixed vector field, not nonlinear Euler orbital stability.
+  boundary: no_global_impossibility_inferred_for_compact_helical_Euler_fields
+physical_action_normalization:
+  energy: rho0*U^2*L^3
+  time: L/U
+  angular_momentum_and_KKS: rho0*U*L^4
+  unresolved_selection: >-
+    Euler scaling leaves U and L free and therefore does not select hbar, N=1, or a particle scale.
+does_not_license:
+  - nonlinear particle stability (LP2)
+  - fermionic rotation or exchange statistics
+  - selection of hbar or an odd prequantum class
+  - Born probabilities or a Hilbert-space dynamics
+  - relativity or electric/weak currents
+  - electron or neutrino identification
+next_executable_dependency: >-
+  Build the dynamically accessible tangent for the same Cao--Zhan or Gavrilov carrier and
+  prove a modulated energy coercivity theorem (or an exact growing mode), including the
+  non-axisymmetric sectors. If LP2 succeeds, the next separate construction is physical
+  scale selection followed by a two-carrier exchange configuration.
+parent_state: active
+exhaustion_claimed: false

@@ -1,0 +1,179 @@
+schema_version: 1
+attempt: P253/0073
+reviewer: particle-balance-review
+review_kind: independent_final_fixed_claim_non_author_review
+
+independence:
+  non_author: true
+  non_implementer: true
+  target_owner: particle-foundations
+  target_attempt: P253/0066
+  excluded_attempts:
+    - P253/0072
+  source_or_central_edits: false
+
+activation:
+  frozen_readme_sha256: 43653f748a86d09c9ab0f7c286fa52fc470e36082d5ddb9a9e8e8cf31ec02277
+  schema_exit: 0
+  schema_command_sha256: 0b8bcc78ad3e326535d62e436c7e5f623fef1e2c3c8d7c12ef1a792f07e8e1c8
+  schema_stdout_sha256: d7a6df70d40116eccbc5ef95222bcd39f56874086284528ed1e49c9c2cd6676f
+  schema_stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  schema_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+  collision_provenance:
+    authoritative_receipt_sha256: d02cb4c1f21377daf838708de8066f75adae5f3e6f5c6922162207e34ba25c7c
+    interrupted_superseded_receipt_sha256: 5bdd305e63a627956551c9346719f0fca2ca917120a79fff75ac5424ec95ca04
+    scientific_scope_changed: false
+    verdict_written_before_replay: false
+
+sources:
+  cao_arxiv_2206_10165_v2_sha256: 6d90be6b7aab2ea7d92dba843b06e72e319cad50b0a2e39cfe5589cf6aa528ca
+  gallay_smets_arxiv_1805_05064_v3_sha256: 081e93124ad0a8e04a51842848eb220180f904f6c3eec27e9b985a9a636a5797
+  applicability_verdict: exact_source_scopes_preserved_no_curved_operator_transfer_imported
+
+units:
+  interface_C2alpha_bootstrap:
+    route_verdict: established
+    scope: sufficiently_thin_p_at_least_6_family_on_nested_fixed_rescaled_balls
+    chain:
+      - uniform_L_infinity_full_RHS
+      - uniform_W2q_for_q_greater_than_2
+      - uniform_C1gamma
+      - full_RHS_C0alpha_convergence_for_alpha_less_than_gamma
+      - interior_C2alpha_Schauder_convergence
+    no_C1_shortcut: true
+
+  fredholm_essential_inclusion:
+    route_verdict: established
+    scope: fixed_nonzero_n_regular_cell_constrained_DA_H3_graph
+    convention: upper_semi_Fredholm_non_left_Fredholm
+    implication_to_standard_non_Fredholm_essential_spectrum: established
+    left_parametrix_bridge: established
+    converse_spectrum: open
+
+  fixed_n_Hodge_compactness:
+    route_verdict: established
+    scope: each_fixed_nonzero_toroidal_harmonic
+    ingredients:
+      - common_compact_DA_support
+      - zero_spatial_integral
+      - uniformly_controlled_first_moment
+      - low_frequency_Biot_Savart_row
+      - local_one_derivative_gain
+      - fixed_n_theta_derivative_is_zero_order
+      - local_Rellich_compactness
+    uniform_in_variable_n: false
+    n_zero_claim: false
+
+  canonical_action_angle_Weyl_profiles:
+    route_verdict: established
+    scope: compact_subannulus_of_each_regular_cell_fixed_nonzero_n
+    volume_form: dI_dBeta_dTheta
+    integer_m_n: true
+    graph_domain_profiles_same_fixed_n: true
+    high_frequency_condition: N_times_epsilon_tends_to_infinity
+    finite_rows_preserved: true
+
+  nonlinear_weighted_quotient:
+    route_verdict: blocked
+    established:
+      - separated_weighted_tangent_quotient
+      - ambient_H5_volume_group_composition_and_inversion
+      - exact_smooth_path_whole_space_Hodge_identity
+    refuted:
+      - ordinary_unweighted_ambient_lower_bound
+      - ordinary_unweighted_generator_graph_lower_bound
+    open:
+      - reverse_Hardy_interface_bound
+      - representative_independent_nonlinear_quotient_descent
+
+  high_n_full_vector_Piola_Hodge:
+    route_verdict: blocked
+    established:
+      - n_delta_nearest_k0_over_delta_scaling
+      - positive_scalar_mass
+      - scalar_coercivity
+    missing_construction:
+      - full_vector_curl_div_Piola_ledger
+      - all_delta_times_n_terms
+      - interface_axis_collar_exterior_maps
+      - full_pressure_and_harmonic_rows
+      - common_domain_D_to_X_graph_control
+
+  full_column_mode_isolation:
+    route_verdict: blocked
+    established:
+      - limiting_m0_generalized_Sturm_Liouville_modes
+      - explicit_L_Phi_Weyl_asymptotic
+      - sectoral_positive_wave_energy
+    missing_construction:
+      - common_analytic_all_sector_domain
+      - uniform_large_abs_m_resolvent
+      - remaining_sector_crossing_exclusion
+      - constrained_whole_column_contour
+    does_not_establish_Cao_modes: true
+
+  fixed_domain_global_regular_cell:
+    route_verdict: established
+    scope: each_sufficiently_thin_fixed_carrier_in_rescaled_domain
+    established:
+      - unique_non_degenerate_center
+      - no_secondary_critical_point
+      - one_regular_positive_cell
+      - positive_finite_endpoint_periods
+      - positive_fixed_carrier_omega_min
+    nonlinear_branch_uniqueness: false
+
+additional_exact_atoms:
+  boundary_jet: established
+  physical_fixed_n_DA_seed_nonzero_KKS: established_not_eigenmode
+  symmetry_seed_internal_mode_route: refuted
+  toroidal_nonlinear_selection_rule: established
+  finite_cross_sectional_m_lattice: refuted_as_exact_rule
+  smooth_compact_DA_KKS_Green_identity: established
+
+strongest_verdict:
+  route_verdict: established
+  statement: >-
+    For each sufficiently thin fixed p>=6 Cao carrier and every fixed nonzero
+    toroidal harmonic, the explicit regular-cell DA packets prove inclusion
+    of all regular transport-band points in the upper-semi-Fredholm and hence
+    standard non-Fredholm essential spectrum of the constrained H3 Euler
+    generator. The carrier boundary jet, global positive regular-cell
+    foliation, fixed-carrier frequency bounds, physical KKS seed, and scoped
+    topology statements are also established.
+
+conditional_boundary:
+  - converse_constrained_direct_integral_and_boundary_interface_spectrum
+  - actual_open_essential_gap
+  - nonlinear_weighted_orbit_chart
+  - full_vector_high_n_Piola_Hodge_graph_transfer
+  - whole_column_isolation
+  - Cao_Kelvin_modes_and_positive_Krein_normalization
+  - two_mode_doublet_and_noncommuting_deformations
+  - equations_38_and_39
+  - nonlinear_branch_or_stability
+  - P2_or_LP2_or_particle_completion
+
+correction:
+  status: passed
+  receipt_sha256: 1151da645862db766143ef9ed71a244678257f9f2d3eb600d00a75cc732022b4
+  requested_constructions_closed: true
+  stale_claim_scan: passed
+  unchanged_oracle_rerun: false
+  second_substantive_pass_performed: false
+
+post_hashes:
+  P253_0066_derivation: 7bebcc7c51c93c6c28d5736730b9c1a07deb155c440942433a8ac55f54be1507
+  P253_0066_source_audit: 330ea0954f10d54f06e383407e484f2182ca817719f8da471da2c6ba0f3056d0
+  P253_0066_result: ceedfa810234491fa368f10310dacf35f956637a5a88042b8337d8983acad4d1
+  P253_0066_validation: 4341e462b5de231e0537b5563f79da242a2edd50e51b3bdf323e2badd543868b
+
+next_dependency: >-
+  Prove the converse constrained DA direct-integral and boundary/interface
+  spectral theorem. Then complete the full-vector Piola/Hodge D-to-X ledger
+  at n_delta asymptotic to delta^-1 and isolate the limiting m=0 contours from
+  the whole constrained column spectrum before any Cao Riesz transfer.
+
+production_numerics_used: false
+exhaustion_claimed: false
+parent_campaign_state: active

@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /tmp/substrate-particles || exit 1
+receipt=proposals/P253-euler-particle-mechanisms/attempts/0013
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_field_maps.py > "$receipt/field-map-pytest.stdout" 2>&1
+echo $? > "$receipt/field-map-pytest.exit"

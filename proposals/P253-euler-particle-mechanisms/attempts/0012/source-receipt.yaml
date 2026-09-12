@@ -1,0 +1,71 @@
+attempt: P253/0012
+cache_policy: >-
+  Full primary-source bodies remain in /tmp/p253-primary-source-cache and are
+  not copied into campaign artifacts.
+sources:
+  - id: CaoEtAl2206.10165
+    role: same-leaf maximizer, compactness modulus, and Green bound inherited from 0006
+    title: Uniqueness and stability of steady vortex rings for 3D incompressible Euler equation
+    version: arXiv:2206.10165v2
+    url: https://arxiv.org/abs/2206.10165
+    cache_pdf: /tmp/p253-primary-source-cache/CaoEtAl2206.10165.pdf
+    pdf_sha256: 6d90be6b7aab2ea7d92dba843b06e72e319cad50b0a2e39cfe5589cf6aa528ca
+    body_status_at_0012_opening: previously_audited_in_0002_and_0006
+  - id: ButtaMarchioro1904.04785
+    role: candidate equal-radius full-support localization theorem
+    inventory:
+      title: Time evolution of concentrated vortex rings
+      authors: [Paolo Butta, Carlo Marchioro]
+      arxiv: https://arxiv.org/abs/1904.04785
+      arxiv_version_to_audit: arXiv:1904.04785v2
+      submitted: 2019-04-09
+      revised: 2021-06-08
+      journal: Journal of Mathematical Fluid Mechanics 22, article 19 (2020)
+      doi: https://doi.org/10.1007/s00021-020-0482-x
+      pages_reported_by_arxiv: 24
+    inventory_basis: arXiv metadata and abstract only
+    body_status_at_inventory: unopened_for_attempt_0012
+    audit_questions:
+      - exact radius and pair-separation hypotheses
+      - exact intensity and Linfinity scalings
+      - whether the theorem localizes the full support in both directions
+      - exact time quantifier and whether its interval is explicit or existential
+      - exact external-field hypotheses used in the multi-ring reduction
+      - applicability to equal-radius Euler-scaled Cao polynomial profiles
+    audited_body:
+      version: arXiv:1904.04785v2
+      url: https://arxiv.org/pdf/1904.04785v2
+      cache_pdf: /tmp/p253-primary-source-cache/ButtaMarchioro1904.04785v2.pdf
+      cache_text: /tmp/p253-primary-source-cache/ButtaMarchioro1904.04785v2.txt
+      pdf_sha256: bdbc75defd6d5fb230e6784f0bd9566bbac69d2f4e831045d0a56478a86f7fb4
+      text_sha256: f31552d96296eaaff360893835e2c993f111f9fad24ff534e3825c5b2ae77146
+      pages: 24
+      correction_note: v2 adds the corrected proof of Lemma 3.1
+    publisher_metadata:
+      url: https://link.springer.com/article/10.1007/s00021-020-0482-x
+      publication_date: 2020-02-24
+      access: abstract_and_metadata
+    page_map:
+      - pages: 3-5
+        content: hypotheses (1.13)-(1.16), Theorem 1.1, and its positive-time full-support conclusion
+      - pages: 6-7
+        content: Assumption 2.1, reduced Theorem 2.3, and the multi-ring separation bootstrap
+      - pages: 15-17
+        content: explicit proof origin of the positive localization time and uniform center convergence
+    audit_result:
+      radius_hypothesis: no distinct-radius requirement; initially disjoint fixed center disks suffice
+      intensity_scaling: integral omega_i dr dz equals a_i divided by abs(log epsilon)
+      Linfinity_scaling: at most M divided by epsilon^2 abs(log epsilon)
+      time_quantifier: a positive T_R independent of epsilon, dependent on the chosen coarse radius R
+      support_result: complete support lies in radius-R disks around limiting translating centers
+      equal_radius_identical_intensity: admissible because the two limiting velocities agree and axial separation stays fixed
+      external_field: divergence-free, globally Lipschitz, with size and Lipschitz constant O(abs(log epsilon)^-1)
+      all_time_result: false
+    transfer_result:
+      carrier: two axial translates of one Euler-scaled Cao polynomial-profile ring
+      fixed_centers: same radius r0 and fixed axial separation
+      scaling: >-
+        u_AB(x,t)=A u_delta(Bx,ABt), B=r_delta/r0,
+        rho=2 C_s delta/B, and A/B=a/(kappa abs(log rho))
+      nearby_data: support-contained nonnegative rearrangements preserve circulation and relative-vorticity Linfinity
+      verdict: exact source-admissible full-support control for a positive rho-independent interval

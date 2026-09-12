@@ -1,0 +1,168 @@
+attempt: P253/0104
+reviewer: particle-balance-review
+target: P253/0095
+review_kind: independent_non_author_fixed_boundary
+activated_readme_sha256: acf0af844fb373ce85669f788a08e1af665e2849289f4325fc06c1eb3a3905b0
+target_manifest_pre_review_sha256: b305d2ea6ded594d24a20384789f03c86d282d175a4cf3c749a52fbc53280211
+target_manifest_post_correction_pre_clerical_sha256: dc15211dd0a2b4799a72c89446592202cf3256898f896118ad31915067bfaba4
+target_manifest_final_sha256: 22f0aeffa4c0b3a74b64a266eb3185beb066fc1178cdebd171c2883bcdc9f5c6
+target_post_correction_hashes:
+  derivation: b193c60f5e43e993d35673f0c5129beaa09a32c6035915915cdc98ebcd696c48
+  source_audit: ac30e355638c86434653291b9882e39896e6cc0a218d869c201d26e600723ecd
+  result: 889cbe25ad2731b64fed259cd10053353a8767594332184d7a08698e427b8ec3
+  validation: f284bdab343f297cce0ca9d183f982ec0de8b5b8917c33d9fdf7925b70e6c004
+  completion: e3ad2e35a0258e7bc89291faff8eb129813e8fa5a1415dae045a88fade287c85
+  API_after_EOF_cleanup: 7087cb2edf4ea8d9b6ea71ca027f34f117ade2cf269430b3057aee799fdc2a84
+excluded:
+  - P253/0088
+  - P253/0094
+  - P2_P4_particle_and_parent_conclusions
+correction:
+  count: 1
+  status: passed
+  receipt: proposals/P253-euler-particle-mechanisms/attempts/0095/0104-unit-g-bounded-correction-receipt.md
+  receipt_sha256: 1e6afd6f20c9d41e850f1a3d8c42bab06226d1de74f9c71ba7c9817b37c82a5b
+  scope: Unit_G_fixed_row_leaf_and_charged_reciprocity_wording
+  preserved_units: [A, B, C, D, E, F]
+clerical_cleanup:
+  status: passed
+  receipt: proposals/P253-euler-particle-mechanisms/attempts/0095/checkpoint-whitespace-receipt.md
+  receipt_sha256: c67e2653b3867837adf04fc8bea72ae6605d75d44dad93b029ef4142a63bc338
+  scope: three_surplus_EOF_blank_lines_only
+  scientific_delta: false
+evidence:
+  manifest_check:
+    status: passed
+    entries_verified: 63
+  primary_HF_source:
+    status: independently_checked
+    sha256: c6a35c44d55d26b8bb3e8fc9e55b29b638d0983b646b17eb522a4192b6444fb9
+    scope: >-
+      Hill elimination, periodic-covector condition, general-profile
+      first-curvature formula, 15-over-256 coefficient and nonreturn
+      saturation warning.
+  exact_recovery7:
+    status: passed_recorded_evidence
+    predicates: 14
+    stdout_sha256: 0d81a91a2f42a28c27533e53ed4c7f9ba34d0b2f2858aa6ed1f7d2c6ade5e21e
+    stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    exit: 0
+    scope: exact_algebraic_predicates_only
+  focused_recovery7:
+    status: passed_recorded_evidence
+    tests: 3
+    stdout_sha256: 43070f769e236d6133131b818344f14b9cc70eb0b06d977dc080afb56e79db89
+    stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    exit: 0
+    scope: importable_API_regression_only
+  rerun_by_reviewer: false
+units:
+  A_HF_source_and_smooth_center:
+    verdict: established
+    strongest_result: >-
+      The source trace-free system eliminates to the stated Hill equation;
+      the smooth-center first resonance yields forcing 15 Omega_c/128 and
+      paired physical exponent delta |U_theta| 15/256 at first curvature
+      order.
+    boundary: >-
+      The source post-equation-20 warning limits a nonreturned perturbative
+      covector to saturation; repeated growth requires Unit B.
+  B_exact_phase_and_return:
+    verdict: established
+    strongest_result: >-
+      The globally single-valued integer-character phase
+      d(F(P)+ell theta) is an exact first integral, returns its covector and
+      frame, permits continuous detuning removal, and produces an exact
+      reciprocal hyperbolic pair at g=0.
+    charged_boundary: >-
+      At nonzero small g continuity preserves a real hyperbolic pair and an
+      expanding multiplier, but det M=1+O(g^4) does not prove exact
+      reciprocity.
+  C_finite_Cao_transfer:
+    verdict: established
+    scope: fixed_sufficiently_thin_member_compact_regular_orbit_tube
+    strongest_result: >-
+      Compact-interior normalized-profile convergence transfers the positive
+      15-over-256 first-curvature coefficient without endpoint, collar,
+      free-boundary or uniform-global-C1 inference.
+  D_DA_tag_Gauss_packet:
+    verdict: established
+    strongest_result: >-
+      The returned-phase displacement yields a complete linear
+      vorticity/tag/Gauss packet, weakly null after graph normalization, in
+      the nonempty weighted interval 1/2<sigma<3/2.
+    boundary: raw_linear_tangent_not_every_fixed_nonlinear_leaf_row
+  E_Maxwell_Egorov_lift:
+    verdict: established
+    strongest_result: >-
+      Strict subluminality supplies the transverse Maxwell Sylvester gap;
+      longitudinal Gauss reconstruction and localized Hodge/Leray/collar
+      control give the fixed-time observed O(N^-1) Egorov remainder.
+    boundary: no_growing_time_or_global_weight_propagation_claim
+  F_fixed_observed_operator:
+    verdict: established
+    strongest_result: >-
+      One fixed J_loc and c_obs independent of circuit count satisfy
+      ||J_loc S_g(jT_*)||_ess >= c_obs lambda_+^j from the weighted global
+      complete constrained graph input to the local same-Hs quotient output;
+      only the tube and N0(j) may vary.
+    boundary: no_unobserved_full_propagator_essential_norm_inference
+  G_exact_leaf_path:
+    verdict: blocked
+    strongest_positive: >-
+      The raw curve is exact for coadjoint/Kelvin-circulation data, tag
+      distribution, charge, divergence constraints, difference Gauss law and
+      zero monopole.
+    missing_construction: >-
+      The generic r^-3 Hodge velocity does not make total momentum a
+      continuous row on the declared completed topology. Supply a typed
+      relative-momentum domain or prove that row automatic/redundant, then
+      construct carrier-specific compact generator witnesses and an
+      invertible retained impulse/center/total-momentum row matrix including
+      the Gauss-reconstructed electromagnetic contribution when applicable.
+  H_fixed_delta_small_charge:
+    verdict: established
+    strongest_result: >-
+      For every fixed sufficiently thin delta, signed
+      0<|g|<g0(delta) preserving C_mon(delta)g^2<c_HF delta retains the real
+      expanding multiplier and Unit-F linear observed essential-norm theorem.
+    downstream_boundary: >-
+      Unit G's exact fixed-row leaf curve is needed before same-target
+      directional differentiation converts a nonlinear uniform-Lipschitz
+      estimate into a contradicted linear observed bound; this does not narrow
+      the established Unit-H linear theorem.
+    boundary: no_delta_uniform_charge_wedge_or_one_datum_escape
+  I_complementary_charge:
+    verdict: blocked
+    strongest_positive: >-
+      The exact charged-column slow block, K=4ZR/Omega^2 classifier and
+      Melnikov functional are explicit: ZR<0 is directly hyperbolic, K>=1
+      permits integer curvature resonance, and b(0) is nonzero.
+    missing_construction: >-
+      A charged-column/free-boundary branch with a delta-uniform curvature
+      jet, whole-core K coverage, resonant-set b evaluation and control of the
+      x-to-zero graph/resolvent sector.
+combined_verdict: blocked_at_exact_fixed_row_leaf_completion
+strongest_exact_result: >-
+  For each fixed sufficiently thin charged Cao member and sufficiently small
+  signed nonzero charge satisfying the fixed-member gap inequality, an exact
+  returned DA phase carries a real expanding hyperbolic multiplier into a
+  fixed-J_loc observed-propagator essential-norm lower bound from the weighted
+  global complete-state graph domain to the local same-Hs quotient. The
+  nonlinear uniform-Lipschitz refutation remains blocked because no exact path
+  in the frozen fixed-total-momentum and finite-row leaf has been constructed.
+next_dependency: >-
+  Complete Unit G with a relative-total-momentum domain or redundancy proof
+  and an explicit carrier-specific retained-row witness determinant. In
+  parallel, construct the complementary charged-column/free-boundary branch,
+  uniform curvature jet, whole-core K bounds and resonant-set b coverage.
+does_not_license:
+  - exact_nonzero_charge_reciprocity
+  - fixed_member_nonlinear_uniform_Lipschitz_refutation
+  - delta_uniform_g_squared_over_delta_wedge
+  - unobserved_full_propagator_essential_norm
+  - one_datum_nonlinear_escape
+  - complementary_charge_regime_or_full_Hill_verdict
+  - nonlinear_instability_P2_P4_particle_or_parent_completion
+parent_campaign_state: active
+exhaustion_claimed: false

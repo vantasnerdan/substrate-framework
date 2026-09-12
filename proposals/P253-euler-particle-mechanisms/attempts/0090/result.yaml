@@ -1,0 +1,78 @@
+attempt: P253/0090
+title: exact comoving Maxwell shell-to-flux and conserved finite-window source
+route_verdicts:
+  route_A:
+    route: retarded frequency-domain outgoing identity
+    verdict: established_for_prescribed_conserved_current
+    strongest_result: >-
+      For a net-neutral nonzero-frequency comoving current with the stated
+      weighted trace regularity, the retarded Maxwell solution has exact mean
+      outward power (pi/(2*epsilon_EM))*integral |Omega| delta(D_omega)
+      |P_T J_hat|^2 dk.  The shell is smooth for every fixed subluminal margin,
+      and coarea gives the exact sphere weight pi*|omega|^2/
+      [4*epsilon_EM*(c_EM-sign(omega)c_g*n_z)^3].  The real-field phasor factor
+      already includes the conjugate component.
+  route_B:
+    route: exactly conserved smooth switching and late free-field energy
+    verdict: established_with_typed_plateau_hypotheses
+    strongest_result: >-
+      Because rho_hat_omega(0)=0, a Bogovskii/Hodge field K with div K=-rho
+      gives the exact switched current a J+a_prime K.  Its late outgoing
+      transverse free-field energy is an exact oscillator spectral norm.  For
+      fixed smooth ramps, an integrable first moment of the resonant and
+      conjugate pushforward correlations, integrable endpoint cross
+      correlations, and finite endpoint energy, E_late(T)=T*P_out+O(1) with a
+      T-independent explicit correlation bound; otherwise the exact spectral
+      norm is retained.  Sharp switching is a separately typed weak limit
+      with endpoint energy.  The comoving finite-volume balance uses
+      (S-c_g*u_EM*e_z) dot n; its infinite-world-tube equivalence to the late
+      field is open.
+  route_C:
+    route: reciprocal one-block amplitude conversion
+    verdict: blocked_at_source_specific_reciprocal_Feshbach_closure
+    strongest_result: >-
+      If a reciprocal same-action amplitude equation exists and the unit-mode
+      current radiates power P_out, then its amplitude decay rate is
+      gamma_amp=P_out/(2*nu_phys*A_mode), while the fractional energy-decay
+      rate is P_out/(nu_phys*A_mode).  The factor two and action-to-energy
+      conversion are exact.  The actual Cao current trace, analytic
+      continuation, real shift, and pole remain unconstructed.
+evidence_scope:
+  - exact_outgoing_Poynting_sign_and_prefactor
+  - exact_comoving_shell_gradient_and_coarea_weight
+  - exact_positive_Gaussian_curl_current_power
+  - exact_net_neutral_oscillatory_charge_row
+  - exact_conserved_envelope_completion
+  - exact_late_transverse_free_field_spectral_norm
+  - conditional_plateau_T_times_power_plus_bounded_switching_remainder
+  - conditional_reciprocal_amplitude_and_energy_decay_conversion
+strongest_exact_result: >-
+  A smooth localized conserved comoving current in the reviewed U(1)
+  Euler--Maxwell extension has an exactly normalized nonnegative outgoing
+  power determined by its transverse trace on the Doppler shell.  A conserved
+  finite envelope requires the explicit a_prime*K current, and the late
+  radiation gives an operational gate observable.  The moving-volume identity
+  gives an exact separate relative-flux balance.  For a reciprocal normalized
+  carrier mode, amplitude width and energy loss differ by the exact factor of
+  two shown above.
+does_not_license:
+  - a nonzero Cao shell current or physical response lower bound
+  - a resonance pole or damping law without reciprocal analytic closure
+  - an L2 Maxwell eigenmode from an exponentially small nonzero shell trace
+  - a gate bound without physical KKS action, mode current, and gate history
+  - infinite-world-tube equivalence to the late-field energy without a decay and endpoint limit theorem
+  - a universal action, Born weights, reset, exchange, or fermionic character
+  - derivation or selection of epsilon_EM, mu_EM, c_EM, g, charge, or action
+  - a bare-Euler result or adoption of the U1 extension
+  - electron, neutrino, P4, P5, or parent-campaign completion
+next_dependency: >-
+  Consume the independently reviewed 0087 shell upper bound and the future
+  reviewed 0088 physically normalized current only after each is established,
+  then test the exact integer radiation window using
+  T_gate*P_out/(nu_phys*A_mode).  In parallel construct the reciprocal
+  one-block outgoing Feshbach map.  Beyond classical readout, test whether a
+  compact gauge character fixes q/g integrally and whether same-carrier
+  dynamics selects A_mode proportional to q^2/(4*pi*epsilon_EM*c_EM); absent
+  both selection steps, the action/Born/reset/statistics obligations remain
+  active.
+parent_status: active

@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /tmp/substrate-particles || exit 1
+receipt=proposals/P253-euler-particle-mechanisms/attempts/0001
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_material_balance.py tests/test_euler_observation.py > "$receipt/material-pytest.stdout" 2>&1
+echo $? > "$receipt/material-pytest.exit"

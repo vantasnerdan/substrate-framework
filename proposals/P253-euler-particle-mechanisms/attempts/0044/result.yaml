@@ -1,0 +1,66 @@
+attempt: P253/0044
+owner: particle-foundations
+active_obligation: curved_cao_ring_translation_feshbach
+activation_schema_exit: 0
+evidence_scope: ANALYTIC_OPERATOR_AND_REPRESENTATION_SCOPED
+route_verdicts:
+  route_A_regular_physical_core:
+    verdict: established
+    positive_result: >-
+      The compact dynamically accessible closure excludes passive exterior
+      vorticity while retaining global velocity. The exact m=1 core pencil has
+      simple kernel psi0=r*Omega, positive translation-removed form gap,
+      derivative pairing -2F(a), a unique small-k Kelvin root
+      b(k)=-(F(a)/2)k^2 log(1/(|k|a))+O(k^2), and a reduced graph inverse.
+    does_not_license: curved_ring_eigenpair
+  route_B_fixed_rank_curved_feshbach:
+    verdict: refuted_with_mechanism
+    positive_result: >-
+      Exact toroidal gradient, divergence, scalar Laplacian, Leray P1/P2, and
+      Euler A1/A2 formulas are derived. Curvature sends the translation mode
+      to m=0 forcing W/2 and m=2 forcing r*Omega'/2. The m=2 complement is
+      positive, while the physical m=0 block has accessible Kelvin frequencies
+      accumulating at zero.
+    mechanism: >-
+      The nonzero m=0 coupling and internal frequency accumulation remove any
+      uniform near-zero inverse for Q=1-P_translation. Thus a uniform fixed
+      rank-two Riesz/Feshbach reduction is not valid for the full curved ring.
+    failure_scope: uniform_fixed_rank_two_thin_ring_reduction
+  route_C_coupled_evans:
+    verdict: blocked_by_named_construction
+    positive_result: >-
+      The scalar m=1 determinant, corrected exterior boundary coefficient, and
+      finite-core derivative are closed exactly.
+    missing_construction: >-
+      An enlarged determinant containing the near-resonant physical m=0 modes,
+      their high-index coupling decay, and the Cao graph-norm second core jet.
+  route_D_hamiltonian_krein:
+    verdict: blocked_by_named_construction
+    positive_result: >-
+      The actual universal leading smooth-tube compression is
+      Gamma*log(R/a)/(4*pi*R^2)*[[0,l^2-1],[-l^2,0]], with a
+      signed imaginary pair for every fixed l>=2 and the correct l=1 neutral
+      displacement.
+    missing_construction: >-
+      The finite nonlogarithmic Hessian/KKS matrix and an enlarged complement
+      estimate across the internal m=0 resonances.
+strongest_exact_result: >-
+  The compact-column finite-core response and graph inverse are constructed,
+  and the full toroidal pressure blocks expose the real ring obstruction. The
+  leading two-coordinate matrix is positive and imaginary, but it is only a
+  compression: nonzero curvature coupling reaches an infinite sequence of
+  accessible m=0 Kelvin modes accumulating at zero, so it is not yet a
+  graph-domain Riesz reduction of the Cao ring.
+next_executable_dependency: >-
+  Construct a finite-delta enlarged KKS/Feshbach block: estimate the high-n
+  coefficients of the W/2 forcing in the m=0 generalized eigenbasis, establish
+  a quantitative nonresonance window or a tame infinite-block normal form, and
+  derive the Cao second core/profile jet in the operator graph norm. Then
+  reconstruct the full-ring eigenfunction and run the solid-torus bifurcation.
+does_not_license:
+  - exact full Cao rotating-wave branch
+  - nonlinear stability of any nonaxisymmetric branch
+  - uniform rank-two Riesz projection in the thin-ring limit
+  - quantum state, exchange sign, hbar, electron, or neutrino interpretation
+parent_state: active
+exhaustion_claimed: false

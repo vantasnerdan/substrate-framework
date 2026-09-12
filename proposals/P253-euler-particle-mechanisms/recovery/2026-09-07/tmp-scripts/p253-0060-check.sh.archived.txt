@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -u
+cd /tmp/substrate-particles
+attempt=proposals/P253-euler-particle-mechanisms/attempts/0060
+python=/home/dan/substrate-framework/.venv/bin/python
+cmd="PYTHONPATH=src $python $attempt/verify_neutral_cell.py"
+printf '%s\n' "$cmd" > "$attempt/exact-check.command.txt"
+: > "$attempt/exact-check.stderr"
+PYTHONPATH=src "$python" "$attempt/verify_neutral_cell.py" > "$attempt/exact-check.stdout" 2> "$attempt/exact-check.stderr"
+verify_rc=$?
+printf '%s\n' "$verify_rc" > "$attempt/exact-check.exit"
+tests="PYTHONPATH=src $python -m pytest -q tests/test_euler_neutral_cell.py"
+printf '%s\n' "$tests" > "$attempt/focused-pytest.command.txt"
+: > "$attempt/focused-pytest.stderr"
+PYTHONPATH=src "$python" -m pytest -q tests/test_euler_neutral_cell.py > "$attempt/focused-pytest.stdout" 2> "$attempt/focused-pytest.stderr"
+test_rc=$?
+printf '%s\n' "$test_rc" > "$attempt/focused-pytest.exit"
+printf 'P253_0060_CHECKS verify=%s tests=%s\n' "$verify_rc" "$test_rc"
+if [ "$verify_rc" -ne 0 ] || [ "$test_rc" -ne 0 ]; then
+  exit 1
+fi

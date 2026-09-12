@@ -1,0 +1,16 @@
+A_l = Gamma*(3*S/2 + l**2*(L - 2*S + 1/2))/(4*pi*R**2)
+B_l = Gamma*(-3*S/2 + (l**2 - 1)*(L - 2*S + 1/2) + 3/2)/(4*pi*R**2)
+fixed_l_leading_nu = Gamma*L*l*sqrt(l**2 - 1)/(4*pi*R**2)
+traveling_mode_J_z_quadratic = pi*Gamma*R*amp**2*l*rho*sqrt((3*S/2 + l**2*(L - 2*S + 1/2))*(-3*S/2 + (l**2 - 1)*(L - 2*S + 1/2) + 3/2))/(-3*S/2 + (l**2 - 1)*(L - 2*S + 1/2) + 3/2)
+physical_orbit_moment_derivative = amp*l*sigma_symbol
+filament_KKS_sigma = 2*pi*Gamma*R*rho*sqrt((3*S/2 + l**2*(L - 2*S + 1/2))*(-3*S/2 + (l**2 - 1)*(L - 2*S + 1/2) + 3/2))/(-3*S/2 + (l**2 - 1)*(L - 2*S + 1/2) + 3/2)
+critical_pattern_speed = -nu_symbol/l
+CR_transversality_multiplier = -I*l
+rotation_moment_map_curl = Matrix([[-y, x, 0]])
+Cao_profile_Richardson_J = 2*srad**2*(srad*Derivative(U(srad), (srad, 2)) + Derivative(U(srad), srad))*Derivative(U(srad), srad)/(srad*Derivative(U(srad), (srad, 2)) - Derivative(U(srad), srad))**2
+Cao_H2_log_derivative = (-power*yvar*(tvar + 2) - tvar**2 - 2*tvar + 8)/(srad*(2 - tvar))
+H2_comparison_center_coefficient = power/24
+H2_comparison_zero_derivative = 4*(tvar - 2)**2/power
+H2_log_numerator_at_comparison_boundary = tvar*(tvar - 2)
+exterior_m1_DtN_log_remainder_limit = 0
+ALL 25 EXACT KELVIN-BRIDGE CHECKS PASSED

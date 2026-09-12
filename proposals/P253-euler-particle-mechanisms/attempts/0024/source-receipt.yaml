@@ -1,0 +1,118 @@
+attempt: P253/0024
+audit_date: 2026-09-06
+cache_policy: >-
+  Complete primary-source files remain in /tmp/p253-primary-source-cache.
+  This attempt retains provenance, page mappings, scope, and original
+  calculations only.
+
+readme_typography_correction:
+  field: equation_12_second_separator
+  before_literal: I,qquad N_k
+  after_literal: I,\\qquad N_k
+  pre_sha256: 73f211f59f34e84fa74400420f121e84e15c80664b4e7f1ae25ffc583032921a
+  post_sha256: 108937eada3c5696cc57160e831f61231821286e7f72a7fa9b3ccdcc9a20403c
+  scientific_effect: none
+
+sources:
+  - id: GarciaHassainiaHmidi2603.21644
+    title: Time-periodic leapfrogging vortex rings in the 3D Euler equations
+    authors:
+      - Claudia Garcia
+      - Zineb Hassainia
+      - Taoufik Hmidi
+    version: arXiv:2603.21644v1
+    submitted: 2026-03-23
+    abstract_url: https://arxiv.org/abs/2603.21644
+    pdf_url: https://arxiv.org/pdf/2603.21644v1
+    cache_pdf: /tmp/p253-primary-source-cache/GarciaEtAl2603.21644.pdf
+    cache_text: /tmp/p253-primary-source-cache/GarciaEtAl2603.21644.txt
+    pdf_sha256: 7ba22ef57ba9453dd2631c33b1ad094a35ce2be171426cecce80fba8a5cdfac6
+    text_sha256: f6461cfc68e2aa3b08cadc3409a36f4f0267c5a7c73fdb03e46f9636c121c871
+    pdf_pages: 150
+    page_map:
+      - pages: 5-7
+        content: >-
+          Theorem 1.1 quantifiers, actual finite-core pair, slow period T,
+          physical period T/abs(log epsilon), and translating drift.
+      - pages: 13-15
+        content: >-
+          Source summary of the first-mode inverse and higher-mode normal
+          operator; the latter is diagonal only up to a small smoothing
+          remainder and is used for periodic right-invertibility.
+      - pages: 18-19
+        content: >-
+          The authors explicitly describe their periodic reduction as partial
+          and contrast it with complete reducibility needed in harder time
+          regimes. No Floquet stability theorem is stated.
+      - pages: 60-72
+        content: >-
+          Exact contour linearization and labelwise self/cross decomposition;
+          cross interaction is smoothing beyond its low-mode component.
+      - pages: 87-96
+        content: >-
+          First/higher-mode split, Proposition 8.3, tame isomorphism, constant
+          diagonal frequencies, persistent order-minus-three evolution
+          remainder, and finite-step residual E_(4,n).
+      - pages: 100-119
+        content: >-
+          Four periodic changes of variables. B1 and B2 are time-dependent
+          angular diffeomorphisms, while Phi2-Phi4 are bounded periodic
+          operator exponentials; all are constructed on the source-restricted
+          normal space and retain a smoothing remainder.
+      - pages: 119-131
+        content: >-
+          Nash-Moser inverse/iteration on the final Cantor set. This proves
+          existence, not full-IVP power boundedness.
+    exact_operator_scope: >-
+      Proposition 8.3 assumes the source tame smallness conditions, acts on
+      the reversible higher-mode periodic space X_s^perp, and for each finite
+      Nash-Moser index gives a conjugation to the constant multiplier plus
+      epsilon^2*sqrt(abs(log epsilon))*partial_theta R_(4,-3), with that
+      whole displayed operator in OPS^(-3),
+      and E_(4,n). The source does not define this as a full two-label
+      non-reversible monodromy similarity.
+    finite_step_residual_audit: >-
+      The paper calls E_(4,n) a smooth residual and bounds its base norm by
+      a decaying finite-step expression involving two higher derivatives of
+      the input and high norms of the approximate state. This is not an
+      operator-norm compactness theorem on one full-label IVP Sobolev space,
+      and the n-dependent conjugations are not shown to converge there.
+      Accordingly 0024 treats compactness of the lifted E_(4,n) return
+      contribution as an explicit additional hypothesis, not a source fact.
+    exact_nonresonance_scope: >-
+      The source Cantor condition controls divisors
+      epsilon^2*abs(log epsilon)*omega*l+c1*j for its periodic inversion.
+      It is a first-order divisor condition, not the complete pairwise
+      second-Melnikov condition involving mu_j-mu_k needed for a full
+      reducibility or modal Floquet theorem.
+    exclusions:
+      - no all-power bound for a contour monodromy
+      - no full two-independent-label or non-reversible stability space
+      - no positive invariant quadratic metric
+      - no Krein-signature or Riesz-basis completeness theorem
+      - no compact full-label IVP lift or operator-norm limit for E_(4,n)
+      - no finite-core patch Jordan chain from the filament twist
+
+  - id: C-FLO-001
+    role: accepted finite-dimensional algebraic comparison only
+    source: governance/claims.yaml
+    exact_scope: >-
+      For an exact finite matrix, bounded powers require closed-unit-disk
+      spectrum and semisimplicity on the unit circle. The claim expressly
+      supplies no unbounded-operator domain, field spectrum, or nonlinear
+      stability theorem.
+
+attempt_inputs:
+  - path: proposals/P253-euler-particle-mechanisms/attempts/0015/construction.md
+    sha256: 90eec03cd419ca92e6796e6e4d3839b6c6d2152ffa2b04ef49048eacd3a5bff9
+    role: normalized and physical Hamiltonian/KKS conventions
+  - path: proposals/P253-euler-particle-mechanisms/attempts/0021/construction.md
+    sha256: d1c27273e34903e76126233076fdcb87cbe41f47ffb37bb8c8700b7087c301aa
+    role: candidate actual full-IVP monodromy and invariant flag
+  - path: proposals/P253-euler-particle-mechanisms/attempts/0021/source-receipt.yaml
+    sha256: d09dd90b2f3c70ca953464bcca583dc17d306d73405c9fc169b825d9da54e143
+    role: prior exact source/interface map
+
+body_excerpt_policy: >-
+  No extended quotation is retained. Source formulas are named and
+  paraphrased; all spectral and power calculations are original.

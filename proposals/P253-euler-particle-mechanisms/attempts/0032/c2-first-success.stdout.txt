@@ -1,0 +1,12 @@
+W2 = sqrt(2)*(80*sin(q)**6 - 40*sin(q)**4 - 3*sin(q)**2 - 11)/128
+g1 = cos(q)**3 - 9*cos(q)/4 + 5/4
+g2 = (3*sin(q)*cos(q)**2 - 9*sin(q)/4)*(-cos(q)**3 + 9*cos(q)/4 - 5/4) - (-sin(q)**2 + cos(q)**2)*sin(q)*cos(q)/2 + 2*sin(q)**5*cos(q) + 15*sin(q)*cos(q)/8
+C0 = Matrix([[0, 0], [-sqrt(2)/2, 0]])
+C2 = Matrix([[75*(1 - cos(2*q))**3*sin(q)/16 - 575*(1 - cos(2*q))**2*sin(q)/32 - 25*(1 - cos(2*q))**2*sin(2*q)/4 + 75*(1 - cos(2*q))**2*sin(3*q)/32 + 795*sin(q)/32 + 37*sin(2*q)/16 - 275*sin(3*q)/64 - 37*sin(4*q)/4 + 175*sin(5*q)/64 + 25*sin(6*q)/16, -sqrt(2)*cos(q)**2/2 + 5*sqrt(2)*cos(q)/2 - 2*sqrt(2)], [25*sqrt(2)*cos(q)**7/4 - 285*sqrt(2)*cos(q)**5/16 - 25*sqrt(2)*cos(q)**4*cos(3*q)/16 - 21*sqrt(2)*cos(q)**4/4 + 175*sqrt(2)*cos(q)**3/16 + 85*sqrt(2)*cos(q)**2*cos(3*q)/16 + 57*sqrt(2)*cos(q)**2/16 - 145*sqrt(2)*cos(q)/64 + 75*sqrt(2)*cos(3*q)/128 - 65*sqrt(2)*cos(5*q)/128 + 311*sqrt(2)/64, 5*sin(q)/4 + sin(2*q)]])
+C1 = Matrix([[cos(q) - 3*cos(3*q)/2, sqrt(2)*sin(q)], [sqrt(2)*sin(q)/8 + 3*sqrt(2)*sin(3*q)/8, -cos(q)]])
+single_C2_trace = 9*pi**2
+double_C1_trace = 2*pi**2
+epsilon2_trace = 11*pi**2
+I_trace = 22*pi**2
+I_discriminant = 88*pi**2
+ALL 7 SOURCE-RECURRENCE CHECKS PASSED

@@ -1,0 +1,76 @@
+attempt: P253/0054
+owner: particle-foundations
+active_obligation: actual_cao_common_domain_HJ2
+activation_schema_exit: 0
+evidence_scope: EXACT_CELLS_SHAPE_IDENTITIES_GEOMETRY_AND_LIMITED_INTERFACE_TRACE
+preserved_0052_boundary:
+  crossing_index: >-
+    n*=A/(c*delta*L)-A*d/(c^2*delta*L^2)+(B/A-beta0)
+    +o(1/(delta*L^2))+O(1)
+  coupling: O(delta^3*L)
+  spacing: Theta(delta^3*L^2)
+  coupling_to_spacing: O(1/L)
+route_verdicts:
+  exact_cao_local_cells:
+    verdict: established
+    positive_result: >-
+      Direct expansion of the exact rescaled Cao equation gives the displayed
+      first and second Lane-Emden profile cells. Cao's true parameter equations
+      retain their published O(epsilon^2*abs(log epsilon)) remainder.
+  augmented_carrier_branch:
+    verdict: blocked_by_exact_augmented_map
+    positive_result: >-
+      The q and tau kernel expansion supplies a formal polyhomogeneous candidate.
+      Source equation (3.36) is an auxiliary asymptotic system, not an exact
+      scale/speed row, and source uniqueness cannot construct the missing branch.
+    missing_construction: >-
+      Build the exact steady integral/parameter map on declared Banach spaces,
+      prove its C3 lift, Fredholm index and parameter-row Schur determinant, and
+      verify the source uniqueness hypotheses after construction.
+  interface_trace:
+    verdict: established_at_limited_scope
+    positive_result: >-
+      For p>=6 the zero extensions of Omega_delta, its first two formal
+      coefficient derivatives, and the DA tangent eta create no vortex sheet.
+    boundary: >-
+      Traces of A_delta eta on a frozen graph Sobolev interval remain open.
+  biot_savart_shape_and_toroidal_geometry:
+    verdict: established
+    positive_result: >-
+      The exact Piola-conjugated first and second Biot-Savart derivatives retain
+      h(y)-h(yprime), preserve the kernel order pointwise, and the exact toroidal
+      distance retains k_delta=ell*delta.
+  common_DA_graph_and_symbol_bounds:
+    verdict: blocked_by_named_domain_and_symbol_constructions
+    missing_construction: >-
+      Prove the two-sided Hardy/common-range map including harmonic and
+      stabilizer rows, composite zero-frequency Hodge bounds, A_delta eta
+      traces, front/side/overlap Hs symbol seminorms, and separate or mixed
+      two-index commutator bounds with uniform basis constants.
+  full_graph_riesz_transfer:
+    verdict: conditional_algebra_only
+    positive_result: >-
+      Given the missing graph remainder and a full nonnormal all-sector
+      X_* to D_* resolvent of size C/r_delta, the displayed Neumann and contour
+      identities imply the claimed graph-resolvent and Riesz differences.
+    missing_construction: >-
+      Construct that all-sector Grushin/resolvent including low m, global
+      pressure/Hodge, axis, interface, collar, exterior, and KKS projection
+      constants. HJ2 alone is insufficient.
+strongest_exact_result: >-
+  The exact Cao local cells, Piola-conjugated Biot-Savart shape identities,
+  nonaxisymmetric toroidal distance, metric-Leray differentiation algebra, and
+  limited p>=6 no-sheet trace fact are established. The common graph jet,
+  two-index Schur estimate, nonnormal complement resolvent, and exact Cao
+  Riesz transfer remain named constructions.
+remaining_dependency: >-
+  Construct the exact augmented Cao map and the common-domain all-sector
+  Green/Leray graph-resolvent estimates before using this route in a nonlinear
+  same-leaf branch construction.
+does_not_license:
+  - discharge of HJ2
+  - an exact Cao graph-Riesz family
+  - an exact nonlinear rotating-wave or relative-periodic branch
+  - stability, quantization, electron, or neutrino claims
+parent_state: active
+exhaustion_claimed: false

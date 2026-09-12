@@ -1,0 +1,58 @@
+attempt: P253/0021
+active_obligation: R1 restoring/interaction transfer
+candidate: Garcia-Hassainia-Hmidi actual periodic labeled patch pair
+
+tested_routes:
+  - id: A
+    target: >-
+      Bounded initial-value propagator and correctly reduced one-period
+      monodromy for arbitrary source-regular, independent, non-reversible
+      two-contour perturbations.
+    route_verdict: established
+    evidence_scope: EXACT_INTERFACE_LINEARIZATION_AND_SOBLEV_ENERGY_ESTIMATE
+    strongest_result: >-
+      The exact two-label normal Jacobi equation is first-order transport plus
+      an order-zero Hilbert/self remainder and smoothing cross interaction.
+      On each fixed sufficiently smooth source orbit it generates an
+      invertible zero-loss evolution U(t,r) on the individual-area tangent,
+      with norm at most exp(integral C_s). The return map is symplectic, fixes
+      phase and common translation, preserves total energy and impulse
+      covectors, and induces a bounded map on
+      (ker dH_c intersect ker dP)/span(v_phase,v_z).
+    exact_limits: >-
+      The bound may deteriorate as epsilon tends to zero. It is a one-period
+      bound, not a spectral-unit-circle, power-bounded, or nonlinear orbital
+      stability theorem. It assigns no algebraic multiplicity at multiplier
+      one without an isolated Fredholm spectral point.
+
+registered_but_not_needed_for_disjunctive_target:
+  - id: B
+    target: quantified filament-to-patch operator-norm Floquet transfer
+    status: not_activated
+    reason: >-
+      Route A directly constructed the requested actual full-contour
+      propagator. Route B remains a possible strengthening route for a
+      uniform small-core or repeated-period estimate, not a substitute used
+      in the present verdict.
+
+licenses_earned:
+  - Actual full two-label, non-reversible contour Jacobi propagator through one period.
+  - Exact retention of both self and cross interaction operators and all first modes.
+  - Exact individual-area tangent and intrinsic four-center plus shape chart.
+  - Exact symplectic monodromy and conserved phase/translation/energy/impulse flag.
+  - Bounded reduced one-period monodromy with an explicit Gronwall bound.
+
+remaining_dependency: >-
+  Derive a reduced Krein/resolvent separation or a modulated normal form that
+  controls powers of M_red. This requires upgrading the source periodic
+  symplectic conjugations to the full independent-label IVP while retaining
+  first-mode/center cross blocks; the present one-period bound alone is not
+  restoring stability.
+
+does_not_license:
+  - spectral Floquet stability or power boundedness
+  - nonlinear orbital stability
+  - a differentiable patch period-twist family across the Cantor set
+  - full three-dimensional or swirl stability
+  - helicity, intrinsic spin, quantum spin, electron or neutrino identification
+  - parent completion or global no-go

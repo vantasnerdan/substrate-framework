@@ -1,0 +1,103 @@
+attempt: P253/0091
+reviewer: particle-balance-review
+review_type: independent_non_author_final
+activation:
+  readme_sha256: 9dbd1057bd928c75ec3252ec880be860f15a6af448f30f3057853403711998ec
+  schema_exit: 0
+integrity:
+  target_authorship: false
+  target_implementation: false
+  excluded_0088_opened: false
+  excluded_0089_evidence_opened: false
+  production_numerics_run: false
+  unchanged_oracle_rerun: false
+  bounded_correction_required: true
+  bounded_correction_status: complete_passed
+bounded_correction:
+  receipt_sha256: 0a82e8be80ed32caa2d7b8338e0f1740fd2807dbd4f4c288c945e4c13b5a632f
+  derivation_post_sha256: c2c39e2ef0585647dfe3d3238c9c2999cf6bbe970389df8528706697985b0360
+  source_audit_post_sha256: 43140e6eecfe2411fd7b31f550eaba6416ac040d6babdbebe1077c74305a789e
+  result_post_sha256: 4a5ff2e67ea6d3713dede6fd269eb4402ac8d5e9c1973c338376546578f87b3c
+  validation_post_sha256: a5cd1523bc6c653d5902577a68159de8196645125f173517de1927323436a2ea
+  completion_receipt_post_sha256: ccb6a22ed484cc1389b4ad7e768d6f69a59ff4a400ebf66dd8ea2103575c17e6
+  manifest_post_sha256: 71f49aa3c3b8d4f1fd3b28a975c397be54732b5d95c392649561084039da9678
+  equations_api_verifier_changed: false
+  oracle_rerun: false
+verdict_units:
+  A_neutral_source_and_outgoing_normalization:
+    verdict: established_as_stated
+    established:
+      - literal_or_integrably_derived_zero_mean_oscillatory_charge
+      - retarded_boundary_value_sign
+      - positive_outgoing_power_with_exact_prefactor
+      - real_phasor_no_double_counting
+    domain:
+      - omega_nonzero
+      - carrier_strictly_subluminal
+      - charge_and_flux_integrable_for_derived_zero_mean_or_zero_mean_assumed
+      - weighted_current_trace_class
+  B_shell_trace_and_Gaussian:
+    verdict: established_as_stated
+    established:
+      - full_shell_gradient_and_positive_radial_root
+      - exact_coarea_sphere_weight
+      - H1_to_shell_L2_trace
+      - exact_Gaussian_curl_current_power
+  C_conserved_switch_and_late_field:
+    verdict: established_for_smooth_declared_source_class
+    established:
+      - exact_aJ_plus_a_prime_K_conservation
+      - full_real_current_F_T_definition
+      - exact_late_transverse_free_field_energy
+    boundary:
+      - zero_mean_rho_and_weighted_PT_K_are_separate_hypotheses
+      - no_carrier_specific_current_or_resonance
+  D_plateau_endpoint_and_moving_flux:
+    verdict: smooth_plateau_and_finite_volume_established_after_correction
+    established:
+      - exact_resonant_pushforward_density
+      - rectangle_first_correlation_moment_remainder
+      - fixed_ramp_JK_KK_and_conjugate_uniform_bounds
+      - E_late_equals_T_P_out_plus_O_1_under_explicit_norms
+      - exact_finite_moving_volume_relative_flux_balance
+    open:
+      - sharp_switch_regularized_endpoint_energy
+      - infinite_world_tube_to_late_field_equivalence
+  E_reciprocal_factor_two:
+    verdict: exact_conditional_identity_established
+    established:
+      - amplitude_width_equals_power_over_twice_mode_energy
+      - fractional_energy_decay_rate_is_twice_amplitude_width
+    open:
+      - reciprocal_mode_equation_and_Feshbach_closure
+      - resonance_pole_and_real_shift
+      - physical_KKS_action_and_actual_current_trace
+  F_interpretation_boundary:
+    verdict: established_boundary
+    does_not_supply:
+      - autonomous_reset_or_Born_rule
+      - exchange_or_statistics_character
+      - action_or_charge_selection
+      - particle_P4_P5_electron_or_neutrino_result
+      - bare_Euler_finite_speed_or_stability_theorem
+strongest_exact_result: >-
+  Corrected 0090 proves the exactly normalized nonnegative outgoing Maxwell
+  power of a localized conserved subluminal comoving prescribed current, its
+  exact shell/coarea and Gaussian forms, an exactly conserved smooth switch,
+  and the full-real late-field spectral energy. Under explicit first-moment,
+  endpoint-correlation, and finite-energy hypotheses it additionally proves
+  E_late(T)=T*P_out+O(1) with a T-independent bound.
+remaining_dependency: >-
+  Construct the actual constrained crossing-mode current with physical KKS
+  normalization, evaluate its transverse shell trace, and build the reciprocal
+  limiting-absorption/Feshbach map. Sharp-switch endpoint energy and the
+  infinite moving-tube limit remain separate analytic routes.
+does_not_license:
+  - actual_Cao_or_analyzer_radiation_rate
+  - reciprocal_damping_or_resonance_without_closure
+  - sharp_switch_endpoint_value
+  - infinite_world_tube_equivalence
+  - autonomous_gate_reset_or_measurement
+  - particle_P4_P5_electron_or_neutrino_conclusion
+parent_campaign_state: active
+exhaustion_claimed: false

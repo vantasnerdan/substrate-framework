@@ -1,0 +1,124 @@
+attempt: P253/0086
+reviewer: particle-balance-review
+review_type: independent_non_author_final
+activation:
+  readme_sha256: ecc0e615d1e9e424c276b35d402398e451353f5e115948f3d16f8989181d0d7e
+  schema_exit: 0
+  precision_receipt_sha256: 1a2e98eb6ab04bda778113c2f83860aa39a484be7a43a17134473d28be9fbe14
+integrity:
+  target_authorship: false
+  target_implementation: false
+  valid_activation_preceded_target_body_inspection: true
+  excluded_0087_opened: false
+  production_numerics_run: false
+  unchanged_oracle_rerun: false
+  bounded_correction_required: true
+  bounded_correction_status: complete_passed
+bounded_correction:
+  unit: E_Maxwell_Fredholm_essential_inclusion
+  receipt_sha256: 03521c18bb669f4f92690a5a0a88288ba9ceff76055cfbd51416b46b22253f88
+  derivation_post_sha256: 3bca39e05d66891d5392390f371a84a7c748893f2fe2c5dec915523a9c67a01e
+  source_audit_post_sha256: fa0e570fea2554354e50d4340b1884f769cadb7de62785eb0e2dc68189648f37
+  result_post_sha256: 7fb6c0af9a7530506471c1f69a3fe271c09bd4792ec95c32cc8ad85eb264d299
+  validation_post_sha256: 1cffd58483b871d5a8f043bf9dcfd166ca4dc768ac210e8eab9cf4600a9cb85b
+  completion_receipt_post_sha256: c1ab59b14fdb1f89a2800f139ffe1348d1048b393796e39980659207e7955dfd
+  manifest_post_sha256: 78cbfcaa335495d35b3804d74e268a8ce5ecedb2c2d91602b1d66ceddaf4fbe6
+  manifest_entries_match_disk: true
+  equations_api_tests_or_oracle_changed: false
+source_applicability:
+  cao_2206_10165v2:
+    pdf_sha256: 6d90be6b7aab2ea7d92dba843b06e72e319cad50b0a2e39cfe5589cf6aa528ca
+    supported:
+      - axisymmetric_rearrangement_functional_and_fluid_sign
+      - axisymmetric_symmetry_boundary
+    not_supported:
+      - Maxwell_radiation_or_material_tag
+      - joint_constrained_Hessian
+      - coupled_graph_domain_or_essential_spectrum
+  charged_branch_0080_0084:
+    review_sha256: 3fb7d2a69489668f6168d7f57eb9b4e86e35621064dd5f55172ca24270279aac
+    verdicts_sha256: 7793688a23156d1b015ed82505f5e48b88223e19e8a36563c2f57ef63f0a74c7
+    consumed_scope: finite_window_uniformly_subluminal_branch_with_O_g2_fluid_and_O_g_fields
+verdict_units:
+  A_field_square_and_Schur:
+    verdict: established_as_stated
+    established:
+      - exact_positive_subluminal_comoving_Maxwell_square
+      - exact_Gauss_divB_anisotropic_Hminus1_charge_form
+    boundary: nonlocal_infinite_rank_O_g2_form_not_positive_Sobolev_tag_control
+  B_common_g_negative_DA_sector:
+    verdict: established_as_stated
+    statement: >-
+      For each sufficiently small fixed nonzero coupling on the reviewed
+      charged branch, one common finite-codimension closed dynamically
+      accessible tail is strictly negative for every nonzero finite
+      combination.
+    boundary: infinite_negative_index_not_unbounded_below
+  C_positive_Maxwell_sector:
+    verdict: established_as_stated
+    statement: >-
+      The constrained tangent contains an infinite-dimensional compact
+      toroidal-electric sector on which the full Hessian is strictly positive
+      after the finite slice rows are removed.
+  D_tag_locking:
+    verdict: established_at_local_regular_band_scope
+    domain: zeta_times_zeta_prime_nonzero
+    boundary:
+      - no_center_critical_level_support_edge_or_exterior_extension
+      - no_all_time_global_tag_persistence
+  E_Maxwell_essential_spectrum:
+    verdict: established_as_stated_after_bounded_correction
+    statement: >-
+      Compact-curl expanding plane-wave graph sequences, with a separate
+      low-frequency construction at zero, prove iR is contained in the
+      Fredholm essential spectrum of the full constrained localized coupled
+      generator.
+    boundary:
+      - inclusion_not_equality
+      - no_absence_of_embedded_point_spectrum
+      - no_joint_spectral_gap
+  F_Doppler_shell_and_dark_current:
+    verdict: established_at_necessity_scope
+    established:
+      - exact_star_shaped_radiation_shell
+      - exact_positive_coarea_weight
+      - nonzero_transverse_shell_trace_excludes_prescribed_L2_periodic_field
+    boundary:
+      - shell_vanishing_not_sufficient_for_BIC
+      - no_limiting_absorption_or_resonance_width
+      - no_Fermi_golden_rule_sign
+  G_interpretation:
+    verdict: established_boundary_theorem
+    established:
+      - infinite_positive_and_negative_index_strong_saddle
+      - imaginary_internal_modes_embedded_in_joint_continuum
+    boundary:
+      - no_spectral_or_nonlinear_instability_from_Hessian_alone
+      - no_exclusion_or_construction_of_BIC
+      - charged_extension_not_bare_Euler
+strongest_exact_result: >-
+  The final corrected 0085 construction has an exact positive subluminal
+  Maxwell block and positive anisotropic H-minus-one charge Schur form, but
+  every sufficiently small charged branch has infinite positive and infinite
+  dynamically accessible negative Hessian index. Its full localized coupled
+  generator has iR in the Fredholm essential spectrum, and a prescribed
+  localized periodic source must obey the exact transverse dark-current
+  condition on its real radiation shell.
+remaining_dependency: >-
+  Evaluate the shellwise transverse current of the actual 0079 crossing modes
+  with physical KKS normalization, then construct the weighted
+  limiting-absorption and Feshbach map needed to derive or refute a leakage
+  coefficient. The reduced steady low block and a modulation theorem with
+  outgoing radiation remain independent open constructions.
+does_not_license:
+  - one_sign_or_finite_Morse_index_coercivity
+  - spectral_or_nonlinear_instability
+  - essential_spectrum_equality_or_absence_of_embedded_modes
+  - source_specific_dark_mode_or_signed_leakage_rate
+  - L2_or_positive_Sobolev_tag_control_from_Coulomb_energy
+  - action_or_charge_quantization
+  - Born_reset_exchange_or_particle_dynamics
+  - bare_Euler_U1_adoption
+  - P4_P5_electron_or_neutrino_completion
+parent_campaign_state: active
+exhaustion_claimed: false

@@ -1,0 +1,140 @@
+schema_version: 1
+attempt: P253/0069
+reviewer: particle-balance-review
+review_kind: joined_fixed_claim_non_author_review
+independence:
+  non_author: true
+  non_implementer: true
+  target_owner: root
+  target_units:
+    - P253/0064
+    - P253/0065
+  excluded_attempts:
+    - P253/0067
+    - P253/0068
+  excluded_claims:
+    - P5 completion or particle/electric-charge conclusion
+    - global charge no-go or exhaustion
+    - quantum or magnetic inference
+
+activation:
+  readme_sha256: 7879bcdc902abc88304b4fd5397e530201e67f43b10529130a2bf0f4a38a282c
+  schema_exit: 0
+  schema_command_sha256: 0b8bcc78ad3e326535d62e436c7e5f623fef1e2c3c8d7c12ef1a792f07e8e1c8
+  schema_stdout_sha256: d7a6df70d40116eccbc5ef95222bcd39f56874086284528ed1e49c9c2cd6676f
+  schema_stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  schema_exit_sha256: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+
+unit_A_0064:
+  unit_verdict: established
+  review_status: corrected_exact_compact_and_local_obstructions_established_noncompact_escape_preserved
+  compact_vorticity_multipoles:
+    route_verdict: established
+    statement: >-
+      Smooth compact divergence-free vorticity has zero total vorticity,
+      antisymmetric first moment fixed by impulse, and first permitted r^-3
+      velocity coefficient. Two-carrier kinetic cross energy has first
+      permitted d^-3 coefficient and translation derivative d^-4.
+    nonvanishing_boundary: coefficients are leading only when displayed impulse contractions are nonzero
+  weighted_pressure:
+    route_verdict: established
+    statement: >-
+      Physical pressure has zero source monopole and dipole and first permitted
+      r^-3 trace-free kinetic quadrupole under the stated weighted moments and
+      decay; stationary compact velocity has constant exterior pressure.
+    density_sign: physical_rho_and_negative_virial_sign_correct
+  smooth_radial_flux_monopole:
+    route_verdict: refuted
+    mechanism: nonzero_flux_requires_delta_source_and_has_divergent_core_energy
+    boundary: isotropic_radial_flux_not_all_zero_flux_r_minus_2_tails
+  local_scalar_transverse_source:
+    route_verdict: refuted
+    mechanism: rotation_covariance_makes_source_longitudinal_and_P_T_annihilates_it
+    scope: linear_translation_rotation_covariant_nonzero_wavevector_with_zero_mode_tensor_checked
+  prescribed_collective_vector_response:
+    route_verdict: established
+    scope: reciprocal_oriented_quadratic_Green_problem_only
+    missing_construction: autonomous_carrier_action_constitutive_source_smooth_self_energy_and_Noether_recoil
+  noncompact_finite_energy_escape:
+    route_verdict: established
+    datum: u_a=(a_cross_x)/(1+abs_x_squared)^(3/2)
+    class: smooth_divergence_free_Hs_for_every_finite_s_at_least_zero_and_local_Euler_for_s_greater_than_5_over_2
+    properties:
+      - pointwise zero spherical flux
+      - velocity O(r^-2)
+      - vorticity O(r^-3) and generically not L1
+      - L2 norm squared pi^2 times abs(a)^2 over 2
+      - oriented d^-1 kinetic cross term with coefficient 2*pi*rho*(a_dot_b+(a_dot_n)*(b_dot_n))
+    does_not_supply:
+      - isotropic signed scalar charge
+      - Gauss source or conserved electric current
+      - persistent carrier or all-time tail
+      - P5
+
+unit_B_0065:
+  unit_verdict: established
+  review_status: route_scoped_topology_helicity_and_multiplier_results_established
+  point_puncture_flux:
+    route_verdict: established
+    cohomology: H1_zero_H2_real_on_R3_minus_point
+    energy_bound: 2*pi*rho*q^2*(1/epsilon-1/R)
+    whole_space_smooth_charge_route: refuted
+  loop_circulation:
+    route_verdict: established
+    statement: meridional_H1_period_and_smooth_finite_core_with_first_permitted_impulse_dipole_far_field
+    Coulomb_route: refuted_for_compact_tube
+    nonvanishing_boundary: d^-3_is_leading_only_when_impulse_contraction_is_nonzero
+  helicity:
+    route_verdict: established
+    identity: delta_H=2_pairing_of_B_omega_with_delta_omega
+    scope: decaying_whole_space_paired_Hodge_domain_and_smooth_Euler_conservation_hypotheses
+    automatic_Gauss_source: refuted
+  linear_nonlocal_multiplier:
+    route_verdict: established
+    obstruction: every_nonzero_k_isotropic_scalar_to_vector_symbol_is_longitudinal
+    boundary:
+      - contact distributions at k=0 remain unclassified
+      - nonlinear or configuration-dependent maps remain unclassified
+      - internal orientations and broken backgrounds remain live
+  strongest_positive: >-
+    Signed puncture flux has a sharp class-wide singular-energy lower bound;
+    loop circulation and helicity are genuine but distinct internal labels;
+    and the homogeneous linear isotropic scalar multiplier cannot source the
+    transverse channel.
+
+joined_verdict:
+  route_verdict: established
+  strongest_supported_statement: >-
+    The compact-vorticity, weighted-pressure, puncture, loop, helicity and
+    linear scalar-to-transverse calculations are exact at their stated
+    domains. They exclude their frozen scalar-Coulomb routes but not the full
+    smooth finite-energy Euler class. An explicit smooth noncompact-vorticity
+    zero-flux datum instead has an oriented d^-1 kinetic cross term and opens a
+    positive tail route without supplying scalar electric charge.
+  next_dependency: >-
+    Construct the noncompact oriented tail on a persistent carrier with finite
+    same-field action/current and test whether an actual internal symmetry
+    yields an isotropic signed observable; keep contact-zero-mode and nonlinear
+    topological maps as separate candidates.
+
+correction:
+  status: passed
+  receipt_sha256: 68be057ffcc5fac71f5bc86f6459b3a46bf6f6b1bf49594802987a77e163fc88
+  requested_repairs:
+    - restrict broad smooth-localized no-Coulomb headline to compact-vorticity and finite-moment classes
+    - preserve the noncompact finite-energy oriented d^-1 escape route
+    - qualify first-permitted coefficients as leading only when nonzero
+  requested_repairs_supported: true
+  stale_claim_scan: passed
+  unchanged_oracle_rerun_by_reviewer: false
+  second_substantive_pass_performed: false
+  additional_correction_needed: false
+
+post_hashes:
+  P253_0064_README: 3ea0f3b8f0b1697032f240b36f48e94b3f278a0160780e616e1c841199e34e7d
+  P253_0064_derivation: 4e2babcb76e06a0b9d53e67697dd3c861ddeadf36fabbf88ab23fb82a3386add
+  P253_0064_result: a118834a38c970581531d54b500866aa4bcf1fc3a7294f107b91068d69cb9232
+  P253_0065_derivation: 71d137d5aa14737609d3484781455623e937f59c4ef4a0c61dd0b1ea88fbeca0
+  P253_0065_result: 9740bb5b86c17bcbaaeddf94a144e084ee2b8e8181e329b99138abd15194ff56
+
+exhaustion_claimed: false

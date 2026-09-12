@@ -1,0 +1,9 @@
+# P253/0007: particle-facing tests of the actual Euler carriers
+
+This root attempt addresses P3/P4/P5/P6 using exact invariant and asymptotic calculus, without empirical comparison. Before new source bodies, freeze three tests: compact-vorticity far-field velocity and mutual kinetic energy with all impulse/density/sign factors; angular momentum/helicity and physical rotation orbit of the axisymmetric no-swirl R1 carrier; linear Euler about a quiescent homogeneous background and the existence of a finite-frequency transverse propagation band.
+
+These tests determine which literal electron/neutrino identifications a route supplies. A leading asymptotic interaction is reported with its moment/support/error hypotheses; an exact zero-spin or zero-frequency result applies only to the declared carrier/background. Neither constitutes a global particle no-go. In particular electric charge is not defined in advance as circulation, and a dipole velocity field is not assumed to be the electromagnetic field.
+
+Competing continuations are intrinsic swirl/twist or a physically nontrivial internal/collective sector on the same Euler family, and propagation/interactions through a structured energetic Euler background. If an initial test excludes a direct identification, expand these candidates with its precise mechanism; foundation and quantum postulates remain separately declared. Source theorem inputs come from0002/0003 and primary hydrodynamics after schema activation. Exact moments, variations and Fourier symbols are the oracle; no numerical small-force or soft-mode estimate is licensed here.
+
+The parent remains both electron and neutrino mechanisms, electron first. Own0007 only plus a separately justified additive reusable API after canonical inventory. Root records source assumptions, maximum verdict and next executable construction.

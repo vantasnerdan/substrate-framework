@@ -1,0 +1,109 @@
+attempt: P253/0058
+status: route_evaluation_complete_positive_object_open
+objective: nonlinear_same_leaf_rotating_cao_branch
+
+dependency_status:
+  cao_carrier:
+    status: source_supported
+    scope: smooth_compact_axisymmetric_translating_ring
+  P253_0052_cluster:
+    status: author_stage_conditional_pending_0057
+  P253_0054_HJ2:
+    status: author_stage_conditional_pending_0057
+    inheritance: none_into_nonlinear_range
+
+exact_results:
+  rotating_equation:
+    verdict: established
+    statement: >-
+      On R3 with compact vorticity and the global circulation/decay row,
+      curl((v-c e_z-Omega R) cross omega)=0 is equivalent to the physical
+      rotating velocity equation and to commutation of relative velocity and
+      vorticity.
+  same_leaf_carrier_map:
+    verdict: established
+    statement: >-
+      Every same-leaf candidate omega_g=g_*omega_0 solves the rotating
+      vorticity equation exactly iff its pulled-back relative velocity lies in
+      Cent(omega_0), with whole-space Biot-Savart and exterior traces retained.
+  cao_centralizer:
+    verdict: established
+    statement: >-
+      For omega_0=zeta(r,z) partial_theta with zeta>0, the nonzero azimuthal
+      harmonic centralizer matrix has determinant i*n^3*zeta^3.  Hence the
+      licensed commuting/profile variable has no nonaxisymmetric core mode.
+  universal_structural_transparency:
+    verdict: refuted
+    mechanism: >-
+      An exact divergence-free quadratic Fourier interaction has W dot k=0
+      and nonzero numerator (1,-1,0).  Euler curl and incompressibility alone
+      do not supply transport-factor divisibility.
+    scope: universal_algebraic_identity_only
+  dynamically_accessible_symbol:
+    verdict: established
+    statement: >-
+      The principal DA symbol is i*((k dot omega_0)xi-(k dot xi)omega_0), so
+      divergence-free DA generators span the transverse plane when
+      k dot omega_0 is nonzero.
+    does_not_license: bounded_right_inverse_for_full_critical_operator
+  full_hodge_critical_trace:
+    verdict: blocked
+    missing_construction: >-
+      A block-conjugation or limiting-absorption reduction of
+      -[W_0,eta]-[BiotSavart eta,omega_0] on the actual Cao DA graph domain,
+      including its adjoint polarization, interface, circulation, collar and
+      exterior rows.  Until then N(I_*) is not the exact physical trace.
+  reversibility_and_action_sign:
+    verdict: established_kinematically
+    statement: >-
+      The physical reflection is an Euler reverser in the translating frame,
+      and X_J=-ell*a*q_s gives J'(a)=ell*sigma*a and
+      J(a)=J(0)+(ell*sigma/2)a^2+O(a^3).
+  nonlinear_critical_layer_continuation:
+    verdict: conditional_generic_normal_form_and_exact_residual_formulation
+    statement: >-
+      Conditional on the missing full-Hodge generalized-adjoint and symplectic
+      reduction, the generic pendulum normal form has half-width
+      2*sqrt(abs(epsilon*V_star/alpha)) and frequency
+      sqrt(abs(alpha*epsilon*V_star)). The exact carrier-map residual is
+      identified, but no Euler inner layer is constructed.
+    missing_construction: >-
+      Compute the Cao full-Hodge limiting-absorption adjoint mode and physical
+      symplectic measure, derive alpha and V_star, then close the
+      sqrt(epsilon) derivative/Bogovskii ledger and construct a compatible
+      centralizer topology before inner/outer matching and convergence.
+
+route_verdicts:
+  analytic_KKS_LS:
+    verdict: blocked
+    reason: universal_divisibility_refuted_and_exact_cao_adjoint_trace_missing
+  reversible_invariant_manifold:
+    verdict: blocked
+    reason: same_embedded_full_hodge_range_not_inverted
+  same_leaf_profile_range:
+    verdict: refuted_as_arbitrary_nonaxisymmetric_trace_knob
+    retained_positive: exact_axisymmetric_centralizer_carrier_map
+  nonlinear_inner_critical_layer:
+    verdict: active_positive_continuation
+    retained_positive: conditional_generic_scale_and_exact_global_residual_map
+
+frozen_success_contract:
+  exact_rotating_branch: open
+  convergence_through_all_critical_harmonics: open
+  global_pressure_and_exterior_reconstruction_on_branch: open
+  restoring_same_leaf_neighborhood: open
+  particle_or_quantum_inference: excluded
+
+strongest_exact_verdict: >-
+  0058 establishes the exact same-leaf carrier-map/centralizer representation,
+  physical reverser/action sign, DA symbol, and the exact residual formulation
+  for a conditional critical-layer candidate.  It refutes universal Euler-bracket divisibility and arbitrary
+  nonaxisymmetric centralizer trace control.  It does not construct the frozen
+  rotating Cao branch because the actual full-Hodge adjoint critical trace and
+  nonlinear inner/outer matching remain unproved.
+
+next_dependency: >-
+  Derive the Cao harmonic full-Hodge limiting-absorption/adjoint trace on the
+  reviewed fixed DA domain, evaluate its resonant coefficient V_star from the
+  whole-space Green operator, and solve the volume-preserving pendulum-layer
+  carrier-map matching with a convergent tame inner/outer scheme.

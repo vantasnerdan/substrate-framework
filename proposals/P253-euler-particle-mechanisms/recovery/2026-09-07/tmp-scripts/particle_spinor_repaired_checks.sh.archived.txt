@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /tmp/substrate-particles || exit 1
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python -m pytest -q tests/test_euler_field_maps.py > proposals/P253-euler-particle-mechanisms/attempts/0013/spinor-pytest-repaired.stdout 2>&1
+echo $? > proposals/P253-euler-particle-mechanisms/attempts/0013/spinor-pytest-repaired.exit

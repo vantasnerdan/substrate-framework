@@ -1,0 +1,18 @@
+# Primary-source audit and receipts
+
+Full bodies were cached outside the campaign tree in `/tmp/primary-source-cache/P253-0010`.
+The locations below are theorem/equation locations in the cited version, not search-result
+snippets.
+
+| Source | Version, hash, exact location | Imported fact and boundary |
+| --- | --- | --- |
+| Cao--Zhan, *On the steady axisymmetric vortex rings for 3-D incompressible Euler flows* | [arXiv:2009.13210v2](https://arxiv.org/abs/2009.13210), PDF SHA-256 `d5da2b24ed5822e52a1d7a30f0dc3dd23289db15f91d1c2e133f12807ab02aed`; Theorem 1.3, PDF pp. 6--7; discussion PDF p. 8; variational problem and Lemmas 2.3--2.4, PDF pp. 10--12 | Exact axisymmetric-with-swirl fields, compact core, diameter and ring-radius asymptotics, far uniform velocity, traveling-wave interpretation, variational maximizer and first variation. The authors explicitly leave stability/nonstability and local uniqueness for future work; no stability theorem is imported. |
+| Gavrilov, *A steady Euler flow with compact support* | [arXiv:1810.08020v1](https://arxiv.org/abs/1810.08020), PDF SHA-256 `fcaca85faa77e3876b11d16718037169fc026112dfd3e4248e03e963a0ebc3c9`; theorem on PDF p. 1; local field (6) and cutoff argument on PDF pp. 5--6; generalized-Beltrami identities on PDF pp. 6--7 | A nonzero smooth steady Euler velocity compactly supported in an arbitrarily thin toroidal neighbourhood, with both meridional flow and swirl. The cutoff `u_tilde=omega(p)u`, `d p_tilde=omega(p)^2 dp` is exact because `u dot grad p=0`. No orbital-stability statement is present. |
+| Constantin--La--Vicol, *Remarks on a paper by Gavrilov...* | [arXiv:1903.11699v1](https://arxiv.org/abs/1903.11699), PDF SHA-256 `c35d09c4ff8b033a8142f43a072ecdf6a4b1d1215b2e50bfb1f3116004a85a42`; equations (7)--(23), PDF pp. 2--4; Theorems 1--2, PDF pp. 1 and 10 | Independent Grad--Shafranov reconstruction of the compact-support mechanism and its actual meridional-plus-swirl ansatz. It supplies no stability theorem and its Theorem 2 template is only Holder at the excluded centre before localization; the localized theorem is the smooth compact field used here. |
+| Enciso--Peralta-Salas, *Existence of knotted vortex tubes in steady Euler flows* | [arXiv:1210.6271v2](https://arxiv.org/abs/1210.6271), PDF SHA-256 `309808ccd801552587a04a13f8cea3a85894511c3387a3f4fa8c5eb9e6d5e738`; Theorem 1.1, PDF pp. 4--5 | Prescribed knotted/linked vortex tubes in a global Beltrami field, with `|D^j u(x)|<C_j/|x|`. Its stated stability is robustness of vortex-line/KAM structure and Lyapunov stability of an invariant-tube boundary under the fixed vector field, not nonlinear Euler orbital stability. The `1/r` bound does not establish finite energy or finite angular momentum. |
+| Turkington, *Vortex Rings with Swirl: Axisymmetric Solutions of the Euler Equations with Nonzero Helicity* | [DOI 10.1137/0520005](https://doi.org/10.1137/0520005); SIAM landing/abstract accessible, full body HTTP 403 | Metadata/abstract establish the paper's subject and nonzero-helicity scope. The byline is Bruce Turkington alone. All theorem-level statements attributed to this family below come from Cao--Zhan's accessible theorem and their explicit discussion of Turkington's generator, not from an unseen paper body. |
+
+The source inventory therefore supports two exact positive classical carriers: Cao--Zhan gives a
+finite-energy translating disturbance with intrinsic swirl, while Gavrilov gives a smooth compactly
+supported steady meridional-plus-swirl field. The prescribed-knotted global Beltrami construction is
+a topology comparator, not a finite-action substitute.

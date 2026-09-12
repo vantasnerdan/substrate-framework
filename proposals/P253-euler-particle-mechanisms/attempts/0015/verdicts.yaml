@@ -1,0 +1,79 @@
+attempt: P253/0015
+candidate: Garcia-Hassainia-Hmidi periodic pair
+active_obligation: R1 restoring/interaction transfer
+routes:
+  - id: A
+    target: autonomous energy-impulse maximizer for the actual labeled periodic pair
+    route_verdict: refuted
+    evidence_scope: EXACT_FIRST_VARIATION
+    mechanism: >-
+      On the product KKS leaf, D(E-cP)[delta_chi q] is minus the
+      distributional pairing of chi with the translating-frame state
+      velocity. The source half-period radial exchange proves that velocity
+      is nonzero, so an admissible generator has nonzero first variation.
+      A conserved value along one trajectory is not leafwise criticality.
+  - id: B1
+    target: local KKS action whose critical loop is the actual published pair
+    route_verdict: established
+    evidence_scope: EXACT_LOCAL_VARIATIONAL_CONSTRUCTION
+    strongest_result: >-
+      With i_X Omega=dH and -dTheta=Omega, the
+      minus-symplectic-area-minus-integrated-(E-cP) action has first variation
+      integral -Omega(eta,qdot)-D(E-cP)[eta]. The published
+      translating-frame labeled pair is a closed critical loop because its
+      source Euler equation is qdot=X_(E-cP).
+  - id: B2
+    target: sign-definite restoring Hessian of the raw periodic-loop action
+    route_verdict: refuted
+    evidence_scope: EXACT_HIGH_TIME_FREQUENCY_TEST
+    mechanism: >-
+      On any symplectic two-plane, periodic test loops e cos(nt) plus or minus
+      f sin(nt) give opposite principal Hessian values plus or minus nT,
+      while spatial Hessian terms stay bounded in n. Finite-dimensional
+      symmetry constraints do not remove this strong indefiniteness.
+  - id: B3
+    target: full labelwise Jacobi equation and symmetry-generated periodic modes
+    route_verdict: established
+    evidence_scope: EXACT_LINEARIZATION_AND_KKS_IDENTITY
+    strongest_result: >-
+      The full two-label linearization retains the total induced stream
+      function, preserves the KKS pairing on smooth solutions, and has exact
+      periodic Jacobi fields from time phase and common axial translation.
+      A bounded monodromy realization is not included in this verdict.
+  - id: B4
+    target: source reduced-filament return map in its amplitude direction
+    route_verdict: established
+    evidence_scope: EXACT_SOURCE_MONODROMY_IDENTITY_FILAMENT_ONLY
+    strongest_result: >-
+      Differentiating x(T(lambda);lambda)=x(0;lambda) gives
+      (M-I)v_lambda=-T'(lambda)v_phase. Source period twist makes T' positive
+      for small epsilon, so the filament return map has a genuine unit
+      multiplier Jordan chain. This is not transferred to the full patch.
+  - id: B5
+    target: full patch Floquet or nonlinear orbital restoring estimate
+    route_verdict: blocked
+    evidence_scope: NAMED_ANALYTIC_REMAINDER
+    missing_construction: >-
+      Construct a bounded initial-value contour propagator on two independent
+      non-reversible source patch tangents, reduce phase/translation and their
+      energy/impulse companions, then upgrade the source periodic
+      diagonalization to an all-period reduced propagator bound with nonlinear
+      tame remainder control.
+licenses_earned:
+  - Exact actual-pair labeled leaf and conserved translating functional.
+  - Exact obstruction to autonomous maximum inference from periodic existence.
+  - Exact local KKS critical-loop construction on the actual patch orbit.
+  - Exact full Jacobi equation with phase and translation periodic modes.
+  - Exact filament period-twist Jordan identity identifying the amplitude companion.
+remaining_dependency: >-
+  A full-source-space bounded monodromy and reduced transverse estimate for
+  the actual patch orbit; the source's gauge-fixed approximate inverse of a
+  periodic invariance equation is insufficient.
+does_not_license:
+  - spectral Floquet stability of the full patch pair
+  - nonlinear orbital stability of the full patch pair
+  - a positive raw action Hessian
+  - a Cao steady-ring compactness transfer
+  - full three-dimensional or swirl stability
+  - helicity, intrinsic spin, quantum spin, electron or neutrino identification
+  - parent completion or global no-go

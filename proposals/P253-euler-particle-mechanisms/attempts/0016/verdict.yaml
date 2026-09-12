@@ -1,0 +1,126 @@
+attempt: '0016'
+reviewer: particle-balance-review
+reviewer_independence:
+  authored_0006: false
+  implemented_0006: false
+  authored_0012: false
+  implemented_0012: false
+target_kind: single_joined_fixed_theorem
+base_release: v0.183.0
+base_commit: b6fc902a0942d07996f12a81028fbd3f7c909a43
+activation_schema_exit: 0
+route_verdict: established_after_bounded_correction
+review_status: audited
+maximum_verdict: exact_symbolic_and_primary_source_applicability_verified
+epistemic_status: proposed
+strongest_positive_result: >-
+  For each sufficiently small Euler-scaled Cao polynomial carrier, two
+  identical equal-radius and equal-intensity axial translates admit a nonempty
+  open set relative to a support-controlled C1 space of smooth
+  weighted-volume-preserving same-leaf diffeomorphisms, containing genuinely
+  deformed nonzero-deficit pairs. Under the exact fixed-carrier deficit/modulus
+  inequality, the one full nonlinear axisymmetric no-swirl Euler evolution
+  keeps both complete labeled supports in disjoint Butta-Marchioro radius-R
+  tubes and each label Cao-orbitally close for 0<=t<=T_R. The source T_R is
+  positive and concentration-independent; the modulus and allowed initial
+  neighborhood are not proved uniform in concentration.
+established_components:
+  one_common_full_nonlinear_euler_state: true
+  exact_deficit_identity: delta_sum_t=delta_0+E12_t-E12_0
+  exact_cross_bound: E12_t<=C_G*P_total^2/ell^3
+  individual_impulse_exchange_and_total_conservation: true
+  qualitative_cao_modulus: positive_for_each_fixed_carrier_radius_and_eta
+  exact_euler_scaling: true
+  butta_marchioro_equal_radius_transfer: true
+  full_support_separation: true
+  finite_time_orbital_splice: true
+minimum_correction:
+  status: applied_and_checked
+  mechanism: >-
+    Support and gap constraints are not open in the full Cao L1+L2+P
+    topology because an arbitrarily small rearranged piece can be moved outside
+    the initial tubes. A one-parameter deformation proves nonemptiness, not
+    that stronger openness; moreover a nontranslation contour-tangent
+    diffeomorphism can leave the carrier unchanged.
+  corrected_scope: >-
+    Use the relative topology induced by a C1-open support-controlled class of
+    smooth dnu-preserving diffeomorphisms with strict tube margin, centered at
+    an actual image outside the axial-translation orbit. The strict invariant,
+    support and deficit inequalities are open in that class.
+  changes_equations_or_api: false
+source_quantifiers:
+  concentration_parameter: rho_delta_sequence_from_scaled_Cao_family
+  coarse_radius: each_fixed_R_with_0<R<min(r0,d/2)
+  threshold: exists_rho_R_positive
+  time: exists_T_R_positive_independent_of_rho
+  support: complete_labeled_support_in_disjoint_radius_R_disks
+  limiting_motion: equal_reference_velocities_and_zero_limiting_relative_velocity
+  not_established: exact_finite_core_centroid_ODE_or_all_time_restart
+density_and_domain:
+  domain: open_axisymmetric_half_plane_away_from_axis_initially
+  measure: dnu=r_dr_dz
+  relative_vorticity: xi=omega_theta/r
+  constant_physical_density: common_positive_factor_in_physical_functionals
+  variable_density_claimed: false
+oracle_receipts:
+  checks_rerun: false
+  recorded_0006_checks: 4
+  recorded_0012_checks: 5
+  numerical_production: false
+  small_ratio_skill_binds: false
+  yaml_safe_load: passed
+  scoped_diff_check: passed_without_whitespace_diagnostics
+remaining_dependency: >-
+  Construct a recurrent thin-support bound, invariant pair tube, or genuine
+  pair-orbit compactness/stability theorem that carries the same-family pair
+  past the finite Butta-Marchioro interval. Only after that could persistent
+  relative motion, collision, or exchange questions be addressed.
+does_not_license:
+  - all-time two-ring persistence
+  - quantitative Hessian coercivity or a uniform-in-rho orbital modulus
+  - generic three-dimensional or swirl perturbations
+  - exact finite-core center dynamics, pair potential, or mechanical force
+  - collision or exchange dynamics
+  - scale selection, spin, statistics, charge, or relativity
+  - electron or neutrino identification
+  - parent campaign completion or global no-go
+bibliography_note: >-
+  The frozen README says Article 9; the source receipt and controlling DOI give
+  Journal of Mathematical Fluid Mechanics 22 (2020), article 19. This does not
+  affect the audited body or theorem.
+evidence:
+  review: proposals/P253-euler-particle-mechanisms/attempts/0016/review.md
+  source_0006: proposals/P253-euler-particle-mechanisms/attempts/0006/construction.md
+  source_0012: proposals/P253-euler-particle-mechanisms/attempts/0012/construction.md
+  correction_receipt_0012: proposals/P253-euler-particle-mechanisms/attempts/0012/review-correction-0016.md
+  primary_cao: arXiv:2206.10165v2
+  primary_butta_marchioro: arXiv:1904.04785v2
+reviewed_hashes:
+  frozen_README: 9222b3f38130ce4140edf15569b5a4413446ce9374087aec25cb4e972a219ead
+  construction_0006: c0ec3a813dd1a0df395552584b7e4b2858f4d486d1033684b77d684e1c79e7c5
+  source_receipt_0006: a8e745a436f144620295cba7fff1222ca8ff12bdda71b3f0ae7002f7dd83d071
+  verifier_0006: ad9c74d15dab16c9d41d707069485ffe3783536d81e1b904ce1ee56eee1feb11
+  verifier_output_0006: 47c4ab82e65f9ceb44449732c52c48e66170355f5b94c2ff0456e2332fd38d60
+  construction_0012: 89d7f61eeefb38ece761d5823374c6065c637a54bcc0c94a4648ba5ca3276da3
+  source_receipt_0012: 6ed6776f2354f0e0c18edd8fedfcb1117e0eeae484b1d1af57b70b7ba21c9764
+  verifier_0012: bd2a9023da6c88d7ea6d7e97139ad088db83324c508e447f59ea8230042ef22d
+  verifier_output_0012: 91093dc06de8e483bf7544f2b47c989e7135110f6ab95e5337ab0d9d2590ee82
+  cao_pdf: 6d90be6b7aab2ea7d92dba843b06e72e319cad50b0a2e39cfe5589cf6aa528ca
+  cao_text: aa808fcf435a307c40815d4fdf81d4711c4a2750275e9810fbfc9b501f6085fd
+  butta_marchioro_pdf: bdbc75defd6d5fb230e6784f0bd9566bbac69d2f4e831045d0a56478a86f7fb4
+  butta_marchioro_text: f31552d96296eaaff360893835e2c993f111f9fad24ff534e3825c5b2ae77146
+bounded_correction_check:
+  status: complete
+  conclusions_reopened: false
+  unchanged_oracles_rerun: false
+  corrected_topology: >-
+    Relative openness is in the support-controlled C1 topology of smooth
+    dnu-preserving diffeomorphism images, centered at an actual image outside
+    Sigma; openness in the full Cao L1+L2+P topology is expressly disclaimed.
+  formulas_changed: false
+  source_quantifiers_changed: false
+  bibliography: Journal_of_Mathematical_Fluid_Mechanics_22_2020_article_19
+  corrected_hashes:
+    construction_0012: 1ca6727f1f797a536e224903036a3246cd7b6603b1fc420207222bb2b2464ec7
+    verdicts_0012: 0a42dfdecfd6c369c64fd75dd5b41524480bfb66c0ae0ddea6f6a223d034b83b
+    correction_receipt_0012: 3ef474230e67dc67b8ccf046e20dc595e8bd9a08482fa040b42ef8caf142f25c

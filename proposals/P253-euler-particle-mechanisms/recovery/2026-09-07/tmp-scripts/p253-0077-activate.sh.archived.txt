@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -u
+cd /tmp/substrate-particles
+ATTEMPT=proposals/P253-euler-particle-mechanisms/attempts/0077
+printf '%s\n' 'PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python scripts/validate_repository.py' > "$ATTEMPT/activation-schema.command.txt"
+PYTHONPATH=src /home/dan/substrate-framework/.venv/bin/python scripts/validate_repository.py > "$ATTEMPT/activation-schema.stdout" 2> "$ATTEMPT/activation-schema.stderr"
+status=$?
+printf '%s\n' "$status" > "$ATTEMPT/activation-schema.exit"
+exit "$status"

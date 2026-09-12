@@ -1,0 +1,20 @@
+[PASS] [identity #1] R1a <n eps n> == tr(eps)/3
+[PASS] [identity #2] R1b <n eps^2 n> == tr(eps^2)/3
+[PASS] [identity #3] R1c <(n eps n)^2> == ((tr eps)^2 + 2 tr(eps^2))/15
+[PASS] [identity #4] R2 Q == tr(eps^2)/10 - (tr eps)^2/30
+[PASS] [identity #5] R3 mu_aff = K/10, lam = -K/15
+[PASS] [identity #6] R4 objectivity: W(R^T eps R) == W(eps)
+[PASS] [mutation #1] MA-1 naive gradient form carries skew dependence (detected)
+[PASS] [identity #7] R5 certified form is omega-free
+[PASS] [mutation #2] MA-2 wrong fourth moment changes Q (average audit detects)
+[PASS] [identity #8] R6b-1 linearized route: O(eps^2) response = -(f'/2) tr(eps^2) via det ONLY
+[PASS] [identity #9] R6b-2 exact isochoricity annihilates the route -> dW/deps_dev == 0 (derived)
+[PASS] [mutation #3] R6b-M relaxing exact isochoricity revives a nonzero response (assumption load-bearing)
+[PASS] [identity #10] R6c-v2 real discrimination: derived F-A minus derived wave-gas == K tr(eps^2)/10 (isochoric)
+[PASS] [identity #11] R6a F-A form dies exactly when the memory coupling K is removed
+[PASS] [identity #12] RS slaving: mu_eff = (K/10)(1 - 1/(2 ln0)) — O(1) outer-cutoff sensitivity priced
+[PASS] [identity #13] RB rotation piece separates additively (no deviatoric dependence)
+[PASS] [identity #14] RB2 the dropped rotation piece is a genuine O(eps^2) additive term
+[PASS] [identity #15] R7 pure shear: W == 2*(K/10)*e12^2
+[PASS] [identity #16] R8 mu_aff == Gamma^2 L0 ln(ell/a)/(40 pi) and == K/10 with K = Gamma^2 L0 ln(ell/a)/(4 pi)
+ALL F-A/CONTRAST RECEIPTS GREEN: 16 identity-assertions + 3 mutations = 19 assertions (self-counted).

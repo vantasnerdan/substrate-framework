@@ -1,0 +1,126 @@
+attempt: P253/0015
+audit_date: 2026-09-06
+cache_policy: >-
+  The complete primary-source PDF and extracted text remain in
+  /tmp/p253-primary-source-cache; this attempt records only provenance,
+  short scope descriptions, and original derivations.
+
+sources:
+  - id: GarciaHassainiaHmidi2603.21644
+    role: actual time-periodic two-patch family and its source contour chart
+    title: Time-periodic leapfrogging vortex rings in the 3D Euler equations
+    authors:
+      - Claudia Garcia
+      - Zineb Hassainia
+      - Taoufik Hmidi
+    version: arXiv:2603.21644v1
+    submitted: 2026-03-23
+    abstract_url: https://arxiv.org/abs/2603.21644
+    pdf_url: https://arxiv.org/pdf/2603.21644v1
+    cache_pdf: /tmp/p253-primary-source-cache/GarciaEtAl2603.21644.pdf
+    cache_text: /tmp/p253-primary-source-cache/GarciaEtAl2603.21644.txt
+    pdf_sha256: 7ba22ef57ba9453dd2631c33b1ad094a35ce2be171426cecce80fba8a5cdfac6
+    text_sha256: f6461cfc68e2aa3b08cadc3409a36f4f0267c5a7c73fdb03e46f9636c121c871
+    pdf_pages: 150
+    audit_status: full_body_audited_after_0015_activation
+    page_map:
+      - pages: 3-4
+        content: >-
+          Axisymmetric no-swirl relative vorticity, the change rho=r^2/2,
+          and canonical transport equation (1.3)-(1.4).
+      - pages: 5-7
+        content: >-
+          Filament scaling, common drift, Theorem 1.1, patch amplitudes,
+          periodic boundary profiles, and non-rigid periodicity.
+      - pages: 21-23
+        content: >-
+          Lebesgue area in (rho,z), Green kernel (2.5)-(2.6), patch ansatz
+          (2.8)-(2.9), and contour equation (2.10).
+      - pages: 24-27
+        content: >-
+          Vertical-translation reduction, conserved radial center sum,
+          canonical reduced Hamiltonian, and exact filament Hamiltonian.
+      - pages: 28-34
+        content: >-
+          Propositions 3.2-3.4 and Corollary 3.1: simple closed reduced
+          orbit, strict period twist, perturbed orbit, exchange symmetries,
+          and uniform drift plus periodic correction.
+      - pages: 35-37
+        content: >-
+          Lemma 4.1: label exchange after half a period and reduction of the
+          two contour equations to one delayed periodic equation.
+      - pages: 48-49
+        content: >-
+          Periodic Sobolev spaces, zero-area mode, reversibility, and first
+          Fourier-mode constraints used by the construction.
+      - pages: 87-100
+        content: >-
+          Linearized invariance operator, mode splitting, normal
+          diagonalization up to smoothing errors, and approximate tame right
+          inverse used in Nash-Moser.
+      - pages: 102-118
+        content: >-
+          Periodic symplectic coordinate changes and successive reductions
+          of the gauge-fixed normal operator.
+      - pages: 119-131
+        content: >-
+          Nash-Moser construction on the final Cantor set and measure
+          estimate; this is an existence argument, not a stability theorem.
+    exact_scope:
+      parameters: >-
+        Fix 0<a<b and kappa>0. For all sufficiently small epsilon there is a
+        Borel C_epsilon subset (a,b), asymptotically of full measure, and for
+        every lambda in C_epsilon a global axisymmetric no-swirl Euler patch
+        solution.
+      patch_field: >-
+        q=epsilon^(-2) 1_{D_1(t)}+epsilon^(-2) 1_{D_2(t)} on the (rho,z)
+        half-plane, with bounded simply connected domains and sufficiently
+        high Sobolev boundary regularity.
+      periodicity: >-
+        The laboratory solution has common axial drift. In physical time the
+        drift speed is c_epsilon=abs(log epsilon) U_epsilon and the period in
+        the uniformly translating frame is T_epsilon=T(epsilon,lambda,kappa)
+        /abs(log epsilon). Each labeled boundary is T-periodic in slow time;
+        label 2 is label 1 shifted by T/2 in the source contour chart.
+      nonstationarity: >-
+        Proposition 3.4 gives p_1,1(tau+T/2)=p_2,1(tau). At tau=0 their
+        difference is r_epsilon (2 kappa)^(1/4) lambda, which is nonzero for
+        lambda in (a,b). Thus the labeled translating-frame patch pair is not
+        an equilibrium.
+      area_and_label_class: >-
+        The source uses w_j^2=1+2 epsilon f_j with zero theta-average f_j.
+        Since the ellipse map has determinant one, each normalized section
+        has area pi, each physical section has area pi epsilon^2, and each
+        label has circulation pi. The common area-preserving Euler flow
+        transports each material label on its individual area-preserving
+        diffeomorphism orbit.
+      source_linearization: >-
+        Corollary 7.2 and Sections 8-9 linearize the periodic contour
+        invariance equation only after half-period label reduction,
+        reversibility restrictions, zero-area normalization, and speed
+        modulation. The tame inverse is approximate at Nash-Moser steps and
+        is not a theorem about the full unconstrained Euler period map.
+    exclusions:
+      - no autonomous energy-impulse maximum or minimum is asserted
+      - no orbital or nonlinear stability theorem is asserted
+      - no full Floquet spectrum or bounded monodromy theorem is asserted
+      - no swirl or general three-dimensional perturbations are included
+      - no quantum spin or particle identification is implied
+
+  - id: CaoEtAl2206.10165
+    role: inherited comparison for a steady one-ring rearrangement maximum
+    version: arXiv:2206.10165v2
+    url: https://arxiv.org/abs/2206.10165
+    cache_pdf: /tmp/p253-primary-source-cache/CaoEtAl2206.10165.pdf
+    pdf_sha256: 6d90be6b7aab2ea7d92dba843b06e72e319cad50b0a2e39cfe5589cf6aa528ca
+    audit_status: inherited_from_P253_0002_0006_0012
+    transfer_limit: >-
+      Cao's maximizer and compactness results concern steady translating
+      one-ring relative equilibria. They supply no criticality, Hessian, or
+      compactness conclusion for the Garcia-Hassainia-Hmidi non-equilibrium
+      periodic pair.
+
+inventory_change_after_activation: none
+body_excerpt_policy: >-
+  No long source excerpt is retained. All calculations in construction.md
+  are original derivations from the cited equations and theorem scopes.

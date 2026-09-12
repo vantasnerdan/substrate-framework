@@ -1,0 +1,11 @@
+[PASS] [identity] HJA-1 virial: boundary term int_{bdry} U dU/dn == 0 (U vanishes on the free boundary) => int|grad U|^2 == int U^{p+1} == M0
+[PASS] [identity] HJA-2 isotropy: int (d1 U)^2 == M0/2 (rotational symmetry of the radial profile)
+[PASS] [identity] HJA-3 q-row Schur coefficient: <d1 U, L_U V> == -M0 (p+5)/(2(p+1)) [IBP chain: y1-integration + virial + isotropy]
+[PASS] [identity] HJA-3b q-row coefficient NONZERO on frozen range p in {6,7,8,9,12} (sign: negative for all p > -1)
+[PASS] [identity] HJA-4 parity table: tau-column and cross terms VANISH (each integrand y2-odd against the y2-even domain/data)
+[PASS] [identity] HJA-5 gauge nondegeneracy: d11 U(0) == -U0^p/2 != 0 (center-gauge row kills the d1 U kernel direction)
+[PASS] [identity] HJA-6 constrained invertibility: index 0 + ker {d1U,d2U} removed by (evenness, gauge) => constrained kernel {0}, constrained cokernel {0}
+[PASS] [identity] HJA-7 REDUCED SCHUR DETERMINANT DISCHARGED: D_red == -M0 (p+5)/(2(p+1)) != 0 for all p >= 6 — the augmented parameter row is nondegenerate at the frozen subfamily scope
+[PASS] [mutation] MB-HJA-1 wrong pairing detected: d2U-paired q-row == 0 by parity => D collapses (determinant lost)
+[PASS] [mutation] MB-HJA-2 wrong V-parity detected: assuming V y2-odd breaks the vanishing table (parity['V']=='even' is load-bearing)
+ALL HJ2-A AUGMENTED-MAP SCHUR RECEIPTS GREEN: 8 identity-assertions + 2 mutations = 10 assertions (self-counted).

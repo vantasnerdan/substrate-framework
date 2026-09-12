@@ -1,0 +1,40 @@
+attempt: P253/0033
+validation_date: 2026-09-06
+activation_schema_exit: 0
+numerical_work: none
+
+checks:
+  - name: source_scope_audit
+    result: pass
+    covers:
+      - filament versus finite-core patch objects
+      - scalar reversible boundary-value domain versus full two-label IVP
+      - periodic inverse versus monodromy power control
+  - name: exact_low_center_algebra
+    exit: 0
+    stdout_sha256: e9cf191124cdd37ac4b4ed2b94e53145986af3c104c6fa3d6638fbde3e18452a
+    covers:
+      - translation KKS sign
+      - J-to-J+3 product-to-sum coefficient
+      - filament reduced quotient dimension
+      - YAML parsing
+  - name: whitespace_check
+    command: git diff --check -- proposals/P253-euler-particle-mechanisms/attempts/0033
+    exit: 0
+
+artifact_sha256:
+  README.md: 027bed28ebf21717616ccd6c0d477d669132ca5ba694e623fe072af9c505ccf5
+  activation-schema.exit: 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+  provenance-correction.md: 512a669fc8e5f8bab4c33eb9627636b195c4e23f969ad32c5d6f357212df07a1
+  source-receipt.yaml: a4d199ec127ead47ad93d3c54a80d57f83f0f724b99272ab5502a6ab4ca5ee75
+  construction.md: 186265de0ec9a964de026d017391566e872f5d8c805b40b273d0f73a857ca8dd
+  verdicts.yaml: 3a5d275e24cc400b34ac5415957ae4bc974d619f1b2fa0beb773560dbddac8d8
+  exact-check.stdout: e9cf191124cdd37ac4b4ed2b94e53145986af3c104c6fa3d6638fbde3e18452a
+  exact-check.exit: 74d01a0c051c963d9a9b8ab9dbeab1723f0ad8534ea9fa6a942f358d7fa011b4
+
+strongest_exact_verdict: >-
+  The filament twist creates an unreduced companion shear but contributes
+  no reduced shape multiplier after the exact energy/impulse and symmetry
+  reduction. The first actual GHH finite-core coefficient sends J to J+3,
+  proving that every literal finite Fourier cutoff requires an infinite-tail
+  bridge before it can be treated as an Euler period map.

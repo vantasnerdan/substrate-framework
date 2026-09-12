@@ -1,0 +1,118 @@
+attempt: P253/0101
+reviewer: particle-balance-review
+target: P253/0100
+review_kind: independent_non_author_fixed_boundary
+activated_readme_sha256: a3325beedc03c12f12fcc2d98811ddc68acbe1ccb70e3af68427e3fc1a2145cb
+frozen_target_manifest_sha256: dff6ddccd1166019720f6a545344d246195075f9cf462833ea68886c6af8d54f
+post_correction_manifest_sha256: 45baf6fce79b861f4dbde1543a92e1ead0161d88ab2547a11439e23eba63666c
+excluded:
+  - P253/0095
+  - P6_and_parent_conclusions
+correction:
+  count: 1
+  status: passed
+  scope: evidence_ledger_nonvanishing_wording_only
+  receipt_sha256: 5473d007777030b6c4f6c3641808dd3a1fa5da2d8988a24d48717065c1636fc2
+  corrected_failure_receipt_sha256: e44fcde0af9cb45217045cd0a94ccfcb0ca5c2f99f5c834f7cbebe123154e978
+  refreshed_completion_sha256: 49711c3a0c6746f10a98c3af8eebaf9d839690a8a4be90c006033c53e51b4619
+  scientific_predicates_changed: false
+evidence:
+  exact_verifier:
+    status: passed_recorded_evidence
+    predicates: 11
+    scope: local_algebra_vector_calculus_and_coordinate_identities
+  focused_public_suite:
+    status: passed_recorded_evidence
+    tests: 12
+    scope: importable_API_regression
+  repository_validation:
+    status: passed_recorded_evidence
+    scope: workflow_and_schema_only
+  rerun_by_reviewer: false
+units:
+  A0_unforced_Ertel_current:
+    verdict: established
+    strongest_result: >-
+      For classical incompressible Euler and a transported true scalar,
+      q_E=omega dot grad chi is a transported pseudoscalar and
+      (q_E,q_E u) is an exact Galilean axial continuity current. Its global
+      integral is the boundary flux of chi omega and vanishes when that flux
+      vanishes.
+    boundary: not_a_Lorentz_chiral_current_or_nonzero_regular_charge
+  A1_forced_Ertel_flux:
+    verdict: established
+    strongest_result: >-
+      D_t q_E=(curl f) dot grad chi=div(f cross grad chi), so the exact local
+      conserved flux is q_E u-f cross grad chi, subject to the stated smooth
+      and boundary domains.
+  B0_closed_line_constant_lock:
+    verdict: refuted
+    scope: nonzero_real_constant_lock_on_a_nonzero_tagged_closed_vorticity_line
+    mechanism: >-
+      Single-valued return requires exp(integral lambda dtau)=1; for real
+      lambda the loop integral is zero, excluding a nonzero constant while
+      retaining variable zero-integral and other scoped candidates.
+  B1_forced_lock_condition:
+    verdict: established
+    strongest_result: >-
+      An imposed forced lock obeys
+      chi D_t lambda=(curl f) dot grad chi, distinct from the unforced
+      D_t lambda=0 condition on nonzero tag support and simultaneous with
+      the closed-line monodromy constraint.
+  B2_force_selected_lock:
+    verdict: blocked
+    missing_construction: >-
+      A globally admissible force/coefficient solution satisfying zero-set,
+      closed-line, parity and material-leaf rows on one persistent carrier,
+      together with action and endpoint interaction.
+  C0_regular_Cao_density:
+    verdict: established_zero_and_supplier_refuted
+    strongest_result: >-
+      With omega=r zeta e_theta=zeta partial_theta and an axisymmetric tag,
+      q_E=zeta partial_theta chi=0 pointwise, so the regular convective current
+      also vanishes on this geometry.
+    boundary: carrier_and_tag_specific_not_a_universal_current_no_go
+  C1_Cao_magnetization_superpotential:
+    verdict: established
+    strongest_result: >-
+      The forced flux equals
+      (g/rho_m)chi_c chi_c_prime grad Phi cross grad P and
+      curl[(g Phi/(2 rho_m))grad(chi_c^2)], hence is an exact divergence-free
+      toroidal superpotential current.
+    boundary: actual_Cao_branch_nonvanishing_is_unproved_and_unclaimed
+  D1_punctured_azimuthal_phase:
+    verdict: established
+    scope: punctured_domain_axisymmetric_no_swirl_equilibrium
+    strongest_result: >-
+      The global closed non-exact one-form dtheta gives q_theta=zeta and exact
+      equilibrium integral 2 pi kappa; fixed theta is material only where
+      u_theta=0, with the stated support and boundary-flux hypotheses.
+  D2_moving_defect_continuation:
+    verdict: blocked
+    missing_construction: >-
+      An independently advected circle phase, moving defect domain and
+      inner/outer flux proof on a persistent nonaxisymmetric finite-energy
+      carrier, with action and endpoint interaction.
+combined_verdict: established_at_exact_route_scoped_supplier_boundary
+strongest_exact_result: >-
+  P253/0100 establishes unforced and forced local Ertel continuity currents,
+  the real constant closed-line obstruction, the distinct forced lock
+  compatibility equation, the exact regular Cao zero, the Cao
+  magnetization-superpotential formula, and the punctured equilibrium charge
+  2 pi kappa. Actual superpotential nonvanishing, force selection, a moving
+  defect theorem, physical action and a Lorentz chiral interpretation remain
+  outside the established result.
+next_dependency: >-
+  Construct either a force-selected variable lock satisfying all global rows
+  on one persistent carrier, or an independently advected circle phase with
+  moving-domain flux, finite action and endpoint interaction.
+does_not_license:
+  - nonzero_regular_whole_space_Ertel_charge
+  - actual_nonzero_Cao_magnetization_without_a_gradient_nonvanishing_proof
+  - selected_or_quantized_lock_charge_or_action
+  - Lorentz_chiral_current_or_one_handed_projector
+  - persistent_nonaxisymmetric_or_moving_defect_carrier
+  - spin_exchange_weak_coupling_mass_or_mixing
+  - P2_P4_P5_P6_particle_electron_neutrino_or_parent_completion
+parent_campaign_state: active
+exhaustion_claimed: false

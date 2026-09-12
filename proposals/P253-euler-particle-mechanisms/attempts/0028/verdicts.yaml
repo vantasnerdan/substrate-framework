@@ -1,0 +1,102 @@
+attempt: P253/0028
+review_type: independent_fixed_theorem_exact_existence
+reviewer: particle-balance-review
+target: P253/0027
+activation:
+  schema_exit: 0
+  frozen_readme_sha256: a90ffcb1d0e05ccdbcf6b97db4941af430eab5c457ba04c96ae1094dd848887a
+independence:
+  non_author: true
+  non_implementer: true
+route_verdict: established
+review_status: established_as_stated
+evidence_scope: DIRECT_OPERATOR_AND_NONLINEAR_IMPLICIT_FUNCTION_EXISTENCE_PROOF
+strongest_supported_statement: >-
+  For every smooth nonnegative axial-vorticity profile w(r^2) that is constant
+  and strictly positive near the axis and vanishes outside a finite radius,
+  the resulting smooth pure-swirl Euler column has a positive first critical
+  speed c0. For all c>c0 sufficiently close to c0, the full constant-density
+  Euler equations on R3 admit a nonzero smooth axisymmetric traveling
+  excitation of that same column. Its perturbation lies in every finite-order
+  Sobolev space, has the exact irrotational same-fluid exterior, and has
+  absolutely finite literal kinetic excess above the infinite-energy
+  background. Its small amplitude is mu and its axial scale is the large
+  solution of mu*L_mu^2=f0(R)^2*log(L_mu).
+proof_components:
+  euler_reduction:
+    status: established
+    scope: >-
+      Exact Grad-Shafranov reconstruction with complete pressure, swirl label,
+      translating-frame sign, density convention, and smooth pure-swirl
+      background.
+  critical_mode:
+    status: established
+    scope: >-
+      Positive simple finite-interval weighted mode with lambda'(c0)>0 and a
+      whole-space zero-frequency threshold resonance, not a full radial L2
+      eigenstate.
+  exterior:
+    status: established
+    scope: >-
+      Exact decaying Bessel exterior, positive DtN/kinetic trace symbol,
+      smooth velocity/pressure transmission, and no rigid wall or density
+      interface.
+  focusing_coefficient:
+    status: established
+    scope: >-
+      Exact integration-by-parts identity gives beta>0 for every declared
+      smooth nontrivial transition profile.
+  operator_limit:
+    status: established
+    scope: >-
+      Rank-one Schur inverse plus bounded, middle, and far Fourier-region
+      estimates prove uniform H-to-V convergence of K_mu and its first
+      kappa derivative to P0/(1+kappa^2).
+  nonlinear_ift:
+    status: established
+    scope: >-
+      Weighted C1 convergence of the full quadratic remainder and invertibility
+      of the limiting derivative on the even translation-fixed space produce
+      the exact one-sided branch.
+  global_reconstruction:
+    status: established
+    scope: >-
+      Five-dimensional axis conjugacy, elliptic bootstrapping, exact exterior
+      transmission, and weighted L1/L2 control give Cartesian smoothness,
+      localization, all finite Sobolev norms, and absolutely finite excess
+      kinetic energy.
+source_boundary:
+  Sun1995: inaccessible_provenance_only_not_imported
+  Sun1994: different_boundary_long_wave_motivation_not_imported_as_existence
+oracle:
+  strongest: self_contained_analytic_operator_and_implicit_function_proof
+  exact_structure_script_role: corroborating_exact_identites
+  focused_api_tests_role: regression_and_exposing_subclaims
+  captured_structure_exit: 0
+  captured_api_result: 4_passed_in_3.64s
+  rerun: false
+  reason_not_rerun: >-
+    Code and inputs are frozen and unchanged; the load-bearing operator-norm,
+    weighted-space, and IFT conclusions are analytic and are not encoded by
+    the executable checks.
+  small_ratio_numerics_bind: false
+four_axis:
+  verification: exact_analytic_existence_verified
+  review: established_as_stated
+  compatibility: compatible_proposal_evidence
+  epistemic: exact_at_declared_axisymmetric_whole_space_relative_energy_scope
+correction:
+  required: false
+remaining_dependency: >-
+  Outside this existence review, prove restoring or interaction control for
+  nearby states with the complete ambient pressure/action. The present exact
+  traveling profile supplies no stability theorem.
+does_not_license:
+  - spectral, orbital, asymptotic, or nonlinear stability
+  - an all-time open neighborhood of initial data
+  - finite total energy of the unbounded background
+  - a mechanical restoring force or particle identity
+  - physical spin or quantum statistics
+  - electron or neutrino completion
+  - parent-campaign completion
+  - global Euler no-go

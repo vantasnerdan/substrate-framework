@@ -1,0 +1,123 @@
+attempt: P253/0036
+review_type: independent_fixed_claim_canonical_operator_source_review
+reviewer: particle-balance-review
+target: P253/0034
+source_head: 1d378f9aebd10a8ff0dd91f26bf15d371f3e243e
+activation:
+  schema_exit: 0
+  frozen_readme_sha256: a22244731b46ef25ef5e6ef41eee0858bdca0c16b65eb3c64109edce35a8201e
+independence:
+  non_author: true
+  non_implementer: true
+  active_0037_excluded: true
+route_verdict: established
+review_status: established_after_bounded_material_domain_correction
+evidence_scope: DIRECT_CLEBSCH_BOUNDARY_ASYMPTOTIC_OPERATOR_ROUTH_AND_SOURCE_APPLICABILITY_AUDIT
+strongest_supported_statement: >-
+  For the accepted small whole-space axisymmetric Euler solitary family, the
+  physical 2*pi*rho_m Clebsch action exactly reproduces axisymmetric Euler on
+  compact regular label strips; the finite-domain axial impulse equals the
+  canonical translation bulk term plus the oriented boundary one-form; the
+  mixed-Casimir distribution is the two-end Clebsch jump and has a controlled
+  positive leading term of order mu*L_mu on every compact regular label
+  annulus, hence is exactly nonzero for sufficiently small nonzero mu; the
+  complete translating-frame axisymmetric Hodge-coupled linearization and its
+  translation and speed-branch identities are exact; and fixing material
+  angular momentum gives the exact finite-domain Routh reduction and the
+  corrected whole-space relative Routhian on its declared finite-excess
+  domain. The Varholm--Wahlen--Walsh conditional-stability theorem does not
+  transfer because its one-negative-direction Hessian hypothesis is violated.
+components:
+  clebsch_equations:
+    status: established
+    scope: >-
+      Correct bracket, symplectic sign, swirl source, Hodge reconstruction,
+      gauge covariance, meridional measure, and common 2*pi*rho_m multiplier
+      on regular strips and compact/fixed-end relative variations.
+  finite_domain_impulse:
+    status: established
+    scope: >-
+      Exact counterclockwise boundary one-form with both axial ends and radial
+      boundaries retained; the canonical bulk momentum is available only
+      when the surface term vanishes or is fixed on the leaf.
+  solitary_end_jump:
+    status: established
+    scope: >-
+      Exact jump integral and exact solitary integrand, plus a uniform
+      o(mu*L_mu) expansion on every compact regular annulus with strictly
+      positive leading coefficient. No absolute gauge-dependent endpoint
+      value or global equal-end chart is claimed.
+  full_linearization:
+    status: established
+    scope: >-
+      Exact formal full-field axisymmetric Euler derivative including K*eta,
+      with L_c*q_z=0 and L_c*q_c_derivative=-q_z. No closed-generator,
+      resolvent, spectral-gap, propagation, or stability theorem follows.
+  material_routh:
+    status: established_after_bounded_correction
+    scope: >-
+      Exact fixed-angular-momentum partial Legendre transform on finite
+      material domains/compact variations and exact relative whole-space
+      formula with relative incompressibility constraint on the declared
+      convergence domain.
+  varholm_transfer:
+    status: refuted
+    mechanism: >-
+      Assumption 6 of arXiv:1811.08024v2 requires one simple negative Hessian
+      eigenvalue, one simple symmetry zero, and a positive remainder separated
+      from zero. The actual accessible traveling Euler form has independent
+      negative high-frequency directions and is not bounded in the kinetic
+      topology. This refutes only the theorem-transfer route, not stability or
+      existence of the Euler wave.
+correction:
+  required: true
+  checked: true
+  fully_closes_finding: true
+  mechanism: >-
+    The initial material formulas were written as absolute whole-space
+    integrals even though the reference L_infinity/r column makes them
+    divergent. The correction scopes the absolute formulas to finite domains
+    or compact variations, adds the fixed-background relative Routhian with
+    xi^2/(2a^2), retains the relative volume constraint, and declares the
+    convergence domain. The added term is fixed label data and changes no
+    Euler equation or centrifugal sign.
+  before_sha256: 5a72e4e5b7bf7a83d8d5add8b0f2e87f2d6bf961f4c9a57764f40137b259ce12
+  after_sha256: 6f233ee844fb3d61c63efb4b7281ee04eaf2536f9753d3958ceba544fe8b3512
+  receipt_sha256: 16a65d783d01a84121b0303cac27b75d45f3d7f12d97adc7978485196a1fc99d
+  equation_api_test_or_source_predicate_changed: false
+source:
+  title: On the stability of solitary water waves with a point vortex
+  authors: Kristoffer Varholm, Erik Wahlen, Samuel Walsh
+  version: arXiv:1811.08024v2
+  pdf_sha256: 16da491f9e6ed10e2decea12dc37971e04acb8494a6ddb6fd841cd44c80336bd
+  role: exact_nontransfer_hypothesis_audit
+oracle:
+  strongest: direct_variation_stokes_asymptotic_linearization_routh_and_primary_source_audit
+  focused_receipts:
+    - 4_passed_in_2.24s_exit_0
+    - 5_passed_in_2.29s_exit_0
+    - 6_passed_in_3.44s_exit_0
+  rerun: false
+  reason_not_rerun: >-
+    The correction changed only whole-space action-domain wording and the
+    explicit fixed-background subtraction. Existing equations, API/test
+    predicates, and source applicability were unchanged.
+  small_ratio_numerics_bind: false
+four_axis:
+  verification: exact_analytic_with_symbolic_exposing_checks
+  review: established_after_one_bounded_correction
+  compatibility: compatible_proposal_evidence_on_accepted_0027_0028_supplier
+  epistemic: exact_at_regular_strip_relative_action_and_formal_full_operator_scope
+review_artifact_sha256: 5f6cb24ce5300aa8b27754cab5ad2114491e464fa5b415606e5e1e3ac7c7566b
+remaining_dependency: >-
+  Construct a fixed-mixed-Casimir zero-frequency resolvent/modulation and
+  continuum-complement estimate for the actual Hodge-coupled solitary
+  operator, retaining the Bessel exterior and translation mode, then treat
+  nonaxisymmetric sectors if required.
+does_not_license:
+  - nonlinear, orbital, spectral, or asymptotic stability of the solitary wave
+  - a global nondegenerate Clebsch chart across flat labels
+  - a compact internal phase, action quantum, particle, or restoring force
+  - physical or quantum spin and statistics
+  - electron or neutrino identification
+  - parent-campaign completion

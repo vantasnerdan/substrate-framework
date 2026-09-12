@@ -1,0 +1,136 @@
+attempt: P253/0026
+review_type: independent_fixed_theorem_operator_transfer
+reviewer: particle-balance-review
+activation:
+  schema_exit: 0
+  frozen_readme_sha256: 5aab2bae131e9d68ab1a34085d2965ebaf3b17a03529030624f4eeb635cc27f0
+independence:
+  non_author: true
+  non_implementer: true
+  units_adjudicated_separately: true
+  excluded_attempts:
+    - P253/0022
+    - P253/0024
+    - P253/0025
+
+unit_A:
+  target: P253/0019
+  route_verdict: established
+  review_status: established_after_bounded_normalization_correction
+  evidence_scope: EXACT_GLOBAL_LINEARIZED_EULER_AND_FIXED_TIME_WKB_TRANSFER
+  actual_inventory:
+    source_module: none
+    tests: none
+    metadata_filename_inference_used: false
+  strongest_supported_statement: >-
+    For every sufficiently small fixed smooth plateau-shell member of the
+    compact Gavrilov family, the whole-space linearized Euler operator on the
+    divergence-free kinetic space generates a strongly continuous group and
+    preserves the closed dynamically accessible tangent. After normalizing
+    the high-frequency coadjoint seed, an exact finite-energy axisymmetric
+    linearized solution, modulo axial translation, has a strict physical
+    kinetic-energy gain over one meridional circuit. The leading full-pressure
+    polarization return is [[1,0],[-sqrt(2)*pi,1]].
+  bounded_correction:
+    required: true
+    status: accepted
+    location: attempts/0019/derivation.md equations (36)-(38)
+    mechanism: >-
+      With fixed amplitude, a_N=N^-1*A*exp(i*N*vartheta) produces O(1)
+      vorticity but O(N^-1) velocity under the order-minus-one Biot-Savart
+      map. Normalize the resulting velocity (equivalently rescale the seed by
+      a factor comparable to N) and state the WKB/Duhamel error relatively as
+      O(N^-1) times the initial velocity norm. Dynamic accessibility, finite
+      energy, symmetry class, quotient, gain ratio, and route verdict are
+      unchanged.
+    corrected_artifacts:
+      derivation:
+        pre_sha256: b7bc7926e75d1eaae1b681b509b7508063403757673b8d14a14c29914591bfba
+        post_sha256: 1f56e289e85c0ffd463067d82da2ae05a0b5d9cfca275f0a1956529018f6e3ae
+      result:
+        pre_sha256: e6fcc43e552d48d07376cfed47e4cb65bfaef2c39c7cd91bbcaed78d3450d757
+        post_sha256: b320c5216095f32f765e99fa1cde4bd61fd71be726b58fe7457926aa1d04acca
+      validation:
+        pre_sha256: 295237f75d31791fd1fdbabe85c14209729543e5cea2d8aed0538269bf91e79e
+        post_sha256: 107423185d6750e7f85482ed7d3961d3f5a136757c335a0e13b928ea1aa433a6
+      receipt_sha256: 45053dee0cbd61cb08419593900589e5c7d4725c7dd55b0b9861e4517d246d38
+    wording_cleanup: >-
+      The duplicated phrase "squared-norm relative squared-norm error" should
+      read "relative squared-norm error"; the displayed estimate is already
+      unambiguous and no further scientific check is needed.
+  four_axis:
+    verification: exact_source_operator_and_return_calculus_verified
+    review: established_after_bounded_normalization_correction
+    compatibility: compatible_proposal_evidence
+    epistemic: exact_linearized_finite_time_scope
+  nonlinear_classification: >-
+    P253/0019 states no finite-amplitude nonlinear perturbation theorem.
+    Nonlinear packet transfer is a frontier, not missing support inside the
+    reviewed statement.
+  remaining_dependency: >-
+    Control the actual moving-covector/nonlocal Leray skew product over
+    arbitrarily many circuits. A separate nonlinear transfer would require a
+    normalized H^s family, common local-Euler interval, and quadratic
+    remainder estimate.
+
+unit_B:
+  target: P253/0021
+  route_verdict: established
+  review_status: established_as_stated
+  evidence_scope: EXACT_TWO_LABEL_CONTOUR_IVP_AND_ONE_PERIOD_MONODROMY
+  strongest_supported_statement: >-
+    For each fixed sufficiently smooth Garcia-Hassainia-Hmidi periodic patch
+    pair at the source epsilon/lambda quantifiers, the complete independent-
+    label non-reversible linearized contour equation on the two individual-
+    area tangents generates a zero-loss bounded invertible evolution through
+    one physical period. Its return is weak-KKS symplectic, fixes phase and
+    common axial translation, preserves normalized energy and impulse
+    covectors, and induces a bounded invertible map on
+    (ker dH_c intersect ker dP)/span(v_phase,v_z).
+  source_scope:
+    base_selection: >-
+      Fixed 0<a<b, kappa>0, sufficiently small epsilon, and lambda in the
+      source Borel Cantor set; constants need not be uniform as epsilon tends
+      to zero.
+    perturbation_domain: >-
+      Two independent real H^s zero-area normal graphs, with all first modes,
+      modulo tangential reparametrization and without reversibility or the
+      half-period label constraint.
+  normalization: >-
+    The displayed reduced H, P, Omega, and action acquire the same physical
+    factor 2*pi*rho_m; this leaves the vector field, symplectic transport,
+    invariant flag, and quotient unchanged.
+  bounded_correction:
+    required: false
+  four_axis:
+    verification: exact_source_interface_and_sobolev_energy_verified
+    review: established_as_stated
+    compatibility: compatible_proposal_evidence
+    epistemic: exact_one_period_operator_scope
+  remaining_dependency: >-
+    Derive a reduced Krein/resolvent separation or modulated normal form that
+    controls powers of M_red while retaining the first-mode/center, cross, and
+    conserved-level companion blocks; nonlinear orbital stability additionally
+    needs a nonlinear modulation bootstrap.
+
+oracle:
+  strongest: primary_sources_and_independent_pde_operator_calculus
+  existing_exact_receipts_inspected: true
+  rerun: false
+  reason_not_rerun: >-
+    The executed algebraic predicates and their code are unchanged. Unit A's
+    correction concerns continuum WKB normalization, which its script does not
+    test; Unit B required no scientific correction.
+  small_ratio_numerics_bind: false
+
+does_not_license:
+  - all-time packet recurrence or unbounded semigroup growth
+  - a finite-amplitude nonlinear theorem from Unit A
+  - GHH spectral stability or power boundedness
+  - nonlinear or orbital stability
+  - unrestricted three-dimensional or swirl perturbations
+  - mechanical force or particle identity
+  - physical spin or quantum statistics
+  - electron or neutrino completion
+  - parent-campaign completion
+  - global no-go
