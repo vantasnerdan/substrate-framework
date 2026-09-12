@@ -20,9 +20,9 @@ N4 (X1 extends), S4b (G1 closed), D3 caveated + D3b dead both-branches, X1 STOPP
 - Nonlinear closure: 0095/0104 thin-ring linear-observed scope only; G/I + nonlinear closure blocked; 0124 nonlinear wall; HJ2 no-nonlinear fence travels.
 - Carrier program: SYN D3 FB-C1 measurements gated on F-C-hosted builds; no electron/carrier/measurement licensed anywhere (ALIVE, F2, tilt fences explicit).
 - L-ladder D1 live fire-route (cipher proposal, queued-unfired; SYN P1 conditional).
-- C2 Hessian open-pending; tilt T3 staging + E3 staged; P3-C charge-only.
 - Cipher better-route proposal (0147-as-redirect, quantization-first P4 audit, R-C coercivity + 0071 chart) — owner/shepherd decision, not ledger.
 - LANE-1 governance flag (#104: drift neutral on gate-accounting).
+- Routing (shepherd 2026-09-12, assessment ACCEPTED as staged): quantization-first P4 AUDIT (what would a quantization claim need?) QUEUED behind cipher's fireability-protocol charter (analysis-only, sharpens target, licenses nothing); R-C coercivity redirect DEFERRED until pair + fireability land. LANE-1 governance flag recorded in fold. No PR action authorized.
 
 ## (4) Terminal-PR needs per contract vs what exists
 
