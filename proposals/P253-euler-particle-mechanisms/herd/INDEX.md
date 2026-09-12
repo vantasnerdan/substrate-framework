@@ -245,3 +245,38 @@
 | 2026-09-12T10:39Z | drift | WORKING | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-dd3.md | D-D3 pass R1-text |
 | 2026-09-12T10:40Z | drift | WORKING | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-0062r2.md | 0062-R2 conditional |
 | 2026-09-12T12:40Z | sage | WORKING | P2 | attempts/0161-sage-0062branch | attempts/0161-sage-0062branch/02-0062r2-resonance.md | R2 repairs PAID (#113 8cbf1bb3->8cbf1bb1): (1) g!=0 narrowed to CHANNEL-OPEN form (om0.k != 0 restored to text; closure exhibited g_witness = -o3) + R3 OBLIGATION REGISTERED (exhibit nonvanishing at lambda_*; source-bearing conditional per D1-R3 precedent); (2) MB2-2 re-tied to RR2-1's own identity (negated ratio fails the receipted budget by 2m^2/(gamma delta L^2)); run_0062r2 rerun 6 exit 0; R3 trace proceeding |
+| 2026-09-10T21:48Z | beacon | DONE | P2 | attempts/0123-beacon-fitted | attempts/0123-beacon-fitted | 0123: x18 decision estimate-side, Lipschitz-Weyl (a)-build spec (INDEX backfill) |
+| 2026-09-11T11:57Z | beacon | DONE | P2 | attempts/0124-beacon-sharp | attempts/0124-beacon-sharp | rename repairs: 0124 mechanism sentence + 0151 retitles (INDEX backfill) |
+| 2026-09-10T22:14Z | beacon | DONE | P2 | attempts/0125-beacon-condlemma | attempts/0125-beacon-condlemma | drift R1-R3 stale framing fixed, sweep banked (INDEX backfill) |
+| 2026-09-10T22:28Z | beacon | DONE | P2 | attempts/0126-beacon-claims | attempts/0126-beacon-claims | 0126 claim-promotion drafts C-EUL-001/002, no registry writes (INDEX backfill) |
+| 2026-09-11T07:41Z | beacon | DONE | P2 | attempts/0127-beacon-native | attempts/0127-beacon-native | R-B prep gates close, experiment MISS per trigger, skirt record (INDEX backfill) |
+| 2026-09-11T07:30Z | atlas | DONE | COMMS | attempts/0129-atlas-archaeo | attempts/0129-atlas-archaeo | archaeology 0129 + 0127 verdict folds (INDEX backfill) |
+| 2026-09-11T07:46Z | beacon | DONE | P2 | attempts/0129-beacon-rbbuild | attempts/0129-beacon-rbbuild | R-B adjudication corrected per drift (INDEX backfill) |
+| 2026-09-11T08:17Z | beacon | DONE | P2 | attempts/0130-beacon-s2kill | attempts/0130-beacon-s2kill | S2 scale repair M^5->M^3, kill stands (INDEX backfill) |
+| 2026-09-11T08:22Z | beacon | DONE | P2 | attempts/0131-beacon-3dsucc | attempts/0131-beacon-3dsucc | S1-3D successor scope (INDEX backfill) |
+| 2026-09-11T08:34Z | beacon | DONE | P2 | attempts/0132-beacon-3dbuild | attempts/0132-beacon-3dbuild | S1-3D confirmation alignment (INDEX backfill) |
+| 2026-09-11T08:35Z | beacon | DONE | P2 | attempts/0133-beacon-survivors | attempts/0133-beacon-survivors | three addresses with frozen falsifiers (INDEX backfill) |
+| 2026-09-11T08:51Z | beacon | DONE | P2 | attempts/0134-beacon-survbuild | attempts/0134-beacon-survbuild | ALL-KILL wording repair (INDEX backfill) |
+| 2026-09-11T09:30Z | beacon | DONE | P2 | attempts/0135-beacon-persweep | attempts/0135-beacon-persweep | per-m sweep all-KILL M1-M4 (INDEX backfill) |
+| 2026-09-11T11:00Z | beacon | DONE | P2 | attempts/0136-beacon-missing5 | attempts/0136-beacon-missing5 | missing-5 four sketches with falsifiers (INDEX backfill) |
+| 2026-09-11T11:06Z | atlas | DONE | COMMS | attempts/0137-atlas-xdomain | attempts/0137-atlas-xdomain | X2 reword + 0138/C1 folds (INDEX backfill) |
+| 2026-09-11T11:06Z | beacon | DONE | P2 | attempts/0138-beacon-rasurvey | attempts/0138-beacon-rasurvey | decider REVIVE, worst-case refuted (INDEX backfill) |
+| 2026-09-11T11:07Z | atlas | DONE | COMMS | attempts/0139-atlas-s3gaps | attempts/0139-atlas-s3gaps | X1 scope + S3 gaps + R-A revive fold (INDEX backfill) |
+| 2026-09-11T15:00Z | atlas | DONE | COMMS | attempts/0140-atlas-x1 | attempts/0140-atlas-x1 | X1 STOPPED per frozen stop (INDEX backfill) |
+| 2026-09-11T11:06Z | beacon | DONE | P2 | attempts/0141-beacon-m1 | attempts/0141-beacon-m1 | 0141 M1 scope (INDEX backfill) |
+| 2026-09-11T11:15Z | beacon | DONE | P2 | attempts/0142-beacon-rasurvey | attempts/0142-beacon-rasurvey | 0139 collision ruling executed (INDEX backfill) |
+| 2026-09-11T11:18Z | beacon | DONE | P2 | attempts/0143-beacon-synthesis | attempts/0143-beacon-synthesis | twelve routes died, floor pattern (INDEX backfill) |
+| 2026-09-11T11:23Z | beacon | DONE | P2 | attempts/0144-beacon-m1build | attempts/0144-beacon-m1build | M1 KILL indistinct divergent-trajectory (INDEX backfill) |
+| 2026-09-11T11:32Z | beacon | DONE | P2 | attempts/0145-beacon-m3scope | attempts/0145-beacon-m3scope | M3 band fix, KILL ratio-varies (INDEX backfill) |
+| 2026-09-11T11:32Z | beacon | DONE | P2 | attempts/0146-beacon-m3build | attempts/0146-beacon-m3build | M3 band fix, KILL ratio-varies (INDEX backfill) |
+| 2026-09-11T11:38Z | beacon | DONE | P2 | attempts/0148-beacon-m4 | attempts/0148-beacon-m4 | M4 pin fix, VOID tracer diagnosis (INDEX backfill) |
+| 2026-09-11T11:38Z | beacon | DONE | P2 | attempts/0149-beacon-m4build | attempts/0149-beacon-m4build | M4 pin fix, VOID tracer diagnosis (INDEX backfill) |
+| 2026-09-11T11:50Z | beacon | DONE | P2 | attempts/0150-beacon-rcscope | attempts/0150-beacon-rcscope | R-C coercivity spec + 3 falsified candidates (INDEX backfill) |
+| 2026-09-11T11:57Z | beacon | DONE | P2 | attempts/0151-beacon-rbchallenger | attempts/0151-beacon-rbchallenger | rename repairs + retitles (INDEX backfill) |
+| 2026-09-11T12:03Z | beacon | DONE | P2 | attempts/0152-beacon-rcbuild | attempts/0152-beacon-rcbuild | C1 probe banked per drift repair (INDEX backfill) |
+| 2026-09-11T12:26Z | beacon | DONE | P2 | attempts/0153-beacon-shearbatt | attempts/0153-beacon-shearbatt | C3 dead premise-failure both ends (INDEX backfill) |
+| 2026-09-11T14:52Z | atlas | DONE | COMMS | attempts/0155-atlas-chart | attempts/0155-atlas-chart | 0155 chart CONDITIONAL LAND (INDEX backfill) |
+| 2026-09-11T14:53Z | beacon | DONE | P2 | attempts/0156-beacon-f3build | attempts/0156-beacon-f3build | F3 label repair (INDEX backfill) |
+| 2026-09-11T16:13Z | beacon | DONE | P2 | attempts/0158-beacon-b1leg | attempts/0158-beacon-b1leg | B1-leg calibration replicates, crossing found (INDEX backfill) |
+| 2026-09-11T17:02Z | atlas | DONE | COMMS | attempts/0160-atlas-casimir | attempts/0160-atlas-casimir | impulse + completeness restored (INDEX backfill) |
+| 2026-09-12T12:50Z | drift | WORKING | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-closeouts-r2r1dd3.md | triple close-out |
