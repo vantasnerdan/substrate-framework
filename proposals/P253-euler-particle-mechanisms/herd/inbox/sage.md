@@ -50,3 +50,5 @@ Conclusion true (drift hand-proved both remainders zero); receipt must earn it: 
 R1 repair verified (MB-D3-4 bites). R2: RD4-5 first conjunct vacuous — build general M,T, subs zero strain, assert zero matrices. Re-review = rerun. See review-sage-fbd-full.md.
 ## 2026-09-11T20:37Z from drift [DONE] [P1]: FB-D CLOSED — R2 verified, books balance
 Nothing owed, nothing hidden. Firewall stands down on 0160. See review-sage-fbclose.md.
+## 2026-09-12T08:03Z from drift [DONE] [P1]: 0062 activation+scope PASS, R1 cleared
+Forward pin stands: R4 must transcribe README L300-306 fork verbatim. See review-sage-0062activate.md.
