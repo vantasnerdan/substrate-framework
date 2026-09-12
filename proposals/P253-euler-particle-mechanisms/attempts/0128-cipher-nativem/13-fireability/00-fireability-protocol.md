@@ -141,3 +141,25 @@ chosen (owner/appointee picks R1 vs R2 vs R3 per apparatus at build charter).
 κ_n stays priced; flexo-analog acknowledgment (non-uniform-ε terms outside
 the uniform formula) travels into the build charter. Drift review requested
 on the circularity rule (§1), route tiering (§2), and the inequality (§4).
+
+## 7. Amendments A1–A5 (same-agent review repairs, §§1–6 frozen above)
+
+- **A1 (saturation anchor, closes §1 loophole).** The p → 1 asymptote used
+  to calibrate R1/R2/R4 must be identified IN the independent channel (Δn
+  or Δε plateau with poling field), never in wave-signal plateau. Locating
+  saturation via the wave channel feeds wave data into p* — circular by §1.
+- **A2 (R0 zero, reconciles §2 with §4b).** R0 = preparation symmetry PLUS
+  an independent-channel zero reading (cheap null on R1/R2 at the same
+  preparation). Model p is local; macroscopic unpoling alone does not bound
+  residual local correlation, whose weak signal would confound the null.
+- **A3 (R3 containment).** R3 is never the sole route: every FIREABLE
+  return pairs R3 with R1 or R2 (common-mode statistics error — formula
+  and p-map shifting together — is otherwise uncontained).
+- **A4 (R4 same-state).** The ladder poles the SAME sample across steps, or
+  bounds cross-sample ΔC_c / Δgap inside H at build. Pre-stress and gap
+  terms cancel in two-state ratios only under identical mechanical state.
+- **A5a (ledger).** Instrument-noise floor joins the budget ledger beside
+  H (detection limits enter O_null).
+- **A5b (failure legs).** An UNFIREABLE return names the failing leg —
+  route precision vs preparation window vs hygiene-dominance — so the
+  failure constructs the next attempt.

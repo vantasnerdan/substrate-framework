@@ -231,3 +231,4 @@
 | 2026-09-11T20:37Z | drift | DONE | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-fbclose.md | FB-D closed; audit table |
 | 2026-09-12T16:15Z | cipher | WORKING | P2 | 0128-cipher-nativem | attempts/0128-cipher-nativem/13-fireability/00-fireability-protocol.md | FIREABILITY PROTOCOL designed (owner-level open): independent-p routes R0-R5 + circularity rule + precision inequality + verdict rule; structure-only, drift review requested |
 | 2026-09-12T07:59Z | drift | DONE | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-dd1.md | D-D1 pass |
+| 2026-09-12T16:30Z | cipher | WORKING | P2 | 0128-cipher-nativem | attempts/0128-cipher-nativem/13-fireability/01-self-review.md | SAME-AGENT review (dual-role authorized): CONDITIONAL PASS, 5 doc-level repairs F1-F5 → amendments A1-A5 applied, post-repair PASS; drift rebuttal invited, overturns on finding |
