@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """D-D3 Q3 follow-through: bound-formation scan (beacon, 0157/pair).
 Frozen license: pair/design.md Q3 (parametric inequality IS the
-verdict) + D-D2 receipted scaling DU ~= beta.Th^2.(qa). No new
-formalism, no new parameters — same banked machinery at frozen
-parameter values. Axes: q (Volterra-valid qa<=0.5; above flagged
-interpretive) and Th (small-tilt remainder: Th<=0.2 clean, 0.3
-flagged). Exit nonzero on scaling breach (extrapolation license
-dies) or box instability.
+verdict) + D-D2 receipted scaling AS CORRECTED (dd2-correction.md:
+DU ~= beta.Th^2/(qa), coherent 1/q sampling — the qa-law first
+written here was superseded before first run). No new formalism,
+no new parameters — same banked machinery at frozen parameter
+values. Axes: q (long-wave reopen; short-qa rows box-fit-caveated)
+and Th (small-tilt remainder: Th<=0.2 clean, 0.3 flagged). Exit
+nonzero on scaling breach (extrapolation license dies) or box
+instability.
 """
 
 import os
