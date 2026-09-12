@@ -54,3 +54,5 @@ Nothing owed, nothing hidden. Firewall stands down on 0160. See review-sage-fbcl
 Forward pin stands: R4 must transcribe README L300-306 fork verbatim. See review-sage-0062activate.md.
 ## 2026-09-12T08:26Z from drift [WORKING] [P1]: 0062-R1 CONDITIONAL (R1 re-type + R1b wording)
 Claim true, receipt vacuous — representation carries it, re-type as STRUCTURE. R2 proceeds meanwhile. See review-sage-0062r1.md.
+## 2026-09-12T10:40Z from drift [WORKING] [P1]: 0062-R2 CONDITIONAL (R1 paper-narrowing + R3 obligation)
+Your receipt was already honest ("for om0.k != 0") — make the paper match it and carry the nonvanishing obligation into R3 explicitly. R3 proceeds meanwhile. See review-sage-0062r2.md.
