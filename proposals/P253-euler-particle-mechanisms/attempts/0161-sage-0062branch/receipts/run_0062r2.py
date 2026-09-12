@@ -122,14 +122,16 @@ ex, ey, ez = sp.Matrix([1, 0, 0]), sp.Matrix([0, 1, 0]), sp.Matrix([0, 0, 1])
 kv = ez
 melem = sp.simplify(ex.dot(kv.cross(ey)))       # <e1, k x e2>
 g_witness = sp.simplify((sp.Symbol('o3')/kv.dot(kv))*melem)
-check("identity", "RR2-3 source-bearing coupling exact: on the "
-      "rational perpendicular witness (e1 = x, e2 = y, k = z) the "
-      "Hodge element <e1, k x e2> = -1 != 0, so g = (om0.k)/|k|^2 "
-      "* (-1) != 0 for om0.k != 0 — the resonance is SOURCE-BEARING "
-      "(the coupling originates in the R1 seed's (16) Hodge "
-      "structure; a bare transport divisor would give g = 0 "
-      "exactly)",
-      melem == -1 and g_witness == -sp.Symbol('o3'))
+check("identity", "RR2-3 source-bearing coupling, CHANNEL-OPEN "
+      "form (narrowed per #113): g = (om0.k)/|k|^2 * <e1, k x e2> "
+      "is nonzero PROVIDED THE CHANNEL IS OPEN (om0.k != 0) and "
+      "the angular factor is nonzero — witness (e1 = x, e2 = y, "
+      "k = z): <e1, k x e2> = -1 != 0 exactly, and g_witness = "
+      "-o3 vanishes IFF om0.k = o3 = 0 — the source-bearing claim "
+      "is CONDITIONAL on the open channel (D1-R3 precedent): R3 "
+      "OWES the nonvanishing exhibition at lambda_*",
+      melem == -1 and g_witness == -sp.Symbol('o3')
+      and sp.simplify(g_witness.subs(sp.Symbol('o3'), 0)) == 0)
 
 # ---------------------------------------------------------------
 # RR2-4 (identity — transparency limit): g -> 0 recovers the bare
@@ -163,22 +165,30 @@ check("mutation", "MB2-1 raw-factor substitution detected: "
       and sp.simplify(raw_shift) != 0)
 
 # ---------------------------------------------------------------
-# MB2-2 (mutation): stiffening-sign flip — the |m| >= 1 exclusion
-# is sign-dependent. With the softening sign -m^2 delta^2 the
-# displaced diagonal moves by -2 m^2 delta^2 relative to the
-# receipted + sign: any localized lambda shifts by that amount
-# (nonzero), i.e. the F-C3 sign budget is LOAD-BEARING for the
-# localization; a softening sign would move sector candidates back
-# toward the controlled window — detected as a build difference.
-shift_flip = sp.simplify((-2*m**2*delta**2))
-check("mutation", "MB2-2 stiffening-sign flip detected: flipping "
-      "the displacement sign moves every |m| >= 1 localized level "
-+     "by -2 m^2 delta^2 != 0 (exact) — the |m| >= 1 exclusion is "
-      "SIGN-DEPENDENT: the F-C3 stiffening sign budget is "
-      "load-bearing for the localization claim; a softening sign "
-      "would move sector candidates back toward the controlled "
-      "window (a different, unreceipted build)",
-      shift_flip != 0)
+# MB2-2 (mutation): stiffening-sign flip — the NEGATED displacement
+# FAILS RR2-1's OWN budget identity: RR2-1 receipted the ratio with
+# the stiffening sign, ratio_plus = m^2 delta^2/(gamma delta^3 L^2)
+# = m^2/(gamma delta L^2) (> 0, driving levels OUT of the window);
+# the negated sign gives ratio_minus = -m^2/(gamma delta L^2),
+# which does NOT satisfy the receipted identity (differs by
+# 2 m^2/(gamma delta L^2) != 0) — the |m| >= 1 exclusion is
+# SIGN-DEPENDENT and the F-C3 budget is load-bearing: under
+# negation the exterior verdict's premise (displacement away from
+# the window) is violated and the localization claim changes.
+ratio_plus = (m**2*delta**2)/(gamma*delta**3*Lb**2)
+ratio_minus = (-m**2*delta**2)/(gamma*delta**3*Lb**2)
+check("mutation", "MB2-2 stiffening-sign flip detected via RR2-1's "
+      "own identity (per #113): the negated ratio -m^2 delta^2/"
+      "(gamma delta^3 L^2) does NOT satisfy the receipted budget "
+      "identity — it differs from ratio_plus by 2 m^2/(gamma delta "
+      "L^2) != 0 exactly — so the exterior-verdict premise "
+      "(displacement away from the window) FAILS under negation: "
+      "the |m| >= 1 exclusion is sign-dependent and the F-C3 "
+      "stiffening budget is load-bearing for the localization; a "
+      "softening sign is a different, unreceipted build",
+      sp.simplify(ratio_minus - ratio_plus
+                  + 2*m**2/(gamma*delta*Lb**2)) == 0
+      and sp.simplify(ratio_minus - ratio_plus) != 0)
 
 print(f"ALL 0062-R2 RESONANCE RECEIPTS GREEN: {COUNTS['identity']} "
       f"identity + {COUNTS['mutation']} mutations = "

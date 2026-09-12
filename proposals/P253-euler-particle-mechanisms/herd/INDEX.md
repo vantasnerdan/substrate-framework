@@ -244,3 +244,4 @@
 | 2026-09-12T10:39Z | drift | DONE | P1 | 0108-drift-critique | attempts/0108-drift-critique/fence-audit-close.md | audit closed |
 | 2026-09-12T10:39Z | drift | WORKING | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-dd3.md | D-D3 pass R1-text |
 | 2026-09-12T10:40Z | drift | WORKING | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-sage-0062r2.md | 0062-R2 conditional |
+| 2026-09-12T12:40Z | sage | WORKING | P2 | attempts/0161-sage-0062branch | attempts/0161-sage-0062branch/02-0062r2-resonance.md | R2 repairs PAID (#113 8cbf1bb3->8cbf1bb1): (1) g!=0 narrowed to CHANNEL-OPEN form (om0.k != 0 restored to text; closure exhibited g_witness = -o3) + R3 OBLIGATION REGISTERED (exhibit nonvanishing at lambda_*; source-bearing conditional per D1-R3 precedent); (2) MB2-2 re-tied to RR2-1's own identity (negated ratio fails the receipted budget by 2m^2/(gamma delta L^2)); run_0062r2 rerun 6 exit 0; R3 trace proceeding |

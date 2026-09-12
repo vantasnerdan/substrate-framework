@@ -33,11 +33,13 @@ lambda_* is R3's object and is NOT claimed here.
   det M IDENTICAL, splitting (λ₊−λ₋)² = (D₁−D₂)² + 4g² a SUM OF
   SQUARES: the block-level crossing is REAL for real data (two real
   resonances, exact formulas).
-- **RR2-3 (source-bearing coupling, EXACT):** g is the Hodge
-  element from the R1 seed's (16) structure:
+- **RR2-3 (source-bearing coupling, CHANNEL-OPEN form per #113):**
+  g is the Hodge element from the R1 seed's (16) structure:
   g = (ω₀·k)/|k|² · ⟨e₁, k×e₂⟩ on transverse polarizations;
   witness ⟨e₁, k×e₂⟩ = −1 ≠ 0 (e₁ = x̂, e₂ = ŷ, k = ẑ): **g ≠ 0
-  exactly** — the resonance is SOURCE-BEARING (a bare transport
+  PROVIDED THE CHANNEL IS OPEN (ω₀·k ≠ 0)** — the source-bearing
+  positive claim stays CONDITIONAL, and the R3 OBLIGATION IS
+  REGISTERED: exhibit the coupling's nonvanishing AT λ_* (a bare
   divisor gives g = 0 exactly).
 - **RR2-4 (transparency limit):** g → 0 recovers the bare transport
   crossings {D₁, D₂} exactly (ordered witness) — the block formula
@@ -54,12 +56,27 @@ lambda_* is R3's object and is NOT claimed here.
   crossing by the raw factor D(I) = 0 is caught (the
   nondivisibility class; the README's "spectrum of (18), not merely
   the raw interval of (17)" requirement is enforced by the receipt).
-- **MB2-2 (stiffening-sign flip):** flipping the displacement sign
-  moves every |m| ≥ 1 localized level by −2m²δ² ≠ 0 — the
-  |m| ≥ 1 exclusion is SIGN-DEPENDENT: the F-C3 sign budget is
-  load-bearing for the localization claim; a softening sign would
-  move sector candidates back toward the controlled window (a
-  different, unreceipted build).
+- **MB2-2 (stiffening-sign flip; re-tied per #113):** the negated
+  displacement FAILS RR2-1's own budget identity — the negated
+  ratio −m²/(γδL²) differs from the receipted ratio_plus by
+  2m²/(γδL²) ≠ 0, so the exterior-verdict premise (displacement
+  away from the window) fails under negation: the |m| ≥ 1
+  exclusion is SIGN-DEPENDENT and the F-C3 stiffening budget is
+  load-bearing; a softening sign is a different, unreceipted build.
+
+## Repairs paid (ledger)
+
+Drift review: CONDITIONAL PASS (#113, 8cbf1bb1), R3 UNBLOCKED, 2
+repairs ride R3 — paid this commit:
+**repair (1)** — the g ≠ 0 claim NARROWED to the channel-open form:
+RR2-3 now states g = (ω₀·k)/|k|²·⟨e₁, k×e₂⟩ ≠ 0 **provided
+ω₀·k ≠ 0** (channel open; the receipt also exhibits the closure:
+g_witness = −o3 vanishes iff ω₀·k = 0), and the **R3 OBLIGATION IS
+REGISTERED**: exhibit the coupling's nonvanishing AT λ_* — the
+source-bearing positive claim stays CONDITIONAL (D1-R3 precedent).
+**repair (2)** — MB2-2 re-tied to RR2-1's OWN identity (above).
+run_0062r2 rerun: 6 assertions (4 identity + 2 mutations), exit 0.
+Re-review = rerun per routing.
 
 ## R2 verdicts (PROPOSED — drift review requested)
 
