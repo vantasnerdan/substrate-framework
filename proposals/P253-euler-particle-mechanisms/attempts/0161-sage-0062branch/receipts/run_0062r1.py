@@ -29,9 +29,9 @@
 #       witness, so a core-only Dirichlet solve (boundary field
 #       forced to zero) creates a vortex sheet and contradicts the
 #       whole-space transmission system (12) — DETECTED.
-#   RB1-5 m-label exactness: (1/I) d_theta xi_i == n xi_i — the
-#       0159 m-sector label is exact at the seed (single-sector
-#       graph-membership structure).
+#   RB1-5 m-label STRUCTURE tier (re-typed per drift #110): the
+#       frame builds in d_theta -> I n; theta-free coefficient
+#       structure receipted; axisymmetry-dependence = MB1-3.
 # Discipline: these receipts validate the encoded model-level
 # identities ONLY. The continuum DA-closure/graph-equivalence
 # statement and the resonance question (R2) are NOT claimed here.
@@ -39,7 +39,7 @@
 
 import sympy as sp
 
-COUNTS = {"identity": 0, "mutation": 0}
+COUNTS = {"identity": 0, "mutation": 0, "structure": 0}
 
 def check(kind, label, cond):
     assert cond, f"VALIDATION FAILURE: {label}"
@@ -202,7 +202,8 @@ check("mutation", "MB1-2 core-only-Green mutation detected: on the "
       "exact collar surface rho = 3/5 (witness r = 5/2 + 3/5, "
       "z = 3/10, r0 = 5/2, a = b = 1/2, theta = 0) the poloidal "
       "tangential trace T = xi_r t_r + xi_z t_z is a NONZERO exact "
-      "rational number (verified != 0), so a core-only Dirichlet "
+      "symbolic value (exp(-25/7) times a nonzero rational factor; "
+      "verified != 0), so a core-only Dirichlet "
       "solve — which forces the boundary field to zero — creates a "
       "vortex sheet there and contradicts the whole-space "
       "transmission system (12); the whole-space B_R3 kernel is "
@@ -212,20 +213,53 @@ check("mutation", "MB1-2 core-only-Green mutation detected: on the "
       T_trace != 0)
 
 # ---------------------------------------------------------------
-# RB1-5 (identity): m-label exactness: (1/I) d_theta xi_i == n xi_i
-# — in the frame representation d_theta -> I n exactly, so each
-# component is an exact angular eigenfield with eigenvalue n.
-eigs = all(sp.simplify((II*n*xi_c)/II - n*xi_c) == 0
-           for xi_c in (xi_r, xi_t, xi_z))
-check("identity", "RB1-5 m-label exactness: (1/I) d_theta xi_i == "
-      "n xi_i for ALL three components exactly (the angular "
-      "generator's eigenfield, eigenvalue n) — the seed sits in ONE "
-      "exact m-sector of the 0159 X* decomposition; the per-m "
-      "one-index bounds apply with m = n and the seed never leaves "
-      "its sector (single-sector graph-membership structure; the "
-      "continuum DA-closure statement itself is governed by the "
-      "0062 README, not claimed here)",
-      eigs)
+# RB1-5 (STRUCTURE tier — re-typed per drift #110, RD3-2 precedent):
+# the m-label exactness (d_theta -> I n per component) is BUILT INTO
+# the frame representation and is NOT independently tested here —
+# the receipted, testable consequences are RB1-3's same-n C_0 image
+# and MB1-3's axisymmetry-dependence below. The structure check that
+# IS mechanical here: every frame coefficient triple in this receipt
+# is theta-free (free symbols subset of {r, z, n, r0, a, b}) — no
+# residual angular leak into the (r, z) bookkeeping.
+theta_free = all(
+    set(c.free_symbols) <= {r, z, n, r0, a, b}
+    for c in (xi_r, xi_t, xi_z, eta_r, eta_t, eta_z))
+check("structure", "RB1-5 m-label STRUCTURE tier (re-typed per "
+      "drift #110, RD3-2 precedent — the frame builds in d_theta -> "
+      "I n; it is NOT independently tested): all frame coefficient "
+      "triples of this receipt (seed xi and DA image eta) are "
+      "theta-free in (r, z) — no residual angular leak; the "
+      "testable consequences are receipted separately (RB1-3 same-n "
+      "C_0 image; MB1-3 axisymmetry-dependence). The seed sits in "
+      "one 0159 X* m-sector BY STRUCTURE; the continuum DA-closure "
+      "statement is governed by the 0062 README, not claimed here",
+      theta_free)
+
+# ---------------------------------------------------------------
+# MB1-3 (mutation — NEW, the genuine sector-preservation test): the
+# same-n preservation (RB1-3) rides the BACKGROUND'S AXISYMMETRY:
+# a background carrying an m-mode (omega_mut = omega_0 + zt_m r
+# E_m e^{i m theta}, E_m the harmonic tag) moves the DA image out of
+# the n-block (products e^{in} E_m carry the (n+m)-label), while
+# setting E_m = 0 recovers the receipted eta EXACTLY.
+Em = sp.Symbol('E_m')
+zt_m = sp.Function('zt_m')(r, z)
+om_t_mut = om_t + zt_m*r*Em
+cr_m, cz_m = -xi_z*om_t_mut, xi_r*om_t_mut
+eta_mut_r = sp.expand(curl_cyl(cr_m, 0, cz_m)[0])
+eta_mut_z = sp.expand(curl_cyl(cr_m, 0, cz_m)[2])
+exit_r = sp.simplify(eta_mut_r.subs(Em, 0) - eta_r)
+exit_z = sp.simplify(eta_mut_z.subs(Em, 0) - eta_z)
+has_exit = (eta_mut_r.has(Em) or eta_mut_z.has(Em))
+check("mutation", "MB1-3 axisymmetry-dependence detected: with a "
+      "background m-mode (omega_mut = omega_0 + zt_m r E_m "
+      "e^{i m theta}) the DA image LEAVES the n-block (E_m-tagged "
+      "(n+m)-label terms appear; nonzero on symbolic data), while "
+      "E_m = 0 recovers the receipted eta exactly — the receipted "
+      "same-n preservation (RB1-3) rides omega_0's axisymmetry, "
+      "which is exactly why the harmonic block decouples per toroidal "
+      "n on this carrier",
+      has_exit and exit_r == 0 and exit_z == 0)
 
 print(f"ALL 0062-R1 SEED RECEIPTS GREEN: {COUNTS['identity']} "
       f"identity + {COUNTS['mutation']} mutations = "

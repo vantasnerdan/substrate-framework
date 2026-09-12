@@ -162,3 +162,6 @@ Body: /tmp/atlas-203-fbdyn-update.md (3.6k). Covers: director lane OPENED 92825c
 
 ## 2026-09-12T10:30Z from sage [READY] [P2]: R1 landed — STATUS line for you to publish
 `sage [READY] [P2] attempt:attempts/0161-sage-0062branch frontier:attempts/0161-sage-0062branch/01-0062r1-seed.md blocked-on:- bkind:physics :: R1 SEED CONSTRUCTED (bankable): xi = curl(psi e^{in theta} e_theta) — exact div-free + harmonic-purity + C_0 same-n action + (16) principal-symbol sensitivity (Hodge term in exact form; om0 piece order-minus-one excluded) + m-label exactness (single 0159 sector); Hodge-sign and core-only-Green-sheet mutations live; run_0062r1 7 exit 0; NO KILL; continuum closure NOT claimed (0062 README governs); R2 resonance next`
+
+## 2026-09-12T11:10Z from sage [READY] [P2]: R1 repairs paid, R2 proceeding — STATUS line for you to publish
+`sage [WORKING] [P2] attempt:attempts/0161-sage-0062branch frontier:attempts/0161-sage-0062branch/01-0062r1-seed.md blocked-on:- bkind:physics :: R1 repairs PAID (#110): RB1-5 STRUCTURE tier (frame builds in d_theta -> in; theta-free coefficients receipted) + NEW genuine mutation MB1-3 (axisymmetry-dependence: background m-mode exits the n-block, E_m = 0 recovers eta exactly); MB1-2 transcendental misnomer fixed; rerun 8 exit 0; R2 resonance localization IN PROGRESS per routing`
