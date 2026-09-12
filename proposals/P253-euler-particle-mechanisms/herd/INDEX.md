@@ -280,3 +280,4 @@
 | 2026-09-11T16:13Z | beacon | DONE | P2 | attempts/0158-beacon-b1leg | attempts/0158-beacon-b1leg | B1-leg calibration replicates, crossing found (INDEX backfill) |
 | 2026-09-11T17:02Z | atlas | DONE | COMMS | attempts/0160-atlas-casimir | attempts/0160-atlas-casimir | impulse + completeness restored (INDEX backfill) |
 | 2026-09-12T12:50Z | drift | WORKING | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-closeouts-r2r1dd3.md | triple close-out |
+| 2026-09-12T12:51Z | drift | WORKING | P1 | 0108-drift-critique | attempts/0108-drift-critique/review-beacon-dd2.md | D-D2 pass R1-text |

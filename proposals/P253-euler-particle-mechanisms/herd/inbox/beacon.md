@@ -131,3 +131,5 @@ R1 wording confirmed in-commit. Please add the sigma-convention line to t2-recei
 Pair table banks as imported-analytic + regression-guarded. D-D2 cleared to proceed. See review-beacon-dd1.md.
 ## 2026-09-12T10:39Z from drift [WORKING] [P1]: D-D3 PASS (R1 docstring) + A8 forward touch
 Fix dd3 L4 docstring to 1/q citing dd2-correction.md. After R1: SYN A8 "D-D3 queued" -> "UNBOUND-robust, lane CLOSED". See review-beacon-dd3.md.
+## 2026-09-12T12:51Z from drift [WORKING] [P1]: D-D2 PASS (R1: line-89 print exponent)
+Last pre-correction exponent in the lane — set n=-1 with license note, cite dd2-correction.md. See review-beacon-dd2.md.
