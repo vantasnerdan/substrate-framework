@@ -35,33 +35,39 @@ The auditee posted a pre-audit disclosure agreeing with the headline verdict; re
 - D3 pinned at comment level: their 2mp counting reduces to the verified R^{3-2p} law at m = 1.
 - Blocked-on-artifact follow-ups formally requested: the G-02 source-contracted propagator (settles their sections 256/261 power-counting extension) and a Hamiltonian cross-term oracle (F_{mu nu} shape factors); both need the rev-294 bundle re-shared on #211.
 
-## Addendum 3 (2026-09-14 owner-directed extension: full discussion #186)
+## Addendum 3 (2026-09-14, MERGED in PR #212 as bbd202f1 after harvest review)
 
-Scope extended to all 41 top-level comments + 5 replies of discussion #186
-(four poster accounts, all agent-run) plus a packaging-for-review assessment
-of the two external repos.  Inventory: 665 atomic claim IDs vendored with
-verbatim thread sources (sources/claim-inventory/, sources/thread/).
-JarekDuda's side carries 48 claims labeled unverifiable (bundle not
-fetchable: the linked Zenodo record holds a PDF, none of the cited
-round-scripts) and 11 withdrawals; xrodz's side pins artifacts by SHA whose
-committed data matches every posted R20 number exactly.
+Owner-directed extension to all 41 top-level comments + 5 replies of
+discussion #186 (four poster accounts, all agent-run) plus a
+packaging-for-review assessment of the two external repos.  Landed state
+after the distinct-merger pass (Codex/axiom-marbell; review record
+proposals/P252-newton-sign-external-audit/reviews/pr212-harvest-review.md):
 
-- New oracles B14-B18: mjmikulski 016 null-tilt family F identically zero
-  for every profile (nilpotency P^2 = (l^T eta l) P; commutator cancellation
-  by symmetric P-proportional products), spectrum pin at a*, V <= 2 Delta^2,
-  radial charge direction (hedgehog degree 1) - the "most serious result
-  against the framework" VERIFIES at the form level; Koide arithmetic exact
-  (0.666803 / 0.666661 both reproduce; canonical shape anchored at
-  Wikipedia); posted vacuum curvatures 371866.88 / 48.02 / 5.229 / 11.52 and
-  714251 / 79.4 / 6.08 / 11.52 are exact rationals 2 P'(q_i)^2; Derrick
-  virial reads exact; B18 artifact-consistency green on 25 energies + reads.
-- Extension tally: ALL 29 CHECKS PASS, ALL 9 MUTATIONS BREAK.  Combined
-  audit: 70 checks / 24 mutations, all green.
-- Packaging verdict: openwave HIGH (REPRODUCE.md task-doc convention,
-  AI_HYGIENE adversarial-audit rule, pre-reg -> PR -> blind-run history);
-  mjmikulski HIGH-MEDIUM (PR-per-report, review rounds, negatives recorded);
-  JarekDuda stack UNRESOLVABLE FROM THREAD (PDF-rev receipts, no links,
-  same-day rev churn, one comment lost items 2-3 in an HTML paste).
-- New debts D8-D12 recorded in audit.md Addendum 3 (ratio round-speak,
-  energy-Q naming hazard, unregenerated npz receipts, lost paste items,
-  self-reported withdrawal rate).
+- Scope as landed: complete 41+5 source snapshot (all vendored, MD5-valid),
+  665-ID inventory covering all top-level units and 3/5 replies, SELECTED
+  B14-B18 validation, external packaging review, explicit P249/P250 action
+  boundary (016 obstructs free-time-axis/F-spectrum-only actions; P249
+  quotients that axis by hypothesis; OpenWave R13-W/R20 failures on its 4x4
+  action neither refute nor validate P250).
+- Repairs paid in review: B14 identities now exact on all r > 0 (P dP_i =
+  dP_i P = 0, [dP_i,dP_j] = 0 coordinate identities; exact E1 eigenvector
+  (B-E1,(A-E1)n) replaces the 200-direction numeric check); B18 posted
+  decimals string-preserved with breaking mutant B18_M18b (author's float()
+  conversion had weakened tolerance tenfold); mjmikulski dependency pinned
+  to comment-time snapshot 210bbff (not mutable main); MD5 manifest paths
+  repaired; two unatomized JarekDuda replies recorded as D13.
+- Receipts: base 50/50 checks + 18/18 mutations; extension 29/29 + 10/10
+  (attempts/0003/full_run.log).  Earlier 29/9 and OpenWave source-script
+  receipts preserved as history with their environment limitations.
+- Packaging verdicts stand: openwave HIGH at pin 55fcc168; mjmikulski
+  HIGH-MEDIUM; JarekDuda stack unresolvable from thread.
+- No claim promotion; no registry/release/semantic changes.
+
+## Frontier on #211 (open)
+
+Correct next: atomize JarekDuda replies [12.r0] and [12.r1], then freeze
+whether the broadened extension requires executing every remaining
+checkable_here=true route or an owner-approved smaller validation surface.
+Landing check: inventory accounts for all 41+5 units; each promoted
+validation verdict carries an executed independent oracle with sensitivity
+evidence.
