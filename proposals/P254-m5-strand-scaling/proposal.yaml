@@ -1,0 +1,104 @@
+id: P254
+schema_version: 2
+base_release: v0.183.0
+source_baseline: substrate-framework@9032348018fd03c921d819dc660e85587a832bce
+question: >-
+  For a regular straight transverse-pair strand with fixed exterior spectrum,
+  which assumptions yield a sharp reduced tension bound and why do the
+  spectral-eigenvalue and trace-power potentials produce different small-split
+  powers, without asserting a free stable charge or pair confinement?
+candidate_universe:
+  scope: >-
+    Exact radial fixed-director theorem across the two post-September-14 M5
+    potentials, including only the declared positive spatial curvature sector.
+    The user's broader discussion #186 harvest remains open through #211.
+  frozen_from:
+    - 'User request to harvest discussion #186 since comment 18303935'
+    - 'Discussion comments 18581233, 18583989, 18601274 and pinned script sources'
+    - 'Release v0.183.0 and explicit action/normalization differences'
+  route_families: ['matrix-derived radial Bogomolny square completion']
+  append_only_expansions: []
+obligation_graph:
+  nodes:
+    - id: radial-theorem
+      positive_intent: >-
+        Construct a reusable exact tension bound for both potential laws from
+        the defining matrices, with a witness that the frozen bound is not a
+        lower bound on the full unrestrained action.
+      requires: []
+      pass_licenses: [radial-result]
+      does_not_license:
+        - 'A stable full 3D defect, stationary ring, mass calibration or two-charge confinement'
+        - 'Equality of the two different action/norm/potential choices'
+      maximum_verdict: symbolic_verified
+      failure_scope: 'Only the pinned regular radial transverse-pair chart'
+      unlocks: []
+      status: established
+      license_chain:
+        object: 'Straight half/full transverse-pair line in a fixed director chart'
+        symmetry_or_conservation: 'Pair director n is a line; 2k is an integer so M is single-valued'
+        ensemble: statics
+        variational_functional: >-
+          T=2 pi int rho dr [A m² (b b_r/rho)² + V(b)] with m=2k and
+          separately matrix-derived A and V for each of two declared actions
+        admissible_space: >-
+          b>=0, b(0)=0, b(infty)=b0, where b0=beta/2 (spectral) or
+          b0=delta/2 (trace); fixed pair mean and other diagonal slots,
+          absolutely continuous q=b² in s=rho²/2, finite-energy exterior
+        representation_coverage: >-
+          Radial/pair chart only; no director tilt, time-space entries,
+          floating axis value, 3D curvature, or two-body relaxation
+        observable: 'Tension per unit length above its chosen vacuum, not particle mass or pair force'
+        numerical_representation: 'None for the theorem; source lattice data only checks applicability'
+        permitted_verdict: symbolic_verified
+license_registry:
+  - id: radial-action
+    proposition: 'Two source actions and conventions are pinned separately; fixed-slot radial reductions are conditional'
+    status: earned
+    evidence: 'Discussion 18581233 and 18601274; pinned source scripts; exploratory independent matrix-level probe (not production evidence)'
+    earned_by: 'matrix-level source comparison'
+  - id: radial-result
+    proposition: 'Sharp conditional radial bound, the two potential-order scalings, and the full-field boundary'
+    status: earned
+    evidence: 'P254 proof.md, tests/test_m5_strand.py and reviews/C-M5L-001.md; six focused tests passed and both scoped correction checks cleared'
+    earned_by: 'Exact matrix reduction, square completion and constructive R25 director perturbation'
+source_inventory:
+  - source: 'OpenWave R25, discussion 18581233, openwave-labs/openwave@a73f6fcd71d6b45bf479e76a3999123b39e6d9d6'
+    access: 'open; cloned at the pinned commit for the initial research'
+    extracted: 'R25-0 block reduction and R25-1 slaved potential; source formula and author script already read and run before this proposal freeze'
+  - source: 'Mikulski Report 018, discussion 18601274, the-final-lagrangian-of-physics@4823e5ec2368420f28229ac73067108ec01e6e23'
+    access: 'open; cloned at the pinned commit for the initial research'
+    extracted: 'strand_bogomolny.py symbolic matrix identity and beta-cubic bound already read and run before freeze'
+  - source: 'Mikulski Report 017, discussion 18583989, same pinned repository'
+    access: 'open; symbolic.py already read and run before freeze'
+    extracted: 'Positive field-metric contraction and trace constraint are action-specific; rank and lattice results not independently rerun'
+invariants:
+  - 'Accepted C-M5C/C-M5W statements concern a different constrained-frame action and stay unchanged'
+  - 'Two energies use distinct matrix norms, vacuum spectra, and potentials; no numerical coefficient transfer across them'
+  - 'A restricted lower bound is never described as a full-field lower bound'
+allowed_imports:
+  - 'Elementary matrix calculus, positive-square inequality, one-dimensional fundamental theorem of calculus'
+  - 'SymPy exact algebra; SciPy exploratory counterexample for floating director slot'
+candidates:
+  - id: A
+    description: >-
+      Fixed theorem route: derive F from the pair matrices, specialize both
+      potentials, convert rho to s and b² to q, complete the square and
+      check endpoint saturation and potential-order scaling.
+target_kind: fixed_theorem
+selection_criteria:
+  - 'Exact matrices before borrowed formulas; correct winding and curvature normalization'
+  - 'Regular core boundary and action-specific potential labels'
+  - 'Wrong coefficient and unpinned-core cases demonstrably alter the bound'
+claims_proposed: [C-M5L-001]
+comparators_blinded_until: null
+route_frontier:
+  active_obligation: null
+  considered: [A]
+  tried: [A]
+  failure_generated: []
+  remaining: []
+execution_state: terminal_success
+objective_state: complete
+exhaustion_certificate: null
+status: accepted

@@ -1532,6 +1532,76 @@ C-M5C-004 (exact energy-charge orbital stability and radiation scope): The C-M5C
 - Dependencies: C-M5C-001, C-M5C-002, C-M5C-003
 - Exclusions: Stability is orbital stability of the full minimizing set; it does not assert uniqueness or a positive spectral gap above every accidental minimizer modulus., No nonlinear two-clock interaction, particle identity, gravity, or empirical lifetime is inferred.
 
+## C-M5H-001
+
+For the OpenWave certified eta action restricted to a smooth compact spatial (1,2)-rotation orbit of its fixed vacuum spectrum, all spatial curvature and trace potential vanish. The specified rigid (2,3) clock read has positive inertia growing as 1/w for a narrowing bump; at fixed formal J!=0 its one-angle family's Routhian has an unattained zero infimum. This is neither a full-field global-minimizer no-go nor an identified physical Noether charge.
+
+- Accepted in: `v0.185.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: The unrestricted action is spatial-SO(3) invariant, but the rigid (2,3) orbit rotates its fixed nondegenerate exterior; no fixed-boundary dynamical Noether charge, full eta-static nonnegativity or global minimizer is established.
+
+## C-M5H-002
+
+For four arbitrary real symmetric 4x4 jets and the OpenWave R0 mixed eta/delta contraction, X_M squared equals -2I1-I2+4I3 identically. A constant-coefficient X_M squared term is therefore already in this quartic basis, not a new independent invariant.
+
+- Accepted in: `v0.185.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: Field-dependent coefficients, changed contractions and physical stability are outside the identity.
+
+## C-M5H-003
+
+For a fixed spatial spectrum and smooth SO(3) frame, the positive spatial OpenWave R22 quartic obeys 4 sum_{i<j} ||Fij||² = 8 sum_a Ga² sum_{i<j} ((Wi cross Wj)^a)², with Ga the product of the two eigenvalue gaps adjacent to axis a. The uniaxial (1,delta,delta) limit retains only G0²=(1-delta)^4.
+
+- Accepted in: `v0.185.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: No local varying eigenvalues, timelike modes, relaxed pairs or free-space force are included.
+
+## C-M5H-004
+
+For a C2 permutation-invariant four-eigenvalue potential at a fully symmetric stationary point, with nonzero symmetric-direction Hessian, the locally stationary path (nu+Delta,nu,nu,nu) has nu'(0)=-1/4. The value need not hold for asymmetric weights or a nonsmooth ranked potential.
+
+- Accepted in: `v0.185.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: No hierarchy-point slope, smoothness across ordered eigenvalue crossings or particle mass is inferred.
+
+## C-M5H-005
+
+For one smooth three-component unit director the pullback H_mn=n dot (partial_m n cross partial_n n) is decomposable, so H wedge H and its E dot B pseudoscalar vanish identically. Two independent such forms can have a nonzero sum wedge.
+
+- Accepted in: `v0.185.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: Not a restriction on all M5, boosted matrices, eigenvalue gradients or higher-target fields.
+
+## C-M5H-006
+
+For a rank-one CP2 projector P=z z^dagger and horizontal tangent jets ui=(I-P)partial_i z, the norm squared of [partial_i P,partial_j P] equals 2 det(Re G_ij)+(3/2)Fij², where Gij=ui^dagger uj and Fij=2 Im Gij. The projected Gram determinant cannot generally be dropped in favor of F alone.
+
+- Accepted in: `v0.185.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: No full SU3 or M5 action equivalence, physical confinement or observed spectrum is inferred.
+
+## C-M5L-001
+
+C-M5L-001 (symbolic_verified; conditional fixed-slot M5 strand): For S=s0 I+b(rho)[cos(m phi) sigma_z+sin(m phi) sigma_x], nonzero integer m=2k, b>=0, b(0)=0, b(infinity)=b0>0, frozen pair mean and all other eigenvalues, set q=b² and s=rho²/2. The transverse commutator has Tr(F_xy F_xy^T)=8m²(bb'/rho)². In the separately declared Report-018 spectral model 2Tr gives A=16 and V=2(b0-sqrt(q))², b0=beta/2; in the OpenWave R25 trace-power model 4Tr gives A=32 and V=w(q0-q)²[4+36s0²+(12s0²+2(q+q0))²], q0=b0², s0=b0=delta/2, w>0. For the fixed-slot radial functional T=2pi int ds [A m² q_s²/4+V], square completion gives the sharp finite-energy radial infimum 2pi sqrt(A)|m| int_0^q0 sqrt(V(q))dq, even over nonmonotone profiles. It is sqrt(2)pi|m|beta³/3 in the spectral model and 2pi sqrt(32w)|m| int_0^q0(q0-q)sqrt(K(q))dq in R25, with K(q) as displayed. R25's finite-splitting constant-K_leading lower bound is strict and its exact small-delta behavior is pi sqrt(2w)|m|delta⁴/2 [1+9delta²/8+O(delta⁴)] at fixed w. For |m|>1 the first-order profile b~rho is not differentiable at the axis, so its value is an infimum approached by smooth angular cores, not an attained smooth minimum. The R25 radial value is not a lower bound on its larger static field class: an annular positive relaxation of its 1-eigenvalue has negative trace-potential first variation but a commuting diagonal gradient and hence unchanged curvature energy.
+
+- Accepted in: `v0.184.0`
+- Verification: `symbolic_verified`
+- Compatibility: `compatible_extension`
+- Dependencies: none
+- Exclusions: Two distinct source actions are conditional and neither is the accepted C-M5C/C-M5W auxiliary-frame action or the P239 action. This claim does not transfer coefficients between actions., The radial result proves neither a full-field tension bound, a localized stable electron, a smooth equality minimizer at full winding, a physical two-charge string, nor a Newton force.
+
 ## C-M5S-001
 
 C-M5S-001 (symbolic_verified): The exact free-fluctuation census of the aligned spectral-Cartan vacuum M0 with mixed targets (4, 1, 3/10, 0), computed as exact rational matrices on the 10-dimensional symmetric basis of the conditional P239 action's pinned spectrum potential and projector-current kinetic metric, decomposes into exactly 3 massless propagating species (timelike-eigenvector boost orbit; kinetic coefficients exactly 1/9, 100/1369, 1/16, positive), 4 stiff static directions (exact squared stiffness gaps 67905, 30, 361141/250000, 1; vanishing quadratic kinetics, excluded from species counting by this named reason), and 3 inert directions. The first variation of the timelike spectral projector is certified by exact affine uniqueness against its linearized defining system (satisfaction, consistency, trivial kernel in all 10 directions), and preregistered mutations (degenerate target, kinetic rescaling, weight drop) each break the corresponding record. Consequence consumed downstream: the induced composition multiplicity is N=3 with every propagating species exactly massless, so z_i=0, the accepted continuous extension gives J_sharp(0)=J_smooth(0)=1, the scheme spread R(0)=1 exactly per C-IGR-004, and Delta(1/G)=(1-6*xi)*Lambda^2/(4*pi) reduces to sourcing Lambda alone; the tau^-1 higher-curvature control class remains logarithmically divergent at m2=0 as C-IGR-004's declared boundary. Scope note: this census is about the aligned vacuum M0; window-background second-variation structure is carried as family Morse-index evidence under C-M5S-002's selection record, not by this claim.
