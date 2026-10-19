@@ -1,0 +1,2662 @@
+{
+  "kind": "CANONICAL_TWO_SOURCE_AND_REPEATED_PW19_CUBIC_FLUX_BARYON",
+  "plan": "issue222-journal-construction-20261019",
+  "runtime": {
+    "python": "3.12.3",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "source_sha256": {
+    "rich_journal_flux_carrier_20261019.py": "97edc3a628955b4f9a2988753d21bc69f98d8b180b600218e938d26f1e3d1f8b",
+    "rich_nucleon_hierarchy_20261019.py": "907f2cf716cac6e1a51e083f818ffec5a021179f859abe646244ebff6139deff",
+    "rich_composite_local_flux_binding_20261017_model.py": "44c1c0ac6ea024bb70221a562b905d009fc6e4255f7bbce9a50ea4368abc3c2d",
+    "rich_colour_spin_root_20261019.py": "88ec9e8b7be6ae704ced067cf70d2473f175b1bb1a73b73af99845918f1c2bcc"
+  },
+  "local_operator_evidence": {
+    "PW19": {
+      "name": "PW19",
+      "gram_residual": 3.6821932062951477e-16,
+      "conjugation_commutator_residual": 3.236828524569469e-16,
+      "inversion_odd_residual": 0.0
+    },
+    "PW155_degree2": {
+      "name": "PW155_degree2",
+      "gram_residual": 2.886112785300463e-16,
+      "conjugation_commutator_residual": 2.5984758632062273e-15,
+      "inversion_odd_residual": 4.541897236021557e-15,
+      "CG_intertwining_residual": 2.8750433086102054e-15,
+      "CG_orthonormality_residual": 3.0539826389514215e-15
+    }
+  },
+  "rows": [
+    {
+      "I": 0.5,
+      "mass_m": 3.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.16666666666666666,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.09622504486493763,
+      "total_representation_degree_cutoff": 1,
+      "field_dimension": 55,
+      "matter_dimension": 70,
+      "tensor_dimension": 3850,
+      "energy": -0.09741343901889754,
+      "eigen_residual": 1.1712068611453153e-15,
+      "root_Gauss_max_norm": 9.454765405387782e-15,
+      "unprojected_H_eigen_residual": 6.751447106317352e-16,
+      "C4z_eigenphase_residual": 1.4163463978096173e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 1.0000000000000027,
+            "imag": 1.4432899320127035e-15
+          },
+          "C4z": {
+            "real": 1.4142135623730985,
+            "imag": 3.164135620181696e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 7.662048165315866e-15,
+          "C4z": 7.695428358616684e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 2.279320678360937e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.9391898542050837,
+        0.06081014579491479,
+        0.0,
+        0.0
+      ],
+      "field_probability": 0.06081014579491628,
+      "vacuum_seed_overlap_Z0": 0.9391898542050839,
+      "vacuum_weight_minus_seed_overlap": -2.220446049250313e-16,
+      "one_source_projection_weight": 0.06015821154052875,
+      "excluded_from_vacuum_plus_one_source_weight": 0.0006519342543873097,
+      "axial_neutral_tau3_sigma3": 1.632420011700572,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666679,
+        1.1034932929077401,
+        null,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.939348251210543,
+          "axial_diagonal_contribution": 1.5655775544333168
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.03032587439472811,
+          "axial_diagonal_contribution": -0.0032598666552081596
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.03032587439472812,
+          "axial_diagonal_contribution": 0.016628358108658956
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 2.1366647050462882e-29,
+          "axial_diagonal_contribution": -1.71081915554918e-29
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.05347396581380437,
+      "excluded_sector_axial_contribution": 0.0002611307581761085,
+      "included_excluded_axial_coherence": 1.698098999032413e-16,
+      "charge": 0.9999999999999984,
+      "source_only_energy": -0.09642400022791353,
+      "source_only_field_probability": 0.05905264923679099,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.1284724719589576,
+      "old_probability_law_prediction_using_actual_p": 1.6328832523361576,
+      "probability_law_defect": -0.00046324063558556006,
+      "axial_mobility_line_defect": -0.0004632406355857821,
+      "exact_three_component_axial_reconstruction": 1.6324200117005703,
+      "source_only_axial": 1.633859639312894,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.045081113001844045,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 3.4663657427679766,
+        "energy_weighted_mu1": 0.2466400652847661,
+        "energy_squared_mu2": 0.13917995831073704,
+        "centroid_mu1_over_mu0": 0.07115234905587835,
+        "strength_final_Ihalf": 0.04559185118899643,
+        "strength_final_Ithreehalf": 3.42077389157898,
+        "matched_25_state_reference": {
+          "exists_positive_gap": true,
+          "fit_field_probability": 0.061643978938970445,
+          "fit_omega": 1.3854319030402404,
+          "fit_g": 0.0950161382026542,
+          "ground_energy": -0.09741343901889754,
+          "ground_axial": 1.632420011700573,
+          "ground_eigen_residual": 1.6220183144403113e-16,
+          "inelastic_strength_mu0": 3.46305830893627,
+          "energy_weighted_mu1": 0.24375596542838393,
+          "energy_squared_mu2": 0.13400565183686589,
+          "centroid_mu1_over_mu0": 0.07038748518885239,
+          "actual_minus_reference_mu0": 0.0033074338317065077,
+          "actual_minus_reference_mu1": 0.0028840998563821607,
+          "actual_minus_reference_mu2": 0.005174306473871154
+        }
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 3.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.16666666666666666,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.09622504486493763,
+      "total_representation_degree_cutoff": 1,
+      "field_dimension": 55,
+      "matter_dimension": 20,
+      "tensor_dimension": 1100,
+      "energy": -0.05028242450510437,
+      "eigen_residual": 7.452992259936255e-16,
+      "root_Gauss_max_norm": 2.2223849372707325e-15,
+      "unprojected_H_eigen_residual": 7.263243918051777e-16,
+      "C4z_eigenphase_residual": 4.2650443839170097e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -1.0000000000000027,
+            "imag": 6.661338147750939e-16
+          },
+          "C4z": {
+            "real": 9.43689570931383e-16,
+            "imag": 1.5543122344752192e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 1.499794424431744e-14,
+          "C4z": 1.5151937927380073e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 1.0330282126893448e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.9666261134652789,
+        0.033373886534721134,
+        0.0,
+        0.0
+      ],
+      "field_probability": 0.033373886534721064,
+      "vacuum_seed_overlap_Z0": 0.9666261134652793,
+      "vacuum_weight_minus_seed_overlap": -3.3306690738754696e-16,
+      "one_source_projection_weight": 0.032993220718095566,
+      "excluded_from_vacuum_plus_one_source_weight": 0.0003806658166251656,
+      "axial_neutral_tau3_sigma3": 0.32597102860585464,
+      "axial_conditioned_on_active_loops": [
+        0.33333333333333365,
+        0.11273257352013409,
+        null,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.966718615059237,
+          "axial_diagonal_contribution": 0.3222090604518437
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.03328138494076236,
+          "axial_diagonal_contribution": 0.0037619681540106645
+        }
+      ],
+      "axial_cross_quark_spin_channels": 2.7755575615628914e-16,
+      "excluded_sector_axial_contribution": 9.6410704306332e-05,
+      "included_excluded_axial_coherence": -1.8759851115885595e-16,
+      "charge": 1.0000000000000002,
+      "source_only_energy": -0.049723375034222306,
+      "source_only_field_probability": 0.03229950956862365,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.044127642060630023
+    },
+    {
+      "I": 0.5,
+      "mass_m": 1.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.5,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.2886751345948129,
+      "total_representation_degree_cutoff": 1,
+      "field_dimension": 55,
+      "matter_dimension": 70,
+      "tensor_dimension": 3850,
+      "energy": -0.667446907530874,
+      "eigen_residual": 3.3245614417297403e-15,
+      "root_Gauss_max_norm": 6.9794014975155026e-15,
+      "unprojected_H_eigen_residual": 2.5505360242924542e-15,
+      "C4z_eigenphase_residual": 1.3054760192258265e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 1.000000000000002,
+            "imag": 9.992007221626409e-16
+          },
+          "C4z": {
+            "real": 1.4142135623730976,
+            "imag": 2.3314683517128287e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 6.433246209356693e-15,
+          "C4z": 6.0970868259412085e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 1.9353517497933117e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.7397246509381831,
+        0.2602753490618159,
+        0.0,
+        0.0
+      ],
+      "field_probability": 0.26027534906181693,
+      "vacuum_seed_overlap_Z0": 0.7397246509381827,
+      "vacuum_weight_minus_seed_overlap": 3.3306690738754696e-16,
+      "one_source_projection_weight": 0.24715238479183713,
+      "excluded_from_vacuum_plus_one_source_weight": 0.013122964269980136,
+      "axial_neutral_tau3_sigma3": 1.5125719449143962,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666672,
+        1.0746216562278503,
+        null,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.7429401505322599,
+          "axial_diagonal_contribution": 1.2379581840345781
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.12852992473386995,
+          "axial_diagonal_contribution": -0.01207944393134058
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.12852992473387,
+          "axial_diagonal_contribution": 0.0670021961073042
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 1.880531176691578e-29,
+          "axial_diagonal_contribution": -9.91386033010853e-30
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.21969100870385438,
+      "excluded_sector_axial_contribution": 0.005083765804271422,
+      "included_excluded_axial_coherence": 2.605480614044756e-16,
+      "charge": 0.999999999999999,
+      "source_only_energy": -0.6407840876984613,
+      "source_only_field_probability": 0.2354466419365031,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.12679400306660682,
+      "old_probability_law_prediction_using_actual_p": 1.5220692505212128,
+      "probability_law_defect": -0.009497305606816608,
+      "axial_mobility_line_defect": -0.009497305606816608,
+      "exact_three_component_axial_reconstruction": 1.5125719449143953,
+      "source_only_axial": 1.5358629767019427,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.035506783245032786,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 3.188593279898742,
+        "energy_weighted_mu1": 1.3896578802398523,
+        "energy_squared_mu2": 1.4546363594613974,
+        "centroid_mu1_over_mu0": 0.4358216173258644,
+        "strength_final_Ihalf": 0.20428183427149968,
+        "strength_final_Ithreehalf": 2.984311445627242,
+        "matched_25_state_reference": {
+          "exists_positive_gap": true,
+          "fit_field_probability": 0.277370499154087,
+          "fit_omega": 1.0714432307539596,
+          "fit_g": 0.26932982165624386,
+          "ground_energy": -0.667446907530874,
+          "ground_axial": 1.5125719449143966,
+          "ground_eigen_residual": 6.870439748727259e-16,
+          "inelastic_strength_mu0": 3.120891114277591,
+          "energy_weighted_mu1": 1.28617820168049,
+          "energy_squared_mu2": 1.234350338563262,
+          "centroid_mu1_over_mu0": 0.4121188963614991,
+          "actual_minus_reference_mu0": 0.06770216562115117,
+          "actual_minus_reference_mu1": 0.10347967855936235,
+          "actual_minus_reference_mu2": 0.22028602089813543
+        }
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 1.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.5,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.2886751345948129,
+      "total_representation_degree_cutoff": 1,
+      "field_dimension": 55,
+      "matter_dimension": 20,
+      "tensor_dimension": 1100,
+      "energy": -0.3911449038273822,
+      "eigen_residual": 1.7898433816131796e-15,
+      "root_Gauss_max_norm": 5.532122771850925e-15,
+      "unprojected_H_eigen_residual": 1.7658204584412305e-15,
+      "C4z_eigenphase_residual": 4.0549583031369177e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -1.000000000000002,
+            "imag": 1.3322676295501878e-15
+          },
+          "C4z": {
+            "real": 8.326672684688674e-17,
+            "imag": -2.7755575615628914e-16
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 3.573462081541714e-14,
+          "C4z": 3.576259490711632e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 2.5009134879960787e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.8027077698042168,
+        0.19729223019578362,
+        0.0,
+        0.0
+      ],
+      "field_probability": 0.19729223019578324,
+      "vacuum_seed_overlap_Z0": 0.802707769804217,
+      "vacuum_weight_minus_seed_overlap": -2.220446049250313e-16,
+      "one_source_projection_weight": 0.18421461311216158,
+      "excluded_from_vacuum_plus_one_source_weight": 0.013077617083621429,
+      "axial_neutral_tau3_sigma3": 0.2913975241341474,
+      "axial_conditioned_on_active_loops": [
+        0.33333333333333365,
+        0.1207765126335455,
+        null,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.8059233209498787,
+          "axial_diagonal_contribution": 0.267641878475698
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.19407667905012138,
+          "axial_diagonal_contribution": 0.02375564565844903
+        }
+      ],
+      "axial_cross_quark_spin_channels": 3.885780586188048e-16,
+      "excluded_sector_axial_contribution": 0.00335997718694568,
+      "included_excluded_axial_coherence": -2.2983260742293914e-16,
+      "charge": 1.0000000000000002,
+      "source_only_energy": -0.3686076734373439,
+      "source_only_field_probability": 0.16930234942834965,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.044727048953063786
+    },
+    {
+      "I": 0.5,
+      "mass_m": 0.3,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -1.6666666666666667,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.9622504486493764,
+      "total_representation_degree_cutoff": 1,
+      "field_dimension": 55,
+      "matter_dimension": 70,
+      "tensor_dimension": 3850,
+      "energy": -3.4226881851099886,
+      "eigen_residual": 1.5732450544849447e-14,
+      "root_Gauss_max_norm": 9.501076260935677e-15,
+      "unprojected_H_eigen_residual": 1.7322377282893766e-14,
+      "C4z_eigenphase_residual": 1.406984178696051e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 0.9999999999999987,
+            "imag": -1.7763568394002505e-15
+          },
+          "C4z": {
+            "real": 1.4142135623730931,
+            "imag": -6.106226635438361e-16
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 7.300073619034897e-15,
+          "C4z": 7.208534644513695e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 2.3146613633228208e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.5315810122980836,
+        0.4684189877019163,
+        0.0,
+        0.0
+      ],
+      "field_probability": 0.46841898770191637,
+      "vacuum_seed_overlap_Z0": 0.5315810122980839,
+      "vacuum_weight_minus_seed_overlap": -2.220446049250313e-16,
+      "one_source_projection_weight": 0.4203469534042943,
+      "excluded_from_vacuum_plus_one_source_weight": 0.04807203429762186,
+      "axial_neutral_tau3_sigma3": 1.3707851196792094,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666672,
+        1.0350066469926889,
+        null,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.543498222903603,
+          "axial_diagonal_contribution": 0.9037329492299946
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.22825088854819867,
+          "axial_diagonal_contribution": -0.0173268045737771
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.22825088854819875,
+          "axial_diagonal_contribution": 0.11073723866361995
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 2.8367865437590325e-29,
+          "axial_diagonal_contribution": -1.1370228551429222e-30
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.3736417363593719,
+      "excluded_sector_axial_contribution": 0.01776459539985408,
+      "included_excluded_axial_coherence": 2.547627308268037e-16,
+      "charge": 0.9999999999999993,
+      "source_only_energy": -3.1957649080115655,
+      "source_only_field_probability": 0.4080639393689217,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.12837219203356653,
+      "old_probability_law_prediction_using_actual_p": 1.4064338957211575,
+      "probability_law_defect": -0.03564877604194816,
+      "axial_mobility_line_defect": -0.03564877604194838,
+      "exact_three_component_axial_reconstruction": 1.37078511967921,
+      "source_only_axial": 1.439964478128377,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.025515888590308032,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 2.9326088986780636,
+        "energy_weighted_mu1": 5.46294870320098,
+        "energy_squared_mu2": 18.053820324541334,
+        "centroid_mu1_over_mu0": 1.8628289321714604,
+        "strength_final_Ihalf": 0.391501736670058,
+        "strength_final_Ithreehalf": 2.5411071620080055,
+        "matched_25_state_reference": {
+          "exists_positive_gap": false,
+          "required_field_probability": 0.5325867845774234,
+          "reason": "Positive-gap two-layer N law requires 0<p<1/2."
+        }
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 0.3,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -1.6666666666666667,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.9622504486493764,
+      "total_representation_degree_cutoff": 1,
+      "field_dimension": 55,
+      "matter_dimension": 20,
+      "tensor_dimension": 1100,
+      "energy": -2.372506633149956,
+      "eigen_residual": 5.5078348468205254e-15,
+      "root_Gauss_max_norm": 4.694089360346008e-15,
+      "unprojected_H_eigen_residual": 5.692665372758453e-15,
+      "C4z_eigenphase_residual": 3.8068310955750606e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -0.9999999999999991,
+            "imag": 6.661338147750939e-16
+          },
+          "C4z": {
+            "real": -1.0824674490095276e-15,
+            "imag": -9.992007221626409e-16
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 2.972796433290565e-14,
+          "C4z": 2.973440236876898e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 2.0596875478738472e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.5244335808733347,
+        0.47556641912666564,
+        0.0,
+        0.0
+      ],
+      "field_probability": 0.4755664191266653,
+      "vacuum_seed_overlap_Z0": 0.5244335808733347,
+      "vacuum_weight_minus_seed_overlap": 0.0,
+      "one_source_projection_weight": 0.3985099158039895,
+      "excluded_from_vacuum_plus_one_source_weight": 0.07705650332267583,
+      "axial_neutral_tau3_sigma3": 0.23940642966822812,
+      "axial_conditioned_on_active_loops": [
+        0.3333333333333336,
+        0.1358280009812434,
+        null,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.5438072615620114,
+          "axial_diagonal_contribution": 0.17589994258978506
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.45619273843798824,
+          "axial_diagonal_contribution": 0.06350648707844295
+        }
+      ],
+      "axial_cross_quark_spin_channels": 1.1102230246251565e-16,
+      "excluded_sector_axial_contribution": 0.020316356510006513,
+      "included_excluded_axial_coherence": -1.2698593272553214e-16,
+      "charge": 1.0000000000000002,
+      "source_only_energy": -2.0952810530047286,
+      "source_only_field_probability": 0.3721264437823092,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.044055535923689604
+    },
+    {
+      "I": 0.5,
+      "mass_m": 3.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.16666666666666666,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.09622504486493763,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1027,
+      "matter_dimension": 70,
+      "tensor_dimension": 71890,
+      "energy": -0.100860634772105,
+      "eigen_residual": 2.4838962964537435e-15,
+      "root_Gauss_max_norm": 9.475866732426071e-15,
+      "unprojected_H_eigen_residual": 2.3251631156100395e-15,
+      "C4z_eigenphase_residual": 1.2780160422511516e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 0.9999999999999999,
+            "imag": 5.551115123125783e-16
+          },
+          "C4z": {
+            "real": 1.414213562373098,
+            "imag": 2.886579864025407e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 7.627412671540155e-15,
+          "C4z": 7.7768968602458e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 2.5122287935849124e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.9339128378620597,
+        0.06487096559568453,
+        0.0012161965422543821,
+        0.0
+      ],
+      "field_probability": 0.0660871621379403,
+      "vacuum_seed_overlap_Z0": 0.9339128378620601,
+      "vacuum_weight_minus_seed_overlap": -4.440892098500626e-16,
+      "one_source_projection_weight": 0.06412885892816153,
+      "excluded_from_vacuum_plus_one_source_weight": 0.001958303209778328,
+      "axial_neutral_tau3_sigma3": 1.6286368880013162,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666676,
+        1.100955115619912,
+        0.5718402516474433,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.9340953952008173,
+          "axial_diagonal_contribution": 1.5568215219504211
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.032654314508093044,
+          "axial_diagonal_contribution": -0.003504541295625324
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.03273372027282629,
+          "axial_diagonal_contribution": 0.01777873761821288
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 0.0005165700182619882,
+          "axial_diagonal_contribution": 0.000172190006087329
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.057368979722220326,
+      "excluded_sector_axial_contribution": 0.0009944775179157048,
+      "included_excluded_axial_coherence": -0.00013327365132515765,
+      "charge": 1.000000000000001,
+      "source_only_energy": -0.09642400022791353,
+      "source_only_field_probability": 0.05905264923679099,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 1.7509275099728256,
+      "old_probability_law_prediction_using_actual_p": 1.6299515765900332,
+      "probability_law_defect": -0.0013146885887169724,
+      "axial_mobility_line_defect": -0.0013146885887174165,
+      "exact_three_component_axial_reconstruction": 1.628636888001315,
+      "source_only_axial": 1.633859639312894,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.0448278162173789,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 3.4601071271644157,
+        "energy_weighted_mu1": 0.26370329502877976,
+        "energy_squared_mu2": 0.15265192822683682,
+        "centroid_mu1_over_mu0": 0.07621246549232903,
+        "strength_final_Ihalf": 0.05173030041573816,
+        "strength_final_Ithreehalf": 3.4083768267486776,
+        "matched_25_state_reference": {
+          "exists_positive_gap": true,
+          "fit_field_probability": 0.06845360159763092,
+          "fit_omega": 1.2716947731201638,
+          "fit_g": 0.09301774350221431,
+          "ground_energy": -0.100860634772105,
+          "ground_axial": 1.628636888001316,
+          "ground_eigen_residual": 1.5039920392333748e-16,
+          "inelastic_strength_mu0": 3.4526965483826193,
+          "energy_weighted_mu1": 0.2505502961667499,
+          "energy_squared_mu2": 0.12902162601842754,
+          "centroid_mu1_over_mu0": 0.07256655563435416,
+          "actual_minus_reference_mu0": 0.007410578781796406,
+          "actual_minus_reference_mu1": 0.013152998862029863,
+          "actual_minus_reference_mu2": 0.023630302208409282
+        }
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 3.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.16666666666666666,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.09622504486493763,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1027,
+      "matter_dimension": 20,
+      "tensor_dimension": 20540,
+      "energy": -0.05092522957463876,
+      "eigen_residual": 1.2263465701627808e-15,
+      "root_Gauss_max_norm": 2.4017034870418502e-15,
+      "unprojected_H_eigen_residual": 1.210353372821111e-15,
+      "C4z_eigenphase_residual": 4.502394913728837e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -0.9999999999999989,
+            "imag": 1.5543122344752192e-15
+          },
+          "C4z": {
+            "real": -7.216449660063518e-16,
+            "imag": -1.1102230246251565e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 1.6621424948640938e-14,
+          "C4z": 1.6550433006348895e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 1.148479481185263e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.9655717273468789,
+        0.03420418413295251,
+        0.0002240885201807162,
+        0.0
+      ],
+      "field_probability": 0.034428272653121095,
+      "vacuum_seed_overlap_Z0": 0.9655717273468792,
+      "vacuum_weight_minus_seed_overlap": -3.3306690738754696e-16,
+      "one_source_projection_weight": 0.03380526154362479,
+      "excluded_from_vacuum_plus_one_source_weight": 0.0006230111094959745,
+      "axial_neutral_tau3_sigma3": 0.32566500357889155,
+      "axial_conditioned_on_active_loops": [
+        0.33333333333333354,
+        0.11278245984057142,
+        -0.2225499699059859,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.9657056239773376,
+          "axial_diagonal_contribution": 0.3218698599766164
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.034294376022672685,
+          "axial_diagonal_contribution": 0.0037951436022749686
+        }
+      ],
+      "axial_cross_quark_spin_channels": 2.220446049250313e-16,
+      "excluded_sector_axial_contribution": 5.1620958417866985e-05,
+      "included_excluded_axial_coherence": -2.7882130874788405e-16,
+      "charge": 1.0000000000000118,
+      "source_only_energy": -0.049723375034222306,
+      "source_only_field_probability": 0.03229950956862365,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.31972567504271865
+    },
+    {
+      "I": 0.5,
+      "mass_m": 1.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.5,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.2886751345948129,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1027,
+      "matter_dimension": 70,
+      "tensor_dimension": 71890,
+      "energy": -0.7916686148438095,
+      "eigen_residual": 4.066628787841841e-15,
+      "root_Gauss_max_norm": 6.701318451610725e-15,
+      "unprojected_H_eigen_residual": 3.5335297655787286e-15,
+      "C4z_eigenphase_residual": 1.311817326193515e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 1.000000000000003,
+            "imag": 2.1094237467877974e-15
+          },
+          "C4z": {
+            "real": 1.4142135623730967,
+            "imag": 2.886579864025407e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 7.115529275159626e-15,
+          "C4z": 6.544207276098936e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 1.898051254978734e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.6378759859871401,
+        0.32112592498482745,
+        0.04099808902804089,
+        0.0
+      ],
+      "field_probability": 0.3621240140128599,
+      "vacuum_seed_overlap_Z0": 0.6378759859871401,
+      "vacuum_weight_minus_seed_overlap": 0.0,
+      "one_source_projection_weight": 0.299836411824182,
+      "excluded_from_vacuum_plus_one_source_weight": 0.06228760218867785,
+      "axial_neutral_tau3_sigma3": 1.4229398766016677,
+      "axial_conditioned_on_active_loops": [
+        1.666666666666667,
+        1.0527024186547989,
+        0.5308343847586636,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.6435016020589374,
+          "axial_diagonal_contribution": 1.071814893010645
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.16785698855963804,
+          "axial_diagonal_contribution": -0.015250454192055802
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.17198446500509748,
+          "axial_diagonal_contribution": 0.08271721670779116
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 0.016656944376335345,
+          "axial_diagonal_contribution": 0.005552314792111784
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.27810590628317544,
+      "excluded_sector_axial_contribution": 0.03027069107947996,
+      "included_excluded_axial_coherence": -0.0036090264832471077,
+      "charge": 1.0000000000000067,
+      "source_only_energy": -0.6407840876984613,
+      "source_only_field_probability": 0.2354466419365031,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 1.7624745100038126,
+      "old_probability_law_prediction_using_actual_p": 1.4654866588817446,
+      "probability_law_defect": -0.04254678228007691,
+      "axial_mobility_line_defect": -0.04254678228007691,
+      "exact_three_component_axial_reconstruction": 1.4229398766016685,
+      "source_only_axial": 1.5358629767019427,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.030618047327382734,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 3.0841819080570096,
+        "energy_weighted_mu1": 1.8295525909636312,
+        "energy_squared_mu2": 2.168870855869786,
+        "centroid_mu1_over_mu0": 0.5932051498597316,
+        "strength_final_Ihalf": 0.34488870773690916,
+        "strength_final_Ithreehalf": 2.7392932003201005,
+        "matched_25_state_reference": {
+          "exists_positive_gap": true,
+          "fit_field_probability": 0.43870822211699834,
+          "fit_omega": 0.22120751083169765,
+          "fit_g": 0.22386690234125348,
+          "ground_energy": -0.7916686148438095,
+          "ground_axial": 1.422939876601668,
+          "ground_eigen_residual": 6.362666348930817e-16,
+          "inelastic_strength_mu0": 2.846214700520171,
+          "energy_weighted_mu1": 1.1849522248529472,
+          "energy_squared_mu2": 0.9342597860221302,
+          "centroid_mu1_over_mu0": 0.4163256639200081,
+          "actual_minus_reference_mu0": 0.23796720753683864,
+          "actual_minus_reference_mu1": 0.644600366110684,
+          "actual_minus_reference_mu2": 1.2346110698476556
+        }
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 1.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.5,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.2886751345948129,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1027,
+      "matter_dimension": 20,
+      "tensor_dimension": 20540,
+      "energy": -0.4239525686413358,
+      "eigen_residual": 4.407907314179322e-15,
+      "root_Gauss_max_norm": 5.926278510212336e-15,
+      "unprojected_H_eigen_residual": 4.424404666660673e-15,
+      "C4z_eigenphase_residual": 4.1931889697338706e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -1.0000000000000044,
+            "imag": 1.1102230246251565e-16
+          },
+          "C4z": {
+            "real": 2.7755575615628914e-17,
+            "imag": 3.885780586188048e-16
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 3.812020630524933e-14,
+          "C4z": 3.8043683485399684e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 2.6464805783094365e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.7657186655617549,
+        0.22308419553689848,
+        0.01119713890134539,
+        0.0
+      ],
+      "field_probability": 0.23428133443824506,
+      "vacuum_seed_overlap_Z0": 0.7657186655617554,
+      "vacuum_weight_minus_seed_overlap": -4.440892098500626e-16,
+      "one_source_projection_weight": 0.20644056294852353,
+      "excluded_from_vacuum_plus_one_source_weight": 0.027840771489721083,
+      "axial_neutral_tau3_sigma3": 0.2800836224421016,
+      "axial_conditioned_on_active_loops": [
+        0.3333333333333336,
+        0.12260762438672994,
+        -0.22396399832568634,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.7715899914970941,
+          "axial_diagonal_contribution": 0.2558877424150512
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.22841000850290358,
+          "axial_diagonal_contribution": 0.024195880027051607
+        }
+      ],
+      "axial_cross_quark_spin_channels": -1.1657341758564144e-15,
+      "excluded_sector_axial_contribution": 0.001906226927236732,
+      "included_excluded_axial_coherence": -2.0191962781106632e-16,
+      "charge": 1.0000000000000009,
+      "source_only_energy": -0.3686076734373439,
+      "source_only_field_probability": 0.16930234942834965,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.3195240950444713
+    },
+    {
+      "I": 0.5,
+      "mass_m": 0.3,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -1.6666666666666667,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.9622504486493764,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1027,
+      "matter_dimension": 70,
+      "tensor_dimension": 71890,
+      "energy": -4.789740834449481,
+      "eigen_residual": 1.6227933468204968e-14,
+      "root_Gauss_max_norm": 6.189464588195772e-15,
+      "unprojected_H_eigen_residual": 2.0727495323006665e-14,
+      "C4z_eigenphase_residual": 1.2765864689281322e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 1.0000000000000018,
+            "imag": 2.220446049250313e-15
+          },
+          "C4z": {
+            "real": 1.414213562373098,
+            "imag": 1.5543122344752192e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 6.7926252592419845e-15,
+          "C4z": 6.646510766162506e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 1.9225769257456395e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.27715685300136017,
+        0.5079856894972006,
+        0.21485745750143764,
+        0.0
+      ],
+      "field_probability": 0.7228431469986398,
+      "vacuum_seed_overlap_Z0": 0.27715685300136034,
+      "vacuum_weight_minus_seed_overlap": -1.6653345369377348e-16,
+      "one_source_projection_weight": 0.4291937848939883,
+      "excluded_from_vacuum_plus_one_source_weight": 0.2936493621046513,
+      "axial_neutral_tau3_sigma3": 1.059876107347991,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666679,
+        0.9774443935162822,
+        0.47203506923269095,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.3009111116943067,
+          "axial_diagonal_contribution": 0.4953923262323053
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.29374608672417624,
+          "axial_diagonal_contribution": -0.020652671086384435
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.3247678835642076,
+          "axial_diagonal_contribution": 0.12087941115952561
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 0.08057491801730794,
+          "axial_diagonal_contribution": 0.026858306005769324
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.4373987350367752,
+      "excluded_sector_axial_contribution": 0.13323989073971826,
+      "included_excluded_axial_coherence": -0.012173854942868108,
+      "charge": 0.999999999999998,
+      "source_only_energy": -3.1957649080115655,
+      "source_only_field_probability": 0.4080639393689217,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 1.7681060449685901,
+      "old_probability_law_prediction_using_actual_p": 1.2650871405563113,
+      "probability_law_defect": -0.20521103320832035,
+      "axial_mobility_line_defect": -0.20521103320832035,
+      "exact_three_component_axial_reconstruction": 1.0598761073479934,
+      "source_only_axial": 1.439964478128377,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.0133035289440653,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 2.6978686421259113,
+        "energy_weighted_mu1": 8.18670627323943,
+        "energy_squared_mu2": 32.82143136749539,
+        "centroid_mu1_over_mu0": 3.034508850952926,
+        "strength_final_Ihalf": 0.8170646387572102,
+        "strength_final_Ithreehalf": 1.8808040033687008,
+        "matched_25_state_reference": {
+          "exists_positive_gap": false,
+          "required_field_probability": 1.0922230067736165,
+          "reason": "Positive-gap two-layer N law requires 0<p<1/2."
+        }
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 0.3,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -1.6666666666666667,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.9622504486493764,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1027,
+      "matter_dimension": 20,
+      "tensor_dimension": 20540,
+      "energy": -2.9398546588046464,
+      "eigen_residual": 2.04912200368355e-14,
+      "root_Gauss_max_norm": 3.950267864483786e-15,
+      "unprojected_H_eigen_residual": 2.0476583783477584e-14,
+      "C4z_eigenphase_residual": 4.141164334592928e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -1.0000000000000024,
+            "imag": 2.220446049250313e-16
+          },
+          "C4z": {
+            "real": -6.661338147750939e-16,
+            "imag": 6.106226635438361e-16
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 2.462272817410244e-14,
+          "C4z": 2.463800894953188e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 1.6944524185726992e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.3579859925856622,
+        0.5222118361259072,
+        0.11980217128843301,
+        0.0
+      ],
+      "field_probability": 0.6420140074143378,
+      "vacuum_seed_overlap_Z0": 0.3579859925856622,
+      "vacuum_weight_minus_seed_overlap": 0.0,
+      "one_source_projection_weight": 0.4176875424622304,
+      "excluded_from_vacuum_plus_one_source_weight": 0.2243264649521074,
+      "axial_neutral_tau3_sigma3": 0.1696833620913856,
+      "axial_conditioned_on_active_loops": [
+        0.3333333333333336,
+        0.14747687932598108,
+        -0.2225291391304549,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.4038771749721554,
+          "axial_diagonal_contribution": 0.12480917020866622
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.5961228250278462,
+          "axial_diagonal_contribution": 0.044874191882719405
+        }
+      ],
+      "axial_cross_quark_spin_channels": -2.7755575615628914e-17,
+      "excluded_sector_axial_contribution": 0.003944970955917233,
+      "included_excluded_axial_coherence": -5.341164514652682e-17,
+      "charge": 1.000000000000002,
+      "source_only_energy": -2.0952810530047286,
+      "source_only_field_probability": 0.3721264437823092,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.3225154899992049
+    },
+    {
+      "I": 0.5,
+      "mass_m": 3.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.16666666666666666,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.09622504486493763,
+      "total_representation_degree_cutoff": 3,
+      "field_dimension": 6859,
+      "matter_dimension": 70,
+      "tensor_dimension": 480130,
+      "energy": -0.10088034607283144,
+      "eigen_residual": 1.6429817432506125e-14,
+      "root_Gauss_max_norm": 4.816461779732317e-15,
+      "unprojected_H_eigen_residual": 1.6400904334365046e-14,
+      "C4z_eigenphase_residual": 1.2680039748518761e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 0.9999999999999993,
+            "imag": -3.4416913763379853e-15
+          },
+          "C4z": {
+            "real": 1.4142135623730967,
+            "imag": 1.3877787807814457e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 5.959024981148305e-15,
+          "C4z": 8.536590838931585e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 1.3024937556673598e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.9338714817691701,
+        0.0648938182114134,
+        0.001230166562281244,
+        4.533457165153243e-06
+      ],
+      "field_probability": 0.06612851823082988,
+      "vacuum_seed_overlap_Z0": 0.9338714817691705,
+      "vacuum_weight_minus_seed_overlap": -3.3306690738754696e-16,
+      "one_source_projection_weight": 0.06415108601618254,
+      "excluded_from_vacuum_plus_one_source_weight": 0.0019774322146470097,
+      "axial_neutral_tau3_sigma3": 1.6285999982483437,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666672,
+        1.1009483683004124,
+        0.5713626658581231,
+        -0.01894493470623387
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.934054713605324,
+          "axial_diagonal_contribution": 1.5567536717492727
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.03266818908231728,
+          "axial_diagonal_contribution": -0.003505329478062025
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.032754375807060004,
+          "axial_diagonal_contribution": 0.017786355783606697
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 0.0005227215053293079,
+          "axial_diagonal_contribution": 0.00017325537245526707
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.057392044821071186,
+      "excluded_sector_axial_contribution": 0.0010021378018511867,
+      "included_excluded_axial_coherence": -0.0001335936312125654,
+      "charge": 1.0000000000000167,
+      "source_only_energy": -0.09642400022791353,
+      "source_only_field_probability": 0.05905264923679099,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 13.976820699987002,
+      "old_probability_law_prediction_using_actual_p": 1.6299286009828724,
+      "probability_law_defect": -0.0013286027345287277,
+      "axial_mobility_line_defect": -0.0013286027345287277,
+      "exact_three_component_axial_reconstruction": 1.6285999982483477,
+      "source_only_axial": 1.633859639312894,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.044825831124920196,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 3.460074856896208,
+        "energy_weighted_mu1": 0.26385321137545736,
+        "energy_squared_mu2": 0.1527697605501159,
+        "centroid_mu1_over_mu0": 0.07625650377175415,
+        "strength_final_Ihalf": 0.051799649435809184,
+        "strength_final_Ithreehalf": 3.408275207460399,
+        "matched_25_state_reference": {
+          "exists_positive_gap": true,
+          "fit_field_probability": 0.06852000315298153,
+          "fit_omega": 1.2705151606093412,
+          "fit_g": 0.09298751707783941,
+          "ground_energy": -0.10088034607283144,
+          "ground_axial": 1.6285999982483448,
+          "ground_eigen_residual": 1.5516450853046863e-16,
+          "inelastic_strength_mu0": 3.4525953685288897,
+          "energy_weighted_mu1": 0.2505813985115925,
+          "energy_squared_mu2": 0.12894357169025278,
+          "centroid_mu1_over_mu0": 0.07257769062534608,
+          "actual_minus_reference_mu0": 0.0074794883673181545,
+          "actual_minus_reference_mu1": 0.013271812863864862,
+          "actual_minus_reference_mu2": 0.023826188859863123
+        }
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 3.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.16666666666666666,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.09622504486493763,
+      "total_representation_degree_cutoff": 3,
+      "field_dimension": 6859,
+      "matter_dimension": 20,
+      "tensor_dimension": 137180,
+      "energy": -0.05092692103021883,
+      "eigen_residual": 2.4515592889643393e-15,
+      "root_Gauss_max_norm": 2.147287596112397e-15,
+      "unprojected_H_eigen_residual": 2.4418860246701495e-15,
+      "C4z_eigenphase_residual": 4.196066789976292e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -0.999999999999996,
+            "imag": 3.3306690738754696e-15
+          },
+          "C4z": {
+            "real": -2.220446049250313e-16,
+            "imag": -2.9976021664879227e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 1.6863681930999693e-14,
+          "C4z": 1.6682814294037195e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 9.364301865817971e-15,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.9655680029360273,
+        0.03420634116617384,
+        0.0002252671061213518,
+        3.8879169320105426e-07
+      ],
+      "field_probability": 0.03443199706397271,
+      "vacuum_seed_overlap_Z0": 0.9655680029360275,
+      "vacuum_weight_minus_seed_overlap": -2.220446049250313e-16,
+      "one_source_projection_weight": 0.033807376827447805,
+      "excluded_from_vacuum_plus_one_source_weight": 0.0006246202365246811,
+      "axial_neutral_tau3_sigma3": 0.3256639115645548,
+      "axial_conditioned_on_active_loops": [
+        0.33333333333333365,
+        0.1127826001167897,
+        -0.22186122483080206,
+        0.021926273054362337
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.9657022157832318,
+          "axial_diagonal_contribution": 0.321868741822573
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.03429778421678045,
+          "axial_diagonal_contribution": 0.0037951697419793045
+        }
+      ],
+      "axial_cross_quark_spin_channels": 2.4980018054066022e-15,
+      "excluded_sector_axial_contribution": 5.153538282796319e-05,
+      "included_excluded_axial_coherence": -2.8516854043776497e-16,
+      "charge": 1.0000000000000029,
+      "source_only_energy": -0.049723375034222306,
+      "source_only_field_probability": 0.03229950956862365,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 2.391701292945072
+    },
+    {
+      "I": 0.5,
+      "mass_m": 1.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.5,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.2886751345948129,
+      "total_representation_degree_cutoff": 3,
+      "field_dimension": 6859,
+      "matter_dimension": 70,
+      "tensor_dimension": 480130,
+      "energy": -0.7971434596408471,
+      "eigen_residual": 8.55877586366385e-12,
+      "root_Gauss_max_norm": 6.389156681460496e-15,
+      "unprojected_H_eigen_residual": 8.558772202406092e-12,
+      "C4z_eigenphase_residual": 1.3472861162058796e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 1.0,
+            "imag": 1.1102230246251565e-15
+          },
+          "C4z": {
+            "real": 1.4142135623731025,
+            "imag": 3.164135620181696e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 7.093826129306658e-15,
+          "C4z": 9.302344460340677e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 1.815569335097597e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.6315604106376023,
+        0.3227016071991639,
+        0.04453953497636224,
+        0.0011984471868676462
+      ],
+      "field_probability": 0.36843958936239773,
+      "vacuum_seed_overlap_Z0": 0.6315604106376025,
+      "vacuum_weight_minus_seed_overlap": -2.220446049250313e-16,
+      "one_source_projection_weight": 0.3009879688091618,
+      "excluded_from_vacuum_plus_one_source_weight": 0.06745162055323572,
+      "axial_neutral_tau3_sigma3": 1.4156945455204006,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666674,
+        1.0522372281957968,
+        0.5286599572154916,
+        -0.00922212033342157
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.637502584689921,
+          "axial_diagonal_contribution": 1.0617357173774427
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.1693444767830501,
+          "axial_diagonal_contribution": -0.015203119292316474
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.17504226107970555,
+          "axial_diagonal_contribution": 0.0833580281297627
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 0.018110677447321387,
+          "axial_diagonal_contribution": 0.005810999065833256
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.2799929202396785,
+      "excluded_sector_axial_contribution": 0.03232697430438899,
+      "included_excluded_axial_coherence": -0.0036641896346050196,
+      "charge": 0.9999999999999908,
+      "source_only_energy": -0.6407840876984613,
+      "source_only_field_probability": 0.2354466419365031,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 14.078721133060753,
+      "old_probability_law_prediction_using_actual_p": 1.461978005909779,
+      "probability_law_defect": -0.04628346038937847,
+      "axial_mobility_line_defect": -0.04628346038937847,
+      "exact_three_component_axial_reconstruction": 1.4156945455204122,
+      "source_only_axial": 1.5358629767019427,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.03031489971060493,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 3.080797691657724,
+        "energy_weighted_mu1": 1.860379902116244,
+        "energy_squared_mu2": 2.219590180688018,
+        "centroid_mu1_over_mu0": 0.6038630537648857,
+        "strength_final_Ihalf": 0.3574718664084017,
+        "strength_final_Ithreehalf": 2.723325825249322,
+        "matched_25_state_reference": {
+          "exists_positive_gap": true,
+          "fit_field_probability": 0.451749818063279,
+          "fit_omega": 0.1702814939571285,
+          "fit_g": 0.21954163535278112,
+          "ground_energy": -0.7971434596408471,
+          "ground_axial": 1.4156945455204009,
+          "ground_eigen_residual": 6.437793311409323e-16,
+          "inelastic_strength_mu0": 2.8233095602395224,
+          "energy_weighted_mu1": 1.1654241247406976,
+          "energy_squared_mu2": 0.9048398344960349,
+          "centroid_mu1_over_mu0": 0.4127865187556075,
+          "actual_minus_reference_mu0": 0.2574881314182016,
+          "actual_minus_reference_mu1": 0.6949557773755464,
+          "actual_minus_reference_mu2": 1.3147503461919832
+        }
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 1.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.5,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.2886751345948129,
+      "total_representation_degree_cutoff": 3,
+      "field_dimension": 6859,
+      "matter_dimension": 20,
+      "tensor_dimension": 137180,
+      "energy": -0.4246357524256603,
+      "eigen_residual": 2.1197328526601813e-12,
+      "root_Gauss_max_norm": 3.4017506650670086e-15,
+      "unprojected_H_eigen_residual": 2.1197350864828518e-12,
+      "C4z_eigenphase_residual": 4.1623836755902063e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -1.0000000000000004,
+            "imag": 8.881784197001252e-16
+          },
+          "C4z": {
+            "real": 4.440892098500626e-16,
+            "imag": 2.1094237467877974e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 2.369061128171599e-14,
+          "C4z": 2.3756869170165038e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 1.533285292937117e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.7646686253522562,
+        0.2235244653967737,
+        0.011657386489280584,
+        0.00014952276168333245
+      ],
+      "field_probability": 0.23533137464774379,
+      "vacuum_seed_overlap_Z0": 0.7646686253522565,
+      "vacuum_weight_minus_seed_overlap": -3.3306690738754696e-16,
+      "one_source_projection_weight": 0.2068224337792305,
+      "excluded_from_vacuum_plus_one_source_weight": 0.02850894086851294,
+      "axial_neutral_tau3_sigma3": 0.2797465804174696,
+      "axial_conditioned_on_active_loops": [
+        0.33333333333333365,
+        0.12265081662479226,
+        -0.21965524086406277,
+        0.014622883977718095
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.7706670112815248,
+          "axial_diagonal_contribution": 0.255577076075189
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.22933298871846605,
+          "axial_diagonal_contribution": 0.024169504342278804
+        }
+      ],
+      "axial_cross_quark_spin_channels": 1.7763568394002505e-15,
+      "excluded_sector_axial_contribution": 0.0018767682134676713,
+      "included_excluded_axial_coherence": -2.23697367789205e-16,
+      "charge": 0.9999999999999925,
+      "source_only_energy": -0.3686076734373439,
+      "source_only_field_probability": 0.16930234942834965,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 2.4177811798872426
+    },
+    {
+      "I": 0.5,
+      "mass_m": 0.3,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -1.6666666666666667,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.9622504486493764,
+      "total_representation_degree_cutoff": 3,
+      "field_dimension": 6859,
+      "matter_dimension": 70,
+      "tensor_dimension": 480130,
+      "energy": -4.9946572186900555,
+      "eigen_residual": 5.42957068968361e-10,
+      "root_Gauss_max_norm": 6.088808374395378e-15,
+      "unprojected_H_eigen_residual": 5.429570866274615e-10,
+      "C4z_eigenphase_residual": 1.2989039643135373e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 1.0000000000000009,
+            "imag": -4.440892098500626e-16
+          },
+          "C4z": {
+            "real": 1.4142135623730998,
+            "imag": 2.886579864025407e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 6.483439246183204e-15,
+          "C4z": 7.685819514804895e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 1.9430656774986774e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.23481088296170677,
+        0.4745762852956101,
+        0.2600436233542296,
+        0.030569208388472068
+      ],
+      "field_probability": 0.7651891170382932,
+      "vacuum_seed_overlap_Z0": 0.23481088296170682,
+      "vacuum_weight_minus_seed_overlap": -5.551115123125783e-17,
+      "one_source_projection_weight": 0.39539700078612927,
+      "excluded_from_vacuum_plus_one_source_weight": 0.3697921162521639,
+      "axial_neutral_tau3_sigma3": 0.9806392179596599,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666674,
+        0.9786584476101232,
+        0.4768997900539117,
+        0.02698487719624892
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.2649290105510883,
+          "axial_diagonal_contribution": 0.43207981368347764
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.2913439679974615,
+          "axial_diagonal_contribution": -0.01736896187081734
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.3466168640123888,
+          "axial_diagonal_contribution": 0.11768950129289013
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 0.0971101574390807,
+          "axial_diagonal_contribution": 0.02810177618585137
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.42013708866825805,
+      "excluded_sector_axial_contribution": 0.16098081898372907,
+      "included_excluded_axial_coherence": -0.011023073500385479,
+      "charge": 1.0000000000000144,
+      "source_only_energy": -3.1957649080115655,
+      "source_only_field_probability": 0.4080639393689217,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 15.690345126902685,
+      "old_probability_law_prediction_using_actual_p": 1.2415616016453928,
+      "probability_law_defect": -0.26092238368573284,
+      "axial_mobility_line_defect": -0.26092238368573284,
+      "exact_three_component_axial_reconstruction": 0.9806392179596654,
+      "source_only_axial": 1.439964478128377,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.011270922382161931,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 2.6903745138150366,
+        "energy_weighted_mu1": 8.745375580043248,
+        "energy_squared_mu2": 35.86296658687958,
+        "centroid_mu1_over_mu0": 3.2506164235261163,
+        "strength_final_Ihalf": 0.9223559874046768,
+        "strength_final_Ithreehalf": 1.7680185264103596,
+        "matched_25_state_reference": {
+          "exists_positive_gap": false,
+          "required_field_probability": 1.2348494076726122,
+          "reason": "Positive-gap two-layer N law requires 0<p<1/2."
+        }
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 0.3,
+      "electric_kE": 0.27,
+      "loop_representation": "PW19",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -1.6666666666666667,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.9622504486493764,
+      "total_representation_degree_cutoff": 3,
+      "field_dimension": 6859,
+      "matter_dimension": 20,
+      "tensor_dimension": 137180,
+      "energy": -2.9925660656689734,
+      "eigen_residual": 1.1461181295310226e-14,
+      "root_Gauss_max_norm": 3.9631464250898635e-15,
+      "unprojected_H_eigen_residual": 1.1822828933622406e-14,
+      "C4z_eigenphase_residual": 4.2239547070414636e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -1.0000000000000058,
+            "imag": -7.771561172376096e-16
+          },
+          "C4z": {
+            "real": -1.942890293094024e-16,
+            "imag": 1.609823385706477e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 2.5929755116001336e-14,
+          "C4z": 2.5866525379887e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 1.7022853655008035e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.3390368204798266,
+        0.5134150923736523,
+        0.13887660151787562,
+        0.008671485628637395
+      ],
+      "field_probability": 0.6609631795201734,
+      "vacuum_seed_overlap_Z0": 0.3390368204798267,
+      "vacuum_weight_minus_seed_overlap": -1.1102230246251565e-16,
+      "one_source_projection_weight": 0.40989076054426643,
+      "excluded_from_vacuum_plus_one_source_weight": 0.25107241897590693,
+      "axial_neutral_tau3_sigma3": 0.1606365817223176,
+      "axial_conditioned_on_active_loops": [
+        0.33333333333333365,
+        0.14899263772021024,
+        -0.20778419769620038,
+        -0.0016603157201529977
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.3897659899490563,
+          "axial_diagonal_contribution": 0.11929115904181138
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.6102340100509348,
+          "axial_diagonal_contribution": 0.04134542268050655
+        }
+      ],
+      "axial_cross_quark_spin_channels": -3.3306690738754696e-16,
+      "excluded_sector_axial_contribution": 0.0020808903907909987,
+      "included_excluded_axial_coherence": -7.03231452206545e-17,
+      "charge": 0.9999999999999942,
+      "source_only_energy": -2.0952810530047286,
+      "source_only_field_probability": 0.3721264437823092,
+      "H_matvec_calls": 38,
+      "elapsed_seconds": 3.389245208934881
+    },
+    {
+      "I": 0.5,
+      "mass_m": 3.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW155_degree2",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.16666666666666666,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.09622504486493763,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1435,
+      "matter_dimension": 70,
+      "tensor_dimension": 100450,
+      "energy": -0.101088536722219,
+      "eigen_residual": 1.9421052151930504e-15,
+      "root_Gauss_max_norm": 6.77982853336761e-15,
+      "unprojected_H_eigen_residual": 1.7186862483944074e-15,
+      "C4z_eigenphase_residual": 1.2655030493299376e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 1.0000000000000036,
+            "imag": 3.219646771412954e-15
+          },
+          "C4z": {
+            "real": 1.4142135623731011,
+            "imag": 3.0531133177191805e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 7.473690836147951e-15,
+          "C4z": 7.638647145419304e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 1.763278764846733e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.9335669050986947,
+        0.06521191401687382,
+        0.0012211808844348792,
+        0.0
+      ],
+      "field_probability": 0.06643309490130533,
+      "vacuum_seed_overlap_Z0": 0.9335669050986942,
+      "vacuum_weight_minus_seed_overlap": 4.440892098500626e-16,
+      "one_source_projection_weight": 0.06439513241858276,
+      "excluded_from_vacuum_plus_one_source_weight": 0.0020379624827230186,
+      "axial_neutral_tau3_sigma3": 1.6283836774380365,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666672,
+        1.100113596056081,
+        0.571841879426791,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.933765831030098,
+          "axial_diagonal_contribution": 1.5562697755544126
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.03281808058346329,
+          "axial_diagonal_contribution": -0.0035100110185931196
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.0328974325542422,
+          "axial_diagonal_contribution": 0.01784326137678678
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 0.0005186558322001072,
+          "axial_diagonal_contribution": 0.000172885277400036
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.0576077662480301,
+      "excluded_sector_axial_contribution": 0.0010227439259555885,
+      "included_excluded_axial_coherence": -0.0001340554508354559,
+      "charge": 1.0000000000000018,
+      "source_only_energy": -0.09642400022791353,
+      "source_only_field_probability": 0.05905264923679099,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 3.5133904239628464,
+      "old_probability_law_prediction_using_actual_p": 1.6297593917214972,
+      "probability_law_defect": -0.0013757142834607272,
+      "axial_mobility_line_defect": -0.0013757142834605052,
+      "exact_three_component_axial_reconstruction": 1.6283836774380356,
+      "source_only_axial": 1.633859639312894,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.044811211444737334,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 3.459829156175463,
+        "energy_weighted_mu1": 0.2648498043386095,
+        "energy_squared_mu2": 0.1542504615409026,
+        "centroid_mu1_over_mu0": 0.07654996601952961,
+        "strength_final_Ihalf": 0.052187451427416924,
+        "strength_final_Ithreehalf": 3.407641704748046,
+        "matched_25_state_reference": {
+          "exists_positive_gap": true,
+          "fit_field_probability": 0.06890938061153448,
+          "fit_omega": 1.2648008013399736,
+          "fit_g": 0.09289636514322942,
+          "ground_energy": -0.101088536722219,
+          "ground_axial": 1.6283836774380376,
+          "ground_eigen_residual": 1.558672105586085e-16,
+          "inelastic_strength_mu0": 3.45200199701493,
+          "energy_weighted_mu1": 0.2509935687193723,
+          "energy_squared_mu2": 0.12872475031379155,
+          "centroid_mu1_over_mu0": 0.07270956648820466,
+          "actual_minus_reference_mu0": 0.007827159160533004,
+          "actual_minus_reference_mu1": 0.013856235619237212,
+          "actual_minus_reference_mu2": 0.02552571122711106
+        }
+      },
+      "canonical_degree3_exterior": {
+        "meaning": "Exact canonical H action on retained P2 trial state; not exact full-H ground response.",
+        "internal_P2_response_mu2": 0.1542504615409026,
+        "positive_exterior_centered_response_norm2": 0.00032333268103210805,
+        "full_H_centered_trial_response_mu2": 0.1545737942219347,
+        "exterior_response_by_field_channel": {
+          "single_loop_10_bar10": 4.933486518348276e-07,
+          "single_loop_15_bar15": 2.2001599872087766e-06,
+          "three_loops_fundamental": 0.0001599359548103268,
+          "two_loops_degree2_plus1": 0.00016070321758273763
+        },
+        "ground_state_H_exterior_norm2": 0.00019073299042756076,
+        "full_H_commutator_norm2_on_retained_trial": 0.15452441318990406,
+        "ground_probability_by_total_representation_degree": [
+          0.9335669050986947,
+          0.0651448346254734,
+          0.0012882602758352792
+        ],
+        "exterior_field_dimension": 22470,
+        "local_representation_dimension_for_exterior": 805,
+        "CG_intertwining_residual": 5.528650340375332e-15,
+        "weak_coupling_power_counting": "P2 top-degree amplitude O(c^2), Q3 H deltaA psi O(c^3), positive norm O(c^6)."
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 3.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW155_degree2",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.16666666666666666,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.09622504486493763,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1435,
+      "matter_dimension": 20,
+      "tensor_dimension": 28700,
+      "energy": -0.05104720131441093,
+      "eigen_residual": 1.0407889295239066e-15,
+      "root_Gauss_max_norm": 9.919527621682997e-15,
+      "unprojected_H_eigen_residual": 1.020616017592344e-15,
+      "C4z_eigenphase_residual": 4.3423670601639875e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -1.0000000000000009,
+            "imag": 1.2212453270876722e-15
+          },
+          "C4z": {
+            "real": -3.608224830031759e-16,
+            "imag": -1.887379141862766e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 6.47432867682744e-14,
+          "C4z": 6.470155582560968e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 4.499001290169261e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.9653746744942323,
+        0.03440021252632301,
+        0.0002251129794485319,
+        0.0
+      ],
+      "field_probability": 0.03462532550576769,
+      "vacuum_seed_overlap_Z0": 0.9653746744942328,
+      "vacuum_weight_minus_seed_overlap": -4.440892098500626e-16,
+      "one_source_projection_weight": 0.03396045836394292,
+      "excluded_from_vacuum_plus_one_source_weight": 0.0006648671418243227,
+      "axial_neutral_tau3_sigma3": 0.3256271615644178,
+      "axial_conditioned_on_active_loops": [
+        0.3333333333333336,
+        0.11295574201141165,
+        -0.22254661508098827,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.9655176928172947,
+          "axial_diagonal_contribution": 0.3218045090267487
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.0344823071827089,
+          "axial_diagonal_contribution": 0.0038226525376692843
+        }
+      ],
+      "axial_cross_quark_spin_channels": -1.6653345369377348e-16,
+      "excluded_sector_axial_contribution": 6.221913701368224e-05,
+      "included_excluded_axial_coherence": -3.1443205132722227e-16,
+      "charge": 1.0000000000000073,
+      "source_only_energy": -0.049723375034222306,
+      "source_only_field_probability": 0.03229950956862365,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.6797753809951246
+    },
+    {
+      "I": 0.5,
+      "mass_m": 1.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW155_degree2",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.5,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.2886751345948129,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1435,
+      "matter_dimension": 70,
+      "tensor_dimension": 100450,
+      "energy": -0.8005051189018267,
+      "eigen_residual": 5.066073989696013e-15,
+      "root_Gauss_max_norm": 6.973429284242112e-15,
+      "unprojected_H_eigen_residual": 4.516289102971905e-15,
+      "C4z_eigenphase_residual": 1.2789789069930087e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 1.0000000000000018,
+            "imag": 4.440892098500626e-16
+          },
+          "C4z": {
+            "real": 1.414213562373099,
+            "imag": 7.216449660063518e-16
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 6.5962965905636176e-15,
+          "C4z": 6.51539502047292e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 1.9380868073894463e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.6309907962179883,
+        0.32765839594379875,
+        0.04135080783821107,
+        0.0
+      ],
+      "field_probability": 0.36900920378201174,
+      "vacuum_seed_overlap_Z0": 0.630990796217988,
+      "vacuum_weight_minus_seed_overlap": 2.220446049250313e-16,
+      "one_source_projection_weight": 0.3032581733839521,
+      "excluded_from_vacuum_plus_one_source_weight": 0.06575103039805985,
+      "axial_neutral_tau3_sigma3": 1.4168442749906816,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666676,
+        1.0475102653895665,
+        0.5312451150758436,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.6376756373369709,
+          "axial_diagonal_contribution": 1.0616564854167847
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.17071139020485682,
+          "axial_diagonal_contribution": -0.015159035526580173
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.17484066753697997,
+          "axial_diagonal_contribution": 0.08336958846291556
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 0.0167723049211912,
+          "axial_diagonal_contribution": 0.005590768307063725
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.28138646833049785,
+      "excluded_sector_axial_contribution": 0.03190780179040099,
+      "included_excluded_axial_coherence": -0.003668379811871944,
+      "charge": 0.9999999999999962,
+      "source_only_energy": -0.6407840876984613,
+      "source_only_field_probability": 0.2354466419365031,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 3.3308392759645358,
+      "old_probability_law_prediction_using_actual_p": 1.461661553454438,
+      "probability_law_defect": -0.04481727846375638,
+      "axial_mobility_line_defect": -0.04481727846375638,
+      "exact_three_component_axial_reconstruction": 1.4168442749906782,
+      "source_only_axial": 1.5358629767019427,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.030287558218463434,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 3.0818402968189056,
+        "energy_weighted_mu1": 1.8608929316661247,
+        "energy_squared_mu2": 2.25815753364685,
+        "centroid_mu1_over_mu0": 0.6038252318223465,
+        "strength_final_Ihalf": 0.3556482992237212,
+        "strength_final_Ithreehalf": 2.7261919975951843,
+        "matched_25_state_reference": {
+          "exists_positive_gap": true,
+          "fit_field_probability": 0.4496803050167733,
+          "fit_omega": 0.1791547148774907,
+          "fit_g": 0.2213908748857516,
+          "ground_energy": -0.8005051189018267,
+          "ground_axial": 1.4168442749906816,
+          "ground_eigen_residual": 6.353096999291432e-16,
+          "inelastic_strength_mu0": 2.8269512837035533,
+          "energy_weighted_mu1": 1.174756620977507,
+          "energy_squared_mu2": 0.9191254341072232,
+          "centroid_mu1_over_mu0": 0.41555601886371146,
+          "actual_minus_reference_mu0": 0.2548890131153523,
+          "actual_minus_reference_mu1": 0.6861363106886176,
+          "actual_minus_reference_mu2": 1.3390320995396268
+        }
+      },
+      "canonical_degree3_exterior": {
+        "meaning": "Exact canonical H action on retained P2 trial state; not exact full-H ground response.",
+        "internal_P2_response_mu2": 2.25815753364685,
+        "positive_exterior_centered_response_norm2": 0.0824770105502251,
+        "full_H_centered_trial_response_mu2": 2.340634544197075,
+        "exterior_response_by_field_channel": {
+          "single_loop_10_bar10": 0.0001419120904044658,
+          "single_loop_15_bar15": 0.0006517288363721841,
+          "three_loops_fundamental": 0.039265078325992596,
+          "two_loops_degree2_plus1": 0.04241829129745587
+        },
+        "ground_state_H_exterior_norm2": 0.057009319459377386,
+        "full_H_commutator_norm2_on_retained_trial": 2.3408354118297687,
+        "ground_probability_by_total_representation_degree": [
+          0.6309907962179883,
+          0.3254034158546196,
+          0.04360578792739017
+        ],
+        "exterior_field_dimension": 22470,
+        "local_representation_dimension_for_exterior": 805,
+        "CG_intertwining_residual": 5.528650340375332e-15,
+        "weak_coupling_power_counting": "P2 top-degree amplitude O(c^2), Q3 H deltaA psi O(c^3), positive norm O(c^6)."
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 1.0,
+      "electric_kE": 0.27,
+      "loop_representation": "PW155_degree2",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -0.5,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.2886751345948129,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1435,
+      "matter_dimension": 20,
+      "tensor_dimension": 28700,
+      "energy": -0.43074291281197163,
+      "eigen_residual": 1.5463300076350749e-15,
+      "root_Gauss_max_norm": 3.747485501426792e-15,
+      "unprojected_H_eigen_residual": 1.391228149945019e-15,
+      "C4z_eigenphase_residual": 4.021639083544883e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -1.000000000000001,
+            "imag": 1.9984014443252818e-15
+          },
+          "C4z": {
+            "real": -5.551115123125783e-16,
+            "imag": -1.1102230246251565e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 2.451630730799417e-14,
+          "C4z": 2.4310322679488337e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 1.6769891808660754e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.7580313500906914,
+        0.23054960904595434,
+        0.01141904086335471,
+        0.0
+      ],
+      "field_probability": 0.24196864990930855,
+      "vacuum_seed_overlap_Z0": 0.7580313500906918,
+      "vacuum_weight_minus_seed_overlap": -3.3306690738754696e-16,
+      "one_source_projection_weight": 0.21096708755641452,
+      "excluded_from_vacuum_plus_one_source_weight": 0.031001562352893697,
+      "axial_neutral_tau3_sigma3": 0.2786980369897202,
+      "axial_conditioned_on_active_loops": [
+        0.33333333333333365,
+        0.12394979010799093,
+        -0.22380648151493773,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.7649256939998604,
+          "axial_diagonal_contribution": 0.25343215479675024
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.23507430600013976,
+          "axial_diagonal_contribution": 0.025265882192969737
+        }
+      ],
+      "axial_cross_quark_spin_channels": 2.220446049250313e-16,
+      "excluded_sector_axial_contribution": 0.0025801327865544142,
+      "included_excluded_axial_coherence": -1.4850723373127927e-16,
+      "charge": 1.0000000000000016,
+      "source_only_energy": -0.3686076734373439,
+      "source_only_field_probability": 0.16930234942834965,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.6932336380705237
+    },
+    {
+      "I": 0.5,
+      "mass_m": 0.3,
+      "electric_kE": 0.27,
+      "loop_representation": "PW155_degree2",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -1.6666666666666667,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.9622504486493764,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1435,
+      "matter_dimension": 70,
+      "tensor_dimension": 100450,
+      "energy": -4.874884724437536,
+      "eigen_residual": 8.881684679584031e-14,
+      "root_Gauss_max_norm": 7.536968867317696e-15,
+      "unprojected_H_eigen_residual": 8.968683573952741e-14,
+      "C4z_eigenphase_residual": 1.271509072210023e-15,
+      "cubic_representation": {
+        "orbit_dimension": 2,
+        "characters": {
+          "C3_111": {
+            "real": 1.0000000000000024,
+            "imag": 9.992007221626409e-16
+          },
+          "C4z": {
+            "real": 1.414213562373096,
+            "imag": 2.4980018054066022e-15
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 7.812083444947082e-15,
+          "C4z": 7.19536991899844e-15
+        },
+        "six_quarter_turn_class_sum_target": 4.242640687119286,
+        "class_sum_eigen_residual": 2.231688099068195e-14,
+        "interpretation": "Gamma6 doublet"
+      },
+      "probability_by_active_loop_count": [
+        0.26724849154886543,
+        0.5226327512225761,
+        0.210118757228562,
+        0.0
+      ],
+      "field_probability": 0.7327515084511346,
+      "vacuum_seed_overlap_Z0": 0.2672484915488653,
+      "vacuum_weight_minus_seed_overlap": 1.1102230246251565e-16,
+      "one_source_projection_weight": 0.428694326895639,
+      "excluded_from_vacuum_plus_one_source_weight": 0.30405718155549566,
+      "axial_neutral_tau3_sigma3": 1.0504260700330892,
+      "axial_conditioned_on_active_loops": [
+        1.6666666666666672,
+        0.9661501245437085,
+        0.4762555284794585,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 0.75,
+          "dimension": 2,
+          "probability": 0.29783071093704344,
+          "axial_diagonal_contribution": 0.4862909855059538
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.2968584874450196,
+          "axial_diagonal_contribution": -0.01969600365677284
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 3.75,
+          "dimension": 32,
+          "probability": 0.3270174990770349,
+          "axial_diagonal_contribution": 0.11977152192840057
+        },
+        {
+          "colour_C2": 6.0,
+          "quark_spin2": 0.75,
+          "dimension": 20,
+          "probability": 0.07829330254090644,
+          "axial_diagonal_contribution": 0.02609776751363549
+        }
+      ],
+      "axial_cross_quark_spin_channels": 0.43796179874187213,
+      "excluded_sector_axial_contribution": 0.14081095196302723,
+      "included_excluded_axial_coherence": -0.01212606439542193,
+      "charge": 1.000000000000005,
+      "source_only_energy": -3.1957649080115647,
+      "source_only_field_probability": 0.4080639393689217,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 3.1507864439627156,
+      "old_probability_law_prediction_using_actual_p": 1.2595824953049253,
+      "probability_law_defect": -0.2091564252718361,
+      "axial_mobility_line_defect": -0.2091564252718361,
+      "exact_three_component_axial_reconstruction": 1.0504260700330907,
+      "source_only_axial": 1.439964478128377,
+      "conditional_empty_cell_three_hop_t0p2_interface_factor": -0.01282792759434554,
+      "inelastic_axial": {
+        "operator": "sum_quarks sigma_z tau3; full I3=+1/2 CAR response",
+        "inelastic_strength_mu0": 2.7126814950151705,
+        "energy_weighted_mu1": 8.339602861674773,
+        "energy_squared_mu2": 34.448908770256594,
+        "centroid_mu1_over_mu0": 3.0743022640142774,
+        "strength_final_Ihalf": 0.8352972126016209,
+        "strength_final_Ithreehalf": 1.8773842824135496,
+        "matched_25_state_reference": {
+          "exists_positive_gap": false,
+          "required_field_probability": 1.1092330739404397,
+          "reason": "Positive-gap two-layer N law requires 0<p<1/2."
+        }
+      },
+      "canonical_degree3_exterior": {
+        "meaning": "Exact canonical H action on retained P2 trial state; not exact full-H ground response.",
+        "internal_P2_response_mu2": 34.448908770256594,
+        "positive_exterior_centered_response_norm2": 3.5758557641403383,
+        "full_H_centered_trial_response_mu2": 38.02476453439693,
+        "exterior_response_by_field_channel": {
+          "single_loop_10_bar10": 0.008350667131839377,
+          "single_loop_15_bar15": 0.036748798645386,
+          "three_loops_fundamental": 1.6134493991205723,
+          "two_loops_degree2_plus1": 1.91730689924254
+        },
+        "ground_state_H_exterior_norm2": 3.127999914467568,
+        "full_H_commutator_norm2_on_retained_trial": 39.056138161461014,
+        "ground_probability_by_total_representation_degree": [
+          0.26724849154886543,
+          0.5108979757970605,
+          0.2218535326540777
+        ],
+        "exterior_field_dimension": 22470,
+        "local_representation_dimension_for_exterior": 805,
+        "CG_intertwining_residual": 5.528650340375332e-15,
+        "weak_coupling_power_counting": "P2 top-degree amplitude O(c^2), Q3 H deltaA psi O(c^3), positive norm O(c^6)."
+      }
+    },
+    {
+      "I": 1.5,
+      "mass_m": 0.3,
+      "electric_kE": 0.27,
+      "loop_representation": "PW155_degree2",
+      "a": 1.0,
+      "q_for_B": 0.7,
+      "Pauli_coefficient_after_q_cancel": -1.6666666666666667,
+      "one_loop_gap": 1.4400000000000002,
+      "normalized_source_g": -0.9622504486493764,
+      "total_representation_degree_cutoff": 2,
+      "field_dimension": 1435,
+      "matter_dimension": 20,
+      "tensor_dimension": 28700,
+      "energy": -3.0554841685970313,
+      "eigen_residual": 1.4312808794123464e-12,
+      "root_Gauss_max_norm": 4.952267549150154e-15,
+      "unprojected_H_eigen_residual": 1.4312745107673682e-12,
+      "C4z_eigenphase_residual": 4.1642762915293134e-16,
+      "cubic_representation": {
+        "orbit_dimension": 4,
+        "characters": {
+          "C3_111": {
+            "real": -1.0000000000000027,
+            "imag": 6.661338147750939e-16
+          },
+          "C4z": {
+            "real": -4.996003610813204e-16,
+            "imag": -3.885780586188048e-16
+          }
+        },
+        "rotation_orbit_closure_norms": {
+          "C3_111": 3.046617003438493e-14,
+          "C4z": 3.040719632488236e-14
+        },
+        "six_quarter_turn_class_sum_target": 0.0,
+        "class_sum_eigen_residual": 2.116316646902692e-14,
+        "interpretation": "Gamma8 quartet"
+      },
+      "probability_by_active_loop_count": [
+        0.3321892352449425,
+        0.5527004176123994,
+        0.11511034714265633,
+        0.0
+      ],
+      "field_probability": 0.6678107647550575,
+      "vacuum_seed_overlap_Z0": 0.3321892352449426,
+      "vacuum_weight_minus_seed_overlap": -1.1102230246251565e-16,
+      "one_source_projection_weight": 0.4186772847857103,
+      "excluded_from_vacuum_plus_one_source_weight": 0.2491334799693471,
+      "axial_neutral_tau3_sigma3": 0.16914767720074658,
+      "axial_conditioned_on_active_loops": [
+        0.33333333333333354,
+        0.15184308766657195,
+        -0.22157700396961771,
+        null
+      ],
+      "matter_colour_spin_channels": [
+        {
+          "colour_C2": 0.0,
+          "quark_spin2": 3.75,
+          "dimension": 4,
+          "probability": 0.3904934163537609,
+          "axial_diagonal_contribution": 0.11851466917390525
+        },
+        {
+          "colour_C2": 3.0,
+          "quark_spin2": 0.75,
+          "dimension": 16,
+          "probability": 0.6095065836462372,
+          "axial_diagonal_contribution": 0.050633008026840315
+        }
+      ],
+      "axial_cross_quark_spin_channels": 9.992007221626409e-16,
+      "excluded_sector_axial_contribution": 0.011898233809574721,
+      "included_excluded_axial_coherence": -6.910771534775138e-17,
+      "charge": 0.9999999999999989,
+      "source_only_energy": -2.0952810530047286,
+      "source_only_field_probability": 0.3721264437823092,
+      "H_matvec_calls": 26,
+      "elapsed_seconds": 0.8308168600779027
+    }
+  ],
+  "ordering": [
+    {
+      "representation": "PW19",
+      "cutoff": 1,
+      "mass": 3.0,
+      "Delta_minus_nucleon": 0.047131014513793174,
+      "source_only_Delta_minus_nucleon": 0.046700625193691225
+    },
+    {
+      "representation": "PW19",
+      "cutoff": 1,
+      "mass": 1.0,
+      "Delta_minus_nucleon": 0.2763020037034918,
+      "source_only_Delta_minus_nucleon": 0.2721764142611174
+    },
+    {
+      "representation": "PW19",
+      "cutoff": 1,
+      "mass": 0.3,
+      "Delta_minus_nucleon": 1.0501815519600326,
+      "source_only_Delta_minus_nucleon": 1.100483855006837
+    },
+    {
+      "representation": "PW19",
+      "cutoff": 2,
+      "mass": 3.0,
+      "Delta_minus_nucleon": 0.04993540519746623,
+      "source_only_Delta_minus_nucleon": 0.046700625193691225
+    },
+    {
+      "representation": "PW19",
+      "cutoff": 2,
+      "mass": 1.0,
+      "Delta_minus_nucleon": 0.36771604620247367,
+      "source_only_Delta_minus_nucleon": 0.2721764142611174
+    },
+    {
+      "representation": "PW19",
+      "cutoff": 2,
+      "mass": 0.3,
+      "Delta_minus_nucleon": 1.8498861756448348,
+      "source_only_Delta_minus_nucleon": 1.100483855006837
+    },
+    {
+      "representation": "PW19",
+      "cutoff": 3,
+      "mass": 3.0,
+      "Delta_minus_nucleon": 0.04995342504261262,
+      "source_only_Delta_minus_nucleon": 0.046700625193691225
+    },
+    {
+      "representation": "PW19",
+      "cutoff": 3,
+      "mass": 1.0,
+      "Delta_minus_nucleon": 0.3725077072151868,
+      "source_only_Delta_minus_nucleon": 0.2721764142611174
+    },
+    {
+      "representation": "PW19",
+      "cutoff": 3,
+      "mass": 0.3,
+      "Delta_minus_nucleon": 2.002091153021082,
+      "source_only_Delta_minus_nucleon": 1.100483855006837
+    },
+    {
+      "representation": "PW155_degree2",
+      "cutoff": 2,
+      "mass": 3.0,
+      "Delta_minus_nucleon": 0.05004133540780807,
+      "source_only_Delta_minus_nucleon": 0.046700625193691225
+    },
+    {
+      "representation": "PW155_degree2",
+      "cutoff": 2,
+      "mass": 1.0,
+      "Delta_minus_nucleon": 0.3697622060898551,
+      "source_only_Delta_minus_nucleon": 0.2721764142611174
+    },
+    {
+      "representation": "PW155_degree2",
+      "cutoff": 2,
+      "mass": 0.3,
+      "Delta_minus_nucleon": 1.819400555840505,
+      "source_only_Delta_minus_nucleon": 1.100483855006836
+    }
+  ],
+  "scope": [
+    "PW19 full three-loop tensor and PW155 total source-degree2 are distinct calculations.",
+    "PW155 degree2 contains every exact B squared vacuum source irrep, not full L2 closure.",
+    "Independent four-edge loops sharing only root: defined electric bouquet law.",
+    "This is not an exact maximal-tree electric reduction of the previous nine-link graph.",
+    "Signed permutations plus loop inversion realize cubic axial symmetry, not continuous SO3.",
+    "Primitive CAR, flavour, mass, lattice spacing, kE, and Wilson-Pauli operator remain inputs.",
+    "m=.3 and m=1 are stress regimes, not controlled heavy-Dirac continuum predictions.",
+    "No colour magnetic plaquette potential, spatial bound state, or sea matching is asserted."
+  ]
+}
