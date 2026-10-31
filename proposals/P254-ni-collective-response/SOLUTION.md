@@ -9,6 +9,8 @@ updated: '2026-10-31'
 
 The objective is a material-calibrated many-region simulation, a defensible lattice comparison, and an explicit nuclear-transition/energy-disposal construction. This map keeps that whole objective visible. Nodes are scientific outputs, not approval checkpoints. The user's 28 October instruction is to reuse real existing solutions, solve the missing core nodes, and avoid process minutiae. The authoritative scope is [P254](proposal.yaml).
 
+**Execution priority,31October:** finish the current actual material run with its endpoint-energy and ordered covariance outputs before new check campaigns, monitoring features, spatial sweeps or additional lattice cases ([user-priority allocation](attempts/0028/root-allocation-decision-306.json)). The existing runner already supports changed-CPU resume with the original owner, clock and physical identity ([executed reuse](attempts/0028/source-local-material-execution-CPU-resume-001.json)); use that existing solution when the energy job releases its CPUs, rather than introducing another propagation driver. Current partial contractions are not a completed covariance or a completion forecast.
+
 ## Core scientific work
 
 Solid arrows identify material inputs needed by a result. Dashed arrows identify future material-prediction inputs, not prerequisites for identifying the nuclear mechanism's missing operator/data. The nuclear source/operator assessment is complete at that exact scope; no other node is marked complete merely because a helper or finite example works.
@@ -18,7 +20,7 @@ flowchart TD
     R["R · Common material reference and initial state\nCOMPLETE · conditional, nonstationary"]
     S["S · Spatial and inter-region operators\nCOMPLETE · declared finite model"]
     E["E · Field, environment and fluctuations\nCONSTRUCTION COMPLETE · full-material noise RUNNING"]
-    D["D · Coupled dynamics and correlations\nFIRST PHYSICAL MIXED ENDPOINT COMPLETE · positive energy RUNNING"]
+    D["D · Coupled dynamics and correlations\nFIRST PHYSICAL ENDPOINT + ENERGY COMPLETE · correlations OPEN"]
     C["C · Controlled lattice comparison\nCLAMPED COMPLETE · matched coupled inputs RUNNING"]
     N["N · Nuclear source/operator and energy-disposal assessment\nCOMPLETE · rates remain undetermined"]
     R --> S
@@ -32,6 +34,9 @@ flowchart TD
     D -. "material predictions" .-> N
     C -. "material predictions" .-> N
 ```
+
+**Actual endpoint-energy result completed31October.** The [byte-exact eleven-term response-energy report](attempts/0028/saved-energy-positive-complete-result-001.json) consumes the genuine saved `0.001` inverse-Ry mixed endpoint, with all128 original electronic sources and no new trajectory or initialization. The [actual terminal and CPU-release evidence](attempts/0028/saved-energy-positive-complete-intake-001.json) records successful exit, no remaining owned workers and4024 cumulative actions within the4096 ceiling and original-clock28800-second budget. This is a mixed response-energy coefficient, not finite-dose energy, heat or a conservation certificate. The released CPUs are assigned to the existing covariance runner's CPU-resume path; no new propagation driver is needed.
+
 
 | Node | Required scientific output | Current work |
 | --- | --- | --- |
