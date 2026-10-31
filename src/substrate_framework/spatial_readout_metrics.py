@@ -4,25 +4,29 @@ from itertools import product
 import numpy as np
 
 
-def periodic_distances(cells, other, mesh, cell_bohr):
+def periodic_distances(cells, other, mesh, cell_bohr, *, offset_bohr=(0., 0., 0.)):
     """Exact closest-image distances; cell_bohr has lattice vectors as COLUMNS.
 
     Enumerate a provably sufficient integer box from the smallest singular
     value of the BvK supercell. Unlike rounding fractional coordinates alone,
-    this also works for skew cells. Identical selected atom offsets cancel.
+    this also works for skew cells. offset_bohr is the selected probe position
+    minus the anchor position inside their original primitive cells.
     """
     cells, other, mesh = np.asarray(cells), np.asarray(other), np.asarray(mesh)
     lattice = np.asarray(cell_bohr, float)
+    offset = np.asarray(offset_bohr, float)
     if (lattice.shape != (3, 3) or not np.isfinite(lattice).all()
-            or mesh.shape != (3,) or np.any(mesh <= 0)):
+            or mesh.shape != (3,) or np.any(mesh <= 0)
+            or offset.shape != (3,) or not np.isfinite(offset).all()):
         raise ValueError('finite nonsingular original geometry and positive mesh required')
     supercell = lattice @ np.diag(mesh)
     sigma = float(np.linalg.svd(supercell, compute_uv=False)[-1])
     if sigma <= 0:
         raise ValueError('singular original cell')
+    fractional_offset = np.linalg.solve(supercell, offset)
     distances = []
     for delta in cells-other:
-        fractional = delta/mesh
+        fractional = delta/mesh+fractional_offset
         nearest = np.rint(fractional)
         upper = float(np.linalg.norm(supercell @ (fractional-nearest)))
         radius = upper/sigma

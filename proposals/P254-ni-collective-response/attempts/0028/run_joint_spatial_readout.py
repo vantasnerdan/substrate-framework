@@ -86,7 +86,9 @@ def main():
     reference = args.reference_cell if args.reference_cell is not None else common['cell']
     readout = reconstruct(data['q'], data['coherent'], data['ab'], data['ba'],
         mesh=data['mesh'], cell_bohr=data['geometry']['cell_bohr'],
-        kick_cell=common['cell'], reference_cell=reference)
+        kick_cell=common['cell'], reference_cell=reference,
+        probe_position_bohr=data['geometry']['atom_position_bohr'],
+        seed_position_bohr=data['geometry']['seed_atom_position_bohr'])
     bindings = sources()
     result = dict(schema='P254-joint-spatial-readout-v1', status='complete',
         input_manifest=binding, input_bindings=data['manifest'], source_bindings=bindings,

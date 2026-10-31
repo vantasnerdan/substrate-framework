@@ -28,7 +28,7 @@ from run_mixed_q_material import watchdog
 from saved_case_mean_execution import execute, seed_sources
 from saved_case_mean_owner import (
     SCHEMA, CAP_NAMES, execution_caps, original_owner, continuation_budget,
-    terminal_signals, finish_receipt, isolated_output)
+    terminal_signals, finish_receipt, isolated_output, reap_owned_workers)
 from substrate_framework.streamed_material_state import file_binding
 
 
@@ -110,6 +110,7 @@ def run_owned(args, directory, invocation, started_unix, result):
         result.update(status='interrupted' if isinstance(error, (InterruptedError, KeyboardInterrupt)) else 'partial',
                       error=dict(type=type(error).__name__, message=str(error)[:16384]))
     finally:
+        result['owned_worker_cleanup'] = reap_owned_workers()
         binding = finish_receipt(directory, invocation, result, budget)
     return binding
 

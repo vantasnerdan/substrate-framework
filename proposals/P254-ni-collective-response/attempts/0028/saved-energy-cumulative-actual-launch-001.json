@@ -1,0 +1,176 @@
+{
+  "schema": "P254-cumulative-energy-actual-launch-intake-v1",
+  "actual_collection_utc": "2026-10-31T17:23:43.346879+00:00",
+  "unit": "p254-a28-saved-energy-cumulative-wide64-001.service",
+  "invocation": "9d7a494d23c64b7da8ae58ad00fd9a79",
+  "actual_launch_exit": 0,
+  "actual_launch_stdout": "",
+  "actual_launch_stderr": "Running as unit: p254-a28-saved-energy-cumulative-wide64-001.service; invocation ID: 9d7a494d23c64b7da8ae58ad00fd9a79\n",
+  "original_launch_plan_binding": {
+    "path": "/var/tmp/p254-a28-saved-energy-cumulative-wide64-001-operations/launch-plan.json",
+    "bytes": 3129,
+    "sha256": "3a2b6768f32dcde453c2e3a517cbd5e7cf5be4ca84bd5353d575b735fb5c97ac"
+  },
+  "complete_original_launch_plan": {
+    "schema": "P254-cumulative-energy-actual-launch-plan-v1",
+    "root_decision": "Root297",
+    "argv": [
+      "systemd-run",
+      "--user",
+      "--unit=p254-a28-saved-energy-cumulative-wide64-001.service",
+      "--working-directory=/home/administrator/projects/substrate-ni-collective",
+      "--property=CPUAffinity=6 7",
+      "--property=MemoryHigh=7516192768",
+      "--property=MemoryMax=8589934592",
+      "--property=MemorySwapMax=0",
+      "--property=LimitNOFILE=8192",
+      "--property=Nice=0",
+      "--property=KillMode=mixed",
+      "--property=Restart=no",
+      "--property=TimeoutStopSec=300s",
+      "--setenv=OMP_NUM_THREADS=1",
+      "--setenv=OPENBLAS_NUM_THREADS=1",
+      "--setenv=MKL_NUM_THREADS=1",
+      "--setenv=BLIS_NUM_THREADS=1",
+      "--setenv=NUMEXPR_NUM_THREADS=1",
+      "--property=RuntimeMaxSec=8722s",
+      "--property=ExecStopPost=/usr/bin/python3 -c 'import os,json;from pathlib import Path;r=os.environ.get('\"'\"'SERVICE_RESULT'\"'\"','\"'\"'unknown'\"'\"');e=os.environ.get('\"'\"'EXIT_STATUS'\"'\"','\"'\"'unknown'\"'\"');tag='\"'\"'dft-hung'\"'\"' if r in ('\"'\"'timeout'\"'\"','\"'\"'watchdog'\"'\"') else '\"'\"'dft-done'\"'\"' if r=='\"'\"'success'\"'\"' and e=='\"'\"'0'\"'\"' else '\"'\"'dft-fail'\"'\"';p=Path('\"'\"'/var/tmp/p254-a28-saved-energy-cumulative-wide64-001-operations'\"'\"')/'\"'\"'unit-outcomes'\"'\"';p.mkdir(exist_ok=True);v=dict(unit='\"'\"'p254-a28-saved-energy-cumulative-wide64-001.service'\"'\"',invocation=os.environ.get('\"'\"'INVOCATION_ID'\"'\"'),service_result=r,exit_code=os.environ.get('\"'\"'EXIT_CODE'\"'\"'),exit_status=e,tag=tag,scientific_acceptance_claimed=False);f=p/(str(v['\"'\"'invocation'\"'\"'])+'\"'\"'.json'\"'\"');f.write_text(json.dumps(v,indent=2)+chr(10));print('\"'\"'['\"'\"'+tag+'\"'\"']'\"'\"',json.dumps(v),flush=True)'",
+      "env",
+      "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime",
+      "/usr/bin/python3",
+      "-u",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_saved_energy_continuation.py",
+      "--grant",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-energy-cumulative-wide64-allocation-002.json",
+      "--grant-sha256",
+      "e80f63025de0d01ef1a69dfd5237c80ecf25c9a81ddf05c9499533413a21654b",
+      "--cpus",
+      "6",
+      "7"
+    ],
+    "grant": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-energy-cumulative-wide64-allocation-002.json",
+      "bytes": 71623,
+      "sha256": "e80f63025de0d01ef1a69dfd5237c80ecf25c9a81ddf05c9499533413a21654b"
+    },
+    "original_started_unix": 1793444964.5204768,
+    "original_cumulative_deadline_unix": 1793473764.5204768,
+    "runtime_remaining_seconds": "8692",
+    "useful_output": "Complete genuine saved-endpoint eleven-term energy; retain3originalbare scalars and all128moments/prepared context, no propagation replay.",
+    "first_scientific_expectation": "Actual original prepared restoration and first new bare-H0 source under its own measured grouping; one-source pilot is not whole-run ETA."
+  },
+  "original_manager_smoke_binding": {
+    "path": "/var/tmp/p254-a28-saved-energy-cumulative-wide64-001-operations/manager-smoke.json",
+    "bytes": 1119,
+    "sha256": "b800176f992729aa2ce94c8c62a244db0ca6eda7af781695eea6e211661848eb"
+  },
+  "complete_original_manager_smoke": {
+    "schema": "P254-real-cumulative-energy-manager-smoke-v1",
+    "uid": "1000",
+    "gid": "1000",
+    "groups": [
+      "4",
+      "27",
+      "1000"
+    ],
+    "pid": "2964568",
+    "invocation": "3dcabf87b3284115b1690dfab3b4e803",
+    "affinity": [
+      6,
+      7
+    ],
+    "nofile": [
+      "8192",
+      "8192"
+    ],
+    "kernel_interfaces": {
+      "memory.high": {
+        "available": true,
+        "value": "7516192768"
+      },
+      "memory.max": {
+        "available": true,
+        "value": "8589934592"
+      },
+      "memory.swap.max": {
+        "available": true,
+        "value": "0"
+      },
+      "cpu.max": {
+        "available": false,
+        "reason": "not exposed"
+      },
+      "pids.max": {
+        "available": true,
+        "value": "38458"
+      }
+    },
+    "grant": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-energy-cumulative-wide64-allocation-002.json",
+      "bytes": 71623,
+      "sha256": "e80f63025de0d01ef1a69dfd5237c80ecf25c9a81ddf05c9499533413a21654b"
+    },
+    "original_start": 1793444964.5204768,
+    "previous_actions": 1024,
+    "native_called": false,
+    "status": "passed"
+  },
+  "original_own_context_binding": {
+    "path": "/var/tmp/p254-a28-saved-energy-cumulative-wide64-001-operations/actual-process-context.json",
+    "bytes": 5165,
+    "sha256": "55da6101fa236f135088c43a09d758d417b8ddc6d53845ae0418fc5544bed46b"
+  },
+  "complete_original_own_context": {
+    "schema": "P254-cumulative-energy-actual-own-context-v1",
+    "actual_utc": "2026-10-31T16:46:01.545827+00:00",
+    "unit": "p254-a28-saved-energy-cumulative-wide64-001.service",
+    "manager": {
+      "Restart": "no",
+      "TimeoutStopUSec": "5min",
+      "RuntimeMaxUSec": "2h 25min 22s",
+      "MainPID": "2965739",
+      "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-saved-energy-cumulative-wide64-001.service",
+      "MemoryHigh": "7516192768",
+      "MemoryMax": "8589934592",
+      "MemorySwapMax": "0",
+      "LimitNOFILE": "8192",
+      "CPUAffinity": "6-7",
+      "ActiveState": "active",
+      "SubState": "running",
+      "InvocationID": "9d7a494d23c64b7da8ae58ad00fd9a79"
+    },
+    "pid": "2965739",
+    "cmdline": [
+      "/usr/bin/python3",
+      "-u",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_saved_energy_continuation.py",
+      "--grant",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-energy-cumulative-wide64-allocation-002.json",
+      "--grant-sha256",
+      "e80f63025de0d01ef1a69dfd5237c80ecf25c9a81ddf05c9499533413a21654b",
+      "--cpus",
+      "6",
+      "7"
+    ],
+    "declared_environment_only": {
+      "INVOCATION_ID": "9d7a494d23c64b7da8ae58ad00fd9a79",
+      "PYTHONPATH": "/home/administrator/.cache/dft/p254-a28-runtime",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "proc_status": "Name:\tpython3\nUmask:\t0002\nState:\tR (running)\nTgid:\t2965739\nNgid:\t0\nPid:\t2965739\nPPid:\t2867432\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t128\nGroups:\t4 27 1000 \nNStgid:\t2965739\nNSpid:\t2965739\nNSpgid:\t2965739\nNSsid:\t2965739\nKthread:\t0\nVmPeak:\t  629852 kB\nVmSize:\t  600048 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t  426996 kB\nVmRSS:\t  399460 kB\nRssAnon:\t  359984 kB\nRssFile:\t   39464 kB\nRssShmem:\t      12 kB\nVmData:\t  493248 kB\nVmStk:\t     132 kB\nVmExe:\t    2956 kB\nVmLib:\t   79236 kB\nVmPTE:\t     904 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t1\nSigQ:\t0/128196\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000006003\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\t00000040\nCpus_allowed_list:\t6\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t5017\nnonvoluntary_ctxt_switches:\t5755\nx86_Thread_features:\t\nx86_Thread_features_locked:\t\n",
+    "proc_limits": "Limit                     Soft Limit           Hard Limit           Units     \nMax cpu time              unlimited            unlimited            seconds   \nMax file size             unlimited            unlimited            bytes     \nMax data size             unlimited            unlimited            bytes     \nMax stack size            8388608              unlimited            bytes     \nMax core file size        0                    unlimited            bytes     \nMax resident set          unlimited            unlimited            bytes     \nMax processes             128196               128196               processes \nMax open files            8192                 8192                 files     \nMax locked memory         4205776896           4205776896           bytes     \nMax address space         unlimited            unlimited            bytes     \nMax file locks            unlimited            unlimited            locks     \nMax pending signals       128196               128196               signals   \nMax msgqueue size         819200               819200               bytes     \nMax nice priority         0                    0                    \nMax realtime priority     0                    0                    \nMax realtime timeout      unlimited            unlimited            us        \n",
+    "own_cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-saved-energy-cumulative-wide64-001.service\n",
+    "grant": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-energy-cumulative-wide64-allocation-002.json",
+      "bytes": 71623,
+      "sha256": "e80f63025de0d01ef1a69dfd5237c80ecf25c9a81ddf05c9499533413a21654b"
+    },
+    "native_started_claimed": false,
+    "scope": "Verified actual own current-invocation process; native readout only after a genuinely computed non-donor source."
+  },
+  "scope": "Exact saved original command, actual manager smoke and verified own context, recovered after execution. No all-exit success, fullenergy or completed128-source result inferred."
+}

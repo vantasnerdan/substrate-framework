@@ -252,8 +252,9 @@ def load_material(manifest_binding):
     common, coherent, ab, ba = validate_records(records, requests, saved, ib, mesh,
                                                pair_records=pairs, pair_requests=pair_requests,
                                                source_snapshots=manifest.get('source_snapshots', ()))
-    atom = common['atom']
+    atom, seed_atom = common['atom'], common['seed_atom']
     if (not 1 <= atom <= len(arrays['atom_names'])
+            or not 1 <= seed_atom <= len(arrays['atom_names'])
             or common['observable'] != 'original-%s%d%s-total-force' % (arrays['atom_names'][atom-1], atom, common['axis'])
             or not np.array_equal(arrays['atom_indices'], np.arange(1, len(arrays['atom_names'])+1))):
         raise ValueError('selected force is not in original atom order')
@@ -298,7 +299,9 @@ def load_material(manifest_binding):
     geometry = dict(aggregate=aggregate_binding, archive=aggregate['archive'], cell_bohr=cell_bohr,
                     atom_one_based=atom, atom_name=str(arrays['atom_names'][atom-1]),
                     atom_position_bohr=arrays['positions_bohr'][:, atom-1],
-                    convention='cell lattice vectors are columns; identical atom offsets cancel in distances')
+                    seed_atom_one_based=seed_atom, seed_atom_name=str(arrays['atom_names'][seed_atom-1]),
+                    seed_atom_position_bohr=arrays['positions_bohr'][:, seed_atom-1],
+                    convention='cell lattice vectors are columns; coherent distance uses probe minus seed intra-cell position; same-probe connected offsets cancel')
     return dict(manifest=manifest, common=common, saved=saved, mesh=mesh, geometry=geometry,
                 receipt_assembly_by_q=['all' if 'result' in entry else
                     ('dual-coherent+source-local-pair' if record.get('schema') == DUAL_SCHEMA else

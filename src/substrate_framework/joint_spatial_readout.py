@@ -39,8 +39,9 @@ def coherent_local(q, values, cells):
     return np.exp(2j*np.pi*np.asarray(cells) @ np.asarray(q).T) @ z/np.sqrt(len(q))
 
 
-def reconstruct(q, coherent, ab, ba, *, mesh, cell_bohr, kick_cell, reference_cell):
-    """AB/BA columns are electronic, ionic, field INITIAL origins and total."""
+def reconstruct(q, coherent, ab, ba, *, mesh, cell_bohr, kick_cell, reference_cell,
+                probe_position_bohr, seed_position_bohr):
+    """AB/BA origins share one probe; coherent extent is relative to its seed."""
     q, cells = complete_grid(q, mesh)
     n = len(q)
     a, b = np.asarray(ab, complex), np.asarray(ba, complex)
@@ -55,7 +56,8 @@ def reconstruct(q, coherent, ab, ba, *, mesh, cell_bohr, kick_cell, reference_ce
     pair_b = np.asarray([spatial_pair(q, b, cell, reference_cell, ncells=n) for cell in cells])
     pairs = dict(AB=pair_a, BA=pair_b, symmetrized=(pair_a+pair_b)/2,
                  commutator=pair_a-pair_b)
-    force_distances = periodic_distances(cells, kick_cell, mesh, cell_bohr)
+    offset = np.asarray(probe_position_bohr, float)-np.asarray(seed_position_bohr, float)
+    force_distances = periodic_distances(cells, kick_cell, mesh, cell_bohr, offset_bohr=offset)
     correlation_distances = periodic_distances(cells, reference_cell, mesh, cell_bohr)
     indices = np.rint(np.mod(q, 1)*np.asarray(mesh)).astype(int) % mesh
     lookup = {tuple(index): i for i, index in enumerate(indices)}
@@ -74,6 +76,7 @@ def reconstruct(q, coherent, ab, ba, *, mesh, cell_bohr, kick_cell, reference_ce
                                 for name, x in pairs.items()})
     return dict(cells=cells, mesh=list(mesh), ncells=n, origins=list(ORIGINS),
         reference_cell=list(reference_cell), kick_cell=list(kick_cell),
+        coherent_distance_probe_minus_seed_bohr=offset,
         coherent_force_ry_bohr=local,
         coherent_components='Producer retains total coherent readout only; no electronic/ionic/field decomposition is fabricated.',
         connected_force_pairs_ry2_bohr2=pairs, reality_residuals=residuals,

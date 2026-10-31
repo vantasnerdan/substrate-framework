@@ -106,7 +106,8 @@ def main():
     q_force = fourier@local_force
     geometry = np.array([[2., .7, .1], [0., 1.8, .2], [0., 0., 2.3]])
     reconstructed = reconstruct(q, q_force, ab, ba, mesh=mesh, cell_bohr=geometry,
-                                kick_cell=[1, 0, 0], reference_cell=[1, 0, 0])
+                                kick_cell=[1, 0, 0], reference_cell=[1, 0, 0],
+                                probe_position_bohr=np.zeros(3), seed_position_bohr=np.zeros(3))
     close('coherent_dense_real_space', reconstructed['coherent_force_ry_bohr'], local_force)
     expected_ab = np.column_stack([x[:, 1] for x in real_ab]+[sum(real_ab)[:, 1]])
     expected_ba = np.column_stack([x[:, 1] for x in real_ba]+[sum(real_ba)[:, 1]])
@@ -123,7 +124,8 @@ def main():
         raise AssertionError('one global field leaked out of Gamma')
     close('opposite_ordering_reality', expected_ab, expected_ba.conj())
     perturbed = reconstruct(q, q_force+1j*1e-4, ab, ba, mesh=mesh, cell_bohr=geometry,
-                            kick_cell=[1, 0, 0], reference_cell=[1, 0, 0])
+                            kick_cell=[1, 0, 0], reference_cell=[1, 0, 0],
+                            probe_position_bohr=np.zeros(3), seed_position_bohr=np.zeros(3))
     if perturbed['reality_residuals']['coherent_imaginary_max'] < 1e-4:
         raise AssertionError('imaginary coherent signal was clipped')
     checks['imaginary_signal_retained'] = True
@@ -132,6 +134,30 @@ def main():
     brute = [min(np.linalg.norm(geometry@(cell-[1, 0, 0]-mesh*np.array([a, b, c])))
                  for a in range(-4, 5) for b in range(-4, 5) for c in range(-4, 5)) for cell in cells]
     close('skew_geometry_minimum_images', distances, brute)
+    offset = np.array([-1.4, .7, .3])
+    shifted = reconstruct(q, q_force, ab, ba, mesh=mesh, cell_bohr=geometry,
+        kick_cell=[1, 0, 0], reference_cell=[1, 0, 0],
+        probe_position_bohr=offset, seed_position_bohr=np.zeros(3))
+    shifted_brute = [min(np.linalg.norm(geometry@(cell-[1, 0, 0]-mesh*np.array([a, b, c]))+offset)
+                        for a in range(-4, 5) for b in range(-4, 5) for c in range(-4, 5)) for cell in cells]
+    close('distinct_atom_skew_minimum_images',
+          shifted['selected_observable_weights']['coherent_total']['distance_bohr_by_cell'], shifted_brute)
+    close('distinct_atom_position_does_not_change_force', shifted['coherent_force_ry_bohr'], local_force)
+    close('connected_same_probe_offsets_cancel',
+          shifted['selected_observable_weights']['connected']['AB']['total']['distance_bohr_by_cell'], brute)
+    exact_offset = sp.Matrix([0, 0, 0])-sp.Matrix([1, 0, 0])
+    exact_distance = min(sp.sqrt((exact_offset-10*sp.Matrix([a, b, c])).dot(
+        exact_offset-10*sp.Matrix([a, b, c])))
+        for a in range(-1, 2) for b in range(-1, 2) for c in range(-1, 2))
+    atomic = reconstruct([[0, 0, 0]], [1.], np.ones((1, 4)), np.ones((1, 4)),
+        mesh=[1, 1, 1], cell_bohr=10*np.eye(3), kick_cell=[0, 0, 0], reference_cell=[0, 0, 0],
+        probe_position_bohr=[0, 0, 0], seed_position_bohr=[1, 0, 0])
+    close('same_cell_distinct_atom_rms_sympy',
+          atomic['selected_observable_weights']['coherent_total']['rms_distance_bohr'], float(exact_distance))
+    close('same_cell_same_probe_connected_rms', atomic['selected_observable_weights']['connected']['AB']['total']['rms_distance_bohr'], 0.)
+    if exact_distance == 0 or np.allclose(shifted_brute, brute):
+        raise AssertionError('omitted intra-cell offset mutation not exposed')
+    checks['omitted_atom_offset_mutation_detected'] = True
     localized = selected_weight([0, 2, 0, 0], distances, value_units='Ry/bohr')
     extended = selected_weight([2, 2, 2, 2], distances, value_units='Ry/bohr')
     zero = selected_weight(np.zeros(n), distances, value_units='Ry/bohr')

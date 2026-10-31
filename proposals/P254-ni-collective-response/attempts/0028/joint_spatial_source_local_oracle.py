@@ -236,7 +236,8 @@ def exercise_source_local(*, encode, close, reject):
             real = [l@block_diag(*[covariance_blocks[ordering][k][o] for k in range(3)])@r.conj().T for o in range(3)]
             expected[ordering] = np.column_stack([x[:, 1] for x in real]+[sum(real)[:, 1]])
         result = reconstruct(q, forces, ab, ba, mesh=mesh, cell_bohr=np.eye(3),
-                             kick_cell=cell, reference_cell=cell)
+                             kick_cell=cell, reference_cell=cell,
+                             probe_position_bohr=np.zeros(3), seed_position_bohr=np.zeros(3))
         close('source_local_join_dense_real_space_coherent', result['coherent_force_ry_bohr'], expected_force, 3e-8)
         for ordering in ('AB', 'BA'):
             close('source_local_join_dense_real_space_'+ordering,
