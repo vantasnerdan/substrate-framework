@@ -1,0 +1,67 @@
+{
+  "actual_utc": "2026-11-02T14:29:04.965062+00:00",
+  "original_UID": "579",
+  "actual_read": {
+    "text": "Email UID: 579\nFrom: giuliano@vantasner.io\nTo: giuliano@vantasner.io\nDate: 2026-11-02T14:24:06.000Z\nSubject: [dft-disk] /tmp\n\n--- Body ---\nonly 8.0% free on /tmp (38 GiB of 483 GiB). Checkpoint/commit progress store at risk.\n",
+    "details": {
+      "xdev": {
+        "tool": "email_read",
+        "mode": "execute",
+        "args": {
+          "uid": 579,
+          "mailbox": "INBOX"
+        },
+        "tier": "exec",
+        "inner": {
+          "uid": 579,
+          "subject": "[dft-disk] /tmp",
+          "attachmentCount": 0,
+          "pdfCount": 0,
+          "savedFiles": []
+        }
+      }
+    }
+  },
+  "actual_successful_move": {
+    "text": "Email UID 579 moved from \"INBOX\" to \"Notifications\".",
+    "details": {
+      "xdev": {
+        "tool": "email_move",
+        "mode": "execute",
+        "args": {
+          "uid": 579,
+          "source": "INBOX",
+          "destination": "Notifications"
+        },
+        "tier": "exec",
+        "inner": {
+          "uid": 579,
+          "source": "INBOX",
+          "destination": "Notifications"
+        }
+      }
+    }
+  },
+  "actual_verified_destination_fetch": {
+    "text": "Mailbox \"Notifications\" -- showing 3 of 445 messages:\n\n[unread] [UID:445] giuliano@vantasner.io -- \"[dft-disk] /tmp\" (11/2/2026, 2:24:06 PM)\n[unread] [UID:444] giuliano@vantasner.io -- \"[dft-disk] repo\" (11/2/2026, 2:18:06 PM)\n[unread] [UID:443] giuliano@vantasner.io -- \"[dft-disk] /tmp\" (11/2/2026, 1:48:07 PM)",
+    "details": {
+      "xdev": {
+        "tool": "email_fetch",
+        "mode": "execute",
+        "args": {
+          "mailbox": "Notifications",
+          "limit": 3,
+          "unseen": false
+        },
+        "tier": "exec",
+        "inner": {
+          "count": 3,
+          "total": 445,
+          "mailbox": "Notifications"
+        }
+      }
+    }
+  },
+  "verified_destination": "Notifications UID445, originalsubject/sender/date14:24matched",
+  "decision": "Read/handled/filed. Actualreported38GiB/8.0% one483GiBsharedfilesystem; no capacityconfirmation/scientificdeletion/send."
+}
