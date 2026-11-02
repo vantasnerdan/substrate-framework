@@ -1,0 +1,66 @@
+{
+  "actual_utc": "2026-11-02T14:55:57.837895+00:00",
+  "original_UID": "581",
+  "actual_read": {
+    "text": "Email UID: 581\nFrom: giuliano@vantasner.io\nTo: giuliano@vantasner.io\nDate: 2026-11-02T14:54:07.000Z\nSubject: [dft-disk] /tmp\n\n--- Body ---\nonly 8.0% free on /tmp (38 GiB of 483 GiB). Checkpoint/commit progress store at risk.\n",
+    "details": {
+      "xdev": {
+        "tool": "email_read",
+        "mode": "execute",
+        "args": {
+          "uid": 581,
+          "mailbox": "INBOX"
+        },
+        "tier": "exec",
+        "inner": {
+          "uid": 581,
+          "subject": "[dft-disk] /tmp",
+          "attachmentCount": 0,
+          "pdfCount": 0,
+          "savedFiles": []
+        }
+      }
+    }
+  },
+  "actual_move": {
+    "text": "Email UID 581 moved from \"INBOX\" to \"Notifications\".",
+    "details": {
+      "xdev": {
+        "tool": "email_move",
+        "mode": "execute",
+        "args": {
+          "uid": 581,
+          "source": "INBOX",
+          "destination": "Notifications"
+        },
+        "tier": "exec",
+        "inner": {
+          "uid": 581,
+          "source": "INBOX",
+          "destination": "Notifications"
+        }
+      }
+    }
+  },
+  "actual_destination_fetch": {
+    "text": "Mailbox \"Notifications\" -- showing 2 of 447 messages:\n\n[unread] [UID:447] giuliano@vantasner.io -- \"[dft-disk] /tmp\" (11/2/2026, 2:54:07 PM)\n[unread] [UID:446] giuliano@vantasner.io -- \"[dft-disk] repo\" (11/2/2026, 2:48:06 PM)",
+    "details": {
+      "xdev": {
+        "tool": "email_fetch",
+        "mode": "execute",
+        "args": {
+          "mailbox": "Notifications",
+          "limit": 2,
+          "unseen": false
+        },
+        "tier": "exec",
+        "inner": {
+          "count": 2,
+          "total": 447,
+          "mailbox": "Notifications"
+        }
+      }
+    }
+  },
+  "decision": "Readandhandledusingtheactualreportedcapacityonly; filedNotificationsanddestinationverifiedagainstsender/subject/date. No capacityconfirmation, scientificdatadeletion, sendorreply. Currentphysicalcalculation/Root374/callbackbg_355 unchanged."
+}

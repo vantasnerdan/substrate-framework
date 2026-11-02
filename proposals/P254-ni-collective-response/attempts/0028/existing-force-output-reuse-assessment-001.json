@@ -1,0 +1,76 @@
+{
+  "schema": "P254-existing-force-output-reuse-assessment-v1",
+  "actual_utc": "2026-11-02T16:54:33.924580+00:00",
+  "root_decision": "Root377",
+  "sources": {
+    "current_readout_summary": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/independent-coherent-readout-summary-001.json",
+      "bytes": 4686,
+      "sha256": "a692e063002ef42bec6ae0e43f65e77b56b52bce9fbb5ad6654a4167ae7d945c"
+    },
+    "original_initialization": {
+      "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+      "bytes": 25705,
+      "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"
+    },
+    "saved_preparation": {
+      "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/preparation.npz",
+      "bytes": "6129716",
+      "sha256": "2b879087b1c52397c46504ea335abb0b6ef5d236e680be23eab6ba13fa5f386d"
+    },
+    "old_environment_result": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/physical-environment-material-001/summary.json",
+      "bytes": 16754,
+      "sha256": "28fb82b8f9a2b912092bd7b9c203b50fbbbb6d0eea2ad9eff8d237715c0e193b"
+    },
+    "clamped_result_index": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/clamped-scientific-summaries-001/result.json",
+      "bytes": 4062,
+      "sha256": "5a15cea12034f871c615f98cfee7e073dd39e79c80158fa3da87186dec7f1107"
+    }
+  },
+  "findings": [
+    {
+      "subject": "Current saved original product",
+      "decision": "Reuse its existing ordered ionic/field preparation and exact initial-state readback; it is an input, not a contracted total-force covariance.",
+      "source_locations": [
+        "matched_joint_state.py:49-53,99-114",
+        "run_joint_q_material.py:267-289,375-381",
+        "matched-loaded-joint-readback-001.json:134-148"
+      ]
+    },
+    {
+      "subject": "Old force-noise publication",
+      "decision": "Do not substitute it for current H37/x total-force noise: old H32/x,Ni1/y,number probes and old operator authority; one unweighted internal source; no complete original electronic/ionic/field product or propagated samples.",
+      "source_locations": [
+        "physical-environment-material-001/summary.json:1-68,281-357",
+        "run_material_force_noise.py:119-157",
+        "run_physical_environment_material.py:56-116"
+      ]
+    },
+    {
+      "subject": "Completed force and comparison outputs",
+      "decision": "Retain both actual H37/x q0 force components, the different Ni1/x q0 force result, and all completed explicitly clamped four-structure/isotope controls. Do not relabel them as complete64external-q coupled coverage, propagated noise or ranking.",
+      "source_locations": [
+        "independent-coherent-readout-summary-001.json",
+        "committed-gamma-force-readout-complete-001.json:1273-1297",
+        "clamped-scientific-summaries-001/result.json",
+        "matched_clamped_readouts.py:6-35"
+      ]
+    },
+    {
+      "subject": "Existing zero-time total-force route",
+      "decision": "Existing pair API/CLI supports separate-owner singleton[0.0] grids using the same physical initialization and completed history; no new driver is needed. Not executed here. Empty intervals avoid reverse stages but still require all-source frame admission, physical force FFT/projector work and contractions. Do not share the live mutable namespace or call it free based on zero counted H0 actions.",
+      "source_locations": [
+        "run_source_local_q_material.py:39-110",
+        "source_local_material_runtime.py:77-84,126-180,238-284",
+        "source_local_material_owner.py:75-102",
+        "src/substrate_framework/source_local_q_response.py:109-161",
+        "src/substrate_framework/source_local_q_covariance.py:22-69",
+        "source-local-Native-split-complete-intake-001.json:1665-1697,1843-1902"
+      ]
+    }
+  ],
+  "allocation_decision": "No second Native calculation, driver, spatial sweep or new physical case. Existing E006 still owns the CPUs/RSS allocation and continues unchanged. Its complete ordered scalar covariance is the next useful physical result. Current initial covariances already serve R/E and clamped outputs already serve C; reformatting them is not claimed as new scientific execution.",
+  "scope": "Parent disposition of completed read-only inventories, not a new mathematical/numerical proof, source-equivalence declaration or performance forecast. Full D/E/C and original scientific objective remain open."
+}
