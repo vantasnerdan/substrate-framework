@@ -53,9 +53,10 @@ def read_entries(entries):
             r, request = bound_json(entry['coherent']['result']), bound_json(entry['coherent']['seed'])
             pair, pair_request = bound_json(entry['pair']['result']), bound_json(entry['pair']['owner'])
             if (r.get('schema') != DUAL_SCHEMA or not same_binding(r['seed'], entry['coherent']['seed'])
-                    or not same_binding(r['pair_result'], entry['pair']['result'])
+                    or not same_binding(r['owner'], entry['pair']['owner'])
+                    or not same_binding(r['context'], pair['covariance']['left_context'])
                     or not same_binding(pair['owner'], entry['pair']['owner'])):
-                raise ValueError('native dual coherent original pair/seed/owner bindings differ')
+                raise ValueError('native coherent original owner/context/seed bindings differ')
         elif set(entry) == {'forward', 'pair'}:
             if set(entry['forward']) != {'result', 'request'}:
                 raise ValueError('forward side must bind its original result and request')

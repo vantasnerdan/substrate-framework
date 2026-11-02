@@ -27,7 +27,8 @@ from substrate_framework.material_control_reference import bound_json
 from joint_spatial_provenance import canonical, same_binding
 from joint_spatial_receipts import read_entries, validate_records
 from joint_spatial_committed_oracle import _native_fixture
-from joint_spatial_dual_coherent import canonical_impulse, build_readout, SEED_SCHEMA
+from joint_spatial_dual_coherent import canonical_impulse, SEED_SCHEMA
+from joint_spatial_dual_coherent_oracle import exercise_dual_join
 from run_source_local_q_oracle import forward_matrix, terminal
 from run_joint_response_oracle import pack_legs
 
@@ -191,38 +192,9 @@ def exercise_source_local(*, encode, close, reject):
                                     pair_records=pairs, pair_requests=owners)
 
         common, forces, ab, ba = consume(entries)
-        dual_source = file_binding(HERE/'joint_spatial_dual_coherent.py')
-        dual_proof = save('computed-dual-oracle.json', dict(schema='P254-joint-spatial-readout-oracle-v1',
-            status='passed', source_bindings=[dual_source], checks=discrete_checks,
-            scope='executed finite discrete-forward/dual numerical comparisons'))
-        dual_entries = []
-        for index, entry in enumerate(entries):
-            native = build_readout(entry['pair']['result'], seed_binding, dual_proof)
-            dual_entries.append(dict(coherent=dict(result=save('dual-readout-%d.json' % index, native),
-                                                   seed=seed_binding), pair=entry['pair']))
-        _, dual_forces, dual_ab, dual_ba = consume(dual_entries)
-        close('source_local_native_dual_join_coherent', dual_forces, forces, 3e-8)
-        close('source_local_native_dual_join_AB', dual_ab, ab, 0.)
-        close('source_local_native_dual_join_BA', dual_ba, ba, 0.)
-        reject('source_local_dual_missing_q', lambda: consume(dual_entries[:-1]))
-        for name in ('normalization', 'context', 'time', 'probe', 'seed'):
-            changed = deepcopy(dual_entries)
-            native = bound_json(changed[-1]['coherent']['result'])
-            if name == 'normalization':
-                native['readout']['real'] *= np.sqrt(3)
-                native['readout']['imag'] *= np.sqrt(3)
-            elif name == 'context':
-                pair = bound_json(changed[-1]['pair']['result'])
-                native['context'] = pair['covariance']['right_context']
-            elif name == 'time':
-                native['time_ry_inverse'] += .001
-            elif name == 'probe':
-                native['observable'] = 'original-H1y-total-force'
-            else:
-                wrong = save('different-original-seed.json', dict(seed, amplitude=1.9))
-                native['seed'] = changed[-1]['coherent']['seed'] = wrong
-            changed[-1]['coherent']['result'] = save('wrong-dual-'+name+'.json', native)
-            reject('source_local_dual_wrong_'+name, lambda: consume(changed))
+        exercise_dual_join(entries, seed_binding, discrete_checks, consume,
+            dict(left=forces, right=np.array([rows[1]@mean for rows, mean in
+                 zip(dense_left, mean_blocks)]), AB=ab, BA=ba), save, close, reject)
         cells = np.array([[0, 0, r] for r in range(3)])
         # Dense real-space rows acting on the direct sum of independently
         # propagated physical-density/canonical blocks. No production Fourier

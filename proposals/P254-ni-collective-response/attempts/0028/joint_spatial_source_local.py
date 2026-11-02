@@ -5,7 +5,6 @@ specification, not equality of algorithm wrappers, is the physical authority.
 """
 from hashlib import sha256
 import io
-from pathlib import Path
 
 import numpy as np
 
@@ -17,6 +16,7 @@ from joint_spatial_provenance import (
     same_binding, source_key,
 )
 from joint_spatial_dual_coherent import SCHEMA as DUAL_SCHEMA, validate_readout
+from joint_spatial_dual_authority import native_proof, physical_sources
 
 MATERIAL_SCHEMA = 'P254-source-local-q-material-v1-result'
 OWNER_SCHEMA = 'P254-source-local-q-material-v1-owner'
@@ -41,36 +41,6 @@ def _grid(grid, endpoint):
             or values[0] != 0 or np.any(np.diff(values) <= 0) or values[-1] != endpoint):
         raise ValueError('native original two-sided time grid differs')
 
-
-def _proof(binding, schema, sources, snapshots, source_field):
-    proof = bound_json(binding)
-    if proof.get('schema') != schema or proof.get('status') != 'passed':
-        raise ValueError('passed bound numerical/physical authority required')
-    expected = {str(Path(b['path']).resolve()): binding_key(b) for b in sources}
-    bindings = proof[source_field]
-    source_key(bindings)
-    for source in bindings:
-        authenticate(source, snapshots)
-        if expected.get(str(Path(source['path']).resolve())) != binding_key(source):
-            raise ValueError('native proof sources differ from its own producer')
-    return proof
-
-
-def _physical(specification, sources, qualification, snapshots):
-    """Only the existing, explicitly proven history-owner continuation is allowed."""
-    actual = {str(Path(b['path']).resolve()): b for b in sources}
-    continuation = qualification.get('source_compatibility')
-    for original in specification['implementation']:
-        authenticate(original, snapshots)
-        selected = actual.get(str(Path(original['path']).resolve()))
-        if selected is not None and same_binding(original, selected):
-            continue
-        if (not isinstance(continuation, dict)
-                or continuation.get('kind') != 'same-physical-scalar-new-execution'
-                or Path(original['path']).name != 'material_joint_response.py'
-                or not same_binding(continuation['before'], original)
-                or selected is None or not same_binding(continuation['after'], selected)):
-            raise ValueError('native physical constructor/preparation authority differs')
 
 
 def _source_reduction(covariance, edge_count):
@@ -114,8 +84,9 @@ def validate_source_local(record, request, pair, owner, saved, initialization, m
     dual = record.get('schema') == DUAL_SCHEMA
     if dual:
         seed = validate_readout(record, request)
-        if bound_json(record['pair_result']) != pair:
-            raise ValueError('dual coherent readout must bind this exact original pair result')
+        if (not same_binding(record['owner'], pair['owner'])
+                or not same_binding(record['context'], pair['covariance']['left_context'])):
+            raise ValueError('dual coherent owner/context differs from this noise pair')
     elif record.get('schema') == COMMITTED_SCHEMA:
         seed = committed_seed(record, request)
     else:
@@ -191,13 +162,13 @@ def validate_source_local(record, request, pair, owner, saved, initialization, m
             or not same_binding(runtime['source_local_oracle'], p['source_local_numerical_proof'])
             or source_key(p['source_bindings']) != source_key(sources)):
         raise ValueError('native runtime provenance differs')
-    physical = _proof(p['physical_qualification'], 'P254-joint-partitioned-q-oracle-v1',
-                      sources, snapshots, 'source_bindings')
-    _proof(p['source_local_numerical_proof'], 'P254-source-local-q-oracle-v1',
-           sources, snapshots, 'sources')
-    _physical(saved['specification'], sources, physical, snapshots)
+    physical = native_proof(p['physical_qualification'], 'P254-joint-partitioned-q-oracle-v1',
+                            sources, snapshots, 'source_bindings')
+    native_proof(p['source_local_numerical_proof'], 'P254-source-local-q-oracle-v1',
+                 sources, snapshots, 'sources')
+    physical_sources(saved['specification'], sources, physical, snapshots)
     forward_physical = physical if dual else bound_json(record['physical_operator_oracle'])
-    _physical(saved['specification'], record['source_bindings'], forward_physical, snapshots)
+    physical_sources(saved['specification'], record['source_bindings'], forward_physical, snapshots)
     covariance = pair['covariance']
     publication = bound_json(covariance['context_pair_binding'])
     if (publication.get('schema') != 'source-local-q-pair-v1' or publication.get('complete') is not True):

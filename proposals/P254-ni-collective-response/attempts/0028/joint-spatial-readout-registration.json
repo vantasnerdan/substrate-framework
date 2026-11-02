@@ -14,7 +14,7 @@
   "input_manifest": {
     "schema": "P254-joint-spatial-input-v1",
     "initialization": "path/bytes/sha256 binding",
-    "selected_q": "Exactly64 explicit original q entries. Existing genuine material-v2 all-mode and forward+pair result/request forms remain accepted. A source-local material pair uses pair:{result:binding,owner:binding}; forward:{result:binding,request:binding} may bind a genuinely matching committed native readout and its historical request. Alternatively coherent:{result:binding,seed:binding} binds an independently published P254-source-local-dual-coherent-readout-v1 and its original ionic impulse seed. No combined, all-mode, legacy or committed-forward producer receipt is manufactured.",
+    "selected_q": "Exactly64 explicit original q entries. Existing genuine material-v2 all-mode and forward+pair result/request forms remain accepted. A source-local material pair uses pair:{result:binding,owner:binding}; forward:{result:binding,request:binding} may bind a genuinely matching committed native readout and its historical request. Alternatively coherent:{result:binding,seed:binding} binds an independently published P254-source-local-dual-coherent-readout-v2 and its original ionic impulse seed. This combined spatial/noise input still requires a complete matching pair; standalone coherent publication does not. No combined, all-mode, legacy or committed-forward producer receipt is manufactured.",
     "split_join": "Legacy material-v2 joins require exact original case/model/scalar/aggregate/initialization/baseline/q/dynamics/time grids/observable and seed atom/axis/amplitude/cell/subdivisions/block_size. Pair preparation matches the authenticated initialization. Native historical forward producer, committed readout consumer and legacy pair producer identities are validated separately, never equated. These legacy native joins require identical propagation/covariance/preparation/producer-wrapper sources; only the three completed-forward-readout roles partitioned_material_readout.py, run_joint_q_readout.py and mixed_material_driver_support.py are excluded from the physical-source comparison. Legacy split source sets remain exact. Independent dual restart bindings may differ; explicit forward restart remains unsupported. Source-local pair joins instead use the exact authenticated physical authority described below.",
     "source_snapshots": "Optional [{original:binding,snapshot:binding}] for historical source bytes no longer at their original live paths. Each snapshot must authenticate and have exactly the original byte count and SHA256. This preserves source identity; it does not declare different source implementations equivalent.",
     "mean_diagnostics": "optional authenticated run_joint_partitioned_material.py successful result with exactly one branch boundary equal to q baseline",
@@ -26,15 +26,15 @@
       "source_snapshots": "Original historical source bindings must authenticate directly or through the manifest's byte-identical snapshots; never equate changed source bytes."
     },
     "dual_coherent": {
-      "schema": "P254-source-local-dual-coherent-readout-v1",
+      "schema": "P254-source-local-dual-coherent-readout-v2",
       "seed_schema": "P254-original-local-ionic-momentum-seed-v1",
       "seed_fields": ["schema", "initial_perturbation", "case", "model_identity", "initialization", "atom", "axis", "amplitude", "cell"],
       "initial_perturbation": "ionic-momentum-only; all original electronic, displacement and field perturbations exactly zero",
-      "readout": "conj(left_context.small.p[3*(atom-1)+axis])*amplitude*exp(-2*pi*i*q.cell)/sqrt(N). No covariance, extra phase, real clipping or full-PW forward replay.",
+      "readout": "conj(context.small.p[3*(atom-1)+axis])*amplitude*exp(-2*pi*i*q.cell)/sqrt(N). No covariance, extra phase, real clipping or full-PW forward replay.",
       "seed_probe_independence": "The declared original seed atom/axis and selected force-probe atom/axis are independent. Output preserves both; seed_cell is not re-applied after the q scalar is contracted.",
       "snapshots_cli": "Optional --source-snapshots PATH --source-snapshots-sha256 SHA binds a JSON original/snapshot list for historical source bytes. Preserve the same list in the spatial manifest; dual receipt also retains its own source snapshot provenance.",
-      "bindings": "Own result binds actual pair result, left context/request, original initialization/seed, source-bound executed spatial numerical oracle and consumer source bytes. Its status is a dual-coherent readout, never a committed-forward trajectory.",
-      "cli": "joint_spatial_dual_coherent.py --pair PATH --pair-sha256 SHA --seed PATH --seed-sha256 SHA --oracle PATH --oracle-sha256 SHA --output PATH; read-only source inputs; CLI requires original64-cell/128-spin-slot authority."
+      "bindings": "Own result binds the original material owner, independently complete context/request at either declared time, original initialization/seed, source-bound executed spatial numerical oracle and both consumer/authority source bytes. No pair result, context-pair publication or completed covariance is needed. Combined spatial/noise joins separately require a complete actual noise pair with this exact owner and left context. A coherent publication is never a committed-forward trajectory or a complete spatial result.",
+      "cli": "joint_spatial_dual_coherent.py --owner PATH --owner-sha256 SHA --context PATH --context-sha256 SHA --seed PATH --seed-sha256 SHA --oracle PATH --oracle-sha256 SHA --output PATH; read-only source inputs; CLI requires original64-cell/128-spin-slot authority."
     }
   },
   "definitions": {
@@ -54,7 +54,7 @@
     "Native committed-forward finite fixtures reconstruct the independent dense coherent force and every AB/BA origin with distinct historical/consumer/pair identities; reject identity confusion, wrong or dual checkpoint, different physical sources and unbound historical request. Explicit historical snapshots accept only byte-identical originals.",
     "Genuinely computed finite source-local pair publications, independent dense moving physical-density transition and full real-space/Fourier covariance matrices; native result/owner joins with existing committed-forward form and own native dual-coherent form. Discrete full-leg forward RK4 versus saved dual canonical contraction at unequal times and nonzero-cell phase; wrong conjugation/phase/sqrtN/1/N witnesses and rejected wrong baseline/probe/source/publication/missing-q."
   ],
-  "execution": "Parent only, explicit allocated CPU; run_joint_spatial_readout_oracle.py --output PATH. No execution in this implementation slice.",
+  "execution": "Parent only, explicit allocated CPU; run_joint_spatial_readout_oracle.py --output PATH. Registration is not execution evidence: a coherent publication must bind an actually successful oracle with the current consumer and authority source bytes.",
   "material_limit": "No complete64-q successful actual selected-q material receipt set is available at implementation time. No material spatial result or ranking is emitted by this registration. Existing clamped result is a different scalar/control and cannot be silently compared.",
-  "skills": "Requested quantitative-verification and code-structure skills are unavailable in the mounted skill inventory; both reads attempted."
+  "skills": "The revised quantitative-verification and small-ratio-numerics skills and code-structure are loaded for this cutover. Reuse the admitted canonical discrete-adjoint readout; separate completed pullback consumption from noise execution without changing the physical runtime, source identity, normalization or scope."
 }
