@@ -1,0 +1,119 @@
+{
+  "schema": "P254-Root-completed-mean-and-finiteq-allocation-v1",
+  "actual_decision_utc": "2026-11-03T11:12:06.546400+00:00",
+  "previous_decision_due_utc": "2026-11-03T11:34:10.928910+00:00",
+  "deadline_breach": false,
+  "next_decision_due_utc": "2026-11-03T11:37:06.546400+00:00",
+  "completed_science": [
+    {
+      "case": "loaded-ni31h6",
+      "actual_terminal": {
+        "path": "/var/tmp/p254-activeband-loaded-gamma-production-001/attempts/f24f1fd24fa240189554f80f29eb3172/result.json",
+        "bytes": 12013,
+        "sha256": "19c63265ce852caba714dfa1e3c617960f7fed34ff3f5eaa35cf3128c6fc290c"
+      },
+      "coefficient_manifest": {
+        "path": "/var/tmp/p254-activeband-loaded-contrast-projection-001/manifest.json",
+        "bytes": 2575127,
+        "sha256": "b06de9cdafe0021b41c156058410ef376008e460932ffd9784eca14c73c83164"
+      },
+      "actual_reduced_mean": {
+        "path": "/var/tmp/p254-activeband-loaded-gamma-production-001/baseline/result.json",
+        "bytes": 406335,
+        "sha256": "2a03e7554dafc08abaea4c3be46dc12d9f6c90dd3a8f946c51674de37a766f88"
+      },
+      "saved_times_inverse_ry": [
+        0.0,
+        1.0,
+        10.0,
+        30.0
+      ],
+      "Gamma_sources": 128
+    },
+    {
+      "case": "pristine-ni32",
+      "actual_terminal": {
+        "path": "/var/tmp/p254-activeband-pristine-gamma-production-001/attempts/79258688858e480e9558f79887ce27f8/result.json",
+        "bytes": 12084,
+        "sha256": "466e572cc2c4781e2eff77521b5ec2af96ada6475b55bebe0961ae454c6de953"
+      },
+      "coefficient_manifest": {
+        "path": "/var/tmp/p254-activeband-pristine-contrast-projection-001/manifest.json",
+        "bytes": 2546442,
+        "sha256": "172fe32d8fd64a2d415647a2edbb2df573268ba9f35e8bb96a94e660763245b9"
+      },
+      "actual_reduced_mean": {
+        "path": "/var/tmp/p254-activeband-pristine-gamma-production-001/baseline/result.json",
+        "bytes": 406052,
+        "sha256": "c7877c9fdc7bd4ca860b3730af290a6ed8a529a87b182b554373fb6fb28b5a9e"
+      },
+      "saved_times_inverse_ry": [
+        0.0,
+        1.0,
+        10.0,
+        30.0
+      ],
+      "Gamma_sources": 128
+    },
+    {
+      "case": "empty-vacancy-ni31",
+      "actual_terminal": {
+        "path": "/var/tmp/p254-activeband-vacancy-gamma-production-001/attempts/39d15159f67547cca09e243f123124aa/result.json",
+        "bytes": 12050,
+        "sha256": "4c4bf3e64414a164762e14d008fccc8c797e8c1b7ce215c2aecfca13c4caf74e"
+      },
+      "coefficient_manifest": {
+        "path": "/var/tmp/p254-activeband-vacancy-contrast-projection-001/manifest.json",
+        "bytes": 2549185,
+        "sha256": "bf5c03683aeed956652acdb75cb80dcfc88b93d1f3d7ec7c00f39f454d728d11"
+      },
+      "actual_reduced_mean": {
+        "path": "/var/tmp/p254-activeband-vacancy-gamma-production-001/baseline/result.json",
+        "bytes": 406182,
+        "sha256": "b5557a8f11269302a198a4a4b0b6250f9c61edccbbffcf38b1ff04f850bf5b29"
+      },
+      "saved_times_inverse_ry": [
+        0.0,
+        1.0,
+        10.0,
+        30.0
+      ],
+      "Gamma_sources": 128
+    },
+    {
+      "case": "dispersed-ni32h6",
+      "actual_terminal": {
+        "path": "/var/tmp/p254-activeband-dispersed-gamma-production-001/attempts/a086ed2547c04ccc997c10d8f64b2f50/result.json",
+        "bytes": 12118,
+        "sha256": "8a27e430fd06e9c08b0a61ac8f31a68a1dc28711f3b894b8d36dc7a738670e0d"
+      },
+      "coefficient_manifest": {
+        "path": "/var/tmp/p254-activeband-dispersed-contrast-projection-001/manifest.json",
+        "bytes": 2560207,
+        "sha256": "f2fc75bc2d3f45deeac9852b17760a6253cb475653f26fb90ddd034f14f4d745"
+      },
+      "actual_reduced_mean": {
+        "path": "/var/tmp/p254-activeband-dispersed-gamma-production-001/baseline/result.json",
+        "bytes": 413998,
+        "sha256": "5a216fee676ba92c1aec5b400e1a3ba55c0a59b77d6dd9f26b52e538e0e26638"
+      },
+      "saved_times_inverse_ry": [
+        0.0,
+        1.0,
+        10.0,
+        30.0
+      ],
+      "Gamma_sources": 128
+    }
+  ],
+  "decision": "All four original128-sector Gamma/passive banks and actual nonstationary reduced means at0,1,10,30 are complete; close those original allocations and lift the producer-code freeze. Exact old producer/physical bytes are archived in gamma-producer-history-intake-001.json. Cleanly integrate already-exercised exact SciPy projection, existing prepared mmap receipt reuse, shared maximum q-bank views and actual source-matched/coherence consumers. Then execute each original cases FIRST real finite-q q1/all128-source/kernel shard, retained for final union: four independent CPU6..9 workers, hard2GiB each, original1800s per shard, no automatic retries/Native/H0/Gram regeneration. Use measured real q completion for subsequent full64-q allocation, not blind multiplication.",
+  "first_finiteq_output": "Actual q1 vertices/density/potential/kernel for all128 explicit sectors, part of the final spatial simulation inputs",
+  "resource_check": "Refresh actual memory before launching; latest reported filesystem46GiB, preserve original archives and reuse prepared maps instead of per-shard copies.",
+  "trigger": "Any failure, threefold source deviation, resource anomaly or inability to finish inside original1800s requires diagnosis/reallocation; first q completion informs full coverage.",
+  "scope": "Reduced unexcited means are real positive-time outputs, not the local-excitation/full64-q solution or material calibration",
+  "previous_source": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-411.json",
+    "bytes": 3717,
+    "sha256": "5944303c6da15bc871b4ccdc40003f5bbc8e400083bd4703363c765198ecb681"
+  }
+}
