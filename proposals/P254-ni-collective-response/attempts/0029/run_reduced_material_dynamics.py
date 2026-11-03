@@ -85,7 +85,7 @@ def run(args):
     result['consumer_sources'] = [file_binding(HERE/name) for name in (
         'run_reduced_material_dynamics.py', 'reduced_material_readout.py',
         'reduced_electronic_dynamics.py', 'reduced_coefficients.py',
-        'reduced_electronic_correlations.py', 'reduced_correlation_transpose.py',
+        'reduced_electronic_correlations.py', 'reduced_correlation_transpose.py', 'reduced_ode_initial_step.py',
         'reduced_nested_q_views.py',
         'reduced_projection_cache.py', 'reduced_projection_storage.py')]
     atomic_json(result_path, result)

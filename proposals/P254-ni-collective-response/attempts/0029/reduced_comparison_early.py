@@ -12,8 +12,9 @@ from scipy.integrate import solve_ivp
 from clamped_scientific_readout import encode
 from substrate_framework.streamed_material_state import file_binding, authenticate
 from reduced_comparison_inputs import (
-    baseline_readout, bound_json, decode, digest, physical_context, require,
+    baseline_readout, bound_json, decode, digest, physical_context, require, same_payload,
 )
+from reduced_ode_initial_step import bounded_first_step
 
 
 def difference(a, b):
@@ -69,7 +70,7 @@ def early_compatibility(run, evidence):
     if report['seed'] != run['seed']:
         return 'original full-PW and finite-run canonical impulse seeds differ'
     original = run['specification']['original_boundary']
-    if first['original_electronic_boundary'] != original:
+    if not same_payload(first['original_electronic_boundary'], original):
         return 'original full-PW and active-model raw electronic preparation boundaries differ'
     raw = bound_json(original)
     slots = lambda x: [{k: v for k, v in row.items() if k != 'frame'} for row in x['slots']]
@@ -109,8 +110,11 @@ def tangent_rows(run, times):
     shape = initial.shape
     # The existing tangent evaluates every actual intermediate baseline, not a
     # stationary initial rho, and preserves all128 explicit slots.
-    result = solve_ivp(lambda time, value: tangent.tangent(0, time, value.reshape(shape)).ravel(),
-        (0., endpoint), initial.ravel(), method='DOP853', rtol=rtol, atol=atol, t_eval=times)
+    rhs = lambda time, value: tangent.tangent(0, time, value.reshape(shape)).ravel()
+    vector = initial.ravel()
+    first = bounded_first_step(rhs, (0., endpoint), vector, rtol=rtol, atol=atol)
+    result = solve_ivp(rhs, (0., endpoint), vector, method='DOP853', rtol=rtol, atol=atol,
+                       t_eval=times, first_step=first)
     require(result.success, 'existing early q-tangent integration failed: '+result.message)
     rows = []
     masses = c.mechanical.masses.reshape(-1, 3)

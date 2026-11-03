@@ -261,11 +261,33 @@ def relative(value, reference):
     return float(np.linalg.norm(value-reference)/max(1.,np.linalg.norm(reference)))
 
 
+def short_interval_baseline_domain(consumer_type=ActiveBandCorrelations):
+    """A valid short pullback must not query unavailable baseline history."""
+    c, baseline, _ = fixture()
+    time = 1e-6
+    rho, h = baseline(0.)
+
+    def bounded(time_at):
+        if not 0. <= time_at <= time:
+            raise ValueError('baseline outside its actual integrated interval')
+        return rho, h
+
+    consumer = consumer_type(c, bounded, rtol=1e-10, atol=1e-12)
+    probes = consumer.ionic_probes(0, (0,))
+    expected = expm(time*GlobalLinearization(c, bounded, 0).matrix(0.).T) @ probes
+    actual = consumer.backward_probes(0, time, (0,))
+    error = relative(actual, expected)
+    if error > 2e-12:
+        raise AssertionError('short-domain pullback differs from independent transition')
+    return error, relative(probes, expected)
+
+
 def run_oracle():
     symbolic_transpose()
     c, baseline, rng = fixture()
     consumer = ActiveBandCorrelations(c, baseline, rtol=5e-11, atol=5e-13)
     errors, mutations = {}, {}
+    errors['short_interval_pullback'], mutations['unpropagated_short_probe'] = short_interval_baseline_domain()
     t, s = .43, .29
     coordinates = (0,2)
     refs = [GlobalLinearization(c,baseline,q) for q in range(c.nq)]

@@ -18,6 +18,7 @@ from scipy.integrate import solve_ivp
 from reduced_correlation_transpose import (
     commutator_tangent, commutator_transpose, wick_edge_pair,
 )
+from reduced_ode_initial_step import bounded_first_step
 
 Baseline = Callable[[float], tuple[np.ndarray, np.ndarray]]
 NOISE_SCOPE = (
@@ -163,11 +164,11 @@ class ActiveBandCorrelations:
             return probes.copy()
         block = self.c.q(q)
         shape = probes.shape
-        result = solve_ivp(
-            lambda tau, z: -self._transpose(q, tau, z.reshape(shape), block).ravel(),
-            (time, 0.0), probes.ravel(), method=self.method,
-            rtol=self.rtol, atol=self.atol, t_eval=[0.0],
-        )
+        rhs = lambda tau, z: -self._transpose(q, tau, z.reshape(shape), block).ravel()
+        interval, initial = (time, 0.0), probes.ravel()
+        first = bounded_first_step(rhs, interval, initial, rtol=self.rtol, atol=self.atol)
+        result = solve_ivp(rhs, interval, initial, method=self.method,
+                           rtol=self.rtol, atol=self.atol, t_eval=[0.0], first_step=first)
         if not result.success:
             raise RuntimeError(f'backward active correlation solve failed: {result.message}')
         dual = result.y[:, -1].reshape(shape)

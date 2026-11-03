@@ -28,6 +28,12 @@ def physical_context(specification):
     return {key: specification[key] for key in keys}
 
 
+def same_payload(left, right):
+    """Match a bound file without confusing decimal byte-count encodings."""
+    return ((left['path'], int(str(left['bytes'])), left['sha256']) ==
+            (right['path'], int(str(right['bytes'])), right['sha256']))
+
+
 def decode(value):
     if isinstance(value, dict):
         if set(value) == {'real', 'imag'}:

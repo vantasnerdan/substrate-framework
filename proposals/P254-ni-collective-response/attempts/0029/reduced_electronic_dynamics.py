@@ -9,6 +9,7 @@ import numpy as np
 from scipy.integrate import solve_ivp
 
 from reduced_coefficients import ReducedCoefficients
+from reduced_ode_initial_step import bounded_first_step
 
 
 @dataclass(frozen=True)
@@ -298,8 +299,11 @@ class ActiveBandDynamics:
         if baseline.result.sol.t_min > interval[0] or baseline.result.sol.t_max < interval[1]:
             raise ValueError('baseline must cover entire finite-dose interval')
         initial = self.initial_delta() if initial is None else initial
-        result = solve_ivp(lambda t,y:self.delta_rhs(t,y,baseline),interval,self.pack_delta(initial),
-                           method=method,rtol=rtol,atol=atol,max_step=max_step,
+        rhs = lambda t,y:self.delta_rhs(t,y,baseline)
+        vector = self.pack_delta(initial)
+        first = bounded_first_step(rhs,interval,vector,rtol=rtol,atol=atol,max_step=max_step)
+        result = solve_ivp(rhs,interval,vector,method=method,rtol=rtol,atol=atol,
+                           max_step=max_step,first_step=first,
                            t_eval=output_times,dense_output=dense_output)
         if not result.success:
             raise RuntimeError(f'finite-dose integration failed: {result.message}')

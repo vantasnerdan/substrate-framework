@@ -246,7 +246,7 @@ def compare(args):
         whole_campaign_complete=False, material_accuracy_certified=False, lattice_ranking=None,
         consumer_sources=[file_binding(HERE/name) for name in ('run_reduced_material_comparison.py',
             'reduced_coherence_readout.py',
-            'reduced_comparison_inputs.py', 'reduced_comparison_clamped.py', 'reduced_comparison_early.py')],
+            'reduced_comparison_inputs.py', 'reduced_comparison_clamped.py', 'reduced_comparison_early.py', 'reduced_ode_initial_step.py')],
         scope='actual source-bound finite data; exact canonical clamped response; supported early first-response assessment or explicit mismatch',
         authentication_scope='result/configuration digest, exact manifest snapshot, all recorded coefficient item archives once per CLI process, original source/context/code receipts, geometry, every consumed baseline/finite state, original clamped receipts/arrays and full-PW small-coordinate boundaries; no raw PW trajectory replay',
         units=dict(time='inverse Ry; exact saved physical times, no interpolation', energy='Ry', displacement='bohr', momentum='bohr^-1'),
