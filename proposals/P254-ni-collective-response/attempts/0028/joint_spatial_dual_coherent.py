@@ -18,7 +18,7 @@ import numpy as np
 
 from substrate_framework.material_control_reference import bound_json
 from substrate_framework.streamed_material_state import file_binding
-from joint_spatial_provenance import same_binding
+from joint_spatial_provenance import authenticate, same_binding, source_key
 import joint_spatial_dual_authority
 
 SCHEMA = 'P254-source-local-dual-coherent-readout-v2'
@@ -51,13 +51,20 @@ def canonical_impulse(context, q, ncells, seed):
     return momentum[coordinate].conjugate()*impulse
 
 
-def build_readout(owner_binding, context_binding, seed_binding, oracle_binding, *, snapshots=()):
+def build_readout(owner_binding, context_binding, seed_binding, oracle_binding, *,
+                  snapshots=(), consumer_sources=None):
     """Read an independently complete pullback; covariance is not an input."""
     context, request, p, saved, mesh, slots = joint_spatial_dual_authority.complete_pullback(
         owner_binding, context_binding, snapshots)
     seed, proof = bound_json(seed_binding), bound_json(oracle_binding)
-    sources = [file_binding(Path(__file__).resolve()),
+    current = [file_binding(Path(__file__).resolve()),
                file_binding(Path(joint_spatial_dual_authority.__file__).resolve())]
+    sources = current if consumer_sources is None else consumer_sources
+    source_key(sources)
+    if {str(Path(b['path']).resolve()) for b in sources} != {b['path'] for b in current}:
+        raise ValueError('exact dual/coherent consumer source paths required')
+    for source in sources:
+        authenticate(source, snapshots)
     if (proof.get('schema') != 'P254-joint-spatial-readout-oracle-v1'
             or proof.get('status') != 'passed'
             or not all(any(same_binding(source, b) for b in proof['source_bindings'])
@@ -87,14 +94,19 @@ def build_readout(owner_binding, context_binding, seed_binding, oracle_binding, 
         numerical_accuracy_certified=False, whole_spatial_reconstruction=False)
 
 
-def validate_readout(record, seed):
+def validate_readout(record, seed, *, snapshots=()):
     if record.get('schema') != SCHEMA or record.get('status') != 'complete' or record.get('complete') is not True:
         raise ValueError('native complete dual coherent readout required')
     original_seed = bound_json(record['seed'])
     if original_seed != seed:
         raise ValueError('dual coherent original seed differs')
+    declared = record['source_snapshots']
+    authority = declared+[item for item in snapshots if item not in declared]
     rebuilt = build_readout(record['owner'], record['context'], record['seed'],
-                            record['numerical_oracle'], snapshots=record['source_snapshots'])
+        record['numerical_oracle'], snapshots=authority, consumer_sources=record['consumer_sources'])
+    # External snapshots authenticate immutable publications; they do not
+    # replace the consumer bindings, proof, or snapshot list those bytes carry.
+    rebuilt['source_snapshots'] = declared
     if rebuilt != record:
         raise ValueError('dual coherent publication differs from original context/seed/proof')
     return dict(readout=record['readout'], amplitude=seed['amplitude'], cell=seed['cell'])

@@ -327,7 +327,8 @@ def main():
                 'partitioned_q_storage.py', 'joint_ordered_sources.py')],
             *[HERE/name for name in ('run_source_local_q_oracle.py',
                 'run_joint_response_oracle.py', 'run_joint_q_oracle.py',
-                'run_joint_partitioned_q_oracle.py')]]],
+                'run_joint_partitioned_q_oracle.py', 'run_source_local_q_material.py',
+                'source_local_material_owner.py', 'source_local_material_runtime.py')]]],
         scientific_scope='Finite moving examples only; not an actual material-noise result or a production disk-fit claim')
     try:
         symbolic_reverse()

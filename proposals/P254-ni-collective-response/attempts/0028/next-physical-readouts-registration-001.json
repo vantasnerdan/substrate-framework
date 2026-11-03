@@ -1,0 +1,46 @@
+{
+  "schema": "P254-next-physical-readouts-registration-v1",
+  "registered_at": "2026-11-03T00:24:56.711986+00:00",
+  "goal": "Obtain original-atom/species Gamma coupled excitation response and additive ionic kinetic mixed response from settled saved data; expose existing one-sided material pullback for a later separately budgeted nonGamma coherent observable.",
+  "source_inputs": {
+    "mixed_initial": {
+      "path": "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/initial/checkpoint.json",
+      "bytes": 668523,
+      "sha256": "55b79edb114ffe94e008affa2b6872348e8ccc8bb7de26273b9c3746f09994dc"
+    },
+    "mixed_endpoint": {
+      "path": "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-3/final.json",
+      "bytes": 221505,
+      "sha256": "5f2b72b531b579be3568c1012c2d1f82c94762103b0a88f2ef5c540dbc171c39"
+    },
+    "mean_initial": {
+      "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/initial/boundary.json",
+      "bytes": 173727,
+      "sha256": "83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095"
+    },
+    "mean_endpoint": {
+      "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+      "bytes": 155903,
+      "sha256": "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd"
+    },
+    "metadata": {
+      "path": "/var/tmp/p254-a28-clamped-loaded-original-periodic-atom1-001/inputs.json",
+      "bytes": 1768017,
+      "sha256": "6428dfd1503519ad73d0aff8ff7727b7eba5e63d0482667ead9f6ab13c016e7f"
+    },
+    "energy_endpoint": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-energy-positive-complete-result-001.json",
+      "bytes": 685157,
+      "sha256": "033b6f7b62eb1de3a06ad02337fa4263d8d4dff21b240b20f1e6a46880a735e2"
+    }
+  },
+  "model_identity": "14a02558ac686b47861fe5cfd48b38293b4703c634e46f9d1ab91b7b2728d3c6",
+  "seed": "Original Ni1/x, cell0, J=1 canonical-momentum-only; plus physical per-cell J/N at Gamma, independent analytic minus, no default one-trap-quantum substitution.",
+  "output_scope": "37 original atom rows and Ni/H totals; plus/minus/mixed u,p, mechanical velocity; baseline separate; minimally coupled kinetic mixed coefficient at initial/endpoint/difference. q0 only, no localized spreading, heat, covariance, material accuracy or finite-dose redistribution.",
+  "reuse": "MappedMixedState.small; existing mixed_excitation_energy._bilinear; exact saved mean canonical records; existing source-local pullback kernel and canonical_impulse.",
+  "oracle": "Blockwise SymPy product-rule check, additive sum equals existing kinetic component, complex independent directions, mean-times-mixed and global-field normalization sensitivity. Parent executes once after edits settle.",
+  "execution": "No new Native trajectory, H0 action, thaw or production allocation. Canonical readout on CPU0, BLAS1; first actual run bounded120s. Any nonGamma execution requires an explicit measured-cost allocation. Existing same-time clamped Gamma counterfactual is a separate finite quadratic evaluation, not saved completed data.",
+  "decision_owner": "Root",
+  "current_decision": "Root384",
+  "current_due": "2026-11-03T00:56:58.669967+00:00"
+}

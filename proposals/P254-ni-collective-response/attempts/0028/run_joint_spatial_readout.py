@@ -46,8 +46,10 @@ def sources():
         'joint_spatial_receipts.py', 'joint_spatial_provenance.py', 'joint_spatial_source_local.py',
         'joint_spatial_receipt_oracle.py', 'joint_spatial_committed_oracle.py',
         'joint_spatial_source_local_oracle.py', 'joint_spatial_dual_coherent_oracle.py',
-        'joint_spatial_dual_coherent.py', 'joint_spatial_dual_authority.py',
+        'joint_spatial_dual_coherent.py', 'joint_spatial_dual_authority.py', 'joint_spatial_pair_identity.py',
         'run_source_local_q_oracle.py', 'run_joint_response_oracle.py', 'run_joint_partitioned_q_oracle.py',
+        'run_source_local_q_material.py', 'source_local_material_owner.py',
+        'source_local_material_runtime.py', 'one-sided-material-original-source-snapshots-001.json',
         'run_joint_spatial_readout.py', 'run_joint_spatial_readout_oracle.py')]
     paths += [ROOT/'src/substrate_framework'/name for name in (
         'joint_spatial_readout.py', 'spatial_readout_metrics.py', 'joint_response_observables.py',

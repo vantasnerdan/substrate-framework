@@ -2,8 +2,8 @@
 """Selected actual material-noise work using source-local discrete pullbacks.
 
 plan is a metadata forecast; probe measures one original full-PW t0 source;
-pair alone evaluates the ordered two-time covariance on the saved actual mean
-history. None certifies whole-64q reconstruction, accuracy, heat or coherence.
+pullback publishes one complete force cotangent on the saved actual mean history;
+pair evaluates ordered two-time covariance. None certifies spatial accuracy, heat or coherence.
 No mode authorizes production allocation or automatically restarts itself.
 """
 import argparse
@@ -38,7 +38,7 @@ from run_mixed_q_material import watchdog
 
 def parser():
     result = argparse.ArgumentParser(description=__doc__)
-    result.add_argument('--mode', choices=('plan', 'probe', 'pair'), required=True)
+    result.add_argument('--mode', choices=('plan', 'probe', 'pullback', 'pair'), required=True)
     result.add_argument('--case', required=True)
     for name in ('initialization', 'history', 'physical-qualification', 'source-local-oracle'):
         result.add_argument('--'+name, type=Path, required=True)
@@ -52,7 +52,8 @@ def parser():
         result.add_argument('--'+name.replace('_', '-'),
                             type=float if name == 'max_seconds' else int, required=True)
     result.add_argument('--time', type=float, required=True)
-    result.add_argument('--second-time', type=float, required=True)
+    result.add_argument('--second-time', type=float,
+                        help='Required for plan/probe/pair; not applicable to one-sided pullback')
     result.add_argument('--subdivisions', type=int, required=True)
     result.add_argument('--atom', type=int, default=37)
     result.add_argument('--axis', choices=('x', 'y', 'z'), default='x')
@@ -66,17 +67,30 @@ def parser():
                         metavar=('PATH', 'SHA256'), help='Original validated frame admission; repeatable')
     result.add_argument('--edge-index', type=int, default=0,
                         help='Original source edge for the full-PW t0 probe (default: 0)')
-    for side in ('left', 'right'):
+    for side in ('left', 'right', 'pullback'):
         result.add_argument('--'+side+'-context', type=Path,
                             help='Owned complete source-local pullback to authenticate on --resume')
         result.add_argument('--'+side+'-context-sha256')
     return result
 
 
+def validate_mode(args):
+    if args.mode == 'pullback':
+        if args.second_time is not None:
+            raise ValueError('one-sided pullback accepts --time only, not --second-time')
+        if args.observable != 'total-force' or args.field_axis is not None:
+            raise ValueError('one-sided material pullback requires an original total-force probe')
+    elif args.second_time is None:
+        raise ValueError('--second-time is required for plan/probe/pair')
+
+
 def scientific_request(args, sources, caps):
     selectors = {name: getattr(args, name) for name in (
         'mode', 'case', 'q', 'time', 'second_time', 'subdivisions', 'atom', 'axis',
         'observable', 'field_axis', 'dynamics', 'block_size', 'edge_index')}
+    validate_mode(args)
+    if args.mode == 'pullback':
+        del selectors['second_time']
     explicit = {}
     for name in ('initialization', 'history', 'physical_qualification', 'source_local_oracle'):
         explicit[name] = dict(path=str(getattr(args, name).resolve()),
@@ -90,6 +104,19 @@ def scientific_request(args, sources, caps):
         continuation='owned source-local contexts only; explicit bindings are authenticated restart hints')))
 
 
+def execute_pullback(runtime, contexts, result):
+    """Publish the genuine one-sided context, without a covariance consumer."""
+    binding = contexts.get('pullback_context')
+    state = (runtime.executor.pullback(runtime.probe, runtime.times) if binding is None
+             else runtime.executor.restore(runtime.probe, runtime.times, binding))
+    try:
+        result['pullback_context'] = state.binding
+        result['pullback_executed'] = True
+        result['scientific_scope'] = 'actual selected-q complete one-sided force pullback on original saved history; no covariance leg or seed contraction'
+    finally:
+        state.release()
+
+
 def execute(args, inputs, sources, budget, directory, contexts, result):
     if args.mode == 'plan':
         result['forecast'] = metadata_plan(args, inputs)
@@ -98,10 +125,15 @@ def execute(args, inputs, sources, budget, directory, contexts, result):
     runtime = build_runtime(args, inputs, budget=budget,
                             directory=directory/'scientific-work', source_bindings=sources)
     result.update(provenance=runtime.provenance, resource_plan=runtime.resource_plan,
-                  time_grid=runtime.times, second_time_grid=runtime.second_times)
+                  time_grid=runtime.times)
+    if args.mode != 'pullback':
+        result['second_time_grid'] = runtime.second_times
     if args.mode == 'probe':
         result['one_source_diagnostic'] = measure_edge(runtime, index=args.edge_index, time=0.0)
         result['scientific_scope'] = 'one original full-PW t0 source measurement; not covariance'
+        return
+    if args.mode == 'pullback':
+        execute_pullback(runtime, contexts, result)
         return
     result['covariance'] = SourceLocalTwoSidedCovariance(
         runtime.preparation, runtime.executor).pair(runtime.probe, runtime.probe,
@@ -146,16 +178,18 @@ def main(arguments=None):
     started_unix = time()
     try:
         args = parser().parse_args(arguments)
-    except SystemExit as error:
-        if error.code:
+        validate_mode(args)
+    except (SystemExit, ValueError) as error:
+        code = error.code if isinstance(error, SystemExit) else 2
+        if code:
             print(json.dumps(dict(schema=SCHEMA+'-exit', status='failed',
                 error=error_record(error), receipt_location='stderr; no owned output admitted')),
                 file=sys.stderr)
-        return int(error.code or 0)
+        return int(code or 0)
     invocation = uuid4().hex
     result = dict(schema=SCHEMA+'-result', status='failed', mode=args.mode,
         invocation=invocation, invocation_started_unix=started_unix, resume=args.resume,
-        cpus=args.cpus, blas_threads=1, covariance_executed=False,
+        cpus=args.cpus, blas_threads=1, covariance_executed=False, pullback_executed=False,
         whole_spatial_reconstruction=False, required_q_for_whole_local=64,
         numerical_accuracy_certified=False, heat_claim=False, coherence_claim=False,
         production_authorized=False, automatic_restart=False,

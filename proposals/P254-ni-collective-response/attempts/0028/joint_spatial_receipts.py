@@ -16,7 +16,8 @@ from joint_spatial_provenance import (
     COMMITTED_SCHEMA, authenticate, binding_key, canonical, same_binding, source_key,
     validate_committed_split,
 )
-from joint_spatial_source_local import MATERIAL_SCHEMA, validate_source_local
+from joint_spatial_source_local import validate_source_local
+from joint_spatial_pair_identity import PAIR_SCHEMAS
 from joint_spatial_dual_coherent import SCHEMA as DUAL_SCHEMA
 
 
@@ -64,7 +65,7 @@ def read_entries(entries):
             if set(entry['pair']) == {'result', 'owner'}:
                 pair = bound_json(entry['pair']['result'])
                 pair_request = bound_json(entry['pair']['owner'])
-                if pair.get('schema') != MATERIAL_SCHEMA or not same_binding(entry['pair']['owner'], pair['owner']):
+                if pair.get('schema') not in PAIR_SCHEMAS or not same_binding(entry['pair']['owner'], pair['owner']):
                     raise ValueError('native source-local pair must bind its own original owner')
             elif set(entry['pair']) == {'result', 'request'}:
                 pair, pair_request = bound_json(entry['pair']['result']), bound_json(entry['pair']['request'])
@@ -138,7 +139,7 @@ def validate_records(records, requests, saved, initialization, mesh, *,
         if family in source_families and source_families[family] != selected_sources:
             raise ValueError('mixed selected-q producer sources within one algorithm')
         source_families[family] = selected_sources
-        if family == MATERIAL_SCHEMA:
+        if family in PAIR_SCHEMAS:
             selected, seed, rows = validate_source_local(r, request, pair, pair_request,
                 saved, initialization, mesh, source_snapshots)
             if common is not None and common != selected:
@@ -268,7 +269,7 @@ def load_material(manifest_binding):
                 authenticated.add(key)
     for pair in pairs:
         producer = Path(__file__).resolve().with_name(
-            'run_source_local_q_material.py' if pair.get('schema') == MATERIAL_SCHEMA
+            'run_source_local_q_material.py' if pair.get('schema') in PAIR_SCHEMAS
             else 'run_joint_q_material.py')
         if not any(Path(source['path']).resolve() == producer for source in pair['source_bindings']):
             raise ValueError('selected-q receipt does not bind its original material producer')
@@ -306,7 +307,7 @@ def load_material(manifest_binding):
     return dict(manifest=manifest, common=common, saved=saved, mesh=mesh, geometry=geometry,
                 receipt_assembly_by_q=['all' if 'result' in entry else
                     ('dual-coherent+source-local-pair' if record.get('schema') == DUAL_SCHEMA else
-                     'committed-forward+source-local-pair' if pair.get('schema') == MATERIAL_SCHEMA else
+                     'committed-forward+source-local-pair' if pair.get('schema') in PAIR_SCHEMAS else
                      'committed-forward+pair' if record.get('schema') == COMMITTED_SCHEMA else 'forward+pair')
                     for entry, record, pair in zip(entries, records, pairs)],
                 q=np.asarray([r['q'] for r in records]), coherent=coherent, ab=ab, ba=ba,

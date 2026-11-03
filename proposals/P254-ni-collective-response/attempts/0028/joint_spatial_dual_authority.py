@@ -5,9 +5,11 @@ covariance reduction. Combined spatial/noise joins still authenticate that pair.
 """
 from hashlib import sha256
 from pathlib import Path
+import re
 
 import numpy as np
 
+from substrate_framework.streamed_material_state import file_binding
 from substrate_framework.material_control_reference import bound_json
 from joint_spatial_provenance import authenticate, canonical, same_binding, source_key
 
@@ -48,20 +50,29 @@ def physical_sources(specification, sources, qualification, snapshots):
 def _original_probe(scientific, context, request):
     p = request['provenance']
     runtime, selectors = p['request'], scientific['selectors']
-    if (selectors.get('mode') != 'pair' or selectors.get('observable') != 'total-force'
+    mode = selectors.get('mode')
+    if (mode not in ('pair', 'pullback') or selectors.get('observable') != 'total-force'
             or selectors.get('field_axis') is not None or p.get('observable_metadata') is not None
             or runtime['selectors'] != {k: v for k, v in selectors.items()
                                         if k not in ('mode', 'edge_index')}
             or request['q'] != selectors['q'] or request['dynamics'] != selectors['dynamics']
             or request['probe']['identity'] != p['observable']
+            or not re.fullmatch(r'original-[A-Za-z]+%d%s-total-force' % (
+                selectors['atom'], selectors['axis']), p['observable'])
             or request['probe']['units'] != 'Ry/bohr'):
         raise ValueError('original force probe, q or dynamics differs')
     grid = request['times']
     values = np.asarray(grid, float)
+    choices = [(runtime['times'], selectors['time'])]
+    if mode == 'pair':
+        choices.append((runtime['second_times'], selectors['second_time']))
+    elif ('second_time' in selectors or 'second_times' in runtime
+            or 'second_time' in runtime['selectors']):
+        raise ValueError('one-sided owner cannot claim a covariance second leg')
     if (values.ndim != 1 or not len(values) or not np.isfinite(values).all()
             or values[0] != 0 or np.any(np.diff(values) <= 0)
             or context['terminal_time'] != values[-1]
-            or grid not in (runtime['times'], runtime['second_times'])):
+            or not any(grid == expected and values[-1] == end for expected, end in choices)):
         raise ValueError('complete original pullback time grid differs')
     return selectors
 
@@ -139,6 +150,25 @@ def complete_pullback(owner_binding, context_binding, snapshots=()):
     sources = _source_authority(scientific, request, snapshots)
     saved = _original_preparation(p, selectors, snapshots)
     mesh, slots = _source_geometry(saved, p)
+    point = np.asarray(request['q'], float)
+    if (point.shape != (3,) or not np.isfinite(point).all()
+            or not np.allclose(point*mesh, np.rint(point*mesh), atol=1e-12, rtol=0)
+            or len(request['sectors']) != slots):
+        raise ValueError('original commensurate q or complete source slots differ')
+    if selectors['mode'] == 'pullback':
+        namespace = Path(owner_binding['path']).resolve().parent/'scientific-work'/'pullback'
+        if (scientific.get('scientific_namespace') != 'scientific-work'
+                or Path(context_binding['path']).resolve() != namespace/'complete.json'
+                or Path(context['request']['path']).resolve() != namespace/'request.json'):
+            raise ValueError('one-sided context must belong to the original material owner namespace')
+        authority = bound_json(file_binding(namespace.parent.parent/'owner-authority.json'))
+        if (authority != dict(schema='P254-source-local-q-material-v1-owner-authority',
+                              owner=owner_binding)
+                or type(owner.get('started_unix')) not in (int, float)
+                or not np.isfinite(owner['started_unix'])
+                or not isinstance(owner.get('material_id'), str)
+                or not scientific.get('caps')):
+            raise ValueError('original one-sided owner/start/cap authority differs')
     physical = native_proof(p['physical_qualification'], 'P254-joint-partitioned-q-oracle-v1',
                             sources, snapshots, 'source_bindings')
     native_proof(p['source_local_numerical_proof'], 'P254-source-local-q-oracle-v1',

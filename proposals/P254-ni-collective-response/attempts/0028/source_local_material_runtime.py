@@ -7,6 +7,7 @@ covariance and bounded Native measurements are separate consumers.
 from dataclasses import dataclass
 from functools import partial
 from pathlib import Path
+from uuid import uuid4
 import sys
 
 HERE = Path(__file__).resolve().parent
@@ -24,6 +25,7 @@ from mixed_material_driver_support import (
 from substrate_framework.material_control_reference import bound_arrays, bound_json
 from substrate_framework.partitioned_q_response import PartitionedQResponse, frame_times
 from substrate_framework.source_local_q_plan import source_local_initial_plan, source_local_plan
+from substrate_framework.source_local_q_response import SourceLocalQResponse
 from substrate_framework.streamed_material_state import authenticate, file_binding
 
 
@@ -35,11 +37,11 @@ SOURCE_LOCAL_MODULES = (
 
 @dataclass(frozen=True)
 class MaterialRuntime:
-    executor: PartitionedQResponse
+    executor: PartitionedQResponse | SourceLocalQResponse
     preparation: physical.JointProductPreparation
     probe: object
     times: np.ndarray
-    second_times: np.ndarray
+    second_times: np.ndarray | None
     provenance: dict
     resource_plan: dict
 
@@ -68,10 +70,17 @@ def _selectors(args):
     if (not cpus or any(type(cpu) is not int or cpu < 0 for cpu in cpus)
             or len(set(cpus)) != len(cpus)):
         raise ValueError('explicit unique allocated CPUs required')
-    return dict(case=args.case, q=q.tolist(), time=float(args.time),
-        second_time=float(args.second_time), subdivisions=args.subdivisions,
-        atom=args.atom, axis=args.axis, observable=args.observable, field_axis=args.field_axis,
+    selectors = dict(case=args.case, q=q.tolist(), time=float(args.time),
+        subdivisions=args.subdivisions, atom=args.atom, axis=args.axis,
+        observable=args.observable, field_axis=args.field_axis,
         dynamics=args.dynamics, block_size=args.block_size)
+    if args.mode == 'pullback':
+        if (args.second_time is not None or args.observable != 'total-force'
+                or args.field_axis is not None):
+            raise ValueError('one selected force probe/time required for material pullback')
+    else:
+        selectors['second_time'] = float(args.second_time)
+    return selectors
 
 
 def _metadata_grid(history, final_time, subdivisions):
@@ -177,10 +186,12 @@ def material_inputs(args):
     background = bound_json(background_binding)
     density_shape = background['arrays']['rho_updown']['shape']
     times = _metadata_grid(history, args.time, args.subdivisions)
-    second_times = _metadata_grid(history, args.second_time, args.subdivisions)
+    second_times = (None if args.mode == 'pullback'
+                    else _metadata_grid(history, args.second_time, args.subdivisions))
     # This also validates complete Cartesian/spin coverage and commensurate q.
     forecast = source_local_initial_plan(saved['joint_boundary'], q=args.q, mesh=mesh,
-        density_shape=density_shape, times=times, second_times=second_times,
+        density_shape=density_shape, times=times,
+        second_times=times if second_times is None else second_times,
         workers=len(args.cpus), dynamics=args.dynamics)
     if forecast['model_identity'] != saved['model_identity']:
         raise ValueError('metadata geometry is not the selected original saved model')
@@ -216,6 +227,11 @@ def metadata_plan(args, inputs):
         frame_forecast_policy='Conservative original initial-boundary plan; no positive-time boundary or cache aliases are inferred.',
         scientific_scope='Proposed selected-q two-sided source-local work, not material noise or a production allocation.')
     return plan
+
+
+def executor_directory(directory):
+    """Fresh empty scratch only; scientific contexts, QWork and budget stay owned."""
+    return Path(directory)/('executor-'+uuid4().hex)
 
 
 def build_runtime(args, inputs, *, budget, directory, source_bindings):
@@ -258,7 +274,8 @@ def build_runtime(args, inputs, *, budget, directory, source_bindings):
                    for sector, slot in zip(response.sectors, inputs['initial']['slots']))):
         raise ValueError('original full-PW rows/columns or full128 response geometry changed')
     times = history.time_grid(args.time, args.subdivisions)
-    second_times = history.time_grid(args.second_time, args.subdivisions)
+    second_times = (None if args.mode == 'pullback'
+                    else history.time_grid(args.second_time, args.subdivisions))
     if (not np.array_equal(times, inputs['times'])
             or not np.array_equal(second_times, inputs['second_times'])):
         raise ValueError('actual restored time grids differ from admitted saved history metadata')
@@ -285,22 +302,24 @@ def build_runtime(args, inputs, *, budget, directory, source_bindings):
     request = dict(initialization=inputs['initialization'], baseline=inputs['history_binding'],
         physical_qualification=inputs['physical_qualification_binding'],
         source_local_oracle=inputs['source_local_oracle_binding'], selectors=inputs['selectors'],
-        times=times.tolist(), second_times=second_times.tolist(),
+        times=times.tolist(),
         frame_admissions=[binding for binding, _ in inputs['admissions']],
         observable_metadata=observable_metadata)
+    if second_times is not None:
+        request['second_times'] = second_times.tolist()
     identity = physical.producer_identity(context.identity, list(args.q), args.dynamics,
         source_bindings, request)
     directory = Path(directory).resolve()
     measure = abs(np.linalg.det(context.grid.reference.cell_bohr))/int(np.prod(context.grid.reference.fft_smooth))
     executor = PartitionedQResponse(response, history,
         kernel_adjoint=partial(physical.physical_kernel_adjoint, context.background),
-        grid_measure=measure, budget=budget, directory=directory/'executor', identity=identity,
+        grid_measure=measure, budget=budget, directory=executor_directory(directory), identity=identity,
         dynamics=args.dynamics, cpus=args.cpus, work_directory=directory/'partitioned-work')
     frame_reuse = []
     if inputs['admissions']:
         retained = RetainedFrameWork(inputs['admissions'], history_binding=inputs['history_binding'], budget=budget)
         steps = []
-        for end in (args.time, args.second_time):
+        for end in ((args.time,) if second_times is None else (args.time, args.second_time)):
             if end:
                 steps.extend(time_steps(inputs['history'], end, args.subdivisions))
         requirements = frame_requirements(inputs['history'], steps,
@@ -326,9 +345,17 @@ def build_runtime(args, inputs, *, budget, directory, source_bindings):
     executor.readout_operator_binding = dict(request=request, model=context.identity,
         observable=args.observable, field_axis=args.field_axis, probe_identity=probe.identity)
     aliases = [state.time for state in history.priors]+[history.final.time]
-    plan = source_local_plan(response, times, second_times, len(args.cpus),
-        aliased_frame_times=aliases, dynamics=args.dynamics)
-    needed = frame_times(times) | frame_times(second_times)
+    if second_times is None:
+        # The existing paired cost model includes a final electronic source
+        # contraction; do not label that forecast as a one-sided cost estimate.
+        plan = dict(mode='pullback', execution_scheme='source-local-discrete-rk4-v1',
+            time_grid=times.tolist(), retained_full_q_states=0,
+            cost_forecast_available=False,
+            scientific_scope='one complete force cotangent; no covariance contraction or second leg')
+    else:
+        plan = source_local_plan(response, times, second_times, len(args.cpus),
+            aliased_frame_times=aliases, dynamics=args.dynamics)
+    needed = frame_times(times) | (set() if second_times is None else frame_times(second_times))
     reused_times = sorted({float(proof['expected_request']['input']['time'])
                           for _, proof in inputs['admissions']} & needed)
     plan.update(actual_moving_history_constructed=True, baseline=inputs['history_binding'],
@@ -336,6 +363,8 @@ def build_runtime(args, inputs, *, budget, directory, source_bindings):
         authenticated_retained_frame_times=reused_times,
         frame_reuse_accounting='Conservative payload bound counts retained cache times as if newly owned; only actual boundary times are labeled boundary aliases.',
         numerical_work_executed=False, production_allocation_granted=False)
+    if second_times is None:
+        executor = SourceLocalQResponse(executor, directory/'pullback')
     return MaterialRuntime(executor, preparation, probe, times, second_times, provenance, plan)
 
 

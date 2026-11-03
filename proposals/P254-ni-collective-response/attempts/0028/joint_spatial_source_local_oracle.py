@@ -46,13 +46,16 @@ def exercise_source_local(*, encode, close, reject):
             return file_binding(path)
 
         physical_source = file_binding(ROOT/'src/substrate_framework/joint_bloch_response.py')
+        snapshots = bound_json(file_binding(HERE/'one-sided-material-original-source-snapshots-001.json'))
         worker = file_binding(HERE/'joint_spatial_source_local_oracle.py')
         pair_worker = file_binding(ROOT/'src/substrate_framework/source_local_q_covariance.py')
         qualification = file_binding(HERE/'partitioned-readout-current-qualification-002.json')
         numerical = file_binding(HERE/'source-local-q-oracle-006.json')
         readout_proof = file_binding(HERE/'joint-q-readout-oracle-004.json')
         proof_sources = (bound_json(qualification)['source_bindings']
-                         +bound_json(numerical)['sources']+[physical_source, pair_worker])
+                         +bound_json(numerical)['sources']+[physical_source, pair_worker]
+                         +[file_binding(HERE/name) for name in ('run_source_local_q_material.py',
+                             'source_local_material_owner.py', 'source_local_material_runtime.py')])
         source_map = {}
         for source in proof_sources:
             previous = source_map.setdefault(source['path'], source)
@@ -79,6 +82,7 @@ def exercise_source_local(*, encode, close, reject):
         mesh, cell = np.array([1, 1, 3]), [0, 0, 1]
         grids = ([0., .003, .009], [0., .004])
         entries, dense_left, covariance_blocks, mean_blocks = [], [], {o: [] for o in ('AB', 'BA')}, []
+        one_sided = []
         seed = dict(schema=SEED_SCHEMA, initial_perturbation='ionic-momentum-only',
             case=saved['case'], model_identity=model, initialization=initialization,
             atom=1, axis='x', amplitude=1.7, cell=cell)
@@ -151,6 +155,8 @@ def exercise_source_local(*, encode, close, reject):
             transverse_expected = np.vdot(coefficient, tl@dense.physical(system.stage(0), transverse))
             close('source_local_dual_distinct_seed_probe_axis_q%d' % index,
                   canonical_impulse(context, point, 3, transverse_seed), transverse_expected, 3e-8)
+            one_sided.append((system, response, preparation, probe, grids[0],
+                directory/('one-sided-q-%d' % index), provenance, force, transverse_expected))
             if index == 1:
                 impulse = 1.7*np.exp(-2j*np.pi*point@cell)/np.sqrt(3)
                 raw = complex(*context['small']['p'][0])
@@ -189,12 +195,13 @@ def exercise_source_local(*, encode, close, reject):
         def consume(selected):
             records, requests, pairs, owners = read_entries(selected)
             return validate_records(records, requests, saved, initialization, mesh,
-                                    pair_records=pairs, pair_requests=owners)
+                                    pair_records=pairs, pair_requests=owners, source_snapshots=snapshots)
 
         common, forces, ab, ba = consume(entries)
         exercise_dual_join(entries, seed_binding, discrete_checks, consume,
             dict(left=forces, right=np.array([rows[1]@mean for rows, mean in
-                 zip(dense_left, mean_blocks)]), AB=ab, BA=ba), save, close, reject)
+                 zip(dense_left, mean_blocks)]), AB=ab, BA=ba), save, close, reject,
+            snapshots=snapshots, one_sided=one_sided)
         cells = np.array([[0, 0, r] for r in range(3)])
         # Dense real-space rows acting on the direct sum of independently
         # propagated physical-density/canonical blocks. No production Fourier

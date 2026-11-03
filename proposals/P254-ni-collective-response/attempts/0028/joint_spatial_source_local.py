@@ -17,8 +17,8 @@ from joint_spatial_provenance import (
 )
 from joint_spatial_dual_coherent import SCHEMA as DUAL_SCHEMA, validate_readout
 from joint_spatial_dual_authority import native_proof, physical_sources
+from joint_spatial_pair_identity import PAIR_SCHEMAS, validate_pair_identity
 
-MATERIAL_SCHEMA = 'P254-source-local-q-material-v1-result'
 OWNER_SCHEMA = 'P254-source-local-q-material-v1-owner'
 CONVENTION = '<O_A(q,t) O_B(q,s)^dagger> connected; origins refer to original t0'
 
@@ -83,7 +83,7 @@ def validate_source_local(record, request, pair, owner, saved, initialization, m
     n = int(np.prod(mesh))
     dual = record.get('schema') == DUAL_SCHEMA
     if dual:
-        seed = validate_readout(record, request)
+        seed = validate_readout(record, request, snapshots=snapshots)
         if (not same_binding(record['owner'], pair['owner'])
                 or not same_binding(record['context'], pair['covariance']['left_context'])):
             raise ValueError('dual coherent owner/context differs from this noise pair')
@@ -97,7 +97,7 @@ def validate_source_local(record, request, pair, owner, saved, initialization, m
             or (not dual and (request.get('checkpoint') != 'None' or request.get('checkpoint_sha256') is not None))
             or saved['model_identity'] != sha256(canonical(saved['specification']).encode()).hexdigest()):
         raise ValueError('original coherent kick and authenticated physical model required')
-    if (pair.get('schema') != MATERIAL_SCHEMA or pair.get('status') != 'complete'
+    if (pair.get('schema') not in PAIR_SCHEMAS or pair.get('status') != 'complete'
             or pair.get('mode') != 'pair' or pair.get('covariance_executed') is not True
             or 'error' in pair or pair.get('required_q_for_whole_local') != n
             or owner.get('schema') != OWNER_SCHEMA):
@@ -109,9 +109,7 @@ def validate_source_local(record, request, pair, owner, saved, initialization, m
     if (scientific.get('schema') != 'P254-source-local-q-material-v1-request'
             or scientific.get('original_time_origin') != 0.):
         raise ValueError('original source-local scientific request required')
-    identity = digest(dict(schema='P254-source-local-q-material-v1', owner=pair['owner']))
-    if pair['material_identity'] != identity:
-        raise ValueError('source-local material owner identity differs')
+    validate_pair_identity(pair, owner, snapshots)
     sources = pair['source_bindings']
     if source_key(sources) != source_key(scientific['source_bindings']):
         raise ValueError('source-local owner/producer source bindings differ')

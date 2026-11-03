@@ -113,19 +113,20 @@ def reserve_terminal_and_ledger(budget):
 def context_bindings(args, directory):
     """Authenticate owned restart hints without changing the scientific request."""
     result = {}
-    for side in ('left', 'right'):
-        path = getattr(args, side+'_context')
-        expected = getattr(args, side+'_context_sha256')
+    for side in ('left', 'right', 'pullback'):
+        path = getattr(args, side+'_context', None)
+        expected = getattr(args, side+'_context_sha256', None)
         if (path is None) != (expected is None):
             raise ValueError('both --'+side+'-context and its SHA256 are required')
         if path is not None:
-            if args.mode != 'pair':
-                raise ValueError('source-local contexts are meaningful only in pair mode')
+            if args.mode != ('pullback' if side == 'pullback' else 'pair'):
+                raise ValueError('explicit context selector differs from the execution mode')
             if not args.resume:
                 raise ValueError('explicit source-local contexts require the original --resume owner')
-            expected_path = Path(directory)/'scientific-work'/'pair'/side/'complete.json'
+            namespace = ('pullback',) if side == 'pullback' else ('pair', side)
+            expected_path = Path(directory)/'scientific-work'/Path(*namespace)/'complete.json'
             if path.resolve() != expected_path.resolve():
-                raise ValueError('source-local context must belong to this persistent pair namespace')
+                raise ValueError('source-local context must belong to this persistent '+args.mode+' namespace')
             binding = file_binding(path.resolve())
             if binding['sha256'] != expected:
                 raise ValueError('explicit '+side+' source-local context digest differs')
