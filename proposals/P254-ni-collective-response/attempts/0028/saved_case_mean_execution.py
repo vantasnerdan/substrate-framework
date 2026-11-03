@@ -10,11 +10,12 @@ from pathlib import Path
 import numpy as np
 
 from joint_column_mean import ColumnLimits, ColumnPartitionedMean
+from gramian_column_mean import bounded_source_columns
 from matched_joint_initial_reuse import import_initial_contractions
 from run_joint_column_mean_oracle import sources as column_sources
 from run_joint_partitioned_material import (
     implementation_bindings, persistent_json, diagnostics, source_identity)
-from saved_case_mean_authority import restore_saved_case
+from saved_case_mean_authority import restore_completed_mean, restore_saved_case
 from substrate_framework.partitioned_joint_mean import save_stage
 from substrate_framework.streamed_material_state import authenticate, file_binding
 
@@ -40,7 +41,8 @@ def numerical_authority(midpoint_binding, column_binding):
 def seed_sources():
     return implementation_bindings()+[file_binding(HERE/name) for name in (
         'saved_case_mean_authority.py', 'saved_case_mean_execution.py',
-        'saved_case_mean_owner.py', 'run_saved_case_mean.py')]
+        'saved_case_mean_owner.py', 'run_saved_case_mean.py',
+        'gramian_column_mean.py', 'gramian_krylov_bounds.py')]
 
 
 def resource_plan(context, state, args):
@@ -71,6 +73,10 @@ def execute(args, directory, inputs, sources, budget, result):
     numerical_authority(inputs['oracle'], inputs['column_oracle'])
     context, state, provenance = restore_saved_case(args.case, inputs['initialization'],
         inputs['qualification'], reality_tolerance=args.reality_tolerance)
+    if inputs.get('mean_continuation') is not None:
+        state, provenance['continuation'] = restore_completed_mean(
+            args.case, state, inputs['initialization'], inputs['mean_continuation'],
+            branch_index=args.start_from_mean_branch)
     limits = ColumnLimits(args.column_dimension, args.column_workspace_bytes, args.column_error_target)
     source = sha256((source_identity(sources)+json.dumps(limits.__dict__, sort_keys=True)).encode()).hexdigest()
     descriptor = dict(identity=context.identity, specification=context.specification,
@@ -86,6 +92,7 @@ def execute(args, directory, inputs, sources, budget, result):
     serial = context.make_mean(budget, block_size=args.block_size)
     model = ColumnPartitionedMean.from_serial(serial, directory=directory/'work',
         cpus=args.cpus, source_identity=source, limits=limits)
+    model.exponential = bounded_source_columns
     if inputs['initial_reuse'] is not None:
         result['initial_contraction_reuse'] = import_initial_contractions(
             model, state, inputs['initial_reuse'], block_size=args.block_size)

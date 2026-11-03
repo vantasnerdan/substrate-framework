@@ -43,6 +43,11 @@ def parser():
         result.add_argument('--'+name, type=Path, required=True)
     result.add_argument('--reuse-initial-contractions', type=Path)
     result.add_argument('--reuse-initial-sha256')
+    result.add_argument('--start-from-mean', type=Path,
+        help='Complete same-case mean receipt; extend its selected boundary instead of replaying from zero')
+    result.add_argument('--start-from-mean-sha256')
+    result.add_argument('--start-from-mean-branch', type=int,
+        help='Required for a receipt with multiple completed branches')
     result.add_argument('--output', type=Path, required=True)
     result.add_argument('--resume', action='store_true')
     result.add_argument('--cpus', nargs='+', type=int, choices=range(6, 11), required=True)
@@ -74,15 +79,24 @@ def inputs_and_request(args, sources, caps):
         raise ValueError('refine requires the declared two-step branch')
     if bool(args.reuse_initial_contractions) != bool(args.reuse_initial_sha256):
         raise ValueError('original contraction reuse requires its explicit path and digest')
+    if bool(args.start_from_mean) != bool(args.start_from_mean_sha256):
+        raise ValueError('completed mean continuation requires its explicit path and digest')
+    if args.start_from_mean_branch is not None and args.start_from_mean is None:
+        raise ValueError('mean branch selection requires a completed mean receipt')
+    if args.start_from_mean is not None and args.reuse_initial_contractions is not None:
+        raise ValueError('time-zero contraction reuse cannot initialize a positive-time continuation')
     inputs = {name: checked_json(getattr(args, name), getattr(args, name+'_sha256'))[0]
               for name in ('initialization', 'qualification')}
     inputs.update(oracle=file_binding(args.oracle), column_oracle=file_binding(args.column_oracle),
         initial_reuse=(checked_json(args.reuse_initial_contractions, args.reuse_initial_sha256)[0]
-                       if args.reuse_initial_contractions else None))
+                       if args.reuse_initial_contractions else None),
+        mean_continuation=(checked_json(args.start_from_mean, args.start_from_mean_sha256)[0]
+                           if args.start_from_mean else None))
     numeric = {name: getattr(args, name) for name in (
         'interval', 'steps', 'max_steps', 'max_iterations', 'tolerance',
         'reality_tolerance', 'block_size', 'column_dimension',
         'column_workspace_bytes', 'column_error_target')}
+    numeric['mean_continuation_branch'] = args.start_from_mean_branch
     request = dict(schema=SCHEMA+'-request', case=args.case, inputs=inputs,
         numeric_plan=numeric, permitted_modes=['reduce', 'evolve', 'refine'],
         source_bindings=sources, caps=caps, blas_threads=1,
