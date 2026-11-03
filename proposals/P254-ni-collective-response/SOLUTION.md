@@ -9,7 +9,7 @@ updated: '2026-11-03'
 
 The objective is a material-calibrated many-region simulation, a defensible lattice comparison, and an explicit nuclear-transition/energy-disposal construction. This map keeps that whole objective visible. Nodes are scientific outputs, not approval checkpoints. The user's 28 October instruction is to reuse real existing solutions, solve the missing core nodes, and avoid process minutiae. The authoritative scope is [P254](proposal.yaml).
 
-**Current position,3November:** all four structures have complete128-sector reduced Gamma inputs and nonstationary reference histories at0,1,10,30 inverse Ry ([completed references](attempts/0028/root-allocation-decision-412.json)). Vacancy and pristine now have complete64-q/128-source coefficient banks. The first real vacancy local-pulse simulation has saved finite energy, spatial/kinetic response and activeGaussian equal/two-time connected correlations at0/1 inverse Ry;10/30 continue in the same actual21:15:12UTC invocation. A measured file-cache limit was raised in place to8GiB with no physics/tolerance/restart/time reset ([actual run and correction](attempts/0028/root-allocation-decision-429.json)); the firstpositive point predates that resize. Other input cases continue independently. Next: finish the requested physical times and16nested matched cases, review and delivery. Partial active-model output is not a completed simulation or physical-accuracy claim.
+**Current position,3November:** all four original structures have complete64-q/128-source coefficient banks; all original producers/unions succeeded within their original grants. Four reduced references reach30. Three required vacancy finite-pulse models run on one shared maximum-resolution bank:8bands/7families,8/27 and12/7. The first has complete finite energy/spatial/kinetic and unexcited activeGaussian equal/two-time connected publications through10 inverseRy;30 continues. Both other models now reach1, exercising the larger-band material path ([actual allocation/output intake](attempts/0028/root-allocation-decision-434.json)). Finish endpoints/all16nested matched cases, review and delivery. No new solver study/data rebuild or physical-calibration/lifetime claim; all8 newly finished producer views closed after actual idle/dead proof.
 
 ## Core scientific work
 
@@ -20,7 +20,7 @@ flowchart TD
     R["R · Common material reference and initial state\nCOMPLETE · conditional, nonstationary"]
     S["S · Spatial and inter-region operators\nCOMPLETE · declared finite model"]
     E["E · Field, environment and fluctuations\nCONSTRUCTION + SELECTED q0 FORCE NOISE COMPLETE · wider coverage OPEN"]
-    D["D · Coupled dynamics and correlations\nFOUR REFERENCES + TWO FULL-q BANKS COMPLETE · actual vacancy pulse/correlations through t1 · t10/30 RUNNING"]
+    D["D · Coupled dynamics and correlations\nFOUR REFERENCES + ALL FOUR FULL-q BANKS COMPLETE · THREE vacancy models RUNNING · first pulse/connected readouts through t10"]
     C["C · Controlled lattice comparison\nCLAMPED + INITIAL RESPONSE CONTROLS COMPLETE · finite-time lattice comparison OPEN"]
     N["N · Nuclear source/operator and energy-disposal assessment\nCOMPLETE · rates remain undetermined"]
     R --> S
