@@ -1,0 +1,142 @@
+{
+  "utc": "2026-11-04T17:08:27.407461+00:00",
+  "systemctl": {
+    "argv": [
+      "systemctl",
+      "--user",
+      "show",
+      "p254-a35-uniform-current-b-001.service",
+      "--property=Id",
+      "--property=InvocationID",
+      "--property=MainPID",
+      "--property=ControlGroup",
+      "--property=ExecStart",
+      "--property=ExecMainStartTimestamp",
+      "--property=ActiveEnterTimestamp",
+      "--property=MemoryMax",
+      "--property=MemorySwapMax",
+      "--property=RuntimeMaxUSec",
+      "--property=Restart",
+      "--property=ActiveState",
+      "--property=SubState",
+      "--property=Result",
+      "--property=ExecMainCode",
+      "--property=ExecMainStatus"
+    ],
+    "returncode": 0,
+    "stdout": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/current-completion-owner-001/systemctl-start-b.stdout",
+      "bytes": 1965,
+      "sha256": "55077c4c03e60ecb622cc7e5973a9d83fa8de8ec5d0730d2dc0d1749c9f24bf1"
+    },
+    "stderr": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/current-completion-owner-001/systemctl-start-b.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "properties": {
+    "Restart": "no",
+    "RuntimeMaxUSec": "1h 31min",
+    "MainPID": "3409988",
+    "Result": "success",
+    "ExecMainStartTimestamp": "Wed 2026-11-04 17:08:02 UTC",
+    "ExecMainCode": "0",
+    "ExecMainStatus": "0",
+    "ExecStart": "{ path=/usr/bin/env ; argv[]=/usr/bin/env PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0031:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0029:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 /usr/bin/taskset -c 9 /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/batch_uniform_current_noise.py --initial-result /var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json --coefficient-manifest /var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json --python /usr/bin/python3 --output /var/tmp/p254-a35-uniform-current-batch-b-001 --records 64-127 --cpu 9 --wall-seconds 5400 --case-timeout-seconds 180 ; ignore_errors=no ; start_time=[Wed 2026-11-04 17:08:02 UTC] ; stop_time=[n/a] ; pid=3409988 ; code=(null) ; status=0/0 }",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a35-uniform-current-b-001.service",
+    "MemoryMax": "3221225472",
+    "MemorySwapMax": "0",
+    "Id": "p254-a35-uniform-current-b-001.service",
+    "ActiveState": "active",
+    "SubState": "running",
+    "ActiveEnterTimestamp": "Wed 2026-11-04 17:08:02 UTC",
+    "InvocationID": "cd3abeb4ef21434499f9ca0a031483e6"
+  },
+  "processes": [
+    {
+      "pid": 3409988,
+      "argv": [
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/batch_uniform_current_noise.py",
+        "--initial-result",
+        "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+        "--coefficient-manifest",
+        "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+        "--python",
+        "/usr/bin/python3",
+        "--output",
+        "/var/tmp/p254-a35-uniform-current-batch-b-001",
+        "--records",
+        "64-127",
+        "--cpu",
+        "9",
+        "--wall-seconds",
+        "5400",
+        "--case-timeout-seconds",
+        "180"
+      ],
+      "selected_environment": {
+        "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0031:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0029:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "status": {
+        "Name": "python3",
+        "PPid": "2867432",
+        "VmHWM": "167284 kB",
+        "VmRSS": "48616 kB",
+        "Threads": "1",
+        "Cpus_allowed_list": "9"
+      },
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a35-uniform-current-b-001.service\n"
+    },
+    {
+      "pid": 3410018,
+      "argv": [
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/export_uniform_current_noise.py",
+        "--initial-result",
+        "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+        "--coefficient-manifest",
+        "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+        "--original-record",
+        "64",
+        "--output",
+        "/var/tmp/p254-a35-uniform-current-batch-b-001/records/record-064/generation-25b5ce29035e4fa9b83f9f059ffb52c4/case"
+      ],
+      "selected_environment": {
+        "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0031:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0029:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "status": {
+        "Name": "python3",
+        "PPid": "3409988",
+        "VmHWM": "826728 kB",
+        "VmRSS": "709640 kB",
+        "Threads": "1",
+        "Cpus_allowed_list": "9"
+      },
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a35-uniform-current-b-001.service\n"
+    }
+  ],
+  "cgroup": {
+    "memory.max": "3221225472\n",
+    "memory.swap.max": "0\n",
+    "cpuset.cpus.effective": {
+      "status": "unavailable",
+      "error": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a35-uniform-current-b-001.service/cpuset.cpus.effective'"
+    },
+    "cgroup.procs": "3409988\n3410018\n",
+    "cpu.max": {
+      "status": "unavailable",
+      "error": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a35-uniform-current-b-001.service/cpu.max'"
+    },
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+  }
+}

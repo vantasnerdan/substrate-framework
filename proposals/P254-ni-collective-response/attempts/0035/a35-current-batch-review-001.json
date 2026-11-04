@@ -1,0 +1,324 @@
+{
+  "schema": "P254-A35-current-batch-independent-review-v1",
+  "correctness": "correct",
+  "completefindings": [],
+  "finding_dispositions": [],
+  "explanation": "No evidence-backed introduced consumer-visible defect was found in the complete A35 aggregation and serial-batch implementations reviewed. The existing source0 Native-success receipt and valid-partial aggregation receipt support only that one-sector result; the prospective serial/full128 paths were reviewed statically, not exercised by this reviewer.",
+  "confidence": 0.9,
+  "review_method": {
+    "read_only": true,
+    "required_packet_read_first": true,
+    "packet": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/complete-current-pilot-review-packet-001.json",
+    "patch_scope": "The scoped ordinary git diff was empty. Read-only git diff --no-index against /dev/null established the entire 332-line aggregate and 273-line batch scripts as the new-source review surface; both files were read in full.",
+    "full_new_source_context_read": [
+      "aggregate_uniform_current_noise.py:1-332",
+      "batch_uniform_current_noise.py:1-273",
+      "export_uniform_current_noise.py:1-142",
+      "uniform_current_inputs.py:1-103"
+    ],
+    "existing_sources_unchanged": true,
+    "reviewer_imports": 0,
+    "reviewer_builds_lints_tests_or_smoke_runs": 0,
+    "reviewer_numerical_or_physical_runs": 0,
+    "service_or_process_changes": 0,
+    "binding_evidence_policy": "Byte counts and SHA-256 values below are the original-file bindings recorded in the required packet, contract, actual done/result, and actual aggregate receipts, not sizes of rendered tool output. This reviewer did not execute the source or independently recompute hashes."
+  },
+  "evidence": [
+    {
+      "topic": "Scientific identity at both reuse and aggregation",
+      "assessment": "Static path inspected; actual source0 result and partial aggregate carry the same admitted identity.",
+      "source": [
+        "0035/export_uniform_current_noise.py:31-60",
+        "0034/mode_noise_compatibility.py:15-33",
+        "0035/aggregate_uniform_current_noise.py:56-61,145-164",
+        "0035/batch_uniform_current_noise.py:48-70,156-165,187-195",
+        "0035/aggregate_uniform_current_noise.py:308-320"
+      ],
+      "details": "The fixed A35 contract byte binding and fixed A34 scientific-profile binding are required. A34 load_compatibility authenticates its sorted scientific-source bindings and identity. A35 hashes that admitted identity together with the fixed plan and the two current producer/input source bindings. Reuse compares the current scientific identity before load_case; load_case independently requires exact identity on every result, including direct --done and batch-summary aggregation paths. There is no legacy-current fallback. Operational runner/interpreter bindings are recorded separately rather than silently redefining scientific compatibility.",
+      "actual_scientific_identity": {
+        "schema": "P254-A35-scientific-source-identity-v1",
+        "sha256": "db847e425628ba1b9272b625a6398bcae2fff1b1a944216b8d97e0df825b5d82"
+      }
+    },
+    {
+      "topic": "Exact original128 source and state authority",
+      "assessment": "Static admission logic and original saved JSON authority inspected; source0 provenance matches the admitted originals.",
+      "source": [
+        "0035/aggregate_uniform_current_noise.py:56-142",
+        "0035/aggregate_uniform_current_noise.py:145-218",
+        "0030/original_noise_source.py:100-178",
+        "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+        "/var/tmp/p254-a28-matched-loaded-rebind-001/original/boundary.json",
+        "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+        "/var/tmp/p254-a35-uniform-current-source0-002/result.json"
+      ],
+      "details": "The inputs must match fixed original initial-result/coefficient-manifest bindings. Context admission authenticates the original boundary and preparation, requires complete t=0 initialization with no trajectory, exactly 128 unique slot identities, literal spin1/2 and internal 4x4x4 coverage, component=spin-1, 346 raw columns and weight 1/64. The saved12 manifest must cover the original slots exactly and bind the same frame, basis, raw D and twelve distinct saved indices. Case admission checks original record, spin/mesh, original metadata, full frame/basis, raw D, coefficient item/archive, selection recipe, original model/preparation and saved source/transport lineage. The saved source-state JSON is authenticated and its archive binding enters the reconstructed full-state authority digest. Existing original-source restoration and transport proofs are carried, not reopened.",
+      "actual_source0": {
+        "original_record": 0,
+        "spin": 1,
+        "mesh_index": [0, 0, 0],
+        "identity": "1:0,0,0",
+        "shape": [18613, 346],
+        "coefficient_item": "slot/000",
+        "selected": [289, 290, 288, 291, 287, 292, 286, 293, 285, 294, 284, 295],
+        "state_authority": "f3d7be625104b78f73b0d3ff1578d35790f13f755cc068b2a93dd211c1a936e4",
+        "original_model_identity": "4fe18824df9534a305a58ef0d483635eb26bb39b8735522980423918a3392a85"
+      }
+    },
+    {
+      "topic": "All nine ordered complex pairs and all four blocks reach consumers",
+      "assessment": "Producer-to-generic-projection-to-serialization-to-parser-to-aggregate routing inspected; no name filter or unmatched branch drops current probes.",
+      "source": [
+        "0035/uniform_current_inputs.py:44-101",
+        "0030/full_noise_probe_inputs.py:11-34",
+        "src/substrate_framework/material_noise_projection.py:65-103,143-174",
+        "0030/export_output_directed_actions.py:42-49",
+        "0035/aggregate_uniform_current_noise.py:31-48,240-291"
+      ],
+      "details": "FullNoiseProbeInputs forwards the three named probes without mode-specific routing. The existing projection dispatch iterates every supplied probe on both legs, explicitly handles the equal-action/adjoint-array case, and emits each ordered pair and each retained/omitted Cartesian product. covariance_rows serializes every pair and all RR/RE/ER/EE entries. A35 parse_covariance requires exactly nine unique known directed pairs and four unique known blocks per pair with finite real/imag values. Aggregation explicitly loops current_x/current_y/current_z on both legs and both parts on both legs. The actual source0 result and actual partial aggregate each contain all nine directed rows and all 36 block values; complex off-diagonal entries remain distinct rather than being symmetrized or conjugated into one row."
+    },
+    {
+      "topic": "Quadrature and scientific scope",
+      "assessment": "Static normalization path inspected and its source0 output read.",
+      "source": [
+        "0035/implementation-contract-001.json",
+        "0035/uniform_current_inputs.py:44-78",
+        "0035/aggregate_uniform_current_noise.py:160-165,254-286",
+        "/var/tmp/p254-a35-current-source0-partial-001.json"
+      ],
+      "details": "The physical current is the existing full-PW field action scaled in place by -0.5 on its newly owned output. The three real Cartesian actions use the carried real-direction/Hermitian-UPF self-adjointness contract for three equal-adjoint reuses. Result admission requires unweighted electronic_current_hartree probes. Each full value, each block and each raw reconstruction defect receives the actual original quadrature_weight once. No extra spin factor, cell/spatial factor, 1/N, partial renormalization, canonical photon coupling, clipping or symmetrization is applied.",
+      "actual_examples": {
+        "quadrature_weight": 0.015625,
+        "raw_xx_real": 1017.0532892912437,
+        "partial_xx_real": 15.891457645175683,
+        "raw_xy": {"real": 7.224962017549075e-10, "imag": 2.696370245136581e-9},
+        "partial_xy": {"real": 1.128900315242043e-11, "imag": 4.213078508025908e-11},
+        "partial_yx": {"real": 1.1288962820099613e-11, "imag": -4.213072403967677e-11}
+      }
+    },
+    {
+      "topic": "Duplicate, missing, partial and full coverage behavior",
+      "assessment": "Static branches inspected; only the actual valid-partial CLI receipt is claimed as exercised.",
+      "source": [
+        "0034/batch_mode_noise.py:36-65",
+        "0035/aggregate_uniform_current_noise.py:240-252,272-291,302-329",
+        "0035/batch_uniform_current_noise.py:48-70,79,240-263"
+      ],
+      "details": "Duplicate CLI record indices are rejected by the reused parser. More than one compatible committed generation for one record is rejected rather than arbitrarily chosen. Aggregation rejects repeated original records or repeated explicit spin/internal-k identities, including duplicates arriving through combined --done and --batch-summary inputs. Missing records are computed against the literal range(128). An explicit nonempty proper subset produces a valid unrenormalized partial aggregate with exit 2; complete authenticated coverage produces aggregate exit 0; invalid input produces exit 1. The batch independently returns 0 for a complete requested subset, exposes requested_subset_complete separately from full_original128_coverage, and lists the missing original records. The aggregate consumer admits the A35 batch-summary schema and computes full coverage itself rather than treating the batch subset exit 0/status as full128 completion.",
+      "actual_partial": {
+        "exit_code": 2,
+        "status": "partial",
+        "original_records": [0],
+        "sector_count": 1,
+        "missing_original_records": "1 through 127",
+        "partial_renormalization": false,
+        "canonical_field_coupling_applied": false
+      }
+    },
+    {
+      "topic": "Real subprocess intent, outcome, streams and durability",
+      "assessment": "New caller and only the needed unchanged A34 operational primitives reviewed statically; no A35 serial-case native receipt was supplied to this reviewer.",
+      "source": [
+        "0035/batch_uniform_current_noise.py:33-70,130-171,176-233",
+        "0034/batch_mode_noise.py:30-33,72-148",
+        "0034/aggregate_mode_noise.py:43-84",
+        "0034/checkpoint_directories.py:6-30"
+      ],
+      "details": "The A35 loop calls execute_case synchronously with exactly one explicitly allowed taskset CPU and one-thread BLAS environment; there is no executor or second concurrent worker. The reused worker durably publishes the exact launch intent before Popen, uses a new process session, records spawn, writes raw stdout/stderr to exclusive files, observes the real child with wait4, and publishes actual exit/cost plus stream bindings. Both streams are flushed/fsynced before outcome publication. save_json persists file data and its containing directory; make_directory recursively persists newly created ancestors and their entries. A35 read_exit explicitly accepts the reused A34-named outcome schema and requires matching record/argv/CPU, actual integer exit 0, and no termination/error; it authenticates both raw streams before load_case. Reuse applies the same operational receipt gate before scientific admission."
+    },
+    {
+      "topic": "Signals, reaping, finite grants, failed/unknown costs and no retry",
+      "assessment": "Static operational paths inspected; not executed by the reviewer.",
+      "source": [
+        "0035/batch_uniform_current_noise.py:98-117,130-175,213-240,254-263",
+        "0034/batch_mode_noise.py:72-148"
+      ],
+      "details": "SIGINT/SIGTERM set the shared stop event. The worker checks stop, batch deadline and case timeout, kills the child process group when required, waits for a real terminal status, and reaps on the exception path. Pending records are not launched after stop/deadline. Consume accounts for the durable outcome even on failure, replaces missing/nonfinite/negative measurements with unknown rather than zero, and marks failed-generation physical-action count unknown. Costs exclude reused-generation work explicitly. A worker failure or scientific rejection unwinds the synchronous loop; there is no automatic in-invocation retry or recovery of temporary action arrays. A later invocation is a new explicit attempt and only committed compatible generations are reusable."
+    },
+    {
+      "topic": "Actual source0 native and partial-aggregation evidence",
+      "assessment": "Existing native receipt, stdout/stderr, done/result payload and partial result read; no new execution performed.",
+      "source": [
+        "0035/actual-current-source0-pilot-admission-002.json",
+        "/var/tmp/p254-a35-uniform-current-source0-002/done.json",
+        "/var/tmp/p254-a35-uniform-current-source0-002/result.json",
+        "/var/tmp/p254-a35-current-source0-partial-001.json"
+      ],
+      "actual_native_exit": 0,
+      "actual_source0_elapsed_seconds": 63.454811699688435,
+      "actual_source0_peak_rss_bytes": 1248956416,
+      "actual_contraction_seconds": 9.58654560521245,
+      "actual_current_action_evaluations": 3,
+      "actual_adjoint_reuses_by_hermiticity": 3,
+      "actual_current_action_columns": 1038,
+      "actual_raw_columns": 346,
+      "actual_full_pw_rows": 18613,
+      "actual_forbidden_action_counts": {
+        "force_forward_actions": 0,
+        "force_adjoint_actions": 0,
+        "h0_actions": 0,
+        "trajectory_actions": 0,
+        "native_calls": 0,
+        "gram_recomputations": 0,
+        "population_refills": 0,
+        "preparation_replays": 0
+      },
+      "details": "The source0 Native receipt reports terminal success and aggregate CLI exit 2. The process result records peak RSS 1248956416 bytes; the systemd stderr Memory peak figure is not substituted for that process measurement. This directly launched source0 pilot is not represented as an exercised serial-batch case or as full128 completion."
+    }
+  ],
+  "historical_corrections": [
+    {
+      "disposition": "already corrected before this review; not an open finding",
+      "topic": "First pilot whole-dictionary file-reference comparison",
+      "evidence": [
+        "0035/failed-first-producer-source-001.py.snapshot:102-104",
+        "0035/actual-first-current-pilot-failure-001.json",
+        "0035/first-pilot-diagnosis-correction-001.json",
+        "0035/export_uniform_current_noise.py:102-104",
+        "0034/aggregate_mode_noise.py:56-59"
+      ],
+      "details": "The immutable first failure exited 1 after 54.318 seconds Native runtime and 54.166 seconds CPU. Its failure was comparing legacy decimal-string bytes counts to fresh integer counts using whole-dictionary equality, not extra reference keys or changed physical inputs. The producer now uses the existing semantic same_binding at the boundary/preparation comparison. The diagnosis sidecar accurately corrects the parent wording; no retrospective rewrite of the failure or original code is claimed. The lost work remains charged."
+    },
+    {
+      "disposition": "already corrected before this review; not an open finding",
+      "topic": "Batch requested-subset success semantics",
+      "evidence": "0035/batch_uniform_current_noise.py:240-253",
+      "details": "The reviewed batch returns 0 for a complete requested subset and separately reports full_original128_coverage. Aggregation retains full128=0, valid partial=2 semantics. No serial native receipt is claimed for this corrected batch behavior."
+    }
+  ],
+  "sourcebindings": {
+    "binding_origin": "Original-file byte counts/SHA-256 values from packet and actual receipts; no reviewer rehash.",
+    "new_sources": [
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/aggregate_uniform_current_noise.py",
+        "bytes": 19821,
+        "sha256": "2f41743ca47f68a946e8f1ef2a1f8441e9dd23b384b10fbadba35ddfe8f5bd38"
+      },
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/batch_uniform_current_noise.py",
+        "bytes": 14659,
+        "sha256": "d3a474f7a87123d0ee48a680b5ad85458056f665932f9247d3c667d7e815a784"
+      },
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/export_uniform_current_noise.py",
+        "bytes": 7276,
+        "sha256": "2a70ee507595ce09789b538397d6bc7e5739789821b717e80b14d4dd9fee4e95"
+      },
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/uniform_current_inputs.py",
+        "bytes": 5588,
+        "sha256": "62f148776bf4b1af43addcddae599493a285dcea626f2c0c686ae6873051ac9d"
+      }
+    ],
+    "fixed_contract": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/implementation-contract-001.json",
+      "bytes": 5419,
+      "sha256": "16e4f1330afd5f8a16af31959f914bafb156d55dfb650f20f86cd514f0431316"
+    },
+    "carried_scientific_profile": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/scientific-compatibility-001.json",
+      "bytes": 33556,
+      "sha256": "c493b579639df51171773318373acdba4244601c7ad4926ca0f4c8bedc5605e2",
+      "scientific_identity_sha256": "992271a6099376f2dc3e0596284d4afa9fa9afa36a5f1a7c79bf2b60c5bd0cc5"
+    },
+    "original_inputs": [
+      {
+        "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+        "bytes": 25705,
+        "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"
+      },
+      {
+        "path": "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+        "bytes": 59561233,
+        "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"
+      },
+      {
+        "path": "/var/tmp/p254-a28-matched-loaded-rebind-001/original/boundary.json",
+        "bytes": 277032,
+        "sha256": "6fb559b067146ce2a44e5ecdf29a0f6045477dec4af769714830049af55752e2"
+      },
+      {
+        "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/preparation.npz",
+        "bytes": 6129716,
+        "sha256": "2b879087b1c52397c46504ea335abb0b6ef5d236e680be23eab6ba13fa5f386d"
+      }
+    ],
+    "actual_source0_evidence": [
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/actual-current-source0-pilot-admission-002.json",
+        "bytes": 4772,
+        "sha256": "e847ea4434ef5006df08baa83cb47c981be9d8463edd4c57afa13e010709194b"
+      },
+      {
+        "path": "/var/tmp/p254-a35-uniform-current-source0-002/result.json",
+        "bytes": 111971,
+        "sha256": "6533426545dc60b2a2f453aa631263c4d6017c89cb5b469cbe9c92beb48ba97c"
+      },
+      {
+        "path": "/var/tmp/p254-a35-uniform-current-source0-002/done.json",
+        "bytes": 197,
+        "sha256": "c0ebc7a86dda5729543f4a14ad930300def40500342d915159b6ffaa204abe95"
+      },
+      {
+        "path": "/var/tmp/p254-a35-current-source0-partial-001.json",
+        "bytes": 122750,
+        "sha256": "fea5624d6058d7bab4f192bc0519adf00b84c73e9591ed3b75eb04733f7c7dd6"
+      }
+    ],
+    "immutable_first_failure": [
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/actual-first-current-pilot-failure-001.json",
+        "bytes": 3612,
+        "sha256": "7a47f2a93c2aa3548e68d31a0f69bd4fdeb0de0968a10cf5b330daf1378d0cf9"
+      },
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/failed-first-producer-source-001.py.snapshot",
+        "bytes": 7194,
+        "sha256": "39bab02942edacabc25fa27e28e2e42b451c25cb4a9baa3f18ce95e7973d5dc4"
+      },
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/first-pilot-diagnosis-correction-001.json",
+        "bytes": 2150,
+        "sha256": "b3c125eae08f11f10cf928cc7a52995a6d4ca7dd40914aadecec251f09bc7bb8"
+      }
+    ],
+    "source0_frame": {
+      "path": "/home/administrator/.cache/dft/p254-a28-full-material/initialization-001/initial/frame-0000.npy",
+      "bytes": 103041696,
+      "sha256": "de795e90110875a36d888655e6c27e574f7c2d9ca731b3b540ffa68e75d744cc"
+    },
+    "source0_raw_d": {
+      "path": "/home/administrator/.cache/dft/p254-a28-full-material/initialization-001/initial/D-35119e79665a226ad3e702eed972dda3d41c982225a7edf3fb081b66c303702a.npy",
+      "bytes": 1915584,
+      "sha256": "6d09c3643a708f614bd054d882bb62ee47f971eedfb4bda33d39198e7f572c13"
+    },
+    "source0_state": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-loaded-pilot-001/source-state.json",
+      "bytes": 2381,
+      "sha256": "dc2d2ccc1cc6b4396a15633418d2c47e0baae941a1a618905976c74619fd6008"
+    },
+    "source0_state_archive": {
+      "path": "/var/tmp/p254-a28-matched-loaded-pilot-001/loaded-ni31h6/source-1-1/source-state.npz",
+      "bytes": 3837506,
+      "sha256": "76f9b378a26778ddcb8237b4f44ad90291bfa56ab01512270f6243eb58076c3c"
+    }
+  },
+  "unexercisedscope": [
+    "No settled source1 serial-native intent/outcome/stream/accepted/summary receipt was supplied to or claimed by this reviewer.",
+    "No full128 current production or complete full128 aggregate was executed or observed by this reviewer; original source-state coverage in saved JSON is not a current-production completion claim.",
+    "The corrected batch requested-subset exit-0 path, multi-record serialization, compatible reuse, duplicate-generation rejection, corrupted/missing receipt rejection, signal handling, timeout killing/reaping, lock contention and unknown-cost paths were inspected statically only, not newly exercised.",
+    "No adversarial JSON or duplicate/missing/full128 CLI checks were run. Only the supplied actual source0 valid-partial CLI exit 2 is reported as exercised aggregation evidence.",
+    "The reviewer did not import code, rebuild, lint, run tests, numerics or physics, rehash original files, modify existing files, or alter A34 production/services/processes.",
+    "Existing derivative/physical-factor/CAR/Fock/projection/source-transport proofs are carried by the fixed scientific profile; they were not reopened or claimed newly proved.",
+    "No canonical photon generalized-force mapping, force-current joint noise, finite-q density, stationarity, temperature/FDT, loss, lifetime, linewidth, heat, late-time influence kernel, trajectory, preparation replay or full-parent closure is established."
+  ],
+  "completion_limits": {
+    "review_complete": true,
+    "open_introduced_consumer_visible_findings": 0,
+    "source0_actual_success_observed_in_existing_receipt": true,
+    "source1_serial_actual_success_claimed": false,
+    "full128_current_completion_claimed": false,
+    "full_parent_completion_claimed": false,
+    "execution_authorization_granted": false
+  }
+}

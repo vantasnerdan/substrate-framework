@@ -17,7 +17,7 @@ Nodes are scientific outputs, not approval checkpoints. Completion labels apply 
 flowchart TD
     R["R · Material reference and initial state\nCOMPLETE · conditional, nonstationary"]
     S["S · Spatial and inter-region operators\nCOMPLETE · declared finite model"]
-    E["E · Field, environment and fluctuations\nMOVING Γ + NOISE/RESPONSE EXECUTED\nFULL-SOURCE INITIAL NOISE RUNNING · physical loss OPEN"]
+    E["E · Field, environment and fluctuations\nMOVING Γ + NOISE/RESPONSE EXECUTED\nFULL-SOURCE FORCE/CURRENT RUNNING · physical loss OPEN"]
     D["D · Coupled dynamics and correlations\nAPPROVED 16-CASE FINITE MODEL COMPLETE"]
     C["C · Controlled lattice comparison\nCONDITIONAL COMPARISON COMPLETE · physical ranking OPEN"]
     N["N · Nuclear source/operator and energy disposal\nASSESSMENT COMPLETE · rates undetermined"]
@@ -94,9 +94,15 @@ The same consumer computes the separate **nonstationary two-mode force noise and
 
 ## Initial force-noise source coverage
 
-The [dated physical intake](attempts/0034/actual-full-source-progress-002.json) contains completed original records 0–15 at 2026-11-04 15:19:43 UTC, with no failed case in that intake. The [construction](attempts/0034/implementation-contract-001.json) keeps each source's full plane-wave frame, all original raw columns and state, both actual force/adjoint legs, and every retained/omitted cross order; source0's paid force legs are reused rather than recalculated. The [complete corrected independent reviews and actual consumer evidence](attempts/0034/complete-corrected-review-admission-001.json) retain and resolve the four execution/admission findings without changing the force or covariance mathematics.
+The [dated physical intake](attempts/0034/actual-full-source-progress-005.json) contains completed original records 0–99, including external pilot1, at 2026-11-04 17:08:36 UTC, with no failed event in that intake. The [construction](attempts/0034/implementation-contract-001.json) keeps each source's full plane-wave frame, all original raw columns and state, both actual force/adjoint legs, and every retained/omitted cross order; source0's paid force legs are reused rather than recalculated. The [complete corrected independent reviews and actual consumer evidence](attempts/0034/complete-corrected-review-admission-001.json) retain and resolve the four execution/admission findings without changing the force or covariance mathematics.
 
 This is initial external-Γ noise in two fixed output-directed force modes. Completing its internal-source sum will not supply all external momenta, a moving full-source influence kernel, density/current vertices, irreversible loss, a lifetime or heat.
+
+## Initial physical-current noise
+
+The [actual source0 pilot](attempts/0035/actual-current-source0-pilot-admission-002.json) and [genuine serial source1 calculation](attempts/0035/actual-current-serial-source1-admission-001.json) completed. The [two complete independent reviews](attempts/0035/complete-current-scientific-review-admission-001.json) are correct with complete empty finding arrays. The [actual production intake](attempts/0035/current-completion-owner-001/initial-physical-progress.json) records new sources2/64 committed at 17:09 UTC in two disjoint serial shards, with source1's committed result reused rather than recalculated. The final sum will include external pilot0 exactly once.
+
+The [construction](attempts/0035/implementation-contract-001.json) uses all original raw state columns and the full plane-wave frame, the existing physical `J=-L/2` vertices, all nine ordered Cartesian pairs and all retained/omitted cross orders. This is raw uniform-current noise at the initial boundary, not a canonical photon generalized-force map. Separate force and current marginals do not supply their missing joint cross covariance, a moving influence kernel, finite-q density, irreversible loss or heat; they must not be added as independent noise atop the completed moving model.
 
 ## Existing solutions reused
 
