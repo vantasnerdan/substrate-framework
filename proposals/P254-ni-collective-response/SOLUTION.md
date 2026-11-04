@@ -17,7 +17,7 @@ Nodes are scientific outputs, not approval checkpoints. Completion labels apply 
 flowchart TD
     R["R · Material reference and initial state\nCOMPLETE · conditional, nonstationary"]
     S["S · Spatial and inter-region operators\nCOMPLETE · declared finite model"]
-    E["E · Field, environment and fluctuations\nMOVING Γ + EXPANDED TEMPORAL NOISE EXECUTED\nINITIAL FORCE / CURRENT / FIELD-FORCE COMPLETE\nphysical influence / loss OPEN"]
+    E["E · Field, environment and fluctuations\nMOVING Γ + JOINT FORCE/CURRENT TIME RESULT EXECUTED\nINITIAL FORCE / CURRENT / FIELD-FORCE COMPLETE\nphysical influence / loss OPEN"]
     D["D · Coupled dynamics and correlations\nAPPROVED 16-CASE FINITE MODEL COMPLETE"]
     C["C · Controlled lattice comparison\nCONDITIONAL COMPARISON COMPLETE · physical ranking OPEN"]
     N["N · Nuclear source/operator and energy disposal\nASSESSMENT COMPLETE · rates undetermined"]
@@ -120,6 +120,25 @@ The [actual temporal consumer](attempts/0037/actual-complete-expanded-temporal-i
 
 The cross blocks belong to the same bath, so the diagonal rows must not be added independently. This is a same-observable, original-state, frozen-H/two-mode model-enrichment contrast—not a late error bound, convergence certificate, independent noise added to A32, full-source/moving influence or irreversible loss. The [construction](attempts/0037/implementation-contract-001.json) reuses the existing subspace, polynomial-filter and CAR mathematics; unchanged [sensitive owning evidence](attempts/0031/owning-block-oracles-001.json) is carried forward rather than replayed. Both actual failures and all charged work remain in the admission. Both [complete complementary A37 scientific reviews](attempts/0037/complete-expanded-temporal-scientific-review-admission-001.json) are correct with complete empty finding arrays; their exact reviewed map and original report bytes are retained.
 
+## Joint force–current temporal influence
+
+The [actual current projection](attempts/0038/physical-current-projection-complete-002.json) and [complete joint temporal result](attempts/0038/actual-complete-joint-temporal-influence-admission-001.json) are finished. They reuse the paid expanded bath, actual spectral coordinates, original nonstationary state and ionic filtered operators. Only the missing uniform-current contribution is newly integrated through the original canonical field-force filter, using the existing source amplitude `sqrt(N*w0)*M`, with `M` twice the original polarization matrix and actual `N*w0=1`. No Hamiltonian/force action, basis selection, spectral eigensolve or original trajectory is repeated.
+
+For the same final Ni1/x output, let `I` denote the existing ionic-force contribution and `E` the new electronic current through the field filter. The [exact result](attempts/0038/joint-temporal-influence-material-result-001.json) retains all25 ordered complex pairs, including both `I,E` and `E,I`; the joint variance contains both, not an independent sum of two noise variances.
+
+| Source0/Gamma connected output covariance at final time30, bohr² | Real part | Imaginary part |
+| --- | ---: | ---: |
+| Field/current `E,E` | 3.470235440e-12 | 5.383615201e-27 |
+| Ionic–field `I,E` | 2.301990969e-11 | -2.925779160e-12 |
+| Field–ionic `E,I` | 2.301990969e-11 | 2.925779160e-12 |
+| Joint full vertex | 9.439630436e-08 | -8.058922512e-22 |
+| Joint retained vertex | 1.297757157e-08 | -4.855492118e-23 |
+| Joint omitted vertex | 8.161440561e-08 | -5.505410784e-22 |
+
+The [new focused owning oracle](attempts/0038/owning-joint-saved-spectral-oracle-001.json) exercises the public serialized spectral loader, independent matrix-exponential/time-quadrature and direct Fock readout, exposing wrong adjoint-moment transpose/conjugation, independent-adjoint replacement, omitted cross orders and wrong field normalization/sign. Existing A31/A36 proofs are carried forward, not rerun. The [real first metadata-wording failure](attempts/0038/actual-current-preaction-failure-and-owning-repair-001.json) and its owning physical-invariant comparator fix remain recorded; no wording allowlist or physical-state change was used.
+
+The original current evaluations were intentionally repeated where A35 had not retained their action arrays; that work is charged, not called free cache reuse. The complete initial full-PW/finite-bath current deficits are preserved. The authentic current and new joint operator banks remain local, without copying the old large banks. This is a source0/Γ/two-ionic-mode/frozen-H contribution through a fixed original filter—not a late error bound, full-source/moving/density influence, independent correction added to A32, irreversible loss, material ranking, nuclear rate or whole-E closure. Complete complementary scientific reviews are pending.
+
 ## Existing solutions reused
 
 Only actual reusable solutions are listed; missing physics is not represented by an inventory placeholder.
@@ -130,6 +149,7 @@ Only actual reusable solutions are listed; missing physics is not represented by
 | Original state/preparation, Bloch grid and canonical controls | Keep raw Gram/D, explicit spins, original cells/masses/field preparation and matched-control meaning; no population refill | [A27](attempts/0027/review-admission.json), [full initial boundary](attempts/0028/full-state-initialization-intake-001.json), [matched controls](attempts/0028/matched-clamped-batch-complete-001.json) |
 | Moving active mean/tangent/transpose and ordered readout | Reuse `reduced_electronic_dynamics.py`, `reduced_electronic_correlations.py` and `normalized_ordered`; consume saved results rather than repeat trajectories | [Original finite/Fock evidence](attempts/0029/executed-finite-oracle-admission-001.json), [exact probe reuse](attempts/0029/probe-reuse-actual-admission-001.json), [complete comparison](attempts/0029/final-four-structure-actual-comparison-admission-001.json) |
 | Canonical CAR/Fock contractions, actual output filter and physical action cache | Preserve original nonorthogonal state, both true legs and cross orders; use the actual forcing interval and paid H/force data | [Noise split proof](attempts/0030/noise-projection-oracle-001.json), [causal filter](attempts/0030/canonical-force-filter-publication-001.json), [finite-bath proofs](attempts/0031/owning-block-oracles-001.json), [moving model](attempts/0032/hybrid-gamma-owning-oracle-001.json) |
+| Saved expanded bath/spectral coordinates and canonical field-current mapping | Reuse the actual A37 coordinate/state/operator banks and A36 map for the joint force–current output, without new H/force actions, basis selection or spectral reconstruction | [Saved bath](attempts/0037/actual-complete-expanded-bath-admission-003.json), [actual spectra/filter](attempts/0037/actual-complete-expanded-temporal-influence-admission-001.json), [canonical map](attempts/0036/canonical-field-force-source0-partial-material-result-002.json), [joint execution](attempts/0038/actual-complete-joint-temporal-influence-admission-001.json) |
 | Evaluated nuclear/product/transport data and operator assessment | Reuse actual channel domains, product energies and conditional transport; do not invent amplitudes, missing material tables or heat | [Product ledger](attempts/0028/nuclear-product-energy-ledger.json), [measured channels](attempts/0028/measured-nuclear-channels-001.json), [transport](attempts/0028/nuclear-energy-transport-001.json), [assessment](attempts/0028/nuclear-medium-assessment.md) |
 
 Earlier force, energy and atom/species readouts remain in their [source-bound A28 publications](attempts/0028/retained-local-raw-artifacts-001.json); they are not repeated here as progress minutiae. Original raw scientific data and failed attempts remain preserved, not necessarily stored in Git.
