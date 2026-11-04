@@ -1,0 +1,16 @@
+{
+  "schema": "P254-output-directed-force-contract-v1",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "decision": "../0028/root-allocation-decision-483.json",
+  "purpose": "Construct actual full-state electronic influence in force directions selected by the completed causal Ni-output filter, rather than another energy-only active-band selection or an all-channel/action bank.",
+  "actual_filter_packet": "/var/tmp/p254-a30-loaded-gamma-ni1-causal-filter-001/packet.json",
+  "actual_filter_packet_sha256": "c19a1b0a19566c510e5557761fbe6b67b2540e05d62d4ee317cf38f6593fef80",
+  "actual_original_state_packet": "/var/tmp/p254-a30-original0-h37x-full-noise-probe-001/packet.json",
+  "actual_original_state_packet_sha256": "6639122665f0e31b77b2a04a996bb452b874818ff51955983af37e61c23b46b0",
+  "channel_interface": "decompose_force_channels(canonical_filter) returns separate ionic and field dictionaries; each has full orthonormal channel basis, raw integrated Gram/eigenvalues, modal Chebyshev/boundary coefficients, metadata and reconstruction diagnostics. No rank truncation/clipping; no mixing physical ionic and field units.",
+  "hamiltonian_interface": "restore_packet_hamiltonian(packet_path) returns one original sector context with psi,gram,density_coefficients,active_coordinates,factor_identity,pw_basis_identity,state_authority,source and methods hamiltonian_actions(),ionic_force_actions(direction). These methods return canonical ActionFactors and work metadata, unweighted and retaining all rows/columns/independent adjoints.",
+  "mathematics": "For each force kind separately, integrate the channel Gram over every existing degree7 segment using8-point Gauss-Legendre, exact in polynomial arithmetic for degree14 products. Keep raw complex data and all eigenvalues, including roundoff defects. K=U a, a=U-dagger K; the physical modal operator is sum_i U_i,alpha F_i, NOT sum_i conjugate(U_i,alpha) F_i. Preserve original raw state and all covariance cross terms. Full retained basis is a representation change, not a physical accuracy certificate or omitted-noise bound.",
+  "physical_restoration": "Reuse the authenticated original force packet and current physical factories to restore its original source/basis and literal t0 matched scalar. Bind actual initial potential,direction,field shift as used by PhysicalFrozenAction; do not substitute saved QE energy labels for H0 or assume stationarity. No H37 force replay,whole initialization,Gram recomputation,population refill or full moving-mean trajectory. Source packet contains admitted Gram/D/R; restore only necessary background/native basis inputs.",
+  "execution": "Children code only; parent executes owning oracle after both complete,then at most one original-sector physical H0 plus leading ionic-mode action pilot,CPU7/BLAS1/Native4GiB/swap0/600s. Preserve all prior costs and full goal. No all-source/full-action disk bank; one shared reported5GiB filesystem.",
+  "scientific_scope": "Output-directed operator representation and original-sector physical data for the passive-influence construction. Not yet a full late-time passive kernel,RPA closure,physical loss,lattice ranking or completed campaign."
+}
