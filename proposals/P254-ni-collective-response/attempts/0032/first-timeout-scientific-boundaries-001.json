@@ -1,0 +1,96 @@
+{
+  "actual_intake_utc": "2026-11-04T11:43:33.321209+00:00",
+  "baseline_receipt": {
+    "path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-001/baseline-complete.json",
+    "bytes": 2935,
+    "sha256": "66ad46318d4555d9b390cdaa2e2d90eb5b27c2aa91bc032be1cf3cfcaa127bd1"
+  },
+  "baseline_archive": {
+    "path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-001/baseline-complete.npz",
+    "bytes": 11507378,
+    "sha256": "498d8be2a5eac3e226b133ffd046d96ce9fc60b5e3b1d54e1bf24acfb39ff134"
+  },
+  "backward_checkpoint": {
+    "path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-001/backward-002.npz",
+    "bytes": 6905290,
+    "sha256": "888afa423265ac75539d8cce44f9d25d65eda760abd798bf851578923d36144c"
+  },
+  "checkpoint_metadata": {
+    "time_inverse_ry": 10.0,
+    "probe_times": [
+      30.0
+    ],
+    "mean_shape": [
+      143832
+    ],
+    "duals_shape": [
+      143832,
+      1
+    ]
+  },
+  "progress": {
+    "path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-001/progress.jsonl",
+    "bytes": 18231,
+    "sha256": "1957d380d4962bbc8d20454b55c4f6b427b47d5f141e003116da900ac87c2fad"
+  },
+  "actual_completed_stages": [
+    {
+      "archive": {
+        "bytes": 11507378,
+        "path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-001/baseline-complete.npz",
+        "sha256": "498d8be2a5eac3e226b133ffd046d96ce9fc60b5e3b1d54e1bf24acfb39ff134"
+      },
+      "elapsed_seconds": 130.09494406171143,
+      "receipt": {
+        "bytes": 2935,
+        "path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-001/baseline-complete.json",
+        "sha256": "66ad46318d4555d9b390cdaa2e2d90eb5b27c2aa91bc032be1cf3cfcaa127bd1"
+      },
+      "stage": "baseline-complete",
+      "utc": "2026-11-04T11:20:11.568518+00:00"
+    },
+    {
+      "checkpoint": {
+        "bytes": 6905290,
+        "path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-001/backward-002.npz",
+        "sha256": "888afa423265ac75539d8cce44f9d25d65eda760abd798bf851578923d36144c"
+      },
+      "elapsed_seconds": 506.4582870770246,
+      "reconstruction": {
+        "electronic": {
+          "forward_l2": 32.43454948045316,
+          "l2": 6.797478628278445e-09,
+          "max_abs": 8.913628918416774e-10,
+          "relative_l2": 2.0957524421219352e-10
+        },
+        "mechanical": {
+          "forward_l2": 14.41574834820425,
+          "l2": 5.758720250734369e-08,
+          "max_abs": 3.5900473934087896e-08,
+          "relative_l2": 3.9947424938586176e-09
+        },
+        "whole_state": {
+          "forward_l2": 35.49385581250243,
+          "l2": 5.798699516549826e-08,
+          "max_abs": 3.5900473934087896e-08,
+          "relative_l2": 1.633719240643131e-09
+        }
+      },
+      "solver": {
+        "accepted_steps": 101,
+        "elapsed_seconds": 375.6534783318639,
+        "first_step": 0.23980909285075053,
+        "interval_inverse_ry": [
+          30.0,
+          10.0
+        ],
+        "method": "DOP853",
+        "rhs_evaluations": 1213
+      },
+      "stage": "backward-checkpoint",
+      "time_inverse_ry": 10.0,
+      "utc": "2026-11-04T11:26:27.931855+00:00"
+    }
+  ],
+  "recovery_gap": "Original run saved interaction-coordinate states/duals but NOT its actual eigenvector/energy coordinate bank. Exact orbital-gauge continuity cannot be claimed from a deterministic rerun or a new hash. Do not pretend this is a free checkpoint resume. Original complete forward/checkpoint work retained;bounded computational replay may be necessary."
+}

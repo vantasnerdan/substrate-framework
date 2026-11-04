@@ -1,0 +1,83 @@
+{
+  "schema": "P254-A32-moving-hybrid-model-implementation-report-v1",
+  "status": "implemented; numerical execution intentionally assigned to parent",
+  "owned_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/hybrid_gamma_model.py",
+      "bytes": 17243,
+      "sha256": "451ad383475e91ea57219e0189dd8b743112a2b88ca84e2610d14aadecf6ab8c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/oracle_hybrid_gamma_model.py",
+      "bytes": 15557,
+      "sha256": "4c52a64c155ca81bcbdad1fb9aa3af4734e3824fb5d96f0613f5353a3bace8bd"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/hybrid-gamma-model-source-inventory-001.json",
+      "bytes": 4241,
+      "sha256": "afc5a2ed1afbe4feb75a5029e3dd8df81f4949cb8a66099a8625d742eb3c7f4d"
+    }
+  ],
+  "api": {
+    "constructor": "HybridGammaModel(coefficients, initial_mechanical, bath_bank, mode_directions, *, source_slot=0)",
+    "attributes": [
+      "initial",
+      "size",
+      "nx",
+      "metadata",
+      "diagnostics"
+    ],
+    "methods": [
+      "mean_rhs(time, mean)",
+      "tangent(time, mean, value)",
+      "transpose(time, mean, dual)",
+      "probe(coordinate)",
+      "initial_ordered(left, right)",
+      "preparation_observables(dual)",
+      "state_diagnostics(time, mean)"
+    ],
+    "layout": "mechanical[nx] + other_slots_ascending[(ns-1)*m*m] + source_slot_interaction[b*b]; matrices batch in columns; no duplicated old source coordinate",
+    "initial_ordered_shape": "[left probe count, right probe count], including vector/vector -> [1,1]"
+  },
+  "source_bank_keys": [
+    "projected_frame",
+    "gram",
+    "density_coefficients",
+    "projected_density",
+    "projected_active_coordinates",
+    "hamiltonian",
+    "hamiltonian_adjoint",
+    "force_mode0",
+    "force_mode1",
+    "adjoint_force_mode0",
+    "adjoint_force_mode1"
+  ],
+  "normalization": "original A29 canonical mean and tangent x unchanged; ionic and extra forward/reverse 1/sqrtN; field unchanged; Hartree 1/N through two 1/sqrtN factors; covariance no extra cell/spin/Fourier factor",
+  "model": "all other active sectors dynamic; current source0 compression contributes once to original Hartree/field/ionic controls; literal bath H plus embedded change from original initial active H plus both supplied physical extra force legs; matching extra mean force uses original rho_B0 fixed-reference subtraction",
+  "history": "full source0 density interaction picture from raw literal-H general eigensimilarity; time-aware Q_L/Q_R and force vertices; no state/density diagonalization, refill, clipping or Hermitian repair",
+  "oracle_blocks": [
+    "independent scalar finite Hamiltonian and finite-difference global coordinate gradient",
+    "independent physical matrix-exponential versus interaction-picture mean",
+    "batched complex tangent finite differences and true nonconjugating transpose",
+    "complex original nonorthogonal-frame/D CAR versus explicit finite Fock trace",
+    "all other active Wick plus original mechanical/field W0",
+    "exposing mutations: omitted backreaction, duplicated source contribution, wrong rootN, conjugated transpose, extra quadrature/force-leg averaging, discarded independent adjoint, nonunitary physical-adjoint and extra cell factor"
+  ],
+  "checks_run": [],
+  "checks_not_run": [
+    "build",
+    "lint",
+    "format",
+    "test",
+    "model oracle",
+    "material run"
+  ],
+  "parent_check": "python proposals/P254-ni-collective-response/attempts/0032/oracle_hybrid_gamma_model.py after both slices settle",
+  "limitations": [
+    "one Gamma/source0 two-mode finite-bath enrichment only",
+    "not allq/fullsource/fullPW physical calibration",
+    "not physical loss, lifetime or campaign completion",
+    "no old trajectory replay or physical force/Hamiltonian actions performed",
+    "synthetic oracle is authored but unexecuted; no pass result claimed"
+  ]
+}
