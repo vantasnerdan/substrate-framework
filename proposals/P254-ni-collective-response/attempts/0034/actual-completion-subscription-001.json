@@ -1,0 +1,35 @@
+{
+  "actual_time": "2026-11-04T17:09:51.190124+00:00",
+  "production_invocation": "90248d9748ee4d61b6c1ab07d5fe347e",
+  "watcher_pane": "w1:p5X",
+  "watcher_tab": "w1:t5X",
+  "passive_only": true,
+  "match_argv": [
+    "herdr",
+    "pane",
+    "wait-output",
+    "w1:p5W",
+    "--regex",
+    "\\[p254-a34-native-exit\\] code=|\"event\": \"case-failed\"",
+    "--timeout",
+    "7200000",
+    "--raw"
+  ],
+  "log_path": "/var/tmp/p254-a34-force-completion-terminal-watch-001.log",
+  "admission_outcome": {
+    "argv": [
+      "herdr",
+      "pane",
+      "run",
+      "w1:p5X",
+      "bash -lc 'set -o pipefail; herdr pane wait-output w1:p5W --regex '\"'\"'\\[p254-a34-native-exit\\] code=|\"event\": \"case-failed\"'\"'\"' --timeout 7200000 --raw 2>&1 | tee /var/tmp/p254-a34-force-completion-terminal-watch-001.log; native_status=${PIPESTATUS[0]}; printf \"[force-completion-terminal-watch-001] code=%s\\n\" \"$native_status\" | tee -a /var/tmp/p254-a34-force-completion-terminal-watch-001.log; exit \"$native_status\"'"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

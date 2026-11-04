@@ -1,0 +1,368 @@
+{
+  "schema": "P254-A36-actual-canonical-field-force-partial-admission-v1",
+  "actual_time": "2026-11-04T17:56:09.874075+00:00",
+  "preregistration": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/implementation-contract-001.json",
+    "bytes": 7113,
+    "sha256": "f6f8a3e9b182db6fcf5a502fdf4d762f71d2c382efd98faf61a89c12136fafdd"
+  },
+  "complete_wave1": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/complete-wave1-handoff-001.json",
+    "bytes": 1899,
+    "sha256": "7cc6ebcbc3152f4e0fc2e449b52e104345755282999c7cf172d1afa94ff98e1b"
+  },
+  "actual_oracle": {
+    "argv": [
+      "env",
+      "XDG_RUNTIME_DIR=/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+      "systemd-run",
+      "--user",
+      "--wait",
+      "--pipe",
+      "--collect",
+      "--unit=p254-a36-canonical-field-oracle-001.service",
+      "--property=RuntimeMaxSec=120",
+      "--property=MemoryMax=512M",
+      "--property=MemorySwapMax=0",
+      "--property=Restart=no",
+      "env",
+      "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+      "OPENBLAS_NUM_THREADS=1",
+      "OMP_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1",
+      "NUMEXPR_NUM_THREADS=1",
+      "/usr/bin/taskset",
+      "-c",
+      "10",
+      "/usr/bin/python3",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/canonical_current_noise_oracle.py",
+      "--output",
+      "/var/tmp/p254-a36-owning-canonical-field-oracle-001.json"
+    ],
+    "exit": 0,
+    "stdout": "{\"output\": \"/var/tmp/p254-a36-owning-canonical-field-oracle-001.json\", \"status\": \"passed\", \"verdict\": true}\n",
+    "stderr": "Running as unit: p254-a36-canonical-field-oracle-001.service; invocation ID: fde19b8de2b247b080b302724e158734\nFinished with result: success\nMain processes terminated with: code=exited/status=0\nService runtime: 16.184s\nCPU time consumed: 16.097s\nMemory peak: 256.0K\nMemory swap peak: 0B\n",
+    "elapsed": 16.228293,
+    "result": {
+      "path": "/var/tmp/p254-a36-owning-canonical-field-oracle-001.json",
+      "bytes": 90187,
+      "sha256": "0830ecb4eb41d2319df9080ce21eb11644524a8fa3edf694d90c176a2307da3c"
+    },
+    "actual_checks": {
+      "differentiated_force_operator": {
+        "passes": true,
+        "max_abs_difference": 4.440892098500626e-16
+      },
+      "direct_global_fock_covariance": {
+        "passes": true,
+        "max_abs_difference": 1.776383974047656e-15
+      },
+      "force_mean_vs_scalar_derivative": {
+        "passes": true,
+        "max_abs_difference": 1.1102230246251565e-16
+      },
+      "ordered_EE": {
+        "passes": true,
+        "max_abs_difference": 2.0014830212433607e-16
+      },
+      "ordered_ER": {
+        "passes": true,
+        "max_abs_difference": 5.721958498152797e-17
+      },
+      "ordered_RE": {
+        "passes": true,
+        "max_abs_difference": 8.355534721610419e-17
+      },
+      "ordered_RR": {
+        "passes": true,
+        "max_abs_difference": 5.551115123125783e-17
+      },
+      "ordered_split_reconstruction": {
+        "passes": true,
+        "max_abs_difference": 8.88178507863203e-16
+      },
+      "source_vector": {
+        "passes": true,
+        "max_abs_difference": 0.0
+      },
+      "source_vector_is_real": {
+        "passes": true,
+        "max_abs_difference": 0.0
+      }
+    },
+    "negative_computed_predicates": {
+      "dropped_cartesian_offdiagonal_pairs": {
+        "passes": false,
+        "max_abs_difference": 4.181101787154976
+      },
+      "dropped_ordered_imaginary_part": {
+        "passes": false,
+        "max_abs_difference": 0.21566706114398423
+      },
+      "ignored_nontrivial_polarizations": {
+        "passes": false,
+        "max_abs_difference": 6.315309949790684
+      },
+      "missing_ha_ry_factor_two": {
+        "passes": false,
+        "max_abs_difference": 11.153997177792856
+      },
+      "omitted_extensive_n": {
+        "passes": false,
+        "max_abs_difference": 14.639621295853123
+      },
+      "renormalized_partial_sector_weights": {
+        "passes": false,
+        "max_abs_difference": 461.03188334877143
+      },
+      "spurious_n_squared": {
+        "passes": false,
+        "max_abs_difference": 936.9357629346
+      },
+      "wrong_global_force_sign": {
+        "passes": false,
+        "max_abs_difference": 8.714493674333582
+      }
+    }
+  },
+  "first_real_failure": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/actual-first-saved-consumer-failure-001.json",
+    "bytes": 2555,
+    "sha256": "365904300c8d400fcd50f279de01a0bfe0efb10991b328ad65a80c48515f1cd7"
+  },
+  "serialization_source_repair": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/first-consumer-serialization-repair-001.json",
+    "bytes": 2573,
+    "sha256": "c925105d9980cf3f1d6001aba4dd74e41501f319d72cbd63fd2a177191a185cf"
+  },
+  "actual_corrected_consumer": {
+    "argv": [
+      "env",
+      "XDG_RUNTIME_DIR=/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+      "systemd-run",
+      "--user",
+      "--wait",
+      "--pipe",
+      "--collect",
+      "--unit=p254-a36-canonical-field-partial-002.service",
+      "--property=RuntimeMaxSec=99",
+      "--property=MemoryMax=512M",
+      "--property=MemorySwapMax=0",
+      "--property=Restart=no",
+      "env",
+      "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+      "OPENBLAS_NUM_THREADS=1",
+      "OMP_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1",
+      "NUMEXPR_NUM_THREADS=1",
+      "/usr/bin/taskset",
+      "-c",
+      "10",
+      "/usr/bin/python3",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/evaluate_canonical_current_noise.py",
+      "--current-aggregate",
+      "/var/tmp/p254-a35-current-source0-partial-001.json",
+      "--output",
+      "/var/tmp/p254-a36-canonical-field-force-source0-partial-002.json"
+    ],
+    "exit": 2,
+    "stdout": "{\"event\": \"canonical-current-noise-exit\", \"status\": \"partial\", \"output\": {\"path\": \"/var/tmp/p254-a36-canonical-field-force-source0-partial-002.json\", \"bytes\": 138629, \"sha256\": \"8f117c229daa1ada0d072a9ce663d0e0cc75904766ed5c60c1441afb7fb74bf2\"}, \"exit_code\": 2}\n",
+    "stderr": "Running as unit: p254-a36-canonical-field-partial-002.service; invocation ID: 8b063b3cbfcc43138f20452f5acefea3\nFinished with result: exit-code\nMain processes terminated with: code=exited/status=2\nService runtime: 4.650s\nCPU time consumed: 4.617s\nMemory peak: 448.0K\nMemory swap peak: 0B\n",
+    "elapsed": 4.700548,
+    "result": {
+      "path": "/var/tmp/p254-a36-canonical-field-force-source0-partial-002.json",
+      "bytes": 138629,
+      "sha256": "8f117c229daa1ada0d072a9ce663d0e0cc75904766ed5c60c1441afb7fb74bf2"
+    },
+    "status": "partial",
+    "original_records": [
+      0
+    ],
+    "normalization": {
+      "ncells": 64,
+      "physical_cell_bohr": [
+        [
+          13.31878972636243,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          13.31878972636243,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          13.31878972636243
+        ]
+      ],
+      "primitive_volume_bohr3": 2362.6222375698258,
+      "source_current_normalization": {
+        "rule": "sum_k actual_quadrature_weight_k * unweighted_C_k",
+        "quadrature_applied_once": true,
+        "quadrature_weight": 0.015625,
+        "required_explicit_spin_sectors": 128,
+        "extra_spin_factor": 1,
+        "final_spatial_factor": 1,
+        "partial_renormalization": false,
+        "canonical_field_coupling_applied": false
+      },
+      "current_force_matrix": [
+        [
+          2.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          2.0
+        ]
+      ],
+      "rule": "C_Pidot_el = N * M * [sum_explicit_spin_k(w_k*C_J,k)] * M.T; M=2e",
+      "mean_rule": "Pi-dot_el=-N*e*<L_Ry>=2*N*e*<J_Ha>",
+      "fluctuation_rule": "global source amplitude sqrt(N)*M; covariance factor N, not N^2",
+      "scalar_reason": "E_total=N*E_matter_per_cell+Pi^2/(2*M_a); field Poisson bracket 1",
+      "conversion_reason": "J_Ha=-L_Ry/2; -e*L_Ry=+2*e*J_Ha; each covariance leg gets 2",
+      "normalization_sources": [
+        "physical_field_environment.py:3-16,67-84",
+        "material_joint_field_scalar.py:94-95,123-148",
+        "matched_joint_case.py:38-39,118",
+        "joint_bloch_response.py:224-240",
+        "joint_ordered_sources.py:121-124"
+      ],
+      "quadrature_applied_once": true,
+      "quadrature_weight": 0.015625,
+      "extra_spin_factor": 1,
+      "additional_quadrature_factor": 1,
+      "spatial_covariance_factor": 64,
+      "partial_renormalization": false,
+      "mass_division": false,
+      "oscillator_normalization": false,
+      "momentum_state_covariance": false,
+      "electronic_generalized_force_only": true
+    },
+    "first_computed_covariance": {
+      "left": "canonical_field_force_x",
+      "right": "canonical_field_force_x",
+      "full": {
+        "real": 4068.2131571649747,
+        "imag": -3.665324235049672e-15
+      },
+      "blocks": [
+        {
+          "part_left": "retained",
+          "part_right": "retained",
+          "value": {
+            "real": 0.007897183638453506,
+            "imag": -5.40154039055817e-20
+          }
+        },
+        {
+          "part_left": "retained",
+          "part_right": "omitted",
+          "value": {
+            "real": 1.9257834527047032e-16,
+            "imag": 3.3418477139911226e-17
+          }
+        },
+        {
+          "part_left": "omitted",
+          "part_right": "retained",
+          "value": {
+            "real": 1.8610820737783075e-16,
+            "imag": -3.6583323901582477e-17
+          }
+        },
+        {
+          "part_left": "omitted",
+          "part_right": "omitted",
+          "value": {
+            "real": 4068.205259981337,
+            "imag": -3.682209892230444e-15
+          }
+        }
+      ],
+      "block_reconstruction": {
+        "real": 4068.213157164975,
+        "imag": -3.68542875439602e-15
+      },
+      "reconstruction_defect": {
+        "real": -4.547473508864641e-13,
+        "imag": 2.0104519346348716e-17
+      },
+      "mapped_current_block_reconstruction": {
+        "real": 4068.213157164975,
+        "imag": -3.68542875439602e-15
+      },
+      "mapped_current_reconstruction_defect": {
+        "real": -4.547473508864641e-13,
+        "imag": 2.0104519346348716e-17
+      },
+      "mapped_weighted_raw_reconstruction_defect": {
+        "real": -4.547473508864641e-13,
+        "imag": 2.0104519346348716e-17
+      }
+    }
+  },
+  "current_source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/canonical_current_noise.py",
+      "bytes": 1874,
+      "sha256": "f2c478651140d752ab41d9533a759a45e32712c18f28eac798c7f52765dcaa70"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/evaluate_canonical_current_noise.py",
+      "bytes": 13194,
+      "sha256": "207f4082ef50a6d75cdef044d6e493c9010c2dfa602e28355d0eb6a57f6987f6"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/canonical_current_noise_oracle.py",
+      "bytes": 23021,
+      "sha256": "7561d89cf668343a0955a3a111ea09b96e4324497607429c75a633938ae40f20"
+    }
+  ],
+  "native_cost": {
+    "original_grant_seconds": 120,
+    "oracle_seconds": 16.228293,
+    "failed_consumer_seconds": 4.484393,
+    "corrected_consumer_seconds": 4.700548,
+    "cumulative_native_seconds": 25.413234000000003,
+    "physical_actions": 0
+  },
+  "lossless_publication": [
+    {
+      "original": {
+        "path": "/var/tmp/p254-a36-owning-canonical-field-oracle-001.json",
+        "bytes": 90187,
+        "sha256": "0830ecb4eb41d2319df9080ce21eb11644524a8fa3edf694d90c176a2307da3c"
+      },
+      "banked_copy": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/owning-canonical-field-force-oracle-001.json",
+        "bytes": 90187,
+        "sha256": "0830ecb4eb41d2319df9080ce21eb11644524a8fa3edf694d90c176a2307da3c"
+      }
+    },
+    {
+      "original": {
+        "path": "/var/tmp/p254-a36-canonical-field-force-source0-partial-002.json",
+        "bytes": 138629,
+        "sha256": "8f117c229daa1ada0d072a9ce663d0e0cc75904766ed5c60c1441afb7fb74bf2"
+      },
+      "banked_copy": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/canonical-field-force-source0-partial-material-result-002.json",
+        "bytes": 138629,
+        "sha256": "8f117c229daa1ada0d072a9ce663d0e0cc75904766ed5c60c1441afb7fb74bf2"
+      }
+    }
+  ],
+  "scope": "VerifiednewN64canonicalmapboundary+ACTUALsource0unrenormalizedpartialfield-forcecovariance. Notfull128current/fieldcovarianceyet. No Pi-statecovariance,independentnoiseaddition,jointforce-current,latekernel,finiteqdensity,stationarity/FDT,loss/heat/rates orparentclosure. Passedpuremaporacleunchanged/notreplayedafterencoder-onlyrepair."
+}
