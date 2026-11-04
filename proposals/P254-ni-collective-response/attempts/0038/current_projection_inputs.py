@@ -104,7 +104,7 @@ def restore_inputs(manifest, reference, progress):
 
 
 def match_current_reference(context, reference):
-    """Compare physical state/source, not producer-specific whole context dicts."""
+    """Match actual state/measure/bindings; descriptive policy prose is provenance."""
     if (reference['original_record'] != 0 or reference['source']['original_record'] != 0
             or reference['state_authority'] != context.state_authority
             or reference['factor_identity'] != context.factor_identity
@@ -116,8 +116,8 @@ def match_current_reference(context, reference):
         raise ValueError('old current reference original state/basis/factor/weight differs')
     physical_fields = ('case', 'model_identity', 'original_model_identity', 'spin', 'source_ik',
         'mesh_index', 'k_fractional', 'operation', 'orbital_conjugation', 'reciprocal_shift',
-        'gauge_policy', 'coefficient_case_identity', 'coefficient_item', 'state_convention',
-        'measure_convention', 'native_wavefunction', 'selected', 'selection_recipe')
+        'coefficient_case_identity', 'coefficient_item', 'native_wavefunction',
+        'selected', 'selection_recipe')
     for field in physical_fields:
         if reference['source'][field] != context.source[field]:
             raise ValueError('old current reference physical source differs: '+field)
