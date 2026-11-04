@@ -1,0 +1,258 @@
+{
+  "verdict": "correct",
+  "findings": [],
+  "reviewed_scope": {
+    "assignment": "Independent read-only scientific review of A32 hybrid_gamma_model.py, its owning small oracle, and the actual material input/result boundaries; not a new implementation or qualification campaign.",
+    "conclusion": "No evidence-backed patch-introduced implementation defect was found in the assigned moving-hybrid Hamiltonian, mean/tangent/transpose, original-state CAR covariance, or their inspected producer/consumer boundaries. The saved executed result supports the declared one-source, Gamma, two-extra-force-mode finite-model enrichment, not the full physical objective.",
+    "confidence": 0.95,
+    "primary_sources_read_in_full": [
+      "proposals/P254-ni-collective-response/attempts/0032/hybrid_gamma_model.py:1-290",
+      "proposals/P254-ni-collective-response/attempts/0032/oracle_hybrid_gamma_model.py:1-293",
+      "proposals/P254-ni-collective-response/attempts/0032/export_hybrid_gamma.py:1-408",
+      "proposals/P254-ni-collective-response/attempts/0032/hybrid_gamma_evolution.py:1-230",
+      "proposals/P254-ni-collective-response/attempts/0032/compare_saved_gamma_models.py:1-110"
+    ],
+    "boundary_context_read": [
+      "A32 complete-scientific-review-packet-001.json, implementation-contract-001.json and SOLUTION.md",
+      "Selected fields of the actual material result, actual original-input receipt, Native admission, lossless publication, owning oracle, saved model contrast and complete backward preparation receipt",
+      "Selected already-saved A30/A31 source/state/action/mode/basis metadata and the original source0 boundary record",
+      "Existing A29 ReducedCoefficients/QCoefficients, the Gamma mean/scaling boundary, and projection/storage context needed to interpret the imported coefficients"
+    ],
+    "method": "Static source and algebra inspection plus reading already-executed JSON evidence. No tests, oracle reruns, builds, linters, precision runs, numerical trajectories, physical H/force actions, DFT, or network mutations were performed. The NPZ reader did not decode the binary coordinate archive; numerical values below are explicitly attributed to saved JSON diagnostics/publication bindings rather than fresh array computations.",
+    "patch_scope": "The working-tree git diff showed the SOLUTION.md revision; the staged scoped diff was empty. A read-only git diff --no-index against /dev/null exposed hybrid_gamma_model.py as the complete 290-line added artifact. The review is of the complete source bound by the A32 packet, not a reopened A29 review.",
+    "excluded": "The earlier A29 scientific review is carried forward without reopening its complete scientific claims or replaying its sixteen trajectories. Upstream A30/A31 implementation campaigns were not independently requalified. The full objective remains material-calibrated many-region/lattice comparison and an explicit nuclear-transition/energy-disposal bridge.",
+    "finding_completeness": "No incremental scientific finding was emitted or subsequently withdrawn/resolved; the complete final findings array is empty. Already-stated model limitations and limits of the available proof are recorded separately in not_established, not mislabeled as implementation defects."
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "topic": "One scalar Hamiltonian and source0 replacement exactly once",
+      "sources": [
+        "hybrid_gamma_model.py:37-87,154-213",
+        "oracle_hybrid_gamma_model.py:65-166"
+      ],
+      "assessment": "The flat state contains the unchanged canonical mechanical block, all old active sectors except source_slot, and one full source0 interaction-picture density. _compress inserts that bath compression into the source0 slot once; all sums over active sectors therefore include exactly one source0 contribution. mean_rhs propagates old electronic commutators only on other_slots and propagates the bath separately. The actual declared size is 228 + 127*12*12 + 354*354 = 143832, with no extra 12*12 source0 block.",
+      "scalar_structure": "Let r0=Qa^dagger rhoB Qa and let the other r_s be the remaining active densities. The construction is the original mechanical scalar, the old band scalar for s!=0, Tr(Hliteral rhoB), the original ionic/field couplings to delta r and the original Hartree scalar, minus the fixed source0 initial-control insertion, plus Tr(B(x)(rhoB-rhoB_initial)). Here B(x) is the two-leg extra ionic Hamiltonian. The fixed subtraction is h_active(initial)_0-c.h0_0, not a second dynamical source. Its electronic derivative gives Hliteral + Qa(h_active(current)_0-h_active(initial)_0)Qa^dagger + B(x), exactly the physical generator represented by _mean_terms. Its mechanical derivative gives the original reference-subtracted active force and the same extra-force term used in _gradient. This is an algebraic reading of the implementation and oracle, conditional on the carried-forward original coefficient pairing, not a fresh numerical conservation experiment.",
+      "disposition": "supported; no implementation defect found"
+    },
+    {
+      "id": "E2",
+      "topic": "Literal initial H, actual Qa, and retained nonstationarity",
+      "sources": [
+        "hybrid_gamma_model.py:46-87,146-160,187-195",
+        "export_hybrid_gamma.py:176-235,277-307",
+        "moving-hybrid-input-bindings-002.json:source.transport_defects and model_diagnostics",
+        "A31 saved bath result:basis_metadata and raw_state_commutator_frobenius"
+      ],
+      "assessment": "self.h0 is the saved bath_bank['hamiltonian']; only this literal matrix is eigendecomposed, with a general inverse V^-1 rather than a unitary assumption. The old active h(initial) is subtracted solely from the embedded change; it is not substituted for the literal bath H. The loader uses the saved projected_active_coordinates and records Qa-projected_frame*active_coordinates with maximum absolute defect 0.0. It records full-density transfer defect 0.0 and active-density defect 3.33066988631685e-15. The model records source compression Frobenius difference 5.323722818757614e-15 and active metric defect 3.3306690738754696e-15. The saved original nonstationary state remains off diagonal in the H eigenbasis, with off-diagonal Frobenius norm 0.8714378849481624; the carried A31 saved commutator norm is 0.16392046471702654. These are saved diagnostics, not recomputed values.",
+      "disposition": "supported; no refill, stationary replacement, or duplicate initial H found"
+    },
+    {
+      "id": "E3",
+      "topic": "Two physical forward/adjoint force legs and canonical scaling",
+      "sources": [
+        "hybrid_gamma_model.py:40-41,64-80,162-184,201-238",
+        "export_hybrid_gamma.py:221-235,260-276",
+        "A30 saved action packet:selected_physical_mode.convention",
+        "A31 saved bath result:basis_metadata.operators"
+      ],
+      "assessment": "The two raw forward forces and two independently supplied physical adjoint matrices are separately loaded and retained. Each is corrected against its embedded old ionic leg. The added Hamiltonian is -1/(2 sqrtN) times the sum of (U_m^dagger x) DeltaF_m and (U_m^T x) DeltaFadj_m. _gradient differentiates precisely those two amplitudes, and its initial-trace subtraction is the fixed reference convention represented in the scalar, not fitted static-susceptibility cancellation. The original action packet states that the physical mode is sum_i basis[i,0] F_i without conjugation, consistent with the old_force contraction. The actual mode1 direction is compared exactly with the second saved channel column. Both added electronic insertions and reverse ionic forces retain 1/sqrtN; N=64 implies sqrtN=8. No extra source/spin/cell weight is introduced. In the actual saved model the direction imaginary maximum is 1.734551340973908e-16 and force/adjoint defects are exposed at their raw roundoff scale, not averaged away.",
+      "disposition": "supported; no discarded adjoint leg, extra quadrature, or scaling defect found"
+    },
+    {
+      "id": "E4",
+      "topic": "Hartree double insertion and unscaled original field modes",
+      "sources": [
+        "hybrid_gamma_model.py:160-184,223-238",
+        "A29 reduced_coefficients.py:119-125,145-153",
+        "A29 reduced_electronic_dynamics.py:145-178"
+      ],
+      "assessment": "_active_h divides the density contraction by sqrtN, applies the original kernel once, and divides the potential insertion by sqrtN again: the induced Hartree Hamiltonian therefore has the original 1/N normalization. The field insertion and reverse field force use the original field_modes/field_reverse_modes without an ionic sqrtN factor. The field coordinates remain x[2*d:2*d+f], with the original mechanical generator, symplectic J, linear force and W0. The transpose carries both Hartree factors and both unscaled field routes back through their actual consumers. These are the existing A29 conventions reused by the extension, not a new convention or a re-review of their original physical calibration.",
+      "disposition": "supported; no new Hartree or field factor defect found"
+    },
+    {
+      "id": "E5",
+      "topic": "Exact tangent, C-order density layout and true nonconjugating transpose",
+      "sources": [
+        "hybrid_gamma_model.py:13-27,129-144,201-238",
+        "hybrid_gamma_evolution.py:130-168",
+        "oracle_hybrid_gamma_model.py:150-216"
+      ],
+      "assessment": "_split transposes probe columns before C-order matrix reshaping, and _join inverts that layout. tangent includes both commutator variations, delta h acting on the moving mean and the moving h acting on delta rho, for both remaining active sectors and the bath. It removes only the constant active c.h0 when building delta h. The transpose is bilinear: its commutator duals, mechanical generator/J transposes, left/right embedding transposes, force traces and Hartree contractions use .T/index transposes, not Hilbert adjoints. Conjugation appears only in fixed physical coefficients where present in the scalar definition. The receiving backward solver calls -model.transpose(t,current_mean,duals) and integrates the same mean RHS continuously in decreasing physical time; it does not silently drop the new bath block or reset the reconstructed mean to forward checkpoints.",
+      "disposition": "supported; no dropped bath route or conjugating-transpose defect found"
+    },
+    {
+      "id": "E6",
+      "topic": "General nonunitary observable transform and original-state CAR covariance",
+      "sources": [
+        "hybrid_gamma_model.py:242-290",
+        "oracle_hybrid_gamma_model.py:228-283",
+        "export_hybrid_gamma.py:202-221,277-293"
+      ],
+      "assessment": "preparation_observables constructs the physical bath observable O=V Z_I.T V^-1, then forms O^dagger in physical coordinates. It does not pretend that V is unitary or that conjugating the interaction-coordinate dual supplies the physical adjoint. initial_ordered contracts the original mechanical/field W0, one Wick block for each other active sector, and one source0 original-frame/D CAR term. The source0 expression Tr[D F^dagger O_L O_R F - D(F^dagger O_L F) D(F^dagger O_R F)] includes the full finite-bath identity in the first CAR term, including the complement of the original raw frame. It is not a second independent noise bath and has no extra Fourier/spin/cell factor. The loader requires exact equality of the saved D, original source-state D, admitted Gram and selected coordinates, and uses the literal original baseline0 rho/x; the original canonical mean x is required to be finite and exactly zero. The model never diagonalizes, clips or refills the density. The oracle's eigh(rho) is confined to its independent synthetic Fock-state construction, not material initialization or production evolution.",
+      "saved_diagnostics": {
+        "state_repairs": 0,
+        "density_diagonalizations": 0,
+        "hamiltonian_repairs": 0,
+        "initial_state_trace_real": 290.0,
+        "initial_state_trace_imag": -9.271018301273259e-17,
+        "original_gram_frame_defect_frobenius": 8.402549552420743e-14,
+        "original_D_hermiticity_frobenius": 8.39276478971159e-15
+      },
+      "disposition": "supported; no state repair, duplicate covariance, or nonunitary-dual error found"
+    },
+    {
+      "id": "E7",
+      "topic": "Actual material identities and solver-coordinate bank",
+      "sources": [
+        "export_hybrid_gamma.py:109-235,338-368",
+        "moving-hybrid-input-bindings-002.json",
+        "moving-hybrid-material-result-002.json",
+        "moving-hybrid-backward-000-receipt-002.json",
+        "moving-hybrid-material-publication-002.json",
+        "first-timeout-scientific-boundaries-001.json"
+      ],
+      "assessment": "The loader joins the exact original loaded-ni31h6 12-band/27-feature Ni1/x result, its 128-sector t0 boundary, source0 spin1/Gamma record 1:0,0,0, raw-frame/D/state authorities and the preregistered paid A31 bath/action/mode/filter lineage. The original source0 PW basis identity is 8d78a2f12aa5384f852f77aa6d2a7015a108be77ce6abeb67aadd1e73cf40ef7 and the original-state authority is f3d7be625104b78f73b0d3ff1578d35790f13f755cc068b2a93dd211c1a936e4. The actual 002 producer saves eigenvalues, V and V^-1 before evolution, includes their archive binding in the input receipt, and input-binds backward receipts to that receipt. The saved coordinate archive binding is 4016604 bytes, SHA256 0e4bfb351a87720e22fd8b383b29a514d4344530177823328e1bf0e8f023405a; its lossless publication records the same decompressed binding. No coordinate bank is reconstructed and mislabeled as the original execution. The missing bank of timed-out attempt 001 is expressly retained as a provenance limitation of that attempt, not claimed repaired by a deterministic re-eigensolve.",
+      "binding_evidence_status": "Binding values are read from the actual saved receipts and publication, not independently rehashed in this restricted reviewer sandbox.",
+      "disposition": "supported for completed attempt 002; historical 001 gap remains explicitly acknowledged"
+    },
+    {
+      "id": "E8",
+      "topic": "What the owning sensitive oracle establishes",
+      "sources": [
+        "oracle_hybrid_gamma_model.py:18-216,228-293",
+        "hybrid-gamma-owning-oracle-001.json"
+      ],
+      "assessment": "The saved owning-oracle record reports actual_exit=0 and binds the exact model and oracle source bytes. Its fixture has three electronic sectors, active size2, bath size4, N=4, complex mode directions, a nonorthogonal raw frame, non-Hermitian raw H and independently perturbed force-adjoint legs. It compares the production mean with an independent physical-coordinate construction using expm, then with an independently differentiated scalar Hamiltonian; compares tangent with finite differences of the independent mean; checks bilinear batched/vector transpose; and compares source0 CAR with full finite Fock traces. It tests the physical nonunitary observable/adjoint transform and no extra cell factor. Its saved mean maximum error is 2.1149445146831577e-17 and scalar-generated mean maximum error is 7.663961410808312e-12. The saved covariance_max_abs=4.633497594881441 is the magnitude of the fixture covariance, not an error estimate.",
+      "saved_mutation_separations": {
+        "omitted_backreaction": 0.004894358148752218,
+        "duplicated_source": 0.004520635898599093,
+        "wrong_rootN": 0.002015420311936404,
+        "conjugated_transpose": 5.476352776886529,
+        "extra_quadrature": 0.002389358547791928,
+        "discarded_adjoint": 0.0005667675299013306,
+        "adjoint_tangent": 0.13520793401359288
+      },
+      "disposition": "substantive independent small-model algebra evidence, not material calibration or a rerun by this reviewer"
+    },
+    {
+      "id": "E9",
+      "topic": "Executed result boundary and interpretation",
+      "sources": [
+        "moving-hybrid-material-native-admission-002.json",
+        "moving-hybrid-material-result-002.json:diagnostics and ordered_covariance",
+        "saved-gamma-model-contrast-001.json:rows and scope",
+        "SOLUTION.md:Moving electron-noise and backreaction"
+      ],
+      "assessment": "The saved Native manager outcome is success/ExecMainStatus=0; the actual result is complete at 0/1/10/30 inverse Ry. The Gaussian receiving path chronologically sorts preparation duals, calls model.initial_ordered(duals,duals), and uses the existing ordered normalizer on raw complex variances. The published terminal/initial enrichment magnitude is 0.9923743910070437, phase3.0598286840327207 and terminal variance8.671634520465375e-05; the saved original reconstruction has magnitude0.9925863829443284, phase3.0439500328405567 and variance8.67464723025706e-05. Both have exactly the same published initial variance8.637037867954196e-05. The comparator consumes the saved readout and original preparation-time dual, not an added independent positive noise contribution. The documentation correctly identifies a coupled model contrast whose literal source H, response and noise change together.",
+      "numerical_limits_exposed": "At preparation the saved backward-minus-forward whole-state L2 is1.413429039139972e-06, with mechanical maximum1.4102243936106813e-06 and electronic maximum3.0282403705565706e-09. The saved ordered-Hermiticity maximum is3.048098734000488e-20. These raw diagnostics are retained and are not used to repair the reconstruction, to establish trajectory/readout error bounds, or to certify physical convergence.",
+      "disposition": "conditional executed finite-model observation supported; no unsupported physical-loss interpretation found"
+    }
+  ],
+  "not_established": [
+    {
+      "claim": "Full material objective, all-source/all-q and full-PW physical calibration",
+      "evidence": "The actual source/model metadata and SOLUTION.md explicitly restrict this extension to source0, Gamma, a354-dimensional bath, 127 remaining12-band active sectors and two selected extra ionic-force channels; direct omitted bath density/field channels remain represented only by the old active embedding.",
+      "disposition": "intentional stated model limitation, not an implementation defect or completion of the full physical objective"
+    },
+    {
+      "claim": "Selected-bath force accuracy or a late-time basis-error bound",
+      "evidence": "The carried A31 saved initial mode1 variance is57.829668479618775 in the finite bath versus267.81724948789645 in full PW. Its basis diagnostics label discarded selection proxies as initial selection information, not late-time error bounds. SOLUTION.md explicitly acknowledges the under-resolved second mode.",
+      "disposition": "already-stated representation limitation, not a newly introduced A32 arithmetic error"
+    },
+    {
+      "claim": "Material validation, arbitrary-sector coverage, material loader validation by the small oracle, or a long-time numerical error certificate",
+      "evidence": "The owning oracle is a synthetic30-coordinate problem at source_slot0 and one nonzero time, with scalar-gradient and tangent finite differences, Fock contractions and mutation witnesses. It does not execute the354-dimensional material case, validate every original coefficient or arbitrary source_slot, prove bounds for near-defective eigensystems, or bound adaptive long-time covariance error. Its mechanical W0 block is imported into the expected covariance rather than independently constructed from material physics.",
+      "disposition": "proof scope boundary; no broader qualification inferred"
+    },
+    {
+      "claim": "Exact continuation of failed attempt001 or a free-resume/dense-history capability",
+      "evidence": "first-timeout-scientific-boundaries-001.json names the absent actual eigen-coordinate bank in001. The completed002 runner persists its actual bank and input-bound boundaries, but explicitly accepts fresh output and saves no adaptive/dense full-state history.",
+      "disposition": "acknowledged historical provenance limit and deliberate current capability boundary; not an unresolved defect in completed002"
+    },
+    {
+      "claim": "Independent numerical/byte authentication by this reviewer",
+      "evidence": "No oracle, model integration, eigensolve, NPZ numerical comparison or source/NPZ rehash was executed in this restricted read-only review. Exact numeric and input/source-binding values in this report are attributed to the inspected saved packet, receipts and publication. Source and consuming code were inspected directly.",
+      "disposition": "review-method limitation, not a scientific finding; parent may compute the raw report binding without rerunning scientific work"
+    },
+    {
+      "claim": "Irreversible damping, material survival/lifetime, heat, a physical lattice ranking or nuclear-transition rates",
+      "evidence": "The finite closed enrichment and selected conditional Gamma coherence contrast do not provide omitted losses, matched physical ranking errors, nuclear preparation/transition/receiver amplitudes, frequency matching or specimen transport. SOLUTION.md and the packet keep these full-objective obligations explicit.",
+      "disposition": "not established; not misrepresented as delivered by this extension"
+    }
+  ],
+  "reviewed_source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/hybrid_gamma_model.py",
+      "bytes": 17243,
+      "sha256": "451ad383475e91ea57219e0189dd8b743112a2b88ca84e2610d14aadecf6ab8c",
+      "origin": "complete-scientific-review-packet-001.json; identical binding in actual input receipt and owning oracle"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/oracle_hybrid_gamma_model.py",
+      "bytes": 15557,
+      "sha256": "4c52a64c155ca81bcbdad1fb9aa3af4734e3824fb5d96f0613f5353a3bace8bd",
+      "origin": "complete-scientific-review-packet-001.json and owning oracle"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/export_hybrid_gamma.py",
+      "bytes": 24115,
+      "sha256": "2f33b59662ce3fdae7c7fa3838b8aeec92c3ee6c25a9405f5e48f3df0c1c9a7f",
+      "origin": "complete-scientific-review-packet-001.json and actual input receipt"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/hybrid_gamma_evolution.py",
+      "bytes": 11335,
+      "sha256": "19e30163ce2d4367b2bae453170a8c355f85aabcca631409d7705820797c5d6b",
+      "origin": "complete-scientific-review-packet-001.json and actual input receipt"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/compare_saved_gamma_models.py",
+      "bytes": 5617,
+      "sha256": "7ed1c68f79d3f7a80d9b88bacc00997f647307a20ed6387c4e62fd41c17f5982",
+      "origin": "complete-scientific-review-packet-001.json"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/implementation-contract-001.json",
+      "bytes": 4757,
+      "sha256": "f1850fe387b3a70b9df8d2f035262efb70ee7dac18521721c9097882922c58da",
+      "origin": "complete-scientific-review-packet-001.json"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/SOLUTION.md",
+      "bytes": 12599,
+      "sha256": "6129dbea09c5950202219af67c40962cbf4dc911619668e89b26b7b9073c6add",
+      "origin": "complete-scientific-review-packet-001.json"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/moving-hybrid-material-result-002.json",
+      "bytes": 371375,
+      "sha256": "3f8d166712975333bdfb6b6590d87f6459a86a7c9334a157005433927f9cc328",
+      "origin": "complete-scientific-review-packet-001.json and Native result binding"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/moving-hybrid-input-bindings-002.json",
+      "bytes": 345247,
+      "sha256": "a4d6758d700c0cfd2bb82cffd25fe00b88886a2a29128339d7702738bc9e6ad3",
+      "origin": "complete-scientific-review-packet-001.json and result/backward receipts"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/hybrid-gamma-owning-oracle-001.json",
+      "bytes": 1541,
+      "sha256": "c5a9269f9ba7407476fed55feb7721595f95e91f90fc2432309b0c8cba4f2ce3",
+      "origin": "complete-scientific-review-packet-001.json"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/moving-hybrid-material-publication-002.json",
+      "bytes": 7669,
+      "sha256": "db067acb951364d92be3297564c3993fce6a75631b324a70c723484eba1c0fe8",
+      "origin": "complete-scientific-review-packet-001.json"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/saved-gamma-model-contrast-001.json",
+      "bytes": 61382,
+      "sha256": "5ad76a43fa6b4472b9ff06d1e7d1d67f30257a41e07cc56d4892b56610409c8f",
+      "origin": "complete-scientific-review-packet-001.json"
+    }
+  ]
+}
