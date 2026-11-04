@@ -17,7 +17,7 @@ Nodes are scientific outputs, not approval checkpoints. Completion labels apply 
 flowchart TD
     R["R · Material reference and initial state\nCOMPLETE · conditional, nonstationary"]
     S["S · Spatial and inter-region operators\nCOMPLETE · declared finite model"]
-    E["E · Field, environment and fluctuations\nCOUPLED Γ EXAMPLE EXECUTED · full passive/loss calibration OPEN"]
+    E["E · Field, environment and fluctuations\nMOVING Γ + NOISE/RESPONSE PAIR EXECUTED · full source/loss calibration OPEN"]
     D["D · Coupled dynamics and correlations\nAPPROVED 16-CASE FINITE MODEL COMPLETE"]
     C["C · Controlled lattice comparison\nCONDITIONAL COMPARISON COMPLETE · physical ranking OPEN"]
     N["N · Nuclear source/operator and energy disposal\nASSESSMENT COMPLETE · rates undetermined"]
@@ -75,6 +75,23 @@ This is a coupled **model-enrichment contrast**, not an isolated positive noise 
 
 The scope is one Γ wavevector and one enriched electronic sector with two selected extra ionic-force channels. The initial second-mode force variance was under-resolved by the selected bath; neither that discrepancy nor the discarded selection proxy is a late-time error bound. Remaining sectors/wavevectors, direct omitted field/density channels and physical representation/size errors are not calibrated by this example. No irreversible damping or survival under unmodeled losses is inferred.
 
+## What drives the represented noise, and its causal response
+
+The [actual saved-data influence consumer](attempts/0033/saved-noise-budget-and-influence-native-admission-001.json) completed in 15.969469361007214 seconds, with no trajectory, physical H/force action, H eigensolve or new Γ cache. It consumes the original preparation duals and their actual persisted coordinate bank. The [new narrow Fock/oscillator/gauge/sign oracle](attempts/0033/owning-new-consumer-oracle-001.json) exercises the new consumer boundaries; old proofs and trajectories are carried forward. Both [complete independent scientific reviews](attempts/0033/complete-scientific-review-admission-001.json) found the scoped outputs correct, with complete empty finding arrays; their [exact reviewed map](attempts/0033/reviewed-solution-snapshot-001.md) is retained.
+
+At thirty inverse Ry, the **same moving Γ model's** equal-time Ni1/x variance has these initial-condition origins ([exact result](attempts/0033/saved-noise-budget-and-influence-material-result-001.json)):
+
+| Original preparation component | Variance contribution, bohr² |
+| --- | ---: |
+| Ionic | 8.598088153e-05 |
+| Field | 3.088957814e-11 |
+| Electronic, all represented sectors | 7.354327867e-07 |
+| Total | 8.671634520e-05 |
+
+All ionic/field cross blocks and individual electronic sectors remain in the exact complex publication. This attributes the initial fluctuations through one coupled response; it is not noise generated along a path or energy dissipated. Source0's retained/omitted split acts on the final pulled-back observable in its finite bath, not a counterfactual with omitted dynamics switched off. Every normalized contribution uses the same full-output denominator; magnitudes must not be independently summed.
+
+The same consumer computes the separate **nonstationary two-mode force noise and causal commutator-response pair** from the paid frozen-literal-H bath. Original state coherences, both physical force legs and the existing `-uF` Kubo sign are retained. This is a two-time object, not a stationary positive spectrum, a fitted linewidth, a recovered moving history or independent noise to add atop A32. Instantaneous scalar/contact derivatives remain separate.
+
 ## Existing solutions reused
 
 Only actual reusable solutions are listed; missing physics is not represented by an inventory placeholder.
@@ -91,7 +108,7 @@ Earlier force, energy and atom/species readouts remain in their [source-bound A2
 
 ## What is still required to close the physical objective
 
-1. **E — physical influence at the required scope:** extend the demonstrated moving response/noise beyond this selected source/Γ/mode example and supply the omitted material/environment loss channels. A finite closed collisionless model and numerical broadening do not determine irreversible material losses.
+1. **E — physical influence at the required scope:** extend the demonstrated source/Γ/mode coverage and compute the omitted density/current vertices. Wider same-model electronic influence is additional computation, not inherently missing experimental data. Collisional electronic and anharmonic channels require their own material calculation/model extension; conservative screening or harmonic redistribution does not supply them. Specimen radiation, reservoirs and random-disorder loss additionally need the actual boundary/environment/statistics. A finite bath or numerical broadening does not establish irreversible material loss.
 2. **C — a defensible design decision:** propagate relevant reference/model, spatial-size and physical-noise uncertainty into matched comparisons. Different original preparations and unresolved physical errors still prevent a material ranking. Extra digits or repeated same-model checks do not supply that bridge.
 3. **N — any actual nuclear rate/heat prediction:** provide the specific channel/preparation, normalized transition/receiver amplitudes, nuclear-frequency matching, exclusive spectra and finite-specimen transport identified in the completed assessment. Do not promote material coherence to a rate.
 
