@@ -1,0 +1,60 @@
+{
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a39-spatial-current-scalar-oracle-001.service",
+    "--property=RuntimeMaxSec=120",
+    "--property=MemoryMax=2147483648",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "6",
+    "/usr/bin/python3",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039/oracle_finiteq_current.py",
+    "--output",
+    "/var/tmp/p254-a39-finiteq-current-oracle-001.json"
+  ],
+  "pane": "w1:p65",
+  "grant": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039/actual-new-operator-native-grant-001.json",
+    "bytes": 3837,
+    "sha256": "c592e22b41f9df30370a3028136edb75e030c36fea25dc8b41949473ff81f8bf"
+  },
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_finiteq_current.py",
+      "bytes": 7142,
+      "sha256": "46748202046c1c7602c5f5ee52c2f91592a1f4f05ed97f5aa29abc59c41830ce"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_finiteq_projectors.py",
+      "bytes": 2978,
+      "sha256": "88833263267a3be5996c64c37636fdaf86bb50c8c7f80afcb39f8963f5ca4132"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039/oracle_finiteq_current.py",
+      "bytes": 13617,
+      "sha256": "40908374224f72a3daee35b4d43e5772cf1912e8c9616618b8ffd836fc08bc0d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039/export_finiteq_current_material.py",
+      "bytes": 10282,
+      "sha256": "d1952e04a41b08e36704daad112770f4978adad5125683bd0cf4579d9012db58"
+    }
+  ]
+}
