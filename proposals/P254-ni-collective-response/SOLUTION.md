@@ -9,7 +9,7 @@ updated: '2026-11-04'
 
 The objective is a material-calibrated many-region simulation, a defensible lattice comparison, and an explicit nuclear-transition/energy-disposal construction. This map keeps that whole objective visible. Nodes are scientific outputs, not approval checkpoints. The user's 28 October instruction is to reuse real existing solutions, solve the missing core nodes, and avoid process minutiae. The authoritative scope is [P254](proposal.yaml).
 
-**Current position, 4 November:** the approved finite active-model simulation and its [all-sixteen numerical comparison](attempts/0029/final-four-structure-actual-comparison-admission-001.json) are complete. The [complete complementary scientific review](attempts/0029/complete-active-model-scientific-review-admission-001.json) found no defects at that explicitly conditional scope; it reused existing numerical evidence rather than rerunning production. [Compact scientific observations](attempts/0029/final-saved-result-scientific-summary-001.json) and the [exact lossless publication](attempts/0029/complete-comparison-lossless-publication-001.json) preserve the actual result. The broader physical parent and campaign PR remain open: passive/full-PW noise, material accuracy, physical loss/lifetime and a physical lattice ranking are not established. Numerical completion alone does not authorize terminal campaign closure.
+**Current position, 4 November:** the approved finite active-model simulation, [all-sixteen numerical comparison](attempts/0029/final-four-structure-actual-comparison-admission-001.json) and [complete complementary scientific review](attempts/0029/complete-active-model-scientific-review-admission-001.json) are finished at their explicitly conditional scope. [Compact observations](attempts/0029/final-saved-result-scientific-summary-001.json) and the [exact lossless publication](attempts/0029/complete-comparison-lossless-publication-001.json) preserve that result. **Core E now has an executed original-state retained/omitted force-noise construction**, not just an API plan: the [actual physical pilot](attempts/0030/physical-noise-decomposition-native-admission-001.json) consumes the original full-PW state without replaying a trajectory. Continue its causal influence on the Ni-displacement observable under the existing instruction to finish the campaign ([current decision](attempts/0028/root-allocation-decision-480.json)). The new work is outside the completed A29 review; full passive influence, physical loss and the full parent remain open.
 
 ## Core scientific work
 
@@ -19,7 +19,7 @@ Solid arrows identify material inputs needed by a result. Dashed arrows identify
 flowchart TD
     R["R · Common material reference and initial state\nCOMPLETE · conditional, nonstationary"]
     S["S · Spatial and inter-region operators\nCOMPLETE · declared finite model"]
-    E["E · Field, environment and fluctuations\nCONSTRUCTION + FINITE ACTIVE-MODEL NOISE COMPLETE · physical calibration unresolved"]
+    E["E · Field, environment and fluctuations\nINITIAL FULL-STATE NOISE SPLIT EXECUTED · causal passive influence and loss UNDERWAY"]
     D["D · Coupled dynamics and correlations\nAPPROVED FINITE ACTIVE MODEL COMPLETE · all original trajectories/readouts"]
     C["C · Controlled lattice comparison\nCONDITIONAL COMPARISON COMPLETE · physical ranking unresolved"]
     N["N · Nuclear source/operator and energy-disposal assessment\nCOMPLETE · rates remain undetermined"]
@@ -96,6 +96,26 @@ Displayed coefficients are not precision certificates. Imaginary parts remain vi
 | Commutator | 3.55271368e-15 | 1.87103478e-01 |
 
 The original unrounded complex values and frame-compatibility diagnostics remain in the publication; no clipping or symmetrization repair. This is one external-q/probe/time pair, not64-q spatial coverage, a field-noise spectrum, irreversible loss, heat, material accuracy or a lattice ranking.
+
+**Executed full-state initial electronic noise construction.** The [original-sector physical result](attempts/0030/original0-h37x-noise-decomposition-001.json) uses the current H37/x Γ force, every original PW row and raw column, the original nonorthogonal-frame density coefficients, and the saved twelve-band projector. This is one **unweighted original electronic sector at time zero**, not the all128-source unequal-time result above.
+
+| Initial force variance, (Ry/bohr)² | Real part |
+| --- | ---: |
+| Full original electronic state and force | 4.894958738 |
+| Retained projected force alone, in the same original state | 0.000304982 |
+
+The [implementation and independent exact-Fock/dense proof](attempts/0030/noise-projection-oracle-001.json) retain all four retained/omitted covariance blocks, both cross terms, actual adjoints and excursions into the initially empty PW complement. Raw complex values and reconstruction defects remain in the result. The omitted variance is not an independently fitted bath, an irreversible loss, or a bound on late Ni-displacement coherence. The remaining construction is the causal, output-relevant influence—not another initial-state qualification or repetition of the finished simulation.
+
+**Executed coupled-versus-clamped coherence contrast.** The [saved-data consumer](attempts/0030/coupled-clamped-coherence-contrast-001.json) applies the existing ordered-coherence normalizer to every exact matched canonical control: all16 eligible comparisons and64 saved time samples, with16 unsupported preparation/isotope comparisons kept explicit. No trajectory or preparation was replayed. At thirty inverse Ry in the twelve-band/twenty-seven-family model, the same-cell magnitudes are:
+
+| Structure | Dynamical active electrons | Electrons held fixed | Coupled minus clamped |
+| --- | ---: | ---: | ---: |
+| H-loaded Ni31H6 | 0.990228185 | 0.995839941 | -0.005611756 |
+| Dispersed Ni32H6 | 0.991016335 | 0.996454399 | -0.005438064 |
+| Pristine Ni32 | 0.991816306 | 0.996674380 | -0.004858074 |
+| Vacancy Ni31 | 0.991502393 | 0.996742624 | -0.005240231 |
+
+This is a contrast between the declared active-Gaussian and clamped noise models at the same original preparation and saved times. The full complex spatial data are retained. It is not an omitted-physics error estimate, monotonic decay, a physical lifetime or calibrated dissipation.
 
 **Actual saved coupled atom/species response completed3November.** The [consumed37-atom publication and matched-control intake](attempts/0028/saved-coupled-atom-control-complete-intake-001.json) resolve the original Ni1/x unit-kick Γ response at0.001 inverse Ry into original Ni/H coordinates. Plus, minus and mixed displacement, canonical momentum and mechanical velocity remain complex and independent; the unexcited mean/drift are separate. The minimally coupled kinetic mixed-response change from the original initial state is:
 
@@ -192,7 +212,7 @@ flowchart LR
 
 ## Current focus
 
-The approved reduced-model simulation, conditional numerical comparison and complete scientific review are finished. Both complementary reviews are correct at that scope with empty complete finding arrays; no scientific correction or numerical replay is required. The broader physical parent remains open. A bounded publication of this completed result is distinct from continuing the missing passive-noise/loss construction or terminally closing that parent.
+The approved simulation, conditional numerical comparison and complete A29 scientific review are finished. Core E has an independently checked original-state force split and an executed full-PW material pilot; the exact matched-model coherence contrast is also consumed from saved data. Reuse the existing full moving tangent/transpose and mechanical/field forcing interfaces to construct the omitted-noise influence on the actual displacement observable. Preserve the completed simulation and its evidence; no stationary bath fit, scope-reduction question, repeated qualification or settled trajectory replay substitutes for this remaining physical work.
 
 **E — reuse the completed physical covariance.** [The original material pair](attempts/0028/source-local-material-covariance-complete-intake-001.json) now contains all128 electronic source results, original-order reduction and the independently retained ionic/field contribution. Its actual cumulative-continuation envelope is consumed directly, with bound grant/owner/clock/source authority preserved. The unit settled inactive/dead, MainPID0 and empty control group; no new Native run or source cutover was needed for the consumer fix. This H37/x q0 pair at0.0005/0.001 inverse Ry does not supply full spatial coherence, a field-noise spectrum, fitted damping or heat.
 
