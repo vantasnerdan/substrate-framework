@@ -1,0 +1,61 @@
+{
+  "utc": "2026-11-04T18:16:17.948999+00:00",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a36-canonical-field-full128-001.service",
+    "--property=RuntimeMaxSec=90",
+    "--property=MemoryMax=512M",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "/usr/bin/taskset",
+    "-c",
+    "10",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/evaluate_canonical_current_noise.py",
+    "--current-aggregate",
+    "/var/tmp/p254-a35-full128-current-aggregate-001.json",
+    "--output",
+    "/var/tmp/p254-a36-canonical-field-full128-001.json"
+  ],
+  "cwd": "/home/administrator/projects/substrate-ni-collective",
+  "specification": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/current-completion-owner-001/a36-full128-spec.json",
+    "bytes": 2412,
+    "sha256": "8cea897e7fb18b20c72063500728396c8390e5b10dacb3b9694dd721293876d2"
+  },
+  "predecessors": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/current-completion-owner-001/full128-current-admission.json",
+      "bytes": 4999,
+      "sha256": "4833b695f7fcf168a3b39ae217121608aafeb72929c4f8bc016900cbd554db6a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/full-field-readout-execution-001.json",
+      "bytes": 3965,
+      "sha256": "dcb157e671f2433af078e771aadca7deb20323370f0466627809c6d20d69921c"
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc1385-root516-actual-force-completion-decision.json",
+      "bytes": 2555,
+      "sha256": "72e491b25faa043540625855a5a6c8c777183e8f2e0609c76c7c04cbab69db85"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/actual-canonical-field-force-partial-admission-002.json",
+      "bytes": 13537,
+      "sha256": "19a1ae590038627b368b5c109677faf31e7710a02d260ccb7308ed722aece390"
+    }
+  ]
+}

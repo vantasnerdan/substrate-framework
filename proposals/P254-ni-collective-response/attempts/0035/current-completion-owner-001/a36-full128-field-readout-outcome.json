@@ -1,0 +1,50 @@
+{
+  "utc": "2026-11-04T18:16:23.864137+00:00",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a36-canonical-field-full128-001.service",
+    "--property=RuntimeMaxSec=90",
+    "--property=MemoryMax=512M",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "/usr/bin/taskset",
+    "-c",
+    "10",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/evaluate_canonical_current_noise.py",
+    "--current-aggregate",
+    "/var/tmp/p254-a35-full128-current-aggregate-001.json",
+    "--output",
+    "/var/tmp/p254-a36-canonical-field-full128-001.json"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 5.914577384013683,
+  "stdout": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/current-completion-owner-001/a36-full128-field-readout.stdout",
+    "bytes": 251,
+    "sha256": "236d5996c9e9782db83486fbd789f4551e74b6000f0ae3308c64fba32b9dbafa"
+  },
+  "stderr": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/current-completion-owner-001/a36-full128-field-readout.stderr",
+    "bytes": 283,
+    "sha256": "9d2ed447f871391cb6e4faac1307f5ba015fc344c4884ebdd932e00c5d0eb9a4"
+  },
+  "output": {
+    "path": "/var/tmp/p254-a36-canonical-field-full128-001.json",
+    "bytes": 11877729,
+    "sha256": "bf3a9717f9b481ff79271248f00421b1baa03f04f62f02016021b0cc40e5cc73"
+  }
+}

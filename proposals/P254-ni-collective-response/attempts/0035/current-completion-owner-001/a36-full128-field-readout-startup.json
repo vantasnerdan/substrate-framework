@@ -1,0 +1,84 @@
+{
+  "utc": "2026-11-04T18:16:17.999131+00:00",
+  "argv": [
+    "systemctl",
+    "--user",
+    "show",
+    "p254-a36-canonical-field-full128-001.service",
+    "--property=Id",
+    "--property=InvocationID",
+    "--property=MainPID",
+    "--property=ControlGroup",
+    "--property=ExecStart",
+    "--property=ExecMainStartTimestamp",
+    "--property=MemoryMax",
+    "--property=MemorySwapMax",
+    "--property=RuntimeMaxUSec",
+    "--property=Restart",
+    "--property=ActiveState",
+    "--property=SubState"
+  ],
+  "returncode": 0,
+  "properties": {
+    "Restart": "no",
+    "RuntimeMaxUSec": "1min 30s",
+    "MainPID": "3464766",
+    "ExecMainStartTimestamp": "Wed 2026-11-04 18:16:17 UTC",
+    "ExecStart": "{ path=/usr/bin/env ; argv[]=/usr/bin/env PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 /usr/bin/taskset -c 10 /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/evaluate_canonical_current_noise.py --current-aggregate /var/tmp/p254-a35-full128-current-aggregate-001.json --output /var/tmp/p254-a36-canonical-field-full128-001.json ; ignore_errors=no ; start_time=[Wed 2026-11-04 18:16:17 UTC] ; stop_time=[n/a] ; pid=3464766 ; code=(null) ; status=0/0 }",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a36-canonical-field-full128-001.service",
+    "MemoryMax": "536870912",
+    "MemorySwapMax": "0",
+    "Id": "p254-a36-canonical-field-full128-001.service",
+    "ActiveState": "active",
+    "SubState": "running",
+    "InvocationID": "8c23a9e9be174a91b5319c73f454144e"
+  },
+  "processes": [
+    {
+      "pid": 3464766,
+      "argv": [
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/evaluate_canonical_current_noise.py",
+        "--current-aggregate",
+        "/var/tmp/p254-a35-full128-current-aggregate-001.json",
+        "--output",
+        "/var/tmp/p254-a36-canonical-field-full128-001.json"
+      ],
+      "selected_environment": {
+        "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "status": {
+        "Name": "python3",
+        "PPid": "2867432",
+        "VmHWM": "8240 kB",
+        "VmRSS": "8240 kB",
+        "Threads": "1",
+        "Cpus_allowed_list": "10"
+      },
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a36-canonical-field-full128-001.service\n"
+    }
+  ],
+  "cgroup": {
+    "memory.max": "536870912\n",
+    "memory.swap.max": "0\n",
+    "cgroup.procs": "3464766\n",
+    "cpuset.cpus.effective": {
+      "status": "unavailable",
+      "error": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a36-canonical-field-full128-001.service/cpuset.cpus.effective'"
+    }
+  },
+  "stdout": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/current-completion-owner-001/a36-full128-field-readout-startup.stdout",
+    "bytes": 1020,
+    "sha256": "14212d94671504d300a849ee2af618d47eb3ae5323e5d25ebec12e60390896f2"
+  },
+  "stderr": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/current-completion-owner-001/a36-full128-field-readout-startup.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
