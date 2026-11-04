@@ -232,8 +232,18 @@ class ExpandedBathInputs:
         self._emit(stage='new_physical_action', **record)
         try:
             operator = self.context._hamiltonian if name == 'hamiltonian' else self.prepared[name]
-            action = operator.adjoint_apply(vectors) if adjoint else operator.apply(vectors)
-            if name != 'hamiltonian':
+            if name == 'hamiltonian':
+                action = operator.adjoint_apply(vectors) if adjoint else operator.apply(vectors)
+            else:
+                action = np.empty(vectors.shape, dtype=np.complex128)
+                block_size = self.context.block_size
+                record.update(block_size=block_size, physical_block_calls=0)
+                for start in range(0, vectors.shape[1], block_size):
+                    stop = min(start+block_size, vectors.shape[1])
+                    block = vectors[:, start:stop]
+                    action[:, start:stop] = (
+                        operator.adjoint_apply(block) if adjoint else operator.apply(block))
+                    record['physical_block_calls'] += 1
                 action *= -1
             record['status'] = 'complete'
             return action

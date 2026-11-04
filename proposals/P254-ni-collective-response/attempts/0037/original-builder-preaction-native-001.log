@@ -1,0 +1,23 @@
+Running as unit: p254-a37-expanded-bath692-001.service; invocation ID: ec016e1fe2a044d78e012ac998fe2164
+[physics] {"elapsed_since_start_seconds": 8.773989975452423e-06, "stage": "load_cached_original_inputs", "status": "started"}
+[physics] {"elapsed_since_start_seconds": 0.1137054180726409, "stage": "restore_original_context", "status": "started"}
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/export_expanded_bath.py", line 250, in <module>
+    main()
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/export_expanded_bath.py", line 246, in main
+    run(args)
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/export_expanded_bath.py", line 188, in run
+    inputs = ExpandedBathInputs(args.action_packet, args.mode1_packet,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/expanded_bath_inputs.py", line 65, in __init__
+    self._check_context(packet, second)
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/expanded_bath_inputs.py", line 147, in _check_context
+    raise ValueError('restored original source/state/basis/literal H differs from paid actions')
+ValueError: restored original source/state/basis/literal H differs from paid actions
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 15.331s
+CPU time consumed: 15.283s
+Memory peak: 99.2M
+Memory swap peak: 0B
+[A37-builder-native-exit] code=1

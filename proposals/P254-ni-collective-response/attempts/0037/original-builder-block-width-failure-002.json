@@ -1,0 +1,45 @@
+{
+  "contract": {
+    "bytes": 9415,
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/implementation-contract-001.json",
+    "sha256": "037bfd5014b6f9ce994a0658af5f0e8d4b36031fd5c3fb92238ced5a197a61f1"
+  },
+  "elapsed_seconds": 190.33520590281114,
+  "error": "ValueError('full PW columns in blocks of 1..16 required')",
+  "new_physical_actions": [
+    {
+      "adjoint": false,
+      "callback_index": 1,
+      "columns": 692,
+      "elapsed_seconds": 44.32886746991426,
+      "name": "hamiltonian",
+      "operator_identity": "9a907212e823fce2ec49470c43d14e588fa28fa8545a8f90d85a26ee8a93e7e0",
+      "status": "complete"
+    },
+    {
+      "adjoint": true,
+      "callback_index": 2,
+      "columns": 692,
+      "elapsed_seconds": 44.50115150678903,
+      "name": "hamiltonian",
+      "operator_identity": "9a907212e823fce2ec49470c43d14e588fa28fa8545a8f90d85a26ee8a93e7e0",
+      "status": "complete"
+    },
+    {
+      "adjoint": false,
+      "callback_index": 3,
+      "columns": 692,
+      "elapsed_seconds": 0.004387803841382265,
+      "error": "ValueError('full PW columns in blocks of 1..16 required')",
+      "name": "mode0",
+      "operator_identity": "ccedd25b41b7388e2f820694f649d7dbf75e629f87266824403c58eb79e06912",
+      "status": "failed"
+    }
+  ],
+  "schema": "P254-A37-expanded-bath-build-failure-v1",
+  "scope": "Failure retained; any partial bank/journal remains in this unique output directory. No complete result is claimed.",
+  "stage": "build_explicit692_noise_subspace",
+  "status": "failed",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/export_expanded_bath.py\", line 198, in run\n    bank = build_noise_subspace(context.psi, context.gram, context.density_coefficients,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0031/noise_subspace.py\", line 151, in build_noise_subspace\n    new_action = _matrix(apply_extra(name, extras, adjoint=bool(leg)),\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/expanded_bath_inputs.py\", line 235, in apply_extra\n    action = operator.adjoint_apply(vectors) if adjoint else operator.apply(vectors)\n                                                             ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_ionic_action.py\", line 46, in apply\n    local, bra, ket = self.components(psi)\n                      ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_ionic_action.py\", line 37, in components\n    raise ValueError('full PW columns in blocks of 1..16 required')\nValueError: full PW columns in blocks of 1..16 required\n",
+  "unfinished_builder_resumable": false
+}
