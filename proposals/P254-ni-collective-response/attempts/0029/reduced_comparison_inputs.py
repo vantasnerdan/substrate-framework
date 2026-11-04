@@ -126,9 +126,8 @@ def read_finite(path, *, source_reader=None):
     require(spec['case_identity'] == digest(spec['context']), 'original matched preparation identity differs')
     verify_nested(spec['context'])
     authenticate(spec['original_boundary'])
-    # A saved source snapshot can replace a changed code path only when its
-    # original digest/size are explicitly the same. Historical raw data are
-    # never silently rebound to a current file.
+    # Explicit history pairs retain their original identity. Canonical history
+    # recovery below applies only to bound Python source, never scientific data.
     snapshots = {}
     def collect(value):
         if isinstance(value, dict):
@@ -145,9 +144,31 @@ def read_finite(path, *, source_reader=None):
                 collect(item)
     collect(manifest)
     collect(result)
+    source_recoveries = []
+    recovered = set()
     for source in spec['implementation']+spec['physical_implementation']+result['consumer_sources']:
         key = (source['path'], source['sha256'], int(source['bytes']))
-        authenticate(snapshots.get(key, source))
+        saved = snapshots.get(key)
+        method = 'explicit original_binding/archived_snapshot pair'
+        if saved is None:
+            try:
+                authenticate(source)
+                continue
+            except (FileNotFoundError, ValueError):
+                original = Path(source['path'])
+                checksum = source['sha256']
+                require(original.suffix == '.py' and len(checksum) == 64
+                        and all(c in '0123456789abcdef' for c in checksum),
+                        'source bytes differ without an exact Python source snapshot')
+                history = original.parent/'source-history'/(original.stem+'-'+checksum+original.suffix)
+                saved = dict(path=str(history), sha256=checksum, bytes=source['bytes'])
+                method = 'canonical source-history snapshot'
+        authenticate(saved)
+        if key not in recovered:
+            source_recoveries.append(dict(original_binding=dict(source),
+                archived_snapshot=dict(saved), recovery_method=method,
+                recovery_timing='retrospective source recovery, not original execution binding'))
+            recovered.add(key)
     indexing = spec['indexing']
     cells = np.indices((4, 4, 4)).reshape(3, -1).T
     require(spec['mesh'] == [4, 4, 4] and np.array_equal(indexing['q_indices'], cells)
@@ -223,6 +244,7 @@ def read_finite(path, *, source_reader=None):
     return dict(binding=result_binding, identity=result['identity'], configuration=config,
         manifest_binding=result['original_coefficient_manifest_snapshot'],
         manifest_path=original_manifest['path'],
+        source_recoveries=source_recoveries,
         specification=spec, manifest=manifest, geometry=geometry, geometry_arrays=geometry_arrays,
         mechanical_arrays=mechanical, coordinate=coordinate, observations=observations,
         model_source_identity=digest(dict(specification=spec, source_items=source_items)),

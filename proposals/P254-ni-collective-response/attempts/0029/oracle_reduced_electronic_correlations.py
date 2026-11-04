@@ -42,17 +42,17 @@ def canonical(n):
     return np.block([[np.zeros((n,n)), np.eye(n)], [-np.eye(n), np.zeros((n,n))]])
 
 
-def fixture():
+def fixture(n=3):
     rng = np.random.default_rng(290031)
-    n, ns, m, d, f = 3, 6, 2, 3, 1
-    c = SimpleNamespace(mesh=(3,1,1), n=n, nk=n, nq=n, ns=ns, m=m, d=d, f=f, r0=2)
-    c.q_indices = np.array([[0,0,0], [1,0,0], [2,0,0]])
+    ns, m, d, f = 2*n, 2, 3, 1
+    c = SimpleNamespace(mesh=(n,1,1), n=n, nk=n, nq=n, ns=ns, m=m, d=d, f=f, r0=2)
+    c.q_indices = np.column_stack((np.arange(n), np.zeros((n,2), int)))
     c.k_indices = c.q_indices.copy()
     c.slot_spin = np.repeat(np.arange(2), n)
     c.slot_k = np.tile(np.arange(n), 2)
     c.target = np.array([[spin*n+(k+q)%n for spin,k in zip(c.slot_spin,c.slot_k)]
                          for q in range(n)])
-    c.minus = np.array([0,2,1])
+    c.minus = (-np.arange(n)) % n
     c.rho0, c.h0 = [], []
     for s in range(ns):
         a = rng.normal(size=(m,m))+1j*rng.normal(size=(m,m))
@@ -64,18 +64,18 @@ def fixture():
     field = rng.normal(size=(ns,f,m,m))+1j*rng.normal(size=(ns,f,m,m))
     c.field_modes = .16*(field+field.conj().swapaxes(-1,-2))
     c.field_reverse_modes = c.field_modes.swapaxes(-1,-2)
-    generators, js, w0 = [], [], []
+    generators, js, w0, stiffness = [], [], [], []
     for q in range(n):
         nx = 2*d+(2*f if q == 0 else 0)
         j = block_diag(canonical(d), canonical(f)) if q == 0 else canonical(d)
         a = rng.normal(size=(nx,nx))
         h = .025*(a+a.T)+np.diag(np.linspace(.7,1.1,nx))
-        if q == 2:
-            h = previous_h.T
-        elif q == 1:
+        if q > c.minus[q]:
+            h = stiffness[c.minus[q]].T
+        elif 0 < q < c.minus[q]:
             b = rng.normal(size=(nx,nx))
             h = h+.014j*(b-b.T)
-            previous_h = h
+        stiffness.append(h)
         w = np.diag(np.linspace(.8,1.2,nx))+.5j*j
         generators.append(j@h)
         js.append(j.astype(complex))
@@ -91,11 +91,14 @@ def fixture():
                 v = v+v.conj().T
                 ionic[s] = ionic[s]+ionic[s].conj().swapaxes(-1,-2)
             potential[s,:,:,c.slot_spin[s]] = v
-        if q == 2:
+        if q > c.minus[q]:
             for s in range(ns):
                 reverse_source = c.target[q,s]
-                ionic[s] = blocks[1].ionic[reverse_source].conj().swapaxes(-1,-2)
-                potential[s] = blocks[1].potential[reverse_source].conj().swapaxes(0,1)
+                ionic[s] = blocks[c.minus[q]].ionic[reverse_source].conj().swapaxes(-1,-2)
+                potential[s] = blocks[c.minus[q]].potential[reverse_source].conj().swapaxes(0,1)
+        elif q != 0 and q == c.minus[q]:
+            ionic = ionic+ionic[c.target[q]].conj().swapaxes(-1,-2)
+            potential = potential+potential[c.target[q]].conj().swapaxes(1,2)
         density = potential.conj().transpose(0,3,1,2)
         blocks.append(SimpleNamespace(ionic=ionic, ionic_reverse=ionic.conj(),
                                       potential=potential, density=density,
@@ -282,6 +285,89 @@ def short_interval_baseline_domain(consumer_type=ActiveBandCorrelations):
     return error, relative(probes, expected)
 
 
+def spatial_batch_regressions(c, consumer, duals_left, duals_right, t, s, cells):
+    """Independent dense/global products expose time, coordinate and q collisions."""
+    errors = {}
+    phases = np.exp(2j*np.pi*(cells/np.asarray(c.mesh))@c.q_indices.T)
+    # Reordering AND repeating coordinates must survive the cache and both axes.
+    coordinates, columns = (2,0,2), (1,0,1)
+    left = [dual[:,columns] for dual in duals_left]
+    right = [dual[:,columns] for dual in duals_right]
+
+    def expected(left_duals, right_duals):
+        ab, ba = [], []
+        for q in range(c.nq):
+            a, b, _, _, _ = direct_quasifree(c, q, left_duals[q],
+                                            right_duals[int(c.minus[q])])
+            ab.append(a)
+            ba.append(b)
+        return (np.tensordot(phases, np.array(ab), axes=(1,0))/c.n,
+                np.tensordot(phases, np.array(ba), axes=(1,0))/c.n)
+
+    def compare(name, actual, reference):
+        ab, ba = reference
+        for component, value in (
+                ('ordered_ab', ab), ('ordered_ba', ba),
+                ('symmetrized', (ab+ba)/2), ('commutator', ab-ba)):
+            errors[f'{name}_{component}'] = relative(getattr(actual, component), value)
+
+    equal_reference, two_reference = expected(left, left), expected(left, right)
+    equal, two = consumer.spatial_pair(t, s, cells, coordinates)
+    compare('batch_equal', equal, equal_reference)
+    compare('batch_two', two, two_reference)
+    same_equal, same_two = consumer.spatial_pair(t, t, cells, coordinates)
+    compare('batch_same_time_equal', same_equal, equal_reference)
+    compare('batch_same_time_two', same_two, equal_reference)
+    # Mutating any returned component must not alter either the other component
+    # or a future call, even when all pullbacks were identical.
+    for name in ('ordered_ab', 'ordered_ba', 'symmetrized', 'commutator'):
+        getattr(same_equal, name)[0,0,0] += 17+3j
+    compare('batch_return_independence', same_two, equal_reference)
+    fresh_equal, fresh_two = consumer.spatial_pair(t, s, cells, coordinates)
+    compare('batch_fresh_equal', fresh_equal, equal_reference)
+    compare('batch_fresh_two', fresh_two, two_reference)
+    # Distinct left/right lengths and orders collide at self-minus q if the
+    # ordered coordinate tuple is absent from the pullback key.
+    short_right = [dual[:,(0,)] for dual in duals_left]
+    distinct_reference = expected(left, short_right)
+    distinct = consumer.spatial(t, t, cells, coordinates, (0,))
+    compare('spatial_distinct_axes', distinct, distinct_reference)
+    for q in np.flatnonzero(c.minus == np.arange(c.nq)):
+        ab, ba, _, _, _ = direct_quasifree(c, q, left[q], short_right[q])
+        actual = consumer.two_time_q(int(q), t, t, coordinates, (0,))
+        compare(f'direct_self_minus_q{q}', actual, (ab, ba))
+    zero = []
+    for q in range(c.nq):
+        probes = np.zeros_like(left[q])
+        probes[np.asarray(coordinates), np.arange(len(coordinates))] = 1
+        zero.append(probes)
+    zero_equal, zero_two = consumer.spatial_pair(t, 0., cells, coordinates)
+    compare('batch_zero_reference_equal', zero_equal, equal_reference)
+    compare('batch_zero_reference_two', zero_two, expected(left, zero))
+    # A separate reversed-coordinate request cannot reuse stale earlier columns.
+    reversed_equal, reversed_two = consumer.spatial_pair(t, s, cells, (0,2))
+    compare('batch_changed_coordinates_equal', reversed_equal, expected(duals_left, duals_left))
+    compare('batch_changed_coordinates_two', reversed_two, expected(duals_left, duals_right))
+    # The same q/time/coordinates on the same consumer must observe a changed
+    # baseline on the next call, rather than retrieving a persistent dual.
+    original_baseline = consumer.baseline
+    fixed_rho, fixed_h = original_baseline(0.)
+    frozen = lambda _: (fixed_rho, fixed_h)
+    frozen_left, frozen_right = [], []
+    for q in range(c.nq):
+        dense = GlobalLinearization(c, frozen, q).matrix(0.)
+        frozen_left.append(expm(t*dense).T@zero[q])
+        frozen_right.append(expm(s*dense).T@zero[q])
+    consumer.baseline = frozen
+    try:
+        changed_equal, changed_two = consumer.spatial_pair(t, s, cells, coordinates)
+    finally:
+        consumer.baseline = original_baseline
+    compare('batch_changed_baseline_equal', changed_equal, expected(frozen_left, frozen_left))
+    compare('batch_changed_baseline_two', changed_two, expected(frozen_left, frozen_right))
+    return errors
+
+
 def run_oracle():
     symbolic_transpose()
     c, baseline, rng = fixture()
@@ -374,6 +460,23 @@ def run_oracle():
     equal = consumer.equal_time_q(1,t,coordinates)
     errors['equal_time_ab'] = relative(equal.ordered_ab,eq_ab)
     errors['equal_time_ba'] = relative(equal.ordered_ba,eq_ba)
+    errors.update(spatial_batch_regressions(
+        c, consumer, duals_left, duals_right, t, s, cells))
+    # An even mesh adds a non-Gamma self-minus (Nyquist) sector; do not
+    # mistake its two ordered coordinate requests for the same probe bank.
+    even, even_baseline, _ = fixture(n=4)
+    even_consumer = ActiveBandCorrelations(even, even_baseline,
+                                          rtol=5e-11, atol=5e-13)
+    even_left, even_right = [], []
+    for q in range(even.nq):
+        reference = GlobalLinearization(even, even_baseline, q)
+        probes = np.zeros((reference.size, len(coordinates)), complex)
+        probes[np.asarray(coordinates), np.arange(len(coordinates))] = 1
+        even_left.append(reference.transition(t).T@probes)
+        even_right.append(reference.transition(s).T@probes)
+    even_errors = spatial_batch_regressions(
+        even, even_consumer, even_left, even_right, t, s, cells)
+    errors.update({f'even_mesh_{name}': value for name, value in even_errors.items()})
     failures = {name:error for name,error in errors.items() if not np.isfinite(error) or error > 2e-8}
     invisible = {name:gap for name,gap in mutations.items() if not np.isfinite(gap) or gap < 1e-7}
     report = dict(schema='P254-active-correlations-independent-finite-oracle-v1',

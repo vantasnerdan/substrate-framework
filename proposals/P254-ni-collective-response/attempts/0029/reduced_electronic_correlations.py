@@ -195,27 +195,36 @@ class ActiveBandCorrelations:
         electronic = wick_edge_pair(ls, rs[target], rho, rho[target])
         return mechanical + electronic
 
-    def two_time_q(self, q, time_left, time_right, left_coordinates, right_coordinates=None):
-        """Ordered/symmetric/commutator q,-q correlations of ionic displacements."""
-        if right_coordinates is None:
-            right_coordinates = left_coordinates
+    def _cached_backward_probes(self, q, time, coordinates, cache):
+        key = (q, float(time), coordinates)
+        if key not in cache:
+            cache[key] = self.backward_probes(q, key[1], coordinates)
+        return cache[key]
+
+    def _ordered_q(self, q, time_left, time_right, left_coordinates,
+                   right_coordinates, cache):
         minus = int(self.c.minus[q])
-        left = self.backward_probes(q, time_left, left_coordinates)
-        right = self.backward_probes(minus, time_right, right_coordinates)
+        left = self._cached_backward_probes(q, time_left, left_coordinates, cache)
+        right = self._cached_backward_probes(minus, time_right, right_coordinates, cache)
         ab = self.initial_ordered(q, left, right)
         ba = self.initial_ordered(minus, right, left).T
-        return OrderedComponents.from_ordered(ab, ba)
+        return ab, ba
+
+    def two_time_q(self, q, time_left, time_right, left_coordinates, right_coordinates=None):
+        """Ordered/symmetric/commutator q,-q correlations of ionic displacements."""
+        left_coordinates = tuple(left_coordinates)
+        right_coordinates = left_coordinates if right_coordinates is None else tuple(right_coordinates)
+        return OrderedComponents.from_ordered(*self._ordered_q(
+            q, time_left, time_right, left_coordinates, right_coordinates, {}))
 
     def equal_time_q(self, q, time, coordinates):
         return self.two_time_q(q, time, time, coordinates)
 
-    def spatial(self, time_left, time_right, displacements, left_coordinates,
-                right_coordinates=None):
-        """Real-space connected correlation for R_left-R_right (integer cells).
+    def _spatial_batch(self, displacements, requests):
+        """Share exact pullbacks within each q/-q pair, never across calls.
 
-        Orthonormal Fourier convention: (1/N) sum_q exp(i q.R) C_q.
-        No reality projection is performed: imaginary residuals remain visible.
-        Each q is consumed independently; no giant transition/covariance bank.
+        Only the small ordered covariances survive each pair's local cache.
+        The Fourier sums below retain the original q iteration order.
         """
         cells = np.asarray(displacements)
         if cells.ndim == 1:
@@ -224,14 +233,52 @@ class ActiveBandCorrelations:
             raise ValueError('finite cell displacements with shape (count,3) required')
         if not np.all(cells == np.rint(cells)):
             raise ValueError('spatial displacements must be integer cells')
+        ordered = [[None] * self.c.nq for _ in requests]
+        for q in range(self.c.nq):
+            if ordered[0][q] is not None:
+                continue
+            minus = int(self.c.minus[q])
+            cache = {}
+            for index, request in enumerate(requests):
+                ordered[index][q] = self._ordered_q(q, *request, cache)
+                if minus != q:
+                    ordered[index][minus] = self._ordered_q(minus, *request, cache)
+            # Do not hold a bank of state-sized duals across q/-q pairs.
+            cache.clear()
+
+        sums = []
+        for _, _, left_coordinates, right_coordinates in requests:
+            shape = (len(cells), len(left_coordinates), len(right_coordinates))
+            sums.append((np.zeros(shape, complex), np.zeros(shape, complex)))
+        for q in range(self.c.nq):
+            phase = np.exp(2j*np.pi * ((cells / np.asarray(self.c.mesh)) @ self.c.q_indices[q]))
+            for (ab, ba), values in zip(sums, ordered):
+                q_ab, q_ba = values[q]
+                ab += phase[:, None, None] * q_ab / self.c.n
+                ba += phase[:, None, None] * q_ba / self.c.n
+        return tuple(OrderedComponents.from_ordered(ab, ba) for ab, ba in sums)
+
+    def spatial(self, time_left, time_right, displacements, left_coordinates,
+                right_coordinates=None):
+        """Real-space connected correlation for R_left-R_right (integer cells).
+
+        Orthonormal Fourier convention: (1/N) sum_q exp(i q.R) C_q.
+        No reality projection is performed: imaginary residuals remain visible.
+        Left and right coordinate axes may differ, including their order.
+        """
         left_coordinates = tuple(left_coordinates)
         right_coordinates = left_coordinates if right_coordinates is None else tuple(right_coordinates)
-        shape = (len(cells), len(left_coordinates), len(right_coordinates))
-        ab, ba = np.zeros(shape, complex), np.zeros(shape, complex)
-        for q in range(self.c.nq):
-            components = self.two_time_q(q, time_left, time_right,
-                                          left_coordinates, right_coordinates)
-            phase = np.exp(2j*np.pi * ((cells / np.asarray(self.c.mesh)) @ self.c.q_indices[q]))
-            ab += phase[:, None, None] * components.ordered_ab / self.c.n
-            ba += phase[:, None, None] * components.ordered_ba / self.c.n
-        return OrderedComponents.from_ordered(ab, ba)
+        return self._spatial_batch(displacements, (
+            (time_left, time_right, left_coordinates, right_coordinates),))[0]
+
+    def spatial_pair(self, time, reference, displacements, coordinates):
+        """Return independent equal-time and two-time spatial components.
+
+        Exact (q, float time, ordered coordinates) pullbacks are reused only
+        within this call.  Reference is used as supplied; the material driver
+        selects min(time, requested reference) before calling.
+        """
+        coordinates = tuple(coordinates)
+        return self._spatial_batch(displacements, (
+            (time, time, coordinates, coordinates),
+            (time, reference, coordinates, coordinates)))

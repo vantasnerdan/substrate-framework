@@ -136,9 +136,9 @@ def run(args):
                     b.x, delta.x, geometry, c.mechanical.masses,
                     geometry_values['valence_charges'], field_mass))
                 if args.correlations:
-                    equal = corr.spatial(time, time, geometry['cells'], [coordinate])
                     reference = min(time, args.correlation_reference)
-                    two = corr.spatial(time, reference, geometry['cells'], [coordinate])
+                    equal, two = corr.spatial_pair(
+                        time, reference, geometry['cells'], [coordinate])
                     record['connected_correlation'] = encode(dict(
                         reference_time_inverse_ry=reference, noise_scope=equal.noise_scope,
                         equal_time=vars(equal), two_time=vars(two)))

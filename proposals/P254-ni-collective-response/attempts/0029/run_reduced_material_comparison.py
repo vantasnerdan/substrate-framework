@@ -2,8 +2,9 @@
 
 Required: --finite RESULT [RESULT ...] --output NEW_JSON. Each RESULT is an
 actual run_reduced_material_dynamics.py result.json, with its manifest snapshot,
-geometry binding, all selected baseline/finite NPZ boundaries and source files
-still available. Supply the four structures and all (8,7),(8,27),(12,7),(12,27)
+geometry binding, all selected baseline/finite NPZ boundaries and exact source
+bytes (live or authenticated historical snapshots) available. Supply the four
+structures and all (8,7),(8,27),(12,7),(12,27)
 results to fill the coverage table; absent inputs/times stay explicitly missing.
 No result pathname is guessed or asserted to exist.
 
@@ -249,6 +250,9 @@ def compare(args):
             'reduced_comparison_inputs.py', 'reduced_comparison_clamped.py', 'reduced_comparison_early.py', 'reduced_ode_initial_step.py')],
         scope='actual source-bound finite data; exact canonical clamped response; supported early first-response assessment or explicit mismatch',
         authentication_scope='result/configuration digest, exact manifest snapshot, all recorded coefficient item archives once per CLI process, original source/context/code receipts, geometry, every consumed baseline/finite state, original clamped receipts/arrays and full-PW small-coordinate boundaries; no raw PW trajectory replay',
+        source_recoveries=[dict(finite_result=run['binding'], **receipt)
+                           for run in runs for receipt in run['source_recoveries']],
+        source_recovery_scope='retrospective source recovery, not original execution binding; original saved result bindings are unchanged',
         units=dict(time='inverse Ry; exact saved physical times, no interpolation', energy='Ry', displacement='bohr', momentum='bohr^-1'),
         coverage=all_coverage,
         all_nested_four_structure_inputs_present=all(row['available'] for row in all_coverage),
