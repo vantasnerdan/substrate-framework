@@ -17,7 +17,7 @@ Nodes are scientific outputs, not approval checkpoints. Completion labels apply 
 flowchart TD
     R["R · Material reference and initial state\nCOMPLETE · conditional, nonstationary"]
     S["S · Spatial and inter-region operators\nCOMPLETE · declared finite model"]
-    E["E · Field, environment and fluctuations\nMOVING Γ + NOISE/RESPONSE EXECUTED\nINITIAL FORCE / CURRENT / FIELD-FORCE COMPLETE\nphysical influence / loss OPEN"]
+    E["E · Field, environment and fluctuations\nMOVING Γ + EXPANDED TEMPORAL NOISE EXECUTED\nINITIAL FORCE / CURRENT / FIELD-FORCE COMPLETE\nphysical influence / loss OPEN"]
     D["D · Coupled dynamics and correlations\nAPPROVED 16-CASE FINITE MODEL COMPLETE"]
     C["C · Controlled lattice comparison\nCONDITIONAL COMPARISON COMPLETE · physical ranking OPEN"]
     N["N · Nuclear source/operator and energy disposal\nASSESSMENT COMPLETE · rates undetermined"]
@@ -110,7 +110,15 @@ The [actual full canonical-field consumer](attempts/0035/current-completion-owne
 
 The [actual expanded physical bath](attempts/0037/actual-complete-expanded-bath-admission-003.json) completed successfully: all 346 original raw state columns, 692 additional directions, both Hamiltonian legs and both true legs of the two selected forces. The [exact metadata publication](attempts/0037/expanded-bath-exact-metadata-publication-003.json) retains every initial full-PW/projected force pair and the original coordinate/state/operator provenance; its 373 MB numeric bank remains authenticated locally, not falsely represented as embedded in Git. The two actual integration failures—cached-versus-current implementation provenance and the ionic API's small-column requirement—are preserved with their owning fixes and charged lost work.
 
-The [actual saved-bank consumer](attempts/0037/actual-temporal-consumer-startup-001.json) is integrating the original final Ni1/x causal output filter without further physical actions or preparation. Its temporal result is pending. The [construction](attempts/0037/implementation-contract-001.json) reuses the existing subspace, polynomial-filter and CAR mathematics; old8/new692 will be a same-observable model-enrichment contrast, not a convergence certificate, independent noise added to A32 or irreversible loss.
+The [actual temporal consumer](attempts/0037/actual-complete-expanded-temporal-influence-admission-001.json) completed successfully, with no further physical actions or preparation. The [exact result](attempts/0037/expanded-temporal-influence-material-result-001.json) preserves the actual final Ni1/x causal output filter, all nine ordered complex covariance pairs, both cross orders and the saved spectral coordinates.
+
+| Source0/Gamma force contribution at final time30, bohr² | Old8 extra directions | New692 extra directions |
+| --- | ---: | ---: |
+| Full force vertex | 9.360139172e-08 | 9.434679430e-08 |
+| Retained vertex | 1.296452226e-08 | 1.297069136e-08 |
+| Omitted vertex | 8.098503832e-08 | 8.157562591e-08 |
+
+The cross blocks belong to the same bath, so the diagonal rows must not be added independently. This is a same-observable, original-state, frozen-H/two-mode model-enrichment contrast—not a late error bound, convergence certificate, independent noise added to A32, full-source/moving influence or irreversible loss. The [construction](attempts/0037/implementation-contract-001.json) reuses the existing subspace, polynomial-filter and CAR mathematics; unchanged [sensitive owning evidence](attempts/0031/owning-block-oracles-001.json) is carried forward rather than replayed. Both actual failures and all charged work remain in the admission. Complete A37 scientific review is pending; its actual outputs are finished.
 
 ## Existing solutions reused
 
