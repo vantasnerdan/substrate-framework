@@ -15,6 +15,10 @@ paths to authenticated copies retaining their nested original bindings.
 active q tangent at the original full-PW sample times, not finite-dose matching
 or original trajectory replay. Without it, the analytic/finite mismatch is
 reported rather than replaced by a guessed comparison.
+The inter-structure panel retains each original preparation. It compares only
+the same canonical probe/species/mass/seed, representation and tolerances.
+Observed nested ranges are descriptive sensitivities, not physical error bars.
+
 
 Example (shell variables MUST name already-produced actual result files):
   python proposals/P254-ni-collective-response/attempts/0029/run_reduced_material_comparison.py \\
@@ -39,11 +43,11 @@ sys.path[:0] = [str(ROOT/'src'), str(HERE), str(A28)]
 import numpy as np
 from clamped_scientific_readout import encode
 from substrate_framework.streamed_material_state import file_binding
-from reduced_comparison_inputs import CASES, digest, read_finite, require
+from reduced_comparison_inputs import CASES, digest, read_finite_runs, require
 from reduced_comparison_clamped import discover_saved, matching_publications, canonical_control
 from reduced_comparison_early import assess_early, difference, read_full_pw
-from reduced_projection_storage import ImmutableItems
 from reduced_coherence_readout import coherence_curve
+from reduced_comparison_lattices import compare_lattices
 
 LIMITS = [
     'Controlled dynamical active8/12 saved-band,7/27 density-feature approximation; not full-PW material accuracy.',
@@ -198,8 +202,7 @@ def coverage(runs):
 
 
 def compare(args):
-    source_reader = ImmutableItems({})
-    runs = [read_finite(path, source_reader=source_reader) for path in args.finite]
+    runs = read_finite_runs(args.finite)
     require(len({(r['binding']['path'], r['binding']['sha256']) for r in runs}) == len(runs), 'duplicate finite result path')
     publications = discover_saved(args.clamped_index)
     evidence = [read_full_pw(path) for path in args.full_pw]
@@ -243,10 +246,11 @@ def compare(args):
         observations=run['observations'], energy_diagnostics=energy_diagnostics(run),
         coherence=coherence_curve(run['observations'])) for run in runs]
     all_coverage = coverage(runs)
+    lattices = compare_lattices(runs, curves)
     return dict(schema='P254-activeband-actual-matched-comparison-v1', status='complete',
         whole_campaign_complete=False, material_accuracy_certified=False, lattice_ranking=None,
         consumer_sources=[file_binding(HERE/name) for name in ('run_reduced_material_comparison.py',
-            'reduced_coherence_readout.py',
+            'reduced_coherence_readout.py', 'reduced_comparison_lattices.py',
             'reduced_comparison_inputs.py', 'reduced_comparison_clamped.py', 'reduced_comparison_early.py', 'reduced_ode_initial_step.py')],
         scope='actual source-bound finite data; exact canonical clamped response; supported early first-response assessment or explicit mismatch',
         authentication_scope='result/configuration digest, exact manifest snapshot, all recorded coefficient item archives once per CLI process, original source/context/code receipts, geometry, every consumed baseline/finite state, original clamped receipts/arrays and full-PW small-coordinate boundaries; no raw PW trajectory replay',
@@ -256,6 +260,8 @@ def compare(args):
         units=dict(time='inverse Ry; exact saved physical times, no interpolation', energy='Ry', displacement='bohr', momentum='bohr^-1'),
         coverage=all_coverage,
         all_nested_four_structure_inputs_present=all(row['available'] for row in all_coverage),
+        numerical_comparison_complete=lattices['numerical_comparison_complete'],
+        inter_structure_comparison=lattices,
         actual_curves=curves, canonical_clamped_controls=controls, matched_clamped_comparisons=control_comparisons,
         numerical_sensitivities=sensitivities,
         sensitivity_gaps=['No matched sensitivity pair supplied for '+case for case in CASES

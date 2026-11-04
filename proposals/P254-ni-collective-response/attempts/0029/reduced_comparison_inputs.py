@@ -250,3 +250,26 @@ def read_finite(path, *, source_reader=None):
         model_source_identity=digest(dict(specification=spec, source_items=source_items)),
         status=result['status'], missing_times_inverse_ry=requested[len(observations):],
         seed=dict(atom=config['atom'], axis=config['axis'], cell=[0, 0, 0], amplitude=config['amplitude']))
+
+
+def read_finite_runs(paths):
+    """Authenticate every run, retaining one identical manifest/specification.
+
+    Every snapshot is still read and authenticated by read_finite. Interning
+    occurs only afterwards, so a matching claimed digest never skips a source
+    refusal. Source paths/bindings and per-run configuration remain unchanged.
+    """
+    source_reader = ImmutableItems({})
+    manifests = {}
+    runs = []
+    for path in paths:
+        run = read_finite(path, source_reader=source_reader)
+        binding = run['manifest_binding']
+        key = (binding['sha256'], int(binding['bytes']))
+        manifest = manifests.setdefault(key, run['manifest'])
+        specification = manifest['specification']
+        run['manifest'] = manifest
+        run['specification'] = specification
+        run['configuration']['coefficient_specification'] = specification
+        runs.append(run)
+    return runs

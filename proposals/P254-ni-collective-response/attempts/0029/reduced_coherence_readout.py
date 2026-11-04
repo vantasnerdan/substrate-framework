@@ -11,7 +11,8 @@ import numpy as np
 
 def normalized_ordered(cross, variance_left, variance_right):
     cross = np.asarray(cross, dtype=complex)
-    left, right = complex(variance_left), complex(variance_right)
+    left = np.asarray(variance_left, dtype=complex).item()
+    right = np.asarray(variance_right, dtype=complex).item()
     if not np.isfinite(cross).all() or not np.isfinite([left, right]).all():
         raise ValueError('finite actual ordered covariance and variances required')
     result = dict(variance_left=left, variance_right=right,
