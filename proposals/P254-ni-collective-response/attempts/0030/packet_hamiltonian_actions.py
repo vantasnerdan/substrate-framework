@@ -20,12 +20,16 @@ from time import perf_counter, process_time
 
 import numpy as np
 
-from full_noise_probe_inputs import (
-    HERE, _identity, _same_binding, _read_json, _force_actions,
-    material_io, slot_identity, validate_aggregate, bound_arrays, bound_json,
-    ActionFactors, transport_real_frame, load_wavefunctions, DiskMean,
-    authenticate, file_binding,
-)
+from full_noise_probe_inputs import _force_actions
+from original_noise_source import HERE, _identity, _same_binding, _read_json
+import matched_reference_io as material_io
+from matched_joint_case import slot_identity
+from matched_joint_sources import validate_aggregate
+from substrate_framework.material_control_reference import bound_arrays, bound_json
+from substrate_framework.physical_factor_preparation import ActionFactors
+from substrate_framework.qe_real_bloch_grid import transport_real_frame
+from substrate_framework.qe_saved_native import load_wavefunctions
+from substrate_framework.streamed_material_state import DiskMean, authenticate, file_binding
 from substrate_framework.material_physical_operators import (
     build_physical_factors, physical_coupling, PhysicalFrozenAction,
 )

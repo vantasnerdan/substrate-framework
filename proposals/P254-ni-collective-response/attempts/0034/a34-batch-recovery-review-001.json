@@ -1,0 +1,180 @@
+{
+  "schema": "P254-A34-batch-recovery-review-v1",
+  "verdict": {
+    "overall_correctness": "incorrect",
+    "explanation": "The observed source1 physical pilot, cached-source0 batch exit0, and explicitly partial aggregate support the exercised happy paths, and the aggregation code preserves the specified weights, complex orders, blocks, and coverage distinctions. Three patch-introduced defects remain in scientific compatibility admission, checkpoint directory durability, and exceptional worker shutdown/accounting; these are static findings, not claims that the supplied numerical results are wrong.",
+    "confidence": 0.96
+  },
+  "findings": [
+    {
+      "title": "Bind scientific helper compatibility at both case admission points",
+      "body": "If a scientific change is made only in full_noise_probe_inputs.py, original_noise_source.py, cached_mode_source0.py, or an imported physical/projection helper, this binding_contract remains unchanged. reusable() consequently accepts earlier successful generations, and load_case() never checks the recorded implementation lists or a scientific operator/projection compatibility identity; the same unchecked loader also admits explicit --done inputs during final aggregation. A resumed batch can therefore mix sectors evaluated with incompatible force or covariance definitions while reporting complete coverage. Carry and validate a scientific compatibility identity through the producer, reuse, and aggregation boundaries, covering those helpers; preserve explicitly established compatibility for metadata-only edits rather than blindly invalidating old valid data for every recorded file-byte change.",
+      "priority": 1,
+      "confidence": 0.99,
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/batch_mode_noise.py",
+      "line_start": 261,
+      "line_end": 266
+    },
+    {
+      "title": "Persist checkpoint directory entries before accepting completion",
+      "body": "The producer fsyncs result.json and done.json file contents but never fsyncs their containing case directory. The runner's later outcome/accepted writes fsync the generation directory, not case/, so they do not establish durability of those two checkpoint names. A host crash can therefore lose a supposedly committed completion and cause a completed physical sector to be recomputed. Fresh generation/run directories likewise are created without syncing the directories containing their new names. Fsync the directories whose entries are published, including the case result/done entries and newly created checkpoint-directory ancestors, before declaring the work durable.",
+      "priority": 2,
+      "confidence": 0.97,
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/export_full_source_modes.py",
+      "line_start": 27,
+      "line_end": 33
+    },
+    {
+      "title": "Stop and drain active cases before executor shutdown",
+      "body": "When a parent-side exception escapes the scheduling/readout loop while another case is active, for example an OSError from the fsynced progress write or a rejection receipt write, the ThreadPoolExecutor context exits before this outer handler sets stop. Its __exit__ waits for workers, so live physical producers continue until their own timeout, batch deadline, or normal completion instead of being stopped on the parent failure. The loop is then abandoned without consuming the remaining futures, so even successfully written child outcomes are absent from the run's completed/cost accounting. Set stop and drain/reconcile active futures inside the executor scope on exceptional exits, before its blocking shutdown.",
+      "priority": 2,
+      "confidence": 0.98,
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/batch_mode_noise.py",
+      "line_start": 343,
+      "line_end": 345
+    }
+  ],
+  "scope": {
+    "mode": "Read-only source and existing-artifact review; only this local report was written.",
+    "reviewed_complete_files": [
+      "proposals/P254-ni-collective-response/attempts/0034/batch_mode_noise.py",
+      "proposals/P254-ni-collective-response/attempts/0034/aggregate_mode_noise.py",
+      "proposals/P254-ni-collective-response/attempts/0034/export_full_source_modes.py",
+      "proposals/P254-ni-collective-response/attempts/0034/cached_mode_source0.py",
+      "proposals/P254-ni-collective-response/attempts/0030/original_noise_source.py",
+      "proposals/P254-ni-collective-response/attempts/0030/full_noise_probe_inputs.py"
+    ],
+    "additional_context": [
+      "complete-pilot-and-batch-review-packet-001.json was read first",
+      "implementation-contract-001.json",
+      "batch-aggregation-handoff-001.json",
+      "working diff for full_noise_probe_inputs.py and packet_hamiltonian_actions.py",
+      "new-file diff views for batch_mode_noise.py, aggregate_mode_noise.py, and export_full_source_modes.py"
+    ],
+    "boundaries_traced": [
+      "Producer --output generation/case to exclusive result.json and bound done.json to load_case().",
+      "execute_case() durable intent, raw streams, wait4 outcome to main() outcome reload and load_case().",
+      "Existing generation intent/outcome/stdout/stderr/done to reusable() and load_case().",
+      "Explicit --done and batch-summary completed receipt lists to load_case() to aggregate().",
+      "Four ordered covariance rows and all four retained/omitted blocks per row from producer covariance_rows() output to parse_covariance() and weighted aggregate().",
+      "Producer implementation metadata to consuming admission logic; metadata is recorded but scientific compatibility is not enforced."
+    ],
+    "excluded_carried_work": "No A33 consumer review or earlier factor/CAR/projection/source-transport proof was reopened; existing proofs are carried. No precision campaign or new qualification machinery is proposed.",
+    "actions_executed": "Source/artifact reads, searches, read-only git diff commands, and writing this local report only. No tests, builds, linters, imports, numerical runs, physical actions, service changes, or network mutations."
+  },
+  "evidence": {
+    "actual_source1": {
+      "receipt": "proposals/P254-ni-collective-response/attempts/0034/actual-nonzero-source-pilot-001.json",
+      "observed_receipt_exit": 0,
+      "result": "/var/tmp/p254-a34-source1-two-mode-001/result.json",
+      "done": "/var/tmp/p254-a34-source1-two-mode-001/done.json",
+      "result_sha256_recorded": "93b34cf742e78d2c243142b33cc79bb5661b88f516d5962e6b6fd2804799f73d",
+      "elapsed_seconds": 162.80788901587948,
+      "peak_rss_bytes": 1498783744,
+      "forward_actions": 2,
+      "adjoint_actions": 2,
+      "native_calls": 0,
+      "hamiltonian_actions": 0,
+      "trajectory_actions": 0,
+      "raw_columns": 346,
+      "full_pw_rows": 18569,
+      "notes": "Read the original result covariance rows, implementation metadata, frame binding, and original done result binding. This is one genuinely new physical source, not a two-worker batch observation."
+    },
+    "actual_cached_source0_batch": {
+      "receipt": "proposals/P254-ni-collective-response/attempts/0034/actual-cached-sector-batch-001.json",
+      "summary": "/var/tmp/p254-a34-two-mode-full-source-batch-001/runs/run-7cfefeb1ec864b1198127d9be273bcbb/summary.json",
+      "generation": "/var/tmp/p254-a34-two-mode-full-source-batch-001/records/record-000/generation-992eee13e84b49e8bfdc76cb6cb6b0d5",
+      "observed_receipt_exit": 0,
+      "summary_status": "requested-subset-complete",
+      "requested_records": [0],
+      "full_original128_coverage": false,
+      "durable_outcome_exit": 0,
+      "durable_outcome_termination": null,
+      "durable_outcome_error": null,
+      "durable_outcome_elapsed_seconds": 12.786075056996197,
+      "wait4_user_cpu_seconds": 11.12414,
+      "wait4_system_cpu_seconds": 1.529617,
+      "wait4_peak_rss_bytes": 741519360,
+      "producer_elapsed_seconds": 10.109569797292352,
+      "new_forward_actions": 0,
+      "new_adjoint_actions": 0,
+      "reused_paid_force_legs": 4,
+      "result_sha256_recorded": "b16d1768de1022c69378a64eaef2ad399421cbc87693b906fce161d63594b81f",
+      "read_artifacts": ["intent.json", "outcome.json", "accepted.json", "stdout.log", "stderr.log", "case/done.json", "case/result.json covariance rows", "run summary.json", "run progress.jsonl"],
+      "notes": "Intent binds the producer/runner/aggregator/Python, original inputs, and paid packets; argv pins CPU7 through taskset and every listed BLAS/OpenMP override is1. Outcome binds 839-byte stdout and empty stderr; progress records start, complete, then exit. Receipt field reused=false means a new producer invocation using paid source0 legs, not evidence that the batch-resume skip path was exercised."
+    },
+    "actual_partial_aggregate": {
+      "path": "/var/tmp/p254-a34-pilot-aggregate-001/source1-partial.json",
+      "sha256_recorded": "a128d8fe89d9e7b977cdcd3da86e8bb05fc1b436f7d85a4c150bcd3b6c095786",
+      "observed_receipt_exit": 2,
+      "status": "partial",
+      "original_records": [1],
+      "missing_count": 127,
+      "sector_count": 1,
+      "quadrature_weight": 0.015625,
+      "partial_renormalization": false,
+      "extra_spin_factor": 1,
+      "final_spatial_factor": 1,
+      "weighted_full_mode00": {"real": 46.28158168877253, "imag": 1.5978037997374491e-15},
+      "weighted_full_mode01": {"real": -5.988239603573982, "imag": -8.852875483720146e-06},
+      "weighted_full_mode10": {"real": -5.988239603573981, "imag": 8.85287548327842e-06},
+      "weighted_full_mode11": {"real": 4.173647994951292, "imag": 3.348194486518249e-16},
+      "notes": "Read coverage, normalization, all four weighted covariance rows with all16 complex blocks and both defect representations, and the source1 done/result sector bindings. These are recorded values, not a newly executed aggregation."
+    },
+    "static_contract_results": [
+      "Each launched record gets generation-UUID and a nonexistent case child; files use exclusive creation and originals are never overwritten or removed.",
+      "The normal subprocess path persists intent before spawn, fsyncs stdout/stderr, wait4-reaps the direct producer, writes outcome, then reloads it before consuming done/result. Result-only files and unsuccessful exits are not accepted by batch reuse.",
+      "load_case authenticates the result bytes/SHA/path through sibling done.json, requires complete schema/status, literal unweighted [0,1] modes, and checks source/preparation/frame/raw-D/selection/model and original spin/internal-k identity against the bound original inputs.",
+      "load_context requires all128 unique original slot identities and exact1/64 slot weights; aggregate rejects repeated original records and repeated explicit spin/internal-k pairs, requires indices0..127 for complete, and requires both spins on the same64 mesh for full coverage.",
+      "parse_covariance requires the four distinct ordered mode pairs and four distinct retained/omitted blocks for each. aggregate multiplies each raw complex full/block/defect by its sector weight once, retains AB and BA separately, and performs no partial renormalization, extra spin multiplication, spatial division, symmetrization, PSD repair, or clipping.",
+      "The normal timeout/SIGINT/SIGTERM path sets stop or a termination reason, sends SIGKILL to the child's process group, then waits for its own PID. Bounded workers use separate CPU slots with BLAS/OpenMP capped at1. Exceptional parent shutdown has the separate reported defect.",
+      "Normal child failures preserve their generations, produce rejection records, list failed sectors, and mark partial physical-action counts unknown. Unstarted records are separately computed as requested minus completed minus launched; incomplete records include failed/missing work. Unfinished in-case force arrays are not claimed resumable.",
+      "Only one compatible committed generation per record can be reused; multiple compatible generations cause an explicit ambiguity error instead of silent selection."
+    ],
+    "finding_support": {
+      "scientific_compatibility": [
+        "batch_mode_noise.py:150-180 compares the current binding_contract and durable outcome before calling load_case.",
+        "batch_mode_noise.py:261-266 binds only top-level producer/Python/runner/aggregator plus inputs and packets, not scientific helpers.",
+        "aggregate_mode_noise.py:186-257 and343-349 admit cases without checking implementation lists or a scientific compatibility identity.",
+        "export_full_source_modes.py:19-24 imports cached and physical source helpers and projected_noise_decomposition; lines73-75 record implementation metadata.",
+        "The actual source1 result records both the top-level helper bindings at lines593-614 and broader source implementation bindings, including material_noise_projection.py at1319 and material_physical_operators.py at1329. No consuming compatibility dispatch handles them."
+      ],
+      "directory_durability": [
+        "export_full_source_modes.py:27-33 fsyncs only the JSON file descriptor; lines81-82 publish result then done and never fsync case/.",
+        "aggregate_mode_noise.py:71-84 demonstrates the existing file-plus-parent-directory fsync convention used by batch receipts.",
+        "batch_mode_noise.py:73 and204-206 create generation/run directory trees; subsequent save_json calls fsync inside the new directories, not their containing directory entries."
+      ],
+      "exceptional_shutdown": [
+        "batch_mode_noise.py:290 enters ThreadPoolExecutor; scheduling progress writes and result/rejection publication occur inside that context.",
+        "batch_mode_noise.py:343-345 sets stop only outside the executor context; executor unwinding waits before reaching it.",
+        "Only the loop at318-340 appends outcomes/completed/failed, so remaining active futures are not reconciled after an escaping parent exception; final summary uses those incomplete in-memory lists."
+      ]
+    }
+  },
+  "not_established": [
+    "Actual two-worker physical production, full128 execution/aggregation, and full-run resource adequacy have not been observed in the supplied receipts.",
+    "Resume skip, rejected-generation recovery, duplicate-input rejection, child failure/OOM, wall/case timeout, SIGINT/SIGTERM, and exceptional-parent-error behavior were inspected statically, not exercised by this reviewer.",
+    "No host-crash/fsync fault experiment was performed. The durability finding follows from the publication calls and missing directory synchronization, not an observed loss in the supplied artifacts.",
+    "No incompatible helper update was executed. The compatibility finding establishes that both admission paths omit the scientific compatibility check; it does not assert that source0 or source1 is presently scientifically incompatible.",
+    "Recorded packet/artifact SHA256 and byte bindings are reproduced as existing evidence; this review did not independently rehash original numerical banks or source files, and does not claim new binary banking.",
+    "No factor/CAR/projection/source-transport proofs were rerun, and no late-time,64-external-q, damping, heat, loss, or precision-campaign conclusion is established."
+  ],
+  "sourcebindings": {
+    "binding_basis": "Declared path/byte/SHA bindings from the first-read review packet and the actual result/receipt metadata; not newly computed hashes.",
+    "review_packet": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/complete-pilot-and-batch-review-packet-001.json",
+    "contract": {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/implementation-contract-001.json", "bytes": 5174, "sha256": "f1a64582204e08bc48f879628016d70a8aa46701f8575fae067dc215ac1fd375"},
+    "sources": [
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/batch_mode_noise.py", "bytes": 20112, "sha256": "a6a6862b1a03d1f8a50d303e557bdf5678dbfb511a3607bfdb3b46e1a8dad37a"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/aggregate_mode_noise.py", "bytes": 18791, "sha256": "74f88397494a1dabf02cb6625ca2f25fd422a92dfd9bfcbf8d6e82b14cb0b4fc"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/export_full_source_modes.py", "bytes": 4876, "sha256": "d1fc020648a39739500aea5f0a9c1ba3682e886ccb3b862c2ea9c56732bfc5a4"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/cached_mode_source0.py", "bytes": 3677, "sha256": "a5e0868867dc9ed7bbb437649bc02159d7e9292cbe82a6fb88b8d50d3a8bbc41"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030/original_noise_source.py", "bytes": 14115, "sha256": "03f1c84633e5568a095cb5d52a2437e01eb392afcde454673008d5ddeee303c7"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030/full_noise_probe_inputs.py", "bytes": 7036, "sha256": "0b57b30f68a0bc20bab6e22fc6e2661795e7a223bad72359666161ebc7eb352a"}
+    ],
+    "receipts": [
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/actual-nonzero-source-pilot-001.json", "bytes": 4076, "sha256": "253f2445449ae5c0193b8cf6d4f74b70d8d8d8741725398fd7dd9891f8e964e5"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/actual-cached-sector-batch-001.json", "bytes": 6823, "sha256": "d551ed778542f5788e4ebcbe4687a7a03a969c6cacbe87719da6058611e8be7f"},
+      {"path": "/var/tmp/p254-a34-pilot-aggregate-001/source1-partial.json", "bytes": 126047, "sha256": "a128d8fe89d9e7b977cdcd3da86e8bb05fc1b436f7d85a4c150bcd3b6c095786"}
+    ]
+  }
+}

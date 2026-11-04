@@ -17,7 +17,7 @@ Nodes are scientific outputs, not approval checkpoints. Completion labels apply 
 flowchart TD
     R["R · Material reference and initial state\nCOMPLETE · conditional, nonstationary"]
     S["S · Spatial and inter-region operators\nCOMPLETE · declared finite model"]
-    E["E · Field, environment and fluctuations\nMOVING Γ + NOISE/RESPONSE PAIR EXECUTED · full source/loss calibration OPEN"]
+    E["E · Field, environment and fluctuations\nMOVING Γ + NOISE/RESPONSE EXECUTED\nFULL-SOURCE INITIAL NOISE RUNNING · physical loss OPEN"]
     D["D · Coupled dynamics and correlations\nAPPROVED 16-CASE FINITE MODEL COMPLETE"]
     C["C · Controlled lattice comparison\nCONDITIONAL COMPARISON COMPLETE · physical ranking OPEN"]
     N["N · Nuclear source/operator and energy disposal\nASSESSMENT COMPLETE · rates undetermined"]
@@ -91,6 +91,12 @@ At thirty inverse Ry, the **same moving Γ model's** equal-time Ni1/x variance h
 All ionic/field cross blocks and individual electronic sectors remain in the exact complex publication. This attributes the initial fluctuations through one coupled response; it is not noise generated along a path or energy dissipated. Source0's retained/omitted split acts on the final pulled-back observable in its finite bath, not a counterfactual with omitted dynamics switched off. Every normalized contribution uses the same full-output denominator; magnitudes must not be independently summed.
 
 The same consumer computes the separate **nonstationary two-mode force noise and causal commutator-response pair** from the paid frozen-literal-H bath. Original state coherences, both physical force legs and the existing `-uF` Kubo sign are retained. This is a two-time object, not a stationary positive spectrum, a fitted linewidth, a recovered moving history or independent noise to add atop A32. Instantaneous scalar/contact derivatives remain separate.
+
+## Initial force-noise source coverage
+
+The [dated physical intake](attempts/0034/actual-full-source-progress-002.json) contains completed original records 0–15 at 2026-11-04 15:19:43 UTC, with no failed case in that intake. The [construction](attempts/0034/implementation-contract-001.json) keeps each source's full plane-wave frame, all original raw columns and state, both actual force/adjoint legs, and every retained/omitted cross order; source0's paid force legs are reused rather than recalculated. The [complete corrected independent reviews and actual consumer evidence](attempts/0034/complete-corrected-review-admission-001.json) retain and resolve the four execution/admission findings without changing the force or covariance mathematics.
+
+This is initial external-Γ noise in two fixed output-directed force modes. Completing its internal-source sum will not supply all external momenta, a moving full-source influence kernel, density/current vertices, irreversible loss, a lifetime or heat.
 
 ## Existing solutions reused
 
