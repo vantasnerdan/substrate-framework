@@ -1,0 +1,250 @@
+"""Export the actual source0/two-mode expanded bath; never integrate in time.
+
+The complete bank contains every original raw346 state coordinate, the explicit
+new692 physical basis vectors and all projected forward/true-adjoint operators.
+Only a settled bank plus basis-complete.json is reusable, not unfinished work.
+"""
+import argparse
+import json
+import os
+from pathlib import Path
+import resource
+from time import perf_counter
+import traceback
+
+from expanded_bath_inputs import ExpandedBathInputs, HERE, ROOT, CONTRACT, EXTRA_RANK
+from checkpoint_directories import make_directory, sync_directory
+from clamped_scientific_readout import encode
+from export_frozen_bath_comparator import car_moments, projected_factors
+from noise_subspace import build_noise_subspace
+import numpy as np
+from substrate_framework.streamed_material_state import file_binding
+
+
+def save_json(path, value):
+    """A34 exclusive publication: persist data and its directory entry."""
+    path = Path(path)
+    with path.open('x') as stream:
+        json.dump(encode(value), stream, indent=2, sort_keys=True, allow_nan=False)
+        stream.write('\n')
+        stream.flush()
+        os.fsync(stream.fileno())
+    sync_directory(path.parent)
+    return file_binding(path)
+
+
+def save_bank(path, bank, inputs):
+    """Persist exactly the shared numeric handoff, including the actual filter."""
+    keys = ('extra_basis', 'inverse_sqrt_gram', 'projected_frame', 'gram',
+        'density_coefficients', 'active_coordinates', 'projected_density',
+        'projected_active_coordinates', 'active_projector', 'hamiltonian',
+        'hamiltonian_adjoint', 'singular_values', 'state_eigenvalues')
+    arrays = {key: bank[key] for key in keys}
+    arrays['basis_metric'] = bank['diagnostics']['basis_metric']
+    for name in inputs.forces:
+        arrays['force_'+name] = bank['forces'][name]
+        arrays['adjoint_force_'+name] = bank['force_adjoints'][name]
+    arrays.update(segment_bounds=inputs.segment_bounds,
+                  modal_coefficients=inputs.modal_coefficients)
+    if set(arrays) != set(inputs.contract['handoff']['npz_keys']):
+        raise ValueError('producer numeric bank differs from the fixed consumer handoff')
+    path = Path(path)
+    with path.open('xb') as stream:
+        np.savez(stream, **arrays)
+        stream.flush()
+        os.fsync(stream.fileno())
+    sync_directory(path.parent)
+    return file_binding(path)
+
+
+class WorkJournal:
+    """Durable scalar action events, not resumable physical action arrays."""
+    def __init__(self, path):
+        self.path = Path(path)
+        self.stream = self.path.open('x')
+        sync_directory(self.path.parent)
+        self.started = perf_counter()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *error):
+        self.stream.close()
+
+    def __call__(self, event):
+        value = dict(event, elapsed_since_start_seconds=perf_counter()-self.started)
+        text = json.dumps(encode(value), sort_keys=True, allow_nan=False)
+        self.stream.write(text+'\n')
+        self.stream.flush()
+        os.fsync(self.stream.fileno())
+        print('[physics] '+text, flush=True)
+
+
+def initial_comparison(inputs, bank, basis_identity):
+    """Reuse A31 CAR on cached full-PW and supplied projected true action legs."""
+    context = inputs.context
+    started = perf_counter()
+    full = car_moments(context.psi, context.gram, context.density_coefficients,
+        inputs.forces, context.factor_identity, context.pw_basis_identity, context.state_authority)
+    projected = car_moments(bank['projected_frame'], bank['gram'], bank['density_coefficients'],
+        projected_factors(bank['forces'], bank['force_adjoints'], bank['projected_frame'],
+            basis_identity, context.state_authority, 'Ry/bohr'),
+        context.factor_identity, basis_identity, context.state_authority)
+    return dict(full_pw=full, finite_bath=projected, units='(Ry/bohr)^2',
+        scope='Initial two-mode unweighted ordered force covariance only; not a late-time error bound'), perf_counter()-started
+
+
+def implementation_bindings():
+    own = [HERE/name for name in ('expanded_bath_inputs.py', 'export_expanded_bath.py')]
+    old = [HERE.parent/'0031'/name for name in ('cached_bath_inputs.py', 'noise_subspace.py',
+        'filtered_quadratic_bath.py', 'export_frozen_bath_comparator.py')]
+    dependencies = [HERE.parent/'0030'/name for name in ('packet_hamiltonian_actions.py',
+        'export_output_directed_actions.py', 'canonical_force_filter.py', 'original_noise_source.py')]
+    dependencies += [HERE.parent/'0034'/'checkpoint_directories.py',
+        HERE.parent/'0028'/'clamped_scientific_readout.py']
+    dependencies += [ROOT/'src'/'substrate_framework'/name for name in (
+        'physical_factor_preparation.py', 'streamed_material_state.py',
+        'material_physical_operators.py')]
+    return [file_binding(path) for path in own+old+dependencies]
+
+
+def work_record(inputs, basis_seconds, initial_seconds, saving_seconds, started):
+    calls = inputs.extra_calls
+    if (len(calls) != 6 or any(call['status'] != 'complete' or call['columns'] != EXTRA_RANK
+                              for call in calls)):
+        raise ValueError('six completed new692-column physical callbacks required')
+    return dict(loading_seconds=inputs.loading_seconds, basis_seconds=basis_seconds,
+        initial_covariance_seconds=initial_seconds, bank_saving_seconds=saving_seconds,
+        total_seconds=perf_counter()-started,
+        peak_process_rss_bytes=int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)*1024,
+        cpu_affinity=sorted(os.sched_getaffinity(0)),
+        thread_environment={name: os.environ.get(name) for name in (
+            'OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS')},
+        original_context_restoration=inputs.context.operator_work,
+        force_direction_preparations=inputs.direction_preparations,
+        new_physical_actions=calls, new_physical_callbacks=len(calls),
+        new_hamiltonian_forward_callbacks=1, new_hamiltonian_adjoint_callbacks=1,
+        new_force_forward_callbacks=2, new_force_adjoint_callbacks=2,
+        new_directed_action_columns=sum(call['columns'] for call in calls),
+        counter_scope='logical physical operator callbacks and input columns; not internal FFT/block calls',
+        reused_original_action_legs=6, original_H_action_replays=0,
+        original_force_action_replays=0, original_action_columns_recomputed=0,
+        original_preparation_replays=0, original_gram_recomputations=0,
+        population_refills=0, trajectory_actions=0, temporal_integrations=0,
+        callback_arrays_written=False)
+
+
+def complete_manifest(inputs, bank, basis_binding, initial, work, journal_binding):
+    context = inputs.context
+    diagnostics = {key: value for key, value in bank['diagnostics'].items() if key != 'basis_metric'}
+    return dict(schema='P254-A37-expanded-source0-basis-v1', status='complete',
+        contract=dict(CONTRACT), basis=basis_binding,
+        basis_identity='A37 finite-bath coordinate basis '+basis_binding['sha256'],
+        basis_metadata=bank['metadata'], basis_diagnostics=diagnostics,
+        original_state_authority=context.state_authority,
+        original_factor_identity=context.factor_identity,
+        original_pw_basis_identity=context.pw_basis_identity, original_source=context.source,
+        original_frame=context.frame, original_coordinates=context.source['coordinates'],
+        action_packet=inputs.action_binding, mode1_packet=inputs.mode1_binding,
+        filter_packet=inputs.filter_binding, filter_archive=inputs.filter_archive,
+        channel_archive=inputs.packet['channel_archive'],
+        filter_original_result=inputs.original_result_binding,
+        filter_metadata=inputs.filter.metadata,
+        filter_array_axes=dict(segment_bounds=['segment', 'left_right'],
+            modal_coefficients=['segment', 'Chebyshev_degree', 'mode0_mode1', 'terminal_probe']),
+        force_mode_order=list(inputs.forces), mesh=inputs.mesh, ncells=inputs.ncells,
+        cached_original_actions=inputs.cached_action_records,
+        operator_specifications=inputs.operator_specifications,
+        new_physical_actions=inputs.extra_calls, work=work,
+        implementation=implementation_bindings(), work_journal=journal_binding,
+        initial_force_covariance=initial,
+        normalization=dict(mesh=inputs.mesh, ncells=inputs.ncells,
+            saved_force_operators='unweighted F_k in Ry/bohr; no normalization applied to bank',
+            consumer_force_insertion='unweighted F_k/sqrt(N), exactly once',
+            further_source_weight_applied=False, spin_factor_applied=False,
+            final_real_space_inverse_fourier_applied=False,
+            addition_atop_moving_A32=False),
+        recovery=dict(complete_bank_reusable_without_physical_rebuild=True,
+            unfinished_builder_resumable=False,
+            scope='Only complete authenticated bank plus this manifest is reusable; interruption before completion can lose all new basis/action work'),
+        scope='Original source0/Gamma/Ni1-x; two original output-directed force modes; '
+            'all original346 raw state columns and explicit692 empty directions; '
+            'literal frozen-initial H and independent true adjoints. No temporal result '
+            'is produced here; initial covariance/proxy is not late-time accuracy, '
+            'physical loss, convergence, full moving/backreaction, all128-source/64q '
+            'or full density/current joint influence closure.')
+
+
+def run(args):
+    if type(args.extra_rank) is not int or args.extra_rank != EXTRA_RANK:
+        raise ValueError('A37 preregistration requires --extra-rank692; no rank fallback')
+    directory = make_directory(Path(args.output).resolve(), exist_ok=False)
+    started = perf_counter()
+    inputs = None
+    stage = 'load_cached_original_inputs'
+    try:
+        with WorkJournal(directory/'physical-work.jsonl') as progress:
+            progress(dict(stage=stage, status='started'))
+            inputs = ExpandedBathInputs(args.action_packet, args.mode1_packet,
+                                        args.filter_packet, args.extra_rank, progress)
+            progress(dict(stage=stage, status='complete', elapsed_seconds=inputs.loading_seconds,
+                          cached_original_action_legs=6, original_action_replays=0))
+            stage = 'build_explicit692_noise_subspace'
+            progress(dict(stage=stage, status='started', original_columns=346, extra_columns=EXTRA_RANK))
+            basis_started = perf_counter()
+            context = inputs.context
+            bank = build_noise_subspace(context.psi, context.gram, context.density_coefficients,
+                context.active_coordinates, inputs.hamiltonian, inputs.forces, inputs.apply_extra,
+                extra_rank=args.extra_rank)
+            basis_seconds = perf_counter()-basis_started
+            stage = 'save_complete_numeric_bank'
+            progress(dict(stage=stage, status='started', basis_seconds=basis_seconds))
+            saving_started = perf_counter()
+            basis_binding = save_bank(directory/'finite-bath-basis.npz', bank, inputs)
+            saving_seconds = perf_counter()-saving_started
+            progress(dict(stage=stage, status='complete', basis=basis_binding))
+            stage = 'initial_full_pw_and_projected_covariance'
+            progress(dict(stage=stage, status='started'))
+            initial, initial_seconds = initial_comparison(inputs, bank,
+                'A37 finite-bath coordinate basis '+basis_binding['sha256'])
+            progress(dict(stage=stage, status='complete', elapsed_seconds=initial_seconds))
+            work = work_record(inputs, basis_seconds, initial_seconds, saving_seconds, started)
+        stage = 'publish_basis_complete'
+        manifest = complete_manifest(inputs, bank, basis_binding, initial, work,
+                                     file_binding(directory/'physical-work.jsonl'))
+        missing = set(inputs.contract['handoff']['metadata_fields'])-set(manifest)
+        if missing:
+            raise ValueError('missing fixed consumer metadata fields: '+repr(sorted(missing)))
+        binding = save_json(directory/'basis-complete.json', manifest)
+    except BaseException as error:
+        failure = dict(schema='P254-A37-expanded-bath-build-failure-v1', status='failed',
+            stage=stage, error=repr(error), traceback=traceback.format_exc(),
+            elapsed_seconds=perf_counter()-started, contract=dict(CONTRACT),
+            new_physical_actions=inputs.extra_calls if inputs is not None else None,
+            unfinished_builder_resumable=False,
+            scope='Failure retained; any partial bank/journal remains in this unique output directory. No complete result is claimed.')
+        try:
+            save_json(directory/'build-failed.json', failure)
+        except BaseException as persistence_error:
+            error.add_note('Failure persistence also failed: '+repr(persistence_error))
+        raise
+    print(json.dumps(dict(basis_complete=binding, basis=basis_binding,
+                          total_seconds=perf_counter()-started), allow_nan=False), flush=True)
+    return binding
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--action-packet', required=True)
+    parser.add_argument('--mode1-packet', required=True)
+    parser.add_argument('--filter-packet', required=True)
+    parser.add_argument('--output', required=True)
+    parser.add_argument('--extra-rank', type=int, required=True)
+    args = parser.parse_args()
+    if args.extra_rank != EXTRA_RANK:
+        parser.error('--extra-rank must be exactly692 under the fixed A37 preregistration')
+    run(args)
+
+
+if __name__ == '__main__':
+    main()
