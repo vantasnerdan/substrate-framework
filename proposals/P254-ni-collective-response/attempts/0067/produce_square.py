@@ -1,4 +1,4 @@
-"""Full genuine31x31 q1 EE history for slots0/64; retain paid source cells."""
+"""Full genuine31x31 q1 EE history for owned slots; retain paid source cells."""
 from pathlib import Path
 import argparse
 import json
@@ -17,10 +17,13 @@ from gaussian_ee import stream_gaussian_ee
 from streamed_ee import NumericSink,read_blocks
 
 
-def produce(output):
+def produce(output,*,slots=(0,64),preregistration=None):
+    slots=tuple(slots)
+    if not slots or len(set(slots))!=len(slots) or any(type(i) is not int or not 0<=i<128 for i in slots):
+        raise ValueError('unique owned original slots0..127 required')
+    preregistration=Path(preregistration or HERE/'preregistration.json')
     started=perf_counter()
     out,_=begin(output,6)
-    prereg=json.loads((HERE/'preregistration.json').read_bytes())
     c=load_coulomb_inputs();factors=BareCoulombFactors(c)
     reference=SavedMovingReference(c,BUNDLE,c.bindings['manifest'])
     if not np.array_equal(reference.times,np.arange(31,dtype=float)):
@@ -35,9 +38,9 @@ def produce(output):
         raise ValueError('same-source paid endpoint/column required')
     endpoint=authenticate(next(item for item in old_record['outputs'] if item['path'].endswith('/old-all9.npz')))
     column=authenticate(column_record['output'])
-    slots=(0,64);slot_index={value:index for index,value in enumerate(slots)}
-    arrays={name:np.empty((2,31,31,12,12),complex) for name in CHANNELS}
-    seen=np.zeros((2,31,31),bool)
+    slot_index={value:index for index,value in enumerate(slots)}
+    arrays={name:np.empty((len(slots),31,31,12,12),complex) for name in CHANNELS}
+    seen=np.zeros((len(slots),31,31),bool)
     with np.load(column,allow_pickle=False) as saved:
         for name in CHANNELS:arrays[name][:,:,0]=saved[name+'_total'][:,slots].transpose(1,0,2,3)
     seen[:,:,0]=True
@@ -47,12 +50,12 @@ def produce(output):
             for a,old_a in ((0,0),(30,1)):
                 arrays[name][:,a,30]=old[list(slots),old_a,1]
     seen[:,[0,30],30]=True
-    if not np.array_equal(seen[0],seen[1]):raise ValueError('different paid ownership')
+    if any(not np.array_equal(seen[0],row) for row in seen):raise ValueError('different paid ownership')
     pairs=tuple((a,b) for a in range(31) for b in range(31) if not seen[0,a,b])+((15,0),)
     overlap=[];sink=NumericSink(out/'new-blocks.npyblocks');blocks=0
     atomic_json(out/'actual-inputs.json',dict(reference=reference.bindings,material=c.bindings,
         paid_column=file_binding(column),paid_endpoints=file_binding(endpoint),
-        preregistration=file_binding(HERE/'preregistration.json'),slots=slots))
+        preregistration=file_binding(preregistration),slots=slots))
     def consume(block):
         nonlocal blocks
         if block.q!=1 or any(i not in slot_index for i in block.external):
@@ -74,17 +77,17 @@ def produce(output):
         blocks+=1
         if blocks%16==0:
             row=dict(actual_blocks=blocks,completed_owned_cells=int(seen.sum()),
-                required_owned_cells=1922,elapsed_seconds=perf_counter()-started)
+                required_owned_cells=len(slots)*961,elapsed_seconds=perf_counter()-started)
             atomic_json(out/'progress.json',row);print(json.dumps(row),flush=True)
     tick=perf_counter()
     manifest=stream_gaussian_ee(factors,reference,reference.times,consume,owned_q=(1,),
         owned_external=slots,owned_pairs=pairs,pair_batch=8,inner_batch=8,internal_batch=8,
         source_bindings=reference.bindings)
     elapsed=perf_counter()-tick;stream=sink.close(manifest)
-    if not seen.all() or len(overlap)!=6 or not all(row['passed'] for row in overlap):
+    if not seen.all() or len(overlap)!=3*len(slots) or not all(row['passed'] for row in overlap):
         raise ValueError('full owned square or actual long-time overlap comparison incomplete')
     if not all(np.isfinite(value).all() for value in arrays.values()):raise ValueError('nonfinite physical output')
-    output_path=out/'full-square-q1-slots0-64.npz'
+    output_path=out/'full-square-q1.npz'
     np.savez(output_path,times=reference.times,slots=np.array(slots),outer_q=np.array(1),**arrays)
     actual_blocks=sum(1 for _ in read_blocks(out/'new-blocks.npyblocks'))
     if actual_blocks!=manifest['blocks']:raise ValueError('saved numeric stream incomplete')
@@ -97,8 +100,9 @@ def produce(output):
         evaluation_seconds=elapsed,elapsed_seconds=perf_counter()-started,
         peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
         manifest=manifest,stream=stream,overlap_findings=overlap,consumer=consumer,
-        source_bindings=[file_binding(HERE/'produce_square.py'),file_binding(HERE.parent/'0064/gaussian_ee.py')],
-        limits=['Complete31x31 for two external slots/q1 only, not all128/all64q.',
+        source_bindings=[file_binding(HERE/'produce_square.py'),file_binding(HERE.parent/'0064/gaussian_ee.py'),
+                         file_binding(HERE.parent/'0064/time_gram.py')],
+        limits=['Complete31x31 for the named external slots/q1 only, not the full outer mesh.',
                 'Original bare Gaussian first map only; no dressed reconstruction, rank truncation or physical closure.',
                 'Native total and separate global-direct/per-slot times are observations, not a demonstrated full-mesh speedup.'])
     atomic_json(out/'result.json',record);reference.close()
@@ -107,4 +111,7 @@ def produce(output):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True)
-    produce(parser.parse_args().output)
+    parser.add_argument('--slots',type=int,nargs='+',default=(0,64))
+    parser.add_argument('--preregistration',type=Path)
+    args=parser.parse_args()
+    produce(args.output,slots=tuple(args.slots),preregistration=args.preregistration)

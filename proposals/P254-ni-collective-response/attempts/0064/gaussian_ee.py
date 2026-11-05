@@ -19,6 +19,7 @@ from time import perf_counter
 from all_slot_coulomb_blas import static_exchange
 from all_slot_coulomb_contractions import validate_physical, KEYS
 from streamed_ee import Block, _pair_tiles
+from time_gram import time_gram
 
 
 def _mode(tensor, matrix, axis):
@@ -31,25 +32,25 @@ def _mode(tensor, matrix, axis):
 
 def _left_bank(left,u,b,cc,aa,occupations):
     nt,nlocal,m=len(u),len(b),u.shape[-1]
-    bank=np.empty((2,nt,nlocal,m,m**3),complex)
+    bank=np.empty((2,nt,m,nlocal,m**3),complex)
     for order,C in enumerate(occupations):
         for t in range(nt):
             v=_mode(left,u[t,b]@C[b],2)
             v=_mode(v,u[t,aa].conj(),3)  # At.T, not At or an inferred reverse G
             v=_mode(v,u[t,cc]@C[cc],4)
-            bank[order,t]=v.reshape(nlocal,m,m**3)
+            bank[order,t]=v.reshape(nlocal,m,m**3).transpose(1,0,2)
     return bank
 
 
 def _right_bank(right,u,b,cc,aa,occupations):
     nt,nlocal,m=len(u),len(b),u.shape[-1]
-    bank=np.empty((2,nt,nlocal,m**3,m),complex)
+    bank=np.empty((2,nlocal,m**3,nt,m),complex)
     for order,D in enumerate(occupations[::-1]):
         for s in range(nt):
             v=_mode(right,u[s,b].conj(),1)  # Bs.T
             v=_mode(v,u[s,aa]@D[aa],2)
             v=_mode(v,u[s,cc].conj(),3)  # Cs.T
-            bank[order,s]=v.reshape(nlocal,m**3,m)
+            bank[order,:,:,s]=v.reshape(nlocal,m**3,m)
     return bank
 
 
@@ -130,14 +131,16 @@ def stream_gaussian_ee(factors,reference,times,consume,*,owned_q=None,
             left,right,b,cc,aa=static_exchange(factors,q,np.array([i]))
             manifest['static_payload_peak']=max(manifest['static_payload_peak'],left.nbytes+right.nbytes)
             exchange=np.zeros((2,len(pairs),c.m,c.m),complex)
+            pair_t=np.asarray([t for t,s in pairs]);pair_s=np.asarray([s for t,s in pairs])
             for start in range(0,c.nq,inner_batch):
                 sl=slice(start,min(start+inner_batch,c.nq))
                 lt=_left_bank(left[sl],u,b[sl],cc[sl],aa[sl],occupations)
                 rs=_right_bank(right[sl],u,b[sl],cc[sl],aa[sl],occupations)
                 manifest['temporal_payload_peak']=max(manifest['temporal_payload_peak'],lt.nbytes+rs.nbytes)
-                for k,(t,s) in enumerate(pairs):
-                    exchange[0,k]+=1j*(lt[0,t]@rs[0,s]).sum(axis=0)
-                    exchange[1,k]+=-1j*(lt[1,t]@rs[1,s]).sum(axis=0)
+                # Contiguous time/output and h/mode banks make each all-time
+                # contraction one BLAS product; no duplicate transformed bank.
+                exchange[0]+=1j*time_gram(lt[0],rs[0])[pair_t,pair_s]
+                exchange[1]+=-1j*time_gram(lt[1],rs[1])[pair_t,pair_s]
                 del lt,rs
             bi=int(c.target[qm,i]);lq=c.density[q][bi].conj()
             rvertex=c.density[qm][i][p].conj().reshape(len(p),-1)
