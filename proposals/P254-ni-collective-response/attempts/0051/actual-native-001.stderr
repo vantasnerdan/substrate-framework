@@ -1,0 +1,22 @@
+Running as unit: p254-a51-gamma-contour-001.service; invocation ID: 5d2e8862ce014309864755c6e0a62486
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0047/full37_kernel_entry.py", line 28, in <module>
+    runpy.run_path(script,run_name='__main__')
+  File "<frozen runpy>", line 286, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0051/run_gamma_contour.py", line 118, in <module>
+    if __name__=='__main__':main(sys.argv[1],float(sys.argv[2]))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0051/run_gamma_contour.py", line 63, in main
+    oracle(output)
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0051/oracle_cubic_contour.py", line 76, in main
+    if max(errors.values())>2e-10 or min(mutations.values())<1e-5:raise AssertionError(dict(errors=errors,mutations=mutations))
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'errors': {'vertex_0': 2.237726045655905e-16, 'reverse_0': 2.237726045655905e-16, 'compact_0': 1.9365357697989534e-15, 'vertex_1': 2.237726045655905e-16, 'reverse_1': 2.2887833992611187e-16, 'compact_1': 2.808666774861361e-15, 'vertex_2': 1.1102230246251565e-15, 'reverse_2': 1.3506446028928517e-15, 'compact_2': 2.6645352591003757e-15, 'greater': 2.5121479338940402e-14, 'lesser': 1.517719948885615e-14, 'greater_action': 4.3220627292571254e-14, 'greater_transpose': 2.842170943040401e-14, 'greater_bilinear': 5.123796534383003e-14, 'lesser_action': 3.552713678800501e-14, 'lesser_transpose': 2.842170943040401e-14, 'lesser_bilinear': 1.4210854715202004e-14, 'retarded_action': 7.553172887309252e-14, 'retarded_transpose': 2.8916994303251375e-14, 'retarded_bilinear': 9.697021187062789e-14, 'passed_dense_functional_same_leg': 0.037007855203927305}, 'mutations': {'wrong_Wick_factor': 0.5000000000000001, 'extra_volume_N': 0.6666666666666667, 'dagger_not_transpose': 0.9522578488710948, 'missing_internal_q': 0.7379579268747724, 'inferred_reverse_dagger': 0.790292500997288, 'missing_onsite': 0.833212029395107}}
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 3.840s
+CPU time consumed: 3.823s
+Memory peak: 7.6M
+Memory swap peak: 0B
