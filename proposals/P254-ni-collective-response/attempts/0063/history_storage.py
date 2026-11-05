@@ -10,8 +10,8 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent/'0061'))
 from production_transport import binding, atomic_json
 
-AUXILIARY = ('source_electron_less0', 'control_ret', 'control_less',
-             'source_gamma_ret', 'source_gamma_less', 'n')
+SOURCE_AUXILIARY = ('source_electron_less0', 'source_gamma_ret', 'source_gamma_less', 'n')
+CONTROL_AUXILIARY = ('control_ret', 'control_less')
 
 
 def authenticate(item):

@@ -1,0 +1,116 @@
+{
+  "schema": "p254-a71-complete-owned-component-handoff-v1",
+  "status": "complete-owned-component-q1",
+  "component": "mixed_ei",
+  "catalog": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0071/component-001/catalog.json",
+    "bytes": 3289030,
+    "sha256": "abd86b778111892fe7f180b04a05d46b74971f03e8a5d32cb47df67c881bf7a9"
+  },
+  "coverage": {
+    "actual_ordered_time_pairs": 961,
+    "canonical_targets_per_pair": 128,
+    "bands": 12,
+    "spins": 2,
+    "ionic_directions": 111,
+    "times_inverse_ry": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
+    "owned_q": [1],
+    "completed_q": [1],
+    "opposite_q": 3,
+    "full_mesh": false,
+    "numeric_values_per_order": 17713152,
+    "all_three_orders": ["greater","lesser","retarded"],
+    "canonical_shape": [31,31,128,12,12],
+    "dtype": "complex128",
+    "file_bytes_each": 283410560,
+    "output_binding_location": "component-001/catalog.json:sigma",
+    "complete_pair_checkpoint": "All128 targets for all three arrays are flush+fsync persisted before checkpoint completed_pairs is committed; no full-bank copies per pair."
+  },
+  "source": {
+    "input_dataset": {
+      "path": "/var/tmp/p254-a52-requested-reference-001/producer/bundle.json",
+      "bytes": 5599,
+      "sha256": "c38f087b57e818517cb268d30c3be53a9305ead7eee107ebe85dd569c0fa99f0"
+    },
+    "U": {
+      "path": "/var/tmp/p254-a52-requested-reference-001/producer/U.npy",
+      "bytes": 9142400,
+      "sha256": "7662d779f00a71771723a4bd01c44a241a6a184b5d4d20a3b58ef94407791e00",
+      "shape": [31,128,12,12],
+      "dtype": "complex128"
+    },
+    "u_integration_calls": 0,
+    "gaussian_expm_calls": 60,
+    "paid_numeric_nodes_reused": 0,
+    "source_identity_location": "component-001/catalog.json:source_identity (numeric payload shape/dtype/bytes/SHA for both independently exported ionic legs, original rho0/W0 and independent q1/q3 generators)",
+    "source_archive_member_inventory": "component-001/catalog.json:actual_consumed_items (mechanical, kernel/01, all128 slots and all128 edge/01 routes)",
+    "old_four_time_context": "Existing load_inputs opens/closes its original historical reference; no old4time/fractional U or old EI result is used as U31 or as paid numeric output. Legacy coefficient_bindings are retained separately from actual_consumed_items.",
+    "normalization": "Original N=64, 1/N exactly once in existing evaluate_components; no spin multiplicity or rescaling.",
+    "state": "Literal original coherent CAR rho0 and original prepared ionic/field W0; genuine moving saved U31; raw nonstationary reference and independent forward/reverse/opposite-q legs."
+  },
+  "implementation": {
+    "producer": "produce_ei.py",
+    "reader": "component_reader.py:EIComponent / consume",
+    "native_runner": "run_native.py",
+    "owning_loop": "A62 history_functional.py lines100-115; edge_pair and evaluate_components(...components=('sigma',)) unchanged",
+    "no_added_components": ["EE","cubic","global joint Gamma correction"],
+    "clean_scope": "Only attempts/0071 written; no shared module, SOLUTION, Git or protected job changes."
+  },
+  "one_actual_saved_path_consumer": {
+    "receipt": "saved-path-exercise.json",
+    "sha256": "5322f9b49069acdacee74bd70f974e2261af953c0d8823270423d11f64e83093",
+    "completed_pairs_consumed": 961,
+    "all128_slots_bothspins_all12bands": true,
+    "authenticated_canonical_npy_arrays": 3,
+    "frobenius_norm": {
+      "greater": 0.05781416548371285,
+      "lesser": 0.051778247228861186,
+      "retarded": 0.05600904716773699
+    },
+    "causal_max_abs_defect": 0.0,
+    "verification_scope": "One complete actual saved numerical consumer, including every covered scalar; no wiring-only exercise, old simulation replay or blanket suites."
+  },
+  "cost": {
+    "launch_receipt": "receipts-001/launch.json",
+    "all_exit_argv_and_timing": "receipts-001/exit.json",
+    "raw_stdout": "receipts-001/stdout.txt",
+    "raw_stderr": "receipts-001/stderr.txt",
+    "usr_bin_time": "receipts-001/time.txt",
+    "native_startup": "native-startup.json",
+    "native_findings": "native-findings.json",
+    "exitcode": 0,
+    "invocation_id": "782bebf148464fa1924612d9db456082",
+    "launch_start_unix": 1793909875.3163674,
+    "launch_end_unix": 1793910423.5291893,
+    "launch_elapsed_seconds": 548.2128252242692,
+    "native_elapsed_seconds": 547.6581042390317,
+    "native_cpu_seconds": 514.140736635,
+    "systemd_cpu_seconds": 514.512,
+    "usr_bin_time_user_seconds": 495.17,
+    "usr_bin_time_system_seconds": 19.33,
+    "peak_rss_bytes": 1466830848,
+    "swaps": 0,
+    "cpu_affinity": [8],
+    "threads": 1,
+    "memory_max_bytes": 3221225472,
+    "memory_swap_max_bytes": 0,
+    "restart": "no",
+    "systemd_runtime_cap_seconds": 1795,
+    "total_native_budget_seconds": 1800,
+    "resource_caveat": "Raw systemd footer reports Memory peak512.0K, inconsistent with native/getrusage and GNU time1432452KiB; retain both, use actual native RSS1466830848bytes for residency. Post-terminal systemctl queried an already-collected transient unit and lacks invocation/resource data; raw launch/footer and own-kernel cgroup/affinity startup are retained.",
+    "attempts": 1,
+    "automatic_retries": 0,
+    "incomplete_pair": null,
+    "complete_pairs_lost": 0,
+    "failure": null
+  },
+  "view": {
+    "pane_id": "w1:p7D",
+    "label": "A71 actual q1 raw EI Sigma full31x31 all128",
+    "actual_output_visible": true,
+    "terminal_match": "A71_OWNED_LAUNCH_TERMINAL rc=0",
+    "owned_view_closed": true,
+    "closure_receipt": "view-closure.json"
+  },
+  "earned_scope": "Complete actual full31x31 q1 raw EI Sigma additive component for all128 canonical targets/all12 bands/both spins/full111 ionic directions, plus complete saved reader. Not a full all64q six-array functional, full simulation, rate, heat, or merge claim. Original16 simulations and algebra/Schur/Fock proofs are carried without replay."
+}

@@ -56,6 +56,19 @@ def produce(output,*,slots=(0,64),preregistration=None):
     atomic_json(out/'actual-inputs.json',dict(reference=reference.bindings,material=c.bindings,
         paid_column=file_binding(column),paid_endpoints=file_binding(endpoint),
         preregistration=file_binding(preregistration),slots=slots))
+    input_binding=file_binding(out/'actual-inputs.json')
+    committed_slots=set()
+    def checkpoint_slot(i,s):
+        path=out/('paid-slot-%03d.npz'%i)
+        np.savez(path,times=reference.times,slot=np.array(i),outer_q=np.array(1),
+            **{name:arrays[name][s] for name in CHANNELS})
+        atomic_json(out/('paid-slot-%03d.json'%i),dict(schema='p254-paid-ee-slot-v1',
+            status='complete-owned-history',input_binding=input_binding,
+            reference_identity=file_binding(BUNDLE),slot=i,outer_q=1,
+            shape=[31,31,12,12],dtype=arrays['greater'].dtype.str,
+            data=file_binding(path)))
+        committed_slots.add(i)
+        print('EE_Q1_SLOT_%d_COMPLETE'%i,flush=True)
     def consume(block):
         nonlocal blocks
         if block.q!=1 or any(i not in slot_index for i in block.external):
@@ -74,6 +87,12 @@ def produce(output,*,slots=(0,64),preregistration=None):
                     continue
                 for name in CHANNELS:arrays[name][s,a,b]=block.values[name+'_total'][local,p]
                 seen[s,a,b]=True
+            if seen[s].all() and i not in committed_slots:
+                own_overlap=[row for row in overlap if row['slot']==i]
+                if len(own_overlap)==3:
+                    if not all(row['passed'] for row in own_overlap):
+                        raise ValueError('owned source-overlap check failed before checkpoint')
+                    checkpoint_slot(i,s)
         blocks+=1
         if blocks%16==0:
             row=dict(actual_blocks=blocks,completed_owned_cells=int(seen.sum()),
@@ -102,6 +121,8 @@ def produce(output,*,slots=(0,64),preregistration=None):
         manifest=manifest,stream=stream,overlap_findings=overlap,consumer=consumer,
         source_bindings=[file_binding(HERE/'produce_square.py'),file_binding(HERE.parent/'0064/gaussian_ee.py'),
                          file_binding(HERE.parent/'0064/time_gram.py')],
+        checkpoint_slots=sorted(committed_slots),
+        recovery='Complete paid-slot NPZ/JSON pairs retained. Relaunch only absent external slots; an uncommitted slot may be recomputed, no inner-mode/warm-history reuse promised.',
         limits=['Complete31x31 for the named external slots/q1 only, not the full outer mesh.',
                 'Original bare Gaussian first map only; no dressed reconstruction, rank truncation or physical closure.',
                 'Native total and separate global-direct/per-slot times are observations, not a demonstrated full-mesh speedup.'])

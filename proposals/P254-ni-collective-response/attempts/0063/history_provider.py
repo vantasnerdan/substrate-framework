@@ -2,9 +2,10 @@
 from pathlib import Path
 import json
 import numpy as np
-from history_storage import StoredNPZ, AUXILIARY, authenticate, binding, mapped
+from history_storage import (StoredNPZ, SOURCE_AUXILIARY, CONTROL_AUXILIARY,
+                             authenticate, binding, mapped)
 from production_transport import load_solution
-from saved_mean import REFERENCE, PI_CONVENTION
+from saved_mean import SavedMean, BARE_SCHEMA, REFERENCE, PI_CONVENTION
 
 SCHEMA = 'p254-dressed-history-provider-v1'
 
@@ -25,7 +26,7 @@ class SavedHistory:
                 s['sourcekind'] != 'single-physical-Hermitian-contour'):
             raise ValueError('complete physical common-history provider required')
         self.times = np.asarray(s['times_inverse_ry'], dtype='<f8')
-        self.banks, self.aux = {}, {}
+        self.banks, self.aux, self.control = {}, {}, None
         self.bindings = [binding(self.path)]
         try:
             for name, shape, statistics in (
@@ -40,14 +41,25 @@ class SavedHistory:
                         bank['order'] != s['integration_order'] or bank['beta'] != s['beta']):
                     raise ValueError('canonical final-bank dimensions/times/conventions differ')
                 self.bindings.append(entry['complete'])
-            for name in AUXILIARY:
+            for name in SOURCE_AUXILIARY:
                 self.aux[name] = mapped(s['auxiliary'][name])
                 self.bindings.append(s['auxiliary'][name])
+            # Old paid providers keep their original control descriptors in
+            # auxiliary. New providers separate optional readout-only data.
+            controls = s.get('represented_control')
+            if controls is None and all(k in s['auxiliary'] for k in CONTROL_AUXILIARY):
+                controls = {k: s['auxiliary'][k] for k in CONTROL_AUXILIARY}
+            if controls is not None:
+                self.control = {}
+                for name in CONTROL_AUXILIARY:
+                    self.control[name] = mapped(controls[name])
+                    self.bindings.append(controls[name])
+            shape = (len(self.times), len(self.times), 114, 114)
             if (self.aux['source_electron_less0'].shape != (128, 12, 12) or
-                    any(self.aux[k].shape != (len(self.times), len(self.times), 114, 114)
-                        for k in ('control_ret', 'control_less', 'source_gamma_ret', 'source_gamma_less')) or
+                    any(self.aux[k].shape != shape for k in ('source_gamma_ret', 'source_gamma_less')) or
+                    (self.control is not None and any(a.shape != shape for a in self.control.values())) or
                     self.aux['n'].shape != () or int(self.aux['n']) <= 0):
-                raise ValueError('original auxiliary dimensions differ')
+                raise ValueError('original auxiliary/control dimensions differ')
         except BaseException:
             self.close()
             raise
@@ -67,6 +79,10 @@ class SavedHistory:
         for a in self.aux.values():
             a._mmap.close()
         self.aux.clear()
+        if self.control is not None:
+            for a in self.control.values():
+                a._mmap.close()
+            self.control = None
 
     def __enter__(self):
         return self
@@ -76,17 +92,19 @@ class SavedHistory:
 
 
 class PreviousHistory:
-    """Mapped legacy original A58 preparation/controls or canonical provider."""
+    """Literal bare source, mapped legacy history, or canonical solved provider."""
     def __init__(self, path):
         self.path = Path(path).resolve()
         self.binding = binding(self.path)
-        self.provider = None
-        self.legacy = None
+        self.reference_identity = self.binding
+        self.provider = self.legacy = self.bare = None
+        self.control = None
         if self.path.suffix == '.npz':
             self.legacy = StoredNPZ(self.path)
             try:
                 self.times = self.legacy['times']
-                self.aux = {name: self.legacy[name] for name in AUXILIARY}
+                self.aux = {name: self.legacy[name] for name in SOURCE_AUXILIARY}
+                self.control = {name: self.legacy[name] for name in CONTROL_AUXILIARY}
                 nt = len(self.times)
                 if (self.legacy['electron_ret'].shape != (nt, nt, 128, 12, 12) or
                         self.legacy['electron_less'].shape != (nt, nt, 128, 12, 12) or
@@ -97,20 +115,41 @@ class PreviousHistory:
                 self.legacy.close()
                 raise
         else:
-            self.provider = SavedHistory(self.path)
-            self.times, self.aux = self.provider.times, self.provider.aux
+            spec = json.loads(self.path.read_bytes())
+            if spec['schema'] == BARE_SCHEMA:
+                self.bare = SavedMean(self.path)
+                try:
+                    self.times = self.bare.times
+                    self.reference_identity = self.bare.reference_identity
+                    ret, less = self.bare.gamma_slot()
+                    self.aux = dict(source_electron_less0=1j*self.bare.rho0,
+                        source_gamma_ret=ret, source_gamma_less=less, n=self.bare.archive['n'])
+                except BaseException:
+                    self.bare.close()
+                    raise
+            else:
+                self.provider = SavedHistory(self.path)
+                self.times, self.aux = self.provider.times, self.provider.aux
+                self.control = self.provider.control
 
     def electron_slot(self, slot):
+        if self.bare is not None:
+            return self.bare.electron_slot(slot)
         if self.provider is not None:
             return self.provider.electron_slot(slot)
         return self.legacy['electron_ret'][:, :, slot], self.legacy['electron_less'][:, :, slot]
 
     def gamma_slot(self):
+        if self.bare is not None:
+            return self.aux['source_gamma_ret'], self.aux['source_gamma_less']
         if self.provider is not None:
             return self.provider.gamma_slot()
         return self.legacy['gamma_ret'], self.legacy['gamma_less']
 
     def close(self):
+        if self.bare is not None:
+            self.aux.clear()
+            self.bare.close()
         if self.provider is not None:
             self.provider.close()
         if self.legacy is not None:

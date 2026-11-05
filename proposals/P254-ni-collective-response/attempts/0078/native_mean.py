@@ -1,0 +1,51 @@
+"""Actual owned CPU6 producer or persisted-consumer execution, all exits saved."""
+from pathlib import Path
+import json
+import os
+import resource
+import sys
+import time
+import traceback
+HERE = Path(__file__).resolve().parent
+sys.path[:0] = [str(HERE),str(HERE.parent/'0063')]
+from produce_fullhistory_mean import produce, OUT
+from history_storage import atomic_json
+
+
+def main(mode):
+    group = Path('/proc/self/cgroup').read_text().strip().split('::')[-1]
+    cg = Path('/sys/fs/cgroup')/group.lstrip('/')
+    runtime = dict(affinity=sorted(os.sched_getaffinity(0)),
+        threads={k:os.environ.get(k) for k in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','BLIS_NUM_THREADS','NUMEXPR_NUM_THREADS')},
+        limits={k:(cg/k).read_text().strip() for k in ('memory.max','memory.swap.max')},
+        HERDR={k:v for k,v in os.environ.items() if k.startswith('HERDR_')},argv=sys.argv,pid=os.getpid(),cgroup=group)
+    atomic_json(HERE/('receipts-'+mode)/'runtime.json',runtime)
+    if (runtime['affinity'] != [6] or set(runtime['threads'].values()) != {'1'} or
+            runtime['limits'] != {'memory.max':'3221225472','memory.swap.max':'0'} or
+            runtime['HERDR'].get('HERDR_PANE_ID') != 'w1:p7K' or os.environ.get('HERDR_ENV') != '1'):
+        raise ValueError('actual owned CPU6/one-thread/3GiB/noSwap context differs')
+    if mode == 'producer':
+        result = produce()
+    elif mode == 'consumer':
+        from consume_fullhistory_mean import consume
+        result = consume(OUT/'published-mean.json')
+    else:
+        raise ValueError('unknown execution mode')
+    atomic_json(HERE/(mode+'-result.json'),result)
+    print('A78_'+mode.upper()+'_COMPLETE '+json.dumps(result),flush=True)
+
+
+if __name__ == '__main__':
+    mode = sys.argv[1]
+    started = time.monotonic()
+    code = 0
+    try:
+        main(mode)
+    except BaseException:
+        code = 1
+        traceback.print_exc()
+    finally:
+        atomic_json(HERE/('receipts-'+mode)/'native-exit.json',dict(returncode=code,
+            elapsed_seconds=time.monotonic()-started,maxrss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
+        print('A78_'+mode.upper()+'_NATIVE_TERMINAL_'+str(code),flush=True)
+    raise SystemExit(code)
