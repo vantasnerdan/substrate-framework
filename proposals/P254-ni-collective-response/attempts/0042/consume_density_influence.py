@@ -102,7 +102,7 @@ def consume(baseline_receipt,current_projection_complete,output,*,max_bytes=256*
         density_filter=build_canonical_density_filter(corr,0,30.,(0,))
     directory=Path(output).resolve();directory.mkdir(parents=True,exist_ok=False)
     filter_bytes=sum(a.nbytes for a in density_filter.arrays.values())
-    output_matrix_bytes=4*1038**2*16
+    output_matrix_bytes=6*1038**2*16
     baseline_bytes=sum(int(b['bytes']) for b in baseline_meta['arrays'].values())
     if baseline_bytes+filter_bytes+output_matrix_bytes>max_bytes:
         raise ValueError('complete baseline/filter/joint payload exceeds shared256MiB cap; nothing truncated')
@@ -212,8 +212,16 @@ def consume(baseline_receipt,current_projection_complete,output,*,max_bytes=256*
             record['seconds']=perf_counter()-start
             atomic_json(directory/'density-actions.json',dict(calls=calls))
     coefficients=joint_coefficients(density_filter,inputs.directions,amplitude)
+    convolution=ProjectionCache(vertex_directory/'spectral-convolution-v1',dict(
+        kind='full-density-spectral-row-convolution',row_block_size=128,
+        baseline=baseline_binding,filter_archive=filter_binding,
+        physical_vertex_manifest=file_binding(vertices.path),physical_reference=producer['current_reference'],
+        basis=producer['basis'],current_bank=producer['current_bank'],
+        spectral_archive=producer['a37_filtered_operators'],
+        implementation=[file_binding(HERE/name) for name in
+            ('density_integration.py','density_moments.py','consume_density_influence.py')]))
     integration=integrate_density_residual(saved,provider,[*range(5),*(5+i for i in physical)],
-        projector,density_filter.density_segment_bounds,coefficients)
+        projector,density_filter.density_segment_bounds,coefficients,progress=progress,checkpoint=convolution)
     initial=density_filter.force_filter.initial_dual
     _,zs,_=corr._split(0,initial)
     prep=q@zs[0,:,:,0].T@q.conj().T
@@ -256,11 +264,12 @@ def consume(baseline_receipt,current_projection_complete,output,*,max_bytes=256*
             baseline_filter_operator_payload_bytes=baseline_bytes+filter_bytes+output_matrix_bytes,
             physical_density_vertex_cache=file_binding(vertices.path),
             vertex_cache_max_bytes=vertex_cache_max_bytes,
-            recovery='committed physical density vertices reusable; new backward solve/spectral convolution not claimed free',
+            spectral_convolution_cache=file_binding(convolution.path),
+            recovery='committed physical vertices and completed spectral row blocks reusable; only current block and eigenvertex RAM work uncommitted',
             peak_process_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024),
         implementation=[file_binding(p) for p in [
             *(HERE/name for name in ('consume_density_influence.py','canonical_density_filter.py',
-                'density_projection.py','density_integration.py','density_joint_readout.py',
+                'density_projection.py','density_integration.py','density_moments.py','density_joint_readout.py',
                 'durable_active_baseline.py')),
             HERE.parent/'0041/material_electron_ion_inputs.py',
             HERE.parent/'0030/canonical_force_filter.py',

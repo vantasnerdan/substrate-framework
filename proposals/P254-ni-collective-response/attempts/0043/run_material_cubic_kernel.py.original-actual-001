@@ -1,0 +1,161 @@
+"""Prepare missing full-state thirds once, then consume actual Ni/H cubic kernels.
+
+Original0/1/10/30 inverse-Ry time pairs, full internal64q/111x111 modes.
+External q and Cartesian readout indices are explicitly declared, not internal
+truncations. New output is exclusive; --resume reuses authenticated saved units.
+No numerical run or earned result is asserted by the existence of this source.
+"""
+import argparse
+import json
+from pathlib import Path
+from time import perf_counter
+import resource
+
+from cubic_material_source import HERE,ROOT,MATCHING,BOUNDARY,prepare_full_third
+from material_electron_ion_inputs import DEFAULT_MANIFEST,load_material,file_binding
+from cubic_periodic_material import PeriodicThird
+from cubic_cartesian_reference import CartesianReference
+from cubic_material_kernel import compute
+from reduced_projection_cache import ProjectionCache,atomic_json
+from substrate_framework.streamed_material_state import authenticate
+
+
+SOURCES = ('cubic_force_functional.py','cubic_ionic_donor.py','cubic_electronic_donor.py',
+    'cubic_material_source.py','cubic_periodic_material.py','cubic_cartesian_reference.py',
+    'cubic_material_kernel.py','run_material_cubic_kernel.py')
+
+
+def indices(text,size):
+    out = list(range(size)) if text == 'all' else [int(item) for item in text.split(',')]
+    if not out or len(set(out)) != len(out) or min(out)<0 or max(out)>=size:
+        raise ValueError('distinct valid original external indices required')
+    return out
+
+
+def output_bounds(specification,nq,ne,nt=4):
+    """Conservative raw-output bound, not a filesystem capacity probe.
+
+    Each chunk has3 complex[nt,nt,ne,ne] kernels and1 complex[nt,ne] mean.
+    Extra8192 bytes/chunk cover NPZ headers and JSON item/timing metadata;
+    2MiB plus3 specification copies cover final JSON/NPZ/manifest overhead.
+    No Phi block or original bank is stored.
+    """
+    chunks = nq*64
+    raw_chunk = 16*(3*nt*nt*ne*ne+nt*ne)
+    final_raw = nq*raw_chunk+8*(nt+nq+ne)
+    spec_bytes = len(json.dumps(specification,sort_keys=True).encode())
+    bound = chunks*(raw_chunk+8192)+final_raw+3*spec_bytes+(2<<20)
+    return dict(completed_chunks=chunks,raw_chunk_bytes=raw_chunk,
+        raw_chunk_total_bytes=chunks*raw_chunk,final_raw_bytes=final_raw,
+        conservative_output_bytes=bound,old_bank_copies=0,stored_phi_blocks=0)
+
+
+def completed_result(output,cache,specification,resume):
+    path = output/'result.json'
+    if not path.exists():
+        return None
+    record = json.loads(path.read_bytes())
+    if (not resume or record['status'] != 'complete'
+            or record['evaluation_specification'] != specification
+            or cache.manifest['status'] != 'complete'
+            or record['completed_chunk_cache'] != file_binding(cache.path)
+            or not cache.has('assembled')):
+        raise ValueError('already-complete cubic output is not this exact cache/configuration')
+    for q in specification['external_q']:
+        for internal in range(64):
+            if not cache.has('q/%02d/%02d'%(q,internal)):
+                raise ValueError('complete cubic output lacks an authenticated raw q chunk')
+    if record['output'] != cache.manifest['items']['assembled']['archive']:
+        raise ValueError('completed final output differs from cached material consumer')
+    authenticate(record['output'])
+    return file_binding(path)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--manifest',type=Path,default=Path(DEFAULT_MANIFEST))
+    commands = parser.add_subparsers(dest='command',required=True)
+    prepare = commands.add_parser('prepare',help='ONLY genuinely missing higher-jet contractions')
+    prepare.add_argument('--output',type=Path,required=True)
+    prepare.add_argument('--resume',action='store_true',help='reuse exact completed sector thirds, including complete output')
+    evaluate = commands.add_parser('evaluate',help='actual full internal q/mode kernel sum')
+    evaluate.add_argument('--source',type=Path,required=True)
+    evaluate.add_argument('--output',type=Path,required=True)
+    evaluate.add_argument('--resume',action='store_true',help='reuse exact completed q chunks or complete output')
+    evaluate.add_argument('--max-output-bytes',type=int,default=64<<20,
+                          help='explicit conservative output bound; wider external requests must fit this cap')
+    evaluate.add_argument('--external-q',default='0,1,2')
+    evaluate.add_argument('--external-rows',default='0,1,2,93,94,95',help='atom-major Cartesian or all111')
+    evaluate.add_argument('--frozen-reference',action='store_true',required=True,
+                          help='explicitly retain original quadratic Gaussian, not a selfconsistent history')
+    args = parser.parse_args(); started = perf_counter()
+    output = args.output.resolve()
+    if output == ROOT or ROOT in output.parents:
+        raise ValueError('numerical output must remain outside repository')
+    c,manifest,binding = load_material(args.manifest)
+    if args.command == 'prepare':
+        source = prepare_full_third(manifest,binding,output,resume=args.resume)
+        print(json.dumps(dict(source=source,elapsed_seconds=perf_counter()-started)))
+        return
+    external_q = indices(args.external_q,64); external_rows = indices(args.external_rows,111)
+    source_binding = file_binding(args.source)
+    source_record = json.loads(args.source.read_bytes())
+    if (source_record['schema'] != 'p254-a43-full-state-third-v1'
+            or source_record['status'] != 'complete' or source_record['matching'] != MATCHING
+            or source_record['coefficient_manifest'] != binding
+            or source_record['original_boundary'] != BOUNDARY
+            or source_record['original_lower_order_authority'] != manifest['specification']['context']['aggregate']):
+        raise ValueError('exact original full-state completed third source required')
+    for item in source_record['source_bindings']:
+        authenticate(item)
+    authenticate(source_record['arrays']); authenticate(source_record['sector_cache'])
+    source_bindings = [file_binding(HERE/name) for name in SOURCES]
+    reference = CartesianReference(c)
+    specification = dict(kind='physical-cubic-full-internal-q-mode-kernels',
+        coefficient_manifest=binding,third_source=source_binding,matching=MATCHING,
+        reference=reference.label,times_inverse_ry=reference.times.tolist(),
+        external_q=external_q,external_rows=external_rows,source_bindings=source_bindings)
+    bounds = output_bounds(specification,len(external_q),len(external_rows))
+    if args.max_output_bytes <= 0 or bounds['conservative_output_bytes'] > args.max_output_bytes:
+        raise ValueError('requested external output exceeds explicit byte cap: '+json.dumps(bounds))
+    output.mkdir(parents=True,exist_ok=args.resume)
+    cache = ProjectionCache(output/'q-kernels',specification)
+    existing = completed_result(output,cache,specification,args.resume)
+    if existing is not None:
+        print(json.dumps(dict(result=existing,reused_complete_output=True,
+                              elapsed_seconds=perf_counter()-started)),flush=True)
+        return
+    arrays,counts = compute(lambda:PeriodicThird(args.source,manifest,binding),
+                            reference,external_q,external_rows,cache)
+    ordered_chunks = [cache.manifest['items']['q/%02d/%02d'%(q,k)]['archive']
+                      for q in external_q for k in range(64)]
+    assembly_metadata = dict(ordered_raw_chunks=ordered_chunks,external_q=external_q,external_rows=external_rows)
+    if not cache.has('assembled'):
+        cache.put('assembled',arrays,metadata=assembly_metadata)
+    if cache.manifest['items']['assembled']['metadata'] != assembly_metadata:
+        raise ValueError('final material consumer is not the saved ordered raw-q sum')
+    record = dict(schema='p254-a43-material-cubic-kernel-v1',status='complete',
+        coefficient_manifest=binding,third_source=source_binding,
+        original_lower_order_authority=source_record['original_lower_order_authority'],
+        original_boundary=source_record['original_boundary'],matching=MATCHING,
+        evaluation_specification=specification,completed_chunk_cache=file_binding(cache.path),
+        output_bounds=bounds,maximum_output_bytes=args.max_output_bytes,
+        reference=reference.label,times_inverse_ry=reference.times.tolist(),
+        requested_times_inverse_ry=[0.,1.,10.,30.],external_q=external_q,external_rows=external_rows,
+        full_frozen_electronic_sector_count=128,source_bindings=source_bindings,
+        internal_sums=counts,output=cache.manifest['items']['assembled']['archive'],
+        units=dict(Phi='Ry/bohr^3',W='bohr^2',mean_force='Ry/bohr',
+                   greater_lesser_retarded='Ry^2/bohr^2',time='inverse Ry'),
+        mean_insertion='reported only; no old-force replacement or equilibrium cancellation',
+        kernel_insertion='reported only; if closing D use this connected force influence once, not a second curvature contact',
+        approximation='fixed original full-state third donor; original nonstationary quadratic Cartesian Gaussian; leading cubic force cumulant',
+        omitted=MATCHING['omitted'],selfconsistent=False,passive_dynamics_included=False,
+        lifetime_or_rate_computed=False,full_physical_goal_complete=False,
+        elapsed_seconds=perf_counter()-started,
+        maxrss_kib=int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
+    atomic_json(output/'result.json',record)
+    print(json.dumps(dict(result=file_binding(output/'result.json'))))
+
+
+if __name__ == '__main__':
+    main()

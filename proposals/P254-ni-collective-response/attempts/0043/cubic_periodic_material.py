@@ -1,0 +1,82 @@
+"""Sparse onsite plus finite-Ewald periodic three-leg material adapter.
+
+Only new third coefficients are exposed. The original force and complete C(q)
+are never computed, mutated, replaced or added here. A donor 0/1/2 subtraction
+is implemented by NOT importing any of those donor jets into the old Taylor
+model. Electronic onsite terms have no q dependence in lattice gauge.
+"""
+import json
+from pathlib import Path
+import numpy as np
+from cubic_material_source import MATCHING, BOUNDARY
+from cubic_ionic_donor import IonicThird
+from substrate_framework.streamed_material_state import authenticate,file_binding
+
+
+class PeriodicThird:
+    def __init__(self,source_path,manifest,manifest_binding):
+        self.binding = file_binding(source_path)
+        self.source = json.loads(Path(source_path).read_bytes())
+        record = self.source; self.mesh = np.array([4,4,4]); self.n = 64
+        if (record['schema'] != 'p254-a43-full-state-third-v2' or record['status'] != 'complete'
+                or record['coefficient_manifest'] != manifest_binding
+                or record['original_boundary'] != BOUNDARY or record['matching'] != MATCHING
+                or record['original_lower_order_authority'] != manifest['specification']['context']['aggregate']
+                or len(record['full_sector_lineage']) != 128):
+            raise ValueError('complete matched original-material third source required')
+        for binding in record['source_bindings']+record['material_sources']:
+            authenticate(binding)
+        with np.load(authenticate(record['arrays']),allow_pickle=False) as archive:
+            self.local = archive['local']; self.nonlocal_term = archive['nonlocal_term']
+            self.electronic_atoms = tuple(archive['electronic_atom_indices'].tolist())
+            self.cell = archive['cell']; positions = archive['positions']; charges = archive['charges']
+        if (self.electronic_atoms != tuple(record['electronic_atom_indices'])
+                or len(set(self.electronic_atoms)) != len(self.electronic_atoms)
+                or not self.electronic_atoms or min(self.electronic_atoms)<0 or max(self.electronic_atoms)>=37
+                or self.local.shape != (len(self.electronic_atoms),3,3,3) or self.nonlocal_term.shape != self.local.shape
+                or record['atom_names'] != ['Ni']*31+['H']*6):
+            raise ValueError('original Ni31H6 atom/third-coordinate order required')
+        self.ionic = IonicThird(self.cell,positions,charges,self.mesh)
+        self.indices = np.asarray(manifest['specification']['indexing']['q_indices'],int)
+        self.minus = np.asarray(manifest['specification']['indexing']['minus'],int)
+        expected = np.indices(tuple(self.mesh)).reshape(3,-1).T
+        minus = np.ravel_multi_index(tuple((-expected%self.mesh).T),tuple(self.mesh))
+        if not np.array_equal(self.indices,expected) or not np.array_equal(self.minus,minus):
+            raise ValueError('literal original q/Nyquist opposite maps differ')
+
+    def qindex(self,integer):
+        return int(np.ravel_multi_index(tuple(np.asarray(integer,int)%self.mesh),tuple(self.mesh)))
+
+    def third_block(self,q1,q2,external=None):
+        """Return q3 and separate canonical donor blocks [external,111,111]."""
+        if not 0 <= q1 < 64 or not 0 <= q2 < 64:
+            raise IndexError('original q index outside 0..63')
+        q3 = self.qindex(-self.indices[q1]-self.indices[q2])
+        rows = np.arange(111) if external is None else np.asarray(external,int)
+        ionic = self.ionic.block(self.indices[[q1,q2,q3]],rows)
+        local = self._onsite(self.local,rows)
+        nonlocal_term = self._onsite(self.nonlocal_term,rows)
+        return dict(q3=q3,bare_ionic=ionic,electronic_local=local,
+                    electronic_nonlocal=nonlocal_term,total=ionic+local+nonlocal_term)
+
+    def _onsite(self,tensor,rows):
+        result = np.zeros((len(rows),111,111),complex)
+        for index,row in enumerate(rows):
+            atom,axis = divmod(int(row),3)
+            if atom not in self.electronic_atoms:
+                raise ValueError('source has no computed electronic third for requested atom '+str(atom))
+            result[index,3*atom:3*atom+3,3*atom:3*atom+3] = tensor[self.electronic_atoms.index(atom),axis]/np.sqrt(self.n)
+        return result
+
+    def force_vertices(self,external_q,internal_q,rows):
+        """F_Q=-1/2 sum_k Phi[-Q,k,Q-k] u_k u_(Q-k).
+
+        Right opposite vertex is independently evaluated, NOT conjugated from
+        left. Both retain all111 internal Cartesian coordinates on both legs.
+        """
+        negative = int(self.minus[external_q])
+        left = self.third_block(negative,internal_q,rows)
+        right = self.third_block(external_q,int(self.minus[internal_q]),rows)
+        if right['q3'] != int(self.minus[left['q3']]):
+            raise ValueError('opposite periodic third-vertex momentum mismatch')
+        return left,right

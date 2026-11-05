@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemctl",
+    "--user",
+    "show",
+    "p254-a43-prepare-003",
+    "--property=InvocationID,ActiveState,SubState,MainPID,RuntimeMaxUSec,MemoryMax,MemorySwapMax,Restart,CPUAffinity,AllowedCPUs,EffectiveCPUs,WatchdogUSec,ExecMainStartTimestamp,ExecStart"
+  ],
+  "stdout": "Restart=no\nRuntimeMaxUSec=8min\nWatchdogUSec=0\nMainPID=3806337\nExecMainStartTimestamp=Thu 2026-11-05 01:21:55 UTC\nExecStart={ path=/usr/bin/env ; argv[]=/usr/bin/env PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 BLIS_NUM_THREADS=1 /usr/bin/taskset -c 6 /home/administrator/projects/substrate-framework/.venv/bin/python -u /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0043/run_material_cubic_kernel.py prepare --output /var/tmp/p254-a43-full-state-third-002 --resume --association-admission /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0043/actual-contraction-association-admission-001.json ; ignore_errors=no ; start_time=[Thu 2026-11-05 01:21:55 UTC] ; stop_time=[n/a] ; pid=3806337 ; code=(null) ; status=0/0 }\nEffectiveCPUs=\nAllowedCPUs=\nMemoryMax=4294967296\nMemorySwapMax=0\nCPUAffinity=6\nActiveState=active\nSubState=running\nInvocationID=4182f64891fb497e9884d65853ddb191\n",
+  "stderr": "",
+  "exit": 0
+}
