@@ -1,0 +1,63 @@
+{
+  "schema": "p254-focused-paid-number-channel-diagnostic-contract-v1",
+  "actual_time": "2026-11-05T08:16:04.291727+00:00",
+  "source": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0058/diagnose_collision_balance.py",
+    "bytes": 4186,
+    "sha256": "ac9bed398f49ec4dc538d5c0276d5da98fa2b22dd90ba2283549b1be578ebdba"
+  },
+  "components": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0056/material-003/catalog.json",
+    "bytes": 98589,
+    "sha256": "6e4244945118c3eb8aa8f857203cfa59d3ac8f492460e4f290512ca6c3962238"
+  },
+  "matched_input": {
+    "bytes": 16834732,
+    "path": "/var/tmp/p254-a53-fixed-kernel-material-003/actual-material-step.npz",
+    "sha256": "7a399a799f616c3c017978b1e0f87b55dbebfd849d21c1a5d02f91db78d72f72"
+  },
+  "new_output": {
+    "path": "/var/tmp/p254-a58-common-feedback-step-001/actual-material-step.npz",
+    "bytes": 20578134,
+    "sha256": "9c5ab0ea05aaf5c9ddfc43bfc9b99d1b9deca53cf99747a57d1ff8849e86fa8a"
+  },
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a58-paid-number-contraction-001.service",
+    "--property=RuntimeMaxSec=60",
+    "--property=MemoryMax=3221225472",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "--property=CPUAffinity=10",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "10",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0058/diagnose_collision_balance.py",
+    "--components",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0056/material-003/catalog.json",
+    "--output-state",
+    "/var/tmp/p254-a58-common-feedback-step-001/actual-material-step.npz",
+    "--result",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0058/actual-paid-number-channel-contraction-001.json"
+  ],
+  "new_kernel_evaluations": 0,
+  "cap_seconds": 60,
+  "question": "Is the real number-channel contraction already nonzero on the same G used to evaluate Sigma, or only with the newer unclosed G?",
+  "scope": "Exact finite sign/orientation checks plus actualpaidtableSciPyBLAScontractions; notfulltimecontinuity proof oraccuracy/conservationgate."
+}

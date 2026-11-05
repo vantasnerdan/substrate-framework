@@ -1,0 +1,1115 @@
+{
+  "schema": "p254-a60-complete-handoff-v1",
+  "status": "complete",
+  "api": {
+    "schema": "p254-a60-public-contract-v1",
+    "module": "streamed_ee.py",
+    "imports": "Place attempts/0060 and original attempts/0046 on Python module search path; A46 imports remain original/read-only.",
+    "signature": "stream_ee(factors, electron, times, consume, *, owned_q=None, owned_pairs=None, pair_batch=2, external_batch=2, static_slots=64, source_bindings=()) -> manifest",
+    "factors": "Original BareCoulombFactors/CoulombInputs ABI; original directed densities, features, feature_partner, weights, target, minus, slot_spin, ns, nq, m, n are used. Existing validate_physical prerequisites apply unchanged.",
+    "electron": "Callable electron(a,b) returns full [ns,m,m] complex greater and lesser arrays in exact supplied times index order. Reverse electron(b,a) is called independently. No adjoint/reverse inference; caller may lazily read genuine saved two-time data.",
+    "times": "Nonempty finite one-dimensional exact times. Unsorted grids are supported: retarded masks use actual times[a]>=times[b], including theta(0)=1. No time interpolation or time-step integration is performed.",
+    "ownership": "Default all64 outer q and all ordered pairs, all128 external slots and all64 exchange inner h. owned_q/owned_pairs are explicit partial-domain selections. For each q each requested pair/external slot is delivered exactly once. Sum disjoint q contributions; do not sum duplicate partitions. Partial kernels are marked full_physical_scope=false.",
+    "block": "Block(q:int, external:tuple[int], pairs:tuple[(a,b)], values:dict[str,complex128[external,pair,m,m]])",
+    "channels": [
+      "greater_direct",
+      "greater_exchange",
+      "greater_total",
+      "lesser_direct",
+      "lesser_exchange",
+      "lesser_total",
+      "retarded_direct",
+      "retarded_exchange",
+      "retarded_total"
+    ],
+    "physics": "Exactly original A46 shared superoperator/direct BLAS contractions and BareCoulombFactors normalization. All features, weights, inner momenta, explicit spins, bands and independently supplied complex reverse legs retained. No old physical proof replay or model change.",
+    "lifetime": "consume is synchronous and must persist or reduce before returning. Retaining all blocks defeats bounded memory. Exceptions propagate. The API does not claim restart or checkpoint-prefix semantics.",
+    "working_set": "No nt-squared numeric operands or accumulators. Retained static complex payload is min(static_slots,ns)*nq*m^4*16 bytes. X/Y payload is 2*(2*min(pair_batch,pair_count))*ns*features_q*m^2*16 bytes. Exchange gathered/transformed buffers are bounded by external_batch*nq*(2*pair_batch)*features_q*m^2*16 bytes each. Temporary conjugated density/BLAS arrays and original density/callback residency are additional. Actual observed RSS, not this payload formula, governs pilot acceptance.",
+    "reuse": "Static superoperators are built once per q/external group and retained across every history tile. Observed static_slots64 uses two groups at128 slots, versus eight for16, and fits the owned3GiB pilot (observed RSS2367479808 bytes). A128-slot static bank alone is2717908992 bytes, before resident density and work buffers, so is not the default. Shared operands and direct bubbles are repeated per bounded static group rather than retaining a whole-history cache. The64-slot actual3 evaluation was55.7906s versus61.5496s for16, but still slower than original whole-history44.2536s. This is a bounded-residency improvement, not a production speedup claim.",
+    "numeric_sink": "NumericSink(path) is a synchronous consume callback. close(manifest) closes numeric and streamed JSONL index and commits manifest/path/length/SHA256. Four independent direct/exchange greater/lesser channels are stored in NPY records; total/retarded are reconstructed with the exact original arithmetic/time mask. This is not physics truncation. Numeric stream, JSONL index, and JSON manifest are a single required artifact set.",
+    "numeric_consumer": "read_blocks(path) authenticates numeric/index lengths and SHA256, then yields all nine channels blockwise. Reader does not allocate a full time history or all-record index. Manifests bind exact source/time/q/pair ownership; filenames do not imply ownership.",
+    "scope": "Arbitrary actual count supported by API, not a claim that full31-node physical production has been computed. Pilot evidence is separate: finite31 independent tail/orientation check plus actual physical material q tiles and genuine5-node U31 sample history. No wholeallq production replay.",
+    "changelog": "A60 adds a true history-bounded execution/sink path; A46 all_time_q was already external/time batched but allocated whole-history X/Y and nine-channel global accumulators. Original A46 remains untouched. New API is additive to source preservation, not a renamed batching wrapper."
+  },
+  "scope": {
+    "delivered": "Arbitrary-count exact q-additive EE streaming evaluator and authenticated streamed numeric sink/consumer; no nt-squared evaluator operands or nine-channel global accumulators. Original A46 static factors/direct/exchange math unchanged.",
+    "physical_pilot": "Owned outer q1 only, all128 external/all64 inner/all12 bands/both spins/all original q1 features and independent complex reverse legs; q partitions explicitly partial. API default owns all64 outer q.",
+    "not_claimed": [
+      "full31 physical kernel production",
+      "wholeallq speedup",
+      "new physics or old Fock proof",
+      "selfconsistent closure/conservation or lifetime/rate result"
+    ]
+  },
+  "all_findings": [
+    {
+      "label": "finite31-all961-tail-independent-local-band-chain",
+      "channel": "greater_direct",
+      "maxabs": 0.0,
+      "difference_norm": 0.0,
+      "reference_norm": 54143.816556221216,
+      "relative": 0.0
+    },
+    {
+      "label": "finite31-all961-tail-independent-local-band-chain",
+      "channel": "greater_exchange",
+      "maxabs": 1.57938802538522e-12,
+      "difference_norm": 1.543976448357279e-11,
+      "reference_norm": 43710.75256039166,
+      "relative": 3.5322577579145773e-16
+    },
+    {
+      "label": "finite31-all961-tail-independent-local-band-chain",
+      "channel": "greater_total",
+      "maxabs": 1.6396148910025611e-12,
+      "difference_norm": 1.597270597937896e-11,
+      "reference_norm": 62816.4539451287,
+      "relative": 2.5427583023599846e-16
+    },
+    {
+      "label": "finite31-all961-tail-independent-local-band-chain",
+      "channel": "lesser_direct",
+      "maxabs": 0.0,
+      "difference_norm": 0.0,
+      "reference_norm": 44315.42733198271,
+      "relative": 0.0
+    },
+    {
+      "label": "finite31-all961-tail-independent-local-band-chain",
+      "channel": "lesser_exchange",
+      "maxabs": 9.764211987602427e-13,
+      "difference_norm": 1.0580394242604156e-11,
+      "reference_norm": 38635.96241890927,
+      "relative": 2.7384834180876734e-16
+    },
+    {
+      "label": "finite31-all961-tail-independent-local-band-chain",
+      "channel": "lesser_total",
+      "maxabs": 1.016845989170083e-12,
+      "difference_norm": 1.0960049534365367e-11,
+      "reference_norm": 44706.51447845362,
+      "relative": 2.45155536328997e-16
+    },
+    {
+      "label": "finite31-all961-tail-independent-local-band-chain",
+      "channel": "retarded_direct",
+      "maxabs": 0.0,
+      "difference_norm": 0.0,
+      "reference_norm": 34115.87141852257,
+      "relative": 0.0
+    },
+    {
+      "label": "finite31-all961-tail-independent-local-band-chain",
+      "channel": "retarded_exchange",
+      "maxabs": 1.2862197421537486e-12,
+      "difference_norm": 1.2479227752801892e-11,
+      "reference_norm": 44417.80919497754,
+      "relative": 2.8095099643529823e-16
+    },
+    {
+      "label": "finite31-all961-tail-independent-local-band-chain",
+      "channel": "retarded_total",
+      "maxabs": 1.5916157281026244e-12,
+      "difference_norm": 1.3018151716426778e-11,
+      "reference_norm": 48987.33972946555,
+      "relative": 2.6574522699783284e-16
+    },
+    {
+      "label": "finite31-sensitive-mutations",
+      "swapped_time_axes_norm": 20034.528708050126,
+      "conjugated_provider_norm": 4903.165399269961,
+      "dropped_final_pair_norm": 6609.879217523305,
+      "coverage_exact": true,
+      "manifest": {
+        "schema": "p254-a60-streamed-ee-v1",
+        "times": [
+          30.0,
+          29.0,
+          28.0,
+          27.0,
+          26.0,
+          25.0,
+          24.0,
+          23.0,
+          22.0,
+          21.0,
+          20.0,
+          19.0,
+          18.0,
+          17.0,
+          16.0,
+          15.0,
+          14.0,
+          13.0,
+          12.0,
+          11.0,
+          10.0,
+          9.0,
+          8.0,
+          7.0,
+          6.0,
+          5.0,
+          4.0,
+          3.0,
+          2.0,
+          1.0,
+          0.0
+        ],
+        "time_pair_order": "a-major-b-minor; greater then lesser operands",
+        "owned_pairs": "all",
+        "owned_outer_q": [
+          1
+        ],
+        "global_outer_q": 2,
+        "exchange_inner_h": 2,
+        "external_slots": 4,
+        "bands": 2,
+        "channels": [
+          "greater_direct",
+          "greater_exchange",
+          "greater_total",
+          "lesser_direct",
+          "lesser_exchange",
+          "lesser_total",
+          "retarded_direct",
+          "retarded_exchange",
+          "retarded_total"
+        ],
+        "layout": "external,pair,band,band; complex128",
+        "additive_axis": "outer_q",
+        "source_bindings": [],
+        "pair_batch": 7,
+        "external_batch": 3,
+        "static_slots": 3,
+        "lifetime": "consume synchronously; values valid for callback duration",
+        "reverse_legs": "independent electron(b,a) callback",
+        "full_physical_scope": false,
+        "blocks": 276,
+        "static_payload_peak": 1536,
+        "operands_payload_peak": 21504,
+        "output_payload_peak": 12096
+      }
+    },
+    {
+      "label": "actual-layout-batched4-versus-single1",
+      "batched_seconds": 0.13526101410388947,
+      "single_seconds": 0.144461115822196,
+      "maxabs": 1.6940658945086007e-21,
+      "selected_pair_batch": 2,
+      "external": 2,
+      "inner": 64,
+      "orders": 4
+    },
+    {
+      "label": "actual-NiH-dressed-old-new-all9channels",
+      "record": {
+        "manifest": {
+          "schema": "p254-a60-streamed-ee-v1",
+          "times": [
+            0.0,
+            0.5,
+            1.0
+          ],
+          "time_pair_order": "a-major-b-minor; greater then lesser operands",
+          "owned_pairs": "all",
+          "owned_outer_q": [
+            1
+          ],
+          "global_outer_q": 64,
+          "exchange_inner_h": 64,
+          "external_slots": 128,
+          "bands": 12,
+          "channels": [
+            "greater_direct",
+            "greater_exchange",
+            "greater_total",
+            "lesser_direct",
+            "lesser_exchange",
+            "lesser_total",
+            "retarded_direct",
+            "retarded_exchange",
+            "retarded_total"
+          ],
+          "layout": "external,pair,band,band; complex128",
+          "additive_axis": "outer_q",
+          "source_bindings": [
+            {
+              "path": "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+              "bytes": 59561233,
+              "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"
+            },
+            {
+              "path": "/var/tmp/p254-a58-common-feedback-step-002/actual-material-step.npz",
+              "bytes": 20578134,
+              "sha256": "e98de95ce506e9db54514c72a5dcd6ef410aed64d7b5e4a5310d1488b3b3a33b"
+            }
+          ],
+          "pair_batch": 2,
+          "external_batch": 2,
+          "static_slots": 16,
+          "lifetime": "consume synchronously; values valid for callback duration",
+          "reverse_legs": "independent electron(b,a) callback",
+          "full_physical_scope": false,
+          "blocks": 320,
+          "static_payload_peak": 339738624,
+          "operands_payload_peak": 63700992,
+          "output_payload_peak": 82944
+        },
+        "numeric": {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/dressed3.npyblocks",
+          "bytes": 10657792,
+          "sha256": "af3c4e77fcc7f766f327db2418edcfe5c73fe6533def092a2a389a9e5c945d0a"
+        },
+        "index": {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/dressed3.npyblocks.index.jsonl",
+          "bytes": 29317,
+          "sha256": "38b70cee017d9b9c56b955538831631957c2ed71242fe8d4f49f1af716151d14"
+        },
+        "block_count": 320,
+        "stored_channels": [
+          "greater_direct",
+          "greater_exchange",
+          "lesser_direct",
+          "lesser_exchange"
+        ]
+      },
+      "consumer": {
+        "complete_owned_q_coverage": true,
+        "norms": {
+          "greater_direct": 0.9114403899533777,
+          "greater_exchange": 0.012316591757240274,
+          "greater_total": 0.9011945189860391,
+          "lesser_direct": 0.8117908277272049,
+          "lesser_exchange": 0.00955820487189703,
+          "lesser_total": 0.8038493585605522,
+          "retarded_direct": 1.0527077669773446,
+          "retarded_exchange": 0.013521353220192673,
+          "retarded_total": 1.0412751622783698
+        },
+        "difference_norm": {
+          "greater_direct": 0.0,
+          "greater_exchange": 0.0,
+          "greater_total": 0.0,
+          "lesser_direct": 0.0,
+          "lesser_exchange": 0.0,
+          "lesser_total": 0.0,
+          "retarded_direct": 0.0,
+          "retarded_exchange": 0.0,
+          "retarded_total": 0.0
+        },
+        "maxabs": {
+          "greater_direct": 0.0,
+          "greater_exchange": 0.0,
+          "greater_total": 0.0,
+          "lesser_direct": 0.0,
+          "lesser_exchange": 0.0,
+          "lesser_total": 0.0,
+          "retarded_direct": 0.0,
+          "retarded_exchange": 0.0,
+          "retarded_total": 0.0
+        }
+      }
+    },
+    {
+      "label": "actual-NiH-genuine5-U31-all25pairs-nonzero-tail",
+      "times": [
+        0.0,
+        1.0,
+        15.0,
+        29.0,
+        30.0
+      ],
+      "U_indices": [
+        0,
+        1,
+        15,
+        29,
+        30
+      ],
+      "record": {
+        "manifest": {
+          "schema": "p254-a60-streamed-ee-v1",
+          "times": [
+            0.0,
+            1.0,
+            15.0,
+            29.0,
+            30.0
+          ],
+          "time_pair_order": "a-major-b-minor; greater then lesser operands",
+          "owned_pairs": "all",
+          "owned_outer_q": [
+            1
+          ],
+          "global_outer_q": 64,
+          "exchange_inner_h": 64,
+          "external_slots": 128,
+          "bands": 12,
+          "channels": [
+            "greater_direct",
+            "greater_exchange",
+            "greater_total",
+            "lesser_direct",
+            "lesser_exchange",
+            "lesser_total",
+            "retarded_direct",
+            "retarded_exchange",
+            "retarded_total"
+          ],
+          "layout": "external,pair,band,band; complex128",
+          "additive_axis": "outer_q",
+          "source_bindings": [
+            {
+              "path": "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+              "bytes": 59561233,
+              "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"
+            },
+            {
+              "path": "/var/tmp/p254-a52-requested-reference-001/producer/bundle.json",
+              "bytes": 5599,
+              "sha256": "c38f087b57e818517cb268d30c3be53a9305ead7eee107ebe85dd569c0fa99f0"
+            },
+            {
+              "path": "/var/tmp/p254-a52-requested-reference-001/producer/U.npy",
+              "bytes": 9142400,
+              "sha256": "7662d779f00a71771723a4bd01c44a241a6a184b5d4d20a3b58ef94407791e00"
+            }
+          ],
+          "pair_batch": 2,
+          "external_batch": 2,
+          "static_slots": 16,
+          "lifetime": "consume synchronously; values valid for callback duration",
+          "reverse_legs": "independent electron(b,a) callback",
+          "full_physical_scope": false,
+          "blocks": 832,
+          "static_payload_peak": 339738624,
+          "operands_payload_peak": 63700992,
+          "output_payload_peak": 82944
+        },
+        "numeric": {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/genuine5.npyblocks",
+          "bytes": 29597696,
+          "sha256": "7fb3a4f7b9f588f30faa97ad81237513b3329f31bdff6648d50bf9606ef4c667"
+        },
+        "index": {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/genuine5.npyblocks.index.jsonl",
+          "bytes": 78141,
+          "sha256": "2163189a33b956e0aee51c5859fe445c899e9b640c0e0adb098e333695b768cb"
+        },
+        "block_count": 832,
+        "stored_channels": [
+          "greater_direct",
+          "greater_exchange",
+          "lesser_direct",
+          "lesser_exchange"
+        ]
+      },
+      "consumer": {
+        "complete_owned_q_coverage": true,
+        "norms": {
+          "greater_direct": 1.4399259527324861,
+          "greater_exchange": 0.020999532353457313,
+          "greater_total": 1.4235010183320045,
+          "lesser_direct": 1.2840903365009735,
+          "lesser_exchange": 0.016545175700704837,
+          "lesser_total": 1.2711535074343911,
+          "retarded_direct": 1.5624601707744574,
+          "retarded_exchange": 0.02158701839443678,
+          "retarded_total": 1.5451946852524505
+        },
+        "difference_norm": {
+          "greater_direct": 0.0,
+          "greater_exchange": 0.0,
+          "greater_total": 0.0,
+          "lesser_direct": 0.0,
+          "lesser_exchange": 0.0,
+          "lesser_total": 0.0,
+          "retarded_direct": 0.0,
+          "retarded_exchange": 0.0,
+          "retarded_total": 0.0
+        },
+        "maxabs": {
+          "greater_direct": 0.0,
+          "greater_exchange": 0.0,
+          "greater_total": 0.0,
+          "lesser_direct": 0.0,
+          "lesser_exchange": 0.0,
+          "lesser_total": 0.0,
+          "retarded_direct": 0.0,
+          "retarded_exchange": 0.0,
+          "retarded_total": 0.0
+        }
+      },
+      "scope": "bare moving-reference actual electron Green; not dressed31/full31 collisions"
+    },
+    {
+      "label": "actual-dressed3-static64-allchannels",
+      "coverage_exact": true,
+      "manifest": {
+        "schema": "p254-a60-streamed-ee-v1",
+        "times": [
+          0.0,
+          0.5,
+          1.0
+        ],
+        "time_pair_order": "a-major-b-minor; greater then lesser operands",
+        "owned_pairs": "all",
+        "owned_outer_q": [
+          1
+        ],
+        "global_outer_q": 64,
+        "exchange_inner_h": 64,
+        "external_slots": 128,
+        "bands": 12,
+        "channels": [
+          "greater_direct",
+          "greater_exchange",
+          "greater_total",
+          "lesser_direct",
+          "lesser_exchange",
+          "lesser_total",
+          "retarded_direct",
+          "retarded_exchange",
+          "retarded_total"
+        ],
+        "layout": "external,pair,band,band; complex128",
+        "additive_axis": "outer_q",
+        "source_bindings": [
+          {
+            "path": "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+            "bytes": 59561233,
+            "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"
+          },
+          {
+            "path": "/var/tmp/p254-a58-common-feedback-step-002/actual-material-step.npz",
+            "bytes": 20578134,
+            "sha256": "e98de95ce506e9db54514c72a5dcd6ef410aed64d7b5e4a5310d1488b3b3a33b"
+          }
+        ],
+        "pair_batch": 2,
+        "external_batch": 2,
+        "static_slots": 64,
+        "lifetime": "consume synchronously; values valid for callback duration",
+        "reverse_legs": "independent electron(b,a) callback",
+        "full_physical_scope": false,
+        "blocks": 320,
+        "static_payload_peak": 1358954496,
+        "operands_payload_peak": 63700992,
+        "output_payload_peak": 82944
+      },
+      "norm": {
+        "greater_direct": 0.9114403899533776,
+        "greater_exchange": 0.012316591757240269,
+        "greater_total": 0.901194518986039,
+        "lesser_direct": 0.8117908277272048,
+        "lesser_exchange": 0.009558204871897031,
+        "lesser_total": 0.8038493585605522,
+        "retarded_direct": 1.0527077669773446,
+        "retarded_exchange": 0.013521353220192675,
+        "retarded_total": 1.0412751622783698
+      },
+      "difference_norm": {
+        "greater_direct": 0.0,
+        "greater_exchange": 0.0,
+        "greater_total": 0.0,
+        "lesser_direct": 0.0,
+        "lesser_exchange": 0.0,
+        "lesser_total": 0.0,
+        "retarded_direct": 0.0,
+        "retarded_exchange": 0.0,
+        "retarded_total": 0.0
+      },
+      "maxabs": {
+        "greater_direct": 0.0,
+        "greater_exchange": 0.0,
+        "greater_total": 0.0,
+        "lesser_direct": 0.0,
+        "lesser_exchange": 0.0,
+        "lesser_total": 0.0,
+        "retarded_direct": 0.0,
+        "retarded_exchange": 0.0,
+        "retarded_total": 0.0
+      }
+    }
+  ],
+  "all_native_exits": [
+    {
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--wait",
+        "--pipe",
+        "--collect",
+        "--unit=p254-a60-bounded-ee-001.service",
+        "--property=RuntimeMaxSec=570",
+        "--property=MemoryMax=3221225472",
+        "--property=MemorySwapMax=0",
+        "--property=Restart=no",
+        "--property=CPUAffinity=8",
+        "env",
+        "HERDR_ENV=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "NUMEXPR_NUM_THREADS=1",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/time",
+        "-v",
+        "-o",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-001/native-time.txt",
+        "/home/administrator/projects/substrate-framework/.venv/bin/python",
+        "-u",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/run_pilot.py"
+      ],
+      "exitcode": 0,
+      "elapsed_seconds": 341.02568688057363,
+      "wall_end": "2026-11-05T09:38:55Z",
+      "stdout.txt": {
+        "bytes": 1015,
+        "sha256": "4d9caa50089d51fe2cdd5f926a11d9ad539f4364f241180e6f558f30072edf5f"
+      },
+      "stderr.txt": {
+        "bytes": 284,
+        "sha256": "af63fbfcb738825b57519430da03968634b43cce11e651ad5b456b7cf82087b4"
+      },
+      "native-time.txt": {
+        "bytes": 923,
+        "sha256": "f89953e374b06b720e18001e07c5a18134a7bbff6f1e311e4b3b824fb742af48"
+      }
+    },
+    {
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--wait",
+        "--pipe",
+        "--collect",
+        "--unit=p254-a60-bounded-ee-002.service",
+        "--property=RuntimeMaxSec=180",
+        "--property=MemoryMax=3221225472",
+        "--property=MemorySwapMax=0",
+        "--property=Restart=no",
+        "--property=CPUAffinity=8",
+        "env",
+        "HERDR_ENV=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "NUMEXPR_NUM_THREADS=1",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/time",
+        "-v",
+        "-o",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-002/native-time.txt",
+        "/home/administrator/projects/substrate-framework/.venv/bin/python",
+        "-u",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/run_cache64.py"
+      ],
+      "exitcode": 0,
+      "elapsed_seconds": 98.1093507190235,
+      "wall_end": "2026-11-05T09:43:18Z",
+      "stdout.txt": {
+        "bytes": 38,
+        "sha256": "ea89e0b42bab97d9f3887296c100fcdb3ee65412b12cf454bbfaeea10bfc3fad"
+      },
+      "stderr.txt": {
+        "bytes": 233,
+        "sha256": "cce53d5078de1e4a3cae0cdf50eb502c9c2666145ca8a732674063bf1d404427"
+      },
+      "native-time.txt": {
+        "bytes": 913,
+        "sha256": "c2dced1c11e033cf2c29f0d8e5f722663756826bbdf38cb81183cfe247e57e1d"
+      }
+    }
+  ],
+  "costs": {
+    "conservative_native_wrapper_seconds": 439.1350375995971,
+    "all_native_exitcodes": [
+      0,
+      0
+    ],
+    "scientific_failures": [],
+    "prior_ee_seconds": 15722.905402571727,
+    "charged_ee_ledger_seconds": 16162.040440171324,
+    "ee_ceiling_seconds": 24000,
+    "new_native_ceiling_seconds": 600,
+    "cpu_user_seconds": 352.58000000000004,
+    "cpu_system_seconds": 85.75,
+    "peak_rss_bytes": 2367479808,
+    "swaps": 0,
+    "all_timings": [
+      {
+        "label": "finite31-narrow-boundary-once",
+        "seconds": 1.2898499579168856,
+        "peak_rss_bytes": 157839360
+      },
+      {
+        "label": "load-original-all128-all64-density",
+        "seconds": 37.981954803690314,
+        "peak_rss_bytes": 783540224
+      },
+      {
+        "label": "actual-layout-alternatives",
+        "seconds": 0.5101945041678846,
+        "peak_rss_bytes": 1019686912
+      },
+      {
+        "label": "actual-dressed-original-A46-q1-all3times",
+        "seconds": 44.25358919799328,
+        "peak_rss_bytes": 1232338944
+      },
+      {
+        "label": "actual-dressed-streamed-q1-all3times",
+        "seconds": 61.54960121586919,
+        "peak_rss_bytes": 1355087872
+      },
+      {
+        "label": "actual-dressed-persisted-consumer",
+        "seconds": 0.624970621895045,
+        "peak_rss_bytes": 1355087872
+      },
+      {
+        "label": "actual-U31-genuine5-streamed-q1-all25pairs",
+        "seconds": 165.63432565098628,
+        "peak_rss_bytes": 1355087872
+      },
+      {
+        "label": "actual-U31-independent-old-A46-tail2times",
+        "seconds": 23.701211215928197,
+        "peak_rss_bytes": 1355087872
+      },
+      {
+        "label": "actual-genuine5-persisted-consumer",
+        "seconds": 0.7258582659997046,
+        "peak_rss_bytes": 1355087872
+      }
+    ],
+    "cache64_load_seconds": 38.43535071704537,
+    "cache64_evaluator_seconds": 55.790584736038
+  },
+  "performance_findings": {
+    "old_whole_history_actual3_q_seconds": 44.25358919799328,
+    "stream16_actual3_q_seconds": 61.54960121586919,
+    "stream64_actual3_q_seconds": 55.790584736038,
+    "stream64_to_old_ratio": 1.2607019169999407,
+    "stream64_to_stream16_ratio": 0.9064329196929654,
+    "genuine5_stream16_all25pairs_q_seconds": 165.63432565098628,
+    "interpretation": "Bounded-memory success, not a speed gain over admitted A46 small-history reference. Actual64 reduces repeated operand/direct work from8 groups to2, improves observed small-history timing versus16, fits3GiB; full31 throughput unmeasured. Timings include differing consumer work: stream16 writes sink;64 compares blocks; old computes in memory. One sample per alternative, not a statistical benchmark."
+  },
+  "memory_findings": {
+    "actual16_peak_rss_bytes": 1355087872,
+    "actual64_peak_rss_bytes": 2367479808,
+    "physical64_static_payload_bytes": 1358954496,
+    "physical128_static_payload_bytes": 2717908992,
+    "max_feature_count_original_bank": 46,
+    "pilot_q1_feature_count": 27,
+    "claim": "Evaluator live numeric state depends on bounded tile/static dimensions, not nt^2. Callback residency is caller-owned. Peak64 observed at actual3; arbitrary31 physical peak was not separately measured.",
+    "cgroup_summary_disagreement": "First systemd summary printed Memory peak512.0K, inconsistent with native /usr/bin/time and ru_maxrss1.355GB; do not treat that summary as true working set. Native RSS and zero swaps are used."
+  },
+  "original_source_inventory": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/streamed_ee.py",
+      "bytes": 11228,
+      "sha256": "ce04d706b66dfbfe5abbb058c54ac9cd3e7c4c58c9ce7e45f8b9710c1dde49c5"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/run_pilot.py",
+      "bytes": 13022,
+      "sha256": "f026ec71deed28a71fb5fa38fcd5fc5f2a2e311a0dd240c4a35bb3df7d118646"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_shared.py",
+      "bytes": 5998,
+      "sha256": "ab5d33e6b0c38f9fc791a513d1c988418e9028a7d18ef09c0b7d8d279adfdd4f"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_blas.py",
+      "bytes": 5558,
+      "sha256": "fb496eb5bbfa1395baf5c1a11116a8b415a58ca607d1794cf02eae79262e10c2"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_contractions.py",
+      "bytes": 7587,
+      "sha256": "f0f8cfe9535c00320d2d173190403ad8e0843b6792ec18a02ab411486dd04b65"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/bare_coulomb_factors.py",
+      "bytes": 3713,
+      "sha256": "b6e8397fab0a09225f369f1a5b0f31bfba467413644b10a19ae2243ae367116d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/coulomb_material_inputs.py",
+      "bytes": 5691,
+      "sha256": "d680b82275d8baad7cfc9d1b8f5c3258569b199656942dfb307a59157d0b6e0a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/material_electron_ion_inputs.py",
+      "bytes": 11609,
+      "sha256": "a31dc23eb3ee7fd06178885bdaf9c97a57abaac386e9c98c0d19c9cc693cc523"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0056/dressed_reference.py",
+      "bytes": 3570,
+      "sha256": "57ab53bc66570516cef19d97e448e627d8002c58919e70cae49262a2014dd7cf"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0052/general_moving_reference.py",
+      "bytes": 6968,
+      "sha256": "5923832aee95b325ac26ac452fe48ce08fc8587e926f7c8bcf4c4020d132741b"
+    }
+  ],
+  "original_material_bindings_record": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/report.json",
+    "bytes": 1918062,
+    "sha256": "a602c300915408c10cffab9c887efd25e8c7db63b0b273c0c41df885f9a16749"
+  },
+  "settled_api_source_binding": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/streamed_ee.py",
+    "bytes": 11228,
+    "sha256": "375efc1a3f008ae372c5167e8dc760b0dfd12d58d847aee95a7d1fe3f24e9bc6"
+  },
+  "source_delta_after_numeric_execution": "Only public default static_slots changed16->64, the explicit64 configuration exercised in second actual material run. Contractions/order/layout/sink/readers unchanged from source hashed in both native preregistrations.",
+  "numeric_outputs": [
+    {
+      "manifest": {
+        "schema": "p254-a60-streamed-ee-v1",
+        "times": [
+          0.0,
+          0.5,
+          1.0
+        ],
+        "time_pair_order": "a-major-b-minor; greater then lesser operands",
+        "owned_pairs": "all",
+        "owned_outer_q": [
+          1
+        ],
+        "global_outer_q": 64,
+        "exchange_inner_h": 64,
+        "external_slots": 128,
+        "bands": 12,
+        "channels": [
+          "greater_direct",
+          "greater_exchange",
+          "greater_total",
+          "lesser_direct",
+          "lesser_exchange",
+          "lesser_total",
+          "retarded_direct",
+          "retarded_exchange",
+          "retarded_total"
+        ],
+        "layout": "external,pair,band,band; complex128",
+        "additive_axis": "outer_q",
+        "source_bindings": [
+          {
+            "path": "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+            "bytes": 59561233,
+            "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"
+          },
+          {
+            "path": "/var/tmp/p254-a58-common-feedback-step-002/actual-material-step.npz",
+            "bytes": 20578134,
+            "sha256": "e98de95ce506e9db54514c72a5dcd6ef410aed64d7b5e4a5310d1488b3b3a33b"
+          }
+        ],
+        "pair_batch": 2,
+        "external_batch": 2,
+        "static_slots": 16,
+        "lifetime": "consume synchronously; values valid for callback duration",
+        "reverse_legs": "independent electron(b,a) callback",
+        "full_physical_scope": false,
+        "blocks": 320,
+        "static_payload_peak": 339738624,
+        "operands_payload_peak": 63700992,
+        "output_payload_peak": 82944
+      },
+      "numeric": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/dressed3.npyblocks",
+        "bytes": 10657792,
+        "sha256": "af3c4e77fcc7f766f327db2418edcfe5c73fe6533def092a2a389a9e5c945d0a"
+      },
+      "index": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/dressed3.npyblocks.index.jsonl",
+        "bytes": 29317,
+        "sha256": "38b70cee017d9b9c56b955538831631957c2ed71242fe8d4f49f1af716151d14"
+      },
+      "block_count": 320,
+      "stored_channels": [
+        "greater_direct",
+        "greater_exchange",
+        "lesser_direct",
+        "lesser_exchange"
+      ]
+    },
+    {
+      "manifest": {
+        "schema": "p254-a60-streamed-ee-v1",
+        "times": [
+          0.0,
+          1.0,
+          15.0,
+          29.0,
+          30.0
+        ],
+        "time_pair_order": "a-major-b-minor; greater then lesser operands",
+        "owned_pairs": "all",
+        "owned_outer_q": [
+          1
+        ],
+        "global_outer_q": 64,
+        "exchange_inner_h": 64,
+        "external_slots": 128,
+        "bands": 12,
+        "channels": [
+          "greater_direct",
+          "greater_exchange",
+          "greater_total",
+          "lesser_direct",
+          "lesser_exchange",
+          "lesser_total",
+          "retarded_direct",
+          "retarded_exchange",
+          "retarded_total"
+        ],
+        "layout": "external,pair,band,band; complex128",
+        "additive_axis": "outer_q",
+        "source_bindings": [
+          {
+            "path": "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+            "bytes": 59561233,
+            "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"
+          },
+          {
+            "path": "/var/tmp/p254-a52-requested-reference-001/producer/bundle.json",
+            "bytes": 5599,
+            "sha256": "c38f087b57e818517cb268d30c3be53a9305ead7eee107ebe85dd569c0fa99f0"
+          },
+          {
+            "path": "/var/tmp/p254-a52-requested-reference-001/producer/U.npy",
+            "bytes": 9142400,
+            "sha256": "7662d779f00a71771723a4bd01c44a241a6a184b5d4d20a3b58ef94407791e00"
+          }
+        ],
+        "pair_batch": 2,
+        "external_batch": 2,
+        "static_slots": 16,
+        "lifetime": "consume synchronously; values valid for callback duration",
+        "reverse_legs": "independent electron(b,a) callback",
+        "full_physical_scope": false,
+        "blocks": 832,
+        "static_payload_peak": 339738624,
+        "operands_payload_peak": 63700992,
+        "output_payload_peak": 82944
+      },
+      "numeric": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/genuine5.npyblocks",
+        "bytes": 29597696,
+        "sha256": "7fb3a4f7b9f588f30faa97ad81237513b3329f31bdff6648d50bf9606ef4c667"
+      },
+      "index": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/genuine5.npyblocks.index.jsonl",
+        "bytes": 78141,
+        "sha256": "2163189a33b956e0aee51c5859fe445c899e9b640c0e0adb098e333695b768cb"
+      },
+      "block_count": 832,
+      "stored_channels": [
+        "greater_direct",
+        "greater_exchange",
+        "lesser_direct",
+        "lesser_exchange"
+      ]
+    }
+  ],
+  "pilot_report": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/report.json",
+    "bytes": 1918062,
+    "sha256": "a602c300915408c10cffab9c887efd25e8c7db63b0b273c0c41df885f9a16749"
+  },
+  "cache64_report": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/cache64-002/report.json",
+    "bytes": 5422,
+    "sha256": "cbbed14c56afb04aca591f4b48cdb97679f324d5ae9f3af0519cfb7c204f6b64"
+  },
+  "owned_view": {
+    "pane": "w1:p6Y",
+    "tab": "w1:t6P",
+    "native_terminal_observed": [
+      0,
+      0
+    ],
+    "sole_shell_proof": "herdr pane process-info --pane w1:p6Y: shell_pid11391, foreground group11391, only /bin/bash after both exits",
+    "closed": "herdr tab close w1:t6P returned type ok"
+  },
+  "controls": {
+    "all_scientific_native_argv_stdout_stderr_exit": "receipts-001 and receipts-002",
+    "runtime_affinity_env": {
+      "affinity": [
+        8
+      ],
+      "env": {
+        "HERDR_ENV": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "no_swap": "systemd MemorySwapMax=0"
+    },
+    "ancillary_cli_errors": [
+      {
+        "command": "herdr pane (help discovery)",
+        "exit": 2
+      },
+      {
+        "command": "herdr pane process-info w1:p6Y (missing --pane)",
+        "exit": 2
+      }
+    ],
+    "ancillary_cli_error_scope": "Control syntax discovery only; no numeric launch failure. Subsequent correct process-info supplied sole-shell proof."
+  },
+  "new_file_inventory_excluding_this_handoff": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/api-contract.json",
+      "bytes": 4765,
+      "sha256": "5143f9dda17f1ded10bdef9eb1a76d9ad3bbfde8b431dcec324f53d5d1f1f178"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/cache64-002/preregistered-contract.json",
+      "bytes": 878,
+      "sha256": "ba57731f3bc6360d327537adcba956a0008cb3fb68d2e9edca7d999b85b1c275"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/cache64-002/report.json",
+      "bytes": 5422,
+      "sha256": "cbbed14c56afb04aca591f4b48cdb97679f324d5ae9f3af0519cfb7c204f6b64"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/launch_pilot.py",
+      "bytes": 2203,
+      "sha256": "7beb6559bf3d10e754b1bfc317b376859274c7cb6bcf07fa58f04d837fc68d52"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/dressed3.npyblocks",
+      "bytes": 10657792,
+      "sha256": "af3c4e77fcc7f766f327db2418edcfe5c73fe6533def092a2a389a9e5c945d0a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/dressed3.npyblocks.index.jsonl",
+      "bytes": 29317,
+      "sha256": "38b70cee017d9b9c56b955538831631957c2ed71242fe8d4f49f1af716151d14"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/dressed3.npyblocks.json",
+      "bytes": 2198,
+      "sha256": "d89fb345bdb8ed166cf8acfd1c3839edb06beac9e84f97dfd9c4d6fa9a12a391"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/finite31-boundary.json",
+      "bytes": 5746,
+      "sha256": "db6887c95650704b7043a79eb53f51a0f4bd41a454da385a2638fe951140500a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/genuine5.npyblocks",
+      "bytes": 29597696,
+      "sha256": "7fb3a4f7b9f588f30faa97ad81237513b3329f31bdff6648d50bf9606ef4c667"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/genuine5.npyblocks.index.jsonl",
+      "bytes": 78141,
+      "sha256": "2163189a33b956e0aee51c5859fe445c899e9b640c0e0adb098e333695b768cb"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/genuine5.npyblocks.json",
+      "bytes": 2418,
+      "sha256": "c869f074d280fd1cb4b119cf266dd55c9a3a3b3bb4eab41f4035641c42847fa8"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/preregistered-contract.json",
+      "bytes": 3660,
+      "sha256": "b672be358664917a4291de9f97fe8665a3807124416136969e9302c4045a1f0b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/progress.json",
+      "bytes": 1913418,
+      "sha256": "2adf7a0addc2994edcb83c4520b1832f2ab03da35ebbae610be5a3f5a55025ad"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/pilot-001/report.json",
+      "bytes": 1918062,
+      "sha256": "a602c300915408c10cffab9c887efd25e8c7db63b0b273c0c41df885f9a16749"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-001/exit.json",
+      "bytes": 1453,
+      "sha256": "23bc9d2b81bd80157243f70b0cf12b7e5339e6a7aff4afcce979ea6326df76dd"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-001/launch.json",
+      "bytes": 1256,
+      "sha256": "ee9587fe8dd652d8ad6195ced17fd1f92822abc606e9600fc59d390644e0a5ce"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-001/native-time.txt",
+      "bytes": 923,
+      "sha256": "f89953e374b06b720e18001e07c5a18134a7bbff6f1e311e4b3b824fb742af48"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-001/stderr.txt",
+      "bytes": 284,
+      "sha256": "af63fbfcb738825b57519430da03968634b43cce11e651ad5b456b7cf82087b4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-001/stdout.txt",
+      "bytes": 1015,
+      "sha256": "4d9caa50089d51fe2cdd5f926a11d9ad539f4364f241180e6f558f30072edf5f"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-002/exit.json",
+      "bytes": 1451,
+      "sha256": "677eca14fe27e4c695a0001bdd0105fdcf47f51cc1eec0d7cc066a0817263dd9"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-002/launch.json",
+      "bytes": 1258,
+      "sha256": "57937bd67e6bb54a30fbcd4d1e764e832a14368c802357bb37d71e6a7f8fd365"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-002/native-time.txt",
+      "bytes": 913,
+      "sha256": "c2dced1c11e033cf2c29f0d8e5f722663756826bbdf38cb81183cfe247e57e1d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-002/stderr.txt",
+      "bytes": 233,
+      "sha256": "cce53d5078de1e4a3cae0cdf50eb502c9c2666145ca8a732674063bf1d404427"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/receipts-002/stdout.txt",
+      "bytes": 38,
+      "sha256": "ea89e0b42bab97d9f3887296c100fcdb3ee65412b12cf454bbfaeea10bfc3fad"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/run_cache64.py",
+      "bytes": 4251,
+      "sha256": "7a069ced9310c98404fa8c3d0f668b3d98a478e4db282ad5b0026d05a17c2c5e"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/run_pilot.py",
+      "bytes": 13022,
+      "sha256": "f026ec71deed28a71fb5fa38fcd5fc5f2a2e311a0dd240c4a35bb3df7d118646"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0060/streamed_ee.py",
+      "bytes": 11228,
+      "sha256": "375efc1a3f008ae372c5167e8dc760b0dfd12d58d847aee95a7d1fe3f24e9bc6"
+    }
+  ],
+  "new_payload_bytes_excluding_this_handoff": 44259041,
+  "intentionally_unchanged": "No original/shared source, physics, old numeric bank, shared documentation, branch or Git change. No builds/lints/formatters. No scientific bank copy/deletion.",
+  "main_followup": "Use stream_ee with genuine lazy electron provider and source bindings; aggregate q-additive blocks through sink/consumer. Arbitrary-count implementation is complete, but production scheduling/full31 physics and integration remain root-owned. Do not infer a small-history speedup."
+}

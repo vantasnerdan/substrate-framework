@@ -1,0 +1,59 @@
+{
+  "status": "complete-scoped-method-pilot",
+  "route_verdict": "Exact all-rank implementation agrees with A51; no speed gain in the prescribed pilot. Do not promote this fallback as a performance improvement.",
+  "api": {
+    "module": "gaussian_cubic_time.py",
+    "class": "GaussianCubicTimeSeparated(reference, chunk=16)",
+    "q_additive_method": "accumulate_q(left, right, k, partner, out)",
+    "output_initializer": "zeros(external_coordinates)",
+    "causal_finalizer": "retarded(out)",
+    "raw_generator_identity": "stationarity_defect(reference, q)",
+    "scope": "Original GaussianTransitions/SavedMovingReference only, not dressed histories. All phase coordinates and independent q/opposite-q/left/right complex legs retained."
+  },
+  "scope": {"external_q": 0, "internal_q": 1, "partner_q": 3, "ordered_routes": [1], "ionic_coordinates": 111, "genuine_times_inverse_ry": [0.0, 30.0], "ordered_time_pairs": 4, "phase_dimensions": [222, 222], "discarded_modes": 0},
+  "findings": [
+    {"component": "greater", "difference_frobenius": 3.230333010146975e-20, "relative_difference": 3.2151459828007327e-16},
+    {"component": "lesser", "difference_frobenius": 3.358264320407222e-20, "relative_difference": 3.3424758391857105e-16},
+    {"component": "retarded", "difference_frobenius": 3.559010063773474e-20, "relative_difference": 1.2763706652147007e-15}
+  ],
+  "stationarity": {
+    "bridge": "Simultaneous derivative = S_q(t) [A_q W0_q + W0_q A_minus_q.T] S_minus_q(s).T. The finite input identity is required for time translation; no sampled near-commutator theorem is asserted.",
+    "q1_raw_defect_frobenius": 0.2223984642644781,
+    "q3_raw_defect_frobenius": 0.22239846426447807,
+    "q1_relative_defect": 3.675338133971689e-5,
+    "decision": "Raw defect preserved, general t/s dependence used; no stationarity shortcut."
+  },
+  "cost": {
+    "A51_contraction_seconds": 1.2558426391333342,
+    "A51_including_covariance_legs_seconds": 1.2933855750598013,
+    "candidate_total_seconds": 3.5710749849677086,
+    "candidate_transform_seconds": 2.2538633667863905,
+    "candidate_assembly_seconds": 1.3035895600914955,
+    "measured_contraction_speedup": 0.3516707558423588,
+    "maxrss_kib": 784264,
+    "peak_feature_bank_bytes": 25233408,
+    "native_process_wall_seconds": 59.47951881727204,
+    "native_process_cpu_seconds": 59.479841,
+    "systemd_service_runtime_seconds": 59.863,
+    "systemd_cpu_seconds": 59.765,
+    "preceding_symbolic_wall_seconds": 1.97,
+    "conservative_appended_native_charge_seconds": 61.833,
+    "prior_global_costs": "retained, not reset",
+    "resource_evidence": "Actual affinity [8], all five thread settings1, memory.max3221225472, memory.swap.max0, Restart=no in launch argv, cpuset controller unavailable. systemd reported588KiB memory peak disagrees with own ru_maxrss; own ru_maxrss is the residency result."
+  },
+  "analytic_cost_diagnosis": "For equal ionic dimension d and full phase dimensions2d, A51 leading dense multiply count is6 nt^2 d^4 across greater/lesser; this factorization is8 nt^2 d^4 +18 nt d^4 for shared right and independent greater/lesser left banks. Time reuse removes repeated transforms but cannot beat the leading pair assembly count in this uncompressed all-phase representation. These are arithmetic counts, not a measured31-time runtime. No production extension was run.",
+  "evidence": {
+    "result": {"path": "/var/tmp/p254-a65-time-factor-001/result.json", "bytes": 1873781, "sha256": "a07a3085163054babec95cb4836604a7be4dfdeabfab462a62c9e8ff76c5d0f6"},
+    "arrays": {"path": "/var/tmp/p254-a65-time-factor-001/comparison-arrays.npz", "bytes": 7101442, "sha256": "9c57d844d95581a9e052d4bff05e607ced353ff95b5b8264de6c8419c9d11af6"},
+    "raw_actual_inputs": {"path": "/var/tmp/p254-a65-time-factor-001/actual-inputs.npz", "bytes": 51653676, "sha256": "5f59e02c2ed8b84745c4c5e78ccb0afa49927de8773b8217933cdfc6e9b219f8"},
+    "native_outcome": {"path": "/var/tmp/p254-a65-time-factor-001/native-outcome.json", "bytes": 3700, "sha256": "a02c66c33635b01c2ac771d9e6b1777c2e80e19ca745fd1f2056d065fb22eaf0"},
+    "native_startup": {"path": "/var/tmp/p254-a65-time-factor-001/native-startup.json", "bytes": 3415, "sha256": "dadd25d0a95e530ca306cc07d7312f2e83a59188c770ea23cf9717eb33ed7b77"},
+    "launch": {"path": "/var/tmp/p254-a65-time-factor-001/launch.json", "bytes": 2276, "sha256": "c529fb24242f42928190287211aae5344cfddb83e203e4e06994a749453e3772"},
+    "terminal": {"path": "/var/tmp/p254-a65-time-factor-001/terminal.json", "bytes": 2323, "sha256": "cd9078fa4788fcdd0c66ee1c2afa7d16a58b9a7d5fbf08edd18281953a559fd8"},
+    "stdout": {"path": "/var/tmp/p254-a65-time-factor-001/stdout", "bytes": 1541171, "sha256": "f88aae87e96d714ae33ba78bdc843d633d425ec28b726515d0c454dfe7d4d23c"},
+    "stderr": {"path": "/var/tmp/p254-a65-time-factor-001/stderr", "bytes": 275, "sha256": "17e95bcd7bf38cb6484cfd7a17c568de6c37566afca7622e8e2269d8c1628867"}
+  },
+  "view_closed": {"tab": "w1:t6T", "pane": "w1:p74", "after_terminal_exit": 0, "close_response": {"id": "cli:tab:close", "result": {"type": "ok"}}},
+  "unchanged": "Root preregistration preserved; no source edits outside0065; no all64/full31 production; no original16 replay, install or automatic retry.",
+  "verification_exercised": "Immediate finite SymPy entrywise bilinear identity plus orientation/normalization/missing-mode mutations, then one final actual sourced pilot and saved-array public-consumer action. No build, formatter, lint or unrelated suite."
+}

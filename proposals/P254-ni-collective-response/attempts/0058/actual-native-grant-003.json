@@ -1,0 +1,77 @@
+{
+  "schema": "p254-actual-common-feedback-native-grant-v1",
+  "actual_time": "2026-11-05T09:12:34.389887+00:00",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a58-common-feedback-step-003.service",
+    "--property=RuntimeMaxSec=240",
+    "--property=MemoryMax=3221225472",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "--property=CPUAffinity=10",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "10",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0058/run_feedback_step.py",
+    "--components",
+    "/var/tmp/p254-a58-dressed-feedback-002/iteration-catalog.json",
+    "--mean-result",
+    "/var/tmp/p254-a58-cached-mean-003/reference-result.json",
+    "--previous",
+    "/var/tmp/p254-a58-common-feedback-step-002/actual-material-step.npz",
+    "--baseline-catalog",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0053/actual-input-catalog-003.json",
+    "--output",
+    "/var/tmp/p254-a58-common-feedback-step-003",
+    "--order",
+    "2"
+  ],
+  "components": {
+    "path": "/var/tmp/p254-a58-dressed-feedback-002/iteration-catalog.json",
+    "bytes": 90779,
+    "sha256": "d681801023811805ead649ac132a4085e6bd0bb227103fd245af39034ac0cbca"
+  },
+  "mean": {
+    "path": "/var/tmp/p254-a58-cached-mean-003/reference-result.json",
+    "bytes": 9151,
+    "sha256": "4561c87ad29ca6a7dca0accfc2a3686cc6a2641fec5a3ea4fa2c0afb081acb97"
+  },
+  "previous": {
+    "path": "/var/tmp/p254-a58-common-feedback-step-002/actual-material-step.npz",
+    "bytes": 20578134,
+    "sha256": "e98de95ce506e9db54514c72a5dcd6ef410aed64d7b5e4a5310d1488b3b3a33b"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0058/run_feedback_step.py",
+      "bytes": 6716,
+      "sha256": "30d54fe9b81a32edb505b2219197373127e7fbd71d926fd272e88add2a7af4c4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0058/feedback_inputs.py",
+      "bytes": 3672,
+      "sha256": "99ac37ac1cb545caa2c2162ed8cae0105c46807a47b34fde170a49045395c108"
+    }
+  ],
+  "integration_order": 2,
+  "prior_A58_actual_native_seconds": "269.373",
+  "prior_A58_conservative_charge_seconds": "271.173",
+  "whole_A58_native_cap_seconds": "600",
+  "whole_A58_payload_cap_bytes": 335544320
+}

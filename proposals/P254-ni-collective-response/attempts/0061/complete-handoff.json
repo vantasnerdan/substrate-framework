@@ -1,0 +1,570 @@
+{
+  "schema": "p254-a61-complete-handoff-v1",
+  "api": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/production-api.json",
+    "bytes": 3486,
+    "sha256": "27fc397570498b2499c96d660bdf27ee0452e9dd248463bfbfc412bcffe316d6"
+  },
+  "contract": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/contract.json",
+    "bytes": 1710,
+    "sha256": "f5e9590947b36430e9c0182e854be450be7f868006f8f7ef3e66408f4d42aea5"
+  },
+  "implementation": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/CMakeLists.txt",
+      "bytes": 652,
+      "sha256": "a6dc6f6141e3d214174f2a13b204cb8062a0f72c546a6421f339fc8b4c4e2496"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/actual-native-view.json",
+      "bytes": 513,
+      "sha256": "c90d6b4eb2e2d499998213547b7ab3efdab8074d781f4879814283c05ad7b041"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/contract.json",
+      "bytes": 1710,
+      "sha256": "f5e9590947b36430e9c0182e854be450be7f868006f8f7ef3e66408f4d42aea5"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/exercise_transport.py",
+      "bytes": 10047,
+      "sha256": "ef31cfbf42e24f0145ed3d92d4d5b2736fdf8c007897b3a6ee10d6d27ee95ea5"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/finish_handoff.py",
+      "bytes": 5623,
+      "sha256": "4bea141fd7c0a6ee7654d8a1a15b951e2a797f0d4e45c7a1fefdc417cb1ef2cb"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/native_campaign.py",
+      "bytes": 3910,
+      "sha256": "f0eebbfa000781b94b7f62249bffdd1b8d5a6730fb09a7c64da2451c546c82b7"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/production-api.json",
+      "bytes": 3486,
+      "sha256": "27fc397570498b2499c96d660bdf27ee0452e9dd248463bfbfc412bcffe316d6"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/production_transport.py",
+      "bytes": 14815,
+      "sha256": "89500497e9a89b5807b767d58dca7521111d0b0a4e46118f09e4bde59261d467"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061/solve_result.cpp",
+      "bytes": 2684,
+      "sha256": "8b57503fc3dc641670e2c2548aec090b2814fdcb05010f3cc991d2bba2142b37"
+    }
+  ],
+  "binary": {
+    "path": "/var/tmp/p254-a61-lean-001/build/solve_result",
+    "bytes": 119096,
+    "sha256": "02918b1a492c78350430b7336a75e63a78d41a88e59753ec77c7bde0ce17e7a6"
+  },
+  "original_bound_native_inputs": {
+    "path": "/var/tmp/p254-a61-lean-001/native-bindings.json",
+    "bytes": 5040,
+    "sha256": "59b67344873a07a11af91f62f4cda4790f8dc396cd633392aac557e12e0d9c04"
+  },
+  "boundary": {
+    "findings": [
+      {
+        "label": "complex-F-order-big-endian-rawRdiag",
+        "max_ret": 0.0,
+        "max_less": 0.0,
+        "packed_released_after_commit": true
+      },
+      {
+        "label": "partial-bank-not-loadable",
+        "rejected": true,
+        "error": "[Errno 2] No such file or directory: '/var/tmp/p254-a61-lean-001/boundary-bank/complete.json'"
+      },
+      {
+        "label": "committed-slot-no-overwrite",
+        "rejected": true,
+        "error": "slot/bank already committed; no overwrite"
+      },
+      {
+        "label": "committed-slot-resume-and-readonly-final-mapping",
+        "passed": true,
+        "shape": [
+          2,
+          5,
+          5,
+          3,
+          3
+        ]
+      },
+      {
+        "label": "complex64-rejected",
+        "rejected": true,
+        "error": "all components require equal shapes and complex128"
+      },
+      {
+        "label": "float32-time-rejected",
+        "rejected": true,
+        "error": "times require float64; no silent precision conversion"
+      },
+      {
+        "label": "axis-shape-rejected",
+        "rejected": true,
+        "error": "expected [time,time,row,column]"
+      },
+      {
+        "label": "nonuniform-time-rejected",
+        "rejected": true,
+        "error": "uniform finite time history from zero required; no interpolation"
+      },
+      {
+        "label": "independent-lesser-leg-rejected",
+        "rejected": true,
+        "error": "independent lesser legs unsupported; no projection/repair"
+      },
+      {
+        "label": "acausal-retarded-rejected",
+        "rejected": true,
+        "error": "retarded upper triangle must be exactly zero"
+      },
+      {
+        "label": "destination-dtype-rejected",
+        "rejected": true,
+        "error": "destination shape/dtype mismatch"
+      },
+      {
+        "label": "packed-zero-copy-lifetime",
+        "passed": true
+      },
+      {
+        "label": "truncated",
+        "rejected": true,
+        "error": "minimal result extent mismatch; diagnostic six-component files unsupported"
+      },
+      {
+        "label": "trailing",
+        "rejected": true,
+        "error": "minimal result extent mismatch; diagnostic six-component files unsupported"
+      },
+      {
+        "label": "badmagic",
+        "rejected": true,
+        "error": "invalid minimal result header"
+      },
+      {
+        "label": "native-input-extent-rejected",
+        "exit": 2
+      }
+    ],
+    "scope": "new IO/layout/lifetime only; free finite fixture, not material evidence"
+  },
+  "actual_material": {
+    "findings": [
+      {
+        "label": "fermion-slot000",
+        "shape": [
+          1,
+          3,
+          3,
+          12,
+          12
+        ],
+        "ret_max": 0.0,
+        "less_max": 0.0,
+        "bitwise_equal": true,
+        "old_input": {
+          "path": "/var/tmp/p254-a58-common-feedback-step-002/fermions/slot-000/input.npz",
+          "bytes": 85002,
+          "sha256": "eff04af80631e3eeb2a717e030e388f0fd5a8ed54d070fc1ac851c00f19e4a61"
+        },
+        "old_output": {
+          "path": "/var/tmp/p254-a58-common-feedback-step-002/fermions/slot-000/output.bin",
+          "bytes": 83000,
+          "sha256": "629b187a24be1563301a71eda86bb93ee4813b097d31b00ad3e8bdb30247eb76"
+        },
+        "old_solution": {
+          "path": "/var/tmp/p254-a58-common-feedback-step-002/fermions/slot-000/solution.npz",
+          "bytes": 127248,
+          "sha256": "50c79d63df9c04c61c47b477c27818812ee0ced418ed84db3c19a96981621300"
+        },
+        "new_packed_bytes": 27704,
+        "old_packed_bytes": 83000,
+        "new_final_bytes": 41728,
+        "old_final_bytes": 127248,
+        "findings": {
+          "path": "/var/tmp/p254-a61-lean-001/fermion-slot000-complete-findings.npz",
+          "bytes": 56374,
+          "sha256": "c148de25fd7c64b6e2251a6a585545674af8a805999d299093555894b1a8a8d8"
+        },
+        "native": {
+          "argv": [
+            "/usr/bin/time",
+            "-v",
+            "-o",
+            "/var/tmp/p254-a61-lean-001/fermion-slot000/.staging/slot-000/native.time",
+            "/var/tmp/p254-a61-lean-001/build/solve_result",
+            "/var/tmp/p254-a61-lean-001/fermion-slot000/.staging/slot-000/input.bin",
+            "/var/tmp/p254-a61-lean-001/fermion-slot000/.staging/slot-000/result.bin"
+          ],
+          "cwd": "/home/administrator",
+          "started_unix": 1793871043.0782318,
+          "timeout_seconds": 180,
+          "exit": 0,
+          "wall_seconds": 0.06541446596384048,
+          "stdout": {
+            "path": "/var/tmp/p254-a61-lean-001/fermion-slot000/.staging/slot-000/native.stdout",
+            "bytes": 64,
+            "sha256": "616b4ec82d479c2bb73388f0aaed7ce070002b213ebbbe0d1338caabcd96e7d5"
+          },
+          "stderr": {
+            "path": "/var/tmp/p254-a61-lean-001/fermion-slot000/.staging/slot-000/native.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "profile": {
+          "path": "/var/tmp/p254-a61-lean-001/fermion-slot000/.staging/slot-000/native.time",
+          "bytes": 902,
+          "sha256": "d7f1ecc00db5e9dfe5ad33ac0f687975097553b494a5434200173f9ff5a1bbdd"
+        }
+      },
+      {
+        "label": "full114Gamma3node",
+        "shape": [
+          1,
+          3,
+          3,
+          114,
+          114
+        ],
+        "ret_max": 0.0,
+        "less_max": 0.0,
+        "bitwise_equal": true,
+        "old_input": {
+          "path": "/var/tmp/p254-a58-common-feedback-step-002/intrinsic/input.npz",
+          "bytes": 7487754,
+          "sha256": "627cfe269eb5fb11ee0b211712e0a53ae32d0e4462ecf1220c07e39937ab63c9"
+        },
+        "old_output": {
+          "path": "/var/tmp/p254-a58-common-feedback-step-002/intrinsic/output.bin",
+          "bytes": 7485752,
+          "sha256": "51a39bf95a8c30503029f6d988ad258750f2d449455c8ca4cad35d0b395dcacd"
+        },
+        "old_solution": {
+          "path": "/var/tmp/p254-a58-common-feedback-step-002/intrinsic/solution.npz",
+          "bytes": 11231376,
+          "sha256": "66257ca6dafbd11eb1e2d3f159709aef1e23179cc3aa38a895469e68c07fb24e"
+        },
+        "new_packed_bytes": 2495288,
+        "old_packed_bytes": 7485752,
+        "new_final_bytes": 3743104,
+        "old_final_bytes": 11231376,
+        "findings": {
+          "path": "/var/tmp/p254-a61-lean-001/full114Gamma3node-complete-findings.npz",
+          "bytes": 4991542,
+          "sha256": "a4c84f90a63051124825c7eb9fadd892cb73695e040d672e1f21c9fb54777f76"
+        },
+        "native": {
+          "argv": [
+            "/usr/bin/time",
+            "-v",
+            "-o",
+            "/var/tmp/p254-a61-lean-001/full114Gamma3node/.staging/slot-000/native.time",
+            "/var/tmp/p254-a61-lean-001/build/solve_result",
+            "/var/tmp/p254-a61-lean-001/full114Gamma3node/.staging/slot-000/input.bin",
+            "/var/tmp/p254-a61-lean-001/full114Gamma3node/.staging/slot-000/result.bin"
+          ],
+          "cwd": "/home/administrator",
+          "started_unix": 1793871043.4460902,
+          "timeout_seconds": 180,
+          "exit": 0,
+          "wall_seconds": 27.87627271702513,
+          "stdout": {
+            "path": "/var/tmp/p254-a61-lean-001/full114Gamma3node/.staging/slot-000/native.stdout",
+            "bytes": 66,
+            "sha256": "1bc9ab3d5ccfc7e9a401ad4cd649419dcc27387757068b48887a7a2be6df9ca5"
+          },
+          "stderr": {
+            "path": "/var/tmp/p254-a61-lean-001/full114Gamma3node/.staging/slot-000/native.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "profile": {
+          "path": "/var/tmp/p254-a61-lean-001/full114Gamma3node/.staging/slot-000/native.time",
+          "bytes": 916,
+          "sha256": "531d5a514cc1ec8f9a14e2dc2deafe8bfc28560dc4149dc213670c85fd3590f8"
+        }
+      }
+    ],
+    "scope": "exact original paid A58 supplied source/kernels; complete R/L and raw diagonal/state unchanged; not a new selfconsistent/material31 solve"
+  },
+  "Nt31": {
+    "sourcekind": "explicitly-free-finite-Hermitian-two-level-control; zero selfenergy by definition",
+    "shape": [
+      1,
+      31,
+      31,
+      2,
+      2
+    ],
+    "ret_max": 0.0,
+    "less_max": 0.0,
+    "missing_material31_collision_history": false,
+    "scope": "arbitrary uniform time count transport only, not original missing material31 collision history",
+    "findings": {
+      "path": "/var/tmp/p254-a61-lean-001/Nt31-complete-findings.npz",
+      "bytes": 124042,
+      "sha256": "d5764da5b8081612acf16f9aee91ea5f067853ae15f019e1b3d1b62deec9dcc0"
+    }
+  },
+  "canonical_byte_comparisons": [
+    {
+      "label": "fermion-slot000",
+      "old_ret": {
+        "shape": [
+          3,
+          3,
+          12,
+          12
+        ],
+        "dtype": "<c16",
+        "sha256": "09fd5bc26179f61c70bd959752bc1128f2f9040823d992d9f1d3c8fec43c0526",
+        "bytes": 20736
+      },
+      "new_ret": {
+        "shape": [
+          3,
+          3,
+          12,
+          12
+        ],
+        "dtype": "<c16",
+        "sha256": "09fd5bc26179f61c70bd959752bc1128f2f9040823d992d9f1d3c8fec43c0526",
+        "bytes": 20736
+      },
+      "old_less": {
+        "shape": [
+          3,
+          3,
+          12,
+          12
+        ],
+        "dtype": "<c16",
+        "sha256": "bf33f9f955c029c070dc503f04acaca6ab4e131cf1c8b06a22d660c1bbdcc9ad",
+        "bytes": 20736
+      },
+      "new_less": {
+        "shape": [
+          3,
+          3,
+          12,
+          12
+        ],
+        "dtype": "<c16",
+        "sha256": "bf33f9f955c029c070dc503f04acaca6ab4e131cf1c8b06a22d660c1bbdcc9ad",
+        "bytes": 20736
+      },
+      "canonical_byte_hashes_equal": true,
+      "original_packed_input_sha256": "33983c19126d81880de2311a6c7695a476942e083b9217ad729986bf1c349f10",
+      "new_packed_input_sha256": "33983c19126d81880de2311a6c7695a476942e083b9217ad729986bf1c349f10",
+      "complete": {
+        "path": "/var/tmp/p254-a61-lean-001/fermion-slot000/complete.json",
+        "bytes": 811,
+        "sha256": "09ea51d75f370ccdec94df93217cceac9d114344c257cd5cc3179d785177840b"
+      }
+    },
+    {
+      "label": "full114Gamma3node",
+      "old_ret": {
+        "shape": [
+          3,
+          3,
+          114,
+          114
+        ],
+        "dtype": "<c16",
+        "sha256": "c5e6ee3f24d29fd81003c637107291370093ee168e46d98b68309c4c3235e2a1",
+        "bytes": 1871424
+      },
+      "new_ret": {
+        "shape": [
+          3,
+          3,
+          114,
+          114
+        ],
+        "dtype": "<c16",
+        "sha256": "c5e6ee3f24d29fd81003c637107291370093ee168e46d98b68309c4c3235e2a1",
+        "bytes": 1871424
+      },
+      "old_less": {
+        "shape": [
+          3,
+          3,
+          114,
+          114
+        ],
+        "dtype": "<c16",
+        "sha256": "5872c1b0388717c98705ea51841820753677093c111ecadc3116c56c24ae8865",
+        "bytes": 1871424
+      },
+      "new_less": {
+        "shape": [
+          3,
+          3,
+          114,
+          114
+        ],
+        "dtype": "<c16",
+        "sha256": "5872c1b0388717c98705ea51841820753677093c111ecadc3116c56c24ae8865",
+        "bytes": 1871424
+      },
+      "canonical_byte_hashes_equal": true,
+      "original_packed_input_sha256": "14fca6ee028101911606dd58c33c3877a73111b61328b36b450f97fcd7129cda",
+      "new_packed_input_sha256": "14fca6ee028101911606dd58c33c3877a73111b61328b36b450f97fcd7129cda",
+      "complete": {
+        "path": "/var/tmp/p254-a61-lean-001/full114Gamma3node/complete.json",
+        "bytes": 823,
+        "sha256": "628cdfff8fd5ea6367908308a41e97419c2b7cb4437b189a8d46158cc6cb532e"
+      }
+    }
+  ],
+  "all_finding_arrays": [
+    {
+      "path": "/var/tmp/p254-a61-lean-001/Nt31-complete-findings.npz",
+      "bytes": 124042,
+      "sha256": "d5764da5b8081612acf16f9aee91ea5f067853ae15f019e1b3d1b62deec9dcc0"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/fermion-slot000-complete-findings.npz",
+      "bytes": 56374,
+      "sha256": "c148de25fd7c64b6e2251a6a585545674af8a805999d299093555894b1a8a8d8"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/full114Gamma3node-complete-findings.npz",
+      "bytes": 4991542,
+      "sha256": "a4c84f90a63051124825c7eb9fadd892cb73695e040d672e1f21c9fb54777f76"
+    }
+  ],
+  "all_exit_receipts": [
+    {
+      "path": "/var/tmp/p254-a61-lean-001/Nt31-free-finite-control/.staging/slot-000/native.json",
+      "bytes": 955,
+      "sha256": "d7f4d5801d83e1a51fae51073d0cd2899f7a8781c5b242c12ef6161948a411c7"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/boundary-bank/.staging/slot-000/native.json",
+      "bytes": 901,
+      "sha256": "ac1fc94cedd2c7cd961757f717c000da8c860d4c6f87544bb897021cbaac6408"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/boundary-bank/.staging/slot-001/native.json",
+      "bytes": 902,
+      "sha256": "845c30673402e37f8ca7dfa3313a80c450efbfd189d39874d0f1e4a139d22248"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/fermion-slot000/.staging/slot-000/native.json",
+      "bytes": 911,
+      "sha256": "989e3b7b1e64f8c2220ba1f234e95e44a1d68609a8016c51b9fd8cd34546640c"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/full114Gamma3node/.staging/slot-000/native.json",
+      "bytes": 919,
+      "sha256": "859cc1008f40d3a5e5fc4ecfa71ac3e7baf939c5ac648148d32dd000d036bff3"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/configure.json",
+      "bytes": 736,
+      "sha256": "e3acf0b1196713efb336c0b7dc27d0fe1732914070b62ab37f971b733addf5e9"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/build.json",
+      "bytes": 690,
+      "sha256": "4e3a3d949cfa5b18d86de95964b9ed91f4f90cd03426a34d5b0854310caf1218"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/exercise.json",
+      "bytes": 818,
+      "sha256": "b225f452dc6041c512fde2e6c94eecae71019c3142941d69aad9cfc082e2f302"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/expected-native-extent-rejection.json",
+      "bytes": 732,
+      "sha256": "c63e808dffd9fcb9cb218d1628306f04525590bce54996b4458a75fed50de221"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/systemd-native.json",
+      "bytes": 1491,
+      "sha256": "0c0373b640cf779e7196cc77a96bc2887af677f8c110ba8990cc0225bde595e1"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/native-outcome.json",
+      "bytes": 5204,
+      "sha256": "84d0df3f4f841226bf63990a9a55f9a91e4e855224ae829bd13efd19ec991c87"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/terminal.json",
+      "bytes": 102,
+      "sha256": "6d43b0d088d81134ca85f25b3381e5105f122de854ae7d093cfc3e8c143c16ff"
+    }
+  ],
+  "native_cost": {
+    "cumulative_service_wall_seconds": 46.84789874823764,
+    "cumulative_manager_launch_wall_seconds": 47.169783221092075,
+    "native_cpu_seconds": 46.061052,
+    "child_peak_rss_kib": 723108,
+    "owner_peak_rss_kib": 33388,
+    "build_count": 1,
+    "unplanned_failures": 0,
+    "expected_rejections": [
+      {
+        "exit": 2,
+        "receipt": {
+          "path": "/var/tmp/p254-a61-lean-001/expected-native-extent-rejection.json",
+          "bytes": 732,
+          "sha256": "c63e808dffd9fcb9cb218d1628306f04525590bce54996b4458a75fed50de221"
+        }
+      }
+    ],
+    "finalizer_wall_before_package_seconds": 0.09651294024661183,
+    "limit_seconds": 600
+  },
+  "profiles": [
+    {
+      "path": "/var/tmp/p254-a61-lean-001/Nt31-free-finite-control/.staging/slot-000/native.time",
+      "bytes": 921,
+      "sha256": "7dd14c898f0564246e2293afb431f3d9309803cceeaa775d37427a74de6753b3"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/boundary-bank/.staging/slot-000/native.time",
+      "bytes": 899,
+      "sha256": "e28a8c5394dfb7d79715432201e8c4e814d969cf55c4c6ad252c2f583201293d"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/boundary-bank/.staging/slot-001/native.time",
+      "bytes": 898,
+      "sha256": "be5ee8523743dbf344832a857345cbf285e9142241b5d5a39d4caf0083a75ea7"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/fermion-slot000/.staging/slot-000/native.time",
+      "bytes": 902,
+      "sha256": "d7f1ecc00db5e9dfe5ad33ac0f687975097553b494a5434200173f9ff5a1bbdd"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/full114Gamma3node/.staging/slot-000/native.time",
+      "bytes": 916,
+      "sha256": "531d5a514cc1ec8f9a14e2dc2deafe8bfc28560dc4149dc213670c85fd3590f8"
+    },
+    {
+      "path": "/var/tmp/p254-a61-lean-001/build.time",
+      "bytes": 790,
+      "sha256": "68ad70fe46f17d70d352a62bdf18795607e9890e4cf8a410a49dd76669ad3940"
+    }
+  ],
+  "manager_memory_warning": "systemd reports 256KiB peak despite GNU time measured 723108KiB build and 255276KiB Gamma; this manager peak is not credible application-memory evidence, use per-native GNU-time and getrusage measurements",
+  "performance_scope": "Gamma new27.876272717s vs paid old26.317892029s: no measured solver speedup; reduced serialized result bytes and final numeric storage, no claim of internal A54 scratch reduction",
+  "storage_scope": "One active slot transport; no full F/Fcc serialization/decoding, input.npz/output solution.npz duplication removed; existing A54 math/scratch unchanged; all staging released after durable canonical final hashes; complete-slot-only recovery, single writer; no original scientific files removed",
+  "resource_scope": "CPU9/BLAS1/3GiB/noSwap; protected CPUs0-5/11, RootCPU10 and root view untouched",
+  "remaining_physics_scope": "Only original material fermion slot000/full114Gamma3node supplied solve was executed here; no all128 replay or missing material31 collision history. Nt31 is explicitly free finite2level zero-selfenergy control.",
+  "observed_payload_bytes_before_package": 9612001
+}
