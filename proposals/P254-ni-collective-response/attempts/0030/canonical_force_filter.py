@@ -27,12 +27,17 @@ _DEGREE = 7
 # (dop853_coefficients.INTERPOLATOR_POWER=7): a degree <=7 polynomial.
 # Eight Lobatto samples therefore change representation, not the physical
 # approximation or its adaptive error tolerance. No private solver data used.
-_NODES = np.cos(np.pi * np.arange(_DEGREE + 1) / _DEGREE)
-_TRANSFORM = (2.0 / _DEGREE) * np.cos(
-    np.pi * np.outer(np.arange(_DEGREE + 1), np.arange(_DEGREE + 1)) / _DEGREE
-)
-_TRANSFORM[:, [0, -1]] *= 0.5
-_TRANSFORM[[0, -1], :] *= 0.5
+def chebyshev_lobatto_transform(degree):
+    """Degree-preserving transform from descending Chebyshev Lobatto nodes."""
+    nodes = np.cos(np.pi * np.arange(degree + 1) / degree)
+    transform = (2.0 / degree) * np.cos(
+        np.pi * np.outer(np.arange(degree + 1), np.arange(degree + 1)) / degree)
+    transform[:, [0, -1]] *= 0.5
+    transform[[0, -1], :] *= 0.5
+    return nodes, transform
+
+
+_NODES, _TRANSFORM = chebyshev_lobatto_transform(_DEGREE)
 
 
 @dataclass(frozen=True)
@@ -94,12 +99,16 @@ class CanonicalForceFilter:
     __call__ = evaluate
 
 
-def build_canonical_force_filter(correlations, q, final_time, coordinates):
+def build_canonical_force_filter(correlations, q, final_time, coordinates, *, capture=None):
     """Integrate the existing moving L_q(t).T using its original rtol/atol.
 
     The one q coefficient block is held just as in backward_linear_probes.
     DOP853.step(), .t_old/.t and .dense_output() are public SciPy interfaces;
     no OdeSolution/full-state history or transition matrix is retained.
+    ``capture`` optionally receives ephemeral duals through boundary(time, dual)
+    and segment(left, right, dense, shape). It must retain only its small
+    physical insertions, never the full-state arrays. Existing force consumers
+    need no callback and retain their unchanged array/evaluation contract.
     """
     if np.ndim(final_time) != 0:
         raise ValueError('scalar terminal time in inverse Ry required')
@@ -127,6 +136,8 @@ def build_canonical_force_filter(correlations, q, final_time, coordinates):
     boundary_times = [final_time]
     ionic_end, field_end = force_entries(terminal)
     ionic_boundary, field_boundary = [ionic_end], [field_end]
+    if capture is not None:
+        capture.boundary(final_time, terminal)
     nfev = 0
     first_step = None
     if final_time == 0.0:
@@ -172,6 +183,9 @@ def build_canonical_force_filter(correlations, q, final_time, coordinates):
             ionic_end, field_end = force_entries(solver.y)
             ionic_boundary.append(ionic_end)
             field_boundary.append(field_end)
+            if capture is not None:
+                capture.segment(left, right, dense, shape)
+                capture.boundary(left, solver.y.reshape(shape))
             # Do not retain a full-state interpolant between accepted steps.
             del dense, value
         initial_dual = solver.y.reshape(shape).copy()

@@ -1,0 +1,55 @@
+{
+  "schema": "P254-A42-changed-representation-oracle-native-grant-v1",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a42-fourier-projection-oracle-001.service",
+    "--property=RuntimeMaxSec=60",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "6",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/oracle_fourier_density_projection.py",
+    "--output",
+    "/var/tmp/p254-a42-fourier-projection-oracle-001.json"
+  ],
+  "decision": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc1551-root553-exact-density-projection-native-decision.json",
+    "bytes": 1010,
+    "sha256": "c3ec792ab412de0ea796ba74503f3847a7ecbf7f523f64e5ed1c631113ff1850"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/density_projection.py",
+      "bytes": 5115,
+      "sha256": "32b28233b6cbe5fca6d712c610e8c2b97d6b794b2b708710d5ae4543802e63f1"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/oracle_fourier_density_projection.py",
+      "bytes": 5887,
+      "sha256": "861842a96a71fde205a566454b7f817eb3a481a5bd1c3b12a4d49b2439515e8f"
+    }
+  ],
+  "original_source_snapshot": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/original-fft-density-projection-execution-source-001.py",
+    "bytes": 3554,
+    "sha256": "c2a77a73b131a17ef7e641f5aadb72f1c000af00481efd447ab1bd918078cafa"
+  },
+  "scope": "ONLYnewfinite-gridprojection/BLASrepresentation;oldFock/degree14/densityfeedbackproofscarried,noreplay.60swithinremaining1254.177sA42grant."
+}

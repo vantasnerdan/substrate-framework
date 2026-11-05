@@ -1,0 +1,37 @@
+{
+  "schema": "P254-A41-actual-saved-numeric-consumer-grant-v1",
+  "source": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/actual-material-kernel-component-admission-002.json",
+    "bytes": 3620,
+    "sha256": "06d71dd454e0d2a9d91b571fb2f0d0d27ad7d9a56bb7ab99247d4748daa71ba7"
+  },
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a41-saved-kernel-readout-001.service",
+    "--property=RuntimeMaxSec=30",
+    "--property=MemoryMax=1073741824",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "6",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "-c",
+    "import json,hashlib\nfrom pathlib import Path\nimport numpy as np\np=Path('/var/tmp/p254-a41-frozen-kernel-spin-q-001/result.json')\nr=json.loads(p.read_bytes()); b=r['output']; a=Path(b['path'])\nwith a.open('rb') as f: digest=hashlib.file_digest(f,'sha256').hexdigest()\nassert a.stat().st_size==b['bytes'] and digest==b['sha256']\nout={'schema':'P254-A41-actual-saved-kernel-readout-v1','source':str(p),'archive':b,'scope':'Actual saved two-time kernels; norms and raw entries are NOT linewidths, damping rates, material convergence or whole-E closure.','readouts':{}}\nwith np.load(a,allow_pickle=False) as z:\n t=z['times_inverse_ry']; theta=(t[:,None]>=t[None,:])[:,:,None,None,None]\n for kind in ('sigma','pi'):\n  g,l,ret=[z[kind+'_'+s] for s in ('greater','lesser','retarded')]\n  reverse=l.swapaxes(0,1).conj().swapaxes(-2,-1)\n  delta=l+reverse; scale=float(np.linalg.norm(l))\n  equal=l[-1,-1]\n  out['readouts'][kind]={'shape':list(l.shape),'times_inverse_ry':t.tolist(),'lesser_frobenius_by_timepair_and_external_index':np.linalg.norm(l,axis=(-2,-1)).tolist(),'retarded_defining_identity_max_abs':float(np.max(abs(ret-theta*(g-l)))),'lesser_reversed_time_antiadjoint_max_abs':float(np.max(abs(delta))),'lesser_reversed_time_antiadjoint_relative_fro':float(np.linalg.norm(delta)/scale) if scale else None,'last_equal_time_diagonal_real':np.diagonal(equal,axis1=-2,axis2=-1).real.tolist(),'last_equal_time_diagonal_imag':np.diagonal(equal,axis1=-2,axis2=-1).imag.tolist()}\n out['sigma_slots']=z['sigma_slots'].tolist();out['pi_q']=z['pi_q'].tolist()\nPath('/var/tmp/p254-a41-saved-kernel-readout-001.json').write_text(json.dumps(out,indent=2,allow_nan=False)+'\\n')\nprint(json.dumps({'output':'/var/tmp/p254-a41-saved-kernel-readout-001.json','actual_physical_kernel_replays':0}))\n"
+  ],
+  "source_code": "import json,hashlib\nfrom pathlib import Path\nimport numpy as np\np=Path('/var/tmp/p254-a41-frozen-kernel-spin-q-001/result.json')\nr=json.loads(p.read_bytes()); b=r['output']; a=Path(b['path'])\nwith a.open('rb') as f: digest=hashlib.file_digest(f,'sha256').hexdigest()\nassert a.stat().st_size==b['bytes'] and digest==b['sha256']\nout={'schema':'P254-A41-actual-saved-kernel-readout-v1','source':str(p),'archive':b,'scope':'Actual saved two-time kernels; norms and raw entries are NOT linewidths, damping rates, material convergence or whole-E closure.','readouts':{}}\nwith np.load(a,allow_pickle=False) as z:\n t=z['times_inverse_ry']; theta=(t[:,None]>=t[None,:])[:,:,None,None,None]\n for kind in ('sigma','pi'):\n  g,l,ret=[z[kind+'_'+s] for s in ('greater','lesser','retarded')]\n  reverse=l.swapaxes(0,1).conj().swapaxes(-2,-1)\n  delta=l+reverse; scale=float(np.linalg.norm(l))\n  equal=l[-1,-1]\n  out['readouts'][kind]={'shape':list(l.shape),'times_inverse_ry':t.tolist(),'lesser_frobenius_by_timepair_and_external_index':np.linalg.norm(l,axis=(-2,-1)).tolist(),'retarded_defining_identity_max_abs':float(np.max(abs(ret-theta*(g-l)))),'lesser_reversed_time_antiadjoint_max_abs':float(np.max(abs(delta))),'lesser_reversed_time_antiadjoint_relative_fro':float(np.linalg.norm(delta)/scale) if scale else None,'last_equal_time_diagonal_real':np.diagonal(equal,axis1=-2,axis2=-1).real.tolist(),'last_equal_time_diagonal_imag':np.diagonal(equal,axis1=-2,axis2=-1).imag.tolist()}\n out['sigma_slots']=z['sigma_slots'].tolist();out['pi_q']=z['pi_q'].tolist()\nPath('/var/tmp/p254-a41-saved-kernel-readout-001.json').write_text(json.dumps(out,indent=2,allow_nan=False)+'\\n')\nprint(json.dumps({'output':'/var/tmp/p254-a41-saved-kernel-readout-001.json','actual_physical_kernel_replays':0}))\n",
+  "source_sha256": "5b179fbcf67e9b44b4de15b8131b4a0b32078c887e01c734be9d9ca3bd746f2e",
+  "scope": "Read actual canonical saved kernel arrays, raw selected entries and defining causal/antiadjoint diagnostics; ZERO physical kernel/reference/input-bank replay. New30swithinoriginal900sgrant;181.088alreadycharged."
+}

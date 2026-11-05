@@ -1,0 +1,37 @@
+Running as unit: p254-a40-gaussian-consumer-001.service; invocation ID: 9e2f36c9beb0483284a26985349716e0
+	linux-vdso.so.1 (0x00007ffe9b9f9000)
+	libcntr.so => /home/administrator/.local/opt/nessi-6bb4c832/bin/../lib/libcntr.so (0x00007faa9863a000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007faa98200000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007faa98544000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007faa98516000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007faa97e00000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007faa98853000)
+NESSi VIE2 complete: 121 full-memory time nodes; 2 system orbitals; original Gaussian rho retained
+NESSi VIE2 complete: 121 full-memory time nodes; 2 system orbitals; original Gaussian rho retained
+NESSi VIE2 complete: 121 full-memory time nodes; 2 system orbitals; original Gaussian rho retained
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/compare_gaussian_embedding.py", line 189, in <module>
+    main()
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/compare_gaussian_embedding.py", line 182, in main
+    json.dump(result, stream, indent=2, allow_nan=False)
+  File "/usr/lib/python3.12/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/usr/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool_ is not JSON serializable
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 3.704s
+CPU time consumed: 3.675s
+Memory peak: 2.6M
+Memory swap peak: 0B
+[P254-A40-CONSUMER-001-native-exit] code=1

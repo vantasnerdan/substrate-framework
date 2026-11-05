@@ -1,0 +1,83 @@
+{
+  "schema": "P254-A41-actual-new-functional-native-grant-v1",
+  "created_at": "2026-11-04T23:33:59.498345+00:00",
+  "decision": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc1531-root546-actual-electron-ion-oracle-and-material-allocation.json",
+    "bytes": 1785,
+    "sha256": "191619e1200cd3636164e2495cca38e92cd852f5ee99657376de56046d9c52ce"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/electron_ion_functional.py",
+      "bytes": 8042,
+      "sha256": "76d38c86664d922d1519ffc2533e9d7caba3698fef76a657a05a47b9b3d226aa"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/electron_ion_global_functional.py",
+      "bytes": 2360,
+      "sha256": "0a5d3f208c65401717242d7f6a7db575795c0ddbb6a07d04bac17433266d8109"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/material_electron_ion_inputs.py",
+      "bytes": 11609,
+      "sha256": "a31dc23eb3ee7fd06178885bdaf9c97a57abaac386e9c98c0d19c9cc693cc523"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/oracle_electron_ion_functional.py",
+      "bytes": 15170,
+      "sha256": "e6dba196e98fe78499bc97f0d40e57787560e47cba8f1976bf1799e197087053"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/run_material_electron_ion_kernel.py",
+      "bytes": 9351,
+      "sha256": "3e8ff7649d1cfb1fb239fe5316c3e65a24c428402b7ba54a180173f2b7c80bd4"
+    }
+  ],
+  "new_focused_oracle_argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a41-electron-ion-oracle-001.service",
+    "--property=RuntimeMaxSec=180",
+    "--property=MemoryMax=6442450944",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "6",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/oracle_electron_ion_functional.py",
+    "--output",
+    "/var/tmp/p254-a41-focused-oracle-001.json"
+  ],
+  "whole_new_seconds": 900,
+  "oracle_seconds_max": 180,
+  "dependent_material_seconds_max": 720,
+  "first_material_external_indices": {
+    "sigma_slots": [
+      0,
+      64
+    ],
+    "pi_q": [
+      0,
+      1,
+      2
+    ]
+  },
+  "actual_existing_physics_replays": 0,
+  "preflight_correction": "Shared four monomials unchanged. Material computes only explicitly requested Sigma/Pi groups, not unrequested diagrams discarded afterward; absent components are absent, never fake zeros. Original5sourcebytes/handoff preserved separately.",
+  "scope": "New functional/oracle and conditional fixed-original-reference material evaluation; not moving/selfconsistent/rate/wholeE.",
+  "protection": "Original3frozenjobs/RAM/CPU0-5/11unchanged. CPU6singlethread,own6GiB/swap0caps,no restart/newpackages/data deletion."
+}

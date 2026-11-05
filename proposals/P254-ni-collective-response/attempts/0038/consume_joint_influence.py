@@ -26,6 +26,7 @@ from integrate_saved_spectral import load_saved_spectral
 from joint_influence_readout import (PARTS, SCOPE, field_source_amplitude,
     integrate_field, joint_moments, joint_operators, joint_reconstruction)
 from substrate_framework.streamed_material_state import authenticate, file_binding
+from saved_active_baseline_inputs import _implementation_authority
 
 CONTRACT = dict(path=str(HERE / 'implementation-contract-001.json'), bytes=15306,
     sha256='623ef2c7ebc3fec3b0166783b165458e349abaf6d4d06c4da8bb5c77433f2668')
@@ -48,14 +49,28 @@ def require_binding(actual, expected, name):
         raise ValueError('settled binding differs: ' + name)
 
 
-def authenticate_handoff(current_projection_complete):
+def authenticate_handoff(current_projection_complete, *, original_source_snapshots=()):
     """Authenticate original complete receipts and new producer, without restoration."""
     contract = read_bound(CONTRACT)
     clarification = read_bound(CLARIFICATION)
     require_binding(clarification['original_contract'], CONTRACT, 'CAR cost clarification')
     settled = {Path(row['path']).resolve(): row for row in contract['settled_source_inventory']}
+    source_authorities = []
+    snapshots = [file_binding(path) for path in original_source_snapshots]
+
+    def source_authority(binding):
+        # Recovery of ORIGINAL bytes only; never re-pin the historical receipt
+        # or call recovered provenance a new execution-source binding.
+        key = (binding['path'], int(binding['bytes']), binding['sha256'])
+        matching = {key: saved for saved in snapshots
+                    if int(saved['bytes']) == key[1] and saved['sha256'] == key[2]}
+        return _implementation_authority(binding, matching)
+
     for binding in settled.values():
-        authenticate(binding)
+        if Path(binding['path']).suffix == '.py':
+            source_authorities.append(source_authority(binding))
+        else:
+            authenticate(binding)
     by_name = {path.name: row for path, row in settled.items()}
     producer_binding = file_binding(current_projection_complete)
     producer = read_bound(producer_binding)
@@ -74,7 +89,10 @@ def authenticate_handoff(current_projection_complete):
     require_binding(producer['current_reference'],
         settled[Path('/var/tmp/p254-a35-uniform-current-source0-002/result.json')], 'current_reference')
     for binding in producer['implementation']:
-        authenticate(binding)
+        if Path(binding['path']).suffix == '.py':
+            source_authorities.append(source_authority(binding))
+        else:
+            authenticate(binding)
     basis = read_bound(producer['basis_complete'])
     complete = read_bound(producer['a37_filtered_complete'])
     temporal = read_bound(producer['a37_temporal_result'])
@@ -120,6 +138,7 @@ def authenticate_handoff(current_projection_complete):
         raise ValueError('qualified true-current adjoint aliases required')
     return producer, basis, temporal, amplitude, dict(implementation_contract=dict(CONTRACT),
         unchanged_CAR_cost_clarification=dict(CLARIFICATION),
+        historical_source_authorities=source_authorities,
         current_projection_complete=producer_binding, a37_basis_complete=producer['basis_complete'],
         a37_temporal_result=producer['a37_temporal_result'], a37_filtered_complete=producer['a37_filtered_complete'],
         a37_filtered_operators=producer['a37_filtered_operators'], original_filter_packet=filter_binding,
@@ -168,9 +187,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--current-projection-complete', required=True)
     parser.add_argument('--output', required=True)
+    parser.add_argument('--original-source-snapshot', action='append', default=[])
     args = parser.parse_args()
     started = perf_counter()
-    producer, basis, temporal, amplitude, bindings = authenticate_handoff(args.current_projection_complete)
+    producer, basis, temporal, amplitude, bindings = authenticate_handoff(
+        args.current_projection_complete, original_source_snapshots=args.original_source_snapshot)
     bank, field, currents, ionic, ionic_adjoints, saved = load_numeric(producer, temporal, bindings)
     loading_seconds = perf_counter() - started
     directory = Path(args.output).resolve()

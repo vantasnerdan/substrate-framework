@@ -1,0 +1,74 @@
+{
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a40-nessi-build-001.service",
+    "--property=RuntimeMaxSec=780",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "CMAKE_BUILD_PARALLEL_LEVEL=1",
+    "taskset",
+    "-c",
+    "10",
+    "/usr/bin/cmake",
+    "--build",
+    "/var/tmp/p254-a40-nessi-build-001",
+    "--parallel",
+    "1"
+  ],
+  "pane": "w1:p66",
+  "allocation": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc1507-root541-settled-existing-solver-actual-execution.json",
+    "bytes": 3686,
+    "sha256": "86f4a4a1d9b311bf7d1ff00e103de9922d6e482ce5e17d214d50a42ddff7f968"
+  },
+  "actual_installed_cmake": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc1510-required-cmake-install-list-only-no-upgrades.outcome.json",
+    "bytes": 387,
+    "sha256": "3c1b242864aa8cdeb04c83be237d29029382b4dc06409ee347d9bafe0216da6b"
+  },
+  "configure": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc1511-actual-cmake-installed-configure-002.outcome.json",
+    "bytes": 1117,
+    "sha256": "48f15ae233e2fff26c566a9b560a471922900b68154dcf735378f4c4709eea23"
+  },
+  "final_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/nessi_gaussian_ivp.hpp",
+      "bytes": 6531,
+      "sha256": "8cf5d5068771d049c992dd0157a9cb05ecdb7cb7543beba459567ad0c2cab855"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/nessi_gaussian_embedding.cpp",
+      "bytes": 4077,
+      "sha256": "c455341a11b9afe12599465207073872372869e34a531db52b3939f528d30bff"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/prepare_gaussian_embedding.py",
+      "bytes": 9542,
+      "sha256": "43dbeecee0c45dd6e50374829f511562c570355ab69ed332f92c5589c71561fd"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/compare_gaussian_embedding.py",
+      "bytes": 10613,
+      "sha256": "f2c46b5cc6dd06cee58c28dcaea178a1392a148e5da97b943ca2fff297faafb5"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/CMakeLists.txt",
+      "bytes": 1767,
+      "sha256": "f844b3713301b7f856eeef75d6a57302e93b093695338d7bbfcab4ea332f8674"
+    }
+  ]
+}

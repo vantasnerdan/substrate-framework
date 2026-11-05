@@ -1,0 +1,80 @@
+{
+  "schema": "P254-A41-actual-material-kernel-native-grant-v1",
+  "issued_at": "2026-11-04T23:44:30.174960+00:00",
+  "decision": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc1535-root547-actual-kernel-output-and-density-intake.json",
+    "bytes": 1419,
+    "sha256": "359923cb079953f91d76de497cddffff719e7dc80b6e6d16862cd7cbc7448430"
+  },
+  "actual_prerequisite": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/actual-new-functional-oracle-admission-001.json",
+    "bytes": 3478,
+    "sha256": "3d75cde22e6c833e549080de0c1f465367532bbc13ffd5c2d38adbcbfb080123"
+  },
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a41-material-electron-ion-kernel-001.service",
+    "--property=RuntimeMaxSec=720",
+    "--property=MemoryMax=6442450944",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "6",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/run_material_electron_ion_kernel.py",
+    "--frozen-reference",
+    "--sigma-slots",
+    "0,64",
+    "--pi-q",
+    "0,1,2",
+    "--output",
+    "/var/tmp/p254-a41-frozen-kernel-spin-q-001"
+  ],
+  "final_source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/electron_ion_functional.py",
+      "bytes": 8042,
+      "sha256": "76d38c86664d922d1519ffc2533e9d7caba3698fef76a657a05a47b9b3d226aa"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/electron_ion_global_functional.py",
+      "bytes": 2360,
+      "sha256": "0a5d3f208c65401717242d7f6a7db575795c0ddbb6a07d04bac17433266d8109"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/material_electron_ion_inputs.py",
+      "bytes": 11609,
+      "sha256": "a31dc23eb3ee7fd06178885bdaf9c97a57abaac386e9c98c0d19c9cc693cc523"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/oracle_electron_ion_functional.py",
+      "bytes": 15170,
+      "sha256": "e6dba196e98fe78499bc97f0d40e57787560e47cba8f1976bf1799e197087053"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/run_material_electron_ion_kernel.py",
+      "bytes": 11682,
+      "sha256": "5cdad832398dd9d0de42f09d86c8b2260d1531e726232f08f4bb39bda7a82471"
+    }
+  ],
+  "same_functional_oracle_replays": 0,
+  "CLI_after_oracle_delta": "EXISTING ProjectionCache immutable per-q results/exact-input resume/.prev metadata. Final consumer reads authenticated saved chunks. No interaction formula/state/tolerance change.",
+  "recovery": "Each committed q immutable; same-source --resume skips its kernel contractions. Potential loss is current uncommitted q; restart still authenticates old inputs and rebuilds small free reference transitions, NOT promised free. No automatic restart.",
+  "new_output_ceiling_bytes": "134217728",
+  "scope": "Original4times/all16orderedpairs,completeinternalq/spins,externalSigma0+64/Piq0+1+2. Conditionalfrozenreference,NOTmoving/selfconsistent/rate/wholeE."
+}
