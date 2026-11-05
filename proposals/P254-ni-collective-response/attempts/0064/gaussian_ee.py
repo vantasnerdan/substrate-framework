@@ -15,6 +15,7 @@ are blocked over inner h. No all-slot/time three-mode bank is allocated.
 Only genuine Gaussian saved U is supported, not a dressed two-time bank.
 """
 import numpy as np
+from time import perf_counter
 from all_slot_coulomb_blas import static_exchange
 from all_slot_coulomb_contractions import validate_physical, KEYS
 from streamed_ee import Block, _pair_tiles
@@ -78,9 +79,9 @@ def _direct_kernels(factors,q,u,occupations,internal_batch):
 
 
 def stream_gaussian_ee(factors,reference,times,consume,*,owned_q=None,
-                       owned_pairs=None,pair_batch=4,inner_batch=8,
+                       owned_pairs=None,owned_external=None,pair_batch=4,inner_batch=8,
                        internal_batch=8,source_bindings=()):
-    """A60 Block/consumer ABI: additive q, all slots and nine channels.
+    """A60 Block/consumer ABI: additive q, explicit slot ownership, nine channels.
 
     reference must be a genuine saved bare-Gaussian U provider with original
     c.rho0 and matching exact times. It is NOT a generic electron callback.
@@ -100,24 +101,32 @@ def stream_gaussian_ee(factors,reference,times,consume,*,owned_q=None,
     qs=tuple(range(c.nq)) if owned_q is None else tuple(owned_q)
     if len(set(qs))!=len(qs) or any(type(q) is not int or not 0<=q<c.nq for q in qs):
         raise ValueError('unique owned outer q required')
+    externals=tuple(range(c.ns)) if owned_external is None else tuple(owned_external)
+    if len(set(externals))!=len(externals) or any(type(i) is not int or not 0<=i<c.ns for i in externals):
+        raise ValueError('unique owned canonical external slots required')
     pairs=tuple((a,b) for tile in _pair_tiles(len(times),pair_batch,owned_pairs) for a,b in tile)
     if len(set(pairs))!=len(pairs):raise ValueError('duplicate owned time pairs')
     validate_physical(factors)
     occupations=(np.eye(c.m)-c.rho0,c.rho0)
     manifest=dict(schema='p254-a64-gaussian-ee-v1',times=times.tolist(),
-        owned_outer_q=qs,owned_pairs=pairs,external_slots=c.ns,bands=c.m,
+        owned_outer_q=qs,owned_pairs=pairs,owned_external=externals,external_slots=c.ns,bands=c.m,
         exchange_inner_h=c.nq,channels=KEYS,additive_axis='outer_q',
         internal_modes=c.m**3,rank_truncation=False,blocks=0,
         source_bindings=list(source_bindings),temporal_payload_peak=0,
-        direct_kernel_payload_peak=0,static_payload_peak=0,
+        direct_kernel_payload_peak=0,static_payload_peak=0,direct_kernel_seconds=0.,
+        external_seconds=[],
         scope='bare Gaussian first-map only; no dressed-G reconstruction',
-        full_physical_scope=len(qs)==c.nq and len(pairs)==len(times)**2)
+        full_physical_scope=len(qs)==c.nq and len(externals)==c.ns and len(pairs)==len(times)**2)
+    if not externals or not pairs:return manifest
     for q in qs:
+        direct_started=perf_counter()
         kernels,peak=_direct_kernels(factors,q,u,occupations,internal_batch)
+        manifest['direct_kernel_seconds']+=perf_counter()-direct_started
         manifest['direct_kernel_payload_peak']=max(manifest['direct_kernel_payload_peak'],kernels.nbytes)
         manifest['temporal_payload_peak']=max(manifest['temporal_payload_peak'],peak)
         qm=int(c.minus[q]);p=c.feature_partner[q][:len(factors.weights[q])]
-        for i in range(c.ns):
+        for i in externals:
+            external_started=perf_counter()
             left,right,b,cc,aa=static_exchange(factors,q,np.array([i]))
             manifest['static_payload_peak']=max(manifest['static_payload_peak'],left.nbytes+right.nbytes)
             exchange=np.zeros((2,len(pairs),c.m,c.m),complex)
@@ -150,4 +159,5 @@ def stream_gaussian_ee(factors,reference,times,consume,*,owned_q=None,
                     values['retarded_'+channel]=(values['greater_'+channel]-values['lesser_'+channel])*mask
                 consume(Block(q,(i,),tile,values));manifest['blocks']+=1
             del left,right,exchange
+            manifest['external_seconds'].append(dict(q=q,slot=i,seconds=perf_counter()-external_started))
     return manifest
