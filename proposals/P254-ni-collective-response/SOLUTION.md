@@ -15,38 +15,24 @@ Nodes are scientific outputs, not approval checkpoints. Completion labels apply 
 
 ```mermaid
 flowchart TD
-    R["R · Material reference and initial state\nCOMPLETE · conditional, nonstationary"]
-    S["S · Spatial and inter-region operators\nFINITE-MODEL DENSITY / IONIC OPERATORS COMPLETE\nDECLARED FINITE-q CURRENT / ADJOINT EXECUTED"]
-    E["E · Intrinsic response, noise and losses\nCOMPONENTS COMPLETE AT DECLARED SCOPES\nCOUPLED EVOLUTION / CALIBRATION OPEN"]
-    ED["Electronic-density / force / current join\nSOURCE0 / GAMMA COMPONENT COMPLETE"]
-    EI["Electron–ion kernels\nALL128 EXTERNAL SIGMA / ALL64 IONIC PI COMPLETE\nFOUR ORIGINAL TIMES"]
-    EA["Cubic ions\nFULL37 SOURCE / COMMON MAPS COMPLETE\nFULL111 GAMMA CONTOUR COMPONENT COMPLETE"]
-    EE["Electron–electron direct/exchange kernels\nALL128 MOVING BARE COMPONENT COMPLETE\nFOUR ORIGINAL TIMES"]
-    EJ["Joint Gamma ionic / field contour\nCOMMON + REPRESENTED K-RESPONSE / NOISE COMPLETE"]
-    EV["Supplied-kernel Dyson / VIE2 interface\nAPI COMPLETE · ACTUAL COARSE MATERIAL DEFECT\nSTRUCTURE-PRESERVING FIX / MIDPOINT ACTIVE"]
-    D["D · Coupled dynamics and correlations\nORIGINAL16-CASE FINITE MODEL COMPLETE\nINTRINSIC-COLLISION EXTENSION OPEN"]
-    C["C · Controlled lattice comparison\nCONDITIONAL COMPARISON COMPLETE · physical ranking OPEN"]
-    N["N · Nuclear source/operator and energy disposal\nASSESSMENT COMPLETE · rates undetermined"]
+    R["R · Material reference and initial state<br/>COMPLETE · conditional, nonstationary"]
+    S["S · Spatial/inter-region operators<br/>DECLARED FINITE-MODEL OPERATORS COMPLETE"]
+    E0["E · Intrinsic components and solver<br/>ALL128 ELECTRONS / FULL114 GAMMA PREFIX COMPLETE<br/>genuine times 0, 0.5, 1"]
+    EF["Common collision feedback<br/>ACTIVE · dressed G/D to Sigma/Pi"]
+    EM["Common mean/curvature feedback<br/>ACTIVE · density/covariance to mean/U/S"]
+    D["D · Coupled dynamics and correlations<br/>ORIGINAL16 CASES COMPLETE<br/>intrinsic full-duration/spatial extension OPEN"]
+    C["C · Lattice comparison<br/>CONDITIONAL COMPARISON COMPLETE<br/>physical ranking unresolved"]
+    N["N · Nuclear rates and energy disposal<br/>SOURCE ASSESSMENT COMPLETE<br/>channel/receiver/transport inputs missing"]
     R --> S
-    R --> E
-    R --> ED
-    R --> EI
-    R --> EA
-    R --> EE
-    R --> EJ
-    ED --> E
-    EI --> EV
-    EA --> EV
-    EE --> EV
-    EJ --> EV
-    EV --> E
-    R --> D
+    R --> E0
+    E0 --> EF
+    E0 --> EM
+    EF --> D
+    EM --> D
     S --> D
-    E -- "field/noise couplings" --> D
-    D -- "saved moving baseline" --> ED
-    D -- "original moving mean" --> EJ
+    D -- "iterated intrinsic state" --> EF
+    D -- "iterated density/covariance" --> EM
     D --> C
-    E -. "material predictions" .-> N
     D -. "material predictions" .-> N
     C -. "material predictions" .-> N
 ```
@@ -56,7 +42,7 @@ flowchart TD
 - **Original dynamics/comparison:** [every original trajectory/readout](attempts/0029/four-original-structures-finite-dynamics-complete-001.json), [complete comparison admission](attempts/0029/final-four-structure-actual-comparison-admission-001.json), [lossless publication](attempts/0029/complete-comparison-lossless-publication-001.json) and [complete complementary review](attempts/0029/complete-active-model-scientific-review-admission-001.json) are retained. That review covers A29, not the later A30–A32 extension.
 - **Environment/influence:** the original [all-source short-time full-PW force covariance](attempts/0028/source-local-material-covariance-complete-intake-001.json), [full-state initial split](attempts/0030/physical-noise-decomposition-native-admission-001.json), [causal output filter](attempts/0030/canonical-force-filter-material-admission-001.json), [frozen-bath forced output](attempts/0031/finite-bath-material-publication-001.json) and [original-output cross terms](attempts/0031/homogeneous-output-cross-material-001.json) are distinct executed results. The moving coupled extension below now includes backreaction rather than treating that forcing as independent added noise.
 - **Nuclear bridge:** the [complete source/operator assessment](attempts/0028/nuclear-medium-assessment.md) and [executed sensitive consumer/oracle](attempts/0028/nuclear-medium-assessment-001.json) identify the missing transition/preparation/receiver/transport inputs. Material coherence alone does not determine a nuclear rate or heat; this is not a universal no-go.
-- **Current core work:** all declared intrinsic components and coupling inputs are now available, including the [full-coordinate Gamma cubic contour and genuine uniform reference](complete-cubic-contour-and-uniform-reference-input-admission-001.json). The first **actual material** fixed-kernel Dyson prefix ran, but its coarse output failed the strict lesser-contour check; the [paid output and exact diagnostic](attempts/0053/actual-first-output-contour-defect-001.json) are preserved. Work now resolves that numerical source and generates genuine midpoint kernels for time-step assessment, without weakening the reader or repairing the state. This extends the **already completed original sixteen coupled trajectories**; it is not unfinished original simulation production or a completed intrinsic trajectory.
+- **Current core work:** the [structure-preserving supplied solver](attempts/0054/structure-preserving-keldysh-handoff-001.json), [genuine midpoint component history](attempts/0055/actual-genuine-midpoint-handoff-001.json) and [actual all128/full114 material prefix](attempts/0053/actual-complete-genuine-midpoint-material-admission-003.json) are complete. The next missing solutions are common collision feedback and common mean/curvature feedback, implemented independently from the same saved dressed state before integration. The [same-order coarse/fine observation](attempts/0053/actual-genuine-prefix-temporal-comparison-003.json) is not a rigorous error bound or a conserving/full-duration result. This extends the **already completed original sixteen coupled trajectories**, not unfinished original production.
 
 Both [complete independent reviews of the earlier A42–A45 scoped components](complete-component-wave-scientific-review-admission-001.json) are correct with empty current/incremental finding arrays. Original resolved, dismissed and carried findings/failures remain retained. Those verdicts do not cover the new A46–A50 extensions, whole-E closure or the final distinct authorized merger.
 
@@ -253,7 +239,18 @@ The [complete A52 original handoff](attempts/0052/actual-original-uniform-moving
 
 The [actual A53 material input and scope](attempts/0053/implementation-contract-001.json) combine all-slot bare electron–electron and electron–ion Sigma, replace ionic Gamma by the joint field contribution, and embed the full cubic ionic Pi in the original 114-coordinate Gamma matrix. Original mechanical contacts/preparation and a separate represented-response control are retained; the same electronic noise is not added twice. The first run uses only the genuine available uniform zero/one prefix, not interpolated kernels.
 
-That actual run exited Native1 after 38.509 s: the first fermion solution's raw lesser diagonal had exchange defect `5.464467447231829e-5`, while source and kernel defects were at roundoff and the supplied retarded diagonal was copied exactly. The [original log](attempts/0053/actual-original-native-failure-001.log) and [paid-byte diagnostic](attempts/0053/actual-first-output-contour-defect-001.json) distinguish this numerical output failure from invalid input. No completed intrinsic readout, tolerance relaxation, symmetrized density or physical result is claimed. Existing retarded/VIE2 machinery is being combined with source-derived structure-preserving ordered-noise propagation; independent genuine midpoint inputs measure temporal error.
+The first actual run exited Native1 after 38.509 s: its first fermion lesser diagonal had exchange defect `5.464467447231829e-5`, despite roundoff source/kernel defects and an exactly copied retarded diagonal. The [original log](attempts/0053/actual-original-native-failure-001.log) and [paid-byte diagnostic](attempts/0053/actual-first-output-contour-defect-001.json) remain preserved. The [A54 replacement](attempts/0054/structure-preserving-keldysh-handoff-001.json) retains pinned retarded VIE2 and uses two-sided source-derived initial-state/noise propagation, with independently oriented companions. No tolerance relaxation, symmetrized density, clipping or refill was used. Its finite accuracy and coarse VIE residuals are recorded separately from the restored contour structure; the old A49 exported lesser-product diagnostic's companion-decoding limitation is also retained.
+
+Both the [actual coarse material step](attempts/0053/actual-complete-changed-method-material-prefix-admission-002.json) and [genuine midpoint step](attempts/0053/actual-complete-genuine-midpoint-material-admission-003.json) now complete all128 canonical fermion blocks and all114 Gamma position coordinates. A55 genuinely integrates the midpoint U and evaluates all component pairs, retaining the old zero/one pairs literally; no kernel or U interpolation supplies the midpoint. Integration order remains one in both runs.
+
+The [saved same-observable comparison](attempts/0053/actual-genuine-prefix-temporal-comparison-003.json) gives the following normalized Ni1/x **Gamma contribution** at time one. It is not the full real-space q-summed observable.
+
+| Model | Step one | Step one-half |
+| --- | ---: | ---: |
+| Common intrinsic/cubic kernels | 0.9999997071530395 | 0.9999997070613349 |
+| Separate represented-response control | 0.9999997072484342 | 0.9999997071607819 |
+
+The fine raw fermion trace changes from768 to767.9353396349999, while initial-state identities and raw contour Hermiticity remain intact. This is a fixed-kernel/prescribed-mean numerical/model defect, not physical electron loss or a heat signal. No precision threshold or temporal enclosure is inferred after observing these values. Work now feeds the saved dressed G/D back into the common Sigma/Pi functional and the same scalar's mean/curvature equations; further digits alone would not implement that missing physics.
 
 
 ## Existing solutions reused
@@ -268,14 +265,14 @@ Only actual reusable solutions are listed; missing physics is not represented by
 | Canonical CAR/Fock contractions, actual output filter and physical action cache | Preserve original nonorthogonal state, both true legs and cross orders; use the actual forcing interval and paid H/force data | [Noise split proof](attempts/0030/noise-projection-oracle-001.json), [causal filter](attempts/0030/canonical-force-filter-publication-001.json), [finite-bath proofs](attempts/0031/owning-block-oracles-001.json), [moving model](attempts/0032/hybrid-gamma-owning-oracle-001.json) |
 | Saved expanded bath/spectral coordinates and canonical field-current mapping | Reuse the actual A37 coordinate/state/operator banks and A36 map for the joint force–current output, without new H/force actions, basis selection or spectral reconstruction | [Saved bath](attempts/0037/actual-complete-expanded-bath-admission-003.json), [actual spectra/filter](attempts/0037/actual-complete-expanded-temporal-influence-admission-001.json), [canonical map](attempts/0036/canonical-field-force-source0-partial-material-result-002.json), [joint execution](attempts/0038/actual-complete-joint-temporal-influence-admission-001.json) |
 | Physical bare Hartree action and original momentum/feature maps | Reuse the actual `lrpa=True` Coulomb convention, head, volume/N normalization and original saved density vertices; keep PBE K and mean Hartree/Fock separate from the new correlation residual | [Source-bound bare factors](attempts/0044/bare_coulomb_factors.py), [actual full direct/exchange component](attempts/0044/actual-complete-full-bare-coulomb-component-admission-001.json) |
-| NESSi v2 contour Dyson/VIE2 and interaction examples | Reuse the actual pinned build, coherent Gaussian initialization and new supplied-kernel fermion/Cartesian-boson interface; preserve original covariance, both convolution orders and zero mixed branch without thermal refill, steady state or memory cutoff. The algorithm does not itself generate material kernels or close their feedback | [Pinned upstream](https://github.com/nessi-cntr/nessi/tree/6bb4c832a209d2c079fdbbdbc5c05ab8d5503aa6), [primary paper](sources/nessi-schueler-2020.pdf), [original Gaussian execution](attempts/0040/complete-original-gaussian-existing-solver-packet-001.json), [usable supplied-component adapter](attempts/0049/supplied-contour-vie2-handoff-001.json) |
+| NESSi v2 retarded Dyson/VIE2 and source-derived Keldysh transport | Reuse the pinned retarded solver, original coherent Gaussian preparation and independent two-sided initial-state/noise transport. Preserve the retarded diagonal and zero mixed branch; no thermal refill, steady state, memory cutoff or state projection. Actual material prefixes now run, but this algorithm alone does not close kernel/mean feedback | [Pinned upstream](https://github.com/nessi-cntr/nessi/tree/6bb4c832a209d2c079fdbbdbc5c05ab8d5503aa6), [primary paper](sources/nessi-schueler-2020.pdf), [original Gaussian execution](attempts/0040/complete-original-gaussian-existing-solver-packet-001.json), [actual structural replacement and finite accuracy](attempts/0054/structure-preserving-keldysh-handoff-001.json), [material observation](attempts/0053/actual-genuine-prefix-temporal-comparison-003.json) |
 | Evaluated nuclear/product/transport data and operator assessment | Reuse actual channel domains, product energies and conditional transport; do not invent amplitudes, missing material tables or heat | [Product ledger](attempts/0028/nuclear-product-energy-ledger.json), [measured channels](attempts/0028/measured-nuclear-channels-001.json), [transport](attempts/0028/nuclear-energy-transport-001.json), [assessment](attempts/0028/nuclear-medium-assessment.md) |
 
 Earlier force, energy and atom/species readouts remain in their [source-bound A28 publications](attempts/0028/retained-local-raw-artifacts-001.json); they are not repeated here as progress minutiae. Original raw scientific data and failed attempts remain preserved, not necessarily stored in Git.
 
 ## What is still required to close the physical objective
 
-1. **E — actual intrinsic continuation and required influence scope:** resolve the demonstrated coarse material output defect, assess temporal error with genuine additional kernels, and execute the common response/noise/cubic/collision extension at the original requested times. Preserve the original scalar, preparation and correct represented-channel replacement; all input components and the uniform reference alone are not that evolution. Extend source0/Gamma and selected-space influence to the required sources/spatial scope and quantify retained PBE/correlation-residual matching uncertainty. Wider same-model influence and intrinsic evolution remain computation, not inherently missing experimental data. Specimen radiation, reservoirs and random-disorder loss additionally need actual boundary/environment/statistics; those external limits do not excuse intrinsic computation. A finite bath, harmonic redistribution or numerical broadening is not irreversible material loss.
+1. **E — actual intrinsic continuation and required influence scope:** the demonstrated contour-output defect and genuine midpoint material prefix are resolved at their stated scopes. Finish common kernel and mean/curvature feedback, then the original requested-time intrinsic evolution and relevant spatial influence. Preserve the original scalar/preparation and correct represented-channel replacement; a successful fixed-kernel prefix is not selfconsistency, conservation or full-time accuracy. Quantify retained PBE/correlation-residual matching uncertainty. Wider same-model influence and intrinsic evolution remain computation, not inherently missing experimental data. Specimen radiation, reservoirs and random-disorder loss additionally need actual boundary/environment/statistics; those external limits do not excuse intrinsic computation. A finite bath, harmonic redistribution or numerical broadening is not irreversible material loss.
 2. **C — a defensible design decision:** propagate relevant reference/model, spatial-size and physical-noise uncertainty into matched comparisons. Different original preparations and unresolved physical errors still prevent a material ranking. Extra digits or repeated same-model checks do not supply that bridge.
 3. **N — any actual nuclear rate/heat prediction:** provide the specific channel/preparation, normalized transition/receiver amplitudes, nuclear-frequency matching, exclusive spectra and finite-specimen transport identified in the completed assessment. Do not promote material coherence to a rate.
 

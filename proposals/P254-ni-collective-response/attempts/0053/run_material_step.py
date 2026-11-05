@@ -8,7 +8,7 @@ from time import perf_counter
 import numpy as np
 from material_step_inputs import load_step, file_binding
 from joint_gamma_adapter import ordered_coordinates
-from supplied_vie2 import solve_supplied, load_solution
+from supplied_keldysh import solve_supplied, load_solution
 from consume_material_step import consume, json_value
 
 
@@ -16,6 +16,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--catalog',type=Path,required=True)
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--order',type=int,default=1)
     args = parser.parse_args()
     out = args.output.resolve();out.mkdir(parents=True,exist_ok=False)
     started = perf_counter()
@@ -24,7 +25,7 @@ def main():
         threads={k:os.environ.get(k) for k in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','BLIS_NUM_THREADS','NUMEXPR_NUM_THREADS')})),flush=True)
     c, reference, catalog, sigma, pi, represented = load_step(args.catalog)
     try:
-        times = reference.times;nt=len(times);order=min(5,nt-1)
+        times = reference.times;nt=len(times);order=args.order
         e_ret=np.zeros((nt,nt,c.ns,c.m,c.m),complex);e_less=np.zeros_like(e_ret)
         for a in range(nt):
             for b in range(nt):
@@ -64,15 +65,19 @@ def main():
         result=dict(schema='p254-actual-fixed-kernel-material-step-v1',status='complete',
             input_catalog=file_binding(args.catalog),dataset=file_binding(dataset),
             readout=file_binding(out/'readout.json'),times_inverse_ry=times.tolist(),
+            integration_order=order,
+            observable_scope='Ni1/x Gamma contribution e0/sqrtN, not a full realspace q sum.',
             actual_solved_fermion_blocks=c.ns,actual_Gamma_coordinates=d,
             actual_existing_solver_invocations=c.ns+2,new_physical_kernel_evaluations=0,
-            fixed_kernel=True,selfconsistent=False,mean='original prescribed moving mean',
+            fixed_kernel=True,selfconsistent=False,temporal_accuracy_established=False,
+            mean='original prescribed moving mean',
+            method='Pinned retarded VIE2 plus two-sided source-derived Keldysh ordered-noise propagation; no state repair.',
             cutover='Bare mechanical source keeps contacts and original covariance; common electronic Pi replaces represented active response/noise, never stacks it. Separate represented-only control.',
             cubic='Full111 ionic Pi embedded in original114 Gamma; no field-cubic invention.',
             source_reference_bindings=reference.bindings,
             elapsed_seconds=perf_counter()-started,
             maxrss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
-            limits=['Original0/1 uniformprefix only, not full0..30history.',
+            limits=['Supplied uniform prefix only, not full0..30history.',
                     'No mean/kernel selfconsistent feedback or fullspatial bath update.',
                     'No physicalcalibration/XCdoublecountcure/lifetime/rate/heat/fullEclaim.'])
         (out/'result.json').write_text(json.dumps(result,indent=2)+'\n')

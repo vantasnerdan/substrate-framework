@@ -7,7 +7,7 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
 sys.path[:0] = [str(ROOT/'src'), *(str(HERE.parent/n) for n in
-    ('0052','0050','0049','0045','0042','0041','0030','0029'))]
+    ('0054','0052','0050','0049','0045','0042','0041','0030','0029'))]
 from material_electron_ion_inputs import load_material
 from general_moving_reference import SavedMovingReference
 from substrate_framework.streamed_material_state import authenticate, file_binding
