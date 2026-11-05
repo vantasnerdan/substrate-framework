@@ -1,0 +1,12 @@
+{
+  "schema": "p254-a50-joint-gamma-represented-channel-v1",
+  "ownership": "A50 only; no shared/Git/source mutations",
+  "material_scope": "Gamma all111 ionic positions +3 original canonicalfield coordinates, all128 active CAR sectors/all12 bands, original0/1/10/30 all16pairs; component only",
+  "normalization": "positive Hamiltonian derivative ionic/sqrtN and unscaled field_modes; independently stored reverse contractions; evaluate normalized common edges with N=1; original explicit spins once",
+  "preserve": ["complete original mechanical h/j/generators/W0", "contact/mixed/minimalcoupling/Maxwell blocks", "original rho0 and moving rho-rho0 mean", "passive frozen initial totals"],
+  "represented": "electron-only A29 tangent with mechanicalforcing prescribed, dynamic density/K/potential retained and original moving mean; retarded gradient response independently extracted, ordered noise from identical active initial CAR ensemble; not A41 bare bubble",
+  "verification": "new finite scalar/SymPy + normalizedglobal/commonedge + explicit original A29 coupled tangent elimination + CAR Fock; sensitivities missingK, stackedresponse/noise, wrongN/field2, manufacturedreverse, wrongPauli",
+  "runtime": {"cpu":9,"memory_max":3221225472,"swap":0,"cumulative_native_seconds":1800,"each_attempt_max_seconds":900,"threads":1,"output_max_bytes":134217728,"restart":"no","protocol":"systemd-user actualjob view + durable exactargv/stdout/stderr/all-exit + Native0"},
+  "unresolved": ["ab-initio PBE/XC correlation-residual double-count prescription", "no selfconsistent physicalclosure", "no wholeE, physicalrates or fullphysicalloss claim"],
+  "source_contracts": ["agent://OriginalFeedbackMatching", "agent://NessiMatrixIVPContract", "local://p254-next-coupled-feedback-source-contract-wave-001.json"]
+}

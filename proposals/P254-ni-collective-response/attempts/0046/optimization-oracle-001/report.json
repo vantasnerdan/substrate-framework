@@ -1,0 +1,122 @@
+{
+  "blockers": [],
+  "bounds": {
+    "exchange_complex_multiply_adds_upper": 16698832846848,
+    "final_numeric_bytes": 42467328,
+    "global_four_index_tensor": false,
+    "local_band_transform_bytes_upper": 254803968,
+    "local_static_vertex_bytes": 169869312,
+    "output_cap_bytes": 268435456,
+    "static_vertex_complex_multiply_adds_upper": 1000190509056
+  },
+  "completed_resume": {
+    "completed_q": 4,
+    "exchange_ordered_local_contractions": 0,
+    "external_slots": 8,
+    "local_static_vertex_pairs": 0,
+    "new_q": 0,
+    "ordered_time_pairs": 16,
+    "reused_q": 4
+  },
+  "conjugating_reverse_mutation": 1.3555732405295762,
+  "findings": [
+    {
+      "claim": "new BLAS complete all-slot/all16pair finite result matches original saved unreduced physical definition",
+      "status": "passed"
+    },
+    {
+      "claim": "full12band unequal46x27-feature local regrouping preserves complex/bilinear convention",
+      "status": "passed"
+    }
+  ],
+  "finite_all_slot_relative_errors": {
+    "greater_direct": 2.9138840874520666e-16,
+    "greater_exchange": 3.551738351606429e-16,
+    "greater_total": 3.429209372655606e-16,
+    "lesser_direct": 4.1840748762615014e-16,
+    "lesser_exchange": 3.381807220587661e-16,
+    "lesser_total": 4.523758020297734e-16,
+    "retarded_direct": 3.876323291081407e-16,
+    "retarded_exchange": 3.81282604511267e-16,
+    "retarded_total": 4.163252260539595e-16
+  },
+  "full12_band_46x27_feature_relative_error": 1.1337444288072683e-15,
+  "partial_resume": {
+    "completed_q": 4,
+    "exchange_ordered_local_contractions": 3072,
+    "external_slots": 8,
+    "local_static_vertex_pairs": 96,
+    "new_q": 3,
+    "ordered_time_pairs": 16,
+    "reused_q": 1
+  },
+  "result": {
+    "bytes": 76096,
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/optimization-oracle-001/all-slots-all-pairs.npz",
+    "sha256": "c7da1077fa7971bc974c1a915af651492e7c2917ff183e49bcdde0aaf1d5c18e"
+  },
+  "schema": "p254-a46-new-blas-regrouping-oracle-v1",
+  "seconds": 1.392534185666591,
+  "single_local_kernel_seconds": 0.000752174761146307,
+  "source_input_specification": {
+    "authenticated_sources_and_inputs": [
+      {
+        "bytes": 31038,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/actual-independent-inputs.npz",
+        "sha256": "256881071d14d402d7d4f10e1266bdda7d87377a1056d93c8b2abfe9524f335b"
+      },
+      {
+        "bytes": 76096,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/all-slots-all-pairs.npz",
+        "sha256": "d5f104bb00651dd5e28dd92ba1fccadd8ce5d28df2cf432ba99d1af9e13178d6"
+      },
+      {
+        "bytes": 5558,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_blas.py",
+        "sha256": "fb496eb5bbfa1395baf5c1a11116a8b415a58ca607d1794cf02eae79262e10c2"
+      },
+      {
+        "bytes": 5769,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/oracle_all_slot_blas.py",
+        "sha256": "6a323b3cb2cbce421067645cafc7dfeda4db7023af00b82d3c3b8536a75ac31e"
+      },
+      {
+        "bytes": 7400,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_checkpoint.py",
+        "sha256": "c8ee5325f814d3070897326b780fa6ebc7866740cb644363a25de7c596611eb2"
+      },
+      {
+        "bytes": 7587,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_contractions.py",
+        "sha256": "f0f8cfe9535c00320d2d173190403ad8e0843b6792ec18a02ab411486dd04b65"
+      }
+    ],
+    "external_batches": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "nq": 4,
+    "shape": [
+      8,
+      4,
+      4,
+      2,
+      2
+    ]
+  },
+  "status": "passed",
+  "synthetic_batch256_local_seconds": 1.050489469897002,
+  "synthetic_only_material_speed_unmeasured": true
+}

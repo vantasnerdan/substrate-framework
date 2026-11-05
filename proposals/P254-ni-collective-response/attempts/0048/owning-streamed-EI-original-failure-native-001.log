@@ -1,0 +1,19 @@
+Running as unit: p254-a48-owning-streamed-EI-001.service; invocation ID: 260c60595a144801abb10a89297c1452
+{"stage": "actual-own-native-start", "pid": 3937253, "affinity": [10], "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a48-owning-streamed-EI-001.service\n", "limits": {"memory.max": {"status": "available", "value": "268435456"}, "memory.swap.max": {"status": "available", "value": "0"}, "cpuset.cpus.effective": {"status": "unavailable", "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a48-owning-streamed-EI-001.service/cpuset.cpus.effective'"}}, "thread_environment": {"OPENBLAS_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"}}
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0048/oracle_streamed_ei.py", line 133, in <module>
+    main()
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0048/oracle_streamed_ei.py", line 60, in main
+    dense, count, reused, _ = compute(c,reference,list(range(c.ns)),[0,1],
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/run_material_electron_ion_kernel.py", line 111, in compute
+    for q in range(c.nq):
+                   ^^^^
+AttributeError: 'types.SimpleNamespace' object has no attribute 'nq'. Did you mean: 'n'?
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 3.863s
+CPU time consumed: 3.837s
+Memory peak: 588.0K
+Memory swap peak: 0B
+[A48-owning-streamed-EI-001-native-exit] code=1

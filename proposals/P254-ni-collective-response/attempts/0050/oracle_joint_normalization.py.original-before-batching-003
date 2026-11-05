@@ -1,0 +1,51 @@
+"""New joint boundary: scalar derivative, normalized global/edge functional."""
+import numpy as np
+import sympy as sp
+from dataclasses import replace
+from joint_gamma_adapter import vertices
+from electron_ion_functional import EdgePair,evaluate_components
+from electron_ion_global_functional import GlobalPair,evaluate_global
+
+
+def check(c):
+    u,a,N,g,f,z=sp.symbols('u a N g f z',positive=True)
+    scalar=z*(u*g/sp.sqrt(N)+a*f)
+    symbolic=[sp.simplify(sp.diff(scalar,u)/z-g/sp.sqrt(N)),
+              sp.simplify(sp.diff(scalar,a)/z-f)]
+    assert symbolic==[0,0]
+    forward,reverse=vertices(c)
+    delta=np.array([[.04,.02+.03j],[.02-.03j,-.01]])
+    x=np.array([.13,-.21]); eps=1e-6
+    def energy(y):
+        return np.trace((y[0]*c.q(0).ionic[0,0]/np.sqrt(c.n)+y[1]*c.field_modes[0,0])@delta)
+    numerical=np.array([(energy(x+eps*np.eye(2)[i])-energy(x-eps*np.eye(2)[i]))/(2*eps) for i in range(2)])
+    gradient=np.einsum('iab,ab->i',reverse[0],delta)
+    assert np.linalg.norm(numerical-gradient)<1e-10
+    gg=-1j*(np.eye(2)-c.rho0[0]);gl=1j*c.rho0[0]
+    d=-1j*np.array([[.8,.19],[.19,.7]])
+    left,right=forward[0],reverse[0].transpose(0,2,1)
+    pair=EdgePair(left,right,left,right,gg,gl,gg,gl,gg,gl,d,d)
+    actual=evaluate_components(pair,n=1,t=0,s=0)
+    global_values=evaluate_global(GlobalPair(left,left,gg,gl,gg,gl,d,d),t=0,s=0)
+    errors={key:float(np.linalg.norm(value-getattr(global_values,key))) for key,value in actual.items()}
+    assert max(errors.values())<1e-13
+    ionic=replace(pair,left_t=c.q(0).ionic[0],left_s=c.q(0).ionic[0],
+        right_t=c.q(0).ionic_reverse[0].transpose(0,2,1),right_s=c.q(0).ionic_reverse[0].transpose(0,2,1),
+        d_greater=d[:1,:1],d_lesser=d[:1,:1])
+    old=evaluate_components(ionic,n=c.n,t=0,s=0)
+    restricted=replace(pair,left_t=left[:1],left_s=left[:1],right_t=right[:1],right_s=right[:1],d_greater=d[:1,:1],d_lesser=d[:1,:1])
+    normalized=evaluate_components(restricted,n=1,t=0,s=0)
+    ionic_error=max(float(np.linalg.norm(old[k]-normalized[k])) for k in old)
+    assert ionic_error<1e-13
+    bad_field=left.copy();bad_field[1]*=2
+    wrong=evaluate_components(replace(pair,left_t=bad_field,left_s=bad_field,right_t=bad_field,right_s=bad_field),n=1,t=0,s=0)
+    factor2=float(np.linalg.norm(wrong['pi_greater']-actual['pi_greater']))
+    missing_sqrt=float(np.linalg.norm(evaluate_components(pair,n=c.n,t=0,s=0)['pi_greater']-actual['pi_greater']))
+    # Independently supplied reverse deliberately violates dagger; API must retain it.
+    independent=right.copy();independent[1,0,1]+=.11j
+    changed=evaluate_components(replace(pair,right_t=independent,right_s=independent),n=1,t=0,s=0)
+    reverse_sensitivity=float(np.linalg.norm(changed['pi_greater']-actual['pi_greater']))
+    assert min(factor2,missing_sqrt,reverse_sensitivity)>1e-5
+    return dict(symbolic_derivatives=[str(v) for v in symbolic],scalar_error=float(np.linalg.norm(numerical-gradient)),
+        global_errors=errors,ionic_original_edge_error=ionic_error,
+        sensitivities=dict(field_factor2=factor2,wrong_retained_N=missing_sqrt,manufactured_reverse=reverse_sensitivity))

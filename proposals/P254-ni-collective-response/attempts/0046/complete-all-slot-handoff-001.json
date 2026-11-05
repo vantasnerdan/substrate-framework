@@ -1,0 +1,812 @@
+{
+  "actual_native": {
+    "actual_new_scientific_native_runs": 1,
+    "all_original_receipt_bindings": [
+      {
+        "bytes": 3674,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/actual-native-argv.json",
+        "sha256": "2f68798315b76f1f6be600f8ebfc5dec5cc632c10ddbc2a068e80b5ee2b3e36b"
+      },
+      {
+        "bytes": 1645,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/native-startup.json",
+        "sha256": "f699910732a52dc63abf3fba56ffb47beb03ffb4d5b34e7dfee0363fbf6807bd"
+      },
+      {
+        "bytes": 464,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/native-exit.json",
+        "sha256": "da7d5c2fa0648c2462da54542f131a4eaf07029206314f19000200b3ad68556f"
+      },
+      {
+        "bytes": 1410,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/manager-exit.json",
+        "sha256": "512945e1249f787d5a3abb119bc6496cb6c8caac25b3a23feb96d9766b5e9d4c"
+      },
+      {
+        "bytes": 449,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/manager.rawstdout.txt",
+        "sha256": "51bf123b789f23922c6753f4899cb1d4e26a1becdc086d6baf5a21fdb4fc2b0a"
+      },
+      {
+        "bytes": 285,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/manager.rawstderr.txt",
+        "sha256": "90858f71aae6d8a6f4d383ae946454d6520c48fe4556645d0fe2bed6f447c651"
+      },
+      {
+        "bytes": 7288,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/oracle.rawstdout.txt",
+        "sha256": "23f850e02e92412c1134d72ac8687f075e734b373aec59e280b1aa20e2f8a7d7"
+      },
+      {
+        "bytes": 0,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/oracle.rawstderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 47,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/view-launch.json",
+        "sha256": "598605456dc9651f85e4cd82c15f23bea4aafc89571f4844f0b7b586f2092f39"
+      },
+      {
+        "bytes": 8481,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-report.json",
+        "sha256": "31f526aa21c5168faa538058238682d2ce54dca8f0af5945480b20595dcb7652"
+      }
+    ],
+    "argv": {
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--wait",
+        "--pipe",
+        "--collect",
+        "--unit=p254-a46-sensitive-all-slot-oracle-001.service",
+        "--property=RuntimeMaxSec=120",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=Restart=no",
+        "env",
+        "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "NUMEXPR_NUM_THREADS=1",
+        "BLIS_NUM_THREADS=1",
+        "taskset",
+        "-c",
+        "8",
+        "/home/administrator/projects/substrate-framework/.venv/bin/python",
+        "-u",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/native_oracle_runner.py"
+      ],
+      "start_utc": "2026-11-05T02:32:12.613006+00:00",
+      "supervisor_argv": [
+        "/home/administrator/projects/substrate-framework/.venv/bin/python",
+        "-u",
+        "-c",
+        "import subprocess,time,json,pathlib; p=pathlib.Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046'); a=['env', 'XDG_RUNTIME_DIR=/run/user/1000', 'DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus', 'systemd-run', '--user', '--wait', '--pipe', '--collect', '--unit=p254-a46-sensitive-all-slot-oracle-001.service', '--property=RuntimeMaxSec=120', '--property=MemoryMax=4294967296', '--property=MemorySwapMax=0', '--property=Restart=no', 'env', 'PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime', 'PYTHONDONTWRITEBYTECODE=1', 'OPENBLAS_NUM_THREADS=1', 'OMP_NUM_THREADS=1', 'MKL_NUM_THREADS=1', 'NUMEXPR_NUM_THREADS=1', 'BLIS_NUM_THREADS=1', 'taskset', '-c', '8', '/home/administrator/projects/substrate-framework/.venv/bin/python', '-u', '/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/native_oracle_runner.py']; t=time.monotonic(); r=subprocess.run(a,capture_output=True,text=True); (p/'manager.rawstdout.txt').write_text(r.stdout); (p/'manager.rawstderr.txt').write_text(r.stderr); (p/'manager-exit.json').write_text(json.dumps(dict(argv=a,exit=r.returncode,seconds=time.monotonic()-t))); print(r.stdout); print(r.stderr); print('A46_NATIVE_TERMINAL_001',r.returncode,flush=True)"
+      ],
+      "unit": "p254-a46-sensitive-all-slot-oracle-001.service",
+      "view": "w1:p6C",
+      "whole_native_budget_seconds": 240
+    },
+    "granted_single_seconds": 120,
+    "granted_whole_seconds": 240,
+    "manager_rawstderr": "Running as unit: p254-a46-sensitive-all-slot-oracle-001.service; invocation ID: 24ed506b181e48ce836b37967726906a\nFinished with result: success\nMain processes terminated with: code=exited/status=0\nService runtime: 6.722s\nCPU time consumed: 6.645s\nMemory peak: 7.3M\nMemory swap peak: 0B\n",
+    "manager_rawstdout": "{\"unit\": \"p254-a46-sensitive-all-slot-oracle-001.service\", \"exit\": 0, \"seconds\": 6.608362475875765, \"peak_rss_kib\": 38908, \"ended_at\": \"2026-11-05T02:32:19.453161+00:00\", \"stdout\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/oracle.rawstdout.txt\", \"stderr\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/oracle.rawstderr.txt\"}\n",
+    "manager_terminal": {
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--wait",
+        "--pipe",
+        "--collect",
+        "--unit=p254-a46-sensitive-all-slot-oracle-001.service",
+        "--property=RuntimeMaxSec=120",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=Restart=no",
+        "env",
+        "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "NUMEXPR_NUM_THREADS=1",
+        "BLIS_NUM_THREADS=1",
+        "taskset",
+        "-c",
+        "8",
+        "/home/administrator/projects/substrate-framework/.venv/bin/python",
+        "-u",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/native_oracle_runner.py"
+      ],
+      "exit": 0,
+      "seconds": 6.771393303293735
+    },
+    "oracle_rawstderr": "",
+    "startup": {
+      "actual_affinity": [
+        8
+      ],
+      "manager": {
+        "ActiveState": "active",
+        "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a46-sensitive-all-slot-oracle-001.service",
+        "InvocationID": "24ed506b181e48ce836b37967726906a",
+        "MainPID": "3862253",
+        "MemoryMax": "4294967296",
+        "MemorySwapMax": "0",
+        "Restart": "no",
+        "RuntimeMaxUSec": "2min",
+        "SubState": "running"
+      },
+      "manager_argv": [
+        "systemctl",
+        "--user",
+        "show",
+        "p254-a46-sensitive-all-slot-oracle-001.service",
+        "--property=MainPID,ControlGroup,MemoryMax,MemorySwapMax,Restart,RuntimeMaxUSec,ActiveState,SubState,InvocationID"
+      ],
+      "manager_exit": 0,
+      "manager_rawstderr": "",
+      "manager_rawstdout": "Restart=no\nRuntimeMaxUSec=2min\nMainPID=3862253\nControlGroup=/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a46-sensitive-all-slot-oracle-001.service\nMemoryMax=4294967296\nMemorySwapMax=0\nActiveState=active\nSubState=running\nInvocationID=24ed506b181e48ce836b37967726906a\n",
+      "observed_at": "2026-11-05T02:32:12.858126+00:00",
+      "own_kernel_interfaces": {
+        "cpuset.cpus.effective": {
+          "availability": "unavailable",
+          "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a46-sensitive-all-slot-oracle-001.service/cpuset.cpus.effective'"
+        },
+        "memory.max": {
+          "availability": "available",
+          "value": "4294967296"
+        },
+        "memory.swap.max": {
+          "availability": "available",
+          "value": "0"
+        }
+      },
+      "pid": 3862253,
+      "unit": "p254-a46-sensitive-all-slot-oracle-001.service"
+    },
+    "terminal": {
+      "ended_at": "2026-11-05T02:32:19.453161+00:00",
+      "exit": 0,
+      "peak_rss_kib": 38908,
+      "seconds": 6.608362475875765,
+      "stderr": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/oracle.rawstderr.txt",
+      "stdout": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/oracle.rawstdout.txt",
+      "unit": "p254-a46-sensitive-all-slot-oracle-001.service"
+    },
+    "view": {
+      "label": "P254-A46-CPU8-sensitive-oracle",
+      "observer": "One successful anchored finite observer; earlier literal observer matched shell echo, not treated as terminal proof",
+      "pane": "w1:p6C",
+      "preserved_open": true,
+      "terminal_marker": "A46_NATIVE_TERMINAL_001 0"
+    },
+    "whole_native_cost_seconds": 6.722,
+    "whole_native_cpu_seconds": 6.645
+  },
+  "blockers": [],
+  "bounds": {
+    "complex_multiply_adds_upper": 128298742972416,
+    "conservative_algorithm_ram_bytes_upper": 2147483648,
+    "contraction_large_intermediate_bytes": 19501056,
+    "density_resident_bytes_upper": 868220928,
+    "direct_bubbles": 2048,
+    "electron_legs_resident_bytes": 9437184,
+    "exchange_q_h_slot_terms": 16777216,
+    "final_numeric_bytes": 42467328,
+    "full_four_index_allocation": false,
+    "interruption_loss": "at most current all-external q including all16 ordered pairs",
+    "jvp_transpose_exposed": false,
+    "live_numeric_accumulators_bytes_upper": 127401984,
+    "material_run_authorized": false,
+    "measured_material_speed": null,
+    "output_bytes_upper": 178257920,
+    "output_cap_bytes": 268435456,
+    "ownership": "ascending outerq prefix; every committed q owns all128 externals/all64 innerh/all16 pairs",
+    "physical_symmetry": "XX=DD and XD=DX after complete dummy-index exchange; pair-commuting bare density vertices only",
+    "rotating_numeric_generations": 2,
+    "transient_numeric_archives_including_final_and_stage_upper": 4
+  },
+  "bounds_notes": [
+    "Bounds are combinatorial/live-array/storage design bounds, not measured material timing. 128298742972416 is a deliberately conservative complex multiply-add count; material throughput/phase cost is UNMEASURED.",
+    "42,467,328 numeric bytes=40.5MiB final nine-channel full128 result. Two numeric prefix generations retain current/prev, not8192 immutableq outputs. Numeric archive publication actually needs at most3 simultaneous payloads; the4-payload source upper allowance provides an extra40.5MiB slack beyond the explicit8MiB metadata allowance.",
+    "Default batch4 largest feature-pair intermediate19,501,056bytes; batch8 doubles this. Density upper868,220,928bytes; ordered electron legs9,437,184bytes; conservative numerical algorithm RAM2GiB within4GiB Native grant. Legacy A44 immutable outputs/currentconsumer/source untouched."
+  ],
+  "carried_evidence": {
+    "complete_results": [
+      {
+        "mutations_exposed": [
+          "extra_volume",
+          "missing_N",
+          "spin2",
+          "repeated_N",
+          "exact-zero-only-head"
+        ],
+        "normalization_vertex": 0.0023240473080108183,
+        "physical_lrpa_relative": 4.9909615177372067e-17,
+        "schema": "p254-a44-factor-oracle-v1"
+      },
+      {
+        "force_defect": 3.15776856135229e-16,
+        "greater_defect": 6.174471878922825e-17,
+        "mutations_exposed": [
+          "missing-antisymmetric-half",
+          "spin2",
+          "direct-only",
+          "fresh-HF-mean"
+        ],
+        "schema": "p254-a44-fock-oracle-v1",
+        "scope": "finite explicit-spin Fock connected normal-ordered residual, independently of material applicability",
+        "weak_coupling_injection_defect": 2.816547296160964e-11
+      },
+      {
+        "bilinear_dual_defect": 3.3766115072321297e-16,
+        "independent_layer": "entrywise antisymmetric dense vertices, exact complex rational polynomial derivatives",
+        "mutations_exposed": [
+          "direct-only",
+          "conjugating-transpose",
+          "inferred-reversed-leg"
+        ],
+        "schema": "p254-a44-symbolic-oracle-v1"
+      },
+      {
+        "closure_feature_counts": [
+          27,
+          36,
+          42,
+          46
+        ],
+        "dense_block_defect": 1.5404595876854822e-10,
+        "schema": "p254-a44-material-bridge-oracle-v1",
+        "scope": "global dense explicit-spin bridge and full64q integer feature closure"
+      }
+    ],
+    "inner_oracle_seconds": 213.70574616314843,
+    "original_native_log": {
+      "bytes": 663,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/bare-coulomb-owning-oracles-native-001.log",
+      "sha256": "7e355c7b00a9eaf433c5799eca50978bae2c4c9781bfbd1c4a0e58f94d719362"
+    },
+    "original_native_seconds": 217.705,
+    "original_receipt": {
+      "bytes": 4622,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/owning-bare-coulomb-oracles-001.json",
+      "sha256": "4523049e729cc3a96a6a245d2e521cf85a22eb889a1dec033a613b30f52ea5d5"
+    },
+    "replayed": false,
+    "scope": "Unchanged bare factor normalization/head, finite Fock connected reference-normal-order definition, generic exact polynomial/JVP/bilinear transpose, original explicit-spin/dense bridge and64q variable-feature closure proofs carried; new sharing alone newly exercised",
+    "snapshots": [
+      {
+        "bytes": 4622,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/carried-owning-bare-coulomb-oracles-001.json",
+        "sha256": "4523049e729cc3a96a6a245d2e521cf85a22eb889a1dec033a613b30f52ea5d5"
+      },
+      {
+        "bytes": 663,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/carried-bare-coulomb-owning-oracles-native-001.log",
+        "sha256": "7e355c7b00a9eaf433c5799eca50978bae2c4c9781bfbd1c4a0e58f94d719362"
+      }
+    ]
+  },
+  "directory": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046",
+  "findings": [
+    {
+      "claim": "physical all-slot sharing matches original unreduced four-term functional",
+      "status": "passed"
+    },
+    {
+      "claim": "partial/completed/previous-generation numeric consumers recover actual values",
+      "status": "passed"
+    },
+    {
+      "claim": "Asymmetric independent Green legs expose wrong reverse inference, exchange omission, missing nonzeroq/head/Nyquist/spin mistakes",
+      "evidence": {
+        "Nyquist_partner_omission": 0.3276586646419881,
+        "bare_head_insertion": 0.0012738054752759172,
+        "exchange_omission": 0.3833679941122505,
+        "nonzero_q_omission": 1.0126469763808124,
+        "reverse_leg_inference": 1.1447628636673894,
+        "spin_sector_omission": 0.4901086223829853
+      },
+      "status": "passed"
+    },
+    {
+      "claim": "Generic arbitrary vertex reduction is invalid; finite counterexample retained",
+      "defect": 0.006510138611539588,
+      "status": "passed"
+    },
+    {
+      "claim": "Original CPU8/no-swap4GiB/120s native allocation observed in manager and ownkernel interfaces",
+      "status": "passed"
+    },
+    {
+      "claim": "Future all-slot source and provider CLI implemented, old A44 sources untouched",
+      "status": "implemented-not-material-executed"
+    }
+  ],
+  "finite_oracle": {
+    "blockers": [],
+    "carried_original_proofs_seconds": 217.705,
+    "completed_resume": {
+      "completed_q": 4,
+      "exchange_q_h_slot_terms": 0,
+      "external_slots": 8,
+      "new_q": 0,
+      "ordered_time_pairs": 16,
+      "reduced_direct_bubbles": 0,
+      "reused_q": 4
+    },
+    "decoded_norms": {
+      "greater_direct": 1015.3507454815423,
+      "greater_exchange": 444.7174401824181,
+      "greater_total": 1015.9273718389599,
+      "lesser_direct": 1065.0932141579694,
+      "lesser_exchange": 524.124240234857,
+      "lesser_total": 1052.0758431852641,
+      "retarded_direct": 1192.2426651325611,
+      "retarded_exchange": 499.5049251700149,
+      "retarded_total": 1200.5675308168545
+    },
+    "errors": {
+      "greater_direct": {
+        "absolute": 4.2793055210773687e-13,
+        "relative": 4.2146081441520553e-16
+      },
+      "greater_exchange": {
+        "absolute": 1.5770466250061518e-13,
+        "relative": 3.546176701231382e-16
+      },
+      "greater_total": {
+        "absolute": 4.1196213738624496e-13,
+        "relative": 4.0550353185242003e-16
+      },
+      "lesser_direct": {
+        "absolute": 4.2263272447744813e-13,
+        "relative": 3.968035087065772e-16
+      },
+      "lesser_exchange": {
+        "absolute": 2.0125239137615923e-13,
+        "relative": 3.839784080316134e-16
+      },
+      "lesser_total": {
+        "absolute": 4.643473613977359e-13,
+        "relative": 4.4136301047639126e-16
+      },
+      "retarded_direct": {
+        "absolute": 5.380379931893147e-13,
+        "relative": 4.512822841560465e-16
+      },
+      "retarded_exchange": {
+        "absolute": 1.7173631371710426e-13,
+        "relative": 3.4381305381253434e-16
+      },
+      "retarded_total": {
+        "absolute": 5.26377132941931e-13,
+        "relative": 4.384402538221145e-16
+      }
+    },
+    "findings": [
+      {
+        "claim": "physical all-slot sharing matches original unreduced four-term functional",
+        "status": "passed"
+      },
+      {
+        "claim": "partial/completed/previous-generation numeric consumers recover actual values",
+        "status": "passed"
+      }
+    ],
+    "full_material_bounds": {
+      "complex_multiply_adds_upper": 128298742972416,
+      "conservative_algorithm_ram_bytes_upper": 2147483648,
+      "contraction_large_intermediate_bytes": 19501056,
+      "density_resident_bytes_upper": 868220928,
+      "direct_bubbles": 2048,
+      "electron_legs_resident_bytes": 9437184,
+      "exchange_q_h_slot_terms": 16777216,
+      "final_numeric_bytes": 42467328,
+      "full_four_index_allocation": false,
+      "interruption_loss": "at most current all-external q including all16 ordered pairs",
+      "jvp_transpose_exposed": false,
+      "live_numeric_accumulators_bytes_upper": 127401984,
+      "material_run_authorized": false,
+      "measured_material_speed": null,
+      "output_bytes_upper": 178257920,
+      "output_cap_bytes": 268435456,
+      "ownership": "ascending outerq prefix; every committed q owns all128 externals/all64 innerh/all16 pairs",
+      "physical_symmetry": "XX=DD and XD=DX after complete dummy-index exchange; pair-commuting bare density vertices only",
+      "rotating_numeric_generations": 2,
+      "transient_numeric_archives_including_final_and_stage_upper": 4
+    },
+    "generic_vertex_false_reduction_defect": 0.006510138611539588,
+    "input_and_source_specification": {
+      "authenticated_sources_and_inputs": [
+        {
+          "bytes": 6898,
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_checkpoint.py",
+          "sha256": "61bedff6397c4959fa0c67e31e4666e234b045f78dc88fe70e67e7057716fddc"
+        },
+        {
+          "bytes": 7587,
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_contractions.py",
+          "sha256": "f0f8cfe9535c00320d2d173190403ad8e0843b6792ec18a02ab411486dd04b65"
+        },
+        {
+          "bytes": 2470,
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/native_oracle_runner.py",
+          "sha256": "e10501e7467cc8b8127d39e3526d336295a988951756fd062d8e7e53e40539f0"
+        },
+        {
+          "bytes": 9021,
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/oracle_all_slot_coulomb.py",
+          "sha256": "8c5657f72b336999cfa5f549aeed0c22e94c7bdc43a97a302c57656354e5e0c6"
+        },
+        {
+          "bytes": 6506,
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/run_all_slot_coulomb.py",
+          "sha256": "aa890d6f4ba7f1c9120782cbe681895f8d794dbab901188cfbe38c91ef61be37"
+        },
+        {
+          "bytes": 3713,
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/bare_coulomb_factors.py",
+          "sha256": "b6e8397fab0a09225f369f1a5b0f31bfba467413644b10a19ae2243ae367116d"
+        },
+        {
+          "bytes": 5428,
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/second_born_functional.py",
+          "sha256": "0acf1b1d3f8512bf5f4d9bf8c294115189f9537c9b5c051ad7c62f5bbb55ca7b"
+        },
+        {
+          "bytes": 8847,
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/material_second_born.py",
+          "sha256": "2cc8e2d351b009bec782128d742cd58231d0e3843e7b7bfd856115c4a588686a"
+        },
+        {
+          "bytes": 31038,
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/actual-independent-inputs.npz",
+          "sha256": "256881071d14d402d7d4f10e1266bdda7d87377a1056d93c8b2abfe9524f335b"
+        }
+      ],
+      "external_batches": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "feature_counts": [
+        3,
+        2,
+        4,
+        2
+      ],
+      "nq": 4,
+      "original_definition": "A44 four expanded terms; arbitrary independent ordered/reversed Green legs",
+      "schema": "p254-a46-sensitive-finite-oracle-input-v1",
+      "shape": [
+        8,
+        4,
+        4,
+        2,
+        2
+      ],
+      "times": [
+        0.0,
+        0.1,
+        0.4,
+        0.9
+      ]
+    },
+    "material_speed": "UNMEASURED",
+    "mutation_relative_defects": {
+      "Nyquist_partner_omission": 0.3276586646419881,
+      "bare_head_insertion": 0.0012738054752759172,
+      "exchange_omission": 0.3833679941122505,
+      "nonzero_q_omission": 1.0126469763808124,
+      "reverse_leg_inference": 1.1447628636673894,
+      "spin_sector_omission": 0.4901086223829853
+    },
+    "partial_resume": {
+      "completed_q": 4,
+      "exchange_q_h_slot_terms": 3072,
+      "external_slots": 8,
+      "new_q": 3,
+      "ordered_time_pairs": 16,
+      "reduced_direct_bubbles": 96,
+      "reused_q": 1
+    },
+    "previous_generation_recovery": {
+      "completed_q": 4,
+      "exchange_q_h_slot_terms": 1024,
+      "external_slots": 8,
+      "new_q": 1,
+      "ordered_time_pairs": 16,
+      "reduced_direct_bubbles": 32,
+      "reused_q": 3
+    },
+    "recovery_receipts": [
+      {
+        "rejected": "original-byte authentication failed: /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/prefix/prefix-0.npz",
+        "sidecar": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/prefix/prefix-0.json"
+      },
+      {
+        "rejected": "original-byte authentication failed: /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/prefix/prefix-0.npz",
+        "sidecar": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/prefix/prefix-0.json"
+      }
+    ],
+    "saved_result": {
+      "bytes": 76096,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/all-slots-all-pairs.npz",
+      "sha256": "d5f104bb00651dd5e28dd92ba1fccadd8ce5d28df2cf432ba99d1af9e13178d6"
+    },
+    "schema": "p254-a46-new-sensitive-all-slot-oracle-v1",
+    "scope": "all8 finite externals/all4 q/all16 pairs/2bands/unequal3,2,4,2features/two spins; independent asymmetric complex legs; original physical polynomial; actual numeric recovery",
+    "seconds": 6.454684926196933,
+    "status": "passed"
+  },
+  "issued_at": "2026-11-05T02:35:21.091317+00:00",
+  "new_source_files": [
+    {
+      "bytes": 6898,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_checkpoint.py",
+      "sha256": "61bedff6397c4959fa0c67e31e4666e234b045f78dc88fe70e67e7057716fddc"
+    },
+    {
+      "bytes": 7587,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_contractions.py",
+      "sha256": "f0f8cfe9535c00320d2d173190403ad8e0843b6792ec18a02ab411486dd04b65"
+    },
+    {
+      "bytes": 2470,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/native_oracle_runner.py",
+      "sha256": "e10501e7467cc8b8127d39e3526d336295a988951756fd062d8e7e53e40539f0"
+    },
+    {
+      "bytes": 9021,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/oracle_all_slot_coulomb.py",
+      "sha256": "8c5657f72b336999cfa5f549aeed0c22e94c7bdc43a97a302c57656354e5e0c6"
+    },
+    {
+      "bytes": 6506,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/run_all_slot_coulomb.py",
+      "sha256": "aa890d6f4ba7f1c9120782cbe681895f8d794dbab901188cfbe38c91ef61be37"
+    }
+  ],
+  "output_payload_bindings": [
+    {
+      "bytes": 31038,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/actual-independent-inputs.npz",
+      "sha256": "256881071d14d402d7d4f10e1266bdda7d87377a1056d93c8b2abfe9524f335b"
+    },
+    {
+      "bytes": 76096,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/all-slots-all-pairs.npz",
+      "sha256": "d5f104bb00651dd5e28dd92ba1fccadd8ce5d28df2cf432ba99d1af9e13178d6"
+    },
+    {
+      "bytes": 4091,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/finite-oracle-output/result.json",
+      "sha256": "f3559ee4e2fe0e851f89eb5e7808406ea8bf7e16943ffd576c59021f1f920c2b"
+    }
+  ],
+  "preregistration": {
+    "bytes": 11007,
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/preregistration-original.json",
+    "sha256": "849c17684f6c04cf2ebf23a4a67ccce24877c82cfe79b832ae82aba261924b85"
+  },
+  "schema": "P254-A46-complete-all-slot-implementation-and-finite-oracle-handoff-v1",
+  "scope_limits": [
+    "No actual full material run authorized or executed.",
+    "No A45 output opened or consumed; no moving material claim.",
+    "New CLI is implemented but actual SavedTransitions/provider material invocation intentionally unexecuted pending Root WaveII.",
+    "No full4^3 finite-dimensional all128 oracle replay: new finite8-slot complete oracle plus carried original64q closure/spin/Fock proofs.",
+    "No new derivative API, selfconsistent Dyson/KB, screened interaction, refill, fitted damping, rate/passivity or wholeE claim."
+  ],
+  "settled_source_authentication": "All eight original settled source byte counts/SHA256 matched exact preregistration before oracle; originals untouched",
+  "source_complete_allocation": {
+    "bytes": 1912,
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-complete-prerun-allocation.json",
+    "sha256": "172d7b8af3b94f4c503de0b4979f78a1e6f21964c8a06fc017e4efe7db7873b8"
+  },
+  "source_snapshot_inventory": {
+    "bytes": 7773,
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots.json",
+    "sha256": "f2ed00d075f789e5afe536ecd4beb3941a0905f750778cb6cae25845183f286a"
+  },
+  "source_snapshots": [
+    {
+      "original": {
+        "bytes": 9225,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/durable_active_baseline.py",
+        "sha256": "165fa087fc9ca04680ecda6651802ae3b64f5ad8a25e20aa3ff68a999c1b9376"
+      },
+      "snapshot": {
+        "bytes": 9225,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0042-durable_active_baseline.py.original",
+        "sha256": "165fa087fc9ca04680ecda6651802ae3b64f5ad8a25e20aa3ff68a999c1b9376"
+      }
+    },
+    {
+      "original": {
+        "bytes": 15499,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0029/reduced_electronic_dynamics.py",
+        "sha256": "c9821c53a2ff000cbdf87de06d8eb2ecc98f6f61e6eecd0e74789f61d5ce822c"
+      },
+      "snapshot": {
+        "bytes": 15499,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0029-reduced_electronic_dynamics.py.original",
+        "sha256": "c9821c53a2ff000cbdf87de06d8eb2ecc98f6f61e6eecd0e74789f61d5ce822c"
+      }
+    },
+    {
+      "original": {
+        "bytes": 11609,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/material_electron_ion_inputs.py",
+        "sha256": "a31dc23eb3ee7fd06178885bdaf9c97a57abaac386e9c98c0d19c9cc693cc523"
+      },
+      "snapshot": {
+        "bytes": 11609,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0041-material_electron_ion_inputs.py.original",
+        "sha256": "a31dc23eb3ee7fd06178885bdaf9c97a57abaac386e9c98c0d19c9cc693cc523"
+      }
+    },
+    {
+      "original": {
+        "bytes": 11682,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/run_material_electron_ion_kernel.py",
+        "sha256": "5cdad832398dd9d0de42f09d86c8b2260d1531e726232f08f4bb39bda7a82471"
+      },
+      "snapshot": {
+        "bytes": 11682,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0041-run_material_electron_ion_kernel.py.original",
+        "sha256": "5cdad832398dd9d0de42f09d86c8b2260d1531e726232f08f4bb39bda7a82471"
+      }
+    },
+    {
+      "original": {
+        "bytes": 3713,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/bare_coulomb_factors.py",
+        "sha256": "b6e8397fab0a09225f369f1a5b0f31bfba467413644b10a19ae2243ae367116d"
+      },
+      "snapshot": {
+        "bytes": 3713,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0044-bare_coulomb_factors.py.original",
+        "sha256": "b6e8397fab0a09225f369f1a5b0f31bfba467413644b10a19ae2243ae367116d"
+      }
+    },
+    {
+      "original": {
+        "bytes": 5428,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/second_born_functional.py",
+        "sha256": "0acf1b1d3f8512bf5f4d9bf8c294115189f9537c9b5c051ad7c62f5bbb55ca7b"
+      },
+      "snapshot": {
+        "bytes": 5428,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0044-second_born_functional.py.original",
+        "sha256": "0acf1b1d3f8512bf5f4d9bf8c294115189f9537c9b5c051ad7c62f5bbb55ca7b"
+      }
+    },
+    {
+      "original": {
+        "bytes": 8847,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/material_second_born.py",
+        "sha256": "2cc8e2d351b009bec782128d742cd58231d0e3843e7b7bfd856115c4a588686a"
+      },
+      "snapshot": {
+        "bytes": 8847,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0044-material_second_born.py.original",
+        "sha256": "2cc8e2d351b009bec782128d742cd58231d0e3843e7b7bfd856115c4a588686a"
+      }
+    },
+    {
+      "original": {
+        "bytes": 5691,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/coulomb_material_inputs.py",
+        "sha256": "d680b82275d8baad7cfc9d1b8f5c3258569b199656942dfb307a59157d0b6e0a"
+      },
+      "snapshot": {
+        "bytes": 5691,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0044-coulomb_material_inputs.py.original",
+        "sha256": "d680b82275d8baad7cfc9d1b8f5c3258569b199656942dfb307a59157d0b6e0a"
+      }
+    },
+    {
+      "original": {
+        "bytes": 6898,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_checkpoint.py",
+        "sha256": "61bedff6397c4959fa0c67e31e4666e234b045f78dc88fe70e67e7057716fddc"
+      },
+      "snapshot": {
+        "bytes": 6898,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0046-all_slot_coulomb_checkpoint.py.original",
+        "sha256": "61bedff6397c4959fa0c67e31e4666e234b045f78dc88fe70e67e7057716fddc"
+      }
+    },
+    {
+      "original": {
+        "bytes": 7587,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/all_slot_coulomb_contractions.py",
+        "sha256": "f0f8cfe9535c00320d2d173190403ad8e0843b6792ec18a02ab411486dd04b65"
+      },
+      "snapshot": {
+        "bytes": 7587,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0046-all_slot_coulomb_contractions.py.original",
+        "sha256": "f0f8cfe9535c00320d2d173190403ad8e0843b6792ec18a02ab411486dd04b65"
+      }
+    },
+    {
+      "original": {
+        "bytes": 2470,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/native_oracle_runner.py",
+        "sha256": "e10501e7467cc8b8127d39e3526d336295a988951756fd062d8e7e53e40539f0"
+      },
+      "snapshot": {
+        "bytes": 2470,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0046-native_oracle_runner.py.original",
+        "sha256": "e10501e7467cc8b8127d39e3526d336295a988951756fd062d8e7e53e40539f0"
+      }
+    },
+    {
+      "original": {
+        "bytes": 9021,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/oracle_all_slot_coulomb.py",
+        "sha256": "8c5657f72b336999cfa5f549aeed0c22e94c7bdc43a97a302c57656354e5e0c6"
+      },
+      "snapshot": {
+        "bytes": 9021,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0046-oracle_all_slot_coulomb.py.original",
+        "sha256": "8c5657f72b336999cfa5f549aeed0c22e94c7bdc43a97a302c57656354e5e0c6"
+      }
+    },
+    {
+      "original": {
+        "bytes": 6506,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/run_all_slot_coulomb.py",
+        "sha256": "aa890d6f4ba7f1c9120782cbe681895f8d794dbab901188cfbe38c91ef61be37"
+      },
+      "snapshot": {
+        "bytes": 6506,
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/source-snapshots/0046-run_all_slot_coulomb.py.original",
+        "sha256": "aa890d6f4ba7f1c9120782cbe681895f8d794dbab901188cfbe38c91ef61be37"
+      }
+    }
+  ],
+  "source_solution": {
+    "CLI": "run_all_slot_coulomb.py accepts --transitions actual SavedTransitions bundle, --provider module:factory actual electron(a,b) provider with physical history bindings, or explicitly --frozen. --bounds-only no numerical material. Root must authorize actual material invocation.",
+    "algebra": "V_ia;bc=V_ai;cb follows opposite feature involution, equal w under q->-q, opposite target bijection, scalar commutation; arbitrary edge densities need not be adjoints. Full dummy b<->c and d<->e gives XX=DD, XD=DX. This reduction is not licensed for generic independent vertices.",
+    "checkpoint": "Two alternating specific all-slot/q-prefix numeric archives plus bound sidecars. Every prefix owns all external batches/all h/all ordered pairs for q<completed_q. Stage publication+SHA authenticated decoding; fallback to previous valid generation and completed numeric reuse.",
+    "consumer": "Public consume_result authenticates implementation/input original bytes, decodes arrays, validates axes/dtype/finiteness/counts and computes norms. Actual finite saved NPZ consumed, partial interruption and completed reuse exercised.",
+    "derivatives": "No new JVP/transpose exposed. Existing A44 bilinear complex derivative evidence carried only for original API.",
+    "future_invocation_example": [
+      "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0046/run_all_slot_coulomb.py",
+      "--transitions",
+      "<Root-settled-original-SavedTransitions-bundle>",
+      "--output",
+      "<Root-owned-new-material-output>",
+      "--external-batch",
+      "4"
+    ],
+    "implementation": "One shared feature bubble per q/order/timepair, direct external dressing, full q/h exchange feature-pair matrix-chain batches over all external slots. Full128/all64q/all128spin-k/all12bands/27,36,42,46features/all16pairs in future material path.",
+    "physical_definition": "Original bare finite-feature V, 1/N per vertex; reference-normal-ordered correlation-only second Born, no fresh mean/HF/XC replacement"
+  },
+  "status": "COMPLETE_SOURCE_AND_PASSED_NEW_FINITE_ORACLE_ONLY"
+}

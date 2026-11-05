@@ -17,12 +17,14 @@ Nodes are scientific outputs, not approval checkpoints. Completion labels apply 
 flowchart TD
     R["R · Material reference and initial state\nCOMPLETE · conditional, nonstationary"]
     S["S · Spatial and inter-region operators\nFINITE-MODEL DENSITY / IONIC OPERATORS COMPLETE\nDECLARED FINITE-q CURRENT / ADJOINT EXECUTED"]
-    E["E · Field, environment and fluctuations\nJOINT FORCE/CURRENT RESULT COMPLETE\nwhole spatial influence / intrinsic loss OPEN"]
+    E["E · Intrinsic response, noise and losses\nCOMPONENTS COMPLETE AT DECLARED SCOPES\nCOUPLED EVOLUTION / CALIBRATION OPEN"]
     ED["Electronic-density / force / current join\nSOURCE0 / GAMMA COMPONENT COMPLETE"]
-    EI["Electron–ion greater/lesser/retarded kernels\nMOVING-REFERENCE COMPONENT COMPLETE"]
-    EA["Cubic-ion interaction\nDECLARED EXTERNAL COMPONENT COMPLETE\nALL-ATOM FEEDBACK EXTENSION IN PROGRESS"]
-    EE["Electron–electron direct/exchange kernels\nFROZEN COMPONENT COMPLETE\nALL-SLOT MOVING COMPLETION ACTIVE"]
-    D["D · Coupled dynamics and correlations\nAPPROVED 16-CASE FINITE MODEL COMPLETE"]
+    EI["Electron–ion kernels\nALL128 EXTERNAL SIGMA / ALL64 IONIC PI COMPLETE\nFOUR ORIGINAL TIMES"]
+    EA["Cubic ions\nFULL37 SOURCE / COMMON SCALAR / MEAN ACTIONS COMPLETE\nFULL-COORDINATE CONTOUR INPUT IN PROGRESS"]
+    EE["Electron–electron direct/exchange kernels\nALL128 MOVING BARE COMPONENT COMPLETE\nFOUR ORIGINAL TIMES"]
+    EJ["Joint Gamma ionic / field contour\nCOMMON + REPRESENTED K-RESPONSE / NOISE COMPLETE"]
+    EV["Supplied-kernel Dyson / VIE2 interface\nCOMPLETE · prepared fermion / Cartesian-boson boundary"]
+    D["D · Coupled dynamics and correlations\nORIGINAL16-CASE FINITE MODEL COMPLETE\nINTRINSIC-COLLISION EXTENSION OPEN"]
     C["C · Controlled lattice comparison\nCONDITIONAL COMPARISON COMPLETE · physical ranking OPEN"]
     N["N · Nuclear source/operator and energy disposal\nASSESSMENT COMPLETE · rates undetermined"]
     R --> S
@@ -31,14 +33,18 @@ flowchart TD
     R --> EI
     R --> EA
     R --> EE
+    R --> EJ
     ED --> E
-    EI --> E
-    EA --> E
-    EE --> E
+    EI --> EV
+    EA --> EV
+    EE --> EV
+    EJ --> EV
+    EV --> E
     R --> D
     S --> D
     E -- "field/noise couplings" --> D
     D -- "saved moving baseline" --> ED
+    D -- "original moving mean" --> EJ
     D --> C
     E -. "material predictions" .-> N
     D -. "material predictions" .-> N
@@ -50,9 +56,9 @@ flowchart TD
 - **Original dynamics/comparison:** [every original trajectory/readout](attempts/0029/four-original-structures-finite-dynamics-complete-001.json), [complete comparison admission](attempts/0029/final-four-structure-actual-comparison-admission-001.json), [lossless publication](attempts/0029/complete-comparison-lossless-publication-001.json) and [complete complementary review](attempts/0029/complete-active-model-scientific-review-admission-001.json) are retained. That review covers A29, not the later A30–A32 extension.
 - **Environment/influence:** the original [all-source short-time full-PW force covariance](attempts/0028/source-local-material-covariance-complete-intake-001.json), [full-state initial split](attempts/0030/physical-noise-decomposition-native-admission-001.json), [causal output filter](attempts/0030/canonical-force-filter-material-admission-001.json), [frozen-bath forced output](attempts/0031/finite-bath-material-publication-001.json) and [original-output cross terms](attempts/0031/homogeneous-output-cross-material-001.json) are distinct executed results. The moving coupled extension below now includes backreaction rather than treating that forcing as independent added noise.
 - **Nuclear bridge:** the [complete source/operator assessment](attempts/0028/nuclear-medium-assessment.md) and [executed sensitive consumer/oracle](attempts/0028/nuclear-medium-assessment-001.json) identify the missing transition/preparation/receiver/transport inputs. Material coherence alone does not determine a nuclear rate or heat; this is not a universal no-go.
-- **Current core work:** the [density/force/current join and genuine saved-output reader](attempts/0042/actual-saved-density-output-consumer-admission-001.json), [declared cubic material component](attempts/0043/actual-complete-declared-cubic-component-admission-001.json), [moving-reference electron–ion component](attempts/0045/actual-moving-reference-and-EI-component-admission-001.json) and [frozen full bare direct/exchange component](attempts/0044/actual-complete-full-bare-coulomb-component-admission-001.json) are complete at their stated scopes. The wider cubic calculation now has two productive disjoint full-atom source workers, reusing paid sectors and jets. The all-electronic-slot moving direct/exchange calculation uses a passed shared-contraction backend and bounded disjoint q partitions after its measured cost exceeded the original allocation; it does not repeat the infeasible contraction unchanged. Remaining physical work is wider source/spatial influence and consistent collision/noise feedback—not another replay of the original sixteen trajectories or a claim that component kernels establish a lifetime.
+- **Current core work:** the [all-external moving electron–ion component](attempts/0048/actual-complete-all-external-moving-EI-component-admission-001.json), [all-slot moving bare direct/exchange component](attempts/0046/actual-complete-moving-all128-bare-coulomb-component-admission-001.json), and [full37 cubic source/common scalar/mean actions](attempts/0047/actual-complete-full37-cubic-feedback-component-admission-001.json) are now complete. The [supplied NESSi interface and actual joint Gamma common/represented response-and-noise boundary](actual-joint-gamma-and-supplied-solver-admission-001.json) are also implemented and exercised. Current implementation supplies the remaining full-coordinate cubic contour callback and genuine uniform-time reference legs, then connects these to intrinsic-collision evolution and the original readouts. This is an extension of the **already completed original sixteen coupled trajectories**, not unfinished original simulation production.
 
-Both [complete independent reviews of these four scoped components](complete-component-wave-scientific-review-admission-001.json) are correct with empty current/incremental finding arrays. Original resolved, dismissed and carried findings/failures remain retained. The in-flight all-atom cubic and all-slot moving extensions, whole-E closure and final distinct authorized merger are not covered by those verdicts.
+Both [complete independent reviews of the earlier A42–A45 scoped components](complete-component-wave-scientific-review-admission-001.json) are correct with empty current/incremental finding arrays. Original resolved, dismissed and carried findings/failures remain retained. Those verdicts do not cover the new A46–A50 extensions, whole-E closure or the final distinct authorized merger.
 
 ## What the completed original simulation shows
 
@@ -186,6 +192,13 @@ The [complete original A45 handoff](attempts/0045/actual-complete-original-hando
 
 All four Native stages exited zero; actual service time was **200.917 s**. The completed recovery consumed all 8096 paid pairs, computed none and reproduced every output array byte-for-byte. At time thirty the raw U-unitarity Frobenius defect is approximately `2.398e-6`; reconstructed-density differences are `1.464e-6` Frobenius and `6.750e-8` maximum absolute. These diagnostics are not rigorous accuracy bounds or silently repaired canonical data. This is prescribed original moving-mean/bare-boson propagation, not selfconsistent collision/cubic feedback, all-external E-I coverage, passive/full-spatial closure or a lifetime. The launch-before-view operational deviation and subsequent closure of its completed exclusive view remain recorded without a scientific replay.
 
+### All-external moving electron–ion completion
+
+The [complete A48 result and original evidence](attempts/0048/actual-complete-all-external-moving-EI-component-admission-001.json) extend the unchanged A41 functional to all128 external electronic slots and all64 external ionic q, with all twelve bands, all111 ionic coordinates and all sixteen original time pairs. All131072 edge-time-pair evaluations completed. The streaming representation retains literal greater, lesser and retarded Pi in authenticated q chunks and two rotating Sigma prefixes, rather than copying a large joined bank.
+
+Actual material production exited Native0 in670.932s. The completed public `--resume` then exited Native0 in8.172s, authenticated and decoded the saved numerical outputs, and computed zero new physical pairs; all69 output-file sizes and modification times were unchanged. Both original fixture failures remain recorded; total A48 Native time is690.624s including failures and the new storage-boundary comparison. These are still four **nonuniform sampled times**, not a complete uniform solver history, selfconsistent propagation or joint direct ionic–field derivative vertices. Original numerical defects and the local raw banks remain retained.
+
+
 ## Intrinsic electron–electron interaction: actual full-sum component
 
 The [complete actual component admission](attempts/0044/actual-complete-full-bare-coulomb-component-admission-001.json) binds the original source handoff, four independent physical-factor/Fock/SymPy/material-bridge proofs, every actual invocation, complete findings and failures, raw complex outputs and genuine saved-output consumers. It computes bare direct **and** exchange second Born for external slots `0/64`, all **12,288 quartets per external**, all sixty-four internal q values, both explicit spin sectors, twelve bands, the original variable `27/36/42/46` Fourier feature families and all sixteen original `0/1/10/30` time pairs. It does not replace the bare interaction with the saved full PBE kernel, screened W or fitted U.
@@ -194,11 +207,25 @@ The initial 600.141 s timeout preserved seventy-six complete q chunks. Recovery 
 
 This is a **frozen-original-reference, finite-feature active-space correlation component**. Reference normal ordering is not an ab-initio PBE XC double-counting prescription. Moving/selfconsistent feedback, passive/complement loops, a lifetime, irreversible loss, material ranking and whole-E closure are not supplied by this result.
 
+### All-slot moving bare Coulomb completion
+
+The [complete A46 admission](attempts/0046/actual-complete-moving-all128-bare-coulomb-component-admission-001.json) and [original complete handoff](attempts/0046/actual-complete-moving-all128-bare-coulomb-handoff-003.json) now cover all128 external slots, all64 outer q and all64 inner h, explicit spins, all twelve bands, the original variable physical feature families and all sixteen moving-reference time pairs. Direct and exchange are both retained. All three disjoint q partitions and their exact-cover merger exited Native0; each unscaled contribution enters once.
+
+The genuine final consumer decoded all nine complex tensors in the42,469,696-byte archive. New A46 Native time is6640.552s including the separate6.722s boundary oracle and all failed/bounded attempts; the amended material grant accounts for6633.830s without resetting prior costs. Owned completed views are closed and numerical prefixes remain preserved locally. This completes the declared moving bare second-Born **component**, not selfconsistent KB dynamics, passive/full-space loops, an ab-initio PBE XC double-count prescription or a material lifetime.
+
+
 ## Intrinsic cubic-ion interaction: actual declared component
 
 The [complete original A43 handoff](attempts/0043/actual-complete-material-cubic-handoff-001.json) and [component admission](attempts/0043/actual-complete-declared-cubic-component-admission-001.json) preserve every finding, failed attempt, exact compact-pair proof and Native cost. All 128 original full-column complex-density sectors and explicit weights enter the source. Electronic onsite thirds cover atoms `0/31` only, as required for the six declared external rows; all thirty-seven ionic atoms and both 111-mode internal legs remain. The result covers external q `0/1/2`, rows `0/1/2/93/94/95`, all sixty-four internal q and all sixteen original time pairs in 192 immutable completed chunks.
 
 Completed source recovery reused all 128 sectors with zero new jets. Completed kernel recovery performed zero kernel replay and preserved result/chunk bytes and mtimes. The [genuine saved-NPZ consumer](attempts/0043/actual-original-saved-cubic-consumer-001.json) reads the [original completed numerical kernel](attempts/0043/actual-original-complete-cubic-kernel-001.npz). Total charged Native time is **4040.613 s**, including proofs, failures, stops and timeouts; combined source/kernel/consumer payload is **7666086 bytes**. This is a fixed-original-state leading cubic component, not all-thirty-seven-atom electronic thirds, selfconsistent cubic evolution, material damping or whole-E closure. The wider all-atom matrix-free feedback construction is separate work; paid original sectors are retained rather than recalculated.
+
+### Full37 cubic source and common feedback maps
+
+The [complete A47 admission](attempts/0047/actual-complete-full37-cubic-feedback-component-admission-001.json) and [original complete handoff](attempts/0047/actual-complete-whole-cubic-feedback-handoff-001.json) extend electronic onsite thirds to every one of the37 atoms using all128 original full-column complex-D sectors and original weights once. All20 already-complete full37 sectors and the paid atom0/31 jets in the remaining sectors were reused. The completed source resume computes zero new jets.
+
+The compact provider supplies the common cubic scalar, Gaussian mean force, directional action and true bilinear transpose on all111 ionic coordinates and all64 ordered internal covariance q. Its actual saved actions and original prepared-Gaussian mean force have been consumed numerically. Combined A43/A47 Native time is7969.998s including every failure, stop and oracle; no dense all-q111-cubed coefficient object is created. This is **source and scalar/mean-map completion**: the full-coordinate contour-kernel callback is current work, not an already completed all-external/time cubic archive. The selected finite Ewald donor, fixed reference, translation-invariant covariance scope and absent field-cubic terms remain explicit.
+
 
 ## Electronic-density forcing: actual computation and representation repair
 
@@ -212,6 +239,15 @@ The [actual complete density/force/current join](attempts/0042/actual-complete-d
 
 The [unrounded original result](attempts/0042/actual-complete-density-joint-result-004.json) gives matched source covariance `9.29084488462373e-8` bohr² plus its retained small imaginary part. Its same-source substitution into the original active output is `7.935450998371749e-8` bohr²; independent marginal-variance addition would differ by `-2.8815623556346824e-9` bohr². This is a source0/Gamma fixed-filter/frozen-expanded-H joint contribution, not whole-source/spatial coverage, selfconsistent moving influence, calibrated irreversible loss or a nuclear rate.
 
+## Supplied-kernel solver and represented-channel cutover
+
+The [actual supplied-component NESSi adapter](attempts/0049/supplied-contour-vie2-handoff-001.json) now exposes C++ refresh/start/step, a binary component CLI, Python `solve_supplied` and a persisted-output reader. It preserves the caller's statistics, original coherent fermion or Cartesian position preparation, supplied retarded diagonal and zero initial mixed branch. Both convolution orders are evaluated independently. Actual finite matrix comparisons and saved consumers completed Native0. This is a reusable algorithm boundary, not a material evolution: a uniform complete startup/history is required, and arbitrary independent non-contour-Hermitian legs cannot be silently packed into a single Hermitian-contour object.
+
+The [complete actual joint Gamma result](attempts/0050/actual-original-joint-gamma-handoff-003.json) and [final original binding](attempts/0050/actual-original-joint-gamma-final-binding-004.json) cover all111 ionic plus3 canonical-field coordinates, all128 sectors, twelve bands and all sixteen original time pairs. Ionic derivatives carry their original `1/sqrt(N)`; canonical-field derivatives are unscaled and retain independent reverse contractions. A separate source-backed extraction retains the original electronic density→K→delta-h feedback and moving mean, and produces its retarded gradient response and same-sector ordered CAR noise. It is **not** identified with the undressed common bubble.
+
+The Pi-only difference/cutover preserves the original mean/tadpole, passive initial totals, full mechanical contact/mixed/minimal-coupling/Maxwell terms and preparation. Replacement must remove the same represented response **and** ordered noise; neither a second copy of that channel nor subtraction of the frozen Hessian is justified. All saved common and represented numerical archives were consumed. The actual3GiB OOM is retained;19-coordinate batching completed all114 probes without state or K truncation. The unresolved PBE/correlation-residual matching prescription is not concealed by normal ordering or by this successful channel extraction.
+
+
 ## Existing solutions reused
 
 Only actual reusable solutions are listed; missing physics is not represented by an inventory placeholder.
@@ -224,14 +260,14 @@ Only actual reusable solutions are listed; missing physics is not represented by
 | Canonical CAR/Fock contractions, actual output filter and physical action cache | Preserve original nonorthogonal state, both true legs and cross orders; use the actual forcing interval and paid H/force data | [Noise split proof](attempts/0030/noise-projection-oracle-001.json), [causal filter](attempts/0030/canonical-force-filter-publication-001.json), [finite-bath proofs](attempts/0031/owning-block-oracles-001.json), [moving model](attempts/0032/hybrid-gamma-owning-oracle-001.json) |
 | Saved expanded bath/spectral coordinates and canonical field-current mapping | Reuse the actual A37 coordinate/state/operator banks and A36 map for the joint force–current output, without new H/force actions, basis selection or spectral reconstruction | [Saved bath](attempts/0037/actual-complete-expanded-bath-admission-003.json), [actual spectra/filter](attempts/0037/actual-complete-expanded-temporal-influence-admission-001.json), [canonical map](attempts/0036/canonical-field-force-source0-partial-material-result-002.json), [joint execution](attempts/0038/actual-complete-joint-temporal-influence-admission-001.json) |
 | Physical bare Hartree action and original momentum/feature maps | Reuse the actual `lrpa=True` Coulomb convention, head, volume/N normalization and original saved density vertices; keep PBE K and mean Hartree/Fock separate from the new correlation residual | [Source-bound bare factors](attempts/0044/bare_coulomb_factors.py), [actual full direct/exchange component](attempts/0044/actual-complete-full-bare-coulomb-component-admission-001.json) |
-| NESSi v2 contour Dyson/VIE2, bubbles and interaction examples | Actual pinned build/install and coherent product-Gaussian adapter execution; preserve exact zero/one occupancies, original complex coherence, no thermal refill, steady state or memory cutoff. The library supplies the algorithm, not a Ni/H collision kernel; the separate A41 component supplies the declared material electron–ion kernels | [Pinned upstream source](https://github.com/nessi-cntr/nessi/tree/6bb4c832a209d2c079fdbbdbc5c05ab8d5503aa6), [primary paper](sources/nessi-schueler-2020.pdf), [complete original-Gaussian packet](attempts/0040/complete-original-gaussian-existing-solver-packet-001.json), [actual electron–ion component](attempts/0041/actual-material-kernel-component-admission-002.json) |
+| NESSi v2 contour Dyson/VIE2 and interaction examples | Reuse the actual pinned build, coherent Gaussian initialization and new supplied-kernel fermion/Cartesian-boson interface; preserve original covariance, both convolution orders and zero mixed branch without thermal refill, steady state or memory cutoff. The algorithm does not itself generate material kernels or close their feedback | [Pinned upstream](https://github.com/nessi-cntr/nessi/tree/6bb4c832a209d2c079fdbbdbc5c05ab8d5503aa6), [primary paper](sources/nessi-schueler-2020.pdf), [original Gaussian execution](attempts/0040/complete-original-gaussian-existing-solver-packet-001.json), [usable supplied-component adapter](attempts/0049/supplied-contour-vie2-handoff-001.json) |
 | Evaluated nuclear/product/transport data and operator assessment | Reuse actual channel domains, product energies and conditional transport; do not invent amplitudes, missing material tables or heat | [Product ledger](attempts/0028/nuclear-product-energy-ledger.json), [measured channels](attempts/0028/measured-nuclear-channels-001.json), [transport](attempts/0028/nuclear-energy-transport-001.json), [assessment](attempts/0028/nuclear-medium-assessment.md) |
 
 Earlier force, energy and atom/species readouts remain in their [source-bound A28 publications](attempts/0028/retained-local-raw-artifacts-001.json); they are not repeated here as progress minutiae. Original raw scientific data and failed attempts remain preserved, not necessarily stored in Git.
 
 ## What is still required to close the physical objective
 
-1. **E — physical influence at the required scope:** finish the cubic-ion material kernel and all-electronic-slot moving direct/exchange evaluation; extend the completed source0/Gamma density/current/force join to the required sources/spatial scope and original times. Compose these with the executed prescribed-moving electron–ion component in consistent retarded/noise/feedback evolution and mean-field matching; do not add independent marginal noise or fitted damping. Wider same-model influence and intrinsic evolution are computation, not inherently missing experimental data. The installed NESSi engine supplies a reusable algorithm, not a completed Ni/H collision evolution. Specimen radiation, reservoirs and random-disorder loss additionally need actual boundary/environment/statistics; those external limits do not excuse intrinsic computation. A finite bath, harmonic redistribution or numerical broadening is not irreversible material loss.
+1. **E — actual intrinsic continuation and required influence scope:** finish the full-coordinate cubic contour callback and genuine uniform-time reference history; connect the completed joint ionic/field common and represented response/noise to the supplied-kernel solver, retaining the original scalar, preparation and correct channel replacement. Execute the coupled intrinsic extension and consume its original-time correlation/readouts; four nonuniform component samples are not that evolution. Extend source0/Gamma and selected-space influence to the required sources/spatial scope and quantify the retained PBE/correlation-residual matching uncertainty. Wider same-model influence and intrinsic evolution remain computation, not inherently missing experimental data. Specimen radiation, reservoirs and random-disorder loss additionally need actual boundary/environment/statistics; those external limits do not excuse intrinsic computation. A finite bath, harmonic redistribution or numerical broadening is not irreversible material loss.
 2. **C — a defensible design decision:** propagate relevant reference/model, spatial-size and physical-noise uncertainty into matched comparisons. Different original preparations and unresolved physical errors still prevent a material ranking. Extra digits or repeated same-model checks do not supply that bridge.
 3. **N — any actual nuclear rate/heat prediction:** provide the specific channel/preparation, normalized transition/receiver amplitudes, nuclear-frequency matching, exclusive spectra and finite-specimen transport identified in the completed assessment. Do not promote material coherence to a rate.
 

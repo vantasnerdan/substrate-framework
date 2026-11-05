@@ -1,0 +1,112 @@
+"""Consume all128 authenticated saved full37 jets in original explicit-weight order."""
+import argparse
+import json
+from pathlib import Path
+import sys
+from time import perf_counter
+
+HERE=Path(__file__).resolve().parent;A43=HERE.parent/'0043'
+sys.path.insert(0,str(A43))
+import numpy as np
+from reduced_projection_cache import ProjectionCache,atomic_json
+from reduced_projection_storage import ImmutableItems
+from substrate_framework.streamed_material_state import authenticate,file_binding
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--resume',action='store_true')
+    args=parser.parse_args();started=perf_counter()
+    output=args.output.resolve();output.mkdir(parents=True,exist_ok=args.resume)
+    old_path=Path('/var/tmp/p254-a43-full-state-third-002/source.json')
+    old_binding=file_binding(old_path)
+    if old_binding['sha256']!='064bc5e4786cde656762fc47830c4ad83819c514d1be44078402b362dc01578d':
+        raise ValueError('exact immutable original A43 source required')
+    old=json.loads(old_path.read_bytes())
+    old_cache=json.loads(Path(authenticate(old['sector_cache'])).read_bytes())
+    benchmark_path=Path('/var/tmp/p254-a47-full37-completion-001/sector-result.json')
+    benchmark=json.loads(benchmark_path.read_bytes())
+    if benchmark['status']!='one-full-sector-complete' or benchmark['sector']!=19 or benchmark['source']!=old_binding:
+        raise ValueError('actual previously paid full37 sector019 required')
+    worker_paths=[Path('/var/tmp/p254-a47-full37-cpu%d-001/worker-result.json'%cpu) for cpu in (6,7)]
+    workers=[json.loads(path.read_bytes()) for path in worker_paths]
+    expected=[list(range(20,74)),list(range(74,128))]
+    for worker,owned,cpu in zip(workers,expected,(6,7)):
+        if (worker['status']!='complete-at-owned-sectors' or worker['owned_sector_indices']!=owned
+                or worker['cpu']!=cpu or worker['completed_sector_count']!=54
+                or worker['electronic_atom_indices']!=list(range(37))
+                or worker['original_selected_atom_source']!=old_binding):
+            raise ValueError('actual disjoint54sector worker completion required')
+        authenticate(worker['completed_cache'])
+    archives=[];origins=[]
+    for index in range(128):
+        if index<19:
+            item=old_cache['items']['sector/%03d'%index]
+            if item['metadata'].get('electronic_atom_indices',list(range(37)))!=list(range(37)):
+                raise ValueError('original paid full37 coverage differs')
+            archive=item['archive'];origin='banked-A43-full37-sector'
+        elif index==19:
+            archive=benchmark['full37_archive'];origin='newly-paid-A47-full37-sector019'
+        else:
+            worker=workers[0 if index<74 else 1]
+            archive=worker['full37_archives']['full/%03d'%index]
+            origin='disjoint-A47-CPU%d-completion'%worker['cpu']
+        archives.append(archive);origins.append(origin)
+    scientific=old['source_bindings']+[file_binding(HERE/'complete_full37_sectors.py'),
+        file_binding(HERE/'benchmark_missing_full_sector.py'),file_binding(__file__)]
+    for binding in scientific:authenticate(binding)
+    specification=dict(kind='complete-original128-sector-all37-electronic-third-source',
+        original_selected_source=old_binding,coefficient_manifest=old['coefficient_manifest'],
+        original_lower_order_authority=old['original_lower_order_authority'],
+        completed_full37_sector_archives=archives,sector_origins=origins,
+        original_sector_lineages=old['full_sector_lineage'],scientific_source_bindings=scientific,
+        worker_results=[file_binding(path) for path in worker_paths],paid_sector019=file_binding(benchmark_path))
+    cache=ProjectionCache(output/'source-assembly',specification)
+    local=np.zeros((37,3,3,3),complex);nonlocal_term=np.zeros_like(local)
+    reader=ImmutableItems({str(index):dict(archive=archive) for index,archive in enumerate(archives)})
+    for index in range(128):
+        saved=reader.get(str(index))
+        if set(saved)!={'local','nonlocal_term'} or any(value.shape!=(37,3,3,3) or not np.isfinite(value).all() for value in saved.values()):
+            raise ValueError('finite actual complete full37 original-sector jets required')
+        weight=old['full_sector_lineage'][index]['weight']
+        local+=weight*saved['local'];nonlocal_term+=weight*saved['nonlocal_term']
+        print(json.dumps(dict(consumed_full37_sector=index,identity=old['full_sector_lineage'][index]['identity'],
+            weight=weight,archive=archives[index],origin=origins[index])),flush=True)
+    with np.load(authenticate(old['arrays']),allow_pickle=False) as saved_geometry:
+        arrays=dict(local=local,nonlocal_term=nonlocal_term,electronic_atom_indices=np.arange(37),
+            cell=saved_geometry['cell'],positions=saved_geometry['positions'],charges=saved_geometry['charges'])
+    metadata=dict(ordered_saved_sector_archives=archives,explicit_weights=[item['weight'] for item in old['full_sector_lineage']],
+        weighting='Every original positive explicit sector weight applied once in original sector order',electronic_atom_indices=list(range(37)))
+    if not cache.has('assembled'):
+        cache.put('assembled',arrays,metadata=metadata)
+    if cache.manifest['items']['assembled']['metadata']!=metadata:
+        raise ValueError('saved assembled source attribution differs')
+    actual_saved=cache.get('assembled')
+    if not np.array_equal(actual_saved['local'],local) or not np.array_equal(actual_saved['nonlocal_term'],nonlocal_term):
+        raise ValueError('genuine saved-source output differs from authenticated original-order sum')
+    if cache.manifest['status']!='complete':
+        cache.manifest['status']='complete';cache.publish()
+    record=dict(schema='p254-a43-full-state-third-v2',status='complete',
+        coefficient_manifest=old['coefficient_manifest'],original_boundary=old['original_boundary'],
+        original_lower_order_authority=old['original_lower_order_authority'],original_context=old['original_context'],
+        material_sources=old['material_sources'],atom_names=old['atom_names'],matching=old['matching'],
+        full_sector_lineage=old['full_sector_lineage'],electronic_atom_indices=list(range(37)),
+        electronic_atom_coverage='All37 original atoms, all128 original full-column complexD sectors; no unavailable electronic atom',
+        completed_full37_sector_archives=archives,sector_origins=origins,
+        arrays=cache.manifest['items']['assembled']['archive'],sector_cache=file_binding(cache.path),source_bindings=scientific,
+        original_A43_source=old_binding,worker_results=[file_binding(path) for path in worker_paths],
+        original_settings_changed=False,recomputed_old_coefficients=False,computed_higher_jet_only=True,
+        actual_saved_original_order_sector_count=128,original_weights_applied_once=True,
+        no_state_reduction=True,no_star_tensor_transport=True)
+    path=output/'source.json'
+    if path.exists():
+        if not args.resume or json.loads(path.read_bytes())!=record:
+            raise ValueError('complete all37 source differs from this exact saved consumer')
+    else:atomic_json(path,record)
+    print(json.dumps(dict(source=file_binding(path),full37_sector_count=128,
+        actual_saved_assembled_norms={name:float(np.linalg.norm(actual_saved[name])) for name in ('local','nonlocal_term')},
+        elapsed_seconds=perf_counter()-started)),flush=True)
+
+if __name__=='__main__':
+    main()
