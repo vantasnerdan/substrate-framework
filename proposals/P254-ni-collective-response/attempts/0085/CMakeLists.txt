@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.16)
+project(P254_A85_RealAxis_Result LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(NESSI_PREFIX "/home/administrator/.local/opt/nessi-6bb4c832" CACHE PATH "Pinned installed NESSi")
+find_package(Eigen3 3.4 REQUIRED NO_MODULE)
+find_library(CNTR_LIBRARY cntr PATHS "${NESSI_PREFIX}/lib" NO_DEFAULT_PATH REQUIRED)
+add_executable(solve_result lean_result.cpp)
+# Reuse the admitted old algorithm and its explicit diagnostic mutations only
+# for the small finite oracle. This is not linked into the production target.
+add_executable(oracle_old_components ../0054/solve_components.cpp)
+foreach(target solve_result oracle_old_components)
+    target_include_directories(${target} PRIVATE "${NESSI_PREFIX}/include")
+    target_link_libraries(${target} PRIVATE "${CNTR_LIBRARY}" Eigen3::Eigen)
+    set_target_properties(${target} PROPERTIES BUILD_RPATH "${NESSI_PREFIX}/lib")
+endforeach()

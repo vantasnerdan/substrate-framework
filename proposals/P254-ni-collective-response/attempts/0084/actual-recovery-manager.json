@@ -1,0 +1,49 @@
+{
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--unit=p254-a84-gamma-recovery-a85-001.service",
+    "--property=RuntimeMaxSec=1096",
+    "--property=MemoryMax=8589934592",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "--property=CPUAffinity=6",
+    "--property=StartLimitBurst=1",
+    "--working-directory=/home/administrator/projects/substrate-ni-collective",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0063:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061:/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "HERDR_PANE_ID=w1:p83",
+    "HERDR_ENV=1",
+    "HERDR_TAB_ID=w1:t7J",
+    "HERDR_WORKSPACE_ID=w1",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "-c",
+    "from pathlib import Path\nimport json, os, runpy, sys\nfrom production_transport import atomic_json, binding\ncase=json.loads(Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0084/recovery-a85-001.json').read_bytes())\nreceipt=Path(case[\"receipts\"]); receipt.mkdir(parents=True,exist_ok=True)\ngroup=Path(\"/proc/self/cgroup\").read_text().strip().split(\"::\")[-1]\ncg=Path(\"/sys/fs/cgroup\")/group.lstrip(\"/\")\nruntime=dict(affinity=sorted(os.sched_getaffinity(0)),memory_max=(cg/\"memory.max\").read_text().strip(),swap_max=(cg/\"memory.swap.max\").read_text().strip(),environment={key:value for key,value in os.environ.items() if key.startswith(\"HERDR_\") or key in (\"OPENBLAS_NUM_THREADS\",\"OMP_NUM_THREADS\",\"MKL_NUM_THREADS\",\"NUMEXPR_NUM_THREADS\",\"BLIS_NUM_THREADS\")},executable=sys.executable,pythonpath=os.environ.get(\"PYTHONPATH\"),case=binding('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0084/recovery-a85-001.json'))\natomic_json(receipt/\"runtime.json\",runtime)\nif (runtime[\"affinity\"] != [case[\"cpu\"]] or runtime[\"memory_max\"] != str(case[\"memory_bytes\"]) or runtime[\"swap_max\"] != \"0\" or runtime[\"environment\"].get(\"HERDR_ENV\") != \"1\" or runtime[\"environment\"].get(\"HERDR_PANE_ID\") != case[\"pane_id\"] or any(runtime[\"environment\"].get(k) != \"1\" for k in (\"OPENBLAS_NUM_THREADS\",\"OMP_NUM_THREADS\",\"MKL_NUM_THREADS\",\"NUMEXPR_NUM_THREADS\",\"BLIS_NUM_THREADS\"))):\n    raise RuntimeError(\"allocated actual Native runtime differs\")\nfor item in case[\"source_bindings\"]:\n    if binding(item[\"path\"]) != item: raise ValueError(\"fullhistory actual source binding mismatch\")\nprint(\"P254_A84_GAMMA_RUNTIME_\"+\"OK_\"+case[\"nonce\"],flush=True)\nsys.argv=list(case[\"solver_argv\"])\nrunpy.run_path(case[\"solver_argv\"][0],run_name=\"__main__\")"
+  ],
+  "cwd": "/home/administrator",
+  "started_unix": 1793956537.7518663,
+  "timeout_seconds": 1156,
+  "exit": 0,
+  "wall_seconds": 265.1844534496777,
+  "stdout": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0084/receipts-recovery-a85-001/manager.stdout",
+    "bytes": 38005,
+    "sha256": "f1c4eece32de215f6602f361f2bd2baec4145b07c2f5db40fd6d9a3e80bb8ebe"
+  },
+  "stderr": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0084/receipts-recovery-a85-001/manager.stderr",
+    "bytes": 292,
+    "sha256": "b71bb97b56775d9b7c32bea65c6bcc4580c4162f08e81e4a3d6653ba26a33cde"
+  }
+}
