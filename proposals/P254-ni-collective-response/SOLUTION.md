@@ -9,6 +9,13 @@ updated: '2026-11-06'
 
 The objective remains a material-calibrated many-region simulation, a defensible lattice comparison, and an explicit nuclear-transition/energy-disposal construction ([P254](proposal.yaml)). The original finite-model simulations, first full-duration intrinsic update and next Gamma-only block are executed. The physical objective is **not complete**: coupled selfconsistency, decision-relevant numerical/model uncertainty, material loss-survival, a physical lattice ranking and nuclear rates remain unresolved.
 
+**Owner-directed archival integration (6 November 2026).** Issue #225 is
+administratively closed and this partial research is integrated without treating
+that repository action as scientific completion. The remaining obligations below
+remain unmet. This publication does not authorize further issue pursuit and makes
+no change to existing production jobs, runtime state or their ownership. The
+observations and run descriptions below retain their original scoped meaning.
+
 ## Core plan and actual state
 
 Nodes are scientific outputs, not approval checkpoints. Completion labels apply only to the stated scope.
@@ -114,4 +121,7 @@ Earlier component results, source snapshots, scoped reviews and failures remain 
 2. **C — obtain a defensible design decision.** Propagate relevant reference/model, spatial-size and physical-noise uncertainty into matched comparisons. Different original preparations and unresolved physical errors still prevent a material ranking. More digits or repeated same-model checks do not create that bridge.
 3. **N — provide the inputs for an actual nuclear rate/heat prediction.** The specific channel/preparation, normalized transition/receiver amplitudes, nuclear-frequency matching, exclusive spectra and finite-specimen transport remain required by the completed assessment. Do not promote material coherence to a rate.
 
-The canonical issue and source PR remain open. No successful prefix, first Picard update, generic qualification campaign or narrower objective is substituted for the physical obligations above.
+Issue #225 is administratively closed at the owner's direction. PR integration
+preserves partial research, not physical acceptance. No successful prefix, first
+Picard update, generic qualification campaign or narrower objective supplies the
+physical obligations above; this repository closeout makes no runtime/job change.
