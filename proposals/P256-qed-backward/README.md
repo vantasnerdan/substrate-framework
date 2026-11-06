@@ -1,16 +1,20 @@
 # P256 — work backward from interacting QED
 
-Issue [#222](https://github.com/vantasnerdan/substrate-framework/issues/222).
-**Active constructive campaign: bosonic statistics, rotation locking,
-quantum orbital mass, compact photons, and the same primitive scattering current.**
-The initial reference/interface calculations remain as comparators. Research
-was resumed by direct owner instruction; the retired #203 campaign's
-single-Euler/neutrino restrictions do not apply.
+Issue [#222](https://github.com/vantasnerdan/substrate-framework/issues/222) is
+administratively closed at the owner's direction. The P256 campaign remains
+stopped; its joined physical matter/photon goal is unmet.
+
+Start with [the retained mathematical arguments](retained-mathematics-20261106.md)
+for the exact uniform Gram/Clifford reduction, conditional coherent survival
+and fixed-box sector separation, adverse examples and singular-safe CAR methods.
+This archival integration is not a physical closure or a novelty claim.
 Historical source baseline: `14e0b08f6099698b6d117840e65f86cbe70d4efb`.
 The owner-requested [19 October research capture](capture_20261019.md) maps
 the current sources, evidence, historical source epochs and omitted bulk data.
-This is an active research snapshot, not a terminal result or accepted release.
-Producer manifests, not a checkout's HEAD alone, identify each calculation.
+This is a historical research snapshot, not a terminal scientific result or
+accepted release. Producer manifests, not a checkout's HEAD alone, identify each
+calculation. Continuation language below is historical, not authorization to
+resume the stopped campaign.
 
 ## New induced-photon continuation — conditional quantum branch
 
