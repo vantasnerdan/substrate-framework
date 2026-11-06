@@ -1,0 +1,77 @@
+{
+  "schema": "p254-a88-ee-input-reuse-interface-v1",
+  "status": "actual-reader-verified-and-partial-production-exercised-full-q-completion-pending",
+  "files_created": ["electron_inputs.py", "produce_ee.py", "interface.json"],
+  "frozen_sources": "Existing A87 producers, contraction/store primitives and previously executed source remain unchanged by this input-only path. The separate unexecuted A87 full-history Gamma-reuse API is documented in A89.",
+  "api": {
+    "electron_inputs.ElectronHistory": {
+      "constructor": "ElectronHistory(provider)",
+      "ownership": "Composes public A63 SavedHistory; owns its mappings until close or context exit",
+      "electron": "electron(a,b) -> (greater[128,12,12], lesser[128,12,12])",
+      "axes": "Read-only electron bank transpose(1,2,0,3,4) changes slot-first to time-major with views, not an all-history copy",
+      "algebra": "Existing A56 dressed_reference.greater calls its owning spectral helper; theta(0)=1 preserves the raw retarded diagonal. This is the A63 DressedHistory.electron physical accessor, without constructing DressedHistory or a bare bath",
+      "remaining_mappings": "Public SavedHistory still authenticates/maps electron, gamma, auxiliary and optional represented-control payloads; only electron ret/less enter EE"
+    },
+    "electron_inputs.load_inputs": "load_inputs(provider) -> (BareCoulombFactors(load_coulomb_inputs()), ElectronHistory(provider)); caller closes the history",
+    "produce_ee.produce_ee": "produce_ee(q, output, *, provider, resume=False, pair_batch=2, external_batch=16, static_slots=64) -> pathlib.Path to catalog.json",
+    "cli": "python proposals/P254-ni-collective-response/attempts/0088/produce_ee.py Q OUTPUT --provider PROVIDER [--resume] [--pair-batch 2] [--external-batch 16] [--static-slots 64]",
+    "cli_component_argument": false,
+    "accepted_q": "Original integer q from 0 through 63; each invocation owns exactly one q"
+  },
+  "physics": {
+    "algorithm": "Unchanged 0087/dressed_ee.stream_missing_ee and its owning A60/A46 contractions",
+    "time_nodes": 31,
+    "ordered_time_pairs": 961,
+    "explicit_electron_sectors": 128,
+    "bands": 12,
+    "exchange_inner_h": 64,
+    "reverse_electron_leg": "Independent raw electron(a,b) and electron(b,a) callbacks, not an inferred reverse leg",
+    "inputs": "Only original A44 load_coulomb_inputs/BareCoulombFactors and actual public A63 SavedHistory electronic banks",
+    "not_constructed": ["FrozenReference", "GaussianTransitions", "DressedHistory", "mechanical bath"],
+    "not_used": ["Gaussian U factorization", "optional time-pair symmetry", "reduced bands", "reduced spins or slots", "reduced inner h", "refill or committed scientific-output replay"],
+    "output_scope": "One additive EE Sigma q contribution, not Pi, joint, cubic, an all64q family, a Dyson step, closure or a full solve"
+  },
+  "identity": {
+    "actual_provider": "Explicit --provider/API argument is authenticated through unchanged A87 functional_bank.source_identity ancestry; no module-G1 hardpin is introduced",
+    "root_actual_case": "/var/tmp/p254-a84-intrinsic-full31-001/provider.json",
+    "original_preparation": "Separate unchanged original_preparation from 0088/preregistration.json; ancestry must reach it",
+    "original_numerical_reference": "Separate unchanged original_numerical_reference from 0088/preregistration.json; provider ancestry and Coulomb manifest must agree with this identity",
+    "provider_payloads": "Provider JSON plus actual electron/gamma completion receipts, bank metadata, ret/less arrays, slot receipts, auxiliary descriptors and optional represented controls are authenticated and retained",
+    "material_payloads": "CoulombInputs.bindings retains the exact archives authenticated by original ImmutableItems, including all128 slot h0/rho0 reads and all64x128 directed density/feature reads, plus actual background receipt/archive; no unused mechanical/kernel/ionic archive inventory is invented",
+    "original_metadata": "Original boundary/producer implementation descriptors remain truthful loader-authenticated provenance, not claims about selected current runtime code",
+    "current_code": "Implementation bindings snapshot the selected import-reachable project Python graph rooted in the actual A88 producer/input modules. This graph includes imported owning helper dependencies, including import-only definitions; it is not a minimal dynamic execution trace",
+    "closure_limit": "No claim of complete Native, extension, BLAS or shared-library closure",
+    "descriptor_parser": "Unchanged ComponentStore.authenticate_tree uses substrate_framework.streamed_material_state.authenticate, preserving the owning integer/string byte-count descriptor contract"
+  },
+  "storage_and_resume": {
+    "store": "Unchanged A87 ComponentStore, schema p254-additive-history-component-v1, and existing A76 consume_component",
+    "fresh": "Existing output is rejected unless explicit resume=True/--resume; single-writer lock and exclusive initial directory creation remain owning-store behavior",
+    "numeric_arrays": "sigma-greater.npy, sigma-lesser.npy, sigma-retarded.npy, each complex128 [31,31,128,12,12]",
+    "ownership": "All961 ordered pairs and all128 external cells are declared; only durable committed cells count toward complete-owned-component-qQ. Partial catalogs are explicit and never full-solve eligible",
+    "checkpoint_authority": "Atomic checkpoint packed bitmap, not ahead-of-checkpoint bitmap bits; numeric slices and per-cell three-order digests are flushed/fsynced before bitmap/checkpoint publication",
+    "partial_resume": "Authenticates saved code, actual provider ancestry, input bindings and every committed cell; reconstructs only input/shared contractions needed by unchanged missing-cell EE; never reevaluates committed scientific output cells",
+    "complete_resume": "Authenticates inputs and all committed cell digests, republishes the A76 catalog if needed, and consumes saved output without Coulomb decode, ElectronHistory construction, electron callbacks, static operators or numerical reevaluation; appends measured resume-run costs rather than a fake zero-cost run",
+    "static_rebuild_loss": "Static operators are not checkpointed. Partial resume repays original Coulomb density decode and provider authentication/mapping, missing-group static operators, full128 operands and full128 direct bubbles",
+    "uncommitted_output_loss_bound": "At most pair_batch*min(static_slots,128) direct output cells and one pair_batch*min(external_batch,static_slots,128) exchange tile, plus in-flight input/static/operand/bubble work",
+    "caught_failures": "Caught post-store failures retain type/message/traceback in both the current run and catalog checkpoint before partial publication where storage is healthy; previous run failures survive later success",
+    "pre_store_failures": "Measured failures before ComponentStore returns are retained as sibling OUTPUT.preparation-failure-TIMENS.json receipts when writable; these receipts never authorize a scientific output or checkpoint. Interrupted constructor files may exist; only a durable checkpoint permits resume",
+    "cost_history": "Earlier runs remain intact. Caught/completed runs measure elapsed/process CPU through final publication start, excluding trailing catalog publication and A76 consumption. Abruptly killed runs retain last-durable-commit measured lower bounds, not invented tail costs. Pre-store failed invocation costs are separate sibling receipts, not silently included as zero in the scientific-run sum",
+    "legacy_timing_field": "static_rebuild_seconds is the owning store's legacy pre-stream preparation accounting term, including measured input authentication/loading; actual EE static-operator time is ee_stream.static_seconds. Complete saved reuse has no static-operator rebuild, despite real input authentication cost",
+    "retry": "No automatic retry, overwrite, refill, cost reset or committed-output replay"
+  },
+  "evidence_and_limits": {
+    "source_intake": "Relevant complete original reader/accessor contracts and owning store/EE/ancestry/consumer APIs were read before implementation",
+    "executed_checks": ["actual-G1-electronic-reader-observation.json: all961/all128/full12 raw accessor equality and decisive wrong-spectral/equal-time mutations", "Actual EE q1 production used the declared runtime and committed numerical cells; paid cells remain reusable"],
+    "execution_policy": "Worker performed source-only implementation. Root exercised actual imports/reader and useful bounded production, without replaying the unchanged EE physical oracle suite.",
+    "root_owned_acceptance": "Actual saved A76 consumption awaits a complete q contribution. The reader observation is not full-producer completion; the unchanged EE physics proof is carried.",
+    "nonclaims": "No demonstrated throughput improvement, memory reduction, full-q production completion, calibration, conservation, fixed point or Dyson completion is claimed.",
+    "risks": [
+      "Actual reader and partial producer paths are exercised; complete-q saved consumption and full-output completion remain pending.",
+      "Exact unchanged generic EE is still expensive; selecting external_batch=16 is not evidence of speedup",
+      "Original Coulomb all-q density reads and full SavedHistory authentication remain substantial, including common-history gamma/auxiliary mappings unused by the contraction",
+      "Static data and uncommitted shared work are intentionally lost on interruption; no static checkpoint reuse claim is made",
+      "Complete resume still pays real input/source authentication, committed-cell digest checking, publication and saved consumer costs",
+      "Selected Python import-graph bindings do not freeze Native/shared libraries or establish complete runtime dependency closure"
+    ]
+  }
+}

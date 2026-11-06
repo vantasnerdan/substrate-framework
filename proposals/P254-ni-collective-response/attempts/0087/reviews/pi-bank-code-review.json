@@ -1,0 +1,140 @@
+{
+  "schema": "p254-a87-pi-bank-code-review-v1",
+  "review_kind": "original-read-only-code-and-existing-evidence-review",
+  "repository_root": "/home/administrator/projects/substrate-ni-collective",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "focused_branch": "research/P254-ni-collective-response",
+  "overall_correctness": "incorrect",
+  "confidence": 0.94,
+  "explanation": "The scoped contraction and composition logic matches the requested design, but joint/cubic recovery can accept changed committed data or mix dependency implementations across a resumed production. The existing joint-block oracle supports the new IF/FI/FF identity only; it does not establish a complete actual-G1 bank or successful M2-driven Dyson continuation.",
+  "finding_count": 2,
+  "findings": [
+    {
+      "title": "Authenticate committed pair bytes before trusting resume coverage",
+      "priority": 2,
+      "confidence": 0.98,
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/produce_joint.py",
+      "line_start": 123,
+      "line_end": 128,
+      "body": "PairStore.validate() checks only finiteness and the causal identity, not the identity of the previously committed numeric bytes. For example, changing a finite greater/lesser entry of a committed future-time pair leaves its zero retarded component valid, so resume accepts the changed pair, skips its contraction, and subsequently publishes fresh hashes for the altered data. This shared store also owns cubic old0/new0/family stages. Preserve and authenticate committed-pair digests before adopting bitmap coverage; newly generated final-file hashes cannot authenticate the original commit."
+    },
+    {
+      "title": "Authenticate saved dependency bindings before resuming contractions",
+      "priority": 2,
+      "confidence": 0.97,
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/produce_joint.py",
+      "line_start": 209,
+      "line_end": 212,
+      "body": "Resume compares a request binding only joint_blocks.py and produce_joint.py, then overwrites the recorded owning-dependency bindings without authenticating their saved values. Consequently, changing A41's monomial implementation or A50's vertex implementation between invocations leaves committed pairs untouched while remaining pairs use the changed implementation, and the catalog attributes the entire result to the new bindings. cubic_update.py has the same issue at lines 253-255 for ordered_matrix and reference dependencies. Authenticate the previously recorded dependency bindings before reconstruction or further commits, and reject changes instead of replacing their provenance."
+    }
+  ],
+  "parent_disposition": {
+    "both_findings_accepted_for_correction": true,
+    "corrections_reviewed": false,
+    "source_mutation_by_reviewer": false,
+    "note": "This is the original pre-correction review. Root owns corrections and any exercise of the changed recovery boundaries."
+  },
+  "static_assessment": {
+    "joint_sigma": "Direct IF + FI + FF contractions of the A41 monomial, with independent A50 normalized forward/reverse vertices and n=1; no cancellation-prone full-minus-II numerical subtraction.",
+    "joint_pi": "A41 evaluate_components with components=('pi',), full114 once across all128 explicit sectors.",
+    "cubic": "Literal retained original all64 - restored original q0 + actual-provider q0. Paid physical 0/15/30 nine pairs are copied; only the missing 952 original pairs are contracted. Separate old0/new0/family stores and retained old-q0 cache are present. No nonzero-q cubic contraction loop is introduced.",
+    "bank": "Actual provider identity is separate from original numerical reference/preparation. Complete contribution digests, changed-overlap rejection, current/previous immutable COW generations, and partial publication refusal are present. Sigma=EE+rawEI+jointMinusIonicGamma; Pi=fullJoint+embed111Cubic.",
+    "continuation": "Uses A86 DressedMean and distinct actual-G1 versus original-reference identities; dispatches through unchanged A63 slot solvers/A61 FinalBank and checks the admitted A85 binary bytes. Retains original auxiliary preparation, public SavedHistory/readout, skips committed slots, and refuses retained uncommitted staging. No provider==bundle identity alias or control-schema cast was found."
+  },
+  "existing_oracle_observation": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/joint-block-oracle.json",
+    "bytes": 1325,
+    "sha256": "5ee4f0ce94c1153e46a33c5a428d59bf64420a3fae22cf18ec7372ae0e729a5d",
+    "recorded_status": "passed",
+    "recorded_exact_sympy_identity": true,
+    "recorded_owning_A41_full_minus_ionic_errors": {"greater": 0.0, "lesser": 0.0},
+    "recorded_finite_sensitive": {"exact": [0, 7], "direct": [0.0, 7.0], "subtractive": [0.0, 0.0]},
+    "recorded_mutations": ["omitted_cross", "transposed_boson", "wrong_reverse_band_order"],
+    "scope": "New rectangular IF/FI/FF identity only. Existing artifact read; oracle not rerun by reviewer. Does not qualify complete actual-G1 contractions, bank recovery, or a next Dyson simulation."
+  },
+  "legacy_byte_string_boundary": {
+    "conclusion": "No analogous joint/cubic bank refusal established by static source/schema inspection.",
+    "owning_dispatch": "A77 component_accumulator._bindings lines 113-139 returns immediately for a dictionary containing archive and metadata, traversing only archive. Bound JSON files are authenticated as files, not recursively opened by this walker.",
+    "joint": "coefficient_bindings.consumed_items uses archive/metadata wrappers. Actual consumed mechanical, passive/12, kernel/00, 128 slot and 128 edge/00 archives have integer byte counts. original_boundary has integer bytes=277032. Historical string-byte descriptors do exist deeper in metadata, which this walker deliberately excludes.",
+    "cubic": "Inspected retained A82 catalog, paid cubic inputs, compact source arrays/source_bindings, original A45 transition bundle and A52 reference binding lists contain no string-byte descriptors on the emitted binding paths. Cubic admission authenticates base/old0/new0 manifests; it does not expand arbitrary bound JSON contents through _bindings.",
+    "observed_bank_admission": false,
+    "existing_EE_recovery_evidence": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/actual-source-descriptor-boundary-recovery.json",
+    "note": "Root's observed legacy integer/string byte-count failure and owning-parser recovery were accepted as reported; no failure rerun or numerical-input load was performed."
+  },
+  "actual_execution_status": {
+    "EE002_EI001": "Root reported actual runtime admission; physical outputs remain pending. A partial EI checkpoint was read, not treated as complete ownership.",
+    "joint001": "Root reports failure before module import: the runpy launcher omitted the script-directory sys.path. No joint numeric output exists. This is a launcher failure, not a joint-contraction observation.",
+    "complete_actual_G1_bank_established": false,
+    "M2_next_Dyson_established": false
+  },
+  "evidence_read": [
+    "All six targeted 0087 implementation files; oracle_joint_blocks.py; sigma-interface.json, pi-interface.json, composition-interface.json and preregistration.json.",
+    "Owning A41 monomials/material inputs; A50 normalized vertices/material lineage; A51 cubic route/ordered_matrix; A52 reference dispatch; A56 dressed joint and cubic replacement.",
+    "A75 joint consumer; A76 component consumer/emitter; A77 COW, binding traversal and storage primitives.",
+    "A61 FinalBank/transport; A62 OwnedKernels/reference dispatch; A63 solvers, provider, source, auxiliary and raw public readout contracts; A86 DressedMean; A85 verification-001.json.",
+    "Actual G1 and M2 identity declarations; retained A82 all64 cubic catalog/descriptors; A76 paid-nine cubic catalog/inputs; original A45/A52 reference manifests; compact cubic source declarations; actual partial EI checkpoint; existing joint-block oracle and EE descriptor-recovery record."
+  ],
+  "artifact_paths_read": [
+    "/var/tmp/p254-a84-intrinsic-full31-001/provider.json",
+    "/var/tmp/p254-a86-dressed-full31-mean-001/result.json",
+    "/var/tmp/p254-a82-complete-bare-map-001/catalog.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0076/q0-cubic-001/catalog.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0076/q0-cubic-001/inputs.json",
+    "/var/tmp/p254-a52-requested-reference-001/producer/bundle.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0045/actual-original-bundle-001.json",
+    "/var/tmp/p254-a47-full37-source-001/source.json",
+    "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+    "/var/tmp/p254-a87-mixed-ei-q0-001/checkpoint.json"
+  ],
+  "binding_base": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts",
+  "binding_path_convention": "Paths below are relative to binding_base and identify exact reviewed bytes. SHA256 and byte counts were recorded without imports or execution of reviewed code.",
+  "reviewed_source_and_contract_bindings": [
+    {"path": "0087/joint_blocks.py", "bytes": 3987, "sha256": "8a8148170f3757e13c51e56a659844c09cf6ff3a423d79d6d8293dc92ae08148"},
+    {"path": "0087/produce_joint.py", "bytes": 13006, "sha256": "6d6429d95c6ac5c91f55007657b980b68b5ec6d22fe64fcf2f763d61238e80b9"},
+    {"path": "0087/cubic_update.py", "bytes": 20249, "sha256": "3ad16d10d1719fc7594db0f430b5b73e4487e0e517feb3e5f072f89c804835c0"},
+    {"path": "0087/bank_storage.py", "bytes": 9147, "sha256": "79511e09d355038984d066809e3ea197ab08a64a1ca55ca04a5e1e270fbde9c4"},
+    {"path": "0087/functional_bank.py", "bytes": 16017, "sha256": "461acf1be610675454fa1d92ea45c1b22586916ee76bd82ad8bc9819c58f566c"},
+    {"path": "0087/continue_dressed_history.py", "bytes": 21679, "sha256": "b52288ee95dd1343d4710f0615dfcf7f8b9b47e576b44b84f80026c1062526c8"},
+    {"path": "0087/oracle_joint_blocks.py", "bytes": 4608, "sha256": "7a55a777c7d7f0d91109ff306ddd07dd392999f98409bccf37e4360e61a5ee0e"},
+    {"path": "0087/sigma-interface.json", "bytes": 3604, "sha256": "7f244e6a1fef4a4a7c7406949a3d65b681ae41a5189a2c96301f616ccb611207"},
+    {"path": "0087/pi-interface.json", "bytes": 4521, "sha256": "c43d43e4344a6242a67eeec56580573204b409b9b670c53dad38e58a8e06ea12"},
+    {"path": "0087/composition-interface.json", "bytes": 5822, "sha256": "030c82ccae2527c2f1bac695cb83cbddad85bde28d7c6b1ce94a61be184a9ad6"},
+    {"path": "0087/preregistration.json", "bytes": 14058, "sha256": "250d8e3b63e52aa784c9e257e99cc8685dcca2aad7e9a1a36f47a5359ef48515"},
+    {"path": "0087/joint-block-oracle.json", "bytes": 1325, "sha256": "5ee4f0ce94c1153e46a33c5a428d59bf64420a3fae22cf18ec7372ae0e729a5d"},
+    {"path": "0041/electron_ion_functional.py", "bytes": 8042, "sha256": "76d38c86664d922d1519ffc2533e9d7caba3698fef76a657a05a47b9b3d226aa"},
+    {"path": "0041/material_electron_ion_inputs.py", "bytes": 11609, "sha256": "a31dc23eb3ee7fd06178885bdaf9c97a57abaac386e9c98c0d19c9cc693cc523"},
+    {"path": "0050/joint_gamma_adapter.py", "bytes": 2646, "sha256": "3c80d1fd5de81d8f1555fd4aa4b294923108128050c7b132c24152364d5b1933"},
+    {"path": "0050/joint_material_inputs.py", "bytes": 2510, "sha256": "1b2f061b692db1194dd10dbc6c72f54263b838866cd658d6b7b8044d0fec58eb"},
+    {"path": "0051/cubic_contour.py", "bytes": 4871, "sha256": "f010f64c76d76be03398cb72bb8aac5430752bac83a30841e8e9827bd62f8985"},
+    {"path": "0052/general_moving_reference.py", "bytes": 6968, "sha256": "5923832aee95b325ac26ac452fe48ce08fc8587e926f7c8bcf4c4020d132741b"},
+    {"path": "0056/dressed_functionals.py", "bytes": 11750, "sha256": "d2b89e988cbeb629874957e1c31329a6d37b9b20a1a4c0704b06d5ac14d43ba5"},
+    {"path": "0061/production_transport.py", "bytes": 17465, "sha256": "7db2c6c2206261841de2ae71897e0143c678948e000fec431d93ae1619a3908d"},
+    {"path": "0062/history_banks.py", "bytes": 6273, "sha256": "dbc0b15201e0c32f79f9813ee3edd8806355c35c4583d689fa38a226246981ed"},
+    {"path": "0062/history_sources.py", "bytes": 5156, "sha256": "785854e900e782e91842f642894700d152513e3ea1a430e6451e6fc72642d0c9"},
+    {"path": "0063/continue_history.py", "bytes": 10197, "sha256": "7943e64067c54c8130edd1daf75afd9690bf6d5b5c8777f429ad0d84f65f57a0"},
+    {"path": "0063/history_provider.py", "bytes": 9342, "sha256": "5776a89679bca02aac9f85ac1999c4e4281937e57a721cdabfc2124b38e80c5a"},
+    {"path": "0063/history_readout.py", "bytes": 9507, "sha256": "73a29df995b94063bece04266e20a641e9c017d26d6c18ca7d3b10d64b32d0f3"},
+    {"path": "0063/history_storage.py", "bytes": 4012, "sha256": "071d422660e79de3963cebe64dd2504198fa13c962be4c00afd7ba3810ad5372"},
+    {"path": "0063/saved_mean.py", "bytes": 11841, "sha256": "a553e0ddc9def0ac571b2af723e0e63f6942b7362c1a97b74c609f2c80cdbc63"},
+    {"path": "0075/component_reader.py", "bytes": 4863, "sha256": "1933a7255f9db500797e311e24aededa9f658d48203092de97953ce7e96bba97"},
+    {"path": "0076/component_consumer.py", "bytes": 4856, "sha256": "3b11ab0592b2bac04c116922b2c0466321372cb31db804d74d98a460dd5e4c08"},
+    {"path": "0076/component_emitter.py", "bytes": 13682, "sha256": "fa4def7eab823f96d3f5bbdf29d343b0b1a61b7461401e96f5c2741c4ee78713"},
+    {"path": "0077/component_accumulator.py", "bytes": 23586, "sha256": "c3f160ea3bb00342ff34eff6563023e784bc327d6c893bc8a81e495a671bba83"},
+    {"path": "0086/dressed_mean.py", "bytes": 9312, "sha256": "e5306f7ae7cb26972c47e52721ebfa00c0094bdd2a5424e47627c16ad9871cb6"},
+    {"path": "0085/verification-001.json", "bytes": 6845, "sha256": "9dadee2ee08607acc841f1879703dcc9ab67cdc8b20a700f15b40435bb280ca0"}
+  ],
+  "execution_and_limits": {
+    "reviewed_code_imports": 0,
+    "tests_builds_or_linters": 0,
+    "Native_executions": 0,
+    "numerical_input_loading_by_reviewer": false,
+    "broad_old_proof_replay": false,
+    "post_correction_verification": false,
+    "report_only_followup": "Only these review artifacts were authorized for writing; no implementation or data was changed. Source checksum/byte-count capture is provenance recording, not numerical verification.",
+    "unresolved_risks": [
+      "Both recovery defects require correction and scoped changed-boundary exercise by Root; those corrections are not covered by this original report.",
+      "Complete actual joint/cubic outputs, complete four-family publication and the next all128/fullGamma solve/readout are not established by this review.",
+      "No temporal accuracy, conservation, fixed-point convergence, calibrated loss/rate, heat or closure claim is made."
+    ]
+  }
+}

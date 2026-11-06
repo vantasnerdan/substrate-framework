@@ -1,0 +1,115 @@
+{
+  "schema": "p254-a87-pi-bank-recovery-correction-review-v1",
+  "review_kind": "narrow-read-only-correction-review",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "overall_correctness": "correct",
+  "confidence": 0.96,
+  "explanation": "Both original recovery findings are resolved within the inspected changed boundary. PairStore now authenticates committed numeric pairs against durably written digests, and joint/cubic resume authenticates and retains recorded dependency bindings instead of relabeling committed work. The complete existing recovery observation records the corresponding positive and mutation/refusal cases; this is not qualification of complete physical outputs or a next Dyson simulation.",
+  "finding_count": 0,
+  "findings": [],
+  "original_reports_preserved": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/reviews/pi-bank-code-review.json",
+      "bytes": 15011,
+      "sha256": "187c9bfc8adda382833176af3a6b010153a2b56b286006690fe1d37a959aaf8c",
+      "unchanged_by_this_review": true
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/reviews/pi-bank-code-review.md",
+      "bytes": 3339,
+      "sha256": "5b9cdc12e64db3db5267f9ffd06bcb42690ef19fcdc70fb1e1ce9f850aef115a",
+      "unchanged_by_this_review": true
+    }
+  ],
+  "original_finding_dispositions": [
+    {
+      "original_title": "Authenticate committed pair bytes before trusting resume coverage",
+      "original_priority": 2,
+      "original_file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/produce_joint.py",
+      "original_line_start": 123,
+      "original_line_end": 128,
+      "disposition": "resolved-in-inspected-correction",
+      "current_evidence": [
+        "produce_joint.py:77-82: _pair_digest hashes sorted array names and each complete persisted numeric pair's C-order bytes.",
+        "produce_joint.py:123-132: PairStore creates/reopens the explicit uint8[31,31,32] digest bank with shape/dtype validation and durable initialization.",
+        "produce_joint.py:156-164: every bitmap-committed pair is rehashed and compared to its stored digest before accepting its causal identity or returning the reopened store.",
+        "produce_joint.py:166-185: commit persists numeric arrays, validates the persisted pair, writes/flushes/fsyncs the pair digest, then writes/flushes/fsyncs its coverage bit.",
+        "The existing recovery observation records literal committed-pair reopen, rejection of a finite causal-preserving numeric mutation that passed the old gate, and non-adoption of uncommitted pairs."
+      ],
+      "consumer_visible_resolution": "A changed committed numerical pair is rejected on reopen rather than skipped and rehashed into a new joint/cubic publication. Both producers continue to share this corrected PairStore."
+    },
+    {
+      "original_title": "Authenticate saved dependency bindings before resuming contractions",
+      "original_priority": 2,
+      "original_file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/produce_joint.py",
+      "original_line_start": 209,
+      "original_line_end": 212,
+      "disposition": "resolved-in-inspected-correction",
+      "current_evidence": [
+        "produce_joint.py:85-96: retain_dependencies refuses missing saved dependencies when any store owns committed pairs; otherwise it authenticates saved bindings and requires exact equality with selected dependencies without replacing the saved list.",
+        "produce_joint.py:220-225 and cubic_update.py:204-209: resume authenticates recorded dependency bindings before opening/rebuilding further numerical work.",
+        "produce_joint.py:253-263: the joint call site constructs its selected dependency list, invokes retain_dependencies, and saves the retained record before the contraction loop.",
+        "cubic_update.py:255-268: the cubic call site constructs its selected dependency list, invokes retain_dependencies over all three stage stores, and saves the retained record before the stage-contraction loop.",
+        "The complete existing recovery observation records changed-dependency rejection before relabeling, unchanged original dependency provenance, and rejection of missing dependency bindings when committed pairs exist."
+      ],
+      "consumer_visible_resolution": "Resume no longer overwrites the recorded dependency list for already committed pairs; changed recorded or selected dependencies are refused instead of silently mixing implementations under fresh provenance."
+    }
+  ],
+  "review_scope": {
+    "source_regions_read": [
+      "produce_joint.py:1-24,65-207,209-268: changed digest/dependency helpers, complete PairStore, and joint resume/binding/checkpoint call sites.",
+      "cubic_update.py:192-240,246-309: cubic resume authentication and dependency-retention/pre-loop-checkpoint call sites through the first numerical commit/checkpoint ordering.",
+      "actual-pair-recovery-boundary.json: complete existing observation."
+    ],
+    "scope_exclusions": [
+      "No broad source rereview or new transitive dependency-graph audit.",
+      "No reviewed-code import, tests, builds, linters, Native execution, numerical-input loading, or production execution by this reviewer.",
+      "No new joint/cubic contraction, complete bank publication, or M2-driven Dyson/readout observation.",
+      "No replay of old physical proofs, whole-map validation, or production hold."
+    ],
+    "source_binding_capture": "Current file SHA256 and byte counts were recorded using checksum/count utilities only; the reviewed source bindings agree with the observation's declared source bindings."
+  },
+  "current_source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/produce_joint.py",
+      "bytes": 15355,
+      "sha256": "5ccc4b5fdb883f2c9ef5a8a7e36547587c6c307b6647c0b792d764e01ead89db"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/cubic_update.py",
+      "bytes": 20578,
+      "sha256": "76135e55f55f9678b4914e821ce46ee72023157d9a340de65932677801bb0852"
+    }
+  ],
+  "existing_observation": {
+    "binding": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/actual-pair-recovery-boundary.json",
+      "bytes": 1113,
+      "sha256": "6a57409af0fd9cc18e9410519d98475533f40d5c823b42b6dafdb969bd96711b"
+    },
+    "schema": "p254-a87-recovery-boundary-observation-v1",
+    "recorded_status": "passed",
+    "recorded_results": {
+      "changed_dependency_rejected_before_relabel": true,
+      "committed_numeric_mutation_rejected": true,
+      "finite_causal_preserving_numeric_mutation_passes_old_gate": true,
+      "literal_committed_pair_reopened": true,
+      "missing_dependency_with_committed_pairs_rejected": true,
+      "original_dependency_provenance_unchanged": true,
+      "uncommitted_pairs_not_adopted": true
+    },
+    "scope": "Only newly changed pair-integrity/dependency-resume boundary; no old physical proof or complete physical Pi claim.",
+    "reviewer_reran_observation": false
+  },
+  "remaining_limits_and_actual_status": {
+    "current_findings_scope": "The empty current findings array applies only to this inspected recovery correction, not an independently repeated whole-implementation review.",
+    "production_status_source": "Root report",
+    "joint002_cubic001": "Actual runtime admitted and running; no complete physical outputs claimed.",
+    "complete_actual_G1_bank_established_by_this_review": false,
+    "actual_next_M2_Dyson_established_by_this_review": false,
+    "nonclaims": [
+      "No temporal accuracy, conservation, fixed-point convergence, calibrated loss/rate, heat or closure conclusion.",
+      "The accepted original report remains an immutable record of its pre-correction source bytes and findings."
+    ]
+  }
+}
