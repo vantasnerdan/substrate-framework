@@ -1,6 +1,6 @@
 # Intermediate flux–axial–mobility paper capture
 
-This is a byte-preserved public capture of **intermediate finite-model research** associated with [issue #222](https://github.com/vantasnerdan/substrate-framework/issues/222). Issue #222 remains **ACTIVE**: its actual coupled physical goal—an explanatory, quantitatively related interacting charged spin-half matter/photon sector—is unmet. This capture is not completion of that goal, a derivation of nature or continuum QCD, or a journal submission or acceptance.
+This is a byte-preserved public capture of **intermediate finite-model research** associated with [issue #222](https://github.com/vantasnerdan/substrate-framework/issues/222). The owner has directed administrative issue closure and archival integration; the actual coupled physical goal—an explanatory, quantitatively related interacting charged spin-half matter/photon sector—remains unmet. The P256 campaign remains stopped. This capture is not completion of that goal, a derivation of nature or continuum QCD, or a journal submission or acceptance.
 
 ## Read and reproduce
 
