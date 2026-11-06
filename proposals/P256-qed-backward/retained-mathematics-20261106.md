@@ -73,6 +73,16 @@ L_U=P_-h_r^{-1}h_w[Y_u;I],\qquad
 w_U=c_wc_u\det P_r>0.
 $$
 
+Here \(P_-\) projects onto the occupied/minus block of the fixed chart.
+A native root has blocks \(h_a=\begin{psmallmatrix}A_a&C_a^\dagger\\C_a&D_a\end{psmallmatrix}\);
+on an incoming graph \([T;I]\), its occupied multiplier is
+\(\ell_a=C_aT+D_a\) and its outgoing graph is
+\(Y_a=(A_aT+C_a^\dagger)\ell_a^{-1}\).
+The factors \(\ell_{*,U}\) and \(\ell_u\) are respectively the original
+held-source absorber and early-root multiplier; \(Y_u\) is the early outgoing
+graph, and \(h_w\) is the actual late root. These identities and their domains
+are conditional native inputs, not definitions of a new physical model.
+
 The reference changes the **output test**, not the source, preparation, actual masses or field-dependent weight. A sufficient uniform hypothesis is
 
 $$
