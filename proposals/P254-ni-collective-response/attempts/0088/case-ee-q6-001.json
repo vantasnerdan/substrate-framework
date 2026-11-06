@@ -1,0 +1,128 @@
+{
+  "schema": "p254-a87-bounded-actual-dressed-component-case-v1",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "Root": 644,
+  "actual_issued_at": "2026-11-06T18:23:56.495921+00:00",
+  "component": "ee",
+  "q": 6,
+  "useful_output": "Actual required G1 EE q6, full31/all961/all128/full12/full64 inner h; same proven producer on a returned resource.",
+  "provider": {
+    "path": "/var/tmp/p254-a84-intrinsic-full31-001/provider.json",
+    "bytes": 16140,
+    "sha256": "273b96a135ef0c77a4b811f766f559debebf457c034e695b311564528b76c023"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0088/produce_ee.py",
+      "bytes": 16496,
+      "sha256": "8660d8310cd12c649fea2a6efec30d76085a653a2b23ca1199721c8ff7f5746c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0088/electron_inputs.py",
+      "bytes": 2521,
+      "sha256": "f386783ab81e6f667cb249221d629093a5885a80ad30efbfb9a424220359a39f"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0088/preregistration.json",
+      "bytes": 5591,
+      "sha256": "3e9953479e7099aded95dc88bc8489f37f719bf9ea81f2bc4bc3dc30b06c8f03"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/dressed_ee.py",
+      "bytes": 10033,
+      "sha256": "d21c9b3a73c036de17eae99f71156e751b84aeae27d09e80438f1491bb0415cb"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/component_store.py",
+      "bytes": 11198,
+      "sha256": "8f2267490a61997b6ebd7b5ace6901317fd63d25645562f11e61fb0a1d340e68"
+    }
+  ],
+  "oracles": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0088/actual-G1-electronic-reader-observation.json",
+      "bytes": 1459,
+      "sha256": "029f1af9efa491228e7aca10b2cf99d0275d98f642581e0aacbd564f5ddba2ec"
+    }
+  ],
+  "output": "/var/tmp/p254-a88-ee-q6-001",
+  "receipts": "/var/tmp/p254-a88-ee-q6-001-receipts",
+  "cpu": 9,
+  "memory_bytes": 6442450944,
+  "swap_bytes": 0,
+  "unit": "p254-a88-ee-q6-001.service",
+  "pane_id": "w1:p88",
+  "tab_id": "w1:t7Q",
+  "nonce": "a88_ee6_20261106T182356",
+  "solver_argv": [
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0088/produce_ee.py",
+    "6",
+    "/var/tmp/p254-a88-ee-q6-001",
+    "--provider",
+    "/var/tmp/p254-a84-intrinsic-full31-001/provider.json",
+    "--pair-batch",
+    "2",
+    "--external-batch",
+    "16",
+    "--static-slots",
+    "64"
+  ],
+  "manager_argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--unit=p254-a88-ee-q6-001.service",
+    "--property=RuntimeMaxSec=18000",
+    "--property=MemoryMax=6442450944",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "--property=CPUAffinity=9",
+    "--property=StartLimitBurst=1",
+    "--working-directory=/home/administrator/projects/substrate-ni-collective",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0063:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061:/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "HERDR_ENV=1",
+    "HERDR_WORKSPACE_ID=w1",
+    "HERDR_PANE_ID=w1:p88",
+    "HERDR_TAB_ID=w1:t7Q",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "-c",
+    "from pathlib import Path\nimport json, os, runpy, sys\nfrom production_transport import atomic_json, binding\ncase=json.loads(Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0088/case-ee-q6-001.json').read_bytes())\nreceipt=Path(case[\"receipts\"]); receipt.mkdir(parents=True,exist_ok=True)\ngroup=Path(\"/proc/self/cgroup\").read_text().strip().split(\"::\")[-1]\ncg=Path(\"/sys/fs/cgroup\")/group.lstrip(\"/\")\nruntime=dict(affinity=sorted(os.sched_getaffinity(0)),memory_max=(cg/\"memory.max\").read_text().strip(),swap_max=(cg/\"memory.swap.max\").read_text().strip(),environment={key:value for key,value in os.environ.items() if key.startswith(\"HERDR_\") or key in (\"OPENBLAS_NUM_THREADS\",\"OMP_NUM_THREADS\",\"MKL_NUM_THREADS\",\"NUMEXPR_NUM_THREADS\",\"BLIS_NUM_THREADS\")},executable=sys.executable,pythonpath=os.environ.get(\"PYTHONPATH\"),case=binding('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0088/case-ee-q6-001.json'))\natomic_json(receipt/\"runtime.json\",runtime)\nif (runtime[\"affinity\"] != [case[\"cpu\"]] or runtime[\"memory_max\"] != str(case[\"memory_bytes\"]) or runtime[\"swap_max\"] != \"0\" or runtime[\"environment\"].get(\"HERDR_ENV\") != \"1\" or runtime[\"environment\"].get(\"HERDR_PANE_ID\") != case[\"pane_id\"] or any(runtime[\"environment\"].get(k) != \"1\" for k in (\"OPENBLAS_NUM_THREADS\",\"OMP_NUM_THREADS\",\"MKL_NUM_THREADS\",\"NUMEXPR_NUM_THREADS\",\"BLIS_NUM_THREADS\"))):\n    raise RuntimeError(\"allocated actual Native runtime differs\")\nfor item in case[\"source_bindings\"]:\n    if binding(item[\"path\"]) != item: raise ValueError(\"fullhistory actual source binding mismatch\")\nprint(\"P254_A87_RUNTIME_\"+\"OK_\"+case[\"nonce\"],flush=True)\nsys.argv=list(case[\"solver_argv\"])\nsys.path.insert(0,str(Path(case[\"solver_argv\"][0]).resolve().parent))\nrunpy.run_path(case[\"solver_argv\"][0],run_name=\"__main__\")"
+  ],
+  "manager_client_timeout_seconds": 18180,
+  "budget": {
+    "root_grant": {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc2098-Root644-returned-complete-EE2-resource-next-EE6.json",
+      "bytes": 1204,
+      "sha256": "2328abe88e60bf4657fc930cffbf81fccdcde32bc76ea2fcba1115e3ef16131a"
+    },
+    "wall_cap_seconds": 18000,
+    "all_prior_costs_retained": true
+  },
+  "recovery": "A88missingcell/digestcheckpoint; no committedoutputreplay, sharedstatic/inputrebuildpaid. No uncheckedtime-symmetry/Gaussian shortcut.",
+  "resource_basis": "EE0CPU6/EI2CPU7; newEE1CPU8singleton,CPU9/10heldforreadyGamma/coordination. New6GiBceiling,knownoldEE5.07GBpeak; sourceinputscopeomitsunusedFrozenReference/bath. Onlyone newproduceruntilactualworkingmemory/usefuloutputknown; protected0-5/11 unchanged.",
+  "next_allocation": "Root635 uses actual first-progress/cost evidence; not a full64 launch or budget reset.",
+  "source_boundary_recovery": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/actual-source-descriptor-boundary-recovery.json",
+    "bytes": 2158,
+    "sha256": "a3bf4089c7b0ba42c1f6a58fff194d80cb1e927fd45ffda4cc9449467daa6239"
+  },
+  "actual_batch_change": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc2016-Root635-change-EE-batching-preserve-committed-science.json",
+    "bytes": 97593,
+    "sha256": "28d942061a9a8ea915deb97c7acaad11b73c4571c745968be492d95da19c8c5b"
+  },
+  "expected_output_status": "complete-owned-component-q6",
+  "expected_consumer": "consumer.json"
+}
