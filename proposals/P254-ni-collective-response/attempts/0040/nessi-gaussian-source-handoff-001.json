@@ -1,0 +1,155 @@
+{
+  "schema": "P254-A40-NESSi-Gaussian-real-time-source-handoff-v1",
+  "worker": "NessiGaussianRealTime",
+  "status": "SOURCE COMPLETE; NOT EXECUTED",
+  "scientific_verdict": "No numerical success, compilation success, installation success or material rate is claimed. Root must execute the supplied once-only build/install and focused actual consumer/oracle.",
+  "contract": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/implementation-contract-001.json",
+    "bytes": 4794,
+    "sha256": "d5f2d417d62a077c321f92b2f3e8078e865e37eef42cd3f88dfba70963226743"
+  },
+  "ownership": "Only the five new A40 source/build files below were written. Shared SOLUTION/docs/memory/controlcards/contracts, Git and integration remain Root-owned. No upstream source was modified, no old bank copied, no physical job touched.",
+  "changed_files": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/nessi_gaussian_ivp.hpp",
+      "bytes": 6216,
+      "sha256": "f902442b6c5b3bcc27f8dddd70ae4483315e087ef978b13f8c538ffe46cc5daf",
+      "responsibility": "Reusable native real-time IVP boundary, exact original Gaussian free lesser functions, nonzero embedding selfenergy, unmodified NESSi convolution and VIE2 startup/propagation"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/nessi_gaussian_embedding.cpp",
+      "bytes": 4006,
+      "sha256": "c1ddf91e8416300e6378083ef50e65bb6fa2202e6d0d4e767655168a6282a999",
+      "responsibility": "Actual executable input consumer and complete native retarded/lesser/density/embedding output; no full-system reference solver"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/prepare_gaussian_embedding.py",
+      "bytes": 9542,
+      "sha256": "43dbeecee0c45dd6e50374829f511562c570355ab69ed332f92c5589c71561fd",
+      "responsibility": "Lossless binary64 decimal input export, exact S/D/prepared-basis/H/g/time boundary and coherent three-orbital exposing input plus deliberate thermal mutation"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/compare_gaussian_embedding.py",
+      "bytes": 10613,
+      "sha256": "f2c46b5cc6dd06cee58c28dcaea178a1392a148e5da97b943ca2fff297faafb5",
+      "responsibility": "Independent SciPy full-three-orbital expm comparison reader; all native two-time triangles and density, inactive-branch sensitivity, actual wrong-state rejection"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/CMakeLists.txt",
+      "bytes": 1767,
+      "sha256": "f844b3713301b7f856eeef75d6a57302e93b093695338d7bbfcab4ea332f8674",
+      "responsibility": "Build actual unmodified libcntr and executable, install reusable headers/library/adapter to isolated prefix without defective upstream utility-directory install rule"
+    }
+  ],
+  "producer_only_source_bytes": 32144,
+  "producer_only_source_sha256": "ced6ca5d4e6e5db387428e1ffc06623fb0b4791b01fecd6ab588b5bd573acfb0",
+  "producer_only_source_digest_definition": "SHA256 of complete exact file bytes concatenated in changed_files array order, no separators; excludes this report and all upstream files",
+  "settled_dependency": {
+    "source": "/home/administrator/.cache/dft/p254-nessi-v2-source",
+    "commit_authority": "6bb4c832a209d2c079fdbbdbc5c05ab8d5503aa6, from original settled contract/user; no child Git action",
+    "license": "MPL-2.0",
+    "prefix": "/home/administrator/.local/opt/nessi-6bb4c832",
+    "dependencies": "Installed Eigen3.4.0-4build0.1 and existing C++/CMake toolchain; Python NumPy/SciPy for export/oracle only. MPI/OMP/HDF5/NESS modes all OFF. FFTW is not needed by this selected real-time mode.",
+    "paper": "Original Schueler 2020 PDF and metadata are settled in the contract. This implementation relies on inspected upstream source equations/APIs, not reconstructed damaged extracted paper equations. No independent reading of unseen paper equations is claimed."
+  },
+  "native_boundary": {
+    "state": "rho_ij=<c_j^dagger c_i>. g0 lesser(m,n)=i U_s(m) rho_s U_s(n)^dagger, bath lesser similarly with ORIGINAL rho_b. No state eigensystem is used to prepare dynamics: eigenvalues are inspected only for fermionic-domain validation. No clipping, logarithm, beta-from-smearing, thermal refill or physical-H density replacement.",
+    "propagation": "The executable forms Sigma=V g_b V^dagger, including its lesser component. Native cntr::convolution_timestep forms F=-g0*Sigma and Fcc=-Sigma*g0. Native cntr::vie2_start and cntr::vie2_timestep solve (1+F)*G=g0, retaining the full time history. Native g.density_matrix produces equal-time density. The full coupled system Hamiltonian is never propagated in the C++ backend.",
+    "branch_scope": "A closed REAL-TIME two-branch product-Gaussian IVP, not an equilibrium L-contour function. The initial density is entirely the original g0 lesser source. Zero unused tv storage is justified by the actual convolution and VIE2 equations below, not by an assertion that arbitrary L-contour mixed data can be dropped.",
+    "why_unused_branch_inactive": [
+      "cntr_convolution_impl.hpp:901-975: tv convolution consists of Atv*Bmat plus Aret*Btv. With both tv legs zero it stays zero for any finite Matsubara storage.",
+      "cntr_convolution_impl.hpp:1076-1154: the extra lesser imaginary-branch integral is explicitly a product Atv*Bcc_tv-adjoint, hence zero on that invariant subspace.",
+      "cntr_vie2_impl.hpp:727-808: startup tv has only Ftv*Gmat and Qtv sources; both are zero, so solved Gtv remains zero.",
+      "cntr_vie2_impl.hpp:847-950: the lesser RHS is Qless minus Ftv*Gvt and Fless*Gadv, plus the native real-time retarded*lesser solve; it does not derive initial rho from Matsubara endpoints.",
+      "Explicit vie2_start followed by real n>order vie2_timestep bypasses vie2_mat entirely. The reader checks actual altered beta=3.7 and Matsubara sentinel=7.25 against nominal beta=1/storage=0, all real outputs and solved mixed max. NOT EXECUTED."
+    ],
+    "unsupported_naive_route": "Do not call dyson_start/dyson_timestep after simply setting Gtv=0: cntr_dyson_impl.hpp:928-930 initializes Gless(0,n)=-Gtv(n,0)^dagger and would erase the original state. Full vie2() also invokes a Matsubara solve. Neither is used.",
+    "source_parallel": "Upstream libcntr/test/dyson.cpp:98-119 already uses exactly F=-G0*Sigma, Fcc=-Sigma*G0, vie2_start and vie2_timestep for embedding; A40 changes the Gaussian initial-value source and inactive-branch boundary, not the native integration algorithm."
+  },
+  "precise_apis_and_units": {
+    "native_input": "p254::GaussianInput{nt,order,dt,rho_system,rho_bath,h_system[nt+1],h_bath[nt+1],coupling[nt+1]}. Matrices complex128 orthonormal coordinates; H and V in Ry; dt in inverse Ry; hbar=1; Sigma in Ry^2; G and rho dimensionless. order=1..5, nt>=order.",
+    "native_embedding_api": "p254::solve_embedding(const GaussianInput&, cntr::herm_matrix<double>& G, cntr::herm_matrix<double>& Sigma, double inert_beta=1, double inert_mat=0). Allocates all native two-time history, builds exact isolated-subsystem propagators by Eigen matrix exponential of each held interval Hamiltonian, and invokes native VIE2.",
+    "native_general_selfenergy_api": "p254::solve_real_time_vie2(G,G0,Sigma,order,dt,inert_beta). Caller supplies complete G0 carrying the original Gaussian state and a fixed causal Hermitian real-time Sigma with matching dimensions. This whole fixed-Sigma solve is reusable for a supplied nonstationary collision selfenergy; a self-consistent collision kernel/iteration driver is NOT implemented here.",
+    "text_protocol": "P254_GAUSSIAN_IVP_V1 ns nb nt order dt, then rho_s, rho_b, and every node Hs,Hb,V, each complex entry re im in row-major order with 17 significant digits. No C++ JSON dependency. Output P254_NESSI_REALTIME_V1 ns nt dt followed by all retarded(n,m), lesser(m,n), Sigma retarded(n,m), Sigma lesser(m,n), every density(n), measured inactive mixed maximum and actual inert probe values. All triangular entries through final time are emitted, not only a final scalar.",
+    "python_exact_export": "export_input(path,rho_system,rho_bath,h_system,h_bath,coupling,times,*,source_bindings,requested_times=None,order=5,extra_metadata=None). Writes input plus source-bound input.json manifest, with original requested times and their native mesh indices. Exclusive input creation; no silent overwrite.",
+    "python_original_material_export": "export_prepared_boundary(path,*,projected_frame,gram,density_coefficients,h_nodes,physical_g_nodes,times,system_indices,bath_indices,source_bindings,requested_times=None,order=5). projected_frame=B^dagger Psi in orthonormal prepared B, frame^dagger frame=original S, rho_B=frame D frame^dagger. It retains original D and coherences, partitions the ENTIRE basis once and requires EXACTLY zero original system/bath cross density, never discards a small nonzero block. H blocks give Hs,Hb,V. Every actual frame/S/D/rho/H/g/split/time array is raw-byte/shape/dtype bound to caller's retained original banks; no old bulk bank copied. Caller must authenticate and retain the supplied original source bindings using the existing campaign authenticator.",
+    "physical_g": "physical_g_nodes shape (n_time,n_mode,n_basis,n_basis), Ry/bohr for the original unscaled ionic displacement. It is byte-bound to retained sources, not turned into a fake selfenergy or phenomenological damping. The next collision consumer must use the actual dH/du convention (the existing physical force is its negative) and the same canonical mass/Fourier/displacement propagator convention, not blindly reuse a dimensionless Holstein oscillator normalization.",
+    "time_boundary": "Native integration requires uniform zero-origin mesh. H[n] is held on [t[n],t[n+1]); V[n] is the physical nodal coupling used in the embedding kernel. All samples retained, no memory cutoff. Original requested times must be represented as native nodes within explicit binary64 roundoff check; off-grid times are REJECTED, not rounded/interpolated. No claim of exact arbitrary continuous H(t) reconstruction or time-discretization convergence is made."
+  },
+  "actual_exposing_consumer": {
+    "system_H_Ry": [[[0.3,0.0],[0.17,0.11]],[[0.17,-0.11],[-0.25,0.0]]],
+    "original_system_rho": [[[0.5,0.0],[0.0,-0.5]],[[0.0,0.5],[0.5,0.0]]],
+    "bath_H_Ry": 0.65,
+    "bath_rho": 1.0,
+    "coupling_Ry": [[[0.31,0.09]],[[-0.18,0.13]]],
+    "occupancies": "Original system rho is an exactly represented Hermitian rank-one projector (exact 0/1 occupations); bath occupation exactly 1. The reader evaluates exact represented projector identity and trace, and reports eigvalsh values without using them to prepare the state.",
+    "times": "121 nodes, dt=0.025 inverse Ry, final time=3 inverse Ry, native integration order 5. One fixed exposing problem, not a generic upstream suite/refinement/scaling campaign.",
+    "independent_reference": "SciPy expm propagates the FULL COUPLED 3-orbital Hamiltonian and the ORIGINAL product density, independently of native convolution/VIE2 and without passing reference values into NESSi. It compares every native retarded/lesser triangle and equal-time density, plus independently constructed Sigma.",
+    "wrong_preparation": "prepare --wrong-thermal-preparation deliberately replaces system rho only by physical-H Fermi density at beta=2 inverse Ry. The reader independently checks it by solving (I+expm(2 Hs)) rho=I, checks every H/V/bath input is unchanged and verifies the wrong executable actually preserves that wrong supplied initial state. Then it must fail the ORIGINAL-state density comparison by >0.1, while retarded output remains state-independent. This exposes a thermal overwrite, not only a fabricated bad array.",
+    "inactive_branch_mutation": "Run same original input with native CLI extra args 3.7 7.25. Output records actual values. Reader requires all real native arrays unchanged below 2e-13 and mixed maximum exactly zero.",
+    "expected_predicates_NOT_OBSERVED": "status passed only if all nominal native-vs-full-expm component errors <2e-6; initial original density error <2e-13; branch invariance <2e-13; measured mixed zero; embedding retarded amplitude >0.05; nonzero imaginary original coherence >0.1; commutator norm >0.1; exact represented pure-state projector; actual wrong thermal input/native initial match <2e-13; wrong original-state density error >0.1; wrong-vs-nominal retarded change <2e-13. No numeric error or final density value is fabricated here."
+  },
+  "proposed_root_commands_NOT_EXECUTED": [
+    "cmake -S /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040 -B /var/tmp/p254-a40-nessi-build-001 -DCMAKE_BUILD_TYPE=Release '-DCMAKE_CXX_FLAGS_RELEASE=-O1 -g0' -DCMAKE_INSTALL_PREFIX=/home/administrator/.local/opt/nessi-6bb4c832 -DNESSI_SOURCE=/home/administrator/.cache/dft/p254-nessi-v2-source",
+    "cmake --build /var/tmp/p254-a40-nessi-build-001 --parallel 1",
+    "cmake --install /var/tmp/p254-a40-nessi-build-001 --strip",
+    "mkdir /var/tmp/p254-a40-nessi-consumer-001",
+    "python /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/prepare_gaussian_embedding.py --output /var/tmp/p254-a40-nessi-consumer-001/original.ivp",
+    "python /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/prepare_gaussian_embedding.py --output /var/tmp/p254-a40-nessi-consumer-001/wrong-thermal.ivp --wrong-thermal-preparation",
+    "/home/administrator/.local/opt/nessi-6bb4c832/bin/nessi_gaussian_embedding /var/tmp/p254-a40-nessi-consumer-001/original.ivp /var/tmp/p254-a40-nessi-consumer-001/nominal.out",
+    "/home/administrator/.local/opt/nessi-6bb4c832/bin/nessi_gaussian_embedding /var/tmp/p254-a40-nessi-consumer-001/original.ivp /var/tmp/p254-a40-nessi-consumer-001/inert-branch.out 3.7 7.25",
+    "/home/administrator/.local/opt/nessi-6bb4c832/bin/nessi_gaussian_embedding /var/tmp/p254-a40-nessi-consumer-001/wrong-thermal.ivp /var/tmp/p254-a40-nessi-consumer-001/wrong-thermal.out",
+    "python /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/compare_gaussian_embedding.py --input /var/tmp/p254-a40-nessi-consumer-001/original.ivp --wrong-input /var/tmp/p254-a40-nessi-consumer-001/wrong-thermal.ivp --native-output /var/tmp/p254-a40-nessi-consumer-001/nominal.out --inert-output /var/tmp/p254-a40-nessi-consumer-001/inert-branch.out --wrong-output /var/tmp/p254-a40-nessi-consumer-001/wrong-thermal.out --executable /home/administrator/.local/opt/nessi-6bb4c832/bin/nessi_gaussian_embedding --report /var/tmp/p254-a40-nessi-consumer-001/result.json"
+  ],
+  "execution_and_footprint": {
+    "child_actions": "Only source/document byte reads, source writes/edits and stdlib SHA256 metadata calculation. NO build, CMake invocation, numerical Python import, runtime, test, lint, formatter, Git, network, package, resource, manager or service action. Source metadata hashing is not a numerical verification.",
+    "root_resource_boundary": "Root must choose its own authorized final integration resource envelope. Commands above do not assign protected CPU0-5/11, claim CPU6/10 compute authorization or touch frozen DFT jobs. No full material physics run is proposed.",
+    "proposed_new_disk_budget_MiB": {"build_tree":256,"isolated_prefix":96,"focused_consumer_inputs_outputs_and_oracle":64,"source_and_handoff":1,"total":417,"ceiling":512},
+    "budget_status": "Proposed conservative allocation, NOT a measured footprint or guarantee. Source cache/Eigen/FFTW already exist and are excluded as settled inputs. One serial O1/no-debug build, stripped install, no upstream tests/docs, no bulk source/data copies. Root should enforce the total ceiling and retain a real build failure if exceeded, not silently acquire storage or delete science. Compiler peak RAM is separate and not measured/granted by this disk estimate.",
+    "material_scaling_limit": "Dense full-history storage grows quadratically with time and with orbital dimension. The 417MiB proposal covers THIS build and the focused three-orbital consumer only. It does not assert that an all1038-orbital/material full-source collision run fits 512MiB; that future calculation needs its own costed grant and material-kernel implementation."
+  },
+  "concrete_material_composition_route": [
+    {
+      "reuse": "examples/programs/Holstein_impurity_impl.cpp:24-81, Hols::Sigma_Mig (timestep and bootstrap)",
+      "what_exists": "Actual gGg left/right physical vertex multiplication, Bubble1 polarization, step_D/start_D boson Dyson/VIE2 closure, Bubble2 electron selfenergy. This is working source rather than a damping ansatz.",
+      "what_material_requires": "The normal example asserts size1==1 and includes a spin factor 2. Do NOT copy either assumption to spin-resolved Ni/H. Replace scalar local contractions by actual orbital/mode/k/q physical g legs and original weights. Use original ionic displacement propagator and state with the same canonical normalization. No dimensionless Holstein g is inferred from DFT smearing."
+    },
+    {
+      "reuse": "examples/programs/hubbard_chain_selfen_impl.cpp:14-33 Polarization, :63-77 Sigma_2B, :81-94 Sigma_GW, :113-143 GenChi",
+      "what_exists": "Concrete Bubble1/Bubble2 second-Born/GW contractions and actual VIE2 polarization closure.",
+      "what_material_requires": "Onsite Hubbard-chain U is NOT a Ni Coulomb tensor. Supply physical screened interaction tensors, explicit original k/q/spin bookkeeping and treatment subtracting the DFT Hartree/XC/other already represented mean-field contribution before combining selfenergies. Do not count conservative screening twice or add an independent noise channel."
+    },
+    {
+      "reuse": "examples/programs/gw_selfene_impl.cpp:114-156 sigma_GW and get_Polarization_Bubble",
+      "what_exists": "Concrete momentum-indexed GW and bubble kernels, k-q lookup and weighted accumulation.",
+      "what_material_requires": "Its 1D lattice and MPI bookkeeping are example-specific, not the campaign's actual external momenta, 128 original spin/internal-k sectors or weight=1/64. Reuse the contraction primitives with actual original grid/maps, not that surrogate geometry."
+    },
+    {
+      "whole_E_frontier": "Compose retarded and lesser/selfenergy/noise from the SAME physical interaction and replace the corresponding old represented contribution. Actual e-ph material kernels, cubic ionic anharmonic vertices and e-e collision/double-counting treatment remain to be constructed/earned. A finite embedding bath demonstrates reversible exchange, not an irreversible Ni/H material collision rate, heat or lifetime. Whole spatial/full-source influence, physical lattice ranking and nuclear source/receiver bridge remain open as current SOLUTION.md states."
+    }
+  ],
+  "genuine_implementation_limits": [
+    "No correlated initial system-bath partition: nonzero cross density is rejected exactly, not clipped. Arbitrary coherent Gaussian rho is preserved WITHIN the system and within a product bath. For original correlated retained/omitted blocks keep those modes together in the system; do not pretend a thermalized bath is equivalent.",
+    "No general interacting correlated initial density or correlated L-contour preparation is implemented. The stated real-time Gaussian product IVP needs no physical imaginary branch; it must not be advertised as a complete arbitrary KMS/L-contour state adapter.",
+    "Hamiltonians and Gaussian states must be finite and Hermitian at the mathematical boundary. Validation allows explicit 1e-10 relative floating-point defects but does NOT symmetrize, clip or modify supplied matrices; this does not confer a numerical Hermiticity/error certificate on a raw material operator.",
+    "Exact 0/1 densities are supported without log/inverse-rho/occupation floors. Time-stepped numerical solutions may have finite discretization error; no positivity repair is performed.",
+    "The native adapter is a dense complete-memory fixed-selfenergy solver plus exact finite-bath embedding generator. It is not yet a causal self-consistent material collision iteration driver.",
+    "Uniform native grid and explicit held-H/nodal-V representation only; arbitrary off-grid original time requests and arbitrary continuous H(t) are not silently approximated.",
+    "The public material exporter binds passed original arrays and retained-bank provenance; it does not independently authenticate an arbitrary caller-provided source manifest. Existing campaign authentication remains required.",
+    "Physical g vertices are bound and handed forward, but not falsely claimed to have acted in the embedding consumer. No Ni/H rate kernel, anharmonic kernel, phenomenological damping, independent noise or fake physical fallback is supplied.",
+    "No build/install/runtime/oracle was executed. Numerical thresholds are preregistered acceptance predicates, not observed errors. Root's final actual execution and scientific review remain essential."
+  ],
+  "upstream_source_bindings": [
+    {"path":"/home/administrator/.cache/dft/p254-nessi-v2-source/libcntr/cntr/cntr_vie2_impl.hpp","bytes":90933,"sha256":"d4b2f104a6066b39da5d119739d072df8c57526accfa6e399f12b415bf8fcd78"},
+    {"path":"/home/administrator/.cache/dft/p254-nessi-v2-source/libcntr/cntr/cntr_dyson_impl.hpp","bytes":61420,"sha256":"3fa501291db3ec262a5349e866b082f8f1167c0bf54fd19a8ee247e3543155d2"},
+    {"path":"/home/administrator/.cache/dft/p254-nessi-v2-source/libcntr/cntr/cntr_convolution_impl.hpp","bytes":207460,"sha256":"93f34aca4e03d7679ce8c921dcc4c28febc46654a486c32d19ad1d86d497db1f"},
+    {"path":"/home/administrator/.cache/dft/p254-nessi-v2-source/libcntr/test/dyson.cpp","bytes":4874,"sha256":"37a245eb3e4ba787ee69564a7c82e48dc53504692881ce749a118b4995aa3b03"},
+    {"path":"/home/administrator/.cache/dft/p254-nessi-v2-source/libcntr/cntr/CMakeLists.txt","bytes":3584,"sha256":"fa61e7fd70fc21cc8dc12be239d83964deb68fd43e86598357fcc3fe5267a036"},
+    {"path":"/home/administrator/.cache/dft/p254-nessi-v2-source/libcntr/CMakeLists.txt","bytes":11069,"sha256":"241dcd31842fef994321e5d95d277a2276149fba07d6da65dada9a2776a7a1a0"},
+    {"path":"/home/administrator/.cache/dft/p254-nessi-v2-source/libcntr/cntr/cntr_herm_matrix_impl.hpp","bytes":115597,"sha256":"0bc7a8fe1a74f11559e622363ee8120e9705aeb8939480ec2f2b58835781e1a4"},
+    {"path":"/home/administrator/.cache/dft/p254-nessi-v2-source/examples/programs/Holstein_impurity_impl.cpp","bytes":13781,"sha256":"568fca6b3dcebb93f58e117f4389d9b98196277fac570713fd6dd9e3161a9c71"},
+    {"path":"/home/administrator/.cache/dft/p254-nessi-v2-source/examples/programs/hubbard_chain_selfen_impl.cpp","bytes":5912,"sha256":"7922b56213a20d87b874b5eb6de1b568d888a74383290686b14212229cd087b6"},
+    {"path":"/home/administrator/.cache/dft/p254-nessi-v2-source/examples/programs/gw_selfene_impl.cpp","bytes":9594,"sha256":"6f40756ffbb51e1f49d9cbdfb6b8960c279c5469a46714f3852b204a35810516"}
+  ],
+  "handoff_to_root": "Execute exactly one isolated integration build/install and the focused nominal/inert/wrong-preparation consumer plus reader in the existing approved environment; retain genuine computed final density, all component errors, mutated-state rejection, source/executable/output hashes and actual footprint. Then update shared docs with the earned scope only. This source handoff is not whole-E completion."
+}

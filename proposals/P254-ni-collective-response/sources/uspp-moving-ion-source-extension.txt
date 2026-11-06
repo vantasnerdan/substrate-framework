@@ -1,0 +1,443 @@
+USPP MOVING-ION SOURCE EXTENSION: QIAN / LI / LIN / YIP (2006)
+P254 W2 source applicability; issue227 under parent225; 2026-10-19
+Preregistered scope: ../W2-moving-uspp-source-plan.json, questions1-4.
+
+EVIDENCE LABELS AND BOUNDARY
+[PAPER] is an observation in the acquired published Qian original, not a
+claim of an independently proved mathematical result or reproduced physics.
+[CODE] is an observation in the installed QE7.5 source/UPF, or an explicitly
+identified completed campaign code receipt; no native binary was exercised
+in this extension. [INFERENCE] is a bounded applicability judgment, not a
+new USPP theorem, physical model, material prediction or bath construction.
+
+Paper page citations use printed 035408-N (also PDF page N). Equation
+numbers are the PUBLISHED eleven-page original's numbers. Code paths are
+relative to /opt/qebuild/q-e-qe-7.5; Ni/H UPF paths are relative to
+/home/administrator/projects/catalyst-dft/pseudos. Campaign paths below are
+relative to P254-ni-collective-response unless prefixed sources/ or attempts/.
+
+DECISION SUMMARY: FOUR PREREGISTERED ANSWERS
+
+1. [PAPER] YES, the original gives a moving-ion law, not merely frozen-ion
+   substitution of i*hbar*d/dt for an eigenvalue. Its Eqs.(14),(19)-(23),
+   p.3, use a PAW reconstruction T, S=T^dagger T, and the velocity operator
+   P=-i*hbar*T^dagger*(dT/dt), with (H+P)psi=i*hbar*S*dpsi/dt.
+   P depends on derivatives of BOTH partial-wave differences and beta
+   projectors. P is explicitly NOT Hermitian (p.4, after Eq.(27)). The
+   implemented time-steppers and demonstrations are for immobile ions,
+   Eqs.(28)-(40), pp.4-5; moving-ion integration/errors are deferred.
+2. [PAPER] YES, it identifies a PARTICULAR reconstruction/connection:
+   T=U^dagger S^(1/2)=1+sum(|true channel>-|pseudo channel>)<beta|,
+   Eq.(14), with true frozen-core valence states T psi. It does NOT choose
+   U=1 by default, infer T from S alone, or Hermitize a static DFPT vertex
+   to obtain a laboratory force. [INFERENCE] This narrows the missing
+   authority from 'no inspected moving-USPP prescription' to 'an explicit
+   source prescription whose actual GBRV reconstruction/data and force
+   implementation have not been supplied or validated.'
+3. [CODE] Actual GBRV Ni18/H1 UPFs contain local potentials, beta projectors,
+   D_ij constants, integrated and radial augmentation data, and selected
+   pseudo atomic wavefunctions. They do NOT contain the complete matched
+   all-electron/pseudo partial-wave pairs for every beta needed by Eq.(14).
+   QE's legacy reader sets has_wfc=false and reads PP_PSWFC into chi, not
+   into the full-wavefunction arrays. [INFERENCE] Neither these UPFs nor
+   the inspected native static elph export currently instantiate Qian's
+   T,dT/dX or its transformed-momentum operator. This is a specific data
+   and correspondence gap, not proof that every possible USPP dynamics
+   implementation is impossible or that static QE USPP is invalid.
+4. [PAPER] The source supplies a conditional electronic propagation model,
+   including moving-representation terms. It does NOT supply the requested
+   off-shell Ni force conversion, explicit nonequilibrium nuclear force
+   equations, physical occupation relaxation, or a material loss bath.
+   [INFERENCE] No W2 physical-model acceptance, Hermitization, invented T,
+   linewidth, damping constant or positive bath follows. Root must settle
+   the actual data/force/model frontier before the next preregistration.
+
+1. SOURCE ACCESS, COMPLETE READING, AND ACTUAL EQUATION INSPECTION
+
+[PAPER] Xiaofeng Qian, Ju Li, Xi Lin and Sidney Yip, 'Time-dependent density
+functional theory with ultrasoft pseudopotentials: Real-time electron
+propagation across a molecular junction,' Phys. Rev. B73,035408 (2006).
+https://doi.org/10.1103/PhysRevB.73.035408
+Published PDF: sources/qian2006-prb73-035408.pdf
+Extracted text: sources/qian2006-prb73-035408.txt
+Acquisition metadata: sources/qian2006-prb73-035408.metadata.json
+Author-listed source: http://li.mit.edu/Archive/Papers/06/Qian06a.pdf
+PDF SHA256: 5ef3fb64a0474547b200778de1c15f267215c0e05dabe93ec5d52bcafc35ed0d
+
+[CODE; observed access] Fresh pypdf extraction reopened all11 published
+pages; every page was nonempty. Page character counts exactly matched the
+acquisition metadata: 6300,6709,6087,5438,5689,4584,5473,2406,4280,6009,674.
+All four author names, the DOI,035408 and2006 were found on page1. The
+complete published extracted text, including introduction, Secs.II-VI,
+acknowledgments and all references on pp.10-11, was read. The separate
+sources/qian2005-cond-mat-0510643.pdf/.txt is the25-page arXiv v1 and was
+NOT used as a substitute, page-number authority or equation authority.
+
+[CODE; visual method] Read skill://vision-ocr first. Rendered actual
+published PDF pages2-6 at120dpi using pdftoppm. The prescribed vision
+provider route was tried on actual p.3: xd://mcp__zai_mcp_analyze_image
+returned MCP receive timeout after30000ms, retryable=false, outcome unknown.
+No remote OCR result is claimed. Direct inline decoded-image inspection
+through read of all five actual PNGs supplied the disclosed fallback.
+The source's extracted /H... glyph substitutions were NOT the symbol
+oracle. Footers035408-2 through035408-6 were visible in those renders.
+Durable evidence: sources/qian2006-equation-evidence/published-page-02.png
+through published-page-06.png, with commands, SHA256s, first failure and
+inspection scope in that directory's provenance.json.
+
+[PAPER; visual checks] Confirmed S (not identity) in Eqs.(1),(3), p.2;
+U^dagger and the direction true=T*pseudo in Eq.(14), p.3; the product rule
+with T^dagger*dT/dt in Eq.(19); MINUS i*hbar in Eq.(21); PLUS P on the
+LEFT and S*dpsi/dt on the RIGHT of Eq.(23). On p.4, checked BOTH differently
+ordered momentum products in Eq.(27), the explicit non-Hermiticity warning,
+fixed f_n following Eq.(24), and the immobile-ion restriction. On p.5,
+checked fixed-S factors/signs in Eq.(38), predictor H-prime in Eq.(40), and
+e^(-gamma*t^2) in Eq.(43). On p.6, checked T on BOTH sides of Eq.(47) and
+the adjacent statement that this mapped impulse was skipped in this paper.
+
+2. SETTLED INPUTS CONSUMED, NOT REWRITTEN
+
+[CODE; settled record] Read sources/uspp-force-readiness-audit.txt in full,
+attempts/0005/derivation.txt in full, and canonical-01/receipt.json under
+attempts/0005/runs. The latter has status=complete and native,
+transformations, embedding and numerical blocks. Its scope is conditional
+finite-matrix algebra, not Ni physics. The derivation explicitly distinguishes
+an algebraic Hermitian part from a physical force (lines21-25), reports
+orthonormalizer/frame nonuniqueness (lines67-83), and treats square versus
+rectangular embedding sufficiency separately (lines85-147). Those are
+settled campaign results consumed here, NOT new paper results or a new
+oracle execution. In particular, no finite saved-band matrix is silently
+assumed to be the complete invertible operator T of Qian's formal argument.
+
+[CODE; settled model identity] Read sources/electronic-model-source-
+correction.json and attempts/0004/receipt.json. The20-check completed receipt
+binds actual GBRV Ni18/H1, native loaded Ni31H6 electron count564, pilot GPAW
+Ni10 and installed default GPAW Ni16 as DIFFERENT models. This extension
+reopened actual Ni/H UPF headers and rechecked their pinned hashes:
+Ni f76b86ce60cde3d83dfcc8df79ba05478db573d158289f1b226919442d977d25;
+H  897f39441a8f0feb1f504af4cebce9dcf95c9cdc16858a7498991c74f1ad127b.
+No new electron-count/structure/material calculation was performed.
+
+[INFERENCE] The earlier report's frontier was expressly limited to the
+then-inspected static source and review. This newly read original extends
+that SOURCE scope: an actual published moving-ion prescription is now in
+hand. It does not retroactively provide missing GBRV reconstruction data,
+turn the oracle into physics, invalidate historical static findings or
+license rewriting the earlier report as if Qian had already been read.
+The earlier report and all settled receipts remain unchanged.
+
+3. QUESTION1: WHAT MOVES, WHAT OVERLAP, WHAT VELOCITY LAW?
+
+[PAPER] Sec.II p.2 Eqs.(1)-(3) sets the generalized eigenproblem H psi_n =
+epsilon_n S psi_n and the meaningful inner product <psi_m|S|psi_n>,
+corresponding to true-state inner products. S is positive Hermitian and
+contains integrated augmentation q_ij^I times beta projectors, not density-
+dependent screening. On p.3 Eq.(4) beta_i^I(x)=beta_i(x-X_I); Eqs.(5),(6)
+make H's nonlocal coefficients self-consistent with the local, Hartree and
+XC potential. Eqs.(7)-(9) distinguish the spatial augmentation Q_ji^I(x)
+from its integral q_ij^I. The paragraph before Eq.(10) explicitly says S
+depends on ionic positions only, not electronic charge density.
+
+[PAPER] For fixed ions, Eq.(10), p.3, identifies H(t)psi with both
+ i*hbar*d_t[S psi] and S[i*hbar*d_t psi].
+For moving ions Eq.(11) warns that these differential operators are NOT
+equivalent, their difference being proportional to ionic velocity. The
+paper does NOT resolve this by choosing either ordering arbitrarily.
+It introduces U and T in Eqs.(12)-(18), then gives, p.3:
+
+ Eq.(19): H psi_n = i*hbar*T^dagger[d_t(T psi_n)]
+                   = i*hbar*[T^dagger*T*d_t psi_n
+                              + T^dagger*(d_t T)*psi_n].
+ Eq.(21): P = -i*hbar*T^dagger*(d_t T) = sum_I P^I dot Xdot_I.
+ Eq.(23): (H+P) psi_n = i*hbar*S*d_t psi_n.
+
+These are transcriptions of the original, with hats suppressed for plain
+text; P^I is a vector operator and Xdot_I the ion velocity. Eq.(20) and
+Eq.(22) explicitly differentiate BOTH ket partial-wave differences and
+bra projectors with respect to X_I. Keeping only a displaced beta term
+would not be the displayed law. The paragraph after Eq.(23) calls this a
+moving spatial 'gauge' and states restrictions: pseudopotential cores must
+not overlap and core-level electrons must not be excited.
+
+[PAPER] On p.4 Eqs.(25),(26) introduce atom-local t_I with T=1+sum_I t_I
+and use rigid translation. Eq.(27) writes the velocity coefficient as
+ P^I = -i*hbar*T^dagger*partial_(X_I) t_I
+     = (1+t_I^dagger)(1+t_I) p
+       - (1+t_I^dagger) p (1+t_I),
+where p is ELECTRON momentum. It is not nuclear momentum and it is not a
+bath operator. The source explicitly says P^I and P are not Hermitian.
+It immediately distinguishes the immobile-ion Eq.(28), H(t)psi_n =
+i*hbar*S*d_t psi_n, and defers integration algorithm/error analysis for
+coupled ion-electron Eq.(23) to a later paper. That later paper has not
+been acquired or used here.
+
+[INFERENCE] The source's answer to the time-dependent metric question is
+an explicit moving reconstruction, not 'drop dS/dt', 'use dS/dt alone', or
+'make P Hermitian'. No two-time finite-step cross-overlap matrix/export
+S(t,t') is specified in this original. Its Eq.(35) norm comparison belongs
+to the SAME fixed S in Sec.III. Neither that norm formula nor its fixed-S
+propagator is a validated moving-ion discretization for installed GBRV.
+No new norm/connection identity is derived in this report.
+
+[PAPER] Frozen-ion limits are explicit, not inferred from the examples:
+Sec.III's title and opening on p.4 restrict it to immobile or approximately
+immobile ions. Eqs.(29),(30) rewrite that fixed-S problem; the T-hat in
+Eq.(30) denotes TIME ORDERING, not the PAW reconstruction of Eq.(14).
+Eqs.(36)-(38), p.5, give the Crank-Nicolson step using H(t); the text calls
+it first-order when H changes, second-order in the special time-invariant
+H limit, including an infinitesimal test electron that does not perturb H.
+Eqs.(39),(40) are a predictor-corrector for changing electronic density,
+STILL within the immobile-ion section.
+
+[PAPER] Sec.IV pp.5-6 applies electronic impulses to Na2 and benzene at
+specified geometries, with charge/potential updates, not ionic dynamics.
+It explicitly skips the mapped impulse Eq.(47): pseudo rather than true
+wavefunctions are used in Eq.(41), acknowledged to make oscillator
+strengths not exact and slightly violate the sum rule. This is a stated
+benchmark approximation, not an approved prescription for omitting T.
+Secs.V.A/B pp.7-9 propagate a Fermi electron with Eq.(38). Sec.VI p.9
+explicitly calls the conductance demonstration a 'fixed band approximation'
+with a small testing electron disturbing the junction negligibly. These
+examples do not exercise Eq.(23)'s moving-ion connection or nuclear heating.
+
+4. QUESTION2: A PARTICULAR EMBEDDING OR AN ARBITRARY HERMITIZATION?
+
+[PAPER] Eqs.(12),(13), p.3, first expose unitary freedom in splitting S.
+The paragraph introducing Eq.(14) then selects U by referring to the PAW
+transformation, and explicitly writes
+ T = U^dagger S^(1/2)
+   = 1 + sum_(i,I) (|tilde_psi_i^I>-|psi_i^I>)<beta_i^I|,
+ tilde_psi_n = T psi_n.
+Here tilde means the true nodal wavefunction, opposite to some other
+papers' notation (p.2). The channel i in the sum is not a saved crystal
+band n. Eq.(15) identifies a transformed true Hamiltonian with core-level
+electrons frozen; Eqs.(16)-(19) invoke its all-electron TDDFT propagation
+and transform it back. This is the paper's asserted physical identification
+under its PAW/USPP assumptions, not a new verification of that identification
+for every possible UPF or finite plane-wave/band truncation.
+
+[INFERENCE] This is real additional source authority for a CONDITIONAL
+PAW-based electronic dynamics. It is not the assertion that every S admits
+one uniquely physical square-root reconstruction. Setting U=1 would discard
+the specific partial-wave map the source supplies; no such choice is made
+here. Nor is the paper defining a force by taking the Hermitian part of
+native D. Its explicit non-Hermitian P is especially incompatible with
+such a replacement as an automatic 'repair'. Non-Hermiticity of this
+moving-coordinate term is not evidence of physical damping.
+
+[INFERENCE] At fixed X the source permits a fixed-S orthonormal propagation
+representation, Eq.(29). Extending an orthonormalizer to varying X and
+identifying its coordinate derivative with a laboratory force is a DIFFERENT
+claim. Qian instead supplies a physical-map premise with channel data and
+a velocity law. The settled oracle's frame/embedding cautions continue to
+apply to transferring this premise into finite exported data. No new map,
+connection, effective independent-electron force model or consumer converter
+has been selected by this extension.
+
+5. QUESTION3: EXACT REQUIRED DATA VS THE ACTUAL INSTALLED MODEL
+
+[PAPER] Data the source actually uses, separated by role:
+A. Static H,S,density, pp.2-3 Eqs.(2)-(9): kinetic operator, local ionic
+   potential V_L, beta projectors, unscreened D_ji^(0), spatial augmentation
+   Q_ji and integrated q_ij, radial/angular conventions, instantaneous
+   density and chosen Hartree/XC functional. Qian says these functions
+   fully specify the ground-state ultrasoft pseudopotential (p.3).
+B. Reconstruction, p.3 Eq.(14): for every projector channel, the MATCHED
+   true and pseudo partial waves (and their centering/normalization), not
+   merely their charge difference Q in Eq.(8). The correspondence must
+   actually realize the source's T and its relation to the installed H,S.
+C. Motion, p.3 Eqs.(20)-(22): X_I(t), Xdot_I(t), gradients/position
+   derivatives of both partial-wave differences and projectors, and T's
+   adjoint. Alternatively p.4 Eq.(27) requires the actual local transformed
+   momentum action (1+t_I^dagger)p(1+t_I), in addition to the other ordered
+   momentum product. Ordinary plane-wave p alone is not that object.
+D. Electronic state, p.4 Eq.(24): initial states and initial occupations,
+   augmented density at every time, and H updated consistently with the
+   declared density-functional approximation. The paragraph after Eq.(24)
+   holds f_n at its INITIAL value throughout a run; n ceases to denote an
+   instantaneous eigenstate once driven. No collision-driven reoccupation
+   law is present.
+
+[CODE] Actual Ni UPF header lines16-34: US, NLCC=true, PBE, valence18,
+radial mesh865, five atomic wavefunctions but SIX beta projectors.
+Header/generation lines1-12 identify a scalar-relativistic generation.
+Beta openings at922,1079,1236,1393,1550,1707 have radial angular momenta
+0,0,1,1,2,2. PP_DIJ is1864-1875. PP_QIJ begins1876, with Q_int at1886;
+PP_RINNER and PP_QFCOEF provide the small-radius augmentation prescription.
+PP_PSWFC is6803-7894; PP_RHOATOM ends the file at8115. PP_NLCC begins479
+and PP_LOCAL700. These are actual installed data, not generic UPF promises.
+
+[CODE] Actual H UPF header lines12-26: US, NLCC=false, PBE, valence1,
+mesh615, one atomic wavefunction but TWO beta projectors. Generation
+lines1-8 say nonrelativistic. Betas begin504 and607, both l=0. PP_DIJ
+is710-715; PP_QIJ716-1201, Q_int722, with PP_RINNER/PP_QFCOEF; PP_PSWFC
+1205-1361; PP_LOCAL345 and final PP_RHOATOM1364-1519.
+
+[CODE] Literal searches over BOTH complete UPFs found no PP_FULL_WFC,
+PP_AEWFC, PP_PAW or GIPAW reconstruction section. This is further supported
+by the ACTUAL reader, not merely an absent modern tag:
+- upflib/read_upf_v1.f90:52-68 scans spin-orbit/GIPAW flags; :93-94 sets
+  has_wfc=false; :267-270 handles US with tpawp=false; :298 reads nwfc and
+  nbeta independently; :445-451 reads beta channels.
+- Same file :468-526 loads integrated qqq, Q radial functions and small-r
+  coefficients. :563-581 loads PP_PSWFC into chi(mesh,nwfc).
+- upflib/pseudo_types.f90:92-94 explicitly distinguishes chi/rho_at as
+  initial-density/wavefunction data; :133-137 distinguishes full aewfc and
+  pswfc for EACH beta, not selected chi states. :111-128 separately defines
+  D and augmentation arrays. A pseudized NLCC density (:103-104) is not a
+  true/pseudo partial-wave pair.
+- upflib/read_upf_new.f90:599-619,639-646 shows what full-wavefunction
+  support would read when has_wfc is true: actual AE and PS arrays, one
+  per nbeta. This is contrast with the legacy file intake, not a claim
+  that installed GBRV contains those arrays or is a PAW dataset.
+
+[INFERENCE] Existing selected PP_PSWFC states cannot just be relabeled as
+Qian's complete reconstruction data: the installed reader distinguishes
+the arrays and the actual wavefunction/projector counts differ. Qian's
+statement that V_L,beta,D^(0),Q specify STATIC USPP does not demonstrate
+that they uniquely provide the true/pseudo channel differences used later
+in Eq.(14), or supply a recipe here for recovering their momentum action.
+No such reconstruction from these GBRV data was established by the original
+or by this inspection. A matched generator-side reconstruction dataset, or
+an independently justified directly defined dynamical prescription with
+its own required operator data, is missing. Nothing is filled with GPAW
+Ni10/Ni16, a guessed all-electron atom, Q's integral alone, or a scalar
+valence rescaling.
+
+[CODE] Existing QE static machinery is NOT the missing T merely because
+it already moves projectors:
+- PW/src/s_psi.f90:117-175 initializes Spsi from psi and dispatches US
+  overlap action. This is an overlap routine, not a reconstruction export.
+- PHonon/PH/dvqpsi_us_only.f90:87-104 passes INITIAL k-band energy into
+  compute_deff; PW/src/compute_deff.f90:10-14,35-42 uses
+  deeq(current_spin)-epsilon_initial*qq_at. The former's :135-186 and
+  :199-238 include displaced-projector/augmentation contractions and
+  beta(k+q+G) versus (k+q+G)*beta(k+q+G).
+- PHonon/PH/elphon.f90:479-528 adds induced potential/US terms; :560-585
+  contracts the final-state bra against that generalized perturbation.
+  :598-606 writes the ordinary non-tetra/non-AHC checkpoint.
+- PHonon/PH/ph_restart.f90:297-332 writes sizes, k coordinates and complex
+  PARTIAL_ELPH matrices. It does not write separate finite-q dS, full
+  partial waves, T,dT/dX, velocity coefficients or transformed momentum.
+These cited routines were reopened; no claim about ALL QE dynamical
+packages, or proof of a new exporter/algorithm's sufficiency, is made.
+
+[INFERENCE] Thus 'beta gradients exist' and 'static moving augmentation is
+implemented' are useful but insufficient answers to the data question.
+A beta derivative, static dS, H and an electron momentum factor are not,
+without the explicit source correspondence, Qian's T^dagger*dT/dX.
+Matched complex band/k/q/spin/pattern gauges, normalization, UPFs and
+reference-state metadata remain necessary for any finite-data route.
+The source supplies no automatic finite-q projection or completeness
+certificate for a saved-band native tensor. No exporter is added here.
+
+6. QUESTION4: OFF-SHELL FORCE, NUCLEAR BACKREACTION AND LOSSES
+
+[PAPER] Qian Eq.(23) is an electronic propagation equation formulated with
+an actual reconstruction. It is NOT an equation declaring the ordinary
+static generalized numerator H'-epsilon_initial*S' to be a single
+energy-independent laboratory force vertex. The source never prescribes
+Hermitizing that numerator, replacing initial energy by the mean of two
+energies, or inserting its modulus squared into a material bath spectrum.
+Its frozen-core all-electron identification in Eq.(15) is conditional on
+its map, not a supplied mapping of this campaign's static screened export.
+
+[INFERENCE] A source-backed map is progress toward that gap, not closure.
+The missing material link is an actual matched reconstruction/connection
+or directly justified operator model, plus a derivation of the intended
+physical displacement/velocity coupling and its force convention. It
+must specify the electronic space, truncation, spin, self-consistency and
+screening choices and treat the coordinate and velocity dependence the
+chosen model really requires. No conversion formula is proposed here;
+no square/invertible/complete embedding premise is silently assigned to
+a finite-band tensor. Native static D remains useful as the settled
+static response object, with its overlap and moving-augmentation terms
+already present, not terms to append a second time.
+
+[PAPER] On p.3, before the time-dependent construction, the original says
+ionic forces/internal stress can be derived analytically using linear
+response and cites refs.51,53. On p.4 it describes future detailed
+integration/error work for 'coupled ion-electron dynamics'. The eleven-
+page article contains no explicit nuclear Newton/Ehrenfest force equation,
+no derived nonequilibrium nuclear backreaction force functional, no tested
+energy-conserving moving-ion integrator, and no material nuclear heating
+calculation. References51,52,53 or any promised later paper were NOT
+independently acquired/read in this extension and are not promoted to
+primary authority by being cited in Qian.
+
+[INFERENCE] An electron equation conditional on moving X(t) is not alone
+a closed nuclear backreaction model. Required evidence remains an explicit
+consistent nuclear force/action/energy-accounting prescription including
+the chosen reconstruction's moving terms, augmentation, frozen-core/NLCC
+and ion-ion pieces as applicable, with independent validation. This is a
+missing model requirement, not a force law derived here or a claim that
+none can be derived elsewhere. The actual W1 geometry/core-overlap and
+stationarity gates have not been inspected or satisfied by this report.
+
+[PAPER] Loss-related scope is particularly narrow:
+- Introduction p.1 discusses Landauer energy disposal in metallic leads
+  and motivates inelastic junction processes; this is motivation, not an
+  implemented bath for the subsequent finite-supercell propagation.
+- Sec.II p.4 after Eq.(24) fixes f_n(t)=f_n(0), not equilibration with an
+  occupation reservoir. Sec.I p.1 describes instantaneous/adiabatic XC
+  approximations; no collision kernel or material lifetime is furnished.
+- Eq.(43), p.5, uses e^(-gamma*t^2) to window a finite-time dipole transform.
+  Its small damping factor and finite integration time are spectral-
+  extraction choices, not computed electron/phonon friction or a bath.
+- Sec.V.B p.9 explicitly observes reflected density re-entering through
+  periodic boundaries. Sec.VI identifies fixed bands/small test charge.
+  These facts are not a demonstration of irreversible energy disposal,
+  infinite reservoirs, phonon damping or a thermal steady state.
+
+[INFERENCE] Absorption spectra, packet transmission and a formal moving-
+ion connection do not select a small-amplitude Ni collective-response
+loss model. A physical ensemble/occupations, screening/reference/static-
+subtraction convention, finite-energy coverage, channels disposing energy,
+and any memory/noise/linewidth treatment still need their own source-
+backed or explicitly declared verified model. A numerical smearing width,
+Fourier window, finite-size recurrence, imaginary broadening or non-
+Hermitian moving-coordinate P is not a physical bath by identification.
+This extension neither establishes passivity nor rules out electronic
+energy transfer under an eventual correctly closed model.
+
+7. EXACT REMAINING FRONTIER AND INTEGRATION DISPOSITION
+
+[INFERENCE] The original CLOSES the narrow source question 'is there an
+inspected published moving-ion USPP/PAW electronic law with a specific map?'
+YES: Eq.(14) plus Eqs.(19)-(23),(27) supply it under stated assumptions.
+It does NOT close the ACTUAL MODEL/DATA/FORCE/LOSS question. Specifically:
+M1. Missing matched GBRV Ni18/H1 true/pseudo partial waves per beta or
+    equivalent justified transformed-momentum/connection data, with proof
+    of correspondence to actual QE H,S and augmentation conventions.
+M2. Missing implemented/exported and independently checked T,dT/dX or the
+    chosen directly defined dynamical operator in the actual band/k/q/spin
+    convention. Static D or separate dS alone is not identified with it by
+    this paper. No such implementation was attempted in this assignment.
+M3. Missing source-backed or explicitly derived/verified physical force and
+    closed nuclear backreaction prescription for the intended dynamics;
+    the article defers moving-ion integration and gives no nuclear force
+    equation. A further load-bearing original, if needed, must be acquired
+    and evaluated explicitly, not silently borrowed through its references.
+M4. Missing accepted physical loss/occupation/screening/reference model and
+    convergence/recovery evidence for material spectra. The published
+    frozen-ion electronic tests do not supply them.
+
+[INFERENCE] Root may preregister a next mathematical/physical step only
+with these distinctions explicit. The finite-matrix oracle is already
+settled and should not be rerun as if it could select the physical map.
+The historical static audit is preserved. No new theorem, physical model,
+T, bath or material acceptance is smuggled into this source extension.
+
+VERIFICATION AND CHANGE BOUNDARY
+[CODE; exercised] Actual pdftoppm render completed; all five PNGs were
+visually inspected via the disclosed decoded-image fallback. Actual
+canonical-Python pypdf reopening confirmed11 nonempty pages and first-page
+identity tokens. Actual sha256sum matched the published PDF and both actual
+UPF hashes and bound cited source files/rendered evidence in provenance.
+No native simulation, active-job access/change, build, lint, formatter,
+repository suite, library/math change, Git operation, external message,
+source acquisition, shared inventory, existing report or source-plan edit
+was part of this extension. Only this report and the genuinely needed new
+equation-render evidence/provenance directory were created. Source/code
+observations are not an exercised moving-ion implementation or physics
+validation; the failed provider call supplies no scientific output.

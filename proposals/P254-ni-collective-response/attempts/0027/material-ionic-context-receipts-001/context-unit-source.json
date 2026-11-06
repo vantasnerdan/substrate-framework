@@ -1,0 +1,23 @@
+{
+  "text": "[Unit]\nDescription=P254 A27 ionic own context only CPU6\n[Service]\nType=exec\nWorkingDirectory=/home/administrator/projects/substrate-ni-collective\nEnvironment=PYTHONUNBUFFERED=1\nEnvironment=OMP_NUM_THREADS=1\nEnvironment=OPENBLAS_NUM_THREADS=1\nEnvironment=MKL_NUM_THREADS=1\nEnvironment=NUMEXPR_NUM_THREADS=1\nEnvironment=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025\nExecStart=/home/administrator/projects/substrate-framework/.venv/bin/python -u /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/run_material_ionic_pilot.py --admission /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-ionic-production-grant-proposed-001.json --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-ionic-context-001 --context-only\nRestart=no\nRuntimeMaxSec=30\nTimeoutStopSec=2\nKillMode=control-group\nCPUAffinity=6\nMemoryMax=4294967296\nMemorySwapMax=0\nMemoryAccounting=yes\nStandardOutput=append:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-ionic-context-receipts-001/context-process.stdout\nStandardError=append:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-ionic-context-receipts-001/context-process.stderr\n",
+  "binding": {
+    "path": "/home/administrator/.config/systemd/user/p254-a27-ionic-context-001.service",
+    "bytes": "1642",
+    "sha256": "172865e139be3b1d97441689a5de87d9fdf1cb3b621b956477139c769fa1efd1"
+  },
+  "argv": [
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/run_material_ionic_pilot.py",
+    "--admission",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-ionic-production-grant-proposed-001.json",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-ionic-context-001",
+    "--context-only"
+  ],
+  "interpreter": {
+    "path": "/usr/bin/python3.12",
+    "bytes": "8020928",
+    "sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f"
+  }
+}

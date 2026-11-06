@@ -1,0 +1,143 @@
+{
+  "schema": "p254-0027-zero-temperature-source-implementation-1",
+  "owner": "ZeroTFamilyBuild27",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "repository": "/home/administrator/projects/substrate-ni-collective",
+  "scope": {
+    "status": "COMPLETE_SOURCE_AND_NEW_ORACLE_WRITTEN_NOT_EXECUTED",
+    "construction": "Conditional neutral fixed-mean-number zero-temperature FD limit of declared symmetric raw-frame saved-energy-label preparation operator; free longitudinal M and common multiplier; scalar exact-energy boundary block; independent explicit spin/full-k quasifree sectors; initially empty full-PW complement",
+    "not_claimed": [
+      "actual material population or D",
+      "experimental preparation/calibration",
+      "finite physical temperature or MV degauss as temperature",
+      "exact canonical N",
+      "H0 ground state or stationarity",
+      "little-group invariance",
+      "full material dynamics/coherence-domain result"
+    ],
+    "ownership_preserved": "Only the three assigned new files were written. FactorPreparation, SavedReference, prepared_* dynamics, historical reports/receipts and prior executed generations were not edited. No unfinished Bloch implementation is imported.",
+    "documentation": "New module and callable docstrings document the physical contract, units, producer authority, limitations and execution entry point; no additional documentation files were created."
+  },
+  "files": [
+    {
+      "path": "src/substrate_framework/zero_temperature_preparation.py",
+      "bytes": "5001",
+      "sha256": "41b05868e4c3ef3c0c9c378a52cc26977a803a66956427153555081803f0de14",
+      "responsibility": "General weighted exact-degeneracy mean-number filling and source-labelled population outputs"
+    },
+    {
+      "path": "src/substrate_framework/material_preparation.py",
+      "bytes": "11155",
+      "sha256": "570f07379e027983371e949f5112b26a58e8addc4919f33bec3221d4583545a0",
+      "responsibility": "Existing saved-reference/NCUPF complete-grid population specification, then separately authorized lazy raw-frame instantiation"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0027/run_zero_temperature_oracle.py",
+      "bytes": "12754",
+      "sha256": "5a4da091f96af8f66ff7c0793a60a084378130976e21f51a153ff5191f16131f",
+      "responsibility": "New small independent Fock/Gibbs-limit comparator and sensitive mutations; executable source only"
+    }
+  ],
+  "interfaces": {
+    "zero_temperature_preparation": [
+      "ModeLevel(identity: str, spin: int, energy: float, measure: float)",
+      "FillingPolicy(operator_authority: str, number_authority: str, measure_authority: str, degeneracy_authority: str, energy_units: str, number_units: str)",
+      "DegenerateBlock(energy: float, indices: tuple[int, ...], measure: float, population: float)",
+      "ZeroTemperatureFilling(levels, populations, blocks, target_mean_number, weighted_number, spin_numbers, chemical_potential_interval, boundary_log_fugacity, policy)",
+      "fill_zero_temperature(levels, target_mean_number, *, policy: FillingPolicy) -> ZeroTemperatureFilling"
+    ],
+    "material_preparation": [
+      "SourceBinding(path: str, bytes: int, sha256: str)",
+      "SourceBinding.from_mapping(source) -> SourceBinding",
+      "FullGridSector(spin: int, mesh_index: tuple[int,int,int], source_ik: int, source_binding: SourceBinding, frame_identity: str, pw_basis_identity: str, full_pw_dimension: int, extension_identity: str)",
+      "FullGridSector.key -> (spin, mesh_index)",
+      "MaterialPreparationPolicy(decision_authority: str, neutral_number_authority: str, symmetric_frame_authority: str, exact_degeneracy_authority: str, extension_authority: str, independence_authority: str, empty_complement_authority: str, coverage_authority: str)",
+      "MaterialPopulationSpecification(reference_binding, charge_bindings, valence_charges, mesh, sectors, band_slices, filling, policy)",
+      "specify_material_preparation(reference: SavedReference, upfs: Mapping, sectors, *, policy: MaterialPreparationPolicy) -> MaterialPopulationSpecification",
+      "instantiate_material_sector(specification: MaterialPopulationSpecification, sector_key, functional: FactorFunctional, raw_frame, *, source_binding: SourceBinding, reference_binding: SourceBinding, coverage_authority: str, frame_authority: str) -> FactorPreparation"
+    ],
+    "consumer_contract": {
+      "number": "Primitive sums explicit level.measure * population once. Adapter requires two explicit collinear spin sectors and every full unshifted Monkhorst-Pack slot once, with all original spin-local records represented. Measures are 1/Nk per primitive cell, never implicit spin two or XML IBZ fluctuation weights.",
+      "neutral_charge": "Uses existing SavedReference.nelec and original atom_names plus supplied existing decoded NCUPF.element/z_valence and original UPF byte bindings. Requires nelec exactly equal the atom-resolved neutral valence sum. Does not create a second XML parser or add fields to SavedReference.",
+      "degeneracy": "Exact equality of supplied finite energy labels only. Entire boundary block receives (target-number_below)/block_measure; no arbitrary half fill, band-index tie break or near-energy clustering. Returns common-multiplier interval and fractional-boundary log fugacity; no arbitrary gap chemical potential is selected.",
+      "extension": "Caller supplies complete canonical full-grid descriptors and source/frame/basis/extension identities, adopting XML-order unitary policy including inversion with no antiunitary spin swap. This is an explicit policy/producer-authority contract, not a claimed little-group invariance test.",
+      "separation": "Population specification needs no Gram or material raw D. Lazy instantiation requires matching original XML/WFC, full coverage and raw frame authority, every full PW row/source column, matching FactorFunctional frame/basis/dimension and agreement with recomputed raw Gram. Calls existing coefficients_from_orthonormal_populations and FactorPreparation without modifying raw frames.",
+      "state_scope": "Each returned FactorPreparation is one sector, explicitly not the neutral total. Initial complement is empty by decision authority, but full-row action/ordered-product complement is retained. No fixed-M alternative or prepared-dynamics integration was added."
+    }
+  },
+  "oracles_written": {
+    "status": "NOT_RUN",
+    "command_from_repository": "PYTHONPATH=src python proposals/P254-ni-collective-response/attempts/0027/run_zero_temperature_oracle.py",
+    "independence": "Enumerates six-mode Fock configurations and direct many-body Gibbs weights, solves a common chemical potential by independent bisection at beta 8,16,32, and compares marginals to the zero-T selector. Separately enumerates five-mode Fock probabilities and signed creation/annihilation bilinears for selected new preparation/Gram/population-correlation checks; it does not reuse the implementation filling function in the Gibbs comparator or reprove accepted factor algebra.",
+    "fixtures": "Explicitly test-only energies [-2,0,0,3], spin labels [1,1,2,2], independent-mode multiplicities [1,2,1,2] and two-cell normalization; gapped target and non-half fractional exact-degenerate target; positive nonorthogonal rectangular raw frame; degenerate complex gauge; empty accessible complement and noncommuting generation Hamiltonian. Separate complete two-spin single-k analytic metadata exercises lazy instantiation, not actual SavedReference material decoding.",
+    "comparisons": [
+      "Neutral weighted number and unequal free spin occupations",
+      "Gapped and fractional exact-degenerate Gibbs limits and boundary multiplier slope",
+      "No near-energy clustering; empty/full capacities",
+      "Independent-mode collective N/sqrt(cell count) fluctuations with linear multiplicity",
+      "Equal one-body marginals but different canonical-N versus mean-N number/pair correlations",
+      "Raw Gram transport and scalar-block gauge covariance",
+      "Direct Fock population and off-diagonal degenerate/complement correlations",
+      "Nonzero initial generator commutator rather than equilibrium claim",
+      "Raw instantiation seam and rejection of functional/raw-frame Gram mismatch"
+    ],
+    "mutations": [
+      "wrong Gram / treating raw D diagonal entries as populations",
+      "blanket spin factor two",
+      "squared number measures",
+      "squared independent-mode fluctuation measures",
+      "band-label split preserving weighted neutrality but breaking degenerate gauge covariance",
+      "forced half filling",
+      "false H0 equilibrium",
+      "mismatched raw frame/functional Gram"
+    ],
+    "tolerance": "3e-11 on the declared finite oracle only; mutation separations are explicit in source. No residuals or pass claims exist until Root executes."
+  },
+  "source_bindings": {
+    "registration": {
+      "path": "proposals/P254-ni-collective-response/attempts/0027/implementation-registration.json",
+      "bytes": "9602",
+      "sha256": "b59c25bd13d015ae17b2d81c8b98567f1358bacdc783b5c235f2f186aef268bc"
+    },
+    "settled_material_report": {
+      "path": "proposals/P254-ni-collective-response/attempts/0027/material-reference-grounding.json",
+      "bytes": "62519",
+      "sha256": "59505bed7d8f7147e89a8df12314e440a500731274fbc9a43dcdd3ed0cb28253",
+      "sections_read": "question1_preparation 118-142 and O1 264-274; implementing-source references and relevant policy excerpts"
+    },
+    "settled_spatial_report": {
+      "path": "proposals/P254-ni-collective-response/attempts/0027/bloch-spatial-grounding.json",
+      "bytes": "59325",
+      "sha256": "564be832576bfdfb24b7ee759bb44831ef8b48b9eb05f8540868b9ac174ecefe",
+      "sections_read": "slot/gauge/extension/normalization and interface excerpts at 139-164,185,203-206,223-235"
+    },
+    "additional_closure": {
+      "path": "proposals/P254-ni-collective-response/attempts/0027/additional-source-access-001.json",
+      "bytes": "6467",
+      "sha256": "747ebd89b815b7492fc83139e9b6dd67bdc053eef996ec5f8913a8132c1e572a",
+      "read": "complete"
+    },
+    "reused_factor_algebra": {
+      "path": "src/substrate_framework/physical_factor_preparation.py",
+      "bytes": "11366",
+      "sha256": "3dd3767a13da9fd5f5d7559bc3f7a98cf00d365655a08980db551d011aa25b96",
+      "read": "1-231 actual source; reused unchanged"
+    },
+    "other_actual_sources_read": [
+      "src/substrate_framework/qe_saved_reference.py:1-200 before sibling changes; existing metadata/select interface reused, not edited",
+      "src/substrate_framework/qe_material_reference.py:1-92 existing UPF/source ownership",
+      "src/substrate_framework/qe_nc_upf.py:19-44 and charge/source-binding implementation excerpts",
+      "src/substrate_framework/qe_saved_native.py:23-38 original decoding-buffer binding contract"
+    ],
+    "integration_note": "Root must bind the final sibling-owned qe_saved_reference.py generation with the complete source bundle before runtime; this adapter imports only its existing SavedReference/select interface."
+  },
+  "remaining_limits": [
+    "No numerical or symbolic check, import execution, build, lint, formatter, material decoding, material fill, process/unit/cloud action or Git mutation was performed. Only source writes/reads and original-byte hash/count commands were used.",
+    "Root owns bounded oracle execution and all material applications. The oracle itself remains unexecuted source; no passing result is inferred.",
+    "Actual complete header/row/slot and canonical extension admission plus original frame/coverage authority are required before raw-D instantiation. This adapter consumes declared full-grid metadata rather than implementing/validating Bloch operations or little-group sewing.",
+    "The new oracle tests general filling and raw instantiation, not actual SavedReference/XML/UPF neutral material metadata application. Root's separately authorized actual metadata consumer remains necessary.",
+    "Producer byte verification and correct joins of XML/WFC, basis, band order and transformed frames remain producer responsibilities; string authority labels are not substitutes for Root's admission receipts.",
+    "Conditional saved-label preparation is not reconstructed H0 equilibrium or common-density/static matching. Empty complementary modes are a declared initial-state choice, not proven high-energy states.",
+    "Actual q/region observables, ionic/cross state, same-reference dynamics, environmental/matter-field losses, domain coherence and nuclear/energy-disposal campaign remain distinct downstream work."
+  ]
+}

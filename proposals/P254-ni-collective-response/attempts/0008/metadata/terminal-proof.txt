@@ -1,0 +1,75 @@
+PASS [P254-primary-frozen-replay] SCF stress snapshot convention: mutation 2 rejected
+PASS [P254-primary-frozen-replay] all independently replayed numerical blocks exactly reproduce first receipt
+PASS [P254-primary-frozen-replay] physical identity mutation cell_angstrom: baseline
+PASS [P254-primary-frozen-replay] physical identity mutation cell_angstrom: mutations supplied
+PASS [P254-primary-frozen-replay] physical identity mutation cell_angstrom: mutation 1 rejected
+PASS [P254-primary-frozen-replay] physical identity mutation pbc: baseline
+PASS [P254-primary-frozen-replay] physical identity mutation pbc: mutations supplied
+PASS [P254-primary-frozen-replay] physical identity mutation pbc: mutation 1 rejected
+PASS [P254-primary-frozen-replay] physical identity mutation symbols: baseline
+PASS [P254-primary-frozen-replay] physical identity mutation symbols: mutations supplied
+PASS [P254-primary-frozen-replay] physical identity mutation symbols: mutation 1 rejected
+PASS [P254-primary-frozen-replay] physical identity mutation constraint_count: baseline
+PASS [P254-primary-frozen-replay] physical identity mutation constraint_count: mutations supplied
+PASS [P254-primary-frozen-replay] physical identity mutation constraint_count: mutation 1 rejected
+PASS [P254-primary-frozen-replay] native stdout force mutation is actually changed and publication rejects it
+ALL 336 CHECKS PASS [P254-primary-frozen-replay]
+PRIMARY_REPLAY_COMPLETE d3ca6d943e527c0a8446546723a7eb54dd9c43c956c60554ea5082adf42e8747
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 4.732s
+CPU time consumed: 4.448s
+Memory peak: 2.2M
+Memory swap peak: 0B
+PRIMARY_REPLAY_OWNER_EXIT=0
+administrator@agent-giuliano:~/projects/substrate-ni-collective$ XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus systemd-run --user --wait --pipe --unit=p254-w1-primary-metadata-0008-001 --property=Type=exec --property=CPUAffinity=5 --property=MemoryMax=2G --property=Restart=no --working-directory=/home/administrator/projects/substrate-ni-collective --setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src --setenv=OMP_NUM_THREADS=1 --setenv=OPENBLAS_NUM_THREADS=1 --setenv=MKL_NUM_THREADS=1 --setenv=NUMEXPR_NUM_THREADS=1 /home/administrator/projects/substrate-framework/.venv/bin/python /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0008/metadata/ru…
+Running as unit: p254-w1-primary-metadata-0008-001.service; invocation ID: aecf17a3eefe48eb9f3c70338ad228fc
+PASS [P254-primary-native-metadata] native stdout remains original raw-byte generation
+PASS [P254-primary-native-metadata] native stdout ecutwfc_ry: baseline
+PASS [P254-primary-native-metadata] native stdout ecutwfc_ry: mutations supplied
+PASS [P254-primary-native-metadata] native stdout ecutwfc_ry: mutation 1 rejected
+PASS [P254-primary-native-metadata] native stdout ecutrho_ry: baseline
+PASS [P254-primary-native-metadata] native stdout ecutrho_ry: mutations supplied
+PASS [P254-primary-native-metadata] native stdout ecutrho_ry: mutation 1 rejected
+PASS [P254-primary-native-metadata] native stdout conv_thr_ry: baseline
+PASS [P254-primary-native-metadata] native stdout conv_thr_ry: mutations supplied
+PASS [P254-primary-native-metadata] native stdout conv_thr_ry: mutation 1 rejected
+PASS [P254-primary-native-metadata] native stdout degauss_ry: baseline
+PASS [P254-primary-native-metadata] native stdout degauss_ry: mutations supplied
+PASS [P254-primary-native-metadata] native stdout degauss_ry: mutation 1 rejected
+PASS [P254-primary-native-metadata] native stdout exchange-correlation is PBE
+PASS [P254-primary-native-metadata] native stdout atom and type counts
+PASS [P254-primary-native-metadata] Ni native pseudovalence identity: baseline
+PASS [P254-primary-native-metadata] Ni native pseudovalence identity: mutations supplied
+PASS [P254-primary-native-metadata] Ni native pseudovalence identity: mutation 1 rejected
+PASS [P254-primary-native-metadata] Ni native pseudo MD5 raw-byte binding: baseline
+PASS [P254-primary-native-metadata] Ni native pseudo MD5 raw-byte binding: mutations supplied
+PASS [P254-primary-native-metadata] Ni native pseudo MD5 raw-byte binding: mutation 1 rejected
+PASS [P254-primary-native-metadata] H native pseudovalence identity: baseline
+PASS [P254-primary-native-metadata] H native pseudovalence identity: mutations supplied
+PASS [P254-primary-native-metadata] H native pseudovalence identity: mutation 1 rejected
+PASS [P254-primary-native-metadata] H native pseudo MD5 raw-byte binding: baseline
+PASS [P254-primary-native-metadata] H native pseudo MD5 raw-byte binding: mutations supplied
+PASS [P254-primary-native-metadata] H native pseudo MD5 raw-byte binding: mutation 1 rejected
+PASS [P254-primary-native-metadata] native electron count equals independent exact composition dot pseudovalence: baseline
+PASS [P254-primary-native-metadata] native electron count equals independent exact composition dot pseudovalence: mutations supplied
+PASS [P254-primary-native-metadata] native electron count equals independent exact composition dot pseudovalence: mutation 1 rejected
+PASS [P254-primary-native-metadata] SCF published geometry tolerance matches bound source: baseline
+PASS [P254-primary-native-metadata] SCF published geometry tolerance matches bound source: mutations supplied
+PASS [P254-primary-native-metadata] SCF published geometry tolerance matches bound source: mutation 1 rejected
+PASS [P254-primary-native-metadata] published optimizer gate equals frozen relaxation gate
+PASS [P254-primary-native-metadata] durable optimizer pending geometry equals published final
+ALL 35 CHECKS PASS [P254-primary-native-metadata]
+PRIMARY_METADATA_COMPLETE 1bd123b0a371b77589de17d5ddd5c7fda16c0cc0bc0c83fbf776ecb6cb5dfd3d
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 4.379s
+CPU time consumed: 4.149s
+Memory peak: 1.5M
+Memory swap peak: 0B
+PRIMARY_METADATA_OWNER_EXIT=0
+administrator@agent-giuliano:~/projects/substrate-ni-collective$
+
+Wall time: 0.16 seconds
+
+[Some lines truncated to 768 bytes. Read artifact://2819 for full output]

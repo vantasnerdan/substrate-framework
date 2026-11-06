@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/run_kernel_oracle.py", line 153, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/run_kernel_oracle.py", line 133, in main
+    results = {label: evaluate(label, path, payload)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/run_kernel_oracle.py", line 35, in evaluate
+    bundle = load_bundle(path)
+             ^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_response_bundle.py", line 209, in load_bundle
+    validate_bundle(bundle)
+  File "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_response_schema.py", line 91, in validate_bundle
+    isk = _indices(state, "isk")
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_response_schema.py", line 24, in _indices
+    raise ValueError(f"{doc.path}:{name}: positive one-based native index vector required")
+ValueError: state-1-1.json:isk: positive one-based native index vector required

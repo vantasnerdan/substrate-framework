@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "parent_plan": "W2-nc-native-proof-plan.json",
+  "prior_amendment": "W2-nc-native-proof-amendment-02.json",
+  "scope": "A numerically different FD reference attempt after actual nonconvergence; preserve the Hamiltonian/ensemble/input geometry and scientific convergence target, not a threshold relaxation or larger iteration cap.",
+  "observed_failure": {
+    "directory": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/scf/generation3",
+    "receipt": "generation3/failure.json",
+    "native": "All three preserved cold attempts reached the registered200-iteration limit without convergence; the first native output ends with convergence NOT achieved and estimated scf accuracy<0.00000025Ry. JOB DONE alone was correctly refused; no result.json was published.",
+    "controller": "The proof driver omitted RuntimeError from its terminal-error handler. The resulting exit1 caused repeated identical cold attempts until systemd start-limit. Native rejection is retained, not suppressed.",
+    "observers": "The broad reused-pane marker matched old history and was rejected; the subsequent exact first-controller marker timed out when that controller failed and restarted. Both observer failures remain recorded.",
+    "preservation": "Source bytes were checked against the frozen specification and12 relevant source/unit/amendment snapshots plus the complete67897-byte systemd journal were saved before any repair."
+  },
+  "next_attempt": {
+    "generation": "scf/generation4",
+    "numerical_change": "Write explicit density-mixing beta0.3 instead of relying on native default0.7. This is a single source-bound solver policy for all newly generated SCF inputs, not an exact-input special case or a new settings/default compatibility path.",
+    "xml_audit": "Require native input/electron_control/mixing_beta to match the explicit source policy.",
+    "unchanged": ["two-atom geometry", "SG15 Ni18/H1 pseudos", "PBE and spin2", "FD0.002Ry", "20bands per spin", "60/240Ry cutoffs", "full2x2x2 k mesh", "conv_thr1e-11Ry", "electron_maxstep200"],
+    "failure_handling": "Proof driver prints the actual RuntimeError and native-file path, exits2 and prevents repeated identical invalid attempts; actual whole-controller SIGKILL recovery at a completed boundary still uses systemd restart and the unchanged checkpoint protocol.",
+    "native_acceptance": ["Fresh actual FD convergence at the unchanged threshold, not JOB DONE alone", "Native XML/text full-mesh and explicit mixing audit", "Actual reserved-PID/resource observations", "Completed-boundary SIGKILL and identical-command recovery with scientific-byte/mtime preservation", "Deep public-cache/tamper audit and independent review"],
+    "mv_cutover": "Successful current-source MV generation3 is fully preserved with its native completion and eight-file exact cache equality. Because the writer policy changes, create a distinct MV generation4; never re-pin generation3 as new-source execution."
+  },
+  "limits": ["The lower mixing is a registered numerical attempt, not a promised or inferred convergence result", "No physical equivalence, stationary material, coherence, loss, nuclear or full-campaign license follows", "No original W1 executable, live worktree, runtime source or specification is modified"]
+}

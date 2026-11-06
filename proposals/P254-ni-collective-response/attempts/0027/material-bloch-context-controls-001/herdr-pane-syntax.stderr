@@ -1,0 +1,29 @@
+herdr pane commands:
+  herdr pane list [--workspace <workspace_id>]
+  herdr pane current [--pane ID|--current]
+  herdr pane get <pane_id>
+  herdr pane layout [--pane ID|--current]
+  herdr pane process-info [--pane ID|--current]
+  herdr pane neighbor --direction left|right|up|down [--pane ID|--current]
+  herdr pane edges [--pane ID|--current]
+  herdr pane focus --direction left|right|up|down [--pane ID|--current]
+  herdr pane resize --direction left|right|up|down [--amount FLOAT] [--pane ID|--current]
+  herdr pane zoom [<pane_id>|--pane ID|--current] [--toggle|--on|--off]
+  herdr pane rename <pane_id> <label>|--clear
+  herdr pane read <pane_id> [--source visible|recent|recent-unwrapped] [--lines N] [--format text|ansi] [--ansi]
+  herdr pane input [<pane_id>|--pane ID|--current] --right-click herdr|pane
+  herdr pane split [<pane_id>|--pane ID|--current] --direction right|down [--ratio FLOAT] [--cwd PATH] [--env KEY=VALUE] [--right-click herdr|pane] [--focus] [--no-focus]
+  herdr pane swap --direction left|right|up|down [--pane ID|--current]
+  herdr pane swap --source-pane ID --target-pane ID
+  herdr pane move <pane_id> --tab <tab_id> --split right|down [--target-pane ID] [--ratio FLOAT] [--focus|--no-focus]
+  herdr pane move <pane_id> --new-tab [--workspace ID] [--label TEXT] [--focus|--no-focus]
+  herdr pane move <pane_id> --new-workspace [--label TEXT] [--tab-label TEXT] [--focus|--no-focus]
+  herdr pane close <pane_id>
+  herdr pane send-text <pane_id> <text>
+  herdr pane send-keys <pane_id> <key> [key ...]
+  herdr pane wait-output <pane_id> (--match TEXT | --regex PATTERN) [--source visible|recent|recent-unwrapped] [--lines N] [--timeout MS] [--raw]
+  herdr pane report-agent <pane_id> --source ID --agent LABEL --state idle|working|blocked|unknown [--message TEXT] [--seq N] [--agent-session-id ID] [--agent-session-path PATH]
+  herdr pane report-agent-session <pane_id> --source ID --agent LABEL [--seq N] [--agent-session-id ID] [--agent-session-path PATH]
+  herdr pane release-agent <pane_id> --source ID --agent LABEL [--seq N]
+  herdr pane report-metadata <pane_id> --source ID [--agent LABEL] [--applies-to-source ID] [--title TEXT|--clear-title] [--display-agent TEXT|--clear-display-agent] [--state-label STATUS=TEXT] [--clear-state-labels] [--token NAME=VALUE] [--clear-token NAME] [--seq N] [--ttl-ms N]
+  herdr pane run <pane_id> <command>

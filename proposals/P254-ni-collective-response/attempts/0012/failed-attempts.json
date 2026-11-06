@@ -1,0 +1,76 @@
+{
+  "attempts": [
+    {
+      "generation": "generation-001",
+      "phase": "startup handshake before scientific blocks",
+      "status": "failed",
+      "worker_pid": 345922,
+      "cause": "cpuset.cpus.effective is not exposed in this delegated user cgroup; mandatory extra cpuset read prevented handshake before any scientific block",
+      "evidence": [
+        "generation-001/failure.json",
+        "generation-001/owner-failure.json",
+        "generation-001/owner-outcome.json",
+        "generation-001/owner-journal.txt",
+        "generation-001/herdr-terminal.txt"
+      ],
+      "repair": "Keep memory/swap caps mandatory; record cpuset unavailable explicitly, prove CPU5 by actual sched_getaffinity and /proc status. Added complete native stdout metadata checks before new generation.",
+      "scientific_result": "none",
+      "preserved_source_snapshot": "generation-001/oracle-source-snapshot"
+    },
+    {
+      "generation": "generation-002",
+      "phase": "source-defined-unit-conversion",
+      "status": "failed",
+      "worker_pid": 348995,
+      "cause": "An unjustified oracle assertion expected the exact SI-derived units themselves to be Rational; actual source mu0 and hbar leave Bohr proportional to pi^-2, Ry to pi^2, and force to pi^4.",
+      "evidence": ["generation-002/failure.json", "generation-002/owner-journal.txt", "generation-002/owner-outcome.json", "generation-002/sources-checkpoint.json", "generation-002/worker-postexec-observed.json", "generation-002/herdr-terminal.txt"],
+      "repair": "Retain exact symbolic source unit expressions and prove positive Rational coefficients of their pi powers. Add independent certified rational Machin/alternating-series bounds and use rational comparisons for the exact 0.003 gate. Reduce maxima in native Rational units before positive scaling.",
+      "scientific_result": "Only complete raw-source graph and exact equality of Coulomb/fine-structure routes passed; no native or tolerance outcome accepted.",
+      "preserved_source_snapshot": "generation-002/oracle-source-snapshot"
+    },
+    {
+      "generation": "generation-003",
+      "phase": "native-source-model-and-geometry",
+      "status": "failed",
+      "worker_pid": 350681,
+      "cause": "The added UPF valence adapter assumed a UPF2 z_valence attribute, but both actual registered UPFs use the original PP_HEADER numeric Z valence record.",
+      "evidence": ["generation-003/failure.json", "generation-003/owner-journal.txt", "generation-003/owner-outcome.json", "generation-003/units-checkpoint.json", "generation-003/worker-postexec-observed.json", "generation-003/herdr-terminal.txt"],
+      "repair": "Read the actual complete PP_HEADER representation and its unique numeric valence field; preserve raw-byte and native MD5 binding. No native source or numerical tolerance changed.",
+      "scientific_result": "Sources and complete source-conversion block passed. Native block stopped at baseline UPF representation; no per-probe tolerance decision accepted.",
+      "preserved_source_snapshot": "generation-003/oracle-source-snapshot"
+    },
+    {
+      "generation": "generation-004",
+      "phase": "native-source-model-and-geometry",
+      "status": "failed",
+      "worker_pid": 351286,
+      "cause": "The envelope adapter compared declared source path spellings directly. Actual frozen qe_io.verify_input_files publishes resolved filesystem identities, collapsing 974 aliases to 970 canonical paths in cutoff.",
+      "evidence": ["generation-004/failure.json", "generation-004/owner-journal.txt", "generation-004/owner-outcome.json", "generation-004/worker-postexec-observed.json", "generation-004/herdr-terminal.txt"],
+      "repair": "Apply the actual frozen canonical path-resolution contract, requiring exactly the resolved key set and each declared hash to match it; add a missing-source mutation. Native spec fingerprint was already exact; no source or tolerance changed.",
+      "scientific_result": "Sources/units and baseline native checks passed, then stopped before accepting cutoff envelope. No per-probe tolerance decision accepted.",
+      "preserved_source_snapshot": "generation-004/oracle-source-snapshot"
+    }
+  ],
+  "whole_rung_rejections": [
+    {
+      "generation": "generation-006",
+      "execution_status": "complete; exit 0; 583 checks",
+      "admission_status": "REJECTED",
+      "cause": "P2: snapshot-backed closure verified consumed_path but downstream scientific readers reopened unchecked original paths; units.py and espresso.py were not independently resolved.",
+      "evidence": "initial-failures/source-review-generation-006/rejection.json",
+      "mathematical_review": "correct; no numerical discrepancy alleged",
+      "repair_generation": "generation-007",
+      "repair": "Shared original-path plus expected-SHA resolver supplies same verified in-memory bytes to every scientific JSON/text/UPF and executable-source consumer; independent ASE source resolution; unchanged scientific helper modules executed from verified own snapshots; isolated real snapshot-to-consumer mutations.",
+      "repair_execution_status": "generation-007 complete; exit 0; 595 checks; independently reviewed admission still reserved to parent",
+      "repair_report_sha256": "013e9a346e9b8739e5d137ac2c02044b8eab5481cd1321653a31d0be381a1608",
+      "repair_source_consumer_proof_sha256": "79bba04c38fc47be0f621da24b2ba02043f1691d5e8b69d2f37af8592dcaedce",
+      "historical_preservation": "All generation-001 through generation-006 raw outputs/source snapshots and source-review-generation-006 archive remain immutable. Earlier complete generation-005 is superseded, not admitted."
+    }
+  ],
+  "observation_failures": [
+    {
+      "command": "herdr pane wait-output w1:pF --match SENSITIVITY_OWNER_TERMINAL --source recent-unwrapped --lines 160 --timeout 120000",
+      "result": "timeout after startup failure; pane read and exact owner journal recovered and preserved"
+    }
+  ]
+}

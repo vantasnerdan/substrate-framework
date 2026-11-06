@@ -1,0 +1,45 @@
+{
+  "schema": "p254-root-allocation-v1",
+  "decision": "022",
+  "created_at": "2026-10-28T16:24:14.576077+00:00",
+  "prior_due_at": "2026-10-28T16:45:00+00:00",
+  "timely": true,
+  "authority": "One exact repaired diagnostic-publishing saved reader, no scientific producer or algorithm change.",
+  "partition_authority": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/root-preparation-reader-publication-repair-021.json",
+    "bytes": "2663",
+    "sha256": "00f20e20d89c8d23f10b27827b66b20a21db57f8ebfce9faad7a440bffc071bb"
+  },
+  "source": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-reader-proposal-003.json",
+    "bytes": "5694",
+    "sha256": "6a1c2ba66f6f2e9ab41d3675f632613afffd61f9123b57e324d935f863ef8e8c"
+  },
+  "grant": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-saved-reader-grant-002.json",
+    "bytes": "304456",
+    "sha256": "55bba92f1219a93cd12207fc9e5fd84007fbac2baf06c8b662e48ed32a402a30"
+  },
+  "original_terminal_binding": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-actual-terminal-binding-001.json",
+    "bytes": "300",
+    "sha256": "ddf6738d2b5373c65a9370be122239780944c03ea45f64c600da3ee4189b9bc7"
+  },
+  "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,sys\nfrom pathlib import Path\nroot=Path('/home/administrator/projects/substrate-ni-collective')\nsys.path.insert(0,str(root/'proposals/P254-ni-collective-response/attempts/0027'))\nimport run_material_preparation_pilot as driver\npaths=driver.preload()\nfrom material_run_contract import implementation,verify_consumers,runtime_context,_context\nfrom substrate_framework.material_preparation_output import load_saved_material_preparation\ngrant=json.loads(Path(sys.argv[1]).read_bytes())\ncontext=runtime_context()\n_context(grant,context)\nverify_consumers(grant,implementation(paths))\nterminal_binding=json.loads(Path(sys.argv[2]).read_bytes())\nsaved=load_saved_material_preparation(terminal_binding)\nfinal=implementation(paths)\nverify_consumers(grant,final)\ndef diagnostic_json(value):\n    if isinstance(value,complex):\n        return [value.real,value.imag]\n    raise TypeError('unsupported saved-reader JSON value: '+type(value).__name__)\nprint(json.dumps(dict(complex_diagnostic_encoding='each complex scalar is [real,imaginary]',scope='authenticated original neutral-ledger/selected-Gamma saved consumption only; no filling,WFC decoding,factor/H0 regeneration or propagation',context=context,coverage_identity=saved.coverage_identity,receipt_archives={k:dict(v)['archive'] for k,v in saved.receipts.items()},population_shapes={k:list(v.shape) for k,v in saved.population_ledger.items()},selected_gamma_shapes={k:list(v.shape) for k,v in saved.selected_gamma.items()},population_diagnostics={k:v.tolist() for k,v in saved.population_ledger.items() if v.size<=10},selected_gamma_diagnostics={k:v.tolist() for k,v in saved.selected_gamma.items() if v.size<=10},final_implementation_sources=final),sort_keys=True,allow_nan=False,default=diagnostic_json))\n",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-saved-reader-grant-002.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-actual-terminal-binding-001.json"
+  ],
+  "unit": "p254-a27-preparation-saved-reader-002.service",
+  "hard_seconds": 25,
+  "serialization_evidence": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/preparation-reader-serialization-smoke-001.json",
+    "bytes": "2287",
+    "sha256": "e4432be17e4d13526108ffbb0ee6ceef75803f3f434eab4cf7a1eacef9caaca4"
+  },
+  "requires_before_start": "Bank exact changed reader/failed receipts; fresh owned not-found unit; TimeoutStartSec25 and RuntimeMaxSec25,CPU8,threads1,4GiB/swap0,Restartno. No automatic retry.",
+  "next_root_decision_due_at": "2026-10-28T16:45:00+00:00",
+  "whole_component_cap_seconds": 120
+}

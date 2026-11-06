@@ -1,0 +1,91 @@
+Implemented only the two owned A25 files. **No scientific imports/execution, builds, tests, lint, formatters, or Git mutation performed.** Byte counts/SHA256 were measured with shell utilities.
+
+### Source identities
+
+| File | Bytes | SHA256 |
+|---|---:|---|
+| `run_material_reference_pilot.py` | 17095 | `d955f6e018e4c2f321f3134bbb9c9cd976e8693d78dc6763de49b2f72cf4a990` |
+| `material_reference_output.py` | 8874 | `8ccf513919b8e26e379f4abfaf63bc3a6cd62e0718a0f8d772bfa306b47bea78` |
+
+### Exact additional grant schema
+
+```json
+{
+  "inputs": {
+    "xml": {"path": "...", "bytes": "...", "sha256": "..."},
+    "density": {"path": "...", "bytes": "...", "sha256": "..."},
+    "upfs": {
+      "Ni": {"path": "...", "bytes": "...", "sha256": "..."},
+      "H": {"path": "...", "bytes": "...", "sha256": "..."}
+    },
+    "wavefunctions": {
+      "1": {"path": "...", "bytes": "...", "sha256": "..."},
+      "2": {"path": "...", "bytes": "...", "sha256": "..."}
+    },
+    "probe_modes": {"path": "...", "bytes": "36", "sha256": "..."},
+    "probe_coefficients": {"path": "...", "bytes": "96", "sha256": "..."}
+  },
+  "settings": {
+    "block_size": 8,
+    "probe_amplitude_bohr_minus3": 0.0001,
+    "probe_q_bohr_inv": [0, 0, 0]
+  },
+  "library_binding": {"path": ".../library-binding.json", "bytes": "...", "sha256": "..."}
+}
+```
+
+- Settings and input key sets are exact. `block_size` must be explicitly granted, integer **1–16**; no silent default.
+- `library_binding` binds the JSON passed to `NativePBE`, including its actual ELF/runtime dependency bindings.
+- Probe inputs are original Native little-endian **int32 `(3,3)` F-order** and **complex128 `(2,3)` F-order**.
+- Original Gamma files reside under:
+  `/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/full-ionic-operators-0018/gamma/bundle/q-1/`
+  - `background-kernel_probe_modes.bin`: SHA256 `ad46f11e7e63722c6d201ac8f3874bdb39520fe59235e8c33a505279f8d601b4`
+  - `background-kernel_probe_coefficients.bin`: SHA256 `ad801be05302fb7b3180defd92edfa960d2aefbaa1c395a4b32f58e6660dc29d`
+- Probe construction follows the inspected original Fortran:
+  `delta_n[r,s] = 1e-4 * coefficients[s,p] * exp(2πi mode[:,p]·fractional_r)`.
+  Implementation uses the actual physical-grid inverse FFT and requires each original mode exactly once in the density Miller map.
+
+### APIs and outputs
+
+Uses settled `load_material_inputs`, `reconstruct_reference`, `NativePBE`, `build_pw_factors`, `MaterialHamiltonian.saved_eigenpair_diagnostics`, and `MaterialReference.apply_kernel`, plus the shared admission/immutable IO APIs.
+
+Six immutable NPZ/JSON pairs:
+
+1. `background-coordinates`: coordinates, saved reciprocal density, all reconstructed density/potential/gradient/coefficient fields, imaginary diagnostics and sources.
+2. `spin-1-diagnostics`
+3. `spin-2-diagnostics`
+   - Complete346-band full-PW actions/residuals, Gram, projected H0, residual norms, eigenvalues, PW identities/kinetic energies, raw MV occupations and raw native k weight.
+4. `kernel-probe-1`
+5. `kernel-probe-2`
+6. `kernel-probe-3`
+   - Actual up/down input fields, K actions and original mode/coefficient vectors.
+
+Terminal `outputs` entries contain **key, metadata, archive, arrays, recipe_sha256, readback, disposition**. Root recovery:
+
+```python
+recover_block(output_dir, entry["key"],
+              terminal["recipe_sha256"], entry["metadata"])
+```
+
+Also emits unique context/terminal documents, rotating `summary.json`/`summary.json.prev`, and generation/run-qualified compact telemetry. Context-only prints/saves actual context and implementation inventory without reading material inputs. Actual lazy consumer coverage is checked before success publication.
+
+### Invocation
+
+With the agreed four-directory `PYTHONPATH` and single-thread environment:
+
+```sh
+python3 "$A25/run_material_reference_pilot.py" \
+  --admission "$GRANT" --output "$OUTPUT" --context-only
+
+python3 "$A25/run_material_reference_pilot.py" \
+  --admission "$GRANT" --output "$OUTPUT"
+```
+
+### Recovery and qualifications
+
+- Resume requires the same recipe identity and fresh explicit remaining-time authority. Completed arrays are authenticated and restored without repeating their science.
+- Backend/input/radial setup is rebuilt and separately timed. Projector setup is rebuilt only for missing spin diagnostics; sharing requires exact `PWFactors.matches`.
+- Interrupted background loses that uncommitted background calculation; interrupted spin loses **all unfinished action blocks and spin matrices**; interrupted probe loses that uncommitted probe. Incomplete immutable pairs fail closed—no automatic retry or repair.
+- Budget checks and deadline signals enforce registered time boundaries; first-useful30-second target is recorded and the granted hard allowance is enforced. Archive writes reserve8MiB for terminal/source/summary bookkeeping.
+- Python signal delivery cannot guarantee immediate interruption inside compiled calls; Root’s process controls remain necessary.
+- No eigenpair residual gate, vector repair, dense PW-square Hamiltonian/eigensolve, occupation-to-probability conversion, preparation, full-BvK coverage, or execution/admission claim. Root verification remains outstanding.

@@ -1,0 +1,24 @@
+import json, sys, resource
+from pathlib import Path
+from packet_hamiltonian_actions import restore_packet_hamiltonian
+from clamped_scientific_readout import encode
+from original_noise_source import _same_binding
+from time import perf_counter
+started=perf_counter()
+p=json.loads(Path('/var/tmp/p254-a30-output-directed-source0-actions-001/packet.json').read_bytes())
+c=restore_packet_hamiltonian(p['source']['packet']['path'])
+def differences(a,b,path=''):
+ if isinstance(a,dict) and isinstance(b,dict):
+  if set(a)!=set(b): return [{'path':path,'keys_left_only':sorted(set(a)-set(b)),'keys_right_only':sorted(set(b)-set(a))}]
+  return sum((differences(a[k],b[k],path+'/'+str(k)) for k in a),[])
+ if isinstance(a,list) and isinstance(b,list):
+  if len(a)!=len(b): return [{'path':path,'length_left':len(a),'length_right':len(b)}]
+  return sum((differences(x,y,path+'/'+str(i)) for i,(x,y) in enumerate(zip(a,b))),[])
+ if a!=b or type(a)!=type(b): return [{'path':path,'actual':a,'saved':b,'actual_type':type(a).__name__,'saved_type':type(b).__name__}]
+ return []
+print(json.dumps({'source_differences':differences(encode(c.source),p['source']),
+ 'hamiltonian_specification_differences':differences(encode(c.hamiltonian_specification),p['work']['hamiltonian']['operator_specification']),
+ 'state_equal':c.state_authority==p['state_authority'],'factor_equal':c.factor_identity==p['factor_identity'],
+ 'pw_basis_equal':c.pw_basis_identity==p['pw_basis_identity'],'frame_semantic_equal':_same_binding(c.frame,p['frame']),
+ 'quadrature_equal':c.quadrature_weight==p['quadrature_weight'],'raw_columns':c.psi.shape[1],
+ 'physical_actions':0,'seconds':perf_counter()-started,'rss_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024},indent=2))

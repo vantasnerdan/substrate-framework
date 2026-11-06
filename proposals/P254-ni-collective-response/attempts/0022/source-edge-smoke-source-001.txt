@@ -1,0 +1,54 @@
+import copy, hashlib, json, tempfile, time
+from pathlib import Path
+from substrate_framework.qe_material_frozen_source import load_material_frozen
+from catdft.checkpoints import fingerprint
+
+base=Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0022')
+manifest=json.loads((base/'material-input-bundle.json').read_bytes())
+started=time.monotonic()
+original={name:hashlib.sha256(Path(item['path']).read_bytes()).hexdigest() for name,item in manifest['files'].items()}
+checks=[]
+with tempfile.TemporaryDirectory(prefix='p254-material-edges-') as directory:
+    root=Path(directory)
+    def replace_source(bundle,name,raw,label,rebind=True):
+        path=root/(label+'-'+name)
+        path.write_bytes(raw)
+        record=bundle['files'][name]
+        record['path']=str(path)
+        if rebind:
+            record.update(bytes=str(len(raw)),sha256=hashlib.sha256(raw).hexdigest())
+    def refuses(bundle,label,message):
+        path=root/(label+'.json')
+        path.write_text(json.dumps(bundle))
+        try:
+            load_material_frozen(path)
+        except ValueError as error:
+            if message not in str(error):
+                raise
+            checks.append({'case':label,'refusal':str(error)})
+        else:
+            raise AssertionError('material source corruption admitted: '+label)
+    changed=copy.deepcopy(manifest)
+    raw=Path(manifest['files']['frozen_xml']['path']).read_bytes()+b'\n'
+    replace_source(changed,'frozen_xml',raw,'digest',False)
+    refuses(changed,'original-digest-mismatch','source byte count/SHA256 mismatch')
+    changed=copy.deepcopy(manifest)
+    raw=Path(manifest['files']['copied_scf_xml']['path']).read_bytes()+b'\n'
+    replace_source(changed,'copied_scf_xml',raw,'wrong-reference')
+    refuses(changed,'independently-rebound-wrong-SCF','PH snapshot is not the own admitted SCF XML')
+    changed=copy.deepcopy(manifest)
+    spec=json.loads(Path(manifest['files']['producer_spec']['path']).read_bytes())
+    spec['inputph']['amass(2)']=2.014
+    snapshot=json.loads(Path(manifest['files']['snapshot']['path']).read_bytes())
+    snapshot['input_sha256']=fingerprint(spec)
+    replace_source(changed,'producer_spec',json.dumps(spec).encode(),'wrong-PH-mass')
+    replace_source(changed,'snapshot',json.dumps(snapshot).encode(),'wrong-PH-mass')
+    refuses(changed,'rebound-spec-mass-not-in-executed-input','actual original PH input differs from bound q/masses/settings')
+for name,item in manifest['files'].items():
+    if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=original[name]:
+        raise AssertionError('original source changed: '+name)
+report={'status':'pass','checks':checks,'elapsed_seconds':time.monotonic()-started,
+        'original_sources_unchanged':True,'Native_calls':0,
+        'scope':'Actual material consumer source identities only; scratch substitutions explicitly rebound; no repeated curvature or mode calculation.'}
+(base/'source-edge-smoke-001.json').write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps(report))

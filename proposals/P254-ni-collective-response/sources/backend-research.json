@@ -1,0 +1,171 @@
+{
+  "summary": "Installed GPAW 26.7.0 provides a source-supported collinear spin-polarized PW→RPA dielectric/EELS path and finite-displacement electron–phonon vertices, but no ready metallic-Ni phonon self-energy/electronic-friction pipeline was found. QE 7.5 PHonon sources and configured dependencies are locally present: building ph.x without downloading appears feasible, but remains unverified. Critical restrictions are GPAW density-XC kernels requiring one spin, response nblocks>1 requiring missing BLACS, phenomenological optical Drude rates, and EPW explicitly rejecting LSDA electron–phonon calculations.",
+  "files": [
+    {
+      "path": "/home/administrator/projects/catalyst-dft/docs/conventions.md:5-19,47-68,112-113",
+      "description": "Authoritative local engine/pseudopotential constraints; broken system QE 6.7; GPAW missing BLACS and k-point-only ground-state topology; checkpoint/output ownership conventions."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw-26.7.0.dist-info/METADATA:1-21",
+      "description": "Installed GPAW version 26.7.0, upstream repository, Python/dependency requirements."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/dft.py:1087-1218",
+      "description": "Calculator factory; automatic new/legacy selection and explicit legacy_gpaw control."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/new/ase_interface.py:336-360,608-708",
+      "description": "Wavefunction-inclusive GPW writing, full diagonalization, ground-state adapter, and fixed-density unoccupied-band preparation API; fixed_density cannot switch LCAO into PW."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/new/calculation.py:727-790",
+      "description": "Explicit new-GPAW LCAO→PW/FD conversion and include_wfs=True GPW export."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/new/backwards_compatibility.py:46-120,191-213,259-350",
+      "description": "New calculator's legacy wavefunction adapter; only PW gets a PW descriptor; final LCAO coefficient gathering asserts serial band/k-point communicators."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/groundstate.py:49-181",
+      "description": "Accepted ground-state types; old-LCAO conversion; serial loading of GPW on every response rank; Fermi–Dirac/zero-width occupation restriction."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/df.py:45-80,312-374,567-655,658-823",
+      "description": "DielectricFunction API, local fields, EELS definition, slab polarizability, RPA versus density-XC kernels, optical rate default, and in-memory-only latest-q cache."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/density_kernels.py:13-36,68-85",
+      "description": "Hard nspins==1 restriction for ALDA, long-range and Bootstrap density kernels."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/chi0.py:85-117,151-206,325-412",
+      "description": "Finite-q body versus q=0 optical extension; spin summation; metallic eshift prohibition; phenomenological Drude formula and intraband handling."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/chi0_drude.py:19-111,142-176",
+      "description": "Band-derived plasma tensor, point/tetrahedron intraband integration, Fermi occupation derivatives, and positive imaginary-frequency requirement."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/chi0_data.py:59-69,114-131",
+      "description": "Response frequency redistribution entrypoint and direct construction of Drude complex frequency from the supplied rate."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/frequencies.py:65-95",
+      "description": "Strict upper-half-plane condition used by Drude response; relevant to the zero-rate default."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/chi0_base.py:180-261,263-293,348-439",
+      "description": "Response integration/parallel setup; tetrahedron grid prerequisites; artificial eta; Hilbert/nonlinear-grid requirement; unsupported one-dimensional boundary conditions."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/pair.py:49-114,263-335,461-478",
+      "description": "Serial ground-state/symmorphic assertions, PW wavefunction loading, optical velocity matrix elements, saved-band bound, and response-context initialization."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/pw_parallelization.py:90-124,152-176,245-284",
+      "description": "nblocks divisor rules and BLACS-dependent redistribution; nblocks=1 has a BLACS-free frequency-slicing path."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/response/kpoints.py:9-30",
+      "description": "Finite-q commensurability rejection if requested k+q is not on the ground-state grid."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/test/response/test_diamond_absorption.py:14-35,59-74",
+      "description": "Installed source example/test of new LCAO conversion to PW before DielectricFunction; inspected, not executed."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/test/gpwfile.py:1977-2007,2569-2589",
+      "description": "Installed magnetic-Ni PW fixture and paired/polarized intraband fixtures; inspected, not executed."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/elph/displacements.py:1-40,58-174",
+      "description": "Self-consistent finite-displacement screened effective-potential/PAW derivatives plus optional forces; explicit caution about spin and exclusion of noncollinear calculations."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/elph/supercell.py:56-95,173-254,345-365",
+      "description": "LCAO projection of displacement derivatives; matched grid/spin requirements; no domain/band parallelism; gradient/cache APIs."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/elph/gmatrix.py:127-152,154-249,251-327",
+      "description": "Mode-projected Bloch vertices; prefactor=False returns eV/Å; full-BZ/q commensurability restrictions; default acoustic-mode zeroing and normalization caveat."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw/elph/gpts.py:11-48",
+      "description": "Helper for matching PW and LCAO real-space grids for electron–phonon calculations."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/ase/phonons.py:163-211,236-249,382-482,644-679",
+      "description": "Installed finite-displacement force constants, mass weighting, Fourier dynamical matrix and restart cache behavior."
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/ase/utils/filecache.py:102-176,198-203",
+      "description": "Cache writes directly into exclusively-created final filenames; interrupted partial/empty entries are not atomic completed checkpoints."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/include/qe_version.h:8-10",
+      "description": "Source version explicitly 7.5; bundled generated input documentation sometimes still labels itself 7.4."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/configure.log:3-105",
+      "description": "Successful existing configuration using GNU Fortran/OpenMPI, OpenBLAS, FFTW3, no ScaLAPACK."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/make.inc:44-45,63-89,120-165,178-200",
+      "description": "Actual configured compiler/linker flags and existing libraries needed for PHonon build."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/Makefile:79-81,178-240",
+      "description": "Top-level make ph dependency chain through PW libraries, LR_Modules and PHonon."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/Makefile:192-224,257-278",
+      "description": "ph.x, q2r.x, matdyn.x, postahc.x linking targets and required liblrmod/libph archives."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/install/extlibs_makefile:62-90",
+      "description": "DeviceXlib marker and libMBD build/initialization rules."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/install/install_utils:48-65",
+      "description": "Offline-capable tarball path skips initialization when the external package .git already exists; otherwise would fetch."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/phonon.f90:16-41",
+      "description": "DFPT capability matrix: collinear LSDA/spin-GGA and USPP dynamical matrices/electron–phonon support."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/phq_readin.f90:754-855",
+      "description": "Actual guards for Gamma-only PW files, Hubbard U/e-ph, AHC with USPP, magnetic SOC/e-ph, vc-relax, image parallelism, constrained magnetization and two Fermi energies."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/Doc/INPUT_PH.def:155-165,268-335,812-856",
+      "description": "No metallic epsil calculation; electron_phonon modes and numerical smearing controls; native q/irrep recovery."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/elph_tetra_mod.f90:122-130,489-681,752-766",
+      "description": "Built-in physical e-ph phonon linewidth machinery; spin-channel handling; Gamma singularity warning on the double-delta lambda route."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/Doc/user_guide.tex:274-313",
+      "description": "Coarse/dense grid electron–phonon workflow and optical q→0 warning."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/EPW/src/readin.f90:250-255,1355-1358,1390-1394",
+      "description": "Electron/phonon self-energy capabilities in source, but hard rejection of electron–phonon plus LSDA spin polarization."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/EPW/src/selfen.f90:22-26,226-229,365-405",
+      "description": "Actual electron–phonon electron-self-energy implementation in source; not evidence of an installed working EPW executable."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PP/src/epsilon.f90:53-89,223-262,321-324,459-516",
+      "description": "QE optical dielectric source supports spin and intraband terms but explicitly rejects USPP; inter/intraband widths are user inputs."
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PP/Doc/eps_man.tex:30-38,86-94",
+      "description": "epsilon.x requires full uniform equal-weight k mesh and describes phenomenological broadening."
+    }
+  ],
+  "architecture": "GPAW: PW wavefunctions/projections in a serial-loadable GPW → spin-summed χ0 → RPA dielectric matrix/EELS; a separate finite-displacement→LCAO-projection pipeline produces ionic electron–phonon vertices, not a completed damping model. QE: existing pw.x libraries + unbuilt LR_Modules/PHonon → DFPT dynamical matrices and e-ph linewidths; EPW is a different, spin-blocked self-energy backend.",
+  "report": "## Scope and evidence status\nRead-only source/package/build-metadata investigation only. No imports, tests, simulations, builds, installations, edits, or launches were performed. All feasibility statements below are source-backed, not successful-run claims. The repository's reported broken system QE and missing GPAW BLACS were accepted as ground truth, not retested. No other-material timing numbers are used.\n\nFor compact citations below, S means `/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages`, and Q means `/opt/qebuild/q-e-qe-7.5`. Full absolute paths and exact ranges are also provided in `files`.\n\n## 1. Installed GPAW and ground-state file route\n- GPAW **26.7.0** is installed at `S/gpaw`; metadata is `S/gpaw-26.7.0.dist-info/METADATA:1-21`. The interpreter and CLI files exist at `/home/administrator/projects/catalyst-dft/.venv/bin/python` and `/home/administrator/projects/catalyst-dft/.venv/bin/gpaw`. Use these absolute paths from the parent's new worktrees rather than assuming those worktrees contain their own environment.\n- **PW is the direct source-supported representation for this DielectricFunction implementation.** Save converged eigenstates, sufficiently many converged unoccupied bands, and PAW projections with `calc.write(path, mode='all')`; default `write(path)` omits wavefunctions (`new/ase_interface.py:336-360`). An ASE trajectory/geometry or a density-only GPW is not an equivalent response input.\n- New GPAW is compatible: `ResponseGroundStateAdapter` accepts new/old calculators and GPW filenames (`response/groundstate.py:49-133`). For file input it loads with `communicator=mpi.serial_comm` on each response rank, independently of the response communicator.\n- **New-LCAO GPW is not directly equivalent to PW GPW.** The adapter's automatic LCAO→PW conversion is conditional on `calc.old`; the new compatibility layer leaves `pd=None` for LCAO/FD. This response's pair loader uses `gs.pd.ifft(...)`. Supported explicit new-LCAO conversion is `calc.dft.change_mode('pw')`, then `calc.dft.write_gpw_file(path, include_wfs=True)` (`new/calculation.py:727-790`); the installed diamond response test does exactly that (`test/response/test_diamond_absorption.py:14-35`). This changes representation, not the accuracy/completeness of an LCAO basis. It does not make a limited LCAO unoccupied spectrum equivalent to a converged PW spectrum.\n- `fixed_density(nbands=..., kpts=..., convergence=..., parallel=...)` is available for preparing response states; the returned calculation still needs its eigenstate calculation. **It cannot change LCAO to PW**: its `mode` override allows only dtype (`new/ase_interface.py:642-704`). Direct PW ground-state preparation or explicit change_mode is needed.\n- An installed spin-polarized Ni PW fixture exists (`test/gpwfile.py:1977-2007`), and a Ni χ0 test consumes it (`test/response/test_chi0_band_exclusion.py:11-62`). These establish intended source coverage, not a test result on this workstation. Do not blindly copy their full-diagonalization/topology choices into this BLACS-limited installation.\n\n## 2. Spin, intraband, finite-q, basis and parallel restrictions\n### Spin-polarized Ni\n- Collinear spin-up/down **RPA charge response is supported in source**: χ0 integrates `range(gs.nspins)` and the Drude plasma calculation does likewise (`response/chi0.py:203-206,389-398`; `chi0_drude.py:55-60`). It is not necessary to force ferromagnetic Ni into a nonmagnetic ground state.\n- **ALDA/Bootstrap/long-range density kernels through DielectricFunction are blocked for nspins=2.** `DensityXCKernel.__post_init__` asserts `gs.nspins == 1` (`density_kernels.py:13-36`). `xc='RPA'` bypasses that class (`df.py:590-618`). Separate spin-susceptibility modules do not remove this restriction from this API.\n- Metallic conduction-band `eshift` is explicitly prohibited (`chi0.py:167-170,356-359`). Noncollinear/SOC dielectric feasibility was not established; do not infer it from collinear Ni support or from separate SOC utilities.\n\n### Intraband and rates\n- In the optical limit, metallic intraband response is a separately added **band-derived plasma tensor plus an externally supplied decay rate**, enabled by `intraband=True`. The code explicitly calls `rate` phenomenological and implements the contribution proportional to `omega_p^2/(omega+i*rate)^2`, warning of a factor-of-two convention difference from some literature (`chi0.py:338-345`; `chi0_drude.py:83-95`). Do not identify this input blindly with a measured transport `1/tau` or a conventional Drude fit.\n- `eta` is explicitly **artificial broadening in eV** (`chi0_base.py:371-374`). `rate='eta'` merely assigns that artificial width to the phenomenological optical term. Neither computes a lifetime.\n- Important source-level trap: DielectricFunction defaults to `rate=0.0`, while Drude evaluation asserts all complex frequencies have positive imaginary part. `Chi0DrudeData` adds exactly the supplied rate and `upper_half_plane` requires `imag > 0` (`df.py:669`; `chi0_data.py:124-131`; `frequencies.py:92-95`; `chi0_drude.py:93`). **[INFERENCE] A real-frequency metallic q=0 run with intraband enabled and default rate reaches that assertion.** Specify the rate deliberately; this was not reproduced because execution is forbidden.\n- Point-integrated Drude weights require Fermi–Dirac occupations; the adapter accepts names `fermi-dirac`/`zero-width`, and zero width makes the point-method occupation derivative zero (`groundstate.py:170-181`; `chi0_drude.py:166-176`). Tetrahedron intraband integration instead uses a T=0 Fermi-surface integral (`chi0_drude.py:97-103`). Occupation smearing, spectral eta, and physical electronic temperature/loss are distinct controls.\n\n### Finite q and grids\n- At finite q, χ0 uses the finite-q body; the separate Drude/optical extension is calculated only at q=0 (`chi0.py:85-117`). Thus changing optical `rate` is not a finite-q collision kernel. Finite-q electron–hole spectral weight can be material-derived, but an arbitrary finite-grid eta does not establish a physical linewidth.\n- q must be commensurate with the electronic k mesh; otherwise `KPointFinder.find` raises an explicit error (`response/kpoints.py:9-20`). There is no automatic interpolation to arbitrary inter-region wavevectors.\n- Tetrahedron integration with response symmetries enabled requires all relevant IBZ vertices and recommends `optimal_monkhorst_pack_grid(..., contains_ibz_vertices=True)` (`chi0_base.py:224-261`). `hilbert=True` requires a nonlinear frequency descriptor; explicit arbitrary frequency arrays require the appropriate literal path, normally `hilbert=False` (`chi0_base.py:406-429`).\n- The response basis cutoff is independently specified in eV and is not the ground-state PW cutoff. Saved-band upper bounds are enforced (`pair.py:89-90`). Both basis sizes and k sampling need their own material-specific convergence evidence.\n- Slab facilities exist: `truncation='2D'` and `get_polarizability()` handle nonperiodic-volume normalization (`df.py:341-374,700-704,789-813`). This is not interchangeable with quoting a vacuum-diluted supercell dielectric constant. One-dimensional PBC is explicitly rejected (`chi0_base.py:399-401`).\n\n### Parallelism on this installation\n- Ground-state convention remains k-point-only, with band/domain distribution avoided because this cgpaw lacks `new_blacs_context` (`docs/conventions.md:52-56`). This is distinct from response parallelism.\n- For response, use the GPW filename, not a live MPI-distributed calculator: `pair.py:49-55,461-478` requires a serial ground state. Each response process holds a serial ground-state adapter; total memory is not simply divided over response ranks.\n- `nblocks=1` has a source-supported BLACS-free response route: it distributes transitions/k points and slices frequencies for inversion (`chi0_base.py:198-216`; `pw_parallelization.py:245-263`). **nblocks>1 / nblocks='max' invokes BLACS redistribution** (`pw_parallelization.py:265-279`, also `152-176`) and is incompatible with the documented missing BLACS. Do not copy official `nblocks='max'` examples unchanged. Multi-rank `nblocks=1` remains an unexercised option, not an observed success.\n- Pair construction also asserts symmorphic ground-state symmetry (`pair.py:54`). Symmetry choices must respect the actual loaded/defect structure.\n\n## 3. Phonons/force constants already available without QE ph.x\nInstalled ASE 3.29.0 includes `ase.phonons.Phonons`: finite differences of forces, real-space force constants `C_N`, mass-weighted `D_N`, and Fourier-space dynamical matrices (`ase/phonons.py:236-249,382-482,644-679`). These are harmonic Born–Oppenheimer quantities, not physical damping. Phonopy absence does not prevent this route.\n\nA campaign-survival blocker is **native cache completion semantics**: `Displacement.run()` skips existing cache files and explicitly warns that interruptions can leave empty entries that must be cleared before resuming (`ase/phonons.py:163-170`). `ase/utils/filecache.py:102-176` writes directly to exclusively-created final filenames, with decode errors yielding None. This is resumable caching but **not the requested atomic-completed-checkpoint protocol**. Parent-owned runners need durable completion/publication and incomplete-entry recovery rather than assuming file existence means a completed displacement. GPAW's latest-q χ0 cache is only in memory (`df.py:574-589`), so q-level response checkpointing is also external work.\n\n## 4. Actual electron–phonon/electron–hole loss ingredients in installed GPAW\nThe installed API is **`gpaw.elph`**, not an installed `gpaw.dfpt` package. Directory discovery and installed RECORD search found elph modules, not a dfpt package or a ready electronic-friction module.\n\nThe available chain is:\n1. `gpaw.elph.DisplacementRunner`: self-consistent ± displacements; saves screened effective potential, PAW Hamiltonian/projector terms, and optionally forces in the same calculation (`elph/displacements.py:1-40,58-174`). Its documentation explicitly cautions that spin channels are handled separately and says noncollinear calculations are unsupported.\n2. `Supercell.calculate_gradient()` and `calculate_supercell_matrix()`: form displacement derivatives and LCAO-basis matrices (`elph/supercell.py:173-254,345-365`). The calculator construction enforces the cached real-space grid and collinear spin count, LCAO mode, point-group symmetry off, domain=1 and band=1 (`56-95,208-226`). `gpaw.elph.gpts.obtain_gpts_suggestion` supports matching PW-displacement/LCAO-projection grids (`elph/gpts.py:11-48`).\n3. `ElectronPhononMatrix.bloch_matrix(...)`: returns spin/q/k/mode/band/band vertices and can return mode-projected derivative matrix elements in eV/Å with `prefactor=False`, rather than quantum-normalized eV vertices (`elph/gmatrix.py:251-295,220-233`). Requires a full BZ, no point-group reduction, and q commensurate with k (`267-318`). With the new-GPAW compatibility layer, coefficient gathering additionally asserts serial k-point and band communicators (`new/backwards_compatibility.py:191-201`); do not assume ground-state k-point-only MPI is valid for this final gathering stage.\n\nTwo important restrictions for defect/collective modes:\n- The default `accoustic=True` unconditionally zeroes the first three q=0 modes (`gmatrix.py:278-281,322-323`). It is not a physical damping calculation or proof that those are translations in a constrained/defective subsystem.\n- The quantum prefactor divides by square roots of phonon energies and carries an explicit source comment about a possible mass-normalization issue (`gmatrix.py:220-229`). Zero/unstable modes and absolute normalization need review; `prefactor=False` avoids that frequency prefactor but still returns **mode-projected**, not raw Cartesian, vertices. The cached Cartesian/LCAO derivatives remain available upstream.\n\n**What is missing:** no ready retarded ionic electron–hole self-energy/friction-tensor consumer or static-screening-subtraction step was found in installed elph modules or their tutorial scripts after alternate searches. The endpoint is vertices (plus Raman functionality), not an automatically dressed Hessian. These ingredients can support the parent's proposed physical-loss path, but the dynamic self-energy construction, normalization, sampling, and consistent treatment/subtraction of static screening already present in the DFT Hessian are **new parent-owned integration/model decisions**, not an installed feature. No new model is derived here. DielectricFunction accepts charge-density vertices, not an arbitrary ionic force vertex as an interchangeable input.\n\nAlso avoid treating installed G0W0 as an effortless metallic lifetime backend: its source warns that intraband screening is not handled (`response/g0w0.py:569-574`); its ordinary quasiparticle accumulation takes real self-energy matrix elements (`860-862`). That is not an established replacement for a Ni friction calculation.\n\n## 5. QE physical-loss capabilities and restrictions\n### PHonon DFPT: useful source-supported option after building\n- `PHonon/PH/phonon.f90:16-34` lists dynamical matrices for NC/USPP/PAW, including collinear LSDA/spin-GGA, and electron–phonon support for NC/USPP through LSDA/spin-GGA. Thus the repository's validated **GBRV USPP Ni/H plus collinear PBE** is a source-supported candidate; a fresh material-specific run remains required.\n- `electron_phonon='simple'/'interpolated'` provides coupling coefficients; `'gamma_tetra'` computes phonon linewidths from electron–phonon interactions; `'lambda_tetra'` computes coupling coefficients (`PHonon/Doc/INPUT_PH.def:268-319`). These are genuine matrix-element/phase-space calculations, unlike choosing a Lorentzian width. Numerical double-delta smearing controls `el_ph_sigma/el_ph_nsigma` still require convergence and are not themselves measured linewidths (`322-335`).\n- The tetrahedron implementation explicitly handles nspin=2 channels (`elph_tetra_mod.f90:752-766`) and computes/reports linewidths (`489-681`). These phonon linewidths are not automatically the electronic optical Drude decay rate.\n- The conventional double-delta lambda path warns about a Gamma singularity (`elph_tetra_mod.f90:122-130`); the guide independently warns about optical q→0 limits (`Doc/user_guide.tex:307-313`). Do not manufacture a q=0 linewidth by reinterpreting smearing.\n- Actual guards matter more than old headers: no Gamma-only PW tricks; no e-ph with Hubbard U; no magnetic SOC e-ph; no e-ph image parallelization; no `i_cons` constrained magnetization; no two-Fermi-energy metallic phonons (`phq_readin.f90:754-855`). Fixed-total-moment metallic scratch is therefore not automatically reusable. A fixed-cell SCF should precede PH rather than feeding a vc-relax state (`822-823`).\n- `epsil=.true.` is **not** a metallic dielectric-response route: the documented code rejects metals and nonzero q (`INPUT_PH.def:155-165`).\n- Native recovery is q/irrep based with `recover=.true.`, `.phsave/dynmat.#iq.#irr.xml`, and displacement-pattern files (`INPUT_PH.def:812-856`). This is a useful resumability unit, not proof of campaign-level atomic publication/systemd integration.\n\n### Electron self-energy alternatives have hard blockers\n- PH's `electron_phonon='ahc'`/`postahc.x` route exists, but **USPP or PAW is explicitly rejected as untested** (`phq_readin.f90:782-787`). It is not usable unchanged with the validated GBRV USPP pair. The separate domag rejection refers to the noncollinear magnetic flag; do not overstate it as a blanket rejection of all collinear spin polarization.\n- EPW source has electron and phonon self-energies, including adiabatic/nonadiabatic electron self-energy terms (`EPW/src/readin.f90:250-255`; `selfen.f90:365-405`). However, **`IF (elph .AND. lsda) ... 'El-ph and spin not implemented'` is a hard blocker** (`readin.f90:1394`). Source presence is not an installed executable or a valid ferromagnetic-Ni path. Disabling Ni magnetism to evade this would change the requested physics.\n- QE `epsilon.x` is another optical-response source, not a lifetime solver. It has spin/intraband support but explicitly rejects USPP (`PP/src/epsilon.f90:53-65`), requires equal-weight full k sampling (`84-89`), and takes user `intersmear/intrasmear` widths (`223-262`, `459-516`; `PP/Doc/eps_man.tex:86-94`). It is not a drop-in optical cross-check using the existing GBRV pseudopotentials.\n\n## 6. Is missing QE ph.x buildable offline?\n**[INFERENCE] Yes, a build from the existing configured tree should not require downloading; successful compilation/linking is not yet verified.**\nEvidence:\n- `Q/include/qe_version.h:10` says 7.5. `configure.log:3-105` records successful `--enable-parallel --with-scalapack=no` configuration, GNU Fortran 13.3/OpenMPI, OpenBLAS and FFTW3. Current `make.inc` retains these settings.\n- Full PHonon and LR_Modules source/Makefiles exist. Existing archives include PW/libpw.a, Modules/libqemod.a, upflib/libupf.a, XClib/xc_lib.a, FFTXlib/src/libqefft.a, LAXlib/libqela.a, UtilXlib/libutil.a, KS_Solvers/libks_solvers.a, dft-d3/libdftd3qe.a, MBD/libmbd.a and external/devxlib/src/libdevXlib.a. LR_Modules/liblrmod.a and PHonon libraries are not built in the inspected tree.\n- Compiler/library paths exist: `/usr/bin/mpif90`, `/usr/bin/gfortran`, `/usr/lib/x86_64-linux-gnu/libopenblas.so`, `/usr/lib/x86_64-linux-gnu/libfftw3.so`.\n- The top tree has no .git directory; both `external/mbd/.git` and `external/devxlib/.git` are present, along with `install/libcuda_devxlib`. This matters: `install/install_utils:48-65` skips initialization in this tarball layout when the external .git exists; otherwise its helper would fetch. libMBD and DeviceXlib sources/libraries are already populated. FoX and bundled LAPACK are not selected by make.inc.\n\n**Exact standard build command, NOT executed:**\n`make -C /opt/qebuild/q-e-qe-7.5 ph`\n\nThis follows `Makefile:79-81,178-220`, builds needed LR/PH libraries, and links `PHonon/PH/ph.x` into `bin/ph.x` (`PHonon/PH/Makefile:202-205`). It also builds useful q2r/matdyn and other PH tools. Parent chooses authorization, concurrency, service/log ownership and first smoke case; no configure, download, clean, install, or system-QE fallback is indicated. Remaining unknowns are write authorization, current compiler/module ABI compatibility, and actual PH compilation/link/runtime success—not missing source downloads.\n\n## 7. Compact implementation handoff: evidence-backed options\n1. **Electronic screening/loss spectrum:** spin-polarized PW GPW with wavefunctions/projections → `DielectricFunction(..., nblocks=1)` → `get_dielectric_function(xc='RPA', q_c=..., direction=...)` and `get_eels_spectrum(...)`. EELS is exactly `-Im[1/epsilon_M]` in this API (`df.py:312-340`). This can quantify candidate-dependent screening and electron–hole/collective spectral response after convergence. It does not provide an intrinsic ionic lifetime or all collision channels.\n2. **Material-calibrated phenomenological optical loss:** the same calculated bands/plasma tensor may be compared with Ni optical/EELS data at matched material state and temperature, with an explicitly stated external loss prescription. No material-calibrated rate was established by this investigation; do not report eta-as-lifetime, use `rate='eta'` as physical calibration, or assume the native squared-frequency rate convention equals a measured transport rate.\n3. **Microscopic lattice electronic loss:** installed GPAW elph provides screened ionic vertices plus forces. A retarded electron–hole self-energy with consistent static-screening accounting remains integration/model work, not something enabled by a DielectricFunction parameter. Alternatively, after an authorized local PH build, QE's native e-ph phonon-linewidth route is a source-supported collinear-USPP option. Neither path by itself supplies every anharmonic, defect, magnetic, electron–electron, environmental or boundary loss contribution.\n4. **Campaign wrapper obligations:** the calculations must remain parent-owned systemd jobs surfaced by labeled herdr tabs, with stage/displacement/q completion published atomically and resumable independently of ASE's incomplete-file locks. Keep OMP/MKL/OpenBLAS threads pinned as documented. This investigation launches nothing and makes no changes in either old or new worktrees.\n\nNone of these electronic-response, force-constant or damping capabilities establishes nuclear enhancement or a nuclear reaction rate."
+}

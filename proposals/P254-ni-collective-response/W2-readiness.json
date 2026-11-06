@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "parent_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "focused_issue": "https://github.com/vantasnerdan/substrate-framework/issues/227",
+  "status": "preregistered_before_readiness_execution",
+  "positive_objective": "Determine a source-backed, independently verified route from the actual spin-polarized material model to an electronic force vertex and defensible loss or explicitly retained physical bath. This readiness wave must not manufacture an off-shell Hamiltonian by Hermitizing a native matrix or by identifying different QE/GPAW valence spaces.",
+  "settled_inputs": [
+    {"path": "sources/dal-corso2001-prb64-235118.pdf", "text": "sources/dal-corso2001-prb64-235118.txt", "provenance": "sources/dal-corso2001-provenance.json", "scope": "Original static USPP DFPT paper, verified in hand after exact-page user approval; symbol-level PDF inspection is required where extracted equations are degraded."},
+    {"path": "sources/giustino2017-electron-phonon.pdf", "text": "sources/giustino2017-electron-phonon.txt", "provenance": "sources/giustino2017-electron-phonon.metadata.json", "scope": "Complete author review manuscript, verified in hand; not a substitute for an inaccessible original."},
+    {"path": "/opt/qebuild/q-e-qe-7.5", "audits": ["sources/qe75-electron-phonon-api-audit.txt", "sources/qe75-density-derivative-api-audit.txt"], "scope": "Actual source implementation and exact raw-matrix/density export boundaries, not physical applicability by itself."},
+    {"path": "sources/electronic-model-source-correction.json", "scope": "Actual QE GBRV Ni18/H1 versus GPAW pilot Ni10; historical supplied Ni10 assumption is superseded."}
+  ],
+  "mathematical_questions": [
+    "For a finite differentiable positive overlap S and Hermitian generalized H, what identities follow for the native matrix element of Hprime-epsilon_initial*Sprime in a complete reference eigenbasis? Derive in independently checked blocks, not by fitting a desired physical force.",
+    "What changes under an energy-origin shift, complex basis/gauge changes, normalization and a coordinate-dependent orthonormalization? Distinguish coordinate derivatives from a laboratory-frame force.",
+    "Given an explicitly declared embedding T with S=Tdagger*T and H=Tdagger*h*T, what information is needed to recover the matrix elements of hprime? Determine sufficiency/nonuniqueness with exact examples and exposing counterexamples rather than assuming an answer.",
+    "Which identities remain conditional mathematical statements, and which extra dynamical/embedding assumptions would be required before a physical electron-hole bath can be licensed?"
+  ],
+  "wave_contract": [
+    {"id": "R0", "state": "settled", "outputs": "The four source inputs above are accessible before this plan and delegation."},
+    {"id": "R1-source", "depends_on": ["R0"], "owns": "sources/uspp-force-readiness-audit.txt and any newly acquired paper-specific provenance", "task": "Read applicable primary sections and exact native code. Return a complete citation-backed source audit of static forces, off-shell electron-phonon vertices, overlap/embedding/time-dependent terms, screening and finite-energy damping scope. New load-bearing references must be acquired and extracted before using them. No new mathematical or material result outside a canonical oracle."},
+    {"id": "R1-metric", "depends_on": ["R0"], "owns": "attempts/0005", "task": "Resolve only the stated finite-matrix questions with single-responsibility SymPy blocks, immediate checks, independent finite-difference/SciPy refinement and exposing mutations. Run the actual canonical program through labeled herdr/systemd with receipts. No physical Ni force converter or material claim."},
+    {"id": "R2-integration", "depends_on": ["R1-source complete", "R1-metric complete"], "owner": "root", "task": "Consume both complete outputs only after settlement; repair conflicts, obtain independent review, and state the exact licensed physical model or missing prerequisite. Neither R1 slice consumes the other while it is in flight."},
+    {"id": "P0-material-preregistration", "depends_on": ["R2-integration", "actual W1 stationary geometry and mode gates"], "task": "Register the full production response/coupling/loss model, source/valence correspondence, occupations, screening/static subtraction, exact q/k/band/cutoff grids, physical bath or damping definition, observable convergence and refusal gates before material outputs. This readiness file is not that production license."},
+    {"id": "P1-material", "depends_on": ["P0-material-preregistration"], "task": "Execute the registered spin-polarized material response, actual coupling and loss/bath calculations through labeled recoverable herdr units. Preserve raw source-bound outputs and settle convergence before reduction."},
+    {"id": "P2-dynamics", "depends_on": ["settled W1", "settled P1-material"], "task": "Derive and verify actual many-region dynamics, local excitation, correlations and energy accounting; vary finite array size separately from material q-resolution and density. No gain, imposed phase locking, eta lifetime or bare phonon proton charge."},
+    {"id": "P3-delivery", "depends_on": ["settled P2-dynamics"], "task": "Compare candidate lattices and isotope/strain/density controls, resolve exactly what is and is not established about the nuclear transition and energy-disposal bridge, obtain complete independent review, repair findings and merge focused deliverables. Full parent225 remains explicit until its acceptance criteria settle."}
+  ],
+  "resource_contract": "Main W1 occupies actual CPUs0-4; readiness algebra uses CPU5 with <=2GiB. A separately registered engineering benchmark owns CPUs6-10. Actual online inventory is0-11, not the broader allowed-CPU mask. New simulations require an explicit labeled herdr tab, durable systemd owner and raw complete/failed receipt.",
+  "license_boundary": "No W2 material Hamiltonian, physical linewidth, lifetime, coherence phase, nuclear enhancement or complete campaign result is earned by this readiness plan. Conditional identities and primary-source findings must retain their exact applicability frontier."
+}

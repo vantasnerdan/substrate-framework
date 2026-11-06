@@ -1,0 +1,74 @@
+{
+  "schema": "P254-endpoint-coordinate-oracle-execution-v1",
+  "registered_at": "2026-10-30T02:54:13.295433+00:00",
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_frame_response.py",
+      "bytes": "9344",
+      "sha256": "f685aee1bb01e7fdc54fd006850c8881eab39a54513abe92eae699f18305e0fb"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_frame_response_oracle.py",
+      "bytes": "16038",
+      "sha256": "62c8cea66dc6484679766e3cedb0c61619f97d7690db4a2d86be70a30e159b8e"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_frame_oracle_finite_model.py",
+      "bytes": "8341",
+      "sha256": "210c3cd78cd21b2a0e3fc2d92b29ca9d22912f23201537be883441b061ddcb7f"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_coordinate_response.py",
+      "bytes": "2588",
+      "sha256": "d619c4ea9b0ba384783e88dc08f10d83f1c2131f697fdaf878c9046c1007d0f8"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_coordinate_response_oracle.py",
+      "bytes": "7913",
+      "sha256": "c0091fd32444e3cc8dff8ca87639c122f9fa0f02eb4b84a55e08fa9a619ef6ca"
+    }
+  ],
+  "interface_amendment": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/native-mixed-endpoint-locality-amendment-001.json",
+    "bytes": "1443",
+    "sha256": "b997173f42f32b79a99901be1fdb1e133787ef570e0536dce0b21ec93b20336c"
+  },
+  "undefined_globals": {
+    "mixed_frame_response.py": [],
+    "run_mixed_frame_response_oracle.py": [],
+    "mixed_frame_oracle_finite_model.py": [],
+    "mixed_coordinate_response.py": [],
+    "run_mixed_coordinate_response_oracle.py": []
+  },
+  "actual_prior_math_service_seconds": "9.412",
+  "original_cumulative_math_cap_seconds": 600,
+  "maximum_additional_execution_seconds": 240,
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-mixed-local-coordinate-oracles-001",
+    "--wait",
+    "--pipe",
+    "--property=RuntimeMaxSec=250",
+    "--property=TimeoutStopSec=10",
+    "--property=MemoryMax=1073741824",
+    "--property=CPUAffinity=10",
+    "env",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "/bin/bash",
+    "-c",
+    "timeout 120s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_frame_response_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-frame-response-oracle-002.json; frame_rc=$?; timeout 120s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_coordinate_response_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-coordinate-response-oracle-001.json; coordinate_rc=$?; printf '\nP254_LOCAL_FRAME_RC_%s\nP254_COORDINATE_RC_%s\n' \"$frame_rc\" \"$coordinate_rc\"; test \"$frame_rc\" -eq 0 && test \"$coordinate_rc\" -eq 0"
+  ],
+  "outputs": [
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-frame-response-oracle-002.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-coordinate-response-oracle-001.json"
+  ],
+  "scope": "Actual changed endpoint-local frame path and physical per-cell canonical feedback only; no new Native production/source/time grant."
+}

@@ -1,0 +1,19 @@
+2026-10-20T00:11:29.055995+00:00 agent-giuliano systemd[2867432]: Starting p254-w1-force-sensitivity-0012-g001-1792455075679701675.service - /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-001...
+2026-10-20T00:11:29.064157+00:00 agent-giuliano systemd[2867432]: Started p254-w1-force-sensitivity-0012-g001-1792455075679701675.service - /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-001.
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]: Traceback (most recent call last):
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:   File "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py", line 18, in execute
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:     worker=observe(os.getpid())
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:            ^^^^^^^^^^^^^^^^^^^^
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:   File "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/receipts.py", line 20, in observe
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:     limits={key:(kernel/key).read_text().strip() for key in
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:                 ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:   File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:     with self.open(mode='r', encoding=encoding, errors=errors) as f:
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:   File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]: FileNotFoundError: [Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-w1-force-sensitivity-0012-g001-1792455075679701675.service/cpuset.cpus.effective'
+2026-10-20T00:11:29.187410+00:00 agent-giuliano python[345922]: SENSITIVITY_ORACLE_FAILED /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-001
+2026-10-20T00:11:29.202229+00:00 agent-giuliano systemd[2867432]: p254-w1-force-sensitivity-0012-g001-1792455075679701675.service: Main process exited, code=exited, status=2/INVALIDARGUMENT
+2026-10-20T00:11:29.202633+00:00 agent-giuliano systemd[2867432]: p254-w1-force-sensitivity-0012-g001-1792455075679701675.service: Failed with result 'exit-code'.

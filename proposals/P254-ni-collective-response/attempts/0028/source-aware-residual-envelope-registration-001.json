@@ -1,0 +1,32 @@
+{
+  "schema": "P254-source-aware-residual-envelope-registration-v1",
+  "registered_at": "2026-11-03T03:15:12.666972+00:00",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "problem": "The six-dimensional tau30 Native original-column run did not meet its floating error estimate. Existing estimator takes min of whole-residual and fixed four-cell/four-degree Taylor envelopes; source-aware integration may avoid penalizing large unexcited residual directions. This cause is a hypothesis, not yet a Native diagnosis.",
+  "construction": "Keep actual Arnoldi Q,HQ, all original PW/columns/D, projected exponential and full-row residual unchanged. Add a weighted residual-energy Gramian/Cauchy-Schwarz Duhamel candidate, computed only on the small projected space with selective high precision; include initial, QR reconstruction and retained-seed defects. Do not relax the target or call numerical evaluation an interval certificate.",
+  "evidence": "Exact encoded block identity and source-specific amplification factors; independent quadrature and full-density exponential error on nonorthogonal/nonHermitian, signed-time, near-invariant and unexcited-complement cases. Expose omitted conjugation/growth and source-blind remainder. No Native allocation before this settles.",
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/column_krylov_bounds.py",
+      "bytes": 3539,
+      "sha256": "9fff0c34088b29f2aaaa9fb6e723956b8b53c864a6d353ff9b791bbd51be07f1"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/column_frame_krylov.py",
+      "bytes": 12558,
+      "sha256": "0bd0d7a0bce310ff2c345a94b37cc85015a12f33e442698ea31c823acdaa3192"
+    },
+    {
+      "path": "/var/tmp/p254-moving-exponential-native-smoke-002/result.json",
+      "bytes": 15056,
+      "sha256": "70d0ae3a1ff5b249159b524b6ed76a57cc7c60be26bdb91aa3c3f9d45a788b8b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/moving-exponential-panels-oracle-001.json",
+      "bytes": 1872,
+      "sha256": "35ab89a050f9c29b3f5b8ae22baa56eccd179e86d1db9c69607abc5e666b969b"
+    }
+  ],
+  "next_consumer": "Native source0 tau30 H0 and eventual actual moving-mean extension, not another short-time physical readout",
+  "root": "Root393"
+}

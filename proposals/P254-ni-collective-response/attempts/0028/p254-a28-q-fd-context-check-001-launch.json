@@ -1,0 +1,29 @@
+{
+  "label": "p254-a28-q-fd-context-check-001",
+  "pane": "w1:p3K",
+  "tab": "w1:t3K",
+  "command": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-q-fd-context-check-001",
+    "--collect",
+    "--property=Type=exec",
+    "--property=CPUAffinity=10",
+    "--property=MemoryMax=2G",
+    "--property=LimitNOFILE=8192",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/.cache/dft/p254-a28-runtime",
+    "--property=RuntimeMaxSec=180s",
+    "--wait",
+    "--pipe",
+    "/usr/bin/python3",
+    "-c",
+    "import os,sys,json,hashlib,resource,time\nfrom pathlib import Path\nfrom types import SimpleNamespace\nimport numpy as np\nfrom substrate_framework.streamed_joint_response import MappedResponse\nstart=time.monotonic()\nseed_path=Path('/var/tmp/p254-a28-loaded-gamma-forward-002/scientific-work/initial/3a801c97cf408d9a6c7dbd1f4fe3f669f8054e063d4933b37c50866548fd98d4/generation-adopted-fe508ec38f0893abde98f60c4d00e848/checkpoint.json');raw=seed_path.read_bytes()\nassert hashlib.sha256(raw).hexdigest()=='ee9674878bbdb8acd7910b099131fb5f4b80072ae5917d905ab8cb9e55a03ac4'\nseed=json.loads(raw);assert seed['q']==[0.0,0.0,0.0] and len(seed['legs'])==256\nshapes=[]\nfor binding in seed['legs']:\n    value=np.load(binding['path'],mmap_mode='r',allow_pickle=False);shapes.append(value.shape);value._mmap.close()\nassert all(shapes[i+1]==shapes[i][::-1] for i in range(0,256,2))\nr=SimpleNamespace(edges=[SimpleNamespace(source=i,target=i) for i in range(128)],sectors=[SimpleNamespace(shape=shapes[2*i]) for i in range(128)],ndof=len(seed['small']['u']),nfield=len(seed['small']['coordinate']))\nlimits=resource.getrlimit(resource.RLIMIT_NOFILE);assert limits==(8192,8192)\nassert set(os.sched_getaffinity(0))=={10}\nbefore=len(os.listdir('/proc/self/fd'))\nstates=[MappedResponse(r,seed_path.parent,None) for _ in range(5)]\npeak=len(os.listdir('/proc/self/fd'));assert peak>1024 and peak-before==1280\nassert all(not value.flags.writeable for state in states for value in state.ket+state.bra)\nfor state in states:\n    for value in state.ket+state.bra:value._mmap.close()\nafter=len(os.listdir('/proc/self/fd'));assert after==before\nreport=dict(schema='P254-real-user-manager-FD-context-v1',status='complete',scope='Nonscientific resource proof: real MappedResponse constructors, exact128 original q0 sector shapes/256 real saved legs,5 simultaneous readonly states; no physics/propagation/payload rewrite/full-array rehash. Shape-only response adapter is not a physical replacement.',seed_binding={'path': '/var/tmp/p254-a28-loaded-gamma-forward-002/scientific-work/initial/3a801c97cf408d9a6c7dbd1f4fe3f669f8054e063d4933b37c50866548fd98d4/generation-adopted-fe508ec38f0893abde98f60c4d00e848/checkpoint.json', 'bytes': '104222', 'sha256': 'ee9674878bbdb8acd7910b099131fb5f4b80072ae5917d905ab8cb9e55a03ac4'},uid=str(os.getuid()),gid=str(os.getgid()),groups=[str(x) for x in os.getgroups()],cpus=[str(x) for x in sorted(os.sched_getaffinity(0))],nofile=[str(x) for x in limits],legacy_actual_soft_limit='1024',fd_before=str(before),fd_peak=str(peak),fd_after=str(after),actual_simultaneous_states='5',actual_simultaneous_mappings='1280',elapsed_seconds=time.monotonic()-start,peak_rss_bytes=str(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024))\nPath('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-q-fd-context-check-001.json').write_text(json.dumps(report,indent=2)+'\\n')\nprint(json.dumps(report),flush=True)\n"
+  ],
+  "actual_launch_time": "2026-10-29T21:58:13.555039+00:00"
+}

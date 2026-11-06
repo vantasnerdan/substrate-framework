@@ -1,0 +1,89 @@
+from pathlib import Path
+import sys, os, signal, json, tempfile, subprocess, hashlib
+from dataclasses import replace
+import numpy as np
+HERE=Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021')
+sys.path.insert(0,str(HERE))
+from time_pilot_resume import saved_reference, admit_coordinates, reserved_actions, reserve_action
+from time_pilot_checkpoints import save_json
+import run_electronic_time_oracle as oracle
+from substrate_framework.pw_electronic_dynamics import PWElectronicDynamics
+checks=[]
+def require(name,value):
+    if not value: raise AssertionError(name)
+    checks.append({'name':name,'passed':True})
+def refused(name,fn):
+    try: fn()
+    except ValueError as error: checks.append({'name':name,'passed':True,'error':str(error)})
+    else: raise AssertionError(name)
+def kill_publish(path,value):
+    pid=os.fork()
+    if pid==0:
+        original=os.replace
+        def stop_after_rotation(source,destination):
+            original(source,destination)
+            if Path(destination)==path.with_suffix(path.suffix+'.prev'):
+                os.kill(os.getpid(),signal.SIGSTOP)
+        os.replace=stop_after_rotation
+        save_json(path,value)
+        os._exit(3)
+    try:
+        _,status=os.waitpid(pid,os.WUNTRACED)
+        if not os.WIFSTOPPED(status): raise AssertionError('child did not reach rotation boundary')
+    finally:
+        os.kill(pid,signal.SIGKILL)
+        os.waitpid(pid,0)
+signal.signal(signal.SIGALRM,lambda *_: (_ for _ in ()).throw(TimeoutError('30s smoke deadline')))
+signal.alarm(30)
+with tempfile.TemporaryDirectory(prefix='p254-0021-resume-') as temporary:
+    target=Path(temporary)
+    summary=target/'result.json'
+    save_json(summary,{'reference':{'physical_identity':'previous-committed-reference'}})
+    kill_publish(summary,{'reference':{'physical_identity':'new-uncommitted-reference'}})
+    require('real_SIGKILL_summary_fallback',saved_reference(target)=={'physical_identity':'previous-committed-reference'})
+    counter=target/'rhs-reservations.json'
+    reserve_action(counter,5)
+    kill_publish(counter,{'action':'6'})
+    count,audit=reserved_actions(counter,required=True)
+    require('real_SIGKILL_reservation_is_charged',count==6 and audit is None)
+    reserve_action(counter,count)
+    partial=counter.with_suffix('.json.tmp')
+    partial.write_bytes(b'{"action":"7')
+    count,audit=reserved_actions(counter,required=True)
+    require('torn_reservation_charged_and_preserved',count==7 and bytes.fromhex(audit['preserved_raw_hex'])==partial.read_bytes())
+    reserve_action(counter,count+1)
+    require('reservation_not_double_charged',reserved_actions(counter,required=True)==(8,None))
+    missing=target/'missing.json'
+    refused('absent_accounting_cannot_reset_cap',lambda:reserved_actions(missing,required=True))
+    damaged=target/'damaged.json'
+    damaged.write_text('invalid committed counter')
+    refused('corrupt_committed_counter_refuses',lambda:reserved_actions(damaged,required=True))
+    fixture=oracle.load_fixture().fixture(0)
+    electronic=PWElectronicDynamics(fixture.model)
+    admit_coordinates(target,'gamma','fixture-generation',electronic,committed=False)
+    admit_coordinates(target,'gamma','fixture-generation',electronic,committed=True)
+    checks.append({'name':'actual_finite_frame_coordinates_reused','passed':True})
+    channels=list(fixture.model.channels)
+    vectors=channels[0].plus_vectors.copy()
+    vectors[:,0]*=-1
+    channels[0]=replace(channels[0],plus_vectors=vectors)
+    changed=PWElectronicDynamics(replace(fixture.model,channels=tuple(channels)))
+    refused('equivalent_H0_eigenvector_phase_cannot_reinterpret_state',lambda:admit_coordinates(target,'gamma','fixture-generation',changed,committed=True))
+    refused('missing_original_coordinates_cannot_be_retroactively_bound',lambda:admit_coordinates(target,'absent','fixture-generation',electronic,committed=True))
+    cli=target/'cli'
+    cli.mkdir()
+    original_result=(HERE/'pilot-001/result.json').read_bytes()
+    (cli/'result.json').write_bytes(original_result)
+    (cli/'identity.json').write_bytes((HERE/'pilot-001/identity.json').read_bytes())
+    child=subprocess.run([sys.executable,str(HERE/'run_local_kick.py'),'--resume','--output-dir',str(cli)],capture_output=True,timeout=15)
+    require('actual_CLI_old_generation_refuses_preserving_result',child.returncode==1 and (cli/'result.json').read_bytes()==original_result and 'source/input/scales differ' in (cli/'resume-refusal.json').read_text())
+    cli_receipt={'argv':child.args,'returncode':child.returncode,'stdout':child.stdout.decode(),'stderr':child.stderr.decode()}
+    conservative_audit=audit
+signal.alarm(0)
+receipt={'passed':True,'checks':checks,'accounting_recovery':conservative_audit,'actual_cli':cli_receipt,'scope':'New recovery-helper and CLI refusal paths only. No actual PW RHS, Native, or numerical continuation. Original scientific artifacts untouched. Exact finite-frame phase mutation tests prevention of coordinate reinterpretation.','sources':[]}
+for path in (Path(__file__),HERE/'time_pilot_resume.py',HERE/'time_pilot_checkpoints.py',HERE/'run_local_kick.py'):
+    raw=path.read_bytes()
+    receipt['sources'].append({'path':str(path),'bytes':str(len(raw)),'sha256':hashlib.sha256(raw).hexdigest()})
+out=HERE/'resume-edge-smoke-001.json'
+with out.open('x') as stream: json.dump(receipt,stream,indent=2)
+print(json.dumps({'passed':True,'output':str(out),'checks':len(checks)}))

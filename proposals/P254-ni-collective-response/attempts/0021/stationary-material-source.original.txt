@@ -1,0 +1,130 @@
+## Summary
+
+**The stationary-primary inputs exist; a calibrated material action does not yet exist.** All four SG15-NC and all four GBRV-W1 primaries are admitted **at their declared settings**, not as jointly converged minima or complete coupled-mode models. The three W1 force-refinement failures remain settled.
+
+**Smallest useful next actual-material output:** extract the **loaded-Ni31H6 absolute frozen-electronic curvature** from its already-written NC irrep-zero XML, preserving the complete Ni/H tangent, native pattern transformation and material identity. This advances an actual term of the material action **without restarting PH, computing another matrix, changing Hamiltonian, or assuming faster convergence**.
+
+This investigation was read-only. No calculations, edits, verification runs, service operations or Git commands were performed. Attempt0021 outputs were not consumed.
+
+### Path abbreviations
+
+- `C` = `/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response`
+- `N` = `/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response`
+- `P` = `/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response`
+- `F` = `/home/administrator/projects/substrate-ni-collective/src/substrate_framework`
+- `D` = `/home/administrator/projects/catalyst-dft`
+- `Q` = `/opt/qebuild/q-e-qe-7.5`
+
+## Files: ready material inputs and authority
+
+The canonical synthesis is under **catalyst-nc-operator**, not catalyst-collective:
+
+`N/nc-material/verification/campaign-progress-synthesis-20261021.json:29-46,71-97,175-183`.
+
+| Material case | Existing SG15-NC input/data | Existing GBRV-W1 input/data |
+|---|---|---|
+| Pristine Ni32 | `N/nc-material/primary/pristine-ni32/{result.json,final.extxyz}`; exact source/SCF binding in `verification/nc1-2-primary-admission.json:2141-2169,2536-2537,2708-2711` | `C/material/pristine-ni32/{result.json,final.extxyz}`; admission and final-force pointers in `C/owner-frontiers/w1-control-primary-admission-20261026/pristine-receipt.json:1-16,92-156` |
+| Empty-vacancy Ni31 | `N/nc-material/primary/empty-vacancy-ni31/{result.json,final.extxyz}`; admission `:867-895,1255-1256,1422-1425` | `C/material/empty-vacancy-ni31/{result.json,final.extxyz}`; `vacancy-receipt.json:1-16,92-156` in the same W1 admission directory |
+| Loaded Ni31H6 | `N/nc-material/primary/loaded-ni31h6/{result.json,final.extxyz}`; admission `:1468-1565,1898-1899,2085-2098`. Final force geometry identifier: `68af8d47…` | `C/material/loaded-ni31h6/{result.json,final.extxyz}`; source-bound final force/spec in `C/owner-frontiers/w1-control-primary-admission-20261026/next-physical-wave-card.json:43-62`; final force geometry `fdb6464b…` |
+| Dispersed Ni32H6 | `N/nc-material/primary/dispersed-ni32h6/{result.json,final.extxyz}`; admission `:182-210,619-620,821-824` | **Current** `/home/administrator/runs/c5w1-005/{result.json,final.extxyz}`, final geometry `8ace8233…`; `C/owner-frontiers/w1-dispersed-primary-admission-20261026/dispersed-receipt.json:43-107,146-150`. Do not substitute the historical dispersed namespace. |
+
+The NC aggregate explicitly states `all_four_admitted: true` and limits admission to stationary-primary/source/science/cache intake: `N/nc-material/verification/nc1-2-primary-admission.json:2,2747-2750`.
+
+**Geometry provenance:** `D/runs/campaign3/c32_bulkvac/qe_bulk.py:35-74` supplies the conventional-cell construction, but `:117-130` freezes Ni during the historical H relaxation. Those historical structures are **seeds**, not substitutes for the later fully mobile primaries. `C/W1-stationary-inputs.md:5-12` defines the fixed common cell, vacancy/dispersed construction, masses and comparison restrictions. Case names do not establish final H coordination; retain the actual final coordinates.
+
+## Architecture
+
+`Own admitted material geometry + own final SCF + own pseudopotentials/occupations`
+→ `same-background frozen ionic curvature and electronic H0/g/K`
+→ `ensemble-consistent coupled response`
+→ `calibrated spatial coupling and retained environment/physical loss`
+→ `many-region state/covariance dynamics and controls`
+→ `matched lattice comparison and nuclear transition/product-disposal bridge`.
+
+The two-atom work has earned reusable construction and implementation components. It has **not** supplied the material-specific inputs represented by that chain.
+
+## Report
+
+### 1. Stationarity and calibration prerequisites
+
+**Common stationary-primary boundary:** fixed cell, all Ni/H mobile, only global translation removed, optimizer convergence plus raw unprojected force criterion. Neither fixed-volume stationarity nor initial ferromagnetic preparation establishes zero-pressure equilibrium, a global magnetic minimum, or harmonic stability.
+
+| Family | Existing registered reference | Still required |
+|---|---|---|
+| **W1 / GBRV USPP** | Spin-PBE; 40/480 Ry, k444, numerical MV width 0.02 Ry; SCF `1e-10`; PH `1e-14`. | The separate cutoff50/600, k666 and MV0.01 force comparisons **failed**. Continue the respective registered ladders to 60/720, k888 and MV0.005 **one axis at a time**, update the reference, re-establish affected stationarity and repeat affected comparisons. High-start energy/moment overlap does not prove branch identity. |
+| **NC / SG15 ONCV** | Spin-PBE, scalar relativistic, ordinary pseudo-space, no SOC or selected-UPF NLCC; 60/240 Ry, k444, numerical MV0.02. All four primaries admitted. | Registered force **and coupled-mode** sensitivities: cutoff80/320 →100/400 →160/640 and prescribed further increments; k666→888; MV0.01→0.005; additional-band refinement and occupation-tail inspection; alternate Ni magnetic initialization. Jointly select resolved settings and re-stationarize affected controls. |
+
+Sources:
+
+- `C/W1-stationary-inputs.md:14-29`.
+- `P/attempts/0012/final-parent-qualified-disposition.json:19-53`: settled failed force diagnostics; their printing bounds are **not** total SCF/discretization error bounds.
+- `P/NC1-stationary-material-supplement.json:80-133,175-245`: NC model, all-four prerequisite and complete calibration/control ladder.
+
+**Unchanged scientific acceptance:** full Ni/H coupled response; registered force-change and tracked-mode criteria; mass-weighted mode/subspace matching; raw Hermiticity, reciprocity and acoustic residuals before projection; unresolved soft signs remain unresolved. Persistent imaginary modes require the registered two-sign displacement/restationarity procedure, not clipping. Subsequent finite-q, isotope, strain and Ni107H6 density controls remain necessary. See `C/W1-stationary-inputs.md:20-36` and `P/NC1-stationary-material-supplement.json:180-245`.
+
+The necessity of the original tight SCF/PH tolerances has **not** been established through observable accuracy–cost sensitivity. That is not permission to loosen them silently: `C/CAMPAIGN-CONTROL.md:117-134`.
+
+### 2. What transfers from earned H0/g/K/Cfrozen—and what does not
+
+| Component | Reusable earned construction | Material-transfer boundary |
+|---|---|---|
+| **H0** | Actual kinetic diagonal, local-potential Fourier convolution and correctly ordered nonlocal projector blocks; complete physical PW space rather than retained-band closure. `F/qe_pw_hamiltonian.py:1-16,29-106`. | Needs each material’s actual potential, PW maps, projectors and coefficients. The implementation explicitly restricts two atoms and ordinary-NC/single-grid inputs. Its dense assembly/full diagonalization is not an earned large-material runtime method. |
+| **Bare g** | Local ionic derivative plus **both** nonlocal projector derivative sides; native phases, linear complex displacement amplitudes and physical gradient convention. `F/qe_ionic_operator.py:1-8,43-129`. | Current contract is six Cartesian amplitudes/two atoms. Target material needs the full atom order and tangent, native basis/maps and its own source/target states; no fixture vertex rescaling or tiling. |
+| **Spatial K** | Longitudinal-spin Hartree plus native PBE-GGA Hessian action, cross-spin terms, native Fourier/volume and zero-mode conventions. `F/spin_pbe_kernel.py:1-13,63-108`. | Coefficients must be evaluated on the actual material density. `F/qe_response_fft.py:1-5,28-49` restricts the implementation to serial equal dense/smooth 24³ grids and excludes NLCC, noncollinear and other variants. Removing guards alone would not establish transfer. |
+| **Absolute Cfrozen** | Import completed irrep-zero ionic plus fixed-wavefunction explicit curvature; native pattern-to-Cartesian conversion; no fitted subtraction, mass division or extra symmetrization. `F/qe_frozen_curvature.py:1-28,62-94,135-171`. | Parser dimension handling already accepts general `nat`. The new caller must bind the actual material q/cell/producer/applicability and original bytes. This term is **not** the screened BO matrix and cannot independently provide phonons/stability. |
+| **Response composition** | Explicit forward/reverse sectors and matrix-free density screening; no static-screened-vertex substitution. `P/attempts/0020/registration.json:10-20`; earned package `attempts/0020/evidence-index-001.json:4-34`. | Current frame builder requires actual Gamma/+half/−half bundles and full FD spectra: `F/qe_pw_response_frames.py:118-159,187-229,275-307`. Neither material inputs nor large-material scalability follows from the fixture. |
+
+The complete settled review preserves these restrictions: `P/attempts/0019/review-admission.json:11-19` and `full-action-review.original.txt:23-30`.
+
+**Occupation/reference mismatch is load-bearing.** The engineering bridge uses FD occupations; the material primaries use numerical MV broadening. Even the fixture’s reconstructed full-FD reference is explicitly distinguished from its saved SCF reference. An MV material curvature cannot simply be combined with the fixture FD response and called an equal-reference material action. Fixed-mean-N thermodynamic statics, isolated finite-frequency response and degenerate/population sectors must remain distinct. Sources: `P/attempts/0014/registration.json:15`; `P/attempts/0020/registration.json:61-69`; `P/G2-response-model-decision-001.json:22-27,48-83`.
+
+**USPP/PAW is not an interchangeable backend.** GBRV Ni has NLCC and nontrivial overlap/augmentation. Its static generalized screened vertex is not the ordinary-NC bare force operator. The saved moving-USPP source assessment identifies missing actual reconstruction/connection data and nonequilibrium force implementation; the installed GBRV UPFs do not supply the full paired partial-wave data used by that prescription. GPAW PAW variants also have different model/valence spaces. Sources: `P/sources/uspp-force-readiness-audit.txt:21-52`; `P/sources/uspp-moving-ion-source-extension.txt:19-53,237-278`.
+
+### 3. Concrete constructive next slice
+
+**Recommendation [INFERENCE]: produce the actual NC-loaded material `Cfrozen` input from settled files, before commissioning another iterative material wave.**
+
+Existing source:
+
+```text
+N/nc-material/gamma-continuation-002/loaded-ni31h6/
+  native/scratch/_ph0/scf.phsave/dynmat.1.0.xml
+  native/scratch/_ph0/scf.phsave/patterns.1.xml
+```
+
+- `dynmat.1.0.xml:1-7` already records `DONE_IRR=true`.
+- `patterns.1.xml:1-10` supplies the q/pattern metadata.
+- `N/nc-material/gamma-continuation-002/loaded-ni31h6.json:1` binds the **own admitted loaded final SCF**, Gamma, physical masses and unchanged PH settings.
+- Primary source `Q/PHonon/PH/dynmat0.f90:41-94` accumulates the explicit electronic/ionic contributions and writes irrep zero before the remaining response work.
+- `Q/PHonon/PH/ph_restart.f90:224-295` defines pattern and partial-matrix serialization.
+- The earned general-`nat` importer is `F/qe_frozen_curvature.py:135-171`.
+
+**Proposed output:** the complete source-bound native-pattern and Cartesian frozen-curvature arrays, atom/species/mass ordering, q/cell/reference identity and explicit excluded-screening label—an actual reusable material-action term, not another inventory or acceptance count.
+
+**Exact missing preparation:** a material-specific closed input binding for those original XML buffers and producer identity. The incident’s retained **26 response-block copies do not themselves bind irrep zero/patterns**. Do not fabricate a two-atom response-bundle identity to satisfy the importer’s provenance fields. I found no existing material-curvature import in the searched NC verification/output locations.
+
+**Bounded method:** post-processing only; no SCF/Sternheimer solve, eigenspectrum, precision sweep or Native launch. Root should authorize one finite pass under an explicit hard wall/resource cap and absolute decision deadline. No runtime estimate or speedup is asserted. An interruption loses only this derived post-processing output; resume from preserved inputs, not from claimed PH iteration history.
+
+This does **not** satisfy full G1 or material-response admission. Its value is to replace a missing material-action component with the actual computed one while the remaining dependencies stay explicit.
+
+### 4. Source-supported alternatives to another full-matrix wait
+
+| Alternative | Supported use and limitation |
+|---|---|
+| **Selected complete irreps / columns** | QE documents `start_irr`, `last_irr` and `modenum`; a selected representation is generally **not a phonon eigenvector**. `Q/PHonon/Doc/INPUT_PH.def:590-649`. Useful for a scoped observable/cost pilot, not a complete spectrum. Existing `catdft` production validation deliberately excludes these partial inputs and requires complete matrices: `catalyst-nc-operator/src/catdft/qe_phonon_inputs.py:16-66`, `qe_phonon_stage.py:42-68`. Requires a distinct scoped boundary, not weakening production acceptance. |
+| **Directional central force/scalar derivatives** | Saved ASE method source `P/sources/ase-phonons.txt:69-94` and actual settled two-coordinate bridge registration `P/attempts/0014/registration.json:17-40`. Can target a material tangent before all columns, retaining the same Hamiltonian and displacement refinement. No demonstrated material-runtime advantage; not an H-only replacement for the full coupled tangent. |
+| **Matrix-free screened response** | Earned density-space solve in0020 is a reusable approach, but its current R0 construction still uses complete dense PW spectra. Material exporters, general grids and occupation matching are missing. “Matrix-free” does not establish cheap material scaling. |
+| **Force-only next calibration rung** | Already registered and scientifically useful, independently of loaded PH completion. It advances failed numerical calibration, but does not provide electronic dynamics, loss or the missing material action. No rerun of the already failed rungs. |
+
+Neither PH mixing changes nor reduced tolerances have an earned faster-convergence claim for this material. `nat_todo` explicitly introduces a subset approximation and symmetry obligations; it is not a legitimate way to discard Ni from the contracted model (`INPUT_PH.def:618-633`).
+
+### 5. Recovery constraints and Root tradeoff
+
+- **NC remains stopped; W1 loaded/pristine/empty remain frozen.** No thaw, ownership release or new grant follows from this report.
+- Preserve the incident receipt and completed response XML copies:  
+  `C/owner-frontiers/runpod-abandonment-20261027/watchdog-freeze-incident-20261027/incident-and-checkpoint-evidence.json:1-20,215-225`.
+- Unfinished representation27 memory is not retained; history reuse remains unproven. The wrapper’s `native_recovery()` only checks entry XML readability, not restored iteration/history: `catalyst-nc-operator/src/catdft/qe_phonon_inputs.py:224-234`.
+- **Root’s substantive choice:** prioritize the independently stationary **NC material-action route**, which aligns with the earned ordinary-space operators, while retaining W1 as a separately calibrated comparison; or prioritize W1 calibration, accepting that USPP dynamical transfer still needs its own missing construction. Neither choice cancels matched-control comparison.
+- Before any later coupled material calculation, Root must settle **MV-to-physical-ensemble matching**—matched recalculation or a justified controlled common limit—not silently substitute FD.
+
+Physical loss/retained-environment covariance, actual finite-q inter-region coupling, many-region controls, lattice comparison and nuclear transition-energy/product disposal remain the whole objective. No small-fixture or frozen-curvature result supplies those conclusions.

@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-mixed-coupled-composition-001",
+    "--wait",
+    "--pipe",
+    "--property=RuntimeMaxSec=390",
+    "--property=TimeoutStopSec=10",
+    "--property=MemoryMax=2147483648",
+    "--property=CPUAffinity=10",
+    "env",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src",
+    "/bin/bash",
+    "-c",
+    "timeout 30s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_frame_response_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-frame-response-oracle-003.json; frame_rc=$?; timeout 120s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_material_moments_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-material-moments-oracle-002.json; moments_rc=$?; timeout 30s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_response_storage_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-response-storage-oracle-002.json; storage_rc=$?; timeout 180s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_coupled_response_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-coupled-response-oracle-001.json --max-seconds 175; coupled_rc=$?; printf '\nP254_FRAME_RC_%s\nP254_MOMENTS_RC_%s\nP254_STORAGE_RC_%s\nP254_COUPLED_RC_%s\n' \"$frame_rc\" \"$moments_rc\" \"$storage_rc\" \"$coupled_rc\"; test \"$frame_rc\" -eq 0 && test \"$moments_rc\" -eq 0 && test \"$storage_rc\" -eq 0 && test \"$coupled_rc\" -eq 0"
+  ],
+  "shell": "rc=0; env XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus systemd-run --user --unit=p254-a28-mixed-coupled-composition-001 --wait --pipe --property=RuntimeMaxSec=390 --property=TimeoutStopSec=10 --property=MemoryMax=2147483648 --property=CPUAffinity=10 env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src /bin/bash -c 'timeout 30s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_frame_response_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-frame-response-oracle-003.json; frame_rc=$?; timeout 120s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_material_moments_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-material-moments-oracle-002.json; moments_rc=$?; timeout 30s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_response_storage_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-response-storage-oracle-002.json; storage_rc=$?; timeout 180s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_coupled_response_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-coupled-response-oracle-001.json --max-seconds 175; coupled_rc=$?; printf '\"'\"'\nP254_FRAME_RC_%s\nP254_MOMENTS_RC_%s\nP254_STORAGE_RC_%s\nP254_COUPLED_RC_%s\n'\"'\"' \"$frame_rc\" \"$moments_rc\" \"$storage_rc\" \"$coupled_rc\"; test \"$frame_rc\" -eq 0 && test \"$moments_rc\" -eq 0 && test \"$storage_rc\" -eq 0 && test \"$coupled_rc\" -eq 0' || rc=$?; printf '\nP254_COUPLED_COMPOSITION_001_DONE_%s\n' \"$rc\"",
+  "actual_result": {
+    "text": "(no output)",
+    "details": {
+      "wallTimeNoticeEmitted": false,
+      "timeoutSeconds": 30,
+      "wallTimeMs": 307.7067029774189
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "attempt": "P254/0005",
+  "parent_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "focused_issue": "https://github.com/vantasnerdan/substrate-framework/issues/227",
+  "root_preregistration": "../../W2-readiness.json",
+  "registered_before_substantive_derivation": true,
+  "positive_intent": "Resolve conditional finite-matrix native-vertex and embedding identities with exact, mutation-sensitive blocks and an independent generalized-eigenproblem finite-difference oracle.",
+  "target_kind": "conditional_finite_matrix_theorem_and_counterexamples",
+  "definitions": {
+    "coordinate": "One real differentiable coordinate R, reference R=0; each coordinate a is treated separately.",
+    "generalized_model": "S(R) positive definite Hermitian, H(R) Hermitian, complete S-normalized eigenvectors C at reference, H C = S C E, Cdagger S C=I, real diagonal E.",
+    "native": "D_ji = c_j^dagger (Hprime - epsilon_i Sprime) c_i; row j final, column i initial. This is a coordinate-matrix definition, not assumed to be a physical force.",
+    "embedding": "Explicit differentiable full-column-rank T into a fixed finite Hilbert frame, S=Tdagger T, H=Tdagger h T with h Hermitian. Square invertible and rectangular embeddings are distinguished.",
+    "units": "Abstract dimensionless finite-matrix units, no material calibration."
+  },
+  "questions": [
+    "What generalized-eigenproblem, normalization and Hermiticity identities follow without an embedding?",
+    "How do energy shifts, complex conjugation, phase/degenerate gauges and coordinate-dependent coefficient frames transform the native object?",
+    "Which embedding and connection data suffice to recover projected hprime, and what exact ambiguities survive with the same H,S and derivatives?",
+    "Does a rectangular embedding add residual data not supplied by the generalized eigenproblem?"
+  ],
+  "block_tree": [
+    "blocks/exact.py: exact residual and exposing-mutation primitives",
+    "blocks/native.py: reference normalization, generalized derivative, adjoint and Hermitian-part identities",
+    "blocks/transformations.py: energy-origin, complex gauges, nonunit normalizations and moving coefficient frames",
+    "blocks/embedding.py: product-rule embedding, connection, nonuniqueness and rectangular residual counterexample",
+    "blocks/numerical.py: independent scipy.linalg.eigh and centered finite differences with refinement",
+    "runner.py: block composition and durable source-bound complete/failed receipts",
+    "derivation.txt: report only checked identities, hypotheses, counterexamples and applicability"
+  ],
+  "verification": {
+    "exact": "SymPy exact rational asymmetric complex noncommuting examples, generic component identities where feasible, product-rule differentiation from declared curves. Every load-bearing check has a meaningful mutation or named counterexample.",
+    "independent_numeric": "SciPy generalized Hermitian eigensolve on independently evaluated smooth H(R),S(R), phase-align eigenvectors to the reference, centered differences at h=0.04,0.02,0.01,0.005. Compare derivative eigenvalues, eigenvector connection, normalization and laboratory hprime. Separate exact identities from float evidence.",
+    "numeric_acceptance": "Finite full-rank reference, eigenvalue gaps >0.1, S minimum eigenvalue >0.1; centered-difference errors decrease with empirical order between 1.7 and 2.3 over final two refinements; final max errors <0.002. Wrong-energy/omitted-overlap/connection mutations must remain separated by >0.01 at reference. If floors intervene preserve failure before any prospective change.",
+    "execution": "Actual canonical Python /home/administrator/projects/substrate-framework/.venv/bin/python; PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src. New labeled herdr tab, systemd user durable owner, CPUAffinity=5, MemoryMax=2G, OMP/MKL/OPENBLAS=1. Atomic receipt includes input, code, runtime hashes and raw failure traceback. No automatic retries."
+  },
+  "source_boundary": {
+    "load_bearing_inputs": ["this preregistration", "../../W2-readiness.json", "user starting definitions"],
+    "settled_source_context": ["../../sources/dal-corso2001-provenance.json", "../../sources/electronic-model-source-correction.json"],
+    "independence": "No ForceSourceAudit output consumed. Literature is not used to license the finite construction as a physical Ni vertex."
+  },
+  "pass_licenses": "Conditional algebraic reconstruction only under explicitly checked finite-dimensional assumptions; exact counterexamples settle stated insufficiency claims.",
+  "does_not_license": ["physical Ni force conversion", "electronic bath", "material damping or linewidth", "coherence", "nuclear conclusions", "identification of QE/GPAW valence spaces"],
+  "maximum_verdict": "symbolic_verified conditional finite identities plus numeric_evidence on declared curves",
+  "failure_scope": "A failed block stops canonical composition and is preserved before repair; no physical inference from algebraic success.",
+  "unlocks": "Root integration after independent source and metric slices settle; no W2 production license."
+}

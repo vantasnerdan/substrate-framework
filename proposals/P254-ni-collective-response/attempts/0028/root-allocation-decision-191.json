@@ -1,0 +1,17 @@
+{
+  "schema": "P254-root-allocation-decision-v1",
+  "decision": "Root191",
+  "actual_decision_time": "2026-10-30T18:55:33.715284+00:00",
+  "previous_due_time": "2026-10-30T19:07:54.376462+00:00",
+  "deadline_breach": false,
+  "next_decision_due": "2026-10-30T19:05:33.715284+00:00",
+  "action": "Treat bg241 wait timeout as a visibility failure, not a scientific failure. Immediately inspect the actual Main observer receipt/pane and own Native scientific outputs within120s; keep SAME source/caps/process/original clock, no restart or new allocation. Restore a genuinely delivered callback before relying on further observation scheduling.",
+  "evidence": {
+    "observer_job": "bg_241",
+    "observed_result": "herdr pane wait-output timed out after3000.14s without matching the expected assembled wake marker",
+    "expected_observer_wake_utc": "2026-10-30T18:47:00+00:00",
+    "scientific_status": "unobserved by this failed wait; do not infer run failure or progress from it"
+  },
+  "scientific_scope": "Read-only own observer/own scientific unit and immutable receipts; no unrelated process checks, source/cap changes, data deletion or producer restart.",
+  "diagnostic_seconds": 120
+}

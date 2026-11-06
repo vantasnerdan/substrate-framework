@@ -1,0 +1,85 @@
+{
+  "checks": [
+    "fixture operators complex Hermitian and noncommuting",
+    "explicit bit Fock CAR for all orbital pairs",
+    "fermion sign mutation exposes CAR violation",
+    "FD partition equals full Fock enumeration",
+    "FD density equals exact Fock one-body trace",
+    "physical Gibbs positive normalized state",
+    "population fourth cumulant differs from Gaussian zero",
+    "FD partition equals full Fock enumeration",
+    "FD density equals exact Fock one-body trace",
+    "physical Gibbs positive normalized state",
+    "population fourth cumulant differs from Gaussian zero",
+    "arbitrary smoothing occupations fail physical Gibbs ratio",
+    "smoothing fixture is not FD at another common beta and mu"
+  ],
+  "manifest_sha256": "bad69a9f9d28af6168a1fcfd3fd38f3197db410f912aa1d4e0465bbd54acea5c",
+  "pid": 3993532,
+  "source_hashes": {
+    "proposals/P254-ni-collective-response/attempts/0007/check_state.py": "7b5426f1c9436c11265864c15d0e157b0c8fdccc599db166ac169d1cda577733",
+    "proposals/P254-ni-collective-response/attempts/0007/fixtures.py": "2b4b6c1c7120a7b9826615c924c10682affc652c6c9bf569a9e9ce40f2a06499",
+    "proposals/P254-ni-collective-response/attempts/0007/registration.json": "eb1df7bf9eb3284717c91b928683062446332b97f99e9c3e77693cd19ba1879e",
+    "src/substrate_framework/finite_fermion_state.py": "583c99ae2b77e2976297ea1fe9e488106993500b7a125b406f8e5bb99c07ef7c",
+    "src/substrate_framework/verification.py": "278ea2593a0cacc5a72cbf4e6e7e6e5ad138206ac2da9134bed4ce12a00327cb"
+  },
+  "state": {
+    "Gibbs_ratio_residual": "-1/6",
+    "effective_beta_mismatch": "-log(9)/log(5) + log(3)/log(2)",
+    "fixtures": [
+      {
+        "energies": [
+          "0",
+          "log(2)",
+          "log(5)"
+        ],
+        "f": [
+          "1/2",
+          "1/3",
+          "1/6"
+        ],
+        "fourth_cumulant_n2": "5/216",
+        "partition": "18/5",
+        "rho_diagonal": [
+          "5/18",
+          "5/18",
+          "5/36",
+          "5/36",
+          "1/18",
+          "1/18",
+          "1/36",
+          "1/36"
+        ]
+      },
+      {
+        "energies": [
+          "0",
+          "0",
+          "log(3)"
+        ],
+        "f": [
+          "1/2",
+          "1/2",
+          "1/4"
+        ],
+        "fourth_cumulant_n2": "-3/128",
+        "partition": "16/3",
+        "rho_diagonal": [
+          "3/16",
+          "3/16",
+          "3/16",
+          "3/16",
+          "1/16",
+          "1/16",
+          "1/16",
+          "1/16"
+        ]
+      }
+    ],
+    "non_FD_occupation_mutant": [
+      "1/2",
+      "1/4",
+      "1/10"
+    ]
+  }
+}

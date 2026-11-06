@@ -1,0 +1,110 @@
+{
+  "schema": "P254-finiteq-component-source-registration-v1",
+  "status": "implemented; oracle and material consumer NOT executed by worker",
+  "scope": "Core S electronic rectangular finite-q full-PW bridge; no claim of complete material dynamics or calibrated state",
+  "modules": {
+    "src/substrate_framework/qe_bloch_edge.py": "BlochEdge.create(reference, source_basis, target_basis, q_fractional); checked same-spin complete-grid connection, integer edge fold distinct from source-star shifts, exact-representative reverse",
+    "src/substrate_framework/qe_bloch_finiteq.py": "BlochFiniteQBridge(inputs, edge, block_size=8); bounded local_apply/local_adjoint_apply, arbitrary rectangular complex dyad density, density_gradient and physical density_pair",
+    "src/substrate_framework/qe_bloch_finiteq_ionic.py": "BlochFiniteQIonic(inputs, edge, source_factors=None, target_factors=None, tables=None, block_size=8); prepare(direction).apply/adjoint_apply and moments; finiteq_radial_tables extends numerical range retaining original UPF objects"
+  },
+  "contracts": {
+    "edge": "kt=ks+q+B*ell; q fractional in physical reciprocal columns, commensurate with declared mesh; source-star reciprocal_shift is not ell",
+    "local": "A_ts[v]X=F_t(exp(-2*pi*i*ell.x)*v*U_s X); independent adjoint F_s(exp(+2*pi*i*ell.x)*conj(v)*U_t Y)",
+    "density": "For X_ts=L_t C R_s^dagger, n_q=weight/Omega*exp(+2*pi*i*ell.x)*diag(U_t X_ts U_s^dagger); output [NFFT,2] with only explicit spin populated",
+    "density_pair": "Omega/NFFT*sum(conj(n_q)*v_q)=weight*Tr(X_ts^dagger A_ts[v]); density_gradient uses i(q+G) only on declared density support",
+    "ionic": "g_ts[u]=A_ts[v_q,u]+i Bt D Bs^dagger (ps.u)-i (pt.u) Bt D Bs^dagger, summed over every actual atom; no extra atom-q phase",
+    "gradient": "moments returns density and positive_gradient[a]=weight*Tr(g_ts[e_a]^dagger X_ts). vdot(u,positive_gradient)=weight*Tr(g_ts[u]^dagger X_ts). dot(u,positive_gradient) is the support-pinned opposite-edge trace-bilinear pairing, not the forward one",
+    "units": "k,q,G in bohr^-1; positions and displacement amplitude in bohr; direction dimensionless; local potentials Ry or dimensionless number profiles; g and positive_gradient Ry/bohr; density bohr^-3; Omega/NFFT bohr^3",
+    "weight": "caller supplies explicit real sector weight exactly once (actual complete-grid per-cell quadrature 1/64 per explicit spin); no spin degeneracy multiplier",
+    "storage": "all orbital/grid temporaries bounded by block_size in 1..16; persistent original species factors allowed; no full-PW-square matrices or global block-diagonal D in implementation; return arrays scale with requested output columns"
+  },
+  "primary_sources_read_and_hashed": [
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/compute_dvloc.f90",
+      "bytes": "5678",
+      "sha256": "3ccbef8f0ed2538c63f3e496644d455595ea4c11b7d9fe0b6a82a39158f42dea",
+      "read_lines": "80-106",
+      "equation": "bare local -i(q+G).u atomic derivative"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/dvqpsi_us_only.f90",
+      "bytes": "9697",
+      "sha256": "acdb9350d41de568b6840138484561b1ccd8c93ed4682373787d15ce88218dbb",
+      "read_lines": "110-141,199-240",
+      "equation": "full species D and both target projector and target-momentum terms"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/phq_init.f90",
+      "bytes": "11990",
+      "sha256": "d227f2133db7a14253c5154e54ca637169e078e493736116999c6cb2f5a84837",
+      "read_lines": "98-104,201-237",
+      "equation": "atomic exp(-i q.tau), plus-i source overlap derivative"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/sources/giustino2017-electron-phonon.pdf",
+      "bytes": "7477428",
+      "sha256": "5d980627ad272b2a92d1f760f0e6a0883b1b3fcc941436903a361024ce330251",
+      "doi": "https://doi.org/10.1103/RevModPhys.89.015003",
+      "original_acquisition": "Existing metadata records https://arxiv.org/pdf/1603.06965 accessed 2026-10-19; author arXiv manuscript dated January 31, 2017, not publisher typesetting",
+      "download_outcome_this_assignment": "No network request or new download attempted; existing original PDF bytes hashed"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/sources/giustino2017-electron-phonon.txt",
+      "bytes": "358858",
+      "sha256": "ccdc09a5916245043cc74c63885e4f7d997f980f2ee03ec56c7e22eab0ec4067",
+      "read_lines": "1041-1080,1120-1156,1267-1285,6691-6710",
+      "equations": "29 normalization, 35/38 directed Bloch coupling, 43 local derivative, Appendix A BvK Fourier grid"
+    }
+  ],
+  "actual_material_source_declarations": {
+    "base_path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/",
+    "files_read_and_hashed": {
+      "data-file-schema.xml": {"bytes": "428069", "sha256": "3831ae2b83231b02475931d50055415b1d9673cdb05edb4541d0f1115ec383da"},
+      "H_ONCV_PBE-1.2.upf": {"bytes": "64999", "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a", "read_flags": "NC, no NLCC, no spin orbit, z_valence=1"},
+      "Ni_ONCV_PBE-1.2.upf": {"bytes": "115509", "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e", "read_flags": "NC, no NLCC, no spin orbit, z_valence=18"}
+    },
+    "accepted_bindings_carried_without_large_read": {
+      "charge-density.dat": {"bytes": "6538392", "sha256": "3b239c650b515d3e4e1921ca4ea5a1f7503bcd09f1810d49ddef5047b4c5ea08"},
+      "wfcup2.dat": {"bytes": "103023744", "sha256": "1ba24afbd8cbb36c53e85a8704c66ec87f83911754cefc6aaa23484c3a2fb7fd"},
+      "wfcup3.dat": {"bytes": "102973812", "sha256": "a02328ae0ca8f07f16f78f07a5f828416410bd042dbeae213a8c9d84f4868826"}
+    },
+    "binding_authority_read": "proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-2.json metadata.inputs and original_binding",
+    "accepted_components": "A25 matched H0/Kq; A27 admitted original source grid/rows; no accepted computations rerun"
+  },
+  "oracle": {
+    "path": "proposals/P254-ni-collective-response/attempts/0028/run_finiteq_oracle.py",
+    "command_from_repo_root": "PYTHONPATH=src python proposals/P254-ni-collective-response/attempts/0028/run_finiteq_oracle.py",
+    "dependencies": "NumPy, SciPy, SymPy, existing attempts/0027/bloch_oracle_fixture.py",
+    "scope": "Independent literal finite Fourier sums and analytic two-s-projector model with off-diagonal D; real reciprocal fold, unequal PW row counts, both explicit spins, rectangular complex coefficients, both coefficient absorption branches, reverse adjoints, all-coordinate positive gradient, physical measure, i(q+G) gradient",
+    "refinement": "Central differences of independently displaced complex local/projector phases at epsilon=.02,.01,.005; physical FFT refinement 9^3 to 13^3",
+    "mutations": ["fold sign", "density fold sign", "lost source derivative", "lost target derivative", "wrong endpoint k", "diagonalized species D", "lost volume", "orbital-k density gradient", "edge fold corruption", "source symmetry fold substituted into edge"],
+    "radial_range": "Separate numerical range-extension check preserves the same UPF object and prior-range values and evaluates the requested maximum",
+    "execution": "NOT RUN by worker; no asserted numerical outcomes"
+  },
+  "material_smoke_consumer_description": {
+    "execution": "NOT RUN; Root owns material execution",
+    "inputs": "Reuse accepted A25 MaterialInputs/background and A27 BlochGrid; grid.load_frame only for spin=1 source mesh (0,0,1), source_ik=2, and target mesh (0,0,2), source_ik=3",
+    "edge": "BlochEdge.create(inputs.reference, source_frame.basis, target_frame.basis, (0,0,0.25))",
+    "expected_metadata_from_accepted_sources": "ks=(0,0,1/4), kt=(0,0,-1/2), ell=(0,0,-1), nsource=18569, ntarget=18560; these are not new computed results",
+    "actions": [
+      "Construct BlochFiniteQIonic(inputs,edge,block_size=2), reusing already built exact endpoint factors when available; its bridge is the number/potential bridge",
+      "Retain source raw columns 1..3 and target raw columns 1..2 only as action probes; all PW rows remain, with no projected band closure",
+      "Use declared physical profile cos(2*pi*x)+i*sin(2*pi*y) on the 72^3 F-order grid; call local_apply(profile,source_raw) and local_adjoint_apply(profile,target_raw)",
+      "Set dimensionless direction[31,0]=1 and direction[0,1]=i in the original 37-atom order; all other entries zero. prepare(direction).apply(source_raw) and adjoint_apply(target_raw) give the bare H32-x+iNi1-y coupling",
+      "Declare a nontrivial complex coefficient[2,3], call moments(target_raw,source_raw,coefficient,weight=source_slot.weight), obtaining explicit-spin density and all 111 positive-gradient entries",
+      "Pair density with profile using density_pair and compare with weight*Tr(C^dagger L^dagger A R); pair ionic gradient with direction using vdot and compare with weight*conj(Tr(C^dagger L^dagger g R))",
+      "Apply density_gradient and, separately if required by Root, accepted background.apply_kernel(density,q_bohr_inv=edge.q_cart_bohr_inv); the kernel response does not replace the bare ionic vertex",
+      "Record endpoint original bindings, basis identities, distinct star/edge folds, numerical table ranges, action arrays and pairing residuals; report a smoke calculation only, not a material-state total"
+    ]
+  },
+  "unresolved_physical_limitations": [
+    "No symbolic/numerical execution or material smoke performed here; Root must execute the new independent oracle before consuming it",
+    "Ordinary NC/no-NLCC collinear scalar saved-input scope; no ultrasoft/PAW, spin-orbit or spin-flip extension",
+    "Finite declared PW/density grids and source-matched Fourier support remain approximations; neither cutoff nor thermodynamic convergence is established",
+    "Independent canonical -q local reconstruction can truncate a different support. Only the supplied exact adjoint is guaranteed; do not substitute a freshly truncated reverse vertex",
+    "Unitary Bloch source-star extension is the accepted canonical representation, not proof of little-group-independent physical preparation",
+    "No saved-band closure, material population choice, equilibrium, screened electron-phonon vertex, new-state Hessian, dissipation or trajectory is supplied by these operators",
+    "No regional observable weight or BvK region Fourier normalization is inferred; caller must supply these and combine all declared k/spin edges",
+    "Ionic-wavevector force curvature and full material reference/dynamics integration are separate owned components"
+  ]
+}

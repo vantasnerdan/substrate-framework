@@ -1,0 +1,95 @@
+"""Exact printed-decimal boxes and unprojected per-atom force differences.
+
+These enclose printing alone, not SCF or discretization error. Units and gates
+are explicit caller inputs; no material or engine convention is implicit.
+"""
+from decimal import Decimal, InvalidOperation
+import re
+
+import sympy as sp
+
+_DECIMAL = re.compile(r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eEdD][-+]?\d+)?\Z")
+
+
+def printed_interval(token):
+    """Return exact center and half last-place quantum, including exponent."""
+    if not isinstance(token, str) or not _DECIMAL.fullmatch(token):
+        raise ValueError('Expected a finite native decimal lexeme')
+    try:
+        decimal = Decimal(token.replace('D', 'E').replace('d', 'e'))
+    except InvalidOperation as error:
+        raise ValueError('Invalid decimal') from error
+    return sp.Rational(str(decimal)), sp.Rational(10) ** decimal.as_tuple().exponent / 2
+
+
+def difference_box(first, second, factor):
+    """Minkowski difference of two printed 3-vectors in positive output units."""
+    factor = sp.sympify(factor)
+    if factor.is_positive is not True or len(first) != 3 or len(second) != 3:
+        raise ValueError('Positive conversion and exactly three components required')
+    result = []
+    for left, right in zip(first, second):
+        a, ra = printed_interval(left)
+        b, rb = printed_interval(right)
+        result.append(((a-b-ra-rb)*factor, (a-b+ra+rb)*factor))
+    return tuple(result)
+
+
+def box_norm_squared(box):
+    """Exact extrema of sum x_i**2 on a closed Cartesian component box."""
+    if len(box) != 3 or any(lo > hi for lo, hi in box):
+        raise ValueError('Expected three ordered intervals')
+    lower = sum(0 if lo <= 0 <= hi else min(lo*lo, hi*hi) for lo, hi in box)
+    upper = sum(max(lo*lo, hi*hi) for lo, hi in box)
+    return sp.simplify(lower), sp.simplify(upper)
+
+
+def vector_difference_squared(first, second, factor):
+    """Full raw Euclidean squared difference of exact printed centers."""
+    if len(first) != 3 or len(second) != 3 or sp.sympify(factor).is_positive is not True:
+        raise ValueError('Positive conversion and exactly three components required')
+    return sum((printed_interval(a)[0]-printed_interval(b)[0])**2
+               for a, b in zip(first, second)) * factor**2
+
+
+def max_force_difference(first, second, factor):
+    """Per-atom squares and exact extrema of their maximum, with no projection."""
+    if not first or len(first) != len(second):
+        raise ValueError('Nonempty equally ordered atom arrays required')
+    factor = sp.sympify(factor)
+    if factor.is_positive is not True:
+        raise ValueError('Positive unit conversion required')
+    centers, lowers, uppers = [], [], []
+    for a, b in zip(first, second):
+        centers.append(vector_difference_squared(a, b, sp.S.One))
+        lo, hi = box_norm_squared(difference_box(a, b, sp.S.One))
+        lowers.append(lo)
+        uppers.append(hi)
+    scale = factor**2
+    return {'center_squared': max(centers)*scale, 'lower_squared': max(lowers)*scale,
+            'upper_squared': max(uppers)*scale,
+            'per_atom_center_squared': [x*scale for x in centers],
+            'per_atom_lower_squared': [x*scale for x in lowers],
+            'per_atom_upper_squared': [x*scale for x in uppers],
+            'max_center_atom_1based': centers.index(max(centers))+1}
+
+
+def printing_decision(lower_squared, upper_squared, gate):
+    """Strict below/above or inconclusive against an exact nonnegative gate."""
+    gate = sp.sympify(gate)
+    if gate.is_nonnegative is not True or not 0 <= lower_squared <= upper_squared:
+        raise ValueError('Nonnegative ordered bounds and gate required')
+    if upper_squared < gate**2:
+        return 'guaranteed_below'
+    if lower_squared > gate**2:
+        return 'guaranteed_above'
+    return 'print_inconclusive'
+
+
+def scalar_difference_interval(first, second, factor=sp.S.One):
+    """Exact signed first-minus-second printing interval in explicit units."""
+    if sp.sympify(factor).is_positive is not True:
+        raise ValueError('Positive unit conversion required')
+    a, ra = printed_interval(first)
+    b, rb = printed_interval(second)
+    return ((a-b-ra-rb)*factor, (a-b+ra+rb)*factor)

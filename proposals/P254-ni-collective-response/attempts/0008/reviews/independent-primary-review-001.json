@@ -1,0 +1,16 @@
+{
+  "overall_correctness": "incorrect",
+  "explanation": "The current primary-resolution numerical conclusion is supported, but one bounded verifier defect remains: the claimed force-rounding-enclosure sensitivity does not expose omission of the printing-uncertainty term, so this quantitative part does not yet meet the requested exposing-oracle criterion.\n\nEvidence reviewed includes commit 9945b19d, the complete attempt0008 report/index and worker report, the reusable module and every check/parser/runner/replay/metadata script, registrations and source/checkpoint inventories, all force/unit/geometry/source checkpoint results, metadata receipt, actual terminal/owner outcomes, and the settled native input/stdout/final geometry plus relevant original publication/ASE unit and COM implementations; these support the source-linked 37-mobile-atom identity, CODATA2006 publication conversions, raw maximum 0.00448257047106021 eV/angstrom, mathematically valid current triangle bound 0.004482793135125552 below the 0.005 gate, periodic-distance interpretation, native moments/pressure, and distinct observed 322/336/35-check invocations rather than independent prediction counts.\n\nThis was read-only source/receipt review without tests, native reruns, edits or another bulk checksum pass; the finding below is source-level mutation analysis rather than an executed mutation, does not refute the current raw-gate result, needs only a bounded oracle correction rather than native recalculation, leaves the prior finite-fermion artifact untouched, and grants no convergence, equilibrium, unique-spin, mode, loss/coherence, nuclear, full-L1 or campaign-delivery license.",
+  "confidence": 0.94,
+  "findings": [
+    {
+      "title": "Expose omission of the force-rounding uncertainty term",
+      "body": "[INFERENCE from source-level mutation analysis; not executed] Both enclosure assertions still pass if `force_rounding_upper` is replaced by bare row norms: the recorded maximum is 0.00448257047106021, below 0.005, while doubling it is already above 0.005 without any rounding allowance. Such a mutant changes the reported enclosure and even assigns zero upper bounds to printed-zero force rows despite their nonzero allowed component-printing errors, but neither assertion detects that the result no longer encloses the declared rounding box; the doubled-force witness therefore tests force magnitude, not the advertised uncertainty enclosure. Add an independently evaluated component-box corner/exact-norm enclosure oracle and a near-threshold witness that rejects omission or zeroing of the uncertainty radius, while preserving the existing native results and receipts.",
+      "priority": 2,
+      "confidence": 0.98,
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0008/check_forces.py",
+      "line_start": 28,
+      "line_end": 30
+    }
+  ]
+}

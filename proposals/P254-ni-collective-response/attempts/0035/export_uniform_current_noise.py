@@ -1,0 +1,143 @@
+"""Original-sector full-PW initial uniform electronic-current covariance.
+
+Three actual real Cartesian J=-L/2 actions; Hermiticity supplies their equal
+adjoints. No force, H, trajectory or preparation replay. Only a complete scalar
+case is a checkpoint: temporary full-row action arrays are not recoverable.
+"""
+import argparse
+from hashlib import sha256
+import json
+import os
+from pathlib import Path
+import resource
+import sys
+from time import perf_counter
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[3]
+sys.path[:0] = [str(ROOT/'src'), str(HERE)]+[str(HERE.parent/name)
+    for name in ('0034', '0030', '0029', '0028')]
+PLAN = HERE/'implementation-contract-001.json'
+PLAN_SHA256 = '16e4f1330afd5f8a16af31959f914bafb156d55dfb650f20f86cd514f0431316'
+PROBE_NAMES = ('current_x', 'current_y', 'current_z')
+
+
+def _binding(path):
+    path = Path(path).resolve(strict=True)
+    data = path.read_bytes()
+    return dict(path=str(path), bytes=len(data), sha256=sha256(data).hexdigest())
+
+
+def _fixed_contract():
+    binding = _binding(PLAN)
+    if binding['bytes'] != 5419 or binding['sha256'] != PLAN_SHA256:
+        raise ValueError('fixed original A35 implementation contract bytes required')
+    with PLAN.open(encoding='utf-8') as stream:
+        contract = json.load(stream)
+    if contract['schema'] != 'P254-A35-original-full-PW-uniform-current-noise-plan-v1':
+        raise ValueError('fixed A35 uniform-current plan required')
+    return binding, contract
+
+
+def scientific_identity():
+    """Validate and hash scientific source bytes; no physical work on import/call.
+
+    This is a scientific source identity, not a complete binary/runtime lock.
+    No legacy-current admission exists: consumers require this exact identity.
+    """
+    from mode_noise_compatibility import load_compatibility
+    plan_binding, contract = _fixed_contract()
+    expected = contract['existing_scientific_profile']
+    if _binding(expected['path']) != expected:
+        raise ValueError('fixed validated A34 scientific profile bytes required')
+    profile = load_compatibility()
+    payload = dict(plan=plan_binding,
+        existing_scientific_source_identity=profile['scientific_compatibility_identity'],
+        uniform_current_sources=[_binding(HERE/name) for name in
+            ('export_uniform_current_noise.py', 'uniform_current_inputs.py')])
+    digest = sha256(json.dumps(payload, sort_keys=True, separators=(',', ':'),
+        allow_nan=False).encode()).hexdigest()
+    return dict(schema='P254-A35-scientific-source-identity-v1', sha256=digest)
+
+
+def save_json(path, value):
+    """Publish exclusively, persisting file data and its containing directory."""
+    from clamped_scientific_readout import encode
+    from checkpoint_directories import sync_directory
+    from substrate_framework.streamed_material_state import file_binding
+    path = Path(path)
+    with path.open('x') as stream:
+        json.dump(encode(value), stream, indent=2, sort_keys=True, allow_nan=False)
+        stream.write('\n')
+        stream.flush()
+        os.fsync(stream.fileno())
+    sync_directory(path.parent)
+    return file_binding(path)
+
+
+def run(args):
+    started = perf_counter()
+    compatibility_identity = scientific_identity()
+    _, contract = _fixed_contract()
+    # Admit the fixed supplied originals before creating a case or doing work.
+    from substrate_framework.streamed_material_state import file_binding
+    from aggregate_mode_noise import same_binding
+    for path, expected in ((args.initial_result, contract['original_initial']),
+            (args.coefficient_manifest, contract['original_coefficients'])):
+        if file_binding(path) != expected:
+            raise ValueError('fixed original A35 input binding required: '+str(path))
+    if type(args.original_record) is not int or not 0 <= args.original_record < 128:
+        raise ValueError('one original record in 0..127 required')
+    from checkpoint_directories import make_directory
+    from uniform_current_inputs import prepare_uniform_current_inputs
+    from export_output_directed_actions import covariance_rows
+    from substrate_framework.material_noise_projection import projected_noise_decomposition
+    output = Path(args.output).resolve()
+    make_directory(output, exist_ok=False)
+    print('[physics] restoring original record '+str(args.original_record)+
+        '; three current actions, three Hermitian adjoint reuses', flush=True)
+    inputs = prepare_uniform_current_inputs(args.initial_result,
+        args.coefficient_manifest, args.original_record)
+    if tuple(inputs.probes) != PROBE_NAMES:
+        raise ValueError('exact requested three Cartesian current probes required')
+    if (not same_binding(inputs.source['original_boundary'], contract['original_boundary'])
+            or not same_binding(inputs.source['preparation'], contract['preparation'])):
+        raise ValueError('fixed original boundary/preparation required')
+    contraction_started = perf_counter()
+    moments = projected_noise_decomposition(**inputs.algebra_arguments())
+    contraction_seconds = perf_counter()-contraction_started
+    result = dict(schema='P254-A35-original-sector-uniform-current-noise-v1',
+        status='complete', original_record=args.original_record,
+        scientific_compatibility_identity=compatibility_identity,
+        quadrature_weight=inputs.quadrature_weight, quadrature_applied=False,
+        source=inputs.source, frame=inputs.frame,
+        factor_identity=inputs.factor_identity, pw_basis_identity=inputs.pw_basis_identity,
+        state_authority=inputs.state_authority, probe_names=list(PROBE_NAMES),
+        units='electronic_current_hartree', covariance=covariance_rows(moments),
+        covariance_metadata=moments['metadata'],
+        work=dict(elapsed_seconds=perf_counter()-started,
+            contraction_seconds=contraction_seconds,
+            peak_rss_bytes=int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)*1024,
+            operator_work=inputs.operator_work, raw_action_payloads_written=False),
+        implementation=[file_binding(HERE/name) for name in
+            ('export_uniform_current_noise.py', 'uniform_current_inputs.py')],
+        scope='One original initial external-Gamma full-PW/all-raw-column electronic '
+            'sector, saved12 retained coordinates and unchanged S/D/preparation. '
+            'All nine ordered current covariances and four retained/omitted blocks, '
+            'unweighted; not a canonical photon-force map, finite-q density noise, '
+            'temperature, stationarity, FDT, loss, linewidth, heat, trajectory or '
+            'full-parent closure.')
+    result_binding = save_json(output/'result.json', result)
+    save_json(output/'done.json', dict(result=result_binding))
+    print(json.dumps(dict(result=result_binding, original_record=args.original_record,
+        work=result['work']), sort_keys=True), flush=True)
+    return result
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--initial-result', required=True)
+    parser.add_argument('--coefficient-manifest', required=True)
+    parser.add_argument('--original-record', type=int, required=True)
+    parser.add_argument('--output', required=True)
+    run(parser.parse_args())

@@ -1,0 +1,142 @@
+{
+  "schema": "P254-joint-partitioned-material-v1",
+  "status": "complete",
+  "mode": "reduce",
+  "cpus": [
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "blas_threads": 1,
+  "requested_interval": 0.0,
+  "scope": "all-slot homogeneous physical mean; not whole local-q/quantum completion",
+  "oracle": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-partitioned-oracle-001.json",
+    "bytes": 8863,
+    "sha256": "76569c708667e0c86cce82d09445363cd5dbe65ffa4b6b0920a442511a95cf33"
+  },
+  "initial_boundary": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-material-initialize-003/initial/boundary.json",
+    "bytes": 133982,
+    "sha256": "a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe"
+  },
+  "resource_plan": {
+    "workers": 5,
+    "simultaneous_slots": 5,
+    "original_frame_bytes": 13137509056,
+    "max_single_frame_bytes": 103041696,
+    "retained_new_frame_sets": 0,
+    "complex_contraction_payload_bytes_per_complete_barrier": 764649472,
+    "maximum_reduction_barriers_before_cache_reuse": 1,
+    "storage_estimate_note": "payload excludes NPY/JSON/stage arrays and failed-attempt storage; hard reservation remains authoritative",
+    "midpoint_storage": "per-slot n/G/ell/H0-energy receipts, not trial full frames",
+    "output_accounting": "all incomplete and complete files retained; hard cumulative invocation reservation",
+    "memory": "mmap original frames/D; one operator/slot per worker; aggregate RSS watchdog"
+  },
+  "initial_reduction": {
+    "kind": "full-initial-reduction",
+    "boundary": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-material-initialize-003/initial/boundary.json",
+    "time_ry_inverse": 0.0,
+    "arrays": {
+      "density": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/density.npy",
+        "bytes": 5972096,
+        "sha256": "f7ae8e6036d2b15b413cc493c2e1a13bd005be3561f37d7a93fcdf7a28371e72"
+      },
+      "gradient": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/gradient.npy",
+        "bytes": 1016,
+        "sha256": "c00c1c99aa167bbb5d8db2ca470e63b92bd7571780bb97b5839d40634f06b200"
+      },
+      "field_gradient_electronic": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/field_gradient_electronic.npy",
+        "bytes": 152,
+        "sha256": "f80f2ce111a92371b530a7320de465dd6ca8880548139fe4d9b6f3cc61a63db1"
+      },
+      "potential": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/potential.npy",
+        "bytes": 5972096,
+        "sha256": "2aaa6a70be3466130a3f7a2384230a9a526e42b89e7031371cb9d147d9d7e950"
+      },
+      "u": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/u.npy",
+        "bytes": 1016,
+        "sha256": "5814dae58063bda834a54500caf0012b8408e86db72a8f7c46d350b5a25b59d9"
+      },
+      "p": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/p.npy",
+        "bytes": 1016,
+        "sha256": "5814dae58063bda834a54500caf0012b8408e86db72a8f7c46d350b5a25b59d9"
+      },
+      "coordinate": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/coordinate.npy",
+        "bytes": 152,
+        "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+      },
+      "momentum": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/momentum.npy",
+        "bytes": 152,
+        "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+      },
+      "shift": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/shift.npy",
+        "bytes": 152,
+        "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+      },
+      "velocity": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/velocity.npy",
+        "bytes": 1016,
+        "sha256": "5814dae58063bda834a54500caf0012b8408e86db72a8f7c46d350b5a25b59d9"
+      },
+      "force": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/force.npy",
+        "bytes": 1016,
+        "sha256": "f80aad407477fc31a69e627f1e5f5e608aac387a4ea6a88a12defd0ebd2f62b3"
+      },
+      "field_velocity": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/field_velocity.npy",
+        "bytes": 152,
+        "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+      },
+      "field_force": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/field_force.npy",
+        "bytes": 152,
+        "sha256": "4c90f59d1a754a68f83a33e99466f536b2ec496377f065cfcc33c391768e7540"
+      },
+      "electronic_current": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/electronic_current.npy",
+        "bytes": 152,
+        "sha256": "8922ef3ca17a36b97a14c0e0802d48df187c2b39a5f31a2b0fc0fc252e771a26"
+      },
+      "ionic_current": {
+        "path": "/var/tmp/p254-a28-joint-partitioned-material-001/initial-reduction-a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe/arrays-4360042289574e389ad738daf75e8d5f/ionic_current.npy",
+        "bytes": 152,
+        "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+      }
+    },
+    "energy_total_ry": -37728.58613008083,
+    "number_per_cell": 563.9999999999999
+  },
+  "initial_energy_total_ry": -37728.58613008083,
+  "initial_number_per_cell": 563.9999999999999,
+  "initial_force_aggregate_difference_max": 1.4613570770944917e-11,
+  "initial_field_rhs_aggregate_difference_max": 6.23671522704862e-13,
+  "completed_boundaries": [],
+  "budget": {
+    "hamiltonian_actions": 116,
+    "action_columns": 40136,
+    "output_bytes_reserved": 777401438,
+    "elapsed_seconds": 1930.1844336148351,
+    "max_actions": 100000,
+    "max_seconds": 2160.0,
+    "max_bytes": 4294967296,
+    "max_memory_bytes": 10737418240,
+    "worker_memory_bytes": 3221225472,
+    "peak_aggregate_rss_bytes": 6163091456,
+    "accounting": "invocation-wide shared counters; existing output charged; attempts retained",
+    "memory_accounting": "parent plus child RSS; shared pages conservatively counted repeatedly",
+    "time_cap": "parent watchdog at 0.1 second intervals; native calls may be terminated"
+  }
+}

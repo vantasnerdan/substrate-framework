@@ -1,0 +1,53 @@
+{
+  "schema": "P254-native-cache-binding-boundary-proof-v1",
+  "actual_time": "2026-10-29T23:00:07.679690+00:00",
+  "actual_cache": {
+    "path": "/var/tmp/p254-a28-loaded-midpoint-frame-cache-001/cache.json",
+    "bytes": 64988,
+    "sha256": "ae76aa9462de5b81e224e21ec4d3da4a53eb1e8c300b45bcff5da631816f9b32"
+  },
+  "source": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual_frame_cache_io.py",
+      "bytes": "6282",
+      "sha256": "4815fdf8f9833d70f4960ff35a82699be3f90e600ef2bad06983f5c4ef156b3d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual_frame_cache_provenance.py",
+      "bytes": "8401",
+      "sha256": "ee6839f4f35fde4518ed2e6b0c27d23009cdaffd3c11aab171a5f7b360b92be7"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reuse_actual_baseline_frames.py",
+      "bytes": "14148",
+      "sha256": "bb1958ce2cc7318b875ea3ff37babf12021521d96961542b19fd03f1fccc943c"
+    }
+  ],
+  "result": {
+    "status": "passed",
+    "scope": "Actual cache metadata/binding and incomplete128-frame barrier, no fakeframes/filemutations/workerlaunch",
+    "checks": {
+      "integer": {
+        "accepted": true,
+        "original_type_preserved": "int"
+      },
+      "decimal_string": {
+        "accepted": true,
+        "original_type_preserved": "str"
+      },
+      "wrong_size": {
+        "refused": true,
+        "error": "metadata differs from its original expected SHA/size"
+      },
+      "wrong_digest": {
+        "refused": true,
+        "error": "metadata differs from its original expected SHA/size"
+      },
+      "partial_cache_refused": {
+        "refused": true,
+        "error": "[Errno 2] No such file or directory: '/var/tmp/p254-a28-loaded-midpoint-frame-cache-001/cache-complete.json'",
+        "target_absent": true
+      }
+    }
+  }
+}

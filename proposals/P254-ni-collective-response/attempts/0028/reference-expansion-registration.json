@@ -1,0 +1,104 @@
+{
+  "schema": "A28-reference-expansion-registration-v1",
+  "status": "registered-before-implementation-no-numerical-execution",
+  "read_source_bindings": [
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/Modules/qexsd_init.f90",
+      "bytes": "74976",
+      "sha256": "aa4d0cab034ec79d39a55afa1ae5f6b78fb08c5864789a05e16eae69dd59231d"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/dynmat0.f90",
+      "bytes": "3243",
+      "sha256": "34da14a72461a398e23b30af5e2b66486fe2989aee990866e9dd683af9d473a4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_frame.py",
+      "bytes": "8825",
+      "sha256": "8cbfa02f4a0a86c91f6d12c8d9464ee3e7e0a267b5696902c8085f1e51be7c6b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_grid.py",
+      "bytes": "7853",
+      "sha256": "5c76340da98609106915b0a226ccf2a2bf1dff3a20103a42e598cf883083f1d6"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_grid.py",
+      "bytes": "4145",
+      "sha256": "278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_ionic_action.py",
+      "bytes": "3727",
+      "sha256": "1135f801ab9a01d217dcedd4f51f13ac5d88233dd6e6050b3710d7a6577e8c05"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_dyads.py",
+      "bytes": "3426",
+      "sha256": "1fa0a286cbccbfb10488b9ab941cfad088eb0eca3fcba7500de29ac1d4ec6867"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_gradient.py",
+      "bytes": "3619",
+      "sha256": "b082ab4a142f5c7609d6c9310d787b5f21c9e9ea4b54baeec1cc3cd8df0f1675"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_reference.py",
+      "bytes": "6647",
+      "sha256": "bc80fd7c36884d5938462347acd2a38cde105158c69b249e6dedb9389fe5c09a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_reference_state.py",
+      "bytes": "7069",
+      "sha256": "e6ef102740a6fe03cefb0324f365a48ea7450f34007ed49e7d6ad1885ccc0bad"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_frozen_curvature.py",
+      "bytes": "8628",
+      "sha256": "44c1c07e2de291eafe98ee108dd97932ecb47d2c4b8e5d1743b0f15aadff34dd"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_saved_reference.py",
+      "bytes": "9119",
+      "sha256": "2e0e650956ccf117a6b38ac0d2b81e6adbcb6fa7fae6748e9b65ecfe815d8be6"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/dynmat_us.f90",
+      "bytes": "9985",
+      "sha256": "debdb33f4aee18761fadb0bdcda4e7bd0d7ebfc44b4b08750ff876c6428d006e"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/src/compute_deff.f90",
+      "bytes": "3540",
+      "sha256": "062f4122452eae9597a64749cdb378bd7ea9a786e25f602f9f339a5eaea02126"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-source-001/source-state.json",
+      "bytes": "2205",
+      "sha256": "f3cd952bfcec6d6c9161b533fa562be5f77bcfb16757b8a290d99b91d180ad20"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-source-002/slot-1-density-gradient.json",
+      "bytes": "3096",
+      "sha256": "b970c88cae5f1b27f0cf766d4b2ae3f243a1dac014e3f714ee5f7b865133c048"
+    }
+  ],
+  "primary_blocks": {
+    "qexsd_init.f90": "1247-1249 raw occupations=wg/wk separately for each spin; source MV uses XML source weight",
+    "dynmat0.f90": "73-90 symmetry applied only for nonzero modenum; original mode provenance must be retained",
+    "dynmat_us.f90": "92-123 local;144-165 second projector overlaps;209-219 four nonlocal terms",
+    "compute_deff.f90": "35-42 ordinary NC D independent of band energy"
+  },
+  "scope": {
+    "transport": "checked unitary scalar BlochGrid only; exact grid pullback and state representation; geometry discrepancy and background diagnostics retained; no H0 reuse assertion",
+    "curvature": "local functional of full conditional density minus actual saved QE density; nonlocal full conditional slot sum minus original-source raw numerical MV contraction with XML source weight; Ry/bohr^2; no screening, ASR, fitting or probability reinterpretation",
+    "aggregation": "every conditional spin/mesh slot with its own weight; original-source numerical MV weighted once per spin/source, not silently symmetry transported; complete coverage required",
+    "execution": "independent oracle and one actual-source consumer supplied for Root; full material not run"
+  },
+  "owned_files": [
+    "src/substrate_framework/material_reference_transport.py",
+    "src/substrate_framework/material_frozen_state_curvature.py",
+    "proposals/P254-ni-collective-response/attempts/0028/run_reference_expansion_oracle.py",
+    "proposals/P254-ni-collective-response/attempts/0028/run_reference_expansion_material.py"
+  ]
+}

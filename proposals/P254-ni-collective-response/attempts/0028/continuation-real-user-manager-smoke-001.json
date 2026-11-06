@@ -1,0 +1,95 @@
+{
+  "schema": "P254-continuation-real-user-manager-smoke-v1",
+  "status": "PASS",
+  "actual_utc": "2026-10-31T01:36:56.645896+00:00",
+  "unit": "p254-cumulative-continuation-context-smoke-001.service",
+  "context": {
+    "uid": 1000,
+    "gid": 1000,
+    "groups": [
+      4,
+      27,
+      1000
+    ],
+    "affinity": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "nofile": [
+      8192,
+      8192
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "PYTHONPATH": "/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+      "XDG_RUNTIME_DIR": "/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"
+    },
+    "manager": {
+      "Restart": "no",
+      "TimeoutStopUSec": "15s",
+      "RuntimeMaxUSec": "1min 30s",
+      "MainPID": "2187421",
+      "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-cumulative-continuation-context-smoke-001.service",
+      "MemoryHigh": "17179869184",
+      "MemoryMax": "19327352832",
+      "MemorySwapMax": "0",
+      "LimitNOFILE": "8192",
+      "LimitNOFILESoft": "8192",
+      "CPUAffinity": "6-10",
+      "KillMode": "mixed",
+      "InvocationID": "1c63aea3e2a049509f25dc7b928f30e3"
+    }
+  },
+  "cli": {
+    "argv": [
+      "/usr/bin/python3",
+      "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/p254-original-source-continuation-20261031/run_original_mixed_continuation.py",
+      "--producer",
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003",
+      "--producer-owner-sha256",
+      "c543177271dc775d91e71cbba6253be99de2b0448ef9c7639c4097af49b9ae25",
+      "--allocation",
+      "/var/tmp/p254-no-production-continuation-allocation-issued.json",
+      "--allocation-sha256",
+      "0000000000000000000000000000000000000000000000000000000000000000",
+      "--output",
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/continuation-user-manager-active-owner-refusal-001.json"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "{\"error\": \"BlockingIOError: [Errno 11] Resource temporarily unavailable\", \"schema\": \"P254-original-source-mixed-continuation-v1\", \"status\": \"refused\"}\n"
+  },
+  "supervisor_sources": [
+    {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/p254-original-source-continuation-20261031/continuation_allocation.py",
+      "bytes": 20957,
+      "sha256": "ab5133ffa07bd5af2e469d9d2d665391c08972bd1fd21a6c15be3e8be733a73f"
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/p254-original-source-continuation-20261031/restore_original_inputs.py",
+      "bytes": 4537,
+      "sha256": "5cefc636ccc97d5324d42bf0b12799607bdf003403047d800b96609884e4bbdd"
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/p254-original-source-continuation-20261031/run_original_mixed_continuation.py",
+      "bytes": 24583,
+      "sha256": "78e5e2d5ffe682a7ad45d638bd38ff9116687c10e7a1c35d014fbf09f7d6417d"
+    }
+  ],
+  "checks": [
+    "actual_same_user_manager_identity_and_groups",
+    "actual_cpu_affinity_and_kernel_NOFILE",
+    "one_thread_environment_and_memory_limits",
+    "actual_current_CLI_excludes_active_original_owner_before_factory",
+    "original_owner_unchanged_no_new_invocation_or_output"
+  ],
+  "scope": "Bounded non-Native context smoke only,90s maximum; NOT production authority or a material continuation. Original producer/source/deadline untouched."
+}

@@ -1,0 +1,2770 @@
+{
+  "schema": "P254-full-field-moments-material-v1",
+  "mode": "source",
+  "registration": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/full-field-moments-registration.json",
+    "bytes": "7173",
+    "sha256": "39ba722eed1b9fce8799a32d17d6bcc6d444145e567d201fff31ea9cc65e8058"
+  },
+  "oracle": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/full-field-moments-oracle-002.json",
+    "bytes": "6603",
+    "sha256": "ac225e5b5beb3d13820f4d716759159a2527195568f4027787bd7701b086dea3"
+  },
+  "implementation_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_full_field_moments_material.py",
+      "bytes": "13480",
+      "sha256": "9f887f695f4061afc3eebf7a124440690bb6c8b7ce6a23241d038eaa228bedf4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_physical_field_moments.py",
+      "bytes": "11324",
+      "sha256": "58283c2aff4607731b294db4c3d78de7b07d2e91b743fdd17c6c820c111d5c21"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_field_derivatives.py",
+      "bytes": "12689",
+      "sha256": "fd5ab95ad8fbe728f9eaf4b562b47af6248d9fb98805dbe9be3a82ef34d51b93"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_reference_transport.py",
+      "bytes": "11694",
+      "sha256": "05657a443ad021d1ae8aa0cd14f7328a73843d50de7dea293be105886cb44566"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_full_field_moments_oracle.py",
+      "bytes": "13225",
+      "sha256": "0d5a48d42a9b99b4997eb31e529e877a61f614bc20b12426fb2b79a7a3ee6733"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_field_derivative_oracle.py",
+      "bytes": "8403",
+      "sha256": "44eefe1bb7fc9910746e5c77303a04d74759630de9c5d8aced7b07eba261a970"
+    }
+  ],
+  "full_reference": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/full-common-reference-004/full-common-reference.json",
+    "bytes": "669274",
+    "sha256": "9b7be6a210219069f8f46aae38c7ae1ba0b5c150cc35d953db8c6632084678f9"
+  },
+  "manifest": {
+    "bytes": "32315",
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/full-reference-inputs-004.json",
+    "sha256": "6af4d8ae729e1c436306761fb6b7d09fe2b2328fa2d00b882de955c3d302ba5f"
+  },
+  "runtime_context": {
+    "pid": 3825911,
+    "uid": 1000,
+    "gid": 1000,
+    "groups": [
+      4,
+      27,
+      1000
+    ],
+    "cpu_affinity": [
+      10
+    ],
+    "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-full-field-source-2-5-001.service",
+    "thread_variables": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "INVOCATION_ID": "6890a0dc0f9e4f59b1b79b7a7b7d9ec9",
+    "resources": {
+      "memory.max": {
+        "availability": "available",
+        "value": "4294967296"
+      },
+      "memory.swap.max": {
+        "availability": "available",
+        "value": "0"
+      },
+      "cpuset.cpus.effective": {
+        "availability": "unavailable",
+        "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-full-field-source-2-5-001.service/cpuset.cpus.effective'"
+      }
+    },
+    "kernel_limits_text": "Limit                     Soft Limit           Hard Limit           Units     \nMax cpu time              unlimited            unlimited            seconds   \nMax file size             unlimited            unlimited            bytes     \nMax data size             unlimited            unlimited            bytes     \nMax stack size            8388608              unlimited            bytes     \nMax core file size        0                    unlimited            bytes     \nMax resident set          unlimited            unlimited            bytes     \nMax processes             128196               128196               processes \nMax open files            1024                 1048576              files     \nMax locked memory         4205776896           4205776896           bytes     \nMax address space         unlimited            unlimited            bytes     \nMax file locks            unlimited            unlimited            locks     \nMax pending signals       128196               128196               signals   \nMax msgqueue size         819200               819200               bytes     \nMax nice priority         0                    0                    \nMax realtime priority     0                    0                    \nMax realtime timeout      unlimited            unlimited            us        \n",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "numpy": "1.26.4",
+    "manager_runtime_max_usec": {
+      "availability": "available",
+      "value": "18446744073709551615",
+      "argv": [
+        "/usr/bin/busctl",
+        "--user",
+        "get-property",
+        "org.freedesktop.systemd1",
+        "/org/freedesktop/systemd1/unit/p254_2da28_2dfull_2dfield_2dsource_2d2_2d5_2d001_2eservice",
+        "org.freedesktop.systemd1.Service",
+        "RuntimeMaxUSec"
+      ]
+    }
+  },
+  "field_state": null,
+  "h0_transport_supported": false,
+  "joint_scalar_limit": "Zero-field nonlocal correction joins the A25 scalar only at fixed prepared density and zero field; does not establish transported H0, moving-density SCF consistency, finite-field ionic derivatives, self-consistent response, or an ionic/field quantum state. No anchored undressed constant is called gauge-covariant.",
+  "background_receipt": {
+    "recipe_sha256": "0acfbad791ad6a2a212565fc17e4b064527b90afd275705f3fdef6deb7064624",
+    "archive": {
+      "bytes": "137945254",
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/background-coordinates.npz",
+      "sha256": "5985964572febdc455a9c3bf215a99b913649783fe14d334a974f6a2e20f43c2"
+    },
+    "arrays": {
+      "atom_indices_one_based": {
+        "dtype": "<i8",
+        "sha256_C_bytes": "d2325ffdd4600a671dcc319ae1e44706bb0b46cfb79ea5911460e20447ec95d5",
+        "shape": [
+          37
+        ]
+      },
+      "cell_bohr": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+        "shape": [
+          3,
+          3
+        ]
+      },
+      "density_components": {
+        "dtype": "<c16",
+        "sha256_C_bytes": "711dbe1b97a5f0e9190fcaa1e6e4ffcdff03ec2c4d51e0a12ff883be2b1c8fd3",
+        "shape": [
+          148597,
+          2
+        ]
+      },
+      "density_miller": {
+        "dtype": "<i4",
+        "sha256_C_bytes": "2235c207263079c4da5b8fa18082b8d89d0437c334d902c5707e69690d845ef7",
+        "shape": [
+          3,
+          148597
+        ]
+      },
+      "dmuxc": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "1568fb87a8faa8527c091f26000e205efd5997fa82b19e38507cc007872e11df",
+        "shape": [
+          373248,
+          2,
+          2
+        ]
+      },
+      "dvxc_rr": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "010cbec220160e375ad0cfdaa03aa939a78928dd08fa928db883be304f0b8578",
+        "shape": [
+          373248,
+          2,
+          2
+        ]
+      },
+      "dvxc_s": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "9fc619beeda8729402728b4c422641395f51539944507754757e4cf8d096f983",
+        "shape": [
+          373248,
+          2,
+          2
+        ]
+      },
+      "dvxc_sr": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "15d29f197f87f574d690efcfce45b510b152993a4147772d759510ea4674d0f7",
+        "shape": [
+          373248,
+          2,
+          2
+        ]
+      },
+      "dvxc_ss": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "0091713f9363dc02098c906dd79cc70ffa5d71d7f9ab569742f98d780c1fc87d",
+        "shape": [
+          373248,
+          2,
+          2
+        ]
+      },
+      "fft_grid": {
+        "dtype": "<i8",
+        "sha256_C_bytes": "d19b5d20b166f9dcff6704de5d601e82e6d31ae0ac62bef97ee2980b409f7341",
+        "shape": [
+          3
+        ]
+      },
+      "gradient_flux_ry_bohr": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "ff5592c13fb38ed89a86ebc44c0620faaa8de59cddb7f606dc3148efe997c8e3",
+        "shape": [
+          3,
+          373248,
+          2
+        ]
+      },
+      "grho": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "d4f3697ee54959c64cd56b7fb5a2506fa725c2e42e9342be24e265945572a157",
+        "shape": [
+          3,
+          373248,
+          2
+        ]
+      },
+      "hartree_ry": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "7b7dfd50022a09463d6be7e74e8c891c00efec3419a5d754cb61beb00d99c6eb",
+        "shape": [
+          373248
+        ]
+      },
+      "imaginary_maxima_json": {
+        "dtype": "<U200",
+        "sha256_C_bytes": "3cf48d4dd66fc439b1e72ae955344d1f1c8e7156d43b25880b6d10bff0639dd4",
+        "shape": []
+      },
+      "ionic_ry": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "6ea3b2572bf77bfaf2feb1d7eb2da2da80c48bfcd53193ae1bdab34ba45b30e6",
+        "shape": [
+          373248
+        ]
+      },
+      "local_xc_ry": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "d5d46eba5425e56072b2aeb2b540f664416be7e1a734c8c7f98fa643502fb5bc",
+        "shape": [
+          373248,
+          2
+        ]
+      },
+      "positions_bohr": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "0573bfbdcbdb46b06a78ee788edb0ff70101d28b85163a60b0c4c0632ee1d071",
+        "shape": [
+          3,
+          37
+        ]
+      },
+      "reciprocal_bohr_inv": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+        "shape": [
+          3,
+          3
+        ]
+      },
+      "rho_total_magnetization": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "11358fb370c9db095f54e094dbd49362f26b2c412319b30f69eacf8a1d4cecb1",
+        "shape": [
+          373248,
+          2
+        ]
+      },
+      "rho_updown": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "6c5f791df517e759d5b4d267180c47fd55d78f4e2e91949139b8f019ddfbe55a",
+        "shape": [
+          373248,
+          2
+        ]
+      },
+      "sources_json": {
+        "dtype": "<U3913",
+        "sha256_C_bytes": "ff93582526d08b67a620aa8e2b31156ae96f40b269ad6ccac38d8167493a3e77",
+        "shape": []
+      },
+      "vrs": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "27257fed596f8dd327515c941328ae4924cc4fd71b89f72468468c79581c33f0",
+        "shape": [
+          373248,
+          2
+        ]
+      },
+      "xc_ry": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "c412b7b2755bf0b47223b33d2c00109d84d67494745cb625c5688033301f80eb",
+        "shape": [
+          373248,
+          2
+        ]
+      }
+    },
+    "metadata": {
+      "backend": {
+        "bound_library": {
+          "bytes": "576432",
+          "dependencies": [
+            {
+              "bytes": "236616",
+              "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+              "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+            },
+            {
+              "bytes": "2129424",
+              "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+              "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+            },
+            {
+              "bytes": "51536",
+              "path": "/usr/lib/x86_64-linux-gnu/libcap.so.2.66",
+              "sha256": "6ac6abc86ac891c6e13486470e26f1d939f47fda9e6b5d5508a7f5ec881adc84"
+            },
+            {
+              "bytes": "215216",
+              "path": "/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1",
+              "sha256": "7fa4592ebaec38a7c1ce665c29244fbaae249cab6c1dbdd5024418dcdfd4898e"
+            },
+            {
+              "bytes": "14256",
+              "path": "/usr/lib/x86_64-linux-gnu/libevent_pthreads-2.1.so.7.0.1",
+              "sha256": "e386329c9c16032b489bebbd545750f35eafc0f50ab88ef0c986a31acb4b47a2"
+            },
+            {
+              "bytes": "183024",
+              "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+              "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb"
+            },
+            {
+              "bytes": "3263912",
+              "path": "/usr/lib/x86_64-linux-gnu/libgfortran.so.5.0.0",
+              "sha256": "342618ccfebe840446e4ef2b7893f4161b2084845e570f42d68a70bfde58a58d"
+            },
+            {
+              "bytes": "392576",
+              "path": "/usr/lib/x86_64-linux-gnu/libhwloc.so.15.7.0",
+              "sha256": "86dff44a023254d997cea910b9a51f35afefe6780f4b5530f974a2009ba47487"
+            },
+            {
+              "bytes": "952616",
+              "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+              "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+            },
+            {
+              "bytes": "1182056",
+              "path": "/usr/lib/x86_64-linux-gnu/libmpi.so.40.30.6",
+              "sha256": "9055018b12757e830591aa0283e485e471f1f2a06d3bc0dd5fb35ab00386c172"
+            },
+            {
+              "bytes": "415160",
+              "path": "/usr/lib/x86_64-linux-gnu/libmpi_mpifh.so.40.30.0",
+              "sha256": "54eb60df3150c299e7c0bb4e4b502399b221544856d489fa480dce166734098d"
+            },
+            {
+              "bytes": "704192",
+              "path": "/usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.3",
+              "sha256": "59c4d9b111cd3ec326a4df475a338daae050496087c67e86956187056fdc3051"
+            },
+            {
+              "bytes": "757352",
+              "path": "/usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.3",
+              "sha256": "26467e1da428d31dab924ddbc50bc6ade75da47dbb82c77498a5f127a5466ba7"
+            },
+            {
+              "bytes": "207288",
+              "path": "/usr/lib/x86_64-linux-gnu/libudev.so.1.7.8",
+              "sha256": "4298228175fa62a36af88b1afd4406cdd8b1bf166621f957d0dbbde45a698fe5"
+            },
+            {
+              "bytes": "113000",
+              "path": "/usr/lib/x86_64-linux-gnu/libz.so.1.3",
+              "sha256": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892"
+            },
+            {
+              "bytes": "37555760",
+              "path": "/usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so",
+              "sha256": "bfc7492adbf84a8f567720a9e1fae2afc18f3d817da233e7f4d453683485308e"
+            }
+          ],
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build/internal-pbe/libinternal_pbe.so",
+          "sha256": "aa781ebae9198e626dc6393535e50f4479cfdfc52529bfa30382608fc1449ecd"
+        },
+        "library_json": {
+          "bytes": "3237",
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build/internal-pbe/library-binding.json",
+          "sha256": "5fbcbae54c51fb25029eac6b3a092897413066f1ceca1de7e158b5bf6bd08b63"
+        },
+        "loaded_dependencies": [
+          {
+            "bytes": "236616",
+            "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+            "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+          },
+          {
+            "bytes": "2129424",
+            "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+            "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+          },
+          {
+            "bytes": "51536",
+            "path": "/usr/lib/x86_64-linux-gnu/libcap.so.2.66",
+            "sha256": "6ac6abc86ac891c6e13486470e26f1d939f47fda9e6b5d5508a7f5ec881adc84"
+          },
+          {
+            "bytes": "215216",
+            "path": "/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1",
+            "sha256": "7fa4592ebaec38a7c1ce665c29244fbaae249cab6c1dbdd5024418dcdfd4898e"
+          },
+          {
+            "bytes": "14256",
+            "path": "/usr/lib/x86_64-linux-gnu/libevent_pthreads-2.1.so.7.0.1",
+            "sha256": "e386329c9c16032b489bebbd545750f35eafc0f50ab88ef0c986a31acb4b47a2"
+          },
+          {
+            "bytes": "183024",
+            "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+            "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb"
+          },
+          {
+            "bytes": "3263912",
+            "path": "/usr/lib/x86_64-linux-gnu/libgfortran.so.5.0.0",
+            "sha256": "342618ccfebe840446e4ef2b7893f4161b2084845e570f42d68a70bfde58a58d"
+          },
+          {
+            "bytes": "392576",
+            "path": "/usr/lib/x86_64-linux-gnu/libhwloc.so.15.7.0",
+            "sha256": "86dff44a023254d997cea910b9a51f35afefe6780f4b5530f974a2009ba47487"
+          },
+          {
+            "bytes": "952616",
+            "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+            "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+          },
+          {
+            "bytes": "1182056",
+            "path": "/usr/lib/x86_64-linux-gnu/libmpi.so.40.30.6",
+            "sha256": "9055018b12757e830591aa0283e485e471f1f2a06d3bc0dd5fb35ab00386c172"
+          },
+          {
+            "bytes": "415160",
+            "path": "/usr/lib/x86_64-linux-gnu/libmpi_mpifh.so.40.30.0",
+            "sha256": "54eb60df3150c299e7c0bb4e4b502399b221544856d489fa480dce166734098d"
+          },
+          {
+            "bytes": "704192",
+            "path": "/usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.3",
+            "sha256": "59c4d9b111cd3ec326a4df475a338daae050496087c67e86956187056fdc3051"
+          },
+          {
+            "bytes": "757352",
+            "path": "/usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.3",
+            "sha256": "26467e1da428d31dab924ddbc50bc6ade75da47dbb82c77498a5f127a5466ba7"
+          },
+          {
+            "bytes": "207288",
+            "path": "/usr/lib/x86_64-linux-gnu/libudev.so.1.7.8",
+            "sha256": "4298228175fa62a36af88b1afd4406cdd8b1bf166621f957d0dbbde45a698fe5"
+          },
+          {
+            "bytes": "113000",
+            "path": "/usr/lib/x86_64-linux-gnu/libz.so.1.3",
+            "sha256": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892"
+          },
+          {
+            "bytes": "37555760",
+            "path": "/usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so",
+            "sha256": "bfc7492adbf84a8f567720a9e1fae2afc18f3d817da233e7f4d453683485308e"
+          }
+        ],
+        "loaded_source": {
+          "bytes": "576432",
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build/internal-pbe/libinternal_pbe.so",
+          "sha256": "aa781ebae9198e626dc6393535e50f4479cfdfc52529bfa30382608fc1449ecd"
+        }
+      },
+      "field_order": "F physical grid; explicit up/down except rho_total_magnetization",
+      "physical_grid": [
+        72,
+        72,
+        72
+      ],
+      "raw_reference_metadata": {
+        "alat_bohr": 13.318789726362429,
+        "atom_names": [
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "H",
+          "H",
+          "H",
+          "H",
+          "H",
+          "H"
+        ],
+        "degauss_ha": 0.01,
+        "degauss_ry": 0.02,
+        "fermi_energies_ha": [
+          0.7150095021242656
+        ],
+        "fermi_energies_ry": [
+          1.4300190042485312
+        ],
+        "fft_grid": [
+          72,
+          72,
+          72
+        ],
+        "monkhorst_pack": {
+          "k1": 0,
+          "k2": 0,
+          "k3": 0,
+          "nk1": 4,
+          "nk2": 4,
+          "nk3": 4
+        },
+        "nelec": 564.0,
+        "nks": 10,
+        "occupations_kind": "smearing",
+        "qualification": "Raw saved MV occupations/width/weights, not probabilities, temperature or a preparation.",
+        "smearing": "mv",
+        "total_energies_ha": {
+          "demet": 0.003864192036050428,
+          "eband": -294.7682877579552,
+          "ehart": 1230.908786507091,
+          "etot": -4782.290428325497,
+          "etxc": -471.235655350611,
+          "ewald": -3400.204416142307,
+          "vtxc": -614.8227277397373
+        },
+        "total_energies_ry": {
+          "demet": 0.007728384072100856,
+          "eband": -589.5365755159104,
+          "ehart": 2461.817573014182,
+          "etot": -9564.580856650993,
+          "etxc": -942.471310701222,
+          "ewald": -6800.408832284614,
+          "vtxc": -1229.6454554794745
+        }
+      },
+      "schema": "material-reference-background-v1",
+      "sources": [
+        {
+          "bytes": "428069",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/data-file-schema.xml",
+          "sha256": "3831ae2b83231b02475931d50055415b1d9673cdb05edb4541d0f1115ec383da"
+        },
+        {
+          "bytes": "6538392",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/charge-density.dat",
+          "sha256": "3b239c650b515d3e4e1921ca4ea5a1f7503bcd09f1810d49ddef5047b4c5ea08"
+        },
+        {
+          "bytes": "115509",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/Ni_ONCV_PBE-1.2.upf",
+          "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e"
+        },
+        {
+          "bytes": "64999",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/H_ONCV_PBE-1.2.upf",
+          "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a"
+        }
+      ],
+      "units": "density bohr^-3; potential Ry; gradient physical bohr derivatives"
+    },
+    "readback": "exact dtype/shape/value; allow_pickle=False"
+  },
+  "spin": 2,
+  "source_ik": 5,
+  "source_binding": {
+    "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/wfcdw5.dat",
+    "bytes": "102873948",
+    "sha256": "82bcef02eb87f1fdb20052d148a8b7412be84dcfae55bde2dab2f29aa9352d31"
+  },
+  "state_authority": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/full-reference-batch-002/source-2-5/source-state.json",
+    "bytes": "2211",
+    "sha256": "0a63a1948827119d17aab45cbddf78e1d7f8b6ce5810ed7dce4e560dbc7bcac3"
+  },
+  "basis_identity": "10fbfdc8b131041778d3e60e1dc45721dac6a55e53edabcf7ff5e917c33641e3",
+  "frame_identity": "10fbfdc8b131041778d3e60e1dc45721dac6a55e53edabcf7ff5e917c33641e3:raw-saved-columns",
+  "moments": {
+    "number": {
+      "real": 275.9999999999999,
+      "imag": -4.14025798463691e-17
+    },
+    "gradient": {
+      "real": [
+        -4.0792523876453167e-10,
+        0.11199810051325557,
+        -2.6525950393788853e-09
+      ],
+      "imag": [
+        5.707335051306096e-16,
+        2.1510871729833318e-16,
+        -8.834000545482544e-16
+      ]
+    },
+    "current_hartree": {
+      "real": [
+        2.0396261938226583e-10,
+        -0.05599905025662778,
+        1.3262975196894427e-09
+      ],
+      "imag": [
+        -2.853667525653048e-16,
+        -1.0755435864916659e-16,
+        4.417000272741272e-16
+      ]
+    },
+    "contact": {
+      "real": [
+        [
+          706.6803836745478,
+          4.185183656829847e-10,
+          1.492189555473377e-10
+        ],
+        [
+          4.185183656829847e-10,
+          705.9965241309654,
+          6.584907746803034e-10
+        ],
+        [
+          1.492189555473377e-10,
+          6.584907746803034e-10,
+          707.7579243002689
+        ]
+      ],
+      "imag": [
+        [
+          5.0382193494648985e-15,
+          -2.379305824264188e-16,
+          5.229578571335604e-16
+        ],
+        [
+          -2.379305824264188e-16,
+          -2.4991174136002412e-15,
+          -8.890437192489469e-17
+        ],
+        [
+          5.229578571335604e-16,
+          -8.890437192489469e-17,
+          -3.1497687366489474e-15
+        ]
+      ]
+    },
+    "kinetic_gradient": {
+      "real": [
+        -1.87562175486508e-09,
+        0.005161192915867587,
+        -2.509155502431826e-09
+      ],
+      "imag": [
+        3.6534001351586567e-16,
+        1.6854212811096235e-16,
+        -1.0517341614814465e-15
+      ]
+    },
+    "kinetic_contact": {
+      "real": [
+        [
+          551.9999999999998,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          551.9999999999998,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          551.9999999999998
+        ]
+      ],
+      "imag": [
+        [
+          -8.28051596927382e-17,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -8.28051596927382e-17,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -8.28051596927382e-17
+        ]
+      ]
+    },
+    "delta_nonlocal_energy_ry": {
+      "real": 9.32499150604893e-08,
+      "imag": 4.158782693219898e-15
+    },
+    "delta_nonlocal_positive_gradient_ry_bohr": {
+      "real": [
+        [
+          -1.976102176816384e-16,
+          -1.1837170132977803e-11,
+          -5.811247316689361e-12
+        ],
+        [
+          4.9502971166681675e-12,
+          9.367506770274758e-16,
+          -1.775578295504232e-11
+        ],
+        [
+          5.220511523074123e-12,
+          2.104608154418486e-12,
+          7.01940185798999e-16
+        ],
+        [
+          -2.543066094394463e-16,
+          -1.8474805019152996e-16,
+          -4.634120673786134e-16
+        ],
+        [
+          -2.301423724564756e-18,
+          -1.1836635838147203e-11,
+          5.80994974352933e-12
+        ],
+        [
+          4.952004084568529e-12,
+          2.3418766925686896e-16,
+          1.775693481143037e-11
+        ],
+        [
+          -4.4554464284640716e-13,
+          -7.447150535133673e-13,
+          -3.874418439497874e-17
+        ],
+        [
+          -6.816647182808071e-16,
+          9.020562075079397e-16,
+          -6.239779181146018e-16
+        ],
+        [
+          1.691243526599718e-16,
+          1.1837510138779095e-11,
+          -5.80938075422921e-12
+        ],
+        [
+          -1.1297218369121786e-11,
+          5.724587470723463e-17,
+          -1.0182681087211876e-11
+        ],
+        [
+          5.2211290846315705e-12,
+          -2.1053853105357234e-12,
+          6.8827601381716e-16
+        ],
+        [
+          -3.06452710426102e-16,
+          -1.0200174038743626e-15,
+          -4.927867748038549e-16
+        ],
+        [
+          -9.515527417693012e-16,
+          1.1836163993361737e-11,
+          5.811170988856418e-12
+        ],
+        [
+          -1.1297528017262248e-11,
+          8.413408858487514e-16,
+          1.0181168408340824e-11
+        ],
+        [
+          -4.450762675078934e-13,
+          7.443871907764077e-13,
+          1.1880206450459289e-15
+        ],
+        [
+          3.471255504814779e-16,
+          3.2873009869760494e-16,
+          -2.292858108017511e-16
+        ],
+        [
+          -2.3572167875307706e-16,
+          7.451121317170184e-12,
+          7.736207507935688e-13
+        ],
+        [
+          -4.949568532808257e-12,
+          6.418476861114186e-16,
+          -1.7757087467096255e-11
+        ],
+        [
+          -5.221267862509649e-12,
+          2.1052326548698375e-12,
+          -7.617017071556447e-17
+        ],
+        [
+          3.7201645374185514e-17,
+          -3.5388358909926865e-16,
+          8.505350003735311e-16
+        ],
+        [
+          -4.447267693819892e-17,
+          7.451347698583799e-12,
+          -7.697072146317652e-13
+        ],
+        [
+          -4.9500750720632425e-12,
+          -3.920475055707584e-16,
+          1.7757101344884063e-11
+        ],
+        [
+          4.456903596183892e-13,
+          -7.461115059115286e-13,
+          -4.2514896223230637e-16
+        ],
+        [
+          -1.8055884118024885e-16,
+          -5.447031714567174e-16,
+          2.432574906405294e-16
+        ],
+        [
+          -1.6119643883494887e-16,
+          -7.451714592598968e-12,
+          7.714315297668861e-13
+        ],
+        [
+          1.129635014002206e-11,
+          -6.765421556309548e-17,
+          -1.0181862297731215e-11
+        ],
+        [
+          -5.220504584180219e-12,
+          -2.104288965298906e-12,
+          5.094388855441295e-16
+        ],
+        [
+          1.345396682832431e-16,
+          -4.128641872824801e-16,
+          5.673029646422987e-16
+        ],
+        [
+          1.447816983868329e-15,
+          -7.451971331673413e-12,
+          -7.730205364708809e-13
+        ],
+        [
+          1.1297256533038258e-11,
+          4.0766001685454967e-16,
+          1.0181175347234728e-11
+        ],
+        [
+          4.4436503088274293e-13,
+          7.45039446803375e-13,
+          9.616496597744862e-17
+        ],
+        [
+          2.374836438612249e-14,
+          -2.1955093992831465e-18,
+          2.689155133411569e-18
+        ],
+        [
+          -2.3750099109598466e-14,
+          5.963111948670274e-19,
+          -6.739158705389266e-19
+        ],
+        [
+          -2.2289503093323097e-18,
+          2.647534969035803e-14,
+          -2.2268538006827485e-18
+        ],
+        [
+          -5.434134886600275e-19,
+          -2.645973717907424e-14,
+          2.1035977974371622e-19
+        ],
+        [
+          1.2841062745798639e-18,
+          -2.9815559743351372e-18,
+          6.435824095873954e-15
+        ],
+        [
+          1.3893292513527893e-18,
+          -2.1006417091906648e-19,
+          -6.430619925446024e-15
+        ]
+      ],
+      "imag": [
+        [
+          1.34416849539867e-24,
+          8.326672684688674e-17,
+          1.3877787807814457e-17
+        ],
+        [
+          -1.5699247457590104e-16,
+          1.457167719820518e-16,
+          1.6653345369377348e-16
+        ],
+        [
+          0.0,
+          -8.326672684688674e-17,
+          8.788794008375919e-25
+        ],
+        [
+          8.271806125530277e-25,
+          4.0245584642661925e-16,
+          -1.2407709188295415e-24
+        ],
+        [
+          -2.0679515313825692e-25,
+          -3.3306690738754696e-16,
+          -3.469446951953614e-17
+        ],
+        [
+          -9.627715291671279e-17,
+          1.8735013540549517e-16,
+          -1.3877787807814457e-17
+        ],
+        [
+          2.42861286636753e-17,
+          6.938893903907228e-17,
+          -1.0339757656912846e-25
+        ],
+        [
+          -1.0339757656912846e-25,
+          4.163336342344337e-17,
+          -4.1359030627651384e-25
+        ],
+        [
+          -4.1359030627651384e-25,
+          1.6653345369377348e-16,
+          -1.5265566588595902e-16
+        ],
+        [
+          -9.540979117872439e-18,
+          -2.7755575615628914e-16,
+          -7.28583859910259e-17
+        ],
+        [
+          4.163336342344337e-17,
+          1.1102230246251565e-16,
+          6.203854594147708e-25
+        ],
+        [
+          4.1359030627651384e-25,
+          1.8041124150158794e-16,
+          0.0
+        ],
+        [
+          -2.0679515313825692e-25,
+          5.273559366969494e-16,
+          9.020562075079397e-17
+        ],
+        [
+          -2.949029909160572e-17,
+          -1.3877787807814457e-16,
+          -2.42861286636753e-17
+        ],
+        [
+          4.5102810375396984e-17,
+          1.3877787807814457e-16,
+          2.5849394142282115e-25
+        ],
+        [
+          1.550963648536927e-25,
+          3.3306690738754696e-16,
+          -1.6543612251060553e-24
+        ],
+        [
+          -8.271806125530277e-25,
+          1.3877787807814457e-17,
+          -9.71445146547012e-17
+        ],
+        [
+          1.8388068845354155e-16,
+          -1.5959455978986625e-16,
+          -3.365363543395006e-16
+        ],
+        [
+          5.689893001203927e-16,
+          -2.0816681711721685e-16,
+          -1.2407709188295415e-24
+        ],
+        [
+          -6.203854594147708e-25,
+          8.604228440844963e-16,
+          1.1890721305449773e-24
+        ],
+        [
+          -1.0339757656912846e-25,
+          -3.608224830031759e-16,
+          -2.5673907444456745e-16
+        ],
+        [
+          1.0581813203458523e-16,
+          1.6653345369377348e-16,
+          0.0
+        ],
+        [
+          -3.122502256758253e-17,
+          -1.5265566588595902e-16,
+          4.652890945610781e-25
+        ],
+        [
+          -6.203854594147708e-25,
+          1.3877787807814457e-16,
+          -1.0339757656912846e-25
+        ],
+        [
+          1.6543612251060553e-24,
+          -6.938893903907228e-17,
+          9.020562075079397e-17
+        ],
+        [
+          -1.0928757898653885e-16,
+          -2.498001805406602e-16,
+          2.185751579730777e-16
+        ],
+        [
+          6.245004513516506e-17,
+          -1.457167719820518e-16,
+          4.1359030627651384e-25
+        ],
+        [
+          -8.271806125530277e-25,
+          -1.942890293094024e-16,
+          0.0
+        ],
+        [
+          3.0890026000027127e-24,
+          -1.6653345369377348e-16,
+          -3.0531133177191805e-16
+        ],
+        [
+          -1.734723475976807e-17,
+          -2.0816681711721685e-17,
+          -1.491862189340054e-16
+        ],
+        [
+          -1.1102230246251565e-16,
+          -2.7755575615628914e-17,
+          0.0
+        ],
+        [
+          1.0842021724855044e-19,
+          2.710505431213761e-19,
+          -8.077935669463161e-28
+        ],
+        [
+          -1.0842021724855044e-19,
+          2.439454888092385e-19,
+          -6.058451752097371e-28
+        ],
+        [
+          -4.0389678347315804e-28,
+          2.710505431213761e-20,
+          -1.0097419586828951e-28
+        ],
+        [
+          4.0389678347315804e-28,
+          4.2012834183813297e-19,
+          -7.068193710780266e-28
+        ],
+        [
+          -4.0389678347315804e-28,
+          2.168404344971009e-19,
+          0.0
+        ],
+        [
+          6.058451752097371e-28,
+          1.6263032587282567e-19,
+          4.336808689942018e-19
+        ]
+      ]
+    },
+    "delta_nonlocal_force_ry_bohr": {
+      "real": [
+        [
+          1.976102176816384e-16,
+          1.1837170132977803e-11,
+          5.811247316689361e-12
+        ],
+        [
+          -4.9502971166681675e-12,
+          -9.367506770274758e-16,
+          1.775578295504232e-11
+        ],
+        [
+          -5.220511523074123e-12,
+          -2.104608154418486e-12,
+          -7.01940185798999e-16
+        ],
+        [
+          2.543066094394463e-16,
+          1.8474805019152996e-16,
+          4.634120673786134e-16
+        ],
+        [
+          2.301423724564756e-18,
+          1.1836635838147203e-11,
+          -5.80994974352933e-12
+        ],
+        [
+          -4.952004084568529e-12,
+          -2.3418766925686896e-16,
+          -1.775693481143037e-11
+        ],
+        [
+          4.4554464284640716e-13,
+          7.447150535133673e-13,
+          3.874418439497874e-17
+        ],
+        [
+          6.816647182808071e-16,
+          -9.020562075079397e-16,
+          6.239779181146018e-16
+        ],
+        [
+          -1.691243526599718e-16,
+          -1.1837510138779095e-11,
+          5.80938075422921e-12
+        ],
+        [
+          1.1297218369121786e-11,
+          -5.724587470723463e-17,
+          1.0182681087211876e-11
+        ],
+        [
+          -5.2211290846315705e-12,
+          2.1053853105357234e-12,
+          -6.8827601381716e-16
+        ],
+        [
+          3.06452710426102e-16,
+          1.0200174038743626e-15,
+          4.927867748038549e-16
+        ],
+        [
+          9.515527417693012e-16,
+          -1.1836163993361737e-11,
+          -5.811170988856418e-12
+        ],
+        [
+          1.1297528017262248e-11,
+          -8.413408858487514e-16,
+          -1.0181168408340824e-11
+        ],
+        [
+          4.450762675078934e-13,
+          -7.443871907764077e-13,
+          -1.1880206450459289e-15
+        ],
+        [
+          -3.471255504814779e-16,
+          -3.2873009869760494e-16,
+          2.292858108017511e-16
+        ],
+        [
+          2.3572167875307706e-16,
+          -7.451121317170184e-12,
+          -7.736207507935688e-13
+        ],
+        [
+          4.949568532808257e-12,
+          -6.418476861114186e-16,
+          1.7757087467096255e-11
+        ],
+        [
+          5.221267862509649e-12,
+          -2.1052326548698375e-12,
+          7.617017071556447e-17
+        ],
+        [
+          -3.7201645374185514e-17,
+          3.5388358909926865e-16,
+          -8.505350003735311e-16
+        ],
+        [
+          4.447267693819892e-17,
+          -7.451347698583799e-12,
+          7.697072146317652e-13
+        ],
+        [
+          4.9500750720632425e-12,
+          3.920475055707584e-16,
+          -1.7757101344884063e-11
+        ],
+        [
+          -4.456903596183892e-13,
+          7.461115059115286e-13,
+          4.2514896223230637e-16
+        ],
+        [
+          1.8055884118024885e-16,
+          5.447031714567174e-16,
+          -2.432574906405294e-16
+        ],
+        [
+          1.6119643883494887e-16,
+          7.451714592598968e-12,
+          -7.714315297668861e-13
+        ],
+        [
+          -1.129635014002206e-11,
+          6.765421556309548e-17,
+          1.0181862297731215e-11
+        ],
+        [
+          5.220504584180219e-12,
+          2.104288965298906e-12,
+          -5.094388855441295e-16
+        ],
+        [
+          -1.345396682832431e-16,
+          4.128641872824801e-16,
+          -5.673029646422987e-16
+        ],
+        [
+          -1.447816983868329e-15,
+          7.451971331673413e-12,
+          7.730205364708809e-13
+        ],
+        [
+          -1.1297256533038258e-11,
+          -4.0766001685454967e-16,
+          -1.0181175347234728e-11
+        ],
+        [
+          -4.4436503088274293e-13,
+          -7.45039446803375e-13,
+          -9.616496597744862e-17
+        ],
+        [
+          -2.374836438612249e-14,
+          2.1955093992831465e-18,
+          -2.689155133411569e-18
+        ],
+        [
+          2.3750099109598466e-14,
+          -5.963111948670274e-19,
+          6.739158705389266e-19
+        ],
+        [
+          2.2289503093323097e-18,
+          -2.647534969035803e-14,
+          2.2268538006827485e-18
+        ],
+        [
+          5.434134886600275e-19,
+          2.645973717907424e-14,
+          -2.1035977974371622e-19
+        ],
+        [
+          -1.2841062745798639e-18,
+          2.9815559743351372e-18,
+          -6.435824095873954e-15
+        ],
+        [
+          -1.3893292513527893e-18,
+          2.1006417091906648e-19,
+          6.430619925446024e-15
+        ]
+      ],
+      "imag": [
+        [
+          -1.34416849539867e-24,
+          -8.326672684688674e-17,
+          -1.3877787807814457e-17
+        ],
+        [
+          1.5699247457590104e-16,
+          -1.457167719820518e-16,
+          -1.6653345369377348e-16
+        ],
+        [
+          -0.0,
+          8.326672684688674e-17,
+          -8.788794008375919e-25
+        ],
+        [
+          -8.271806125530277e-25,
+          -4.0245584642661925e-16,
+          1.2407709188295415e-24
+        ],
+        [
+          2.0679515313825692e-25,
+          3.3306690738754696e-16,
+          3.469446951953614e-17
+        ],
+        [
+          9.627715291671279e-17,
+          -1.8735013540549517e-16,
+          1.3877787807814457e-17
+        ],
+        [
+          -2.42861286636753e-17,
+          -6.938893903907228e-17,
+          1.0339757656912846e-25
+        ],
+        [
+          1.0339757656912846e-25,
+          -4.163336342344337e-17,
+          4.1359030627651384e-25
+        ],
+        [
+          4.1359030627651384e-25,
+          -1.6653345369377348e-16,
+          1.5265566588595902e-16
+        ],
+        [
+          9.540979117872439e-18,
+          2.7755575615628914e-16,
+          7.28583859910259e-17
+        ],
+        [
+          -4.163336342344337e-17,
+          -1.1102230246251565e-16,
+          -6.203854594147708e-25
+        ],
+        [
+          -4.1359030627651384e-25,
+          -1.8041124150158794e-16,
+          -0.0
+        ],
+        [
+          2.0679515313825692e-25,
+          -5.273559366969494e-16,
+          -9.020562075079397e-17
+        ],
+        [
+          2.949029909160572e-17,
+          1.3877787807814457e-16,
+          2.42861286636753e-17
+        ],
+        [
+          -4.5102810375396984e-17,
+          -1.3877787807814457e-16,
+          -2.5849394142282115e-25
+        ],
+        [
+          -1.550963648536927e-25,
+          -3.3306690738754696e-16,
+          1.6543612251060553e-24
+        ],
+        [
+          8.271806125530277e-25,
+          -1.3877787807814457e-17,
+          9.71445146547012e-17
+        ],
+        [
+          -1.8388068845354155e-16,
+          1.5959455978986625e-16,
+          3.365363543395006e-16
+        ],
+        [
+          -5.689893001203927e-16,
+          2.0816681711721685e-16,
+          1.2407709188295415e-24
+        ],
+        [
+          6.203854594147708e-25,
+          -8.604228440844963e-16,
+          -1.1890721305449773e-24
+        ],
+        [
+          1.0339757656912846e-25,
+          3.608224830031759e-16,
+          2.5673907444456745e-16
+        ],
+        [
+          -1.0581813203458523e-16,
+          -1.6653345369377348e-16,
+          -0.0
+        ],
+        [
+          3.122502256758253e-17,
+          1.5265566588595902e-16,
+          -4.652890945610781e-25
+        ],
+        [
+          6.203854594147708e-25,
+          -1.3877787807814457e-16,
+          1.0339757656912846e-25
+        ],
+        [
+          -1.6543612251060553e-24,
+          6.938893903907228e-17,
+          -9.020562075079397e-17
+        ],
+        [
+          1.0928757898653885e-16,
+          2.498001805406602e-16,
+          -2.185751579730777e-16
+        ],
+        [
+          -6.245004513516506e-17,
+          1.457167719820518e-16,
+          -4.1359030627651384e-25
+        ],
+        [
+          8.271806125530277e-25,
+          1.942890293094024e-16,
+          -0.0
+        ],
+        [
+          -3.0890026000027127e-24,
+          1.6653345369377348e-16,
+          3.0531133177191805e-16
+        ],
+        [
+          1.734723475976807e-17,
+          2.0816681711721685e-17,
+          1.491862189340054e-16
+        ],
+        [
+          1.1102230246251565e-16,
+          2.7755575615628914e-17,
+          -0.0
+        ],
+        [
+          -1.0842021724855044e-19,
+          -2.710505431213761e-19,
+          8.077935669463161e-28
+        ],
+        [
+          1.0842021724855044e-19,
+          -2.439454888092385e-19,
+          6.058451752097371e-28
+        ],
+        [
+          4.0389678347315804e-28,
+          -2.710505431213761e-20,
+          1.0097419586828951e-28
+        ],
+        [
+          -4.0389678347315804e-28,
+          -4.2012834183813297e-19,
+          7.068193710780266e-28
+        ],
+        [
+          4.0389678347315804e-28,
+          -2.168404344971009e-19,
+          -0.0
+        ],
+        [
+          -6.058451752097371e-28,
+          -1.6263032587282567e-19,
+          -4.336808689942018e-19
+        ]
+      ]
+    },
+    "delta_nonlocal_onsite_ry_bohr2": {
+      "real": [
+        [
+          [
+            -8.563830533603323e-09,
+            5.967287774571329e-16,
+            -1.850409205597986e-15
+          ],
+          [
+            5.967287774571329e-16,
+            -8.513410421073786e-09,
+            4.3603232136035786e-11
+          ],
+          [
+            -1.850409205597986e-15,
+            4.3603232136035786e-11,
+            -8.838327403282165e-09
+          ]
+        ],
+        [
+          [
+            -8.526683359377785e-09,
+            -4.107825191113079e-15,
+            1.9225288028223986e-11
+          ],
+          [
+            -4.107825191113079e-15,
+            -8.341515922438703e-09,
+            -3.2751579226442118e-15
+          ],
+          [
+            1.9225288028223986e-11,
+            -3.2751579226442118e-15,
+            -8.769887926973752e-09
+          ]
+        ],
+        [
+          [
+            -8.413508112425916e-09,
+            -3.424593941758758e-11,
+            2.3851606014330733e-16
+          ],
+          [
+            -3.424593941758758e-11,
+            -8.30755197966937e-09,
+            -4.911212171721701e-17
+          ],
+          [
+            2.3851606014330733e-16,
+            -4.911212171721701e-17,
+            -8.606690471424372e-09
+          ]
+        ],
+        [
+          [
+            -9.082640417545917e-09,
+            -1.834539302590938e-16,
+            5.763034825594928e-17
+          ],
+          [
+            -1.834539302590938e-16,
+            -8.935671758081298e-09,
+            5.22305241359872e-16
+          ],
+          [
+            5.763034825594928e-17,
+            5.22305241359872e-16,
+            -9.35159505388583e-09
+          ]
+        ],
+        [
+          [
+            -8.56366000334674e-09,
+            1.353074252745661e-16,
+            -6.115876998025305e-16
+          ],
+          [
+            1.353074252745661e-16,
+            -8.513524107911508e-09,
+            -4.3566150687013305e-11
+          ],
+          [
+            -6.115876998025305e-16,
+            -4.3566150687013305e-11,
+            -8.838412668410456e-09
+          ]
+        ],
+        [
+          [
+            -8.526569672540063e-09,
+            1.2212453270876722e-15,
+            -1.9229173808810174e-11
+          ],
+          [
+            1.2212453270876722e-15,
+            -8.34128854876326e-09,
+            -4.274358644806853e-15
+          ],
+          [
+            -1.9229173808810174e-11,
+            -4.274358644806853e-15,
+            -8.770030035520904e-09
+          ]
+        ],
+        [
+          [
+            -8.106866289381287e-09,
+            -1.7912782368512126e-11,
+            4.2828340217354935e-16
+          ],
+          [
+            -1.7912782368512126e-11,
+            -7.806960411471664e-09,
+            -5.558727840011037e-16
+          ],
+          [
+            4.2828340217354935e-16,
+            -5.558727840011037e-16,
+            -8.182951205526479e-09
+          ]
+        ],
+        [
+          [
+            -8.798338058113586e-09,
+            -4.4801190959148405e-17,
+            6.372508366523083e-16
+          ],
+          [
+            -4.4801190959148405e-17,
+            -8.643041837785859e-09,
+            1.70065247647319e-15
+          ],
+          [
+            6.372508366523083e-16,
+            1.70065247647319e-15,
+            -9.004111234389711e-09
+          ]
+        ],
+        [
+          [
+            -8.563887377022184e-09,
+            1.054273605808408e-15,
+            1.0618889853880539e-15
+          ],
+          [
+            1.054273605808408e-15,
+            -8.513410421073786e-09,
+            -4.3589576392832896e-11
+          ],
+          [
+            1.0618889853880539e-15,
+            -4.3589576392832896e-11,
+            -8.838355824991595e-09
+          ]
+        ],
+        [
+          [
+            -8.060737854975741e-09,
+            1.1102230246251565e-15,
+            -3.6650127377413355e-11
+          ],
+          [
+            1.1102230246251565e-15,
+            -7.749235919618513e-09,
+            -4.218847493575595e-15
+          ],
+          [
+            -3.6650127377413355e-11,
+            -4.218847493575595e-15,
+            -8.175078392014257e-09
+          ]
+        ],
+        [
+          [
+            -8.413479690716485e-09,
+            3.424371897153833e-11,
+            -1.8524299275979336e-15
+          ],
+          [
+            3.424371897153833e-11,
+            -8.307381449412787e-09,
+            -2.2483678399857945e-15
+          ],
+          [
+            -1.8524299275979336e-15,
+            -2.2483678399857945e-15,
+            -8.60660520629608e-09
+          ]
+        ],
+        [
+          [
+            -8.33642843645066e-09,
+            -1.0367843697800635e-15,
+            -3.7474715540810984e-16
+          ],
+          [
+            -1.0367843697800635e-15,
+            -8.303459253511392e-09,
+            -1.830706036376575e-15
+          ],
+          [
+            -3.7474715540810984e-16,
+            -1.830706036376575e-15,
+            -8.606690471424372e-09
+          ]
+        ],
+        [
+          [
+            -8.563716846765601e-09,
+            6.026952845686274e-16,
+            2.4674040471324084e-16
+          ],
+          [
+            6.026952845686274e-16,
+            -8.513296734236064e-09,
+            4.3581138697845745e-11
+          ],
+          [
+            2.4674040471324084e-16,
+            4.3581138697845745e-11,
+            -8.838355824991595e-09
+          ]
+        ],
+        [
+          [
+            -8.061022072070045e-09,
+            5.773159728050814e-15,
+            3.664191172703113e-11
+          ],
+          [
+            5.773159728050814e-15,
+            -7.748894859105349e-09,
+            -9.547918011776346e-15
+          ],
+          [
+            3.664191172703113e-11,
+            -9.547918011776346e-15,
+            -8.175220500561409e-09
+          ]
+        ],
+        [
+          [
+            -8.106923132800148e-09,
+            1.79152248591663e-11,
+            5.694531685322517e-16
+          ],
+          [
+            1.79152248591663e-11,
+            -7.806988833181094e-09,
+            1.0225419334612754e-16
+          ],
+          [
+            5.694531685322517e-16,
+            1.0225419334612754e-16,
+            -8.182951205526479e-09
+          ]
+        ],
+        [
+          [
+            -8.508408200214035e-09,
+            3.237139915042512e-17,
+            7.980421795503898e-16
+          ],
+          [
+            3.237139915042512e-17,
+            -8.180819577319198e-09,
+            1.8107814563409874e-16
+          ],
+          [
+            7.980421795503898e-16,
+            1.8107814563409874e-16,
+            -8.597282885602908e-09
+          ]
+        ],
+        [
+          [
+            -8.220638392231194e-09,
+            -5.333315014361513e-17,
+            1.0229602035418675e-15
+          ],
+          [
+            -5.333315014361513e-17,
+            -8.135543794196565e-09,
+            3.8000214086508777e-11
+          ],
+          [
+            1.0229602035418675e-15,
+            3.8000214086508777e-11,
+            -8.452161637251265e-09
+          ]
+        ],
+        [
+          [
+            -8.526797046215506e-09,
+            -4.884981308350689e-15,
+            -1.92489357786485e-11
+          ],
+          [
+            -4.884981308350689e-15,
+            -8.341402235600981e-09,
+            2.7200464103316335e-15
+          ],
+          [
+            -1.92489357786485e-11,
+            2.7200464103316335e-15,
+            -8.770172144068056e-09
+          ]
+        ],
+        [
+          [
+            -8.413422847297625e-09,
+            3.424038830246445e-11,
+            1.7080442167106915e-15
+          ],
+          [
+            3.424038830246445e-11,
+            -8.3075804013788e-09,
+            -2.1027695283324712e-15
+          ],
+          [
+            1.7080442167106915e-15,
+            -2.1027695283324712e-15,
+            -8.60660520629608e-09
+          ]
+        ],
+        [
+          [
+            -8.36732283460151e-09,
+            6.066797921759969e-16,
+            -4.1324814921998587e-16
+          ],
+          [
+            6.066797921759969e-16,
+            -8.343334911842248e-09,
+            -6.613265359448241e-16
+          ],
+          [
+            -4.1324814921998587e-16,
+            -6.613265359448241e-16,
+            -8.605383072790573e-09
+          ]
+        ],
+        [
+          [
+            -8.220666813940625e-09,
+            5.688174442491481e-16,
+            5.381938059751294e-16
+          ],
+          [
+            5.688174442491481e-16,
+            -8.135486950777704e-09,
+            -3.800260106601172e-11
+          ],
+          [
+            5.381938059751294e-16,
+            -3.800260106601172e-11,
+            -8.452218480670126e-09
+          ]
+        ],
+        [
+          [
+            -8.526740202796645e-09,
+            -1.1102230246251565e-15,
+            1.9243051596617988e-11
+          ],
+          [
+            -1.1102230246251565e-15,
+            -8.341544344148133e-09,
+            -5.9396931817445875e-15
+          ],
+          [
+            1.9243051596617988e-11,
+            -5.9396931817445875e-15,
+            -8.770172144068056e-09
+          ]
+        ],
+        [
+          [
+            -8.107008397928439e-09,
+            1.7918555528240176e-11,
+            1.88698093297998e-15
+          ],
+          [
+            1.7918555528240176e-11,
+            -7.807017254890525e-09,
+            -2.0577176425043055e-15
+          ],
+          [
+            1.88698093297998e-15,
+            -2.0577176425043055e-15,
+            -8.182922783817048e-09
+          ]
+        ],
+        [
+          [
+            -8.274895435533836e-09,
+            3.3253351279084164e-16,
+            1.198757369961679e-15
+          ],
+          [
+            3.3253351279084164e-16,
+            -8.101324056042358e-09,
+            2.595786674901476e-15
+          ],
+          [
+            1.198757369961679e-15,
+            2.595786674901476e-15,
+            -8.624255087852362e-09
+          ]
+        ],
+        [
+          [
+            -8.220695235650055e-09,
+            -5.20389790500581e-16,
+            2.275436652413369e-16
+          ],
+          [
+            -5.20389790500581e-16,
+            -8.135629059324856e-09,
+            -3.799893733003046e-11
+          ],
+          [
+            2.275436652413369e-16,
+            -3.799893733003046e-11,
+            -8.452303745798417e-09
+          ]
+        ],
+        [
+          [
+            -8.060993650360615e-09,
+            3.608224830031759e-15,
+            3.665423520260447e-11
+          ],
+          [
+            3.608224830031759e-15,
+            -7.748923280814779e-09,
+            -3.3306690738754696e-16
+          ],
+          [
+            3.665423520260447e-11,
+            -3.3306690738754696e-16,
+            -8.174907861757674e-09
+          ]
+        ],
+        [
+          [
+            -8.413479690716485e-09,
+            -3.4250158265081154e-11,
+            1.1608857749827624e-15
+          ],
+          [
+            -3.4250158265081154e-11,
+            -8.30752355795994e-09,
+            1.4831045599816416e-15
+          ],
+          [
+            1.1608857749827624e-15,
+            1.4831045599816416e-15,
+            -8.60657678458665e-09
+          ]
+        ],
+        [
+          [
+            -7.897767773101805e-09,
+            -4.2610000145766306e-16,
+            -6.656948246473381e-16
+          ],
+          [
+            -4.2610000145766306e-16,
+            -7.908880661489093e-09,
+            2.093543740596748e-15
+          ],
+          [
+            -6.656948246473381e-16,
+            2.093543740596748e-15,
+            -8.134747986332513e-09
+          ]
+        ],
+        [
+          [
+            -8.220553127102903e-09,
+            4.811059302095179e-16,
+            2.0171820561143802e-15
+          ],
+          [
+            4.811059302095179e-16,
+            -8.135657481034286e-09,
+            3.798228398466108e-11
+          ],
+          [
+            2.0171820561143802e-15,
+            3.798228398466108e-11,
+            -8.452161637251265e-09
+          ]
+        ],
+        [
+          [
+            -8.060936806941754e-09,
+            -3.9968028886505635e-15,
+            -3.664635261912963e-11
+          ],
+          [
+            -3.9968028886505635e-15,
+            -7.749264341327944e-09,
+            -3.9968028886505635e-15
+          ],
+          [
+            -3.664635261912963e-11,
+            -3.9968028886505635e-15,
+            -8.175163657142548e-09
+          ]
+        ],
+        [
+          [
+            -8.1070652413473e-09,
+            -1.7904233651222512e-11,
+            -1.265924650767944e-15
+          ],
+          [
+            -1.7904233651222512e-11,
+            -7.807017254890525e-09,
+            -1.1727737740368163e-15
+          ],
+          [
+            -1.265924650767944e-15,
+            -1.1727737740368163e-15,
+            -8.182951205526479e-09
+          ]
+        ],
+        [
+          [
+            -3.378963775446664e-13,
+            -3.4626706883755798e-18,
+            -3.4189390161766165e-21
+          ],
+          [
+            -3.4626706883755798e-18,
+            -1.9925727734459997e-13,
+            5.447269331915887e-18
+          ],
+          [
+            -3.4189390161766165e-21,
+            5.447269331915887e-18,
+            -2.0800028366352308e-13
+          ]
+        ],
+        [
+          [
+            -3.3784086639343514e-13,
+            3.0222135558033436e-18,
+            5.184075418511096e-18
+          ],
+          [
+            3.0222135558033436e-18,
+            -1.992017661933687e-13,
+            1.5623751899296384e-18
+          ],
+          [
+            5.184075418511096e-18,
+            1.5623751899296384e-18,
+            -2.081113059659856e-13
+          ]
+        ],
+        [
+          [
+            -3.743949594792184e-13,
+            1.1277065881202787e-18,
+            1.3194703920740132e-18
+          ],
+          [
+            1.1277065881202787e-18,
+            -1.940114735532461e-13,
+            3.4541311124150974e-18
+          ],
+          [
+            1.3194703920740132e-18,
+            3.4541311124150974e-18,
+            -2.5499047318078283e-13
+          ]
+        ],
+        [
+          [
+            -3.744782262060653e-13,
+            -5.961603814236657e-19,
+            -1.1890117398979124e-18
+          ],
+          [
+            -5.961603814236657e-19,
+            -1.9398371797763048e-13,
+            -2.3340024034345994e-18
+          ],
+          [
+            -1.1890117398979124e-18,
+            -2.3340024034345994e-18,
+            -2.5510149548324534e-13
+          ]
+        ],
+        [
+          [
+            -4.120870311652425e-13,
+            1.868998372760948e-18,
+            3.2131837443808704e-18
+          ],
+          [
+            1.868998372760948e-18,
+            -2.5876523146450836e-13,
+            1.463672932855431e-18
+          ],
+          [
+            3.2131837443808704e-18,
+            1.463672932855431e-18,
+            -3.2968072716244023e-13
+          ]
+        ],
+        [
+          [
+            -4.120315200140112e-13,
+            9.615343192931472e-19,
+            2.9414900144130137e-18
+          ],
+          [
+            9.615343192931472e-19,
+            -2.5876523146450836e-13,
+            -1.7618285302889447e-18
+          ],
+          [
+            2.9414900144130137e-18,
+            -1.7618285302889447e-18,
+            -3.297362383136715e-13
+          ]
+        ]
+      ],
+      "imag": [
+        [
+          [
+            1.7763568394002505e-15,
+            8.271806125530277e-25,
+            8.06501097239202e-24
+          ],
+          [
+            8.271806125530277e-25,
+            2.6645352591003757e-15,
+            -5.773159728050814e-15
+          ],
+          [
+            8.06501097239202e-24,
+            -5.773159728050814e-15,
+            -3.9968028886505635e-15
+          ]
+        ],
+        [
+          [
+            7.993605777301127e-15,
+            -1.27675647831893e-15,
+            7.605027718682322e-15
+          ],
+          [
+            -1.27675647831893e-15,
+            1.7763568394002505e-14,
+            -4.9960036108132044e-15
+          ],
+          [
+            7.605027718682322e-15,
+            -4.9960036108132044e-15,
+            1.2878587085651816e-14
+          ]
+        ],
+        [
+          [
+            4.440892098500626e-15,
+            2.1094237467877974e-15,
+            -7.858215819253763e-24
+          ],
+          [
+            2.1094237467877974e-15,
+            -1.0658141036401503e-14,
+            -1.1166938269465874e-23
+          ],
+          [
+            -7.858215819253763e-24,
+            -1.1166938269465874e-23,
+            -9.880984919163893e-15
+          ]
+        ],
+        [
+          [
+            -9.769962616701378e-15,
+            2.6469779601696886e-23,
+            -7.754818242684634e-24
+          ],
+          [
+            2.6469779601696886e-23,
+            3.9968028886505635e-15,
+            1.34416849539867e-24
+          ],
+          [
+            -7.754818242684634e-24,
+            1.34416849539867e-24,
+            -2.3092638912203256e-14
+          ]
+        ],
+        [
+          [
+            1.687538997430238e-14,
+            9.512577044359818e-24,
+            9.098986738083304e-24
+          ],
+          [
+            9.512577044359818e-24,
+            -5.329070518200751e-15,
+            -3.3306690738754696e-15
+          ],
+          [
+            9.098986738083304e-24,
+            -3.3306690738754696e-15,
+            3.552713678800501e-15
+          ]
+        ],
+        [
+          [
+            -3.552713678800501e-15,
+            3.497202527569243e-15,
+            -3.0531133177191805e-15
+          ],
+          [
+            3.497202527569243e-15,
+            -3.552713678800501e-15,
+            -2.4424906541753444e-15
+          ],
+          [
+            -3.0531133177191805e-15,
+            -2.4424906541753444e-15,
+            -3.9968028886505635e-15
+          ]
+        ],
+        [
+          [
+            -1.3766765505351941e-14,
+            1.3600232051658168e-15,
+            8.271806125530277e-25
+          ],
+          [
+            1.3600232051658168e-15,
+            -4.218847493575595e-15,
+            7.031035206700735e-24
+          ],
+          [
+            8.271806125530277e-25,
+            7.031035206700735e-24,
+            -6.217248937900877e-15
+          ]
+        ],
+        [
+          [
+            1.7763568394002505e-14,
+            3.1019272970738538e-24,
+            1.8611563782443123e-24
+          ],
+          [
+            3.1019272970738538e-24,
+            -3.375077994860476e-14,
+            -1.8611563782443123e-24
+          ],
+          [
+            1.8611563782443123e-24,
+            -1.8611563782443123e-24,
+            -7.993605777301127e-15
+          ]
+        ],
+        [
+          [
+            8.881784197001252e-15,
+            2.7917345673664684e-24,
+            -3.7223127564886245e-24
+          ],
+          [
+            2.7917345673664684e-24,
+            -4.440892098500626e-15,
+            -3.885780586188048e-15
+          ],
+          [
+            -3.7223127564886245e-24,
+            -3.885780586188048e-15,
+            0.0
+          ]
+        ],
+        [
+          [
+            5.329070518200751e-15,
+            -3.9968028886505635e-15,
+            1.3322676295501878e-15
+          ],
+          [
+            -3.9968028886505635e-15,
+            8.881784197001252e-16,
+            -4.440892098500626e-15
+          ],
+          [
+            1.3322676295501878e-15,
+            -4.440892098500626e-15,
+            1.509903313490213e-14
+          ]
+        ],
+        [
+          [
+            1.7763568394002505e-15,
+            2.1094237467877974e-15,
+            9.512577044359818e-24
+          ],
+          [
+            2.1094237467877974e-15,
+            5.329070518200751e-15,
+            -5.686866711302065e-24
+          ],
+          [
+            9.512577044359818e-24,
+            -5.686866711302065e-24,
+            -4.440892098500626e-15
+          ]
+        ],
+        [
+          [
+            1.5987211554602254e-14,
+            1.8611563782443123e-24,
+            1.4475660719677984e-24
+          ],
+          [
+            1.8611563782443123e-24,
+            7.105427357601002e-15,
+            -7.237830359838992e-24
+          ],
+          [
+            1.4475660719677984e-24,
+            -7.237830359838992e-24,
+            3.552713678800501e-15
+          ]
+        ],
+        [
+          [
+            3.552713678800501e-15,
+            -4.1359030627651384e-24,
+            1.6543612251060553e-24
+          ],
+          [
+            -4.1359030627651384e-24,
+            4.440892098500626e-15,
+            4.6629367034256575e-15
+          ],
+          [
+            1.6543612251060553e-24,
+            4.6629367034256575e-15,
+            -2.6645352591003757e-15
+          ]
+        ],
+        [
+          [
+            -1.2434497875801753e-14,
+            0.0,
+            -1.3322676295501878e-15
+          ],
+          [
+            0.0,
+            1.1546319456101628e-14,
+            4.218847493575595e-15
+          ],
+          [
+            -1.3322676295501878e-15,
+            4.218847493575595e-15,
+            0.0
+          ]
+        ],
+        [
+          [
+            -3.552713678800501e-15,
+            -3.3029134982598407e-15,
+            1.0339757656912846e-24
+          ],
+          [
+            -3.3029134982598407e-15,
+            1.7763568394002505e-15,
+            -3.7223127564886245e-24
+          ],
+          [
+            1.0339757656912846e-24,
+            -3.7223127564886245e-24,
+            -8.881784197001252e-15
+          ]
+        ],
+        [
+          [
+            -7.105427357601002e-15,
+            3.1019272970738538e-24,
+            1.2407709188295415e-24
+          ],
+          [
+            3.1019272970738538e-24,
+            8.881784197001252e-15,
+            1.8611563782443123e-24
+          ],
+          [
+            1.2407709188295415e-24,
+            1.8611563782443123e-24,
+            -1.4210854715202004e-14
+          ]
+        ],
+        [
+          [
+            -5.773159728050814e-15,
+            -1.8611563782443123e-24,
+            3.7223127564886245e-24
+          ],
+          [
+            -1.8611563782443123e-24,
+            -1.7763568394002505e-15,
+            -1.9984014443252818e-15
+          ],
+          [
+            3.7223127564886245e-24,
+            -1.9984014443252818e-15,
+            -1.7763568394002505e-14
+          ]
+        ],
+        [
+          [
+            -1.0658141036401503e-14,
+            -1.1657341758564144e-15,
+            2.4980018054066022e-15
+          ],
+          [
+            -1.1657341758564144e-15,
+            -7.105427357601002e-15,
+            4.440892098500626e-16
+          ],
+          [
+            2.4980018054066022e-15,
+            4.440892098500626e-16,
+            3.552713678800501e-15
+          ]
+        ],
+        [
+          [
+            7.993605777301127e-15,
+            -2.7755575615628914e-15,
+            -6.203854594147708e-25
+          ],
+          [
+            -2.7755575615628914e-15,
+            -8.881784197001252e-16,
+            -6.203854594147708e-25
+          ],
+          [
+            -6.203854594147708e-25,
+            -6.203854594147708e-25,
+            -1.9984014443252818e-15
+          ]
+        ],
+        [
+          [
+            1.5987211554602254e-14,
+            2.481541837659083e-24,
+            4.1359030627651384e-25
+          ],
+          [
+            2.481541837659083e-24,
+            -7.105427357601002e-15,
+            3.308722450212111e-24
+          ],
+          [
+            4.1359030627651384e-25,
+            3.308722450212111e-24,
+            8.881784197001252e-16
+          ]
+        ],
+        [
+          [
+            -1.0658141036401503e-14,
+            6.100457017578579e-24,
+            1.8611563782443123e-24
+          ],
+          [
+            6.100457017578579e-24,
+            1.7763568394002505e-15,
+            8.881784197001252e-16
+          ],
+          [
+            1.8611563782443123e-24,
+            8.881784197001252e-16,
+            2.220446049250313e-14
+          ]
+        ],
+        [
+          [
+            6.217248937900877e-15,
+            -1.609823385706477e-15,
+            -3.885780586188048e-15
+          ],
+          [
+            -1.609823385706477e-15,
+            -1.2434497875801753e-14,
+            -5.773159728050814e-15
+          ],
+          [
+            -3.885780586188048e-15,
+            -5.773159728050814e-15,
+            -3.552713678800501e-15
+          ]
+        ],
+        [
+          [
+            4.440892098500626e-15,
+            1.6930901125533637e-15,
+            6.824240053562478e-24
+          ],
+          [
+            1.6930901125533637e-15,
+            2.220446049250313e-16,
+            4.342698215903395e-24
+          ],
+          [
+            6.824240053562478e-24,
+            4.342698215903395e-24,
+            -1.7763568394002505e-15
+          ]
+        ],
+        [
+          [
+            3.552713678800501e-15,
+            -4.1359030627651384e-25,
+            -1.6543612251060553e-24
+          ],
+          [
+            -4.1359030627651384e-25,
+            -8.881784197001252e-16,
+            -5.37667398159468e-24
+          ],
+          [
+            -1.6543612251060553e-24,
+            -5.37667398159468e-24,
+            1.0658141036401503e-14
+          ]
+        ],
+        [
+          [
+            0.0,
+            7.031035206700735e-24,
+            9.719372197498075e-24
+          ],
+          [
+            7.031035206700735e-24,
+            8.881784197001252e-15,
+            8.881784197001252e-16
+          ],
+          [
+            9.719372197498075e-24,
+            8.881784197001252e-16,
+            5.773159728050814e-15
+          ]
+        ],
+        [
+          [
+            1.1546319456101628e-14,
+            -1.9984014443252818e-15,
+            1.1102230246251565e-16
+          ],
+          [
+            -1.9984014443252818e-15,
+            -1.0658141036401503e-14,
+            2.220446049250313e-16
+          ],
+          [
+            1.1102230246251565e-16,
+            2.220446049250313e-16,
+            -1.021405182655144e-14
+          ]
+        ],
+        [
+          [
+            -7.105427357601002e-15,
+            -1.0547118733938987e-15,
+            -1.8611563782443123e-24
+          ],
+          [
+            -1.0547118733938987e-15,
+            -7.105427357601002e-15,
+            7.444625512977249e-24
+          ],
+          [
+            -1.8611563782443123e-24,
+            7.444625512977249e-24,
+            7.993605777301127e-15
+          ]
+        ],
+        [
+          [
+            -6.661338147750939e-15,
+            1.4475660719677984e-24,
+            -1.2407709188295415e-24
+          ],
+          [
+            1.4475660719677984e-24,
+            8.881784197001252e-16,
+            2.274746684520826e-24
+          ],
+          [
+            -1.2407709188295415e-24,
+            2.274746684520826e-24,
+            -5.329070518200751e-15
+          ]
+        ],
+        [
+          [
+            2.6645352591003757e-15,
+            4.807987310464473e-24,
+            7.858215819253763e-24
+          ],
+          [
+            4.807987310464473e-24,
+            1.2434497875801753e-14,
+            3.9968028886505635e-15
+          ],
+          [
+            7.858215819253763e-24,
+            3.9968028886505635e-15,
+            -5.773159728050814e-15
+          ]
+        ],
+        [
+          [
+            -1.7763568394002505e-15,
+            8.881784197001252e-16,
+            -2.609024107869118e-15
+          ],
+          [
+            8.881784197001252e-16,
+            1.7763568394002505e-14,
+            -3.1086244689504383e-15
+          ],
+          [
+            -2.609024107869118e-15,
+            -3.1086244689504383e-15,
+            -2.220446049250313e-15
+          ]
+        ],
+        [
+          [
+            -1.865174681370263e-14,
+            9.992007221626409e-16,
+            -1.0960143116327617e-23
+          ],
+          [
+            9.992007221626409e-16,
+            -6.8833827526759706e-15,
+            4.1359030627651384e-24
+          ],
+          [
+            -1.0960143116327617e-23,
+            4.1359030627651384e-24,
+            8.881784197001252e-15
+          ]
+        ],
+        [
+          [
+            4.9873299934333204e-18,
+            -1.8973538018496328e-19,
+            -1.1107161545511846e-27
+          ],
+          [
+            -1.8973538018496328e-19,
+            3.3610267347050637e-18,
+            4.0389678347315804e-28
+          ],
+          [
+            -1.1107161545511846e-27,
+            4.0389678347315804e-28,
+            5.204170427930421e-18
+          ]
+        ],
+        [
+          [
+            8.890457814381136e-18,
+            -5.421010862427522e-20,
+            -1.6155871338926322e-27
+          ],
+          [
+            -5.421010862427522e-20,
+            1.6263032587282567e-18,
+            1.0097419586828951e-27
+          ],
+          [
+            -1.6155871338926322e-27,
+            1.0097419586828951e-27,
+            1.0191500421363742e-17
+          ]
+        ],
+        [
+          [
+            2.168404344971009e-18,
+            -8.077935669463161e-28,
+            -3.534096855390133e-28
+          ],
+          [
+            -8.077935669463161e-28,
+            4.662069341687669e-18,
+            -7.068193710780266e-28
+          ],
+          [
+            -3.534096855390133e-28,
+            -7.068193710780266e-28,
+            -5.149960319306146e-19
+          ]
+        ],
+        [
+          [
+            9.215718466126788e-19,
+            4.0389678347315804e-28,
+            5.553580772755923e-28
+          ],
+          [
+            4.0389678347315804e-28,
+            8.51098705401121e-18,
+            2.0194839173657902e-28
+          ],
+          [
+            5.553580772755923e-28,
+            2.0194839173657902e-28,
+            -4.119968255444917e-18
+          ]
+        ],
+        [
+          [
+            6.965998958219366e-18,
+            6.058451752097371e-28,
+            -4.0389678347315804e-28
+          ],
+          [
+            6.058451752097371e-28,
+            -3.686287386450715e-18,
+            3.3881317890172014e-20
+          ],
+          [
+            -4.0389678347315804e-28,
+            3.3881317890172014e-20,
+            6.938893903907228e-18
+          ]
+        ],
+        [
+          [
+            -7.03376159399971e-18,
+            -8.077935669463161e-28,
+            -2.0194839173657902e-28
+          ],
+          [
+            -8.077935669463161e-28,
+            -3.469446951953614e-18,
+            -6.776263578034403e-21
+          ],
+          [
+            -2.0194839173657902e-28,
+            -6.776263578034403e-21,
+            0.0
+          ]
+        ]
+      ]
+    },
+    "rotational_scalar_residuals": {
+      "Ni": 0.0,
+      "H": 0.0
+    },
+    "work": {
+      "pw_rows": 18542,
+      "raw_columns": 346,
+      "wide_projector_columns": 16530,
+      "complex_overlap_multiply_adds": 106048743960,
+      "kinetic_complex_multiply_adds": 2219774072,
+      "full_frame_bytes": 102648512,
+      "local_fft_count": 0,
+      "pw_square_matrices": 0
+    },
+    "normalization": "unweighted original spin/source; no spin degeneracy",
+    "family": "unanchored physical UPF radial quadrature at zero field"
+  },
+  "original_source_weight": 0.1875,
+  "original_source_weight_applied": false,
+  "full_material_total": false,
+  "status": "complete",
+  "elapsed_seconds": 58.831743547227234
+}

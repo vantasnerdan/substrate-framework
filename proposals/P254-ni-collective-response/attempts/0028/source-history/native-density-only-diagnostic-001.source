@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+"""Read-only source0 density diagnosis, not trajectory execution or resume."""
+import json, os, sys
+from pathlib import Path
+from time import perf_counter, process_time
+import numpy as np
+import run_mixed_q_material as driver
+from substrate_framework.partitioned_q_storage import QBudget
+from substrate_framework.material_joint_response import RealBlochEdge
+from substrate_framework.qe_bloch_finiteq import BlochFiniteQBridge
+
+A28=Path(driver.__file__).resolve().parent
+ROOT=Path('/var/tmp/p254-a28-density-only-diagnostic-001')
+OLD=Path('/var/tmp/p254-a28-loaded-raw-mixed-gamma-005')
+
+def main():
+    os.sched_setaffinity(0,{6})
+    ROOT.mkdir(exist_ok=False)
+    start=perf_counter()
+    result=dict(schema='P254-actual-source-density-diagnostic-v1', status='failed',
+        scope='Only original source0 plus density; no trajectory or full material result',
+        all_source_columns=True, hamiltonian_actions=0, tolerance_relative=3e-10)
+    budget=QBudget(max_actions=1,max_seconds=240,max_bytes=32*1024**2,
+                   max_memory_bytes=4*1024**3,worker_memory_bytes=4*1024**3)
+    try:
+        with driver.watchdog(budget):
+            args=driver.parser().parse_args(sys.argv[1:])
+            print('DENSITY_ONLY_001_inputs',flush=True)
+            inputs=driver.metadata_inputs(args)
+            case=driver.bind_saved_model(driver.load_case(args.case),inputs['saved'],
+                                        inputs['execution'].get('source_compatibility'))
+            prior_binding=driver.file_binding(A28/'native-shared-moment-smoke-failed-004.json')
+            prior=json.loads(driver.authenticate(prior_binding).read_text())
+            admission_binding=driver.file_binding(A28/'actual-baseline-frame-adoption-check-003.json')
+            admission=json.loads(driver.authenticate(admission_binding).read_text())
+            slot=case.ordered[0]
+            frame=case.grid.load_frame(slot)
+            assert frame.basis.identity==prior['native_consumer']['slots'][0]['basis_identity']
+            edge=RealBlochEdge.create(case.grid.reference,frame.basis,frame.basis,np.zeros(3))
+            bridge=BlochFiniteQBridge(case.background.inputs,edge,block_size=args.block_size)
+            del frame
+            mean_binding=admission['items'][0]['cache_frame']
+            d_binding=prior['native_consumer']['slots'][0]['coefficient']
+            psi=np.load(driver.authenticate(mean_binding),mmap_mode='r',allow_pickle=False)
+            D=np.load(driver.authenticate(d_binding),mmap_mode='r',allow_pickle=False)
+            result.update(prior=prior_binding, admission=admission_binding, mean=mean_binding,
+                coefficient=d_binding,basis_identity=bridge.edge.source_basis.identity,
+                model_identity=case.identity, source_weight=slot.weight, block_size=args.block_size,
+                geometry=list(bridge.source_fft.physical), shape=list(psi.shape))
+            print('DENSITY_ONLY_001_factory_ready',perf_counter()-start,flush=True)
+            with driver.MappedMixedState(prior['input_evaluation_node'],budget=budget) as state:
+                assert tuple(state.target_plus)==tuple(range(len(state.target_plus)))
+                assert tuple(state.target_minus)==tuple(range(len(state.target_minus)))
+                plus,minus=state.leg('plus',0),state.leg('minus',0)
+                t,cpu=perf_counter(),process_time()
+                original=bridge.density_from_dyads(plus,psi,D,weight=slot.weight)
+                original+=bridge.density_from_dyads(psi,minus,D,weight=slot.weight)
+                result['density_measurement']=dict(elapsed_seconds=perf_counter()-t,
+                                                   cpu_seconds=process_time()-cpu)
+                path=ROOT/'legacy-plus-density.npy'
+                with path.open('xb') as stream:
+                    np.save(stream,original,allow_pickle=False)
+                    stream.flush(); os.fsync(stream.fileno())
+                result['output']=driver.file_binding(path)
+                ref=json.loads(driver.authenticate(prior['original_reference']).read_text())
+                checks={}
+                for label,binding in [('historical',ref['arrays']['plus.density']),
+                                      ('current',prior['outputs']['plus.density'])]:
+                    expected=np.load(driver.authenticate(binding),allow_pickle=False)
+                    scale=float(np.max(abs(expected)))
+                    error=float(np.max(abs(original-expected)))
+                    checks[label]=dict(binding=binding,max_absolute_error=error,
+                        relative_error=error/scale,reference_max=scale,
+                        bitwise_equal=bool(np.array_equal(original,expected)),
+                        passed=error/scale<=3e-10)
+                result.update(checks=checks,status='complete')
+            psi._mmap.close(); D._mmap.close()
+    except BaseException as error:
+        result['error']=type(error).__name__+': '+str(error)
+    result.update(elapsed_seconds=perf_counter()-start,budget=budget.snapshot())
+    driver.exact_publish(ROOT/'result.json',result,budget=None)
+    print(json.dumps(result),flush=True)
+    return 0 if result['status']=='complete' else 2
+
+if __name__=='__main__':
+    raise SystemExit(main())

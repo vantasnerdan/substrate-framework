@@ -1,0 +1,79 @@
+{
+  "schema": "P254-native-mixed-block-oracle-execution-registration-v1",
+  "registered_at": "2026-10-30T03:09:31.155180+00:00",
+  "parent": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/native-mixed-integration-wave-registration-001.json",
+    "bytes": "2201",
+    "sha256": "16d8e01d87f3ee93fe34c301a2d9dbb8ff94e756ad6fb9e8f120946e2991f971"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_material_moments.py",
+      "bytes": "4749",
+      "sha256": "c9b0dccc2ecacb72586ab23b1564460af5724a5d087bc7e1aa1be54f5d1744fd"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_physical_field_dyads.py",
+      "bytes": "4228",
+      "sha256": "2bf55f2eac75fc2ad1dc0d170194922b857d1663ea6af26b73aea9502a90ea42"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_material_moments_oracle.py",
+      "bytes": "18715",
+      "sha256": "aca9bdf82c61c7c4f10e37b8256b214af2c0792e699bc57c394e51e9c0c8b0db"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_response_storage.py",
+      "bytes": "26226",
+      "sha256": "840fa86d6b8059f8e1984d96df5f43cf8afdd2088d7d196f54cc2f841781f10a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_response_storage_oracle.py",
+      "bytes": "28413",
+      "sha256": "eb39332b20b857edd6eee4bd8609d91418a879ef9eae80141feb999ad7597313"
+    }
+  ],
+  "undefined_globals": {
+    "mixed_material_moments.py": [],
+    "mixed_physical_field_dyads.py": [],
+    "run_mixed_material_moments_oracle.py": [],
+    "mixed_response_storage.py": [],
+    "run_mixed_response_storage_oracle.py": []
+  },
+  "storage_amendment": "Exclusive edge owner can release_edge(index) and retire only that edge after global moments; other source views remain valid. Oracle exercises mapped-edge refusal then independent live-view preservation. Fork-shared original QBudget release uses its existing locks.",
+  "original_math_cumulative_cap_seconds": 600,
+  "prior_service_seconds": [
+    "9.412",
+    "7.074"
+  ],
+  "maximum_additional_execution_seconds": 240,
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-native-mixed-block-oracles-001",
+    "--wait",
+    "--pipe",
+    "--property=RuntimeMaxSec=250",
+    "--property=TimeoutStopSec=10",
+    "--property=MemoryMax=1073741824",
+    "--property=CPUAffinity=10",
+    "env",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src",
+    "/bin/bash",
+    "-c",
+    "timeout 120s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_material_moments_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-material-moments-oracle-001.json; moments_rc=$?; timeout 120s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_response_storage_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-response-storage-oracle-001.json; storage_rc=$?; printf '\nP254_MATERIAL_MOMENTS_RC_%s\nP254_MIXED_STORAGE_RC_%s\n' \"$moments_rc\" \"$storage_rc\"; test \"$moments_rc\" -eq 0 && test \"$storage_rc\" -eq 0"
+  ],
+  "outputs": [
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-material-moments-oracle-001.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-response-storage-oracle-001.json"
+  ],
+  "scope": "Actual finite physical-moment and real-file storage programs only; not Native full-PW material propagation or resource grant."
+}

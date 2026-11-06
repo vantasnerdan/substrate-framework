@@ -1,0 +1,89 @@
+{
+  "schema": "P254-coreE-zero-time-noise-implementation-contract-v1",
+  "canonical_issue": "225",
+  "root": "/home/administrator/projects/substrate-ni-collective",
+  "attempt": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030",
+  "source_grounding": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030/selected-physical-input-grounding-001.json",
+    "bytes": 2248,
+    "sha256": "8f568e572139ea75f5c9f289458cfc60478f9b3a4eedfeaa39a50d2a87a07a7f"
+  },
+  "question": "Compute exact full/retained/omitted/cross electronic covariance for the current original prepared material at t0. This constructs an omitted-noise component;it is not an additive fitted correction or a completed late-time bath/loss law.",
+  "invariants": [
+    "Original full finite-PW rows,rawPsi,admittedGram/D and exactly empty orthogonal complement. No Gram recomputation,refill,legacyA25 correction or H0/trajectory action.",
+    "Retained P=Q Qdagger with Q=Psi R from original saved12-band selection and symmetric-Gram coordinates;no principal rawD restriction.",
+    "Operator E=F-PFP. All covariance blocks use SAME original rho and canonical CAR;retain mixed blocks and independent adjoint actions.",
+    "Pure algebra returns unweighted single-sector quantities. Original1/N quadrature and128 explicit sources are a caller/reducer matter;no implicit spin or cell multiplier."
+  ],
+  "algebra": {
+    "path": "src/substrate_framework/material_noise_projection.py",
+    "function": "projected_noise_decomposition",
+    "signature": "(psi,gram,density_coefficients,active_coordinates,probes,*,factor_identity,pw_basis_identity,state_authority)",
+    "inputs": {
+      "psi": "complex[P,r] original full raw frame",
+      "gram": "complex[r,r] original admitted Gram",
+      "density_coefficients": "complex[r,r] original rawD",
+      "active_coordinates": "complex[r,m] R;Q=Psi R,selected from existingA29 metadata",
+      "probes": "Mapping[str,physical_factor_preparation.ActionFactors];full action and true adjoint_action complex[P,r]"
+    },
+    "returns": {
+      "full": "dict[(probeA,probeB),complex] original full prepared ordered covariance",
+      "blocks": "dict[(probeA,partA,probeB,partB),complex],parts retained/omitted",
+      "reconstruction_defect": "dict[(probeA,probeB),complex] full minus sum4blocks",
+      "means": "retained/omitted mean by probe",
+      "metadata": "original state/operator/basis identity,units,and raw projector diagnostics;no clipping or symmetrization"
+    },
+    "reuse": "Reuse canonical FactorFunctional/FactorPreparation ordered contraction. Their direct constructor accepts suppliedGram;avoid from_actions recomputingPsiDagPsi. Exploit low-rank PFP;no PW-square operator,duplicate full retained action banks or arbitrary fitted covariance.",
+    "oracle": "attempts/0030/oracle_material_noise_projection.py;independent dense/Fock and SymPy blocks including complex nonorthogonal rawD,initial empty complement,non-Hermitian independent adjoints,nonzero active/omitted cross terms and sensitive missing-cross/wrong-rawD mutations. Parent executes only after complete wave."
+  },
+  "material": {
+    "paths": [
+      "attempts/0030/full_noise_probe_inputs.py",
+      "attempts/0030/export_full_noise_probe.py"
+    ],
+    "independent_interface": "Do not import the unfinished algebra module. Expose a loader/action-preparation function callable in-process by parent and an exclusive-output material packet CLI.",
+    "arguments": [
+      "--initial-result",
+      "--coefficient-manifest",
+      "--original-record",
+      "--atom",
+      "--axis",
+      "--bands",
+      "--output"
+    ],
+    "pilot_inputs": {
+      "initial_result": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+      "coefficient_manifest": "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+      "original_record": 0,
+      "atom": 37,
+      "axis": "x",
+      "bands": 12,
+      "external_q": [
+        0,
+        0,
+        0
+      ],
+      "time_inverse_ry": 0
+    },
+    "packet": {
+      "schema": "P254-full-noise-probe-input-v1",
+      "frame": "original frame file binding,not a copied full raw frame",
+      "coordinates": "smallNPZ binding with gram,density_coefficients,active_coordinates,selected",
+      "probes": "mapping name to full action.npy and actual adjoint_action.npy bindings + ActionFactors identities/units",
+      "source": "current matched model/preparation/originalrecord/spin/k/basis/gauge/sourcearchive;join A29 slot by identity,not offset",
+      "quadrature_weight": "literal original per-sector measure,not applied to action or algebra",
+      "operator_work": "actual actions/time/RSS,explicitnoH0/noNative/notrajectory,originalinputs unchanged"
+    },
+    "requirements": "Authenticate actual original frame/D/source state and current matched scalar/background;reuse saved background and physical operator factories. Force=-physical ionic Hamiltonian derivative for selected H37/xGamma;use actual adjoint API,not a matrix repair. Saved active selected indices come from already completed A29 coefficient metadata. BuildR once from suppliedS/savedselection;do not call a whole projection/preparation run. Preserve original input identities. Keep helpers/CLI single-responsibility. Pilot packet may retain one source action pair;do not create an all128 full-action disk bank."
+  },
+  "wave": "Two independent implementations from settled code/data maps. Material exporter produces inputs without consumingunfinishedalgebra. Parent executes affectedoracle once and actual materialpilot only after BOTH settle,then integrates them.",
+  "pilot_budget": {
+    "cpu": 7,
+    "threads": 1,
+    "memory": "4GiB",
+    "native_runtime_seconds": 600,
+    "output": "One actual current source/probe covariance decomposition with provenance;not a wholeE completion."
+  },
+  "whole_arc": "After measured actual source0 result,parent chooses all128 currentGamma reduction and an observable-appropriate noise/influence continuation or saved canonical-clamped comparison. Keep full64q/late-time noise/loss bridge and physical ranking open until actually constructed;do not promote a selected source or initialjet into wholecampaign success.",
+  "review": "One complete new-construction review after useful actual result;reuse admitted unchanged finite/source/physical operator proofs. No child builds/tests/lints/formatters/Native/projection/DFT runs."
+}

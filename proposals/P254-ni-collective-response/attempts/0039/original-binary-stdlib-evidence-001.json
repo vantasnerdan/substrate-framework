@@ -1,0 +1,799 @@
+{
+  "schema": "P254-A39-original-binary-stdlib-decoding-evidence-v1",
+  "decoded_at": "2026-11-04T22:39:42.763460+00:00",
+  "producer": "Root actual read-only Python stdlib only; no NumPy/SciPy/operator/norm/physics run",
+  "inputs": {
+    "a39": "/var/tmp/p254-a39-finiteq-current-material-001/operator-actions.npz",
+    "a28": "/var/tmp/p254-a28-physical-spatial-material-001/finite-q-witness.npz",
+    "wfc_source": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/wfcup2.dat",
+    "wfc_target": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/wfcup3.dat"
+  },
+  "executed_decoder_source": "import ast, hashlib, itertools, json, math, struct, zipfile\nfrom pathlib import Path\n\ndef file_binding(path):\n    path=Path(path).resolve(); digest=hashlib.sha256(); size=0\n    with path.open('rb') as stream:\n        for chunk in iter(lambda:stream.read(1048576),b''):\n            size+=len(chunk); digest.update(chunk)\n    return dict(path=str(path),bytes=size,sha256=digest.hexdigest())\n\ndef archive_arrays(path):\n    records={}; arrays={}\n    with zipfile.ZipFile(path) as archive:\n        for info in archive.infolist():\n            data=archive.read(info.filename)\n            if not info.filename.endswith('.npy'): raise ValueError('non-NPY member')\n            if data[:6]!=b'\\x93NUMPY': raise ValueError('invalid NPY magic')\n            version=tuple(data[6:8]); width=2 if version==(1,0) else 4\n            length=int.from_bytes(data[8:8+width],'little'); end=8+width+length\n            header=ast.literal_eval(data[8+width:end].decode('utf-8' if version[0]==3 else 'latin1'))\n            dtype=header['descr']; shape=header['shape']\n            if not isinstance(dtype,str) or dtype[1]=='O': raise ValueError('primitive nonobject dtype required')\n            itemsize=int(dtype[2:])*(4 if dtype[1]=='U' else 1); body=data[end:]\n            if len(body)!=math.prod(shape)*itemsize: raise ValueError('payload/header byte length mismatch')\n            name=info.filename[:-4]\n            records[name]=dict(member=info.filename,npy_version=version,header=header,header_bytes=length,payload_bytes=len(body),payload_sha256=hashlib.sha256(body).hexdigest(),member_uncompressed_bytes=len(data),member_crc32=info.CRC)\n            arrays[name]=(header,body,itemsize)\n    return records,arrays\n\ndef c_bytes(array):\n    header,body,width=array; shape=header['shape']\n    if not header['fortran_order'] or len(shape)<2: return body\n    strides=[math.prod(shape[:axis]) for axis in range(len(shape))]\n    return b''.join(body[sum(i*s for i,s in zip(index,strides))*width:sum(i*s for i,s in zip(index,strides))*width+width] for index in itertools.product(*(range(n) for n in shape)))\n\ndef first_column(array):\n    header,body,width=array; rows,columns=header['shape']\n    return body[:rows*width] if header['fortran_order'] else b''.join(body[row*columns*width:row*columns*width+width] for row in range(rows))\n\ndef small_values(array):\n    header,body,width=array; dtype=header['descr']; kind=dtype[1]; endian='>' if dtype[0]=='>' else '<'\n    formats={'f':{8:'d',4:'f'},'i':{8:'q',4:'i',2:'h',1:'b'},'u':{8:'Q',4:'I',2:'H',1:'B'}}\n    if kind=='c' and width==16: return [list(value) for value in struct.iter_unpack(endian+'dd',c_bytes(array))]\n    return [value[0] for value in struct.iter_unpack(endian+formats[kind][width],c_bytes(array))]\n\ndef wfc_first_records(path,array,miller):\n    blocks=[]\n    with Path(path).open('rb') as stream:\n        for index in range(5):\n            marker=stream.read(4)\n            if len(marker)!=4: raise ValueError('missing Fortran record')\n            length=struct.unpack('<i',marker)[0]\n            if length<0 or length>1048576: raise ValueError('unsupported record marker')\n            body=stream.read(length)\n            if stream.read(4)!=marker: raise ValueError('Fortran record marker mismatch')\n            blocks.append(body)\n    fields=struct.unpack('<i3diid',blocks[0]); integers=struct.unpack('<4i',blocks[1])\n    triples=list(struct.iter_unpack('<iii',blocks[3])); raw_miller=[triple[axis] for axis in range(3) for triple in triples]\n    return dict(binding=file_binding(path),records=[dict(index=i,payload_bytes=len(body),payload_sha256=hashlib.sha256(body).hexdigest()) for i,body in enumerate(blocks)],first_record=dict(ik=fields[0],xk_raw=list(fields[1:4]),ispin=fields[4],gamma_only_native_i4=fields[5],scalef=fields[6]),second_record_native_i4=list(integers),first_band_equal_A39_selected_column_bytes=blocks[4]==c_bytes(array),native_Miller_values_equal_A39=raw_miller==small_values(miller))\n\nnew_records,new_arrays=archive_arrays(inputs['a39']); old_records,old_arrays=archive_arrays(inputs['a28'])\ngeometry=('source_miller','target_miller','source_k','target_k','q_fractional','q_bohr_inv','reciprocal_fold')\nresult=dict(original_archives=dict(A39=file_binding(inputs['a39']),A28=file_binding(inputs['a28'])),A39_all_members=new_records,A28_all_members=old_records,selected_original_column_byte_equality={name:c_bytes(new_arrays[name])==first_column(old_arrays[name]) for name in ('source_probe','target_probe')},geometry_logical_C_bytes_equality={name:new_arrays[name][0]['descr']==old_arrays[name][0]['descr'] and new_arrays[name][0]['shape']==old_arrays[name][0]['shape'] and c_bytes(new_arrays[name])==c_bytes(old_arrays[name]) for name in geometry},actual_small_persisted_values={name:small_values(new_arrays[name]) for name in ('forward_overlap_L_ry_bohr','adjoint_overlap_L_ry_bohr','current_overlap_hartree','polarization','source_k','target_k','q_fractional','q_bohr_inv','reciprocal_fold')},raw_source_WFC=wfc_first_records(inputs['wfc_source'],new_arrays['source_probe'],new_arrays['source_miller']),raw_target_WFC=wfc_first_records(inputs['wfc_target'],new_arrays['target_probe'],new_arrays['target_miller']))\n",
+  "decoder_utf8_bytes": 5183,
+  "decoder_sha256": "ae140ec4f9c921d9e1bcc4d8e07c3e067b7a79fa8e64168924168c7f13a996a4",
+  "observations": {
+    "original_archives": {
+      "A39": {
+        "path": "/var/tmp/p254-a39-finiteq-current-material-001/operator-actions.npz",
+        "bytes": 2083386,
+        "sha256": "3ef36087c1b84dee590e0d1f78b7a0225a7e934bda140d4623f29e4f1ef529df"
+      },
+      "A28": {
+        "path": "/var/tmp/p254-a28-physical-spatial-material-001/finite-q-witness.npz",
+        "bytes": 17595406,
+        "sha256": "b91ab7a598332ea4c4c1da3847717b93834caaa4bd36700735b4b02f50857a33"
+      }
+    },
+    "A39_all_members": {
+      "source_probe": {
+        "member": "source_probe.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            18569,
+            1
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 297104,
+        "payload_sha256": "0aab758bebc4376cd910430161beb7b98938bcd79e6597bd98e3d3a485cac0bb",
+        "member_uncompressed_bytes": 297232,
+        "member_crc32": 3105135061
+      },
+      "target_probe": {
+        "member": "target_probe.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            18560,
+            1
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 296960,
+        "payload_sha256": "7294d7d4f3bc05e6e789d14ffad096a1928c26f71522f3280864b985fc57f8f8",
+        "member_uncompressed_bytes": 297088,
+        "member_crc32": 2943233603
+      },
+      "polarization": {
+        "member": "polarization.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 48,
+        "payload_sha256": "0af8854f21e8176d80c0323034e6feca8af1991d1d9cd27d7748008d6fc7f74f",
+        "member_uncompressed_bytes": 176,
+        "member_crc32": 375441105
+      },
+      "forward_L_ry_bohr": {
+        "member": "forward_L_ry_bohr.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            18560,
+            1
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 296960,
+        "payload_sha256": "a3ada4d67859e454b80bf0f053f354ea96ff41304b185d728a8f986d5eadd353",
+        "member_uncompressed_bytes": 297088,
+        "member_crc32": 2421170873
+      },
+      "adjoint_L_ry_bohr": {
+        "member": "adjoint_L_ry_bohr.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            18569,
+            1
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 297104,
+        "payload_sha256": "a7d0545cd61269882e127ce374872a6295f29f77cc90f3de33e0a863529d234f",
+        "member_uncompressed_bytes": 297232,
+        "member_crc32": 4242278256
+      },
+      "forward_overlap_L_ry_bohr": {
+        "member": "forward_overlap_L_ry_bohr.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            1,
+            1
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 16,
+        "payload_sha256": "cbad940f4e9a479545a3293fed83b004ea72faa7ca4678c2d2cea4544b633f58",
+        "member_uncompressed_bytes": 144,
+        "member_crc32": 1846608789
+      },
+      "adjoint_overlap_L_ry_bohr": {
+        "member": "adjoint_overlap_L_ry_bohr.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            1,
+            1
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 16,
+        "payload_sha256": "6e871706f26950431025ff9a65e191e7658f022a5e9e43cc42c55176b52ddcc1",
+        "member_uncompressed_bytes": 144,
+        "member_crc32": 1268107570
+      },
+      "current_overlap_hartree": {
+        "member": "current_overlap_hartree.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            1,
+            1
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 16,
+        "payload_sha256": "bc1445cc7cb9c451d4ac7476a45f44df6e85c22472911b4c30b463c6e7124127",
+        "member_uncompressed_bytes": 144,
+        "member_crc32": 1015708820
+      },
+      "source_miller": {
+        "member": "source_miller.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<i8",
+          "fortran_order": false,
+          "shape": [
+            3,
+            18569
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 445656,
+        "payload_sha256": "a7ad3e4a52bbf20b18a6dbe2f869341167b210b4cb09b9f0d553a6680dbb5887",
+        "member_uncompressed_bytes": 445784,
+        "member_crc32": 3293751769
+      },
+      "target_miller": {
+        "member": "target_miller.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<i8",
+          "fortran_order": false,
+          "shape": [
+            3,
+            18560
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 445440,
+        "payload_sha256": "27f914536053430d0915bce172416e32b8163543d5f3683b4d3b6486df987c7c",
+        "member_uncompressed_bytes": 445568,
+        "member_crc32": 3415394619
+      },
+      "source_k": {
+        "member": "source_k.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<f8",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 24,
+        "payload_sha256": "465bfc6bf561f5fd72d99a462c75db3a8861abc88c0038a2e604d3dd1f06efe0",
+        "member_uncompressed_bytes": 152,
+        "member_crc32": 427948210
+      },
+      "target_k": {
+        "member": "target_k.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<f8",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 24,
+        "payload_sha256": "ab08c478b6223bc1c6139c5e9c3e192034a4df3a727c1257c0d1f442286aae02",
+        "member_uncompressed_bytes": 152,
+        "member_crc32": 3674604132
+      },
+      "q_fractional": {
+        "member": "q_fractional.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<f8",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 24,
+        "payload_sha256": "5fff6936ad5efa5dbc9392650a698b7759fb4bc55e0a7608bd1892f1ace9cccc",
+        "member_uncompressed_bytes": 152,
+        "member_crc32": 2342980364
+      },
+      "q_bohr_inv": {
+        "member": "q_bohr_inv.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<f8",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 24,
+        "payload_sha256": "465bfc6bf561f5fd72d99a462c75db3a8861abc88c0038a2e604d3dd1f06efe0",
+        "member_uncompressed_bytes": 152,
+        "member_crc32": 427948210
+      },
+      "reciprocal_fold": {
+        "member": "reciprocal_fold.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<i8",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 24,
+        "payload_sha256": "0fba003e5d62756059b291c7aeefed2ba91435b29c4b42468300ce0f4554f719",
+        "member_uncompressed_bytes": 152,
+        "member_crc32": 1111086702
+      }
+    },
+    "A28_all_members": {
+      "source_probe": {
+        "member": "source_probe.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            18569,
+            4
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 1188416,
+        "payload_sha256": "df0a98c0ad423334f0f8fca7d59f39cd256dcbec76620062319903f50caaeb5d",
+        "member_uncompressed_bytes": 1188544,
+        "member_crc32": 2952055427
+      },
+      "target_probe": {
+        "member": "target_probe.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            18560,
+            4
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 1187840,
+        "payload_sha256": "8cb08fdb2893f6eef6770dc9cc957616e1390379cc4b48ad5c42d18782e5f9ae",
+        "member_uncompressed_bytes": 1187968,
+        "member_crc32": 1286101264
+      },
+      "original_D_probe_coefficient": {
+        "member": "original_D_probe_coefficient.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            4,
+            4
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 256,
+        "payload_sha256": "2e71e067bfa04c57e864b5d2f5b8c02b29aca92b9b1a854970a6a0d01fcc943b",
+        "member_uncompressed_bytes": 384,
+        "member_crc32": 2499879027
+      },
+      "source_miller": {
+        "member": "source_miller.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<i8",
+          "fortran_order": false,
+          "shape": [
+            3,
+            18569
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 445656,
+        "payload_sha256": "a7ad3e4a52bbf20b18a6dbe2f869341167b210b4cb09b9f0d553a6680dbb5887",
+        "member_uncompressed_bytes": 445784,
+        "member_crc32": 3293751769
+      },
+      "target_miller": {
+        "member": "target_miller.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<i8",
+          "fortran_order": false,
+          "shape": [
+            3,
+            18560
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 445440,
+        "payload_sha256": "27f914536053430d0915bce172416e32b8163543d5f3683b4d3b6486df987c7c",
+        "member_uncompressed_bytes": 445568,
+        "member_crc32": 3415394619
+      },
+      "source_k": {
+        "member": "source_k.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<f8",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 24,
+        "payload_sha256": "465bfc6bf561f5fd72d99a462c75db3a8861abc88c0038a2e604d3dd1f06efe0",
+        "member_uncompressed_bytes": 152,
+        "member_crc32": 427948210
+      },
+      "target_k": {
+        "member": "target_k.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<f8",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 24,
+        "payload_sha256": "ab08c478b6223bc1c6139c5e9c3e192034a4df3a727c1257c0d1f442286aae02",
+        "member_uncompressed_bytes": 152,
+        "member_crc32": 3674604132
+      },
+      "q_fractional": {
+        "member": "q_fractional.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<f8",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 24,
+        "payload_sha256": "5fff6936ad5efa5dbc9392650a698b7759fb4bc55e0a7608bd1892f1ace9cccc",
+        "member_uncompressed_bytes": 152,
+        "member_crc32": 2342980364
+      },
+      "q_bohr_inv": {
+        "member": "q_bohr_inv.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<f8",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 24,
+        "payload_sha256": "465bfc6bf561f5fd72d99a462c75db3a8861abc88c0038a2e604d3dd1f06efe0",
+        "member_uncompressed_bytes": 152,
+        "member_crc32": 427948210
+      },
+      "reciprocal_fold": {
+        "member": "reciprocal_fold.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<i8",
+          "fortran_order": false,
+          "shape": [
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 24,
+        "payload_sha256": "0fba003e5d62756059b291c7aeefed2ba91435b29c4b42468300ce0f4554f719",
+        "member_uncompressed_bytes": 152,
+        "member_crc32": 1111086702
+      },
+      "direction": {
+        "member": "direction.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            37,
+            3
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 1776,
+        "payload_sha256": "1c38c909a303cdfde26c0d5c9c857f7b6efcef41efb527e9a7277464695fa713",
+        "member_uncompressed_bytes": 1904,
+        "member_crc32": 2941314750
+      },
+      "physical_forward_action": {
+        "member": "physical_forward_action.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            18560,
+            4
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 1187840,
+        "payload_sha256": "2bb426829da53bc41a07d700596085a4e9b0c0ff5efe81271ef624065596ecfd",
+        "member_uncompressed_bytes": 1187968,
+        "member_crc32": 2825660877
+      },
+      "physical_adjoint_action": {
+        "member": "physical_adjoint_action.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            18569,
+            4
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 1188416,
+        "payload_sha256": "9997314b844e09ec99f6009cd086ae72a85d35b32b2f8c79ea39b8f297a9799e",
+        "member_uncompressed_bytes": 1188544,
+        "member_crc32": 1534857559
+      },
+      "density_bohr3": {
+        "member": "density_bohr3.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            373248,
+            2
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 11943936,
+        "payload_sha256": "44051217f91ede3788a011ea187e7789e3db4f72a93304a50eca98f03a7d0e04",
+        "member_uncompressed_bytes": 11944064,
+        "member_crc32": 3377178134
+      },
+      "positive_gradient": {
+        "member": "positive_gradient.npy",
+        "npy_version": [
+          1,
+          0
+        ],
+        "header": {
+          "descr": "<c16",
+          "fortran_order": false,
+          "shape": [
+            111
+          ]
+        },
+        "header_bytes": 118,
+        "payload_bytes": 1776,
+        "payload_sha256": "a21ee49358ed3785acd1e6702745fee2555e1c910e50a705f138374b857bf8df",
+        "member_uncompressed_bytes": 1904,
+        "member_crc32": 3494464460
+      }
+    },
+    "selected_original_column_byte_equality": {
+      "source_probe": true,
+      "target_probe": true
+    },
+    "geometry_logical_C_bytes_equality": {
+      "source_miller": true,
+      "target_miller": true,
+      "source_k": true,
+      "target_k": true,
+      "q_fractional": true,
+      "q_bohr_inv": true,
+      "reciprocal_fold": true
+    },
+    "actual_small_persisted_values": {
+      "forward_overlap_L_ry_bohr": [
+        [
+          -1.2206902155753596e-13,
+          2.1433549379779038e-13
+        ]
+      ],
+      "adjoint_overlap_L_ry_bohr": [
+        [
+          -1.22089110823867e-13,
+          2.1437350124323497e-13
+        ]
+      ],
+      "current_overlap_hartree": [
+        [
+          6.103451077876798e-14,
+          -1.0716774689889519e-13
+        ]
+      ],
+      "polarization": [
+        [
+          0.23,
+          0.11
+        ],
+        [
+          -0.17,
+          0.19
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "source_k": [
+        0.0,
+        0.0,
+        0.11793836820516468
+      ],
+      "target_k": [
+        0.0,
+        0.0,
+        -0.23587673641032936
+      ],
+      "q_fractional": [
+        0.0,
+        0.0,
+        0.25
+      ],
+      "q_bohr_inv": [
+        0.0,
+        0.0,
+        0.11793836820516468
+      ],
+      "reciprocal_fold": [
+        0,
+        0,
+        -1
+      ]
+    },
+    "raw_source_WFC": {
+      "binding": {
+        "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/wfcup2.dat",
+        "bytes": 103023744,
+        "sha256": "1ba24afbd8cbb36c53e85a8704c66ec87f83911754cefc6aaa23484c3a2fb7fd"
+      },
+      "records": [
+        {
+          "index": 0,
+          "payload_bytes": 44,
+          "payload_sha256": "772545ba6a8ac76fb613b5bed44591babbcda86e94feea0a3f41433ff684f7e9"
+        },
+        {
+          "index": 1,
+          "payload_bytes": 16,
+          "payload_sha256": "3b4e2d441894a039224fa3326fff773add143fc9fb3819edf69e1bfe76980c87"
+        },
+        {
+          "index": 2,
+          "payload_bytes": 72,
+          "payload_sha256": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f"
+        },
+        {
+          "index": 3,
+          "payload_bytes": 222828,
+          "payload_sha256": "4bed073bd389bc4347b0e51f4ea6f3aa47f3a307b89db667cc220ddf67888b62"
+        },
+        {
+          "index": 4,
+          "payload_bytes": 297104,
+          "payload_sha256": "0aab758bebc4376cd910430161beb7b98938bcd79e6597bd98e3d3a485cac0bb"
+        }
+      ],
+      "first_record": {
+        "ik": 2,
+        "xk_raw": [
+          0.0,
+          0.0,
+          0.11793836820516468
+        ],
+        "ispin": 1,
+        "gamma_only_native_i4": 0,
+        "scalef": 1.0
+      },
+      "second_record_native_i4": [
+        19362,
+        18569,
+        1,
+        346
+      ],
+      "first_band_equal_A39_selected_column_bytes": true,
+      "native_Miller_values_equal_A39": true
+    },
+    "raw_target_WFC": {
+      "binding": {
+        "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/wfcup3.dat",
+        "bytes": 102973812,
+        "sha256": "a02328ae0ca8f07f16f78f07a5f828416410bd042dbeae213a8c9d84f4868826"
+      },
+      "records": [
+        {
+          "index": 0,
+          "payload_bytes": 44,
+          "payload_sha256": "d4dd4f302a010b4f2021d4f5fc4ff0d9fca4fd3fd6961919833a710c3bed664c"
+        },
+        {
+          "index": 1,
+          "payload_bytes": 16,
+          "payload_sha256": "fe07870c13cabae5c52e92eea69270f05a51e0adcb1389f2c73917cc91fc9d35"
+        },
+        {
+          "index": 2,
+          "payload_bytes": 72,
+          "payload_sha256": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f"
+        },
+        {
+          "index": 3,
+          "payload_bytes": 222720,
+          "payload_sha256": "0ef3587fbf53cc2f9108385a8342808f63a51af7370a9813fce191f8cbf49250"
+        },
+        {
+          "index": 4,
+          "payload_bytes": 296960,
+          "payload_sha256": "7294d7d4f3bc05e6e789d14ffad096a1928c26f71522f3280864b985fc57f8f8"
+        }
+      ],
+      "first_record": {
+        "ik": 3,
+        "xk_raw": [
+          0.0,
+          0.0,
+          -0.23587673641032936
+        ],
+        "ispin": 1,
+        "gamma_only_native_i4": 0,
+        "scalef": 1.0
+      },
+      "second_record_native_i4": [
+        20127,
+        18560,
+        1,
+        346
+      ],
+      "first_band_equal_A39_selected_column_bytes": true,
+      "native_Miller_values_equal_A39": true
+    }
+  },
+  "scope": "Byte decoding/source identity evidence only; reviewer must distinguish Root-executed extraction from its own independent source/text/receipt audit. No invented independent binary execution."
+}

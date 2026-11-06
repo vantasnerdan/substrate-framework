@@ -1,0 +1,14 @@
+{
+  "schema": "P254-actual-q-plan-placement-v1",
+  "launch": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/p254-a28-actual-loaded-q-plan-001-launch.json",
+    "bytes": "2636",
+    "sha256": "d3ffd90eecfc2dd1911ab6613a0bc2e0714c46ec87a1d4eddb2a0ece4d0e47d6"
+  },
+  "observed_pid": "370515",
+  "observed_affinity": "pid 370515's current affinity list: 6",
+  "planned_launcher_cpu": 9,
+  "actual_program_cpu": 6,
+  "mechanism": "The existing q CLI pins its parent to the first --cpus value, overriding the initial systemd CPUAffinity. The requested five-worker planning list starts with6. The observed parent is on6, while the independent comparison is on10; both remain within the exclusively permitted6-10 range.",
+  "correction": "No producer restart or numerical change. Record the actual placement; future planner calls must put their intended parent CPU first while retaining the proposed worker count."
+}

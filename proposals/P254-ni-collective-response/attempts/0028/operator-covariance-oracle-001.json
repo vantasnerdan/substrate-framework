@@ -1,0 +1,708 @@
+{
+  "schema": "P254-operator-covariance-oracle-v1",
+  "status": "passed",
+  "checks": {
+    "independent_discrete_group_involution": true,
+    "independent_unitary_rows": true,
+    "exact_dense_bound": true,
+    "exact_independent_fourier_defect": true,
+    "exact_independent_production_action": true,
+    "exact_independent_action_residual": true,
+    "exact_group_symmetry": true,
+    "kinetic_dense_bound": true,
+    "kinetic_independent_fourier_defect": true,
+    "kinetic_independent_production_action": true,
+    "kinetic_independent_action_residual": true,
+    "kinetic_omitted_term_mutation_detected": true,
+    "potential_dense_bound": true,
+    "potential_independent_fourier_defect": true,
+    "potential_independent_production_action": true,
+    "potential_independent_action_residual": true,
+    "potential_omitted_term_mutation_detected": true,
+    "geometry_dense_bound": true,
+    "geometry_independent_fourier_defect": true,
+    "geometry_independent_production_action": true,
+    "geometry_independent_action_residual": true,
+    "geometry_omitted_term_mutation_detected": true,
+    "conjugacy_dense_bound": true,
+    "conjugacy_independent_fourier_defect": true,
+    "conjugacy_independent_production_action": true,
+    "conjugacy_independent_action_residual": true,
+    "conjugacy_omitted_term_mutation_detected": true,
+    "fft-phase_dense_bound": true,
+    "fft-phase_independent_fourier_defect": true,
+    "fft-phase_independent_production_action": true,
+    "fft-phase_independent_action_residual": true,
+    "fft-phase_omitted_term_mutation_detected": true,
+    "intertwiner_dense_bound": true,
+    "intertwiner_independent_fourier_defect": true,
+    "intertwiner_independent_production_action": true,
+    "intertwiner_independent_action_residual": true,
+    "unfitted_intertwiner_defects_retained": true,
+    "combined_dense_bound": true,
+    "combined_independent_fourier_defect": true,
+    "combined_independent_production_action": true,
+    "combined_independent_action_residual": true,
+    "combined_all_defects_retained": true,
+    "duplicate_rows_rejected": true,
+    "nonunit_phase_rejected": true,
+    "antiunitary_rejected": true,
+    "wrong_fft_pullback_rejected": true,
+    "duplicate_fft_pullback_rejected": true
+  },
+  "cases": [
+    {
+      "case": "exact",
+      "dense_norm_ry": 2.614054132021056e-15,
+      "bound": {
+        "kinetic_bound_ry": 0.0,
+        "local_potential_defect_ry": 0.0,
+        "local_fourier_bound_ry": 0.0,
+        "local_bound_ry": 0.0,
+        "nonlocal_bound_ry": 1.2103048750740165e-15,
+        "atoms": [
+          {
+            "species": "X",
+            "target_atom": 1,
+            "source_atom": 2,
+            "projector_residual_frobenius": 6.044871958460409e-17,
+            "d_conjugacy_defect_norm2": 2.780679937285574e-16,
+            "projector_bound_ry": 1.9911011962254635e-16,
+            "d_conjugacy_bound_ry": 3.8481092644808605e-16,
+            "bound_ry": 5.839210460706324e-16,
+            "intertwiner": "declared"
+          },
+          {
+            "species": "X",
+            "target_atom": 2,
+            "source_atom": 1,
+            "projector_residual_frobenius": 7.98644250408766e-17,
+            "d_conjugacy_defect_norm2": 2.780679937285574e-16,
+            "projector_bound_ry": 2.575454806410543e-16,
+            "d_conjugacy_bound_ry": 3.6883834836232983e-16,
+            "bound_ry": 6.263838290033841e-16,
+            "intertwiner": "declared"
+          }
+        ],
+        "fourier": {
+          "embedding_defect_frobenius": 0.0,
+          "frequency_mismatch_columns": 0,
+          "phase_max_defect": 0.0,
+          "phase_modulus_roundoff": 0.0,
+          "grid_translation_roundoff": 0.0,
+          "fft_pullback_exact_integer_match": true
+        },
+        "total_bound_ry": 1.2103048750740165e-15,
+        "source_identity": "original-dense-source",
+        "target_identity": "nontrivial-unitary-target",
+        "qualification": "analytic upper inequality evaluated in floating point, not interval certified",
+        "exact_real_zero_implies_covariance": true,
+        "numerical_zero_proves_exact_symmetry": false
+      },
+      "action": {
+        "columns": 5,
+        "column_norms": [
+          6.0629260464065435,
+          7.795930285603672,
+          6.996156075976761,
+          7.304812674680569,
+          7.9763972321415375
+        ],
+        "residual_norms_ry": [
+          4.314614049680596e-15,
+          6.604194113786412e-15,
+          5.909738251776687e-15,
+          8.153386356379974e-15,
+          5.39553326932326e-15
+        ],
+        "relative_residuals_ry": [
+          7.116389044919721e-16,
+          8.471335519741659e-16,
+          8.447121801741115e-16,
+          1.116166385024584e-15,
+          6.764373829805669e-16
+        ],
+        "residual_frobenius_ry": 1.388329099426941e-14,
+        "empirical_max_relative_ry": 1.116166385024584e-15,
+        "qualification": "actual operator actions on specified probes, not an operator-norm upper bound"
+      }
+    },
+    {
+      "case": "kinetic",
+      "dense_norm_ry": 0.21000000000000002,
+      "bound": {
+        "kinetic_bound_ry": 0.20999999999999996,
+        "local_potential_defect_ry": 0.0,
+        "local_fourier_bound_ry": 0.0,
+        "local_bound_ry": 0.0,
+        "nonlocal_bound_ry": 1.2103048750740165e-15,
+        "atoms": [
+          {
+            "species": "X",
+            "target_atom": 1,
+            "source_atom": 2,
+            "projector_residual_frobenius": 6.044871958460409e-17,
+            "d_conjugacy_defect_norm2": 2.780679937285574e-16,
+            "projector_bound_ry": 1.9911011962254635e-16,
+            "d_conjugacy_bound_ry": 3.8481092644808605e-16,
+            "bound_ry": 5.839210460706324e-16,
+            "intertwiner": "declared"
+          },
+          {
+            "species": "X",
+            "target_atom": 2,
+            "source_atom": 1,
+            "projector_residual_frobenius": 7.98644250408766e-17,
+            "d_conjugacy_defect_norm2": 2.780679937285574e-16,
+            "projector_bound_ry": 2.575454806410543e-16,
+            "d_conjugacy_bound_ry": 3.6883834836232983e-16,
+            "bound_ry": 6.263838290033841e-16,
+            "intertwiner": "declared"
+          }
+        ],
+        "fourier": {
+          "embedding_defect_frobenius": 0.0,
+          "frequency_mismatch_columns": 0,
+          "phase_max_defect": 0.0,
+          "phase_modulus_roundoff": 0.0,
+          "grid_translation_roundoff": 0.0,
+          "fft_pullback_exact_integer_match": true
+        },
+        "total_bound_ry": 0.21000000000000119,
+        "source_identity": "original-dense-source",
+        "target_identity": "nontrivial-unitary-target",
+        "qualification": "analytic upper inequality evaluated in floating point, not interval certified",
+        "exact_real_zero_implies_covariance": true,
+        "numerical_zero_proves_exact_symmetry": false
+      },
+      "action": {
+        "columns": 5,
+        "column_norms": [
+          6.0629260464065435,
+          7.795930285603672,
+          6.996156075976761,
+          7.304812674680569,
+          7.9763972321415375
+        ],
+        "residual_norms_ry": [
+          0.18630340002850385,
+          0.224193503016621,
+          0.13749015784097338,
+          0.49984151228128343,
+          0.47434640308032733
+        ],
+        "relative_residuals_ry": [
+          0.03072829828411393,
+          0.028757761396433622,
+          0.01965224279559513,
+          0.0684263285783904,
+          0.05946875378383992
+        ],
+        "residual_frobenius_ry": 0.7607373230459151,
+        "empirical_max_relative_ry": 0.0684263285783904,
+        "qualification": "actual operator actions on specified probes, not an operator-norm upper bound"
+      }
+    },
+    {
+      "case": "potential",
+      "dense_norm_ry": 0.3100000000000002,
+      "bound": {
+        "kinetic_bound_ry": 0.0,
+        "local_potential_defect_ry": 0.31,
+        "local_fourier_bound_ry": 0.0,
+        "local_bound_ry": 0.31,
+        "nonlocal_bound_ry": 1.2103048750740165e-15,
+        "atoms": [
+          {
+            "species": "X",
+            "target_atom": 1,
+            "source_atom": 2,
+            "projector_residual_frobenius": 6.044871958460409e-17,
+            "d_conjugacy_defect_norm2": 2.780679937285574e-16,
+            "projector_bound_ry": 1.9911011962254635e-16,
+            "d_conjugacy_bound_ry": 3.8481092644808605e-16,
+            "bound_ry": 5.839210460706324e-16,
+            "intertwiner": "declared"
+          },
+          {
+            "species": "X",
+            "target_atom": 2,
+            "source_atom": 1,
+            "projector_residual_frobenius": 7.98644250408766e-17,
+            "d_conjugacy_defect_norm2": 2.780679937285574e-16,
+            "projector_bound_ry": 2.575454806410543e-16,
+            "d_conjugacy_bound_ry": 3.6883834836232983e-16,
+            "bound_ry": 6.263838290033841e-16,
+            "intertwiner": "declared"
+          }
+        ],
+        "fourier": {
+          "embedding_defect_frobenius": 0.0,
+          "frequency_mismatch_columns": 0,
+          "phase_max_defect": 0.0,
+          "phase_modulus_roundoff": 0.0,
+          "grid_translation_roundoff": 0.0,
+          "fft_pullback_exact_integer_match": true
+        },
+        "total_bound_ry": 0.3100000000000012,
+        "source_identity": "original-dense-source",
+        "target_identity": "nontrivial-unitary-target",
+        "qualification": "analytic upper inequality evaluated in floating point, not interval certified",
+        "exact_real_zero_implies_covariance": true,
+        "numerical_zero_proves_exact_symmetry": false
+      },
+      "action": {
+        "columns": 5,
+        "column_norms": [
+          6.0629260464065435,
+          7.795930285603672,
+          6.996156075976761,
+          7.304812674680569,
+          7.9763972321415375
+        ],
+        "residual_norms_ry": [
+          0.5689803980140918,
+          0.3232393204615547,
+          0.4242472714367239,
+          0.21155161626169539,
+          0.4477005890127711
+        ],
+        "relative_residuals_ry": [
+          0.0938458417039942,
+          0.041462571959944725,
+          0.06064005245587565,
+          0.0289605806039299,
+          0.05612817115084557
+        ],
+        "residual_frobenius_ry": 0.9237954333528311,
+        "empirical_max_relative_ry": 0.0938458417039942,
+        "qualification": "actual operator actions on specified probes, not an operator-norm upper bound"
+      }
+    },
+    {
+      "case": "geometry",
+      "dense_norm_ry": 0.01252286400873941,
+      "bound": {
+        "kinetic_bound_ry": 0.0,
+        "local_potential_defect_ry": 0.0,
+        "local_fourier_bound_ry": 0.0,
+        "local_bound_ry": 0.0,
+        "nonlocal_bound_ry": 0.0775304590541116,
+        "atoms": [
+          {
+            "species": "X",
+            "target_atom": 1,
+            "source_atom": 2,
+            "projector_residual_frobenius": 0.023537814087561164,
+            "d_conjugacy_defect_norm2": 2.780679937285574e-16,
+            "projector_bound_ry": 0.07753045905411059,
+            "d_conjugacy_bound_ry": 3.8481092644808605e-16,
+            "bound_ry": 0.07753045905411098,
+            "intertwiner": "declared"
+          },
+          {
+            "species": "X",
+            "target_atom": 2,
+            "source_atom": 1,
+            "projector_residual_frobenius": 7.98644250408766e-17,
+            "d_conjugacy_defect_norm2": 2.780679937285574e-16,
+            "projector_bound_ry": 2.575454806410543e-16,
+            "d_conjugacy_bound_ry": 3.6883834836232983e-16,
+            "bound_ry": 6.263838290033841e-16,
+            "intertwiner": "declared"
+          }
+        ],
+        "fourier": {
+          "embedding_defect_frobenius": 0.0,
+          "frequency_mismatch_columns": 0,
+          "phase_max_defect": 0.0,
+          "phase_modulus_roundoff": 0.0,
+          "grid_translation_roundoff": 0.0,
+          "fft_pullback_exact_integer_match": true
+        },
+        "total_bound_ry": 0.0775304590541116,
+        "source_identity": "original-dense-source",
+        "target_identity": "nontrivial-unitary-target",
+        "qualification": "analytic upper inequality evaluated in floating point, not interval certified",
+        "exact_real_zero_implies_covariance": true,
+        "numerical_zero_proves_exact_symmetry": false
+      },
+      "action": {
+        "columns": 5,
+        "column_norms": [
+          6.0629260464065435,
+          7.795930285603672,
+          6.996156075976761,
+          7.304812674680569,
+          7.9763972321415375
+        ],
+        "residual_norms_ry": [
+          0.015710725033660052,
+          0.028145166278035833,
+          0.020008478482634078,
+          0.023011554692461397,
+          0.021118742027373877
+        ],
+        "relative_residuals_ry": [
+          0.0025912776955232197,
+          0.003610238322681003,
+          0.0028599245450424884,
+          0.003150190938122539,
+          0.002647654249499285
+        ],
+        "residual_frobenius_ry": 0.049141117114637305,
+        "empirical_max_relative_ry": 0.003610238322681003,
+        "qualification": "actual operator actions on specified probes, not an operator-norm upper bound"
+      }
+    },
+    {
+      "case": "conjugacy",
+      "dense_norm_ry": 0.07022020799805115,
+      "bound": {
+        "kinetic_bound_ry": 0.0,
+        "local_potential_defect_ry": 0.0,
+        "local_fourier_bound_ry": 0.0,
+        "local_bound_ry": 0.0,
+        "nonlocal_bound_ry": 0.2439275150780208,
+        "atoms": [
+          {
+            "species": "X",
+            "target_atom": 1,
+            "source_atom": 2,
+            "projector_residual_frobenius": 6.044871958460409e-17,
+            "d_conjugacy_defect_norm2": 0.09000000000000016,
+            "projector_bound_ry": 2.009901253556607e-16,
+            "d_conjugacy_bound_ry": 0.12454861458861607,
+            "bound_ry": 0.12454861458861627,
+            "intertwiner": "declared"
+          },
+          {
+            "species": "X",
+            "target_atom": 2,
+            "source_atom": 1,
+            "projector_residual_frobenius": 7.98644250408766e-17,
+            "d_conjugacy_defect_norm2": 0.09000000000000016,
+            "projector_bound_ry": 2.5997723539596453e-16,
+            "d_conjugacy_bound_ry": 0.11937890048940428,
+            "bound_ry": 0.11937890048940454,
+            "intertwiner": "declared"
+          }
+        ],
+        "fourier": {
+          "embedding_defect_frobenius": 0.0,
+          "frequency_mismatch_columns": 0,
+          "phase_max_defect": 0.0,
+          "phase_modulus_roundoff": 0.0,
+          "grid_translation_roundoff": 0.0,
+          "fft_pullback_exact_integer_match": true
+        },
+        "total_bound_ry": 0.2439275150780208,
+        "source_identity": "original-dense-source",
+        "target_identity": "nontrivial-unitary-target",
+        "qualification": "analytic upper inequality evaluated in floating point, not interval certified",
+        "exact_real_zero_implies_covariance": true,
+        "numerical_zero_proves_exact_symmetry": false
+      },
+      "action": {
+        "columns": 5,
+        "column_norms": [
+          6.0629260464065435,
+          7.795930285603672,
+          6.996156075976761,
+          7.304812674680569,
+          7.9763972321415375
+        ],
+        "residual_norms_ry": [
+          0.11820722408139611,
+          0.10035325475679362,
+          0.1407626974788851,
+          0.09854813081623333,
+          0.08303485320888394
+        ],
+        "relative_residuals_ry": [
+          0.01949672867137424,
+          0.012872518234560232,
+          0.020120005321526885,
+          0.013490849828061159,
+          0.010410069959190133
+        ],
+        "residual_frobenius_ry": 0.2458950619708289,
+        "empirical_max_relative_ry": 0.020120005321526885,
+        "qualification": "actual operator actions on specified probes, not an operator-norm upper bound"
+      }
+    },
+    {
+      "case": "fft-phase",
+      "dense_norm_ry": 0.09979218938796837,
+      "bound": {
+        "kinetic_bound_ry": 0.0,
+        "local_potential_defect_ry": 0.0,
+        "local_fourier_bound_ry": 0.47932950382402206,
+        "local_bound_ry": 0.47932950382402206,
+        "nonlocal_bound_ry": 1.591809040949792e-15,
+        "atoms": [
+          {
+            "species": "X",
+            "target_atom": 1,
+            "source_atom": 2,
+            "projector_residual_frobenius": 1.336882829692408e-16,
+            "d_conjugacy_defect_norm2": 2.780679937285574e-16,
+            "projector_bound_ry": 4.403515938312443e-16,
+            "d_conjugacy_bound_ry": 3.8481092644808605e-16,
+            "bound_ry": 8.251625202793303e-16,
+            "intertwiner": "declared"
+          },
+          {
+            "species": "X",
+            "target_atom": 2,
+            "source_atom": 1,
+            "projector_residual_frobenius": 1.233596523568213e-16,
+            "d_conjugacy_defect_norm2": 2.780679937285574e-16,
+            "projector_bound_ry": 3.9780817230813175e-16,
+            "d_conjugacy_bound_ry": 3.6883834836232983e-16,
+            "bound_ry": 7.666465206704615e-16,
+            "intertwiner": "declared"
+          }
+        ],
+        "fourier": {
+          "embedding_defect_frobenius": 0.10994455005413546,
+          "frequency_mismatch_columns": 0,
+          "phase_max_defect": 0.10994455005413546,
+          "phase_modulus_roundoff": 0.0,
+          "grid_translation_roundoff": 0.0,
+          "fft_pullback_exact_integer_match": true
+        },
+        "total_bound_ry": 0.4793295038240237,
+        "source_identity": "original-dense-source",
+        "target_identity": "nontrivial-unitary-target",
+        "qualification": "analytic upper inequality evaluated in floating point, not interval certified",
+        "exact_real_zero_implies_covariance": true,
+        "numerical_zero_proves_exact_symmetry": false
+      },
+      "action": {
+        "columns": 5,
+        "column_norms": [
+          6.0629260464065435,
+          7.795930285603672,
+          6.996156075976761,
+          7.304812674680569,
+          7.9763972321415375
+        ],
+        "residual_norms_ry": [
+          0.06792890903333836,
+          0.18249552994503593,
+          0.18209053829947267,
+          0.19574636492570574,
+          0.18468952750309492
+        ],
+        "relative_residuals_ry": [
+          0.011203981132773239,
+          0.023409076692494375,
+          0.02602722642576985,
+          0.026796904129271937,
+          0.023154504737912692
+        ],
+        "residual_frobenius_ry": 0.37881760811967913,
+        "empirical_max_relative_ry": 0.026796904129271937,
+        "qualification": "actual operator actions on specified probes, not an operator-norm upper bound"
+      }
+    },
+    {
+      "case": "intertwiner",
+      "dense_norm_ry": 2.614054132021056e-15,
+      "bound": {
+        "kinetic_bound_ry": 0.0,
+        "local_potential_defect_ry": 0.0,
+        "local_fourier_bound_ry": 0.0,
+        "local_bound_ry": 0.0,
+        "nonlocal_bound_ry": 0.47984822390916265,
+        "atoms": [
+          {
+            "species": "X",
+            "target_atom": 1,
+            "source_atom": 2,
+            "projector_residual_frobenius": 0.04076943479101235,
+            "d_conjugacy_defect_norm2": 0.07720788882592071,
+            "projector_bound_ry": 0.1340602617101231,
+            "d_conjugacy_bound_ry": 0.10684595098422554,
+            "bound_ry": 0.24090621269434864,
+            "intertwiner": "declared"
+          },
+          {
+            "species": "X",
+            "target_atom": 2,
+            "source_atom": 1,
+            "projector_residual_frobenius": 0.04261416792684131,
+            "d_conjugacy_defect_norm2": 0.07720788882592071,
+            "projector_bound_ry": 0.1365309792465189,
+            "d_conjugacy_bound_ry": 0.10241103196829511,
+            "bound_ry": 0.238942011214814,
+            "intertwiner": "declared"
+          }
+        ],
+        "fourier": {
+          "embedding_defect_frobenius": 0.0,
+          "frequency_mismatch_columns": 0,
+          "phase_max_defect": 0.0,
+          "phase_modulus_roundoff": 0.0,
+          "grid_translation_roundoff": 0.0,
+          "fft_pullback_exact_integer_match": true
+        },
+        "total_bound_ry": 0.47984822390916265,
+        "source_identity": "original-dense-source",
+        "target_identity": "nontrivial-unitary-target",
+        "qualification": "analytic upper inequality evaluated in floating point, not interval certified",
+        "exact_real_zero_implies_covariance": true,
+        "numerical_zero_proves_exact_symmetry": false
+      },
+      "action": {
+        "columns": 5,
+        "column_norms": [
+          6.0629260464065435,
+          7.795930285603672,
+          6.996156075976761,
+          7.304812674680569,
+          7.9763972321415375
+        ],
+        "residual_norms_ry": [
+          4.314614049680596e-15,
+          6.604194113786412e-15,
+          5.909738251776687e-15,
+          8.153386356379974e-15,
+          5.39553326932326e-15
+        ],
+        "relative_residuals_ry": [
+          7.116389044919721e-16,
+          8.471335519741659e-16,
+          8.447121801741115e-16,
+          1.116166385024584e-15,
+          6.764373829805669e-16
+        ],
+        "residual_frobenius_ry": 1.388329099426941e-14,
+        "empirical_max_relative_ry": 1.116166385024584e-15,
+        "qualification": "actual operator actions on specified probes, not an operator-norm upper bound"
+      }
+    },
+    {
+      "case": "combined",
+      "dense_norm_ry": 0.3366964309120181,
+      "bound": {
+        "kinetic_bound_ry": 0.20999999999999996,
+        "local_potential_defect_ry": 0.31,
+        "local_fourier_bound_ry": 0.47932950382402206,
+        "local_bound_ry": 0.789329503824022,
+        "nonlocal_bound_ry": 0.6876622320373185,
+        "atoms": [
+          {
+            "species": "X",
+            "target_atom": 1,
+            "source_atom": 2,
+            "projector_residual_frobenius": 0.05495391832306269,
+            "d_conjugacy_defect_norm2": 0.13213082066968715,
+            "projector_bound_ry": 0.18240864781092633,
+            "d_conjugacy_bound_ry": 0.1828523406540709,
+            "bound_ry": 0.3652609884649972,
+            "intertwiner": "declared"
+          },
+          {
+            "species": "X",
+            "target_atom": 2,
+            "source_atom": 1,
+            "projector_residual_frobenius": 0.045495477827329156,
+            "d_conjugacy_defect_norm2": 0.13213082066968715,
+            "projector_bound_ry": 0.1471386647688782,
+            "d_conjugacy_bound_ry": 0.17526257880344306,
+            "bound_ry": 0.32240124357232125,
+            "intertwiner": "declared"
+          }
+        ],
+        "fourier": {
+          "embedding_defect_frobenius": 0.10994455005413546,
+          "frequency_mismatch_columns": 0,
+          "phase_max_defect": 0.10994455005413546,
+          "phase_modulus_roundoff": 0.0,
+          "grid_translation_roundoff": 0.0,
+          "fft_pullback_exact_integer_match": true
+        },
+        "total_bound_ry": 1.6869917358613407,
+        "source_identity": "original-dense-source",
+        "target_identity": "nontrivial-unitary-target",
+        "qualification": "analytic upper inequality evaluated in floating point, not interval certified",
+        "exact_real_zero_implies_covariance": true,
+        "numerical_zero_proves_exact_symmetry": false
+      },
+      "action": {
+        "columns": 5,
+        "column_norms": [
+          6.0629260464065435,
+          7.795930285603672,
+          6.996156075976761,
+          7.304812674680569,
+          7.9763972321415375
+        ],
+        "residual_norms_ry": [
+          0.5869464258504252,
+          0.4868580906310246,
+          0.482353020573826,
+          0.6100236369494876,
+          0.6755127277131526
+        ],
+        "relative_residuals_ry": [
+          0.09680910196790286,
+          0.06245028788034181,
+          0.06894543451226291,
+          0.0835098262086732,
+          0.08468895267541585
+        ],
+        "residual_frobenius_ry": 1.2816581551364286,
+        "empirical_max_relative_ry": 0.09680910196790286,
+        "qualification": "actual operator actions on specified probes, not an operator-norm upper bound"
+      }
+    }
+  ],
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_operator_covariance_oracle.py",
+      "bytes": "10865",
+      "sha256": "81f40df213fb3d72259361a2f91bfc7315c621d6b31892be2326d288b00201b2"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/operator-covariance-registration.json",
+      "bytes": "5482",
+      "sha256": "18ac7a73718e9b015b4887dcf9a31358c4cc4875ec1374ab69e71e8bbbd3320f"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_operator_covariance.py",
+      "bytes": "12490",
+      "sha256": "999388517f6f4ec4156c47825229bec7e59baeb8d4efb634eb1a75bfae198c96"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_grid.py",
+      "bytes": "4145",
+      "sha256": "278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_hamiltonian.py",
+      "bytes": "7295",
+      "sha256": "f7734635ecc3f86bbb4d35bc5dd1972fea49e1442fcdc2d17adf59f1d4e24093"
+    }
+  ],
+  "seconds": 0.05613867612555623,
+  "peak_rss_kib": 132708,
+  "cpu_affinity": [
+    9
+  ],
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "filepath": "/usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so",
+      "version": "0.3.26",
+      "threading_layer": "pthreads",
+      "architecture": "Haswell"
+    }
+  ],
+  "qualification": "independent numerical dense algebra and mutations, not interval certification or actual-material symmetry"
+}

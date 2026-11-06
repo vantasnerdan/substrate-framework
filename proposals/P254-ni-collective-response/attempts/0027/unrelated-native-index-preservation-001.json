@@ -1,0 +1,32 @@
+{
+  "schema": "p254-a27-unrelated-index-preservation-v1",
+  "at": "2026-10-28T16:59:05.703883+00:00",
+  "problem": "Ordinary progress commit8dbe209 unintentionally included an already-staged unrelated Native events blob. No claim of fresh Native progress follows.",
+  "path": "runs/2026-10-19_collective-response/nc-material/runtime-state/1792492533336958489-31e61af4580b4852a1a1e31990943274/native/events.jsonl",
+  "original_pre_progress_HEAD_blob": "f370f852285eb39af041aea20fdda8b5a89332a4",
+  "preexisting_staged_blob": "42b0b881d9141016a21e2dfcc54b72a416229765",
+  "repair_commit": "858478f2370e8028a7ac834d6a767f6b81d8ab54",
+  "repair": "Forward child commit restores original HEAD blob using a separate temporary index and atomic expected-old update-ref. Actual worktree and real index were not written. Original staged blob remains staged; no history rewrite, native-file deletion, process action or push.",
+  "steps": [
+    {
+      "step": "load",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "step": "restore-owned-tree",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "step": "write-tree",
+      "exit": 0,
+      "stdout": "75058581db82f76686de942562a7d018495a8a54\n",
+      "stderr": ""
+    }
+  ],
+  "actual_index_readback": "100644 42b0b881d9141016a21e2dfcc54b72a416229765 0\truns/2026-10-19_collective-response/nc-material/runtime-state/1792492533336958489-31e61af4580b4852a1a1e31990943274/native/events.jsonl\n",
+  "prevention": "Use path-scoped commit --only for ordinary owned changes rather than committing the whole existing index."
+}

@@ -1,0 +1,59 @@
+{
+  "HERDR": {
+    "HERDR_BIN_PATH": "/home/administrator/.local/bin/herdr",
+    "HERDR_ENV": "1",
+    "HERDR_PANE_ID": "w1:p6R",
+    "HERDR_SOCKET_PATH": "/home/administrator/.config/herdr/herdr.sock",
+    "HERDR_TAB_ID": "w1:t1",
+    "HERDR_WORKSPACE_ID": "w1"
+  },
+  "affinity": [
+    6
+  ],
+  "argv": [
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0055/native_dispatch.py",
+    "ee",
+    "ee-a-001",
+    "6",
+    "1800.0",
+    "0",
+    "21"
+  ],
+  "kernel": {
+    "cpuset.cpus.effective": {
+      "unavailable": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a55-ee-a-001.service/cpuset.cpus.effective'"
+    },
+    "memory.max": "3221225472",
+    "memory.swap.max": "0"
+  },
+  "pid": 4046017,
+  "properties": {
+    "ActiveState": "active",
+    "CPUAffinity": "6",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a55-ee-a-001.service",
+    "InvocationID": "e753bda497d249e79f20f20ad1236ab3",
+    "MainPID": "4046017",
+    "MemoryMax": "3221225472",
+    "MemorySwapMax": "0",
+    "Restart": "no",
+    "RuntimeMaxUSec": "30min",
+    "SubState": "running"
+  },
+  "query_argv": [
+    "systemctl",
+    "--user",
+    "show",
+    "p254-a55-ee-a-001.service",
+    "--property=MainPID,ControlGroup,MemoryMax,MemorySwapMax,CPUAffinity,Restart,RuntimeMaxUSec,InvocationID,ActiveState,SubState"
+  ],
+  "query_exit": 0,
+  "query_stderr": "",
+  "query_stdout": "Restart=no\nRuntimeMaxUSec=30min\nMainPID=4046017\nControlGroup=/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a55-ee-a-001.service\nMemoryMax=3221225472\nMemorySwapMax=0\nCPUAffinity=6\nActiveState=active\nSubState=running\nInvocationID=e753bda497d249e79f20f20ad1236ab3\n",
+  "threads": {
+    "BLIS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  }
+}

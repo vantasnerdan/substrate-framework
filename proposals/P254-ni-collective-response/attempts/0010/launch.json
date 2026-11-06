@@ -1,0 +1,33 @@
+{
+  "created_utc": "2026-10-19T19:23:06.220Z",
+  "fresh_ownership": {
+    "pane": "w1:pF",
+    "shell_pid": 13554,
+    "foreground": "bash only, observed immediately before reuse"
+  },
+  "rename": {
+    "argv": [
+      "herdr",
+      "tab",
+      "rename",
+      "w1:tF",
+      "c5-fermi-gauge-oracle"
+    ],
+    "exit": 0,
+    "stdout": "{\"id\":\"cli:tab:rename\",\"result\":{\"tab\":{\"agent_status\":\"unknown\",\"focused\":false,\"label\":\"c5-fermi-gauge-oracle\",\"number\":15,\"pane_count\":1,\"tab_id\":\"w1:tF\",\"workspace_id\":\"w1\"},\"type\":\"tab_info\"}}\n",
+    "stderr": ""
+  },
+  "launch": {
+    "argv": [
+      "herdr",
+      "pane",
+      "run",
+      "w1:pF",
+      "env XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus systemctl --user start p254-fermi-gauge-0010-v1.service; c=$?; printf '\\nFERMI_GAUGE_OWNER_EXIT=%s\\n' \"$c\"; env XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus systemctl --user show p254-fermi-gauge-0010-v1.service --property=ActiveState,SubState,Result,ExecMainPID,ExecMainCode,ExecMainStatus,NRestarts,MemoryMax,MemoryCurrent,MemoryPeak,FragmentPath,InvocationID; journalctl --user -u p254-fermi-gauge-0010-v1.service -n 20 -o cat --no-pager"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "outcome": "Submission only; actual result is the prearmed anchored observer plus kernel/receipt evidence."
+}

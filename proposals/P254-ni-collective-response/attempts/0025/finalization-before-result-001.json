@@ -1,0 +1,22 @@
+{
+  "actual_at": "2026-10-28T02:41:14.048729+00:00",
+  "wall_seconds": 3.586171240080148,
+  "findings": {
+    "MI25-F1": {
+      "code": 0,
+      "elapsed_seconds": 0.13657708186656237,
+      "grant_seconds": 0.03,
+      "mechanism": "Real writes delayed by controlled60ms wrapper; old finalizer disarms alarm and reports success after deadline.",
+      "reproduced": true
+    },
+    "MI25-F2": {
+      "checkpoint_unchanged": true,
+      "code": 1,
+      "granted_bytes": "144",
+      "mechanism": "Old failure path detects cap then writes full metadata anyway.",
+      "reproduced": true,
+      "used_bytes": "799"
+    }
+  },
+  "scope": "Isolated finalization controls only; no material computation or original output changed."
+}

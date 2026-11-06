@@ -1,0 +1,59 @@
+{
+  "schema": "P254.A28.nist-nickel-stopping-gap.v1",
+  "sources": [
+    {
+      "file": "nist-pstar-nickel-response.html",
+      "requested_url": "https://physics.nist.gov/cgi-bin/Star/ap_table-t.pl",
+      "resolved_url": "https://physics.nist.gov/cgi-bin/Star/ap_table-t.pl",
+      "method": "POST",
+      "request_body": "prog=PSTAR&matno=028&Energies=&ShowDefault=on",
+      "status": 200,
+      "sha256": "eedd68de6a903ec2256b2bf7b61957aea932dde61896994c1ed4bb48961eb4fd",
+      "bytes": 2396,
+      "retrieved_utc": "2026-10-28T22:10:17.388527+00:00",
+      "response_headers": {
+        "Date": "Wed, 28 Oct 2026 22:10:17 GMT",
+        "Content-Type": "text/html",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close",
+        "Server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubdomains",
+        "x-xss-protection": "1;mode=block",
+        "x-content-type-options": "nosniff",
+        "content-security-policy": "frame-ancestors 'self';",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "__cf_bm=NBuBqRZJhL.GDnjf5h2yTz3hQhpkg1YIA3jtLb4TIwk-1793225417.2877288-1.0.1.1-8QCNW3n5on.wpfbhUfLROx8xWVKwr3ksez.ZPObVHJW.Dwt.caRCM1EO7OIeHlVPrXdE0EKPs_KxI_3_G47IuiLiv8NjGY12.zxF7VhFZhw605Lr4APakbZ41tAzQv0Y; HttpOnly; SameSite=None; Secure; Path=/; Domain=nist.gov; Expires=Wed, 28 Oct 2026 22:40:17 GMT",
+        "Server-Timing": "cfCacheStatus;desc=\"DYNAMIC\"",
+        "CF-RAY": "a51d450a0a7a43eb-EWR"
+      }
+    },
+    {
+      "file": "nist-astar-nickel-response.html",
+      "requested_url": "https://physics.nist.gov/cgi-bin/Star/ap_table-t.pl",
+      "resolved_url": "https://physics.nist.gov/cgi-bin/Star/ap_table-t.pl",
+      "method": "POST",
+      "request_body": "prog=ASTAR&matno=028&Energies=&ShowDefault=on",
+      "status": 200,
+      "sha256": "9450716b691790d27e6a4d1ee4d5499da9b9c535af933878f5cf924a25b19360",
+      "bytes": 2404,
+      "retrieved_utc": "2026-10-28T22:10:17.905447+00:00",
+      "response_headers": {
+        "Date": "Wed, 28 Oct 2026 22:10:17 GMT",
+        "Content-Type": "text/html",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close",
+        "Server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubdomains",
+        "x-xss-protection": "1;mode=block",
+        "x-content-type-options": "nosniff",
+        "content-security-policy": "frame-ancestors 'self';",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "__cf_bm=KilqUjAEW4b1F7jmh3N6IxtiDQabirwKHeayaBlYsvY-1793225417.8029823-1.0.1.1-CjwLDeE45ZeolDxKYgR8rL3mE3f5tqoAkjdfOps5dfYQI1gXsu4.1nvrKx2EY3xsbs9khJA5IZhsjjHqNUwWZsBGKXlx1ZtINvCsGP4mmVmhagoq1TVMSKZa1YhXm3tI; HttpOnly; SameSite=None; Secure; Path=/; Domain=nist.gov; Expires=Wed, 28 Oct 2026 22:40:17 GMT",
+        "Server-Timing": "cfCacheStatus;desc=\"DYNAMIC\"",
+        "CF-RAY": "a51d450d3d4ebce3-ATL"
+      }
+    }
+  ],
+  "finding": "Official PSTAR and ASTAR selectors omit nickel. Direct conventional POST requests for matno=028 both return HTTP 200 with an empty PRE table and only a compositional-data link; no numerical stopping/range rows. No neighboring-element substitution or reconstruction performed.",
+  "physical_scope": "Does not claim nickel stopping data do not exist elsewhere; this records the exact primary STAR availability gap."
+}

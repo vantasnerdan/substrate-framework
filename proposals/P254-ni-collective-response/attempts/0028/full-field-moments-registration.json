@@ -1,0 +1,43 @@
+{
+  "schema": "P254-full-field-moments-registration-v1",
+  "status": "registered-before-implementation-not-executed",
+  "sources": [{"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/physical-environment-registration.json","sha256":"2d7b3153b1d605dd5164350ac6a9835fbccc8fba5af104bcf88a6838b9c8dfe6","bytes":"8161"}],
+  "source_policy": "No new original paper: reuse physical-environment-registration source_bindings and its UPF/Peierls and Maxwell derivations; authenticate original bindings before actual work.",
+  "construction": [
+    "At fixed complete raw Psi and independently supplied complex D, Q(X,Y)=Tr(D X^dagger d Y)=sum(conj(X)*(d Y D)), X=B_x^dagger Psi. No occupations, filling, Gram, Hermitization, real projection or spin degeneracy is substituted.",
+    "Exact UPFRadial evaluates F,F_s,F_ss once per species per PW row block. All Cartesian B,B_i,B_ij are formed from the existing regular solid-harmonic derivative identity. Atom placement exp(-ip.tau) remains unshifted at a=0. Wide overlaps collect 10 field jets, 9 ionic jets and 10 legacy ionic/value jets per atom (29*nh columns); no PW-square matrix, local FFT or full H action.",
+    "L_i=2p_i+ B_i d B^dagger+B d B_i^dagger. C_ij=2delta_ij I+B_ij d B^dagger+B_i d B_j^dagger+B_j d B_i^dagger+B d B_ij^dagger. J_Ha=-L/2. Kinetic density row contraction is sum(conj(Psi)*(Psi D)); full independent complex trace order survives.",
+    "At zero field delta V=V_UPF-V_A25 is computed with the SAME D. Ionic derivatives are B_u=-ip_u B and B_uv=-p_u p_v B; subtract legacy energy, positive gradient and onsite curvature separately, force=-gradient. Different atom mixed derivatives of this one-center nonlocal scalar are zero, not a missing electron-mediated response.",
+    "Unitary geometric transport: p_t=R p_s, a_t=R a_s, tau_t=R tau_s+translation modulo cell, H_NL,t(a)=U H_NL,s(R^T a) U^dagger for rotationally scalar ordinary NC UPF d. Thus L_t=R L_s, C_t=R C_s R^T, scalar deltaE invariant and ionic delta gradients/onsites follow saved atom pullback and R. Check d commutes with rotation representation numerically; retain measured saved-geometry residual. This is an approximation at rounded actual geometry, NOT H0 covariance. Reject antiunitary/spin-flip routes.",
+    "Checkpoints contain unweighted original-source means. Full aggregate consumes each of 128 spin/mesh slots once with its slot.weight. Separate original-source-weight diagnostic uses XML point.weight once and is never added to the full-grid result. Require all 20 source checkpoints and complete slot coverage."
+  ],
+  "joint_scalar_limit": "Zero-field nonlocal correction joins the A25 scalar only at fixed prepared density and zero field; does not establish transported H0, moving-density SCF consistency, finite-field ionic derivatives, self-consistent response, or an ionic/field quantum state. No anchored undressed constant is called gauge-covariant.",
+  "oracle": ["independent literal angular/radial differentiated integrals and dense PW operators", "full complex D trace, kinetic and nonlocal first/second derivatives and mixed contact", "zero-field nonlocal energy/ionic gradient/curvature correction and finite differences", "independent dense rotation covariance and source/slot weights", "phase, conjugation, source-weight duplication, mixed-leg omission, kinetic omission and current sign mutations"],
+  "execution": "Workers do not execute. Root runs oracle first, then --mode estimate, --mode source for each original source, then --mode aggregate with all checkpoint paths. No coefficients or field state invented.",
+  "metadata_measurement": {
+    "method": "Read JSON/XML dimensions and count bytes/operations only; no scientific implementation or numerical oracle executed.",
+    "boundary": {"path":"/home/administrator/.cache/dft/p254-a28-full-material/initialization-001/initial/boundary.json","bytes":"461673","sha256":"550391812d873a1cf10ed02576025c68c23d23600da5b9bd3c4ba2e649832869"},
+    "bloch_terminal": {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/terminal-4052ac4a955241c1a7b970b4341deaeb.json","bytes":"1004813","sha256":"5e3648123413c2032a86cb988e392a820ddcf11d98f06f436bbaf7df9b7a5846"},
+    "sources":20, "slots":128, "raw_columns":346,
+    "source_pw_rows_min":18504, "source_pw_rows_max":18613, "source_pw_rows_sum":371010,
+    "original_source_frame_payload_bytes":2053911360,
+    "initialized_full_slot_frame_bytes":13137492672,
+    "projector_channels": {"Ni":{"atoms":31,"nh":18},"H":{"atoms":6,"nh":2}},
+    "wide_overlap_columns_per_source":16530,
+    "all_source_overlap_complex_multiply_adds":2121947173800,
+    "all_source_kinetic_complex_multiply_adds":44415833160,
+    "overlap_workspace_upper_bytes":91510080,
+    "raw_mean_output_real_scalars_per_source":1168,
+    "output_capacity_default_bytes_per_invocation":4194304,
+    "wall_time_prediction":null,
+    "qualification":"Arithmetic estimates count overlap and kinetic BLAS only, not radial special functions, coefficient contractions, loading, hashing or BLAS packing. Existing background/species beta banks and one source frame are additional resident memory. No throughput measured; source outputs and aggregate are small JSON, no new PW output arrays."
+  },
+  "root_commands": {
+    "oracle":"taskset -c 6-10 env OPENBLAS_NUM_THREADS=5 OMP_NUM_THREADS=5 python proposals/P254-ni-collective-response/attempts/0028/run_full_field_moments_oracle.py --output proposals/P254-ni-collective-response/attempts/0028/full-field-moments-oracle-001.json",
+    "estimate":"taskset -c 6-10 env OPENBLAS_NUM_THREADS=5 OMP_NUM_THREADS=5 python proposals/P254-ni-collective-response/attempts/0028/run_full_field_moments_material.py --mode estimate --oracle proposals/P254-ni-collective-response/attempts/0028/full-field-moments-oracle-001.json --output proposals/P254-ni-collective-response/attempts/0028/full-field-estimate-001",
+    "source_example":"taskset -c 6-10 env OPENBLAS_NUM_THREADS=5 OMP_NUM_THREADS=5 python proposals/P254-ni-collective-response/attempts/0028/run_full_field_moments_material.py --mode source --spin 1 --source-ik 2 --oracle proposals/P254-ni-collective-response/attempts/0028/full-field-moments-oracle-001.json --output proposals/P254-ni-collective-response/attempts/0028/full-field-source-1-2-001",
+    "complete_source_route":"Repeat source command for precisely the 20 (spin,source_ik) records in full-reference-inputs-004.json, one fresh directory each. No partial source is promoted to material.",
+    "aggregate_route":"Same material CLI --mode aggregate --geometry-policy declared-geometric --oracle ORACLE --output FRESH_DIRECTORY with exactly 20 --source-checkpoint SOURCE_DIRECTORY/result.json arguments. Every original source must occur once. Aggregate does not rerun source physics."
+  },
+  "change_log": "Adds full raw-column physical optical moments and exact zero-field nonlocal scalar corrections, original source checkpoints and geometrically declared full-grid aggregation. Existing bound implementations remain untouched."
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "P254-readout-source-repair-plan-v1",
+  "actual_recorded_at": "2026-10-30T10:09:11.077438+00:00",
+  "failure": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/committed-gamma-readout-001-rss-terminal.json",
+    "bytes": "86901",
+    "sha256": "110732508c8a59df6525643077f84fe1c30f692cb4874065e0bd07cc69d77537"
+  },
+  "actual_worker_highwater_by_cpu": {
+    "6": {
+      "first_index": 0,
+      "first_peak_bytes": "1262792704",
+      "last_index": 70,
+      "last_peak_bytes": "3317248000"
+    },
+    "7": {
+      "first_index": 1,
+      "first_peak_bytes": "1261072384",
+      "last_index": 71,
+      "last_peak_bytes": "3331743744"
+    },
+    "8": {
+      "first_index": 2,
+      "first_peak_bytes": "1261068288",
+      "last_index": 72,
+      "last_peak_bytes": "3327897600"
+    },
+    "9": {
+      "first_index": 3,
+      "first_peak_bytes": "1261072384",
+      "last_index": 73,
+      "last_peak_bytes": "3323789312"
+    },
+    "10": {
+      "first_index": 4,
+      "first_peak_bytes": "1261072384",
+      "last_index": 74,
+      "last_peak_bytes": "3328167936"
+    }
+  },
+  "diagnosis": "Completed source costs show per-worker highwater rising from~1.26GB to~3.33GB across15 source items; aggregateRSS limit is the actual terminal. Persistent readonly mapped input legs need per-edge page release; no cap raise.",
+  "existing_solution": {
+    "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/partitioned_q_storage.py",
+    "symbol": "release_mapped_pages",
+    "scope": "existing qualified flush/MADV_DONTNEED; never close or delete borrowed original data"
+  },
+  "planned_change": "After exact-source recovery terminal: retain original memmap source/target handles before readonly ndarray views; finally release mapped pages for original frame handles and assigned state ket/bra after each scalar. Preserve exact scalar formula and reduction. Also fix generation-aware replay current-cost attribution using actual QWork generations.",
+  "verification": "Existing independent finite scalar oracle; genuine Native partial-to-complete reuse/immutable75; actual mapped-input residency and unchanged-data smoke. Carry unchanged Native operator proof; no whole physics requalification.",
+  "production_rule": "No edits to active readout source; no further unchanged recovery if remaining53 fail"
+}

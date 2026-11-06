@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "status": "completed_canonical_oracle",
+  "canonical_receipt_sha256": "dba9e57344759e98791c5eab7dd298e91a824f329fda469766780504861c12e2",
+  "canonical_source_manifest_sha256": "add9ad4dfe2f3170b2607a081ffa9fb5a23aa0fed333ebcdfcd34dc6e6a24751",
+  "registration_sha256": "eb1df7bf9eb3284717c91b928683062446332b97f99e9c3e77693cd19ba1879e",
+  "herdr": {
+    "tab": "w1:tD",
+    "pane": "w1:pD",
+    "label": "c5-fermi-oracle"
+  },
+  "actual_final_python_pid": 3998387,
+  "live_resource_proof": "recovery-generation0003-resource-proof.json",
+  "resources": {
+    "CPU_affinity": [
+      5
+    ],
+    "BLAS_threads": 1,
+    "MemoryMax_bytes": 2147483648,
+    "max_RSS_kib": 155356,
+    "elapsed_final_seconds": 16.018222275190055,
+    "final_systemd_CPU_seconds": 16.441,
+    "journal_memory_peak": "110.4M"
+  },
+  "environment": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "executable": "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "packages": {
+      "sympy": "1.14.0",
+      "numpy": "2.5.2",
+      "scipy": "1.18.0"
+    }
+  },
+  "checks": 87,
+  "actual_signal_and_recovery": {
+    "original_state_pid": 3993532,
+    "repaired_signal_pid": 3995638,
+    "observed_SIGTERM": 15,
+    "observed_repaired_systemd_exit": 143,
+    "final_recovery_pid": 3998387,
+    "state_checkpoint_sha256": "b18cc545e089d8e89b07e4812e07aa95a947f36a4cb9ef59ec33c37d708468d2",
+    "state_recomputed": false,
+    "response_recomputed_after_generation1": false
+  },
+  "original_byte_JSON_validation": {
+    "bytes": 52370,
+    "utf8_roundtrip_equal": true,
+    "json_parse_success": true
+  },
+  "post_completion_observation": {
+    "systemctl_fields": {
+      "MainPID": "0",
+      "Result": "success",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive",
+      "SubState": "dead"
+    },
+    "limitation": "Successful transient unit had unloaded by the final query, so current resource defaults are not historical resource evidence. The live actual-PID/cgroup capture and complete journal are the historical evidence."
+  },
+  "failure_receipts": [
+    "first-actual-runtime-failure.json",
+    "invocation-1792418652538738615-3994219-failure.json",
+    "invocation-1792418778551294335-3995973-failure.json"
+  ],
+  "full_journals": "final-systemd-journals.json",
+  "sensitive_curvature_numeric_crosschecks": [
+    {
+      "energies": [
+        "0",
+        "log(2)",
+        "log(5)"
+      ],
+      "mean_N": "1",
+      "independent_curvature_results": [
+        {
+          "ensemble": "GC",
+          "step": 0.0005,
+          "curvature": [
+            [
+              4.674476207888745,
+              -0.24399896658700015
+            ],
+            [
+              -0.24399896658700015,
+              7.6754007514168165
+            ]
+          ],
+          "max_abs_error": 7.66110578531709e-07
+        },
+        {
+          "ensemble": "mean_N_Legendre",
+          "step": 0.0005,
+          "curvature": [
+            [
+              4.169425545264005,
+              -0.8753109186354635
+            ],
+            [
+              -0.8753109186354635,
+              6.8862589408524855
+            ]
+          ],
+          "max_abs_error": 1.1625334952469757e-06
+        },
+        {
+          "ensemble": "canonical_N1",
+          "step": 0.0005,
+          "curvature": [
+            [
+              5.767647084820027,
+              -0.6092049861239346
+            ],
+            [
+              -0.6092049861239346,
+              10.117446897162097
+            ]
+          ],
+          "max_abs_error": 3.1236541602197576e-06
+        }
+      ]
+    },
+    {
+      "energies": [
+        "0",
+        "0",
+        "log(3)"
+      ],
+      "mean_N": "5/4",
+      "independent_curvature_results": [
+        {
+          "ensemble": "GC",
+          "step": 0.0005,
+          "curvature": [
+            [
+              5.168217287909727,
+              -0.517620112994166
+            ],
+            [
+              -0.517620112994166,
+              8.623336052338004
+            ]
+          ],
+          "max_abs_error": 1.2408559264542873e-06
+        },
+        {
+          "ensemble": "mean_N_Legendre",
+          "step": 0.0005,
+          "curvature": [
+            [
+              4.707989925023526,
+              -1.1823917325237687
+            ],
+            [
+              -1.1823917325237687,
+              7.663108799071949
+            ]
+          ],
+          "max_abs_error": 1.2213947089279031e-06
+        },
+        {
+          "ensemble": "canonical_N1",
+          "step": 0.0005,
+          "curvature": [
+            [
+              5.814697155770432,
+              -1.0711564597531975
+            ],
+            [
+              -1.0711564597531975,
+              10.620545006556625
+            ]
+          ],
+          "max_abs_error": 3.7366854179765596e-06
+        }
+      ]
+    }
+  ],
+  "scientific_limits": [
+    "a theorem over arbitrary spectra based on fixture checks alone",
+    "physical interpretation of numerical smearing as temperature",
+    "equal Gaussian higher moments or nonlinear fermion dynamics",
+    "zero-frequency occupation noise as an ordinary thermal oscillator",
+    "eta as loss, finite-bath irreversible lifetime",
+    "DFT bath completeness",
+    "material, coherence, nuclear or campaign completion claims"
+  ]
+}

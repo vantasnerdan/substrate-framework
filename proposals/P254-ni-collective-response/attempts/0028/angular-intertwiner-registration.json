@@ -1,0 +1,89 @@
+{
+  "schema": "P254-angular-intertwiner-registration-v1",
+  "canonical_issue": "SF issue225",
+  "status": "source construction only; independent oracle and original material execution not performed in this wave",
+  "scope": "Declared original-UPF angular intertwiners for explicitly selected saved unitary Cartesian signed-permutation operations. No complete operator or future nonlinear/antiunitary positive-time covariance claim.",
+  "source_authority": {
+    "src/substrate_framework/material_angular_intertwiners.py": "37af45b70d4c1150e08760842977d289e6856fe32125c4704288ef4b246b1133",
+    "src/substrate_framework/qe_material_field_derivatives.py": "fd5ab95ad8fbe728f9eaf4b562b47af6248d9fb98805dbe9be3a82ef34d51b93",
+    "src/substrate_framework/qe_nc_projectors.py": "3988f1a0171a56e0f7f40f26687f6b154ed7723784a2f1aa1bba2991fdc02ee3",
+    "src/substrate_framework/qe_nc_radial.py": "1b936324c14ab200faca5ba69652d4c12ef4b86e1ecfe077612aad7fe3bcebbc",
+    "src/substrate_framework/qe_nc_upf.py": "0a823f58587416b75e1a1a97d727da2a768dc717c5ce228e44528d274673788c",
+    "src/substrate_framework/qe_saved_reference.py": "2e0e650956ccf117a6b38ac0d2b81e6adbcb6fa7fae6748e9b65ecfe815d8be6",
+    "src/substrate_framework/qe_saved_symmetry.py": "76e3953ca7e4fdd05d9808e9c163950a182155518896b18f9fc108456ebae03d",
+    "src/substrate_framework/qe_saved_native.py": "1403e2d393e9ef7c0ba975091d2dff5f64546af8e002dc9a0100adee10a9d4c3",
+    "src/substrate_framework/material_operator_covariance.py": "999388517f6f4ec4156c47825229bec7e59baeb8d4efb634eb1a75bfae198c96",
+    "src/substrate_framework/qe_bloch_frame.py": "8cbfa02f4a0a86c91f6d12c8d9464ee3e7e0a267b5696902c8085f1e51be7c6b",
+    "src/substrate_framework/material_reference_transport.py": "05657a443ad021d1ae8aa0cd14f7328a73843d50de7dea293be105886cb44566",
+    "proposals/P254-ni-collective-response/attempts/0028/run_angular_intertwiner_oracle.py": "75ac952c6ce5bf663faebb0b54d4278b19094f486ac2c49f6ffff5cb91e846bc",
+    "proposals/P254-ni-collective-response/attempts/0028/run_angular_intertwiner_material.py": "9d7d4408b25223ac533e2238b91278f0140ce5ad387a1b515f6b24fdb65f2ad3"
+  },
+  "source_access": "Actual complete load-bearing source bytes read and SHA256-bound before this registration. Original loaded Ni/H XML and both UPF bytes read and authenticated against existing control-reference registration; no numerical construction or oracle execution performed.",
+  "original_inputs": {
+    "xml": {
+      "bytes": "428069",
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/data-file-schema.xml",
+      "sha256": "3831ae2b83231b02475931d50055415b1d9673cdb05edb4541d0f1115ec383da"
+    },
+    "H": {
+      "bytes": "64999",
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/H_ONCV_PBE-1.2.upf",
+      "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a"
+    },
+    "Ni": {
+      "bytes": "115509",
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/Ni_ONCV_PBE-1.2.upf",
+      "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e"
+    }
+  },
+  "original_channel_metadata": {
+    "Ni_radial_l": [0, 0, 1, 1, 2, 2],
+    "H_radial_l": [0, 0],
+    "order": "For each original PP_BETA radial index, QE nhtolm runs l*l through (l+1)^2-1, zero-based. Repeated radial indices remain separate, with no sorting or radial mixing."
+  },
+  "algebra": {
+    "convention": "pt=R ps for column Cartesian momenta. Y_l(p @ R.T)=Y_l(p) @ Q_l(R); Bt=Bs Q. Hence Q(R2 R1)=Q(R1) Q(R2).",
+    "p": "A rows = (z,-x,-y); Q1=A R.T A.T.",
+    "d": "T_j are traceless quadratic polynomial tensors for ((2z^2-x^2-y^2)/2,-sqrt(3)xz,-sqrt(3)yz,sqrt(3)(x^2-y^2)/2,sqrt(3)xy). Q2_ij=(2/3) Tr(T_i.T R.T T_j R). All T_i have squared Frobenius norm 3/2.",
+    "normalization": "Common sqrt((2l+1)/(4pi)) for each polynomial l block cancels; Condon-Shortley and all relative sqrt(3) factors retained.",
+    "parity": "Improper signed permutations included directly. Q_l(-R)=(-1)^l Q_l(R). No det=+1 replacement.",
+    "radial": "Q is block diagonal per ORIGINAL radial identity, not merely per l. Radial scalar and (-i)^l commute with each block.",
+    "D": "Measure Q Dt Q-dagger minus Ds with original finite complex active matrices; no diagonalization, Hermitization or repair. Nonzero conjugacy defects remain in the existing complete bound.",
+    "floating": "Analytic rational/sqrt(3) coefficient construction, floating evaluation only; not a least-squares fit or sampled projector optimization.",
+    "cartesian": "Saved reciprocal S must represent the same Cartesian signed permutation within 2e-13; actual Cartesian matrix and declaration defect retained. Unsupported non-aligned cells rejected, not rounded into a different operation."
+  },
+  "interfaces": {
+    "signed_permutation(rotation)": "Validate and return integer (3,3) Cartesian signed permutation, det +/-1.",
+    "harmonic_intertwiner(rotation, ell)": "Return float Q_l(2l+1,2l+1), ell=0,1,2 only, QE real-harmonic order.",
+    "original_channel_intertwiner(upf, rotation)": "Return float Q(nh,nh) after exact original ledger validation; accepts original NCUPF and never reads or modifies D.",
+    "intertwiner_diagnostics(intertwiner, source_d, target_d=None)": "Return orthogonality, raw D Hermiticity, and conjugacy Frobenius/spectral diagnostics. target_d defaults to source_d."
+  },
+  "oracle": {
+    "reference": "Independent SymPy literal polynomial substitution/coefficient identities for all48 signed permutations and all s/p/d channels; exact symbolic orthogonality. Independent SciPy associated Legendre Gauss-Legendre/azimuth sphere integration.",
+    "production_checks": "QE angular harmonics, regular solid polynomial values, exact centered derivative chain through two direction legs, interpolated centered projector API, right-action composition, orthogonality, and unchanged arbitrary complex non-Hermitian D.",
+    "fixture": "Small explicitly synthetic interleaved l=(2,0,1,2,1,0) oracle-only ledger with unequal analytic radial functions; no synthetic material input.",
+    "sensitivity": ["transpose", "improper parity omission", "angular channel-order permutation", "repeated radial identity swap", "cross-channel contamination", "identity substitution", "complex D preservation"],
+    "criteria": "Every relative algebra/production residual <3e-12; each named matrix mutation residual >1e-3; explicit unsupported rotation/l/ledger rejection. Material execution is separate.",
+    "output_schema": "P254-angular-intertwiner-oracle-v1"
+  },
+  "material": {
+    "selection": "--operation INDEX repeated; distinct one-based IDs restricted to original saved nsym, effective_time_reversal=False. Exactly those operations and both original Ni/H species emitted.",
+    "archive": "intertwiners.npz keys opINDEX_SPECIES only. For --operation 2, exactly op2_Ni and op2_H. No metadata keys enter NPZ. Exact key and matrix round trip checked at runtime.",
+    "provenance": "result.json binds source and registration bytes, original XML and UPFs, oracle, archive digest, each matrix, full selected original symmetry metadata and original channel ledgers/raw active D hashes.",
+    "measurements": "Independent angular sphere integral; production direct original-UPF and QE-interpolated centered projector covariance at three radii .17/.63/1.41 bohr^-1 and256 directions; origin; active D conjugacy. No whole-source loaded contractions recomputed.",
+    "consumer": "Existing run_operator_covariance_material.py --intertwiners ARCHIVE --intertwiners-sha256 SHA256. Select generator operation IDs to exactly cover consumer-selected target operations; consumer rejects unused archive keys.",
+    "not_claimed": "Geometry, translations, reciprocal folding, atom phases and full projector residuals remain in material_operator_covariance's existing complete bound; angular residual is not a whole-operator covariance proof.",
+    "output_schema": "P254-angular-intertwiner-material-v1"
+  },
+  "runtime": {
+    "execution": "Root only after source settlement; no numerical execution in source-construction assignment.",
+    "cpu": "Explicit --cpu in6..10, process affinity set; BLAS/OMP/MKL/NumExpr1 and threadpool_limits(1).",
+    "storage": "Fresh output paths outside repository/Git; JSON original provenance plus tiny channel matrices; no full PW-square matrix.",
+    "preconditions": "Original bound files accessible, NumPy/SciPy/SymPy/threadpoolctl available; material consumes passed exact-byte-bound independent oracle."
+  },
+  "commands_from_repository_root": {
+    "oracle": "python proposals/P254-ni-collective-response/attempts/0028/run_angular_intertwiner_oracle.py --cpu 6 --output /tmp/p254-angular-oracle-001.json",
+    "material_operation2": "python proposals/P254-ni-collective-response/attempts/0028/run_angular_intertwiner_material.py --cpu 6 --oracle /tmp/p254-angular-oracle-001.json --oracle-sha256 \"$(sha256sum /tmp/p254-angular-oracle-001.json | cut -d ' ' -f 1)\" --operation 2 --output /tmp/p254-angular-material-001",
+    "consumer_append": "--intertwiners /tmp/p254-angular-material-001/intertwiners.npz --intertwiners-sha256 \"$(sha256sum /tmp/p254-angular-material-001/intertwiners.npz | cut -d ' ' -f 1)\""
+  }
+}

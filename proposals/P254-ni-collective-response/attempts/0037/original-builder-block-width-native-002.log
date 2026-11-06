@@ -1,0 +1,39 @@
+Running as unit: p254-a37-expanded-bath692-002.service
+[physics] {"elapsed_since_start_seconds": 7.912050932645798e-06, "stage": "load_cached_original_inputs", "status": "started"}
+[physics] {"elapsed_since_start_seconds": 0.08275210205465555, "stage": "restore_original_context", "status": "started"}
+[physics] {"elapsed_seconds": 12.851841084193438, "elapsed_since_start_seconds": 12.854229306802154, "stage": "restore_original_context", "status": "complete"}
+[physics] {"cached_original_action_legs": 6, "elapsed_seconds": 17.311160537414253, "elapsed_since_start_seconds": 17.324643716216087, "original_action_replays": 0, "stage": "load_cached_original_inputs", "status": "complete"}
+[physics] {"elapsed_since_start_seconds": 17.32855404401198, "extra_columns": 692, "original_columns": 346, "stage": "build_explicit692_noise_subspace", "status": "started"}
+[physics] {"adjoint": false, "callback_index": 1, "columns": 692, "elapsed_since_start_seconds": 80.21844851598144, "name": "hamiltonian", "operator_identity": "9a907212e823fce2ec49470c43d14e588fa28fa8545a8f90d85a26ee8a93e7e0", "stage": "new_physical_action", "status": "started"}
+[physics] {"adjoint": false, "callback_index": 1, "columns": 692, "elapsed_seconds": 44.32886746991426, "elapsed_since_start_seconds": 124.54730894090608, "name": "hamiltonian", "operator_identity": "9a907212e823fce2ec49470c43d14e588fa28fa8545a8f90d85a26ee8a93e7e0", "stage": "new_physical_action", "status": "complete"}
+[physics] {"adjoint": true, "callback_index": 2, "columns": 692, "elapsed_since_start_seconds": 134.99350667884573, "name": "hamiltonian", "operator_identity": "9a907212e823fce2ec49470c43d14e588fa28fa8545a8f90d85a26ee8a93e7e0", "stage": "new_physical_action", "status": "started"}
+[physics] {"adjoint": true, "callback_index": 2, "columns": 692, "elapsed_seconds": 44.50115150678903, "elapsed_since_start_seconds": 179.49466789793223, "name": "hamiltonian", "operator_identity": "9a907212e823fce2ec49470c43d14e588fa28fa8545a8f90d85a26ee8a93e7e0", "stage": "new_physical_action", "status": "complete"}
+[physics] {"adjoint": false, "callback_index": 3, "columns": 692, "elapsed_since_start_seconds": 190.32389879692346, "name": "mode0", "operator_identity": "ccedd25b41b7388e2f820694f649d7dbf75e629f87266824403c58eb79e06912", "stage": "new_physical_action", "status": "started"}
+[physics] {"adjoint": false, "callback_index": 3, "columns": 692, "elapsed_seconds": 0.004387803841382265, "elapsed_since_start_seconds": 190.3282432379201, "error": "ValueError('full PW columns in blocks of 1..16 required')", "name": "mode0", "operator_identity": "ccedd25b41b7388e2f820694f649d7dbf75e629f87266824403c58eb79e06912", "stage": "new_physical_action", "status": "failed"}
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/export_expanded_bath.py", line 252, in <module>
+    main()
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/export_expanded_bath.py", line 248, in main
+    run(args)
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/export_expanded_bath.py", line 198, in run
+    bank = build_noise_subspace(context.psi, context.gram, context.density_coefficients,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0031/noise_subspace.py", line 151, in build_noise_subspace
+    new_action = _matrix(apply_extra(name, extras, adjoint=bool(leg)),
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/expanded_bath_inputs.py", line 235, in apply_extra
+    action = operator.adjoint_apply(vectors) if adjoint else operator.apply(vectors)
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_ionic_action.py", line 46, in apply
+    local, bra, ket = self.components(psi)
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_ionic_action.py", line 37, in components
+    raise ValueError('full PW columns in blocks of 1..16 required')
+ValueError: full PW columns in blocks of 1..16 required
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 3min 13.578s
+CPU time consumed: 3min 13.312s
+Memory peak: 1.7G
+Memory swap peak: 0B
+[A37-builder002-native-exit] code=1

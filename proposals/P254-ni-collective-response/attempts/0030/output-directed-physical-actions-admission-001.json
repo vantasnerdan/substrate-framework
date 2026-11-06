@@ -1,0 +1,796 @@
+{
+  "actual_time_utc": "2026-11-04T09:34:49.235006+00:00",
+  "unit": "p254-a30-output-directed-source0-actions-001.service",
+  "actual_native_exit": 0,
+  "actual_native_terminal": "if test \"${HERDR_ENV:-}\" = 1; then systemd-run --user --wait --pipe --collect --unit p254-a30-output-directed-source0-a\nctions-001.service --property=RuntimeMaxSec=600 --property=MemoryMax=4G --property=MemorySwapMax=0 --property=Restart=n\no env PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-col\nlective/proposals/P254-ni-collective-response/attempts/0029:/home/administrator/projects/substrate-ni-collective/propos\nals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime OPENBLAS_NUM_THREADS=1 OM\nP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 taskset -c 7 /usr/bin/python3 /home/administrator/projects/subs\ntrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030/export_output_directed_actions.py --filter-pack\net /var/tmp/p254-a30-loaded-gamma-ni1-causal-filter-001/packet.json --original-packet /var/tmp/p254-a30-original0-h37x-\nfull-noise-probe-001/packet.json --output /var/tmp/p254-a30-output-directed-source0-actions-001; rc=$?; if test \"$rc\" -\neq 0; then printf '[dft-done] finite-unit p254-a30-output-directed-source0-actions-001.service exit=%s\n' \"$rc\"; else printf '[dft-fail] finite-unit p254-a30-output-directed-source0-actions-001.service exit=%s\n' \"$rc\"; fi; else printf '[dft-fail] missing HERDR_ENV guard\n'; fi\nadministrator@agent-giuliano:~/projects/substrate-ni-collective$ if test \"${HERDR_ENV:-}\" = 1; then systemd-run --user\n--wait --pipe --collect --unit p254-a30-output-directed-source0-actions-001.service --property=RuntimeMaxSec=600 --prop\nerty=MemoryMax=4G --property=MemorySwapMax=0 --property=Restart=no env PYTHONPATH=/home/administrator/projects/substrat\ne-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts\n/0029:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/ad\nministrator/.cache/dft/p254-a28-runtime OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=\n1 taskset -c 7 /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-respo\nnse/attempts/0030/export_output_directed_actions.py --filter-packet /var/tmp/p254-a30-loaded-gamma-ni1-causal-filter-00\n1/packet.json --original-packet /var/tmp/p254-a30-original0-h37x-full-noise-probe-001/packet.json --output /var/tmp/p25\n4-a30-output-directed-source0-actions-001; rc=$?; if test \"$rc\" -eq 0; then printf '[dft-done] finite-unit p254-a30-out\nput-directed-source0-actions-001.service exit=%s\n> ' \"$rc\"; else printf '[dft-fail] finite-unit p254-a30-output-directed-source0-actions-001.service exit=%s\n> ' \"$rc\"; fi; else printf '[dft-fail] missing HERDR_ENV guard\n> '; fi\nRunning as unit: p254-a30-output-directed-source0-actions-001.service; invocation ID: 1fc3fdbe67d54816ac1bb8d6d5c5617e\n{\"packet\": {\"path\": \"/var/tmp/p254-a30-output-directed-source0-actions-001/packet.json\", \"bytes\": 158396, \"sha256\": \"b6\ndc1bc91025f198e28559080f489cd5a7b4aaecb22908a7113f6361a5ed0521\"}, \"elapsed_seconds\": 140.48069954803213, \"action_payloa\nd_bytes\": 412166272}\nFinished with result: success\nMain processes terminated with: code=exited/status=0\nService runtime: 2min 23.071s\nCPU time consumed: 2min 22.821s\nMemory peak: 1.7M\nMemory swap peak: 0B\n[dft-done] finite-unit p254-a30-output-directed-source0-actions-001.service exit=0\nadministrator@agent-giuliano:~/projects/substrate-ni-collective$\n",
+  "packet": {
+    "path": "/var/tmp/p254-a30-output-directed-source0-actions-001/packet.json",
+    "bytes": 158396,
+    "sha256": "b6dc1bc91025f198e28559080f489cd5a7b4aaecb22908a7113f6361a5ed0521"
+  },
+  "work": {
+    "action_payload_bytes": 412166272,
+    "elapsed_seconds": 140.48069954803213,
+    "force": {
+      "action_disk_bytes": 0,
+      "adjoint_action_columns": 346,
+      "adjoint_block_calls": 44,
+      "adjoint_seconds": 33.23339852876961,
+      "block_size": 8,
+      "direction_preparation_seconds": 0.9551636320538819,
+      "elapsed_seconds": 67.0090097580105,
+      "force_adjoint_actions": 1,
+      "force_forward_actions": 1,
+      "forward_action_columns": 346,
+      "forward_block_calls": 44,
+      "forward_seconds": 32.74964662687853,
+      "full_pw_rows": 18613,
+      "gram_recomputations": 0,
+      "h0_actions": 0,
+      "h0_adjoint_actions": 0,
+      "h0_forward_actions": 0,
+      "h37_action_replays": 0,
+      "initial_kernel_reductions": 0,
+      "native_calls": 0,
+      "operator_identity": "ccedd25b41b7388e2f820694f649d7dbf75e629f87266824403c58eb79e06912",
+      "operator_specification": {
+        "adjoint_api": "BlochDirectionalAction.adjoint_apply",
+        "atom_names": [
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "H",
+          "H",
+          "H",
+          "H",
+          "H",
+          "H"
+        ],
+        "basis_identity": "8d78a2f12aa5384f852f77aa6d2a7015a108be77ce6abeb67aadd1e73cf40ef7",
+        "derivative_direction": {
+          "imaginary": [
+            [
+              0.0,
+              -1.4880572167054693e-19,
+              -4.3208283906460616e-20
+            ],
+            [
+              2.019265745725209e-18,
+              1.0918960173057449e-18,
+              3.3296332714940376e-19
+            ],
+            [
+              2.4672315599928633e-18,
+              5.950265192694251e-19,
+              8.957952628428779e-19
+            ],
+            [
+              2.442641743790336e-19,
+              6.129087879022109e-19,
+              -7.396812896510475e-19
+            ],
+            [
+              3.107891742063432e-19,
+              1.0130830573801816e-19,
+              6.715884053152559e-19
+            ],
+            [
+              -1.5160455273763143e-19,
+              5.732341686751679e-19,
+              -3.3008592450292654e-19
+            ],
+            [
+              -3.5121727487684505e-18,
+              -7.226683187375478e-19,
+              3.1215117184919228e-18
+            ],
+            [
+              -2.553643513795835e-19,
+              -1.3785934706236055e-18,
+              -8.499747254543956e-19
+            ],
+            [
+              1.4738362595223201e-19,
+              5.536694389631211e-19,
+              -1.0038992457950205e-19
+            ],
+            [
+              -2.8602426694104167e-18,
+              1.453732424558926e-18,
+              -2.2031532158074503e-19
+            ],
+            [
+              2.1652461714648624e-18,
+              1.0421179573124834e-19,
+              2.6176312255099338e-19
+            ],
+            [
+              6.175318996556895e-19,
+              -4.9395513261900264e-20,
+              -1.119206717214048e-19
+            ],
+            [
+              5.063180592098777e-19,
+              -2.976522807327169e-19,
+              7.831922420668173e-19
+            ],
+            [
+              -1.5142217007770466e-18,
+              -3.357552188621178e-18,
+              -1.0318318611147754e-18
+            ],
+            [
+              2.3269539209727162e-18,
+              5.78973702003884e-20,
+              3.2544357363607036e-18
+            ],
+            [
+              8.381342998257042e-19,
+              1.6797262967889183e-18,
+              7.792651452482182e-19
+            ],
+            [
+              -1.3356116820701547e-19,
+              5.770358745309151e-20,
+              -3.3298685652288415e-19
+            ],
+            [
+              -4.5400312163200184e-18,
+              6.917082203890172e-21,
+              -6.686933170213299e-19
+            ],
+            [
+              3.0255614368316793e-19,
+              -5.975120852628843e-20,
+              -2.874038884659104e-18
+            ],
+            [
+              -9.192785060175954e-19,
+              1.2164129765555538e-18,
+              -2.4681383738354303e-19
+            ],
+            [
+              -2.806634330847666e-19,
+              1.000728785202887e-20,
+              4.707480734489043e-19
+            ],
+            [
+              -2.6162512350327626e-18,
+              2.06804967849437e-19,
+              6.111384579284876e-19
+            ],
+            [
+              2.951467928855988e-19,
+              -2.2811059925413276e-19,
+              1.5656543315857538e-19
+            ],
+            [
+              -9.661449786022125e-19,
+              -8.834605443343763e-19,
+              6.127475156633903e-19
+            ],
+            [
+              -8.729176730478e-19,
+              -5.832966996858505e-20,
+              -1.6734641166185695e-19
+            ],
+            [
+              3.75484888746743e-18,
+              5.955494718547881e-19,
+              7.62109506401738e-19
+            ],
+            [
+              -6.150694578494466e-20,
+              -1.553845068141476e-19,
+              -2.990701948459213e-18
+            ],
+            [
+              -1.306204702150834e-18,
+              -2.74097600042254e-19,
+              -8.323025394667654e-19
+            ],
+            [
+              -1.5720646717458063e-19,
+              -8.546052326372118e-19,
+              5.894743689389754e-19
+            ],
+            [
+              1.5231630498726542e-20,
+              -5.609290898314648e-19,
+              1.0153371714791057e-18
+            ],
+            [
+              2.0556577982245162e-18,
+              -3.019482930775491e-19,
+              -8.389408200501267e-19
+            ],
+            [
+              -2.0292039952098824e-17,
+              1.1681513308677977e-18,
+              3.4545823437634185e-18
+            ],
+            [
+              -4.937841280815411e-18,
+              3.762023419328997e-18,
+              -2.6123076946865864e-18
+            ],
+            [
+              1.6662984618464768e-18,
+              2.6039985553834617e-19,
+              8.644392529096176e-19
+            ],
+            [
+              1.8686471421992928e-19,
+              1.9700921186300213e-19,
+              -2.1073861278241445e-18
+            ],
+            [
+              -5.163603587118332e-18,
+              -1.7669402991710844e-18,
+              -8.57296059499321e-20
+            ],
+            [
+              5.301176296893808e-18,
+              -8.234645942830639e-19,
+              -2.829391438136753e-19
+            ]
+          ],
+          "layout": "original atom-major nat by Cartesian xyz",
+          "operator_convention": "sum_i direction_i F_i, without conjugation",
+          "real": [
+            [
+              -0.9926286323028575,
+              8.721605432165935e-07,
+              -1.9260549716592456e-06
+            ],
+            [
+              -0.00535646329036522,
+              0.009964480685589486,
+              4.1007906177582e-06
+            ],
+            [
+              -0.005357010855693346,
+              5.39674555329302e-06,
+              0.009955856122653895
+            ],
+            [
+              0.006589955182642364,
+              9.372194588652412e-07,
+              1.6734791824039505e-06
+            ],
+            [
+              0.0034981660116673724,
+              -3.49578637908397e-07,
+              2.085965795780244e-06
+            ],
+            [
+              -0.00018928772801372117,
+              0.0008701174612479491,
+              -6.491895519769955e-05
+            ],
+            [
+              -0.005851855836440646,
+              5.47834427487102e-05,
+              -0.010474174639965155
+            ],
+            [
+              0.0065909958081471895,
+              -3.4156567568010636e-06,
+              -6.282699001508936e-07
+            ],
+            [
+              0.0034871925348427192,
+              -7.674250888401257e-07,
+              4.2619991070356937e-07
+            ],
+            [
+              -0.005851570853143346,
+              -0.010482473154284026,
+              5.3353622145245277e-05
+            ],
+            [
+              -0.0001891637413850936,
+              -6.664702829354604e-05,
+              0.0008619684768851066
+            ],
+            [
+              0.0069134743383800195,
+              -1.3844827251059824e-06,
+              6.024131866583942e-07
+            ],
+            [
+              0.0013942750051835072,
+              1.8096222977819952e-07,
+              -4.646554738369712e-07
+            ],
+            [
+              -0.00018418221399107832,
+              -0.0008819924769346394,
+              -8.625435278852076e-05
+            ],
+            [
+              -0.0001834546171358683,
+              -8.758549625273993e-05,
+              -0.0008731716392579812
+            ],
+            [
+              -0.0035872671378862782,
+              3.667314186731496e-06,
+              -1.7393953040415145e-06
+            ],
+            [
+              -0.01097149141873264,
+              4.5679747187822303e-07,
+              -1.9495851343923575e-06
+            ],
+            [
+              -0.005356462978030261,
+              -0.009960511648791786,
+              -5.350679787624045e-06
+            ],
+            [
+              -0.005356803523015047,
+              -5.208864421553884e-06,
+              -0.009958406586849778
+            ],
+            [
+              -0.003677229125986395,
+              1.5977896212159277e-06,
+              1.919651681067588e-06
+            ],
+            [
+              -0.002829639213511541,
+              -6.395403609095959e-07,
+              1.9613834008409575e-06
+            ],
+            [
+              -0.0001891982135219276,
+              -0.0008656905926788552,
+              6.626817059914135e-05
+            ],
+            [
+              -0.005851702744659996,
+              -5.468671421242876e-05,
+              0.010476504237297119
+            ],
+            [
+              -0.003678312569514344,
+              -4.122657243179786e-06,
+              -6.546257765571891e-07
+            ],
+            [
+              -0.0028200696183353995,
+              -4.998731149696191e-07,
+              3.101813150879782e-07
+            ],
+            [
+              -0.005850941968869124,
+              0.01047835147825256,
+              -5.520584686452433e-05
+            ],
+            [
+              -0.0001886962351403797,
+              6.606543598574909e-05,
+              -0.0008640882380348837
+            ],
+            [
+              -0.003793451155065939,
+              -1.459637972913809e-06,
+              6.738767479972378e-07
+            ],
+            [
+              -0.0013235098655045511,
+              5.530605184005507e-07,
+              -3.6817567377131713e-07
+            ],
+            [
+              -0.00018339685072731076,
+              0.0008778486831129843,
+              8.803993176693791e-05
+            ],
+            [
+              -0.00018289864188217656,
+              8.784884777287095e-05,
+              0.0008755178017864001
+            ],
+            [
+              -0.005329844236356257,
+              -0.013516984114470146,
+              -0.013510235704508104
+            ],
+            [
+              -0.005331541733400702,
+              0.013553677507054003,
+              0.013486926142210698
+            ],
+            [
+              0.009125659480250146,
+              -2.7626842729928805e-06,
+              -2.4422037497712227e-06
+            ],
+            [
+              0.07840044683708197,
+              -4.88970324756238e-07,
+              -3.663610825639373e-06
+            ],
+            [
+              0.00915391887503101,
+              1.0747571535725526e-05,
+              2.966355697496885e-06
+            ],
+            [
+              0.07835523422718628,
+              8.533994729134323e-06,
+              -2.4152070593041776e-06
+            ]
+          ]
+        },
+        "derivative_scale": 1,
+        "external_q": [
+          0,
+          0,
+          0
+        ],
+        "force_sign": -1,
+        "kind": "minus-current-physical-ionic-Hamiltonian-derivative",
+        "matched_model_identity": "14a02558ac686b47861fe5cfd48b38293b4703c634e46f9d1ab91b7b2728d3c6",
+        "original_state_authority": "f3d7be625104b78f73b0d3ff1578d35790f13f755cc068b2a93dd211c1a936e4",
+        "physical_sources": [
+          {
+            "bytes": "428069",
+            "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/data-file-schema.xml",
+            "sha256": "3831ae2b83231b02475931d50055415b1d9673cdb05edb4541d0f1115ec383da"
+          },
+          {
+            "bytes": "6538392",
+            "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/charge-density.dat",
+            "sha256": "3b239c650b515d3e4e1921ca4ea5a1f7503bcd09f1810d49ddef5047b4c5ea08"
+          },
+          {
+            "bytes": "115509",
+            "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/Ni_ONCV_PBE-1.2.upf",
+            "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e"
+          },
+          {
+            "bytes": "64999",
+            "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/H_ONCV_PBE-1.2.upf",
+            "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a"
+          },
+          {
+            "gauge_policy": "qe7.5-real-collinear-orbital-conjugation-identity-unitary-first-v1",
+            "identity": "8d78a2f12aa5384f852f77aa6d2a7015a108be77ce6abeb67aadd1e73cf40ef7",
+            "ispin": 1,
+            "kind": "real-collinear-orbital-conjugation-basis",
+            "mesh_index": [
+              0,
+              0,
+              0
+            ],
+            "operation": 1,
+            "orbital_conjugation": false,
+            "representation": "direct-physical-UPF-zero-field-v1",
+            "scope": "dd3f8e3e8ccfe5520be42728e1c667815f83002484eadbd4b20c266c0e81041c",
+            "source": {
+              "bytes": "103267856",
+              "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/wfcup1.dat",
+              "sha256": "b6475c066b585bb005798a495d1aba19adc6654beca70d91d7a03a71a70d43bd"
+            },
+            "source_ik": 1,
+            "xml_source": {
+              "bytes": "428069",
+              "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/data-file-schema.xml",
+              "sha256": "3831ae2b83231b02475931d50055415b1d9673cdb05edb4541d0f1115ec383da"
+            }
+          }
+        ],
+        "quadrature_applied": false,
+        "source": {
+          "bytes": "103267856",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/wfcup1.dat",
+          "sha256": "b6475c066b585bb005798a495d1aba19adc6654beca70d91d7a03a71a70d43bd"
+        },
+        "time_inverse_ry": 0,
+        "units": "Ry/bohr"
+      },
+      "original_inputs_unchanged": true,
+      "peak_rss_bytes": 1648766976,
+      "physical_factor_rebuilds": 0,
+      "population_refills": 0,
+      "preparation_replays": 0,
+      "process_cpu_seconds": 66.93152116499999,
+      "quadrature_applied": false,
+      "raw_columns": 346,
+      "restoration_repeated": false,
+      "shared_restoration_work": {
+        "action_disk_bytes": 0,
+        "background_restorations": 1,
+        "coupling_factory_builds": 1,
+        "elapsed_seconds": 13.099573735147715,
+        "force_adjoint_actions": 0,
+        "force_forward_actions": 0,
+        "full_pw_rows": 18613,
+        "gram_recomputations": 0,
+        "h0_actions": 0,
+        "h37_action_replays": 0,
+        "hamiltonian_factory_builds": 1,
+        "initial_kernel_reductions": 0,
+        "native_calls": 0,
+        "original_inputs_unchanged": true,
+        "peak_rss_bytes": 741240832,
+        "physical_factor_builds": 1,
+        "physical_factor_seconds": 6.019325810018927,
+        "population_refills": 0,
+        "preparation_replays": 0,
+        "process_cpu_seconds": 13.077093394,
+        "quadrature_applied": false,
+        "raw_columns": 346,
+        "restoration_seconds": 7.079685093369335,
+        "saved_t0_field_shift_nonzero": false,
+        "saved_t0_ionic_direction_nonzero": false,
+        "saved_t0_potential_nonzero": true,
+        "trajectory_actions": 0
+      },
+      "source_authority": "f3d7be625104b78f73b0d3ff1578d35790f13f755cc068b2a93dd211c1a936e4",
+      "trajectory_actions": 0
+    },
+    "hamiltonian": {
+      "action_disk_bytes": 0,
+      "adjoint_action_columns": 346,
+      "adjoint_block_calls": 44,
+      "adjoint_seconds": 25.20177048491314,
+      "block_size": 8,
+      "direction_preparation_seconds": 0.0,
+      "elapsed_seconds": 50.658540626987815,
+      "force_adjoint_actions": 0,
+      "force_forward_actions": 0,
+      "forward_action_columns": 346,
+      "forward_block_calls": 44,
+      "forward_seconds": 25.413899827282876,
+      "full_pw_rows": 18613,
+      "gram_recomputations": 0,
+      "h0_actions": 2,
+      "h0_adjoint_actions": 1,
+      "h0_forward_actions": 1,
+      "h37_action_replays": 0,
+      "initial_kernel_reductions": 0,
+      "native_calls": 0,
+      "operator_identity": "9a907212e823fce2ec49470c43d14e588fa28fa8545a8f90d85a26ee8a93e7e0",
+      "operator_specification": {
+        "adjoint_api": "PhysicalFrozenAction.adjoint_apply",
+        "basis_identity": "8d78a2f12aa5384f852f77aa6d2a7015a108be77ce6abeb67aadd1e73cf40ef7",
+        "eigenvalue_labels_used": false,
+        "external_q": [
+          0,
+          0,
+          0
+        ],
+        "force_sign": 1,
+        "kind": "literal-t0-matched-physical-Hamiltonian",
+        "matched_model_identity": "14a02558ac686b47861fe5cfd48b38293b4703c634e46f9d1ab91b7b2728d3c6",
+        "original_state_authority": "f3d7be625104b78f73b0d3ff1578d35790f13f755cc068b2a93dd211c1a936e4",
+        "physical_sources": [
+          {
+            "bytes": "428069",
+            "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/data-file-schema.xml",
+            "sha256": "3831ae2b83231b02475931d50055415b1d9673cdb05edb4541d0f1115ec383da"
+          },
+          {
+            "bytes": "6538392",
+            "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/charge-density.dat",
+            "sha256": "3b239c650b515d3e4e1921ca4ea5a1f7503bcd09f1810d49ddef5047b4c5ea08"
+          },
+          {
+            "bytes": "115509",
+            "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/Ni_ONCV_PBE-1.2.upf",
+            "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e"
+          },
+          {
+            "bytes": "64999",
+            "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/H_ONCV_PBE-1.2.upf",
+            "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a"
+          },
+          {
+            "gauge_policy": "qe7.5-real-collinear-orbital-conjugation-identity-unitary-first-v1",
+            "identity": "8d78a2f12aa5384f852f77aa6d2a7015a108be77ce6abeb67aadd1e73cf40ef7",
+            "ispin": 1,
+            "kind": "real-collinear-orbital-conjugation-basis",
+            "mesh_index": [
+              0,
+              0,
+              0
+            ],
+            "operation": 1,
+            "orbital_conjugation": false,
+            "representation": "direct-physical-UPF-zero-field-v1",
+            "scope": "dd3f8e3e8ccfe5520be42728e1c667815f83002484eadbd4b20c266c0e81041c",
+            "source": {
+              "bytes": "103267856",
+              "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/wfcup1.dat",
+              "sha256": "b6475c066b585bb005798a495d1aba19adc6654beca70d91d7a03a71a70d43bd"
+            },
+            "source_ik": 1,
+            "xml_source": {
+              "bytes": "428069",
+              "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/data-file-schema.xml",
+              "sha256": "3831ae2b83231b02475931d50055415b1d9673cdb05edb4541d0f1115ec383da"
+            }
+          }
+        ],
+        "quadrature_applied": false,
+        "saved_stage": {
+          "arrays": {
+            "coordinate": {
+              "bytes": 152,
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/coordinate.npy",
+              "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+            },
+            "momentum": {
+              "bytes": 152,
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/momentum.npy",
+              "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+            },
+            "p": {
+              "bytes": 1016,
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/p.npy",
+              "sha256": "5814dae58063bda834a54500caf0012b8408e86db72a8f7c46d350b5a25b59d9"
+            },
+            "potential": {
+              "bytes": 5972096,
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/potential.npy",
+              "sha256": "2aaa6a70be3466130a3f7a2384230a9a526e42b89e7031371cb9d147d9d7e950"
+            },
+            "shift": {
+              "bytes": 152,
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/shift.npy",
+              "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+            },
+            "u": {
+              "bytes": 1016,
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/u.npy",
+              "sha256": "5814dae58063bda834a54500caf0012b8408e86db72a8f7c46d350b5a25b59d9"
+            }
+          },
+          "direction_convention": "literal saved original u_bohr",
+          "field_convention": "literal saved Cartesian shift, not field coordinate",
+          "joint_boundary": {
+            "bytes": 173727,
+            "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/initial/boundary.json",
+            "sha256": "83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095"
+          },
+          "kind": "full-initial-reduction",
+          "potential_convention": "literal saved K(conditional density minus saved density)",
+          "receipt": {
+            "bytes": 10063,
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-working-precision-mean-complete-001.json",
+            "sha256": "3048fc8e630facf9403a8f4d58a5cf2d9b960416a736df8e4b7b235a12966b75"
+          },
+          "time_inverse_ry": 0
+        },
+        "scalar": "T+saved-vrs+physical-UPF-nonlocal+saved-Kdelta-n+g(saved-u)+L(saved-shift)",
+        "source": {
+          "bytes": "103267856",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6/forces/68af8d47aadb8266c56f03ee5b9b20c417974630a6220b3420ef4f53ab0c083d/scf/attempts/3e5511e37dbe4b56b76e598487b810a2/scratch/scf.save/wfcup1.dat",
+          "sha256": "b6475c066b585bb005798a495d1aba19adc6654beca70d91d7a03a71a70d43bd"
+        },
+        "time_inverse_ry": 0,
+        "units": "Ry"
+      },
+      "original_inputs_unchanged": true,
+      "peak_rss_bytes": 1069522944,
+      "physical_factor_rebuilds": 0,
+      "population_refills": 0,
+      "preparation_replays": 0,
+      "process_cpu_seconds": 50.574610015,
+      "quadrature_applied": false,
+      "raw_columns": 346,
+      "restoration_repeated": false,
+      "shared_restoration_work": {
+        "action_disk_bytes": 0,
+        "background_restorations": 1,
+        "coupling_factory_builds": 1,
+        "elapsed_seconds": 13.099573735147715,
+        "force_adjoint_actions": 0,
+        "force_forward_actions": 0,
+        "full_pw_rows": 18613,
+        "gram_recomputations": 0,
+        "h0_actions": 0,
+        "h37_action_replays": 0,
+        "hamiltonian_factory_builds": 1,
+        "initial_kernel_reductions": 0,
+        "native_calls": 0,
+        "original_inputs_unchanged": true,
+        "peak_rss_bytes": 741240832,
+        "physical_factor_builds": 1,
+        "physical_factor_seconds": 6.019325810018927,
+        "population_refills": 0,
+        "preparation_replays": 0,
+        "process_cpu_seconds": 13.077093394,
+        "quadrature_applied": false,
+        "raw_columns": 346,
+        "restoration_seconds": 7.079685093369335,
+        "saved_t0_field_shift_nonzero": false,
+        "saved_t0_ionic_direction_nonzero": false,
+        "saved_t0_potential_nonzero": true,
+        "trajectory_actions": 0
+      },
+      "source_authority": "f3d7be625104b78f73b0d3ff1578d35790f13f755cc068b2a93dd211c1a936e4",
+      "trajectory_actions": 0
+    },
+    "peak_process_rss_bytes": 1648766976,
+    "restoration": {
+      "action_disk_bytes": 0,
+      "background_restorations": 1,
+      "coupling_factory_builds": 1,
+      "elapsed_seconds": 13.099573735147715,
+      "force_adjoint_actions": 0,
+      "force_forward_actions": 0,
+      "full_pw_rows": 18613,
+      "gram_recomputations": 0,
+      "h0_actions": 0,
+      "h37_action_replays": 0,
+      "hamiltonian_factory_builds": 1,
+      "initial_kernel_reductions": 0,
+      "native_calls": 0,
+      "original_inputs_unchanged": true,
+      "peak_rss_bytes": 741240832,
+      "physical_factor_builds": 1,
+      "physical_factor_seconds": 6.019325810018927,
+      "population_refills": 0,
+      "preparation_replays": 0,
+      "process_cpu_seconds": 13.077093394,
+      "quadrature_applied": false,
+      "raw_columns": 346,
+      "restoration_seconds": 7.079685093369335,
+      "saved_t0_field_shift_nonzero": false,
+      "saved_t0_ionic_direction_nonzero": false,
+      "saved_t0_potential_nonzero": true,
+      "trajectory_actions": 0
+    }
+  },
+  "final_manager": "MainPID=0\nActiveState=inactive\nSubState=dead\n",
+  "fresh_foreground": {
+    "foreground_process_group_id": 3022562,
+    "foreground_processes": [
+      {
+        "argv": [
+          "/bin/bash"
+        ],
+        "cmdline": "/bin/bash",
+        "cwd": "/home/administrator/projects/substrate-ni-collective",
+        "name": "bash",
+        "pid": 3022562
+      }
+    ],
+    "pane_id": "w1:p5R",
+    "shell_pid": 3022562
+  },
+  "scope": "One unweighted original sector,t0,literal saved matched H and one output-directed ionic-force mode. Reusable working factors,not a late passive time kernel,response correction,physical loss,lattice ranking or complete campaign."
+}

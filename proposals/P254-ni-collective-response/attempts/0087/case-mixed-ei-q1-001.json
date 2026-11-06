@@ -1,0 +1,147 @@
+{
+  "schema": "p254-a87-bounded-actual-dressed-component-case-v1",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "Root": 636,
+  "actual_issued_at": "2026-11-06T12:48:13.960395+00:00",
+  "component": "mixed_ei",
+  "q": 1,
+  "useful_output": "ActualG1rawEIq1all31/all961/all128/full12/full111andactualsavedconsumer; nextusefulrequiredmomentum,notreplayorfull64completion.",
+  "provider": {
+    "path": "/var/tmp/p254-a84-intrinsic-full31-001/provider.json",
+    "bytes": 16140,
+    "sha256": "273b96a135ef0c77a4b811f766f559debebf457c034e695b311564528b76c023"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/produce_component.py",
+      "bytes": 18795,
+      "sha256": "58a59c90f015f707c4843d940441055f0ea0d755fe0a2ce0f483facd3a9d8336"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/dressed_ee.py",
+      "bytes": 10033,
+      "sha256": "d21c9b3a73c036de17eae99f71156e751b84aeae27d09e80438f1491bb0415cb"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/component_store.py",
+      "bytes": 11198,
+      "sha256": "8f2267490a61997b6ebd7b5ace6901317fd63d25645562f11e61fb0a1d340e68"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/preregistration.json",
+      "bytes": 14058,
+      "sha256": "250d8e3b63e52aa784c9e257e99cc8685dcca2aad7e9a1a36f47a5359ef48515"
+    }
+  ],
+  "oracles": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/joint-block-oracle.json",
+      "bytes": 1325,
+      "sha256": "5ee4f0ce94c1153e46a33c5a428d59bf64420a3fae22cf18ec7372ae0e729a5d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/actual-G1-selected-direct-oracle.json",
+      "bytes": 2865,
+      "sha256": "fc8463b1cf5fa62f9709cbcd7ae6bb3d1c9930c4f8154b328e5e43f5933072b2"
+    }
+  ],
+  "output": "/var/tmp/p254-a87-mixed-ei-q1-001",
+  "receipts": "/var/tmp/p254-a87-mixed-ei-q1-001-receipts",
+  "cpu": 7,
+  "memory_bytes": 4294967296,
+  "swap_bytes": 0,
+  "unit": "p254-a87-mixed-ei-q1-001.service",
+  "pane_id": "w1:p86",
+  "tab_id": "w1:t7N",
+  "nonce": "ei_q1_20261106T124813",
+  "solver_argv": [
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/produce_component.py",
+    "mixed_ei",
+    "1",
+    "/var/tmp/p254-a87-mixed-ei-q1-001",
+    "--provider",
+    "/var/tmp/p254-a84-intrinsic-full31-001/provider.json",
+    "--pair-batch",
+    "2",
+    "--external-batch",
+    "16",
+    "--static-slots",
+    "64"
+  ],
+  "manager_argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--unit=p254-a87-mixed-ei-q1-001.service",
+    "--property=RuntimeMaxSec=1500",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "--property=CPUAffinity=7",
+    "--property=StartLimitBurst=1",
+    "--working-directory=/home/administrator/projects/substrate-ni-collective",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0063:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061:/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "HERDR_ENV=1",
+    "HERDR_WORKSPACE_ID=w1",
+    "HERDR_PANE_ID=w1:p86",
+    "HERDR_TAB_ID=w1:t7N",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "-c",
+    "from pathlib import Path\nimport json, os, runpy, sys\nfrom production_transport import atomic_json, binding\ncase=json.loads(Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/case-mixed-ei-q1-001.json').read_bytes())\nreceipt=Path(case[\"receipts\"]); receipt.mkdir(parents=True,exist_ok=True)\ngroup=Path(\"/proc/self/cgroup\").read_text().strip().split(\"::\")[-1]\ncg=Path(\"/sys/fs/cgroup\")/group.lstrip(\"/\")\nruntime=dict(affinity=sorted(os.sched_getaffinity(0)),memory_max=(cg/\"memory.max\").read_text().strip(),swap_max=(cg/\"memory.swap.max\").read_text().strip(),environment={key:value for key,value in os.environ.items() if key.startswith(\"HERDR_\") or key in (\"OPENBLAS_NUM_THREADS\",\"OMP_NUM_THREADS\",\"MKL_NUM_THREADS\",\"NUMEXPR_NUM_THREADS\",\"BLIS_NUM_THREADS\")},executable=sys.executable,pythonpath=os.environ.get(\"PYTHONPATH\"),case=binding('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/case-mixed-ei-q1-001.json'))\natomic_json(receipt/\"runtime.json\",runtime)\nif (runtime[\"affinity\"] != [case[\"cpu\"]] or runtime[\"memory_max\"] != str(case[\"memory_bytes\"]) or runtime[\"swap_max\"] != \"0\" or runtime[\"environment\"].get(\"HERDR_ENV\") != \"1\" or runtime[\"environment\"].get(\"HERDR_PANE_ID\") != case[\"pane_id\"] or any(runtime[\"environment\"].get(k) != \"1\" for k in (\"OPENBLAS_NUM_THREADS\",\"OMP_NUM_THREADS\",\"MKL_NUM_THREADS\",\"NUMEXPR_NUM_THREADS\",\"BLIS_NUM_THREADS\"))):\n    raise RuntimeError(\"allocated actual Native runtime differs\")\nfor item in case[\"source_bindings\"]:\n    if binding(item[\"path\"]) != item: raise ValueError(\"fullhistory actual source binding mismatch\")\nprint(\"P254_A87_RUNTIME_\"+\"OK_\"+case[\"nonce\"],flush=True)\nsys.argv=list(case[\"solver_argv\"])\nsys.path.insert(0,str(Path(case[\"solver_argv\"][0]).resolve().parent))\nrunpy.run_path(case[\"solver_argv\"][0],run_name=\"__main__\")"
+  ],
+  "manager_client_timeout_seconds": 1620,
+  "budget": {
+    "wall_cap_seconds": 1500,
+    "unchanged_retry": false,
+    "all64_sweep_authorized": false,
+    "old_EE_paid_seconds": "158220.20597644494",
+    "old_EE_cap_seconds": "160000",
+    "old_EE_amended_cap_with_this_first_case": "161820.20597644494",
+    "old_EI_known_paid_seconds": "27749.284748687875",
+    "old_EI_separate_reserve_seconds": "20000",
+    "old_EI_cap_seconds": "60000",
+    "old_cubic_paid_seconds": "40584.939485194365",
+    "old_cubic_cap_seconds": "45000",
+    "costs_reset": false,
+    "progress_trigger": "No durable scientific output by600s,3x measured tile plateau,or resource/failure interrupt -> Root diagnosis/allocation,not unchanged retries.",
+    "prior_failed_EE_manager_seconds": 93.64355171797797,
+    "failed_attempt": {
+      "path": "/var/tmp/p254-a87-ee-q0-001-receipts/manager.json",
+      "bytes": 4202,
+      "sha256": "64c95cff7113b38404c7ab4942d527dbec128d7c30b11001d2438f73fb86f04a"
+    },
+    "EE_first_case_total_grant_seconds": 3600,
+    "EE_remaining_after_explicit_failure_recovery": "3500 cap+93.64355171797797failed<3600; priorcostnotreset",
+    "Root636_grant": {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc2024-Root636-required-Pi-bank-and-EE-bottleneck-change.json",
+      "bytes": 3334,
+      "sha256": "f52eb6042d00f42aee558afbf26af78132ab8940ecef9581d8b364db0a7fbc8a"
+    },
+    "new_EI_q0_actual_manager_seconds": 646.8772732913494,
+    "next_q1_q2_total_caps_seconds": 3000,
+    "old_EI_known_plus_reserve_and_new_q0_plus_two_caps": "51396.1620219792244",
+    "old_EI_limit_seconds": 60000
+  },
+  "recovery": "Only bitmap/checkpoint-committed all-three-order cells reusable. Static/direct shared work may rebuild. At most pair_batch*64 direct output cells and one32cell exchange tile uncommitted; EI one16cell tile. No in-flight free resume promised.",
+  "resource_basis": "CPU7returnedfromcompletecubic; EEsharedmemoryonly6/8/9/10, noCPUoverlap. EI4GiB+EE8GiB leavesheadroomafterjoint/cubic/bankterminal; protected0-5/11 unchanged.",
+  "next_allocation": "Root635 uses actual first-progress/cost evidence; not a full64 launch or budget reset.",
+  "source_boundary_recovery": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/actual-source-descriptor-boundary-recovery.json",
+    "bytes": 2158,
+    "sha256": "a3bf4089c7b0ba42c1f6a58fff194d80cb1e927fd45ffda4cc9449467daa6239"
+  },
+  "expected_output_status": "complete-owned-component-q1",
+  "expected_consumer": "consumer.json"
+}

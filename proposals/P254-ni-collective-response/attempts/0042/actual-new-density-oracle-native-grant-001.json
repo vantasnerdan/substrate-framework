@@ -1,0 +1,104 @@
+{
+  "schema": "P254-A42-new-density-functional-oracle-native-grant-v1",
+  "issued_at": "2026-11-04T23:52:03.080168+00:00",
+  "whole_new_seconds": 2100,
+  "oracle_runtime_max_seconds": 180,
+  "later_baseline_runtime_max_seconds": 180,
+  "later_material_runtime_max_seconds": 1740,
+  "later_material_expected_seconds": 900,
+  "first_scope": "Same-original-model/source0/Gamma/1038/Ni1-x/t30; no allsource/allq or wholeE claim.",
+  "source_handoff": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/electronic-density-original-source-handoff-001.json",
+    "bytes": 21833,
+    "sha256": "c3e6f2573a84f348198fe0f58ba5c66d7f39d4569f4bc7ff5b8ab8fa75d0fe95"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/canonical_density_filter.py",
+      "bytes": 6482,
+      "sha256": "efb914b98e87c3fc668f2c0e1bafa9dd06e445c1d01076286726dca673f243a0"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/consume_density_influence.py",
+      "bytes": 12659,
+      "sha256": "f65afb62a1569e28b94622b06af39f5301ec857f529a12ae8c1d0da8c156ac62"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/density_integration.py",
+      "bytes": 4553,
+      "sha256": "b39ac4266e2d8dc0b81c7591fb55e7fac6bfc906312d91c5813ac872be6ce0ed"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/density_joint_readout.py",
+      "bytes": 3042,
+      "sha256": "be74eb7d2e8b0173f5a3b3b8f7b861e935ec18c8619c4c09c1c4d9e575263c8a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/density_projection.py",
+      "bytes": 3554,
+      "sha256": "c2a77a73b131a17ef7e641f5aadb72f1c000af00481efd447ab1bd918078cafa"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/durable_active_baseline.py",
+      "bytes": 9225,
+      "sha256": "165fa087fc9ca04680ecda6651802ae3b64f5ad8a25e20aa3ff68a999c1b9376"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/oracle_density_forcing.py",
+      "bytes": 14244,
+      "sha256": "731f171d412a761f969af185ed96c8d17af19863125f6bee5c9b3acaa96f491a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030/canonical_force_filter.py",
+      "bytes": 11874,
+      "sha256": "8def91439851f7facaf25c4d8954b2ab860249bf0baf05587198a8c9cf4c65e1"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0038/consume_joint_influence.py",
+      "bytes": 16863,
+      "sha256": "f5d74f989a3611d3187267863fe76548ec81405628ee8c663bd45a9bfeb40e06"
+    }
+  ],
+  "dependency_bindings": [
+    {
+      "path": "/home/administrator/.cache/dft/p254-a28-runtime/threadpoolctl.py",
+      "bytes": 50722,
+      "sha256": "12fb9526b6a74d2e686b7ec148dc165c3587999b14fa86984aa180e10802400b"
+    },
+    {
+      "path": "/home/administrator/.cache/dft/p254-a28-runtime/threadpoolctl-3.6.0.dist-info/METADATA",
+      "bytes": 13843,
+      "sha256": "a45df8d07ea1883d772183a501d7d526076aa70dfcfddb276a2cbdc04def5341"
+    }
+  ],
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a42-density-forcing-oracle-001.service",
+    "--property=RuntimeMaxSec=180",
+    "--property=MemoryMax=6442450944",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "10",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/oracle_density_forcing.py"
+  ],
+  "protection": "CPU10singlethread/6GiB/swap0/Restartno. Original3frozenjobs/RAM/CPU0-5/11untouched. No oldphysicalH-F-J/basis/eigen/DFT/preparation rerun. NecessaryONEnewbaselineandmatchedconvolutionschargedwhenactuallyrun.",
+  "new_output_ceiling_bytes": "268435456"
+}

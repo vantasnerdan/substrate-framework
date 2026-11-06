@@ -1,0 +1,92 @@
+{
+  "schema": "P254-saved-energy-boundary-oracle-v2",
+  "status": "passed",
+  "checks": [
+    "actual_native_t0_original_typed_owner_state",
+    "actual_original_native_evaluation_metadata",
+    "reject_actual_native_evaluation_node",
+    "reject_changed_owner_digest",
+    "reject_changed_state_digest",
+    "genuine_four_stage_source_complete_endpoint",
+    "same_time_does_not_make_evaluation_node_physical",
+    "no_post_energy_driver_receipt_needed",
+    "genuine_endpoint_full_payloads_readable",
+    "reject_partial_source_prefix",
+    "reject_unfinished_stage3",
+    "reject_changed_stage_plan_binding",
+    "reject_changed_endpoint_bytes",
+    "reject_changed_original_payload_bytes",
+    "explicit_native_archive_digest_matches_actual_bytes",
+    "actual_native_archive_keeps_original_typed_owner_state",
+    "changed_live_source_without_explicit_archive_refused",
+    "historical_source_replay_reads_original_bytes_and_integer_not_changed_live_file",
+    "archive_for_another_owner_refused",
+    "valid_outer_archive_digest_does_not_hide_changed_original_member"
+  ],
+  "finite": {
+    "initial": {
+      "path": "/var/tmp/p254-a28-saved-boundary-oracle-003/initial/checkpoint.json",
+      "bytes": 6989,
+      "sha256": "96a2cd2d12b096372f602788d1c5fe4d049281c544738df6dfe82774c9c67fa4"
+    },
+    "final": {
+      "path": "/var/tmp/p254-a28-saved-boundary-oracle-003/step/stage-3/final.json",
+      "bytes": 8033,
+      "sha256": "0effd30fa8d1e76505b20ad42d09dd4a3ee39dbf976002fe7e1c7c52b38ecf5c"
+    },
+    "observed_budget": {
+      "hamiltonian_actions": 96,
+      "action_columns": 160,
+      "output_bytes_reserved": 524536,
+      "elapsed_seconds": 5.901342523749918,
+      "max_actions": 100000,
+      "max_seconds": 120.0,
+      "max_bytes": 536870912,
+      "max_memory_bytes": 3221225472,
+      "worker_memory_bytes": 1073741824,
+      "peak_aggregate_rss_bytes": 272650240,
+      "accounting": "q live cap; cumulative allocation/mapped-write/action costs never credited back; measured unlinks only; header/reservation slack retained; logical writes, not physical device I/O",
+      "memory_accounting": "parent plus child RSS; shared pages conservatively counted repeatedly",
+      "time_cap": "parent watchdog at 0.1 second intervals; native calls may be terminated",
+      "live_bytes_reserved": 524536,
+      "peak_live_bytes_reserved": 524536,
+      "cumulative_write_bytes_reserved": 534904,
+      "cumulative_allocation_bytes_reserved": 534904,
+      "mapped_overwrite_bytes_reserved": 0,
+      "retired_payload_bytes": 10368
+    }
+  },
+  "retained_sources": {
+    "actual_native_archive": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-energy-original-producer-sources-001.zip",
+      "bytes": 1019652,
+      "sha256": "646d55038fdb8f1d80f0d7fb8318f24aafa9b16e0ce30b4e27e38584f68d6f87"
+    },
+    "fixture_owner": {
+      "path": "/var/tmp/p254-a28-saved-boundary-oracle-003/source-replay/owner.json",
+      "bytes": 283,
+      "sha256": "e14aabd51cd22250107f0b205dd1309cdbfb38b2e6da4e26fc5a85d7cd4245c8"
+    },
+    "retained_fixture": {
+      "path": "/var/tmp/p254-a28-saved-boundary-oracle-003/source-replay/retained.zip",
+      "bytes": 974,
+      "sha256": "a6a75a196b2075b12f5c195ac390e9ba1de941336b6cae232997430fba5d0ea0"
+    },
+    "changed_live_source": {
+      "path": "/var/tmp/p254-a28-saved-boundary-oracle-003/source-replay/parameters.json",
+      "bytes": 52,
+      "sha256": "ec018a6a3a6fa3cb19c82aada7ca076f4e1be8992ae8055031f68223e26d860f"
+    }
+  },
+  "native_initial": {
+    "path": "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/initial/checkpoint.json",
+    "bytes": 668523,
+    "sha256": "55b79edb114ffe94e008affa2b6872348e8ccc8bb7de26273b9c3746f09994dc"
+  },
+  "native_evaluation": {
+    "path": "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-1/input.json",
+    "bytes": 185532,
+    "sha256": "bf5f1215074c9ebd09f2eaecb93975739bd571ebabfbc3e6bf9636ef34d16a6b"
+  },
+  "scope": "generic saved RK4/source-replay and actual Native metadata; no Native propagation or material energy result"
+}

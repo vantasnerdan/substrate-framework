@@ -1,0 +1,51 @@
+"""Author a raw-zero electronic variation using existing literal zero files.
+
+Legacy nonzero density factors are NOT raw-frame jets and are never converted.
+The Native consumer authenticates/scans every borrowed zero before accepting
+its all-source zero-moment result. No pin, copy or legacy payload mutation.
+"""
+import json
+import numpy as np
+
+from mixed_response_storage import COMPONENTS, publish_checkpoint
+from substrate_framework.streamed_material_state import authenticate
+
+
+def zero_curve(path, *, source, dynamics, budget):
+    record = json.loads(authenticate(source).read_bytes())
+    count = dynamics.count
+    if (record.get('schema') != 'streamed-joint-response-v1'
+            or record.get('complete') is not True or record.get('time') != 0
+            or np.any(np.asarray(record.get('q')) != 0)
+            or len(record.get('legs', ())) != 2*count):
+        raise ValueError('original complete Gamma zero-time payload source required')
+    # Old checkpoint alternates ket/bra; only ket has the original PW x rank
+    # shape at Gamma. Its zero bytes are borrowed, NOT its weighted semantics.
+    zeros = record['legs'][::2]
+    legs = {c: [dict(b) for b in zeros] for c in COMPONENTS}
+    budget.reserve(sum(b['bytes'] for b in {b['path']: b for b in zeros}.values()))
+    small = {}
+    for c in COMPONENTS:
+        r = dynamics.histories[c].response
+        small[c] = dict(u=np.zeros(r.ndof, complex), p=np.zeros(r.ndof, complex),
+                        coordinate=np.zeros(r.nfield, complex), momentum=np.zeros(r.nfield, complex))
+    for c in ('plus', 'minus'):
+        small[c]['u'][0] = 1.e-3
+        small[c]['p'][0] = .25
+        small[c]['coordinate'][0] = 1.e-6
+    small['mixed']['u'][1] = 2.e-3
+    small['mixed']['p'][1] = -.125
+    small['mixed']['coordinate'][1] = -2.e-6
+    small['mixed']['momentum'][2] = 1.e-3
+    provenance = dict(model=dynamics.case.identity, completed_mean=dynamics.final_binding,
+        literal_zero_payload_source=dict(source),
+        interpretation='new explicit raw-zero electronic initial curve; no density-factor inversion',
+        physical_curve='x(lambda,eta)=x0+lambda*xplus+eta*xminus+lambda*eta*xmixed; eta=lambda*',
+        small={c: {k: [[float(z.real),float(z.imag)] for z in v]
+                   for k,v in values.items()} for c,values in small.items()},
+        scope='instantaneous initial-curve Native qualification; not local-pulse propagation or energy')
+    binding = publish_checkpoint(path, legs=legs, small=small, q=[0.,0.,0.],
+        target_plus=dynamics.target_plus, target_minus=dynamics.target_minus,
+        time=0., identity=dynamics.case.identity, kind='raw-zero-electronic-ionic-field-curve',
+        provenance=provenance, budget=budget)
+    return binding

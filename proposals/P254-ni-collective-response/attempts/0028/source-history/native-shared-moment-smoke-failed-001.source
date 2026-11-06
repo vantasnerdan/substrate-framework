@@ -1,0 +1,114 @@
+#!/usr/bin/env python3
+"""One read-only retained evaluation-node contraction, never trajectory resume."""
+import json
+import os
+from pathlib import Path
+import resource
+import sys
+from time import perf_counter, process_time
+
+import numpy as np
+import run_mixed_q_material as driver
+from substrate_framework.partitioned_joint_budget import QBudget
+
+ROOT = Path('/var/tmp/p254-a28-shared-moment-smoke-001')
+OLD = Path('/var/tmp/p254-a28-loaded-raw-mixed-gamma-005')
+REFERENCE = OLD/'scientific-work/d14a4ffc9e51dd23b43e3aa55df71148b740df282d4d2b3e0ac4c138bd5ad56f/generation-519d455ef9ed47e897b9175f80eedf56/item-0000/complete.json'
+A28 = Path(driver.__file__).resolve().parent
+RESULT = ROOT/'result.json'
+TOLERANCE = 3e-10
+
+
+def main():
+    os.sched_setaffinity(0, {6})
+    ROOT.mkdir(exist_ok=False)
+    args = driver.parser().parse_args(sys.argv[1:])
+    budget = QBudget(max_actions=1, max_seconds=900, max_bytes=64*1024**2,
+                     max_memory_bytes=4*1024**3, worker_memory_bytes=4*1024**3)
+    report = dict(schema='P254-native-shared-moment-smoke-v1', status='failed',
+                  case=args.case, cpu=6, all_original_columns=True,
+                  trajectory_resumed=False, physical_endpoint_claimed=False,
+                  full_material_energy_complete=False, tolerance_relative=TOLERANCE)
+    started = perf_counter()
+    try:
+        with driver.watchdog(budget):
+            print('P254_SHARED_MOMENT_SMOKE_001_inputs', flush=True)
+            sources = driver.source_closure([driver.file_binding(driver.__file__),
+                                              *driver.existing_dependencies()])
+            inputs = driver.metadata_inputs(args)
+            case = driver.bind_saved_model(driver.load_case(args.case), inputs['saved'],
+                                           inputs['execution'].get('source_compatibility'))
+            history = case.make_history(inputs['history_binding'], budget, block_size=args.block_size)
+            case.bind_response(history, np.asarray(args.q))
+            histories = {component: history for component in driver.COMPONENTS}
+            driver.validate_physical_preparation(case, histories, inputs['saved'])
+            frames = driver.RetainedFrameWork(inputs['admissions'],
+                history_binding=inputs['history_binding'], budget=budget)
+            history.frame_work, history.frame_records = frames, {}
+            dynamics = driver.NativeMixedDynamics(case, histories, budget=budget,
+                                                   block_size=args.block_size)
+            driver.check_loaded_sources(sources)
+            input_binding = driver.file_binding(OLD/'steps/000000/stage-1/input.json')
+            reference_binding = driver.file_binding(REFERENCE)
+            reference = json.loads(driver.authenticate(reference_binding).read_text())
+            report.update(source_bindings=sources, native_consumer=dynamics.source_identity,
+                input_evaluation_node=input_binding, original_reference=reference_binding,
+                initialization=inputs['initialization'], baseline=inputs['history_binding'],
+                model_identity=case.identity)
+            print('P254_SHARED_MOMENT_SMOKE_001_factory_ready', flush=True)
+            with driver.MappedMixedState(input_binding, budget=budget) as state:
+                dynamics._validate_state(state)
+                report.update(input_kind=state.kind, input_time_ry_inverse=state.time,
+                    original_shape=state.record['shapes']['mixed'][0])
+                cpu, wall = process_time(), perf_counter()
+                print('P254_SHARED_MOMENT_SMOKE_001_moment_start', flush=True)
+                values = dynamics._moment_item(0, state)
+                outputs = {}
+                for name, value in values.items():
+                    value = np.asarray(value)
+                    budget.reserve(value.nbytes+4096)
+                    path = ROOT/(name+'.npy')
+                    with path.open('xb') as stream:
+                        np.save(stream, value, allow_pickle=False)
+                        stream.flush()
+                        os.fsync(stream.fileno())
+                    outputs[name] = driver.file_binding(path)
+                measured = dict(cpu_seconds=process_time()-cpu,
+                                elapsed_seconds=perf_counter()-wall)
+            print('P254_SHARED_MOMENT_SMOKE_001_moment_complete', flush=True)
+            if set(outputs) != set(reference['arrays']):
+                raise AssertionError('all nine original physical products required')
+            checks = {}
+            for name, binding in outputs.items():
+                expected_binding = reference['arrays'][name]
+                expected = np.load(driver.authenticate(expected_binding), allow_pickle=False)
+                actual = np.load(driver.authenticate(binding), allow_pickle=False)
+                if actual.shape != expected.shape or not np.isfinite(actual).all():
+                    raise AssertionError('shape/nonfinite product: '+name)
+                scale = float(np.max(np.abs(expected), initial=0.))
+                if scale == 0:
+                    raise AssertionError('reference product lacks zero-mutation sensitivity: '+name)
+                error = float(np.max(np.abs(actual-expected), initial=0.))
+                relative = error/scale
+                checks[name] = dict(relative_error=relative, reference_max=scale,
+                                   max_absolute_error=error, tolerance=TOLERANCE,
+                                   zero_mutant_relative_error=1., passed=relative <= TOLERANCE)
+            if budget.snapshot()['hamiltonian_actions'] != 0:
+                raise AssertionError('response-only contraction performed a bare H0 action')
+            report.update(measurement=measured, original_worker_measurement={
+                key: reference[key] for key in ('cpu_seconds','elapsed_seconds','hamiltonian_actions')},
+                outputs=outputs, checks=checks, budget=budget.snapshot(),
+                process_peak_rss_bytes=int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)*1024,
+                retained_frames_only=not frames.execution_log,
+                status='passed' if all(check['passed'] for check in checks.values()) else 'failed')
+    except BaseException as error:
+        report.update(error=type(error).__name__+': '+str(error), budget=budget.snapshot())
+    report['total_elapsed_seconds'] = perf_counter()-started
+    driver.exact_publish(RESULT, report, budget=None)
+    print(json.dumps(dict(status=report['status'], result=str(RESULT),
+                          error=report.get('error'))), flush=True)
+    return 0 if report['status'] == 'passed' else 2
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

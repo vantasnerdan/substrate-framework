@@ -1,0 +1,69 @@
+{
+  "schema": "p254-actual-cached-mean-native-grant-v1",
+  "actual_time": "2026-11-05T08:51:45.884680+00:00",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a58-cached-mean-003.service",
+    "--property=RuntimeMaxSec=180",
+    "--property=MemoryMax=3221225472",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "--property=CPUAffinity=10",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "10",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0058/produce_cached_mean.py",
+    "--dataset",
+    "/var/tmp/p254-a58-common-feedback-step-002/actual-material-step.npz",
+    "--baseline-catalog",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0053/actual-input-catalog-003.json",
+    "--cache-result",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0057/material/paid-cache-001/result.json",
+    "--template-result",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0057/material/common-mean-001/reference-result.json",
+    "--output",
+    "/var/tmp/p254-a58-cached-mean-003"
+  ],
+  "input_dataset": {
+    "path": "/var/tmp/p254-a58-common-feedback-step-002/actual-material-step.npz",
+    "bytes": 20578134,
+    "sha256": "e98de95ce506e9db54514c72a5dcd6ef410aed64d7b5e4a5310d1488b3b3a33b"
+  },
+  "source": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0058/produce_cached_mean.py",
+    "bytes": 7259,
+    "sha256": "b07c0da214fe52d3cc42da51f66b1a8f4bc996d88f2fd57a703af88fd495de47"
+  },
+  "prior_source_snapshot": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0058/produce_cached_mean.py.original-timeout-002",
+    "bytes": 6075,
+    "sha256": "458e89a0f7ffa7f910120ed9933bef8d8e5fcc24b964c752fb7fd19c57091500"
+  },
+  "prior_actual_failure": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0058/actual-cached-mean-timeout-and-source-diagnostic-002.json",
+    "bytes": 1625,
+    "sha256": "d457adc4b91cd7090082882085c95b702a6defd9cfcb8109e950031f72219f2b"
+  },
+  "stage_checkpoint_limits": "Nodeforcingcheckpoint only. DOP853 historyunproven; timedsegmentrestart maylose up to180s.",
+  "amendment": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc1699-root585-cached-mean-actual-stage-diagnostic.json",
+    "bytes": 1341,
+    "sha256": "7c9624ee9f83b3930c36f35b0cfddde558ccc9db987cf16b556544cba0258b7f"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "label": "hamiltonian-source-003",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-reference-source-003.service",
+    "--property=Type=oneshot",
+    "--property=RemainAfterExit=yes",
+    "--property=CPUAffinity=6",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=110s",
+    "--property=RuntimeMaxSec=110s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_reference_state.py",
+    "--admission",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-grant-003.json",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-source-003"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Running as unit: p254-a28-reference-source-003.service; invocation ID: 7a48d7e7ebe047d8a8ea81a3f9d93d44\n",
+  "collected_at": "2026-10-28T19:35:43.556055+00:00",
+  "execution": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-execution-wave-003.json",
+    "bytes": "7646",
+    "sha256": "bb19fd16fb3013dca708c5bf838fddd65978d05ce6edfb99f9b6a628ade32c4c"
+  }
+}

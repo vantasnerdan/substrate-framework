@@ -1,0 +1,32 @@
+{
+  "label": "clamped-scientific-readout-oracle-001",
+  "pane": "w1:p2S",
+  "tab": "w1:t2S",
+  "command": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-clamped-scientific-oracle-001",
+    "--property=Type=exec",
+    "--property=CPUAffinity=10",
+    "--property=MemoryMax=2147483648",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=180s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "--property=Nice=10",
+    "--property=RuntimeMaxSec=180s",
+    "--wait",
+    "--pipe",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_clamped_scientific_readout_oracle.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/clamped-scientific-readout-oracle-001.json"
+  ],
+  "actual_launch_time": "2026-10-29T09:25:50.392209+00:00"
+}

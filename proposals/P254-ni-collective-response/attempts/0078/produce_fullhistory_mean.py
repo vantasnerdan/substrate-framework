@@ -1,0 +1,100 @@
+"""One original all31 common-mean/U/Gamma-S update from paid full-window force."""
+from pathlib import Path
+import json
+import sys
+import time
+import numpy as np
+HERE = Path(__file__).resolve().parent
+sys.path[:0] = [str(HERE.parent/n) for n in ('0074','0063','0062','0060','0057','0055','0052','0051','0050','0047','0046','0044','0045','0041','0030','0029')]
+from fullwindow_force_cache import FullWindowForceCache
+from saved_mean import SavedMean, POSITIONS
+from history_storage import authenticate, binding, atomic_json
+from mean_feedback_functional import CommonMeanFunctional, CompactCubic, SOURCE
+from produce_mean_feedback import integrate
+from material_electron_ion_inputs import load_material
+
+SCHEMA = 'p254-fullhistory-common-mean-reference-v1'
+REFERENCE = 'common-cubic-mean-curvature-at-held-input-rho-and-covariance'
+OUT = Path('/var/tmp/p254-a78-fullhistory-common-mean-001')
+
+
+def produce(output=OUT, *, rtol=2e-8, atol=2e-10, historical_source_snapshots=()):
+    started = time.monotonic()
+    output = Path(output)
+    output.mkdir(exist_ok=False)
+    frozen = json.loads((HERE/'preregistration.json').read_bytes())
+    for key in ('original_numerical_reference','actual_bare_history','complete_full31_force'):
+        authenticate(frozen[key])
+    c,manifest,coeff = load_material()
+    original = json.loads(authenticate(frozen['original_numerical_reference']).read_bytes())
+    source = CompactCubic.from_source(SOURCE)
+    original_reader = binding(HERE.parent/'0063/saved_mean.py')
+    reader_snapshot = output/'saved_mean_producer.py.snapshot'
+    reader_snapshot.write_bytes((HERE.parent/'0063/saved_mean.py').read_bytes())
+    snapshot = binding(reader_snapshot)
+    with SavedMean(authenticate(frozen['actual_bare_history'])) as bare:
+        if (not bare.is_bare or bare.reference_identity != frozen['original_numerical_reference'] or
+                not np.array_equal(bare.rho0,c.rho0) or not np.array_equal(bare.w0,c.mechanical.w0[0]) or
+                int(bare.archive['n']) != c.n or (c.n,c.nq,c.ns,c.m,c.d,c.f) != (64,64,128,12,111,3)):
+            raise ValueError('original preparation/material/reference differs')
+    with FullWindowForceCache(authenticate(frozen['complete_full31_force']),coeff,
+            historical_source_snapshots=historical_source_snapshots) as cache:
+        actual = cache.forcing_for(authenticate(frozen['actual_bare_history']),source)
+        times = np.asarray(actual['times']).copy()
+        rho = actual['rho']; w = actual['ordered_gamma_covariance']; force = actual['cubic_covariance_force']
+        if (not np.array_equal(times,np.arange(31,dtype=float)) or
+                not np.array_equal(rho[0],c.rho0) or
+                not np.array_equal(w[0],c.mechanical.w0[0][np.ix_(POSITIONS,POSITIONS)]) or
+                original['coefficient_manifest'] != coeff or actual['nonGamma_contractions'] != 0):
+            raise ValueError('actual all31 force input/time/source preparation differs')
+        model = CommonMeanFunctional(c,source,phi=cache.phi000)
+        gradients = np.asarray([model.electronic_gradient(r) for r in rho])
+        print('A78_ACTUAL_INTEGRATION_BEGIN',flush=True)
+        mean,u,s,work = integrate(model,times,rho,gradients,force,rtol=rtol,atol=atol)
+        archive = output/'fullhistory-mean.npz'
+        np.savez(archive,times=times,mean_gamma=mean,U=u,S_gamma=s,rho0=c.rho0,
+            W0_gamma=c.mechanical.w0[0],n=np.asarray(c.n,dtype=np.int64),
+            node_rho=rho,node_ordered_gamma_covariance=w,node_cubic_covariance_force=force,
+            node_electronic_gradient=gradients)
+        j = c.mechanical.j[0]
+        defects = dict(initial_mean_max=float(np.max(np.abs(mean[0]))),
+            initial_U_max=float(np.max(np.abs(u[0]-np.eye(12)))),
+            initial_S_max=float(np.max(np.abs(s[0]-np.eye(228)))),
+            initial_rho_max=float(np.max(np.abs(rho[0]-c.rho0))),
+            initial_ordered_covariance_max=float(np.max(np.abs(w[0]-c.mechanical.w0[0][np.ix_(POSITIONS,POSITIONS)]))),
+            U_unitarity=[float(np.linalg.norm(v@v.conj().swapaxes(-1,-2)-np.eye(12))) for v in u],
+            Gamma_S_symplectic=[float(np.linalg.norm(v@j@v.T-j)) for v in s],
+            Gamma_hessian_transpose=[float(np.linalg.norm(model.curvature(x)-model.curvature(x).T)) for x in mean],
+            raw_rho_hermiticity=[float(np.linalg.norm(r-r.conj().swapaxes(-1,-2))) for r in rho],
+            raw_rho_particle_trace=[float(np.trace(r,axis1=-2,axis2=-1).real.sum()) for r in rho],
+            mean_norm=[float(np.linalg.norm(x)) for x in mean],
+            covariance_force_norm=[float(np.linalg.norm(f)) for f in force])
+        paths = [HERE/n for n in ('produce_fullhistory_mean.py','native_mean.py','launch_mean.py')]
+        paths += [HERE.parent/d/n for d,n in (('0057','mean_feedback_functional.py'),
+            ('0057','produce_mean_feedback.py'),('0029','reduced_electronic_dynamics.py'),
+            ('0047','cubic_feedback.py'),('0074','fullwindow_force_cache.py'),
+            ('0063','history_storage.py'),('0041','material_electron_ion_inputs.py'))]
+        spec = dict(schema=SCHEMA,status='complete',reference_source_kind=REFERENCE,
+            input_identity=dict(actual_dataset=actual['input_dataset'],numerical_reference=frozen['original_numerical_reference']),
+            archive=binding(archive),coefficient_manifest=coeff,
+            force_cache=frozen['complete_full31_force'],compact_source=source.source_binding,
+            compact_source_arrays=source.source_record['arrays'],
+            physical_history_bindings=[*original['physical_history_bindings'],frozen['actual_bare_history'],
+                frozen['complete_full31_force'],source.source_binding,source.source_record['arrays']],
+            source_bindings=[binding(p) for p in paths],
+            producer_reader=dict(original=original_reader,preserved=snapshot,
+                interpretation='Original cache-bound reader used during production; future reader cutover is separately bound by saved-consumer evidence.'),
+            times_inverse_ry=times.tolist(),method=dict(solver='DOP853',rtol=rtol,atol=atol,segments=work),
+            force_work=dict(nonGamma_contractions=actual['nonGamma_contractions'],Gamma_contractions=actual['Gamma_contractions'],
+                completed_cache_internal_q=list(range(64)),Phi000='Original authenticated stored cache tensor; no recontraction'),
+            initial_preparation='Literal original rho0/W0/n and original initial_baseline mean; U0=S0=I',
+            defects=defects,elapsed_seconds=time.monotonic()-started,
+            approximation='Existing first-order interpolation of actual forcing nodes only (rho, electronic gradient, all64 contracted covariance force). No interpolation of U/S or physical kernels. Forcing-time error unresolved; not temporal accuracy.',
+            functional='Existing CommonMeanFunctional/electronic_gradient/integrate with original CompactCubic/Phi000, all128/12/fullphase228 and original contacts/passive complement.',
+            limits=['One common mean/U/S[G0] update on genuine all31 nodes0..30; no collision kernel, full state or fixed point.',
+                'No fullmesh, physical calibration, rate, conservation, temporal accuracy or closed all-q feedback claim.',
+                'Raw defects retained; no clipping, refill, mode reduction or invariant repair.',
+                'Historical MeanFeedbackReference rejects this distinct schema and requires a baseline catalog; no catalog is invented. SavedMean is the supported all128/fullGamma consumer.'])
+        atomic_json(output/'result.json',spec)
+    return dict(result=binding(output/'result.json'),archive=binding(archive),findings=defects,
+        elapsed_seconds=time.monotonic()-started)

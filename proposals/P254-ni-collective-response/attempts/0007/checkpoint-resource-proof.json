@@ -1,0 +1,21 @@
+{
+  "unit": "c5-fermi-oracle-checkpoint.service",
+  "herdr_tab": "w1:tD",
+  "herdr_pane": "w1:pD",
+  "herdr_label": "c5-fermi-oracle",
+  "actual_python_pid": 3993532,
+  "observed_active_state": "active",
+  "observed_sub_state": "running",
+  "systemd_CPuAffinity": "5",
+  "proc_Cpus_allowed_list": "5",
+  "proc_threads": 1,
+  "proc_VmHWM_kib": 146432,
+  "proc_VmRSS_kib": 146432,
+  "systemd_MemoryMax_bytes": 2147483648,
+  "actual_cgroup_memory_max_bytes": 2147483648,
+  "systemd_CPUUsageNSec_at_observation": 3101851000,
+  "systemd_invocation_id": "362e4adddcb14a0ebe8d437a0912ca63",
+  "checkpoint_sha256": "b18cc545e089d8e89b07e4812e07aa95a947f36a4cb9ef59ec33c37d708468d2",
+  "actual_view_evidence": "herdr pane read w1:pD --source recent-unwrapped --lines 60 showed ACTUAL_ORACLE_PID 3993532 AFFINITY [5], all state checks and WAITING_FOR_ACTUAL_SIGTERM; full captured output artifact://2279",
+  "method": "Fresh systemctl --user show plus /proc/3993532/status and actual cgroup memory.max while process awaited actual SIGTERM; not inferred from shell taskset command. Full initial proc status/environment retained in invocation start receipt."
+}

@@ -1,0 +1,181 @@
+{
+  "schema": "P254-0026-material-dyad-implementation-handoff-v1",
+  "status": "complete_source_implementation_and_new_oracle; not_executed",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "registration": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/implementation-registration.json",
+    "bytes": "11647",
+    "sha256": "dc2289436be7f46d96922986ed4da4c205851a9b136b119efa1eda9785213a39"
+  },
+  "ownership": [
+    "src/substrate_framework/qe_material_dyads.py",
+    "src/substrate_framework/qe_material_gradient.py",
+    "proposals/P254-ni-collective-response/attempts/0026/run_material_dyad_oracle.py"
+  ],
+  "owned_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_dyads.py",
+      "bytes": "7324",
+      "sha256": "78c046fc67cd67ee764b1b20765647f9fa2cc2bb7ab779b4c9199a091947731b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_gradient.py",
+      "bytes": "3619",
+      "sha256": "b082ab4a142f5c7609d6c9310d787b5f21c9e9ea4b54baeec1cc3cd8df0f1675"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/run_material_dyad_oracle.py",
+      "bytes": "23591",
+      "sha256": "88a9ef18fc7af3628dbf2777bae7f57a752afbffe55676a9eda7325f37ba8f72"
+    }
+  ],
+  "prerequisites_and_existing_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_grid.py",
+      "bytes": "4145",
+      "sha256": "278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_hamiltonian.py",
+      "bytes": "6026",
+      "sha256": "6ce66f5a39ae44684a6c584d323cbbf478e6818096aed7b74d1e7af09774e698"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_ionic_action.py",
+      "bytes": "5807",
+      "sha256": "91e7c4f5f65a7ae5ead21e8ceff6ab9bbaf873c0ddead9285117f7fc2f54157c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_projectors.py",
+      "bytes": "4485",
+      "sha256": "3988f1a0171a56e0f7f40f26687f6b154ed7723784a2f1aa1bba2991fdc02ee3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_radial.py",
+      "bytes": "6143",
+      "sha256": "1b936324c14ab200faca5ba69652d4c12ef4b86e1ecfe077612aad7fe3bcebbc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_upf.py",
+      "bytes": "5854",
+      "sha256": "0a823f58587416b75e1a1a97d727da2a768dc717c5ce228e44528d274673788c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/implementation-registration.json",
+      "bytes": "11647",
+      "sha256": "dc2289436be7f46d96922986ed4da4c205851a9b136b119efa1eda9785213a39"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/reference-preparation-grounding.json",
+      "bytes": "65758",
+      "sha256": "3835295333716f2a5ec63f35ebde4599f561f3fb3e706ca362f70ead28536b7b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/action-dynamics-grounding.json",
+      "bytes": "75085",
+      "sha256": "681f2853b82d57132f1367bfc4e46f342c69493cb1dfe5fa5d52e7361c7c5d11"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/additional-source-access-001.json",
+      "bytes": "4336",
+      "sha256": "652fe4e9021efca7feaba1eeccd700272c818b8150c56ad76c9ed2a5085538fb"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/src/force_lc.f90",
+      "bytes": "4421",
+      "sha256": "16ed6a23a1ffece2d09b92310050176be5938d278541fd3d1bbd9e8d60e09f9c"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/src/force_us.f90",
+      "bytes": "7315",
+      "sha256": "8dafb1e9e6ffc0cffbaa5f9881c57f1d254710a1251e79f7a88b6a49cff810fd"
+    }
+  ],
+  "api": {
+    "GammaDyadCoupling(factors: PWFactors, ionic: GammaIonicAction, block_size=8)": "Constructs the registered unweighted Gamma channel. Integer block_size must be 1..16. Checks original physical grid, PW ordering/momenta, zero k/q, species and one-based atom maps, radial-table volume, D, and exact placed-projector identity at every atom. Input arrays remain borrowed and must not be mutated afterward.",
+    "attributes": [
+      "npw",
+      "nr",
+      "ndof",
+      "cell_volume_bohr3",
+      "grid_measure_bohr3"
+    ],
+    "moments(left, right, coefficient=None)": "Finite two-dimensional arrays (npw,nleft), (npw,nright). Optional finite C(nleft,nright). Returns complex density(nr) in bohr^-3 and positive atom-major gradient(ndof) in Ry/bohr for X=L C R\u2020. None is exact identity only for equal column counts; no identity allocation. Zero-column inputs represent the zero dyad.",
+    "potential_action(field, vectors)": "Finite field(nr) and vectors(npw,nvector), both possibly complex; returns complex full-PW shape-preserving local-potential action, streamed in block_size columns. Field is in Ry. Zero columns supported.",
+    "ionic_action(direction, vectors)": "Finite complex direction(ndof), atom-major, and vectors(npw,nvector); returns positive g(direction) vectors. Uses existing GammaIonicAction.prepare and 1..16-column apply API. Direction is linear, never conjugated. Zero columns supported.",
+    "GammaGradientReduction(factors, ionic)": "Internal reduction for identity-validated inputs; local(density) and nonlocal_block(left,right) return positive complex atom-major gradients. Not a separate physical state or force convention.",
+    "h0": "Unchanged existing MaterialHamiltonian.apply; no new H0 API or dense PW Hamiltonian."
+  },
+  "construction": [
+    "moments absorbs rectangular C into blocks on the smaller factor leg. Both original PW legs remain complete. The None path uses paired slices without an allocated identity.",
+    "PhysicalRhoFFT.from_g reconstructs the existing unnormalized Fourier amplitudes. Density is sum(left_wave*conj(right_wave))/Omega. Local-potential action reuses fft.to_g(field*fft.from_g(block)) with no alternate normalization.",
+    "Each moments call accumulates density once across factor blocks. One inverse FFT then supplies all local coordinates through Omega*n(-G)*[-i G_alpha exp(-iG.tau) v_species(G)]. It is the bilinear Fourier transpose, with no density conjugation.",
+    "Each species/block shares B\u2020L and B\u2020R over all three axes. Axis derivative overlaps B\u2020(p_alpha L/R) are computed once each and reused across atoms. The two NC sides are i*(B\u2020R)\u2020 D B\u2020(pL) and -i*(B\u2020(pR))\u2020 D B\u2020L. Neither side is replaced by a real-part/factor-two identity.",
+    "D stays species-local. No global projector-space block diagonal, PW-square operator/density, 111 directional full actions per RHS, spin multiplier, symmetry processing or real-part projection is introduced.",
+    "Constructor checks placed-projector geometry one atom at a time, sharing existing centered projector cache without retaining duplicate placed projectors. Existing GammaIonicAction directional cache behavior is retained by ionic_action."
+  ],
+  "oracle": {
+    "driver": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/run_material_dyad_oracle.py",
+    "proposed_invocation_from_repository_root": "PYTHONPATH=src /home/administrator/projects/substrate-framework/.venv/bin/python proposals/P254-ni-collective-response/attempts/0026/run_material_dyad_oracle.py --result proposals/P254-ni-collective-response/attempts/0026/material-dyad-oracle-001.json",
+    "requires": [
+      "NumPy",
+      "SciPy (existing production BLAS/projector dependencies)",
+      "SymPy"
+    ],
+    "result_contract": "Exclusive-create JSON --result PATH; passed/checks/failures, actual and expected complex arrays, measured residuals, per-check allowances, exception traceback, runtime versions and raw current source bindings. Failed comparisons, unexposed mutations or caught oracle exceptions produce nonzero exit. No result exists from this worker.",
+    "independence": "Synthetic three-atom nine-coordinate, eight-PW finite original basis; noncubic FFT grid and nonorthogonal reciprocal cell. Literal exponential Fourier sums, independently specified analytic s/s/p and s reciprocal coefficients and D, explicit placed-projector channel sums. SymPy differentiates the original position exponential and the derivative is applied to each original Hamiltonian matrix element. No production FFT or directional action defines the expected values.",
+    "order": "Differentiated phase and both-side identity; isolated local and nonlocal gradient reductions; arbitrary-width potential/ionic actions and every coordinate; density/gradient moment primitives; composed trace/adjoint pairings and complement readouts.",
+    "positive_cases": [
+      "Rectangular 3x5 and 5x3 coefficient maps",
+      "Complex non-Hermitian and identity dyads",
+      "Nonorthogonal raw frames",
+      "19-column streaming",
+      "All nine independent finite-fixture coordinates with interleaved species/atom order",
+      "Physical volume and integrated trace",
+      "Actual bilinear transpose versus conjugate-adjoint trace pairings",
+      "Complex direction/field/coefficient linearity and explicit dyad adjoint",
+      "Retained-frame source with nonzero output in the empty full-PW complement and complement-cross dyad moments",
+      "Block partition invariance and zero columns",
+      "Rejected implicit rectangular identity, wrong coefficient shape, PW truncation, non-Gamma input, volume mismatch and displaced geometry"
+    ],
+    "mutations": [
+      "Missing either NC derivative side",
+      "Native real-part projection",
+      "Native factor two",
+      "Force-sign flip",
+      "Missing physical volume",
+      "Wrong unitary FFT density normalization",
+      "Coefficient conjugation",
+      "Direction conjugation",
+      "Omitted z coordinates",
+      "Saved-span output projection",
+      "Dropped complement-cross dyad",
+      "Conjugate adjoint substituted for bilinear transpose"
+    ],
+    "allowances": {
+      "rtol": 1e-10,
+      "atol": 1e-12,
+      "meaning": "Registered new well-conditioned finite comparison allowances, not material precision gates."
+    },
+    "execution_owner": "Root; no scientific import or numerical execution by this worker"
+  },
+  "findings_and_limits": [
+    "Complete executable maps and oracle source are delivered, not a callback scaffold. Mathematical/numerical agreement is not claimed before Root runs the newly authored oracle.",
+    "The reduction is generic over all original atoms; actual Ni31H6 inputs produce 111 entries. The independent small oracle deliberately uses three atoms/nine coordinates. The separate registered actual-material 37-atom map smoke remains Root-owned and has not been executed here.",
+    "No full-PW complement is projected away; selected probe directions do not define a two-ion dynamical truncation.",
+    "The constructor relies on existing ordinary-NC/no-NLCC source parsing and table semantics, and adds identity checks rather than independently revalidating pseudopotential physics. Non-Gamma, PAW/USPP, NLCC, SOC/noncollinear and alternate electrostatics are outside scope.",
+    "Projector placement identity uses exact equality for the existing deterministic construction from identical source arrays. It deliberately rejects numerically altered/gauge-transformed projectors; no repair or tolerance gate is introduced.",
+    "Transient density/overlap work is block-bounded; inputs/outputs, existing species projectors and existing ionic action caches remain material-sized. No measured RSS, wall-time, finite-time integrator, material state or performance guarantee is claimed.",
+    "No spin or sector weighting, material D, temperature, baseline force, ionic widths, external holding mechanism, full PBE recalibration, propagation, full BvK or coherence-domain claim is supplied by these operator maps.",
+    "Synthetic reciprocal-table metadata in the oracle is explicitly not a material UPF or a new radial quadrature proof. Existing accepted source-physics results remain carried without re-audit or replay."
+  ],
+  "unresolved_blockers": [],
+  "operations": {
+    "existing_sources_modified": false,
+    "scientific_imports_or_numerical_runs": false,
+    "tests_builds_linters_formatters": false,
+    "git_process_native_provider_actions": false,
+    "metadata_only": "Original-byte SHA256/counts computed with pathlib/hashlib; no scientific modules imported.",
+    "documentation": "API/units/scope and reduction equations documented in new module docstrings and this immutable handoff; no existing documentation file modified."
+  }
+}

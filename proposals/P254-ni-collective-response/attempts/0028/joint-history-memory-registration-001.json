@@ -1,0 +1,101 @@
+{
+  "schema": "P254-actual-history-memory-registration-v1",
+  "registered_at": "2026-10-29T14:58:20.492509+00:00",
+  "decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-052.json",
+    "bytes": "2194",
+    "sha256": "d6390461cb73fed4e1be704011995db8b9454eddf4998d534dba7b22c53d1e92"
+  },
+  "actual_history": {
+    "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+    "bytes": "155903",
+    "sha256": "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd"
+  },
+  "prior_failed_plan": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-loaded-q-plan-failure-001.json",
+    "bytes": "1201",
+    "sha256": "21b4afa53de52a2b6f378f35c8a45575a09fb55c2aed6c16ad70f9960a2a544f"
+  },
+  "script": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_history_memory_check.py",
+    "bytes": "11137",
+    "sha256": "6bd807eff33c25201b038a7c21497541dc8e94ff765b616cb43160014feb2887"
+  },
+  "implementation": {
+    "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_joint_response.py",
+    "bytes": "18530",
+    "sha256": "a749321ad762b5d17d31055cf3ec1a9a3bc906dda1c0449cd1641182cacc504a"
+  },
+  "native_reader": {
+    "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_saved_native.py",
+    "bytes": "6675",
+    "sha256": "1403e2d393e9ef7c0ba975091d2dff5f64546af8e002dc9a0100adee10a9d4c3"
+  },
+  "prior_implementation": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-history/material_joint_response.pre-basis-detach-001.py",
+    "bytes": "18161",
+    "sha256": "359a7179434bbfe7c515b812a37210ecfe18c9f8e4bd1fa595fc0bda903e1479"
+  },
+  "retained_numerical_proof": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-field-readout-oracle-002.json",
+    "bytes": "113569",
+    "sha256": "59c592270f76053fc31e07cb7213b91605b4bae58cb65feaae99f5187b3b548d"
+  },
+  "command": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-joint-history-memory-check-001",
+    "--property=Type=oneshot",
+    "--property=RemainAfterExit=yes",
+    "--property=CPUAffinity=9",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=480s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_history_memory_check.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-history-memory-check-001",
+    "--case",
+    "loaded-ni31h6",
+    "--initialization",
+    "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+    "--initialization-sha256",
+    "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713",
+    "--history",
+    "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+    "--history-sha256",
+    "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd",
+    "--retained-oracle",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-field-readout-oracle-002.json",
+    "--retained-oracle-sha256",
+    "59c592270f76053fc31e07cb7213b91605b4bae58cb65feaae99f5187b3b548d",
+    "--prior-history-source",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-history/material_joint_response.pre-basis-detach-001.py",
+    "--prior-history-source-sha256",
+    "359a7179434bbfe7c515b812a37210ecfe18c9f8e4bd1fa595fc0bda903e1479",
+    "--time",
+    ".001",
+    "--second-time",
+    ".0005",
+    "--subdivisions",
+    "1",
+    "--workers",
+    "5",
+    "--cpu",
+    "9",
+    "--max-seconds",
+    "480",
+    "--max-memory-bytes",
+    "4294967296"
+  ],
+  "checks": "Exact AST identity outside the one detachment wrapper; actual basis values/authorities/readonly semantics; reject no-copy and either omitted metadata copy; complete genuine128-sector history and all three existing resource plans with0 H0 actions. No numerical suite replay.",
+  "scope": "Software memory-ownership repair, no model/physics/source-data change. Same4GiB cap as failed material planner."
+}

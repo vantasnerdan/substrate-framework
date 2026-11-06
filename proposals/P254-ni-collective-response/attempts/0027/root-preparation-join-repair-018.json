@@ -1,0 +1,132 @@
+{
+  "schema": "p254-root-allocation-v1",
+  "decision": "018",
+  "created_at": "2026-10-28T15:55:10.721980+00:00",
+  "prior_due_at": "2026-10-28T16:00:00+00:00",
+  "timely": true,
+  "failure_authority": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/root-preparation-join-stop-017.json",
+    "bytes": "10349",
+    "sha256": "a1a8d59e7e7c221815151e06be724533e232c753981351a42c7b469f325812e1"
+  },
+  "actual_cause": "Legacy A24 and Native source Miller manifests both match exactly as int32. Canonical identity-transport target rows are int64 because describe_slot applies its declared int64 rotation/shift. gamma_metadata incorrectly compares the source and transported dtype-sensitive byte manifests directly, despite equal integer coordinates/order. Cell and XML-reference reciprocal manifests already match exactly.",
+  "source_evidence": {
+    "legacy_miller": {
+      "dtype": "<i4",
+      "sha256_C_bytes": "f0a33d624c276406a0dd5629b5050deb6e248aa8e48af65f1ab7c96a2294ba68",
+      "shape": [
+        3,
+        18613
+      ]
+    },
+    "native_miller": {
+      "dtype": "<i4",
+      "sha256_C_bytes": "f0a33d624c276406a0dd5629b5050deb6e248aa8e48af65f1ab7c96a2294ba68",
+      "shape": [
+        3,
+        18613
+      ]
+    },
+    "actual_slot": {
+      "basis_identity": "6f56a3134b7aa207780b7c2941c2a891f3a115fe18093143749cb632cdc7764e",
+      "gamma_basis_join_identity": "6536952729090cfd7dac5209d3034d5a407ee36b4c1445a5c74f4f3b37b23cce",
+      "gauge_identity": "6f56a3134b7aa207780b7c2941c2a891f3a115fe18093143749cb632cdc7764e:raw-saved-columns",
+      "ispin": 1,
+      "mesh_index": [
+        0,
+        0,
+        0
+      ],
+      "mesh_slot": 0,
+      "n_bands": 346,
+      "n_pw": 18613,
+      "operation_index": 1,
+      "original_representative": true,
+      "raw_band_order": "original-all-saved-columns",
+      "reciprocal_shift": [
+        0,
+        0,
+        0
+      ],
+      "row_map_record": {
+        "dtype": "<i8",
+        "sha256_C_bytes": "08421cced74feb6fea9b84fd108e9fd660795971eefec9b63fdb6b40143542a1",
+        "shape": [
+          18613
+        ]
+      },
+      "row_order": "inherited-source-order",
+      "source_binding": {
+        "bytes": "103267856",
+        "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/wfcup1.dat",
+        "sha256": "b6475c066b585bb005798a495d1aba19adc6654beca70d91d7a03a71a70d43bd"
+      },
+      "source_coefficients_record": {
+        "dtype": "<c16",
+        "sha256_C_bytes": "8266925b6b5c44fa14880f08e32153c2373982eb67eaca7c043f11680b229c8c",
+        "shape": [
+          18613,
+          346
+        ]
+      },
+      "source_frame_identity": "b6475c066b585bb005798a495d1aba19adc6654beca70d91d7a03a71a70d43bd",
+      "source_ik": 1,
+      "source_k_bohr_inv": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source_miller_record": {
+        "dtype": "<i4",
+        "sha256_C_bytes": "f0a33d624c276406a0dd5629b5050deb6e248aa8e48af65f1ab7c96a2294ba68",
+        "shape": [
+          3,
+          18613
+        ]
+      },
+      "target_k_bohr_inv": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_miller_record": {
+        "dtype": "<i8",
+        "sha256_C_bytes": "4d95eaf678d8622d3419e4fd70a8ee8888dafa5937517c241f37e2855182a259",
+        "shape": [
+          3,
+          18613
+        ]
+      }
+    },
+    "old_gamma_source": {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_preparation_gamma.py",
+      "bytes": "8335",
+      "sha256": "a2f90e9a3057e80a1f19c82e06287d78679f994252c2d7e1c31d8d287790658f"
+    },
+    "canonical_descriptor_source": {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_bloch_records.py",
+      "bytes": "9098",
+      "sha256": "8bdb39ad078c23d8d411dc25b69df6f1c2906723976fa5c5fff1e3125713eca7"
+    }
+  },
+  "repair_scope": "Only the Gamma join consumer: retain exact Native source record, construct the lossless canonical signed-int64 record from the already-authenticated original integer32 coordinates for the identity transport, compare it exactly to the target record, and retain both distinct typed identities. No tolerance change, row permutation, band reduction, source mutation, producer rerun or new state choice.",
+  "oracle_preregistration": {
+    "scope": "One new actual-data Gamma join regression using the original source/coordinate/factor receipts and actual saved Gamma descriptor, not a new material state. No full-grid source revalidation or model producer replay.",
+    "positive": "Actual original integer32 source and canonical int64 target join through the actual gamma_metadata function.",
+    "negative_cases": [
+      "native-int32 record incorrectly used as target",
+      "changed target integer coordinate",
+      "permuted target row order"
+    ],
+    "hard_seconds": 5,
+    "finite_input_prior_seconds": 27.758089535403997,
+    "finite_input_whole_cap_seconds": 120
+  },
+  "recovery_choice": "Do not invent a source-migration checkpoint shim. Existing direct resume binds the whole immutable source recipe; this necessary Gamma source change invalidates direct reuse of the earlier ledger through that API. Preserve the old completed ledger and its original source bank. A fresh reduced-grant attempt may repeat authenticated coverage intake and cheap neutral filling; all prior21.956917045637965s remain charged.",
+  "future_production_ceiling_seconds": 58,
+  "separate_reader_reserve_seconds": 30,
+  "current_context_seconds": 3.4665546091273427,
+  "production_authority": false,
+  "requires_next": "Patched source and sensitive join oracle, complete fresh source/dependency bindings and exact separate reduced production grant before any retry.",
+  "next_root_decision_due_at": "2026-10-28T16:15:00+00:00"
+}

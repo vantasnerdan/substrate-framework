@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "kind": "completed-native-evidence-archive-restore-correction",
+  "issue": "https://github.com/giuliano-vantasner/catalyst-dft/issues/23",
+  "parent_campaign": "P254-ni-collective-response",
+  "status": "prospective-before-production-edits",
+  "objective": "Preserve a concurrently replaced restore destination while retaining complete source-bound archive validation, exclusive publication and exact raw-byte replay.",
+  "settled_inputs_confirmed_in_hand": [
+    {"path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/verification/reviews/evidence-archive-003-runtime.json", "sha256": "34eec0c98b3809f15a533657b59047e8c0c4a82c60b7344ed1e126798a8e6553", "bytes": 13269, "verdict": "incorrect", "complete_findings": 1},
+    {"path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/verification/reviews/evidence-archive-003-integrity.json", "sha256": "c8d0c834259b12a6eee7a27c16786a7cdb58acb0f44f423edebec62370210a1e", "bytes": 16004, "verdict": "incorrect", "complete_findings": 1},
+    {"path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/verification/reviews/evidence-archive-003-integrity-yield-original-without-findings.json", "sha256": "22ea6527d3ac9471e984f854dd2d8a47d8fcebbb7b0c1173dee310bd8c3db74b", "bytes": 13443, "scope": "Original incomplete final yield retained separately; full submitted finding recovered without a new review."},
+    {"path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/verification/initial-failures/archive-restore-003-replacement-file-preservation-check/result.json", "sha256": "cdd03936c1d416a42f0d0cea00abb5c3b857bbbffbbf4732685a4b4c5b7b0d9d", "bytes": 16361, "observed_wall_seconds": 3.07, "complete_real_data_cases": 2, "all_changed_destinations_rejected": true, "all_replacements_preserved": false, "originals_unchanged": true},
+    {"path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/verification/evidence-archive-qualification-003-source-capsule.json", "sha256": "f344632b0a4676cb0c16cdaf519d381bc64c197c29b21c2b5223d683348bf731", "bytes": 22887},
+    {"path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/verification/evidence-archive-qualification-003/manifest.json", "sha256": "5e489b20748637a3f77e4649b41299f96ac90c17b64c17caa68486f61c737db4", "bytes": 2812},
+    {"path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/verification/evidence-archive-bound-launcher-003.py", "sha256": "42e6b3eca6f5862e76501fbccf516fd8ca869a4ca8095062de127c9092d7c425", "bytes": 1311}
+  ],
+  "originals": {
+    "raw_event_sha256": "37cb62e6272c7c92da30d973d3fdd94d111ffc95b5f1306fd58f88d254f79cee",
+    "raw_event_bytes": 64448946,
+    "gzip_sha256": "da26fe48d40c9034554b31013c1725f3667328a676d66ebb7fb2c2618ece2626",
+    "gzip_bytes": 1209515,
+    "generic_completed_force_consumer_sha256": "25a3d4c9a036d9bc36c6976a11a9273ed467a04a24b7e795cc1f21742b20c88f",
+    "existing_event_reader_sha256": "44ae012e3c6120bb22b61ef127cd7e3a72b01873f415aefe92d3e5c059841355",
+    "policy": "All previous source capsules, original failures/reviews/proofs, original report/raw prefixes, completed Native/science/cache occurrences and historical identifiers remain unchanged. Current code never upgrades rejected001/002/003."
+  },
+  "module_layout": {
+    "files.py": "Existing captured-buffer, held-FD and anchored-directory primitives; unchanged unless an actual correction requires it.",
+    "restore.py": "Complete streaming replay and exclusive restore publication; own the correction here.",
+    "bundle.py": "Existing complete input validation and pack/verify orchestration; unchanged public API.",
+    "cli.py": "Existing pack/verify dispatch using actual verified named source buffers; unchanged public arguments."
+  },
+  "implementation_decisions": [
+    "Use a Linux anonymous O_TMPFILE opened relative to the already anchored destination parent, instead of a mutable staging filename. Unsupported host/filesystem behavior fails before publication; no permissive fallback or permission changes.",
+    "Flush/fsync and hash/count the held staging FD against the expected decoded raw authority after all source/member/manifest/directory input contexts have completed successfully.",
+    "Publish that exact held inode through Linux /proc/self/fd with os.link, dst_dir_fd and follow_symlinks=True. This is exclusive and cannot substitute a mutable staging pathname or overwrite an existing destination.",
+    "The successful exclusive hardlink is the publication point. Never unlink a published destination during later failure cleanup: another writer can replace it or modify its contents, and a stat-then-unlink guard cannot atomically establish continued pathname ownership.",
+    "Continue checking the actual named destination's expected full SHA/size and held-FD occurrence, parent identity and durability before returning successful verification. Any mismatch still raises and is not admitted.",
+    "All failures before publication leave no new destination, including all original archive/source refusals; a corrected archive may retry the same still-absent target. On an externally changed post-publication destination, verification rejects but retains the current destination untouched rather than deleting another writer's data. This distinction is explicit in documentation and current controls, not presented as universal no-output-after-any-error.",
+    "Closing an unpublished anonymous staging FD removes only invocation-owned temporary storage. There is no staging pathname or public-target rollback to race with another writer. Remove obsolete named-staging/rollback fields, imports and incidental controls; migrate actual callers, retain historical003 producers unchanged."
+  ],
+  "execution_waves": [
+    {"wave": 1, "requires": "This prospective protocol pushed before production edits; both complete003 reviews and actual two-boundary result already settled.", "deliverable": "Complete four-module source capsule and actual named-buffer CLI full-data pack/independent restore; complete existing-reader equality; all original prepublication refusals; unchanged originals and actual final restore metadata; both replacement boundaries preserved; concurrent destination creation refused without modification; post-publication in-place updates rejected and preserved; capsule and executable-buffer substitutions refused before execution."},
+    {"wave": 2, "requires": "Entire repaired implementation, actual complete normal and sensitive proofs, original001/002/003 rejections and updated existing document claims settled.", "deliverable": "Two independent complete whole-subject read-only reviews, full original verdict/finding arrays preserved, all corrections and sensitive checks completed. Not an excerpt/diff-only review."},
+    {"wave": 3, "requires": "Both complete repaired reviews correct and a genuine completed Native0/JOB DONE/closed result selected from original evidence.", "deliverable": "Actual unchanged generic completed-force caller with full raw/report --target under external /home/administrator/.cache/dft/nc1-completed-native-evidence; bind copied report/full gzip/manifest inside the banked tree, independently restore/replay through the unchanged existing reader, and prove cumulative original cache/publication/attempt conservation. Never add another giant raw prefix to Git."}
+  ],
+  "scope_and_naming": "Plain component/version/operation/invariant labels for local correctness work; accurately describe real filesystem operations. Preserve immutable historical names and bytes. No new Native/science/cache execution is licensed by this metadata protocol.",
+  "acceptance_gates": {
+    "archive_engineering_accepted": false,
+    "native_fourth_or_later_caller_accepted": false,
+    "all_four_materials_stationary": false,
+    "joint_material_calibration": false,
+    "physical_loss_or_bath": false,
+    "inter_region_coupling": false,
+    "many_region_dynamics": false,
+    "matched_controls_and_size_convergence": false,
+    "nuclear_transition_energy_disposal_bridge": false,
+    "full_independent_scientific_review": false,
+    "distinct_canonical_merger": false,
+    "early_support_or_checkpoint_pr_allowed": false
+  },
+  "non_goals": ["No spending, new providers, LFS, history rewrite or original-data deletion.", "No scientific source/model/input/unit/grant/permission changes or Native restart.", "No inferred stationarity, calibration, loss, coherence, nuclear rate or campaign delivery."]
+}

@@ -1,0 +1,71 @@
+Implemented all five owned files. **No scientific imports, numerical execution, build, tests, lint, formatter, Native replay or git mutation performed.** Raw-byte hashing used standard-library buffers only.
+
+### Settled APIs
+
+- `PhysicalRhoFFT.create(physical, miller, reciprocal_bohr_inv, omega, q_bohr_inv=(0,0,0))`
+  - Physical Miller mapping, F-order fields, normalized forward FFT, amplitude-reconstructing inverse, gradients/divergence and pairing.
+- `load_material_inputs(xml_binding, density_binding, upf_bindings, *, qmax_bohr_inv=None)`
+- `reconstruct_reference(inputs, backend)`
+  - Returns separate total/magnetization and up/down density, `grho`, ionic/Hartree/local-XC/flux/full-XC/`vrs`, all five coefficient arrays, imaginary-roundoff diagnostics and input/backend/runtime-library bindings.
+  - `.apply_kernel(delta_n, *, q_bohr_inv=(0,0,0))`.
+- `build_pw_factors(inputs, wfc)`
+  - Cached F-order species projector packs; shared radial/angular work; small species D only. BLAS conjugate-transpose avoids copying the large projector pack per block.
+  - `.matches(wfc)` permits exact-order reuse across spins.
+- `MaterialHamiltonian(background, factors, ispin, block_size=8)`
+  - `.apply(vectors)`
+  - `.saved_eigenpair_diagnostics(wfc)` returns raw actions/residuals/Gram/projected H0, **without a convergence gate**.
+- `apply_spin_pbe_arrays(...)` contains shared kernel algebra. Existing public fixture signatures and fixture guards remain intact.
+
+Backend assumptions were confirmed directly with `InternalPBEBridge`; its unfinished source was not read. `backend.dependencies` is consumed as its confirmed tuple of bound runtime-library mappings.
+
+### New oracle
+
+`A25/run_reference_reconstruction_oracle.py`:
+- Decodes bound original0018 Gamma saved inputs using the settled readers.
+- Compares raw density, `grho`, `vrs`, all coefficient arrays and all three original complex K probes.
+- Exercises the preserved fixture caller in the same comparison.
+- Includes actual G0, spin, Ry/Ha, gradient and divergence convention mutations.
+- Includes independent literal Fourier/H0 and Native near-zero Coulomb-threshold witnesses.
+- Compares packed kinetic/projector/D ingredients and records both-spin saved eigenpair diagnostics.
+- Saves complete arrays/differences in NPZ and discrepancy reports in JSON.
+- Preloads consumers before capturing execution-source inventory.
+
+Optional repeated `--extra-manifest-binding PATH` accepts Root-bound original ±half manifests, reuses the single reconstruction, checks matching backgrounds and compares their native K probes. **No extra manifest or payload was consumed by me.**
+
+### Root commands
+
+From repository root, using `A25=proposals/P254-ni-collective-response/attempts/0025`:
+
+```sh
+python3 "$A25/build_internal_pbe.py" --describe
+```
+
+Save that description as Root-admitted `"$A25/build-inputs.json"`, then:
+
+```sh
+python3 "$A25/build_internal_pbe.py" --build \
+  --admission "$A25/build-inputs.json" --seconds 120
+
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=src \
+python3 "$A25/run_reference_reconstruction_oracle.py" \
+  --library-binding "$A25/build/internal-pbe/library-binding.json" \
+  --output "$A25/reference-reconstruction-oracle-001.json"
+```
+
+Append repeated `--extra-manifest-binding` arguments for Root’s resolved ±half bindings. Preserve the registered cumulative oracle allowance.
+
+### Final source bindings
+
+| File | Bytes | SHA256 |
+|---|---:|---|
+| `qe_material_grid.py` | 4145 | `278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896` |
+| `qe_material_reference.py` | 6647 | `bc80fd7c36884d5938462347acd2a38cde105158c69b249e6dedb9389fe5c09a` |
+| `qe_material_hamiltonian.py` | 6026 | `6ce66f5a39ae44684a6c584d323cbbf478e6818096aed7b74d1e7af09774e698` |
+| `spin_pbe_kernel.py` | 7389 | `f519cfbdd74d7ffeb3164ad68886c96a22102690292a328b38b796a732a84382` |
+| `run_reference_reconstruction_oracle.py` | 19408 | `ae162ad6036f99feae80146e03b137bad93460bb4363bc08c1693166f111a334` |
+
+First four paths are under `src/substrate_framework`; oracle is under A25.
+
+Provenance: registered source maps, settled saved/NC readers and original0018 immutable exports; original `gamma/owner.stdout` was inspected. Both requested skills were ultimately read at `/home/administrator/.omp/skills/.../SKILL.md` after unavailable `skill://` lookup.
+
+No Native unretained-complement action proof, material convergence, physical preparation, complete BvK coverage or full-model claim is made.

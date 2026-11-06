@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "findings": [
+    {
+      "block": "raw-Gaussian-phases",
+      "greater": "-I",
+      "lesser": "I",
+      "exchange_adds_one_minus": true,
+      "mutation_wrong_reverse_phase_exposed": true
+    },
+    {
+      "block": "direct-time-separated-bubble",
+      "identity": "Tr(Y Bt Bs Z As At)=sum_alpha,beta (At Y Bt)[alpha,beta](Bs Z As)[beta,alpha]",
+      "residual": "0",
+      "mutation_reverse_transpose_exposed": true
+    },
+    {
+      "block": "exchange-three-internal-mode-bilinear",
+      "identity": "L_iba c Fb_bd Fc_ce R_fa V_dfej = sum_beta,alpha,gamma LT_i,beta,alpha,gamma RS_beta,alpha,gamma,j",
+      "residual": "0",
+      "mutation_independent_right_orientation_exposed": true,
+      "modes": "all m^3, no SVD or occupation simplification"
+    },
+    {
+      "block": "owning-normalization",
+      "two_vertex_normalization": "1/N^2",
+      "mutation_double_spin_weight_exposed": true,
+      "source": "A46 weights[q]/c.n on each vertex; explicit spin slots retained"
+    }
+  ]
+}

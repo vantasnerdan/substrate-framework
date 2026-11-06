@@ -1,0 +1,52 @@
+{
+  "schema": "P254-email-filing-verification-v1",
+  "actual_utc": "2026-10-31T00:17:11.237916+00:00",
+  "source_uid": 377,
+  "destination_uid": 243,
+  "subject": "[dft-disk] /tmp",
+  "date": "2026-10-31T00:15:06Z",
+  "destination": "Notifications",
+  "source": "INBOX",
+  "sender": "giuliano@vantasner.io",
+  "actual_move_result": {
+    "text": "Email UID 377 moved from \"INBOX\" to \"Notifications\".",
+    "details": {
+      "xdev": {
+        "tool": "email_move",
+        "mode": "execute",
+        "args": {
+          "uid": 377,
+          "source": "INBOX",
+          "destination": "Notifications"
+        },
+        "tier": "exec",
+        "inner": {
+          "uid": 377,
+          "source": "INBOX",
+          "destination": "Notifications"
+        }
+      }
+    }
+  },
+  "actual_destination_fetch": {
+    "text": "Mailbox \"Notifications\" -- showing 3 of 243 messages:\n\n[unread] [UID:243] giuliano@vantasner.io -- \"[dft-disk] /tmp\" (10/31/2026, 12:15:06 AM)\n[unread] [UID:242] giuliano@vantasner.io -- \"[dft-disk] repo\" (10/31/2026, 12:10:05 AM)\n[unread] [UID:241] giuliano@vantasner.io -- \"[dft-disk] /tmp\" (10/30/2026, 11:43:59 PM)",
+    "details": {
+      "xdev": {
+        "tool": "email_fetch",
+        "mode": "execute",
+        "args": {
+          "mailbox": "Notifications",
+          "limit": 3,
+          "unseen": false
+        },
+        "tier": "exec",
+        "inner": {
+          "count": 3,
+          "total": 243,
+          "mailbox": "Notifications"
+        }
+      }
+    }
+  },
+  "verification": "FreshdestinationUID/sender/subject/datematch; noreplyorsend."
+}

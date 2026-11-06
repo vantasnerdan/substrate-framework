@@ -1,0 +1,47 @@
+{
+  "schema": "p254-a84-gamma-only-recovery-api-v1",
+  "entrypoint": "attempts/0084/finish_gamma.py",
+  "python_environment": "Use the original A84 Python executable and PYTHONPATH from A84 preregistration/worker; imports reuse original A61/A63 readers and readout.",
+  "root_owned_prerequisites": [
+    "Both implementation slices settled; Root builds new A85 solve_result target.",
+    "Root finite-sensitive old/new operator oracle actually passes; no oracle or native is run by implementation workers.",
+    "Root supplies actual oracle/reference/source/allocation/cost receipt paths, not inferred pass labels.",
+    "Original failed A84 service has MainPID=0; Root starts one CPU6, one-thread, 8GiB, swap0, Restart=no recovery worker with cumulative remaining-case cap."
+  ],
+  "fixed_arguments": {
+    "--output": "/var/tmp/p254-a84-intrinsic-full31-001",
+    "--timeout": 600,
+    "--max-input-bytes": 412545304,
+    "--max-result-bytes": 206272792,
+    "--max-bank-bytes": 399653248,
+    "--cpu": 6,
+    "--memory-bytes": 8589934592,
+    "--swap-bytes": 0,
+    "--threads": 1,
+    "--prior-paid-wall-seconds": 638.905548795592
+  },
+  "root_supplied_required_arguments": {
+    "--binary": "Actual absolute built A85 solve_result path; old binary hash is rejected.",
+    "--attempt-id": "Fresh recovery-NAME; creates original gamma/.staging/recovery-NAME exclusively.",
+    "--allocation-record": "Actual Root allocation/runtime/preregistration record file, bound in provenance.",
+    "--source-provenance": "Repeat for each new native source, build source/receipt, and other Root source provenance file.",
+    "--oracle-record": "Actual passed finite-sensitive oracle record file; consumer binds bytes without inventing its schema or rerunning physics.",
+    "--reference-provenance": "Root original-reference/equivalence provenance record file.",
+    "--additional-paid-wall-seconds": "Actual additional compilation/oracle/other case wall beyond original638.905548795592s; additive, never a reset.",
+    "--cost-provenance": "Repeat for actual additional cost receipt files."
+  },
+  "native_argv": ["binary", "original-authenticated-packed-input", "fresh-attempt-result.bin", "max-input-bytes"],
+  "native_input": "/var/tmp/p254-a84-intrinsic-full31-001/gamma/.staging/slot-000/input.bin",
+  "native_abi": "Exact existing P254VIE1 HEADER, times, packed sourceR/sourceL/kernelR/kernelL input and packed resultR/resultL output; existing ResultView performs finite/exchange checks and bank copy.",
+  "publication": "Exact A63 sequence after Gamma commit/finalize: actual provider.json status=complete denotes two complete banks; SavedHistory consumes that published path; readout.json and result.json follow only a successful consume. Failure may leave a valid complete-bank provider, never an invented successful result.",
+  "preserved": "Original input/invocation/failed Gamma staging and receipts, all completed electron bytes/receipts, original invocation, original physical sources, and every new native result/receipt remain in place. Electron bank is opened only through read-only existing readers.",
+  "failure": "Nonzero exception, retained new native receipts and unique execution failure/cost record, no deletion or automatic retry. Existing attempt paths cannot be reused for a Native run.",
+  "explicit_finalization": "--finalize-only with the same attempt-id/binary/consumer/oracle/reference never runs Native. It requires a committed Gamma slot authenticated to this attempt and permits completing a failed readout when no readout/result already exists. It reuses original execution source bindings and adds actual finalization allocation/cost evidence to the result.",
+  "accounting": "Success exposes total130 Native invocations (129 successful sectors and one original failed Gamma), reused128 electrons/newGamma1/failedGamma1. Cumulative owner wall is original638.905548795592 + Root-supplied additional actual wall + recovery owner wall; Native wall is separately exposed as an overlapping subset, never double-counted.",
+  "checks_for_root": [
+    "Syntax/import/CLI verification after both slices settle; workers performed no checks or Native runs.",
+    "Confirm original input/invocation/electron complete bindings and old failed staging remain unchanged.",
+    "Wrong input digest/header/times/extent, incomplete electron bank, wrong Gamma shape/order/beta/statistics, existing commit, reused attempt-id, wrong allocation, old binary and timeout>600 must fail before a Native invocation.",
+    "After the sole actual new Gamma run, verify successful native receipt, exact ResultView ABI, Gamma commit/complete receipt, actual SavedHistory readout128/114, final result counts and additive cost records."
+  ]
+}

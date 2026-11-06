@@ -1,0 +1,64 @@
+{
+  "decided_at": "2026-10-27T20:41:41.500573+00:00",
+  "prior_due": "2026-10-27T20:45:00+00:00",
+  "decision": "Admit actual0022 material component at reviewed scope. Reopen prospective0021 recovery operational repair for two cumulative-reservation defects; original scientific trajectory/review/IO evidence unaffected. No numerical producer launched.",
+  "reviews": {
+    "MaterialFrozenReview": {
+      "binding": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0022/material-frozen-review.original.json",
+        "bytes": "7054",
+        "sha256": "5c260d834528e7746bb211f764aa83969fdc66f2ff561d1dfb104ed7e09aa030"
+      },
+      "producer_sha256_verified": true,
+      "complete_findings": []
+    },
+    "ResumeRepairReview": {
+      "binding": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/resume-repair-review.original.json",
+        "bytes": "8277",
+        "sha256": "957797fa4ccc7068414c9c679a5edcc058733f80347e02c111bcad687121b460"
+      },
+      "producer_sha256_verified": true,
+      "complete_findings": [
+        {
+          "body": "[INFERENCE: static control-flow trace] With committed action 6 and a torn temporary reservation for 7, reserved_actions returns 7, but this caller only logs the audit. The next RHS attempts reservation 8 by truncating the same temporary file; if that publication is interrupted during the write, the committed counter remains 6 and the next recovery returns 7 again, losing one cumulative reservation. The audit does not prevent this because reserved_actions never reads telemetry. Commit the recovered count as the baseline, preserving its audit first, before permitting another RHS reservation. The smoke publishes the valid-temp recovery explicitly and never interrupts publication after a torn-temp recovery, so its passing checks do not cover this CLI sequence.",
+          "confidence": 0.99,
+          "evidence": [
+            "proposals/P254-ni-collective-response/attempts/0021/run_local_kick.py:130-154",
+            "proposals/P254-ni-collective-response/attempts/0021/time_pilot_resume.py:75-98",
+            "proposals/P254-ni-collective-response/attempts/0020/pilot_checkpoints.py:13-18",
+            "proposals/P254-ni-collective-response/attempts/0021/resume-edge-smoke-source-001.txt:44-55"
+          ],
+          "file_path": "proposals/P254-ni-collective-response/attempts/0021/run_local_kick.py",
+          "line_end": 133,
+          "line_start": 131,
+          "priority": 2,
+          "title": "Commit the recovered counter before reserving another RHS action"
+        },
+        {
+          "body": "[INFERENCE: static control-flow trace] When required=True and both committed counter copies are absent, a leftover malformed .tmp starts from count 0, is charged as 1, and sets found=True, so the missing-accounting refusal is bypassed. The CLI uses required=True for a nonzero-time checkpoint and would then continue with an unknown historical action total treated as 1, defeating the cumulative cap. Keep committed-counter presence separate from temporary-file presence and refuse a required missing committed baseline before interpreting an ambiguous temporary reservation. The current smoke tests missing accounting only when the temporary file is also absent.",
+          "confidence": 0.99,
+          "evidence": [
+            "proposals/P254-ni-collective-response/attempts/0021/time_pilot_resume.py:75-94",
+            "proposals/P254-ni-collective-response/attempts/0021/run_local_kick.py:130-154",
+            "proposals/P254-ni-collective-response/attempts/0021/resume-edge-smoke-source-001.txt:50-60",
+            "proposals/P254-ni-collective-response/attempts/0021/registration.json:55-60"
+          ],
+          "file_path": "proposals/P254-ni-collective-response/attempts/0021/time_pilot_resume.py",
+          "line_end": 93,
+          "line_start": 90,
+          "priority": 2,
+          "title": "Require a committed counter before accepting a torn temporary file"
+        }
+      ]
+    }
+  },
+  "repair_allocation": {
+    "useful_output": "Crash-safe admission of recovered reservation baseline plus refusal of required history when only a torn temporary file survives; real interruption sensitivity before/after.",
+    "hard_compute_seconds": 30,
+    "owner": "Root",
+    "next_decision_due": "2026-10-27T20:55:00+00:00",
+    "stop": "Any unresolved sequence after bounded repair -> prospective resume remains unavailable, original outputs preserved; no runtime budget reset."
+  },
+  "scientific_next": "Continue source-grounded quantum preparation and matched material-response design; no old scientific proof replay."
+}

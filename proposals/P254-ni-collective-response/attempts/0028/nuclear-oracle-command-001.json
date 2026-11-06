@@ -1,0 +1,23 @@
+{
+  "schema": "P254-component-command-result-v1",
+  "component": "nuclear",
+  "argv": [
+    "timeout",
+    "60s",
+    "taskset",
+    "-c",
+    "10",
+    "env",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/oracle_nuclear_ledger.py"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/oracle_nuclear_ledger.py\", line 198, in <module>\n    main()\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/oracle_nuclear_ledger.py\", line 164, in main\n    assert sp.limit(first/q, q, 0) == m2/(m1 + m2)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "completed_at": "2026-10-28T18:41:17.431172+00:00"
+}

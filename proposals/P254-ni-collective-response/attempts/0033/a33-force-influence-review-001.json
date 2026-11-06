@@ -1,0 +1,258 @@
+{
+  "schema": "P254-A33-force-influence-scientific-review-v1",
+  "verdict": "correct at the explicitly declared saved-data, source0/Gamma, two-mode frozen-literal-H finite-bath scope",
+  "overall_correctness": "correct",
+  "explanation": "No actionable patch-introduced defect was found in the force-influence implementation, its actual caller/publication route, or the reviewed SOLUTION claims. The raw general-similarity and independent-adjoint algebra is consistent with the inherited A31 comparator, while the published oracle establishes a narrower Hermitian force-influence case; the report distinguishes that evidence limit from an implementation defect.",
+  "confidence": 0.94,
+  "findings": [],
+  "scope": {
+    "packet_read_first": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/complete-scientific-review-packet-001.json",
+    "primary_implementation": "proposals/P254-ni-collective-response/attempts/0033/finite_bath_influence.py, all 94 lines",
+    "reviewed_context": [
+      "Complete export_hybrid_noise_components.py caller, input authentication, canonical normalization, result assembly and publication",
+      "Complete oracle_hybrid_noise_components.py and its already-saved owning-new-consumer-oracle-001.json result",
+      "A31 export_frozen_bath_comparator.py, especially projected_factors and car_moments, and the inherited raw H/H-adjoint similarity policy in filtered_quadratic_bath.py",
+      "ActionFactors, FactorFunctional and FactorPreparation, including the receiving directed-product CAR contraction",
+      "Existing OrderedForcePair receiving constructor, symmetrized/commutator properties and retarded dispatch",
+      "A32 fixture/Fock oracle, literal-H coordinate construction and coordinate-bank publication, used only to establish the reused interface",
+      "Actual A33 material result, Native admission, physical observations and bound A32 input metadata",
+      "SOLUTION.md scientific claims, especially the two distinct A33 components and remaining physical obligations"
+    ],
+    "material_scope": {
+      "q_index": 0,
+      "source_slot": 0,
+      "force_modes": 2,
+      "times_inverse_ry": [0.0, 1.0, 10.0, 30.0],
+      "finite_bath_dimension": 354,
+      "original_raw_state_columns": 346,
+      "selected_extra_empty_directions": 8,
+      "original_mesh": [4, 4, 4],
+      "ncells": 64,
+      "canonical_force_factor": 0.125,
+      "original_state_authority": "f3d7be625104b78f73b0d3ff1578d35790f13f755cc068b2a93dd211c1a936e4"
+    },
+    "distinct_components": [
+      "The moving initial-product-noise source budget uses the same saved A32 preparation duals and response as the saved moving covariance.",
+      "The separate frozen-literal-H influence is a source0/two-mode two-time connected ordered force covariance and its causal commutator response. It is not added to the moving covariance."
+    ],
+    "review_actions": "Read-only source/diff/JSON inspection and analytic interface/algebra review. No tests, builds, formatters, oracle reruns, numerical executions, trajectories, physical actions, service/network mutations or original-data changes were performed. Only this local review artifact was written.",
+    "prior_evidence_policy": "A29/A31/A32 scientific and execution evidence was carried forward, not rerun. Published execution numbers below are observations read from saved artifacts, not measurements made by this review."
+  },
+  "evidence": [
+    {
+      "check": "Stored literal-H general V/Vi, without a reconstructed gauge",
+      "status": "consistent by source/interface inspection",
+      "anchors": [
+        "attempts/0033/finite_bath_influence.py:27-48",
+        "attempts/0033/export_hybrid_noise_components.py:49-52,88-92",
+        "attempts/0032/hybrid_gamma_model.py:75-78",
+        "attempts/0032/export_hybrid_gamma.py:349-361"
+      ],
+      "detail": "The actual caller authenticates and loads inputs.interaction_coordinates and source.basis. The producer saved model.energies, model.v and model.vi immediately after constructing the A32 model; that model applies np.linalg.eig only to the literal bath Hamiltonian and np.linalg.inv to its right-eigenvector matrix. A33 reads those persisted three arrays; it neither re-eigensolves H nor substitutes eigenvector conjugate transpose for Vi. Its force evolution is V exp(+i E t) (Vi F V) exp(-i E t) Vi."
+    },
+    {
+      "check": "Raw H-adjoint similarity and independent supplied physical force legs",
+      "status": "consistent by algebra and receiving-side inspection",
+      "anchors": [
+        "attempts/0033/finite_bath_influence.py:34-53",
+        "attempts/0031/filtered_quadratic_bath.py:10-15,134-140,155-159",
+        "attempts/0031/export_frozen_bath_comparator.py:35-57",
+        "src/substrate_framework/physical_factor_preparation.py:53-78,185-222"
+      ],
+      "detail": "The two force_mode arrays and two adjoint_force_mode arrays are loaded independently. For the adjoint evolution, V-dagger Fadj Vi-dagger is evolved with conjugated E and transformed back with Vi-dagger and V-dagger. Since H-dagger = Vi-dagger E* V-dagger, this is exp(+i H-dagger t) Fadj exp(-i H-dagger t), matching A31. projected_factors forwards both actions on the unchanged projected frame. car_moments receives them and forms T_AB = (Aadj Phi)-dagger (B Phi), not an overlap-only product or an assumed Hermitian replacement. No supplied force-adjoint leg is discarded or regenerated from the forward force."
+    },
+    {
+      "check": "Unchanged original noncommuting frame/S/D preparation",
+      "status": "consistent by source and saved diagnostics",
+      "anchors": [
+        "attempts/0033/finite_bath_influence.py:49-53,78-80",
+        "attempts/0031/export_frozen_bath_comparator.py:35-51",
+        "src/substrate_framework/physical_factor_preparation.py:185-222",
+        "attempts/0032/moving-hybrid-input-bindings-002.json:model_diagnostics",
+        "attempts/0033/saved-noise-budget-and-influence-material-result-001.json:frozen_two_mode_influence.diagnostics"
+      ],
+      "detail": "CAR uses bank.projected_frame, bank.gram and bank.density_coefficients directly. FactorPreparation checks Gram/Pauli admissibility and retains the raw coefficients; its density-spectrum diagnostic is not a population refill or a pinching of D in the H basis. The contraction is Tr(D T_AB) - Tr(D M_A D M_B). No FDT, stationary occupation weights, diagonal-only state approximation or thermal replacement is inserted.",
+      "saved_values": {
+        "original_state_commutator_frobenius": 0.16392046471702654,
+        "initial_interaction_density_offdiagonal_frobenius": 0.8714378849481624,
+        "projected_state_transfer_frobenius": 0.0,
+        "original_gram_frame_defect_frobenius": 8.402549552420743e-14,
+        "original_D_hermiticity_frobenius": 8.39276478971159e-15
+      }
+    },
+    {
+      "check": "Canonical F_k/sqrt(N) exactly once before CAR",
+      "status": "consistent by actual caller and saved values",
+      "anchors": [
+        "attempts/0033/export_hybrid_noise_components.py:87-92",
+        "attempts/0033/finite_bath_influence.py:34-35,88-89",
+        "attempts/0031/export_frozen_bath_comparator.py:114-127",
+        "/var/tmp/p254-activeband-loaded-finite-b12-f27-001/coefficient-manifest.json:specification.mesh",
+        "/var/tmp/p254-a31-source0-two-mode-bath8-001/result.json:normalization,initial_unweighted_force_covariance.finite_bath"
+      ],
+      "detail": "The original manifest supplies mesh [4,4,4], so N=64 and the caller passes source_factor=1/sqrt(N)=0.125. Each forward and supplied-adjoint force is multiplied once before coordinate transformation and CAR. No subsequent spin factor, source-sector weight or final real-space inverse-Fourier factor is applied. The A33 initial diagonal force covariances are consistent with the inherited A31 unweighted finite-bath diagonal covariances divided by 64, at the displayed floating-point precision.",
+      "saved_values": {
+        "A31_unweighted_initial_mode_variances_real": [2955.0750189908113, 57.829668479618775],
+        "A33_canonical_initial_mode_variances": [
+          {"real": 46.17304717173143, "imag": 7.685436648420075e-16},
+          {"real": 0.9035885699940431, "imag": 1.114297771243293e-16}
+        ],
+        "A33_canonical_final_mode_variances": [
+          {"real": 46.328680482344986, "imag": -1.3125190195103232e-14},
+          {"real": 0.9047973997839485, "imag": -7.605872403947801e-17}
+        ]
+      }
+    },
+    {
+      "check": "Ordinary AB/BA, symmetrized/commutator and -uF retarded sign",
+      "status": "consistent through consuming-side dispatch and saved entries",
+      "anchors": [
+        "attempts/0033/finite_bath_influence.py:54-77",
+        "src/substrate_framework/nonstationary_force_kernel.py:59-88",
+        "attempts/0033/export_hybrid_noise_components.py:94-116",
+        "attempts/0032/export_hybrid_gamma.py:70-92"
+      ],
+      "detail": "car_moments constructs every directed pair. The receiving OrderedForcePair gets values[a,b] and values[b,a] separately. Its existing properties return (AB+BA)/2 and AB-BA, and retarded returns -i*perturbation_sign*theta*commutator. Passing perturbation_sign=-1 therefore gives +i theta times the commutator for deltaH=-uF. Equal-time theta is explicitly 0.5. reverse_ordered swaps the two complete endpoint axes without conjugation. The actual caller includes the whole influence dictionary in frozen_two_mode_influence, and the generic publisher preserves every complex real/imag part; no new output is silently dropped.",
+      "saved_values": {
+        "endpoint_index_convention": "[time_index, mode, second_time_index, second_mode]",
+        "AB_30_mode0_0_mode0": {"real": 4.665394323436383, "imag": 5.120144655520569},
+        "BA_30_mode0_0_mode0": {"real": 4.665394323436677, "imag": -5.120144655520264},
+        "symmetrized_30_mode0_0_mode0": {"real": 4.66539432343653, "imag": 1.5276668818842154e-13},
+        "commutator_30_mode0_0_mode0": {"real": -2.9398705692074145e-13, "imag": 10.240289311040833},
+        "retarded_30_mode0_0_mode0": {"real": -10.240289311040833, "imag": -2.9398705692074145e-13},
+        "retarded_0_mode0_30_mode0": {"real": 0.0, "imag": 0.0},
+        "equal_time_commutator_0_mode0_0_mode1": {"real": 1.7763568394002505e-15, "imag": -5.697159769408199e-06},
+        "equal_time_retarded_0_mode0_0_mode1": {"real": 2.8485798847040995e-06, "imag": 8.881784197001252e-16},
+        "equal_time_theta": 0.5,
+        "perturbation_sign": -1,
+        "instantaneous_scalar_contact_terms_included": false
+      }
+    },
+    {
+      "check": "Non-Hermitian raw defects remain exposed, not repaired into physical unitarity",
+      "status": "consistent with explicit comparator policy",
+      "anchors": [
+        "attempts/0033/finite_bath_influence.py:1-6,38-48,73-87",
+        "attempts/0031/filtered_quadratic_bath.py:10-15",
+        "attempts/0033/saved-noise-budget-and-influence-material-result-001.json:frozen_two_mode_influence.diagnostics",
+        "attempts/0032/moving-hybrid-input-bindings-002.json:model_diagnostics"
+      ],
+      "detail": "The consumer uses raw complex E and general V/Vi, not real-part eigenvalues, a Hermitized H, orthonormalized eigenvectors or a corrected propagator. It publishes Hamiltonian-Hermiticity, supplied-force-adjoint, evolved-adjoint, final propagator-unitarity and original-state-commutator defects. This is raw inverse/similarity evolution; for an arbitrarily non-Hermitian H it must not be reinterpreted as a physical unitary U-dagger F U history. The module and inherited policy make that distinction, and the actual bound H is near-Hermitian rather than silently repaired.",
+      "saved_values": {
+        "raw_hamiltonian_hermiticity_frobenius": 7.471229004207394e-14,
+        "supplied_force_adjoint_defect_by_mode": [1.1724434479677898e-14, 2.1325513723727935e-15],
+        "maximum_evolved_adjoint_defect": 9.53499970250244e-15,
+        "final_raw_propagator_unitarity_defect_frobenius": 2.8996154628392163e-12,
+        "inherited_eigenvector_condition": 1.000100726347888,
+        "inherited_eigen_reconstruction_frobenius": 3.728354057072072e-13,
+        "inherited_eigen_inverse_defect_max_abs": 1.6714484132142012e-15,
+        "inherited_eigen_energy_imag_max_abs": 2.450002355576839e-15
+      }
+    },
+    {
+      "check": "Actual owning-oracle sensitivity at its declared scope",
+      "status": "saved passing evidence read; no rerun",
+      "anchors": [
+        "attempts/0033/oracle_hybrid_noise_components.py:109-158",
+        "attempts/0032/oracle_hybrid_gamma_model.py:18-60,218-243",
+        "attempts/0033/owning-new-consumer-oracle-001.json"
+      ],
+      "detail": "The force branch compares all ordered entries against literal matrix exponentials and a full finite-Fock trace, using three times, two modes and force scale 0.5. It independently constructs theta and +i theta (expected-expected with endpoints transposed), so wrong overall scale, ordering, sign or causality would change the compared output. Its nonzero response guard makes the sign comparison meaningful, and its nonzero equal-elapsed-time separation makes stationary time-difference substitution distinguishable. The sign/nonstationarity guards are sensitivity separations, not evidence that separate mutated implementations were executed. The nonunitary persisted-coordinate gauge mutation belongs to the separate source-budget branch, not to the force-influence branch.",
+      "saved_values": {
+        "actual_exit": 0,
+        "force_ordered_error": 1.1498433032705237e-16,
+        "force_retarded_error": 9.617771636775699e-17,
+        "force_equal_elapsed_time_nonstationarity_separation": 0.006937267321495834,
+        "source_budget_total_error": 3.66205343881779e-15,
+        "source_budget_eigen_gauge_error": 3.794299872214038e-15,
+        "source_budget_mechanical_cross_error": 3.554447978966673e-15,
+        "source_budget_missing_mechanical_cross_separation": 3.756756363938014,
+        "source_budget_missing_source0_cross_separation": 1.0315940500882623
+      }
+    },
+    {
+      "check": "Actual saved-data execution, output routing and scope",
+      "status": "complete saved result and Native evidence inspected",
+      "anchors": [
+        "attempts/0033/export_hybrid_noise_components.py:35-123",
+        "attempts/0033/saved-noise-budget-and-influence-native-admission-001.json",
+        "attempts/0033/saved-noise-budget-and-influence-material-result-001.json",
+        "attempts/0033/actual-saved-noise-physical-observations-001.json"
+      ],
+      "detail": "The actual result contains all five force tensors, the means, diagnostics and explicit sign/theta/contact metadata. The complete saved-data caller consumed the original readout and coordinate bank and finished both new consumers. Its work counter records zero trajectory integrations, Hamiltonian actions, force actions, H eigendecompositions, state refills, DFT actions and new Gamma caches. Those are the caller's declared physical-work counters; the code still performs the matrix exponentials by scalar phases, matrix products and inherited state-admissibility eigenspectrum calculations required for the saved-data contractions.",
+      "saved_values": {
+        "actual_native_exit": 0,
+        "actual_elapsed_seconds": 15.969469361007214,
+        "source_budget_seconds": 9.047138588968664,
+        "frozen_influence_seconds": 4.975580474827439,
+        "application_peak_rss_bytes": 597110784,
+        "recorded_retarded_maxabs": 71.17096243971832,
+        "recorded_raw_budget_minus_saved_maxabs": 1.5152185993940876e-20
+      }
+    },
+    {
+      "check": "SOLUTION interpretation and distinction from moving A32 history",
+      "status": "consistent with actual outputs and exclusions",
+      "anchors": [
+        "SOLUTION.md:79-98,111-113",
+        "attempts/0033/export_hybrid_noise_components.py:94-112",
+        "attempts/0033/hybrid_noise_components.py:1-6,101-115",
+        "attempts/0033/saved-noise-budget-and-influence-material-result-001.json:noise_budget,interpretation"
+      ],
+      "detail": "SOLUTION attributes original preparation fluctuations through the same coupled moving response and separately describes a frozen-H two-time force kernel. The caller never adds the frozen kernel to budget.total, saved_covariance or normalized moving coherence. The budget's original ionic/field cross blocks remain present (zero for the actual product preparation), individual electronic sectors remain present, and all normalized contributions use the same full-output denominator. The map explicitly excludes a recovered moving history, independent added noise, fitted linewidth and physical loss, and leaves instantaneous scalar/contact derivatives separate.",
+      "saved_budget_at30_bohr2": {
+        "ionic": {"real": 8.59808815283952e-05, "imag": 1.9190590211230242e-22},
+        "field": {"real": 3.088957813862322e-11, "imag": 4.2046121916313075e-27},
+        "electronic_total": {"real": 7.354327866804033e-07, "imag": -1.7786883301914326e-22},
+        "budget_total": {"real": 8.671634520465375e-05, "imag": 1.4041273705350794e-23},
+        "saved_moving_total": {"real": 8.671634520465375e-05, "imag": 1.824860422692864e-23}
+      }
+    }
+  ],
+  "not_established": [
+    "The force_influence oracle replaces the inherited deliberately non-Hermitian fixture H by a Hermitian H and replaces its independently defective force-adjoint arrays by exact daggers of Hermitian forces. Consequently that force-oracle run does not independently distinguish Vi from V-dagger, H-adjoint from H, or a supplied force-adjoint leg from a regenerated forward dagger in a genuinely non-Hermitian case. The source-budget gauge test does not close that force-specific coverage gap. The implemented general formulas were reviewed analytically; no additional execution is claimed or requested by this review.",
+    "The oracle directly asserts ordered and retarded tensors; it does not separately assert the returned reverse_ordered, symmetrized, commutator or diagnostic fields. Those were traced statically through the existing OrderedForcePair implementation and inspected in saved material entries. This is a statement of evidence scope, not a demonstrated output defect.",
+    "The frozen-H comparator does not recover the continuous moving A32 Hamiltonian/response history or represent path-generated stochastic noise. The moving initial-condition budget and frozen force kernel are not additive independent contributions.",
+    "No all-source/all-q/full-PW arbitrary-force influence calibration, finite-bath truncation error bound, stationary positive spectrum, FDT relation, collision rate, irreversible linewidth, material damping, physical loss-survival, heat, nuclear rate or physical lattice ranking is established. Missing wider sectors/vertices remain actual physical computation requirements, not empirical lifetimes supplied here.",
+    "Only the four published material sample times are consumed. They are not continuous-time lifetime evidence. Instantaneous scalar/contact derivatives are explicitly excluded from the published retarded kernel.",
+    "Raw-similarity evolution for an arbitrarily non-Hermitian H is not a physical unitary-history construction. Published defects are diagnostics, not a repair or a physical-accuracy certificate.",
+    "Recorded source/result SHA256 values below were transcribed from the exact packet and bound saved artifacts; no fresh hashing of original files or NPZ-array recomputation was performed. The review does not independently replay the original action/trajectory provenance."
+  ],
+  "sourcebindings": {
+    "binding_basis": "Recorded original-byte bindings from the A33 complete packet, actual result/oracle/admission and carried A31/A32 input bindings; not newly computed hashes.",
+    "review_packet": {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/complete-scientific-review-packet-001.json"},
+    "implementation": [
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/finite_bath_influence.py", "bytes": 5502, "sha256": "d5ed9d329a302582e1c249dee0b6f3ac52047d4db984260bc490144fa67212fb"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/export_hybrid_noise_components.py", "bytes": 7548, "sha256": "c9be824f47547e6387eaf248da13e72fd370373d8c5ecd7c248a3aefc4d0ef25"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/oracle_hybrid_noise_components.py", "bytes": 8604, "sha256": "729f8ff1948142d1a43f590c62de412e57b5f4a1cb0e68458b1779ac2ef9c469"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/hybrid_noise_components.py", "bytes": 5684, "sha256": "1141fd6a4dc022d2f587211a1eff190fe3764fb49f9c563cc44ce40426afa56b"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/implementation-contract-001.json", "bytes": 4561, "sha256": "70c6bf7aaddb5f6835d769f2df0398cb261ae503f00c903d3d36e536940a3926"}
+    ],
+    "inherited_interfaces": [
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0031/export_frozen_bath_comparator.py", "bytes": 10591, "sha256": "24534c94c20ae0e16b8832ca12542eed6004ea3097dc36df9d32bbe7a67cfd80"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0031/filtered_quadratic_bath.py", "bytes": 11586, "sha256": "ee149e2a5e106905d06f985feb974e431dbf22c587f7bbdf6d6b7d2f78abf839"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/nonstationary_force_kernel.py", "bytes": 11112, "sha256": "458d946b6b20e121c7b86e343af88de267642cb0ecf5a1630b704a8417c7c0bc"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_factor_preparation.py", "bytes": 11366, "sha256": "3dd3767a13da9fd5f5d7559bc3f7a98cf00d365655a08980db551d011aa25b96"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/oracle_hybrid_gamma_model.py", "bytes": 15557, "sha256": "4c52a64c155ca81bcbdad1fb9aa3af4734e3824fb5d96f0613f5353a3bace8bd"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/hybrid_gamma_model.py", "bytes": 17243, "sha256": "451ad383475e91ea57219e0189dd8b743112a2b88ca84e2610d14aadecf6ab8c"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/export_hybrid_gamma.py", "bytes": 24115, "sha256": "2f33b59662ce3fdae7c7fa3838b8aeec92c3ee6c25a9405f5e48f3df0c1c9a7f"}
+    ],
+    "actual_evidence": [
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/saved-noise-budget-and-influence-material-result-001.json", "bytes": 520938, "sha256": "31375889649a529a270f7ec920169ea32b518f7527a2110a2934490a9f29a87f"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/saved-noise-budget-and-influence-native-admission-001.json", "bytes": 2911, "sha256": "a99f7d70b0377f8de3c9be7ce846b39f2de72acd01865fa29c282b5a472b53b8"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/owning-new-consumer-oracle-001.json", "bytes": 2265, "sha256": "a24f66a84eb4f49204dd4cc3d96daae63a50a9e884503964b45295ce079d8848"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/actual-saved-noise-physical-observations-001.json", "bytes": 4253, "sha256": "1a8cf05f9aee3fbbfe2ee92eff0da849030b29bfde0bd2b3d48382d4fd80d14e"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/SOLUTION.md", "bytes": 15193, "sha256": "cbce20a4678dde2a276aae771aaac08fdec16dd24a91f207de098e343c019ec5"}
+    ],
+    "original_saved_inputs": [
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/moving-hybrid-material-result-002.json", "bytes": 371375, "sha256": "3f8d166712975333bdfb6b6590d87f6459a86a7c9334a157005433927f9cc328"},
+      {"path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-002/input-bindings.json", "publication_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/moving-hybrid-input-bindings-002.json", "bytes": 345247, "sha256": "a4d6758d700c0cfd2bb82cffd25fe00b88886a2a29128339d7702738bc9e6ad3"},
+      {"path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-002/hybrid-gamma-readout.npz", "bytes": 16128220, "sha256": "319947421bfb1da52cf629562225759568ff8e18a94e9e963d2f42d41e061595"},
+      {"path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-002/interaction-coordinates.npz", "bytes": 4016604, "sha256": "0e4bfb351a87720e22fd8b383b29a514d4344530177823328e1bf0e8f023405a"},
+      {"path": "/var/tmp/p254-a31-source0-two-mode-bath8-001/finite-bath-basis.npz", "bytes": 28287078, "sha256": "b97cf82fbf4679f509ad3a7f294ed8bd9f4bc7ed1a6294095cb9168c66c93b1e"},
+      {"path": "/var/tmp/p254-a31-source0-two-mode-bath8-001/result.json", "bytes": 210389, "sha256": "3d2fdab5617af7c9b7fe8e6afdd3cde6ea30e074cad4e2ad481ca86875e57d93"},
+      {"path": "/var/tmp/p254-activeband-loaded-finite-b12-f27-001/baseline-000.npz", "bytes": "299054", "sha256": "6d17f8fccef03e916c224603a75c81580dd0510b0c1c01fa1842760305899c28"},
+      {"path": "/var/tmp/p254-activeband-loaded-finite-b12-f27-001/coefficient-manifest.json", "bytes": 59561233, "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"}
+    ]
+  }
+}

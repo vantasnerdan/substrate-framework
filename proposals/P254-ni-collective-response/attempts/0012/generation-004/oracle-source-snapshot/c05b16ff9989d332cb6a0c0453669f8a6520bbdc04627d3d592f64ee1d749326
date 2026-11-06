@@ -1,0 +1,45 @@
+"""Check stdout model metadata numerically against settings and raw UPFs."""
+import hashlib
+from pathlib import Path
+import re
+import sympy as sp
+from native_text import NUMBER,singleton,number
+
+
+def extract(text):
+    fields={key:singleton(pattern+r'\s*=\s*('+NUMBER+r')',text) for key,pattern in
+            [('ecutwfc_ry','kinetic-energy cutoff'),('ecutrho_ry','charge density cutoff'),
+             ('conv_thr_ry','scf convergence threshold'),('nat','number of atoms/cell'),
+             ('ntyp','number of atomic types'),('electrons','number of electrons')]}
+    fields['degauss_ry']=singleton(r'Marzari-Vanderbilt smearing, width \(Ry\)=\s*('+NUMBER+r')',text)
+    fields['starting_magnetization_ni']=singleton(r'Starting magnetic structure\s+atomic species\s+magnetization\s+Ni\s+('+NUMBER+r')',text)
+    pseudos=re.findall(r'PseudoPot\. #\s+(\d+) for (Ni|H)\s+read from file:\s+(\S+)\s+MD5 check sum:\s+(\w+)\s+Pseudo[^\n]+Zval\s*=\s*('+NUMBER+r')',text)
+    return fields,pseudos
+
+
+def run(ledger,name,text,settings,execution,symbols):
+    fields,pseudos=extract(text)
+    for key in ('ecutwfc_ry','ecutrho_ry','conv_thr_ry','degauss_ry','starting_magnetization_ni'):
+        expected=sp.Rational(str(settings[key]))
+        predicate=lambda value:sp.Rational(value.replace('D','E'))==expected
+        ledger.mutation_sensitive(name+' stdout numerical '+key,predicate,fields[key],
+                                  [str(sp.Rational(fields[key])*2+1)])
+    ledger.check(name+' stdout counts and PBE functional match frozen input',
+                 int(fields['nat'])==len(symbols) and int(fields['ntyp'])==len(set(symbols)) and
+                 set(re.findall(r'Exchange-correlation=\s*(\w+)',text))=={'PBE'})
+    ledger.check(name+' stdout exactly ordered species pseudo identities',
+                 [(int(p[0]),p[1]) for p in pseudos]==[(1,'Ni'),(2,'H')])
+    valences={}
+    for _,symbol,path,md5,zval in pseudos:
+        expected_path=Path(execution['pseudo_dir'])/execution['pseudopotentials'][symbol]
+        raw=expected_path.read_bytes()
+        header=singleton(r'<PP_HEADER>([\s\S]*?)</PP_HEADER>',raw.decode())
+        source_z=sp.Rational(singleton(r'^\s*('+NUMBER+r')\s+Z valence\s*$',header))
+        ledger.check(name+' '+symbol+' stdout pseudo path/MD5/valence bound to actual UPF bytes',
+                     path==str(expected_path) and hashlib.md5(raw,usedforsecurity=False).hexdigest()==md5 and
+                     sp.Rational(zval)==source_z)
+        valences[symbol]=source_z
+    ledger.check(name+' composition dot source-UPF valence equals native electron count',
+                 sum(valences[s] for s in symbols)==sp.Rational(fields['electrons']))
+    return {'numeric_tokens':fields,'pseudo_identities':[list(p) for p in pseudos],
+            'source_valences':{k:str(v) for k,v in valences.items()}}

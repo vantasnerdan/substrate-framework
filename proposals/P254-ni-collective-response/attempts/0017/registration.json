@@ -1,0 +1,29 @@
+{
+  "issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "campaign": "P254",
+  "attempt": "0017",
+  "registered_at": "2026-10-27T17:40:12.628796+00:00",
+  "goal": "Construct the actual full-PW electronic Hamiltonian needed by the coherence-domain response model; preserve the empty-state complement instead of using only20 retained bands.",
+  "inputs": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0017/source-inventory.json",
+  "scope": "Only the immutable0016 generation003 two-atom, ordinary-NC, collinear spinPBE, noNLCC, equal24cubed grids engineering backgrounds. Not a stationary/material/coherence/loss/nuclear claim.",
+  "source_equation": "h_psi kinetic + vloc_psi_k_acc dual-space local-potential product + add_vuspsi_k NC projector action. Reproduce Native species-then-atom ofsbeta ordering from init_us_1. Use actual target igk/g2kin/vkb/deeq and actual vrs spin; no eigenspectrum fitting or retained20-band closure.",
+  "new_files": [
+    "src/substrate_framework/qe_pw_hamiltonian.py",
+    "proposals/P254-ni-collective-response/attempts/0017/run_hamiltonian_oracle.py"
+  ],
+  "acceptance": {
+    "full_basis": "square ngw_target operator, not nbnd square",
+    "hermiticity": "maxabs(H-Hdagger)<=1e-10*max(1,maxabs(H)) Ry",
+    "native_eigenpair_scope": "Every exported target Native eigenpair: max band residual2norm<=1e-4 Ry; retained projection energy errors<=1e-4 Ry. This is a frozen implementation/engineering allowance, not material-accuracy certification or full-space independent Native H-action proof.",
+    "normalization": "maxabs(Psi_daggerPsi-I)<=1e-8",
+    "sensitivity": "Dropped local/nonlocal or wrong FFT normalization must be reported against the same Native eigenpairs; require at least one appropriate mutation to be exposed, do not relabel an unexposed mutation a pass."
+  },
+  "oracle": "One complete SciPy/NumPy actual-input run, CPU6,BLAS1,180s wall cap. New non-Native feature only; no Native rerun or old suite. Preserve all first failures and raw per-state diagnostics.",
+  "work_allocation": {
+    "implementation_first_result_due": "2026-10-27T18:00:00+00:00",
+    "Root_due": "2026-10-27T18:05:00+00:00",
+    "owner": "Giuliano",
+    "next_decision": "Use the constructed full operator in the two-branch retarded model; repair a named source/index error if observed. No additional precision escalation or unbounded retries."
+  },
+  "parallel_independence": "Full-H0 construction and Native bare-curvature source mapping do not depend on spin-kernel correctness; all consume already closed Native generation003 and immutable QE sources. The complete0016 kernel review consumes a settled separate source/result package."
+}

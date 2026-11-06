@@ -1,0 +1,189 @@
+{
+  "schema": "P254-joint-partitioned-material-v1",
+  "status": "complete",
+  "mode": "evolve",
+  "cpus": [
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "blas_threads": 1,
+  "requested_interval": 0.001,
+  "scope": "all-slot homogeneous physical mean; not whole local-q/quantum completion",
+  "case": "loaded-ni31h6",
+  "oracle": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-partitioned-oracle-001.json",
+    "bytes": 8863,
+    "sha256": "76569c708667e0c86cce82d09445363cd5dbe65ffa4b6b0920a442511a95cf33"
+  },
+  "column_oracle": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-column-mean-oracle-001.json",
+    "bytes": 4452,
+    "sha256": "17658790d58281e822bb83d0365725e125525eb17d3ba1a00d379ab1ee971c36"
+  },
+  "initialization": {
+    "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+    "bytes": 25705,
+    "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"
+  },
+  "initial_boundary": {
+    "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/initial/boundary.json",
+    "bytes": 173727,
+    "sha256": "83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095"
+  },
+  "coefficient_defect_upper_bound": null,
+  "positive_time_symmetry": false,
+  "resource_plan": {
+    "workers": 5,
+    "simultaneous_slots": 5,
+    "original_frame_bytes": 13137509056,
+    "max_single_frame_bytes": 103041696,
+    "retained_new_frame_sets": 1,
+    "complex_contraction_payload_bytes_per_complete_barrier": 764649472,
+    "maximum_reduction_barriers_before_cache_reuse": 7,
+    "storage_estimate_note": "payload excludes NPY/JSON/stage arrays and failed-attempt storage; hard reservation remains authoritative",
+    "midpoint_storage": "per-slot n/G/ell/H0-energy receipts, not trial full frames",
+    "output_accounting": "all incomplete and complete files retained; hard cumulative invocation reservation",
+    "memory": "mmap original frames/D; one operator/slot per worker; aggregate RSS watchdog"
+  },
+  "initial_contraction_reuse": {
+    "proof": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-loaded-initial-reuse-001.json",
+      "bytes": 156665,
+      "sha256": "a159ee389ba922f9b09c6641d651505f556e8f51451ad9b5488401ca3f693ded"
+    },
+    "imported_complete_slots": 128,
+    "new_hamiltonian_actions": 0
+  },
+  "initial_reduction": {
+    "kind": "full-initial-reduction",
+    "boundary": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/initial/boundary.json",
+    "time_ry_inverse": 0.0,
+    "arrays": {
+      "density": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/density.npy",
+        "bytes": 5972096,
+        "sha256": "f7ae8e6036d2b15b413cc493c2e1a13bd005be3561f37d7a93fcdf7a28371e72"
+      },
+      "gradient": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/gradient.npy",
+        "bytes": 1016,
+        "sha256": "c00c1c99aa167bbb5d8db2ca470e63b92bd7571780bb97b5839d40634f06b200"
+      },
+      "field_gradient_electronic": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/field_gradient_electronic.npy",
+        "bytes": 152,
+        "sha256": "f80f2ce111a92371b530a7320de465dd6ca8880548139fe4d9b6f3cc61a63db1"
+      },
+      "potential": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/potential.npy",
+        "bytes": 5972096,
+        "sha256": "2aaa6a70be3466130a3f7a2384230a9a526e42b89e7031371cb9d147d9d7e950"
+      },
+      "u": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/u.npy",
+        "bytes": 1016,
+        "sha256": "5814dae58063bda834a54500caf0012b8408e86db72a8f7c46d350b5a25b59d9"
+      },
+      "p": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/p.npy",
+        "bytes": 1016,
+        "sha256": "5814dae58063bda834a54500caf0012b8408e86db72a8f7c46d350b5a25b59d9"
+      },
+      "coordinate": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/coordinate.npy",
+        "bytes": 152,
+        "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+      },
+      "momentum": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/momentum.npy",
+        "bytes": 152,
+        "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+      },
+      "shift": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/shift.npy",
+        "bytes": 152,
+        "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+      },
+      "velocity": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/velocity.npy",
+        "bytes": 1016,
+        "sha256": "5814dae58063bda834a54500caf0012b8408e86db72a8f7c46d350b5a25b59d9"
+      },
+      "force": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/force.npy",
+        "bytes": 1016,
+        "sha256": "b45260662a9cedfeb0e366ac0dd76be01b60af814f15f092ad4fd1b92b88f204"
+      },
+      "field_velocity": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/field_velocity.npy",
+        "bytes": 152,
+        "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+      },
+      "field_force": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/field_force.npy",
+        "bytes": 152,
+        "sha256": "4c90f59d1a754a68f83a33e99466f536b2ec496377f065cfcc33c391768e7540"
+      },
+      "electronic_current": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/electronic_current.npy",
+        "bytes": 152,
+        "sha256": "8922ef3ca17a36b97a14c0e0802d48df187c2b39a5f31a2b0fc0fc252e771a26"
+      },
+      "ionic_current": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/initial-reduction-83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095/arrays-6d3953486f064c158510f55eca016213/ionic_current.npy",
+        "bytes": 152,
+        "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+      }
+    },
+    "energy_total_ry": -37728.58613008083,
+    "number_per_cell": 563.9999999999999
+  },
+  "initial_energy_total_ry": -37728.58613008083,
+  "initial_number_per_cell": 563.9999999999999,
+  "branches": [
+    {
+      "steps": 1,
+      "boundary": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+        "bytes": 155903,
+        "sha256": "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd"
+      },
+      "diagnostics": {
+        "energy_total_ry": -37728.58613008067,
+        "energy_drift_ry": 1.6007106751203537e-10,
+        "number_per_cell": 564.0,
+        "number_drift": 1.1368683772161603e-13,
+        "max_original_column_gram_error": 4.85389021193008e-14,
+        "max_raw_frame_frobenius_drift": 0.05141751356213853,
+        "density_drift_max": 5.409957035684698e-07,
+        "canonical_coordinate_drift": {
+          "u": 1.6215773546375575e-12,
+          "p": 4.112718864945108e-05,
+          "coordinate": 5.201118854811481e-19,
+          "momentum": 6.300400537003768e-12
+        }
+      }
+    }
+  ],
+  "completed_boundaries": [
+    "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json"
+  ],
+  "budget": {
+    "hamiltonian_actions": 768,
+    "action_columns": 265728,
+    "output_bytes_reserved": 13965010915,
+    "elapsed_seconds": 6214.833755259868,
+    "max_actions": 1536,
+    "max_seconds": 7200.0,
+    "max_bytes": 26843545600,
+    "max_memory_bytes": 19327352832,
+    "worker_memory_bytes": 4294967296,
+    "peak_aggregate_rss_bytes": 13318701056,
+    "accounting": "invocation-wide shared counters; existing output charged; attempts retained",
+    "memory_accounting": "parent plus child RSS; shared pages conservatively counted repeatedly",
+    "time_cap": "parent watchdog at 0.1 second intervals; native calls may be terminated"
+  }
+}

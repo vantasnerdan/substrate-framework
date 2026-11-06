@@ -1,0 +1,340 @@
+{
+  "schema": "P254-material-field-derivatives-v1",
+  "npw": 18613,
+  "ncolumn": 2,
+  "ispin": 1,
+  "direction": [
+    1.0,
+    0.0,
+    0.0
+  ],
+  "mixed_direction": [
+    0.0,
+    1.0,
+    0.0
+  ],
+  "exact_zero_field_difference_vs_A25_norm": 5.519355301759173e-10,
+  "exact_zero_field_difference_relative_to_H0": 6.312340087797884e-11,
+  "anchored_zero_increment_norm": 0.0,
+  "finite_probe_C2_minus_UPF_norm": 1.0204234014243723e-14,
+  "representations": [
+    {
+      "spacing_bohr_inv": 0.04,
+      "linear_error_vs_UPF": 9.30181207749508e-12,
+      "contact_error_vs_UPF": 1.3720353676384384e-09,
+      "mixed_error_vs_UPF": 7.998341202819913e-10,
+      "zero_field_error_vs_UPF": 1.8017002537650493e-13,
+      "zero_field_difference_vs_A25": 5.518545269457746e-10
+    },
+    {
+      "spacing_bohr_inv": 0.02,
+      "linear_error_vs_UPF": 4.523502755007187e-13,
+      "contact_error_vs_UPF": 8.912766558388397e-11,
+      "mixed_error_vs_UPF": 4.966544171804213e-11,
+      "zero_field_error_vs_UPF": 9.847856038976538e-15,
+      "zero_field_difference_vs_A25": 5.519330460136792e-10,
+      "successive_contact_difference": 1.3957106283111934e-09
+    },
+    {
+      "spacing_bohr_inv": 0.01,
+      "linear_error_vs_UPF": 5.820830711147071e-13,
+      "contact_error_vs_UPF": 1.6028186204256283e-10,
+      "mixed_error_vs_UPF": 7.806003277923383e-11,
+      "zero_field_error_vs_UPF": 8.50212586837604e-15,
+      "zero_field_difference_vs_A25": 5.519342577920159e-10,
+      "successive_contact_difference": 1.8513322895317047e-10
+    }
+  ],
+  "C2_finite_difference_refinement": [
+    {
+      "step_bohr_inv": 0.004,
+      "linear_error_vs_analytic": 4.925767014028323e-06,
+      "contact_error_vs_analytic": 3.6127656350890803e-06,
+      "mixed_error_vs_analytic": 4.163698038937721e-06,
+      "second_order_Taylor_remainder": 1.9703089270964447e-08
+    },
+    {
+      "step_bohr_inv": 0.002,
+      "linear_error_vs_analytic": 1.2314427292916365e-06,
+      "contact_error_vs_analytic": 9.029819277330867e-07,
+      "mixed_error_vs_analytic": 1.040914929963551e-06,
+      "second_order_Taylor_remainder": 2.462886118537483e-09
+    },
+    {
+      "step_bohr_inv": 0.001,
+      "linear_error_vs_analytic": 3.0786071935512864e-07,
+      "contact_error_vs_analytic": 2.2476119018650986e-07,
+      "mixed_error_vs_analytic": 2.6026713371488587e-07,
+      "second_order_Taylor_remainder": 3.0786076035398164e-10
+    }
+  ],
+  "original_interpolation_diagnostics": {
+    "origin_rows": 1,
+    "minimum_distance_to_radial_knot_bohr_inv": 0.0,
+    "species": {
+      "Ni": {
+        "radial_angular_l": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "forward_cubic_origin_radial_slope": [
+          -2.4892819287340257e-09,
+          -3.610299836864783e-08,
+          0.01851493651252252,
+          -0.06575209797822183,
+          4.060242098240375e-09,
+          1.9091683870868696e-09
+        ],
+        "max_interior_first_derivative_jump_by_radial_channel": [
+          4.001639065248641e-09,
+          4.812776288609655e-08,
+          5.277379459323918e-09,
+          1.5747954676403886e-08,
+          7.456122987255231e-09,
+          1.8744327964781426e-08
+        ],
+        "row_interval_indices_range": [
+          0,
+          773
+        ],
+        "rows_numerically_on_knots": 1,
+        "explanation": "A nonzero l=0 radial slope at q=0 produces a |a| cusp; l>0 also requires regular q^l parity. Nonzero interior jumps preclude a global C1 interpolant. These diagnostics establish obstructions, not exclusive attribution of the prior finite-step errors."
+      },
+      "H": {
+        "radial_angular_l": [
+          0,
+          0
+        ],
+        "forward_cubic_origin_radial_slope": [
+          4.751316527717986e-11,
+          3.285591706111054e-10
+        ],
+        "max_interior_first_derivative_jump_by_radial_channel": [
+          1.3753833141838534e-10,
+          4.914948083939441e-10
+        ],
+        "row_interval_indices_range": [
+          0,
+          773
+        ],
+        "rows_numerically_on_knots": 1,
+        "explanation": "A nonzero l=0 radial slope at q=0 produces a |a| cusp; l>0 also requires regular q^l parity. Nonzero interior jumps preclude a global C1 interpolant. These diagnostics establish obstructions, not exclusive attribution of the prior finite-step errors."
+      }
+    }
+  },
+  "family": "H_UPF(a) uses exact Bessel functions on original radial Simpson mesh. H_anchor(a)=H_A25(0)+H_UPF(a)-H_UPF(0). C2 approximations replace only F_l(s) by explicit quintic Hermite interpolation.",
+  "current": "electron charge current -L/2 in atomic units; no population/k weight/volume applied",
+  "reference_approximation": "Zero-field A25 H0 is preserved only by a field-independent operator offset. This is not a claim of exact Peierls identity with the saved cubic Hamiltonian.",
+  "convergence": "No automatic contact convergence claim. Inspect independent oracle, representation errors and new-family step errors; original adverse series is neither rerun nor overridden.",
+  "limitations": [
+    "Full physical rows but only selected unweighted columns.",
+    "Original radial mesh quadrature retained; no continuum radial error certificate.",
+    "q=0 uniform vector potential only; no physical direction, temperature, linewidth or population is inferred.",
+    "Finite H0 representation discrepancy must be accepted explicitly before using anchored optical coefficients."
+  ],
+  "original_wavefunction": {
+    "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/wfcup1.dat",
+    "bytes": "103267856",
+    "sha256": "b6475c066b585bb005798a495d1aba19adc6654beca70d91d7a03a71a70d43bd"
+  },
+  "selected_columns_zero_based": [
+    0,
+    1
+  ],
+  "original_sources": [
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/src/commutator_Hx_psi.f90",
+      "bytes": 7972,
+      "sha256": "e6ec7992ad6291d0f255c41d6d29c0da94ee390e740d676a1a9aae4e96ae7826"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PP/src/compute_ppsi.f90",
+      "bytes": 5696,
+      "sha256": "8a3681a2bbb9435c13183cbffd69ea70ea6ae3bc297865fec12235aa8596a5b5"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/upflib/gen_us_dj.f90",
+      "bytes": 5213,
+      "sha256": "60d798f13efdd65ad95c9cfcfeada220c07c707580f216201c77d6996d679395"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/upflib/gen_us_dy.f90",
+      "bytes": 5982,
+      "sha256": "ddef343e17a8506508808fdc484632ddc683ab42cbc3edd65d7781e119a47b4d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_hamiltonian.py",
+      "bytes": 7295,
+      "sha256": "f7734635ecc3f86bbb4d35bc5dd1972fea49e1442fcdc2d17adf59f1d4e24093"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_projectors.py",
+      "bytes": 4485,
+      "sha256": "3988f1a0171a56e0f7f40f26687f6b154ed7723784a2f1aa1bba2991fdc02ee3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_radial.py",
+      "bytes": 6143,
+      "sha256": "1b936324c14ab200faca5ba69652d4c12ef4b86e1ecfe077612aad7fe3bcebbc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_grid.py",
+      "bytes": 4145,
+      "sha256": "278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_saved_native.py",
+      "bytes": 6675,
+      "sha256": "1403e2d393e9ef7c0ba975091d2dff5f64546af8e002dc9a0100adee10a9d4c3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_reference.py",
+      "bytes": 6647,
+      "sha256": "bc80fd7c36884d5938462347acd2a38cde105158c69b249e6dedb9389fe5c09a"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/upflib/beta_mod.f90",
+      "bytes": 7419,
+      "sha256": "46cf4043e654f0eb78a65840314a05e035c4fe06e4628ae72bb1d86c70330c96"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/upflib/simpsn.f90",
+      "bytes": 4553,
+      "sha256": "77639712ff7546109701c82d32afaf2dba1f79c85cad4b3e6cdcb4a2f2a15753"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/upflib/sph_bes.f90",
+      "bytes": 8647,
+      "sha256": "dcc467e454dea69c147ad647c2a4288686c0926b09dd67def5a29f1741059ba0"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_upf.py",
+      "bytes": 5854,
+      "sha256": "0a823f58587416b75e1a1a97d727da2a768dc717c5ce228e44528d274673788c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_current.py",
+      "bytes": 10004,
+      "sha256": "0051031f35428e2449aaa61a859101550283a7abb6bb7a36d93719858110bde3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/optical-current-material-001/optical-current.json",
+      "bytes": 301043,
+      "sha256": "c0610b938faa74d8677e8c51b8d5a3306e1a1cc61bb9656a7d9fad73db29d89d"
+    }
+  ],
+  "accepted_material": {
+    "background_metadata": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/background-coordinates.json",
+      "bytes": "11566",
+      "sha256": "69a641a8fcc6b7f3a7da1e8f82bfe6249ca8bab19b417609d20b4d947410313a"
+    },
+    "inputs": {
+      "xml": {
+        "bytes": "428069",
+        "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/data-file-schema.xml",
+        "sha256": "3831ae2b83231b02475931d50055415b1d9673cdb05edb4541d0f1115ec383da"
+      },
+      "density": {
+        "bytes": "6538392",
+        "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/charge-density.dat",
+        "sha256": "3b239c650b515d3e4e1921ca4ea5a1f7503bcd09f1810d49ddef5047b4c5ea08"
+      },
+      "upfs": {
+        "Ni": {
+          "bytes": "115509",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/Ni_ONCV_PBE-1.2.upf",
+          "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e"
+        },
+        "H": {
+          "bytes": "64999",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/H_ONCV_PBE-1.2.upf",
+          "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a"
+        }
+      }
+    },
+    "wavefunction": {
+      "bytes": "103267856",
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/wfcup1.dat",
+      "sha256": "b6475c066b585bb005798a495d1aba19adc6654beca70d91d7a03a71a70d43bd"
+    },
+    "provenance_policy": "A25-A27 accepted material carried without reruns. Original XML/UPF bytes hashed here. Large background archive, density and WFC not decoded here; existing bound loader verifies original bytes when Root executes."
+  },
+  "runtime_context": {
+    "pid": 3698273,
+    "uid": 1000,
+    "gid": 1000,
+    "groups": [
+      4,
+      27,
+      1000
+    ],
+    "cpu_affinity": [
+      8
+    ],
+    "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-field-derivatives-001.service",
+    "thread_variables": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "INVOCATION_ID": "def7cf3ef5fd485b9b79380d36a2894e",
+    "resources": {
+      "memory.max": {
+        "availability": "available",
+        "value": "4294967296"
+      },
+      "memory.swap.max": {
+        "availability": "available",
+        "value": "0"
+      },
+      "cpuset.cpus.effective": {
+        "availability": "unavailable",
+        "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-field-derivatives-001.service/cpuset.cpus.effective'"
+      }
+    },
+    "kernel_limits_text": "Limit                     Soft Limit           Hard Limit           Units     \nMax cpu time              unlimited            unlimited            seconds   \nMax file size             unlimited            unlimited            bytes     \nMax data size             unlimited            unlimited            bytes     \nMax stack size            8388608              unlimited            bytes     \nMax core file size        0                    unlimited            bytes     \nMax resident set          unlimited            unlimited            bytes     \nMax processes             128196               128196               processes \nMax open files            1024                 1048576              files     \nMax locked memory         4205776896           4205776896           bytes     \nMax address space         unlimited            unlimited            bytes     \nMax file locks            unlimited            unlimited            locks     \nMax pending signals       128196               128196               signals   \nMax msgqueue size         819200               819200               bytes     \nMax nice priority         0                    0                    \nMax realtime priority     0                    0                    \nMax realtime timeout      unlimited            unlimited            us        \n",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "numpy": "1.26.4",
+    "manager_runtime_max_usec": {
+      "availability": "available",
+      "value": "180000000",
+      "argv": [
+        "/usr/bin/busctl",
+        "--user",
+        "get-property",
+        "org.freedesktop.systemd1",
+        "/org/freedesktop/systemd1/unit/p254_2da28_2dfield_2dderivatives_2d001_2eservice",
+        "org.freedesktop.systemd1.Service",
+        "RuntimeMaxUSec"
+      ]
+    }
+  },
+  "implementation_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_field_derivatives.py",
+      "bytes": 11973,
+      "sha256": "681aa52f2ae54e8cf7a7b8b054b1282cf6e6a930ad1d853af38b6357f2451e5d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_field_derivative_oracle.py",
+      "bytes": 8403,
+      "sha256": "44eefe1bb7fc9910746e5c77303a04d74759630de9c5d8aced7b07eba261a970"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/field-derivative-registration.json",
+      "bytes": 12118,
+      "sha256": "59a47d8d32cad2367cedd6dc3c1ba2a62257a885a2ebac2fb6db0d571d7c6af4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_field_derivatives.py",
+      "bytes": 12689,
+      "sha256": "fd5ab95ad8fbe728f9eaf4b562b47af6248d9fb98805dbe9be3a82ef34d51b93"
+    }
+  ]
+}

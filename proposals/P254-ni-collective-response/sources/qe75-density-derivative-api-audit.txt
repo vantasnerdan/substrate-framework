@@ -1,0 +1,240 @@
+# Scope and status
+
+Read-only inspection of the actual tree `/opt/qebuild/q-e-qe-7.5`. Paths below are relative to that root. No commands, imports, tests, builds, simulations, input/output edits, running-job access or external messages were performed. Source behavior is established by inspection; numerical identities below are proposed independent oracle definitions, not executed checks. No physical coupling law, W2 model, bath, or campaign decision is accepted here. Ni10/H1 valence and spin-2 GBRV ultrasoft usage are supplied campaign facts; the active job and UPF contents were not inspected.
+
+## 1. Answer: complete for which density?
+
+**Qualified yes for the finite-grid static pseudovalence electron-number-density derivative; no for an unqualified complete electronic/ionic or all-electron object.** `solve_linter` calls the generic DFPT kernel and, only under `convt`, writes `drhop(:,:,ipert)` as record `imode0+ipert` (`PHonon/PH/solve_linter.f90:242-288`). Its declared meaning is smooth density plus augmentation, as opposed to `drhos`, which is smooth only (same file:82-85).
+
+For each computed pattern and each of the two collinear spin channels, the exported quantity contains:
+
+* self-consistent valence-wavefunction response;
+* ultrasoft augmentation response through projector-occupation changes;
+* explicit displacement of the augmentation functions, projector-motion terms, and the overlap/orthogonality contribution prepared before the iterative solve;
+* at metallic Gamma, the common Fermi-level response required to keep total electron number fixed;
+* little-group symmetrization, except the separate Gamma–Gamma shortcut branch.
+
+It is **not merely the smooth product of two pseudo-wavefunctions**, and it is **not a deformation density formed by subtracting rigid atomic valence reference densities**. Adding another generic rigid-valence term to it would not be justified.
+
+It does **not** contain an explicit moving NLCC pseudocore-density field, frozen-core electron density, an all-electron reconstruction, nuclei/ionic charge, or an exported derivative of the nonlocal pseudopotential/overlap operator. Nonlocal pseudopotentials influence the solved valence response, but their operator derivatives cannot be recovered from this scalar density array alone.
+
+It is a static, occupation/smearing-dependent DFPT response, not a frequency-dependent mixed susceptibility, dielectric matrix, lifetime or physical bath.
+
+## 2. Trace of every density contribution
+
+### Smooth self-consistent response
+
+`LR_Modules/response_kernels.f90:12-35` specifies the static Sternheimer equation and the bare plus induced perturbation. At its end, collinear accumulation is into `drhoout(:,current_spin,ipert)` using `wk(ikk)` (`:275-289`). `LR_Modules/incdrhoscf.f90:75-80,158-193` constructs
+
+`(2*wk/omega) * conjg(psi_periodic) * dpsi_periodic`
+
+on the smooth grid and accumulates `dbecsum` separately. The factor two is already part of the linear-density construction; a consumer must not add another spin-degeneracy factor. Up/down are separate channels. `PW/src/set_kup_and_kdw.f90:9-42` duplicates the k grid into spin-labelled blocks.
+
+`PHonon/PH/dfpt_kernels.f90:297-342` interpolates smooth response to the dense grid if required, adds ultrasoft terms, and reduces over pools. `FFTXlib/src/fft_interpolate.f90:67-126` implements this by Fourier coefficient transfer through the two `nl` maps, with no additional volume factor.
+
+### Ultrasoft terms, including rigid augmentation motion
+
+`PHonon/PH/addusddens.f90:10-25` explicitly documents Eq. B31 of its Dal Corso reference and the two branches:
+
+* `iflag=1`, called from `drho`: orthogonalization response plus `alphasum` and `becsum` displacement terms;
+* `iflag=0`, called in the self-consistent solve: wavefunction-response augmentation plus the previously saved fixed-wavefunction response read from `prd`.
+
+`drho.f90:82-137` computes the equilibrium projector sums, projector derivatives and orthogonality contribution. `compute_drhous.f90:82-128` selects spin and calls `incdrhous`. `incdrhous.f90:85-143` explicitly uses integrated ultrasoft overlaps `qq_nt` and displaced projectors to build this smooth orthogonality term.
+
+Before saving it, `drho.f90:205-233` interpolates, deliberately multiplies the smooth result by **one half**, calls `addusddens(...,iflag=1)`, and saves every relevant pattern in `prd`. This half and the factor two in the iterative branch are part of the native convention, not optional normalizations.
+
+In `addusddens.f90:106-181`, augmentation is evaluated at the physical wavevector `tpiba*(q+G)`, with atomic phase `e^{-i(q+G)·tau}`. For the fixed-wavefunction branch, the coefficient includes:
+
+`dbecsum + alphasum·u − i*tpiba*((q+G)·u)*becsum`.
+
+The last term is the explicit rigid translation of Q; `alphasum` contains projector motion. The iterative branch uses `2*dbecsum`. After inverse FFT, `addusddens.f90:187-224` adds the saved `prd` field. Consequently the final fildrho already contains these terms. The raw bank does not retain a decomposition into them.
+
+The hidden volume normalization is important: `upflib/qrad_mod.f90:106-140` multiplies the radial augmentation Fourier table by `4*pi/omega`. `qvan2.f90:97-158` supplies the angular transform. Its integrated-overlap construction is `qq_nt=omega*qgm(G=0)` (`:170-204`). A downstream extra division by volume would be wrong.
+
+### Moving core / NLCC
+
+`solve_linter.f90:242-257` computes a **separate** `drhoc` with `addcore` and passes it as an optional DFPT input. `addcore.f90:64-99` constructs a rigid derivative of the UPF NLCC pseudocore:
+
+`−i*tpiba*((q+G)·u) * drc(q+G,type) * exp[−i*2*pi*(q+G)·tau]`.
+
+`set_drhoc.f90:9-29,41-64` defines `drc` as the pseudocore Fourier transform without the atomic structure factor, evaluated at q+G.
+
+This is used for XC response, **not added to exported `drhop`**. In `dfpt_kernels.f90:407-425`, `drhop` is copied to potential workspace; `dv_of_drho` receives `drhoc` separately. `LR_Modules/dv_of_drho.f90:226-323` adds `drhoc/nspin_lsda` to a temporary density for XC, including gradient corrections. Hartree starts from electronic up+down only (`:83-95`). `dynmat_nlcc.f90:32-34,60-84` treats `drhop` as intent(in) and constructs further separate core/XC force terms; it does not change the exported density.
+
+Therefore the valence response **includes the electronic effect of moving NLCC on XC**, while the explicit rigid pseudocore-density derivative is absent from the file. The NLCC pseudocore is an XC modelling density, not automatically a complete physical frozen-core electron density. No source basis was found for filling in all Ni frozen-core electrons from it. Whether each installed UPF has NLCC must remain explicit metadata, not an assumption.
+
+### Bare atom and nonlocal operator information
+
+`dvqpsi_us.f90:10-19,106-107,185-189` computes local and nonlocal bare displacement perturbations. `compute_dvloc.f90:91-110` contains the local `−i*tpiba*(q+G)` derivative. `dvqpsi_us_only.f90:104-146` contains energy-dependent nonlocal projector/overlap terms; `PW/src/compute_deff.f90:10-43` explicitly uses `D−epsilon*S`, represented as `deeq−epsilon*qq_at`.
+
+These affect the solved density, but the fildrho payload is not a serialization of those operators, `dbecsum`, beta projectors, `dS`, or explicit bare ionic/local-potential terms. Thus deriving a full electron–ion mixed vertex from fildrho alone is not source-supported. The valence electron-number convention must not be replaced by bare proton/nuclear charges.
+
+## 3. Patterns, Cartesian reconstruction and normalization
+
+Let `a=3*(kappa−1)+alpha`, with x,y,z fastest within each atom. Let `m=sum_{j<irr} npert(j)+ipert`. Native record m is the response to column `U(:,m)`.
+
+The actual transformation in `dfile_star.f90:222-229` is
+
+`D_cart[a,spin,r] = sum_m conjg(U[a,m]) * D_pattern[m,spin,r]`.
+
+Its forward transform is `D_pattern[m]=sum_a U[a,m]*D_cart[a]`. The conjugation is essential. No atomic mass appears in this inversion.
+
+These U columns are **not the physical phonon eigenvectors**: `set_irr.f90:9-18,86-121` obtains them by diagonalizing a random symmetrized Hermitian matrix in Cartesian coordinates and fixes arbitrary phases. For no symmetry, `set_irr_nosym.f90:9-43` uses the identity. A new run can choose a different valid pattern basis; matching record number alone is not matching physical displacement. The complete square basis has `sum(npert)=3*nat`; partial records do not determine a complete Cartesian bank.
+
+`io_pattern.f90:39-55` writes list-directed formatted data in this order: nirr; npert(1:nirr); the entire complex U(3nat,3nat); xq(3). U is written in Fortran element order, first index fastest. There is no nat, cell, FFT dimension, spin description, unit declaration or completion mask in that sidecar. `ph_restart.f90:224-268` also stores the patterns in `patterns.iq.xml`; that source is useful when the .pat location/name is ambiguous.
+
+**Units [INFERENCE from the inspected derivatives and volume factors]:** U is a dimensionless Cartesian direction; its perturbation amplitude is a length in bohr. The stored field is electron number per bohr cubed **per bohr displacement**, i.e. bohr^-4. The `tpiba=2*pi/alat` derivative already converts the reciprocal coordinate to inverse bohr; do not divide the field by alat again. To differentiate with respect to the internal dimensionless position tau=R/alat instead, multiply by alat. No phonon mass, zero-point amplitude, frequency or q-mesh square-root factor is present.
+
+The field is electron **number**, not Coulombs and not `−e` times number. `dv_of_drho.f90:83-95` explicitly sums its two channels for Hartree. For nspin=2, total number response is up+down; longitudinal spin-number response is up−down. Neither channel is already total density/magnetization. `Modules/noncol.f90:21-25` states `nspin_mag=nspin_lsda=2` in this case.
+
+## 4. q convention, Fourier order and volume
+
+`phq_init.f90:98-105` defines `eigqts(kappa)=exp(−i*2*pi*xq·tau_kappa)`. `xq` and `g` are Cartesian in units 2*pi/alat; tau is Cartesian in alat units; cell columns are `alat*at`, and reciprocal columns are `tpiba*bg` (`Modules/cell_base.f90:31-55,101-105`).
+
+**[INFERENCE from these phases and the periodic-wavefunction builder]** The stored complex real-space array is the cell-periodic envelope D_q(r), with physical response `exp(+i*q_phys·r)*D_q(r)` for the complex displacement convention `delta R_{l,kappa}=u_kappa*exp(+i*q_phys·R_l)`. It is not the full Bloch-modulated density sampled on a supercell. Do not add an atom-phase convention silently.
+
+`make.inc:43-45` selects FFTW3/MPI in this tree. `fft_fwinv.f90:65-106,169-207` dispatches inverse with positive sign and forward with negative sign. `fft_scalar.FFTW3.f90:432-438,472-475` establishes, for N=nr1*nr2*nr3:
+
+`D_G = (1/N) sum_grid D(r_j) exp(−i*G·r_j)`;
+`D(r_j) = sum_G D_G exp(+i*G·r_j)`.
+
+The parallel factors are correspondingly 1/nz and 1/(nx*ny) (`:77-138,197-293`). Thus a cell integral of the periodic envelope is `omega*D_G=0 = omega/N * sum_physical_grid D(r_j)`. This is not a sum over padded cells.
+
+The global direct-access payload is dense **real-space** order, not sorted |G| order and not MPI-local reciprocal sticks. With zero-based physical i,j,k, the padded global index is `i + nr1x*(j + nr2x*k)`; physical coordinates are `alat*at*(i/nr1,j/nr2,k/nr3)`. Only i<nr1,j<nr2,k<nr3 are physical. `fft_types.f90:39-44,126-131` distinguishes nr*, nr*x and local nnr. `scatter_mod.f90:125-204` gathers descriptor-defined distributed real-space slices.
+
+For reciprocal export, preserve explicit integer Miller triplets. `fft_ggen.f90:28-35,66-104` defines G=sum_h mill_h*bg_h and the serial padded versus parallel-stick `nl` map. A local `nl` array is not a portable global reciprocal ordering. The fildrho file is complex even at q=0; taking real parts before Cartesian/basis resolution is unsafe.
+
+For an equivalent representative q'=q+G0, the physical object can be the same but the periodic envelope must be rephased: `D_{q'}(r)=exp(−i*G0·r)D_q(r)` in the stated cell-displacement convention, equivalently a reciprocal-index shift. Merely relabelling q is not valid. This matters because native auto-name lookup accepts q+G equivalence by default (`dfile_autoname.f90:62-110`).
+
+## 5. Metallic Gamma fixed-number constraint
+
+`dfpt_kernels.f90:243` sets `lmetq0=(lgauss OR ltetra) AND lgamma`. `localdos.f90:109-131,251-294` computes the occupation derivative/DOS, including augmentation and pool sums. `efermi_shift.f90:75-106` measures
+
+`delta_N = omega * sum_spin D_spin(G=0)`;
+`delta_EF = −delta_N / DOS(EF)`;
+`D_spin += delta_EF * LDOS_spin`.
+
+The Fermi shift is symmetry-projected. One common chemical potential constrains the **spin sum**, not separate up/down particle numbers and not fixed total magnetization. `phq_readin.f90:850-856` rejects constrained magnetization and metallic two-Fermi-energy cases. `dfpt_kernels.f90:542-561` later subtracts the common shift from potential channels and updates wavefunction/smooth response; `drhop` already has the density correction.
+
+Hence the Gamma total-number derivative should integrate to zero within numerical tolerance and the stated DOS/symmetry conditions. The routine sets the shift to zero if |DOS|<=1e-18 (`efermi_shift.f90:85-89`), so neutrality is not an unconditional code assertion. At finite q the periodic-envelope G=0 coefficient need not vanish; a blanket removal of that coefficient would delete genuine response. A static ground-density reference for the supplied neutral Ni10/H1 pseudovalence model would count 10*N_Ni+N_H, not all nuclear electrons; explicit charging would change that reference.
+
+## 6. Native q-star / minus-q transformations and hazards
+
+Active path: `do_phonon.f90:115-126` calls `rotate_dvscf_star` after the phonon driver. `rotate_dvscf_star.f90:33-52` constructs a spatial star and passes `(imq==0)` to request -q output. `LR_Modules/star_q.f90:131-248` generates actual rotated representatives, groups equivalences modulo reciprocal vectors, and reports whether -q is already present.
+
+The implementation in `dfile_star.f90` does the following:
+
+1. Reads every pattern record (`200-219`) and forms Cartesian derivatives with conjugate U (`222-229`).
+2. Converts derivative vector components using at, multiplies each atom's response by exp(+i*2*pi*q·tau) (`231-253`).
+3. For each chosen symmetry, inverse-rotates the grid point including fractional translation, permutes atoms using irt, and rotates vector components using s (`258-310`; grid formula in `PW/src/ruotaijk.f90:87-144`).
+4. Multiplies by exp(−i*2*pi*q_star·tau), converts with bg, and optionally transforms to rotated patterns (`315-354`). `rotate_mod` includes exp(+i*2*pi*q·rtau) (`find_mode_sym.f90:247-301`).
+5. Writes all 3nat records. For a separate -q star it writes their complex conjugates and conjugates the pattern matrix (`371-420`).
+
+This native path works algebraically channel by channel for the present real-potential collinear spin model. Its so-called time-reversal step is conjugation, **not an instruction to swap up/down or reverse the ferromagnet**. It must not be extrapolated to SOC/noncollinear magnetic-space-group operations; t_rev is imported but not used in this routine, and allocation uses nspin rather than nspin_mag.
+
+Important source-level risks, not runtime-verified failures:
+
+* **Cartesian .pat metadata defect:** it sets `rpat%nirr=3*nat` but fills `rpat%npert(1:nirr)=1` using the original nirr (`dfile_star.f90:356-365`). If original nirr<3nat, trailing advertised one-dimensional perturbations are zero. The Cartesian payload may exist while its pattern sidecar is inconsistent.
+* **Padded-grid indexing:** allocation/records use nr1x*nr2x*nr3x but rotation indexes use nr1 and nr2 strides (`:200-202,282-293`). Any build/grid with padding needs independent resolution; this implementation is not generically padding-safe.
+* **Partial banks:** reads traverse every npert of every irrep without consulting completion/selection masks (`:211-219`). A partial run does not become a complete bank by enabling star output.
+* **Small nonzero q:** separate -q output is guarded by `sum(xq**2)>1e-5` (`:393`), not an exact Gamma check. Some small nonzero q points can lack their conjugate partner.
+* **Auto source naming mismatch:** solve_linter resolves `auto:D` with dfile_name, but the star reader opens `source` directly with diropn (`:207-208`). It does not resolve that auto source extension. This is distinct from its auto-named rotated outputs.
+* **q-map index:** drho star passes -1, not iq (`rotate_dvscf_star.f90:45-46`); solve_linter's auto-map call passes uninitialized `iq_dummy` (`solve_linter.f90:115,279`). Neither integer can be trusted as a durable q identity.
+* **Representative aliasing:** dfile_name defaults to modulo-G lookup, while envelope rephasing is real information. Exact q vectors must be retained independently.
+* Star output with image parallelization is explicitly rejected (`phq_readin.f90:841-844`).
+
+These findings make native star output a supported but conditional code path, not an independently certified canonical representation.
+
+## 7. Native file layout, metadata and restart durability
+
+`openfilq.f90:162-163` sets `lrdrho=2*N_padded*nspin_mag`, measured in real(DP) words. `davcio_drho.f90:43-61` gathers each spin channel into `ddrho(N_padded,nspin_mag)` and root writes one record through davcio. Thus a record consists of contiguous complex grid values for spin 1 followed by spin 2; records are pattern indices. Real/imaginary components are retained, not separate files.
+
+`Modules/io_files.f90:390-459,544-603` uses unformatted **direct-access** records, not sequential records with Fortran sequential markers. The physical record length is established with `INQUIRE(IOLENGTH=...)` for a DP real. `Modules/kind.f90:16` specifies selected_real_kind(14,200), not a portable file type. For the conventional binary64 ABI, a record would be `16*N_padded*nspin_mag` bytes; that byte interpretation is conditional on the compiler/endianness/representation, not an embedded guarantee. There is no self-describing header, endian tag, complex-kind tag, grid shape, cell or record-validity table.
+
+File naming is exactly `current_tmp_dir/prefix.extension//nd_nmbr` (`io_files.f90:438-441`). The MPI root suffix is `1` (`Modules/environment.f90:80-83`); serial has no suffix. `openfilq.f90:126-131` selects tmp_dir_phq before response IO. `phq_readin.f90:648-651` defines `_ph<image>/`; `prepare_q.f90:127-129` optionally chooses `prefix.q_i/`. Therefore the usual MPI root bank is `_phI/[prefix.q_i/]prefix.D1`, not a single universal filename.
+
+**fildrho alone does not force q-directory isolation.** `phq_readin.f90:839` forces lqdir for elph or fildvscf, not for fildrho; non-dispersion/non-qplot also resets it false (`:848`). A literal extension with multiple q sharing one directory reuses the same record numbers, so prior q densities can be overwritten. The `.pat` is written using the current directory at phq_setup, before openfilq (`initialize_ph.f90:79-91`), and should not be assumed co-located in all branches.
+
+With `auto:D`, dfile_autoname generates crystalline-q suffixes such as `D.1o4_0_0` and a text map `prefix.D.dfile_dir`; root binary suffix `1` is appended later. `dfile_name` uses an explicit directory/prefix argument for its map, while diropn separately uses current tmp_dir for the binary. In solve_linter that map argument is tmp_dir_save (`:279-280`), whereas io_pattern uses its directory (`io_pattern.f90:39-40`). Preserve actual paths, not a guessed common root.
+
+### Can restart preserve all completed exported perturbations?
+
+**Yes, existing completed density records can survive and later irreps can add their records in place, provided those files and their exact basis/provenance remain intact. No, restart metadata is not a backup of every completed density derivative.**
+
+`phqscf.f90:75-84` skips done irreps and computes the cumulative record offset. It calls solve_linter/export first, then marks the irrep done and writes its dynamical-matrix checkpoint (`:116-149`). diropn uses status='unknown', not replacement, so native record writes do not intentionally truncate the completed bank. `close_phq.f90:79-84` keeps fildrho.
+
+But:
+
+* `ph_restart.f90:270-297` stores only completion plus partial dynamical matrix/effective charges for an irrep, not its grid density. A missing/overwritten fildrho is not regenerated when done_irr says the work is finished.
+* `write_rec.f90:25-98` is a single-current-irrep payload, overwritten as work advances. Its generic dvscfin slot is passed drhop by the done_drhod call (`phqscf.f90:149`), but that still preserves only the current irrep, not a bank.
+* Converged iterative recovery serializes drhop only when nlcc_any (`write_rec.f90:87,145`). solve_linter can jump straight from read_rec to export (`:145-176`). The no-NLCC converged-recovery branch therefore has an apparent uninitialized-drhop export risk; it must not be assumed safe merely because the last solve converged. The actual UPF NLCC flags determine relevance here.
+* Separate drhoc is not serialized in that payload. Instrumentation must not assume its allocation was filled after the converged-restart shortcut.
+* Native image collection copies dynmat/elph/tensors XML, not density banks (`check_initial_status.f90:598-684`). Completed perturbations can remain split across `_phI` roots even when completion XML is collected centrally.
+* Successful cleanup deletes dwf/bar/prd and recover (`close_phq.f90:49-84`); a converged fildrho is the lasting density output, not the scratch buffers.
+* reduce_io explicitly forbids interrupted restart in `PHonon/Doc/INPUT_PH.def:105-113`.
+* File length cannot certify record completeness: direct-access holes, selected irreps, stale records and skipped work can all look like a full-sized bank.
+* Gamma–Gamma shortcuts can suppress equivalent-atom/ASR perturbations (`phq_setup.f90:320-352`), while fildrho does not disable them. Activation conditions are `phq_readin.f90:900-925`. Normal all-pattern reconstruction must not silently synthesize those missing density fields.
+
+### Native files required
+
+For decoding an already complete bank: every contributing density file; the exact .pat or matching `patterns.iq.xml`; grid/cell/spin/units metadata from the matching ground-state save and provenance; q identity/map if auto naming is used; completion/selection metadata with explicit record-to-irrep ownership. The relevant native XML names are `prefix.phsave/{control_ph.xml,status_run.xml,patterns.iq.xml,dynmat.iq.irr.xml}` (`ph_restart.f90:1295-1346`). The original UPFs and their identities are necessary to substantiate ultrasoft/NLCC/core/valence claims.
+
+For actual interrupted native recovery, retain the matching ground/q saves and wavefunctions plus per-rank recover, bar, dwf and prd buffers as required by the restart branch (`openfilq.f90:133-156`; `write_rec.f90:75-90`). A portable derivative bank is not itself a complete ph.x restart.
+
+## 8. Portable export: existing partial code versus a narrow missing connection
+
+No wired full-bank portable fildrho exporter was found in PH or PP consumers, after exact-symbol searches for fildrho, davcio_drho, io_pattern, portable writer calls and alternative density IO hooks.
+
+Tempting code is not sufficient:
+
+* `punch_plot_e.f90:9-18,79-140` is electric-field, three-direction plotting output; it takes real parts, spin-sums and prints limited precision. It does not preserve general complex phonon/spin response.
+* `dump_drho.f90:9-105,113-246` handles macroscopic scalar response, with ionic/charge conversions and a different purpose, not a complete dense derivative export. Its lmultipole branch is rejected for ultrasoft pseudopotentials (`phq_readin.f90:858-864`), so it cannot bypass the actual-material requirements. `init_rho` repeatedly reads record 1 (`dump_drho.f90:614-626`), not a general all-perturbation loader.
+* `Modules/io_base.f90:405-585` is a reusable complex reciprocal-density writer with explicit Miller indices and optional HDF5. It is not called by this PH export path. Its two-channel HDF5 names are rhotot_g/rhodiff_g, so blindly handing it raw PH up/down channels would mislabel them. It lacks q/pattern/completion semantics. The local make.inc does not enable __HDF5. Restricting a full-grid transform to ngm is also not a claim of bitwise losslessness for the original real-grid values.
+* PW's `input_drho/output_drho` are unrelated density-interpolation hooks: `remove_atomic_rho.f90:9-46` subtracts an atomic reference from ground-state rho, not a displacement derivative.
+
+**Narrow instrumentation boundary, not an implementation or accepted plan:** `solve_linter.f90:273-285` has the converged, already assembled/symmetrized/fixed-number `drhop`, perturbation index and export decision. `davcio_drho.f90:43-61`, after gather and before davcio, is the narrow root-owned global complex-grid serialization point. A lossless portable representation can preserve those existing DP real/imaginary values without computing a new response or coupling. It must add explicit metadata from the caller; davcio_drho alone does not know q, U, atom identity or completion status. Separate core/term-resolved exports would be additional outputs, not facts that can be inferred from the total valence bank.
+
+## 9. Minimal data contract
+
+A minimally sufficient derivative-bank contract must state:
+
+1. **Identity:** QE version/source identity, exporter/schema version, ground-state save identity, input/provenance, ordered UPF identities and valence/NLCC/ultrasoft flags; actual nspin=2, noncollinear/SOC/constraints flags, occupations, smearing/tetrahedron parameters, k sampling and response convergence status.
+2. **Structure:** nat; immutable atom order/species; Cartesian positions and cell in bohr; alat, at, bg, omega and coordinate-origin convention. Do not infer atom labels from array order without this record.
+3. **q:** exact Cartesian q in 2*pi/alat and crystalline q; any reciprocal representative shift; the cell-displacement and periodic-envelope phase convention; star parent/operation/antiunitary status where applicable. Do not trust iq_dummy or -1 as identity.
+4. **Perturbations:** record-to-(irrep,ipert) map, nirr/npert, full complex U, atom/axis flattening, pattern amplitude in bohr, explicit computed/complete mask and originating image/file. A Cartesian export must still document how it was reconstructed and which records supported it.
+5. **Payload:** complex spin-resolved periodic-envelope derivative, channels [up,down], quantity `d n_pseudovalence / d R`, positive electron-number convention, units bohr^-4. State included smooth+US augmentation+moving-Q/projector/orthogonality+Gamma occupation terms; state explicitly excluded direct NLCC core, other frozen-core/all-electron and ionic density. No bare/nonlocal vertex is implied.
+6. **Grid/transform:** physical and padded dense dimensions; physical coordinates; x-fast ordering; padding policy; forward 1/N and inverse unnormalized conventions. Reciprocal data must carry signed Miller indices and explicit G support, not a local nl array. If portably preserving native bytes too, record ABI/kind/endian/record-stride information separately.
+7. **Integrity:** per-record shape/type and durable completion/checksum information tied to the source bank/basis; distinguish absent perturbation, a physical zero, stale data and numerical nonconvergence. No zero filling of uncomputed Cartesian derivatives.
+
+A portable contract can omit native padding from the scientific field if it retains every physical complex value exactly and declares that choice; bitwise preservation of an entire native record additionally includes its padding bytes, which need not represent physics.
+
+## 10. Independent canonical-oracle identities and failure mutations
+
+These are definitions for later independent oracles, not executed tests or simulation instructions. Use asymmetric complex fields/noncubic shapes so incorrect transposes/signs cannot pass accidentally.
+
+| Identity / independent comparison | Concrete failure mutation |
+|---|---|
+| Basis completeness: U†U=I, sum npert=3nat, complete record mask; forward/inverse Cartesian transforms agree entrywise. Rephase one U column by exp(i*theta) and its response by the same phase: Cartesian response is invariant. | Drop conjugation in inversion; transpose U; reuse U from another run; mark a missing record as zero. |
+| Fourier definition: compare explicit signed-Miller plane-wave sums to the documented transform. Parseval is (1/N)sum_r |D(r)|²=sum_G |D_G|². Cell integral is omega*D_0. | Reverse FFT sign; omit 1/N; multiply by omega twice; reshape with z-fast order; use nr1 rather than nr1x for a padded bank; discard imaginary values. |
+| Gamma particle number: omega/N*sum_r(D_up+D_down)=0 after correction, and omega/N*sum_r(LDOS_up+LDOS_down)=DOS(EF). Cross-check generalized ultrasoft normalization d<psi|S|psi>=0, not smooth norm alone. | Omit prd/augmentation/overlap response; duplicate the density factor two; omit delta_EF*LDOS; force each spin integral separately to zero. |
+| Rigid-translation covariance at Gamma for the same pseudovalence ground density: sum_kappa D_{kappa,alpha}(r)=−partial_alpha n_val(r), or −i*G_alpha*n_val(G) in reciprocal space. | Sum only H displacements; omit moving-Q term; flip its sign; use an all-electron/core-added reference against a valence-only derivative; divide by alat again. |
+| Physical Cartesian finite-displacement definition: D is the h→0 central derivative of the same spin-resolved pseudovalence density at fixed lab-grid coordinates, consistent occupations and electron number. | Compare a smooth-only ground density to an augmented derivative; recenter/realign each displaced density; use dimensionless tau increments as bohr increments. |
+| Real collinear Hamiltonian conjugation: D_cart(-q,r)=conjg(D_cart(q,r)); reciprocal form requires D_-q(G)=conjg(D_q(-G)). | Conjugate same-G coefficients without reversing G; swap spin channels; infer -q from the native small-q threshold rather than actual q coverage. |
+| q+G representative covariance: exp(i*q'·r)D_q'(r)=exp(i*q·r)D_q(r), with q'=q+G0. | Reuse an auto-named equivalent-q file under a new q label without the reciprocal-index shift / envelope phase. |
+| Symmetry covariance: direct atom/vector/grid transformation and its inverse recover the same Cartesian physical field; alternative symmetries reaching one star member agree after representative phases. | Omit irt atom permutation, fractional translation, rtau phase or either atomic q phase; rotate vector components but not the grid. |
+| Rigid NLCC field, if separately represented, equals the derivative of its own pseudocore radial/structure-factor representation; its Gamma integrated derivative is zero. It remains a separate field from valence. | Add it to fildrho while claiming unchanged quantity; call it the complete Ni frozen core; apply spin duplication instead of the XC 1/2 sharing. |
+| Archive oracle: portable real/imaginary physical-grid values recover the same source values and atom/pattern/spin record identities; completed masks agree with actual owned records, not just XML completion or file size. | Quantize to plotting precision; save only real/up channel; swap two mode records; leave a hole inside a full-length direct-access file; preserve completion XML but remove the corresponding density bank. |
+
+Gamma neutrality alone cannot certify correctness: many sign, pattern and atom-permutation defects conserve the integral. Translation, basis-phase, q-representative and grid-order identities are needed independently.
+
+## 11. Existing primary-reference pointers, not paper verification
+
+* `addusddens.f90:10-25` points to Eq. B31 of A. Dal Corso, Phys. Rev. B 64, 235118 (2001); `dvqpsi_us.f90:17-19` points to Eq. B29. The repository bibliography identifies the author (`PHonon/Doc/dfpt_tetra.tex:355-356`). Pointer: https://doi.org/10.1103/PhysRevB.64.235118 .
+* `dfpt_kernels.f90:349-353` points to Eq. 75 of Rev. Mod. Phys. 73, 515 (2001) for the metallic Gamma Fermi-energy term. Pointer: https://doi.org/10.1103/RevModPhys.73.515 .
+* `dump_drho.f90:239-246` explicitly names Macheda, Barone and Mauri, Phys. Rev. B 110, 094306 (2024), and its DOI: https://doi.org/10.1103/PhysRevB.110.094306 . This is a macroscopic-response pointer, not proof that its restricted native implementation supports the actual ultrasoft model.
+
+Only these local source/reference pointers were inspected. The papers themselves were not read or verified in this assignment.
+
+# Bottom line
+
+The native field is useful and materially richer than a smooth-only response, but a claim of a complete portable all-Cartesian Ni/H electron-number derivative bank still requires explicit coverage, exact patterns, unit/phase metadata and treatment of the identified native IO/star/restart risks. Explicit core/ionic/nonlocal-operator information is not present and must not be silently invented. None of those source findings accepts a downstream physical coupling or W2 decision.

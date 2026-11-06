@@ -1,0 +1,95 @@
+{
+  "schema": "P254-actual-joint-frame-crosscheck-registration-v1",
+  "registered_at": "2026-10-29T14:15:29.889802+00:00",
+  "decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-050.json",
+    "bytes": "1882",
+    "sha256": "813e0cb19d0f4caa8e2542c33dd1c327f51da4e45ecb461f4ce75569db59681b"
+  },
+  "script": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_frame_crosscheck.py",
+    "bytes": "9853",
+    "sha256": "3e51e3213ecc6ef70c9334703c1dfeb151434109df122c6819dd89d11a7c8da6"
+  },
+  "history": {
+    "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+    "bytes": "155903",
+    "sha256": "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd"
+  },
+  "producer_model": {
+    "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/model.json",
+    "bytes": "27232",
+    "sha256": "6d666131334ae267ba585b40c558d5e10f51f991b5ecdfb1311710b45547313d"
+  },
+  "initialization": {
+    "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+    "bytes": 25705,
+    "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"
+  },
+  "original_slot_index": 0,
+  "selection": "Largest original PW row count, earliest original index on ties; selected before the independent reference calculation.",
+  "scope": "One actual completed coupled frame. Compare the independently reconstructed SciPy full-space Taylor action with the production column result at its original1e-11 declared absolute target. Also require the original zero-interval frame to fail that same comparison. No full-material or long-time accuracy certificate.",
+  "budget": {
+    "internal_seconds": 720,
+    "supervisor_seconds": 780,
+    "cumulative_internal_seconds": 1440,
+    "max_h0_actions": 128,
+    "unit_memory_bytes": "4294967296",
+    "observed_available_memory_bytes": "20201623552",
+    "cpu": 10,
+    "nice": 0
+  },
+  "command": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-actual-frame-crosscheck-002",
+    "--property=Type=oneshot",
+    "--property=RemainAfterExit=yes",
+    "--property=CPUAffinity=10",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=720s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_frame_crosscheck.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-joint-frame-crosscheck-002",
+    "--case",
+    "loaded-ni31h6",
+    "--initialization",
+    "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+    "--initialization-sha256",
+    "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713",
+    "--history",
+    "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+    "--history-sha256",
+    "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd",
+    "--producer-model",
+    "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/model.json",
+    "--producer-model-sha256",
+    "6d666131334ae267ba585b40c558d5e10f51f991b5ecdfb1311710b45547313d",
+    "--slot-index",
+    "0",
+    "--cpu",
+    "10",
+    "--max-actions",
+    "128",
+    "--max-seconds",
+    "720",
+    "--max-memory-bytes",
+    "4294967296"
+  ],
+  "recovery": "Original source and target remain unchanged. A partial SciPy action is not resumable; at most this bounded one-sector attempt is lost.",
+  "prior_attempt": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-joint-frame-crosscheck-intake-failure-001.json",
+    "bytes": "1785",
+    "sha256": "3d6158dbac1e8017e13c9bcf3321b2037235d488cc797d240ad27206d1968db4"
+  }
+}

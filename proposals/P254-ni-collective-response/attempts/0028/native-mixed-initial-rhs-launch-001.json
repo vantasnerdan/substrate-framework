@@ -1,0 +1,51 @@
+{
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-native-mixed-initial-rhs-001",
+    "--wait",
+    "--pipe",
+    "--property=RuntimeMaxSec=1790",
+    "--property=TimeoutStopSec=10",
+    "--property=MemoryMax=4294967296",
+    "--property=CPUAffinity=10",
+    "env",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_native_rhs_probe.py",
+    "--case",
+    "loaded-ni31h6",
+    "--history",
+    "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+    "--history-sha256",
+    "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd",
+    "--zero-source",
+    "/var/tmp/p254-a28-loaded-gamma-forward-003/scientific-work/initial/867f66b0afbcea28fe431b3f2c097bf56f1ebdf31feef027c63955b654146b67/generation-adopted-98957c4e69954655bd408ba3316c17e8/checkpoint.json",
+    "--zero-source-sha256",
+    "ef1db4a248abbb06c00f95810493b5f95c3f5fe41eae4d4fb39a4a4afa772041",
+    "--directory",
+    "/var/tmp/p254-a28-native-mixed-initial-rhs-001",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/native-mixed-initial-rhs-probe-001.json",
+    "--max-seconds",
+    "1800"
+  ],
+  "shell": "rc=0; env XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus systemd-run --user --unit=p254-a28-native-mixed-initial-rhs-001 --wait --pipe --property=RuntimeMaxSec=1790 --property=TimeoutStopSec=10 --property=MemoryMax=4294967296 --property=CPUAffinity=10 env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_native_rhs_probe.py --case loaded-ni31h6 --history /var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json --history-sha256 903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd --zero-source /var/tmp/p254-a28-loaded-gamma-forward-003/scientific-work/initial/867f66b0afbcea28fe431b3f2c097bf56f1ebdf31feef027c63955b654146b67/generation-adopted-98957c4e69954655bd408ba3316c17e8/checkpoint.json --zero-source-sha256 ef1db4a248abbb06c00f95810493b5f95c3f5fe41eae4d4fb39a4a4afa772041 --directory /var/tmp/p254-a28-native-mixed-initial-rhs-001 --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/native-mixed-initial-rhs-probe-001.json --max-seconds 1800 || rc=$?; printf '\nP254_NATIVE_MIXED_RHS_001_DONE_%s\n' \"$rc\"",
+  "pane": "w1:p3S",
+  "result": {
+    "text": "(no output)",
+    "details": {
+      "wallTimeNoticeEmitted": false,
+      "timeoutSeconds": 30,
+      "wallTimeMs": 34.41195598244667
+    }
+  }
+}

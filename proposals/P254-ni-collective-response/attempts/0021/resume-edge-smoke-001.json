@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "real_SIGKILL_summary_fallback",
+      "passed": true
+    },
+    {
+      "name": "real_SIGKILL_reservation_is_charged",
+      "passed": true
+    },
+    {
+      "name": "torn_reservation_charged_and_preserved",
+      "passed": true
+    },
+    {
+      "name": "reservation_not_double_charged",
+      "passed": true
+    },
+    {
+      "name": "absent_accounting_cannot_reset_cap",
+      "passed": true,
+      "error": "action accounting absent for nonzero-time checkpoint; cap cannot be reset"
+    },
+    {
+      "name": "corrupt_committed_counter_refuses",
+      "passed": true,
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "name": "actual_finite_frame_coordinates_reused",
+      "passed": true
+    },
+    {
+      "name": "equivalent_H0_eigenvector_phase_cannot_reinterpret_state",
+      "passed": true,
+      "error": "saved spectral coordinates differ; no amplitude reinterpretation"
+    },
+    {
+      "name": "missing_original_coordinates_cannot_be_retroactively_bound",
+      "passed": true,
+      "error": "original spectral coordinates were not recorded; numerical resume is unproven"
+    },
+    {
+      "name": "actual_CLI_old_generation_refuses_preserving_result",
+      "passed": true
+    }
+  ],
+  "accounting_recovery": {
+    "policy": "charge one ambiguous unpublished reservation",
+    "preserved_raw_hex": "7b22616374696f6e223a2237",
+    "sha256": "d8b3410aae09532e75ad16301a1e012bff4b9d9562951293ddf52cdc253be6f2",
+    "charged_actions": "7"
+  },
+  "actual_cli": {
+    "argv": [
+      "/home/administrator/projects/catalyst-dft/.venv/bin/python",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/run_local_kick.py",
+      "--resume",
+      "--output-dir",
+      "/tmp/p254-0021-resume-mxz7za04/cli"
+    ],
+    "returncode": 1,
+    "stdout": "{\"at\": \"2026-10-27T20:23:50.255649+00:00\", \"event\": \"pilot_finished\", \"elapsed_seconds\": 0.0015330314636230469, \"status\": \"stopped_requires_root_decision\", \"samples\": \"0\"}\n[dft-fail] p254-local-kick-0021\n",
+    "stderr": ""
+  },
+  "scope": "New recovery-helper and CLI refusal paths only. No actual PW RHS, Native, or numerical continuation. Original scientific artifacts untouched. Exact finite-frame phase mutation tests prevention of coordinate reinterpretation.",
+  "sources": [
+    {
+      "path": "/tmp/p254_resume_edges_0021.py",
+      "bytes": "5495",
+      "sha256": "f0eb3b9f1be60eab4ff17977e8ae61bd7f291e382322584647f14d3ae56d3b6c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/time_pilot_resume.py",
+      "bytes": "4254",
+      "sha256": "a6c2bd43a0c471d0439e572dd6f8b6ad311058f49f0fcd3eb37228bc91442bc9"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/time_pilot_checkpoints.py",
+      "bytes": "4460",
+      "sha256": "4cfdacce7ea42493e1977cbf1afa3903edd4f580733486c10391673914663b54"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/run_local_kick.py",
+      "bytes": "11687",
+      "sha256": "eb45f90d2261046a36fa50495121e35c0f027f7858dbf8cd321057da5c29e9f5"
+    }
+  ]
+}

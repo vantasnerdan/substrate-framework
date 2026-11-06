@@ -1,0 +1,179 @@
+{
+  "schema": "p254-a27-ionic-reference-implementation-1",
+  "slice": "IonicScalarBuild27",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "repository": "/home/administrator/projects/substrate-ni-collective",
+  "status": "SOURCE_IMPLEMENTATION_AND_INDEPENDENT_ORACLES_WRITTEN_NOT_EXECUTED",
+  "scope": {
+    "registration": "proposals/P254-ni-collective-response/attempts/0027/implementation-registration.json; preregistered in854d4234",
+    "implemented": "One explicitly finite ordinary-3D periodic valence ion-ion Ewald scalar with its analytic Cartesian derivative; clean PreparedReference ionic-force API cutover; independent NEW scalar and composition oracle source.",
+    "unchanged": "Saved-reference/Bloch/preparation-family source, Root Native-force ledger, historical reports/receipts and executed source generations were not edited. Root reports historical A26 sources/results banked in7cc4fbc0.",
+    "method": "Read settled reports and additional-source closure, actual QE ewald/force_ew/rgen, affected production/caller code, repository rules, code-structure and quantitative-verification instructions. Implemented source only. Original binary source reads solely for byte counts/SHA256. No science import, symbolic/numerical execution, test/build/lint/formatter, material decoding, Native/process/cloud action or Git operation.",
+    "consumer": "Supplies an unprocessed same-scalar ionic linear baseline for the conditional local joint-second-order model; does not select a material electronic state, support, temperature, width, equilibrium, or spatial-domain outcome."
+  },
+  "files": [
+    {
+      "path": "src/substrate_framework/qe_ionic_ewald.py",
+      "bytes": "8996",
+      "sha256": "f3e0c53e5545f46f5ec9e9f94872139c284dd7133cbdd8882d30a27bdf3ea70b",
+      "role": "NEW public finite-scalar contract/result and admitted MaterialInputs adapter"
+    },
+    {
+      "path": "src/substrate_framework/qe_ewald_sums.py",
+      "bytes": "3583",
+      "sha256": "b200cb1538195ec07332e2f871e4f1b6e3035b8c2922444f768b709cdc185d2c",
+      "role": "NEW single-responsibility real/reciprocal sum kernels"
+    },
+    {
+      "path": "src/substrate_framework/prepared_reference.py",
+      "bytes": "7393",
+      "sha256": "5474edc99ae71a0838902b350b8b512667f192ffc184f23339340d73d6c2d832",
+      "role": "Direct ionic_force/ionic_authority contract and scalar documentation"
+    },
+    {
+      "path": "src/substrate_framework/prepared_factor_dynamics.py",
+      "bytes": "8348",
+      "sha256": "67a1b584e90e9325eaad412bb2444d9a21766cbb0e28db8fba5c84440fd496d2",
+      "role": "Mean force and scalar-energy cutover"
+    },
+    {
+      "path": "src/substrate_framework/prepared_covariance_source.py",
+      "bytes": "9649",
+      "sha256": "a83ab2d0c3760f30aaf24ecc90a7013883b4e0584994ceea352256c77da8fe81",
+      "role": "Total-force affine probe constant cutover"
+    },
+    {
+      "path": "src/substrate_framework/prepared_time_observables.py",
+      "bytes": "3542",
+      "sha256": "3ca50e733f8adbc14f0e1a5650f5e08793633459c8e151587d3fc5fa3c9b73ff",
+      "role": "Boundary energy diagnostic cutover"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0026/prepared_time_fixture.py",
+      "bytes": "10828",
+      "sha256": "cd7782cbc5c6f70594f6ce8c5bfee9479dbe01e2920478b61c06f69876c27d18",
+      "role": "Live constructor and independent force/energy/probe fixture migrated; no old oracle executed"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0026/run_prepared_factor_oracle.py",
+      "bytes": "26030",
+      "sha256": "3fda0891b0ad961cf756554341a4089711b5de239211487c3a25dced8d9fd80d",
+      "role": "Live constructor, origin-shift, scalar/force comparator and symbolic scalar API migrated; historical outputs unchanged and no rerun"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0027/run_ionic_reference_oracle.py",
+      "bytes": "4370",
+      "sha256": "45e26be1fdd1bf297835c3c350e37511101958789c2acf92fb4897d10f662df2",
+      "role": "NEW executable oracle entry point; exclusive result creation, failure retention and original source bindings"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0027/ionic_scalar_oracle.py",
+      "bytes": "9229",
+      "sha256": "796a39f0839ad88b3e923d42c6f31bd072f632d42c0dddf95c0aac001f9fc6f4",
+      "role": "NEW independent ordered-pair energy, five-point derivative and QE-force-style comparisons"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0027/ionic_composition_oracle.py",
+      "bytes": "9795",
+      "sha256": "119367f1262cf4a7e387a886fcf49f1589db6efedac8848bf8fe84c51fe480ab",
+      "role": "NEW independent symbolic scalar and finite nonstationary affine-composition comparisons"
+    }
+  ],
+  "interfaces": {
+    "EwaldSumContract": "EwaldSumContract(alpha_bohr_inv2: float, real_cutoff_bohr: float, reciprocal_cutoff_bohr_inv: float). All are explicit positive finite numerical inputs. alpha is QE alpha, not sqrt(alpha). No automatic optimization or implied error certificate.",
+    "periodic_ionic_ewald": "periodic_ionic_ewald(cell_bohr, positions_bohr, valence_charges, *, contract, coordinate_identity, source_authority, sources) -> IonicLinearTerm. cell [3,3] columns in bohr, positions [nat,3] Cartesian rows, charges [nat] positive UPF valences, sources explicit original binding mappings; () is permitted only as an explicitly identified synthetic input authority.",
+    "ionic_linear_term": "ionic_linear_term(material_inputs, *, contract, coordinate_identity) -> IonicLinearTerm. Reuses admitted MaterialInputs.reference and tables[name].upf, actual NCUPF.z_valence, original XML atom order/labels, geometry and XML/UPF source bindings. Transposes SavedReference.positions_bohr [3,nat] to atom rows. Does not read density/WFC/XML-force/eigenvalue data or invent nuclear-charge mappings.",
+    "IonicLinearTerm": "IonicLinearTerm(energy_ry, force_ry_bohr, real_force_ry_bohr, reciprocal_force_ry_bohr, cell_bohr, positions_bohr, valence_charges, coordinate_identity, source_authority, sources, contract, energy_terms_ry, sum_metadata). Evaluator returns read-only arrays and mapping proxies. ionic_force property is read-only [3*nat] atom-major xyz F_II. gradient_ry_bohr property is the flattened negative force ell_II. ionic_authority property is a JSON string binding the scalar/sign, geometry, valences, sources, coordinate identity, full numerical contract and metadata for PreparedReference.",
+    "PreparedReference": "PreparedReference(nbar, ionic_force, held_density, held_gradient, curvature, masses, support_force, kernel, ncells, expansion_authority, ionic_authority, coverage_authority, support_authority, coordinate_identity, state_authority). gbar, fbar and offset_authority removed without aliases/shims. Existing array shapes retained except replacing the two force vectors by one ionic_force. PreparedSector and validate_sectors contracts unchanged.",
+    "mean_consumption": "Force = ionic_force - G_active - G_held - C*u + support_force. Scalar = sum_s w_s Tr(H0_s rho_s) + dv/2 sum(delta_n*Kdelta_n) + u.(G_active+G_held-ionic_force-support_force) + u.C.u/2 + sum(p*p/M)/2. delta_n=n_active+n_held-nbar. Affine probe constant=direction.(ionic_force+support_force-G_held); probe electronic action remains -g and ionic linear readout -C. Boundary diagnostics consume the same scalar.",
+    "internal_sum_helpers": "qe_ewald_sums.reciprocal_vectors(cell, cutoff), real_sum(cell, positions, charges, alpha, cutoff), reciprocal_sum(cell, positions, charges, alpha, cutoff) are implementation helpers, not alternative public physical models.",
+    "oracle_entrypoint": "python proposals/P254-ni-collective-response/attempts/0027/run_ionic_reference_oracle.py --result NEW_PATH. Source-written only; Root must authorize execution under its source-bound budget. No A26 runner is imported or executed."
+  },
+  "scalar_contract": {
+    "formula": "U=e2/2 sum_ijR' ZiZj erfc(sqrt(alpha)*|Ri-Rj-R|)/|Ri-Rj-R| + e2*2pi/Omega sum_G!=0 exp(-G^2/(4alpha))*|sum_i Zi exp(iG.Ri)|^2/G^2 - e2*sqrt(alpha/pi)*sum_i Zi^2 - e2*pi*(sum_i Zi)^2/(2alpha*Omega), e2=2 in Ry.",
+    "boundary": "Ordinary 3D periodic Ewald, uniform neutralizing background/G=0 convention, conducting/tinfoil boundary, no surface dipole/ESM/2D/MT corrections.",
+    "finite_sums": "Real pair-distance sphere and full signed physical reciprocal sphere with explicit cutoffs. Complete lattice boxes use inverse-axis bounds; pair displacement is refolded as in rgen. Exact self i=j,R=0 excluded, periodic self images included in energy; self/background constants retained. Distinct coincident ions rejected rather than omitted. Real pair derivative assembled antisymmetrically from the scalar pair, never by subtracting a final net force.",
+    "differentiability": "Hard real cutoff means a piecewise smooth finite scalar. Analytic derivative holds geometry cell, alpha and cutoffs fixed on a branch with no shell crossing; evaluation within 64*machine-epsilon times the physical length scale of a crossing is rejected. Minimum real-cutoff distance is returned. Derivative does not include cutoff-surface distribution terms or cell stress.",
+    "honest_native_difference": "QE ewald.f90 selects alpha downward from2.8 using1e-7 energy bound and real4/sqrt(alpha); force_ew selects downward from1.0 with1e-6 energy bound and real5/sqrt(alpha). This implementation deliberately uses one declared finite scalar instead, so no bitwise Native energy/force identity is claimed. It also replaces rgen's near-zero 1e-10 alat-squared exclusion with exact self exclusion/singular-distinct-ion rejection, and has no mxr=50 cap.",
+    "curvature": "Only F_II at the expansion point enters PreparedReference. Fixed supplied joint-second-order C is retained, including its already-present ionic/reference frozen-electron curvature. Neither full displaced Ewald energy nor an additional ionic Hessian is inserted. The absolute reference Ewald scalar is diagnostic; PreparedReference keeps its irrelevant additive energy constant at zero."
+  },
+  "source_bindings": {
+    "binding_policy": "The following are carried ORIGINAL settled receipts, not hashes of reader-rendered output. Complete bindings remain in additional-source-access-001.json and the settled source reports.",
+    "material_reference_grounding": {
+      "bytes": "62519",
+      "sha256": "59505bed7d8f7147e89a8df12314e440a500731274fbc9a43dcdd3ed0cb28253"
+    },
+    "bloch_spatial_grounding": {
+      "bytes": "59325",
+      "sha256": "564be832576bfdfb24b7ee759bb44831ef8b48b9eb05f8540868b9ac174ecefe"
+    },
+    "additional_source_access_001": {
+      "bytes": "6467",
+      "sha256": "747ebd89b815b7492fc83139e9b6dd67bdc053eef996ec5f8913a8132c1e572a"
+    },
+    "ewald_f90": {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/src/ewald.f90",
+      "bytes": "6073",
+      "sha256": "bc3c5a455490daaa55be33a3b0b3a57f40c0e8404426f6e8bb574b387298de01",
+      "read": "9-198 requested; source ends185"
+    },
+    "force_ew_f90": {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/src/force_ew.f90",
+      "bytes": "6053",
+      "sha256": "f16316181f2f9f8a408cd1a103fbb80add18e857192158cae8c1060e4870b0b6",
+      "read": "9-208 requested; source ends192"
+    },
+    "rgen_f90": {
+      "path": "/opt/qebuild/q-e-qe-7.5/Modules/rgen.f90",
+      "bytes": "3376",
+      "sha256": "5ee7615c59b516d5ae7eb1141ee8965ad7c6de55d377340c9f41d109d11b09e0",
+      "read": "9-108"
+    }
+  },
+  "oracles_written": [
+    {
+      "block": "finite Ewald scalar/constants",
+      "independent_route": "Small skew asymmetric three-ion literal geometry. Independent fixed over-covering integer cube, ordered ij pairs, real erfc energies and reciprocal pair cos(G.(Ri-Rj)) rather than production structure factors. Coverage bounds checked independently. Self/background constants checked individually.",
+      "mutations": "Omit each real, reciprocal, self or background energy term.",
+      "status": "WRITTEN_NOT_EXECUTED"
+    },
+    {
+      "block": "finite-scalar derivative and independent force comparator",
+      "independent_route": "Five-point Cartesian differentiation of independently written energy at two step sizes, requiring adequate distance to real shell crossings. Separate real/reciprocal derivatives. Independent force_ew-style route with real sin/cos charge sums and all-ordered-atom real force; no production helpers/intermediates, pair antisymmetrization or net-force correction used by the comparator.",
+      "mutations": "Overall force sign, Hartree/Ry factor, omitted real or reciprocal force, reciprocal phase sign, nuclear-versus-valence replacement, adding a one-atom force defect followed by translation removal.",
+      "status": "WRITTEN_NOT_EXECUTED"
+    },
+    {
+      "block": "coordinates/periodicity/unit/truncation sensitivity",
+      "independent_route": "Common translation energy and force; unprocessed net-force sum; atom permutation with charge transport; individual-atom lattice translation; homogeneous cell/position/alpha/cutoff scaling; atom-major gradient sign; separate coarse/fine real+reciprocal cutoff refinement. This finite fixture does not certify arbitrary cutoffs.",
+      "mutations": "Atom/charge order mismatch, nonsymmetric cell transpose, wrong force length conversion, grossly insufficient reciprocal and real cutoff.",
+      "status": "WRITTEN_NOT_EXECUTED"
+    },
+    {
+      "block": "common scalar/affine baseline and fixed curvature",
+      "independent_route": "Separately encoded rational polynomial in a full two-mode Hermitian density matrix and three Cartesian ionic coordinates. SymPy derives ionic forces and Hessian; old baseline is only an independently checked alternate representation with Fbar=F_II-Gbar defined from the same scalar. Support is a separately specified conservative linear scalar.",
+      "mutations": "Wrong electronic-force sign, omitted old Gbar restoration, processed-total plus electronic-force double counting, extra displaced-Ewald quadratic curvature, unsupported state-dependent curvature.",
+      "status": "WRITTEN_NOT_EXECUTED"
+    },
+    {
+      "block": "nonstationary finite production composition",
+      "independent_route": "Independent polynomial derivatives reconstruct the one-body Hamiltonian, full-density-matrix commutator, force, velocity and energy. Compare production evaluate_mean, boundary_diagnostics and total_force_probe/probe_mean using literal finite Hermitian action matrices, nonzero held density/gradient, density mismatch, drift and acceleration. No old fixture/oracle imported.",
+      "mutations": "Falsely stationary electrons, fitted zero acceleration/cancellation support, assumed reference density, omitted held density/gradient, missing affine probe constant, processed-total baseline double counting, extra ionic curvature force. Separate support-force/energy differences are retained.",
+      "status": "WRITTEN_NOT_EXECUTED"
+    }
+  ],
+  "verification": {
+    "exercised": "Original byte count and SHA256 capture only. No numerical/symbolic results or verification pass is asserted.",
+    "proposed_root_check": "Under explicit authority, execute ONLY the new A27 run_ionic_reference_oracle.py once with an original unused result path, preserving stdout/stderr/status/elapsed and these exact source bindings. Symbolic and numerical checks emit evaluated predicates and sensitive mutations; failures are retained. Do not rerun A26 proofs.",
+    "thresholds_source_written": "Default numeric atol2e-11/rtol2e-10; finite-difference force comparisons atol3e-8 at h=2e-4 and1e-4 bohr; coarse cutoff refinement atol2e-4 and fine refinement atol2e-8. These are preregistered source values, not observed residuals."
+  },
+  "remaining_limits": [
+    "All new code and independent oracles are unexecuted and require Root integration/execution/review; no new scalar-gradient identity is promoted as verified.",
+    "No actual Ni/H geometry evaluation, material F_II number, Native comparison, state/occupation selection, material drift/trajectory or full-grid decoding occurred.",
+    "Root's independent load_native_force_components(stdout_binding, *, atom_type_indices, evaluation_index) -> NativeForceLedger can later supply blocks['ion_ion'].values_ry_per_bohr [nat,3], with original decimal/stage/precision metadata. It was not edited or consumed here; evaluation identity and different Native finite cutoffs must remain explicit.",
+    "Finite hard-cutoff scalar is locally differentiable off shell crossings only; no force/stress claim on crossing surfaces, no analytic tail/error certificate, no automatic cutoff selection, and no exact Native processed-force equality.",
+    "Only ordinary periodic NC UPF-valence ion-ion electrostatics is implemented. ESM, 2D cutoff, MT, external fields, symmetry/torque/net-force processing and imposed support are not silently imported.",
+    "PreparedReference still requires independently admitted electronic/held coverage, densities, source authority, physical support if any, masses, coordinates, and fixed joint-second-order C. The cutover does not make a new prepared state exact PBE or stationary.",
+    "Full spatial/coherence-domain, finite-q, environmental/transverse matter-field, controls/lattice comparison and nuclear/energy-disposal obligations remain outside this necessary ionic-reference construction."
+  ]
+}

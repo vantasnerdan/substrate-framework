@@ -1,0 +1,38 @@
+{
+  "prepare": {
+    "argv": [
+      "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0008/run_oracle.py",
+      "--prepare"
+    ],
+    "returncode": 0,
+    "stdout": "PRIMARY_BOUNDARY_REGISTERED primary-boundary-0008-v1 085177d547bd1cea272f1a9414bb07d067bb5d73017ef45b26a65b939b77ca1c\n",
+    "stderr": ""
+  },
+  "launch": {
+    "argv": [
+      "systemd-run",
+      "--user",
+      "--unit=p254-w1-primary-boundary-0008-v1.service",
+      "--property=Type=exec",
+      "--property=CPUAffinity=5",
+      "--property=MemoryMax=2G",
+      "--property=Restart=no",
+      "--property=RemainAfterExit=yes",
+      "--property=KillMode=control-group",
+      "--working-directory=/home/administrator/projects/substrate-ni-collective",
+      "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+      "--setenv=PYTHONUNBUFFERED=1",
+      "--setenv=OMP_NUM_THREADS=1",
+      "--setenv=MKL_NUM_THREADS=1",
+      "--setenv=OPENBLAS_NUM_THREADS=1",
+      "--setenv=NUMEXPR_NUM_THREADS=1",
+      "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0008/run_oracle.py"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "Running as unit: p254-w1-primary-boundary-0008-v1.service; invocation ID: 645b4faefd184579ad8b5e390713272f\n"
+  },
+  "unit": "p254-w1-primary-boundary-0008-v1.service"
+}

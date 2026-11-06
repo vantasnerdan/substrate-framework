@@ -1,0 +1,60 @@
+{
+  "schema": "P254-main-scientific-observer-receipt-v1",
+  "actual_utc": "2026-10-31T06:31:49.225106+00:00",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-230.json",
+    "bytes": "2143",
+    "sha256": "8873be8a17fb285c4b0e4bb52f0414a94bec1153e9e87b04879c13bf8c60f46e"
+  },
+  "scientific_intake": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/main-scientific-intake-023.json",
+    "bytes": "32721",
+    "sha256": "5add0f0f29498eb2357be3cfc0507637a2b044c6564229984c56ced151f95c5e"
+  },
+  "actual_armed": {
+    "schema": "P254-main-runtime-observer-v2",
+    "observer_pid": "2442044",
+    "armed_utc": "2026-10-31T06:31:36.155344+00:00",
+    "wake_due_unix": 1793430735.0,
+    "unit": "p254-a28-loaded-raw-mixed-shared-001.service",
+    "scientific_invocation": "6cb363e34ada4262af901b67a978f60a",
+    "root": "/var/tmp/p254-a28-loaded-raw-mixed-shared-003",
+    "prepared_seen": [
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/3f6ea2c8f13b3f28e68ca910b775ca67677b883c87dfdd104b6b100f01ab329b/generation-63ee2c43b80c4d68a7147dba81f66f28/prepared.json",
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/8692334e058ea96d2e50e9709d2d7f0d71f394b6d5770cc3661ee6c8b3becf81/generation-093fb83c5f30457b97c0dae666d2b1b5/prepared.json",
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/9141742caba8ec809ddbb99dacd33efa446a941169035ece96bb94f61b361703/generation-55800dcad4a849bd979832df45a8d01e/prepared.json",
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/f159185a1f8b5ab0dd3ef546c53d141d190a9893c10762d39615499ebb918a93/generation-dbf498c9947a4b6eb24e766b57e64da7/prepared.json"
+    ],
+    "stages_seen": [
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-0/complete.json",
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-1/complete.json",
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-2/complete.json"
+    ],
+    "scope": "Read-only own scientific publication/timer watcher; no allocation or completion claim"
+  },
+  "pane": "w1:p41",
+  "command": "/usr/bin/python3 -u -c '\nimport datetime,json,os,time\nfrom pathlib import Path\nroot=Path('\"'\"'/var/tmp/p254-a28-loaded-raw-mixed-shared-003'\"'\"')\nout=Path('\"'\"'/var/tmp/p254-main-runtime-observer-023'\"'\"')\nout.mkdir(exist_ok=False)\nseen=set(['\"'\"'/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/3f6ea2c8f13b3f28e68ca910b775ca67677b883c87dfdd104b6b100f01ab329b/generation-63ee2c43b80c4d68a7147dba81f66f28/prepared.json'\"'\"', '\"'\"'/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/8692334e058ea96d2e50e9709d2d7f0d71f394b6d5770cc3661ee6c8b3becf81/generation-093fb83c5f30457b97c0dae666d2b1b5/prepared.json'\"'\"', '\"'\"'/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/9141742caba8ec809ddbb99dacd33efa446a941169035ece96bb94f61b361703/generation-55800dcad4a849bd979832df45a8d01e/prepared.json'\"'\"', '\"'\"'/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/f159185a1f8b5ab0dd3ef546c53d141d190a9893c10762d39615499ebb918a93/generation-dbf498c9947a4b6eb24e766b57e64da7/prepared.json'\"'\"'])\nstages_seen=set(['\"'\"'/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-0/complete.json'\"'\"', '\"'\"'/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-1/complete.json'\"'\"', '\"'\"'/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-2/complete.json'\"'\"'])\nstem='\"'\"'P254_MAIN_INTAKE_'\"'\"'\ntoken='\"'\"'5ae10adbdfd04e80bf5da1d54d3d1b9a'\"'\"'\narm=dict(schema='\"'\"'P254-main-runtime-observer-v2'\"'\"',observer_pid=str(os.getpid()),armed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),wake_due_unix=1793430735.0,unit='\"'\"'p254-a28-loaded-raw-mixed-shared-001.service'\"'\"',scientific_invocation='\"'\"'6cb363e34ada4262af901b67a978f60a'\"'\"',root=str(root),prepared_seen=sorted(seen),stages_seen=sorted(stages_seen),scope='\"'\"'Read-only own scientific publication/timer watcher; no allocation or completion claim'\"'\"')\n(out/'\"'\"'armed.json'\"'\"').write_text(json.dumps(arm,indent=2)+chr(10))\nprint('\"'\"'P254_MAIN_OBSERVER_'\"'\"'+'\"'\"'ARMED_023'\"'\"',str(os.getpid()),arm['\"'\"'armed_utc'\"'\"'],flush=True)\nwhile True:\n    new={str(p) for p in (root/'\"'\"'scientific-work'\"'\"').glob('\"'\"'*/generation-*/prepared.json'\"'\"')}-seen\n    stages={str(p) for p in (root/'\"'\"'steps'\"'\"').glob('\"'\"'*/stage-*/complete.json'\"'\"')}-stages_seen\n    results=sorted(str(p) for p in root.glob('\"'\"'result*.json'\"'\"'))\n    exits=(root/'\"'\"'unit-outcomes'\"'\"').exists() and any((root/'\"'\"'unit-outcomes'\"'\"').iterdir())\n    if new or stages or results or exits or time.time()>=1793430735.0:\n        receipt=dict(arm,woke_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),new_prepared=sorted(new),new_stages=sorted(stages),run_result_files=results,unit_exit_present=exits,timer_due=time.time()>=1793430735.0)\n        (out/'\"'\"'wake.json'\"'\"').write_text(json.dumps(receipt,indent=2)+chr(10))\n        print(stem+token+'\"'\"'_WAKE'\"'\"',flush=True)\n        break\n    time.sleep(15)\n'",
+  "launch_result": {
+    "text": "(no output)",
+    "details": {
+      "wallTimeNoticeEmitted": false,
+      "timeoutSeconds": 60,
+      "wallTimeMs": 30.057202994823456
+    }
+  },
+  "ready_evidence": "Original armed.json independently read; P254_MAIN_OBSERVER_ARMED_023 matched. Own typed arm is authority, not scrollback.",
+  "wait_registration": {
+    "text": "Backgrounded as job bg_267 (killed once it has run 2710s in total; `timeout: 0` disables the deadline); its output is injected into the conversation as a follow-up the moment it finishes. Do NOT poll for it (no `sleep`, `ps`, `pgrep`, `top`, `pidwait`, log tailing): every poll is a wasted turn. Do other work, or end your reply and wait to be woken.",
+    "details": {
+      "async": {
+        "state": "running",
+        "jobId": "bg_267",
+        "type": "bash"
+      },
+      "timeoutSeconds": 2710
+    }
+  },
+  "client_due_utc": "2026-10-31T07:16:00+00:00",
+  "outer_due_utc": "2026-10-31T07:17:00+00:00",
+  "scope": "Read-only original result/exit or07:12:15 visibility; no new Native allocation/source/cap/clock/owner change. Main owns callback through actual termination/intake."
+}

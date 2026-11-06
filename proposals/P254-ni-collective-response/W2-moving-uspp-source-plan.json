@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "canonical_issue": "227",
+  "parent_issue": "225",
+  "state": "source_extension_preregistered_before_execution",
+  "settled_inputs": {
+    "source_audit": "sources/uspp-force-readiness-audit.txt",
+    "metric_derivation": "attempts/0005/derivation.txt",
+    "metric_receipt": "attempts/0005/runs/canonical-01/receipt.json",
+    "model_identity_receipt": "attempts/0004/receipt.json"
+  },
+  "new_primary_source_access_gate": {
+    "title": "Time-dependent density functional theory with ultrasoft pseudopotentials: Real-time electron propagation across a molecular junction",
+    "authors": "Xiaofeng Qian, Ju Li, Xi Lin, Sidney Yip",
+    "year": 2006,
+    "doi": "10.1103/PhysRevB.73.035408",
+    "published_pdf": "sources/qian2006-prb73-035408.pdf",
+    "published_text": "sources/qian2006-prb73-035408.txt",
+    "published_provenance": "sources/qian2006-prb73-035408.metadata.json",
+    "sha256": "5ef3fb64a0474547b200778de1c15f267215c0e05dabe93ec5d52bcafc35ed0d",
+    "verified_access": "All11 published pages saved and extracted with nonempty text; first page independently matches exact title, four authors, journal73/035408, DOI, publication date5January2006 and APS copyright. Author-listed HTTP source succeeded after HTTPS timeout. Separate25-page arXiv v1 manuscript also saved; it is not substituted for the published text."
+  },
+  "questions": [
+    "What does the original actually derive for moving ions, the time-dependent overlap and any velocity/connection operator, and what approximation or frozen-ion limit is used in its demonstrations?",
+    "Does it identify a particular embedding/connection or directly defined effective dynamical model, rather than obtaining a laboratory force by arbitrary Hermitization?",
+    "Which actual projector, augmentation, partial-wave, overlap, Hamiltonian or time-velocity data are required, and which are present in the installed GBRV/QE model?",
+    "What, if anything, does it license about an off-shell force vertex, nuclear backreaction, and loss model for the requested small-amplitude material dynamics?"
+  ],
+  "contract": "Source applicability only: read the complete published original and inspect actual rendered equations. Cite exact pages/equations and distinguish observations from conditional interpretations. Consume the completed earlier source and metric results, not in-flight inputs. Do not invent a new algebraic or physical result, select an embedding by fiat, silently turn static response into a laboratory force, or claim that a TD electron propagator supplies a complete physical bath. Missing further primary authority remains explicit; do not substitute its secondary citation.",
+  "output": "sources/uspp-moving-ion-source-extension.txt",
+  "integration_gate": "Root evaluates the complete extension before any W2 physical-model preregistration. W1 raw stationary phonons remain independent and do not consume this source inquiry."
+}

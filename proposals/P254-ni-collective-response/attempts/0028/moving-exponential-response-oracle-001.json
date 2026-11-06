@@ -1,0 +1,529 @@
+{
+  "schema": "P254-moving-exponential-response-oracle-v1",
+  "status": "PASS",
+  "scope": "Finite moving coupled response only; no Native allocation, material finite-time success, covariance adjoint or speedup claim",
+  "method": "source-local H0 interaction-picture explicit midpoint, independently complex full-row ket/bra",
+  "source_bindings": [
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/moving_exponential_response.py",
+      "bytes": 16695,
+      "sha256": "ddb6d7312b7850a8e4e9fa3134d4fb81542c92542aa210c546ad5047346cd61a"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/moving_exponential_response_oracle.py",
+      "bytes": 23905,
+      "sha256": "3628e1f40804bc35346ff16661def1266277cd4fab4ab2c247efa044da30cbcb"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/run_joint_response_oracle.py",
+      "bytes": 30139,
+      "sha256": "b583c67c8b06154ea798778dfef18dac46d7e22b34a4b35a2d18f357c664e175"
+    },
+    {
+      "path": "src/substrate_framework/joint_bloch_response.py",
+      "bytes": 14089,
+      "sha256": "06255fb22391b91104d4a0e6b4a6f6867a0ce141ffaf48f935dcc445e8f07da8"
+    }
+  ],
+  "environment": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "sympy": "1.14.0",
+    "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "elapsed_seconds": 117.31190851004794,
+  "finite_process_peak_rss_kib": 686020,
+  "end_time_ry_inverse": 0.27,
+  "results": [
+    {
+      "q_fractional": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "nfield": 1,
+      "rungs": [
+        {
+          "steps": 12,
+          "dt": 0.022500000000000003,
+          "relative_scaled_density_canonical_error": 0.0002622461093854917,
+          "context_bytes": 6528,
+          "operation_counts": {
+            "context_reductions": 24,
+            "residual_edge_actions": 900,
+            "free_pair_actions": 1332,
+            "replayed_intervals": 432
+          },
+          "finite_oracle_elapsed_seconds": 0.7643669447861612
+        },
+        {
+          "steps": 24,
+          "dt": 0.011250000000000001,
+          "relative_scaled_density_canonical_error": 6.173006187828205e-05,
+          "context_bytes": 13056,
+          "operation_counts": {
+            "context_reductions": 48,
+            "residual_edge_actions": 3528,
+            "free_pair_actions": 5256,
+            "replayed_intervals": 1728
+          },
+          "finite_oracle_elapsed_seconds": 2.3912162319757044
+        },
+        {
+          "steps": 48,
+          "dt": 0.005625000000000001,
+          "relative_scaled_density_canonical_error": 1.5218504132850778e-05,
+          "context_bytes": 26112,
+          "operation_counts": {
+            "context_reductions": 96,
+            "residual_edge_actions": 13968,
+            "free_pair_actions": 20880,
+            "replayed_intervals": 6912
+          },
+          "finite_oracle_elapsed_seconds": 8.779492927249521
+        },
+        {
+          "steps": 96,
+          "dt": 0.0028125000000000003,
+          "relative_scaled_density_canonical_error": 3.792065488942101e-06,
+          "context_bytes": 52224,
+          "operation_counts": {
+            "context_reductions": 192,
+            "residual_edge_actions": 55584,
+            "free_pair_actions": 83232,
+            "replayed_intervals": 27648
+          },
+          "finite_oracle_elapsed_seconds": 39.15771980583668
+        }
+      ],
+      "observed_orders": [
+        2.086876226882646,
+        2.020146678033818,
+        2.0047707745905887
+      ],
+      "refinement_estimate": {
+        "difference": 1.6886305918369525e-05,
+        "second_order_fine_error_estimate": 5.628768639456508e-06,
+        "scope": "empirical second-order estimate in finite packed density/canonical norm; not a physical-unit error bound"
+      },
+      "wrong_frozen_mean_relative_error": 0.7906290462154847
+    },
+    {
+      "q_fractional": [
+        0.0,
+        0.0,
+        0.3333333333333333
+      ],
+      "nfield": 0,
+      "rungs": [
+        {
+          "steps": 12,
+          "dt": 0.022500000000000003,
+          "relative_scaled_density_canonical_error": 0.00019071158677726497,
+          "context_bytes": 4992,
+          "operation_counts": {
+            "context_reductions": 24,
+            "residual_edge_actions": 900,
+            "free_pair_actions": 1332,
+            "replayed_intervals": 432
+          },
+          "finite_oracle_elapsed_seconds": 0.6464252001605928
+        },
+        {
+          "steps": 24,
+          "dt": 0.011250000000000001,
+          "relative_scaled_density_canonical_error": 4.548337282511359e-05,
+          "context_bytes": 9984,
+          "operation_counts": {
+            "context_reductions": 48,
+            "residual_edge_actions": 3528,
+            "free_pair_actions": 5256,
+            "replayed_intervals": 1728
+          },
+          "finite_oracle_elapsed_seconds": 1.9688640190288424
+        },
+        {
+          "steps": 48,
+          "dt": 0.005625000000000001,
+          "relative_scaled_density_canonical_error": 1.123573233783162e-05,
+          "context_bytes": 19968,
+          "operation_counts": {
+            "context_reductions": 96,
+            "residual_edge_actions": 13968,
+            "free_pair_actions": 20880,
+            "replayed_intervals": 6912
+          },
+          "finite_oracle_elapsed_seconds": 7.356163821183145
+        },
+        {
+          "steps": 96,
+          "dt": 0.0028125000000000003,
+          "relative_scaled_density_canonical_error": 2.8003858912570568e-06,
+          "context_bytes": 39936,
+          "operation_counts": {
+            "context_reductions": 192,
+            "residual_edge_actions": 55584,
+            "free_pair_actions": 83232,
+            "replayed_intervals": 27648
+          },
+          "finite_oracle_elapsed_seconds": 32.520791412331164
+        }
+      ],
+      "observed_orders": [
+        2.0679813514297556,
+        2.017245079904994,
+        2.0043966131507913
+      ],
+      "refinement_estimate": {
+        "difference": 1.261882540020199e-05,
+        "second_order_fine_error_estimate": 4.206275133400664e-06,
+        "scope": "empirical second-order estimate in finite packed density/canonical norm; not a physical-unit error bound"
+      },
+      "wrong_frozen_mean_relative_error": 0.9576616511253961
+    }
+  ],
+  "checks": [
+    {
+      "name": "exact_rectangular_moving_connection_identity",
+      "source_pw": 3,
+      "target_pw": 2,
+      "source_rank": 2,
+      "target_rank": 1,
+      "drive_hermiticity_assumed": false,
+      "residual": "0"
+    },
+    {
+      "name": "exact_interaction_picture_midpoint_order_two",
+      "coefficients": [
+        "1",
+        "A0 + B",
+        "A0*B/2 + A0**2/2 + B*A0/2 + B**2/2 + Bdot/2"
+      ],
+      "defects": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "moving_frame_mean_completed",
+      "message": "The solver successfully reached the end of the integration interval.",
+      "rhs_evaluations": 1109
+    },
+    {
+      "name": "original_density_mean_completed",
+      "message": "The solver successfully reached the end of the integration interval.",
+      "rhs_evaluations": 1739
+    },
+    {
+      "name": "independent_frame_density_mean_agreement",
+      "max_errors": [
+        0.0,
+        8.877898420574195e-13,
+        1.4533609206780211e-13
+      ]
+    },
+    {
+      "name": "genuinely_moving_mean_not_stationary",
+      "mean_state_change": 2.6353248897752244
+    },
+    {
+      "name": "original_complex_singular_raw_D_and_unequal_ranks",
+      "ranks": [
+        2,
+        2,
+        1
+      ],
+      "full_pw_dimensions": [
+        2,
+        3,
+        2
+      ],
+      "raw_D_imaginary_max": 0.21080000000000002,
+      "singular_raw_D_determinant_abs": 7.285381278599297e-18
+    },
+    {
+      "name": "Gamma_split_is_actual_joint_rhs",
+      "max_error": 3.552713678800501e-15
+    },
+    {
+      "name": "Gamma_moving_original_density_rhs",
+      "max_error": 8.529403544899535e-14
+    },
+    {
+      "name": "Gamma_complex_density_is_exposed",
+      "imaginary_density": 0.0311930003763927
+    },
+    {
+      "name": "Gamma_reject_real_density_projection",
+      "derivative_separation": 0.002773663467970917
+    },
+    {
+      "name": "Gamma_reject_wrong_normalization",
+      "mutation": "omit orthonormal sqrt(N) matter/global-field coupling",
+      "derivative_separation": 0.1305052721339956
+    },
+    {
+      "name": "Gamma_reject_real_raw_D",
+      "derivative_separation": 0.026643146516695478
+    },
+    {
+      "name": "Gamma_stiff_H0_exact_full_row_flow",
+      "density_flow_error": 3.12099075402874e-15,
+      "largest_free_phase": 37.06418321591297,
+      "rk4_free_mode_amplification": 78404.00535027926,
+      "physical_free_mode_amplification": 1.0
+    },
+    {
+      "name": "Gamma_independent_density_response_completed",
+      "loose_rhs_evaluations": 806,
+      "tight_rhs_evaluations": 1418
+    },
+    {
+      "name": "Gamma_independent_reference_tolerance_refinement",
+      "max_change": 5.374475806060123e-11
+    },
+    {
+      "name": "Gamma_nonhermitian_complex_source",
+      "norm": 0.978378407775326
+    },
+    {
+      "name": "Gamma_moving_temporal_refinement",
+      "rungs": [
+        {
+          "steps": 12,
+          "dt": 0.022500000000000003,
+          "relative_scaled_density_canonical_error": 0.0002622461093854917,
+          "context_bytes": 6528,
+          "operation_counts": {
+            "context_reductions": 24,
+            "residual_edge_actions": 900,
+            "free_pair_actions": 1332,
+            "replayed_intervals": 432
+          },
+          "finite_oracle_elapsed_seconds": 0.7643669447861612
+        },
+        {
+          "steps": 24,
+          "dt": 0.011250000000000001,
+          "relative_scaled_density_canonical_error": 6.173006187828205e-05,
+          "context_bytes": 13056,
+          "operation_counts": {
+            "context_reductions": 48,
+            "residual_edge_actions": 3528,
+            "free_pair_actions": 5256,
+            "replayed_intervals": 1728
+          },
+          "finite_oracle_elapsed_seconds": 2.3912162319757044
+        },
+        {
+          "steps": 48,
+          "dt": 0.005625000000000001,
+          "relative_scaled_density_canonical_error": 1.5218504132850778e-05,
+          "context_bytes": 26112,
+          "operation_counts": {
+            "context_reductions": 96,
+            "residual_edge_actions": 13968,
+            "free_pair_actions": 20880,
+            "replayed_intervals": 6912
+          },
+          "finite_oracle_elapsed_seconds": 8.779492927249521
+        },
+        {
+          "steps": 96,
+          "dt": 0.0028125000000000003,
+          "relative_scaled_density_canonical_error": 3.792065488942101e-06,
+          "context_bytes": 52224,
+          "operation_counts": {
+            "context_reductions": 192,
+            "residual_edge_actions": 55584,
+            "free_pair_actions": 83232,
+            "replayed_intervals": 27648
+          },
+          "finite_oracle_elapsed_seconds": 39.15771980583668
+        }
+      ],
+      "error_ratios": [
+        4.248272258378466,
+        4.056250294996541,
+        4.013249290453681
+      ],
+      "observed_orders": [
+        2.086876226882646,
+        2.020146678033818,
+        2.0047707745905887
+      ]
+    },
+    {
+      "name": "Gamma_self_refinement_agrees_with_reference_order",
+      "observable_differences": [
+        0.00020056200037854035,
+        4.651227242763537e-05,
+        1.1426461460234315e-05
+      ],
+      "last_difference_ratio": 4.070575356115679
+    },
+    {
+      "name": "Gamma_reject_wrong_frozen_mean",
+      "frozen_relative_error": 0.7906290462154847,
+      "moving_fine_relative_error": 3.792065488942101e-06
+    },
+    {
+      "name": "nonGamma_split_is_actual_joint_rhs",
+      "max_error": 7.32410687763558e-15
+    },
+    {
+      "name": "nonGamma_moving_original_density_rhs",
+      "max_error": 7.283063041541027e-14
+    },
+    {
+      "name": "nonGamma_complex_density_is_exposed",
+      "imaginary_density": 0.050063973912560004
+    },
+    {
+      "name": "nonGamma_reject_real_density_projection",
+      "derivative_separation": 0.0025826834293297823
+    },
+    {
+      "name": "nonGamma_reject_wrong_normalization",
+      "mutation": "omit original explicit-slot 1/N density/force weight",
+      "derivative_separation": 0.2151672127704548
+    },
+    {
+      "name": "nonGamma_reject_real_raw_D",
+      "derivative_separation": 0.02067651466109637
+    },
+    {
+      "name": "nonGamma_stiff_H0_exact_full_row_flow",
+      "density_flow_error": 4.055734516585436e-15,
+      "largest_free_phase": 37.06418321591297,
+      "rk4_free_mode_amplification": 78404.00535027926,
+      "physical_free_mode_amplification": 1.0
+    },
+    {
+      "name": "nonGamma_independent_density_response_completed",
+      "loose_rhs_evaluations": 818,
+      "tight_rhs_evaluations": 1442
+    },
+    {
+      "name": "nonGamma_independent_reference_tolerance_refinement",
+      "max_change": 4.486298388562834e-11
+    },
+    {
+      "name": "nonGamma_no_nonGamma_global_photon",
+      "nfield": 0,
+      "ket_shapes": [
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "bra_shapes": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "name": "nonGamma_moving_temporal_refinement",
+      "rungs": [
+        {
+          "steps": 12,
+          "dt": 0.022500000000000003,
+          "relative_scaled_density_canonical_error": 0.00019071158677726497,
+          "context_bytes": 4992,
+          "operation_counts": {
+            "context_reductions": 24,
+            "residual_edge_actions": 900,
+            "free_pair_actions": 1332,
+            "replayed_intervals": 432
+          },
+          "finite_oracle_elapsed_seconds": 0.6464252001605928
+        },
+        {
+          "steps": 24,
+          "dt": 0.011250000000000001,
+          "relative_scaled_density_canonical_error": 4.548337282511359e-05,
+          "context_bytes": 9984,
+          "operation_counts": {
+            "context_reductions": 48,
+            "residual_edge_actions": 3528,
+            "free_pair_actions": 5256,
+            "replayed_intervals": 1728
+          },
+          "finite_oracle_elapsed_seconds": 1.9688640190288424
+        },
+        {
+          "steps": 48,
+          "dt": 0.005625000000000001,
+          "relative_scaled_density_canonical_error": 1.123573233783162e-05,
+          "context_bytes": 19968,
+          "operation_counts": {
+            "context_reductions": 96,
+            "residual_edge_actions": 13968,
+            "free_pair_actions": 20880,
+            "replayed_intervals": 6912
+          },
+          "finite_oracle_elapsed_seconds": 7.356163821183145
+        },
+        {
+          "steps": 96,
+          "dt": 0.0028125000000000003,
+          "relative_scaled_density_canonical_error": 2.8003858912570568e-06,
+          "context_bytes": 39936,
+          "operation_counts": {
+            "context_reductions": 192,
+            "residual_edge_actions": 55584,
+            "free_pair_actions": 83232,
+            "replayed_intervals": 27648
+          },
+          "finite_oracle_elapsed_seconds": 32.520791412331164
+        }
+      ],
+      "error_ratios": [
+        4.192995702200076,
+        4.048100422610406,
+        4.012208593433544
+      ],
+      "observed_orders": [
+        2.0679813514297556,
+        2.017245079904994,
+        2.0043966131507913
+      ]
+    },
+    {
+      "name": "nonGamma_self_refinement_agrees_with_reference_order",
+      "observable_differences": [
+        0.0001452476841743912,
+        3.42481612222047e-05,
+        8.435369586223874e-06
+      ],
+      "last_difference_ratio": 4.060066470369797
+    },
+    {
+      "name": "nonGamma_reject_wrong_frozen_mean",
+      "frozen_relative_error": 0.9576616511253961,
+      "moving_fine_relative_error": 2.8003858912570568e-06
+    }
+  ]
+}

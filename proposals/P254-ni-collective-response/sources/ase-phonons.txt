@@ -1,0 +1,302 @@
+URL: https://docs.ase-lib.org/ase/phonons.html
+Content-Type: text/html
+Method: native
+
+---
+
+---
+meta-docbuild:last-update: Fri, 16 Oct 2026 12:24:27
+meta-docsearch:language: en
+meta-docsearch:version:
+meta-viewport: width=device-width, initial-scale=1
+title: Phonon calculations &#8212; ASE  documentation
+---
+
+Back to top
+
+[![ASE documentation - Home](../_static/ase256.png) ![ASE documentation - Home](../_static/ase256.png)](../index.html)
+
+- [GitLab](https://gitlab.com/ase/ase "GitLab")
+
+Search `Ctrl`+`K`
+
+- [.rst](../_sources/ase/phonons.rst "Download source file")
+- .pdf
+
+- System Settings
+
+- Light
+
+- Dark
+
+# Phonon calculations
+
+## Contents
+
+# Phonon calculations[#](#phonon-calculations "Link to this heading")
+
+Module for calculating vibrational normal modes for periodic systems using the
+so-called small displacement method (see e.g. [[Alfe]](#alfe)). So far, space-group
+symmetries are not exploited to reduce the number of atomic displacements that
+must be calculated and subsequent symmetrization of the force constants.
+
+A key step in the calculation of phonon modes and energies through small
+displacements is the construction of the \\(\mathbf{q}\\)-dependent dynamical
+matrix from harmonic force constants and phase factors. These phase factors
+are determined by the input \\(\mathbf{q}\\)-vector and the atom-to-atom
+vectors which go from an atom \\(a_1\\) in the reference unit cell to an
+atom \\(a_2\\) in cell \\(N\\) in the supercell; however, due to the
+periodicity of the supercell, the shortest vector from \\(a_1\\) to atom\\((N, a_2)\\) is not necessarily the obvious displacement vector between
+atoms in the supercell. Instead, the shortest vector can be found by checking
+all the nearest-neighbour periodic images of \\((N, a_2)\\) and choosing the
+shortest vector. Furthermore, there may be multiple images of \\((N, a_2)\\) that yield the shortest vector, and in such cases, it will be beneficial to use
+the averaged phase factor of all the shortest atom-to-atom image vectors. For
+further details on mean minimum image phases see equations (47) and (48) and
+surrounding text in [[Togo]](#togo). In the ASE [`Phonons`](#ase.phonons.Phonons "ase.phonons.Phonons") class,
+the usage of mean minimum image phases can be enabled by setting `use_mean_minimum_images=True` at class initialization. This is highly
+recommended and tends to have much better converged phonon energies for
+smaller supercells. The tolerance for detecting mean minimum images can be
+adjusted with the `minimum_image_tol` keyword.
+
+For polar materials the dynamical matrix at the zone center acquires a
+non-analytical contribution that accounts for the LO-TO splitting. This
+contribution requires additional functionality to evaluate and is not included
+in the present implementation. Its implementation in conjunction with the small
+displacement method is described in [[Wang]](#wang).
+
+## List of all methods[#](#list-of-all-methods "Link to this heading")
+
+class ase.phonons.Phonons(*atoms: [Atoms](atoms.html#ase.Atoms "ase.atoms.Atoms")*, *calc=None*, *supercell: [tuple](https://docs.python.org/3.11/library/stdtypes.html#tuple "(in Python v3.11)")[[int](https://docs.python.org/3.11/library/functions.html#int "(in Python v3.11)"), [int](https://docs.python.org/3.11/library/functions.html#int "(in Python v3.11)"), [int](https://docs.python.org/3.11/library/functions.html#int "(in Python v3.11)")] = (1, 1, 1)*, *select_atoms: [list](https://docs.python.org/3.11/library/stdtypes.html#list "(in Python v3.11)")[[int](https://docs.python.org/3.11/library/functions.html#int "(in Python v3.11)")] | [list](https://docs.python.org/3.11/library/stdtypes.html#list "(in Python v3.11)")[[str](https://docs.python.org/3.11/lib…
+Class for calculating phonon modes using the finite displacement method.
+
+The matrix of force constants is calculated from the finite difference
+approximation to the first-order derivative of the atomic forces as:
+
+```
+             2             nbj   nbj
+ nbj        d E           F-  - F+
+C     = ------------ ~  -------------  ,
+ mai     dR   dR          2 * delta
+           mai  nbj
+```
+
+where F+/F- denotes the force in direction j on atom nb when atom ma is
+displaced in direction +i/-i. The force constants are related by various
+symmetry relations. From the definition of the force constants it must
+be symmetric in the three indices mai:
+
+```
+ nbj    mai         bj        ai
+C    = C      ->   C  (R ) = C  (-R )  .
+ mai    nbj         ai  n     bj   n
+```
+
+As the force constants can only depend on the difference between the m and
+n indices, this symmetry is more conveniently expressed as shown on the
+right hand-side.
+
+The acoustic sum-rule:
+
+```
+            _ _
+ aj         \    bj
+C  (R ) = -  )  C  (R )
+ ai  0      /__  ai  m
+           (m, b)
+             !=
+           (0, a)
+```
+
+Ordering of the unit cells illustrated here for a 1-dimensional system (in
+case `center_refcell=False` in constructor!):
+
+```
+    m = 0        m = 1        m = -2        m = -1
+-----------------------------------------------------
+|            |            |            |            |
+|        * b |        *   |        *   |        *   |
+|            |            |            |            |
+|   * a      |   *        |   *        |   *        |
+|            |            |            |            |
+-----------------------------------------------------
+```
+
+Examples
+
+```
+>>> from ase.build import bulk
+>>> from ase.phonons import Phonons
+>>> from ase.calculators.emt import EMT
+```
+
+```
+>>> atoms = bulk('Al', 'fcc', a=4.05)
+>>> calc = EMT()
+>>> ph = Phonons(
+...     atoms,
+...     calc,
+...     supercell=(7, 7, 7),
+...     delta=0.05,
+...     use_mean_minimum_images=True
+... )
+>>> ph.run()
+>>> ph.read()
+>>> path = atoms.cell.bandpath('GXULGK', npoints=100)
+>>> bs = ph.get_band_structure(path, verbose=False)
+>>> dos = ph.get_dos(kpts=(20, 20, 20)).sample_grid(npts=100, width=1e-3)
+```
+
+Init with an instance of [`Atoms`](atoms.html#ase.Atoms "ase.Atoms") and a calculator.
+
+Parameters:
+- **atoms** – The atoms to work on.
+
+- **calc** – Calculator for the supercell calculation.
+
+- **supercell** – Size of supercell given by the number of repetitions (n1, n2, n3) of
+the small unit cell in each direction.
+
+- **select_atoms** – Select which atoms to generate displacements for.
+By default, displacements are generated for all atoms.
+
+- **name** – Base name to use for files.
+
+- **delta** – Magnitude of displacement in Ang.
+
+- **center_refcell** – Reference cell in which the atoms will be displaced. If False, then
+corner cell in supercell is used. If True, then cell in the center
+of the supercell is used.
+
+- **use_mean_minimum_images** – Use averaged phase factor of all the shortest atom-to-atom image
+vectors. This will be the default in the future and is strongly
+recommended as it requires smaller supercells to converge
+the phonon energies.
+
+- **minimum_image_tol** – Tolerance (in Å) for finding equivalent atoms when using
+mean minimum image phase factors.
+
+- **comm** – MPI communicator for the phonon calculation.
+Default is to use world.
+
+acoustic(*C_avNav: ndarray*) → [None](https://docs.python.org/3.11/library/constants.html#None "(in Python v3.11)")[[source]](../_modules/ase/phonons.html#Phonons.acoustic)[#](#ase.phonons.Phonons.acoustic "Link to this definition")
+Restore acoustic sumrule on force constants.
+
+apply_cutoff(*C_avNav: ndarray*, *r_c: [float](https://docs.python.org/3.11/library/functions.html#float "(in Python v3.11)")*) → [None](https://docs.python.org/3.11/library/constants.html#None "(in Python v3.11)")[[source]](../_modules/ase/phonons.html#Phonons.apply_cutoff)[#](#ase.phonons.Phonons.apply_cutoff "Link to this definition")
+Zero elements for interatomic distances larger than the cutoff.
+
+Parameters:
+- **C_avNav** (*ndarray*) – Matrix of force constants.
+
+- **r_c** ([*float*](https://docs.python.org/3.11/library/functions.html#float "(in Python v3.11)")) – Cutoff radius in Ångstrom.
+
+band_structure(*path_kc*, *modes=False*, *verbose=True*)[[source]](../_modules/ase/phonons.html#Phonons.band_structure)[#](#ase.phonons.Phonons.band_structure "Link to this definition")
+Calculate phonon dispersion along a path in the Brillouin zone.
+
+The dynamical matrix at arbitrary q-vectors is obtained by Fourier
+transforming the real-space force constants. In case of negative
+eigenvalues (squared frequency), the corresponding negative frequency
+is returned.
+
+Frequencies and modes are in units of eV and 1/sqrt(amu),
+respectively.
+
+Parameters:
+- **path_kc** (*ndarray*) – List of k-point coordinates (in units of the reciprocal lattice
+vectors) specifying the path in the Brillouin zone for which the
+dynamical matrix will be calculated.
+
+- **modes** ([*bool*](https://docs.python.org/3.11/library/functions.html#bool "(in Python v3.11)")) – Returns both frequencies and modes when True.
+
+- **verbose** ([*bool*](https://docs.python.org/3.11/library/functions.html#bool "(in Python v3.11)")) – Print warnings when imaginary frequncies are detected.
+
+Returns:
+- **omega_kl** (*np.ndarray*) – Phonon band energies.
+
+- **u_klav** (*np.ndarray*) – Eigenvectors (only when `modes` is `True`).
+
+calculate_dynamical_matrix(*q_c: ndarray*, *D_avNav: ndarray*) → ndarray[[source]](../_modules/ase/phonons.html#Phonons.calculate_dynamical_matrix)[#](#ase.phonons.Phonons.calculate_dynamical_matrix "Link to this definition")
+Computation of the dynamical matrix in momentum space D_XX(q).
+This is a Fourier transform from real-space force constants
+for a given momentum vector q.
+
+If the phonons class was initialized with use_mean_minimum_images=True,
+the q-dependent phase factor for a given set of atoms a1 and (N, a2) is
+averaged over all the shortest atom-to-atom vectors from atom1 to a
+periodic image of atom (N, a2).
+
+Parameters:
+- **q_c** – Phonon wave vector in scaled coordinates.
+
+- **D_avNav** – Force constant matrix scaled by atom masses.
+
+Returns:
+**D_XX** – Dynamical matrix, a complex-valued array D(q)
+with shape=(3 * natoms, 3 * natoms).
+
+Return type:
+np.ndarray
+
+check_eq_forces()[[source]](../_modules/ase/phonons.html#Phonons.check_eq_forces)[#](#ase.phonons.Phonons.check_eq_forces "Link to this definition")
+Check maximum size of forces in the equilibrium structure.
+
+compute_dynamical_matrix(*q_scaled: ndarray*, *D_N: ndarray*) → ndarray[[source]](../_modules/ase/phonons.html#Phonons.compute_dynamical_matrix)[#](#ase.phonons.Phonons.compute_dynamical_matrix "Link to this definition")
+Computation of the dynamical matrix in momentum space D_ab(q).
+This is a Fourier transform from real-space dynamical matrix D_N
+for a given momentum vector q.
+
+Note
+
+Deprecated. Please use calculate_dynamical_matrix().
+
+Parameters:
+- **q_scaled** (*np.ndarray*) – q vector in scaled coordinates.
+
+- **D_N** (*np.ndarray*) – Dynamical matrix in real-space.
+
+Returns:
+**D_q** – 2D complex-valued array D(q) with shape=(3 * natoms, 3 * natoms).
+
+Return type:
+np.ndarray
+
+get_band_structure(*path*, *modes: [bool](https://docs.python.org/3.11/library/functions.html#bool "(in Python v3.11)") = False*, *verbose: [bool](https://docs.python.org/3.11/library/functions.html#bool "(in Python v3.11)") = True*)[[source]](../_modules/ase/phonons.html#Phonons.get_band_structure)[#](#ase.phonons.Phonons.get_band_structure "Link to this definition")
+Calculate and return the phonon band structure.
+
+This method computes the phonon band structure for a given path
+in reciprocal space. It is a wrapper around the internal [`band_structure()`](#ase.phonons.Phonons.band_structure "ase.phonons.Phonons.band_structure") method of the [`Phonons`](#ase.phonons.Phonons "ase.phonons.Phonons") class.
+The method can optionally calculate and return phonon modes.
+
+Frequencies and modes are in units of eV and\\(1/\sqrt{\mathrm{amu}}\\), respectively.
+
+Parameters:
+- **path** (*BandPath object*) – The BandPath object defining the path in the reciprocal
+space over which the phonon band structure is calculated.
+
+- **modes** ([*bool*](https://docs.python.org/3.11/library/functions.html#bool "(in Python v3.11)")*,* *optional*) – If True, phonon modes will also be calculated and returned.
+Defaults to False.
+
+- **verbose** ([*bool*](https://docs.python.org/3.11/library/functions.html#bool "(in Python v3.11)")*,* *optional*) – If True, enables verbose output during the calculation.
+Defaults to True.
+
+Returns:
+If `modes` is False, returns a `BandStructure` object
+containing the phonon band structure. If `modes` is True,
+returns a tuple, where the first element is the `BandStructure` object and the second element is an ndarray
+of phonon modes.
+
+If modes are returned, the array is of shape
+(k-point, bands, atoms, 3) and the norm-squared of the mode
+is `1 / m_{eff}`, where `m_{eff}` is the effective mass of the
+mode.
+
+Return type:
+[BandStructure](dft/kpoints.html#ase.spectrum.band_structure.BandStructure "ase.spectrum.band_structure.BandStructure") or [tuple](https://docs.python.org/3.11/library/stdtypes.html#tuple "(in Python v3.11)") of ([BandStructure](dft/kpoints.html#ase.spectrum.band_structure.BandStructure "ase.spectrum.band_structure.BandStructure"), ndarray)
+
+get_dos(*kpts: [tuple](https://docs.python.org/3.11/library/stdtypes.html#tuple "(in Python v3.11)")[[int](https://docs.python.org/3.11/library/functions.html#int "(in Python v3.11)"), [int](https://docs.python.org/3.11/library/functions.html#int "(in Python v3.11)"), [int](https://docs.python.org/3.11/library/functions.html#int "(in Python v3.11)")] = (10, 10, 10)*, *indices: [list](https://docs.python.org/3.11/library/stdtypes.html#list "(in Python v3.11)") | [None](https://docs.python.org/3.11/library/constants.html#None "(in Python v3.11)") = None*, *verbose: [bool](https://docs.python.org/3.11/library/functions.html#bool "(in Python v3.11)") = True*)[[source]](../_modules/ase/phonons.html#Phonons.get_dos)[#](#ase.phonons.Phonons.get_dos "Link to this de…
+Return a phonon density of states.
+
+Parameters:
+- **kpts** ([*tuple*](https://docs.python.org/3.11/library/stdtypes.html#tuple "(in Python v3.11)")) – Shape of Monkhorst-Pack grid for sampling the Brillouin zone.
+
+
+[Showing lines 1-300 of 408. Use :301 to continue. Some lines truncated to 768 chars]

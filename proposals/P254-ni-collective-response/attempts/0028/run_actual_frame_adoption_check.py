@@ -1,0 +1,216 @@
+#!/usr/bin/env python3
+"""Admit one COMPLETE 128-slot adoption through real QWork, without propagation.
+
+--target is the already adopted scientific-work/frames directory, not a place to
+create or repair work. --expected-request is the full explicit QWork v2 JSON
+request (the original request is valid when the physical identity is unchanged).
+All three original/cache/target payload aliases must still exist. Only the new,
+absent --output report is published; source/cache/target contents stay readonly.
+This is frame-consumer admission, not future-q/noise propagation or whole-D closure.
+"""
+import argparse
+from contextlib import ExitStack
+from copy import deepcopy
+import json
+import math
+import os
+from pathlib import Path
+import resource
+import signal
+import stat
+import sys
+from time import monotonic, process_time
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parents[3]/'src'))
+
+
+def _expect(actual, expected):
+    from actual_frame_cache_io import _same
+    if not _same(actual, expected):
+        raise ValueError('explicit expected scientific request differs')
+
+
+def _refusal(label, function, expectation):
+    try:
+        function(expectation)
+    except ValueError as error:
+        return dict(check=label, refused=True, expected=expectation,
+                    error=type(error).__name__+': '+str(error))
+    raise ValueError('negative admission accepted '+label)
+
+
+def _tree_bytes(directory):
+    """Charge existing logical target storage, including every retained file."""
+    from actual_frame_cache_io import _directory, _safe
+    total = 0
+    for root, directories, files in os.walk(directory, followlinks=False):
+        _directory(root)
+        for name in directories:
+            _directory(Path(root)/name)
+        for name in files:
+            path = _safe(Path(root)/name)
+            info = path.stat()
+            if not stat.S_ISREG(info.st_mode):
+                raise ValueError('nonregular adoption file')
+            total += info.st_size
+    return total
+
+
+def _alarm(signum, frame):
+    raise TimeoutError('bounded actual-frame admission deadline exhausted')
+
+
+def check(args):
+    # Set the actual allocation before importing the numerical/runtime modules.
+    if args.cpu not in os.sched_getaffinity(0):
+        raise ValueError('requested CPU is outside the current allocation')
+    os.sched_setaffinity(0, {args.cpu})
+    from substrate_framework.partitioned_joint_budget import resident_bytes
+    from substrate_framework.partitioned_joint_slots import digest
+    from substrate_framework.partitioned_q_storage import QBudget
+    from substrate_framework.partitioned_q_work import QWork
+    from substrate_framework.streamed_material_state import file_binding
+    from actual_frame_cache_io import (
+        STORAGE, _bound_json, _directory, _disjoint, _json,
+        _locked, _publish, _safe, _same, _snapshot)
+    from actual_frame_cache_provenance import _complete_cache, _identity, _request
+    from actual_frame_adoption_sources import restore_adoption_metadata, collect_original_frames
+
+    cache, target = _directory(args.cache), _directory(args.target)
+    output = _safe(args.output, missing=True)
+    _safe(output.parent)
+    if os.path.lexists(output):
+        raise FileExistsError('report output must be absent')
+    _disjoint(cache, target)
+    for tree in (cache, target):
+        _disjoint(tree, output)
+    expected, expected_binding = _snapshot(args.expected_request)
+    _request(expected, expected['source_identity'])
+    if expected['count'] != 128:
+        raise ValueError('this real full-frame admission requires all 128 original slots')
+    key = digest(expected)
+    initial = _json(cache/'cache.json')
+    owner = _identity(args.owner)
+    if initial.get('owner') != owner:
+        raise ValueError('cache owner differs from explicit --owner')
+    source_binding = initial['original_request_binding']
+    source_path = _safe(source_binding['path'])
+    source_directory = source_path.parent
+    source_root = source_directory.parent.parent
+    _disjoint(source_root, target)
+    _disjoint(source_root, cache)
+    _disjoint(source_root.parent, output)
+    _disjoint(Path(initial['history']['path']).parent, output)
+    _disjoint(_safe(args.expected_request), output)
+    old = _bound_json(source_binding)
+    _request(old, old['source_identity'])
+    if (not _same(old, initial['original_request'])
+            or not _same(old['input'], expected['input']) or old['count'] != expected['count']
+            or source_path.name != 'request.json'
+            or source_directory.parent.name != digest(old)
+            or not source_directory.name.startswith('generation-')):
+        raise ValueError('original request/input/count/source generation differs')
+
+    existing = _tree_bytes(target)
+    budget = QBudget(max_actions=1, max_seconds=args.max_seconds,
+        max_bytes=existing+(16 << 20), existing_bytes=existing,
+        max_memory_bytes=2 << 30, worker_memory_bytes=2 << 30)
+    budget.check_processes(os.getpid(), ())
+    before = budget.snapshot()
+    with ExitStack() as locks:
+        # Match the pin/adopt locking convention; never launch a worker or executor.
+        for path in sorted((cache, target)):
+            locks.enter_context(_locked(path))
+        descriptor, items = _complete_cache(cache, owner)
+        if not _same(descriptor, initial):
+            raise ValueError('cache descriptor changed during admission')
+        budget.check_processes(os.getpid(), ())
+        metadata = restore_adoption_metadata(cache, target, owner, expected, descriptor, items, budget)
+        actual, generation = metadata['request'], metadata['generation']
+        provenance_binding, adopted_binding = metadata['provenance'], metadata['adopted']
+
+        work = QWork(target, budget, (args.cpu,), expected['source_identity'])
+        derived_key, derived_directory = work.request(expected['operation'], expected['input'], 128)
+        if derived_key != key or derived_directory != generation:
+            raise ValueError('real QWork derived a different adopted request/generation')
+        admitted = collect_original_frames(work, metadata, derived_key, items, descriptor, budget)
+
+        # Negative controls change ONLY expected metadata, never a payload/request.
+        original = items[0][1]['worker_receipt']['arrays']['frame']
+        wrong_hash = dict(original, sha256=('0' if original['sha256'][0] != '0' else '1')+original['sha256'][1:])
+        wrong_size = dict(original, bytes=int(original['bytes'])+1)
+        wrong_request = deepcopy(expected)
+        wrong_request['source_identity'] += '-wrong-expected-source'
+        negative = [
+            _refusal('wrong-original-frame-sha256', work.verify, wrong_hash),
+            _refusal('wrong-original-frame-size', work.verify, wrong_size),
+            _refusal('wrong-expected-request', lambda candidate: _expect(actual, candidate), wrong_request),
+            _refusal('wrong-original-request-sha256', _bound_json,
+                dict(source_binding, sha256=('0' if source_binding['sha256'][0] != '0' else '1')+source_binding['sha256'][1:])),
+            _refusal('wrong-original-request-size', _bound_json,
+                dict(source_binding, bytes=int(source_binding['bytes'])+1))]
+        _bound_json(source_binding)
+        _bound_json(provenance_binding)
+        _bound_json(adopted_binding)
+        budget.check_processes(os.getpid(), ())
+        report = dict(schema='P254-real-frame-consumer-admission-v1', complete=True,
+            scope='Real 128-slot QWork request/collect/verify and readonly full-frame inode/header admission; NOT future q/noise propagation or whole-D closure.',
+            implementation_sources=[file_binding(HERE/name) for name in
+                ('run_actual_frame_adoption_check.py', 'actual_frame_adoption_sources.py',
+                 'reuse_actual_baseline_frames.py', 'actual_frame_cache_io.py', 'actual_frame_cache_provenance.py')]
+                +[file_binding(HERE.parents[3]/'src/substrate_framework'/name) for name in
+                  ('partitioned_q_work.py', 'partitioned_q_storage.py', 'partitioned_joint_slots.py',
+                   'partitioned_joint_budget.py', 'streamed_material_state.py', 'streamed_joint_state.py')],
+            expected_request=expected, expected_request_file=expected_binding,
+            derived_request_key=derived_key, target=str(target), cache=str(cache), owner=owner,
+            original_request=old, original_request_binding=source_binding,
+            original_history=descriptor['history'], original_slots=descriptor['slots'],
+            cache_complete=metadata['cache_complete'], adoption=adopted_binding,
+            admitted_count=len(admitted), items=admitted, negative_controls=negative,
+            current_invocation=dict(pid=os.getpid(), affinity=sorted(os.sched_getaffinity(0)),
+                deadline_enforcement='Process ITIMER_REAL includes module loading; inherited budget time_cap text describes the producer executor, not this readonly consumer.',
+                memory_enforcement='Budget RSS samples between admission steps, not a continuous watchdog; process_peak_rss_bytes is the OS process high-water mark.',
+                process_cpu_seconds=process_time()-args.process_started,
+                elapsed_seconds=monotonic()-args.started,
+                process_rss_bytes=resident_bytes(os.getpid()),
+                process_peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,
+                budget_before=before, budget_after=budget.snapshot()),
+            accounting='Actual QBudget/action snapshots for readonly admission; existing target logical bytes charged, final report publication excluded. Original worker fields and numeric types retained verbatim as historical provenance, never current costs. Hash/read/device-I/O counts are not instrumented.',
+            storage=STORAGE)
+        _publish(output, report)
+        return report
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    for name in ('cache', 'target', 'expected-request', 'output'):
+        parser.add_argument('--'+name, type=Path, required=True)
+    parser.add_argument('--owner', required=True, help='Explicit owner token shared by cache and adoption.')
+    parser.add_argument('--cpu', type=int, choices=range(6, 11), required=True)
+    parser.add_argument('--max-seconds', type=float, required=True,
+        help='Positive wall deadline, at most 600 seconds; includes module loading.')
+    args = parser.parse_args()
+    if not math.isfinite(args.max_seconds) or not 0 < args.max_seconds <= 600:
+        parser.error('--max-seconds must be finite and in (0, 600]')
+    args.started, args.process_started = monotonic(), process_time()
+    signal.signal(signal.SIGALRM, _alarm)
+    signal.setitimer(signal.ITIMER_REAL, args.max_seconds)
+    try:
+        report = check(args)
+        print(json.dumps(dict(status='admitted', output=str(args.output),
+            admitted_count=report['admitted_count'], scope=report['scope']), allow_nan=False), flush=True)
+        return 0
+    except Exception as error:
+        print(json.dumps(dict(status='refused-or-interrupted',
+            error=type(error).__name__+': '+str(error),
+            scope='Readonly real-frame admission only; no repair or propagation attempted.'),
+            allow_nan=False), file=sys.stderr, flush=True)
+        return 1
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

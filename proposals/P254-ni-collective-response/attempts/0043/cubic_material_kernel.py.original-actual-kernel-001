@@ -1,0 +1,103 @@
+"""Actual Ni/H cubic force consumer, full64 q and full111 internal mode legs.
+
+The common polynomial evaluates both donor pieces together, hence all ionic/
+electronic cross terms. Mean is connected-Gaussian tadpole, not an equilibrium
+force repair. The mean/noise/retarded outputs are not fed back into old F/C.
+"""
+import json
+from time import perf_counter
+import numpy as np
+from cubic_force_functional import evaluate,ROUTED_TERMS
+
+
+def _chunk(provider,reference,q,internal,rows):
+    """One genuinely new (external q,internal q) raw force influence chunk."""
+    started = perf_counter(); nt = len(reference.times); ne = len(rows)
+    left,right = provider.force_vertices(q,internal,rows)
+    vertex_seconds = perf_counter()-started
+    legs_started = perf_counter()
+    wg1,wl1 = reference.ordered_grid(internal)
+    wg2,wl2 = reference.ordered_grid(left['q3'])
+    wgm,_ = reference.ordered_grid(int(provider.minus[internal])) if q == 0 else (None,None)
+    legs_seconds = perf_counter()-legs_started
+    contraction_started = perf_counter()
+    arrays = {name:np.zeros((nt,nt,ne,ne),complex) for name in ('greater','lesser','retarded')}
+    arrays['mean_force'] = np.zeros((nt,ne),complex)
+    for a in range(nt):
+        for b in range(nt):
+            data = dict(left=left['total'],right=right['total'],
+                wg_first=wg1[a,b],wg_second=wg2[a,b],wl_first=wl1[a,b],wl_second=wl2[a,b],
+                equal_left=wg1[a,a],equal_right=wgm[b,b] if q == 0 else wg1[b,b])
+            value = evaluate(data,float(reference.times[a]>=reference.times[b]),ROUTED_TERMS)
+            for name in ('greater','lesser','retarded'):
+                arrays[name][a,b] = value[name]
+            if q == 0 and b == 0:
+                arrays['mean_force'][a] = value['mean_left']
+    if not all(np.isfinite(value).all() for value in arrays.values()):
+        raise FloatingPointError('nonfinite raw cubic chunk; no clipping permitted')
+    metadata = dict(external_q=q,internal_q=internal,routed_pair_evaluations=nt*nt,
+        donor_vertex_norm_max={name:float(np.linalg.norm(left[name]))
+            for name in ('bare_ionic','electronic_local','electronic_nonlocal')})
+    timings = dict(seconds=perf_counter()-started,vertex_seconds=vertex_seconds,
+        ordered_leg_seconds=legs_seconds,contraction_seconds=perf_counter()-contraction_started)
+    return arrays,metadata,timings
+
+
+def compute(provider_factory,reference,external_q,external_rows,cache):
+    """Sum authenticated saved chunks in original q order; never replay completed units.
+
+    Provider construction is lazy: already-complete output does not reconstruct
+    any ionic donor or Cartesian transition. Cache identity is owned by the CLI.
+    """
+    nt = len(reference.times); ne = len(external_rows)
+    kernels = {name:np.zeros((nt,nt,len(external_q),ne,ne),complex)
+               for name in ('greater','lesser','retarded')}
+    mean = np.zeros((nt,len(external_q),ne),complex)
+    donor_norms = {name:0. for name in ('bare_ionic','electronic_local','electronic_nonlocal')}
+    newly_computed = reused = 0; provider = None
+    for iq,q in enumerate(external_q):
+        q_started = perf_counter(); q_new = q_reused = 0
+        for internal in range(64):
+            unit_started = perf_counter(); key = 'q/%02d/%02d'%(q,internal)
+            if cache.has(key):
+                reused += 1; q_reused += 1
+            else:
+                if provider is None:
+                    provider = provider_factory()
+                raw,metadata,timings = _chunk(provider,reference,q,internal,external_rows)
+                cache.put(key,raw,metadata=metadata,timings=timings)
+                newly_computed += 1; q_new += 1
+                del raw
+            saved = cache.get(key)
+            metadata = cache.manifest['items'][key]['metadata']
+            if (metadata['external_q'] != q or metadata['internal_q'] != internal
+                    or metadata['routed_pair_evaluations'] != nt*nt
+                    or set(saved) != {'greater','lesser','retarded','mean_force'}):
+                raise ValueError('saved raw cubic chunk axes/counts differ')
+            for name in kernels:
+                if saved[name].shape != (nt,nt,ne,ne) or not np.isfinite(saved[name]).all():
+                    raise ValueError('finite saved full-time external force matrix required')
+                kernels[name][:,:,iq] += saved[name]
+            if saved['mean_force'].shape != (nt,ne) or not np.isfinite(saved['mean_force']).all():
+                raise ValueError('finite saved full-time force mean required')
+            mean[:,iq] += saved['mean_force']
+            for name in donor_norms:
+                donor_norms[name] = max(donor_norms[name],metadata['donor_vertex_norm_max'][name])
+            print(json.dumps(dict(completed_external_q=q,completed_internal_q=internal,
+                archive=cache.manifest['items'][key]['archive'],
+                chunk_elapsed_seconds=perf_counter()-unit_started,
+                original_chunk_timings=cache.manifest['timings'][key],
+                newly_computed_chunks=newly_computed,reused_chunks=reused)),flush=True)
+            del saved
+        print(json.dumps(dict(completed_external_q=q,external_q_elapsed_seconds=perf_counter()-q_started,
+            newly_computed_q_chunks=q_new,reused_q_chunks=q_reused)),flush=True)
+    if cache.manifest['status'] != 'complete':
+        cache.manifest['status'] = 'complete'; cache.publish()
+    arrays = dict(kernels,mean_force=mean,times_inverse_ry=reference.times,
+                  external_q=np.asarray(external_q,int),external_rows=np.asarray(external_rows,int))
+    return arrays,dict(routed_pair_evaluations=nt*nt*(newly_computed+reused),
+        newly_computed_routed_pairs=nt*nt*newly_computed,reused_routed_pairs=nt*nt*reused,
+        newly_computed_chunks=newly_computed,reused_chunks=reused,
+        donor_vertex_norm_max=donor_norms,internal_q_count=64,
+        internal_first_mode_count=111,internal_second_mode_count=111,
+        exact_ordered_q_sum=True,implicit_spin_factor=False)

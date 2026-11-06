@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "attempt": "0003",
+  "positive_intent": "Turn settled raw QE PH outputs into explicit mass-weighted physical harmonic operators without silently altering their matrices, and settle the native finite-grid phase convention.",
+  "execution_state": "Actual corrected q2r/matdyn serialized-grid replay and completed-cache recovery passed in dft-c5-phonon-operator.service, labeled herdr w1:p9. receipt.json is complete with 127 passed checks over all eight native q-star members. first-run-failure.json preserves the original failed PH-reference identification.",
+  "claim_delta": "No new material claim. Source-backed definitions and exposing oracles only until executed and reviewed.",
+  "command": "env PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /home/administrator/projects/substrate-framework/.venv/bin/python /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0003/run_oracles.py",
+  "production_command_template": "env PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /home/administrator/projects/substrate-framework/.venv/bin/python /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0003/run_oracles.py --result /absolute/W1/stage/result.json --native-directory /absolute/W1/stage/native --receipt /absolute/new-receipt.json",
+  "service": "dft-c5-phonon-operator.service",
+  "herdr_pane": "w1:p9",
+  "source_manifest": "sources/qe75-phonon-operator/manifest.json",
+  "source_evidence": {
+    "constants": "Modules/constants.f90:21-23,28-62,110-118: NIST2018 decimal SI constants; Ry mass unit is 2 electron masses; AU_SEC is Hartree time; native signed sqrt frequency multiplier is 1/(4*pi*AU_PS).",
+    "native_operator": "PHonon/PH/dyndia.f90:56-81: explicit Hermitian average then divide by sqrt(mass_i*mass_j)*AMU_RY; 90-115: signed sqrt, native displacement normalization.",
+    "xml": "PHonon/PH/io_dyn_mat.f90:83-106,147-197: geometry, per-type amu masses, complete atom-pair force tensors, one signed frequency/displacement set per XML. This QE checkout has io_dyn_mat in PHonon/PH, not Modules.",
+    "native_raw_scope": "PHonon/PH/dynmatrix.f90:105-114,144-168,214-217 and q2qstar_ph.f90:118-140: the original in-memory dyn is diagonalized after q2qstar writes an additional symmetry-averaged phi2. Original PH OMEGA tags are therefore not an exact spectrum of the serialized operator, even at representative q.",
+    "complete_grid": "PHonon/PH/do_q2r.f90:168-188,234-299: native XML already contains q-star members; fractional grid coordinate is at^T q in Fortran column-vector storage; each slot is required exactly once; transform has no atomic-tau phase. The Python backend stores each direct lattice vector as a ROW, hence at_rows @ q_cart.",
+    "fft_sign": "FFTXlib/src/fft_scalar.FFTW3.f90:379-387,432-440,472-475: positive sign is backward positive-exponent transform without normalization; do_q2r divides by N explicitly.",
+    "native_q2r_projection": "PHonon/PH/do_q2r.f90:624-644: QE q2r also explicitly Hermitian-averages before FFT. This interface deliberately transforms raw matrices unless the caller requests that repair beforehand.",
+    "phase_and_geometry": "PHonon/PH/matdyn.f90:1167-1175,1196-1220: ordinary PH fd=false uses separation R+tau_i-tau_j for Wigner-Seitz selection, while reconstruction phase is exp(-2*pi*i*q.R), not exp(-2*pi*i*q.(R+tau_i-tau_j)).",
+    "supercell_basis": "PHonon/PH/matdyn.f90:1283-1305: extra phases arise for supercell basis relabeling via tau_super-tau_primitive; this does not insert an intra-primitive-cell tau phase into the raw transform.",
+    "xml_replay_naming": "Modules/has_xml.f90:8-34 removes the explicit .xml suffix in place. do_q2r.f90:86-106,164-168 uses that marker and falls back to ASCII dyn0. io_dyn_mat.f90:68 appends .xml when writing the IFC header.",
+    "native_replay_output": "matdyn.f90:473-484 reads explicit crystalline q; 774-780 writes Cartesian q in 2*pi/alat with six decimal places and signed cm^-1 frequencies with (6f10.4). Half-last-place frequency quantum is 0.5e-4 cm^-1; exact SI c converts cm^-1 to THz as c/1e10."
+  },
+  "analytic_construction": {
+    "harmonic_energy": "V=1/2 sum u_i^* C_ij u_j; generalized equation C u=omega^2 M u, M_i=m_i(amu)*AMU_SI; y=sqrt(M)u; D=M^(-1/2) C M^(-1/2). Full 3N Cartesian space before optional projection.",
+    "si_route": "C_SI=C_QE*RYDBERG_SI/BOHR_RADIUS_SI^2; D_SI=C_QE*RYDBERG_SI/(BOHR_RADIUS_SI^2*AMU_SI*sqrt(m_i*m_j)), in s^-2. Ordinary signed THz is sign(lambda)*sqrt(abs(lambda))/(2*pi*1e12).",
+    "qe_route": "D_QE=C_QE/(sqrt(m_i*m_j)*AMU_RY); signed THz is sign(lambda)*sqrt(abs(lambda))*RY_TO_THZ. The exact relation hbar^2=m_e*E_H*a0^2 proves SI equivalence; actual sourced rounded decimals carry an explicit half-last-place rounding allowance.",
+    "translations": "T_(i,a),b=sqrt(m_i/sum m)*delta_ab. Uniform Euclidean translations are wrong for mixed masses. Acoustic P D P projection is exposed only at Gamma and is not claimed equivalent to QE real-space ASR.",
+    "finite_lattice": "C(q)=sum_R C(R) exp(-2*pi*i*q.R), C(R)=1/N sum_q C(q) exp(+2*pi*i*q.R). R is row-cell minus column-cell. All tensors remain complex. Only a complete unshifted grid with native explicit star matrices is accepted.",
+    "not_pair_law": "The inverse finite transform is an aliased periodic force lattice. No unique infinite-range pair law, Wigner-Seitz off-grid interpolation or long-range polar separation is inferred, even from a complete grid; a Gamma-only matrix is not called a pair law."
+  },
+  "oracles": {
+    "units_modes_oracle.py": "Exact SymPy atomic-unit identity; independent SI/QE routes with sourced rounding; mixed 4/9 amu Cartesian fixture, weighted translations, explicit projections and signed unstable modes. Signed print-interval inversion is proved monotone on both branches and checked across zero. Mutations expose unit/mass/2pi/sign/clipping/projection and omitted-quantum errors.",
+    "force_lattice_oracle.py": "Exact 3x1x1 two-basis-atom fixture, nonzero rational tau and nonsymmetric oriented Cartesian couplings. Independent exact positive/negative phase sums versus NumPy FFT, reconstruction, reciprocity, translation and q-star completeness. Mutations: Fourier sign, erroneous tau phase, broken complex reciprocity, missing/duplicate q members.",
+    "native_pilot_oracle.py": "Independently decode every native XML force matrix. Compare each explicitly Hermitian-processed q-star operator to q2r/matdyn replay at the same sampled q. Invert source-derived print intervals monotonically, with an independently declared full-grid-scale roundoff allowance. Original PH OMEGA tags remain separate diagnostics rather than an invalid exact serialized-operator reference.",
+    "native_qe_replay.py": "Run the registered QE7.5 q2r and matdyn binaries through the labeled durable herdr service, with no ASR or polar corrections. Hash all raw inputs, helper code, binaries and replay artifacts; preserve interrupted attempts and deeply validate completed cache reuse.",
+    "cache_reuse_oracle.py": "Call the actual completed native replay cache again and verify every raw replay artifact plus its receipt retains SHA256 and nanosecond mtime. No mock, native rerun or replacement attempt is accepted on cache reuse.",
+    "run_oracles.py": "Verify source/pilot snapshot hashes, run synthetic and actual native linear-operator blocks, and atomically publish complete or raw-exception failed receipts. Native replay is not an electronic DFT calculation."
+  },
+  "remaining_risks": [
+    "This settles conventions and actual cache recovery for the native engineering fixture, not a stationary material spectrum or physical convergence.",
+    "256*n*machine-epsilon times the maximum local/reference/sum-of-grid-operator-norm scale is a preregistered engineering roundoff allowance, not a certified LAPACK enclosure or material convergence evidence. Print quantization is propagated separately without fitting a tolerance to the failed PH comparison.",
+    "Pilot Ni1 2x2x2 outputs are only a native engineering/unit fixture; acoustic residuals, signed instabilities and raw errors retain their source values.",
+    "No mode or lattice inference licenses phase/BEC, a compact charge, phonon lifetime from eta, nuclear enhancement or a material stability conclusion.",
+    "Polar materials require independently specified long-range/nonanalytic treatment before interpreting finite-grid force constants away from sampled q; none is silently added here.",
+    "Fourier convention is settled for ordinary PH fd=false; finite-displacement fd=true Wigner-Seitz orientation and supercell relabeling are not an exposed API.",
+    "The production W1 grid and metadata must satisfy the same complete-grid contract; no missing q matrices or symmetry operators are invented."
+  ]
+}

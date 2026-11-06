@@ -1,0 +1,9 @@
+{
+  "checks": [],
+  "completed_blocks": [],
+  "elapsed_seconds": 0.020162988919764757,
+  "error": "FileNotFoundError(2, 'No such file or directory')",
+  "source_manifest_sha256": "b2d51b4ba238e35787ae4f8d256f4c7fa7eddc9a380b4e5b98be1d8c4965beb7",
+  "status": "failed",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py\", line 18, in execute\n    worker=observe(os.getpid())\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/receipts.py\", line 20, in observe\n    limits={key:(kernel/key).read_text().strip() for key in\n                ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1029, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1015, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-w1-force-sensitivity-0012-g001-1792455075679701675.service/cpuset.cpus.effective'\n"
+}

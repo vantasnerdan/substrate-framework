@@ -1,0 +1,50 @@
+{
+  "schema": "P254-saved-canonical-response-implementation-registration-v1",
+  "status": "exercised-saved-material-and-focused-oracle",
+  "parent_input_registration": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/next-physical-readouts-registration-001.json",
+    "bytes": 3337,
+    "sha256": "88d7f9c423e4f194dce6b859deba2fe027ba6b947c760aec7d731abe9ef7a66f"
+  },
+  "new_files": [
+    "saved_canonical_response.py",
+    "saved_canonical_response_readout.py",
+    "saved_canonical_response_oracle.py"
+  ],
+  "api": {
+    "algebra": "saved_canonical_response: canonical_stages(mean, small, natoms=..., nfield=...); mechanical_stages(stages, masses=..., charges=..., polarizations=...); kinetic_atomwise(stages, masses=..., ncells=...); atom_table(stages, kinetic, atom_ids=..., species=..., positions=...)",
+    "saved_readout": "saved_canonical_response_readout.read_saved_canonical_response(*, mixed_initial, mixed_endpoint, mean_initial, mean_endpoint, metadata, energy_endpoint=None)",
+    "binding_arguments": "Every saved_readout argument is an explicit original raw {path,bytes,sha256} binding; only energy_endpoint is optional. Existing parent registration source_inputs supplies all six.",
+    "python_return": "NumPy arrays and complex numbers; clamped_scientific_readout.encode converts complex scalars to {real,imag} JSON objects, preserving original metadata JSON verbatim.",
+    "cli": "saved_canonical_response_readout.py --registration PATH --registration-sha256 SHA256 --output NEW_PATH; exclusive new-output creation; stdout gives actual output path/bytes/SHA256."
+  },
+  "commands_from_repository_root": {
+    "finite_oracle_parent_only": "env PYTHONPATH=src OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 timeout 120s taskset -c 0 .venv/bin/python proposals/P254-ni-collective-response/attempts/0028/saved_canonical_response_oracle.py",
+    "actual_saved_readout_parent_only": "env PYTHONPATH=src OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 timeout 120s taskset -c 0 .venv/bin/python proposals/P254-ni-collective-response/attempts/0028/saved_canonical_response_readout.py --registration proposals/P254-ni-collective-response/attempts/0028/next-physical-readouts-registration-001.json --registration-sha256 88d7f9c423e4f194dce6b859deba2fe027ba6b947c760aec7d731abe9ef7a66f --output proposals/P254-ni-collective-response/attempts/0028/saved-canonical-response-original-001.json"
+  },
+  "output_schema": {
+    "schema": "P254-saved-canonical-Gamma-atom-response-v1",
+    "provenance": "source_inputs, source_bindings, registration (CLI), model_identity, seed, original_metadata_identity, original_mixed_layout, original_clamped_times_inverse_ry, actual_read_times_inverse_ry, units, conventions, scope",
+    "response": "initial, endpoint, difference each contain atoms (37 original rows), totals (all,Ni,H), global_field (plus,minus,mixed). Initial/endpoint include actual saved time. Difference is endpoint minus initial for response vectors and kinetic coefficient; difference displacement weights explicitly mean the magnitude weight of the direction change.",
+    "atom_row": "atom_original_one_based, species, position_bohr_xyz, kinetic_mixed_global_ry; response.{plus,minus,mixed}.{u_bohr_xyz,p_bohr_inverse_xyz,velocity_bohr_ry_xyz,displacement_weight_bohr2,displacement_fraction}",
+    "totals": "additive kinetic mixed coefficient; vector SUMS of u,p,v; additive displacement weights and all-atom fractions; not species means, collective modes or energy fractions",
+    "baseline": "baseline_unexcited_mean.{initial,endpoint,drift_endpoint_minus_initial}, each with atom/xyz u,p,k,velocity and GLOBAL coordinate,momentum,shift; never added into the excitation response tables",
+    "energy_comparison": "endpoint_energy_comparison is null without supplied energy; otherwise checks genuine completed schema/input/model/time/actual mean/mass/charge/polarization/N identities, consumes only six tiny saved mean arrays, and reports atom sum, genuine ionic_kinetic_minimal, complex discrepancy, 128*eps*max(sum_abs_atoms,abs_scalar) rounding comparison and its boolean. No scalar is fitted or reality-repaired."
+  },
+  "normalization": {
+    "matter": "ALREADY physical per-cell; initial Ni1/x J/N seed is checked but never rescaled",
+    "field": "original Cartesian a_xyz,Pi_xyz basis gives identity polarizations; genuine energy actual model descriptor authenticates the raw polarization identity when supplied; GLOBAL modes are never divided by sqrt(N)",
+    "positions": "source is (3,37) Cartesian-by-original-atom; canonical response is (37,3) original-atom-by-xyz",
+    "kinetic": "k=p-Z*a at mean/plus/minus/mixed; N*_bilinear(k,k,sum_xyz(a*b/M))/2 per atom; includes both mean-times-mixed and independent first cross terms; no dagger, extra half or real projection",
+    "displacement": "sum_xyz |u_direction|^2 only, a separately labeled real/nonanalytic amplitude diagnostic; not covariance or kinetic response. Zero directions have null normalized fractions."
+  },
+  "oracle_scope": {
+    "symbolic": "General complex symbolic minimally coupled scalar product rule; exact finite unequal-mass/rectangular-polarization two-atom differentiated scalar and additive grouping.",
+    "numerical": "Independent complex directions through canonical parser; actual mixed_excitation_energy.mixed_components kinetic scalar agreement; atom/species additivity, source3xatom position ordering, canonical atom/xyz ordering, displacement-only weights and zero-direction fractions.",
+    "mutations": ["omit mean-times-mixed", "divide global field by sqrtN", "rescale physical matter", "replace independent minus by conjugate plus", "extra half", "dagger", "equal masses", "reshape source Cartesian positions in wrong order", "missing minus", "wrong model", "wrong mass variant", "wrong position shape", "wrong original atom IDs", "wrong field basis"],
+    "does_not_establish": "Material accuracy, trajectory convergence, heat, finite-dose redistribution, covariance, coherence lifetime, spatial spreading or ranking."
+  },
+  "execution_boundary": "Parent executed the focused algebra/identity oracle and actual saved-material API on CPU0/BLAS1, producing the37-atom and matched-control publications in saved-coupled-atom-control-complete-intake-001.json. No Native, H0 or trajectory replay. The separately implemented one-sided adapter has its own finite/current-source proofs and remains unallocated for fresh material execution.",
+  "original_report": null,
+  "scope": "Original coupled saved Gamma response and minimally coupled ionic kinetic component RESPONSE coefficient only. No total energy allocated arbitrarily by atom, no new H0 budget machinery, no one-sided adapter or authority edits."
+}

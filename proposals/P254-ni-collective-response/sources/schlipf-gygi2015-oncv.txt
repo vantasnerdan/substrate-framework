@@ -1,0 +1,1619 @@
+Optimization Algorithm for the Generation of ONCV Pseudopotentials
+Martin Schlipf∗ and Fran¸ cois Gygi†
+Department of Computer Science, University of California Davis, Davis, CA 95616, USA
+We present an optimization algorithm to construct pseudopotentials and use it to generate a
+set of Optimized Norm-Conserving Vanderbilt (ONCV) pseudopotentials for elements up to Z=83
+(Bi) (excluding Lanthanides). We introduce a quality function that assesses the agreement of a
+pseudopotential calculation with all-electron FLAPW results, and the necessary plane-wave energy
+cutoﬀ. This quality function allows us to use a Nelder-Mead optimization algorithm on a training
+set of materials to optimize the input parameters of the pseudopotential construction for most of the
+periodic table. We control the accuracy of the resulting pseudopotentials on a test set of materials
+independent of the training set. We ﬁnd that the automatically constructed pseudopotentials provide
+a good agreement with the all-electron results obtained using the FLEUR code with a plane-wave
+energy cutoﬀ of approximately 60 Ry.
+I. INTRODUCTION
+Pseudopotentials were introduced over three decades
+ago as an elegant simpliﬁcation of electronic structure
+computations.1 They allow one to avoid the calcula-
+tion of electronic states associated with core electrons,
+and focus instead on valence electrons that most often
+dominate phenomena of interest, in particular chemical
+bonding. In the context of Density Functional Theory
+(DFT), pseudopotentials have made it possible to solve
+the Kohn-Sham equations 2,3 using a plane-wave basis
+set, which considerably reduces the complexity of cal-
+culations, and allows for the use of eﬃcient Fast Fourier
+Transform (FFT) algorithms. The introduction of norm-
+conserving pseudopotentials (NCPP) by Hamann et al.
+in 1979 4,5 greatly improved the accuracy of DFT plane
+wave calculations by imposing a constraint (norm con-
+servation) in the construction of the potentials, thus
+improving the transferability of potentials to diﬀerent
+chemical environments. More elaborate representations
+of pseudopotentials were later proposed, most notably
+ultrasoft pseudopotentials 6 (USPP) and the projector
+augmented wave7 (PAW) method, improving computa-
+tional eﬃciency by reducing the required plane wave en-
+ergy cutoﬀ. The implementation of these PP is how-
+ever rather complex, 8 in particular for advanced calcu-
+lations involving hybrid density functionals,9 many-body
+perturbation theory,10 or density-functional perturbation
+theory.11 Both USPP and PAW potentials have been used
+with great success in a large number of computational
+studies published over the past two decades. NCPP po-
+tentials were also widely used but suﬀered from the need
+to use a large plane wave basis set for some elements,
+especially transition metals.
+Recently, Hamann suggested 8 a method to construct
+optimized norm-conserving Vanderbilt (ONCV) poten-
+tials following the USPP construction algorithm without
+forfeiting the norm-conservation. The resulting poten-
+tials have an accuracy comparable to the USPP at a
+moderately increased plane-wave energy cutoﬀ.
+Since the very ﬁrst pseudopotentials were introduced,
+there has been an interest in a database of transferable,
+reference potentials that could be applied for many el-
+ements in the periodic table. 5,12,13 The need for a sys-
+tematic database in high-throughput calculations led to
+a recent revival of this ﬁeld: Garrity et al. 14 proposed
+a new set of USPP for the whole periodic table except
+the noble gases and the rare earths. Dal Corso 15 con-
+structed a high- and a low-accuracy PAW set for all el-
+ements up to Pu. Common to these approaches is the
+fact that the input parameters of the PP construction
+are selected by experience based on the results of the all-
+electron (AE) calculation of the bare atom. The quality
+of the constructed PP is then tested by an evaluation of
+diﬀerent crystal structures and by comparing to the all-
+electron FLAPW16–18 results. To standardize the testing
+procedure, Lejaeghere et al. 19 suggested to compare the
+area between a Murnaghan ﬁt 20 obtained with the PP
+and the AE calculation resulting in a quality factor ∆.
+K¨ u¸ c¨ ukbenliet al. 21 proposed a crystalline monoatomic
+solid test, where the quality factor of the simple cubic
+(sc), body-centered cubic (bcc), and face-centered cu-
+bic (fcc) structure is evaluated to assess the quality of
+a PP. There are two improvements over these construc-
+tion principles that we propose to address in this work.
+First, we introduce a quality function that takes into ac-
+count the computational eﬃciency of the PP as well as
+its accuracy. Second, we allow for a systematic feedback
+of this quality function onto the input parameters deﬁn-
+ing the PP. In this way, we can introduce an automatic
+construction algorithm that optimizes the properties of
+the PP without bias from the constructor. We apply this
+algorithm to construct ONCV pseudopotentials and com-
+pare their performance with recent USPP 14 and PAW15
+PP libraries. The pseudopotentials are available in UPF
+and XML format on our webpage. 22
+This paper is organized as follows: In Sec. II, we outline
+the properties of the ONCV PP and introduce the input
+parameters that will be optimized by the algorithm. In
+Sec. III, we introduce the quality function to assess the
+performance of the PP, specify the materials we use to
+construct and test the PP, outline the setting of the DFT
+calculation, and ﬁnally present the optimization algo-
+rithm that iterates construction and testing until a good
+PP is found. We compare the constructed PP to results
+arXiv:1502.00995v1  [cond-mat.mtrl-sci]  3 Feb 2015
+
+--- PAGE BREAK ---
+
+2
+obtained with FLAPW, USPP, and PAW in Sec. IV and
+draw our conclusions in Sec. V
+II. ONCV PSEUDOPOTENTIALS
+The optimized norm-conserving Vanderbilt (ONCV)
+pseudopotentials were recently proposed by Hamann. 8
+Here, we brieﬂy sketch their construction, following
+Hamann, to highlight the input parameters (bold in text)
+that determine the properties of the PP. The general idea
+is introduce an upper limit wave vectorqc and optimize
+the pseudo wave functions ϕi(r) such that the residual
+kinetic energy
+Eij(qc) =
+∫ ∞
+qc
+dqq 4ϕi(q)ϕj(q) (1)
+above this cutoﬀ is minimized. Here, ϕi(q) is the Fourier
+transform of the pseudo wave function
+ϕi(q) = 4π
+∫ ∞
+0
+drr 2 jl(qr)ϕi(r), (2)
+jl(qr) a spherical Bessel function, and l the angular mo-
+ment of the pseudo wave function. On the one hand, the
+cutoﬀ qc determines which features of the physical po-
+tential can be described by the PP. On the other hand,
+increasingqc makes the PP harder and hence more costly
+to evaluate.
+For every angular moment, a projector radius rc
+determines in which region the pseudoization is done.
+The projector radius is approximately inversely propor-
+tional to the cutoﬀ qc so that a smaller value increases
+the computational cost along with the accuracy. Outside
+of this radius the wave function should follow the true
+all-electron wave functionψ. To ensure the continuity at
+this radius, one imposes M constrains on the continuity
+of the pseudo wave function
+dnϕ
+drn
+⏐⏐⏐⏐
+rc
+= dnψ
+drn
+⏐⏐⏐⏐
+rc
+, (3)
+for n = 0,...M − 1. In this work, we use M = 5 for all
+constructed PP.
+The basis set used in the optimization is constructed
+from spherical Bessel functions. As the basis functions
+are only used inside the sphere, they are set to zero out-
+side of the projector radius. This destroys the orthogo-
+nality of the basis, so that one needs to orthogonalize it
+again. A linear combination of the orthogonalized basis
+functions yields a new basis where a single basis function
+ϕ0 satisﬁes the constraints in Eq. (3) and for all other
+basis functionsξN
+n the value and theM−1 derivatives at
+rc are zero. As a consequence, the sum of ϕ0 and any lin-
+ear combination of the ξN
+n will satisfy the constraints in
+Eq. (3). It is advantageous to select those linear combi-
+nations ofξN
+n that have a maximal impact on the residual
+energy by evaluating the eigenvaluesen and eigenvectors
+ξR
+n
+ϕi =ϕ0 +
+N−M∑
+n=1
+xnξR
+n . (4)
+In this work, we construct the PP with N = 8 basis
+functions. Notice that the optimization of the pseudo
+wave function is performed under the constraint that the
+norm of the all-electron wave function is conserved.
+From the obtained pseudo wave functions, one can con-
+struct projectors χi
+χi(r) = (εi−T−Vloc)φi(r), (5)
+where T is the kinetic energy operator. Vloc is the local
+potential that follows the all-electron potential outside
+of rc and is extended smoothly to the origin by a poly-
+nomial. For occupied states εi is the eigenvalue of the
+all-electron calculation. For unoccupied states, one needs
+to specify this energy shift before the construction of
+the PP. Following Ref. 8, we construct two projectors per
+angular momentuml≤lmax and only the local potential
+for alll>l max above. The projectors deﬁne the following
+nonlocal potential
+VNL =
+∑
+ij
+⏐⏐χi
+⟩
+B−1
+ij
+⟨
+χj
+⏐⏐ (6)
+where
+Bij =
+⟨
+ϕi
+⏐⏐χj
+⟩
+, (7)
+which is a Hermitian matrix when normconserving
+pseudo wave functions are constructed. 6 One can sim-
+plify this potential by a unitary transformation to the
+eigenspace of the B matrix.
+III. COMPUTATIONAL DETAILS
+A. Quality function
+In order to employ numerical optimization algorithms
+in the construction of PPs, we need a function that maps
+the multidimensional input parameter space onto a single
+number, the quality of the PP. A good PP is characterized
+by a small relative deviation
+δPP
+alat =aPP
+lat/aAE
+lat− 1 (8)
+between the lattice constant obtained in the plane-
+wave PP calculationaPP
+lat and in the AE calculation aAE
+lat ,
+respectively. A second criterion is the plane-wave en-
+ergy cutoﬀ Ecut necessary to converge the PP calcula-
+tion. These two criteria compete with each other because
+the pseudoization of the potential reduces the necessary
+energy cutoﬀ at the cost of a lower accuracy near the
+nucleus. Hence, we need to specify a target accuracy δ0
+
+--- PAGE BREAK ---
+
+3
+0 0.1 0.2 0.3 0.4 0.50
+10
+20
+30
+⏐⏐δ
+⏐⏐ in %
+quality function
+40 Ry
+60 Ry
+90 Ry
+140 Ry
+FIG. 1: (Color online) Quality function for various energy-
+cutoﬀs Ecut. For small δ, it is proportional to 1 /Ecut; for
+large δ proportional to 1/δ2 and independent of Ecut.
+which we want to achieve for our PP, i.e., for all mate-
+rials
+⏐⏐δPP
+alat
+⏐⏐≤δ0. We select δ0 = 0.2% motivated by the
+fact that the choice of diﬀerent codes or input parame-
+ters in the all-electron calculation may already lead to a
+relative error of approximately 0.1%. To discriminate be-
+tween PPs within the target accuracy, we include a term
+∝ 1/Ecut in the quality function, favoring smoother PP
+over hard ones. For PPs that are signiﬁcantly outside⏐⏐δPP
+alat
+⏐⏐ > 2δ0 our target accuracy, we only focus on opti-
+mizing the relative deviation by an 1 /(δPP
+alat)2 term. We
+choose a smooth continuation between the two regions,
+resulting in the function depicted in Fig. 1. The quality
+function has the following form
+q(δ,E cut) =
+{
+A +Cδ 2 +Dδ3 +Eδ 4 +Fδ 5 δ <2δ0
+(2δ0/δ)2 δ≥ 2δ0
+(9)
+with
+A = 1 + 1280
+Ecut
+y0 = 1 + 680
+Ecut
+C = 32y0− 16A− 29
+4δ3
+0
+D = 19A− 48y0 + 54
+4δ2
+0
+E = 96y0− 33A− 122
+16δ4
+0
+F = 5A− 16y0 + 22
+16δ5
+0
+.
+The function can be multiplied by an arbitrary scaling
+constant, which we set such that the value of the quality
+function is 1 at
+⏐⏐δPP
+alat
+⏐⏐ = 2δ0.
+B. Sets of materials
+As the constructed pseudopotentials depend on the set
+of materials used in the optimization algorithm, it is im-
+portant that the set contain physically relevant environ-
+ments of the atom. Furthermore, we select highly sym-
+metric structures with at most two atoms per unit cell
+to reduce the computation time. As representatives of
+a metallic environment, we select the simple cubic (sc),
+the body-centered cubic (bcc), the face-centered cubic
+(fcc), and the diamond-cubic (dc) structure. Ionic envi-
+ronments are provided in a rock-salt or zinc-blende struc-
+ture, where we combine elements such that they assume
+their most common oxidation state. This leads to a com-
+bination of elements from the lithium group with the ﬂu-
+orine group, the beryllium group with the oxygen group,
+and so on. We always use the three smallest elements
+of the respective groups to guarantee a variation in size
+of the resulting compounds. For the transition metals,
+several oxidation states are often possible. Hence, we
+combine them with carbon, nitrogen, and oxygen to test
+these diﬀerent valencies. As the noble gases do not form
+compounds, we test them only in the sc, bcc, fcc, and dc
+structure.
+Finally, we need to separate these materials into two
+sets. The training set consists of the bcc, and the fcc
+structure as well as all rock-salt compounds. It is used
+in the optimization algorithm to construct the PPs. As
+the PPs are speciﬁcally optimized to reproduce the struc-
+tural properties of the training set, we can only judge if
+the PPs are highly accurate by calculating an indepen-
+dent test set . The test set contains the sc and the dc
+structure as well as all zinc-blende compounds. In total,
+the training and test sets consist of 602 materials, where
+every noble-gas atom is part of four materials, and every
+other element is part of at least ten materials.
+C. Computational setup
+All pseudopotentials are constructed using the Perdew-
+Burke-Ernzerhof (PBE) generalized gradient density
+functional.23 We use an 8 × 8× 8 Monkhorst-Pack k-
+point mesh in the AE as well as in the PP calculation.
+While this may not be suﬃcient to completely converge
+the lattice constant with respect to the numbers of k-
+points, the errors in the PP and the AE calculation are
+expected to be the same, so that we can still compare
+the results. To ensure that metallic systems converge, we
+use a Fermi-type smearing with a temperature of 315.8 K
+corresponding to an energy of 0.001 htr.
+For the AE calculation, we use the FLAPW method
+as implemented in the Fleur code.24 We converge the
+plane-wave cutoﬀ and add unoccupied local orbitals to
+provide suﬃcient variational freedom inside the muﬃn-
+tin spheres. The precise numerical values necessary to
+converge the calculation are diﬀerent for every material;
+all input ﬁles can be obtained from our web page. 22 We
+obtain the lattice constant by a Murnaghan ﬁt20 through
+11 data points surrounding the minimum of the total
+energy.
+The automatic construction of pseudopotentials re-
+
+--- PAGE BREAK ---
+
+4
+40 60 80 100 120 140 160−0.2
+0
+0.2
+0.4
+0.6
+Ecut (Ry)
+δ (%)
+FIG. 2: (Color online) Relative deviation δ of a PP w.r.t.
+the AE calculation. The blue circles indicate the deviation
+obtained at a certain energy cutoﬀ Ecut. The red diamonds
+show the corrected deviation that is monotonically decreasing
+with increasing cutoﬀ (see text).
+quires every material to be calculated several hundred
+times. Hence, we approximate the Murnaghan equa-
+tion of state by a parabola that we ﬁt through data
+points at the AE lattice constant and a 1% enlarged
+or reduced value. We test the constructed PP with the
+Quantum ESPRESSO 25 plane-wave DFT code. Our
+test consists of a calculation with a large energy cut-
+oﬀ of Emax
+cut = 160 Ry that we consider to be the con-
+verged solution. Then, we decrease the cutoﬀ in steps of
+∆E = 10 Ry to the minimum of 40 Ry. Notice that as il-
+lustrated by Fig. 2, the actual deviation compared to the
+AE calculation may decrease even though we reduced the
+accuracy of the calculation. To correct for this, we adjust
+the deviation such that it is monotonically decreasing us-
+ing the following correction
+δPP
+corr(Ei
+cut) =|δPP(Emax
+cut )| +
+i∑
+k=1
+|δPP(Ek
+cut)−δPP(Ek−1
+cut )|
+(10)
+where Ei
+cut = Emax
+cut − 10i. This ensures that the devi-
+ation at a given cutoﬀ energy is an upper bound to the
+deviation at any larger cutoﬀ.
+D. Optimizing pseudopotentials
+We start from a reasonable starting guess for the N
+input parameters. We used the example input ﬁles pro-
+vided with the ONCVPSP package, 8 where available, or
+generated our own PP otherwise. By randomly alter-
+ing all input parameters in the starting-guess PP by a
+small amount, we can construct new PP. We assess these
+PP by evaluating the quality function on the training set
+of materials with the geometric average of all involved
+materials. In the case of the rock-salt compounds, we
+test always only one of the PP and for the other ele-
+ment we use a PP from the GBRV database. 14 After
+(N + 1) PP have been constructed, we employ a Nelder-
+Mead algorithm 26 to optimize the PP further. The PP
+parameters form a simplex in an N dimensional space.
+By replacing the worst corner by a better PP the simplex
+contracts towards the optimal PP. The advantages of the
+Nelder-Mead algorithm are that we do not need to know
+the derivatives with respect to the input parameters and
+that it can ﬁnd PP parameters that lie outside of the
+starting simplex.
+After 80 to 200 iterations of the Nelder-Mead algo-
+rithm, all PP have converged. Then, we restart the algo-
+rithm using these ﬁrst generation PP as starting guess.
+Now, we employ the ﬁrst generation PP in the com-
+pounds so that our resulting PP become independent
+of the GBRV database. Once the second generation is
+converged as well (another 100 iterations), the proper-
+ties of the training set are well reproduced for almost all
+materials.
+E. Reﬁning the training set
+For a few materials, the second generation PP do not
+reproduce the AE results on the test set of materials.
+Our proposed optimization algorithm provides an easy
+solution to overcome these cases by adding additional
+materials to the training set. In particular, for the early
+transition metals (Sc to Mn) it is necessary to include the
+sc structure in the training set. Furthermore, we include
+the dimer of hydrogen and nitrogen into the test set,
+because the second generation PPs for these two elements
+do not describe the bond length of the dimer accurately.
+We emphasize that our optimization algorithm could
+account for other material properties. As long as one is
+able to deﬁne a quality function, which maps the result
+of a PP potential calculation onto a number, it is possible
+to optimize the input parameters of the PP generation
+by standard numerical optimization techniques.
+IV. RESULTS
+We compare the performance of the ONCV PP con-
+structed in this work (SG15) 22 with the USPP in the
+GBRV database 14 and the high-accuracy PAW in the
+PSLIB.15 For the latter, we generate the potentials of
+PSLIB version 1.0.0 with Quantum ESPRESSO ver-
+sion 5.1.1. In the ﬁrst subsection, we focus on the lat-
+tice constants and bulk moduli of the materials in the
+training set. In the second subsection, we investigate the
+materials in the test set. In the third subsection, we look
+into materials that are not represented in the test set to
+check the accuracy of the pseudopotentials. In the ﬁrst
+
+--- PAGE BREAK ---
+
+5
+TABLE I: Comparison of the performance of the USPP in the
+GBRV database 14 and the high-accuracy PAW in PSLIB 15
+with the ONCV PP in the SG15 database (this work) for
+materials in a bcc structure. We analyze the relative deviation
+of the lattice constantδalat and the bulk modulusδB0 between
+a PP and the AE calculation. The average reveals if the PP
+has a systematic bias and the root-mean-square (rms) average
+tests the size of the error. We also show the proportion of
+materials that are not accurately described at various energy
+cutoﬀs.
+GBRV PSLIB SG15
+averageδalat (%) 0.03 0.03 0.04
+rms average δalat (%) 0.12 0.11 0.08
+% of materials with |δalat |> 0.2%a 10.94 40.00 23.19
+% of materials with |δalat |> 0.2%b 9.38 15.56 8.70
+% of materials with |δalat |> 0.2%c 9.38 4.44 2.90
+averageδB0 (%) 0.36 -0.32 0.52
+rms average δB0 (%) 3.31 2.53 3.19
+% of materials with |δB0 |> 5.0%a 25.00 62.22 53.62
+% of materials with |δB0 |> 5.0%b 14.06 26.67 18.84
+% of materials with |δB0 |> 5.0%c 9.38 8.89 7.25
+total number of materials 64 45 69
+aWith an energy cutoﬀ of 40Ry.
+bWith an energy cutoﬀ of 60Ry.
+cWith an energy cutoﬀ of 160Ry.
+two subsections, we focus only on the trends across all
+materials in the training and test set, respectively.
+A. Training set
+In Table I, we present the results obtained for the ma-
+terials in a bcc structure. We see that the USPP po-
+tentials require the smallest energy cutoﬀ and have the
+best performance at 40 Ry. On the other hand increas-
+ing the energy cutoﬀ beyond 40 Ry hardly improves the
+results. For the PAW and the ONCV PP, a large number
+of materials are not converged at 40 Ry, but increasing
+the energy cutoﬀ improves the accuracy, so that they are
+able to improve on the USPP results. For the converged
+calculation, the root-mean-square (rms) error is around
+0.1% for all PP and smallest for the ONCV PP. We see a
+similar trend for the bulk moduli though the converged
+results require a larger energy cutoﬀ on average. The av-
+erage error for the converged bulk moduli is roughly 3%
+and the USPP potentials converge with a lower energy
+cutoﬀ than the PAW and the ONCV PP, which have a
+similar convergence behavior. In Fig. 3, we see that only
+for two materials (carbon and calcium) does the con-
+verged lattice constant deviate by more than 0 .2% with
+the ONCV PP. For both of these materials the USPP
+and the PAW approach show large deviations as well.
+The fcc structures presented in Table II follow the same
+trend as the bcc structures. The USPP potentials require
+TABLE II: Same as Table I for fcc structures.
+GBRV PSLIB SG15
+averageδalat (%) 0.03 0.03 0.03
+rms average δalat (%) 0.11 0.07 0.07
+% of materials with |δalat |> 0.2%a 9.38 27.08 24.64
+% of materials with |δalat |> 0.2%b 9.38 6.25 5.80
+% of materials with |δalat |> 0.2%c 9.38 0.00 1.45
+averageδB0 (%) 0.23 0.00 0.31
+rms average δB0 (%) 2.28 1.83 2.00
+% of materials with |δB0 |> 5.0%a 12.50 68.75 43.48
+% of materials with |δB0 |> 5.0%b 7.81 16.67 17.39
+% of materials with |δB0 |> 5.0%c 3.12 4.17 5.80
+total number of materials 64 48 69
+aWith an energy cutoﬀ of 40Ry.
+bWith an energy cutoﬀ of 60Ry.
+cWith an energy cutoﬀ of 160Ry.
+TABLE III: Same as Table I for rocksalt structures.
+GBRV PSLIB SG15
+averageδalat (%) 0.01 0.02 -0.02
+rms average δalat (%) 0.11 0.09 0.06
+% of materials with |δalat |> 0.2%a 6.13 35.95 30.67
+% of materials with |δalat |> 0.2%b 6.13 6.54 1.23
+% of materials with |δalat |> 0.2%c 6.13 3.92 0.00
+averageδB0 (%) -0.02 -0.03 -0.48
+rms average δB0 (%) 1.67 1.29 1.34
+% of materials with |δB0 |> 5.0%a 1.84 53.59 55.83
+% of materials with |δB0 |> 5.0%b 1.84 5.23 10.43
+% of materials with |δB0 |> 5.0%c 1.84 0.00 0.61
+total number of materials 163 153 163
+aWith an energy cutoﬀ of 40Ry.
+bWith an energy cutoﬀ of 60Ry.
+cWith an energy cutoﬀ of 160Ry.
+the smallest energy cutoﬀ but can not be improved fur-
+ther by increasing the energy cutoﬀ. The PAW and the
+ONCV PP require a energy cutoﬀ of 60 Ry to converge
+most materials, but have fewer inaccurate elements when
+increasing the energy cutoﬀ. Overall the ONCV PP and
+the PAW are a bit better than the USPP, but all PP
+are close to the AE results. In Fig. 3, we see that only
+a single material (cadmium) is outside the 0 .2% bound-
+ary, when using the converged calculation and the ONCV
+PP. The USPP result shows a deviation of similar size for
+this material, whereas the PAW lattice constant is close
+to the FLAPW result.
+When combining two materials to form rock-salt com-
+pounds, we obtain the results depicted in Table III. In
+comparison to the metallic (bcc and fcc) system, the ac-
+curacy for the ionic compounds is a bit higher in particu-
+lar for the bulk modulus. With a large energy cutoﬀ the
+ONCV PPs essentially reproduce the AE results and the
+
+--- PAGE BREAK ---
+
+6
+-0.4
+-0.3
+-0.2
+-0.1
+0
+0.1
+0.2
+0.3
+0.4
+H
+Li
+B
+N
+F
+Na
+Al
+P
+Cl
+K
+Sc
+V
+Mn
+Co
+Cu
+Ga
+As
+Br
+Rb
+Y
+Nb
+Tc
+Rh
+Ag
+In
+Sb
+I
+Cs
+La
+Ta
+Re
+Ir
+Au
+Tl
+Bi
+He
+Be
+C
+O
+Ne
+Mg
+Si
+S
+Ar
+Ca
+Ti
+Cr
+Fe
+Ni
+Zn
+Ge
+Se
+Kr
+Sr
+Zr
+Mo
+Ru
+Pd
+Cd
+Sn
+Te
+Xe
+Ba
+Hf
+W
+Os
+Pt
+Hg
+Pb
+-0.4
+-0.3
+-0.2
+-0.1
+0
+0.1
+0.2
+0.3
+0.4
+H
+Li
+B
+N
+F
+Na
+Al
+P
+Cl
+K
+Sc
+V
+Mn
+Co
+Cu
+Ga
+As
+Br
+Rb
+Y
+Nb
+Tc
+Rh
+Ag
+In
+Sb
+I
+Cs
+La
+Ta
+Re
+Ir
+Au
+Tl
+Bi
+He
+Be
+C
+O
+Ne
+Mg
+Si
+S
+Ar
+Ca
+Ti
+Cr
+Fe
+Ni
+Zn
+Ge
+Se
+Kr
+Sr
+Zr
+Mo
+Ru
+Pd
+Cd
+Sn
+Te
+Xe
+Ba
+Hf
+W
+Os
+Pt
+Hg
+Pb
+-0.4
+-0.3
+-0.2
+-0.1
+0
+0.1
+0.2
+0.3
+0.4
+HF
+HBr
+LiF
+LiBr
+BeO
+BeSe
+BN
+BAs
+BBi
+CSi
+CSn
+NaF
+NaBr
+MgO
+MgSe
+AlN
+AlAs
+AlBi
+SiGe
+SiPb
+KCl
+KI
+CaS
+CaTe
+ScP
+TiC
+TiO
+VN
+CrC
+CrO
+MnN
+FeC
+FeO
+CoN
+NiC
+NiO
+CuN
+ZnO
+ZnSe
+GaP
+GaSb
+GeO
+RbCl
+SrO
+SrSe
+YP
+ZrC
+ZrO
+NbN
+MoC
+MoO
+TcN
+RuC
+RuO
+RhN
+PdC
+PdO
+AgN
+CdO
+CdSe
+InP
+SnO
+CsCl
+BaO
+BaSe
+LaP
+HfC
+HfO
+TaN
+WC
+WO
+ReN
+OsC
+OsO
+IrN
+PtC
+PtO
+AuN
+HgO
+HgSe
+TlP
+PbO
+HCl
+HI
+LiCl
+LiI
+BeS
+BeTe
+BP
+BSb
+CO
+CGe
+CPb
+NaCl
+NaI
+MgS
+MgTe
+AlP
+AlSb
+SiO
+SiSn
+KF
+KBr
+CaO
+CaSe
+ScN
+ScAs
+TiN
+VC
+VO
+CrN
+MnC
+MnO
+FeN
+CoC
+CoO
+NiN
+CuC
+CuO
+ZnS
+GaN
+GaAs
+GaBi
+RbF
+RbBr
+SrS
+YN
+YAs
+ZrN
+NbC
+NbO
+MoN
+TcC
+TcO
+RuN
+RhC
+RhO
+PdN
+AgC
+AgO
+CdS
+InN
+InAs
+CsF
+CsBr
+BaS
+LaN
+LaAs
+HfN
+TaC
+TaO
+WN
+ReC
+ReO
+OsN
+IrC
+IrO
+PtN
+AuC
+AuO
+HgS
+TlN
+TlAs
+FIG. 3: (Color online) Relative change δ(%) of the lattice constant in the training set for the SG15 (red circle), the GBRV
+(green square), and the PSLIB (blue diamond) results as compared to the FLAPW ones for the bcc (top left), fcc (top right)
+and rock-salt compounds (bottom).
+accuracy at 60 Ry for the lattice constant is very good.
+For the bulk modulus, about 10% of the materials re-
+quire a larger energy cutoﬀ. The USPPs have a slightly
+larger mismatch for the lattice constants, but converge
+both lattice constants and bulk moduli with 40 Ry. The
+PAW potentials provide a similar convergence behavior
+as the ONCV potentials; they deviate a bit more for the
+lattice constants, but provide slightly better bulk moduli.
+In Fig. 4, we show a histogram of the relative error of
+the lattice constant for all the examined PP (with the
+converged cutoﬀ of 160 Ry). The histogram conﬁrms the
+conclusions we drew from Table I to III: All PPs show
+a very good agreement with the all-electron results and
+the USPPs have a slightly lower accuracy. The tails with
+large errors are very ﬂat indicating that there are only a
+few outliers.
+B. Test set
+In the sc structure (see Table IV), the performance of
+the ONCV potentials is comparable to the training set
+for the lattice constants and slightly worse for the bulk
+moduli. We observe the same trend also for the USPP
+and the PAW calculations. With an overall deviation of
+about 0.1% for the lattice constant and 4% for the bulk
+moduli, all PPs show a good agreement with the AE
+reference data. The convergence with respect to the en-
+ergy cutoﬀ is best in the GBRV database, which does not
+change signiﬁcantly for the lattice constants above 40 Ry.
+Most of the ONCV lattice constants converge at 60 Ry
+whereas PAW occasionally needs a larger cutoﬀ. For the
+bulk moduli, all PPs show a similar convergence behav-
+ior. However, we observe that as compared to the other
+
+--- PAGE BREAK ---
+
+7
+-0.4 -0.3 -0.2 -0.1 0 0.1 0.2 0.3 0.40
+10
+20
+30
+40
+relative error δalat (%)
+fraction of materials (%)
+FIG. 4: (Color online) Histogram of the relative error of the
+lattice constant compared to the all-electron result. We show
+the results for all materials in the training set for the SG15
+(red solid line), the GBRV (green dotted line), and the PSLIB
+(blue dashed line) calculations.
+TABLE IV: Same as Table I for sc structures.
+GBRV PSLIB SG15
+averageδalat (%) 0.02 0.03 0.02
+rms average δalat (%) 0.12 0.09 0.09
+% of materials with |δalat |> 0.2%a 6.25 46.30 27.54
+% of materials with |δalat |> 0.2%b 6.25 16.67 5.80
+% of materials with |δalat |> 0.2%c 6.25 3.70 2.90
+averageδB0 (%) 0.32 0.31 -0.01
+rms average δB0 (%) 3.79 3.96 4.47
+% of materials with |δB0 |> 5.0%a 40.62 74.07 62.32
+% of materials with |δB0 |> 5.0%b 20.31 27.78 21.74
+% of materials with |δB0 |> 5.0%c 12.50 12.96 11.59
+total number of materials 64 54 69
+aWith an energy cutoﬀ of 40Ry.
+bWith an energy cutoﬀ of 60Ry.
+cWith an energy cutoﬀ of 160Ry.
+structures a larger fraction of> 10% is not accurate even
+with an energy cutoﬀ of 160 Ry. In Fig. 5, we see that
+the ONCV PPs reproduce the lattice constant within the
+0.2% boundary for all materials except calcium and lan-
+thanum. While the ONCV PP gives similar results to the
+other PP for calcium, we ﬁnd that the lattice constant
+in lanthanum is underestimated by the ONCV PP and
+overestimated by the USPP. For this material, the PAW
+calculation did not converge.
+In Table V, we present our results for the materials in
+the diamond structure. These are the structures which
+exhibit overall the largest deviation from the all-electron
+result. The lattice constants of the USPPs are converged
+well with the energy cutoﬀ of 40 Ry, whereas the PAW
+TABLE V: Same as Table I for diamond structures.
+GBRV PSLIB SG15
+averageδalat (%) 0.03 0.02 0.01
+rms average δalat (%) 0.16 0.10 0.12
+% of materials with |δalat |> 0.2%a 7.81 49.12 34.78
+% of materials with |δalat |> 0.2%b 7.81 22.81 11.59
+% of materials with |δalat |> 0.2%c 7.81 7.02 8.70
+averageδB0 (%) 0.45 1.30 -0.24
+rms average δB0 (%) 4.49 6.54 3.06
+% of materials with |δB0 |> 5.0%a 31.25 71.93 53.62
+% of materials with |δB0 |> 5.0%b 18.75 31.58 14.49
+% of materials with |δB0 |> 5.0%c 9.38 7.02 7.25
+total number of materials 64 57 69
+aWith an energy cutoﬀ of 40Ry.
+bWith an energy cutoﬀ of 60Ry.
+cWith an energy cutoﬀ of 160Ry.
+TABLE VI: Same as Table I for zincblende structures.
+GBRV PSLIB SG15
+averageδalat (%) 0.04 0.04 0.00
+rms average δalat (%) 0.10 0.09 0.07
+% of materials with |δalat |> 0.2%a 5.52 37.50 33.74
+% of materials with |δalat |> 0.2%b 4.91 6.58 2.45
+% of materials with |δalat |> 0.2%c 3.07 3.29 0.61
+averageδB0 (%) 0.24 0.14 -0.27
+rms average δB0 (%) 1.26 0.96 1.03
+% of materials with |δB0 |> 5.0%a 4.29 55.26 55.21
+% of materials with |δB0 |> 5.0%b 1.84 4.61 9.20
+% of materials with |δB0 |> 5.0%c 0.61 0.00 0.00
+total number of materials 163 152 163
+aWith an energy cutoﬀ of 40Ry.
+bWith an energy cutoﬀ of 60Ry.
+cWith an energy cutoﬀ of 160Ry.
+and the ONCV PP frequently require a cutoﬀ of 60 Ry.
+For the bulk moduli, we ﬁnd that the ONCV PP provide
+the best agreement with the AE results. The quality
+of the USPP is similar, but the PAW potentials show
+an average error larger than the desired 5% tolerance.
+However the fraction of materials that are well described
+with the PP calculation is similar for all methods. This
+indicates that a few speciﬁc materials show a particular
+large deviation, whereas the rest is accurately described.
+For the ONCV PPs the lattice constants of boron, chlo-
+rine, scandium, nickel, rubidium, and yttrium deviate by
+more than 0.2% from the FLAPW results. In Fig. 5, we
+observe that the deviations between the diﬀerent pseu-
+doizations are larger than for the other structures. A
+possible explanation is that the diamond structure is a
+extreme case for many materials, because of its low space
+ﬁlling.
+For the zincblende compounds (cf. Table VI), we ob-
+
+--- PAGE BREAK ---
+
+8
+-0.4
+-0.3
+-0.2
+-0.1
+0
+0.1
+0.2
+0.3
+0.4
+H
+Li
+B
+N
+F
+Na
+Al
+P
+Cl
+K
+Sc
+V
+Mn
+Co
+Cu
+Ga
+As
+Br
+Rb
+Y
+Nb
+Tc
+Rh
+Ag
+In
+Sb
+I
+Cs
+La
+Ta
+Re
+Ir
+Au
+Tl
+Bi
+He
+Be
+C
+O
+Ne
+Mg
+Si
+S
+Ar
+Ca
+Ti
+Cr
+Fe
+Ni
+Zn
+Ge
+Se
+Kr
+Sr
+Zr
+Mo
+Ru
+Pd
+Cd
+Sn
+Te
+Xe
+Ba
+Hf
+W
+Os
+Pt
+Hg
+Pb
+-0.4
+-0.3
+-0.2
+-0.1
+0
+0.1
+0.2
+0.3
+0.4
+H
+Li
+B
+N
+F
+Na
+Al
+P
+Cl
+K
+Sc
+V
+Mn
+Co
+Cu
+Ga
+As
+Br
+Rb
+Y
+Nb
+Tc
+Rh
+Ag
+In
+Sb
+I
+Cs
+La
+Ta
+Re
+Ir
+Au
+Tl
+Bi
+He
+Be
+C
+O
+Ne
+Mg
+Si
+S
+Ar
+Ca
+Ti
+Cr
+Fe
+Ni
+Zn
+Ge
+Se
+Kr
+Sr
+Zr
+Mo
+Ru
+Pd
+Cd
+Sn
+Te
+Xe
+Ba
+Hf
+W
+Os
+Pt
+Hg
+Pb
+-0.4
+-0.3
+-0.2
+-0.1
+0
+0.1
+0.2
+0.3
+0.4
+HF
+HBr
+LiF
+LiBr
+BeO
+BeSe
+BN
+BAs
+BBi
+CSi
+CSn
+NaF
+NaBr
+MgO
+MgSe
+AlN
+AlAs
+AlBi
+SiGe
+SiPb
+KCl
+KI
+CaS
+CaTe
+ScP
+TiC
+TiO
+VN
+CrC
+CrO
+MnN
+FeC
+FeO
+CoN
+NiC
+NiO
+CuN
+ZnO
+ZnSe
+GaP
+GaSb
+GeO
+RbCl
+SrO
+SrSe
+YP
+ZrC
+ZrO
+NbN
+MoC
+MoO
+TcN
+RuC
+RuO
+RhN
+PdC
+PdO
+AgN
+CdO
+CdSe
+InP
+SnO
+CsCl
+BaO
+BaSe
+LaP
+HfC
+HfO
+TaN
+WC
+WO
+ReN
+OsC
+OsO
+IrN
+PtC
+PtO
+AuN
+HgO
+HgSe
+TlP
+PbO
+HCl
+HI
+LiCl
+LiI
+BeS
+BeTe
+BP
+BSb
+CO
+CGe
+CPb
+NaCl
+NaI
+MgS
+MgTe
+AlP
+AlSb
+SiO
+SiSn
+KF
+KBr
+CaO
+CaSe
+ScN
+ScAs
+TiN
+VC
+VO
+CrN
+MnC
+MnO
+FeN
+CoC
+CoO
+NiN
+CuC
+CuO
+ZnS
+GaN
+GaAs
+GaBi
+RbF
+RbBr
+SrS
+YN
+YAs
+ZrN
+NbC
+NbO
+MoN
+TcC
+TcO
+RuN
+RhC
+RhO
+PdN
+AgC
+AgO
+CdS
+InN
+InAs
+CsF
+CsBr
+BaS
+LaN
+LaAs
+HfN
+TaC
+TaO
+WN
+ReC
+ReO
+OsN
+IrC
+IrO
+PtN
+AuC
+AuO
+HgS
+TlN
+TlAs
+FIG. 5: (Color online) Relative change δ(%) of the lattice constant in the test set for the SG15 (red circle), the GBRV (green
+square), and the PSLIB (blue diamond) results as compared to the FLAPW ones for the sc (top left), diamond (top right) and
+zincblende compounds (bottom).
+serve results similar to for the rock-salt compounds. We
+ﬁnd that the USPPs converge for most materials with
+an energy cutoﬀ of 40 Ry, whereas a third of the ma-
+terials with ONCV PP and half of the materials with
+PAW need an energy cutoﬀ of 60 Ry to converge. Over-
+all the accuracy of the ONCV PP is slightly better than
+the alternatives, but all pseudoizations are on average
+well below the target of 0 .2%. For the bulk moduli a
+larger energy cutoﬀ is necessary, but when converged the
+deviation from the AE results is around 1%. In Fig. 5,
+we identify that only for BeO the deviation between the
+ONCV calculation and the AE result is larger than 0.2%.
+In Fig. 6, the histogram of the relative error of the
+lattice constant for the test set conﬁrms the conclusions
+we drew from Table IV to VI: The deviation from the
+all electron results is very small for all PP. The USPP
+shows a slightly larger deviation than the PAW and the
+ONCV PP. The histogram reveals that this is partly due
+to some outliers, for which the lattice constant is overes-
+timated by more than 0.4%. Overall, we notice that the
+accuracy of the ONCV PP for the test set of materials is
+not signiﬁcantly worse than for the training set. Hence,
+we are conﬁdent that these PP are transferable to other
+materials as well.
+C. Dimers and ternary compounds
+Our training and test set are limited to mono- and di-
+atomic crystals, hence one may wonder if the constructed
+ONCV PPs work outside this scope. To test this we in-
+vestigated diatomic molecules and ternary compounds.
+
+--- PAGE BREAK ---
+
+9
+-0.4 -0.3 -0.2 -0.1 0 0.1 0.2 0.3 0.40
+10
+20
+30
+relative error δalat (%)
+fraction of materials (%)
+FIG. 6: (Color online) Histogram of the relative error of the
+lattice constant compared to the all-electron result. We show
+the results for all materials in the test set for the SG15 (red
+solid line), the GBRV (green dotted line), and the PSLIB
+(blue dashed line) calculations.
+TABLE VII: Bond length of diatomic molecules and lattice
+constant of perovskites and half-Heusler compounds inves-
+tigated with diﬀerent methods. For the half-Heusler com-
+pounds, the ﬁrst element is in Wyckoﬀ position c. All values
+are given in ˚A.
+material ref. a GBRV PSLIB ONCV
+H2 0.750 0.757 0.750 0.749
+N2 1.102 1.108 1.110 1.101
+O2 1.218 1.224 1.230 1.221
+F2 1.412 1.424 1.419 1.417
+Cl2 2.012 2.004 2.006 2.015
+Br2 2.311 2.311 2.314
+AsNCa3 4.764 4.765 4.764 4.764
+BaTiO3 4.018 4.028 4.029 4.020
+KMgCl3 5.024 5.023 5.025 5.023
+LaAlO3 3.814 3.817 3.815 3.809
+PNCa3 4.720 4.720 4.720 4.719
+SrTiO3 3.937 3.939 3.942 3.938
+BScBe 5.318 5.319 5.316 5.317
+GeAlCu 5.910 5.914 5.913 5.920
+NiScSb 6.118 6.120 6.123 6.123
+NMgLi 5.004 5.006 5.006 5.010
+PdZrSn 6.392 6.392 6.394 6.394
+PZnNa 6.141 6.149 6.148 6.148
+aWe evaluate the lattice constant perovskites and half Heusler
+with FLAPW and take the bond length of the dimers from the
+CCCB DataBase.27
+For the compounds, we use the same computational setup
+as for the materials in the training and in the test set.
+For the molecules, we optimize the bond length inside a
+box with dimensions 15 ˚A× 15 ˚A× 30 ˚A with the long
+side parallel to the axis of the molecule.
+In Table VII, we show the bond lengths and the
+lattice constants of the investigated materials. De-
+pending on the pseudoization, some diatomic molecules
+show large deviations from the reference data from the
+CCCB DataBase.27 Overall, the ONCV PPs exhibit the
+smallest deviations. The relative error is larger than 0.2%
+only for the O 2 (0.25%) and the F 2 (0.35%) dimer. For
+the USPP, all diatomic molecules are outside of the de-
+sired relative accuracy of 0.2%, except for the Br2 dimer.
+In PAW, the only molecule with the desired accuracy is
+the H 2 dimer. The other molecules show deviations of
+similar magnitude to the USPP and the Br 2 dimer did
+not converge.
+Perovskites are accurately described by all pseudoiza-
+tions; we frequently ﬁnd a relative agreement of better
+than 0.1% in the lattice constant with the FLAPW re-
+sult. The worst case for the ONCV PP is LaAlO 3, which
+deviates by−0.13%. The USPP and the PAW both over-
+estimate the lattice constant of BaTiO 3 by 0.25% and
+0.27%, respectively. The PAW potentials also feature a
+larger deviation than the other two pseudoizations for
+SrTiO3.
+Finally, we consider the half-Heusler compounds. All
+materials are within the desired accuracy with all pseu-
+doizations. The ONCV PP show slightly larger devi-
+ations than USPP and PAW for GeAlCu and NMgLi.
+For NiScSb, the ONCV PP and PAW overestimate the
+lattice constant more than the USPP. The lattice con-
+stant of BScSb and PdZrSn are essentially the same with
+FLAPW and in any pseudoization used. In PZNa, all PP
+produce very similar results and a slightly larger lattice
+constant than the FLAPW result.
+V. CONCLUSION
+We have presented an algorithm to optimize the in-
+put parameters of a pseudopotential (PP) construction.
+We demonstrated it by developing the SG15 dataset 22
+of ONCV pseudopotentials, which exhibits a similar ac-
+curacy as the ultrasoft PP database GBRV 14 and the
+PAW library PSLIB. 15 The idea of the algorithm is to
+map the PP onto a single numeric value so that standard
+optimization techniques can be employed. For this, we
+developed a quality function that considers the accuracy
+of the lattice constant of a PP calculation and compares
+it with a high accuracy FLAPW one. In addition, the
+quality function takes into account the energy cutoﬀ nec-
+essary to converge the calculation. Hence, the optimza-
+tion of the PP with respect to the quality function yields
+accurate and eﬃcient potentials. In order to ensure that
+the constructed PPs are of a high accuracy, we system-
+atically chose a set of approximately 600 materials and
+
+--- PAGE BREAK ---
+
+10
+TABLE VIII: Summary of the results depicted in Table I to
+VI with same notation as Table I.
+GBRV PSLIB SG15
+averageδalat (%) 0.03 0.03 0.01
+rms average δalat (%) 0.12 0.09 0.08
+% of materials with |δalat |> 0.2%a 7.04 38.51 30.07
+% of materials with |δalat |> 0.2%b 6.70 10.22 4.65
+% of materials with |δalat |> 0.2%c 6.19 3.73 1.99
+averageδB0 (%) 0.21 0.18 -0.14
+rms average δB0 (%) 2.61 2.85 2.40
+% of materials with |δB0 |> 5.0%a 13.75 60.51 54.49
+% of materials with |δB0 |> 5.0%b 7.73 13.36 13.62
+% of materials with |δB0 |> 5.0%c 4.47 3.34 3.82
+total number of materials 582 509 602
+aWith an energy cutoﬀ of 40Ry.
+bWith an energy cutoﬀ of 60Ry.
+cWith an energy cutoﬀ of 160Ry.
+evaluate their properties with FLAPW. We split this set
+in two parts, a training set used for the optimization of
+the PP and a test set to analyze the performance of the
+PP. When a PP does not produce our desired accuracy
+after optimizing on the training set, we can improve the
+quality of the PP by extending the training set by more
+materials.
+In Table VIII, we collect the results of all materials in
+test and training set. Compared to the PP from the
+GBRV database 14 and PSLIB, 15 the PP in the SG15
+set have the lowest root-mean-square deviation from the
+FLAPW results for the lattice constant. With an energy
+cutoﬀ of 60 Ry, the ONCV PP feature the least number of
+materials with an inaccurate lattice constant (deviation
+larger than 0.2% from FLAPW results). The advantage
+of the ultrasoft PP is that they oﬀer a similar accuracy
+with an energy cutoﬀ of 40 Ry. For the bulk moduli
+larger energy cutoﬀs are necessary for all pseudoization
+methods. The ONCV PP have the smallest root-mean-
+square deviation for the tested materials. The fraction
+of materials that can be accurately described with the
+ONCV PP at a certain energy cutoﬀ is very similar to
+the performance of the PAW. The ultrasoft PP exhibit
+a similar accuracy at a moderately lower energy cutoﬀ.
+For materials that go beyond the training and test set,
+we ﬁnd that the ONCV PP provides the best description
+of diatomic molecules. All pseudopotentials are very ac-
+curate for perovskite and half-Heusler compounds.
+We encourage the community to use the algorithm pre-
+sented in this work to optimize pseudopotentials for dif-
+ferent functionals and with diﬀerent construction meth-
+ods. With only a modest increase in the energy cutoﬀ,
+the proposed SG15 library of norm-conserving pseudopo-
+tentials provides a competitive alternative to the libraries
+using USPP and PAW. As these pseudopotentials are less
+complex than the alternatives, this results in a great sim-
+pliﬁcation in the development and implementation of new
+algorithms.
+Acknowledgments
+This work was supported by the US Department of En-
+ergy through grant DOE-BES de-sc0008938. An award
+of computer time was provided by the DOE Innovative
+and Novel Computational Impact on Theory and Experi-
+ment (INCITE) program. This research used resources of
+the Argonne Leadership Computing Facility at Argonne
+National Laboratory, which is supported by the Oﬃce of
+Science of the U.S. Department of Energy under contract
+DE-AC02-06CH11357.
+∗ Electronic address: martin.schlipf@gmail.com
+† Electronic address: fgygi@ucdavis.edu
+1 See e.g. R. M. Martin, Electronic Structure. Basic Theory
+and Practical Methods, Cambridge University Press, 2004.
+2 P. Hohenberg and W. Kohn, Phys. Rev. 136, B864 (1964).
+3 W. Kohn and L. J. Sham, Phys. Rev. 140, A1133 (1965).
+4 D. R. Hamann, M. Schl¨ uter, and C. Chiang, Phys. Rev.
+Lett. 43, 1494 (1979).
+5 G. B. Bachelet, D. R. Hamann, and M. Schl¨ uter, Phys.
+Rev. B 26, 4199 (1982).
+6 D. Vanderbilt, Phys. Rev. B 41, 7892 (1990).
+7 P. E. Bl¨ ochl, Phys. Rev. B50, 17953 (1994).
+8 D. R. Hamann, Phys. Rev. B 88, 085117 (2013).
+9 A. D. Becke, J. Chem. Phys. 98, 1372 (1993); ibid. 98,
+5648 (1993).
+10 F. Aryasetiawan and O. Gunnarsson, Rep. Prog. Phys.61,
+237 (1998).
+11 S. Baroni, P. Giannozzi, and A. Testa, Phys. Rev. Lett.
+58, 1861 (1987).
+12 N. Troullier and J. L. Martins, Phys. Rev. B 43, 1993
+(1991).
+13 C. Hartwigsen, S. Goedecker, and J. Hutter, Phys. Rev. B
+58, 3641 (1998).
+14 K. F. Garrity, J. W. Bennett, K. M. Rabe, and D. Vander-
+bilt, Comp. Mater. Sci. 81, 446 (2014).
+15 A. Dal Corso, Comp. Mater. Sci. 95, 337 (2014).
+16 E. Wimmer, H. Krakauer, M. Weinert, and A. J. Freeman,
+Phys. Rev. B 24, 864 (1981).
+17 M. Weinert, E. Wimmer, and A. J. Freeman, Phys. Rev.
+B 26, 4571 (1982).
+18 H. J. F. Jansen and A. J. Freeman, Phys. Rev. B 30, 561
+(1984).
+19 K. Lejaeghere, V. Van Speybroeck, G. Van Oost, and S.
+Cottenier, Crit. Rev. Solid State Mater. Sci. 39, 1 (2014).
+20 F. Murnaghan, Proc. Nat. Acad. Sci. USA 30, 244 (1944).
+21 E. Kucukbenli, M. Monni, B. Adetunji, X. Ge, G. Ade-
+bayo, N. Marzari, S. de Gironcoli, and A. D. Corso,
+arXiv:1404.3015 .
+
+--- PAGE BREAK ---
+
+11
+22 http://www.quantum-simulation.org
+23 J. P. Perdew, K. Burke, and M. Ernzerhof, Phys. Rev.
+Lett. 77, 3865 (1996).
+24 http://www.ﬂapw.de.
+25 P. Giannozzi, S. Baroni, N. Bonini, M. Calandra, R. Car,
+C. Cavazzoni, D. Ceresoli, G. L. Chiarotti, M. Cococ-
+cioni, I. Dabo, A. Dal Corso, S. de Gironcoli, S. Fab-
+ris, G. Fratesi, R. Gebauer, U. Gerstmann, C. Gougous-
+sis, A. Kokalj, M. Lazzeri, L. Martin-Samos, N. Marzari,
+F. Mauri, R. Mazzarello, S. Paolini, A. Pasquarello, L.
+Paulatto, C. Sbraccia, S. Scandolo, G. Sclauzero, A. P.
+Seitsonen, A. Smogunov, P. Umari, and R. M. Wentzcov-
+itch, J. Phys.: Condens. Matter 21, 395502 (19pp) (2009).
+26 J. A. Nelder and R. Mead, The Computer Journal 7, 308
+(1965).
+27 NIST Computational Chemistry Comparison and Bench-
+mark Database, NIST Standard Reference Database Num-
+ber 101, Release 16a , edited by R. D. Johnson III (August
+2013).

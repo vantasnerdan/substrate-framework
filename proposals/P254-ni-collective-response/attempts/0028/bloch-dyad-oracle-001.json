@@ -1,0 +1,45 @@
+{
+  "schema": "P254-general-k-dyad-oracle-v1",
+  "status": "failed",
+  "comparisons": [
+    {
+      "name": "spin1-folded:density_literal",
+      "passed": true,
+      "mutation": false,
+      "max_abs_error": 9.15960278627676e-17,
+      "allowance": 1.0266331367562662e-11
+    },
+    {
+      "name": "spin1-folded:all_ionic_gradients",
+      "passed": false,
+      "mutation": false,
+      "max_abs_error": 0.05251831971453927,
+      "allowance": 3.8521222989620917e-10
+    }
+  ],
+  "frames": [],
+  "symbolic": {
+    "two_sided_derivative": true,
+    "omitted_side_exposed": true,
+    "units": "positive dH/dR, displacement in bohr"
+  },
+  "exception": "Traceback (most recent call last):\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_bloch_dyad_oracle.py\", line 140, in main\n    one_frame(report, inputs, grid.load_frame(folded), f\"spin{spin}-folded\", rng)\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_bloch_dyad_oracle.py\", line 102, in one_frame\n    compare(report, label+\":all_ionic_gradients\", gradient, expected_gradient)\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_bloch_dyad_oracle.py\", line 46, in compare\n    raise AssertionError(name)\nAssertionError: spin1-folded:all_ionic_gradients\n",
+  "elapsed_seconds": 1.6885522129014134,
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_bloch_dyad_oracle.py",
+      "bytes": "8415",
+      "sha256": "4fab25562fe65ffc232d77a15ae3fb3e4ef165247838eac9f8ea8d85a9477f1f"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_dyads.py",
+      "bytes": "2218",
+      "sha256": "71962c9114e299720854ba0f8866873d949e6e847825e32dd1599175eebd5927"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/bloch_oracle_fixture.py",
+      "bytes": "5448",
+      "sha256": "d052e3f880d196f8443ec9091804f37a9fc5c988bf5d9f874616937fa81743ba"
+    }
+  ]
+}

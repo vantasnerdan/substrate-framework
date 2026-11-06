@@ -1,0 +1,12 @@
+{
+  "generation": 3,
+  "previous_manifest_sha256": "83c3695360398808623ffc2329348986a9ed4f5bd1938c2c41814642f6dc8657",
+  "failure_receipt": "invocation-1792418778551294335-3995973-failure.json",
+  "defect_block": "thermodynamic exact-matrix report rendering after its mathematical and numerical checks",
+  "observed_error": "ValueError: Exceeds the limit (4300 digits) for integer string conversion",
+  "mechanism": "Generic sp.simplify before report string conversion combines sums of logarithms into enormous exact integers, despite the original symbolic formula having a small readable representation.",
+  "repair": "Render thermodynamic matrix entries with expanded logs as exact expression strings before the generic serializer; no integer-limit suppression, numerical approximation or change to a check.",
+  "unchanged": ["registration, fixtures and tolerances", "all reusable science modules", "state and response checks", "free-energy numerical algorithm", "repaired actual-signal runtime"],
+  "replay": "reuse immutable state and response receipts, execute affected thermodynamic report block and previously unexecuted bath block",
+  "signal_repair_evidence": "generation2 actual checkpoint PID3995638 received SIGTERM15 and systemd exited143; artifact://2296"
+}

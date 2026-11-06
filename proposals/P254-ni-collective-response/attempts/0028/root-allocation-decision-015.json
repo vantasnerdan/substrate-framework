@@ -1,0 +1,62 @@
+{
+  "schema": "P254-A28-root-allocation-decision-v1",
+  "actual_decision_at": "2026-10-29T00:45:37.394541+00:00",
+  "previous": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-014.json",
+    "bytes": "2692",
+    "sha256": "9fa1ac42ff28cf9a77008cac67129e9ad051830c465105fbf54d01de19c19859"
+  },
+  "previous_due_at": "2026-10-29T00:47:59.411501+00:00",
+  "deadline_breached": false,
+  "decision": "Physical spatial composition and complete-operator covariance implementations have settled; execute their independent oracles, then actual material consumers. Krylov002 again stopped before numerical work because its declared conservative workspace exceeded3072MiB. Allocate4096MiB workspace within a6GiB unit using freshly observed20592111616 bytes MemAvailable; preserve both prior failures/costs. No code, physical input, basis size, accuracy target or action cap is changed.",
+  "scientific_reference": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/streamed-sector-exponential-001/result.json",
+    "bytes": "327058",
+    "sha256": "81c1d4fbddc28ecc05a15e26a29a4486cad83990fb3c88e643087de4c5642e62"
+  },
+  "settled_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_physical_operators.py",
+      "bytes": "12909",
+      "sha256": "cfccc1bbac6b6fa2723acaf7c31b07c598ba989ae33d25923329dd2ce4fdf85f"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_operator_covariance.py",
+      "bytes": "12490",
+      "sha256": "999388517f6f4ec4156c47825229bec7e59baeb8d4efb634eb1a75bfae198c96"
+    }
+  ],
+  "allocation": {
+    "allowed_new_cores": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "threads_per_worker": 1,
+    "krylov_cpu": 7,
+    "krylov_seconds_cap": 300,
+    "krylov_workspace_mib": 4096,
+    "krylov_memory_max": "6GiB",
+    "oracles": [
+      {
+        "component": "physical-spatial",
+        "cpu": 8,
+        "seconds_cap": 120,
+        "memory_max": "4GiB"
+      },
+      {
+        "component": "operator-covariance",
+        "cpu": 9,
+        "seconds_cap": 120,
+        "memory_max": "4GiB"
+      }
+    ],
+    "material_consumers": "Only after corresponding actual oracle completes; physical covariance also waits for physical material composition. No whole-slot production yet."
+  },
+  "next_useful_output": "Actual physical Gamma/finite-q/scalar agreement; measured covariance and propagation reuse, not further input inventory.",
+  "next_decision_due": "2026-10-29T01:15:37.394541+00:00",
+  "all_prior_costs_retained": true,
+  "preserved": "NC STOPPED, W1 FROZEN, Runpod ABANDONED; no old claim released."
+}

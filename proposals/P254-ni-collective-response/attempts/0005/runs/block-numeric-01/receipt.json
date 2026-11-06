@@ -1,0 +1,282 @@
+{
+  "status": "complete",
+  "started_unix": 1792412569.6191683,
+  "provenance": {
+    "inputs_and_code_sha256": {
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/W2-readiness.json": "cd30bcd905437a08dd8476375eb0c84d7384d121beffb0eafa67a368555d6aed",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/embedding.py": "95de404d5b0a2d7471960a06e925f9d527b66e45e3fc8a087ffa266eab25667c",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/exact.py": "db918b7c8c9f7a95265bddabb8eb2c6d6fd257a293f040766bf3f749fe13c6d2",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/native.py": "19d90f1e87b6eb7bfe06826840f08e174ce50fa496ef248f11ef23d334f89a5e",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/numeric_model.py": "63eba85806c50d62fcab8a6cf1d84aa9fa3d5aa0932c8abcbdf1712959bc711c",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/numerical.py": "11edb7420dffe1a30e5239e294716a75cf07a81aae23a964cf0008d29cbf69d4",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/transformations.py": "565c5742c78ee99e90ea2fa971e49724de02b3ccb9ac00714c5cf7197d525cba",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/preregistration.json": "c0493ce083e10ddc8639dd28236535e88afc921351a7e9cb18a52839de85ac62",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py": "32067184322e6cede8bc86dfd6155277cdc589a01dc4fd7869e157b0e8cddfee",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/dal-corso2001-provenance.json": "03f7809f9eb40cdff4f42febebe32f0c8f47816a99f35c86a01d0d129dcd6a0f",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/electronic-model-source-correction.json": "ff35e1078a260b48fd3b00dd25db7f776022ad435775d38c97fa496d863477c8"
+    },
+    "python": {
+      "executable": "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+      "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+      "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39"
+    },
+    "packages": {
+      "numpy": {
+        "version": "2.5.2",
+        "file": "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/numpy/__init__.py",
+        "sha256": "09295a80660f17925ae23765ce8cbd7ff7ceae968d5f2f89349f1cb74c0b9e11"
+      },
+      "scipy": {
+        "version": "1.18.0",
+        "file": "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/scipy/__init__.py",
+        "sha256": "39ccae300a4739cc53719bd3b39ce3f8f66e736c6eb672006e338a4c5cc3dc76"
+      },
+      "sympy": {
+        "version": "1.14.0",
+        "file": "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/__init__.py",
+        "sha256": "4e9476348ba105feab28d82f5bcf6cdba2e3e84de6e059bbfe7a13728c0a4ab0"
+      }
+    },
+    "affinity": [
+      5
+    ],
+    "environment": {
+      "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "INVOCATION_ID": "a418cb3eae574f3ea48aa3e14d4516ef",
+      "XDG_RUNTIME_DIR": "/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"
+    },
+    "command": [
+      "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py",
+      "--block",
+      "numerical",
+      "--run-id",
+      "block-numeric-01"
+    ]
+  },
+  "blocks": {
+    "numerical": {
+      "scope": "float64 numeric_evidence, not exact proof or rigorous enclosure",
+      "solver": "scipy.linalg.eigh generalized Hermitian driver gvd; scipy.linalg.expm; centered differences",
+      "norm": "maximum absolute matrix entry; dimensionless",
+      "inputs": {
+        "T0": {
+          "real": [
+            [
+              1.0,
+              0.3
+            ],
+            [
+              0.1,
+              1.4
+            ]
+          ],
+          "imag": [
+            [
+              0.0,
+              0.2
+            ],
+            [
+              -0.4,
+              0.0
+            ]
+          ]
+        },
+        "M": {
+          "real": [
+            [
+              0.15,
+              0.3
+            ],
+            [
+              -0.2,
+              -0.1
+            ]
+          ],
+          "imag": [
+            [
+              0.2,
+              0.1
+            ],
+            [
+              0.25,
+              -0.15
+            ]
+          ]
+        },
+        "H0": {
+          "real": [
+            [
+              -1.3,
+              0.4
+            ],
+            [
+              0.4,
+              1.7
+            ]
+          ],
+          "imag": [
+            [
+              0.0,
+              0.35
+            ],
+            [
+              -0.35,
+              0.0
+            ]
+          ]
+        },
+        "V": {
+          "real": [
+            [
+              0.6,
+              0.2
+            ],
+            [
+              0.2,
+              -0.5
+            ]
+          ],
+          "imag": [
+            [
+              0.0,
+              -0.4
+            ],
+            [
+              0.4,
+              0.0
+            ]
+          ]
+        },
+        "Q": {
+          "real": [
+            [
+              0.2,
+              -0.3
+            ],
+            [
+              -0.3,
+              -0.4
+            ]
+          ],
+          "imag": [
+            [
+              0.0,
+              0.1
+            ],
+            [
+              -0.1,
+              0.0
+            ]
+          ]
+        }
+      },
+      "reference_energies": [
+        -1.3913830462839556,
+        1.7913830462839548
+      ],
+      "refinement": [
+        {
+          "step": 0.04,
+          "native_from_eigenvectors_error": 0.00022557028052172523,
+          "eigenvalue_derivative_error": 0.00022557028052172523,
+          "normalization_derivative_error": 6.13414464707418e-05,
+          "laboratory_from_physical_eigenvectors_error": 0.00022557028052172523,
+          "laboratory_from_direct_curve_error": 0.00016161908003575753,
+          "Hprime_direct_curve_error": 0.00019414689656882533,
+          "Sprime_direct_curve_error": 1.3578180427727918e-05,
+          "mutant_final_energy_error": 0.6015255373191373,
+          "mutant_omitted_overlap_error": 0.40814380470415756,
+          "mutant_omitted_connection_error": 1.0812641259659848,
+          "mutant_arbitrary_Hermitization_error": 0.9695036588302192
+        },
+        {
+          "step": 0.02,
+          "native_from_eigenvectors_error": 5.640181482213791e-05,
+          "eigenvalue_derivative_error": 5.640181482213791e-05,
+          "normalization_derivative_error": 1.534133509761837e-05,
+          "laboratory_from_physical_eigenvectors_error": 5.640181482213791e-05,
+          "laboratory_from_direct_curve_error": 4.0407194372926725e-05,
+          "Hprime_direct_curve_error": 4.8543318735050356e-05,
+          "Sprime_direct_curve_error": 3.3945929220893912e-06,
+          "mutant_final_energy_error": 0.6014582144160057,
+          "mutant_omitted_overlap_error": 0.40831297316985715,
+          "mutant_omitted_connection_error": 1.0813108795540596,
+          "mutant_arbitrary_Hermitization_error": 0.9695230509001758
+        },
+        {
+          "step": 0.01,
+          "native_from_eigenvectors_error": 1.4101031534874409e-05,
+          "eigenvalue_derivative_error": 1.4101031534874409e-05,
+          "normalization_derivative_error": 3.835707070520833e-06,
+          "laboratory_from_physical_eigenvectors_error": 1.4101031534874409e-05,
+          "laboratory_from_direct_curve_error": 1.0101950122409775e-05,
+          "Hprime_direct_curve_error": 1.2136241851590235e-05,
+          "Sprime_direct_curve_error": 8.486512162962743e-07,
+          "mutant_final_energy_error": 0.6014413897788641,
+          "mutant_omitted_overlap_error": 0.4083552739531444,
+          "mutant_omitted_connection_error": 1.0813225675808837,
+          "mutant_arbitrary_Hermitization_error": 0.9695279060580351
+        },
+        {
+          "step": 0.005,
+          "native_from_eigenvectors_error": 3.525293915895844e-06,
+          "eigenvalue_derivative_error": 3.525293915895844e-06,
+          "normalization_derivative_error": 9.58950092611044e-07,
+          "laboratory_from_physical_eigenvectors_error": 3.525293915895844e-06,
+          "laboratory_from_direct_curve_error": 2.5254969805432737e-06,
+          "Hprime_direct_curve_error": 3.0340862648969846e-06,
+          "Sprime_direct_curve_error": 2.1216299136619954e-07,
+          "mutant_final_energy_error": 0.6014371840003772,
+          "mutant_omitted_overlap_error": 0.4083658496907634,
+          "mutant_omitted_connection_error": 1.0813254895643545,
+          "mutant_arbitrary_Hermitization_error": 0.969529120294015
+        }
+      ],
+      "observed_orders": {
+        "native_from_eigenvectors_error": [
+          1.9997635117933374,
+          1.9999408803106495,
+          1.9999852540780076
+        ],
+        "eigenvalue_derivative_error": [
+          1.9997635117933374,
+          1.9999408803106495,
+          1.9999852540780076
+        ],
+        "normalization_derivative_error": [
+          1.9994381461560238,
+          1.9998595881661967,
+          1.9999649082431936
+        ],
+        "laboratory_from_physical_eigenvectors_error": [
+          1.9997635117933374,
+          1.9999408803106495,
+          1.9999852540780076
+        ],
+        "laboratory_from_direct_curve_error": [
+          1.9999134381170003,
+          1.9999783594226135,
+          1.9999946016929009
+        ],
+        "Hprime_direct_curve_error": [
+          1.9998039970703472,
+          1.9999510027415544,
+          1.9999877312074719
+        ],
+        "Sprime_direct_curve_error": [
+          1.9999796785128883,
+          1.9999949242177093,
+          1.9999987264246886
+        ]
+      }
+    }
+  },
+  "ended_unix": 1792412570.5459232,
+  "elapsed_seconds": 0.9267549514770508
+}

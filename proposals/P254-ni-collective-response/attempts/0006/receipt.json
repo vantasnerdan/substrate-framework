@@ -1,0 +1,88 @@
+{
+  "status": "complete",
+  "source_sha256": {
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0006/verify_projection.py": "2dc978e80ce62cda216d2100163be4213876b654947ad7871ae96e888802e2a0",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0006/record.json": "1987ff56d5f4c96de1e88edb06f30f3df0ecee331d1cc27c64cd974e705f23ff",
+    "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_modes.py": "a37b3f88ba3e3e8f1c3b011694977e91cfb011eec82957b7e9688d600669c001",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0003/oracle_artifacts.py": "7a0f995607d3cb074aa4b52ed91e96de90f2010fe91acd375ad0accb91e06b77"
+  },
+  "versions": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "numpy": "2.5.2",
+    "sympy": "1.14.0"
+  },
+  "scope": "Synthetic exact projection/spectrum API regression, not material evidence.",
+  "observations": {
+    "engineering_absolute_operator_allowance_si": 8.602022378244678e+17,
+    "exact_dimensionless_eigenvalues": [
+      "0",
+      "0",
+      "0",
+      "CRootOf(876096*x**3 - 7276464*x**2 + 17538084*x - 11159057, 0)",
+      "CRootOf(876096*x**3 - 7276464*x**2 + 17538084*x - 11159057, 1)",
+      "CRootOf(876096*x**3 - 7276464*x**2 + 17538084*x - 11159057, 2)"
+    ],
+    "1": {
+      "raw_projected_residuals_si": {
+        "hermitian_frobenius": 0.0,
+        "translation_right_frobenius": 164176361594762.0,
+        "translation_left_frobenius": 164176361594762.0,
+        "operator_frobenius": 2.5221396339385028e+30
+      },
+      "actual_eigenvalues_si": [
+        -32865918347090.098,
+        -12435304225684.732,
+        89281687683814.23,
+        4.705793483116856e+29,
+        1.33646475014686e+30,
+        2.0865295065349272e+30
+      ],
+      "signed_frequencies_thz": [
+        -9.124162630646709e-07,
+        -5.61239642019998e-07,
+        1.5038389436463594e-06,
+        109.1783593123884,
+        183.9919769861862,
+        229.89651982293134
+      ]
+    },
+    "-1": {
+      "raw_projected_residuals_si": {
+        "hermitian_frobenius": 0.0,
+        "translation_right_frobenius": 164176361594762.0,
+        "translation_left_frobenius": 164176361594762.0,
+        "operator_frobenius": 2.5221396339385028e+30
+      },
+      "actual_eigenvalues_si": [
+        -2.0865295065349272e+30,
+        -1.33646475014686e+30,
+        -4.705793483116856e+29,
+        -89281687683814.23,
+        12435304225684.732,
+        32865918347090.098
+      ],
+      "signed_frequencies_thz": [
+        -229.89651982293134,
+        -183.9919769861862,
+        -109.1783593123884,
+        -1.5038389436463594e-06,
+        5.61239642019998e-07,
+        9.124162630646709e-07
+      ]
+    }
+  },
+  "passed_checks": [
+    "exact acoustic projector",
+    "exact translation annihilation",
+    "exact projected Hermiticity",
+    "fixture exact null and positive spectrum",
+    "composed exact-root spectrum sign=1",
+    "composed translation and eigenpair residual sign=1",
+    "composed exact-root spectrum sign=-1",
+    "composed translation and eigenpair residual sign=-1",
+    "three finite instabilities survive projection and spectrum",
+    "raw Hermitian input unchanged",
+    "genuine projected asymmetry retained",
+    "genuine asymmetric spectrum remains rejected"
+  ]
+}

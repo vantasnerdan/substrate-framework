@@ -1,0 +1,41 @@
+{
+  "status": "failed",
+  "source_sha256": {
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0006/verify_projection.py": "2dc978e80ce62cda216d2100163be4213876b654947ad7871ae96e888802e2a0",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0006/record.json": "1987ff56d5f4c96de1e88edb06f30f3df0ecee331d1cc27c64cd974e705f23ff",
+    "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_modes.py": "8b5fa1454e903d6505d4607eeab594484ea6f918dd85a4bc9719c0669c3ffdb6",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0003/oracle_artifacts.py": "7a0f995607d3cb074aa4b52ed91e96de90f2010fe91acd375ad0accb91e06b77"
+  },
+  "versions": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "numpy": "2.5.2",
+    "sympy": "1.14.0"
+  },
+  "scope": "Synthetic exact projection/spectrum API regression, not material evidence.",
+  "observations": {
+    "engineering_absolute_operator_allowance_si": 8.602022378244678e+17,
+    "exact_dimensionless_eigenvalues": [
+      "0",
+      "0",
+      "0",
+      "CRootOf(876096*x**3 - 7276464*x**2 + 17538084*x - 11159057, 0)",
+      "CRootOf(876096*x**3 - 7276464*x**2 + 17538084*x - 11159057, 1)",
+      "CRootOf(876096*x**3 - 7276464*x**2 + 17538084*x - 11159057, 2)"
+    ],
+    "1": {
+      "raw_projected_residuals_si": {
+        "hermitian_frobenius": 100290891008075.67,
+        "translation_right_frobenius": 141199483578044.97,
+        "translation_left_frobenius": 165474575368680.97,
+        "operator_frobenius": 2.5221396339385028e+30
+      }
+    }
+  },
+  "raw_exception": "Traceback (most recent call last):\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0006/verify_projection.py\", line 98, in main\n    composed_spectra(ledger, exact, roots, receipt)\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0006/verify_projection.py\", line 61, in composed_spectra\n    spectrum = modes.signed_modes(projected, units=\"si\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_modes.py\", line 163, in signed_modes\n    raise ValueError(\"operator is not exactly Hermitian; inspect raw residuals and explicitly project\")\nValueError: operator is not exactly Hermitian; inspect raw residuals and explicitly project\n",
+  "passed_checks": [
+    "exact acoustic projector",
+    "exact translation annihilation",
+    "exact projected Hermiticity",
+    "fixture exact null and positive spectrum"
+  ]
+}

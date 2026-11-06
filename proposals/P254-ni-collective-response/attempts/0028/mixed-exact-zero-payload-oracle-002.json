@@ -1,0 +1,91 @@
+{
+  "schema": "P254-exact-zero-computed-payload-oracle-v2",
+  "status": "PASS",
+  "scope": "actual numeric storage boundaries only; no material propagation",
+  "checks": [
+    {
+      "name": "entire_computed_zero_matrix_retains_shape_dtype_values",
+      "passed": true
+    },
+    {
+      "name": "exact_zero_has_no_fictitious_payload_file",
+      "passed": true
+    },
+    {
+      "name": "tiny_nonzero_and_all_complex_values_are_exact",
+      "passed": true
+    },
+    {
+      "name": "reject_nan_before_publication",
+      "passed": true
+    },
+    {
+      "name": "reject_infinite_before_publication",
+      "passed": true
+    },
+    {
+      "name": "existing_original_never_overwritten",
+      "passed": true
+    }
+  ],
+  "outputs": [
+    {
+      "kind": "exact-zero",
+      "shape": [
+        768,
+        1024
+      ],
+      "dtype": "complex128"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-exact-zero-payload-oracle-002-work/zero-consumer.json",
+      "bytes": 3087,
+      "sha256": "da781cbaac38b59d462919a8608c9d2c0c16e09a6f28081750f145307bf7ebb2"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-exact-zero-payload-oracle-002-work/nonzero.npy",
+      "bytes": 94800,
+      "sha256": "764318fc90be4b535d3cb7435c339baf711299a6f9f7593bbdd8caf806e38150"
+    }
+  ],
+  "budget": {
+    "hamiltonian_actions": 0,
+    "action_columns": 0,
+    "output_bytes_reserved": 98271,
+    "elapsed_seconds": 0.07898314809426665,
+    "max_actions": 1,
+    "max_seconds": 30.0,
+    "max_bytes": 67108864,
+    "max_memory_bytes": 536870912,
+    "worker_memory_bytes": 268435456,
+    "peak_aggregate_rss_bytes": 0,
+    "accounting": "q live cap; cumulative allocation/mapped-write/action costs never credited back; measured unlinks only; header/reservation slack retained; logical writes, not physical device I/O",
+    "memory_accounting": "parent plus child RSS; shared pages conservatively counted repeatedly",
+    "time_cap": "parent watchdog at 0.1 second intervals; native calls may be terminated",
+    "live_bytes_reserved": 98271,
+    "peak_live_bytes_reserved": 98271,
+    "cumulative_write_bytes_reserved": 98271,
+    "cumulative_allocation_bytes_reserved": 98271,
+    "mapped_overwrite_bytes_reserved": 0,
+    "retired_payload_bytes": 0
+  },
+  "wall_seconds": 0.06310300203040242,
+  "process_peak_rss_bytes": 148520960,
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_payload_output.py",
+      "bytes": 2137,
+      "sha256": "d3f4ad5e32283fedfbef917e4c557b670d64d262799b25cd3f5b5fbb257c7ad1"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_response_storage.py",
+      "bytes": 28857,
+      "sha256": "3763f5ffeb857380c525f3c72281ef63d4736069cb56be7079d713433b2c5698"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_payload_output_oracle.py",
+      "bytes": 4426,
+      "sha256": "1d14395c5d6510cbb86f4359fd3c287014ccfee0f5067acac10cebbc8467a210"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "status": "failed-before-contractions",
+  "original_runner": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_matched_representative_batch.py",
+    "bytes": "5811",
+    "sha256": "570a1c31b6e69d1c925c9e06f8a3a199ed5813ff91abf9ec25692760634547e0"
+  },
+  "original_plan": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-representative-batch-registration-001.json",
+    "bytes": "11198",
+    "sha256": "a4de55cafb21b4ac8ee67e07e21855bfbcf5f32d3cdb8bf2df51c5318dbe253b"
+  },
+  "unit": "p254-a28-representatives-dispersed0-001.service",
+  "observed_exit": 1,
+  "diagnosis_argv": [
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "9",
+    "/usr/bin/python3",
+    "-c",
+    "import json; from matched_reference_io import registration,load_case; _,reg=registration(); c,b,l,rows,ctx=load_case('dispersed-ni32h6',reg,background=False); print(json.dumps([dict(mesh=s.mesh_index,source=s.source_ik,conjugate=s.orbital_conjugation,operation=s.operation.index,rotation=s.operation.rotation.tolist(),translation=s.operation.fractional_translation.tolist(),shift=s.reciprocal_shift.tolist(),k=s.k_cart_bohr_inv.tolist()) for _,s,_ in rows if s.ispin==1 and s.source_ik==15]))"
+  ],
+  "diagnosis_exit": 0,
+  "diagnosis_stdout": "[{\"mesh\": [1, 0, 2], \"source\": 15, \"conjugate\": false, \"operation\": 1, \"rotation\": [[1, 0, 0], [0, 1, 0], [0, 0, 1]], \"translation\": [0.0, 0.0, 0.0], \"shift\": [0, 0, -1], \"k\": [0.11793836820516468, 0.0, -0.23587673641032936]}, {\"mesh\": [1, 2, 0], \"source\": 15, \"conjugate\": false, \"operation\": 3, \"rotation\": [[1, 0, 0], [0, 0, -1], [0, -1, 0]], \"translation\": [0.0, 0.0, 0.0], \"shift\": [0, 0, 0], \"k\": [0.11793836820516468, -0.23587673641032936, 0.0]}, {\"mesh\": [3, 0, 2], \"source\": 15, \"conjugate\": true, \"operation\": 1, \"rotation\": [[1, 0, 0], [0, 1, 0], [0, 0, 1]], \"translation\": [0.0, 0.0, 0.0], \"shift\": [0, 0, 0], \"k\": [-0.11793836820516468, 0.0, -0.23587673641032936]}, {\"mesh\": [3, 2, 0], \"source\": 15, \"conjugate\": true, \"operation\": 3, \"rotation\": [[1, 0, 0], [0, 0, -1], [0, -1, 0]], \"translation\": [0.0, 0.0, 0.0], \"shift\": [0, -1, 0], \"k\": [-0.11793836820516468, -0.23587673641032936, 0.0]}]\n",
+  "diagnosis_stderr": "",
+  "cause": "Identity crystal operation can require a nonzero reciprocal shift when folding an original BZ-boundary source; excluding all such shifts removed the genuine representative. No coefficient calculation was reached.",
+  "correction": "Select non-conjugating identity crystal operation and zero translation, retaining the validated reciprocal fold. Verify original source1:15 directly and preserve all original states/coefficients."
+}

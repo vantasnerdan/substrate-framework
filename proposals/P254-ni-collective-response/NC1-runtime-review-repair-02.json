@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "P254-NC1-runtime-review-repair-02",
+  "registered_at": "2026-10-19T23:59:51.551Z",
+  "status": "PREREGISTRATION BEFORE REPAIR02 IMPLEMENTATION, PUBLICATION OR ANY NC1 NATIVE OUTPUT",
+  "issue": "https://github.com/giuliano-vantasner/catalyst-dft/issues/12",
+  "parent": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "input_generation": {
+    "dft_bank": "10c53b3",
+    "source_package_sha256": "1b1d79403b60d0c4076778f1d0129a84c6ca3f0ff173f4bb1e82eb21e40fa28f",
+    "complete_rejection": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/initial-failures/prelaunch-review-repair01/failure.json",
+    "verified_raw_source_snapshot": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/initial-failures/prelaunch-review-repair01/source-snapshot.json"
+  },
+  "physical_invariant": "All original NC1 seeds, SG15 UPFs, scalar collinear PBE/nspin2,60/240Ry,k444,numerical MV0.02,conv1e-10,Ni start0.06,per-spin bands,all-mobile BFGS gates,topology/rank map,convergence ladders and G1-G5 obligations remain unchanged. Only source/runtime evidence and shutdown engineering changes; no new bath/temperature/material license.",
+  "repairs": [
+    {
+      "problem": "_snapshot shadows the retained ProcessHandle with a copied-input file writer.",
+      "change": "Preserve the process handle throughout actual snapshot IO, with a distinct stream name and final retained liveness guard."
+    },
+    {
+      "problem": "poll samples mutable handles captured before reap closed them.",
+      "change": "Reap before obtaining the current live sample set; no swallowed EBADF or false completion."
+    },
+    {
+      "problem": "Missing/corrupt force results before baseline erase cached complete relaxation obligations.",
+      "change": "Independently select each frozen job completed relaxation using canonical bound JSON generation semantics, validate exact source/model/envelope and its final geometry/force-spec/force-result artifact authority, follow the exact referenced force generation and raw SHA. Require its native attempt proof even when no force result survives the glob inventory. Missing/corrupt/out-of-model boundaries fail closed. Evidence observation MUST only read, never call a stage function capable of launching Native."
+    },
+    {
+      "problem": "Inner job_queue still reaches numeric killpg through actual signal/exception control flow.",
+      "change": "Move the existing retained Linux identity implementation into shared catdft code; reuse one bounded retained-handle shutdown implementation from both queue and outer launcher. Set the dedicated queue owner subreaper before spawn; retain ancestry/task safeguards, exclude Popen leader from reap, close/reap/drain boundedly on ordinary and exceptional exits. Remove all obsolete inner numeric group signaling and old runtime module path; no alias/shim, no live-W1 changes."
+    }
+  ],
+  "layout": {
+    "shared_retained_identity": "src/catdft/process_handles.py",
+    "shared_subreaper_and_bounded_shutdown": "src/catdft/process_shutdown.py",
+    "consumer": "src/catdft/job_queue.py and runtime/launch.py",
+    "completed_boundary_owner": "runtime/completed_boundaries.py",
+    "attempt_reconciler": "runtime/attempt_evidence.py consumes complete force plus relaxation obligations; keep provenance/math separate",
+    "snapshot_sampling": "runtime/observer.py; no new physical model logic"
+  },
+  "verification": {
+    "affected_tests": "Keep consumer-visible regressions for lost completed force generations, actual post-copy retained-handle snapshot transition, and sample-after-reap lifetime where deterministic. Existing affected queue/repair tests only, no broad unchanged proofs or wording/source-wiring tests.",
+    "actual_smoke": "Actual shared queue and outer process ownership/shutdown with live retained pidfds, nested-session/adopted descendants and unrelated survival; actual snapshot filesystem/proc API with explicit non-native scope; actual real queue cached-complete skip against missing/corrupt referenced force authority. Record failures before retry; no fabricated PW/rank/native-resource proof.",
+    "publication": "Fresh immutable six-file producer/strict-consumer/repeat/refusal smoke after all runtime source/contract/registration files settle; preserve repair01 unchanged as rejected.",
+    "gate": "Complete independent repaired prelaunch review of all affected source/evidence BEFORE fresh actual resource release and parent native grant. Then actual first native force, all5rank/cgroup/library observations and explicit cached-force crash/recovery remain required."
+  },
+  "limits": [
+    "No NC1 unit installation or native resource grant is authorized by this preregistration.",
+    "No G10 rerun or relabel; historical source banks remain the authority for old proofs.",
+    "No change to any live W1 source/settings/optimizer/units, original /opt or original catalyst-dft worktree.",
+    "The full material, electronic-response, bath/noise, many-region, lattice/disorder/isotope and nuclear-bridge campaign and final complete review/authorized distinct merge remain open."
+  ]
+}

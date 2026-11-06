@@ -1,0 +1,45 @@
+{
+  "schema": "P254-one-sided-material-pullback-adapter-completion-v1",
+  "scope": "Adapter completion only. No numerical execution, verification, Native work, production allocation, runtime, speedup, accuracy, spatial or coherence result is claimed.",
+  "changed_files": [
+    "run_source_local_q_material.py",
+    "source_local_material_owner.py",
+    "source_local_material_runtime.py",
+    "joint_spatial_dual_authority.py",
+    "joint_spatial_dual_coherent.py",
+    "joint_spatial_source_local.py",
+    "run_source_local_q_oracle.py",
+    "joint_spatial_source_local_oracle.py",
+    "joint_spatial_dual_coherent_oracle.py",
+    "run_joint_spatial_readout.py"
+  ],
+  "api": {
+    "mode": "--mode pullback --time T --atom FORCE_PROBE_ATOM --axis FORCE_PROBE_AXIS --observable total-force",
+    "forbidden_second_leg": "--second-time is not applicable to pullback; it remains required for plan/probe/pair.",
+    "complete_context": "OUTPUT/scientific-work/pullback/complete.json; result.pullback_context is the genuine source-local-q-pullback-v1 binding.",
+    "execution": "MaterialRuntime.executor is SourceLocalQResponse in pullback mode. execute_pullback calls runtime.executor.pullback or its authenticated restore; there is no covariance consumer or synthetic pair publication.",
+    "resume": "Use the identical request, sources, caps and output with --resume --pullback-context OUTPUT/scientific-work/pullback/complete.json --pullback-context-sha256 SHA. The original owner/start/caps and owned one-sided namespace remain authoritative. left/right context selectors remain pair-only.",
+    "independent_seed": "Use joint_spatial_dual_coherent.build_readout(owner, context, seed, oracle, snapshots=...) or its CLI. The existing independent-coherent-seed-001.json remains Ni1/x, cell0, J=1; material --atom/--axis select the force probe, not that seed.",
+    "historical_validation": "validate_readout(record, seed, snapshots=...) now authenticates the record's original consumer/proof bindings through explicit byte-identical snapshots. validate_source_local forwards external snapshots without changing the completed publication or its declared bindings. Current build_readout defaults to current consumer sources and a current-source oracle."
+  },
+  "historical_snapshots": {
+    "manifest": "one-sided-material-original-source-snapshots-001.json",
+    "bytes": 6785,
+    "sha256": "878454a81f97bacf5ff6fab7b82b4b0c14b913371365f0d6d8011325c46980f6",
+    "contents": "Ten actual pre-edit source byte snapshots under source-history, plus the existing original physical material_joint_response snapshot. Existing result/proof files were not overwritten or re-pinned."
+  },
+  "parent_checks_to_run_once": [
+    "python3 proposals/P254-ni-collective-response/attempts/0028/run_source_local_q_material.py --help",
+    "python3 proposals/P254-ni-collective-response/attempts/0028/run_source_local_q_oracle.py --work /var/tmp/p254-a28-one-sided-source-local-finite-001 --output proposals/P254-ni-collective-response/attempts/0028/one-sided-source-local-q-oracle-001.json --cpus 6",
+    "python3 proposals/P254-ni-collective-response/attempts/0028/run_joint_spatial_readout_oracle.py --output proposals/P254-ni-collective-response/attempts/0028/one-sided-joint-spatial-readout-oracle-001.json",
+    "Saved-data smoke: validate_readout on independent-coherent-left-001.json and independent-coherent-right-001.json using their unchanged seed/proof and the new explicit snapshot manifest; consume the original E006 pair using those declared snapshots."
+  ],
+  "finite_coverage_added": "Real finite rectangular complex-D/global-feedback pullback, full discrete-forward/dense response comparisons at Gamma and nonGamma, independent seed-axis selection, persistent material owner and original deadline/action ledger resume, unchanged complete-context bytes, wrong owner/caps/namespace/mode/second-time rejection, and absence of final electronic covariance replay. No mocks or numerical execution were used by this worker.",
+  "prospective_material_command": "A28=/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028; /usr/bin/python3 \"$A28/run_source_local_q_material.py\" --mode pullback --case loaded-ni31h6 --initialization /var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json --initialization-sha256 04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713 --history /var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json --history-sha256 903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd --physical-qualification \"$A28/partitioned-readout-current-qualification-002.json\" --physical-qualification-sha256 fa46b1b99787355171a14ff7e1546dc9868d5fcfe437382b774e5ea7934a9093 --source-local-oracle \"${P254_CURRENT_SOURCE_LOCAL_ORACLE:?parent finite proof required}\" --source-local-oracle-sha256 \"${P254_CURRENT_SOURCE_LOCAL_ORACLE_SHA256:?exact parent proof digest required}\" --output /var/tmp/p254-a28-source-local-H37x-q0014-pullback-001 --q 0 0 0.25 --cpus \"${P254_ALLOCATED_CPU:?separate measured-cost allocation required}\" --max-actions \"${P254_MAX_ACTIONS:?allocation required}\" --max-seconds \"${P254_MAX_SECONDS:?allocation required}\" --max-output-bytes \"${P254_MAX_OUTPUT_BYTES:?allocation required}\" --max-memory-bytes \"${P254_MAX_MEMORY_BYTES:?allocation required}\" --worker-memory-bytes \"${P254_WORKER_MEMORY_BYTES:?allocation required}\" --time 0.0005 --subdivisions 1 --atom 37 --axis x --observable total-force --dynamics screened-joint --block-size 8 --frame-admission \"$A28/actual-baseline-frame-adoption-check-003.json\" 97f334d2bcb657847ed1b377169d7ae98e8d236fa2a45df6dc0306220bb2330a",
+  "prospective_seed_consumer": "A28=/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028; OUT=/var/tmp/p254-a28-source-local-H37x-q0014-pullback-001; /usr/bin/python3 \"$A28/joint_spatial_dual_coherent.py\" --owner \"$OUT/owner.json\" --owner-sha256 \"${P254_PULLBACK_OWNER_SHA256:?exact generated owner binding required}\" --context \"$OUT/scientific-work/pullback/complete.json\" --context-sha256 \"${P254_PULLBACK_CONTEXT_SHA256:?exact generated context binding required}\" --seed \"$A28/independent-coherent-seed-001.json\" --seed-sha256 f74016256d6a8e664840a4addb1def57f3701144de73711c10ab9e745df42ce8 --oracle \"${P254_CURRENT_SPATIAL_ORACLE:?parent current finite proof required}\" --oracle-sha256 \"${P254_CURRENT_SPATIAL_ORACLE_SHA256:?exact parent proof digest required}\" --source-snapshots \"$A28/one-sided-material-original-source-snapshots-001.json\" --source-snapshots-sha256 878454a81f97bacf5ff6fab7b82b4b0c14b913371365f0d6d8011325c46980f6 --output /var/tmp/p254-a28-source-local-H37x-q0014-coherent-001.json",
+  "remaining_prerequisites": [
+    "Parent executes the affected finite proofs once and authenticates original saved outputs through the declared snapshots. Worker did not run any checks.",
+    "A current-source source-local proof is required for a fresh CLI owner: the old completed proof remains immutable and its original code bytes are preserved, not re-pinned to changed adapters.",
+    "Any nonGamma material execution remains separately budgeted and unauthorized by this completion. Mandatory allocation environment variables intentionally fail closed."
+  ]
+}

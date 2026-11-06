@@ -1,0 +1,63 @@
+{
+  "schema": "P254-joint-partitioned-material-v1",
+  "status": "complete",
+  "mode": "initialize",
+  "cpus": [
+    6
+  ],
+  "blas_threads": 1,
+  "requested_interval": 0.0,
+  "scope": "all-slot homogeneous physical mean; not whole local-q/quantum completion",
+  "case": "loaded-ni31h6",
+  "oracle": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-partitioned-oracle-001.json",
+    "bytes": 8863,
+    "sha256": "76569c708667e0c86cce82d09445363cd5dbe65ffa4b6b0920a442511a95cf33"
+  },
+  "column_oracle": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-column-mean-oracle-001.json",
+    "bytes": 4452,
+    "sha256": "17658790d58281e822bb83d0365725e125525eb17d3ba1a00d379ab1ee971c36"
+  },
+  "initialization": {
+    "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+    "bytes": 25705,
+    "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"
+  },
+  "initial_boundary": {
+    "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/initial/boundary.json",
+    "bytes": 173727,
+    "sha256": "83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095"
+  },
+  "coefficient_defect_upper_bound": null,
+  "positive_time_symmetry": false,
+  "resource_plan": {
+    "workers": 1,
+    "simultaneous_slots": 1,
+    "original_frame_bytes": 13137509056,
+    "max_single_frame_bytes": 103041696,
+    "retained_new_frame_sets": 0,
+    "complex_contraction_payload_bytes_per_complete_barrier": 764649472,
+    "maximum_reduction_barriers_before_cache_reuse": 1,
+    "storage_estimate_note": "payload excludes NPY/JSON/stage arrays and failed-attempt storage; hard reservation remains authoritative",
+    "midpoint_storage": "per-slot n/G/ell/H0-energy receipts, not trial full frames",
+    "output_accounting": "all incomplete and complete files retained; hard cumulative invocation reservation",
+    "memory": "mmap original frames/D; one operator/slot per worker; aggregate RSS watchdog"
+  },
+  "completed_boundaries": [],
+  "budget": {
+    "hamiltonian_actions": 0,
+    "action_columns": 0,
+    "output_bytes_reserved": 92768,
+    "elapsed_seconds": 74.25549915106967,
+    "max_actions": 1,
+    "max_seconds": 180.0,
+    "max_bytes": 2147483648,
+    "max_memory_bytes": 4294967296,
+    "worker_memory_bytes": 4294967296,
+    "peak_aggregate_rss_bytes": 403636224,
+    "accounting": "invocation-wide shared counters; existing output charged; attempts retained",
+    "memory_accounting": "parent plus child RSS; shared pages conservatively counted repeatedly",
+    "time_cap": "parent watchdog at 0.1 second intervals; native calls may be terminated"
+  }
+}

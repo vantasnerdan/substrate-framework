@@ -1,0 +1,111 @@
+{
+  "created_utc": "2026-10-28T22:16:50.308049+00:00",
+  "decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-009.json",
+    "bytes": "4069",
+    "sha256": "ecb5f5262b67532a81f3497fac9fe1371571d726a2b45c42eb0659ac8a86ca55"
+  },
+  "jobs": [
+    {
+      "name": "ionic-gaussian-oracle-002",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-ionic-gaussian-oracle-002",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=6",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=120s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_ionic_gaussian_oracle.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic-gaussian-oracle-002.json"
+      ],
+      "seconds_cap": 120
+    },
+    {
+      "name": "nuclear-transport-oracle-002",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-nuclear-transport-oracle-002",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=7",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=120s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_nuclear_transport_oracle.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/nuclear-transport-oracle-002.json"
+      ],
+      "seconds_cap": 120
+    },
+    {
+      "name": "full-field-moments-oracle-001",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-full-field-moments-oracle-001",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=8",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=120s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_full_field_moments_oracle.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/full-field-moments-oracle-001.json"
+      ],
+      "seconds_cap": 120
+    },
+    {
+      "name": "threadpoolctl-runtime-install",
+      "argv": [
+        "taskset",
+        "-c",
+        "10",
+        "/usr/bin/python3",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--no-input",
+        "--no-deps",
+        "--target",
+        "/home/administrator/.cache/dft/p254-a28-runtime",
+        "threadpoolctl==3.6.0"
+      ],
+      "seconds_cap": 120
+    }
+  ],
+  "preserved": "No Native action; CPUs6-10 only; single-thread numerical libraries; prior failures retained"
+}

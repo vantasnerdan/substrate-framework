@@ -1,0 +1,116 @@
+{
+  "schema": "P254-nuclear-source-registration-v1",
+  "node": "N",
+  "component": "Ni/H isotope-resolved atomic-reference reaction/product-energy ledger",
+  "implementation_status": "Implemented; deliberately not executed by worker. Root must run the exposing oracle and consumer.",
+  "source_acquisition_record": "nuclear-source-acquisition.json",
+  "original_bytes_directory": "../../sources/ame2020-nubase2020-original",
+  "acquisition_outcome": "All five requested official resources returned HTTP 200; exact original bodies saved. No alternate/failure outcomes occurred.",
+  "sources": [
+    {
+      "name": "AME2020 unrounded atomic mass table",
+      "official_landing_page": "https://amdc.impcas.ac.cn/web/masseval.html",
+      "url": "https://amdc.impcas.ac.cn/masstables/Ame2020/mass_1.mas20",
+      "file": "../../sources/ame2020-nubase2020-original/mass_1.mas20",
+      "bytes": 472648,
+      "sha256": "e8599c6d7f724fac91934e59f1b9de8fb8f63e820f4b39456b790665ed2a3307",
+      "citations": [
+        "W.J. Huang, M. Wang, F.G. Kondev, G. Audi and S. Naimi, The AME2020 atomic mass evaluation (I), Chinese Physics C45, 030002 (2021).",
+        "M. Wang, W.J. Huang, F.G. Kondev, G. Audi and S. Naimi, The AME2020 atomic mass evaluation (II), Chinese Physics C45, 030003 (2021)."
+      ],
+      "format": "Header lines 21-27: fixed Fortran fields; mass excess and uncertainty in keV; '#' replaces decimal point for estimated non-experimental values; '*' denotes unavailable quantity.",
+      "used_for": "Exact rational neutral-atom ground-state mass excesses, uncertainties, extrapolation flags and source-record evidence. No mass value is taken from the Kim proposal.",
+      "covariance": "Not acquired. Stoichiometric cancellation precedes uncertainty propagation; sum |c_i| sigma_i is reported only as an upper bound on standard uncertainty for unknown correlations, never as a confidence interval."
+    },
+    {
+      "name": "NUBASE2020 ground-state properties",
+      "official_landing_page": "https://amdc.impcas.ac.cn/web/nubase_en.html",
+      "url": "https://amdc.impcas.ac.cn/masstables/Ame2020/nubase_4.mas20",
+      "file": "../../sources/ame2020-nubase2020-original/nubase_4.mas20",
+      "bytes": 761906,
+      "sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859",
+      "citation": "F.G. Kondev, M. Wang, W.J. Huang, S. Naimi and G. Audi, The NUBASE2020 evaluation of nuclear physics properties, Chinese Physics C45, 030001 (2021), DOI:10.1088/1674-1137/abddae.",
+      "format": "Original header columns 1-3 A, 5-7 Z, 8 state (0 ground state), 70-78 lifetime, 79-80 unit, 82-88 lifetime uncertainty, 89-102 spin/parity, 120-209 decay/intensity. Qualifiers and uncertainties retained verbatim.",
+      "used_for": "Ground-state daughters, lifetimes, spin/parity, inclusive decay modes, delayed proton subset and natural-abundance labels; no isotope composition is assigned to the specimen."
+    },
+    {
+      "name": "NUBASE2020 interpretation article",
+      "file": "../../sources/ame2020-nubase2020-original/Kondev_2021_Chinese_Phys._C_45_030001.pdf",
+      "url": "https://amdc.impcas.ac.cn/masstables/Ame2020/Kondev_2021_Chinese_Phys._C_45_030001.pdf",
+      "bytes": 1756671,
+      "sha256": "cc9275f48da65610d9511984738f99a8b0b66ad19dd4ecf188c2a3609d0fff98",
+      "used_for": "Section 2.5, printed page 030001-10: B+ includes electron capture and positron emission; ? versus =? differs; delayed-particle branches are subsets, not extra independent modes. NUBASE aggregates do not provide all ENSDF level feeding or radiation spectra."
+    },
+    {
+      "name": "Kim generalized BECNF Ni/H proposal",
+      "file": "../../sources/kim-generalized-bec.txt",
+      "sha256": "360e50bce4201fea06d92805092deab743022736d5a0b274c09a8dc1c67d5b32",
+      "bytes": 13513,
+      "source_location": "Section II, equations/reactions (i), (ii), (iii); text lines 82-137.",
+      "used_for": "Defines Ni(A)+2p -> Cu(A+1)+p, Ni(A-2)+alpha, Zn(A+1)+n for A=58,60,62,64. Sign assertions for neutron channels are oracle hypotheses checked against AME, not inserted Q results. Its older quoted Cu decay values are NOT substituted for current acquired NUBASE values.",
+      "not_established": "The proposed spin-singlet proton pair, its population/lifetime/spatial wavefunction, Ni mobility and three-body transmission/amplitude are not supplied by this ledger."
+    },
+    {
+      "name": "Inspected archived Hagelstein Models for nuclear fusion in the solid state manuscript",
+      "file": "/home/administrator/sources/coherence/hagelstein-models-solid-state.txt",
+      "bytes": 518745,
+      "sha256": "627d4d1adf30d1a2b60540c951eb637bf5c7f67e17c52e3d11e2bd3ab0482149",
+      "inspected": [
+        "Section 6.9 DD/He4 approximate a-matrix and loss (Eqs. 395-398).",
+        "Section 6.10 HD/He3 angular/spatial overlap and a-matrix (Eqs. 440-448).",
+        "Section 6.30 proposed HD/He3 donor transfer to Ni* receiver, including missing fast DD-like loss."
+      ],
+      "reusable_structure": "Keep nuclear internal transition density separate from center-of-mass momentum/material modes and final product energies. Conditional DD/HD model coefficients are isotope/entrance-state specific; source has an approximate HD coefficient but no calibrated Ni receiver a-matrix.",
+      "decision": "No DD molecular kernel is substituted for commissioned Ni+2p channels. The source-inspected HD route requires actual D content, HD preparation, outer barrier overlap and Ni receiver data; none is fabricated here. No archive model coefficient is used in the Ni reaction ledger."
+    }
+  ],
+  "modules": [
+    {
+      "path": "src/substrate_framework/ni_h_nuclear_ledger.py",
+      "interfaces": [
+        "read_ame2020(path) -> dict[Nuclide, MassRecord]",
+        "read_nubase2020(path) -> dict[Nuclide, DecayRecord]",
+        "nickel_channels(include_binary_capture=False) -> 12 Reaction objects; optionally four separate ordinary p+Ni radiative captures",
+        "reaction_energy(reaction, masses) -> EnergyLedger with exact Q_atomic_keV, signed stoichiometric coefficients, uncertainty upper bound and extrapolation labels",
+        "daughter_network(products, decays) -> inclusive qualified decay topology",
+        "two_body_kinetic_energies(available_keV, rest1_keV, rest2_keV) -> exact relativistic CM kinetic energies for explicitly supplied consistent two-body endpoints"
+      ],
+      "equations": [
+        "Q_atomic = sum_initial Delta(A,Z) - sum_final Delta(A,Z), with exact A and Z conservation; A*u and electron rest masses cancel.",
+        "Q_bare_nuclei = Q_atomic + sum_initial B_e - sum_final B_e for positive total electronic binding B_e. Material endpoint corrections require their actual electronic state.",
+        "W = rest1 + rest2 + available; T1 = available*(available+2*rest2)/(2*W), T2 = available*(available+2*rest1)/(2*W).",
+        "Available = Q + entrance CM kinetic - final excitation, with consistent charge-state/electronic corrections. Negative available energy forbids that endpoint; positive available energy does not establish a rate.",
+        "For weak daughter chains, atomic mass differences are Q_EC or Q_beta_minus reference quantities. A positron branch requires subtraction of 2*m_e*c^2 per positron before assigning its kinetic endpoint; neutrino energy and daughter excitation are not heat."
+      ]
+    }
+  ],
+  "consumer": {
+    "path": "proposals/P254-ni-collective-response/attempts/0028/consume_nuclear_ledger.py",
+    "command": "python proposals/P254-ni-collective-response/attempts/0028/consume_nuclear_ledger.py --output proposals/P254-ni-collective-response/attempts/0028/nuclear-product-energy-ledger.json",
+    "behavior": "Authenticates original AME/NUBASE bytes, emits all 12 proposed channels and four separately labelled binary captures, exact Q and source raw records, full relevant daughter topology, lifetime/branch qualifiers and explicit transport/receiver gaps. No fused/deposited power is computed."
+  },
+  "oracle": {
+    "path": "proposals/P254-ni-collective-response/attempts/0028/oracle_nuclear_ledger.py",
+    "command": "python proposals/P254-ni-collective-response/attempts/0028/oracle_nuclear_ledger.py",
+    "execution": "Not run by worker as assigned; SymPy required in Root environment.",
+    "independent_inputs": "Original-byte hashes, a second regex parser, and literal original AME decimal input anchors; no precomputed reaction Q substituted for calculation.",
+    "coverage": [
+      "All isotope/channel Q formulas, exact A/Z and A*u/electron rest cancellation, neutron-channel sign hypotheses.",
+      "Wrong isotope/A, wrong Z, balanced wrong channel, reversed Q sign, exact finite mass perturbation, spectator-proton coefficient cancellation.",
+      "Decimal-input refinement at 0/3/6 places with an explicit rational rounding-error bound.",
+      "Independent relativistic two-body derivation, product swap, photon endpoint, threshold rejection, nonrelativistic limit and exact float rejection.",
+      "Ni56->Co56->Fe56; Cu59->Ni59->Co59; Cu61->Ni61; stable Cu63/Cu65; Zn59 delayed proton subset and neutron beta decay; preservation of unknown Ni58 double-beta mode.",
+      "Consumer contains no calculated fusion rate, heat rate or deposited product energy."
+    ]
+  },
+  "unresolved_physical_inputs": [
+    "Specimen Ni/H/D isotopic inventory, nuclear spin/position/energy state and material-dependent entrance wavefunction through atomic-to-nuclear distances.",
+    "Physical proton-pair preparation/population/lifetime and three-body Ni+2p matrix element/transmission, or a justified sequential reaction mechanism with both steps. Ordinary proton capture Q equality is not mechanism equality.",
+    "Channel branching, final excited-state feeding and angular/momentum spectra. Q here uses ground-state endpoints, not an assigned nuclear excitation.",
+    "Ni receiver level energies, J^pi, lifetimes/partial widths and operator-specific spin-momentum transition density; appropriate nuclear-frequency medium coupling/spectral support.",
+    "ENSDF level and gamma/conversion feeding, EC versus positron split, weak spectral distributions and positron annihilation transport.",
+    "Charge-state/electronic endpoint corrections; charged stopping, neutron scattering/capture, photon conversion/absorption, geometry/escape and neutrino escape. Positive Q or absorption/norm loss is not deposited heat.",
+    "Full mass covariance for correlated statistical uncertainties; supplied L1 bound is not an independent-error estimate or confidence interval."
+  ],
+  "scope_preservation": "Core N is advanced by a real evaluated-data reaction/product-energy construction, not declared solved as a Ni/H fusion-and-heat mechanism. No rates, proton pairing, Ni receiver matrix element or material nuclear-frequency absorption were invented."
+}

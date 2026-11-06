@@ -1,0 +1,87 @@
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/assumptions.py", line 499, in getit
+    return self._assumptions[fact]
+           ~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'positive'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/assumptions.py", line 499, in getit
+    return self._assumptions[fact]
+           ~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'zero'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/assumptions.py", line 499, in getit
+    return self._assumptions[fact]
+           ~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'extended_nonnegative'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py", line 48, in main
+    receipt["blocks"][name] = importlib.import_module("blocks." + name).run()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/embedding.py", line 74, in run
+    square = square_nonuniqueness(out, square_product_rule(out))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/embedding.py", line 33, in square_nonuniqueness
+    out.identity("two_embeddings_same_overlap_entire_curve", T2.H*T2-S)
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/exact.py", line 21, in identity
+    result = reduce(residual)
+             ^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/exact.py", line 7, in reduce
+    return value.applyfunc(s.simplify)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/matrices/matrixbase.py", line 2108, in applyfunc
+    return self._eval_applyfunc(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/matrices/matrixbase.py", line 2040, in _eval_applyfunc
+    valmap = {v: f(v) for v in dok.values()}
+                 ^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/simplify/simplify.py", line 657, in simplify
+    expr = Mul(*powsimp(expr).as_content_primitive())
+                ^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/simplify/powsimp.py", line 188, in powsimp
+    bpos = b.is_positive or b.is_polar
+           ^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/assumptions.py", line 503, in getit
+    return _ask(fact, self)
+           ^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/assumptions.py", line 559, in _ask
+    fact_i_value = handler_i(obj)
+                   ^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/add.py", line 867, in _eval_is_extended_negative
+    args = [a for a in self.args if not a.is_zero]
+                                        ^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/assumptions.py", line 503, in getit
+    return _ask(fact, self)
+           ^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/assumptions.py", line 559, in _ask
+    fact_i_value = handler_i(obj)
+                   ^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/mul.py", line 1599, in _eval_is_extended_positive
+    return self._eval_pos_neg(1)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/mul.py", line 1615, in _eval_pos_neg
+    elif t.is_extended_nonnegative:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/assumptions.py", line 503, in getit
+    return _ask(fact, self)
+           ^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/assumptions.py", line 559, in _ask
+    fact_i_value = handler_i(obj)
+                   ^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/add.py", line 822, in _eval_is_extended_nonnegative
+    c, a = self.as_coeff_Add()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/add.py", line 451, in as_coeff_Add
+    def as_coeff_Add(self, rational=False, deps=None) -> tuple[Number, Expr]:
+    
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py", line 19, in interrupted
+    raise InterruptedError("Explicit service interruption: signal " + str(signum))
+InterruptedError: Explicit service interruption: signal 15

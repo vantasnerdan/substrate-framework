@@ -1,0 +1,52 @@
+{
+  "schema": "P254-verified-managed-pane-launch-v1",
+  "actual_time": "2026-10-29T23:43:47.063179+00:00",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-actual-frame-cache-pin-003",
+    "--property=Type=exec",
+    "--property=CPUAffinity=10",
+    "--property=MemoryMax=2G",
+    "--property=LimitNOFILE=8192",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/.cache/dft/p254-a28-runtime",
+    "--property=RuntimeMaxSec=600s",
+    "--wait",
+    "--pipe",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reuse_actual_baseline_frames.py",
+    "pin",
+    "--source-request",
+    "/var/tmp/p254-a28-loaded-gamma-forward-003/scientific-work/frames/16813e31ea753b2f160882efcca66c60486e8c24fcf9c4f042949dc036ec7116/generation-2aff866e33db40baa4057a8662970580/request.json",
+    "--source-identity",
+    "790fde7ed3596171aa42f438df4b6d0fb78aeb08edaadd18e0d7bfa48043178f",
+    "--expected-input",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-loaded-midpoint-frame-input-001.json",
+    "--count",
+    "128",
+    "--history",
+    "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+    "--history-sha256",
+    "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd",
+    "--cache",
+    "/var/tmp/p254-a28-loaded-midpoint-frame-cache-001",
+    "--owner",
+    "p254-a28-loaded-midpoint-790fde-001"
+  ],
+  "pane": "w1:p3Q",
+  "queue_tool_result": {
+    "text": "(no output)",
+    "details": {
+      "wallTimeNoticeEmitted": false,
+      "timeoutSeconds": 20,
+      "wallTimeMs": 36.16045701503754
+    }
+  },
+  "scope": "Queue acknowledgement only, not execution/admission success."
+}

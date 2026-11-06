@@ -1,0 +1,38 @@
+{
+  "label": "optical-current-material-001",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-optical-current-001.service",
+    "--property=Type=oneshot",
+    "--property=RemainAfterExit=yes",
+    "--property=CPUAffinity=8",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=120s",
+    "--property=RuntimeMaxSec=120s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_current.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/optical-current-material-001",
+    "--step-bohr-inv",
+    "0.001"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Running as unit: p254-a28-optical-current-001.service; invocation ID: 7dfeb95767554cfdb31912ec61e0be6c\n",
+  "collected_at": "2026-10-28T19:34:56.804632+00:00",
+  "execution": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-execution-wave-003.json",
+    "bytes": "7646",
+    "sha256": "bb19fd16fb3013dca708c5bf838fddd65978d05ce6edfb99f9b6a628ade32c4c"
+  }
+}

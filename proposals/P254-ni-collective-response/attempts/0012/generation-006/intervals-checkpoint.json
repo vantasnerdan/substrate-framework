@@ -1,0 +1,70 @@
+{
+  "checks": [
+    "decimal lexeme retains sign/exponent/trailing precision",
+    "half quantum changes with trailing zero, not decimal value",
+    "malformed decimal rejected 'NaN'",
+    "malformed decimal rejected 'inf'",
+    "malformed decimal rejected '1.0 junk'",
+    "malformed decimal rejected ''",
+    "malformed decimal rejected 1.0",
+    "difference includes BOTH independent printed radii and sign",
+    "component omission and negative conversion rejected",
+    "full signed subtraction exposes add/absolute/component mutations",
+    "box 0 farthest corner and projected origin exact extrema",
+    "box 0 independent SciPy convex minimum succeeds",
+    "box 1 farthest corner and projected origin exact extrema",
+    "box 1 independent SciPy convex minimum succeeds",
+    "box 2 farthest corner and projected origin exact extrema",
+    "box 2 independent SciPy convex minimum succeeds",
+    "box 3 farthest corner and projected origin exact extrema",
+    "box 3 independent SciPy convex minimum succeeds",
+    "lower-bound mutation nearest CORNER fails when box crosses origin",
+    "upper-bound mutation center-only fails at exposed corner",
+    "near-gate exact witness 0.002999990",
+    "near-gate exact witness 0.003000010",
+    "near-gate exact witness 0.003000000",
+    "Euclidean witness defeats componentwise weaker gate",
+    "last atom omission changes failing maximum to passing",
+    "wrong atom order changes observable",
+    "scalar intervals expose sign and retained printing uncertainty",
+    "correct retained triangle encloses exact box upper norm",
+    "old radius mistake exposed: one-output half quantum misses difference corner"
+  ],
+  "manifest_sha256": "8db2b0ef7135cecb030870cf4ba28b47f685e5631b97c5d03349aa9e3e3df686",
+  "result": {
+    "optimizer_crosschecks": [
+      {
+        "box": "((99/50, 101/50), (-31/5, -29/5), (-1/500, 1/500))",
+        "lower_squared": "93901/2500",
+        "scipy_fun": 37.5604,
+        "scipy_success": true,
+        "upper_squared": "10630101/250000"
+      },
+      {
+        "box": "((-2, 1), (3, 4), (-6, -5))",
+        "lower_squared": "34",
+        "scipy_fun": 34.0,
+        "scipy_success": true,
+        "upper_squared": "56"
+      },
+      {
+        "box": "((-1, 1), (-1, 1), (-1, 1))",
+        "lower_squared": "0",
+        "scipy_fun": 0.0,
+        "scipy_success": true,
+        "upper_squared": "3"
+      },
+      {
+        "box": "((0, 0), (0, 0), (0, 0))",
+        "lower_squared": "0",
+        "scipy_fun": 0.0,
+        "scipy_success": true,
+        "upper_squared": "0"
+      }
+    ],
+    "rounding_model": "closed +/- half last printed decimal quantum; independent boxes",
+    "scope": "Exact extrema of Cartesian printing boxes, not a native numerical error bound.",
+    "triangle_example_upper": 6.670965481850534
+  },
+  "worker_pid": 353559
+}

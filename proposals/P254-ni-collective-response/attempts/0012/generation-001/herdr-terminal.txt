@@ -1,0 +1,12 @@
+FERMI_GAUGE_BLOCK_COMPLETE complex_projection
+FERMI_GAUGE_BLOCK_COMPLETE production_consumer
+FERMI_GAUGE_ORACLE_COMPLETE 35 bdc75b8ffdbd85fff224479eb91cd73869cc134a93efbdeb6d3e66b6ae34ad48
+Finished p254-fermi-gauge-0010-v1.service - P254 exact explicit energy-gauge oracle0010.
+administrator@agent-giuliano:~/projects/substrate-ni-collective$ /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/launch_owner.py --generation 001
+SENSITIVITY_OWNER_LAUNCH p254-w1-force-sensitivity-0012-g001-1792455075679701675.service {"argv": ["systemd-run", "--user", "--unit=p254-w1-force-sensitivity-0012-g001-1792455075679701675.service", "--property=Type=exec", "--property=CPUAffinity=5", "--property=MemoryMax=2147483648", "--property=MemorySwapMax=0", "--property=Restart=no", "--property=RemainAfterExit=yes", "--property=KillMode=control-group", "--working-directory=/home/administrator/projects/substrate-force-sensitivity", "--setenv=PYTHONPATH=/home/administrator/projects/substrate-force-sensitivity/src", "--setenv=PYTHONDONTWRITEBYTECODE=1", "--setenv=PYTHONUNBUFFERED=1", "--setenv=OMP_NUM_THREADS=1", "--setenv=MKL_NUM_THREADS=1", "--setenv=OPENBLAS_NUM_THREADS=1", "--setenv=NUMEXPR_NUM_THREADS=1", "/home/administrator/projects/substrate-framework/.venv/bin/python", "-B", "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py", "--generation", "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-001"], "returncode": 0, "stdout": "", "stderr": "Running as unit: p254-w1-force-sensitivity-0012-g001-1792455075679701675.service; invocation ID: d28f7362f4734756b962e0cff09c49a2\n"}
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/launch_owner.py", line 42, in launch
+    raise TimeoutError('Worker never provided startup handshake')
+TimeoutError: Worker never provided startup handshake
+
+administrator@agent-giuliano:~/projects/substrate-ni-collective$

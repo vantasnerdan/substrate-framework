@@ -1,0 +1,51 @@
+{
+  "actual_time": "2026-11-04T17:51:24.443796+00:00",
+  "actual_native_exit": 1,
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a36-canonical-field-partial-001.service",
+    "--property=RuntimeMaxSec=103",
+    "--property=MemoryMax=512M",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "/usr/bin/taskset",
+    "-c",
+    "10",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/evaluate_canonical_current_noise.py",
+    "--current-aggregate",
+    "/var/tmp/p254-a35-current-source0-partial-001.json",
+    "--output",
+    "/var/tmp/p254-a36-canonical-field-force-source0-partial-001.json"
+  ],
+  "original_stdout": "{\"event\": \"canonical-current-noise-exit\", \"status\": \"invalid\", \"output\": {\"path\": \"/var/tmp/p254-a36-canonical-field-force-source0-partial-001.json\", \"bytes\": 719, \"sha256\": \"b10f5014c0c94537781051b5776a693b4f08c2a40fde7a6c1cefa3bc9f5c6e88\"}, \"exit_code\": 1}\n",
+  "original_stderr": "Running as unit: p254-a36-canonical-field-partial-001.service; invocation ID: c8bd80bf58e0453ca4662a27a4690e18\nFinished with result: exit-code\nMain processes terminated with: code=exited/status=1\nService runtime: 4.421s\nCPU time consumed: 4.403s\nMemory peak: 332.0K\nMemory swap peak: 0B\n",
+  "actual_invalid_result": {
+    "path": "/var/tmp/p254-a36-canonical-field-force-source0-partial-001.json",
+    "bytes": 719,
+    "sha256": "b10f5014c0c94537781051b5776a693b4f08c2a40fde7a6c1cefa3bc9f5c6e88"
+  },
+  "original_consumer": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0036/failed-first-consumer-source-001.py.snapshot",
+    "bytes": 13150,
+    "sha256": "4b919ae2fc2c56f4b5c3c12f6f4b558d36773784ca140d887dae409cf6968dd9"
+  },
+  "native_elapsed": 4.484393,
+  "cumulative_original_native_elapsed": 20.712686,
+  "remaining_original_native_seconds": 99.287314,
+  "observed_error": "ValueError('finite numeric real required')",
+  "scope": "FailedactualJSONserialization/readout,notfailedphysicalactionorfailureofpassedpuremapFockoracle. No originaldata/inputchanged;no retryexecutedyet."
+}

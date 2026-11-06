@@ -1,0 +1,30 @@
+{
+  "decided_at": "2026-10-27T21:31:11.069820+00:00",
+  "diagnostic_due": "2026-10-27T21:30:00+00:00",
+  "diagnostic": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0023/gamma-failure-diagnostic-001.json",
+    "bytes": "25023",
+    "sha256": "7381ff0beff222b7970a4bff3de929b6a7fa81800a6d9541d97d4873640c4aaa"
+  },
+  "cause": "New adapter copied channel.g_plus/g_minus directly into energy-labelled recipes, but qe_pw_response_frames._ionic_actions returns target PLANE-WAVE rows. Settled PWElectronicDynamics projects adjoint(target_vectors) @ g first. Missing target spectral projection corrupts ionic/mixed noise, not the old dynamics or the physical model.",
+  "source_evidence": [
+    "src/substrate_framework/qe_pw_response_frames.py:235-243",
+    "src/substrate_framework/pw_electronic_dynamics.py:62-75",
+    "src/substrate_framework/pw_prepared_noise.py:93-101"
+  ],
+  "decision": "Repair only adapter basis conversion and its oracle; delete the copy/forwarding assertion that missed this. Add independent real-space ionic-action overlap and target-basis/gauge sensitivity. Retain failed generation and do not replay primitive quantum proof.",
+  "allocation": {
+    "first_generation_seconds": 32.714410689193755,
+    "corrected_generation_scientific_cap_seconds": 87,
+    "cumulative_original_producer_cap_seconds": 120,
+    "new_finite_delta_cap_seconds": 30,
+    "first_useful_recipe_due_seconds": 60,
+    "Root_decision_due": "2026-10-27T21:40:00+00:00",
+    "CPU": "6",
+    "BLAS_threads": 1,
+    "memory_max_bytes": "4294967296",
+    "Native_or_cloud": 0
+  },
+  "recovery_loss": "Original complete target eigenvectors were not persisted, only their identities. Corrected projection requires one measured-small-frame reconstruction; approximately25s original reconstruction cannot be reused.32failed-generation recipes retained as diagnostic data, not admitted ionic-noise inputs. No old amplitude migration/Native rerun.",
+  "implementation": "Current driver receives explicit per-generation admission, records diagnostic facts before refusal, and uses remaining cumulative allocation from that admission. New service/view/notification working directory for corrected generation. No changed physical setting or numeric allowance."
+}

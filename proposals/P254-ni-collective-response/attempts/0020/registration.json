@@ -1,0 +1,71 @@
+{
+  "issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "registered_at": "2026-10-27T18:56:01.782578+00:00",
+  "goal": "Build actual same-frequency coupled electronic/ionic six-coordinate curvature as a constructive step toward material coherence-domain dynamics. No rejection objective.",
+  "source_inventory": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0020/source-inventory.json",
+    "bytes": "3311",
+    "sha256": "b99b354446597fa18770f64b23e6e8c61b309b777efb9be0e5725b5b3e2e1d88"
+  },
+  "equations": [
+    "R0 is physical isolated full-PW response to +g*u+v, not positive susceptibility to -B*x.",
+    "(I-R0_nn(z) K_q) delta_n=R0_ng(z) u; electronic_gradient=R0_gn(z) K_q delta_n + R0_gg(z) u.",
+    "C(q,z)=Cfrozen(q)+electronic_gradient_matrix(q,z); no inserted static-screened vertex and no eta-as-physical-loss."
+  ],
+  "consumer_contract": {
+    "path": "src/substrate_framework/pw_screened_response.py",
+    "function": "solve_screened_response(response,kernel,displacement,*,rtol,max_matvec,wall_seconds,progress=None)",
+    "result": "dataclass: density, ionic_gradient, induced_potential, diagnostics",
+    "solver": "matrix-free complex GMRES on density. rtol measured against bare density norm; independently recomputed final selfconsistency residual mandatory. Matvec/work and monotonic wall caps stop at callback boundaries, record explicit failure, no fake partial matrix.",
+    "consumer": "Root owns actual pilot driver; saves each completed ionic column durably and resumes only matched same-source same-config columns."
+  },
+  "finite_oracle": {
+    "scope": "New selfconsistent original-basis density-matrix EOM with instantaneous spatial/spin kernel, compared to iterative composition; both q0 and directed nonzero q fixtures; complex response/gradient; wrong screening sign and dropped/mixed interaction exposed.",
+    "scaled_allowance": 1e-10,
+    "cpu": "6",
+    "blas_threads": 1,
+    "wall_cap_seconds": 120
+  },
+  "actual_pilot": {
+    "q": [
+      "gamma",
+      "half"
+    ],
+    "frequency_ry": [
+      [
+        0.02,
+        0.02
+      ],
+      [
+        0.05,
+        0.02
+      ]
+    ],
+    "coordinate_order": "atom-major 6Cartesian coordinates",
+    "rtol": 0.0001,
+    "rtol_scope": "bounded engineering linear-solver residual, not material accuracy or precision/convergence claim",
+    "max_matvec_per_column": 60,
+    "column_wall_cap_seconds": 90,
+    "total_wall_cap_seconds": 600,
+    "first_completed_column_due_seconds_from_launch": 150,
+    "useful_progress": "durable completed ionic columns with physical selfconsistency residual and full complex gradient; iterations/CPU are diagnostic only",
+    "plateau_trigger": "first column absent at150s or any column exceeds90s or60matvec => stop current pilot checkpoint-safely; inspect timing/convergence and choose materially different solver, not another unchanged loop",
+    "cpu": "6",
+    "blas_threads": 1,
+    "memory_cap": "4GiB process; no Native calls",
+    "Root_owner": "Giuliano",
+    "source_due": "2026-10-27T19:12:00+00:00",
+    "allocation_decision_due": "2026-10-27T19:20:00+00:00",
+    "no_automatic_retry": true
+  },
+  "scientific_scope": [
+    "nonstationary 2atom SG15NC NiH engineering fixture",
+    "adiabatic static PBE density Hessian used dynamically; no XC memory",
+    "full-FD H0-reference discrepancy retained from0019",
+    "isolated finite-z spin-population conservation differs Native thermodynamicGamma",
+    "Cfrozen from saved-SCF reference combined with measured nearby full-spectrum response reference; no assertion exact equal-reference material Hessian",
+    "no ionic kineticterm/physical pole claim yet",
+    "no coherence-domain solution, physical loss or nuclear rate claim"
+  ],
+  "review": "Complete new0017/18/19 prerequisite package reviewed independently while generic composition implementation proceeds; no dependence on pending review findings for claimed admission."
+}

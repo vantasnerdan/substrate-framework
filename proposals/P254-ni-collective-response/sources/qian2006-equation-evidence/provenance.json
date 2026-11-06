@@ -1,0 +1,55 @@
+{
+  "scope": "Published Qian et al. PRB73,035408 equation-render evidence for uspp-moving-ion-source-extension.txt; source applicability, not a mathematical or material validation.",
+  "date": "2026-10-19",
+  "source": {
+    "pdf": "../qian2006-prb73-035408.pdf",
+    "doi": "10.1103/PhysRevB.73.035408",
+    "sha256": "5ef3fb64a0474547b200778de1c15f267215c0e05dabe93ec5d52bcafc35ed0d",
+    "text_sha256": "5c9eef9921f93875f5759188d4434186fc72a39268b8b351ccd4d20b866d7125",
+    "acquisition_metadata_sha256": "42a04d6edb463c62c908a70c1c52b8a29e66c417a96125ad1bd80f05c8abdc94",
+    "observed_page_count": 11,
+    "observed_page_characters": [6300, 6709, 6087, 5438, 5689, 4584, 5473, 2406, 4280, 6009, 674],
+    "all_pages_extract_nonempty": true,
+    "read_scope": "Complete published extracted text, pages1-11 including references; actual equation images pages2-6. Separate25-page arXiv manuscript is not substituted.",
+    "verification": "pypdf.PdfReader under /home/administrator/projects/substrate-framework/.venv/bin/python; first-page four author names, DOI,035408 and2006 all observed in fresh extraction; sha256sum rechecked pinned PDF and actual UPFs."
+  },
+  "render": {
+    "cwd": "/home/administrator/projects/substrate-ni-collective",
+    "command": "pdftoppm -f 2 -l 6 -r 120 -png proposals/P254-ni-collective-response/sources/qian2006-prb73-035408.pdf proposals/P254-ni-collective-response/sources/qian2006-equation-evidence/published-page",
+    "exit_code": 0,
+    "pages": {
+      "published-page-02.png": {"printed_page": "035408-2", "sha256": "a8caea1499adfa42892ae396a494602b11fa013385782493ed6a07f0a3328741", "inspected": "Eqs.(1)-(3), S inner product and frozen-core mapping setup"},
+      "published-page-03.png": {"printed_page": "035408-3", "sha256": "c51ae012a1329dd0dea68a8873ab7f58eab41be5e6c45094cf48c941ca9d3991", "inspected": "Eqs.(4)-(23), especially actual adjoints/signs in(14),(18)-(23), velocity and core restrictions"},
+      "published-page-04.png": {"printed_page": "035408-4", "sha256": "a4f8888a35670e119b30f62912046089cb756bb37cf5c09a7f46b0b8b3d73b90", "inspected": "Eqs.(24)-(30),(35), fixed occupations, momentum ordering in(27), non-Hermitian P and deferred moving-ion integration"},
+      "published-page-05.png": {"printed_page": "035408-5", "sha256": "7ecd0e03c992b78a32d41f056ac992f151add38ec3ba2921190170c176e2a8a7", "inspected": "Eqs.(36)-(43), fixed-S Crank-Nicolson, predictor-corrector and Gaussian spectral window"},
+      "published-page-06.png": {"printed_page": "035408-6", "sha256": "ed03e9e416ffa15de3ae622e6e4b7d8e6ce881822115e07128c633c6c5486694", "inspected": "Eq.(47), skipped mapped impulse and optical benchmark limitations"}
+    }
+  },
+  "vision_routing": {
+    "skill": "skill://vision-ocr",
+    "attempted_device": "xd://mcp__zai_mcp_analyze_image",
+    "image_source": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/qian2006-equation-evidence/published-page-03.png",
+    "prompt": "Read actual visible equations on this published PRB page. Quote equations (14), (19), (21), (23) with signs, adjoints, and time derivatives exactly. Confirm page footer. Do not derive anything or use external sources. Report only legible symbols and uncertainty.",
+    "observed_first_failure": "MCP failure; server zai-mcp; tool analyze_image; transport stdio; stage receive; failure timeout; retryable no; Request timeout after30000ms; outcome unknown.",
+    "remote_result_claimed": false,
+    "fallback": "Direct inline decoded-image inspection through read of all five actual PNGs. This is disclosed fallback visual evidence, not a successful remote OCR/vision-device response. No repaired extracted glyphs were used as the equation-symbol authority."
+  },
+  "installed_source_sha256": {
+    "/home/administrator/projects/catalyst-dft/pseudos/ni_pbe_v1.4.uspp.F.UPF": "f76b86ce60cde3d83dfcc8df79ba05478db573d158289f1b226919442d977d25",
+    "/home/administrator/projects/catalyst-dft/pseudos/h_pbe_v1.4.uspp.F.UPF": "897f39441a8f0feb1f504af4cebce9dcf95c9cdc16858a7498991c74f1ad127b",
+    "/opt/qebuild/q-e-qe-7.5/upflib/read_upf_v1.f90": "81ce551dfeb66a252178bf1e7de20e8df5b06ea0f51ce775779d6df356c5ba01",
+    "/opt/qebuild/q-e-qe-7.5/upflib/pseudo_types.f90": "f1922595a6bccf7cc28f5d6198f127d469d49369bdf30390a5690983066467d9",
+    "/opt/qebuild/q-e-qe-7.5/upflib/read_upf_new.f90": "05d7f7d3fce2b79508bfc83535fb22dda624f82d5c391580017f5b391ca88a29",
+    "/opt/qebuild/q-e-qe-7.5/PW/src/compute_deff.f90": "062f4122452eae9597a64749cdb378bd7ea9a786e25f602f9f339a5eaea02126",
+    "/opt/qebuild/q-e-qe-7.5/PW/src/s_psi.f90": "c6a65ae949989a20a620ce9fe71372af19f250b01013d818500d45c1fb924c1d",
+    "/opt/qebuild/q-e-qe-7.5/PHonon/PH/dvqpsi_us_only.f90": "acdb9350d41de568b6840138484561b1ccd8c93ed4682373787d15ce88218dbb",
+    "/opt/qebuild/q-e-qe-7.5/PHonon/PH/elphon.f90": "0b05b4f89ece944ff2fe08d9704c6ee978b2cd3cfd353197d7e00f33cc8c8ed8",
+    "/opt/qebuild/q-e-qe-7.5/PHonon/PH/ph_restart.f90": "d39efbc92b7151686e7b3dfd8656f7805adbeb52bafaad93cdfae8916ba58e25"
+  },
+  "limitations": [
+    "No moving-ion propagator, force, material spectrum or loss calculation was run.",
+    "Installed code observations are source reads, not exercised binary behavior.",
+    "No new primary source was acquired; Qian's references are not independently acquired authority.",
+    "Only this new evidence directory and the assigned source-extension report were created."
+  ]
+}

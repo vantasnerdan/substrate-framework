@@ -1,0 +1,20 @@
+{
+  "schema": "p254-a86-dressed-mean-producer-interface-v1",
+  "implementation": "produce_dressed_mean.py",
+  "cli": ["--history PATH", "--force-cache PATH", "--output PATH", "--historical-source-snapshots PATH"],
+  "python": "produce(history, force_cache, output, *, historical_source_snapshots, rtol=2e-8, atol=2e-10)",
+  "artifact_schema": "p254-dressed-fullhistory-common-mean-reference-v1",
+  "reference_source_kind": "common-cubic-mean-curvature-at-held-input-rho-and-covariance",
+  "identity": {
+    "input_identity.actual_dataset": "Actual authenticated dressed provider, never the original bare preparation; Root separately binds the selected G1 case",
+    "input_identity.numerical_reference": "Original authenticated numerical reference bundle",
+    "preparation_origin": "Original authenticated bare cache-input binding"
+  },
+  "outputs": ["dressed-mean.npz", "dressed_mean_producer.py.snapshot", "result.json", "saved-consumer.json", "handoff.json"],
+  "archive_fields": ["times", "mean_gamma", "U", "S_gamma", "rho0", "W0_gamma", "n", "node_rho", "node_ordered_gamma_covariance", "node_cubic_covariance_force", "node_electronic_gradient"],
+  "forcing": "Unchanged FullWindowForceCache.forcing_for(actual G1, original CompactCubic); zero new nonGamma contractions, 31 Gamma contractions; original paid full31/all64 force bank and Phi000 retained.",
+  "math": "Unchanged integrate/CommonMeanFunctional/CompactCubic, original scalar, contacts, initial preparation and nonGamma bath; raw G1 defects retained.",
+  "completion": "Returns and emits A86_DRESSED_MEAN_COMPLETE only after the public DressedMean reader validates persisted forcing against the actual dressed history, and saved reference histories are consumed into the all128-sector particle trace, Gamma observable and common scalar/mean-RHS/curvature outputs. No duplicated manual R/L reconstruction or archive-versus-memory echo checks.",
+  "recovery": "Unchanged integrate only returns at whole-case end. No persistent in-flight checkpoint/resume; lost mean work is bounded by the preregistered 780-second manager cap. Completed G1 and paid force bank remain immutable and reusable.",
+  "execution_status": "Code only. No tests, imports, builds, formatters, Native execution, physical oracles or changed production run performed by this worker; Root owns integration and execution."
+}

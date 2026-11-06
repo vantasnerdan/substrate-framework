@@ -1,0 +1,146 @@
+{
+  "registered_at": "2026-10-28T19:34:48.873709+00:00",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-003.json",
+    "bytes": "3140",
+    "sha256": "4173c839cf416eee2b93c22a5ece60be632044bac20de3c069c0b65c9bd7c83d"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material_reference_producer.py",
+      "bytes": "7939",
+      "sha256": "3072829004ee212e1c2393394b9bd06348f3be09e5b4c15cc8f3bdce5c979a38"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-grant-003.json",
+      "bytes": "302669",
+      "sha256": "622bf6690e11ad414bbf1ede8989803bc77bc73fd9dfb727626a6491cf2a10ed"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic_q_material.py",
+      "bytes": "5951",
+      "sha256": "643a5dbd7395139ebae7edfdd8c56096e00bfed82871f4947e83eb157ecb611e"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic-q-sources.json",
+      "bytes": "7546",
+      "sha256": "bbe3c933efdfbe8dd40cdd6944a48c374819c0bb244b76ed944a56e3125fe90e"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_current.py",
+      "bytes": "7532",
+      "sha256": "4b41ca6c3382dbef2ff5dae12a1d0bddee2e670c1f4add4c350a642c4b2592c0"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/optical-current-sources.json",
+      "bytes": "8655",
+      "sha256": "52f1ed205615138aae48318874805a631f70ffcc90eb0f5e114450477caedde5"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_ionic_curvature.py",
+      "bytes": "7557",
+      "sha256": "a6031c60f5d8ec24493380103039c7eb8c13bd6d9ea05403dfa0776204f8d71c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_frozen_lattice.py",
+      "bytes": "6742",
+      "sha256": "f52f033a4247e37ad918ed0a172b0c3a9eabc55aafa474ed104a67b89fa9b54d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_current.py",
+      "bytes": "10004",
+      "sha256": "0051031f35428e2449aaa61a859101550283a7abb6bb7a36d93719858110bde3"
+    }
+  ],
+  "execution": [
+    {
+      "label": "hamiltonian-source-003",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-reference-source-003.service",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=6",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=110s",
+        "--property=RuntimeMaxSec=110s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_reference_state.py",
+        "--admission",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-grant-003.json",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-source-003"
+      ],
+      "scope": "full-column selected non-Gamma H0 moments; prior source and density/gradient reused"
+    },
+    {
+      "label": "ionic-q-material-001",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-ionic-q-001.service",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=7",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=120s",
+        "--property=RuntimeMaxSec=120s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic_q_material.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic-q-material-001"
+      ],
+      "scope": "actual saved-reference frozen Gamma and plus/minus finite q; no screened spectrum"
+    },
+    {
+      "label": "optical-current-material-001",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-optical-current-001.service",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=8",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=120s",
+        "--property=RuntimeMaxSec=120s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_current.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/optical-current-material-001",
+        "--step-bohr-inv",
+        "0.001"
+      ],
+      "scope": "actual full-row selected-column optical operators and three-level numerical derivative refinement; no populated current or field/loss model"
+    }
+  ],
+  "limits": "Independent cores6,7,8; each4GiB/swap0/oneBLASthread. H0 producer110s plus current context; other consumers120s including actual context. No Native or cloud action.",
+  "prior_method": "Source002 retained its first density/gradient checkpoint at81.888203s and timed out before H0. Source003 imports that completed result, not an unchanged rerun."
+}

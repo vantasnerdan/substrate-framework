@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "id": "P254-NC1-stationary-material-2026-10-19",
+  "registered_at": "2026-10-19T22:19:01.673Z",
+  "status": "AFFINITY-ONLY KERNEL PROOF CORRECTION VERIFIED RETROSPECTIVELY ON ORIGINAL ACTUAL NATIVE SNAPSHOTS; BOTH OWNED UNITS STOPPED; FRESH PUBLICATION, COMPLETE REVIEWS AND NEW GRANT REQUIRED; ORIGINAL PHYSICAL MODEL UNCHANGED",
+  "objective": "Obtain independently converged fully mobile stationary SG15 Ni32, Ni31, Ni31H6 and Ni32H6 coupled-mode material inputs, compare like observables with the separately converged GBRV material, and hand off only admitted same-model data to the registered downstream G2-G5 arc.",
+  "issue": "https://github.com/giuliano-vantasner/catalyst-dft/issues/12",
+  "parent_arc": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/W2-nc-native-proof-plan.json",
+  "gates": {
+    "engineering_admission": {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10-review/admission.json",
+      "sha256": "7390793d7471dfef53399f6649b42fc28ed7f8d6f0b808288776e2c0b066b07d",
+      "bytes": "4381",
+      "mtime_ns": "1792446801029342966",
+      "meaning": "Independently reviewed ordinary-NC source/reader/gauge engineering only. NOT stationary material, offdiagonal spectral reconstruction, physical loss, coherence, nuclear or multi-rank validation."
+    },
+    "material_gate": "New Hamiltonian and new material outputs required. GBRV stationary coordinates/Hessians/results are not NC evidence. NC0 two-atom occupations, magnetization, cell, band count and numerical settings do not become NC1 physical calibration."
+  },
+  "source_inventory": {
+    "verified_raw_inputs": {
+      "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/structures/geometry-inputs.json": {
+        "sha256": "8a7e9d6dded0e82e9bd885ec7ce2f93cdbfcaed00382b6915fba5d61025cfef4",
+        "bytes": "7746",
+        "mtime_ns": "1792399472407024160"
+      },
+      "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/structures/dispersed-ni32h6.extxyz": {
+        "sha256": "96affb020f22b646af101259ad8e8f2029070c54063de49dac4687e1b1c00bb6",
+        "bytes": "1901",
+        "mtime_ns": "1792399472401024250"
+      },
+      "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/structures/empty-vacancy-ni31.extxyz": {
+        "sha256": "6f333f006108710213c0516e8784522970165662d5544276943053ed5c28aef4",
+        "bytes": "1565",
+        "mtime_ns": "1792399472390024416"
+      },
+      "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/structures/loaded-ni31h6.extxyz": {
+        "sha256": "4643e99d37545031737eddef65f3749dc7a3fc064bfd675533413bde739e5419",
+        "bytes": "2093",
+        "mtime_ns": "1792399472396024326"
+      },
+      "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/structures/pristine-ni32.extxyz": {
+        "sha256": "ddd2a4a7c134b15dc1cacf47aa094e917d311fc6531f70035f620acb486a5084",
+        "bytes": "1593",
+        "mtime_ns": "1792399472383024521"
+      },
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/W2-nc-native-proof-plan.json": {
+        "sha256": "ebb0f571972f43f6dbd8b399a32d5a23dc28c7180ab9160ba0d013bd11ce7ff8",
+        "bytes": "12995",
+        "mtime_ns": "1792418011801928082"
+      },
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/nc-source-applicability.json": {
+        "sha256": "3b4aa3ce6361930df634ed93bb46d50835c72d4da9b6ea2022c8dadd9c1f284f",
+        "bytes": "51014",
+        "mtime_ns": "1792417160478549064"
+      },
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/sg15-2020/Ni_ONCV_PBE-1.2.upf": {
+        "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e",
+        "bytes": "115509",
+        "mtime_ns": "1792415497765435245"
+      },
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/sg15-2020/H_ONCV_PBE-1.2.upf": {
+        "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a",
+        "bytes": "64999",
+        "mtime_ns": "1792415499185413832"
+      },
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/sg15-2020/provenance.json": {
+        "sha256": "a39fd1372aec8f0512175ca2da8bd68f5e2cdbcc65534a644dc72f93a27df712",
+        "bytes": "5075",
+        "mtime_ns": "1792415730232936978"
+      },
+      "/opt/qebuild/q-e-qe-7.5/PW/src/pwscf.f90": {
+        "sha256": "4bd0679d13860c25f15215ce08409322c7e722c4e9e71ff08edc480cc810dea7",
+        "bytes": "2906",
+        "mtime_ns": "1755597432000000000"
+      }
+    },
+    "source_report": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/nc-source-applicability.json",
+    "method_sources": "Hamann, Optimized norm-conserving Vanderbilt pseudopotentials, Phys Rev B 88 085117 (2013), DOI 10.1103/PhysRevB.88.085117; Schlipf and Gygi, Optimization algorithm for the generation of ONCV pseudopotentials, Comput Phys Commun 196 36 (2015), DOI 10.1016/j.cpc.2015.05.011. Full primary texts already acquired and assessed in the bound nc-source-applicability report; no new inaccessible primary is used.",
+    "cutoff_scope": "The method paper structural benchmark and UPF rho_cutoff metadata are not Ni-H force/mode/response convergence guarantees. 60/240 Ry is a declared starting basis, not an accepted accuracy."
+  },
+  "model_settings": {
+    "schema_version": 1,
+    "id": "NC1-SG15-2020-primary",
+    "model": {
+      "functional": "PBE",
+      "pseudopotential_family": "SG15-2020 ONCV PBE 1.2",
+      "representation": "ordinary norm-conserving pseudo-wavefunctions; scalar relativistic; no SOC; no NLCC in these two UPFs",
+      "occupation_interpretation": "Marzari-Vanderbilt numerical ground-state broadening; NOT a physical Fermi-Dirac temperature",
+      "magnetic_scope": "collinear self-consistent branch, uniform positive Ni initialization; no claim of global magnetic ground state"
+    },
+    "scf_settings": {
+      "ecutwfc_ry": 60,
+      "ecutrho_ry": 240,
+      "kpts": [
+        4,
+        4,
+        4
+      ],
+      "smearing": "mv",
+      "degauss_ry": 0.02,
+      "conv_thr_ry": 1e-10,
+      "nspin": 2,
+      "starting_magnetization_ni": 0.06,
+      "electron_maxstep": 200,
+      "nosym": false,
+      "noinv": false
+    },
+    "band_policy": {
+      "additional_per_spin": 64,
+      "formula": "ceil(sum(element_count * UPF z_valence) / 2) + additional_per_spin",
+      "acceptance": "Inspect absolute highest-band occupations and independently refine nbnd by 32; empty tail alone does not establish response-band convergence."
+    },
+    "execution": {
+      "pw_executable": "/opt/qebuild/q-e-qe-7.5/bin/pw.x",
+      "mpi_ranks": 5,
+      "kpoint_pools": 1,
+      "pseudo_dir": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/sg15-2020",
+      "pseudopotentials": {
+        "H": "H_ONCV_PBE-1.2.upf",
+        "Ni": "Ni_ONCV_PBE-1.2.upf"
+      }
+    },
+    "optimizer": {
+      "fmax_ev_per_angstrom": 0.005,
+      "max_steps": 120,
+      "maxstep_angstrom": 0.1,
+      "alpha_ev_per_angstrom2": 70
+    },
+    "queue_order": [
+      "loaded-ni31h6",
+      "pristine-ni32",
+      "empty-vacancy-ni31",
+      "dispersed-ni32h6"
+    ]
+  },
+  "seed_inventory": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/structures/geometry-inputs.json",
+    "sha256": "8a7e9d6dded0e82e9bd885ec7ce2f93cdbfcaed00382b6915fba5d61025cfef4",
+    "bytes": "7746",
+    "mtime_ns": "1792399472407024160",
+    "meaning": "Literal original full-mobile W1 initial seeds, NOT completed GBRV relaxations. Preserve all atom labels, PBC, cell and isotope masses; independently verify each seed hash and physical data.",
+    "cell_angstrom": [
+      [
+        7.048,
+        0,
+        0
+      ],
+      [
+        0,
+        7.048,
+        0
+      ],
+      [
+        0,
+        0,
+        7.048
+      ]
+    ],
+    "constraint_count": 0,
+    "masses_amu": {
+      "Ni": 58.6934,
+      "H1": 1.00782503223,
+      "H2": 2.01410177812
+    }
+  },
+  "waves": [
+    {
+      "id": "NC1-0",
+      "inputs": "Settled NC0 admission; primary source report and exact SG15 UPFs; literal geometry oracle input and four seed files; existing relaxation/cache/native-runtime patterns.",
+      "work": "Implement only a run-specific source/input freezer plus isolated runtime observation/persistence. No mutation of frozen G10, source6, or live GBRV sources. Publish four separately banded specs and manifest last; bind complete source, unit/rankfile/environment contract, pseudo provenance, ELF and discoverable native runtime closure before launch. Smoke actual freezer and strict spec/input consumers once after both source slices settle.",
+      "acceptance": "No native invocation during input publication; same-command repeat is byte/mtime preserving; altered frozen inputs/specs refuse; native resource grant only after the existing k666 probe has settled and its occupied resources have been released."
+    },
+    {
+      "id": "NC1-1",
+      "inputs": "Frozen and banked source/spec closure and explicit resource grant.",
+      "work": "Execute the four primary full-mobile fixed-cell relaxations in registered order through a labeled herdr tab and durable unit. Capture actual native argv/environment/all-task affinity, loaded libraries and live kernel caps/peaks/events with explicit pre/post-MPI phase labels. Preserve every native attempt and completed scientific boundary; no clock estimate as proof.",
+      "acceptance": "Raw maximum unconstrained force <=0.005 eV/angstrom on each independently verified final geometry. No clipped forces or inferred optimizer step. Imaginary modes not yet evaluated. Demonstrate one bounded same-command whole-unit kill/restart after the first actual completed force, retain original interruption and prove completed force/public-artifact cache reuse by raw SHA/size/string-nanosecond mtime. In-flight incomplete work may be archived/restarted, never represented as completed."
+    },
+    {
+      "id": "NC1-2",
+      "inputs": "All four admitted NC1 stationary primary results. Modes cannot consume partial or GBRV states.",
+      "work": "Freeze same-Hamiltonian full Ni+H Gamma response inputs, raw Cartesian force constants and mass-weighted modes; process complete degeneracies as subspaces, track H-dominated modes by mass-weighted overlap. Evaluate cutoff, k mesh, numerical smearing, band and spin sensitivities one-at-a-time on the loaded control with actual forces plus tracked coupled Gamma H modes.",
+      "numerical_controls": {
+        "cutoff_ladder_ry": [
+          [
+            60,
+            240
+          ],
+          [
+            80,
+            320
+          ],
+          [
+            100,
+            400
+          ],
+          [
+            160,
+            640
+          ]
+        ],
+        "after_160_failure": "Increase wave cutoff by 40 Ry and density cutoff by four times that wave cutoff until convergence; new frozen input generation before opening outputs.",
+        "kpoint_ladder": [
+          [
+            4,
+            4,
+            4
+          ],
+          [
+            6,
+            6,
+            6
+          ],
+          [
+            8,
+            8,
+            8
+          ]
+        ],
+        "numerical_mv_width_ladder_ry": [
+          0.02,
+          0.01,
+          0.005
+        ],
+        "band_ladder": "Primary ceil(Ne/2)+64, then add 32 per spin at each refinement until force/mode and occupation gates pass.",
+        "highest_band_absolute_occupation_limit": 0.000001,
+        "alternate_Ni_starting_magnetization": 0.6,
+        "force_difference_ev_per_angstrom": 0.003,
+        "tracked_mode_difference": "2 meV or 2 percent using the existing P254 convergence rule; unresolved sign near zero is NOT stable and must be refined before propagation."
+      },
+      "acceptance": "Select jointly resolved settings from observed refinements, re-stationarize every affected control and rerun its coupled response. A lower distinct same-composition magnetic branch must be followed and the original retained. Report only the explored collinear branches, never global magnetic optimality. Report raw Hermiticity, reciprocity and acoustic residuals before any ASR/projection. Release an imaginary mode along both signs with maximum atomic displacement 0.02 angstrom, all atoms mobile; re-stationarize and recheck, never clip eigenvalues."
+    },
+    {
+      "id": "NC1-3",
+      "inputs": "Resolved stationary/mode generation from NC1-2.",
+      "work": "Complete registered q-mesh 2x2x2 then 3x3x3 coupling convergence, isotopic mass-only reruns, lattice +/-1 percent controls and the Ni107H6 density/size control. Larger-cell embedding must preserve local minimum-image vacancy/H geometry rather than blindly copy wrapped coordinates; freeze and oracle-check its exact geometry before any corresponding native output.",
+      "acceptance": "Maintain explicit source/geometry/Hamiltonian identities and independent numerical errors for all controls. Size/density changes are physical controls, not merely numerical reruns. Do not formation-rank unlike stoichiometries without declared reservoirs."
+    },
+    {
+      "id": "NC1-4",
+      "inputs": "Completed, independently converged NC1 and GBRV observable packages on matched geometrical/topological control definitions.",
+      "work": "Compare raw observables and coupled mode/subspace identities with their numerical resolutions. Keep NC-vs-USPP and relaxed-geometry differences visible; equal valence is not model equivalence. Assemble the complete source-to-material package for independent review before physical downstream admission.",
+      "acceptance": "No partial-wave sensitivity comparison; no stationary or mode admission from operator proof alone. G2 finite-energy bath/response/occupation/double-counting decisions require their own settled source/oracle registration before numerical use. Numerical MV width is never physical FDT temperature. G3 actual many-region dynamics, G4 lattice comparison, G5 scoped nuclear disposal/transition bridge and full final review/merge remain mandatory under the parent arc."
+    }
+  ],
+  "execution_contract": {
+    "schema_version": 1,
+    "repo": "/home/administrator/projects/catalyst-nc-operator",
+    "python": "/home/administrator/projects/catalyst-dft/.venv/bin/python",
+    "manifest": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/manifest.json",
+    "unit": "dft-c5-nc1-material.service",
+    "bank_unit": "dft-c5-nc1-bank.service",
+    "native_mpi_ranks": 5,
+    "rank_cpu_map": {
+      "0": [
+        6
+      ],
+      "1": [
+        7
+      ],
+      "2": [
+        8
+      ],
+      "3": [
+        9
+      ],
+      "4": [
+        10
+      ]
+    },
+    "memory_max_bytes": 12884901888,
+    "memory_swap_max_bytes": 0,
+    "expected_environment": {
+      "PYTHONPATH": "/home/administrator/projects/catalyst-nc-operator/src",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OMPI_MCA_rmaps_rank_file_path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/rankfile",
+      "OMPI_MCA_hwloc_base_cpu_list": "6-10"
+    },
+    "forbidden_environment": [
+      "OMPI_MCA_pml",
+      "OMPI_MCA_btl",
+      "HWLOC_COMPONENTS",
+      "OPENBLAS_MAIN_FREE"
+    ],
+    "native_affinity_phase": "Capture pre-banner separately; enforce rank-specific all-task affinity only after that live PID own attempt pw.stdout contains Program PWSCF. PW/src/pwscf.f90 calls mp_startup at line58 before environment_start at line61. Never use another attempt banner.",
+    "input_paths": [
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/launch.py",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/observer.py",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/bank.py",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/rankfile",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/dft-c5-nc1-material.service",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/dft-c5-nc1-bank.service",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/evidence_io.py",
+      "/home/administrator/projects/catalyst-nc-operator/src/catdft/process_handles.py",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/attempt_evidence.py",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/pidfd_open.2.html",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/pidfd_send_signal.2.html",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-prelaunch-amendment-01.json",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/native_evidence.py",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-layout-addendum-01.json",
+      "/home/administrator/projects/catalyst-nc-operator/src/catdft/process_shutdown.py",
+      "/home/administrator/projects/catalyst-nc-operator/src/catdft/job_queue.py",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/completed_boundaries.py",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-review-repair-02.json",
+      "/home/administrator/projects/catalyst-nc-operator/src/catdft/process_ownership.py",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-review-repair-03.json",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/linux-v6.8-kernel-exit.c",
+      "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/linux-v6.8-kernel-sys.c",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-selected-parser-source-closure-addendum-01.json",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-user-unit-context-amendment-01.json",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-affinity-only-kernel-proof-supplement.json"
+    ]
+  },
+  "runtime_source_amendments": [
+    {
+      "id": "NC1-runtime-prelaunch-repair-01",
+      "plan": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-prelaunch-amendment-01.json",
+      "original_source_bank": "catalyst-dft@e9e9421",
+      "scope": "Four complete prelaunch source review findings; stable process/task identity, every durable new/cached attempt's runtime evidence and frozen MPI-launcher identity. No physical parameter, native executable or live GBRV change; no NC1 native execution or grant."
+    },
+    {
+      "id": "NC1-runtime-layout-addendum-01",
+      "plan": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-layout-addendum-01.json",
+      "scope": "Separate durable attempt reconciliation from raw snapshot proof before testing and freezing; migrate JSON helpers without aliases; retain task/event gaps without silently licensing them. No physical or native executable change."
+    },
+    {
+      "id": "NC1-runtime-review-repair-02",
+      "plan": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-review-repair-02.json",
+      "original_source_bank": "catalyst-dft@10c53b3",
+      "scope": "Complete repaired01 reviews reject live snapshot handle shadowing, sample-after-reap lifetime and lost completed-relaxation force obligations. Parent traced the still-reachable inner-queue numeric group stop; share retained ownership and bounded shutdown across both consumers, with no obsolete aliases. Actual snapshot, cache-skip and both supervisor APIs must be exercised before fresh immutable inputs and complete independent review. No physical or live GBRV change and no native grant."
+    },
+    {
+      "id": "NC1-runtime-review-repair-03",
+      "plan": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-review-repair-03.json",
+      "original_source_bank": "catalyst-dft@049da5f",
+      "issue": "https://github.com/giuliano-vantasner/catalyst-dft/issues/14",
+      "scope": "Complete repair02 ownership review rejects undiscovered already-dead adopted-child collection and the live-only pre-existing-child guard. Separate retained dead-child collection from live signaling, preserve Popen wait ownership, require fresh dead/live drain and refuse pre-existing wait status without consuming it. Split ownership into its own module, migrate every caller, demonstrate actual still-live caller before/after and refreeze/re-review before resource release. Physical/nonpath execution values and live W1 unchanged; no native grant."
+    },
+    {
+      "id": "NC1-selected-parser-source-closure-addendum-01",
+      "plan": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-selected-parser-source-closure-addendum-01.json",
+      "issue": "https://github.com/giuliano-vantasner/catalyst-dft/issues/15",
+      "source_bank_before_change": "catalyst-dft@faf1278",
+      "scope": "Actual selected ASE espresso-out parser and its namelist package were absent from original prelaunch hash maps despite a reachable scientific output consumer. Primary implementations and settled raw parser witness are in hand before this plan. Load the actual selected format through ASE's existing API before the existing producer inventory; actual before/after producer/parser and integrity-refusal smoke precede immutable refreeze and complete reviews. No physics, original installed environment, live W1 or native grant change."
+    },
+    {
+      "id": "NC1-user-unit-context-amendment-01",
+      "plan": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-user-unit-context-amendment-01.json",
+      "issue": "https://github.com/giuliano-vantasner/catalyst-dft/issues/16",
+      "source_bank_before_change": "catalyst-dft@a467db4",
+      "scope": "Actual source-reviewed units fail before Python at supplementary-group setup,216/GROUP. Full failure journal and existing running user-unit identity pattern are in hand before this plan. Remove only redundant explicit User from the two user-manager source units, inheriting existing manager identity without privileges or account changes. Actual non-Native UID/GID/environment/affinity/kernel-cap context proof precedes fresh immutable inputs, complete reviews and new resource grant. Every physical/nonpath model value and other service directive is unchanged; old grant50fc2bf is not reusable."
+    },
+    {
+      "id": "NC1-affinity-only-kernel-proof-supplement",
+      "plan": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-affinity-only-kernel-proof-supplement.json",
+      "issue": "https://github.com/giuliano-vantasner/catalyst-dft/issues/17",
+      "preregistration_bank": "substrate-framework@28d5fbbb",
+      "source_subject_before_change": "catalyst-dft@0e404e9",
+      "scope": "Actual first Native evidence consumer rejects correctly captured absent optional cpuset interface despite a scheduling-affinity-only contract. Preserve the complete stopped original generation and verified original authority; require only declared memory interfaces while retaining exact all-task affinity/incarnation, environment, unit, rank, native-input and frozen ELF gates. Raw unavailable cpuset remains factual telemetry, not hard-cpuset evidence. New complete-consumer regression fails before and affected module13 passes after; full corrected five-rank saved-data replay and actual CPU/memory refusals are explicitly retrospective. Fresh publication/full reviews/new grant precede relaunch. Physical/nonpath execution parameters and live W1 unchanged; grant002 not reusable."
+    }
+  ],
+  "bank_policy": "Bank all scientific outputs and failed-attempt evidence; existing native WFC/save/mixing/GPW scratch exclusions remain. No forced-add of ignored checkpoints. Bank is persistence, not scientific admission; no early support PR or merged-delivery claim."
+}

@@ -1,0 +1,378 @@
+"""Genuine fixed-raw-D mixed material RHS about a completed moving mean.
+
+All global n/g/ell are reduced before one K action per direction. Durable
+prepared contexts allow source-local RHS evaluation after other input edges
+have been retired. No bare one-body energy action or baseline moment pass is
+performed by this dynamics adapter. Energy readout remains contract_block's
+separate, genuine contraction.
+"""
+import json
+import sys
+from uuid import uuid4
+
+import numpy as np
+
+from substrate_framework.material_joint_response import MaterialJointHistory
+from substrate_framework.partitioned_q_storage import durable_publish, sync_file
+from substrate_framework.streamed_material_state import authenticate, file_binding
+import substrate_framework.material_joint_response as native_history
+import substrate_framework.material_physical_operators as native_operators
+import substrate_framework.qe_bloch_finiteq_ionic as native_ionic
+import substrate_framework.qe_bloch_finiteq as native_bridge
+import substrate_framework.streamed_joint_reduction as native_mean_stage
+
+import mixed_coordinate_response
+import mixed_frame_response
+import mixed_material_edge
+import mixed_material_moments
+import mixed_physical_field_dyads
+import mixed_response_storage
+from mixed_coordinate_response import coordinate_rhs
+from mixed_frame_response import density_dyads_item, frame_rhs_item
+from mixed_material_edge import NativeEdgeOperators
+from mixed_material_moments import response_block
+from mixed_response_storage import COMPONENTS, SMALL_NAMES, MappedMixedState
+
+SCHEMA = 'P254-native-mixed-material-prepared-v1'
+MOMENTS = ('density', 'gradient', 'field_gradient_electronic')
+
+
+class _Reader:
+    """Source-indexed local borrowed view; never iterates other payloads."""
+    def __init__(self, count, get):
+        self.count, self.get, self.cache = count, get, {}
+
+    def __len__(self):
+        return self.count
+
+    def __getitem__(self, index):
+        if index not in self.cache:
+            self.cache[index] = self.get(index)
+        return self.cache[index]
+
+    def close_frames(self):
+        for value in self.cache.values():
+            if isinstance(value, np.memmap):
+                value._mmap.close()
+        self.cache.clear()
+
+
+def _load(binding, shape):
+    authenticate(binding)
+    a = np.load(binding['path'], mmap_mode='r', allow_pickle=False)
+    if a.shape != tuple(shape) or a.dtype != np.complex128 or not np.isfinite(a).all():
+        a._mmap.close()
+        raise ValueError('prepared array must retain finite original complex128 geometry')
+    return a
+
+
+class NativeMixedPrepared:
+    """Authenticated arrays and local physical RHS; contains no jet copies."""
+    def __init__(self, owner, binding, record, state):
+        self.owner, self.binding, self.record = owner, binding, record
+        self.state_binding = dict(state.binding)
+        self.time = state.time
+        self.stage = owner.baseline._stage(self.time)[2]
+        expected = {c+'-'+name for c in COMPONENTS
+                    for name in MOMENTS + ('potential',) + SMALL_NAMES}
+        if set(record['arrays']) != expected:
+            raise ValueError('complete actual moments, potentials and small RHS required')
+        self.moments, self.potential, self.small_rhs = {}, {}, {}
+        for c in COMPONENTS:
+            shape = owner.histories[c].response.density_shape
+            self.moments[c] = {
+                'density': _load(record['arrays'][c+'-density'], shape),
+                'gradient': _load(record['arrays'][c+'-gradient'], (len(owner.case.reference.masses),)),
+                'field_gradient_electronic': _load(
+                    record['arrays'][c+'-field_gradient_electronic'], (3,))}
+            self.potential[c] = _load(record['arrays'][c+'-potential'], shape)
+            self.small_rhs[c] = {name: _load(record['arrays'][c+'-'+name],
+                                            getattr(state.small[c], name).shape)
+                                 for name in SMALL_NAMES}
+
+    def edge_rhs(self, index, state):
+        """Read exactly this index's plus/minus/mixed jet, no neighbors."""
+        self.owner._validate_state(state)
+        if state.binding != self.state_binding:
+            raise ValueError('prepared context is bound to a different input checkpoint')
+        if (not isinstance(index, (int, np.integer)) or isinstance(index, (bool, np.bool_))
+                or not 0 <= index < self.owner.count):
+            raise ValueError('original explicit source index required')
+        index = int(index)
+        psi = self.owner.baseline.frame(index, self.time)
+        try:
+            operators = NativeEdgeOperators(self.owner, index, self.stage)
+
+            def perturbation(c):
+                def apply(source, vectors):
+                    return operators.perturbation(c, source, vectors,
+                        potential=self.potential[c], small=state.small[c])
+                return apply
+
+            values = frame_rhs_item(index, psi, state.leg('plus', index),
+                state.leg('minus', index), state.leg('mixed', index),
+                plus_endpoint=state.target_plus[index],
+                minus_endpoint=state.target_minus[index], h0=operators.mean,
+                hplus=perturbation('plus'), hminus=perturbation('minus'),
+                hmixed=perturbation('mixed'))
+            return dict(zip(COMPONENTS, values))
+        finally:
+            if isinstance(psi, np.memmap):
+                psi._mmap.close()
+
+    def close(self):
+        """Release only this prepared context's borrowed moment/small maps."""
+        for values in self.moments.values():
+            for a in values.values():
+                a._mmap.close()
+        for a in self.potential.values():
+            a._mmap.close()
+        for values in self.small_rhs.values():
+            for a in values.values():
+                a._mmap.close()
+
+
+class NativeMixedDynamics:
+    """Native provider for the generic recoverable material RK4 producer.
+
+    Histories must already be bound by case.bind_response to +q,-q,Gamma and
+    refer to the same completed actual mean. The caller selects the same active
+    mean interval on all histories before preparing RK stages at its boundary.
+    """
+    def __init__(self, case, histories, *, budget, block_size=8):
+        if set(histories) != set(COMPONENTS):
+            raise ValueError('exact plus/minus/mixed histories required')
+        if type(block_size) is not int or block_size < 1:
+            raise ValueError('positive full-row action block size required')
+        if any(not isinstance(histories[c], MaterialJointHistory)
+               or not hasattr(histories[c], 'response') for c in COMPONENTS):
+            raise TypeError('genuine already-bound MaterialJointHistory required')
+        self.case, self.histories, self.budget = case, dict(histories), budget
+        self.block_size, self.baseline = block_size, histories['plus']
+        self.links, self.common_curvature = {}, {}
+        self.count = len(self.baseline.bases)
+        primary_final = file_binding(self.baseline.final.path)
+        self.final_binding = primary_final
+        for c in COMPONENTS:
+            h = histories[c]
+            if not isinstance(h, MaterialJointHistory) or not hasattr(h, 'response'):
+                raise TypeError('genuine already-bound MaterialJointHistory required')
+            if (h.budget is not budget or h.background is not case.background
+                    or h.block_size != block_size or h.final.identity != case.identity
+                    or file_binding(h.final.path) != primary_final
+                    or h.initial.origin != self.baseline.initial.origin
+                    or len(h.bases) != self.count):
+                raise ValueError('same original completed moving mean, banks and budget required')
+            r = h.response
+            if (r.scalar_identity != case.identity or r.ncells != case.reference.ncells
+                    or r.density_shape != tuple(case.reference.nbar.shape)
+                    or not np.array_equal(r.masses, case.reference.masses)
+                    or not np.array_equal(r.polarizations, case.field.polarizations)
+                    or r.field_mass != case.field.mass
+                    or r.coefficients is not case.coefficients):
+                raise ValueError('case-bound physical scalar and canonical coefficients required')
+            self.links[c] = {link.source: link for link in r.edges}
+            if set(self.links[c]) != set(range(self.count)):
+                raise ValueError('complete outgoing physical source coverage required')
+            for i, (slot, original, sector, basis) in enumerate(zip(
+                    h.initial.slots, self.baseline.initial.slots, r.sectors, h.bases)):
+                if (slot.metadata() != original.metadata() or slot.coefficient != original.coefficient
+                        or basis.identity != self.baseline.bases[i].identity
+                        or sector.shape != slot.shape or sector.weight != slot.weight
+                        or sector.basis_identity != slot.basis_identity):
+                    raise ValueError('original raw ranks/bases/D/weights must remain fixed')
+                # D is small raw-column data, not a PW density. Authenticate the
+                # actual original coefficient, then compare the bound response.
+                authenticate(slot.coefficient)
+                d = np.load(slot.coefficient['path'], mmap_mode='r', allow_pickle=False)
+                try:
+                    if not np.array_equal(sector.d, d):
+                        raise ValueError('response replaced the original fixed raw D')
+                finally:
+                    d._mmap.close()
+            step = np.rint(4*r.q_fractional).astype(int)
+            if not np.allclose(4*r.q_fractional, step, atol=1e-10, rtol=0):
+                raise ValueError('original commensurate four-cube q required')
+            common = np.asarray(case.arrays['common_q_grid_ry_bohr2'][tuple(step % 4)]).reshape(r.ndof, r.ndof)
+            if not np.array_equal(r.curvature, common + case.coefficients.delta_curvature):
+                raise ValueError('actual common C(q) plus fixed DeltaC exactly once required')
+            self.common_curvature[c] = common
+        q = histories['plus'].response.q_fractional
+        if (not np.array_equal(histories['minus'].response.q_fractional, -q)
+                or not histories['mixed'].response.gamma):
+            raise ValueError('actual plus q, minus q and mixed Gamma required')
+        self.target_plus = tuple(self.links['plus'][i].target for i in range(self.count))
+        self.target_minus = tuple(self.links['minus'][i].target for i in range(self.count))
+        if (any(self.target_minus[self.target_plus[i]] != i for i in range(self.count))
+                or any(self.links['mixed'][i].target != i for i in range(self.count))):
+            raise ValueError('opposite-edge inverses and diagonal mixed Gamma required')
+        self.D = tuple(s.d for s in self.baseline.response.sectors)
+        self.weights = tuple(s.weight for s in self.baseline.initial.slots)
+        modules = (mixed_coordinate_response, mixed_frame_response, mixed_material_edge,
+                   mixed_material_moments, mixed_physical_field_dyads, mixed_response_storage,
+                   native_history, native_operators, native_ionic, native_bridge, native_mean_stage,
+                   sys.modules[type(case).__module__], sys.modules[type(case.background).__module__])
+        self.sources = dict(adapter=file_binding(__file__),
+                            **{m.__name__: file_binding(m.__file__) for m in modules})
+        self.source_identity = dict(model=case.identity, adapter_sources=self.sources,
+            completed_mean=primary_final, origin=self.baseline.initial.origin,
+            slots=[dict(s.metadata(), coefficient=s.coefficient)
+                   for s in self.baseline.initial.slots], block_size=block_size)
+
+    def _validate_state(self, state):
+        if not isinstance(state, MappedMixedState):
+            raise TypeError('already-open authenticated MappedMixedState required')
+        if (len(state.record['shapes']['mixed']) != self.count
+                or state.target_plus != self.target_plus or state.target_minus != self.target_minus
+                or not np.array_equal(state.q, self.histories['plus'].response.q_fractional)):
+            raise ValueError('checkpoint original source/q geometry differs')
+        for i, slot in enumerate(self.baseline.initial.slots):
+            rank = slot.shape[1]
+            expected = dict(plus=(self.baseline.initial.slots[self.target_plus[i]].shape[0], rank),
+                minus=(self.baseline.initial.slots[self.target_minus[i]].shape[0], rank), mixed=slot.shape)
+            if any(tuple(state.record['shapes'][c][i]) != expected[c] for c in COMPONENTS):
+                raise ValueError('checkpoint must retain every PW row and original source column')
+        for c in COMPONENTS:
+            r = self.histories[c].response
+            shapes = dict(u=(r.ndof,), p=(r.ndof,), coordinate=(r.nfield,), momentum=(r.nfield,))
+            if any(getattr(state.small[c], name).shape != shape for name, shape in shapes.items()):
+                raise ValueError('physical per-cell matter/global Gamma field small state required')
+
+    def _identity(self, state):
+        self._validate_state(state)
+        authenticate(state.binding)
+        for binding in self.sources.values():
+            authenticate(binding)
+        stages = {c: self.histories[c].stage_identity(state.time) for c in COMPONENTS}
+        if any(stages[c] != stages['plus'] for c in COMPONENTS):
+            raise ValueError('all histories must select the same authentic mean interval/stage')
+        # Canonical JSON equality survives raw shape tuples becoming JSON lists.
+        return json.loads(json.dumps(dict(schema=SCHEMA, source=self.source_identity,
+                          input=state.binding, baseline=stages['plus']), allow_nan=False))
+
+    def _moment_item(self, index, state):
+        frames = _Reader(self.count, lambda i: self.baseline.frame(i, state.time))
+        jets = {c: _Reader(self.count, lambda i, c=c: state.leg(c, i)) for c in COMPONENTS}
+        try:
+            incident = (jets['plus'][index], jets['minus'][index],
+                        jets['mixed'][index], jets['plus'][self.target_minus[index]],
+                        jets['minus'][self.target_plus[index]])
+            if not any(np.any(a) for a in incident):
+                # Every first dyad and mixed norm dyad is exactly zero.
+                # Bind that computed result instead of writing 3 full zero grids.
+                return dict(all_moments_zero=np.ones(1, dtype=np.complex128))
+            blocks = density_dyads_item(index, frames, jets['plus'], jets['minus'], jets['mixed'],
+                self.D, target_plus=self.target_plus, target_minus=self.target_minus,
+                source_weights=self.weights)
+            operators = NativeEdgeOperators(self, index, self.baseline._stage(state.time)[2])
+            result = {}
+            for c in COMPONENTS:
+                gamma = self.histories[c].response.gamma
+                values = response_block(blocks[c], coupling=operators.coupling(c, index),
+                    field_moments=operators.field_moments(index) if gamma else None, diagonal=gamma)
+                result.update({c+'-'+name: value for name, value in values.items()})
+            return result
+        finally:
+            frames.close_frames()
+            touched = {i for reader in jets.values() for i in reader.cache}
+            for i in touched:
+                state.release_edge(i)
+
+    def prepare(self, state, work):
+        identity = self._identity(state)
+        if work.budget is not self.budget:
+            raise ValueError('prepared work must use the original qualified cumulative budget')
+        _, directory = work.request('native-mixed-prepared-context', identity, 1)
+        context = directory/'prepared.json'
+        if context.exists():
+            return self.restore(file_binding(context), state, work)
+        if state._maps:
+            raise ValueError('global moment workers must inherit an empty input map cache')
+        if self.baseline.frame_work is None:
+            self.baseline.frame_work = work
+        self.baseline.prepare_time(state.time)
+        records = work.execute('native-mixed-response-moments', identity, self.count,
+                               lambda i: self._moment_item(i, state))
+        moment_key, moment_directory, moment_count = work.last
+        totals = {c: dict(density=np.zeros(self.histories[c].response.density_shape, complex),
+                  gradient=np.zeros(self.histories[c].response.ndof, complex),
+                  field_gradient_electronic=np.zeros(3, complex)) for c in COMPONENTS}
+        # collect() is a complete authentic all-source barrier. No kernel or
+        # local RHS exists until every n/g/ell contribution has completed.
+        for record in records:
+            if set(record['arrays']) == {'all_moments_zero'}:
+                marker = _load(record['arrays']['all_moments_zero'], (1,))
+                try:
+                    if marker[0] != 1:
+                        raise ValueError('invalid exact-zero moment result')
+                finally:
+                    marker._mmap.close()
+                continue
+            for c in COMPONENTS:
+                for name in MOMENTS:
+                    value = _load(record['arrays'][c+'-'+name], totals[c][name].shape)
+                    try:
+                        totals[c][name] += value
+                    finally:
+                        value._mmap.close()
+        output = directory/('context-'+uuid4().hex)
+        output.mkdir()
+        bindings = {}
+        for c in COMPONENTS:
+            r = self.histories[c].response
+            self.budget.check()
+            potential = np.asarray(self.case.background.apply_kernel(totals[c]['density'],
+                                   q_bohr_inv=r.q_bohr_inv), dtype=np.complex128)
+            if potential.shape != r.density_shape or not np.isfinite(potential).all():
+                raise ValueError('actual full physical kernel returned invalid potential')
+            rhs = coordinate_rhs(reference=self.case.reference, coefficients=self.case.coefficients,
+                field=self.case.field, charges=self.case.charges, polarizations=r.polarizations,
+                curvature=self.common_curvature[c], gamma=r.gamma, small=state.small[c],
+                gradient=totals[c]['gradient'], field_gradient=totals[c]['field_gradient_electronic'])
+            values = dict(totals[c], potential=potential, **rhs)
+            for name, value in values.items():
+                a = np.asarray(value, dtype=np.complex128)
+                if not np.isfinite(a).all():
+                    raise ValueError('nonfinite physical mixed preparation cannot be committed')
+                key = c+'-'+name
+                bindings[key] = self.budget.array(output/(key+'.npy'), a)
+                sync_file(bindings[key]['path'])
+        frame_key = (self.baseline._index(state.time), float(state.time))
+        frames = self.baseline.frame_records.get(frame_key)
+        record = dict(schema=SCHEMA, complete=True, identity=identity, arrays=bindings,
+                      baseline_frames=frames, moment_records=records,
+                      moment_work=dict(key=moment_key, directory=str(moment_directory),
+                                       count=moment_count),
+                      budget=self.budget.snapshot())
+        binding = durable_publish(context, record, self.budget)
+        # The durable totals replace per-source grid outputs; keep their small
+        # authenticated receipts, not count * three full physical density grids.
+        work.retire(moment_directory, binding)
+        return NativeMixedPrepared(self, binding, record, state)
+
+    def restore(self, binding, state, work):
+        """Restore actual prepared arrays; never inspect a retired jet payload."""
+        identity = self._identity(state)
+        if work.budget is not self.budget:
+            raise ValueError('restoration must retain the qualified cumulative budget')
+        record = json.loads(authenticate(binding).read_text())
+        if (record.get('schema') != SCHEMA or record.get('complete') is not True
+                or record.get('identity') != identity):
+            raise ValueError('prepared context source/state/baseline authentication differs')
+        frames = record.get('baseline_frames')
+        if self.baseline._saved_frames(state.time) is None:
+            if not isinstance(frames, list) or len(frames) != self.count:
+                raise ValueError('durable actual intermediate baseline frame barrier required')
+            if self.baseline.frame_work is None:
+                self.baseline.frame_work = work
+            for i, frame in enumerate(frames):
+                if frame.get('index') != i or frame.get('complete') is not True:
+                    raise ValueError('baseline frame source ordering/completion differs')
+                self.baseline.frame_work.verify(frame['arrays']['frame'])
+            self.baseline.frame_records[(self.baseline._index(state.time), float(state.time))] = frames
+        elif frames is not None:
+            raise ValueError('saved baseline boundary must not be replaced by frame interpolation')
+        # Finish a possible interruption between context publication and moment
+        # payload retirement, with no read/recomputation of input jets.
+        work.retire(record['moment_work']['directory'], binding)
+        return NativeMixedPrepared(self, dict(binding), record, state)

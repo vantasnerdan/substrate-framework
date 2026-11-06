@@ -1,0 +1,46 @@
+{
+  "actual_at": "2026-10-27T17:27:43.033027+00:00",
+  "observed_failure": "kernel-oracle-003.stderr: lgamma=true refused at Gamma.",
+  "diagnosis": "lgamma denotes the perturbation q=0; gamma_only denotes real/Gamma-packed wavefunction storage. The planned complex-wavefunction Gamma probe has lgamma=true, gamma_only=false.",
+  "repair": "Support both lgamma Boolean values; retain gamma_only=false and all other scope/finite checks. No model equation, source q, Native output or numerical allowance changed.",
+  "consumed_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_response_bundle.py",
+      "bytes": "9692",
+      "sha256": "c893f952488c3b446e0211f1622b26b90d75062caad329c826c3a01efa3b4dfa"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_response_fft.py",
+      "bytes": "6199",
+      "sha256": "8aa8cebbb86e4b6d1b59bc074d5c4007792cb3be48b2aa80baa9f9c855995107"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_response_schema.py",
+      "bytes": "6273",
+      "sha256": "323896f0ac837ddbfb3cd484189312eecdc3891847f7f98fbab69a77e909745e"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/spin_pbe_kernel.py",
+      "bytes": "6127",
+      "sha256": "bbb42154892ff6ae69c5c9d0cf3fc6bb9fc72e8f2b936f8000104c306cee7257"
+    }
+  ],
+  "actual_oracle_argv": [
+    "taskset",
+    "-c",
+    "6",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/run_kernel_oracle.py",
+    "--gamma",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/response-operators-0016/generation-003/gamma/bundle/q-1",
+    "--half",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/response-operators-0016/generation-003/half-b1/bundle/q-1",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/kernel-oracle-004.json"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "P254-main-scientific-observer-receipt-v1",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-255.json",
+    "bytes": "3209",
+    "sha256": "ecf77fe4e3f37ec06aa2d2210ebcbafff67a484b8a011025aa58c9d776d884c8"
+  },
+  "actual_armed": {
+    "schema": "P254-main-runtime-observer-v2",
+    "observer_pid": "2684019",
+    "armed_utc": "2026-10-31T11:11:58.083598+00:00",
+    "wake_due_unix": 1793445300.0,
+    "unit": "p254-a28-saved-energy-positive-001.service",
+    "scientific_invocation": "ced4161b421849469c8df9df8f9fdd3c",
+    "root": "/var/tmp/p254-a28-saved-energy-positive-001",
+    "prepared_seen": [
+      "/var/tmp/p254-a28-saved-energy-positive-001/scientific-work/3f6ea2c8f13b3f28e68ca910b775ca67677b883c87dfdd104b6b100f01ab329b/generation-63ee2c43b80c4d68a7147dba81f66f28/prepared.json",
+      "/var/tmp/p254-a28-saved-energy-positive-001/scientific-work/8692334e058ea96d2e50e9709d2d7f0d71f394b6d5770cc3661ee6c8b3becf81/generation-093fb83c5f30457b97c0dae666d2b1b5/prepared.json",
+      "/var/tmp/p254-a28-saved-energy-positive-001/scientific-work/9141742caba8ec809ddbb99dacd33efa446a941169035ece96bb94f61b361703/generation-55800dcad4a849bd979832df45a8d01e/prepared.json",
+      "/var/tmp/p254-a28-saved-energy-positive-001/scientific-work/f159185a1f8b5ab0dd3ef546c53d141d190a9893c10762d39615499ebb918a93/generation-dbf498c9947a4b6eb24e766b57e64da7/prepared.json"
+    ],
+    "stages_seen": [
+      "/var/tmp/p254-a28-saved-energy-positive-001/steps/000000/stage-0/complete.json",
+      "/var/tmp/p254-a28-saved-energy-positive-001/steps/000000/stage-1/complete.json",
+      "/var/tmp/p254-a28-saved-energy-positive-001/steps/000000/stage-2/complete.json",
+      "/var/tmp/p254-a28-saved-energy-positive-001/steps/000000/stage-3/complete.json"
+    ],
+    "scope": "Read-only own scientific publication/timer watcher; no allocation or completion claim"
+  },
+  "command": "/usr/bin/python3 -u -c '\nimport datetime,json,os,time\nfrom pathlib import Path\nroot=Path('\"'\"'/var/tmp/p254-a28-saved-energy-positive-001'\"'\"')\nout=Path('\"'\"'/var/tmp/p254-main-runtime-observer-035'\"'\"')\nout.mkdir(exist_ok=False)\nseen=set(['\"'\"'/var/tmp/p254-a28-saved-energy-positive-001/scientific-work/3f6ea2c8f13b3f28e68ca910b775ca67677b883c87dfdd104b6b100f01ab329b/generation-63ee2c43b80c4d68a7147dba81f66f28/prepared.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-positive-001/scientific-work/8692334e058ea96d2e50e9709d2d7f0d71f394b6d5770cc3661ee6c8b3becf81/generation-093fb83c5f30457b97c0dae666d2b1b5/prepared.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-positive-001/scientific-work/9141742caba8ec809ddbb99dacd33efa446a941169035ece96bb94f61b361703/generation-55800dcad4a849bd979832df45a8d01e/prepared.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-positive-001/scientific-work/f159185a1f8b5ab0dd3ef546c53d141d190a9893c10762d39615499ebb918a93/generation-dbf498c9947a4b6eb24e766b57e64da7/prepared.json'\"'\"'])\nstages_seen=set(['\"'\"'/var/tmp/p254-a28-saved-energy-positive-001/steps/000000/stage-0/complete.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-positive-001/steps/000000/stage-1/complete.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-positive-001/steps/000000/stage-2/complete.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-positive-001/steps/000000/stage-3/complete.json'\"'\"'])\nstem='\"'\"'P254_MAIN_INTAKE_'\"'\"'\ntoken='\"'\"'3955043332a14ed08f4bd1575ed3b6a4'\"'\"'\narm=dict(schema='\"'\"'P254-main-runtime-observer-v2'\"'\"',observer_pid=str(os.getpid()),armed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),wake_due_unix=1793445300.0,unit='\"'\"'p254-a28-saved-energy-positive-001.service'\"'\"',scientific_invocation='\"'\"'ced4161b421849469c8df9df8f9fdd3c'\"'\"',root=str(root),prepared_seen=sorted(seen),stages_seen=sorted(stages_seen),scope='\"'\"'Read-only own scientific publication/timer watcher; no allocation or completion claim'\"'\"')\n(out/'\"'\"'armed.json'\"'\"').write_text(json.dumps(arm,indent=2)+chr(10))\nprint('\"'\"'P254_MAIN_OBSERVER_'\"'\"'+'\"'\"'ARMED_035'\"'\"',str(os.getpid()),arm['\"'\"'armed_utc'\"'\"'],flush=True)\nwhile True:\n    new={str(p) for p in (root/'\"'\"'work'\"'\"').glob('\"'\"'*/generation-*/prepared.json'\"'\"')}-seen\n    stages={str(p) for p in (root/'\"'\"'steps'\"'\"').glob('\"'\"'*/stage-*/complete.json'\"'\"')}-stages_seen\n    results=[str(p) for p in (root/'\"'\"'invocations'\"'\"').glob('\"'\"'*/receipt.json'\"'\"')]\n    exits=any(Path('\"'\"'/var/tmp/p254-a28-saved-energy-positive-001-operations/unit-outcomes'\"'\"').glob('\"'\"'*.json'\"'\"'))\n    if new or stages or results or exits or time.time()>=1793445300.0:\n        receipt=dict(arm,woke_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),new_prepared=sorted(new),new_stages=sorted(stages),run_result_files=results,unit_exit_present=exits,timer_due=time.time()>=1793445300.0)\n        (out/'\"'\"'wake.json'\"'\"').write_text(json.dumps(receipt,indent=2)+chr(10))\n        print(stem+token+'\"'\"'_WAKE'\"'\"',flush=True)\n        break\n    time.sleep(15)\n'",
+  "pane": "w1:p41",
+  "actual_positive_launch": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-energy-positive-actual-launch-001.json",
+    "bytes": "5136",
+    "sha256": "51c39e96a7a9de879433a525d2f3de91a7657f7bdcb791e0343e2c54dd386ecb"
+  },
+  "wait_registration": {
+    "text": "Backgrounded as job bg_279 (killed once it has run 661s in total; `timeout: 0` disables the deadline); its output is injected into the conversation as a follow-up the moment it finishes. Do NOT poll for it (no `sleep`, `ps`, `pgrep`, `top`, `pidwait`, log tailing): every poll is a wasted turn. Do other work, or end your reply and wait to be woken.",
+    "details": {
+      "async": {
+        "state": "running",
+        "jobId": "bg_279",
+        "type": "bash"
+      },
+      "timeoutSeconds": 661
+    }
+  },
+  "client_due_utc": "2026-10-31T11:22:00+00:00",
+  "outer_due_utc": "2026-10-31T11:23:00+00:00",
+  "scope": "Currentpositiveconsumerpreparedcontext/terminal/ownexit or11:15; no oldproducer/t0result confusion. Actualsourceprogress inspectedatintake, no newgates/sourcechanges/trajectory."
+}

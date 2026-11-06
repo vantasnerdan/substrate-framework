@@ -1,0 +1,158 @@
+{
+  "schema": "P254-continuation-actual-expired-private-cli-smoke-v1",
+  "status": "PASS",
+  "actual_utc": "2026-10-31T02:03:57.540650+00:00",
+  "command": {
+    "argv": [
+      "/usr/bin/python3",
+      "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/p254-original-source-continuation-20261031/run_original_mixed_continuation.py",
+      "--producer",
+      "/var/tmp/p254-continuation-expired-private-cli-smoke-001",
+      "--producer-owner-sha256",
+      "fa91970d50db966f6690b93544ce97df6b1c5170a1870f8200f2712d6b3945fe",
+      "--allocation",
+      "/var/tmp/p254-continuation-expired-private-cli-smoke-001/allocation.json",
+      "--allocation-sha256",
+      "1ef3ae23fa0b897b793a9670a314edab18220ac1a879b16f635f4f2348f68f6e",
+      "--output",
+      "/var/tmp/p254-continuation-expired-private-cli-smoke-001/expired-result.json"
+    ],
+    "exit": 2,
+    "stdout": "{\"error\": \"JointBudgetExceeded: invocation wall-time allocation exhausted\", \"final\": null, \"output\": \"/var/tmp/p254-continuation-expired-private-cli-smoke-001/expired-result.json\", \"requested_behavior_complete\": false, \"schema\": \"P254-original-source-mixed-continuation-v1\", \"status\": \"error\"}\n",
+    "stderr": ""
+  },
+  "original_producer_unchanged": true,
+  "engineering_only": true,
+  "Native_production_grant_issued": false,
+  "checks": [
+    "actual_CLI_admits_private_cumulative_authority_but_not_a_fresh_clock",
+    "actual_expired_original_clock_refuses_before_metadata_factory_and_H0",
+    "reserved_immutable_output_and_original_invocation_receipt_published",
+    "current_budget_storage_counter_scope_explicit",
+    "no_reservation_scaffold_remains_original_producer_untouched"
+  ],
+  "actual_output": {
+    "path": "/var/tmp/p254-continuation-expired-private-cli-smoke-001/expired-result.json",
+    "bytes": 81080,
+    "sha256": "8022780b9fbd06641c6dd7a5863aae4663cc3a430cf7103a060bfc7278f1c056"
+  },
+  "actual_invocation_receipt": {
+    "path": "/var/tmp/p254-continuation-expired-private-cli-smoke-001/invocations/9b6034d889af4a3eafb291c8e38ad0cf/receipt.json",
+    "bytes": 80818,
+    "sha256": "21af3138b2bedfabc66cbf0698954adf1adb203f76ba78b9755e7005d2cb50ab"
+  },
+  "budget": {
+    "hamiltonian_actions": 0,
+    "action_columns": 0,
+    "output_bytes_reserved": 5847374,
+    "elapsed_seconds": 14.405410012695938,
+    "max_actions": 32768,
+    "max_seconds": 2.0,
+    "max_bytes": 128849018880,
+    "max_memory_bytes": 17179869184,
+    "worker_memory_bytes": 4294967296,
+    "peak_aggregate_rss_bytes": 0,
+    "accounting": "q live cap; cumulative allocation/mapped-write/action costs never credited back; measured unlinks only; header/reservation slack retained; logical writes, not physical device I/O",
+    "memory_accounting": "parent plus child RSS; shared pages conservatively counted repeatedly",
+    "time_cap": "parent watchdog at 0.1 second intervals; native calls may be terminated",
+    "live_bytes_reserved": 5847374,
+    "peak_live_bytes_reserved": 5847374,
+    "cumulative_write_bytes_reserved": 0,
+    "cumulative_allocation_bytes_reserved": 0,
+    "mapped_overwrite_bytes_reserved": 0,
+    "retired_payload_bytes": 0,
+    "original_started_unix": 1793412222.6427243,
+    "deadline_unix": 1793412224.6427243,
+    "action_accounting": "durable pre-action admissions; killed/incomplete actions stay charged",
+    "historical_worker_costs": "original immutable QWork/transition receipts, not current execution",
+    "action_ledger": {
+      "path": "/var/tmp/p254-continuation-expired-private-cli-smoke-001/action-admissions.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "hamiltonian_actions": 0,
+      "action_columns": 0
+    },
+    "original_allocation": {
+      "owner": {
+        "path": "/var/tmp/p254-continuation-expired-private-cli-smoke-001/owner.json",
+        "bytes": 416378,
+        "sha256": "fa91970d50db966f6690b93544ce97df6b1c5170a1870f8200f2712d6b3945fe"
+      },
+      "caps": {
+        "max_actions": 32768,
+        "max_memory_bytes": 17179869184,
+        "max_output_bytes": 128849018880,
+        "max_seconds": 1.0,
+        "worker_memory_bytes": 4294967296
+      },
+      "cpus": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "started_unix": 1793412222.6427243,
+      "deadline_unix": 1793412223.6427243
+    },
+    "cumulative_allocation": {
+      "grant": {
+        "path": "/var/tmp/p254-continuation-expired-private-cli-smoke-001/allocation.json",
+        "bytes": 905,
+        "sha256": "1ef3ae23fa0b897b793a9670a314edab18220ac1a879b16f635f4f2348f68f6e"
+      },
+      "schema": "P254-original-source-cumulative-allocation-v1",
+      "decision": "Root212-private-expired-cli-engineering-only; NO Native production authority",
+      "issued_at": "2026-10-31T02:03:52.658608+00:00",
+      "additional_seconds": 1.0,
+      "caps": {
+        "max_actions": 32768,
+        "max_memory_bytes": 17179869184,
+        "max_output_bytes": 128849018880,
+        "max_seconds": 2.0,
+        "worker_memory_bytes": 4294967296
+      },
+      "deadline_unix": 1793412224.6427243,
+      "authority": "explicit separate additional wall allocation; all other original caps/science/CPUs unchanged"
+    },
+    "storage_counter_scope": "live bytes include the remeasured retained tree; inherited allocation/write/retirement counters and RSS observations describe this budget instance only, not whole-run cumulative I/O or peak RSS; original immutable cost evidence remains separate",
+    "current_invocation": {
+      "measured_in_pid": 2210828,
+      "budget_parent_pid": 2210828,
+      "budget_lifetime_wall_seconds": 0.4011978367343545,
+      "parent_cpu_seconds_since_budget_creation": 0.39419197000000006,
+      "reaped_child_cpu_seconds_since_budget_creation": 0.0,
+      "process_lifetime_peak_rss_bytes": 140374016,
+      "watchdog_observed_peak_aggregate_rss_bytes": 0,
+      "admitted_action_delta": 0,
+      "admitted_column_delta": 0,
+      "measurement_scope": "wall is budget lifetime, not a reset allocation clock; CPU deltas are parent and already-reaped children only; process peak RSS is lifetime high-water, not additive; driver records entire invocation separately; running/interrupted unreceipted worker CPU and physical I/O are not inferred"
+    },
+    "historical_costs": {
+      "namespace": "/var/tmp/p254-continuation-expired-private-cli-smoke-001",
+      "retained_at_budget_creation": {},
+      "inventory_encoding": "SHA256 of sorted-by-path native binding list; compact sorted-key JSON, separators comma/colon",
+      "interpretation": "retained original invocation/stage/QWork/transition evidence is historical, never new compute; categories may overlap and are not summed",
+      "missing_measurements": "no CPU, wall, RSS or physical I/O estimate is invented for unreceipted interrupted work; durable action admissions alone remain exact",
+      "current_worker_measurements": "original newly published QWork/transition receipts measure current work; their recovery-only measurements do not replace original transition costs"
+    }
+  },
+  "supervisor_sources": [
+    {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/p254-original-source-continuation-20261031/continuation_allocation.py",
+      "bytes": 20957,
+      "sha256": "ab5133ffa07bd5af2e469d9d2d665391c08972bd1fd21a6c15be3e8be733a73f"
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/p254-original-source-continuation-20261031/restore_original_inputs.py",
+      "bytes": 4537,
+      "sha256": "5cefc636ccc97d5324d42bf0b12799607bdf003403047d800b96609884e4bbdd"
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/p254-original-source-continuation-20261031/run_original_mixed_continuation.py",
+      "bytes": 24583,
+      "sha256": "78e5e2d5ffe682a7ad45d638bd38ff9116687c10e7a1c35d014fbf09f7d6417d"
+    }
+  ],
+  "scope": "Private locked metadata-only owner fixture under already-expired clock; no scientific state copied or Native computation executed. This exercises actual owned CLI exception/terminal publication, not material success."
+}

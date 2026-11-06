@@ -1,0 +1,46 @@
+{
+  "systemd_mainpid": {
+    "argv": [
+      "systemctl",
+      "--user",
+      "show",
+      "p254-w1-force-sensitivity-0012-g004-1792455491398080162.service",
+      "--property=MainPID",
+      "--value"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "351286\n"
+  },
+  "worker": {
+    "affinity": [
+      5
+    ],
+    "boot_id": "18a9d24c-10f0-444e-8948-59d3da8bf65a",
+    "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-w1-force-sensitivity-0012-g004-1792455491398080162.service",
+    "cmdline": [
+      "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "-B",
+      "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py",
+      "--generation",
+      "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-004"
+    ],
+    "executable": "/usr/bin/python3.12",
+    "executable_sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+    "limits": "Limit                     Soft Limit           Hard Limit           Units     \nMax cpu time              unlimited            unlimited            seconds   \nMax file size             unlimited            unlimited            bytes     \nMax data size             unlimited            unlimited            bytes     \nMax stack size            8388608              unlimited            bytes     \nMax core file size        0                    unlimited            bytes     \nMax resident set          unlimited            unlimited            bytes     \nMax processes             128196               128196               processes \nMax open files            1024                 1048576              files     \nMax locked memory         4205776896           4205776896           bytes     \nMax address space         unlimited            unlimited            bytes     \nMax file locks            unlimited            unlimited            locks     \nMax pending signals       128196               128196               signals   \nMax msgqueue size         819200               819200               bytes     \nMax nice priority         0                    0                    \nMax realtime priority     0                    0                    \nMax realtime timeout      unlimited            unlimited            us        \n",
+    "live_kernel": {
+      "cpu_proof": "actual sched_getaffinity and /proc status; cpuset controller may not be delegated",
+      "cpuset.cpus.effective": null,
+      "memory.current": "10752000",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.max": "2147483648",
+      "memory.peak": "11866112",
+      "memory.swap.max": "0"
+    },
+    "observed_time_ns": "1792455498524422414",
+    "pid": 351286,
+    "start_ticks": "248603537",
+    "status": "Name:\tpython\nUmask:\t0002\nState:\tS (sleeping)\nTgid:\t351286\nNgid:\t0\nPid:\t351286\nPPid:\t2867432\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t64\nGroups:\t4 27 1000 \nNStgid:\t351286\nNSpid:\t351286\nNSpgid:\t351286\nNSsid:\t351286\nKthread:\t0\nVmPeak:\t   31140 kB\nVmSize:\t   29920 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   21596 kB\nVmRSS:\t   20568 kB\nRssAnon:\t   10100 kB\nRssFile:\t   10468 kB\nRssShmem:\t       0 kB\nVmData:\t   10944 kB\nVmStk:\t     132 kB\nVmExe:\t    2956 kB\nVmLib:\t    6012 kB\nVmPTE:\t     100 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t1\nSigQ:\t0/128196\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\t00000020\nCpus_allowed_list:\t5\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t3\nnonvoluntary_ctxt_switches:\t94\nx86_Thread_features:\t\nx86_Thread_features_locked:\t\n"
+  },
+  "worker_start_receipt_sha256": "a18b05e686a4ebb82b05534c56c334c6ed85800f5de32f3288e11993bff153d0"
+}

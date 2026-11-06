@@ -1,0 +1,221 @@
+{
+  "schema": "P254-A32-moving-hybrid-inference-review-v1",
+  "verdict": "correct",
+  "confidence": 0.95,
+  "explanation": "No evidence-backed introduced implementation defect or numerical/inference mismatch was found in the reviewed A32 evolution, saved-model contrast, executed-result claims, or compact SOLUTION. The source and saved evidence support one completed conditional source0/Gamma/two-force-mode enrichment, not all-source/all-q material calibration or closure of the full physical objective.",
+  "findings": [],
+  "finding_array_completeness": "This is the complete finding array for this review; no incremental finding was omitted or resolved outside this array. The disclosed historical first-attempt timeout/missing coordinate bank and the acknowledged physical/model limitations are documented below rather than misclassified as newly introduced current-source defects.",
+  "reviewed_scope": {
+    "canonical_science_root": "/home/administrator/projects/substrate-ni-collective",
+    "proposal": "proposals/P254-ni-collective-response",
+    "full_objective": "Material-calibrated many-region simulation, defensible lattice comparison, and explicit nuclear-transition/energy-disposal construction remain the full physical objective.",
+    "primary_sources": [
+      "attempts/0032/hybrid_gamma_evolution.py:1-215",
+      "attempts/0032/export_hybrid_gamma.py:1-408",
+      "attempts/0032/compare_saved_gamma_models.py:1-101",
+      "SOLUTION.md:1-98"
+    ],
+    "supporting_source_context": [
+      "attempts/0032/hybrid_gamma_model.py:1-300",
+      "attempts/0032/oracle_hybrid_gamma_model.py:1-312",
+      "attempts/0032/implementation-contract-001.json",
+      "attempts/0029/reduced_coherence_readout.py:1-74",
+      "attempts/0029/reduced_correlation_transpose.py:1-48",
+      "attempts/0029/reduced_ode_initial_step.py:1-26",
+      "attempts/0030/export_output_directed_actions.py:1-24"
+    ],
+    "patch_context": "Read working-tree git diff for the target files/SOLUTION and source history for commit 7e0ee701a3eda4990eacaa201da3bace5184a1ef. The three target A32 modules are complete new files in that commit; SOLUTION has the compact working-tree update represented in the complete review packet.",
+    "method": "Static source and complete saved-JSON inspection, source-to-consumer tracing, and consistency comparison of recorded execution/publication bindings. The complete review packet was read first. No source edits, builds, tests, numerical suites, precision runs, new trajectories, DFT, physical H/force actions, old sixteen-trajectory replay, or network mutations were performed.",
+    "carried_forward_not_reopened": "The original A29 complete complementary scientific-review admission and compact scientific summary were used only to audit retention of already established results and inference restrictions. A29 numerical/proof campaigns were not reopened or rerun.",
+    "binary_inspection_boundary": "The available file reader did not decode NPZ arrays and did not recompute file/gzip SHA256 values. Numerical observations below were read from the actual complete saved result and contrast JSON; lossless-copy claims were checked for consistency of the recorded original, publication, and decompressed bindings, not independently rehashed. The report producer does not claim otherwise."
+  },
+  "evidence": {
+    "packet": {
+      "path": "attempts/0032/complete-scientific-review-packet-001.json",
+      "schema": "P254-A32-complete-scientific-review-packet-v1",
+      "frozen_at_utc": "2026-11-04T12:23:29.765542+00:00"
+    },
+    "forward_mean_and_reverse_dual": {
+      "source": "attempts/0032/hybrid_gamma_evolution.py:85-215",
+      "times_inverse_ry": [0.0, 1.0, 10.0, 30.0],
+      "forward_path": "The original finite initial mean is propagated sequentially 0->1->10->30 with model.mean_rhs using DOP853 and the existing bounded_first_step. Each requested forward mean and a complete baseline archive are saved.",
+      "reverse_path": "The reverse mean starts from the actual forward mean at 30. Each augmented RHS evaluates mean_rhs(time,current) and -model.transpose(time,current,dual), with a true nonconjugating transpose and decreasing physical time. Probe columns are injected at 30, then 10, then 1, then 0; argsort(column_times) yields chronological preparation columns 0/1/10/30. No forward checkpoint resets the reverse mean.",
+      "consumer_routing": "The returned HybridGammaEvolution ordered/coherence/artifacts/diagnostics fields are consumed explicitly by export_hybrid_gamma.run_hybrid_gamma at lines 368-384. The saved times/ordered_covariance archive keys are then consumed explicitly by compare_saved_gamma_models at lines 67-80. Progress callbacks accept every stage generically; publish_json recursively encodes arrays and both complex components without silently dropping the new records.",
+      "actual_forward_intervals": [[0.0,1.0],[1.0,10.0],[10.0,30.0]],
+      "actual_forward_accepted_steps": [4,13,51],
+      "actual_backward_intervals": [[30.0,10.0],[10.0,1.0],[1.0,0.0]],
+      "actual_backward_accepted_steps": [101,46,6],
+      "actual_tolerances": {"rtol": 2e-08, "atol": 2e-10},
+      "raw_reconstruction": [
+        {"time_inverse_ry":10.0,"whole_state_relative_l2":1.633719240643131e-09,"mechanical_max_abs":3.5900473934087896e-08,"electronic_max_abs":8.913628918416774e-10},
+        {"time_inverse_ry":1.0,"whole_state_relative_l2":5.168251543950449e-08,"mechanical_max_abs":1.676419408615136e-06,"electronic_max_abs":3.043820266259159e-09},
+        {"time_inverse_ry":0.0,"whole_state_relative_l2":4.3577884132220775e-08,"mechanical_max_abs":1.4102243936106813e-06,"mechanical_forward_l2":0.0,"mechanical_relative_l2":null,"electronic_max_abs":3.0282403705565706e-09}
+      ],
+      "reconstruction_repaired": false,
+      "interpretation": "These are observed numerical reconstruction differences, not a rigorous precision bound, physical-error bar, or recovered original A29 adaptive history."
+    },
+    "ordered_normalization_and_numbers": {
+      "sources": ["attempts/0032/hybrid_gamma_evolution.py:169-210", "attempts/0029/reduced_coherence_readout.py:12-35", "attempts/0032/moving-hybrid-material-result-002.json"],
+      "construction": "The actual model.initial_ordered(duals,duals) supplies all sixteen raw complex cross orders. Each pair calls the existing normalized_ordered(cross,variance_left,variance_right), which uses sqrt(left)*sqrt(right), the separate principal roots of the unmodified complex variances. No real-part variance replacement, conjugate reconstruction, covariance symmetrization, clipping, Cauchy cutoff, or reverse-mean repair is used.",
+      "matrix_row_and_column_times_inverse_ry": [0.0,1.0,10.0,30.0],
+      "ordered_covariance_real": [
+        [8.637037867954196e-05,8.587056123460637e-05,4.103196466715315e-05,-8.559632480770757e-05],
+        [8.587056123460637e-05,8.638129661229997e-05,4.905362491763297e-05,-8.58571658458459e-05],
+        [4.103196466715315e-05,4.905362491763297e-05,8.731980654225888e-05,-4.6651686192837704e-05],
+        [-8.559632480770757e-05,-8.58571658458459e-05,-4.6651686192837704e-05,8.671634520465375e-05]
+      ],
+      "ordered_covariance_imag": [
+        [0.0,9.328447582491597e-06,7.64482239142694e-05,-7.014333350307679e-06],
+        [-9.328447582491597e-06,5.35797577340412e-21,7.157480908684214e-05,2.2743391453118805e-06],
+        [-7.64482239142694e-05,-7.157480908684215e-05,-1.524049367000244e-20,7.270728769942434e-05],
+        [7.014333350307679e-06,-2.2743391453118767e-06,-7.270728769942431e-05,1.824860422692864e-23]
+      ],
+      "coherence_magnitude_matrix": [
+        [0.9999999999999999,0.9999991905548135,0.9990786010267074,0.9923743910070437],
+        [0.9999991905548135,1.0,0.9990989537728135,0.9923583469741349],
+        [0.9990786010267074,0.9990989537728138,0.9999999999999999,0.9927547761207016],
+        [0.9923743910070437,0.9923583469741349,0.9927547761207014,1.0]
+      ],
+      "coherence_phase_matrix_radians": [
+        [0.0,0.10820948592187393,1.0781991870605288,-3.0598286840327207],
+        [-0.10820948592187402,0.0,0.9699720141345246,3.115109047106331],
+        [-1.0781991870605285,-0.9699720141345246,-3.4462576788333886e-32,2.141269979519988],
+        [3.0598286840327207,-3.1151090471063316,-2.1412699795199885,-6.777813041175098e-35]
+      ],
+      "all_sixteen_normalizations_defined": true,
+      "negative_real_variance_indices": [],
+      "ordered_hermiticity_max_abs": 3.048098734000488e-20,
+      "variance_imaginary_max_abs": 1.524049367000244e-20,
+      "phase_ordering_check": "SOLUTION's positive 3.059828684-radian enriched phase is C(30,0), matching the explicitly terminal-initial saved comparison. C(0,30) has the opposite principal phase. No sign mismatch was found."
+    },
+    "same_preparation_saved_model_contrast": {
+      "source": "attempts/0032/compare_saved_gamma_models.py:38-95",
+      "saved_result": "attempts/0032/saved-gamma-model-contrast-001.json",
+      "construction": "restore_filter authenticates the actual A30 filter packet; its initial_dual is the preparation-time dual for the original reconstructed active model at terminal time 30. The old covariance explicitly contracts left[:nx].T @ mechanical.w0[0] @ right[:nx] plus the existing wick_edge_pair over all original active source sectors with their original rho0. It is not the old same-cell all-q curve and does not omit mechanical W0. Both models use the original coordinate-0 Ni1/x Gamma probe and the existing ordered normalizer. No trajectory is launched by the comparison script.",
+      "common_original_result_sha256": "c44f96ade99266bda9329ca3dd97aa5a5e85655d162343fcd7cc47b7a43c0b11",
+      "original_filter_packet_sha256": "c19a1b0a19566c510e5557761fbe6b67b2540e05d62d4ee317cf38f6593fef80",
+      "coordinate": 0,
+      "atom": 1,
+      "axis": "x",
+      "q_index": 0,
+      "time_inverse_ry": 30.0,
+      "common_initial_variance": {"real":8.637037867954196e-05,"imag":0.0},
+      "raw_initial_variance_difference": {"real":0.0,"imag":0.0},
+      "original_active_reconstructed_Gamma": {
+        "terminal_variance":{"real":8.67464723025706e-05,"imag":3.809922797767395e-21},
+        "terminal_initial_ordered":{"real":-8.550726951441562e-05,"imag":8.375789308378049e-06},
+        "normalized_complex":{"real":-0.9878584414380813,"imag":0.09676480396316668},
+        "magnitude":0.9925863829443284,
+        "phase_radians":3.0439500328405567
+      },
+      "moving_source0_enriched_Gamma": {
+        "terminal_variance":{"real":8.671634520465375e-05,"imag":1.824860422692864e-23},
+        "terminal_initial_ordered":{"real":-8.559632480770757e-05,"imag":7.014333350307679e-06},
+        "normalized_complex":{"real":-0.989059055199878,"imag":0.08105009101614616},
+        "magnitude":0.9923743910070437,
+        "phase_radians":3.0598286840327207
+      },
+      "normalized_complex_difference":{"real":-0.0012006137617966983,"imag":-0.015714712947020523},
+      "interpretation": "This is a coupled declared-model enrichment contrast: the literal source0 Hamiltonian, response, and fluctuations change together. It is not an isolated extra-noise error estimate, an additive independent positive noise bank, an all-source/full-PW uncertainty bound, or a new real-space curve."
+    },
+    "input_provenance_coordinate_bank_and_recovery": {
+      "source": "attempts/0032/export_hybrid_gamma.py:115-305,348-367",
+      "current_input_admission": "The loader authenticates original saved result/configuration/boundary/coefficient/state archives, exact source0 identity and saved S/D/selection, paid bath/action/mode/filter lineage, and the unchanged saved mechanical/electronic preparation. It constructs only the Gamma view; no old mean integration or new physical action is used for restoration.",
+      "model_layout": {"source0_dimension":354,"original_raw_rank":346,"other_active_sectors":127,"active_dimension":12,"mechanical_size":228,"state_size":143832},
+      "actual_coordinate_bank": {"path":"/var/tmp/p254-a32-moving-hybrid-source0-gamma-002/interaction-coordinates.npz","bytes":4016604,"sha256":"0e4bfb351a87720e22fd8b383b29a514d4344530177823328e1bf0e8f023405a"},
+      "ordering": "The actual energies/right_eigenvectors/inverse_right_eigenvectors are saved exclusively and fsynced, then admitted in input-bindings.json, before evolve_hybrid_gamma is called. The baseline and all three backward JSON receipts bind that same input receipt via the explicit publication callback.",
+      "input_receipt":{"bytes":345247,"sha256":"a4d6758d700c0cfd2bb82cffd25fe00b88886a2a29128339d7702738bc9e6ad3"},
+      "backward_boundary_probe_times_before_next_injection": [
+        {"time_inverse_ry":10.0,"probe_times_inverse_ry":[30.0]},
+        {"time_inverse_ry":1.0,"probe_times_inverse_ry":[30.0,10.0]},
+        {"time_inverse_ry":0.0,"probe_times_inverse_ry":[30.0,10.0,1.0]}
+      ],
+      "historical_first_attempt": {
+        "evidence":["attempts/0032/moving-hybrid-first-native-timeout-001.json","attempts/0032/first-timeout-scientific-boundaries-001.json"],
+        "actual_footer":"Finished with result: timeout; code=killed/status=TERM; finite-unit exit=1; Service runtime: 10min 109ms",
+        "retained_work":"The complete forward baseline and the completed reverse 30->10 boundary survive. A partial later reverse position is not represented as a completed boundary or a complete ordered readout.",
+        "missing_bank":"The first attempt did not save its actual eigenvector/energy coordinate bank. A deterministic rerun or identical state/checkpoint hashes cannot retroactively establish that invocation's exact gauge provenance.",
+        "disposition":"Explicitly disclosed historical failed attempt; corrected complete run saves its own actual bank before a fresh evolution. Not an unresolved defect in the reviewed current source.",
+        "no_free_resume":"Both the source and SOLUTION disclaim recovered adaptive/dense history, automatic restart, or free checkpoint resume; the complete second invocation records its own new forward trajectory."
+      }
+    },
+    "actual_native_execution": {
+      "admission":"attempts/0032/moving-hybrid-material-native-admission-002.json",
+      "startup":"attempts/0032/moving-hybrid-native-startup-002.json",
+      "actual_terminal_footer":["Finished with result: success","Main processes terminated with: code=exited/status=0","Service runtime: 21min 13.689s","[dft-done] finite-unit p254-a32-moving-hybrid-source0-gamma-002.service exit=0"],
+      "actual_progress":"The same terminal transcript and saved progress include backward boundary 0, ordered-readout-complete, and complete with the published result binding. Completion does not rely only on startup or post-collection manager defaults.",
+      "declared_limits":{"runtime_max_seconds":1500,"memory_max_bytes":4294967296,"memory_swap_max_bytes":0,"restart":"no","cpu":7,"blas_threads":1},
+      "exporter_work":{"elapsed_seconds":1270.539824478794,"cpu_seconds":1268.8050826429999,"peak_process_rss_bytes":1111977984,"new_hybrid_forward_mean_integrations":1,"backward_mean_dual_passes":1,"old_baseline_integrations":0,"physical_hamiltonian_actions":0,"physical_force_actions":0,"dft_actions":0,"non_gamma_banks_loaded":0},
+      "resource_reporting_boundary":"The successful Native footer also contains Memory peak: 2.9M, whereas the exporter records 1,111,977,984-byte process peak RSS. The former is not used as a workload-memory estimate or as a scientific validation claim; these recorded metrics are not relabeled as identical measurements. Explicit completion/footer evidence is unaffected."
+    },
+    "owning_small_proof": {
+      "path":"attempts/0032/hybrid-gamma-owning-oracle-001.json",
+      "actual_exit":0,
+      "mean_error":2.1149445146831577e-17,
+      "independent_scalar_hamiltonian_gradient_error":7.663961410808312e-12,
+      "scope":"Existing executed independent synthetic finite Hamiltonian/global-coordinate derivative, exact finite Fock/CAR, tangent and nonconjugating transpose evidence. Its source and recorded output were inspected; the proof was not rerun and is not material calibration."
+    },
+    "lossless_publication": {
+      "manifest":"attempts/0032/moving-hybrid-material-publication-002.json",
+      "inspection_status":"Recorded binding consistency checked; no independent binary rehash/decompression/NPZ decode was performed by this reviewer.",
+      "result_json":{"original_and_publication_bytes":371375,"original_and_publication_sha256":"3f8d166712975333bdfb6b6590d87f6459a86a7c9334a157005433927f9cc328"},
+      "input_bindings_json":{"original_and_publication_bytes":345247,"original_and_publication_sha256":"a4d6758d700c0cfd2bb82cffd25fe00b88886a2a29128339d7702738bc9e6ad3"},
+      "baseline_npz":{"original_and_decompressed_bytes":11507378,"original_and_decompressed_sha256":"498d8be2a5eac3e226b133ffd046d96ce9fc60b5e3b1d54e1bf24acfb39ff134","gzip_bytes":10828297,"gzip_sha256":"8df810a5072251d2190605f04d1d11fb94b774fe89caa5130b46f6655fd39ae8"},
+      "readout_npz":{"original_and_decompressed_bytes":16128220,"original_and_decompressed_sha256":"319947421bfb1da52cf629562225759568ff8e18a94e9e963d2f42d41e061595","gzip_bytes":12079364,"gzip_sha256":"d6d5f27808c6068c7a40ff9c5518a4d603e019d3f2e24860737ae591e762f12e"},
+      "interaction_coordinate_npz":{"original_and_decompressed_bytes":4016604,"original_and_decompressed_sha256":"0e4bfb351a87720e22fd8b383b29a514d4344530177823328e1bf0e8f023405a","gzip_bytes":3913873,"gzip_sha256":"5de9032d03733e072e5426d09d3121383a14fa7ff136d6030b53a8bd31a4a094"},
+      "intermediate_boundary_status":"All three backward numeric archives are retained locally with exact bindings in published receipts; the manifest explicitly does not relabel them as fully published raw state.",
+      "encoding":"The exporter writes both complex components, raw arrays and diagnostic defects through recursive _encoded without rounding, and saves numeric archives directly through np.savez. No numerical claim mismatch was found between the complete result, saved contrast, or compact displayed values."
+    },
+    "solution_and_carried_A29_claim_audit": {
+      "source":"SOLUTION.md:38-76,92-98",
+      "a32_table":"All six displayed magnitude/phase/terminal-variance values at lines 71-72 correctly round the two saved contrast rows above. The table is explicitly Gamma; the original A29 table remains explicitly same-cell/nested-model, and the two are not equated.",
+      "a29_evidence":"attempts/0029/final-saved-result-scientific-summary-001.json and attempts/0029/complete-active-model-scientific-review-admission-001.json",
+      "a29_observed_ranges":[
+        {"case":"loaded-ni31h6","minimum":0.9896567715068191,"maximum":0.9909958595437383,"Ni_participation":1.4113136486853581,"Ni_rms_distance_bohr":5.676078904858798},
+        {"case":"dispersed-ni32h6","minimum":0.9903616258306484,"maximum":0.9919505357111734,"Ni_participation":1.923266316926852,"Ni_rms_distance_bohr":8.37126626421371},
+        {"case":"pristine-ni32","minimum":0.9911165708356795,"maximum":0.9926585324231313,"Ni_participation":1.8895437733921272,"Ni_rms_distance_bohr":8.248075996562124},
+        {"case":"empty-vacancy-ni31","minimum":0.9908449664719166,"maximum":0.9923099633822873,"Ni_participation":1.438169181035729,"Ni_rms_distance_bohr":5.8227103173590695}
+      ],
+      "a29_interpretation":"The claim that only pristine versus H-loaded has disjoint observed nested ranges matches all six retained pairwise relations. Participation/RMS rows retain the predeclared maximum 12-band/27-feature finite-dose mean readout at 30; they are not a convergence certificate or a coherent-cell count. Different preparations, unexcited-baseline Gaussian versus finite-kicked covariance, reversible mean exchange, unsupported isotope/preparation controls, and physical/nuclear limitations remain in the expressly linked original summary/review without contradictory new claims.",
+      "underresolved_mode1_evidence":{"paid_bath_result":"/var/tmp/p254-a31-source0-two-mode-bath8-001/result.json","initial_finite_bath_variance_real":57.829668479618775,"initial_full_pw_variance_real":267.81724948789645,"discarded_selection_proxy_is_late_time_bound":false},
+      "scope_retention":"SOLUTION explicitly withholds all-source/all-q/full-PW calibration, direct omitted field/density channels, bath/representation/size errors, irreversible damping/loss survival, material ranking, physical lifetime, and nuclear rate/heat. The carried A29 admission is explicitly not claimed to review A30-A32."
+    }
+  },
+  "not_established": [
+    "All-source/all-wavevector physical calibration or an all-q spatial coherence correction from this single source0/Gamma example.",
+    "Full-PW/finite-bath accuracy, representation/size convergence, or a rigorous late-time error bar from the two-mode bank or its discarded selection proxy.",
+    "Resolution of the known second-mode initial force-variance deficit: the saved finite-bath value is 57.829668479618775 versus full-PW 267.81724948789645.",
+    "Direct omitted field/density vertices or enrichment of the remaining original sectors/wavevectors.",
+    "An isolated independent positive-noise correction; the reported difference changes the coupled Hamiltonian, moving response and fluctuations together.",
+    "Irreversible material damping, loss, heat, survival under omitted losses, an energy current, or a physical lifetime/continuous-time coherence window.",
+    "A preparation-independent physical lattice ranking or design advantage from the unlike original structure preparations and unresolved physical errors.",
+    "Finite-kicked-state covariance, quantum entanglement, or a number of coherent regions from unexcited-baseline Gaussian readout or mean-displacement participation.",
+    "Nuclear transition/receiver amplitudes, a channel rate, enhancement, branching, deposited power/heat or a universal nuclear no-go from the material observables.",
+    "Recovered original adaptive history or exact gauge-continuous/free checkpoint resume of the failed first invocation.",
+    "Independent file-byte SHA verification, NPZ decoding, or gzip round-trip verification by this report producer; the cited hashes are observed recorded bindings, not newly computed producer hashes.",
+    "Completion of the full physical P254 objective or authorization of a final campaign merge."
+  ],
+  "reviewed_source_bindings": {
+    "basis":"Recorded bindings copied from the complete packet and cross-checked against the inspected executed result/startup/oracle/contrast where those artifacts bind the source; source content was read, but hashes were not recomputed by this reviewer.",
+    "sources":[
+      {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/hybrid_gamma_model.py","bytes":17243,"sha256":"451ad383475e91ea57219e0189dd8b743112a2b88ca84e2610d14aadecf6ab8c"},
+      {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/hybrid_gamma_evolution.py","bytes":11335,"sha256":"19e30163ce2d4367b2bae453170a8c355f85aabcca631409d7705820797c5d6b"},
+      {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/export_hybrid_gamma.py","bytes":24115,"sha256":"2f33b59662ce3fdae7c7fa3838b8aeec92c3ee6c25a9405f5e48f3df0c1c9a7f"},
+      {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/compare_saved_gamma_models.py","bytes":5617,"sha256":"7ed1c68f79d3f7a80d9b88bacc00997f647307a20ed6387c4e62fd41c17f5982"},
+      {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/oracle_hybrid_gamma_model.py","bytes":15557,"sha256":"4c52a64c155ca81bcbdad1fb9aa3af4734e3824fb5d96f0613f5353a3bace8bd"},
+      {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/SOLUTION.md","bytes":12599,"sha256":"6129dbea09c5950202219af67c40962cbf4dc911619668e89b26b7b9073c6add"},
+      {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/implementation-contract-001.json","bytes":4757,"sha256":"f1850fe387b3a70b9df8d2f035262efb70ee7dac18521721c9097882922c58da"}
+    ],
+    "principal_evidence":[
+      {"path":"attempts/0032/moving-hybrid-material-result-002.json","bytes":371375,"sha256":"3f8d166712975333bdfb6b6590d87f6459a86a7c9334a157005433927f9cc328"},
+      {"path":"attempts/0032/moving-hybrid-input-bindings-002.json","bytes":345247,"sha256":"a4d6758d700c0cfd2bb82cffd25fe00b88886a2a29128339d7702738bc9e6ad3"},
+      {"path":"attempts/0032/moving-hybrid-material-native-admission-002.json","bytes":9884,"sha256":"a83799d4072ba486bd8335704ca2ecfc2aa50d5b08aae5ebfeeed9a12d39a691"},
+      {"path":"attempts/0032/moving-hybrid-material-publication-002.json","bytes":7669,"sha256":"db067acb951364d92be3297564c3993fce6a75631b324a70c723484eba1c0fe8"},
+      {"path":"attempts/0032/saved-gamma-model-contrast-001.json","bytes":61382,"sha256":"5ad76a43fa6b4472b9ff06d1e7d1d67f30257a41e07cc56d4892b56610409c8f"},
+      {"path":"attempts/0032/hybrid-gamma-owning-oracle-001.json","bytes":1541,"sha256":"c5a9269f9ba7407476fed55feb7721595f95e91f90fc2432309b0c8cba4f2ce3"},
+      {"path":"attempts/0032/moving-hybrid-first-native-timeout-001.json","bytes":9096,"sha256":"0b76b12fdbea14b9da5793699fe4c2ecf6575b9939875320661fff745f95e36f"},
+      {"path":"attempts/0032/first-timeout-scientific-boundaries-001.json","bytes":3459,"sha256":"b9defd08c5a2f7289fec76edd250c6ca8b935a8ebd574bea121a118fba6db043"},
+      {"path":"attempts/0029/complete-active-model-scientific-review-admission-001.json","bytes":3258,"sha256":"7769ce3777262c1dc956248b9782657b8a6d41531f7b79f9fa29ef949755f49c"}
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+[Unit]
+Description=P254 A27 exact preparation saved reader with complex JSON CPU8
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/administrator/projects/substrate-ni-collective
+ExecStart="/usr/bin/python3" "-c" "import json,sys\nfrom pathlib import Path\nroot=Path('/home/administrator/projects/substrate-ni-collective')\nsys.path.insert(0,str(root/'proposals/P254-ni-collective-response/attempts/0027'))\nimport run_material_preparation_pilot as driver\npaths=driver.preload()\nfrom material_run_contract import implementation,verify_consumers,runtime_context,_context\nfrom substrate_framework.material_preparation_output import load_saved_material_preparation\ngrant=json.loads(Path(sys.argv[1]).read_bytes())\ncontext=runtime_context()\n_context(grant,context)\nverify_consumers(grant,implementation(paths))\nterminal_binding=json.loads(Path(sys.argv[2]).read_bytes())\nsaved=load_saved_material_preparation(terminal_binding)\nfinal=implementation(paths)\nverify_consumers(grant,final)\ndef diagnostic_json(value):\n    if isinstance(value,complex):\n        return [value.real,value.imag]\n    raise TypeError('unsupported saved-reader JSON value: '+type(value).__name__)\nprint(json.dumps(dict(complex_diagnostic_encoding='each complex scalar is [real,imaginary]',scope='authenticated original neutral-ledger/selected-Gamma saved consumption only; no filling,WFC decoding,factor/H0 regeneration or propagation',context=context,coverage_identity=saved.coverage_identity,receipt_archives={k:dict(v)['archive'] for k,v in saved.receipts.items()},population_shapes={k:list(v.shape) for k,v in saved.population_ledger.items()},selected_gamma_shapes={k:list(v.shape) for k,v in saved.selected_gamma.items()},population_diagnostics={k:v.tolist() for k,v in saved.population_ledger.items() if v.size<=10},selected_gamma_diagnostics={k:v.tolist() for k,v in saved.selected_gamma.items() if v.size<=10},final_implementation_sources=final),sort_keys=True,allow_nan=False,default=diagnostic_json))\n" "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-saved-reader-grant-002.json" "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-actual-terminal-binding-001.json"
+CPUAffinity=8
+MemoryMax=4294967296
+MemorySwapMax=0
+TimeoutStartSec=25
+RuntimeMaxSec=25
+TimeoutStopSec=2
+Restart=no
+Environment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+StandardOutput=append:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-saved-reader-controls-002/reader-process.stdout
+StandardError=append:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-saved-reader-controls-002/reader-process.stderr

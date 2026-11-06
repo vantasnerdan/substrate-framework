@@ -1,0 +1,95 @@
+"""Resolve registered raw sources and closed package/snapshot graphs by bytes."""
+import hashlib
+import json
+from pathlib import Path
+
+PLAN=Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/W1-loaded-force-sensitivity-plan.json')
+PLAN_SHA='81d7f2b69ada5cda84900b64a1e833b0be6a87c2e97d1970f7521b90843f67be'
+HERE=Path(__file__).resolve().parent
+ROOT=HERE.parents[3]
+
+
+def digest(path):
+    with Path(path).open('rb') as stream:
+        return hashlib.file_digest(stream,'sha256').hexdigest()
+
+
+def load(path):
+    return json.loads(Path(path).read_bytes())
+
+
+def fingerprint(value):
+    return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
+
+
+def records(value):
+    if isinstance(value,dict):
+        if isinstance(value.get('path'),str) and 'sha256' in value:
+            yield value['path'],value['sha256']
+        for key,item in value.items():
+            if key.startswith('/') and isinstance(item,dict) and 'sha256' in item:
+                yield key,item['sha256']
+            yield from records(item)
+    elif isinstance(value,list):
+        for item in value:
+            yield from records(item)
+
+
+def closed_graph():
+    if digest(PLAN)!=PLAN_SHA:
+        raise ValueError('Registration bytes changed')
+    plan=load(PLAN); access=Path(plan['source_access']['path'])
+    if digest(access)!=plan['source_access']['sha256']:
+        raise ValueError('Source access inventory changed')
+    inventory=load(access); report=load(plan['native_wave']['report']['path'])
+    references={(str(PLAN),PLAN_SHA),(str(access),digest(access))}
+    references.update(records(inventory)); references.update(records(report))
+    snapshots={}; packages=[]
+    for package in report['generation_packages']:
+        package_data=load(package['package']['path']); packages.append(package_data)
+        references.update(records(package_data))
+        snapshot=load(package['source_snapshot']['path'])
+        for original,item in snapshot.items():
+            saved=Path(item['snapshot'])
+            references.add((str(saved),item['sha256']))
+            snapshots[(original,item['sha256'])]=str(saved)
+    # Every declared source in every completed native spec, not just 71 roots.
+    specs=[]
+    for row in inventory['raw_registered_sources']:
+        if row['path'].endswith('/scf/result.json'):
+            result=load(row['path']); spec=load(result['data']['artifacts']['spec.json']['path'])
+            specs.append(spec)
+            for original,sha in spec['input_files_sha256'].items():
+                references.add((original,sha))
+    verified=[]
+    for path,sha in sorted(references):
+        actual=snapshots.get((path,sha),path)
+        if digest(actual)!=sha:
+            raise ValueError('Raw source graph byte mismatch: '+path+' via '+actual)
+        verified.append({'path':path,'sha256':sha,'consumed_path':actual,'bytes':Path(actual).stat().st_size})
+    for row in inventory['current_method_sources'][:2]:
+        copied=ROOT/'src/substrate_framework'/Path(row['path']).name
+        if digest(copied)!=row['sha256']:
+            raise ValueError('Imported method differs from captured current source: '+str(copied))
+    return {'plan':plan,'inventory':inventory,'native_report':report,'verified':verified,
+            'specs':specs,'packages':packages}
+
+
+def own_sources():
+    paths=list(HERE.glob('*.py'))+[ROOT/'src/substrate_framework/material_force_sensitivity.py',
+        ROOT/'src/substrate_framework/material_primary_boundary.py',ROOT/'src/substrate_framework/verification.py']
+    return {str(path):digest(path) for path in sorted(paths)}
+
+
+def run(ledger,context):
+    graph=closed_graph(); manifest=context['manifest']
+    ledger.check('registered full raw source/model/package graph matches prepared exact bytes',
+                 graph['verified']==manifest['upstream_verified'] and own_sources()==manifest['oracle_sources'])
+    # Bytes, not wording: mutate a source body and expose its cryptographic binding.
+    target=Path(graph['verified'][0]['consumed_path']); raw=target.read_bytes()
+    ledger.check('actual source-byte mutation changes frozen source binding',
+                 hashlib.sha256(raw+b'\nmutation').hexdigest()!=digest(target))
+    context.update(graph)
+    return {'verified_sources':graph['verified'],'registered_raw_count':len(graph['inventory']['raw_registered_sources']),
+            'registered_current_method_count':len(graph['inventory']['current_method_sources']),
+            'nanosecond_metadata_used_as_proof':False,'snapshot_resolution':'Each declared hash resolved to frozen raw object when available; direct bytes otherwise.'}

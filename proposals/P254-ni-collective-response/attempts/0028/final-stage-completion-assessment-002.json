@@ -1,0 +1,199 @@
+{
+  "schema": "P254-actual-final-stage-completion-scenarios-v1",
+  "status": "actual-cost-scenarios-exercised-not-runtime-guarantee",
+  "anchor_utc": "2026-10-31T01:54:10.322407+00:00",
+  "original_deadline_utc": "2026-10-31T07:11:23+00:00",
+  "observed_final_stage_moment_sources": "60/128",
+  "observed_previous_seven_action_transition_sources": "128/128",
+  "total_cyclic_assignment": [
+    26,
+    26,
+    26,
+    25,
+    25
+  ],
+  "favorable_remaining_moment_assignment_ignoring_one_inflight_per_worker": [
+    13,
+    13,
+    13,
+    12,
+    12
+  ],
+  "scenarios": [
+    {
+      "name": "observed_cpu_minimum_ignore_extra_eighth_action",
+      "per_cpu_moment_seconds": [
+        "7311295787896961/20000000000000",
+        "3624641798217781/10000000000000",
+        "18516743334615603/50000000000000",
+        "7274979950785637/20000000000000",
+        "7370375292794779/20000000000000"
+      ],
+      "per_cpu_seven_action_transition_seconds": [
+        "21702318702545017/50000000000000",
+        "213831566369161/500000000000",
+        "837547119256109/2000000000000",
+        "420747774661053/1000000000000",
+        "42275002771196887/100000000000000"
+      ],
+      "favorable_remaining_context_seconds": "240717663350002839/50000000000000",
+      "future_final_transition_seconds": "282130143133085221/25000000000000",
+      "final_transition_action_time_scale": "1",
+      "next_context_scenario_utc": "2026-10-31T03:14:24+00:00",
+      "physical_endpoint_scenario_utc": "2026-10-31T06:22:29+00:00",
+      "physical_before_original_deadline": true,
+      "physical_seconds_past_original_deadline": "-146689405908826719/50000000000000",
+      "omitting_required_final_transition_before_deadline": true
+    },
+    {
+      "name": "observed_cpu_median_ignore_extra_eighth_action",
+      "per_cpu_moment_seconds": [
+        "9279791278275661/20000000000000",
+        "9275446400293149/20000000000000",
+        "9310772005091421/20000000000000",
+        "1830609228153713/4000000000000",
+        "2329809762869263/5000000000000"
+      ],
+      "per_cpu_seven_action_transition_seconds": [
+        "148875847558229/312500000000",
+        "46617004024563357/100000000000000",
+        "94243583658803253/200000000000000",
+        "4787084709601477/10000000000000",
+        "4739349291501567/10000000000000"
+      ],
+      "favorable_remaining_context_seconds": "121040036066188473/20000000000000",
+      "future_final_transition_seconds": "1935386018256977/156250000000",
+      "final_transition_action_time_scale": "1",
+      "next_context_scenario_utc": "2026-10-31T03:35:02+00:00",
+      "physical_endpoint_scenario_utc": "2026-10-31T07:01:28+00:00",
+      "physical_before_original_deadline": true,
+      "physical_seconds_past_original_deadline": "-11897495806918471/20000000000000",
+      "omitting_required_final_transition_before_deadline": true
+    },
+    {
+      "name": "observed_cpu_median_action_scaled8over7",
+      "per_cpu_moment_seconds": [
+        "9279791278275661/20000000000000",
+        "9275446400293149/20000000000000",
+        "9310772005091421/20000000000000",
+        "1830609228153713/4000000000000",
+        "2329809762869263/5000000000000"
+      ],
+      "per_cpu_seven_action_transition_seconds": [
+        "148875847558229/312500000000",
+        "46617004024563357/100000000000000",
+        "94243583658803253/200000000000000",
+        "4787084709601477/10000000000000",
+        "4739349291501567/10000000000000"
+      ],
+      "favorable_remaining_context_seconds": "121040036066188473/20000000000000",
+      "future_final_transition_seconds": "1935386018256977/136718750000",
+      "final_transition_action_time_scale": "8/7",
+      "next_context_scenario_utc": "2026-10-31T03:35:02+00:00",
+      "physical_endpoint_scenario_utc": "2026-10-31T07:30:58+00:00",
+      "physical_before_original_deadline": false,
+      "physical_seconds_past_original_deadline": "164446939688463759/140000000000000",
+      "omitting_required_final_transition_before_deadline": true
+    },
+    {
+      "name": "observed_cpu_maximum_action_scaled8over7",
+      "per_cpu_moment_seconds": [
+        "3263361038805451/5000000000000",
+        "1279225276235491/2000000000000",
+        "6532685265438631/10000000000000",
+        "6520196982291527/10000000000000",
+        "6432704229117371/10000000000000"
+      ],
+      "per_cpu_seven_action_transition_seconds": [
+        "7931365016102791/10000000000000",
+        "150996760568209/200000000000",
+        "1888901610482717/2500000000000",
+        "377992605315987/500000000000",
+        "153079026413057/200000000000"
+      ],
+      "favorable_remaining_context_seconds": "84924908450702203/10000000000000",
+      "future_final_transition_seconds": "103107745209336283/4375000000000",
+      "final_transition_action_time_scale": "8/7",
+      "next_context_scenario_utc": "2026-10-31T04:15:42+00:00",
+      "physical_endpoint_scenario_utc": "2026-10-31T10:48:30+00:00",
+      "physical_before_original_deadline": false,
+      "physical_seconds_past_original_deadline": "911863984769295949/70000000000000",
+      "omitting_required_final_transition_before_deadline": true
+    }
+  ],
+  "omitted_time": "ALL global aggregation/startup/retirement overhead and ALL post-physical-endpoint moment preparation/bare-energy work. One in-flight moment per CPU is treated completely paid.",
+  "assumptions": "Per-CPU observed minimum/median/maximum extrapolation, not a bound or confidence interval. Future inputs/caches may differ. Eight/seven proportional action cost is an explicit separate assumption; unscaled rows deliberately omit the extra callback.",
+  "checks": [
+    {
+      "name": "exact_cyclic_assignment_example",
+      "passed": true
+    },
+    {
+      "name": "exact_parallel_makespan_example",
+      "passed": true
+    },
+    {
+      "name": "serial_schedule_mutation_sensitive",
+      "passed": true,
+      "mutation": true
+    },
+    {
+      "name": "omitted_required_final_RK_transition_changes_deadline_verdict",
+      "passed": true,
+      "mutation": true
+    }
+  ],
+  "scope": "Planning evidence only; original producer maximum, physical criteria, code and cumulative costs are not changed.",
+  "plan": {
+    "schema": "P254-final-stage-completion-assessment-plan-v1",
+    "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+    "root_decision": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-211.json",
+      "bytes": "978",
+      "sha256": "283cdfcaf95567aa387ac0888c90923c49b603d382b78eee1bd593c875ec1ec5"
+    },
+    "source": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/final-stage-native-cost-source-snapshot-002.json",
+      "bytes": "447860",
+      "sha256": "3d0b41d28bd70c4c7a6ab4e9abcbef559380210b87acc326a4418e835f0913d7"
+    },
+    "goal": "Reassessrealphysical-endpointdeadlineusingobservednonzeromixed-jetmomentcostsandall128completedseven-actiontransitioncosts.",
+    "blocks": [
+      "Exactper-CPUelapsedstatisticsfromoriginalNativeworkers; validatecyclicassignment/actioncounts.",
+      "Exactcyclicremainingmomentcounts,deliberatelyignoreonecurrentinflightperworker; full128finaltransition.",
+      "ParallelmakespanusingSymPyexactrationalduration; separateunscaledandstructural8/7callbacksensitivity.",
+      "Comparephysicalcompletionwithunchangedoriginaldeadline; omitallglobalaggregation/startupandallpostphysicalenergywork."
+    ],
+    "verifier": "Importalreadyverifiedexactrational/statistic/scheduleblocks; finiteparallel-schedulecounterexample; mutationomittingrequiredlastRKtransitionmustchangedeadlineverdict.",
+    "nonclaims": "Empiricalscenarios,notlowerbounds/ETA/confidenceinterval. Futurework/cachesmaydiffer. No newallocation/physics/accuracychange.",
+    "preregistered_at": "2026-10-31T01:54:10.392423+00:00",
+    "change": "Replace hardcoded25 sample count with exact supplied ordered actual source count; refresh60 complete original records, no schedule equation/physical criterion/deadline change",
+    "script": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_final_stage_completion_assessment.py",
+      "bytes": "6683",
+      "sha256": "5fa94e1c256e08cca3fe3b00c08d7e4cf481fa76810b1a7f40c2255bf82ccf86"
+    }
+  },
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/final-stage-native-cost-source-snapshot-002.json",
+      "bytes": "447860",
+      "sha256": "3d0b41d28bd70c4c7a6ab4e9abcbef559380210b87acc326a4418e835f0913d7"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/final-stage-completion-assessment-plan-002.json",
+      "bytes": "2186",
+      "sha256": "573ee1864a455b5901f4db14c8973746ddba0c19623f2a8ab7e6148cd3ddb137"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_final_stage_completion_assessment.py",
+      "bytes": "6683",
+      "sha256": "5fa94e1c256e08cca3fe3b00c08d7e4cf481fa76810b1a7f40c2255bf82ccf86"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_stage_sensitive_completion_assessment.py",
+      "bytes": "6868",
+      "sha256": "eb0f89871a1bafc7966fe0530b94a52cc250906a0041b809bc3c1afd5d7d6679"
+    }
+  ]
+}

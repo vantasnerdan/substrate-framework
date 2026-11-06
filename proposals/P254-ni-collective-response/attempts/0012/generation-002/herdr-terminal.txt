@@ -1,0 +1,50 @@
+-sensitivity", "--setenv=PYTHONPATH=/home/administrator/projects/substrate-force-sensitivity/src", "--setenv=PYTHONDONTWRITEBYTECODE=1", "--setenv=PYTHONUNBUFFERED=1", "--setenv=OMP_NUM_THREADS=1", "--setenv=MKL_NUM_THREADS=1", "--setenv=OPENBLAS_NUM_THREADS=1", "--setenv=NUMEXPR_NUM_THREADS=1", "/home/administrator/projects/substrate-framework/.venv/bin/python", "-B", "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py", "--generation", "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-001"], "returncode": 0, "stdout": "", "stderr": "Running as unit: p254-w1-force-sensitivity-0012-g001-1792455075679701675.service; invocation ID: d28f7362f4734756b962e0cff09c49a2\n"}
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/launch_owner.py", line 42, in launch
+    raise TimeoutError('Worker never provided startup handshake')
+TimeoutError: Worker never provided startup handshake
+
+administrator@agent-giuliano:~/projects/substrate-ni-collective$ /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/launch_owner.py --generation 002
+SENSITIVITY_OWNER_LAUNCH p254-w1-force-sensitivity-0012-g002-1792455320665336808.service {"argv": ["systemd-run", "--user", "--unit=p254-w1-force-sensitivity-0012-g002-1792455320665336808.service", "--property=Type=exec", "--property=CPUAffinity=5", "--property=MemoryMax=2147483648", "--property=MemorySwapMax=0", "--property=Restart=no", "--property=RemainAfterExit=yes", "--property=KillMode=control-group", "--working-directory=/home/administrator/projects/substrate-force-sensitivity", "--setenv=PYTHONPATH=/home/administrator/projects/substrate-force-sensitivity/src", "--setenv=PYTHONDONTWRITEBYTECODE=1", "--setenv=PYTHONUNBUFFERED=1", "--setenv=OMP_NUM_THREADS=1", "--setenv=MKL_NUM_THREADS=1", "--setenv=OPENBLAS_NUM_THREADS=1", "--setenv=NUMEXPR_NUM_THREADS=1", "/home/administrator/projects/substrate-framework/.venv/bin/python", "-B", "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py", "--generation", "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-002"], "returncode": 0, "stdout": "", "stderr": "Running as unit: p254-w1-force-sensitivity-0012-g002-1792455320665336808.service; invocation ID: a8fab3ee0a21480bae69476b9e34550f\n"}
+ACTUAL_WORKER_OBSERVED 348995 248586569 /usr/bin/python3.12 [5] 2147483648 0
+2026-10-20T00:15:28.612863+00:00 agent-giuliano systemd[2867432]: Starting p254-w1-force-sensitivity-0012-g002-1792455320665336808.service - /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-002...
+2026-10-20T00:15:28.614244+00:00 agent-giuliano systemd[2867432]: Started p254-w1-force-sensitivity-0012-g002-1792455320665336808.service - /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-002.
+2026-10-20T00:15:28.773703+00:00 agent-giuliano python[348995]: WORKER_POSTEXEC_READY 348995 248586569
+2026-10-20T00:15:32.249541+00:00 agent-giuliano python[348995]: BLOCK_BEGIN sources
+2026-10-20T00:15:34.846286+00:00 agent-giuliano python[348995]: PASS [P254-W1-force-sensitivity-0012] registered full raw source/model/package graph matches prepared exact bytes
+2026-10-20T00:15:34.847323+00:00 agent-giuliano python[348995]: PASS [P254-W1-force-sensitivity-0012] actual source-byte mutation changes frozen source binding
+2026-10-20T00:15:34.906802+00:00 agent-giuliano python[348995]: BLOCK_COMPLETE sources 2
+2026-10-20T00:15:34.906802+00:00 agent-giuliano python[348995]: BLOCK_BEGIN units
+2026-10-20T00:15:34.935855+00:00 agent-giuliano python[348995]: PASS [P254-W1-force-sensitivity-0012] source SI Coulomb and independent fine-structure routes agree exactly
+2026-10-20T00:15:34.946901+00:00 agent-giuliano python[348995]: Traceback (most recent call last):
+2026-10-20T00:15:34.946901+00:00 agent-giuliano python[348995]:   File "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py", line 43, in execute
+2026-10-20T00:15:34.946901+00:00 agent-giuliano python[348995]:     before=len(ledger.passed); result=check(ledger,context)
+2026-10-20T00:15:34.946901+00:00 agent-giuliano python[348995]:                                       ^^^^^^^^^^^^^^^^^^^^^
+2026-10-20T00:15:34.946901+00:00 agent-giuliano python[348995]:   File "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/check_units.py", line 40, in run
+2026-10-20T00:15:34.946901+00:00 agent-giuliano python[348995]:     ledger.check('source decimal force and energy factors reduce to positive exact rationals',
+2026-10-20T00:15:34.946901+00:00 agent-giuliano python[348995]:   File "/home/administrator/projects/substrate-force-sensitivity/src/substrate_framework/verification.py", line 52, in check
+2026-10-20T00:15:34.946901+00:00 agent-giuliano python[348995]:     raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+2026-10-20T00:15:34.946901+00:00 agent-giuliano python[348995]: substrate_framework.verification.CheckFailure: FAIL [P254-W1-force-sensitivity-0012] source decimal force and energy factors reduce to positive exact rationals
+2026-10-20T00:15:34.946901+00:00 agent-giuliano python[348995]: SENSITIVITY_ORACLE_FAILED /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-002
+2026-10-20T00:15:35.306957+00:00 agent-giuliano systemd[2867432]: p254-w1-force-sensitivity-0012-g002-1792455320665336808.service: Main process exited, code=exited, status=2/INVALIDARGUMENT
+2026-10-20T00:15:35.307424+00:00 agent-giuliano systemd[2867432]: p254-w1-force-sensitivity-0012-g002-1792455320665336808.service: Failed with result 'exit-code'.
+2026-10-20T00:15:35.308127+00:00 agent-giuliano systemd[2867432]: p254-w1-force-sensitivity-0012-g002-1792455320665336808.service: Consumed 6.347s CPU time, 118.4M memory peak, 0B memory swap peak.
+
+SENSITIVITY_OWNER_TERMINAL p254-w1-force-sensitivity-0012-g002-1792455320665336808.service MainPID=0
+Result=exit-code
+NRestarts=0
+ExecMainStartTimestamp=Tue 2026-10-20 00:15:28 UTC
+ExecMainExitTimestamp=Tue 2026-10-20 00:15:35 UTC
+ExecMainCode=1
+ExecMainStatus=2
+ControlGroup=
+MemoryCurrent=[not set]
+MemoryPeak=124166144
+CPUUsageNSec=6347002000
+MemoryMax=2147483648
+MemorySwapMax=0
+CPUAffinity=5
+ActiveState=failed
+SubState=failed
+
+administrator@agent-giuliano:~/projects/substrate-ni-collective$

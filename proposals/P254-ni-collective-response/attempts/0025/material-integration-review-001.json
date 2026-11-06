@@ -1,0 +1,348 @@
+{
+  "verdict": {
+    "overall_correctness": "incorrect",
+    "disposition": "Two narrow P2 finalization-control defects; retain the successful material arrays and executed consumer results. Neither finding establishes a scientific failure or requires another numerical run.",
+    "explanation": "Builder/loader admission, the observed manager contexts, production outputs, source coverage and saved-array dispatch are supported by the supplied source and executed receipts. The new producer finalizers do not keep the per-invocation time and output allowances effective through publication on their boundary/failure paths.",
+    "confidence": 0.95
+  },
+  "scope": {
+    "review": "Complete0025 material integration review 001",
+    "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+    "baseline": "Accepted0024 component at 4b020631; its scientific, physical and integration acceptance is carried, not replayed.",
+    "inspected": [
+      "build_internal_pbe.py and its actual build plan/outcomes; qe_internal_pbe.py and internal_pbe_bridge.f90",
+      "material_run_contract.py; unchanged0024 material_pilot_io.py primitives",
+      "Both material producers and both output helpers in full source context",
+      "Actual context-only preflights, grants, source unit copies, own-production contexts, telemetry, immutable terminals, manager exit and notifier receipts",
+      "Pre-execution dependency universe and current explicit implementation admissions",
+      "Original0024 intake routing; both saved-functional consumers; reference array restoration into MaterialReference.apply_kernel",
+      "Executed saved-output, material-output and restored-reference command receipts; original-source and recovered-handoff qualifications"
+    ],
+    "trust_model": "Protocol-immutable, Root-owned source/input/output identities. Not adversarial concurrent-path replacement, resident-memory identity, whole-OS or exhaustive dynamic-loader attestation.",
+    "method": "Read-only source and existing-evidence review. Read the quantitative-verification skill before review. Inspected git diff and the new helper addition. No build, scientific import, numerical execution, tests, lint, formatting, source edit, Git mutation, service operation or replay was performed. Only this final report was written.",
+    "scientific_boundary": "Selected Gamma actual Ni31H6 saved-density H0/K and both-spin state-independent full-PW force/number factors. No new preparation, temperature, stationary-material, complete-BvK, coherence-domain, nuclear or campaign-completion claim."
+  },
+  "findings": [
+    {
+      "id": "MI25-F1",
+      "status": "open_source_correction",
+      "severity": "P2",
+      "priority": 2,
+      "confidence": 0.94,
+      "title": "Keep the invocation deadline effective through terminal publication",
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+      "line_start": 152,
+      "line_end": 154,
+      "body": "Both producers cancel ITIMER_REAL and snapshot elapsed_seconds before serializing and fsyncing the terminal, rotated summary and terminal event; neither rechecks remaining_seconds afterward. If final publication straddles the admitted deadline, especially on an explicitly reduced-time resume, this path can finish with status complete and exit_code 0 despite exceeding that invocation allowance. The retained service copies enforce their full 300/180-second ceilings, not every smaller grant accepted by admit. The current successful runs are not shown to have exceeded their grants; the defect is the new finalization path and its advertised BOOT-through-exit accounting.",
+      "evidence": [
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+          "lines": "152-169",
+          "detail": "Disarms timer, records elapsed time, then writes terminal/summary/event without another time check."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py",
+          "lines": "268-272",
+          "detail": "Also disarms the timer before calling OutputRun.finish."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_factor_pilot.py",
+          "lines": "206-222",
+          "detail": "Same ordering in the factor finalizer; lines14-16 and165 explicitly include serialization or through-exit time in accounting."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_run_contract.py",
+          "lines": "89-91,99-108",
+          "detail": "Admits positive bounded remaining_seconds, including smaller resume allowances; time allowance is deliberately outside recipe identity."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-production.service",
+          "lines": "16-18",
+          "detail": "Retained manager ceiling is RuntimeMaxSec=300."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-production.service",
+          "lines": "16-18",
+          "detail": "Retained manager ceiling is RuntimeMaxSec=180."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/terminal-f77d41a852a6422bbeadb9c8508f316b.json",
+          "lines": "1",
+          "detail": "Recorded elapsed_seconds=78.71301386412233."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/telemetry.jsonl",
+          "lines": "8",
+          "detail": "Terminal event records elapsed_seconds=78.76450207503513, after the terminal snapshot."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-pilot-001/terminal-6c890f1989dd4ba389cf9fbcb9eeb5d7.json",
+          "lines": "1",
+          "detail": "Recorded elapsed_seconds=65.5162747609429 and BOOT-through-exit accounting text."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-pilot-001/telemetry.jsonl",
+          "lines": "4",
+          "detail": "Terminal event records elapsed_seconds=65.58447028230876, after the terminal snapshot."
+        }
+      ],
+      "consumer_impact": "A Root consumer relying on the immutable successful terminal and its remaining-time accounting can accept an over-allowance finalization. Existing executed consumers require complete/exit0 but do not independently enforce a smaller invocation deadline.",
+      "narrow_correction": "Keep publication inside the admitted time authority: retain deadline enforcement through final writes and make an over-deadline finalization fail, with bounded failure-receipt handling. Ensure the enclosing manager deadline is derived from the exact invocation grant, including reduced resumes. Label the in-process timestamp as a pre-publication snapshot and use the existing post-exit owner receipt for through-exit accounting rather than claiming that a receipt can measure its own later fsync/exit.",
+      "verification_status": "Source-proven conditional path; no timeout experiment executed. The two observed terminal/event timestamps are existing execution evidence, not newly calculated timings.",
+      "current_artifact_effect": "No invalidation of either completed material archive set; both observed manager outcomes are success/exit0 and the retained runtimes are below the full grants."
+    },
+    {
+      "id": "MI25-F2",
+      "status": "open_source_correction",
+      "severity": "P2",
+      "priority": 2,
+      "confidence": 0.97,
+      "title": "Stop full metadata writes when the output allowance is exhausted",
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+      "line_start": 159,
+      "line_end": 167,
+      "body": "OutputRun.finish detects insufficient output allowance but merely changes status and then still writes the full terminal and summary; the factor finalizer performs the same full writes with no cap check. A grant too small to fund metadata, or a resumed output directory already at its granted limit, therefore continues adding files after the budget failure. admit currently accepts any positive output_max_bytes up to the ceiling, so the fixed reserve does not eliminate this path: configure/budget can reject the run and then finally performs the writes anyway. This violates the output cap precisely on its failure path.",
+      "evidence": [
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+          "lines": "106-116,152-169",
+          "detail": "The check rejects exhausted allowance, but finish unconditionally writes full terminal/summary/event after its own cap branch."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py",
+          "lines": "258-272",
+          "detail": "A configure/check failure still flows through run.finish."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_factor_pilot.py",
+          "lines": "51-59,206-225",
+          "detail": "Budget checks reserve metadata during production, but final terminal/summary/event writes do not enforce the remaining output allowance."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_run_contract.py",
+          "lines": "92-93",
+          "detail": "Only a positive upper-bounded integer is required; no minimum metadata reservation is admitted."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py",
+          "lines": "245-253",
+          "detail": "Context publication precedes grant admission."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_factor_pilot.py",
+          "lines": "183-190",
+          "detail": "Factor context publication also precedes grant admission."
+        }
+      ],
+      "consumer_impact": "A failed or resumed bounded producer can exceed Root-owned disk-output authority while reporting an output-cap failure. The manager memory/time limits do not enforce aggregate output bytes.",
+      "narrow_correction": "Admit enough output authority for the actual context and bounded failure receipt before full publication. On an exhausted-output branch, preserve existing immutable artifacts and publish only a compact receipt that fits a genuinely reserved allowance; do not unconditionally duplicate full source/output inventories into terminal and summary files. Apply the same finalization rule to both producers.",
+      "verification_status": "Static control-flow finding only; no cap-failure execution was authorized or performed. No output-cap breach is claimed for the supplied successful runs.",
+      "current_artifact_effect": "The existing complete outputs and exact-readback evidence remain usable; this is a correction to failure/reuse boundaries, not to numerical arrays."
+    }
+  ],
+  "accepted_evidence": [
+    {
+      "id": "A1",
+      "claim": "The actual private build consumed a closed Root plan and original internal-XClib archive, with the separately admitted BEEF PIC adjunct rather than an alternative PBE implementation.",
+      "sources": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/backend-link-amendment-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/source-wave-admission-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build-inputs.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build/internal-pbe/build-receipt.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build/internal-pbe/library-binding.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build-execution-001.json"
+      ],
+      "observed": "All three recorded compiler/link steps return0, timed_out=false, with empty recorded stdout/stderr. Existing execution receipt records cumulative build time3.939094693865627 seconds under120. The built ELF binding is576432 bytes, SHA256 aa781ebae9198e626dc6393535e50f4479cfdfc52529bfa30382608fc1449ecd. These are receipt values, not new measurements.",
+      "source_trace": "build_internal_pbe.py:139-172 compares current description to admission, refuses an existing target, verifies private input copies, records compiler outcomes and checks actual linked dependencies against admitted inputs. qe_internal_pbe.py:68-120 verifies wrapper/dependency bytes, seals wrapper bytes, checks mapped dependency paths and validates the ABI before exposing evaluate."
+    },
+    {
+      "id": "A2",
+      "claim": "The new result types and persisted fields reach real consuming code rather than being silently discarded.",
+      "sources": [
+        "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_internal_pbe.py",
+        "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_reference.py",
+        "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_factor_preparation.py",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_factor_output.py"
+      ],
+      "source_trace": "NativePBEResult is consumed by reconstruct_reference into all five kernel coefficients, local/flux fields and vrs. background_arrays/restore_background cover the MaterialReference fields and coordinate identities; apply_kernel consumes the restored grho/coefficients. FactorFunctional.archive_payload emits Gram, four overlaps and all directed products; load_saved_functional validates its21-array layout and reconstructs the functional consumed by FactorPreparation. No silent producer/consumer dispatch omission was found in this scoped path."
+    },
+    {
+      "id": "A3",
+      "claim": "The production grants are tied to actual own-manager contexts, not inferred merely from service syntax.",
+      "sources": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-preflight-001/summary.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-preflight-001/summary.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/production-allocation-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-admission-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-admission-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/actual-production-context-admission-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/fresh-production-banners-001.raw.txt"
+      ],
+      "observed": "Both preflights are context-only/exit0 with no outputs. Both actual runs report uid/gid1000, groups[4,27,1000], singleton CPU6 or7, numerical thread variables1, kernel memory.max4294967296 and memory.swap.max0. Actual invocations66f7e99edc1b4b3193aa9f0d3208d88c and a6df604affad49ac88bfa5607732685d differ from their preflight invocations and match their own terminal/manager receipts. The absent optional cpuset file remains typed unavailable."
+    },
+    {
+      "id": "A4",
+      "claim": "The source coverage is a pre-execution dependency universe plus explicit current implementations and observed consumer snapshots, not a whole-OS claim.",
+      "sources": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/oracle-dependency-inventory.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/source-integration-corrections-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-production-intake-decision-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_run_contract.py",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/terminal-f77d41a852a6422bbeadb9c8508f316b.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-pilot-001/terminal-6c890f1989dd4ba389cf9fbcb9eeb5d7.json"
+      ],
+      "source_trace": "material_run_contract.py:28-46 combines unchanged0024 implementation snapshots with explicit0025 files and compares actual consumers against the bound inventory/current declared sources. admit verifies declared source bindings. Both producers check their later consumer snapshots before success. The inventory explicitly describes installed-distribution/project files and loaded standard-library sources; built-PBE dynamic dependencies are separately bound."
+    },
+    {
+      "id": "A5",
+      "claim": "Both real producers completed and their own-service outcomes independently corroborate successful process exits.",
+      "sources": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/terminal-f77d41a852a6422bbeadb9c8508f316b.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-pilot-001/terminal-6c890f1989dd4ba389cf9fbcb9eeb5d7.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-owner-001/outcome-66f7e99edc1b4b3193aa9f0d3208d88c.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-owner-001/outcome-a6df604affad49ac88bfa5607732685d.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-owner-001/notification-result.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-owner-001/notification-result.json"
+      ],
+      "observed": "Each immutable producer terminal is complete/exit0; each own-unit outcome is success/exited/0 with matching invocation. Both notification-result receipts record exit0. Source unit copies specify Restart=no, control-group cleanup and full300/180-second RuntimeMaxSec. Root reports the owned units/views retired; no live resource state was queried in this review."
+    },
+    {
+      "id": "A6",
+      "claim": "Actual saved-material consumers authenticated and restored the produced arrays without recomputing their construction.",
+      "sources": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-output-consumer-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-output-consumer-execution-001.json",
+        "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-material-output-consumer.outcome.json"
+      ],
+      "observed": "The executed command returns0 with empty stderr. It authenticates bound successful terminals; compares reference receipts to the exact terminal entries; reads all six reference archives; restores both21-array factor functionals through load_saved_functional; and checks their serialized metadata. It dispatches physical-factors explicitly and the reference branch consumes its own entries. Actual factors retain null state and density coefficients. Recorded residual/Gram/adjoint diagnostics remain raw diagnostics, not new acceptance gates."
+    },
+    {
+      "id": "A7",
+      "claim": "The actual saved background was restored into its live API and exercised once with an already saved complex K probe.",
+      "sources": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/restored-reference-result-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/restored-reference-execution-001.json",
+        "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-restored-reference-api.outcome.json"
+      ],
+      "observed": "Existing execution returns0 with empty stderr. It authenticates background-coordinates and kernel-probe-2, calls restore_background then apply_kernel, and asserts array_equal against the saved action. The result records passed=true, max_abs_difference_ry0.0 and shape[373248,2]. It rebuilds input/radial setup and the coordinate FFT adapter, not PBE/background/spin actions. This is committed-array/API restoration, not an interrupted producer or service recovery exercise."
+    },
+    {
+      "id": "A8",
+      "claim": "Existing new-oracle and refusal evidence is available and was not rerun.",
+      "sources": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/saved-output-smoke-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factor-oracle-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-producer-source-decision-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build-execution-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/restored-reference-execution-001.json"
+      ],
+      "observed": "Saved-output evidence records actual library/dependency digest refusals and named reconstruction/fixture checks. Root records58 reference checks passing; physical-factor evidence supplies its finite/Fourier outcomes. The final executed accounting records new-oracle cumulative38.864998367615044 seconds under120. Scientific correctness beyond the integration traces is assigned to the separate complete scientific reviews; none of these results were reproduced by this reviewer."
+    }
+  ],
+  "qualifications": [
+    {
+      "id": "Q1",
+      "status": "carried_accepted_history",
+      "detail": "Carry all0024 accepted findings/dispositions and retained qualifications from review-admission.json, including its original intake/deadline history, unavailable unloaded counters, initial banner timeout, known-knot-only G0 repair, protocol-immutable path readback and isolated summary-writer crash scope. Do not relabel that prior crash as a0025 producer exercise.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/../0024/review-admission.json"
+      ]
+    },
+    {
+      "id": "Q2",
+      "status": "observed_target_miss_not_scientific_failure",
+      "detail": "Reference first useful checkpoint11.51608568802476 seconds met its30-second target. Factor first useful checkpoint34.98726738523692 seconds missed30; its terminal explicitly records false. Both recorded first checkpoints are within the90-second hard allowance. Successful completion does not erase the target miss or authorize an unchanged retry.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-output-consumer-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json:437-444"
+      ]
+    },
+    {
+      "id": "Q3",
+      "status": "resource_claim_limited",
+      "detail": "The own-process limits are observed; manager peak counters are reported unset after completed units. No measured memory/CPU peak is accepted or reconstructed. Optional cpuset unavailability is retained, not turned into another gate.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json:445-445",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/production-allocation-001.json:4-8",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/actual-production-context-admission-001.json"
+      ]
+    },
+    {
+      "id": "Q4",
+      "status": "terminal_view_timeout_retained",
+      "detail": "The terminal-view wait bg_40 timed out. Its registered wait deadline was230 seconds; no cause is established here. Independent matching producer terminals, manager outcomes, notices and saved-array consumers support completion; a timed-out display wait is neither successful view evidence nor a scientific run failure.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/terminal-wait-dispatch-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json:456-456",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-result-intake-decision-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/view-retirement-001.json"
+      ]
+    },
+    {
+      "id": "Q5",
+      "status": "registered_recovery_proof_not_demonstrated_in_current_packet",
+      "detail": "implementation-registration.json:45 calls for current-production readback and a checkpoint-boundary crash proof; producer-source-contract.json:12 describes one current-generation isolated summary-writer exercise. The supplied0025 evidence instead demonstrates normal saved-array readback and committed-reference API restoration, and explicitly disclaims crash/service/unfinished-operation recovery. Preserve that distinction and the unexercised registered item in Root disposition. No new crash run, numerical rerun or additional acceptance gate is requested by this review; current artifacts may be consumed within the narrower demonstrated scope.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/implementation-registration.json:45",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/producer-source-contract.json:12",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/restored-reference-result-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json:454-454"
+      ]
+    },
+    {
+      "id": "Q6",
+      "status": "original_source_transport_qualified",
+      "detail": "The full reference map is a Root-bound transport reconstruction, not a producer-attested digest: the original producer supplied null count/hash. The initial truncated capture remains quarantined. Subsequent source-access inventory closes the new source/binary and WFC identities; map availability alone is not executed numerical equivalence.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/reference-map-transport-provenance.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/source-access-inventory.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/reference-map.complete-transport.txt:11-19"
+      ]
+    },
+    {
+      "id": "Q7",
+      "status": "original_handoff_history_retained",
+      "detail": "The317-byte material-factor-producer-handoff.original.txt was only a resumed clarification, not the complete original handoff. producer-report-recovery-001.json identifies the3785-byte original recovered from the immutable transcript; its digest is a Root transport binding. Original backend handoff names the delivered7969-byte builder, while the current9401-byte builder is separately covered by source-integration-corrections and source-wave admission. Do not present the old handoff digest as the current builder identity.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/producer-report-recovery-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-factor-producer-handoff.recovered-original.txt",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/internal-pbe-handoff.original.txt",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/source-integration-corrections-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/source-wave-admission-001.json"
+      ]
+    },
+    {
+      "id": "Q8",
+      "status": "schedule_breaches_preserved",
+      "detail": "Carry the recorded source intake lateness, missed01:05 producer-source intake, late01:10 Root decision, missed01:45 output intake, and later02:00/02:05 packet/decision lateness. Later allocations and successful results do not retroactively make those deadlines timely. These are management-history qualifications, not grounds to invent a scientific failure.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-build-oracle-decision-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-producer-source-decision-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-result-intake-decision-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-review-allocation-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json:457-457"
+      ]
+    },
+    {
+      "id": "Q9",
+      "status": "physical_scope_unchanged",
+      "detail": "Actual production remains selected Gamma, H32-x/Ni1-x force and explicit number probes, both collinear spins, all saved columns/full PW rows. Complete4-cubed normalization metadata is not complete BvK coverage. Raw MV occupations/width are not probabilities or temperature; no material D/state, ionic/cross/total noise, stationary preparation, full model or nuclear inference is accepted.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/implementation-registration.json:18-28",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-output-consumer-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-pilot-001/terminal-6c890f1989dd4ba389cf9fbcb9eeb5d7.json"
+      ]
+    },
+    {
+      "id": "Q10",
+      "status": "review_limit",
+      "detail": "No new quantitative counterexample, peak measurement, byte rehash of campaign inputs or failure-path experiment was performed. Numerical values above are quoted from the named executed outputs. The two findings are conditional source-control-flow defects; the successful retained material evidence is not described as a failed run."
+    }
+  ],
+  "next_model_step": {
+    "direction": "Root can retain and use the authenticated material H0/K and state-independent factor packages while making the two narrow finalization-control corrections under its source ownership. Do not replay settled material production or existing scientific oracles to repair bookkeeping.",
+    "model_frontier": "Proceed under the existing campaign plan to an explicitly authorized common physical reference/preparation and its relation to the actual H0 and factors, then the admitted non-Gamma/symmetry/full-k-q representation and coupled dynamics. This report does not choose a new state, temperature, bath, calibration or scientific gate.",
+    "publication": "No early PR, full delivery, stationary-material, whole-model or nuclear claim. The current recovery conclusion stays committed-array/API restoration only."
+  }
+}

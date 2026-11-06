@@ -1,0 +1,284 @@
+{
+  "schema": "P254-A35-current-physical-review-v1",
+  "correctness": "correct",
+  "explanation": "No evidence-backed introduced consumer-visible defect was found in the complete assigned current-input adapter and producer. The actual source0 receipt, result and partial aggregation support the stated initial physical-current scope; static review does not establish completed original128 operation or any broader physical claim.",
+  "confidence": 0.96,
+  "findings": [],
+  "findings_complete": true,
+  "incremental_findings_emitted": 0,
+  "finding_dispositions": [],
+  "review_scope": {
+    "full_assigned_sources_read": [
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/uniform_current_inputs.py:1-94",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/export_uniform_current_noise.py:1-143"
+    ],
+    "required_packet_read_first": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/complete-current-pilot-review-packet-001.json",
+    "contract": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/implementation-contract-001.json",
+    "patch_access": "The scoped ordinary git diff was empty. Read-only git diff --no-index against /dev/null supplied complete new-file patches for both assigned sources; a separate read-only comparison of the retained failed producer snapshot with the current producer isolated the same_binding correction.",
+    "consumer_scope": "Read the generic FullNoiseProbeInputs algebra handoff, physical field actions, covariance primitive and serializer, current aggregate result/done admission and pair/block dispatch, and the batch consume/reuse handoff and requested-subset completion calculation. This is not a separate full audit of the operational batch runner.",
+    "method": "Read-only source, receipt and JSON-artifact inspection. No imports, builds, lint, tests, numerical or physical runs, source edits, process/service changes or relaunches. The only new write is this local report."
+  },
+  "evidence": [
+    {
+      "topic": "Actual original background/control/factor join; no fake Hamiltonian",
+      "disposition": "no defect found",
+      "locations": [
+        "attempts/0035/uniform_current_inputs.py:17-44",
+        "attempts/0030/original_noise_source.py:59-173",
+        "attempts/0028/matched_reference_io.py:42-72",
+        "src/substrate_framework/material_control_reference.py:33-55",
+        "src/substrate_framework/qe_material_hamiltonian.py:98-111"
+      ],
+      "observation": "The adapter restores the admitted original sector, reloads the existing saved-background API, compares actual control provenance/background receipt/population-ledger references with that sector, and constructs the real MaterialHamiltonian using context.coupling.factors and its explicit spin. MaterialHamiltonian.__post_init__ checks the physical FFT and exactly bound input-source join. The restoration path reads/authenticates existing background arrays; it does not call the background-generation path. There is no fabricated Hamiltonian namespace and no invocation of MaterialHamiltonian.apply."
+    },
+    {
+      "topic": "Physical kinetic plus nonlocal field action and current scale",
+      "disposition": "no defect found",
+      "locations": [
+        "attempts/0035/uniform_current_inputs.py:46-75",
+        "src/substrate_framework/material_physical_operators.py:125-201",
+        "src/substrate_framework/material_physical_operators.py:203-235"
+      ],
+      "observation": "PhysicalFieldAction.apply starts from 2*(k+G).direction and adds both derivative/base projector terms with the original channel D. A35 evaluates prepare(e_x/e_y/e_z).apply on the entire original frame and scales only the newly allocated output in place by -0.5. This matches the existing owning moments API electronic_current_hartree=-field_gradient/2 rather than substituting a kinetic-only or hand-written current operator. Actual source0 specifications contain all three real unit directions, scale -0.5 and direct-physical-UPF-zero-field-v1 physical-factor provenance."
+    },
+    {
+      "topic": "Exact real-direction Hermiticity and adjoint-array reuse",
+      "disposition": "no defect found",
+      "locations": [
+        "attempts/0035/uniform_current_inputs.py:48-75",
+        "src/substrate_framework/material_physical_operators.py:109-113",
+        "src/substrate_framework/material_physical_operators.py:156-158",
+        "src/substrate_framework/material_physical_operators.py:170-180",
+        "src/substrate_framework/material_noise_projection.py:65-103"
+      ],
+      "observation": "The inherited field API rejects complex directions and checks exact equality of every UPF active_d with its conjugate transpose. Its adjoint_apply delegates apply for that real-direction/Hermitian-D contract. A35 passes the same read-only owned action array on both ActionFactors legs, and the projection primitive explicitly supports identity-equal action/adjoint arrays. The producer accurately reports three physical evaluations and three Hermiticity reuses, not six independent evaluations. The generic inherited covariance metadata still describes supplied adjoint legs; the current-specific specification and work fields explicitly identify the valid reuse."
+    },
+    {
+      "topic": "Full-PW/all-raw-S-D/saved12 input preservation",
+      "disposition": "no defect found",
+      "locations": [
+        "attempts/0030/original_noise_source.py:59-173",
+        "attempts/0030/original_noise_source.py:208-253",
+        "attempts/0030/full_noise_probe_inputs.py:11-33",
+        "attempts/0035/uniform_current_inputs.py:90-94",
+        "attempts/0035/export_uniform_current_noise.py:106-118"
+      ],
+      "observation": "The inherited source admission authenticates the original boundary/frame/raw D/preparation, checks raw D and admitted Gram against the saved source-state transport, reconstructs and compares the actual native transported full frame, and reads the unchanged saved12 selected indices and coordinate convention. A35 returns those same psi/gram/raw-D/coordinates/selection objects through FullNoiseProbeInputs and acts on every original row and column. Actual source0 metadata records shape [18613,346], covariance raw_factor_count=346, active_count=12, full_pw_dimension=18613, and selected=[289,290,288,291,287,292,286,293,285,294,284,295]. The projection does not restrict the underlying state to twelve columns."
+    },
+    {
+      "topic": "Generic primitive to serializer to current consumer dispatch",
+      "disposition": "no defect found",
+      "locations": [
+        "attempts/0035/export_uniform_current_noise.py:102-118",
+        "src/substrate_framework/material_noise_projection.py:106-228",
+        "attempts/0030/export_output_directed_actions.py:42-49",
+        "attempts/0035/aggregate_uniform_current_noise.py:31-48",
+        "attempts/0035/aggregate_uniform_current_noise.py:141-234",
+        "attempts/0035/aggregate_uniform_current_noise.py:237-289"
+      ],
+      "observation": "The producer hands all three named probes to the existing projected_noise_decomposition. Its nested probe loops compute every ordered pair and its nested retained/omitted loops compute all four ordered blocks. The existing covariance_rows serializer is generic over result['full']; it has no force-only name filter. The receiving current parse_covariance explicitly accepts current_x/current_y/current_z, requires nine distinct pairs and four distinct part combinations per pair, and the aggregate iterates those exact probes and blocks. There is no unmatched new-value dispatch or silent pair/block drop. Inspection of the actual result found nine distinct ordered pairs and 36 serialized blocks, with RR, RE, ER and EE present for every pair."
+    },
+    {
+      "topic": "Scientific source identity and consumer admission",
+      "disposition": "no defect found",
+      "locations": [
+        "attempts/0035/export_uniform_current_noise.py:21-61",
+        "attempts/0034/mode_noise_compatibility.py:15-33",
+        "attempts/0035/aggregate_uniform_current_noise.py:56-80",
+        "attempts/0035/aggregate_uniform_current_noise.py:149-161"
+      ],
+      "observation": "The producer fixes the contract byte count/hash, fixes the A34 scientific-profile bytes, invokes the inherited validator of its 74 scientific-source bindings, and hashes that profile identity plus the contract binding and actual new producer/input source bindings. The inherited profile covers the relevant restoration, physical-field, Hamiltonian, projection and serialization sources. The consuming aggregate recomputes the current scientific identity and requires exact equality; no unknown legacy-current result admission exists. The actual result and actual partial aggregate both carry db847e425628ba1b9272b625a6398bcae2fff1b1a944216b8d97e0df825b5d82. This is correctly described as scientific-source identity, not a complete binary/runtime lock."
+    },
+    {
+      "topic": "Original metadata bytecount representation failure and corrected diagnosis",
+      "disposition": "historical issue fixed in reviewed producer; not an open finding",
+      "locations": [
+        "attempts/0035/failed-first-producer-source-001.py.snapshot:99-104",
+        "attempts/0035/export_uniform_current_noise.py:84-105",
+        "attempts/0034/aggregate_mode_noise.py:56-59",
+        "attempts/0035/first-pilot-diagnosis-correction-001.json",
+        "attempts/0035/actual-first-current-pilot-failure-001.json"
+      ],
+      "observation": "The retained first native failure exited 1 after 54.318 seconds at the post-action boundary/preparation dictionary comparison. Both original references have exactly path/bytes/sha256, with bytes stored as decimal strings; contract byte counts are integers. The sidecar correctly supersedes the first receipt's inaccurate extra-metadata-keys explanation without rewriting the original failure. The only failed-snapshot-to-current-producer changes are importing existing same_binding and using it for those two comparisons. same_binding compares resolved path, int(bytes) and SHA, so it fixes representation equality without modifying physical inputs. The successful actual source0 result still preserves the original string-valued boundary/preparation references."
+    },
+    {
+      "topic": "Work counts and actual source0 native evidence",
+      "disposition": "no defect found",
+      "locations": [
+        "attempts/0035/uniform_current_inputs.py:81-89",
+        "attempts/0035/export_uniform_current_noise.py:119-122",
+        "attempts/0035/actual-current-source0-pilot-admission-002.json",
+        "/var/tmp/p254-a35-uniform-current-source0-002/result.json"
+      ],
+      "actual": {
+        "native_exit": 0,
+        "producer_elapsed_seconds": 63.454811699688435,
+        "native_service_runtime_seconds": 63.920,
+        "native_cpu_seconds": 63.803,
+        "peak_rss_bytes": 1248956416,
+        "contraction_seconds": 9.58654560521245,
+        "current_action_evaluations": 3,
+        "adjoint_reuses_by_hermiticity": 3,
+        "current_action_columns": 1038,
+        "force_forward_actions": 0,
+        "force_adjoint_actions": 0,
+        "h0_actions": 0,
+        "trajectory_actions": 0,
+        "native_calls": 0,
+        "gram_recomputations": 0,
+        "population_refills": 0,
+        "preparation_replays": 0,
+        "raw_action_payloads_written": false
+      },
+      "observation": "Read the actual stored native stdout/stderr and result work fields; no run was repeated. The static call path is consistent with the current-only counters. The peak RSS here is the result's process resource measurement, not the much smaller service Memory peak text. The failed first attempt remains separately charged; no in-case action-array recovery is claimed."
+    },
+    {
+      "topic": "Result/done publication and downstream completion boundary",
+      "disposition": "no defect found",
+      "locations": [
+        "attempts/0035/export_uniform_current_noise.py:64-76",
+        "attempts/0035/export_uniform_current_noise.py:131-135",
+        "attempts/0034/checkpoint_directories.py:6-30",
+        "attempts/0035/aggregate_uniform_current_noise.py:141-150",
+        "attempts/0035/batch_uniform_current_noise.py:159-173"
+      ],
+      "observation": "Each new scalar JSON file is opened exclusively, flushed and fsynced, followed by directory synchronization. result.json is fully published and bound before done.json is created. The consumer requires done.json and authenticates its bound result at the expected sibling path; partial result files are not committed cases. The batch consuming side reads the durable subprocess outcome/streams and then calls that same result admission. The actual source0 done receipt binds result.json at exactly 111971 bytes and SHA 6533426545dc60b2a2f453aa631263c4d6017c89cb5b469cbe9c92beb48ba97c."
+    },
+    {
+      "topic": "Actual partial aggregation and prospective original128 scope",
+      "disposition": "no defect found in assigned handoff; full execution unexercised",
+      "locations": [
+        "attempts/0035/aggregate_uniform_current_noise.py:113-138",
+        "attempts/0035/aggregate_uniform_current_noise.py:237-289",
+        "attempts/0035/aggregate_uniform_current_noise.py:299-332",
+        "attempts/0035/batch_uniform_current_noise.py:241-262",
+        "/var/tmp/p254-a35-current-source0-partial-001.json"
+      ],
+      "observation": "The original128 context admits the literal two-spin internal 4x4x4 sectors, all346 columns, exact saved12 selections and 1/64 sector weights. Current-result admission and summation do not restrict processing to record0. Each admitted raw covariance/block receives the actual quadrature weight once, without spin/spatial multipliers or partial renormalization. The actual aggregate is partial with original_records=[0], sector_count=1 and 127 missing sectors; its recorded CLI exit is 2. Its xx real full value is 15.891457645175683 versus source0 raw 1017.0532892912437. Batch requested-subset completeness returns 0 independently of its full_original128_coverage flag; aggregate complete128 remains the separate condition for exit 0. No settled source1 outcome was supplied to this review and none is asserted."
+    },
+    {
+      "topic": "Scientific claim boundary",
+      "disposition": "no defect found",
+      "locations": [
+        "attempts/0035/implementation-contract-001.json",
+        "attempts/0035/export_uniform_current_noise.py:125-130",
+        "/var/tmp/p254-a35-uniform-current-source0-002/result.json:scope",
+        "/var/tmp/p254-a35-current-source0-partial-001.json:scope"
+      ],
+      "observation": "The delivered quantity is the initial external-Gamma raw electronic current J=-L/2 and its retained/omitted quasifree covariance on the admitted original state. The stored result and aggregate explicitly exclude canonical photon-force mapping, joint force-current noise, finite-q density, a trajectory, stationarity, temperature/FDT, loss, linewidth, heat and full-parent closure. Existing physical-factor/derivative/CAR/Fock/projection/transport proofs were carried rather than reopened or replaced with new precision gates."
+    }
+  ],
+  "sourcebindings": {
+    "binding_provenance": "Original-file byte counts and SHA256 values below are taken from the supplied complete review packet, fixed contract, actual result implementation/source bindings, done receipt and actual admission. They are not rendered-text sizes or footer counts. This read-only review did not independently rehash files or execute the source-identity validator.",
+    "assigned_sources": [
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/uniform_current_inputs.py",
+        "bytes": 5588,
+        "sha256": "62f148776bf4b1af43addcddae599493a285dcea626f2c0c686ae6873051ac9d"
+      },
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/export_uniform_current_noise.py",
+        "bytes": 7276,
+        "sha256": "2a70ee507595ce09789b538397d6bc7e5739789821b717e80b14d4dd9fee4e95"
+      }
+    ],
+    "fixed_authorities": [
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/implementation-contract-001.json",
+        "bytes": 5419,
+        "sha256": "16e4f1330afd5f8a16af31959f914bafb156d55dfb650f20f86cd514f0431316"
+      },
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/scientific-compatibility-001.json",
+        "bytes": 33556,
+        "sha256": "c493b579639df51171773318373acdba4244601c7ad4926ca0f4c8bedc5605e2"
+      },
+      {
+        "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+        "bytes": 25705,
+        "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"
+      },
+      {
+        "path": "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+        "bytes": 59561233,
+        "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"
+      },
+      {
+        "path": "/var/tmp/p254-a28-matched-loaded-rebind-001/original/boundary.json",
+        "bytes": 277032,
+        "original_reference_bytes_type": "string",
+        "sha256": "6fb559b067146ce2a44e5ecdf29a0f6045477dec4af769714830049af55752e2"
+      },
+      {
+        "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/preparation.npz",
+        "bytes": 6129716,
+        "original_reference_bytes_type": "string",
+        "sha256": "2b879087b1c52397c46504ea335abb0b6ef5d236e680be23eab6ba13fa5f386d"
+      }
+    ],
+    "actual_pilot_artifacts": [
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/actual-current-source0-pilot-admission-002.json",
+        "bytes": 4772,
+        "sha256": "e847ea4434ef5006df08baa83cb47c981be9d8463edd4c57afa13e010709194b"
+      },
+      {
+        "path": "/var/tmp/p254-a35-uniform-current-source0-002/result.json",
+        "bytes": 111971,
+        "sha256": "6533426545dc60b2a2f453aa631263c4d6017c89cb5b469cbe9c92beb48ba97c"
+      },
+      {
+        "path": "/var/tmp/p254-a35-uniform-current-source0-002/done.json",
+        "bytes": 197,
+        "sha256": "c0ebc7a86dda5729543f4a14ad930300def40500342d915159b6ffaa204abe95"
+      },
+      {
+        "path": "/var/tmp/p254-a35-current-source0-partial-001.json",
+        "bytes": 122750,
+        "sha256": "fea5624d6058d7bab4f192bc0519adf00b84c73e9591ed3b75eb04733f7c7dd6"
+      }
+    ],
+    "retained_failure_and_correction": [
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/failed-first-producer-source-001.py.snapshot",
+        "bytes": 7194,
+        "sha256": "39bab02942edacabc25fa27e28e2e42b451c25cb4a9baa3f18ce95e7973d5dc4"
+      },
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/actual-first-current-pilot-failure-001.json",
+        "bytes": 3612,
+        "sha256": "7a47f2a93c2aa3548e68d31a0f69bd4fdeb0de0968a10cf5b330daf1378d0cf9"
+      },
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/first-pilot-diagnosis-correction-001.json",
+        "bytes": 2150,
+        "sha256": "b3c125eae08f11f10cf928cc7a52995a6d4ca7dd40914aadecec251f09bc7bb8"
+      }
+    ],
+    "scientific_identities": {
+      "inherited_A34": "992271a6099376f2dc3e0596284d4afa9fa9afa36a5f1a7c79bf2b60c5bd0cc5",
+      "actual_A35": "db847e425628ba1b9272b625a6398bcae2fff1b1a944216b8d97e0df825b5d82"
+    },
+    "source0_original_arrays": [
+      {
+        "path": "/home/administrator/.cache/dft/p254-a28-full-material/initialization-001/initial/frame-0000.npy",
+        "bytes": 103041696,
+        "sha256": "de795e90110875a36d888655e6c27e574f7c2d9ca731b3b540ffa68e75d744cc"
+      },
+      {
+        "path": "/home/administrator/.cache/dft/p254-a28-full-material/initialization-001/initial/D-35119e79665a226ad3e702eed972dda3d41c982225a7edf3fb081b66c303702a.npy",
+        "bytes": 1915584,
+        "sha256": "6d09c3643a708f614bd054d882bb62ee47f971eedfb4bda33d39198e7f572c13"
+      }
+    ]
+  },
+  "unexercisedscope": [
+    "No independent import, build, lint, test, numerical contraction, physical action, source-identity execution or process/service operation was performed.",
+    "No settled actual source1 serial-case outcome was received or inferred; this report asserts only the supplied source0 actual run and its actual partial aggregate.",
+    "No completed original128 production, full128 aggregate or associated total cost was observed. Applicability to the remaining original sectors is a static code/admission conclusion, not an execution result.",
+    "Failure injection, interruption/restart behavior, resource-limit behavior and complete operational runner lifecycle were not exercised.",
+    "Stored byte-count/SHA bindings were read and cross-referenced, not independently recomputed from file bytes by this review.",
+    "No canonical photon generalized-force map, joint force-current noise, finite-q density, stationarity, FDT, loss, lifetime, linewidth, heat, trajectory or full-parent closure was reviewed as implemented or claimed complete.",
+    "Existing derivative, physical-factor, CAR/Fock, projection and source-transport proofs were intentionally carried, not reopened with new physics or precision gates."
+  ]
+}

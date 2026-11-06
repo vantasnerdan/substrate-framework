@@ -1,0 +1,70 @@
+{
+  "schema": "P254-joint-field-readout-registration-v1",
+  "status": "preregistered-not-executed",
+  "scope": "Core E changed field readouts only; no replay of settled q dynamics/storage checks; no material result",
+  "retained_proof": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-partitioned-q-storage-oracle-003.json",
+    "bytes": 36123,
+    "sha256": "d1c495cba5ae8124f83658a00023a2b1305218f8ab270f565dc1b0a1851e6d9c"
+  },
+  "original_sources": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-history/joint-field-readouts-original-sources-001.json",
+    "bytes": 13910,
+    "sha256": "867d2f047764d811102a112e22b08bc02c21dc75180005a271d52cbd4216ef14"
+  },
+  "producer_snapshot": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-history/run_joint_q_material.pre-field-readouts-001.py",
+    "bytes": 21691,
+    "sha256": "29ae04f643731b9514a693c09b98688241353a11d2cf41d7455744488c67c550"
+  },
+  "changed_sources": [
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_q_material.py",
+    "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/joint_field_probes.py",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_field_readout_oracle.py"
+  ],
+  "retention_rule": "Every proof003 source binding must match exact current bytes, except the sole changed producer wrapper which must match its preserved actual original bytes. All 100 passed checks retained explicitly from authenticated proof003, not re-executed or relabeled as new.",
+  "new_checks": [
+    "full-PW field terminal coordinate/momentum coefficients and independent adjoint shapes",
+    "Gamma canonical projected Cartesian commutator and zero mixed initial origins",
+    "physical normalization, missing-axis, wrong mass/polarizations, nonGamma and unsupported selection rejection",
+    "actual partitioned coherent ionic kick to nonzero field coordinate and momentum, independent dense DOP853 and RK4 refinement",
+    "actual partitioned BOTH-sided unequal-time coordinate and momentum ordered covariance, independent dense and Fock initial electronic/ionic/field origins",
+    "cross coordinate/momentum two-sided covariance",
+    "source admission and retention mutation rejection without weakening unrelated bindings",
+    "no sqrtN/N field readout multiplier; coordinate/momentum swap and missing-initial-origin mutation witnesses",
+    "field observable/axis/normalization changes producer identity; total-force default identity remains original spatial contract",
+    "foreign-observable terminal dual checkpoint identity rejected"
+  ],
+  "finite": {
+    "time": 0.09,
+    "second_time": 0.06,
+    "coherent_steps": [
+      8,
+      16
+    ],
+    "pair_steps": 16,
+    "absolute_relative_tolerance": 2e-08,
+    "commutator_tolerance": 2e-12,
+    "cpus": [
+      9,
+      10
+    ]
+  },
+  "semantics": {
+    "coordinate": "a=e A_SI/hbar, bohr^-1",
+    "momentum": "Pi=M_a da/dtau, bohr",
+    "mass": "physical BvK volume_bohr3/(8*pi)",
+    "field_axis": "Cartesian x/y/z projection onto admitted orthonormal polarization subspace, no renormalization; absent axis rejected",
+    "canonical_commutator": "[a_i,Pi_j]=i (E.T E)_ij; identity for complete 3-axis field",
+    "ionic_seed": "--atom/--axis remain ionic canonical momentum kick; independent --field-axis chooses readout",
+    "force_compatibility": "total-force default preserves original identity payload and request/result fields; field-only metadata and labels cannot form a force-only full grid",
+    "limits": [
+      "connected ordered covariance is not energy transfer or an energy ledger",
+      "global field only at Gamma, not finite-q photons or whole-spatial reconstruction",
+      "no material producer result until actual completed moving history and current-source proof exist"
+    ]
+  },
+  "first_run": "python proposals/P254-ni-collective-response/attempts/0028/run_joint_field_readout_oracle.py --output proposals/P254-ni-collective-response/attempts/0028/joint-field-readout-oracle-001.json --work /var/tmp/p254-a28-joint-field-readout-oracle-001 --cpus 9 10 --max-seconds 1800 --max-output-bytes 1000000000 --max-memory-bytes 8589934592 --worker-memory-bytes 1610612736",
+  "material_command_prerequisite": "Only after the oracle actually passes and a completed actual moving history exists: supply CASE, INITIALIZATION, INITIALIZATION_SHA256, HISTORY, HISTORY_SHA256, TIME, SECOND_TIME, SUBDIVISIONS and measured-plan resource caps. These variables refer to authenticated real receipts, never proposed grids. Separate fresh output roots are required for coordinate and momentum.",
+  "material_first_run": "python proposals/P254-ni-collective-response/attempts/0028/run_joint_q_material.py --case \"${CASE:?}\" --initialization \"${INITIALIZATION:?}\" --initialization-sha256 \"${INITIALIZATION_SHA256:?}\" --history \"${HISTORY:?}\" --history-sha256 \"${HISTORY_SHA256:?}\" --oracle proposals/P254-ni-collective-response/attempts/0028/joint-field-readout-oracle-001.json --output \"${OUTPUT:?}\" --mode all --q 0 0 0 --cpus 9 10 --max-memory-bytes \"${MAX_MEMORY_BYTES:?}\" --worker-memory-bytes \"${WORKER_MEMORY_BYTES:?}\" --max-actions \"${MAX_ACTIONS:?}\" --max-seconds \"${MAX_SECONDS:?}\" --max-output-bytes \"${MAX_OUTPUT_BYTES:?}\" --time \"${TIME:?}\" --second-time \"${SECOND_TIME:?}\" --subdivisions \"${SUBDIVISIONS:?}\" --atom 37 --axis x --cell 0 0 0 --amplitude 1 --dynamics screened-joint --observable \"${OBSERVABLE:?field-coordinate or field-momentum}\" --field-axis y"
+}

@@ -1,0 +1,13 @@
+{
+  "actual_time": "2026-10-30T02:54:13.369869+00:00",
+  "pane": "w1:p3R",
+  "shell": "rc=0; env XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus systemd-run --user --unit=p254-a28-mixed-local-coordinate-oracles-001 --wait --pipe --property=RuntimeMaxSec=250 --property=TimeoutStopSec=10 --property=MemoryMax=1073741824 --property=CPUAffinity=10 env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 /bin/bash -c 'timeout 120s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_frame_response_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-frame-response-oracle-002.json; frame_rc=$?; timeout 120s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_coordinate_response_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-coordinate-response-oracle-001.json; coordinate_rc=$?; printf '\"'\"'\nP254_LOCAL_FRAME_RC_%s\nP254_COORDINATE_RC_%s\n'\"'\"' \"$frame_rc\" \"$coordinate_rc\"; test \"$frame_rc\" -eq 0 && test \"$coordinate_rc\" -eq 0' || rc=$?; printf '\nP254_LOCAL_COORDINATE_001_DONE_%s\n' \"$rc\"",
+  "tool_result": {
+    "text": "(no output)",
+    "details": {
+      "wallTimeNoticeEmitted": false,
+      "timeoutSeconds": 20,
+      "wallTimeMs": 43.86795300245285
+    }
+  }
+}

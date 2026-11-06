@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "id": "NC1-runtime-prelaunch-repair-01",
+  "registered_at": "2026-10-19T22:57:01.470Z",
+  "status": "REGISTERED BEFORE REPAIR IMPLEMENTATION AND BEFORE ANY NC1 NATIVE OUTPUT",
+  "objective": "Repair all four complete prelaunch review findings without changing physical settings, native executables, live GBRV sources or NC0/source6/G10 artifacts; preserve originals, prove the repaired software path and obtain complete independent source re-review before any native grant.",
+  "sources": {
+    "original_source_bank": "catalyst-dft@e9e9421",
+    "scientific_intake_bank": "substrate-framework fork@1d034b81",
+    "original_findings": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/verification/prelaunch-findings-original.json",
+    "original_snapshot": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/initial-failures/prelaunch-review-001/source-snapshot.json",
+    "kernel_references": [
+      {
+        "url": "https://man7.org/linux/man-pages/man2/pidfd_open.2.html",
+        "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/pidfd_open.2.html",
+        "scope": "Linux process-descriptor semantics. Host Linux6.8: flags0 only; no Linux6.9 thread/process-group flags.",
+        "sha256": "a80c7653f8b04e64a9c1aad04fce95529e29e174e3e954c6ded61573226a9a31"
+      },
+      {
+        "url": "https://man7.org/linux/man-pages/man2/pidfd_send_signal.2.html",
+        "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/pidfd_send_signal.2.html",
+        "scope": "Linux process-descriptor semantics. Host Linux6.8: flags0 only; no Linux6.9 thread/process-group flags.",
+        "sha256": "8d24f2e2cd932227b0fc37772306ea5e779acb76ca227638dbc101ccb513730c"
+      }
+    ],
+    "actual_host_api": "DFT Python on CPU5 successfully os.pidfd_open(self,0), signal.pidfd_send_signal(fd,0,None,0), close; os.P_PIDFD available. No Linux6.9 flags and no external signal target."
+  },
+  "findings": [
+    {
+      "agent": "ReviewNc1Runtime",
+      "title": "Reconcile evidence against all native attempts, not only observed ones",
+      "body": "`finish()` builds the expected-attempt set exclusively from `self.attempts`, which is populated only when a live PW PID is sampled. If an entire native attempt falls between polls, it contributes no missing-rank entry; likewise, a restart that consumes completed force/queue caches does not validate the earlier attempts' runtime evidence. `launch.py:181–184` consequently accepts an empty or incomplete observation set and writes `status=complete` despite lacking the required post-banner rank/resource evidence. Reconcile the observations against the durable native command/result attempt identities used by the queue, requiring either this invocation's evidence or explicitly validated prior evidence for reused boundaries; mark unsampled attempts as missing rather than omitting them.",
+      "priority": 1,
+      "confidence": 0.98,
+      "file_path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/observer.py",
+      "line_start": 309,
+      "line_end": 312
+    },
+    {
+      "agent": "ReviewNc1Runtime",
+      "title": "Bind ownership to live ancestry before recording a PID",
+      "body": "`descendants()` returns bare PID numbers, and both `NativeObserver.poll()` and this rescan acquire their start ticks only afterward. If a descendant exits and its PID is reused before `identity(pid)`, the replacement process is inserted into `observer.owned` with its own valid start time, without checking that it still belongs to this launcher. Subsequent identity checks therefore authenticate the unrelated replacement, and `stop_owned()` sends TERM/KILL to it and its process group; the separate `getpgid()`/`killpg()` sequence also permits group reuse after validation. This can terminate another same-user workload during NC1 shutdown. Establish ancestry/session ownership together with a stable process handle, retain that handle for signalling, and do not derive group-wide signals from unchecked/reused numeric PIDs.",
+      "priority": 1,
+      "confidence": 0.95,
+      "file_path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/launch.py",
+      "line_start": 81,
+      "line_end": 84
+    },
+    {
+      "agent": "ReviewNc1Runtime",
+      "title": "Validate each sampled TID's identity and thread-group membership",
+      "body": "The affinity read uses only the numeric TID obtained from an earlier `/proc/<pid>/task` directory listing. If that thread exits and its TID is reused before `sched_getaffinity()`, the call can succeed for a thread in another process rather than raising `ProcessLookupError`. The later leader-PID start-time check does not detect this: the unrelated affinity is saved as NC1 evidence and can trigger `_check()`'s permanent resource failure, stopping an otherwise compliant calculation. Read and revalidate each task's start identity and membership around the affinity read, and record a changed/disappeared task as a sampling gap instead of attributing the replacement thread to this rank.",
+      "priority": 2,
+      "confidence": 0.94,
+      "file_path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/observer.py",
+      "line_start": 248,
+      "line_end": 252
+    },
+    {
+      "agent": "ReviewNc1Publisher",
+      "title": "Reject an MPI launcher outside the frozen executable identity",
+      "body": "If the service's PATH resolves `mpirun` to a different executable, this preflight still succeeds as long as the previously frozen `/usr/bin/mpirun` remains unchanged: it hashes the recorded paths but never checks which launcher the consumer will select. `catdft.qe_stage._launch()` subsequently calls `shutil.which(\"mpirun\")` again and executes that result, while `NativeObserver` validates only PW processes, so an unbound MPI launcher can execute without a frozen-input refusal. Pin the recorded launcher into the executed command or compare the runtime resolution and digest with the receipt before spawning the queue.",
+      "priority": 2,
+      "confidence": 0.94,
+      "file_path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/launch.py",
+      "line_start": 37,
+      "line_end": 42
+    }
+  ],
+  "layout": {
+    "parent_owned": [
+      "runtime/evidence_io.py (extract existing digest/save primitives; no aliases)",
+      "runtime/observer.py (orchestrate identity-safe observation and complete attempt reconciliation)",
+      "runtime/launch.py (stable-handle-only stop, bounded cleanup, runtime MPI identity preflight)",
+      "runtime/bank.py (migrate primitive imports only)",
+      "execution-contract.json and matching material supplement, archive/publication/docs/review integration"
+    ],
+    "independent_slices": [
+      {
+        "id": "PROCESS-HANDLES",
+        "file": "runtime/process_handles.py",
+        "responsibility": "Stable live-ancestry-authorized pidfd ownership, fd-based signaling/reaping, per-TID start/group membership around affinity reads.",
+        "interface": "ProcessHandle exposes pid,start_ticks,pidfd,proc_fd (retained open proc directory), alive(), signal(signum). OwnedProcesses(root_pid): refresh()->tuple[ProcessHandle], live()->tuple[ProcessHandle], signal_all(signum)->list[int], reap(exclude_pid=None), close(). sample_task_affinities(handle)->dict with affinities dict[TID,list[CPU]], task_identities dict[TID,{start_ticks,tgid}], gaps list[dict]. Never killpg or signal numeric PID. Bind and cross-check pidfd/proc_fd to the same live identity and confirm ancestry while child/ancestor handles are retained; bare PID discovery is not authority. Proc observations use openat/readlinkat or OS traversal of retained proc_fd, never userland resolve of its proc magic-link into a reusable PID path. Keep adopted original descendants owned through handles; root subreaper precedes construction. Bound handle lifetime; reap only owned children via P_PIDFD; Popen owns its leader status. Per-TID affinity requires unchanged start/group membership before and after the read, otherwise a gap, not foreign CPU evidence."
+      },
+      {
+        "id": "ATTEMPT-EVIDENCE",
+        "file": "runtime/attempt_evidence.py",
+        "responsibility": "Reconcile every durable NEW native command attempt and every completed reused force cache against validated current or prior raw runtime evidence.",
+        "interface": "AttemptEvidence(contract, manifest, native_output) constructor runs before queue spawn and captures baseline command attempts. reconcile(records)->dict[attempt_path,list[issue]], only nonempty issue lists; atomically writes native_output/attempt-evidence.json. Own constructor/source/snapshot validation and missing evidence catalog; no source controller launches. Import digest/save from parent evidence_io.py.",
+        "expected_cases": "All newly created forces/<geometry>/scf/attempts/<uuid>/command.json directories, including wholly unobserved attempts; every completed forces/<geometry>/scf/result.json attempt used by durable cache. Baseline incomplete/failed abandoned attempts are retained without becoming new successes. Do not omit an attempt because no PID was sampled. Reused completed force data requires explicitly revalidated prior evidence; empty new observations are not a license.",
+        "proof_authority": "Frozen manifest/root relaxation specs and publication receipt authorize executables/model/units/environment. Require five unique post-banner rank snapshots from one actual attempt/invocation with matching copied native inputs, immutable root spec hashes, rank/world/env/all-task evidence, kernel caps and loaded-object closure. Validate snapshot event SHA and relevant observed violations from the same invocation; missing final summary after an actual kill must not erase valid original raw post-banner evidence for an already completed force. Never invent resource observations, relabel old evidence as new, or recompute completed physical data merely to repair a metadata index."
+      }
+    ]
+  },
+  "parent_integration": {
+    "mpi": "Resolve shutil.which(mpirun) in actual launch environment before queue spawn and compare lexical/resolved path and raw digest with the immutable publication receipt executables.mpirun plus frozen map. Also validate each observed/copied native command argv launcher and mpi_launcher_sha256; do not change the frozen generic qe_stage or add fallback wrappers.",
+    "snapshot_events": "After each atomic snapshot, write its SHA into the durable snapshot event. Attach cwd/pid/start/rank/record key when available to original violations so prior force-specific evidence can be evaluated without hiding later failures.",
+    "ownership": "Use retained handles, never unchecked PID/process-group signals. Refresh owned descendants before stop/reap, use only P_PIDFD reaping for adopted handles while Popen owns its leader. No root/W1/probe/unrelated workload target. Bound stream-cleanup waits and record any unfinished capture as failure rather than hang or claim success."
+  },
+  "waves": [
+    {
+      "id": "R0",
+      "inputs": "Both complete reviews and all four original findings, actual source snapshot, readable saved kernel references and host API success.",
+      "work": "Archive original six candidate publications, source snapshot, actual smoke/review subjects and findings; amend only runtime source input lists and metadata, leave physical model/thresholds/native code unchanged."
+    },
+    {
+      "id": "R1",
+      "inputs": "Registered R0 and fixed interfaces above.",
+      "work": "Two independent new helper modules may implement concurrently; parent integrates only named existing runtime files and common primitives. No tests/builds/smokes/native/unit changes/Git by children."
+    },
+    {
+      "id": "R2",
+      "inputs": "Both helper slices and parent integration fully settled.",
+      "work": "Reproduce exposing consumer failures with deterministic regression cases for wholly unsampled/reused/tampered attempt evidence and unbound MPI resolution; actual owned-child/nested-session/orphan stop and unrelated-sibling survival smoke; actual task-identity sampling. Follow existing test conventions, no source-text/mock-echo/incidental default tests. Run actual immutable publisher/strict consumers/repeat/refusals after final source; unit parser only if source changed. No broad unchanged science-suite/oracle rerun."
+    },
+    {
+      "id": "R3",
+      "inputs": "Complete repaired source and all actual affected evidence.",
+      "work": "Close complete source/evidence package, independent re-review both publisher/provenance and ownership/runtime findings; repair any findings. Bank is persistence, not admission."
+    },
+    {
+      "id": "R4",
+      "inputs": "Clear complete prelaunch source re-review AND complete k666 owner package/resource release AND explicit parent grant.",
+      "work": "Only then actual registered NC1 native first force/resource observations and bounded kill/restart preserving completed boundary before continuing all four primary statics and unchanged NC1/G1-G5 arc."
+    }
+  ],
+  "resource_gate": "No NC1 native grant. Existing k666 owns requested6–10 until complete owner release; W1 now has three coarse primaries and dispersed control running unchanged0–4. Root metadata work CPU5 only; live/native resources are not inferred from requested masks or parser/source tests.",
+  "unchanged": "Exact SG15 UPFs, functional/spin/occupation choice, all four initial seeds/cell/masses, band policy, SCF and optimizer settings, numerical/branch/size/strain/isotope controls, matched GBRV comparison and full G1-G5 obligations. No early PR or material/runtime claim."
+}

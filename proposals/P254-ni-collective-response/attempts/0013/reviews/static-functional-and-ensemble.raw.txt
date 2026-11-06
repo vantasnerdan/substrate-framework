@@ -1,0 +1,53 @@
+**overall_correctness:** correct — STATIC slice  
+**confidence:** 0.97  
+**Findings:** none; the complete finding array is empty.
+
+**Explanation:** The retained package supports a noncircular constrained-static construction for its declared finite mean-field functional. The independently solved scalar free energies corroborate the analytic response curvature in both registered mean-constraint ensembles; no load-bearing STATIC defect was found. This establishes useful finite-model progress, not material calibration or completion of the coherence-domain objective.
+
+### Strongest supported result
+
+For the frozen four-orbital, two-collinear-spin fixture, the construction consistently combines:
+
+- The complete spectral FD entropy and density-quadratic interaction.
+- Two independent ionic amplitudes and their mixed curvature.
+- Explicit \(W_{ab}\) contributions, including \(W_{12}=W_{21}\).
+- Nonzero cross-spin interaction channels.
+- Fixed mean \(N\), with either relaxed mean magnetization or independently fixed mean \(M\).
+
+`solve_minimum` solves FD self-consistency and the constraints without calling the response metric or analytic Hessian. `full_functional` evaluates the defining scalar directly. Only after collecting the optimized scalar energies does `static_pilot.py` obtain the analytic comparison. Neither the scalar solver nor its energy evaluator consumes a supplied response-canceling counterterm.
+
+### Minimum and ensemble audit
+
+The convexity argument is valid **in \(\gamma\), at fixed \(u\)**: the spectral entropy supplies the stated positive Frobenius-Hessian bound, and the positive-semidefinite density interaction adds a convex quadratic. Consequently, feasible stationarity licenses the unique constrained electronic minimum rather than an arbitrarily selected SCF saddle.
+
+The fixed-\(M\) alternative genuinely changes the ensemble:
+
+- `_constraints` adds \(Z\) alongside \(I\).
+- The scalar solve determines separate number and spin multipliers.
+- Its residual includes both target constraints.
+- The analytic calculation projects both \(I\) and \(Z\) through the constraint Schur complement.
+
+This is fixed **mean** number/magnetization thermodynamics, as explicitly stated—not an exact finite canonical ensemble. No spin-degeneracy factor-two shortcut is applied.
+
+### Raw numerical evidence reviewed
+
+I read all **2,611 lines** of `static-first.stdout`, including every scalar row, using the supplied **72,029-byte / SHA256 `515e0be8d74538224e7ac464a896d43b6c5d1ceda28b0a38cf378005af438bb5`** binding.
+
+Across both ensembles, the retained rows show successful solver status, interior density spectra, constraint/density residuals below \(4.5\times10^{-16}\), and stationarity norms below \(1.6\times10^{-15}\). The positive interaction minimum eigenvalue is retained in each row.
+
+At the finest registered step, the maximum scalar-versus-analytic curvature errors are:
+
+| Ensemble | Maximum error | Registered allowance |
+|---|---:|---:|
+| fixedN-relaxedM | \(2.2684597733579892\times10^{-7}\) | \(5\times10^{-5}\) |
+| fixedN-fixedM | \(2.054481313962242\times10^{-7}\) | \(5\times10^{-5}\) |
+
+Both halving sequences exhibit the reported approximately second-order behavior. Omitting explicit \(W\), dropping cross-spin \(U\), and removing the mean constraints all produce retained discrepancies exceeding the registered allowance.
+
+### Exact scope and minimum material correction
+
+**No correction is required to the scoped STATIC construction.** Preserve it as an analytic finite-functional bridge corroborated by independent numerical differentiation—not a rigorous numerical enclosure.
+
+Its minimum claim concerns electronic minimization at prescribed \(u\); it does not establish joint \((\gamma,u)\) convexity or an ionic equilibrium at \(u=0\). The remaining material construction is the already-declared actual Ni/H same-functional constrained static bridge, with independently obtained native free-energy curvature and matching first/second ionic derivatives. Nothing in this slice licenses replacing that bridge with fitted counterterms or treating an approximation boundary as a material no-go.
+
+I inspected the manuscript’s load-bearing source passage and shared definitions only; no dynamic-response proof review, oracle replay, tests, builds, edits, services, or Native actions were performed.

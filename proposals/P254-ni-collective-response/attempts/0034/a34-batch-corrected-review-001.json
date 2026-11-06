@@ -1,0 +1,146 @@
+{
+  "schema": "P254-A34-batch-corrected-review-v1",
+  "verdict": {
+    "overall_correctness": "correct",
+    "explanation": "All three findings in the original complete batch/recovery review are resolved in the corrected source and fixed compatibility manifest. No additional actionable patch-introduced defect was established in the scoped re-review; this is a source-review verdict, not a claim of full128 execution or completed parent fault-smoke verification.",
+    "confidence": 0.97
+  },
+  "original_report": {
+    "local_path": "local://a34-batch-recovery-review-001.json",
+    "original_source_path": "/home/administrator/.omp/agent/sessions/-/2026-10-27T14-05-53-567Z_01a17dae-8c1f-73da-945a-fe33a38ae25f/local/a34-batch-recovery-review-001.json",
+    "bank_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/a34-batch-recovery-review-001.json",
+    "bytes": 18225,
+    "sha256": "2116a7822be51462d27d0e7ca4387fa4c854754c42a83eb93be5c43dcdc78757",
+    "binding_evidence": "Read complete-initial-review-admission-001.json: its actual-file source and bank bindings agree on18225 bytes and this SHA256. The original report remains unchanged; these are not rendered reader/footer sizes.",
+    "original_finding_count": 3
+  },
+  "findings": [
+    {
+      "title": "Bind scientific helper compatibility at both case admission points",
+      "body": "If a scientific change is made only in full_noise_probe_inputs.py, original_noise_source.py, cached_mode_source0.py, or an imported physical/projection helper, this binding_contract remains unchanged. reusable() consequently accepts earlier successful generations, and load_case() never checks the recorded implementation lists or a scientific operator/projection compatibility identity; the same unchecked loader also admits explicit --done inputs during final aggregation. A resumed batch can therefore mix sectors evaluated with incompatible force or covariance definitions while reporting complete coverage. Carry and validate a scientific compatibility identity through the producer, reuse, and aggregation boundaries, covering those helpers; preserve explicitly established compatibility for metadata-only edits rather than blindly invalidating old valid data for every recorded file-byte change.",
+      "priority": 1,
+      "confidence": 0.99,
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/batch_mode_noise.py",
+      "line_start": 261,
+      "line_end": 266,
+      "location_basis": "Original reviewed patch location, retained for historical finding identity.",
+      "disposition": "resolved",
+      "resolution": "load_compatibility authenticates all listed scientific sources and recomputes the manifest identity. The producer checks it before work and emits scientific_compatibility_identity. load_context checks the profile and original plan; load_case explicitly calls admit_result for both direct --done aggregation and batch reuse. New results require the matching identity; pre-identity results require an exact original-record/result path/bytes/SHA entry in the four-result retrospective allowlist. Batch reuse retains immutable original-input/plan/paid-packet joins and successful durable exit/stream authentication while treating incidental implementation byte metadata as provenance, avoiding recomputation solely for the explicitly classified admission/publication-only edits.",
+      "resolution_evidence": [
+        "mode_noise_compatibility.py:15-33 validates unique sorted source bindings, exact current bytes, and canonical SHA identity; lines36-46 admit matching identity or an exact allowlisted original result and otherwise raise.",
+        "export_full_source_modes.py:41 checks the profile before case creation/physical work; line63 publishes the identity.",
+        "aggregate_mode_noise.py:130-189 loads profile and joins the original plan; lines208-209 dispatch consuming-side admission; aggregate retains profile identity and per-sector scientific_admission.",
+        "batch_mode_noise.py:160-180 routes reuse through load_case after immutable-input joins and successful durable exit/stream checks.",
+        "The complete manifest declares74 current source pins and exact original0..3 retrospective admissions, with explicit equivalence and execution/runtime limitations."
+      ]
+    },
+    {
+      "title": "Persist checkpoint directory entries before accepting completion",
+      "body": "The producer fsyncs result.json and done.json file contents but never fsyncs their containing case directory. The runner's later outcome/accepted writes fsync the generation directory, not case/, so they do not establish durability of those two checkpoint names. A host crash can therefore lose a supposedly committed completion and cause a completed physical sector to be recomputed. Fresh generation/run directories likewise are created without syncing the directories containing their new names. Fsync the directories whose entries are published, including the case result/done entries and newly created checkpoint-directory ancestors, before declaring the work durable.",
+      "priority": 2,
+      "confidence": 0.97,
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/export_full_source_modes.py",
+      "line_start": 27,
+      "line_end": 33,
+      "location_basis": "Original reviewed patch location, retained for historical finding identity.",
+      "disposition": "resolved",
+      "resolution": "Producer save_json now synchronizes the containing case directory after fsyncing each exclusive file. Producer case and batch root/run/generation creation use make_directory, whose recursive missing-parent creation synchronizes each directory and the parent owning its name. Both result and completion publication use the corrected helper without changing result-before-done ordering or non-overwrite semantics.",
+      "resolution_evidence": [
+        "checkpoint_directories.py:6-12 fsyncs a directory descriptor with finally-close; lines15-30 recursively create missing parents and synchronize each directory plus containing parent.",
+        "export_full_source_modes.py:29-36 fsyncs file then containing directory; line43 durably creates case; lines84-85 publish result then bound done.",
+        "batch_mode_noise.py:74 creates generations durably; lines211-213 durably create batch/run directories. Existing aggregate save_json still fsyncs both file and parent directory."
+      ]
+    },
+    {
+      "title": "Stop and drain active cases before executor shutdown",
+      "body": "When a parent-side exception escapes the scheduling/readout loop while another case is active, for example an OSError from the fsynced progress write or a rejection receipt write, the ThreadPoolExecutor context exits before this outer handler sets stop. Its __exit__ waits for workers, so live physical producers continue until their own timeout, batch deadline, or normal completion instead of being stopped on the parent failure. The loop is then abandoned without consuming the remaining futures, so even successfully written child outcomes are absent from the run's completed/cost accounting. Set stop and drain/reconcile active futures inside the executor scope on exceptional exits, before its blocking shutdown.",
+      "priority": 2,
+      "confidence": 0.98,
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/batch_mode_noise.py",
+      "line_start": 343,
+      "line_end": 345,
+      "location_basis": "Original reviewed patch location, retained for historical finding identity.",
+      "disposition": "resolved",
+      "resolution": "An inner executor exception handler now sets stop before blocking shutdown and consumes all remaining active futures. One drained publication failure is retained in drain_errors without preventing other drains. consume first waits for its worker and reloads the durable outcome, then appends outcome/failure/completion accounting before fallible publication. Missing outcomes or measurements remain explicit rather than disappearing or becoming zero; an admitted completed case stays completed even if accepted/progress publication subsequently fails.",
+      "resolution_evidence": [
+        "batch_mode_noise.py:258-329 reconciles each owned future; failure accounting precedes rejection writes and completed accounting precedes accepted/progress writes.",
+        "batch_mode_noise.py:282-297 explicitly accounts missing outcomes/measurements; lines225-243 propagate unknown costs as null and count measured/unmeasured separately.",
+        "batch_mode_noise.py:378-423 keeps stop-and-drain inside the ThreadPoolExecutor scope; lines410-422 drain other workers despite individual errors.",
+        "Final summary includes drain_errors and per-outcome measurement evidence instead of silently omitting unsettled work."
+      ]
+    }
+  ],
+  "remaining_findings": [],
+  "new_findings": [],
+  "scope": {
+    "review_mode": "Read-only corrected-source and existing-artifact review; only this local corrected report was written.",
+    "complete_corrected_sources_read": [
+      "proposals/P254-ni-collective-response/attempts/0034/batch_mode_noise.py",
+      "proposals/P254-ni-collective-response/attempts/0034/aggregate_mode_noise.py",
+      "proposals/P254-ni-collective-response/attempts/0034/export_full_source_modes.py",
+      "proposals/P254-ni-collective-response/attempts/0034/cached_mode_source0.py",
+      "proposals/P254-ni-collective-response/attempts/0034/mode_noise_compatibility.py",
+      "proposals/P254-ni-collective-response/attempts/0034/checkpoint_directories.py",
+      "proposals/P254-ni-collective-response/attempts/0034/scientific-compatibility-001.json"
+    ],
+    "carried_source_context": "Complete original_noise_source.py and full_noise_probe_inputs.py were read in the original review and retain their original packet/manifest bindings. Earlier A33 consumers and factor/CAR/projection/source-transport proofs were not reopened or rerun.",
+    "boundaries_traced": [
+      "Producer scientific identity to load_case and explicit admit_result dispatch for direct aggregation and reused cases.",
+      "Profile identity from load_context to case admission and aggregate identity/per-sector admission metadata.",
+      "Durable directory helper at root/run/generation/case creation and file-plus-containing-directory fsync at exclusive result/done publication.",
+      "Submitted futures, durable subprocess outcomes, exceptional stop/drain, missing costs, and failure/completion accounting to final summary.",
+      "Unchanged source/frame/D/preparation/mode joins, exact original128 explicit-spin/internal-k coverage, duplicate rejection, single1/64 weighting, all ordered complex full/block/defect outputs, and partial-without-renormalization behavior."
+    ],
+    "cached_preparation_followup": "Corrected cached_source0 now requires complete original initialization, joins paid-source preparation/original_boundary to initial.saved, and authenticates both before paid-array consumption. This supports the separate parent-owned direct-source0 admission fix without replacing or reopening that review's original finding array.",
+    "actions": "Reads/searches/read-only git diffs and local report writing only. No tests, imports, builds, linters, numerical runs, new physical actions, service changes, or source edits."
+  },
+  "evidence": {
+    "scientific_profile": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/scientific-compatibility-001.json",
+      "identity": {"schema": "P254-A34-scientific-source-identity-v1", "sha256": "992271a6099376f2dc3e0596284d4afa9fa9afa36a5f1a7c79bf2b60c5bd0cc5"},
+      "declared_current_sources": 74,
+      "declared_unchanged_original_recorded_sources": 62,
+      "legacy_records": [0, 1, 2, 3],
+      "admission_basis": "Exact immutable original result path/bytes/SHA and explicit metadata/admission/publication-only equivalence, not a fabricated claim that old producers checked the new identity.",
+      "limits": "Six deferred helper pins are current-profile-only, not independently established historical execution bytes. The fixed inventory is not an all-repository recursive import closure or complete binary/runtime lock."
+    },
+    "actual_two_worker_production_before_repairs": {
+      "receipt": {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/actual-two-worker-production-and-reuse-001.json", "bytes": 13715, "sha256": "972b4a2b7bb8dea6f823c74b874ce7293ae8d73faaea0c766b91042772fda375"},
+      "summary": {"path": "/var/tmp/p254-a34-two-mode-full-source-batch-001/runs/run-861c3a500a1942508a4b895c88234b34/summary.json", "bytes": 7036, "sha256": "48ff452a190527d12ff4091ca34c6ff7dacb3d3b99b579e361e79b932cf8d0ee"},
+      "native_exit": 0,
+      "status": "requested-subset-complete",
+      "requested_records": [0, 2, 3],
+      "launched_records": [2, 3],
+      "reused_records": [0],
+      "full_original128_coverage": false,
+      "failed": [],
+      "unstarted_records": [],
+      "record2": {"cpu": 6, "durable_exit": 0, "termination": null, "error": null, "elapsed_seconds": 173.0505507378839, "user_cpu_seconds": 139.755328, "system_cpu_seconds": 32.537319, "peak_rss_bytes": 1498947584, "producer_elapsed_seconds": 170.38800559332594, "result_sha256": "cb2a8a50d45f8d795329333ba42e8aeea5feacfeef91a889136fafd4c5f822f1"},
+      "record3": {"cpu": 7, "durable_exit": 0, "termination": null, "error": null, "elapsed_seconds": 169.82424600422382, "user_cpu_seconds": 137.070619, "system_cpu_seconds": 32.41648, "peak_rss_bytes": 1498914816, "producer_elapsed_seconds": 166.82523167179897, "result_sha256": "eb7580e10a1c35c56f305a2afa72070b890f527ffcafed7cd2a59eefc1ded738"},
+      "new_forward_actions": 4,
+      "new_adjoint_actions": 4,
+      "read_basis": "Read the banked actual receipt, original summary, and both original per-generation durable outcomes. These prove actual two-worker execution and old-source0 skip before repairs, not execution of the later repaired scheduler/profile."
+    },
+    "carried_original_receipts": {
+      "source1": {"native_exit": 0, "elapsed_seconds": 162.80788901587948, "peak_rss_bytes": 1498783744, "forward_actions": 2, "adjoint_actions": 2, "native_calls": 0, "hamiltonian_actions": 0, "trajectory_actions": 0},
+      "source0_cached_batch": {"native_exit": 0, "new_physical_actions": 0},
+      "source1_partial_aggregate": {"exit": 2, "status": "partial", "records": [1], "missing_count": 127, "partial_renormalization": false},
+      "basis": "Original source/result/done and partial aggregate artifacts were read in the first complete review and remain unchanged."
+    }
+  },
+  "not_established": [
+    "No full128 production or complete128 aggregate is established. The observed two-worker run completed sources2/3 and reused0; pilot1 remains an external exact done input.",
+    "Parent-announced fault-child, partial, corrected reuse, direct-cache and scientific-refusal smokes were in progress; no completed receipts for them were consumed by this reviewer or claimed here.",
+    "Exceptional draining, missing-measurement accounting, directory crash durability and scientific refusal were evaluated statically, not through reviewer-run fault/crash experiments.",
+    "Six current-only deferred-helper pins do not prove historical source bytes. No complete binary/runtime closure, expanded numerical qualification, proof rerun,64-external-q or late-time conclusion is claimed.",
+    "Neither original review nor raw physical banks were rewritten. The corrected report's writer byte count is returned separately; parent owns its actual-file SHA banking."
+  ],
+  "sourcebindings": {
+    "basis": "Current scientific pins below are declared in the fully read manifest, not independently rehashed by this reviewer. Original review bytes/SHA are from the parent's actual-file banking receipt, not rendered footer metadata.",
+    "producer": {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/export_full_source_modes.py", "bytes": 5167, "sha256": "520e86d9febece0a2c76d4621b8f8132ddb95adeb173453f9f600867b605c53d"},
+    "cached_source0": {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/cached_mode_source0.py", "bytes": 4233, "sha256": "bd762dd0ddc7d5d4ff34ff64f75e20fccbb7c0ca7232883cf96bb2031f662a7f"},
+    "compatibility_helper": {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/mode_noise_compatibility.py", "bytes": 2225, "sha256": "c25ba8883e92fc6b77f8433ace1d10aaca22e2c516e548e0b7d1c2dcae8bb56a"},
+    "publication_scheduler_sources": {"batch": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/batch_mode_noise.py", "batch_lines_read": 468, "aggregate": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/aggregate_mode_noise.py", "directory_helper": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/checkpoint_directories.py", "hash_status": "Not independently computed; parent owns final actual-file banking."},
+    "original_plan": {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/implementation-contract-001.json", "bytes": 5174, "sha256": "f1a64582204e08bc48f879628016d70a8aa46701f8575fae067dc215ac1fd375"}
+  }
+}

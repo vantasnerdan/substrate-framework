@@ -1,0 +1,48 @@
+{
+  "schema": "p254-A85-native-real-axis-handoff-v1",
+  "status": "source-complete; deliberately not built or executed by worker",
+  "owned_files": ["CMakeLists.txt", "lean_result.cpp", "real_axis_keldysh.hpp", "oracle_real_axis.py", "native-interface.json"],
+  "preregistration": "preregistration.json (Root-owned, read only)",
+  "production_target": "solve_result",
+  "argv": "solve_result INPUT.bin RESULT.bin [MAX_INPUT_BYTES]",
+  "abi": "Unchanged P254VIE1 little-endian header, original times, source R/< then kernel R/< input; result R/< output, complex128 row-major triangular blocks; same limits/rejection convention and new-result-only behavior as A61.",
+  "representation_invariant": "History has only R/< triangular buffers and no Matsubara/mixed storage/accessors. The actual packed ABI has no imaginary inputs. Upstream helper ntau metadata is inert and kept equal to A61; absent R/< accesses throw, never return fabricated zeros. This is not an equilibrium-contour solver.",
+  "operator": {
+    "retarded_kernels": "F=-(source*kernel)^R, Fcc=-(kernel*source)^R via original convolution_timestep_ret",
+    "retarded_solution": "Original vie2_start_ret(result,F,Fcc,source), then original vie2_timestep_ret(n,result,Fcc,F,source), complete 0..order startup retained",
+    "dressing": "A=(R*kernel^R)^R, Acc=(kernel^R*R)^R, distinct noncommuting orders",
+    "initial_lesser": "source^< + A^R*source^< + source^<*Acc^A + (A^R*source^<)*Acc^A with original complementary lesser histories for startup continuation",
+    "noise_lesser": "(R^R*kernel^<)*R^A with independently evaluated kernel^<*R^A companion",
+    "helpers": ["convolution_timestep_ret<double,History,LARGESIZE>", "convolution_timestep_les_retles<double,History,LARGESIZE>", "convolution_timestep_les_lesadv<double,History,LARGESIZE>", "vie2_start_ret<double,History,LARGESIZE>", "vie2_timestep_ret<double,History,LARGESIZE>"],
+    "removed_work_only": "Matsubara/mixed products identically zero in this representation; zero real component products of the separate pure-R and pure-lesser factors; discarded Diagnostics/residual products; redundant r/s/q/k contour copies.",
+    "lifetimes": "F/Fcc retarded buffers die before A/Acc; A/Acc die before noise; left/right lesser buffers reused for noise after complete initial sandwich. Sandwich/noise need only one reusable timestep, not whole contours.",
+    "scope": "Generic admitted dimensions, statistics +/-1, order1..5, original beta, uniform complete history. No Gamma-value special case, no reduced rank, coordinates, window, time grid, preparation, noise, or initial term change. No clipping or exchange repair."
+  },
+  "source_binding_inventory": {
+    "actual_old_reference_binary": "/var/tmp/p254-a61-lean-002/build/solve_result",
+    "old_binary_sha256": "c702cd49b7da7bc3a7d054988e3c116c148084d24092ba638154431339cbc064",
+    "unchanged_reference_sources": ["../0061/solve_result.cpp", "../0054/supplied_keldysh.hpp", "../0054/solve_components.cpp", "../0049/supplied_vie2.hpp", "../0049/component_io.hpp", "../0040/nessi_gaussian_ivp.hpp"],
+    "imported_physical_fixtures": "../0049/finite_gaussian_reference.py:fermion_case,boson_case",
+    "pinned_upstream": "/home/administrator/.local/opt/nessi-6bb4c832/include/cntr/{cntr_convolution_impl.hpp,cntr_vie2_impl.hpp} and lib/libcntr.so",
+    "runtime_inventory": "Oracle records path/byte-count/SHA256 of complete owned math/adapter/build/oracle sources, unchanged references, physical fixtures, upstream helper headers, library, and actual binaries. It hard-checks the original A61 binary SHA before solving. Original core hashes are in Root preregistration."
+  },
+  "parent_only_commands": [
+    "cmake -S /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0085 -B /var/tmp/p254-a85-real-axis-001/build -DCMAKE_BUILD_TYPE=Release",
+    "cmake --build /var/tmp/p254-a85-real-axis-001/build --target solve_result oracle_old_components -j1",
+    "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0085/oracle_real_axis.py --binary /var/tmp/p254-a85-real-axis-001/build/solve_result --mutant-binary /var/tmp/p254-a85-real-axis-001/build/oracle_old_components --workdir /var/tmp/p254-a85-real-axis-001/oracle"
+  ],
+  "finite_oracle": {
+    "cases": "20: fermion and physical Cartesian boson, each order1..5, each literal minimal nt=order startup-only and propagated nt=12 history; original A49 asymmetric noncommuting physical fixtures, actual commutator gate.",
+    "comparison": "Every stored R/< complex entry, all finite, exact output header/times/byte extent; abs error <=2e-11+2e-11*abs(old). Actual old A61 binary independently invoked on identical packed bytes.",
+    "mutations": "30: original A54 explicit drop-initial/drop-noise/wrong-A-Acc-order mutants on each propagated statistic/order fixture; same entrywise predicate must reject and max tolerance ratio must exceed100. Mutant-only old source is a separate executable, never production-linked.",
+    "abi_failures": "Existing result rejection preserves prior result hash; smaller caller byte cap, truncated input extent, and NaN component input must return2 without result creation.",
+    "output": "New caller-chosen workdir only; oracle-report.json with complete bindings/numerical comparisons/mutation/rejection receipts and preserved input/output/log files. No old proof suite, electrons, kernels, or actual Gamma run."
+  },
+  "limitations": [
+    "No worker compilation, test, oracle, benchmark, or Native run performed. Correctness remains a source implementation claim until Parent finite oracle passes.",
+    "No dominant-stage timing or speedup is measured or promised; success within actual Gamma600s remains unmeasured.",
+    "No equilibrium Matsubara/mixed-input API is supported or added; it never existed in P254VIE1.",
+    "Finite comparison establishes only changed implementation equivalence on declared fixtures; it does not requalify continuum accuracy, conservation, selfconsistency, or the material model.",
+    "Parent owns one settled build/oracle and, only after passing, actual Gamma-only recovery through the independent Recovery CLI, preserving all previous electron/kernel/mean/history data and original638.905548795592s cost."
+  ]
+}

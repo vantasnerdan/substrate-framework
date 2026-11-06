@@ -1,0 +1,13 @@
+{
+  "actual_time": "2026-10-30T03:09:31.319742+00:00",
+  "pane": "w1:p3R",
+  "shell": "rc=0; env XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus systemd-run --user --unit=p254-a28-native-mixed-block-oracles-001 --wait --pipe --property=RuntimeMaxSec=250 --property=TimeoutStopSec=10 --property=MemoryMax=1073741824 --property=CPUAffinity=10 env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src /bin/bash -c 'timeout 120s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_material_moments_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-material-moments-oracle-001.json; moments_rc=$?; timeout 120s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_response_storage_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-response-storage-oracle-001.json; storage_rc=$?; printf '\"'\"'\nP254_MATERIAL_MOMENTS_RC_%s\nP254_MIXED_STORAGE_RC_%s\n'\"'\"' \"$moments_rc\" \"$storage_rc\"; test \"$moments_rc\" -eq 0 && test \"$storage_rc\" -eq 0' || rc=$?; printf '\nP254_NATIVE_MIXED_BLOCKS_001_DONE_%s\n' \"$rc\"",
+  "tool_result": {
+    "text": "(no output)",
+    "details": {
+      "wallTimeNoticeEmitted": false,
+      "timeoutSeconds": 20,
+      "wallTimeMs": 144.62211200594902
+    }
+  }
+}

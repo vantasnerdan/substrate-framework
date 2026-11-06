@@ -1,0 +1,65 @@
+{
+  "actual_utc": "2026-11-04T11:17:58.808051+00:00",
+  "argv": [
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a32-moving-hybrid-source0-gamma-001",
+    "-p",
+    "RuntimeMaxSec=600",
+    "-p",
+    "MemoryMax=4G",
+    "-p",
+    "MemorySwapMax=0",
+    "-p",
+    "Restart=no",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0029:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "7",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/export_hybrid_gamma.py",
+    "--bath-result",
+    "/var/tmp/p254-a31-source0-two-mode-bath8-001/result.json",
+    "--original-result",
+    "/var/tmp/p254-activeband-loaded-finite-b12-f27-001/result.json",
+    "--output",
+    "/var/tmp/p254-a32-moving-hybrid-source0-gamma-001"
+  ],
+  "workspace": "w1",
+  "tab": "w1:t5T",
+  "pane": "w1:p5T",
+  "unit": "p254-a32-moving-hybrid-source0-gamma-001.service",
+  "native_manager": "Restart=no\nRuntimeMaxUSec=10min\nMainPID=3131366\nMemoryMax=4294967296\nMemorySwapMax=0\nActiveState=active\nSubState=running\nInvocationID=bdd806adfff74e2a87bb5ccefe55bb9f\n",
+  "ready_actual_exit": 0,
+  "publication_directory": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-001",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-491.json",
+    "bytes": 2225,
+    "sha256": "d9404d5a6992120930a1afd628532f1695237de7951cf55849a315808e0e253c"
+  },
+  "implementation": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/hybrid_gamma_model.py",
+      "bytes": 17243,
+      "sha256": "451ad383475e91ea57219e0189dd8b743112a2b88ca84e2610d14aadecf6ab8c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/hybrid_gamma_evolution.py",
+      "bytes": 10818,
+      "sha256": "1aa1064ab4469a75652248cbf156918dd5b9e142135954e42a44525d0462fad9"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/export_hybrid_gamma.py",
+      "bytes": 23814,
+      "sha256": "e9d1b5983f466e56de02de9d8734bfb91e5b03b745c4ff1ec81a38ef3e972934"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "p254-time-gram-exact-block-oracle-v1",
+  "status": "passed",
+  "identity": "Independent explicit sum over every h/mode equals actual ordinary reshape/GEMM output at every t,s,i,j",
+  "dimensions": {
+    "times": 2,
+    "outputs": 2,
+    "inner_h": 2,
+    "modes": 3
+  },
+  "exact_entrywise_differences_zero": true,
+  "sensitivity": {
+    "manufactured_adjoint": true,
+    "right_time_output_swapped": true,
+    "missing_inner_mode": true,
+    "extra_half_normalization": true
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0064/time_gram.py",
+      "bytes": 638,
+      "sha256": "c4b12b593ecc2c6bac3472349646abf91fa4950eef5da801d8c437f04d7c39dd"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0070/oracle_time_gram.py",
+      "bytes": 2440,
+      "sha256": "7cc824536bee72df2a56733c41f0c73b4ed2c33fe7419a83f174d278f7f4239f"
+    }
+  ],
+  "limit": "Finite exact layout/bilinear identity, not physical calibration or floating point enclosure."
+}

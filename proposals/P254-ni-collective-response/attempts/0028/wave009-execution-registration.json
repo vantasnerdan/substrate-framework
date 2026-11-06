@@ -1,0 +1,131 @@
+{
+  "schema": "P254-A28-actual-component-execution-v1",
+  "created_at": "2026-10-28T21:11:25.257365+00:00",
+  "goal": "Full conditional-reference aggregation, actual saved-primary control consumers and measured nuclear-data consumer; no Native/cloud execution.",
+  "previous_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-006.json",
+    "bytes": "2841",
+    "sha256": "a6e870394d440c9eb8324058402314c8a7d5f9a710b6e6b51ed574dd6552abad"
+  },
+  "new_budget": {
+    "aggregate_seconds": 120,
+    "each_control_seconds": 120,
+    "nuclear_consumer_seconds": 120,
+    "max_concurrent": 4,
+    "cores": [
+      4,
+      5,
+      6,
+      9
+    ],
+    "memory_each_bytes": "4294967296",
+    "swap_bytes": "0"
+  },
+  "useful_output": "Complete weighted common reference; two control full-source/mesh ledgers and selected full-column states including orbital conjugation; measured ordinary nuclear tables and conditional network inputs.",
+  "limitation": "Not yet actual material time evolution, matched stability ranking, or a material nuclear rate.",
+  "oracles": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/control-preparation-oracle-001.json",
+      "bytes": "2191",
+      "sha256": "4f612f2629afe49272be240dc94f8bbeb52b636fc1a3f81982b853bbea86a605"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/measured-nuclear-oracle-001.json",
+      "bytes": "1392",
+      "sha256": "48bf689f07c93f604676db3737baf8c72ea3a4d8844770fc8735920a9f655e83"
+    }
+  ],
+  "commands": [
+    {
+      "case": "dispersed-ni32h6",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-control-dispersed-ni32h6-001.service",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=4",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=120s",
+        "--property=RuntimeMaxSec=120s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_control_preparation.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/control-dispersed-ni32h6-001",
+        "--case-manifest",
+        "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/dispersed-ni32h6.json",
+        "--case-manifest-sha256",
+        "5bc55dcde2a84a35ecfb1c8b2fa7e6b66ca0d2df65a8887bccacbe43fdac6a3c",
+        "--native-receipt",
+        "/home/administrator/.cache/dft/nc1-completed-native-evidence/nc1-2-primary-admission-20261022/dispersed-ni32h6-native.json",
+        "--native-receipt-sha256",
+        "7bc4d36c233039be6808efa704273ec0a75cabcd3fab2c26ad5d4533be9fa670",
+        "--admission",
+        "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/verification/nc1-2-primary-admission.json",
+        "--admission-sha256",
+        "c15ec6de6cf1e3cebb4ea68b85ccd71d1912b1c5275641988026717be35bad23",
+        "--spin",
+        "1",
+        "--mesh-index",
+        "3",
+        "0",
+        "0",
+        "--require-orbital-conjugation"
+      ]
+    },
+    {
+      "case": "loaded-ni31h6",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-control-loaded-ni31h6-001.service",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=5",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=120s",
+        "--property=RuntimeMaxSec=120s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_control_preparation.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/control-loaded-ni31h6-001",
+        "--case-manifest",
+        "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/primary/loaded-ni31h6.json",
+        "--case-manifest-sha256",
+        "637f315d26328489df6196ed8814f5f7ae8a261d577b334aa836e24995cb4e3a",
+        "--native-receipt",
+        "/home/administrator/.cache/dft/nc1-completed-native-evidence/nc1-2-primary-admission-20261022/loaded-ni31h6-native.json",
+        "--native-receipt-sha256",
+        "578a86c65e59bef41fdcfa4f4e2e20b0866dd1391ab643063eebd62f4bc82c01",
+        "--admission",
+        "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/verification/nc1-2-primary-admission.json",
+        "--admission-sha256",
+        "c15ec6de6cf1e3cebb4ea68b85ccd71d1912b1c5275641988026717be35bad23",
+        "--spin",
+        "1",
+        "--mesh-index",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

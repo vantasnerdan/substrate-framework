@@ -1,0 +1,2611 @@
+{
+  "attempt": "0013",
+  "oracle": "independent_minimized_full_scalar_functional",
+  "scope": {
+    "model": "Four total one-body orbitals, two per collinear spin; arbitrary dimensionless units",
+    "admissible_space": "All Hermitian within-spin 2x2 density blocks with 0<gamma<I",
+    "thermodynamics": "Isothermal FD mean constraints; NOT exact finite canonical Gibbs",
+    "interaction": "Frozen positive density Hessian U including cross-spin coupling",
+    "minimum_justification": "Strictly convex spectral entropy plus PSD density quadratic; feasible stationarity",
+    "independence": "FD selfconsistency and full scalar energy do not call the analytic response/Schur matrix",
+    "analytic_comparison": "Gibbs divided differences, constraint Schur projection, induced-density U loop, plus <W>",
+    "does_not_license": [
+      "Actual Ni or H calibration",
+      "SG15/PBE functional agreement",
+      "Nonzero-q native transfer",
+      "Physical loss or nuclear/product-energy rates",
+      "Isolated dynamics from isothermal population response"
+    ],
+    "mutation_scope": "Only analytic comparison changed; independent scalar functional remains frozen",
+    "wrongGC_scope": "Drop both number and (where present) magnetization constraints"
+  },
+  "solver": {
+    "routine": "scipy.optimize.root",
+    "method": "hybr",
+    "xtol": 1e-11,
+    "precision": "float64",
+    "density_constraint_residual_limit": 1e-10,
+    "stationarity_frobenius_limit": 1e-09
+  },
+  "fixture": {
+    "h0": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.6931471805599453,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0986122886681098,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.6094379124341003
+      ]
+    ],
+    "gamma0": [
+      [
+        0.5,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.3333333333333333,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.16666666666666666
+      ]
+    ],
+    "beta": 1.0,
+    "mu0": 0.0,
+    "N0": 1.25,
+    "M0": 0.4166666666666667,
+    "d0": [
+      0.7222222222222222,
+      0.2708333333333333
+    ],
+    "B": [
+      [
+        [
+          0.5,
+          0.25,
+          0.0,
+          0.0
+        ],
+        [
+          0.25,
+          -0.3333333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.25,
+          0.3333333333333333
+        ],
+        [
+          0.0,
+          0.0,
+          0.3333333333333333,
+          0.2
+        ]
+      ],
+      [
+        [
+          -0.25,
+          -0.16666666666666666,
+          0.0,
+          0.0
+        ],
+        [
+          -0.16666666666666666,
+          0.4,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.3333333333333333,
+          0.2
+        ],
+        [
+          0.0,
+          0.0,
+          0.2,
+          -0.5
+        ]
+      ]
+    ],
+    "D": [
+      [
+        [
+          1.0,
+          0.2,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.6666666666666666,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.75,
+          0.25
+        ],
+        [
+          0.0,
+          0.0,
+          0.25,
+          0.5
+        ]
+      ]
+    ],
+    "W": [
+      [
+        [
+          [
+            0.3333333333333333,
+            0.09090909090909091,
+            0.0,
+            0.0
+          ],
+          [
+            0.09090909090909091,
+            0.2,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -0.14285714285714285,
+            -0.07692307692307693
+          ],
+          [
+            0.0,
+            0.0,
+            -0.07692307692307693,
+            0.25
+          ]
+        ],
+        [
+          [
+            0.14285714285714285,
+            0.08333333333333333,
+            0.0,
+            0.0
+          ],
+          [
+            0.08333333333333333,
+            -0.125,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.1111111111111111,
+            0.07142857142857142
+          ],
+          [
+            0.0,
+            0.0,
+            0.07142857142857142,
+            0.1
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            0.14285714285714285,
+            0.08333333333333333,
+            0.0,
+            0.0
+          ],
+          [
+            0.08333333333333333,
+            -0.125,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.1111111111111111,
+            0.07142857142857142
+          ],
+          [
+            0.0,
+            0.0,
+            0.07142857142857142,
+            0.1
+          ]
+        ],
+        [
+          [
+            -0.16666666666666666,
+            -0.1,
+            0.0,
+            0.0
+          ],
+          [
+            -0.1,
+            0.25,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.2,
+            0.125
+          ],
+          [
+            0.0,
+            0.0,
+            0.125,
+            -0.1111111111111111
+          ]
+        ]
+      ]
+    ],
+    "U": [
+      [
+        0.75,
+        0.25
+      ],
+      [
+        0.25,
+        0.6666666666666666
+      ]
+    ],
+    "Kion": [
+      [
+        2.0,
+        0.2
+      ],
+      [
+        0.2,
+        1.5
+      ]
+    ],
+    "Z": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ]
+    ],
+    "spin": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "ensembles": [
+    {
+      "ensemble": "fixedN-relaxedM",
+      "constraints": {
+        "N": 1.25,
+        "M": null
+      },
+      "reference_minimum": {
+        "u": [
+          0.0,
+          0.0
+        ],
+        "energy": -1.5686159179138455,
+        "density": [
+          0.7222222222222222,
+          0.27083333333333337
+        ],
+        "multipliers": [
+          1.6554340280294526e-17
+        ],
+        "accepted_minimum": true,
+        "solver_success": true,
+        "solver_status": 1,
+        "solver_message": "The solution converged.",
+        "solver_nfev": 7,
+        "solver_residual_max": 0.0,
+        "stationarity_frobenius": 2.4283710582391196e-16,
+        "constraint_residual": [
+          0.0
+        ],
+        "gamma_eigenvalues": [
+          0.16666666666666669,
+          0.25,
+          0.3333333333333333,
+          0.5
+        ],
+        "domain_margin": 0.16666666666666669,
+        "interaction_min_eigenvalue": 0.4548848945709075,
+        "strict_convexity_lower_bound": 4.0
+      },
+      "scalar_minima": [
+        {
+          "u": [
+            0.0,
+            0.0
+          ],
+          "energy": -1.5686159179138455,
+          "density": [
+            0.7222222222222222,
+            0.27083333333333337
+          ],
+          "multipliers": [
+            1.6554340280294526e-17
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 7,
+          "solver_residual_max": 0.0,
+          "stationarity_frobenius": 2.4283710582391196e-16,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16666666666666669,
+            0.25,
+            0.3333333333333333,
+            0.5
+          ],
+          "domain_margin": 0.16666666666666669,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.02,
+            0.0
+          ],
+          "energy": -1.5728920735560712,
+          "density": [
+            0.7229058340334598,
+            0.27170446520553077
+          ],
+          "multipliers": [
+            -0.0025599268141783785
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 1.110053605109036e-15,
+          "constraint_residual": [
+            2.220446049250313e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16679612927121706,
+            0.25037280470795664,
+            0.3311621047650555,
+            0.5016689612557713
+          ],
+          "domain_margin": 0.16679612927121706,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.02,
+            -0.0
+          ],
+          "energy": -1.5635032673978437,
+          "density": [
+            0.7215165809395286,
+            0.26997978477354817
+          ],
+          "multipliers": [
+            0.002601792998644492
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 8.678919676230099e-16,
+          "constraint_residual": [
+            2.220446049250313e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16650597738218537,
+            0.24967602198965605,
+            0.33548979802121015,
+            0.4983282026069487
+          ],
+          "domain_margin": 0.16650597738218537,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.0,
+            0.02
+          ],
+          "energy": -1.5685024241003453,
+          "density": [
+            0.7217088322454059,
+            0.2712523478284689
+          ],
+          "multipliers": [
+            -0.0005916066622322084
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 12,
+          "solver_residual_max": 0.0,
+          "stationarity_frobenius": 1.1494180466110037e-15,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.1651893988735501,
+            0.2511175103318581,
+            0.33500868514482357,
+            0.49868440564976857
+          ],
+          "domain_margin": 0.1651893988735501,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.0,
+            -0.02
+          ],
+          "energy": -1.5681696552463447,
+          "density": [
+            0.7227401176260936,
+            0.270409288757211
+          ],
+          "multipliers": [
+            0.0005825499308482866
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 13,
+          "solver_residual_max": 1.1102230246251565e-16,
+          "stationarity_frobenius": 1.53972350750492e-15,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16815098000477768,
+            0.24888098096559297,
+            0.33163082595436477,
+            0.5013372130752648
+          ],
+          "domain_margin": 0.16815098000477768,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.02,
+            0.02
+          ],
+          "energy": -1.5726449291118731,
+          "density": [
+            0.7223879792304748,
+            0.2721198642111133
+          ],
+          "multipliers": [
+            -0.0031308718659269555
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 9.734052362247125e-16,
+          "constraint_residual": [
+            -2.220446049250313e-16
+          ],
+          "gamma_eigenvalues": [
+            0.1653026825900702,
+            0.2515049526297684,
+            0.3328583317488125,
+            0.5003340330313489
+          ],
+          "domain_margin": 0.1653026825900702,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.02,
+            -0.02
+          ],
+          "energy": -1.572580069863768,
+          "density": [
+            0.723428247224309,
+            0.2712839243676478
+          ],
+          "multipliers": [
+            -0.00199818732662657
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 6.740043938855098e-16,
+          "constraint_residual": [
+            2.220446049250313e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16829802458615578,
+            0.24923759922722039,
+            0.32943923801131525,
+            0.5030251381753088
+          ],
+          "domain_margin": 0.16829802458615578,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.02,
+            0.02
+          ],
+          "energy": -1.5635231131026448,
+          "density": [
+            0.7210076405563184,
+            0.2704024570021004
+          ],
+          "multipliers": [
+            0.0019896830112902325
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 1.1102230246251565e-16,
+          "stationarity_frobenius": 9.239061749799035e-16,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16504599789344987,
+            0.25077788071302515,
+            0.3371433839329651,
+            0.4970327374605602
+          ],
+          "domain_margin": 0.16504599789344987,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.02,
+            -0.02
+          ],
+          "energy": -1.5629230530358338,
+          "density": [
+            0.7220299741372413,
+            0.26955219302000544
+          ],
+          "multipliers": [
+            0.003204992851440177
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 5.551115123125783e-17,
+          "stationarity_frobenius": 1.0807035969967654e-15,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16797153941207918,
+            0.24857426134356994,
+            0.33380851800036115,
+            0.49964568124399
+          ],
+          "domain_margin": 0.16797153941207918,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.01,
+            0.0
+          ],
+          "energy": -1.5708585729947726,
+          "density": [
+            0.7225667875125538,
+            0.27126669792246105
+          ],
+          "multipliers": [
+            -0.0012851787768424644
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 0.0,
+          "stationarity_frobenius": 1.0959754821106843e-15,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16673531964951005,
+            0.25018027795372727,
+            0.3322494646694948,
+            0.5008349377272682
+          ],
+          "domain_margin": 0.16673531964951005,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.01,
+            -0.0
+          ],
+          "energy": -1.5661641388918353,
+          "density": [
+            0.7218721495451416,
+            0.270404364576508
+          ],
+          "multipliers": [
+            0.001295645464331429
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 19,
+          "solver_residual_max": 0.0,
+          "stationarity_frobenius": 1.166900964675132e-15,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.1665902054850611,
+            0.2498319302502771,
+            0.33441351330841473,
+            0.49916435095624745
+          ],
+          "domain_margin": 0.1665902054850611,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.0,
+            0.01
+          ],
+          "energy": -1.5686292462707987,
+          "density": [
+            0.7219649534589168,
+            0.27104347374592075
+          ],
+          "multipliers": [
+            -0.00029472474183777817
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 9,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 6.165899601517167e-16,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16592707110877514,
+            0.2505590325687051,
+            0.3341744181709825,
+            0.49933947815153734
+          ],
+          "domain_margin": 0.16592707110877514,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.0,
+            -0.01
+          ],
+          "energy": -1.5684626501644432,
+          "density": [
+            0.7224806173626743,
+            0.27062193538307433
+          ],
+          "multipliers": [
+            0.00029246073664276044
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 9,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 1.2019583082759666e-15,
+          "constraint_residual": [
+            -2.220446049250313e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16740802672742605,
+            0.24944058715993697,
+            0.33248545953948516,
+            0.5006659265731519
+          ],
+          "domain_margin": 0.16740802672742605,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.01,
+            0.01
+          ],
+          "energy": -1.570838470031599,
+          "density": [
+            0.7223084001977039,
+            0.2714759387182054
+          ],
+          "multipliers": [
+            -0.0015747390182820247
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 5.551115123125783e-17,
+          "stationarity_frobenius": 1.2098891275769232e-15,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16599152432609882,
+            0.25074312798307635,
+            0.3330957893151577,
+            0.5001695583756672
+          ],
+          "domain_margin": 0.16599152432609882,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.01,
+            -0.01
+          ],
+          "energy": -1.570738812731033,
+          "density": [
+            0.7228263078134441,
+            0.27105618565771233
+          ],
+          "multipliers": [
+            -0.0009979010737571337
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 16,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 1.4520431622350765e-15,
+          "constraint_residual": [
+            -2.220446049250313e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16748105674922067,
+            0.24961685222129326,
+            0.3313964162155193,
+            0.5015056748139668
+          ],
+          "domain_margin": 0.16748105674922067,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.01,
+            0.01
+          ],
+          "energy": -1.5662108597971311,
+          "density": [
+            0.7216159974188305,
+            0.2706154099233854
+          ],
+          "multipliers": [
+            0.0009957760772910744
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 0.0,
+          "stationarity_frobenius": 7.144859412137167e-16,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.1658549502869961,
+            0.2503870167505561,
+            0.3352492477692587,
+            0.4985087851931895
+          ],
+          "domain_margin": 0.1658549502869961,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.01,
+            -0.01
+          ],
+          "energy": -1.5659774021890835,
+          "density": [
+            0.7221294214614702,
+            0.27019207554858304
+          ],
+          "multipliers": [
+            0.0015932692395761922
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 13,
+          "solver_residual_max": 0.0,
+          "stationarity_frobenius": 8.325090629779607e-16,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16732704416084132,
+            0.24927666253761055,
+            0.3335709233226297,
+            0.4998253699789185
+          ],
+          "domain_margin": 0.16732704416084132,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.005,
+            0.0
+          ],
+          "energy": -1.569763387879016,
+          "density": [
+            0.7223951940039116,
+            0.27104946571959887
+          ],
+          "multipliers": [
+            -0.0006438954908085467
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 9,
+          "solver_residual_max": 0.0,
+          "stationarity_frobenius": 8.335806031726946e-16,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16670197152458224,
+            0.2500886102700009,
+            0.33279184753866686,
+            0.5004175706667502
+          ],
+          "domain_margin": 0.16670197152458224,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.005,
+            -0.0
+          ],
+          "energy": -1.5674161669494884,
+          "density": [
+            0.7220478735926653,
+            0.27061829990540576
+          ],
+          "multipliers": [
+            0.0006465121715165344
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 5.551115123125783e-17,
+          "stationarity_frobenius": 8.690588868792353e-16,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16662940966346906,
+            0.24991444187664305,
+            0.3338738970983456,
+            0.49958225136154255
+          ],
+          "domain_margin": 0.16662940966346906,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.0,
+            0.005
+          ],
+          "energy": -1.568640087737924,
+          "density": [
+            0.7220934457182083,
+            0.2709385612829928
+          ],
+          "multipliers": [
+            -0.00014708606355148622
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 9,
+          "solver_residual_max": 1.1102230246251565e-16,
+          "stationarity_frobenius": 6.208144953227436e-16,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16629663811806006,
+            0.25027957500530823,
+            0.3337547261845012,
+            0.49966906069213063
+          ],
+          "domain_margin": 0.16629663811806006,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.0,
+            -0.005
+          ],
+          "energy": -1.5685567632246422,
+          "density": [
+            0.722351280321797,
+            0.2707277909981668
+          ],
+          "multipliers": [
+            0.00014652007335578393
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 9,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 1.2492440763073922e-15,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.1670371365356031,
+            0.24972032973354555,
+            0.33291024323909685,
+            0.5003322904917548
+          ],
+          "domain_margin": 0.1670371365356031,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.005,
+            0.005
+          ],
+          "energy": -1.5697791975306101,
+          "density": [
+            0.7222661375694273,
+            0.2711544692978759
+          ],
+          "multipliers": [
+            -0.0007896905313641242
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 0.0,
+          "stationarity_frobenius": 1.0702368772430112e-15,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16633087329136095,
+            0.25036915976141133,
+            0.3332145530292105,
+            0.5000854139180174
+          ],
+          "domain_margin": 0.16633087329136095,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.005,
+            -0.005
+          ],
+          "energy": -1.5697126028905584,
+          "density": [
+            0.7225245328593783,
+            0.27094414601674005
+          ],
+          "multipliers": [
+            -0.0004986687526915115
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 9,
+          "solver_residual_max": 0.0,
+          "stationarity_frobenius": 1.0760866323521301e-15,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16707353335506825,
+            0.24980794097462528,
+            0.33236745299176307,
+            0.5007510726785437
+          ],
+          "domain_margin": 0.16707353335506825,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.005,
+            0.005
+          ],
+          "energy": -1.5674486921069846,
+          "density": [
+            0.7219193767791359,
+            0.270723752893451
+          ],
+          "multipliers": [
+            0.0004981375712256289
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 1.1102230246251565e-16,
+          "stationarity_frobenius": 1.0389625891044137e-15,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16626046849245563,
+            0.25019302620506206,
+            0.3342939635353541,
+            0.4992525417671285
+          ],
+          "domain_margin": 0.16626046849245563,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.005,
+            -0.005
+          ],
+          "energy": -1.5673486473836393,
+          "density": [
+            0.7221766511776944,
+            0.27051253426625904
+          ],
+          "multipliers": [
+            0.0007943230851203624
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 0.0,
+          "stationarity_frobenius": 9.627154432690897e-16,
+          "constraint_residual": [
+            0.0
+          ],
+          "gamma_eigenvalues": [
+            0.16699876964328486,
+            0.24963578705670927,
+            0.33345212514276656,
+            0.49991331815723955
+          ],
+          "domain_margin": 0.16699876964328486,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        }
+      ],
+      "analytic_hessian": [
+        [
+          2.091240152968993,
+          0.3345008543350855
+        ],
+        [
+          0.3345008543350855,
+          1.3993948318321479
+        ]
+      ],
+      "finite_difference": [
+        {
+          "h": 0.02,
+          "hessian": [
+            [
+              2.0912371844400424,
+              0.33450051169114925
+            ],
+            [
+              0.33450051169114925,
+              1.3993912025023203
+            ]
+          ],
+          "error_matrix": [
+            [
+              -2.9685289506531376e-06,
+              -3.426439362241851e-07
+            ],
+            [
+              -3.426439362241851e-07,
+              -3.629329827559147e-06
+            ]
+          ],
+          "error_max": 3.629329827559147e-06,
+          "error_frobenius": 4.713704367282566e-06,
+          "registered_allowance": 0.0008,
+          "agrees": true
+        },
+        {
+          "h": 0.01,
+          "hessian": [
+            [
+              2.091239410830781,
+              0.3345007687044488
+            ],
+            [
+              0.3345007687044488,
+              1.3993939244905107
+            ]
+          ],
+          "error_matrix": [
+            [
+              -7.421382122174691e-07,
+              -8.563063669253523e-08
+            ],
+            [
+              -8.563063669253523e-08,
+              -9.073416371574439e-07
+            ]
+          ],
+          "error_max": 9.073416371574439e-07,
+          "error_frobenius": 1.1784325116160152e-06,
+          "registered_allowance": 0.0002,
+          "agrees": true,
+          "previous_error_over_error": 3.9999595289479455,
+          "observed_order": 1.9999854030796311,
+          "hessian_change_from_previous": [
+            [
+              2.2263907384356685e-06,
+              2.5701329953164986e-07
+            ],
+            [
+              2.5701329953164986e-07,
+              2.721988190401703e-06
+            ]
+          ]
+        },
+        {
+          "h": 0.005,
+          "hessian": [
+            [
+              2.091239967461078,
+              0.33450083293473654
+            ],
+            [
+              0.33450083293473654,
+              1.3993946049861705
+            ]
+          ],
+          "error_matrix": [
+            [
+              -1.8550791480720363e-07,
+              -2.140034893738374e-08
+            ],
+            [
+              -2.140034893738374e-08,
+              -2.2684597733579892e-07
+            ]
+          ],
+          "error_max": 2.2684597733579892e-07,
+          "error_frobenius": 2.9459842796395586e-07,
+          "registered_allowance": 5e-05,
+          "agrees": true,
+          "previous_error_over_error": 3.9998136524780015,
+          "observed_order": 1.9999327877729165,
+          "hessian_change_from_previous": [
+            [
+              5.566302974102655e-07,
+              6.42302877551515e-08
+            ],
+            [
+              6.42302877551515e-08,
+              6.80495659821645e-07
+            ]
+          ]
+        }
+      ],
+      "sensitivities": {
+        "wrongGC": {
+          "hessian": [
+            [
+              2.080404781381066,
+              0.3320354445734227
+            ],
+            [
+              0.3320354445734227,
+              1.3988338685791963
+            ]
+          ],
+          "difference_from_unmutated": [
+            [
+              -0.010835371587926801,
+              -0.0024654097616627624
+            ],
+            [
+              -0.0024654097616627624,
+              -0.0005609632529515185
+            ]
+          ],
+          "error_against_independent_scalar_hessian": [
+            [
+              0.010835186080011994,
+              0.002465388361313825
+            ],
+            [
+              0.002465388361313825,
+              0.0005607364069741827
+            ]
+          ],
+          "error_max": 0.010835186080011994,
+          "detected_at_registered_allowance": true
+        },
+        "missingW": {
+          "hessian": [
+            [
+              1.8519544386832787,
+              0.26029450512873625
+            ],
+            [
+              0.26029450512873625,
+              1.3679133503506664
+            ]
+          ],
+          "difference_from_unmutated": [
+            [
+              -0.23928571428571432,
+              -0.07420634920634922
+            ],
+            [
+              -0.07420634920634922,
+              -0.031481481481481444
+            ]
+          ],
+          "error_against_independent_scalar_hessian": [
+            [
+              0.23928552877779952,
+              0.07420632780600028
+            ],
+            [
+              0.07420632780600028,
+              0.03148125463550411
+            ]
+          ],
+          "error_max": 0.23928552877779952,
+          "detected_at_registered_allowance": true
+        },
+        "droppedUcross": {
+          "hessian": [
+            [
+              2.090483932480571,
+              0.3345906118461736
+            ],
+            [
+              0.3345906118461736,
+              1.3996527792622642
+            ]
+          ],
+          "difference_from_unmutated": [
+            [
+              -0.0007562204884221657,
+              8.97575110881399e-05
+            ],
+            [
+              8.97575110881399e-05,
+              0.00025794743011631205
+            ]
+          ],
+          "error_against_independent_scalar_hessian": [
+            [
+              0.0007560349805073585,
+              -8.977891143707728e-05
+            ],
+            [
+              -8.977891143707728e-05,
+              -0.00025817427609364785
+            ]
+          ],
+          "error_max": 0.0007560349805073585,
+          "detected_at_registered_allowance": true
+        }
+      },
+      "all_scalar_minima_converged": true,
+      "all_curvatures_within_registered_allowance": true,
+      "all_registered_mutations_detected": true,
+      "passed": true
+    },
+    {
+      "ensemble": "fixedN-fixedM",
+      "constraints": {
+        "N": 1.25,
+        "M": 0.4166666666666667
+      },
+      "reference_minimum": {
+        "u": [
+          0.0,
+          0.0
+        ],
+        "energy": -1.5686159179138452,
+        "density": [
+          0.7222222222222222,
+          0.27083333333333326
+        ],
+        "multipliers": [
+          -2.0643035759583027e-18,
+          1.5245862035290989e-16
+        ],
+        "accepted_minimum": true,
+        "solver_success": true,
+        "solver_status": 1,
+        "solver_message": "The solution converged.",
+        "solver_nfev": 8,
+        "solver_residual_max": 5.551115123125783e-17,
+        "stationarity_frobenius": 3.2346395344889e-16,
+        "constraint_residual": [
+          0.0,
+          -5.551115123125783e-17
+        ],
+        "gamma_eigenvalues": [
+          0.16666666666666663,
+          0.24999999999999994,
+          0.3333333333333333,
+          0.5
+        ],
+        "domain_margin": 0.16666666666666663,
+        "interaction_min_eigenvalue": 0.4548848945709075,
+        "strict_convexity_lower_bound": 4.0
+      },
+      "scalar_minima": [
+        {
+          "u": [
+            0.0,
+            0.0
+          ],
+          "energy": -1.5686159179138452,
+          "density": [
+            0.7222222222222222,
+            0.27083333333333326
+          ],
+          "multipliers": [
+            -2.0643035759583027e-18,
+            1.5245862035290989e-16
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 8,
+          "solver_residual_max": 5.551115123125783e-17,
+          "stationarity_frobenius": 3.2346395344889e-16,
+          "constraint_residual": [
+            0.0,
+            -5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.16666666666666663,
+            0.24999999999999994,
+            0.3333333333333333,
+            0.5
+          ],
+          "domain_margin": 0.16666666666666663,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.02,
+            0.0
+          ],
+          "energy": -1.5728913528696424,
+          "density": [
+            0.7233220420116895,
+            0.2713834980816259
+          ],
+          "multipliers": [
+            -0.0027340747728960687,
+            0.0014349626399369297
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 1.1102230246251565e-16,
+          "stationarity_frobenius": 1.309396848391766e-15,
+          "constraint_residual": [
+            0.0,
+            -5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.16658015677556132,
+            0.25008650989110554,
+            0.3314073066883584,
+            0.5019260266449752
+          ],
+          "domain_margin": 0.16658015677556132,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.02,
+            -0.0
+          ],
+          "energy": -1.5635025968685496,
+          "density": [
+            0.7211153792055424,
+            0.2702885783497776
+          ],
+          "multipliers": [
+            0.00277177188562095,
+            -0.0013833935573738549
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 8.701411365049271e-16,
+          "constraint_residual": [
+            2.220446049250313e-16,
+            1.1102230246251565e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16671424262026685,
+            0.2499524240463999,
+            0.33525271664118517,
+            0.4980806166921485
+          ],
+          "domain_margin": 0.16671424262026685,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.0,
+            0.02
+          ],
+          "energy": -1.5685020544319126,
+          "density": [
+            0.7214109828218771,
+            0.27148232086559665
+          ],
+          "multipliers": [
+            -0.0004649214162751976,
+            -0.0010274993851020662
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 5.551115123125783e-17,
+          "stationarity_frobenius": 7.089448696456609e-16,
+          "constraint_residual": [
+            0.0,
+            -5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.16534322384009567,
+            0.251323442826571,
+            0.33483273563710936,
+            0.498500597696224
+          ],
+          "domain_margin": 0.16534322384009567,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.0,
+            -0.02
+          ],
+          "energy": -1.5681692742660533,
+          "density": [
+            0.7230427760189535,
+            0.27017663391388114
+          ],
+          "multipliers": [
+            0.00045641198331849574,
+            0.0010429916628137686
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 5.551115123125783e-17,
+          "stationarity_frobenius": 1.1462732583246768e-15,
+          "constraint_residual": [
+            0.0,
+            5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.1679931064087064,
+            0.24867356025796034,
+            0.3318091939997287,
+            0.5015241393336048
+          ],
+          "domain_margin": 0.1679931064087064,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.02,
+            0.02
+          ],
+          "energy": -1.572644872330071,
+          "density": [
+            0.7225047502986548,
+            0.27202961602379927
+          ],
+          "multipliers": [
+            -0.0031802378197716345,
+            0.00040280526129249123
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 2.7755575615628914e-16,
+          "stationarity_frobenius": 1.3768735836224565e-15,
+          "constraint_residual": [
+            0.0,
+            -2.7755575615628914e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16524239698274146,
+            0.2514242696839255,
+            0.3329272089199841,
+            0.5004061244133493
+          ],
+          "domain_margin": 0.16524239698274146,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.02,
+            -0.02
+          ],
+          "energy": -1.5725779131353739,
+          "density": [
+            0.7241485899325836,
+            0.2707296501530503
+          ],
+          "multipliers": [
+            -0.0022964398364032595,
+            0.0024822610688903673
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 1.1102230246251565e-16,
+          "stationarity_frobenius": 1.0010734511153492e-15,
+          "constraint_residual": [
+            0.0,
+            -1.1102230246251565e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16792234981133808,
+            0.24874431685532872,
+            0.3298630812766987,
+            0.5034702520566345
+          ],
+          "domain_margin": 0.16792234981133808,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.02,
+            0.02
+          ],
+          "energy": -1.5635210851159234,
+          "density": [
+            0.720310243914708,
+            0.2709404064648695
+          ],
+          "multipliers": [
+            0.002288077721253734,
+            -0.0024060100837924817
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 5.551115123125783e-17,
+          "stationarity_frobenius": 7.742976905248724e-16,
+          "constraint_residual": [
+            0.0,
+            -5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.1654062368847707,
+            0.25126042978189606,
+            0.3367308182197155,
+            0.49660251511361797
+          ],
+          "domain_margin": 0.1654062368847707,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.02,
+            -0.02
+          ],
+          "energy": -1.5629230113440877,
+          "density": [
+            0.7219298858384244,
+            0.26962905667804793
+          ],
+          "multipliers": [
+            0.003246975017826464,
+            -0.0003449365470861905
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 2.7755575615628914e-16,
+          "stationarity_frobenius": 8.550258101695264e-16,
+          "constraint_residual": [
+            0.0,
+            2.7755575615628914e-16
+          ],
+          "gamma_eigenvalues": [
+            0.1680237489778899,
+            0.2486429176887767,
+            0.3337494410512797,
+            0.499583892282054
+          ],
+          "domain_margin": 0.1680237489778899,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.01,
+            0.0
+          ],
+          "energy": -1.5708583960063556,
+          "density": [
+            0.7227730119028212,
+            0.27110774178029473
+          ],
+          "multipliers": [
+            -0.0013717404262254826,
+            0.0007110177556978812
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 1.3836257304563327e-15,
+          "constraint_residual": [
+            -2.220446049250313e-16,
+            5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.16662829181000605,
+            0.25003837485666064,
+            0.33237105369499703,
+            0.5009622796383365
+          ],
+          "domain_margin": 0.16662829181000605,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.01,
+            -0.0
+          ],
+          "energy": -1.566163968172933,
+          "density": [
+            0.7216696767110252,
+            0.2705602773470886
+          ],
+          "multipliers": [
+            0.0013811648085738785,
+            -0.0006981255785453418
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 5.551115123125783e-17,
+          "stationarity_frobenius": 1.1644553016414916e-15,
+          "constraint_residual": [
+            0.0,
+            -5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.16669530636167862,
+            0.24997136030498823,
+            0.33429395440880194,
+            0.4990393789245316
+          ],
+          "domain_margin": 0.16669530636167862,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.0,
+            0.01
+          ],
+          "energy": -1.5686291531595011,
+          "density": [
+            0.7218154348133268,
+            0.271158792420852
+          ],
+          "multipliers": [
+            -0.00023144807174392863,
+            -0.0005156596175175432
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 4.440892098500626e-16,
+          "stationarity_frobenius": 9.697172114329698e-16,
+          "constraint_residual": [
+            4.440892098500626e-16,
+            5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.16600448470156015,
+            0.25066218196510665,
+            0.3340861431603149,
+            0.4992471901730187
+          ],
+          "domain_margin": 0.16600448470156015,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.0,
+            -0.01
+          ],
+          "energy": -1.5684625556392224,
+          "density": [
+            0.7226313382608084,
+            0.27050594622954477
+          ],
+          "multipliers": [
+            0.00022932084330010556,
+            0.0005195326635377992
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 1.6653345369377348e-16,
+          "stationarity_frobenius": 1.0243717268468977e-15,
+          "constraint_residual": [
+            0.0,
+            -1.6653345369377348e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16732960089742369,
+            0.24933706576924308,
+            0.332574339206737,
+            0.5007589941265965
+          ],
+          "domain_margin": 0.16732960089742369,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.01,
+            0.01
+          ],
+          "energy": -1.5708384568288127,
+          "density": [
+            0.7223647117353765,
+            0.2714324863914642
+          ],
+          "multipliers": [
+            -0.0015984969403008778,
+            0.00019420138801212134
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 1.1102230246251565e-16,
+          "stationarity_frobenius": 1.1322714685479535e-15,
+          "constraint_residual": [
+            0.0,
+            -1.1102230246251565e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16596237286048343,
+            0.25070429380618325,
+            0.33312901024458264,
+            0.5002043230887508
+          ],
+          "domain_margin": 0.16596237286048343,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.01,
+            -0.01
+          ],
+          "energy": -1.5707382816163244,
+          "density": [
+            0.7231836334652593,
+            0.2707810668831869
+          ],
+          "multipliers": [
+            -0.0011471134659897238,
+            0.001231663361166208
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 9.640316024004463e-16,
+          "constraint_residual": [
+            2.220446049250313e-16,
+            1.6653345369377348e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16729514445620863,
+            0.24937152221045816,
+            0.33160696526345446,
+            0.5017263680698791
+          ],
+          "domain_margin": 0.16729514445620863,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.01,
+            0.01
+          ],
+          "energy": -1.566210344776868,
+          "density": [
+            0.7212644085741398,
+            0.2708864472776998
+          ],
+          "multipliers": [
+            0.0011450233897750876,
+            -0.0012126002438214802
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 1.1102230246251565e-16,
+          "stationarity_frobenius": 7.299809798265592e-16,
+          "constraint_residual": [
+            0.0,
+            -5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.16603700331693177,
+            0.25062966334973485,
+            0.3350415181963571,
+            0.49829181513697635
+          ],
+          "domain_margin": 0.16603700331693177,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.01,
+            -0.01
+          ],
+          "energy": -1.5659773908729255,
+          "density": [
+            0.7220772806346163,
+            0.270232181684335
+          ],
+          "multipliers": [
+            0.0016151813070368443,
+            -0.0001797342478357863
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 4.440892098500626e-16,
+          "stationarity_frobenius": 1.1728772470700268e-15,
+          "constraint_residual": [
+            4.440892098500626e-16,
+            2.7755575615628914e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16735417648609396,
+            0.24931249018057278,
+            0.33354015245888646,
+            0.49979318087444735
+          ],
+          "domain_margin": 0.16735417648609396,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.005,
+            0.0
+          ],
+          "energy": -1.5697633440267782,
+          "density": [
+            0.7224978367773909,
+            0.27097036878528075
+          ],
+          "multipliers": [
+            -0.0006870471267447809,
+            0.00035389518001503127
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 22,
+          "solver_residual_max": 1.1102230246251565e-16,
+          "stationarity_frobenius": 7.458328520770831e-16,
+          "constraint_residual": [
+            0.0,
+            -1.1102230246251565e-16
+          ],
+          "gamma_eigenvalues": [
+            0.1666486978548649,
+            0.2500179688118018,
+            0.33285238867740696,
+            0.5004809446559265
+          ],
+          "domain_margin": 0.1666486978548649,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.005,
+            -0.0
+          ],
+          "energy": -1.567416123880935,
+          "density": [
+            0.7219461687079168,
+            0.2706966359977858
+          ],
+          "multipliers": [
+            0.0006894032288422702,
+            -0.0003506721415702958
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 1.6653345369377348e-16,
+          "stationarity_frobenius": 1.3771086605324902e-15,
+          "constraint_residual": [
+            0.0,
+            1.6653345369377348e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16668220158318126,
+            0.24998446508348543,
+            0.3338138634904574,
+            0.4995194698428762
+          ],
+          "domain_margin": 0.16668220158318126,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.0,
+            0.005
+          ],
+          "energy": -1.5686400643725302,
+          "density": [
+            0.7220185370119742,
+            0.27099630404742414
+          ],
+          "multipliers": [
+            -0.00011546451669827919,
+            -0.0002583106125376966
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 4.440892098500626e-16,
+          "stationarity_frobenius": 8.777237151207749e-16,
+          "constraint_residual": [
+            -4.440892098500626e-16,
+            -1.6653345369377348e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16633547082503106,
+            0.25033119584163555,
+            0.3337105133539828,
+            0.49962281997935043
+          ],
+          "domain_margin": 0.16633547082503106,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.0,
+            -0.005
+          ],
+          "energy": -1.5685567396825095,
+          "density": [
+            0.722426489591805,
+            0.2706698806123954
+          ],
+          "multipliers": [
+            0.00011493271769942629,
+            0.0002592788725799904
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 10,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 1.1646935700685153e-15,
+          "constraint_residual": [
+            2.220446049250313e-16,
+            5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.16699805076434454,
+            0.2496686159023223,
+            0.3329546072351468,
+            0.5003787260981868
+          ],
+          "domain_margin": 0.16699805076434454,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.005,
+            0.005
+          ],
+          "energy": -1.56977919435093,
+          "density": [
+            0.7222937734175909,
+            0.2711331612477832
+          ],
+          "multipliers": [
+            -0.0008013385031436284,
+            9.52963459771299e-05
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 1.1102230246251565e-16,
+          "stationarity_frobenius": 9.279428894298235e-16,
+          "constraint_residual": [
+            0.0,
+            -1.1102230246251565e-16
+          ],
+          "gamma_eigenvalues": [
+            0.16631654768310938,
+            0.2503501189835573,
+            0.3332308581568869,
+            0.5001024751764466
+          ],
+          "domain_margin": 0.16631654768310938,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            0.005,
+            -0.005
+          ],
+          "energy": -1.569712471119126,
+          "density": [
+            0.722702481394617,
+            0.2708070940317695
+          ],
+          "multipliers": [
+            -0.0005732878394593908,
+            0.0006134568039903427
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 22,
+          "solver_residual_max": 5.551115123125783e-17,
+          "stationarity_frobenius": 8.49468596701866e-16,
+          "constraint_residual": [
+            0.0,
+            -5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.16698105907943545,
+            0.24968560758723124,
+            0.332472379716612,
+            0.5008609536167214
+          ],
+          "domain_margin": 0.16698105907943545,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.005,
+            0.005
+          ],
+          "energy": -1.5674485623474124,
+          "density": [
+            0.7217428624638319,
+            0.2708597845088525
+          ],
+          "multipliers": [
+            0.0005727653486904521,
+            -0.0006086910014630719
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 21,
+          "solver_residual_max": 5.551115123125783e-17,
+          "stationarity_frobenius": 9.557710565977302e-16,
+          "constraint_residual": [
+            0.0,
+            5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.16635197793249698,
+            0.25031468873416973,
+            0.33418974168470217,
+            0.4991435916486313
+          ],
+          "domain_margin": 0.16635197793249698,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        },
+        {
+          "u": [
+            -0.005,
+            -0.005
+          ],
+          "energy": -1.5673486444397988,
+          "density": [
+            0.7221500580083898,
+            0.2705330057649375
+          ],
+          "multipliers": [
+            0.0008055095990292735,
+            -9.167956333204966e-05
+          ],
+          "accepted_minimum": true,
+          "solver_success": true,
+          "solver_status": 1,
+          "solver_message": "The solution converged.",
+          "solver_nfev": 11,
+          "solver_residual_max": 2.220446049250313e-16,
+          "stationarity_frobenius": 6.783315765994789e-16,
+          "constraint_residual": [
+            -2.220446049250313e-16,
+            -5.551115123125783e-17
+          ],
+          "gamma_eigenvalues": [
+            0.1670125904583398,
+            0.2496540762083269,
+            0.33343643253214506,
+            0.4998969008011883
+          ],
+          "domain_margin": 0.1670125904583398,
+          "interaction_min_eigenvalue": 0.4548848945709075,
+          "strict_convexity_lower_bound": 4.0
+        }
+      ],
+      "analytic_hessian": [
+        [
+          2.094716904120507,
+          0.33194676791949057
+        ],
+        [
+          0.33194676791949057,
+          1.401271111477726
+        ]
+      ],
+      "finite_difference": [
+        {
+          "h": 0.02,
+          "hessian": [
+            [
+              2.0947152237460465,
+              0.3319466107115643
+            ],
+            [
+              0.3319466107115643,
+              1.4012678243113807
+            ]
+          ],
+          "error_matrix": [
+            [
+              -1.6803744604665383e-06,
+              -1.572079262879278e-07
+            ],
+            [
+              -1.572079262879278e-07,
+              -3.287166345344872e-06
+            ]
+          ],
+          "error_max": 3.287166345344872e-06,
+          "error_frobenius": 3.698452321381428e-06,
+          "registered_allowance": 0.0008,
+          "agrees": true
+        },
+        {
+          "h": 0.01,
+          "hessian": [
+            [
+              2.0947164840201538,
+              0.3319467286355682
+            ],
+            [
+              0.3319467286355682,
+              1.4012702896692986
+            ]
+          ],
+          "error_matrix": [
+            [
+              -4.201003531711933e-07,
+              -3.928392239282985e-08
+            ],
+            [
+              -3.928392239282985e-08,
+              -8.218084275313231e-07
+            ]
+          ],
+          "error_max": 8.218084275313231e-07,
+          "error_frobenius": 9.246295752425394e-07,
+          "registered_allowance": 0.0002,
+          "agrees": true,
+          "previous_error_over_error": 3.9999180286084157,
+          "observed_order": 1.9999704347670277,
+          "hessian_change_from_previous": [
+            [
+              1.260274107295345e-06,
+              1.1792400389509794e-07
+            ],
+            [
+              1.1792400389509794e-07,
+              2.4653579178135487e-06
+            ]
+          ]
+        },
+        {
+          "h": 0.005,
+          "hessian": [
+            [
+              2.0947167990925664,
+              0.3319467580942259
+            ],
+            [
+              0.3319467580942259,
+              1.4012709060295947
+            ]
+          ],
+          "error_matrix": [
+            [
+              -1.050279405667709e-07,
+              -9.825264657425947e-09
+            ],
+            [
+              -9.825264657425947e-09,
+              -2.054481313962242e-07
+            ]
+          ],
+          "error_max": 2.054481313962242e-07,
+          "error_frobenius": 2.3115552047285023e-07,
+          "registered_allowance": 5e-05,
+          "agrees": true,
+          "previous_error_over_error": 4.0000774012706675,
+          "observed_order": 2.0000279163372436,
+          "hessian_change_from_previous": [
+            [
+              3.150724126044224e-07,
+              2.9458657735403904e-08
+            ],
+            [
+              2.9458657735403904e-08,
+              6.163602961350989e-07
+            ]
+          ]
+        }
+      ],
+      "sensitivities": {
+        "wrongGC": {
+          "hessian": [
+            [
+              2.080404781381066,
+              0.3320354445734227
+            ],
+            [
+              0.3320354445734227,
+              1.3988338685791963
+            ]
+          ],
+          "difference_from_unmutated": [
+            [
+              -0.014312122739440714,
+              8.867665393214041e-05
+            ],
+            [
+              8.867665393214041e-05,
+              -0.0024372428985297567
+            ]
+          ],
+          "error_against_independent_scalar_hessian": [
+            [
+              0.014312017711500147,
+              -8.868647919679784e-05
+            ],
+            [
+              -8.868647919679784e-05,
+              0.0024370374503983605
+            ]
+          ],
+          "error_max": 0.014312017711500147,
+          "detected_at_registered_allowance": true
+        },
+        "missingW": {
+          "hessian": [
+            [
+              1.8554311898347926,
+              0.25774041871314135
+            ],
+            [
+              0.25774041871314135,
+              1.3697896299962449
+            ]
+          ],
+          "difference_from_unmutated": [
+            [
+              -0.23928571428571432,
+              -0.07420634920634922
+            ],
+            [
+              -0.07420634920634922,
+              -0.03148148148148122
+            ]
+          ],
+          "error_against_independent_scalar_hessian": [
+            [
+              0.23928560925777376,
+              0.07420633938108456
+            ],
+            [
+              0.07420633938108456,
+              0.031481276033349825
+            ]
+          ],
+          "error_max": 0.23928560925777376,
+          "detected_at_registered_allowance": true
+        },
+        "droppedUcross": {
+          "hessian": [
+            [
+              2.093955631006093,
+              0.33177749831668396
+            ],
+            [
+              0.33177749831668396,
+              1.4019322420876277
+            ]
+          ],
+          "difference_from_unmutated": [
+            [
+              -0.000761273114413985,
+              -0.00016926960280660985
+            ],
+            [
+              -0.00016926960280660985,
+              0.0006611306099015835
+            ]
+          ],
+          "error_against_independent_scalar_hessian": [
+            [
+              0.0007611680864734183,
+              0.00016925977754195243
+            ],
+            [
+              0.00016925977754195243,
+              -0.0006613360580329797
+            ]
+          ],
+          "error_max": 0.0007611680864734183,
+          "detected_at_registered_allowance": true
+        }
+      },
+      "all_scalar_minima_converged": true,
+      "all_curvatures_within_registered_allowance": true,
+      "all_registered_mutations_detected": true,
+      "passed": true
+    }
+  ],
+  "ensemble_hessian_difference_fixedM_minus_relaxedM": [
+    [
+      0.0034767511515139127,
+      -0.002554086415594903
+    ],
+    [
+      -0.002554086415594903,
+      0.0018762796455782382
+    ]
+  ],
+  "passed": true
+}

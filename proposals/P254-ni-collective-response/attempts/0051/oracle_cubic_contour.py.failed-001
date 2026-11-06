@@ -1,0 +1,85 @@
+"""One finite raw-complex paired-q new-boundary oracle; old proofs are carried."""
+import json
+from pathlib import Path
+import numpy as np
+import sympy as sp
+from cubic_contour import CompactCubic,CubicContour,vertex,ordered_matrix,ordered_action
+from cubic_ionic_donor import IonicThird
+from cubic_force_functional import evaluate,TERMS
+from capture_command import binding,save
+
+
+def main(output):
+    rng=np.random.default_rng(25451)
+    def raw(shape):return rng.normal(size=shape)+1j*rng.normal(size=shape)
+    ionic=IonicThird(np.diag([5.1,5.7,6.3]),np.array([[.2,.4,.7],[1.3,1.8,2.4]]),[2.,3.],(3,1,1))
+    # Symmetric onsite tensors, independent atom coefficients, all Cartesian axes.
+    from itertools import permutations
+    onsite=raw((2,3,3,3))
+    onsite=sum(onsite.transpose(0,*[i+1 for i in p]) for p in permutations(range(3)))/6
+    source=CompactCubic(ionic,onsite,.3*onsite);provider=CubicContour(source)
+    d=source.d;errors={};mutations={};dense=[]
+    for k in range(source.n):
+        l,left,right=provider.pair(1,k)
+        qs=source.indices[[int(source.minus[1]),k,l]]
+        def old(q):
+            value=ionic.block(q)
+            for a in range(2):value[3*a:3*a+3,3*a:3*a+3,3*a:3*a+3]+=1.3*onsite[a]/np.sqrt(source.n)
+            return value
+        expected_left=old(qs);expected_right=old(source.indices[[1,int(source.minus[k]),int(source.minus[l])]])
+        errors['vertex_'+str(k)]=float(np.max(np.abs(left-expected_left)))
+        errors['reverse_'+str(k)]=float(np.max(np.abs(right-expected_right)))
+        w=raw((d,d))
+        errors['compact_'+str(k)]=float(np.max(np.abs(np.einsum('iab,ab->i',left,w)-source.contract(qs,covariance=w))))
+        dense.append((left,right))
+    legs={k:(raw((d,d)),raw((d,d))) for k in range(source.n)}
+    expected={name:np.zeros((d,d),complex) for name in ('greater','lesser')}
+    for k,(left,right) in enumerate(dense):
+        l=source.qindex(source.indices[1]-source.indices[k])
+        swapped_right=dense[l][1]
+        for name,index in (('greater',0),('lesser',1)):
+            w1,w2=1j*legs[k][index],1j*legs[l][index]
+            # Both actual Wick orders before relabeling k<->l; independent right.
+            expected[name]+=-.25j*(np.einsum('iab,jcd,ac,bd->ij',left,right,w1,w2,optimize=True)
+                +np.einsum('iab,jdc,ac,bd->ij',left,swapped_right,w1,w2,optimize=True))
+    def callback(k,l):return legs[k][0],legs[l][0],legs[k][1],legs[l][1]
+    actual=provider.evaluate(1,callback,1)
+    x=raw((d,));y=raw((d,))
+    action=provider.evaluate(1,callback,1,value=x)
+    dual=provider.evaluate(1,callback,1,value=y,transpose=True)
+    for name in expected:
+        errors[name]=float(np.max(np.abs(actual[name]-expected[name])))
+    for name in actual:
+        errors[name+'_action']=float(np.max(np.abs(action[name]-actual[name]@x)))
+        errors[name+'_transpose']=float(np.max(np.abs(dual[name]-actual[name].T@y)))
+        errors[name+'_bilinear']=float(abs(y@action[name]-dual[name]@x))
+    left,right=dense[0];w=raw((d,d));zero=np.zeros(d)
+    original={'greater':np.zeros((d,d),complex)}
+    routed=np.zeros((d,d),complex)
+    for lv,rv in dense:
+        original['greater']+=evaluate(dict(left=lv,right=rv,wg=w,wl=.7*w,equal_left=w,equal_right=w,mu_left=zero,mu_right=zero),1,TERMS)['greater']
+        routed+=ordered_matrix(lv,rv,-1j*w,-1j*w)
+    errors['passed_dense_functional_same_leg']=float(np.max(np.abs(routed-original['greater'])))
+    ac,bd,ad,bc,ab,cd=sp.symbols('ac bd ad bc ab cd')
+    connected=sp.expand(sp.Rational(1,4)*(ab*cd+ac*bd+ad*bc-ab*cd))
+    if sp.expand(connected-(ac*bd+ad*bc)/4)!=0:raise AssertionError('symbolic Wick disconnection')
+    scale=max(1.,np.linalg.norm(actual['greater']))
+    mutations['wrong_Wick_factor']=float(np.linalg.norm(actual['greater']*.5-expected['greater'])/scale)
+    mutations['extra_volume_N']=float(np.linalg.norm(actual['greater']/source.n-expected['greater'])/scale)
+    mutations['dagger_not_transpose']=float(np.linalg.norm(actual['greater'].conj().T@y-dual['greater'])/scale)
+    omitted=ordered_matrix(*dense[0],legs[0][0],legs[source.qindex(source.indices[1])][0])
+    mutations['missing_internal_q']=float(np.linalg.norm(omitted-expected['greater'])/scale)
+    inferred=sum((ordered_matrix(lv,lv.conj(),-1j*w,-1j*w) for lv,rv in dense),np.zeros((d,d),complex))
+    mutations['inferred_reverse_dagger']=float(np.linalg.norm(inferred-original['greater'])/max(1.,np.linalg.norm(original['greater'])))
+    no_onsite=CubicContour(CompactCubic(ionic,np.zeros_like(onsite),np.zeros_like(onsite))).evaluate(1,callback,1)
+    mutations['missing_onsite']=float(np.linalg.norm(no_onsite['greater']-actual['greater'])/scale)
+    if max(errors.values())>2e-10 or min(mutations.values())<1e-5:raise AssertionError(dict(errors=errors,mutations=mutations))
+    record=dict(status='passed',errors=errors,tolerance=2e-10,mutations=mutations,
+        symbolic_connected_Wick=str(connected),internal_q=3,external_q=1,coordinates=d,
+        original_dense_functional=binding(Path(__file__).parent.parent/'0043/cubic_force_functional.py'),
+        scope='new vectorized compact vertex association, both Wick orders, routed factors, raw complex actions and true bilinear transpose; old coefficient/Fock/Ewald proofs not replayed')
+    save(Path(output)/'oracle.json',record);print(json.dumps(record),flush=True)
+
+if __name__=='__main__':
+    import sys
+    main(sys.argv[1])

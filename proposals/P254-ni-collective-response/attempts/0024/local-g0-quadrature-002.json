@@ -1,0 +1,81 @@
+{
+  "checks": [
+    {
+      "name": "Ni_local_G0_adaptive_quadrature",
+      "max_abs": 1.2273575489274435e-09,
+      "reference_max_abs": 1.0462827216741992,
+      "relative_l2": 1.1730649120951737e-09,
+      "limit": 2.292565443348398e-06,
+      "passed": true
+    },
+    {
+      "name": "H_local_G0_adaptive_quadrature",
+      "max_abs": 4.335141386493935e-10,
+      "reference_max_abs": 0.00478868332105496,
+      "relative_l2": 9.052888019203766e-08,
+      "limit": 2.095773666421099e-07,
+      "passed": true
+    }
+  ],
+  "mutations": [
+    {
+      "name": "Ni_wrong_G0_short_range_limit",
+      "max_abs": 1.5318211601436709,
+      "comparison_limit": 2.2925654458031136e-10,
+      "exposed": true
+    },
+    {
+      "name": "H_wrong_G0_short_range_limit",
+      "max_abs": 0.0851011755635372,
+      "comparison_limit": 2.0957736577508164e-11,
+      "exposed": true
+    }
+  ],
+  "quadrature_error_estimates": [
+    {
+      "element": "Ni",
+      "component": "local_G0",
+      "quad_absolute_estimate": 6.867353706337202e-14,
+      "known_interior_knots": 599
+    },
+    {
+      "element": "H",
+      "component": "local_G0",
+      "quad_absolute_estimate": 3.3530905510751823e-16,
+      "known_interior_knots": 599
+    }
+  ],
+  "scope": "Only local-G0 spline-knot quadrature repair; no Native/comparator replay.",
+  "implementation": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/run_local_g0_quadrature.py",
+      "bytes": "3001",
+      "sha256": "59e0edc7bed275161455168bcb2199692997b042e3d54a2a57b9fba73f4c15d3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/run_offline_nc_oracle.py",
+      "bytes": "16810",
+      "sha256": "a77999a1aa86d25517b4d47ce092191df4d786517edbbd266adf27960fc96022"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/full-ionic-operators-0018/gamma/bundle/q-1/background.json",
+      "bytes": "8018",
+      "sha256": "0dac77aed3fe1e3eb311ecb5ecf8020ad3f4f3f04819e4108fa308e984208ce3"
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/Ni_ONCV_PBE-1.2.upf",
+      "bytes": "115509",
+      "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e"
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/H_ONCV_PBE-1.2.upf",
+      "bytes": "64999",
+      "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a"
+    }
+  ],
+  "integration_warnings": [],
+  "passed": true,
+  "elapsed_seconds": 0.27114783599972725
+}

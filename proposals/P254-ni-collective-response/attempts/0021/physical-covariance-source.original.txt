@@ -1,0 +1,106 @@
+## Summary
+
+**The useful next component is a prepared quantum electronic fluctuation sector for the existing Ni/H action—not another deterministic kick or an assumed relaxation rate.** The repository already supplies ordered fermionic noise, commutator response, positive-gap two-point oscillator representations, and finite retained-state elimination. Their **composition with the actual material variables and a physically justified initial state is not yet earned**.
+
+The supplied 0021 status remains the boundary: classical real-tangent Gaussian covariance, zero electronic perturbation mean in the actual pilot, and no actual coupled-equilibrium noise. I did not inspect 0021 outputs.
+
+### Path key
+- `S` = `/home/administrator/projects/substrate-ni-collective`
+- `P` = `S/proposals/P254-ni-collective-response`
+- `F` = `S/src/substrate_framework`
+
+## Files: compressed source map
+
+| Source | Reusable content and exact limit |
+|---|---|
+| `P/attempts/0020/constructive-dynamics-source.original.txt:18-42,127-147` | Existing component map and explicit initial-state gap. Already distinguishes raw FD occupations, weighted occupations, unresolved-initial forcing, and missing coupled-equilibrium covariance. Its proposed local-kick slice at `:159-173` is historical; it must not be reported as a new allocation now that 0021 is executing. |
+| `F/finite_fermion_response.py:7-45` | `retarded(energies, occupations, operators, z, hbar=1)`, `noise_lines(...)`, `symmetrized_lines(...)`. Ordered connected quantum spectra use **\(f_i(1-f_j)\)**; zero-gap terms include diagonal populations **and degenerate off-diagonal coherences**. Symmetrization uses the opposite-energy **transpose**, not an adjoint. Response convention is `+i` commutator for perturbation `-x B`. |
+| `P/attempts/0007/check_response.py:11-30,64-95`; `receipt.json:17-38`; `reviews/independent-finite-fermion-review.json:1-6` | Earned finite evidence: independent full-Fock connected correlators and commutators, complex cross-channel ordering, direct time-commutator normalization, nonzero-line detailed balance/FDT, and explicit zero-line covariance. These are evaluated finite fixtures, not proof that an arbitrary material closure is quantum or thermal. |
+| `F/finite_fermion_state.py:7-49`; `F/finite_fermion_thermodynamics.py:9-40`; `P/attempts/0007/interpretation.json:4-19` | Explicit CAR/Fock and Gibbs preparations; distinction between isolated response, grand-canonical curvature, fixed-**mean**-number Legendre curvature and finite canonical ensemble. Fixed mean \(N\) does not authorize independent FD factors for an exactly fixed-particle-number state. Static population covariance does not supply population-relaxation dynamics. |
+| `F/finite_fermion_bath.py:7-46`; `P/attempts/0007/check_bath.py:14-52` | `oscillator_map`, `oscillator_noise`, `oscillator_retarded`: passive, ordered positive-gap electron–hole two-point representation with complex couplings and both poles. Zero-gap covariance remains separate. Neither higher fermion moments nor nonlinear dynamics become Gaussian; finite retained oscillators do not become an irreversible reservoir. |
+| `F/euler_retained_memory.py:34-75`; `S/proposals/P253-euler-particle-mechanisms/attempts/0045/review.md:179-195` | `linear_retained_memory(generator, projection, time)` returns finite resolved evolution, unresolved-initial forcing and memory operators. The reviewed finite-matrix algebra is reusable without importing any Euler-to-Ni identification. Its “noise” operator acquires statistics only from an independently supplied unresolved initial state. |
+| `F/material_matter_field.py:12-65`; `P/attempts/0001/receipt.json:1-28,30-53` | Complete minimal-coupling square, finite harmonic bath matching and Schur elimination. Field normalization is canonical; no Ni effective charge, electromagnetic mode, nonlinear phase or nuclear coupling is supplied. Do **not** use static bath matching to replace actual `Cfrozen` with a fitted counterterm. |
+| `P/attempts/0013/review-admission.json`; `reviews/dynamic-composition-and-scope.raw.txt:12-35,54-64` | Earned same-functional finite self-consistent electronic response and direct density-matrix comparator. Same-frequency induced-density screening is constructive and already established at that scope. It does not establish the actual coupled quantum equilibrium. |
+| `P/attempts/0015/review-admission.json`; `P/attempts/0016/review-admission.json`; `F/spin_pbe_kernel.py:1-13,63-108` | 0014/15 actual static/warm-reference bridge, followed by actual spatial Hartree/spin-PBE action. Kernel is longitudinal-spin/scalar-density response with cross-spin terms—not a propagating transverse electromagnetic field. |
+| `P/attempts/0019/review-admission.json:1-25`; `P/attempts/0020/actual-input-inventory.json:9-104` | Settled 0017–19 actual \(H_0/g/C_{\mathrm{frozen}}\), full-target response inputs and distinct Gamma/plus/minus bundles. Limits retained: Native corroboration on retained actions, full-FD versus saved-SCF reference discrepancy, isolated populations, and engineering—not material-equilibrium—scope. |
+| `P/attempts/0020/run_screening_oracle.py:95-178`; `screened-review.original.txt:9-16,64-81`; `review-admission.json` | Independent original-basis self-consistent electronic EOM; actual ionic **gradient**, not negative force; own-producer frozen curvature added once. Completed matrices are frequency-dependent curvature samples, not a complete time kernel, ionic propagator or quantum state. |
+| `F/material_force_lattice.py:1-8,26-67,82-90` | Complete finite periodic-grid Fourier convention. No inferred missing sectors, infinite pair law or arbitrary large-region coupling follows from the available small grid. |
+
+### Source-binding correction
+
+Read the original report together with:
+
+- `P/attempts/0020/constructive-dynamics-source-verified.json:3-28,50-58`
+- `P/attempts/0020/constructive-dynamics-source-correction.json:13-24`
+- `P/attempts/0018/native-implementation-manifest-001.json:19-23`
+
+The original report’s exporter row is stale. The corrected `nc_response_background.f90` producer is **7042 bytes**, SHA-256  
+`0e8589a086a7842571a1a785f763798b43f2329c489419924efc8c971d24dbb8`, matching the recorded pre-execution manifest—not the older 6143-byte producer.
+
+These are **existing verification receipts**, not hashes recomputed here. Also, historical response-module line ranges are not automatically current-source equivalence evidence: the present `pw_independent_response.py` delegates to `PWTransitionSpace`. Settled scientific claims above rely on the saved 0019/0020 admissions and implementation bindings, not an inferred admission of that newer organization.
+
+## Saved primary sources—not reconstructed substitutes
+
+| Saved source | Supported bridge |
+|---|---|
+| `P/sources/giustino2017-electron-phonon.txt:875-935,6729-6810` | Nuclear kinetic energy, harmonic quantum coordinates, BvK normalization and the dependence of independent coordinates on \(q/-q\). Useful for preparing ionic quantum variables; not permission to quantize an unstable/nonstationary reference as a thermal oscillator ensemble. |
+| Same source `:3154-3266,3350-3366,3401-3405` | Bare/dressed electron–phonon distinction, explicitly stated frequency-freezing approximation, infinitesimal \(\eta\), and physical FD/Bose temperature definitions. The saved author-manuscript PDF/text and extraction are identified in `giustino2017-electron-phonon.metadata.json:13-29`, with PDF/text bindings in the verified inventory above. |
+| `P/sources/delgiudice-preparata-vitiello-1988-prl.txt:41-76,103-126,260-270` | The proposed mechanism explicitly includes quantized radiation modes, dipoles, transverse polarization, long-wavelength assumptions and subsequently discussed radiative losses. It is a water model—not Ni/H parameters or an already implemented domain mechanism. |
+| `P/sources/bressani-delgiudice-preparata-1989-nuovo-cimento.txt:77-95,124-153` | Source-specific collective-EM and nuclear-to-electronic transfer hypotheses. Those ingredients cannot be inferred from ionic covariance or a low-energy density-response calculation. |
+
+Original PDFs for the latter two are actually saved under `/home/administrator/sources/coherence/` with the corresponding `.pdf` basenames. Their extracted equations are imperfect; I have **not reconstructed missing expressions or converted their hypotheses into Ni/H numerical inputs**.
+
+## Architecture and preparation boundary
+
+The settled deterministic chain is:
+
+**actual bundles → \(H_0\), bare \(g_{\pm q}\), FD reference and spatial \(K_q\) → same-frequency screened response → ionic gradient plus own-producer frozen curvature.**
+
+The quantum attachment must supply **the initial electronic state, ordered two-point correlations and commutator information**, then connect them to the retained electronic variables of that same action. Retained-memory elimination can carry their unresolved-initial contribution; it cannot manufacture the ensemble.
+
+Four distinctions are load-bearing:
+
+1. **Raw occupation versus quadrature.**  
+   Current `F/qe_pw_response_frames.py:204-222,316-341,370-373` constructs raw FD occupations, then multiplies them by `source_kweights`; `PWResponseChannel.weighted_occupations` already includes that weight and explicit spin. Pauli factors require raw source **and target** occupations. Absolute regional fluctuations additionally require a declared BvK/observable normalization; neither weights nor electron counts are independent Bernoulli probabilities.
+
+2. **FD-shaped smearing versus physical temperature.**  
+   The recorded `degauss/common_mu` can define an **auxiliary independent-\(H_0\) preparation**. Calling it the physical temperature of coupled electrons, ions and environment requires separate justification. Giustino’s thermal definitions and 0007’s physical-Gibbs tests do not supply that identification.
+
+3. **Zero mean versus zero fluctuations.**  
+   The centered full-Fock construction in `0007/check_response.py:11-21` is precisely a two-point object after subtracting the mean. Zero electronic perturbation mean does not provide—or remove—the required electronic noise. A real-tangent covariance alone does not supply its ordered quantum correlator or commutator.
+
+4. **Retained evolution versus relaxation.**  
+   Explicit electronic transitions and finite memory retain information. Physical population relaxation, irreversible loss and equilibrium fluctuation–dissipation matching require additional physical preparation/environmental input; neither \(\operatorname{Im}z\) nor a finite bath supplies it.
+
+## One constructive next slice
+
+**[INFERENCE / recommended allocation, not an earned result]**
+
+### Actual-fixture prepared electronic force/density noise sector
+
+Build a bounded consumer of the **existing 0018–20 inputs** that produces the electronic fluctuation source needed by subsequent coupled dynamics:
+
+1. **Declare the preparation:** the recorded independent-\(H_0\), common-\(\mu\) FD reference, explicitly labeled an auxiliary quasi-free preparation—not coupled Ni/H thermal equilibrium.
+2. **Expose raw occupations and normalization separately:** source and complete-target occupations, spin identity, quadrature, volume and observable/region convention. Reuse the actual bare ionic operators and density maps, not a fitted bath or static-screened replacement.
+3. **Produce ordered force/density two-point spectra, their symmetrized covariance and commutator information**, including complex cross channels and the entire zero-gap sector. Reuse the earned finite-fermion definitions; full-Fock construction remains the small independent reference, not the production PW representation.
+4. **Provide the corresponding unresolved-initial-state input for the retained dynamics.** Positive-gap oscillator representation is optional; if used, preserve complex couplings and keep zero-gap covariance separate. Coupling this preparation through the self-consistent dynamical generator is a newly composed approximation requiring its own scoped admission—not automatically interacting equilibrium FDT.
+
+This delivers a **missing model input with actual operators**, rather than more validation counts. It needs no invented noise amplitude, bath rate, effective charge or physical temperature. It does not require consuming unfinished 0021 output.
+
+### Prerequisites and honest scope
+
+- **Available:** saved actual operator bundles, mass provenance, complete-target frame construction, raw FD settings, ordered quantum two-point definitions and finite retained-memory algebra.
+- **Required for this slice:** explicit preparation/ensemble choice; raw-versus-weighted occupation interface; Hermitian observable/\(q,-q\) convention; absolute BvK/region normalization. These are construction obligations, not reasons to choose arbitrary normalization.
+- **Still required for physical coupled-equilibrium noise:** calibrated common material reference; physical temperature or justified nonequilibrium preparation; ionic state and electron–ion cross-correlations; treatment of translations/zero modes and stability; and any claimed environmental relaxation law.
+- **Still required for physical many-region conclusions:** material-specific inter-region inputs and sufficient commensurate momentum coverage, boundaries, disorder/size controls and energy accounting. Tiling the engineering fixture does not perform this mapping.
+- **Still required for the sourced EM-domain route:** Ni/H current/dipole matrix elements, field modes and normalization, self-term/static-screening consistency, and boundary/radiative channels. The existing longitudinal action is useful but does not silently contain these.
+
+## Root decision
+
+The material tradeoff is whether the next allocation earns the **auxiliary prepared quantum-noise component now**, with explicit engineering scope, or prioritizes **stationary-material/state calibration first** so the next noise artifact can claim physical equilibrium. The former is useful preparation for the latter, not a replacement.
+
+A separate explicit mechanism choice is necessary before calling anything a coherence domain: longitudinal many-region collective response may be developed constructively, but the saved EM-domain sources require an additional physical field/coupling construction or a justified equivalent representation.
+
+The full goal remains unchanged. Stationary-primary inputs already exist (`P/proposal.yaml:150-161`); joint material calibration, physical coupling/environment, many-region dynamics and controls, matched designs, and nuclear energy/product disposal remain the connected obligations at `:283-377`.
+
+**Investigation boundary:** read-only source and settled-receipt inspection only. No edits, Git operations, builds, tests, numerical calculations, Native execution, services, or 0021-output review.

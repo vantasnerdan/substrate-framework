@@ -1,0 +1,42 @@
+{
+  "label": "reference-expansion-material-001",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-reference-expansion-001.service",
+    "--property=Type=oneshot",
+    "--property=RemainAfterExit=yes",
+    "--property=CPUAffinity=6",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=300s",
+    "--property=RuntimeMaxSec=300s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_reference_expansion_material.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reference-expansion-material-001",
+    "--oracle",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reference-expansion-oracle-001.json",
+    "--output-max-bytes",
+    "268435456",
+    "--block-size",
+    "8"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Running as unit: p254-a28-reference-expansion-001.service; invocation ID: 3b542a770dbf4ea6ae0cd8c6cc119fd7\n",
+  "execution": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-execution-wave-007.json",
+    "bytes": "6673",
+    "sha256": "4b7ecd407fa6d41d635354f9ea51a7ba5353eb9674f07fa4494b6d4b23021b07"
+  },
+  "collected_at": "2026-10-28T20:09:56.461175+00:00"
+}

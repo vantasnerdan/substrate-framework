@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-19T22:43:38.849Z",
+  "scope": "Changed YAML syntax/required source-row keys only. Count printed by existing consumer is observed, not asserted; no numerical oracle or native rerun.",
+  "argv": [
+    "timeout",
+    "45",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-c",
+    "import json,sys,yaml\nfrom pathlib import Path\ndoc=yaml.safe_load(Path(sys.argv[1]).read_text())\nrows=doc['source_inventory']\nif not isinstance(rows,list) or any(not isinstance(row,dict) or not {'source','access','extracted'} <= row.keys() for row in rows):\n    raise ValueError('Invalid source inventory consumer contract')\nprint(json.dumps({'source_inventory_rows':len(rows),'scope':'Changed YAML syntax and required source-row keys only; count is observed, not an acceptance assertion.'}))\n",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/proposal.yaml"
+  ],
+  "response": {
+    "text": "{\"source_inventory_rows\": 25, \"scope\": \"Changed YAML syntax and required source-row keys only; count is observed, not an acceptance assertion.\"}\n\n\nWall time: 0.30 seconds",
+    "details": {
+      "timeoutSeconds": 55,
+      "wallTimeMs": 300.6530818939209
+    }
+  }
+}

@@ -1,0 +1,42 @@
+"""Throwaway PWPROV-001 probe: real saved input loading, no science replay."""
+import argparse
+import json
+from pathlib import Path
+import sys
+import time
+
+started = time.monotonic()
+parser = argparse.ArgumentParser()
+parser.add_argument('--output', type=Path, required=True)
+args = parser.parse_args()
+attempt = Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0023')
+sys.path.insert(0, str(attempt))
+import run_prepared_noise
+from noise_pilot_io import implementation, load_inputs, binding, verify_buffer
+
+original_result = attempt/'pilot-002/result.json'
+original_bytes = original_result.read_bytes()
+before = implementation()
+for source in before:
+    verify_buffer(Path(source['path']).read_bytes(), source)
+bundles, _, _ = load_inputs()
+after = implementation()
+recorded_paths = {source['path'] for source in before}
+unbound = [source for source in after if source['path'] not in recorded_paths]
+assert original_result.read_bytes() == original_bytes
+receipt = {
+    'status': 'pass' if not unbound else 'failed_actual_consumer_source_omission',
+    'elapsed_seconds': time.monotonic()-started,
+    'scope': 'Cold producer imports, pre-consumption implementation inventory, then real three-bundle saved-input validation only. No frame construction, Native, correlation or prior proof replay.',
+    'preconsumption_implementation': before,
+    'postconsumption_implementation': after,
+    'unbound_used_consumers': unbound,
+    'actual_loaded_inputs': {name: {'nat': str(bundle.background.metadata['nat']),
+                                  'state_documents': [state.path for state in bundle.states]}
+                             for name, bundle in bundles.items()},
+    'original_result_unchanged': binding(original_result, original_bytes),
+}
+args.output.write_text(json.dumps(receipt, indent=2)+'\n')
+print(json.dumps({'status': receipt['status'], 'elapsed_seconds': receipt['elapsed_seconds'],
+                  'unbound_used_consumers': unbound, 'output': str(args.output)}))
+raise SystemExit(0 if not unbound else 1)

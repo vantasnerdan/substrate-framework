@@ -1,0 +1,12 @@
+{
+  "generation": 2,
+  "initial_manifest_sha256": "bad69a9f9d28af6168a1fcfd3fd38f3197db410f912aa1d4e0465bbd54acea5c",
+  "immutable_failures": ["first-actual-runtime-failure.json", "invocation-1792418652538738615-3994219-failure.json"],
+  "corrections": [
+    {"block": "run_oracle.Tee", "defect": "final interpreter flush reached closed receipt file, replacing intended exit by 120", "repair": "keep terminal writes/flushes active; write/flush log only while its context-managed stream is open"},
+    {"block": "numerical exact-to-array conversion", "defect": "unsimplified exactly-real symbolic expressions evaluated to floating complex with roundoff imaginary residue and float conversion raised TypeError", "repair": "assert exact reality and symmetry; compare derivative arrays to complex exact evaluation without dropping imaginary residual. At action construction, simplify only after proving exact reality before conversion."}
+  ],
+  "unchanged": ["registration.json", "all four reusable mathematical modules", "fixture definitions", "state block", "response block", "ensembles, steps and tolerances"],
+  "replay": "actual signal/checkpoint shutdown plus affected thermodynamic/bath blocks; unchanged state and response reuse content-bound successful checkpoints",
+  "scope": "No physical assertion, input, threshold or preregistered criterion was weakened."
+}

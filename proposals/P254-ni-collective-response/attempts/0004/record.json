@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "canonical_issue": "227",
+  "parent_issue": "225",
+  "positive_intent": "Prevent a supplied QE Ni10 assumption or spin degeneracy from silently changing the actual material response space.",
+  "source_gate": "Actual UPF PP_HEADER, PAW atom metadata, completed SCF receipt and its published stdout are in hand. Native XML is supplemental, not a published SCF-receipt artifact; its bytes are independently pinned and its model fields must match the completed calculation. No USPP force-vertex derivation or stationarity claim.",
+  "inputs": {
+    "model_metadata": "sources/electronic-model-source-correction.json",
+    "completed_scf": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/material/loaded-ni31h6/forces/f1665689b69a5c159da81cca2d5b9af771b0d34e9e1999f806babd4898fc7ccf/scf/result.json",
+    "native_xml": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/material/loaded-ni31h6/forces/f1665689b69a5c159da81cca2d5b9af771b0d34e9e1999f806babd4898fc7ccf/scf/attempts/24af9bbf46e54b5882e5aca762e7613f/scratch/scf.xml",
+    "native_xml_sha256": "be27247ccc0aaa9127c620da797c2bcf40990fe732ace02820e4ba5c596ff239"
+  },
+  "oracle": "Use exact SymPy rationals for actual UPF Z-valence over the native composition minus net charge; compare with the published native stdout electron count. Verify stdout's completed-receipt hash, independently pinned supplemental XML within the completed attempt, and agreement of XML count/composition with published count/symbols. Dataset hashes bind primary files.",
+  "exposing_mutations": ["Substitute GPAW pilot Ni valence for actual GBRV Ni", "Substitute installed default GPAW Ni valence", "Double the neutral valence count merely because LSDA has two spin channels"],
+  "execution": "Canonical SF Python/PYTHONPATH, labeled root herdr w1:p9, isolated CPU5. Atomic complete/failed receipt through existing attempt0003 oracle_artifacts helper; preserve a first failure before repair.",
+  "acceptance": "Actual program completes, source-bound exact count identity and all meaningful mutations are exposed. No identification/rescaling of QE and GPAW responses, core reconstruction, force/bath/coherence/nuclear license, or physical convergence is inferred.",
+  "state": "repaired_boundary_preregistered_before_reexecution",
+  "first_failure": "first-run-failure.json preserves the actual failed assertion: native XML was incorrectly assumed to be an SCF-receipt artifact. Replace that false membership claim with declared stdout binding and explicit supplemental-XML cross-checks; do not weaken model/count gates."
+}

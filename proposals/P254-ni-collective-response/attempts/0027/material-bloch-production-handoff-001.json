@@ -1,0 +1,2666 @@
+{
+  "schema": "p254-a27-material-bloch-production-handoff-1",
+  "created_at": "2026-10-28T09:46:08.413441+00:00",
+  "status": "complete",
+  "scope": "Actual all20 source/header/row and all128 UNITARY target-slot coverage plus the registered selected folded nonGamma raw q0 consumer; not physical preparation or time evolution.",
+  "source_context_bank": "e26f2338",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/root-bloch-production-decision-009.json",
+    "bytes": "3230",
+    "sha256": "d1c35ff31db3fdbc335fa35dd30b59d06cdabbdbc4f68112bd33c7ff5095b2e2"
+  },
+  "grant": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-grant-001.json",
+    "bytes": "309915",
+    "sha256": "b7861ca6139a3b4c60cd86bb231e055956616b81f66594acc64d664868ab8642"
+  },
+  "terminal": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/terminal-4052ac4a955241c1a7b970b4341deaeb.json",
+    "bytes": "1004813",
+    "sha256": "5e3648123413c2032a86cb988e392a820ddcf11d98f06f436bbaf7df9b7a5846"
+  },
+  "terminal_binding_file": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-actual-terminal-binding-001.json",
+    "bytes": "295",
+    "sha256": "ead17baf585e249414f3063548dff89ae9095e46e30674bdda869bf29980ea5e"
+  },
+  "coverage_identity": "382b09af74d1cf662bb83ca1a6f1c7ec6b90f6f5ad36b2611255e7bd4f050acb",
+  "actual_context": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/context-4052ac4a955241c1a7b970b4341deaeb.json",
+    "bytes": "251053",
+    "sha256": "e0d25b82d87ffb841afd2702429441edb1714e1eab0c44e0c63396fd444bbdc8"
+  },
+  "actual_context_values": {
+    "INVOCATION_ID": "e4798465546147e5be5e022be61de1ff",
+    "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a27-bloch-context-001.service",
+    "cpu_affinity": [
+      7
+    ],
+    "gid": 1000,
+    "groups": [
+      4,
+      27,
+      1000
+    ],
+    "kernel_limits_text": "Limit                     Soft Limit           Hard Limit           Units     \nMax cpu time              unlimited            unlimited            seconds   \nMax file size             unlimited            unlimited            bytes     \nMax data size             unlimited            unlimited            bytes     \nMax stack size            8388608              unlimited            bytes     \nMax core file size        0                    unlimited            bytes     \nMax resident set          unlimited            unlimited            bytes     \nMax processes             128196               128196               processes \nMax open files            1024                 1048576              files     \nMax locked memory         4205776896           4205776896           bytes     \nMax address space         unlimited            unlimited            bytes     \nMax file locks            unlimited            unlimited            locks     \nMax pending signals       128196               128196               signals   \nMax msgqueue size         819200               819200               bytes     \nMax nice priority         0                    0                    \nMax realtime priority     0                    0                    \nMax realtime timeout      unlimited            unlimited            us        \n",
+    "manager_runtime_max_usec": {
+      "argv": [
+        "/usr/bin/busctl",
+        "--user",
+        "get-property",
+        "org.freedesktop.systemd1",
+        "/org/freedesktop/systemd1/unit/p254_2da27_2dbloch_2dcontext_2d001_2eservice",
+        "org.freedesktop.systemd1.Service",
+        "RuntimeMaxUSec"
+      ],
+      "availability": "available",
+      "value": "180000000"
+    },
+    "numpy": "1.26.4",
+    "pid": 3205804,
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "resources": {
+      "cpuset.cpus.effective": {
+        "availability": "unavailable",
+        "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a27-bloch-context-001.service/cpuset.cpus.effective'"
+      },
+      "memory.max": {
+        "availability": "available",
+        "value": "4294967296"
+      },
+      "memory.swap.max": {
+        "availability": "available",
+        "value": "0"
+      }
+    },
+    "thread_variables": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "uid": 1000
+  },
+  "result": {
+    "source_count": 20,
+    "slot_count": 128,
+    "complete_boundaries": 21,
+    "all_boundaries_new": true,
+    "first_useful_block_seconds": 6.472077981568873,
+    "selected_probe_comparisons": {
+      "integrated_dyad_trace": {
+        "absolute_error": 4.629069088716038e-18,
+        "left": [
+          1.3725781050324549e-21,
+          -3.1843812036752955e-19
+        ],
+        "right": [
+          4.538356225864421e-18,
+          6.002892646984886e-19
+        ]
+      },
+      "number_density_bilinear": {
+        "absolute_error": 1.019326642216082e-18,
+        "left": [
+          -0.0004646047963889585,
+          -0.00010767030067357678
+        ],
+        "right": [
+          -0.0004646047963889579,
+          -0.00010767030067357595
+        ]
+      }
+    },
+    "internal_authenticated_saved_consumption": {
+      "coverage_identity": "382b09af74d1cf662bb83ca1a6f1c7ec6b90f6f5ad36b2611255e7bd4f050acb",
+      "elapsed_seconds": 14.607766455970705,
+      "input": {
+        "bytes": "1003860",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/saved-consumption-input-4052ac4a955241c1a7b970b4341deaeb.json",
+        "sha256": "11f790569aec859df577566e3d8695b113e7476e9fcb81e6bd7da7c9d516754e"
+      },
+      "probe_comparisons": {
+        "integrated_dyad_trace": {
+          "absolute_error": 4.629069088716038e-18,
+          "left": [
+            1.3725781050324549e-21,
+            -3.1843812036752955e-19
+          ],
+          "right": [
+            4.538356225864421e-18,
+            6.002892646984886e-19
+          ]
+        },
+        "number_density_bilinear": {
+          "absolute_error": 1.019326642216082e-18,
+          "left": [
+            -0.0004646047963889585,
+            -0.00010767030067357678
+          ],
+          "right": [
+            -0.0004646047963889579,
+            -0.00010767030067357595
+          ]
+        }
+      },
+      "qualification": "authenticated saved reader; post-exit manager success remains separate authority",
+      "slot_count": 128,
+      "source_count": 20
+    },
+    "qualification": "The granted producer included its already-source-bound internal authenticated saved reader. NO separate saved-reader invocation was launched; Root separate-reader authority remains pending."
+  },
+  "outputs": [
+    {
+      "key": "source-1-1",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-1.json",
+        "bytes": "10422",
+        "sha256": "76b14b08f741e7833f79ce9694895a887cbff8efea70ea0bb8cb993d22f95b6a"
+      },
+      "archive": {
+        "bytes": "242388",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-1.npz",
+        "sha256": "afb9a62a9ccc8f4a0962cfa391095919119784bf138bb8008c08b0cd02735e1e"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "f67d84bf0bbecfe78bf97f3983013e8986c3326d92f4bc2c0c8cec745edaac86",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e16a041aaf4a724f449a57eba0e61ceafe24ccd2dc73abb08e4abe43e47ed9ec",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U1628",
+          "sha256_C_bytes": "e97481d0c15180a046b5b10bd980e692f4d04e4493ff1d4e70d63959baba56fb",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "88669b49715ba5ee6f3e6143190cb909488f9735fa74a38ea00dddc110c61304",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "15f8d706aac5c9a1c3a4365f614dd94b4c687aacd01546f6c20a2907e5d2580f",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "f0a33d624c276406a0dd5629b5050deb6e248aa8e48af65f1ab7c96a2294ba68",
+          "shape": [
+            3,
+            18613
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-1-2",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-2.json",
+        "bytes": "10422",
+        "sha256": "92664bd6933d621c72d3998bf62e2b88e6533a174abff94509e97253350a0d8c"
+      },
+      "archive": {
+        "bytes": "273756",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-2.npz",
+        "sha256": "f0cce6af3df496e9fa53b67cccc61bbfc0e5615c9de8242a3c1eed4616ff3ca9"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "b9379affb0454ce0c8a36703029950fb598c324476d454e27fab6a63878ce5fb",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "5809b32a6c53ce3d36b6e00b7eee9586a40a418ebc1574d11ae91d3c3f39e85c",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U9602",
+          "sha256_C_bytes": "dc95d11093def914491f393702d6bdee98fe0571ed5fd7701ccd3cb5e9ec6882",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "9e952971d6fe1e3a086fb654740dab6823f412c31b534876578ef50afc4ec823",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "57045c81001113d4855474a00374432a3ebe02df48f783d16e1740979c8dbc37",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "465bfc6bf561f5fd72d99a462c75db3a8861abc88c0038a2e604d3dd1f06efe0",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "1f7d12b82c984837a27e64acb3868af2e96d06b156b485db37624481db77f8da",
+          "shape": [
+            3,
+            18569
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-1-3",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-3.json",
+        "bytes": "10422",
+        "sha256": "22962f21c4217a957a4d5639aa8520fda80b941a717466c3a3d338eed754ff9d"
+      },
+      "archive": {
+        "bytes": "254456",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-3.npz",
+        "sha256": "446ecd9ea537ab653bac9cbd4c140584dcd44b759bfe6d8dc475a4a4c7224ed8"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "8018d426f920ebbaf53e5567ea3777f73933876951d95094707a6f91f988dd7e",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "38da8f1e44109294857865f13109cdace91a8d1d76a7c7f98fefeb95e836668f",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U4804",
+          "sha256_C_bytes": "312e1e9a1c0a2dcfc24a5a8fdacf6be119e5f4b18ecaed16ae4c83075a65ff82",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "874379d46c7ba4650bea7ac277e524cd22c2e3424f53e3832a27b627c987e7c3",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "701fc67d9784567e1478ef36bb815c032f6573238688c1dafaf2607359da1cc9",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "ab08c478b6223bc1c6139c5e9c3e192034a4df3a727c1257c0d1f442286aae02",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "1f5ef03e8c4a242310de99460a0012c25a36b50e3e22bcaa80cdfba228561192",
+          "shape": [
+            3,
+            18560
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-1-4",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-4.json",
+        "bytes": "10423",
+        "sha256": "50b3e40288d123034bd41d4cd9b93879c03897f667e897d0277fe1457dc3542a"
+      },
+      "archive": {
+        "bytes": "313012",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-4.npz",
+        "sha256": "04d8e72d17074c48c7babcbffcf8d200fdbcd4d08946ef5ae02e4715e8fb58d0"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "2946b46a2b6a7f07bfef837194106747be188cd4848c94d856e8a1ac986d42ca",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e5abb0231bc16d47690f1343cb0cb0aff0d4ac3a08d0a71679c3364b2991c881",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U19596",
+          "sha256_C_bytes": "c90f7f04b65921e0d3da7f049d69e24d78c2f8a4d0febb19e56a23da6164f028",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "a3c98fa40f8514c5af7aa9ade2eb6c3391ec295592898abe1015d29709cc4af3",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "409a6b42806da95c0545d0183804e34121a9f8e771072642dcec9b2492720f7e",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e4b2ef5b0d739a207be7dea228d226008ba70b6b4f93385be0c97c357a5aa7dd",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "3060c2136e8312fa0bcea9a37094c2ad8be1c2734b68946fb38525725a229df1",
+          "shape": [
+            3,
+            18509
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-1-5",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-5.json",
+        "bytes": "10423",
+        "sha256": "34fd3b71f4b23927e8fca01bc2c654a9e120dd080a87fe809e74877e7acf2144"
+      },
+      "archive": {
+        "bytes": "313520",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-5.npz",
+        "sha256": "efcb37bc14f60d91139d2d735f369628e0ca69c63d1756c4fbac79c7eb03d0c2"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "11e3fed1454fadfdf92fb94e16d9b731e4998840352c7b27e33c80abf9ca5752",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "29b3714d1c16178e0259bc44c0299aca3d667a18c845a99383db0ea44e80e294",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U19624",
+          "sha256_C_bytes": "f70905d06fa77113fcff7dd4575488809769f085a890e6a482cf2551dfec2ffe",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "b0da73c0209509095c0bd11a6630946830b1bda904aa0f18901c477418ac9e90",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "cf39af7fe349df58b7bf4e9dcba67eedafb27f3f16c7e9571566674789c3d2a7",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "720c6d77727d95e572347d45fe942939f9f07b38b87b97936e98aa2b74be2dc4",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "deded01b800c3f67b6f3f05058dd7933c04c2e0aa9c0c9b09194653f4d363429",
+          "shape": [
+            3,
+            18542
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-1-6",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-6.json",
+        "bytes": "10422",
+        "sha256": "551d4fd714829552972948414c400d48e558859c4f5bcff95e304b8517dcba6a"
+      },
+      "archive": {
+        "bytes": "255356",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-6.npz",
+        "sha256": "86a573d96978002ae07464b658760d5bcfc6d615834b438b3ff9540d931913f3"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "466ff8925521dd3f73ac34820a0ec45b320d31d3ed716fdec25b4337594d439c",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "00f293b7206d90a8700405ba397106f6fd12eae0ac4487f14b86e04714e1c168",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U4909",
+          "sha256_C_bytes": "5a2335687343b70bab727e752bc685297ac9da546b979503be4ae3cf7a709593",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "ec3cd586666a7326999f9d5dcc0c64977347cead8e6affd0512007f0a0c6cfae",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "1c0f7aa355601b11955c3685cfa7feec4fb5d76ccd7a16720b3783b1ad89f133",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "fb434f694cefb39b6e05f7cb1c70ed9f403a3b8d8fd376cd647d11137ffee791",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "7c935ce0b086b3ba8ab84f02ae0ae2d85e307c7dfd645ad0487de43ea8473a42",
+          "shape": [
+            3,
+            18600
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-1-7",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-7.json",
+        "bytes": "10423",
+        "sha256": "366db62c327a87c0ae207b3362d65235ea4b8ccdd5c629f5dc160f00979237ea"
+      },
+      "archive": {
+        "bytes": "288268",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-7.npz",
+        "sha256": "2e1444c273940bbb02ea7e60e1aca37a4af71455e6f5c670fe49f9aa9911b14e"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "fbfe84a048f766f789e1c102d37129bbf6edb4d682c4f94adebce66d5003d850",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "fcbe2c7e1f0f1d239dd9d2d31caed719e4d397a6a8bb6bdeb0c02787c64d2cee",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U13323",
+          "sha256_C_bytes": "83376740a4c76a8da3e71942de84571bfb51b0ef01882aaaaa0c12f23e5ce80f",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "03076cde138e836a1eda951a489d65a77c4d011565e7a7a5059fd026e2b7ccc8",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "5304b9ea6ac92a2aa54a2b2f49e205d7db209cf97dd753f7836c792376c4652c",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "280d10b1f2242006a1c32b9b23262b6e6e0e404a28cd734916c3337f8e35263a",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "7ed2f622aa29d09cc1c9c64f09f1afe92973c4cfb7166988b5a6a0ddb4c12dab",
+          "shape": [
+            3,
+            18538
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-1-8",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-8.json",
+        "bytes": "10423",
+        "sha256": "7d43942ab172adebee8dac65fd199e851cb106b3aa111a256cc1cb5516dde95e"
+      },
+      "archive": {
+        "bytes": "314992",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-8.npz",
+        "sha256": "02d8f2fb188b02cd9d4d45cdf15ce7f16a8bb2f1a323a4fffbb875f08d0aa747"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "6d09313ae480cf5c3a853b800402bc65b175f2fc13a63e1588c0dca5f82129b4",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "09c00a1d700de3f5393bec983db58fd971689fba87d9404d4bf04acbbbd6934b",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U20016",
+          "sha256_C_bytes": "276905de39c63317c1dc866c5002e311e086f497badc767dff6da2d82fb78feb",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "773af8793ca0605971ca0a7d6912f5f99a962b6bacb6d84b55635228bc2c6990",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "0d6c00d79df3e69273e2cd85ca4a0fb4134d8ce5b803e122e6c4d31cdfc85937",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "7cec68864c3fc4920ad29945a368835bb23ed6b0338b608f2ed13800b42d466f",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "d87c15a6d58f0b5f94401d11f050128e76306245caa16c39720a35c2d7e8b3ba",
+          "shape": [
+            3,
+            18534
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-1-9",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-9.json",
+        "bytes": "10423",
+        "sha256": "818dc2107f220c7da3471a8cb78402635cf7a380106f141c3b39fb68018bf616"
+      },
+      "archive": {
+        "bytes": "275024",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-9.npz",
+        "sha256": "452784fd9fdf5a1134cbc1d47c7f24ce488a16cd2c2dd6d5088a2219238aa635"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "07b05c7f10194234faf56e3b8da09fae18992714483ac21f74e59e8c8d43a968",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "8c9c53b493c2c7c50ec35de2cf0a44273bc170c2f8f069743aacd7c99ca091d2",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U10018",
+          "sha256_C_bytes": "1541a43f2cc1f0af6e9753ef900af67ab66419cf3e0984171c6cfebdd762c288",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "8c5e3df947486fca0ce9d37036a06ffc514b8bd94ff8e486cbd3919275baf8db",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "cce0758f7f94e9dd5cba11db4a4a3022e14c50d08f45c903db7643390b0d7678",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "37ba546ebd1e1f223c76f40a8f0bff8084a953f8f03a103678337bcf94f0c7f5",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "e71ec5c94d3dc4e0ec156c01fbfb32ae4e8a165b580ef783d66f174b936bbcec",
+          "shape": [
+            3,
+            18536
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-1-10",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-10.json",
+        "bytes": "10425",
+        "sha256": "66ea5192f277bcb5e7a34d8170facc6d0db81d68290156a4f6ffb4b128fa4932"
+      },
+      "archive": {
+        "bytes": "241264",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-10.npz",
+        "sha256": "c2ce899afc50cf642ab425afc59aa6f2a74c4c210c541a5b91ced3f9c47e3b45"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "2cf3a909b1ed928fd578ed8b91244ed5e510506fcb6764f77968b4e20cadad87",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "75f8c32ed7129c89cb44d24c709df6a1ecf6c987a8c1cccc9a723373a897d2b5",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U1671",
+          "sha256_C_bytes": "d65613c4c32a0002025bc6bcd6c843c1016981ef5ecd32d9268ad42790aac960",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U389",
+          "sha256_C_bytes": "89cba16bb9d56d53f2d363180898913ddf52fa02869c3999bd62ea7ecdcfd98b",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U630",
+          "sha256_C_bytes": "d177e9d68b532d3cbeef5393f7a2d5cf6ab092225e47d44dbe4db07003ec07d3",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "a197ae5a4b3c5c7c1decd7e18a41b68a1b1512349d95c991a5d8cdfb800bf917",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "0bfbf9183e7fe94b995fcc194764e8a86aad6f228334499f9ae55ab62b4e5232",
+          "shape": [
+            3,
+            18504
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-2-1",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-1.json",
+        "bytes": "10422",
+        "sha256": "32a263e0e3a66c56280f1c484e26fac36419979eb572e9db1b3eb140990a0b5c"
+      },
+      "archive": {
+        "bytes": "242388",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-1.npz",
+        "sha256": "2388014db88db949a7c33375cc3e0c07aa813af3fdc4d61d0ade66ba54833792"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "a06ac2fbe5ed47808b9e481a41f27cb72bf93a40bbaea87d04e14be86e2efb4e",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "faa0088ddd899a5c689bdabad6735a5bf7cd1117c252b9687b854582572241f5",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U1628",
+          "sha256_C_bytes": "4b0b745c872f9b02b37669db46f158838d8c8ff7c588f2f4b70f9a9dcd0ac354",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "83d5f7657389b7456796af0936bcb9339954a2b69721403f637fc264f066af47",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "79dafae3dc278fa52090943fdc94dae3736373be24511b0e78af352f37512ee7",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "f0a33d624c276406a0dd5629b5050deb6e248aa8e48af65f1ab7c96a2294ba68",
+          "shape": [
+            3,
+            18613
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-2-2",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-2.json",
+        "bytes": "10422",
+        "sha256": "09848c3753f751c99b266a5c147e5d23a938ccbbca802daa24cf2558ae7aedb4"
+      },
+      "archive": {
+        "bytes": "273756",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-2.npz",
+        "sha256": "c36d3611e069abb577fc5084c759af504ca6f3c926b8dccd75a4de6ff1bd7950"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "d2a8659b208fca7fdf00c152c8431becd8a0fcaaf2052d89777b424450adcd6c",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "12a1de41555386f9c5ae67c64f8c0d6d2f2db9e3ef531b4ad840d86e6889495f",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U9602",
+          "sha256_C_bytes": "c86d68b487072af0ff1b58dae513e7fd75baf3e17fbccc79739ef188a0192c7c",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "fe39e07c4808092777a1f6610c0b91f69223dfb781e3ef24be176130834b53e0",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "ca82a0102deeb1483c3d02163ad3b37634f4fca8f6d1aee0beeea850e8ef98f5",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "465bfc6bf561f5fd72d99a462c75db3a8861abc88c0038a2e604d3dd1f06efe0",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "1f7d12b82c984837a27e64acb3868af2e96d06b156b485db37624481db77f8da",
+          "shape": [
+            3,
+            18569
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-2-3",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-3.json",
+        "bytes": "10422",
+        "sha256": "d4dd9670e90bdb26728cb1c2cabc2b1c96d9fc6b3dbf7350309bfc17187c8185"
+      },
+      "archive": {
+        "bytes": "254456",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-3.npz",
+        "sha256": "fa4c33e81d7fc6fe107d4010b2ea8e293a3ba5c08f7eac595903ee03a718761e"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "34013eb82e7f35cd98f3b711c3505b04700d053cd6a9f9f5b3ce2ff29db5bdfb",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "7b2c69650b3470e2903ff1d1d6e8a162862c29b5afb6011bd6b5da9463618643",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U4804",
+          "sha256_C_bytes": "aac430ef179fe56520c14f31aae6c80d2cfa6882821353ea77b735de995c03dc",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "2433e6afef028f99ca5b08919b62d464c3f2a2ac97cfbda26f22a2bf6794d394",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "6b582fd5c97fbe7db9c25bc1a1962d57f490e281152e65007d207044c8d729bd",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "ab08c478b6223bc1c6139c5e9c3e192034a4df3a727c1257c0d1f442286aae02",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "1f5ef03e8c4a242310de99460a0012c25a36b50e3e22bcaa80cdfba228561192",
+          "shape": [
+            3,
+            18560
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-2-4",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-4.json",
+        "bytes": "10423",
+        "sha256": "7e2949c4980771abfcdc31d26c7bbff59c46a805dcb26efebd75e6e4390bb957"
+      },
+      "archive": {
+        "bytes": "313012",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-4.npz",
+        "sha256": "8b16d596e0b8b98ec3feabb5385783c4e3b6b20539db52ca08b745948a30f84a"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "6cf1c1a808e6949936b009b5584cf5da45754d60cee592e1a569b149b1bc9650",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "7e7883944a4c9d1367acb9c37e13509c344b52e4eb93b24b8665e3ec160c0c76",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U19596",
+          "sha256_C_bytes": "f9b253d99069f56519e345c53f3b534eff3019152d0cc5fbb1b5ad029489785b",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "8cf8ddb5740afcdd8ba6b86ce09a2c7e834c84d86c3d569247217c334afd2615",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "7b6a7983506e1384ba6ff1156ca64042a92657fb52eb64adcc29306171b1c552",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e4b2ef5b0d739a207be7dea228d226008ba70b6b4f93385be0c97c357a5aa7dd",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "3060c2136e8312fa0bcea9a37094c2ad8be1c2734b68946fb38525725a229df1",
+          "shape": [
+            3,
+            18509
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-2-5",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-5.json",
+        "bytes": "10423",
+        "sha256": "2faa3e2378acecc1feb16a8901a7abfb561460d075750c20692acd9f498c1a09"
+      },
+      "archive": {
+        "bytes": "313520",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-5.npz",
+        "sha256": "6f1055739032578a86b9f413d02b91d646384a12b8c56e73a5297f144ed19a23"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "8a0f6626dc5f4f27588456780e4a4c7892af7634051dcfff39bd22f469da584d",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "eaedb6447fa665cf51d31b2241a996bc203af0a4d84130d1c2d3690363dd3a85",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U19624",
+          "sha256_C_bytes": "e4d3ce45598e2016f3ca20acd10f2b6b03ac46abdebbf761aa90cb52653bc530",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "7f381af5cc932dfbb5d4384c6e91f3afe5856eac470a97e34c5283a7abc424b5",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "8f5550ef2a663e3644d40daa0f7b3387d979e5df9d0f699cdccaf0f9560d4eeb",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "720c6d77727d95e572347d45fe942939f9f07b38b87b97936e98aa2b74be2dc4",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "deded01b800c3f67b6f3f05058dd7933c04c2e0aa9c0c9b09194653f4d363429",
+          "shape": [
+            3,
+            18542
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-2-6",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-6.json",
+        "bytes": "10422",
+        "sha256": "423fbc079bbd07e9114914bbf8aa34c0d28f25c72a474ffa3ca644e6b6acd953"
+      },
+      "archive": {
+        "bytes": "255356",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-6.npz",
+        "sha256": "f38fcf98bf8684127e9656b046b04f9e9d8706abd30cc9b5c71ad7dea85f033f"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "192c20b9edd64d978a997fe0864a36e2ba9669f53fc80efec854817e396799ae",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "dfe8a4e5cfd45db9a4903cc17e140eef4367dedc3db06af7d819b5c90dbfdfa5",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U4909",
+          "sha256_C_bytes": "d83f71f3497d5e09cd80f87bba6e7f4d6e43b300fa689415c1ced740c0ebed09",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "d9dc8878be377726f61d0c4fd528e7cef9c5b17045722fca5402b82d2c1da442",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "2f7480a0af6e0ecca3e2faa45fd68c4797581bd8f73624089a9fcaa38ff36609",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "fb434f694cefb39b6e05f7cb1c70ed9f403a3b8d8fd376cd647d11137ffee791",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "7c935ce0b086b3ba8ab84f02ae0ae2d85e307c7dfd645ad0487de43ea8473a42",
+          "shape": [
+            3,
+            18600
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-2-7",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-7.json",
+        "bytes": "10423",
+        "sha256": "7fbbda59c55ea1b473f52a604eb518fffd96802a85f4f469ad22db6425d8b451"
+      },
+      "archive": {
+        "bytes": "288268",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-7.npz",
+        "sha256": "d72030ebd49eb495caa56ae8e4aeb6887a2cdb570b83c418a87fedbda52656f2"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "29b99f04ea17942dc0857909ee5dafa3e01a66dbb9f74512abe8d3a45d52470a",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "225039f74d5f63c76b79a153126ca96ca7577ebf5a375a9afc38121d1e43eaf0",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U13323",
+          "sha256_C_bytes": "a421d1cd1b6dfafef111892868ef3030c4b5e47a82c1a5a6a6d808cee624c32c",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "b7e978ad5f89eae51022e860c9ebe9daafb243ffcbf93f873950a8e2e5519b56",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "0891c1b317ecdd28c1c885c4e9c3470a76438fe4929529ef66f0c39a4657317e",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "280d10b1f2242006a1c32b9b23262b6e6e0e404a28cd734916c3337f8e35263a",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "7ed2f622aa29d09cc1c9c64f09f1afe92973c4cfb7166988b5a6a0ddb4c12dab",
+          "shape": [
+            3,
+            18538
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-2-8",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-8.json",
+        "bytes": "10423",
+        "sha256": "8cd85afc7582aa87c190bbd55bdbf6f95126798d425799494a9d58e00a53c16b"
+      },
+      "archive": {
+        "bytes": "314992",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-8.npz",
+        "sha256": "3b4e9f1638e01ea5604d54b5c37bd8ec2c3358cf99ab6ee85b2108883a0f8e24"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "10d86ba785a2e44fa9f791ff5f14f4ca581f5c38a565a36c3ce93043bc7054da",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "b692fb30dcea262818397a9ea67f21e2ee073a33b4a0a4477e47505d5802b244",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U20016",
+          "sha256_C_bytes": "1baba9cff1034f9baf22a632802b6558376cf303683766f225192fa1f487a59b",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "24044fdfe77179727f7b6b11626f52688bc39a1b2638d08d1ac205260ce65b18",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "7d32c91467eb79483af919933aaeb1a5920dc946ccb50c87b88b4af6ce51c0e3",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "7cec68864c3fc4920ad29945a368835bb23ed6b0338b608f2ed13800b42d466f",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "d87c15a6d58f0b5f94401d11f050128e76306245caa16c39720a35c2d7e8b3ba",
+          "shape": [
+            3,
+            18534
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-2-9",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-9.json",
+        "bytes": "10423",
+        "sha256": "18c6532a4878dd3d1eedf7048e8b8527c6f7b7962b3bc907ab1ee4477248fdb0"
+      },
+      "archive": {
+        "bytes": "275024",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-9.npz",
+        "sha256": "d6f3cd783890d612a02f0ba5346fe1836e21fb9afde22cd8537349d1b2b780df"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "a531afc81468850876f0c7e2230e0fd928ae345300c6dc782dc9e498f8c3dc7f",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "8549df5c8f3021a4cbbf86c032b824731466ede57008327b91c48c6a0e5adcba",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U10018",
+          "sha256_C_bytes": "13d5c75d3aad43d3ba0cbb02036f6481bc4c775cabef89e56ff31b4ced0d8b08",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U388",
+          "sha256_C_bytes": "72fcc418c0290d2ab14feb89830e0b75cb123088af820c72076d5532b5f6d723",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U628",
+          "sha256_C_bytes": "bcd60f9a1f9f9b2b6c6a8ae299733234cd09efd4c27424d4d90ca6a2e7e8763e",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "37ba546ebd1e1f223c76f40a8f0bff8084a953f8f03a103678337bcf94f0c7f5",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "e71ec5c94d3dc4e0ec156c01fbfb32ae4e8a165b580ef783d66f174b936bbcec",
+          "shape": [
+            3,
+            18536
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "source-2-10",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-10.json",
+        "bytes": "10425",
+        "sha256": "72684ad8219ce1c5c541089c3e793baf907fbc0a5c072a1d0ea2c1dc96d9e66e"
+      },
+      "archive": {
+        "bytes": "241264",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-2-10.npz",
+        "sha256": "433c95674907b8ab68526062a6d172bd36fcb91bb50d8a45ea579b234d2f2a01"
+      },
+      "arrays": {
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "energies_ry": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "3d88e4d1df8abdc811f0aef51181d5d4e4c91c6a6143d774e64c99c425c19fa4",
+          "shape": [
+            346
+          ]
+        },
+        "raw_occupations": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "710a81062e817a915299cd084cdb88d71c6db33fcb14cfcba36cd600ea6b78a9",
+          "shape": [
+            346
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "reference_reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U1671",
+          "sha256_C_bytes": "83a196e0412cf2acc8d7d28601fb191b2be075ed6589a8b4df00c92e85249495",
+          "shape": []
+        },
+        "source_admission_json": {
+          "dtype": "<U389",
+          "sha256_C_bytes": "4690a4cf203831ad1ff2178e905688e455f29f9fd3048aabe0c40bb6004f3237",
+          "shape": []
+        },
+        "source_header_json": {
+          "dtype": "<U630",
+          "sha256_C_bytes": "00b365d0379186fa608ad6cf2357f6efde0735240502c791e59dc7f26701f7bb",
+          "shape": []
+        },
+        "source_k_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "a197ae5a4b3c5c7c1decd7e18a41b68a1b1512349d95c991a5d8cdfb800bf917",
+          "shape": [
+            3
+          ]
+        },
+        "source_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "0bfbf9183e7fe94b995fcc194764e8a86aad6f228334499f9ae55ab62b4e5232",
+          "shape": [
+            3,
+            18504
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    },
+    {
+      "key": "coverage-probe",
+      "receipt": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/coverage-probe.json",
+        "bytes": "23320",
+        "sha256": "5b0882480d2ea1b0190a78741e02bd967b95d63626e7aeec5bb7d9a8f765927d"
+      },
+      "archive": {
+        "bytes": "60409770",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/coverage-probe.npz",
+        "sha256": "9d04d28f470b37503805cc03cb350560095c3fc04e03913318e5a9bae9cd3ed0"
+      },
+      "arrays": {
+        "bands_one_based": {
+          "dtype": "<i8",
+          "sha256_C_bytes": "0c730b69905c5ef7a4ca5269f72365400bde2dd2c04eaf9bbb3d1c4a265a0131",
+          "shape": [
+            2
+          ]
+        },
+        "comparison_pairs": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "f58f39caf97983a756a5f01ad7612f4181b29d88847ffc4cccd57c48474a6449",
+          "shape": [
+            2,
+            2
+          ]
+        },
+        "density": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "8c85a81fd9dbaca6fb2f8425f75ffa158d1035babf5a031afa80b90140438a56",
+          "shape": [
+            373248,
+            2
+          ]
+        },
+        "density_gradient": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "585be6e3500e7696865cce7b8c116a601cdc990e7835ecbd07b24153f9d93bec",
+          "shape": [
+            3,
+            373248,
+            2
+          ]
+        },
+        "direction": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "6f3a65ee99a3575129663fb56ae9256d5fb2534d82ba331f4e3d90ca25fe516b",
+          "shape": [
+            37,
+            3
+          ]
+        },
+        "dyad_coefficients": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "82d5182c90ecefa00f9e9d91f02ad8be6d9d082f377bd1f96c00f010bc053e36",
+          "shape": [
+            1
+          ]
+        },
+        "h0_action_ry": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "6ce4cdab21798739b19a7bc31d18c59d7223e7b254b4269cd49a5fcea9a19a0c",
+          "shape": [
+            18542,
+            2
+          ]
+        },
+        "ionic_action": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "9e3368eee383626858a9f87bd87ee52620b00d65b9aea31dcd9c1dfa7385a577",
+          "shape": [
+            18542,
+            2
+          ]
+        },
+        "ionic_bra": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "788337148ea50453ffdbe80832d8ced4515e8db9e2da97604ea86eddd256785c",
+          "shape": [
+            18542,
+            2
+          ]
+        },
+        "ionic_ket": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "37c4675fdbfdf9f1e59baf72de582758e5b9181b15a94d5dc9d77edd155f0ef7",
+          "shape": [
+            18542,
+            2
+          ]
+        },
+        "ionic_local": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "d012d91e1f196d12debe59339b657b2d75964b845f1d6bf6a9fc3f1ca336ab1f",
+          "shape": [
+            18542,
+            2
+          ]
+        },
+        "mode_weight": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "19330939750a0d709a81ea043d9b982f080e99caf0ffe496fdc14d5f95a3b7ec",
+          "shape": []
+        },
+        "number_action": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "20a1ded052fd7316602bd772c55a3a99099d9fef920e219a12638d05d1dcb894",
+          "shape": [
+            18542,
+            2
+          ]
+        },
+        "number_profile": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "4c1f620a5c7c90d70d7197309cb59598c647f128529600c9dde55d7d97c271f7",
+          "shape": [
+            373248
+          ]
+        },
+        "probe_slot_json": {
+          "dtype": "<U1635",
+          "sha256_C_bytes": "518ed967a248c11bbc85bfcc4bf65c91d526758fb18e99a9eca463a1534c8b73",
+          "shape": []
+        },
+        "raw_block": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "5ceb88b524bbf84c916097cca574e8faf51462c7f8a763b957eb1dc6a3fac932",
+          "shape": [
+            18542,
+            2
+          ]
+        },
+        "saved_label_residual_ry": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "708aac14cc4685ee4f7c952f8fff4ceeefb7b923e4b25ec43cad8ab936589222",
+          "shape": [
+            18542,
+            2
+          ]
+        },
+        "slot_records_json": {
+          "dtype": "<U210382",
+          "sha256_C_bytes": "e65dc3e6ffb9bc28af437cc55273837abcf10e8c9141da5d77e2ff782e530871",
+          "shape": []
+        },
+        "source_block": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "5ceb88b524bbf84c916097cca574e8faf51462c7f8a763b957eb1dc6a3fac932",
+          "shape": [
+            18542,
+            2
+          ]
+        },
+        "source_receipt_bindings_json": {
+          "dtype": "<U5384",
+          "sha256_C_bytes": "9b5436718dd3b65ffc7332a8439183ed4fbb337466ab014a49ab8d9d6044ccf7",
+          "shape": []
+        },
+        "target_miller": {
+          "dtype": "<i8",
+          "sha256_C_bytes": "26baa02747dfe0b9b2690a7de6af81370b2c7fa788a2677dae1de4131fc14d97",
+          "shape": [
+            3,
+            18542
+          ]
+        }
+      },
+      "disposition": "new-completed-checkpoint",
+      "readback": "exact dtype/shape/value; allow_pickle=False"
+    }
+  ],
+  "accepted_background": {
+    "archive": {
+      "bytes": "137945254",
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/background-coordinates.npz",
+      "sha256": "5985964572febdc455a9c3bf215a99b913649783fe14d334a974f6a2e20f43c2"
+    },
+    "arrays": {
+      "atom_indices_one_based": {
+        "dtype": "<i8",
+        "sha256_C_bytes": "d2325ffdd4600a671dcc319ae1e44706bb0b46cfb79ea5911460e20447ec95d5",
+        "shape": [
+          37
+        ]
+      },
+      "cell_bohr": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+        "shape": [
+          3,
+          3
+        ]
+      },
+      "density_components": {
+        "dtype": "<c16",
+        "sha256_C_bytes": "711dbe1b97a5f0e9190fcaa1e6e4ffcdff03ec2c4d51e0a12ff883be2b1c8fd3",
+        "shape": [
+          148597,
+          2
+        ]
+      },
+      "density_miller": {
+        "dtype": "<i4",
+        "sha256_C_bytes": "2235c207263079c4da5b8fa18082b8d89d0437c334d902c5707e69690d845ef7",
+        "shape": [
+          3,
+          148597
+        ]
+      },
+      "dmuxc": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "1568fb87a8faa8527c091f26000e205efd5997fa82b19e38507cc007872e11df",
+        "shape": [
+          373248,
+          2,
+          2
+        ]
+      },
+      "dvxc_rr": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "010cbec220160e375ad0cfdaa03aa939a78928dd08fa928db883be304f0b8578",
+        "shape": [
+          373248,
+          2,
+          2
+        ]
+      },
+      "dvxc_s": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "9fc619beeda8729402728b4c422641395f51539944507754757e4cf8d096f983",
+        "shape": [
+          373248,
+          2,
+          2
+        ]
+      },
+      "dvxc_sr": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "15d29f197f87f574d690efcfce45b510b152993a4147772d759510ea4674d0f7",
+        "shape": [
+          373248,
+          2,
+          2
+        ]
+      },
+      "dvxc_ss": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "0091713f9363dc02098c906dd79cc70ffa5d71d7f9ab569742f98d780c1fc87d",
+        "shape": [
+          373248,
+          2,
+          2
+        ]
+      },
+      "fft_grid": {
+        "dtype": "<i8",
+        "sha256_C_bytes": "d19b5d20b166f9dcff6704de5d601e82e6d31ae0ac62bef97ee2980b409f7341",
+        "shape": [
+          3
+        ]
+      },
+      "gradient_flux_ry_bohr": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "ff5592c13fb38ed89a86ebc44c0620faaa8de59cddb7f606dc3148efe997c8e3",
+        "shape": [
+          3,
+          373248,
+          2
+        ]
+      },
+      "grho": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "d4f3697ee54959c64cd56b7fb5a2506fa725c2e42e9342be24e265945572a157",
+        "shape": [
+          3,
+          373248,
+          2
+        ]
+      },
+      "hartree_ry": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "7b7dfd50022a09463d6be7e74e8c891c00efec3419a5d754cb61beb00d99c6eb",
+        "shape": [
+          373248
+        ]
+      },
+      "imaginary_maxima_json": {
+        "dtype": "<U200",
+        "sha256_C_bytes": "3cf48d4dd66fc439b1e72ae955344d1f1c8e7156d43b25880b6d10bff0639dd4",
+        "shape": []
+      },
+      "ionic_ry": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "6ea3b2572bf77bfaf2feb1d7eb2da2da80c48bfcd53193ae1bdab34ba45b30e6",
+        "shape": [
+          373248
+        ]
+      },
+      "local_xc_ry": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "d5d46eba5425e56072b2aeb2b540f664416be7e1a734c8c7f98fa643502fb5bc",
+        "shape": [
+          373248,
+          2
+        ]
+      },
+      "positions_bohr": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "0573bfbdcbdb46b06a78ee788edb0ff70101d28b85163a60b0c4c0632ee1d071",
+        "shape": [
+          3,
+          37
+        ]
+      },
+      "reciprocal_bohr_inv": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+        "shape": [
+          3,
+          3
+        ]
+      },
+      "rho_total_magnetization": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "11358fb370c9db095f54e094dbd49362f26b2c412319b30f69eacf8a1d4cecb1",
+        "shape": [
+          373248,
+          2
+        ]
+      },
+      "rho_updown": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "6c5f791df517e759d5b4d267180c47fd55d78f4e2e91949139b8f019ddfbe55a",
+        "shape": [
+          373248,
+          2
+        ]
+      },
+      "sources_json": {
+        "dtype": "<U3913",
+        "sha256_C_bytes": "ff93582526d08b67a620aa8e2b31156ae96f40b269ad6ccac38d8167493a3e77",
+        "shape": []
+      },
+      "vrs": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "27257fed596f8dd327515c941328ae4924cc4fd71b89f72468468c79581c33f0",
+        "shape": [
+          373248,
+          2
+        ]
+      },
+      "xc_ry": {
+        "dtype": "<f8",
+        "sha256_C_bytes": "c412b7b2755bf0b47223b33d2c00109d84d67494745cb625c5688033301f80eb",
+        "shape": [
+          373248,
+          2
+        ]
+      }
+    },
+    "metadata": {
+      "backend": {
+        "bound_library": {
+          "bytes": "576432",
+          "dependencies": [
+            {
+              "bytes": "236616",
+              "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+              "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+            },
+            {
+              "bytes": "2129424",
+              "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+              "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+            },
+            {
+              "bytes": "51536",
+              "path": "/usr/lib/x86_64-linux-gnu/libcap.so.2.66",
+              "sha256": "6ac6abc86ac891c6e13486470e26f1d939f47fda9e6b5d5508a7f5ec881adc84"
+            },
+            {
+              "bytes": "215216",
+              "path": "/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1",
+              "sha256": "7fa4592ebaec38a7c1ce665c29244fbaae249cab6c1dbdd5024418dcdfd4898e"
+            },
+            {
+              "bytes": "14256",
+              "path": "/usr/lib/x86_64-linux-gnu/libevent_pthreads-2.1.so.7.0.1",
+              "sha256": "e386329c9c16032b489bebbd545750f35eafc0f50ab88ef0c986a31acb4b47a2"
+            },
+            {
+              "bytes": "183024",
+              "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+              "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb"
+            },
+            {
+              "bytes": "3263912",
+              "path": "/usr/lib/x86_64-linux-gnu/libgfortran.so.5.0.0",
+              "sha256": "342618ccfebe840446e4ef2b7893f4161b2084845e570f42d68a70bfde58a58d"
+            },
+            {
+              "bytes": "392576",
+              "path": "/usr/lib/x86_64-linux-gnu/libhwloc.so.15.7.0",
+              "sha256": "86dff44a023254d997cea910b9a51f35afefe6780f4b5530f974a2009ba47487"
+            },
+            {
+              "bytes": "952616",
+              "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+              "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+            },
+            {
+              "bytes": "1182056",
+              "path": "/usr/lib/x86_64-linux-gnu/libmpi.so.40.30.6",
+              "sha256": "9055018b12757e830591aa0283e485e471f1f2a06d3bc0dd5fb35ab00386c172"
+            },
+            {
+              "bytes": "415160",
+              "path": "/usr/lib/x86_64-linux-gnu/libmpi_mpifh.so.40.30.0",
+              "sha256": "54eb60df3150c299e7c0bb4e4b502399b221544856d489fa480dce166734098d"
+            },
+            {
+              "bytes": "704192",
+              "path": "/usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.3",
+              "sha256": "59c4d9b111cd3ec326a4df475a338daae050496087c67e86956187056fdc3051"
+            },
+            {
+              "bytes": "757352",
+              "path": "/usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.3",
+              "sha256": "26467e1da428d31dab924ddbc50bc6ade75da47dbb82c77498a5f127a5466ba7"
+            },
+            {
+              "bytes": "207288",
+              "path": "/usr/lib/x86_64-linux-gnu/libudev.so.1.7.8",
+              "sha256": "4298228175fa62a36af88b1afd4406cdd8b1bf166621f957d0dbbde45a698fe5"
+            },
+            {
+              "bytes": "113000",
+              "path": "/usr/lib/x86_64-linux-gnu/libz.so.1.3",
+              "sha256": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892"
+            },
+            {
+              "bytes": "37555760",
+              "path": "/usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so",
+              "sha256": "bfc7492adbf84a8f567720a9e1fae2afc18f3d817da233e7f4d453683485308e"
+            }
+          ],
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build/internal-pbe/libinternal_pbe.so",
+          "sha256": "aa781ebae9198e626dc6393535e50f4479cfdfc52529bfa30382608fc1449ecd"
+        },
+        "library_json": {
+          "bytes": "3237",
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build/internal-pbe/library-binding.json",
+          "sha256": "5fbcbae54c51fb25029eac6b3a092897413066f1ceca1de7e158b5bf6bd08b63"
+        },
+        "loaded_dependencies": [
+          {
+            "bytes": "236616",
+            "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+            "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+          },
+          {
+            "bytes": "2129424",
+            "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+            "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+          },
+          {
+            "bytes": "51536",
+            "path": "/usr/lib/x86_64-linux-gnu/libcap.so.2.66",
+            "sha256": "6ac6abc86ac891c6e13486470e26f1d939f47fda9e6b5d5508a7f5ec881adc84"
+          },
+          {
+            "bytes": "215216",
+            "path": "/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1",
+            "sha256": "7fa4592ebaec38a7c1ce665c29244fbaae249cab6c1dbdd5024418dcdfd4898e"
+          },
+          {
+            "bytes": "14256",
+            "path": "/usr/lib/x86_64-linux-gnu/libevent_pthreads-2.1.so.7.0.1",
+            "sha256": "e386329c9c16032b489bebbd545750f35eafc0f50ab88ef0c986a31acb4b47a2"
+          },
+          {
+            "bytes": "183024",
+            "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+            "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb"
+          },
+          {
+            "bytes": "3263912",
+            "path": "/usr/lib/x86_64-linux-gnu/libgfortran.so.5.0.0",
+            "sha256": "342618ccfebe840446e4ef2b7893f4161b2084845e570f42d68a70bfde58a58d"
+          },
+          {
+            "bytes": "392576",
+            "path": "/usr/lib/x86_64-linux-gnu/libhwloc.so.15.7.0",
+            "sha256": "86dff44a023254d997cea910b9a51f35afefe6780f4b5530f974a2009ba47487"
+          },
+          {
+            "bytes": "952616",
+            "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+            "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+          },
+          {
+            "bytes": "1182056",
+            "path": "/usr/lib/x86_64-linux-gnu/libmpi.so.40.30.6",
+            "sha256": "9055018b12757e830591aa0283e485e471f1f2a06d3bc0dd5fb35ab00386c172"
+          },
+          {
+            "bytes": "415160",
+            "path": "/usr/lib/x86_64-linux-gnu/libmpi_mpifh.so.40.30.0",
+            "sha256": "54eb60df3150c299e7c0bb4e4b502399b221544856d489fa480dce166734098d"
+          },
+          {
+            "bytes": "704192",
+            "path": "/usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.3",
+            "sha256": "59c4d9b111cd3ec326a4df475a338daae050496087c67e86956187056fdc3051"
+          },
+          {
+            "bytes": "757352",
+            "path": "/usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.3",
+            "sha256": "26467e1da428d31dab924ddbc50bc6ade75da47dbb82c77498a5f127a5466ba7"
+          },
+          {
+            "bytes": "207288",
+            "path": "/usr/lib/x86_64-linux-gnu/libudev.so.1.7.8",
+            "sha256": "4298228175fa62a36af88b1afd4406cdd8b1bf166621f957d0dbbde45a698fe5"
+          },
+          {
+            "bytes": "113000",
+            "path": "/usr/lib/x86_64-linux-gnu/libz.so.1.3",
+            "sha256": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892"
+          },
+          {
+            "bytes": "37555760",
+            "path": "/usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so",
+            "sha256": "bfc7492adbf84a8f567720a9e1fae2afc18f3d817da233e7f4d453683485308e"
+          }
+        ],
+        "loaded_source": {
+          "bytes": "576432",
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build/internal-pbe/libinternal_pbe.so",
+          "sha256": "aa781ebae9198e626dc6393535e50f4479cfdfc52529bfa30382608fc1449ecd"
+        }
+      },
+      "field_order": "F physical grid; explicit up/down except rho_total_magnetization",
+      "physical_grid": [
+        72,
+        72,
+        72
+      ],
+      "raw_reference_metadata": {
+        "alat_bohr": 13.318789726362429,
+        "atom_names": [
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "Ni",
+          "H",
+          "H",
+          "H",
+          "H",
+          "H",
+          "H"
+        ],
+        "degauss_ha": 0.01,
+        "degauss_ry": 0.02,
+        "fermi_energies_ha": [
+          0.7150095021242656
+        ],
+        "fermi_energies_ry": [
+          1.4300190042485312
+        ],
+        "fft_grid": [
+          72,
+          72,
+          72
+        ],
+        "monkhorst_pack": {
+          "k1": 0,
+          "k2": 0,
+          "k3": 0,
+          "nk1": 4,
+          "nk2": 4,
+          "nk3": 4
+        },
+        "nelec": 564.0,
+        "nks": 10,
+        "occupations_kind": "smearing",
+        "qualification": "Raw saved MV occupations/width/weights, not probabilities, temperature or a preparation.",
+        "smearing": "mv",
+        "total_energies_ha": {
+          "demet": 0.003864192036050428,
+          "eband": -294.7682877579552,
+          "ehart": 1230.908786507091,
+          "etot": -4782.290428325497,
+          "etxc": -471.235655350611,
+          "ewald": -3400.204416142307,
+          "vtxc": -614.8227277397373
+        },
+        "total_energies_ry": {
+          "demet": 0.007728384072100856,
+          "eband": -589.5365755159104,
+          "ehart": 2461.817573014182,
+          "etot": -9564.580856650993,
+          "etxc": -942.471310701222,
+          "ewald": -6800.408832284614,
+          "vtxc": -1229.6454554794745
+        }
+      },
+      "schema": "material-reference-background-v1",
+      "sources": [
+        {
+          "bytes": "428069",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/data-file-schema.xml",
+          "sha256": "3831ae2b83231b02475931d50055415b1d9673cdb05edb4541d0f1115ec383da"
+        },
+        {
+          "bytes": "6538392",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/charge-density.dat",
+          "sha256": "3b239c650b515d3e4e1921ca4ea5a1f7503bcd09f1810d49ddef5047b4c5ea08"
+        },
+        {
+          "bytes": "115509",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/Ni_ONCV_PBE-1.2.upf",
+          "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e"
+        },
+        {
+          "bytes": "64999",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/H_ONCV_PBE-1.2.upf",
+          "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a"
+        }
+      ],
+      "units": "density bohr^-3; potential Ry; gradient physical bohr derivatives"
+    },
+    "readback": "exact dtype/shape/value; allow_pickle=False",
+    "recipe_sha256": "0acfbad791ad6a2a212565fc17e4b064527b90afd275705f3fdef6deb7064624"
+  },
+  "output_total_bytes": 70205653,
+  "source_closure": {
+    "dependency_inventory": {
+      "bytes": "2780562",
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-context-controls-001/material-bloch-dependency-universe.json",
+      "sha256": "00bda0f4eb9fa70bab6a6ed6f98d5e1e2259136f4465b43a510b13488fa8a938"
+    },
+    "declared_source_count": 1407,
+    "final_actual_source_count": 1407,
+    "evidence": "Original terminal carries complete recipe and pre/post consumer inventories; granted runtime verified every actual consumer before/after work and internal saved readback. No source edits were made."
+  },
+  "original_execution": {
+    "argv": [
+      "/usr/bin/python3",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/run_material_bloch_pilot.py",
+      "--admission",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-grant-001.json",
+      "--output",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001"
+    ],
+    "cwd": "/home/administrator/projects/substrate-ni-collective",
+    "unit_original": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-controls-001/original-production-unit.service",
+      "bytes": "1271",
+      "sha256": "db4756098584e125b51245c4cbbd90cea99536c1f56e9f07de93c9f0592f4509"
+    },
+    "stdout": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-controls-001/production-process.stdout",
+      "bytes": "12096",
+      "sha256": "4bc0203931b72ccabd25773e179ca79f02b7eae1232e9e1478e00da64420fd5e"
+    },
+    "stderr": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-controls-001/production-process.stderr",
+      "bytes": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "start_command": [
+      "systemctl",
+      "--user",
+      "start",
+      "p254-a27-bloch-context-001.service"
+    ],
+    "start_exit_code": 0,
+    "control_ledger": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-controls-001/control-ledger.json",
+      "bytes": "16785",
+      "sha256": "65f10f61d21796ea80cb74914760581b13ef3af0f1748eb907b6b4c3f8002fc6"
+    }
+  },
+  "postexit_manager": {
+    "receipt": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-controls-001/production-manager-postexit.stdout",
+      "bytes": "555",
+      "sha256": "f909e3719a218548f86d5b250a47d452b75dac05add3b2f02d710f33e4f3b208"
+    },
+    "properties": {
+      "Type": "oneshot",
+      "Restart": "no",
+      "TimeoutStartUSec": "3min",
+      "RuntimeMaxUSec": "3min",
+      "RemainAfterExit": "yes",
+      "Result": "success",
+      "ExecMainStartTimestamp": "Wed 2026-10-28 09:42:27 UTC",
+      "ExecMainStartTimestampMonotonic": "3211084456333",
+      "ExecMainExitTimestamp": "Wed 2026-10-28 09:43:20 UTC",
+      "ExecMainExitTimestampMonotonic": "3211137277831",
+      "ExecMainCode": "1",
+      "ExecMainStatus": "0",
+      "ControlGroup": "",
+      "MemoryPeak": "[not set]",
+      "CPUUsageNSec": "52190524000",
+      "MemoryMax": "4294967296",
+      "MemorySwapMax": "0",
+      "CPUAffinity": "7",
+      "Id": "p254-a27-bloch-context-001.service",
+      "ActiveState": "active",
+      "SubState": "exited",
+      "InvocationID": "e4798465546147e5be5e022be61de1ff"
+    },
+    "journal": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-controls-001/production-journal.stdout",
+      "bytes": "4316",
+      "sha256": "1ebb648c22069b2f768de906c325324d1a31c78c579d08b694c98f6eff81a3da"
+    },
+    "retirement_journal": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-controls-001/production-journal-retirement.stdout",
+      "bytes": "11286",
+      "sha256": "6464f982b2ad8ad56cb8044bbf176138793551c320a56670e755c261c301e8a9"
+    },
+    "original_context_invocation_id": "b93dc3270ba24e80823ceebed369807b",
+    "fresh_production_invocation_id": "e4798465546147e5be5e022be61de1ff",
+    "exit_interpretation": "ExecMainCode1 means CLD_EXITED; ExecMainStatus0, Resultsuccess, active(exited), plain systemctl start returned0. Actual retained timestamps/counters captured before explicit stop/unload.",
+    "deadline_qualification": "Manager explicitly logs RuntimeMaxSec has no effect with Type=oneshot. Enforced manager deadline was TimeoutStartSec180 (actual TimeoutStartUSec3min), alongside internal OutputRun/Publication signal/time checks. RuntimeMax property180000000 remains introspection, not the oneshot deadline authority.",
+    "resource_qualification": "Post-exit ControlGroup is blank and MemoryPeak not set; preserve unavailable, not invented. In-process original context records exact owned cgroup, affinity7, memory.max4294967296, swap.max0 and all4 thread variables1. Retained InvocationID/timestamps/CPUUsageNSec are observed."
+  },
+  "accounting": {
+    "component_cap_seconds": 240,
+    "original_context_start_wait_seconds": 3.976563945412636,
+    "original_context_control_ledger_seconds": 4.992478354368359,
+    "production_grant_seconds": 180,
+    "production_start_call_wall_seconds": 52.85487452195957,
+    "retained_process_wall_seconds": 52.821498,
+    "producer_terminal_prepublication_seconds": 52.47416533669457,
+    "production_cpu_usage_nsec": "52190524000",
+    "production_control_ledger_seconds": 53.90234799589962,
+    "context_plus_production_start_wall_seconds": 56.83143846737221,
+    "internal_saved_consumption_seconds": 14.607766455970705,
+    "separate_saved_reader_seconds_used": 0,
+    "separate_saved_reader_reserved_seconds": 30,
+    "qualification": "Internal saved consumption14.6078s is INCLUDED in the sole52.8549s start-call wall, not charged again. Terminal snapshot excludes later publication/exit; retained manager wall and start-call wall are independent observed completion times. No automatic retry/reset/reallocation."
+  },
+  "retirement": {
+    "original_manager_terminal_journal_saved_before_stop": true,
+    "owned_unit_stopped": true,
+    "owned_unit_file_removed": true,
+    "daemon_reloaded_after_removal": true,
+    "owned_view": "w1:t1E",
+    "owned_pane": "w1:p1E",
+    "owned_view_closed": true,
+    "other_units_or_views_touched": false,
+    "retirement_intent": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-controls-001/owned-retirement-intent.json",
+      "bytes": "1335",
+      "sha256": "243637da63792eae539e60a32585300b5e44ad5ff1f2c22bfdd0903f44ecec67"
+    },
+    "unit_unload_result": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-production-controls-001/unit-unload-result.json",
+      "bytes": "201",
+      "sha256": "9df23a36462651965b46016d9a0a87a100fc7e5c66e44552abe275c251880b48"
+    }
+  },
+  "failures": [],
+  "source_edits": [],
+  "prohibited_work_not_performed": [
+    "separate saved reader",
+    "successful finite oracle replay",
+    "PBE/backend reconstruction",
+    "Native or cloud work",
+    "old frozen job query/change",
+    "Git mutation",
+    "automatic retry"
+  ],
+  "remaining_limits": [
+    "Actual metadata/frame representation and the selected raw probe now exist; this is not128 coefficient arrays stored simultaneously.",
+    "Raw MV occupations and saved energy labels remain diagnostics/metadata, not chosen populations or a stationary state.",
+    "No conditional neutral preparation D was produced in this slice. Dependent preparation still needs separate Root execution authority.",
+    "Canonical UNITARY extension is not a little-group sewing/path invariance result.",
+    "Finite-q rectangular actions, full ionic q/regions, physical environment/loss, coupled coherence-domain dynamics, transverse response, lattice comparison and nuclear/energy-disposal claims remain outside this result."
+  ],
+  "next_authority": "Root reads original complete terminal/report and separately authorizes exact bound saved-reader. No additional numerical action is initiated by this handoff."
+}

@@ -1,0 +1,16 @@
+{
+  "status": "failed-before-numerical-dynamics",
+  "source": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_streamed_oracle.py",
+    "bytes": "15284",
+    "sha256": "90d77844d4352757cbe428f8a11b87177175cfa7d71c1c04f8f4f4c706d6161c"
+  },
+  "snapshot": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-history/90d77844d4352757cbe428f8a11b87177175cfa7d71c1c04f8f4f4c706d6161c-run_joint_streamed_oracle.py",
+    "bytes": "15284",
+    "sha256": "90d77844d4352757cbe428f8a11b87177175cfa7d71c1c04f8f4f4c706d6161c"
+  },
+  "journal": "Starting p254-a28-joint-streamed-oracle-001.service - /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_streamed_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-streamed-oracle-001.json...\nTraceback (most recent call last):\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_streamed_oracle.py\", line 298, in <module>\n    main()\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_streamed_oracle.py\", line 283, in main\n    result = run(Path(tmp))\n             ^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_streamed_oracle.py\", line 174, in run\n    functions = independent_scalar(f)\n                ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_streamed_oracle.py\", line 122, in independent_scalar\n    assert sp.simplify(sum(sp.diff(scalar,x)*v for x,v in zip(coords,rhs))) == 0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\np254-a28-joint-streamed-oracle-001.service: Main process exited, code=exited, status=1/FAILURE\np254-a28-joint-streamed-oracle-001.service: Failed with result 'exit-code'.\nFailed to start p254-a28-joint-streamed-oracle-001.service - /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_streamed_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-streamed-oracle-001.json.\np254-a28-joint-streamed-oracle-001.service: Consumed 3.566s CPU time.\n",
+  "cause": "Exact symbolic conservation assertion was applied to a scalar constructed with SymPy Float coefficients. Correct by representing those declared coefficient values as exact rationals before symbolic differentiation, not by relaxing or removing the identity.",
+  "production_source_changed": false
+}

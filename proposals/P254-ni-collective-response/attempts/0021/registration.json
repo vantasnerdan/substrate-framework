@@ -1,0 +1,71 @@
+{
+  "issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "registered_at": "2026-10-27T19:39:02.853962+00:00",
+  "goal": "Construct and exercise coupled ionic/electronic real-time local-kick dynamics from actual H0/g/K/Cfrozen/masses, not infer a propagator from fourfrequency samples or fabricate a rejection.",
+  "source_inventory": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/source-inventory.json",
+    "bytes": "13138",
+    "sha256": "d90e1313c36c8062c336ab9fd4528d4ad5f7262ed728d2e6424fd2e169c3ab60"
+  },
+  "sources_in_hand": "Giustino2017RMP author manuscript kinetic/ionicaccelerationGreenfunction and bare/dressedresponse sections; originalQE constants/dynamics/dyndia masssources; settled finiteaction/CAR/response/memory proofs. No sourceacquisition or Nativeproduction needed.",
+  "hypothesis_to_verify": [
+    "i*d(delta_rho)/d(tau)=[H0,delta_rho]+[g*u+V(K*n(delta_rho)),rho0]",
+    "M_Ry*d2u/dtau2=-Cfrozen*u-physical_ionic_gradient(delta_rho)+external_force",
+    "Externallyforced inverse=Cfrozen+samefrequency electronicgradient-z^2*M_Ry, not sourceGreenfunction sign imported blindly.",
+    "M_Ry=amass_species[ityp_one_based-1]*actual_amu_ry repeatedoverCartesian; Rytime tau hashbar=1."
+  ],
+  "source_wave": {
+    "generic_inertial_model": "Independent finite original-basis density-matrix+ionic generator and energy/covariance/retarded composition oracle. Consumes only settled finitefunctional/response/mass conventions; no dependency on pendingPW implementation.",
+    "PW_electronic_generator": "Actual full-target plusket/minusbra spectral electronic transition state and physical density/ionicgradient, with its own finiteEOM oracle. Consumes settledPWdata/frames/R0; may extract sharedFFTvalidation helpers withoutchangingR0API. No dependency on genericinertial implementation.",
+    "integration": "Root composes actual PW generator and inertial law only after both source slices and their finite checks settle; actualproducer inputs and allcodesourcebound beforeexecution."
+  },
+  "PW_API": {
+    "class": "PWElectronicDynamics(model)",
+    "module": "src/substrate_framework/pw_electronic_dynamics.py",
+    "members": [
+      "state_size integer",
+      "zero_state() returnsflatcomplexstate",
+      "derivative(state,local_potential,displacement) returnsflatcomplexderivative inRytau",
+      "observables(state) returnsPWResponseValue(density,ionic_gradient)"
+    ],
+    "state": "Perchannel alltarget\u00d7allnonzeroFDsource spectral amplitudes in plusket and conjugatedminusket(bra) sectors. Both branches explicit; nooccupationthreshold, truncatedtargetcomplement, staticvertex or numericaleta."
+  },
+  "oracles": {
+    "generic_finite": "New combinedinertia/electronicgenerator checked blockwise usingSymPy and independentoriginal-basis SciPy frequency/time evolution; forcegradient sign, unequalmasses/Ryfactor, particle/spinconservation, quadraticenergy and declared finiteinitialcovariance are assessed. Independent sourcefrozen term, no fittedsubtraction. Expose wronginertiasign/factor and droppedcoupling.",
+    "PW_finite": "New timegenerator drivenresolvent and time-domain electronicdensity/gradient versus independent original-basis commutator EOM atGamma/directedq, bothcomplexfrequencies; exposeminusbranchsign/conjugation/FFTmaps/spinweights. R0sharedhelper extraction triggers only its narrowfinite0019regression, not oldNativeproofreplays.",
+    "allowance": "relative-scaled1e-10 for finitealgebra/comparison. Actualpilot linear-ODE rtol1e-4; physical/material accuracy notclaimed.",
+    "finite_wall_cap_seconds_each": 120,
+    "cpu": "6",
+    "BLAS_threads": 1
+  },
+  "actual_pilot": {
+    "preparation": "Held-reference tangent about nonstationary2atomengineeringbackground. u0=0; localizedH-y velocitykick1e-4bohr perRytau in cell0 of2x1x1periodicarray; cell1zero. Electronictransitioninitialmean zero aboutthe declaredfullFDreference. First-momentresponse only; actual coupled-equilibrium quantumcovariance/noise notclaimed.",
+    "sectors": [
+      "gamma",
+      "half-b1 withactualplus/minusbranches"
+    ],
+    "initial_field": "Use existing completeq-gridFourierconvention; noextraatomphase and noimposedcommonrealspacephase.",
+    "time_window_tau_ry": [
+      0.0,
+      1.0
+    ],
+    "output_samples": 5,
+    "purpose": "Complete bounded short-time coupledtrajectory and mechanicaltransfer/force-work observations; NOT physicaldecay/domainextent or long-time transport.",
+    "integrator": "Adaptivehigh-order SciPy real/imaginary representation, rtol1e-4; per-componentabsolute scales declared in driver beforeexecution. No eta-damping term.",
+    "total_wall_cap_seconds": 600,
+    "per_sector_wall_cap_seconds": 240,
+    "max_rhs_actions_per_sector": 400,
+    "first_nonzero_time_state_due_seconds": 150,
+    "useful_progress": "Durable completed nonzero physicaltime samples; solvercalls/CPU alone arediagnostic. Preserve latestfulltransitionstate and previouscheckpoint; metadata/outputframes bindactualsource and cumulativecost.",
+    "plateau_trigger": "No nonzerotime sample150s or anysector240s/400rhsactions =>checkpoint-safe stop, bounded methodchange decision; neverextendunchanged tohours/days.",
+    "energy_scope": "Finite coupled energy/conservation must be independentlyproven. Actualmechanicalworkbalance or energydiagnostics mustbe labeled byexactimplementedfunctional; integratedwork alone cannot standin for independentlyconserved totalelectronicenergy.",
+    "Native_cloud_budget": 0
+  },
+  "allocation": {
+    "source_first_due": "2026-10-27T19:55:00+00:00",
+    "Root_decision_due": "2026-10-27T20:10:00+00:00",
+    "owner": "Giuliano",
+    "no_automatic_retry": true
+  },
+  "whole_goal_preserved": "Engineeringtwoatom2cellpilot doesnotreplace Ni32/vacancyNi31/Ni31H6/Ni32H6 stationarytargetmaterials. Fullmaterialjointcalibration, actualcoupling/loss orretainedenvironment, many-regioncovariance/controls, matchedlatticecomparison andnucleartransition-energy/productdisposal remainrequired."
+}

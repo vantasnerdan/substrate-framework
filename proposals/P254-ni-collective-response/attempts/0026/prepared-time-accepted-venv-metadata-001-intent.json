@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-c",
+    "import sys,os,json,importlib.metadata as m,importlib.util as u; ds={};\nfor n in ('numpy','scipy','sympy'):\n try:\n  d=m.distribution(n); ds[n]={'version':d.version,'root':str(d.locate_file('')),'metadata_path':str(d._path),'module_origin':u.find_spec(n).origin}\n except Exception as e: ds[n]={'error':repr(e)}\nprint(json.dumps({'executable':sys.executable,'version':sys.version,'prefix':sys.prefix,'base_prefix':sys.base_prefix,'sys_path':sys.path,'distributions':ds,'affinity':sorted(os.sched_getaffinity(0))}))"
+  ],
+  "cwd": "/home/administrator/projects/substrate-ni-collective",
+  "timeout_seconds": 15,
+  "environment_overrides": {},
+  "started_utc": "2026-10-28T05:56:21.965609+00:00"
+}

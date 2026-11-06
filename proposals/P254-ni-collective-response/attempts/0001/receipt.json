@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "evidence_scope": "symbolic finite quadratic identities and exposing mutations only",
+  "does_not_license": [
+    "Ni material parameters",
+    "spontaneous coherence",
+    "nuclear enhancement"
+  ],
+  "source_sha256": {
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0001/derive_blocks.py": "b47d9afb78fb12c7c41a072fe3419f53fd47dee1c6d4004d95eb888fc2afe215",
+    "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_matter_field.py": "e7aa3efdd0186daea3a4d68b13b8be27aed3249ab511afc8591034ade367ff0d"
+  },
+  "sympy_version": "1.14.0",
+  "elapsed_seconds": 0.417303663212806,
+  "checks": [
+    "complete-square Hessian is symmetric",
+    "all leading principal minors positive",
+    "dropping self-term exposes a negative energy direction",
+    "Hamiltonian energy derivative vanishes",
+    "added gain violates energy identity",
+    "static elimination returns calibrated stiffness",
+    "dynamic Schur complement retains static subtraction",
+    "missing counterterm fails static calibration",
+    "asymmetric coupling exposes orientation error",
+    "direct full inverse agrees with reduced response",
+    "retarded positive-frequency imaginary response is positive",
+    "advanced-sign mutation reverses absorptive sign"
+  ],
+  "blocks": {
+    "minimal_coupling_block": {
+      "hessian": "Matrix([[k, 0, 0, 0], [0, 1/m, -c/m, 0], [0, -c/m, c**2/m + omega_field_squared, 0], [0, 0, 0, 1]])",
+      "leading_principal_minors": [
+        "k",
+        "k/m",
+        "k*omega_field_squared/m",
+        "k*omega_field_squared/m"
+      ],
+      "scope": "Finite positive quadratic energy only; not a Ni charge or a phase theorem."
+    },
+    "static_screening_block": {
+      "effective_inverse_response": "Matrix([[c11**2/(-b1 + z**2) + c12**2/(-b2 + z**2) + k11 - z**2 + c12**2/b2 + c11**2/b1, c11*c21/(-b1 + z**2) + c12*c22/(-b2 + z**2) + k12 + c12*c22/b2 + c11*c21/b1], [c11*c21/(-b1 + z**2) + c12*c22/(-b2 + z**2) + k12 + c12*c22/b2 + c11*c21/b1, c21**2/(-b1 + z**2) + c22**2/(-b2 + z**2) + k22 - z**2 + c22**2/b2 + c21**2/b1]])",
+      "scope": "Finite nonsingular mass-weighted bath; physical bath spectrum must be calculated."
+    },
+    "direct_resolvent_block": {
+      "fixture_scope": "Exact asymmetric rational example, not material parameters.",
+      "regularizer_scope": "Upper-half-plane frequency is a resolvent prescription, not a physical linewidth.",
+      "direct_response": "Matrix([[7749507799166472/19669337353690759 + 1537785723763656*I/19669337353690759, -1618859480476374/19669337353690759 - 522429081798924*I/19669337353690759], [-1618859480476374/19669337353690759 - 522429081798924*I/19669337353690759, 4557581788669236/19669337353690759 + 97247458894932*I/2809905336241537]])"
+    }
+  }
+}

@@ -1,0 +1,283 @@
+## Summary
+
+**Yes. A legitimate warm initializer can be constructed without changing the Ni/H functional, physical settings, precision, or Native completion metadata.**
+
+The shortest implementation is **exact Fourier replication of the spin density**, deliberately rebuilding orbitals. A stronger initializer can also preserve **all 40 folded orbitals per spin** using QE’s existing **single-rank distributed-WFC input path**. Crucially, that path **does not require manufacturing a four-atom `data-file-schema.xml` or setting `wf_collected=true`.**
+
+**The stopped four-atom attempt is not currently a reusable Native checkpoint:** its specified `scratch` directory was empty in both directory listing and recursive glob. Its stdout survives, but no density, WFC, XML, or `restart_scf` files were present there. This is consistent with interruption before QE’s end-of-electrons checkpoint-writing boundary.
+
+**Recommended construction:** add one explicit **derived 2×1×1 initializer kind** to the existing stage, generating density and, preferably, `scratch/scf.wfc1` from the immutable primitive seed. Retain `restart_mode='from_scratch'`. After the first actual four-atom SCF completes, the existing completed-save initializer works unchanged for the displacement cases.
+
+## Report
+
+### 1. What is already supported—and what is not
+
+| Route | Source-supported conclusion |
+|---|---|
+| Pass the existing two-atom save directly to `qe_scf_seed` for four atoms | Correctly rejected: atom count, cell, mesh and bands must match. |
+| Reuse a genuinely completed four-atom save for subsequent four-atom displacements | Already supported. Source coordinates may differ; cell, ordered species and settings must match. |
+| Set `restart_mode='restart'` against this stopped attempt | Not usable with the observed empty scratch. QE documents restart for a cleanly stopped calculation with its native checkpoint and unchanged parallelization. |
+| Exact density folding, then `startingpot='file'`, explicit non-file orbital initialization | Supported by native `potinit`; requires a small new frontend initializer contract. No completion XML is required for density loading. |
+| Exact density **and WFC** folding, then both initializations from files | Supported using the native direct-access `scf.wfc1` path described below. No synthetic completion XML is required. |
+| Shipped conversion utility | No ready-made primitive-save→supercell-save converter was identified in the inspected PW/PP tools. `initial_state.x` computes **core-level shifts**, not warm initial states; `open_grid.x` expands a symmetry-reduced k grid in the same cell; `wfck2r.x` exports real-space WFCs. |
+
+Existing frontend constraints are in:
+
+- `src/catdft/qe_scf_seed.py:12-37`: completed collected-save inventory and compatibility.
+- `src/catdft/qe_scf_seed.py:59-94`: copy/receipt and mandatory native initialization confirmations.
+- `src/catdft/qe_io.py:149-171`: fresh-SCF target and initialization namelists.
+- `src/catdft/qe_scf_xml.py:156-206`: finished native XML and metadata checks.
+
+These constraints should **not** be weakened to pretend that a derived or interrupted state is a completed save.
+
+### 2. Exact density construction
+
+#### Actual native format
+
+`charge-density.dat` is **Fortran sequential unformatted reciprocal-space data**, not a real-space grid dump.
+
+From `/opt/qebuild/q-e-qe-7.5/Modules/io_base.f90:405-597`:
+
+| Record | Payload |
+|---|---|
+| 1 | `LOGICAL gamma_only`, `INTEGER ngm_g`, `INTEGER nspin` |
+| 2 | `REAL(DP) b1(3), b2(3), b3(3)` |
+| 3 | `INTEGER mill_g(3,ngm_g)` |
+| Following records | One `COMPLEX(DP) rho_g(ngm_g)` record per spin component |
+
+The reciprocal vectors in this file are **physical reciprocal vectors**, because `PW/src/io_rho_xml.f90:55-64` passes `tpiba*bg`.
+
+For this collinear state, the two components are **total density and magnetization density**, not independent up/down densities. See `PW/src/sum_band.f90:303-307`; `io_rho_xml.f90:184-191` also obtains total magnetization as `omega*rho%of_g(1,2)`.
+
+#### Replication formula
+
+For \(A'=(2a_1,a_2,a_3)\),
+
+\[
+B'=(b_1/2,b_2,b_3),
+\]
+
+and, separately for total density and magnetization,
+
+\[
+\rho'(H,K,L)=
+\begin{cases}
+\rho(H/2,K,L),&H\text{ even},\\
+0,&H\text{ odd}.
+\end{cases}
+\]
+
+**Do not multiply the coefficients by two.** Density is unchanged locally; doubled volume produces doubled electron number and magnetization.
+
+The observed dimensions make this an exact commensurate-grid transfer:
+
+- Primitive XML: FFT **24×24×24**, **4645** density G vectors.
+- Four-atom stdout: FFT **48×24×24**, **9271** density G vectors.
+- Both use 240 Ry density cutoff and `gamma_only=false`.
+
+The primitive state has 19 electrons and magnetization approximately `0.9999993014939200` Bohr/cell. The replicated starting density therefore has 38 electrons and approximately `1.9999986029878400` Bohr/supercell, without imposing a magnetization constraint.
+
+#### Essential implementation detail: native ordering
+
+**Writing correct Miller indices is insufficient.** In the ordinary same-`gamma_only` path, `read_rhog` skips the stored Miller-index record and distributes coefficients by index:
+
+- `Modules/io_base.f90:713-779`.
+
+Consequently, the writer must generate the **target native global G ordering**, not append the primitive arrays or merely change their Miller indices.
+
+The exact source algorithm is:
+
+1. `Modules/recvec_subs.f90:119-190`: enumerate Miller triples in the FFT bounds, retain vectors satisfying the density cutoff.
+2. `Modules/recvec_subs.f90:195-200`: order using `hpsort_eps(...,eps8)`.
+3. `Modules/sort.f90:9-134`: actual tolerance-aware heapsort, including original-index tie-breaking.
+
+For this target, the enumeration bounds are \(H=-23,\ldots,23\), \(K,L=-11,\ldots,11\). Use QE’s dimensionless `bg` and `gcutm=ecutrho/tpiba²` in the ordering calculation. **Do not substitute ordinary NumPy sorting or an arbitrary equal-shell order.** The QE sort even documents a tolerance non-transitivity caveat.
+
+The small missing density implementation is therefore precisely:
+
+```text
+fold_density_2x1x1(source_save, target_cell, target_fft, destination):
+    read source sequential records and preserve their numeric representation
+    generate target native density-G order using ggen + hpsort_eps
+    for each target Miller triple:
+        copy source coefficient at (H/2,K,L) if H is even
+        otherwise write zero
+    write target reciprocal vectors, target Miller list, both density components
+```
+
+No interpolation, cutoff reduction, coefficient thresholding, kernel fit, or fake XML is needed.
+
+### 3. Full WFC preservation is also constructive
+
+This is not blocked by the collected-save metadata contract. **Use QE’s existing raw distributed-WFC initialization path instead of constructing a fake collected save.**
+
+#### Exact folding map
+
+The actual primitive k ordering pairs as follows:
+
+| Target k index | Primitive WFC indices combined |
+|---|---|
+| 1 | 1 and 5 |
+| 2 | 2 and 6 |
+| 3 | 3 and 7 |
+| 4 | 4 and 8 |
+
+For each spin, primitive \(k_1=0\) and \(k_1=-1/2\) fold into the same supercell \(K_1=0\):
+
+\[
+(h,k,l)\mapsto
+\begin{cases}
+(2h,k,l),&k_1=0,\\
+(2h-1,k,l),&k_1=-1/2.
+\end{cases}
+\]
+
+Embed each primitive orbital in its corresponding even/odd sector, zero the other sector, and concatenate the two 20-band sets.
+
+**Keep the plane-wave coefficients unchanged.** In QE’s normalized plane-wave basis, the supercell basis supplies the larger-volume normalization. Multiplying coefficients by \(1/\sqrt2\) would incorrectly reduce their norm.
+
+The resulting orbitals are orthonormal because the two branches have disjoint Fourier support. Their physical supercell wavefunctions are the normalized extensions of the primitive Bloch states.
+
+#### Source WFC record format
+
+`Modules/io_base.f90:25-205` writes:
+
+1. `ik, xk(3), ispin, gamma_only, scalef`
+2. `ngw, igwx, npol, nbnd`
+3. `b1(3), b2(3), b3(3)`
+4. `mill_k(3,igwx)`
+5. One complex coefficient record per band.
+
+Here `xk` and reciprocal vectors are physical reciprocal coordinates, and PW uses `scalef=1`.
+
+**Collected-file order is not simply kinetic-energy order.** `PW/src/pw_restart_new.f90:979-1031,1053-1134` compresses the occupied subset of global density-G indices into increasing global-index order. The stored Miller list lets the folding implementation recover each coefficient’s actual Fourier label.
+
+#### Native loading without completion metadata
+
+`PW/src/wfcinit.f90:85-156` explicitly supports this case:
+
+- No valid collected-save XML → `twfcollect_file=false`.
+- A distributed WFC file exists on every rank → use it, rather than fall back.
+- With multiple k points, `c_bands` reads its records later.
+- QE prints `Starting wfcs from file`.
+
+For the current **one-rank MPI execution**, that file is:
+
+```text
+scratch/scf.wfc1
+```
+
+Naming is established by:
+
+- `Modules/environment.f90:80-83`: MPI rank suffix is `me_image+1`.
+- `Modules/io_files.f90:390-461`: `prefix.extension<rank>` direct-access file.
+
+Its layout is **direct-access**, with **no sequential record markers**:
+
+- Eight records: four up-spin k points, then four down-spin k points.
+- Each record is a Fortran-column-major complex array `(npwx,40)`.
+- Zero-pad unused rows.
+- Within each record, use native **local `gk_sort` order**, not collected-file order.
+
+From the source primitive plane-wave counts, the target counts are **[INFERENCE: exact folded-basis sums]**:
+
+```text
+1141, 1168, 1168, 1168
+npwx = 1168
+```
+
+Thus each record contains `1168*40` complex-DP values. Obtain target ordering from:
+
+- `PW/src/gk_sort.f90:9-102`;
+- for \(K=0\), retain density-G order;
+- for other K points, apply its `hpsort_eps` ordering with global G indices as the initial index array.
+
+`PW/src/openfil.f90:38-42` defines `nwordwfc=nbnd*npwx*npol`. `PW/src/buffers.f90:512-569,603-646` confirms that even the default in-memory-buffer mode discovers an existing file and loads missing records from it.
+
+**This produces an initial guess, not a Native restart.** Do not create `restart_scf`, do not copy the two-atom XML alongside transformed target files as though it described them, and do not fabricate `wf_collected`.
+
+The 40-orbital union is an exact embedding of the available primitive subspaces; it need not already be the globally energy-ordered lowest 40 supercell eigenstates. Native diagonalization remains responsible for ordering/refinement and final FD occupations.
+
+### 4. Exact missing frontend implementation
+
+A single explicit derived initializer kind can retain the present `{kind, directory}` shape, with `directory` pointing at the immutable primitive save.
+
+Required changes are narrowly bounded:
+
+| Location | Required behavior |
+|---|---|
+| `qe_io.py:17,53-58` | Admit the new derived initializer kind without altering the completed-save kind. |
+| `qe_scf_seed.py:12-37` | Validate the **source as a primitive completed state**, then validate the exact replication relationship to the target: doubled first cell vector, species ordering, 222→122 mesh, 20→40 bands, unchanged NC/PBE/spin/FD/cutoffs. Do not validate the primitive XML against the four-atom spec. |
+| `qe_scf_seed.py:59-79` | Generate target `scratch/scf.save/charge-density.dat`; optionally generate `scratch/scf.wfc1`. Bind source inputs and derived outputs in an honest transformation receipt. No generated completion XML. |
+| `qe_io.py:170-171` | Full folded initializer: both initializations from file. Density-only variant: density from file and an explicitly requested non-file orbital initializer. |
+| `qe_scf_seed.py:82-94` | Full fold retains both existing native-read confirmations. Density-only must require the density confirmation but intentionally permit the declared orbital reconstruction—not silently accept a failed requested file read. |
+| Final publication | Keep existing actual native SCF/XML/forces/ensemble/convergence checks unchanged. |
+
+The full-fold native settings are simply:
+
+```fortran
+&CONTROL
+  calculation = 'scf',
+  restart_mode = 'from_scratch',
+  prefix = 'scf',
+  outdir = 'scratch',
+/
+&ELECTRONS
+  conv_thr = 1d-11,
+  electron_maxstep = 200,
+  mixing_beta = 0.3,
+  mixing_mode = 'local-TF',
+  startingpot = 'file',
+  startingwfc = 'file',
+/
+```
+
+All other existing target input remains unchanged. The iteration cap is retained, **not a recommendation to repeat an unchanged cold 200-step attempt**.
+
+For the shorter density-only construction, replace only the orbital request with explicit `startingwfc='random'`. Its allowed loss is **initial orbital information only**. The spin-density Fourier field remains replicated; the final physical model and convergence tolerance remain unchanged. Numerical mixing or discarded initial guesses are not physical loss, linewidth, or dissipation.
+
+### 5. Same-functional solver repair, if selected instead
+
+Reducing `mixing_beta` from `0.3` to `0.1`, retaining `local-TF`, is a source-supported numerical repair—not a physical-setting change:
+
+- `PW/Doc/user_guide.tex:1477-1503` explicitly recommends reducing beta toward `0.1` or smaller and optionally increasing mixing history.
+
+**Its success here is unmeasured.** It should not be presented as an established convergence result.
+
+The frontend obstacle is concrete:
+
+- `qe_io.py:15-16`: hardcoded beta/mode.
+- `qe_io.py:64-69`: exact allowed-settings set.
+- `qe_io.py:168`: hardcoded emission.
+- `qe_scf_xml.py:191-193`: matching hardcoded audit.
+
+Therefore, adding `"mixing_beta": 0.1` to the case JSON is **not executable through the current stage**. A repair needs an explicitly supported solver policy and matching XML audit, or an isolated, content-bound source epoch. Also, a source seed’s original numerical mixing policy must not be misrepresented as the new target policy.
+
+**Do not edit shared source files while the independent Gamma cases are executing:** `qe_stage.py:188-192` rechecks bound input files before publication.
+
+## Files and architecture
+
+The load-bearing chain is:
+
+```text
+native_cases.prepare
+    → qe_stage.run_stage
+    → qe_scf_seed.input_files / prepare
+    → qe_io.espresso_input
+    → native potinit + wfcinit + c_bands
+    → actual completed native XML/output validation
+```
+
+Key references:
+
+- `.../attempts/0014/native_cases.py:50-76` — exact repeated geometry, 122 mesh and 40-band target.
+- `src/catdft/qe_stage.py:119-192` — fresh scratch, initializer preparation, native launch and publication.
+- `/opt/qebuild/q-e-qe-7.5/PW/src/potinit.f90:79-117` — native density initialization.
+- `/opt/qebuild/q-e-qe-7.5/PW/src/wfcinit.f90:85-156` — collected versus raw distributed-WFC initialization.
+- `/opt/qebuild/q-e-qe-7.5/PW/src/electrons.f90:1248-1266` — density/checkpoint boundary on exit.
+- `/opt/qebuild/q-e-qe-7.5/PW/src/punch.f90:72-89,151-170` — actual collected-WFC writing versus incomplete configuration output.
+- `/opt/qebuild/q-e-qe-7.5/PW/Doc/INPUT_PW.def:193-213` — legitimate interrupted Native restart contract.
+
+**Bottom line:** the missing implementation is a deterministic Fourier-transfer helper plus its explicit derived-initializer branch. **There is no physics obstruction and no need to falsify completion metadata.** Full density/WFC folding can enter unmodified native QE through its existing raw initialization paths; density-only folding is the smaller implementation.
+
+Read-only source investigation only; no native runs, builds, tests, edits, or process/service actions were performed.

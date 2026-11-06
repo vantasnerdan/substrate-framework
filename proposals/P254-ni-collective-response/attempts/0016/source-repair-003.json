@@ -1,0 +1,45 @@
+{
+  "actual_at": "2026-10-27T17:30:09.470424+00:00",
+  "observed_failure": "kernel-oracle-004.stderr: unused capacity entries of isk were incorrectly required to be positive indices.",
+  "repair": "Decode isk as a one-based k-to-spin label map, not a vector of positive k indices. Preserve exact raw bytes/capacity. Every referenced ikk/ikq remains bounded and must label the recorded actual spin1/2; unused capacity is not a physical state. No Native rerun, equation or tolerance change.",
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_response_bundle.py",
+      "bytes": "9692",
+      "sha256": "c893f952488c3b446e0211f1622b26b90d75062caad329c826c3a01efa3b4dfa"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_response_fft.py",
+      "bytes": "6199",
+      "sha256": "8aa8cebbb86e4b6d1b59bc074d5c4007792cb3be48b2aa80baa9f9c855995107"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_response_schema.py",
+      "bytes": "6586",
+      "sha256": "5f76679bc44fd8689a2a18d1ecc9b95707995b2825fff948a99cc7ed20197b22"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/spin_pbe_kernel.py",
+      "bytes": "6127",
+      "sha256": "bbb42154892ff6ae69c5c9d0cf3fc6bb9fc72e8f2b936f8000104c306cee7257"
+    }
+  ],
+  "oracle_argv": [
+    "taskset",
+    "-c",
+    "6",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/run_kernel_oracle.py",
+    "--gamma",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/response-operators-0016/generation-003/gamma/bundle/q-1",
+    "--half",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/response-operators-0016/generation-003/half-b1/bundle/q-1",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/kernel-oracle-005.json"
+  ]
+}

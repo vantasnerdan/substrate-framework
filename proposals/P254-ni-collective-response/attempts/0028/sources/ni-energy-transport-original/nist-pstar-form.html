@@ -1,0 +1,146 @@
+<html>
+<head><title>NIST PSTAR Database Program: Text-only version</title>
+<META NAME="description" CONTENT="PSTAR program calculates 
+stopping-power and range tables for helium ions in various materials">
+
+<META NAME="KEYWORDS" CONTENT="c.s.d.a. range, CSDA range, csda range, 
+electronic stopping power, nuclear stopping power, projected range, 
+continuous-slowing-down approximation, total stopping power, NIST Physics Laboratory">
+<!-- Google Analtyics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9SLN1VEEJ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9SLN1VEEJ2');
+</script>
+<!-- End of Google Analytics 4 -->
+<SCRIPT async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&subagency=NIST&pua=UA-37115410-46&yt=false&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c"></script>
+<script src="/js/clickjack.js" type="text/javascript"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+<DIV ALIGN="center">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="left"><img src="/Images/But/nist-pl-black.gif" width="136" 
+height="68" usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory" border="0"></td>
+<td align="center"><img src="../Images/pstar_alt.gif" alt="PSTAR Logo" 
+vspace="10" height="80" width="500"></td>
+<td align="right"><img src="/Images/space.gif" width="136" height="68" alt=""></td>
+</tr></table></DIV>
+<br clear="all">
+<map name="NIST-PL">
+    <area shape="rect" coords="0,0,1,1" href="#start" alt="[skip navigation]">
+    <area shape="rect" coords="1,1,135,48" href="http://www.nist.gov" 
+    alt="National Institute of Standards and Technology">
+    <area shape="rect" coords="1,50,135,67" href="/" alt="NIST Physical Measurement Laboratory">
+</map>
+<A name="start"><!-- filler --></A>
+
+  
+  The PSTAR program calculates stopping power and range tables for protons
+  in various materials. Select a material and enter the desired energies or 
+  use the default energies. Energies are specified in
+  MeV, and must be in the range from .001&nbsp;MeV to 10000&nbsp;MeV.
+<p>
+<a href="programs.html">Help</a>
+<br><a href="PSTAR.html">Graphical version</a> (<font color="#DF9B00">New</font> feature allows downloading user-specified columns in ASCII format)
+<br><a href="/cgi-bin/Star/compos.pl?ap-text">Material composition data</a>
+<p>
+<form action="/cgi-bin/Star/ap_table-t.pl" method = "POST">
+<input type="hidden" name="prog" value="PSTAR">
+<b>Material:</b>
+<select name="matno">
+<option value="001"> 1: Hydrogen</option>
+<option value="002"> 2: Helium</option>
+<option value="004"> 4: Beryllium</option>
+<option value="006"> 6: Carbon, Amorphous (density2.0g/cm3)</option>
+<option value="906"> 6: Graphite (density 1.7 g/cm3)</option>
+<option value="007"> 7: Nitrogen</option>
+<option value="008"> 8: Oxygen</option>
+<option value="010">10: Neon</option>
+<option value="011">11: Sodium</option>
+<option value="013">13: Aluminum</option>
+<option value="014">14: Silicon</option>
+<option value="018">18: Argon</option>
+<option value="022">22: Titanium</option>
+<option value="026">26: Iron</option>
+<option value="029">29: Copper</option>
+<option value="032">32: Germanium</option>
+<option value="036">36: Krypton</option>
+<option value="042">42: Molybdenum</option>
+<option value="047">47: Silver</option>
+<option value="050">50: Tin</option>
+<option value="054">54: Xenon</option>
+<option value="064">64: Gadolinium</option>
+<option value="074">74: Tungsten</option>
+<option value="078">78: Platinum</option>
+<option value="079">79: Gold</option>
+<option value="082">82: Lead</option>
+<option value="092">92: Uranium</option>
+<option value="099">A-150 Tissue-Equivalent Plastic</option>
+<option value="101">Acetylene</option>Adenine</option>
+<option value="103">Adipose Tissue (ICRP)</option>
+<option value="104">Air, Dry (near sea level)</option>
+<option value="106">Aluminum Oxide</option>
+<option value="111">B-100 Bone-Equivalent Plastic</option>
+<option value="119">Bone, Compact (ICRU)</option>
+<option value="120">Bone, Cortical (ICRP)</option>
+<option value="126">C-552 Air-Equivalent Plastic</option>
+<option value="130">Calcium Fluoride</option>
+<option value="134">Carbon Dioxide</option>
+<option value="138">Cellulose Nitrate</option>
+<option value="139">Ceric Sulfate Dosimeter Solution</option>
+<option value="141">Cesium Iodide</option>
+<option value="155">Ethylene</option>
+<option value="160">Ferrous Sulfate Dosimeter Solution</option>
+<option value="169">Glass, Pyrex</option>
+<option value="179">Kapton Polyimide Film</option>
+<option value="185">Lithium Fluoride</option>
+<option value="189">Lithium Tetraborate</option>
+<option value="191">M3 Wax</option>
+<option value="197">Methane</option>
+<option value="200">MS20 Tissue Substitute</option>
+<option value="201">Muscle, Skeletal</option>
+<option value="202">Muscle, Striated</option>
+<option value="203">Muscle-Equivalent Liquid, with Sucrose</option>
+<option value="204">Muscle-Equivalent Liquid, without Sucrose</option>
+<option value="209">Nylon, type 6 and type 6/6</option>
+<option value="213">Paraffin Wax</option>
+<option value="215">Photographic Emulsion</option>
+<option value="216">Plastic Scintillator (Vinyltoluene based)</option>
+<option value="219">Polycarbonate (Makrolon, Lexan)</option>
+<option value="221">Polyethylene</option>
+<option value="222">Polyethylene Terephthalate (Mylar)</option>
+<option value="223">Polymethyl Methacralate (Lucite, Perspex)</option>
+<option value="225">Polypropylene</option>
+<option value="226">Polystyrene</option>
+<option value="227">Polytetrafluoroethylene (Teflon<sup>�</sup>)</option>
+<option value="232">Polyvinyl Chloride</option>
+<option value="238">Propane</option>
+<option value="245">Silicon Dioxide</option>
+<option value="252">Sodium Iodide</option>
+<option value="255">Stilbene</option>
+<option value="263">Tissue-Equivalent GAS (Methane based)</option>
+<option value="264">Tissue-Equivalent GAS (Propane based)</option>
+<option value="266">Toluene</option>
+<option value="276">Water, Liquid</option>
+<option value="277">Water Vapor</option>
+</select>
+<p>
+<b>Additional Energies (optional):</b>
+<p>
+Use energies entered below (one per line)<br>
+<textarea name="Energies" rows=4 cols=15></textarea>
+ &#160; &#160;
+<input type="checkbox" name="ShowDefault" value="on" checked> Include default 
+energies<br>
+<input type=submit value="Submit"> <input type=reset value="Reset">
+</form>
+<HR SIZE="1" NOSHADE>
+<a href="contents.html"><img src="../Images/contents.gif" width="219" height="50" 
+border="0" alt="Contents"></a>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a51d3a01cf2843ff',t:'MTc5MzIyNDk2NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"9ef5b487afff42a68917b2d63593a474","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>

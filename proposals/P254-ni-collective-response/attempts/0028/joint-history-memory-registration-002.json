@@ -1,0 +1,104 @@
+{
+  "schema": "P254-actual-history-memory-registration-v1",
+  "registered_at": "2026-10-29T15:13:09.848904+00:00",
+  "decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-053.json",
+    "bytes": "2271",
+    "sha256": "5fa3802e3636e30aaf403510576f99bfcbde6fb1cd74ff566d05f4730b49a9cd"
+  },
+  "history": {
+    "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+    "bytes": "155903",
+    "sha256": "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd"
+  },
+  "prior_failed_intake": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-history-memory-check-001/result.json",
+    "bytes": "1306",
+    "sha256": "b7c0f4bd7939564fe8f77ad266407dab523634dca2ffd6759b9f44cbfa6bc496"
+  },
+  "script": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_history_memory_check.py",
+    "bytes": "13390",
+    "sha256": "6f9e79f178d3e54b4167b9dbd52fad7718e243f60c36702e0afed46172fa7c2f"
+  },
+  "native_reader": {
+    "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_saved_native.py",
+    "bytes": "6859",
+    "sha256": "797e5fe32235890832f5382d9acd1b53491bfe964194b6e584a5d364f6a90daf"
+  },
+  "q_consumer": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_q_material.py",
+    "bytes": "23929",
+    "sha256": "beab1b9e3bb8c4b526590dc7171fbe6404581f88570c6cf8b0d4dc326c4c971f"
+  },
+  "prior_native_reader": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-history/qe_saved_native.pre-metadata-detach-001.py",
+    "bytes": "6675",
+    "sha256": "1403e2d393e9ef7c0ba975091d2dff5f64546af8e002dc9a0100adee10a9d4c3"
+  },
+  "prior_q_consumer": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-history/run_joint_q_material.pre-native-reader-binding-001.py",
+    "bytes": "23907",
+    "sha256": "a26901827037ae9e8037b5c55900ae55665e019699fd775352cf4964520ebe06"
+  },
+  "command": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-joint-history-memory-check-002",
+    "--property=Type=oneshot",
+    "--property=RemainAfterExit=yes",
+    "--property=CPUAffinity=9",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=480s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_history_memory_check.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-history-memory-check-002",
+    "--case",
+    "loaded-ni31h6",
+    "--initialization",
+    "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+    "--initialization-sha256",
+    "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713",
+    "--history",
+    "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+    "--history-sha256",
+    "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd",
+    "--retained-oracle",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-field-readout-oracle-002.json",
+    "--retained-oracle-sha256",
+    "59c592270f76053fc31e07cb7213b91605b4bae58cb65feaae99f5187b3b548d",
+    "--prior-native-source",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-history/qe_saved_native.pre-metadata-detach-001.py",
+    "--prior-native-source-sha256",
+    "1403e2d393e9ef7c0ba975091d2dff5f64546af8e002dc9a0100adee10a9d4c3",
+    "--prior-q-source",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-history/run_joint_q_material.pre-native-reader-binding-001.py",
+    "--prior-q-source-sha256",
+    "a26901827037ae9e8037b5c55900ae55665e019699fd775352cf4964520ebe06",
+    "--time",
+    ".001",
+    "--second-time",
+    ".0005",
+    "--subdivisions",
+    "1",
+    "--workers",
+    "5",
+    "--cpu",
+    "9",
+    "--max-seconds",
+    "480",
+    "--max-memory-bytes",
+    "4294967296"
+  ],
+  "scope": "Same scientific model/initialization/history and4GiB memory cap. Original decoding values and all numerical code retained. Actual reader added to consumer source inventory; no retrospective claim that earlier proofs bound it. No response output or scientific accuracy claim."
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "P254-joint-q-registration-v1",
+  "status": "prospective-source-registration-not-executed",
+  "scope": "Actual mapped rectangular-leg forward RK4 and exact reverse computational-graph dual on authenticated completed physical joint mean histories; both original-preparation cotangents contracted directly.",
+  "production": ["streamed_joint_response.py", "streamed_joint_covariance.py", "material_joint_response.py", "joint_kernel_adjoint.py", "run_joint_q_material.py"],
+  "equations": {
+    "state": "X_ts=L_ts Psi_s^dagger+Psi_t B_ts; independent full original PW ket and bra legs; fixed original complex Hermitian D including singular D",
+    "dual_pairing": "sum_edges vdot(alpha,L)+vdot(beta,B)+vdot(uy,U)+vdot(py,P)+vdot(ay,a)+vdot(piy,pi)",
+    "drive_transpose": "Y_ts=i alpha Ds Psi_s^dagger-i Psi_t Dt beta; unweighted Y moments, explicit actual K_q adjoint; physical uniform grid measure cancels in K-density transpose",
+    "complete_barrier": "all original edges reduce before K/G/L feedback in every forward or dual RHS",
+    "discrete_dual": "Exact Hermitian transpose of the four-stage RK4 linear computational graph at the identical baseline times; not an independently approximated backward ODE",
+    "AB_electronic": "N sum[tr(alpha_A^dagger alpha_B Ds)-tr(J_A^dagger Dt J_B Ds)]",
+    "BA_electronic": "N sum[tr(beta_A^dagger Dt beta_B)-tr(J_A^dagger Dt J_B Ds)]",
+    "compatibility": "alpha=w A Psi_s, beta=w Psi_t^dagger A, J=Psi_t^dagger alpha=beta Psi_s. Literal raw nonorthogonal frames; no operator completion, D inverse, Gram inverse, rank truncation, or empty-PW projection. Report discrete compatibility residual and refine.",
+    "ionic_field": "Both pulled-back canonical covectors contracted with original Wq/Wminus.T and Wfield/Wfield.T; electron/ion/field origins remain separate at arbitrary nonzero/equal t,s.",
+    "mean_interpolation": "Actual completed exponential-midpoint frozen physical H and its independently implemented H-adjoint; frames reconstructed from authenticated prior full original frames by exp(-i (t-tprior) H). Response steps never cross mean stage boundaries.",
+    "physical_scalar": "Physical H0/g plus field-only L; Ccommon(q)+fixed DeltaC once. Gamma global Maxwell, sqrt(N) canonical coupling; nonGamma no independent photon.",
+    "kernel_adjoint": "Literal reverse of Native dmuxc, rr, repeated mixed-spin sr/ss, gradient and divergence; no K=Kdagger assertion. Native G+q Coulomb admission unchanged."
+  },
+  "first_material_targets": {"q_fractional": [[0,0,0],[0,0,0.25],[0,0,-0.25]], "coherent": "original H37x local canonical momentum kick q component, amplitude/sqrt(64)", "quantum": "selected H37x total-force AB/BA, commutator, original origins; arbitrary covered second time", "whole_local_reconstruction_requires": "all 64 distinct q; selected-q output explicitly not whole local/spatial reconstruction"},
+  "resources": "One q per CLI. Two reusable mapped scratch states plus immutable terminal and per-step checkpoints, each state retaining two complete raw rectangular leg sets. Per-edge resident frames/factors/action blocks and grid reductions only. Explicit cumulative output/action/time caps; partial outputs not adoptable checkpoints. Retained successful forward checkpoints can extend on an authenticated identical mean-history prefix.",
+  "oracle": {"entrypoint": "run_joint_q_oracle.py", "independent_comparators": ["SymPy exact scalar canonical derivatives", "full-density moving-baseline DOP853 fundamental solution", "finite electronic Fock and oscillator product expectations", "explicit dense transpose of original Native spin-PBE action on a small finite Fourier grid"], "fixtures": ["unequal endpoint dimensions and ranks", "complex nonorthogonal raw frames", "singular original D", "Gamma and directed nonGamma", "nonstationary coupled physical baseline", "unequal nonzero and equal second times"], "checks": ["real mapped forward versus full-density evolution", "instantaneous tangent/dual pairing", "exact discrete forward/dual readout identity", "both pullback covariance origins versus independent Fock", "time refinement and raw-frame compatibility", "checkpoint authentication and restoration", "feedback, adjoint, q, normalization and nonzero-second-time mutation sensitivity"], "execution": "Root only; registration itself claims no numerical pass or material result"},
+  "limitations": ["Explicit RK4 stability and accuracy require measured time refinement against actual PW spectral scales; no material tolerance supplied or certified", "Mean-history interpolation inherits completed mean midpoint discretization; refining response alone does not refine mean", "All selected q and time checkpoints consume real disk allocation; all-q reconstructed publication remains gated on complete q coverage", "Cooperative wall/action caps cannot interrupt an active BLAS/FFT/exponential action"]
+}

@@ -1,0 +1,83 @@
+## Verdict
+
+**Overall correctness: correct**  
+**Complete findings: []**  
+**Confidence: 0.94**
+
+No concrete blocking mathematical or scientific implementation defect was found in the completed 0020 generation banked at `3af29720`. This verdict applies to the registered engineering calculation—not to material coherence, physical damping, an exact equal-reference material Hessian, or the separately repaired resume implementation.
+
+## Mathematical and integration assessment
+
+- **Physical screening sign is correct.** In `src/substrate_framework/pw_screened_response.py:131–180`, the operator applies \(n-R^0_{nn}(z)K_qn\), with the bare ionic response as its right-hand side. This follows from the physical density-matrix equation with perturbation **\(+g\,u+K_qn\)**; it is not the opposite-sign susceptibility convention.
+- **The response uses one fixed complex frequency throughout.** Bare, iterative, and final observable/residual actions use the same response object. The actual driver constructs that object separately for each registered \(q,z\). No zero-frequency response or static-screened ionic vertex is inserted.
+- **The returned observable is an ionic gradient, not force.** The final `response.apply(K(n), u)` supplies the physical \(\delta\langle g_{-q}\rangle\). The executed driver adds it, without a force-sign reversal, to the corresponding **absolute own-producer frozen-curvature column**. There is no second frozen contribution, static-response subtraction, mass weighting, or ionic kinetic term.
+- **Spin and momentum routing are consistent.** The density remains in up/down components through the screened solve and `apply_spin_pbe_kernel`; cross-spin terms are retained. `build_pw_response_models` consumes distinct Gamma, \(+q\), and \(-q\) bundles, including their source/Miller mappings. The half-\(b_1\) response does not fabricate its reverse branch by copying the forward operator.
+- **All six coordinates reach the output.** The executed driver applies all six atom-major Cartesian unit displacements, retains each six-component complex gradient, and assembles columns without discarding off-diagonal or imaginary components. Returned densities, potentials, gradients, and frozen/coupled columns are routed to the per-column archives.
+
+## Independent comparator and mutation evidence
+
+`attempts/0020/run_screening_oracle.py:95–179` constructs and solves the full coupled original-basis density-matrix EOM, including both spins in one **288-dimensional complex system**. Its explicit Fourier density/potential maps and commutator assembly do not call the iterative response or screening solver. Reusing the 0019 fixture constructor supplies common input data, not the comparator algorithm.
+
+The existing `screening-oracle-001.json` records **21 passing cases**, including:
+
+- Gamma and directed nonzero-\(q\) complex drives at both registered frequencies;
+- zero-kernel agreement with the independent EOM and isolated response;
+- exposed wrong-screening-sign, dropped-cross-spin, and mixed-spin-basis mutations at both momenta;
+- work-limit and wall-limit failures without completed outputs;
+- rejection when the independently reevaluated final ionic action changes;
+- exact-zero response cases.
+
+For the four screened physical comparisons, the largest recorded density discrepancy is approximately **\(6.83\times10^{-12}\)** and the largest gradient discrepancy approximately **\(5.90\times10^{-13}\)**, below the finite-oracle allowance. These are existing finite-system comparison results, not a production-accuracy claim.
+
+## Actual pilot evidence
+
+I inspected the result, all 24 standalone column receipts, identity bindings, and telemetry.
+
+| Quantity | Recorded result |
+|---|---:|
+| Completed columns | 24 |
+| Matrix groups | `gamma-z0`, `gamma-z1`, `half-z0`, `half-z1` |
+| Coordinates per group | 0–5 |
+| Frequencies | \(0.02+0.02i\), \(0.05+0.02i\) Ry |
+| Maximum final relative self-consistency residual | \(9.782893411830334\times10^{-5}\) |
+| Registered tolerance | \(10^{-4}\) |
+| Response actions per column | 9–12, below 60 |
+| Largest recorded column wall time | 11.451551248785108 s, below 90 s |
+| Frame construction | 24.620558314956725 s |
+| Pilot elapsed time | 264.4111032271758 s, below 600 s |
+
+The final residual is independently reevaluated as  
+\(\|n-R^0(z)[K_qn,u]\|/\|R^0(z)[0,u]\|\), rather than accepted from the GMRES callback alone. Bare and final actions count toward the response-action budget; iterations, operator actions, kernel work, and elapsed time are separately recorded. Wall checks occur at action boundaries, not through interruption of an individual action.
+
+## Input bytes and independent frozen reference
+
+`pilot_inputs.py` passes the verified original XML buffers to `parse_frozen_curvature`; the bundle loader likewise verifies the same payload buffers subsequently decoded. The executed receipt records **663 buffers for each of the three bundles**, plus producer case/result identities.
+
+I read the actual Gamma and plus-half-\(b_1\) `dynmat.1.0.xml` and `patterns.1.xml` files under `full-ionic-operators-0018`. Their original XML entries and complete Cartesian patterns agree with the corresponding frozen matrices printed in the pilot result. This provides a reference independent of the iterative electronic response.
+
+The older frozen-curvature oracle uses **different generation-003 XML files**. Those earlier files support the settled parser/convention prerequisite; they are **not** the actual frozen inputs consumed by this pilot, and I do not claim byte identity between generations.
+
+Primary source sections inspected were:
+
+- `/opt/qebuild/q-e-qe-7.5/PHonon/PH/dynmat0.f90:41–94`: fixed-wavefunction electronic plus ionic contributions saved as irrep zero;
+- `PHonon/PH/ph_restart.f90:224–295`: displacement patterns and `dyn_rec` serialization;
+- `PHonon/PH/rotate_pattern_add.f90:50–85`: \(U C_{\mathrm{pattern}}U^\dagger\) Cartesian transformation.
+
+## Scope and verification limitations
+
+- The common-\(\mu\), full-FD response reference and saved-SCF background are explicitly different. The recorded density relative-\(L^2\) discrepancy is **\(6.52624749354371\times10^{-7}\)**. The saved-background PBE kernel/frozen curvature combination therefore remains the declared engineering approximation.
+- The system is a nonstationary two-atom SG15-NC Ni/H fixture. No XC memory, physical eta-derived loss, material convergence, ionic poles, coherence-domain solution, or nuclear-rate conclusion follows.
+- The previously admitted 0016–0019 proofs were not rerun. Their Native corroboration remains limited to the already established retained-action scope.
+- **Binary verification boundary:** the available reader did not decode NPZ numeric payloads. I inspected generation logic, archive bindings, all column receipts, and the four archive member names, but did not independently recompute archive hashes or perform numeric column-to-matrix equality checks. Root’s separately read `recovery-smoke-001.json` records exact restoration of the original four matrices; that is existing operational evidence, not a numerical check I executed.
+- Resume repair is outside this scientific verdict. The executed driver was read from immutable commit `3af29720`, not treated as equivalent to the subsequently modified working-tree driver.
+
+### Recorded immutable result bindings
+
+- `attempts/0020/pilot-001/result.json` — SHA-256  
+  `226adc6b529b41b2ee25a8364eef8d49e56a4769688ee9f3a5db59cdad85d8fa`
+- `attempts/0020/pilot-001/coupled-matrices.npz` — SHA-256  
+  `70f1ff69c7063bbbb0f2e3d04ae9b6b134fff1a28ef0bd1c658d8774f59d8fa2`
+- `attempts/0020/screening-oracle-001.json` — SHA-256  
+  `13d6740fa8afd0dd4d780fe570c31eca911de548fbfa54b91aa431567319aec9`
+
+These hashes are taken from the inspected execution/closure receipts. No files were edited and no numerical runs, tests, builds, linters, or formatters were executed. A SHA-256 of this final report was not generated.

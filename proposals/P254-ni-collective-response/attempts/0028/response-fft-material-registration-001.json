@@ -1,0 +1,60 @@
+{
+  "schema": "P254-physical-response-FFT-registration-v1",
+  "registered_at": "2026-10-29T17:26:40.201318+00:00",
+  "decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-062.json",
+    "bytes": "2673",
+    "sha256": "3da6f0660f0dc0ab40a165ebd84d69ec593823432f8449670775cd17ff6ce914"
+  },
+  "script": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_response_fft_material_check.py",
+    "bytes": "10920",
+    "sha256": "0ed395a8d1876569c9ee6cdc141e9c20c490d12b4bf7545da4e10cc7fbea6e1b"
+  },
+  "candidate": {
+    "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/q_response_fft.py",
+    "bytes": "1957",
+    "sha256": "b53dec11031dfbec9f69ac380b177963d60ebb68fed285d933ca82523f0c41ff"
+  },
+  "original_fft": {
+    "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_grid.py",
+    "bytes": "4145",
+    "sha256": "278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896"
+  },
+  "command": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-response-fft-material-check-001",
+    "--property=Type=oneshot",
+    "--property=RemainAfterExit=yes",
+    "--property=CPUAffinity=9",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=600s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_response_fft_material_check.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/response-fft-material-check-001",
+    "--case",
+    "loaded-ni31h6",
+    "--cpu",
+    "9",
+    "--absolute-target",
+    "1e-11",
+    "--max-seconds",
+    "600",
+    "--max-memory-bytes",
+    "4294967296"
+  ],
+  "preregistered_comparison_absolute_target": 1e-11,
+  "scientific_scope": "Physical support/order/units/q/normalization unchanged, immutable actual inputs; exact small SymPy DFT and actual nonzero material action/density/gradient/adjoint blocks. No existing mean/q oracle replay or live-source promotion.",
+  "performance_scope": "Measure these actual changed-path call times only. No projected full-q ETA, speedup threshold or material accuracy certificate. Full-column/edge comparison is the next decision, not assumed."
+}

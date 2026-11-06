@@ -1,0 +1,16 @@
+{
+  "scope": "Notification encoding only; running scientific executable, owner, caps and PID/invocation unchanged",
+  "original_launch_plan": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/raw-mixed-shared-production-launch-plan-001.json",
+    "bytes": "9183",
+    "sha256": "106f08dd67b3e7423978d1eac91e0c62b1d1f862ae5a8f5a38337f5404722936"
+  },
+  "runtime_override": {
+    "path": "/run/user/1000/systemd/user/p254-a28-loaded-raw-mixed-shared-001.service.d/50-exit-notification.conf",
+    "bytes": "726",
+    "sha256": "64f5303a5fc741a5c20a3500e0fbfb9cf40d94e5835b36e5df200a6bfb96900c"
+  },
+  "direct_property_update_unsupported": true,
+  "daemon_reload_returncode": 0,
+  "actual_readback": "MainPID=1687314\nExecStopPost={ path=/usr/bin/python3 ; argv[]=/usr/bin/python3 -c import os,json;from pathlib import Path;r=os.environ.get(\"SERVICE_RESULT\",\"unknown\");e=os.environ.get(\"EXIT_STATUS\",\"unknown\");tag=\"dft-hung\" if r in (\"timeout\",\"watchdog\") else \"dft-done\" if r==\"success\" and e==\"0\" else \"dft-fail\";p=Path(\"/var/tmp/p254-a28-loaded-raw-mixed-shared-003\")/\"unit-outcomes\";p.mkdir(exist_ok=True);v=dict(unit=\"p254-a28-loaded-raw-mixed-shared-001.service\",invocation=os.environ.get(\"INVOCATION_ID\"),service_result=r,exit_code=os.environ.get(\"EXIT_CODE\"),exit_status=e,tag=tag,scientific_acceptance_claimed=False);f=p/(str(v[\"invocation\"])+\".json\");f.write_text(json.dumps(v,indent=2)+chr(10));print(\"[\"+tag+\"]\",json.dumps(v),flush=True) ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }\nActiveState=active\nDropInPaths=/run/user/1000/systemd/user/p254-a28-loaded-raw-mixed-shared-001.service.d/50-exit-notification.conf\nInvocationID=6cb363e34ada4262af901b67a978f60a\n"
+}

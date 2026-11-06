@@ -1,0 +1,18 @@
+{
+  "capture": "Transcribed original tool-delivered stdout and wall-time receipt; not a rerun or byte-exact stdout file",
+  "argv": ["env", "OPENBLAS_NUM_THREADS=1", "OMP_NUM_THREADS=1", "MKL_NUM_THREADS=1", "taskset", "-c", "8", "/home/administrator/projects/substrate-framework/.venv/bin/python", "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0065/bilinear_identity.py"],
+  "exit": 0,
+  "wall_seconds": 1.97,
+  "stdout_decoded": {
+    "exact_bilinear_identity": true,
+    "mutation_absolute_errors": {
+      "missing_half": 311808110.51182276,
+      "missing_phase_mode": 166307500.51332262,
+      "reverse_first_orientation": 1226592.2020296722,
+      "right_Hilbert_instead_of_bilinear": 161528305.65515572
+    },
+    "normalization": "Pi=-i/2 sum_uv Luv(t) Ruv(s), canonical source normalization unchanged",
+    "stationarity_bridge": "(d_t+d_s) W(t,s) = exp(t A_q) [A_q W0_q + W0_q A_minus_q.T] exp(s A_minus_q.T); identically zero iff the raw defect is zero",
+    "status": "passed"
+  }
+}

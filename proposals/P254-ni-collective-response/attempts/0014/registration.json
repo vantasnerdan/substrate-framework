@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "attempt": "0014",
+  "created_at": "2026-10-27T15:40:10.725962+00:00",
+  "parent_objective": "Build a material-calibrated coherence-domain model: same Ni/H functional, coupled ionic/electronic response, physical loss/energy flow, actual many-region dynamics and matched lattice comparison, with explicit nuclear bridge. No reward for manufactured rejection.",
+  "positive_intent": "Construct the actual ordinary-NC Ni/H static action bridge independently from scalar SCF free energies and forces, at Gamma and a commensurate nonzero q. This brings the new finite-functional construction into the real pipeline without re-running G10 qualification or launching a full material matrix.",
+  "inputs": {
+    "primitive_pw_in": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/scf/generation6/reference/attempts/7a5201a1f1b74097beaf1d9dff774cc0/pw.in",
+    "template_spec": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10/wave2/plus-0.001.json",
+    "gamma_dyn": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10/gamma/native/dyn.xml",
+    "half_b1_dyn": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10/half-b1/native/dyn.xml",
+    "existing_primitive_seed": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10/wave2/initial-state/scf.save"
+  },
+  "source_scope": "Existing nonstationary two-atom engineering cell, SG15Ni18/H1, collinear spin-PBE FD0.002Ry,60/240Ry,k222/20bands per spin, fixed mean neutralN with magnetization relaxed. This is not stationary Ni31H6 or full G1/G2.",
+  "source_inventory": "source-inventory.json",
+  "coordinates": {
+    "u1": "Ni atom Cartesian x",
+    "u2": "H atom Cartesian y",
+    "units": "bohr",
+    "Gamma": "one primitive cell, uniform amplitudes",
+    "half_b1": "2x1x1 supercell, identical ordered (Ni,H) in translations0,a1; amplitudes alternate+/-; selfconjugate q=(1/2,0,0), no doublecount",
+    "supercell_sampling": "k122,40bands/spin; originalFD width/cutoffs/conv_thr retained; energy and conjugate force normalized per2 primitive cells"
+  },
+  "equations": {
+    "scalar": "Haa=[F(+h ea)+F(-h ea)-2F0]/h^2; H12=[F(+h(e1+e2))+F(-h(e1+e2))-F(+h e1)-F(-h e1)-F(+h e2)-F(-h e2)+2F0]/(2h^2).",
+    "force": "Hab=-[Qa(+h eb)-Qa(-h eb)]/(2h), Qa=sum_R sign(R) F_atom,a(R)/Ncells. Retain raw H12 and H21, no symmetry repair.",
+    "functional": "Use full native XML output/total_energy/etot (Hartree converted toRy), full entropy-smearing freeenergy, not internal energy or summed eigenvalues. Full local/nonlocal explicit and induced terms plus ion-ion included by native variational functional.",
+    "comparison": "Use existing unmassweighted, raw-ASR-disabled serialized Cartesian DFPT matrix. Consume existing parser rather than new XML matrix ordering."
+  },
+  "numerical_design": {
+    "steps_bohr": [
+      0.01,
+      0.005
+    ],
+    "cases": "two new same-size baselines plus six signed directional SCFs per q per step =26 new SCFs; exact completed case cache reused if interrupted, no old proof replay",
+    "comparison_allowance_ry_per_bohr2": "max(1e-4,0.01*max_abs(reference_2x2)) per matrix; report raw matrices/errors and step changes, no post-result loosening",
+    "baseline_matching": "Before displacement wave, new primitive seeded baseline agrees with storedDFPTbackground and doubled-cellF0/2 agrees with new primitiveF0 within1e-7Ry; total magnetization perprimitive agrees within1e-3Bohr. If mismatch, repair branch/folding rather than label model impossible.",
+    "mutations": "Wrong supercell normalization and omitted mixed curvature must differ from independently computed native target or be reported insensitive; these are translation/error checks, not physical no-go machinery.",
+    "analytic_closure": "Centered directional stencils cancel nonzero first gradients; q pattern percell normalization follows periodic Hessian sum. Remaining quantities are actual native freeenergy/force derivatives on the fixed model.",
+    "prior_exposure": "Read native PHI source examples and old primitive baseline; no blind prediction credit. G10 already admitted only its engineering scope."
+  },
+  "budget": {
+    "owner": "Root",
+    "grant": "New bounded local mathematical/native-transfer pilot only, not reuse of stoppedNC material grant",
+    "cpu": 6,
+    "native_processes_per_case": 1,
+    "threads_per_process": 1,
+    "MemoryMax_bytes": "3221225472",
+    "MemorySwapMax_bytes": "0",
+    "Restart": "no",
+    "case_wall_limit_seconds": 90,
+    "unit_wall_limit_seconds": 900,
+    "first_result_due_at": "2026-10-27T15:55:00+00:00",
+    "allocation_decision_due_at": "2026-10-27T16:20:00+00:00",
+    "progress_trigger": "First new baseline shows actual4atom cost/ensemble matching; compare actual scalar/forceHessian rows at each q. Timeout/nonmatching input leads bounded repair at source, not unchanged retry or rejection verdict.",
+    "cumulative": "Originalfive-daycostandall0013failureskept; no budget reset and no further production authorized. All existing materialunits unchanged."
+  },
+  "outputs": [
+    "Complete native scalar/forcecase receipts",
+    "Two-coordinate constrained native static action/Hessian with nonzero-q phase normalization",
+    "Explicit constructed next bridge to matched retarded response, not a generated rejection"
+  ],
+  "not_licensed": [
+    "Physical coherence domain already established",
+    "A fitted HXC kernel from firstordervertices",
+    "Full material calibration,linewidth,nuclear rate",
+    "Automatic thaw/relaunch/fullmatrixwave"
+  ],
+  "review": "One complete scoped native curvature/action review after actual integrated result. Carry unchanged G10 and0013 reviews; do not re-audit them."
+}

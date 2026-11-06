@@ -1,0 +1,124 @@
+{
+  "schema": "p254-a87-bounded-actual-dressed-component-case-v1",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "Root": 636,
+  "actual_issued_at": "2026-11-06T12:40:35.937116+00:00",
+  "component": "bank-intake",
+  "useful_output": "ActualfreshpartialG1bankwithcompleteEIq0/oncejoint/fullinherited-replacedcubic,forlaterall64EE/EIcompletionandM2Dyson. No zeros-as-physics or partialsolverinput.",
+  "provider": {
+    "path": "/var/tmp/p254-a84-intrinsic-full31-001/provider.json",
+    "bytes": 16140,
+    "sha256": "273b96a135ef0c77a4b811f766f559debebf457c034e695b311564528b76c023"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/functional_bank.py",
+      "bytes": 16017,
+      "sha256": "461acf1be610675454fa1d92ea45c1b22586916ee76bd82ad8bc9819c58f566c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/bank_storage.py",
+      "bytes": 9147,
+      "sha256": "79511e09d355038984d066809e3ea197ab08a64a1ca55ca04a5e1e270fbde9c4"
+    },
+    {
+      "path": "/var/tmp/p254-a87-mixed-ei-q0-001/catalog.json",
+      "bytes": 124971,
+      "sha256": "7ec3aec10b2e1c08ac528d35e8344534d9f7452af1a0966fd6ea541b553ee6e1"
+    },
+    {
+      "path": "/var/tmp/p254-a87-joint-002/catalog.json",
+      "bytes": 1801430,
+      "sha256": "d567494547fd9016f51c7220bf359f7f6ba8fe342c74cb002a5fe5382a2bd508"
+    },
+    {
+      "path": "/var/tmp/p254-a87-cubic-001/catalog.json",
+      "bytes": 299658,
+      "sha256": "20d03414c496a9e30170ca96a2ecae958b3e6cba85fba203132deb311be1fe88"
+    }
+  ],
+  "oracles": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/joint-block-oracle.json",
+      "bytes": 1325,
+      "sha256": "5ee4f0ce94c1153e46a33c5a428d59bf64420a3fae22cf18ec7372ae0e729a5d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/actual-pair-recovery-boundary.json",
+      "bytes": 1113,
+      "sha256": "6a57409af0fd9cc18e9410519d98475533f40d5c823b42b6dafdb969bd96711b"
+    }
+  ],
+  "output": "/var/tmp/p254-a87-bank-001",
+  "receipts": "/var/tmp/p254-a87-bank-intake-001-receipts",
+  "cpu": 8,
+  "memory_bytes": 2147483648,
+  "swap_bytes": 0,
+  "unit": "p254-a87-bank-intake-001.service",
+  "pane_id": "w1:p87",
+  "tab_id": "w1:t7P",
+  "nonce": "bank_20261106T124035",
+  "manager_argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--unit=p254-a87-bank-intake-001.service",
+    "--property=RuntimeMaxSec=300",
+    "--property=MemoryMax=2147483648",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "--property=CPUAffinity=8",
+    "--property=StartLimitBurst=1",
+    "--working-directory=/home/administrator/projects/substrate-ni-collective",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0063:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0061:/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "HERDR_ENV=1",
+    "HERDR_WORKSPACE_ID=w1",
+    "HERDR_PANE_ID=w1:p87",
+    "HERDR_TAB_ID=w1:t7P",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "-c",
+    "from pathlib import Path\nimport json, os, runpy, sys\nfrom production_transport import atomic_json, binding\ncase=json.loads(Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/case-bank-intake-001.json').read_bytes())\nreceipt=Path(case[\"receipts\"]); receipt.mkdir(parents=True,exist_ok=True)\ngroup=Path(\"/proc/self/cgroup\").read_text().strip().split(\"::\")[-1]\ncg=Path(\"/sys/fs/cgroup\")/group.lstrip(\"/\")\nruntime=dict(affinity=sorted(os.sched_getaffinity(0)),memory_max=(cg/\"memory.max\").read_text().strip(),swap_max=(cg/\"memory.swap.max\").read_text().strip(),environment={key:value for key,value in os.environ.items() if key.startswith(\"HERDR_\") or key in (\"OPENBLAS_NUM_THREADS\",\"OMP_NUM_THREADS\",\"MKL_NUM_THREADS\",\"NUMEXPR_NUM_THREADS\",\"BLIS_NUM_THREADS\")},executable=sys.executable,pythonpath=os.environ.get(\"PYTHONPATH\"),case=binding('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087/case-bank-intake-001.json'))\natomic_json(receipt/\"runtime.json\",runtime)\nif (runtime[\"affinity\"] != [case[\"cpu\"]] or runtime[\"memory_max\"] != str(case[\"memory_bytes\"]) or runtime[\"swap_max\"] != \"0\" or runtime[\"environment\"].get(\"HERDR_ENV\") != \"1\" or runtime[\"environment\"].get(\"HERDR_PANE_ID\") != case[\"pane_id\"] or any(runtime[\"environment\"].get(k) != \"1\" for k in (\"OPENBLAS_NUM_THREADS\",\"OMP_NUM_THREADS\",\"MKL_NUM_THREADS\",\"NUMEXPR_NUM_THREADS\",\"BLIS_NUM_THREADS\"))):\n    raise RuntimeError(\"allocated actual Native runtime differs\")\nfor item in case[\"source_bindings\"]:\n    if binding(item[\"path\"]) != item: raise ValueError(\"fullhistory actual source binding mismatch\")\nprint(\"P254_A87_RUNTIME_\"+\"OK_\"+case[\"nonce\"],flush=True)\nsys.path.insert(0,'/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0087')\nfrom functional_bank import accumulate,publish,reopen\nfrom history_banks import OwnedKernels\nbank=Path(case[\"output\"])\nreports=[]\nfor descriptor in case[\"catalogs\"]:\n    reports.append(accumulate(bank,descriptor[\"path\"]))\n    print(json.dumps(dict(event=\"actual-dressed-family-banked\",component=reports[-1][\"component\"],status=reports[-1][\"status\"])),flush=True)\npartial=publish(bank,bank/\"catalog.json\")\nexpected={\"ee\":0,\"mixed_ei\":1,\"joint\":1,\"cubic\":1}\nactual={key:value[\"completed_contributions\"] for key,value in partial[\"coverage\"].items()}\nif actual!=expected or partial[\"full_solve_eligible\"] is not False:\n    raise AssertionError(\"actualbankcoverage differs\")\nbefore=reopen(bank)\nagain=accumulate(bank,case[\"catalogs\"][0][\"path\"])\nif again[\"status\"]!=\"idempotent\" or again[\"pointer\"]!=before[\"pointer\"]:\n    raise AssertionError(\"realduplicatechangedbank\")\ntry:\n    with OwnedKernels(bank/\"catalog.json\",require_complete=True):\n        raise AssertionError(\"partialbankwasacceptedforfullsolve\")\nexcept ValueError as exc:\n    refusal=dict(type=type(exc).__name__,message=str(exc))\nreport=dict(schema=\"p254-a87-actual-dressed-bank-intake-v1\",status=\"partial-bank-complete-at-declared-intake\",actual_catalog=binding(bank/\"catalog.json\"),input_catalogs=case[\"catalogs\"],reports=reports,coverage=partial[\"coverage\"],idempotent_pointer_unchanged=True,actual_full_reader_refusal=refusal,full_solve_eligible=False,scope=\"ActualEI0/joint/fullcubicnumerics; EE64/EIremaining63stillrequired,noG2orclosure.\")\natomic_json(bank/\"actual-intake.json\",report)\nprint(json.dumps(report),flush=True)\n"
+  ],
+  "manager_client_timeout_seconds": 420,
+  "budget": {
+    "wall_cap_seconds": 300,
+    "costs_reset": false,
+    "scope": "ActualrequiredrealEI0/globaljoint/fullcubicintake,partialpublish,idempotenceandrealcomplete-readerrefusal; notoldphysicsproof."
+  },
+  "recovery": "EachnumericpairanditsSHA256digestfsyncbeforebitmapfsync/checkpoint. Resumeauthenticatescommittedpairdigestsandoriginalselecteddependencybindingsbeforefurthercontractions; no relabel/replay. Uncommittedactivepair/staticrebuildlossbounded.",
+  "resource_basis": "Joint/cubicactualterminal0savedconsumers; CPU8returned, third/fourthphysicalworkerremoved. Bank2GiB/CPU8<=300s/BLAS1,onlyEECPU6stillrunning; protect0-5/11.",
+  "next_allocation": "Root635 uses actual first-progress/cost evidence; not a full64 launch or budget reset.",
+  "q_additive": false,
+  "expected_output_status": "partial",
+  "expected_consumer": "actual-intake.json",
+  "catalogs": [
+    {
+      "path": "/var/tmp/p254-a87-mixed-ei-q0-001/catalog.json",
+      "bytes": 124971,
+      "sha256": "7ec3aec10b2e1c08ac528d35e8344534d9f7452af1a0966fd6ea541b553ee6e1"
+    },
+    {
+      "path": "/var/tmp/p254-a87-joint-002/catalog.json",
+      "bytes": 1801430,
+      "sha256": "d567494547fd9016f51c7220bf359f7f6ba8fe342c74cb002a5fe5382a2bd508"
+    },
+    {
+      "path": "/var/tmp/p254-a87-cubic-001/catalog.json",
+      "bytes": 299658,
+      "sha256": "20d03414c496a9e30170ca96a2ecae958b3e6cba85fba203132deb311be1fe88"
+    }
+  ],
+  "bank_driver": "from functional_bank import accumulate,publish,reopen\nfrom history_banks import OwnedKernels\nbank=Path(case[\"output\"])\nreports=[]\nfor descriptor in case[\"catalogs\"]:\n    reports.append(accumulate(bank,descriptor[\"path\"]))\n    print(json.dumps(dict(event=\"actual-dressed-family-banked\",component=reports[-1][\"component\"],status=reports[-1][\"status\"])),flush=True)\npartial=publish(bank,bank/\"catalog.json\")\nexpected={\"ee\":0,\"mixed_ei\":1,\"joint\":1,\"cubic\":1}\nactual={key:value[\"completed_contributions\"] for key,value in partial[\"coverage\"].items()}\nif actual!=expected or partial[\"full_solve_eligible\"] is not False:\n    raise AssertionError(\"actualbankcoverage differs\")\nbefore=reopen(bank)\nagain=accumulate(bank,case[\"catalogs\"][0][\"path\"])\nif again[\"status\"]!=\"idempotent\" or again[\"pointer\"]!=before[\"pointer\"]:\n    raise AssertionError(\"realduplicatechangedbank\")\ntry:\n    with OwnedKernels(bank/\"catalog.json\",require_complete=True):\n        raise AssertionError(\"partialbankwasacceptedforfullsolve\")\nexcept ValueError as exc:\n    refusal=dict(type=type(exc).__name__,message=str(exc))\nreport=dict(schema=\"p254-a87-actual-dressed-bank-intake-v1\",status=\"partial-bank-complete-at-declared-intake\",actual_catalog=binding(bank/\"catalog.json\"),input_catalogs=case[\"catalogs\"],reports=reports,coverage=partial[\"coverage\"],idempotent_pointer_unchanged=True,actual_full_reader_refusal=refusal,full_solve_eligible=False,scope=\"ActualEI0/joint/fullcubicnumerics; EE64/EIremaining63stillrequired,noG2orclosure.\")\natomic_json(bank/\"actual-intake.json\",report)\nprint(json.dumps(report),flush=True)\n"
+}

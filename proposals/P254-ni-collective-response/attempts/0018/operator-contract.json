@@ -1,0 +1,55 @@
+{
+  "scope": "Selected ordinaryNC/collinearPBE/noNLCC/noHubbard/twoatom/serial24cubed backgrounds. Additive dataset extension; existing typed decoder unchanged.",
+  "background_datasets": {
+    "vloc_bare_cartesian": {
+      "shape": [
+        "nnr",
+        "6"
+      ],
+      "dtype": "complex128",
+      "units": "Ry/bohr",
+      "meaning": "Actual compute_dvloc(unitCartesian,.false.,ownedcolumn), all6Cartesianatom-major modes; no induced screening."
+    },
+    "rho_total_magnetization": {
+      "shape": [
+        "nnr",
+        "2"
+      ],
+      "dtype": "float64",
+      "units": "bohr^-3",
+      "meaning": "Actual ground rho%of_r, NOT response up/down basis."
+    },
+    "amass_species": {
+      "shape": [
+        "nsp"
+      ],
+      "dtype": "float64",
+      "units": "amu"
+    },
+    "ityp": {
+      "shape": [
+        "nat"
+      ],
+      "dtype": "int32",
+      "index_base": "1"
+    }
+  },
+  "background_metadata": {
+    "nelec": "actual native real total electron count",
+    "amu_ry": "actual Native constants value",
+    "lda_plus_u": "actualBooleanfalse already enforced"
+  },
+  "state_datasets": {
+    "vkb_source": {
+      "shape": [
+        "npwx",
+        "nkb"
+      ],
+      "dtype": "complex128",
+      "meaning": "Actual init_us_2 into owned reusable storage at ikk; do not mutate global target vkb."
+    }
+  },
+  "operator_definition": "Apply Native Cartesian local potential to arbitrary source-PW vectors by actual FFT maps. Add eachatom derivative of target/source projector product: i*beta_target*D*beta_source_dagger*(p_source_alpha*psi) - i*p_target_alpha*beta_target*D*beta_source_dagger*psi. p=tpiba*(k+G). Native beta includes exp[-i(k+G)tau]; do not add another atom phase. Complex displacement amplitudes enter linearly, no conjugation.",
+  "existing_bare_comparator": "For each actual Native pattern u, g(u) applied to evc must match fullPWbareRHS_dvpsi_before_screening on physical target rows. No20-band operator closure.",
+  "independent_slices": "Frozen-curvature importer consumes only already available generation003 XMLs. Full ionic-operator consumer consumes this settled interface and authoritative Native source; execution awaits Root completed producers. Neither consumes an unsettled research output."
+}

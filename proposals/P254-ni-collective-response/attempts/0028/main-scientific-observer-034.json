@@ -1,0 +1,51 @@
+{
+  "schema": "P254-main-scientific-observer-receipt-v1",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-253.json",
+    "bytes": "2290",
+    "sha256": "8044c22ed24ec09c0cb3a90b20a4a6405a87f2e65c365aa820aa328b5539a1b5"
+  },
+  "actual_armed": {
+    "schema": "P254-main-runtime-observer-v2",
+    "observer_pid": "2676344",
+    "armed_utc": "2026-10-31T11:02:58.574939+00:00",
+    "wake_due_unix": 1793444700.0,
+    "unit": "p254-a28-saved-energy-zero-003.service",
+    "scientific_invocation": "1e6753ccc1a14891a393d0ed75ce8511",
+    "root": "/var/tmp/p254-a28-saved-energy-zero-003",
+    "prepared_seen": [
+      "/var/tmp/p254-a28-saved-energy-zero-003/scientific-work/3f6ea2c8f13b3f28e68ca910b775ca67677b883c87dfdd104b6b100f01ab329b/generation-63ee2c43b80c4d68a7147dba81f66f28/prepared.json",
+      "/var/tmp/p254-a28-saved-energy-zero-003/scientific-work/8692334e058ea96d2e50e9709d2d7f0d71f394b6d5770cc3661ee6c8b3becf81/generation-093fb83c5f30457b97c0dae666d2b1b5/prepared.json",
+      "/var/tmp/p254-a28-saved-energy-zero-003/scientific-work/9141742caba8ec809ddbb99dacd33efa446a941169035ece96bb94f61b361703/generation-55800dcad4a849bd979832df45a8d01e/prepared.json",
+      "/var/tmp/p254-a28-saved-energy-zero-003/scientific-work/f159185a1f8b5ab0dd3ef546c53d141d190a9893c10762d39615499ebb918a93/generation-dbf498c9947a4b6eb24e766b57e64da7/prepared.json"
+    ],
+    "stages_seen": [
+      "/var/tmp/p254-a28-saved-energy-zero-003/steps/000000/stage-0/complete.json",
+      "/var/tmp/p254-a28-saved-energy-zero-003/steps/000000/stage-1/complete.json",
+      "/var/tmp/p254-a28-saved-energy-zero-003/steps/000000/stage-2/complete.json",
+      "/var/tmp/p254-a28-saved-energy-zero-003/steps/000000/stage-3/complete.json"
+    ],
+    "scope": "Read-only own scientific publication/timer watcher; no allocation or completion claim"
+  },
+  "command": "/usr/bin/python3 -u -c '\nimport datetime,json,os,time\nfrom pathlib import Path\nroot=Path('\"'\"'/var/tmp/p254-a28-saved-energy-zero-003'\"'\"')\nout=Path('\"'\"'/var/tmp/p254-main-runtime-observer-034'\"'\"')\nout.mkdir(exist_ok=False)\nseen=set(['\"'\"'/var/tmp/p254-a28-saved-energy-zero-003/scientific-work/3f6ea2c8f13b3f28e68ca910b775ca67677b883c87dfdd104b6b100f01ab329b/generation-63ee2c43b80c4d68a7147dba81f66f28/prepared.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-zero-003/scientific-work/8692334e058ea96d2e50e9709d2d7f0d71f394b6d5770cc3661ee6c8b3becf81/generation-093fb83c5f30457b97c0dae666d2b1b5/prepared.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-zero-003/scientific-work/9141742caba8ec809ddbb99dacd33efa446a941169035ece96bb94f61b361703/generation-55800dcad4a849bd979832df45a8d01e/prepared.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-zero-003/scientific-work/f159185a1f8b5ab0dd3ef546c53d141d190a9893c10762d39615499ebb918a93/generation-dbf498c9947a4b6eb24e766b57e64da7/prepared.json'\"'\"'])\nstages_seen=set(['\"'\"'/var/tmp/p254-a28-saved-energy-zero-003/steps/000000/stage-0/complete.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-zero-003/steps/000000/stage-1/complete.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-zero-003/steps/000000/stage-2/complete.json'\"'\"', '\"'\"'/var/tmp/p254-a28-saved-energy-zero-003/steps/000000/stage-3/complete.json'\"'\"'])\nstem='\"'\"'P254_MAIN_INTAKE_'\"'\"'\ntoken='\"'\"'93599f0691b54997906112b988c81654'\"'\"'\narm=dict(schema='\"'\"'P254-main-runtime-observer-v2'\"'\"',observer_pid=str(os.getpid()),armed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),wake_due_unix=1793444700.0,unit='\"'\"'p254-a28-saved-energy-zero-003.service'\"'\"',scientific_invocation='\"'\"'1e6753ccc1a14891a393d0ed75ce8511'\"'\"',root=str(root),prepared_seen=sorted(seen),stages_seen=sorted(stages_seen),scope='\"'\"'Read-only own scientific publication/timer watcher; no allocation or completion claim'\"'\"')\n(out/'\"'\"'armed.json'\"'\"').write_text(json.dumps(arm,indent=2)+chr(10))\nprint('\"'\"'P254_MAIN_OBSERVER_'\"'\"'+'\"'\"'ARMED_034'\"'\"',str(os.getpid()),arm['\"'\"'armed_utc'\"'\"'],flush=True)\nwhile True:\n    new={str(p) for p in (root/'\"'\"'scientific-work'\"'\"').glob('\"'\"'*/generation-*/prepared.json'\"'\"')}-seen\n    stages={str(p) for p in (root/'\"'\"'steps'\"'\"').glob('\"'\"'*/stage-*/complete.json'\"'\"')}-stages_seen\n    results=[str(p) for p in (root/'\"'\"'invocations'\"'\"').glob('\"'\"'*/receipt.json'\"'\"')]\n    exits=any(Path('\"'\"'/var/tmp/p254-a28-saved-energy-zero-003-operations/unit-outcomes'\"'\"').glob('\"'\"'*.json'\"'\"'))\n    if new or stages or results or exits or time.time()>=1793444700.0:\n        receipt=dict(arm,woke_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),new_prepared=sorted(new),new_stages=sorted(stages),run_result_files=results,unit_exit_present=exits,timer_due=time.time()>=1793444700.0)\n        (out/'\"'\"'wake.json'\"'\"').write_text(json.dumps(receipt,indent=2)+chr(10))\n        print(stem+token+'\"'\"'_WAKE'\"'\"',flush=True)\n        break\n    time.sleep(15)\n'",
+  "pane": "w1:p41",
+  "actual_consumer_launch": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-energy-corrected-zero-actual-launch-003.json",
+    "bytes": "4866",
+    "sha256": "13bede6eee51fef2c9b0fb8d805ddc70f4e9729423591e799631a6fd6b3020ba"
+  },
+  "wait_registration": {
+    "text": "Backgrounded as job bg_278 (killed once it has run 481s in total; `timeout: 0` disables the deadline); its output is injected into the conversation as a follow-up the moment it finishes. Do NOT poll for it (no `sleep`, `ps`, `pgrep`, `top`, `pidwait`, log tailing): every poll is a wasted turn. Do other work, or end your reply and wait to be woken.",
+    "details": {
+      "async": {
+        "state": "running",
+        "jobId": "bg_278",
+        "type": "bash"
+      },
+      "timeoutSeconds": 481
+    }
+  },
+  "client_due_utc": "2026-10-31T11:10:00+00:00",
+  "outer_due_utc": "2026-10-31T11:11:00+00:00",
+  "scope": "Selectednewconsumerinvocationreceipts/ownunitexit or11:05, notoldproducerresult/outcome. Sourcefrozen; t0engineeringreadoutnotpositive-timeclaim."
+}

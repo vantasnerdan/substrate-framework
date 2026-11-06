@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "accessed_at": "2026-10-19T13:15:30.225Z",
+  "index_url": "http://www.quantum-simulation.org/potentials/sg15_oncv/index.htm",
+  "archive_url": "http://www.quantum-simulation.org/potentials/sg15_oncv/sg15_oncv_upf_2020-02-06.tar.gz",
+  "license": "CC-BY-SA-4.0, per official SG15 index",
+  "attempts": [
+    {
+      "status": "rejected",
+      "mechanism": "Raw tool preview was mistaken for complete source: Ni51191/H51264 bytes, reader footer, no closing UPF. Rejected before native use."
+    },
+    {
+      "status": "complete",
+      "mechanism": "Read400-line structured displayContent pages; every interval verified; independent tarfile byte equality, XML parse and numeric-array declared sizes passed."
+    }
+  ],
+  "validation_program": "import hashlib,json,tarfile,xml.etree.ElementTree as ET\nfrom pathlib import Path\narchive=Path('/tmp/c5-sg15-oncv-upf-2020-02-06.tar.gz')\nbase=Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/sg15-2020')\nout={'archive_sha256':hashlib.sha256(archive.read_bytes()).hexdigest(),'archive_bytes':archive.stat().st_size,'members':[]}\nwith tarfile.open(archive,'r:gz') as t:\n for name in ['Ni_ONCV_PBE-1.2.upf','H_ONCV_PBE-1.2.upf']:\n  data=t.extractfile(name).read(); local=(base/name).read_bytes()\n  assert data==local, name+' differs from original archive bytes'\n  root=ET.fromstring(data); header=dict(root.find('PP_HEADER').attrib)\n  assert header['pseudo_type']=='NC' and header['is_ultrasoft']=='F' and header['is_paw']=='F'\n  arrays={}\n  for e in root.iter():\n   if e.attrib.get('type')=='real' and 'size' in e.attrib:\n    values=[float(x.replace('D','E')) for x in (e.text or '').split()]\n    assert len(values)==int(e.attrib['size']), e.tag\n    arrays[e.tag]=len(values)\n  out['members'].append({'name':name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'md5':hashlib.md5(data).hexdigest(),'exact_archive_bytes':True,'header':header,'validated_numeric_array_sizes':arrays})\nprint(json.dumps(out,indent=2))\n",
+  "validation": {
+    "archive_sha256": "3f3bd74aa5d6e0b038218a6051bb99ed9469dc03d0f05b3ec8a523f0f7a7dff0",
+    "archive_bytes": 5994386,
+    "members": [
+      {
+        "name": "Ni_ONCV_PBE-1.2.upf",
+        "bytes": 115509,
+        "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e",
+        "md5": "55535897b6cdd76968afcf118faefcdb",
+        "exact_archive_bytes": true,
+        "header": {
+          "generated": "Generated using ONCVPSP code by D. R. Hamann",
+          "author": "Martin Schlipf and Francois Gygi",
+          "date": "150105",
+          "comment": "",
+          "element": "Ni",
+          "pseudo_type": "NC",
+          "relativistic": "scalar",
+          "is_ultrasoft": "F",
+          "is_paw": "F",
+          "is_coulomb": "F",
+          "has_so": "F",
+          "has_wfc": "F",
+          "has_gipaw": "F",
+          "core_correction": "F",
+          "functional": "PBE",
+          "z_valence": "   18.00",
+          "total_psenergy": "  -1.53893931252E+02",
+          "rho_cutoff": "   6.01000000000E+00",
+          "l_max": "2",
+          "l_local": "-1",
+          "mesh_size": "   602",
+          "number_of_wfc": "0",
+          "number_of_proj": "6"
+        },
+        "validated_numeric_array_sizes": {
+          "PP_R": 602,
+          "PP_RAB": 602,
+          "PP_LOCAL": 602,
+          "PP_BETA.1": 602,
+          "PP_BETA.2": 602,
+          "PP_BETA.3": 602,
+          "PP_BETA.4": 602,
+          "PP_BETA.5": 602,
+          "PP_BETA.6": 602,
+          "PP_DIJ": 36,
+          "PP_RHOATOM": 602
+        }
+      },
+      {
+        "name": "H_ONCV_PBE-1.2.upf",
+        "bytes": 64999,
+        "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a",
+        "md5": "bf21e08b90ac4ce7d0149ac4e8138190",
+        "exact_archive_bytes": true,
+        "header": {
+          "generated": "Generated using ONCVPSP code by D. R. Hamann",
+          "author": "Martin Schlipf and Francois Gygi",
+          "date": "150105",
+          "comment": "",
+          "element": "H ",
+          "pseudo_type": "NC",
+          "relativistic": "scalar",
+          "is_ultrasoft": "F",
+          "is_paw": "F",
+          "is_coulomb": "F",
+          "has_so": "F",
+          "has_wfc": "F",
+          "has_gipaw": "F",
+          "core_correction": "F",
+          "functional": "PBE",
+          "z_valence": "    1.00",
+          "total_psenergy": "  -4.58772875004E-01",
+          "rho_cutoff": "   6.01000000000E+00",
+          "l_max": "0",
+          "l_local": "-1",
+          "mesh_size": "   602",
+          "number_of_wfc": "0",
+          "number_of_proj": "2"
+        },
+        "validated_numeric_array_sizes": {
+          "PP_R": 602,
+          "PP_RAB": 602,
+          "PP_LOCAL": 602,
+          "PP_BETA.1": 602,
+          "PP_BETA.2": 602,
+          "PP_DIJ": 4,
+          "PP_RHOATOM": 602
+        }
+      }
+    ]
+  },
+  "scientific_boundary": "Source intake only; no stationary NC material or cross-engine equivalence accepted."
+}

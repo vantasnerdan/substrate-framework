@@ -1,0 +1,44 @@
+{
+  "root": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-156.json",
+    "bytes": "1284",
+    "sha256": "438017d567eb73f3b0fd92dd42a5f5219a864b26a9879ddae30a0154863cff78"
+  },
+  "prior_failure": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/failed-readout-mapped-smoke-001/result.json",
+    "bytes": "20086",
+    "sha256": "266020c606f99a4ecff63ae8faecebab5bac9576bb71239e2f38866a843f6bd2"
+  },
+  "script": {
+    "path": "/var/tmp/p254-a28-readout-mapped-smoke-001.py",
+    "bytes": "9475",
+    "sha256": "1cd7d78c113641ac44d495cfc80481c981ec22e2a91ec435444f95a65a4640c5"
+  },
+  "service_argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-readout-mapped-smoke-002",
+    "--wait",
+    "--pipe",
+    "--property=Type=exec",
+    "--property=LimitNOFILE=8192",
+    "--property=CPUAffinity=6",
+    "--property=MemoryMax=19327352832",
+    "--property=MemorySwapMax=0",
+    "--property=RuntimeMaxSec=1155",
+    "--property=TimeoutStopSec=30",
+    "env",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "/usr/bin/python3",
+    "/var/tmp/p254-a28-readout-mapped-smoke-001.py"
+  ],
+  "scope": "Same2edge changed-memory smoke; actual selected_initialization factory replaces wrong wrapper read, prior6s charged;1155+30outer remains below cumulative1200"
+}

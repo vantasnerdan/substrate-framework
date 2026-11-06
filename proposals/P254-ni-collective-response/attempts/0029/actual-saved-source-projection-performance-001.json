@@ -1,0 +1,88 @@
+{
+  "schema": "P254-actual-saved-source0-projection-performance-v1",
+  "case": "loaded-ni31h6",
+  "input_manifest": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc882-loaded-coefficient-progress.json",
+    "bytes": 1172575,
+    "sha256": "82fd596736be333f463b6a229b9f1368a9cd5abb198e3ce6cafc720d7800dae0"
+  },
+  "preparation": {
+    "bytes": 4836378,
+    "path": "/var/tmp/p254-activeband-loaded-contrast-projection-001/preparation-000.npz",
+    "sha256": "ba6f0cc7d626368a958cc1e2dd2c013cb07792154aef26765b5472d04da7fb68"
+  },
+  "reference": {
+    "bytes": 762930,
+    "path": "/var/tmp/p254-activeband-loaded-contrast-projection-001/edge-00-000.npz",
+    "sha256": "7eb3b98901091cee7055878f7aac63985496adeb58d1e3b360fd1da03b6e3c7a"
+  },
+  "defects": {
+    "ionic": {
+      "absolute": 4.2358564843390095e-15,
+      "reference_norm": 5.868676415932117,
+      "scaled_relative": 7.217737329731833e-16
+    },
+    "ionic_reverse": {
+      "absolute": 4.235505717651946e-15,
+      "reference_norm": 5.868676415932117,
+      "scaled_relative": 7.217139636722024e-16
+    },
+    "density": {
+      "absolute": 4.8796880188196173e-17,
+      "reference_norm": 0.10788045158072569,
+      "scaled_relative": 4.8796880188196173e-17
+    },
+    "potential": {
+      "absolute": 4.879688018819618e-17,
+      "reference_norm": 0.10788045158072576,
+      "scaled_relative": 4.879688018819618e-17
+    }
+  },
+  "timings": {
+    "wave_fft_seconds": 0.48716094670817256,
+    "pair_fft_all_local_seconds": 5.859826606698334,
+    "pair_density_fft_seconds": 2.579847937449813,
+    "local_gradient_gemm_seconds": 3.2797682802192867,
+    "local_gradient_prepare_seconds": 3.2084062695503235e-07,
+    "local_gradient_build_seconds": 0.0,
+    "prepared_local_build_seconds": 0.016397596802562475,
+    "pair_batch_size": 8,
+    "pair_ffts": 144,
+    "coordinate_full_actions": 0,
+    "local_density_support": 148597,
+    "local_contraction_rows": 148597,
+    "local_additive_aliases": 0,
+    "all_coordinates": 111,
+    "fft_workers": 1,
+    "pair_explicit_scratch_bound_bytes": 114571904,
+    "endpoint_wave_bytes": 143327232,
+    "folded_gradient_extra_bytes": 0,
+    "algorithm": "scipy_pair_fft_full_support_additive_alias_fold",
+    "total_seconds": 6.365398655179888,
+    "overlap_nonlocal_seconds": 0.0064730397425591946
+  },
+  "preparation_seconds": 0.016397596802562475,
+  "original_recorded_timings": {
+    "all_coordinates": 111,
+    "coordinate_full_actions": 0,
+    "local_density_support": 148597,
+    "local_gradient_gemm_seconds": 4.003116698004305,
+    "local_gradient_prepare_seconds": 5.54695725440979e-06,
+    "overlap_nonlocal_seconds": 0.012721785344183445,
+    "pair_batch_size": 8,
+    "pair_density_fft_seconds": 7.098268431611359,
+    "pair_fft_all_local_seconds": 11.104361440055072,
+    "pair_ffts": 144,
+    "setup_seconds": 1.7671015248633921,
+    "total_seconds": 11.837148095015436,
+    "wave_fft_seconds": 0.719913343898952,
+    "witness_seconds": 17.204679563175887
+  },
+  "elapsed_seconds": 13.714716619811952,
+  "maxrss_mib": 880.375,
+  "source_shape": [
+    18613,
+    12
+  ],
+  "scope": "Exact projection performance and cached-matrix agreement only, not a new trajectory or material accuracy"
+}

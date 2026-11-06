@@ -1,0 +1,49 @@
+{
+  "as_of": "2026-10-27T17:21:26.578641+00:00",
+  "owner": "Giuliano",
+  "objective": "Correct active-projector Hamiltonian export and construct the actual spatial Hartree+spinPBE action for the coherence-domain model.",
+  "source_repair": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/source-repair-001.json",
+  "source_build_receipt": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/response-operators-0016/build-003/build-receipt.json",
+  "generation": "003",
+  "native_units": 2,
+  "concurrency": 2,
+  "cpu_per_unit": {
+    "gamma": 6,
+    "half-b1": 7
+  },
+  "memory_per_unit_bytes": "3221225472",
+  "runtime_cap_per_unit_seconds": 180,
+  "owner_cap_per_unit_seconds": 150,
+  "restart": "no",
+  "root_due": "2026-10-27T17:29:26.578641+00:00",
+  "decision_interrupt_target": "2026-10-27T17:26:26.578641+00:00",
+  "cumulative_scope": "Two new same-background operator probes only; no new SCF precision or large-material restart. First invalid generation preserved, second private build unexecuted.",
+  "native_input_geometry_correction": {
+    "reason": "The nominal half-b1 point must be constructed from the actual Native reciprocal basis, not the rounded legacy input literal. This corrects the input to the declared commensurate point; the oracle and 1e-9-Ry allowance are unchanged.",
+    "basis_payload": {
+      "path": "background-bg.bin",
+      "dtype": "float64",
+      "shape": [
+        "3",
+        "3"
+      ],
+      "order": "F",
+      "units": "2pi/alat",
+      "bytes": "72",
+      "sha256": "0e29894117e17271b843eb1362adb516cf0df678c964920310ec22ac0f649cac"
+    },
+    "old_q_actual": [
+      -0.3535533903666754,
+      0.35355339036667527,
+      0.3535533903666754
+    ],
+    "new_q_actual": [
+      -0.3535533905932738,
+      0.3535533905932738,
+      0.3535533905932738
+    ],
+    "basis_fraction": "one half first reciprocal vector with legacy sign"
+  },
+  "large_material_units": "unchanged hold; no Runpod",
+  "next_decision": "Consume new closed operator data in the existing oracle; fix named implementation defects without automatically extending Native runtime."
+}

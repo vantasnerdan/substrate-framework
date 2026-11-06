@@ -1,0 +1,45 @@
+{
+  "schema": "p254-a49-supplied-component-interface-v1",
+  "cpp": {
+    "header": "supplied_vie2.hpp",
+    "library": "p254::supplied::Solver",
+    "construction": "Solver(times, dimension, statistics, order, inert_beta=1)",
+    "methods": {
+      "start(result, source, kernel)": "Refresh F=-source*kernel and independent Fcc=-kernel*source on COMPLETE 0..order block; call actual upstream vie2_start",
+      "step(n, result, source, kernel)": "Caller imports current physical kernels first, then this refreshes slice n and calls upstream vie2_timestep; n>order",
+      "refresh(n, source, kernel)": "Refresh current fixed-kernel convolution slice; all required histories are caller-owned",
+      "forward_kernel()/reverse_kernel()": "Read actual independent convolution output"
+    },
+    "objects": "A40 p254::Green alias = cntr::herm_matrix<double>; nt=N-1; ntau=max(2*order+2,12); same dimension/statistics throughout; p254::clear every fresh object; import R(n,m) and lesser(m,n) for m<=n. Caller keeps Matsubara/mixed storage initialized exactly zero.",
+    "build": "CMakeLists.txt links installed pinned libcntr.so and Eigen; reuses unmodified A40 header; no replacement VIE integrator"
+  },
+  "python": {
+    "module": "supplied_vie2.py",
+    "call": "solve_supplied(times, source_ret, source_less, kernel_ret, kernel_less, statistics=-1 or +1, order=1..5, binary=path, workdir=fresh_outside_git_path, beta=positive_finite) -> solution.npz path",
+    "read": "load_solution(path) -> dict times, statistics, order, beta, ret, less, f_ret, f_less, fcc_ret, fcc_less",
+    "shape": "All components [N,N,d,d] complex128. R(t,s) is causal zero above time diagonal. Lesser is full, with lesser(t,s)=-lesser(s,t)^dagger. No arbitrary independently supplied non-Hermitian legs can be represented by this source/solution object.",
+    "persistence": "Original full input arrays retained in input.npz before packing. Exact-argv command/stdout/stderr/exit and raw transport byte bindings retained in workdir. solution.npz is actual decoded saved-output boundary, consumed by consume_solution.py.",
+    "numerical_reader": "consume_solution.py SOLUTION.npz REPORT.json computes final full density (-i G<) or position covariance (+i D<), initial/final traces and causal-upper-R defect from saved numeric arrays."
+  },
+  "transport": {
+    "magic": "P254VIE1",
+    "header": "little endian <8siiiid: magic, nt, dimension, order, statistics, inert_beta",
+    "times": "N consecutive float64 times, starts zero; one uniform positive dt; explicit [0,1,10,30] unsupported, never interpolated",
+    "input_blocks": ["source_ret", "source_less", "kernel_ret", "kernel_less"],
+    "output_blocks": ["ret", "less", "f_ret", "f_less", "fcc_ret", "fcc_less"],
+    "block_layout": "n=0..nt, m=0..n, row-major d*d complex128. R stored as R(n,m); lesser stored as lesser(m,n). Header and times precede blocks. No extra bytes accepted."
+  },
+  "invariants": [
+    "statistics -1 fermion G0/Sigma; +1 physical real Cartesian POSITION D0/Pi; no thermal helper",
+    "Source R diagonal copied exactly, including raw fermion unitary drift or zero position diagonal; no canonical replacement",
+    "Full initial rho/covariance is supplied lesser data; no refill, clipping, mass/frequency scaling or state repair",
+    "Zero mixed/imaginary correlations with finite inert beta; zero mixed makes a wrong statistics sign numerically inert, not verified sensitive",
+    "Gaussian finite oracle producers are separate from general supplied-kernel consumer",
+    "No q/-q packing equivalence asserted; all independent original material legs remain external/raw and must be evaluated before any admitted physical Cartesian packing"
+  ],
+  "scope_limits": [
+    "Linear VIE for caller-supplied kernels is not by itself selfconsistent feedback or physical closure",
+    "No NiH/material accuracy or ab-initio PBE/correlation-residual double-count prescription claimed",
+    "A40 original proofs carried, not rerun; A28-A48 source files not edited"
+  ]
+}

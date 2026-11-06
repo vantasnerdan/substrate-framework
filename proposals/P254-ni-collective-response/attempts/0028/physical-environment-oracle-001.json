@@ -1,0 +1,77 @@
+{
+  "schema": "P254-physical-environment-oracle-v1",
+  "canonical": {
+    "SI_to_Ry": "V*adot**2/(16*pi)",
+    "field_mass": "V/(8*pi)",
+    "joint_energy_identity": true,
+    "undressed_offset_Ward_obstruction": "Matrix([[0, -I], [I, 0]])",
+    "mutations": {
+      "Hartree_instead_of_Ry_mass": 0.9549296585513722,
+      "reversed_field_current_sign": 1.1032419757890184,
+      "missing_ionic_minimal_shift": 0.10753895038701157,
+      "missing_electric_factor_half": 0.28196656994106767
+    }
+  },
+  "physical_actions": {
+    "physical_UPF_action_current_contact": true,
+    "unanchored_zero_field_distinct": true,
+    "independent_literal_spherical_integral": true,
+    "mutations": {
+      "anchored_A25_mislabeled_physical": 0.06351193976330836,
+      "omit_contact_cross_legs": 0.04708838369340211,
+      "reverse_current_sign": 0.8613908095804037
+    }
+  },
+  "ordered_kernel": {
+    "exact_Fock_pairs": [
+      [
+        "-53/50 - 17*I/10",
+        "-53/50 + 17*I/10"
+      ],
+      [
+        "-7/50 - 11*I/10",
+        "-7/50 + 11*I/10"
+      ]
+    ],
+    "CAR": true,
+    "nonstationary": true,
+    "unequal_time_PSD": true,
+    "finite_recurrence": true,
+    "independent_SciPy_Fock_expm": true,
+    "non_Hermitian_adjoint": true,
+    "mutations": {
+      "transpose_AB": true,
+      "erase_commutator": true,
+      "symmetrize_quantum_noise": true,
+      "replace_D_by_diagonal": true,
+      "discard_empty_complement": true,
+      "omit_return_propagator_exposure": 4.739090951547673,
+      "stationarity_exposure": 1.0983624174196787,
+      "reverse_retarded_sign_exposure": 6.800000000000001,
+      "truncate_raw_column": true
+    }
+  },
+  "scope": "independent synthetic checks only; no material two-time evolution",
+  "implementation_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_physical_environment_oracle.py",
+      "sha256": "d405898c1a8c464a658e9366c03e54517ff3bb3b56dfadb09d6002add24d25cc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/physical-environment-registration.json",
+      "sha256": "2d7b3153b1d605dd5164350ac6a9835fbccc8fba5af104bcf88a6838b9c8dfe6"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_field_environment.py",
+      "sha256": "cd08f57f93c0c2bd96e1baefbb40ef0b1f34bd767ad13899848e583c26d6ba59"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/nonstationary_force_kernel.py",
+      "sha256": "458d946b6b20e121c7b86e343af88de267642cb0ecf5a1630b704a8417c7c0bc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_field_derivative_oracle.py",
+      "sha256": "44eefe1bb7fc9910746e5c77303a04d74759630de9c5d8aced7b07eba261a970"
+    }
+  ]
+}

@@ -1,0 +1,477 @@
+{
+  "status": "pass",
+  "scope": "new finite PW preparation adapter only; no actual frame or material calculation",
+  "maxabs_errors": {
+    "plus_BvK_matrix": 4.518280359883027e-16,
+    "plus_forbidden_momentum": 5.335007356243999e-17,
+    "plus_projection": 4.445768331151997e-16,
+    "minus_BvK_matrix": 8.622116668970984e-16,
+    "minus_forbidden_momentum": 5.924249727391734e-17,
+    "minus_projection": 4.200180744990277e-16
+  },
+  "raw_tail": 1e-323,
+  "weighted_tail": 0.0,
+  "raw_probability_density_variance": 0.06956422372331596,
+  "wrong_weighted_probability_variance": 0.008695527965414495,
+  "rejected": [
+    {
+      "case": "incomplete mesh with unchanged uniform weights",
+      "error": "each explicit spin requires the complete finite BvK source mesh"
+    },
+    {
+      "case": "incomplete mesh with per-spin weight sums still one",
+      "error": "finite BvK source quadrature must be uniform 1/Ncells"
+    },
+    {
+      "case": "duplicate source k with unchanged normalized weights",
+      "error": "duplicated reciprocal-equivalent source k within explicit spin"
+    },
+    {
+      "case": "incompatible q",
+      "error": "q is incompatible with the finite BvK mesh"
+    },
+    {
+      "case": "off-mesh k",
+      "error": "source k is outside the unshifted finite BvK mesh"
+    },
+    {
+      "case": "singular reciprocal basis",
+      "error": "reciprocal basis must be invertible"
+    }
+  ],
+  "metadata": {
+    "preparation": "auxiliary grand-canonical quasi-free independent reconstructed-H0 FD state",
+    "common_mu_Ry": 0.0,
+    "actual_degauss_Ry": 1.0,
+    "ensemble_boundary": "fixed mean N, not exact canonical N; degauss is not claimed physical temperature",
+    "normalization": "A_q=Ncells^(-1/2) sum_k c_target^dag O c_source; correlation weight=1/Ncells",
+    "Ncells": 8,
+    "mesh": [
+      2,
+      2,
+      2
+    ],
+    "reciprocal_basis_2pi_alat": [
+      [
+        1.2,
+        0.1,
+        -0.2
+      ],
+      [
+        0.0,
+        0.9,
+        0.3
+      ],
+      [
+        0.2,
+        0.0,
+        1.1
+      ]
+    ],
+    "q_fractional": [
+      0.5,
+      0.0,
+      0.0
+    ],
+    "q_cart_2pi_alat": [
+      0.6,
+      0.0,
+      0.1
+    ],
+    "source_channels": [
+      {
+        "identity": "spin1:ik1",
+        "spin": 0,
+        "native_ik": "1",
+        "k_source_2pi_alat": [
+          -1.0,
+          -0.3,
+          -1.3
+        ],
+        "k_fractional": [
+          -1.0,
+          -6.167905692361981e-17,
+          -0.9999999999999998
+        ],
+        "mesh_index": [
+          0,
+          0,
+          0
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin1:ik2",
+        "spin": 0,
+        "native_ik": "2",
+        "k_source_2pi_alat": [
+          -1.0999999999999999,
+          -0.15,
+          -0.75
+        ],
+        "k_fractional": [
+          -0.9999999999999998,
+          -3.0839528461809905e-17,
+          -0.4999999999999999
+        ],
+        "mesh_index": [
+          0,
+          0,
+          1
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin1:ik3",
+        "spin": 0,
+        "native_ik": "3",
+        "k_source_2pi_alat": [
+          -0.95,
+          0.15000000000000002,
+          -1.3
+        ],
+        "k_fractional": [
+          -1.0,
+          0.49999999999999994,
+          -0.9999999999999998
+        ],
+        "mesh_index": [
+          0,
+          1,
+          0
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin1:ik4",
+        "spin": 0,
+        "native_ik": "4",
+        "k_source_2pi_alat": [
+          -1.0499999999999998,
+          0.30000000000000004,
+          -0.75
+        ],
+        "k_fractional": [
+          -1.0,
+          0.5,
+          -0.4999999999999999
+        ],
+        "mesh_index": [
+          0,
+          1,
+          1
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin1:ik5",
+        "spin": 0,
+        "native_ik": "5",
+        "k_source_2pi_alat": [
+          -0.39999999999999997,
+          -0.3,
+          -1.2000000000000002
+        ],
+        "k_fractional": [
+          -0.5,
+          0.0,
+          -1.0
+        ],
+        "mesh_index": [
+          1,
+          0,
+          0
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin1:ik6",
+        "spin": 0,
+        "native_ik": "6",
+        "k_source_2pi_alat": [
+          -0.5,
+          -0.15,
+          -0.65
+        ],
+        "k_fractional": [
+          -0.5,
+          -3.0839528461809905e-17,
+          -0.4999999999999999
+        ],
+        "mesh_index": [
+          1,
+          0,
+          1
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin1:ik7",
+        "spin": 0,
+        "native_ik": "7",
+        "k_source_2pi_alat": [
+          -0.3499999999999999,
+          0.15000000000000002,
+          -1.2000000000000002
+        ],
+        "k_fractional": [
+          -0.5,
+          0.5,
+          -1.0
+        ],
+        "mesh_index": [
+          1,
+          1,
+          0
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin1:ik8",
+        "spin": 0,
+        "native_ik": "8",
+        "k_source_2pi_alat": [
+          -0.44999999999999996,
+          0.30000000000000004,
+          -0.65
+        ],
+        "k_fractional": [
+          -0.5,
+          0.5000000000000001,
+          -0.5
+        ],
+        "mesh_index": [
+          1,
+          1,
+          1
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin2:ik1",
+        "spin": 1,
+        "native_ik": "1",
+        "k_source_2pi_alat": [
+          -1.0,
+          -0.3,
+          -1.3
+        ],
+        "k_fractional": [
+          -1.0,
+          -6.167905692361981e-17,
+          -0.9999999999999998
+        ],
+        "mesh_index": [
+          0,
+          0,
+          0
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin2:ik2",
+        "spin": 1,
+        "native_ik": "2",
+        "k_source_2pi_alat": [
+          -1.0999999999999999,
+          -0.15,
+          -0.75
+        ],
+        "k_fractional": [
+          -0.9999999999999998,
+          -3.0839528461809905e-17,
+          -0.4999999999999999
+        ],
+        "mesh_index": [
+          0,
+          0,
+          1
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin2:ik3",
+        "spin": 1,
+        "native_ik": "3",
+        "k_source_2pi_alat": [
+          -0.95,
+          0.15000000000000002,
+          -1.3
+        ],
+        "k_fractional": [
+          -1.0,
+          0.49999999999999994,
+          -0.9999999999999998
+        ],
+        "mesh_index": [
+          0,
+          1,
+          0
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin2:ik4",
+        "spin": 1,
+        "native_ik": "4",
+        "k_source_2pi_alat": [
+          -1.0499999999999998,
+          0.30000000000000004,
+          -0.75
+        ],
+        "k_fractional": [
+          -1.0,
+          0.5,
+          -0.4999999999999999
+        ],
+        "mesh_index": [
+          0,
+          1,
+          1
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin2:ik5",
+        "spin": 1,
+        "native_ik": "5",
+        "k_source_2pi_alat": [
+          -0.39999999999999997,
+          -0.3,
+          -1.2000000000000002
+        ],
+        "k_fractional": [
+          -0.5,
+          0.0,
+          -1.0
+        ],
+        "mesh_index": [
+          1,
+          0,
+          0
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin2:ik6",
+        "spin": 1,
+        "native_ik": "6",
+        "k_source_2pi_alat": [
+          -0.5,
+          -0.15,
+          -0.65
+        ],
+        "k_fractional": [
+          -0.5,
+          -3.0839528461809905e-17,
+          -0.4999999999999999
+        ],
+        "mesh_index": [
+          1,
+          0,
+          1
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin2:ik7",
+        "spin": 1,
+        "native_ik": "7",
+        "k_source_2pi_alat": [
+          -0.3499999999999999,
+          0.15000000000000002,
+          -1.2000000000000002
+        ],
+        "k_fractional": [
+          -0.5,
+          0.5,
+          -1.0
+        ],
+        "mesh_index": [
+          1,
+          1,
+          0
+        ],
+        "quadrature_weight": 0.125
+      },
+      {
+        "identity": "spin2:ik8",
+        "spin": 1,
+        "native_ik": "8",
+        "k_source_2pi_alat": [
+          -0.44999999999999996,
+          0.30000000000000004,
+          -0.65
+        ],
+        "k_fractional": [
+          -0.5,
+          0.5000000000000001,
+          -0.5
+        ],
+        "mesh_index": [
+          1,
+          1,
+          1
+        ],
+        "quadrature_weight": 0.125
+      }
+    ],
+    "geometry_validation": "complete unshifted mesh modulo reciprocal vectors separately for each explicit spin; compatible q",
+    "observables": [
+      "g_0",
+      "g_1",
+      "g_2",
+      "g_3",
+      "g_4",
+      "g_5",
+      "number_up",
+      "number_down"
+    ],
+    "operator_units": [
+      "Ry/bohr",
+      "Ry/bohr",
+      "Ry/bohr",
+      "Ry/bohr",
+      "Ry/bohr",
+      "Ry/bohr",
+      "dimensionless",
+      "dimensionless"
+    ],
+    "gradient_sign": "g=+partial h/partial u; mixed gradient-density is not force-density until g is negated",
+    "density_probe": "spin-selected periodic-uniform number Fourier probe, not pointwise density covariance; no extra volume/spin factor",
+    "energy_unit": "Ry",
+    "time_unit": "tau=t*Ry/hbar",
+    "evolution": "isolated same H0, no eta or bath rate",
+    "probabilities": "raw stable FD from each actual source/complete-target energy; quadrature weight stored separately",
+    "zero_gap_policy": "retain every directed transition including exactly zero gaps and degenerate coherences; no division or frequency binning",
+    "source_support": "inherits frame f_FD!=0 float64 source support; no additional occupation threshold; complete targets",
+    "branches": "independent actual plus/minus target spectra, PW maps, eigenvectors and positive gradients",
+    "missing": [
+      "coupled electron-ion equilibrium",
+      "irreversible bath or Gaussian higher moments",
+      "general spatial covariance beyond supplied q sectors",
+      "matched material reference/operators and material transfer"
+    ],
+    "redundant_coordinates": "no independent noise assigned to redundant delta-psi amplitudes",
+    "model_branch": "finite independent oracle",
+    "input_manifests": {}
+  },
+  "sources": [
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0023/run_pw_noise_projection_oracle.py",
+      "sha256": "51b98c650673c2189a8139d36f004a524abb0f9c352197f57198742ab114e08a"
+    },
+    {
+      "path": "src/substrate_framework/pw_prepared_noise.py",
+      "sha256": "1daf94d7b5519e03609264fb5295d2c5441995d299ab37e867bfb47a155ff67d"
+    },
+    {
+      "path": "src/substrate_framework/pw_transition_space.py",
+      "sha256": "5312e1d55be9c10240f84f4791686b9b06de84fb93ab5426c7df74959411890b"
+    },
+    {
+      "path": "src/substrate_framework/qe_pw_response_frames.py",
+      "sha256": "77f8241a41b47fe339a6189212d0acb3c7d408b985f64669ada4d816e5a848bf"
+    }
+  ]
+}

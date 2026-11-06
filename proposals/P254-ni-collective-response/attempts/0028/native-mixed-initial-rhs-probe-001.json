@@ -1,0 +1,42 @@
+{
+  "schema": "P254-actual-Native-mixed-initial-RHS-v1",
+  "status": "FAIL",
+  "material_propagation": false,
+  "started_at": "2026-10-30T04:02:03.651746+00:00",
+  "checks": [],
+  "scope": "actual all-source self-consistent preparation; selected original full-PW ionic/field first and mixed initial RHS",
+  "limitations": [
+    "instantaneous initial curve only",
+    "no propagated energy/noise/full-q result",
+    "legacy nonzero density factors are not imported as raw-frame jets"
+  ],
+  "traceback": "Traceback (most recent call last):\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_native_rhs_probe.py\", line 170, in main\n    execute(args, report, budget)\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_native_rhs_probe.py\", line 60, in execute\n    history = case.make_history(history_binding, budget, block_size=8)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched_joint_case.py\", line 105, in make_history\n    return MaterialJointHistory(final_binding, model_identity=self.identity,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_joint_response.py\", line 137, in __init__\n    self.final = DiskJointMean(authenticate(final_binding), expected_identity=model_identity)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_joint_state.py\", line 85, in __init__\n    raise ValueError('joint model identity differs')\nValueError: joint model identity differs\n",
+  "budget": {
+    "hamiltonian_actions": 0,
+    "action_columns": 0,
+    "output_bytes_reserved": 0,
+    "elapsed_seconds": 12.321426394861192,
+    "max_actions": 32,
+    "max_seconds": 1800.0,
+    "max_bytes": 161061273600,
+    "max_memory_bytes": 4294967296,
+    "worker_memory_bytes": 4294967296,
+    "peak_aggregate_rss_bytes": 0,
+    "accounting": "q live cap; cumulative allocation/mapped-write/action costs never credited back; measured unlinks only; header/reservation slack retained; logical writes, not physical device I/O",
+    "memory_accounting": "parent plus child RSS; shared pages conservatively counted repeatedly",
+    "time_cap": "parent watchdog at 0.1 second intervals; native calls may be terminated",
+    "live_bytes_reserved": 0,
+    "peak_live_bytes_reserved": 0,
+    "cumulative_write_bytes_reserved": 0,
+    "cumulative_allocation_bytes_reserved": 0,
+    "mapped_overwrite_bytes_reserved": 0,
+    "retired_payload_bytes": 0
+  },
+  "ended_at": "2026-10-30T04:02:15.996029+00:00",
+  "measurements": {
+    "wall_seconds": 12.344356287736446,
+    "parent_cpu_seconds": 6.068709411,
+    "parent_peak_rss_bytes": 429318144,
+    "children_peak_process_rss_bytes": 87236608
+  }
+}

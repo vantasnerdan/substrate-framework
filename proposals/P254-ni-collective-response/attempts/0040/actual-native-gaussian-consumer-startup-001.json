@@ -1,0 +1,35 @@
+{
+  "observed_at": "2026-11-04T22:26:22.532952+00:00",
+  "manager": {
+    "Restart": "no",
+    "RuntimeMaxUSec": "2min",
+    "MainPID": "3665792",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a40-gaussian-consumer-001.service",
+    "MemoryMax": "4294967296",
+    "MemorySwapMax": "0",
+    "ActiveState": "active",
+    "SubState": "running",
+    "InvocationID": "9e2f36c9beb0483284a26985349716e0"
+  },
+  "actual_kernel": {
+    "pid": "3665792",
+    "actual_affinity": [
+      10
+    ],
+    "actual_cmdline": [
+      "/bin/bash",
+      "-lc",
+      "set -e; /usr/bin/ldd /home/administrator/.local/opt/nessi-6bb4c832/bin/nessi_gaussian_embedding; /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/prepare_gaussian_embedding.py --output /var/tmp/p254-a40-nessi-consumer-001/original.ivp; /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/prepare_gaussian_embedding.py --output /var/tmp/p254-a40-nessi-consumer-001/wrong-thermal.ivp --wrong-thermal-preparation; /home/administrator/.local/opt/nessi-6bb4c832/bin/nessi_gaussian_embedding /var/tmp/p254-a40-nessi-consumer-001/original.ivp /var/tmp/p254-a40-nessi-consumer-001/nominal.out; /home/administrator/.local/opt/nessi-6bb4c832/bin/nessi_gaussian_embedding /var/tmp/p254-a40-nessi-consumer-001/original.ivp /var/tmp/p254-a40-nessi-consumer-001/inert-branch.out 3.7 7.25; /home/administrator/.local/opt/nessi-6bb4c832/bin/nessi_gaussian_embedding /var/tmp/p254-a40-nessi-consumer-001/wrong-thermal.ivp /var/tmp/p254-a40-nessi-consumer-001/wrong-thermal.out; /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0040/compare_gaussian_embedding.py --input /var/tmp/p254-a40-nessi-consumer-001/original.ivp --wrong-input /var/tmp/p254-a40-nessi-consumer-001/wrong-thermal.ivp --native-output /var/tmp/p254-a40-nessi-consumer-001/nominal.out --inert-output /var/tmp/p254-a40-nessi-consumer-001/inert-branch.out --wrong-output /var/tmp/p254-a40-nessi-consumer-001/wrong-thermal.out --executable /home/administrator/.local/opt/nessi-6bb4c832/bin/nessi_gaussian_embedding --report /var/tmp/p254-a40-nessi-consumer-001/result.json",
+      ""
+    ],
+    "thread_environment": [
+      "OPENBLAS_NUM_THREADS=1",
+      "OMP_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1",
+      "NUMEXPR_NUM_THREADS=1"
+    ],
+    "memory_max": "4294967296",
+    "memory_swap_max": "0"
+  },
+  "scope": "Actualownmanagerbatchcontextfornominal/inert/wrongstateandindependentreader;notphysicalNiHcollisionrate."
+}

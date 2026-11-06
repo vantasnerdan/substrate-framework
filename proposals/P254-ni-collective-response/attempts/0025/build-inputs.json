@@ -1,0 +1,703 @@
+{
+  "schema": "internal-pbe-build-v1",
+  "cwd": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build/internal-pbe",
+  "commands": [
+    [
+      "/usr/bin/cc",
+      "-O3",
+      "-fPIC",
+      "-c",
+      "inputs/beefun.c",
+      "-o",
+      "beefun.pic.o"
+    ],
+    [
+      "/usr/bin/gfortran",
+      "-O3",
+      "-fPIC",
+      "-Iinputs",
+      "-J.",
+      "-c",
+      "inputs/internal_pbe_bridge.f90",
+      "-o",
+      "internal_pbe_bridge.o"
+    ],
+    [
+      "/usr/bin/gfortran",
+      "-shared",
+      "-Wl,-z,defs",
+      "-Wl,-z,text",
+      "-Wl,-Bsymbolic",
+      "-Wl,--exclude-libs,ALL",
+      "internal_pbe_bridge.o",
+      "beefun.pic.o",
+      "inputs/xc_lib.a",
+      "/usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_mpifh.so",
+      "/usr/lib/x86_64-linux-gnu/libopenblas.so",
+      "-o",
+      "libinternal_pbe.so"
+    ]
+  ],
+  "private_copies": [
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/internal_pbe_bridge.f90",
+    "/opt/qebuild/q-e-qe-7.5/XClib/beef_interface.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/beefleg.h",
+    "/opt/qebuild/q-e-qe-7.5/XClib/beefun.c",
+    "/opt/qebuild/q-e-qe-7.5/XClib/constants_l.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/corr_gga.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/corr_lda.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/dft_setting_params.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/dft_setting_routines.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/exch_gga.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/exch_lda.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/kind_l.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/metagga.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/pbecor.h",
+    "/opt/qebuild/q-e-qe-7.5/XClib/qe_dft_list.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_d_gga.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_d_lda_lsda.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_gga.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_lda_lsda.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_mgga.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/xc_lib.a",
+    "/opt/qebuild/q-e-qe-7.5/XClib/xc_lib.mod",
+    "/opt/qebuild/q-e-qe-7.5/XClib/xclib_utils_and_para.mod"
+  ],
+  "inputs": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/build_internal_pbe.py",
+      "bytes": "9401",
+      "sha256": "1ebcd818c9f8ca411688fc4c920f62db9446a945b23ed8ddfe97b445f6cf466a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/internal_pbe_bridge.f90",
+      "bytes": "3853",
+      "sha256": "c502b9817287e4f2dc84ba818ff540e8d2f966e700aaac5c296f10b9427d5c3c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/source-access-inventory.json",
+      "bytes": "19930",
+      "sha256": "fe100dcdaa93ff0c7c372c8cfa50fda1b5351fef18f4b8bc7d8b0a9137b5c391"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/beef_interface.mod",
+      "bytes": "897",
+      "sha256": "2a7f2e569062dab7916ea04f4e74f2067537b235aaa24287c4319b023eb8b2a4"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/beefleg.h",
+      "bytes": "32307",
+      "sha256": "bf58033b3e2cb352e56099466227feebad596e21af6684fccb1e79177b4a3548"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/beefun.c",
+      "bytes": "7634",
+      "sha256": "5c57074c2f654c5dcd21593b9bba22d41e16825ac74b1785c983c512f03d943b"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/constants_l.mod",
+      "bytes": "876",
+      "sha256": "599b275c04931724d3eee9b061fdd1d3c970e167a546343d9d842a5ca88ce4e9"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/corr_gga.mod",
+      "bytes": "1142",
+      "sha256": "1f0c01ad3bff0c430082c8319b3f1bef6973c4b53b6db2201408b7616f07da87"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/corr_lda.mod",
+      "bytes": "1288",
+      "sha256": "a6d6081200cb13b5a650a73b161cc4465106e7107a2995dc06f52d0a1e15bbc8"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/dft_setting_params.mod",
+      "bytes": "983",
+      "sha256": "d027f4b55997d9d7706c01f1d6116313f3ec227ce7da77bc67a43c255381dad4"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/dft_setting_routines.mod",
+      "bytes": "2057",
+      "sha256": "c4778d89fe4f8697b13e9663c04463df0f25642c46140d290b218a99bfcc51c3"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/exch_gga.mod",
+      "bytes": "2112",
+      "sha256": "06dd700ad4c47351f73b804938e4548efadac23c459f042649cbf7e1e87e516e"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/exch_lda.mod",
+      "bytes": "702",
+      "sha256": "57947c3144329e5322c2d779c410ba6831e76e3821235a44fb9ecdd023fe1123"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/kind_l.mod",
+      "bytes": "317",
+      "sha256": "28c2013d61feb1bef274f3a18132450fe0ea111171467b39f6b17f8373e6aa8a"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/metagga.mod",
+      "bytes": "2380",
+      "sha256": "b08c9693726c090aeb9d736a4ef24684b29f2ed9ec3db678e5a995209f25efd9"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/pbecor.h",
+      "bytes": "423",
+      "sha256": "8bfd6fdbcd2091d950062333e628c1e6220b15b7c73aa4389696abaad5d6a24c"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/qe_dft_list.mod",
+      "bytes": "1494",
+      "sha256": "6529ef7d26250fe2fd9a5eadfff7abc91ef13b344f8c1fecd011d338e82d14ee"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_d_gga.mod",
+      "bytes": "1058",
+      "sha256": "500d54a17dfc49d25463e7ede10c59e2a5c528f935dd67c65a923ede1673c219"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_d_lda_lsda.mod",
+      "bytes": "519",
+      "sha256": "d0101fd0d53c56014ac2c7780d20efffce417015d2ea81fc7b065a76a650a9d8"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_gga.mod",
+      "bytes": "793",
+      "sha256": "d0a2ef085f0d0d63194d8b76f2fb47546066693f9b9528e02cf9caff8005b5a2"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_lda_lsda.mod",
+      "bytes": "490",
+      "sha256": "1af69616fdd9927c65c1bbcabd0f7c5c5ea953165ff178724e618c2923028e10"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_mgga.mod",
+      "bytes": "667",
+      "sha256": "22d4b8de68e41ee97b49047b4c9bea3fb8fdd827ff668efaef2519bdb0f5b7a8"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/xc_lib.a",
+      "bytes": "1154776",
+      "sha256": "a8f7bdfdfd3c94fa460643511aca9d7e6493ee41a4c7c8466d9b0f19eabab245"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/xc_lib.mod",
+      "bytes": "2955",
+      "sha256": "560b4c7f31b27ddda5c2fce72109f17e24bb46d94754ed0b9adc4864cf3b4836"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/XClib/xclib_utils_and_para.mod",
+      "bytes": "95510",
+      "sha256": "7fc3556b4b20b4f00b1d20009b45b5957a03837ff29cf2683de76e6b284c1a95"
+    },
+    {
+      "path": "/usr/bin/ldd",
+      "bytes": "5382",
+      "sha256": "752803b8baa217b821bd4566c4fbdaec50c01cb32d2796ec056d22d190d4290f"
+    },
+    {
+      "path": "/usr/bin/x86_64-linux-gnu-as",
+      "bytes": "745768",
+      "sha256": "21aff249b692b5c31a44007491f922dcb49f41323e362c57d2ada3f52eddb7f0"
+    },
+    {
+      "path": "/usr/bin/x86_64-linux-gnu-gcc-13",
+      "bytes": "1023032",
+      "sha256": "1b99826121ae6682a634e5efe09bd3e3df58ce58e0b28f849114ab5b89139c26"
+    },
+    {
+      "path": "/usr/bin/x86_64-linux-gnu-gfortran-13",
+      "bytes": "1027128",
+      "sha256": "142861efc95f49e33705852027dae8c2e5382fd1155fcec6116ef973f25d8f84"
+    },
+    {
+      "path": "/usr/bin/x86_64-linux-gnu-ld.bfd",
+      "bytes": "1359128",
+      "sha256": "e9ceb054c12207970f2726dfc07e9a66b411602748628baf27399f02a9bbb31b"
+    },
+    {
+      "path": "/usr/include/features-time64.h",
+      "bytes": "1409",
+      "sha256": "345acb98767d04277e413c4951fbb199b0500be23d43cddf17c6cd9fb319a8da"
+    },
+    {
+      "path": "/usr/include/features.h",
+      "bytes": "18527",
+      "sha256": "940d486d050fc87420d8ffc008e17f31ffb04467534ad1b039ed25abc52382f9"
+    },
+    {
+      "path": "/usr/include/math.h",
+      "bytes": "50939",
+      "sha256": "9d4c8fb59d888255c41cbd29fe98bce22721c9610f252f621f0b1ce1afebe59e"
+    },
+    {
+      "path": "/usr/include/stdc-predef.h",
+      "bytes": "2462",
+      "sha256": "8db4f65e62cade8ae4d9b77960ee6aee093255acc1b637e3fb37d79179733b15"
+    },
+    {
+      "path": "/usr/include/stdio.h",
+      "bytes": "34649",
+      "sha256": "b4f6709d12c8493e2a42f740845abe2994deb27fc78fb85fcaa6e27228a87d62"
+    },
+    {
+      "path": "/usr/include/stdlib.h",
+      "bytes": "41032",
+      "sha256": "21500d5cb6062df47d6507baef6111cc951ceece4e2df26289a420fcf05ebec4"
+    },
+    {
+      "path": "/usr/include/string.h",
+      "bytes": "19969",
+      "sha256": "c64819b091b17d7fcf14a10da129793f2499879eacb1b361610cbec5162fc24b"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h",
+      "bytes": "1283",
+      "sha256": "ed3a79c28629d75907ef498b30f8db2b6a433d7a49be3a752bad01007599b976"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/floatn-common.h",
+      "bytes": "10325",
+      "sha256": "b31050f2b142f1b5bedfa97158b1baa06575dd0d12dde4531b3815b57069e3da"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/floatn.h",
+      "bytes": "4457",
+      "sha256": "273e3eac154e0fd777b8e7c6edd9cd64af69a0d215370da12243d5b22378c2dc"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h",
+      "bytes": "1215",
+      "sha256": "61b9223ce4641088a5c7e5c00c99c5337f27184e0399dc6eaeb6f964f575fc01"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/fp-fast.h",
+      "bytes": "1216",
+      "sha256": "fdfbdd785f66fbfb1c09cff9be1268eba9e380333741f6fa2818f3c3cb87fa29"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/fp-logb.h",
+      "bytes": "1012",
+      "sha256": "712626c5021725ef9619d3fa39f67069f2f49029b19454b69d68444b3bb74794"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/getopt_core.h",
+      "bytes": "3667",
+      "sha256": "16640bdef5ecba29e7a79f21878a24dea4455e996a0bfd0c211b0adea60a6c92"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/getopt_posix.h",
+      "bytes": "1810",
+      "sha256": "a2ad1205e94a340a1ae72e939b2f3d4d1ff5de75d9bebe5cf17e546ed6d91256"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h",
+      "bytes": "4286",
+      "sha256": "e86638082f9ce98c82e3022018fa5be175473445c824fe17bd32bf9668582368"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h",
+      "bytes": "8933",
+      "sha256": "b00b3abd4ea49834f00c91f6f81b645a0b306a13f20ca0f8f4f2c7cc54809c61"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/long-double.h",
+      "bytes": "970",
+      "sha256": "40367287cd437d78a05313f6ec52cb0f0a711e1b6711fdcc3699bf2bf28e810f"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/math-vector.h",
+      "bytes": "5402",
+      "sha256": "2e61d60a40caeb9aae5842dfec8d674239b81c0477d2212a5afe801e4be7bf24"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h",
+      "bytes": "1863",
+      "sha256": "929a6ea9df8f8201c7a4bad2e1860fe7d839c84e4d72b91d49c29eb7af840f4f"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/mathcalls.h",
+      "bytes": "14562",
+      "sha256": "9c334a3ae196c1d619c46433e45e0a1266784f9cf7cd23461f1910c0f2d742dc"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h",
+      "bytes": "1838",
+      "sha256": "adf5a36ccf71cf7252c97627b133285f53d3d66b499838bb717845dcd8d93571"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h",
+      "bytes": "3072",
+      "sha256": "c47d28c26504ebda1e15d82b9ae74d288c9d68e757c7f37456dc39b131131035"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h",
+      "bytes": "1037",
+      "sha256": "94286e42e4970304da5cbef69de6695c84132ff8fbd4b6d72d29aeb7406dc5ff"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/stdio.h",
+      "bytes": "5599",
+      "sha256": "bb9b0feccc1b326b8aee69fd00059b715947fee86b8638e27d07710f2c2895df"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/stdio2-decl.h",
+      "bytes": "6309",
+      "sha256": "c3acb8208277348f1e7df5b44ca92a253947041a6c79e5a04db9d5ffa96327db"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/stdio2.h",
+      "bytes": "8202",
+      "sha256": "e553964cc1a45a330dc65224bae4e81299a6c4662985926f80151b4ea902cbf6"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/stdio_lim.h",
+      "bytes": "1059",
+      "sha256": "509fc0d1fba9f06fe85d61b6b9c0b2208c8fe8e63af55fcfdd7e4ad5eabe6927"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h",
+      "bytes": "1557",
+      "sha256": "4c5e9e9b5f53c543ef6c8c933232e8a9aae0c2a93ef57d178c4edce76fd53531"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/stdlib-float.h",
+      "bytes": "1115",
+      "sha256": "ba3d25100d93a324122c4c8121759c689607656aedf0efa148f0bfe8826c9794"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/stdlib.h",
+      "bytes": "5779",
+      "sha256": "1b70f2c7745d3ed2f4dff21b6d8afb8f9618441ca5c57ec3420d6173de500f8a"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/string_fortified.h",
+      "bytes": "5625",
+      "sha256": "0cfa3c530938891615ab64ab5dfb72ebd8d02077d29d4410774b8a8ceff628fb"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h",
+      "bytes": "1810",
+      "sha256": "ec8b2058d4ac8e98ebaf6bdcb078000dd4df92b584e2ce6ae79546fb4219cde2"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h",
+      "bytes": "2027",
+      "sha256": "4b55d768919e8183816e4cdf910f62c7ac5313e70e370b287157e503bd2c26d1"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h",
+      "bytes": "3912",
+      "sha256": "21f6f60e8a28e6e0166f0b3685d939774b553a27d1f221559f2d8176b8fb2358"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/time64.h",
+      "bytes": "1340",
+      "sha256": "2be9170ce3621ea6062f10edef68bbc2db09bb454ec4397534263dd37b8f1f6a"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/timesize.h",
+      "bytes": "1109",
+      "sha256": "8b686ad5fec2c4d6f759a6594d7c216337774d059623677547b7e182cc5269ae"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types/FILE.h",
+      "bytes": "180",
+      "sha256": "37515f78be386f2edad4746f2947c928f480728c56d9a94e25302ebbdaef3c96"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types/__FILE.h",
+      "bytes": "110",
+      "sha256": "26c909942e8a6bc82725e9c402f393aed9e32d94190257ddf71e1b5f819b4e5e"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h",
+      "bytes": "410",
+      "sha256": "8afae3abf006beb39fd9d4d4bae38745cdf08a91e6217ddf25833c8d4b04751b"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h",
+      "bytes": "381",
+      "sha256": "603e58ab31ed75b7e0ab09a2ca94e99955f7fbc63310466321ce27c906227eb4"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h",
+      "bytes": "564",
+      "sha256": "c561df72d5b987ccbd022059fdb1bcb6899c3e94b403997a0576ef3e1afb0f94"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types/clock_t.h",
+      "bytes": "143",
+      "sha256": "81e60e8a8d99b28bc723c14b156d7f7fc8ff663d98a857a3f5aea90431f577e3"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h",
+      "bytes": "174",
+      "sha256": "dcd64d184855b245e5c7acf21910a0aaca590f1faf094e400da5d30551d11eb0"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h",
+      "bytes": "4104",
+      "sha256": "79ad5bbe87e2be78d83990f8e28e0b20163e7ee03b733dc7cbea4eed94b8314f"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types/time_t.h",
+      "bytes": "203",
+      "sha256": "721a557cff3ed308c69719a44ba8f7cd9536f6c602fb8f1b1eea8ed6749ee37d"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types/timer_t.h",
+      "bytes": "159",
+      "sha256": "d96a2452da0d933941273d11d1048ea525f033306892835b0a7a0999b13853aa"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/types.h",
+      "bytes": "8806",
+      "sha256": "371847ed3adab1c19db392034f6a22407d321b1dc5f2440563f4b0b8b6c5386b"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/typesizes.h",
+      "bytes": "3737",
+      "sha256": "047ee5ab17a95364c4b0f14c3eb0750e84e457c408f9a65a6c225ece585e0c14"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/waitflags.h",
+      "bytes": "1697",
+      "sha256": "c1f4b1268f7ed37c33b42020ae59934d7c8073f9fef0740312cc80cdf40b08b8"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/waitstatus.h",
+      "bytes": "2287",
+      "sha256": "16aa0bd73a56cbb6cbc18095bd7a665bf9795196d056b0ec307b049f3871186c"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/bits/wordsize.h",
+      "bytes": "442",
+      "sha256": "716d8459074e2a082d65a28192b32eddbfd7587348372395b1c283a723ae4c18"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/gnu/stubs-64.h",
+      "bytes": "481",
+      "sha256": "0b6ab3e2ed3ba79b30fe6ba81a68fc41f57965b8d56662763633431b703c9289"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/gnu/stubs.h",
+      "bytes": "384",
+      "sha256": "ef444295a0a9e8f5c40918399a00cc91ba0bd79774110cdf6e652baa6cfadb2e"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/sys/cdefs.h",
+      "bytes": "27011",
+      "sha256": "173afb522c6877dda3be1c93742c2061cd6e748ce395d2b3ae833fb49bfbfc4f"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/sys/types.h",
+      "bytes": "5713",
+      "sha256": "049fc3ed84e810730a0b56e2084f9c190f7fbb582de6b55d7aa416dc41b17cd3"
+    },
+    {
+      "path": "/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o",
+      "bytes": "2752",
+      "sha256": "667ff5f1edc931d44d1f2bb44d313907aa274bcc207c0beff71a398335f0d29f"
+    },
+    {
+      "path": "/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o",
+      "bytes": "1168",
+      "sha256": "9c8b2caad195193301ef072895dc89bea1d23371d4c19accd821debe27773063"
+    },
+    {
+      "path": "/usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h",
+      "bytes": "4303",
+      "sha256": "5a443943e67d7bab17203591b4ccb508757587d9b955ee883a053d755ed09321"
+    },
+    {
+      "path": "/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h",
+      "bytes": "13735",
+      "sha256": "9efc696d6c7eb8bb1831b149c6a92f88a775809cd63e4007312b617915f81188"
+    },
+    {
+      "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a",
+      "bytes": "3093656",
+      "sha256": "d9376c55f97863a4e5fbb6c6beca2591b319bf786f3a7ca56da8964c5662171f"
+    },
+    {
+      "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_s.so",
+      "bytes": "132",
+      "sha256": "69a56a9993b7729b29b274e65016031c81f2397f176ed5ad44d59bd50425e0bd"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/crti.o",
+      "bytes": "1192",
+      "sha256": "077ccb6c68db1794da3ee262c4a16a3c6f8e902845dd0829110ad4b7065e5aa3"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/crtn.o",
+      "bytes": "760",
+      "sha256": "a2266079f95b84ccc2162ebbf279bcd78858a748aa1882e0bdb912316c76a58f"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+      "bytes": "236616",
+      "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libbfd-2.42-system.so",
+      "bytes": "1479888",
+      "sha256": "11f084bc6ff5fc64e91c0b6422040fab1245419e7ff29560a95c1176ce1b9ff4"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libc.so",
+      "bytes": "283",
+      "sha256": "fe2a4ce2930fc6b3966aa987fae808375446c8d3823b8c21792e991aad9c75df"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+      "bytes": "2129424",
+      "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libc_nonshared.a",
+      "bytes": "5594",
+      "sha256": "3341391290ddd596521a61152b4e2612f4625cc85f737d875b918f6cfb2b2786"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libcap.so.2.66",
+      "bytes": "51536",
+      "sha256": "6ac6abc86ac891c6e13486470e26f1d939f47fda9e6b5d5508a7f5ec881adc84"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libctf.so.0.0.0",
+      "bytes": "220384",
+      "sha256": "25c8f765c259d05b59a3dc3634d711912a7f5ce9be8a28ace081507b925b3ad1"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1",
+      "bytes": "215216",
+      "sha256": "7fa4592ebaec38a7c1ce665c29244fbaae249cab6c1dbdd5024418dcdfd4898e"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libevent_pthreads-2.1.so.7.0.1",
+      "bytes": "14256",
+      "sha256": "e386329c9c16032b489bebbd545750f35eafc0f50ab88ef0c986a31acb4b47a2"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+      "bytes": "183024",
+      "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgfortran.so.5.0.0",
+      "bytes": "3263912",
+      "sha256": "342618ccfebe840446e4ef2b7893f4161b2084845e570f42d68a70bfde58a58d"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.5.0",
+      "bytes": "534896",
+      "sha256": "0ccdfb6d6f5c039465f6d002cf7e4c072d48ac6a2cffc8dd6c748dec31592804"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libhwloc.so.15.7.0",
+      "bytes": "392576",
+      "sha256": "86dff44a023254d997cea910b9a51f35afefe6780f4b5530f974a2009ba47487"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libisl.so.23.3.0",
+      "bytes": "1863352",
+      "sha256": "db4f717fd1678b48e5dddea1cbdd2d239594a70b57e96d0923bfd9533351efa8"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libjansson.so.4.14.0",
+      "bytes": "64008",
+      "sha256": "c49935a4b3ac599064281b1f257576087806d0dad7ec46f353bd983b052c5e26"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libm.so",
+      "bytes": "140",
+      "sha256": "55de4a3e12e17c3e2b18eb95ee21b3f46a8893ea6cab68c0a1c3a5caaf32e6cf"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+      "bytes": "952616",
+      "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmpc.so.3.3.1",
+      "bytes": "134440",
+      "sha256": "91d2b2b0b794028c733431e01acc227ff39ee289384fdf22869c8b42ad3aaa3b"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmpfr.so.6.2.1",
+      "bytes": "760464",
+      "sha256": "2156351fa3dedd04a7381c6ac7a8a26efa2d6fb08b80f8a2d644ccdd653710ae"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmpi.so.40.30.6",
+      "bytes": "1182056",
+      "sha256": "9055018b12757e830591aa0283e485e471f1f2a06d3bc0dd5fb35ab00386c172"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmpi_mpifh.so.40.30.0",
+      "bytes": "415160",
+      "sha256": "54eb60df3150c299e7c0bb4e4b502399b221544856d489fa480dce166734098d"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmvec.so.1",
+      "bytes": "1018144",
+      "sha256": "57329ee0018b8fd8f8e51af5f87c723b6ecdf04679f4493134beab0f45d58ec5"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.3",
+      "bytes": "704192",
+      "sha256": "59c4d9b111cd3ec326a4df475a338daae050496087c67e86956187056fdc3051"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.3",
+      "bytes": "757352",
+      "sha256": "26467e1da428d31dab924ddbc50bc6ade75da47dbb82c77498a5f127a5466ba7"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libsframe.so.1.0.0",
+      "bytes": "35168",
+      "sha256": "1693a2dbd77c909d279ae34aa9b5d8d08d97f116f8d0ed724063df11151b3c69"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libudev.so.1.7.8",
+      "bytes": "207288",
+      "sha256": "4298228175fa62a36af88b1afd4406cdd8b1bf166621f957d0dbbde45a698fe5"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libz.so.1.3",
+      "bytes": "113000",
+      "sha256": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libzstd.so.1.5.5",
+      "bytes": "755864",
+      "sha256": "0a2128bc10841fb29e76d08d945864dfb0b6a66da5df6df5d8299197439e54bb"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so",
+      "bytes": "37555760",
+      "sha256": "bfc7492adbf84a8f567720a9e1fae2afc18f3d817da233e7f4d453683485308e"
+    },
+    {
+      "path": "/usr/libexec/gcc/x86_64-linux-gnu/13/cc1",
+      "bytes": "30487984",
+      "sha256": "5d1679131184e2de4435b426eb264bf13472fe026db8e5c6bc97445814e8e2f4"
+    },
+    {
+      "path": "/usr/libexec/gcc/x86_64-linux-gnu/13/collect2",
+      "bytes": "336056",
+      "sha256": "4d1f341ae5b763b513258ee2812422a45e063c30a2f1924a0cf63d3699f3a158"
+    },
+    {
+      "path": "/usr/libexec/gcc/x86_64-linux-gnu/13/f951",
+      "bytes": "31989288",
+      "sha256": "9c86153267d3b556b4c74c204f775737b39e2bdd611c62a39c71714cde6acb1d"
+    }
+  ],
+  "compiler_versions": {
+    "/usr/bin/gfortran": "GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "/usr/bin/cc": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+  },
+  "scope": "original internal PBE archive plus original BEEF PIC adjunct; no numerical execution"
+}

@@ -1,0 +1,112 @@
+"""Compose exact printing boxes into registered raw force/scalar diagnostics."""
+from itertools import product
+import numpy as np
+import sympy as sp
+from scipy.linalg import norm
+from substrate_framework.material_force_sensitivity import (
+    difference_box,box_norm_squared,max_force_difference,printing_decision,
+    printed_interval,scalar_difference_interval,
+)
+from substrate_framework.material_primary_boundary import force_rounding_upper
+
+GATE=sp.Rational('0.003')
+
+
+def norm_record(squared):
+    return {'squared_exact':str(squared),'norm_exact':str(sp.sqrt(squared)),
+            'norm_decimal_approximation':str(sp.N(sp.sqrt(squared),24))}
+
+
+def comparison(ledger,context,name):
+    first=context['cases'][name]['native_force_tokens']
+    second=context['cases']['baseline']['native_force_tokens']
+    factor=context['units']['force']
+    result=max_force_difference(first,second,factor)
+    floating=np.array(first,float)-np.array(second,float)
+    independent=[norm(row)*float(factor) for row in floating]
+    ledger.check(name+' raw maximum agrees with independent SciPy full-vector subtraction',
+                 abs(max(independent)-float(sp.sqrt(result['center_squared'])))<2e-16)
+    triangles=[]; atoms=[]
+    for i,(a,b) in enumerate(zip(first,second)):
+        box=difference_box(a,b,factor); lo,hi=box_norm_squared(box)
+        corner_max=max(sum(x*x for x in point) for point in product(*box))
+        closest=[min(max(sp.S.Zero,l),h) for l,h in box]
+        ledger.check(name+f' atom {i+1} exact independent corner/projection extrema',
+                     hi==corner_max and lo==sum(x*x for x in closest))
+        center=[(l+h)/2 for l,h in box]; radius=max((h-l)/2 for l,h in box)
+        triangle=float(force_rounding_upper(np.array([center],float),float(radius))[0])
+        ledger.check(name+f' atom {i+1} corrected retained triangle encloses box',
+                     float(sp.sqrt(hi))<=triangle*(1+2e-15))
+        triangles.append(triangle)
+        atoms.append({'atom_1based':i+1,'component_difference_boxes_exact':[[str(l),str(h)] for l,h in box],
+                      'center':norm_record(result['per_atom_center_squared'][i]),
+                      'printing_lower':norm_record(lo),'printing_upper':norm_record(hi)})
+    return {'observable':'max_i sqrt(sum_xyz ((F_probe-F_original)_i)^2), unprojected full raw forces',
+            'unit':'eV/Angstrom','gate_exact':str(GATE),'gate_eV_per_angstrom':'0.003',
+            'raw_center':norm_record(result['center_squared']),
+            'printing_lower':norm_record(result['lower_squared']),
+            'printing_upper':norm_record(result['upper_squared']),
+            'raw_center_at_or_below_gate':bool(result['center_squared']<=GATE**2),
+            'printing_decision':printing_decision(result['lower_squared'],result['upper_squared'],GATE),
+            'max_center_atom_1based':result['max_center_atom_1based'],
+            'corrected_triangle_upper_approximation':max(triangles),'per_atom':atoms,
+            'error_scope':'Printed token rounding only; no SCF-force, basis, k-grid, smearing, or continuum error enclosure.'}
+
+
+def scalar_record(first,second,factor):
+    lower,upper=scalar_difference_interval(first,second,factor)
+    a,ra=printed_interval(first); b,rb=printed_interval(second)
+    return {'first_token':first,'baseline_token':second,'difference_lower_exact':str(lower),
+            'difference_upper_exact':str(upper),'difference_lower_approximation':str(sp.N(lower,24)),
+            'difference_upper_approximation':str(sp.N(upper,24)),
+            'first_printed_interval_exact':[str((a-ra)*factor),str((a+ra)*factor)],
+            'baseline_printed_interval_exact':[str((b-rb)*factor),str((b+rb)*factor)],
+            'printing_order':'first_below' if upper<0 else 'first_above' if lower>0 else 'overlap'}
+
+
+def run_refinements(ledger,context):
+    # Asymmetric witnesses expose common norm/subtraction/projection/unit substitutions.
+    zero=[['0.00000000']*3]*2
+    uniform=[['0.00400000','0.00000000','0.00000000']]*2
+    raw=max_force_difference(uniform,zero,1)
+    ledger.check('uniform raw difference exceeds gate though COM/mean projection erases it',
+                 raw['lower_squared']>GATE**2 and np.max(np.abs(np.array(uniform,float)-np.array(uniform,float).mean(axis=0)))==0)
+    signed=[['-0.00200000','0.00000000','0.00000000']]
+    positive=[['0.00200000','0.00000000','0.00000000']]
+    ledger.check('opposite-sign witness exceeds gate while absolute-before-subtract erases it',
+                 max_force_difference(signed,positive,1)['lower_squared']>GATE**2)
+    near=[['0.00200000','0.00000000','0.00000000']]
+    ledger.check('Ry/Hartree unit mutation flips an otherwise inside-gate witness',
+                 max_force_difference(near,zero[:1],1)['upper_squared']<GATE**2 and
+                 max_force_difference(near,zero[:1],2)['lower_squared']>GATE**2)
+    results={name:comparison(ledger,context,name) for name in ('cutoff-50-600','k666','smearing-001')}
+    context['refinements']=results
+    return {'comparisons':results,'current_status':'registered raw diagnostic only; every above-gate refinement is unresolved numerical convergence, not accepted',
+            'joint_printing_gate_met':all(row['printing_decision']=='guaranteed_below' for row in results.values()),
+            'not_established':['SCF-force error bound','asymptotic cutoff/k/smearing convergence','mode convergence','stationarity at refined settings']}
+
+
+def run_high_start(ledger,context):
+    first=context['cases']['high-moment-06']; baseline=context['cases']['baseline']
+    diagnostics={key:scalar_record(first[field],baseline[field],factor) for key,field,factor in
+                 [('energy_eV','energy_ry_token',context['units']['ry']),
+                  ('total_moment_muB_per_cell','total_moment_token',sp.S.One),
+                  ('absolute_moment_muB_per_cell','absolute_moment_token',sp.S.One)]}
+    for key,field,factor in [('energy_eV','energy_ry_token',context['units']['ry']),
+                           ('total_moment_muB_per_cell','total_moment_token',sp.S.One),
+                           ('absolute_moment_muB_per_cell','absolute_moment_token',sp.S.One)]:
+        direct=(printed_interval(first[field])[0]-printed_interval(baseline[field])[0])*factor
+        lower=sp.sympify(diagnostics[key]['difference_lower_exact']);upper=sp.sympify(diagnostics[key]['difference_upper_exact'])
+        ledger.check('high-start '+key+' exact signed center inside printing interval',lower<=direct<=upper)
+        reverse=scalar_difference_interval(baseline[field],first[field],factor)
+        ledger.check('high-start '+key+' independent reverse subtraction antisymmetry',reverse==(-upper,-lower))
+    force=comparison(ledger,context,'high-moment-06')
+    energy_order=diagnostics['energy_eV']['printing_order']
+    resolved=energy_order!='overlap'
+    return {'same_geometry':True,'same_physics_except_cold_start_magnetization':True,
+            'cold_starts_Ni':{'original':'0.06','high':'0.6'},'printed_scalar_diagnostics':diagnostics,
+            'force_difference':force,
+            'separately_print_resolved_energy_candidate':resolved,
+            'lower_printed_energy_candidate':'high-moment-06' if energy_order=='first_below' else 'baseline' if energy_order=='first_above' else None,
+            'required_follow_through':'Registered lower-branch follow-through and tighter branch/SCF/discretization diagnostics are required before physical branch selection.' if resolved else 'Printing overlap does not prove identical electronic state; branch follow-through remains a parent obligation.',
+            'scope':'Fixed-settings retrospective printed energy/moment/force diagnostic only. Energy ordering is not a global ground state or rigorous SCF/discretization error bound. Overlapping diagnostics do not prove identical electronic states.'}

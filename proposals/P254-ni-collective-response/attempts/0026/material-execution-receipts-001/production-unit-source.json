@@ -1,0 +1,8 @@
+{
+  "text": "[Unit]\nDescription=P2540026 Root delegated raw material map execution\n[Service]\nType=exec\nWorkingDirectory=/home/administrator/projects/substrate-ni-collective\nEnvironment=PYTHONUNBUFFERED=1\nEnvironment=OMP_NUM_THREADS=1\nEnvironment=OPENBLAS_NUM_THREADS=1\nEnvironment=MKL_NUM_THREADS=1\nEnvironment=NUMEXPR_NUM_THREADS=1\nEnvironment=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025\nExecStart=/home/administrator/projects/substrate-framework/.venv/bin/python -u /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/run_material_dyad_pilot.py --admission /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/material-dyad-admission-001.json --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/material-dyad-pilot-001\nRestart=no\nRuntimeMaxSec=75\nTimeoutStopSec=2\nKillMode=control-group\nCPUAffinity=6\nMemoryMax=4294967296\nMemorySwapMax=0\nMemoryAccounting=yes\nStandardOutput=journal\nStandardError=journal\n",
+  "binding": {
+    "path": "/home/administrator/.config/systemd/user/p254-material-dyad-0026.service",
+    "bytes": "1294",
+    "sha256": "7f8a0462f6f39bc77e3250e8635d6bbad497ef6d421baf976e3541aeadc2e0c2"
+  }
+}

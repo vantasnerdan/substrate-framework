@@ -1,0 +1,42 @@
+{
+  "schema": "P254-actual-density-retained-comparison-v1",
+  "status": "complete",
+  "original_diagnostic": {
+    "path": "/var/tmp/p254-a28-density-only-diagnostic-001/result.json",
+    "bytes": "2989",
+    "sha256": "6f2292ba135a7fca3177efd54f27ce5cc579da348a32e2b5b7dea8f48ea81443"
+  },
+  "retained_output": {
+    "path": "/var/tmp/p254-a28-density-only-diagnostic-001/legacy-plus-density.npy",
+    "bytes": "11944064",
+    "sha256": "ff2c3a987d25c5797ed12bd84c990241cf74a18b6b41c71cdbf81f5bcd9e671c"
+  },
+  "checks": {
+    "historical": {
+      "binding": {
+        "path": "/var/tmp/p254-a28-loaded-raw-mixed-gamma-005/scientific-work/d14a4ffc9e51dd23b43e3aa55df71148b740df282d4d2b3e0ac4c138bd5ad56f/generation-519d455ef9ed47e897b9175f80eedf56/item-0000/attempt-2bc66a25885140bda87d8f22d83b0960/plus-density.npy",
+        "bytes": 11944064,
+        "sha256": "ff2c3a987d25c5797ed12bd84c990241cf74a18b6b41c71cdbf81f5bcd9e671c"
+      },
+      "max_absolute_error": 0.0,
+      "relative_error": 0.0,
+      "reference_max": 7.077936920751067e-20,
+      "bitwise_equal": true,
+      "passed": true
+    },
+    "current": {
+      "binding": {
+        "path": "/var/tmp/p254-a28-shared-moment-smoke-004/plus-density.npy",
+        "bytes": 11944064,
+        "sha256": "7ea12ffc3cf47d3b9a0f8bae78c8cd0acbcf32231a94f265f5d1f107aaa8b5af"
+      },
+      "max_absolute_error": 1.262177448353619e-29,
+      "relative_error": 1.783256141564602e-10,
+      "reference_max": 7.077936920751067e-20,
+      "bitwise_equal": false,
+      "passed": true
+    }
+  },
+  "consumer_error": "Contraction completed and retained its output; comparison used an incorrect dot-separated product key. Recovered comparison on immutable output without Native replay.",
+  "native_contraction_replayed": false
+}

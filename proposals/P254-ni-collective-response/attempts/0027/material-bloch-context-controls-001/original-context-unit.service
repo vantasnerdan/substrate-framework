@@ -1,0 +1,15 @@
+[Unit]
+Description=P254 A27 owned Bloch context-only CPU7
+[Service]
+Type=exec
+WorkingDirectory=/home/administrator/projects/substrate-ni-collective
+ExecStart=/usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/run_material_bloch_pilot.py --admission /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/context-only-authority-001.json --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-context-001 --context-only
+CPUAffinity=7
+MemoryMax=4294967296
+MemorySwapMax=0
+RuntimeMaxSec=30
+TimeoutStopSec=2
+Restart=no
+Environment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+StandardOutput=append:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-context-controls-001/context-process.stdout
+StandardError=append:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-context-controls-001/context-process.stderr

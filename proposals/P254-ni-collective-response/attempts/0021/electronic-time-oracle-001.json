@@ -1,0 +1,2448 @@
+{
+  "created_at": "2026-10-27T19:46:51.350805+00:00",
+  "preregistration_commit": "2cb8638a",
+  "scaled_allowance": 1e-10,
+  "equation": "i*d(delta_rho)/d(tau)=[H0,delta_rho]+[v+g*u,rho0]",
+  "time_convention": "Ry-energy time, hbar=1, exp(-i*z*tau)",
+  "state_normalization": "unweighted spectral plus ket and conjugated minus ket amplitudes; weighted occupations enter observables only; no state cutoff",
+  "state_packing": "channel order, plus then minus, (target,source) flattened C order",
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/pw_electronic_dynamics.py",
+      "bytes": 5945,
+      "sha256": "529bc7e4acae3fcf678e8e3b0a4f4eeb1304d9d4f9e95a0423ac0705ad3da8a8"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/pw_independent_response.py",
+      "bytes": 4201,
+      "sha256": "313939e4e44310bc88cd60d414264c7514c5d55605e552cd49e45db398ff889a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/pw_response_data.py",
+      "bytes": 1584,
+      "sha256": "8af4ccc9ef6d9315db7fc19662061b5a75efcbd49abc188140a120d3437a5308"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/pw_transition_space.py",
+      "bytes": 4364,
+      "sha256": "5312e1d55be9c10240f84f4791686b9b06de84fb93ab5426c7df74959411890b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_response_fft.py",
+      "bytes": 6199,
+      "sha256": "8aa8cebbb86e4b6d1b59bc074d5c4007792cb3be48b2aa80baa9f9c855995107"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/run_electronic_time_oracle.py",
+      "bytes": 17861,
+      "sha256": "4fbed77bf4eba5e45f60d1fca0a8b8695dbda5c8afa4af5ea7edd179572e2265"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/registration.json",
+      "bytes": 6084,
+      "sha256": "6d2334f80f7f3273b324ddb982d451dc414c6e7c65455de8926dd8729479ddbc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/source-inventory.json",
+      "bytes": 13138,
+      "sha256": "d90e1313c36c8062c336ab9fd4528d4ad5f7262ed728d2e6424fd2e169c3ab60"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0019/run_two_branch_oracle.py",
+      "bytes": 17306,
+      "sha256": "58bc1b7812d81d81ba73aeeffeac117b3711587f6d5c1094bce48f029e5b28db"
+    }
+  ],
+  "checks": [
+    {
+      "name": "packing_and_state_observables",
+      "q_step": 0,
+      "density": {
+        "maxabs_error": 1.831920557255352e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 8.777083671441753e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "original_basis_commutator_derivative",
+      "q_step": 0,
+      "maxabs_error": 1.962615573354719e-16,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "stationary_reference",
+      "q_step": 0,
+      "maxabs_error": 5.2845041577819695e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "complex_linear_derivative",
+      "q_step": 0,
+      "maxabs_error": 8.95090418262362e-16,
+      "scale": 5.348909468889572,
+      "allowance": 5.348909468889573e-10,
+      "agreement": true
+    },
+    {
+      "name": "complex_linear_observables",
+      "q_step": 0,
+      "density": {
+        "maxabs_error": 1.0007415106216804e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 3.510833468576701e-16,
+        "scale": 1.0372698403004672,
+        "allowance": 1.0372698403004672e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "mixed_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 6.146285623827124e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 4.001522404989816e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "mixed_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 1.8683543625880677e-17,
+        "stationary_reference_maxabs": 5.2845041577819695e-17,
+        "trace_response_maxabs": 6.465307645970784e-16
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "mixed_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 8.95090418262362e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 2.3895600220792276e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "gamma_per_spin_particle_conservation",
+      "drive": "mixed_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 7.159592976888185e-15,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "ionic_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 5.0643943914244e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.1552841592104113e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "ionic_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 1.962615573354719e-17,
+        "stationary_reference_maxabs": 5.2845041577819695e-17,
+        "trace_response_maxabs": 1.0044771701348373e-15
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "ionic_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 4.980680815904874e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.667082798783369e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "gamma_per_spin_particle_conservation",
+      "drive": "ionic_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 5.9421970597324696e-15,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "local_up",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 4.318323284828519e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.387036988244788e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "local_up",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 9.813077866773595e-18,
+        "stationary_reference_maxabs": 5.2845041577819695e-17,
+        "trace_response_maxabs": 1.1685667620907394e-16
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "local_up",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.5589376332604516e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 3.775166431889533e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "gamma_per_spin_particle_conservation",
+      "drive": "local_up",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 5.691251052494833e-15,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "local_down",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.7295194838548583e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 3.128894915110831e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "local_down",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 7.757919228897728e-18,
+        "stationary_reference_maxabs": 5.2845041577819695e-17,
+        "trace_response_maxabs": 1.4391494949463054e-15
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "local_down",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 4.335559509131367e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.0129834521696388e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "gamma_per_spin_particle_conservation",
+      "drive": "local_down",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 1.995445113998753e-15,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "constant_per_spin_gauge",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 7.919150324141883e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.075217065613588e-14,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "constant_per_spin_gauge",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 3.697785493223493e-32,
+        "stationary_reference_maxabs": 5.2845041577819695e-17,
+        "trace_response_maxabs": 5.05754456963979e-16
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "constant_per_spin_gauge",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 1.1443916996305594e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 2.3314683517128287e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "constant_per_spin_zero_observable",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 7.978943554234763e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.097918095648494e-14,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "gamma_per_spin_particle_conservation",
+      "drive": "constant_per_spin_gauge",
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 1.824142102662997e-15,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 0.07,
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 2.797157557069881e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 0.07,
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.5447867175859907e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.3092278833360675e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_spin_trace_conservation",
+      "tau_ry": 0.07,
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 4.443059973708341e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 0.31,
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 8.44865542934803e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 0.31,
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 3.0531133177191805e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.3668035872266426e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_spin_trace_conservation",
+      "tau_ry": 0.31,
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 3.469446951953614e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 1.0,
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 1.5218182408308984e-16,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 1.0,
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.2301825219878386e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 2.856347445061687e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_spin_trace_conservation",
+      "tau_ry": 1.0,
+      "q_step": 0,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 7.016522229951154e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "mixed_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 3.1513294341119745e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.2826869611497414e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "mixed_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 3.469446951953614e-17,
+        "stationary_reference_maxabs": 5.2845041577819695e-17,
+        "trace_response_maxabs": 2.60930321732885e-16
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "mixed_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 3.376611507232129e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.444357059649813e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "gamma_per_spin_particle_conservation",
+      "drive": "mixed_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 3.7858635039781495e-15,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "ionic_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.6266486087603533e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 7.637828095439788e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "ionic_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 1.5515838457795457e-17,
+        "stationary_reference_maxabs": 5.2845041577819695e-17,
+        "trace_response_maxabs": 2.294970975073524e-16
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "ionic_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.8871552678286987e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.25056117926755e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "gamma_per_spin_particle_conservation",
+      "drive": "ionic_complex",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 3.155075753045201e-15,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "local_up",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.4468163940623103e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 5.186213973563276e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "local_up",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 7.757919228897728e-18,
+        "stationary_reference_maxabs": 5.2845041577819695e-17,
+        "trace_response_maxabs": 9.246515747264102e-17
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "local_up",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 8.441528768080323e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.831920557255352e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "gamma_per_spin_particle_conservation",
+      "drive": "local_up",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 3.199499004516426e-15,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "local_down",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 1.5206441924171217e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.2422364380182513e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "local_down",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 1.5515838457795457e-17,
+        "stationary_reference_maxabs": 5.2845041577819695e-17,
+        "trace_response_maxabs": 7.960539287778449e-16
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "local_down",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.779024842816778e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 5.978733960281817e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "gamma_per_spin_particle_conservation",
+      "drive": "local_down",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 1.2281706519507975e-15,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "constant_per_spin_gauge",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 3.923238526707187e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 5.400277151848829e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "constant_per_spin_gauge",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 2.7561665763534394e-32,
+        "stationary_reference_maxabs": 5.2845041577819695e-17,
+        "trace_response_maxabs": 2.656352545873846e-16
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "constant_per_spin_gauge",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 4.494775313252277e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 7.890837414497863e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "constant_per_spin_zero_observable",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 3.95516952522712e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 5.511740369885359e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "gamma_per_spin_particle_conservation",
+      "drive": "constant_per_spin_gauge",
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 1.2400952359962888e-15,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 0.07,
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 3.469446951953614e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 0.07,
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.558937633260452e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.2794688166302258e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_spin_trace_conservation",
+      "tau_ry": 0.07,
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 5.003707553108402e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 0.31,
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 8.847089727481716e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 0.31,
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.9439233600320783e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.6711069443220838e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_spin_trace_conservation",
+      "tau_ry": 0.31,
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 5.928593550334434e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 1.0,
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 1.6243534171511178e-16,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 1.0,
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.368389951639684e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 3.194906681775283e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_spin_trace_conservation",
+      "tau_ry": 1.0,
+      "q_step": 0,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 7.016522229951154e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "wrong_state_shape",
+      "q_step": 0,
+      "agreement": true
+    },
+    {
+      "name": "nonfinite_state",
+      "q_step": 0,
+      "agreement": true
+    },
+    {
+      "name": "wrong_potential_shape",
+      "q_step": 0,
+      "agreement": true
+    },
+    {
+      "name": "wrong_displacement_shape",
+      "q_step": 0,
+      "agreement": true
+    },
+    {
+      "name": "packing_and_state_observables",
+      "q_step": 1,
+      "density": {
+        "maxabs_error": 2.5972813780509237e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 5.551115123125783e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "original_basis_commutator_derivative",
+      "q_step": 1,
+      "maxabs_error": 2.7265526925652344e-16,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "stationary_reference",
+      "q_step": 1,
+      "maxabs_error": 7.076311083754596e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "complex_linear_derivative",
+      "q_step": 1,
+      "maxabs_error": 8.95090418262362e-16,
+      "scale": 7.2714759795022,
+      "allowance": 7.2714759795022e-10,
+      "agreement": true
+    },
+    {
+      "name": "complex_linear_observables",
+      "q_step": 1,
+      "density": {
+        "maxabs_error": 1.962615573354719e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 2.237726045655905e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "mixed_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.131293998348578e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.0577205229617819e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "mixed_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 5.647850449853784e-17,
+        "stationary_reference_maxabs": 7.076311083754596e-17,
+        "trace_response_maxabs": 0.0
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "mixed_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.220446049250313e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 2.2887833992611187e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "ionic_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 1.8578750750735134e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 3.804545602077247e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "ionic_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 3.3682237275240583e-17,
+        "stationary_reference_maxabs": 7.076311083754596e-17,
+        "trace_response_maxabs": 0.0
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "ionic_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 1.6883057536160646e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 3.663841114510704e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "local_up",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 3.4598928177881336e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 2.5601133455362503e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "local_up",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 1.4304896245381992e-17,
+        "stationary_reference_maxabs": 7.076311083754596e-17,
+        "trace_response_maxabs": 0.0
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "local_up",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 4.2207643840401616e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 5.96906223549092e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "local_down",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 4.96179435490278e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 6.11804901098417e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "local_down",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 7.757919228897728e-18,
+        "stationary_reference_maxabs": 7.076311083754596e-17,
+        "trace_response_maxabs": 0.0
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "local_down",
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 4.0460356557118353e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 3.576224061345498e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 0.07,
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 4.177767360805209e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 0.07,
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.4365301257266767e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 6.206335383118183e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 0.31,
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 8.886119947416683e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 0.31,
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 3.524691737941478e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 8.469999434971913e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 1.0,
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "maxabs_error": 2.0496181818072013e-16,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 1.0,
+      "q_step": 1,
+      "z_ry": [
+        0.02,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 3.729292374017667e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 3.5005327124830286e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "mixed_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 1.4817729808860656e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 8.557093927590295e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "mixed_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 3.273069708340169e-17,
+        "stationary_reference_maxabs": 7.076311083754596e-17,
+        "trace_response_maxabs": 0.0
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "mixed_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 1.942890293094024e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 4.1261629522333654e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "ionic_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 1.3171852563959177e-15,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 4.0029660424867215e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "ionic_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 5.204170427930421e-17,
+        "stationary_reference_maxabs": 7.076311083754596e-17,
+        "trace_response_maxabs": 0.0
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "ionic_complex",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 1.3877787807814457e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 2.2887833992611187e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "local_up",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 5.0895734351719815e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 3.9307471273088276e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "local_up",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 1.4821483875836085e-17,
+        "stationary_reference_maxabs": 7.076311083754596e-17,
+        "trace_response_maxabs": 0.0
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "local_up",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 4.3885418357208765e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 5.928593550334434e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_original_EOM",
+      "drive": "local_down",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 4.039820514924536e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 4.60002744386306e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "direct_EOM_residuals",
+      "drive": "local_down",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "values": {
+        "eom_scaled_residual": 1.144950348284595e-17,
+        "stationary_reference_maxabs": 7.076311083754596e-17,
+        "trace_response_maxabs": 0.0
+      },
+      "agreement": true
+    },
+    {
+      "name": "drive_resolvent_settled_R0",
+      "drive": "local_down",
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.1174998587429782e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 2.797157557069881e-17,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 0.07,
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 4.177767360805209e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 0.07,
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 2.491623975793535e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.1443916996305594e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 0.31,
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 9.335326988569947e-17,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 0.31,
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 3.4534506193976423e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 1.5155765850776361e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "time_domain_original_state",
+      "tau_ry": 1.0,
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "maxabs_error": 2.4115152191906277e-16,
+      "scale": 1.0,
+      "allowance": 1e-10,
+      "agreement": true
+    },
+    {
+      "name": "time_domain_density_and_gradient",
+      "tau_ry": 1.0,
+      "q_step": 1,
+      "z_ry": [
+        0.05,
+        0.02
+      ],
+      "density": {
+        "maxabs_error": 3.711497531621125e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "ionic_gradient": {
+        "maxabs_error": 2.306595211858756e-16,
+        "scale": 1.0,
+        "allowance": 1e-10,
+        "agreement": true
+      },
+      "agreement": true
+    },
+    {
+      "name": "wrong_minus_EOM_sign",
+      "kind": "intentional_mutation",
+      "q_step": 1,
+      "agreement": true,
+      "exposed": true,
+      "comparison": {
+        "density": {
+          "maxabs_error": 0.8495507470927046,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "ionic_gradient": {
+          "maxabs_error": 1.4279147524306008,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "agreement": false
+      }
+    },
+    {
+      "name": "wrong_minus_drive_conjugation",
+      "kind": "intentional_mutation",
+      "q_step": 1,
+      "agreement": true,
+      "exposed": true,
+      "comparison": {
+        "density": {
+          "maxabs_error": 0.5661494528708924,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "ionic_gradient": {
+          "maxabs_error": 0.9018741131408607,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "agreement": false
+      }
+    },
+    {
+      "name": "wrong_minus_observable_conjugation",
+      "kind": "intentional_mutation",
+      "q_step": 1,
+      "agreement": true,
+      "exposed": true,
+      "comparison": {
+        "density": {
+          "maxabs_error": 0.29582269287688234,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "ionic_gradient": {
+          "maxabs_error": 0.5491366899596128,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "agreement": false
+      }
+    },
+    {
+      "name": "swapped_plus_minus_FFT_maps",
+      "kind": "intentional_mutation",
+      "q_step": 1,
+      "agreement": true,
+      "exposed": true,
+      "comparison": {
+        "density": {
+          "maxabs_error": 0.5954704102169135,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "ionic_gradient": {
+          "maxabs_error": 0.5460833428320349,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "agreement": false
+      }
+    },
+    {
+      "name": "missing_source_weights",
+      "kind": "intentional_mutation",
+      "q_step": 1,
+      "agreement": true,
+      "exposed": true,
+      "comparison": {
+        "density": {
+          "maxabs_error": 0.17427669588818245,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "ionic_gradient": {
+          "maxabs_error": 0.4005982390773847,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "agreement": false
+      }
+    },
+    {
+      "name": "missing_inverse_volume",
+      "kind": "intentional_mutation",
+      "q_step": 1,
+      "agreement": true,
+      "exposed": true,
+      "comparison": {
+        "density": {
+          "maxabs_error": 0.4705470788981009,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "ionic_gradient": {
+          "maxabs_error": 1.0577205229617819e-15,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": true
+        },
+        "agreement": false
+      }
+    },
+    {
+      "name": "extra_spin_factor_two",
+      "kind": "intentional_mutation",
+      "q_step": 1,
+      "agreement": true,
+      "exposed": true,
+      "comparison": {
+        "density": {
+          "maxabs_error": 0.17427669588818584,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "ionic_gradient": {
+          "maxabs_error": 0.40059823907738323,
+          "scale": 1.0,
+          "allowance": 1e-10,
+          "agreement": false
+        },
+        "agreement": false
+      }
+    },
+    {
+      "name": "wrong_state_shape",
+      "q_step": 1,
+      "agreement": true
+    },
+    {
+      "name": "nonfinite_state",
+      "q_step": 1,
+      "agreement": true
+    },
+    {
+      "name": "wrong_potential_shape",
+      "q_step": 1,
+      "agreement": true
+    },
+    {
+      "name": "wrong_displacement_shape",
+      "q_step": 1,
+      "agreement": true
+    }
+  ],
+  "fixtures": [
+    {
+      "q_step": 0,
+      "state_size": 144,
+      "state_layout": [
+        {
+          "channel_index": 0,
+          "branch": "plus",
+          "start": 0,
+          "stop": 9,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 0,
+          "branch": "minus",
+          "start": 9,
+          "stop": 18,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 1,
+          "branch": "plus",
+          "start": 18,
+          "stop": 27,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 1,
+          "branch": "minus",
+          "start": 27,
+          "stop": 36,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 2,
+          "branch": "plus",
+          "start": 36,
+          "stop": 45,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 2,
+          "branch": "minus",
+          "start": 45,
+          "stop": 54,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 3,
+          "branch": "plus",
+          "start": 54,
+          "stop": 63,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 3,
+          "branch": "minus",
+          "start": 63,
+          "stop": 72,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 4,
+          "branch": "plus",
+          "start": 72,
+          "stop": 81,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 4,
+          "branch": "minus",
+          "start": 81,
+          "stop": 90,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 5,
+          "branch": "plus",
+          "start": 90,
+          "stop": 99,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 5,
+          "branch": "minus",
+          "start": 99,
+          "stop": 108,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 6,
+          "branch": "plus",
+          "start": 108,
+          "stop": 117,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 6,
+          "branch": "minus",
+          "start": 117,
+          "stop": 126,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 7,
+          "branch": "plus",
+          "start": 126,
+          "stop": 135,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 7,
+          "branch": "minus",
+          "start": 135,
+          "stop": 144,
+          "shape": [
+            3,
+            3
+          ]
+        }
+      ],
+      "input_scope": "immutable 0019 synthetic finite full EigenKets; not Native"
+    },
+    {
+      "q_step": 1,
+      "state_size": 144,
+      "state_layout": [
+        {
+          "channel_index": 0,
+          "branch": "plus",
+          "start": 0,
+          "stop": 9,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 0,
+          "branch": "minus",
+          "start": 9,
+          "stop": 18,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 1,
+          "branch": "plus",
+          "start": 18,
+          "stop": 27,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 1,
+          "branch": "minus",
+          "start": 27,
+          "stop": 36,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 2,
+          "branch": "plus",
+          "start": 36,
+          "stop": 45,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 2,
+          "branch": "minus",
+          "start": 45,
+          "stop": 54,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 3,
+          "branch": "plus",
+          "start": 54,
+          "stop": 63,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 3,
+          "branch": "minus",
+          "start": 63,
+          "stop": 72,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 4,
+          "branch": "plus",
+          "start": 72,
+          "stop": 81,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 4,
+          "branch": "minus",
+          "start": 81,
+          "stop": 90,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 5,
+          "branch": "plus",
+          "start": 90,
+          "stop": 99,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 5,
+          "branch": "minus",
+          "start": 99,
+          "stop": 108,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 6,
+          "branch": "plus",
+          "start": 108,
+          "stop": 117,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 6,
+          "branch": "minus",
+          "start": 117,
+          "stop": 126,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 7,
+          "branch": "plus",
+          "start": 126,
+          "stop": 135,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        {
+          "channel_index": 7,
+          "branch": "minus",
+          "start": 135,
+          "stop": 144,
+          "shape": [
+            3,
+            3
+          ]
+        }
+      ],
+      "input_scope": "immutable 0019 synthetic finite full EigenKets; not Native"
+    }
+  ],
+  "errors": [],
+  "expected_immutable_fixture_sha256": "58bc1b7812d81d81ba73aeeffeac117b3711587f6d5c1094bce48f029e5b28db",
+  "not_claimed": [
+    "Native full-time comparison",
+    "physical damping or loss",
+    "screening",
+    "ionic inertia",
+    "coupled equilibrium noise",
+    "material coherence domain"
+  ],
+  "failures": [],
+  "agreement": true
+}

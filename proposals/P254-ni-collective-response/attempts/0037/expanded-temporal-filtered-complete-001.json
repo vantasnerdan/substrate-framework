@@ -1,0 +1,492 @@
+{
+  "basis": {
+    "bytes": 373033606,
+    "path": "/var/tmp/p254-a37-source0-two-mode-bath692-003/finite-bath-basis.npz",
+    "sha256": "f0aa105bfe02a7948369d2c9cd30debd8d48f79dde7c9185435aa0210a166bb1"
+  },
+  "filtered_operators": {
+    "bytes": 224129222,
+    "path": "/var/tmp/p254-a37-source0-two-mode-influence692-001/filtered-operators.npz",
+    "sha256": "e01f4113e0f7860f0d39f3486903d3b3c7d01a3cfcefa1d73cf1b7f718758b0b"
+  },
+  "inputs": {
+    "basis_complete": {
+      "bytes": 331670,
+      "path": "/var/tmp/p254-a37-source0-two-mode-bath692-003/basis-complete.json",
+      "sha256": "42cf86661a6e8c446275741352d5addabafcbf05168dc432d5933d4054f0909b"
+    },
+    "implementation_contract": {
+      "bytes": 9415,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037/implementation-contract-001.json",
+      "sha256": "037bfd5014b6f9ce994a0658af5f0e8d4b36031fd5c3fb92238ced5a197a61f1"
+    },
+    "normalization_source": {
+      "bytes": 14197320,
+      "path": "/var/tmp/p254-activeband-loaded-finite-b12-f27-001/result.json",
+      "sha256": "c44f96ade99266bda9329ca3dd97aa5a5e85655d162343fcd7cc47b7a43c0b11"
+    },
+    "original_filter_observable": {
+      "accepted_intervals": 77,
+      "approximation": "representation of existing degree-seven DOP853 interpolant, not a new tolerance gate",
+      "array_axes": {
+        "boundary_times": [
+          "boundary"
+        ],
+        "field_boundary": [
+          "boundary",
+          "field_momentum_force",
+          "probe"
+        ],
+        "field_chebyshev": [
+          "segment",
+          "degree",
+          "field_momentum_force",
+          "probe"
+        ],
+        "initial_dual": [
+          "state",
+          "probe"
+        ],
+        "ionic_boundary": [
+          "boundary",
+          "ionic_force",
+          "probe"
+        ],
+        "ionic_chebyshev": [
+          "segment",
+          "degree",
+          "ionic_force",
+          "probe"
+        ],
+        "segment_bounds": [
+          "segment",
+          "left_right"
+        ]
+      },
+      "atol": 2e-10,
+      "boundary_policy": "exact stored accepted-state values at every knot, including time zero and terminal time",
+      "coordinates": [
+        0
+      ],
+      "extra_mass_weight_cell_factors": false,
+      "field_force_state_slice": [
+        225,
+        228
+      ],
+      "final_time_inverse_ry": 30.0,
+      "first_step": 0.03678112737920888,
+      "force_insertion": "plus ionic force into p-prime, plus field-momentum force into Pi-prime",
+      "history": "only small canonical-force polynomials and boundaries; full dual only at preparation zero",
+      "interval_order": "ascending physical time, each row [left,right]",
+      "ionic_force_state_slice": [
+        111,
+        222
+      ],
+      "method": "DOP853",
+      "ndof": 111,
+      "nfev": 1588,
+      "nfield": 3,
+      "nprobes": 1,
+      "pairing": "nonconjugating z.T @ state; same q, no -q swap",
+      "polynomial_basis": "Chebyshev T_k, k=0..7; x=2*(t-left)/(right-left)-1",
+      "polynomial_degree": 7,
+      "polynomial_origin": "eight public DOP853 dense-evaluator Lobatto samples per accepted interval",
+      "q_index": 0,
+      "rtol": 2e-08,
+      "schema": "P254-canonical-force-filter-v1",
+      "scope": "conditional moving active-model causal output filter; not full passive noise, physical loss or lifetime",
+      "state_layout": "[u(d), p(d), A(f), Pi(f), sigma(ns,m,m).ravel()] at Gamma; [u,p,sigma] otherwise",
+      "state_size": 18660
+    },
+    "reference_result": {
+      "bytes": 210389,
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0031/finite-bath-material-result-001.json",
+      "sha256": "3d2fdab5617af7c9b7fe8e6afdd3cde6ea30e074cad4e2ad481ca86875e57d93"
+    }
+  },
+  "integration_diagnostics": {
+    "all_outputs_finite": true,
+    "eigenvector_condition_2": 1.0000023563428704,
+    "eigenvector_inverse_defect_fro": 4.980839678868071e-13,
+    "eigenvector_unitarity_defect_fro": 4.782271126901675e-06,
+    "exact_zero_energy_gap_count": 1038,
+    "force_supplied_adjoint_absolute_fro_by_mode": [
+      1.6352930868290928e-14,
+      4.6183865372858715e-15,
+      1.5382570918608441e-16,
+      4.823340420336999e-17
+    ],
+    "force_supplied_adjoint_relative_fro_by_mode": [
+      9.12397719515471e-16,
+      9.242143788466667e-16,
+      1.4483134512670008e-15,
+      7.519760325270028e-16
+    ],
+    "hamiltonian_hermiticity_absolute_fro": 1.775128980687356e-13,
+    "hamiltonian_hermiticity_relative_fro": 4.412194320775386e-16,
+    "hamiltonian_reconstruction_absolute_fro": 9.524488626677151e-12,
+    "hamiltonian_reconstruction_relative_fro": 2.3673713338082294e-14,
+    "integrated_supplied_adjoint_absolute_fro_by_probe": [
+      1.0317747417155103e-17,
+      5.803257758644317e-19
+    ],
+    "integrated_supplied_adjoint_relative_fro_by_probe": [
+      2.670241254287263e-15,
+      1.848459750095897e-15
+    ],
+    "left_eigenpair_absolute_fro": 6.671665498228232e-12,
+    "left_eigenpair_relative_fro": 1.6582842678845612e-14,
+    "maximum_absolute_eigenvalue_imaginary_part": 1.5159739716442794e-14,
+    "minimum_nonzero_absolute_energy_gap": 4.2884717998984607e-10,
+    "negative_real_part_energy_gap_count": 538203,
+    "right_eigenpair_absolute_fro": 3.668374722918571e-12,
+    "right_eigenpair_relative_fro": 9.117975254209632e-15
+  },
+  "integration_metadata": {
+    "adjoint_evolution": "raw H.conj().T with independent supplied force_adjoints and conjugated coefficients",
+    "approximation_scope": "frozen-initial-H nonstationary selected-mode finite-basis comparator",
+    "basis_count": 1038,
+    "excluded_claims": [
+      "stationary response",
+      "FDT",
+      "thermal refill",
+      "damping",
+      "full moving/RPA closure",
+      "physical loss",
+      "full campaign"
+    ],
+    "hamiltonian_policy": "literal raw H, general eigenvectors and inverse; no Hermitization/clipping",
+    "integration": "Chebyshev-to-Legendre basis recurrence; 2*i**n*spherical_jn(n,gap*half_width)",
+    "intervals": [
+      [
+        0.0,
+        0.24197542105856207
+      ],
+      [
+        0.24197542105856207,
+        0.6399203788281188
+      ],
+      [
+        0.6399203788281188,
+        1.0378653365976755
+      ],
+      [
+        1.0378653365976755,
+        1.4358402790108002
+      ],
+      [
+        1.4358402790108002,
+        1.833815221423925
+      ],
+      [
+        1.833815221423925,
+        2.231743027804404
+      ],
+      [
+        2.231743027804404,
+        2.629670834184883
+      ],
+      [
+        2.629670834184883,
+        3.0276625878877312
+      ],
+      [
+        3.0276625878877312,
+        3.4256543415905796
+      ],
+      [
+        3.4256543415905796,
+        3.8235657990877154
+      ],
+      [
+        3.8235657990877154,
+        4.221477256584851
+      ],
+      [
+        4.221477256584851,
+        4.619484787941614
+      ],
+      [
+        4.619484787941614,
+        5.017492319298377
+      ],
+      [
+        5.017492319298377,
+        5.41538868364592
+      ],
+      [
+        5.41538868364592,
+        5.813285047993464
+      ],
+      [
+        5.813285047993464,
+        6.21130688609137
+      ],
+      [
+        6.21130688609137,
+        6.609328724189275
+      ],
+      [
+        6.609328724189275,
+        7.007211669100142
+      ],
+      [
+        7.007211669100142,
+        7.405094614011009
+      ],
+      [
+        7.405094614011009,
+        7.803128891818961
+      ],
+      [
+        7.803128891818961,
+        8.201163169626913
+      ],
+      [
+        8.201163169626913,
+        8.599034740118856
+      ],
+      [
+        8.599034740118856,
+        8.9969063106108
+      ],
+      [
+        8.9969063106108,
+        9.394950817085586
+      ],
+      [
+        9.394950817085586,
+        9.792995323560373
+      ],
+      [
+        9.792995323560373,
+        10.190857879043655
+      ],
+      [
+        10.190857879043655,
+        10.588720434526937
+      ],
+      [
+        10.588720434526937,
+        10.986772676200708
+      ],
+      [
+        10.986772676200708,
+        11.384824917874479
+      ],
+      [
+        11.384824917874479,
+        11.782681066482086
+      ],
+      [
+        11.782681066482086,
+        12.180537215089693
+      ],
+      [
+        12.180537215089693,
+        12.578594485458687
+      ],
+      [
+        12.578594485458687,
+        12.976651755827682
+      ],
+      [
+        12.976651755827682,
+        13.374504282169685
+      ],
+      [
+        13.374504282169685,
+        13.772356808511688
+      ],
+      [
+        13.772356808511688,
+        14.170416264396808
+      ],
+      [
+        14.170416264396808,
+        14.568475720281928
+      ],
+      [
+        14.568475720281928,
+        14.966327508831514
+      ],
+      [
+        14.966327508831514,
+        15.3641792973811
+      ],
+      [
+        15.3641792973811,
+        15.762238032295409
+      ],
+      [
+        15.762238032295409,
+        16.16029676720972
+      ],
+      [
+        16.16029676720972,
+        16.55815069800824
+      ],
+      [
+        16.55815069800824,
+        16.956004628806763
+      ],
+      [
+        16.956004628806763,
+        17.354059729095226
+      ],
+      [
+        17.354059729095226,
+        17.75211482938369
+      ],
+      [
+        17.75211482938369,
+        18.149973816366835
+      ],
+      [
+        18.149973816366835,
+        18.54783280334998
+      ],
+      [
+        18.54783280334998,
+        18.945881981486796
+      ],
+      [
+        18.945881981486796,
+        19.34393115962361
+      ],
+      [
+        19.34393115962361,
+        19.741798756333402
+      ],
+      [
+        19.741798756333402,
+        20.139666353043193
+      ],
+      [
+        20.139666353043193,
+        20.537705629806997
+      ],
+      [
+        20.537705629806997,
+        20.9357449065708
+      ],
+      [
+        20.9357449065708,
+        21.333612619449386
+      ],
+      [
+        21.333612619449386,
+        21.731480332327973
+      ],
+      [
+        21.731480332327973,
+        22.129485805573413
+      ],
+      [
+        22.129485805573413,
+        22.527491278818854
+      ],
+      [
+        22.527491278818854,
+        22.925385391779976
+      ],
+      [
+        22.925385391779976,
+        23.323279504741098
+      ],
+      [
+        23.323279504741098,
+        23.721493744881464
+      ],
+      [
+        23.721493744881464,
+        24.11970798502183
+      ],
+      [
+        24.11970798502183,
+        24.518171085630854
+      ],
+      [
+        24.518171085630854,
+        24.91663418623988
+      ],
+      [
+        24.91663418623988,
+        25.314715979717
+      ],
+      [
+        25.314715979717,
+        25.712797773194122
+      ],
+      [
+        25.712797773194122,
+        26.106475001311072
+      ],
+      [
+        26.106475001311072,
+        26.50015222942802
+      ],
+      [
+        26.50015222942802,
+        26.888066026311762
+      ],
+      [
+        26.888066026311762,
+        27.275979823195502
+      ],
+      [
+        27.275979823195502,
+        27.67991262399701
+      ],
+      [
+        27.67991262399701,
+        28.119367845579504
+      ],
+      [
+        28.119367845579504,
+        28.502495812384094
+      ],
+      [
+        28.502495812384094,
+        28.885623779188684
+      ],
+      [
+        28.885623779188684,
+        29.240515689008703
+      ],
+      [
+        29.240515689008703,
+        29.59540759882872
+      ],
+      [
+        29.59540759882872,
+        29.963218872620793
+      ],
+      [
+        29.963218872620793,
+        30.0
+      ]
+    ],
+    "mode_count": 4,
+    "numerical_scope": "floating-point spectral evaluation, not rigorous enclosure or a finite-basis error bound",
+    "polynomial_degree": 7,
+    "probe_count": 2,
+    "segment_count": 77,
+    "state_policy": "no state consumed or altered; original noncommuting state remains unrestricted",
+    "time_phase_convention": "+i*(energy_row-energy_column)*t; hbar=1"
+  },
+  "normalization": {
+    "final_real_space_inverse_fourier_applied": false,
+    "force_insertion": "unweighted F_k/sqrt(N)",
+    "further_source_weight_applied": false,
+    "mesh": [
+      4,
+      4,
+      4
+    ],
+    "ncells": 64,
+    "spin_factor_applied": false
+  },
+  "scope": "Original source0/Gamma/Ni1-x final output at t=30 inverse Ry; two selected ionic force modes; all346 original raw state columns and692 extra empty directions; frozen literal initial H; NONSTATIONARY original state. Initial Pactive force-vertex split propagated within the same finite bath; all ordered cross terms retained. Conditional forced-output electronic contribution, NOT independent additive noise or a corrected A32 total. Not full moving/backreaction/RPA closure, all128 sources/64q, field/collision loss, convergence, an error bound, physical damping, lifetime, heat, or whole physical E/C/N completion.",
+  "status": "complete"
+}

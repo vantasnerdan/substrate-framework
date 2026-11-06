@@ -1,0 +1,51 @@
+{
+  "schema": "P254-A32-evolution-implementation-handoff-v1",
+  "status": "implementation-complete-not-executed",
+  "owned_files": [
+    "hybrid_gamma_evolution.py",
+    "export_hybrid_gamma.py",
+    "evolution-source-inventory-001.json",
+    "evolution-paid-input-inventory-001.json",
+    "evolution-implementation-report-001.json"
+  ],
+  "source_grounding": {
+    "source_inventory": "evolution-source-inventory-001.json",
+    "source_inventory_timing": "Complete raw-byte SHA256 inventory recorded before runner mathematical implementation",
+    "supplemental_paid_input_inventory": "evolution-paid-input-inventory-001.json",
+    "paid_input_inventory_method": "Complete raw bytes authenticated against original saved receipt byte counts and SHA256; no model or numerical execution",
+    "canonical_skills_read": [
+      "/home/administrator/.omp/skills/quantitative-verification/SKILL.md",
+      "/home/administrator/.omp/skills/dft-catalyst-engineering/SKILL.md"
+    ],
+    "old_sources_modified": false
+  },
+  "public_apis": {
+    "restore_saved_hybrid_inputs": "restore_saved_hybrid_inputs(bath_result_path, original_result_path, *, output) -> SavedHybridInputs; authenticates actual complete original loaded12/27 cache, source0 original boundary/state/selection, paid bank and two complex force directions; restores fixed arrays and isolated Gamma mapped cache without old baseline integration",
+    "run_hybrid_gamma": "run_hybrid_gamma(bath_result, original_result, output) -> result dict; output must not exist; constructs HybridGammaModel(coefficients, literal_original_baseline0_x, bath_bank_dict, complex_directions, source_slot=0)",
+    "evolve_hybrid_gamma": "evolve_hybrid_gamma(model, coordinate, *, output, rtol, atol, progress, publish_json) -> HybridGammaEvolution; actual checkpoint-only DOP853 forward and simultaneously reconstructed backward mean/nonconjugating duals"
+  },
+  "commands_for_parent_only": [
+    "python proposals/P254-ni-collective-response/attempts/0032/oracle_hybrid_gamma_model.py",
+    "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python proposals/P254-ni-collective-response/attempts/0032/export_hybrid_gamma.py --bath-result /var/tmp/p254-a31-source0-two-mode-bath8-001/result.json --original-result /var/tmp/p254-activeband-loaded-finite-b12-f27-001/result.json --output /var/tmp/p254-a32-moving-hybrid-gamma-001"
+  ],
+  "execution_admission": "Parent must wrap actual material command in admitted CPU7/BLAS1, 4GiB MemoryMax, swap0, NativeRuntimeMax600s, no automatic restart. Commands above are handoff commands, not execution receipts.",
+  "outputs": {
+    "input-bindings.json": "Authenticated original input/bank/direction/lineage receipts, original-source historical authorities, actual imported repository implementation bytes, model metadata/diagnostics, software versions",
+    "progress.jsonl": "Fsynced stage markers plus periodic accepted-step/time/nfev progress; also printed to stdout",
+    "mean-000.npz through mean-003.npz": "Exclusive original-request-time0/1/10/30 NEW hybrid mean checkpoints in original canonical mechanical coordinates and model electronic coordinates",
+    "baseline-complete.npz and baseline-complete.json": "Complete forward boundary bank and terminal state, source-bound receipt published before any backward solve",
+    "backward-002.npz through backward-000.npz": "Unrepaired reconstructed mean, raw forward difference and injected true-transpose duals at10/1/0",
+    "hybrid-gamma-readout.npz": "Chronological0/1/10/30 preparation duals; full4x4 ordered covariance; raw complex ordered variances and principal-complex-square-root normalized Gamma coherence; magnitudes/phases; normalization validity; raw reconstructed-minus-forward vectors; requested mechanical means",
+    "result.json": "Actual complete result only after both passes and initial_ordered contractions; source/implementation bindings, solver stats, raw variance/Hermiticity/reconstruction defects, work and scope",
+    "failure.json": "Exception metadata and baseline-complete availability; no completed checkpoint deletion"
+  },
+  "algorithm": {
+    "mean": "NEW model mean to0/1/10/30; direct adaptive DOP853 with original tolerances and A29 bounded_first_step; only requested boundaries retained",
+    "backward": "One descending30->10->1->0 pass with continuous reconstructed mean and dz/dt=-L(t,mean).T z; inject Ni1/x probes at30,10,1 and add preparation probe0; never use conjugating transpose or reset reconstructed mean to forward state",
+    "readout": "model.initial_ordered(chronological_duals, chronological_duals); ordered Cij / principal_complex_sqrt(Cii*Cjj), no clipping, phase removal, real variance substitution, extra cell, Fourier or spin factor",
+    "canonical_correction": "Parent correction honored: literal original saved A29 canonical mechanical x passed unchanged; no per-cell conversion or similarity rescaling"
+  },
+  "recovery_boundary": "Completed forward checkpoints survive all later failures. Baseline-complete receipt authenticates retained forward means/terminal state and links input-bindings. No adaptive/dense step history is saved, no auto-rerun exists, output cannot be reused by this CLI, and backward continuation/free resume is not promised.",
+  "verification": "No builds, linters, formatters, tests, oracles, CLI runs, material numerical runs, or unsettled model imports executed by this worker. Only saved-source structure inspection and raw-byte authentication performed. Parent owns numerical verification and actual execution after both slices settle.",
+  "scope": "ONE source0/Gamma finite-bath moving Hamiltonian/Gaussian extension with other127 dynamic active sectors and original ionic/field preparation. Not allq/allsource/full-PW calibration, a spatial coherence correction, physical loss/damping/lifetime, larger-basis qualification, or campaign completion. Original16 completed runs unchanged."
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "P254-A42-checkpointed-spectral-row-block-owning-oracle-grant-v1",
+  "issued_at": "2026-11-05T02:00:51.892013+00:00",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a42-density-moment-oracle-003.service",
+    "--property=RuntimeMaxSec=45",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "10",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/oracle_density_moments.py",
+    "--output",
+    "/var/tmp/p254-a42-density-moment-oracle-003.json",
+    "--current-projection",
+    "/var/tmp/p254-a38-source0-current-projection-002/current-projection-complete.json",
+    "--original-snapshot",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/original-canonical-force-filter-execution-source-001.py",
+    "--filter-receipt",
+    "/var/tmp/p254-a42-source0-density-joint-001/density-filter-complete.json"
+  ],
+  "actual_previous_uncheckpointed_stop": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/actual-uncheckpointed-density-stop-and-gap-block-cutover-003.json",
+    "bytes": 1198,
+    "sha256": "bdf79f1f328b4af3697c68f0819db4609f996f0ee59bbaf9974475e580431f34"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/density_moments.py",
+      "bytes": 2314,
+      "sha256": "de1864364981fd69efd9bc87dc5f5cfff6f6539d45bbf82642ec9a5cbd27f772"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/density_integration.py",
+      "bytes": 7064,
+      "sha256": "969ccd295d4450bf57de0e403c96ba2932b7b260541f346ae6435a3d9ef2b6d2"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/consume_density_influence.py",
+      "bytes": 19426,
+      "sha256": "03ddd903359f670928e6219d36f93df97ccecfd260ab60c089018393e832d8dc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0042/oracle_density_moments.py",
+      "bytes": 12253,
+      "sha256": "e52675d80a23a4418cfa2223c0fb11b2dc19e0704b76bc943275e912c6f12b93"
+    }
+  ],
+  "useful_output": "Newrow-block/BLASsmallseriesformulation:independentdirectexpquadrature2probes/fullcomplexdegree14/independentadjoints;rectangular3\u21922axes/tworowblocks;injectedactualinterruptionafterfirstpersistedblock+missingblockresume+completedno-providerreplay;smallseriesSymPybound/literalcomplexmomentreference;actualfull1038^2spectrumperformance. Notoldphysicalqualificationreplay.",
+  "budget": "Expect30s,hard45sCPU10/4GiB/swap0/Restartno. AllA42spent2683.086;amendedwhole3600. Actualfullnewcheckpointedjoin\u2264850safterpassfitsremainingbudget.",
+  "protected": "Original3frozenjobs/RAM/CPU0-5/11untouched;Cubic6active. No bulkcopies/capacityrecheck/deletion."
+}

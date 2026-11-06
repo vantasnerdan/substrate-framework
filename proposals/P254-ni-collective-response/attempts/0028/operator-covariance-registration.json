@@ -1,0 +1,40 @@
+{
+  "schema": "P254-operator-covariance-registration-v1",
+  "status": "registered-before-implementation; no numerical execution authorized",
+  "blocks": ["Declared unitary PW row/phase transport and exact discrete Fourier frequency admission", "Kinetic/local/nonlocal triangle bound without PW-square allocation or subtraction of squared norms", "Independent dense first-principles oracle and sensitive mutations", "Actual original-source full-PW action residuals on all raw columns and orthogonal-complement probes"],
+  "source_authority": {
+    "proposals/P254-ni-collective-response/attempts/0028/initial-mean-ions-001.json": "30c673dbc45e202ed68da054e88fb55c9375e2434d36d6b7fb321b2db4826714",
+    "src/substrate_framework/material_reference_transport.py": "05657a443ad021d1ae8aa0cd14f7328a73843d50de7dea293be105886cb44566",
+    "src/substrate_framework/qe_bloch_frame.py": "8cbfa02f4a0a86c91f6d12c8d9464ee3e7e0a267b5696902c8085f1e51be7c6b",
+    "src/substrate_framework/qe_material_hamiltonian.py": "f7734635ecc3f86bbb4d35bc5dd1972fea49e1442fcdc2d17adf59f1d4e24093",
+    "src/substrate_framework/qe_material_grid.py": "278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896",
+    "proposals/P254-ni-collective-response/attempts/0028/run_streamed_material_evolution.py": "c48f986e592a6dd241b300c053c7ba6975abfdd797f8abaf97801dd040fb0d0e",
+    "proposals/P254-ni-collective-response/attempts/0028/full-reference-inputs-004.json": "6af4d8ae729e1c436306761fb6b7d09fe2b2328fa2d00b882de955c3d302ba5f",
+    "proposals/P254-ni-collective-response/attempts/0028/full-common-reference-004/full-common-reference.json": "9b7be6a210219069f8f46aae38c7ae1ba0b5c150cc35d953db8c6632084678f9"
+  },
+  "formula": {
+    "kinetic": "max abs(T_target - mapped T_source)",
+    "local": "max abs(V_target - pullback(V_source)) + 2 eta max abs(V_source), eta=Frobenius norm of normalized Fourier embedding intertwining defect, computed columnwise analytically",
+    "nonlocal_atom": "C=U beta_source(atom_pullback), Q=declared angular intertwiner (default identity, never fitted), R=beta_target-C Q; bound=(normF(beta_target)+normF(C Q))*normF(R)*norm2(D_target) + normF(C)^2*norm2(Q D_target Q^dagger-D_source)",
+    "total": "sum of kinetic, local and all original atom nonlocal bounds",
+    "precision": "Analytic norm inequality evaluated in floating point, not an interval certificate. Action-probe maxima are empirical lower witnesses, not upper certificates."
+  },
+  "oracle": {
+    "seed": 2540028,
+    "checks": ["exact nontrivial discrete group covariance", "simultaneous nonzero kinetic/local/geometry/projector/D-conjugacy defects", "nonzero FFT phase defect", "independent dense Hamiltonian bound", "actual action comparisons", "reject duplicate row/pullback maps, nonunit phase and antiunitary maps", "omitting each individual positive bound term fails its isolated dense example"],
+    "numerical_check_rtol": 2e-11,
+    "numerical_check_atol": 2e-11,
+    "material_acceptance_tolerance": null
+  },
+  "physical_factory_contract": "substrate_framework.material_physical_operators.build_physical_factors(inputs,basis) -> existing PWFactors; settled factory SHA supplied explicitly at execution; no unfinished sibling bytes consumed or pinned here",
+  "scope": "Same original source and spin, explicit original identity representative to selected unitary slots; H0 and actual initial K(delta n) frozen local stage separately. Rounded geometry unchanged. No nonlinear future-stage or finite-displacement/field symmetry inferred. Antiunitary conjugation does not license same-positive-time reuse.",
+  "commands": {
+    "oracle": "python run_operator_covariance_oracle.py --cpu 6 --output OUT_ORACLE.json",
+    "source_pilot": "python run_operator_covariance_material.py --cpu 6 --oracle OUT_ORACLE.json --oracle-sha256 SHA --projector-model legacy-a25 --source 1:1 --target 1:0,0,0 --max-slots 1 --complement-probes 2 --output OUT_PILOT",
+    "nonidentity_source_orbit": "python run_operator_covariance_material.py --cpu 6 --oracle OUT_ORACLE.json --oracle-sha256 SHA --projector-model legacy-a25 --source 1:2 --source-orbit --max-slots 64 --complement-probes 2 --output OUT_SOURCE_1_2",
+    "complete_batch": "python run_operator_covariance_material.py --cpu 6 --oracle OUT_ORACLE.json --oracle-sha256 SHA --projector-model legacy-a25 --all-slots --max-slots 128 --complement-probes 2 --output OUT_ALL",
+    "bounded_complete_slot_batch": "python run_operator_covariance_material.py --cpu 6 --oracle OUT_ORACLE.json --oracle-sha256 SHA --projector-model legacy-a25 --all-slots --slot-offset 0 --slot-count 8 --max-slots 8 --complement-probes 2 --output OUT_BATCH_0; repeat disjoint offsets 8,16,...,120 with distinct output paths",
+    "physical_mode": "Replace --projector-model legacy-a25 by --projector-model physical-upf --physical-module substrate_framework.material_physical_operators --physical-sha256 SETTLED_SHA; Root runs only after physical factory and its independent oracle settle."
+  },
+  "reuse_policy": "No automatic acceptance gate. A zero mathematical component bound entails exact covariance in the declared model; nonzero finite bounds permit only explicitly budgeted current-stage approximation (for Hermitian stages, propagator operator error <= abs(time)*bound). Floating output zero is not an exact-real proof. Moving stages require recomputation of actual current potentials, displacement and field transform conditions and all additional operator terms."
+}

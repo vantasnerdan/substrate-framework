@@ -1,0 +1,31 @@
+{
+  "schema": "P254-root-allocation-decision-v1",
+  "decision": "Root392",
+  "actual_decision_time": "2026-11-03T02:47:20.679418+00:00",
+  "previous_due_time": "2026-11-03T02:54:28.248962+00:00",
+  "deadline_breach": false,
+  "next_decision_due": "2026-11-03T03:07:20.679418+00:00",
+  "action": "Correct the actual numerical allocation at its source: independent original-column Arnoldi supports bounded column panels, so preserve all346 columns/full PW rows/raw D while keeping the existing1GiB numerical workspace. Do not rerun the already successful full-H/direct-residual forward/adjoint comparison. Permit one explicit corrected continuation of the Native H0 feasibility component, using the original launch-intent clock and a cumulative1200s ceiling,64 panel H0 calls and at most11072 action-columns including the already spent4 calls/1384 columns. Prior159.451s service/156.61072762822732s budget cost and failure remain charged; no fresh clock, automatic retry or larger memory cap. Check finite panel error allocation first, then stop on the existing dimension/error cap. No full-q or finite-time material production.",
+  "evidence": {
+    "actual_failure": {
+      "path": "/var/tmp/p254-moving-exponential-native-smoke-001/result.json",
+      "bytes": 11602,
+      "sha256": "b73c6f2460910ac0a826b84f369c012860acdd93faf08630a7339789d2a66f65"
+    },
+    "original_launch_intent": {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc824-moving-exponential-native-launch.intent.json",
+      "bytes": 1437,
+      "sha256": "d8626a961d989dbf3cd95184214280b97e4465757083ab6446c10a00ebdf3573"
+    },
+    "original_started_utc_conservative": "2026-11-03T02:39:51.954643+00:00",
+    "direct_split_scope": "Both original all346-column full-H/adjoint reconstructions succeeded; max difference2.482534153247273e-16. No H0 exponential ran.",
+    "actual_cause": "ColumnFrameKrylov memory_bound_bytes requires2493669888B for18613x346/dimension6; planned1GiB was insufficient. Columns have independent Arnoldi spaces, so panel grouping is an exact representation change, not physical band/rank truncation.",
+    "source": {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/column_frame_krylov.py",
+      "bytes": 12558,
+      "sha256": "0bd0d7a0bce310ff2c345a94b37cc85015a12f33e442698ea31c823acdaa3192"
+    },
+    "next_consumer": "tau30 primitive feasibility under original physical operator; not whole moving mean or coherence",
+    "recovery_limit": "Reuse only completed operator-split evidence; no unfinished exponential state is claimed resumable."
+  }
+}

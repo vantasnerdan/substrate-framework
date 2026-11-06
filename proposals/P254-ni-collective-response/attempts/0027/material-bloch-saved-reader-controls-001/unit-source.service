@@ -1,0 +1,17 @@
+[Unit]
+Description=P254 A27 bloch exact separately authorized saved reader
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/administrator/projects/substrate-ni-collective
+ExecStart="/usr/bin/python3" "-c" "import json,sys,time\nfrom pathlib import Path\nroot=Path('/home/administrator/projects/substrate-ni-collective')\nfor path in (root/'src',root/'proposals/P254-ni-collective-response/attempts/0024',root/'proposals/P254-ni-collective-response/attempts/0025'):\n    sys.path.insert(0,str(path))\nfrom substrate_framework.material_bloch_output import preload_parsers,load_saved_bloch_coverage\nimport substrate_framework.material_bloch_production\nfrom material_run_contract import implementation,verify_consumers,runtime_context,_context,bound_json\npreload_parsers()\ngrant=json.loads(Path(sys.argv[1]).read_bytes())\n_context(grant,runtime_context())\nverify_consumers(grant,implementation())\nterminal_binding=json.loads(Path(sys.argv[2]).read_bytes())\ncoverage=load_saved_bloch_coverage(terminal_binding)\nverify_consumers(grant,implementation())\nprint(json.dumps(dict(scope='authenticated actual Bloch saved consumption, no production replay',coverage_identity=coverage.coverage_identity,source_count=len(coverage.source_receipts),slot_count=len(coverage.slot_records),probe_comparisons=dict(coverage.probe_comparisons)),sort_keys=True,allow_nan=False))\n" "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-saved-reader-grant-001.json" "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-actual-terminal-binding-001.json"
+CPUAffinity=7
+MemoryMax=4294967296
+MemorySwapMax=0
+TimeoutStartSec=30
+RuntimeMaxSec=30
+TimeoutStopSec=2
+Restart=no
+Environment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+StandardOutput=append:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-saved-reader-controls-001/reader-process.stdout
+StandardError=append:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-saved-reader-controls-001/reader-process.stderr

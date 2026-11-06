@@ -1,0 +1,193 @@
+{
+  "status": "complete",
+  "started_unix": 1792412506.0306249,
+  "provenance": {
+    "inputs_and_code_sha256": {
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/W2-readiness.json": "cd30bcd905437a08dd8476375eb0c84d7384d121beffb0eafa67a368555d6aed",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/embedding.py": "95de404d5b0a2d7471960a06e925f9d527b66e45e3fc8a087ffa266eab25667c",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/exact.py": "db918b7c8c9f7a95265bddabb8eb2c6d6fd257a293f040766bf3f749fe13c6d2",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/native.py": "19d90f1e87b6eb7bfe06826840f08e174ce50fa496ef248f11ef23d334f89a5e",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/transformations.py": "565c5742c78ee99e90ea2fa971e49724de02b3ccb9ac00714c5cf7197d525cba",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/preregistration.json": "c0493ce083e10ddc8639dd28236535e88afc921351a7e9cb18a52839de85ac62",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py": "32067184322e6cede8bc86dfd6155277cdc589a01dc4fd7869e157b0e8cddfee",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/dal-corso2001-provenance.json": "03f7809f9eb40cdff4f42febebe32f0c8f47816a99f35c86a01d0d129dcd6a0f",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/electronic-model-source-correction.json": "ff35e1078a260b48fd3b00dd25db7f776022ad435775d38c97fa496d863477c8"
+    },
+    "python": {
+      "executable": "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+      "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+      "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39"
+    },
+    "packages": {
+      "numpy": {
+        "version": "2.5.2",
+        "file": "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/numpy/__init__.py",
+        "sha256": "09295a80660f17925ae23765ce8cbd7ff7ceae968d5f2f89349f1cb74c0b9e11"
+      },
+      "scipy": {
+        "version": "1.18.0",
+        "file": "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/scipy/__init__.py",
+        "sha256": "39ccae300a4739cc53719bd3b39ce3f8f66e736c6eb672006e338a4c5cc3dc76"
+      },
+      "sympy": {
+        "version": "1.14.0",
+        "file": "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/__init__.py",
+        "sha256": "4e9476348ba105feab28d82f5bcf6cdba2e3e84de6e059bbfe7a13728c0a4ab0"
+      }
+    },
+    "affinity": [
+      5
+    ],
+    "environment": {
+      "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "INVOCATION_ID": "2043059e27eb496c915044574583d4e6",
+      "XDG_RUNTIME_DIR": "/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"
+    },
+    "command": [
+      "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py",
+      "--block",
+      "embedding",
+      "--run-id",
+      "block-embedding-01"
+    ]
+  },
+  "blocks": {
+    "embedding": {
+      "square_counterexample": {
+        "T1": "Matrix([[r + 1, r*(2 + I)], [r*(-1 + 3*I), 1 - 2*r]])",
+        "h1": "Matrix([[3*r - 2, r*(-2 + 4*I)], [r*(-2 - 4*I), 3 - r]])",
+        "J": "Matrix([[I, 1 + 2*I], [-1 + 2*I, -I]])",
+        "T2_definition": "U*T1, U=(I+rJ/2)*(I-rJ/2)^-1",
+        "h2_definition": "U*h1*Udagger",
+        "hprime1": "Matrix([[3, -2 + 4*I], [-2 - 4*I, -1]])",
+        "hprime2": "Matrix([[3, 3 + 14*I], [3 - 14*I, -1]])",
+        "same_curves": "H and S exactly equal for real r"
+      },
+      "rectangular_counterexample": {
+        "T": "Matrix([[1, 0], [0, 1], [r, I*r]])",
+        "h1": "Matrix([[3*r - 2, 0, 0], [0, 3 - r, 0], [0, 0, 7]])",
+        "h2": "Matrix([[3*r - r*(1 + I) - r*(1 - I) - 2, -r*(2 + I) - I*r*(1 + I), 1 + I], [-r*(2 - I) + I*r*(1 - I), -r - I*r*(2 - I) + I*r*(2 + I) + 3, 2 - I], [1 - I, 2 + I, 7]])",
+        "V1": "Matrix([[3, 0], [0, -1]])",
+        "V2": "Matrix([[1, -2 - I - I*(1 + I)], [-2 + I + I*(1 - I), -1 - I*(2 - I) + I*(2 + I)]])",
+        "Z": "Matrix([[0, 0], [0, 0]])",
+        "W": "Matrix([[0, 0], [0, 0], [1 - I, 2 + I]])",
+        "leakage_correction": "Matrix([[2, 2 + I*(1 + I) + I], [2 - I*(1 - I) - I, -I*(2 + I) + I*(2 - I)]])"
+      },
+      "checks": [
+        {
+          "name": "square_product_rule_Sprime",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "square_product_rule_Hprime",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "square_connection_reconstruction",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "native_equals_laboratory_derivative_mutation",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[0, -10 - 5*I], [-5 + 15*I, 0]])"
+        },
+        {
+          "name": "Hermitian_part_equals_laboratory_derivative_mutation",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[0, -15/2 - 10*I], [-15/2 + 10*I, 0]])"
+        },
+        {
+          "name": "Hermitian_part_requires_connection_skew",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "symmetric_connection_suffices_for_Hermitian_part",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "Cayley_unitary_exact_curve",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "two_embeddings_same_overlap_entire_curve",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "two_embeddings_same_H_entire_curve",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "embedding_ambiguity_commutator",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "same_HS_and_all_derivatives_different_hprime",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[0, 5 + 10*I], [5 - 10*I, 0]])"
+        },
+        {
+          "name": "connection_resolves_square_ambiguity",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "normal_vector_orthogonal_entire_curve",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0], [0]])"
+        },
+        {
+          "name": "rectangular_same_T_same_H_entire_curve",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "even_known_T_without_ambient_h_not_sufficient",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[-2, -1 - 2*I], [-1 + 2*I, -2]])"
+        },
+        {
+          "name": "generalized_eigenproblem_only_projected",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "ambient_eigenvector_assumption_false",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[0, 0], [0, 0], [1 - I, 2 + I]])"
+        },
+        {
+          "name": "rectangular_full_product_rule",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "square_reconstruction_fails_for_rectangular_leakage",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[2, 1 + 2*I], [1 - 2*I, 2]])"
+        },
+        {
+          "name": "normalization_metric_does_not_fix_leakage",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[2, 1 + 2*I], [1 - 2*I, 2]])"
+        }
+      ]
+    }
+  },
+  "ended_unix": 1792412512.0955405,
+  "elapsed_seconds": 6.064915657043457
+}

@@ -1,0 +1,329 @@
+## Summary
+
+**The material bridge is available as an operator construction, not as a fitted interaction.** QE already implements the required coupled longitudinal-spin Hartree+PBE-GGA map:
+
+```fortran
+USE dv_of_drho_lr, ONLY : dv_of_drho
+! work(dfftp%nnr,2) contains complex δn_up, δn_down
+CALL dv_of_drho(work)
+! work now contains δV_HXC,up, δV_HXC,down
+```
+
+It requires the registered ground-state background, `setup_dmuxc()`, `setup_dgc()`, the actual FFT descriptors and reciprocal-vector maps, and `qpoint%xq`. **The density space is the two-spin spatial FFT/PW space—not two scalar spin channels.**
+
+The genuinely missing pieces in the inspected Ni/H exporter are:
+
+1. Exporting—or exposing natively—this density-kernel action and its background coefficients.
+2. Supplying density↔wavefunction actions and **full-PW bare perturbation RHSs**, rather than only retained-band vertex matrices.
+3. A finite-\(z\), two-branch response driver with the correct occupations, static ensemble distinction, and \(q/-q\) bookkeeping.
+
+No native calculation, build, test, modification, or renewed G10 review was performed.
+
+---
+
+## Files and source construction
+
+Paths in the QE table are relative to **`/opt/qebuild/q-e-qe-7.5/`**.
+
+### 1. Actual spin-Hartree+PBE kernel
+
+| Source | What is reusable |
+|---|---|
+| `PHonon/PH/phq_setup.f90:143-203` | Reconstructs smooth-grid ground-state potential; calls `setup_dmuxc()`, `setup_dgc()`, and occupation/projector setup. |
+| `LR_Modules/setup_dmuxc.f90:30-49` | Converts stored total-density/magnetization background to spin-up/down densities, adds core density where applicable, and calls the selected functional’s `dmxc`. Produces `dmuxc(r,spin,spin)`. |
+| `LR_Modules/setup_dgc.f90:59-145` | Allocates the GGA coefficient fields and spin-density gradients; performs the background density-representation conversions. |
+| `LR_Modules/setup_dgc.f90:164-195` | Calls `dgcxc` and `xc_gcx`; builds the full spin-coupled `dvxc_s`, including off-diagonal correlation entries. |
+| `LR_Modules/dv_of_drho.f90:16-104,167-213` | Public in-place density→HXC-potential operation. Sums up/down density for Hartree, applies the \(q+G\) Coulomb multiplier, and returns both spin potentials. |
+| `LR_Modules/dv_of_drho.f90:226-300` | `dv_of_drho_xc`: full `dmuxc` spin contraction plus `dgradcorr`; optional core response is a distinct input. |
+| `LR_Modules/dgradcorr.f90:96-103,138-203` | Applies \(\nabla_q\delta n_\sigma\), all coupled spin/GGA contractions, and the final negative divergence. This is the missing spatial operator, not a scalar \(U_{\sigma\sigma'}\). |
+| `Modules/gradutils.f90:106-163,497-554` | `fft_qgradient` and `fft_qgraddot`: FFT derivatives use \(i\,\mathrm{tpiba}(G+q)\). Inputs are complex cell-periodic envelopes; `xq` and `g` are Cartesian in \(2\pi/\mathrm{alat}\) units. |
+| `LR_Modules/lrcom.f90:117-155` | Declares `eqv%dmuxc` and `gc_lr%grho,dvxc_rr,dvxc_sr,dvxc_ss,dvxc_s`. |
+
+**Important representation distinction:** stored collinear `rho%of_r(:,1:2)` is **total density and magnetization**. Conversely, the collinear response input to `dv_of_drho` is **\((\delta n_\uparrow,\delta n_\downarrow)\)**: the routine explicitly sums these columns for Hartree. Do not feed it \((\delta n,\delta m)\) without conversion.
+
+The ordinary periodic Hartree operation implemented there is
+
+\[
+\delta V_{H,\sigma}(G)=
+\frac{e^2\,4\pi}
+{\mathrm{tpiba}^2|G+q|^2}
+\left[\delta n_\uparrow(G)+\delta n_\downarrow(G)\right].
+\]
+
+The singular \(G+q=0\) component is omitted. At Gamma, that goes together with the neutral-number constraint and potential gauge; it is not an independently adjustable interaction parameter. Preserve the actual electrostatic flags. In particular, `lrpa` drops XC, and `lnolr` changes the long-range Hartree operation; those are not the requested full kernel.
+
+The source dependency continues into the **selected PBE implementation**:
+
+- `XClib/xc_wrapper_d_gga.f90:55-83,278-337`: functional dispatch and conversion of derivative coefficients to QE/Ry conventions.
+- `XClib/qe_drivers_d_gga.f90:142-200,225-283,315-396`: spin-GGA derivative driver, using derivatives of the selected exchange/correlation routines.
+- `XClib/qe_drivers_gga.f90:590-615`: spin-scaled PBE exchange calls to `pbex`.
+- `XClib/qe_drivers_gga.f90:1094-1105`: PBE spin-correlation call to `pbec_spin`.
+- `XClib/qe_funct_corr_gga.f90:446-541`: elementary spin-PBE correlation implementation.
+
+**Native numerical detail:** the internal `dgcxc_spin` driver forms several derivatives by finite differences of native functional potentials, with native density/gradient thresholds. Reusing this path preserves those conventions; independently coding “analytic PBE” would not automatically reproduce this particular native kernel.
+
+### Actual registered functional evidence
+
+Let
+
+```text
+V = /home/administrator/projects/catalyst-nc-operator/runs/
+    2026-10-19_collective-response/nc-proof/vertices/generation10
+```
+
+The existing background provides:
+
+- `V/wave2/initial-state/scf.save/data-file-schema.xml:570-595`: PBE, collinear spin, `gamma_only=false`, dense and smooth grids both \(24^3\), and the reciprocal basis.
+- Same file `:612-625`: 20 retained bands per spin, 19 electrons, one Fermi energy, k222, FD smearing.
+- Same file `:73,79-80`: XML energy quantities are in Hartree; its FD width `0.001` corresponds to the registered `0.002 Ry`, and cutoffs `30/120 Ha` correspond to `60/240 Ry`.
+- `V/wave2/initial-state/scf.save/Ni_ONCV_PBE-1.2.upf:97-113` and `H_ONCV_PBE-1.2.upf:87-103`: ordinary NC, not PAW/US, **no nonlinear core correction**, PBE, Ni18/H1.
+
+Thus this fixture needs neither augmentation-density response nor displacement-induced core-density input. SG15 supplies the local/nonlocal ionic pseudopotential; the induced electronic interaction here is Hartree plus spin-PBE.
+
+---
+
+## Architecture: density, wavefunction, and external-operator actions
+
+The reusable chain is:
+
+```text
+δn_up/down on dense grid
+    → dv_of_drho                         K_q
+    → interpolate dense→smooth if needed
+    → apply_dpot_bands                   local-field injection into PW states
+    → independent-electron resolvent
+    → orbital-product density extraction
+    → interpolate smooth→dense if needed
+```
+
+The external ionic operator enters **alongside**, not inside, the local density kernel:
+
+```text
+g_bare^q = ∂V_local/∂u + ∂V_nonlocal/∂u
+```
+
+### Relevant source/state contracts
+
+| Source | Contract |
+|---|---|
+| `LR_Modules/apply_dpot_mod.f90:87-163` | `apply_dpot_bands(ik,nbnd,dv,psi,dvpsi)` maps a spin-dependent smooth-grid potential times states at \(k\) into the PW basis at \(k+q\). |
+| `LR_Modules/cft_wave.f90:29-31,53-60` | Explicitly uses separate `igk_k` lists for \(k\) and \(k+q\). |
+| `LR_Modules/apply_dpot.f90:73-90` | Collinear multiplication selects `dv(:,current_spin)`. |
+| `LR_Modules/incdrhoscf.f90:74-105,149-182` | Reconstructs orbital products on `dffts`, using separate \(k/k+q\) PW maps and volume normalization. Its static accumulation includes `2*weight/omega`; this must not become a blanket finite-frequency factor of two. |
+| `LR_Modules/response_kernels.f90:145-225,234-290` | Existing static flow: load `evc/evq`; initialize projectors at \(k+q\); set kinetic energy; add induced local-field RHS; project/occupation-weight; solve; accumulate density. |
+| `PHonon/PH/dfpt_kernels.f90:308-322,350-420,444-452` | Smooth/dense interpolation, pool reductions, Gamma Fermi correction, and the actual `drhop → dv_of_drho` step. |
+| `PW/src/h_psi.f90:86-160,211-234` | Full PW Hamiltonian action: kinetic, spin-dependent local potential, and nonlocal projectors. |
+| `PW/src/s_psi.f90:119-121` | Ordinary NC overlap is identity: copies `psi` and returns when `okvan=false`. |
+| `LR_Modules/ch_psi_all_complex.f90:10-13,72-121,169-239` | Complex-shift Hamiltonian action exists, but includes the static `alpha_pv` occupied-projector shift. It is a reusable primitive, not already the desired physical resolvent unchanged. |
+
+**Do not apply PH ionic-irrep symmetrization to an arbitrary trial density.** `dfpt_kernels.f90` symmetrizes its particular perturbation response before applying the kernel. The standalone `dv_of_drho` operation itself does not require that restriction.
+
+### Bare nonlocal external sides
+
+- `PHonon/PH/dvqpsi_us.f90:10-21,95-169,180-186`: builds the full bare perturbation applied to states, including local and nonlocal contributions.
+- `PHonon/PH/dvqpsi_us_only.f90:100-143,204-239`: both projector-motion terms survive in ordinary NC.
+- `PW/src/compute_deff.f90:35-41`: ordinary NC uses `deeq`, without an energy-dependent overlap derivative.
+- `PHonon/PH/elphon.f90:440-490,516-564`: loads matching \(k/k+q\) states, obtains bare RHS, adds the induced local potential, and contracts with `evq`.
+
+The existing project exporter is:
+
+```text
+/home/administrator/projects/catalyst-nc-operator/native/nc-vertex/
+```
+
+- `patch_source.py:8-25`: inserts the bare contraction **before** adding the screened local-field action.
+- `nc_vertex_writer.f90:55-76,82-104`: writes patterns, q/alat, native indices/spin, eigenvalues, source weighted occupations, and retained-band complex matrices.
+
+**Already reusable:** those admitted raw bare/screened matrices, their ordering/pattern metadata, and existing native vertex construction.
+
+**Not supplied by that writer:** wavefunctions, transition densities, kernel coefficients, the Hamiltonian action state, or the uncontracted full-PW vector \(g_{\rm bare}^q|\psi_{nk}\rangle\). Consequently, the existing 20×20 matrices cannot represent external couplings into the omitted PW complement.
+
+---
+
+## Minimal saved state for finite-\(z\) \(\chi_0\)
+
+### Recommended: retain a native matrix-free action
+
+This avoids exporting a dense kernel or declaring the retained 20 bands complete.
+
+| Payload | Minimum useful contents |
+|---|---|
+| Kernel/background | `dmuxc(Nr,2,2)`, `grho(3,Nr,2)`, and each of `dvxc_rr,dvxc_sr,dvxc_ss,dvxc_s(Nr,2,2)`; background density remains available for the native API. These background coefficients are shared across q; q enters derivatives/electrostatics. |
+| Discretization | `alat`, `omega`, lattice/reciprocal basis, Cartesian `xq`, `g`, dense/smooth FFT dimensions and maps `nl`/`nlm` as applicable, `igk_k`, `ngk`, `npwx`, and interpolation convention. |
+| Electronic reference | Complex PW coefficients for all occupation-relevant states at the actual \(k\) **and** \(k+q\), their eigenvalues, physical FD occupations, `ef`, `degauss`, smearing type, source k weights, `isk`, `ikks`, `ikqs`. |
+| Full-complement propagation | Either preserve native initialization enabling `h_psi`, or export its ingredients: `g2kin`, `vrs`, target-k projectors `vkb`, and NC projector coefficient blocks `deeq`, plus the PW maps. |
+| External sides | Full-PW \(g_b^q|\psi_{nk}\rangle\) and the corresponding reverse/adjoint-side data—or retain the native bare-operator application. Keep patterns and state gauge paired with these data. |
+
+`PW/src/read_file_new.f90:158-210,333-354,402-403` reconstructs pseudopotentials, reciprocal/FFT state, density and potential from a native save. It **does not itself read the wavefunction coefficients**. Collected coefficients are read through `PW/src/pw_restart_new.f90:1530-1585`, which also documents spin filenames and PW-index mapping.
+
+Observed saved resources include:
+
+- `V/wave2/initial-state/scf.save/{wfcup1..8.dat,wfcdw1..8.dat,charge-density.dat,data-file-schema.xml,*.upf}`.
+- `V/half-b1/native/scratch/_ph0/scf.wfc1`, with the q-run metadata in `_ph0/scf.save/data-file-schema.xml`.
+
+Using the native buffers avoids inventing another parser for the distributed/direct-access q wavefunction format.
+
+### Critical occupation trap at \(k+q\)
+
+`PW/src/set_kplusq.f90:10-22,55-65` deliberately assigns **zero quadrature weight** to added \(k+q\) points. `PHonon/PH/initialize_ph.f90:39-45,62-68` establishes the corresponding partner indices.
+
+The saved half-b1 q XML actually contains zero-weight partner entries and zero exported occupations at such entries (`…/_ph0/scf.save/data-file-schema.xml:632-654`).
+
+**These partner states are not physically empty.** Compute their \(f_{mk+q}\) from their eigenvalues and the same reference `ef/degauss/smearing`, rather than reading zero-weight `wg`/XML occupations as physical \(f\). Keep quadrature weights separate from occupations.
+
+### Alternative: explicit transition-density export
+
+Exporting
+
+\[
+t^q_{mnk\sigma}(r)
+=\frac{u_{mk+q,\sigma}(r)u_{nk,\sigma}^{*}(r)}{\Omega}
+\]
+
+alongside bare matrix elements supplies all density/external susceptibility blocks directly. However, this requires a controlled target-state/complement representation. **A transition sum restricted to the saved 20 bands is only a truncated response.**
+
+Native Sternheimer propagation can include the entire registered PW empty-state complement without exporting its eigenvectors. Occupation-support truncation is a separate issue: `LR_Modules/setup_nbnd_occ.f90:37-68` explicitly uses a smearing-tail threshold and reports when its selected support reaches the last retained band. Neither that selection nor “20 bands” establishes response completeness.
+
+---
+
+## Minimal functional linear system
+
+**[INFERENCE / derived construction from the source operators; not an exercised material result.]**
+
+Use the QE convention \(g_b^q=\partial h/\partial u_b^q\), and let:
+
+- \(K_q\): the native `dv_of_drho` map;
+- \(M_q\): multiplication by a local spin potential, implemented through the FFT/state application;
+- \(N_q\): extraction of induced spin density from the density matrix;
+- \(\gamma_0\): the registered electronic reference.
+
+For \(\operatorname{Im}z>0\), with \(z\) expressed in the same energy units as the eigenvalues,
+
+[Showing lines 1-200 of 328. Use :201 to continue]
+\[
+[z-\mathcal L_{0,q}]\,\delta\gamma_q
+=
+\left[
+\sum_b g_b^q u_b^q+M_qK_qN_q\delta\gamma_q,\,
+\gamma_0
+\right].
+\]
+
+In the eigenstate representation this means
+
+\[
+(\delta\gamma_q)_{mnk\sigma}
+=
+\frac{f_{nk\sigma}-f_{mk+q,\sigma}}
+{z+\epsilon_{nk\sigma}-\epsilon_{mk+q,\sigma}}
+\left[
+\sum_b g_b^q u_b^q+M_qK_q\delta n_q
+\right]_{mnk\sigma}.
+\]
+
+Let \(R^0_{AB}(q,z)\) denote response to an **additive** Hamiltonian perturbation \(+V_B\). Then
+
+\[
+\boxed{
+[I-R^0_{nn}(q,z)K_q]\,\delta n_q
+=
+R^0_{ng}(q,z)u_q
+}
+\]
+
+and the electronic external-side response is
+
+\[
+R^{\rm sc}_{gg}
+=
+R^0_{gg}
++
+R^0_{gn}K_q
+[I-R^0_{nn}K_q]^{-1}R^0_{ng}.
+\]
+
+Both external sides remain the **bare full local+nonlocal** \(g\). All internal screening is generated by the same-frequency density solve. No inference of \(K_q\) from \(g_{\rm screened}-g_{\rm bare}\) is involved.
+
+For the existing finite algebra:
+
+- `/home/administrator/projects/substrate-ni-collective/src/substrate_framework/screened_force_response.py:1-27` uses \(h'=-uB+D\,U\,\delta d\) and a positive susceptibility.
+- Set \(B=-g_{\rm bare}^{QE}\), replace scalar-channel interaction by the spatial \(K_q\), and use the corresponding positive-response convention. Its denominator is then \(I+C_{nn}K_q\).
+- Preserve the density–potential quadrature pairing \((\Omega/N_{\rm grid})\sum_r n^*v\); do not introduce an extra volume/grid factor while replacing finite density channels.
+
+QE’s FFT convention is forward \(1/N\), inverse unnormalized (`FFTXlib/src/fft_scalar.FFTW3.f90:379-387,433-440`). Collinear spin channels are already explicit: no additional spin-degeneracy multiplier belongs in the transition sum.
+
+### Finite-\(z\) implementation boundary
+
+A full response contains both occupation-difference terms, equivalently two resolvent branches. A single static perturbed-ket solve followed by `2*Re` is insufficient for arbitrary complex \(q,z\).
+
+`ch_psi_all_complex` supplies useful complex-shift Hamiltonian machinery, but:
+
+- its `alpha_pv` shift must be removed for an unprojected resolvent, or its projected-out contributions must be restored consistently;
+- static `orthogonalize` occupation weights cannot simply be reused at finite \(z\);
+- `solve_e_fpol.f90:96,149-150` explicitly rejects LSDA and metallic/non-Gamma cases. It is **not** a ready Ni/H finite-q driver.
+
+Using the static PBE Hessian at finite frequency defines the **adiabatic spin-PBE** extension. It does not supply XC memory, collision physics, or physical linewidths.
+
+For the ionic action, the response is only one term:
+
+\[
+H^{\rm eff}_{ab}(q,z)
+=
+H^{\rm ion}_{ab}(q)
++\operatorname{Tr}(\gamma_0 W_{ab})
++R^{\rm sc}_{g_ag_b}(q,z),
+\]
+
+with \(W_{ab}=\partial_a\partial_b h_{\rm ion}\). QE already separates the explicit terms in `PHonon/PH/dynmat0.f90:44-68`: `dynmat_us`, `d2ionq`, and applicable corrections. `dynmat_us.f90:10-15` identifies its \(\langle\psi|V''-\epsilon S''|\psi\rangle\) contribution. Those terms must remain explicit, not be fitted from first-order vertices.
+
+---
+
+## Static ensemble and complex-q requirements
+
+### Static populations are not the isolated \(z\to0\) limit
+
+The registered static objective fixes total \(N\) and lets magnetization relax. Its static FD response therefore needs:
+
+\[
+(\delta\gamma)_{nn}
+=f'_n\big[(\delta V)_{nn}-\delta\mu\big],
+\qquad
+\delta N=0,
+\]
+
+with **one common** \(\delta\mu\), not independent fixed-up/down constraints. Degenerate blocks require the FD divided-difference limit \(f'\), not deletion of equal-energy entries.
+
+Native support already exists:
+
+- `LR_Modules/orthogonalize.f90:92-163`: static metallic occupation factors and near-degenerate limits.
+- `LR_Modules/localdos.f90:105-130`: FD derivative/local-DOS construction.
+- `LR_Modules/efermi_shift.f90:77-108`: integrates both spins, sets `def=-delta_n/dos_ef`, and adds `def*ldos`.
+- `PHonon/PH/dfpt_kernels.f90:350-365`: applies this before the HXC kernel.
+
+At nonzero q, a periodic \(\delta\mu\) has only Gamma support, but metallic/degenerate static population response still matters.
+
+The existing isolated finite-response implementation skips equal-energy commutator terms (`finite_fermion_response.py:7-18`); that is not a substitute for the static FD derivative. Likewise, collisionless collinear dynamics does not relax uniform spin populations merely because the static reference uses relaxed magnetization.
+
+### Conjugacy
+
+Retain complex cell-periodic fields and actual k/PW maps:
+
+- \(g^{-q}=(g^q)^\dagger\), with source/target spaces exchanged.
+- The static real-functional kernel obeys the corresponding \(K_{-q}=K_q^*\) relation after reciprocal-label mapping.
+- Real time-dependent fields pair \((q,z)\) with \((-q,-z^*)\), **not generally \((-q,z)\)**.
+- At half-b1, \(-q\equiv q\) modulo a reciprocal vector. This requires a reciprocal-index/envelope phase transformation; it does not make the primitive-cell envelope pointwise real.
+- The registered alternating real supercell coordinate is self-conjugate and must not be counted twice.
+
+---
+
+## Smallest implementable route and next positive output
+
+**[INFERENCE / recommended implementation route.]**
+
+1. **Expose the native kernel after existing PH/background initialization.** Call `setup_dmuxc`, `setup_dgc`, then `dv_of_drho` on arbitrary complex up/down density fields, outside ionic-irrep symmetrization. Export the coefficient/state bundle or keep the operation native.
+2. **Preserve full-PW external RHSs before the existing retained-band contraction.** The existing hook identifies the correct point; retain `dvpsi=g_bare*evc` there, plus paired state/index information.
+3. **Add the two-branch finite-\(z\) independent-electron action around native `h_psi`.** Use the full PW complement, physical partner occupations, and density extraction; compose with \(K_q\) through the boxed linear system. Do not start by constructing a dense grid kernel or enlarging a fitted two-channel model.
+
+**The next positive native deliverable should be a per-q operator-action bundle at Gamma and half-b1:** actual background/coefficient arrays and FFT/state maps, a declared complex mixed-spin input \(\delta n_q\), its native \(K_q\delta n_q\), and paired full-PW bare RHSs. That directly installs the missing functional bridge. A subsequent bounded output can be one finite-\(z\) \(\chi_0\) action and induced-density solution with its raw residual—not a claimed full coherence-domain model.
+
+This complements the independent 0014 scalar/force curvature work; it does not require replaying the admitted first-order vertex qualification.

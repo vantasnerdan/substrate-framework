@@ -1,0 +1,37 @@
+{
+  "schema": "P254-continuation-physical-endpoint-readout-failure-intake-v1",
+  "actual_utc": "2026-10-31T10:51:13.210951+00:00",
+  "actual_terminal": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-shared-mixed-continuation-terminal-original-001.json",
+    "bytes": "733662",
+    "sha256": "cff39d28ecf2c743cf727f740feeba17a52289234829812f2551da93cec28b33"
+  },
+  "actual_own_unit_exit": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-shared-mixed-continuation-unit-exit-original-001.json",
+    "bytes": "261",
+    "sha256": "4bab9af8748710b58525d118529f74e0c4d663905d1a8b950df80ea9b297491f"
+  },
+  "unit_stdout": "MainPID=0\nResult=exit-code\nNRestarts=0\nExecMainExitTimestamp=Sat 2026-10-31 10:47:40 UTC\nExecMainStatus=2\nMemoryCurrent=[not set]\nCPUUsageNSec=57094381179000\nActiveState=failed\nSubState=failed\nInvocationID=b34eb20d36144c63aaee17f0a8a6b2b6\n",
+  "actual_owner_release": {
+    "actual_utc": "2026-10-31T10:51:13.210748+00:00",
+    "path": "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/owner.lock",
+    "exclusive_nonblocking_acquired": true,
+    "writes_performed": false
+  },
+  "physical_endpoint": {
+    "binding": {
+      "path": "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-3/final.json",
+      "bytes": 221505,
+      "sha256": "5f2b72b531b579be3568c1012c2d1f82c94762103b0a88f2ef5c540dbc171c39"
+    },
+    "time": 0.001,
+    "identity": "14a02558ac686b47861fe5cfd48b38293b4703c634e46f9d1ab91b7b2728d3c6",
+    "requested_physical_endpoint_observed": true
+  },
+  "evolution_complete": true,
+  "requested_behavior_complete": false,
+  "actual_error": "ValueError: checkpoint/source bytes differ: /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_q_material.py",
+  "actual_steps_completed": [],
+  "evidence_scope": "Existing original driver returned full RK4 checkpoint after authenticating final values, then entered requested energyreadout before step receipt publication. It failed on the stale run_joint_q_material source authority, as the earlier real saved-energy CLI did. Physical endpoint retained; no suppression or successful energy/step-receipt claim. Original owner unchanged and lock released. No re-propagation needed.",
+  "next_action": "Clean current-authority mean-reader migration/fresh same-input ledger and actual saved-boundary eleven-term CLI; preserve actual failure and all original costs."
+}

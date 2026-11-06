@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "unit": "c5-fermi-oracle-checkpoint.service",
+  "actual_pid": 3993532,
+  "requested_signal": "SIGTERM",
+  "signal_receipt_written": true,
+  "signal_number_observed_by_python": 15,
+  "checkpoint_sha256": "b18cc545e089d8e89b07e4812e07aa95a947f36a4cb9ef59ec33c37d708468d2",
+  "actual_systemd_main_exit_status": 120,
+  "expected_python_exit_status": 143,
+  "defect_scope": "runtime Tee stream shutdown, not finite-state mathematics",
+  "diagnosis": "The module-level sys.stdout/sys.stderr Tee objects retain the context-managed log file after its close; Python's final flush raises on that closed file and changes the exit status to 120. Signal/checkpoint recovery record itself was written before shutdown.",
+  "evidence": "Fresh herdr pane w1:pD output in artifact://2284 shows ACTUAL_SIGNAL_CHECKPOINT_PRESERVED 15 followed by Main process exited code=exited status=120/n/a. Immutable initial source archive source-generation0001.tar.gz contains exact runtime.",
+  "repair_boundary": "Make only Tee.write/flush tolerate a closed file while still writing/flushing the terminal; retain all scientific definitions and checkpoint. Re-register runtime generation and replay actual signal/recovery."
+}

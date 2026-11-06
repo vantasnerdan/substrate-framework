@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "canonical_issue": "228",
+  "parent_issue": "225",
+  "positive_intent": "Make the explicit Gamma acoustic projection safely composable with the strict signed eigensolver, while preserving genuine input asymmetry diagnostics and signed instabilities.",
+  "source_gate": "Completed independent ReviewRawPhonon observed the attempt0003 mixed-mass Hermitian fixture acquire multiplication roundoff asymmetry under P D P and fail signed_modes. Exact command/output are in the reviewer handoff; no new physical method source is required for this API invariant.",
+  "preexecution_design": {
+    "fixture": "Use the exact existing4/9-amu spring fixture with the complex(1+2i) perturbation at Cartesian entry(0,4), followed by explicit Hermitian projection. Build the same mass-weighted operator and acoustic projector independently using exact SymPy rationals. Exact characteristic roots define the reference spectrum.",
+    "checks": ["Exact rational projector Hermiticity/idempotency and null translations", "Exact projected Hermiticity and reference roots", "Actual projection-to-signed_modes composition agrees with exact-root spectrum within declared engineering roundoff", "Negated fixture retains its nonzero negative modes and signed frequencies", "Genuinely asymmetric input is not silently Hermitian-projected and remains rejected by signed_modes", "Input operator bytes are unchanged"],
+    "repair_if_reproduced": "When input is exactly Hermitian, explicitly restore that same invariant after P D P multiplication. Do not Hermitian-project genuinely asymmetric input. Preserve public raw diagnostic semantics and do not clip modes.",
+    "floating_budget": "256*n*eps times the exact fixture operator Frobenius norm in the chosen units; empirical engineering allowance only, not a certified eigensolver/DFT enclosure.",
+    "exposing_alternatives": ["Original raw product loses exact Hermiticity and fails composition", "Omitting acoustic projection misses exact null/reference spectrum", "Clipping negative modes misses the negated exact spectrum", "Unconditionally Hermitian-projecting asymmetric inputs destroys their diagnostic rejection"]
+  },
+  "execution": "Canonical SF Python/PYTHONPATH in labeled herdr w1:p9 under separate dft-c5-projection-regression.service, CPU5,MemoryMax512M,one BLAS/OMP thread. Existing atomic oracle_artifacts writer. Preserve actual first failed receipt before repair; same unchanged oracle then verifies the repair.",
+  "scope": "Finite synthetic API composition only. Existing attempt0003 native replay and its127-check receipt remain their historical boundary; no native inputs/replay code or other library definitions change. Do not rerun unaffected native calculations or suites. No material, ASR-stability, loss or coherence claim.",
+  "state": "preregistered_before_execution"
+}

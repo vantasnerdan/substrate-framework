@@ -1,0 +1,51 @@
+ACTUAL_ORACLE_PID 3994219 AFFINITY [5]
+RECOVERED_STATE_CHECKPOINT b18cc545e089d8e89b07e4812e07aa95a947f36a4cb9ef59ec33c37d708468d2 STATE_BLOCK_NOT_RECOMPUTED
+PASS [P254-attempt0007-finite-fermion] complete complex retarded kernel equals independent Fock trace
+PASS [P254-attempt0007-finite-fermion] retarded sign mutation rejected
+PASS [P254-attempt0007-finite-fermion] complex conjugation mutation rejected
+PASS [P254-attempt0007-finite-fermion] hbar normalization mutation rejected
+PASS [P254-attempt0007-finite-fermion] direct time commutator integral fixes perturbation sign and hbar
+PASS [P254-attempt0007-finite-fermion] all connected unsymmetrized line weights equal exact Fock trace
+PASS [P254-attempt0007-finite-fermion] all line weights obey complex detailed balance
+PASS [P254-attempt0007-finite-fermion] symmetrized noise equals independent Fock anticommutator
+PASS [P254-attempt0007-finite-fermion] FDT including complex cross channels at every nonzero line
+PASS [P254-attempt0007-finite-fermion] missing Pauli hole occupation factor rejected
+PASS [P254-attempt0007-finite-fermion] dropping zero-frequency population covariance rejected
+PASS [P254-attempt0007-finite-fermion] complete complex retarded kernel equals independent Fock trace
+PASS [P254-attempt0007-finite-fermion] retarded sign mutation rejected
+PASS [P254-attempt0007-finite-fermion] complex conjugation mutation rejected
+PASS [P254-attempt0007-finite-fermion] hbar normalization mutation rejected
+PASS [P254-attempt0007-finite-fermion] direct time commutator integral fixes perturbation sign and hbar
+PASS [P254-attempt0007-finite-fermion] all connected unsymmetrized line weights equal exact Fock trace
+PASS [P254-attempt0007-finite-fermion] all line weights obey complex detailed balance
+PASS [P254-attempt0007-finite-fermion] symmetrized noise equals independent Fock anticommutator
+PASS [P254-attempt0007-finite-fermion] FDT including complex cross channels at every nonzero line
+PASS [P254-attempt0007-finite-fermion] missing Pauli hole occupation factor rejected
+PASS [P254-attempt0007-finite-fermion] dropping zero-frequency population covariance rejected
+PASS [P254-attempt0007-finite-fermion] dropping degenerate off-diagonal population covariance rejected
+PASS [P254-attempt0007-finite-fermion] isothermal GC curvature equals full Fock divided difference
+PASS [P254-attempt0007-finite-fermion] GC minus isolated is exactly zero-frequency occupation covariance
+PASS [P254-attempt0007-finite-fermion] equating isolated zero response and isothermal GC rejected
+PASS [P254-attempt0007-finite-fermion] finite canonical differs from mean-number Legendre curvature
+PASS [P254-attempt0007-finite-fermion] mean-number projection changes GC curvature
+PASS [P254-attempt0007-finite-fermion] canonical number variance is exactly zero
+PASS [P254-attempt0007-finite-fermion] canonical factorized independent occupations mutation rejected
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/run_oracle.py", line 168, in execute
+    results[name] = cached_block(name, function, ledger, manifest_hash)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/run_oracle.py", line 92, in cached_block
+    result = function(ledger)
+             ^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/check_thermodynamics.py", line 61, in run
+    error = float(np.max(np.abs(matrix-np.array(exact.evalf(), float))))
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/matrices/matrixbase.py", line 3680, in __array__
+    return matrix2numpy(self, dtype=dtype)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/matrices/dense.py", line 167, in matrix2numpy
+    a[i, j] = m[i, j]
+    ~^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/expr.py", line 374, in __float__
+    raise TypeError("Cannot convert complex to float")
+TypeError: Cannot convert complex to float

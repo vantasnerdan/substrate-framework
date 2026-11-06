@@ -1,0 +1,45 @@
+{
+  "registered_at": "2026-10-27T18:52:23.048803+00:00",
+  "parent_registration": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0019/registration.json",
+    "bytes": "2920",
+    "sha256": "a601d041ad924a6e02b4c613fbc2f082e20505efa0ffe4f610cdbfdb7c873287"
+  },
+  "failure": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0019/frame-oracle-001.json",
+    "bytes": "625576",
+    "sha256": "45be6431f50da67ffa48a3d90c37018dbcc2daee9f6a924b072b92e651aec730"
+  },
+  "diagnostics": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0019/background-discrepancy-diagnostic-001.json",
+      "bytes": "1168",
+      "sha256": "e6bf4addd4a58c5ca18752d18a8563094f5f3a274f7a28c3196e04b09026f098"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0019/reciprocal-gauge-diagnostic-001.json",
+      "bytes": "8123",
+      "sha256": "8661ef4b91cc111fed083e6c1c4d0d2b9e1f833e911bdd154e01857c999272ac"
+    }
+  ],
+  "source_before_repair": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_pw_response_frames.py",
+      "bytes": "20518",
+      "sha256": "d2b76e0649b92acf88a4392f28b5bdc645be73b7a44c6875f1e11a757c23b3e6"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0019/run_frame_oracle.py",
+      "bytes": "13081",
+      "sha256": "3ae7f234b70d8411010aa178e1a415e63d12c729835baa823efaa72a0babf8e7"
+    }
+  ],
+  "mechanism": "Native independently reconstructs local background at floating roundoff and selects one reciprocal-equivalent source representative k+bg*(1,1,1). Exact floating-byte equality and literal k equality are not physical source identity. No Native rerun or numerical-precision expansion.",
+  "construction": "Match source spin and k modulo integer reciprocal shift; verify integer residual <=2e-12 as existing coordinate allowance; map Gamma source G to branch G+shift bijectively; keep actual target rows and translate target FFT slots by the SAME reciprocal shift into common source envelope. Verify source projectors and all shared floating backgrounds at 64*eps*max(1,maxabs(reference)), integers still exact. Never phase-copy +q into -q.",
+  "oracles": [
+    "Exact SymPy full-Bloch plane-wave gauge identity with independent shifted-coefficient FFT phase check and opposite-sign/omitted-target-shift mutations",
+    "Existing actual full-source projector matching, full spectra/density/FD checks; independent oracle derives shifted slots from Miller indices, not production slots"
+  ],
+  "allowance_scope": "64epsilon float64 is arithmetic reproducibility across independent Native reconstruction, not material tolerance; observed source disagreement retained, no calibration to scientific curvature.",
+  "budget": "Original 19:10 Root decision unchanged; failed build1.69s retained. One repaired actual frame attempt180s CPU6/BLAS1; no Native/cloud allocation."
+}

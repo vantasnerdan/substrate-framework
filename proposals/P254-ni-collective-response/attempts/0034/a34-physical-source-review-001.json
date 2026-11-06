@@ -1,0 +1,240 @@
+{
+  "schema": "P254-A34-physical-source-code-review-v1",
+  "verdict": {
+    "overall_correctness": "incorrect",
+    "explanation": "The shared full-row restoration, complex-linear force/adjoint dispatch, legacy import cutover, and inherited ordered covariance interface have no other evidenced introduced defect in this review. One P2 admission defect remains in the independently runnable source0 case path: it can publish a complete result without authenticating the original preparation/boundary. The production batch and aggregate currently compensate for that omission in load_context; this is not an observed numerical failure of either completed pilot.",
+    "confidence": 0.97
+  },
+  "findings": [
+    {
+      "title": "Authenticate the original preparation before accepting cached source0",
+      "body": "When export_full_source_modes.py is invoked directly with --original-record 0, this admission checks the initial-result and coefficient-manifest JSON bindings but never authenticates source['preparation'] or source['original_boundary']. If the preparation archive or boundary has changed or disappeared since the paid actions were produced, cached_source0 still accepts the action/coordinate/frame/D payloads and the exporter publishes status complete plus done.json with the stale preparation authority; the nonzero-record restoration rejects the same condition. Join those saved bindings to the authenticated initialization and authenticate their bytes before returning the cached inputs; this requires no physical-action or preparation replay. batch_mode_noise.py and aggregate_mode_noise.py currently mask this defect through load_context, but the case CLI itself has no such check.",
+      "priority": 2,
+      "confidence": 0.99,
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/cached_mode_source0.py",
+      "line_start": 23,
+      "line_end": 29,
+      "evidence_refs": ["cache-admission", "case-dispatch-publication", "batch-compensating-admission", "original-restoration"]
+    }
+  ],
+  "scope": {
+    "assignment": "A30 original_noise_source.py, full_noise_probe_inputs.py and packet_hamiltonian_actions.py import-only cutover; A34 cached_mode_source0.py and export_full_source_modes.py; actual source1/source0 packets and inherited material_noise_projection API.",
+    "method": "Read-only static review of complete target files, working diff, legacy callers, consuming dispatch points, supplied pilot evidence and original boundary/selection metadata. No tests, builds, lint, Python imports, numerical runs, physical actions, source edits or service mutations were performed.",
+    "review_packet_read_first": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/complete-pilot-and-batch-review-packet-001.json",
+    "boundary_review_only": "Batch and aggregate were read where needed to establish routing, downstream authentication, weighting and scope of the source adapter finding; this report is not an independent complete audit of their scheduling, interruption or durability mechanisms.",
+    "inherited_proofs": "Existing factor/CAR/projection/source-transport proofs and completed A33 consumer/review work are carried, not reopened or rerun.",
+    "findings_complete": true,
+    "source_mutations": false,
+    "physical_actions_performed_by_reviewer": 0
+  },
+  "evidence": [
+    {
+      "id": "original-restoration",
+      "kind": "static-code",
+      "locations": [
+        "attempts/0030/original_noise_source.py:58-179",
+        "attempts/0030/original_noise_source.py:191-234",
+        "src/substrate_framework/streamed_material_state.py:55-96",
+        "attempts/0028/matched_joint_sources.py:48-85"
+      ],
+      "established": "The extracted restoration preserves the old admission path: completed literal t0 boundary with 128 identities, original preparation authentication, mmap full Psi and raw D, saved twelve-index selection and coefficient archive, unchanged physical specification, exact spin/weight/source checks, same source-state Gram/D with the orbital-conjugation branch, and exact transported full frame/basis/gauge/source-admission comparison. It exposes physical factors/coupling without applying H, H37, force, kernel reduction, population refill or ionic/field preparation constructors. State authority still hashes initialization, preparation, boundary, record, frame, D and source-state/archive bindings. The same Gram inverse-square-root coordinate construction and saved selection were moved rather than replaced."
+    },
+    {
+      "id": "complex-force-consumers",
+      "kind": "static-code",
+      "locations": [
+        "attempts/0030/full_noise_probe_inputs.py:37-144",
+        "src/substrate_framework/material_physical_operators.py:35-87",
+        "src/substrate_framework/qe_bloch_dyads.py:22-49",
+        "src/substrate_framework/qe_bloch_ionic_action.py:14-73",
+        "src/substrate_framework/qe_material_ionic_action.py:25-49"
+      ],
+      "established": "prepare_full_noise_modes routes both original atom-major complex direction columns unchanged into coupling.ionic.prepare. BlochDyadCoupling explicitly installs BlochIonicAction; prepare constructs the complex-linear local and both nonlocal derivative terms without conjugating U. _force_actions calls both actual apply and actual adjoint_apply on every raw column in blocks of at most eight, then applies minus one exactly once on each leg. BlochDirectionalAction.adjoint_apply conjugates the direction/field/terms, not the input ket. ActionFactors preserve full shape and explicit basis/source identities. No new modal value is silently dropped by a Cartesian-only dispatcher."
+    },
+    {
+      "id": "legacy-import-cutover",
+      "kind": "working-diff-and-static-callers",
+      "locations": [
+        "attempts/0030/full_noise_probe_inputs.py:1-35",
+        "attempts/0030/packet_hamiltonian_actions.py:17-38",
+        "attempts/0030/packet_hamiltonian_actions.py:117-174",
+        "attempts/0030/export_full_noise_probe.py:38-84",
+        "attempts/0030/export_output_directed_actions.py:58-76",
+        "attempts/0031/cached_bath_inputs.py:13-62"
+      ],
+      "established": "The packet_hamiltonian_actions.py working diff changes imports only. Its former helper imports now come directly from original_noise_source, matched modules and substrate modules; _force_actions remains imported from full_noise_probe_inputs. Repository-wide literal/import searches found no remaining caller of a removed full_noise_probe_inputs helper export. The Cartesian exporter still imports the retained prepare_full_noise_probe API and consumes the unchanged FullNoiseProbeInputs fields. Existing packet Hamiltonian and ionic-force methods retain their callers and their independent adjoint/sign behavior; no H action is introduced by the new modal exporter."
+    },
+    {
+      "id": "cache-admission",
+      "kind": "new-file-diff-and-static-code",
+      "locations": [
+        "attempts/0034/cached_mode_source0.py:18-62",
+        "src/substrate_framework/streamed_material_state.py:15-28"
+      ],
+      "established": "Cached mode1 is joined to the exact paid mode0 packet binding; initial-result/coefficient-manifest/current mode-archive bindings are compared, and mode1 direction is checked exactly against the requested second column. Coordinates, original frame, original raw D and all four force-leg files are byte-authenticated. Coordinate D equals original raw D; both action records must match packet basis/state authority and full Psi shape. Only ni_output_ionic_mode0 and second['actions'] enter probes: the old H and H37 actions are not loaded or reevaluated. The function contains no authentication or initialization join for the original preparation or boundary, which is the reported direct-case admission defect."
+    },
+    {
+      "id": "case-dispatch-publication",
+      "kind": "static-code",
+      "locations": [
+        "attempts/0034/export_full_source_modes.py:27-84"
+      ],
+      "established": "The case CLI authenticates the supplied channel NPZ, takes ionic_basis[:, :2], explicitly routes record0 to cached_source0 and other records to prepare_full_noise_modes, requires exactly mode0/mode1 probes, and forwards algebra_arguments to projected_noise_decomposition. It serializes all covariance_rows, frame/basis/state/mode identities and unweighted quadrature metadata, then publishes result and completion JSON. No extra preparation/boundary admission is present on its cached branch."
+    },
+    {
+      "id": "covariance-consuming-side",
+      "kind": "static-code-carried-API",
+      "locations": [
+        "src/substrate_framework/material_noise_projection.py:54-103",
+        "src/substrate_framework/material_noise_projection.py:105-217",
+        "attempts/0030/export_output_directed_actions.py:42-49",
+        "attempts/0034/aggregate_mode_noise.py:109-127",
+        "attempts/0034/aggregate_mode_noise.py:249-293"
+      ],
+      "established": "The inherited API iterates over every named probe and both ordered mode pairs; it contracts independent adjoint legs with full action legs, retains original D, and constructs all RR/RE/ER/EE blocks without clipping, Hermitization, restriction, refill, implicit spin, cell or quadrature factors. covariance_rows emits all four directed mode rows and every block. The downstream parser accepts the explicit mode0/mode1 names and validates all four rows/blocks; aggregation weights each unweighted value once. No newly introduced modal key is discarded. This is interface tracing, not a new CAR/projection proof."
+    },
+    {
+      "id": "batch-compensating-admission",
+      "kind": "static-code",
+      "locations": [
+        "attempts/0034/aggregate_mode_noise.py:129-183",
+        "attempts/0034/aggregate_mode_noise.py:186-246",
+        "attempts/0034/batch_mode_noise.py:259-270",
+        "attempts/0034/batch_mode_noise.py:306-343"
+      ],
+      "established": "The actual batch calls load_context before launching the case; it pins the contract's initialization/coefficient/mode bindings and authenticates original boundary plus preparation. The batch additionally pins both source0 packet bindings to the contract. load_case joins returned preparation/boundary/frame/D/selection/source metadata to that original context. Therefore the source0 finding concerns the direct case/API admission, not a claim that the completed cached batch admitted changed preparation bytes."
+    },
+    {
+      "id": "original128-static-dimensions",
+      "kind": "existing-boundary-and-manifest-metadata",
+      "locations": [
+        "/var/tmp/p254-a28-matched-loaded-rebind-001/original/boundary.json",
+        "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+        "src/substrate_framework/qe_real_bloch_grid.py:245-292"
+      ],
+      "established": "Original boundary metadata contains 128 slots, 64 per explicit spin component, each with 346 raw columns and weight 0.015625. Full-PW row counts are 18504, 18509, 18534, 18536, 18538, 18542, 18560, 18569, 18600 and 18613. All 128 saved slot selections contain twelve indices. All 128 saved slot metadata entries actually have orbital_conjugation=false. The unexercised conjugated branch was checked statically: source Gram and D are both conjugated together, native coefficients are conjugated in transport_coefficients with the inherited translation phase, basis rows use slot.epsilon, and the exact full transported frame is compared with the original record. No all128 physical execution or conjugated pilot is inferred."
+    },
+    {
+      "id": "actual-source1-pilot",
+      "kind": "provided-execution-evidence-read-not-rerun",
+      "locations": [
+        "attempts/0034/actual-nonzero-source-pilot-001.json",
+        "/var/tmp/p254-a34-source1-two-mode-001/result.json"
+      ],
+      "established": {
+        "actual_exit": 0,
+        "original_record": 1,
+        "spin": 1,
+        "mesh_index": [0, 0, 1],
+        "orbital_conjugation": false,
+        "elapsed_seconds": 162.80788901587948,
+        "peak_rss_bytes": 1498783744,
+        "full_pw_rows": 18569,
+        "raw_columns": 346,
+        "active_count": 12,
+        "physical_force_forward_actions": 2,
+        "physical_force_adjoint_actions": 2,
+        "forward_action_columns": 692,
+        "adjoint_action_columns": 692,
+        "hamiltonian_actions": 0,
+        "native_calls": 0,
+        "preparation_replays": 0,
+        "trajectory_actions": 0,
+        "quadrature_applied": false,
+        "covariance_orders": ["mode0,mode0", "mode0,mode1", "mode1,mode0", "mode1,mode1"],
+        "all_four_blocks_present_per_order": true
+      }
+    },
+    {
+      "id": "actual-cached-source0",
+      "kind": "provided-execution-evidence-read-not-rerun",
+      "locations": [
+        "attempts/0034/actual-cached-sector-batch-001.json",
+        "/var/tmp/p254-a34-two-mode-full-source-batch-001/runs/run-7cfefeb1ec864b1198127d9be273bcbb/summary.json",
+        "/var/tmp/p254-a34-two-mode-full-source-batch-001/records/record-000/generation-992eee13e84b49e8bfdc76cb6cb6b0d5/case/result.json"
+      ],
+      "established": {
+        "actual_exit": 0,
+        "original_record": 0,
+        "status": "requested-subset-complete",
+        "full_original128_coverage": false,
+        "case_elapsed_seconds": 10.109569797292352,
+        "peak_rss_bytes": 741519360,
+        "full_pw_rows": 18613,
+        "raw_columns": 346,
+        "active_count": 12,
+        "physical_force_forward_actions": 0,
+        "physical_force_adjoint_actions": 0,
+        "reused_paid_force_legs": 4,
+        "hamiltonian_actions": 0,
+        "native_calls": 0,
+        "preparation_replays": 0,
+        "trajectory_actions": 0,
+        "all_four_blocks_present_per_order": true
+      }
+    },
+    {
+      "id": "actual-partial-aggregate",
+      "kind": "provided-execution-evidence-read-not-rerun",
+      "locations": [
+        "attempts/0034/actual-nonzero-source-pilot-001.json",
+        "/var/tmp/p254-a34-pilot-aggregate-001/source1-partial.json"
+      ],
+      "established": {
+        "actual_exit": 2,
+        "status": "partial",
+        "sector_count": 1,
+        "original_records": [1],
+        "missing_count": 127,
+        "quadrature_applied_once": true,
+        "quadrature_weight": 0.015625,
+        "extra_spin_factor": 1,
+        "final_spatial_factor": 1,
+        "partial_renormalization": false,
+        "scope": "Initial Gamma two-mode force noise only; no late Ni output, bath/error bound, all64 external q, damping, heat or loss."
+      }
+    }
+  ],
+  "not_established": [
+    "No new checks or physical computations were executed by this reviewer; observed pilot timings, exits, memory and zero-action counts come from the supplied original execution records.",
+    "The reported preparation/boundary admission failure is proved by the direct CLI/static call path; no tampering, removal or failure injection was performed and no actual drift is alleged.",
+    "Actual source1 plus cached source0 do not establish physical execution, successful completion, runtime or memory behavior of records2..127, including the second spin. Static dimension/general-k compatibility is not a full128 production result.",
+    "No supplied saved slot is orbital-conjugated. Conjugated-slot handling was traced statically but was not physically exercised by either supplied pilot or by this reviewer.",
+    "Legacy Cartesian/packet-Hamiltonian callers were checked statically, not imported or executed after the helper extraction.",
+    "No old material, trajectory, factor/CAR/projection proof, all64-external-q campaign, late-bound noise, linewidth, precision qualification or error-bound work was rerun or newly claimed.",
+    "Hashes and byte counts below are source bindings declared in the supplied review/pilot packets; this reviewer did not independently hash source files or large original payloads. Parent owns actual binary banking."
+  ],
+  "sourcebindings": {
+    "provenance": "Declared bindings transcribed from complete-pilot-and-batch-review-packet-001.json, implementation-contract-001.json and source1 result implementation metadata; not independently rehashed.",
+    "contract": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/implementation-contract-001.json",
+      "bytes": 5174,
+      "sha256": "f1a64582204e08bc48f879628016d70a8aa46701f8575fae067dc215ac1fd375"
+    },
+    "reviewed_target_sources": [
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030/original_noise_source.py", "bytes": 14115, "sha256": "03f1c84633e5568a095cb5d52a2437e01eb392afcde454673008d5ddeee303c7"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030/full_noise_probe_inputs.py", "bytes": 7036, "sha256": "0b57b30f68a0bc20bab6e22fc6e2661795e7a223bad72359666161ebc7eb352a"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030/packet_hamiltonian_actions.py", "bytes": 23090, "sha256": "61f5c13883b701fe4dbf589d765eb79ef23e491830737e7005497e8ac57943f0"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/cached_mode_source0.py", "bytes": 3677, "sha256": "a5e0868867dc9ed7bbb437649bc02159d7e9292cbe82a6fb88b8d50d3a8bbc41"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0034/export_full_source_modes.py", "bytes": 4876, "sha256": "d1fc020648a39739500aea5f0a9c1ba3682e886ccb3b862c2ea9c56732bfc5a4"}
+    ],
+    "inherited_consumers": [
+      {"path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_noise_projection.py", "bytes": 11755, "sha256": "af25d5545ffc1a8a67d7f00fdbaa1037b80dd0c00f5bed6f29578ca7b2d5d061"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_factor_preparation.py", "bytes": 11366, "sha256": "3dd3767a13da9fd5f5d7559bc3f7a98cf00d365655a08980db551d011aa25b96"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_ionic_action.py", "bytes": 3727, "sha256": "1135f801ab9a01d217dcedd4f51f13ac5d88233dd6e6050b3710d7a6577e8c05"},
+      {"path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_real_bloch_grid.py", "bytes": 17801, "sha256": "703405812fc7effe8ee5692c09dfbc306655354e77e2e09f3dc2662458c5521b"}
+    ],
+    "original_inputs_and_paid_modes": [
+      {"path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json", "bytes": 25705, "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"},
+      {"path": "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json", "bytes": 59561233, "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"},
+      {"path": "/var/tmp/p254-a30-output-directed-source0-actions-001/force-channels.npz", "bytes": 3527206, "sha256": "3f37716e200b55c59c2837edf9e126439e97c5d4898436c90a5a75325cb10f19"},
+      {"path": "/var/tmp/p254-a30-output-directed-source0-actions-001/packet.json", "bytes": 158396, "sha256": "b6dc1bc91025f198e28559080f489cd5a7b4aaecb22908a7113f6361a5ed0521"},
+      {"path": "/var/tmp/p254-a31-source0-two-mode-bath8-001/mode1-complete.json", "bytes": 113108, "sha256": "a57067878e0334590cbd81c0ab188e8c16c5000a1f811b98b7a823d2f0a31297"}
+    ],
+    "actual_pilot_outputs": [
+      {"path": "/var/tmp/p254-a34-source1-two-mode-001/result.json", "bytes": 120685, "sha256": "93b34cf742e78d2c243142b33cc79bb5661b88f516d5962e6b6fd2804799f73d"},
+      {"path": "/var/tmp/p254-a34-two-mode-full-source-batch-001/records/record-000/generation-992eee13e84b49e8bfdc76cb6cb6b0d5/case/result.json", "bytes": 105005, "sha256": "b16d1768de1022c69378a64eaef2ad399421cbc87693b906fce161d63594b81f"},
+      {"path": "/var/tmp/p254-a34-pilot-aggregate-001/source1-partial.json", "bytes": 126047, "sha256": "a128d8fe89d9e7b977cdcd3da86e8bb05fc1b436f7d85a4c150bcd3b6c095786"}
+    ]
+  }
+}

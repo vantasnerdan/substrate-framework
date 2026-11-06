@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-20T00:32:05.977Z",
+  "status": "GENERATION006 COMPLETE EXECUTION BUT SCIENTIFIC SOURCE ADMISSION REJECTED",
+  "report_sha256": "f98ba6880b5e8e3f20ac77ca65b2c91bc4cb2dae65155d2182430205252cddf8",
+  "mathematical_review": "correct",
+  "source_claim_review": "incorrect",
+  "findings": [
+    {
+      "severity": "P2",
+      "location": "proposals/P254-ni-collective-response/attempts/0012/source_graph.py:70-74; downstream consumer check_units.py:31-44",
+      "mechanism": "Bind scientific readers to the bytes that the source graph actually verifies. closed_graph() substitutes a frozen snapshot for each available (original path, SHA) pair, verifies only that snapshot, and records it as consumed_path. However, check_units.run() selects the original live /ase/units.py path from inventory and both parses and executes that live file instead of using its verified consumed_path. Thus changing the original file while leaving the snapshot intact does not invalidate the source graph or its comparison against the prepared manifest. The current source-mutation checks exercise the separately verified framework method copy, not this snapshot-backed consumer.",
+      "consequence": "The oracle can accept and execute source bytes outside its registered SHA binding while still reporting that the complete registered source graph matched. This violates the rung's exact source-to-claim contract and makes the claimed provenance closure insufficient to establish which unit-source bytes actually supplied the calculation. No discrepancy in the recorded numerical results is alleged.",
+      "repair": "Provide a resolver keyed by registered original path and expected SHA, and make scientific consumers read/execute the verified resolved object. Resolve units.py and espresso.py separately rather than deriving the latter from a snapshot object's parent directory. Alternatively, explicitly verify the original file's registered SHA immediately before every live-file consumption. Add an isolated mutation covering a snapshot-backed source through the real source-to-consumer acceptance path; do not mutate any live W1 source.",
+      "evidence": "source_graph.py:70-74 hashes actual=snapshots.get((path,sha),path), while check_units.py:31-33 obtains inventory r['path'] and check_units.py:43 executes runpy.run_path(str(source)). generation-006/source-manifest.json:13877-13881 explicitly records /home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/ase/units.py with SHA 1c49db1fbc894e087f94ec8fb8b3746d2c9228845332c5821b459e7104a5d097 but consumed_path .../generation-003-settled-init/source-snapshot/objects/1c49db1fbc894e087f94ec8fb8b3746d2c9228845332c5821b459e7104a5d097. source_graph.py:89-97 compares the snapshot-derived verified list with the manifest and mutates only the imported current-method copy. Static, non-executed witness: a comment-only change to the live units.py changes its raw SHA, but changes neither the snapshot-derived verified list nor its numerical behavior, so none of these acceptance conditions detects that source substitution. The preregistration's /source_authority requires consumption of exact registered source hashes."
+    }
+  ],
+  "prohibitions": [
+    "No parent admission",
+    "No live W1 or original ASE source mutation",
+    "No numerical convergence acceptance"
+  ],
+  "next_attempt": "Use verified path+SHA resolver for every actual consumer and independently resolve both ASE source files; real snapshot-backed isolated source-to-consumer mutation; preserve all006 bytes, materially different generation and full source review."
+}

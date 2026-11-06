@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-27T20:18:31.724146+00:00",
+  "original_source_commit": "b31d5505",
+  "original_result_commit": "88efeefe",
+  "executed_driver_copy": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/run_local_kick.executed.py",
+    "bytes": "11612",
+    "sha256": "9cc0d74ee70b7308ea6e0337c12ab27a048b239796aec98a11370c516f586807"
+  },
+  "scope": "Repair prospective physical-time resume, not recompute completed trajectory or migrate original states. Original scientific result remains unchanged.",
+  "decisions": {
+    "SR02": "Use current/previous summary only for advisory metadata; committed state receipts stay authoritative.",
+    "SR03": "Bind actual constructed eigenbasis/state-layout and array coordinates before first state commit; unfinished resume must match original basis or refuse, never reinterpret amplitudes. Original generation did not record basis, so original midtrajectory continuation remains unproven.",
+    "SR05": "Replace new-generation append-only action accounting with atomic reservation counter plus previous/temp recovery; conservatively charge ambiguous reservation once. No retry/reset cap. Preserve old original ledgers.",
+    "SR04_SR07": "No adaptive-history or host-power-loss recovery claim. At most unfinished output interval lost for matched-basis process interruption."
+  },
+  "verification": "Run prepared actual-data I/O smoke once90s; changed resume helpers get narrow crash/gauge/counter exercise, no RHS or Native rerun.",
+  "Root_due": "2026-10-27T20:35:00+00:00"
+}

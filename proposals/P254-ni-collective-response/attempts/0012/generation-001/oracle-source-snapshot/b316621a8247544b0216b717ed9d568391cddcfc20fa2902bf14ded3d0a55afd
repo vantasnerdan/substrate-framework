@@ -1,0 +1,105 @@
+"""Bind all five complete native vectors to the registered model and geometry."""
+import copy
+from pathlib import Path
+import numpy as np
+from check_intervals import rejects
+from native_model import frame,envelope_valid,artifacts_valid,input_matches,command_valid
+from native_text import input_text,stdout_text,number
+from source_graph import load,fingerprint,digest
+
+
+def one_native(ledger,context,name,result_path,expected,top_spec=None):
+    result=load(result_path); data=result['data']; artifacts=data['artifacts']
+    spec=load(artifacts['spec.json']['path']); command=load(artifacts['command.json']['path'])
+    bad=copy.deepcopy(result); bad['input_sha256']='0'*64
+    incomplete=copy.deepcopy(result); incomplete['data']['scf_converged']=False
+    ledger.mutation_sensitive(name+' canonical complete envelope',lambda x:envelope_valid(x,spec),result,[bad,incomplete])
+    altered=copy.deepcopy(artifacts); altered['pw.stdout']['sha256']='0'*64
+    ledger.mutation_sensitive(name+' canonical artifact links',lambda x:artifacts_valid(x,spec),artifacts,[altered])
+    if top_spec:
+        ledger.check(name+' top/attempt spec identical physical canonical object',spec==load(top_spec))
+    ledger.check(name+' exact individually registered settings/execution',
+                 spec['settings']==expected and spec['execution']==context['probe_plan']['baseline_execution'])
+    ledger.check(name+' exact command rank/pool/environment publication',command_valid(command,result,spec))
+    geometry=frame(Path(spec['structure']['path']).read_text())
+    ledger.check(name+' exact same ordered physical geometry with masses and no constraints',
+                 geometry['symbols']==context['geometry']['symbols'] and
+                 np.array_equal(geometry['positions'],context['geometry']['positions']) and
+                 np.array_equal(geometry['cell'],context['geometry']['cell']) and
+                 np.array_equal(geometry['masses'],context['geometry']['masses']) and
+                 geometry['pbc']==['T']*3 and geometry['properties']=={'species','pos','masses'})
+    native=input_text(Path(artifacts['pw.in']['path']).read_text())
+    predicate=lambda x:input_matches(x,geometry,expected,spec['execution'])
+    wrong_order=copy.deepcopy(native); wrong_order['positions'][[0,1]]=wrong_order['positions'][[1,0]]
+    wrong_k=copy.deepcopy(native); wrong_k['kpoints'][0]+=1
+    wrong_mobile=copy.deepcopy(native); wrong_mobile['values']['input_dft']='LDA'
+    ledger.mutation_sensitive(name+' native exact geometry/order/model',predicate,native,[wrong_order,wrong_k,wrong_mobile])
+    raw=Path(artifacts['pw.stdout']['path']).read_text()
+    parsed=stdout_text(raw,37,native['symbols'])
+    force_mutants=[raw.replace('atom    1 type', 'atom    2 type',1),
+                   raw.replace('JOB DONE.','JOB NOT DONE.',1)]
+    # Construct force-section changes from actual row strings, independent of padding.
+    import re
+    force_start=raw.index('Forces acting on atoms (cartesian axes, Ry/au):')
+    prefix,suffix=raw[:force_start],raw[force_start:]
+    first=re.search(r'^\s*atom\s+1\s+type.*$',suffix,re.M).group(0)
+    force_mutants=[prefix+suffix.replace(first,first.replace('type','invalid',1),1),force_mutants[-1],
+                   prefix+re.sub(r'(atom\s+)1(\s+type)',r'\g<1>2\2',suffix,count=1)]
+    for i,mutant in enumerate(force_mutants):
+        ledger.check(name+f' raw malformed/incomplete/order mutation {i} rejected',
+                     rejects(lambda:stdout_text(mutant,37,native['symbols'])))
+    factor=float(context['units']['force']); bohr=float(context['units']['bohr'])
+    forces=np.array([[number(x) for x in row] for row in parsed['force_tokens']])*factor
+    source=context['espresso']; lines=raw.splitlines()
+    index=next(i for i,line in enumerate(lines) if 'Forces acting on atoms (cartesian axes, Ry/au):' in line)
+    source_forces=source['_get_forces'](lines,index,37)
+    ledger.check(name+' actual source ASE total-force parser agrees before contributions',
+                 np.max(np.abs(source_forces-forces))<2e-16 and
+                 np.max(np.abs(np.array(data['forces_ev_per_angstrom'])-forces))<2e-16)
+    energy_index=next(i for i,line in enumerate(lines) if line.startswith('!'))
+    ledger.check(name+' raw final energy actual source convention publication',
+                 abs(source['_get_energy'](lines,energy_index)-data['energy_ev'])<3e-10)
+    # QE text geometry has its own limited print precision; exact identity is proven above from input bytes.
+    displayed_positions=parsed['fractional']*number(parsed['alat_bohr'])*bohr
+    displayed_cell=parsed['axes']*number(parsed['alat_bohr'])*bohr
+    position_delta=float(np.max(np.abs(displayed_positions-geometry['positions'])))
+    cell_delta=float(np.max(np.abs(displayed_cell-geometry['cell'])))
+    published=frame(Path(artifacts['final.extxyz']['path']).read_text())
+    ledger.check(name+' stdout/final/public geometry consistent within registered native display tolerance',
+                 data['geometry_tolerance_angstrom']==2e-6 and position_delta<2e-6 and cell_delta<2e-6 and
+                 published['symbols']==geometry['symbols'] and data['symbols']==geometry['symbols'] and
+                 np.max(np.abs(published['positions']-displayed_positions))<=5.1e-9 and
+                 np.max(np.abs(np.asarray(data['positions_angstrom'])-displayed_positions))<1e-14 and
+                 np.max(np.abs(np.asarray(data['cell_angstrom'])-displayed_cell))<1e-14 and
+                 np.max(np.abs(published['forces']-forces))<=5.1e-9)
+    ledger.check(name+' final convergence/version native publication',parsed['job_done'] and
+                 parsed['iterations']>0 and parsed['version']==data['qe_version'])
+    return {'name':name,'result_path':result_path,'result_sha256':digest(result_path),
+            'spec_fingerprint':fingerprint(spec),'settings':spec['settings'],'execution':spec['execution'],
+            'artifacts':artifacts,'native_input_position_tokens':native['position_tokens'],
+            'native_force_tokens':parsed['force_tokens'],'force_atom_ids':parsed['force_ids'],
+            'force_types':parsed['force_types'],'energy_ry_token':parsed['energy_ry'],
+            'total_moment_token':parsed['total_moment'],'absolute_moment_token':parsed['absolute_moment'],
+            'scf_accuracy_ry_token':parsed['scf_accuracy_ry'],'scf_iterations':parsed['iterations'],
+            'scf_converged':data['scf_converged'],'job_done':parsed['job_done'],
+            'cold_start':native['values']['restart_mode'],'stdout_input_max_position_delta_angstrom':position_delta,
+            'stdout_input_max_cell_delta_angstrom':cell_delta,
+            'geometry_scope':'All native inputs exactly equal ordered frozen geometry; stdout/final parsing uses registered 2e-6 A display tolerance, not relaxed or changed physics.'}
+
+
+def run(ledger,context):
+    plan=load(context['plan']['native_wave']['original_probe_plan']['path'])
+    context['probe_plan']=plan
+    context['geometry']=frame(Path(plan['upstream']['geometry']['path']).read_text())
+    cases={}
+    cases['baseline']=one_native(ledger,context,'baseline',plan['upstream']['force_result']['path'],plan['baseline_settings'],plan['upstream']['force_spec']['path'])
+    probes={p['id']:p for p in context['native_report']['probes']}
+    ledger.check('complete settled wave contains precisely all four registered probes',
+                 set(probes)=={p['id'] for p in plan['probes']} and all(p['status']=='complete' for p in probes.values()))
+    for registered in plan['probes']:
+        name=registered['id']; probe=probes[name]
+        expected={**plan['baseline_settings'],**registered['overrides']}
+        ledger.check(name+' report settings/override bind original registration',probe['registered_override']==registered['overrides'] and probe['full_settings']==expected)
+        cases[name]=one_native(ledger,context,name,probe['native_result']['path'],expected,probe['spec']['path'])
+    context['cases']=cases
+    return {'cases':cases,'source_authority':'Raw native text and closed canonical result/spec/command/artifact graph, not cached metadata force vectors.'}

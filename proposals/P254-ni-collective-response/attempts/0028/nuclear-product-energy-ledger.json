@@ -1,0 +1,1709 @@
+{
+  "schema": "P254-NiH-source-backed-product-energy-ledger-v1",
+  "source_bindings": {
+    "mass_1.mas20": "e8599c6d7f724fac91934e59f1b9de8fb8f63e820f4b39456b790665ed2a3307",
+    "nubase_4.mas20": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+  },
+  "source_acquisition": "nuclear-source-acquisition.json",
+  "documentation": "nuclear-source-registration.json",
+  "units": "keV; exact decimal/rational input, no binary floating arithmetic",
+  "reaction_rows": [
+    {
+      "channel": "Ni58+2p->Cu+p",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni58",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Cu59",
+        "H1"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "213659629/62500",
+        "decimal": "3418.554064",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "877013/1000000",
+        "decimal": "0.877013",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 1,
+        "Ni58": 1,
+        "Cu59": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni58+2p->Ni+alpha",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni58",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Ni56",
+        "He4"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "2915902129/500000",
+        "decimal": "5831.804258",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "46761/62500",
+        "decimal": "0.748176",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 2,
+        "He4": -1,
+        "Ni56": -1,
+        "Ni58": 1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni58+2p->Zn+n",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni58",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Zn59",
+        "n"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "-1626642233/250000",
+        "decimal": "-6506.568932",
+        "unit": "keV"
+      },
+      "central_value_sign": "endothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "554233/500000",
+        "decimal": "1.108466",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "n": -1,
+        "H1": 2,
+        "Ni58": 1,
+        "Zn59": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni58+p->Cu59+gamma",
+      "mechanism": "separate ordinary binary radiative capture",
+      "entrance": [
+        "Ni58",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Cu59"
+      ],
+      "radiation": [
+        "gamma/cascade"
+      ],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "213659629/62500",
+        "decimal": "3418.554064",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "877013/1000000",
+        "decimal": "0.877013",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 1,
+        "Ni58": 1,
+        "Cu59": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni60+2p->Cu+p",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni60",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Cu61",
+        "H1"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "599973883/125000",
+        "decimal": "4799.791064",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "1304013/1000000",
+        "decimal": "1.304013",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 1,
+        "Ni60": 1,
+        "Cu61": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni60+2p->Ni+alpha",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni60",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Ni58",
+        "He4"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "3954327129/500000",
+        "decimal": "7908.654258",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "21943/31250",
+        "decimal": "0.702176",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 2,
+        "He4": -1,
+        "Ni58": -1,
+        "Ni60": 1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni60+2p->Zn+n",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni60",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Zn61",
+        "n"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "-404428233/250000",
+        "decimal": "-1617.712932",
+        "unit": "keV"
+      },
+      "central_value_sign": "endothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "8126233/500000",
+        "decimal": "16.252466",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "n": -1,
+        "H1": 2,
+        "Ni60": 1,
+        "Zn61": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni60+p->Cu61+gamma",
+      "mechanism": "separate ordinary binary radiative capture",
+      "entrance": [
+        "Ni60",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Cu61"
+      ],
+      "radiation": [
+        "gamma/cascade"
+      ],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "599973883/125000",
+        "decimal": "4799.791064",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "1304013/1000000",
+        "decimal": "1.304013",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 1,
+        "Ni60": 1,
+        "Cu61": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni62+2p->Cu+p",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni62",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Cu63",
+        "H1"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "765299883/125000",
+        "decimal": "6122.399064",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "851013/1000000",
+        "decimal": "0.851013",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 1,
+        "Ni62": 1,
+        "Cu63": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni62+2p->Ni+alpha",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni62",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Ni60",
+        "He4"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "4939914629/500000",
+        "decimal": "9879.829258",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "12159/15625",
+        "decimal": "0.778176",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 2,
+        "He4": -1,
+        "Ni60": -1,
+        "Ni62": 1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni62+2p->Zn+n",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni62",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Zn63",
+        "n"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "493403267/250000",
+        "decimal": "1973.613068",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "992733/500000",
+        "decimal": "1.985466",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "n": -1,
+        "H1": 2,
+        "Ni62": 1,
+        "Zn63": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni62+p->Cu63+gamma",
+      "mechanism": "separate ordinary binary radiative capture",
+      "entrance": [
+        "Ni62",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Cu63"
+      ],
+      "radiation": [
+        "gamma/cascade"
+      ],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "765299883/125000",
+        "decimal": "6122.399064",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "851013/1000000",
+        "decimal": "0.851013",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 1,
+        "Ni62": 1,
+        "Cu63": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni64+2p->Cu+p",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni64",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Cu65",
+        "H1"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "465850879/62500",
+        "decimal": "7453.614064",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "1106013/1000000",
+        "decimal": "1.106013",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 1,
+        "Ni64": 1,
+        "Cu65": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni64+2p->Ni+alpha",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni64",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Ni62",
+        "He4"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "5900216129/500000",
+        "decimal": "11800.432258",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "55511/62500",
+        "decimal": "0.888176",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 2,
+        "He4": -1,
+        "Ni62": -1,
+        "Ni64": 1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni64+2p->Zn+n",
+      "mechanism": "proposed Ni+2p",
+      "entrance": [
+        "Ni64",
+        "H1",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Zn65",
+        "n"
+      ],
+      "radiation": [],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "1329903517/250000",
+        "decimal": "5319.614068",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "554733/500000",
+        "decimal": "1.109466",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "n": -1,
+        "H1": 2,
+        "Ni64": 1,
+        "Zn65": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    },
+    {
+      "channel": "Ni64+p->Cu65+gamma",
+      "mechanism": "separate ordinary binary radiative capture",
+      "entrance": [
+        "Ni64",
+        "H1"
+      ],
+      "nuclear_products": [
+        "Cu65"
+      ],
+      "radiation": [
+        "gamma/cascade"
+      ],
+      "hydrogen_helium_notation": "H1 and He4 in mass bookkeeping represent proton and alpha nuclear products, with neutral-atom mass endpoints.",
+      "endpoint": "Ground-state neutral-atom energy reference; no final-state excitation assigned.",
+      "q_atomic_ground_state": {
+        "rational": "465850879/62500",
+        "decimal": "7453.614064",
+        "unit": "keV"
+      },
+      "central_value_sign": "exothermic",
+      "uncertainty_l1_upper_bound": {
+        "rational": "1106013/1000000",
+        "decimal": "1.106013",
+        "unit": "keV"
+      },
+      "uncertainty_meaning": "Upper bound on standard uncertainty with arbitrary correlations; NOT a confidence interval. AME covariance not acquired.",
+      "mass_excess_coefficients": {
+        "H1": 1,
+        "Ni64": 1,
+        "Cu65": -1
+      },
+      "extrapolated_mass_inputs": [],
+      "energy_disposal": {
+        "available_cm_energy_expression": "Q_atomic + entrance_CM_kinetic - final_nuclear_excitation + endpoint_electronic_correction",
+        "threshold": "Positive available CM energy is necessary, not a transmission or reaction probability. No binary-lab threshold is assigned to the three-body entrance.",
+        "particle_partition": "Two-body CM kinematics available via two_body_kinetic_energies with supplied consistent product rest energies; unspecified excitation/cascades and entrance momentum prevent assigning actual lab spectra.",
+        "transport_needed": [
+          "charged-product stopping and recoil",
+          "neutron scattering/capture/escape where present",
+          "gamma conversion/absorption/escape",
+          "beta/positron stopping and annihilation",
+          "neutrino energy escape"
+        ],
+        "deposited_energy": null
+      }
+    }
+  ],
+  "decay_topology": [
+    {
+      "parent": "n",
+      "daughter": "H1",
+      "mode": "B-",
+      "source_branch_raw": "B-=100",
+      "inclusive_parent_mode": null,
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "electron",
+        "anti_nu_e"
+      ],
+      "energy_convention": "Q_beta_minus=atomic parent-daughter",
+      "atomic_mass_difference": {
+        "rational": "195586749/250000",
+        "decimal": "782.346996",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "453/1000000",
+        "decimal": "0.000453",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Co56",
+      "daughter": "Fe56",
+      "mode": "B+",
+      "source_branch_raw": "B+=100",
+      "inclusive_parent_mode": null,
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "nu_e",
+        "EC consumed electron OR emitted positron; split unresolved"
+      ],
+      "energy_convention": "Q_EC=atomic parent-daughter; positron kinetic endpoint subtracts 2*m_e*c^2",
+      "atomic_mass_difference": {
+        "rational": "913329/200",
+        "decimal": "4566.645",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "743/1000",
+        "decimal": "0.743",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Ni56",
+      "daughter": "Co56",
+      "mode": "B+",
+      "source_branch_raw": "B+=100",
+      "inclusive_parent_mode": null,
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "nu_e",
+        "EC consumed electron OR emitted positron; split unresolved"
+      ],
+      "energy_convention": "Q_EC=atomic parent-daughter; positron kinetic endpoint subtracts 2*m_e*c^2",
+      "atomic_mass_difference": {
+        "rational": "2132869/1000",
+        "decimal": "2132.869",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "437/500",
+        "decimal": "0.874",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Ni58",
+      "daughter": "Fe58",
+      "mode": "2B+",
+      "source_branch_raw": "2B+ ?",
+      "inclusive_parent_mode": null,
+      "qualification": "Unobserved/unknown qualifier retained; not assigned a probability",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "2 nu_e",
+        "two EC/positron operations; mixture unresolved"
+      ],
+      "energy_convention": "atomic mass difference; subtract 2*m_e*c^2 for each emitted positron",
+      "atomic_mass_difference": {
+        "rational": "9632/5",
+        "decimal": "1926.4",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "133/200",
+        "decimal": "0.665",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Ni59",
+      "daughter": "Co59",
+      "mode": "B+",
+      "source_branch_raw": "B+=100",
+      "inclusive_parent_mode": null,
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "nu_e",
+        "EC consumed electron OR emitted positron; split unresolved"
+      ],
+      "energy_convention": "Q_EC=atomic parent-daughter; positron kinetic endpoint subtracts 2*m_e*c^2",
+      "atomic_mass_difference": {
+        "rational": "214601/200",
+        "decimal": "1073.005",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "187/250",
+        "decimal": "0.748",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Cu59",
+      "daughter": "Ni59",
+      "mode": "B+",
+      "source_branch_raw": "B+=100",
+      "inclusive_parent_mode": null,
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "nu_e",
+        "EC consumed electron OR emitted positron; split unresolved"
+      ],
+      "energy_convention": "Q_EC=atomic parent-daughter; positron kinetic endpoint subtracts 2*m_e*c^2",
+      "atomic_mass_difference": {
+        "rational": "4798379/1000",
+        "decimal": "4798.379",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "879/1000",
+        "decimal": "0.879",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Zn59",
+      "daughter": "Cu59",
+      "mode": "B+",
+      "source_branch_raw": "B+=100",
+      "inclusive_parent_mode": null,
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "nu_e",
+        "EC consumed electron OR emitted positron; split unresolved"
+      ],
+      "energy_convention": "Q_EC=atomic parent-daughter; positron kinetic endpoint subtracts 2*m_e*c^2",
+      "atomic_mass_difference": {
+        "rational": "1142847/125",
+        "decimal": "9142.776",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "1287/1000",
+        "decimal": "1.287",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Zn59",
+      "daughter": "Ni58",
+      "mode": "B+p",
+      "source_branch_raw": "B+p=0.10 2",
+      "inclusive_parent_mode": "B+",
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [
+        "H1"
+      ],
+      "leptons": [
+        "nu_e",
+        "EC consumed electron OR emitted positron; split unresolved"
+      ],
+      "energy_convention": "atomic parent-daughter-H difference; positron branch subtracts 2*m_e*c^2",
+      "atomic_mass_difference": {
+        "rational": "357763871/62500",
+        "decimal": "5724.221936",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "1108013/1000000",
+        "decimal": "1.108013",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Cu61",
+      "daughter": "Ni61",
+      "mode": "B+",
+      "source_branch_raw": "B+=100",
+      "inclusive_parent_mode": null,
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "nu_e",
+        "EC consumed electron OR emitted positron; split unresolved"
+      ],
+      "energy_convention": "Q_EC=atomic parent-daughter; positron kinetic endpoint subtracts 2*m_e*c^2",
+      "atomic_mass_difference": {
+        "rational": "1118983/500",
+        "decimal": "2237.966",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "653/500",
+        "decimal": "1.306",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Zn61",
+      "daughter": "Cu61",
+      "mode": "B+",
+      "source_branch_raw": "B+=100",
+      "inclusive_parent_mode": null,
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "nu_e",
+        "EC consumed electron OR emitted positron; split unresolved"
+      ],
+      "energy_convention": "Q_EC=atomic parent-daughter; positron kinetic endpoint subtracts 2*m_e*c^2",
+      "atomic_mass_difference": {
+        "rational": "5635157/1000",
+        "decimal": "5635.157",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "337/20",
+        "decimal": "16.85",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Zn63",
+      "daughter": "Cu63",
+      "mode": "B+",
+      "source_branch_raw": "B+=100",
+      "inclusive_parent_mode": null,
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "nu_e",
+        "EC consumed electron OR emitted positron; split unresolved"
+      ],
+      "energy_convention": "Q_EC=atomic parent-daughter; positron kinetic endpoint subtracts 2*m_e*c^2",
+      "atomic_mass_difference": {
+        "rational": "3366439/1000",
+        "decimal": "3366.439",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "993/500",
+        "decimal": "1.986",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    },
+    {
+      "parent": "Zn65",
+      "daughter": "Cu65",
+      "mode": "B+",
+      "source_branch_raw": "B+=100",
+      "inclusive_parent_mode": null,
+      "qualification": "Evaluated aggregate mode; feeding/spectra unresolved",
+      "nuclear_ejectiles": [],
+      "leptons": [
+        "nu_e",
+        "EC consumed electron OR emitted positron; split unresolved"
+      ],
+      "energy_convention": "Q_EC=atomic parent-daughter; positron kinetic endpoint subtracts 2*m_e*c^2",
+      "atomic_mass_difference": {
+        "rational": "1351653/1000",
+        "decimal": "1351.653",
+        "unit": "keV"
+      },
+      "uncertainty_l1_upper_bound": {
+        "rational": "1289/1000",
+        "decimal": "1.289",
+        "unit": "keV"
+      },
+      "extrapolated_mass_inputs": [],
+      "excited_daughter_cascade": "NUBASE aggregate branches do not resolve gamma/internal-conversion feeding; ENSDF level and radiation data needed.",
+      "energy_is_not_heat": true
+    }
+  ],
+  "isotope_inputs": {
+    "n": {
+      "A": 1,
+      "Z": 0,
+      "mass_excess": {
+        "rational": "403565903/50000",
+        "decimal": "8071.31806",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "11/25000",
+        "decimal": "0.00044",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 37,
+      "ame_raw_line": "0  1    1    0    1  n         8071.31806     0.00044       0.0        0.0     B-    782.3470     0.0004    1 008664.91590     0.00047",
+      "nubase": {
+        "half_life_raw": "609.8",
+        "half_life_unit": "s",
+        "half_life_uncertainty_raw": "0.6",
+        "spin_parity_raw": "1/2+*",
+        "branches_raw": "B-=100",
+        "line_number": 26,
+        "raw_line": "001 0000   1n       8071.3181     0.0004                              609.8    s 0.6    1/2+*         06          1932 B-=100"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "H1": {
+      "A": 1,
+      "Z": 1,
+      "mass_excess": {
+        "rational": "911121383/125000",
+        "decimal": "7288.971064",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "13/1000000",
+        "decimal": "0.000013",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 38,
+      "ame_raw_line": "  -1    0    1    1 H          7288.971064    0.000013      0.0        0.0     B-      *                    1 007825.031898    0.000014",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "1/2+*",
+        "branches_raw": "IS=99.9855 78",
+        "line_number": 27,
+        "raw_line": "001 0010   1H       7288.971064   0.000013                            stbl              1/2+*         06          1920 IS=99.9855 78"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "He4": {
+      "A": 4,
+      "Z": 2,
+      "mass_excess": {
+        "rational": "242491587/100000",
+        "decimal": "2424.91587",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "3/20000",
+        "decimal": "0.00015",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 44,
+      "ame_raw_line": "   0    2    2    4 He         2424.91587     0.00015    7073.9156     0.0002  B- -22898.2740   212.1320    4 002603.25413     0.00016",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "0+",
+        "branches_raw": "IS=99.9998 2",
+        "line_number": 33,
+        "raw_line": "004 0020   4He      2424.91587    0.00015                             stbl              0+            98          1908 IS=99.9998 2"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Fe56": {
+      "A": 56,
+      "Z": 26,
+      "mass_excess": {
+        "rational": "-60607163/1000",
+        "decimal": "-60607.163",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "67/250",
+        "decimal": "0.268",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 547,
+      "ame_raw_line": "   4   30   26   56 Fe       -60607.163       0.268      8790.3563     0.0048  B-  -4566.6455     0.4104   55 934935.537       0.287",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "0+",
+        "branches_raw": "IS=91.754 106",
+        "line_number": 755,
+        "raw_line": "056 0260   56Fe   -60607.16       0.27                                stbl              0+            11          1923 IS=91.754 106"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Co56": {
+      "A": 56,
+      "Z": 27,
+      "mass_excess": {
+        "rational": "-28020259/500",
+        "decimal": "-56040.518",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "19/40",
+        "decimal": "0.475",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 548,
+      "ame_raw_line": "   2   29   27   56 Co       -56040.518       0.475      8694.8386     0.0085  B-  -2132.8689     0.3735   55 939838.032       0.510",
+      "nubase": {
+        "half_life_raw": "77.236",
+        "half_life_unit": "d",
+        "half_life_uncertainty_raw": "0.026",
+        "spin_parity_raw": "4+*",
+        "branches_raw": "B+=100",
+        "line_number": 757,
+        "raw_line": "056 0270   56Co   -56040.5        0.5                                  77.236  d 0.026  4+*           11          1941 B+=100"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Ni56": {
+      "A": 56,
+      "Z": 28,
+      "mass_excess": {
+        "rational": "-53907649/1000",
+        "decimal": "-53907.649",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "399/1000",
+        "decimal": "0.399",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 549,
+      "ame_raw_line": "   0   28   28   56 Ni       -53907.649       0.399      8642.7811     0.0071  B- -15277.9163     6.4070   55 942127.761       0.428",
+      "nubase": {
+        "half_life_raw": "6.075",
+        "half_life_unit": "d",
+        "half_life_uncertainty_raw": "0.010",
+        "spin_parity_raw": "0+",
+        "branches_raw": "B+=100",
+        "line_number": 759,
+        "raw_line": "056 0280   56Ni   -53907.6        0.4                                   6.075  d 0.010  0+            11          1952 B+=100"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Fe58": {
+      "A": 58,
+      "Z": 26,
+      "mass_excess": {
+        "rational": "-62155271/1000",
+        "decimal": "-62155.271",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "79/250",
+        "decimal": "0.316",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 573,
+      "ame_raw_line": "   6   32   26   58 Fe       -62155.271       0.316      8792.2534     0.0055  B-  -2307.9785     1.1389   57 933273.575       0.339",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "0+",
+        "branches_raw": "IS=0.282 12",
+        "line_number": 793,
+        "raw_line": "058 0260   58Fe   -62155.3        0.3                                 stbl              0+            10          1935 IS=0.282 12"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Ni58": {
+      "A": 58,
+      "Z": 28,
+      "mass_excess": {
+        "rational": "-60228871/1000",
+        "decimal": "-60228.871",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "349/1000",
+        "decimal": "0.349",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 575,
+      "ame_raw_line": "   2   30   28   58 Ni       -60228.871       0.349      8732.0621     0.0060  B-  -8561.0204     0.4425   57 935341.650       0.374",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": ">700Ey",
+        "spin_parity_raw": "0+",
+        "branches_raw": "IS=68.0769 190;2B+ ?",
+        "line_number": 798,
+        "raw_line": "058 0280   58Ni   -60228.9        0.3                                 stbl       >700Ey 0+            10          1921 IS=68.0769 190;2B+ ?"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Co59": {
+      "A": 59,
+      "Z": 27,
+      "mass_excess": {
+        "rational": "-31114919/500",
+        "decimal": "-62229.838",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "397/1000",
+        "decimal": "0.397",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 588,
+      "ame_raw_line": "   5   32   27   59 Co       -62229.838       0.397      8768.0379     0.0067  B-  -1073.0050     0.1944   58 933193.524       0.426",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "7/2-*",
+        "branches_raw": "IS=100",
+        "line_number": 817,
+        "raw_line": "059 0270   59Co   -62229.8        0.4                                 stbl              7/2-*         18          1923 IS=100"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Ni59": {
+      "A": 59,
+      "Z": 28,
+      "mass_excess": {
+        "rational": "-61156833/1000",
+        "decimal": "-61156.833",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "351/1000",
+        "decimal": "0.351",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 589,
+      "ame_raw_line": "   3   31   28   59 Ni       -61156.833       0.351      8736.5912     0.0060  B-  -4798.3786     0.3973   58 934345.442       0.376",
+      "nubase": {
+        "half_life_raw": "81",
+        "half_life_unit": "ky",
+        "half_life_uncertainty_raw": "5",
+        "spin_parity_raw": "3/2-",
+        "branches_raw": "B+=100",
+        "line_number": 818,
+        "raw_line": "059 0280   59Ni   -61156.8        0.4                                  81     ky 5      3/2-          18          1951 B+=100"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Cu59": {
+      "A": 59,
+      "Z": 29,
+      "mass_excess": {
+        "rational": "-28179227/500",
+        "decimal": "-56358.454",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "66/125",
+        "decimal": "0.528",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 590,
+      "ame_raw_line": "   1   30   29   59 Cu       -56358.454       0.528      8642.0027     0.0090  B-  -9142.7760     0.6018   58 939496.713       0.566",
+      "nubase": {
+        "half_life_raw": "81.5",
+        "half_life_unit": "s",
+        "half_life_uncertainty_raw": "0.5",
+        "spin_parity_raw": "3/2-*",
+        "branches_raw": "B+=100",
+        "line_number": 820,
+        "raw_line": "059 0290   59Cu   -56358.5        0.5                                  81.5    s 0.5    3/2-*         18          1947 B+=100"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Zn59": {
+      "A": 59,
+      "Z": 30,
+      "mass_excess": {
+        "rational": "-23607839/500",
+        "decimal": "-47215.678",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "759/1000",
+        "decimal": "0.759",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 591,
+      "ame_raw_line": "  -1   29   30   59 Zn       -47215.678       0.759      8473.7802     0.0129  B- -13456#       170#       58 949311.886       0.814",
+      "nubase": {
+        "half_life_raw": "178.7",
+        "half_life_unit": "ms",
+        "half_life_uncertainty_raw": "1.3",
+        "spin_parity_raw": "3/2-",
+        "branches_raw": "B+=100;B+p=0.10 2",
+        "line_number": 822,
+        "raw_line": "059 0300   59Zn   -47215.7        0.8                                 178.7   ms 1.3    3/2-          18          1981 B+=100;B+p=0.10 2"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Ni60": {
+      "A": 60,
+      "Z": 28,
+      "mass_excess": {
+        "rational": "-64473243/1000",
+        "decimal": "-64473.243",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "353/1000",
+        "decimal": "0.353",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 602,
+      "ame_raw_line": "   4   32   28   60 Ni       -64473.243       0.353      8780.7769     0.0059  B-  -6127.9810     1.5735   59 930785.129       0.378",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "0+",
+        "branches_raw": "IS=26.2231 150",
+        "line_number": 837,
+        "raw_line": "060 0280   60Ni   -64473.2        0.4                                 stbl              0+            13          1921 IS=26.2231 150"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Ni61": {
+      "A": 61,
+      "Z": 28,
+      "mass_excess": {
+        "rational": "-64222029/1000",
+        "decimal": "-64222.029",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "71/200",
+        "decimal": "0.355",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 616,
+      "ame_raw_line": "   5   33   28   61 Ni       -64222.029       0.355      8765.0281     0.0058  B-  -2237.9663     0.9617   60 931054.819       0.381",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "3/2-*",
+        "branches_raw": "IS=1.1399 13",
+        "line_number": 860,
+        "raw_line": "061 0280   61Ni   -64222.0        0.4                                 stbl              3/2-*         15          1934 IS=1.1399 13"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Cu61": {
+      "A": 61,
+      "Z": 29,
+      "mass_excess": {
+        "rational": "-61984063/1000",
+        "decimal": "-61984.063",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "951/1000",
+        "decimal": "0.951",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 617,
+      "ame_raw_line": "   3   32   29   61 Cu  p2n  -61984.063       0.951      8715.5148     0.0156  B-  -5635.1565    15.9028   60 933457.375       1.020",
+      "nubase": {
+        "half_life_raw": "3.343",
+        "half_life_unit": "h",
+        "half_life_uncertainty_raw": "0.016",
+        "spin_parity_raw": "3/2-*",
+        "branches_raw": "B+=100",
+        "line_number": 861,
+        "raw_line": "061 0290   61Cu   -61984.1        1.0                                   3.343  h 0.016  3/2-*         15          1937 B+=100"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Zn61": {
+      "A": 61,
+      "Z": 30,
+      "mass_excess": {
+        "rational": "-28174453/500",
+        "decimal": "-56348.906",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "15899/1000",
+        "decimal": "15.899",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 618,
+      "ame_raw_line": "   1   31   30   61 Zn       -56348.906      15.899      8610.3098     0.2606  B-  -9214.2438    37.6786   60 939506.964      17.068",
+      "nubase": {
+        "half_life_raw": "89.1",
+        "half_life_unit": "s",
+        "half_life_uncertainty_raw": "0.2",
+        "spin_parity_raw": "3/2-",
+        "branches_raw": "B+=100",
+        "line_number": 863,
+        "raw_line": "061 0300   61Zn   -56349         16                                    89.1    s 0.2    3/2-          15          1955 B+=100"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Ni62": {
+      "A": 62,
+      "Z": 28,
+      "mass_excess": {
+        "rational": "-1668661/25",
+        "decimal": "-66746.44",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "17/40",
+        "decimal": "0.425",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 629,
+      "ame_raw_line": "   6   34   28   62 Ni       -66746.440       0.425      8794.5555     0.0069  B-  -3958.8965     0.4751   61 928344.753       0.455",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "0+",
+        "branches_raw": "IS=3.6345 40",
+        "line_number": 880,
+        "raw_line": "062 0280   62Ni   -66746.4        0.4                                 stbl              0+            12          1934 IS=3.6345 40"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Cu63": {
+      "A": 63,
+      "Z": 29,
+      "mass_excess": {
+        "rational": "-16394967/250",
+        "decimal": "-65579.868",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "213/500",
+        "decimal": "0.426",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 643,
+      "ame_raw_line": "   5   34   29   63 Cu       -65579.868       0.426      8752.1404     0.0068  B-  -3366.4392     1.5450   62 929597.119       0.457",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "3/2-*",
+        "branches_raw": "IS=69.15 15",
+        "line_number": 897,
+        "raw_line": "063 0290   63Cu   -65579.9        0.4                                 stbl              3/2-*         09          1923 IS=69.15 15"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Zn63": {
+      "A": 63,
+      "Z": 30,
+      "mass_excess": {
+        "rational": "-62213429/1000",
+        "decimal": "-62213.429",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "39/25",
+        "decimal": "1.56",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 644,
+      "ame_raw_line": "   3   33   30   63 Zn       -62213.429       1.560      8686.2866     0.0248  B-  -5666.3294     2.0330   62 933211.140       1.674",
+      "nubase": {
+        "half_life_raw": "38.47",
+        "half_life_unit": "m",
+        "half_life_uncertainty_raw": "0.05",
+        "spin_parity_raw": "3/2-*",
+        "branches_raw": "B+=100",
+        "line_number": 898,
+        "raw_line": "063 0300   63Zn   -62213.4        1.6                                  38.47   m 0.05   3/2-*         09          1937 B+=100"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Ni64": {
+      "A": 64,
+      "Z": 28,
+      "mass_excess": {
+        "rational": "-33549517/500",
+        "decimal": "-67099.034",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "463/1000",
+        "decimal": "0.463",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 655,
+      "ame_raw_line": "   8   36   28   64 Ni       -67099.034       0.463      8777.4637     0.0072  B-  -1674.6156     0.2055   63 927966.228       0.497",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "0+",
+        "branches_raw": "IS=0.9256 19",
+        "line_number": 913,
+        "raw_line": "064 0280   64Ni   -67099.0        0.5                                 stbl              0+            07          1935 IS=0.9256 19"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Cu65": {
+      "A": 65,
+      "Z": 29,
+      "mass_excess": {
+        "rational": "-67263677/1000",
+        "decimal": "-67263.677",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "643/1000",
+        "decimal": "0.643",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 669,
+      "ame_raw_line": "   7   36   29   65 Cu       -67263.677       0.643      8757.0967     0.0099  B-  -1351.6527     0.3557   64 927789.476       0.690",
+      "nubase": {
+        "half_life_raw": "stbl",
+        "half_life_unit": "",
+        "half_life_uncertainty_raw": "",
+        "spin_parity_raw": "3/2-*",
+        "branches_raw": "IS=30.85 15",
+        "line_number": 933,
+        "raw_line": "065 0290   65Cu   -67263.7        0.6                                 stbl              3/2-*         10          1923 IS=30.85 15"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    },
+    "Zn65": {
+      "A": 65,
+      "Z": 30,
+      "mass_excess": {
+        "rational": "-8239003/125",
+        "decimal": "-65912.024",
+        "unit": "keV"
+      },
+      "mass_uncertainty": {
+        "rational": "323/500",
+        "decimal": "0.646",
+        "unit": "keV"
+      },
+      "mass_extrapolated": false,
+      "ame_source_line": 670,
+      "ame_raw_line": "   5   35   30   65 Zn       -65912.024       0.646      8724.2660     0.0099  B-  -3254.5380     0.6305   64 929240.534       0.693",
+      "nubase": {
+        "half_life_raw": "243.94",
+        "half_life_unit": "d",
+        "half_life_uncertainty_raw": "0.04",
+        "spin_parity_raw": "5/2-*",
+        "branches_raw": "B+=100",
+        "line_number": 934,
+        "raw_line": "065 0300   65Zn   -65912.0        0.6                                 243.94   d 0.04   5/2-*         10          1939 B+=100"
+      },
+      "isotope_abundance_scope": "IS in raw NUBASE data is evaluated natural abundance, NOT specimen composition."
+    }
+  },
+  "decay_topology_semantics": "Inclusive B+ means EC plus positron decay; B+p is its subset, never an extra independent probability. Unobserved ? modes remain qualified. No branching network time/yield calculation.",
+  "atomic_reference_correction": "For bare nuclei Q_nuclear = Q_atomic + sum(B_e_initial) - sum(B_e_final), where B_e is positive total electronic binding. Material ionization/bond/charge changes require corresponding endpoint energies. Electron rest masses cancel for A,Z-conserving reactions.",
+  "missing_physics": [
+    "Specimen isotope fractions and nuclear entrance energy/spin/position state.",
+    "A supported two-proton spatial/spin correlation, lifetime, population, and three-body transition amplitude OR a justified sequential channel model. Opposite spins alone do not bind protons.",
+    "Channel-resolved cross sections/transmissions, final excited-state populations, angular distributions and branching; ordinary binary capture is not the proposed Ni+2p amplitude.",
+    "Ni receiver level energies/J^pi/widths plus spin-momentum transition density for the specified nuclear operator; a gamma strength is not automatically the Hagelstein a-operator matrix.",
+    "Nuclear-to-medium coupling and material spectral support at the nuclear transition frequency/momentum, not just valence-response coherence.",
+    "ENSDF daughter level feeding/radiation and EC/positron split; electron binding corrections, stopping/capture, geometry and escape for deposited energy."
+  ],
+  "calculated_fusion_rate": null,
+  "calculated_heat_rate": null,
+  "scope": "Energetics and product topology only. Positive Q, nuclear absorption, and norm loss do not establish a rate or deposited heat."
+}

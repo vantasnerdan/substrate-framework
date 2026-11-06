@@ -1,0 +1,58 @@
+{
+  "actual_cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a43-saved-consumer-001.service\n",
+  "actual_cpu_affinity": [
+    6
+  ],
+  "actual_proc_status": "Name:\tpython\nUmask:\t0002\nState:\tR (running)\nTgid:\t3872249\nNgid:\t0\nPid:\t3872249\nPPid:\t2867432\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t128\nGroups:\t4 27 1000 \nNStgid:\t3872249\nNSpid:\t3872249\nNSpgid:\t3872249\nNSsid:\t3872249\nKthread:\t0\nVmPeak:\t   26692 kB\nVmSize:\t   26692 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   17052 kB\nVmRSS:\t   17052 kB\nRssAnon:\t    6680 kB\nRssFile:\t   10372 kB\nRssShmem:\t       0 kB\nVmData:\t    8068 kB\nVmStk:\t     132 kB\nVmExe:\t    2956 kB\nVmLib:\t    5788 kB\nVmPTE:\t      92 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t1\nSigQ:\t0/128196\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\t00000040\nCpus_allowed_list:\t6\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t5\nnonvoluntary_ctxt_switches:\t10\nx86_Thread_features:\t\nx86_Thread_features_locked:\t\n",
+  "cwd": "/home/administrator/projects/substrate-ni-collective",
+  "executed_argv": [
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0043/consume_material_cubic_output.py",
+    "--source",
+    "/var/tmp/p254-a43-full-state-third-002/source.json",
+    "--result",
+    "/var/tmp/p254-a43-material-cubic-kernel-002/result.json",
+    "--output",
+    "/var/tmp/p254-a43-material-cubic-kernel-002/saved-output-consumer-001.json"
+  ],
+  "executed_script": {
+    "bytes": 3411,
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0043/consume_material_cubic_output.py",
+    "sha256": "63c22067c980af7787716b31d94faa2458d76d5915f3e59f384d10b6fe80fc70"
+  },
+  "invocation_id": "c0e9e6aa3eaa4c2a82076a97b8228ec7",
+  "manager": {
+    "argv": [
+      "env",
+      "XDG_RUNTIME_DIR=/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+      "systemctl",
+      "--user",
+      "show",
+      "p254-a43-saved-consumer-001",
+      "--property=InvocationID,ActiveState,SubState,MainPID,RuntimeMaxUSec,MemoryMax,MemorySwapMax,Restart,CPUAffinity,AllowedCPUs,EffectiveCPUs,WatchdogUSec,ExecMainStartTimestamp,ExecStart"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Restart=no\nRuntimeMaxUSec=30s\nWatchdogUSec=0\nMainPID=3872249\nExecMainStartTimestamp=Thu 2026-11-05 02:44:44 UTC\nExecStart={ path=/usr/bin/env ; argv[]=/usr/bin/env PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 BLIS_NUM_THREADS=1 /usr/bin/taskset -c 6 /home/administrator/projects/substrate-framework/.venv/bin/python -u /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0043/actual_material_kernel_entry.py /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0043/actual-saved-consumer-001.kernel-start.json p254-a43-saved-consumer-001 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0043/consume_material_cubic_output.py --source /var/tmp/p254-a43-full-state-third-002/source.json --result /var/tmp/p254-a43-material-cubic-kernel-002/result.json --output /var/tmp/p254-a43-material-cubic-kernel-002/saved-output-consumer-001.json ; ignore_errors=no ; start_time=[Thu 2026-11-05 02:44:44 UTC] ; stop_time=[n/a] ; pid=3872249 ; code=(null) ; status=0/0 }\nEffectiveCPUs=\nAllowedCPUs=\nMemoryMax=4294967296\nMemorySwapMax=0\nCPUAffinity=6\nActiveState=active\nSubState=running\nInvocationID=c0e9e6aa3eaa4c2a82076a97b8228ec7\n"
+  },
+  "optional_interfaces": {
+    "AllowedCPUs": {
+      "reason": "actual manager emits no effective/delegated CPU value",
+      "status": "unavailable"
+    },
+    "EffectiveCPUs": {
+      "reason": "actual manager emits no effective/delegated CPU value",
+      "status": "unavailable"
+    }
+  },
+  "pid": 3872249,
+  "python": "/home/administrator/projects/substrate-framework/.venv/bin/python",
+  "schema": "p254-a43-actual-owned-kernel-start-v1",
+  "thread_environment": {
+    "BLIS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  }
+}

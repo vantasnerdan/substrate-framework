@@ -1,0 +1,2326 @@
+Density-functional perturbation theory with ultrasoft pseudopotentials
+Andrea Dal Corso
+Scuola Internazionale Superiore di Studi Avanzati (SISSA) via Beirut 2/4, I-34014 Trieste, Italy
+and INFM, Unita` di Trieste, Trieste, Italy
+~Received 18 June 2001; published 28 November 2001 !
+Density-functional perturbation theory for lattice dynamics is presented in a general framework which
+includes Vanderbilt’s ultrasoft pseudopotentials, nonlinear exchange and correlation core corrections, the local
+spin-density approximation, and spin-polarized generalized gradient corrections. The dynamical matrices of
+metallic and of insulating solids are calculated at arbitrary wave vectors. The method is applied to the Cu ~001!
+surface and to the nitrobenzene molecule.
+DOI: 10.1103/PhysRevB.64.235118 PACS number ~s!: 71.15.Mb, 63.20.Dj
+I. INTRODUCTION
+In the last ten years, ab initio calculations of the phonon-
+dispersion spectra of solids and surfaces have complemented
+the empirical Born–von Karman force-constant models in
+interpreting and explaining the experimental data, thanks to
+the introduction of density-functional perturbation theory
+~DFPT!.1,2 This technique, based on density-functional
+theory ~DFT!, allows the efﬁcient treatment of the response
+of an electron system to external perturbations. The phonon
+frequencies are obtained at arbitrary wave vectors of the
+Brillouin zone ~BZ! with an effort which is almost wave-
+length independent and comparable, for each mode, to the
+effort required to calculate the ground state of the unper-
+turbed system. At present, there are several implementations
+of DFPT for lattice dynamics which apply different formulas
+for the interatomic force constants and reﬂect the peculiari-
+ties of the scheme employed for the solution of the DFT
+equations.
+In the Born-Oppenheimer approximation, the interatomic
+force constants are identiﬁed with the second-order energy
+derivatives with respect to atomic displacements. In DFT, the
+energy is a functional of the electronic charge density and a
+minimum variational principle gives the ground-state den-
+sity. As a consequence, also the even-order energy deriva-
+tives are variational.3 In practice, the energy minimization is
+carried out on the Kohn and Sham ~KS! functional which
+depends on single-particle orbitals subject to orthonormaliza-
+tion constraints. The Taylor expansion of the energy func-
+tional and the Lagrange multipliers technique lead to varia-
+tional expressions for the second-order energy derivatives
+which can be regarded as functionals of the ﬁrst-order wave-
+function derivatives. The minimization of the second-order
+energy3 shows that the ﬁrst-order wave-function derivatives
+are the solution of a self-consistent Sternheimer linear sys-
+tem. The same conclusion is reached also via standard per-
+turbation theory applied to the KS equations. 1 In some
+implementations, the solution of the self-consistent linear
+system is entirely avoided via a direct minimization of the
+second-order energy.4,5
+The interatomic force constants can be calculated also by
+differentiation of the Hellmann-Feynman ~HF! forces.6 This
+procedure leads to expressions which are not variational.
+Nevertheless, in this way, the mixed second-order energy
+derivatives depend on the ﬁrst-order wave-function deriva-
+tives due to a single perturbation. Thus the response to one
+phonon allows the evaluation of a full row of the dynamical
+matrix. This approach, introduced in the ﬁrst implementation
+of DFPT, 1,7 has been generalized to metallic systems as
+well.8
+DFPT turns out to be simple to implement with a plane-
+waves ~PW’s! basis set and norm conserving ~NC! pseudo-
+potentials ~PP’s!.9,10 The only drawback is that PW’s are not
+efﬁcient enough to describe ﬁrst-row elements or transition
+metals and for these applications all-electron methods, 11–13
+or mixed basis 14 have been extensively applied in the past.
+DFPT has been presented in the framework of the linearized
+augmented PW method ~LAPW!,15 of the linear mufﬁn tin
+orbitals ~LMTO! scheme,16 and with mixed basis. 17 Several
+applications of these methods have been reviewed in Ref. 2.
+More recently, Vanderbilt’s ultrasoft ~US! PP’s ~Ref. 18!
+have been demonstrated capable to deal with localized elec-
+trons and to provide results which are often as accurate as
+those obtained with the all-electron methods. This paper is
+devoted to the presentation of DFPT in the framework of US
+PP’s. Its purpose is to provide all the details needed to imple-
+ment the method with a PW basis set. In Ref. 19, DFPT with
+US PP’s has been brieﬂy described, the discussion was fo-
+cused on insulating systems whereas the treatment of metals
+was only sketched. In this paper, I start from an energy
+functional which applies to metallic systems, as well as to
+insulators. Spin polarization is included in the energy func-
+tional for the study of magnetic materials and the exchange
+and correlation energy functional depends on the total spin
+charge densities ns and on their gradients „ ns . The total
+spin charge densities are obtained by adding a pseudized
+core charge to the valence charge densities as in the nonlin-
+ear core correction ~NLCC! approximation.20 This scheme
+comprises several different recipes for the generalized gradi-
+ent approximation ~GGA!, and the local spin-density ap-
+proximation ~LSDA! is recovered by neglecting „ ns in the
+exchange and correlation energy. The orbitals are subject to
+generalized orthonormalization constraints with an overlap
+matrix which varies in response to small atomic displace-
+ments. Furthermore the charge density is calculated with an
+augmentation term as in the US PP scheme. The interatomic
+force constants are obtained by differentiation of the HF
+forces and the induced spin charge densities and the ﬁrst-
+PHYSICAL REVIEW B, VOLUME 64, 235118
+0163-1829/2001/64~23!/235118~17!/$20.00 ©2001 The American Physical Society64 235118-1
+
+=== PAGE BREAK ===
+
+order wave-function derivatives are discussed in detail.
+The formulas obtained in this paper have been applied to
+the calculation of the phonon dispersions of Cu, Ag, and Au
+in Ref. 19, and of Si, C, Cu, and Al in Ref. 21. In the latter
+reference, the performances of the local-density approxima-
+tion ~LDA! and of the GGA have been compared. The
+phonons of magnetic bcc iron and fcc nickel have been pre-
+sented in Ref. 22 and the vibrational properties of the
+Cu~001!/CO system have been discussed in Ref. 23. In this
+paper the theory is illustrated with two examples: the
+Cu~001! surface and the nitrobenzene molecule. First, I ana-
+lyze the interatomic force constants at the Cu ~001! surface
+and within the bulk, comparing the results of the LDA and
+the ones of the GGA. Second, the vibrational modes of a
+ﬁnite Cu ~001! slab are calculated, the surface modes of the
+slab are identiﬁed and discussed together with the available
+experimental data. The nitrobenzene molecule is simulated in
+a cubic supercell, all its vibrational modes are calculated and
+the theoretical frequencies are compared with data provided
+by infrared and Raman spectroscopies.
+This paper is organized as follows. In Sec. II, the DFT
+energy, the KS equations, and the HF forces are written for
+the US PP’s scheme. Section III deals with the charge den-
+sity linearly induced by a perturbation, Sec. IV with the gen-
+eralized Sternheimer equation, and Sec. V with the mixed
+second-order energy derivatives. The vibrational properties
+of the Cu ~001! surface are presented in Sec. VI and the vi-
+brational spectra of the nitrobenzene molecule is discussed in
+Sec. VII. In the paper, the notation is kept as simple as pos-
+sible in order to focus on the new features of the US PP’s
+scheme. The notation is simpliﬁed by considering a general
+quantum system, a general perturbation and general nonlocal
+PP’s. The appendixes report detailed expressions implement-
+able in an electronic structure code. In Appendix A, the for-
+mulas for the second-order energy derivatives, specialized to
+a periodic solid, a phonon perturbation and US PP’s, are used
+to calculate the dynamical matrices at an arbitrary q point of
+the BZ. At this level the basis functions used to expand the
+orbitals are not relevant, provided that they do not depend on
+the ionic positions, as the PW’s, so that Pulay-type
+corrections24 are not needed. Finally in Appendix B, I intro-
+duce the PW basis set. The formula of this Appendix have
+been implemented in a code based on PW’s and US PP’s. 25
+II. GROUND-STATE ENERGY AND IONIC FORCES
+According to the Hohenberg and Kohn theorem, 26 the en-
+ergy of a system of Nel interacting electrons in the potential
+of the ions is a unique functional of the electronic charge
+density and it is minimized by the ground-state density. An
+explicit form for this functional has been given by Kohn and
+Sham who introduced an auxiliary system of Nel noninter-
+acting electrons with the same density of the interacting sys-
+tem. The charge density of the noninteracting electrons has a
+unique representation in terms of single-particle electronic
+orbitals $cis(r)% ~the index i labels the electronic energy
+levels, and s the spin state!, and the energy of the interacting
+system becomes a functional of these orbitals. The generali-
+zation of this scheme to energy functionals with fractional
+occupations and spin polarization 27 allows the description of
+open as well as closed-shell ﬁnite systems or metallic as well
+as insulating crystalline solids. I choose a functional which
+includes a term that makes it variational even with variable
+occupations.28,29,8 A smearing approach is used and the oc-
+cupation numbers are functions of the energy levels «is and
+of the Fermi energy «F which ﬁxes the electron number. The
+ionic positions act as external parameters for the functional.
+In the US PP’s scheme, the energy has four contributions:
+Ftot 5E@$cis~r!%#1F@rs~r!,rc,s~r!#1UII
+1(
+is
+hu˜1S
+«F2«is
+h D. ~1!
+In order to establish a uniform notation, these four terms are
+recalled in this section. All equations are in atomic units: the
+Planck constant \51, the electron charge e251, and the
+electron mass me51. The energy is measured in Hartree.
+The ﬁrst term in Eq. ~1! is
+E@$cis~r!%#5(
+is
+u˜S
+«F2«is
+h D^cisu2
+1
+2 „ 21VNL ucis&,
+~2!
+where the index i runs over all electronic states. u˜ is an
+approximation of the Fermi function, thus in practice, this
+sum extends to the completely ﬁlled orbitals in insulators and
+also to some partially ﬁlled states above the Fermi energy in
+metals. The form of u˜ depends on the smearing technique
+and on a smearing parameter h. For vanishing h, it coin-
+cides with the step function. Examples of u˜ functions are
+found in Refs. 30 and 31, where the smearing approximation
+is introduced by deﬁning the shape of the Dirac delta func-
+tion d˜(x) while u˜(x)5*2‘
+x d˜(y)dy . VNL is the nonlocal part
+of the PP which, in the US PP’s scheme, reads
+VNL ~r1 ,r2!5(
+Inm
+Dnm
+(0) g(I)bn
+g(I)~r12RI!bm*g(I)~r22RI!, ~3!
+where the projector functions bm
+g(I)(r) and the coefﬁcients
+Dnm
+(0) g(I) characterize the PP for each atomic type g(I). They
+are obtained by atomic calculations as discussed in Ref. 18.
+The index I labels the ionic positions RI . The indexes
+n and m run over the b functions. In the Kleinman
+Bylander ~KB!~ Ref. 10! separable NC PP’s scheme, the non-
+local part of the PP is written as in Eq. ~3!, but with only
+diagonal Dnn
+(0) g(I) coefﬁcients. In both cases, the meaning
+of the bra-ket notation in Eq. ~2! is: ^cisuVNL ucis&
+5*d3r1d3r2cis* (r1)VNL (r1 ,r2)cis(r2).
+The second term in Eq. ~1!, F, is a functional of the
+spin-up and spin-down valence electron charge densities:
+rs~r!5(
+i
+u˜F,is E d3r1d3r2cis* ~r1!K~r;r1 ,r2!cis~r2!
+5(
+i
+u˜F,is^cisuK~r!ucis&, ~4!
+ANDREA DAL CORSO PHYSICAL REVIEW B 64 235118
+235118-2
+
+=== PAGE BREAK ===
+
+where, following Ref. 8, I introduced a compact notation
+u˜F,is5u˜@(«F2«is)/ h#. With a NC PP, the electron valence
+charge densities of the noninteracting auxiliary electron sys-
+tem ~and hence of the interacting one ! are the sum of the
+square moduli of the wave functions, weighted by the occu-
+pation numbers. In the present scheme, this case is recovered
+by taking K(r;r1 ,r2)5d(r2r1)d(r2r2). In the US PP’s
+scheme the function K(r;r1 ,r2) contains an augmentation
+term ~I refer to Refs. 18 and 32 for additional details !:
+K~r;r1 ,r2!5d~r2r1!d~r2r2!1(
+Inm
+Qnm
+g(I)~r2RI!
+3bn
+g(I)~r12RI!bm*g(I)~r22RI!. ~5!
+The augmentation functions Qnm
+g(I)(r2RI) are calculated to-
+gether with the PP and are localized about the atoms. When
+the atoms move, the centers of the augmentation functions
+change. Therefore, to develop a perturbation scheme, we
+must consider K(r;r1 ,r2) as a function of the perturbation
+parameters. F is the sum of the local, Hartree, and exchange
+and correlation energies:
+F@rs~r!,rc,s~r!#5 E d3rV loc ~r!r~r!1
+1
+2 E d3r1d3r2
+3
+r~r1!r~r2!
+ur12r2u 1Exc @ns~r!,„ ns~r!#,
+~6!
+where the total valence charge r(r) is the sum of the spin-up
+and spin-down valence electron densities, rc,s(r) are the
+core charges obtained from the atomic core charges, and
+ns(r)5rs(r)1rc,s(r) are the total spin charge densities.
+Vloc (r)5(IVloc
+g(I)(r2RI) is the local part of the PP. Exc is
+the exchange and correlation energy functional. Following
+the NLCC recipe, I assume that Exc is a functional of the
+total spin charge densities. In GGA, Exc depends also on the
+gradients, „ ns(r). Core spin polarization is neglected, as-
+suming that rc,s(r)51/2rc(r). The core charge does not
+depend on the orbitals but it is a function of the atomic
+positions.
+The term UII , in Eq. ~1!, is the ion-ion interaction dealt
+with via the Ewald summation method. In the following, I
+focus only on the electronic contribution to the force con-
+stants. The ionic contribution is discussed in several
+papers2,7,33 and no new feature is introduced by the US PP’s
+scheme.
+The last term in the energy functional, Eq. ~1!,i sac o r -
+rection that resembles an entropy term for ﬁxed electron
+numbers and is nonvanishing for fractional occupation num-
+bers. It coincides with an entropy term when the occupation
+factors have the Fermi-Dirac form. In this case Ftot is a
+free-energy functional. In general, the function u˜1(x) is:
+u˜1(x)5*2‘
+x yd˜(y)dy . With this deﬁnition, the energy in Eq.
+~1! is variational and is equivalent to the energy introduced
+for instance in Ref. 29, as discussed in Refs. 2 and 8. It is
+equivalent to assume that the occupation numbers are inde-
+pendent parameters, as in Ref. 29, and to use the variational
+energy to determine them, or to treat them as a function of
+the single-particle energies as done here. In the latter case,
+the minimization of the energy yields the KS equations for
+the orbitals and, in the formulas for the HF forces, the occu-
+pation numbers derivatives do not appear.28,8 This formalism,
+which reduces to the ﬁnite temperature DFT with Fermi-
+Dirac occupation factors, is used in this paper in the context
+of the smearing approach to metals and its main purpose is
+the efﬁcient evaluation of BZ integrals in the presence of a
+Fermi surface.
+The orbitals $cis(r)% are subject to generalized orthonor-
+malization constraints:18
+^cisuSucjs&5dij , ~7!
+with an overlap matrix S:
+S~r1 ,r2!5d~r12r2!
+1(
+Inm
+qnm
+g(I)bn
+g(I)~r12RI!bm*g(I)~r22RI!, ~8!
+where the coefﬁcients qnm
+g(I)5*d3rQ nm
+g(I)(r) are the integrals
+of the augmentation functions. Given this deﬁnition of S, the
+charge conservation condition in the US PP’s scheme be-
+comes identical to the one found in the NC scheme. This
+condition deﬁnes the Fermi energy and it is
+(
+is
+u˜F,is5Nel . ~9!
+The ground-state spin charge densities minimize the en-
+ergy functional. As a consequence, the KS functional is mini-
+mized by the auxiliary single-particle orbitals $cis(r)%. With
+the constraints in Eq. ~7!, the minimum condition leads to the
+KS equations:
+F2
+1
+2 „ 21VNL 1 E d3rV eff
+s ~r!K~r!Gucls&5«lsSucls&, ~10!
+where the effective potential is the sum of the local, Hartree,
+and exchange and correlation potentials:
+Veff
+s ~r!5
+]F
+]r s~r! 5Vloc ~r!1 E d3r1
+r~r1!
+ur2r1u 1Vxc
+s ~r!. ~11!
+The expression of Vxc
+s (r), in the context of the GGA ap-
+proximation, is given in Ref. 22. To simplify the notation, the
+KS potential is deﬁned as
+VKS
+s ~r1 ,r2!5VNL ~r1 ,r2!1 E d3rV eff
+s ~r!K~r;r1 ,r2!. ~12!
+At the electronic ground state, the forces acting on the
+atoms are the negative derivatives of the energy functional
+@Eq. ~1!# with respect to atomic displacements. The atomic
+positions act as external parameters in this functional thus
+the HF theorem 6 applies: the forces depend only on the
+ground-state orbitals. In the US PP’s scheme, the overlap
+matrix S changes as the atoms move, thus giving rise to a
+DENSITY-FUNCTIONAL PERTURBATION THEORY WITH . . . PHYSICAL REVIEW B 64 235118
+235118-3
+
+=== PAGE BREAK ===
+
+term in the forces. This term is found using the linearized
+orthonormalization constraints which provide the relation-
+ships
+K
+dcis
+dl USucjs&1^cisuSU
+dcjs
+dl L52 ^cisu
+]S
+]lucjs&, ~13!
+where l denotes the amplitude of an atomic displacement.
+The ﬁnal expression of the energy derivative is
+dF tot
+dl 5(
+is
+u˜F,is^cisu
+]VKS
+s
+]l 2«is
+]S
+]lucis&
+1(s
+E d3r1Vxc
+s ~r1!
+]r c,s~r1!
+]l , ~14!
+where the last term accounts for the NLCC, and the partial
+derivative of VKS
+s is deﬁned as
+]VKS
+s ~r1 ,r2!
+]l 5
+]VNL ~r1 ,r2!
+]l 1 E d3r
+]Vloc ~r!
+]l K~r;r1 ,r2!
+1 E d3rV eff
+s ~r!
+]K~r;r1 ,r2!
+]l . ~15!
+In these expressions and in the following, I use the total
+derivative symbol ~d! to denote a derivative where the orbit-
+als are considered as implicit functions of l, while the par-
+tial derivative symbol ( ]) indicates derivatives done at ﬁxed
+orbitals. The partial derivative is used also to differentiate
+quantities such as S or rc which do not depend on the orbit-
+als. For ﬁxed occupation numbers and neglecting NLCC, Eq.
+~14! has been reported in several papers ~see, for instance,
+Ref. 32!. In order to calculate the interatomic force constants
+and hence the dynamical matrix, I differentiate Eq. ~14! with
+respect to a second perturbation parameter m. dF tot /dl does
+not depend either on the induced spin charge densities or on
+the ﬁrst-order wave-function derivatives with respect to l.
+Therefore the mixed second-order energy derivatives will de-
+pend only on the induced spin charge densities and on the
+ﬁrst-order change in the orbitals with respect to m. Before
+differentiating Eq. ~14!, in the next section, I discuss how to
+calculate the induced charge-density and the wave-function
+changes within the US PP’s scheme.
+III. FIRST-ORDER WA VE-FUNCTION AND CHARGE-
+DENSITY DERIV ATIVES
+The spin-up and spin-down charge densities are calculated
+via Eq. ~4!. By differentiating this expression with respect to
+the perturbation parameter m, I get the induced spin charge
+densities at ﬁrst order. There are three terms. The ﬁrst one is
+the spin charge density induced by the change in the occu-
+pation factors:
+drs
+(a)~r!
+dm 5(
+i
+du˜F,is
+dm ^cisuK~r!ucis&, ~16!
+while the second one accounts for the change in the wave
+functions:
+drs
+(b)~r!
+dm 5(
+i
+u˜F,isFK
+dcis
+dm UK~r!ucis L1c.c.G, ~17!
+where c.c. indicates the complex conjugate. The third term
+has no correspondent counterpart in the NC scheme. It is due
+to the displacement of the augmentation functions and it is
+written
+drs
+(c)~r!
+dm 5(
+i
+u˜F,is^cisu
+]K~r!
+]m ucis&. ~18!
+Two new quantities appear in Eqs. ~16! and ~17!: the varia-
+tion of the occupation numbers and the ﬁrst-order change in
+the wave functions. In insulators and with NC PP’s, one can
+show that only the conduction-band projection of udcis /dm&
+contributes to the induced spin charge density and, of course,
+the occupation numbers are ﬁxed. As shown in Ref. 8, in
+metals one can deﬁne a generalized projector in the
+conduction-band manifold and set up a linear system to get
+the wave-function changes, in such a way that Eqs. ~16! and
+~17! are calculated with expressions which closely resemble
+those valid for insulators. With respect to Ref. 8, the major
+difﬁculty of the US PP’s scheme originates from the depen-
+dence of S, and hence of the orthonormalization constraints,
+on the atomic positions. By contrast, the displacement of the
+augmentation functions gives rise to Eq. ~18! which can be
+calculated as it is, without further manipulations.
+First-order perturbation theory, applied to the KS equa-
+tions @Eq. ~10!#, yields the components of udcis /dm& in the
+subspace orthogonal to the eigenspace of ucis& and also the
+energy levels derivatives with respect to m. Differentiation
+of Eq. ~10! yields
+F2
+1
+2 „ 21VKS
+s 2«isSGU
+dcis
+dm L
+52 F
+dV KS
+s
+dm 2«is
+]S
+]mGucis&1
+d«is
+dm Sucis&,
+~19!
+where the total derivative of the KS potential is
+dV KS
+s ~r1 ,r2!
+dm 5
+]VKS
+s ~r1 ,r2!
+]m 1 E d3r
+dV Hxc
+s ~r!
+dm K~r;r1 ,r2!.
+~20!
+This derivative differs from the partial derivative of
+VKS
+s (r1 ,r2), discussed above @see Eq. ~15!#, for the presence
+of a self-consistent term. Indeed, dV Hxc
+s (r)/ dm is the change
+in the Hartree and exchange and correlation potential:
+dV Hxc
+s ~r!
+dm 5 E d3r1
+dr~r1!
+dm
+1
+ur2r1u 1
+dV xc
+s ~r!
+dm , ~21!
+linear in the induced spin charge densities. dV xc
+s (r)/ dm,i n
+the GGA approximation, is calculated in Ref. 22.
+The linear system in Eq. ~19! is singular as in the NC case
+where, in order to solve it, one projects both sides in the
+conduction-band manifold and adds to the left-hand side a
+multiple of the valence-band projector so as to make the
+ANDREA DAL CORSO PHYSICAL REVIEW B 64 235118
+235118-4
+
+=== PAGE BREAK ===
+
+system nonsingular. 2 In the NC case, the solutions of the
+projected linear system sufﬁce since only the conduction-
+band projection of udcis /dm& contributes to the induced
+spin charge densities and to the interatomic force constants.
+In the US case, instead, also the valence-band projection of
+udcis /dm& gives a ﬁnite contribution to drs(r)/ dm since S
+is changing with the perturbation. In the following, I show
+how this works in the US PP’s scheme. As shown in Ref. 8,
+one can deal with the general case of metals, insulators are a
+special case. I assume that «is is nondegenerate, but the gen-
+eralization to the degenerate case is straightforward. Project-
+ing Eq. ~19! on the unperturbed orbitals $ucis&% gives
+d«is
+dm 5^cisuF
+dV KS
+s
+dm 2«is
+]S
+]mGucis&, ~22!
+and for jÞi:
+^cjsuSU
+dcis
+dm L5
+^cjsuF
+dV KS
+s
+dm 2«is
+]S
+]mGucis&
+«is2«js
+. ~23!
+Using Eq. ~23!, the transformation discussed in Ref. 8, and
+additional bookkeeping to account for the energy-level ex-
+changes, Eq. ~17! can be rewritten as
+drs
+(b)~r!
+dm 52R eH(
+i
+(
+jÞi
+u˜F,is2u˜F, js
+«is2«js
+ujs,isris, js^cjsuF
+dV KS
+s
+dm 2«is
+]S
+]mGucis&J
+2(
+i
+(
+j
+@u˜F,isuis, js1u˜F, jsujs,is#ris, js^cjsu
+]S
+]mucis&, ~24!
+where ris, js5^cisuK(r)ucjs&, and u is a step function. In
+the ﬁrst term of Eq. ~24! the j5i term is missing. In a metal,
+the change in the occupation numbers could give rise to a
+nonvanishing j5i term. In fact, Eq. ~16! can be split as
+drs
+(a)~r!
+dm 5(
+i
+du˜F,is
+dm ris,is
+5(
+i
+1
+h d˜F,is
+d«F
+dm ris,is2(
+i
+1
+h d˜F,is
+d«is
+dm ris,is .
+~25!
+In the limit «js→«is , the ratio ( u˜F,is2u˜F, js)/( «is2«js)i s
+equal to 2(1/h)d˜F,is . Therefore the second term in Eq. ~25!
+is the missing j5i term of Eq. ~24! and can be included in
+the sum. The ﬁrst term of Eq. ~25! shows that the change in
+the Fermi energy could affect the induced spin charge den-
+sities ~see Ref. 2 for a discussion of the origin of this term !.
+Equation ~24! is a central result of this paper. The last term
+shows how the changing orthonormalization constraints af-
+fect the induced charge densities and how the variable occu-
+pation numbers must be handled.
+To proceed further, let us deﬁne two vectors:
+uDmcis&5
+1
+2hd˜F,is
+d«F
+dm ucis&1(
+j
+u˜F,is2u˜F, js
+«is2«js
+ujs,isucjs&
+3^cjsuF
+dV KS
+s
+dm 2«is
+]S
+]mGucis& ~26!
+and
+udmcis&5(
+j
+@u˜F,isuis, js1u˜F, jsujs,is#ucjs&^ cjsu
+]S
+]mucis&.
+~27!
+In an insulator, uDmcis& is the projection of udcis /dm& on
+the conduction-band manifold, while udmcis& is reminiscent
+of a projection of udcis /dm& in the valence-band manifold.
+It is nonvanishing only if the orthonormalization constraints
+are variable. Given these deﬁnitions, at linear order, the in-
+duced spin charge densities become
+drs~r!
+dm 52R e (
+i
+^cisuK~r!uDmcis&2(
+i
+^cisu
+3K~r!udmcis&1(
+i
+u˜F,is^cisu
+]K~r!
+]m ucis&.
+~28!
+Equation ~28!, limited to spin unpolarized insulators, has
+been presented in Ref. 19. As in Ref. 19, in the following, the
+last two terms are called Dmrs(r), while the second term is
+called dmrs,orth (r).
+IV . LINEAR SYSTEM
+The sum over j in the deﬁnition of the vector udmcis& @Eq.
+~27!# is over all states, but actually the u˜ functions limit the
+sum to ﬁlled and partially ﬁlled states. We can assume that
+u˜F, js is vanishing if the eigenvalue «js is higher than «F
+13h. Instead the sum over j, in the deﬁnition of uDmcis&
+@Eq. ~26!#, extends to all states. In principle this is an inﬁnite
+sum. If the orbitals are expanded in a ﬁnite basis set, the sum
+is over a number of states comparable to the number of basis
+functions. The explicit evaluation of uDmcis& via Eq. ~26! is
+computationally expensive since it requires the knowledge of
+DENSITY-FUNCTIONAL PERTURBATION THEORY WITH . . . PHYSICAL REVIEW B 64 235118
+235118-5
+
+=== PAGE BREAK ===
+
+all the eigenvectors of Eq. ~10! and summations over all
+states. Instead, the sum can be carried out exactly and efﬁ-
+ciently by solving an algebraic linear system. This formalism
+is known as the Green-function technique. 1 I introduce a lin-
+ear system whose solution is uD˜mcis&5uDmcis&
+2(1/2 h)d˜F,is(d«F /dm)ucis&. Following Ref. 8:
+F2
+1
+2 „ 21VKS
+s 1Qs2«isSGuD˜mcis&
+52 Pc,is
+† F
+dV KS
+s
+dm 2«is
+]S
+]mGucis&, ~29!
+with
+Pc,is
+† 5Fu˜F,is2(
+j
+bis, jsSucjs&^ cjsuG. ~30!
+Qs is an operator, vanishing on the conduction states above
+«F13h, which makes the linear system nonsingular. In the
+US PP’s scheme it is: Qs5(jajsSucjs&^ cjsuS, where ajs
+is vanishing if «js is above «F13h and is equal to «F
+13h2«js if it is below. This linear system can be solved
+with iterative techniques, such as the conjugate gradient
+method. By projecting on the unperturbed levels, one shows
+that by choosing the bis, js as
+bis, js5u˜F,isuis, js1u˜F, jsujs,is1ajs
+u˜F,is2u˜F, js
+«is2«js
+ujs,is ,
+~31!
+its solution is indeed the vector uD˜mcis& @see Eq. ~26!#. Note
+that with this deﬁnition all sums are limited to states with
+energy lower than «F13h. In insulators u˜F,is
+2(jbis, jsSucjs&^ cjsu becomes the projector over the con-
+duction states manifold Pc
+† , which does not depend on the
+energy level. For nonmagnetic and insulating solids, this lin-
+ear system @Eq. ~29!# was introduced in Ref. 19.
+V . MIXED SECOND-ORDER ENERGY DERIV ATIVES
+In this section I calculate the mixed second-order energy
+derivatives with respect to atomic displacements. Differen-
+tiation of Eq. ~14! with respect to m gives four terms. The
+ﬁrst accounts for the change in the occupation numbers:
+d2Ftot
+(a)
+dmdl 5(
+is
+du˜F,is
+dm ^cisuF
+]VKS
+s
+]l 2«is
+]S
+]lGucis&. ~32!
+The second is due to the change in the energy levels and in
+the wave functions:
+d2Ftot
+(b)
+dmdl 52 (
+is
+u˜F,is
+d«is
+dm ^cisu
+]S
+]l ucis&
+1(
+is
+u˜F,isH K
+dcis
+dm UF
+]VKS
+s
+]l 2«is
+]S
+]lGucis&1c.c. J.
+~33!
+The third term generalizes to the US PP’s scheme, the ex-
+pectation value of the mixed second-order derivative of the
+external potential:
+d2Ftot
+(c)
+dmdl 5(
+is
+u˜F,is^cisuF
+d
+dmS
+]VKS
+s
+]l D2«is
+]2S
+]m]lGucis&. ~34!
+The fourth term is due to NLCC and is equal to Eqs. ~134!
+and ~135! of Ref. 2 ~see also Ref. 34 !:
+d2Ftot
+(d)
+dmdl 5(s
+E d3r1
+dV xc
+s ~r1!
+dm
+]r c,s~r1!
+]l
+1(s
+E d3r1Vxc
+s ~r1!
+]2rc,s~r1!
+]m]l . ~35!
+The two vectors uDmcis&, and udmcis& introduced to cal-
+culate the induced spin charge densities sufﬁce also to evalu-
+ate the mixed second-order energy derivatives. I start with
+Eq. ~33!. Using Eqs. ~22! and ~23! for the change in the
+energy levels and in the wave functions and techniques simi-
+lar to those applied to derive Eq. ~24!, one transforms Eq.
+~33! into
+d2Ftot
+(b)
+dmdl 52R eH(
+is (
+jÞi
+u˜F,is2u˜F, js
+«is2«js
+ujs,is^cisuF
+dV KS
+s
+dm 2«is
+]S
+]mGucjs&^ cjsuF
+]VKS
+s
+]l 2«is
+]S
+]lGucis&J
+2(
+is (
+j
+H@u˜F,isuis, js1u˜F, jsujs,is#^cisu
+]S
+]mucjs&^ cjsuF
+]VKS
+s
+]l 2«is
+]S
+]lGucis&1~m↔l!J
+1(s
+E d3r
+dV Hxc
+s ~r!
+dm dlrs,orth ~r!, ~36!
+ANDREA DAL CORSO PHYSICAL REVIEW B 64 235118
+235118-6
+
+=== PAGE BREAK ===
+
+where ~m↔l! denotes a term equal to the one in the bracket,
+with l exchanged with m. Equation ~36! is the second main
+result of this paper. It shows how the change in the orthonor-
+malization constraints reﬂects in the expression of the inter-
+atomic force constants and how to handle partial occupa-
+tions. Furthermore, it shows that dlrs,orth (r) couples with
+the variation of VHxc
+s (r).
+Equation ~32! is transformed as Eq. ~16!. It is split into
+the missing j5i term of Eq. ~36! and into a contribution due
+to the Fermi energy change.
+In the NC case, the expectation value of the mixed
+second-order derivatives of the electron-ion potential is for-
+mally similar to Eq. ~34!. However, this equation differs
+from the NC case since the augmentation functions make
+]VKS
+s /]l dependent on the charge densities through Veff
+s @see
+Eq. ~15!# and therefore the m derivative of ]VKS
+s /]l depends
+also on the induced self-consistent charge densities. Expand-
+ing the total derivative with respect to m one obtains
+d
+dmS
+]VKS
+s
+]l D5
+]2VKS
+s
+]m]l 1 E d3r
+dV Hxc
+s ~r!
+dm
+]K~r!
+]l , ~37!
+where the mixed partial derivative of VKS
+s is
+]2VKS
+s ~r1 ,r2!
+]m]l 5
+]2VNL ~r1 ,r2!
+]m]l 1 E d3r
+]2Vloc ~r!
+]m]l K~r;r1 ,r2!
+1 E d3rV eff
+s ~r!
+]2K~r;r1 ,r2!
+]m]l
+1F E d3r
+]Vloc ~r!
+]l
+]K~r;r1 ,r2!
+]m 1~l↔m!G.
+~38!
+Collecting these results @Eqs. ~36!–~38!#, and ordering the
+terms as in Ref. 19, the mixed second-order energy deriva-
+tives assume the ﬁnal form. The ﬁrst two terms generalize, to
+the US case, the NC terms in the interatomic force constants.
+The expectation value of the second derivative of the
+electron-ion potential becomes
+d2Ftot
+(1)
+dmdl 5(
+is
+u˜F,is^cisuF
+]2VKS
+s
+]m]l 2«is
+]2S
+]m]lGucis&, ~39!
+and the change in the wave functions gives a term
+d2Ftot
+(2)
+dmdl 52R e (
+is
+^DmcisuF
+]VKS
+s
+]l 2«is
+]S
+]lGucis&. ~40!
+In the US PP’s scheme one must consider two additional
+contributions, which have no correspondent counterparts in
+the NC scheme. The ﬁrst is the interaction between the
+change in VHxc
+s and Dlrs :
+d2Ftot
+(3)
+dmdl 5(s
+E d3r
+dV Hxc
+s ~r!
+dm Dlrs~r!. ~41!
+Dlrs includes both the orthonormalization term, dlrs,orth ,
+and the charge induced by the displacement of the augmen-
+tation functions @Eq. ~18!#. This integral is obtained partially
+in Eq. ~37!, from the m derivative of ]VKS
+s /]l, and partially
+in Eq. ~36! from the manipulation of d2Ftot
+(b)/dmdl
+The fourth term, obtained in Eq. ~36!, has the same origin
+as dlrs,orth , it is due to the dependence of the orthonormal-
+ization constraints on the atomic positions:
+d2Ftot
+(4)
+dmdl 52 (
+is
+H^dmcisUF
+]VKS
+s
+]l 2«is
+]S
+]lGucis&1~m↔l!J.
+~42!
+For nonmagnetic, insulating materials these terms have been
+discussed in Ref. 19 and in Ref. 2. Equation ~35! accounts
+for NLCC and is added to these four terms. 2,34 In Appendix
+A, I shall show how to exploit these relationships to get the
+dynamical matrices of a periodic solid.
+VI. PHONON DISPERSIONS OF CU „001…
+In this section the vibrational properties of the Cu ~001!
+surface are investigated by DFPT with US PP’s. The surface
+is simulated by 39 and 107 layer slabs. 38 The interatomic
+force constants of these slabs are calculated from the bulk Cu
+and from a seven layer Cu ~001! slab. The latter provides the
+interactions among three surface layers whereas the former
+describes the force constants in the other layers. The ex-
+change and correlation energy functional is approximated by
+the LDA ~Ref. 27! or by the Perdew, Burke, and Ernzerhof
+~PBE!~ Ref. 35! GGA. The phonon dispersions obtained with
+these two functionals are compared. A similar comparison
+was carried out for bulk Cu in Ref. 21. In this work, I use the
+same Cu PP’s. PW’s up to a cutoff of 25 ~30! Ry for the
+wave functions and 200 ~480! Ry for the charge density are
+included in the basis set in the LDA ~PBE GGA!.
+The seven layer slab is studied with a tetragonal unit cell.
+The periodically repeated slabs are separated by a vacuum
+space equivalent to eight ~LDA! and nine ~PBE GGA! lay-
+ers. The in-plane lattice constant is a056.71 a.u. ~LDA!, and
+a056.95 a.u. ~PBE GGA! which are the theoretical values in
+the bulk. k-point sampling is done with 21 points in the
+irreducible wedge of the surface BZ ~SBZ!. The smearing
+parameter is h50.05 Ry. The interlayer spacings are relaxed,
+starting from the ideal surface and minimizing the energy. At
+equilibrium, the forces acting on the atoms are less than 0.2
+mRy/a.u.. The relaxation is mainly conﬁned to the ﬁrst layer
+which relaxes inward, d1252 3.0% both in LDA and in PBE
+GGA. The second and third layers do not relax appreciably.
+A more detailed account of the calculated geometrical pa-
+rameters of the Cu ~001! surface can be found in Ref. 23.
+The dynamical matrices of the seven layer slab are evalu-
+ated via Eqs. ~B32!–~B37! o na4 34 mesh of q points in the
+SBZ. A Fourier transform of these matrices provides the in-
+teratomic force constants of three surface layers, until ﬁve
+neighbors on the surface. A frozen phonon calculation of
+comparable accuracy would require 16 surface atoms ~the
+unit cell would contain 106 atoms !. Table I presents a com-
+parison of the interatomic force constants obtained at the
+surface and within the bulk. The interactions of a Cu atom
+with its ﬁrst neighbor on the surface and with the ﬁrst neigh-
+DENSITY-FUNCTIONAL PERTURBATION THEORY WITH . . . PHYSICAL REVIEW B 64 235118
+235118-7
+
+=== PAGE BREAK ===
+
+bor on the subsurface layer are shown. These force constants
+are compared with the corresponding ones in the bulk. The
+PBE GGA force constants between ﬁrst neighbor atoms in
+the same layer are 11% stiffer in the bulk than on the surface.
+By contrast, the interactions between surface and subsurface
+Cu atoms are about 15–20 % stiffer than those acting in the
+bulk. Within LDA, the largest components of the force con-
+stant tensor are about 25% stiffer than in PBE GGA, but the
+15–20 % increase of the interaction between surface and
+subsurface atoms with respect to the bulk is unchanged. Fig-
+ure 1 shows the PBE GGA dispersions curves ~continuous
+lines! for the phonons of a 39 layer Cu ~001! slab along the
+G¯-X¯, X¯-M¯, and M¯-G¯ directions of the SBZ. The surface
+modes are marked with points and their frequencies are com-
+pared with the experimental data. Only surface modes whose
+displacements are dominant ﬁrst layer are indicated. In order
+to identify the surface modes, q resolved surface phonon
+spectral densities ~SD’s! of a 107 layer slab are examined.
+The SD’s are calculated as a sum of normalized Gaus-
+sian functions with root-mean-square deviations equal to
+1.22 cm21.
+Figure 2 shows the SD’s calculated with PBE GGA at six
+points of the SBZ along the path of Fig. 1 and separated
+according to the polarization of the vibrational eigenmodes.
+SD’s for modes characterized by dominant ﬁrst-layer shear
+vertical ~perpendicular to the surface ! displacements and by
+dominant ﬁrst-layer longitudinal displacements ~parallel to
+the q wave vector! are plotted with continuous and dashed
+lines, respectively. The SD for the shear horizontal surface
+modes, with displacements perpendicular to the sagittal
+plane ~deﬁned by the surface normal and the q vector!,i sn o t
+reported. All the same, these surface modes are marked with
+small empty circles in Fig. 1.
+Along the G¯-X¯ direction there are three ﬁrst-layer surface
+modes clearly identiﬁed by peaks in the SD. In this direction,
+modes polarizations are strictly parallel or perpendicular to
+the sagittal plane. The low-frequency mode S1 is a shear
+horizontal mode. The mode S4 corresponds to the Rayleigh
+wave ~RW! with displacements predominantly perpendicular
+to the surface. Its frequency at X¯ is 105 cm 21. Close to the
+zone boundary, at 192 cm 21, there is a third surface mode
+S6, with longitudinal polarization. Three surface modes can
+be identiﬁed also along the X¯-M¯ direction. Here symmetry
+allows the mixing of S1 and S4 which exchange character
+TABLE I. Theoretical LDA and PBE GGA interatomic force
+constants of the Cu~001! surface. The moving atom is at the origin,
+whereas the coplanar atom is at a(1,0). The ﬁrst neighbor in the
+layer below the one of the moving atom is at a(0.5,0.5) ( a
+5a0 /A2). The units are eV/Å 2. Vanishing force constants are not
+reported.
+LDA PBE GGA
+2Fx 2Fy 2Fz 2Fx 2Fy 2Fz
+x 21.88 0.19 21.42 0.11
+Surface y 0.06 0.05
+atom z 20.19 20.18 20.11 20.08
+Sub- x 20.54 20.70 0.91 20.41 20.52 0.67
+surface y 20.70 20.54 0.91 20.52 20.41 0.67
+atom z 0.95 0.95 21.16 0.72 0.72 20.88
+x 22.13 21.60
+Bulk y 0.12 0.08
+atom z 0.11 0.07
+Lower x 20.45 20.56 0.80 20.35 20.41 0.60
+bulk y 20.56 20.45 0.80 20.41 20.35 0.60
+atom z 0.80 0.80 21.00 0.60 0.60 20.76
+FIG. 1. Calculated PBE GGA dispersion curves for the phonons
+of a 39 layer Cu ~001! slab compared with HAS and EELS data
+~solid triangles!. The modes with dominant ﬁrst-layer displacements
+are indicated. Open squares refer to shear vertical modes, open
+circles mark shear horizontal modes, and solid circles point to lon-
+gitudinal modes ~see text!.
+FIG. 2. The surface phonon spectral densities, at (0.143,0.0) ~a!,
+(0.321,0.0) ~b!, X¯ ~c!, M¯ ~d!, (0.316,0.316) ~e!, and (0.158,0.158)
+~f!. Units are 2 p/a0. Shear vertical ~continuous line! and longitu-
+dinal ~dashed line! polarizations are shown.
+ANDREA DAL CORSO PHYSICAL REVIEW B 64 235118
+235118-8
+
+=== PAGE BREAK ===
+
+along this direction. At M¯, the S1 mode is the RW ~with
+frequency 135 cm 21). This mode is present also along the
+M¯-G¯ direction while the S6 mode disappears in this direc-
+tion. A new mode L1 with longitudinal polarization appears
+close to M¯. This mode enters into a region of bulk modes
+with the same polarization along the M¯-G¯ direction, and be-
+comes weak after 2/5 of the M¯-G¯ path. A shear horizontal
+mode, not visible experimentally, with similar frequency is
+found along the entire M¯-G¯ direction. No other mode gives
+well deﬁned peaks in the ﬁrst-layer SD.
+Experimentally, the frequencies of the RW mode along
+the G¯-X¯ and M¯-G¯ directions have been measured by electron
+energy-loss spectroscopy ~EELS! and helium atom scattering
+~HAS!.37 In Fig. 1, I report several measured frequencies as
+ﬁlled triangles.37 For the RW, the agreement between theory
+and experiment is good: at X¯ and M¯ they differ by 4 and 1
+cm21. The S6 mode measured by EELS at X¯ is instead at
+203 cm 21,1 1c m 21 higher than the theoretical PBE GGA
+value. This behavior of the PBE GGA was found also in bulk
+Cu,21 where the frequency of the transverse acoustic modes
+are in good agreement with experiment, while the frequen-
+cies of the longitudinal acoustic modes are underestimated
+with respect to the inelastic neutron-scattering measure-
+ments.
+In addition to the modes discussed above, another peak
+present in the HAS cross section along the G¯-X¯ and M¯-G¯
+directions has been attributed to longitudinal resonances. 37
+However, the origin of these peaks is still controversial. 39 In
+Fig. 2, there are no well deﬁned peaks in the SD which
+correspond to these modes, but the longitudinal surface pho-
+non SD display a very broad peak. In Fig. 1, I indicate the
+positions of the maximum L of these peaks with small ﬁlled
+circles. Along M¯-G¯ the maximum of the longitudinal SD is
+found at a frequency close to the experimental points. By
+contrast, along G¯-X¯ the maximum of the SD occurs at fre-
+quencies which do not match the peak of the experimental
+HAS cross section. However, a more direct comparison will
+require the theoretical calculation of the experimental HAS
+cross section. As shown in Ref. 39, the shape of the interac-
+tion potential between He atoms and the Cu surface could
+play a role in explaining the experimental data.
+Previous ab initio calculations,36 limited to the X¯ and M¯
+points of the SBZ, found a clear longitudinal resonance at the
+M¯ point (L1), and a small peak on the SD of the longitudinal
+modes at X¯ at about 115 cm21. In the present calculation the
+presence of the L1 mode at M¯ is conﬁrmed, but it is found
+that, along M¯-G¯ this mode mixes with bulk modes with the
+same polarizations and could possibly explain the experi-
+mental measurements only close to the M¯ point. By contrast,
+the longitudinal mode at X¯ is not present in the surface pho-
+non SD of Fig. 2 ~c!.
+In Fig. 3, I show the dispersion curves for the phonons of
+a 39 layer Cu ~001! slab, calculated within the LDA approxi-
+mation. The modes are analyzed as the PBE GGA ones. The
+qualitative conclusions are the same, but quantitatively LDA
+overestimates all the phonon frequencies as found in the
+bulk.21 The errors of the RW frequency are 11 and 18 cm 21
+at X¯ and M¯, respectively. The maximum in the SD of the
+longitudinal modes along the G¯-X¯ direction is still present,
+but the peak is less intense than in PBE GGA, so in Fig. 3
+the mode apparently disappears closer to the G¯ point.
+VII. VIBRATIONAL SPECTRA OF NITROBENZENE
+In this section, I address the ability of DFPT with US PP’s
+to predict the vibrational spectra of a medium size organic
+molecule: nitrobenzene. In addition to the aromatic ring with
+ﬁve CH bonds, the molecule contains a NO 2 group. The
+vibrational spectra of this molecule has been measured both
+by infrared and by Raman spectroscopies. Vibrational fre-
+quencies calculated by quantum chemistry methods are also
+available ~see, for instance, Refs. 41, 42, and references
+therein for calculations performed at the Hartree-Fock level
+plus correlation treated with the Mo”ller-Plesset procedure!.I
+simulate the molecule inside a cubic box of 22 a.u. All atoms
+are described by US PP’s.40 Energy cutoffs of 30 and 240 Ry
+have been used for the wave functions and for the charge
+density, respectively. The BZ is sampled by the G point only.
+The diagonal elements of the dynamical matrices are cor-
+rected to recover the acoustic sum rule. Calculations are car-
+ried out with the LDA and the PBE GGA approximations.
+Figure 4 shows the main parameters of the nitrobenzene ge-
+ometry. The theoretical values of these parameters, obtained
+by relaxing the atomic positions to the minimum energy, are
+reported in Table II. With respect to LDA, PBE GGA ex-
+pands the CO, NO, and CN bond lengths by about 0.02 Å,
+the CC bond lengths by 0.01 Å, and contracts the CH bonds
+by about 0.003 Å. The agreement with the experimental re-
+sults is good in both approximations. The maximum error,
+which includes also the PP’s error, is 20.042 Å for the CN
+FIG. 3. Calculated LDA dispersion curves for the phonons of a
+39 layer Cu ~001! slab compared with HAS and EELS data ~solid
+triangles!. The modes with dominant ﬁrst-layer displacements are
+indicated. Open squares refer to shear vertical modes, open circles
+mark shear horizontal modes, and solid circles point to longitudinal
+modes ~see text!.
+DENSITY-FUNCTIONAL PERTURBATION THEORY WITH . . . PHYSICAL REVIEW B 64 235118
+235118-9
+
+=== PAGE BREAK ===
+
+bond with LDA and 0.026 Å for the NO bond with PBE
+GGA.
+Nitrobenzene has C2v point group symmetry. Its 36 vibra-
+tional modes belong to the 13 A114A2112B117B2 sym-
+metry types. I report in Table III the frequencies calculated
+within LDA and PBE GGA, the mode symmetry, and a com-
+pact description of the mode eigenvectors. In some cases the
+displacement pattern is complex and I have not reported any
+indication. In other cases the assignment describes only the
+largest displacements. The symmetry types indicate the be-
+havior of the displacements with respect to the symmetry
+operations of the C2v point group: displacements of the A1
+and B1 modes are parallel to the molecular plane, while
+those of the A2 and B2 modes are perpendicular to the mo-
+lecular plane. A ~B! modes are even ~odd! with respect to a
+180° rotation about the twofold molecular axis. In Table III,
+I report also the vibrational frequencies of the molecule cal-
+culated with a cutoff of 25 Ry for the wave functions and 200
+Ry for the charge density. As can be seen from the table, with
+the present pseudopotentials,40 this cutoff is sufﬁcient to con-
+verge within 5 cm 21 the frequencies of almost all the CH
+bending modes but not the NO or CH stretch modes. In Table
+III, the frequencies deduced from infrared and Raman spec-
+troscopies on liquid nitrobenzene are reported. 41 The fre-
+quencies of the NO 2 modes have been measured also in the
+gas phase42 and since these modes are particularly sensitive
+to the molecular environment, in Table III, I report the gas
+phase values. With respect to experiment, the absolute errors
+of the CH stretch are larger than those of the other modes ~of
+the order of 40 cm 21 for LDA and up to 72 cm 21 for PBE
+GGA!. The relative error is, however, about 2%. For a few
+frequencies, experimentally, the mode assignment is not
+completely settled. For instance, different authors do not
+agree on the symmetry-type assignment for the out of plane
+CH bending modes in the 800–1000-cm 21 region. My as-
+signment is in good agreement with the most recent experi-
+mental data,41 reported in Table III. The B1 mode experimen-
+tally reported at 1316 cm 21 is deduced from Ref. 41, but is
+not present according to Ref. 42, which suggests instead a B1
+mode at 1095 cm21, not found in my spectra. The theoretical
+frequencies for the mode at 1316 cm 21 have errors some-
+what larger than the other modes ~82 cm21 in LDA and 43
+cm21 in PBE GGA!. Excluding this mode as well as the CH
+stretch modes, the average difference between theoretical
+and experimental frequencies is 12 cm 21 both within LDA
+and PBE GGA. With LDA, the maximum error is 45 cm 21
+~asymmetric stretch of NO 2), whereas with PBE-GGA it is
+41 cm21 ~symmetric stretch of NO 2). These ﬁgures are par-
+ticularly good and possibly partly fortuitous since experi-
+mental data are not corrected for anharmonicity, however,
+they show that DFPT with US PP’s is accurate enough to be
+useful in interpreting the vibrational spectra of isolated or-
+ganic molecules. For this particular application, the PW’s
+basis is less efﬁcient than other methods, but it can be com-
+petitive to study these molecules adsorbed on metallic
+surfaces.43
+ACKNOWLEDGMENTS
+I thank S. Baroni, S. de Gironcoli, F. Favot, P. Giannozzi,
+A. Pasquarello, E. Tosatti, and A. Baldereschi for useful dis-
+cussions and collaborations. I also thank V . Bortolani for
+suggesting the study of the Cu ~001! surface. This work has
+been supported by INFM ~‘‘Iniziativa trasversale calcolo par-
+allelo’’ and Sezioni F and G! and by Italian MURST ~Coﬁn
+99!. Numerical calculations were performed on the Cray-
+T3E at CINECA in Bologna ~Italy!.
+APPENDIX A: PERIODIC SOLIDS
+In this appendix, I link the equations of the second-order
+energy derivatives @Eqs. ~39!–~42!# with the dynamical ma-
+trices of a crystalline solid at ﬁnite q points of the BZ. In a
+crystalline solid, the atomic positions are deﬁned by a Bra-
+vais lattice $Rl% and by the positions of the atoms, ts ,i na
+reference cell. To each index I corresponds an atom identi-
+ﬁed by two indexes ( l,s) with RI5Rl1ts . In a periodic
+system, the wave functions are classiﬁed according to the
+FIG. 4. Geometry of the nitrobenzene molecule. The nonequiva-
+lent bonds and angles are indicated in the ﬁgure. Their theoretical
+and experimental values are compared in Table II.
+TABLE II. Theoretical LDA and PBE-GGA geometries of the
+nitrobenzene molecule. Distances are in Å and angles in degrees.
+The symbols are deﬁned in Fig. 4. Experimental data are from Ref.
+41. In parentheses are shown the differences on the last digit, be-
+tween electron-diffraction data and microwaves ~reported!.
+LDA PBE GGA Expt.
+dNO 1.230 1.253 1.227 ( 24)
+dCN 1.450 1.471 1.492 ( 26)
+dCC
+1 1.379 1.392 1.375 ~21!
+dCC
+2 1.378 1.391 1.403 ( 23)
+dCC
+3 1.383 1.395 1.396 ~4!
+dCH
+1 1.090 1.087
+dCH
+2 1.091 1.089 1.081 ~12!
+dCH
+3 1.092 1.089
+aONO 124.7 124.1 124.3 ~10!
+aCCN 118.8 118.9 117.5 ~8!
+aCCH
+1 122.8 122.2 122.2
+aCCH
+2 119.8 119.7 119.7
+aCCH
+3 119.8 119.8 119.9
+ANDREA DAL CORSO PHYSICAL REVIEW B 64 235118
+235118-10
+
+=== PAGE BREAK ===
+
+Bloch theorem. The indexes of the energy levels i or j be-
+come double indexes k,v where k is a point of the BZ, and
+v is a band index which denotes both ﬁlled and partially
+ﬁlled states. Up to now, in the text, the operators VKS
+s (r1 ,r2),
+K(r;r1 ,r2), and S(r1 ,r2) have been used to simplify the
+notation. In this appendix, I expand these operators, using
+their deﬁnitions in terms of the augmentation functions and
+the b projectors @see Eqs. ~3!, ~5!, and ~8!#. As an example, I
+write explicitly VKS
+s whose nonlocal part has the same form
+as Eq. ~3! but with screened coefﬁcients. 18 Introducing Eq.
+~5! in Eq. ~12! and using Eq. ~3! one obtains
+VKS
+s ~r1 ,r2!5Veff
+s ~r1!d~r12r2!1(
+Inm
+DInm
+s bn
+g(I)~r12RI!
+3bm*g(I)~r22RI!, ~A1!
+where the coefﬁcients DInm
+s are
+TABLE III. Theoretical LDA and PBE GGA frequencies of the vibrational modes of nitrobenzene. In
+parentheses, the errors of a calculation at 25 ~200! Ry cutoffs. b denotes bending modes in the molecular
+plane, g out of plane bending modes, and n stretch modes. nsy and nas indicate the symmetric and asym-
+metric stretch of the NO 2 bonds. Experimental data are taken from Ref. 41. They are not corrected for
+anharmonic effects.
+Frequency (cm 21) Symmetry Assignment
+LDA PBE GGA Expt.
+64 ( 24) 52 ~0! 50 A2 NO2 tors.
+163 ( 22) 159 ~0! 180 B2
+253 ( 26) 247 ( 23) 265 B1
+396 ~0! 385 ( 21) 399 A1 NO2 tr.1Ring br.
+407 ( 22) 404 ( 21) 399 A2
+434 ( 22) 430 ~0! 425 B2
+522 ( 22) 507 ( 21) 532 a B1 b(CN) 1b(NO2) as.
+609 ( 22) 606 ~0! 613 B1
+683 ~1! 669 ( 21) 680 A1 b(NO2)s y .1Ring br.
+686 ( 22) 677 ( 21) 675 B2
+703 ( 22) 690 ( 21) 704 a B2 g(NO2)1g(CH)
+803 ( 22) 788 ( 21) 791 B2 g(NO2)1g(CH)
+830 ( 23) 829 ( 22) 838 A2 g(CH)
+849 ( 23) 823 ( 21) 853 a A1 b(NO2)
+941 ( 24) 937 ( 22) 936 B2 g(CH)
+976 ( 24) 972 ( 21) 975 A2 g(CH)
+999 ~3! 994 ( 21) 990 B2 g(CH)
+1003 ~2! 994 ~1! 1002 A1
+1018 ~3! 1018 ( 21) 1021 A1 b(CH)
+1057 ( 22) 1068 ( 21) 1069 B1 b(CH)
+1102 ~2! 1085 ~2! 1108 A1 n(CN) 1b(CH)
+1138 ( 21) 1152 ( 21) 1162 B1 b(CH)
+1157 ( 22) 1161 ( 21) 1176 A1 b(CH)
+1274 ( 22) 1292 ( 21) 1308 B1 b(CH)
+1371 ( 216) 1319 ( 211) 1360 a A1 nsy (NO2)
+1401 ~17! 1362 ~3! 1316 B1 n(CC)
+1449 ~3! 1444 ~0! 1460 B1
+1460 ~4! 1460 ~0! 1480 A1
+1593 ( 225) 1538 ( 218) 1548 a B1 nas (NO2)
+1608 ~9! 1582 ~2! 1588 A1 n(CC)
+1636 ~4! 1603 ~0! 1612 B1 n(CC)
+3089 ( 214) 3108 ( 29) 3050 A1 n(CH)
+3098 ( 213) 3119 ( 27) 3080 B1 n(CH)
+3106 ( 213) 3128 ( 28) 3080 A1 n(CH)
+3119 ( 212) 3152 ( 29) 3080 B1 n(CH)
+3119 ( 212) 3152 ( 28) 3080 A1 n(CH)
+aGas phase data.
+DENSITY-FUNCTIONAL PERTURBATION THEORY WITH . . . PHYSICAL REVIEW B 64 235118
+235118-11
+
+=== PAGE BREAK ===
+
+DInm
+s 5Dnm
+(0) g(I)1 E d3rV eff
+s ~r!Qnm
+g(I)~r2RI!. ~A2!
+The dynamical matrix, calculated at a ﬁnite q point of the
+BZ, is the Fourier transform of the interatomic force con-
+stants:
+Fab ~q,s,s8!5
+1
+N (
+ll 8
+e2iq•Rl
+d2Ftot
+dua~l,s!dub~l8,s8!
+eiq•Rl8,
+~A3!
+where ua(l,s) refers to the displacement, in the direction a,
+of the atom which, at equilibrium, is in Rl1ts . N is the
+number of unit cells of the crystal in the Born–von Karman
+approach. Equations ~39!–~42! yield the mixed second-order
+energy derivatives with respect to two perturbation param-
+eters m and l. Comparing Eq. ~A3! with Eqs. ~39!–~42!,I
+take m as the displacement ua(l,s) and l as ub(l8,s8). T o
+evaluate Eq. ~40! one needs to solve the linear system @Eq.
+~29!# in order to get the change in the wave functions. The
+right-hand side of this system, as well as dV Hxc
+s /dm in Eq.
+~41!, depends self-consistently on the induced charge density
+@Eq. ~28!#. Therefore, in this Appendix, I use Eqs. ~39!–~42!
+to write the dynamical matrices of a crystal and rewrite Eq.
+~28! and Eq. ~29! for this purpose.
+As shown, for instance, in Ref. 7, in order to calculate the
+dynamical matrix, it is convenient to introduce collective
+atomic displacements ~phonons! characterized by a ﬁnite
+wavelength which can be commensurate or incommensurate
+with the underling lattice. These phonon perturbations have
+the following displacement pattern: in the cell identiﬁed by
+Rl the displacement of each atom is obtained from the dis-
+placement of the atoms in the reference unit cell usa(q) mul-
+tiplying by a q-dependent phase factor:
+ua~l,s!5usa~q!eiq•Rl. ~A4!
+The charge density induced by this phonon perturbation is
+drs~r!
+dusa~q! 5(
+l
+eiq•Rl
+drs~r!
+dua~l,s! , ~A5!
+while the change in the wave functions induced by a phonon
+perturbation are
+uDusa(q)ckvs&5(
+l
+eiq•RluDua(l,s)ckvs&. ~A6!
+uDusa(q)ckvs& is obtained from the solution of a linear system
+as Eq. ~29!, by adding, at q50 a term due to the Fermi
+energy change. By adding, with the correct phase, the linear
+systems for each displacement, I get the linear system for a
+phonon perturbation:
+F2
+1
+2 „ 21Veff
+s 1Qs1(
+Inm
+~DInm
+s 2«kvsqnm
+g(I)!ubn
+I &
+3^bm
+I u2«kvsGuD˜usa(q)ckvs&
+52 Pc,kvs
+†
+Fufkvs
+usa(q)
+&1
+dV Hxc
+s
+dusa~q! uckvs&
+1(
+Inm
+3IInm
+usa(q)subn
+I &^ bm
+I uckvs&G, ~A7!
+where the projectors bn
+g(I)(r2RI) are written with a bra-ket
+notation as ubn
+I &, and I deﬁned the integral
+3IInm
+usa(q)s5 E d3r
+dV Hxc
+s ~r!
+dusa~q! Qnm
+g(I)~r2RI!. ~A8!
+The change in the Hartree and exchange and correlation po-
+tential @Eq. ~21!# is linear in the induced spin charge densi-
+ties:
+dV Hxc
+s ~r!
+dusa~q! 5 E d3r1
+dr~r1!
+dusa~q!
+1
+ur2r1u 1
+dV xc
+s ~r!
+dusa~q! . ~A9!
+In metals, the projector on the conduction band Pc,kvs
+† de-
+pends on the band index, and it is the operator given in Eq.
+~30!; in insulators Pc,kvs
+† 5Pc
+†512(k8v8uck8v8s&^ ck8v8su.
+ufkvs
+usa(q)
+& is
+ufkvs
+usa(q)
+&5(
+l
+eiq"RlS
+]VKS
+s
+]ua~l,s! 2«kvs
+]S
+]ua~l,s!Duckvs&.
+~A10!
+Using Eq. ~15! for the partial derivative of the KS potential
+and expanding the K operator, ufkvs
+usa(q)
+& is written more ex-
+plicitly:
+ufkvs
+usa(q)
+&5(
+l
+eiq•Rl(
+Inm
+~DInm
+s 2«kvsqnm
+g(I)!F
+]
+]ua~l,s! ~ubn
+I &
+3^bm
+I u!uckvs&G1(
+l
+eiq•Rl
+]Vloc
+]ua~l,s! uckvs&
+1(
+l
+eiq•Rl(
+Inm
+dI,( l,s)
+1Inm
+ua(l,s)subn
+I &^ bm
+I uckvs&
+1(
+l
+eiq•Rl(
+Inm
+2IInm
+ua(l,s)ubn
+I &^ bm
+I uckvs&, ~A11!
+where the two integrals are
+1Inm
+ua(l,s)s5 E d3rV eff
+s ~r!
+]Qnm
+g(I)~r2RI!
+]ua~l,s! , ~A12!
+2IInm
+ua(l,s)5 E d3r
+]Vloc ~r!
+]ua~l,s! Qnm
+g(I)~r2RI!. ~A13!
+ANDREA DAL CORSO PHYSICAL REVIEW B 64 235118
+235118-12
+
+=== PAGE BREAK ===
+
+Note that 2I depends on both the atom which moves ( l,s)
+and on the center of the augmentation function RI , whereas
+in 1I we have I5(l,s).
+The induced spin charge densities are calculated via Eqs.
+~28! and ~A5!. It is useful to group together the ﬁrst two
+terms. This is done by deﬁning the auxiliary vector:
+uD¯usa(q)ckvs&5uD˜usa(q)ckvs&2
+1
+2 (
+k8v8
+f kvs,k8v8s
+usa(q)
+uck8v8s&
+1
+1
+2hd˜F,kvs
+d«F
+dusa~q! dq0uckvs&, ~A14!
+where
+f kvs,k8v8s
+usa(q)
+5(
+l
+eiq•Rlwkvs,k8v8s(
+Inm
+qnm
+g(I)
+3^ck8v8su
+]
+]ua~l,s! ~ubn
+I &^ bm
+I u!uckvs&, ~A15!
+and the weights are
+wkvs,k8v8s5u˜F,kvsukvs,k8v8s1u˜F,k8v8suk8v8s,kvs . ~A16!
+Given these deﬁnitions, the spin charge densities induced by
+a phonon perturbation become
+drs~r!
+dusa~q! 52(
+kv
+ckvs* ~r!D¯usa(q)ckvs~r!12(
+kv
+(
+Inm
+3Qnm
+g(I)~r2RI!^ckvsubn
+I &^ bm
+I uD¯usa(q)ckvs&
+1(
+l
+eiq•Rl(
+kv
+u˜F,kvs(
+Inm
+FQnm
+g(I)~r2RI!
+3^ckvsu
+]
+]ua~l,s! ~ubn
+I &^ bm
+I u!uckvs&
+1
+]Qnm
+g(I)~r2RI!
+]ua~l,s! ^ckvsubn
+I &^ bm
+I uckvs&G,
+~A17!
+where time-reversal symmetry has been used in the ﬁrst two
+terms.
+The dynamical matrix is separated into four contributions.
+The ﬁrst term generalizes the expectation value of the mixed
+derivatives of the electron-ion potential @see Eq. ~39!#.I nt h e
+NC case, this term is diagonal in the atomic indexes s,s8.I n
+the US PP’s scheme there is a similar term:
+Fab
+(1 a)~q,s,s8!5
+1
+N (
+l
+dss 8H(
+kvs
+u˜F,kvs(
+Inm
+~DInm
+s 2«kvsqnm
+g(I)!
+3^ckvsu
+]2
+]ua~l,s!]ub~l,s!
+3~ubn
+I &^ bm
+I u!uckvs&
+1 E d3r
+]2Vloc ~r!
+]ua~l,s!]ub~l,s! r~r!J, ~A18!
+and another term diagonal in s and s8 which contains inte-
+grals of the effective potential with the augmentation charges
+and their derivatives @see Eq. ~38!#:
+Fab
+(1 b)~q,s,s8!5
+1
+N (
+l
+dss 8H(
+kvs
+u˜F,kvs(
+Inm
+dI,( l,s)
+4Inm
+ua(l,s)bs
+3^ckvsubn
+I &^ bm
+I uckvs&
+1F(
+kvs
+u˜F,kvs(
+Inm
+1Inm
+ua(l,s)s
+^ckvsu
+]
+]ub~l,s!
+3~ubn
+I &^ bm
+I u!uckvs&1~a↔b!GJ, ~A19!
+where I deﬁned the integral
+4Inm
+ua(l,s)bs5 E d3rV eff
+s ~r!
+]2Qnm
+g(s)~r2RI!
+]ua~l,s!]ub~l,s! . ~A20!
+Furthermore, there is a third term @see Eq. ~38!#, which is
+nonvanishing also on the nondiagonal sÞs8 elements. In
+fact, due to the long range of the local potential, the potential
+centered at one atom interacts with the augmentation charge
+centered at another atom:
+Fab
+(1 c)~q,s,s8!5
+1
+N (
+ll 8
+e2iq•RlF(
+kvs
+u˜F,kvs(
+Inm
+dI,( l8s8)
+3 5Inm
+ua(l,s)ub(l8,s8)
+^ckvsubn
+I &^ bm
+I uckvs&
+1(
+kvs
+u˜F,kvs(
+Inm
+2IInm
+ua(l,s)
+^ckvsu
+]
+]ub~l8,s8!
+3~ubn
+I &^ bm
+I u!uckvs&
+1@ua~l,s!↔ub~l8,s8!#Geiq•Rl8, ~A21!
+where
+5Inm
+ua(l,s)ub(l8,s8)5 E d3r
+]Vloc ~r!
+]ua~l,s!
+]Qnm
+g(I)~r2RI!
+]ub~l8,s8!
+. ~A22!
+The other parts of the dynamical matrix are easily found
+using the deﬁnitions introduced in this appendix. The second
+term is
+Fab
+(2) ~q,s,s8!5
+2
+N (
+kvs
+^Dusa(q)ckvsufkvs
+us8b(q)
+&. ~A23!
+The third term describes the interaction of the change in
+VHxc
+s with the induced charge densities at ﬁxed orbitals:
+Fab
+(3) ~q,s,s8!5
+1
+N (s
+E d3r
+dV Hxc*s ~r!
+dusa~q! Dus8b(q)rs~r!, ~A24!
+where Dus8b(q)rs(r)5(l8eiq•Rl8Dub(l8,s8)rs(r). The fourth
+term, due to the orthonormalization, is written as
+DENSITY-FUNCTIONAL PERTURBATION THEORY WITH . . . PHYSICAL REVIEW B 64 235118
+235118-13
+
+=== PAGE BREAK ===
+
+Fab
+(4) ~q,s,s8!52
+1
+N F (
+kvk8v8s
+f kvs,k8v8s
+*usa(q)
+3^ck8v8sufkvs
+us8b(q)
+&1H.c.G, ~A25!
+where H.c. indicates the Hermitean conjugate. In addition to
+these four terms, the dynamical matrix contains also two
+terms due to NLCC. Their expressions are given in Eq. ~135!
+of Ref. 2.
+APPENDIX B: RECIPROCAL SPACE
+The equations of the previous section are not yet useful in
+a practical calculation because they are basis-set independent
+and contains sums over the unit cells indexes l and l8. In this
+appendix, I introduce a PW’s basis set to expand the wave
+functions. It is well known 2 that the functions in the ﬁnal
+expressions have the periodicity of the unperturbed lattice.
+The ﬁnite wavelength of the phonon is dealt with through
+phase factors which disappear from the ﬁnal expressions.
+These expressions are given here.
+I start with some preliminary deﬁnitions. The PW expan-
+sion of the unperturbed wave functions is
+ckvs~r!5
+1
+ANV
+eik•r
+(
+G
+ck1GvseiG•r, ~B1!
+where $G% are the reciprocal-lattice vectors of the unper-
+turbed Bravais lattice, V the volume of a unit cell, and N is
+the number of unit cells. The ﬁrst-order change in the wave
+functions is also expanded in PW’s. For a phonon perturba-
+tion of wavelength q, uDusa(q)ckvs& is the product of a func-
+tion with the periodicity of the unperturbed Bravais lattice
+and a phase factor ei(k1q)•r:
+Dusa(q)ckvs~r!5
+1
+ANV
+ei(k1q)•r
+(
+G
+dk1q1Gvs
+usa(q) eiG•r. ~B2!
+fkvs
+usa(q)(r) is expanded as Dusa(q)ckvs(r):
+fkvs
+usa(q)
+~r!5
+1
+ANV
+ei(k1q)•r
+(
+G
+pk1q1Gvs
+usa(q) eiG•r. ~B3!
+The US PP’s are characterized by three set of functions.
+The b projectors @Eq. ~3!#, the augmentation functions @Eq.
+~5!#, and the local potential @Eq. ~6!#. None of these functions
+is periodic. However, using the Born–von Karman periodic
+boundary conditions, I assume periodicity in a very large
+Bravais lattice, whose unit cell contains N unit cells of the
+unperturbed lattice. These quantities are therefore expanded
+in a Fourier series. For the b functions we have
+bn
+g(I)~r!5
+1
+NAV (
+k
+(
+G
+bn
+g(I)~k1G!ei(k1G)•r, ~B4!
+with the inverse transformation
+bn
+g(I)~k1G!5
+1
+AV E d3rbn
+g(I)~r!e2i(k1G)•r. ~B5!
+Here k is a vector of the ﬁrst BZ of the unperturbed system.
+A similar expansion is valid for the augmentation functions
+and the local potential. For instance, the augmentation func-
+tions are expanded as
+Qnm
+g(I)~r!5
+1
+N(
+k
+(
+G
+Qnm
+g(I)~k1G!ei(k1G)•r, ~B6!
+with
+Qnm
+g(I)~k1G!5
+1
+V E d3rQ nm
+g(I)~r!e2i(k1G)•r. ~B7!
+The choice of the prefactors, in the direct and inverse Fourier
+transform, is a matter of deﬁnition. Their product must be
+1/NV, where NV is the volume of the real-space integration.
+In order to calculate the dynamical matrix, the induced
+charge density, and the linear system we need scalar products
+between b functions, or their derivatives and the wave
+functions or their ﬁrst-order change. Taking I5(l,s),
+the product ^bm
+I uckvs&can be factorized as ^bm
+I uckvs&
+51/ ANe ik•Rlbkvs
+sm where
+bkvs
+sm 5(
+G
+ck1Gvsbm*g(s)~k1G!ei(k1G)•ts ~B8!
+does not depend on the cell index l. By analogy,
+]^bm
+I u
+]ua~l,s! uckvs5
+1
+AN
+eik•Rlakvs
+sam , ~B9!
+with
+akvs
+sam5(
+G
+ck1Gvsi~k1G!abm*g(s)~k1G!ei(k1G)•ts, ~B10!
+and
+]2^bm
+I u
+]ua~l,s!]ub~l,s! uckvs&5
+1
+AN
+eik•Rlgkvs
+sab m , ~B11!
+with
+gkvs
+sab m52 (
+G
+ck1Gvs~k1G!a~k1G!
+3 bbm*g(s)~k1G!ei(k1G)•ts. ~B12!
+The product of the b functions and the change in the wave
+functions has a phase factor of k1q wavelength. With I
+5(l1 ,s1) we have
+^bm
+I uD¯usa(q)ckvs&5
+1
+AN
+ei(k1q)•Rl1D¯usa(q)bkvs
+s1m , ~B13!
+where
+ANDREA DAL CORSO PHYSICAL REVIEW B 64 235118
+235118-14
+
+=== PAGE BREAK ===
+
+D¯usa(q)bkvs
+s1m 5(
+G
+d¯
+k1q1Gvs
+usa(q) bm*g(s1)
+~k1q1G!ei(k1q1G)•ts1
+~B14!
+does not depend on the cell index l1. Using these scalar
+products, three sums over the BZ and over the ﬁlled bands
+are calculated. Let us deﬁne
+as1nm
+usa(q)s5
+2
+N (
+kv
+bkvs*s1nD¯usa(q)bkvs
+s1m , ~B15!
+bsnm
+s 5
+1
+N (
+kv
+u˜F,kvsbkvs*sn bkvs
+sm , ~B16!
+cnm
+sas5
+1
+N (
+kv
+u˜F,kvs@akvs*sanbkvs
+sm 1bkvs*sn akvs
+sam#. ~B17!
+The orthonormalization terms in the induced charge density
+and in the dynamical matrix require the coefﬁcients
+f kvs,k8v8s
+usa(q)
+@see Eq. ~A15!#, which do not depend on the unit
+cell and are nonvanishing only if k85k1q. I therefore drop
+the k8 index and write
+f kvsv8s
+usa(q)
+5wkvsv8s(
+nm
+qnm
+g(s)~ak1qv8s*san bkvs
+sm 1bk1qv8s*sn akvs
+sam!,
+~B18!
+where
+wkvsv8s5u˜F,kvsukvs,k1qv8s1u˜F,k1qv8suk1qv8s,kvs .
+~B19!
+The augmentation functions, or their derivatives, are inte-
+grated with the local potential or its derivatives, with the
+effective potential or with the variation of VHxc
+s . In the pre-
+vious appendix, ﬁve integrals of the augmentation functions
+with the potentials were deﬁned. Here, these integrals are
+calculated in reciprocal space and their dependence on the
+unit cell index is made explicit. Actually, 1Inm
+ua(l,s)s @Eq.
+~A12!# does not depend on l and therefore I write it as 1Inm
+sas .
+In reciprocal space,
+1Inm
+sas5V(
+G
+iGaVeff
+s ~G!Qnm*g(s)~G!eiG•ts. ~B20!
+In order to write in reciprocal space 2IInm
+ua(l,s) @Eq. ~A13!#,
+let us take I5(l1 ,s1). We have 2IInm
+ua(l,s)
+5(1/N)(qe2iq•(Rl2Rl1
+)2 Is1nm
+saq , with
+2Is1nm
+saq 5V(
+G
+~2i!~q1G!aQnm*g(s1)
+~q1G!
+3ei(q1G)•ts1Vloc
+g(s)~q1G!e2i(q1G)•ts. ~B21!
+Calling I5(l1 ,s1), we have @Eq. ~A8!# 3IInm
+usa(q)s
+5eiq•Rl1
+3Is1nm
+usa(q)s with
+3Is1nm
+usa(q)s5V(
+G
+dV Hxc
+s
+dusa~q! ~q1G!Qnm*g(s1)
+~q1G!ei(q1G)•ts1.
+~B22!
+4Inm
+ua(l,s)bs @Eq. ~A20!# does not depend on l and therefore I
+call it 4Inm
+sab s with
+4Inm
+sab s52 V(
+G
+GaGbVeff*s~G!Qnm
+g(s)~G!e2iG•ts. ~B23!
+In order to write in reciprocal space 5Inm
+ua(l,s)ub(l1 ,s1)
+@Eq. ~A22!#, it is useful to write 5Inm
+ua(l,s)ub(l1 ,s1)
+5(1/N)(qeiq•(Rl2Rl1
+)5 Inm
+ss 1ab q where
+5Inm
+ss 1ab q5V(
+G
+~q1G!a~q1G!bVloc*g(s)~q1G!
+3ei(q1G)•tsQnm
+g(s1)
+~q1G!e2i(q1G)•ts1. ~B24!
+Note that only 3I depends on the self-consistent change in
+VHxc
+s . The other integrals are calculated only once at the
+beginning of the self-consistent DFPT run. Note also that
+DInm
+s does not depend on l since Veff (r) is a periodic func-
+tion and therefore, in the following, I shall call it Dsnm
+s
+Given these deﬁnitions, it is straightforward to expand the
+linear system @Eq. ~A7!#, the induced spin charge densities
+@Eq. ~A17!#, and the dynamical matrices at any q point @Eqs.
+~A18!–~A25!# in the PW basis. Consider the linear system
+(
+G8
+F
+1
+2 ~k1q1G!2dGG81Veff
+s ~G2G8!
+1Qs~k1q1G,k1q1G8!2«kvs
+1 (
+s1nm
+~Ds1nm
+s 2«kvsqnm
+g(s1)!bn
+g(s1)
+~k1q1G!e2iG•ts1
+3bm*g(s1)
+~k1q1G8!eiG8•ts1Gd˜
+k1q1G8vs
+usa(q)
+52 Pc,kvs
+† @pk1q1Gvs
+usa(q) 1tk1q1Gvs
+usa(q)
+#, ~B25!
+where
+Qs5(
+v8
+ak1qv8sSuck1qv8s&^ ck1qv8suS, ~B26!
+and
+Pc,kvs
+† 5Fu˜F,kvs2(
+v8
+bkvs,k1qv8sSuck1qv8s&^ ck1qv8suG,
+~B27!
+with
+bkvs,k1qv8s5u˜F,kvsukvs,k1qv8s1u˜F,k1qv8suk1qv8s,kvs
+1ak1qv8s
+u˜F,kvs2u˜F,k1qv8s
+«kvs2«k1qv8s
+uk1qv8s,kvs .
+~B28!
+DENSITY-FUNCTIONAL PERTURBATION THEORY WITH . . . PHYSICAL REVIEW B 64 235118
+235118-15
+
+=== PAGE BREAK ===
+
+The right-hand side of the linear system has a non-self-consistent part @Eq. ~A11!#,
+pk1q1Gvs
+usa(q) 5(
+nm
+~Dsnm
+s 2«kvsqnm
+g(s)!~2i!~k1q1G!abn
+g(s)~k1q1G!e2i(k1q1G)•tsbkvs
+sm
+1(
+G8
+~2i!~q1G2G8!ae2i(q1G2G8)•tsVloc
+g(s)~q1G2G8!ck1G8vs1(
+s1
+(
+nm
+3bn
+g(s1)
+~k1q1G!e2i(k1q1G)•ts1@dss 1„~Dsnm
+s 2«kvsqnm
+g(s)!akvs
+sam11Inm
+sasbkvs
+sm …12Is1nm
+saq bkvs
+s1m
+#, ~B29!
+and a self-consistent part
+tk1q1Gvs
+usa(q) 5(
+G8
+dV Hxc
+s
+dusa~q! ~q1G2G8!ck1G8vs
+1(
+s1
+(
+nm
+3Is1nm
+usa(q)sbn
+g(s1)
+3~k1q1G!e2i(k1q1G)•ts1bkvs
+s1m . ~B30!
+The solution of the linear system allows the calculation of
+the q1G components of the Fourier transform of the in-
+duced spin charge density @Eq. ~A17!#:
+drs
+dusa~q! ~q1G!52FT q1GF(
+kv
+ckvs* ~r!D¯usa(q)ckvs~r!G
+1(
+s1
+(
+nm
+Qnm
+g(s1)
+~q1G!e2i(q1G)•ts1
+3@as1nm
+usa(q)s1dss 1cnm
+sas1dss 1~2i!
+3~q1G!abs1nm
+s #, ~B31!where the symbol FT q1G , means that the ﬁrst term is cal-
+culated in real space, and then the q1G component of its
+Fourier transform is taken.
+Finally, I discuss the dynamical matrix. Equation ~A18! is
+similar to the one in the NC PP scheme:
+Fab
+(1 a)~q,s,s8!5dss 8H(s (
+mn
+1
+N (
+kvs
+~Dsnm
+s 2«kvsqnm
+g(s)!
+3u˜F,kvs@gkvs*sab nbkvs
+sm 1bkvs*sn gkvs
+sab m
+1akvs*sanakvs
+sbm1akvs*sbnakvs
+sam#
+2V(
+G
+Vloc*g(s)~G!eiG•tsGaGbr~G!J.
+~B32!
+Equations ~A19! and ~A21! are characteristic of the US PP’s
+scheme. The diagonal term, Eq. ~A19!, becomes
+Fab
+(1 b)~q,s,s8!5dss 8H(s (
+nm
+4Inm
+sab sbnm
+ss
+1F(s (
+nm
+1Inm*sascnm
+sbs1~a↔b!GJ ~B33!
+while Eq. ~A21! becomes
+Fab
+(1 c)~q,s,s8!5HF(s (
+nm
+5Inm
+ss 8ab qbnm
+s8s
+1(s (
+nm
+2Is8nm*saqcnm
+s8bs
+G1H.c.J, ~B34!
+where H.c. means the Hermitean conjugate of the term in the
+same bracket ~complex conjugate and sa exchanged with
+s8b). The second part of the dynamical matrix, similar in the
+NC scheme, depends on the solution of the linear system
+@Eq. ~A23!#:
+Fab
+(2) ~q,s,s8!5
+2
+N (
+kvs (
+G
+dk1q1Gvs*usa(q) pk1q1Gvs
+us8b(q) . ~B35!
+Two other terms are present only in the US PP’s scheme. The
+interaction of the moving augmentation charge with the
+variation of VHxc
+s @Eq. ~A24!# is calculated in real space in-
+tegrating in a primitive cell:
+Fab
+(3) ~q,s,s8!5(s
+E
+V
+d3r
+dV Hxc*s ~r!
+dusa~q! Dus8b(q)rs~r!, ~B36!
+where Dus8b(q)rs(r) is calculated as in Eq. ~B31! taking
+Dus8b(q)ckvs(r)50. Finally the term due to the change in the
+orthonormalization constraints @Eq. ~A25!# is
+Fab
+(4) ~q,s,s8!52
+1
+N F (
+kvv 8s
+f kvsv8s
+*usa(q)
+3(
+G
+ck1q1Gv8s* pk1q1Gvs
+us8b(q) 1H.c.G. ~B37!
+ANDREA DAL CORSO PHYSICAL REVIEW B 64 235118
+235118-16
+
+=== PAGE BREAK ===
+
+1 S. Baroni, P. Giannozzi, and A. Testa, Phys. Rev. Lett. 58, 1861
+~1987!.
+2 S. Baroni, S. de Gironcoli, A. Dal Corso, and P. Giannozzi, Rev.
+Mod. Phys. 73, 515 ~2001!.
+3 X. Gonze, Phys. Rev. A 52, 1096 ~1995!.
+4 P. Giannozzi and S. Baroni, J. Chem. Phys. 100, 8537 ~1994!.
+5 X. Gonze, Phys. Rev. B 55,1 03 3 7 ~1997!.
+6 H. Hellmann, Einfu¨hrung in die Quantenchemie ~Deuticke,
+Leipzig, 1937!; R. P. Feynman, Phys. Rev. 56, 340 ~1939!.
+7 P. Giannozzi, S. de Gironcoli, P. Pavone, and S. Baroni, Phys.
+Rev. B 43, 7231 ~1991!.
+8 S. de Gironcoli, Phys. Rev. B 51, 6773 ~1995!.
+9 G. B. Bachelet, D. R. Hamann, and M. Schlu¨ter, Phys. Rev. B 26,
+4199 ~1982!.
+10 L. Kleinman and D. M. Bylander, Phys. Rev. Lett. 48, 1425
+~1982!.
+11H. J. F. Jansen and A. J. Freeman, Phys. Rev. B 30, 561 ~1984!.
+12 O. K. Andersen, Phys. Rev. B 12, 3060 ~1975!.
+13 P. Blo¨chl, Phys. Rev. B 50,1 79 5 3 ~1994!.
+14 S. G. Louie, K. M. Ho, and M. L. Cohen, Phys. Rev. B 19, 1774
+~1979!.
+15 R. Yu and H. Krakauer, Phys. Rev. B 49, 4467 ~1994!.
+16 S. Y . Savrasov and D. Y . Savrasov, Phys. Rev. B 54,1 64 8 7
+~1996!.
+17 R. Heid and K.-P. Bohnen, Phys. Rev. B 60, R7309 ~1999!.
+18 D. Vanderbilt, Phys. Rev. B 41, 7892 ~1990!.
+19 A. Dal Corso, A. Pasquarello, and A. Baldereschi, Phys. Rev. B
+56, R11 369 ~1997!.
+20 S. G. Louie, S. Froyen, and M. L. Cohen, Phys. Rev. B 26, 1738
+~1982!.
+21 F. Favot and A. Dal Corso, Phys. Rev. B 60,1 14 2 7 ~1999!.
+22 A. Dal Corso and S. de Gironcoli, Phys. Rev. B 62, 273 ~2000!.
+23 F. Favot, A. Dal Corso, and A. Baldereschi, J. Chem. Phys. 114,
+483 ~2001!.
+24 P. Pulay, in Modern Theoretical Chemistry , edited by H. F.
+Schaefer ~Plenum, New York, 1977!; Mol. Phys. 17, 197 ~1969!.
+25 The formulas presented in this paper are implemented in
+the PWSCF and PHONON codes, written and maintained by
+S. Baroni, P. Giannozzi, S. de Gironcoli, and A. Dal Corso. See
+www.pwscf.org.
+26 P. Hohenberg and W. Kohn, Phys. Rev. 136, B864 ~1964!.
+27 J. P. Perdew and A. Zunger, Phys. Rev. B 23, 5048 ~1981!.
+28 M. Weinert and J. W. Davenport, Phys. Rev. B 45,1 37 0 9~1992!.
+29 R. M. Wentzcovitch, J. L. Martins, and P. B. Allen, Phys. Rev. B
+45,1 13 7 2 ~1992!.
+30 M. Methfessel and A. T. Paxton, Phys. Rev. B 40, 3616 ~1989!.
+31 C.-L. Fu and K. M. Ho, Phys. Rev. B 28, 5480 ~1983!.
+32 K. Laasonen, A. Pasquarello, R. Car, C. Lee, and D. Vanderbilt,
+Phys. Rev. B 47,1 01 4 2 ~1993!.
+33 X. Gonze, Phys. Rev. B 55,1 03 5 5 ~1997!.
+34 A. Dal Corso, S. Baroni, R. Resta, and S. de Gironcoli, Phys. Rev.
+B 47, 3588 ~1993!.
+35 J. P. Perdew, K. Burke, and M. Ernzerhof, Phys. Rev. Lett. 77,
+3865 ~1996!.
+36 Y . Chen, S. Y . Tong, J.-S. Kim, L. L. Kesmodel, T. Rodach, K. P.
+Bohnen, and K. M. Ho, Phys. Rev. B 44,1 13 9 4 ~1991!.
+37 Experimental data are taken from Fig. 2 of G. Benedek, J. Ellis,
+N. S. Luo, A. Reichmuth, P. Ruggerone, and J. P. Toennies,
+Phys. Rev. B 48, 4917 ~1993!.
+38 R. E. Allen, G. P. Alldredge, and F. W. de Wette, Phys. Rev. B 4,
+1648 ~1971!.
+39 A. Franchini, G. Santoro, V . Bortolani, A. Bellman, D. Cvetko, L.
+Floreano, A. Morgante, M. Peloi, F. Tommasini, and T. Zam-
+belli, Surf. Rev. Lett. 1,6 7 ~1994!.
+40 Ultrasoft pseudopotentials are constructed according to the
+Rappe-Rabe-Kaxiras-Joannopoulos scheme with three Bessel
+functions as reported in G. Kresse and J. Hafner, J. Phys.: Con-
+dens. Matter 6, 8245 ~1994!. The core radii, in a.u., are: C~LDA!
+2s ~1.3,1.6!,2 p ~1.3,1.6!, local-3 d ~1.3!,C ~PBE! 2s ~1.2,1.6!,
+2p ~1.3,1.7!, local-3 d ~1.7!,O ~LDA! 2s ~1.4,1.5!,2 p ~1.4,1.6!,
+local-3d ~1.4!,O ~PBE! 2s ~1.4,1.7!,2 p ~1.4,1.7!, local-3d ~1.4!,
+N~LDA! 2s ~1.3,1.5!,2 p ~1.4,1.6!, local-3 d ~1.1!,N ~PBE! 2s
+~1.3,1.5!,2 p ~1.4,1.6!, local-3 d ~1.1!,H ~LDA! 1s ~1.1,1.2!,
+local-2p ~1.1!,H ~PBE! 1s ~1.1,1.2!, local-2 p ~1.1!. Two values
+of the core radii indicate a channel which has been pseudized
+within the US-PP’s scheme. In such a case, the ﬁrst value is the
+norm-conserving core radius and the second is the US one.
+41 Experimental data are taken from Tables I and II of T.
+Glenewinkel-Meyer and F. F. Crim, J. Mol. Struct. 337, 209
+~1995!. The reported vibrational frequencies are from the most
+recent source: A. Kuwae and K. Machida, Spectrochim. Acta,
+Part A 35,2 7 ~1979!.
+42 Gas phase data are taken from Table 1 of V . A. Shlyapochnikov,
+L. S. Khaikin, O. E. Grikina, C. W. Bock, and L. V . Vilkov, J.
+Mol. Struct. 326,1 ~1994! and have been measured in G. Var-
+sanyi, S. Holly, and L. Imre, Spectrochim. Acta, Part A 23, 1205
+~1967!.
+43 F. Favot, A. Dal Corso, and A. Baldereschi, Europhys. Lett. 52,
+698 ~2000!.
+DENSITY-FUNCTIONAL PERTURBATION THEORY WITH . . . PHYSICAL REVIEW B 64 235118
+235118-17
+
+=== PAGE BREAK ===

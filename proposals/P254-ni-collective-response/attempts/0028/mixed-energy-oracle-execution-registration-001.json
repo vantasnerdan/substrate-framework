@@ -1,0 +1,85 @@
+{
+  "schema": "P254-mixed-energy-oracle-execution-registration-v1",
+  "registered_at": "2026-10-30T01:47:49.127872+00:00",
+  "preregistration": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/moving-coherent-energy-construction-registration-001.json",
+    "bytes": "8280",
+    "sha256": "78aecaae6fa5a8ebd3d15f9f380434cb27d36b880641379847eeddc89d23a821"
+  },
+  "implementation_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_frame_response.py",
+      "bytes": "8523",
+      "sha256": "8818422eb3167bea0a93d08a4b13716e90c7a0180a22ed8bc122afc03602afcf"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_frame_oracle_finite_model.py",
+      "bytes": "8341",
+      "sha256": "210c3cd78cd21b2a0e3fc2d92b29ca9d22912f23201537be883441b061ddcb7f"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_frame_response_oracle.py",
+      "bytes": "16038",
+      "sha256": "62c8cea66dc6484679766e3cedb0c61619f97d7690db4a2d86be70a30e159b8e"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_excitation_energy.py",
+      "bytes": "4782",
+      "sha256": "bc0ba0c51759642739c7354ed82cc104f326fe6e9782c196772aae32cec461dd"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_excitation_energy_oracle_support.py",
+      "bytes": "10161",
+      "sha256": "2fb5f7616f5f9c28fbcd50f832e60bbe26ef03daff41cd5a804c520092bccf36"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_excitation_energy_oracle.py",
+      "bytes": "10680",
+      "sha256": "e94c78e16b6d3a4feee7b254349118b041ff4b9085eee2feada948a08d375acd"
+    }
+  ],
+  "undefined_global_scopes": {
+    "mixed_frame_response.py": [],
+    "mixed_frame_oracle_finite_model.py": [],
+    "run_mixed_frame_response_oracle.py": [],
+    "mixed_excitation_energy.py": [],
+    "mixed_excitation_energy_oracle_support.py": [],
+    "run_mixed_excitation_energy_oracle.py": []
+  },
+  "unit": "p254-a28-mixed-energy-oracles-001",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-mixed-energy-oracles-001",
+    "--wait",
+    "--pipe",
+    "--property=RuntimeMaxSec=620",
+    "--property=TimeoutStopSec=10",
+    "--property=MemoryMax=1073741824",
+    "--property=CPUAffinity=10",
+    "--property=LimitNOFILE=8192",
+    "env",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "/bin/bash",
+    "-c",
+    "timeout 300s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_frame_response_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-frame-response-oracle-001.json; frame_rc=$?; timeout 300s /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_excitation_energy_oracle.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-excitation-energy-oracle-001.json; energy_rc=$?; printf '\nP254_MIXED_FRAME_RC_%s\nP254_MIXED_ENERGY_RC_%s\n' \"$frame_rc\" \"$energy_rc\"; test \"$frame_rc\" -eq 0 && test \"$energy_rc\" -eq 0"
+  ],
+  "outputs": [
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-frame-response-oracle-001.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-excitation-energy-oracle-001.json"
+  ],
+  "per_oracle_timeout_seconds": 300,
+  "cumulative_math_execution_cap_seconds": 600,
+  "supervisor_seconds": 620,
+  "memory_bytes": 1073741824,
+  "cpu": 10,
+  "threads": 1,
+  "scope": "Actual finite mathematical programs, not Native material energy. Root per-endpoint entry avoids allocating other128 endpoints in future native workers. All live Gamma004 sources/caps/deadline remain unchanged."
+}

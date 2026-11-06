@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+"""Two actual material edges after the memory fix; never a new trajectory."""
+import json
+import os
+from pathlib import Path
+import re
+import resource
+import sys
+import time
+import traceback
+from functools import partial
+
+ROOT = Path('/home/administrator/projects/substrate-ni-collective')
+HERE = ROOT/'proposals/P254-ni-collective-response/attempts/0028'
+sys.path[:0] = [str(ROOT/'src'), str(HERE), str(HERE.parent/'0024'), str(HERE.parent/'0025')]
+for name in ('OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','BLIS_NUM_THREADS','NUMEXPR_NUM_THREADS'):
+    os.environ[name] = '1'
+import numpy as np
+from threadpoolctl import threadpool_limits
+from matched_joint_case import load_case
+from run_joint_q_material import bind_saved_model, bindings
+from run_joint_q_readout import _execution_snapshot, _execution_summary, encode
+from partitioned_material_readout import _edge_scalar
+from substrate_framework.material_control_reference import bound_json
+from substrate_framework.streamed_material_state import file_binding, authenticate
+from substrate_framework.streamed_joint_response import MappedResponse
+from substrate_framework.partitioned_q_response import PartitionedQResponse
+from substrate_framework.partitioned_q_storage import QBudget
+from substrate_framework.partitioned_q_work import QWork
+from substrate_framework.joint_response_observables import total_force_probe
+from substrate_framework.joint_kernel_adjoint import physical_kernel_adjoint
+
+OUT = Path('/var/tmp/p254-a28-readout-mapped-smoke-001')
+OUT.mkdir(exist_ok=False)
+os.sched_setaffinity(0, {6})
+started = time.monotonic()
+budget = QBudget(max_actions=16,max_seconds=1140,max_bytes=268435456,
+    max_memory_bytes=17179869184,worker_memory_bytes=4294967296)
+report = dict(schema='P254-actual-readout-mapped-memory-smoke-v1',status='failed',checks=[],
+    scope='Only changed two-edge borrowed-map lifecycle and Native journal consumer; no repeated full128 force/trajectory/qualification',
+    source_bindings=list({b['path']:b for b in bindings()+[
+        file_binding(__file__),file_binding(HERE/'run_joint_q_readout.py'),
+        file_binding(HERE/'mixed_material_driver_support.py')]}.values()),
+    identity=dict(uid=os.getuid(),gid=os.getgid(),groups=os.getgroups(),pid=os.getpid(),
+        affinity=sorted(os.sched_getaffinity(0)),nofile=resource.getrlimit(resource.RLIMIT_NOFILE)))
+print('P254_MAPPED_READOUT_SMOKE_START '+json.dumps(report['identity']),flush=True)
+
+def require(name, passed, **details):
+    report['checks'].append(dict(name=name,passed=bool(passed),**details))
+    if not passed:
+        raise AssertionError(name)
+
+def mapped_rss(paths):
+    result = {str(Path(p).resolve()):0 for p in paths}
+    current = None
+    for line in Path('/proc/self/smaps').read_text().splitlines():
+        if re.match(r'^[0-9a-f]+-[0-9a-f]+\s',line):
+            fields = line.split(None,5)
+            current = fields[5] if len(fields)==6 else None
+        elif current in result and line.startswith('Rss:'):
+            result[current] += int(line.split()[1])*1024
+    return result
+
+try:
+    with threadpool_limits(limits=1):
+        original = bound_json(file_binding(HERE/'committed-gamma-force-readout-complete-001.json'))
+        saved = bound_json(original['initialization'])
+        old_qualification = bound_json(file_binding(HERE/'partitioned-readout-current-qualification-001.json'))
+        report['original_result'] = file_binding(HERE/'committed-gamma-force-readout-complete-001.json')
+        report['inputs'] = dict(initialization=original['initialization'],baseline=original['baseline'],
+            checkpoint=original['committed_checkpoint'],
+            retained_qualification=file_binding(HERE/'partitioned-readout-current-qualification-001.json'))
+        context = bind_saved_model(load_case(original['case']),saved,old_qualification['source_compatibility'])
+        require('same_actual_material_model',context.identity==original['model_identity'])
+        history = context.make_history(original['baseline'],budget,block_size=8)
+        response = context.bind_response(history,np.asarray(original['q']))
+        direction = np.zeros(len(context.reference.masses)); direction[0]=1.
+        probe = total_force_probe(response,direction,identity=original['observable'])
+        measure = abs(np.linalg.det(context.grid.reference.cell_bohr))/int(np.prod(context.grid.reference.fft_smooth))
+        executor = PartitionedQResponse(response,history,
+            kernel_adjoint=partial(physical_kernel_adjoint,context.background),grid_measure=measure,
+            budget=budget,directory=OUT/'executor',identity='changed-memory-smoke-only',
+            dynamics=original['dynamics'],cpus=[6],work_directory=OUT/'operator-work')
+        state,record = MappedResponse.restore(response,original['committed_checkpoint'],budget,
+            original['historical_producer_identity'])
+        time_at = original['time_ry_inverse']
+        require('actual_saved_endpoint_frames_no_reconstruction',history._saved_frames(time_at) is not None)
+        executor.prepare_time(time_at)
+        report['edges'] = []
+        for index in (0,1):
+            budget.check_processes(os.getpid(),[])
+            paths = [state.ket[index].filename,state.bra[index].filename]
+            before = [file_binding(path) for path in paths]
+            expected = np.load(authenticate(original['scalar_work']['receipts'][index]['arrays']['value']),allow_pickle=False)[0]
+            edge_started = time.monotonic()
+            actual = _edge_scalar(executor,state,probe,time_at,index)['value'][0]
+            # Measure before any subsequent data access can fault those pages back.
+            after_rss = mapped_rss(paths)
+            require('edge%d_borrowed_input_resident_pages_released'%index,
+                all(value==0 for value in after_rss.values()),resident_bytes=after_rss)
+            require('edge%d_same_actual_native_weighted_scalar'%index,
+                bool(np.allclose(actual,expected,atol=2e-11,rtol=2e-11)),
+                actual=actual,expected=expected,max_abs=float(abs(actual-expected)))
+            after = [file_binding(path) for path in paths]
+            require('edge%d_original_borrowed_data_unchanged'%index,before==after,
+                original=before,after=after)
+            require('edge%d_maps_stay_open_readonly'%index,
+                all(not v.flags.writeable and not v._mmap.closed for v in (state.ket[index],state.bra[index])))
+            report['edges'].append(dict(index=index,actual=actual,expected=expected,
+                elapsed_seconds=time.monotonic()-edge_started,resident_after=after_rss))
+        # Consume real completed Native generations; no mock callback or new action.
+        old_directory = Path(original['scalar_work']['directory'])
+        request = bound_json(file_binding(old_directory/'request.json'))
+        old_work = QWork(old_directory.parent.parent,budget,[6],request['source_identity'])
+        key,chosen = old_work.request(request['operation'],request['input'],request['count'])
+        require('same_actual_completed_native_generation',chosen==old_directory and key==original['scalar_work']['key'])
+        old_work.last = key,chosen,request['count']
+        snapshot = _execution_snapshot(old_work)
+        costs = _execution_summary(old_work,snapshot)
+        require('native_replay_costs_are_not_current_execution',
+            costs['current_items']==set() and costs['current_completed_worker_cpu_seconds']==0
+            and costs['receipt_worker_cpu_seconds']==original['measurements']['receipt_worker_cpu_seconds'],
+            current_worker_cpu=costs['current_completed_worker_cpu_seconds'],
+            retained_worker_cpu=costs['receipt_worker_cpu_seconds'])
+        prior = bound_json(file_binding(HERE/'committed-gamma-readout-001-rss-terminal.json'))
+        prior_journals = {b['path'] for b in prior['incomplete_work']['execution_journals']}
+        recovery_costs = _execution_summary(old_work,prior_journals)
+        old_indices = {r['index'] for r in prior['incomplete_work']['completed_receipts']}
+        require('actual_native_recovery_costs_exclude_all75_retained_items',
+            recovery_costs['current_items']==set(range(128))-old_indices,
+            actual_new_indices=sorted(recovery_costs['current_items']),
+            current_worker_cpu=recovery_costs['current_completed_worker_cpu_seconds'],
+            all_worker_cpu=recovery_costs['receipt_worker_cpu_seconds'])
+        for binding in report['source_bindings']:
+            authenticate(binding)
+        report['status']='passed'
+except Exception as error:
+    report['error']=type(error).__name__+': '+str(error)
+    report['traceback']=traceback.format_exc()
+report['budget']=budget.snapshot()
+report['elapsed_seconds']=time.monotonic()-started
+report['manager_peak_rss_bytes']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
+with (OUT/'result.json').open('x') as stream:
+    json.dump(encode(report),stream,indent=2,allow_nan=False)
+    stream.write('\n')
+print('P254_MAPPED_READOUT_SMOKE_RESULT '+json.dumps(dict(status=report['status'],output=str(OUT/'result.json'))),flush=True)
+raise SystemExit(0 if report['status']=='passed' else 2)

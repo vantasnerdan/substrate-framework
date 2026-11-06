@@ -1,0 +1,43 @@
+{
+  "request": {
+    "i": "Observing the fresh recovery banner",
+    "command": "test \"${HERDR_ENV:-}\" = 1 && herdr pane wait-output w1:p17 --match material_context --source recent-unwrapped --lines 100 --timeout 15000",
+    "timeout": 20,
+    "cwd": "/home/administrator",
+    "pty": false,
+    "async": false,
+    "name": null,
+    "ready": null
+  },
+  "response": {
+    "text": "{\"id\":\"cli:pane:wait-output\",\"result\":{\"matched_line\":\"{\\\"event\\\": \\\"material_context\\\", \\\"path\\\": \\\"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/pilot-001/context-1ee5f0004a0c4911bee79527668ca4c7.json\\\", \\\"launch_id\\\": \\\"1ee5f0004a0c4911bee79527668ca4c7\\\"}\",\"pane_id\":\"w1:p17\",\"read\":{\"format\":\"text\",\"pane_id\":\"w1:p17\",\"revision\":0,\"source\":\"recent_unwrapped\",\"tab_id\":\"w1:t17\",\"text\":\"1ce2\\\"}, {\\\"bytes\\\": \\\"2403\\\", \\\"path\\\": \\\"/usr/lib/python3.12/unittest/signals.py\\\", \\\"sha256\\\": \\\"f8286e818ca56e10e03745bc056cdfd31147678f9a1dc8cb6b0fe96ef9a4362a\\\"}, {\\\"bytes\\\": \\\"13512\\\", \\\"path\\\": \\\"/usr/lib/python3.12/unittest/suite.py\\\", \\\"sha256\\\": \\\"ed2da92bc9f97c53403ee2d3d12cc53b16a96e85d596ebc887b5a93458\u2026\n\n\nWall time: 4.11 seconds\n\n[Some lines truncated to 768 bytes. Use artifact://477:raw:1-1 to read line 1 whole]",
+    "details": {
+      "wallTimeNoticeEmitted": true,
+      "timeoutSeconds": 20,
+      "wallTimeMs": 4112.333794005215,
+      "meta": {
+        "limits": {
+          "columnTruncated": {
+            "maxColumn": 768,
+            "unit": "bytes",
+            "artifactId": "477",
+            "lines": {
+              "first": 1,
+              "last": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "invocation": {
+    "RuntimeMaxUSec": "1min",
+    "MainPID": "2658626",
+    "ExecMainStartTimestamp": "Tue 2026-10-27 23:29:53 UTC",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-material-ionic-0024.service",
+    "ActiveState": "active",
+    "SubState": "running",
+    "InvocationID": "958397a9f2d548e596d7f4b6914ed7d2"
+  },
+  "view_since": "2026-10-27 23:29:53 UTC"
+}

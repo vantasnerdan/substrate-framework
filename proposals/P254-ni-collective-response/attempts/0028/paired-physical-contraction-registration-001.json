@@ -1,0 +1,111 @@
+{
+  "schema": "P254-paired-physical-contraction-registration-v1",
+  "registered_at": "2026-10-29T17:43:47.312502+00:00",
+  "decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-064.json",
+    "bytes": "2751",
+    "sha256": "f51833e7c3706a7a6aaceed624c4c8e656f4b8267fd321ccf8dc8885ce9a1461"
+  },
+  "modules": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/paired_finiteq_moments.py",
+      "bytes": "5305",
+      "sha256": "cc6c5422a7a1070564be2009b9e0d4969360ef9eb2e881c6f7e7b56fd4e1c8ac"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/paired_field_moments.py",
+      "bytes": "5833",
+      "sha256": "441d2531e193a9fcc4ea792592541dfc59384f0e24934221bb9b8ed978f8bd02"
+    }
+  ],
+  "oracles": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_paired_finiteq_moments_check.py",
+      "bytes": "22303",
+      "sha256": "801b19b851f69255ba79b01c2005436c237f60a4313884b853332e7dc659d68c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_paired_field_moments_check.py",
+      "bytes": "20609",
+      "sha256": "de581fee932d9f4b4317545793656952e210a34e21390f67e28039ce90370cb8"
+    }
+  ],
+  "commands": {
+    "matter": [
+      "env",
+      "XDG_RUNTIME_DIR=/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+      "systemd-run",
+      "--user",
+      "--unit=p254-a28-paired-finiteq-full-check-001",
+      "--property=Type=oneshot",
+      "--property=RemainAfterExit=yes",
+      "--property=CPUAffinity=8",
+      "--property=MemoryMax=4294967296",
+      "--property=MemorySwapMax=0",
+      "--property=TimeoutStartSec=900s",
+      "--setenv=OPENBLAS_NUM_THREADS=1",
+      "--setenv=OMP_NUM_THREADS=1",
+      "--setenv=MKL_NUM_THREADS=1",
+      "--setenv=NUMEXPR_NUM_THREADS=1",
+      "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+      "/usr/bin/python3",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_paired_finiteq_moments_check.py",
+      "--output",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/paired-finiteq-full-check-001",
+      "--case",
+      "loaded-ni31h6",
+      "--cpu",
+      "8",
+      "--columns",
+      "full",
+      "--absolute-target",
+      "1e-11",
+      "--max-seconds",
+      "900",
+      "--max-memory-bytes",
+      "4294967296"
+    ],
+    "field": [
+      "env",
+      "XDG_RUNTIME_DIR=/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+      "systemd-run",
+      "--user",
+      "--unit=p254-a28-paired-field-full-check-001",
+      "--property=Type=oneshot",
+      "--property=RemainAfterExit=yes",
+      "--property=CPUAffinity=10",
+      "--property=MemoryMax=4294967296",
+      "--property=MemorySwapMax=0",
+      "--property=TimeoutStartSec=900s",
+      "--setenv=OPENBLAS_NUM_THREADS=1",
+      "--setenv=OMP_NUM_THREADS=1",
+      "--setenv=MKL_NUM_THREADS=1",
+      "--setenv=NUMEXPR_NUM_THREADS=1",
+      "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+      "/usr/bin/python3",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_paired_field_moments_check.py",
+      "--output",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/paired-field-full-check-001",
+      "--case",
+      "loaded-ni31h6",
+      "--cpu",
+      "10",
+      "--columns",
+      "full",
+      "--timing-repeats",
+      "1",
+      "--absolute-target",
+      "1e-11",
+      "--max-seconds",
+      "900",
+      "--max-memory-bytes",
+      "4294967296"
+    ]
+  },
+  "columns": "Every original saved source/target column independently; no common-width truncation. All original PW rows and physical D retained. Finite independent unequal-rank/complex/SymPy mutations precede actual material calls.",
+  "absolute_comparison_target": 1e-11,
+  "scope": "Changed-path physical contraction correctness and measured full-column call time, not production integration, whole-edge speedup, full response, convergence or lattice ranking. Both modules use original PhysicalRhoFFT; the unpromoted SciPy candidate is not selected.",
+  "previous_work": "All original numerical proofs, actual mean and11 settled response edges retained without replay."
+}

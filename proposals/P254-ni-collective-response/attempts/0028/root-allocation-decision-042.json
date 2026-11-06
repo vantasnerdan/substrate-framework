@@ -1,0 +1,49 @@
+{
+  "schema": "P254-root-allocation-decision-v1",
+  "decision": "Root042",
+  "actual_decision_time": "2026-10-29T12:14:53.517004+00:00",
+  "previous_due_time": "2026-10-29T12:07:56.415545+00:00",
+  "deadline_breach": true,
+  "next_decision_due": "2026-10-29T12:34:53.517004+00:00",
+  "action": "Change the numerical execution strategy rather than blindly extend the current strict pilot. Let the original14400-second invocation end at its existing cap, preserving all work. Then run a separate unchanged-model working-precision pilot at midpoint tolerance1e-9, reusing the three complete saved contraction sets exactly. The observed second-trial residual3.641505115117503e-10 already satisfies that working tolerance, so the existing solver can proceed to full-interval frames instead of spending the whole allocation on another tiny midpoint correction. Keep the1e-11 run and its partial third trial for an actual stricter numerical comparison; do not claim convergence certification or alter physical acceptance criteria.",
+  "evidence": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-midpoint-intake-001/result.json",
+      "bytes": "128158",
+      "sha256": "9e0477d8e0857c829999e9ecb2d9bf84cf51072b3951921be78eff3eb9d086dc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-mean-progress-008.json",
+      "bytes": "9287",
+      "sha256": "cdcf017f8a30ab79232138181b1159a4d5b9ba2612cb3ae7e9dc2fbffe298895"
+    },
+    {
+      "path": "/var/tmp/p254-a28-matched-loaded-mean-intake-001/interval-0.001-steps-1/step-000001/request.json",
+      "bytes": "150",
+      "sha256": "c034a6da7a2eff822f7e14ee5a9f562e6d8b27b269e1ed2cd6d5018252e52f88"
+    }
+  ],
+  "new_working_tolerance": 1e-09,
+  "original_strict_tolerance": 1e-11,
+  "unchanged_column_error_target": 1e-11,
+  "new_pilot_wall_seconds": 7200,
+  "new_pilot_supervisor_seconds": 7260,
+  "new_pilot_hamiltonian_action_cap": 1536,
+  "new_pilot_cpus": [
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "new_pilot_aggregate_rss_bytes": 19327352832,
+  "new_pilot_worker_rss_bytes": 4294967296,
+  "new_pilot_output_cap_bytes": 26843545600,
+  "cumulative_mean_wall_allocation_seconds": 21600,
+  "physical_model_changed": false,
+  "physical_acceptance_changed": false,
+  "numerical_accuracy_certified": false,
+  "expected_useful_output": "A complete first coupled mean boundary and endpoint diagnostics at declared working precision; actual propagated noise still follows. Acceptance/rejection and whole-step runtime will be observed, not inferred.",
+  "reuse": "Copy only immutable request/completion metadata for the settled initial and first two midpoint reductions into a new private cache. Original raw arrays stay in place and are authenticated by the existing consumer. No source edit or stale source identity; no new H0 work for those completed contractions.",
+  "launch_dependency": "Original mean terminal receipt must be consumed before launching the new same-case numerical pilot. No simultaneous duplicate producer."
+}

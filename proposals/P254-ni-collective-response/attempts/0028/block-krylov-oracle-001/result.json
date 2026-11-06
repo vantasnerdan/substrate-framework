@@ -1,0 +1,408 @@
+{
+  "schema": "P254-full-frame-block-krylov-oracle-v1",
+  "status": "passed",
+  "checks": {
+    "exponential": true,
+    "differential_equation": true,
+    "initial_state": true,
+    "duhamel_complement": true,
+    "raw_D_noncommuting": true,
+    "number_conserved": true,
+    "purity_conserved": true,
+    "seed_action_reused": true,
+    "bound_stage0_time0": true,
+    "bound_stage0_time1": true,
+    "bound_stage0_time2": true,
+    "bound_stage0_time3": true,
+    "bound_stage1_time0": true,
+    "bound_stage1_time1": true,
+    "bound_stage1_time2": true,
+    "bound_stage1_time3": true,
+    "bound_stage2_time0": true,
+    "bound_stage2_time1": true,
+    "bound_stage2_time2": true,
+    "bound_stage2_time3": true,
+    "full_ambient_dense_match": true,
+    "ambient_complement_not_closed_initially": true,
+    "refinement_sensitive": true,
+    "all_original_columns_retained": true,
+    "exact_action_column_accounting": true,
+    "raw_D_number": true,
+    "raw_D_purity": true,
+    "mutation_omission": true,
+    "mutation_sign": true,
+    "mutation_complement": true,
+    "mutation_normalization": true,
+    "mutation_raw_D_diagonal": true,
+    "invariant_subspace_exact": true,
+    "invariant_defect_small": true,
+    "invariant_numerical_closure": true,
+    "nonhermitian_bound0": true,
+    "projected_growth_retained0": true,
+    "nonhermitian_bound1": true,
+    "projected_growth_retained1": true,
+    "nonhermitian_full_dense": true,
+    "mutation_hermitization": true,
+    "cap_stops_before_action": true,
+    "insufficient_target_not_relaxed": true
+  },
+  "symbolic": {
+    "H": "Matrix([[0, I], [-I, 0]])",
+    "frame": "Matrix([[2, 1], [0, 3]])",
+    "raw_D": "Matrix([[1, I/3], [-I/3, 2]])",
+    "exponential": "Matrix([[cos(t), sin(t)], [-sin(t), cos(t)]])",
+    "duhamel": "Matrix([[cos(t) - 1], [-sin(t)]])"
+  },
+  "stages": [
+    {
+      "diagnostics": {
+        "basis": 2,
+        "blocks": 1,
+        "residual_frobenius": 2.294340879402457,
+        "residual_column_norms": [
+          1.9641096382541987,
+          1.185863988750059
+        ],
+        "initial_residual_frobenius": 2.4866423396853114e-16,
+        "orthogonality_frobenius": 0.0,
+        "projected_antihermitian_frobenius": 5.4746949467094836e-17,
+        "requested_h_vector_columns": 0,
+        "seconds": 0.0001809811219573021
+      },
+      "times": [
+        {
+          "error": 2.4866423396853114e-16,
+          "time": 0.0,
+          "absolute_error_envelope_estimate": 2.4866423396853114e-16,
+          "cheap_envelope_estimate": 2.4866423396853114e-16,
+          "cell_taylor_envelope_estimate": 2.4866423396853114e-16,
+          "initial_error_term": 2.4866423396853114e-16,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 5.276419551098546e-17,
+          "projected_two_sided_growth": 5.276419551098546e-17,
+          "residual_gram_minimum_eigenvalue": 1.1644318875832904,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0016750139184296131,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        },
+        {
+          "error": 0.4503546110262579,
+          "time": 0.13,
+          "absolute_error_envelope_estimate": 0.45538807330531095,
+          "cheap_envelope_estimate": 0.5806586506210334,
+          "cell_taylor_envelope_estimate": 0.45538807330531095,
+          "initial_error_term": 2.4866423396853114e-16,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 5.276419551098546e-17,
+          "projected_two_sided_growth": 5.276419551098546e-17,
+          "residual_gram_minimum_eigenvalue": 1.1644318875832904,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0011471342295408249,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        },
+        {
+          "error": 0.7381007562908347,
+          "time": -0.21,
+          "absolute_error_envelope_estimate": 0.7553521438077316,
+          "cheap_envelope_estimate": 0.9379870510032077,
+          "cell_taylor_envelope_estimate": 0.7553521438077316,
+          "initial_error_term": 2.4866423396853114e-16,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 1.4600279039495705e-17,
+          "projected_two_sided_growth": 5.276419551098546e-17,
+          "residual_gram_minimum_eigenvalue": 1.1644318875832904,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0011293492279946804,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        },
+        {
+          "error": 1.2091955032522002,
+          "time": 0.37,
+          "absolute_error_envelope_estimate": 1.2842418853223547,
+          "cheap_envelope_estimate": 1.6526438517675561,
+          "cell_taylor_envelope_estimate": 1.2842418853223547,
+          "initial_error_term": 2.4866423396853114e-16,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 5.276419551098546e-17,
+          "projected_two_sided_growth": 5.276419551098546e-17,
+          "residual_gram_minimum_eigenvalue": 1.1644318875832904,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0011009247973561287,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        }
+      ]
+    },
+    {
+      "diagnostics": {
+        "basis": 4,
+        "blocks": 2,
+        "residual_frobenius": 1.5968346941815188,
+        "residual_column_norms": [
+          2.603703785810335e-16,
+          6.210267644884596e-16,
+          1.350072710029425,
+          0.85275126395426
+        ],
+        "initial_residual_frobenius": 3.1707631481642136e-16,
+        "orthogonality_frobenius": 4.797353387514086e-16,
+        "projected_antihermitian_frobenius": 3.008182574185901e-16,
+        "requested_h_vector_columns": 2,
+        "seconds": 0.00018400372937321663
+      },
+      "times": [
+        {
+          "error": 3.1707631481642136e-16,
+          "time": 0.0,
+          "absolute_error_envelope_estimate": 3.1707631481642136e-16,
+          "cheap_envelope_estimate": 3.1707631481642136e-16,
+          "cell_taylor_envelope_estimate": 3.1707631481642136e-16,
+          "initial_error_term": 3.1707631481642136e-16,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 1.9457563546081563e-16,
+          "projected_two_sided_growth": 2.0910784708829357e-16,
+          "residual_gram_minimum_eigenvalue": 5.061212963776976e-32,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0007869289256632328,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        },
+        {
+          "error": 0.03387256164508324,
+          "time": 0.13,
+          "absolute_error_envelope_estimate": 0.03821420354793453,
+          "cheap_envelope_estimate": 0.4041316994838961,
+          "cell_taylor_envelope_estimate": 0.03821420354793453,
+          "initial_error_term": 3.1707631481642136e-16,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 1.9457563546081563e-16,
+          "projected_two_sided_growth": 2.0910784708829357e-16,
+          "residual_gram_minimum_eigenvalue": 5.061212963776976e-32,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0007745637558400631,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        },
+        {
+          "error": 0.0871406844767887,
+          "time": -0.21,
+          "absolute_error_envelope_estimate": 0.09874525634535186,
+          "cheap_envelope_estimate": 0.6528281299355242,
+          "cell_taylor_envelope_estimate": 0.09874525634535186,
+          "initial_error_term": 3.1707631481642136e-16,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 2.0910784708829355e-16,
+          "projected_two_sided_growth": 2.0910784708829355e-16,
+          "residual_gram_minimum_eigenvalue": 5.061212963776976e-32,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.000779877882450819,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        },
+        {
+          "error": 0.25561552599016696,
+          "time": 0.37,
+          "absolute_error_envelope_estimate": 0.2934897668119649,
+          "cheap_envelope_estimate": 1.1502209908387804,
+          "cell_taylor_envelope_estimate": 0.2934897668119649,
+          "initial_error_term": 3.1707631481642136e-16,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 1.9457563546081563e-16,
+          "projected_two_sided_growth": 2.0910784708829357e-16,
+          "residual_gram_minimum_eigenvalue": 5.061212963776976e-32,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0007822271436452866,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        }
+      ]
+    },
+    {
+      "diagnostics": {
+        "basis": 6,
+        "blocks": 3,
+        "residual_frobenius": 2.6088662920296456e-15,
+        "residual_column_norms": [
+          6.638168205731153e-16,
+          7.34540690660816e-16,
+          1.6878493930850582e-15,
+          5.23139221524659e-16,
+          1.1273489771637225e-15,
+          1.1968937283773888e-15
+        ],
+        "initial_residual_frobenius": 1.332089806447605e-15,
+        "orthogonality_frobenius": 1.3245614892573787e-15,
+        "projected_antihermitian_frobenius": 3.6281854122687204e-16,
+        "requested_h_vector_columns": 4,
+        "seconds": 9.889714419841766e-05
+      },
+      "times": [
+        {
+          "error": 1.332089806447605e-15,
+          "time": 0.0,
+          "absolute_error_envelope_estimate": 1.332089806447605e-15,
+          "cheap_envelope_estimate": 1.332089806447605e-15,
+          "cell_taylor_envelope_estimate": 1.332089806447605e-15,
+          "initial_error_term": 1.332089806447605e-15,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 2.082956800177482e-16,
+          "projected_two_sided_growth": 2.496358925549116e-16,
+          "residual_gram_minimum_eigenvalue": 1.0616345999185578e-34,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0007197768427431583,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        },
+        {
+          "error": 1.3601437896535626e-15,
+          "time": 0.13,
+          "absolute_error_envelope_estimate": 1.5219533363753354e-15,
+          "cheap_envelope_estimate": 1.9923494890345997e-15,
+          "cell_taylor_envelope_estimate": 1.5219533363753354e-15,
+          "initial_error_term": 1.332089806447605e-15,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 2.082956800177482e-16,
+          "projected_two_sided_growth": 2.496358925549116e-16,
+          "residual_gram_minimum_eigenvalue": 1.0616345999185578e-34,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0008592531085014343,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        },
+        {
+          "error": 1.4212923019144635e-15,
+          "time": -0.21,
+          "absolute_error_envelope_estimate": 1.6585920953513405e-15,
+          "cheap_envelope_estimate": 2.3986631398573657e-15,
+          "cell_taylor_envelope_estimate": 1.6585920953513405e-15,
+          "initial_error_term": 1.332089806447605e-15,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 2.4963589255491157e-16,
+          "projected_two_sided_growth": 2.4963589255491157e-16,
+          "residual_gram_minimum_eigenvalue": 1.0616345999185578e-34,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0008158450946211815,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        },
+        {
+          "error": 1.339264945509284e-15,
+          "time": 0.37,
+          "absolute_error_envelope_estimate": 2.023174167304415e-15,
+          "cheap_envelope_estimate": 3.2112904415028976e-15,
+          "cell_taylor_envelope_estimate": 2.023174167304415e-15,
+          "initial_error_term": 1.332089806447605e-15,
+          "ambient_growth_bound": 0.0,
+          "projected_forward_growth": 2.082956800177482e-16,
+          "projected_two_sided_growth": 2.496358925549116e-16,
+          "residual_gram_minimum_eigenvalue": 1.0616345999185578e-34,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0007899869233369827,
+          "qualification": "exact-arithmetic bound formula, floating-point estimate; NOT an interval certificate"
+        }
+      ]
+    }
+  ],
+  "mutations": {
+    "omission": 0.7528978815217907,
+    "sign": 4.109112762977288,
+    "complement": 2.6331462727077293,
+    "normalization": 2.127932590155795,
+    "raw_D_diagonal": 0.4759403534057605,
+    "hermitization": 0.3012218413033573
+  },
+  "invariants": {
+    "initial": {
+      "number": {
+        "real": 3.266,
+        "imag": 0.0
+      },
+      "purity": {
+        "real": 9.411011219999999,
+        "imag": 5.551115123125783e-17
+      },
+      "frame_frobenius": 1.9467922333931784,
+      "gram_frobenius": 3.239861108134112,
+      "density_frobenius": 3.067737149757131,
+      "density_hermiticity_frobenius": 4.8074067159589095e-17,
+      "raw_D_hermiticity_frobenius": 0.0
+    },
+    "final": {
+      "number": {
+        "real": 3.266000000000001,
+        "imag": 0.0
+      },
+      "purity": {
+        "real": 9.411011220000006,
+        "imag": 1.1102230246251565e-16
+      },
+      "frame_frobenius": 1.9467922333931789,
+      "gram_frobenius": 3.239861108134113,
+      "density_frobenius": 3.0677371497571313,
+      "density_hermiticity_frobenius": 2.7755575615628914e-17,
+      "raw_D_hermiticity_frobenius": 0.0
+    }
+  },
+  "arrays": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/block-krylov-oracle-001/oracle-arrays.npz",
+    "sha256": "cb60126f601d837dffe4804e4f4d375ec85e3c4040b28bc895c470efe9ebc47c",
+    "bytes": 10634
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/block-krylov-registration.json",
+      "sha256": "fa910341da5d06cba808e72c46021b338cce4b00da96430ca6608a2836b71b90",
+      "bytes": 5798
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_block_krylov_oracle.py",
+      "sha256": "a012b68644bfd4cbb1edc9efffc71c016647756d058020dbc7e8069c17e44e84",
+      "bytes": 9933
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_block_krylov_material.py",
+      "sha256": "82d82ef11116ba019343b75b67cc853ae57c021452571ec6b6427373eecd14c7",
+      "bytes": 20293
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/full_frame_krylov.py",
+      "sha256": "cf12d5099fdfbb61c6c1e853fb33c982cde41f73e848d2c9801a29cb2f88cdd3",
+      "bytes": 13324
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_frozen_action.py",
+      "sha256": "463bc2845dbcef9439e7d29298f88866b6a6f26190b8dacea7fa0974f4c7b886",
+      "bytes": 7230
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_hamiltonian.py",
+      "sha256": "f7734635ecc3f86bbb4d35bc5dd1972fea49e1442fcdc2d17adf59f1d4e24093",
+      "bytes": 7295
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_material_evolution.py",
+      "sha256": "619f42e1fb92c66db9c322914046a4312f84056eb114ae3485be68b8316273f5",
+      "bytes": 14417
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_sector_executor.py",
+      "sha256": "1bf046198946f784bcc91e81277d99e4882b995a2661103f036d000ad45e4b15",
+      "bytes": 9085
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_streamed_material_evolution.py",
+      "sha256": "c48f986e592a6dd241b300c053c7ba6975abfdd797f8abaf97801dd040fb0d0e",
+      "bytes": 22333
+    }
+  ],
+  "seconds": 0.9743954790756106,
+  "limitations": [
+    "Finite independent proof only; no material execution",
+    "Floating-point analytic bound estimates, not interval certificates",
+    "No nonlinear/changing-H, all-sector, long-time or speedup claim"
+  ]
+}

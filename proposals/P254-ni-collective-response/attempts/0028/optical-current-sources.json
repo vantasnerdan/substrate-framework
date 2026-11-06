@@ -1,0 +1,137 @@
+{
+  "schema": "P254-optical-current-source-registration-v1",
+  "status": "implementation-not-executed",
+  "primary_original_bytes": [
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/src/commutator_Hx_psi.f90",
+      "bytes": "7972",
+      "sha256": "e6ec7992ad6291d0f255c41d6d29c0da94ee390e740d676a1a9aae4e96ae7826"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PP/src/compute_ppsi.f90",
+      "bytes": "5696",
+      "sha256": "8a3681a2bbb9435c13183cbffd69ea70ea6ae3bc297865fec12235aa8596a5b5"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/upflib/gen_us_dj.f90",
+      "bytes": "5213",
+      "sha256": "60d798f13efdd65ad95c9cfcfeada220c07c707580f216201c77d6996d679395"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/upflib/gen_us_dy.f90",
+      "bytes": "5982",
+      "sha256": "ddef343e17a8506508808fdc484632ddc683ab42cbc3edd65d7781e119a47b4d"
+    }
+  ],
+  "primary_source_equations": {
+    "commutator_Hx_psi.f90:77-81,110-129,159-189,207-212": "Ry commutator -2i p; radial+angular derivative; both nonlocal projector legs with full D",
+    "compute_ppsi.f90:55-60": "i/2 [H,x] = L/2 in Ry convention",
+    "gen_us_dj.f90:101-109,176-179": "radial derivative times harmonic and unchanged atom phase",
+    "gen_us_dy.f90:111-136,209-213": "angular derivative times radial factor, physical tpiba conversion"
+  },
+  "reuse_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_hamiltonian.py",
+      "bytes": "7295",
+      "sha256": "f7734635ecc3f86bbb4d35bc5dd1972fea49e1442fcdc2d17adf59f1d4e24093"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_projectors.py",
+      "bytes": "4485",
+      "sha256": "3988f1a0171a56e0f7f40f26687f6b154ed7723784a2f1aa1bba2991fdc02ee3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_radial.py",
+      "bytes": "6143",
+      "sha256": "1b936324c14ab200faca5ba69652d4c12ef4b86e1ecfe077612aad7fe3bcebbc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_grid.py",
+      "bytes": "4145",
+      "sha256": "278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_saved_native.py",
+      "bytes": "6675",
+      "sha256": "1403e2d393e9ef7c0ba975091d2dff5f64546af8e002dc9a0100adee10a9d4c3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_reference.py",
+      "bytes": "6647",
+      "sha256": "bc80fd7c36884d5938462347acd2a38cde105158c69b249e6dedb9389fe5c09a"
+    }
+  ],
+  "implementation": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_current.py",
+      "bytes": "10004",
+      "sha256": "0051031f35428e2449aaa61a859101550283a7abb6bb7a36d93719858110bde3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_optical_current_oracle.py",
+      "bytes": "7816",
+      "sha256": "cce532130364c700a156f27c536d3590e6317b6f374a78a4d8a38f58c1a1bed7"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_current.py",
+      "bytes": "7206",
+      "sha256": "87f53e4d834c90d732e0713d8255559c3c7a4106f998de6aaca511d83df88c3e"
+    }
+  ],
+  "accepted_material": {
+    "background_metadata": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/background-coordinates.json",
+      "bytes": "11566",
+      "sha256": "69a641a8fcc6b7f3a7da1e8f82bfe6249ca8bab19b417609d20b4d947410313a"
+    },
+    "inputs": {
+      "xml": {
+        "bytes": "428069",
+        "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/data-file-schema.xml",
+        "sha256": "3831ae2b83231b02475931d50055415b1d9673cdb05edb4541d0f1115ec383da"
+      },
+      "density": {
+        "bytes": "6538392",
+        "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/charge-density.dat",
+        "sha256": "3b239c650b515d3e4e1921ca4ea5a1f7503bcd09f1810d49ddef5047b4c5ea08"
+      },
+      "upfs": {
+        "Ni": {
+          "bytes": "115509",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/Ni_ONCV_PBE-1.2.upf",
+          "sha256": "e6a7b028f02fccddb9158a150c7b16202af4741e8f5000e50df5ccc4b8122d3e"
+        },
+        "H": {
+          "bytes": "64999",
+          "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/H_ONCV_PBE-1.2.upf",
+          "sha256": "a442cf8b2577354d11a7e126158ea8bb596e1323c018531990570425739e821a"
+        }
+      }
+    },
+    "wavefunction": {
+      "bytes": "103267856",
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save/wfcup1.dat",
+      "sha256": "b6475c066b585bb005798a495d1aba19adc6654beca70d91d7a03a71a70d43bd"
+    },
+    "provenance_policy": "A25-A27 accepted material carried without reruns. Original XML/UPF bytes hashed here. Large background archive, density and WFC not decoded here; existing bound loader verifies original bytes when Root executes."
+  },
+  "declared_family": "H_Ry(a)=|k+G+a|^2+V_saved+sum_I B_I(a) D_I B_I(a)^dagger; B_I(a)=exp[-i(k+G).tau_I] beta(k+G+a)",
+  "field_convention": "a=e A_phys/(hbar c) in bohr^-1 (Gaussian EM), positive elementary e. Electron p+a; generalized field force -dH_Ry/da. Hartree atomic velocity +L/2, electronic charge current -L/2.",
+  "contact": "C_ee=2|e|^2 I+sum(B_second D B_dagger+2 B_first D B_first_dagger+B D B_second_dagger); energy term a^2 C/2, never dropped",
+  "algorithm": "Differentiate exact accepted interpolated centered factors with explicit symmetric h; retain full active D, both legs, and matching contact product rule. Report h,h/2,h/4, and direct finite H(a) differences. No automatic extrapolation.",
+  "source_scope": "QE sources establish first derivative, signs, Ry normalization. Uniform Peierls H(a) and its matching second derivative are this construction, not an assertion that QE supplies an NC photon contact module.",
+  "oracle_command": "python proposals/P254-ni-collective-response/attempts/0028/run_optical_current_oracle.py",
+  "material_command": "python proposals/P254-ni-collective-response/attempts/0028/run_material_current.py --step-bohr-inv 0.004 --columns 2 --output <new-output-directory>",
+  "material_step_qualification": "0.004 is an explicit numerical starting stencil, not an accepted converged material derivative; output all three refinements and inspect both derivatives.",
+  "in_memory_consumer": "run_material_current.consume(existing_MaterialHamiltonian, full_row_vectors_up_to_8_columns, direction=(1,0,0), step_bohr_inv=h)",
+  "unresolved_physical_limitations": [
+    "Optical/uniform q=0 only; no finite-q transverse coupling or Ward/gauge convergence claim in a finite cutoff basis.",
+    "No field mode profile, normalization, photon state, boundary condition, radiative loss or cavity supplied.",
+    "No assigned effective ionic charge, linewidth, temperature, occupation or equilibrium.",
+    "Current actions are not material state contractions; use full-k weighting and the declared state separately.",
+    "Frozen saved-density local potential; no new self-consistency, time-dependent XC vector potential, ultrasoft/PAW, spin-orbit or Hubbard correction.",
+    "Existing forward cubic radial interpolant may fail C1/C2 at knots; zero-momentum and harmonic threshold behavior can obstruct derivative refinement. A finite-h contact is not a physical limit unless refinement settles.",
+    "Positive kinetic/contact consistency in the finite analytic oracle is not a claim that an arbitrary pseudopotential or coupled material-field Hessian is positive."
+  ],
+  "execution": "No symbolic/numerical oracle, build, test, material readback, production or Native/cloud calculation was executed by the component worker."
+}

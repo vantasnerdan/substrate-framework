@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "parent_plan": "W2-nc-native-proof-plan.json",
+  "prior_amendment": "W2-nc-native-proof-amendment-04.json",
+  "registered_at": "2026-10-19T17:22:53.623Z",
+  "scope": "Explicit, content-bound collected density/wavefunction continuation after the registered minus0.001bohr cold spectral point failed; preserve all earlier attempts and unchanged physical/numerical convergence targets.",
+  "observed_failure": {
+    "generation": "vertices/generation7/wave2/minus-0.001",
+    "native_attempt": "5a78625647d64df7a1d96e692f7f76cd",
+    "native_stdout": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation7/wave2/minus-0.001/attempts/5a78625647d64df7a1d96e692f7f76cd/pw.stdout",
+    "actual_native": "iteration200, reported residual0.00002887Ry, convergence NOT achieved; terminal unit exit2, no accepted result",
+    "cause_limit": "No claim that initialization is the cause or that warm continuation guarantees convergence."
+  },
+  "method_primary_sources": [
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/Doc/INPUT_PW.def",
+      "lines": "2328–2372",
+      "meaning": "startingpot=file requests the saved charge density; startingwfc=file requests saved wavefunctions",
+      "url": "https://www.quantum-espresso.org/Doc/INPUT_PW.html",
+      "sha256": "3652c7782541781b436d77a14ff6626dca97d64c0381d75e792cd677abf8a1b7"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/src/potinit.f90",
+      "lines": "79–117",
+      "meaning": "Actual non-HDF build uses charge-density.dat and prints a file-read confirmation only on successful file branch",
+      "url": "https://github.com/QEF/q-e/blob/qe-7.5/PW/src/potinit.f90",
+      "sha256": "cb6bfce503736063e87b773953ac2883c11161f110f4d1306c34d9ac445bb8cb"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/src/wfcinit.f90",
+      "lines": "85–156",
+      "meaning": "Unreadable/missing collected wavefunctions can silently fall back to atomic+random; successful file initialization prints Starting wfcs from file",
+      "url": "https://github.com/QEF/q-e/blob/qe-7.5/PW/src/wfcinit.f90",
+      "sha256": "b56086af259fa5f0c72df346d17b07bc905410d21b92cbc7a3c83e31fee75db0"
+    }
+  ],
+  "next_attempt": {
+    "source_generation": "SCF generation6 and dependent vertex generation8, not re-pinned generation5/7",
+    "initial_state_contract": {
+      "optional_top_level_field": {
+        "initial_state": {
+          "kind": "qe75-collinear-dat-save-v1",
+          "directory": "/absolute/native/scf.save"
+        }
+      },
+      "meaning": "An explicit electronic initial guess only, not a time-dynamics state, physical bath or another Hamiltonian. Omission remains cold initialization; a requested initializer cannot silently fall back.",
+      "required_binding": "Every source XML, charge-density.dat, copied matching pseudopotential and both-spin collected wfcN.dat files is required in ordinary input_files_sha256, along with all current source/runtime inputs.",
+      "compatibility": "Source must be complete converged QE7.5 collinear spin2 with collected unformatted dat wavefunctions, same cell, ordered atomic species, pseudopotential bytes, PBE/cutoffs, k mesh and symmetry, band count/occupations, and registered solver policy. Source coordinates may differ for finite-displacement continuation.",
+      "isolation": "Copy and verify source bytes into a fresh attempt-owned scratch/scf.save; never link, modify or clear the immutable source. Keep restart_mode=from_scratch so the new target Hamiltonian/geometry comes from the requested input.",
+      "admission": "Explicit startingpot=file/startingwfc=file plus actual native density/wavefunction file-read confirmations, rejecting native fallback even if a later SCF converges. Publish/hash/deeply validate initial-state.json on fresh and public-cache paths."
+    },
+    "reference": "Reference6 initializes from the independently cleared immutable FD5 native save. Prove unchanged-target actual convergence, complete current-source XML/text/runtime/initializer/cache/tamper/resource/crash boundary and independent review before releasing dependent generation8.",
+    "dependent_wave": "Only after settled reference6 admission: fresh Gamma/nonzero-q/complex bare-screened/force/finite-displacement derivative/recovery proof; same four preregistered signed0.001/0.002bohr points initialized from that settled reference, no skipped failed point.",
+    "unchanged": [
+      "SG15 Ni18/H1 Hamiltonian",
+      "PBE and spin2",
+      "FD0.002Ry",
+      "20bands per spin",
+      "60/240Ry cutoffs",
+      "full2x2x2 k mesh",
+      "local-TF mixing_beta0.3",
+      "conv_thr1e-11Ry",
+      "electron_maxstep200",
+      "all registered derivative tolerances and signed steps"
+    ],
+    "failure_policy": "Preserve terminal nonconvergence and exact source/input evidence; no identical cold replay, threshold relaxation, iteration-cap increase, hidden fallback or source-edition campaign block."
+  },
+  "limits": [
+    "Nonstationary tooling/operator reference only; no stationary material, physical loss, coherence or nuclear result",
+    "Never modify live W1 source/executable/specification or /opt",
+    "No early campaign/support PR; bank on active branch until the campaign delivery gate"
+  ]
+}

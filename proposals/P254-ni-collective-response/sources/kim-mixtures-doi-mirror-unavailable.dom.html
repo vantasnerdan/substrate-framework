@@ -1,0 +1,363 @@
+<!DOCTYPE html><html><head>
+        <title translate="en:title">Sci-Hub: the article is not available through Sci-Hub. What can I do?</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="https://sci-hub.box/.well-known/ddos-guard/restore_referer"></script></head>
+    <body>
+
+        <style>
+
+    @import url('/styles/Atkinson.css');
+    @import url('/styles/Overpass.css');
+
+    html { font-size: 12px }
+
+    @media only screen and (min-width: 1400px) { html { font-size: 13px } }
+    @media only screen and (min-width: 1600px) { html { font-size: 14px } }
+    @media only screen and (min-width: 1800px) { html { font-size: 16px } }
+    @media only screen and (min-width: 2048px) { html { font-size: 18px } }
+
+    @media only screen and (max-height: 600px) { html { font-size: 10px } }
+
+    body {font-family: 'Atkinson Hyperlegible Mono', 'Overpass Mono', monospace; background-color: white; margin: 0; padding: 0 }
+
+    a {text-decoration: none; color: #c9211e}
+
+    fixed-width {margin: 0 auto; padding: 2.33rem; max-width: 2048px; overflow-x: hidden; display: block }
+
+    .vertical,
+    row-split     { display: flex; flex-direction: column; align-items: center }
+    column-split  { display: flex; align-items: flex-start; width: 100% }
+    column-center { flex-grow: 1 }
+
+    mobile-content { display: none }
+    mobile-content.wide column-split > * { margin-left: 2rem }
+    mobile-content.wide .picture { overflow: hidden; max-height: 30rem; }
+
+    block-rounded { border: dotted 2px #ccc; border-radius: 2rem; flex-grow: 1; margin: 0; place-items: center; display: grid; font-size: 1.33rem }
+    block-space   { margin-top: 3rem; display: block }
+
+    header-small  { font-size: 1.66rem; font-weight: bold; margin: 1rem; color: #c9211e}
+
+    block-rounded.info    { display: block; padding: 2.88rem; font-size: 1.22rem }
+    block-rounded.info h1 { font-size: 1.66rem; color: #333;  margin-bottom: 2rem; font-weight: bold; color: #333 }
+
+    block-date       { display: block; padding: 1rem; margin-right: 1.88rem;  max-width: fit-content; max-height: fit-content; text-align: center; color: white; border-radius: 1rem; font-size: 1.66rem; font-weight: bold; }
+
+    block-date.black { background-color: black; }
+    block-date.red   { background-color: #c9211e; }
+    block-date.white { border: dotted 2px #c9211e; background-color: white; color: #c9211e }
+    block-date.gray  { border: none; border-radius: 0; border-bottom:  dotted 2px #333; background-color: white; color: #333; font-weight: normal; }
+
+    block-date .number { font-size: 2rem }
+
+    span.rotate { animation: spin 3s linear infinite; display: inline-block; font-size: 1.88rem; }
+    @keyframes spin { from { transform: rotate(0deg) }  to { transform: rotate(360deg) } }
+
+    .yes { display: inline-block }
+    .no  { display: none }
+
+    @media only screen and (max-width: 1024px)
+    {
+        fixed-width { padding: 1.88rem }
+
+        column-split   { justify-content: space-around; align-items: center }
+        mobile-content { display: block; margin: 3rem 3rem 0 0 }
+    }
+
+    @media only screen and (max-width: 640px)
+    {
+        fixed-width { padding: 0.88rem }
+
+        mobile-content.wide { display: none }
+        mobile-content { margin-right: 0; }
+
+        block-rounded { margin: 0 1rem;  }
+    }
+
+    @media only screen and (max-width: 480px)
+    {
+        fixed-width { padding: 0 }
+    }
+
+</style>
+
+<script>
+
+    function local(id) { return document.querySelector(".messages ." + id).innerText  }
+
+</script>
+
+        <style type="text/css">
+
+            body { background-color: #eee; }
+
+            fixed-width { width: fit-content; padding: 6rem; max-width: 800px; background-color: white; border-radius: 2rem; border: dashed 4.8rem #eee }
+            
+            .from img { border: dotted 2px #aaa; border-radius: 50%; width: 8rem }
+
+            .paper { margin: 3rem auto; width: fit-content; justify-items: left; padding: 2rem; border: dashed 2px #bbb; font-size: 1.22rem; background-color: #fafafa; }
+            .paper .title { font-size: 1.55rem; margin: 1rem 0 }
+            .paper .doi   { margin-top: 2rem }
+            .paper a { color: #777 }
+            .paper a .arrow { display: none }
+            .paper a:hover { margin-left: 0.88rem; }
+            .paper a:hover .arrow { display: inline-block }
+
+            .message { margin-left: 3rem; font-size: 1.22rem; padding: 1rem; border: 0 }
+
+            .info    { font-size: 1.22rem; border: 0; padding: 1rem 0 1rem 1rem; text-align: left; }
+            .info p  { margin:0; padding: 0 }
+            .info a  { display: inline-block; padding: 0.1rem 0.8rem; border-radius: 0.8rem;  background-color: #c9211e; color: white; font-weight: bold }
+            .info a:hover { background-color: white; border: dashed 1px #c9211e; color: #c9211e  }
+            .info b  { color: #c9211e; }
+
+            .header { color: #c9211e; font-size: 3rem; font-weight: bold; margin-top: 2rem }
+
+            .openaccess { background: white; padding: 2rem; margin: 2rem 1rem 4rem 4rem; border: dashed 1px #aaa }
+            .openaccess a { background: none; color: #c9211e; padding: 0;; }
+            .openaccess a:hover { background-color: green; color: white; border-color: green; padding: 0.1rem 0.8rem; }
+
+            .similar { margin: 8rem 2rem 8rem 6rem; display: block }
+
+            .similar .header { font-size: 3.8rem; color: #c9211e; font-weight: bold; display: grid; align-items: center; text-align: center; }
+            .similar .explanation { font-size: 1.22rem; background-color: white; border-radius: 2rem; border: dashed 2.8rem #eee; padding: 3rem 0; margin-left: 4%; text-align: center; }
+
+            .similar .columns { display: flex; flex-wrap: wrap; justify-content: center; }
+            .similar .columns div { width: 41%; max-width: 1024px; min-width: 680px; }
+
+            .similar .list {display: flex; flex-wrap: wrap; max-width: 100vw; justify-content: center;}
+
+            .similar .article {display: block; margin: 4rem 4% 0 0; width: 41%; max-width: 1024px; min-width: 640px; height: fit-content; padding: 1.23rem; border: solid 2px #eee; border-radius: 1rem; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; color: black; text-decoration: none; background-color: white; }
+            .similar .article .time,
+            .similar .article .geo   {color: #888; font-weight: bold; font-size: 1.23rem; width: fit-content}
+            .similar .article .title {font-size: 1.66rem; margin: 1rem 0 1rem 0}
+            .similar .article .journal {font-size: 1.33rem;}
+            .similar .article .year {font-size: 1.33rem;}
+            .similar .article .abstract {margin-top: 1.23rem; font-size: 1.22rem; text-align: justify;}
+            .similar .article:hover {border: dashed 2px #888}
+
+            @media only screen and (max-width: 1800px)
+            {
+                fixed-width { max-width: 640px; }
+            }
+
+            @media only screen and (max-width: 1600px)
+            {
+                .similar .header { margin-bottom: 3rem; }
+            }
+
+        </style>
+
+        <fixed-width>
+
+            <column-split>
+                <div class="from"><a href="/"><img src="/pictures/ravenround.gif"></a></div>
+                <block-rounded class="message" translate="en:message">Alas, the following paper is not yet available in my database:</block-rounded>
+            </column-split>
+
+            <block-rounded class="paper">
+
+                <div class="title">MIXTURES OF CHARGED BOSONS CONFINED IN HARMONIC TRAPS AND BOSE–EINSTEIN CONDENSATION MECHANISM FOR LOW-ENERGY NUCLEAR REACTIONS AND TRANSMUTATION PROCESSES IN CONDENSED MATTERS</div>
+
+                <div>Condensed Matter Nuclear Science, 2006</div>
+
+                <div class="abstract"></div>
+
+                <div class="doi"><a target="_blank" href="//doi.org/10.1142/9789812774354_0058">10.1142/9789812774354_0058 <span class="arrow">→</span></a></div>
+
+            </block-rounded>
+
+            <block-rounded class="info" style="display:none" translate="en:recent">The paper is recent: it was published after 2021. Recent papers are mostly unavailable since automatic download doesn't work on them.</block-rounded>
+
+            <block-rounded class="info openaccess" style="display:none">
+                <p><span translate="en:openaccess">O! According to the OpenAlex index, the paper is open access and should be accessible for free on publisher website. You can try to download it</span> <a target="blank" href="" translate="en:here">here</a>. <span translate="en:warning">But there is no guarantee, because this index often contains errors.</span></p>
+            </block-rounded>
+
+            <div class="header" translate="en:question">What can I do?</div>
+
+            <block-rounded class="info">
+
+                <p translate="en:todo">You can request such paper through <a target="blank" href="//sci-net.xyz/">Sci-Net platform</a>. Most papers, except some rare cases, are uploaded on request within a few minutes.</p>
+                
+                <p style="margin-top: 2rem" translate="en:goal">...after request is solved, the paper will become available on Sci-Hub <b>for free to everyone</b>. Therefore, by using the platform you help Sci-Hub grow and increase the amount of research papers available open access.</p>
+
+            </block-rounded>
+
+        </fixed-width>
+    
+        <div class="similar">
+
+            <div class="columns">
+                <div class="header" translate="en:similar">similar<br>articles</div>
+
+                <div class="explanation" translate="en:alternatives">There are a number of similar articles that are present in Sci-Hub database. You might find them interesting</div>
+            </div>
+
+            <div class="list">
+                <a class="article" target="blank" href="/10.13182/fst00-a131">
+    <div class="title">Nuclear Fusion for Bose Nuclei Confined in Ion Traps</div>
+    <div><span class="journal">Fusion Technology</span>, <span class="year">2000</span></div>
+    <div class="abstract">Nuclear fusion of integer spin nuclei confined in an isotropic ion trap is investigated. Solutions of the ground state for charged bosons trapped in the isotropic harmonic oscillator potential are calculated using the equivalent linear two-body method for many-body problems, which is based on an approximate reduction of the many-body Schrödinger equation by the use of a variational principle. Using the ground-state wave function, theoretical estimates of probabilities and rates for nuclear fusion for Bose...</div>
+</a>
+<a class="article" target="blank" href="/10.1007/s10894-025-00547-7">
+    <div class="title">Neutron Producing Reactions in Implosion and Direct Heating Experiments of Inertial Confinement Fusion</div>
+    <div><span class="journal">Journal of Fusion Energy</span>, <span class="year">2026</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1007/s00601-024-01961-x">
+    <div class="title">Perturbation Theory of the Continuous Spectrum in the Theory of Nuclear Reactions</div>
+    <div><span class="journal">Few-Body Systems</span>, <span class="year">2024</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1103/physrevc.50.r7">
+    <div class="title">Bose condensation of nuclei in heavy ion collisions</div>
+    <div><span class="journal">Physical Review C</span>, <span class="year">1994</span></div>
+    <div class="abstract">Using a fully self-consistent quantum statistical model, we demonstrate the possibility of Bose condensation of nuclei in heavy ion collisions. The most favorable conditions of high densities and low temperatures are usually associated with astrophysical processes and may be difficult to achieve in heavy ion collisions. Nonetheless, some suggestions for the possible experimental verification of the existence of this phenomenon are made.</div>
+</a>
+<a class="article" target="blank" href="/10.1016/0370-2693(90)91025-7">
+    <div class="title">Bose-Einstein condensation of kaons in dense nuclear matter</div>
+    <div><span class="journal">Physics Letters B</span>, <span class="year">1990</span></div>
+    <div class="abstract">Abstract The phenomenon of Bose-Einstein condensation of kaons in dense nuclear matter is studied. It is pointed out that this phenomenon arises under very general conditions and even occurs for a free hadronic gas. It leads to a very substantial increase in the kaon density.</div>
+</a>
+<a class="article" target="blank" href="/10.1070/qe2004v034n08abeh002668">
+    <div class="title">On radiative nuclear gamma transitions in a Bose—Einstein condensate</div>
+    <div><span class="journal">Quantum Electronics</span>, <span class="year">2004</span></div>
+    <div class="abstract">The unique properties of radiative nuclear gamma transitions in atoms of a Bose—Einstein condensate, in particular, the efficient suppression of the inhomogeneous broadening of gamma lines related to the translation degrees of freedom of the atoms are theoretically estimated. The effective temperature characterising this broadening proves to be many orders of magnitude lower than the real temperature of the atomic ensemble. The phenomena considered in the paper open up new approaches to the problems of...</div>
+</a>
+<a class="article" target="blank" href="/10.1016/0003-4916(90)90352-o">
+    <div class="title">Normal modes of the neutron-proton interacting-boson model of nuclei</div>
+    <div><span class="journal">Annals of Physics</span>, <span class="year">1990</span></div>
+    <div class="abstract">Abstract A geometrically-oriented framework for studying the general proton-neutron interacting-boson model of nuclei is presented. The Hamiltonian is resolved exactly into intrinsic (bandhead related) and collective (in-band related) parts. Shape parameters are introduced through non-spherical proton-neutron bases. Genuine intrinsic modes of the combined system, as well as decoupled spurious Goldstone modes, are identified by applying the Bogoliubov treatment to the intrinsic part of the Hamiltonian. The...</div>
+</a>
+<a class="article" target="blank" href="/10.1103/physrevc.56.412">
+    <div class="title">Effects of Bose condensates on single inclusive spectra and Bose-Einstein correlations</div>
+    <div><span class="journal">Physical Review C</span>, <span class="year">1997</span></div>
+    <div class="abstract">The implications of the formation of a Bose condensate on one- and two-particle spectra are studied for ultrarelativistic nucleus-nucleus collisions in the framework of a hydrodynamic description. It is found that single-particle spectra are considerably enhanced at low momenta. The Bose-Einstein correlation function has an intercept below two. For pion pairs in the central region a two-component structure may appear in the correlation function, which is different from that found in quantum optics. The...</div>
+</a>
+<a class="article" target="blank" href="/10.1209/0295-5075/2/5/001">
+    <div class="title">Giant Isoscalar Resonances in the Interacting Boson Model</div>
+    <div><span class="journal">Europhysics Letters (EPL)</span>, <span class="year">1986</span></div>
+    <div class="abstract">The coupling of isoscalar monopole and quadrupole resonances and their decay to the nuclear ground state are studied within the framework of the interacting boson model. Results for transitional samarium isotopes are presented.</div>
+</a>
+<a class="article" target="blank" href="/10.1007/s12648-024-03208-1">
+    <div class="title">A comprehensive analysis of (d,p), (d,n) and (d,t) transfer reactions by using different density distributions, temperature, nuclear potentials and nucleon-nucleon interactions</div>
+    <div><span class="journal">Indian Journal of Physics</span>, <span class="year">2024</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1007/s12648-024-03536-2">
+    <div class="title">Study of the pseudo-rapidity fluctuations in nucleus-nucleus interactions at relativistic energy</div>
+    <div><span class="journal">Indian Journal of Physics</span>, <span class="year">2025</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1016/j.nds.2014.07.023">
+    <div class="title">Correlations Between Charge Radii, E0 Transitions, and M1 Strength</div>
+    <div><span class="journal">Nuclear Data Sheets</span>, <span class="year">2014</span></div>
+    <div class="abstract">In the framework of the interacting boson model, relations are derived between nuclear charge radii, electric monopole transition rates, and summed magnetic dipole transition in even-even nuclei. The proposed correlations are tested in the rare-earth region.</div>
+</a>
+<a class="article" target="blank" href="/10.1103/physrev.128.2925.2">
+    <div class="title">Neutron Yields from Individual Fission Fragments</div>
+    <div><span class="journal">Physical Review</span>, <span class="year">1962</span></div>
+    <div class="abstract">Second-Order Quadrupole Effect for the Nuclear Hexadecapole Coupling in Ions, R. M</div>
+</a>
+<a class="article" target="blank" href="/10.1007/s41365-025-01795-0">
+    <div class="title">The dynamical mechanism in the fusion reactions to synthesize neutron-deficient Pu isotopes</div>
+    <div><span class="journal">Nuclear Science and Techniques</span>, <span class="year">2025</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1103/physrevlett.122.142301">
+    <div class="title">Chemical Equilibration in Hadronic Collisions</div>
+    <div><span class="journal">Physical Review Letters</span>, <span class="year">2019</span></div>
+    <div class="abstract">We study chemical equilibration in out-of-equilibrium quark-gluon plasma using the first principles method of QCD effective kinetic theory, accurate at weak coupling. In longitudinally expanding systems---relevant for relativistic nuclear collisions---we find that for realistic couplings chemical equilibration takes place after hydrodynamization, but well before local thermalization. We estimate that hadronic collisions with final state multiplicities...</div>
+</a>
+<a class="article" target="blank" href="/10.1007/s12648-024-03335-9">
+    <div class="title">The radial scalar power potential and its application to quarkonium systems</div>
+    <div><span class="journal">Indian Journal of Physics</span>, <span class="year">2024</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1007/s10955-025-03557-z">
+    <div class="title">Quantum Boltzmann Dynamics and Bosonized Particle-Hole Interactions in Fermion Gases</div>
+    <div><span class="journal">Journal of Statistical Physics</span>, <span class="year">2025</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1103/physrevlett.75.4732">
+    <div class="title">Heated Nuclear Matter, Condensation Phenomena, and the Hadronic Equation of State</div>
+    <div><span class="journal">Physical Review Letters</span>, <span class="year">1995</span></div>
+    <div class="abstract">The thermodynamic properties of heated nuclear matter are explored using an exactly solvable canonical ensemble model. This model reduces to the results of an ideal Fermi gas at low temperatures. At higher temperatures, the fragmentation of the nuclear matter into clusters of nucleons leads to features that resemble a Bose gas. Some parallels of this model with the phenomena of Bose condensation and with percolation phenomena are discussed. A simple expression for the hadronic equation of state is obtained...</div>
+</a>
+<a class="article" target="blank" href="/10.4028/www.scientific.net/kem.644.57">
+    <div class="title">Low Energy Standard Model Interactions in Condensed Matter</div>
+    <div><span class="journal">Key Engineering Materials</span>, <span class="year">2015</span></div>
+    <div class="abstract">This paper briey reviews the current status of Standard Model (weak and strong nuclear) interactions induced in condensed matter systems via the excitation of collective de-grees of freedom to provide the necessary energies. The central point is that a variety of low energy systems can accelerate electrons to several MeV, making it possible to produce neutrons via collisions with protons and to photodissociate nuclei via giant dipole resonances allowing a wide variety of nuclear transmutations to occur....</div>
+</a>
+<a class="article" target="blank" href="/10.5506/aphyspolb.44.647">
+    <div class="title">Probing Fundamental Interactions by an Electrostatic Ion Beam Trap</div>
+    <div><span class="journal">Acta Physica Polonica B</span>, <span class="year">2013</span></div>
+    <div class="abstract">A brief outlook on low-energy nuclear physics is presented.Selected recent developments in nuclear structure theory are highlighted and a few open questions are discussed.</div>
+</a>
+<a class="article" target="blank" href="/10.1103/physrevc.46.819">
+    <div class="title">Erratum: Single nucleon emission in relativistic nucleus-nucleus reactions</div>
+    <div><span class="journal">Physical Review C</span>, <span class="year">1992</span></div>
+    <div class="abstract">Charge dependence</div>
+</a>
+<a class="article" target="blank" href="/10.1016/s0375-9474(99)85030-1">
+    <div class="title">Coherent electromagnetic heavy ion reactions: (1) exact treatment of pair production and ionization; (2) mutual Coulomb dissociation</div>
+    <div><span class="journal">Nuclear Physics A</span>, <span class="year">1999</span></div>
+    <div class="abstract">Some recent theoretical results on coherent electromagnetic processes in ultrarelativistic heavy ion reactions are surveyed.</div>
+</a>
+<a class="article" target="blank" href="/10.1007/s41365-024-01492-4">
+    <div class="title">The medium-temperature dependence of jet transport coefficient in high-energy nucleus–nucleus collisions</div>
+    <div><span class="journal">Nuclear Science and Techniques</span>, <span class="year">2024</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1016/s0375-9474(99)00462-5">
+    <div class="title">Coherent electromagnetic heavy ion reactions: (1) exact treatment of pair production and ionization; (2) mutual Coulomb dissociation</div>
+    <div><span class="journal">Nuclear Physics A</span>, <span class="year">1999</span></div>
+    <div class="abstract">Some recent theoretical results on coherent electromagnetic processes in ultrarelativistic heavy ion reactions are surveyed.</div>
+</a>
+<a class="article" target="blank" href="/10.1016/j.tsep.2026.104513">
+    <div class="title">Magnetic confinement on fluctuating waves of heat radiations using ohmic heating around oscillatory fuel-sphere in fusion reactors: Energy dissipation model</div>
+    <div><span class="journal">Thermal Science and Engineering Progress</span>, <span class="year">2026</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1007/s41365-024-01480-8">
+    <div class="title">Impact of initial fluctuations and nuclear deformations in isobar collisions</div>
+    <div><span class="journal">Nuclear Science and Techniques</span>, <span class="year">2024</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1016/j.physletb.2023.137974">
+    <div class="title">Temperature of the hot α-source: A guidance to probe the Bose-Einstein condensation of α clusters in the heavy-ion collision</div>
+    <div><span class="journal">Physics Letters B</span>, <span class="year">2023</span></div>
+    <div class="abstract">Recent experimental efforts were made to explore the Bose-Einstein condensation in multi-α system using the heavy-ion collisions. This Letter provides an explanation why no signatures were observed and a guidance for future experiments. More precisely, a harmonic oscillator model is developed to study the multi-α source at or near zero temperature. The temperature and particle population of the multi-α sources observed in the current experiments are extracted. It is found that almost no α particles...</div>
+</a>
+<a class="article" target="blank" href="/10.1007/s10511-024-09829-y">
+    <div class="title">Isospin-Asymmetric Cold Nuclear Matter in the Relativistic Mean-Field Theory with a Scalar-Isovector Interaction Channel</div>
+    <div><span class="journal">Astrophysics</span>, <span class="year">2024</span></div>
+    <div class="abstract"></div>
+</a>
+<a class="article" target="blank" href="/10.1063/1.2200925">
+    <div class="title">Critical-Point Structure in Finite Nuclei</div>
+    <div><span class="journal">AIP Conference Proceedings</span>, <span class="year">2006</span></div>
+    <div class="abstract">Properties of quantum shape-phase transitions in finite nuclei are considered in the framework of the interacting boson model. Special emphasis is paid to the dynamics at the critical-point of a general first-order phase transition.</div>
+</a>
+<a class="article" target="blank" href="/10.1016/0375-9474(94)90271-2">
+    <div class="title">Dynamical symmetry in heavy nuclei and complementarity of bosons and fermions</div>
+    <div><span class="journal">Nuclear Physics A</span>, <span class="year">1994</span></div>
+    <div class="abstract">Abstract The concept of Dynamical symmetry in nuclear structure physics is discussed. We shall empirically elucidate the complementarity of bosons and fermions.</div>
+</a>
+<a class="article" target="blank" href="/10.1016/0370-2693(84)90634-8">
+    <div class="title">Incomplete linear momentum transfer in nuclear reactions: An interplay between one-body and two-body dissipation</div>
+    <div><span class="journal">Physics Letters B</span>, <span class="year">1984</span></div>
+    <div class="abstract">An explanation for the experimentally observed linear momentum transfer in light- and heavy-ion induced reactions is propounded by simple geometrical considerations in momentum space. We display explicity the transition from one-body to two-body dissipation. We obtain a surprising agreement with the experiments over the whole measured energy range.</div>
+</a>
+<a class="article" target="blank" href="/10.1007/s41365-025-01823-z">
+    <div class="title">Dynamics of light nuclei produced in the massive transfer reactions</div>
+    <div><span class="journal">Nuclear Science and Techniques</span>, <span class="year">2025</span></div>
+    <div class="abstract"></div>
+</a>
+
+            </div>
+        </div>
+
+    
+</body></html>

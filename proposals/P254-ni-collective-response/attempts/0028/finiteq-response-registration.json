@@ -1,0 +1,138 @@
+{
+  "implementation_interfaces": {
+    "module": "src/substrate_framework/prepared_bloch_response.py",
+    "constructor": "PreparedBlochResponse(mean_model, edges, kernel=MaterialReference.apply_kernel, curvature=Cq, authority_text=...); ResponseEdge(source_index,target_index,existing_BlochFiniteQIonic)",
+    "state": "BlochTangent(ket,bra,u,p); response.tangent(...) and zero_tangent()",
+    "rhs": "response.rhs(current_MeanEvaluation,tangent); mean_model.evaluate_mean(current_mean) must be shared at every evolution stage",
+    "observable": "response.moments(evaluation,tangent); response.readout(evaluation,tangent,actions,adjoint_actions,ionic_u=None,ionic_p=None)",
+    "source": "response.vertex_source(evaluation,actions,adjoint_actions,ordering='AB'|'BA'); AB=(I-rho_t)B_ts rho_s; BA=rho_t B_ts(I-rho_s); unweighted single-sector sources; caller owns collective normalization and ionic/cross state",
+    "material": "run_finiteq_material.consume(inputs,accepted_background,original_source_frame,original_target_frame,block_size=2) returns arrays,report",
+    "runtime": "No second integrator/runtime framework. Root's stage owner calls mean.evaluate_mean and response.rhs on the same moving stage; this slice supplies usable RHS and observables, not an executed full-grid trajectory."
+  },
+  "oracle_design": {
+    "file": "proposals/P254-ni-collective-response/attempts/0028/run_finiteq_response_oracle.py",
+    "independence": "SymPy scalar/product-rule derivative; original dense density matrices and literal Fourier sums; existing A27 byte fixture supplies geometry only, not expected operator results",
+    "coverage": "All128 explicit spin/k finite slots, qz=1/4,0,1/2; independent complex ket/bra; nonorthogonal raw frames; singular populations; unequal PW rows and endpoint ranks; two distinct moving mean states",
+    "sensitivity": "Wrong q/fold, swapped endpoint wiring, missing/duplicate slots, force sign, conjugated ionic transpose, lost source/target populations, incorrect complex drive adjoint, conjugated non-Hermitian source, omitted moving-frame connection, stale nonstationary baseline, missing weights",
+    "comparators": "Each reconstructed Xdot versus -i(H_t X-X H_s+V rho_s-rho_t V); AB/BA raw source densities and complex readouts versus dense originals; exact q=0 equality to existing PreparedFactorDynamics tangent RHS",
+    "execution": "Not run by worker; no pass claim"
+  },
+  "material_consumer_findings": {
+    "file": "proposals/P254-ni-collective-response/attempts/0028/run_finiteq_material.py",
+    "binding": "Authenticated A27 source-1-2 metadata supplies complete original WFC binding map; only spin1 ik2 and ik3 are decoded through existing bound loaders. Accepted A25 background metadata/archive restored verbatim.",
+    "state_boundary": "The completed source-state and slot-1-density-gradient receipts are authenticated and basis/source-matched, not mistaken for H0 completion or full material totals; their populations are not used in this operator smoke.",
+    "probe": "All original PW rows; raw source columns 0..2, target columns 0..1; complex rectangular dyads, H32-x+iNi1-y direction, physical cos(b1.r)+i sin(b2.r) profile",
+    "actions": "Forward/independent-adjoint local, bare ionic and Kq-feedback actions; density and all-coordinate positive-gradient pairings; finite-support i(q+G) integration by parts; cross-density Hermitian Kq pairing",
+    "output": "Raw arrays and residuals in new exclusive output directory; no automatic tolerance certificate, symmetrization or clipping; no selected-column population claim",
+    "execution": "Not run by worker; Root owns actual material execution"
+  },
+  "additional_original_bytes": [
+    {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-pilot-001/source-1-2.json", "bytes": "10422", "sha256": "92664bd6933d621c72d3998bf62e2b88e6533a174abff94509e97253350a0d8c"},
+    {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py", "bytes": "7855", "sha256": "021f5bc6eb301183dc86941e72c4920b8321fcb18aa506a18b19312bb1b5b47a"},
+    {"path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_reference.py", "bytes": "6647", "sha256": "bc80fd7c36884d5938462347acd2a38cde105158c69b249e6dedb9389fe5c09a"},
+    {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/bloch_oracle_fixture.py", "bytes": "5448", "sha256": "d052e3f880d196f8443ec9091804f37a9fc5c988bf5d9f874616937fa81743ba"},
+    {"path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_frame.py", "bytes": "8825", "sha256": "8cbfa02f4a0a86c91f6d12c8d9464ee3e7e0a267b5696902c8085f1e51be7c6b"}
+  ],
+  "schema": "P254-finiteq-response-registration-v1",
+  "status": "source implementation; execution owned by Root, no numerical claims",
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_factor_dynamics.py",
+      "bytes": "8348",
+      "sha256": "67a1b584e90e9325eaad412bb2444d9a21766cbb0e28db8fba5c84440fd496d2"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_reference.py",
+      "bytes": "7393",
+      "sha256": "5474edc99ae71a0838902b350b8b512667f192ffc184f23339340d73d6c2d832"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_factor_preparation.py",
+      "bytes": "11366",
+      "sha256": "3dd3767a13da9fd5f5d7559bc3f7a98cf00d365655a08980db551d011aa25b96"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_edge.py",
+      "bytes": "4320",
+      "sha256": "84abfd4f9c0fb86b7d05ee06e34b6f1a57a25288774a45738254174ff37e1d18"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_finiteq.py",
+      "bytes": "7002",
+      "sha256": "2176806b813adfed9645713de43b02d0c81395d8419a2c771ef366367ae09912"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_finiteq_ionic.py",
+      "bytes": "11902",
+      "sha256": "65855250b4afcda51f22fec45a816909875a1baf03ae77dc79453db4954d0a9a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_reference_state.py",
+      "bytes": "7069",
+      "sha256": "e6ef102740a6fe03cefb0324f365a48ea7450f34007ed49e7d6ad1885ccc0bad"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_grid.py",
+      "bytes": "7853",
+      "sha256": "5c76340da98609106915b0a226ccf2a2bf1dff3a20103a42e598cf883083f1d6"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/run_prepared_factor_oracle.py",
+      "bytes": "26030",
+      "sha256": "3fda0891b0ad961cf756554341a4089711b5de239211487c3a25dced8d9fd80d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/prepared-dynamics-scientific-review-001.json",
+      "bytes": "30362",
+      "sha256": "e0a2c69ffc2898314c5a5a97cc77a3faf3d8bea25bdb6698304c29a55c266165"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/finiteq-source-registration.json",
+      "bytes": "10743",
+      "sha256": "a9513ef7345c7ff5cbde1b750fe38e865be614940f3628f37f8f9a05b12e6b73"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/optical-current-sources.json",
+      "bytes": "8655",
+      "sha256": "52f1ed205615138aae48318874805a631f70ffcc90eb0f5e114450477caedde5"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-source-001/source-state.json",
+      "bytes": "2205",
+      "sha256": "f3cd952bfcec6d6c9161b533fa562be5f77bcfb16757b8a290d99b91d180ad20"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-source-002/slot-1-density-gradient.json",
+      "bytes": "3096",
+      "sha256": "b970c88cae5f1b27f0cf766d4b2ae3f243a1dac014e3f714ee5f7b865133c048"
+    }
+  ],
+  "scope": "Linear response of the declared joint-second-order finite scalar about the same moving PreparedFactorDynamics mean; not H0 equilibrium or new-state full PBE",
+  "equations": {
+    "rho": "X_ts=L_ts Psi_s\u2020+Psi_t R_ts; independent L(nt,rs), R(rt,ns)",
+    "legs": "Ldot=-i(H_t L+deltaH_ts Psi_s D_s); Rdot=+i(R H_s+D_t Psi_t\u2020 deltaH_ts)",
+    "feedback": "nq=sum_s moments_ts(X_ts,weight=w_s).density; deltaH_ts=V_ts[Kq nq]+g_ts[uq]; pdot=-Cq uq-sum_s gradient_ts(X_ts,w_s); udot=pq/M",
+    "gradient": "vdot(u,gradient)=w Tr(g_ts[u]\u2020 X_ts); never Gamma trace-bilinear substitution",
+    "readout": "sum_s w_s Tr(A_ts\u2020 X_ts), with explicitly sesquilinear ionic coefficients; no implicit opposite-q doubling"
+  },
+  "units": {
+    "time": "inverse Ry, hbar=1",
+    "u": "bohr",
+    "p": "Ry-time/bohr",
+    "Cq": "Ry/bohr^2 unmassweighted",
+    "Kq_n": "Ry",
+    "density": "bohr^-3"
+  },
+  "coverage": "One outgoing and incoming same-spin edge per sector, complete declared mesh for each explicit spin; q=0 and self-inverse q visited once only",
+  "limitations": [
+    "All128 population ledger is not full material equilibrium",
+    "source-state and selected non-Gamma moments are completed component receipts; H0 remains pending",
+    "Material consumer selects columns only for full-row operator validation, never populated dynamics",
+    "Actual full-grid trajectories require all current full-row frames/H0 and supplied physical Cq,Kq; no fitted damping or stationarity",
+    "No numerical work executed by worker"
+  ],
+  "commands": [
+    "PYTHONPATH=src python proposals/P254-ni-collective-response/attempts/0028/run_finiteq_response_oracle.py --result <new-result.json>",
+    "PYTHONPATH=src python proposals/P254-ni-collective-response/attempts/0028/run_finiteq_material.py --output <new-directory>"
+  ]
+}

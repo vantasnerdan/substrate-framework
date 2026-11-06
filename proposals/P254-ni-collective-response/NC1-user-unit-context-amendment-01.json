@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "id": "NC1-user-unit-context-amendment-01",
+  "registered_at": "2026-10-20T02:43:16.747Z",
+  "status": "registered-before-source-change-and-after-actual-failure-access",
+  "issue": "https://github.com/giuliano-vantasner/catalyst-dft/issues/16",
+  "scientific_parent": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "settled_upstream": {
+    "source_subject_bank": "6b1e049",
+    "both_full_source_reviews_bank": "df48a6a",
+    "old_launch_grant_bank": "50fc2bf",
+    "actual_deployment_failure_archive_bank": "a467db4",
+    "old_grant_reusable": false
+  },
+  "sources_confirmed_before_plan": [
+    {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/initial-failures/user-unit-group-001/failure.json",
+      "sha256": "9bb1939e2f36bd4df487b17f4f84543881a56a83b5bfd3ed2a79056a580fa3da",
+      "bytes": 19217
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/initial-failures/user-unit-group-001/runtime-context-failure.json",
+      "sha256": "f83e52cab80f498159bb4b284aa28549ca2701951e2636b65c17bc2d3d233e16",
+      "bytes": 113872
+    },
+    {
+      "path": "/home/administrator/.config/systemd/user/dft-c5-material.service",
+      "sha256": "fecd4b991be58098dd0bad40b79060095ca55e428b2df3b2dcb74a450ea14c07",
+      "bytes": 1088,
+      "scope": "Actual existing running user-unit pattern omits explicit User; full source text saved here.",
+      "source_text": "[Unit]\nDescription=Campaign5 fully mobile stationary Ni/H structures\nWants=dft-c5-checkpoint-commits.service\nAfter=dft-c5-checkpoint-commits.service\nStartLimitIntervalSec=3600\nStartLimitBurst=3\n\n[Service]\nType=exec\nWorkingDirectory=/home/administrator/projects/catalyst-collective\nEnvironment=PYTHONPATH=/home/administrator/projects/catalyst-collective/src\nEnvironment=PYTHONUNBUFFERED=1\nEnvironment=OMP_NUM_THREADS=1\nEnvironment=MKL_NUM_THREADS=1\nEnvironment=OPENBLAS_NUM_THREADS=1\nExecStart=/home/administrator/projects/catalyst-dft/.venv/bin/python -u -m catdft.job_queue --manifest /home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/material/manifest.json\nExecStopPost=-/home/administrator/projects/catalyst-dft/.venv/bin/python /home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/notify_exit.py --unit=%n\nRestart=on-failure\nRestartPreventExitStatus=2\nRestartSec=30\nKillMode=control-group\nTimeoutStopSec=60\nAllowedCPUs=0-4\nMemoryMax=12G\nStandardOutput=journal\nStandardError=journal\n\n[Install]\nWantedBy=default.target\n"
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/dft-c5-nc1-material.service",
+      "sha256": "ca07a78cc00e54558b3065789b326855588cb4840f8d8bee5dc4cdb0f491faa2",
+      "bytes": 1520
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/dft-c5-nc1-bank.service",
+      "sha256": "13e42d44979ebaee610b5b18e00303224631d3774eb7dc6288f4aa53ad7f231e",
+      "bytes": 1023
+    }
+  ],
+  "raw_witness_confirmed_before_plan": {
+    "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/initial-failures/user-unit-group-001/runtime-context-failure.json",
+    "sha256": "f83e52cab80f498159bb4b284aa28549ca2701951e2636b65c17bc2d3d233e16",
+    "bytes": 113872,
+    "scope": "Complete actual systemd journal/source copies and post-stop state; three automatic216/GROUP pre-Python attempts per unit, no runtime-state directory; no failure rerun or reset."
+  },
+  "observed_gap": "Static source parsing and full read-only source reviews did not prove actual user-manager startup credential setup. Both installed units fail before Python at supplementary-group setup. A terminal Started message was not execution proof.",
+  "decision": {
+    "permitted_source_change": "Remove only the exact redundant User=administrator line from runtime/dft-c5-nc1-material.service and runtime/dft-c5-nc1-bank.service; inherit existing user-manager UID/GID/groups as the actual running user-unit pattern does.",
+    "hypothesis": "[INFERENCE before after-smoke] The explicit User directive requests unavailable supplementary-group setup in this existing manager. Actual after-context execution, not error suppression, must establish the materially different correction.",
+    "forbidden_changes": [
+      "No sudo/capability/permission/account/provider/linger change",
+      "No Type/ExecStart/environment/affinity/memory/restart or other source-service directive change",
+      "No physical model, seed, UPF, cutoff/kmesh/smearing/SCF/spin/bands/relaxation or backend algorithm change",
+      "No source/runtime changes to the live original W1 or frozen G10",
+      "No reclassification of old failed deployment or old source reviews as Native proof"
+    ],
+    "source_delta_consumer": "Machine comparison must prove each changed unit equals its saved original bytes with only that exact one line removed."
+  },
+  "verification": [
+    {
+      "stage": "existing-before",
+      "work": "Use already preserved actual216/GROUP journal as before evidence; do not rerun the failed deployment."
+    },
+    {
+      "stage": "actual-inherited-context",
+      "work": "Run a short non-Native isolated user unit derived from the exact changed source-unit context with only unit identity/ExecStart changed to a real context worker. Record actual UID/GID/groups, contract environment and forbidden keys, actual affinity, actual cgroup memory.max/swap.max and matching existing manager identity. No PW/MPI or science. Preserve complete worker/source/unit/argv/output before removing temporary artifacts."
+    },
+    {
+      "stage": "source-and-model-integrity",
+      "work": "Compare all old/new scientific sections and every nonpath execution value; history append only. The only unit source delta is removal of redundant User. Do not rerun unchanged47 software or unchanged mathematical suites."
+    },
+    {
+      "stage": "fresh-publication",
+      "work": "Preserve exact old six publications/full56-source subject/intake/full reviews/failure first. Publish a fresh six-file generation after source smoke, run all strict consumers, same-command byte/size/exact-ns replay and both changed-input refusals; independently exercise selected-parser digest refusals and real saved-output source coverage."
+    },
+    {
+      "stage": "full-review-and-new-grant",
+      "work": "Freeze one COMPLETE source/input/actual-context subject; complete independent ownership/authority reviews, all findings repaired, then fresh actual release and a separate exact Native resource grant. Reinstall only exact final source units and relaunch through owned labeled views."
+    },
+    {
+      "stage": "remaining-native",
+      "work": "Actual NC1 Native five-rank/all-live-task/PW/MPI/ELF/cgroup proof, first-force benchmark and completed-force/cache whole-unit crash recovery remain unearned until observed."
+    }
+  ],
+  "runtime_input_paths": [
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/launch.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/observer.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/bank.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/rankfile",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/dft-c5-nc1-material.service",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/dft-c5-nc1-bank.service",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/evidence_io.py",
+    "/home/administrator/projects/catalyst-nc-operator/src/catdft/process_handles.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/attempt_evidence.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/pidfd_open.2.html",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/pidfd_send_signal.2.html",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-prelaunch-amendment-01.json",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/native_evidence.py",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-layout-addendum-01.json",
+    "/home/administrator/projects/catalyst-nc-operator/src/catdft/process_shutdown.py",
+    "/home/administrator/projects/catalyst-nc-operator/src/catdft/job_queue.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/completed_boundaries.py",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-review-repair-02.json",
+    "/home/administrator/projects/catalyst-nc-operator/src/catdft/process_ownership.py",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-review-repair-03.json",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/linux-v6.8-kernel-exit.c",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/linux-v6.8-kernel-sys.c",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-selected-parser-source-closure-addendum-01.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-user-unit-context-amendment-01.json"
+  ],
+  "limits": [
+    "Inherited user-manager identity is not a privilege grant. Source correctness is not actual deployment or Native proof.",
+    "The non-Native context witness proves its actual kernel/platform boundary, not a force, stationary material, convergence, coupled modes, bath, many-region, nuclear bridge or final merge.",
+    "Every parent G1–G5/full controls/disorder and distinct-authorized-merger obligation remains unchanged."
+  ]
+}

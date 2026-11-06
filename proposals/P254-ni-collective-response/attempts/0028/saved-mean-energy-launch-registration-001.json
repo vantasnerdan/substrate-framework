@@ -1,0 +1,66 @@
+{
+  "schema": "P254-saved-mean-energy-launch-v1",
+  "decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-075.json",
+    "bytes": "2186",
+    "sha256": "351cda1cce8d5153862a2155ef314fce291d049f0b6ae97857832da9a6ef44f4"
+  },
+  "registration": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-mean-energy-registration-001.json",
+    "bytes": "248563",
+    "sha256": "ea02df3683debbc2d535daa273d48e171d77d0d69b13f0a8c5cc3ce58ad42860"
+  },
+  "implementation": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint_mean_energy_components.py",
+      "bytes": "1344",
+      "sha256": "8e0a7cab336997d12d80f9d45170dfafc7b2173c253c10040ad402226196d093"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint_mean_energy_sources.py",
+      "bytes": "11410",
+      "sha256": "da1c3b420cf758ffecd668a9becdd61e1d601fd55c4c2aba5be2fcb9ff53d990"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint_mean_energy_oracle.py",
+      "bytes": "10724",
+      "sha256": "d568ddcfa960231ea16014fb63857f851f7652c14d2c3cbcbf03d2c60aa692ef"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_mean_energy_readout.py",
+      "bytes": "6756",
+      "sha256": "bb38b6dfdc5894c053e993113acc64daf64c1e5dd02826b18362f22f103e07b7"
+    }
+  ],
+  "arguments": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-saved-mean-energy-readout-001",
+    "--property=Type=exec",
+    "--property=CPUAffinity=10",
+    "--property=MemoryMax=2147483648",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=180s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_mean_energy_readout.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-mean-energy-readout-001/result.json",
+    "--registration",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-mean-energy-registration-001.json",
+    "--cpu",
+    "10",
+    "--max-seconds",
+    "180"
+  ],
+  "supervisor_seconds": 240,
+  "scope": "Actual saved256-scalar/two-stage baseline energy readout only. No trajectory/contraction recomputation or response/noise completion.",
+  "integration": "Oracle status normalized to existing passed/failed convention; derivative scope explicit. Invented gamma_k acceptance gate/dead scale computation and unmeasured zero counters removed; preserve actual summation discrepancies without fitted terms."
+}

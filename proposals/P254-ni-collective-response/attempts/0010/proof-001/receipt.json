@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "source_manifest_sha256": "60c80c054e2e13ba0c5ee99110e22e6acae2c14fa397ac959c19d82ed77084c9",
+  "checks": [
+    "algebra.reconstruction_all_entries",
+    "algebra.offdiagonals_not_shifted",
+    "algebra.isolated_absolute_branch_0",
+    "algebra.isolated_relative_branch_0",
+    "algebra.isolated_reconstruction_branch_0",
+    "algebra.isolated_absolute_branch_1",
+    "algebra.isolated_relative_branch_1",
+    "algebra.isolated_reconstruction_branch_1",
+    "algebra.exposes_omitted",
+    "algebra.exposes_opposite_sign",
+    "algebra.exposes_doubled",
+    "algebra.exposes_offdiagonal_shift",
+    "algebra.exposes_rounded_or_fitted_substitute",
+    "algebra.degenerate_single_band_counterexample",
+    "algebra.absolute_gauge_requires_fresh_selection",
+    "projection.unitary_complex_pattern_basis",
+    "projection.solved_cartesian_coefficients",
+    "projection.cartesian_absolute_recovered",
+    "projection.cartesian_native_shift_recovered",
+    "projection.reconstruct_before_or_after_projection",
+    "projection.exposes_extra_conjugation",
+    "projection.exposes_missing_shift_mode",
+    "projection.exposes_conjugated_operator_coefficients",
+    "projection.unitary_band_basis",
+    "projection.scalar_correction_unitary_covariance",
+    "projection.nonorthogonal_basis_counterexample",
+    "consumer.absolute_local_perturbation_1_repeated_query",
+    "consumer.diagonal_local_perturbation_1",
+    "consumer.absolute_local_perturbation_2_repeated_query",
+    "consumer.diagonal_local_perturbation_2",
+    "consumer.absolute_local_perturbation_3_repeated_query",
+    "consumer.diagonal_local_perturbation_3",
+    "consumer.branch_false_has_no_scalar_correction",
+    "consumer.refuses_nonzero_correction_outside_applied_branch",
+    "consumer.refuses_screened_gauge_on_bare_operator"
+  ],
+  "check_count": 35,
+  "blocks": {
+    "operator_algebra": {
+      "isolated_branch_slopes": [
+        {
+          "absolute": "a",
+          "relative": "a - shift"
+        },
+        {
+          "absolute": "b",
+          "relative": "b - shift"
+        }
+      ],
+      "mutants_refused": [
+        "omitted",
+        "opposite_sign",
+        "doubled",
+        "offdiagonal_shift",
+        "rounded_or_fitted_substitute"
+      ],
+      "domain": "Isolated slopes use a strictly positive gap; degeneracy counterexample is not licensed.",
+      "scope": "Exact finite algebra, not a physical material convergence certificate."
+    },
+    "complex_projection": {
+      "cartesian_shift": "2/7",
+      "coefficients": [
+        "sqrt(2)/2",
+        "-I/2",
+        "-1/2"
+      ],
+      "mutants_refused": [
+        "extra_conjugation",
+        "missing_shift_mode",
+        "conjugated_operator_coefficients"
+      ],
+      "domain": "Ordinary NC orthonormal same-k/same-spin basis; nonorthogonal overlap metrics remain outside the contract."
+    },
+    "production_consumer": {
+      "cases": [
+        "first local perturbation",
+        "applied branch with zero shift",
+        "last local perturbation with complex shift",
+        "branch false with zero removed-shift coefficient",
+        "branch false with nonzero coefficient refused",
+        "bare misuse refused"
+      ],
+      "arithmetic_allowance": "64*float64_epsilon*max(1,max_abs(exact_expected_matrix)); not a physical convergence tolerance",
+      "absolute_matrix_max_errors": [
+        0.0,
+        0.0,
+        4.440892098500626e-16
+      ],
+      "absolute_arithmetic_allowances": [
+        1.495879443705474e-14,
+        2.9169649152256747e-14,
+        4.338050386745875e-14
+      ],
+      "scope": "Production consumer is executed from its immutable exact-byte archive, not a duplicated implementation."
+    }
+  },
+  "consumer": {
+    "original": "/home/administrator/projects/catalyst-nc-operator/src/catdft/qe_phonon_vertex_gauge.py",
+    "archive": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0010/inputs/production-gauge-consumer.py",
+    "sha256": "180e8a48f1298defa4e310196dad39d370b208e8ffc0686584edd87c72ae0c3a",
+    "imports": "numpy only; no local production dependencies"
+  },
+  "runtime_start": {
+    "pid": 84727,
+    "affinity": [
+      5
+    ],
+    "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-fermi-gauge-0010-v1.service",
+    "cgroup_observed": {
+      "memory.max": "2147483648",
+      "memory.current": "48869376",
+      "memory.peak": "48869376",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.swap.max": "0",
+      "memory.swap.current": "0",
+      "cpu.stat": "usage_usec 825586\nuser_usec 634868\nsystem_usec 190717\ncore_sched.force_idle_usec 0"
+    },
+    "environment": {
+      "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "python": "3.12.3",
+    "numpy": "2.5.2",
+    "sympy": "1.14.0"
+  },
+  "runtime_end": {
+    "pid": 84727,
+    "affinity": [
+      5
+    ],
+    "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-fermi-gauge-0010-v1.service",
+    "cgroup_observed": {
+      "memory.max": "2147483648",
+      "memory.current": "57032704",
+      "memory.peak": "57036800",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.swap.max": "0",
+      "memory.swap.current": "0",
+      "cpu.stat": "usage_usec 6740054\nuser_usec 6490199\nsystem_usec 249855\ncore_sched.force_idle_usec 0"
+    },
+    "environment": {
+      "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "python": "3.12.3",
+    "numpy": "2.5.2",
+    "sympy": "1.14.0"
+  },
+  "scope": "Exact gauge algebra and actual frozen production consumer only; failedG8 stays failed. No corrected native, physical convergence, continuous resource monitoring or tested restoration claim."
+}

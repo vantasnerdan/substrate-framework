@@ -1,0 +1,23 @@
+{
+  "schema": "P254-component-command-result-v1",
+  "component": "optical",
+  "argv": [
+    "timeout",
+    "60s",
+    "taskset",
+    "-c",
+    "9",
+    "env",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_optical_current_oracle.py"
+  ],
+  "exit_code": 0,
+  "stdout": "{\n  \"status\": \"passed\",\n  \"refinement\": [\n    {\n      \"step_bohr_inv\": 0.004,\n      \"linear_error\": 3.504377381510747e-08,\n      \"contact_error\": 6.106363316446262e-07\n    },\n    {\n      \"step_bohr_inv\": 0.002,\n      \"linear_error\": 8.760952628231985e-09,\n      \"contact_error\": 1.5267600973850668e-07\n    },\n    {\n      \"step_bohr_inv\": 0.001,\n      \"linear_error\": 2.1902317830953726e-09,\n      \"contact_error\": 3.817333658056687e-08\n    }\n  ],\n  \"exposed_mutations\": {\n    \"omitted_nonlocal_current\": 0.018037296754078582,\n    \"one_nonlocal_leg\": 0.03203211359539381,\n    \"wrong_electron_field_sign\": 1.7250276611184405,\n    \"Hartree_Ry_factor_two\": 0.43125691527961013,\n    \"discarded_offdiagonal_channels\": 0.008632055092278145,\n    \"omitted_nonlocal_contact\": 0.05256791863976185,\n    \"omitted_cross_contact\": 0.16171192308513122,\n    \"omitted_second_projector_legs\": 0.1725011220091489,\n    \"omitted_all_contact\": 2.590598191167754\n  },\n  \"full_free_field_hessian_det\": \"2\",\n  \"missing_A2_hessian_det\": \"-2\",\n  \"scope\": \"independent finite analytic NC example only; not a material result\"\n}\n",
+  "stderr": "",
+  "completed_at": "2026-10-28T18:41:45.248624+00:00"
+}

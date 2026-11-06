@@ -1,0 +1,17 @@
+{
+  "schema": "P254-root-allocation-decision-v1",
+  "decision": "Root297",
+  "actual_decision_time": "2026-10-31T16:27:23.368646+00:00",
+  "previous_due_time": "2026-10-31T16:55:15.638120+00:00",
+  "deadline_breach": false,
+  "next_decision_due": "2026-10-31T16:57:23.368646+00:00",
+  "action": "Before launch, actual host inventory is31.34GiB physical with16,699,856kB MemAvailable and no swap; do not treat the VM as64GiB. Keep scientific/application caps and CPUs from Root294/296, but use conservative tighter kernel envelopes for the intended concurrent jobs: saved-energy D6,7 MemoryHigh7GiB/MemoryMax8GiB; vacancy C8 MemoryHigh5GiB/MemoryMax6GiB. E003 remains original manager6/7GiB on9,10. Native D64 pilot measured2,640,957,440B process peak; two such workers plus observed original parent peak are the expectation, not a hard fit proof. C first own source receipt due15min from actual start. Preserve frozen states and all checkpoints, no cloud or memory-limit expansion. Diagnose any actual manager/resource failure, not cache occupancy alone.",
+  "evidence": [
+    "actual/proc/meminfo16:25 MemAvailable16699856kB",
+    "actual Native source0 peak2640957440B",
+    "original Dterminal parent peak1061224448B",
+    "current E manager6/7GiB already established"
+  ],
+  "allocation": "D6,7 app12GiB/worker4GiB/owned16GiB cumulative4096/28800; manager7/8GiB. C8 app8GiB/worker4GiB/owned20GiB/8192/43200; manager5/6GiB. E9,10 unchanged. No other CPU claims touched.",
+  "next_action": "C launch owner uses actual saved vacancy inputs and unchanged code; Root completes saved-energy continuation implementation and smoke."
+}

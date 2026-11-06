@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import sys,os,json,importlib.metadata as m,importlib.util as u; ds={};\nfor n in ('numpy','scipy','sympy'):\n try:\n  d=m.distribution(n); ds[n]={'version':d.version,'root':str(d.locate_file('')),'metadata_path':str(d._path),'module_origin':u.find_spec(n).origin}\n except Exception as e: ds[n]={'error':repr(e)}\nprint(json.dumps({'executable':sys.executable,'version':sys.version,'prefix':sys.prefix,'base_prefix':sys.base_prefix,'sys_path':sys.path,'distributions':ds,'affinity':sorted(os.sched_getaffinity(0))}))"
+  ],
+  "cwd": "/home/administrator/projects/substrate-ni-collective",
+  "timeout_seconds": 15,
+  "environment_overrides": {},
+  "started_utc": "2026-10-28T05:56:21.740787+00:00",
+  "exit_code": 0,
+  "timed_out": false,
+  "error": null,
+  "full_wall_seconds": 0.2207636460661888,
+  "stdout": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/prepared-time-system-metadata-001.stdout",
+    "bytes": 1175,
+    "sha256": "35c16c2446df4e23e1d897b767001978c35494b8e587c98bc6b3986cfb9b10a4"
+  },
+  "stderr": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/prepared-time-system-metadata-001.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

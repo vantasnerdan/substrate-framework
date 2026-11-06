@@ -1,0 +1,41 @@
+{
+  "schema": "P254-full-frame-block-krylov-registration-v1",
+  "status": "registered_before_implementation_and_execution",
+  "scope": "Numerical full-PW frozen-operator propagation of every original raw frame column with unchanged raw D; not physical band reduction or nonlinear evolution.",
+  "source_authority": {
+    "fused-action-material-001/result.json": "b24a137c65fff05032d0b9b04074333154e1d5879782c7d267912c532bbd2d5c",
+    "fused-action-material-001/new-full346-action.npy": "f6f990ed733a8369d5c70d1307d461539c8b633e8cd4b11455d963b33fb10c3b",
+    "original_frame": "de795e90110875a36d888655e6c27e574f7c2d9ca731b3b540ffa68e75d744cc",
+    "original_D": "6d09c3643a708f614bd054d882bb62ee47f971eedfb4bda33d39198e7f572c13",
+    "src/substrate_framework/material_frozen_action.py": "463bc2845dbcef9439e7d29298f88866b6a6f26190b8dacea7fa0974f4c7b886",
+    "src/substrate_framework/qe_material_hamiltonian.py": "f7734635ecc3f86bbb4d35bc5dd1972fea49e1442fcdc2d17adf59f1d4e24093"
+  },
+  "construction": [
+    "Complete thin QR Psi=Q0 R, no starting-column selection. Retain R and initial residual. Reject singular/ill-conditioned R rather than clip original state. Seed HQ0=(retained H Psi) R^-1; no new seed action.",
+    "Twice reorthogonalize latest H block against entire accumulated basis; SVD numerical expansion deflation only. Store actual rejected expansion residual and singular values. Limited basis retains every initial column and all physical PW rows.",
+    "Store Q and HQ in bounded preallocated full-row arrays; T=Q*HQ is NOT Hermitized; E=HQ-QT remains full row. C=Q*Psi retains all original raw column coefficients. E and initial residual are retained for every evaluated stage.",
+    "For each requested signed t, approximate Psi(t)=Q exp(-itT) C. Reuse identical Q/HQ/T across times. Never form a PW-square matrix. Basis/action/memory bounds are explicit. Request every new H-column through the supplied callable, never unwrap a supplied atomic-counting wrapper. Seed reuse is separately recorded, not charged as fresh action."
+  ],
+  "derivation": {
+    "identity": "A=-i sign(t) H, B=-i sign(t) T, F=-i sign(t) E; e(tau)=exp(A tau)(Psi-QC)+integral_0^tau exp(A(tau-s)) F exp(Bs) C ds. This identity needs only T and E=HQ-QT; imperfect numerical orthogonality is diagnosed, not silently ignored.",
+    "growth": "A supplied nonnegative g >= lambda_max((A+A*)/2) bounds the ambient semigroup. b=max(0,lambda_max((B+B*)/2)); projected anti-Hermitian content is retained. Both signs are covered by an ambient absolute anti-Hermitian norm bound. No assumption of exact Hermiticity.",
+    "analytic_envelope": "Partition [0,tau] into cells [l,r], midpoint m, halfwidth d. Y=exp(Bm)C. Expand E exp(Bu)Y to degree p-1. Its integrated norm <= sum_j 2*d^(j+1)/(j+1)! * ||E B^j Y||F + 2*d^(p+1)/(p+1)! * ||E B^p||F ||Y||F exp(||(B+B*)/2||2*d). Multiply each cell by exp(g*(tau-l)); add exp(g*tau)||Psi-QC||F. Taylor integral remainder plus logarithmic norm for both signs proves this exact-arithmetic envelope. It is not a sampled numerical quadrature upper bound.",
+    "cheap_envelope": "exp(max(g,b)*tau) * tau * ||E||F * ||C||F plus initial term is also an exact-arithmetic envelope; take min of independently valid envelopes.",
+    "qualification": "Computed envelopes use ordinary floating-point QR/actions/expm/norm/eigenvalues: diagnostics/estimates of exact-arithmetic bounds, NOT floating-point interval certificates. Seed solve error and action roundoff are separately diagnosed; no rigorous rounding enclosure is claimed. Missing target stays insufficient."
+  },
+  "oracle": {
+    "independent": ["Full dense scipy.linalg.expm versus projection", "Independent exact SymPy two-level exponential and density evolution with noncommuting D", "Nonorthogonal raw starting frame", "Invariant subspace closure", "Ambient complement coupling and basis refinement", "Non-Hermitian projected growth and signed times", "Analytic residual envelope compared with full dense error", "Action accounting and cap before execution"],
+    "mutations": ["omit original column", "flip propagation sign", "omit ambient complement", "replace raw reconstruction by normalized frame", "commute or diagonalize raw D", "silently Hermitize projected generator"],
+    "dense_absolute_tolerance": 2e-10,
+    "mutation_minimum_discrepancy": 1e-6,
+    "execution": "Independent proof must pass before actual material run; no tests or scientific execution by implementation worker."
+  },
+  "material": {
+    "sector": "spin1 Gamma 1:0,0,0; 18613 PW rows and 346 original raw columns",
+    "required_cli": ["--times", "--max-blocks", "--max-basis", "--action-cap", "--absolute-error-target", "--output", "--array-root", "--cpu"],
+    "optional_comparison": "Explicit settled full-PW SciPy receipt and digest plus retained array binding; never auto-discover pending results. Authenticate exact frame/D/stage inputs and time before comparison.",
+    "receipts": "Publish evaluated stage, all requested times, retained arrays, physical density/Gram invariants without refilling, residuals, action columns, timing and RSS before any next expansion.",
+    "storage": "Large arrays under explicit array-root outside Git; retained input action memory mapped without copying to new storage."
+  },
+  "limitations": ["Same frozen Hamiltonian only: changing potential/ionic displacement invalidates basis actions and bound", "Global density and mixed moments still require all participating sectors and physical reductions", "One-sector pilot cannot establish 128-sector coverage, nonlinear midpoint, coherence closure, long-time physical validation or speedup", "Numerical rejection/deflation and all bounds must be visible; no tolerance relaxation", "No floating-point interval certificate and no promised speedup"]
+}

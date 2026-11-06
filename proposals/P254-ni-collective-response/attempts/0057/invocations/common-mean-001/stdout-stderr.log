@@ -1,0 +1,21 @@
+Running as unit: p254-a57-common-mean-001.service
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0057/native_feedback.py", line 30, in <module>
+    if __name__=='__main__':sys.exit(main())
+                                     ^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0057/native_feedback.py", line 14, in main
+    limits={k:(cg/k).read_text().strip() for k in ('memory.max','memory.swap.max','cpuset.cpus.effective')}
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a57-common-mean-001.service/cpuset.cpus.effective'
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 3.683s
+CPU time consumed: 3.667s
+Memory peak: 108.9M
+Memory swap peak: 0B

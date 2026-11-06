@@ -1,0 +1,21 @@
+Running as unit: p254-a48-owning-streamed-EI-002.service; invocation ID: aecfe33625c3419aa3c5d8b6946a5878
+{"stage": "actual-own-native-start", "pid": 3939799, "affinity": [10], "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a48-owning-streamed-EI-002.service\n", "limits": {"memory.max": {"status": "available", "value": "268435456"}, "memory.swap.max": {"status": "available", "value": "0"}, "cpuset.cpus.effective": {"status": "unavailable", "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a48-owning-streamed-EI-002.service/cpuset.cpus.effective'"}}, "thread_environment": {"OPENBLAS_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"}}
+{"completed_q": 0, "archive": {"path": "/tmp/p254-a48-owning-pdl2e8a6/old/q-00.npz", "bytes": 20752, "sha256": "94458ecc872d785d394648257d14edebeff38be6eb5c7539bf2be086ebceaf2f"}, "newly_computed_edge_pairs": 64, "reused_edge_pairs": 0}
+{"completed_q": 1, "archive": {"path": "/tmp/p254-a48-owning-pdl2e8a6/old/q-01.npz", "bytes": 20752, "sha256": "548ea2bec65dc4d4c393b0a91afcab81a9029b297c9ba35fcb2cb94451902540"}, "newly_computed_edge_pairs": 128, "reused_edge_pairs": 0}
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0048/oracle_streamed_ei.py", line 133, in <module>
+    main()
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0048/oracle_streamed_ei.py", line 60, in main
+    dense, count, reused, _ = compute(c,reference,list(range(c.ns)),[0,1],
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/run_material_electron_ion_kernel.py", line 141, in compute
+    pi_q=np.asarray(pi_q,int),slot_spin=c.slot_spin,slot_k=c.slot_k,
+                                        ^^^^^^^^^^^
+AttributeError: 'types.SimpleNamespace' object has no attribute 'slot_spin'
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 3.572s
+CPU time consumed: 3.532s
+Memory peak: 332.0K
+Memory swap peak: 0B
+[A48-owning-streamed-EI-002-native-exit] code=1

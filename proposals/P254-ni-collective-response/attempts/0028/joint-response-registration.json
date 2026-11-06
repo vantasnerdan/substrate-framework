@@ -1,0 +1,119 @@
+{
+  "schema": "P254-joint-response-registration-v1",
+  "status": "registered-before-implementation; not executed",
+  "sources": [
+    {
+      "path": "src/substrate_framework/prepared_bloch_response.py",
+      "bytes": 12977,
+      "sha256": "fb44780809bbec9de4e5f27742513123dff098dc01d23fc91884bb41b7b083a0"
+    },
+    {
+      "path": "src/substrate_framework/prepared_covariance_source.py",
+      "bytes": 9649,
+      "sha256": "a83ab2d0c3760f30aaf24ecc90a7013883b4e0584994ceea352256c77da8fe81"
+    },
+    {
+      "path": "src/substrate_framework/material_physical_operators.py",
+      "bytes": 13641,
+      "sha256": "e2b9e6efdb09670b8088121dc12f91b4a7df8e868fcea23c41c996d5fa0cd65b"
+    },
+    {
+      "path": "src/substrate_framework/material_joint_field_scalar.py",
+      "bytes": 10960,
+      "sha256": "c403841b6b36f83bf5b66cc5488870a79e7342890ae1e7932e8e032158d2210b"
+    },
+    {
+      "path": "src/substrate_framework/material_clamped_array.py",
+      "bytes": 11098,
+      "sha256": "5c415e660242ec065c198a76c7eaf31bf172388e4f8851108bab959283001f34"
+    },
+    {
+      "path": "src/substrate_framework/ionic_gaussian_preparation.py",
+      "bytes": 6002,
+      "sha256": "85ddc70c2e856054bad33471424c788f704128049ba4eccb8ee1654d4238897e"
+    }
+  ],
+  "data": [
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/full-state-initialization-intake-001.json",
+      "bytes": 2103,
+      "sha256": "e18607c03c37e5bfc66cca56868a3f0ce58a99e174cdd940d42e6001b46ebe22"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/full-initial-boundary.snapshot.json",
+      "bytes": 461673,
+      "sha256": "550391812d873a1cf10ed02576025c68c23d23600da5b9bd3c4ba2e649832869"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/full-initial-model.snapshot.json",
+      "bytes": 316723,
+      "sha256": "90cc369dfbb7c57d38d0cde0ede99de26c978733a0338acc98c4490bb6fd1a1c"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/full-common-reference-004/full-common-reference.json",
+      "bytes": 669274,
+      "sha256": "9b7be6a210219069f8f46aae38c7ae1ba0b5c150cc35d953db8c6632084678f9"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/ionic-gaussian-material-002/ionic-gaussian.json",
+      "bytes": 13547,
+      "sha256": "94791d5a509f702b1671fd34f945d0edba5e857a0f261367c6d49461d21fa36e"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/ionic-gaussian-material-002/ionic-gaussian.npz",
+      "bytes": 6128004,
+      "sha256": "c443f7efa780111452a2446c91ea4f7c49d6898b869d52b67ed475f9e25142b8"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/joint-field-aggregate-001/result.json",
+      "bytes": 1351599,
+      "sha256": "cfcb1f9bc462c68363599f6c926e8c652c36f837e605138b15d47bcaca897aa5"
+    },
+    {
+      "path": "proposals/P254-ni-collective-response/attempts/0028/physical-spatial-material-001/result.json",
+      "bytes": 36356,
+      "sha256": "e5818b11f905f5e281a3518602d153b08f07b8483e35a2ab6877c7c34c024b70"
+    }
+  ],
+  "scope": "Independent moving-mean finite-q joint tangent and original-product two-sided ordered covariance. No material trajectory claimed.",
+  "implementation": [
+    "src/substrate_framework/joint_bloch_response.py",
+    "src/substrate_framework/joint_ordered_sources.py",
+    "src/substrate_framework/joint_response_observables.py",
+    "proposals/P254-ni-collective-response/attempts/0028/run_joint_response_oracle.py"
+  ],
+  "contracts": {
+    "mean": "explicit current endpoint frames, original D, Hermitian full-PW H callbacks containing current uniform field; no new streamed mean dependency",
+    "curvature": "C_common(q)+fixed DeltaC once at EVERY q; complex preserved",
+    "field": "Gamma only; orthonormal matter sqrtN; complex-linear Cartesian vertices with independent adjoints",
+    "ordered": "AB/BA original quasifree D and stored ionic/field W; explicit product at t0 only; dual probes pull BOTH times to t0",
+    "normalization": "electron source N*w_s, readout w_s; canonical Fourier ions W (not W/N); field global; local spatial sum 1/N q/-q, no dagger",
+    "scope": "screened tangent covariance distinct from bare external-field electron noise and coherent impulses"
+  },
+  "oracle": {
+    "methods": [
+      "SymPy scalar derivatives",
+      "independent dense moving mean and tangent SciPy DOP853",
+      "finite-Fock quasifree t0 contractions",
+      "two-sided actual transition and dual-probe pullbacks"
+    ],
+    "cases": [
+      "Gamma and nonGamma",
+      "unequal PW/ranks",
+      "singular complex D",
+      "electronic ionic field origins",
+      "equal/unequal nonzero second times",
+      "moving nonstationary baseline"
+    ],
+    "mutations": [
+      "wrong adjoint",
+      "missing moving-frame connection",
+      "DeltaC omitted/doubled",
+      "missing sqrtN/Nw",
+      "field/contact/mixed/current omission",
+      "stationarity and product reset",
+      "bare relabeled screened"
+    ]
+  },
+  "command": "cd /home/administrator/projects/substrate-ni-collective && OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 taskset -c 6-10 python proposals/P254-ni-collective-response/attempts/0028/run_joint_response_oracle.py --output proposals/P254-ni-collective-response/attempts/0028/joint-response-oracle-001.json"
+}

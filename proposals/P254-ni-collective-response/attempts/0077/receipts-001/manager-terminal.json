@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemctl",
+    "--user",
+    "show",
+    "p254-a77-serial-accumulator-001.service",
+    "--property=Id,InvocationID,Result,ExecMainCode,ExecMainStatus,CPUUsageNSec,MemoryPeak,MemorySwapPeak,MemoryMax,MemorySwapMax,Restart,RuntimeMaxUSec,ActiveState,SubState"
+  ],
+  "returncode": 0,
+  "stdout": "Restart=no\nRuntimeMaxUSec=4min\nResult=exit-code\nExecMainCode=1\nExecMainStatus=1\nMemoryPeak=524288\nMemorySwapPeak=0\nCPUUsageNSec=57774052000\nMemoryMax=3221225472\nMemorySwapMax=0\nId=p254-a77-serial-accumulator-001.service\nActiveState=failed\nSubState=failed\nInvocationID=dc4303a342734adf8a24d98c9559fa0c\n",
+  "stderr": ""
+}

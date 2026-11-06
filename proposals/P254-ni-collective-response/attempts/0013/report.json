@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "attempt": "0013",
+  "as_of": "2026-10-27T15:32:07.789536+00:00",
+  "status": "complete_finite_action_pilot_native_transfer_not_yet_earned",
+  "preregistration_commit": "44bcc9d1",
+  "route_verdict": "established as stated for the evaluated finite functional; material composition remains missing",
+  "strongest_useful_result": "A two-amplitude, two-spin finite mean-field functional now has independently differentiated constrained static curvature, including explicit second derivatives, and selfconsistent isolated dynamics checked against a direct density-matrix equation. This supplies a noncircular construction and exposes the frozen-screening approximation; it does not supply material PBE calibration.",
+  "registered_scope": "registration.json",
+  "source_binding": "source-manifest-002.json",
+  "source_authority": [
+    {
+      "citation": "F. Giustino, Electron-phonon interactions from first principles (2017), DOI10.1103/RevModPhys.89.015003",
+      "location": "author manuscript pp26-27/Eqs141-145",
+      "use": "Bare/dressed distinction and explicit frequency-freezing approximation only, not assertion the finite U equals PBE."
+    },
+    {
+      "path": "attempts/0007/interpretation.json",
+      "use": "Existing Gibbs/isolated response and mean-number distinctions consumed without old-oracle replay."
+    }
+  ],
+  "static_evidence": {
+    "receipt": "static-first.stdout",
+    "outcome": "static-first.outcome.json",
+    "model": "Explicit mathematical four-orbital/two-collinear-spin mean-field FD functional in registration; NOT actual two-atom NC material fixture.",
+    "functional_to_response": "For perturbation h=h0-uB+D U delta_d +uWu/2, static Hessian=Kion+Tr(gamma0 W)-C; C derives from the constrained independent-electron Gibbs metric and induced-density solve, not a supplied fitted counterterm.",
+    "independent_oracle": "SCF FD selfconsistency plus mean constraints, followed by direct differentiation of the complete minimized scalar free energy. Scalar solver does not call the analytic response.",
+    "ensembles": [
+      {
+        "ensemble": "fixedN-relaxedM",
+        "analytic_hessian": [
+          [
+            2.091240152968993,
+            0.3345008543350855
+          ],
+          [
+            0.3345008543350855,
+            1.3993948318321479
+          ]
+        ],
+        "finite_difference": [
+          {
+            "h": 0.02,
+            "error_max": 3.629329827559147e-06,
+            "observed_order": null,
+            "registered_allowance": 0.0008
+          },
+          {
+            "h": 0.01,
+            "error_max": 9.073416371574439e-07,
+            "observed_order": 1.9999854030796311,
+            "registered_allowance": 0.0002
+          },
+          {
+            "h": 0.005,
+            "error_max": 2.2684597733579892e-07,
+            "observed_order": 1.9999327877729165,
+            "registered_allowance": 5e-05
+          }
+        ],
+        "mutations": {
+          "wrongGC": {
+            "error_max": 0.010835186080011994,
+            "detected": true
+          },
+          "missingW": {
+            "error_max": 0.23928552877779952,
+            "detected": true
+          },
+          "droppedUcross": {
+            "error_max": 0.0007560349805073585,
+            "detected": true
+          }
+        },
+        "all_minima_converged": true
+      },
+      {
+        "ensemble": "fixedN-fixedM",
+        "analytic_hessian": [
+          [
+            2.094716904120507,
+            0.33194676791949057
+          ],
+          [
+            0.33194676791949057,
+            1.401271111477726
+          ]
+        ],
+        "finite_difference": [
+          {
+            "h": 0.02,
+            "error_max": 3.287166345344872e-06,
+            "observed_order": null,
+            "registered_allowance": 0.0008
+          },
+          {
+            "h": 0.01,
+            "error_max": 8.218084275313231e-07,
+            "observed_order": 1.9999704347670277,
+            "registered_allowance": 0.0002
+          },
+          {
+            "h": 0.005,
+            "error_max": 2.054481313962242e-07,
+            "observed_order": 2.0000279163372436,
+            "registered_allowance": 5e-05
+          }
+        ],
+        "mutations": {
+          "wrongGC": {
+            "error_max": 0.014312017711500147,
+            "detected": true
+          },
+          "missingW": {
+            "error_max": 0.23928560925777376,
+            "detected": true
+          },
+          "droppedUcross": {
+            "error_max": 0.0007611680864734183,
+            "detected": true
+          }
+        },
+        "all_minima_converged": true
+      }
+    ]
+  },
+  "dynamic_evidence": {
+    "receipt": "dynamic-exact-reference.stdout",
+    "outcome": "dynamic-exact-reference.outcome.json",
+    "probe": {
+      "z": {
+        "real": 0.3333333333333333,
+        "imag": 0.2
+      },
+      "selfconsistent": {
+        "real": [
+          [
+            0.06437467067152058,
+            -0.0010734129739812031
+          ],
+          [
+            -0.0010734129739812062,
+            0.026017035908132275
+          ]
+        ],
+        "imag": [
+          [
+            0.03262422418965717,
+            0.007008747381257906
+          ],
+          [
+            0.007008747381257904,
+            0.012835961293543016
+          ]
+        ]
+      },
+      "direct_density_equation": {
+        "real": [
+          [
+            0.06437467067152058,
+            -0.001073412973981211
+          ],
+          [
+            -0.0010734129739812075,
+            0.02601703590813228
+          ]
+        ],
+        "imag": [
+          [
+            0.03262422418965719,
+            0.0070087473812579185
+          ],
+          [
+            0.0070087473812579185,
+            0.012835961293543027
+          ]
+        ]
+      },
+      "frozen_static_vertex": {
+        "real": [
+          [
+            0.06338709802701059,
+            -0.0010719652933049383
+          ],
+          [
+            -0.0011761529915946048,
+            0.025834585306712326
+          ]
+        ],
+        "imag": [
+          [
+            0.0328627680455461,
+            0.0071203885457277885
+          ],
+          [
+            0.006946458550721699,
+            0.012896731556458863
+          ]
+        ]
+      },
+      "full_vs_direct_max_error": 2.0816681711721685e-17,
+      "frozen_vs_direct_max_discrepancy": 0.0010159738674625494,
+      "wrong_U_sign_discrepancy": 0.0030469927342118798,
+      "complex_gauge_error": 7.006328859705253e-18,
+      "frozen_cross_channel_asymmetry": 0.00020274792141404768
+    },
+    "exact_frequency_freezing": {
+      "difference": "-b**2*c*kernel*(c - c0)/((c*kernel + 1)*(c0*kernel + 1))",
+      "exact_witness": "1/9",
+      "scope": "Conditional finite scalar identity, not a material error estimate."
+    },
+    "isothermal_minus_isolated_max": 0.10591482488192953,
+    "meaning": "The static-screened mixed contraction differs from this declared functional\u2019s selfconsistent dynamics. Giustino Eq145 explicitly makes a frequency-freezing approximation; this is not a refutation of an approximation or of the Ni/LENR route, and gives no material size estimate.",
+    "complex_scope": "Same-eigenbasis complex phase covariance only; not native finite-q, time-reversal/Onsager theorem or degenerate-block admission."
+  },
+  "first_failures_retained": [
+    {
+      "outcome": "dynamic-first.outcome.json",
+      "mechanism": "Isolated worktree has no .venv; use existing shared substrate-framework interpreter, explicit PYTHONPATH=src."
+    },
+    {
+      "outcome": "dynamic-existing-interpreter.outcome.json",
+      "mechanism": "Float-zero gap key does not index SymPy zero in existing symbolic curvature helper. Consumer corrected to exact fixture reference; admitted helper unchanged."
+    }
+  ],
+  "what_this_changes": "Do not identify frozen static screening with a complete conserving same-functional action. Prefer same-functional induced-density construction for exact composition; if retaining Eq145 approximation, measure its error at material frequencies rather than import equality or fit a counterterm.",
+  "next_decisive_action": "Consume NativeActionBridge readiness to preregister the cheapest actual same-functional two-coordinate Gamma/nonzero-q curvature experiment; no renewed full-matrix production.",
+  "not_earned": [
+    "Actual spin-PBE/SG15 action mapping and independent native constrained curvature",
+    "G1 joint force/mode calibration or G2/L2",
+    "Resolved physical absorption/lifetime/bath",
+    "Many-region propagation/design comparison or nuclear transition/energy disposal",
+    "Campaign completion, terminal PR or merger"
+  ],
+  "scientific_review": "Complete static and dynamic slices of one independent review transaction are correct with empty complete finding arrays; full captures and exact finite-model disposition in review-admission.json. No old proof rerun. Continue actual NiH construction; a finite approximation mismatch is not campaign success."
+}

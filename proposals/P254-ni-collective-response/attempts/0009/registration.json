@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "registered_at": "2026-10-19T18:33:51.300Z",
+  "canonical_issue": 225,
+  "parent_attempt": "0008",
+  "source_baseline": "9945b19d",
+  "defect": "Independent review P2: magnitude/doubled-force checks do not expose omission of the printed-component uncertainty radius. Current numerical native conclusion and implementation are supported; repair the verifier, not the native data.",
+  "scope": "Bounded force-print precision/enclosure oracle only; preserve all original 0008 sources/receipts and actual native outputs. No native recalculation or unchanged unit/geometry/model suites.",
+  "inputs": {
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0008/receipt.json": "3435b775035a00c476866aebf356300948a330a4a6254812eb60313f448c82bc",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0008/report.json": "4f09a74ad6902d0206d0d21e0f2666b894405180ca2c7f5be018a749f405b6f7",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0008/check_forces.py": "469bd6df5f5839a3352e68a83fbfd8b342cc3bc5e478a9e7e8fb4fef152a12ba",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0008/native_parse.py": "e3dbd58eca89cf7280c7fca1caab3fecc2cdbdfa13de7b0cdf2c9388b7e0b35b",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0008/reviews/independent-primary-review-001.json": "02c9821679855d202bfdbe7137f9e4349b4ed2762bf001bcab131f94eabf5575",
+    "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_primary_boundary.py": "4c6da72d675bedec94e66830c19ab0c6e3bc4b1a0ab6bf8c838b59626abbd506",
+    "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/material/loaded-ni31h6/forces/fdb6464b18d5199d07f09aec8532d7dc8f93150f76ad30346514cb7ad1b99889/scf/attempts/88445eb9b4de4950850a7e97d2dd98b4/pw.stdout": "5a9c1fc041da5e8ca99ee805e6e70bb30a6174f51427ed41850e9c0cf9f7a212"
+  },
+  "blocks": [
+    {
+      "name": "component_box",
+      "construction": "Exact rational maximum over all8 corners for each3-component box, checked against independent sum((abs(f_i)+h)^2). SymPy barycentric identity proves any interior squared norm is bounded by a convex combination of corner squared norms for0<=t_i<=1 andh>=0; a wrong variance coefficient exposes the identity."
+    },
+    {
+      "name": "native_enclosure",
+      "construction": "Reuse only frozen native stdout parser and source-bound CODATA2006 force_factor from0008 receipt. Actual float inputs to force_rounding_upper and h=5e-9Ry/bohr*factor are embedded as exact decimal rationals for corner comparison; original separate unit/arithmetic budget retained. All37 current bounds plus a64-epsilon arithmetic comparison allowance must enclose exact corner maxima, and unchanged native maximum/primary gate must reproduce0008."
+    },
+    {
+      "name": "exposing_witnesses",
+      "construction": "Explicit printed-zero and mixed-sign boxes plus a near-threshold one-axis printed vector(g-h/2,0,0),g=.005. Exact corner maximum crosses gate while printed center does not. Omit radius,zero radius,halve radius,and drop sqrt3 mutants must each fail actual enclosure; near-threshold omission must cause a rejected false gate acceptance."
+    }
+  ],
+  "execution": {
+    "cpu": 5,
+    "memory_max_bytes": 2147483648,
+    "blas_threads": 1,
+    "owner": "durable labeled no-focus herdr + systemd",
+    "checkpoints": "Atomic complete blocks; no claim of tested checkpoint restoration. New output directory/no overwrite originals."
+  },
+  "limits": [
+    "Print precision only, not DFT discretization/refinement uncertainty",
+    "No new material modes, equilibrium, spin uniqueness, L1, loss/coherence or nuclear license"
+  ],
+  "review": "Complete bounded correction receives independent follow-up; preserve original P2 review."
+}

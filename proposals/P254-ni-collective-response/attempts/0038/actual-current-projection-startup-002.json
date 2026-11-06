@@ -1,0 +1,80 @@
+{
+  "schema": "P254-A38-actual-own-current-startup-v1",
+  "observed_at": "2026-11-04T20:14:35.053227+00:00",
+  "Root_allocation": {
+    "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/msc1463-root530-owning-repair-remaining-current-new-oracle-allocation.json",
+    "bytes": 2024,
+    "sha256": "813a9ba73e13e65b29a352d53f84ab16373089d17f6bedaab6513a2ddf63fef0"
+  },
+  "unit": "p254-a38-current-projection-002.service",
+  "manager": {
+    "Restart": "no",
+    "RuntimeMaxUSec": "4min 35s",
+    "MainPID": "3560291",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a38-current-projection-002.service",
+    "MemoryMax": "6442450944",
+    "MemorySwapMax": "0",
+    "ActiveState": "active",
+    "SubState": "running",
+    "InvocationID": "b35cb3c9e3eb4e888d11fab69475854c"
+  },
+  "actual_kernel": {
+    "pid": 3560291,
+    "invocation_id": "b35cb3c9e3eb4e888d11fab69475854c",
+    "affinity": [
+      6
+    ],
+    "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a38-current-projection-002.service",
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "cgroup.procs": [
+      "3560291"
+    ],
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "owned_tab": "w1:t64",
+  "owned_pane": "w1:p64",
+  "source_commit": "5dc43de5",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a38-current-projection-002.service",
+    "--property=RuntimeMaxSec=275",
+    "--property=MemoryMax=6G",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0038:/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0037:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0031:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0029:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "/usr/bin/taskset",
+    "-c",
+    "6",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0038/export_current_projection.py",
+    "--basis-complete",
+    "/var/tmp/p254-a37-source0-two-mode-bath692-003/basis-complete.json",
+    "--a37-filtered-complete",
+    "/var/tmp/p254-a37-source0-two-mode-influence692-001/filtered-complete.json",
+    "--a37-temporal-result",
+    "/var/tmp/p254-a37-source0-two-mode-influence692-001/result.json",
+    "--current-reference",
+    "/var/tmp/p254-a35-uniform-current-source0-002/result.json",
+    "--output",
+    "/var/tmp/p254-a38-source0-current-projection-002"
+  ],
+  "scope": "Actualstartup only. Fresh275s conservativelywithinoriginal300sless24.482chargedfirstfailure; no completecurrent/jointresult yet."
+}

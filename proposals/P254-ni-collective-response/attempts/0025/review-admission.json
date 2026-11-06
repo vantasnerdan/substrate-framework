@@ -1,0 +1,469 @@
+{
+  "actual_at": "2026-10-28T03:31:07.226792+00:00",
+  "decision": "ACCEPT_SCOPED_ACTUAL_MATERIAL_COMPONENT_AND_PROSPECTIVE_CONTROLS",
+  "reports": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/reference-physics-review-001.json",
+      "bytes": "22015",
+      "sha256": "74ee136e5a1b5a886716c87201bde884b999d6614040a87cda2ebc518c24fad3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/factor-physics-review-001.json",
+      "bytes": "24041",
+      "sha256": "ef87ac790bf3657034a797f4c6588b36d57dba3e64191e57892e883dbde4a340"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json",
+      "bytes": "35067",
+      "sha256": "0d8dc7a33e5184a566ec1165290f6316fd5198ec8f8e16a1279efb73c932098e"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-correction-review-002.json",
+      "bytes": "68688",
+      "sha256": "5510fd1e5e54693b015101c2aa85a2a1e01e6e568cc2200ee666f219b7e2f627"
+    }
+  ],
+  "original_executed_source_commit": "aa5908f7",
+  "original_result_packet": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json",
+    "bytes": "25990",
+    "sha256": "1cb3f395ecbe16d2d0285f2cd72f8b3b1534cc34e3e55c61d52e8d42b2a427ff"
+  },
+  "correction_packet": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-correction-review-packet-001.json",
+    "bytes": "8731",
+    "sha256": "6c86ce897332b602156f61b8f29365875e27d24f3021843d9293d0286e99ed7f"
+  },
+  "complete_findings_and_dispositions": [
+    {
+      "id": "MI25-F1",
+      "status": "resolved",
+      "severity": "P2",
+      "priority": 2,
+      "confidence": 0.94,
+      "title": "Keep the invocation deadline effective through terminal publication",
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+      "line_start": 152,
+      "line_end": 154,
+      "body": "Both producers cancel ITIMER_REAL and snapshot elapsed_seconds before serializing and fsyncing the terminal, rotated summary and terminal event; neither rechecks remaining_seconds afterward. If final publication straddles the admitted deadline, especially on an explicitly reduced-time resume, this path can finish with status complete and exit_code 0 despite exceeding that invocation allowance. The retained service copies enforce their full 300/180-second ceilings, not every smaller grant accepted by admit. The current successful runs are not shown to have exceeded their grants; the defect is the new finalization path and its advertised BOOT-through-exit accounting.",
+      "evidence": [
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+          "lines": "152-169",
+          "detail": "Disarms timer, records elapsed time, then writes terminal/summary/event without another time check."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py",
+          "lines": "268-272",
+          "detail": "Also disarms the timer before calling OutputRun.finish."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_factor_pilot.py",
+          "lines": "206-222",
+          "detail": "Same ordering in the factor finalizer; lines14-16 and165 explicitly include serialization or through-exit time in accounting."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_run_contract.py",
+          "lines": "89-91,99-108",
+          "detail": "Admits positive bounded remaining_seconds, including smaller resume allowances; time allowance is deliberately outside recipe identity."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-production.service",
+          "lines": "15",
+          "detail": "Retained manager ceiling is RuntimeMaxSec=300.",
+          "original_report_lines": "16-18",
+          "citation_correction": "RuntimeMaxSec is on line15 of both retained source units; original report is unchanged."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-production.service",
+          "lines": "15",
+          "detail": "Retained manager ceiling is RuntimeMaxSec=180.",
+          "original_report_lines": "16-18",
+          "citation_correction": "RuntimeMaxSec is on line15 of both retained source units; original report is unchanged."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/terminal-f77d41a852a6422bbeadb9c8508f316b.json",
+          "lines": "1",
+          "detail": "Recorded elapsed_seconds=78.71301386412233."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/telemetry.jsonl",
+          "lines": "8",
+          "detail": "Terminal event records elapsed_seconds=78.76450207503513, after the terminal snapshot."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-pilot-001/terminal-6c890f1989dd4ba389cf9fbcb9eeb5d7.json",
+          "lines": "1",
+          "detail": "Recorded elapsed_seconds=65.5162747609429 and BOOT-through-exit accounting text."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-pilot-001/telemetry.jsonl",
+          "lines": "4",
+          "detail": "Terminal event records elapsed_seconds=65.58447028230876, after the terminal snapshot."
+        }
+      ],
+      "consumer_impact": "A Root consumer relying on the immutable successful terminal and its remaining-time accounting can accept an over-allowance finalization. Existing executed consumers require complete/exit0 but do not independently enforce a smaller invocation deadline.",
+      "narrow_correction": "Keep publication inside the admitted time authority: retain deadline enforcement through final writes and make an over-deadline finalization fail, with bounded failure-receipt handling. Ensure the enclosing manager deadline is derived from the exact invocation grant, including reduced resumes. Label the in-process timestamp as a pre-publication snapshot and use the existing post-exit owner receipt for through-exit accounting rather than claiming that a receipt can measure its own later fsync/exit.",
+      "verification_status": "Read-only correction review of current source plus existing executed before/after control receipts; no reviewer execution.",
+      "current_artifact_effect": "No invalidation of either completed material archive set; both observed manager outcomes are success/exit0 and the retained runtimes are below the full grants.",
+      "original_status": "open_source_correction",
+      "finding_evidence_version": "Original executed source bank aa5908f7; original body, impact and proposed correction below are historical, not allegations against the corrected source.",
+      "original_verification_status": "Source-proven conditional path; no timeout experiment executed. The two observed terminal/event timestamps are existing execution evidence, not newly calculated timings.",
+      "disposition_confidence": 0.98,
+      "resolution": {
+        "decision": "MI25-F1 resolved for current prospective producer/publication controls.",
+        "source_evidence": [
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_publication.py",
+            "lines": "63-75",
+            "detail": "Grant-derived time checks and alarm remain active; first-checkpoint allowance is retained until a useful block exists."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_publication.py",
+            "lines": "80-115",
+            "detail": "Serialization, real write/fsync, rotation/publication and post-publication boundaries check time; a newly published immutable receipt is withdrawn on a detected failure."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_publication.py",
+            "lines": "131-160",
+            "detail": "finish arms rather than disables the deadline, labels elapsed time pre-publication, requires successful post-exit manager authority, checks after terminal printing, and fails with bounded fallback rather than late success."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_publication.py",
+            "lines": "22-39",
+            "detail": "Reads typed RuntimeMaxUSec for the actual own user-service object using explicitly bound busctl."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_run_contract.py",
+            "lines": "25-28,36-41,73-77",
+            "detail": "Own runtime limit enters runtime_context; busctl enters source bindings; _context requires the observed limit to be positive and no larger than the exact decimal remaining-time grant."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py",
+            "lines": "237-245,258-260",
+            "detail": "Reference producer admits before publication and delegates finalization without disarming its deadline."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+            "lines": "87-95,149-153",
+            "detail": "Reference output lifecycle routes events and finish through the shared Publication implementation."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_factor_pilot.py",
+            "lines": "177-182,198-200",
+            "detail": "Factor producer likewise admits, arms and uses the shared publisher through finalization."
+          }
+        ],
+        "executed_evidence": [
+          "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-before-result-001.json",
+          "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-after-result-001.json",
+          "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-actual-context-001.json",
+          "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/manager-grant-guard-001.json",
+          "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-post-exit-manager-001.txt",
+          "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-finalization-before.outcome.json",
+          "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-finalization-after.outcome.json",
+          "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-control-actual-context.outcome.json",
+          "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-manager-grant-guard.outcome.json",
+          "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-control-post-exit.outcome.json"
+        ],
+        "observed": "The existing before control reproduces old success after the declared deadline. The after control calls real fsync and adds a controlled delay inside its wrapper; its active alarm produces exit1, no successful terminal and an unchanged isolated checkpoint. Both actual user-manager context-only CLIs return context-only/exit0 and record own RuntimeMaxUSec15000000. Against those actual contexts the exact15-second grant is accepted, a14-second grant and unavailable manager limit are refused. The saved manager start --wait command and post-exit show command both return0; post-exit records show success/inactive/MainPID0.",
+        "consumer_impact_after_correction": "A prospective successful terminal is explicitly a pre-publication snapshot and must be paired with successful post-exit manager authority. That ownership requirement is exercised for the real diagnostic CLIs, while archive consumers still receive their trusted caller-owned receipt. No current in-scope dispatch drops the new runtime-limit field or bypasses the publisher in a material finalizer.",
+        "limits": "This does not claim a newly executed material job or arbitrary shorter-resume production. A controlled delay after real fsync is the exercised failure mechanism, not a naturally occurring filesystem stall measurement. Python signal delivery and process-exit authority remain distinct.",
+        "remaining_correction": "None for MI25-F1 at the reviewed scope; retain the post-exit authority requirement for future grants."
+      }
+    },
+    {
+      "id": "MI25-F2",
+      "status": "resolved",
+      "severity": "P2",
+      "priority": 2,
+      "confidence": 0.97,
+      "title": "Stop full metadata writes when the output allowance is exhausted",
+      "file_path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+      "line_start": 159,
+      "line_end": 167,
+      "body": "OutputRun.finish detects insufficient output allowance but merely changes status and then still writes the full terminal and summary; the factor finalizer performs the same full writes with no cap check. A grant too small to fund metadata, or a resumed output directory already at its granted limit, therefore continues adding files after the budget failure. admit currently accepts any positive output_max_bytes up to the ceiling, so the fixed reserve does not eliminate this path: configure/budget can reject the run and then finally performs the writes anyway. This violates the output cap precisely on its failure path.",
+      "evidence": [
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+          "lines": "106-116,152-169",
+          "detail": "The check rejects exhausted allowance, but finish unconditionally writes full terminal/summary/event after its own cap branch."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py",
+          "lines": "258-272",
+          "detail": "A configure/check failure still flows through run.finish."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_factor_pilot.py",
+          "lines": "51-59,206-225",
+          "detail": "Budget checks reserve metadata during production, but final terminal/summary/event writes do not enforce the remaining output allowance."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_run_contract.py",
+          "lines": "92-93",
+          "detail": "Only a positive upper-bounded integer is required; no minimum metadata reservation is admitted."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py",
+          "lines": "245-253",
+          "detail": "Context publication precedes grant admission."
+        },
+        {
+          "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_factor_pilot.py",
+          "lines": "183-190",
+          "detail": "Factor context publication also precedes grant admission."
+        }
+      ],
+      "consumer_impact": "A failed or resumed bounded producer can exceed Root-owned disk-output authority while reporting an output-cap failure. The manager memory/time limits do not enforce aggregate output bytes.",
+      "narrow_correction": "Admit enough output authority for the actual context and bounded failure receipt before full publication. On an exhausted-output branch, preserve existing immutable artifacts and publish only a compact receipt that fits a genuinely reserved allowance; do not unconditionally duplicate full source/output inventories into terminal and summary files. Apply the same finalization rule to both producers.",
+      "verification_status": "Read-only correction review of current source plus existing executed before/after control receipts; no reviewer execution.",
+      "current_artifact_effect": "The existing complete outputs and exact-readback evidence remain usable; this is a correction to failure/reuse boundaries, not to numerical arrays.",
+      "original_status": "open_source_correction",
+      "finding_evidence_version": "Original executed source bank aa5908f7; original body, impact and proposed correction below are historical, not allegations against the corrected source.",
+      "original_verification_status": "Static control-flow finding only; no cap-failure execution was authorized or performed. No output-cap breach is claimed for the supplied successful runs.",
+      "disposition_confidence": 0.98,
+      "resolution": {
+        "decision": "MI25-F2 resolved for current prospective producer/publication controls.",
+        "source_evidence": [
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_publication.py",
+            "lines": "20,77-87",
+            "detail": "Counts actual serialized UTF-8 bytes and current directory files before publication, reserving a compact failure allowance for nonterminal writes."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_publication.py",
+            "lines": "89-115,118-129",
+            "detail": "Full writes and telemetry use the same allowance checks; temporary-file bytes are budgeted before writing and unfinished new temporaries are removed on handled failures."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_publication.py",
+            "lines": "131-160",
+            "detail": "Oversized finalization does not dump full inventory again: it attempts a separately budget-checked compact failure terminal, otherwise journal-only refusal."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_publication.py",
+            "lines": "42-48",
+            "detail": "Journal fallback is failed/exit1 with a bounded error string, not an unbounded file fallback."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py",
+            "lines": "237-245,258-264",
+            "detail": "Production admission precedes the reference context file; missing publication authority leads to refusal rather than an emergency full-file write."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_material_factor_pilot.py",
+            "lines": "177-182,198-203",
+            "detail": "Factor context and finalization use the same admitted publisher; no-authority fallback is journal-only."
+          },
+          {
+            "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+            "lines": "144-153",
+            "detail": "Reference rotating summaries and finish are routed to Publication instead of the former unconditional full metadata writes."
+          }
+        ],
+        "executed_evidence": [
+          "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-before-result-001.json",
+          "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-after-result-001.json",
+          "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-finalization-before.outcome.json",
+          "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-finalization-after.outcome.json"
+        ],
+        "observed": "The existing before control records the old144-byte cap expanding to799bytes despite failure. The corrected exhausted-cap case records144bytes used under the144-byte cap, exit1, journal-only refusal and the original checkpoint unchanged. The compact-failure case records247bytes used under8192, exit1 and no full inventory dump. The positive publication records722bytes under65536 and a complete/exit0 terminal with explicit post-exit authority wording. These values are quoted from executed receipts, not recomputed in review.",
+        "consumer_impact_after_correction": "A failed producer no longer enlarges a full output directory with full terminal/summary inventory copies. If no compact receipt can fit or time is exhausted, absence of a successful terminal and the independent manager failure remain the authority; existing scientific checkpoints are not removed.",
+        "limits": "Output accounting is within the single protocol-owned directory and immutable-output convention. No concurrent-hostile-writer, filesystem-quota or whole-OS claim is introduced.",
+        "remaining_correction": "None for MI25-F2 at the reviewed scope."
+      }
+    }
+  ],
+  "complete_integration_qualifications": [
+    {
+      "id": "Q1",
+      "status": "carried_accepted_history",
+      "detail": "Carry all0024 accepted findings/dispositions and retained qualifications from review-admission.json, including its original intake/deadline history, unavailable unloaded counters, initial banner timeout, known-knot-only G0 repair, protocol-immutable path readback and isolated summary-writer crash scope. Do not relabel that prior crash as a0025 producer exercise.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/../0024/review-admission.json"
+      ],
+      "original_review_reference": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json"
+    },
+    {
+      "id": "Q2",
+      "status": "observed_target_miss_not_scientific_failure",
+      "detail": "Reference first useful checkpoint11.51608568802476 seconds met its30-second target. Factor first useful checkpoint34.98726738523692 seconds missed30; its terminal explicitly records false. Both recorded first checkpoints are within the90-second hard allowance. Successful completion does not erase the target miss or authorize an unchanged retry.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-output-consumer-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json:437-444"
+      ],
+      "original_review_reference": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json"
+    },
+    {
+      "id": "Q3",
+      "status": "resource_claim_limited",
+      "detail": "The own-process limits are observed; manager peak counters are reported unset after completed units. No measured memory/CPU peak is accepted or reconstructed. Optional cpuset unavailability is retained, not turned into another gate.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json:445-445",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/production-allocation-001.json:4-8",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/actual-production-context-admission-001.json"
+      ],
+      "original_review_reference": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json"
+    },
+    {
+      "id": "Q4",
+      "status": "terminal_view_timeout_retained",
+      "detail": "The terminal-view wait bg_40 timed out. Its registered wait deadline was230 seconds; no cause is established here. Independent matching producer terminals, manager outcomes, notices and saved-array consumers support completion; a timed-out display wait is neither successful view evidence nor a scientific run failure.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/terminal-wait-dispatch-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json:456-456",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-result-intake-decision-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/view-retirement-001.json"
+      ],
+      "original_review_reference": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json"
+    },
+    {
+      "id": "Q5",
+      "status": "resolved_at_registered_isolated_summary_writer_boundary",
+      "detail": "The previously missing registered current-generation checkpoint-boundary exercise is now demonstrated. One child executing the corrected shared Publication.write was genuinely SIGKILLed immediately after the actual isolated summary-to-summary.prev rename. Its parent observed returncode-9 and the child PID marker, recovered the previous combined manifest byte-identically, authenticated all six original reference archives and restored both original factor APIs using isolated receipt copies and archive symlinks, and rewrote the isolated summary to exactly the original bytes. This resolves Q5 only at the registered single shared-summary-writer/completed-checkpoint scope. It is not full-producer or user-service interruption, unfinished PBE/H0/FFT/contraction continuation, old-source migration, randomized crash coverage, storage power-loss or hostile-replacement proof.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/implementation-registration.json:45",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/producer-source-contract.json:12",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-corrected-control-intake-003.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/checkpoint-crash-result-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/checkpoint-crash-execution-001.json",
+        "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-checkpoint-crash.outcome.json"
+      ],
+      "original_review_reference": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json",
+      "original_status": "registered_recovery_proof_not_demonstrated_in_current_packet",
+      "original_detail": "implementation-registration.json:45 calls for current-production readback and a checkpoint-boundary crash proof; producer-source-contract.json:12 describes one current-generation isolated summary-writer exercise. The supplied0025 evidence instead demonstrates normal saved-array readback and committed-reference API restoration, and explicitly disclaims crash/service/unfinished-operation recovery. Preserve that distinction and the unexercised registered item in Root disposition. No new crash run, numerical rerun or additional acceptance gate is requested by this review; current artifacts may be consumed within the narrower demonstrated scope.",
+      "original_evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/implementation-registration.json:45",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/producer-source-contract.json:12",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/restored-reference-result-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json:454-454"
+      ]
+    },
+    {
+      "id": "Q6",
+      "status": "original_source_transport_qualified",
+      "detail": "The full reference map is a Root-bound transport reconstruction, not a producer-attested digest: the original producer supplied null count/hash. The initial truncated capture remains quarantined. Subsequent source-access inventory closes the new source/binary and WFC identities; map availability alone is not executed numerical equivalence.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/reference-map-transport-provenance.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/source-access-inventory.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/reference-map.complete-transport.txt:11-19"
+      ],
+      "original_review_reference": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json"
+    },
+    {
+      "id": "Q7",
+      "status": "original_handoff_history_retained",
+      "detail": "The317-byte material-factor-producer-handoff.original.txt was only a resumed clarification, not the complete original handoff. producer-report-recovery-001.json identifies the3785-byte original recovered from the immutable transcript; its digest is a Root transport binding. Original backend handoff names the delivered7969-byte builder, while the current9401-byte builder is separately covered by source-integration-corrections and source-wave admission. Do not present the old handoff digest as the current builder identity.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/producer-report-recovery-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-factor-producer-handoff.recovered-original.txt",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/internal-pbe-handoff.original.txt",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/source-integration-corrections-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/source-wave-admission-001.json"
+      ],
+      "original_review_reference": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json"
+    },
+    {
+      "id": "Q8",
+      "status": "schedule_breaches_preserved",
+      "detail": "Carry the recorded source intake lateness, missed01:05 producer-source intake, late01:10 Root decision, missed01:45 output intake, and later02:00/02:05 packet/decision lateness. Later allocations and successful results do not retroactively make those deadlines timely. These are management-history qualifications, not grounds to invent a scientific failure.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-build-oracle-decision-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-producer-source-decision-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-result-intake-decision-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/root-review-allocation-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json:457-457",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-correction-review-packet-001.json"
+      ],
+      "original_review_reference": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json",
+      "correction_wave_history": "Also retain the missed02:45 source intake and02:50 Root decision, with actual02:53:09 decision as stated in the correction packet. No later positive control result retroactively restores timeliness."
+    },
+    {
+      "id": "Q9",
+      "status": "physical_scope_unchanged",
+      "detail": "Actual production remains selected Gamma, H32-x/Ni1-x force and explicit number probes, both collinear spins, all saved columns/full PW rows. Complete4-cubed normalization metadata is not complete BvK coverage. Raw MV occupations/width are not probabilities or temperature; no material D/state, ionic/cross/total noise, stationary preparation, full model or nuclear inference is accepted.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/implementation-registration.json:18-28",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-output-consumer-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-pilot-001/terminal-6c890f1989dd4ba389cf9fbcb9eeb5d7.json"
+      ],
+      "original_review_reference": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json"
+    },
+    {
+      "id": "Q10",
+      "status": "review_limit",
+      "detail": "This reviewer performed no builds, tests, numerical execution, scientific imports, failure injection, service operation, input-byte rehash or source edits in either review. Root subsequently executed the retained before/after isolated control experiments and the registered single checkpoint proof; those receipts, commands and current source were read here. Both original findings are resolved by that source/evidence, without changing or replaying the material physics.",
+      "original_review_reference": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-integration-review-001.json",
+      "original_detail": "No new quantitative counterexample, peak measurement, byte rehash of campaign inputs or failure-path experiment was performed. Numerical values above are quoted from the named executed outputs. The two findings are conditional source-control-flow defects; the successful retained material evidence is not described as a failed run."
+    },
+    {
+      "id": "C-Q1",
+      "status": "source_and_result_generations_distinguished",
+      "detail": "The original executed material source/recipe identity is banked at aa5908f7. The five changed runtime modules and busctl binding in the correction packet are prospective for material production. Their matching hashes appear in the actual diagnostic context inventories, but no corrected full material producer was run. Original material terminals and arrays retain their old identities; no new source identity is substituted into their recipes.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-source-admission-002.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-correction-review-packet-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-material-reference-context-001/terminal-8ae78559f31641ba87110e9383606970.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-physical-factors-context-001/terminal-4e6e3c8f3c4846b1aa732cc436b44459.json"
+      ]
+    },
+    {
+      "id": "C-Q2",
+      "status": "postexit_authority_not_inprocess_elapsed",
+      "detail": "A terminal does not measure its own later publication or process exit. Current code labels the timestamp pre-publication and requires successful post-exit manager authority. Actual context-only CLIs and manager outcomes support that path; the later inactive-unit show output has blank InvocationID, so it is not used to invent a persistent post-unload invocation or a resource peak. Actual invocation IDs come from the own context receipts and the saved start --wait execution.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-actual-context-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/manager-grant-guard-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-post-exit-manager-001.txt",
+        "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-control-actual-context.outcome.json"
+      ]
+    },
+    {
+      "id": "C-Q3",
+      "status": "bounded_failure_evidence_not_material_performance",
+      "detail": "Controlled write delays, isolated byte caps and a temporary shared-summary writer establish the specific control/failure boundaries. They are not measurements of natural material filesystem latency, producer peak resources, a new physical work unit or full material-resume performance. The diagnostic Publication allowance is explicitly diagnostic-only, not material authority.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_publication.py:51-58",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-before-result-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-after-result-001.json",
+        "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-finalization-after.outcome.json"
+      ]
+    },
+    {
+      "id": "C-Q4",
+      "status": "citation_erratum_closed",
+      "detail": "The original report is unchanged. Its supporting RuntimeMaxSec citations for the two original production source units are corrected here to line15, not16-18. The original primary finding anchors remain historical aa5908f7 anchors.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material-reference-production.service:15",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/physical-factors-production.service:15"
+      ]
+    },
+    {
+      "id": "C-Q5",
+      "status": "retirement_and_scope_retained",
+      "detail": "The packet reports both short diagnostic units exited success/inactive/MainPID0, their owned unit files were removed and the manager reloaded; no new views were created. No live state was queried by this reviewer. Current component/control acceptance is not a full-model result, an early PR authorization or a campaign-completion claim.",
+      "evidence": [
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-correction-review-packet-001.json",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/finalization-post-exit-manager-001.txt"
+      ]
+    }
+  ],
+  "scientific_qualifications": "Both complete scientific report bodies and their qualifications are incorporated by original bindings, not narrowed to their empty finding arrays. Actual selected Gamma only; no prepared material D, stationarity, fullBvK, domain or nuclear claim.",
+  "recovery": {
+    "id": "Q5",
+    "original_status": "registered_recovery_proof_not_demonstrated_in_current_packet",
+    "status": "resolved_at_registered_isolated_summary_writer_boundary",
+    "scope": "One deterministic actual SIGKILL after corrected shared-summary rotation; old combined manifest and both original committed output sets consumed/restored through real existing APIs. No broader crash or in-flight-operation claim."
+  },
+  "new_oracle_cumulative_seconds": 49.15815196279436,
+  "control_cumulative_seconds": 11.338142024818808,
+  "no_replay": "No further original scientific or numerical run; accepted original arrays retain original source/recipe identities.",
+  "management": "All original missed deadlines remain.03:22:25 Root decision was late at03:24:26; source-wave allocation records actual time. Timing/control successes do not erase management failures.",
+  "next_whole_model_step": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/source-grounding-contract.json",
+    "bytes": "5671",
+    "sha256": "ce7ea3f8383aa5e3e5df15d4d375eb3b39f250fe2c2c97c30650f0cfc57a342b"
+  },
+  "publication": "Local component admission, not whole-campaign delivery; no early PR/merge or provider work."
+}

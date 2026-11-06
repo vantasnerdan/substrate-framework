@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "first actual generation9 failure; no retry or scientific acceptance",
+  "unit_outcome": {
+    "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/unit-outcomes/dft-c5-nc-vertex-gamma.service/87de37529d134086b7b68c3d2cc40deb.json",
+    "sha256": "354cf142398595c853cc0ecb0546ad4a0c8bbc795748b18ec61201f56b41b54a",
+    "bytes": 189,
+    "mtime_ns": "1792439266976324655"
+  },
+  "unit_journal": {
+    "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation9/unit-journal.jsonl",
+    "sha256": "20fe135df7138bc572b818c37a43c1db103327cc4d4cada95913b3c526b2329e",
+    "bytes": 54401,
+    "mtime_ns": "1792439433209904838"
+  },
+  "journal_command": [
+    "journalctl",
+    "--user",
+    "_SYSTEMD_INVOCATION_ID=87de37529d134086b7b68c3d2cc40deb",
+    "--no-pager",
+    "--output=json"
+  ],
+  "native_completed_attempt": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation9/gamma/attempts/54ca5418222e45029f4bb6bb4027122d",
+  "native_exit_code": {
+    "returncode": 0
+  },
+  "first_native_pid": 107176,
+  "first_native_postexec_affinity_evidence": "native-pids.jsonl and scoped unit journal",
+  "actual_later_native_pid_with_live_kernel_env_proof": 109130,
+  "first_direct_proc_snapshot": "unavailable: raced intentional initial SIGKILL; do not infer its vanished environment",
+  "observed_completion_failure": "PH-only XML Root reader rejects qes:espresso SCF XML in new branch validator",
+  "observed_controller_failure": "No actual joint converged rec10/raw.part intervention occurred",
+  "source_cause": {
+    "solve_linter.f90:251-257": "rec_code=10 set once before kernel",
+    "write_rec.f90:69,94": "status serialized then global rec_code reset0 on every call",
+    "dfpt_kernels.f90:528-536": "write_rec repeated on every iteration, including convergence",
+    "ph_restart.f90:395-401": "global rec_code serialized verbatim",
+    "consequence": "[INFERENCE/source-derived] final converged multi-iteration raw.part window has rec_code0 rather than10; no live finalcode observation claimed"
+  },
+  "additional_original_source": {
+    "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/ph_restart.f90",
+    "sha256": "d39efbc92b7151686e7b3dfd8656f7805adbeb52bafaad93cdfae8916ba58e25",
+    "bytes": 50465,
+    "mtime_ns": "1755597432000000000",
+    "copy": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation9/failure-diagnosis-source/ph_restart.f90"
+  },
+  "proposed_fresh_proof": "Separate actual first-iteration rec10/unconverged conservative native guard refusal from actual later convergedrec0/raw.part archive/replay; do not manufacture unreachable joint state",
+  "license": "NONE; parent prospective correction required before new source/generation"
+}

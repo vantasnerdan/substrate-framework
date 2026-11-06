@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "status": "verified_primary_metadata_correction",
+  "date": "2026-10-19",
+  "qe_gbrv": {
+    "Ni": {"path": "/home/administrator/projects/catalyst-dft/pseudos/ni_pbe_v1.4.uspp.F.UPF", "sha256": "f76b86ce60cde3d83dfcc8df79ba05478db573d158289f1b226919442d977d25", "primary_location": "PP_HEADER, Z valence and Nonlinear Core Correction", "valence": 18, "ultrasoft": true, "nlcc": true},
+    "H": {"path": "/home/administrator/projects/catalyst-dft/pseudos/h_pbe_v1.4.uspp.F.UPF", "sha256": "897f39441a8f0feb1f504af4cebce9dcf95c9cdc16858a7498991c74f1ad127b", "primary_location": "PP_HEADER, Z valence and Nonlinear Core Correction", "valence": 1, "ultrasoft": true, "nlcc": false}
+  },
+  "gpaw": {
+    "pilot_Ni": {"path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw_data/setups/Ni.10.PBE.gz", "sha256": "92fefa11d1b58caf988e478de89bdc15de69c5f9cc3451047e522980a59ca236", "primary_location": "paw_setup/atom", "Z": 28, "core": 18, "valence": 10},
+    "installed_default_Ni": {"path": "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw_data/setups/Ni.PBE.gz", "sha256": "4f78cb11d6e356c5bad0ebc117255a2aed1ce7a9f73541107063949d20333a35", "primary_location": "paw_setup/atom", "Z": 28, "core": 12, "valence": 16, "used_by_pilot": false}
+  },
+  "historical_assumption_corrected": [
+    {"path": "sources/qe75-density-derivative-api-audit.txt", "location": "scope paragraph and section5 final paragraph", "problem": "Assignment supplied Ni10/H1 as a campaign fact without inspecting UPFs. This is not the actual GBRV QE Ni valence. Raw audit is retained verbatim, not rewritten as if the original researcher had verified it."}
+  ],
+  "applicability": "Generic spin2-USPP source traces remain source observations. The supplied numeric valence normalization is superseded by the actual UPF metadata. Native static pseudovalence density is not all-electron density, a frozen-core reconstruction, or ionic/nuclear charge. Different QE/GPAW valence spaces must not be identified or repaired by a numerical rescaling. A mixed physical response Hamiltonian still needs its own validated model correspondence. This record licenses no such Hamiltonian."
+}

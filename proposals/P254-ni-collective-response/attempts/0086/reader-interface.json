@@ -1,0 +1,49 @@
+{
+  "module": "attempts/0086/dressed_mean.py",
+  "constructor": "DressedMean(result_path)",
+  "SCHEMA": "p254-dressed-fullhistory-common-mean-reference-v1",
+  "REFERENCE": "common-cubic-mean-curvature-at-held-input-rho-and-covariance",
+  "ownership": "Context manager owns the ZIP_STORED archive and all mapped views. Inherited close(), __enter__(), __exit__() release it; arrays are valid only until close. Initialization failures close any opened mean archive.",
+  "identities": {
+    "binding": "Actual dressed mean descriptor path/bytes/sha256",
+    "input_identity.actual_dataset": "Actual authenticated complete dressed provider, never original bare; the selected execution input is bound by Root's case record",
+    "reference_identity": "input_identity.numerical_reference: original numerical reference bundle",
+    "preparation_origin": "Original authenticated bare cache source: independent exact rho0/W0/N ancestry",
+    "bindings": "Authenticated actual, preparation, reference, source, archive, cache, physical and canonical history descriptors"
+  },
+  "attributes": ["path", "spec", "binding", "bindings", "input_identity", "reference_identity", "preparation_origin", "is_bare", "is_full_mean", "is_dressed_mean", "archive", "times", "u", "s", "mean", "rho0", "w0", "n", "node_rho", "node_ordered_gamma_covariance", "node_cubic_covariance_force", "node_electronic_gradient"],
+  "shapes": {
+    "times": [31],
+    "u": [31, 128, 12, 12],
+    "s": [31, 228, 228],
+    "mean": [31, 228],
+    "rho0": [128, 12, 12],
+    "w0": [228, 228],
+    "n": [],
+    "node_rho": [31, 128, 12, 12],
+    "node_ordered_gamma_covariance": [31, 114, 114],
+    "node_cubic_covariance_force": [31, 111],
+    "node_electronic_gradient": [31, 228]
+  },
+  "methods": {
+    "electron_slot(slot)": "Inherited unchanged A63 operation for integer slot0..127: returns (retarded, lesser), each (31,31,12,12), from saved U and original rho0",
+    "gamma_slot()": "Inherited unchanged A63 operation: returns (retarded, lesser), each (31,31,114,114), using saved full-phase S and original ordered W0; contractions evaluated independently",
+    "close()": "Release mapped archive",
+    "__enter__()": "Return self",
+    "__exit__(*exc)": "Close archive"
+  },
+  "unchanged_common_functional_consumers": {
+    "module": "attempts/0057/mean_feedback_functional.py",
+    "class": "CommonMeanFunctional",
+    "operations": [
+      "model.scalar(saved.node_rho[a], saved.mean[a], saved.node_cubic_covariance_force[a])",
+      "model.electronic_gradient(saved.node_rho[a])",
+      "model.curvature(saved.mean[a])",
+      "model.mean_rhs(saved.mean[a], saved.node_electronic_gradient[a], saved.node_cubic_covariance_force[a])"
+    ],
+    "prerequisite": "Caller supplies the same authenticated original material/source/Phi000 model; reader does not reload material or reintegrate"
+  },
+  "validation": "Actual dressed-history/reference/preparation/cache ancestry; complete all31 nodes0..30 and all128/12/fullphase228; authenticated actual history banks/arrays and original preparation; exact integer N; literal U0/S0/mean0; finite binary64 saved arrays; persisted raw density/covariance equal actual_nodes output; all64 unchanged nonGamma cache work and all31 Gamma work. Executed producer-reader bytes are preserved/authenticated independently of the current reader file.",
+  "compatibility": "No coercion to bare or legacy schema. SavedMean and MeanFeedbackReference constructors remain unchanged and do not dispatch this new schema; use DressedMean directly. No invented baseline catalog, interpolation of U/S, clipping, refill, invariant repair, physical dimension reduction or new approximation.",
+  "verification": "Code-only assignment: no imports, tests, Native execution, runtime consumption, lint or formatters run by reader author. Main owns actual completed G1 run and saved-consumer evidence."
+}

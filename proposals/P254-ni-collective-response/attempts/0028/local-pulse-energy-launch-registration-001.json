@@ -1,0 +1,62 @@
+{
+  "schema": "P254-reviewed-local-pulse-energy-launch-v1",
+  "actual_time": "2026-10-29T22:06:13.149336+00:00",
+  "registration": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/local-pulse-energy-registration-001.json",
+    "bytes": "17277",
+    "sha256": "8d49585949f98490d0abc95a9e64a37bc6f50dfbe38959f81739e75bd732069b"
+  },
+  "implementation": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/local_pulse_energy.py",
+      "bytes": "2035",
+      "sha256": "7f7edba9adb0451423c15be65d045704b31087d8b5345412019da8fd8ee2af32"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/local_pulse_energy_oracle.py",
+      "bytes": "11201",
+      "sha256": "2fa5749f99ef4062fcb8062fdb6e323fa4d5c11c408edfcce1ef1e150175f01e"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/local_pulse_energy_sources.py",
+      "bytes": "9969",
+      "sha256": "f927e3ea232e7b8e3847f79f49976da1112d9d395b2e11e58443100bcef8d813"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_local_pulse_energy.py",
+      "bytes": "12926",
+      "sha256": "c4dae56aecc530fa839d11286f73f5f04299e226088cf76734c49e280702e622"
+    }
+  ],
+  "review": "Root read all original new code, separated metadata provenance into141line source helper/202line CLI, removed unmeasured zero-operation counters and unsupported constants citation; independent operator/DFT oracle retained. No production-closure source edited.",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-local-pulse-energy-readout-001",
+    "--property=Type=exec",
+    "--property=CPUAffinity=10",
+    "--property=MemoryMax=2147483648",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=180s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_local_pulse_energy.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/local-pulse-energy-readout-001/result.json",
+    "--registration",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/local-pulse-energy-registration-001.json",
+    "--cpu",
+    "10",
+    "--max-seconds",
+    "180"
+  ],
+  "budget_seconds": 180,
+  "scope": "Real original4 archives/centered declaration/actualGamma metadata. Initial-input ledger only, no propagatedenergy/heat/noise closure."
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "attempt": "0015",
+  "created_at": "2026-10-27T16:06:06.862293+00:00",
+  "positive_intent": "Complete the real nonzero-q static-action bridge by constructing an honest warm fouratom electronic initializer, not by repeating cold oscillation, weakening convergence or manufacturing model rejection. This preserves the route into a Ni/H coherence-domain model.",
+  "parent": "0014Gamma+half-b1 fullstaticbridge; Gammaalreadycomputed. Fullcoupledmaterialresponse/dynamics/controls/nuclearbridge stillrequired.",
+  "source_inventory": "source-inventory.json",
+  "construction": {
+    "kind": "qe75-collinear-density-2x1x1-v1",
+    "initial_state_fields": [
+      "kind",
+      "directory",
+      "ordering_executable"
+    ],
+    "source": "Immutable completed primitive collectedsave from0014registration existing_primitive_seed",
+    "target": "Exact2x1x1 orderedNiH replication, sourcek222\u2192targetk122, source20\u2192target40bands/spin, FD.002Ry/60-240Ry/conv1e-11 unchanged. Derived density is totaldensity/magnetization, not up/down.",
+    "Fourier_map": "Bprime columns=(B1/2,B2,B3); rho_prime(H,K,L)=rho(H/2,K,L) for evenH, otherwise0. No factor2; integral doubles with volume. Rebuildorbitals explicitly startingwfc=random, startingpot=file, restart_modefrom_scratch.",
+    "native_order": "Generate target Gglobal order by exact QErecvec_subs loop/bounds/cutoff and original hpsort_eps fromModules/sort.f90, eps1e-8, sourcekind.f90; do not useordinaryNumpy sorting. Nativealat target=2sourcealat; targetFFT=(48,24,24), source(24,24,24).",
+    "outputs": "Only derivedcharge-density.dat plus transformationreceipt. No fabricated fouratomcompletedXML, wf_collected, restart_scf or physicalresult. ActualNativealoneearns converged4atomsave."
+  },
+  "interfaces": {
+    "math_module": "src/substrate_framework/qe_density_fold.py; fold_density(source_save:Path,target_file:Path,ordering_executable:Path)->dict with source/targetFFT/counts/reciprocal/densitybindings. validate/reproduce primitive Gordering exactly before targetgeneration.",
+    "ordering_driver": "src/substrate_framework/native/qe_density_order.f90; executable stdin records: nr1 nr2 nr3; tpiba ecutrho; 3columnbg records. stdout firstng thenorderedMiller triples. Link originalQEkind/sort sources; rootbuildonce.",
+    "native_adapter": "src/catdft/qe_scf_fold_seed.py owns source-vs-targetcompatibility and prepare/confirm branches. qe_io andqe_scf_seed select newkind explicitly; existingcollectedkind unchanged. Newordering_executable input content-bound; no targetseedXML generated."
+  },
+  "oracle": {
+    "beforeNative": "Reproduceevery primitive nativeMillerindex inexactorder fromsourcechargefile; matchFFT24^3/gcount4645 andtarget48x24x24/count9271. IFFT actualtwofields oncommensurategrids mustreplicate within1e-10*max(1,sourcefieldnorm), source/tgtchargeandmagnetizationintegralsmatchdeclaredvolume mapping. Expose incorrectfactor2 oroddsectorcopy usingsameindependentgrid/chargeconsumer.",
+    "Native": "One freshRoot-owned4atomwarmbaselinecase90s withinremainingallocation; actualdensity-readconfirmation and explicitrandomorbitals, fullqestagecompletionandnativeXMLchecks. CompareperprimitiveF0 andM withGammafrozenlimits before12nonzeroqdisplacementcases. No unchangedcoldretry."
+  },
+  "budget": {
+    "owner": "Root",
+    "decision_due_at": "2026-10-27T16:20:00+00:00",
+    "remaining_original_Native_seconds": 680,
+    "native_case_limit_seconds": 90,
+    "resources": "CPU6/1Native/BLAS1/3GiB/swap0/Restartno, no oldmaterialgrant reuse",
+    "firstUsefulResult": "Source-correctwarmstate \u2192 actuallyconverged4atombaseline \u2192 nonzeroqscalar/force/DFPT bridge. Allsource-research/buildtimeandpriorNativecostremaincharged. No observerorbudgetreset."
+  },
+  "acceptance": [
+    "Deterministicderivedinitializerfaithfullypreserveselectronicdensityandfunctionalat registereddiscretization",
+    "ActualNativewarmbaselineandremaininghalf-b1curvature, or namedmethodrepairwithcompleteoriginalfailurepreserved",
+    "No incompletecheckpointorprecisionrelabeling, no fullmodelclaimfrominitializeralone"
+  ],
+  "review": "One boundedcompletecorrection/native-review transaction aftersettledresult; unchangedG10and0013retainauthority."
+}

@@ -1,0 +1,180 @@
+{
+  "schema": "P254-A28-force-noise-slice-v1",
+  "delivery": {
+    "module": "src/substrate_framework/material_force_fluctuations.py",
+    "interface": "initial_force_fluctuations(psi, density_coefficients, coupling, directions, *, factor_identity, pw_basis_identity, state_authority, operator_authority, coordinate_identity, gram=None, gram_authority=None, scratch_directory=None, block_size=8, row_block_size=2048) -> ForceFluctuations; .preparation is existing FactorPreparation; .archive_payload() -> arrays, metadata",
+    "coupling_contract": "Existing BlochDyadCoupling npw/ndof/ionic.prepare(direction[nat,3]).apply(full_row_column_block); positive derivative prepared once per direction",
+    "new_source_blocks_read": {
+      "qe_bloch_ionic_action.py": "14-73",
+      "material_dyad_output.py": "71-103",
+      "material_pilot_io.py": "142-212",
+      "slot-1-density-gradient.json": "entire original-byte receipt"
+    },
+    "oracle_command_from_repository_root": "/home/administrator/projects/substrate-framework/.venv/bin/python proposals/P254-ni-collective-response/attempts/0028/run_force_noise_oracle.py --result proposals/P254-ni-collective-response/attempts/0028/force-noise-oracle-001.json",
+    "material_command_from_repository_root": "/home/administrator/projects/substrate-framework/.venv/bin/python proposals/P254-ni-collective-response/attempts/0028/run_material_force_noise.py --output proposals/P254-ni-collective-response/attempts/0028/material-force-noise-001 --scratch-directory proposals/P254-ni-collective-response/attempts/0028 --block-size 8 --row-block-size 2048 --output-max-bytes 67108864",
+    "execution_owner": "Root; commands require Root runtime allocation, not permission conveyed by this registration",
+    "execution_status": "not executed by worker; no numerical results or timing asserted",
+    "temporary_action_storage_bytes": "number_of_directions * full_pw_dimension * raw_column_count * 16, disk-backed and removed on ordinary success/exception",
+    "material_outputs": "force-noise.npz and authenticated exact-readback force-noise.json; summary.json includes measured stage/process timings and complex means/AB/BA/symmetrized/commutator/complement diagnostics",
+    "source_preservation": "CLI authenticates source-state and prior gradient archive plus every saved array; checks exact WFC/frame/basis/population identity; returns exact original D/populations/Gram; independently pairs force means with negative completed gradient",
+    "all_other_files": "unchanged; no builds, linters, tests, formatters, numerical execution or commits performed"
+  },
+  "campaign_plan": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/plan.json",
+    "bytes": "2762",
+    "sha256": "cadaeaeb0398077fc4144e900fdc8897488aa17921b5dced6063674c9797ba6c"
+  },
+  "scope": "Initial equal-time electronic force fluctuations of the exact spin1/sourceik2 original representative, not an environment solution",
+  "read_source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_ionic_action.py",
+      "bytes": "3727",
+      "sha256": "1135f801ab9a01d217dcedd4f51f13ac5d88233dd6e6050b3710d7a6577e8c05"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_dyad_output.py",
+      "bytes": "12843",
+      "sha256": "7c696d3c5ef9a348f0c911453af3e7cd9b8dfd47bb948c4d25ce4e4b62e15a86"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-source-002/slot-1-density-gradient.json",
+      "bytes": "3096",
+      "sha256": "b970c88cae5f1b27f0cf766d4b2ae3f243a1dac014e3f714ee5f7b865133c048"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/material_pilot_io.py",
+      "bytes": "10872",
+      "sha256": "54cd6c3d3a4122005ecc662d05749937e50fb0ae5af3ce93b745304e896d55eb"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_factor_preparation.py",
+      "bytes": "11366",
+      "sha256": "3dd3767a13da9fd5f5d7559bc3f7a98cf00d365655a08980db551d011aa25b96"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_reference_state.py",
+      "bytes": "7069",
+      "sha256": "e6ef102740a6fe03cefb0324f365a48ea7450f34007ed49e7d6ad1885ccc0bad"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_dyads.py",
+      "bytes": "3426",
+      "sha256": "1fa0a286cbccbfb10488b9ab941cfad088eb0eca3fcba7500de29ac1d4ec6867"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_dyads.py",
+      "bytes": "7324",
+      "sha256": "78c046fc67cd67ee764b1b20765647f9fa2cc2bb7ab779b4c9199a091947731b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_preparation_output.py",
+      "bytes": "9002",
+      "sha256": "1f7978c9feece113446856d1d1aeb932f1d43ea574830f3dc8ddf402c55bee75"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_bloch_admission.py",
+      "bytes": "6340",
+      "sha256": "85f4fdf8622769282e9c3d80242ef6dbe6a3e1807f4d05555266b1b04e9ec671"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_frame.py",
+      "bytes": "8825",
+      "sha256": "8cbfa02f4a0a86c91f6d12c8d9464ee3e7e0a267b5696902c8085f1e51be7c6b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/plan.json",
+      "bytes": "2762",
+      "sha256": "cadaeaeb0398077fc4144e900fdc8897488aa17921b5dced6063674c9797ba6c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-source-001/source-state.json",
+      "bytes": "2205",
+      "sha256": "f3cd952bfcec6d6c9161b533fa562be5f77bcfb16757b8a290d99b91d180ad20"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material_reference_producer.py",
+      "bytes": "7939",
+      "sha256": "3072829004ee212e1c2393394b9bd06348f3be09e5b4c15cc8f3bdce5c979a38"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/run_physical_factor_oracle.py",
+      "bytes": "12519",
+      "sha256": "693750f345bc4927177b73e33e65a4621f4b42906143025d144efc18b6c6b59c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+      "bytes": "7855",
+      "sha256": "021f5bc6eb301183dc86941e72c4920b8321fcb18aa506a18b19312bb1b5b47a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_run_contract.py",
+      "bytes": "6189",
+      "sha256": "8a8fe658b283db2b0a48d62434feb8714e04f806b02efb4b8bde9c0f60f66f6c"
+    }
+  ],
+  "read_blocks": {
+    "physical_factor_preparation.py": "1-231",
+    "material_reference_state.py": "1-140",
+    "qe_bloch_dyads.py": "1-70",
+    "qe_material_dyads.py": "113-137",
+    "material_preparation_output.py": "91-153",
+    "material_bloch_admission.py": "16-68",
+    "qe_bloch_frame.py": "58-153",
+    "material_reference_producer.py": "21-78",
+    "run_physical_factor_oracle.py": "23-38,76-88",
+    "material_reference_output.py": "58-61",
+    "material_run_contract.py": "11-37"
+  },
+  "equations": {
+    "force": "F_u=-sum_a u_a dH/dR_a; u real dimensionless Cartesian direction",
+    "density": "rho=Psi D Psi^dagger; exact checkpoint D, unchanged raw Psi",
+    "mean": "Tr(D M_A)",
+    "ordered_connected": "C_AB=Tr(D T_AB)-Tr(D M_A D M_B)",
+    "full_ordered": "<AB>=C_AB+<A><B>",
+    "full_product": "T_AB=(A^dagger Psi)^dagger(B Psi); never M_A S^-1 M_B",
+    "symmetrized": "(C_AB+C_BA)/2",
+    "commutator": "C_AB-C_BA"
+  },
+  "directions": [
+    {
+      "name": "H32-x",
+      "atom_one_based": 32,
+      "species": "H",
+      "axis": "x"
+    },
+    {
+      "name": "Ni1-y",
+      "atom_one_based": 1,
+      "species": "Ni",
+      "axis": "y"
+    }
+  ],
+  "normalization": {
+    "sector": "one spin and one original k representative, unweighted",
+    "spin_degeneracy": 1,
+    "number": "full PW identity, dimensionless electron count",
+    "force": "Ry/bohr",
+    "force_force": "Ry^2/bohr^2",
+    "force_number": "Ry/bohr",
+    "mesh_measure": "recorded separately; neither multiplied into sector covariance nor mistaken for a full-grid sum"
+  },
+  "implementation": {
+    "state": "Use existing FactorFunctional constructor and FactorPreparation; no changes to Root source state module",
+    "memory": "Full physical rows and all raw columns; gradient actions written by column blocks to temporary disk-backed arrays; row-block contractions produce small S/M/T only; authenticated Gram reused only after source/frame receipt checks",
+    "source": "Receipt -> authenticated A27 preparation/ledger -> Bloch recipe -> accepted A25 background plus exact original WFC; verify all checkpoint arrays with recover_block",
+    "oracle": "Reuse only A25 second_quantized and fock_state helpers. New SymPy differentiated Hermitian finite H and dense CAR means/ordered force-number composition, sensitive mutations for discarded complement, wrong sign, reversal, changed D and renormalized Psi",
+    "execution": "Root only; worker performs no numerical execution"
+  },
+  "limitations": [
+    "Conditional saved-label gauge-invariant quasifree state with empty complement, not H0 equilibrium or thermal state",
+    "No fitted damping, FDT, two-time kernel, irreversible loss or ionic-state inference",
+    "One electronic sector and two force directions, not full weighted material force/noise",
+    "H0 result remains pending; no stationarity asserted"
+  ],
+  "findings": [
+    "Real directions ensure Hermitian q=0 ionic gradient; physical force requires minus sign before both means and force-number correlations",
+    "Force-force sign alone cannot detect a global force-sign error; number cross correlations and means are required",
+    "Initially empty complement contributes through T_AB despite zero complement population",
+    "Saved source Gram has an honest existing FactorFunctional constructor path; no cached-Gram API changes required"
+  ]
+}

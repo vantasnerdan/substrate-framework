@@ -1,0 +1,33 @@
+{
+  "request": {
+    "i": "Diagnosing the finished producer view",
+    "command": "test \"${HERDR_ENV:-}\" = 1 && herdr pane read w1:p17 --source recent-unwrapped --lines 25",
+    "timeout": 15,
+    "cwd": "/home/administrator",
+    "pty": false,
+    "async": false,
+    "name": null,
+    "ready": null
+  },
+  "response": {
+    "text": "ack\": \"exact dtype/shape/value; allow_pickle=False\"}, {\"recipe_sha256\": \"a6ee8f59253d9c770fa145becd7f6fcd89949a92717fc1a5429805f04cc84d07\", \"archive\": {\"path\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/pilot-001/spin1-atom1-x-saved-band-matrix.npz\", \"bytes\": \"1915770\", \"sha256\": \"56d778f59c5f4d54355fbbfd5fd1d424691185f267879f25c1db38b6808f24cf\"}, \"arrays\": {\"saved_band_overlap_ry_per_bohr\": {\"dtype\": \"<c16\", \"shape\": [346, 346], \"sha256_C_bytes\": \"ea260b3754c9b291bc4e94a863cb8ea722f24828b86956f9cdc2d122dc1f4370\"}}, \"metadata\": {\"spin_one_based\": 1, \"direction\": {\"atom_one_based\": 1, \"symbol\": \"Ni\", \"Cartesian_axis\": \"x\"}, \"rows\": \"saved target bands1..346\", \"columns\": \"saved source bands1..34\u2026\np254-material-ionic-0024.service: Consumed 1min 2.270s CPU time, 2.5M memory peak, 0B memory swap peak.\n\n[Some lines truncated to 768 bytes. Use artifact://471:raw:1-1 to read line 1 whole]",
+    "details": {
+      "wallTimeNoticeEmitted": false,
+      "timeoutSeconds": 15,
+      "wallTimeMs": 15.919263999909163,
+      "meta": {
+        "limits": {
+          "columnTruncated": {
+            "maxColumn": 768,
+            "unit": "bytes",
+            "artifactId": "471",
+            "lines": {
+              "first": 1,
+              "last": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

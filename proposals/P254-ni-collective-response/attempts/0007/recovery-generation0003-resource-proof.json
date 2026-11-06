@@ -1,0 +1,110 @@
+{
+  "observed_ns": 1792418964624981607,
+  "systemctl_stdout": "MainPID=3998387\nExecMainStatus=0\nControlGroup=/user.slice/user-1000.slice/user@1000.service/app.slice/c5-fermi-oracle-recovery-g3.service\nMemoryCurrent=115580928\nCPUUsageNSec=8471983000\nMemoryMax=2147483648\nCPUAffinity=5\nActiveState=active\nSubState=running\n",
+  "systemctl_exit": 0,
+  "herdr_view_stdout": "c5-fermi-oracle-recovery-g2.service: Failed with result 'exit-code'.\nc5-fermi-oracle-recovery-g2.service: Consumed 10.711s CPU time.\n^C\nadministrator@agent-giuliano:~/projects/substrate-ni-collective$ systemd-run --user --unit=c5-fermi-oracle-recovery-g3 --property=MemoryMax=2G --property=CPUAffinity=5 --property=TasksMax=64 --working-directory=/home/administrator/projects/substrate-ni-collective --setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src --setenv=OPENBLAS_NUM_THREADS=1 --setenv=OMP_NUM_THREADS=1 --setenv=MKL_NUM_THREADS=1 --setenv=NUMEXPR_NUM_THREADS=1 /usr/bin/taskset -c 5 /home/administrator/projects/substrate-framework/.venv/bin/python -u proposals/P254-ni-collective-response/attempts/0007/run_oracle.py --manifest /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/source-manifest-generation0003.json; journalctl --user -u c5-fermi-oracle-recovery-g3.service -f --no-pager -o cat\nRunning as unit: c5-fermi-oracle-recovery-g3.service; invocation ID: 1eac8a6302f54a9495a13eddfe2a9221\nStarted c5-fermi-oracle-recovery-g3.service - /usr/bin/taskset -c 5 /home/administrator/projects/substrate-framework/.venv/bin/python -u proposals/P254-ni-collective-response/attempts/0007/run_oracle.py --manifest /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/source-manifest-generation0003.json.\nACTUAL_ORACLE_PID 3998387 AFFINITY [5]\nRECOVERED_STATE_CHECKPOINT b18cc545e089d8e89b07e4812e07aa95a947f36a4cb9ef59ec33c37d708468d2 STATE_BLOCK_NOT_RECOMPUTED\nRECOVERED_BLOCK response cbf152f8d0895d52072b6d852e1ed499ae65cbb5a5864356ef35d08f336e66ea\nPASS [P254-attempt0007-finite-fermion] isothermal GC curvature equals full Fock divided difference\nPASS [P254-attempt0007-finite-fermion] GC minus isolated is exactly zero-frequency occupation covariance\nPASS [P254-attempt0007-finite-fermion] equating isolated zero response and isothermal GC rejected\nPASS [P254-attempt0007-finite-fermion] finite canonical differs from mean-number Legendre curvature\nPASS [P254-attempt0007-finite-fermion] mean-number projection changes GC curvature\nPASS [P254-attempt0007-finite-fermion] canonical number variance is exactly zero\nPASS [P254-attempt0007-finite-fermion] canonical factorized independent occupations mutation rejected\nPASS [P254-attempt0007-finite-fermion] GC curvature is exactly real symmetric\nPASS [P254-attempt0007-finite-fermion] GC independent expm free-energy derivative refinement\nPASS [P254-attempt0007-finite-fermion] mean_N_Legendre curvature is exactly real symmetric\nPASS [P254-attempt0007-finite-fermion] mean_N_Legendre independent expm free-energy derivative refinement\nPASS [P254-attempt0007-finite-fermion] canonical_N1 curvature is exactly real symmetric\nPASS [P254-attempt0007-finite-fermion] canonical_N1 independent expm free-energy derivative refinement\nPASS [P254-attempt0007-finite-fermion] isothermal GC curvature equals full Fock divided difference\nPASS [P254-attempt0007-finite-fermion] GC minus isolated is exactly zero-frequency occupation covariance\nPASS [P254-attempt0007-finite-fermion] equating isolated zero response and isothermal GC rejected\nPASS [P254-attempt0007-finite-fermion] finite canonical differs from mean-number Legendre curvature\nPASS [P254-attempt0007-finite-fermion] mean-number projection changes GC curvature\nPASS [P254-attempt0007-finite-fermion] canonical number variance is exactly zero\nPASS [P254-attempt0007-finite-fermion] canonical factorized independent occupations mutation rejected\nPASS [P254-attempt0007-finite-fermion] GC curvature is exactly real symmetric",
+  "herdr_exit": 0,
+  "pid": 3998387,
+  "proc_status_tool_response": {
+    "text": "Name:\tpython\nUmask:\t0002\nState:\tD (disk sleep)\nTgid:\t3998387\nNgid:\t0\nPid:\t3998387\nPPid:\t2867432\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t64\nGroups:\t4 27 1000 \nNStgid:\t3998387\nNSpid:\t3998387\nNSpgid:\t3998387\nNSsid:\t3998387\nKthread:\t0\nVmPeak:\t  384472 kB\nVmSize:\t  384472 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t  152884 kB\nVmRSS:\t  152884 kB\nRssAnon:\t  112076 kB\nRssFile:\t   40808 kB\nRssShmem:\t       0 kB\nVmData:\t  248480 kB\nVmStk:\t     132 kB\nVmExe:\t    2956 kB\nVmLib:\t   94008 kB\nVmPTE:\t     504 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t1\nSigQ:\t0/128196\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\t00000020\nCpus_allowed_list:\t5\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t4\nnonvoluntary_ctxt_switches:\t774\nx86_Thread_features:\t\nx86_Thread_features_locked:\t\n",
+    "details": {
+      "totalLines": 62,
+      "displayContent": {
+        "text": "Name:\tpython\nUmask:\t0002\nState:\tD (disk sleep)\nTgid:\t3998387\nNgid:\t0\nPid:\t3998387\nPPid:\t2867432\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t64\nGroups:\t4 27 1000 \nNStgid:\t3998387\nNSpid:\t3998387\nNSpgid:\t3998387\nNSsid:\t3998387\nKthread:\t0\nVmPeak:\t  384472 kB\nVmSize:\t  384472 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t  152884 kB\nVmRSS:\t  152884 kB\nRssAnon:\t  112076 kB\nRssFile:\t   40808 kB\nRssShmem:\t       0 kB\nVmData:\t  248480 kB\nVmStk:\t     132 kB\nVmExe:\t    2956 kB\nVmLib:\t   94008 kB\nVmPTE:\t     504 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t1\nSigQ:\t0/128196\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\t00000020\nCpus_allowed_list:\t5\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t4\nnonvoluntary_ctxt_switches:\t774\nx86_Thread_features:\t\nx86_Thread_features_locked:\t\n",
+        "startLine": 1,
+        "lineNumbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62
+        ]
+      },
+      "fileSize": 0,
+      "meta": {
+        "source": {
+          "type": "path",
+          "value": "/proc/3998387/status"
+        }
+      }
+    }
+  },
+  "memory_max_tool_response": {
+    "text": "2147483648\n",
+    "details": {
+      "totalLines": 2,
+      "displayContent": {
+        "text": "2147483648\n",
+        "startLine": 1,
+        "lineNumbers": [
+          1,
+          2
+        ]
+      },
+      "fileSize": 0,
+      "meta": {
+        "source": {
+          "type": "path",
+          "value": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/c5-fermi-oracle-recovery-g3.service/memory.max"
+        }
+      }
+    }
+  }
+}

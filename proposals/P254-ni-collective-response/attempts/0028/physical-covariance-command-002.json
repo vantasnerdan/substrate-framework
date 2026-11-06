@@ -1,0 +1,83 @@
+{
+  "decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-015.json",
+    "bytes": "2835",
+    "sha256": "78b218309d84ec1b6de1f0c6cee7998772b1ba16973ba3622bb2fdba809b60bf"
+  },
+  "fixture_failure": "Original synthetic positions violated unchanged saved cubic symmetries. Corrected by translating the whole admitted motif and its XML pullbacks consistently on the nine-point FFT grid; production algorithms, tolerances and mutations unchanged.",
+  "failed_oracle_source": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_physical_spatial_oracle.py",
+    "bytes": "18554",
+    "sha256": "16243687cfad99469bfb163fbd13744b28cd7ec3e581d3a8b918e3713356172e"
+  },
+  "corrected_oracle_source": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_physical_spatial_oracle.py",
+    "bytes": "19232",
+    "sha256": "4337a5c9d8fe7a6ff2983a6dbbd53cd9418491b6b887b8f3cc48ff836f7efb11"
+  },
+  "commands": [
+    [
+      "env",
+      "XDG_RUNTIME_DIR=/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+      "systemd-run",
+      "--user",
+      "--unit=p254-a28-physical-spatial-oracle-002",
+      "--property=Type=oneshot",
+      "--property=RemainAfterExit=yes",
+      "--property=CPUAffinity=8",
+      "--property=MemoryMax=4294967296",
+      "--property=MemorySwapMax=0",
+      "--property=TimeoutStartSec=120s",
+      "--setenv=OPENBLAS_NUM_THREADS=1",
+      "--setenv=OMP_NUM_THREADS=1",
+      "--setenv=MKL_NUM_THREADS=1",
+      "--setenv=NUMEXPR_NUM_THREADS=1",
+      "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+      "/usr/bin/python3",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_physical_spatial_oracle.py",
+      "--output",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/physical-spatial-oracle-002.json"
+    ],
+    [
+      "env",
+      "XDG_RUNTIME_DIR=/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+      "systemd-run",
+      "--user",
+      "--unit=p254-a28-operator-covariance-legacy-001",
+      "--property=Type=oneshot",
+      "--property=RemainAfterExit=yes",
+      "--property=CPUAffinity=9",
+      "--property=MemoryMax=4294967296",
+      "--property=MemorySwapMax=0",
+      "--property=TimeoutStartSec=300s",
+      "--setenv=OPENBLAS_NUM_THREADS=1",
+      "--setenv=OMP_NUM_THREADS=1",
+      "--setenv=MKL_NUM_THREADS=1",
+      "--setenv=NUMEXPR_NUM_THREADS=1",
+      "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/.cache/dft/p254-a28-runtime",
+      "/usr/bin/python3",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_operator_covariance_material.py",
+      "--output",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/operator-covariance-legacy-001",
+      "--cpu",
+      "9",
+      "--oracle",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/operator-covariance-oracle-001.json",
+      "--oracle-sha256",
+      "04b31165581ffe2a15ed1e92af2308277f15bca61229f56723b639e2000c9338",
+      "--projector-model",
+      "legacy-a25",
+      "--source",
+      "1:2",
+      "--target",
+      "1:0,1,0",
+      "--max-slots",
+      "1",
+      "--complement-probes",
+      "2"
+    ]
+  ],
+  "covariance_scope": "One nonidentity actual original-source orbit member, full original columns plus complements; no transport assumed."
+}

@@ -1,0 +1,488 @@
+USPP FORCE / ELECTRON–PHONON READINESS: PRIMARY-SOURCE APPLICABILITY AUDIT
+Issue227 under parent225; P254 W2-readiness R1-source; 2026-10-19
+
+PURPOSE AND EVIDENCE LABELS
+This report answers what the actual native QE7.5 ultrasoft displacement
+vertex licenses, not whether W2 material physics is accepted. [PAPER] means
+an observation in the acquired original or explicitly identified review;
+[CODE] means an observation in the installed source, not an exercised binary;
+[INFERENCE] means a bounded interpretation or prerequisite. No new theorem,
+finite-matrix identity, numerical response, physical linewidth, lifetime,
+Ni/H prediction or physical-bath positivity result is established here.
+The independently owned MetricIdentityOracle was not read or consumed.
+All mathematical candidates in older audits remain unverified in this slice.
+
+All QE paths below are relative to /opt/qebuild/q-e-qe-7.5.
+All campaign source paths are relative to this sources/ directory.
+Raw qe75-electron-phonon-api-audit.txt and
+qe75-density-derivative-api-audit.txt were navigation only and left unchanged.
+Load-bearing code locations cited below were reopened directly.
+
+DECISION SUMMARY
+1. Native ordinary elphel really exports complex, all-saved-band matrix
+   elements of the STATIC generalized perturbation
+       D_ji = <psi_j | dH_SCF/dR - epsilon_i partial S/partial R | psi_i>,
+   with INITIAL electronic energy, not the final or averaged energy.
+   This is the generalized static eigenstate-response numerator in Dal
+   Corso Eq.(23), not a demonstrated laboratory-frame off-shell Hamiltonian.
+2. Do not conflate that screened numerator with the physical static total
+   force. Dal Corso Eq.(14) uses a PARTIAL fixed-orbital derivative, occupation-
+   weighted DIAGONAL elements, an explicit NLCC contribution, and the force
+   is minus the energy derivative. Eq.(20) distinguishes the TOTAL screened
+   derivative used for response from that PARTIAL derivative.
+3. Overlap and moving augmentation terms are real, already included in
+   native static DFPT. They must neither be dropped nor added a second time.
+   But neither inspected paper supplies a complete dynamical USPP embedding
+   prescription that turns arbitrary off-shell D into the requested physical
+   force. Choosing a symmetric energy convention by Hermitizing D is not a
+   source-established physical license.
+4. No new exporter is needed just to obtain existing D. A separately typed,
+   gauge-matched finite-q dS export is needed IF the chosen downstream route
+   separates the generalized operator/metric terms; dS alone has not been
+   shown sufficient here for a laboratory-frame force. An embedding-based
+   route additionally needs its actual map/derivative or corresponding
+   connection, plus its physical dynamical authority. Do not invent them.
+5. Giustino distinguishes an approximate screened-vertex golden-rule model
+   from a phonon self-energy with a bare–screened vertex structure and a
+   static subtraction. These are not interchangeable just because both are
+   often called electron–phonon coupling. Native double-delta linewidths,
+   and even finite-energy gamma_tetra mode summaries, are not a full bath.
+6. Actual QE Ni is GBRV Ni18/H1, NOT Ni10. GPAW pilot Ni10 and installed
+   default Ni16 are different models; no identification or scalar rescaling
+   between these spaces is licensed.
+
+1. SOURCES IN HAND, EXACT VERSIONS, AND VISUAL SYMBOL CHECKS
+
+[PAPER D] Andrea Dal Corso, “Density-functional perturbation theory with
+ultrasoft pseudopotentials,” Phys. Rev. B64,235118 (2001), published original.
+https://doi.org/10.1103/PhysRevB.64.235118
+Files: dal-corso2001-prb64-235118.pdf/.txt;
+provenance: dal-corso2001-provenance.json.
+17 PDF pages; printed page labels 235118-1 through 235118-17.
+SHA256 rechecked:
+3d527ff1c65c47a55e584b27caf4b4f39917f12d56680959aa2dec2fb8fe19a1.
+Read Secs.II/III (pp.2–5), Appendix B (pp.14–16), and pertinent scope statements.
+
+[PAPER G] Feliciano Giustino, “Electron-phonon interactions from first
+principles,” RMP89,015003 (2017), acquired AUTHOR arXiv manuscript dated
+January31,2017, not claimed publisher typesetting.
+https://doi.org/10.1103/RevModPhys.89.015003
+https://arxiv.org/abs/1603.06965
+Files: giustino2017-electron-phonon.pdf/.txt/.metadata.json.
+68 PDF pages; page references here are this manuscript's printed pages.
+SHA256 rechecked:
+5d980627ad272b2a92d1f760f0e6a0883b1b3fcc941436903a361024ce330251.
+Read Sec.III.B.1–4 (pp.9–13), V.A.1–3 (pp.22–27), and applicable Sec.VII
+(pp.39–41). Statements about other authors below are attributed to this
+review, not pretended independent readings of their originals.
+
+Visual check method and limitation: used pdftoppm on canonical PDFs, then
+read the ACTUAL rendered pages, not repaired text glyphs. Required skill
+routing was attempted first: xd://inspect_image was unavailable; four zai
+analyze_image calls timed out, and a simpler cropped-equation retry also
+timed out. No remote vision result is claimed. Direct inline decoded-image
+inspection supplied the fallback visual evidence. Examined D pp.3,4,5,15,16
+and G pp.10,22,26,40; page footers/headers visible. Reproducible renders are
+transient /tmp/force-dc-03.png to -05.png, /tmp/force-dcb-15.png/-16.png,
+/tmp/force-gh-10.png, /tmp/force-gp-22.png, /tmp/force-g-26.png,
+/tmp/force-gl-40.png. Canonical PDFs, not /tmp files, are the durable evidence.
+
+Verified load-bearing symbol distinctions:
+- D Eq.(7): <psi_i sigma|S|psi_j sigma>=delta_ij; Eq.(8) S has integrated
+  augmentation q_nm multiplying beta_n beta_m*, not identity alone (p.3).
+- D Eq.(13): the SUM of the two wavefunction-derivative overlap terms is
+  MINUS <psi_i|partial S/partial lambda|psi_j> (p.4).
+- D Eq.(14) has partial V_KS/partial lambda - epsilon_i partial S/partial
+  lambda on the DIAGONAL plus a separate + integral V_xc partial rho_c.
+  Eq.(15) includes partial V_NL, partial V_loc times K, and V_eff partial K;
+  Eq.(20) adds + integral (dV_Hxc/dmu)K to the partial derivative (p.4).
+- D Eq.(23) has <psi_j|S|dpsi_i/dmu> on the left and numerator
+  <psi_j|[dV_KS/dmu - epsilon_i partial S/partial mu]|psi_i>, divided by
+  epsilon_i-epsilon_j. It uses i, NOT j, and TOTAL dV_KS (p.5).
+- D Eq.(28) has +2 Re wavefunction response, MINUS orthonormalization
+  contribution, PLUS the explicitly differentiated K contribution (p.5).
+- D B29 uses D_nm^sigma-epsilon_kv sigma q_nm in BOTH displaced-projector
+  terms; B30 is a separate induced-Hxc plus 3I term. B35 contracts the
+  response with p, NOT p+t; B36/B37 are additional augmentation/
+  orthonormalization force-constant contributions (p.16).
+- G Eq.(38) is <u_m,k+q|Delta_qnu v_KS|u_n,k>_uc in the effective
+  Hamiltonian of Eq.(37), with no USPP metric printed (p.10).
+- G Eq.(125): Pi=Pi^A+Pi^NA, Pi^A=Pi(0) (p.22).
+- G Eq.(145) uses g^b_mnnu * g*_mnnu', times the DIFFERENCE of dynamic and
+  static denominators; both numerators are f_m,k+q-f_n,k. The dynamic
+  denominator is epsilon_m,k+q-epsilon_n,k-hbar(omega+i eta). G Eq.(146)
+  instead uses |g|^2(f_n,k-f_m,k+q)delta(epsilon_m,k+q-epsilon_n,k-hbar omega_qnu)
+  and explicitly contains spin degeneracy two (p.26).
+- G Eq.(185) is the approximate double-Fermi-surface expression, not that
+  finite-energy delta (p.40).
+
+2. WHAT THE ORIGINAL ESTABLISHES: STATIC FORCE VS RESPONSE VERTEX
+
+[PAPER] D Sec.II pp.2–4, Eqs.(1)–(15), constructs a variational USPP
+functional with smearing, spin-resolved augmented density, NLCC, generalized
+orthonormality and generalized KS eigenproblem. D p.3 states that its
+entropy-like term is a genuine entropy/free-energy term for Fermi–Dirac
+occupations; its more general smearing formalism is for efficient metallic
+BZ integration. Generic smearing width is not asserted to be temperature.
+D p.3 explicitly discusses ion-ion U_II separately; its subsequent special
+USPP analysis concentrates on electronic force-constant contributions.
+
+[PAPER] At the electronic ground state D Sec.II Eq.(14), p.4, is a static
+ENERGY DERIVATIVE. Its sign is opposite the force. It is an occupation-
+weighted diagonal expression, plus NLCC. Crucially its partial derivative
+is at fixed orbitals (definition following Eq.(15)); it is not the total
+self-consistent derivative in Eq.(20). The augmentation density kernel K
+and overlap S are distinct objects: Eqs.(5),(8), p.3. Omitting moving K,
+projectors or overlap terms would change this static theory.
+
+[CODE] Corresponding ground-state routines are separate from elphel:
+PW/src/forces.f90:130–159 calls force_us, force_lc, force_cc, and force_ew.
+PW/src/force_us.f90:60–88 uses displaced beta projectors; :124–131 contracts
+same-band weighted products with deeq-et(ibnd,ik)*qq_at; :161–183 applies
+force sign/factors and adds addusforce. PW/src/addusforce.f90:32–40 explicitly
+identifies moving-Q forces, :84–100 uses the total effective potential,
+:123–174 assembles Q and phase/gradient factors. PW/src/force_cc.f90:10–12
+is the separate NLCC contribution. Native total force is therefore not
+obtained merely by naming an arbitrary all-band elphel matrix “force.”
+This is source inspection, not a computed force check.
+
+[PAPER] D Sec.III Eqs.(19)–(23), pp.4–5, differentiates the STATIC generalized
+KS eigenproblem. The TOTAL derivative includes induced Hxc via Eqs.(20),(21).
+Eq.(22) gives the eigenvalue derivative. Eq.(23) specifies off-diagonal
+wavefunction derivatives through the initial-energy generalized numerator,
+assuming a nondegenerate epsilon_i at this step; the paper says the
+degenerate generalization is straightforward, but supplies no campaign
+implementation/gauge contract for it. That numerator is directly relevant
+to native D. It is not a statement that arbitrary off-shell matrix entries
+are matrix elements of one energy-independent physical force operator.
+
+[PAPER] D Appendix B p.14 fixes plane-wave/Fourier normalizations B1–B10;
+p.15 B18/B19 gives orthonormalization coefficients, B20/B21 fixed-response
+augmentation integrals and B22 induced-Hxc integral. B25 has RHS
+-P_c^dagger(p+t); p.16 B29 and B30 define those different pieces. The text
+following B24 says only 3I depends on self-consistent Hxc change. B31 supplies
+augmented induced density; B32–B37 supply several force-constant terms,
+including the special augmentation and orthonormalization terms. It does
+not replace all static force constants by an unqualified |D|^2 bubble.
+
+[INFERENCE] The original licenses static generalized response and static
+forces/force constants under its assumptions. It does NOT by these formulas
+license an energy-origin change applied only to eigenvalues, arbitrary
+Euclidean renormalization of pseudo-orbitals, an off-shell “repair” by
+Hermitization, a unique laboratory embedding, finite-energy friction, a
+positive physical bath, or time-dependent USPP electron-ion propagation.
+Algebraic reciprocity, energy-shift covariance, orthonormalization choices
+and embedding sufficiency are questions for the separate oracle, not new
+results of this source slice.
+
+3. EXACT INSTALLED QE7.5 ASSEMBLY AND EXPORT BOUNDARY
+
+[CODE] PHonon/PH/solve_linter.f90:184–236 builds dvqpsi_us and saves it in
+bare RHS buffer iubar BEFORE response solving; :242–257 separately constructs
+moving core drhoc and calls the DFPT fixed-point kernel. :266–301 gates
+outputs and elphel on convt. LR_Modules/response_kernels.f90:16–33 documents
+the static Sternheimer solve; :211–238 adds induced potentials and then
+projects the solve RHS. elphel instead uses the saved preprojection bare
+buffer or rebuilds it; it is not a conduction-projected-only matrix export.
+
+[CODE] PHonon/PH/dvqpsi_us.f90:10–19 explicitly cites D B29; :105–107 builds
+local derivative; :180–185 adds the nonlocal routine.
+PHonon/PH/dvqpsi_us_only.f90:10–19 also cites B29; :87–104 selects initial
+ikk and calls compute_deff(deff,et(ibnd,ikk)); :135–186 assembles displaced
+projector terms, int1 and int2; :199–238 applies beta(k+q) and
+(k+q+G)*beta(k+q). PW/src/compute_deff.f90:10–14,35–42 defines ultrasoft
+coefficients deeq(:,:,:,current_spin)-et*qq_at. Thus initial-energy dS is
+implemented, not deduced merely from a short routine comment.
+PHonon/PH/dvanqq.f90:11–23 identifies int1=B20, int2=B21, int4=B23, int5=B24.
+The term called “bare” here is already a generalized USPP partial
+perturbation with V_eff/moving-Q terms, NOT simply a point nuclear charge
+or automatically Giustino's bare ionic g^b.
+
+[CODE] PHonon/PH/dfpt_kernels.f90:406–425 constructs induced Hxc from drhop
+(and separate drhoc when applicable). LR_Modules/dv_of_drho.f90:75–89 uses
+spin-dependent XC and up+down for Hartree: screening is coupled static
+charge/longitudinal-spin response, not two independent dielectric baths.
+LR_Modules/newdq.f90:87–118 forms int3 from induced potential and Q, including
+omega; LR_Modules/adddvscf.f90:28–33 explicitly cites the second term B30,
+:88–128 uses the current spin and beta contractions.
+
+[CODE] PHonon/PH/elphon.f90:382–390 uses 1:nbnd on both axes in ordinary
+non-tetra/non-AHC elphel; :441–448 fixes initial/final k and spin;
+:479–528 reads/rebuilds bare RHS, adds local induced potential and int3;
+:560–585 forms <evq|dvpsi> via conjugate-transpose ZGEMM, first matrix index
+FINAL, second INITIAL; :598–606 writes ordinary irrep checkpoint XML.
+No atom mass or zero-point phonon amplitude is applied at this contraction.
+These observations identify statically screened generalized D. They do not
+certify completeness beyond the finite saved nbnd/k/q set.
+
+[CODE] PHonon/PH/ph_restart.f90:297–332 writes complex PARTIAL_ELPH matrices,
+initial k coordinates and sizes, but no independent dS, embedding,
+connection or physical occupation prescription. PHonon/PH/elphon.f90:
+1903–1915 (EPA producer) additionally writes k, weights, electronic energies,
+wg, isk, pairing maps, phases, w2, dyn and the complex matrix tensor. That
+payload likewise has no separate dS/embedding connection. Reusing either
+native raw export avoids an unnecessary new D exporter, but matching save,
+UPFs, patterns, q, eigenvalues, spin, units and gauge remain mandatory.
+
+[CODE] Collinear spin selection exists in the actual producer and USPP
+operators above. PHonon/PH/phq_readin.f90:439–469 dispatches simple/epa and
+lambda_tetra/gamma_tetra separately; :773–787 rejects Hubbard-U elph and
+USPP AHC; :819–820 rejects magnetic SOC elph; :850–856 rejects constrained
+magnetization and metallic two-Fermi-energy cases; :927–936 rejects arbitrary
+fixed occupations and requires metal response/fildvscf for ordinary elph.
+Do not transfer the USPP AHC rejection to ordinary elphel, or advertise an
+AHC all-band/Cartesian exporter as a supported actual-GBRV route.
+
+4. OVERLAP, DENSITY, ORTHONORMALIZATION, EMBEDDING AND DYNAMICS
+
+[PAPER] D Eq.(13) fixes a linearized normalization constraint, not a complete
+choice of evolving basis/embedding. D Sec.III Eqs.(24),(27),(28), p.5, retains
+valence-manifold orthonormalization and moving-K contributions even in an
+insulator; only carrying over the norm-conserving conduction-only density
+argument would miss them. D p.2 explicitly assumes basis functions that do
+not depend on ionic positions (plane waves) when excluding ordinary Pulay
+basis corrections. This does not remove the atom dependence of USPP S or K.
+
+[CODE] Native S action and normalization agree with that static convention:
+PW/src/s_psi.f90:117–175 starts with psi then adds US overlap action;
+KS_Solvers/DENSE/gram_schmidt_k.f90:219–279 explicitly orthogonalizes and
+normalizes with S. The final elphel contraction is an ordinary bra on the
+already generalized RHS, not a second S insertion.
+PHonon/PH/drho.f90:88–137 prepares moving augmentation and orthonormalization
+response; :210–229 saves its fixed-response field. PHonon/PH/addusddens.f90:
+12–25 cites B31 and separates the fixed-response and iterative branches;
+:142–167 includes dbecsum, alphasum and moving-Q phase-gradient terms;
+:203–208 adds the saved field to the iterative response. Static density
+already contains these pieces. A generic extra overlap/rigid-valence term
+must not be grafted onto the total field a second time.
+
+[INFERENCE / explicit frontier] Neither D Secs.II/III+AppendixB nor G's
+ordinary-orthonormal effective-Hamiltonian discussion specifies an actual
+map T from these pseudo-orbitals into a laboratory orthonormal physical
+electronic space, its displacement derivative, or a dynamical law for a
+moving ultrasoft representation. G Sec.III.B.1 p.9 deliberately suppresses
+short-range pseudopotential nonlocality; Sec.III.B.3 p.11 refers USPP
+adaptation elsewhere. Its compact Eq.(38) must not silently override D's
+metric convention. A finite-matrix orthonormalization can be declared as a
+model representation, but identifying its coordinate derivative with a
+laboratory force requires additional justification; none is asserted here.
+
+D's d/dmu denotes a STATIC parameter derivative, not d/dt. Its p/t symbols
+are bare/induced RHS pieces, NOT nuclear momentum or time. Its Q^sigma in
+B25/B26 is a solver regularizer/projector, NOT a velocity connection. The
+inspected static routines have no nuclear-velocity argument and solve the
+static Sternheimer problem. Frequency dependence of electronic screening
+in G Sec.V is also not, by itself, the missing moving-representation USPP
+connection. No claim that all dynamical/velocity terms vanish follows from
+these observations. No universal formula for such terms is supplied here.
+
+Concrete exports/assumptions, separated by intended use:
+A. Existing static D / native static phonons: no additional dS export is
+   necessary merely to access or use what native static DFPT already built.
+B. Separated generalized H'/S' analysis or an explicitly chosen orthonormal
+   effective model: preserve/export the full complex finite-q dS_ji in the
+   SAME bands, patterns, spin, initial/final k and gauge as D, plus reference
+   energies, S/normalization, conventions and provenance. Whether that data
+   suffices for a chosen force is NOT proved by this source report.
+   PHonon/PH/psidspsi.f90:10–15 only promises q=0; :85–91 merely prints an
+   informational message otherwise. It is not a generic finite-q exporter.
+C. Laboratory/embedded force or moving-ion dynamical USPP route: additionally
+   declare the physically intended electronic space and embedding (or a
+   directly defined laboratory operator), required derivatives/connections,
+   and a source-backed time-dependent USPP model. The exact missing evidence
+   is a derivation linking THIS native pseudo-space/operator to THAT physical
+   force/dynamics, including any moving-projector/augmentation/connection
+   terms. No such load-bearing original was acquired in this slice, and no
+   surrogate has been used to fill the gap. A new original is required before
+   using that route as an externally established dynamical prescription,
+   unless integration supplies a separately explicit and verified model.
+D. Bare–screened self-energy route: also obtain and validate the appropriate
+   unscreened ionic force vertex in the same physical convention. Do not
+   assume the saved pre-SCF p is already G Eq.(142)'s g^b: D Eq.(15)/B29
+   contains augmentation/V_eff and energy-overlap terms. Separating/exporting
+   these contributions may be required by that chosen model.
+
+5. SCREENING AND STATIC SUBTRACTION: WHICH LOSS MODEL?
+
+[PAPER G] Sec.III.B.2 p.10, Eqs.(30)–(38), constructs an EFFECTIVE KS
+one-body electron–phonon Hamiltonian; it explicitly notes the sharp-
+quasiparticle approximation. Sec.III.B.4 p.13, Eqs.(50)–(54), describes
+DFPT vertices as the statically RPA+xc screened ionic perturbation. The
+following paragraph explicitly identifies quasi-static/adiabatic screening,
+not a fully frequency-dependent screened interaction.
+
+[PAPER G] Sec.V.A.1 pp.22–23, Eqs.(123)–(128), partitions static Pi^A=Pi(0)
+into the reference phonons and Pi^NA into corrections. Sec.V.A.2 pp.24–25,
+Eqs.(135)–(139), retains frequency-dependent/off-diagonal self-energy and
+relates pole shifts/broadening to it under stated approximations.
+Sec.V.A.3 pp.25–27, Eqs.(140)–(145), is especially important:
+- Eq.(140) explicitly uses W_e(omega)-W_e(0).
+- Eq.(141) has a bare coupling, an electronic proper polarization, a
+  dynamically screened coupling, and a static subtraction.
+- Eqs.(143),(144) distinguish g from g^cc; the text equates g^cc with g*
+  at zero frequency, not at arbitrary finite frequency.
+- Eq.(145) is a practical approximation with vertex Gamma set to deltas,
+  KS G at equilibrium, RPA+xc dielectric response, frozen frequency
+  dependence of the screened vertex, and spin-degenerate/time-reversal
+  simplification. It uses bare g^b times screened g*, NOT |g|^2, and a
+  zero-frequency subtraction. The source says sums run over ALL KS states.
+- Eq.(146) is the familiar finite-energy golden-rule rate after replacing
+  g^b by g; p.27 explicitly calls the matrix-element choice somewhat
+  arbitrary and requests assessing the correct bare–screened structure.
+  These are the review's stated distinctions, not a new campaign theorem.
+
+[INFERENCE] Two different viable but conditional routes therefore exist:
+(1) An explicitly declared effective independent-electron KS-type model
+    with a physically justified force/vertex, physical occupations, full
+    finite-energy transition coverage and the screened-vertex approximation
+    may use the Eq.(146) style golden-rule description within that model.
+    It is not thereby the exact material phonon self-energy.
+(2) A response/self-energy route following Eqs.(140)–(145) must maintain
+    its bare–screened structure or state/validate the replacement, decide
+    static versus dynamical screening, and preserve the static subtraction
+    when using already statically screened DFPT phonons as reference.
+    A |screened vertex|^2 positive-bath construction must not be identified
+    with that mixed-vertex self-energy without additional analysis.
+These routes still require the USPP off-shell physical convention in Sec.4.
+No route is accepted for production by this audit.
+
+[INFERENCE] Adding a full electronic static response to DFPT force constants
+without matching the Pi^A/Pi^NA partition risks counting already-included
+screening again. Conversely, simply deleting screening from an existing
+vertex does not construct a consistent alternative model. Define reference
+phonons/electrons, retained interactions and the subtraction together. A
+finite-energy delta does not convert a static vertex to dynamical screening;
+an arbitrary numerical eta is not a measured or computed bath lifetime.
+
+6. NATIVE LINEWIDTH FRONTIER: DOUBLE DELTA VS GAMMA_TETRA
+
+[PAPER G] Sec.VII p.40 Eq.(185) is obtained by neglecting phonon energy in
+the delta and taking the low-temperature limit of Eq.(146); the text says
+it loses temperature dependence and features on a phonon-energy scale.
+G Sec.V.A.3 p.27 states that the finite-T extension of Eq.(145) uses
+Fermi–Dirac occupations. Neither statement licenses numerical smearing as
+an electronic heat bath or a finite-energy spectral matrix.
+
+[CODE] PHonon/PH/elphon.f90:1260–1301 uses ngauss1=0 and TWO Gaussian
+Fermi-level delta approximants, with initial-k weight and conjugated matrix
+products; :1340–1367 contracts on each phonon and prints gamma/lambda.
+Thus ordinary simple is the double-delta family. Its EF/DOS calculation
+uses el_ph_ngauss (:1274–1277), which is a different numerical choice from
+the forced Gaussian delta kernels. PHonon/Doc/dfpt_tetra.tex:83–100 explicitly
+distinguishes lambda_tetra's double delta from gamma_tetra's occupation
+steps and delta(e_final-e_initial-omega_qnu).
+
+[CODE] gamma_tetra genuinely retains finite phonon energy:
+PHonon/PH/elph_tetra_mod.f90:758–783 loops the two spin lists and builds
+initial/final energies; :1008–1062 trims final occupations and forms their
+energy difference; :1197–1253 evaluates it at sqrt(abs(w2(nu))). Its
+:595–628 contracts per-mode weight tensors and :668–674 prints mode rates.
+Do not repeat its stale “double delta at Ef” label (:680) as the formula.
+
+[CODE / correction of shorthand in raw audit] The tetra band window is a
+CONTIGUOUS INDEX INTERVAL bounded by EF tests, not an independent exact
+per-band crossing mask: PHonon/PH/phq_setup.f90:412–425 chooses the smallest
+band index whose sampled maximum exceeds EF and largest whose sampled
+minimum lies below EF, reducing those bounds across pools. It can contain
+intermediate bands; it still excludes wholly occupied lower/wholly empty
+higher bands outside those bounds. [INFERENCE] Finite-energy transitions
+involving such excluded bands are not guaranteed covered. No claim is made
+that an actual Ni transition has been observed missing.
+
+Why gamma_tetra is not a complete physical bath [CODE/INFERENCE]:
+- frequencies are the native mode energies, not a freely resolved spectral
+  axis with a complete Cartesian/mode cross-correlation matrix;
+- the EF-selected interval is not an all-transition finite-energy contract;
+- the underlying screened vertex remains static and generalized USPP D;
+- the ordinary raw checkpoint write is skipped for tetra elphel
+  (elphon.f90:598–608), so the useful all-band XML route is separate;
+- no physical occupation-temperature, dynamical-screening, embedding or
+  physical normalization/recovery license follows from a scalar rate;
+- numerical positive-matrix/passivity/convergence assertions require their
+  own oracle and numerical study; none was performed here.
+Native mode summaries cannot settle non-Markovian memory, off-diagonal
+noise, finite-energy loss spectra, finite-size recurrences or material
+energy disposal. G's electronic loss discussion also does not supply all
+other channels: Sec.VII pp.41ff discusses anharmonic phonon losses separately.
+
+7. NUMERICAL SMEARING IS NOT A PHYSICAL OCCUPATION CONTRACT
+
+[PAPER] D Sec.II p.3 distinguishes a generic variational smearing functional
+from the Fermi–Dirac free-energy case. G V.A.3 p.27 explicitly uses FD for
+finite temperature, not Marzari–Vanderbilt cold smearing.
+
+[CODE] Modules/wgauss.f90:15–21 defines MP, cold/MV (-1), and FD (-99);
+:48–55 implements FD; :60–64 implements cold smearing; :68–87 plain Gaussian
+and MP corrections. Modules/w0gauss.f90:12–17 identifies the derivative;
+:43–49 implements the nonnegative FD derivative, while :54–57 explicitly
+contains cold-smearing factor (2-sqrt(2)*x). The cold kernel is not a globally
+positive delta approximation, and its occupation approximation is not a
+physical FD distribution. This is a source/formula observation, not a new
+computed counterexample, spectral-sign theorem or material failure result.
+Any stronger mathematical passivity statement remains for the oracle.
+
+[INFERENCE] A physical equilibrium independent-electron loss model needs a
+specified monotone occupation prescription (e.g. FD with explicit mu,T),
+not literal use of numerical MV occupations as thermal populations. Plain
+Gaussian monotonicity likewise does not assign its width a temperature.
+The static state/vertex was screened under its original occupation scheme;
+reweighting a later transition sum with FD does not retroactively change
+that response. Recompute consistent response or quantify/justify the
+smearing-to-physical-occupation approximation in production. This is NOT a
+finding that the frozen MV ground-state integration is invalid.
+
+8. ACTUAL MODEL INTAKE AND HARD SETTLEMENT PREREQUISITES
+
+[MODEL RECORD] electronic-model-source-correction.json:5–16 is authoritative:
+QE ni_pbe_v1.4.uspp.F.UPF has Zvalence18, ultrasoft, NLCC true;
+H h_pbe_v1.4.uspp.F.UPF has Zvalence1, ultrasoft, NLCC false.
+QE Ni UPF SHA256 f76b86ce60cde3d83dfcc8df79ba05478db573d158289f1b226919442d977d25;
+H SHA256 897f39441a8f0feb1f504af4cebce9dcf95c9cdc16858a7498991c74f1ad127b.
+GPAW pilot Ni.10.PBE has valence10; installed Ni.PBE has valence16 and was
+not used by the pilot. These are distinct pseudovalence/core spaces. Raw
+historical density-audit Ni10 wording is superseded, not newly verified.
+No valence count is an instruction to replace ionic/nonlocal vertices by
+nuclear/proton charge; no NLCC field is a complete all-electron core map.
+
+Hard prerequisites before a physical W2 force/loss calculation:
+P1. Integrate this complete source slice with the independently settled
+    metric oracle; resolve any conflict without promoting algebra to physics.
+P2. Settle the actual stationary W1 geometry and mode gates separately.
+    This report neither inspects active jobs nor asserts stationarity.
+P3. Preregister the physical electronic model in its actual valence/core
+    space, spin, ensembles and force definition; settle the off-shell USPP
+    representation/embedding frontier of Sec.4. No silent Hermitization.
+P4. For a separated metric route export matched finite-q dS and metadata;
+    for an embedding/dynamical route supply its source-backed map/connection
+    or directly justified physical operator; for bare–screened self-energy
+    supply the appropriate bare vertex. Existing D alone supplies none of
+    these missing meanings simply by being all-band and complex.
+P5. Choose the screened-effective-model versus response/self-energy route,
+    state all screening approximations and the reference/static subtraction.
+P6. Specify physical occupations, mu,T and relation to numerical smearing;
+    full transition-energy/band/k/q coverage and normalization; preserve
+    complex Cartesian patterns, spin and electronic gauges. No blanket
+    spin-degeneracy two may be added to an explicitly spin-resolved sum.
+P7. Verify the resulting physical model and finite-energy matrix/spectrum
+    with independent oracles and exposing failures, then material convergence
+    and actual recoverable runs. Mode gamma values or eta are not substitutes.
+
+NO ADDITIONAL SOURCE WAS ACQUIRED OR SUBSTITUTED. Existing original D plus
+explicitly identified review G suffice for this bounded readiness finding;
+they do not close the missing time-dependent/embedding authority identified
+above. No new literature attribution, improvised physical theorem or W2
+acceptance is hidden in that gap.
+
+VERIFICATION / CHANGE BOUNDARY
+Completed actual PDF rendering and direct image inspection, direct installed
+source reads, and SHA256 rechecks above. Canonical Python/pypdf reopened both
+PDFs: D has17 pages and G has68 pages, every page extracts nonempty text,
+both hashes match the pinned values. Sidecars contain17 and67 page-break
+separators respectively; these counts are not used as a symbol-level oracle.
+The written report was read back as UTF-8 successfully. Vision-provider
+routing failures are disclosed, not treated as scientific output.
+No simulations, native
+builds, library/math code, tests, active-job access, Git operations, external
+messages, package installs or shared inventory/manifest edits. The only
+owned durable new file is this report. Paper/source facts remain distinct
+from the unexecuted mathematical/physical integration questions.

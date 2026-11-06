@@ -1,0 +1,52 @@
+{
+  "schema": "P254-joint-partitioned-material-v1",
+  "status": "partial",
+  "mode": "reduce",
+  "cpus": [
+    8,
+    10
+  ],
+  "blas_threads": 1,
+  "requested_interval": 0.0,
+  "scope": "all-slot homogeneous physical mean; not whole local-q/quantum completion",
+  "oracle": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-partitioned-oracle-001.json",
+    "bytes": 8863,
+    "sha256": "76569c708667e0c86cce82d09445363cd5dbe65ffa4b6b0920a442511a95cf33"
+  },
+  "initial_boundary": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-material-initialize-003/initial/boundary.json",
+    "bytes": 133982,
+    "sha256": "a27d74552ae8d2f135d0b87d87c02713d39dcd7ea70ffe176d35cfdaa6c727fe"
+  },
+  "resource_plan": {
+    "workers": 2,
+    "simultaneous_slots": 2,
+    "original_frame_bytes": 13137509056,
+    "max_single_frame_bytes": 103041696,
+    "retained_new_frame_sets": 0,
+    "complex_contraction_payload_bytes_per_complete_barrier": 764649472,
+    "maximum_reduction_barriers_before_cache_reuse": 1,
+    "storage_estimate_note": "payload excludes NPY/JSON/stage arrays and failed-attempt storage; hard reservation remains authoritative",
+    "midpoint_storage": "per-slot n/G/ell/H0-energy receipts, not trial full frames",
+    "output_accounting": "all incomplete and complete files retained; hard cumulative invocation reservation",
+    "memory": "mmap original frames/D; one operator/slot per worker; aggregate RSS watchdog"
+  },
+  "error": "JointBudgetExceeded: invocation wall-time allocation exhausted",
+  "completed_boundaries": [],
+  "budget": {
+    "hamiltonian_actions": 12,
+    "action_columns": 4152,
+    "output_bytes_reserved": 71966544,
+    "elapsed_seconds": 600.1031051850878,
+    "max_actions": 100000,
+    "max_seconds": 600.0,
+    "max_bytes": 4294967296,
+    "max_memory_bytes": 6442450944,
+    "worker_memory_bytes": 3221225472,
+    "peak_aggregate_rss_bytes": 2729926656,
+    "accounting": "invocation-wide shared counters; existing output charged; attempts retained",
+    "memory_accounting": "parent plus child RSS; shared pages conservatively counted repeatedly",
+    "time_cap": "parent watchdog at 0.1 second intervals; native calls may be terminated"
+  }
+}

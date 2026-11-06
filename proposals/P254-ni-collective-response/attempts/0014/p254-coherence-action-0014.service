@@ -1,0 +1,26 @@
+[Unit]
+Description=P254 bounded NiH coherence-model static action construction
+[Service]
+Type=exec
+WorkingDirectory=/home/administrator/projects/substrate-ni-collective
+Environment=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/catalyst-nc-operator/src
+Environment=PYTHONUNBUFFERED=1
+Environment=ACTION14_PHASE=half-b1
+Environment=ACTION14_INITIALIZER_SPEC=/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0015/derived-initializer.json
+Environment=OMP_NUM_THREADS=1
+Environment=MKL_NUM_THREADS=1
+Environment=OPENBLAS_NUM_THREADS=1
+Environment=OMPI_MCA_hwloc_base_cpu_list=6
+UnsetEnvironment=OMPI_MCA_pml OMPI_MCA_btl OMPI_MCA_rmaps_rank_file_path HWLOC_COMPONENTS OPENBLAS_MAIN_FREE
+ExecStart=/home/administrator/projects/catalyst-dft/.venv/bin/python -u /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0014/owner.py
+ExecStopPost=-/home/administrator/projects/catalyst-dft/.venv/bin/python -u /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0014/owner.py --notify-exit %n
+Restart=no
+RuntimeMaxSec=680
+TimeoutStopSec=20
+KillMode=control-group
+CPUAffinity=6
+MemoryMax=3221225472
+MemorySwapMax=0
+MemoryAccounting=yes
+StandardOutput=journal
+StandardError=journal

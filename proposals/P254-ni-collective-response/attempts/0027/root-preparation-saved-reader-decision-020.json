@@ -1,0 +1,68 @@
+{
+  "schema": "p254-root-allocation-v1",
+  "decision": "020",
+  "created_at": "2026-10-28T16:15:19.506554+00:00",
+  "prior_due_at": "2026-10-28T16:30:00+00:00",
+  "timely": true,
+  "status": "ACTUAL_PREPARATION_PRODUCER_ADMITTED_FOR_ONE_SEPARATE_SAVED_READER",
+  "producer_terminal": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-pilot-002/terminal-b2f2acc3e6d84d7fa3e62126a84f97ae.json",
+    "bytes": "772058",
+    "sha256": "0d35530381721695a5584f4004bc7b534f7ceee458e543a0a624ca349c6fd3f0"
+  },
+  "producer_manager": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-production-controls-002/manager-postexit.stdout",
+    "bytes": "416",
+    "sha256": "65b69f68c907f343fa03960661c9871a7b265503110719a31a1b7a5ec0ae7dad"
+  },
+  "producer_start": {
+    "started_at": "2026-10-28T16:10:49.245816+00:00",
+    "ended_at": "2026-10-28T16:11:14.942142+00:00",
+    "external_start_wall_seconds": 25.69632760575041,
+    "argv": [
+      "systemctl",
+      "--user",
+      "start",
+      "p254-a27-preparation-production-002.service"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "authority": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/root-preparation-retry-decision-019.json",
+      "bytes": "3268",
+      "sha256": "4d9fb8ee2950f105ca359929e3a742f585751dfcb9d74f2db53c41b1b5487159"
+    }
+  },
+  "source_repair_bank": "e7a6b1ee",
+  "grant": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-saved-reader-grant-001.json",
+    "bytes": "303800",
+    "sha256": "fd8e5eec57da59e0b3fae57fd6716f65618afb979b453878d56cdd78b4df3e3f"
+  },
+  "original_terminal_binding_record": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-actual-terminal-binding-001.json",
+    "bytes": "300",
+    "sha256": "ddf6738d2b5373c65a9370be122239780944c03ea45f64c600da3ee4189b9bc7"
+  },
+  "reader_proposal": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-reader-proposal-002.json",
+    "bytes": "4777",
+    "sha256": "74aca0689a4d4a91e8ba5eac79d8cc236e49a9f2dc2c0d248ca397afa691d2b0"
+  },
+  "exact_argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,sys\nfrom pathlib import Path\nroot=Path('/home/administrator/projects/substrate-ni-collective')\nsys.path.insert(0,str(root/'proposals/P254-ni-collective-response/attempts/0027'))\nimport run_material_preparation_pilot as driver\npaths=driver.preload()\nfrom material_run_contract import implementation,verify_consumers,runtime_context,_context\nfrom substrate_framework.material_preparation_output import load_saved_material_preparation\ngrant=json.loads(Path(sys.argv[1]).read_bytes())\ncontext=runtime_context()\n_context(grant,context)\nverify_consumers(grant,implementation(paths))\nterminal_binding=json.loads(Path(sys.argv[2]).read_bytes())\nsaved=load_saved_material_preparation(terminal_binding)\nfinal=implementation(paths)\nverify_consumers(grant,final)\nprint(json.dumps(dict(scope='authenticated original neutral-ledger/selected-Gamma saved consumption only; no filling,WFC decoding,factor/H0 regeneration or propagation',context=context,coverage_identity=saved.coverage_identity,receipt_archives={k:dict(v)['archive'] for k,v in saved.receipts.items()},population_shapes={k:list(v.shape) for k,v in saved.population_ledger.items()},selected_gamma_shapes={k:list(v.shape) for k,v in saved.selected_gamma.items()},population_diagnostics={k:v.tolist() for k,v in saved.population_ledger.items() if v.size<=10},selected_gamma_diagnostics={k:v.tolist() for k,v in saved.selected_gamma.items() if v.size<=10},final_implementation_sources=final),sort_keys=True,allow_nan=False))\n",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-saved-reader-grant-001.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-actual-terminal-binding-001.json"
+  ],
+  "unit": "p254-a27-preparation-saved-reader-001.service",
+  "reader_cap_seconds": 30,
+  "context_and_failed_and_successful_production_seconds": "51.1197992605157177",
+  "whole_component_cap_seconds": 120,
+  "accepted_scope": "Both actual committed neutral ledger and original full-row/all346-column selected Gamma raw-D/Pauli/number/probes; own source generation and successful actual manager exit match. Conditional state, not material equilibrium or evolution.",
+  "checkpoint_history": "Fresh attempt002 repeated intake/filling after source change; its archived neutral population bytes equal the earlier preserved ledger. This is measured repeated work, not claimed checkpoint reuse.",
+  "next_root_decision_due_at": "2026-10-28T16:35:00+00:00",
+  "no_other_authority": "No producer repeat, refinement, Native/cloud operation or model scope change."
+}

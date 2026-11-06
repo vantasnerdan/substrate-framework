@@ -1,0 +1,47 @@
+{
+  "schema": "P254-disk-alert-intake-v1",
+  "actual_utc": "2026-10-31T15:16:58.426844+00:00",
+  "messages": [
+    {
+      "inbox_uid": 410,
+      "from_address": "giuliano@vantasner.io",
+      "subject": "[dft-disk] repo",
+      "message_date_utc": "2026-10-31T15:10:06Z",
+      "reported_path": "/home/administrator/projects/catalyst-dft",
+      "reported_free_gib": 48,
+      "reported_total_gib": 483,
+      "reported_percent_free": 10.0
+    },
+    {
+      "inbox_uid": 411,
+      "from_address": "giuliano@vantasner.io",
+      "subject": "[dft-disk] /tmp",
+      "message_date_utc": "2026-10-31T15:10:07Z",
+      "reported_path": "/tmp",
+      "reported_free_gib": 48,
+      "reported_total_gib": 483,
+      "reported_percent_free": 10.0
+    }
+  ],
+  "same_underlying_filesystem_verified_by_st_dev": true,
+  "capacity_observation_rerun": false,
+  "source_scope": "Tool-read extracted email body, not original RFC822 raw bytes; reported rounded snapshot, not a fresh capacity measurement",
+  "decision": {
+    "schema": "P254-root-allocation-decision-v1",
+    "decision": "Root286",
+    "actual_decision_time": "2026-10-31T15:16:58.409690+00:00",
+    "previous_due_time": "2026-10-31T15:34:58.651871+00:00",
+    "deadline_breach": false,
+    "next_decision_due": "2026-10-31T15:36:58.409690+00:00",
+    "action": "Priority disk alerts410/411 have both been read: reported15:10UTC10.0%/48GiB free on repo and/tmp, confirmed as the SAME filesystem by device identity without rerunning the reported capacity observation. Preserve all scientific checkpoints/owners/caches and keep current bounded D/E work; no new control trajectory is launched. Any later control grant must account for remaining current allocations and its existing geometry-based storage envelope after D settlement; no blind deletion or unchanged allocation increase. No email reply/send is needed; file both read automated notifications and verify destination.",
+    "evidence": [
+      "INBOX410 repository disk alert read",
+      "INBOX411 tmp disk alert read",
+      "same filesystem st_dev identity actualtrue",
+      "existing D16GiB/E32GiB owned output ceilings; no third production grant"
+    ],
+    "scope": "Disk-risk handling, not a claim that volume is full or a reason to discard settled scientific data",
+    "inbox_action": "Agentically file both to existing Notifications after recording; verify by mailbox-local UID/date/subject; no send/delete"
+  },
+  "disposition": "No reply or deletion; existing Notifications filing pending verification; current scientific data retained; no third production allocation"
+}

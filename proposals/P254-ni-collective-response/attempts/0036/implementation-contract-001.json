@@ -1,0 +1,138 @@
+{
+  "schema": "P254-A36-canonical-uniform-field-current-noise-plan-v1",
+  "registered_at": "2026-11-04T17:33:07.477601+00:00",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "branch": "research/P254-ni-collective-response",
+  "parent_objective": "E:physicalfield/noise,influenceandlossconstructionwithoutnarrowingwholeE/C/Ncampaign",
+  "useful_output": "Authenticated initialelectronic generalizeduniform-field-force covariance in the actualglobalcanonicalPi RHS;allorderedpolarizationpairs andallRR/RE/ER/EEparts from alreadycomputedphysicalrawJnoise. NotinitialPistatecovariance,notindependentextranoiseorloss.",
+  "settled_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_field_environment.py",
+      "bytes": 11892,
+      "sha256": "cd08f57f93c0c2bd96e1baefbb40ef0b1f34bd767ad13899848e583c26d6ba59"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_joint_field_scalar.py",
+      "bytes": 10960,
+      "sha256": "c403841b6b36f83bf5b66cc5488870a79e7342890ae1e7932e8e032158d2210b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched_joint_case.py",
+      "bytes": 8457,
+      "sha256": "bdda2e9ba4e75a497eed928443b1c3bb85e22c75874376e35c94b4d24e55c15c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/aggregate_uniform_current_noise.py",
+      "bytes": 19821,
+      "sha256": "2f41743ca47f68a946e8f1ef2a1f8441e9dd23b384b10fbadba35ddfe8f5bd38"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/uniform_current_inputs.py",
+      "bytes": 5588,
+      "sha256": "62f148776bf4b1af43addcddae599493a285dcea626f2c0c686ae6873051ac9d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/implementation-contract-001.json",
+      "bytes": 5419,
+      "sha256": "16e4f1330afd5f8a16af31959f914bafb156d55dfb650f20f86cd514f0431316"
+    }
+  ],
+  "original_initial": {
+    "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+    "bytes": 25705,
+    "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"
+  },
+  "original_boundary": {
+    "path": "/var/tmp/p254-a28-matched-loaded-rebind-001/original/boundary.json",
+    "bytes": 277032,
+    "sha256": "6fb559b067146ce2a44e5ecdf29a0f6045477dec4af769714830049af55752e2"
+  },
+  "original_preparation": {
+    "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/preparation.npz",
+    "bytes": 6129716,
+    "sha256": "2b879087b1c52397c46504ea335abb0b6ef5d236e680be23eab6ba13fa5f386d"
+  },
+  "matched_aggregate": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-loaded-aggregate-001/result.json",
+    "bytes": 258009,
+    "sha256": "ef411e9b0c8c533229693874654327729ea1dec3079174e48b6a54c97dac1e22"
+  },
+  "matched_archive": {
+    "path": "/var/tmp/p254-a28-matched-transport-aggregates-001/loaded-ni31h6-matched-transport.npz",
+    "bytes": 67939062,
+    "sha256": "d609176e5456cf86fdb49e8fa291c8387a2def0fcee49871f0c41b2e550f33d1"
+  },
+  "actual_partial_current": {
+    "path": "/var/tmp/p254-a35-current-source0-partial-001.json",
+    "bytes": 122750,
+    "sha256": "fea5624d6058d7bab4f192bc0519adf00b84c73e9591ed3b75eb04733f7c7dd6"
+  },
+  "canonical_construction": {
+    "ncells": 64,
+    "polarizations": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "source": "matched_joint_case.py:31\u201345,109\u2013120;physical_field_environment.py:3\u201316,60\u201370;material_joint_field_scalar.py:123\u2013148",
+    "field_volume": "N*abs(det(cell_bohr)) fromauthenticatedmatchedarchive",
+    "current": "physicalunweightedJ_Ha=-L_Ry/2 beforecanonicalmap",
+    "proposed_map": "Deriveandverifyfromactualscalar/currentlawandindependentBloch/CARstate:fieldsourcevectorM=2*polarizations;percellcurrentcovariance maps toN*M*C_J*M.T. Noadditionalspin/quadratureorpartialrenormalization. Thisis proposedconstruction,notyetverifiedresult."
+  },
+  "interfaces": {
+    "module": "canonical_current_noise.py",
+    "current_force_matrix": "current_force_matrix(polarizations) -> real(m,3)sourcevectormap",
+    "canonical_force_covariance": "canonical_force_covariance(current_covariance,ncells,polarizations) -> complex(m,m);preserverawcomplex/order,no symmetrize,clip orrepair",
+    "consumer_cli": "evaluate_canonical_current_noise.py --current-aggregate PATH --output NEWPATH;fixedadjacentplan;exits0complete,2validpartial,1invalid",
+    "oracle": "canonical_current_noise_oracle.py --output NEWPATH;independent small exactFock/scalarexpectations then actualconsumerimportsONLYatexecutionafterbothcode slices settled"
+  },
+  "waves": [
+    {
+      "wave": 1,
+      "settled_inputs": "allboundcurrent/originalsourceassetslistedhere",
+      "parallel_slices": [
+        "consumer implementation+CLI",
+        "independentnewFock/scalaroracleimplementation"
+      ],
+      "no_cross_slice_code_read_or_execution": true
+    },
+    {
+      "wave": 2,
+      "prerequisites": "bothcompletecodeartifactssettledandRootread",
+      "execute": "onlynewboundaryoraclewithsign/Ha-Ry/N/polarization sensitivity;actualsavedpartialcurrentconsumer,observecomputedcomplexvalues notexitstatusalone"
+    },
+    {
+      "wave": 3,
+      "prerequisites": "actualCurrentCompletionOwnerBOTHterminals+completeoriginal128aggregateANDsettledwave2",
+      "execute": "sameauthenticatedsaved-dataCLIonactualfullaggregate;no raceorphysicalrerun;completescientificreview/publication"
+    }
+  ],
+  "oracle_scope": "DirectexactsmallFockHilbertspacecanonical-forceoperatorfromsymbolicallydifferentiatedscalar,complexcoherentnonstationarypreparation,nontrivialorthonormalpolarizations,atleasttwoindependentsectors;compareactualmapandnegative sign/conversion/N/offdiagonalmutations. CarryexistingCAR/UPF/source-restorationproofs,donotreplayqualification.",
+  "native_budget": {
+    "cpu": 10,
+    "computational_threads": 1,
+    "hard_wall_seconds": 120,
+    "memory_bytes": 536870912,
+    "new_physical_actions": 0,
+    "whole128_consumer_waits_for": "actualsettledfullA35aggregate,notracingproduction"
+  },
+  "limits": [
+    "NophysicalH/force/current/density/trajectory/reinitialization/eigensolveactions.",
+    "DoNOTeditA34/A35oranyprofilepinnedsourcewhileproductionruns.",
+    "AuthenticatethroughA35load_context/load_case/aggregatepath;donottrustclaimedmetadataorbuildsecondaggregator.",
+    "Initialelectroniccanonicalgeneralized-field-forceonly;nomissingforce-currentcrosscovariance,lateinfluence,finiteqdensity,stationarity/FDT,irreversibleloss,heat,rates orwholeparentclosure.",
+    "Alloriginaldataandfailedattemptscosts preserved."
+  ]
+}

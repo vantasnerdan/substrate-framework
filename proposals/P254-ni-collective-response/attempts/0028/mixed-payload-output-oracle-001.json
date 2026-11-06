@@ -1,0 +1,93 @@
+{
+  "schema": "P254-real-sparse-computed-payload-oracle-v1",
+  "status": "PASS",
+  "scope": "actual numeric storage boundaries only; no material propagation",
+  "checks": [
+    {
+      "name": "entire_computed_zero_matrix_retains_shape_dtype_values",
+      "passed": true
+    },
+    {
+      "name": "zero_payload_uses_sparse_allocation_not_dense_write",
+      "passed": true,
+      "logical_bytes": 12583040,
+      "allocated_bytes": 4096
+    },
+    {
+      "name": "logical_full_shape_remains_charged",
+      "passed": true
+    },
+    {
+      "name": "authored_sparse_zero_is_actual_full_matrix",
+      "passed": true
+    },
+    {
+      "name": "tiny_nonzero_and_all_complex_values_are_exact",
+      "passed": true
+    },
+    {
+      "name": "reject_nan_before_publication",
+      "passed": true
+    },
+    {
+      "name": "reject_infinite_before_publication",
+      "passed": true
+    },
+    {
+      "name": "existing_original_never_overwritten",
+      "passed": true
+    }
+  ],
+  "outputs": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-payload-output-oracle-001-work/computed-zero.npy",
+      "bytes": 12583040,
+      "sha256": "9b2343f332dfffc1548f543a2d41bb6b1077762fd43080dc8f58a73d170944d4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-payload-output-oracle-001-work/authored-zero.npy",
+      "bytes": 12583040,
+      "sha256": "9b2343f332dfffc1548f543a2d41bb6b1077762fd43080dc8f58a73d170944d4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed-payload-output-oracle-001-work/nonzero.npy",
+      "bytes": 94800,
+      "sha256": "764318fc90be4b535d3cb7435c339baf711299a6f9f7593bbdd8caf806e38150"
+    }
+  ],
+  "budget": {
+    "hamiltonian_actions": 0,
+    "action_columns": 0,
+    "output_bytes_reserved": 25357216,
+    "elapsed_seconds": 0.572811963967979,
+    "max_actions": 1,
+    "max_seconds": 30.0,
+    "max_bytes": 67108864,
+    "max_memory_bytes": 536870912,
+    "worker_memory_bytes": 268435456,
+    "peak_aggregate_rss_bytes": 0,
+    "accounting": "q live cap; cumulative allocation/mapped-write/action costs never credited back; measured unlinks only; header/reservation slack retained; logical writes, not physical device I/O",
+    "memory_accounting": "parent plus child RSS; shared pages conservatively counted repeatedly",
+    "time_cap": "parent watchdog at 0.1 second intervals; native calls may be terminated",
+    "live_bytes_reserved": 25357216,
+    "peak_live_bytes_reserved": 25357216,
+    "cumulative_write_bytes_reserved": 25357216,
+    "cumulative_allocation_bytes_reserved": 25357216,
+    "mapped_overwrite_bytes_reserved": 0,
+    "retired_payload_bytes": 0
+  },
+  "wall_seconds": 0.5572400181554258,
+  "process_peak_rss_bytes": 158982144,
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_payload_output.py",
+      "bytes": 2115,
+      "sha256": "ae951220be454109e988c50c54bf95b76f7c69a0bfec4c2828ff68ea4d7acc65"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_payload_output_oracle.py",
+      "bytes": 4212,
+      "sha256": "14c34495bf165c5d1f30a170d4a40496869d884778fbcbe1d9f9f255c4be7cd0"
+    }
+  ]
+}

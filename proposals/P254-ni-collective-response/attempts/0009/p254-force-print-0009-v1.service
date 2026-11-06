@@ -1,0 +1,15 @@
+[Unit]
+Description=P254 bounded force-print enclosure correction0009
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/administrator/projects/substrate-ni-collective
+Environment=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src
+Environment=PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+CPUAffinity=5
+MemoryMax=2G
+MemorySwapMax=0
+KillMode=control-group
+Restart=no
+RemainAfterExit=yes
+ExecStart=/home/administrator/projects/substrate-framework/.venv/bin/python /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0009/run.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0009/proof-001

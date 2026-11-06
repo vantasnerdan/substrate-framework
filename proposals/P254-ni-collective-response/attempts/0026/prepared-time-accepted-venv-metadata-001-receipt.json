@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-c",
+    "import sys,os,json,importlib.metadata as m,importlib.util as u; ds={};\nfor n in ('numpy','scipy','sympy'):\n try:\n  d=m.distribution(n); ds[n]={'version':d.version,'root':str(d.locate_file('')),'metadata_path':str(d._path),'module_origin':u.find_spec(n).origin}\n except Exception as e: ds[n]={'error':repr(e)}\nprint(json.dumps({'executable':sys.executable,'version':sys.version,'prefix':sys.prefix,'base_prefix':sys.base_prefix,'sys_path':sys.path,'distributions':ds,'affinity':sorted(os.sched_getaffinity(0))}))"
+  ],
+  "cwd": "/home/administrator/projects/substrate-ni-collective",
+  "timeout_seconds": 15,
+  "environment_overrides": {},
+  "started_utc": "2026-10-28T05:56:21.965609+00:00",
+  "exit_code": 0,
+  "timed_out": false,
+  "error": null,
+  "full_wall_seconds": 0.16971667483448982,
+  "stdout": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/prepared-time-accepted-venv-metadata-001.stdout",
+    "bytes": 1681,
+    "sha256": "60a681c4dcb7bb675bb8fe7129983e57c5e2506438f143591e5c5b226ef4144c"
+  },
+  "stderr": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/prepared-time-accepted-venv-metadata-001.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

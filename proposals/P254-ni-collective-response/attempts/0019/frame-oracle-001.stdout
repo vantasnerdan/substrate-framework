@@ -1,0 +1,10 @@
+{
+  "output": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0019/frame-oracle-001.json",
+  "acceptance_pass": false,
+  "elapsed_seconds": 1.6851521991193295,
+  "failure": {
+    "error_type": "ValueError",
+    "error": "actual source backgrounds/bases disagree: vrs",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0019/run_frame_oracle.py\", line 184, in main\n    models = frames.build_pw_response_models(bundles[\"gamma\"], bundles[\"plus\"], bundles[\"minus\"])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_pw_response_frames.py\", line 244, in build_pw_response_models\n    fft = _check_inputs(bundles)\n          ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_pw_response_frames.py\", line 117, in _check_inputs\n    _same(bundle.background.array(name), gamma.background.array(name), name)\n  File \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_pw_response_frames.py\", line 46, in _same\n    raise ValueError(f\"actual source backgrounds/bases disagree: {label}\")\nValueError: actual source backgrounds/bases disagree: vrs\n"
+  }
+}

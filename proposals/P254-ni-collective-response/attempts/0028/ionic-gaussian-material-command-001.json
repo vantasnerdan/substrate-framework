@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-10-28T22:12:06.597148+00:00",
+  "oracle": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic-gaussian-oracle-001.json",
+    "bytes": "4332",
+    "sha256": "ccbf691f48d5beaf34f0629317d1f6a917ca5efe86f10abc8059454cdf913533"
+  },
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-ionic-gaussian-material-001",
+    "--property=Type=oneshot",
+    "--property=RemainAfterExit=yes",
+    "--property=CPUAffinity=6",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=120s",
+    "--property=RuntimeMaxSec=120s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_ionic_gaussian_material.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic-gaussian-material-001",
+    "--oracle",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic-gaussian-oracle-001.json",
+    "--oracle-sha256",
+    "ccbf691f48d5beaf34f0629317d1f6a917ca5efe86f10abc8059454cdf913533",
+    "--initial-ions",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/initial-mean-ions-001.json",
+    "--initial-ions-sha256",
+    "30c673dbc45e202ed68da054e88fb55c9375e2434d36d6b7fb321b2db4826714"
+  ],
+  "cpu": 6,
+  "seconds_cap": 120,
+  "purpose": "Actual complete material sudden-release ionic preparation, with no dynamical force repair"
+}

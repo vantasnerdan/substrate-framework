@@ -1,0 +1,39 @@
+{
+  "schema": "P254-source-local-q-implementation-summary-v1",
+  "recorded_utc": "2026-10-30T19:37:34.056981+00:00",
+  "status": "implemented-and-exercised-finite; actual-material-noise-open",
+  "proof": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-local-q-oracle-003.json",
+    "bytes": "27763",
+    "sha256": "f7041bbe9b33420504e4ea5f088271a55cfc1a56cfee4c5d97ab6170232312e7"
+  },
+  "checks": "93",
+  "all_passed": true,
+  "method": "Exact existing discrete dual graph and edge equations; complete original-source reductions; durable global potential/canonical contexts; lazy one-edge reconstruction; existing initial_contraction unchanged.",
+  "before_cache_failure": {
+    "argv": [
+      "/usr/bin/env",
+      "OMP_NUM_THREADS=1",
+      "OPENBLAS_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1",
+      "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+      "/usr/bin/python3",
+      "-c",
+      "import json\nfrom pathlib import Path\nfrom run_joint_response_oracle import FiniteSystem,DenseTangent,pack_legs\nfrom run_joint_partitioned_q_oracle import DiskFiniteHistory\nfrom substrate_framework.partitioned_q_response import PartitionedQResponse\nfrom substrate_framework.partitioned_q_storage import QBudget\nfrom substrate_framework.source_local_q_response import SourceLocalQResponse,prepare_pullback_frames\n# Recover the deterministic first case without recomputing any global context.\ns=FiniteSystem();r=s.response(True);d=DenseTangent(s,r)\na=d.probe(s.random((d.size,)),'Gamma-A');b=d.probe(s.random((d.size,)),'Gamma-B')\nbudget=QBudget(max_actions=10000,max_seconds=60,max_bytes=128000000,max_memory_bytes=4000000000,worker_memory_bytes=1000000000,existing_bytes=1220026)\nh=DiskFiniteHistory(s,r,budget)\ne=PartitionedQResponse(r,h,kernel_adjoint=lambda n,**kw:s.k*n,grid_measure=1.,budget=budget,directory=Path('/var/tmp/p254-source-local-cache-boundary-001'),identity='Gamma',cpus=[6],work_directory=Path('/var/tmp/p254-source-local-q-oracle-001/Gamma/physical-work'))\nprepare_pullback_frames(e,([0.,.003,.009],[0.,.004]))\nx=SourceLocalQResponse(e,Path('/var/tmp/p254-source-local-q-oracle-001/Gamma/pair/left')).pullback(a,[0.,.003,.009])\nlast=len(r.edges)-1\nfirst=x.edge(last)\ntry:x.edge(len(r.edges))\nexcept IndexError:pass\nsecond=x.edge(last)\nprint(json.dumps(dict(valid_pair_after_invalid_index=second is not None,original_shapes=[list(z.shape) for z in first],cache_index=x._last)))\nif second is None:raise SystemExit(2)\n"
+    ],
+    "exit": 2,
+    "stdout": "{\"valid_pair_after_invalid_index\": false, \"original_shapes\": [[2, 1], [1, 2]], \"cache_index\": 2}\n",
+    "stderr": ""
+  },
+  "cache_fix": "Invalidate both cached index and pair before a reconstruction; after an invalid sequence/end index, the last valid source reconstructs instead of returning None. Permanent regression exercised for all three full-leg cases.",
+  "material_static_plan": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-local-noise-static-plan-001.json",
+    "bytes": "3172",
+    "sha256": "578b217e9374a58bed077622f297ef8f6b253e36e7bb673fe0d4f2f14c7d06e4"
+  },
+  "actual_material_cli_changed": false,
+  "live_imported_source_changed": false,
+  "production_restart": false,
+  "new_production_allocation": false,
+  "next": "After current D releases source/compute, integrate actual material consumer and explicit context provenance, measure representative full-PW replay under original caps, then calculate full-material noise. Full64q/control comparison and scientific review/authorized merge remain open."
+}

@@ -1,0 +1,466 @@
+{
+  "terminal": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/material-dyad-pilot-001/terminal-65d2b71d5c474f32ab7528e6df0b9792.json",
+    "bytes": "1014068",
+    "sha256": "f6d792f8d6da28e18488329727c2a3484b92c752900761e684b3f882242dcc7f"
+  },
+  "admission": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/material-dyad-admission-001.json",
+    "bytes": "376254",
+    "sha256": "f423b6d5ab6431e86b462e1469f3855f467b65869f74c6434411ef2ddf1c8c00"
+  },
+  "context": {
+    "INVOCATION_ID": "014f9c9ca69c486fac5cd04c1581baec",
+    "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-material-dyad-0026.service",
+    "cpu_affinity": [
+      6
+    ],
+    "gid": 1000,
+    "groups": [
+      4,
+      27,
+      1000
+    ],
+    "kernel_limits_text": "Limit                     Soft Limit           Hard Limit           Units     \nMax cpu time              unlimited            unlimited            seconds   \nMax file size             unlimited            unlimited            bytes     \nMax data size             unlimited            unlimited            bytes     \nMax stack size            8388608              unlimited            bytes     \nMax core file size        0                    unlimited            bytes     \nMax resident set          unlimited            unlimited            bytes     \nMax processes             128196               128196               processes \nMax open files            1024                 1048576              files     \nMax locked memory         4205776896           4205776896           bytes     \nMax address space         unlimited            unlimited            bytes     \nMax file locks            unlimited            unlimited            locks     \nMax pending signals       128196               128196               signals   \nMax msgqueue size         819200               819200               bytes     \nMax nice priority         0                    0                    \nMax realtime priority     0                    0                    \nMax realtime timeout      unlimited            unlimited            us        \n",
+    "manager_runtime_max_usec": {
+      "argv": [
+        "/usr/bin/busctl",
+        "--user",
+        "get-property",
+        "org.freedesktop.systemd1",
+        "/org/freedesktop/systemd1/unit/p254_2dmaterial_2ddyad_2d0026_2eservice",
+        "org.freedesktop.systemd1.Service",
+        "RuntimeMaxUSec"
+      ],
+      "availability": "available",
+      "value": "75000000"
+    },
+    "numpy": "2.5.2",
+    "pid": 3000572,
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "resources": {
+      "cpuset.cpus.effective": {
+        "availability": "unavailable",
+        "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-material-dyad-0026.service/cpuset.cpus.effective'"
+      },
+      "memory.max": {
+        "availability": "available",
+        "value": "4294967296"
+      },
+      "memory.swap.max": {
+        "availability": "available",
+        "value": "0"
+      }
+    },
+    "thread_variables": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "uid": 1000
+  },
+  "comparisons": {
+    "spin-1-dyad": {
+      "density_potential_bilinear": {
+        "absolute_error": 1.3359632472723714e-14,
+        "allowance": 3.389572601236107e-10,
+        "left": [
+          -2.278638699814576,
+          -2.4958599004617716
+        ],
+        "passed": true,
+        "right": [
+          -2.2786386998145796,
+          -2.4958599004617845
+        ]
+      },
+      "gradient_ionic_bilinear": {
+        "absolute_error": 1.0795844313525385e-13,
+        "allowance": 2.9311031874784414e-10,
+        "left": [
+          1.6198203275042418,
+          2.430848810292667
+        ],
+        "passed": true,
+        "right": [
+          1.619820327504141,
+          2.4308488102926282
+        ]
+      },
+      "integrated_trace": {
+        "absolute_error": 8.617648093045562e-16,
+        "allowance": 8.702325267042627e-11,
+        "left": [
+          0.4999999999999973,
+          0.7000000000000013
+        ],
+        "passed": true,
+        "right": [
+          0.4999999999999981,
+          0.7000000000000015
+        ]
+      }
+    },
+    "spin-2-dyad": {
+      "density_potential_bilinear": {
+        "absolute_error": 4.265337574760008e-15,
+        "allowance": 2.9044173580030397e-10,
+        "left": [
+          -1.6616262340925576,
+          -2.3699472779968556
+        ],
+        "passed": true,
+        "right": [
+          -1.6616262340925543,
+          -2.369947277996853
+        ]
+      },
+      "gradient_ionic_bilinear": {
+        "absolute_error": 4.4197231204433534e-14,
+        "allowance": 1.358431894042268e-10,
+        "left": [
+          0.23791183615327588,
+          -1.3272778650638752
+        ],
+        "passed": true,
+        "right": [
+          0.23791183615331435,
+          -1.327277865063897
+        ]
+      },
+      "integrated_trace": {
+        "absolute_error": 1.5700924586837752e-16,
+        "allowance": 8.70232526704268e-11,
+        "left": [
+          0.5000000000000024,
+          0.7000000000000047
+        ],
+        "passed": true,
+        "right": [
+          0.5000000000000026,
+          0.7000000000000046
+        ]
+      }
+    }
+  },
+  "timing_seconds": {
+    "accepted_input_radial_setup_background_restore": 1.925890008918941,
+    "spin-1-dyad": {
+      "archive_commit_and_exact_readback": 0.20981592126190662,
+      "complete_spin_elapsed": 4.211073433980346,
+      "complex_potential_action": 0.1021317127160728,
+      "exact_PW_factor_reuse": false,
+      "input_and_setup_seconds": 0.6173241860233247,
+      "map_calls": 3,
+      "moments_full_grid_all111": 0.9649809300899506,
+      "one_mixed_all111_ionic_action": 1.1638888218440115,
+      "projector_channel_setup_seconds": 0.4374931249767542
+    },
+    "spin-2-dyad": {
+      "archive_commit_and_exact_readback": 0.19706805609166622,
+      "complete_spin_elapsed": 3.2722602197900414,
+      "complex_potential_action": 0.10825755493715405,
+      "exact_PW_factor_reuse": true,
+      "input_and_setup_seconds": 0.6160014891065657,
+      "map_calls": 3,
+      "moments_full_grid_all111": 0.9526835791766644,
+      "one_mixed_all111_ionic_action": 0.6774137322790921,
+      "projector_channel_setup_seconds": 0.00011276593431830406
+    }
+  },
+  "arrays": [
+    {
+      "key": "spin-1-dyad",
+      "archive": {
+        "bytes": "14559878",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/material-dyad-pilot-001/spin-1-dyad.npz",
+        "sha256": "2f08ee36e74a205b6bbf0842d2800e9068f2ed897e69c5de4ac171fe74e2eaf5"
+      },
+      "arrays": {
+        "atom_one_based": {
+          "dtype": "<i8",
+          "sha256_C_bytes": "d2325ffdd4600a671dcc319ae1e44706bb0b46cfb79ea5911460e20447ec95d5",
+          "shape": [
+            37
+          ]
+        },
+        "atom_symbols": {
+          "dtype": "<U2",
+          "sha256_C_bytes": "79e7e2b5fbd9e4972838b88d9a7bf8691c39c175b6215c86182f15c1977d309e",
+          "shape": [
+            37
+          ]
+        },
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "coefficient": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "da4cee615a478c42ef17add4db1878b3ad5de55bf67439dcd707a1855e2cbdc3",
+          "shape": [
+            2,
+            2
+          ]
+        },
+        "comparison_pairs": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "cf75b1c381364357d0396db122fa22b522f32c162c2546e2623b2b499d4752e9",
+          "shape": [
+            3,
+            2
+          ]
+        },
+        "density_bohr_minus3": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "35f48a051391c56f9ba998177dd0a208e0f5aca00d3a5e3669b2f9b1d4dc1101",
+          "shape": [
+            373248
+          ]
+        },
+        "direction_dimensionless": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "6ff0983d7586b174c29f29d1aab29037ab1f33625600d1a8cafc5bc87b66b51e",
+          "shape": [
+            111
+          ]
+        },
+        "dyad_bands_one_based": {
+          "dtype": "<i8",
+          "sha256_C_bytes": "0c730b69905c5ef7a4ca5269f72365400bde2dd2c04eaf9bbb3d1c4a265a0131",
+          "shape": [
+            2
+          ]
+        },
+        "fft_shape": {
+          "dtype": "<i8",
+          "sha256_C_bytes": "d19b5d20b166f9dcff6704de5d601e82e6d31ae0ac62bef97ee2980b409f7341",
+          "shape": [
+            3
+          ]
+        },
+        "ionic_action_ry_per_bohr": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "1104c2a18b8a786cd044920172e151d44f8685aaba2685d595bf1807de1c0705",
+          "shape": [
+            18613,
+            2
+          ]
+        },
+        "left_pw": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "f7dd8f898eec8b37cca60dce136ce25ed98f0a2430ea43a167cf9197d4e9f14d",
+          "shape": [
+            18613,
+            2
+          ]
+        },
+        "positions_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "0573bfbdcbdb46b06a78ee788edb0ff70101d28b85163a60b0c4c0632ee1d071",
+          "shape": [
+            3,
+            37
+          ]
+        },
+        "positive_gradient_ry_per_bohr": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "927d7920cb90a134bb509653ffbb4498b2548999951f18ed5f3ed1c7a4b3f85d",
+          "shape": [
+            111
+          ]
+        },
+        "potential_action_ry": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "5a957c30a47c493e467288b8cab9e9aafb32c926c7f4c3dc67fc1df55c1171bb",
+          "shape": [
+            18613,
+            2
+          ]
+        },
+        "potential_ry": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "3d2db7078d576e6b07e78a023282179bdc1ac14b3e89f741fd84c47dc3de56c0",
+          "shape": [
+            373248
+          ]
+        },
+        "pw_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "f0a33d624c276406a0dd5629b5050deb6e248aa8e48af65f1ab7c96a2294ba68",
+          "shape": [
+            3,
+            18613
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "right_pw": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "f7dd8f898eec8b37cca60dce136ce25ed98f0a2430ea43a167cf9197d4e9f14d",
+          "shape": [
+            18613,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "key": "spin-2-dyad",
+      "archive": {
+        "bytes": "14559878",
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/material-dyad-pilot-001/spin-2-dyad.npz",
+        "sha256": "85dc5d313e7957f1d843b11de65ab936d973b0bfe49265bc9d6a8f55bb948847"
+      },
+      "arrays": {
+        "atom_one_based": {
+          "dtype": "<i8",
+          "sha256_C_bytes": "d2325ffdd4600a671dcc319ae1e44706bb0b46cfb79ea5911460e20447ec95d5",
+          "shape": [
+            37
+          ]
+        },
+        "atom_symbols": {
+          "dtype": "<U2",
+          "sha256_C_bytes": "79e7e2b5fbd9e4972838b88d9a7bf8691c39c175b6215c86182f15c1977d309e",
+          "shape": [
+            37
+          ]
+        },
+        "cell_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "20c5debaa4e508036b819a4511349bd1beb8d575a43c0d81870aea97a4c14378",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "coefficient": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "da4cee615a478c42ef17add4db1878b3ad5de55bf67439dcd707a1855e2cbdc3",
+          "shape": [
+            2,
+            2
+          ]
+        },
+        "comparison_pairs": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "fb0dba3ef7afae5b54d68f953a4e2ba5fd2f56d713801f4c75a1dd7eb74fb852",
+          "shape": [
+            3,
+            2
+          ]
+        },
+        "density_bohr_minus3": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "2081dddac300765f4cf1e5f3077d53b3ece1fe9b89f513217d46b9b4221e04b6",
+          "shape": [
+            373248
+          ]
+        },
+        "direction_dimensionless": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "6ff0983d7586b174c29f29d1aab29037ab1f33625600d1a8cafc5bc87b66b51e",
+          "shape": [
+            111
+          ]
+        },
+        "dyad_bands_one_based": {
+          "dtype": "<i8",
+          "sha256_C_bytes": "0c730b69905c5ef7a4ca5269f72365400bde2dd2c04eaf9bbb3d1c4a265a0131",
+          "shape": [
+            2
+          ]
+        },
+        "fft_shape": {
+          "dtype": "<i8",
+          "sha256_C_bytes": "d19b5d20b166f9dcff6704de5d601e82e6d31ae0ac62bef97ee2980b409f7341",
+          "shape": [
+            3
+          ]
+        },
+        "ionic_action_ry_per_bohr": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "28d598745771fdc3ec157bb9ad1bf169d44d681045372efc686eca3aeaec4707",
+          "shape": [
+            18613,
+            2
+          ]
+        },
+        "left_pw": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "e98c8b58841634c615651f0017252ac929d17c11195c568c574eb81bb2080546",
+          "shape": [
+            18613,
+            2
+          ]
+        },
+        "positions_bohr": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "0573bfbdcbdb46b06a78ee788edb0ff70101d28b85163a60b0c4c0632ee1d071",
+          "shape": [
+            3,
+            37
+          ]
+        },
+        "positive_gradient_ry_per_bohr": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "257267c924fdf63391ccad53bd738d45e4b2262cca84016713e6be33ce377aa0",
+          "shape": [
+            111
+          ]
+        },
+        "potential_action_ry": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "62e4dbf4857e52e0ee60f683cf10fdb4a33aee471b5f418fa8d08d5d8990c21b",
+          "shape": [
+            18613,
+            2
+          ]
+        },
+        "potential_ry": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "fb7be4b6df86eb5ac6293c77843c9a90d5af5f20bdc9417eb73bc10729bdfe48",
+          "shape": [
+            373248
+          ]
+        },
+        "pw_miller": {
+          "dtype": "<i4",
+          "sha256_C_bytes": "f0a33d624c276406a0dd5629b5050deb6e248aa8e48af65f1ab7c96a2294ba68",
+          "shape": [
+            3,
+            18613
+          ]
+        },
+        "reciprocal_bohr_inv": {
+          "dtype": "<f8",
+          "sha256_C_bytes": "e1fe508833a7fdfd9771628b8a5ec95e004c0ea0088d5ed6300c98ffb9d8a53f",
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "right_pw": {
+          "dtype": "<c16",
+          "sha256_C_bytes": "e98c8b58841634c615651f0017252ac929d17c11195c568c574eb81bb2080546",
+          "shape": [
+            18613,
+            2
+          ]
+        }
+      }
+    }
+  ]
+}

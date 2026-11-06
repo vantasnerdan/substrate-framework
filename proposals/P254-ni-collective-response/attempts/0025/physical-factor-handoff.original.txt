@@ -1,0 +1,60 @@
+Implemented only the three owned files. **No scientific imports, oracle execution, tests, builds, formatting, material production, or ensemble selection performed.**
+
+### Source bindings
+
+Paths relative to repository root:
+
+| File | Bytes | SHA256 |
+|---|---:|---|
+| `src/substrate_framework/physical_factor_preparation.py` | 11366 | `3dd3767a13da9fd5f5d7559bc3f7a98cf00d365655a08980db551d011aa25b96` |
+| `src/substrate_framework/material_observable_factors.py` | 9649 | `8dccf02e203b537a7d4345fd50dc83f96ee405790a9d082854253738408c7ca1` |
+| `proposals/P254-ni-collective-response/attempts/0025/run_physical_factor_oracle.py` | 12519 | `693750f345bc4927177b73e33e65a4621f4b42906143025d144efc18b6c6b59c` |
+
+Counts and hashes were computed from actual files using `wc -c` and `sha256sum`.
+
+### Integration APIs
+
+- `ActionFactors(action, adjoint_action, operator_identity, adjoint_identity, units, pw_basis_identity, source_authority)`
+- `FactorFunctional.from_actions(psi, probes, *, factor_identity, pw_basis_identity)`
+  - Preserves raw factors; produces `gram`, `overlaps`, and directed `ordered_products`.
+  - Computes \(S\), \(M_A\), and full-PW \(T_{AB}\), without PW-square density/operators.
+  - Explicitly identical Hermitian action/adjoint arrays permit exact reverse cross-Gram reuse; no averaging or Hermitization.
+- `functional.archive_payload() -> (arrays, metadata)`
+  - Exports all Gram/M/T arrays with indexed keys and explicit `array_layout`.
+  - Metadata retains operator identities/provenance; `state=None`, `density_coefficients=None`.
+- `FactorPreparation(functional, density_coefficients, state_authority)`
+  - Exposes `mean`, `ordered`, and `correlations`.
+  - Checks Hermitian coefficients and the spectrum of \(S^{1/2}DS^{1/2}\); reports raw eigenvalues and roundoff allowance.
+- `coefficients_from_orthonormal_populations(gram, populations, *, mapping_authority)`
+  - Explicit optional symmetric-frame mapping \(D=S^{-1/2}\operatorname{diag}(f)S^{-1/2}\).
+  - **Not for production absent separate preparation authority.**
+- `NumberProbeGrid(fft_shape, pw_miller, cell_bohr, reciprocal_bohr_inv, pw_basis_identity)`
+  - `.actions(psi)` and `.metadata()`.
+- `gamma_probe_actions(psi, *, spin_one_based, pw_basis_identity, source_authority, gpsi_h32_x, gpsi_ni1_x, number_grid)`
+  - Returns `force_H32_x`, `force_Ni1_x`, `number_cos_b1`, `number_sin_b1`.
+  - Consumes archived **positive** gPsi; applies the force minus sign without recomputing ionic action.
+- `CompleteGridNormalization(shape, authority)`
+- `gamma_correlations(preparations, left, right, normalization, *, independence_authority)`
+  - Keeps raw spin sectors separate; applies explicit \(1/N\) aggregate normalization.
+  - Separates AB, BA, symmetrized, commutator and means. Ionic/cross/total remain null.
+
+Root should archive `NumberProbeGrid.metadata()` and chosen normalization metadata alongside `archive_payload()`, original coordinate/source receipts, and full action arrays as appropriate.
+
+### New oracle
+
+Written, **not executed**: exact SymPy CAR/Fock identity; independently constructed finite Fock density through exterior minors; genuinely nonorthogonal coordinates; fractional populations; empty complement; diagonal and explicitly degenerate probes; complex noncommuting operators; explicit adjoints; coordinate/basis changes; positive-sum identity; literal Fourier probe matrices; serialization coverage; complement/conjugation/sign/spin/weight sensitivity.
+
+Root command, from repository root after source admission:
+
+```bash
+env PYTHONPATH=src OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
+  python3 proposals/P254-ni-collective-response/attempts/0025/run_physical_factor_oracle.py
+```
+
+No compilation is required for this slice.
+
+### Provenance and qualifications
+
+Conventions follow the registered candidate, complete physical-preparation map, existing physical preparation, and accepted0024 array/archive layout. Physical FFT indexing reuses unchanged `qe_material_ionic_action.fft_indices`; its inspected file is **5807 bytes**, SHA256 `91e7c4f5f65a7ae5ead21e8ceff6ab9bbaf873c0ddead9285117f7fc2f54157c`.
+
+The implementation requires linearly independent factors at roundoff resolution; it rejects unresolved Gram rank rather than truncating or renormalizing. Number probes are dimensionless integrated particle-number observables, not charge or density-per-volume. Production remains state-independent, selected-Gamma, both-spin factor data. No complete BvK, calibrated preparation, stationary/dynamic/noise-spectrum, ionic-total, or whole-model claim is supplied. Remaining source-map obligations are preserved in module scope documentation.

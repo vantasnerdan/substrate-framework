@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+"""Coalesce only authenticated identical immutable files of stopped Raw003."""
+import fcntl, hashlib, json, os, subprocess, uuid
+from pathlib import Path
+
+OLD=Path('/var/tmp/p254-a28-loaded-raw-mixed-gamma-005')
+HEADER=OLD/'steps/000000/stage-1/input.json'
+ROOT=Path('/var/tmp/p254-a28-deduplicate-settled-raw003-001')
+EXPECTED_HEADER=''
+
+def binding(path):
+    path=Path(path)
+    h=hashlib.sha256()
+    with path.open('rb') as stream:
+        for block in iter(lambda:stream.read(4*1024**2),b''): h.update(block)
+    return dict(path=str(path),bytes=path.stat().st_size,sha256=h.hexdigest())
+
+def verify(record):
+    path=Path(record['path'])
+    if path.is_symlink() or not path.resolve().is_relative_to(OLD):
+        raise ValueError('only original owned non-symlink payloads allowed')
+    actual=binding(path)
+    if actual['sha256']!=record['sha256'] or actual['bytes']!=record['bytes']:
+        raise ValueError('original payload authentication failed')
+    return path
+
+def main():
+    ROOT.mkdir(exist_ok=False)
+    result=dict(schema='P254-byte-preserving-settled-coalescing-v1',status='failed',
+        future_symmetry_inferred=False,scientific_bytes_changed=False,items=[])
+    with (ROOT/'items.jsonl').open('x') as journal, (OLD/'owner.lock').open('r+b') as lock:
+        try:
+            fcntl.flock(lock.fileno(),fcntl.LOCK_EX|fcntl.LOCK_NB)
+            check=subprocess.run(['systemctl','--user','show','p254-a28-loaded-raw-mixed-gamma-003.service',
+                '--property=MainPID,ActiveState,SubState'],capture_output=True,check=True,text=True)
+            result['original_manager']=check.stdout
+            if 'MainPID=0\n' not in check.stdout or 'ActiveState=active\n' in check.stdout:
+                raise ValueError('original owner is not stopped')
+            raw=HEADER.read_bytes()
+            if hashlib.sha256(raw).hexdigest()!=os.environ['P254_DEDUP_HEADER_SHA256']:
+                raise ValueError('original header authentication failed')
+            header=json.loads(raw)
+            result['header']=binding(HEADER)
+            result['available_bytes_before']=os.statvfs(OLD).f_bavail*os.statvfs(OLD).f_frsize
+            for index,(left,right) in enumerate(zip(header['legs']['plus'],header['legs']['minus'],strict=True)):
+                if left.get('sha256') is None or left['sha256']!=right.get('sha256') or left['bytes']!=right.get('bytes'):
+                    raise ValueError('payloads are not declared byte-identical')
+                source,target=verify(left),verify(right)
+                a,b=source.stat(),target.stat()
+                item=dict(index=index,source=left,target=right,source_inode_before=a.st_ino,
+                    target_inode_before=b.st_ino,target_links_before=b.st_nlink,target_blocks_before=b.st_blocks)
+                if (a.st_dev,a.st_ino)!=(b.st_dev,b.st_ino):
+                    temp=target.with_name(target.name+'.coalesce-'+uuid.uuid4().hex)
+                    os.link(source,temp)
+                    os.replace(temp,target)
+                    fd=os.open(target.parent,os.O_RDONLY|os.O_DIRECTORY)
+                    try: os.fsync(fd)
+                    finally: os.close(fd)
+                after=verify(right)
+                s,t=source.stat(),after.stat()
+                if (s.st_dev,s.st_ino)!=(t.st_dev,t.st_ino): raise AssertionError('coalescing failed')
+                item.update(target_inode_after=t.st_ino,content_authenticated_after=True)
+                journal.write(json.dumps(item)+'\n'); journal.flush(); os.fsync(journal.fileno())
+                result['items'].append(item)
+            if HEADER.read_bytes()!=raw: raise AssertionError('scientific header changed')
+            result.update(status='complete',count=len(result['items']),
+                available_bytes_after=os.statvfs(OLD).f_bavail*os.statvfs(OLD).f_frsize)
+        except BaseException as error:
+            result['error']=type(error).__name__+': '+str(error)
+        finally:
+            with (ROOT/'result.json').open('x') as out:
+                json.dump(result,out,indent=2); out.write('\n');out.flush();os.fsync(out.fileno())
+    print(json.dumps({k:v for k,v in result.items() if k!='items'}),flush=True)
+    return 0 if result['status']=='complete' else 2
+
+if __name__=='__main__': raise SystemExit(main())

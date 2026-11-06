@@ -1,0 +1,52 @@
+{
+  "schema": "P254-fused-action-registration-v1",
+  "status": "source-first-preregistered-not-executed",
+  "scope": "Exact contraction scheduling of the existing same-k frozen H0 + Vstage + g(u); not new DFT physics or an evolution result",
+  "source_authority": {
+    "src/substrate_framework/qe_material_hamiltonian.py": "f7734635ecc3f86bbb4d35bc5dd1972fea49e1442fcdc2d17adf59f1d4e24093",
+    "src/substrate_framework/qe_material_dyads.py": "78c046fc67cd67ee764b1b20765647f9fa2cc2bb7ab779b4c9199a091947731b",
+    "src/substrate_framework/qe_bloch_ionic_action.py": "1135f801ab9a01d217dcedd4f51f13ac5d88233dd6e6050b3710d7a6577e8c05",
+    "src/substrate_framework/qe_material_ionic_action.py": "91e7c4f5f65a7ae5ead21e8ceff6ab9bbaf873c0ddead9285117f7fc2f54157c",
+    "src/substrate_framework/qe_bloch_qzero.py": "6888a35acb1a6b2d500f7340b804d3cc4f026c1c60eb7c7509009377f8f0ffd9",
+    "src/substrate_framework/qe_material_grid.py": "278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896",
+    "src/substrate_framework/streamed_material_evolution.py": "8d164de50a6474cf35ec5842630b3f4c0085101c19ce6f6c94fd19334c5f1e38"
+  },
+  "legacy_timing": {
+    "path": "streamed-sector-action-001/result.json",
+    "sha256": "2c5ee366a6ad1cb2136ed01e2410731afa4bbacafb99de4bd90aeff7d62ac9b2",
+    "seconds": 73.43817807594314,
+    "scope": "one complete 346-column action, CPU6; original output not retained; norm is not an elementwise equivalence check"
+  },
+  "implementation": {
+    "api": "FrozenMaterialAction(h0, coupling=None, *, potential=None, direction=None, fft_block_size=8, projector_block_size=64).apply(vectors); .adjoint_apply(vectors)",
+    "reuse": "Original MaterialHamiltonian, PWFactors, SpeciesProjectors.apply, PhysicalRhoFFT and coupling.ionic.prepare. Identity requires shared checked factors, not merely matching dimensions. No new radial/projector/DFT reconstruction.",
+    "local": "Copy and sum saved vrs[:,ispin-1], optional complex stage potential and prepared complex ionic field once; one inverse/forward physical-grid transform per FFT column block.",
+    "nonlocal": "SpeciesProjectors.apply on wide column panels independent of FFT paneling. Ionic prepared terms retain +i BD Bdagger diag(p.u) and -i diag(p.u) BD Bdagger separately; exact conjugate-transposed factors for adjoint, without a Hermiticity assumption.",
+    "zero_policy": "Only exact zero direction or exactly zero combined local field may skip work; no norm thresholds.",
+    "memory": "Output one full frame; transient PW/grid work bounded by explicit 64-column projector and 8-column FFT panels; no PW-square matrix. Cached factors/prepared terms remain sector-local. Threadpool limit 1 on each apply.",
+    "ownership": "Caller must not mutate checked H0/coupling factors. Potential/direction snapshots are copied during construction. Rebuild only when frozen stage changes. H0-only object omits potential and direction. No D contractions or hidden H0 counters in production API."
+  },
+  "oracle": {
+    "independent_reference": "Explicit finite Fourier matrix, independent analytic displaced-projector derivative and dense H assembled from random complex beta and non-Hermitian complex species D. Complex frames and arbitrary complex raw coefficient D are contracted without repair.",
+    "cases": "H0, real and complex ionic direction, nonzero saved/stage/ionic fields, adjoint, complex linearity, single column, panel boundaries, exact-zero and tiny nonzero directions.",
+    "sensitivity": "Reject omission of kinetic, saved local, stage local, ionic local, species nonlocal, either ionic derivative leg, either derivative sign, conjugation of direction, Hermitization of active D or raw D.",
+    "acceptance": "relative dense action/adjoint/contraction residual <= 2e-11; all named mutation residuals > 1e-8; persist finite reference/actions/differences."
+  },
+  "material": {
+    "inputs": "Authenticate original pilot result, its input bindings, source-bound passing fused oracle, exact boundary, selected raw frame and original fixed complex D. Reuse unchanged build_evolution_model and factory.",
+    "probes": "Saved first/last raw columns plus deterministic complex full-PW vectors orthogonally projected out of ALL saved columns via Gram solve; verify complement residual and retain probes. Compare legacy and fused H0, initial stage, nonzero named real/complex atom directions and nonzero complex field. Save actions/differences and quantitative errors.",
+    "timing": "Execute only NEW full346-column initial frozen action; retain full array and exact binding, elapsed time, RSS/PSS, CPU affinity and native threadpool receipts. Do not rerun lost legacy full frame. Compare legacy scalar norm only as historical evidence, not proof.",
+    "direction_semantics": "Probe displacements/fields are algebraic equivalence challenges with explicit saved arrays, not invented physical initial conditions. Full action uses only actual original stage u and K(delta n).",
+    "acceptance": "Every actual probe relative residual <= 2e-11; selected full frame has346 columns. No speedup claim before actual execution."
+  },
+  "integration": {
+    "unchanged_active_jobs": "Do not edit physical-field moments code, source dependencies, factories or active source manifests while those runs are bound. New module and consumers are opt-in only.",
+    "later_cutover": "After Root authorizes source cutover, have factory yield checked raw MaterialHamiltonian as well as coupling. Construct H0-only FrozenMaterialAction once per sector and a frozen full action once per stage/sector. Wrap each apply with the SAME global H0 reservation, once per call and exact number of requested columns, including exponential adjoint requests and energy-only H0 calls. Never reserve both wrapper and legacy counted_h0. Keep existing reductions/weights/raw D/physical stage construction unchanged.",
+    "adjoint": "Use adjoint_apply for complex stage directions/fields. Existing exponential_action assumes self-adjoint physical real stages; do not feed arbitrary complex challenges through that shortcut.",
+    "verification_commands": [
+      "taskset -c 6 python proposals/P254-ni-collective-response/attempts/0028/run_fused_action_oracle.py --output <new-oracle-directory>",
+      "taskset -c 6 python proposals/P254-ni-collective-response/attempts/0028/run_fused_action_material.py --legacy-result proposals/P254-ni-collective-response/attempts/0028/streamed-sector-action-001/result.json --legacy-result-sha256 2c5ee366a6ad1cb2136ed01e2410731afa4bbacafb99de4bd90aeff7d62ac9b2 --oracle <new-oracle-directory>/result.json --oracle-sha256 <actual-digest> --cpu 6 --output <new-material-directory>"
+    ]
+  },
+  "limitations": ["No execution in this assignment", "Same-k q=0 only; not rectangular finite-q", "One-sector equivalence/timing does not establish full rollout runtime, energy convergence or a material trajectory", "Global H0 reservation remains Root-owned integration work"]
+}

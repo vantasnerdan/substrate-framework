@@ -1,0 +1,30 @@
+**overall_correctness:** correct  
+**findings[]:** empty — 0 actionable, patch-introduced defects found.  
+**confidence:** 0.94
+
+**explanation:** The settled 0017/0018/0019 implementation is consistent with the inspected QE 7.5 sources and its declared engineering scope. I found no blocking defect in the full-PW Hamiltonian, bare ionic derivative, frozen-curvature import, FD occupations, reciprocal-gauge mapping, or two-branch physical response.
+
+### Review evidence
+
+- **Full H₀ — `qe_pw_hamiltonian.py`.** The kinetic diagonal, normalized local-potential Fourier convolution, and species-then-atom active `B D B†` blocks agree with the inspected QE implementations. The operator retains all physical target PWs, not a 20-band projection. `0017/hamiltonian-oracle-001.json` records agreement for all 16 states at each q, with maximum retained-eigenpair residuals of approximately `2.0153e-5 Ry` at Gamma and `4.9615e-6 Ry` at half-b1. All three registered mutation families were exposed.
+
+- **Bare g — `qe_ionic_operator.py` and Native producers.** The nonlocal action has the correct positive source-derivative and negative target-derivative terms, using `tpiba*(k+G)`. Native projectors already contain atomic phases; no additional atom–q phase is inserted. The local action uses the actual unscreened Cartesian fields and normalized FFT convention. I traced the export hook before induced-potential addition and followed the new datasets through decoding into their consumers. `0018/ionic-operator-oracle-001.json` records every retained-state/pattern comparison passing at all three actual q points; the largest recorded error is approximately `4.4464e-15 Ry/bohr`.
+
+- **Absolute C_frozen — `qe_frozen_curvature.py`.** The original XMLs contain completed irrep-zero totals, not `dyn00` alone or screened dynamical matrices. QE’s final Ewald sign is already included before serialization. Consecutive real/imaginary pairs, Fortran order, and `U C_pattern U†` are handled correctly; the result remains unmass-weighted in `Ry/bohr²`. The importer neither fits nor symmetrizes the matrix. `0018/frozen-curvature-oracle-002.json` records both actual imports and the nontrivial complex-pattern energy oracle passing.
+
+- **Full-FD reference — `qe_pw_response_frames.py`.** One common chemical potential fixes total `N=19`, with explicit-spin quadrature and no additional factor two. Every representably nonzero FD source occupation is retained. Actual complete dimensions are 561, 580, or 588; active source dimensions are 11, 12, or 14 because of the FD rule—not a hidden retained-band closure. The recorded full-FD/saved-SCF density discrepancy, relative L₂ `6.52624749354371e-7`, is explicitly disclosed rather than identified with exact self-consistency.
+
+- **Reciprocal mapping and response — `pw_response_data.py`, `qe_pw_response_frames.py`, `pw_independent_response.py`.** For a branch source representative shifted by reciprocal integer `L`, source coefficients are matched through native Miller indices plus `L`, and target FFT slots receive the **same** shift. This covers the actual `(1,1,1)` cases. Both branches are consumed explicitly: denominators are `ε_source + z − ε_target` and `ε_source − conjugate(z) − ε_target`, followed by the required bra conjugation. Density includes exactly one inverse-volume factor; the ionic observable is `δ⟨g₋q⟩`, not its negative force. The finite original-basis density-matrix EOM receipt records agreement and exposes wrong branch pairing, FFT maps, physical sign, spin factor, and density normalization.
+
+- **Provenance.** Inspected registrations, implementation manifests, retained failures and repair registration, actual producer completion receipts, three distinct closed manifests, Native exporter sources, and original curvature/pattern XMLs. The old curvature producers and new operator producers record the same saved-reference density/schema hashes. The original frame failure remains preserved; its repair does not loosen material-accuracy acceptance.
+
+### Explicit limitations
+
+- This verdict covers **settled 0017/0018/0019 only**, not the pending 0020 screened solver.
+- Native H₀ and g corroboration remains limited to exported retained-state actions. Full-space construction and Gamma Hermiticity do **not** supply an independent Native unretained-complement action oracle.
+- The finite EOM oracle independently checks response algebra, not actual Native-frame response numerics. The actual frame oracle checks frame construction and normalization.
+- The ionic conjugated-displacement mutation was **not exposed** by the actual patterns and correctly receives no sensitivity credit.
+- C_frozen retains decimal-XML precision and its saved-SCF reference. Combining it with the nearby full-spectrum FD reference is not an exact equal-reference material Hessian claim.
+- Isolated finite-z response conserves spin populations; it is not Native thermodynamic Gamma population relaxation. No physical-loss, coherence-domain, stationary-material, or nuclear-rate conclusion follows.
+
+**Review operations:** read-only source and existing-evidence inspection. No edits, builds, tests, numerical-oracle executions, formatters, or Native runs were performed.

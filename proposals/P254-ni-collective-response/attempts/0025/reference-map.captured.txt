@@ -1,0 +1,302 @@
+## report_text
+
+# Summary
+
+**The next constructive component is an offline, matrix-free reconstruction of the saved Ni31H6 Hamiltonian and its Hartree/spin-PBE density-to-potential kernel. A new SCF or PH calculation is not mathematically required.** QE’s own saved-file reconstruction path explicitly regenerates the potential from density, geometry and pseudopotentials.
+
+The prerequisites are the **settled saved-data readers, settled ordinary-NC reconstruction sources, and original Native reference exports**. Acceptance of the pending material-action review is not a prerequisite.
+
+Principal findings:
+
+1. **Resolved since the original material map:** the saved-WFC/density/XML readers and NC local/projector reconstruction now exist as separately bound sources. Their ingredient executions are recorded by Root.
+2. **Available material data:** the actual density, XML, identical Ni/H UPFs and all twenty collected WFC files survive. The admitted byte-count/SHA closure currently covers the two Gamma WFCs, density, XML and UPFs. Historical hashes exist for the other eighteen WFCs, but their additional byte-count/current-byte admission remains open.
+3. **Missing but reconstructible:** material `vrs`, `dmuxc`, `grho`, and `dvxc_rr/sr/ss/s`. Neither the saved density nor the XML already contains these arrays.
+4. **Independent oracle route exists:** original attempt0018 exports include their own saved density/XML, byte-identical UPFs, Native `vrs`, all kernel coefficients, kernel probe inputs/outputs and electronic/projector ingredients. They can test the **new reconstruction**, without rerunning the old producers or relying on pending material results.
+5. **Installed no-build XC candidate exists:** system Libxc 5.2.3 provides callable C potential/derivative APIs. It is **not automatically identical to the Native backend**: the inspected QE7.5 build uses its internal XClib, whose spin-PBE kernel includes explicit finite-difference and threshold conventions.
+6. **Important diagnostic qualification:** saved eigenpairs need not be exact eigenpairs of the potential regenerated from the final saved density. QE diagonalizes the input-density Hamiltonian and, upon convergence, subsequently constructs the output-density potential. This is a source-supported reason to retain and interpret residuals, not manufacture a tighter convergence gate.
+7. **Physical preparation remains separate:** reconstructing held-density H0 and K does not choose an FD ensemble, physical temperature, calibrated stationary reference, or screened dynamics. **MV width must not be converted into temperature.**
+
+**Closure limitation:** this investigation completes the source/data/API map, but cannot claim a fully byte-closed new implementation admission. Several newly identified QE/XC files and the installed Libxc binary lack an observed original-byte count/SHA receipt in the searched inventories. The mounted tools also provide no permitted local hashing/serialization execution with which to bind those files or this report. Exact unresolved items are listed below; no hashes are fabricated.
+
+# Evidence basis and scope
+
+This was **read-only source and receipt inspection**. No numerical computation, scientific imports, tests, builds, installation, Native/SCF/PH execution, process control, or file modification was performed.
+
+- Root’s recorded reader/NC ingredient executions are **already executed evidence**, not executions performed here.
+- No physical-bilinear review was replayed.
+- The pending material-review verdict is not used to establish any dependency or conclusion below.
+- The current allocation in `A24/root-crash-acceptance-allocation-001.json` was read. Its isolated recovery exercise is separate from this H0/K source map and supplies no H0/K evidence.
+- Semantic `find` was unavailable; local literal searches and file reads supplied the investigation.
+- Native dimensions and identities were inspected as raw JSON/text or Python source. No JavaScript-number conversion was used.
+
+## Path aliases
+
+| Alias | Expansion |
+|---|---|
+| `R` | `/home/administrator/projects/substrate-ni-collective` |
+| `P` | `R/proposals/P254-ni-collective-response` |
+| `A16` … `A24` | `P/attempts/0016` … `P/attempts/0024` |
+| `F` | `R/src/substrate_framework` |
+| `C` | `/home/administrator/projects/catalyst-nc-operator` |
+| `Q` | `/opt/qebuild/q-e-qe-7.5` |
+| `S` | `C/runs/2026-10-19_collective-response/nc-material/gamma-continuation-002/loaded-ni31h6/native/scratch/scf.save` |
+| `E` | `C/runs/2026-10-19_collective-response/full-ionic-operators-0018/gamma/scratch/scf.save` |
+| `B` | `C/runs/2026-10-19_collective-response/full-ionic-operators-0018/gamma/bundle/q-1` |
+
+# Files and architecture
+
+## Settled readers and NC ingredients
+
+| File / exact location | Existing API or responsibility | Consequence for the next component |
+|---|---|---|
+| `F/qe_saved_native.py:23-63,78-160` | `read_bound_bytes`, `SavedWavefunctions`, `load_wavefunctions`, `SavedDensity`, `load_density` | Reuse the original-byte-bound decoder. It preserves WFC row order, spin-local k identity, raw integer headers and density components. |
+| `F/qe_saved_reference.py:63-127,130-210` | `SavedKPoint`, `SavedReference.select`, `load_saved_reference` | Supplies ordered geometry, physical grid, explicit spin/k selection, separate Ha/Ry energies and untouched MV occupations. |
+| `F/qe_nc_upf.py:20-48,63-145` | `NCUPF`, `expand_channels`, `read_nc_upf` | Supplies actual local radial potential, radial beta data, active angular-expanded D, and ordinary-NC/no-NLCC guards. |
+| `F/qe_nc_radial.py:21-35,61-110,113-157` | QE Simpson weights; `NCRadialTables.beta`, `.vloc`; `build_radial_tables` | Already implements the local Coulomb-tail/G0 convention and beta normalization. Reuse tables by species, volume and momentum range. |
+| `F/qe_nc_projectors.py:22-103` | `qe_real_harmonics`, `centered_projectors`, `place_projectors`, `atom_projectors` | Supplies physical-momentum projectors and shared active D without constructing a dense PW operator. |
+| `A24/run_saved_native_oracle.py:85-140,185-205` | Independent saved-file versus original-export reader checks | Existing reference route for raw WFC coefficients, Miller permutations and saved density. |
+| `A24/run_offline_nc_oracle.py:156-246` | Independent UPF identity, beta/D and local-derivative comparisons against attempt0018 | Establishes the relevant fixture/reference access route without consuming the material action. |
+| `A24/local-g0-quadrature-002.json` | Root’s separate repaired local-G0 quadrature evidence | The ionic derivative oracle alone does not test the local constant; this separate evidence must remain distinguished from a Native `vrs` comparison. |
+
+**Architecture:** bound saved density/XML/UPFs → physical density/Miller/FFT adapter → same-reference ionic, Hartree and spin-PBE fields → spin-resolved local potential and kernel coefficients → matrix-free H0 and K actions. Saved WFCs and eigenvalues enter as diagnostics and consumers, not as a substitute for reconstructing the operator.
+
+## Attempts0016–0019: transferable contracts and boundaries
+
+| Attempt / files | What transfers | What must not be inherited silently |
+|---|---|---|
+| `A16/bundle-contract.json`; `F/spin_pbe_kernel.py:26-108`; `A16/run_kernel_oracle.py:40-125` | Full longitudinal-spin Hartree + LDA + GGA kernel action; original Native probes; full error fields and density-potential pairings | The implementation **applies supplied coefficients**; it does not generate them from density. Its current bundle/FFT scope is the two-atom, serial, equal-grid fixture. |
+| `F/qe_response_fft.py:28-121`; `F/qe_response_schema.py:32-62` | Normalized forward FFT, unnormalized inverse reconstruction, explicit physical-versus-storage shape, Native G/nl projection, no extra spin factor | The `24³`, two-atom, ordinary-NC, selected-flag checks are intentional fixture contracts. Do not delete them to make the material pass. |
+| `F/qe_pw_hamiltonian.py:29-106`; `A17/run_hamiltonian_oracle.py:64-139` | Correct kinetic/local/projector decomposition and retained-eigenpair residual/projection diagnostics | Current assembler creates a dense full-PW square. Its fixed fixture tolerances and dense construction are not a material prescription. |
+| `A18/operator-contract.json`; `A18/run_ionic_operator_oracle.py:1-7,114-180` | Extended Native exports include saved real-space density, source projectors, active D and local Cartesian fields | The complete-basis Hermiticity check is an invariant, **not** an independently exported Native action on the unretained complement. Do not reproduce its dense fixture invariant at material size. |
+| `F/qe_pw_response_frames.py:179-222,246-258,280-301`; `A19/run_frame_oracle.py:67-169` | Explicit distinction between the reconstructed-H0 spectral reference and saved SCF density; density discrepancy is diagnostic, not a rejection threshold | The full-spectrum `eigh` and common-mu FD preparation belong to the engineering frame construction, not to mathematical H0 reconstruction. |
+| `A19/run_two_branch_oracle.py:1-9` | Independent tiny finite response-algebra comparator | It is not a Native/material XC or H0 reconstruction oracle. |
+| `A19/full-action-review.original.txt:23-27` | Settled qualification of Native retained-state coverage and reference mismatch | No independent Native unretained-complement H-action proof is supplied. |
+
+# Report
+
+## 1. Exact available saved fields versus missing fields
+
+### Material inputs in hand
+
+Source: `S/data-file-schema.xml:2-6,100-134,204-218,1342-1366,1418-1438`, the saved-directory listing, and the settled reader interfaces.
+
+- Complete ordered Ni31H6 geometry and species/UPF names.
+- Collinear LSDA/PBE, no noncollinear spin or SOC.
+- Ordinary NC pseudopotentials; the inspected Ni/H headers both explicitly disable ultrasoft, PAW and core correction.
+- Physical dense and smooth FFT grids are both `72 × 72 × 72`.
+- Full-complex storage: `gamma_only=false`. **Gamma k is not Gamma-packed storage.**
+- Global density Miller table, physical reciprocal basis, and reciprocal total-density/magnetization components.
+- Both spin WFCs for each of ten saved IBZ k records; all twenty files were listed.
+- XML eigenvalues, raw occupations and quadrature weights, with spin-up bands preceding spin-down bands.
+- Separate saved-energy and smearing metadata; XML quantities use Hartree atomic units.
+
+### Not present as material fields
+
+The supplied material save/bundle does **not** provide material:
+
+- `vrs`;
+- separate real-space Hartree or XC potentials;
+- `dmuxc`;
+- `grho`;
+- `dvxc_rr`, `dvxc_sr`, `dvxc_ss`, `dvxc_s`;
+- independently exported full-PW Native H0 actions;
+- independently exported material K probe actions.
+
+The actual save listing contains XML, density, UPFs and WFCs, not these potential/kernel arrays. `A22/material-input-bundle.json` is explicitly an irrep-zero material-source bundle, **not** a response-export bundle.
+
+**Conclusion:** this is an implementation gap, not missing ground-state physical information for held-density H0/K reconstruction.
+
+### What can be reconstructed
+
+- Kinetic diagonal from each actual k plus its saved Miller/reciprocal mapping.
+- Ionic local potential from the actual UPFs, cell and atom positions.
+- Ordinary-NC projectors and active D from the settled NC sources.
+- Hartree potential from the saved total density.
+- Spin-PBE potential and its Native-compatible derivative coefficients from that same density and QE conventions.
+- Matrix-free actions using those ingredients.
+
+No orbital diagonalization is needed to define these objects.
+
+## 2. QE7.5 source chain and conventions
+
+### Density and saved binary contracts
+
+| Source | Contract |
+|---|---|
+| `Q/PW/src/io_rho_xml.f90:60-66,139-179` | Saved density is written/read in reciprocal space. Reciprocal columns written to the saved binary are multiplied by `tpiba`: they are already physical inverse-bohr vectors. |
+| `Q/Modules/io_base.f90:600-639,689-762` | Density records contain Gamma flag, global G count, spin count, reciprocal columns, Miller table and spin-component records. |
+| `Q/PW/src/pw_restart_new.f90:1006-1031` | Collinear filenames use explicit up/down plus spin-local k numbering. Saved WFC k and reciprocal columns are also already physical inverse-bohr quantities. |
+| `F/qe_saved_native.py:1-6,96-125,129-160` | Settled supported ABI is little-endian four-byte Fortran markers, int32/logical32, float64/complex128. `ngw` is a global-index bound, not compact PW row count; `igwx` is the compact row count. |
+| `Q/Modules/fft_rho.f90:21-29,33-95`; `F/qe_saved_native.py:129-160` | Density components are total density then magnetization, not response up/down columns. |
+
+Do not multiply binary saved k/G vectors by `tpiba` a second time. XML and Native-export background k/G use a different representation and require their explicit conversion.
+
+### Potential reconstruction
+
+`Q/PW/src/read_file_new.f90:297-414` supplies the decisive reconstruction sequence:
+
+1. Read the same pseudopotentials.
+2. Establish the reciprocal and FFT structures.
+3. Read the saved density and transform it to real space.
+4. Initialize local and nonlocal pseudopotential ingredients.
+5. Form structure factors, ionic local potential and core density.
+6. Call `v_of_rho`.
+7. Reconstruct nonlocal coefficients.
+
+This source path is evidence of reconstructibility, **not authorization to execute QE**.
+
+| Source | Required convention |
+|---|---|
+| `Q/PW/src/setlocal.f90:67-100` | Sum species local Fourier potentials with actual structure factors; retain the ionic local G0 convention and transform to real space. |
+| `Q/PW/src/set_rhoc.f90:46-81` | Core density is initialized to zero and populated only when an actual UPF has NLCC. |
+| `S/Ni_ONCV_PBE-1.2.upf:97-120`; `S/H_ONCV_PBE-1.2.upf:87-110` | Both actual UPFs have `core_correction="F"`. Thus zero core density is source-supported, not a missing-data fallback. Do not add atomic valence `PP_RHOATOM` as a core correction. |
+| `Q/PW/src/v_of_rho.f90:9-15,71-85` | Computes XC in real space and Hartree from reciprocal total density. |
+| `Q/PW/src/v_of_rho.f90:508-555` | Local spin-XC evaluation consumes total density/magnetization and returns separate spin potentials; its pointwise XC outputs are converted to Ry using `e2`. |
+| `Q/PW/src/gradcorr.f90:89-127,156-211` | GGA uses up/down densities and gradients; core density, when applicable, is shared between spin channels. Potential contains local derivative terms and a negative divergence, including mixed-spin correlation terms. |
+| `Q/PW/src/set_vrs.f90:9-14,43-60` | `vrs` combines ionic local potential and spin-dependent HXC potential. Dense-to-smooth interpolation occurs only for a double grid. |
+
+The present material has equal physical dense/smooth grids. An offline physical-grid implementation need not recreate the original five-process distributed storage layout, but must preserve physical Miller placement, ordering and normalization.
+
+### Hartree and G0
+
+- Ground-state Hartree:
+  `Q/PW/src/v_of_rho.f90:667-740`.
+  The routine explicitly sets **Hartree G0 to zero**, uses total density, and adds the same Hartree field to both collinear spin potentials.
+- Response Hartree:
+  `Q/LR_Modules/dv_of_drho.f90:179-205`.
+  The denominator uses the physical `q+G` momentum through the Native `tpiba` convention. The omission criterion is the literal **dimensionless squared-momentum threshold** in this routine, not an arbitrary new tolerance.
+- Ionic local G0 is **not** the same zero convention as Hartree G0:
+  `F/qe_nc_radial.py:96-110,126-139` and `Q/PW/src/setlocal.f90:90-100`.
+- XC’s constant component remains present. Do not zero the mean of total `vrs` to improve agreement.
+
+**Incremental finding:** the existing Gamma ionic-derivative comparison cannot determine the ionic local constant, because differentiation removes that contribution. The proposed full `vrs` comparison against Native is therefore a useful new oracle, not redundant replay.
+
+### FFT and units
+
+| Item | Supported contract |
+|---|---|
+| Energy/potential | Saved XML energies are Ha; Native H0, UPF local/D data and response potentials use Ry. Keep explicit conversion fields. |
+| Length / momentum | Geometry in bohr; saved binary reciprocal vectors and k in bohr⁻¹; Native-export `g`, `q` and XML reciprocal/k representations use `2π/alat`. |
+| Density / gradient | Density in bohr⁻³; background `grho` in bohr⁻⁴. |
+| Kernel coefficients | Native descriptors declare `dmuxc` as `Ry bohr^3`; the GGA coefficient descriptors retain Native QE derivative-coefficient conventions. Do not reinterpret their tensor meanings from shape alone. |
+| FFT scale | `Q/FFTXlib/src/fft_scalar.FFTW3.f90:379-439`: forward transform has physical-grid normalization; inverse reconstructs Fourier amplitudes without that factor. |
+| Storage mapping | Miller indices map modulo the physical grid; Fortran-order placement is explicit. Preserve original one-based Native maps in provenance. |
+| Gradients/divergence | `Q/Modules/gradutils.f90:106-163,285-313,497-554`: spectral derivatives use physical `q+G`; projection uses the density G set. |
+| Final XC field | `Q/FFTXlib/src/fft_fwinv.f90:98-104,201-207` and `dv_of_drho`: the serial full forward/inverse pair is not an additional truncation of the entire final XC potential. |
+| Spin | Explicit up/down response columns; no extra spin multiplicity. |
+| Pairing | `F/qe_response_fft.py:115-121`: physical cell-volume/grid-weighted conjugate density-potential pairing, excluding storage padding. |
+| PW H0 action | No additional cell-volume or spin factor in kinetic/local/projector action. |
+
+### Matrix-free H0
+
+Primary action sources:
+
+- `Q/PW/src/g2_kin.f90:32-44`;
+- `Q/PW/src/h_psi.f90:133-146,199-235`;
+- `Q/PW/src/vloc_psi_acc.f90:237-255`;
+- `Q/PW/src/add_vuspsi.f90:125-165`.
+
+They support a blockwise action consisting of:
+
+- kinetic multiplication in actual PW row order;
+- inverse FFT, spin-local-potential multiplication and forward FFT/gather;
+- atom/species active-projector contractions.
+
+The settled `atom_projectors`/radial APIs supply the NC factors. There is no reason to allocate a full PW-square H, a full projector-space block diagonal D, or a complete eigenbasis merely to apply H0.
+
+## 3. Spin-PBE coefficient generation: the missing implementation
+
+### Exact Native APIs
+
+`Q/XClib/xc_lib.f90:60-140` exposes:
+
+- `xc`: local XC, with the declared density/spin representation;
+- `xc_gcx`: GGA energy and first derivative components;
+- `dmxc`: local spin-XC derivative tensor;
+- `dgcxc`: GGA derivative tensors.
+
+The important layout distinction is explicit:
+
+- `xc_gcx` gradient input: Cartesian component, point, spin;
+- `dgcxc` gradient input: point, Cartesian component, spin.
+
+`Q/LR_Modules/setup_dgc.f90:142-147` explicitly transposes between these arrangements.
+
+### Selected functional and backend
+
+`Q/XClib/qe_dft_list.f90:96-98` selects internal PBE as Slater + PW local terms and PBX + PBC gradient corrections.
+
+- `qe_drivers_lda_lsda.f90:270-355,422-424`: local spin-XC, Hartree units.
+- `qe_funct_exch_gga.f90:111-114`: PBEX is **without Slater exchange**.
+- `qe_funct_corr_gga.f90:446-474`: spin-PBE correlation is **without its LDA part**.
+
+Consequently, a full-PBE library output must not be added on top of those local terms without accounting for its definition.
+
+### Native kernel recipe
+
+| Source | Load-bearing behavior |
+|---|---|
+| `Q/LR_Modules/setup_dmuxc.f90:37-49` | Converts total/magnetization plus any core density to up/down before `dmxc`. |
+| `Q/LR_Modules/setup_dgc.f90:111-183` | Forms up/down background gradients, evaluates GGA derivatives and separately constructs `dvxc_s`. |
+| `Q/XClib/xc_wrapper_d_gga.f90:100-116,289-341` | Establishes derivative-call thresholds and combines exchange/correlation outputs into Native Ry tensors. |
+| `Q/XClib/qe_drivers_d_gga.f90:142-397` | Spin-GGA derivatives use Native finite differences in density, gradient magnitude and polarization, with explicit thresholds and near-full-polarization treatment. |
+| `Q/XClib/qe_drivers_d_lda_lsda.f90:178-399` | Selected local spin derivative follows its own finite-difference route and Ry conversion. |
+| `Q/LR_Modules/dgradcorr.f90:133-203` | Mixed-spin GGA contractions repeat off-diagonal coefficients across particular higher-index combinations; they are not ordinary two-index matrix multiplication. |
+| `Q/LR_Modules/dv_of_drho.f90:282-298` | Combines the local derivative and GGA action. Native coefficients already contain their Ry conversion. |
+| `Q/PHonon/PH/phq_setup.f90:189-193` | Native setup evaluates `setup_dmuxc` before `setup_dgc`. |
+
+**Qualified conclusion:** reproducing “PBE” analytically is not by itself a claim to reproduce the already exported QE kernel. The finite-difference organization, thresholds, spin indices, unit conversions and FFT projections are part of the comparator contract.
+
+The literal source constants are implementation conventions, **not proposed material-convergence gates**.
+
+## 4. Installed callable XC possibilities
+
+### A. System Libxc: feasible no-build callable candidate
+
+Observed installed files:
+
+- `/usr/lib/x86_64-linux-gnu/libxc.so.9.2.3`;
+- `libxc.so`, `libxc.so.9`, and Fortran wrappers;
+- `/usr/include/xc.h`, `xc_funcs.h`, `xc_version.h`;
+- `/usr/lib/x86_64-linux-gnu/pkgconfig/libxc.pc`.
+
+The header and package metadata identify version **5.2.3**.
+
+`/usr/include/xc.h:284-392` exposes opaque functional allocation/init/free and pointwise APIs including:
+
+- `xc_gga_exc_vxc`;
+- `xc_gga_exc_vxc_fxc`;
+- `xc_gga_vxc`;
+- `xc_gga_fxc`;
+- local-XC counterparts;
+- density/polarization/gradient threshold setters.
+
+The corresponding symbol names appear in
+`/var/lib/dpkg/info/libxc9:amd64.symbols:50-52,679-708,770-774`.
+
+`xc_funcs.h:233,262` supplies PBE exchange/correlation identifiers. QE’s own Libxc wrapper documents interleaved pointwise up/down density and the three polarized gradient invariants at
+`Q/XClib/xc_wrapper_gga.f90:176-209`.
+
+**[INFERENCE]** A narrow local foreign-function adapter can use this installed library without installing or compiling anything. No library was loaded or executed here.
+
+**Required qualification:** exact Native equivalence remains unmeasured. An analytic Libxc Hessian is not automatically the same numerical object as the internal-QE finite-difference coefficient recipe. Preserve Native decomposition and conventions when targeting the existing coefficient oracle; do not silently substitute a differently defined analytic kernel.
+
+### B. QE7.5 internal XClib: present source and static archive
+
+`Q/XClib/xc_lib.a`, compiled objects/modules and source are present.
+
+- `Q/make.inc:44-45,193-200` has no `__LIBXC` define and an empty `LIBXC_LIBS`.
+- The original attempt0018 build inputs bind `xc_lib.a`.
+- Its saved `ldd.txt` does not list Libxc.
+
+This supports the conclusion that the relevant inspected Native build uses internal XClib.
+
+A static `.a` is **not an immediately loadable shared-library API**. No existing QE7.5 shared wrapper or arbitrary-density callable executable was established. Linking a wrapper would be a build and is outside this assignment.
+
+**[INFERENCE]** Reusing the selected internal source branches in a narrowly scoped offline implementation is the source-faithful alternative if direct Libxc point-function parity is insufficient. It need not involve a new SCF/PH calculation.
+
+### C. Installed test binaries are not the selected Native oracle
+
+`/usr/bin/xc-info`, `/usr/bin/xc-threshold`, and `/usr/bin/xctest_qe_libxc.x` exist.
+
+[Showing lines 1-300 of 579. Use :301 to continue]

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "status": "complete_bounded_correction_awaiting_independent_followup",
+  "canonical_issue": 225,
+  "registered_source_commit": "367e42c7",
+  "subject": {
+    "attempt": "0008",
+    "report_sha256": "4f09a74ad6902d0206d0d21e0f2666b894405180ca2c7f5be018a749f405b6f7",
+    "review": "../0008/reviews/independent-primary-review-001.json",
+    "finding": "P2 force-rounding enclosure sensitivity"
+  },
+  "receipt": {
+    "path": "proof-001/receipt.json",
+    "sha256": "11bab233f9ff091c7234b0804be5f54f27bc8cbea2f7dccf98d8aa239bb9c6c9"
+  },
+  "source_manifest": {
+    "path": "source-manifest.json",
+    "sha256": "db293c4392570967eff5a795c9392aa50543dfe9c4052c6a1e78042f9081fa5e",
+    "inputs": 13
+  },
+  "actual_checks": 55,
+  "result": {
+    "native_triangle_max_unchanged": 0.004482793135125552,
+    "frozen_gate": 0.005,
+    "exact_corner_boxes": "All37 native three-component boxes; independent analytic and eight-corner maxima agree; barycentric polynomial/variance/domain checks enclose every interior point.",
+    "exposing_mutants": {
+      "omitted_or_zero_radius": true,
+      "halved_radius": true,
+      "missing_sqrt3": true
+    },
+    "near_threshold": {
+      "printed_squared_norm": "390614956692832611972109469641/15625000000000000000000000000000000",
+      "exact_max_squared_norm": "62501607032436968608811265624137943537507/2500000000000000000000000000000000000000000000",
+      "gate_squared": "1/40000",
+      "correct_accepts": false,
+      "omitted_radius_accepts": true
+    },
+    "mutation_classes": "Omission and zeroing are the same mathematical function and are grouped, not double-counted."
+  },
+  "actual_execution": {
+    "owner": "p254-force-print-0009-v1.service",
+    "pane": "w1:pF",
+    "tab": "w1:tF",
+    "pid": 40655,
+    "live_evidence": {
+      "pid": 40655,
+      "affinity": [
+        5
+      ],
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-force-print-0009-v1.service",
+      "cgroup_observed": {
+        "memory.max": "2147483648",
+        "memory.current": "111542272",
+        "memory.peak": "111542272",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "cpu.stat": "usage_usec 3077809\nuser_usec 2791463\nsystem_usec 286346\ncore_sched.force_idle_usec 0"
+      },
+      "environment": {
+        "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "python": "3.12.3",
+      "numpy": "2.5.2",
+      "scipy": "1.18.0",
+      "sympy": "1.14.0"
+    },
+    "owner_outcome": "owner-outcome.json",
+    "terminal_event": "owner-terminal-event.json",
+    "observer_failure": "observer-command-echo-failure.json",
+    "manager_memory": "MemoryCurrent/MemoryPeak [not set] after exit; live kernel observation retained, no reconstruction."
+  },
+  "preservation": "Original0008 sources, receipts, index, report and all native inputs/results unchanged. Only bounded new oracle ran; no unchanged numerical suites or DFT reruns.",
+  "limits": [
+    "Print-precision/float-input enclosure only, not physical DFT discretization uncertainty",
+    "No pressure equilibrium, spin uniqueness, mode stability, L1, physical loss/coherence or nuclear license",
+    "Atomic block checkpoints observed; no tested checkpoint restoration claimed",
+    "Source6/G8 operator proof is independent and not consumed"
+  ]
+}

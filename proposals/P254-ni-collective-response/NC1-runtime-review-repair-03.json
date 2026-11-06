@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "id": "P254-NC1-runtime-review-repair-03",
+  "registered_at": "2026-10-20T01:12:28.881Z",
+  "status": "PREREGISTRATION BEFORE REPAIR03 IMPLEMENTATION OR COUNTEREXAMPLE EXECUTION; NO NC1 NATIVE GRANT",
+  "issue": "https://github.com/giuliano-vantasner/catalyst-dft/issues/14",
+  "material_parent": "https://github.com/giuliano-vantasner/catalyst-dft/issues/12",
+  "scientific_parent": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "input_generation": {
+    "source_bank": "catalyst-dft@049da5f",
+    "scientific_intake_bank": "substrate-framework@c0791213",
+    "complete_rejection": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/initial-failures/prelaunch-review-repair02/failure.json",
+    "complete_rejection_identity": {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/initial-failures/prelaunch-review-repair02/failure.json",
+      "sha256": "1b15aa5d7bd8fe9122ade7aa38b0cde8bc7ed34b1beb09aba7931c37d03dc9d9",
+      "bytes": 32321
+    },
+    "frozen_source_snapshot": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/initial-failures/prelaunch-review-repair02/verification/source-snapshot-repair02.json",
+    "frozen_registration": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-stationary-material-supplement.json",
+      "sha256": "8b7cb5521960c6dd5c36274e1ca6ce05308c036c03f9bb11f08f53b854a9f39a",
+      "bytes": 20427
+    },
+    "frozen_contract": {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/execution-contract.json",
+      "sha256": "52c5d97648b53818b478252224d51fba15d13aa58f1232a597862919f6f8207e",
+      "bytes": 3703
+    },
+    "historical_intake": "sources/nc1-input-publication-intake-rejected-repair02.json"
+  },
+  "primary_sources_confirmed_in_hand": [
+    {
+      "url": "https://raw.githubusercontent.com/torvalds/linux/v6.8/kernel/exit.c",
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/linux-v6.8-kernel-exit.c",
+      "sha256": "cc4e5d6da50917c84361dcf62dce6562ef161ed1a19cfe06eef5f138dc9fee29",
+      "bytes": 48976,
+      "route": "Successful primary-URL reader search cache; original full cached C bytes preserved without preview/footer. Not a claim about direct-fetch headers or exact host vendor patches.",
+      "receipt": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/linux-v6.8-kernel-exit-reader-cache-receipt.json"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/torvalds/linux/v6.8/kernel/sys.c",
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/linux-v6.8-kernel-sys.c",
+      "sha256": "6b02f1a5dbef373e493b31c8dbf9952614fe2ddf419ee765effe7239e064d43c",
+      "bytes": 70302,
+      "route": "Successful primary-URL reader cache. Full raw cached C bytes preserved, not formatted reader previews; not a direct-fetch-header or host-vendor-patch claim.",
+      "receipt": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/linux-v6.8-kernel-sys-reader-cache-receipt.json"
+    }
+  ],
+  "source_interpretation": {
+    "exit_c": "find_new_reaper, reparent_leader and forget_original_parent reparent existing exited children and preserve notification/reaping obligations.",
+    "sys_c": "PR_SET_CHILD_SUBREAPER clearing updates the flag; it does not reparent already adopted children.",
+    "scope": "Saved upstream v6.8 reference text is not a claim about every host vendor patch. Actual host-kernel API counterexample and corrected behavior are required."
+  },
+  "physical_invariant": "No change to original NC1 geometry seeds, SG15 source/UPFs, scalar collinear PBE/nspin2, cutoff/k/smearing/SCF/spin/band values, all-mobile BFGS policy, topology/rank/CPU/memory/environment values, convergence/control ladders or G1-G5. No live W1 or original /opt/worktree change. Only registered engineering source/evidence paths and a historical amendment are added.",
+  "remaining_problem": "A descendant may already be an unobserved zombie when adopted by the subreaping queue. Live-only handle acquisition rejects it, tracked-only reap misses it and live-only drain can return success while the still-live API caller retains uncollected wait status. The live-only pre-existing-child guard can also admit an already-dead caller child.",
+  "layout": {
+    "identity_and_task_sampling": "src/catdft/process_handles.py: retained pidfd/proc incarnation, live signal authorization and task identity only.",
+    "ownership_and_collection": "New src/catdft/process_ownership.py: move descendant discovery, retained ancestry, dead-child collection and bounded drain-state accounting. No re-export/shim at old location.",
+    "shutdown": "src/catdft/process_shutdown.py reuses retained ownership for both inner queue and outer launcher.",
+    "consumers": "Migrate actual job_queue, runtime observer and all tests to the ownership owner; preserve the live-only observer/signal view."
+  },
+  "repair_contract": [
+    "Retain an already-exited child identity only through pidfd plus stable proc PID/start and verified link to a retained live owner/ancestor. Separate collection eligibility from live signal eligibility; no numeric-PID/group signaling or unscoped waits.",
+    "Keep exclusive Popen leader wait ownership. Only owned retained pidfds may be collected; a child without current wait rights remains pending until adoption or actual disappearance.",
+    "Before stage spawn, fail closed for pre-existing live OR dead descendants, without reaping or consuming API-caller wait status. Refusal closes only local handles and restores prior subreaper state.",
+    "After stage exit/poll and signals, rescan and collect adopted live/dead descendants. Success requires a fresh fully drained owned/kernel-child boundary, not merely no live handles. Unresolved child hints may refuse success but never authorize a signal/wait.",
+    "Retain bounded shutdown and propagate unresolved drainage as failure; never suppress an ownership/collection error into apparent successful completion."
+  ],
+  "verification": {
+    "failing_before": "Run actual queue API in a still-live controlled Python caller. A scheduling hook delegates real discovery, then releases a real stage which forks a child, confirms exit with retained pidfd readiness without waiting, and exits. Observe whether successful return leaves its adopted zombie and WNOWAIT status in that same caller before teardown. Preserve full actual driver, source identities and failure receipt; no kernel identity mocks or claimed forced PID reuse.",
+    "corrected_after": "Repeat that same actual transition under repaired sources; require real successful queue result, no caller-owned zombie/wait status or proc child while caller remains alive, and restored subreaper flag. Separately present an already-dead pre-existing caller child: require refusal before stage execution, preserve exact caller-owned WNOWAIT status and then let only the original controlled caller collect it.",
+    "other_affected_paths": "Exercise actual normal and SIGTERM escaped/adopted cleanup with unrelated-process survival using retained actual APIs; run only affected queue/process/launcher regressions after the source cutover. No broad unchanged G10, exact35, print55 or fermion87 reruns; no tests of source text, wording, copies or forwarding.",
+    "publisher_and_review": "After all final source/docs/registration values settle, rebuild the immutable six-file publication; actual strict consumers, byte/size/string-ns repeat and change-refusal smoke, complete raw source snapshot and both complete independent reviews are required before fresh resource release and any native grant.",
+    "native_still_required": "Only after clear prelaunch reviews: fresh actual resource release, labeled herdr durable systemd owner, first native force, all five live rank/executable/library/task/cgroup observations in their own phase and explicit force-boundary crash/recovery protecting prior completed boundaries."
+  },
+  "runtime_input_paths": [
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/launch.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/observer.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/bank.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/rankfile",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/dft-c5-nc1-material.service",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/dft-c5-nc1-bank.service",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/evidence_io.py",
+    "/home/administrator/projects/catalyst-nc-operator/src/catdft/process_handles.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/attempt_evidence.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/pidfd_open.2.html",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/pidfd_send_signal.2.html",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-prelaunch-amendment-01.json",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/native_evidence.py",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-layout-addendum-01.json",
+    "/home/administrator/projects/catalyst-nc-operator/src/catdft/process_shutdown.py",
+    "/home/administrator/projects/catalyst-nc-operator/src/catdft/job_queue.py",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/runtime/completed_boundaries.py",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-review-repair-02.json",
+    "/home/administrator/projects/catalyst-nc-operator/src/catdft/process_ownership.py",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-review-repair-03.json",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/linux-v6.8-kernel-exit.c",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-material/source-references/linux-v6.8-kernel-sys.c"
+  ],
+  "limits": [
+    "No NC1 unit installation or native execution authorized by this plan.",
+    "Rejected original, repaired01 and repaired02 subjects and full review arrays remain immutable; historical observed software passes are not upgraded to unexercised transitions.",
+    "No material stationarity/convergence, physical loss/bath, coherence, nuclear rate or full-campaign acceptance.",
+    "Full matched loading/defect/strain/isotope/density/disorder, many-region local-excitation dynamics, nuclear transition/energy-disposal bridge, full independent review and distinct authorized merges remain required."
+  ]
+}

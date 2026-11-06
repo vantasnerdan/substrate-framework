@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemctl",
+    "--user",
+    "show",
+    "p254-a78-fullhistory-mean-producer-001.service",
+    "--property=Id,InvocationID,Result,ExecMainCode,ExecMainStatus,CPUUsageNSec,MemoryPeak,MemorySwapPeak,MemoryMax,MemorySwapMax,Restart,RuntimeMaxUSec,ActiveState,SubState"
+  ],
+  "returncode": 0,
+  "stdout": "Restart=no\nRuntimeMaxUSec=infinity\nResult=success\nExecMainCode=0\nExecMainStatus=0\nMemoryPeak=[not set]\nMemorySwapPeak=[not set]\nCPUUsageNSec=[not set]\nMemoryMax=infinity\nMemorySwapMax=infinity\nId=p254-a78-fullhistory-mean-producer-001.service\nActiveState=inactive\nSubState=dead\nInvocationID=\n",
+  "stderr": ""
+}

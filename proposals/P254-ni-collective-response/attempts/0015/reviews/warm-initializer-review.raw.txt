@@ -1,0 +1,26 @@
+**Findings:** None. The complete findings array is empty.
+
+**overall_correctness:** correct  
+**confidence:** 0.96  
+**explanation:** The 0015 density-only initializer implements the registered Fourier replication and is correctly routed through input validation, preparation, Native execution, and completion validation. The recorded warm calculation establishes an actual completed four-atom state without fabricated completion metadata or reuse of the failed cold attempt.
+
+### Strongest useful initializer construction
+
+**Consume the completed warm state.** The useful result is an exact replicated density guess followed by an actual converged Native SCF—not merely a transformation receipt.
+
+- **Source/target identity:** `qe_scf_fold_seed.input_files` audits the source as a completed two-atom primitive, then independently checks its ordered 2×1×1 relationship to the four-atom target. The preserved source and target XML agree on NC/PBE, collinear spin, FD width, cutoffs, convergence threshold, and the registered 222→122 mesh and 20→40 bands per spin.
+- **Native format and ordering:** `qe_density_order.f90` follows the original `ggen` enumeration and links the original tolerance-aware `hpsort_eps`. This addresses the load-bearing Native behavior: `read_rhog` skips Miller labels when the gamma flags match and therefore requires coefficients in the correct index order. The transformation records exact reproduction of all **4645** source indices and generation of **9271** target indices.
+- **Normalization:** The implementation transfers **total density and magnetization**, with unchanged coefficients in the even-H sector and zero coefficients in the odd sector. The reciprocal header halves the first physical reciprocal vector; the doubled volume supplies doubled charge and magnetization without an erroneous coefficient factor.
+- **Full recorded oracle:** `0015/oracle.stdout` reports independent IFFT replication errors of approximately **9.66×10⁻¹⁶** and **8.36×10⁻¹⁷**, below the frozen limits. Charge changes from approximately **19→38**, and magnetization from **0.9999993014939155→1.999998602987831**. Both factor-two and odd-sector-copy negative controls expose their intended errors.
+- **Honest initialization:** Preparation writes only `charge-density.dat` and its receipt. `pw.in` explicitly requests `from_scratch`, `startingpot='file'`, and `startingwfc='random'`; Native stdout confirms both density loading and random orbitals. The generated receipt explicitly disclaims Native completion.
+- **Actual completion:** Warm attempt `dd71c07a8b99416e8fcbba26baf53b5d` has successful wrapper return, `JOB DONE`, and closed Native XML with exit status zero, collected wavefunctions, and convergence in **two iterations**. XML records **6.611555814743042 s** PW wall time; the wrapper records **12.735703139100224 s**. Observed Native affinity is CPU **6**, with declared thread counts **1**.
+- **Useful downstream consumption:** The displacement preparation selects this actual completed four-atom save through the unchanged collected-save initializer. The inspected `h0.005-e1-plus` receipt identifies that save, and its Native stdout confirms density and WFC loading.
+- **Baseline compatibility:** The preserved matching receipt records folded-minus-Gamma energy **1.87392×10⁻⁸ Ry per primitive** and magnetization difference **−8.135359053085267×10⁻¹¹**, within the registered baseline limits.
+
+### Minimum repair
+
+**None identified for this initializer slice.** Full WFC folding is an optional stronger initializer, not a missing acceptance requirement.
+
+Preserve the original **90-second cold timeout** separately: its surviving output is unfinished and its scratch directory is empty; no reusable checkpoint is claimed. This review does not upgrade the separate 0014 curvature result, establish material convergence, or reopen historical G10 admission.
+
+**Review method:** Read-only source/artifact inspection, including the complete oracle stdout and warm Native input/output. No builds, tests, Native calculations, or oracle replays were performed.

@@ -1,0 +1,75 @@
+{
+  "schema": "P254-A34-batch-aggregation-implementation-handoff-v1",
+  "status": "implemented-unexercised",
+  "owned_new_files": [
+    "proposals/P254-ni-collective-response/attempts/0034/batch_mode_noise.py",
+    "proposals/P254-ni-collective-response/attempts/0034/aggregate_mode_noise.py",
+    "proposals/P254-ni-collective-response/attempts/0034/batch-aggregation-handoff-001.json"
+  ],
+  "authoritative_contract": "proposals/P254-ni-collective-response/attempts/0034/implementation-contract-001.json",
+  "batch_cli": {
+    "required_flags": [
+      "--initial-result PATH",
+      "--coefficient-manifest PATH",
+      "--channel-archive PATH",
+      "--reuse-source0-action-packet PATH",
+      "--reuse-source0-mode1-packet PATH",
+      "--output BATCH_ROOT",
+      "--cpus EXPLICIT_COMMA_LIST_OR_RANGES",
+      "--wall-seconds POSITIVE_FINITE_SECONDS",
+      "--case-timeout-seconds POSITIVE_FINITE_SECONDS"
+    ],
+    "optional_flags": {
+      "--records": "Original indices as comma list/inclusive ranges; default 0..127. Never converts to sorted spin/k positions.",
+      "--workers": "Default 1; at most min(number of supplied CPUs,128). One explicitly pinned logical CPU for each active case.",
+      "--producer": "Default sibling export_full_source_modes.py, implemented by parent.",
+      "--python": "Executable PATH, defaults current interpreter. Invocation preserves virtualenv symlink path while binding actual executable bytes.",
+      "--contract": "Defaults sibling implementation-contract-001.json."
+    },
+    "producer_interface": "Exact contract001 flags, with --output pointing to a fresh nonexistent generation-container/case directory; producer creates its case directory.",
+    "generation_layout": "BATCH_ROOT/records/record-NNN/generation-UUID/{intent.json,spawn.json,stdout.log,stderr.log,outcome.json,accepted.json or rejected.json,case/}",
+    "run_layout": "BATCH_ROOT/runs/run-UUID/{intent.json,progress.jsonl,summary.json}",
+    "durability": "Exclusive JSON writes fsync data and parent directory. Intent precedes spawn. Raw stdout/stderr fsynced before immutable outcome receipt. Outcome reloaded from disk before consuming producer done/result. No generation is overwritten or deleted.",
+    "resume": "Only successful durable subprocess exit plus binding-compatible intent and authenticated done.json result bytes/SHA/path can skip a whole sector. Bare results, absent exits, incompatible or failed generations remain preserved and cause a fresh generation. Multiple compatible committed generations for one record cause explicit failure, not silent selection.",
+    "cost": "Linux wait4 supplies actual subprocess user/system CPU and peak RSS; elapsed times and actual accepted producer physical action counters are reported. Failed generation action counts remain explicitly unknown, not fabricated zero. Reuse is not charged as new execution.",
+    "exit_codes": "0=requested set complete; 1=incomplete/configuration/producer/readout failure; 130=handled SIGINT/SIGTERM interruption. Full-original128 coverage is a separate explicit summary flag.",
+    "resource_assumptions": "Linux os.wait4, sched_getaffinity and taskset available; CPU list lies within inherited affinity. BLAS/OpenMP thread counts forced to1. Parent supplies actual resource/wall grants after authorized real pilot. No automatic retry, Native history continuation, resource discovery, or execution on import."
+  },
+  "aggregation_cli": {
+    "required_flags": [
+      "--initial-result PATH",
+      "--coefficient-manifest PATH",
+      "--channel-archive PATH",
+      "--output NEW_AGGREGATE_JSON_PATH"
+    ],
+    "case_selection": "Repeat --done CASE/done.json and/or --batch-summary RUN/summary.json. At least one committed case required. Summaries contribute only their explicit completed receipt list. Duplicate records, including overlaps between summaries, fail explicitly.",
+    "optional_flags": "--contract PATH, default sibling implementation-contract-001.json.",
+    "output": "Complete raw unweighted sector covariance rows, original source authority, work and done/result bindings; weighted aggregate full 2x2 rows, all RR/RE/ER/EE blocks, block reconstructions, aggregate arithmetic defects and separately summed raw input defects. AB and BA remain distinct complex values.",
+    "normalization": "Sum actual case quadrature_weight times each unweighted C exactly once. Original weight must be1/64. Explicit128 spin/internal-k sectors, no extra spin factor2, no final spatial1/N, no partial renormalization, no PSD repair or symmetrization.",
+    "coverage": "Exact original indices0..127 and matching both-spin64 meshes required for complete status. Partial output lists every missing original record and is labelled partial. Duplicate/incompatible data yields status invalid, not an accepted numerical sum.",
+    "exit_codes": "0=complete128; 2=explicit partial covariance; 1=invalid input/coverage/receipt.",
+    "output_publication": "Exclusive fsynced JSON; parent output directory must already exist. Existing aggregate files never overwritten."
+  },
+  "producer_result_integration_requirements": [
+    "done.json has result={path,bytes,sha256}, binding sibling result.json after full fsync.",
+    "result matches contract schema, complete status, unweighted quadrature, exact integer mode_indices[0,1], and mode_archive binding.",
+    "Export original frame at result.frame or source.frame; source.original_metadata remains literal original StreamSlot.metadata().",
+    "Retain source initial_result, original_boundary, preparation, coefficient_manifest, original_raw_d, coefficient_item, coefficient_archive, selected, case, model_identity, original_model_identity, original_record, spin and mesh_index.",
+    "Source spin and mesh_index must encode exactly the original boundary slot identity spin:i,j,k and agree with component=spin-1; original record order is taken from boundary.slots, never inferred from mesh sorting.",
+    "work exports elapsed_seconds, peak_rss_bytes, physical_force_forward_actions, physical_force_adjoint_actions, hamiltonian_actions and trajectory_actions. Source0 has0 new forward/adjoint actions; other records have2 each; H and trajectory actions0."
+  ],
+  "dependencies": "Python standard library only for these two new files; scientific physical producer retains its own existing dependencies. batch imports shared receipt/input/covariance helpers from sibling aggregate module.",
+  "verification": {
+    "executed": [],
+    "producer_launches": 0,
+    "numerical_executions": 0,
+    "tests_builds_linters_formatters": "Not run, as assigned.",
+    "parent_checks": [
+      "Syntax/import validation of both new CLIs after parent producer lands.",
+      "Integrate actual producer result/done with required authority fields.",
+      "Use authorized nonzero original-sector real pilot and actual grant; inspect durable argv/log/exit/cost and partial aggregate before choosing full-batch resources.",
+      "After authorized execution inspect full128 coverage, ordered complex covariance and all block/raw-defect outputs; no earlier math/material replay is required by this implementation."
+    ]
+  },
+  "scope": "Initial Gamma force noise only; not late Ni output, bath/physical-error bound,64 external q, damping, heat or irreversible loss. No physical producer, A30source helper, service, network, Native state or original data modified."
+}

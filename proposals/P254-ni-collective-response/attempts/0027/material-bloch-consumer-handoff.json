@@ -1,0 +1,324 @@
+{
+  "schema": "p254-a27-material-bloch-consumer-handoff-1",
+  "created_at": "2026-10-28T09:16:39.066784+00:00",
+  "owner": "BlochGridBuild27",
+  "authority": "SOURCE-ONLY continuation c6264051; no production execution authority inferred from this report",
+  "scope": "Actual all20 original source/header/row admissions, complete128 UNITARY spin/grid target descriptors, one selected folded nonGamma two-band raw q=0 H0/ionic/number/density consumer, authenticated saved coverage readback.",
+  "source_files": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_bloch_records.py",
+      "bytes": "9098",
+      "sha256": "8bdb39ad078c23d8d411dc25b69df6f1c2906723976fa5c5fff1e3125713eca7",
+      "complete_source": "\"\"\"Complete source/target/frame descriptors for authenticated material coverage.\n\nOriginal Gamma functional basis identity is a separately named historical\njoin, never substituted for the new transported basis/gauge identity.\n\"\"\"\nfrom dataclasses import asdict, dataclass\nimport hashlib\nimport json\nimport numpy as np\nfrom material_pilot_io import array_record\nfrom material_run_contract import canonical\nfrom .qe_bloch_frame import BlochBasis, _basis_identity, _digest\nfrom .qe_bloch_grid import readonly\nfrom .qe_material_grid import PhysicalRhoFFT\n\n\n@dataclass(frozen=True)\nclass BlochSlotRecord:\n    ispin: int\n    mesh_index: tuple\n    mesh_slot: int\n    source_ik: int\n    source_binding: dict\n    source_frame_identity: str\n    source_coefficients_record: dict\n    source_miller_record: dict\n    target_miller_record: dict\n    row_map_record: dict\n    basis_identity: str\n    gauge_identity: str\n    n_pw: int\n    n_bands: int\n    operation_index: int\n    reciprocal_shift: tuple\n    source_k_bohr_inv: tuple\n    target_k_bohr_inv: tuple\n    raw_band_order: str\n    row_order: str\n    original_representative: bool\n    gamma_basis_join_identity: str | None\n\n\ndef describe_slot(ref, slot, source_miller, source_k, reciprocal, admission, coefficient_record):\n    \"\"\"Rebuild checked target metadata without loading or inventing coefficients.\"\"\"\n    target = readonly(slot.operation.rotation @ source_miller-slot.reciprocal_shift[:, None])\n    identity = _basis_identity(target, reciprocal, slot)\n    basis = BlochBasis(target, slot.k_cart_bohr_inv, reciprocal, readonly(np.arange(slot.expected_rows)),\n                       source_miller, slot, ref.source, admission, identity).validate(ref)\n    PhysicalRhoFFT.create(ref.fft_smooth, target, reciprocal, abs(np.linalg.det(ref.cell_bohr)))\n    source_p = reciprocal @ source_miller + source_k[:, None]\n    target_p = reciprocal @ target + slot.k_cart_bohr_inv[:, None]\n    if not np.allclose(np.sum(source_p**2,axis=0), np.sum(target_p**2,axis=0), atol=2e-9, rtol=0):\n        raise ValueError('target transport does not preserve source cutoff support')\n    original = (np.array_equal(slot.operation.rotation, np.eye(3,dtype=int))\n                and not np.any(slot.operation.fractional_translation) and not np.any(slot.reciprocal_shift)\n                and np.array_equal(source_miller,target) and np.array_equal(source_k,slot.k_cart_bohr_inv))\n    join = None\n    if original and not np.any(source_k):\n        # A24 material_pilot_inputs.coordinate_arrays stored XML B, not header B.\n        # Preserve the latter separately; never claim the two digests are equal.\n        join = hashlib.sha256(canonical(dict(pw_miller=array_record(source_miller),\n                  cell_bohr=array_record(ref.cell_bohr),\n                  reciprocal_bohr_inv=array_record(ref.reciprocal_bohr_inv)))).hexdigest()\n    return BlochSlotRecord(slot.ispin, slot.mesh_index, slot.mesh_slot, slot.source_ik,\n        dict(slot.source_binding), slot.source_binding['sha256'], coefficient_record,\n        array_record(source_miller), array_record(target), array_record(basis.row_map), identity,\n        identity+':raw-saved-columns', slot.expected_rows, len(slot.eigenvalues_ry),\n        slot.operation.index, tuple(int(x) for x in slot.reciprocal_shift), tuple(source_k.tolist()),\n        tuple(slot.k_cart_bohr_inv.tolist()), 'original-all-saved-columns', 'inherited-source-order',\n        bool(original), join)\n\n\ndef encode_records(records):\n    return np.asarray(json.dumps([asdict(record) for record in records], sort_keys=True, allow_nan=False))\n\n\ndef decode_records(value):\n    raw = json.loads(str(value))\n    if not isinstance(raw,list):\n        raise ValueError('complete typed slot descriptor list required')\n    records = []\n    for item in raw:\n        if set(item) != set(BlochSlotRecord.__dataclass_fields__):\n            raise ValueError('incomplete or unknown slot descriptor fields')\n        for name in ('ispin','mesh_slot','source_ik','n_pw','n_bands','operation_index'):\n            if type(item[name]) is not int:\n                raise ValueError('integer slot dimension/index required: '+name)\n        if type(item['original_representative']) is not bool:\n            raise ValueError('typed original-representative flag required')\n        for name in ('mesh_index','reciprocal_shift'):\n            if len(item[name]) != 3 or any(type(x) is not int for x in item[name]):\n                raise ValueError('integer3 mesh/fold descriptor required')\n        for name in ('source_k_bohr_inv','target_k_bohr_inv'):\n            if len(item[name]) != 3 or not np.isfinite(item[name]).all():\n                raise ValueError('finite physical k descriptor required')\n        for name in ('mesh_index','reciprocal_shift','source_k_bohr_inv','target_k_bohr_inv'):\n            item[name] = tuple(item[name])\n        records.append(BlochSlotRecord(**item))\n    return tuple(records)\n\n\ndef source_arrays(source, reference, admission, records, coefficient_record):\n    header = {key: getattr(source,key) for key in ('ik','ispin','gamma_only','scalef','ngw','igwx','npol','nbnd','abi')}\n    header.update(source=dict(source.source), source_coefficients_record=coefficient_record)\n    return dict(source_miller=source.miller, source_k_bohr_inv=source.k_cart_bohr_inv,\n                reciprocal_bohr_inv=source.reciprocal_bohr_inv, cell_bohr=reference.cell_bohr,\n                reference_reciprocal_bohr_inv=reference.reciprocal_bohr_inv,\n                energies_ry=reference.select(source.ik,source.ispin)[1],\n                raw_occupations=reference.select(source.ik,source.ispin)[2],\n                slot_records_json=encode_records(records), source_header_json=np.asarray(json.dumps(header,sort_keys=True)),\n                source_admission_json=np.asarray(json.dumps(dict(admission),sort_keys=True)))\n\n\ndef validate_source_arrays(ref, slots, arrays):\n    expected = {'source_miller','source_k_bohr_inv','reciprocal_bohr_inv','reference_reciprocal_bohr_inv',\n                'cell_bohr','energies_ry','raw_occupations','slot_records_json','source_header_json','source_admission_json'}\n    if set(arrays) != expected or not slots:\n        raise ValueError('complete original source archive layout required')\n    first = slots[0]\n    point, energies, occupations = ref.select(first.source_ik, first.ispin)\n    header, admission = (json.loads(str(arrays[name])) for name in ('source_header_json','source_admission_json'))\n    if (set(header) != {'ik','ispin','gamma_only','scalef','ngw','igwx','npol','nbnd','abi','source','source_coefficients_record'}\n            or header['ik'] != first.source_ik or header['ispin'] != first.ispin\n            or header['source'] != dict(first.source_binding) or header['gamma_only'] is not False\n            or header['npol'] != 1 or header['scalef'] != 1 or header['ngw'] < point.npw\n            or header['igwx'] != point.npw or header['nbnd'] != len(energies)\n            or header['abi'] != 'little-endian:marker4:int32:logical32:float64:complex128'):\n        raise ValueError('saved original header/source identity mismatch')\n    coefficient = header['source_coefficients_record']\n    if (set(coefficient) != {'dtype','shape','sha256_C_bytes'} or coefficient['dtype'] != '<c16'\n            or coefficient['shape'] != [point.npw,len(energies)] or len(coefficient['sha256_C_bytes']) != 64):\n        raise ValueError('all-column coefficient identity required')\n    m = arrays['source_miller']\n    if m.shape != (3,point.npw) or m.dtype != np.dtype('int32'):\n        raise ValueError('all original integer32 source rows required')\n    for key,value in (('cell_bohr',ref.cell_bohr),('reference_reciprocal_bohr_inv',ref.reciprocal_bohr_inv),\n                      ('energies_ry',energies),('raw_occupations',occupations)):\n        if not np.array_equal(arrays[key],value):\n            raise ValueError('saved source coordinate/band metadata differs: '+key)\n    for key,value in (('source_k_bohr_inv',point.k_cart_bohr_inv),('reciprocal_bohr_inv',ref.reciprocal_bohr_inv)):\n        if arrays[key].shape != value.shape or not np.isfinite(arrays[key]).all() or not np.allclose(arrays[key],value,atol=2e-13,rtol=0):\n            raise ValueError('saved source physical reciprocal identity differs')\n    if (admission['source_rows_sha256'] != _digest(m) or admission['cutoff_ry'] != 2*ref.ecutwfc_ha\n            or admission['boundary_tolerance_ry'] != 1e-8\n            or admission['row_policy'] != 'complete strict interior; original native cutoff boundary retained'\n            or min(admission['included_boundary_rows'],admission['omitted_boundary_rows']) < 0):\n        raise ValueError('original source admission/cutoff policy differs')\n    actual = decode_records(arrays['slot_records_json'])\n    rebuilt = tuple(describe_slot(ref,slot,m,arrays['source_k_bohr_inv'],arrays['reciprocal_bohr_inv'],\n                                  admission,coefficient) for slot in slots)\n    if actual != rebuilt:\n        raise ValueError('complete target/frame descriptors differ from admitted source reconstruction')\n    return rebuilt\n"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_bloch_admission.py",
+      "bytes": "6340",
+      "sha256": "85f4fdf8622769282e9c3d80242ef6dbe6a3e1807f4d05555266b1b04e9ec671",
+      "complete_source": "\"\"\"Compound A25/A27 authority and completed-boundary recovery for Bloch pilot.\"\"\"\nfrom pathlib import Path\nfrom material_run_contract import bound_json, recover_block\nfrom material_reference_output import load_arrays\nfrom .material_dyad_output import load_accepted_background, REFERENCE_SHA256\nfrom .qe_bloch_grid import UNITARY_POLICY\n\nSCHEMA = 'material-bloch-coverage-v1'\nCONTINUATION = 'cbb9f3698d8b432fb3825c640487095f9abef15004d36aeb1c311a38174cb92e'\nIMPLEMENTATION = 'b59c25bd13d015ae17b2d81c8b98567f1358bacdc783b5c235f2f186aef268bc'\nORACLE = 'b66f8b8c7f0921340ad2a1b6e9b34d2a9f96b7d4b4a43e8c601f040bf6ddebb9'\nPROBE = 'first-folded-spin1-bands1-2-H32x+iNi1y-number-cosb1+isinb2-dyad1-2-v1'\nRECEIPT_FIELDS = ('recipe_sha256','archive','arrays','metadata','readback')\n\n\ndef wave_bindings(inputs):\n    return {(int(spin),int(ik)): value for spin, table in inputs['wavefunctions'].items() for ik,value in table.items()}\n\n\ndef validate_recipe(recipe):\n    inputs, settings = recipe['inputs'], recipe['settings']\n    if set(inputs) != {'xml','density','upfs','wavefunctions','reference_terminal'}:\n        raise ValueError('exact bound material and accepted background inputs required')\n    if set(inputs['upfs']) != {'Ni','H'} or set(inputs['wavefunctions']) != {'1','2'}:\n        raise ValueError('both original species and explicit spins required')\n    if any(set(table) != {str(i) for i in range(1,11)} for table in inputs['wavefunctions'].values()):\n        raise ValueError('all20 original WFC bindings required')\n    reference_binding = inputs['reference_terminal']\n    if reference_binding['sha256'] != REFERENCE_SHA256 or str(reference_binding['bytes']) != '1000830':\n        raise ValueError('accepted original A25 background terminal required')\n    reference_recipe = bound_json(reference_binding)['recipe']\n    reduced = background_inputs(inputs)\n    if any(reduced[key] != reference_recipe['inputs'][key] for key in ('xml','density','upfs','wavefunctions')):\n        raise ValueError('source admission inputs differ from accepted original A25 material')\n    if set(settings) != {'continuation_registration','implementation_registration','oracle_receipt','symmetry_policy','probe_recipe'}:\n        raise ValueError('exact continuation/implementation/oracle/policy/probe settings required')\n    for key,digest in (('continuation_registration',CONTINUATION),('implementation_registration',IMPLEMENTATION),('oracle_receipt',ORACLE)):\n        if settings[key]['sha256'] != digest:\n            raise ValueError('wrong settled A27 authority: '+key)\n        bound_json(settings[key])\n    implementation = bound_json(settings['implementation_registration'])\n    spatial = next(item for item in implementation['settled_inputs'] if Path(item['path']).name == 'bloch-spatial-grounding.json')\n    source_report = bound_json(spatial)\n    table = source_report['source_access']['existing_byte_closure']['wfc_identity_table']\n    for item in table:\n        for spin, key in ((1,'up_sha256'),(2,'down_sha256')):\n            original = inputs['wavefunctions'][str(spin)][str(item['ik'])]\n            if original['sha256'] != item[key] or str(original['bytes']) != item['bytes_each']:\n                raise ValueError('WFC binding differs from settled original source closure')\n    if (settings['symmetry_policy'] != UNITARY_POLICY or settings['probe_recipe'] != PROBE\n            or recipe.get('library_binding') is not None):\n        raise ValueError('registered unitary/probe recipe, no Native backend, required')\n\n\ndef validate_grant(grant):\n    validate_recipe(grant)\n    allowed = {f'source-{spin}-{ik}' for spin in (1,2) for ik in range(1,11)} | {'coverage-probe'}\n    receipts = grant['resume_receipts']\n    if not isinstance(receipts,dict) or not set(receipts) <= allowed or (not grant['resume'] and receipts):\n        raise ValueError('explicit completed-boundary receipt bindings required; fresh uses {}')\n\n\ndef background_inputs(inputs):\n    return {**inputs,'wavefunctions':{spin:table['1'] for spin,table in inputs['wavefunctions'].items()}}\n\n\ndef restore_accepted(inputs):\n    return load_accepted_background(background_inputs(inputs))\n\n\ndef source_metadata(recipe, spin, ik):\n    return dict(schema=SCHEMA, boundary='complete-original-source', ispin=spin, source_ik=ik,\n                inputs=recipe['inputs'], settings=recipe['settings'],\n                original_binding=recipe['inputs']['wavefunctions'][str(spin)][str(ik)],\n                coefficient_storage='original bound WFC only; all columns identity retained',\n                cutoff_policy='strict-interior complete; original native boundary retained; 1e-8 Ry')\n\n\ndef final_metadata(recipe, background_receipt):\n    return dict(schema=SCHEMA,boundary='complete-coverage-and-selected-probe', inputs=recipe['inputs'],\n                settings=recipe['settings'],source_count=20,slot_count=128,\n                background_receipt=background_receipt,\n                scope='complete lazy spin/k representation; selected folded nonGamma q=0 raw probe, not preparation',\n                units=dict(h0='Ry',ionic='Ry/bohr',number='dimensionless',density='bohr^-3',density_gradient='bohr^-4'),\n                state=None,physical_temperature=None,finite_q=None)\n\n\ndef recover_authorized(run, key, metadata):\n    \"\"\"Only an exact caller-bound completed receipt licenses cache consumption.\"\"\"\n    target = run.target\n    exists = (target/(key+'.json')).exists() or (target/(key+'.npz')).exists()\n    admitted = run.grant['resume_receipts']\n    if not exists:\n        if key in admitted:\n            raise ValueError('admitted completed checkpoint is absent: '+key)\n        return None\n    if not run.grant['resume'] or key not in admitted:\n        raise ValueError('existing checkpoint lacks explicit resume authority: '+key)\n    if Path(admitted[key]['path']).resolve() != target/(key+'.json'):\n        raise ValueError('resume receipt path differs')\n    expected = bound_json(admitted[key])\n    if expected['metadata'] != metadata:\n        raise ValueError('resume metadata differs from current immutable recipe')\n    actual = recover_block(target,key,run.identity,metadata)\n    if actual != expected:\n        raise ValueError('resume archive receipt differs from explicit authority')\n    run.record(key,actual,'completed-cache-reuse')\n    return load_arrays(actual), actual\n"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_bloch_probe.py",
+      "bytes": "6015",
+      "sha256": "e1a83bc08371d92eddf19510258a4997a7de16d5134d7923b38cc166a665dacc",
+      "complete_source": "\"\"\"One named two-band folded nonGamma q=0 consumer of accepted A25 fields.\"\"\"\nfrom dataclasses import asdict\nimport json\nimport numpy as np\nfrom .qe_saved_native import load_wavefunctions\nfrom .qe_bloch_frame import transport_bloch_frame\nfrom .qe_material_hamiltonian import build_pw_factors_for_basis, MaterialHamiltonian\nfrom .qe_bloch_ionic_action import BlochIonicAction\nfrom .qe_bloch_qzero import BlochQZeroBridge\n\n\ndef selected_slot(grid):\n    return next(slot for slot in grid.slots if slot.ispin == 1 and np.any(slot.reciprocal_shift)\n                and np.any(slot.k_cart_bohr_inv))\n\n\ndef probe_arrays(background, grid, descriptor, budget):\n    inputs, slot = background.inputs, selected_slot(grid)\n    source = load_wavefunctions(slot.source_binding)\n    frame = transport_bloch_frame(inputs.reference,slot,source)\n    if frame.basis.identity != descriptor.basis_identity:\n        raise ValueError('selected raw frame differs from completed coverage')\n    raw = frame.coefficients[:, :2]\n    budget()\n    factors = build_pw_factors_for_basis(inputs,frame.basis)\n    h0 = MaterialHamiltonian(background,factors,slot.ispin,block_size=2).apply(raw)\n    budget()\n    ionic = BlochIonicAction(inputs,frame.basis,factors=factors)\n    direction = np.zeros((37,3),complex)\n    direction[31,0], direction[0,1] = 1., 1j\n    local, bra, ket = ionic.prepare(direction).components(raw)\n    budget()\n    bridge = ionic.bridge\n    shape = inputs.reference.fft_grid\n    # Physical F-order grid, exact named cos(b1)+i sin(b2) profile.\n    x = np.arange(shape[0])/shape[0]\n    y = np.arange(shape[1])/shape[1]\n    profile = np.broadcast_to(np.cos(2*np.pi*x)[:,None,None]\n                 + 1j*np.sin(2*np.pi*y)[None,:,None],shape).ravel(order='F')\n    number = bridge.local_apply(profile,raw)\n    coefficient, weight = np.array([1+.25j]), slot.weight\n    density = bridge.density_from_dyads(raw[:, :1],raw[:,1:2],coefficient,weight=weight)\n    gradient = bridge.density_gradient(density)\n    omega, nnr = bridge.orbital_fft.omega, bridge.orbital_fft.nnr\n    pairs = np.array([[omega/nnr*np.sum(density[:,0]), weight*coefficient[0]*np.vdot(raw[:,1],raw[:,0])],\n                      [omega/nnr*np.sum(density[:,0]*profile),weight*coefficient[0]*np.vdot(raw[:,1],number[:,0])]])\n    budget()\n    return dict(probe_slot_json=np.asarray(json.dumps(asdict(descriptor),sort_keys=True)),\n                bands_one_based=np.array([1,2],dtype=np.int64), source_block=source.coefficients[:,:2],\n                raw_block=raw, target_miller=frame.basis.miller, h0_action_ry=h0,\n                saved_label_residual_ry=h0-raw*frame.eigenvalues_ry[None,:2],\n                ionic_local=local,ionic_bra=bra,ionic_ket=ket,ionic_action=local+bra+ket,\n                direction=direction,number_profile=profile,number_action=number,\n                density=density,density_gradient=gradient,dyad_coefficients=coefficient,\n                mode_weight=np.asarray(weight),comparison_pairs=pairs)\n\n\ndef validate_probe_arrays(arrays, grid, records):\n    slot = selected_slot(grid)\n    descriptor = next(r for r in records if (r.ispin,r.mesh_slot) == (slot.ispin,slot.mesh_slot))\n    npw, nnr = descriptor.n_pw, int(np.prod(grid.reference.fft_grid))\n    shapes = dict(probe_slot_json=(),bands_one_based=(2,),source_block=(npw,2),raw_block=(npw,2),\n                  target_miller=(3,npw),h0_action_ry=(npw,2),saved_label_residual_ry=(npw,2),\n                  ionic_local=(npw,2),ionic_bra=(npw,2),ionic_ket=(npw,2),ionic_action=(npw,2),\n                  direction=(37,3),number_profile=(nnr,),number_action=(npw,2),density=(nnr,2),\n                  density_gradient=(3,nnr,2),dyad_coefficients=(1,),mode_weight=(),comparison_pairs=(2,2))\n    if set(arrays) != set(shapes):\n        raise ValueError('complete selected probe archive required')\n    for key,shape in shapes.items():\n        a = arrays[key]\n        if a.shape != shape or (a.dtype.kind in 'fc' and not np.isfinite(a).all()):\n            raise ValueError('invalid selected probe array: '+key)\n    if json.loads(str(arrays['probe_slot_json'])) != json.loads(json.dumps(asdict(descriptor))):\n        raise ValueError('selected probe does not belong to complete coverage')\n    if (not np.array_equal(arrays['bands_one_based'],[1,2]) or arrays['mode_weight'] != slot.weight\n            or not np.array_equal(arrays['dyad_coefficients'],[1+.25j])):\n        raise ValueError('selected raw bands/dyad/weight differ')\n    from material_pilot_io import array_record\n    if array_record(arrays['target_miller']) != descriptor.target_miller_record:\n        raise ValueError('selected target PW row identity differs')\n    # All actual saved translations are zero; retain explicit transport formula.\n    source_miller = np.linalg.solve(slot.operation.rotation,\n                       arrays['target_miller']+slot.reciprocal_shift[:,None])\n    phase = np.exp(-2j*np.pi*((source_miller.T+slot.source_k_fractional) @ slot.operation.fractional_translation))\n    expected = phase[:,None]*arrays['source_block']\n    if not np.array_equal(expected,arrays['raw_block']):\n        raise ValueError('selected raw columns were changed beyond declared unitary transport')\n    for name in ('integrated_dyad_trace','number_density_bilinear'):\n        index = ('integrated_dyad_trace','number_density_bilinear').index(name)\n        left,right = arrays['comparison_pairs'][index]\n        if abs(left-right) > 1e-12+1e-10*abs(right):\n            raise ValueError('selected bridge comparison failed: '+name)\n    if not np.array_equal(arrays['ionic_action'],arrays['ionic_local']+arrays['ionic_bra']+arrays['ionic_ket']):\n        raise ValueError('both ionic derivative sides are not retained')\n    return {name: {'left':[float(pair[0].real),float(pair[0].imag)],\n                   'right':[float(pair[1].real),float(pair[1].imag)],\n                   'absolute_error':float(abs(pair[0]-pair[1]))}\n            for name,pair in zip(('integrated_dyad_trace','number_density_bilinear'),arrays['comparison_pairs'])}\n"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_bloch_output.py",
+      "bytes": "6965",
+      "sha256": "e280115b7d954d0ba93be09d809741e5d6f92050291923de622f1f4497290335",
+      "complete_source": "\"\"\"Authenticated complete20-source/128-slot lazy Bloch material coverage.\n\nAttempt0024/0025 control modules must be on PYTHONPATH. This reader consumes\ncompleted archives and reconstructs metadata, never H0, ionic actions or WFC\ncoefficients. Post-exit manager success is separate mandatory Root authority.\n\"\"\"\nfrom dataclasses import dataclass\nimport hashlib\nimport json\nfrom pathlib import Path\nfrom types import MappingProxyType\nimport xml.etree.ElementTree as ET\nimport numpy as np\nfrom material_run_contract import binding,bound_json,canonical,recover_block,verify_consumers\nfrom material_reference_output import load_arrays\nfrom .material_bloch_admission import (RECEIPT_FIELDS,validate_recipe,wave_bindings,\n                                       source_metadata,final_metadata,background_inputs)\nfrom .material_bloch_records import BlochSlotRecord,decode_records,validate_source_arrays\nfrom .material_bloch_probe import validate_probe_arrays\nfrom .material_dyad_output import REFERENCE_SHA256\nfrom .qe_saved_reference import load_saved_reference\nfrom .qe_bloch_grid import build_bloch_grid\n\n\n@dataclass(frozen=True)\nclass SavedBlochCoverage:\n    grid: object\n    slot_records: tuple[BlochSlotRecord,...]\n    source_receipts: object\n    coverage_identity: str\n    recipe: object\n    probe_receipt: object\n    probe_comparisons: object\n\n\ndef preload_parsers():\n    \"\"\"Load XML dispatch before inventory; inherited IO preloads NPZ dispatch.\"\"\"\n    ET.fromstring('<source-inventory-preload/>')\n\n\ndef _receipt(entry, identity, metadata):\n    expected = {name:entry[name] for name in RECEIPT_FIELDS}\n    path = Path(expected['archive']['path'])\n    if expected['metadata'] != metadata or path.stem != entry['key']:\n        raise ValueError('archive metadata/key differs from complete recipe')\n    actual = recover_block(path.parent,path.stem,identity,metadata)\n    if actual != expected:\n        raise ValueError('archive/receipt exact identity differs')\n    return actual\n\n\ndef _authenticate_sources(terminal):\n    recipe = terminal['recipe']\n    sources = recipe['implementation_sources']\n    if len({item['path'] for item in sources}) != len(sources):\n        raise ValueError('duplicate producer source binding')\n    final = terminal['final_implementation_sources']\n    verify_consumers(recipe,final)\n    all_sources = {item['path']:item for item in sources+final}\n    for item in all_sources.values():\n        if binding(item['path']) != item:\n            raise ValueError('bound producer/consumer source changed: '+item['path'])\n    if all_sources.get(str(Path(__file__).resolve())) != binding(__file__):\n        raise ValueError('saved coverage reader lacks source authority')\n\n\ndef _background_receipt(inputs):\n    record = inputs['reference_terminal']\n    if record['sha256'] != REFERENCE_SHA256 or str(record['bytes']) != '1000830':\n        raise ValueError('accepted original A25 background authority required')\n    terminal = bound_json(record)\n    recipe, identity = terminal['recipe'], terminal['recipe_sha256']\n    if (terminal['status'] != 'complete' or terminal['exit_code'] != 0\n            or hashlib.sha256(canonical(recipe)).hexdigest() != identity):\n        raise ValueError('accepted background recipe/completion differs')\n    reduced = background_inputs(inputs)\n    if any(reduced[key] != recipe['inputs'][key] for key in ('xml','density','upfs','wavefunctions')):\n        raise ValueError('actual inputs do not share accepted original background')\n    entries = [item for item in terminal['outputs'] if item['key'] == 'background-coordinates']\n    if len(entries) != 1:\n        raise ValueError('one complete accepted background archive required')\n    receipt = {key:entries[0][key] for key in RECEIPT_FIELDS}\n    if binding(receipt['archive']['path']) != receipt['archive']:\n        raise ValueError('accepted background bytes changed')\n    return receipt\n\n\ndef load_saved_bloch_coverage(terminal_binding):\n    \"\"\"Authenticate complete archives, actual source bytes and derived slot metadata.\"\"\"\n    terminal = bound_json(terminal_binding)\n    recipe, identity = terminal['recipe'],terminal['recipe_sha256']\n    if (terminal['status'] != 'complete' or terminal['exit_code'] != 0\n            or recipe['kind'] != 'material-bloch-grid'\n            or hashlib.sha256(canonical(recipe)).hexdigest() != identity):\n        raise ValueError('complete immutable Bloch terminal/recipe required')\n    validate_recipe(recipe)\n    _authenticate_sources(terminal)\n    inputs = recipe['inputs']\n    for record in (inputs['xml'],inputs['density'],*inputs['upfs'].values(),*wave_bindings(inputs).values()):\n        if binding(record['path']) != record:\n            raise ValueError('actual original input bytes changed')\n    ref = load_saved_reference(inputs['xml'])\n    grid = build_bloch_grid(ref,wave_bindings(inputs),symmetry_policy=recipe['settings']['symmetry_policy'])\n    if len(grid.slots) != 128 or ref.nat != 37 or ref.nbnd_by_spin != (346,346):\n        raise ValueError('complete actual37atom/128slot coverage required')\n    entries = {entry['key']:entry for entry in terminal['outputs']}\n    expected_keys = {f'source-{spin}-{ik}' for spin in (1,2) for ik in range(1,11)} | {'coverage-probe'}\n    if len(entries) != len(terminal['outputs']) or set(entries) != expected_keys:\n        raise ValueError('all20 unique source boundaries and final probe boundary required')\n    records, receipts, receipt_bindings = [], {}, {}\n    for spin in (1,2):\n        for ik in range(1,11):\n            key = f'source-{spin}-{ik}'\n            receipt = _receipt(entries[key],identity,source_metadata(recipe,spin,ik))\n            arrays = load_arrays(receipt)\n            slots = [slot for slot in grid.slots if (slot.ispin,slot.source_ik)==(spin,ik)]\n            records.extend(validate_source_arrays(ref,slots,arrays))\n            receipts[spin,ik] = receipt\n            receipt_bindings[key] = binding(Path(receipt['archive']['path']).with_suffix('.json'))\n            del arrays\n    records.sort(key=lambda r:(r.mesh_slot,r.ispin))\n    if len(records) != 128 or len({(r.ispin,r.mesh_index) for r in records}) != 128:\n        raise ValueError('complete unique typed spin/grid descriptors required')\n    background = _background_receipt(inputs)\n    final = _receipt(entries['coverage-probe'],identity,final_metadata(recipe,background))\n    arrays = load_arrays(final)\n    if decode_records(arrays.pop('slot_records_json')) != tuple(records):\n        raise ValueError('final coverage list differs from complete source boundaries')\n    if json.loads(str(arrays.pop('source_receipt_bindings_json'))) != receipt_bindings:\n        raise ValueError('final coverage does not bind every original completed source receipt')\n    comparisons = validate_probe_arrays(arrays,grid,records)\n    return SavedBlochCoverage(grid,tuple(records),MappingProxyType(receipts),identity,\n                              MappingProxyType(recipe),final,MappingProxyType(comparisons))\n"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_bloch_production.py",
+      "bytes": "6454",
+      "sha256": "143b76d6e699a83ef5199d5c4727cf70e1f407da2dfdaec1cdc9b3b5f40b1d45",
+      "complete_source": "\"\"\"Source-by-source actual admission and selected-probe checkpoint orchestration.\"\"\"\nimport json\nfrom pathlib import Path\nimport signal\nimport time\nimport numpy as np\nfrom material_pilot_io import array_record\nfrom material_run_contract import binding,implementation,verify_consumers\nfrom .qe_saved_reference import load_saved_reference\nfrom .qe_saved_native import load_wavefunctions\nfrom .qe_bloch_grid import build_bloch_grid\nfrom .qe_bloch_frame import admit_source\nfrom .material_bloch_admission import (wave_bindings,source_metadata,final_metadata,\n                                       recover_authorized,restore_accepted)\nfrom .material_bloch_records import describe_slot,source_arrays,validate_source_arrays,encode_records\nfrom .material_bloch_probe import selected_slot,probe_arrays,validate_probe_arrays\nfrom .material_bloch_output import load_saved_bloch_coverage,_background_receipt\n\n\ndef arm_boundary(run, seconds):\n    run.check()\n    remaining = run.grant['remaining_seconds']-run.elapsed()\n    if run.summary['first_useful_block_seconds'] is None:\n        remaining = min(remaining,run.grant['first_block_seconds']-run.elapsed())\n    signal.setitimer(signal.ITIMER_REAL,max(.000001,min(seconds,remaining)))\n\n\ndef produce(run, recipe, paths):\n    grant, summary = run.grant, run.summary\n    verify_consumers(grant,implementation(paths))\n    ref = load_saved_reference(recipe['inputs']['xml'])\n    if (ref.nat != 37 or ref.atom_names != ('Ni',)*31+('H',)*6 or ref.nbnd_by_spin != (346,346)\n            or ref.fft_grid != (72,72,72)):\n        raise ValueError('original actual Ni31H6 material required')\n    grid = build_bloch_grid(ref,wave_bindings(recipe['inputs']),symmetry_policy=recipe['settings']['symmetry_policy'])\n    if len(grid.slots) != 128:\n        raise ValueError('complete128 explicit spin/mesh slots required')\n    records, receipt_bindings = [], {}\n    for spin in (1,2):\n        for ik in range(1,11):\n            arm_boundary(run,30)\n            started = time.monotonic()\n            key = f'source-{spin}-{ik}'\n            slots = [slot for slot in grid.slots if (slot.ispin,slot.source_ik)==(spin,ik)]\n            metadata = source_metadata(recipe,spin,ik)\n            cached = recover_authorized(run,key,metadata)\n            if cached is None:\n                source = load_wavefunctions(slots[0].source_binding)\n                admission = admit_source(ref,slots[0],source)\n                coefficient_record = array_record(source.coefficients)\n                group = tuple(describe_slot(ref,slot,source.miller,source.k_cart_bohr_inv,\n                              source.reciprocal_bohr_inv,admission,coefficient_record) for slot in slots)\n                arrays = source_arrays(source,ref,admission,group,coefficient_record)\n                run.check()\n                # Includes exact dtype/shape/value readback before publication.\n                run.commit(key,arrays,metadata)\n                del source\n            else:\n                arrays,_ = cached\n            records.extend(validate_source_arrays(ref,slots,arrays))\n            receipt_bindings[key] = binding(run.target/(key+'.json'))\n            del arrays\n            summary.setdefault('source_boundary_seconds',{})[key] = time.monotonic()-started\n            run.check()\n    records.sort(key=lambda record:(record.mesh_slot,record.ispin))\n    if len(records) != 128:\n        raise ValueError('incomplete derived slot descriptors')\n    verify_consumers(grant,implementation(paths))\n    arm_boundary(run,90)\n    background_receipt = _background_receipt(recipe['inputs'])\n    metadata = final_metadata(recipe,background_receipt)\n    cached = recover_authorized(run,'coverage-probe',metadata)\n    if cached is None:\n        background, restored_receipt = restore_accepted(recipe['inputs'])\n        if restored_receipt != background_receipt:\n            raise ValueError('restored background differs from admitted original archive')\n        slot = selected_slot(grid)\n        descriptor = next(record for record in records if (record.ispin,record.mesh_slot)==(slot.ispin,slot.mesh_slot))\n        arrays = probe_arrays(background,grid,descriptor,run.check)\n        summary['selected_probe_comparisons'] = validate_probe_arrays(arrays,grid,records)\n        arrays.update(slot_records_json=encode_records(records),\n                      source_receipt_bindings_json=np.asarray(json.dumps(receipt_bindings,sort_keys=True)))\n        verify_consumers(grant,implementation(paths))\n        run.commit('coverage-probe',arrays,metadata)\n        del background,arrays\n    else:\n        arrays,_ = cached\n        stored_records = arrays.pop('slot_records_json')\n        if str(stored_records) != str(encode_records(records)):\n            raise ValueError('recovered coverage descriptors differ')\n        if json.loads(str(arrays.pop('source_receipt_bindings_json'))) != receipt_bindings:\n            raise ValueError('recovered coverage receipt dependencies differ')\n        summary['selected_probe_comparisons'] = validate_probe_arrays(arrays,grid,records)\n        del arrays\n    summary['accepted_background'] = background_receipt\n    arm_boundary(run,45)\n    final_sources = implementation(paths)\n    verify_consumers(grant,final_sources)\n    summary.update(status='complete',exit_code=0,final_implementation_sources=final_sources)\n    # Immutable pre-publication snapshot invokes the SAME public saved reader.\n    # Root's post-exit manager outcome remains mandatory and separately recorded.\n    snapshot = run.target/('saved-consumption-input-'+summary['run_id']+'.json')\n    run.publisher.write(snapshot,summary)\n    snapshot_binding = binding(snapshot)\n    started = time.monotonic()\n    saved = load_saved_bloch_coverage(snapshot_binding)\n    summary['saved_consumption'] = dict(input=snapshot_binding,coverage_identity=saved.coverage_identity,\n        source_count=len(saved.source_receipts),slot_count=len(saved.slot_records),\n        probe_comparisons=dict(saved.probe_comparisons),elapsed_seconds=time.monotonic()-started,\n        qualification='authenticated saved reader; post-exit manager success remains separate authority')\n    if len(saved.source_receipts) != 20 or len(saved.slot_records) != 128:\n        raise ValueError('saved consumption lost complete coverage')\n    final_sources = implementation(paths)\n    verify_consumers(grant,final_sources)\n    summary['final_implementation_sources'] = final_sources\n    run.check()\n    run.arm()\n"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/run_material_bloch_pilot.py",
+      "bytes": "4778",
+      "sha256": "3c890cbff533c1ea4956254a960c5e2f5611c6ff35d1d627e6003ae0ca68b258",
+      "complete_source": "\"\"\"Actual A27 Bloch admission/probe: --admission JSON --output DIR [--context-only].\n\nUses compound A25 runtime authority plus bound A27 continuation/implementation/\npassed-oracle settings. Inputs: xml,density,upfs{Ni,H},wavefunctions{1:{1..10},\n2:{1..10}},reference_terminal (original accepted A25). Exact settings are in\nmaterial_bloch_admission.validate_recipe. Resume additionally binds each\ncompleted source-N-K or coverage-probe receipt; unchanged recipe, reduced clock.\nNo old producer, PBE backend, Native action or finite-q placeholder is invoked.\n\"\"\"\nimport time\nBOOT = time.monotonic()\nimport argparse\nimport json\nfrom pathlib import Path\nimport signal\nimport sys\nimport traceback\nimport uuid\n\nHERE = Path(__file__).resolve().parent\nfor directory in (HERE.parent/'0024',HERE.parent/'0025',HERE.parents[3]/'src'):\n    sys.path.insert(0,str(directory))\n\n\ndef main():\n    run = publisher = None\n    summary = dict(status='failed',generation='0027',run_id=uuid.uuid4().hex,outputs=[],\n        first_useful_block_seconds=None,first_useful_target_seconds=30,\n        scope='all20 original sources/all128 lazy spin-grid slots; selected nonGamma raw q0 block only',\n        state=None,D=None,temperature=None,finite_q=None,\n        recovery_boundary='complete original-source archives and final complete coverage/probe only',\n        source_boundary_hard_seconds=30,probe_boundary_hard_seconds=90,saved_readback_hard_seconds=45,\n        time_accounting='All setup/admission/readback/publication charged; terminal is pre-publication snapshot; manager post-exit success separate')\n    code = 1\n    try:\n        parser = argparse.ArgumentParser(description=__doc__)\n        parser.add_argument('--admission',required=True,type=Path)\n        parser.add_argument('--output',required=True,type=Path)\n        parser.add_argument('--context-only',action='store_true')\n        args = parser.parse_args()\n        target = args.output.resolve()\n        target.mkdir(parents=True,exist_ok=True)\n        def interrupted(signum, frame):\n            raise InterruptedError(f'signal {signum}; only complete immutable boundaries recover')\n        for signum in (signal.SIGTERM,signal.SIGINT,signal.SIGALRM):\n            signal.signal(signum,interrupted)\n        from material_run_contract import runtime_context,implementation,admit,binding\n        from material_reference_output import OutputRun\n        from material_publication import Publication\n        from substrate_framework.material_bloch_admission import validate_grant\n        from substrate_framework.material_bloch_production import produce\n        from substrate_framework.material_bloch_output import preload_parsers\n        preload_parsers()\n        paths = (Path(__file__),)\n        context,sources = runtime_context(),implementation(paths)\n        summary.update(context=context,implementation_sources=sources)\n        grant,recipe,identity = admit(args.admission,'material-bloch-grid',sources,context,args.context_only)\n        if args.context_only:\n            publisher = Publication(target,summary,BOOT,grant,context_only=True)\n            publisher.arm()\n        else:\n            validate_grant(grant)\n            run = OutputRun(target,summary,BOOT)\n            run.configure(grant,identity)\n            publisher = run.publisher\n            summary.update(recipe=recipe,recipe_sha256=identity,admission=binding(args.admission),\n                           remaining_seconds_granted=grant['remaining_seconds'],\n                           first_block_seconds_granted=grant['first_block_seconds'],\n                           mode='explicit-resume' if grant['resume'] else 'new')\n        context_path = target/('context-'+summary['run_id']+'.json')\n        publisher.write(context_path,dict(generation='0027',run_id=summary['run_id'],\n                                         context=context,implementation_sources=sources))\n        publisher.event('material_bloch_context',context=binding(context_path))\n        if args.context_only:\n            summary['status'] = 'context-only'\n        else:\n            produce(run,recipe,paths)\n        code = 0\n    except BaseException as error:\n        summary.update(status='failed',failure=dict(type=type(error).__name__,message=str(error),\n                                                   traceback=traceback.format_exc()))\n        if isinstance(error,SystemExit):\n            code = int(error.code or 0)\n    finally:\n        if publisher is not None:\n            code = publisher.finish(code)\n        elif code:\n            print(json.dumps(dict(event='publication_not_admitted',run_id=summary['run_id'],\n                                  exit_code=code,error=str(summary.get('failure'))[:240])),flush=True)\n    return code\n\n\nif __name__ == '__main__':\n    sys.exit(main())\n"
+    }
+  ],
+  "dependency_source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_saved_reference.py",
+      "bytes": "9119",
+      "sha256": "2e0e650956ccf117a6b38ac0d2b81e6adbcb6fa7fae6748e9b65ecfe815d8be6"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_saved_symmetry.py",
+      "bytes": "4096",
+      "sha256": "76e3953ca7e4fdd05d9808e9c163950a182155518896b18f9fc108456ebae03d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_saved_native.py",
+      "bytes": "6675",
+      "sha256": "1403e2d393e9ef7c0ba975091d2dff5f64546af8e002dc9a0100adee10a9d4c3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_grid.py",
+      "bytes": "7853",
+      "sha256": "5c76340da98609106915b0a226ccf2a2bf1dff3a20103a42e598cf883083f1d6"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_frame.py",
+      "bytes": "8825",
+      "sha256": "8cbfa02f4a0a86c91f6d12c8d9464ee3e7e0a267b5696902c8085f1e51be7c6b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_qzero.py",
+      "bytes": "3528",
+      "sha256": "6888a35acb1a6b2d500f7340b804d3cc4f026c1c60eb7c7509009377f8f0ffd9"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_ionic_action.py",
+      "bytes": "3727",
+      "sha256": "1135f801ab9a01d217dcedd4f51f13ac5d88233dd6e6050b3710d7a6577e8c05"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_hamiltonian.py",
+      "bytes": "7295",
+      "sha256": "f7734635ecc3f86bbb4d35bc5dd1972fea49e1442fcdc2d17adf59f1d4e24093"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_grid.py",
+      "bytes": "4145",
+      "sha256": "278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_reference.py",
+      "bytes": "6647",
+      "sha256": "bc80fd7c36884d5938462347acd2a38cde105158c69b249e6dedb9389fe5c09a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_projectors.py",
+      "bytes": "4485",
+      "sha256": "3988f1a0171a56e0f7f40f26687f6b154ed7723784a2f1aa1bba2991fdc02ee3"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_radial.py",
+      "bytes": "6143",
+      "sha256": "1b936324c14ab200faca5ba69652d4c12ef4b86e1ecfe077612aad7fe3bcebbc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_nc_upf.py",
+      "bytes": "5854",
+      "sha256": "0a823f58587416b75e1a1a97d727da2a768dc717c5ce228e44528d274673788c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/spin_pbe_kernel.py",
+      "bytes": "7389",
+      "sha256": "f519cfbdd74d7ffeb3164ad68886c96a22102690292a328b38b796a732a84382"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_dyad_output.py",
+      "bytes": "12843",
+      "sha256": "7c696d3c5ef9a348f0c911453af3e7cd9b8dfd47bb948c4d25ce4e4b62e15a86"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_run_contract.py",
+      "bytes": "6189",
+      "sha256": "8a8fe658b283db2b0a48d62434feb8714e04f806b02efb4b8bde9c0f60f66f6c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py",
+      "bytes": "7855",
+      "sha256": "021f5bc6eb301183dc86941e72c4920b8321fcb18aa506a18b19312bb1b5b47a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_publication.py",
+      "bytes": "7351",
+      "sha256": "ca84d23149ff2d6ea76cd88024b6847cb85120896356ccccc0b192bf84f927ef"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/material_pilot_io.py",
+      "bytes": "10872",
+      "sha256": "54cd6c3d3a4122005ecc662d05749937e50fb0ae5af3ce93b745304e896d55eb"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/material_pilot_inputs.py",
+      "bytes": "5453",
+      "sha256": "f878583627abc011d63323963fe4e2f633ec74d4f0f6e19fda293f8dc724c783"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/material_factor_output.py",
+      "bytes": "11678",
+      "sha256": "e5a10c42402cd3351ce754f96639d7da43b7fe88f83cb3f1f2f38b9eb86445c9"
+    }
+  ],
+  "settled_authorities": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-continuation-registration.json",
+      "bytes": "8052",
+      "sha256": "cbb9f3698d8b432fb3825c640487095f9abef15004d36aeb1c311a38174cb92e"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/implementation-registration.json",
+      "bytes": "9602",
+      "sha256": "b59c25bd13d015ae17b2d81c8b98567f1358bacdc783b5c235f2f186aef268bc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/root-positive-primitives-decision-006.json",
+      "bytes": "3503",
+      "sha256": "f0f36c5cb6e5d0c59ca9672d37be2a24f241a7017b03d8f0a4e063b484566b24"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/bloch-bridge-oracle-002.json",
+      "bytes": "349",
+      "sha256": "b66f8b8c7f0921340ad2a1b6e9b34d2a9f96b7d4b4a43e8c601f040bf6ddebb9"
+    }
+  ],
+  "preserved_settled_evidence": {
+    "finite_bloch_oracle": "Root reports passing literal/FFT residual1.336885555e-15, full-space derivative1.563225159e-10, p=G mutation0.0190841; NOT rerun here",
+    "root_corrections_preserved": "Finite/equal-shape comparator changes and intended other-spin zero vector untouched; original failures/receipts/historical generations unchanged"
+  },
+  "exact_cli": "python proposals/P254-ni-collective-response/attempts/0027/run_material_bloch_pilot.py --admission ABSOLUTE_GRANT_JSON --output ABSOLUTE_OUTPUT_DIRECTORY [--context-only]",
+  "inputs": {
+    "xml": "Original bound saved-reference XML; exactly same binding as accepted original A25 reference recipe",
+    "density": "Original bound saved density; exactly same binding as accepted A25",
+    "upfs": "dict Ni,H -> original bound UPF; exactly same bindings as accepted A25",
+    "wavefunctions": "dict string spin 1,2 -> dict string source ik1..10 -> path/bytes/sha256. Every count/SHA must match the settled spatial report all20 WFC table. Gamma entries must exactly match accepted A25 input bindings.",
+    "reference_terminal": "Original accepted A25 terminal, bytes1000830 sha25652fa2c8a2ed5ad7e216b4f3e041ab80dccfd8daf119c1f5cd2b247a381ffcccb; authenticated background-coordinates archive restored verbatim, no PBE/backend rebuild"
+  },
+  "exact_settings": {
+    "continuation_registration": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-continuation-registration.json",
+      "bytes": "8052",
+      "sha256": "cbb9f3698d8b432fb3825c640487095f9abef15004d36aeb1c311a38174cb92e"
+    },
+    "implementation_registration": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/implementation-registration.json",
+      "bytes": "9602",
+      "sha256": "b59c25bd13d015ae17b2d81c8b98567f1358bacdc783b5c235f2f186aef268bc"
+    },
+    "oracle_receipt": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/bloch-bridge-oracle-002.json",
+      "bytes": "349",
+      "sha256": "b66f8b8c7f0921340ad2a1b6e9b34d2a9f96b7d4b4a43e8c601f040bf6ddebb9"
+    },
+    "symmetry_policy": "qe7.5-xml-order-unitary-identity-first-v1",
+    "probe_recipe": "first-folded-spin1-bands1-2-H32x+iNi1y-number-cosb1+isinb2-dyad1-2-v1"
+  },
+  "compound_runtime": {
+    "kind": "material-bloch-grid",
+    "registration": "Existing attempts/0025/implementation-registration.json binding remains material_run_contract.admit authority; source_access must match its registered original. Additional A27 authorities are exact settings above.",
+    "implementation_sources": "Preloaded complete actual implementation inventory + source dependencies, checked before/after production and before/after saved consumption against original grant/dependency_inventory. Root must bind current actual runtime; this handoff is not a guessed library inventory.",
+    "library_binding": null,
+    "context": "Existing exact own user-manager uid/gid/groups/cgroup/pinned CPU; four thread variables1; memory.max<=4GiB, memory.swap.max0, own finite RuntimeMaxUSec no greater than current invocation allowance; context-only uses existing bounded Publication.",
+    "resume": "Fresh resume=false,resume_identity=null,resume_receipts={}. Explicit recovery: identical recipe/source/input/settings identity, resume=true, prior recipe_sha256, individually bound completed source-N-K or coverage-probe .json receipts, freshly reduced remaining clock. Existing unbound/partial archives fail; no overwrite."
+  },
+  "budgets_proposed_for_Root_admission": {
+    "kind_cap_cumulative_seconds": 240,
+    "context_only_reserved_seconds": 30,
+    "producer_including_setup_input_hashing_radial_restore_internal_saved_consumption_and_publication_seconds": 180,
+    "external_Root_authenticated_readback_reserved_seconds": 30,
+    "cumulative_rule": "240 TOTAL across context, producer, independent saved consumption and any authorized resume, not renewable per invocation; actual accounting and any changed split need Root grant. Existing CAPS accepts at most240; proposed production grant is180.",
+    "first_useful_expected_seconds": 30,
+    "first_useful_hard_grant_seconds": 60,
+    "per_original_source_boundary_alarm_seconds": 30,
+    "selected_probe_boundary_alarm_seconds": 90,
+    "internal_saved_consumption_alarm_seconds": 45,
+    "output_max_bytes": 268435456,
+    "output_metadata_reserve_bytes": 8388608,
+    "memory": "One original source decode plus at most one target/work frame, bounded projector factors and physical-grid two-band arrays. No128-frame coefficient bank or PW-square matrix. Exact source coefficient hash uses one C-order work copy. Reader hashes original files sequentially and loads metadata archives, not WFC coefficients.",
+    "timing_status": "These are prospective limits/targets, not measured production performance. Manager hard deadline and existing OutputRun/Publication bound every authorized invocation."
+  },
+  "exact_scientific_recipe": {
+    "sources": "spin1 ik1..10, then spin2 ik1..10, each independently decoded by admitted load_wavefunctions; admit_source validates actual header, source identity, igwx rows, all346 bands, finite physical k/B, scalar ABI and source cutoff boundary policy.",
+    "slots": "For each source, every belonging full-grid slot is reconstructed in inherited row order; complete target basis/gauge/row-map descriptors and FFT alias/cutoff norm-preservation checks. No XML k records synthesized; explicit spins retain independently admitted source row ordering.",
+    "probe_selection": "First grid.iter_slots slot with ispin1, nonzero reciprocal_shift and nonzero physical k. Exact resolved source/mesh/operation/fold is archived; no value is invented before material admission.",
+    "bands_one_based": [
+      1,
+      2
+    ],
+    "direction": "complex-linear dimensionless37x3 direction H32 Cartesian x=1, Ni1 Cartesian y=i, all others0; positive dH/du in Ry/bohr, not force",
+    "number_profile": "cos(2pi*x_fractional_1)+i*sin(2pi*x_fractional_2), physical F-order72cubed grid, projected same-k integrated-number multiplication",
+    "density": "raw dyad (1+0.25i)|band1><band2| with explicit per-cell mode weight1/64 in spin1; volume-normalized density and saved-density-support iG gradient; NOT a state/preparation",
+    "H0": "Existing MaterialHamiltonian with checked reconstructed-basis factors and accepted A25 saved background; saved-energy-label residual is a raw diagnostic, not an eigenstate/stationarity acceptance claim",
+    "comparisons": "Raw complex integrated density versus weighted dyad trace, and density/profile bilinear versus number-action contraction, finite tolerance1e-12+1e-10*abs(right). Both local, bra and ket ionic action arrays retained. No old accepted oracle replay."
+  },
+  "archive_contract": {
+    "source_boundaries": "Exactly source-{ispin}-{source_ik},20 separate immutable NPZ/JSON receipts; each commits through existing exact dtype/shape/value readback protocol.",
+    "source_arrays": [
+      "source_miller",
+      "source_k_bohr_inv",
+      "reciprocal_bohr_inv",
+      "reference_reciprocal_bohr_inv",
+      "cell_bohr",
+      "energies_ry",
+      "raw_occupations",
+      "slot_records_json",
+      "source_header_json",
+      "source_admission_json"
+    ],
+    "source_header": "Original ik,ispin,gamma_only,scalef,ngw,igwx,npol,nbnd,abi, original source binding, array_record of ALL raw original coefficients. Coefficients themselves remain in original WFC files.",
+    "final_boundary": "coverage-probe NPZ/JSON; all128 canonical typed descriptors, exact bindings of all20 source receipt files, selected source/raw band blocks, target Miller rows, H0/action/residual arrays, all three ionic components and total, full direction, number profile/action, raw complex density/gradient, dyad coefficient/weight and comparison pairs.",
+    "saved_consumption": "Immutable saved-consumption-input-{run_id}.json pre-publication snapshot is byte-bound and passed to the SAME public load_saved_bloch_coverage. Final terminal records resulting coverage identity/counts/comparisons/timing. Root post-exit manager outcome remains independent completion authority, not fabricated by the snapshot."
+  },
+  "public_reader": {
+    "signature": "material_bloch_output.load_saved_bloch_coverage(terminal_binding) -> SavedBlochCoverage",
+    "fields": {
+      "grid": "existing BlochGrid from authenticated original XML/WFC bindings and exact same UNITARY policy",
+      "slot_records": "tuple[BlochSlotRecord], exactly128, complete typed descriptors",
+      "source_receipts": "Mapping[(ispin,source_ik), exact authenticated receipt], exactly20",
+      "coverage_identity": "immutable recipe_sha256",
+      "recipe": "authenticated producer recipe",
+      "probe_receipt": "exact final coverage-probe receipt",
+      "probe_comparisons": "saved raw complex comparison report"
+    },
+    "slot_record_fields": [
+      "ispin",
+      "mesh_index",
+      "mesh_slot",
+      "source_ik",
+      "source_binding",
+      "source_frame_identity",
+      "source_coefficients_record",
+      "source_miller_record",
+      "target_miller_record",
+      "row_map_record",
+      "basis_identity",
+      "gauge_identity",
+      "n_pw",
+      "n_bands",
+      "operation_index",
+      "reciprocal_shift",
+      "source_k_bohr_inv",
+      "target_k_bohr_inv",
+      "raw_band_order",
+      "row_order",
+      "original_representative",
+      "gamma_basis_join_identity"
+    ],
+    "authentication": "Complete successful recipe/terminal identity; original dependency/implementation sources; current original XML/density/UPF/all20 WFC bytes; exact20 source archives/receipts/all array digests; per-source saved header/raw-band/row/cutoff descriptors; reconstructed per-target basis/frame identity and support; exact final source receipt binding set; accepted original background archive identity; final selected probe arrays/comparisons. No H0/ionic action recomputation or WFC coefficient decoding on saved readback.",
+    "gamma_join": "Separately preserves new basis_identity/gauge_identity, original WFC source_frame_identity, actual full raw-column digest and historical gamma_basis_join_identity. A24 material_pilot_inputs:83-85 stored XML ref.reciprocal_bohr_inv, not binary B. Historical A25 join hash therefore uses array_record(actual source_miller), array_record(ref.cell_bohr), array_record(ref.reciprocal_bohr_inv). Both binary reciprocal_bohr_inv and reference_reciprocal_bohr_inv survive source archives; admitted2e-13 tolerance is not exact-digest equality. Dependent preparation consumer must independently compare historical coordinate/factor provenance and raw frame/Gram; no fabricated equal labels."
+  },
+  "lost_work_and_recovery": {
+    "recoverable": "Only each completed original-source archive/receipt and completed final coverage-probe archive. Source coverage may resume from exact caller-bound completed receipts; original-source/frame work for unfinished source is rerun only with fresh remaining grant.",
+    "maximum_unfinished_scientific_boundary": "At most one current original-source boundary30s or selected probe90s, further bounded by remaining global/first-block deadline. No within-source, unfinished H0/FFT, setup, Native history, crash/power-loss recovery claim.",
+    "saved_consumption_loss": "Interrupted saved validation is repeatable only under new explicit reduced clock; hard internal phase45s. Existing committed scientific outputs remain immutable, no automatic retry.",
+    "publication": "Existing Publication reserves terminal/output capacity and validates current remaining time; prepublication timing snapshot never claims its own later fsync/exit. Root retains actual post-exit evidence separately."
+  },
+  "lazy_parser_and_dependency_inventory": {
+    "preload": "CLI imports material_bloch_production/output/admission/records/probe and all actual saved-reference/WFC/grid/H0/ionic consumers before implementation(); material_bloch_output.preload_parsers creates actual XML parser without material work. Existing A24 material_pilot_io preloads NPZ writer/reader empty-array dispatch.",
+    "runtime_modules": "Existing material_run_contract, OutputRun, Publication, immutable0024 IO; numpy FFT/linalg/NPZ, scipy.linalg.blas through existing factors; QE radial/UPF parsers through admitted MaterialInputs; XML ElementTree/Expat. No PBE library or Native process launched.",
+    "source_to_consumer": "Root grant -> admit -> validate_recipe(A25+A27 authority) -> source WFC decode/admit -> typed complete source/star archive -> accepted background restore -> checked nonGamma probe -> final archive -> bound saved-consumption snapshot -> load_saved_bloch_coverage -> dependent neutral consumer. Execution of dependent neutral consumer waits actual successful coverage terminal and Root authority."
+  },
+  "execution_performed": {
+    "source_edits_and_byte_hashing_only": true,
+    "actual_material_decoding": false,
+    "numerical_symbolic_execution": false,
+    "tests_builds_lints_formatters": false,
+    "Git_process_unit_cloud_actions": false,
+    "passing_checks_replayed": false
+  },
+  "remaining_physical_limits": [
+    "All actual headers/rows/coverage/probe outputs remain unmeasured until Root executes under fresh bound grants.",
+    "No conditional preparation D/neutrality instantiated by this slice; dependent consumer owns it. Canonical symmetry extension is not little-group sewing/path invariance.",
+    "No finite-q rectangular actions, q-domain dynamics, physical loss/environment, coupled-field calibration, lattice superiority or nuclear/energy-disposal claim.",
+    "No sibling/runtime edits or historical receipt/source rewrites."
+  ]
+}

@@ -1,0 +1,80 @@
+Implemented only the two owned files. **No scientific imports/execution, tests, builds, lint, formatting, or production admission performed.**
+
+### Actual source bindings
+
+| A25 file | Bytes | SHA256 |
+|---|---:|---|
+| `run_material_factor_pilot.py` | 13130 | `56948841abb585553243ebf67ec3f79bf9c56e09ff5b7dd196aa359b728926b0` |
+| `material_factor_output.py` | 11678 | `e5a10c42402cd3351ce754f96639d7da43b7fe88f83cb3f1f2f38b9eb86445c9` |
+
+Counts/hashes obtained with `wc -c` and `sha256sum`.
+
+### Exact producer-specific grant schema
+
+Alongside shared `material_run_contract.admit` fields:
+
+```json
+{
+  "inputs": {
+    "xml": {"path": "...", "bytes": "...", "sha256": "..."},
+    "wavefunctions": {
+      "1": {"path": "...", "bytes": "...", "sha256": "..."},
+      "2": {"path": "...", "bytes": "...", "sha256": "..."}
+    },
+    "ionic_terminal": {"path": "...", "bytes": "...", "sha256": "..."}
+  },
+  "settings": {
+    "complete_grid_shape": [4, 4, 4],
+    "normalization_authority": "explicit nonempty authority"
+  },
+  "resume_receipts": {}
+}
+```
+
+`ionic_terminal` must bind the actual original `terminal-cab1323dcfbe4b38a50e1eadcfa231b9.json`: **867367 bytes**, SHA256 **`729f17467f67b330e5b68838e66886e74c6a908237cbe7a70fe02f7892de543d`**.
+
+On resume, `resume_receipts` maps existing `spin1-functional` / `spin2-functional` keys to exact prior receipt-file bindings. These are invocation authority outside the scientific recipe. Missing, partial, unadmitted, or mismatched checkpoints fail without retry.
+
+### Command and outputs
+
+With the specified PYTHONPATH and admitted thread/resource environment:
+
+```bash
+python3 A25/run_material_factor_pilot.py --admission GRANT.json --output OUTPUT
+```
+
+Append `--context-only` for context/source inventory without material reads.
+
+Outputs:
+- `spin{1,2}-functional.npz`: raw Gram, four M arrays, all sixteen directed T arrays.
+- Matching immutable `.json` receipts.
+- `context-RUN_ID.json`, `telemetry.jsonl`.
+- Rotating `summary.json` / `summary.json.prev`.
+- Unique `terminal-RUN_ID.json`.
+
+Each summary `outputs[]` entry includes `key`, `metadata`, full `receipt`, receipt-file binding, archive binding, reuse classification, and timing. Original recipe, coordinate receipt, and original block metadata/bindings are preserved; large gPsi archives are not duplicated.
+
+### Saved-functional consumer
+
+```python
+from material_factor_output import load_saved_functional
+
+functional = load_saved_functional(
+    output_dir,
+    item["key"],
+    terminal["recipe_sha256"],
+    item["receipt"],
+)
+```
+
+Use `item` from a trusted/bound terminal. The consumer checks unchanged0024 `recover_block` results against that exact receipt and restores immutable `FactorFunctional` arrays directly—no action, FFT, contraction, eigensolve, or preparation.
+
+### Boundaries and qualifications
+
+- Actual XML/WFC identities and original coordinates are checked; every original gPsi band block is recovered through unchanged0024 IO.
+- No ionic action or radial-table construction.
+- Per-spin completed-functional recovery only. Cache reuse still charges imports/source inventories, XML/WFC loading, original archive verification, grid setup, and numeric readback. No unfinished-step or Native-history recovery.
+- Shared ≤180-second grant; first completed-spin target 30 seconds, admitted hard allowance ≤90 seconds. Eight MiB is reserved for output metadata within the ≤1 GiB cap.
+- State, D, density coefficients, temperature, ionic, cross, and total remain null.
+- Complete4³ normalization is metadata for the chosen convention—not complete BvK coverage. Actual scope remains selected Gamma.
+- Root still owns source integration, verification, measured resource/admission checks, and execution; no runtime/performance result is claimed here.

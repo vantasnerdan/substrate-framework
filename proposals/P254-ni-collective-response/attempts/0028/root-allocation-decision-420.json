@@ -1,0 +1,49 @@
+{
+  "schema": "P254-Root-baseline-bounded-integration-source-repair-v1",
+  "actual_decision_utc": "2026-11-03T13:10:59.969414+00:00",
+  "next_repair_decision_due_utc": "2026-11-03T13:30:59.969414+00:00",
+  "next_main_allocation_decision_due_utc": "2026-11-03T14:00:00+00:00",
+  "original_noise_start_utc": "2026-11-03T12:41:39.998977+00:00",
+  "cumulative_wall_at_decision_seconds": 1759.970437,
+  "previous_readout_deadline": "2026-11-03T13:06:34.773525+00:00",
+  "deadline_breach": true,
+  "actual_failure": {
+    "kind": "ValueError",
+    "message": "baseline interpolation outside integrated interval"
+  },
+  "actual_failed_elapsed_seconds": 5.106692365836352,
+  "failed_original": {
+    "path": "/var/tmp/p254-a29-force-noise-comparison-003/result.json",
+    "bytes": 70226,
+    "sha256": "4e1fbd8a2853c6f4607f57a0d2d9e61ff429efe6efd292520fc11acea3596544"
+  },
+  "preserved_executed_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0029/source-history/reduced_electronic_correlations-20e604e65f021c2ba40921fae711e0850c5b6accc6ca58fac7c97c1a153d1661.py",
+      "bytes": 11114,
+      "sha256": "20e604e65f021c2ba40921fae711e0850c5b6accc6ca58fac7c97c1a153d1661"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0029/source-history/reduced_electronic_dynamics-f08d5d2639dd1ca2d65434a6178718e7787a24acc8931848668307a8eb88462d.py",
+      "bytes": 15290,
+      "sha256": "f08d5d2639dd1ca2d65434a6178718e7787a24acc8931848668307a8eb88462d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0029/source-history/reduced_comparison_early-f5070c4a733fae57071fc996c2d0bcb98ef083171864f89ffd5df11f6ec5b726.py",
+      "bytes": 11542,
+      "sha256": "f5070c4a733fae57071fc996c2d0bcb98ef083171864f89ffd5df11f6ec5b726"
+    }
+  ],
+  "diagnosis": "Installed SciPy1.10 select_initial_step samples an Euler derivative beyond t_bound before step clipping; the short backward force-probe integration calls the correctly guarded baseline outside its integrated interval. Source common.py104-114 and rk.py94-100 confirm this. Finite and early-tangent wrappers share the same baseline-dependent risk.",
+  "decision": "Fix initializer at the owning integrations: supply a scale-based first_step bounded by the physical interval, leaving DOP853 adaptive error control, Hamiltonian, raw data and baseline domain guard unchanged. Never clip/extrapolate the history or suppress this error. Exercise the affected existing finite/correlation oracles plus a permanent short-interval baseline-domain regression, then actual four-resolution material force comparison. This corrects a real consumer defect that otherwise threatens the full spatial run, not a new numerical method/qualification campaign.",
+  "repair_allocation": {
+    "cpu": 10,
+    "threads": 1,
+    "maximum_simultaneous_memory_bytes": "2147483648",
+    "maximum_native_execution_seconds": 600,
+    "absolute_repair_output_decision_due_utc": "2026-11-03T13:30:59.969414+00:00",
+    "wall_clock": "All original comparison time/caller refusals/delays stay charged from12:41:39.998977; this explicit bounded source repair is not a reset."
+  },
+  "production": "All8 fullq workers continue Root415/418 unchanged. Their12 producer modules and physical sources are not touched; only correlation/delta/early integration consumers and their source inventories change.",
+  "scope": "No physical covariance row claimed yet; complete original fullPW reference and four reduced unexcited means remain available. Full64q finite pulse/controls remain the primary objective."
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "status": "prospective-source-repair-proposal-no-corrected-native-execution",
+  "failed_package": {
+    "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation8/complete-failed-package.json",
+    "sha256": "c452de21fde439c971fd8b96f7c1f1d5affead33f8a9c73ff8df2466deded81a",
+    "bytes": 149485,
+    "mtime_ns": "1792436647358258908"
+  },
+  "source_cause": [
+    {
+      "file": {
+        "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/dfpt_kernels.f90",
+        "sha256": "c899c578d67cfce069db86e0ae5587ef795b3f623178f5ec04e805d925f9d35a",
+        "bytes": 24784,
+        "mtime_ns": "1755597432000000000"
+      },
+      "lines": "243;354-364;526-552",
+      "meaning": "Actual metallic-Gamma branch, neutralizing Fermi shift before induced-HXC update, final converged response potential has def subtracted in both collinear spins; checkpoint precedes subtraction."
+    },
+    {
+      "file": {
+        "path": "/opt/qebuild/q-e-qe-7.5/LR_Modules/efermi_shift.f90",
+        "sha256": "7bb3db8e63b705a9e1bbaa52957885003dbbcb366dcbdce88125f3b83ed9bb44",
+        "bytes": 7737,
+        "mtime_ns": "1755597432000000000"
+      },
+      "lines": "8-13;74-102",
+      "meaning": "def(npert) is complex native -deltaN/DOS, symmetrized, independent of spectral finite differences; same scalar corrects charge neutrality."
+    },
+    {
+      "file": {
+        "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/solve_linter.f90",
+        "sha256": "b3bcf536ff9e45325420e64040a46d2954aeaabd52fad90c07aad9a29544ad96",
+        "bytes": 10603,
+        "mtime_ns": "1755597432000000000"
+      },
+      "lines": "145-176;256-257;266-296",
+      "meaning": "Fresh path returns from dfpt_kernel then immediately serializes shifted potential and contracts elphel for this same irrep; converged rec_code10 can skip the kernel and must not read stale/uninitialized def."
+    },
+    {
+      "file": {
+        "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/elphon.f90",
+        "sha256": "0b05b4f89ece944ff2fe08d9704c6ee978b2cd3cfd353197d7e00f33cc8c8ed8",
+        "bytes": 72391,
+        "mtime_ns": "1755597432000000000"
+      },
+      "lines": "319-322;484-519;560-585",
+      "meaning": "elphel adds shifted induced potential to complete bare RHS and contracts full ordinary-space matrix; no inverse Fermi shift is added later."
+    }
+  ],
+  "native_definition": {
+    "branch": "(lgauss OR ltetra) AND lgamma, with tetra/noncollinear/USPP/PAW/Hubbard still rejected by this exporter",
+    "native_screened": "dH_KS/du - def(perturbation)*I at the verified metallic-Gamma branch; no shift elsewhere",
+    "absolute_screened": "native_screened + def(perturbation)*I; ordinary NC overlap I, matching same-k/same-spin band basis at Gamma; no k/spin-dependent fitted shift",
+    "bare": "Unchanged complete pre-induced-HXC bare operator, no chemical-potential subtraction"
+  },
+  "proposed_capture": {
+    "point": "vertex_begin inside native elphel, called directly from solve_linter:296 after dfpt_kernel:256-257 returns with final response and before either bare/screened export. Capture native efermi_shift.def(1:npe), not stdout or FD.",
+    "identity": "Bind iq, irrep, imode0, perturbation, q, actual branch flag, full complex native def and existing native pattern columns in one transactional raw file.",
+    "recovery_safety": "Converged rec_code10 read_rec can skip dfpt_kernel via solve_linter:176; do NOT assume module def persisted. Conservatively rollback/recompute the interrupted uncommitted current irrep from code2 before launch, preserving unaffected committed irreps; reject rec_code10 capture natively if unreconciled. Completed raw files persist their matching exact def."
+  },
+  "schema_cutover": {
+    "format": "CATDFT_NC_VERTEX_V2, old V1 rejected by current decoder, old files/source snapshots retained only as history",
+    "matrices": [
+      "BARE",
+      "SCREENED_NATIVE",
+      "SCREENED_HAMILTONIAN"
+    ],
+    "representation": "Stream native and reconstructed full complex matrices from the same native array, adding def only to diagonal on output; no new dense matrix allocation/copy. Explicit branch/def metadata disambiguates both operators.",
+    "nonzero_q": "Branch false, exact zero def, absolute/native matrices agree everywhere. Offdiagonal Gamma entries and all other band/k/spin entries satisfy exact native+def*identity invariant.",
+    "consumers": "Migrate native patch/writer, strict decoder, PH validation/recovery, result schema and all proof producers/comparators. SCREENED_HAMILTONIAN feeds unchanged absolute eigenenergy FD target; SCREENED_NATIVE feeds same-gauge native ordinary/EPA checks."
+  },
+  "projection": {
+    "rule": "With native pattern columns U and Cartesian target e, solve U*c=e; project every operator AND scalar def with sum_p c_p*(quantity_p), no extra conjugation. Same coefficients already used by the all-six bare force check.",
+    "selection": "Fresh current Gamma, original deterministic largest isolated absolute H-x derivative selection applied explicitly to SCREENED_HAMILTONIAN, frozen before all four new displaced outputs; do not repin oldG8 eigenpair."
+  },
+  "prospective_acceptance": {
+    "absolute": "Preserve d(epsilon)/du target, signed0.001/0.0005bohr, atol1e-4+rtol.005, gap and halving requirements unchanged.",
+    "relative": "Separately named d(epsilon-mu)/du versus SCREENED_NATIVE using independently parsed public XML mu, plus reported native-def versus FD-mu diagnostic; never use FD mu to reconstruct exported matrices.",
+    "replay": "Root registers corrected definition/algebra oracle before new build/execution; new source-bound complete Gamma/nonzero/force/phase/native-agreement/recovery/cache plus four displaced outputs. Source6 unchanged-target clearance reused only at its scope."
+  }
+}

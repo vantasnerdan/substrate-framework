@@ -1,0 +1,23 @@
+[Unit]
+Description=P254 actual Ni31H6 ionic-action bounded production
+[Service]
+Type=exec
+WorkingDirectory=/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/owner-001
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/catalyst-nc-operator/src
+Environment=OMP_NUM_THREADS=1
+Environment=OPENBLAS_NUM_THREADS=1
+Environment=MKL_NUM_THREADS=1
+Environment=NUMEXPR_NUM_THREADS=1
+ExecStart=/home/administrator/projects/substrate-framework/.venv/bin/python -u /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/run_material_ionic_pilot.py --output /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/pilot-001 --admission /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024/material-admission-002.json
+ExecStopPost=-/home/administrator/projects/catalyst-dft/.venv/bin/python -u /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/run_export_owner.py --notify-exit %n
+Restart=no
+RuntimeMaxSec=60
+TimeoutStopSec=2
+KillMode=control-group
+CPUAffinity=6
+MemoryMax=4294967296
+MemorySwapMax=0
+MemoryAccounting=yes
+StandardOutput=journal
+StandardError=journal

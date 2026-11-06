@@ -1,0 +1,40 @@
+Type=oneshot
+Restart=no
+TimeoutStartUSec=30s
+RuntimeMaxUSec=30s
+RemainAfterExit=yes
+Result=success
+ExecMainStartTimestamp=Wed 2026-10-28 15:07:24 UTC
+ExecMainStartTimestampMonotonic=3230581114276
+ExecMainExitTimestamp=Wed 2026-10-28 15:07:44 UTC
+ExecMainExitTimestampMonotonic=3230601549154
+ExecMainCode=1
+ExecMainStatus=0
+ExecStart={ path=/usr/bin/python3 ; argv[]=/usr/bin/python3 -c import json,sys,time
+from pathlib import Path
+root=Path('/home/administrator/projects/substrate-ni-collective')
+for path in (root/'src',root/'proposals/P254-ni-collective-response/attempts/0024',root/'proposals/P254-ni-collective-response/attempts/0025'):
+    sys.path.insert(0,str(path))
+from substrate_framework.material_bloch_output import preload_parsers,load_saved_bloch_coverage
+import substrate_framework.material_bloch_production
+from material_run_contract import implementation,verify_consumers,runtime_context,_context,bound_json
+preload_parsers()
+grant=json.loads(Path(sys.argv[1]).read_bytes())
+_context(grant,runtime_context())
+verify_consumers(grant,implementation())
+terminal_binding=json.loads(Path(sys.argv[2]).read_bytes())
+coverage=load_saved_bloch_coverage(terminal_binding)
+verify_consumers(grant,implementation())
+print(json.dumps(dict(scope='authenticated actual Bloch saved consumption, no production replay',coverage_identity=coverage.coverage_identity,source_count=len(coverage.source_receipts),slot_count=len(coverage.slot_records),probe_comparisons=dict(coverage.probe_comparisons)),sort_keys=True,allow_nan=False))
+ /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-saved-reader-grant-001.json /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-actual-terminal-binding-001.json ; ignore_errors=no ; start_time=[Wed 2026-10-28 15:07:24 UTC] ; stop_time=[Wed 2026-10-28 15:07:44 UTC] ; pid=3464829 ; code=exited ; status=0 }
+ControlGroup=
+MemoryPeak=[not set]
+CPUUsageNSec=19961650000
+MemoryMax=4294967296
+MemorySwapMax=0
+Environment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+CPUAffinity=7
+Id=p254-a27-bloch-saved-reader-001.service
+ActiveState=active
+SubState=exited
+InvocationID=fbd84e9289744562a1b12cba199d13ed

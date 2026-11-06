@@ -1,0 +1,95 @@
+{
+  "schema": "P254-A34-full-source-two-mode-initial-force-noise-plan-v1",
+  "created_utc": "2026-11-04T13:36:59.828303+00:00",
+  "goal": "Actualoriginal128explicit-spin/internal-kGamma2x2full-PWinitialforcecovarianceandretained/omitted/crossdecompositionforbothpaidoutput-directedmodes. NOTlateNioutput,spectrum,movinghistory,all64externalq,irreversibleloss orphysicalerrorbound.",
+  "parent_source_api": "Parentowns physical original-source restoration and export_full_source_modes.py. No unnecessaryH37probe,Haction,eigensolve,preparationreplay orold source0 force replay.",
+  "case_cli": [
+    "--initial-result",
+    "PATH",
+    "--coefficient-manifest",
+    "PATH",
+    "--channel-archive",
+    "PATH",
+    "--original-record",
+    "INTEGER",
+    "--output",
+    "FRESH_GENERATION_DIR",
+    "--reuse-source0-action-packet",
+    "PATH",
+    "--reuse-source0-mode1-packet",
+    "PATH"
+  ],
+  "case_result_contract": {
+    "filename": "result.json",
+    "completion_filename": "done.json",
+    "schema": "P254-A34-original-sector-two-mode-covariance-v1",
+    "required_root_fields": [
+      "schema",
+      "status",
+      "original_record",
+      "quadrature_weight",
+      "quadrature_applied",
+      "source",
+      "mode_archive",
+      "mode_indices",
+      "covariance",
+      "work"
+    ],
+    "status": "complete",
+    "quadrature_applied": false,
+    "mode_indices": [
+      0,
+      1
+    ],
+    "source": "ActualoriginalFullNoiseProbeInputs.source metadata,includingoriginal_record/original_boundary/frame/D/spin/mesh;no refilledorothersectorsubstitution.",
+    "covariance": "A30 covariance_rows() format:fourrows(left,right namesmode0/mode1;full={real,imag};blocks=[{part_left,part_right,value:{real,imag}}]forRR/RE/ER/EE;reconstruction_defectcomplex).",
+    "done.json": "Onlyafterresultfullyfsynced,exclusivecompletionJSONwith{result:actualbyte/SHA/pathbinding}. AnexistinguncommittedresultisNOTcompletion;failedgenerationpreserved.",
+    "work": "elapsed_seconds,peak_rss_bytes,physical_force_forward_actions,physical_force_adjoint_actions,hamiltonian_actions=0,trajectory_actions=0;source0paidreusehasno newphysicalaction."
+  },
+  "runner_contract": "Agentowns batch_mode_noise.py and aggregate_mode_noise.py ONLY. Run actualcaseCLI in isolatedfreshper-recordgenerations,explicitCPU/BLASenv inherited,serialbydefaultwithbounded optionalworkers. Durablepercaseoutcomes/stdout/stderr/intentbeforedependentaction;neverretainalloutcomesonlyinRAM. Reusecompletedbinding-verifieddone.json fromsameinput/modecontract. Do nottreatpartial/failedgenerationasdone,do notoverwriteoriginals. Completeoriginalrecord0..127 setrequiredforcompleteaggregate;partialcoverageexplicitneverpublishedasfull.",
+  "normalization": "AllcasecovariancesUNWEIGHTED. CanonicalGammaforceinsertsF_k/sqrtN,so aggregate\u03a3C_k/N,withN=64andexplicit128spinsectors. Useactualcasequadratureweight=1/N once,NOextraspinorfinalspatial1/N. Preserveall4blocksandbothcomplexorders.",
+  "initial_allocation": "Implementation/sourceinputreuseonlyuntilsettled. Firstactualnonzero-originalsectorpilot<=300s/CPU7/BLAS1/4GiB/swap0;fullbatchresource/concurrency/wall budgetchosenAFTERactualpilotcost/RSS,not blindlyfilled. Source0cachedlegsreused.",
+  "mode_archive": {
+    "bytes": 3527206,
+    "path": "/var/tmp/p254-a30-output-directed-source0-actions-001/force-channels.npz",
+    "sha256": "3f37716e200b55c59c2837edf9e126439e97c5d4898436c90a5a75325cb10f19"
+  },
+  "mode0_packet": {
+    "bytes": 158396,
+    "path": "/var/tmp/p254-a30-output-directed-source0-actions-001/packet.json",
+    "sha256": "b6dc1bc91025f198e28559080f489cd5a7b4aaecb22908a7113f6361a5ed0521"
+  },
+  "mode1_packet": {
+    "bytes": 113108,
+    "path": "/var/tmp/p254-a31-source0-two-mode-bath8-001/mode1-complete.json",
+    "sha256": "a57067878e0334590cbd81c0ab188e8c16c5000a1f811b98b7a823d2f0a31297"
+  },
+  "original_initial": {
+    "bytes": 25705,
+    "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+    "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"
+  },
+  "original_coefficients": {
+    "bytes": 59561233,
+    "path": "/var/tmp/p254-activeband-loaded-fullq-union-001/manifest.json",
+    "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"
+  },
+  "source_grounding": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030/full_noise_probe_inputs.py",
+      "bytes": 17687,
+      "sha256": "e331eba1afcc5da6b47472f12068bd645e59ebc78101031da7d732601995abd2"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0030/packet_hamiltonian_actions.py",
+      "bytes": 22716,
+      "sha256": "6cd6642307b5558bee04e7729b2b26508aa67a63e5b5548763b2c3d9f52ee2ea"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_noise_projection.py",
+      "bytes": 11755,
+      "sha256": "af25d5545ffc1a8a67d7f00fdbaa1037b80dd0c00f5bed6f29578ca7b2d5d061"
+    }
+  ],
+  "owner": "Rootphysicalsourceandresources;FullSourceModeBatchagentrunner/aggregation"
+}

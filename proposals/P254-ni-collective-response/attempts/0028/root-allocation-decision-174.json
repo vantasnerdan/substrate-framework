@@ -1,0 +1,28 @@
+{
+  "schema": "P254-root-allocation-decision-v1",
+  "decision": "Root174",
+  "actual_decision_time": "2026-10-30T14:04:28.072995+00:00",
+  "previous_due_time": "2026-10-30T14:07:54.787981+00:00",
+  "deadline_breach": false,
+  "next_decision_due": "2026-10-30T14:24:28.072995+00:00",
+  "action": "The actual kernel ran217.643CPU s/218.137elapsed s and produced all9 finite full-shape products, but the fixed comparison FAILED plus/minus gradients: relative1.281894e-9 versus3e-10, absolute1.9551e-28 on a1.5252e-19 reference. Preserve the failed result, not a speedup/success claim. Repair numerical ordering at source: retain original coefficient absorption BEFORE ionic projector contraction and original per-dyad density/gradient accumulation, while reusing identical FFT/projector factors. Do not relax/re-pin tolerance or discard small signals. Keep field-only shared projector arithmetic and all physical/PW/rank/D/weight criteria. After settled finite verification, allow ONE new actual comparison of the repaired arithmetic under a newly explicit15min diagnostic allocation; previous30min window/failures remain charged, no production or tableau migration.",
+  "evidence": [
+    {
+      "path": "/var/tmp/p254-a28-shared-moment-smoke-003/result.json",
+      "bytes": "182698",
+      "sha256": "b32e510d3a0d5a85ffd4bbdbe0a7b104cdb34dc1950de4325ca88abda5a037e7"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_dyad_grid_moments.py",
+      "bytes": "6295",
+      "sha256": "c6ad42815d9f048df803672ad1d0b32d938ecf76e3f6d8b495e34c7401f09228"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_dyad_projector_moments.py",
+      "bytes": "8417",
+      "sha256": "77818bd1168f2cf94450650cd20463b55882e8f75539b309db5d12624a42e123"
+    }
+  ],
+  "unresolved": "Actual cancellation-sensitive ionic gradient agreement, not mathematical model or input coverage.",
+  "production_status": "Held until corrected actual evidence; no full energy/noise/spatial result."
+}

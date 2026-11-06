@@ -1,0 +1,249 @@
+{
+  "schema": "P254-A33-noise-origin-scientific-review-v1",
+  "verdict": {
+    "overall_correctness": "correct",
+    "explanation": "No actionable patch-introduced defect was found in the reviewed initial-noise attribution, its export/publication boundaries, or SOLUTION's new noise-origins interpretation. The implementation preserves the original product preparation, original electronic slot ordering, persisted general coordinate bank, all directed complex block orders, and the common full-output normalization; the displayed variance table agrees with the actual complete result.",
+    "confidence": 0.98
+  },
+  "findings": [],
+  "scope": {
+    "packet_read_first": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/complete-scientific-review-packet-001.json",
+    "primary_files": [
+      "proposals/P254-ni-collective-response/attempts/0033/hybrid_noise_components.py:1-108",
+      "proposals/P254-ni-collective-response/attempts/0033/export_hybrid_noise_components.py:1-133",
+      "proposals/P254-ni-collective-response/attempts/0033/oracle_hybrid_noise_components.py:1-161",
+      "proposals/P254-ni-collective-response/SOLUTION.md:78-95"
+    ],
+    "actual_evidence": [
+      "attempts/0033/saved-noise-budget-and-influence-material-result-001.json",
+      "attempts/0033/saved-noise-budget-and-influence-native-admission-001.json",
+      "attempts/0033/owning-new-consumer-oracle-001.json",
+      "attempts/0033/actual-saved-noise-physical-observations-001.json"
+    ],
+    "dependent_interfaces_read": [
+      "attempts/0031/export_frozen_bath_comparator.py:35-57",
+      "attempts/0029/reduced_correlation_transpose.py:39-49",
+      "attempts/0029/reduced_coherence_readout.py:12-35",
+      "src/substrate_framework/material_clamped_array.py:43-109",
+      "src/substrate_framework/physical_factor_preparation.py:53-97,185-222",
+      "attempts/0032/export_hybrid_gamma.py:60-93,250-275",
+      "attempts/0032/hybrid_gamma_model.py:251-277",
+      "attempts/0032/hybrid_gamma_evolution.py:171-212",
+      "attempts/0033/finite_bath_influence.py:1-96",
+      "src/substrate_framework/nonstationary_force_kernel.py:60-89"
+    ],
+    "scope_boundary": "A32 Hamiltonian, tangent, transpose and trajectory proofs are inherited, not reopened. A32 reads were limited to original state/slot intake, saved preparation-observable and covariance contracts, chronological readout layout, and lossless publication. The separate frozen-force component was inspected for export routing and interpretation, not substituted for the moving initial-noise budget.",
+    "method": "Read-only patch and source review plus extraction of existing JSON evidence. git diff was read for SOLUTION and git diff --no-index against /dev/null for both new primary implementation files. Existing oracle and Native admissions were read, not rerun.",
+    "new_tests_builds_lints_formatters_smoke_or_numerical_runs": 0,
+    "new_physical_actions_or_resource_mutations": 0,
+    "repository_or_original_data_edits": 0
+  },
+  "evidence": [
+    {
+      "check": "Original mechanical ionic/field product assembly and all four routes",
+      "status": "satisfied",
+      "sources": [
+        "attempts/0033/export_hybrid_noise_components.py:53-77",
+        "attempts/0033/hybrid_noise_components.py:68-72,97-103",
+        "src/substrate_framework/material_clamped_array.py:79-105",
+        "attempts/0033/oracle_hybrid_noise_components.py:15-37,56-68"
+      ],
+      "assessment": "The exporter authenticates the original mechanical archive and copies ionic_ordered and field_ordered unchanged into the same block-diagonal Gamma W0 used by ClampedArray: original ionic (u,p) coordinates, then field coordinates. It passes half the ionic block size as ionic_dimension. The decomposition explicitly enumerates ionic_ionic, ionic_field, field_ionic and field_field and contracts each with ordinary transpose, x_A.T W_AB x_B. It sums all four; it does not silently assume cross routes are absent. The actual original product state has exactly zero ionic/field cross blocks, while the recorded oracle's mixed oscillator fixture exercises nonzero cross routes.",
+      "recorded_oracle": {
+        "mechanical_cross_error": 3.554447978966673e-15,
+        "missing_mechanical_cross_separation": 3.756756363938014
+      }
+    },
+    {
+      "check": "Original 128-slot ordering, active Wick contractions and promoted source0 exactly once",
+      "status": "satisfied",
+      "sources": [
+        "attempts/0033/hybrid_noise_components.py:60-79,94-103",
+        "attempts/0033/export_hybrid_noise_components.py:66-77",
+        "attempts/0032/export_hybrid_gamma.py:250-275",
+        "attempts/0029/reduced_correlation_transpose.py:39-49",
+        "attempts/0032/moving-hybrid-input-bindings-002.json:model_metadata"
+      ],
+      "assessment": "The saved model contract is mechanical[228], 127 ascending other-active slots of 12x12, then source0's 354x354 density, with total state_size 143832. The original intake loads slot/000 through slot/127 in order with the manifest's explicit spin/k indexing and requires baseline rho to equal that coefficient rho0. A33 uses the same C-order layout, excludes source_slot from other_slots, passes each corresponding original rho slice into wick_edge_pair, and writes each result back at its original slot index. The receiving Wick function contracts rho_source[c,b] (I-rho_target)[a,d] without conjugation, spin multiplicity, source average, cell weight or extra Fourier normalization. electronic[source_slot] is filled once from the full finite-bath CAR block; the old active source0 term is never added. electronic_total sums the 128 slots, not the source0 split again.",
+      "actual_publication": {
+        "source_count": 128,
+        "source_slot": 0,
+        "q_index": 0,
+        "electronic_by_slot_shape": [128, 4, 4],
+        "normalized_electronic_by_slot_shape": [128, 4, 4],
+        "slot0_at30": {"real": 9.40548064920383e-08, "imag": -2.2921272041584074e-22},
+        "slot1_at30": {"real": 2.3821148700322685e-09, "imag": -9.179306452478788e-24},
+        "slot127_at30": {"real": 5.670892315379398e-09, "imag": -6.1191478841260036e-24}
+      }
+    },
+    {
+      "check": "Actual stored V Z.T V^-1 observable and physical adjoint",
+      "status": "satisfied",
+      "sources": [
+        "attempts/0033/export_hybrid_noise_components.py:48-52,75-77",
+        "attempts/0033/hybrid_noise_components.py:19-39,80-93",
+        "attempts/0032/hybrid_gamma_model.py:251-257",
+        "attempts/0031/export_frozen_bath_comparator.py:35-57"
+      ],
+      "assessment": "The coordinate bank is loaded from authenticated inputs.interaction_coordinates, the bank persisted by the actual completed moving run, not from a newly diagonalized H. The C-order bilinear density dual is reshaped and mapped to the physical bath operator as V @ Z.T @ V^-1. split_operator_moments then forms each physical matrix's conjugate transpose after this general similarity transform. projected_factors supplies both action and adjoint_action on the same original frame; car_moments receives them as directed products (A^dagger Phi)^dagger (B Phi). Neither V unitarity nor an interaction-coordinate conjugation shortcut is assumed. The existing oracle includes a nonunit-modulus diagonal eigen-gauge change and a wrong-coordinate-bank mutation.",
+      "recorded_oracle_eigen_gauge_error": 3.794299872214038e-15
+    },
+    {
+      "check": "Unchanged original frame, S and D and correct CAR receiving side",
+      "status": "satisfied",
+      "sources": [
+        "attempts/0033/hybrid_noise_components.py:34-39",
+        "attempts/0031/export_frozen_bath_comparator.py:35-57",
+        "src/substrate_framework/physical_factor_preparation.py:185-222"
+      ],
+      "assessment": "A33 passes bank.projected_frame, bank.gram and bank.density_coefficients directly to the inherited CAR consumer, with the original state authority. No retained-state replacement, active-population refill, coefficient renormalization or covariance repair occurs. The receiving FactorPreparation.ordered computes Tr(D T_AB) - Tr(D M_A D M_B), retaining original density coherences and the declared finite-bath identity in the first term. Its existing admissibility machinery observes raw Gram/density data without clipping or Hermitization; that machinery is reused rather than replaced by a new precision campaign.",
+      "actual_source0_admissibility": {
+        "coefficient_meaning": "density coefficients in raw nonorthogonal frame",
+        "gram_min_eigenvalue": 0.9999999999999856,
+        "pauli_roundoff_allowance": 1.9667822925839625e-11,
+        "interpretation": "Inherited finite-representation admissibility record, not material error or convergence evidence."
+      }
+    },
+    {
+      "check": "Retained/omitted split of the final preparation-time observable, with RR/RE/ER/EE",
+      "status": "satisfied",
+      "sources": [
+        "attempts/0033/hybrid_noise_components.py:19-39,84-102",
+        "attempts/0033/oracle_hybrid_noise_components.py:80-103",
+        "SOLUTION.md:92"
+      ],
+      "assessment": "For each already pulled-back final output probe, A33 constructs O at preparation time, then O_R = Q_a (Q_a^dagger O Q_a) Q_a^dagger and O_E = O - O_R in the declared finite bath. The original preparation and saved moving dual are unchanged. The CAR consumer enumerates all ordered operator pairs, and block() explicitly retrieves retained_retained, retained_omitted, omitted_retained and omitted_omitted for every left/right output time. The split is therefore an attribution of one final pulled-back observable, not a run with omitted dynamics removed and not independent correction noise. Even tiny actual cross terms remain published, with separate complex RE and ER orders.",
+      "actual_source0_at30_bohr2": {
+        "retained_retained": {"real": 1.1656380243429742e-08, "imag": -9.68804077536423e-23},
+        "retained_omitted": {"real": 4.392953878929994e-24, "imag": 9.810335989055079e-24},
+        "omitted_retained": {"real": 4.42956898011285e-24, "imag": -1.0785405523664965e-23},
+        "omitted_omitted": {"real": 8.239842624860952e-08, "imag": -1.2994004287897672e-22},
+        "full": {"real": 9.40548064920383e-08, "imag": -2.2921272041584074e-22},
+        "full_minus_four_blocks": {"real": -9.661469554619363e-22, "imag": -1.4172002486118302e-24}
+      },
+      "recorded_oracle_missing_source0_cross_separation": 1.0315940500882623
+    },
+    {
+      "check": "Common actual full-output principal-root denominator; no additive magnitude claim",
+      "status": "satisfied",
+      "sources": [
+        "attempts/0033/export_hybrid_noise_components.py:22-31,79-86,104-105",
+        "attempts/0029/reduced_coherence_readout.py:12-35",
+        "attempts/0032/hybrid_gamma_evolution.py:173-188",
+        "SOLUTION.md:92"
+      ],
+      "assessment": "full_variances is the diagonal of the actual saved ordered_covariance, not a component diagonal and not a repaired/recomputed variance. All four mechanical blocks, all 128 electronic sectors, all four source0 split blocks and the total pass those same full variances to common_normalized. The receiving normalizer uses sqrt(C_ii) * sqrt(C_jj), the separate principal roots of the unchanged complex full variances; undefined normalization raises rather than silently dropping a component. The full source0 normalized contribution is present as electronic_by_slot[0]. Complex contributions can be combined under this common denominator, but their magnitudes are not independently normalized or additive. Publication and SOLUTION retain that distinction.",
+      "actual_normalized_at30": {
+        "ionic_ionic": {"real": 0.9915187422333953, "imag": 2.004374937521874e-18},
+        "field_field": {"real": 3.5621402246280897e-07, "imag": 4.841200090948949e-23},
+        "source0_full": {"real": 0.001084626044490984, "imag": -2.6434752616275948e-18},
+        "total": {"real": 1.0, "imag": -4.8518310033113114e-20}
+      }
+    },
+    {
+      "check": "Displayed variance table against the actual complete result",
+      "status": "satisfied",
+      "sources": [
+        "SOLUTION.md:82-90",
+        "attempts/0033/saved-noise-budget-and-influence-material-result-001.json:noise_budget and saved_covariance",
+        "attempts/0033/actual-saved-noise-physical-observations-001.json:equal_time_mechanical/electronic_total/full"
+      ],
+      "observable": "Ni1/x Gamma equal-time displacement covariance at 30 inverse Ry; all entries bohr^2",
+      "table_comparison": [
+        {"component": "Ionic", "exact_real": 8.59808815283952e-05, "displayed": "8.598088153e-05", "matches_rounding": true},
+        {"component": "Field", "exact_real": 3.088957813862322e-11, "displayed": "3.088957814e-11", "matches_rounding": true},
+        {"component": "Electronic, all represented sectors", "exact_real": 7.354327866804033e-07, "displayed": "7.354327867e-07", "matches_rounding": true},
+        {"component": "Total", "exact_real": 8.671634520465375e-05, "displayed": "8.671634520e-05", "matches_rounding": true}
+      ],
+      "assessment": "The table reports the real variance contributions at the requested time with matching displayed rounding. Both original mechanical cross routes are actually zero, so no nonzero table term is concealed. The electronic row is the full 128-sector represented sum, not source0 alone. Exact imaginary defects and all two-time complex orders remain in the linked result; the rounded table is not a substituted real-only publication."
+    },
+    {
+      "check": "Raw reconstruction interpretation and complete saved execution evidence",
+      "status": "satisfied",
+      "sources": [
+        "attempts/0033/saved-noise-budget-and-influence-material-result-001.json:raw_total_minus_saved_covariance/raw_normalized_total_minus_saved",
+        "attempts/0033/saved-noise-budget-and-influence-native-admission-001.json",
+        "attempts/0033/owning-new-consumer-oracle-001.json",
+        "attempts/0033/actual-saved-noise-physical-observations-001.json"
+      ],
+      "assessment": "The complete result contains all sixteen ordered covariance entries on chronological times [0,1,10,30]. raw_total_minus_saved_covariance compares the new decomposition with the same already stored preparation-dual contraction; its small residual demonstrates algebraic reconstruction within this represented calculation, not a new forward/backward trajectory validation or physical error bound. The source0 full-minus-split residual is likewise retained without repair. The published native admission records actual_exit=0 and the same result SHA as the complete packet; the oracle admission records actual_exit=0 and source hashes matching the packet. These are existing execution records, not runs performed by this reviewer.",
+      "recorded_values": {
+        "native_total_seconds": 15.969469361007214,
+        "source_budget_seconds": 9.047138588968664,
+        "frozen_influence_seconds": 4.975580474827439,
+        "raw_budget_minus_saved_maxabs_from_observations": 1.5152185993940876e-20,
+        "budget_total_at30": {"real": 8.671634520465375e-05, "imag": 1.4041273705350794e-23},
+        "saved_total_at30": {"real": 8.671634520465375e-05, "imag": 1.824860422692864e-23},
+        "raw_normalized_total_minus_saved_at30": {"real": 0.0, "imag": -4.851831003311305e-20},
+        "oracle_product_total_error": 3.66205343881779e-15,
+        "native_trajectory_integrations": 0,
+        "native_hamiltonian_actions": 0,
+        "native_force_actions": 0,
+        "native_H_eigendecompositions": 0,
+        "native_state_refills": 0,
+        "native_dft_actions": 0,
+        "native_new_gamma_caches": 0,
+        "native_original_namespaces_written": false
+      }
+    },
+    {
+      "check": "Represented all-sector attribution versus source0-only enrichment and separate force kernel",
+      "status": "satisfied",
+      "sources": [
+        "attempts/0033/export_hybrid_noise_components.py:87-112",
+        "attempts/0033/hybrid_noise_components.py:105-108",
+        "attempts/0033/finite_bath_influence.py:14-96",
+        "src/substrate_framework/nonstationary_force_kernel.py:60-89",
+        "SOLUTION.md:75-95"
+      ],
+      "assessment": "All 128 represented electronic sectors contribute to the moving initial-source budget, but only original source0 has the finite-bath enrichment (346 original raw state columns plus eight selected empty directions, bath dimension 354). This is not full-PW enrichment of every sector or all-q physical calibration. The exporter places the separate frozen-H two-mode force object under frozen_two_mode_influence; neither it nor its retarded response is added to budget.total. That object's explicit receiving OrderedForcePair methods retain directed AB/BA values and the -uF Kubo sign. The actual force array shape is [4,2,4,2], source_factor is 0.125 for 64 cells, perturbation_sign is -1, theta(0) is 0.5, and instantaneous scalar/contact terms are explicitly excluded. SOLUTION calls it a distinct nonstationary two-time object, not independent noise, a recovered moving history, a stationary spectrum, a linewidth, or heat."
+    },
+    {
+      "check": "Cross-boundary receiving dispatch and lossless publication",
+      "status": "satisfied",
+      "sources": [
+        "attempts/0033/hybrid_noise_components.py:14-39,90-108",
+        "attempts/0033/export_hybrid_noise_components.py:22-31,75-123",
+        "attempts/0031/export_frozen_bath_comparator.py:35-57",
+        "src/substrate_framework/physical_factor_preparation.py:215-222",
+        "attempts/0032/export_hybrid_gamma.py:70-93"
+      ],
+      "assessment": "The new full:/retained:/omitted: operator names are handled by the inherited generic factor dictionaries and complete nested CAR pair enumeration. The resulting covariance records are keyed by exact left/right names and explicitly routed into every requested block. Every returned budget field is preserved under result.noise_budget, and every requested normalized component has an explicit receiving path. The publication dispatcher recursively handles dictionaries, sequences, ndarrays, NumPy scalars and complex values; complex numbers preserve both real and imaginary fields. The new separate force payload is also explicitly published. No unmatched variant, silently discarded block, magnitude-only substitution, or missing complex order was found."
+    }
+  ],
+  "not_established": [
+    "PhysicalE full-source/full-q/full-PW/noise/loss closure remains open; inclusion of every represented sector does not upgrade the 127 other active sectors to full-PW calculations.",
+    "The source0 finite bath and its retained/omitted split do not bound omitted original full-PW directions, uncomputed density/current/field vertices, representation size errors, or physical uncertainty.",
+    "The initial-noise source budget is not noise generated along a path, a counterfactual dynamics subtraction, an independent added bath, or an energy-dissipation budget.",
+    "The separate frozen-literal-H two-time force kernel does not reconstruct the moving history, justify adding its noise atop A32, establish a stationary positive spectrum/FDT/Markov model, or determine irreversible damping, linewidth or a lifetime.",
+    "Neither the displayed variance table nor the tiny raw reconstruction residual establishes a heat prediction, nuclear rate, physical loss-survival claim, material ranking, continuous-time coherence lifetime, or calibrated physical error bound.",
+    "No original binary data were numerically reloaded or recomputed by this reviewer, and no new tests or physical actions were performed. Runtime and oracle numbers are reported from existing bound records.",
+    "The source SHA-256 and byte counts below are the original bindings stated in the complete packet, actual result and admissions; no fresh shell hashing or independent binary-authentication run was performed. The local report writer receipt, not an estimated character count, supplies this review artifact's byte count and resolved path."
+  ],
+  "sourcebindings": {
+    "binding_origin": "Original source/result bindings read from the A33 complete packet and actual A33 result/admissions, supplemented by its authenticated A32 input-binding publication; hashes were not freshly computed in this review.",
+    "sources": [
+      {"role": "noise origin implementation", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/hybrid_noise_components.py", "bytes": 5684, "sha256": "1141fd6a4dc022d2f587211a1eff190fe3764fb49f9c563cc44ce40426afa56b"},
+      {"role": "exporter", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/export_hybrid_noise_components.py", "bytes": 7548, "sha256": "c9be824f47547e6387eaf248da13e72fd370373d8c5ecd7c248a3aefc4d0ef25"},
+      {"role": "oracle source", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/oracle_hybrid_noise_components.py", "bytes": 8604, "sha256": "729f8ff1948142d1a43f590c62de412e57b5f4a1cb0e68458b1779ac2ef9c469"},
+      {"role": "separate force component", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/finite_bath_influence.py", "bytes": 5502, "sha256": "d5ed9d329a302582e1c249dee0b6f3ac52047d4db984260bc490144fa67212fb"},
+      {"role": "implementation contract", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/implementation-contract-001.json", "bytes": 4561, "sha256": "70c6bf7aaddb5f6835d769f2df0398cb261ae503f00c903d3d36e536940a3926"},
+      {"role": "reviewed solution map", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/SOLUTION.md", "bytes": 15193, "sha256": "cbce20a4678dde2a276aae771aaac08fdec16dd24a91f207de098e343c019ec5"},
+      {"role": "complete actual material result", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/saved-noise-budget-and-influence-material-result-001.json", "bytes": 520938, "sha256": "31375889649a529a270f7ec920169ea32b518f7527a2110a2934490a9f29a87f"},
+      {"role": "actual Native result", "path": "/var/tmp/p254-a33-saved-noise-budget-001/result.json", "bytes": 520938, "sha256": "31375889649a529a270f7ec920169ea32b518f7527a2110a2934490a9f29a87f"},
+      {"role": "actual Native admission", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/saved-noise-budget-and-influence-native-admission-001.json", "bytes": 2911, "sha256": "a99f7d70b0377f8de3c9be7ce846b39f2de72acd01865fa29c282b5a472b53b8"},
+      {"role": "actual oracle admission", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/owning-new-consumer-oracle-001.json", "bytes": 2265, "sha256": "a24f66a84eb4f49204dd4cc3d96daae63a50a9e884503964b45295ce079d8848"},
+      {"role": "recorded observations", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0033/actual-saved-noise-physical-observations-001.json", "bytes": 4253, "sha256": "1a8cf05f9aee3fbbfe2ee92eff0da849030b29bfde0bd2b3d48382d4fd80d14e"},
+      {"role": "original complete moving result", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/moving-hybrid-material-result-002.json", "bytes": 371375, "sha256": "3f8d166712975333bdfb6b6590d87f6459a86a7c9334a157005433927f9cc328"},
+      {"role": "original input-binding publication", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0032/moving-hybrid-input-bindings-002.json", "bytes": 345247, "sha256": "a4d6758d700c0cfd2bb82cffd25fe00b88886a2a29128339d7702738bc9e6ad3"},
+      {"role": "actual saved preparation duals and ordered covariance", "path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-002/hybrid-gamma-readout.npz", "bytes": 16128220, "sha256": "319947421bfb1da52cf629562225759568ff8e18a94e9e963d2f42d41e061595"},
+      {"role": "actual persisted V and inverse", "path": "/var/tmp/p254-a32-moving-hybrid-source0-gamma-002/interaction-coordinates.npz", "bytes": 4016604, "sha256": "0e4bfb351a87720e22fd8b383b29a514d4344530177823328e1bf0e8f023405a"},
+      {"role": "original finite-bath frame/S/D/Qa", "path": "/var/tmp/p254-a31-source0-two-mode-bath8-001/finite-bath-basis.npz", "bytes": 28287078, "sha256": "b97cf82fbf4679f509ad3a7f294ed8bd9f4bc7ed1a6294095cb9168c66c93b1e"},
+      {"role": "original active preparation", "path": "/var/tmp/p254-activeband-loaded-finite-b12-f27-001/baseline-000.npz", "bytes": "299054", "sha256": "6d17f8fccef03e916c224603a75c81580dd0510b0c1c01fa1842760305899c28"},
+      {"role": "original mechanical product covariance", "path": "/var/tmp/p254-activeband-loaded-projection-001/mechanical.npz", "bytes": 13517140, "sha256": "5450ff45bd9e7541ed7dfc7d0a7ca125a905fc12e8b717e617709965b965b78c"},
+      {"role": "original coefficient manifest", "path": "/var/tmp/p254-activeband-loaded-finite-b12-f27-001/coefficient-manifest.json", "bytes": 59561233, "sha256": "f851d2df2b2f1136d22b606f059cf6cd9bf6df7c4681340153e12c8569dcd479"},
+      {"role": "inherited CAR consumer", "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0031/export_frozen_bath_comparator.py", "bytes": 10591, "sha256": "24534c94c20ae0e16b8832ca12542eed6004ea3097dc36df9d32bbe7a67cfd80"}
+    ],
+    "original_state_authority": "f3d7be625104b78f73b0d3ff1578d35790f13f755cc068b2a93dd211c1a936e4"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "P254-joint-streamed-registration-v1",
+  "status": "source-registration-before-implementation; not executed evidence",
+  "scalar": "N times physical H0 + K(delta n)/2 + u.gphysical + L(a) + common C + fixed DeltaC ONCE + fixed contact/mixed + (p-Za)^2/(2M), plus global Maxwell Pi^2/(2Mf)",
+  "coverage": "All original128 slots and all raw columns/D; no held electrons; homogeneous mean only; whole local-q dynamics separate",
+  "sources": {
+    "src/substrate_framework/streamed_material_state.py": "d075a1e15aafc397bf85506ab457179ceb7a27fb3e02fde5d61970c4377cc46d",
+    "src/substrate_framework/streamed_material_evolution.py": "619f42e1fb92c66db9c322914046a4312f84056eb114ae3485be68b8316273f5",
+    "src/substrate_framework/material_joint_field_scalar.py": "c403841b6b36f83bf5b66cc5488870a79e7342890ae1e7932e8e032158d2210b",
+    "src/substrate_framework/material_physical_operators.py": "e2b9e6efdb09670b8088121dc12f91b4a7df8e868fcea23c41c996d5fa0cd65b",
+    "proposals/P254-ni-collective-response/attempts/0028/full-state-initialization-intake-001.json": "e18607c03c37e5bfc66cca56868a3f0ce58a99e174cdd940d42e6001b46ebe22",
+    "proposals/P254-ni-collective-response/attempts/0028/full-common-reference-004/full-common-reference.json": "9b7be6a210219069f8f46aae38c7ae1ba0b5c150cc35d953db8c6632084678f9",
+    "proposals/P254-ni-collective-response/attempts/0028/joint-field-aggregate-001/result.json": "cfcb1f9bc462c68363599f6c926e8c652c36f837e605138b15d47bcaca897aa5",
+    "proposals/P254-ni-collective-response/attempts/0028/ionic-gaussian-material-002/result.json": "b4b1dc36ddf5067cdb4d50547509e5fbae55629edf14352e5ec3ca4700d568af"
+  },
+  "method": "Self-consistent exponential midpoint of electronic, ionic canonical and global Maxwell variables. Every trial completes all-slot density, g, L, number, and H0 energy reductions before feedback. Injectable exponential sees exactly the same frozen physical action. Publish completed boundaries last; retain the actual frozen midpoint density/potential/coordinates and diagnostics.",
+  "first_material_interval_inverse_ry": 0.001,
+  "refinement_steps": [1, 2],
+  "accuracy": "Interval is not a convergence license. Nonlinear residual and independent time refinement must be reported; no automatic accuracy conclusion.",
+  "oracle": "Independent dense scalar and DOP853 full coupled dynamics, symbolic canonical gradients, real new disk path, restore, omissions of field feedback/minimal coupling/DeltaC/weights/stale stages; numerical execution by Root only.",
+  "commands": {
+    "oracle": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 taskset -c 6 python proposals/P254-ni-collective-response/attempts/0028/run_joint_streamed_oracle.py --output /var/tmp/p254-joint-streamed-oracle-001.json",
+    "material_help": "python proposals/P254-ni-collective-response/attempts/0028/run_joint_streamed_material.py --help"
+  }
+}

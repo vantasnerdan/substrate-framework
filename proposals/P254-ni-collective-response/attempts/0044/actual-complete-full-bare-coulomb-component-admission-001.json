@@ -1,0 +1,449 @@
+{
+  "schema": "P254-A44-actual-complete-full-bare-Coulomb-component-admission-v1",
+  "admitted_at": "2026-11-05T01:47:13.873685+00:00",
+  "complete_original_handoff": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/actual-full-bare-coulomb-material-handoff-001.json",
+    "bytes": 3973432,
+    "sha256": "b3d7e127b2d68cfdbd2053503f311633dce04b1a01492a665a6de8852caec8e1"
+  },
+  "complete_original_result": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/actual-original-full-material-result-001.json",
+    "bytes": 4434705,
+    "sha256": "fa00e04af7bc8925ad7f106643330a490b72862e7f5c18841d74f43094cbf8cf"
+  },
+  "original_oracles": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/owning-bare-coulomb-oracles-001.json",
+    "bytes": 4622,
+    "sha256": "4523049e729cc3a96a6a245d2e521cf85a22eb889a1dec033a613b30f52ea5d5"
+  },
+  "scope": {
+    "external_slots": [
+      0,
+      64
+    ],
+    "external_slot_bindings": [
+      {
+        "k": 0,
+        "slot": 0,
+        "spin": 1
+      },
+      {
+        "k": 0,
+        "slot": 64,
+        "spin": 2
+      }
+    ],
+    "times_inverse_ry": [
+      0.0,
+      1.0,
+      10.0,
+      30.0
+    ],
+    "ordered_time_pairs": 16,
+    "quartets_per_external": 12288,
+    "immutable_q_chunks_per_external": 64,
+    "quartets_per_q": 192,
+    "internal_spin_k_slots": 128,
+    "internal_bands": 12,
+    "feature_counts": [
+      27,
+      36,
+      42,
+      46
+    ],
+    "direct_exchange": "Both full bare direct DD+XX and exchange -DX-XD, coefficient1/2; all internal sums.",
+    "matching": {
+      "excluded_mean": "NO fresh Hartree/Fock insertion; normal ordering is not an ab-initio XC counterterm",
+      "interaction": "H=1/4 sum A_ij;kl cdag_i cdag_j c_l c_k; A=V_ij;kl-V_ij;lk",
+      "limitations": [
+        "not moving/selfconsistent KB dynamics",
+        "no passive/complement collision loops",
+        "not full-G or all-electron",
+        "no screened-W",
+        "no rate/passivity/whole-E claim"
+      ],
+      "measure": "explicit128spin-k, canonical G without weights; each vertex1/N, N=64; D carries1/sqrt(Omega)",
+      "model": "finite-feature all64q/full12 active NC valence pseudo-space bare Coulomb",
+      "multiplier": "8*pi/|G+q|^2 Ry; admitted |G+q|^2/tpiba^2>1e-8; lnolr=False",
+      "ordered": "greater=>,>,reverse<; lesser=<,<,reverse>; retarded=theta(t>=s)*(greater-lesser),theta(0)=1",
+      "reference": "literal frozen original h0/rho0 coherent Gaussian; no occupation refill",
+      "residual": "reference-normal-ordered quartic residual defines correlation-only second Born",
+      "retained_mean": "original DFT/Hartree/PBE mean and original conservative K density feedback remain separate and unchanged",
+      "source": "original density members only; NOT saved PBE K, ionic moments, fitted U or screened W"
+    }
+  },
+  "actual_execution_summary": {
+    "prior_oracle_native_wall_seconds": 217.705,
+    "prior_oracle_native_cpu_seconds": 217.148,
+    "cumulative_native_wall_seconds": 1315.693,
+    "cumulative_native_cpu_seconds": 1299.801,
+    "whole_native_wall_budget_seconds": 3600,
+    "actual_resource_observation": {
+      "path": "/var/tmp/p254-a44-actual-execution-001/material001-resource-observation.json",
+      "bytes": 671,
+      "sha256": "ece916c4b6926d077656c74481ac98b62a88a2295a27275aff1625c21e3a1b76"
+    },
+    "density_resident_bytes": 536444928,
+    "actual_python_peak_rss_kib": 769316,
+    "manager_memory_peak_limitation": "Manager terminal Memory peak for successful invocations underreports versus Python ru_maxrss; actual Python peak769316KiB and live initial /proc763996KiB are retained, not replaced by small manager footer."
+  },
+  "complete_native_invocations": [
+    {
+      "name": "material001",
+      "start": {
+        "argv": [
+          "env",
+          "XDG_RUNTIME_DIR=/run/user/1000",
+          "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+          "systemd-run",
+          "--user",
+          "--wait",
+          "--pipe",
+          "--unit=p254-a44-actual-material001",
+          "--property=RuntimeMaxSec=600",
+          "--property=MemoryMax=4294967296",
+          "--property=MemorySwapMax=0",
+          "--property=Restart=no",
+          "--property=CPUAffinity=7",
+          "--property=WorkingDirectory=/home/administrator/projects/substrate-ni-collective",
+          "env",
+          "OPENBLAS_NUM_THREADS=1",
+          "OMP_NUM_THREADS=1",
+          "MKL_NUM_THREADS=1",
+          "NUMEXPR_NUM_THREADS=1",
+          "BLIS_NUM_THREADS=1",
+          "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+          "taskset",
+          "-c",
+          "7",
+          "/home/administrator/projects/substrate-framework/.venv/bin/python",
+          "-u",
+          "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/run_material_bare_coulomb.py",
+          "--external",
+          "0,64",
+          "--output",
+          "/var/tmp/p254-a44-bare-coulomb-material-001"
+        ],
+        "start_utc": "2026-11-05T01:15:19.172717+00:00",
+        "unit": "p254-a44-actual-material001",
+        "hard_seconds": 600
+      },
+      "exit": {
+        "exit": 1,
+        "elapsed_seconds": 600.1932716662996,
+        "end_utc": "2026-11-05T01:25:19.366000+00:00",
+        "unit": "p254-a44-actual-material001"
+      },
+      "native_result": "timeout",
+      "invocation_id": "4d4c262e227e43bfb5ec55545f453ec0",
+      "native_wall_seconds": 600.141,
+      "native_cpu_seconds": 598.022,
+      "raw_bindings": [
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material001-start.json",
+          "bytes": 1754,
+          "sha256": "b672632aefcc5549287b2b83b3b8c284873068e52828ec349849e0d0f80bbb46"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material001-stdout.raw",
+          "bytes": 211058,
+          "sha256": "be160c28afd4a394074310bd37631defee91fe748e6567576f791d14e9a626da"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material001-stderr.raw",
+          "bytes": 290,
+          "sha256": "7fd6b7a4175e254ce51f83e49eb4246c7028ac7b53d7a9282b19133784ccd561"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material001-exit.json",
+          "bytes": 146,
+          "sha256": "571aaaada5a72e9ff47d001e8e97d1bda17b67d8e448e198676fea84cb559971"
+        }
+      ]
+    },
+    {
+      "name": "material002",
+      "start": {
+        "argv": [
+          "env",
+          "XDG_RUNTIME_DIR=/run/user/1000",
+          "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+          "systemd-run",
+          "--user",
+          "--wait",
+          "--pipe",
+          "--unit=p254-a44-actual-material002",
+          "--property=RuntimeMaxSec=720",
+          "--property=MemoryMax=4294967296",
+          "--property=MemorySwapMax=0",
+          "--property=Restart=no",
+          "--property=CPUAffinity=7",
+          "--property=WorkingDirectory=/home/administrator/projects/substrate-ni-collective",
+          "env",
+          "OPENBLAS_NUM_THREADS=1",
+          "OMP_NUM_THREADS=1",
+          "MKL_NUM_THREADS=1",
+          "NUMEXPR_NUM_THREADS=1",
+          "BLIS_NUM_THREADS=1",
+          "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+          "taskset",
+          "-c",
+          "7",
+          "/home/administrator/projects/substrate-framework/.venv/bin/python",
+          "-u",
+          "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/run_material_bare_coulomb.py",
+          "--external",
+          "0,64",
+          "--output",
+          "/var/tmp/p254-a44-bare-coulomb-material-001",
+          "--resume"
+        ],
+        "start_utc": "2026-11-05T01:25:41.444939+00:00",
+        "unit": "p254-a44-actual-material002",
+        "hard_seconds": 720
+      },
+      "exit": {
+        "exit": 0,
+        "elapsed_seconds": 466.8794252178632,
+        "end_utc": "2026-11-05T01:33:28.324382+00:00",
+        "unit": "p254-a44-actual-material002"
+      },
+      "native_result": "success",
+      "invocation_id": "de234f662130485d83adea73909ef775",
+      "native_wall_seconds": 466.819,
+      "native_cpu_seconds": 454.979,
+      "raw_bindings": [
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material002-start.json",
+          "bytes": 1770,
+          "sha256": "8a33eae837910fa0788c2957ba31845266ae236baa5091c7dc8e68c2d572883b"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material002-stdout.raw",
+          "bytes": 429206,
+          "sha256": "7fb07b468007ab2f3a9024c4202e7363852853c9bc7d7b3418902279505f3382"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material002-stderr.raw",
+          "bytes": 288,
+          "sha256": "f618c6f91935f9dd4571c0f9d90ff46da799b48a083a27ff82df7d0320e35d1f"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material002-exit.json",
+          "bytes": 146,
+          "sha256": "b424949e7e36d1dffa0c5e1173e257a60300be0f1731016297ada903e9e2b63a"
+        }
+      ]
+    },
+    {
+      "name": "completedresume001",
+      "start": {
+        "argv": [
+          "env",
+          "XDG_RUNTIME_DIR=/run/user/1000",
+          "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+          "systemd-run",
+          "--user",
+          "--wait",
+          "--pipe",
+          "--unit=p254-a44-actual-completedresume001",
+          "--property=RuntimeMaxSec=90",
+          "--property=MemoryMax=4294967296",
+          "--property=MemorySwapMax=0",
+          "--property=Restart=no",
+          "--property=CPUAffinity=7",
+          "--property=WorkingDirectory=/home/administrator/projects/substrate-ni-collective",
+          "env",
+          "OPENBLAS_NUM_THREADS=1",
+          "OMP_NUM_THREADS=1",
+          "MKL_NUM_THREADS=1",
+          "NUMEXPR_NUM_THREADS=1",
+          "BLIS_NUM_THREADS=1",
+          "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0039:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/.cache/dft/p254-a28-runtime",
+          "taskset",
+          "-c",
+          "7",
+          "/home/administrator/projects/substrate-framework/.venv/bin/python",
+          "-u",
+          "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/run_material_bare_coulomb.py",
+          "--external",
+          "0,64",
+          "--output",
+          "/var/tmp/p254-a44-bare-coulomb-material-001",
+          "--resume"
+        ],
+        "start_utc": "2026-11-05T01:33:51.097292+00:00",
+        "unit": "p254-a44-actual-completedresume001",
+        "hard_seconds": 90
+      },
+      "exit": {
+        "exit": 0,
+        "elapsed_seconds": 31.086805230006576,
+        "end_utc": "2026-11-05T01:34:22.184093+00:00",
+        "unit": "p254-a44-actual-completedresume001"
+      },
+      "native_result": "success",
+      "invocation_id": "82a583e41e9341a6b987c41ab3d7a6c0",
+      "native_wall_seconds": 31.028,
+      "native_cpu_seconds": 29.652,
+      "raw_bindings": [
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/completedresume001-start.json",
+          "bytes": 1782,
+          "sha256": "892dba13219403d106bfdc27e91e523ef1f0045265ba27302bc418459d9306b2"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/completedresume001-stdout.raw",
+          "bytes": 6794,
+          "sha256": "e9980399fd5263457c7243cabe09256b8d2938a0d8d7e7f05bd79a5852c193cb"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/completedresume001-stderr.raw",
+          "bytes": 285,
+          "sha256": "848afe6c8e25efca60faa7e69872513bb59e5827809c5761de48353367f2d70b"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/completedresume001-exit.json",
+          "bytes": 154,
+          "sha256": "5e54db2a6bb4f3de9a53ff6bd5368c0f8a764299f10146a964c9b5b48ff26147"
+        }
+      ]
+    }
+  ],
+  "actual_saved_output_consumers": [
+    {
+      "path": "/var/tmp/p254-a44-actual-execution-001/inrun-saved-output-consumer-observation.json",
+      "bytes": 12381,
+      "sha256": "1bcf1e50c5ae572d8a5470cca320efb781599537eaea6035fb47d8ac457fb688"
+    },
+    {
+      "path": "/var/tmp/p254-a44-actual-execution-001/completed-resume-consumer-observation.json",
+      "bytes": 12348,
+      "sha256": "6f1700d5b0bc00a60fb39f042124600f7bbf352586194e2a76e42113c96f5e63"
+    }
+  ],
+  "portable_original_numeric_outputs": [
+    {
+      "original_binding": {
+        "bytes": 334144,
+        "path": "/var/tmp/p254-a44-bare-coulomb-material-001/slot-000-all-original-pairs.npz",
+        "sha256": "0c6e5401c9c9ee889e1e2d3cad6b7d33f32b9f942d82e193351e05bc4d86ac15"
+      },
+      "byte_identical_portable_copy": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/actual-original-slot-000-all-original-pairs.npz",
+        "bytes": 334144,
+        "sha256": "0c6e5401c9c9ee889e1e2d3cad6b7d33f32b9f942d82e193351e05bc4d86ac15"
+      }
+    },
+    {
+      "original_binding": {
+        "bytes": 334144,
+        "path": "/var/tmp/p254-a44-bare-coulomb-material-001/slot-064-all-original-pairs.npz",
+        "sha256": "00d8c606f6c174f3f67d167fe645338285ac05dc59f7cb36f7ef547061b634d3"
+      },
+      "byte_identical_portable_copy": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0044/actual-original-slot-064-all-original-pairs.npz",
+        "bytes": 334144,
+        "sha256": "00d8c606f6c174f3f67d167fe645338285ac05dc59f7cb36f7ef547061b634d3"
+      }
+    }
+  ],
+  "complete_findings": [
+    {
+      "id": "full_material_sum",
+      "outcome": "complete",
+      "evidence": "128 authenticated immutable q chunks, each192quartets; both externals12288quartets and24576 expanded vertex terms per pair; all16pairs.",
+      "binding": {
+        "path": "/var/tmp/p254-a44-bare-coulomb-material-001/result.json",
+        "bytes": 4434705,
+        "sha256": "fa00e04af7bc8925ad7f106643330a490b72862e7f5c18841d74f43094cbf8cf"
+      }
+    },
+    {
+      "id": "saved_output_consumer",
+      "outcome": "passed_actual",
+      "evidence": "Actual public consumer read128 authenticated q archives, summed in original ascendingq order, loaded genuine final complex NPZ arrays and required entrywise np.array_equal for all9 arrays/times/bands.",
+      "binding": {
+        "path": "/var/tmp/p254-a44-actual-execution-001/inrun-saved-output-consumer-observation.json",
+        "bytes": 12381,
+        "sha256": "1bcf1e50c5ae572d8a5470cca320efb781599537eaea6035fb47d8ac457fb688"
+      }
+    },
+    {
+      "id": "completed_resume",
+      "outcome": "Native0;kernel_replays0",
+      "evidence": "Completed --resume returns from consume_complete_result branch at CLI lines59-63 before load_coulomb_inputs at64; actual consumer output matches actual full-run consumer exactly, authenticates64q/external; no source or result mutation.",
+      "binding": {
+        "path": "/var/tmp/p254-a44-actual-execution-001/completed-resume-consumer-observation.json",
+        "bytes": 12348,
+        "sha256": "6f1700d5b0bc00a60fb39f042124600f7bbf352586194e2a76e42113c96f5e63"
+      }
+    },
+    {
+      "id": "recovery",
+      "outcome": "actual76q_reused_52q_computed",
+      "evidence": "Initial600s Native timeout; resumed authenticates/reuses64q for external0 and12q for64, computes only remaining52q. At most currentq192quartets uncommitted loss; all initial raw failures retained."
+    },
+    {
+      "id": "physical_output_example",
+      "quantity": "retarded_total Frobenius norm at(t,s)=(30,0)inverseRy",
+      "values": [
+        {
+          "external": 0,
+          "value": 0.12855338256091642
+        },
+        {
+          "external": 64,
+          "value": 0.21129590828558328
+        }
+      ],
+      "scope": "Raw reference kernel norm, not lifetime/rate or stability observable."
+    }
+  ],
+  "complete_failures": [
+    {
+      "name": "material001",
+      "kind": "deliberate initial hard600s RuntimeMax timeout",
+      "native_exit": 1,
+      "native_signal": "TERM",
+      "charged_native_wall_seconds": 600.141,
+      "charged_native_cpu_seconds": 598.022,
+      "committed_q_chunks": 76,
+      "loss_bound_quartets": 192,
+      "preserved_raw": [
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material001-start.json",
+          "bytes": 1754,
+          "sha256": "b672632aefcc5549287b2b83b3b8c284873068e52828ec349849e0d0f80bbb46"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material001-stdout.raw",
+          "bytes": 211058,
+          "sha256": "be160c28afd4a394074310bd37631defee91fe748e6567576f791d14e9a626da"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material001-stderr.raw",
+          "bytes": 290,
+          "sha256": "7fd6b7a4175e254ce51f83e49eb4246c7028ac7b53d7a9282b19133784ccd561"
+        },
+        {
+          "path": "/var/tmp/p254-a44-actual-execution-001/material001-exit.json",
+          "bytes": 146,
+          "sha256": "571aaaada5a72e9ff47d001e8e97d1bda17b67d8e448e198676fea84cb559971"
+        }
+      ]
+    }
+  ],
+  "complete_blockers": [],
+  "limitations": [
+    "Frozen original coherent Gaussian reference only; no moving/selfconsistent KB or density feedback dynamics.",
+    "Active12 finite Fourier variable27/36/42/46 full64q NC valence pseudo-space only; no passive/complement/all-electron/full-G correlation loops.",
+    "Bare Coulomb physical head omission uses existing |G+q|\u00b2/tpiba\u00b2>1e-8 convention; no new finite-size singularity correction.",
+    "Reference normal ordering removes selected mean contractions; no ab-initio PBE XC double-counting prescription inferred.",
+    "No new Hartree/Fock/thermal replacement or additional DFT/H/F/J/preparation performed.",
+    "No lifetime, damping-rate, passivity, wholeE/C/N completion, or empirical applicability claim.",
+    "Floating point q grouping follows carried qualified source: original quartet order within q and ascendingq sum; consumer establishes persisted equality, not rigorous enclosure."
+  ],
+  "source_edits": [],
+  "whole_goal_or_rate_or_merge_claim": false
+}

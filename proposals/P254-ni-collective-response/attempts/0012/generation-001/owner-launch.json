@@ -1,0 +1,36 @@
+{
+  "launch": {
+    "argv": [
+      "systemd-run",
+      "--user",
+      "--unit=p254-w1-force-sensitivity-0012-g001-1792455075679701675.service",
+      "--property=Type=exec",
+      "--property=CPUAffinity=5",
+      "--property=MemoryMax=2147483648",
+      "--property=MemorySwapMax=0",
+      "--property=Restart=no",
+      "--property=RemainAfterExit=yes",
+      "--property=KillMode=control-group",
+      "--working-directory=/home/administrator/projects/substrate-force-sensitivity",
+      "--setenv=PYTHONPATH=/home/administrator/projects/substrate-force-sensitivity/src",
+      "--setenv=PYTHONDONTWRITEBYTECODE=1",
+      "--setenv=PYTHONUNBUFFERED=1",
+      "--setenv=OMP_NUM_THREADS=1",
+      "--setenv=MKL_NUM_THREADS=1",
+      "--setenv=OPENBLAS_NUM_THREADS=1",
+      "--setenv=NUMEXPR_NUM_THREADS=1",
+      "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "-B",
+      "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py",
+      "--generation",
+      "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-001"
+    ],
+    "returncode": 0,
+    "stderr": "Running as unit: p254-w1-force-sensitivity-0012-g001-1792455075679701675.service; invocation ID: d28f7362f4734756b962e0cff09c49a2\n",
+    "stdout": ""
+  },
+  "manifest_sha256": "b2d51b4ba238e35787ae4f8d256f4c7fa7eddc9a380b4e5b98be1d8c4965beb7",
+  "pane_id": "w1:pF",
+  "tab_id": "w1:tF",
+  "unit": "p254-w1-force-sensitivity-0012-g001-1792455075679701675.service"
+}

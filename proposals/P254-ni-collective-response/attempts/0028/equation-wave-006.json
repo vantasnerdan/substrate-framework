@@ -1,0 +1,87 @@
+{
+  "registered_at": "2026-10-28T19:59:56.296336+00:00",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-004.json",
+    "bytes": "2895",
+    "sha256": "dbcebe5240a3ecd29808cac985098c72cae70edf80a4f039e66021c708217449"
+  },
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/field-derivative-registration.json",
+      "bytes": "12118",
+      "sha256": "59a47d8d32cad2367cedd6dc3c1ba2a62257a885a2ebac2fb6db0d571d7c6af4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_field_derivative_oracle.py",
+      "bytes": "8403",
+      "sha256": "44eefe1bb7fc9910746e5c77303a04d74759630de9c5d8aced7b07eba261a970"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reference-expansion-registration.json",
+      "bytes": "5389",
+      "sha256": "7f826b91b8df2e24351eb0ee7357f7c335477f85b984a04bc73001abebe1fc18"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_reference_expansion_oracle.py",
+      "bytes": "16068",
+      "sha256": "f212b19fcf5721ab82529dd26a02de7ae3ac9cf770e34626e6955b7ac213a6e4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_field_derivatives.py",
+      "bytes": "12689",
+      "sha256": "fd5ab95ad8fbe728f9eaf4b562b47af6248d9fb98805dbe9be3a82ef34d51b93"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_reference_transport.py",
+      "bytes": "11694",
+      "sha256": "05657a443ad021d1ae8aa0cd14f7328a73843d50de7dea293be105886cb44566"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_frozen_state_curvature.py",
+      "bytes": "11544",
+      "sha256": "a1c9b6e242485ac6cb59eafc4c28488bf93d7597e5a9aa4920732e2b90fad044"
+    }
+  ],
+  "executions": [
+    {
+      "label": "field-derivative-oracle-001",
+      "argv": [
+        "timeout",
+        "60s",
+        "taskset",
+        "-c",
+        "9",
+        "env",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "NUMEXPR_NUM_THREADS=1",
+        "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_field_derivative_oracle.py"
+      ]
+    },
+    {
+      "label": "reference-expansion-oracle-001",
+      "argv": [
+        "timeout",
+        "60s",
+        "taskset",
+        "-c",
+        "10",
+        "env",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "NUMEXPR_NUM_THREADS=1",
+        "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_reference_expansion_oracle.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reference-expansion-oracle-001.json"
+      ]
+    }
+  ],
+  "limits": "Two independent60s finite equation checks on cores9/10. No material/Native action. All prior outcomes retained.",
+  "field_default": "Physical UPF family is the default; an A25-preserving constant operator offset requires explicit anchored=True and is not claimed Peierls covariant."
+}

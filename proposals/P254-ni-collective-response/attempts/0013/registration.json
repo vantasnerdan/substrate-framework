@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "attempt": "0013",
+  "created_at": "2026-10-27T15:25:20.602288+00:00",
+  "base_commit": "a6958767",
+  "parent_objective": "Material-calibrated Ni/H collective dynamics and matched lattice-design comparison with physical loss and explicit nuclear-transition/product-energy bridge. No scope reduction.",
+  "positive_intent": "Construct the missing constrained static action composition on a small finite spin-resolved ordinary-space functional, then identify the smallest native two-atom test that earns transfer. Spend no further days on full matrices before this approach earns applicability and observable accuracy-cost evidence.",
+  "discovery_brief": {
+    "tension": "G1 already contains static electronic curvature; G2 selects mixed bare/static-screened finite-energy vertices, but the matching action/ensemble is missing. A cancellation by supplying its own counterterm is not evidence.",
+    "candidate_routes": [
+      "Same-functional selfconsistent response with a frequency-independent interaction Hessian but frequency-dependent induced density",
+      "Giustino Eq145 approximation: bare vertex times independent-electron response times static-screened vertex; assess its exact scope, not as an exact Hessian theorem"
+    ],
+    "selection_criteria": [
+      "Independent constrained differentiation agrees with the derived static electronic correction including explicit second derivatives",
+      "Preserve spin cross coupling, two independent ionic amplitudes and cross channels; no factor-two shortcut",
+      "Distinguish fixed-mean-N equilibrium from isolated dynamics; test a fixed-magnetization alternative rather than silently select it",
+      "Any failure names its assumption and supplies a corrected construction, not a Ni/LENR no-go"
+    ]
+  },
+  "source_inventory": "source-inventory.json",
+  "source_scope": "Giustino2017 author manuscript Eqs141-145 supplies screened vs bare distinction and static-vertex approximation. Existing finite Gibbs identities retained without replay. New mean-field functional below is explicitly a mathematical finite model, NOT the actual SG15/PBE functional, not fitted from vertices. Transfer requires an independent native test.",
+  "prior_exposure": "Read existing Eq141-145, G2 decision and prior finite-oracle scopes. No new numeric action result observed before this registration.",
+  "functional": {
+    "definition": "F(gamma,u)=Tr[h0 gamma]+beta^-1 Tr[gamma log gamma+(I-gamma)log(I-gamma)]+1/2(d-d0)^T U(d-d0)-sum_a u_a Tr[B_a gamma]+1/2 sum_ab u_a u_b Tr[W_ab gamma]+1/2 u^T Kion u; d_s=Tr[D_s gamma].",
+    "domain": "Finite ordinary orthonormal pseudo-space analogue, 0<gamma<I, block-collinear spin, beta>0; independent u=(u1,u2). Fixed mean Tr gamma=N0; separately optional fixed Tr[Z gamma]=M0. B_a and W_ab are Hermitian including offdiagonal/nonlocal matrix elements; W_ab=W_ba. U real symmetric with cross-spin term, stationary reference gamma0=FD(h0). Arbitrary dimensionless units, no material parameter claim.",
+    "static_oracle": "Independently minimize the full functional with number/spin multipliers and differentiate minimized scalar free energy at registered halving steps; compare analytic constrained linear response and explicit W expectation. No fitted counterterm.",
+    "dynamic_oracle": "Use existing retarded on joint external+density operators, solve the induced-density linear system, compare with direct linearized density-matrix equation. Evaluate static-screened mixed alternative separately.",
+    "nonzero_q_transfer": "Finite algebra is not a native q proof. Native scout identifies actual Gamma and half-b1 datasets, conjugacy, availability of independent free-energy curvature and current missing derivatives; no fabricated native action."
+  },
+  "numerical_design": {
+    "finite_oracle_time_limit_seconds": 120,
+    "finite_difference_steps": [
+      0.02,
+      0.01,
+      0.005
+    ],
+    "curvature_comparison": "Second-order centered scalar-free-energy Hessian, report all errors and observed halving trend. Freeze explicit values in fixture.py before its first run. Error allowance max(2e-5, 2*h^2) in arbitrary units; do not loosen after seeing output.",
+    "dynamic_probe": "z=1/3+I/5, plus zero isolated limit; no eta interpreted as physical loss.",
+    "sensitivity": [
+      "Omit explicit W term",
+      "use grandcanonical instead of mean-N projection",
+      "omit U cross-spin channel",
+      "replace full dynamic screening with static screening; disagreement is approximation assessment not source refutation"
+    ]
+  },
+  "layout": {
+    "reusable": "src/substrate_framework/variational_fermion_static.py (static solver) and screened_force_response.py (response algebra)",
+    "attempt": "fixture.py; static_pilot.py; dynamic_pilot.py; raw output/result receipts; source inventory; decision/report",
+    "integration_owner": "Root; static worker writes only static module + fixture.py + static_pilot.py; root owns dynamic module/pilot and integration; scout read-only"
+  },
+  "budget": {
+    "decision_owner": "Root",
+    "started_at": "2026-10-27T15:25:20.602321+00:00",
+    "first_result_due_at": "2026-10-27T15:55:00+00:00",
+    "allocation_decision_due_at": "2026-10-27T16:20:00+00:00",
+    "production": "All large material jobs remain held/stopped. No thaw, Native launch, cloud, unqualified precision reduction or retry allowed by this registration.",
+    "plateau_rule": "If no independently differentiated curvature or exposing obstruction by first-result boundary, stop expansion and diagnose/change representation once within the same cumulative allocation. At final boundary bank concrete result/missing construction and choose next route; no automatic extension or another audit.",
+    "compute": "Finite scripts only, <=120seconds each, one thread, no days-scale run. Native readiness research does not launch."
+  },
+  "pass_licenses": [
+    "Exact finite action/response composition at the exercised mathematical scope; specific next native small fixture experiment if ready"
+  ],
+  "does_not_license": [
+    "Material PBE/SG15 matching",
+    "G1 or L2 admission",
+    "Physical linewidth/coherence/nuclear rates",
+    "Automatic production continuation"
+  ],
+  "review": "One complete scientific review after settled integrated package; no rerun of 87/35/595 proofs; new plausible consumer-visible regression only."
+}

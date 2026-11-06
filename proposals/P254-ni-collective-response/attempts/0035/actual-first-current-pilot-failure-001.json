@@ -1,0 +1,50 @@
+{
+  "actual_exit": 1,
+  "actual_stdout": "[physics] restoring original record 0; three current actions, three Hermitian adjoint reuses\n",
+  "actual_stderr": "Running as unit: p254-a35-uniform-current-source0-001.service; invocation ID: b207fd4bd2514b4e9c45eb4536afc28f\nTraceback (most recent call last):\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/export_uniform_current_noise.py\", line 142, in <module>\n    run(parser.parse_args())\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/export_uniform_current_noise.py\", line 104, in run\n    raise ValueError('fixed original boundary/preparation required')\nValueError: fixed original boundary/preparation required\nFinished with result: exit-code\nMain processes terminated with: code=exited/status=1\nService runtime: 54.318s\nCPU time consumed: 54.166s\nMemory peak: 332.0K\nMemory swap peak: 0B\n",
+  "failed_source": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/failed-first-producer-source-001.py.snapshot",
+    "bytes": 7194,
+    "sha256": "39bab02942edacabc25fa27e28e2e42b451c25cb4a9baa3f18ce95e7973d5dc4"
+  },
+  "original_producer_binding_before_fix": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0035/export_uniform_current_noise.py",
+    "bytes": 7194,
+    "sha256": "39bab02942edacabc25fa27e28e2e42b451c25cb4a9baa3f18ce95e7973d5dc4"
+  },
+  "receipt_comparisons": [
+    {
+      "name": "original_boundary",
+      "actual_source_reference": {
+        "path": "/var/tmp/p254-a28-matched-loaded-rebind-001/original/boundary.json",
+        "bytes": "277032",
+        "sha256": "6fb559b067146ce2a44e5ecdf29a0f6045477dec4af769714830049af55752e2"
+      },
+      "contract_file_binding": {
+        "path": "/var/tmp/p254-a28-matched-loaded-rebind-001/original/boundary.json",
+        "bytes": 277032,
+        "sha256": "6fb559b067146ce2a44e5ecdf29a0f6045477dec4af769714830049af55752e2"
+      },
+      "same_file_bytes_sha": true,
+      "whole_dictionary_equal": false
+    },
+    {
+      "name": "preparation",
+      "actual_source_reference": {
+        "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/preparation.npz",
+        "bytes": "6129716",
+        "sha256": "2b879087b1c52397c46504ea335abb0b6ef5d236e680be23eab6ba13fa5f386d"
+      },
+      "contract_file_binding": {
+        "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/preparation.npz",
+        "bytes": 6129716,
+        "sha256": "2b879087b1c52397c46504ea335abb0b6ef5d236e680be23eab6ba13fa5f386d"
+      },
+      "same_file_bytes_sha": true,
+      "whole_dictionary_equal": false
+    }
+  ],
+  "cause": "Whole dictionary comparison rejects legitimate extra original file-reference metadata despite same path/bytes/SHA. Existing same_binding is correct owning primitive. Not physical input drift, nonconvergence or need for tighter accuracy.",
+  "loss": "Traceback is after prepare_uniform_current_inputs returned: all3physicalcurrentactioncalls completed, but no covariance/result/done publication. Temporary arrays were notcheckpointed; actual54.318sNative/54.166sCPU charged, no freein-case recovery promised.",
+  "next_materially_different_attempt": "Fix caller comparison using existing semantic filebinding primitive; new isolated namespace and120sNativecap preserves failedrun and keeps cumulativeNativephysicsruntimebelow original180s allowance. No force/H/trajectory replay."
+}

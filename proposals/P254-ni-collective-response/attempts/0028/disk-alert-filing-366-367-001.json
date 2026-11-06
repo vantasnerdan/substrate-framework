@@ -1,0 +1,84 @@
+{
+  "schema": "P254-email-filing-verification-v1",
+  "actual_utc": "2026-10-30T21:30:58.734637+00:00",
+  "moves": [
+    {
+      "source_uid": 366,
+      "destination_uid": 232,
+      "subject": "[dft-disk] repo",
+      "date": "2026-10-30T21:27:06Z"
+    },
+    {
+      "source_uid": 367,
+      "destination_uid": 233,
+      "subject": "[dft-disk] /tmp",
+      "date": "2026-10-30T21:27:07Z"
+    }
+  ],
+  "destination": "Notifications",
+  "source": "INBOX",
+  "sender": "giuliano@vantasner.io",
+  "actual_move_results": [
+    {
+      "text": "Email UID 366 moved from \"INBOX\" to \"Notifications\".",
+      "details": {
+        "xdev": {
+          "tool": "email_move",
+          "mode": "execute",
+          "args": {
+            "uid": 366,
+            "source": "INBOX",
+            "destination": "Notifications"
+          },
+          "tier": "exec",
+          "inner": {
+            "uid": 366,
+            "source": "INBOX",
+            "destination": "Notifications"
+          }
+        }
+      }
+    },
+    {
+      "text": "Email UID 367 moved from \"INBOX\" to \"Notifications\".",
+      "details": {
+        "xdev": {
+          "tool": "email_move",
+          "mode": "execute",
+          "args": {
+            "uid": 367,
+            "source": "INBOX",
+            "destination": "Notifications"
+          },
+          "tier": "exec",
+          "inner": {
+            "uid": 367,
+            "source": "INBOX",
+            "destination": "Notifications"
+          }
+        }
+      }
+    }
+  ],
+  "actual_destination_fetch": {
+    "text": "Mailbox \"Notifications\" -- showing 4 of 233 messages:\n\n[unread] [UID:233] giuliano@vantasner.io -- \"[dft-disk] /tmp\" (10/30/2026, 9:27:07 PM)\n[unread] [UID:232] giuliano@vantasner.io -- \"[dft-disk] repo\" (10/30/2026, 9:27:06 PM)\n[unread] [UID:231] giuliano@vantasner.io -- \"[dft-disk] /tmp\" (10/30/2026, 8:57:06 PM)\n[unread] [UID:230] giuliano@vantasner.io -- \"[dft-disk] repo\" (10/30/2026, 8:51:06 PM)",
+    "details": {
+      "xdev": {
+        "tool": "email_fetch",
+        "mode": "execute",
+        "args": {
+          "mailbox": "Notifications",
+          "limit": 4,
+          "unseen": false
+        },
+        "tier": "exec",
+        "inner": {
+          "count": 4,
+          "total": 233,
+          "mailbox": "Notifications"
+        }
+      }
+    }
+  },
+  "verification": "MatchedfreshdestinationUID/sender/subject/dateforboth; noemailreplyorsend."
+}

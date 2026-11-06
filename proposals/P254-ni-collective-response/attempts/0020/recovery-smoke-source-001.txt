@@ -1,0 +1,105 @@
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+
+import numpy as np
+
+from pilot_checkpoints import checkpoint_report, column_keys, recover_columns
+from pilot_inputs import HERE, binding
+
+source = HERE / 'pilot-001'
+settings = json.loads((HERE / 'registration.json').read_bytes())['actual_pilot']
+original = json.loads((source / 'result.json').read_bytes())
+fingerprint = json.loads((source / 'identity.json').read_bytes())['fingerprint']
+recovered = recover_columns(source, fingerprint, settings)
+assert set(recovered) == set(column_keys(settings))
+with np.load(source / 'coupled-matrices.npz', allow_pickle=False) as matrices:
+    for point in settings['q']:
+        for frequency in range(len(settings['frequency_ry'])):
+            rebuilt = np.column_stack([recovered[f'{point}-z{frequency}-column{axis}'][1] for axis in range(6)])
+            assert np.array_equal(rebuilt, matrices[f'{point}-z{frequency}'])
+try:
+    recover_columns(source, 'wrong-generation', settings)
+except ValueError:
+    generation_refusal = True
+else:
+    raise AssertionError('wrong generation accepted')
+
+with tempfile.TemporaryDirectory(prefix='p254-recovery-smoke-') as scratch:
+    target = Path(scratch) / 'crashed'
+    target.mkdir()
+    child_code = '''import json,sys,time
+from pathlib import Path
+from pilot_checkpoints import checkpoint_report,recover_columns
+source,target=map(Path,sys.argv[1:3])
+old=json.loads((source/'result.json').read_bytes())
+identity=json.loads((source/'identity.json').read_bytes())
+settings=old['settings']
+recovered=recover_columns(source,identity['fingerprint'],settings)
+report={'status':'running','completed_columns':[]}
+checkpoint_report(target,report,recovered,0.25,old['cumulative_elapsed_seconds'])
+print('ACTUAL_COMMITTED_COLUMN_SUMMARY_SAVED',flush=True)
+time.sleep(30)
+'''
+    child = subprocess.Popen([sys.executable, '-u', '-c', child_code, str(source), str(target)],
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    marker = child.stdout.readline().decode().strip()
+    assert marker == 'ACTUAL_COMMITTED_COLUMN_SUMMARY_SAVED', marker
+    child.kill()
+    stdout, stderr = child.communicate(timeout=10)
+    assert child.returncode == -9 and not stderr
+    recovered_state = json.loads((target / 'result.json').read_bytes())
+    assert {r['name'] for r in recovered_state['completed_columns']} == set(recovered)
+    assert recovered_state['cumulative_elapsed_seconds'] >= original['cumulative_elapsed_seconds']
+    after_crash = recover_columns(source, fingerprint, settings)
+    assert all(np.array_equal(after_crash[name][1], recovered[name][1]) for name in recovered)
+
+    corrupt = Path(scratch) / 'corrupt'
+    corrupt.mkdir()
+    name = next(iter(recovered))
+    receipt = json.loads((source / (name + '.json')).read_bytes())
+    archive = corrupt / (name + '.npz')
+    shutil.copyfile(source / (name + '.npz'), archive)
+    receipt['archive']['path'] = str(archive)
+    (corrupt / (name + '.json')).write_text(json.dumps(receipt))
+    assert len(recover_columns(corrupt, fingerprint, settings)) == 1
+    raw = archive.read_bytes()
+    archive.write_bytes(raw[:-1] + bytes([raw[-1] ^ 1]))
+    try:
+        recover_columns(corrupt, fingerprint, settings)
+    except ValueError:
+        digest_refusal = True
+    else:
+        raise AssertionError('corrupted checkpoint accepted')
+
+    refused = Path(scratch) / 'refusal'
+    refused.mkdir()
+    for name in ('identity.json', 'result.json'):
+        shutil.copyfile(source / name, refused / name)
+    before = hashlib.sha256((refused / 'result.json').read_bytes()).hexdigest()
+    command = [sys.executable, str(HERE / 'run_screened_pilot.py'), '--output-dir', str(refused), '--resume']
+    invocation = subprocess.run(command, capture_output=True, timeout=15)
+    assert invocation.returncode == 1, invocation.stderr.decode()
+    refusal = json.loads((refused / 'resume-refusal.json').read_bytes())
+    assert 'resume source/input/settings identity differs' in refusal['failure']['message']
+    assert hashlib.sha256((refused / 'result.json').read_bytes()).hexdigest() == before
+    report = {'scope':'Actual completed column bytes recovered after SIGKILL of summary writer. No response or Native recomputation; copied integrity case explicitly an operational fixture, not new scientific data.',
+              'actual_original_result': binding(source / 'result.json'),
+              'recovered_columns': str(len(recovered)), 'exact_original_matrices_restored': True,
+              'crashed_process_exit': child.returncode, 'committed_state_preserved': True,
+              'cumulative_time_preserved': True, 'wrong_generation_refused': generation_refusal,
+              'independent_archive_digest_refused': digest_refusal,
+              'actual_CLI_source_refusal': {'argv': command, 'exit': invocation.returncode,
+                  'stdout': invocation.stdout.decode(), 'stderr': invocation.stderr.decode(),
+                  'original_result_bytes_unchanged': True},
+              'implementation':[binding(HERE / name) for name in ('pilot_checkpoints.py','pilot_inputs.py','run_screened_pilot.py')],
+              'smoke_source':binding(Path(__file__)),
+              'not_claimed':'No completed-column source migration/re-pinning; no recovery of an unfinished response.apply or Native iteration.'}
+    (HERE / 'recovery-smoke-001.json').write_text(json.dumps(report,indent=2)+'\n')
+    print(json.dumps(report,indent=2))

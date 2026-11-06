@@ -1,0 +1,36 @@
+{
+  "label": "finiteq-material-001",
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-finiteq-material-001.service",
+    "--property=Type=oneshot",
+    "--property=RemainAfterExit=yes",
+    "--property=CPUAffinity=8",
+    "--property=MemoryMax=4294967296",
+    "--property=MemorySwapMax=0",
+    "--property=TimeoutStartSec=120s",
+    "--property=RuntimeMaxSec=120s",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=NUMEXPR_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_finiteq_material.py",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/finiteq-material-001"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Running as unit: p254-a28-finiteq-material-001.service; invocation ID: 14c3ed5130e0476eb7676eef8153353c\n",
+  "execution": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-execution-wave-005.json",
+    "bytes": "5595",
+    "sha256": "0c5b0aa3cc3c453f8f938c35c535b25313e25ac16c4ca6e6158ea19aff319fa7"
+  },
+  "collected_at": "2026-10-28T19:51:46.643488+00:00"
+}

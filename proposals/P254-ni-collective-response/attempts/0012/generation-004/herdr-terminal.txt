@@ -1,0 +1,60 @@
+2026-10-20T00:18:24.758799+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical ecutrho_ry: baseline
+2026-10-20T00:18:24.758799+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical ecutrho_ry: mutations supplied
+2026-10-20T00:18:24.758799+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical ecutrho_ry: mutation 1 rejected
+2026-10-20T00:18:24.758799+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical conv_thr_ry: baseline
+2026-10-20T00:18:24.758799+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical conv_thr_ry: mutations supplied
+2026-10-20T00:18:24.758799+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical conv_thr_ry: mutation 1 rejected
+2026-10-20T00:18:24.758799+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical degauss_ry: baseline
+2026-10-20T00:18:24.758799+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical degauss_ry: mutations supplied
+2026-10-20T00:18:24.759299+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical degauss_ry: mutation 1 rejected
+2026-10-20T00:18:24.759299+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical starting_magnetization_ni: baseline
+2026-10-20T00:18:24.759299+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical starting_magnetization_ni: mutations supplied
+2026-10-20T00:18:24.759299+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout numerical starting_magnetization_ni: mutation 1 rejected
+2026-10-20T00:18:24.759299+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout counts and PBE functional match frozen input
+2026-10-20T00:18:24.759299+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout exactly ordered species pseudo identities
+2026-10-20T00:18:24.762048+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline Ni stdout pseudo path/MD5/valence bound to actual UPF bytes
+2026-10-20T00:18:24.762630+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline H stdout pseudo path/MD5/valence bound to actual UPF bytes
+2026-10-20T00:18:24.762823+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline composition dot source-UPF valence equals native electron count
+2026-10-20T00:18:24.764474+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline actual source ASE total-force parser agrees before contributions
+2026-10-20T00:18:24.765044+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline raw final energy actual source convention publication
+2026-10-20T00:18:24.765470+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline stdout/final/public geometry consistent within registered native display tolerance
+2026-10-20T00:18:24.765470+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] baseline final convergence/version native publication
+2026-10-20T00:18:24.765912+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] complete settled wave contains precisely all four registered probes
+2026-10-20T00:18:24.765912+00:00 agent-giuliano python[351286]: PASS [P254-W1-force-sensitivity-0012] cutoff-50-600 report settings/override bind original registration
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]: Traceback (most recent call last):
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:   File "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py", line 43, in execute
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:     before=len(ledger.passed); result=check(ledger,context)
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:                                       ^^^^^^^^^^^^^^^^^^^^^
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:   File "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/check_native.py", line 106, in run
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:     cases[name]=one_native(ledger,context,name,probe['native_result']['path'],expected,probe['spec']['path'])
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:   File "/home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/check_native.py", line 17, in one_native
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:     ledger.mutation_sensitive(name+' canonical complete envelope',lambda x:envelope_valid(x,spec),result,[bad,incomplete])
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:   File "/home/administrator/projects/substrate-force-sensitivity/src/substrate_framework/verification.py", line 66, in mutation_sensitive
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:     self.check(f"{name}: baseline", predicate(baseline), "baseline was rejected")
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:   File "/home/administrator/projects/substrate-force-sensitivity/src/substrate_framework/verification.py", line 52, in check
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]:     raise CheckFailure(f"FAIL [{self.claim_id}] {name}{suffix}")
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]: substrate_framework.verification.CheckFailure: FAIL [P254-W1-force-sensitivity-0012] cutoff-50-600 canonical complete envelope: baseline -- baseline was rejected
+2026-10-20T00:18:24.782138+00:00 agent-giuliano python[351286]: SENSITIVITY_ORACLE_FAILED /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-004
+2026-10-20T00:18:25.144534+00:00 agent-giuliano systemd[2867432]: p254-w1-force-sensitivity-0012-g004-1792455491398080162.service: Main process exited, code=exited, status=2/INVALIDARGUMENT
+2026-10-20T00:18:25.145001+00:00 agent-giuliano systemd[2867432]: p254-w1-force-sensitivity-0012-g004-1792455491398080162.service: Failed with result 'exit-code'.
+2026-10-20T00:18:25.145571+00:00 agent-giuliano systemd[2867432]: p254-w1-force-sensitivity-0012-g004-1792455491398080162.service: Consumed 6.474s CPU time, 120.3M memory peak, 0B memory swap peak.
+
+SENSITIVITY_OWNER_TERMINAL p254-w1-force-sensitivity-0012-g004-1792455491398080162.service MainPID=0
+Result=exit-code
+NRestarts=0
+ExecMainStartTimestamp=Tue 2026-10-20 00:18:18 UTC
+ExecMainExitTimestamp=Tue 2026-10-20 00:18:25 UTC
+ExecMainCode=1
+ExecMainStatus=2
+ControlGroup=
+MemoryCurrent=[not set]
+MemoryPeak=126148608
+CPUUsageNSec=6474460000
+MemoryMax=2147483648
+MemorySwapMax=0
+CPUAffinity=5
+ActiveState=failed
+SubState=failed
+
+administrator@agent-giuliano:~/projects/substrate-ni-collective$

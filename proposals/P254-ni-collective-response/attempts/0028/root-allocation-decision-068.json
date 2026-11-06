@@ -1,0 +1,44 @@
+{
+  "schema": "P254-root-allocation-decision-v1",
+  "decision": "Root068",
+  "actual_decision_time": "2026-10-29T18:43:05.989585+00:00",
+  "previous_due_time": "2026-10-29T18:39:11.067985+00:00",
+  "deadline_breach": true,
+  "next_decision_due": "2026-10-29T19:03:05.989585+00:00",
+  "action": "Actual integrated comparison failed at dual_actual_full_edge_bra after the full forward comparison passed; preserve both the failed result and passed forward progress. No tolerance relaxation or failed-consumer admission. Source diagnosis: paired adjoint drives use their left2 original target-frame argument, but the dual caller supplied left2=-i*pt*D for its moment dyad while the old drive explicitly used pt. Fix the caller factorization, not the primitives: keep left2=pt and move -iD to the opposite moment factor as right2=i*R*D^H; prove this exact identity independently before re-exercising the failed dual. Preserve forward work through an exact dual-only source delta and identical original inputs; do not replay it or86/47 component checks. Also retain future failed check arrays/timings in the consumer receipt\u2014the first failure currently loses its local detailed check array on exception. Prepare one bounded dual-only continuation, same1e-11/4GiB, original failed1349.3701312760822s and1800s allocation remain charged. No production q allocation or zero-input optimization before this genuine bug is fixed.",
+  "evidence": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/paired-contraction-consumer-001/result.json",
+      "bytes": "1225",
+      "sha256": "5d5157138ccb97dff961d444b9fa2fd4215ada51c97a9c09d5bf1672444806ec"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/paired-contraction-consumer-001/progress.json",
+      "bytes": "17576",
+      "sha256": "4b69e0468b2d384f1850225086a15ae81c66e69a65a6d424109b5f8efb379cfb"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/partitioned_q_response.py",
+      "bytes": "46716",
+      "sha256": "fefd60b186fe7e6ecafd1b0f8cfeb597b87d9c3839392321105f54995f00bf79"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/paired_finiteq_moments.py",
+      "bytes": "5305",
+      "sha256": "cc6c5422a7a1070564be2009b9e0d4969360ef9eb2e881c6f7e7b56fd4e1c8ac"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/paired_field_moments.py",
+      "bytes": "6371",
+      "sha256": "12abf2bbb1e8fb87627e9d1634401fde5abfd3788b74f5ce2b4d9bbbba147914"
+    }
+  ],
+  "whole_objective_complete": false,
+  "consumer_failure": "dual_actual_full_edge_bra",
+  "forward_pass_retained": true,
+  "dual_admitted": false,
+  "failed_consumer_seconds": 1349.3701312760822,
+  "cumulative_allocated_consumer_seconds": 3600,
+  "original_failure_detail": "Actual failed assertion is recorded; detailed numeric dual difference was not returned by the first exception path and is not reconstructed.",
+  "diagnosis_status": "Source mismatch identified; exact algebra and corrected actual dual execution still required."
+}

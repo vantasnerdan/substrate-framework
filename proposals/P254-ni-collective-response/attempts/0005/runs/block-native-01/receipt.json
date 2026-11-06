@@ -1,0 +1,157 @@
+{
+  "status": "complete",
+  "started_unix": 1792412375.8894334,
+  "provenance": {
+    "inputs_and_code_sha256": {
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/W2-readiness.json": "cd30bcd905437a08dd8476375eb0c84d7384d121beffb0eafa67a368555d6aed",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/exact.py": "db918b7c8c9f7a95265bddabb8eb2c6d6fd257a293f040766bf3f749fe13c6d2",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/blocks/native.py": "19d90f1e87b6eb7bfe06826840f08e174ce50fa496ef248f11ef23d334f89a5e",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/preregistration.json": "c0493ce083e10ddc8639dd28236535e88afc921351a7e9cb18a52839de85ac62",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py": "32067184322e6cede8bc86dfd6155277cdc589a01dc4fd7869e157b0e8cddfee",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/dal-corso2001-provenance.json": "03f7809f9eb40cdff4f42febebe32f0c8f47816a99f35c86a01d0d129dcd6a0f",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/electronic-model-source-correction.json": "ff35e1078a260b48fd3b00dd25db7f776022ad435775d38c97fa496d863477c8"
+    },
+    "python": {
+      "executable": "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+      "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+      "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39"
+    },
+    "packages": {
+      "numpy": {
+        "version": "2.5.2",
+        "file": "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/numpy/__init__.py",
+        "sha256": "09295a80660f17925ae23765ce8cbd7ff7ceae968d5f2f89349f1cb74c0b9e11"
+      },
+      "scipy": {
+        "version": "1.18.0",
+        "file": "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/scipy/__init__.py",
+        "sha256": "39ccae300a4739cc53719bd3b39ce3f8f66e736c6eb672006e338a4c5cc3dc76"
+      },
+      "sympy": {
+        "version": "1.14.0",
+        "file": "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/__init__.py",
+        "sha256": "4e9476348ba105feab28d82f5bcf6cdba2e3e84de6e059bbfe7a13728c0a4ab0"
+      }
+    },
+    "affinity": [
+      5
+    ],
+    "environment": {
+      "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "INVOCATION_ID": "e7eea3075dab4802b7a72a5325d45cfe",
+      "XDG_RUNTIME_DIR": "/run/user/1000",
+      "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"
+    },
+    "command": [
+      "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py",
+      "--block",
+      "native",
+      "--run-id",
+      "block-native-01"
+    ]
+  },
+  "blocks": {
+    "native": {
+      "identities": {
+        "D": "Matrix([[a0 - b0*e0, I*ai + ar - e1*(I*bi + br)], [-I*ai + ar - e0*(-I*bi + br), a1 - b1*e1]])",
+        "Hermitian_part": "Matrix([[a0 - b0*e0, I*ai + ar - e0*(I*bi + br)/2 - e1*(I*bi + br)/2], [-I*ai + ar - e0*(-I*bi + br)/2 - e1*(-I*bi + br)/2, a1 - b1*e1]])",
+        "K_non_degenerate": "Matrix([[-b0/2, (I*ai + ar - e1*(I*bi + br))/(-e0 + e1)], [(-I*ai + ar - e0*(-I*bi + br))/(e0 - e1), -b1/2]])",
+        "assumptions": "real eigenvalues; e0 != e1 only for K division; arbitrary imaginary diagonal gauge may be added to K"
+      },
+      "example": {
+        "C": "Matrix([[1, I], [1 + I, 2]])",
+        "S": "Matrix([[(-1/5 - 2*I/5)*(-1/5 + 2*I/5) + (3/5 - I/5)*(3/5 + I/5), (1/10 - 3*I/10)*(3/5 - I/5) + (-1/5 + 2*I/5)*(3/10 + I/10)], [(-1/5 - 2*I/5)*(3/10 - I/10) + (1/10 + 3*I/10)*(3/5 + I/5), (1/10 - 3*I/10)*(1/10 + 3*I/10) + (3/10 - I/10)*(3/10 + I/10)]])",
+        "H": "Matrix([[(-6/5 + 2*I/5)*(3/5 + I/5) + (-3/5 + 6*I/5)*(-1/5 - 2*I/5), (-3/5 + 6*I/5)*(3/10 + I/10) + (-6/5 + 2*I/5)*(1/10 - 3*I/10)], [(-1/5 - 3*I/5)*(3/5 + I/5) + (-1/5 - 2*I/5)*(9/10 - 3*I/10), (-1/5 - 3*I/5)*(1/10 - 3*I/10) + (3/10 + I/10)*(9/10 - 3*I/10)]])",
+        "A": "Matrix([[2, 1 + 3*I], [1 - 3*I, -1]])",
+        "B": "Matrix([[1, 2 - I], [2 + I, -2]])",
+        "E": "Matrix([[-2, 0], [0, 3]])",
+        "D": "Matrix([[(-1/5 - 2*I/5)*(1/5 - 2*I/5 + (3/5 - I/5)*(1 + 3*I)) + 2*(1 - I)*((-1/5 - 2*I/5)*(-3/5 + I/5 + (1/10 + 3*I/10)*(2 - I)) + (3/5 + I/5)*(1/10 + (3/10 - I/10)*(2 + I) + 3*I/10)) + (1 - I)*((3/5 + I/5)*(1/5 + (3/10 - I/10)*(1 - 3*I) + 3*I/5) + (-1/5 - 2*I/5)*(-3/10 + I/10 + (1/10 + 3*I/10)*(1 + 3*I))) + 2*(-1/5 - 2*I/5)*(2/5 + (3/5 - I/5)*(2 - I) - 4*I/5) + 2*(3/5 + I/5)*(3/5 - I/5 + (-1/5 + 2*I/5)*(2 + I)) + (1 + I)*((1/10 - 3*I/10)*(6/5 - 2*I/5 + (-1/5 + 2*I/5)*(1 - 3*I)) + (1 - I)*((1/10 - 3*I/10)*(1/5 + (3/10 - I/10)*(1 - 3*I) + 3*I/5) + (3/10 + I/10)*(-3/10 + I/10 + (1/10 + 3*I/10)*(1 + 3*I))) + (3/10 + I/10)*(1/5 - 2*I/5 + (3/5 - I/5)*(1 + 3*I))) + (3/5 + I/5)*(6/5 - 2*I/5 + (-1/5 + 2*I/5)*(1 - 3*I)) + 2*(1 + I)*((3/10 + I/10)*(2/5 + (3/5 - I/5)*(2 - I) - 4*I/5) + (1 - I)*((1/10 - 3*I/10)*(1/10 + (3/10 - I/10)*(2 + I) + 3*I/10) + (3/10 + I/10)*(-3/5 + I/5 + (1/10 + 3*I/10)*(2 - I))) + (1/10 - 3*I/10)*(3/5 - I/5 + (-1/5 + 2*I/5)*(2 + I))), 2*(1/10 - 3*I/10)*(6/5 - 2*I/5 + (-1/5 + 2*I/5)*(1 - 3*I)) - 6*(1/10 - 3*I/10)*(3/5 - I/5 + (-1/5 + 2*I/5)*(2 + I)) - 3*I*((1 - I)*((-1/5 - 2*I/5)*(-3/5 + I/5 + (1/10 + 3*I/10)*(2 - I)) + (3/5 + I/5)*(1/10 + (3/10 - I/10)*(2 + I) + 3*I/10)) + (-1/5 - 2*I/5)*(2/5 + (3/5 - I/5)*(2 - I) - 4*I/5) + (3/5 + I/5)*(3/5 - I/5 + (-1/5 + 2*I/5)*(2 + I))) - 6*(1 - I)*((1/10 - 3*I/10)*(1/10 + (3/10 - I/10)*(2 + I) + 3*I/10) + (3/10 + I/10)*(-3/5 + I/5 + (1/10 + 3*I/10)*(2 - I))) + 2*(1 - I)*((1/10 - 3*I/10)*(1/5 + (3/10 - I/10)*(1 - 3*I) + 3*I/5) + (3/10 + I/10)*(-3/10 + I/10 + (1/10 + 3*I/10)*(1 + 3*I))) + 2*(3/10 + I/10)*(1/5 - 2*I/5 + (3/5 - I/5)*(1 + 3*I)) + I*((-1/5 - 2*I/5)*(1/5 - 2*I/5 + (3/5 - I/5)*(1 + 3*I)) + (1 - I)*((3/5 + I/5)*(1/5 + (3/10 - I/10)*(1 - 3*I) + 3*I/5) + (-1/5 - 2*I/5)*(-3/10 + I/10 + (1/10 + 3*I/10)*(1 + 3*I))) + (3/5 + I/5)*(6/5 - 2*I/5 + (-1/5 + 2*I/5)*(1 - 3*I))) - 6*(3/10 + I/10)*(2/5 + (3/5 - I/5)*(2 - I) - 4*I/5)], [(1 + I)*(-I*((1/10 - 3*I/10)*(6/5 - 2*I/5 + (-1/5 + 2*I/5)*(1 - 3*I)) + (3/10 + I/10)*(1/5 - 2*I/5 + (3/5 - I/5)*(1 + 3*I))) + 2*(1/10 - 3*I/10)*(1/5 + (3/10 - I/10)*(1 - 3*I) + 3*I/5) + 2*(3/10 + I/10)*(-3/10 + I/10 + (1/10 + 3*I/10)*(1 + 3*I))) + 2*(1 + I)*(-I*((3/10 + I/10)*(2/5 + (3/5 - I/5)*(2 - I) - 4*I/5) + (1/10 - 3*I/10)*(3/5 - I/5 + (-1/5 + 2*I/5)*(2 + I))) + 2*(1/10 - 3*I/10)*(1/10 + (3/10 - I/10)*(2 + I) + 3*I/10) + 2*(3/10 + I/10)*(-3/5 + I/5 + (1/10 + 3*I/10)*(2 - I))) - I*((-1/5 - 2*I/5)*(1/5 - 2*I/5 + (3/5 - I/5)*(1 + 3*I)) + (3/5 + I/5)*(6/5 - 2*I/5 + (-1/5 + 2*I/5)*(1 - 3*I))) + 2*(3/5 + I/5)*(1/5 + (3/10 - I/10)*(1 - 3*I) + 3*I/5) + 4*(-1/5 - 2*I/5)*(-3/5 + I/5 + (1/10 + 3*I/10)*(2 - I)) + 2*(-1/5 - 2*I/5)*(-3/10 + I/10 + (1/10 + 3*I/10)*(1 + 3*I)) + 4*(3/5 + I/5)*(1/10 + (3/10 - I/10)*(2 + I) + 3*I/10) - 2*I*((-1/5 - 2*I/5)*(2/5 + (3/5 - I/5)*(2 - I) - 4*I/5) + (3/5 + I/5)*(3/5 - I/5 + (-1/5 + 2*I/5)*(2 + I))), -3*I*(2*(-1/5 - 2*I/5)*(-3/5 + I/5 + (1/10 + 3*I/10)*(2 - I)) + 2*(3/5 + I/5)*(1/10 + (3/10 - I/10)*(2 + I) + 3*I/10) - I*((-1/5 - 2*I/5)*(2/5 + (3/5 - I/5)*(2 - I) - 4*I/5) + (3/5 + I/5)*(3/5 - I/5 + (-1/5 + 2*I/5)*(2 + I)))) - 12*(3/10 + I/10)*(-3/5 + I/5 + (1/10 + 3*I/10)*(2 - I)) - 2*I*((1/10 - 3*I/10)*(6/5 - 2*I/5 + (-1/5 + 2*I/5)*(1 - 3*I)) + (3/10 + I/10)*(1/5 - 2*I/5 + (3/5 - I/5)*(1 + 3*I))) + 4*(1/10 - 3*I/10)*(1/5 + (3/10 - I/10)*(1 - 3*I) + 3*I/5) + 4*(3/10 + I/10)*(-3/10 + I/10 + (1/10 + 3*I/10)*(1 + 3*I)) + I*(-I*((-1/5 - 2*I/5)*(1/5 - 2*I/5 + (3/5 - I/5)*(1 + 3*I)) + (3/5 + I/5)*(6/5 - 2*I/5 + (-1/5 + 2*I/5)*(1 - 3*I))) + 2*(3/5 + I/5)*(1/5 + (3/10 - I/10)*(1 - 3*I) + 3*I/5) + 2*(-1/5 - 2*I/5)*(-3/10 + I/10 + (1/10 + 3*I/10)*(1 + 3*I))) - 12*(1/10 - 3*I/10)*(1/10 + (3/10 - I/10)*(2 + I) + 3*I/10) + 6*I*((3/10 + I/10)*(2/5 + (3/5 - I/5)*(2 - I) - 4*I/5) + (1/10 - 3*I/10)*(3/5 - I/5 + (-1/5 + 2*I/5)*(2 + I)))]])",
+        "S_positive_reason": "C invertible, S=C^-dagger C^-1"
+      },
+      "checks": [
+        {
+          "name": "native_adjoint_D_minus_Ddag_equals_EB_minus_BE",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "Hermitian_part_is_arithmetic_energy_symmetrization",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "Hermitian_part_adjoint",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "native_diagonal_real",
+          "kind": "exact_identity",
+          "residual": "0"
+        },
+        {
+          "name": "differentiated_generalized_eigenproblem",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "differentiated_S_normalization",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "degenerate_energy_block_native_Hermitian",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "nonorthogonal_reference_normalized",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "generalized_reference_eigenproblem",
+          "kind": "exact_identity",
+          "residual": "Matrix([[0, 0], [0, 0]])"
+        },
+        {
+          "name": "ordinary_normalization_is_not_S_normalization",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[2, 2 - I], [2 + I, 4]])"
+        },
+        {
+          "name": "initial_to_final_energy_mutation",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[0, -10 + 5*I], [10 + 5*I, 0]])"
+        },
+        {
+          "name": "omitted_overlap_mutation",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[2, -6 + 3*I], [4 + 2*I, 6]])"
+        },
+        {
+          "name": "native_is_not_generally_Hermitian",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[0, -10 + 5*I], [10 + 5*I, 0]])"
+        },
+        {
+          "name": "transpose_is_not_adjoint",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[0, -2*I], [12*I, 0]])"
+        },
+        {
+          "name": "noncommuting_overlap_energy",
+          "kind": "nonzero_counterexample",
+          "witness": "Matrix([[0, -10 + 5*I], [10 + 5*I, 0]])"
+        }
+      ]
+    }
+  },
+  "ended_unix": 1792412388.2541423,
+  "elapsed_seconds": 12.36470890045166
+}

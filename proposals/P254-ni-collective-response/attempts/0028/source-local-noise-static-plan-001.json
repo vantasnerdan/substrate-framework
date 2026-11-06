@@ -1,0 +1,87 @@
+{
+  "schema": "P254-source-local-noise-static-plan-v1",
+  "case": "loaded-ni31h6",
+  "initialization": {
+    "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+    "bytes": 25705,
+    "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"
+  },
+  "plan": {
+    "execution_scheme": "source-local-discrete-rk4-v1",
+    "mode": "pair",
+    "full_q_state_bytes_by_geometry": 26274985344,
+    "retained_full_q_states": 0,
+    "full_q_payload_bytes_allocated": 0,
+    "all_required_frame_times": [
+      0.0,
+      0.00025,
+      0.0005,
+      0.001
+    ],
+    "genuine_boundary_alias_times": [
+      0.0
+    ],
+    "owned_frame_times": [
+      0.00025,
+      0.0005,
+      0.001
+    ],
+    "frame_payload_upper_bound": 39412478016,
+    "moment_payload_upper_bound": 1529057280,
+    "retained_kernel_context_payload_bytes": 95551488,
+    "successful_peak_payload_upper_bound": 41037086784,
+    "final_payload_upper_bound": 95551488,
+    "edge_generator_calls": 3584,
+    "bare_hamiltonian_actions": 7168,
+    "bare_hamiltonian_columns": 2480128,
+    "limitations": "Payload only: excludes measured JSON/header/reservation slack and failed attempts. Frame reconstruction has additional charged actions. Native memory and runtime require a representative physical measurement; this is not a production grant or an ETA.",
+    "tradeoff": "Recompute full original edge equations from durable global contexts; no Q-sized input, derivative, accumulator, seed or retained left output is written.",
+    "initial_metadata": {
+      "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/initial/boundary.json",
+      "bytes": 173727,
+      "sha256": "83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095"
+    },
+    "model_identity": "14a02558ac686b47861fe5cfd48b38293b4703c634e46f9d1ab91b7b2728d3c6",
+    "q": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mesh": [
+      4,
+      4,
+      4
+    ],
+    "density_shape": [
+      373248,
+      2
+    ],
+    "numerical_work_executed": false,
+    "history_available": false,
+    "proposed_time_grid": [
+      0.0,
+      0.001
+    ],
+    "proposed_second_time_grid": [
+      0.0,
+      0.0005
+    ]
+  },
+  "stock_plan": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/noise-pair-static-plan-current-001.json",
+    "bytes": 20589,
+    "sha256": "a819a0499a73b2e43c226888ddd84c8c4147711bcacc0514a723ad3d45335810"
+  },
+  "stock_peak_payload_bytes": 172328405952,
+  "qualification": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-local-q-oracle-003.json",
+    "bytes": 27763,
+    "sha256": "f7041bbe9b33420504e4ea5f088271a55cfc1a56cfee4c5d97ab6170232312e7"
+  },
+  "implementation": {
+    "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/source_local_q_plan.py",
+    "bytes": 3692,
+    "sha256": "243b0a837bfdf0fe650b13e9f7637f322ac1241941c93f7d0197cc782928f1c4"
+  },
+  "status": "metadata-only; conservative t0-only boundary alias; no positive-time history or material execution claimed"
+}

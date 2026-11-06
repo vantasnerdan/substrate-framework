@@ -1,0 +1,49 @@
+{
+  "issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "registered_at": "2026-10-27T18:41:56.989651+00:00",
+  "goal": "Construct actual full-PW/full-FD isolated two-branch electronic density and6ionic-gradient response for the proper coupled action; next compose same-frequency spatial screening with independently imported Cfrozen.",
+  "input_inventory": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0019/source-inventory.json",
+  "shared_interface": {
+    "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/pw_response_data.py",
+    "bytes": "1584",
+    "sha256": "8af4ccc9ef6d9315db7fc19662061b5a75efcbd49abc188140a120d3437a5308"
+  },
+  "independent_slices": {
+    "frame_builder": "Consumes only settled Native3points, H0/g/FFT modules and data interface. Full spectra, one common fixed-N FD chemical potential; retains every numerically nonzero FD state, no20-band closure or arbitrary occupancy cutoff. Computes actual density/reference discrepancy without claiming convergence.",
+    "retarded_algorithm": "Consumes only settled data interface and authoritative isolated-commutator conventions. Implements physical response to +g*u+v (negative of positive susceptibility for B=-g). Full plus and minus resolvents, explicit q/-q drives; validates independently against direct finite density-matrix EOM. Does not depend on frame-builder code/output."
+  },
+  "source_state_scope": "Full-FD spectral reference of actual reconstructed H0, fixed total N/common mu. Record its density deviation from saved Native SCF background; do not silently identify it with exact selfconsistent Native rho. Isolated finite-z conserves spin populations, not Native thermodynamic Gamma relaxation.",
+  "frequency_points_ry": [
+    [
+      0.02,
+      0.02
+    ],
+    [
+      0.05,
+      0.02
+    ]
+  ],
+  "allowances": {
+    "finite_EOM": "relative-scaled maxabs1e-10, fixed before execution; mutants must be exposed",
+    "particle_and_constant_potential": "finite isolated fixtures roundoff-scaled1e-10",
+    "FD_total_N": "absolute1e-10 electron; this is numerical root accuracy, not material accuracy"
+  },
+  "budgets": {
+    "source_first_due": "2026-10-27T19:05:00+00:00",
+    "Root_due": "2026-10-27T19:10:00+00:00",
+    "actual_frame_build": "one CPU6/BLAS1,180s wall; no Native call",
+    "finite_oracle": "one CPU6/BLAS1,120s wall",
+    "coupled_next": "After both slices settle, actual q0/half six-by-six screening pilot, progress by completed matrix columns, bounded separately before execution.",
+    "Native_or_cloud_budget": 0,
+    "owner": "Giuliano"
+  },
+  "not_claimed": [
+    "stationary ionic material",
+    "physical eta/loss",
+    "coherence-domain solution",
+    "XC memory",
+    "nuclear rates",
+    "thermodynamic Gamma equals isolated zero frequency",
+    "complete campaign/delivery"
+  ]
+}

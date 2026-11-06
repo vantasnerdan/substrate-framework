@@ -1,0 +1,66 @@
+{
+  "actual_utc": "2026-11-02T17:42:53.779703+00:00",
+  "original_UID": "591",
+  "actual_read": {
+    "text": "Email UID: 591\nFrom: giuliano@vantasner.io\nTo: giuliano@vantasner.io\nDate: 2026-11-02T17:40:38.000Z\nSubject: [dft-disk] /tmp\n\n--- Body ---\nonly 8.0% free on /tmp (38 GiB of 483 GiB). Checkpoint/commit progress store at risk.\n",
+    "details": {
+      "xdev": {
+        "tool": "email_read",
+        "mode": "execute",
+        "args": {
+          "uid": 591,
+          "mailbox": "INBOX"
+        },
+        "tier": "exec",
+        "inner": {
+          "uid": 591,
+          "subject": "[dft-disk] /tmp",
+          "attachmentCount": 0,
+          "pdfCount": 0,
+          "savedFiles": []
+        }
+      }
+    }
+  },
+  "actual_move": {
+    "text": "Email UID 591 moved from \"INBOX\" to \"Notifications\".",
+    "details": {
+      "xdev": {
+        "tool": "email_move",
+        "mode": "execute",
+        "args": {
+          "uid": 591,
+          "source": "INBOX",
+          "destination": "Notifications"
+        },
+        "tier": "exec",
+        "inner": {
+          "uid": 591,
+          "source": "INBOX",
+          "destination": "Notifications"
+        }
+      }
+    }
+  },
+  "actual_destination_fetch": {
+    "text": "Mailbox \"Notifications\" -- showing 2 of 457 messages:\n\n[unread] [UID:457] giuliano@vantasner.io -- \"[dft-disk] /tmp\" (11/2/2026, 5:40:38 PM)\n[unread] [UID:456] giuliano@vantasner.io -- \"[dft-disk] repo\" (11/2/2026, 5:29:06 PM)",
+    "details": {
+      "xdev": {
+        "tool": "email_fetch",
+        "mode": "execute",
+        "args": {
+          "mailbox": "Notifications",
+          "limit": 2,
+          "unseen": false
+        },
+        "tier": "exec",
+        "inner": {
+          "count": 2,
+          "total": 457,
+          "mailbox": "Notifications"
+        }
+      }
+    }
+  },
+  "decision": "Same reported8.0%/38GiB sharedfilesystemcapacity. No causeassumed, dfconfirmation, scientificfiledeletion, sendorreply. No secondNativejob or change to originalE006clock/caps/sources."
+}

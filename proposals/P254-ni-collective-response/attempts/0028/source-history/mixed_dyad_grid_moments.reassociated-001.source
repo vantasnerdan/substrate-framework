@@ -1,0 +1,121 @@
+"""Bounded-column grid contractions of borrowed original-coefficient dyads.
+
+The rectangular absorption is exactly BlochFiniteQBridge.iter_dyad_blocks:
+L @ D[:, slice], R[:, slice] when nright <= nleft, and otherwise
+L[:, slice], R @ D[slice, :].conj().T.  Request-local identity keys reuse only
+arithmetic on the same immutable arrays; no endpoint or physical symmetry is
+inferred.  Each column slice discards all PW-block and orbital-FFT caches.
+"""
+import numpy as np
+
+
+def grid_moments(coupling, terms, *, field_momenta=None):
+    """Return density, positive local gradient and Gamma kinetic L traces.
+
+    ``terms`` are the normalized borrowed MomentTerms from mixed_moment_terms.
+    The caller checks Gamma/endpoint geometry before supplying field_momenta.
+    Density uses the conjugate multiplication phase, explicit spin channel and
+    inverse volume of BlochFiniteQBridge.density_from_dyads.  The local finish
+    is the support-pinned reverse transpose in BlochFiniteQIonic.moments, once
+    per weighted group.  The optional kinetic trace uses the same absorbed PW
+    blocks and the 2*p convention of mixed_physical_field_dyads._kinetic_moments.
+
+    Scratch column width never exceeds bridge.block_size.  Cached factors are
+    distinguished by their actual frame/coefficient identities and absorption
+    side, and orbital transforms additionally by their actual FFT and conjugate
+    orientation.  There is no whole-frame real-space cache or borrowed mutation.
+    """
+    bridge = coupling.bridge
+    size = bridge.block_size
+    result = {}
+    diagonals = {} if field_momenta is not None else None
+    # A plain frame can participate in contractions of different rectangular
+    # widths.  Request its largest needed prefix so one transform serves every
+    # shorter prefix in this slice, independent of term ordering.
+    requests = {}
+    work = []
+    largest = 0
+    for term in terms:
+        if term.group not in result:
+            result[term.group] = {
+                'density': np.zeros((bridge.source_fft.nnr, 2), dtype=np.complex128),
+                'local_gradient': np.zeros(coupling.ndof, dtype=np.complex128),
+                'field_kinetic': np.zeros(3, dtype=np.complex128),
+            }
+            if diagonals is not None:
+                diagonals[term.group] = np.zeros(len(field_momenta), dtype=np.complex128)
+        nl, nr = term.left.shape[1], term.right.shape[1]
+        width = min(nl, nr)
+        largest = max(largest, width)
+        if nr <= nl:
+            left_key = ('left', id(term.left), id(term.D))
+            right_key = ('plain', id(term.right))
+            factors = ((left_key, term.left, term.D, 'left'),
+                       (right_key, term.right, None, 'plain'))
+        else:
+            left_key = ('plain', id(term.left))
+            right_key = ('right', id(term.right), id(term.D))
+            factors = ((left_key, term.left, None, 'plain'),
+                       (right_key, term.right, term.D, 'right'))
+        for key, frame, coefficient, side in factors:
+            previous = requests.get(key)
+            if previous is None or previous[3] < width:
+                requests[key] = (frame, coefficient, side, width)
+        # Retain the terms themselves so all identity-keyed borrowed arrays stay
+        # alive even if the caller supplies a one-shot iterable.
+        work.append((term, left_key, right_key, width))
+
+    for start in range(0, largest, size):
+        blocks, waves = {}, {}
+        for term, left_key, right_key, width in work:
+            if start >= width:
+                continue
+            count = min(size, width - start)
+            wave_keys = []
+            for key, fft, conjugate in ((left_key, bridge.target_fft, False),
+                                        (right_key, bridge.source_fft, True)):
+                if key not in blocks:
+                    frame, coefficient, side, columns = requests[key]
+                    stop = min(start + size, columns)
+                    if side == 'plain':
+                        blocks[key] = frame[:, start:stop]
+                    elif side == 'left':
+                        blocks[key] = frame @ coefficient[:, start:stop]
+                    else:
+                        blocks[key] = frame @ coefficient[start:stop, :].conj().T
+                wave_key = (id(fft), key, conjugate)
+                if wave_key not in waves:
+                    wave = fft.from_g(blocks[key])
+                    if conjugate:
+                        # from_g returns newly allocated scratch, not a frame.
+                        np.conjugate(wave, out=wave)
+                    waves[wave_key] = wave
+                wave_keys.append(wave_key)
+            lwave = waves[wave_keys[0]][:, :count]
+            rwave_conjugate = waves[wave_keys[1]][:, :count]
+            contribution = np.einsum('pi,pi->p', lwave, rwave_conjugate)
+            contribution *= term.weight
+            result[term.group]['density'][:, bridge.ispin - 1] += contribution
+            if diagonals is not None:
+                lblock = blocks[left_key][:, :count]
+                rblock = blocks[right_key][:, :count]
+                diagonal = np.einsum('pi,pi->p', lblock, rblock.conj())
+                diagonal *= term.weight
+                diagonals[term.group] += diagonal
+
+    # The density already contains every original real term weight exactly once.
+    # Keep the density FFT on its declared support rather than differentiating
+    # orbital coefficients or rebuilding an opposite-q local field.
+    ref = coupling.inputs.reference
+    for group, moments in result.items():
+        channel = moments['density'][:, bridge.ispin - 1]
+        channel *= bridge.multiplication_phase.conj() / bridge.source_fft.omega
+        sampled = bridge.density_fft.to_g(channel)
+        gradient = moments['local_gradient'].reshape(coupling.nat, 3)
+        for atom, name in enumerate(ref.atom_names):
+            weighted = (sampled * coupling.vloc[name].conj()
+                        * np.exp(1j * (coupling.gq @ ref.positions_bohr[:, atom])))
+            gradient[atom] = 1j * bridge.source_fft.omega * (weighted @ coupling.gq)
+        if diagonals is not None:
+            moments['field_kinetic'][:] = 2 * (field_momenta.T @ diagonals[group])
+    return result

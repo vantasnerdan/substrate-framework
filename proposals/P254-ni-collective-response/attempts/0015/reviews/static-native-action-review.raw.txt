@@ -1,0 +1,49 @@
+## Findings
+
+None. The findings array is empty.
+
+## Overall correctness
+
+**correct**
+
+The scoped scalar/force extraction, periodic normalization, and Hessian assembly are consistent with the inspected native receipts and registered conventions. The result correctly preserves the coarse half-b1 discrepancy rather than asserting that every point passed; this is a useful engineering construction, not material-accuracy or coherence-domain admission.
+
+**Confidence:** 0.94
+
+## Strongest true construction
+
+0014 constructs a **two-coordinate, same-functional static curvature bridge** for Ni-x and H-y at Gamma and self-conjugate half-b1, using actual signed-displacement SCFs at both registered amplitudes, independent scalar-free-energy and force estimates, and the existing Cartesian DFPT target.
+
+The inspected implementation and raw records support these particulars:
+
+- **Functional and precision:** `native_cases.py` reads native XML `output/total_energy/etot` directly into `Decimal`. QE’s `electrons.f90` includes `demet` in `etot` and labels this quantity **F=E−TS**; `pw_restart_new.f90` serializes `etot/e2`. Multiplying XML energies and forces by two therefore correctly restores Ry and Ry/bohr. The scalar stencil does not consume the rounded stdout/ASE energy.
+- **Coordinates and periodic pattern:** the actual PW inputs retain ordered `(Ni,H)` copies. Gamma displaces Ni-x/H-y uniformly; half-b1 doubles the first primitive vector and applies opposite amplitudes to its two translated copies.
+- **Normalization and q:** energy and signed conjugate forces are divided by the primitive-cell count. The half-b1 real alternating pattern represents the self-conjugate q member without an additional q/−q doubling.
+- **Mixed curvature and ordering:** the scalar construction retains the mixed term; force differentiation retains independently observed H12/H21. The existing DFPT parser reads Fortran-ordered PHI blocks into `[atom,Cartesian,atom,Cartesian]`, and indices `[0,4]` select Ni-x/H-y correctly. No parser ASR, mass weighting, clipping, or force-Hessian symmetrization is introduced.
+- **Ensemble and baseline:** actual inputs retain neutral, collinear spin-PBE, FD0.002 Ry, 60/240 Ry and relaxed magnetization. The doubled cell uses the registered k122/40-band folding of the primitive k222/20-band model. All completed case receipts inspected report electronic convergence. The saved baseline receipt records Gamma−historical energy **−2.184e−10 Ry**, folded−Gamma energy **1.87392e−08 Ry per primitive**, and folded−Gamma magnetization **−8.135359053085267e−11**, satisfying the frozen baseline criteria.
+
+The complete snapshot and actual final result preserve the following existing comparisons, in Ry/bohr²:
+
+| q | Step, bohr | Scalar–DFPT maximum error | Force–DFPT maximum error | Scalar–force maximum error | Matrix allowance | Recorded agreement |
+|---|---:|---:|---:|---:|---:|---|
+| Gamma | 0.01 | 0.0001744550430756303 | 0.0010738806167155807 | 0.0008994255736399503 | 0.0026257852849838944 | Yes |
+| Gamma | 0.005 | 0.00013764504307563208 | 0.0010261073259485026 | 0.0008884622828728705 | 0.0026257852849838944 | Yes |
+| half-b1 | 0.01 | 0.002697777774374681 | **0.0054990405958460775** | 0.0028012628214713967 | **0.002916974753886099** | **No** |
+| half-b1 | 0.005 | 0.0005869747743746795 | 0.0012470769245905289 | 0.0006601021502158494 | 0.002916974753886099 | Yes |
+
+These are **matrix-level pilot allowances**, not one-percent accuracy for every component. In particular, the Gamma Ni-x scalar/force discrepancy remains across step halving. Two amplitudes do not establish an asymptotic convergence order or certified uncertainty enclosure.
+
+Evidence: `attempts/0014/registration.json`, both execution manifests, `periodic_curvature.py`, `native_cases.py`, `run_native.py`, the complete 657-line snapshot, Gamma constructed report, actual PW inputs/XML/result receipts for both centers and all signed cases, both native dynamical matrices, and `attempts/0015/terminal-scientific-decision.json`.
+
+## Minimum repair
+
+**No new implementation correction is established by this review slice.** The necessary scientific disposition is already expressed by the retained status `native_bridge_requires_numerical_or_mapping_repair`:
+
+1. Preserve the coarse half-b1 failure and finer agreement together; do not promote the finest row into an “all points passed” claim.
+2. Carry the observed finite-amplitude dependence, raw force asymmetry, and scalar/force discrepancy into the eventual consumer’s accuracy assessment. Stronger accuracy requires an observable-specific numerical resolution argument, not tolerance loosening or unsupported extrapolation.
+3. Consume this as a constrained engineering static-action component when constructing the actual spatial spin-PBE/full-PW response operators. It does not yet establish stationary Ni31H6 calibration, physical loss, many-region coherence/energy transport, lattice ranking, or a nuclear bridge. The numerical discrepancy is constructive range/repair information—not a physical no-go.
+4. Keep combined admission pending the separate warm-state review and Root join. This review does not block independent 0016 source development.
+
+The original cold timeout remains preserved. The terminal receipt records success/0 at **16:20:03.150770Z**; the allocation record correctly identifies the later **16:20:30.719423Z** Root decision as late, without retroactive authorization or added Native budget.
+
+**Review method:** static source/raw-receipt inspection only. No edits, tests, oracle executions, builds, or Native reruns; no renewed review of 0013 or warm-binary mathematics.

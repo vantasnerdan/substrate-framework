@@ -1,0 +1,511 @@
+{
+  "schema": "P254-existing-source-local-four-worker-Native-recovery-v1",
+  "actual_utc": "2026-10-31T19:31:43.887084+00:00",
+  "unit": "p254-a28-source-local-material-pair-004.service",
+  "unit_invocation": "4cea3b372c464542acc670712f553e2a",
+  "actual_launch_plan": {
+    "schema": "P254-existing-source-local-four-worker-actual-launch-plan-v1",
+    "actual_plan_utc": "2026-10-31T19:14:03.423631+00:00",
+    "root_decisions": [
+      "Root307",
+      "Root309",
+      "Root310"
+    ],
+    "unit": "p254-a28-source-local-material-pair-004.service",
+    "argv": [
+      "systemd-run",
+      "--user",
+      "--unit=p254-a28-source-local-material-pair-004.service",
+      "--service-type=exec",
+      "--working-directory=/home/administrator/projects/substrate-ni-collective",
+      "--property=CPUAffinity=6 7 9 10",
+      "--property=MemoryHigh=12884901888",
+      "--property=MemoryMax=15032385536",
+      "--property=MemorySwapMax=0",
+      "--property=LimitNOFILE=8192",
+      "--property=Restart=no",
+      "--property=TimeoutStopSec=300",
+      "--property=KillMode=mixed",
+      "--property=Environment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1",
+      "--property=ExecStopPost=/usr/bin/python3 -c 'import os,json;from pathlib import Path;r=os.environ.get('\"'\"'SERVICE_RESULT'\"'\"','\"'\"'unknown'\"'\"');e=os.environ.get('\"'\"'EXIT_STATUS'\"'\"','\"'\"'unknown'\"'\"');tag='\"'\"'dft-hung'\"'\"' if r in ('\"'\"'timeout'\"'\"','\"'\"'watchdog'\"'\"') else '\"'\"'dft-done'\"'\"' if r=='\"'\"'success'\"'\"' and e=='\"'\"'0'\"'\"' else '\"'\"'dft-fail'\"'\"';p=Path('\"'\"'/var/tmp/p254-a28-source-local-material-pair-004-operations'\"'\"')/'\"'\"'unit-outcomes'\"'\"';p.mkdir(exist_ok=True);v=dict(unit='\"'\"'p254-a28-source-local-material-pair-004.service'\"'\"',invocation=os.environ.get('\"'\"'INVOCATION_ID'\"'\"'),service_result=r,exit_code=os.environ.get('\"'\"'EXIT_CODE'\"'\"'),exit_status=e,tag=tag,scientific_acceptance_claimed=False);f=p/(str(v['\"'\"'invocation'\"'\"'])+'\"'\"'.json'\"'\"');f.write_text(json.dumps(v,indent=2)+chr(10));print('\"'\"'['\"'\"'+tag+'\"'\"']'\"'\"',json.dumps(v),flush=True)'",
+      "--property=StandardOutput=journal",
+      "--property=StandardError=journal",
+      "--property=RuntimeMaxSec=107804",
+      "/usr/bin/env",
+      "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime",
+      "/usr/bin/python3",
+      "-u",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_source_local_q_material.py",
+      "--mode",
+      "pair",
+      "--case",
+      "loaded-ni31h6",
+      "--initialization",
+      "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+      "--initialization-sha256",
+      "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713",
+      "--history",
+      "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+      "--history-sha256",
+      "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd",
+      "--physical-qualification",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/partitioned-readout-current-qualification-002.json",
+      "--physical-qualification-sha256",
+      "fa46b1b99787355171a14ff7e1546dc9868d5fcfe437382b774e5ea7934a9093",
+      "--source-local-oracle",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-local-q-oracle-006.json",
+      "--source-local-oracle-sha256",
+      "86c6bdaf3ce7471d0cd2061f9889a90d5666d6764dfe7d33071d4eabd5ec9c32",
+      "--output",
+      "/var/tmp/p254-a28-source-local-material-pair-001",
+      "--q",
+      "0",
+      "0",
+      "0",
+      "--cpus",
+      "6",
+      "7",
+      "9",
+      "10",
+      "--max-actions",
+      "32768",
+      "--max-seconds",
+      "129600",
+      "--max-output-bytes",
+      "34359738368",
+      "--max-memory-bytes",
+      "17179869184",
+      "--worker-memory-bytes",
+      "4294967296",
+      "--time",
+      "0.0005",
+      "--second-time",
+      "0.001",
+      "--subdivisions",
+      "1",
+      "--atom",
+      "37",
+      "--axis",
+      "x",
+      "--observable",
+      "total-force",
+      "--frame-admission",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-baseline-frame-adoption-check-003.json",
+      "97f334d2bcb657847ed1b377169d7ae98e8d236fa2a45df6dc0306220bb2330a",
+      "--resume"
+    ],
+    "original_owner": {
+      "path": "/var/tmp/p254-a28-source-local-material-pair-001/owner.json",
+      "bytes": 77486,
+      "sha256": "82217170dafc4cf971cdabc3222b289727033715dce4c3d6ec1ecd5287d946ab"
+    },
+    "original_started_unix": 1793452217.1602585,
+    "original_deadline_unix": 1793581817.1602585,
+    "manager_runtime_remaining_seconds": 107804,
+    "actual_recovery": {
+      "path": "/var/tmp/p254-a28-source-local-material-pair-004-operations/recovery-before-launch.json",
+      "bytes": 24097,
+      "sha256": "2d4469909def4dbd6d4866143ef0447f2d939eb009ebd6a38b8cd6cf2d1f0f12"
+    },
+    "actual_non_native_startup": {
+      "path": "/var/tmp/p254-a28-source-local-material-pair-004-operations/startup-context.json",
+      "bytes": 4992,
+      "sha256": "005b8ce68132a9a8c173b8202340dfae76fbee724176943f8457da09837aa608"
+    },
+    "herdr_tab": "w1:t4F",
+    "herdr_pane": "w1:p4F",
+    "first_scientific_expectation": "Original committed63momentreceipts retained; only missing original128-source-stage items compute on6,7,9,10. Genuine new Native request/receipt fields and all four workerCPUplacements consumed before claim.",
+    "scope": "Same actual materialrun, no new code/model/case/oracle. Original clocks/actions/output/app/worker ceilings retained;12/14GiB is guardedproduction, no completion/laterRSS promise."
+  },
+  "actual_launch_outcome": {
+    "actual_utc": "2026-10-31T19:14:03.638841+00:00",
+    "argv": [
+      "systemd-run",
+      "--user",
+      "--unit=p254-a28-source-local-material-pair-004.service",
+      "--service-type=exec",
+      "--working-directory=/home/administrator/projects/substrate-ni-collective",
+      "--property=CPUAffinity=6 7 9 10",
+      "--property=MemoryHigh=12884901888",
+      "--property=MemoryMax=15032385536",
+      "--property=MemorySwapMax=0",
+      "--property=LimitNOFILE=8192",
+      "--property=Restart=no",
+      "--property=TimeoutStopSec=300",
+      "--property=KillMode=mixed",
+      "--property=Environment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1",
+      "--property=ExecStopPost=/usr/bin/python3 -c 'import os,json;from pathlib import Path;r=os.environ.get('\"'\"'SERVICE_RESULT'\"'\"','\"'\"'unknown'\"'\"');e=os.environ.get('\"'\"'EXIT_STATUS'\"'\"','\"'\"'unknown'\"'\"');tag='\"'\"'dft-hung'\"'\"' if r in ('\"'\"'timeout'\"'\"','\"'\"'watchdog'\"'\"') else '\"'\"'dft-done'\"'\"' if r=='\"'\"'success'\"'\"' and e=='\"'\"'0'\"'\"' else '\"'\"'dft-fail'\"'\"';p=Path('\"'\"'/var/tmp/p254-a28-source-local-material-pair-004-operations'\"'\"')/'\"'\"'unit-outcomes'\"'\"';p.mkdir(exist_ok=True);v=dict(unit='\"'\"'p254-a28-source-local-material-pair-004.service'\"'\"',invocation=os.environ.get('\"'\"'INVOCATION_ID'\"'\"'),service_result=r,exit_code=os.environ.get('\"'\"'EXIT_CODE'\"'\"'),exit_status=e,tag=tag,scientific_acceptance_claimed=False);f=p/(str(v['\"'\"'invocation'\"'\"'])+'\"'\"'.json'\"'\"');f.write_text(json.dumps(v,indent=2)+chr(10));print('\"'\"'['\"'\"'+tag+'\"'\"']'\"'\"',json.dumps(v),flush=True)'",
+      "--property=StandardOutput=journal",
+      "--property=StandardError=journal",
+      "--property=RuntimeMaxSec=107804",
+      "/usr/bin/env",
+      "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime",
+      "/usr/bin/python3",
+      "-u",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_source_local_q_material.py",
+      "--mode",
+      "pair",
+      "--case",
+      "loaded-ni31h6",
+      "--initialization",
+      "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+      "--initialization-sha256",
+      "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713",
+      "--history",
+      "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+      "--history-sha256",
+      "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd",
+      "--physical-qualification",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/partitioned-readout-current-qualification-002.json",
+      "--physical-qualification-sha256",
+      "fa46b1b99787355171a14ff7e1546dc9868d5fcfe437382b774e5ea7934a9093",
+      "--source-local-oracle",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/source-local-q-oracle-006.json",
+      "--source-local-oracle-sha256",
+      "86c6bdaf3ce7471d0cd2061f9889a90d5666d6764dfe7d33071d4eabd5ec9c32",
+      "--output",
+      "/var/tmp/p254-a28-source-local-material-pair-001",
+      "--q",
+      "0",
+      "0",
+      "0",
+      "--cpus",
+      "6",
+      "7",
+      "9",
+      "10",
+      "--max-actions",
+      "32768",
+      "--max-seconds",
+      "129600",
+      "--max-output-bytes",
+      "34359738368",
+      "--max-memory-bytes",
+      "17179869184",
+      "--worker-memory-bytes",
+      "4294967296",
+      "--time",
+      "0.0005",
+      "--second-time",
+      "0.001",
+      "--subdivisions",
+      "1",
+      "--atom",
+      "37",
+      "--axis",
+      "x",
+      "--observable",
+      "total-force",
+      "--frame-admission",
+      "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-baseline-frame-adoption-check-003.json",
+      "97f334d2bcb657847ed1b377169d7ae98e8d236fa2a45df6dc0306220bb2330a",
+      "--resume"
+    ],
+    "stdout": "",
+    "stderr": "Running as unit: p254-a28-source-local-material-pair-004.service; invocation ID: 4cea3b372c464542acc670712f553e2a\n",
+    "exit": 0
+  },
+  "actual_startup_context": {
+    "PYTHONPATH": "/home/administrator/.cache/dft/p254-a28-runtime",
+    "actual_original_CLI_imported": true,
+    "affinity": [
+      6,
+      7,
+      9,
+      10
+    ],
+    "declared_thread_environment": {
+      "BLIS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "gid": 1000,
+    "groups": [
+      4,
+      27,
+      1000
+    ],
+    "invocation": "b0a6ad755a834e89a1ace781d6f9ec6e",
+    "kernel_interfaces": {
+      "cpu.max": {
+        "available": false,
+        "reason": "not exposed"
+      },
+      "memory.high": {
+        "available": true,
+        "value": "12884901888"
+      },
+      "memory.max": {
+        "available": true,
+        "value": "15032385536"
+      },
+      "memory.swap.max": {
+        "available": true,
+        "value": "0"
+      },
+      "pids.max": {
+        "available": true,
+        "value": "38458"
+      }
+    },
+    "native_called": false,
+    "nofile": [
+      8192,
+      8192
+    ],
+    "pid": 3088620,
+    "schema": "P254-existing-runner-manager-context-v1",
+    "uid": 1000
+  },
+  "actual_manager_stdout": "Restart=no\nTimeoutStopUSec=5min\nRuntimeMaxUSec=1d 5h 56min 44s\nMainPID=3090647\nResult=success\nControlGroup=/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-source-local-material-pair-004.service\nMemoryHigh=12884901888\nMemoryMax=15032385536\nMemorySwapMax=0\nEnvironment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1\nLimitNOFILE=8192\nCPUAffinity=6-7 9-10\nStandardOutput=journal\nStandardError=journal\nActiveState=active\nSubState=running\nInvocationID=4cea3b372c464542acc670712f553e2a\n",
+  "actual_own_worker_contexts": [
+    {
+      "pid": 3090647,
+      "ppid": 2867432,
+      "affinity": [
+        6
+      ],
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-source-local-material-pair-004.service\n",
+      "status": {
+        "Name": "python3",
+        "State": "S (sleeping)",
+        "VmRSS": "514716 kB",
+        "VmHWM": "846136 kB",
+        "Threads": "1"
+      }
+    },
+    {
+      "pid": 3098499,
+      "ppid": 3090647,
+      "affinity": [
+        6
+      ],
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-source-local-material-pair-004.service\n",
+      "status": {
+        "Name": "python3",
+        "State": "R (running)",
+        "VmRSS": "1115196 kB",
+        "VmHWM": "1192628 kB",
+        "Threads": "1"
+      }
+    },
+    {
+      "pid": 3098500,
+      "ppid": 3090647,
+      "affinity": [
+        7
+      ],
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-source-local-material-pair-004.service\n",
+      "status": {
+        "Name": "python3",
+        "State": "R (running)",
+        "VmRSS": "690068 kB",
+        "VmHWM": "1192500 kB",
+        "Threads": "1"
+      }
+    },
+    {
+      "pid": 3098501,
+      "ppid": 3090647,
+      "affinity": [
+        9
+      ],
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-source-local-material-pair-004.service\n",
+      "status": {
+        "Name": "python3",
+        "State": "R (running)",
+        "VmRSS": "1052564 kB",
+        "VmHWM": "1192372 kB",
+        "Threads": "1"
+      }
+    },
+    {
+      "pid": 3098502,
+      "ppid": 3090647,
+      "affinity": [
+        10
+      ],
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-source-local-material-pair-004.service\n",
+      "status": {
+        "Name": "python3",
+        "State": "R (running)",
+        "VmRSS": "689880 kB",
+        "VmHWM": "1192372 kB",
+        "Threads": "1"
+      }
+    }
+  ],
+  "original_owner": {
+    "path": "/var/tmp/p254-a28-source-local-material-pair-001/owner.json",
+    "bytes": 77486,
+    "sha256": "82217170dafc4cf971cdabc3222b289727033715dce4c3d6ec1ecd5287d946ab"
+  },
+  "all_inherited_66_receipts_byte_exact": true,
+  "original_moment_request": {
+    "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/request.json",
+    "bytes": 16351,
+    "sha256": "64ce2b0b8a3997eca90563e196201999072c6140376e605bb116a9e374b0bcd0"
+  },
+  "new_scientific_receipts": [
+    {
+      "receipt": {
+        "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0066/complete.json",
+        "bytes": 1523,
+        "sha256": "459e2006cad1d8f695c0bdcf9e3e7367100aa59c7f702b6b42a521e809e64df0"
+      },
+      "original_native_record": {
+        "complete": true,
+        "request": "24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5",
+        "index": 66,
+        "arrays": {
+          "n": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0066/attempt-8ce9593133204264a6965962a7171c61/n.npy",
+            "bytes": 11944064,
+            "sha256": "75f821a64c376b5460fba723aedc9cc69a1918979cf4ae3577a05c940e74ca84"
+          },
+          "g": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0066/attempt-8ce9593133204264a6965962a7171c61/g.npy",
+            "bytes": 1904,
+            "sha256": "06ac509881f85905303769bb328762a2e6048c7e2de2749a4086e11a06c4fe5e"
+          },
+          "ell": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0066/attempt-8ce9593133204264a6965962a7171c61/ell.npy",
+            "bytes": 176,
+            "sha256": "b5595f0e1718183a796accd42aef693266dcb437e353d255228666dbafca9efd"
+          }
+        },
+        "cpu": 6,
+        "affinity": [
+          6
+        ],
+        "pid": 3098499,
+        "blas_threads": 1,
+        "cpu_seconds": 408.63299398099997,
+        "elapsed_seconds": 419.36944857100025,
+        "hamiltonian_actions": 0,
+        "process_peak_rss_bytes": 1765416960
+      }
+    },
+    {
+      "receipt": {
+        "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0067/complete.json",
+        "bytes": 1518,
+        "sha256": "8d253ee5855ff6df745385b2efc05882f1c8580c9adec6718e901313de06014e"
+      },
+      "original_native_record": {
+        "complete": true,
+        "request": "24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5",
+        "index": 67,
+        "arrays": {
+          "n": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0067/attempt-203e18f8265048659761fdc0d2b6d258/n.npy",
+            "bytes": 11944064,
+            "sha256": "bf500a71e0f6e974ac3c4efd06a91211a8d9b5c14815e428d8829c92ee1cccc3"
+          },
+          "g": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0067/attempt-203e18f8265048659761fdc0d2b6d258/g.npy",
+            "bytes": 1904,
+            "sha256": "8968ee9d3467cf52a41285c1ef284838502dbec53a26a032c7db32b29d1b54dc"
+          },
+          "ell": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0067/attempt-203e18f8265048659761fdc0d2b6d258/ell.npy",
+            "bytes": 176,
+            "sha256": "98739dc60383916c11bcd6366b0ecefa77fe2508b999a767369dc362f9ce3a18"
+          }
+        },
+        "cpu": 7,
+        "affinity": [
+          7
+        ],
+        "pid": 3098500,
+        "blas_threads": 1,
+        "cpu_seconds": 405.723099986,
+        "elapsed_seconds": 408.86955367587507,
+        "hamiltonian_actions": 0,
+        "process_peak_rss_bytes": 1765294080
+      }
+    },
+    {
+      "receipt": {
+        "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0068/complete.json",
+        "bytes": 1517,
+        "sha256": "cc444e8af3fad4ed2435ebff3230f94a7c516e5c32552534f797d6c14210e495"
+      },
+      "original_native_record": {
+        "complete": true,
+        "request": "24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5",
+        "index": 68,
+        "arrays": {
+          "n": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0068/attempt-a164bd832cbe4cec9f41f16b215c60c4/n.npy",
+            "bytes": 11944064,
+            "sha256": "3ee36cc6161fbeb19a3bfca3af52b315f2c735e0a57fe0bb989f5efc33ca7c8e"
+          },
+          "g": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0068/attempt-a164bd832cbe4cec9f41f16b215c60c4/g.npy",
+            "bytes": 1904,
+            "sha256": "f2dbc4e6ae96454db206bfbe4437d7aba961d902a804f3e26df61aea95717e52"
+          },
+          "ell": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0068/attempt-a164bd832cbe4cec9f41f16b215c60c4/ell.npy",
+            "bytes": 176,
+            "sha256": "576001b2afb9d414d64081f9675a13f54a770b1b94a3d81409295d11dfd489e3"
+          }
+        },
+        "cpu": 9,
+        "affinity": [
+          9
+        ],
+        "pid": 3098501,
+        "blas_threads": 1,
+        "cpu_seconds": 411.864148058,
+        "elapsed_seconds": 414.9515327280387,
+        "hamiltonian_actions": 0,
+        "process_peak_rss_bytes": 1765101568
+      }
+    },
+    {
+      "receipt": {
+        "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0069/complete.json",
+        "bytes": 1518,
+        "sha256": "efeb7e9808d6254d2642d5febf6113071f7fae1116ad5375147b28d7420be4b0"
+      },
+      "original_native_record": {
+        "complete": true,
+        "request": "24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5",
+        "index": 69,
+        "arrays": {
+          "n": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0069/attempt-6826bb0fb11f40dfad07ee1fab8e3d17/n.npy",
+            "bytes": 11944064,
+            "sha256": "c4926fed09c07ae5ebc13f065ca4b892c23757e96438ddd5539773777eeae3b2"
+          },
+          "g": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0069/attempt-6826bb0fb11f40dfad07ee1fab8e3d17/g.npy",
+            "bytes": 1904,
+            "sha256": "7f7d99103ddf1aca8c8dc6b5c76387eb7d720d0a2b81d80ff8e82156c43cd12b"
+          },
+          "ell": {
+            "path": "/var/tmp/p254-a28-source-local-material-pair-001/scientific-work/pair/left/work/24a1bdb4b51e7526b76d63eca5428ce0816c1762199d458c599c92735b6215c5/generation-d97d5421f2d945ac80179a393e5b0714/item-0069/attempt-6826bb0fb11f40dfad07ee1fab8e3d17/ell.npy",
+            "bytes": 176,
+            "sha256": "2c532336c1e208c4db67ee59c8dea4cea224ea07420447401de4ac2cc84942d5"
+          }
+        },
+        "cpu": 10,
+        "affinity": [
+          10
+        ],
+        "pid": 3098502,
+        "blas_threads": 1,
+        "cpu_seconds": 402.260554431,
+        "elapsed_seconds": 405.373415005859,
+        "hamiltonian_actions": 0,
+        "process_peak_rss_bytes": 1765101568
+      }
+    }
+  ],
+  "actual_native_new_arrays_raw_digest_type_shape_finiteness_consumed": true,
+  "scope": "Actual original CLI--resume with four sourceworkers, all four actualnewNative n/g/ell outputs consumed. Original66commits/owner/physical request/source/clock/caps unchanged. No newdriver/probe/model/trajectory; no globalcontext/covariance/coherence/accuracy or laterRSS claim."
+}

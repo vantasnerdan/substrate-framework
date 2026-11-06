@@ -1,0 +1,77 @@
+{
+  "schema": "P254-real-same-identity-adoption-registration-v1",
+  "actual_time": "2026-10-29T23:48:14.257382+00:00",
+  "complete_cache": {
+    "path": "/var/tmp/p254-a28-loaded-midpoint-frame-cache-001/cache-complete.json",
+    "bytes": "28471",
+    "sha256": "1eddbbae28cf467a88538a5823fbbf73a351203590f467109c33ff60caf2f68f"
+  },
+  "full_pin_proof": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-baseline-frame-cache-full-pin-proof-001.json",
+    "bytes": "91188",
+    "sha256": "bd8066b3279e345f114b8300b7a825845b9b0be0eb5286e9fb04b1fdd2698b97"
+  },
+  "decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-091.json",
+    "bytes": "1671",
+    "sha256": "5a7ca027490e960ee3d52ea1bed401ead9fa2ffac37e2f9de338975cc6e69f87"
+  },
+  "expected_request": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-gamma-pair-midpoint-frame-request-001.json",
+    "bytes": "7723",
+    "sha256": "6f64bd142f1ad6221c467a99e8c8f7abf0dc4660d78514e19c89e0aa42410918"
+  },
+  "implementation": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reuse_actual_baseline_frames.py",
+      "bytes": "14259",
+      "sha256": "d98329babb1e84574f655568e5240a261cd52c42613cfc73b14cb2a43d1fc9eb"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual_frame_cache_io.py",
+      "bytes": "6282",
+      "sha256": "4815fdf8f9833d70f4960ff35a82699be3f90e600ef2bad06983f5c4ef156b3d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual_frame_cache_provenance.py",
+      "bytes": "8401",
+      "sha256": "ee6839f4f35fde4518ed2e6b0c27d23009cdaffd3c11aab171a5f7b360b92be7"
+    }
+  ],
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-actual-frame-cache-adopt-001",
+    "--property=Type=exec",
+    "--property=CPUAffinity=10",
+    "--property=MemoryMax=2G",
+    "--property=LimitNOFILE=8192",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/.cache/dft/p254-a28-runtime",
+    "--property=RuntimeMaxSec=600s",
+    "--wait",
+    "--pipe",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reuse_actual_baseline_frames.py",
+    "adopt",
+    "--cache",
+    "/var/tmp/p254-a28-loaded-midpoint-frame-cache-001",
+    "--expected-request",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-gamma-pair-midpoint-frame-request-001.json",
+    "--producer-identity",
+    "790fde7ed3596171aa42f438df4b6d0fb78aeb08edaadd18e0d7bfa48043178f",
+    "--target",
+    "/var/tmp/p254-a28-loaded-gamma-pair-001/scientific-work/frames",
+    "--owner",
+    "p254-a28-loaded-midpoint-790fde-001"
+  ],
+  "shell_command": "rc=0; env XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus systemd-run --user --unit=p254-a28-actual-frame-cache-adopt-001 --property=Type=exec --property=CPUAffinity=10 --property=MemoryMax=2G --property=LimitNOFILE=8192 --setenv=OMP_NUM_THREADS=1 --setenv=OPENBLAS_NUM_THREADS=1 --setenv=MKL_NUM_THREADS=1 --setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/.cache/dft/p254-a28-runtime --property=RuntimeMaxSec=600s --wait --pipe /usr/bin/python3 /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reuse_actual_baseline_frames.py adopt --cache /var/tmp/p254-a28-loaded-midpoint-frame-cache-001 --expected-request /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-gamma-pair-midpoint-frame-request-001.json --producer-identity 790fde7ed3596171aa42f438df4b6d0fb78aeb08edaadd18e0d7bfa48043178f --target /var/tmp/p254-a28-loaded-gamma-pair-001/scientific-work/frames --owner p254-a28-loaded-midpoint-790fde-001 || rc=$?; printf '\nP254_FRAME_ADOPT_001_DONE_%s\n' \"$rc\"",
+  "pane": "w1:p3Q",
+  "unique_exit_marker": "P254_FRAME_ADOPT_001_DONE_",
+  "scope": "Actual complete128data/newabsentdisjointnamespace, samephysicalproduceridentity. No newworkers/propagation/rawcopy; actualconsumer stillnext.600s savedinputstage within planned<=1800total; originalproductionbudget unchanged."
+}

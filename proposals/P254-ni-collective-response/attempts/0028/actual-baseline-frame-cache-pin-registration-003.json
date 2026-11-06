@@ -1,0 +1,74 @@
+{
+  "schema": "P254-real-full-frame-pin-registration-v1",
+  "actual_time": "2026-10-29T23:43:47.002439+00:00",
+  "actual_complete_frames": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-loaded-gamma-owner-intake-016.json",
+    "bytes": "161445",
+    "sha256": "6601d616c83b41650efe71ca255de41fba7f5cde061b603a6a5cd9ed547b01d3"
+  },
+  "decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-090.json",
+    "bytes": "1558",
+    "sha256": "b765fac5e658805843606ab2f36c699d2cb65d45e6cba88513c5776956cdcefe"
+  },
+  "implementation": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reuse_actual_baseline_frames.py",
+      "bytes": "14259",
+      "sha256": "d98329babb1e84574f655568e5240a261cd52c42613cfc73b14cb2a43d1fc9eb"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual_frame_cache_io.py",
+      "bytes": "6282",
+      "sha256": "4815fdf8f9833d70f4960ff35a82699be3f90e600ef2bad06983f5c4ef156b3d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual_frame_cache_provenance.py",
+      "bytes": "8401",
+      "sha256": "ee6839f4f35fde4518ed2e6b0c27d23009cdaffd3c11aab171a5f7b360b92be7"
+    }
+  ],
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-actual-frame-cache-pin-003",
+    "--property=Type=exec",
+    "--property=CPUAffinity=10",
+    "--property=MemoryMax=2G",
+    "--property=LimitNOFILE=8192",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/.cache/dft/p254-a28-runtime",
+    "--property=RuntimeMaxSec=600s",
+    "--wait",
+    "--pipe",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reuse_actual_baseline_frames.py",
+    "pin",
+    "--source-request",
+    "/var/tmp/p254-a28-loaded-gamma-forward-003/scientific-work/frames/16813e31ea753b2f160882efcca66c60486e8c24fcf9c4f042949dc036ec7116/generation-2aff866e33db40baa4057a8662970580/request.json",
+    "--source-identity",
+    "790fde7ed3596171aa42f438df4b6d0fb78aeb08edaadd18e0d7bfa48043178f",
+    "--expected-input",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-loaded-midpoint-frame-input-001.json",
+    "--count",
+    "128",
+    "--history",
+    "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+    "--history-sha256",
+    "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd",
+    "--cache",
+    "/var/tmp/p254-a28-loaded-midpoint-frame-cache-001",
+    "--owner",
+    "p254-a28-loaded-midpoint-790fde-001"
+  ],
+  "pane": "w1:p3Q",
+  "tab": "w1:t3Q",
+  "source_identity": "790fde7ed3596171aa42f438df4b6d0fb78aeb08edaadd18e0d7bfa48043178f",
+  "count": 128,
+  "scope": "All128 actual source outputs settled; fill authentic original-inode cache and completebarrier. No fakeframes/rawcopy/newphysics/deletion. Saved-input verificationonly CPU10/2GiB/FD8192/600s, originalproductionbudget unchanged."
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "P254-core-readout-control-allocation-v1",
+  "actual_decision_time": "2026-10-29T08:37:39.757090+00:00",
+  "parent": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-031.json",
+    "bytes": "1875",
+    "sha256": "dd6a108fa29499880933c16fd86f50fa51f35eac512daf9e5030b3da72dae3b2"
+  },
+  "spatial_sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-spatial-readout-registration.json",
+      "bytes": "6475",
+      "sha256": "e7eb0518e5ec87f17f3719544b8902b7eadc3c4163676f1f49503f3b30444b17"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint_spatial_receipts.py",
+      "bytes": "17031",
+      "sha256": "6acc13282b4800b3e47b1e6011eea68b1f379ef3f6ceec0d7af8ce2296e3f2be"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_spatial_readout.py",
+      "bytes": "5888",
+      "sha256": "09e5e8df40eb68acc35d25f0cd56fa5ce429b3bd2c11e1d60222f34863771e7d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_spatial_readout_oracle.py",
+      "bytes": "17212",
+      "sha256": "ce05601a258673109e355b896ae7ff77d6cab0f63e29bcee8428803e3566e4e9"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/joint_spatial_readout.py",
+      "bytes": "4854",
+      "sha256": "455052e42b8f6fd0cfd9dd88687a05ce2dd906b50452d165b7bb573f01386a75"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/spatial_readout_metrics.py",
+      "bytes": "3579",
+      "sha256": "0e5949ee0254147d97c8e5f03b8e58358efbe07d27bb4d8c98ac2d9e72b16bb4"
+    }
+  ],
+  "control_proof": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-clamped-oracle-001.json",
+    "bytes": "18353",
+    "sha256": "18b9ca9ca546abf6e4b78b3c2a4776a7722fbf4e2e4341f6a146303e59fba222"
+  },
+  "action": "Execute complete new split/all spatial readout oracle and the first actual current-matched loaded periodic clamped control. Existing clamped scalar equations and old proofs are retained, not rerun.",
+  "allocations": {
+    "spatial": {
+      "cpu": 9,
+      "nice": 10,
+      "seconds": 180,
+      "memory_bytes": 2147483648
+    },
+    "loaded_control": {
+      "cpu": 10,
+      "nice": 5,
+      "seconds": 900,
+      "memory_bytes": 4294967296,
+      "times_inverse_ry": [
+        0.0,
+        1.0,
+        10.0,
+        30.0,
+        100.0,
+        300.0,
+        1000.0
+      ],
+      "output_bytes": 268435456
+    }
+  },
+  "overlap": "Bounded lower-priority independent jobs share9/10 with mean workers;6/7/8 remain exclusive to mean. This avoids interrupting unfinished Arnoldi bases; no change to existing mean total wall/action limits or any frozen claim.",
+  "useful_output": "Actual case-scoped material local/common control, spatial quantum readouts and energy/CCR diagnostics over the previously used time grid; not coupled E/D completion or a lattice ranking."
+}

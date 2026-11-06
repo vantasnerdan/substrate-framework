@@ -1,0 +1,38 @@
+{
+  "schema":"p254-a57-paid-mean-feedback-cache-handoff-v1",
+  "status":"complete",
+  "original_feedback_handoff":{"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0057/actual-common-mean-feedback-handoff-001.json","bytes":22245,"sha256":"0607ed32f7d2b30ffeeae33c89f232ac777b404a0cb7501fc3a9e19dddb3a1b6"},
+  "cache_result":{"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0057/material/paid-cache-001/result.json","bytes":3599,"sha256":"9e2f7648f4236ece0d2da99a0626e0362610e7b5facd7372009bd8f3999dc560"},
+  "cache_archive":{"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0057/material/paid-cache-001/paid-mean-forcing.npz","bytes":21893810,"sha256":"ce0aa865739ed8a1b2f72e6d46f7b52bface3a7b687e76cd300a7dc4173fa6c9"},
+  "actual_saved_consumer":{"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0057/material/paid-cache-001/saved-consumer.json","bytes":1517,"sha256":"432ea4db1772f45d11dce6669c3ccb8148ad013e4f295db18783b8b715633cc7"},
+  "API":{
+    "module":"paid_mean_feedback_cache.py",
+    "constructor":"PaidMeanFeedbackCache(cache_result_path,coefficient_binding)",
+    "method":"forcing_for(dataset,source:CompactCubic)",
+    "returns":["times","rho","ordered_gamma_covariance","cubic_covariance_force","gamma_force","input_dataset","cache_bindings","nonGamma_contractions","Gamma_contractions"],
+    "properties":["phi000","times","bindings"],
+    "close":"close()",
+    "integration":"CommonMeanFunctional(c,source,phi=cache.phi000); existing produce_mean_feedback.integrate(model,times,rho,node_electronic_gradients,cubic_covariance_force,rtol=...,atol=...). No nonGamma force or Phi000 recomputation."
+  },
+  "finding_array":[
+    {"finding":"Original full paid nodal force and same-source old Gamma contribution persisted; all original q0..q63 coverage retained."},
+    {"finding":"Subsequent forcing is Fpaid_full+(Fnew_Gamma-Fpaid_Gamma); only three Gamma node contractions, zero nonGamma contractions."},
+    {"finding":"Actual original saved material input passed through saved cache consumer; full-force bytes recovered identically.","max_error":0.0},
+    {"finding":"Original source Phi000 persisted.","shape":[111,111,111],"norm":53.834162489151964},
+    {"finding":"The prior full force accumulation is retained; delta replacement uses ordinary binary64 additions/subtractions, not a claim of exact separate nonGamma resummation."},
+    {"finding":"Reuse invalidated by changed material coefficients, compact cubic source, original prescribed nonGamma bath, or exact [0,.5,1] nodes."},
+    {"finding":"No all64 replay, symmetry reduction, new symmetry proof, changed original source, or active-Native source edit."}
+  ],
+  "execution_contract":"paid-cache-execution-contract.json",
+  "invocation_receipts":"invocations/paid-cache-001",
+  "native_exitcode":0,
+  "actual_all_exit_marker":"A57_PAID_CACHE_ALL_EXIT_0",
+  "additional_launcher_seconds":10.772190171293914,
+  "additional_native_receipt_seconds":9.980015893932432,
+  "cumulative_native_launcher_seconds_including_prior_failures":353.6639710380696,
+  "cache_native_maxrss_kib":372968,
+  "cache_cgroup_peak_bytes":381358080,
+  "total_owned_directory_bytes_before_this_small_handoff":28162815,
+  "payload_cap_bytes":67108864,
+  "view_closure":{"command":["herdr","tab","close","w1:t6M"],"exitcode":0,"response":{"id":"cli:tab:close","result":{"type":"ok"}},"sole_shell_receipt":"paid-cache-terminal-view-receipt.json","protected_views_touched":false}
+}

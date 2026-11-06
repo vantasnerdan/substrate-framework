@@ -1,0 +1,28 @@
+{
+  "schema": "p254-a27-preparation-reader-proposal-v1",
+  "production_authority": false,
+  "reader_authority": false,
+  "source": "import json,sys\nfrom pathlib import Path\nroot=Path('/home/administrator/projects/substrate-ni-collective')\nsys.path.insert(0,str(root/'proposals/P254-ni-collective-response/attempts/0027'))\nimport run_material_preparation_pilot as driver\npaths=driver.preload()\nfrom material_run_contract import implementation,verify_consumers,runtime_context,_context\nfrom substrate_framework.material_preparation_output import load_saved_material_preparation\ngrant=json.loads(Path(sys.argv[1]).read_bytes())\ncontext=runtime_context()\n_context(grant,context)\nverify_consumers(grant,implementation(paths))\nterminal_binding=json.loads(Path(sys.argv[2]).read_bytes())\nsaved=load_saved_material_preparation(terminal_binding)\nfinal=implementation(paths)\nverify_consumers(grant,final)\nprint(json.dumps(dict(scope='authenticated original neutral-ledger/selected-Gamma saved consumption only; no filling,WFC decoding,factor/H0 regeneration or propagation',context=context,coverage_identity=saved.coverage_identity,receipt_archives={k:dict(v)['archive'] for k,v in saved.receipts.items()},population_shapes={k:list(v.shape) for k,v in saved.population_ledger.items()},selected_gamma_shapes={k:list(v.shape) for k,v in saved.selected_gamma.items()},population_diagnostics={k:v.tolist() for k,v in saved.population_ledger.items() if v.size<=10},selected_gamma_diagnostics={k:v.tolist() for k,v in saved.selected_gamma.items() if v.size<=10},final_implementation_sources=final),sort_keys=True,allow_nan=False))\n",
+  "inline_source_sha256": "1b18fd32274a253120fcfcf0f17a7b109d744f27ffa7d604e87c40c809ebea02",
+  "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,sys\nfrom pathlib import Path\nroot=Path('/home/administrator/projects/substrate-ni-collective')\nsys.path.insert(0,str(root/'proposals/P254-ni-collective-response/attempts/0027'))\nimport run_material_preparation_pilot as driver\npaths=driver.preload()\nfrom material_run_contract import implementation,verify_consumers,runtime_context,_context\nfrom substrate_framework.material_preparation_output import load_saved_material_preparation\ngrant=json.loads(Path(sys.argv[1]).read_bytes())\ncontext=runtime_context()\n_context(grant,context)\nverify_consumers(grant,implementation(paths))\nterminal_binding=json.loads(Path(sys.argv[2]).read_bytes())\nsaved=load_saved_material_preparation(terminal_binding)\nfinal=implementation(paths)\nverify_consumers(grant,final)\nprint(json.dumps(dict(scope='authenticated original neutral-ledger/selected-Gamma saved consumption only; no filling,WFC decoding,factor/H0 regeneration or propagation',context=context,coverage_identity=saved.coverage_identity,receipt_archives={k:dict(v)['archive'] for k,v in saved.receipts.items()},population_shapes={k:list(v.shape) for k,v in saved.population_ledger.items()},selected_gamma_shapes={k:list(v.shape) for k,v in saved.selected_gamma.items()},population_diagnostics={k:v.tolist() for k,v in saved.population_ledger.items() if v.size<=10},selected_gamma_diagnostics={k:v.tolist() for k,v in saved.selected_gamma.items() if v.size<=10},final_implementation_sources=final),sort_keys=True,allow_nan=False))\n",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-saved-reader-grant-001.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-actual-terminal-binding-001.json"
+  ],
+  "scope": "One separately authorized post-terminal restore after actual successful producer manager outcome. Existing scientific reader validates original source,recipe,all-slot neutral ledger and selected Gamma Pauli/number/probe arrays. No numeric producer replay.",
+  "reserved_seconds": 30,
+  "dependency_inventory": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-dependency-universe-003.json",
+    "bytes": "2785579",
+    "sha256": "a6ae3f7bf3f67ee22478c9206d8ed1ad3b58d2e26579666fe4c797dd055aa883"
+  },
+  "requires": "Fresh exact Root reader grant and original successful actual terminal binding; neither fabricated at this stage.",
+  "prior_proposal": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-reader-proposal-001.json",
+    "bytes": "4349",
+    "sha256": "4f36975afe54c42a8aeb4617575ce8db2eefcbb1ca2d2c6008c8490e7c1673d9"
+  },
+  "change": "Source-bound dependency generation only; exact inline source and argv unchanged. Reader remains separately ungranted."
+}

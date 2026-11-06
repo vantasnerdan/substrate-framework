@@ -1,0 +1,89 @@
+Implemented all three owned files; no other files edited. **No build, scientific import, test, numerical execution, or Native replay performed.**
+
+### Delivered API
+
+```python
+backend = NativePBE(bound_library)
+result = backend.evaluate(
+    rho_total_magnetization,  # [nr,2]
+    grho_updown,              # [3,nr,2]
+    out=None,                # optional NativePBEResult buffers
+    workspace=None,          # optional F-float64 [nr,19]
+)
+```
+
+`NativePBEResult` attributes:
+- `local_xc_ry[nr,2]`
+- `gradient_flux_ry_bohr[3,nr,2]`
+- `dmuxc`, `dvxc_rr`, `dvxc_sr`, `dvxc_ss`, `dvxc_s`: `[nr,2,2]`
+
+`backend.source` is the verified library identity; `backend.dependencies` contains verified runtime identities. `bound_library` must retain the build-generated **dependencies list**, not just path/count/hash.
+
+The loader verifies bytes before ctypes, loads a sealed Linux memfd copy, checks runtime mappings before calling the ABI, and serializes mutable XClib state. Wrapper scratch is caller-owned; original XClib allocations remain unchanged.
+
+### Native conventions retained
+
+Source basis: original QE7.5 `v_of_rho`, `gradcorr`, `setup_dmuxc`, `setup_dgc`, XClib wrappers/drivers and functional IDs.
+
+- `xc` receives **total/magnetization**; GGA and derivatives receive **up/down**.
+- Full XC is **local minus divergence of flux**, including mixed-spin flux.
+- Original finite differences remain inside the archived routines.
+- `dmxc`/`dgcxc` already return Ry; no second conversion.
+- Important chronology preserved: H0 GGA uses default density cutoff `1e-6`; `dgcxc` subsequently changes it to `1e-10`. A second `xc_gcx` supplies Native `dvxc_s`, with its separate total-density `>1e-6` mask.
+- No clipping, fitted shifts, or Hermitization.
+
+Supported scope: ordinary-NC, no-NLCC, collinear internal PBE. Noncollinear/NLCC/Libxc/hybrid/meta-GGA branches are not exposed.
+
+### Root build and oracle
+
+With `A25=proposals/P254-ni-collective-response/attempts/0025`:
+
+```bash
+python3 "$A25/build_internal_pbe.py" --describe
+```
+
+Save this JSON as the Root-admitted `$A25/build-inputs.json`, then:
+
+```bash
+python3 "$A25/build_internal_pbe.py" \
+  --build --admission "$A25/build-inputs.json" --seconds 120
+```
+
+Produces:
+- `$A25/build/internal-pbe/libinternal_pbe.so`
+- `$A25/build/internal-pbe/library-binding.json`
+- `$A25/build/internal-pbe/build-receipt.json`
+- Per-command stdout/stderr.
+
+Existing private target directories are refused. Exact argv, source/module/header/toolchain identities, and actual linked runtime dependencies are recorded. Material owner received the interface and binding requirements.
+
+Root oracle command:
+
+```bash
+PYTHONPATH=src python3 "$A25/run_reference_reconstruction_oracle.py" \
+  --library-binding "$A25/build/internal-pbe/library-binding.json" \
+  --output "$A25/reference-reconstruction-oracle.json"
+```
+
+### Link findings
+
+Observed non-PIC archive relocations require localization of internal symbols. Original `beefun.o` additionally references external `stdout` using PC32. Per your approval, the recipe compiles **only original `beefun.c` as PIC**, then links the unchanged archive. PBE object code remains original.
+
+Compiler/link paths:
+- `/usr/bin/gfortran`, `/usr/bin/cc`: observed GCC 13.3.0
+- `/usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_mpifh.so`
+- `/usr/lib/x86_64-linux-gnu/libopenblas.so`
+
+The describe phase enumerates actual C headers, GNU compiler subprograms/startup inputs and runtime closure. Linking uses `-z defs`, `-z text`, `-Bsymbolic`, and `--exclude-libs,ALL`; no fallback backend.
+
+### Actual delivered-buffer identities
+
+| File | Bytes | SHA256 |
+|---|---:|---|
+| `src/substrate_framework/qe_internal_pbe.py` | 7025 | `10c5f42668faf51f6166ef61e66c8be214a8a82cded2778bfc54eed0c7872248` |
+| `A25/internal_pbe_bridge.f90` | 3853 | `c502b9817287e4f2dc84ba818ff540e8d2f966e700aaac5c296f10b9427d5c3c` |
+| `A25/build_internal_pbe.py` | 7969 | `4f2c9618a00f9183384a671f429a4ba20473d81e337030a9f1dd4ee360e5161d` |
+
+Original archive re-bound from actual bytes: **1,154,776 bytes**, SHA256 `a8f7bdfdfd3c94fa460643511aca9d7e6493ee41a4c7c8466d9b0f19eabab245`.
+
+Source implementation and recipe are complete; build/load success and reconstruction agreement remain Root’s unexercised acceptance checks.

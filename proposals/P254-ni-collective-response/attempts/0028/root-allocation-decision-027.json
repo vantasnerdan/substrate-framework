@@ -1,0 +1,50 @@
+{
+  "schema": "P254-root-allocation-decision-v1",
+  "decision": "Root027",
+  "actual_decision_time": "2026-10-29T06:49:10.006554+00:00",
+  "previous_due_time": "2026-10-29T06:44:35.905030+00:00",
+  "deadline_breach": true,
+  "breach_reason": "Root overran the previous due time while consuming the physical solver result and case incompatibility; no retrospective compute extension.",
+  "next_decision_due": "2026-10-29T07:09:10.006554+00:00",
+  "evidence": {
+    "physical_column_probe": {
+      "path": "/var/tmp/p254-a28-joint-column-probe-001/result.json",
+      "bytes": "7577",
+      "sha256": "1ad04ef561a6883ba133082375039dfbae439626155912c26c69a090b25eb554"
+    },
+    "loaded_state_difference": {
+      "path": "/var/tmp/p254-a28-matched-loaded-state-difference-001/result.json",
+      "bytes": "1631",
+      "sha256": "2186e7ee995f36ab5f1181665653ffcb104531606787cba62fed066eacb1b57b"
+    },
+    "pristine_readback": {
+      "path": "/var/tmp/p254-a28-matched-pristine-joint-readback-001/result.json",
+      "bytes": "7360",
+      "sha256": "af63554e2809dac0f637cd7495ddfc2c16c2eba4a96302445a26c81aa24d9842"
+    },
+    "vacancy_readback": {
+      "path": "/var/tmp/p254-a28-matched-vacancy-joint-readback-001/result.json",
+      "bytes": "7364",
+      "sha256": "c170798b2f4292edcb1f905aa192542a3a2253db88030d657aab5b80d2c8fc69"
+    },
+    "dispersed_initialization": {
+      "path": "/var/tmp/p254-a28-matched-dispersed-joint-initialize-001/result.json",
+      "bytes": "33376",
+      "sha256": "12c767ecd67d62afd330d381dc4e3dfbe3920a42d19e5b37de1d73d7e0d9750e"
+    }
+  },
+  "decision_rationale": "The physical column pilot completed at5 H actions/1730 columns versus12/2776 in its saved SciPy comparator, with actual density/gradient/energy differences recorded. Adopt the checked bounded column method for source-exact physical stages rather than extend unchanged SciPy. Complete the common matched-scalar consumer cutover; the old loaded remainder scalar cannot be relabeled as matched-case dynamics.",
+  "allocation": {
+    "loaded": "CPU8: rebind each original array only after exact current-source comparison. First differing slot had identical frame/D but changed representation labels; no whole-state equality assumed. 600s/660s and4GiB; initialize and actual read-back from the resulting original boundary with separate600s/660s caps.",
+    "dispersed": "CPU10: actual source-exhaustive readback of completed init001;600s/660s and4GiB.",
+    "source": "Integrate bounded physical-column propagation and case-selected matched mean consumer. Preserve all old source/results and completed t0/SciPy partial work as scoped evidence; no initial coefficients recomputed. Source-equation proof only for the changed numerical contract, then actual material execution. No production mean extension authorized until allocation readback.",
+    "q": "Continue bounded live-storage implementation, exact forward/discrete-adjoint algebra and meaningful recovery. Execute finite changed oracle once when complete; material q requires actual positive-time history. No oversized disk launch."
+  },
+  "whole_objective": "E/D/C and whole review/publication remain open; no new scientific gates or scope reduction",
+  "unchanged_constraints": [
+    "Only CPUs6\u201310 for new numerical work",
+    "W1/EMPTY remain frozen; NC stopped; Runpod abandoned",
+    "No new spending or relaxed scientific acceptance",
+    "Whole E/D/C remain open"
+  ]
+}

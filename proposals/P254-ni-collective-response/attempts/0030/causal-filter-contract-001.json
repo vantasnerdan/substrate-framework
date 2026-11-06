@@ -1,0 +1,23 @@
+{
+  "schema": "P254-causal-output-filter-contract-v1",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "decision": "../0028/root-allocation-decision-481.json",
+  "purpose": "Produce the missing causal physical-force-to-Ni-displacement filter on the approved moving active-model baseline; do not substitute initial H37 force variance for Ni coherence.",
+  "existing_solutions": ["A29 ActiveBandCorrelations.transpose and ionic_probes", "A29 bounded_first_step", "A29 ActiveBandDynamics.integrate_baseline and BaselineSolution", "Original immutable coefficient archives and saved finite-result snapshot"],
+  "inputs": {
+    "original_finite_result": "/var/tmp/p254-activeband-loaded-finite-b12-f27-001/result.json",
+    "case": "loaded-ni31h6",
+    "bands": 12,
+    "features": 27,
+    "q_index": 0,
+    "output_time_inverse_ry": 30,
+    "atom": 1,
+    "axis": "x"
+  },
+  "filter_interface": "build_canonical_force_filter(correlations, q, final_time, coordinates) -> compact filter with evaluate(time) returning ionic_force[ndof,nprobes], field_force[nfield,nprobes], initial_dual[state_size,nprobes], segment arrays and metadata",
+  "baseline_interface": "prepare_saved_active_baseline(original_result_path, *, work_directory) -> object with coefficients, baseline, correlations, coordinate, source, work; no unfinished-filter import",
+  "numerics": "Reuse admitted nonconjugating L(t).T and the original DOP853 rtol/atol. Physical force enters p-prime with plus sign; global field-momentum force enters Pi-prime. No extra mass, spin, source weight or cell multiplier in the filter. Keep the full initial dual for later original-preparation cross terms. Store only canonical forcing components of the DOP853 dense polynomial, not a state-sized history or transition bank. Degree-seven small-component Chebyshev representation may be constructed from the existing public dense evaluator and accepted integration intervals, with owning independent forced-ODE/SymPy checks; do not add a new adaptive approximation or tolerance gate.",
+  "execution": "Parent executes only after both complete code slices settle. One necessary new loaded maximum-model Gamma baseline reconstruction and filter pilot, CPU7/BLAS1, Native MemoryMax4GiB/swap0/RuntimeMax600s. No finite-dose trajectory or all16 replay. Record reconstructed history as NEW, not recovered original adaptive state.",
+  "storage": "One reported shared5GiB pool. Original data immutable. New small filter output and necessary Gamma-only working view; no all-q/full-state/full-action bank.",
+  "scientific_scope": "Conditional active-model causal filter, not full-PW moving mean, complete passive two-time noise, physical loss, a coherence correction or a lifetime. Full passive influence still requires its actual ordered kernel/response and retained/omitted cross terms."
+}

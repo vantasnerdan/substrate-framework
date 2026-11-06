@@ -1,0 +1,416 @@
+{
+  "schema": "P254-local-pulse-energy-preregistration-v1",
+  "actual_time": "2026-10-29T21:47:50.960454+00:00",
+  "objective": "Complete the initial local canonical-pulse energy input and matched-dose comparison required by coreD/C, using original saved material inputs; NOT propagated component redistribution, heat, noise, nuclear input or fullD closure.",
+  "plan": [
+    "Independently derive the canonical pulse transformation with a SymPy differential-operator oracle, including the minimal-coupling cross term and arbitrary initial mechanical mean. Verify complementary non-momentum terms commute and source-defined Fourier normalization/Parseval, with exposing mutations.",
+    "Consume all four authenticated original archives for commonNi1/x mass/charge, actual mass convention, documented centered matched preparation, amplitude1/cell0/currentGamma request. Report physical local input energy and all64 Fourier weights, explicitly distinguishing the oneGamma share from whole local input.",
+    "Root reviews new modules and runs the REAL CLI on these original saved inputs with source-bound oracle; no trajectory rerun. Publish output and bounded scope in the big-picture map."
+  ],
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched_joint_case.py",
+      "bytes": "8457",
+      "sha256": "bdda2e9ba4e75a497eed928443b1c3bb85e22c75874376e35c94b4d24e55c15c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched_joint_state.py",
+      "bytes": "9189",
+      "sha256": "ba7314da09d2ce4599324683d01795dc402e037f79df47c17e959021120f97a8"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_joint_field_scalar.py",
+      "bytes": "10960",
+      "sha256": "c403841b6b36f83bf5b66cc5488870a79e7342890ae1e7932e8e032158d2210b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_modes.py",
+      "bytes": "7510",
+      "sha256": "a37b3f88ba3e3e8f1c3b011694977e91cfb011eec82957b7e9688d600669c001"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/joint_response_observables.py",
+      "bytes": "6170",
+      "sha256": "8cf17725507a993d873f01d25cd215c47103704b8925be766a02cd040fb380e6"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_q_material.py",
+      "bytes": "26499",
+      "sha256": "d0f2a7520f231bab6a99fe1e8edea94c8d11cdd03b5841eb7ff3a588c9fe53de"
+    }
+  ],
+  "case_registration": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-joint-case-registration.json",
+    "bytes": "7723",
+    "sha256": "fae678f6a11d08017e058e719f39999b8d1ec0232533f4f2ef0ac234aba60e61"
+  },
+  "cases": [
+    {
+      "case": "loaded-ni31h6",
+      "aggregate": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-loaded-aggregate-001/result.json",
+        "bytes": "258009",
+        "sha256": "ef411e9b0c8c533229693874654327729ea1dec3079174e48b6a54c97dac1e22"
+      },
+      "archive": {
+        "bytes": "67939062",
+        "path": "/var/tmp/p254-a28-matched-transport-aggregates-001/loaded-ni31h6-matched-transport.npz",
+        "sha256": "d609176e5456cf86fdb49e8fa291c8387a2def0fcee49871f0c41b2e550f33d1"
+      },
+      "atom": 1,
+      "axis": "x",
+      "element": "Ni",
+      "original_mass_amu": 58.6934,
+      "initial_means": "documented centered matched preparation, not equilibrium"
+    },
+    {
+      "case": "pristine-ni32",
+      "aggregate": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-pristine-aggregate-001/result.json",
+        "bytes": "252087",
+        "sha256": "3c10e99459317c289b938920d058cfe6855528f67d3b114a19831518a12b4caa"
+      },
+      "archive": {
+        "bytes": "58347542",
+        "path": "/var/tmp/p254-a28-matched-transport-aggregates-001/pristine-ni32-matched-transport.npz",
+        "sha256": "1ad452cbd9fa3b5d73cf527cfc7e35387135eb3c13746e1f1601b31b8b4b547a"
+      },
+      "atom": 1,
+      "axis": "x",
+      "element": "Ni",
+      "original_mass_amu": 58.6934,
+      "initial_means": "documented centered matched preparation, not equilibrium"
+    },
+    {
+      "case": "empty-vacancy-ni31",
+      "aggregate": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-vacancy-aggregate-001/result.json",
+        "bytes": "255043",
+        "sha256": "9bd4d3b04ad9684e0a4adb05f18b5771d94331724c965c0ce9c6b69d1b5a4b13"
+      },
+      "archive": {
+        "bytes": "56595990",
+        "path": "/var/tmp/p254-a28-matched-transport-aggregates-001/empty-vacancy-ni31-matched-transport.npz",
+        "sha256": "2faf1be68ee50ac73cd58a8f3dd0cbf37eb086ca32c5f6bf0759785674e195e3"
+      },
+      "atom": 1,
+      "axis": "x",
+      "element": "Ni",
+      "original_mass_amu": 58.6934,
+      "initial_means": "documented centered matched preparation, not equilibrium"
+    },
+    {
+      "case": "dispersed-ni32h6",
+      "aggregate": {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-dispersed-aggregate-001/result.json",
+        "bytes": "258565",
+        "sha256": "b35d69bd1801fde6278e366784b44102f993d8103b4c13fa25b2e66f398a7c49"
+      },
+      "archive": {
+        "bytes": "70024118",
+        "path": "/var/tmp/p254-a28-matched-transport-aggregates-001/dispersed-ni32h6-matched-transport.npz",
+        "sha256": "a2a75f7c34e01dabcea08721f137565da829c3d8742c6dd0a84a7064c30c6bab"
+      },
+      "atom": 1,
+      "axis": "x",
+      "element": "Ni",
+      "original_mass_amu": 58.6934,
+      "initial_means": "documented centered matched preparation, not equilibrium"
+    }
+  ],
+  "matched_preparation_declaration": "u=p=q0=pi0=0; explicit zero support",
+  "matched_model_source": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched-loaded-joint-readback-001.json",
+    "bytes": "7358",
+    "sha256": "2c9f11367634894d047d3417813923733bebafb6e9d63a0a131b713211b1d0db"
+  },
+  "actual_gamma_source_adoption": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-loaded-gamma-source-adoption-002.json",
+    "bytes": "216548",
+    "sha256": "0d68217419391649a7f1d8851cdc7109bc8dc6bac6227e1a5ba1448829e2c7e2"
+  },
+  "actual_gamma_seed_request": {
+    "identity": "790fde7ed3596171aa42f438df4b6d0fb78aeb08edaadd18e0d7bfa48043178f",
+    "key": {
+      "amplitude": 1.0,
+      "cell": [
+        0,
+        0,
+        0
+      ],
+      "direction": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "q": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "time": 0.0,
+    "kind": "coherent-initial",
+    "dynamics": "screened-joint",
+    "provenance": {
+      "baseline": {
+        "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/completed/boundary.json",
+        "bytes": 155903,
+        "sha256": "903ba92c30a814bc5a9f734024ff1228025237f72a74ecdeea58d1e1673053fd"
+      },
+      "history": [
+        {
+          "kind": "actual-frozen-midpoint",
+          "time_ry_inverse": 0.0005,
+          "start_time_ry_inverse": 0.0,
+          "dt_ry_inverse": 0.001,
+          "prior_boundary": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/initial/boundary.json",
+          "midpoint_iterations": 2,
+          "prior_boundary_binding": {
+            "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/initial/boundary.json",
+            "bytes": 173727,
+            "sha256": "83c7a1b138780a648b1afad77a55cd6d4f3a7d3c61f76836ef3f86fef8d3e095"
+          },
+          "midpoint_residuals": [
+            {
+              "potential": 5.188471927132337e-07,
+              "gradient": 5.982950447725712e-08,
+              "field_gradient_electronic": 1.1404265890702324e-12,
+              "u": 0.0,
+              "p": 2.056353561375906e-05,
+              "coordinate": 0.0,
+              "momentum": 3.1291845688629172e-12,
+              "velocity": 1.6215773520080445e-09,
+              "force": 6.995456538700562e-07,
+              "field_velocity": 5.201118854811479e-16,
+              "field_force": 7.299443435104516e-11
+            },
+            {
+              "potential": 5.627848231571744e-12,
+              "gradient": 5.570940887014983e-13,
+              "field_gradient_electronic": 5.348462295242149e-15,
+              "u": 8.107886773181214e-13,
+              "p": 3.641505115117503e-10,
+              "coordinate": 2.6005594274057407e-19,
+              "momentum": 3.6497217283225354e-14,
+              "velocity": 6.807230787295071e-15,
+              "force": 1.1746096920683588e-10,
+              "field_velocity": 6.0663204992283444e-18,
+              "field_force": 3.644652939152332e-13
+            }
+          ],
+          "tolerance": 1e-09,
+          "operator": "physical H0 + K(delta n) + physical g(u) + field-only L(a)",
+          "frame_reconstruction": "exp(-i dt/2 H_frozen) applied to prior original-column frames",
+          "arrays": {
+            "density": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/density.npy",
+              "bytes": 5972096,
+              "sha256": "b17538eeb4f43ffd32aacde12784da3eb16da04141ab46a2cac99842da6e309b"
+            },
+            "gradient": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/gradient.npy",
+              "bytes": 1016,
+              "sha256": "b58486f2938c9499b43e087c4330fff47963d191755795d6893f624cbc091414"
+            },
+            "field_gradient_electronic": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/field_gradient_electronic.npy",
+              "bytes": 152,
+              "sha256": "10ffc870485c435a0756c3bba6d275fdd490d7f7ab81e7e662b1eee855d5b13a"
+            },
+            "potential": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/potential.npy",
+              "bytes": 5972096,
+              "sha256": "4a628eeaab7fa0ccf72772160516775c62a059ceaac44b0633eb943eb5aa3c58"
+            },
+            "u": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/u.npy",
+              "bytes": 1016,
+              "sha256": "5814dae58063bda834a54500caf0012b8408e86db72a8f7c46d350b5a25b59d9"
+            },
+            "p": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/p.npy",
+              "bytes": 1016,
+              "sha256": "7b3f386749378e944fe50ce4776fcb9954691fee24fe2a477456c996264e8d32"
+            },
+            "coordinate": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/coordinate.npy",
+              "bytes": 152,
+              "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+            },
+            "momentum": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/momentum.npy",
+              "bytes": 152,
+              "sha256": "8d3c6fc1aaef010339f217aec4d0482428d1661131a10c78015ab48a8fb0c7f1"
+            },
+            "shift": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/shift.npy",
+              "bytes": 152,
+              "sha256": "0237082f316c456f6dfc5bfd9f16db975dd4a0020cf5ba83f3d4d7820f60efe8"
+            },
+            "velocity": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/velocity.npy",
+              "bytes": 1016,
+              "sha256": "b415588e3db46a1d7e04d5ad40e52c82598e8f1a51552124218ac5dd853eb0a9"
+            },
+            "force": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/force.npy",
+              "bytes": 1016,
+              "sha256": "6ac2f501f9f96d6196b132baad560ee09b2c60ce8f71fcdc414054d9bb233f63"
+            },
+            "field_velocity": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/field_velocity.npy",
+              "bytes": 152,
+              "sha256": "235a3f6a845279103fc7b076e0eca8d0f622f29009ca512b45aff22099dc873d"
+            },
+            "field_force": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/field_force.npy",
+              "bytes": 152,
+              "sha256": "9ddc720cef76e993696e95d9be0d69d1347c8886831b5e9d292056af62676684"
+            },
+            "electronic_current": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/electronic_current.npy",
+              "bytes": 152,
+              "sha256": "2a7be9e959cfbdfe2f872e0ed1ab1bfc2dd1836071bd4aa248a712860a071d6d"
+            },
+            "ionic_current": {
+              "path": "/var/tmp/p254-a28-matched-loaded-mean-working-precision-001/interval-0.001-steps-1/step-000001/attempt-b3cc194cd7644b928661b76a391c9fc7/frozen-midpoint/ionic_current.npy",
+              "bytes": 152,
+              "sha256": "f992ea834a279a5a3509fdfd4c26ff8a299da8667713f5397c2033c194dd85c9"
+            }
+          },
+          "energy_total_ry": -37728.58613008075,
+          "number_per_cell": 563.9999999999999
+        }
+      ]
+    }
+  },
+  "current_source_identity": "790fde7ed3596171aa42f438df4b6d0fb78aeb08edaadd18e0d7bfa48043178f",
+  "impulse": {
+    "amplitude": 1.0,
+    "cell": [
+      0,
+      0,
+      0
+    ],
+    "atom": 1,
+    "axis": "x",
+    "ncells": 64,
+    "mesh": [
+      4,
+      4,
+      4
+    ]
+  },
+  "scope": "Initial input for the declared centered matched preparation. No claim of observed propagated energy or fluctuation readout, convergence, heat or whole-grid completion.",
+  "resource_scope": "New source only; root will run CPU10/BLAS1,2GiB,180s bounded saved-input readout after code review. No bound production source edits, no Native/cloud/new propagation, no existing arrays copied/deleted.",
+  "owner": "Root integrates/reviews/runs; source consumer must retain complete original source bindings/native typed fields."
+}

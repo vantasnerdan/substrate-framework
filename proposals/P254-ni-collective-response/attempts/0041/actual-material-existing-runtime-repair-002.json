@@ -1,0 +1,60 @@
+{
+  "schema": "P254-A41-actual-existing-dependency-runtime-repair-v1",
+  "issued_at": "2026-11-04T23:52:03.077553+00:00",
+  "old_failure": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/actual-material-prerequisite-failure-001.json",
+    "bytes": 1279,
+    "sha256": "d6bd86e27768e772998c23f346f49df0566c2a58dd7f19a9d9076a746b285988"
+  },
+  "correction": "Same numerical venv/unchanged source; make already installed actual threadpoolctl3.6.0 available through its proven A39 runtime PYTHONPATH component. No duplicate installation, stubs or suppressed import.",
+  "actual_existing_dependency": [
+    {
+      "path": "/home/administrator/.cache/dft/p254-a28-runtime/threadpoolctl.py",
+      "bytes": 50722,
+      "sha256": "12fb9526b6a74d2e686b7ec148dc165c3587999b14fa86984aa180e10802400b"
+    },
+    {
+      "path": "/home/administrator/.cache/dft/p254-a28-runtime/threadpoolctl-3.6.0.dist-info/METADATA",
+      "bytes": 13843,
+      "sha256": "a45df8d07ea1883d772183a501d7d526076aa70dfcfddb276a2cbdc04def5341"
+    }
+  ],
+  "argv": [
+    "env",
+    "XDG_RUNTIME_DIR=/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+    "systemd-run",
+    "--user",
+    "--wait",
+    "--pipe",
+    "--collect",
+    "--unit=p254-a41-material-electron-ion-kernel-002.service",
+    "--property=RuntimeMaxSec=720",
+    "--property=MemoryMax=6442450944",
+    "--property=MemorySwapMax=0",
+    "--property=Restart=no",
+    "env",
+    "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "6",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-u",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0041/run_material_electron_ion_kernel.py",
+    "--frozen-reference",
+    "--sigma-slots",
+    "0,64",
+    "--pi-q",
+    "0,1,2",
+    "--output",
+    "/var/tmp/p254-a41-frozen-kernel-spin-q-001"
+  ],
+  "charged_new_seconds_before_attempt2": 23.246,
+  "remaining_of900": 876.754,
+  "runtime_max_seconds": 720
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "P254-root-allocation-decision-v1",
+  "decision": "Root252",
+  "actual_decision_time": "2026-10-31T10:51:13.218329+00:00",
+  "previous_due_time": "2026-10-31T10:58:14.139858+00:00",
+  "deadline_breach": false,
+  "next_decision_due": "2026-10-31T11:11:13.218329+00:00",
+  "action": "Producer actually released after completing the physical RK4 endpoint; requested energyreadout failed on the known stale source-authority reader. Preserve this real failure and all physical work. End producer allocation, repair the source-authority reader at its source, create a fresh same-input mean ledger and execute the existing propagation-free energy consumer. No trajectory replay or stale-proof suppression.",
+  "evidence": {
+    "actual_terminal_intake": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/actual-shared-mixed-continuation-terminal-intake-001.json",
+      "bytes": "2586",
+      "sha256": "09e8c5a9a2733716d47afe9ce8679ef0e5c42049443df1cbed763333c82fc228"
+    },
+    "actual_unit_exit": "10:47:40 UTC, exit2, MainPID0, NRestarts0",
+    "exclusive_owner_lock": {
+      "actual_utc": "2026-10-31T10:51:13.210748+00:00",
+      "path": "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/owner.lock",
+      "exclusive_nonblocking_acquired": true,
+      "writes_performed": false
+    }
+  },
+  "first_action": "Current-source reader cutover and fresh mean ledger; actual energy CLI allocation is separate, not a reset or extension of old producer time."
+}

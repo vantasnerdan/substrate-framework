@@ -1,0 +1,111 @@
+{
+  "schema": "P254-physical-environment-registration-v1",
+  "status": "registered-before-implementation-not-executed",
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_field_derivatives.py",
+      "sha256": "fd5ab95ad8fbe728f9eaf4b562b47af6248d9fb98805dbe9be3a82ef34d51b93",
+      "size_bytes": 12689
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_force_fluctuations.py",
+      "sha256": "9fd2e22d39bddc49fb75d582e4b5762efbd633253e7a138350fc57c1a6229545",
+      "size_bytes": 10682
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_factor_preparation.py",
+      "sha256": "3dd3767a13da9fd5f5d7559bc3f7a98cf00d365655a08980db551d011aa25b96",
+      "size_bytes": 11366
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_reference.py",
+      "sha256": "5474edc99ae71a0838902b350b8b512667f192ffc184f23339340d73d6c2d832",
+      "size_bytes": 7393
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_bloch_response.py",
+      "sha256": "fb44780809bbec9de4e5f27742513123dff098dc01d23fc91884bb41b7b083a0",
+      "size_bytes": 12977
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-force-noise-001/force-noise.json",
+      "sha256": "51106acd40acee8c8213e8f9d2cb2ed15b5f274f90aea1962d4796b76d0db366",
+      "size_bytes": 281944
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/tong-electromagnetism-electrodynamics.pdf",
+      "sha256": "b99b41156dfe6cd9a19be71dd61b464ef1eae8ce97fb0d68360a4e1a461a512f",
+      "size_bytes": 1882418
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/tong-electromagnetism-electrodynamics.txt",
+      "sha256": "a6e19c84c57ec074efd6fff3a4234c355d00829b76aa88419c4866e31fa10e26",
+      "size_bytes": 629988
+    }
+  ],
+  "source_acquisition": {
+    "url": "https://www.damtp.cam.ac.uk/user/tong/em/electro.pdf",
+    "title": "David Tong, Electromagnetism, Lent 2015 (server returns complete notes)",
+    "equations": [
+      "4.3/4.20 field energy and Poynting exchange",
+      "5.35 minimal coupling",
+      "5.3 potentials E=-grad(phi)-dA/dt"
+    ],
+    "text_lines": [
+      [
+        4694,
+        4742
+      ],
+      [
+        5290,
+        5308
+      ],
+      [
+        5957,
+        5968
+      ]
+    ]
+  },
+  "derivation_blocks": [
+    "a=e A_SI/hbar; numerical coordinate a in bohr^-1; tau=t Ry/hbar; E_Ha=-adot_tau/2. Ry=e^2/(8 pi eps0 a0); M_a=Omega_bohr3/(8 pi); H_EM=Pi^2/(2 M_a)+M_a (2 c_Ha q)^2 a^2/2 for real RMS-normalized transverse modes. Uniform periodic q0 has zero stiffness, not a cavity frequency.",
+    "electron H_Ry=(p+a)^2+V_local+V_UPF(a); J_Ha=-dH_Ry/da/2; C=d2H/da2 from same UPF family. Do not dress the A25 constant interpolation offset by assertion.",
+    "ions: M_Ry=m/(2 me), kinetic=(P-Z a)^2/(2 M_Ry); Rdot=(P-Z a)/M_Ry; dH_ion/da=-Z Rdot; Pi_dot=-dH_total/da; Pdots use gradients of that same scalar.",
+    "Heisenberg factors X_A(t)=U(t,0)^dagger A(t) U(t,0) Psi and independent adjoint factors retain full PW rows. C_AB(t,s)=Tr(D X_Aadj(t)^dagger X_B(s))-Tr(D M_A(t) D M_B(s)); reverse is independently ordered. Response to +f B is -i theta(t-s)(C_AB-C_BA); to displacement perturbation -u F has opposite sign."
+  ],
+  "oracle_blocks": [
+    "exact SymPy SI-to-Ry normalization and canonical signs/contact",
+    "independent dense Fock-space CAR unequal-time nonstationary traces, PSD, commutator and recurrence",
+    "consumer-visible covariance, ordering, contact, field mass and sign mutations",
+    "constant offset Ward obstruction using finite exact matrices, no blanket finite-PW gauge identity"
+  ],
+  "material_scope": "Authenticate and consume completed initial force-noise archive without recomputing ionic actions; derive q0 field mass from admitted XML cell. No two-time material arrays or trajectory are fabricated.",
+  "unavailable": [
+    "physical field initial coordinate/momentum or quantum covariance",
+    "finite-q electromagnetic matter vertices and boundary/mode selection",
+    "propagated full-row Heisenberg force/adjoint actions for actual material",
+    "same-scalar field-dependent ionic gradients for coupled actual trajectory"
+  ],
+  "change_log": "Added new conservative physical q0 field bridge, nonstationary ordered kernel, independent oracle and actual checkpoint consumer only; no settled module changes. Implementation supplied without scientific execution.",
+  "implementation_files": [
+    "src/substrate_framework/physical_field_environment.py",
+    "src/substrate_framework/nonstationary_force_kernel.py",
+    "proposals/P254-ni-collective-response/attempts/0028/run_physical_environment_oracle.py",
+    "proposals/P254-ni-collective-response/attempts/0028/run_physical_environment_material.py"
+  ],
+  "oracle_command": "python proposals/P254-ni-collective-response/attempts/0028/run_physical_environment_oracle.py --output proposals/P254-ni-collective-response/attempts/0028/physical-environment-oracle-001.json",
+  "material_command_contract": "python proposals/P254-ni-collective-response/attempts/0028/run_physical_environment_material.py --periodic-cells N --output FRESH_DIRECTORY --output-max-bytes 1048576; Root explicitly supplies N, the finite periodic replication count (not an optical cavity volume).",
+  "integration_contract": {
+    "field": "UniformMaxwellField: q0 only, no magnetic restoring stiffness. Cell volume and explicit orthonormal Cartesian polarizations determine M=Omega/(8*pi). No initial field value is set.",
+    "matter": "UPFUniformCoupling.action/derivative_actions/current_action/moments at arbitrary uniform a all use the unanchored physical UPF family. Mean trace outputs are unweighted single spin/k-sector values, never full-material totals.",
+    "canonical": "joint_canonical_rhs requires extensive electronic dE/da, explicit ionic masses/charges/canonical momenta and same-scalar ionic force at the actual field. It returns Hamilton derivatives and exchange powers; no supplied force is silently certified as same-scalar.",
+    "kernel": "NonstationaryForceKernel requires FactorPreparation and supplied full-row Heisenberg action/adjoint factors. Both endpoints share an authenticated propagation history and initial raw frame. Bare quasifree path response is not a replacement for PreparedBlochResponse self-consistent screening.",
+    "initial_consumer": "from_initial_checkpoint validates archived S,D,M,T and directed moments, then returns the stored ordered covariance. Actual CLI authenticates the existing completed checkpoint and admitted XML chain. No material force action is rerun.",
+    "sector_normalization": "Independent-sector connected covariances use the PRODUCT of source and readout coefficients per sector, not an automatic mean k-weight. Caller must declare complete independent-sector coverage and probe normalization. No implicit spin degeneracy."
+  },
+  "resource_contract": {
+    "oracle": "Tiny 3-orbital/8-Fock-state exact SymPy and SciPy fixtures, 4-PW synthetic UPF action, literal angular quadrature; no material allocation.",
+    "material": "Read existing approximately 25.6 MiB archive and admitted XML/JSON chain; rank 346 small-matrix covariance validation; zero new PW operator applications, no PW frame loaded. Output capped explicitly.",
+    "future_kernel_pair": "O(P*r^2+r^3) arithmetic, O(r^2+row_block*r) contraction workspace beyond supplied actions. One complex128 full-row factor costs 16*P*r bytes; independent action/adjoint pair costs 32*P*r. Storing every n-time/m-probe endpoint costs up to 32*n*m*P*r bytes; stream/replay instead when available.",
+    "actual_source_dimensions": "Existing checkpoint declares P=18569, r=346; no other source dimensions are inferred."
+  }
+}

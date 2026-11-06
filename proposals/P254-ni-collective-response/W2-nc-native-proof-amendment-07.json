@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "canonical_issue": 225,
+  "focused_dependency_issue": 227,
+  "registered_at": "2026-10-19T19:10:39.910Z",
+  "scope": "Prospective explicit metallic-Gamma operator-gauge correction after complete failedG8; no retrospective gate reclassification.",
+  "source_access": {
+    "verified": true,
+    "inventory": "attempts/0010/input-manifest.json",
+    "sha256": "fd62937c6520186c4dc81d5b28d5acea07220a76c2fc725577bbec8bc6e28f80",
+    "source_lines": {
+      "dfpt_kernels.f90": "243;354-364;526-559",
+      "efermi_shift.f90": "8-13;74-102",
+      "solve_linter.f90": "145-176;250-296",
+      "elphon.f90": "319-322;484-519;560-585"
+    }
+  },
+  "preservation": [
+    "FailedG8, both failed spectral points, source inventories and all original generations remain immutable.",
+    "Source6 SCF spec/result/core/current admission remain unchanged; its independent clearance covers only its original scope.",
+    "No currentG8 output is reclassified; no FD-derived scalar is fitted into an operator."
+  ],
+  "prospective_contract": {
+    "format": "CATDFT_NC_VERTEX_V2; reject V1 in current active decoder",
+    "full_matrix_streams": [
+      "BARE",
+      "SCREENED_NATIVE"
+    ],
+    "removed_shift": {
+      "quantity": "Exact complex native final efermi_shift.def for the same irrep/perturbation and response potential; not stdout-rounded or finite-difference mu",
+      "applied": "Actual native shift-applied branch flag, not inferred from magnitude",
+      "false_branch": "Explicit zero removed-shift coefficient; this is not a claim that arbitrary physical mu derivatives vanish",
+      "identity": "Bind iq/irrep/imode0/local perturbation/q/pattern columns/band-k-spin identity with raw matrix in the same transaction"
+    },
+    "proposed_identity_pending_oracle": "Absolute Hamiltonian derivative = native screened derivative + removed_shift*I in the verified orthonormal NC same-k/same-spin Gamma band basis. No correction outside the actual applied branch.",
+    "projection_pending_oracle": "Solve U*c=e and apply identical linear coefficients to each matrix and its scalar shift; no extra conjugation.",
+    "api": {
+      "module": "src/catdft/qe_phonon_vertex_gauge.py",
+      "functions": [
+        "screened_native_matrix(record)",
+        "screened_hamiltonian_matrix(header,record)",
+        "screened_hamiltonian_diagonal(header,record)"
+      ],
+      "header": [
+        "fermi_shift_applied: bool",
+        "fermi_shift_ry_per_bohr: complex vector indexed by perturbation-1"
+      ],
+      "policy": "Explicit gauge names; no old SCREENED alias/default. Store native matrices once; reconstruct absolute only when requested; selected diagonal does not allocate a full matrix."
+    },
+    "metadata_only_native_print": {
+      "private_source": "LR_Modules/efermi_shift.f90:96-97",
+      "change": "Widen existing 2es15.4 print to 2es26.17e3 only",
+      "purpose": "Independent full-precision final native source-routine shift evidence, not writer-header self-echo or a new solver input",
+      "constraints": "No solver arithmetic/branch/tolerance change; original /opt and prior binary untouched; fifth rebuilt object and full prelink closure bound."
+    }
+  },
+  "oracle": {
+    "attempt": "0010",
+    "method": "Small exact SymPy blocks written with their checks, then composed; exercise actual frozen DFT gauge consumers against independently constructed exact matrices.",
+    "blocks": [
+      "Entrywise arbitrary scalar identity and nontrivial isolated two-level characteristic-polynomial derivatives for absolute/relative energy gauges.",
+      "Complex pattern projection and unitary band-basis covariance of scalar correction; actual-branch false/zero and applied/zero boundaries.",
+      "Frozen production consumer checks using independent exact complex numerical fixtures, local-perturbation indexing, diagonal/full consistency, finiteq no-shift and repeated-query numerical stability."
+    ],
+    "sensitivity": [
+      "Omitted/sign-reversed/doubled scalar",
+      "Adding scalar to offdiagonals",
+      "Applying nonzero correction in branch-false case",
+      "Mismatched complex projection coefficients or extra conjugation",
+      "Wrong local perturbation index or rounded/fitted substitute for exact native shift"
+    ],
+    "execution": "Labeled owned herdr tab, durable oneshot owner, CPU5/2GiB/swap0/BLAS1, immutable source/input manifest, atomic block receipts, actual affinity/live kernel evidence. No tested restoration or continuous sampling claim."
+  },
+  "prospective_native": {
+    "generation": 9,
+    "cpu": 11,
+    "memory_bytes": 3221225472,
+    "mpi": 1,
+    "pools": 1,
+    "blas": 1,
+    "initializer": "Fresh origin/hash-bound public archive of completed6 NEW scratch/scf.save, not its old5-derived input seed.",
+    "absolute_target": "Preserve raw absolute d(epsilon)/du; fresh deterministic largest isolated absolute H-x derivative selected after currentGamma and frozen before displaced outputs.",
+    "steps_bohr": [
+      0.001,
+      0.0005
+    ],
+    "signs": [
+      -1,
+      1
+    ],
+    "atom_index_zero_based": 1,
+    "cartesian": "x",
+    "absolute_tolerance": {
+      "atol_ry_per_bohr": 0.0001,
+      "rtol": 0.005
+    },
+    "relative_target": "Separately named d(epsilon-mu)/du versus native-gauge screened derivative using independent public-XML mu in the same units, with same tolerance rule; never use this to replace the absolute gate.",
+    "gap_and_halving": "Original reference gap>=.01Ry, displaced same-spin gap>=.005Ry, imaginary selection<1e-9Ry/bohr, original1e-4+1%step-halving checks unchanged; both gauges reported.",
+    "required": [
+      "Fresh source/binary/prelink/runtime closure and explicit compact V2 consumers.",
+      "Complete Gamma/nonzero/full-six bare-force/complex phase/native ordinary-EPA matrix-plus-shift agreement/cache/tamper/full four signed spectral outputs.",
+      "Full-precision native shift versus writer capture check at matching final irrep/perturbation; no FD fit.",
+      "Source-grounded interrupted-uncommitted-irrep recovery: preserve committed raw+def/public SHA-size-nsmtime, refuse missing/stale def or unreconciled rec_code10; archive invalid uncommitted checkpoint before any justified rollback/re-execution. No silent native checkpoint rewrite.",
+      "Complete independent review only after the whole corrected proof is ready."
+    ],
+    "barrier": "Preregistration bank precedes corrected build; source freeze and exact oracle PASS precede corrected native execution. Recovery implementation/source closure must be settled before launch."
+  },
+  "limits": "Nonstationary SG15 NiH engineering proof only; no offdiagonal spectral-derivative reconstruction claim, stationary material/L1/physical-loss/coherence/nuclear or campaign-completion license."
+}

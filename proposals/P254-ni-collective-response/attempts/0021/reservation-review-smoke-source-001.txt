@@ -1,0 +1,97 @@
+import argparse, hashlib, json, os, signal, sys, tempfile, time
+from pathlib import Path
+BASE=Path('/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021')
+sys.path.insert(0,str(BASE))
+import time_pilot_resume as recovery
+parser=argparse.ArgumentParser()
+parser.add_argument('--phase',choices=['before','after'],required=True)
+args=parser.parse_args()
+started=time.monotonic()
+checks=[]
+def check(name,value,**facts):
+    checks.append({'name':name,'passed':bool(value),**facts})
+def kill_during_write(path,call):
+    pid=os.fork()
+    if pid==0:
+        original=Path.write_text
+        def partial_write(self,data,*pos,**kw):
+            if self==path.with_suffix(path.suffix+'.tmp'):
+                raw=data.encode()
+                fd=os.open(self,os.O_WRONLY|os.O_CREAT|os.O_TRUNC,0o600)
+                os.write(fd,raw[:len(raw)//2])
+                os.close(fd)
+                os.kill(os.getpid(),signal.SIGSTOP)
+            return original(self,data,*pos,**kw)
+        Path.write_text=partial_write
+        call()
+        os._exit(3)
+    try:
+        _,status=os.waitpid(pid,os.WUNTRACED)
+        if not os.WIFSTOPPED(status): raise RuntimeError('child did not reach partial-write boundary')
+    finally:
+        os.kill(pid,signal.SIGKILL)
+        os.waitpid(pid,0)
+signal.signal(signal.SIGALRM,lambda *_: (_ for _ in ()).throw(TimeoutError('20s IO-smoke cap')))
+signal.alarm(20)
+with tempfile.TemporaryDirectory(prefix='p254-budget-review-') as directory:
+    root=Path(directory)
+    audit_path=root/'audit.jsonl'
+    def audit(item):
+        with audit_path.open('a') as stream:
+            stream.write(json.dumps(item)+'\n')
+            stream.flush()
+    def recover(path,required=True):
+        if args.phase=='before':
+            count,item=recovery.reserved_actions(path,required=required)
+            if item is not None: audit(item)
+            return count
+        return recovery.reserved_actions(path,required=required,record_audit=audit)
+    counter=root/'counter.json'
+    recovery.reserve_action(counter,6)
+    counter.with_suffix('.json.tmp').write_bytes(b'{"action":"7')
+    count=recover(counter)
+    check('initial_torn_charge',count==7,actual=str(count))
+    kill_during_write(counter,lambda:recovery.reserve_action(counter,count+1))
+    count2=recover(counter)
+    check('recovered_charge_survives_next_partial_publish',count2==8,actual=str(count2),expected='8')
+    missing=root/'missing.json'
+    missing.with_suffix('.json.tmp').write_bytes(b'{"action":"unknown')
+    try:
+        unknown=recover(missing)
+    except ValueError as error:
+        check('required_missing_baseline_with_torn_temp_refuses',True,error=str(error))
+    else:
+        check('required_missing_baseline_with_torn_temp_refuses',False,incorrectly_admitted=str(unknown))
+    if args.phase=='after':
+        fresh=root/'fresh.json'
+        check('fresh_zero_baseline',recover(fresh,required=False)==0)
+        valid=root/'valid.json'
+        recovery.reserve_action(valid,9)
+        valid.with_suffix('.json.tmp').write_text('{"action":"10"}')
+        check('valid_temporary_is_committed',recover(valid)==10 and json.loads(valid.read_bytes())['action']=='10')
+        gap=root/'baseline-gap.json'
+        recovery.reserve_action(gap,6)
+        gap.with_suffix('.json.tmp').write_bytes(b'{"action":"7')
+        kill_during_write(gap,lambda:recover(gap))
+        check('interrupted_baseline_publish_preserves_charge',recover(gap)==7)
+        failed=root/'audit-failure.json'
+        recovery.reserve_action(failed,6)
+        partial=failed.with_suffix('.json.tmp')
+        partial.write_bytes(b'{"action":"7')
+        before=(failed.read_bytes(),partial.read_bytes())
+        def fail_audit(_): raise OSError('injected audit storage failure')
+        try:
+            recovery.reserved_actions(failed,required=True,record_audit=fail_audit)
+        except OSError:
+            check('audit_failure_preserves_evidence_before_overwrite',before==(failed.read_bytes(),partial.read_bytes()))
+        else:
+            check('audit_failure_preserves_evidence_before_overwrite',False)
+    audit_records=[json.loads(line) for line in audit_path.read_text().splitlines()]
+    check('ambiguous_bytes_preserved_in_durable_audit',all(hashlib.sha256(bytes.fromhex(item['preserved_raw_hex'])).hexdigest()==item['sha256'] for item in audit_records))
+report={'status':'pass' if all(x['passed'] for x in checks) else 'failure_reproduced', 'phase':args.phase,
+        'checks':checks,'elapsed_seconds':time.monotonic()-started,
+        'source':{'path':str(Path(recovery.__file__)),'sha256':hashlib.sha256(Path(recovery.__file__).read_bytes()).hexdigest()},
+        'scope':'Real SIGKILL during actual atomic writer in isolated files; prospective cumulative action accounting only. No scientific data or numerical continuation.'}
+(BASE/('reservation-review-'+args.phase+'-001.json')).write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps(report))
+sys.exit(0 if report['status']=='pass' else 1)

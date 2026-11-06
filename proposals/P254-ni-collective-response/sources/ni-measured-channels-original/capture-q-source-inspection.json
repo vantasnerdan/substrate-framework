@@ -1,0 +1,40 @@
+{
+  "ame_parser": "existing ni_h_nuclear_ledger.read_ame2020; original unrounded fixed-width fields",
+  "ame_source_sha256": "e8599c6d7f724fac91934e59f1b9de8fb8f63e820f4b39456b790665ed2a3307",
+  "visual_observation": "Original rendered PDF page 3 Table I visibly prints 58Ni Q=3.814 MeV; Table II visibly prints 62Ni at 2.90 MeV as 1.379(17) mb.",
+  "extraction_vs_print": "pdftotext agrees with the inspected original page for these fields; the 3.814 value is not an extraction-only digit transposition.",
+  "evaluated_data_distinction": "AME2020 independent parser inspection gives mass excesses Ni58=-60228.871, H1=7288.971064, Cu59=-56358.454 keV; accounting uses their exact signed difference, not Simon Table I. No ledger or numerical suite rerun for this inspection.",
+  "records": [
+    {
+      "a": 58,
+      "z": 28,
+      "source_line": 575,
+      "raw_line": "   2   30   28   58 Ni       -60228.871       0.349      8732.0621     0.0060  B-  -8561.0204     0.4425   57 935341.650       0.374",
+      "mass_excess_raw": " -60228.871   ",
+      "mass_excess_exact_kev": "-60228871/1000",
+      "uncertainty_raw": "    0.349   "
+    },
+    {
+      "a": 1,
+      "z": 1,
+      "source_line": 38,
+      "raw_line": "  -1    0    1    1 H          7288.971064    0.000013      0.0        0.0     B-      *                    1 007825.031898    0.000014",
+      "mass_excess_raw": "   7288.971064",
+      "mass_excess_exact_kev": "911121383/125000",
+      "uncertainty_raw": "    0.000013"
+    },
+    {
+      "a": 59,
+      "z": 29,
+      "source_line": 590,
+      "raw_line": "   1   30   29   59 Cu       -56358.454       0.528      8642.0027     0.0090  B-  -9142.7760     0.6018   58 939496.713       0.566",
+      "mass_excess_raw": " -56358.454   ",
+      "mass_excess_exact_kev": "-28179227/500",
+      "uncertainty_raw": "    0.528   "
+    }
+  ],
+  "page_image": "simon-1305.1213-page03.png",
+  "page_image_sha256": "b574a8db5753c75df1cce57c29d5af0974af195943b2cb3134f16e754beeb350",
+  "original_pdf_sha256": "77900e559f28abf36aeb37dc8d4590833fd501e89985f675defdd8eb0c3fe5c5",
+  "render_command": "pdftoppm -f 3 -l 3 -scale-to 2200 -png -singlefile simon-1305.1213.pdf simon-1305.1213-page03"
+}

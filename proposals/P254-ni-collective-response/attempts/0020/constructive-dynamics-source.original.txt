@@ -1,0 +1,217 @@
+## Summary
+
+**The constructive next component is available from existing inputs:** attach source-correct ionic inertia to the actual \(H_0/g/K/C_{\mathrm{frozen}}\) model, retain electronic transition variables explicitly, and execute a bounded local-excitation initial-value problem. **No fitted bath counterterm or new Native production is required for that engineering slice.**
+
+What is **not already implemented** is the combined ionic/electronic time generator, its initial-state/covariance mapping, and its spatial propagation consumer. The four completed 0020 matrices are frequency samples of curvature—not a time-domain kernel, complete propagator, or coherence domain.
+
+Root’s latest complete 0020 scientific review is accepted here as **correct, `findings: []`**. Nothing was rerun.
+
+### Path abbreviations
+
+- `S` = `/home/administrator/projects/substrate-ni-collective`
+- `P` = `S/proposals/P254-ni-collective-response`
+- `F` = `S/src/substrate_framework`
+- `Q` = `/opt/qebuild/q-e-qe-7.5`
+- `N` = `/home/administrator/projects/catalyst-nc-operator`
+- `B` = `N/runs/2026-10-19_collective-response/full-ionic-operators-0018`
+
+## Files, APIs, and earned scope
+
+| Exact location | Reusable API / content | Boundary |
+|---|---|---|
+| `F/screened_force_response.py:14-75` | `screened_response(joint,n_external,interaction)`; `linearized_density_response(energies,occupations,external,densities,interaction,z)` | Independent finite density-matrix frequency solve, with instantaneous self-consistent density interaction. **No ionic dynamics.** Its `-uB` susceptibility convention differs from the actual PW `+gu` convention. |
+| `F/variational_fermion_static.py:30-46,101-145` | `full_functional`, `joint_gibbs_curvature`, `analytic_hessian` | Finite same-functional static construction, explicit second ionic derivatives, mean-\(N\)/optional mean-spin constraints. Not a finite canonical ensemble or material PBE identification. |
+| `F/pw_response_data.py:1-41`; `F/qe_pw_response_frames.py:275-399` | `PWResponseChannel`, `PWResponseModel`, `build_pw_response_models(gamma_bundle,plus_bundle,minus_bundle)` | Actual full-PW FD reference; complete target spectra; every representably nonzero FD source; shared source arrays; explicit spin and \(k\) weights; actual reverse sector. |
+| `F/pw_independent_response.py:1-10,26-48,103-147` | `PWIndependentResponse(model,z).apply(local_potential,displacement)` | Two-branch physical density and **ionic gradient**, not negative force. `z` is Ry; isolated populations; no screening or physical damping supplied internally. |
+| `F/pw_screened_response.py:1-6,35-55,133-185` | `solve_screened_response(response,kernel,displacement,*,rtol,max_matvec,wall_seconds,progress=None)` | Same-frequency spatial density screening; returns density, gradient, induced potential and independently evaluated physical residual. |
+| `F/qe_pw_hamiltonian.py:91-106`; `F/qe_ionic_operator.py:75-129,163-169` | `assemble_target_hamiltonian`; `BareIonicOperator.from_bundle(...).apply(u,psi)` | Actual ordinary-NC Hamiltonian and arbitrary-source-PW ionic action. Ionic API currently **explicitly requires two atoms/six Cartesian components**. |
+| `F/spin_pbe_kernel.py:1-13,63-108` | `apply_spin_pbe_kernel(bundle,delta_n)`; `density_potential_pairing` | Actual longitudinal-spin Hartree/PBE-GGA action, physical FFT-volume pairing, cross-spin terms and Native zero-mode conventions. No phenomenological Hubbard/bath replacement. |
+| `F/qe_frozen_curvature.py:89-146` | `parse_frozen_curvature(...) → FrozenCurvature` | Own-producer absolute ionic plus fixed-wavefunction curvature; Ry/bohr², unmassweighted, no induced-density screening or repair. |
+| `F/material_modes.py:13-38,63-83` | `validated_masses`; `mass_weighted_operator(force,masses_amu,units=...)`; `translation_basis` | Existing source-correct SI/QE mass conversion. Preserve complex matrices. **Do not feed finite-complex-frequency curvature into `signed_modes` or Hermitian-project it.** |
+| `F/material_force_lattice.py:1-8,26-67,82-90` | `complete_native_q_grid`; `q_grid_to_force_lattice`; inverse transform | Complete finite periodic-grid Fourier convention, including orientation and absence of an extra atomic-position phase. It does not license an infinite pair interaction. |
+| `F/finite_fermion_response.py:7-45`; `F/finite_fermion_state.py:7-49` | `retarded`, `noise_lines`, `symmetrized_lines`; explicit CAR/Fock and Gibbs construction | Source of finite quasi-free electronic two-point covariance. Zero-gap/degenerate covariance is retained. Physical Gibbs assumptions are explicit. |
+| `F/finite_fermion_bath.py:7-46` | `oscillator_map`, `oscillator_noise`, `oscillator_retarded` | Positive-gap, passive-occupation **two-point** representation with complex couplings. Not nonlinear fermion equivalence, zero-gap oscillators, or irreversible loss. |
+| `F/euler_retained_memory.py:34-75` | `linear_retained_memory(generator,projection,time)` | Exact finite-matrix resolved/complement elimination, including unresolved initial forcing. No Euler-to-Ni physical identification is needed or licensed. |
+| `F/material_matter_field.py:12-65`; `F/finite_fermion_thermodynamics.py:30-40` | Complete-square/minimal-coupling Hessian, harmonic Schur complement, `calibrated_inverse` | Useful finite algebra/oracles. **Not the construction route for replacing actual \(C_{\mathrm{frozen}}\) with a fitted subtraction.** |
+| `F/numerics.py:261-315` | `solve_ivp_evidence(...)` | Existing diagnostic IVP wrapper accepts **real-valued states**; a complex transition state needs an explicitly verified real/imaginary representation. |
+
+### Architecture
+
+`load_bundle` → actual \(H_0\), \(g_{\pm q}\), FD frames and spatial \(K_q\) → two-branch independent response → same-frequency screened density → physical electronic gradient → own-producer \(C_{\mathrm{frozen}}\).
+
+The next attachment is **mass + explicit electronic state + ionic state + initial preparation**. Retained memory can then eliminate electronic variables from that *same* generator, rather than introduce a separate bath model.
+
+## Source equations and inertia conventions
+
+### Already implemented and corroborated
+
+The original-basis comparator explicitly solves
+
+\[
+z\,\delta\rho-[H_0,\delta\rho]
+-[V(K\,n[\delta\rho]),\rho_0]=[g\,u,\rho_0].
+\]
+
+Exact implementation: `P/attempts/0020/run_screening_oracle.py:95-178`, especially its independent Fourier density/potential maps and `action(delta)`. This is an **electronic frequency-domain equation**, not an already executed coupled ionic IVP.
+
+The actual screening equation is
+
+\[
+(I-R_{0,nn}(z)K_q)n=R_{0,ng}(z)u,
+\]
+
+as documented in `F/pw_screened_response.py:1-6`. The completed output defines curvature as:
+
+> `Cfrozen + physical delta<g>/delta_u; Ry/bohr2, unmassweighted, no ionic kinetic term`
+
+Authority: `P/attempts/0020/pilot-001/result.json`, key `matrix_definition`; current assembly at `P/attempts/0020/run_screened_pilot.py:146,180`.
+
+### Actual ionic mass is already present—not an assumed coefficient
+
+- `B/gamma/bundle/q-1/background.json:27-39` records `amu_ry = 911.4442431086565`.
+- `background.json:228-250` declares:
+  - `amass_species`: float64, **atomic mass unit**;
+  - `ityp`: int32, **one-based species index**.
+- Export source: `N/native/nc-response/nc_response_background.f90:60-103`.
+- Native corroborating text: `B/gamma/dyn.xml:23-28` identifies Ni mass `58.693399999999997`, H mass `1.0080000000000000`, with their atom/species assignments. These are observed inputs, not new estimates.
+
+QE’s exact source convention is:
+
+\[
+\mathrm{AMU\_RY}
+=\frac{\mathrm{AMU\_SI}}{2\,\mathrm{ELECTRONMASS\_SI}},
+\qquad
+M_a^{\mathrm{Ry}}=\mathrm{amass}(\mathrm{ityp}(a))\,\mathrm{AMU\_RY}.
+\]
+
+Sources: `Q/Modules/constants.f90:44-61`; `Q/PW/src/dynamics_module.f90:861-875`. QE independently divides each force-matrix entry by  
+\(\sqrt{\mathrm{amass}_a\mathrm{amass}_b}\,\mathrm{AMU\_RY}\): `Q/PHonon/PH/dyndia.f90:61-75`.
+
+Use the bound `ityp` mapping and repeat each atom’s mass over its three Cartesian coordinates. Do not use atomic number, a uniform mass, an additional factor two, or a guessed isotope substitution.
+
+### Primary physical source in hand
+
+Giustino, [RMP 89, 015003 (2017)](https://doi.org/10.1103/RevModPhys.89.015003), acquired author manuscript:
+
+- Eq. 19, nuclear kinetic term and harmonic/BO qualifications: `P/sources/giustino2017-electron-phonon.txt:875-901`.
+- Eq. 111, ionic Heisenberg acceleration: `:2342-2353`.
+- Eq. 118, inertial displacement Green-function equation: `:2496-2502`.
+- Eqs. 141–144, frequency-dependent bare/dressed construction: `:3154-3211`.
+- Eq. 145’s explicit frequency-freezing approximation and infinitesimal \(\eta\): `:3214-3259`.
+
+The source’s Green-function sign convention must not be silently identified with the repository’s externally forced mechanical-response convention. Equation 145 does **not** authorize treating numerical \(\eta\) as a lifetime.
+
+### Proposed new composition—**unverified until preregistered and checked**
+
+For the declared held-reference tangent model, the candidate attachment is:
+
+\[
+i\partial_\tau\delta\rho
+=[H_0,\delta\rho]+[g u+V(Kn[\delta\rho]),\rho_0],
+\]
+
+\[
+M_{\mathrm{Ry}}\partial_\tau^2u
+=-C_{\mathrm{frozen}}u-\mathcal G(\delta\rho)+f_{\mathrm{ext}},
+\]
+
+with \(\mathcal G\) the existing physical ionic-gradient contraction, and time measured consistently with Ry energy. Its proposed reduced externally forced inverse is
+
+\[
+D_{\mathrm{ion}}^{-1}(q,z)
+=C_{\mathrm{frozen}}(q)+C_{\mathrm{el}}(q,z)-z^2M_{\mathrm{Ry}}.
+\]
+
+**These combined identities are the next implementation/oracle subject, not an earned result.** Their ingredients and signs come from the cited electronic comparator, actual gradient convention and Native inertia; no fitted static counterterm enters.
+
+## Electronic state, noise, and retained memory
+
+The existing finite source supports a constructive initial-state route:
+
+- `noise_lines` uses the quasi-free weights \(f_i(1-f_j)\), retaining diagonal and degenerate zero-energy covariance.
+- `oscillator_map` represents only positive-gap two-point response/noise.
+- `linear_retained_memory` returns, exactly for a finite supplied generator,
+  \[
+  PLP,\quad PLQe^{tQLQ}Q,\quad PLQe^{tQLQ}QLP,
+  \]
+  including the unresolved initial datum. Source: `F/euler_retained_memory.py:42-75`.
+
+Consequences for the next artifact:
+
+1. Retain an explicit electronic transition state rather than an \(\eta\)-damping term.
+2. Declare its initial mean and covariance. A **prepared quasi-free state using the current FD reference** is a bounded mathematical preparation; it is not automatically thermal equilibrium of the coupled PBE/ionic system.
+3. Do not insert `weighted_occupations` directly into \(f(1-f)\). They already contain \(k\)-quadrature weights. Raw FD occupations and BvK/observable normalization must be distinguished; their construction is visible in `F/qe_pw_response_frames.py:215-229,329-369`.
+4. Keep zero-gap covariance separate from positive-gap oscillators.
+5. The retained-memory “noise” term is initially a deterministic unresolved-state contribution. Its stochastic covariance requires the declared initial ensemble; the API supplies no fluctuation-dissipation theorem by itself.
+
+**Genuinely missing for equilibrium-noise claims:** a justified initial covariance of the *coupled* model, a physical-temperature interpretation, and any population-relaxation/environmental law. The independent-fermion two-point proof does not supply those.
+
+## Existing earned receipts to reuse—not rerun
+
+- **0001:** `P/attempts/0001/receipt.json:1-28` — complete finite quadratic energy/Schur/resolvent checks and exposing mutations.
+- **0003:** `P/attempts/0003/receipt.json:1026-1082` — Ry/SI inertia and time factors, mixed masses, Fourier orientation/completeness and Native replay. Scope remains harmonic conventions and finite periodic grids.
+- **0007:** `P/attempts/0007/receipt.json:1-89`; `interpretation.json`; `reviews/independent-finite-fermion-review.json` — completed 87-check CAR/Fock, response, covariance/FDT and two-point oscillator boundary; complete independent review correct, `findings: []`.
+- **0013:** `P/attempts/0013/report.json`; `review-admission.json` — independent minimized scalar curvature and direct electronic density-matrix comparison; both complete review slices correct, empty finding arrays.
+- **0017–0019:** `P/attempts/0019/review-admission.json` — complete scientific review correct, empty findings. Retain its stated limits: Native corroboration only on retained actions, no independent unretained Native probe; full-FD versus saved-SCF density discrepancy remains disclosed.
+- **0020:** `screening-oracle-001.json` — independent original-basis self-consistent EOM agreement and mutations; `pilot-001/result.json` / `coupled-matrices.npz` — all 24 columns complete. Root now reports complete scientific review correct with empty findings.
+- **Retained memory:** `S/proposals/P253-euler-particle-mechanisms/attempts/0045/review.md:179-195` and `0042/validation.md:9-22` — finite algebra review and historical `12 passed` receipt. No Ni applicability is imported from Euler.
+
+## One conservative next executable slice
+
+**Deliverable: actual-fixture inertial, explicit-transition local-kick propagation—not a domain claim.**
+
+Preregister and implement one bounded package that:
+
+1. **Loads existing 0018 inputs and masses through `load_bundle`;** uses actual \(H_0/g/K/C_{\mathrm{frozen}}\), without Native regeneration, screened-vertex substitution or bath fitting.
+2. **Constructs the combined finite linear generator** above, retaining electronic variables and the declared initial preparation. Use a small original-basis comparator to check this newly added composition against the existing electronic response plus source-correct inertia—not another sweep of settled precision checks.
+3. **Defines a \(2\times1\times1\) periodic engineering array** from the available \(\Gamma\)/half-\(b_1\) sectors, with the actual plus/minus electronic branches and existing complete-grid Fourier convention. The actual generator/Fourier assembly remains a preregistered comparison obligation; do not manufacture missing \(q\) sectors or infer a general pair law.
+4. **Applies one localized H Cartesian kick in one cell**, with explicitly declared electronic initial mean/covariance, and records cell-resolved displacement, electronic response, transfer to the other cell, unresolved-initial contribution and the declared energy accounting. No common drive or pre-aligned phase.
+5. **Labels the baseline correctly:** this is a nonstationary two-atom engineering background. Use an explicitly held-reference tangent experiment; do not present it as free equilibrium NiH motion. A free-background trajectory would additionally require consistent baseline forces/reference evolution.
+
+A finite time window, resource cap and numerical acceptance criteria belong to Root’s preregistration; no runtime or physical-timescale estimate is supplied here.
+
+**No new external source is needed to start that slice.** Missing work is the composition, initial-state normalization, propagation consumer and their bounded oracle. Equilibrium coupled noise and physical loss are separate missing constructions, not reasons to substitute \(\eta\).
+
+## Material goal remains unchanged
+
+The two-atom slice is a development fixture, **not a replacement for Ni31H6**.
+
+`P/proposal.yaml:150-161` already records all four NC stationary-primary admissions. What remains missing is their joint numerical/material calibration and corresponding coupled-action inputs—not their initial stationary-primary existence.
+
+Preserve the full arc in `proposal.yaml:283-377`:
+
+- **G1:** calibrated full-host Ni32, vacancy Ni31, loaded Ni31H6 and dispersed Ni32H6 tangents/modes.
+- **G2:** same-material response, actual inter-region couplings and independently justified retained environmental spectrum or physical loss.
+- **G3:** material-calibrated many-region propagation/covariance, boundary returns, size/density/disorder controls and energy accounting.
+- **G4:** matched design comparison.
+- **G5:** explicit nuclear transition, medium coupling and energy/product disposal.
+
+Current two-atom restrictions in `BareIonicOperator` and six-component response contracts must eventually be generalized against those actual inputs; tiling the fixture does not perform that material mapping.
+
+## Original-byte bindings available in hand
+
+These are **recorded original-byte bindings from inspected inventories/receipts**, not newly recomputed hashes in this read-only investigation.
+
+| Source / artifact | Bytes | SHA256 |
+|---|---:|---|
+| `P/sources/giustino2017-electron-phonon.pdf` | 7477428 | `5d980627ad272b2a92d1f760f0e6a0883b1b3fcc941436903a361024ce330251` |
+| `P/sources/giustino2017-electron-phonon.txt` | 358858 | `ccdc09a5916245043cc74c63885e4f7d997f980f2ee03ec56c7e22eab0ec4067` |
+| `Q/Modules/constants.f90` | 5984 | `56c39e90c6f0592aff13972cd090292024a3d4e9e86d0ce4fdfdb5643f1ac1c0` |
+| `Q/PHonon/PH/dyndia.f90` | 3605 | `20e50d6021ce61236da9d09b44a759f1d86fde1768ef047eda186ace8f2b0d54` |
+| `N/native/nc-response/nc_response_background.f90` | 6143 | `66d75001a6bc89298bc932c98a434d38b7ed92061570eeb5906e5b2640f11ca6` |
+| `B/gamma/bundle/q-1/background.json` | 8018 | `0dac77aed3fe1e3eb311ecb5ecf8020ad3f4f3f04819e4108fa308e984208ce3` |
+| `B/gamma/bundle/q-1/background-amass_species.bin` | 16 | `54c5b9387f147379e62bfea7c662228be38ed1fe64e47a477fa9dcbe3628dd46` |
+| `B/gamma/bundle/q-1/background-ityp.bin` | 8 | `34fb5c825de7ca4aea6e712f19d439c1da0c92c37b423936c5f618545ca4fa1f` |
+| `F/finite_fermion_response.py` | 1970 | `288eebb6c6caaa02367effde7b2236d5075e63be5ec8ac0812e1db4250a3c834` |
+| `F/screened_force_response.py` | 3350 | `bd07ecd13dd3bc7525d1eb29fd5ff0377b7f2118e3fffd9bfa7cc8d662167b93` |
+| `F/pw_independent_response.py` | 7882 | `76b40f87d497b824232a6182c8f4c92fab15ec621fc6829f49d84cdfc1cc7e8c` |
+| `F/pw_screened_response.py` | 8237 | `2178300c3abbaab61a0be138437b727e154a8846fbe684fe680a1d533db064b6` |
+| `F/qe_pw_response_frames.py` | 22439 | `77f8241a41b47fe339a6189212d0acb3c7d408b985f64669ada4d816e5a848bf` |
+| `F/qe_frozen_curvature.py` | 8628 | `44c1c07e2de291eafe98ee108dd97932ecb47d2c4b8e5d1743b0f15aadff34dd` |
+| `F/spin_pbe_kernel.py` | 6127 | `bbb42154892ff6ae69c5c9d0cf3fc6bb9fc72e8f2b936f8000104c306cee7257` |
+| `P/attempts/0020/pilot-001/result.json` at Root closure | 806161 | `226adc6b529b41b2ee25a8364eef8d49e56a4769688ee9f3a5db59cdad85d8fa` |
+| `P/attempts/0020/pilot-001/coupled-matrices.npz` | 3192 | `70f1ff69c7063bbbb0f2e3d04ae9b6b134fff1a28ef0bd1c658d8774f59d8fa2` |
+
+Binding authorities: `0013/source-inventory.json`, `0013/source-manifest-002.json`, `0017/native-action-source-inventory.json`, `0018/source-inventory.json`, the actual Gamma bundle manifest, `0020/source-inventory.json`, `0020/finite-implementation-manifest-001.json`, and `0020/root-constructive-decision-001.json`.
+
+**Execution boundary:** no files changed; no mathematical/numerical checks, tests, builds or production commands executed. A SHA256/bytecount of this final response itself is not obtainable with the mounted read-only tools; Root must hash the captured original UTF-8 response bytes.

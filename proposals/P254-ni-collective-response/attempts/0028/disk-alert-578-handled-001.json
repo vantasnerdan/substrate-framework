@@ -1,0 +1,77 @@
+{
+  "actual_utc": "2026-11-02T14:27:15.700119+00:00",
+  "original_UID": "578",
+  "actual_read": {
+    "text": "Email UID: 578\nFrom: giuliano@vantasner.io\nTo: giuliano@vantasner.io\nDate: 2026-11-02T14:18:06.000Z\nSubject: [dft-disk] repo\n\n--- Body ---\nonly 8.0% free on /home/administrator/projects/catalyst-dft (38 GiB of 483 GiB). Checkpoint/commit progress store at risk.\n",
+    "details": {
+      "xdev": {
+        "tool": "email_read",
+        "mode": "execute",
+        "args": {
+          "uid": 578,
+          "mailbox": "INBOX"
+        },
+        "tier": "exec",
+        "inner": {
+          "uid": 578,
+          "subject": "[dft-disk] repo",
+          "attachmentCount": 0,
+          "pdfCount": 0,
+          "savedFiles": []
+        }
+      }
+    }
+  },
+  "failed_validation_only_attempt": {
+    "text": "Invalid args for xd://email_move: Validation failed for tool \"email_move\":\n  - destination: destination must be Destination mailbox name (was missing)\n\nReceived arguments:\n{\n  \"original\": {\n    \"uid\": 578,\n    \"sourceMailbox\": \"INBOX\",\n    \"destinationMailbox\": \"Notifications\"\n  },\n  \"normalized\": {\n    \"uid\": 578\n  }\n}\n\n# email_move \u2014 Move Email\n\nMove an email to another mailbox/folder.\n\n## Schema\n```ts\ntype Args = {\n  /** Email UID to move */\n  uid: number;\n  /** Destination mailbox name */\n  destination: string;\n  /** Profile name to use. Uses active profile if omitted. */\n  profile?: string;\n  /** Source mailbox, defaults to INBOX */\n  source?: string;\n};\n```\nExecute by writing JSON to xd://email_move.",
+    "details": {
+      "xdev": {
+        "tool": "email_move",
+        "mode": "execute"
+      }
+    },
+    "hasError": true
+  },
+  "actual_successful_move": {
+    "text": "Email UID 578 moved from \"INBOX\" to \"Notifications\".",
+    "details": {
+      "xdev": {
+        "tool": "email_move",
+        "mode": "execute",
+        "args": {
+          "uid": 578,
+          "source": "INBOX",
+          "destination": "Notifications"
+        },
+        "tier": "exec",
+        "inner": {
+          "uid": 578,
+          "source": "INBOX",
+          "destination": "Notifications"
+        }
+      }
+    }
+  },
+  "actual_verified_destination_fetch": {
+    "text": "Mailbox \"Notifications\" -- showing 3 of 444 messages:\n\n[unread] [UID:444] giuliano@vantasner.io -- \"[dft-disk] repo\" (11/2/2026, 2:18:06 PM)\n[unread] [UID:443] giuliano@vantasner.io -- \"[dft-disk] /tmp\" (11/2/2026, 1:48:07 PM)\n[unread] [UID:442] giuliano@vantasner.io -- \"[dft-disk] repo\" (11/2/2026, 1:48:07 PM)",
+    "details": {
+      "xdev": {
+        "tool": "email_fetch",
+        "mode": "execute",
+        "args": {
+          "mailbox": "Notifications",
+          "limit": 3,
+          "unseen": false
+        },
+        "tier": "exec",
+        "inner": {
+          "count": 3,
+          "total": 444,
+          "mailbox": "Notifications"
+        }
+      }
+    }
+  },
+  "verified_destination": "Notifications UID444, originalsubject/sender/date14:18matched",
+  "decision": "Read/handled/filed. Actualreported38GiB/8.0% one483GiBsharedfilesystem; no capacityconfirmation/scientificdeletion/send."
+}

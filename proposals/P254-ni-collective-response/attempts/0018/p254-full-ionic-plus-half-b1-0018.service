@@ -1,0 +1,21 @@
+[Unit]
+Description=P254 actual spatial spin-PBE response operators half-b1
+[Service]
+Type=exec
+WorkingDirectory=/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/full-ionic-operators-0018/plus-half-b1
+Environment=PYTHONUNBUFFERED=1
+Environment=OMP_NUM_THREADS=1
+Environment=MKL_NUM_THREADS=1
+Environment=OPENBLAS_NUM_THREADS=1
+ExecStart=/home/administrator/projects/catalyst-dft/.venv/bin/python -u /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/run_export_owner.py --case /home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/full-ionic-operators-0018/plus-half-b1/case.json
+ExecStopPost=-/home/administrator/projects/catalyst-dft/.venv/bin/python -u /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0016/run_export_owner.py --notify-exit %n
+Restart=no
+RuntimeMaxSec=180
+TimeoutStopSec=20
+KillMode=control-group
+CPUAffinity=6
+MemoryMax=3221225472
+MemorySwapMax=0
+MemoryAccounting=yes
+StandardOutput=journal
+StandardError=journal

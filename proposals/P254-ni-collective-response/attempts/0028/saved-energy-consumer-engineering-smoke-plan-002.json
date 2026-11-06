@@ -1,0 +1,90 @@
+{
+  "scope": "CorrectedactualNativeborrowed-inputexpansion, same genuine t0case/no propagation, oldproducerunchanged",
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_energy_saved_boundary.py",
+      "bytes": "23153",
+      "sha256": "535433c4fee3d1caa37e534a3038bc30686137280b3f309a223a71d510b80d97"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_energy_saved_runtime.py",
+      "bytes": "5197",
+      "sha256": "d72c8d54ae1a6bf7fae5f7fa56b7ff2828c2b8e6e9fd8783dc6720f430bdf951"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_energy_saved_owner.py",
+      "bytes": "12258",
+      "sha256": "ccaffc5938722372bfeef261e2b0a77a33d708fffec6da6bb85934a14dc710ad"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_energy_readout.py",
+      "bytes": "13822",
+      "sha256": "a51e5a173731f1486250eaa3551882ee7ad4517919b72b53bf62600408424955"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_energy_boundary_oracle.py",
+      "bytes": "9626",
+      "sha256": "0d24c86a2dc8eabcba5b6f64c16866dcf875e53e1be0163eb26cae0bba48843a"
+    }
+  ],
+  "actual_smoke_argv": [
+    "/usr/bin/env",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_energy_readout.py",
+    "--producer",
+    "/var/tmp/p254-a28-loaded-raw-mixed-shared-003",
+    "--producer-owner-sha256",
+    "c543177271dc775d91e71cbba6253be99de2b0448ef9c7639c4097af49b9ae25",
+    "--state",
+    "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/initial/checkpoint.json",
+    "--state-sha256",
+    "55b79edb114ffe94e008affa2b6872348e8ccc8bb7de26273b9c3746f09994dc",
+    "--output",
+    "/var/tmp/p254-saved-mixed-energy-initial-smoke-002",
+    "--cpus",
+    "6",
+    "--max-actions",
+    "1024",
+    "--max-seconds",
+    "600",
+    "--max-output-bytes",
+    "134217728",
+    "--max-memory-bytes",
+    "4294967296",
+    "--worker-memory-bytes",
+    "1073741824"
+  ],
+  "boundary_oracle_argv": [
+    "/usr/bin/env",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_energy_boundary_oracle.py",
+    "--work-directory",
+    "/var/tmp/p254-a28-saved-boundary-oracle-002",
+    "--producer",
+    "/var/tmp/p254-a28-loaded-raw-mixed-shared-003",
+    "--producer-owner-sha256",
+    "c543177271dc775d91e71cbba6253be99de2b0448ef9c7639c4097af49b9ae25",
+    "--evaluation",
+    "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-1/input.json",
+    "--cpus",
+    "6",
+    "7",
+    "8",
+    "--max-seconds",
+    "120"
+  ],
+  "repair": "Match producer line469 nested_bindings(owner.inputs,owner.source_bindings), not owner.inputs alone; strict equality and all other authority checks preserved.",
+  "failed_attempt": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/saved-energy-consumer-before-fix-failure-001.json",
+    "bytes": "2483",
+    "sha256": "29ce3a0164c7d01eab088feb66139b168ea2962dc1db08e4e293e6fadfdd1374"
+  }
+}

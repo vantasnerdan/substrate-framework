@@ -1,0 +1,161 @@
+"""Species-streamed original-column ionic and physical-field contractions.
+
+A term is ``weight * left @ D @ right.H`` with independent, possibly
+rectangular complex D.  Project first, then apply D in projector space.  The
+UPF channel matrix is a separate object and retains all off-diagonal entries.
+The ionic result is the positive gradient of BlochFiniteQIonic; the field
+result is the direct complex trace Tr(L_j X), not its conjugate or real part.
+
+Only small full-column overlap banks survive across terms/groups.  Base
+banks survive one species and derivative banks one Cartesian axis; PW work
+is limited to column blocks and one placed physical-field derivative bank.
+Inputs must remain immutable for the request, as in mixed_moment_terms.
+Equal endpoints or equal-valued arrays do not establish cache identity.
+"""
+import numpy as np
+from scipy.linalg.blas import zgemm
+
+from mixed_physical_field_dyads import _overlap
+from substrate_framework.material_mixed_field_ionic import first_cartesian_jets
+from substrate_framework.material_physical_operators import (
+    PhysicalFieldVertices, _weighted_overlap)
+from substrate_framework.paired_field_moments import _place_first
+from substrate_framework.qe_material_field_derivatives import UPFRadial
+
+
+def _cached_overlap(cache, bank, frame, block_size, *, momenta=None, axis=None):
+    """Original-frame overlaps keyed by the actual live bank/frame/momenta.
+
+    An axis cache is discarded before the mutable placed-jet workspace is
+    overwritten.  Immutable input objects stay alive in the caller's terms,
+    coupling and vertex, so their identities cannot be recycled in a cache.
+    """
+    key = (id(bank), id(frame), id(momenta), axis)
+    if key not in cache:
+        if momenta is None:
+            cache[key] = _overlap(bank, frame, block_size)
+        else:
+            value = np.empty((bank.shape[1], frame.shape[1]), complex)
+            for start in range(0, frame.shape[1], block_size):
+                sl = slice(start, start + block_size)
+                value[:, sl] = zgemm(
+                    1., bank, momenta[:, axis, None] * frame[:, sl], trans_a=2)
+            cache[key] = value
+    return cache[key]
+
+
+def _with_coefficient(cache, species, overlap, coefficient, *, channel=None):
+    """Apply the original UPF channel action and THEN the occupation D."""
+    matrix = species.active_d if channel is None else channel
+    key = (id(matrix), id(overlap), id(coefficient))
+    if key not in cache:
+        if channel is None:
+            weighted = _weighted_overlap(species, overlap, overlap.shape[1])
+        else:
+            shape = (len(species.atom_indices), matrix.shape[0], overlap.shape[1])
+            weighted = np.einsum('ij,ajb->aib', matrix, overlap.reshape(shape),
+                                 optimize=True).reshape(overlap.shape)
+        cache[key] = weighted @ coefficient
+    return cache[key]
+
+
+def projector_moments(coupling, terms, *, field_vertex=None):
+    """Return grouped positive ionic and direct physical nonlocal moments.
+
+    ``terms`` are the normalized borrowed MomentTerms from mixed_moment_terms.
+    Each encountered group receives complex128 ``nonlocal_gradient[ndof]``
+    and ``field_nonlocal[3]``; the latter stays zero without field_vertex.
+    The caller validates the diagonal endpoint/vertex geometry when requesting
+    field moments.  No kinetic/local terms, field drives or H0 actions occur.
+
+    Ionic signs/channel adjoint follow
+    BlochFiniteQIonic._nonlocal_gradient_block.  The two independent radial
+    field terms follow mixed_physical_field_dyads._species_moments, using
+    first_cartesian_jets and paired_field_moments._place_first once per
+    species/request and once per axis, respectively.  Base overlap sharing
+    between these paths requires identical bank AND frame objects, never
+    merely matching endpoint labels, values or dimensions.
+    """
+    if field_vertex is not None and not isinstance(field_vertex, PhysicalFieldVertices):
+        raise TypeError('original PhysicalFieldVertices required')
+    terms = tuple(terms)
+    result = {}
+    for term in terms:
+        if term.group not in result:
+            result[term.group] = dict(
+                nonlocal_gradient=np.zeros(coupling.ndof, dtype=np.complex128),
+                field_nonlocal=np.zeros(3, dtype=np.complex128))
+    if not terms:
+        return result
+
+    ionic_species = {source.name: (source, target)
+                     for source, target in coupling.species}
+    field_species = ({} if field_vertex is None else
+                     {species.name: species
+                      for species in field_vertex.hamiltonian.factors.species})
+    size = coupling.bridge.block_size
+    # Names only schedule species work.  They are never an overlap cache key.
+    for name in dict.fromkeys((*ionic_species, *field_species)):
+        source, target = ionic_species.get(name, (None, None))
+        physical = field_species.get(name)
+        base_overlaps, base_coefficients = {}, {}
+        if source is not None:
+            atoms = np.asarray(source.atom_indices, dtype=int) - 1
+            nh = source.active_d.shape[0]
+            # Preserve the explicit adjoint in the positive-gradient primitive;
+            # do not replace or symmetrize the original channel matrix.
+            ionic_channel = source.active_d.conj().T
+        if physical is not None:
+            inputs = field_vertex.hamiltonian.background.inputs
+            jets = first_cartesian_jets(
+                UPFRadial(inputs.tables[physical.name]), field_vertex.momenta)
+            derivative = np.empty_like(physical.beta, order='F')
+
+        for axis in range(3):
+            # Both caches expire BEFORE derivative is placed for the next axis.
+            axis_overlaps, axis_coefficients = {}, {}
+            if physical is not None:
+                _place_first(field_vertex, physical, jets[axis + 1], derivative)
+            for term in terms:
+                left, right, coefficient = term.left, term.right, term.D
+                output = result[term.group]
+                if source is not None:
+                    bl = _cached_overlap(base_overlaps, target.beta, left, size)
+                    br = _cached_overlap(base_overlaps, source.beta, right, size)
+                    dl = _cached_overlap(
+                        axis_overlaps, target.beta, left, size,
+                        momenta=coupling.pt, axis=axis)
+                    dr = _cached_overlap(
+                        axis_overlaps, source.beta, right, size,
+                        momenta=coupling.ps, axis=axis)
+                    weighted_base = _with_coefficient(
+                        base_coefficients, source, bl, coefficient,
+                        channel=ionic_channel)
+                    weighted_first = _with_coefficient(
+                        axis_coefficients, source, dl, coefficient,
+                        channel=ionic_channel)
+                    shape = (len(atoms), nh, right.shape[1])
+                    value = 1j * (
+                        np.einsum('aib,aib->a', br.reshape(shape).conj(),
+                                  weighted_first.reshape(shape))
+                        - np.einsum('aib,aib->a', dr.reshape(shape).conj(),
+                                    weighted_base.reshape(shape)))
+                    output['nonlocal_gradient'].reshape(coupling.nat, 3)[
+                        atoms, axis] += term.weight * value
+                if physical is not None:
+                    field_size = field_vertex.block_size
+                    bl = _cached_overlap(
+                        base_overlaps, physical.beta, left, field_size)
+                    br = _cached_overlap(
+                        base_overlaps, physical.beta, right, field_size)
+                    dl = _cached_overlap(
+                        axis_overlaps, derivative, left, field_size)
+                    dr = _cached_overlap(
+                        axis_overlaps, derivative, right, field_size)
+                    weighted_base = _with_coefficient(
+                        base_coefficients, physical, bl, coefficient)
+                    weighted_first = _with_coefficient(
+                        axis_coefficients, physical, dl, coefficient)
+                    output['field_nonlocal'][axis] += term.weight * (
+                        np.vdot(dr, weighted_base) + np.vdot(br, weighted_first))
+    return result

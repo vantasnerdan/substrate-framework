@@ -1,0 +1,327 @@
+# Read-only slice result
+
+## Scope, provenance, and recommendation
+
+No files were changed or owned for editing. No simulations, test suites, services, installations, or Git operations were executed. This is source-backed API/design evidence, not a passed physical-force oracle. The source-search judge was unavailable; literal searches and direct source/caller inspection supplied the investigation instead. No code-graph result is claimed.
+
+Source aliases below:
+- **G** = `/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw`
+- **ASE** = `/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/ase`
+- **P** = `/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response`
+
+`G/__init__.py:12` declares version **26.7.0**. Findings describe the installed files, not an assumption that current online master is identical. The four captured GPAW method documents are in hand. No paper cited incidentally by their bibliographies was used as an independently imported result.
+
+**Recommendation:** select A for the first declared physical, static mixed density–ion slice: a zero-mean, smooth periodic scalar source with a complete PAW functional, then differentiate all atomic forces with respect to its independent amplitude. Use the same source operator for microscopic electronic response. This earns a static mixed response for the declared channels after its force/energy oracles pass; it does not itself supply a frequency-dependent mixed kernel, transverse EM response, or a damping rate.
+
+B is a useful independent operator route and can avoid an obligatory 296-atom calculation. However, do not make its public `bloch_matrix()` output the correctness baseline for a new-PW campaign without resolving the source-level issues identified below. No installed public function found directly returns a verified, full PW-to-PW electron–phonon vertex suitable for immediate combination with the saved-PW χ calculation.
+
+## A. Actual new-GPAW Extension chain
+
+### Construction and persistence
+
+- `G/dft.py:63-83`: `ExtensionInput.from_input()` accepts non-dictionary objects unchanged. Dictionary dispatch only recognizes the listed built-ins; a custom named dictionary is not automatically registered.
+- `G/new/builder.py:184-185`: each parameter object is built with `ext.build(builder)`.
+- `G/extensions/__init__.py:8-68`: runtime hooks include `update_potential(vt_sR, density)`, `update_non_local_hamiltonian(D_sii, setup, atom_index, dH_sii)`, `force_contribution(nt_r, vHt_r)`, and `move_atoms(relpos_ac)`. `build()` can retain setups, cell, positions, communicators, and precomputed channel tensors. There is no automatic derivative of arbitrary custom one-centre coefficients.
+- Use `GPAW(..., legacy_gpaw=False, extensions=[custom_input], spinpol=True, symmetry='off', ...)`, with the registered magnetic state and material settings. Do not use `external=`: `G/dft.py:1144-1152` routes non-null legacy external input to old GPAW.
+- `todict()` is needed for parameter serialization (`G/dft.py:959-961`). New-GPW restart supports `object_hooks={'extensions': decoder}` before rebuilding parameters (`G/new/gpw.py:238-247`). Passing the input object during a fresh calculation is not, by itself, a complete recovery implementation. `calc.new()` serializes existing parameters (`G/new/ase_interface.py:371-377`); explicitly replace the extensions list with reconstructed input objects when cloning custom extensions.
+
+### Potential, energy, and force placement
+
+1. `G/new/pw/pot_calc.py:92-147` constructs ordinary XC/Hartree/local potential. `update1pw()` occurs before Poisson; simply imposing a scalar potential does not require changing that charge/Poisson hook.
+2. `G/new/pot_calc.py:106-132` calls `ext.update_potential()` and adds its returned scalar to the external-energy accumulator. It then subtracts the smooth-potential expectation from the band-derived kinetic energy, with smooth-core bookkeeping.
+3. `G/new/pot_calc.py:139-161,177-205,239-258` constructs PAW atomic Hamiltonians and invokes `update_non_local_hamiltonian()`. The returned energy from that hook is accumulated into the **XC-labelled** one-centre correction; the code then subtracts the complete `D*dH` expectation in the kinetic correction. The label is bookkeeping, not a physical declaration that an external term is XC.
+4. `G/new/pwfd/wave_functions.py:368-392` computes projector-motion forces using the updated `dH`, and also the eigenvalue-times-overlap correction. Therefore PAW projector motion is already present when a custom scalar operator has been added correctly to `dH`.
+5. `G/new/pw/pot_calc.py:166-206` differentiates smooth core against the total smooth potential, and calls the explicit extension-force hook. Compensation-charge and ordinary local-potential forces remain their existing contributions.
+6. `G/new/calculation.py:347-391` assembles those forces, domain-reduces ordinary terms, adds the extension contribution **after** that reduction, then symmetrizes and broadcasts. The extension must deliver the complete explicit contribution in the convention expected on the final master; it must not assume GPAW will domain-sum it afterward. The existing D3 extension returns a full force array, already broadcast (`G/extensions/d3.py:24-58,95-123`).
+
+Consequences:
+- Supply force arrays shaped `(Natom, 3)` in atomic units, Hartree/Bohr. `G/new/calculation.py:63-66,321-344` converts to eV/Å at the external interface.
+- Disable unlicensed symmetries: an arbitrary cos/sin source generally does not retain the unperturbed point group, and the final force symmetrization would otherwise alter the response.
+- The explicit force hook has no density/PAW arguments beyond its two grid arguments. Cache the required current density-matrix and channel data during the potential update, or otherwise arrange complete current data in the built extension. Do not rely on every rank executing every atomic Hamiltonian hook: that loop is atom/k-band distributed.
+
+### Complete source operator and term accounting
+
+The following is a **proposed construction to be checked**, not an executed result. Use electron potential energy `vλ(r)=λ f(r)` in Hartree, with f a declared cosine or sine. Distinguish it from electrostatic voltage φ; for electrons v=−eφ.
+
+For the frozen-core all-electron number-density source, account separately for:
+1. smooth-grid contribution, using the sum of the two density components;
+2. valence PAW augmentation `Σa,ij Dᵃij Δvᵃij`;
+3. rigid frozen-core-minus-smooth-core contribution `Σa ∫(ncᵃ−nctᵃ) vλ`;
+4. **only if the imposed source is an actual electrostatic source coupled to total charge**, the direct nuclear term `−Σa Za vλ(Ra)`.
+
+The reconstruction establishing precisely these electronic terms is `G/densities.py:89-148`. `G/new/density.py:142-148,231-238` shows that the smooth density already includes the smooth core, split between spin components. It must not be added twice.
+
+Two clean energy-hook conventions are possible; choose and preregister one:
+- Return the entire external functional, including augmentation and direct/core terms, from `update_potential()`. Add the augmentation operator in `update_non_local_hamiltonian()` and return **zero** there.
+- Or return only smooth plus rigid terms from the smooth hook, and return the augmentation energy from the nonlocal hook, respecting its atom/MPI reduction and its XC-labelled storage.
+
+Do not combine these conventions. The first avoids having an external contribution stored under the XC label and permits all explicit-force data to be cached together.
+
+For forces, separate:
+- projector-motion terms: already handled by the existing updated-dH force path;
+- smooth-core motion: already differentiated against the total smooth potential;
+- **explicit motion of the augmentation coefficient Δvᵃ**, from its dependence on Ra;
+- explicit frozen-core correction and, when declared, direct nuclear force.
+
+The last two items belong in the extension force contribution. Adding only smooth v and PAW Δv to the Hamiltonian leaves these explicit derivatives unaccounted for. Conversely, adding projector-motion or the smooth-core term again would double count them.
+
+If the retained electronic channel is **valence all-electron density**, not total electron density, replace the rigid core correction in the functional by the negative smooth-core contribution, so the already-present smooth core is removed. This also changes the explicit force needed to cancel its automatic smooth-core derivative. Alternatively calculate the full-source response and subtract the analytically identified rigid-core/direct-nuclear cross response. State which observable is being returned.
+
+The direct term is not permission to put bare proton charges on phonon coordinates. It is the known coupling of the actual nuclei to an explicitly declared imposed electrostatic source. After projection onto retained modes, the electronic vertex must be separated from that direct term according to the chosen retained-density convention.
+
+### Exact implementable PAW channel tensor
+
+Reuse the installed density-operator implementation rather than a multipole/head surrogate:
+
+```python
+from gpaw.response.groundstate import ResponsePAWDataset
+from gpaw.response.paw import calculate_pair_density_correction
+pawdata = ResponsePAWDataset(setup)
+Qbar_Kii = calculate_pair_density_correction(K_Kv, pawdata=pawdata)
+```
+
+`G/response/paw.py:161-261` defines the returned tensor as the atom-centred integral of `exp(−iK·r) [φi*φj−φ̃i*φ̃j]`, shape `(NK, ni, ni)`. The positioned tensor is multiplied by `exp(−iK·Ra)` (`:489-519`). For a real cosine source use the real part of this positioned tensor; for a sine source use its negative imaginary part. Its explicit centre derivative follows the phase and must be verified independently by central differences. These signs are tied to this source's negative-exponential convention, not guessed from a plot.
+
+At K=0 the correction is the overlap correction. The installed exposing reference is `G/test/response/test_two_phi_integrals.py:8-16`. Preserve the full tensor, not only `Delta_iiL[:,:,0]`, at nonzero K.
+
+Smooth source construction is directly supported by `UGDesc.xyz()` (`G/core/uniform_grid.py:183-187`) and local grid descriptors. Add the same scalar to both collinear density potentials, not to magnetic components. `UGArray.integrate()` includes cell-volume element and domain reduction (`:554-571`).
+
+For frozen cores, use actual setup data and the representation used by the smooth-core spline. `G/setup_data.py:232-253` exposes the spherical-harmonic normalization, including division by √(4π) for physical radial density; `G/setup.py:1172-1178` constructs the smooth-core spline. Check the actual spline representation as well as tabulated radial data: otherwise interpolation/cutoff differences can spoil force consistency. Nuclear Z, core electron count Nc, setup identity and radial grids must come from the installed setup, not a fitted effective charge.
+
+The response Fourier-Bessel machinery already contains a direct radial-transform check (`G/response/paw.py:106-157,401-421`), but its built-in tolerances and hard-coded interpolation controls are not a campaign accuracy guarantee. Refine/check them for the retained K values.
+
+Do not use a coarse reconstructed all-electron grid as an exact Fourier oracle. `G/densities.py:150-160` deposits unresolved charge at the nearest grid point. That can restore total charge without restoring every finite-K coefficient; use smooth Fourier data plus analytic PAW/core corrections, or demonstrate grid convergence explicitly.
+
+### What the zero-energy return means
+
+`G/new/external_potential.py:43-59` adds a smooth constant-field potential and returns zero, with no scalar-field PAW/explicit-force override. It is not a suitable periodic Ni implementation, and no sawtooth is recommended.
+
+A zero return is **not by itself** evidence either of correctness or of missing physical energy. BField, for example, uses a nonzero complete smooth-hook energy and a zero nonlocal-hook energy (`:72-111`). The relevant evidence is the complete functional and double-counting chain. `G/new/energies.py:26-46` explicitly forms kinetic energy from band energy plus corrections and totals the named/additional functional terms. Only the prospective energy/force derivatives can settle a new scalar extension.
+
+## B. Installed displacement → supercell → Bloch route
+
+The installed package is **`gpaw.elph`**, not a `gpaw.electronphonon` directory. Public imports are `DisplacementRunner`, `Supercell`, and `ElectronPhononMatrix`.
+
+### Source-supported call sequence
+
+```python
+from gpaw.elph import DisplacementRunner, Supercell, ElectronPhononMatrix
+from ase.phonons import Phonons
+
+# atoms is the 37-atom reference cell; calc_displacements describes atoms*S.
+dr = DisplacementRunner(atoms, calc_displacements, supercell=S,
+                        name=fd_cache, delta=delta,
+                        calculate_forces=True)
+dr.run()
+
+sc = Supercell(atoms, supercell_name=sc_cache,
+               supercell=S, indices=np.arange(len(atoms)))
+sc.calculate_supercell_matrix(calc_lcao_supercell, fd_name=fd_cache,
+                              filter=None)
+
+# Preload raw force constants so ElectronPhononMatrix does not invoke its
+# default symmetrized/acoustic-corrected read.
+ph = Phonons(atoms, supercell=S, name=fd_cache, delta=delta,
+             center_refcell=True)
+ph.read(method='standard', symmetrize=0, acoustic=False)
+ep = ElectronPhononMatrix(atoms, sc_cache, ph,
+                         indices=np.arange(len(atoms)),
+                         load_sc_as_needed=True)
+g = ep.bloch_matrix(calc_lcao_primitive, k_qc=q_array,
+                    prefactor=False, accoustic=False, savetofile=False)
+```
+
+This is the API recipe, not an execution receipt. The spelling `accoustic` is the installed argument spelling.
+
+### Captured data and represented terms
+
+- `G/elph/displacements.py:99-147`: new and old calculators are supported. New GPAW saves `potential.vt_sR.gather(broadcast=True).data`, and packed `potential.dH_asii` for every atom. Smooth potential shape is `(nspin, nx, ny, nz)` in Hartree; each atomic packed array is `(nspin, ni(ni+1)/2)`. Forces are `(Nsupercell_atoms,3)` in eV/Å.
+- `G/elph/supercell.py:346-390`: central differences produce `V1t_xsG` and a list of atomic `dH1` dictionaries in Hartree/Bohr. x runs over the selected Cartesian atom displacements.
+- `:98-170` forms all four documented pieces: smooth local-potential derivative; derivative of atomic dH for all atoms; derivative of the bra projector; derivative of the ket projector. The last two enter as a term plus its conjugate transpose.
+- `:108-109` has intermediate shape `(nspin, nk_local, nao_supercell, nao_supercell)`.
+- `:299-328` saves each Cartesian entry under key `str(3*a+v)` with shape `(nspin, Ncell, Ncell, nao_cell, nao_cell)`, plus cache metadata and basis information.
+- `G/elph/gmatrix.py:152-235,283-332` contracts LCAO coefficients and cell phases into shape `(nspin, nq, nk_fullBZ, 3*Nselected, nbands, nbands)`.
+
+### Restrictions that matter for Ni
+
+1. **LCAO projection, not PW projection.** Displacements may use PW, but both supercell projection and final primitive electronic coefficients are LCAO. Basis convergence and consistency with the electronic bath remain obligations. Passing an arbitrary saved-PW ground state to `bloch_matrix()` does not provide the required LCAO coefficients.
+2. **Matched grids:** the finite-difference coarse grid must match the LCAO projection grid. The official tutorial documents explicit PW `gpts`; the installed dictionary factory derives grid and spin from the displacement cache (`G/elph/supercell.py:55-96`). Use the same setups/XC and magnetic state, not only the same array dimensions.
+3. **Projection MPI:** `G/elph/supercell.py:223-226` requires domain and band communicator sizes one. K-point parallelism is the supported distribution. The final Bloch stage is safest serial; new compatibility coefficient access itself asserts k-point and band communicator sizes one (`G/new/backwards_compatibility.py:191-202`).
+4. **Full electronic BZ:** `G/elph/gmatrix.py:284-317` requires `nbzkpts == nibzkpts` and finds actual k+q partners. Use `symmetry='off'`, including time-reversal reduction off. The new builder separately applies the time-reversal setting (`G/new/builder.py:114-127`).
+5. **Spin:** `displacements.py:37-40` explicitly processes the collinear channels separately and warns to use care; noncollinear calculations are unsupported. The dictionary projection factory accepts one or two spin channels. The `TightBinding.bloch_to_real_space()` time-reversal restoration has a one-spin assertion in its reduced-BZ Gamma branch (`G/lcao/tightbinding.py:107-131`). For magnetic work pass a full, explicitly configured LCAO calculator with symmetry off, rather than relying on the factory's point-group-only disabling.
+6. **Raw modes:** `ElectronPhononMatrix` otherwise calls `phonon.read(symmetrize=10)` (`gmatrix.py:126-128`); ASE defaults include Frederiksen force adjustment and acoustic restoration (`ASE/phonons.py:382-475`). Preloading the raw `Phonons` object avoids this. `bloch_matrix()` otherwise zeros its first three Γ couplings (`gmatrix.py:323-324`). Do not enable either silent correction.
+7. **Normalization:** `prefactor=False` removes the square-root frequency prefactor, but it does **not** remove contraction with ASE's mass-scaled phonon vectors. ASE uses eigenvectors multiplied by inverse square-root atomic masses (`ASE/phonons.py:755-763`). Keep raw Cartesian vertices and the precise mode map. Do not treat the returned mode matrix as a unit-displacement Cartesian derivative merely because the docstring labels eV/Å. `prefactor=True` also has an unresolved mass-convention comment in the installed source (`gmatrix.py:221-230`); avoid it until independently checked.
+8. **Unstable modes:** ASE preserves negative eigenvalues as signed negative frequencies (`ASE/phonons.py:768-791`). Keep these and raw force constants. Do not apply a positive-frequency quantization prefactor to an instability.
+9. **New versus legacy response bridge:** automatic LCAO-to-PW conversion in `ResponseGroundStateAdapter` is explicitly guarded by `calc.old` (`G/response/groundstate.py:59-65`). New-LCAO response is not transparently converted by that branch. Combining new-PW χ with an LCAO vertex requires a demonstrated common-state/operator map. An explicitly authorized old-LCAO representation is a separate approximation/engine choice, not a silent fallback.
+10. **Indices:** pass a NumPy index array. In the installed `ElectronPhononMatrix.__init__`, assignment to `self.indices` is inside the NumPy-array branch (`gmatrix.py:75-80`); a caller-supplied plain list is not equivalently handled.
+
+### Two important exactness prerequisites in the installed B path
+
+**Reference-cell projector indexing — source-level concern, not an executed bug verdict.** ASE displaces `offset*Natom + a` when `center_refcell=True` (`ASE/phonons.py:85-94,190-216`). For an axis-two supercell that offset is nonzero. In contrast, the installed projector-derivative piece uses `dH_asp[a]`, `P[a]`, and `dPdR[a]`, and the caller passes primitive a without adding the offset (`G/elph/supercell.py:150-167,285-289`). I found no corresponding offset remapping in that call chain. Before trusting a 74-atom B vertex, explicitly compare centre-cell versus translated/corner-cell constructions, with the PAW projector term isolated. This may require an owned upstream/library repair; do not hide it by dropping the nonlocal term.
+
+**Image truncation / R=0 extraction.** The installed code Fourier-transforms the supercell Bloch matrix and keeps only the supercell R=(0,0,0) block (`supercell.py:271-306`); at Gamma it warns that overlap with neighbouring cells cannot be removed (`:261-264`). A small displacement supercell can represent a periodic q channel without the public real-space interpolation being exact. Check image contributions and basis range, or retain the full Bloch matrix rather than silently treating the R=0 block as complete.
+
+For Γ specifically, the internal `_calculate_supercell_entry()` returns the full per-k matrix before R=0 extraction. It offers an implementable fixed-equilibrium-LCAO projection route with explicit coefficient contraction; it is an internal API and still needs a force/energy derivative oracle. It is not an existing public PW vertex API.
+
+Finally, the four potential/projector terms are not themselves a proof of a total-energy/eigenvalue derivative. The new force source explicitly contains the overlap correction, while this elph assembly contains no separate overlap-derivative term. For a claimed energy derivative, preregister a generalized-eigenproblem/PAW-overlap and moving-basis comparison. Do not assume either that the documented potential vertex is missing that term in its own convention, or that it is automatically identical to the force-consistent derivative required by P254.
+
+## Cell/q support and actual calculation counts
+
+Let the loaded 37-atom structure be the declared reference cell. These are representational statements with prospective translation/Fourier oracles, not convergence claims.
+
+- **37 atoms, Γ with G≠0:** periodic scalar density patterns inside that cell. They are microscopic channels, not a uniform optical electric field.
+- **74 atoms, S=(2,1,1)** or an axis permutation: supports the corresponding half-reciprocal-vector q of the 37-atom lattice, as a periodic pattern in the doubled cell. Include the registered reciprocal G offsets and real quadratures.
+- **S=(1,1,1) displacement construction:** source API permits it. It can supply a declared Γ periodic-displacement derivative. Arbitrary q returned by subsequent interpolation does not make missing intercell information exact.
+- **Axis-two displacement construction:** source API permits it and can target the associated limited commensurate q channels. The B interpolation and reference-cell caveats above still apply.
+- **S=(2,2,2):** represents the eight binary half-grid q points of that reference lattice; it is not required merely to obtain Γ plus one axis-half-q slice, and is not automatically supercell-converged for full three-dimensional electron–phonon coupling.
+
+A 74-atom cell obtained by relaxing away its 37-atom translation symmetry cannot be relabelled as a clean q sector of the original 37-atom structure. Require geometry and magnetic translation oracles before folding/unfolding. Likewise, an arbitrary finite q is only accessible when the electronic k mesh contains the needed k+q states.
+
+**Source-fact counts, no timings:**
+- A: with M independent real retained scalar channels and A amplitude magnitudes, central force response costs `1 + 2*A*M` fixed-geometry SCFs per cell/settings set if all fresh, counting one zero-source baseline. Each perturbed SCF supplies all atomic force components. HF/mixed-displacement validation adds its own stated displaced geometries; it is not included for free.
+- B: ASE performs one equilibrium SCF plus six displaced SCFs per selected reference atom: `1 + 6*Nselected` per displacement amplitude/settings set (`ASE/phonons.py:163-216`; official tutorial explicitly says `2*3*N` displacements). Supercell repetition changes the atoms per SCF, not this reference-atom count. Full 37-atom reference displacements run at 37, 74, or 296 atoms for S products 1, 2, or 8 respectively. Choosing 74 atoms as a new base cell instead changes Nselected accordingly.
+- B also needs LCAO projection initialization/linear algebra and a separate converged primitive full-BZ LCAO electronic state. Projection initialization is not a further required self-consistent SCF in the installed dictionary path. Frequencies/q lists do not rerun the displacement SCFs, but do add projection work/storage.
+- Symmetry reduction is not automatically provided by this displacement loop. Any reduction must carry independently checked atom/vector/channel maps.
+
+## Microscopic χGG′ APIs, including fixed Γ
+
+### Finite q: an actual matrix-returning API
+
+```python
+from gpaw.response.df import DielectricFunction
+
+df = DielectricFunction(gpw_path,
+                        frequencies=omega_eV, hilbert=False,
+                        ecut=response_cutoff_eV, nbands=nbands,
+                        eta=eta_eV, intraband=True, rate=0.0,
+                        nblocks=1)
+eq = df.get_chi0_dyson_eqs(q_c=q_c, xc='RPA', truncation=None)
+qpd, chi_wGG, wblocks = eq.rpa_density_response()  # nonzero q
+K_Gv = qpd.get_reciprocal_vectors(add_q=True)
+chi0_wGG = eq.chi0.body.get_distributed_frequencies_array()
+```
+
+Evidence: `G/response/df.py:72-81,133-157,575-618,661-730`; `G/response/chi0_data.py:32-96`. The returned χ has local-frequency shape `(Nω_local, NG, NG)` and the descriptor defines the actual reciprocal-vector ordering. Gather with its frequency distribution, not by assuming every rank owns every frequency. The constructor's frequency/eta/cutoff inputs are eV; stored internal descriptors/response use atomic units. The official Fourier definition is `P/sources/gpaw-dielectric-theory.txt:35-75`. Do not insert a second spin factor or an unregistered cell-volume normalization.
+
+The raw density vertices are genuinely PAW corrected: `G/response/pair.py:176-207,233-265` combines the smooth Fourier integral with projector contractions; `G/response/chi0.py:202-268` integrates the resulting matrix over both spin channels.
+
+### Fixed Γ microscopic channels are NOT the optical head/wing construction
+
+- `SingleQPWDescriptor.optical_limit` tests q≈0 (`G/response/qpd.py:29-34`).
+- `eq.get_chi0_wGG(direction)` replaces the head and wings by direction-projected optical coefficients (`df.py:72-81`).
+- `calculate_vchi_symm()` returns **Coulomb-scaled** susceptibility, not raw χ (`:164-204`).
+- The untruncated optical Coulomb convention sets its G=0 coefficient to 4π rather than the physical finite-q singular kernel (`G/response/coulomb_kernels.py:73-88`). This accompanies the optical rescaling.
+- `rpa_density_response()` at optical q requires a nonzero directional `qinf_v` and restores the corresponding head/wing powers (`df.py:142-155`). That is not the fixed-Γ periodic microscopic experiment.
+
+For a declared fixed-N, exact-Γ microscopic density slice, use the **raw body** matrix, obtainable from `df.get_chi0([0,0,0]).body`, or directly from `df.chi0calc.chi0_body_calc.calculate([0,0,0])`. Retain the full nonzero-G sector, impose the declared uniform-number constraint/gauge, solve its corresponding microscopic Dyson problem, and only then project to retained cos/sin channels. This projected Dyson construction needs its own exact finite-matrix oracle. Do not first retain only the few interesting G entries and then invert: that removes the other local-field channels before they can screen them.
+
+For actual finite q, the matrix-returning finite-q API above is the less ambiguous initial source check. An exactly repeated doubled cell supplies a useful independent fold/unfold comparison after normalization and sampling are matched.
+
+### Metallic static and spin consistency are real outstanding constraints
+
+- `G/response/chi0_base.py:140-142` weights transitions by occupation differences. Equal-band diagonal occupation derivatives are not generated by multiplying this difference.
+- The separate optical intraband correction is added to the **head**, not the complete microscopic body (`G/response/chi0.py:338-344,360-409`).
+- Therefore a thermodynamic static finite-smearing Γ SCF response is not automatically the ω→0 value of this collisionless microscopic matrix. Fixed N versus fixed chemical potential and the order of limits must be stated and checked.
+- A spin-PBE SCF force response also includes the PBE induced-XC response, whereas χRPA does not. Installed `DensityXCKernel.__post_init__` asserts `nspins == 1` (`G/response/density_kernels.py:13-35`). It does not provide the matching collinear spin-PBE microscopic kernel.
+
+Thus an exact same-approximation spin-PBE-SCF ↔ dynamic-χ static-consistency oracle is **not supplied by this installed density-kernel API**. This is a specific missing construction, not a reason to make Ni nonmagnetic. Either construct a demonstrably matching response calculation, or explicitly retain the difference as a modelling approximation and prove the later static matching for the actual supplied operators.
+
+## Saved-band streaming and memory
+
+The existing memory-model receipt accurately describes the traced path, with these boundaries:
+
+- Each response rank opens a **serial** GPAW ground-state adapter (`G/response/groundstate.py:127-133`), replicating metadata, density/potential, eigenvalues/occupations and projections.
+- Same-precision serial new-PW loading retains ULM proxies (`G/new/pw/builder.py:186-234`; `G/core/arrays.py:71-92`); the GPW reader remains open (`G/new/gpw.py:278-283`). Precision conversion can materialize coefficients earlier.
+- The response `pair.py:96-101` asks for `kpt.psit_nG`. The new compatibility property evaluates `data[:] * scale` when scaling is required (`G/new/backwards_compatibility.py:320-332`); the ASE interface builds that compatibility object with PW scaling enabled (`G/new/ase_interface.py:528-540`). It therefore reads and scales the **entire saved band block at one spin/k point**, then FFTs selected bands. It is not true saved-band streaming.
+- `ASE/io/ulm.py:642-668` does support individual/sliced-band reads. The native new accessor `calc.wfs.get_wave_function_array(n,k,s,...)` takes an individual native band (`G/new/backwards_compatibility.py:191-213`), and the native collection path accepts band ranges. Those capabilities do not mean the current dielectric pair path uses them.
+- `make_sure_wfs_are_read_from_gpw_file()` explicitly materializes all lazy arrays when invoked (`G/new/ibzwfs.py:538-545`). Force/SCF operations invoke it; opening a response adapter alone is not the same operation.
+- `nblocks=1` remains the configured no-BLACS choice. Its χ0 body stores all frequencies and all G×G entries on each matrix block communicator of size one; the Hilbert path can allocate a second spectral array (`G/response/chi0.py:239-268`). Later frequency redistribution and optical/Dyson copies do not remove that earlier peak.
+- B's `load_sc_as_needed=True` only limits loading of the supercell cache. Public `bloch_matrix()` still collects all primitive LCAO coefficients for a spin, precomputes all selected-displacement ket contractions, and allocates the full output (`G/elph/gmatrix.py:142-150,237-252,295-307`). It is not a fully streamed final vertex API.
+
+No 37-/74-atom memory feasibility result follows from the native Ni1 pilot or from dividing a GPW file size by MPI ranks. Budget the actual active coefficient blocks, real-space pair buffers, PAW tensors, χ0/Dyson copies, and output tensor. Process one q/frequency batch at a time only where the actual solver/distribution permits it; do not claim a nonexistent streaming option.
+
+## Normalization, direct-core separation, and screening handoff
+
+The slice receipt should identify:
+- reference cell and volume; reciprocal convention and Cartesian K in inverse Bohr;
+- field origin, Fourier sign, zero mean, and cosine/sine normalization;
+- λ in Hartree or explicitly converted eV, with the corresponding force-derivative units;
+- both collinear spin channels and magnetic-state/occupation constraints;
+- setup file hashes, Z/Nc/Nvalence, partial waves and core spline conventions;
+- whether the observable is valence density, total electron density, or total charge;
+- explicit rigid-core and direct-nuclear pieces, before and after any subtraction;
+- Cartesian atomic coordinates versus mass-weighted retained coordinates;
+- common electronic basis/state for density and displacement vertices, including band/gauge/phase maps;
+- full microscopic local-field space used before retained-channel projection.
+
+At finite K, replacing the rigid core plus nucleus by an unspecified point-ion/effective charge discards the core form factor. At K=0, check the overlap correction and electron-count normalization separately; a neutral total-charge source and a uniform electron-energy shift have different meanings.
+
+A self-consistent displacement potential is screened. A force response to an independent scalar source is likewise a screened static mixed response. Record this rather than calling either one a bare ionic coupling. Do not add such a bath again to a statically screened Born–Oppenheimer Hessian without the P254 subtraction proof for the same channel/operator conventions. The existing exact module `src/substrate_framework/material_matter_field.py:28-46` proves a finite static-matched construction only; it does not perform this material/operator identification.
+
+## Prospective validation gates root should preregister
+
+1. **Operator oracle before SCF:** PAW Q(0)=overlap correction; Q(−K)=Q(K)*; cosine/sine phase and explicit centre gradients against independent differences; independent radial quadrature/refinement for every setup/channel. Mutations: omit augmentation, flip the sine convention, or omit atomic phase.
+2. **Hellmann–Feynman amplitude derivative:** at fixed ions compare the derivative of the force-consistent total functional with the declared full external observable. At electronic smearing, use `atoms.get_potential_energy(force_consistent=True)`, not the default extrapolated energy. `G/new/ase_interface.py:290-294` and `G/new/calculation.py:280-283` distinguish these energies. Mutation: omit augmentation/core/direct energy while retaining its Hamiltonian term.
+3. **Force versus position differences:** compare each analytic force against central differences of that same force-consistent functional, with both source quadratures and PAW-sensitive displacements. Isolate automatic projector, smooth-core, explicit augmentation-centre, rigid-core and direct-source terms. Mutation: omit the explicit augmentation-centre force; separately double-count projector motion.
+4. **Mixed reciprocity:** compare central field derivatives of raw forces against position derivatives of the independently reconstructed source expectation, with the sign defined by force=negative energy derivative. Also compare mixed four-corner energy differences. This supplies a physical mixed-vertex oracle without relying on dielectric-head curves.
+5. **Refinement:** multiple λ magnitudes and displacement sizes, tighter SCF/force thresholds, fixed grids with grid/cutoff refinement, k sampling and electronic smearing/occupations. Report central-difference convergence and cancellation floors; no tolerance is earned by this investigation.
+6. **Density/static response:** compare the same source's density response with PAW microscopic χ under matched kernel, ensemble, q, band space and limit convention. Diagnose PBE-versus-RPA and metallic Γ occupation differences explicitly rather than forcing equality. A frozen-Hamiltonian independent-particle check and an interacting screened check are different gates.
+7. **Finite q/folding:** exact geometry/spin translation, channel orthogonality, cell-volume normalization, commensurate k+q closure, and 37-cell finite-q versus 74-cell folded response. Test both real quadratures and forbid unsupported full-3D conclusions.
+8. **B-specific:** centre/corner reference-cell translation with isolated projector term; image/R=0 truncation sensitivity; local/nonlocal component accounting; full-BZ/basis checks; overlap/generalized-eigenvalue derivative comparison; no ASR clipping. Test degenerate subspaces through gauge-covariant/projector observables, not arbitrary individual eigenvector phases.
+9. **MPI/restart:** serial versus permitted MPI equality for energy and every force component; custom-extension restart reconstruction and atom-motion cache invalidation; observe actual peak memory/file access on the material-sized retained path. Do not rerun the already-earned W0 recovery experiments merely to confirm their reported success.
+10. **Physical scope:** preserve signed instabilities and raw errors; maintain the magnetic state. η and an input optical rate remain numerical/phenomenological parameters. Neither route supplies a measured lifetime, nonlinear phase, BEC, nuclear matrix element, or full finite-q transverse EM tensor.
+
+### Runnable, read-only PAW operator oracle command
+
+This command can be run now against the installed setup/operator implementation without launching a material SCF. **It was not executed in this investigation.** Its purpose is the source-operator prerequisites and an exposing phase mutation, not the missing full Extension force oracle. The finite K/R values are deliberately mathematical fixtures in atomic units, not Ni predictions. The Q(0) tolerance follows the installed overlap test; the phase finite-difference thresholds are prospective engineering gates, not material accuracy claims.
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 \
+/home/administrator/projects/catalyst-dft/.venv/bin/python -B - <<'PY'
+import numpy as np
+import gpaw
+from gpaw.setup import create_setup
+from gpaw.response.groundstate import ResponsePAWDataset
+from gpaw.response.paw import calculate_pair_density_correction
+
+gpaw.setup_paths.insert(0,
+    '/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw_data/setups')
+K = np.array([0.17, 0.29, -0.13])
+R = np.array([0.2, 0.3, 0.4])
+h = 2.0**-12
+for symbol, kind in [('Ni', '10'), ('H', 'paw')]:
+    setup = create_setup(symbol, xc='PBE', type=kind, lmax=2)
+    paw = ResponsePAWDataset(setup, radial_points=2**10)
+    Q0, Qp, Qm = calculate_pair_density_correction(
+        np.array([np.zeros(3), K, -K]), pawdata=paw)
+    np.testing.assert_allclose(Q0, setup.dO_ii, rtol=1e-8, atol=1e-7)
+    np.testing.assert_allclose(Qm, Qp.conj(), rtol=1e-12, atol=1e-12)
+    def quadratures(r):
+        z = np.exp(-1j * (K @ r)) * Qp
+        return np.array([z.real, -z.imag])
+    for v in range(3):
+        dr = np.eye(3)[v] * h
+        fd = (quadratures(R + dr) - quadratures(R - dr)) / (2*h)
+        dz = -1j * K[v] * np.exp(-1j * (K @ R)) * Qp
+        exact = np.array([dz.real, -dz.imag])
+        np.testing.assert_allclose(fd, exact, rtol=1e-6, atol=1e-9)
+        if v == 0:
+            assert not np.allclose(fd, -exact, rtol=1e-6, atol=1e-9), \
+                'Sign-flip mutation was not exposed'
+    print(symbol, 'PAW overlap/conjugation/phase oracle passed;',
+          'scope=operator fixture, not material force validation')
+PY
+```
+
+A runnable **full force/energy** A oracle does not yet exist merely because these hooks exist. Its exact prerequisite is implementation of the complete scalar-source Extension/input decoder and the declared functional/force comparisons above. The source interfaces are sufficient; the missing work is implementation and proof by execution, not an unavailable PAW tensor API.
+
+## Remaining risks / decision boundary
+
+- A has a complete implementable hook route, but no executed variational/force validation yet.
+- A matching collinear spin-PBE dynamic microscopic kernel and metallic static-limit treatment are not supplied by the inspected dielectric API; they remain explicit constructions or approximation boundaries.
+- B has actual local/nonlocal matrix code, but its reference-cell indexing concern and finite-supercell R=0 interpolation must be resolved before an exactness claim. Its PW-to-LCAO change and mass/overlap conventions require independent checks.
+- Common geometry is not automatically a common stationary electronic state: QE stationarity does not certify GPAW stationarity with a different setup. Root must bind the material derivative to the actual GPAW background and report cross-engine differences.
+- Neither the 37-/74-atom memory footprint nor physical vertex convergence was measured here.
+- No source-backed shortcut justifies bare phonon charges, dielectric-head-only mixed vertices, silent nonmagnetic fallback, eta-derived damping, or a full-3D claim from axis-only q channels.
+
+**Owned/changed files: none.** All files above are inspected evidence or existing authority. Root retains geometry, production execution, integration, and validation ownership.

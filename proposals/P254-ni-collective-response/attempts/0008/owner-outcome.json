@@ -1,0 +1,26 @@
+{
+  "unit": "p254-w1-primary-boundary-0008-v1.service",
+  "properties": {
+    "argv": [
+      "systemctl",
+      "--user",
+      "show",
+      "p254-w1-primary-boundary-0008-v1.service",
+      "--property=ActiveState,SubState,Result,ExecMainCode,ExecMainStatus,ExecMainStartTimestamp,ExecMainExitTimestamp,CPUUsageNSec,MemoryCurrent,MemoryPeak,MemoryMax,CPUAffinity,ControlGroup,MainPID,NRestarts"
+    ],
+    "returncode": 0,
+    "stdout": "MainPID=0\nResult=success\nNRestarts=0\nExecMainStartTimestamp=Mon 2026-10-19 18:10:48 UTC\nExecMainExitTimestamp=Mon 2026-10-19 18:10:53 UTC\nExecMainCode=1\nExecMainStatus=0\nControlGroup=\nMemoryCurrent=[not set]\nMemoryPeak=117411840\nCPUUsageNSec=4413960000\nMemoryMax=2147483648\nCPUAffinity=5\nActiveState=active\nSubState=exited\n",
+    "stderr": ""
+  },
+  "journal_command": [
+    "journalctl",
+    "--user",
+    "-u",
+    "p254-w1-primary-boundary-0008-v1.service",
+    "--no-pager",
+    "-o",
+    "short-iso-precise"
+  ],
+  "journal_returncode": 0,
+  "post_gc_memory_policy": "Only observed fields retained; no reconstructed post-GC values."
+}

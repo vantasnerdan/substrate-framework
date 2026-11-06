@@ -1,0 +1,54 @@
+{
+  "schema": "P254-root-allocation-decision-v1",
+  "actual_decision_at": "2026-10-28T19:21:35.384693+00:00",
+  "prior_due": "2026-10-28T19:20:32.992007+00:00",
+  "timeliness": "late; elapsed time retained, no retroactive approval",
+  "decision": "Continue with a split H0-only material calculation using completed state and density/gradient checkpoints; run the independent ready ionic-q and optical-current material consumers. Do not repeat density work or launch all128 slots blindly.",
+  "scientific_evidence": {
+    "source_state_receipt": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-source-001/source-state.json",
+      "bytes": "2205",
+      "sha256": "f3cd952bfcec6d6c9161b533fa562be5f77bcfb16757b8a290d99b91d180ad20"
+    },
+    "density_gradient_receipt": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-reference-source-002/slot-1-density-gradient.json",
+      "bytes": "3096",
+      "sha256": "b970c88cae5f1b27f0cf766d4b2ae3f243a1dac014e3f714ee5f7b865133c048"
+    },
+    "density_gradient_first_useful_seconds": "81.88820314407349",
+    "producer_002_result": "manager launcher reports timeout; no H0 checkpoint present",
+    "dyad_oracle": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/bloch-dyad-oracle-003.json",
+      "bytes": "9824",
+      "sha256": "c443483f327e380daf6f65d4f7cd0e4fb3b973965a119240aaab3be9ba897193"
+    },
+    "state_oracle": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-state-oracle-002.json",
+      "bytes": "2484",
+      "sha256": "5654d91071031d3c8612476dd6ecbc4c7cdf09062c460b6ec73d3902ef1eaef0"
+    },
+    "nuclear_ledger": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/nuclear-product-energy-ledger.json",
+      "bytes": "68562",
+      "sha256": "37969bea7d713859393ffd935765e60e37852cf94fe7ecfa1a0c7ea31b4a9497"
+    }
+  },
+  "allocation": {
+    "wall_seconds": "1200",
+    "H0_only_material_seconds": "120",
+    "ionic_q_material_seconds": "120",
+    "optical_current_material_seconds": "120",
+    "cores": [
+      6,
+      7,
+      8
+    ],
+    "maximum_concurrent_memory_bytes": "12884901888",
+    "no_old_native_or_cloud_action": true
+  },
+  "first_useful_output": "Completed full-column H0 moments; independent actual-material ionic-q and optical-current refinement records.",
+  "transition": "Preserve each completed boundary. A timeout or adverse refinement requires a changed method or a measured bounded continuation, not an unchanged reset. Full source/slot expansion follows measured cost and exact symmetry/state transport.",
+  "next_decision_due": "2026-10-28T19:41:35.384693+00:00",
+  "decision_owner": "Root",
+  "whole_objective": "R/S/E/D/C/N remains open; finite electronic dynamics is not irreversible loss, product Q is not a nuclear transition rate or heat."
+}

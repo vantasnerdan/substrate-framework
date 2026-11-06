@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "registered_at": "2026-10-19T18:03:10.032Z",
+  "campaign": "P254",
+  "scope": "Four independent same-geometry native force/high-moment probes on the settled primary loaded branch; full force/mode convergence and branch selection remain parent obligations.",
+  "source_registration": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/W1-stationary-inputs.md",
+  "primary_audit_plan": "W1-loaded-primary-audit-plan.json",
+  "upstream": {
+    "relaxation_result": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/material/loaded-ni31h6/result.json",
+    "relaxation_result_sha256": "515854b3fbbec3f541be29df236fe73e18c561139bf69b1641c9d7ceb78ff7f6",
+    "geometry": {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/material/loaded-ni31h6/final.extxyz",
+      "sha256": "3429ddfefb60103e80e625f9a08632abc647c9df0faf9d4fe27fa729f6975528"
+    },
+    "force_spec": {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/material/loaded-ni31h6/forces/fdb6464b18d5199d07f09aec8532d7dc8f93150f76ad30346514cb7ad1b99889/spec.json",
+      "sha256": "ae74968a0b0608ef9872a3b7fdcdd94fa10fe216efcda5afaeae7bde99b91bab"
+    },
+    "force_result": {
+      "path": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/material/loaded-ni31h6/forces/fdb6464b18d5199d07f09aec8532d7dc8f93150f76ad30346514cb7ad1b99889/scf/result.json",
+      "sha256": "559ed2c6e7ec045afa8617c3fe0249d51cca40f6da34d21442a0e5abb4471530"
+    }
+  },
+  "baseline_settings": {
+    "conv_thr_ry": 1e-10,
+    "degauss_ry": 0.02,
+    "ecutrho_ry": 480,
+    "ecutwfc_ry": 40,
+    "electron_maxstep": 200,
+    "kpts": [
+      4,
+      4,
+      4
+    ],
+    "nspin": 2,
+    "starting_magnetization_ni": 0.06
+  },
+  "baseline_execution": {
+    "kpoint_pools": 1,
+    "mpi_ranks": 5,
+    "pseudo_dir": "/home/administrator/projects/catalyst-dft/pseudos",
+    "pseudopotentials": {
+      "H": "h_pbe_v1.4.uspp.F.UPF",
+      "Ni": "ni_pbe_v1.4.uspp.F.UPF"
+    },
+    "pw_executable": "/opt/qebuild/q-e-qe-7.5/bin/pw.x"
+  },
+  "probes": [
+    {
+      "id": "cutoff-50-600",
+      "overrides": {
+        "ecutwfc_ry": 50,
+        "ecutrho_ry": 600
+      }
+    },
+    {
+      "id": "k666",
+      "overrides": {
+        "kpts": [
+          6,
+          6,
+          6
+        ]
+      }
+    },
+    {
+      "id": "smearing-001",
+      "overrides": {
+        "degauss_ry": 0.01
+      }
+    },
+    {
+      "id": "high-moment-06",
+      "overrides": {
+        "starting_magnetization_ni": 0.6
+      }
+    }
+  ],
+  "initialization": "Independent cold atomic starts. High-moment case must not reuse the old density; no undocumented interpolation/warm-start across cutoff/k/solver changes. Live legacy source/schema remains byte-identical.",
+  "execution": {
+    "mpi_ranks": 5,
+    "kpoint_pools": 1,
+    "cpus": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "memory_max_bytes": 10737418240,
+    "blas_threads": 1,
+    "source_worktree": "/home/administrator/projects/catalyst-collective",
+    "labeled_herdr": "Reuse only verified inactive owned Gamma-proof pane w1:pE/tabw1:tE, otherwise create owned no-focus tab.",
+    "actual_evidence": "Post-exec all5 rank PIDs and singleton affinity, live aggregate kernel memory/cap/events, source/runtime/unit/rankfile closure."
+  },
+  "completion": "Every actual native result and complete raw provenance, persistent serial checkpoint queue and fail-closed current-generation observers. No native or branch acceptance inferred from task submission.",
+  "limits": [
+    "Do not mutate any of the live W1 bound sources, parameters, optimizer, unit or original /opt; no topology cutover of W1",
+    "No sensitivity-error, high-moment branch ranking or new physical license until a subsequent settled-input SF oracle consumes all relevant complete native outputs",
+    "Gamma/mode probes, any required refinement ladders, restationarity, controls and all G1-G5 remain pending; this is not a reduced campaign deliverable",
+    "No agent git mutations or early PR; root integration owns explicit banks, automatic W1 run-directory commits are not admission"
+  ]
+}

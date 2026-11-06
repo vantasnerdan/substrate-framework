@@ -1,0 +1,640 @@
+{
+  "schema": "P254-mixed-excitation-energy-oracle-v1",
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_excitation_energy.py",
+      "bytes": 4851,
+      "sha256": "143bd367a642df15e123bbc9aa60e12f3c052066279b34e9c105ebd92ffa782e",
+      "raw_source": "\"\"\"Mixed coherent derivative of the SAME eleven-term conditional mean scalar.\n\n``mixed`` is d\u00b2/(d\u03bb d\u03b7), not half that derivative. Matter stages contain\nphysical per-cell Fourier amplitudes; Maxwell shift and momentum are GLOBAL.\nThe two formal directions are independent analytic directions (q,-q), so all\npairings are bilinear, NOT sesquilinear. No reality projection is performed.\nThis is neither ordered quantum covariance energy nor a finite-dose result.\n\nFor u_R = u0 + \u03bb exp(iqR) u+ + \u03b7 exp(-iqR) u- + \u03bb\u03b7 ux,\nC(q) acts on exp(iqR)u+. Consequently u- C(q) u+ and u+ C(-q) u-\nare separate cross terms. C0 acts on mean/mixed. Onsite DeltaC is separate;\nthe matched physical C must appear once and the actual matched DeltaC is zero.\n\"\"\"\nimport numpy as np\n\n\n_STAGE_KEYS = frozenset((\"mean\", \"plus\", \"minus\", \"mixed\"))\n_STAGE_FIELDS = (\"density\", \"potential\", \"u\", \"p\", \"shift\", \"momentum\",\n                 \"gradient\", \"field_gradient_electronic\")\n\n\ndef _stages(stages, one_body, gamma):\n    \"\"\"Require actual complete inputs, including explicit non-Gamma zeros.\"\"\"\n    if set(stages) != _STAGE_KEYS:\n        raise ValueError(\"stages require EXACT mean/plus/minus/mixed keys\")\n    if \"mixed\" not in one_body or one_body[\"mixed\"] is None:\n        raise ValueError(\"the actual mixed bare-electronic moment is required\")\n    if not isinstance(gamma, (bool, np.bool_)):\n        raise TypeError(\"gamma must explicitly be boolean\")\n    for key in _STAGE_KEYS:\n        for name in _STAGE_FIELDS:\n            if not hasattr(stages[key], name) or getattr(stages[key], name) is None:\n                raise ValueError(f\"{key}.{name} must be supplied, including mixed data\")\n    if not gamma:\n        for key in (\"plus\", \"minus\"):\n            for name in (\"shift\", \"momentum\"):\n                if np.any(np.asarray(getattr(stages[key], name)) != 0):\n                    raise ValueError(\"non-Gamma first Maxwell directions must be explicit zero\")\n    return tuple(stages[key] for key in (\"mean\", \"plus\", \"minus\", \"mixed\"))\n\n\ndef _bilinear(left, right, pairing):\n    \"\"\"Product rule in order mean,plus,minus,mixed; no conjugation or half.\"\"\"\n    a, b, c, d = left\n    e, f, g, h = right\n    return pairing(a, h) + pairing(d, e) + pairing(b, g) + pairing(c, f)\n\n\ndef mixed_components(*, reference, coefficients, field, charges, stages,\n                     one_body, grid_measure, curvature_plus, curvature_minus,\n                     gamma):\n    \"\"\"Return complex-preserving mixed derivatives of all eleven components.\n\n    Required stage attributes match ``joint_mean_energy_components.components``.\n    ``one_body[\"mixed\"]`` is the actual mixed bare-electronic scalar moment,\n    never an electronic residual fitted to a total. Bare energy is linear in\n    density: unused mean/first bare moments need not be computed. All four\n    stages and both independent C(q)/C(-q) matrices are mandatory. ``gamma`` says\n    whether first uniform-field directions are allowed; a non-Gamma mixed\n    field remains allowed. Fixed coefficients, masses, charges, nbar and forces\n    are NOT differentiated. No stationarity assumption removes mean\u00d7mixed.\n    \"\"\"\n    r, c = reference, coefficients\n    ss = _stages(stages, one_body, gamma)\n    s0, sp, sm, sx = ss\n    cp, cm = np.asarray(curvature_plus), np.asarray(curvature_minus)\n    shape = np.asarray(r.curvature).shape\n    if cp.shape != shape or cm.shape != shape:\n        raise ValueError(\"independent C(q), C(-q) must have the C0 matrix shape\")\n    n = r.ncells\n    get = lambda name: tuple(np.asarray(getattr(s, name)) for s in ss)\n    dot = lambda a, b: a @ b\n    mat = lambda matrix: lambda a, b: a @ matrix @ b\n    density = list(get(\"density\"))\n    density[0] = density[0] - r.nbar\n    za = np.repeat(charges, 3)\n    kinetic = tuple(np.asarray(s.p) - za*np.tile(s.shift, len(charges)) for s in ss)\n    u = get(\"u\")\n    return dict(\n        bare_electronic=n*one_body[\"mixed\"],\n        hartree=n*grid_measure*_bilinear(density, get(\"potential\"),\n                                        lambda a, b: np.sum(a*b))/2,\n        electron_ionic=n*_bilinear(u, get(\"gradient\"), dot),\n        ionic_reference_linear=-n*(sx.u @ (r.ionic_force+r.support_force)),\n        ionic_C=n*(s0.u @ r.curvature @ sx.u + sx.u @ r.curvature @ s0.u\n                   + sp.u @ cm @ sm.u + sm.u @ cp @ sp.u)/2,\n        ionic_kinetic_minimal=n*_bilinear(kinetic, kinetic,\n                                         lambda a, b: np.sum(a*b/r.masses))/2,\n        delta_C=n*_bilinear(u, u, mat(c.delta_curvature))/2,\n        electron_field=n*_bilinear(get(\"shift\"), get(\"field_gradient_electronic\"), dot),\n        field_contact=n*_bilinear(get(\"shift\"), get(\"shift\"), mat(c.contact))/2,\n        ion_field_mixed=n*_bilinear(u, get(\"shift\"), mat(c.mixed)),\n        maxwell=_bilinear(get(\"momentum\"), get(\"momentum\"), dot)/(2*field.mass))\n"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_excitation_energy_oracle.py",
+      "bytes": 10680,
+      "sha256": "e94c78e16b6d3a4feee7b254349118b041ff4b9085eee2feada948a08d375acd",
+      "raw_source": "#!/usr/bin/env python3\n\"\"\"Run independent finite mathematical energy oracles; never actual Ni propagation.\n\nUsage: python run_mixed_excitation_energy_oracle.py --output /path/report.json\nThe report contains actual source bytes/SHA/raw text, exact differentiation,\ndense finite-periodic energy/refinement, normalization and targeted mutations.\nOnly the caller executes this file; importing it runs no checks.\n\"\"\"\nimport argparse\nimport copy\nimport hashlib\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nimport sympy as sy\n\nfrom joint_mean_energy_components import components as authoritative_components\nfrom mixed_excitation_energy import mixed_components\nfrom mixed_excitation_energy_oracle_support import (\n    FIELDS, KEYS, exact_derivatives, fixture, local_impulse_normalization,\n    periodic_model, periodic_scalar, physical_laplacian,\n)\n\n\ndef bindings():\n    root = Path(__file__).resolve().parent\n    names = (\"mixed_excitation_energy.py\", \"run_mixed_excitation_energy_oracle.py\",\n             \"mixed_excitation_energy_oracle_support.py\", \"joint_mean_energy_components.py\",\n             \"moving-coherent-energy-construction-registration-001.json\",\n             \"propagated-excitation-energy-source-grounding-001.json\")\n    result = []\n    for name in names:\n        path = root/name\n        raw = path.read_bytes()\n        result.append(dict(path=str(path), bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest(),\n                           raw_source=raw.decode(\"utf-8\")))\n    return result\n\n\ndef number(value):\n    z = complex(value)\n    return dict(real=z.real, imag=z.imag)\n\n\ndef maximum_defect(actual, expected):\n    return max(abs(complex(actual[key]-expected[key])) for key in expected)\n\n\ndef exact_check():\n    args = fixture(exact=True)\n    expected, source_defects = exact_derivatives(args, authoritative_components)\n    actual = mixed_components(**args)\n    defects = {key: sy.simplify(actual[key]-value) for key, value in expected.items()}\n    return dict(pass_check=all(value == 0 for value in defects.values())\n                           and all(value == 0 for value in source_defects.values()),\n                exact_derivative_defects={key: str(value) for key, value in defects.items()},\n                literal_vs_authoritative_defects={key: str(value) for key, value in source_defects.items()},\n                components={key: number(sy.N(value)) for key, value in actual.items()},\n                complex_defect_preserved=any(sy.im(value) != 0 for value in actual.values()))\n\n\ndef dense_check(gamma, *, matched=False):\n    args = fixture(gamma=gamma)\n    phase, cp, cm, dense = periodic_model(args, mode=0 if gamma else 1)\n    if matched:\n        args[\"coefficients\"].delta_curvature = np.zeros_like(args[\"coefficients\"].delta_curvature)\n    args.update(curvature_plus=cp, curvature_minus=cm)\n    expected = mixed_components(**args)\n    energy = lambda lam, eta: periodic_scalar(args, phase, dense, lam, eta)\n    refinements = []\n    numerical = []\n    for h in (0.04, 0.02, 0.01, 0.005):\n        sample = physical_laplacian(energy, h)\n        numerical.append(sample)\n        refinements.append(dict(h=h, max_component_error=maximum_defect(sample, expected),\n                                component_errors={key: abs(complex(sample[key]-expected[key]))\n                                                  for key in expected}))\n    extrapolated = {key: (4*numerical[-1][key]-numerical[-2][key])/3 for key in expected}\n    scale = max(1, max(abs(complex(value)) for value in expected.values()))\n    # Independently pair full dense Fourier vectors, with no guessed N factor.\n    ss = args[\"stages\"]\n    mean = np.tile(ss[\"mean\"].u, len(phase))\n    mixed = np.tile(ss[\"mixed\"].u, len(phase))\n    plus = np.concatenate([v*ss[\"plus\"].u for v in phase])\n    minus = np.concatenate([v.conjugate()*ss[\"minus\"].u for v in phase])\n    dense_mixed = (mean@dense@mixed+mixed@dense@mean+plus@dense@minus+minus@dense@plus)/2\n    pair_defect = abs(complex(dense_mixed-expected[\"ionic_C\"]))\n    physical = energy(0.02+0.01j, 0.02-0.01j)\n    physical_imaginary = max(abs(complex(value).imag) for value in physical.values())\n    final_error = maximum_defect(extrapolated, expected)\n    improving = refinements[-1][\"max_component_error\"] < refinements[0][\"max_component_error\"]/40\n    return dict(pass_check=final_error < 2e-7*scale and pair_defect < 1e-10*scale\n                           and physical_imaginary < 1e-10*scale and improving,\n                gamma=gamma, matched_delta_C_zero=matched, finite_model_cells=len(phase), refinements=refinements,\n                richardson_max_component_error=final_error, tolerance=2e-7*scale,\n                dense_fourier_curvature_pair_defect=pair_defect,\n                physical_eta_equals_conjugate_lambda_imaginary_defect=physical_imaginary,\n                independent_curvature_difference=float(np.max(np.abs(cp-cm))),\n                nonstationary_mean_gradient_norm=float(np.linalg.norm(ss[\"mean\"].gradient)),\n                nonzero_mixed_density_norm=float(np.linalg.norm(ss[\"mixed\"].density)),\n                nonzero_mixed_one_body=number(args[\"one_body\"][\"mixed\"]),\n                components={key: number(value) for key, value in expected.items()}), args, expected\n\ndef mutation_checks(args, expected):\n    \"\"\"Each mutation is evaluated against the independently validated target.\"\"\"\n    mutations = {}\n    def record(name, wrong):\n        gap = maximum_defect(wrong, expected)\n        mutations[name] = dict(detected=gap > 1e-7, max_component_gap=gap,\n                               changed_components=[key for key in expected\n                                                   if abs(complex(wrong[key]-expected[key])) > 1e-7])\n    omitted = copy.deepcopy(args)\n    for name in FIELDS:\n        setattr(omitted[\"stages\"][\"mixed\"], name,\n                np.zeros_like(getattr(omitted[\"stages\"][\"mixed\"], name)))\n    omitted[\"one_body\"][\"mixed\"] = 0\n    record(\"omit_all_second_mean_data\", mixed_components(**omitted))\n    record(\"omit_second_electronic_mean\", {**expected, \"bare_electronic\": 0})\n    record(\"half_mixed_derivative\", {key: value/2 for key, value in expected.items()})\n    record(\"multiply_global_maxwell_by_N\", {**expected, \"maxwell\": expected[\"maxwell\"]*args[\"reference\"].ncells})\n    wrong_q = {**args, \"curvature_plus\": args[\"curvature_minus\"],\n               \"curvature_minus\": args[\"curvature_plus\"]}\n    record(\"swap_q_minusq_orientation\", mixed_components(**wrong_q))\n    r, ss = args[\"reference\"], args[\"stages\"]\n    # Removing only canonical p--Za cross energy, keeping p\u00b2 and (Za)\u00b2.\n    z = np.repeat(args[\"charges\"], 3)\n    cross = 0j\n    for left, right in ((\"mean\", \"mixed\"), (\"mixed\", \"mean\"),\n                        (\"plus\", \"minus\"), (\"minus\", \"plus\")):\n        cross += np.sum(ss[left].p*z*np.tile(ss[right].shift, len(args[\"charges\"]))/r.masses)\n    record(\"omit_minimal_kinetic_p_Za_cross\", {**expected,\n           \"ionic_kinetic_minimal\": expected[\"ionic_kinetic_minimal\"]+r.ncells*cross})\n    record(\"double_matched_physical_C\", {**expected, \"ionic_C\": 2*expected[\"ionic_C\"]})\n    return mutations\n\n\ndef input_checks():\n    cases = {}\n    def rejected(name, args):\n        try:\n            mixed_components(**args)\n        except (ValueError, TypeError) as error:\n            cases[name] = dict(rejected=True, error=str(error))\n        else:\n            cases[name] = dict(rejected=False)\n    args = fixture()\n    del args[\"stages\"][\"mixed\"]\n    rejected(\"missing_mixed_stage\", args)\n    args = fixture()\n    args[\"one_body\"][\"mixed\"] = None\n    rejected(\"missing_mixed_electronic_moment\", args)\n    args = fixture()\n    args[\"stages\"][\"mixed\"].density = None\n    rejected(\"missing_mixed_density\", args)\n    args = fixture(gamma=False)\n    args[\"stages\"][\"plus\"].shift[0] = 1\n    rejected(\"nonGamma_first_Maxwell_field\", args)\n    args = fixture()\n    args[\"one_body\"][\"fitted_residual\"] = 1\n    rejected(\"extra_residual_key\", args)\n    return dict(pass_check=all(case[\"rejected\"] for case in cases.values()), cases=cases)\n\n\ndef run():\n    exact = exact_check()\n    gamma, ga, ge = dense_check(True)\n    non_gamma, qa, qe = dense_check(False)\n    matched, ma, me = dense_check(False, matched=True)\n    mutations = mutation_checks(ma, me)\n    # A Gamma fixture separately exercises BOTH first uniform-field directions.\n    mutations[\"Gamma_omit_minimal_cross\"] = mutation_checks(ga, ge)[\"omit_minimal_kinetic_p_Za_cross\"]\n    normalization = local_impulse_normalization(mixed_components)\n    normalization[\"pass_check\"] = all(value < 1e-12 for key, value in normalization.items()\n                                            if key.endswith(\"defect\"))\n    normalization[\"mutations_detected\"] = (normalization[\"wrong_collective_units_dose_gap\"] > 1e-4\n                                            and normalization[\"missing_energy_half_gap\"] > 1e-4)\n    inputs = input_checks()\n    passed = (exact[\"pass_check\"] and exact[\"complex_defect_preserved\"]\n              and gamma[\"pass_check\"] and non_gamma[\"pass_check\"] and matched[\"pass_check\"]\n              and me[\"delta_C\"] == 0 and inputs[\"pass_check\"]\n              and normalization[\"pass_check\"] and normalization[\"mutations_detected\"]\n              and all(case[\"detected\"] for case in mutations.values()))\n    return dict(pass_check=passed, exact_sympy=exact, dense_periodic_gamma=gamma,\n                dense_periodic_nonGamma=non_gamma, dense_periodic_matched=matched,\n                local_impulse_normalization=normalization,\n                mutations=mutations, required_inputs=inputs)\n\ndef main():\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"--output\", required=True, type=Path)\n    options = parser.parse_args()\n    report = dict(schema=\"P254-mixed-excitation-energy-oracle-v1\", source_bindings=bindings(),\n                  scope=\"Finite mathematical fixtures only; no Ni propagation, finite-dose licence, heat or ranking.\",\n                  derivative=\"d2/(dlambda deta), no half; bilinear independent q/-q; physical eta=lambda*\",\n                  units=\"Physical per-cell matter amplitudes; GLOBAL Maxwell coordinate/momentum and mass\")\n    try:\n        report.update(run())\n    except Exception as error:\n        report.update(pass_check=False, execution_error=dict(type=type(error).__name__, message=str(error)))\n    options.output.parent.mkdir(parents=True, exist_ok=True)\n    options.output.write_text(json.dumps(report, indent=2, allow_nan=False)+\"\\n\")\n    print(json.dumps(dict(output=str(options.output.resolve()), pass_check=report[\"pass_check\"])))\n    return 0 if report[\"pass_check\"] else 1\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_excitation_energy_oracle_support.py",
+      "bytes": 10161,
+      "sha256": "2fb5f7616f5f9c28fbcd50f832e60bbe26ef03daff41cd5a804c520092bccf36",
+      "raw_source": "\"\"\"Independent finite-model scalar, exact differentiation and Fourier oracles.\n\nNo propagation or material model is represented by these finite fixtures.\nThe scalar below is written literally, not in terms of the implementation's\nmixed-product helper. Finite differences use physical \u03b7=\u03bb* perturbations.\n\"\"\"\nfrom types import SimpleNamespace as NS\n\nimport numpy as np\nimport sympy as sy\n\n\nFIELDS = (\"density\", \"potential\", \"u\", \"p\", \"shift\", \"momentum\", \"gradient\",\n          \"field_gradient_electronic\")\nKEYS = (\"mean\", \"plus\", \"minus\", \"mixed\")\n\n\ndef literal_scalar(r, c, f, z, s, electronic, dv):\n    \"\"\"Literal physical scalar, separately encoded for independent differentiation.\"\"\"\n    charge_shift = np.repeat(z, 3)*np.tile(s.shift, len(z))\n    mechanical = s.p-charge_shift\n    return dict(\n        bare_electronic=r.ncells*electronic,\n        hartree=r.ncells*dv*sum((s.density-r.nbar)*s.potential)/2,\n        electron_ionic=r.ncells*(s.u @ s.gradient),\n        ionic_reference_linear=-r.ncells*(s.u @ (r.ionic_force+r.support_force)),\n        ionic_C=r.ncells*(s.u @ r.curvature @ s.u)/2,\n        ionic_kinetic_minimal=r.ncells*sum(mechanical*mechanical/r.masses)/2,\n        delta_C=r.ncells*(s.u @ c.delta_curvature @ s.u)/2,\n        electron_field=r.ncells*(s.shift @ s.field_gradient_electronic),\n        field_contact=r.ncells*(s.shift @ c.contact @ s.shift)/2,\n        ion_field_mixed=r.ncells*(s.u @ c.mixed @ s.shift),\n        maxwell=(s.momentum @ s.momentum)/(2*f.mass))\n\n\ndef fixture(*, exact=False, gamma=True):\n    \"\"\"Deterministic all-nonzero, nonstationary inputs; no fitted energy residual.\"\"\"\n    if exact:\n        count = iter(range(1, 1000))\n        def array(shape):\n            return np.array([sy.Rational(next(count) % 13+1, 17)\n                             + sy.I*sy.Rational(next(count) % 7+1, 19)\n                             for _ in range(int(np.prod(shape)))], dtype=object).reshape(shape)\n        scalar = lambda x: sy.Rational(str(x))\n    else:\n        rng = np.random.default_rng(74121)\n        array = lambda shape: rng.normal(size=shape)+1j*rng.normal(size=shape)\n        scalar = float\n    symmetric = lambda a: (a+a.T)/2\n    r = NS(ncells=5, masses=np.array([2, 3, 5], dtype=object if exact else float),\n           nbar=array((2,)), ionic_force=array((3,)), support_force=array((3,)),\n           curvature=symmetric(array((3, 3))))\n    c = NS(delta_curvature=symmetric(array((3, 3))),\n           contact=symmetric(array((3, 3))), mixed=array((3, 3)))\n    f = NS(mass=scalar(7))\n    stages = {key: NS(**{name: array((2,) if name in (\"density\", \"potential\") else (3,))\n                         for name in FIELDS}) for key in KEYS}\n    one = {key: array((1,))[0] for key in KEYS}\n    if not exact:\n        for obj in (r, c):\n            for name, value in vars(obj).items():\n                if isinstance(value, np.ndarray):\n                    setattr(obj, name, value.real)\n        for key in (\"mean\", \"mixed\"):\n            for name in FIELDS:\n                setattr(stages[key], name, getattr(stages[key], name).real)\n            one[key] = one[key].real\n        for name in FIELDS:\n            setattr(stages[\"minus\"], name, getattr(stages[\"plus\"], name).conj())\n        one[\"minus\"] = one[\"plus\"].conjugate()\n    if not gamma:\n        for key in (\"plus\", \"minus\"):\n            stages[key].shift = np.zeros(3)\n            stages[key].momentum = np.zeros(3)\n    return dict(reference=r, coefficients=c, field=f, charges=np.array([scalar(2)]),\n                stages=stages, one_body=one, grid_measure=scalar(0.3),\n                curvature_plus=r.curvature.copy(), curvature_minus=r.curvature.copy(),\n                gamma=gamma)\n\n\ndef exact_derivatives(args, authoritative):\n    \"\"\"Differentiate each literal term exactly; also bind to original scalar.\"\"\"\n    lam, eta = sy.symbols(\"lambda eta\")\n    weights = (1, lam, eta, lam*eta)\n    ss = args[\"stages\"]\n    s = NS(**{name: sum((w*getattr(ss[key], name) for w, key in zip(weights, KEYS)),\n                       np.zeros_like(getattr(ss[\"mean\"], name))) for name in FIELDS})\n    electronic = sum(w*args[\"one_body\"][key] for w, key in zip(weights, KEYS))\n    literal = literal_scalar(args[\"reference\"], args[\"coefficients\"], args[\"field\"],\n                             args[\"charges\"], s, electronic, args[\"grid_measure\"])\n    source = authoritative(reference=args[\"reference\"], coefficients=args[\"coefficients\"],\n                           field=args[\"field\"], charges=args[\"charges\"], stage=s,\n                           one_body=electronic, grid_measure=args[\"grid_measure\"])\n    source_defects = {key: sy.simplify(literal[key]-source[key]) for key in literal}\n    mixed = {key: sy.diff(value, lam, eta).subs({lam: 0, eta: 0})\n             for key, value in literal.items()}\n    return mixed, source_defects\n\n\ndef periodic_model(args, n=5, mode=1):\n    \"\"\"C(R-S) with real reciprocal offsite blocks, not transpose-blind data.\"\"\"\n    rng = np.random.default_rng(132)\n    kernel = np.zeros((n, 3, 3))\n    kernel[1] = rng.normal(size=(3, 3))\n    kernel[-1] = kernel[1].T\n    kernel[0] = args[\"reference\"].curvature-kernel[1]-kernel[-1]\n    angle = 2*np.pi*mode*np.arange(n)/n\n    phase = np.exp(1j*angle)\n    cp = sum(kernel[d]*np.exp(-2j*np.pi*mode*d/n) for d in range(n))\n    cm = sum(kernel[d]*np.exp(+2j*np.pi*mode*d/n) for d in range(n))\n    dense = np.block([[kernel[(row-col) % n] for col in range(n)] for row in range(n)])\n    return phase, cp, cm, dense\n\n\ndef periodic_scalar(args, phase, dense, lam, eta):\n    \"\"\"Dense real-space energy of a smooth physical finite perturbation family.\n\n    Cubic \u03bb\u00b2\u03b7/\u03bb\u03b7\u00b2 stage terms have zero mixed derivative but give the physical\n    central Laplacian a genuine O(h\u00b2) remainder. No production formula is used.\n    \"\"\"\n    r, c, f = args[\"reference\"], args[\"coefficients\"], args[\"field\"]\n    ss = args[\"stages\"]\n    n = len(phase)\n    total = None\n    displacements = []\n    for cell in range(n):\n        w = (1, lam*phase[cell], eta*phase[cell].conjugate(), lam*eta)\n        values = {}\n        for name in FIELDS:\n            if name in (\"shift\", \"momentum\"):\n                ws = (1, lam, eta, lam*eta)\n                cubic = (lam*lam*eta+lam*eta*eta)*0.13*getattr(ss[\"mixed\"], name)\n            else:\n                ws = w\n                cubic = 0.13*(lam*lam*eta*phase[cell]*getattr(ss[\"plus\"], name)\n                              +lam*eta*eta*phase[cell].conjugate()*getattr(ss[\"minus\"], name))\n            values[name] = sum(weight*getattr(ss[key], name) for weight, key in zip(ws, KEYS))+cubic\n        stage = NS(**values)\n        electronic = sum(weight*args[\"one_body\"][key] for weight, key in zip(w, KEYS))\n        local = literal_scalar(NS(**{**vars(r), \"ncells\": 1}), c, f, args[\"charges\"],\n                               stage, electronic, args[\"grid_measure\"])\n        local[\"maxwell\"] /= n\n        displacements.append(stage.u)\n        if total is None:\n            total = {key: 0j for key in local}\n        for key, value in local.items():\n            total[key] += value\n    u = np.concatenate(displacements)\n    total[\"ionic_C\"] = u @ dense @ u/2\n    return total\n\n\ndef physical_laplacian(energy, h):\n    \"\"\"\u2202\u03bb\u2202\u03b7 = (\u2202x\u00b2+\u2202y\u00b2)/4 for \u03bb=x+iy, \u03b7=x-iy.\"\"\"\n    center = energy(0, 0)\n    points = [energy(h, h), energy(-h, -h), energy(1j*h, -1j*h), energy(-1j*h, 1j*h)]\n    return {key: (sum(point[key] for point in points)-4*center[key])/(4*h*h)\n            for key in center}\n\n\ndef local_impulse_normalization(production):\n    \"\"\"Derive physical amplitudes from the explicit orthonormal DFT matrix.\n\n    xhat=F x; reconstruction x=F\u2020 xhat. Per-cell Fourier amplitudes are the\n    coefficients multiplying exp(iqR), hence xhat/sqrt(N), not xhat itself.\n    Complete-q mixed energy sums to twice the quadratic physical dose because\n    a mixed DERIVATIVE has two ordered legs. The energy coefficient is half\n    that derivative only when reconstructing a real one-parameter dose.\n    \"\"\"\n    n, cell, kick, mass = 7, 2, 0.8, 3.0\n    sites = np.arange(n)\n    f = np.exp(-2j*np.pi*np.outer(sites, sites)/n)/np.sqrt(n)\n    impulse = np.zeros(n)\n    impulse[cell] = kick\n    collective = f @ impulse\n    reconstruction_basis = np.exp(2j*np.pi*np.outer(sites, sites)/n)\n    # Solve the explicit reconstruction problem, rather than assume a factor.\n    physical = np.linalg.solve(reconstruction_basis, impulse)\n    dose = impulse @ impulse/(2*mass)\n    mixed_q = n*physical*physical.conj()/mass\n    args = fixture(gamma=False)\n    args[\"reference\"].ncells = n\n    args[\"reference\"].masses[0] = mass\n    for stage in args[\"stages\"].values():\n        for name in FIELDS:\n            setattr(stage, name, np.zeros(getattr(stage, name).shape, dtype=complex))\n    args[\"one_body\"] = dict.fromkeys(KEYS, 0.0)\n    implementation = []\n    for amplitude in physical:\n        args[\"stages\"][\"plus\"].p[0] = amplitude\n        args[\"stages\"][\"minus\"].p[0] = amplitude.conjugate()\n        implementation.append(production(**args)[\"ionic_kinetic_minimal\"])\n    return dict(ncells=n, cell=cell, kick=kick, mass=mass,\n                unitarity_defect=float(np.max(np.abs(f.conj().T@f-np.eye(n)))),\n                reconstruction_defect=float(np.max(np.abs(reconstruction_basis@physical-impulse))),\n                derived_collective_to_physical_defect=float(np.max(np.abs(physical-collective/np.sqrt(n)))),\n                derived_local_amplitude_defect=float(np.max(np.abs(physical-kick*np.exp(-2j*np.pi*sites*cell/n)/n))),\n                parseval_defect=float(abs(np.vdot(collective, collective)-np.vdot(impulse, impulse))),\n                direct_initial_dose=float(dose), complete_q_half_mixed_sum=float(np.sum(mixed_q).real/2),\n                complete_q_dose_defect=float(abs(np.sum(mixed_q)/2-dose)),\n                implementation_complete_q_dose_defect=float(abs(sum(implementation)/2-dose)),\n                implementation_mode_derivative_defect=float(np.max(np.abs(np.array(implementation)-mixed_q))),\n                wrong_collective_units_dose_gap=float(abs(np.sum(n*collective*collective.conj()/mass)/2-dose)),\n                missing_energy_half_gap=float(abs(np.sum(mixed_q)-dose)))\n"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint_mean_energy_components.py",
+      "bytes": 1344,
+      "sha256": "8e0a7cab336997d12d80f9d45170dfafc7b2173c253c10040ad402226196d093",
+      "raw_source": "\"\"\"Physical BASELINE mean-energy ledger in global Ry, not heat or covariance.\n\nThis splits the existing JointReduction scalar without changing its model.\nThe minimal ionic kinetic replaces (does not supplement) neutral p^2/(2M).\nOnly Maxwell is already global; all matter/coupling terms carry ncells.\nArray arithmetic deliberately preserves exact symbolic object scalars.\n\"\"\"\nimport numpy as np\n\n\ndef components(*, reference, coefficients, field, charges, stage, one_body, grid_measure):\n    \"\"\"Return the eleven physical terms; no reality projection or fitted residual.\"\"\"\n    r, c, s = reference, coefficients, stage\n    n = r.ncells\n    za = np.repeat(charges, 3)*np.tile(s.shift, len(charges))\n    return dict(\n        bare_electronic=n*one_body,\n        hartree=n*grid_measure*np.sum((s.density-r.nbar)*s.potential)/2,\n        electron_ionic=n*(s.u @ s.gradient),\n        ionic_reference_linear=-n*(s.u @ (r.ionic_force+r.support_force)),\n        ionic_C=n*(s.u @ r.curvature @ s.u)/2,\n        ionic_kinetic_minimal=n*np.sum((s.p-za)**2/r.masses)/2,\n        delta_C=n*(s.u @ c.delta_curvature @ s.u)/2,\n        electron_field=n*(s.shift @ s.field_gradient_electronic),\n        field_contact=n*(s.shift @ c.contact @ s.shift)/2,\n        ion_field_mixed=n*(s.u @ c.mixed @ s.shift),\n        maxwell=(s.momentum @ s.momentum)/(2*field.mass))\n"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/moving-coherent-energy-construction-registration-001.json",
+      "bytes": 8280,
+      "sha256": "78aecaae6fa5a8ebd3d15f9f380434cb27d36b880641379847eeddc89d23a821",
+      "raw_source": "{\n  \"schema\": \"P254-moving-coherent-energy-construction-registration-v1\",\n  \"registered_at\": \"2026-10-30T01:34:06.156445+00:00\",\n  \"canonical_issue\": \"https://github.com/vantasnerdan/substrate-framework/issues/225\",\n  \"objective\": \"Solve the missing propagated coherent-excitation component-energy construction of the SAME declared conditional scalar. Do not infer energy destinations from initial-origin covariance labels.\",\n  \"grounding\": {\n    \"path\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/propagated-excitation-energy-source-grounding-001.json\",\n    \"bytes\": \"4363\",\n    \"sha256\": \"01f2d66a0dc183c96555913b6629c8e7aa7543b6d88cbc6f35538950d9786a73\"\n  },\n  \"sources\": [\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_reference.py\",\n      \"bytes\": \"7393\",\n      \"sha256\": \"5474edc99ae71a0838902b350b8b512667f192ffc184f23339340d73d6c2d832\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_factor_dynamics.py\",\n      \"bytes\": \"8348\",\n      \"sha256\": \"67a1b584e90e9325eaad412bb2444d9a21766cbb0e28db8fba5c84440fd496d2\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_joint_field_scalar.py\",\n      \"bytes\": \"10960\",\n      \"sha256\": \"c403841b6b36f83bf5b66cc5488870a79e7342890ae1e7932e8e032158d2210b\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_joint_reduction.py\",\n      \"bytes\": \"9320\",\n      \"sha256\": \"b196fdf4bde3ed21dce9530fcdb8d8b04d046f8f217caa42c6af2febcced55e5\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/joint_bloch_response.py\",\n      \"bytes\": \"14089\",\n      \"sha256\": \"06255fb22391b91104d4a0e6b4a6f6867a0ce141ffaf48f935dcc445e8f07da8\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_joint_response.py\",\n      \"bytes\": \"19143\",\n      \"sha256\": \"eecc72e6f7513f63046cbf980db4a6e61f68e308fb85377fb171e70135d5b136\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_joint_response.py\",\n      \"bytes\": \"13655\",\n      \"sha256\": \"64c440789ea326ea2778f646b56d6bc53e563d40260c0a7d0166cefd5a97586d\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_joint_covariance.py\",\n      \"bytes\": \"5319\",\n      \"sha256\": \"b9f8242b1bb8ef349b9f21f1c25ba29bda57dc68c498e6fbb2a9e55965984a94\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/partitioned_q_response.py\",\n      \"bytes\": \"46724\",\n      \"sha256\": \"48762cff1145f9af44956dd7b9ea79b9c0d03049bc8eeb6dca81314f30e77e33\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/joint_ordered_sources.py\",\n      \"bytes\": \"6970\",\n      \"sha256\": \"378d2268ccdbe76f398f8cca29d2b99d307178f2aeccbf861490c81d65fb0273\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint_mean_energy_components.py\",\n      \"bytes\": \"1344\",\n      \"sha256\": \"8e0a7cab336997d12d80f9d45170dfafc7b2173c253c10040ad402226196d093\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched_joint_case.py\",\n      \"bytes\": \"8457\",\n      \"sha256\": \"bdda2e9ba4e75a497eed928443b1c3bb85e22c75874376e35c94b4d24e55c15c\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched_joint_state.py\",\n      \"bytes\": \"9189\",\n      \"sha256\": \"ba7314da09d2ce4599324683d01795dc402e037f79df47c17e959021120f97a8\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_q_material.py\",\n      \"bytes\": \"26499\",\n      \"sha256\": \"d0f2a7520f231bab6a99fe1e8edea94c8d11cdd03b5841eb7ff3a588c9fe53de\"\n    }\n  ],\n  \"whole_arc\": [\n    \"Construct mixed second variations of fixed-D full-row frames, with independent q and -q first directions and a Gamma mixed direction; no inverse D/Gram, band truncation or stationary-reference assumption.\",\n    \"Construct mixed derivatives of all eleven scalar energy components from actual mean/first/mixed reduced moments, preserving physical C exactly once, DeltaC=0 for matched cases, q/-q pairing and global Maxwell normalization.\",\n    \"Integrate full-PW physical moment/action providers and a recoverable partitioned producer in a separate source-bound namespace; no live-bound source edits. Retain required mixed-stage data, account physical aliases and prove resource fit before any future production allocation.\",\n    \"Exercise mathematical and actual full-PW changed paths; then produce actual propagated mixed data and energy, numerical/amplitude/size controls, and integrate with E fluctuations/C comparison for one complete scientific review. No Native production grant is implied by this code/proof registration.\"\n  ],\n  \"wave2_independent_interfaces\": {\n    \"frame_rhs\": \"Callbacks act on arbitrary full-row blocks. First derivative frames have original source-column dimensions at explicit q targets. Mixed frame is at Gamma. Mixed coefficient means d\\u00b2/(d\\u03bb d\\u03b7), not half a derivative. Coherent physical q/-q pair only, not a replacement for population-inclusive quantum covariance.\",\n    \"energy\": \"Input is mean, plus-q, minus-q and mixed-Gamma reduced moments/coordinates in PHYSICAL per-cell mean-variation units; Maxwell canonical coordinate/momentum remains GLOBAL. Return mixed derivative of each physical component, not a fitted residual or finite-amplitude licence.\"\n  },\n  \"implementation_layout\": {\n    \"wave2_frame\": [\n      \"mixed_frame_response.py\",\n      \"run_mixed_frame_response_oracle.py\"\n    ],\n    \"wave2_energy\": [\n      \"mixed_excitation_energy.py\",\n      \"run_mixed_excitation_energy_oracle.py\"\n    ],\n    \"root_integration\": \"Root owns real material action/moment adapter, partitioned producer/resource plan and actual full-PW smoke; implementation starts only after consuming completed wave2 contracts/proofs.\"\n  },\n  \"oracles\": [\n    \"Independent exact/SciPy finite full-matrix evolution of a nonstationary finite periodic material with complex fixed singular D, versus mixed frame/density variations; q/-q orientation, full Gram/trace derivatives and retained mixed electronic mean are tested.\",\n    \"Direct SymPy differentiation of the eleven-term scalar and independent finite-perturbation differences; mutations omit second mean, half factor, Maxwell cell multiplier, q pairing, minimal-kinetic cross term and duplicate curvature.\",\n    \"Actual saved baseline/initial-pulse data are consumers only at their real scopes; a native full-PW changed-path probe must precede any material-energy claim.\"\n  ],\n  \"proof_allocation\": {\n    \"owner\": \"Root\",\n    \"production_unchanged\": true,\n    \"code_only_agents\": true,\n    \"actual_oracles_run_by_Root_after_complete_sources\": true,\n    \"per_oracle_wall_seconds\": 300,\n    \"cumulative_mathematical_execution_seconds\": 600,\n    \"proof_cpu\": 10,\n    \"threads\": 1,\n    \"max_proof_rss_bytes\": 1073741824,\n    \"native_probe\": \"Separate bounded registration after adapter is complete and material input/source/resource plan is in hand; do not launch now.\"\n  },\n  \"decision_trigger\": \"At source handoff or any failed invariant/resource fit, Root fixes construction or changes implementation, never suppresses the missing term or calls a toy/material substitute complete.\",\n  \"limits\": [\n    \"Second-order coefficient is not the full finite-amplitude response; relevant remainder/amplitude controls remain required.\",\n    \"No stationarity, damping, irreversible heat, full 64-q material data or lattice ranking is fabricated.\",\n    \"Existing Gamma004/source790/caps/original07:24 end are unchanged.\",\n    \"No code is edited in the active 62-file closure; no settled science is rerun.\",\n    \"No helper-only PR or full-objective completion claim.\"\n  ]\n}\n"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/propagated-excitation-energy-source-grounding-001.json",
+      "bytes": 4363,
+      "sha256": "01f2d66a0dc183c96555913b6629c8e7aa7543b6d88cbc6f35538950d9786a73",
+      "raw_source": "{\n  \"schema\": \"P254-propagated-excitation-energy-source-grounding-v1\",\n  \"actual_time\": \"2026-10-30T01:17:42.030048+00:00\",\n  \"settled_research\": \"ExcitationEnergyInventory completed; full197line report read, bounded code/source inventory not a new math theorem.\",\n  \"sources\": [\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_reference.py\",\n      \"bytes\": \"7393\",\n      \"sha256\": \"5474edc99ae71a0838902b350b8b512667f192ffc184f23339340d73d6c2d832\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_factor_dynamics.py\",\n      \"bytes\": \"8348\",\n      \"sha256\": \"67a1b584e90e9325eaad412bb2444d9a21766cbb0e28db8fba5c84440fd496d2\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_joint_field_scalar.py\",\n      \"bytes\": \"10960\",\n      \"sha256\": \"c403841b6b36f83bf5b66cc5488870a79e7342890ae1e7932e8e032158d2210b\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_joint_reduction.py\",\n      \"bytes\": \"9320\",\n      \"sha256\": \"b196fdf4bde3ed21dce9530fcdb8d8b04d046f8f217caa42c6af2febcced55e5\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/joint_bloch_response.py\",\n      \"bytes\": \"14089\",\n      \"sha256\": \"06255fb22391b91104d4a0e6b4a6f6867a0ce141ffaf48f935dcc445e8f07da8\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_joint_response.py\",\n      \"bytes\": \"19143\",\n      \"sha256\": \"eecc72e6f7513f63046cbf980db4a6e61f68e308fb85377fb171e70135d5b136\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_joint_response.py\",\n      \"bytes\": \"13655\",\n      \"sha256\": \"64c440789ea326ea2778f646b56d6bc53e563d40260c0a7d0166cefd5a97586d\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_joint_covariance.py\",\n      \"bytes\": \"5319\",\n      \"sha256\": \"b9f8242b1bb8ef349b9f21f1c25ba29bda57dc68c498e6fbb2a9e55965984a94\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/partitioned_q_response.py\",\n      \"bytes\": \"46724\",\n      \"sha256\": \"48762cff1145f9af44956dd7b9ea79b9c0d03049bc8eeb6dca81314f30e77e33\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/joint_ordered_sources.py\",\n      \"bytes\": \"6970\",\n      \"sha256\": \"378d2268ccdbe76f398f8cca29d2b99d307178f2aeccbf861490c81d65fb0273\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint_mean_energy_components.py\",\n      \"bytes\": \"1344\",\n      \"sha256\": \"8e0a7cab336997d12d80f9d45170dfafc7b2173c253c10040ad402226196d093\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched_joint_case.py\",\n      \"bytes\": \"8457\",\n      \"sha256\": \"bdda2e9ba4e75a497eed928443b1c3bb85e22c75874376e35c94b4d24e55c15c\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/matched_joint_state.py\",\n      \"bytes\": \"9189\",\n      \"sha256\": \"ba7314da09d2ce4599324683d01795dc402e037f79df47c17e959021120f97a8\"\n    },\n    {\n      \"path\": \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_joint_q_material.py\",\n      \"bytes\": \"26499\",\n      \"sha256\": \"d0f2a7520f231bab6a99fe1e8edea94c8d11cdd03b5841eb7ff3a588c9fe53de\"\n    }\n  ],\n  \"observed_missing\": \"Current actual q path saves first response, discrete dual and selected connected pairs, not a finite-excited mean or second-order electronic mean/energy construction.\",\n  \"reusable\": \"Same eleven-term physical scalar; clamped quadratic Maxwell/covariance energy and stationary full-frame fermion orbit energy have narrower declared scopes.\",\n  \"scope\": \"No stationary reference, population truncation, second-order state, damping, physical energy transfer or material result invented. Need constructive energy/evolution contract before deriving native energy from first-order outputs.\"\n}\n"
+    }
+  ],
+  "scope": "Finite mathematical fixtures only; no Ni propagation, finite-dose licence, heat or ranking.",
+  "derivative": "d2/(dlambda deta), no half; bilinear independent q/-q; physical eta=lambda*",
+  "units": "Physical per-cell matter amplitudes; GLOBAL Maxwell coordinate/momentum and mass",
+  "pass_check": false,
+  "exact_sympy": {
+    "pass_check": true,
+    "exact_derivative_defects": {
+      "bare_electronic": "0",
+      "hartree": "0",
+      "electron_ionic": "0",
+      "ionic_reference_linear": "0",
+      "ionic_C": "0",
+      "ionic_kinetic_minimal": "0",
+      "delta_C": "0",
+      "electron_field": "0",
+      "field_contact": "0",
+      "ion_field_mixed": "0",
+      "maxwell": "0"
+    },
+    "literal_vs_authoritative_defects": {
+      "bare_electronic": "0",
+      "hartree": "0",
+      "electron_ionic": "0",
+      "ionic_reference_linear": "0",
+      "ionic_C": "0",
+      "ionic_kinetic_minimal": "0",
+      "delta_C": "0",
+      "electron_field": "0",
+      "field_contact": "0",
+      "ion_field_mixed": "0",
+      "maxwell": "0"
+    },
+    "components": {
+      "bare_electronic": {
+        "real": 3.5294117647058822,
+        "imag": 1.8421052631578947
+      },
+      "hartree": {
+        "real": 0.612873697629614,
+        "imag": 0.631578947368421
+      },
+      "electron_ionic": {
+        "real": 8.676350774952315,
+        "imag": 11.145510835913313
+      },
+      "ionic_reference_linear": {
+        "real": -5.708144427723835,
+        "imag": -6.764705882352941
+      },
+      "ionic_C": {
+        "real": 2.398991764175885,
+        "imag": 10.984351880765857
+      },
+      "ionic_kinetic_minimal": {
+        "real": 0.809925012859959,
+        "imag": 2.2053663570691433
+      },
+      "delta_C": {
+        "real": 3.9910340196426124,
+        "imag": 11.826708625698764
+      },
+      "electron_field": {
+        "real": 9.427196656730152,
+        "imag": 13.312693498452012
+      },
+      "field_contact": {
+        "real": 1.745768335801957,
+        "imag": 9.309900713885376
+      },
+      "ion_field_mixed": {
+        "real": 7.15596813925179,
+        "imag": 23.099100467095237
+      },
+      "maxwell": {
+        "real": 0.07312855075222202,
+        "imag": 0.13710747456877487
+      }
+    },
+    "complex_defect_preserved": true
+  },
+  "dense_periodic_gamma": {
+    "pass_check": true,
+    "gamma": true,
+    "matched_delta_C_zero": false,
+    "finite_model_cells": 5,
+    "refinements": [
+      {
+        "h": 0.04,
+        "max_component_error": 0.026754275191237298,
+        "component_errors": {
+          "bare_electronic": 1.7053025658242404e-13,
+          "hartree": 0.0020934584465122086,
+          "electron_ionic": 0.0012034205367825734,
+          "ionic_reference_linear": 6.323830348264892e-13,
+          "ionic_C": 0.01684670272456401,
+          "ionic_kinetic_minimal": 0.026754275191237298,
+          "delta_C": 0.0031270171968564853,
+          "electron_field": 0.0091318652190715,
+          "field_contact": 0.0035305089368424802,
+          "ion_field_mixed": 0.009404332164757445,
+          "maxwell": 0.0003076135044719486
+        }
+      },
+      {
+        "h": 0.02,
+        "max_component_error": 0.006688350219633321,
+        "component_errors": {
+          "bare_electronic": 4.476419235288631e-13,
+          "hartree": 0.0005233244128888259,
+          "electron_ionic": 0.00030072475476927707,
+          "ionic_reference_linear": 6.323830348264892e-13,
+          "ionic_C": 0.004211389535768717,
+          "ionic_kinetic_minimal": 0.006688350219633321,
+          "delta_C": 0.0007816498785651049,
+          "electron_field": 0.0022828816847315636,
+          "field_contact": 0.0008825991289747037,
+          "ion_field_mixed": 0.002350878148377422,
+          "maxwell": 7.68996578855985e-05
+        }
+      },
+      {
+        "h": 0.01,
+        "max_component_error": 0.001672073893089987,
+        "component_errors": {
+          "bare_electronic": 2.668087972779176e-12,
+          "hartree": 0.00013082859315449724,
+          "electron_ionic": 7.517303746595871e-05,
+          "ionic_reference_linear": 2.8528290840768022e-12,
+          "ionic_C": 0.001052829497808716,
+          "ionic_kinetic_minimal": 0.001672073893089987,
+          "delta_C": 0.00019540594056977056,
+          "electron_field": 0.0005707151345255568,
+          "field_contact": 0.00022064802559995655,
+          "ion_field_mixed": 0.0005877067311756967,
+          "maxwell": 1.9224682118124115e-05
+        }
+      },
+      {
+        "h": 0.005,
+        "max_component_error": 0.0004180176209302999,
+        "component_errors": {
+          "bare_electronic": 1.509548042122333e-11,
+          "hartree": 3.270701118385233e-05,
+          "electron_ionic": 1.879275924210333e-05,
+          "ionic_reference_linear": 6.02895511292445e-12,
+          "ionic_C": 0.0002632062954290859,
+          "ionic_kinetic_minimal": 0.0004180176209302999,
+          "delta_C": 4.8851066292598944e-05,
+          "electron_field": 0.00014267845065063511,
+          "field_contact": 5.516189552245976e-05,
+          "ion_field_mixed": 0.000146925881300497,
+          "maxwell": 4.806156092218572e-06
+        }
+      }
+    ],
+    "richardson_max_component_error": 1.4386998259396933e-09,
+    "tolerance": 1.3318017542946508e-05,
+    "dense_fourier_curvature_pair_defect": 7.105427357601002e-15,
+    "physical_eta_equals_conjugate_lambda_imaginary_defect": 3.215507497375992e-21,
+    "independent_curvature_difference": 0.0,
+    "nonstationary_mean_gradient_norm": 1.9206922594762594,
+    "nonzero_mixed_density_norm": 1.287260360815915,
+    "nonzero_mixed_one_body": {
+      "real": 0.8801546399043395,
+      "imag": 0.0
+    },
+    "components": {
+      "bare_electronic": {
+        "real": 4.400773199521698,
+        "imag": 0.0
+      },
+      "hartree": {
+        "real": -6.690858561321593,
+        "imag": 0.0
+      },
+      "electron_ionic": {
+        "real": 19.665667646146296,
+        "imag": 0.0
+      },
+      "ionic_reference_linear": {
+        "real": 4.033126750654848,
+        "imag": 0.0
+      },
+      "ionic_C": {
+        "real": 33.17116294617195,
+        "imag": 0.0
+      },
+      "ionic_kinetic_minimal": {
+        "real": 66.59008771473255,
+        "imag": 0.0
+      },
+      "delta_C": {
+        "real": -17.416470670560358,
+        "imag": 0.0
+      },
+      "electron_field": {
+        "real": 15.018937606688446,
+        "imag": 0.0
+      },
+      "field_contact": {
+        "real": -6.551868034448489,
+        "imag": 0.0
+      },
+      "ion_field_mixed": {
+        "real": 2.9139743054830634,
+        "imag": 0.0
+      },
+      "maxwell": {
+        "real": 0.6644963432558191,
+        "imag": 0.0
+      }
+    }
+  },
+  "dense_periodic_nonGamma": {
+    "pass_check": true,
+    "gamma": false,
+    "matched_delta_C_zero": false,
+    "finite_model_cells": 5,
+    "refinements": [
+      {
+        "h": 0.04,
+        "max_component_error": 0.046690482617307794,
+        "component_errors": {
+          "bare_electronic": 1.0746958878371515e-13,
+          "hartree": 0.0020934584465122086,
+          "electron_ionic": 0.0012034205367825734,
+          "ionic_reference_linear": 7.72715225139109e-14,
+          "ionic_C": 0.046690482617307794,
+          "ionic_kinetic_minimal": 0.01924573626221182,
+          "delta_C": 0.0031270171968031946,
+          "electron_field": 0.0020989749210666986,
+          "field_contact": 0.002771869133983529,
+          "ion_field_mixed": 0.0038358899698494042,
+          "maxwell": 0.00036670924947635256
+        }
+      },
+      {
+        "h": 0.02,
+        "max_component_error": 0.011671752616805975,
+        "component_errors": {
+          "bare_electronic": 6.625811010962934e-13,
+          "hartree": 0.0005233244128888259,
+          "electron_ionic": 0.00030072475476927707,
+          "ionic_reference_linear": 6.323830348264892e-13,
+          "ionic_C": 0.011671752616805975,
+          "ionic_kinetic_minimal": 0.004811236653017303,
+          "delta_C": 0.0007816498791370918,
+          "electron_field": 0.0005247437305229141,
+          "field_contact": 0.0006929391782383165,
+          "ion_field_mixed": 0.0009589724924612408,
+          "maxwell": 9.167359414946966e-05
+        }
+      },
+      {
+        "h": 0.01,
+        "max_component_error": 0.002917883905794838,
+        "component_errors": {
+          "bare_electronic": 1.77280412572145e-12,
+          "hartree": 0.0001308285909340512,
+          "electron_ionic": 7.517303746595871e-05,
+          "ionic_reference_linear": 2.8528290840768022e-12,
+          "ionic_C": 0.002917883905794838,
+          "ionic_kinetic_minimal": 0.0012027968227457109,
+          "delta_C": 0.00019540594077938067,
+          "electron_field": 0.00013118593250638355,
+          "field_contact": 0.0001732330379626834,
+          "ion_field_mixed": 0.000239743122997238,
+          "maxwell": 2.2918166183858585e-05
+        }
+      },
+      {
+        "h": 0.005,
+        "max_component_error": 0.0007294676176030634,
+        "component_errors": {
+          "bare_electronic": 2.668087972779176e-12,
+          "hartree": 3.270700230206813e-05,
+          "electron_ionic": 1.879275924210333e-05,
+          "ionic_reference_linear": 2.949818167508056e-11,
+          "ionic_C": 0.0007294676176030634,
+          "ionic_kinetic_minimal": 0.0003006984400855117,
+          "delta_C": 4.885106795882166e-05,
+          "electron_field": 3.279648036524918e-05,
+          "field_contact": 4.330814864328403e-05,
+          "ion_field_mixed": 5.9935780371001e-05,
+          "maxwell": 5.729527130102913e-06
+        }
+      }
+    ],
+    "richardson_max_component_error": 4.478451387512905e-09,
+    "tolerance": 2.0980711657443383e-05,
+    "dense_fourier_curvature_pair_defect": 1.4210854715202004e-14,
+    "physical_eta_equals_conjugate_lambda_imaginary_defect": 8.681704942557377e-22,
+    "independent_curvature_difference": 4.371984678124706,
+    "nonstationary_mean_gradient_norm": 1.9206922594762594,
+    "nonzero_mixed_density_norm": 1.287260360815915,
+    "nonzero_mixed_one_body": {
+      "real": 0.8801546399043395,
+      "imag": 0.0
+    },
+    "components": {
+      "bare_electronic": {
+        "real": 4.400773199521698,
+        "imag": 0.0
+      },
+      "hartree": {
+        "real": -6.690858561321593,
+        "imag": 0.0
+      },
+      "electron_ionic": {
+        "real": 19.665667646146296,
+        "imag": 0.0
+      },
+      "ionic_reference_linear": {
+        "real": 4.033126750654848,
+        "imag": 0.0
+      },
+      "ionic_C": {
+        "real": 104.90355828721691,
+        "imag": 0.0
+      },
+      "ionic_kinetic_minimal": {
+        "real": 12.771845721987702,
+        "imag": 0.0
+      },
+      "delta_C": {
+        "real": -17.416470670560358,
+        "imag": 0.0
+      },
+      "electron_field": {
+        "real": -8.359364368674516,
+        "imag": 0.0
+      },
+      "field_contact": {
+        "real": 0.4919103848093558,
+        "imag": 0.0
+      },
+      "ion_field_mixed": {
+        "real": 1.4058567596712768,
+        "imag": 0.0
+      },
+      "maxwell": {
+        "real": -0.03104949385268577,
+        "imag": 0.0
+      }
+    }
+  },
+  "dense_periodic_matched": {
+    "pass_check": true,
+    "gamma": false,
+    "matched_delta_C_zero": true,
+    "finite_model_cells": 5,
+    "refinements": [
+      {
+        "h": 0.04,
+        "max_component_error": 0.046690482617307794,
+        "component_errors": {
+          "bare_electronic": 1.0746958878371515e-13,
+          "hartree": 0.0020934584465122086,
+          "electron_ionic": 0.0012034205367825734,
+          "ionic_reference_linear": 7.72715225139109e-14,
+          "ionic_C": 0.046690482617307794,
+          "ionic_kinetic_minimal": 0.01924573626221182,
+          "delta_C": 0.0,
+          "electron_field": 0.0020989749210666986,
+          "field_contact": 0.002771869133983529,
+          "ion_field_mixed": 0.0038358899698494042,
+          "maxwell": 0.00036670924947635256
+        }
+      },
+      {
+        "h": 0.02,
+        "max_component_error": 0.011671752616805975,
+        "component_errors": {
+          "bare_electronic": 6.625811010962934e-13,
+          "hartree": 0.0005233244128888259,
+          "electron_ionic": 0.00030072475476927707,
+          "ionic_reference_linear": 6.323830348264892e-13,
+          "ionic_C": 0.011671752616805975,
+          "ionic_kinetic_minimal": 0.004811236653017303,
+          "delta_C": 0.0,
+          "electron_field": 0.0005247437305229141,
+          "field_contact": 0.0006929391782383165,
+          "ion_field_mixed": 0.0009589724924612408,
+          "maxwell": 9.167359414946966e-05
+        }
+      },
+      {
+        "h": 0.01,
+        "max_component_error": 0.002917883905794838,
+        "component_errors": {
+          "bare_electronic": 1.77280412572145e-12,
+          "hartree": 0.0001308285909340512,
+          "electron_ionic": 7.517303746595871e-05,
+          "ionic_reference_linear": 2.8528290840768022e-12,
+          "ionic_C": 0.002917883905794838,
+          "ionic_kinetic_minimal": 0.0012027968227457109,
+          "delta_C": 0.0,
+          "electron_field": 0.00013118593250638355,
+          "field_contact": 0.0001732330379626834,
+          "ion_field_mixed": 0.000239743122997238,
+          "maxwell": 2.2918166183858585e-05
+        }
+      },
+      {
+        "h": 0.005,
+        "max_component_error": 0.0007294676176030634,
+        "component_errors": {
+          "bare_electronic": 2.668087972779176e-12,
+          "hartree": 3.270700230206813e-05,
+          "electron_ionic": 1.879275924210333e-05,
+          "ionic_reference_linear": 2.949818167508056e-11,
+          "ionic_C": 0.0007294676176030634,
+          "ionic_kinetic_minimal": 0.0003006984400855117,
+          "delta_C": 0.0,
+          "electron_field": 3.279648036524918e-05,
+          "field_contact": 4.330814864328403e-05,
+          "ion_field_mixed": 5.9935780371001e-05,
+          "maxwell": 5.729527130102913e-06
+        }
+      }
+    ],
+    "richardson_max_component_error": 4.478451387512905e-09,
+    "tolerance": 2.0980711657443383e-05,
+    "dense_fourier_curvature_pair_defect": 1.4210854715202004e-14,
+    "physical_eta_equals_conjugate_lambda_imaginary_defect": 8.681704942557377e-22,
+    "independent_curvature_difference": 4.371984678124706,
+    "nonstationary_mean_gradient_norm": 1.9206922594762594,
+    "nonzero_mixed_density_norm": 1.287260360815915,
+    "nonzero_mixed_one_body": {
+      "real": 0.8801546399043395,
+      "imag": 0.0
+    },
+    "components": {
+      "bare_electronic": {
+        "real": 4.400773199521698,
+        "imag": 0.0
+      },
+      "hartree": {
+        "real": -6.690858561321593,
+        "imag": 0.0
+      },
+      "electron_ionic": {
+        "real": 19.665667646146296,
+        "imag": 0.0
+      },
+      "ionic_reference_linear": {
+        "real": 4.033126750654848,
+        "imag": 0.0
+      },
+      "ionic_C": {
+        "real": 104.90355828721691,
+        "imag": 0.0
+      },
+      "ionic_kinetic_minimal": {
+        "real": 12.771845721987702,
+        "imag": 0.0
+      },
+      "delta_C": {
+        "real": 0.0,
+        "imag": 0.0
+      },
+      "electron_field": {
+        "real": -8.359364368674516,
+        "imag": 0.0
+      },
+      "field_contact": {
+        "real": 0.4919103848093558,
+        "imag": 0.0
+      },
+      "ion_field_mixed": {
+        "real": 1.4058567596712768,
+        "imag": 0.0
+      },
+      "maxwell": {
+        "real": -0.03104949385268577,
+        "imag": 0.0
+      }
+    }
+  },
+  "local_impulse_normalization": {
+    "ncells": 7,
+    "cell": 2,
+    "kick": 0.8,
+    "mass": 3.0,
+    "unitarity_defect": 8.375878616623988e-16,
+    "reconstruction_defect": 1.3256738189514616e-16,
+    "derived_collective_to_physical_defect": 1.3947004136484323e-16,
+    "derived_local_amplitude_defect": 1.316562550716263e-16,
+    "parseval_defect": 2.220446049250313e-16,
+    "direct_initial_dose": 0.10666666666666669,
+    "complete_q_half_mixed_sum": 0.10666666666666669,
+    "complete_q_dose_defect": 1.7160207125389613e-19,
+    "implementation_complete_q_dose_defect": 0.0,
+    "implementation_mode_derivative_defect": 6.945207555321298e-18,
+    "wrong_collective_units_dose_gap": 0.6399999999999999,
+    "missing_energy_half_gap": 0.10666666666666669,
+    "pass_check": true,
+    "mutations_detected": true
+  },
+  "mutations": {
+    "omit_all_second_mean_data": {
+      "detected": true,
+      "max_component_gap": 8.359364368674516,
+      "changed_components": [
+        "bare_electronic",
+        "hartree",
+        "electron_ionic",
+        "ionic_reference_linear",
+        "ionic_C",
+        "ionic_kinetic_minimal",
+        "electron_field",
+        "field_contact",
+        "ion_field_mixed",
+        "maxwell"
+      ]
+    },
+    "omit_second_electronic_mean": {
+      "detected": true,
+      "max_component_gap": 4.400773199521698,
+      "changed_components": [
+        "bare_electronic"
+      ]
+    },
+    "half_mixed_derivative": {
+      "detected": true,
+      "max_component_gap": 52.451779143608455,
+      "changed_components": [
+        "bare_electronic",
+        "hartree",
+        "electron_ionic",
+        "ionic_reference_linear",
+        "ionic_C",
+        "ionic_kinetic_minimal",
+        "electron_field",
+        "field_contact",
+        "ion_field_mixed",
+        "maxwell"
+      ]
+    },
+    "multiply_global_maxwell_by_N": {
+      "detected": true,
+      "max_component_gap": 0.1241979754107431,
+      "changed_components": [
+        "maxwell"
+      ]
+    },
+    "swap_q_minusq_orientation": {
+      "detected": true,
+      "max_component_gap": 72.46082827334045,
+      "changed_components": [
+        "ionic_C"
+      ]
+    },
+    "omit_minimal_kinetic_p_Za_cross": {
+      "detected": true,
+      "max_component_gap": 0.7375160630297728,
+      "changed_components": [
+        "ionic_kinetic_minimal"
+      ]
+    },
+    "double_matched_physical_C": {
+      "detected": true,
+      "max_component_gap": 104.90355828721691,
+      "changed_components": [
+        "ionic_C"
+      ]
+    },
+    "Gamma_omit_minimal_cross": {
+      "detected": true,
+      "max_component_gap": 18.693180857488883,
+      "changed_components": [
+        "ionic_kinetic_minimal"
+      ]
+    }
+  },
+  "required_inputs": {
+    "pass_check": false,
+    "cases": {
+      "missing_mixed_stage": {
+        "rejected": true,
+        "error": "stages require EXACT mean/plus/minus/mixed keys"
+      },
+      "missing_mixed_electronic_moment": {
+        "rejected": true,
+        "error": "the actual mixed bare-electronic moment is required"
+      },
+      "missing_mixed_density": {
+        "rejected": true,
+        "error": "mixed.density must be supplied, including mixed data"
+      },
+      "nonGamma_first_Maxwell_field": {
+        "rejected": true,
+        "error": "non-Gamma first Maxwell directions must be explicit zero"
+      },
+      "extra_residual_key": {
+        "rejected": false
+      }
+    }
+  }
+}

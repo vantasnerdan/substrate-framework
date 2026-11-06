@@ -1,0 +1,233 @@
+{
+  "schema": "P254-0025-reference-physics-review-v1",
+  "reviewer": "reference-physics-review-001",
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "verdict": {
+    "overall_correctness": "correct",
+    "explanation": "No actionable patch-introduced correctness defect was found in the scoped saved-density reference construction. The original internal-QE backend, physical Fourier mapping, ordinary-NC block Hamiltonian and longitudinal spin kernel are coherently connected, with executed original-fixture comparisons and completed actual-material output/readback evidence. Acceptance is of these constructed operators and stored diagnostics, not a stationary or calibrated material state or a completed coherence-domain model.",
+    "confidence": 0.94,
+    "blocking_findings": 0
+  },
+  "scope": {
+    "component": "Same-saved-density ionic/Hartree/internal-PBE background, coefficient generation, full-finite-PW matrix-free H0 and complex-envelope Kq",
+    "actual_material": "Ni31H6, selected Gamma, both explicit spin sectors, all 346 saved columns on the original 18613 PW rows; physical 72x72x72 grid",
+    "original_comparators": "Original0018 Gamma reconstruction plus bound plus-half-b1 and minus-half-b1 complex kernel probes; unchanged original fixture caller allowance",
+    "primary_sources_reviewed": [
+      "src/substrate_framework/qe_internal_pbe.py",
+      "proposals/P254-ni-collective-response/attempts/0025/internal_pbe_bridge.f90",
+      "proposals/P254-ni-collective-response/attempts/0025/build_internal_pbe.py",
+      "src/substrate_framework/qe_material_grid.py",
+      "src/substrate_framework/qe_material_reference.py",
+      "src/substrate_framework/qe_material_hamiltonian.py",
+      "src/substrate_framework/spin_pbe_kernel.py",
+      "proposals/P254-ni-collective-response/attempts/0025/run_reference_reconstruction_oracle.py",
+      "proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py",
+      "proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py"
+    ],
+    "path_base": "/home/administrator/projects/substrate-ni-collective",
+    "carried_forward": "0024 accepted saved readers, NC radial/projector ingredients and material ionic-action reviews are inherited, not replayed. Physical-factor output is consumed here only as the adjacent state-independent reference/response seam, not as a replacement for its independent full review."
+  },
+  "findings": [],
+  "accepted_evidence": [
+    {
+      "id": "E1",
+      "status": "accepted_with_scope",
+      "claim": "The wrapper uses the original internal PBE archive, not Libxc or a rewritten PBE functional, and reproduces Native call order, layout, cutoffs and unit handling.",
+      "source_evidence": [
+        "proposals/P254-ni-collective-response/attempts/0025/internal_pbe_bridge.f90:16-34,48-82",
+        "src/substrate_framework/qe_internal_pbe.py:95-153",
+        "/opt/qebuild/q-e-qe-7.5/PW/src/v_of_rho.f90:508-555",
+        "/opt/qebuild/q-e-qe-7.5/PW/src/gradcorr.f90:89-127,156-211",
+        "/opt/qebuild/q-e-qe-7.5/LR_Modules/setup_dmuxc.f90:41-53",
+        "/opt/qebuild/q-e-qe-7.5/LR_Modules/setup_dgc.f90:142-191",
+        "/opt/qebuild/q-e-qe-7.5/XClib/dft_setting_routines.f90:949-966",
+        "/opt/qebuild/q-e-qe-7.5/XClib/xc_wrapper_d_gga.f90:107-120,305-339",
+        "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_d_gga.f90:192-310,329-360",
+        "/opt/qebuild/q-e-qe-7.5/XClib/qe_drivers_d_lda_lsda.f90:323-381"
+      ],
+      "details": "xc receives total density/magnetization; GGA and derivative calls receive up/down densities. The grho-to-grh transpose matches the differing native APIs. Reset restores the H0 GGA density cutoff 1e-6 and gradient cutoff 1e-10 before each call. dgcxc then changes internal GGA cutoffs to 1e-10; the second xc_gcx evaluation and the separate setup_dgc total-density >1e-6 condition reproduce dvxc_s. Original finite-difference drivers retain their own additional thresholds and steps. First-derivative potentials/flux receive e2 once; dmuxc and GGA derivative tensors already carry Ry and receive no second conversion. Negative/near-zero-density handling is delegated to those original routines rather than silently repaired.",
+      "execution_evidence": {
+        "path": "proposals/P254-ni-collective-response/attempts/0025/build/internal-pbe/build-receipt.json",
+        "sha256_from_packet": "328ff558d6334c227d1e4cdbe3eda5a0985ad34037257f0a1bda26603ba3271f",
+        "observed": "All recorded compiler/link commands returned zero with zero stderr bytes. Private BEEF PIC adjunct and hidden/internal-symbol linking are explicitly disclosed in backend-link-amendment-001.json; the PBE archive remains unchanged.",
+        "library_sha256": "aa781ebae9198e626dc6393535e50f4479cfdfc52529bfa30382608fc1449ecd"
+      }
+    },
+    {
+      "id": "E2",
+      "status": "accepted_with_scope",
+      "claim": "Physical-grid reconstruction preserves the original density/spin representation, Fourier normalization, local ionic constant and distinct Hartree zero mode.",
+      "source_evidence": [
+        "src/substrate_framework/qe_material_grid.py:25-89",
+        "src/substrate_framework/qe_material_reference.py:59-135",
+        "src/substrate_framework/qe_nc_radial.py:79-110,113-157",
+        "/opt/qebuild/q-e-qe-7.5/PW/src/read_file_new.f90:297-414",
+        "/opt/qebuild/q-e-qe-7.5/PW/src/setlocal.f90:67-100",
+        "/opt/qebuild/q-e-qe-7.5/PW/src/v_of_rho.f90:667-745",
+        "/opt/qebuild/q-e-qe-7.5/FFTXlib/src/fft_scalar.FFTW3.f90:379-441"
+      ],
+      "details": "Miller columns map modulo the physical shape in Fortran order. Forward FFTs are normalized and inverse FFTs reconstruct amplitudes; saved reciprocal vectors already have inverse-bohr units. Ionic coefficients retain the carried radial local G0 and structure factors, while Hartree alone omits G0 and uses total density identically in both spin channels. Full XC is local_xc minus the physical divergence. The local radial volume normalization is already included; there is no additional cell-volume or spin multiplier. Raw offsets are retained, with no fitted shift.",
+      "execution_evidence": {
+        "path": "proposals/P254-ni-collective-response/attempts/0025/reference-reconstruction-oracle-001.json",
+        "sha256_from_packet": "617252170a50def8619b35ffe9760f866b68557a020885114f9bb946a5ab3a3b",
+        "observed_values": {
+          "rho_max_abs_error": 1.7763568394002505e-15,
+          "grho_max_abs_error": 3.552713678800501e-15,
+          "vrs_max_abs_error_ry": 4.785061236134425e-14,
+          "vrs_registered_allowance_ry": 7.281948960821829e-8
+        },
+        "observed": "The executed report passes every coefficient comparison as well as the density, gradient and vrs comparisons. Recorded wrong ionic G0, Hartree G0, extra tpiba, Ry/Ha, spin-basis and divergence constructions separate above their registered allowances. These are existing executed results, not computations performed by this reviewer."
+      }
+    },
+    {
+      "id": "E3",
+      "status": "accepted_with_scope",
+      "claim": "New material Kq and the original guarded fixture caller consume every generated coefficient with the original complex-q algebra.",
+      "source_evidence": [
+        "src/substrate_framework/spin_pbe_kernel.py:26-114",
+        "src/substrate_framework/qe_material_reference.py:52-56,127-135",
+        "src/substrate_framework/qe_material_grid.py:46-50,75-89",
+        "src/substrate_framework/qe_response_fft.py:28-73",
+        "src/substrate_framework/qe_response_schema.py:28-55",
+        "/opt/qebuild/q-e-qe-7.5/Modules/gradutils.f90:106-163,497-554",
+        "/opt/qebuild/q-e-qe-7.5/LR_Modules/dgradcorr.f90:133-203",
+        "/opt/qebuild/q-e-qe-7.5/LR_Modules/dv_of_drho.f90:179-205,282-298",
+        "proposals/P254-ni-collective-response/attempts/0016/run_kernel_oracle.py:70-75",
+        "proposals/P254-ni-collective-response/attempts/0025/run_reference_reconstruction_oracle.py:233-252"
+      ],
+      "details": "q is a real physical wavevector and the response envelopes are complex up/down fields. Both gradient and divergence use i(G+q), without conjugating the response gradient. All mixed-spin a/b/c contractions, negative divergence and the dimensionless |G+q|^2/tpiba^2 >1e-8 Coulomb admission are preserved. The final XC field is not truncated to the density G support. lrpa and lnolr remain forwarded by the old caller, and its existing fixture/schema guards are unchanged. The pair convention remains omega/N times the conjugate density-potential sum, with no extra spin factor.",
+      "execution_evidence": {
+        "path": "proposals/P254-ni-collective-response/attempts/0025/reference-reconstruction-oracle-001.json",
+        "selectors": ["checks gamma_Kprobe_0..2", "checks extra_q_1_Kprobe_0..2", "checks extra_q_2_Kprobe_0..2", "checks containing fixture_caller_Kprobe", "checks literal_Hartree_threshold_zero/below/above"],
+        "observed": "All recorded Gamma and both signed nonzero-q comparisons pass. The preserved fixture-caller allowance is the original 1e-9*max(1,reference_max), not the new reconstruction allowance. For example gamma_Kprobe_0 reports 8.604777988911347e-13 Ry error and gamma_fixture_caller_Kprobe_0 reports 4.4226944273466224e-18 Ry error. The old original0016 source uses the same fixture allowance.",
+        "execution_receipt": "proposals/P254-ni-collective-response/attempts/0025/reference-oracle-execution-001.json:1-34",
+        "returncode": 0,
+        "stderr": ""
+      }
+    },
+    {
+      "id": "E4",
+      "status": "accepted_with_scope",
+      "claim": "The Hamiltonian is a full-PW block action with ordinary-NC beta D beta-dagger, rather than a saved-band closure or dense PW-square operator.",
+      "source_evidence": [
+        "src/substrate_framework/qe_material_hamiltonian.py:18-30,48-72,80-121",
+        "src/substrate_framework/qe_nc_projectors.py:57-103",
+        "src/substrate_framework/qe_nc_radial.py:79-110,113-157",
+        "/opt/qebuild/q-e-qe-7.5/PW/src/g2_kin.f90:32-44",
+        "/opt/qebuild/q-e-qe-7.5/PW/src/h_psi.f90:133-146,199-235",
+        "/opt/qebuild/q-e-qe-7.5/PW/src/vloc_psi_acc.f90:237-255",
+        "/opt/qebuild/q-e-qe-7.5/PW/src/add_vuspsi.f90:125-165",
+        "proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py:127-165"
+      ],
+      "details": "Kinetic energies are physical |k+G| squared in Ry. Local multiplication gathers back to unchanged PW rows. The BLAS overlap explicitly conjugate-transposes beta, atom-major channel blocks are weighted by the active per-species D, and the result is multiplied by beta without another normalization. The carried projector normalization already contains 4*pi/sqrt(omega), (-i)^l and the atomic exp[-i(k+G).tau] phase. Reuse across spins is admitted only after exact k/PW/basis matching. No saved occupations enter the operator.",
+      "execution_evidence": {
+        "path": "proposals/P254-ni-collective-response/attempts/0025/reference-reconstruction-oracle-001.json",
+        "observed_values": {
+          "literal_H0_action_max_abs_error": 2.2228841655759984e-16,
+          "spin1_kinetic_max_abs_error": 2.1316282072803006e-14,
+          "spin1_Ni_packed_beta_max_abs_error": 2.7755575615628914e-16,
+          "spin1_H_packed_beta_max_abs_error": 2.0595777971499126e-16,
+          "active_D_max_abs_error": 0.0
+        },
+        "qualification": "These are literal finite algebra and original Native ingredient comparisons, together with stored retained-state diagnostics. They are not a directly exported Native arbitrary-vector action on the unretained material complement."
+      }
+    },
+    {
+      "id": "E5",
+      "status": "accepted_with_scope",
+      "claim": "Actual material background, both full saved-spin actions and all three K probes completed, were authenticated on readback, and the restored background reaches the live K API.",
+      "source_evidence": [
+        "proposals/P254-ni-collective-response/attempts/0025/run_material_reference_pilot.py:69-81,94-124,127-199",
+        "proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py:25-56,115-139"
+      ],
+      "execution_evidence": [
+        {
+          "path": "proposals/P254-ni-collective-response/attempts/0025/material-reference-pilot-001/terminal-f77d41a852a6422bbeadb9c8508f316b.json",
+          "sha256_from_packet": "52fa2c8a2ed5ad7e216b4f3e041ab80dccfd8daf119c1f5cd2b247a381ffcccb",
+          "observed": "status complete, exit_code zero; six new completed checkpoints, original field/coordinate identities, full action/residual/Gram/projected-H0 arrays and separate raw MV metadata."
+        },
+        {
+          "path": "proposals/P254-ni-collective-response/attempts/0025/material-output-consumer-001.json",
+          "sha256_from_packet": "6d4307bbaf4e7fb57c1109b3892236350a05b077f49f2d4dae55ccdcb2510b37",
+          "observed": "All reference archives were authenticated by the real recovery consumer; the adjacent physical-factor functionals restored with state and density_coefficients still null.",
+          "executed_consumer_code": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-material-output-consumer.intent.json:14"
+        },
+        {
+          "path": "proposals/P254-ni-collective-response/attempts/0025/restored-reference-result-001.json",
+          "sha256_from_packet": "757aed84a550b35477262948e8fc0c3eebef4f62bb68cf07917328337de5dd99",
+          "observed": "Restored material background applied to stored complex kernel-probe-2 produced the recorded exact array equality and zero maximum difference, shape [373248,2].",
+          "executed_consumer_code": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/runpod-abandonment-20261027/p254-0025-restored-reference-api.intent.json:14",
+          "execution_receipt": "proposals/P254-ni-collective-response/attempts/0025/restored-reference-execution-001.json"
+        }
+      ]
+    },
+    {
+      "id": "E6",
+      "status": "accepted_as_raw_diagnostics_only",
+      "claim": "The material eigenpair residuals are preserved diagnostics of the output-density operator, not a new convergence gate or an automatically stationary reference.",
+      "source_evidence": [
+        "src/substrate_framework/qe_material_hamiltonian.py:109-121",
+        "/opt/qebuild/q-e-qe-7.5/PW/src/electrons.f90:678-729,979-1007",
+        "proposals/P254-ni-collective-response/attempts/0025/material-output-consumer-001.json:29-61"
+      ],
+      "observed_values_from_consumer": {
+        "spin1_max_residual_norm_ry": 0.0022290478136605084,
+        "spin2_max_residual_norm_ry": 0.002364940465819871,
+        "spin1_projected_h0_adjoint_defect_ry": 4.96384754740153e-15,
+        "spin2_projected_h0_adjoint_defect_ry": 4.704882451947139e-15,
+        "spin1_gram_identity_defect": 1.2656542484966013e-14,
+        "spin2_gram_identity_defect": 1.1768364827311276e-14
+      },
+      "interpretation": "Original QE first diagonalizes the input-density Hamiltonian, forms the new density, and on convergence rebuilds the output HXC potential. Thus matching saved eigenvalues and vectors exactly is not the definition of the newly reconstructed output-density H0. The reported maxima alone do not identify which effect dominates a particular band, establish an observable error budget, or certify stationarity; no such numerical attribution is made. No tighter all-band residual threshold, energy shift, clipping, Hermitization or vector repair is requested. A later spectral-response consumer must address its own reference and observable accuracy rather than treat these saved eigenvalue labels as an exact spectrum."
+    }
+  ],
+  "cross_boundary_review": [
+    {
+      "producer": "NativePBE.evaluate / NativePBEResult",
+      "consumer": "qe_material_reference.py:127-135",
+      "result": "local potential, flux and all five coefficient fields are consumed explicitly; none is silently discarded."
+    },
+    {
+      "producer": "MaterialReference.apply_kernel and the original fixture _apply",
+      "consumer": "spin_pbe_kernel.py:60-95",
+      "result": "Both route through the shared array kernel with their own FFT adapters. Native fixture flags retain explicit lrpa/lnolr branches; actual material follows the registered full longitudinal PBE branch."
+    },
+    {
+      "producer": "PWFactors / SpeciesProjectors",
+      "consumer": "qe_material_hamiltonian.py:88-107 and run_material_reference_pilot.py:127-165",
+      "result": "Kinetic, local and every species nonlocal term enter each output block; both spin sectors are processed with explicit matching."
+    },
+    {
+      "producer": "background_arrays / completed background archive",
+      "consumer": "material_reference_output.py:39-56, run_material_reference_pilot.py:117-123, executed restored-reference-api intent line14",
+      "result": "Restoration rebuilds the coordinate adapter and returns a live MaterialReference with every stored field/coefficient. The executed restored probe exercises the consuming action, rather than only inspecting bytes."
+    }
+  ],
+  "qualifications": [
+    "All numerical values in this report are quoted from existing executed oracle/output receipts; this reviewer ran no numerical computation, build, test, lint, formatter, SCF/PH producer or Git mutation.",
+    "The packet and source-access inventories supply settled source/output byte bindings. This review read them and the original sources; it did not recompute every existing binding or attest the whole OS, resident process state or hostile concurrent replacement.",
+    "The exact-backend claim means use of the original internal PBE implementation and its Native threshold/finite-difference conventions. It is not an assertion of an analytic exact Hessian or universal numerical identity for arbitrary unsupported setups.",
+    "Actual material coverage remains selected Gamma. Original nonzero-q fixture evidence validates that algebraic path but does not admit nonzero-q material response or complete BvK/star coverage.",
+    "The actual scope is full-complex collinear ordinary NC without NLCC, equal dense/smooth physical grids and ordinary periodic Coulomb. No noncollinear, SOC, PAW/USPP, core-correction, hybrid, meta-GGA or alternative electrostatic extension is accepted here.",
+    "Raw MV occupations, smearing width, saved eigenvalues and k weights retain their original labels. They are not physical probabilities, temperature, a calibrated stationary density or a physical preparation.",
+    "The state-independent force/density factor outputs do not choose D or imply electronic, ionic, cross or total material noise. The explicitly empty-complement quasifree family remains a declared family, not an established material state.",
+    "Stored-array restoration and one live restored K action establish completed-array/API reuse only, not interrupted-operation continuation, process/service crash recovery or Native history recovery.",
+    "The packet retains the missed timing targets, terminal-view timeout and absence of measured post-completion peak counters. They are not reinterpreted here as scientific failures or erased from the campaign history.",
+    "No stationary material, full spatial dynamics, thermal FDT, damping, bath calibration, coherence domain, nuclear bridge, PR readiness or whole-campaign completion follows from this scoped acceptance."
+  ],
+  "next_model_step": {
+    "direction": "Use the now-constructed same-saved-density H0/K as the explicit operator side of the material reference/response seam, alongside the accepted NC force actions and state-independent physical factors.",
+    "constructive_consumer": "Specify the reference-density/state authority and its relation to the saved-density background before a stationary or prepared-background response is claimed. Build a full-PW action-backed selected-observable response/dual using that declared reference and the existing K, with consistent bare-vertex/curvature bookkeeping; do not substitute a saved-band eigenspectrum or infer material occupations from MV values.",
+    "state_boundary": "No physical state, population, temperature or damping is selected by this review. A prepared t=0 state and a stationary reference are distinct; reference consistency and stationarity belong to the next declared construction, not retroactive gates on these operator outputs.",
+    "evidence_route": "Carry the settled new fixture/material evidence forward. For the new response seam use the already mapped independent small original-basis forward/dual comparison, then scope actual material consumers and their observable accuracy explicitly. Full k/q, physical preparation/calibration, environment and nuclear work remain separate campaign obligations.",
+    "source_map": "proposals/P254-ni-collective-response/attempts/0025/physical-preparation-map.original.txt:130-147"
+  },
+  "method": {
+    "first_read": "proposals/P254-ni-collective-response/attempts/0025/complete-review-packet.json",
+    "quantitative_rules_read": "/home/administrator/.omp/skills/quantitative-verification/SKILL.md",
+    "patch_inspection": "Read-only git diff, then the scoped spin_pbe_kernel diff; new component source files were read from the packet-listed paths. Unrelated memory-template changes were not reviewed.",
+    "review_activity": "Read-only original-source, implementation, boundary-consumer and existing executed-evidence review. No independent rerun is claimed.",
+    "written_artifact": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025/reference-physics-review-001.json",
+    "report_write_policy": "Exclusive first creation of this owned UTF-8 report only; no source or other report edits, and no overwrite after completion."
+  }
+}

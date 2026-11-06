@@ -1,0 +1,64 @@
+{
+  "schema": "P254-main-scientific-observer-admission-v1",
+  "actual_utc": "2026-10-30T22:45:01.006968+00:00",
+  "actual_arm": {
+    "schema": "P254-main-runtime-observer-v2",
+    "observer_pid": "2039269",
+    "armed_utc": "2026-10-30T22:45:00.963127+00:00",
+    "wake_due_unix": 1793403000.0,
+    "unit": "p254-a28-loaded-raw-mixed-shared-001.service",
+    "scientific_invocation": "6cb363e34ada4262af901b67a978f60a",
+    "root": "/var/tmp/p254-a28-loaded-raw-mixed-shared-003",
+    "prepared_seen": [
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/8692334e058ea96d2e50e9709d2d7f0d71f394b6d5770cc3661ee6c8b3becf81/generation-093fb83c5f30457b97c0dae666d2b1b5/prepared.json",
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/9141742caba8ec809ddbb99dacd33efa446a941169035ece96bb94f61b361703/generation-55800dcad4a849bd979832df45a8d01e/prepared.json",
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/scientific-work/f159185a1f8b5ab0dd3ef546c53d141d190a9893c10762d39615499ebb918a93/generation-dbf498c9947a4b6eb24e766b57e64da7/prepared.json"
+    ],
+    "stages_seen": [
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-0/complete.json",
+      "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/steps/000000/stage-1/complete.json"
+    ],
+    "scope": "Read-only own scientific publication/timer watcher; no allocation or completion claim"
+  },
+  "actual_launch": {
+    "text": "(no output)",
+    "details": {
+      "wallTimeNoticeEmitted": false,
+      "timeoutSeconds": 30,
+      "wallTimeMs": 166.15583497285843
+    }
+  },
+  "actual_ready": {
+    "text": "{\"id\":\"cli:pane:wait-output\",\"result\":{\"matched_line\":\"P254_MAIN_OBSERVER_ARMED_010 2039269 2026-10-30T22:45:00.963127+00:00\",\"pane_id\":\"w1:p41\",\"read\":{\"format\":\"text\",\"pane_id\":\"w1:p41\",\"revision\":0,\"source\":\"recent_unwrapped\",\"tab_id\":\"w1:t41\",\"text\":\"    new={str(p) for p in (root/'\\\"'\\\"'scientific-work'\\\"'\\\"').glob('\\\"'\\\"'*/generation-*/prepared.json'\\\"'\\\"')}-seen\\n    stages={str(p) for p in (root/'\\\"'\\\"'steps'\\\"'\\\"').glob('\\\"'\\\"'*/stage-*/complete.json'\\\"'\\\"')}-stages_seen\\n    results=sorted(str(p) for p in root.glob('\\\"'\\\"'result*.json'\\\"'\\\"'))\\n    exits=(root/'\\\"'\\\"'unit-outcomes'\\\"'\\\"').exists() and any((root/'\\\"'\\\"'unit-outcomes'\\\"'\\\"').iterdir())\\n    if new or stages or results or exits or time.time()>=1793396100.0:\\n        receipt=dict(ar\u2026\n\n\n[Some lines truncated to 768 bytes. Use artifact://2648:raw:1-1 to read line 1 whole]",
+    "details": {
+      "wallTimeNoticeEmitted": false,
+      "timeoutSeconds": 20,
+      "wallTimeMs": 124.09718698263168,
+      "meta": {
+        "limits": {
+          "columnTruncated": {
+            "maxColumn": 768,
+            "unit": "bytes",
+            "artifactId": "2648",
+            "lines": {
+              "first": 1,
+              "last": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "actual_wait": {
+    "text": "Backgrounded as job bg_254 (killed once it has run 2999s in total; `timeout: 0` disables the deadline); its output is injected into the conversation as a follow-up the moment it finishes. Do NOT poll for it (no `sleep`, `ps`, `pgrep`, `top`, `pidwait`, log tailing): every poll is a wasted turn. Do other work, or end your reply and wait to be woken.",
+    "details": {
+      "async": {
+        "state": "running",
+        "jobId": "bg_254",
+        "type": "bash"
+      },
+      "timeoutSeconds": 2999
+    }
+  },
+  "scope": "SameoriginalDclock/invocation; scientificpublications/timeronly. Freshactual22:40scienceanddatedsynthesisprecederearm; markerconstructedtoexcludeecho."
+}

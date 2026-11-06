@@ -1,0 +1,25 @@
+Running as unit: p254-a38-current-projection-001.service; invocation ID: d58695fdd436435bb8b31872597338c2
+[physics] {"elapsed_since_start_seconds": 6.7302025854587555e-06, "stage": "authenticate_fixed_handoff", "status": "started"}
+[physics] {"elapsed_since_start_seconds": 2.6152768889442086, "stage": "restore_original_context_and_cached_H_F_legs", "status": "started"}
+[physics] {"elapsed_since_start_seconds": 2.6927049830555916, "stage": "restore_original_context", "status": "started"}
+[physics] {"elapsed_seconds": 13.877420412842184, "elapsed_since_start_seconds": 16.496912417933345, "stage": "restore_original_context", "status": "complete"}
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0038/export_current_projection.py", line 209, in <module>
+    main()
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0038/export_current_projection.py", line 205, in main
+    run(parser.parse_args())
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0038/export_current_projection.py", line 152, in run
+    inputs = restore_inputs(data['basis_complete'], data['current_reference'], progress)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0038/current_projection_inputs.py", line 102, in restore_inputs
+    match_current_reference(context, reference)
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0038/current_projection_inputs.py", line 123, in match_current_reference
+    raise ValueError('old current reference physical source differs: '+field)
+ValueError: old current reference physical source differs: measure_convention
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 24.482s
+CPU time consumed: 24.422s
+Memory peak: 4.0M
+Memory swap peak: 0B
+[p254-a38-current-projection-001-native-exit] code=1

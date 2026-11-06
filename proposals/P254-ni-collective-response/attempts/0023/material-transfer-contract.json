@@ -1,0 +1,64 @@
+{
+  "scope": "Source-preparation component handoff; not a material-calibrated coherence-domain result.",
+  "earned": {
+    "artifact": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0023/pilot-002/result.json",
+      "bytes": "947780",
+      "sha256": "ecb0805f1356d459c74ed9b0529861a3bbc597c3b66f157c3b573e40187a7e6b"
+    },
+    "observables": "Six positive ionic-gradient and two spin-number periodic-uniform Fourier probes; Gamma and explicit plus/minus half-b1. Ordered, symmetrized and commutator two-point data, with all per-channel spectral recipes.",
+    "state": "Auxiliary independent-H0 quasi-free grandcanonical FD state at existing common_mu/degauss; not coupled equilibrium, exact canonicalN or a claimed physical temperature.",
+    "proofs": [
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0023/quantum-noise-oracle-001.json",
+        "bytes": "12311",
+        "sha256": "216907694b89b6f3f72f0b972f932a7e67eccb050b2f507d19490599d503fe65"
+      },
+      {
+        "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0023/pw-projection-oracle-002.json",
+        "bytes": "11910",
+        "sha256": "7f38723e068e8d8658508313b254f757ab8fdae870773e2897c7beb2ca020730"
+      }
+    ]
+  },
+  "consumer_contract": [
+    {
+      "requirement": "Use energy-labelled spectral matrix elements. The repaired adapter projects BOTH bare ionic PW actions and density actions with the actual target eigenvectors; gradient-to-force conversion negates mixed gradient/density correlations.",
+      "evidence": [
+        "src/substrate_framework/pw_prepared_noise.py",
+        "src/substrate_framework/pw_electronic_dynamics.py:62-75",
+        "attempts/0023/pw-projection-oracle-002.json"
+      ]
+    },
+    {
+      "requirement": "Preserve source and target raw probabilities, explicit spins, 1/Ncells quadrature, q/-q ordering and tau=t*Ry/hbar. Retain population and zero-gap coherence terms.",
+      "evidence": [
+        "attempts/0023/registration.json",
+        "attempts/0023/quantum-noise-oracle-001.json"
+      ]
+    },
+    {
+      "requirement": "These bilinear two-point functions do not license Gaussian higher moments, independent noise on redundant delta-psi coordinates, or a material loss rate. A coupled propagation consumer must derive a physical-coordinate map and preserve commutators/positivity with an independent finite oracle.",
+      "evidence": [
+        "attempts/0023/registration.json#/definition_of_done/3",
+        "attempts/0007/receipt.json",
+        "src/substrate_framework/pw_electronic_dynamics.py"
+      ]
+    },
+    {
+      "requirement": "For fullNi31H6, construct matched material H0/reference occupations/operators and BvK mapping. Do not combine fixture electronic data with the separately imported111x111 material frozen component or relabel its MV reference as FD equilibrium.",
+      "evidence": [
+        "attempts/0022/review-admission.json",
+        "attempts/0022/import-001/result.json",
+        "attempts/0023/source-inventory.json"
+      ]
+    },
+    {
+      "requirement": "Spatial coherence requires the needed q/real-space sectors and selected transverse current/EM route plus a sourced environment/preparation; this two-q isolated electronic component supplies neither full spatial covariance nor irreversible damping.",
+      "evidence": [
+        "attempts/0023/registration.json#/whole_campaign",
+        "attempts/0023/registration.json#/preparation"
+      ]
+    }
+  ]
+}

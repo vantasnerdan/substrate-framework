@@ -1,0 +1,186 @@
+P254 attempt 0005 — conditional finite-matrix metric/embedding result
+Focused authority: issue227; parent225 remains active.
+Read preregistration.json and ../../W2-readiness.json before using this artifact.
+No ForceSourceAudit output was used. All inputs here are declared finite models,
+not a representation of Ni or a source-based identification of a material force.
+
+NAVIGATION
+1 Definitions and exact native identities — blocks/native.py
+2 Energy, gauge and coordinate-frame transformations — blocks/transformations.py
+3 Embedding reconstruction, sufficiency and counterexamples — blocks/embedding.py
+4 Independent empirical oracle — blocks/numeric_model.py, blocks/numerical.py
+5 Execution/recovery — runner.py, checkpoints.py, provenance.py, runs/*
+The exact block ledger reports residuals and nonzero witnesses separately.
+A passing nonzero witness exposes a specified false alternative, not a theorem
+that all other alternatives fail. Symbolic verification is not formal proof.
+
+1. REFERENCE DATA AND NATIVE DERIVATIVE
+One real coordinate r is differentiated at 0. Work over complex finite spaces.
+S is differentiable positive Hermitian; H is differentiable Hermitian.
+H C = S C E, C^dag S C = I; C is square complete, E real diagonal.
+Write A=C^dag H' C, B=C^dag S' C, D=A-BE; row j, column i uses e_i.
+A,B are Hermitian. Thus, entrywise in any dimension,
+  D-D^dag = EB-BE, or D_ji-conj(D_ij)=(e_j-e_i)B_ji.
+  F=(D+D^dag)/2=A-(BE+EB)/2 is Hermitian.
+F is an algebraic Hermitian part, not automatically a physical Hamiltonian/force.
+D is Hermitian iff [E,B]=0; real-valued examples would conceal conjugation errors.
+D is real on its diagonal; within an equal-energy block it is Hermitian.
+
+If a differentiable normalized eigenbranch is available, define K=C^dag S C'.
+Differentiating the defining eigenproblem and normalization gives
+  A+EK-BE-KE-E'=0,  K+K^dag+B=0.
+For nondegenerate eigenvalues, D_ji=(e_i-e_j)K_ji off diagonal,
+and e_i'=D_ii; Re K_ii=-B_ii/2, with arbitrary imaginary diagonal phase gauge.
+At degeneracy the off-diagonal division is unavailable; do not divide by zero
+or infer a unique eigenvector derivative. The adjoint and normalization identities
+remain meaningful. An eigenbasis inside a degenerate subspace is not unique.
+The generic real-symbol 2x2 block verifies all component identities directly;
+the displayed entrywise proof supplies the dimension-independent argument.
+
+The exact asymmetric example uses C=[[1,i],[1+i,2]], E=diag(-2,3),
+S=C^-dag C^-1, H=C^-dag E C^-1, with Hermitian A=[[2,1+3i],[1-3i,-1]],
+B=[[1,2-i],[2+i,-2]]. These define realizable local H',S' in that C frame;
+S stays positive in a sufficiently small neighborhood by continuity. Native
+D=[[4,-5+6i],[5-i,5]]. Both B and E fail to commute. The ledger exposes final-
+energy substitution, omitted overlap, ordinary rather than S normalization,
+transposition instead of adjoint, and the claim that D itself is Hermitian.
+
+2. ENERGY ORIGIN, COMPLEX GAUGE, NORMALIZATION AND COORDINATE FRAMES
+A common real shift alpha(r) of the represented operator means
+H -> H+alpha S, E -> E+alpha I, H' -> H'+alpha S'+alpha' S.
+Consequently D -> D+alpha' I. For a constant shift D is unchanged.
+Adding alpha I instead of alpha S to a nonorthogonal coordinate matrix,
+omitting alpha S', or reversing its sign is not this energy-origin shift.
+A coordinate-dependent origin has a nonzero derivative and is not a constant
+origin convention; no invariant-force assertion follows from it.
+
+A reference phase gauge P (unit-modulus diagonal) gives D -> P^dag D P.
+Individual complex entries are not invariants; their modulus squares are.
+A unitary within a degenerate equal-energy block has the same covariance;
+a permutation also permutes the energy labels. Mixing unequal energies while
+keeping E diagonal and fixed is not a reference-eigenbasis gauge.
+Nonunit column scaling L commuting with E gives unnormalized raw matrix
+L^dag D L. Restore S normalization before identifying its entries with D.
+The derivative of an eigenvector phase changes K's imaginary diagonal, not
+D's fixed-reference definition; complex bra factors must be conjugated.
+
+For a moving coefficient-frame transform Hbar=U^dag H U, Sbar=U^dag S U,
+with U(0)=I in the reference S=I, H=E frame and G=U'(0),
+  Dbar = D+[E,G].
+The product-rule check differentiates the full transformed curves, not an
+assumed covariance rule. In particular
+  Fbar-F = [E,G-G^dag]/2.
+Hermitization alone does not erase a moving-frame connection.
+
+At S(0)=I the symmetric inverse-square-root orthonormalizer has first jet
+O(0)=I, O'=-B/2: differentiation of O S O=I with Hermitian O' proves this.
+Its coordinate Hamiltonian derivative is F. The block verifies the first jet
+with O=I-rB/2 (this polynomial is NOT asserted exactly orthonormal for all r).
+Another orthonormalizer O U with unitary U(0)=I,U'=J anti-Hermitian has the
+same metric first jet but coordinate derivative F+[E,J]. Such first jets
+extend to exact differentiable orthonormalizers locally by S^-1/2 U.
+Therefore an orthonormal metric alone does not specify a laboratory frame.
+The exact example has a nonzero Hermitian derivative change [E,J].
+
+3. DECLARED EMBEDDING: WHAT SUFFICES, WHAT DOES NOT
+Declare full-column-rank T(r) into a FIXED finite ambient Hilbert frame,
+S=T^dag T and H=T^dag h T, with h Hermitian. At reference define
+  Phi=T C, Y=T' C, Z=Phi^dag Y, V=Phi^dag h' Phi,
+  W=h Phi-Phi E.
+Then Phi^dag Phi=I and Phi^dag W=0. A generalized eigenproblem implies only
+this projected residual, not W=0 in a larger ambient space. Differentiating
+products directly yields in all dimensions
+  B=Z+Z^dag,
+  A=V+Z^dag E+E Z+Y^dag W+W^dag Y,
+  D=V+[E,Z]+Y^dag W+W^dag Y.
+These follow by substituting h Phi=Phi E+W in the two differentiated T terms.
+The rectangular exact counterexample verifies the otherwise easily lost last
+two terms. Conjugation and both product-rule terms are essential.
+
+SQUARE INVERTIBLE T: Phi is a complete orthonormal ambient frame, W=0.
+  V=D-[E,Z],  F=V+[E,Z-Z^dag]/2.
+Hence known T,T' (and C) suffice to obtain Z and V. In this square case,
+they also give h'=Phi V Phi^dag in the declared ambient frame. Equivalently
+full H,S,H' with T,T' suffice by differentiating h=T^-dag H T^-1.
+Knowing D, B and E supplies A=D+BE if that coordinate derivative is needed.
+The metric fixes only Z+Z^dag, not its anti-Hermitian part. F=V iff
+[E,Z-Z^dag]=0; Z=B/2 is sufficient, not necessary. This connection choice
+is extra information. Square-case diagonal and equal-energy blocks of V
+are fixed by D even when the inter-energy off-diagonal entries are not.
+
+EXACT SQUARE NONUNIQUENESS, SAME ENTIRE H(r),S(r):
+T1=I+r M, M=[[1,2+i],[-1+3i,-2]], h1=E+r V1,
+E=diag(-2,3), V1=[[3,-2+4i],[-2-4i,-1]].
+J=[[i,1+2i],[-1+2i,-i]] is anti-Hermitian.
+U=(I+rJ/2)(I-rJ/2)^-1 is unitary for real r.
+T2=U T1, h2=U h1 U^dag. Product cancellation proves identical S,H for
+all r where T1 is invertible. The exact ledger verifies the rational curves.
+At 0, h1=h2=E and T1=T2=I, but
+h1'=V1, h2'=[[3,3+14i],[3-14i,-1]]=V1+[J,E].
+The anti-Hermitian connection changes Z2=Z1+J and restores the same D.
+Viewed as TWO possible embedded physical families in a common declared fixed
+ambient frame, they are indistinguishable from H,S, even all derivatives.
+Viewed instead as a passive moving ambient frame, the ordinary derivative
+changes and must be replaced by a declared covariant derivative. Calling the
+two meanings identical would assume the very frame information under test.
+This supplies a constructive nonuniqueness result, not a numerical search.
+
+RECTANGULAR T: known T,T' is not sufficient from H,S alone unless missing
+ambient action W (or a condition killing its contraction with Y) is supplied.
+If W=0 (h-invariant image), or Y is tangent to the image, the square projected
+formula holds; it still does not determine complement blocks of full h'.
+With general known ambient h0 and T,T', W is available, and the displayed
+formula suffices for projected V. Full ambient h' remains underdetermined
+outside the embedded image without more data.
+
+EXACT RECTANGULAR NONUNIQUENESS EVEN WITH SAME ENTIRE T,H,S:
+T=[[1,0],[0,1],[r,ir]], n=[-r,ir,1]^T, v=[1+i,2-i,0]^T.
+T^dag n=0 exactly. h1=diag(-2+3r,3-r,7),
+h2=h1+n v^dag+v n^dag. Both are Hermitian; T^dag h2 T=T^dag h1 T exactly.
+At 0, Phi selects the first two ambient coordinates and Z=0.
+V1=diag(3,-1), but V2=[[1,-1-2i],[-1+2i,-3]].
+For h2, W has only last row [1-i,2+i], and
+Y^dag W+W^dag Y=[[2,1+2i],[1-2i,2]]. Thus D=V2+that correction=V1.
+Even diagonal hprime matrix elements differ: projecting a moving noninvariant
+subspace is not equivalent to differentiating an ambient eigenproblem.
+These finite matrices are counterexamples to sufficiency claims, not models
+of unrepresented physical orbitals or a force prescription for USPP.
+
+4. INDEPENDENT NUMERIC EVIDENCE (SEPARATE FROM EXACT IDENTITIES)
+The numerical model declares T=expm(r M)T0 and
+h=h0+sin(r)V+(cos(0.7r)-1)Q, with explicit asymmetric complex arrays in
+blocks/numeric_model.py; these are distinct from the exact counterexamples.
+scipy.linalg.eigh solves H(r)c=S(r)c e independently at each endpoint.
+Eigenvectors are phase-aligned using reference C^dag S0 c overlaps. Centered
+differences then estimate e', C', and physical (T C)' without constructing
+these from the proposed native formula. Separately, direct h,H,S curve
+differences check their derivatives. The reconstruction is compared to both
+physical-eigenvector derivatives and directly sampled laboratory h curves.
+The code records dimensionless max-entry errors at 0.04,0.02,0.01,0.005,
+empirical orders, all arrays, eigensolver and package versions, and exposes
+final-energy, overlap, omitted-connection and Hermitization mutations.
+Predeclared float thresholds live in preregistration.json, unchanged.
+These checks are empirical float64 refinement, not interval enclosures or a
+proof over arbitrary models. Exact symbolic residuals never use those tolerances.
+
+5. EXECUTION, RECOVERY AND APPLICABILITY
+All actual mathematical block runs use canonical substrate-framework Python
+through user systemd units, pinned CPU5, MemoryMax=2G and one BLAS/OMP thread,
+submitted in the new labeled herdr tab. No material simulation, repository
+suite, build or formatter is part of this artifact. See record.json for exact
+unit/pane commands and observed numerical values, and runs/*/receipt.json
+for bound sources, runtime and output; journald logs are preserved separately.
+Every completed block is an atomic fsynced checkpoint. Explicit --resume-from
+accepts only matching code/input/Python/package fingerprints and records the
+checkpoint hash; there is no automatic retry. SIGTERM/SIGINT become failures
+with preserved raw traceback and atomic receipt. SIGKILL, power loss or a kernel
+OOM can bypass Python cleanup: started.json and prior checkpoints remain,
+and systemd/journal give the external failure; do not invent a final receipt.
+
+This is a conditional finite-matrix algebra artifact. It does NOT determine
+which coordinate/embedding/connection is physical for the actual QE USPP Ni18
+model, whether a static native DFPT matrix is a complete off-shell vertex, or
+screening, occupations, time-dependent augmentation, dynamic response or bath
+conditions. It is not a reusable Ni force converter. No physical bath, linewidth,
+material loss, coherence, nuclear observable or finished parent campaign is
+licensed. Source integration is root-owned after both independent slices settle.

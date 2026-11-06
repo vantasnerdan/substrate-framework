@@ -1,0 +1,43 @@
+{
+  "schema": "P254.A28.nuclear-energy-transport-registration.v1",
+  "registered_before_implementation": true,
+  "original_sources": "sources/ni-energy-transport-original/acquisition.json",
+  "acquisition_sha256": "cdd373781913ac150ac1c5db28dae8d4115ae1d0dc82a287ecb1c2ff6c201a17",
+  "acquisition_bytes": 26576,
+  "supplemental_gap_receipt": {
+    "file": "sources/ni-energy-transport-original/nickel-stopping-gap.json",
+    "sha256": "3f4e2959542ffff8358aa2d9bbde31237da0356345dffecc599d830cfb466bf1",
+    "bytes": 3337,
+    "timing": "Additional official endpoint availability check after implementation; no numerical data introduced or consumed."
+  },
+  "source_policy": "Original official NIST response bytes are saved with URL, request body, timestamp, byte count and SHA256 before dependent implementation. The photon tables are NIST SRD126 X-Ray Mass Attenuation Coefficients (Hubbell/Seltzer), not an invented XCOM mu_en output; XCOM proper does not supply mu_en.",
+  "construction": [
+    "Explicit emitted line/quadrature-node energies in MeV and nonnegative number weights per supplied event/normalization, never inferred from AME Q or inclusive capture cross sections.",
+    "Explicit finite ordered photon paths, each with probability and ordered material layers of areal density g/cm2 and Ni/H mass fractions. No periodic simulation cell is used as an absorber boundary.",
+    "Within source domains only, declared piecewise log-log numerical interpolation on each side of an absorption edge. This is not the NIST internal subshell interpolation algorithm, and carries no new accuracy guarantee. Exact edge energy requires below/above side. Duplicate edge rows remain distinct. No eV extrapolation or new medium fit.",
+    "Uncollided transmission exp(-sum_j (mu/rho)_j X_j). Mixture attenuation uses mass-fraction additivity per NIST chapter2. Pure-element layers additionally integrate primary collision kerma: incoming_energy*(mu_en/mu)*(1-exp(-mu*X)). This is an energy bookkeeping allocation, not measured deposited heat. Secondary scattered/fluorescent/annihilation/bremsstrahlung radiation remains unresolved, not falsely classified as escaping.",
+    "Elemental mu_en mass additivity is formally incorrect per NIST chapter3. Homogeneous mixed Ni/H layers therefore produce attenuation and unresolved removed energy, not an invented mixture absorption coefficient. Ordered pure-element layers can give conditional collision-kerma allocations; applying their coefficients assumes secondary slowing in the same pure medium and does not establish finite-layer charged-particle containment.",
+    "For available primary STAR tables, specified charged track areal length gives R_out=max(R(E_in)-X,0), inverted only within the tabulated domain or exactly at complete stopping. Track length is not projected depth or a straight chord. Range inversion does not establish angular scattering, straggling, containment or thermalization.",
+    "Electron bremsstrahlung generation over a slowing segment uses E_in*Y(E_in)-E_out*Y(E_out); remaining kinetic loss is collision slowing, not automatically heat. Proton/alpha losses remain unpartitioned electronic+nuclear slowing, with source stopping components reported separately, not apportioned using an initial-energy ratio.",
+    "Neutrinos escape only under the explicitly supplied free-streaming assumption. Heavy recoil, neutron, positron and unavailable charged-medium cases remain explicit unresolved carrier budgets. Positron rest/annihilation energies are never synthesized from kinetic energy.",
+    "Energy compartments conserve supplied emitted kinetic/radiative energy; rest mass, unsupplied cascades, reaction rates and Q-to-heat conversion are excluded. No two-body branch example is required or asserted."
+  ],
+  "available_charged_data": ["PSTAR proton in hydrogen", "ASTAR helium ion in hydrogen", "ESTAR electron in hydrogen", "ESTAR electron in nickel"],
+  "source_gaps": [
+    "Nickel is absent from official PSTAR/ASTAR selectors. Direct official matno=028 POST responses also contain no numerical rows; exact original HTTP200 empty-table responses are bound by supplemental_gap_receipt. Neither copper nor iron substitutes for nickel.",
+    "No acquired Ni/H compound-specific mu_en or charged stopping table.",
+    "No acquired heavy Ni/Cu/Zn recoil-ion, positron or neutron transport table."
+  ],
+  "primary_table_limitations": [
+    "NIST photon tables omit photonuclear interactions, nuclear-resonance and Delbruck scattering; important photonuclear contributions can occur in the 5-40 MeV giant-resonance region.",
+    "Near-edge chemical/phase/temperature fine structure is absent from these elemental photon tables. Hydrogen STAR material is the source gas medium, not interstitial H in nickel.",
+    "Interpolation is an explicit table-transfer approximation, not a material-model fit or a reproduced native NIST interpolation."
+  ],
+  "oracle": [
+    "Independent HTML table-cell parser versus production PRE parser, literal nickel K/L edge rows, hydrogen and STAR literal rows.",
+    "Independent Decimal exponential Beer law and pure-element kerma integral; conservation across weighted paths and ordered layers, mixture rejection of fabricated mu_en, edge/domain/unit and missing geometry mutations.",
+    "Independent tabulated-range endpoint and geometric log-interpolation checks, CSDA track versus projected-range sensitivity, electron radiative-yield accounting, unresolved recoil/neutrino separation."
+  ],
+  "cli_contract": "No input: source-bound table inventory only, actual material heat null. --input explicit JSON: conditional per-normalization transfer, never actual rate or heat. --output writes JSON. Examples and exact JSON schema are embedded in consume_nuclear_energy_transport.py --help.",
+  "execution": "No scientific runs/tests/builds/lint/formatters by worker. Root runs the independent oracle and actual primary-table inventory consumer after integration."
+}

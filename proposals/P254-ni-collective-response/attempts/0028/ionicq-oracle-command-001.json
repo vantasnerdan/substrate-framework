@@ -1,0 +1,23 @@
+{
+  "schema": "P254-component-command-result-v1",
+  "component": "ionicq",
+  "argv": [
+    "timeout",
+    "60s",
+    "taskset",
+    "-c",
+    "8",
+    "env",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "/usr/bin/python3",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic_q_oracle.py"
+  ],
+  "exit_code": 0,
+  "stdout": "{\n  \"scope\": \"independent synthetic finite-sum oracle, not material evidence\",\n  \"term_errors\": {\n    \"reciprocal_pair\": 4.441434166503682e-16,\n    \"reciprocal_self\": 8.326672684688674e-16,\n    \"real_pair\": 5.928593550334434e-17,\n    \"real_self\": 5.551115123125783e-17\n  },\n  \"mutation_distances\": {\n    \"missing_reciprocal_pair\": 1.2498046461802121,\n    \"missing_reciprocal_self\": 0.8844074283653234,\n    \"missing_real_pair\": 0.1430457359357007,\n    \"missing_real_self\": 0.14293557320306552,\n    \"wrong_final_sign\": 1.3796128734485393,\n    \"missing_q_phases\": 0.7144886078461063,\n    \"conjugated_q_phases\": 0.5093720834778582\n  },\n  \"scalar_energy_derivatives\": [\n    {\n      \"step_bohr\": 0.003,\n      \"value\": 0.09216077028072354,\n      \"error\": 1.0460124584554809e-07\n    },\n    {\n      \"step_bohr\": 0.0015,\n      \"value\": 0.09216084833557008,\n      \"error\": 2.6546399314875124e-08\n    },\n    {\n      \"step_bohr\": 0.00075,\n      \"value\": 0.09216086678994391,\n      \"error\": 8.092025480244125e-09\n    }\n  ],\n  \"hermiticity\": 7.568197139075271e-17,\n  \"opposite_q_conjugacy\": 3.6385279128583063e-16,\n  \"gamma_ionic_translation\": 6.233719367329028e-17,\n  \"threshold_continuity\": [\n    6.28517208994101e-07,\n    3.1425860441767605e-07,\n    1.5712930210517752e-07\n  ],\n  \"head_subtracted_continuity\": [\n    0.001885548877806247,\n    0.0009427754697922592,\n    0.0004713878637553166\n  ],\n  \"unremoved_head_norms\": [\n    0.4889866212102548,\n    0.4889879066509928,\n    0.4889882280166794\n  ],\n  \"finite_sum_refinement_deltas\": [\n    1.137343277777701e-06,\n    3.728437272014662e-10\n  ],\n  \"fourier_roundtrip\": 5.551115123125783e-17\n}\n",
+  "stderr": "",
+  "completed_at": "2026-10-28T18:41:17.249022+00:00"
+}

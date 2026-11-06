@@ -1,0 +1,26 @@
+{
+  "status": "failed",
+  "source_sha256": {
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0004/verify_models.py": "8e3a8cddb2be946face6a35b35f2ba06a3bc646691b33e38db7f2d02685f9888",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0004/record.json": "8f125df2d1ebdfaf67e7996a3e4cc2df74e836f6b23f10636d648ac4eb03ba8a",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/sources/electronic-model-source-correction.json": "ff35e1078a260b48fd3b00dd25db7f776022ad435775d38c97fa496d863477c8",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0003/oracle_artifacts.py": "7a0f995607d3cb074aa4b52ed91e96de90f2010fe91acd375ad0accb91e06b77",
+    "/home/administrator/projects/catalyst-dft/pseudos/ni_pbe_v1.4.uspp.F.UPF": "f76b86ce60cde3d83dfcc8df79ba05478db573d158289f1b226919442d977d25",
+    "/home/administrator/projects/catalyst-dft/pseudos/h_pbe_v1.4.uspp.F.UPF": "897f39441a8f0feb1f504af4cebce9dcf95c9cdc16858a7498991c74f1ad127b",
+    "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw_data/setups/Ni.10.PBE.gz": "92fefa11d1b58caf988e478de89bdc15de69c5f9cc3451047e522980a59ca236",
+    "/home/administrator/projects/catalyst-dft/.venv/lib/python3.12/site-packages/gpaw_data/setups/Ni.PBE.gz": "4f78cb11d6e356c5bad0ebc117255a2aed1ce7a9f73541107063949d20333a35"
+  },
+  "scope": "Source-bound pseudovalence identity only, not a material response correspondence or a stationary structure.",
+  "raw_exception": "Traceback (most recent call last):\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0004/verify_models.py\", line 91, in main\n    receipt[\"model_counts\"] = native_count_block(ledger,record,qe,paw,receipt)\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0004/verify_models.py\", line 55, in native_count_block\n    ledger.check(\"native XML belongs to complete SCF boundary\",\n  File \"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/verification.py\", line 52, in check\n    raise CheckFailure(f\"FAIL [{self.claim_id}] {name}{suffix}\")\nsubstrate_framework.verification.CheckFailure: FAIL [P254-electronic-model-identity] native XML belongs to complete SCF boundary\n",
+  "passed_checks": [
+    "actual Ni UPF hash",
+    "actual Ni UPF metadata",
+    "actual H UPF hash",
+    "actual H UPF metadata",
+    "actual pilot_Ni PAW hash",
+    "actual pilot_Ni PAW metadata",
+    "actual installed_default_Ni PAW hash",
+    "actual installed_default_Ni PAW metadata",
+    "native source SCF is complete"
+  ]
+}

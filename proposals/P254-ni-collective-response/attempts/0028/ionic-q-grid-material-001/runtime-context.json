@@ -1,0 +1,51 @@
+{
+  "pid": 3679973,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    4,
+    27,
+    1000
+  ],
+  "cpu_affinity": [
+    7
+  ],
+  "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-ionic-q-grid-001.service",
+  "thread_variables": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "INVOCATION_ID": "ae469a3c04a64ae89a9a0ea0efdf90d6",
+  "resources": {
+    "memory.max": {
+      "availability": "available",
+      "value": "4294967296"
+    },
+    "memory.swap.max": {
+      "availability": "available",
+      "value": "0"
+    },
+    "cpuset.cpus.effective": {
+      "availability": "unavailable",
+      "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-ionic-q-grid-001.service/cpuset.cpus.effective'"
+    }
+  },
+  "kernel_limits_text": "Limit                     Soft Limit           Hard Limit           Units     \nMax cpu time              unlimited            unlimited            seconds   \nMax file size             unlimited            unlimited            bytes     \nMax data size             unlimited            unlimited            bytes     \nMax stack size            8388608              unlimited            bytes     \nMax core file size        0                    unlimited            bytes     \nMax resident set          unlimited            unlimited            bytes     \nMax processes             128196               128196               processes \nMax open files            1024                 1048576              files     \nMax locked memory         4205776896           4205776896           bytes     \nMax address space         unlimited            unlimited            bytes     \nMax file locks            unlimited            unlimited            locks     \nMax pending signals       128196               128196               signals   \nMax msgqueue size         819200               819200               bytes     \nMax nice priority         0                    0                    \nMax realtime priority     0                    0                    \nMax realtime timeout      unlimited            unlimited            us        \n",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "numpy": "1.26.4",
+  "manager_runtime_max_usec": {
+    "availability": "available",
+    "value": "120000000",
+    "argv": [
+      "/usr/bin/busctl",
+      "--user",
+      "get-property",
+      "org.freedesktop.systemd1",
+      "/org/freedesktop/systemd1/unit/p254_2da28_2dionic_2dq_2dgrid_2d001_2eservice",
+      "org.freedesktop.systemd1.Service",
+      "RuntimeMaxUSec"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+Starting dft-c5-blocks.service - Campaign5 exact matter-field and bath identities (P254)...
+Started dft-c5-blocks.service - Campaign5 exact matter-field and bath identities (P254).
+PASS [P254-quadratic-blocks] complete-square Hessian is symmetric
+PASS [P254-quadratic-blocks] all leading principal minors positive
+PASS [P254-quadratic-blocks] dropping self-term exposes a negative energy direction
+PASS [P254-quadratic-blocks] Hamiltonian energy derivative vanishes
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0001/derive_blocks.py", line 140, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0001/derive_blocks.py", line 123, in main
+    blocks[construct.__name__] = construct(ledger)
+                                 ^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0001/derive_blocks.py", line 47, in minimal_coupling_block
+    wrong_drift[0, 0] += 1
+    ~~~~~~~~~~~^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/matrices/immutable.py", line 69, in __setitem__
+    raise TypeError("Cannot set values of {}".format(self.__class__))
+TypeError: Cannot set values of <class 'sympy.matrices.immutable.ImmutableDenseMatrix'>
+dft-c5-blocks.service: Main process exited, code=exited, status=1/FAILURE
+dft-c5-blocks.service: Failed with result 'exit-code'.
+dft-c5-blocks.service: Consumed 3.099s CPU time.
+
+
+Wall time: 0.19 seconds

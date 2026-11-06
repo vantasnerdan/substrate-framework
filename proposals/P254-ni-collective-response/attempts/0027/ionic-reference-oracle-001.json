@@ -1,0 +1,667 @@
+{
+  "schema": "p254-a27-ionic-reference-oracle-1",
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/run_ionic_reference_oracle.py",
+      "bytes": "4370",
+      "sha256": "45e26be1fdd1bf297835c3c350e37511101958789c2acf92fb4897d10f662df2"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/ionic_scalar_oracle.py",
+      "bytes": "9229",
+      "sha256": "796a39f0839ad88b3e923d42c6f31bd072f632d42c0dddf95c0aac001f9fc6f4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/ionic_composition_oracle.py",
+      "bytes": "9795",
+      "sha256": "119367f1262cf4a7e387a886fcf49f1589db6efedac8848bf8fe84c51fe480ab"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_ionic_ewald.py",
+      "bytes": "8996",
+      "sha256": "f3e0c53e5545f46f5ec9e9f94872139c284dd7133cbdd8882d30a27bdf3ea70b"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_ewald_sums.py",
+      "bytes": "3583",
+      "sha256": "b200cb1538195ec07332e2f871e4f1b6e3035b8c2922444f768b709cdc185d2c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_reference.py",
+      "bytes": "7393",
+      "sha256": "5474edc99ae71a0838902b350b8b512667f192ffc184f23339340d73d6c2d832"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_factor_dynamics.py",
+      "bytes": "8348",
+      "sha256": "67a1b584e90e9325eaad412bb2444d9a21766cbb0e28db8fba5c84440fd496d2"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_covariance_source.py",
+      "bytes": "9649",
+      "sha256": "a83ab2d0c3760f30aaf24ecc90a7013883b4e0584994ceea352256c77da8fe81"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_time_observables.py",
+      "bytes": "3542",
+      "sha256": "3ca50e733f8adbc14f0e1a5650f5e08793633459c8e151587d3fc5fa3c9b73ff"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_factor_preparation.py",
+      "bytes": "11366",
+      "sha256": "3dd3767a13da9fd5f5d7559bc3f7a98cf00d365655a08980db551d011aa25b96"
+    }
+  ],
+  "scope": "NEW synthetic finite scalar/composition only; no material or time trajectory",
+  "blocks": [
+    "scalar constants",
+    "energy derivative and independent force",
+    "symmetry units truncation sensitivities",
+    "symbolic common scalar",
+    "nonstationary mean and affine energy/probe consumers"
+  ],
+  "checks": [
+    {
+      "name": "finite_energy",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 1.7763568394002505e-15,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "energy_real",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 8.326672684688674e-17,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_omit_energy_real",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.07805859277076799,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "energy_reciprocal",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 1.3322676295501878e-15,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_omit_energy_reciprocal",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 2.9798832518005867,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "energy_self",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 0.0,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_omit_energy_self",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 10.597156592484673,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "energy_background",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 0.0,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_omit_energy_background",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 1.7880690696166948,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "direct_energy_derivative_0.0002",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 4.35940172849314e-12,
+      "atol": 3e-08,
+      "rtol": 2e-10
+    },
+    {
+      "name": "direct_energy_derivative_0.0001",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 9.20691300976273e-12,
+      "atol": 3e-08,
+      "rtol": 2e-10
+    },
+    {
+      "name": "derivative_refinement",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 8.141654017634892e-12,
+      "atol": 3e-08,
+      "rtol": 2e-10
+    },
+    {
+      "name": "qe_force_style",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 6.661338147750939e-16,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "derivative_real",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 2.8677060726067793e-13,
+      "atol": 3e-08,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_omit_force_real",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.11168129561834328,
+      "atol": 3e-08,
+      "rtol": 2e-10
+    },
+    {
+      "name": "derivative_reciprocal",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 3.4501845824763677e-12,
+      "atol": 3e-08,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_omit_force_reciprocal",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 1.065073117867101,
+      "atol": 3e-08,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_wrong_sign",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 2.353508826971133,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_hartree_not_ry",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.5883772067427221,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_wrong_reciprocal_phase",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 2.1301462357342835,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_nuclear_not_valence",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 5.332290760093424,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_centering_cannot_repair_derivative",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.11333333332540249,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "common_translation_energy",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 0.0,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "common_translation_force",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 4.440892098500626e-16,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "unprocessed_net_force",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 2.7755575615628914e-16,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "atom_order",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 6.661338147750939e-16,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_atom_order_mismatch",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.6624781383058302,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "single_atom_lattice_periodicity",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 6.661338147750939e-16,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "length_energy_units",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 0.0,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "length_force_units",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 3.0531133177191805e-16,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_cartesian_cell_transpose",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.6320212616906933,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_wrong_length_force_conversion",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.48454593496466136,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "gradient_atom_major_sign",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 9.20691300976273e-12,
+      "atol": 3e-08,
+      "rtol": 2e-10
+    },
+    {
+      "name": "cutoff_refinement_energy",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 6.110163216632714e-05,
+      "atol": 0.0002,
+      "rtol": 2e-10
+    },
+    {
+      "name": "cutoff_refinement_force",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 2.0579414164278997e-05,
+      "atol": 0.0002,
+      "rtol": 2e-10
+    },
+    {
+      "name": "fine_cutoff_energy",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 1.1141825240201797e-09,
+      "atol": 2e-08,
+      "rtol": 2e-10
+    },
+    {
+      "name": "fine_cutoff_force",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 5.179189299653331e-10,
+      "atol": 2e-08,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_grossly_insufficient_reciprocal_cutoff",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.3566326909076975,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_grossly_insufficient_real_cutoff",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.11167009956185958,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "scalar_force_0",
+      "passed": true,
+      "mutation": false,
+      "symbolic_residuals": [
+        "0"
+      ]
+    },
+    {
+      "name": "mutation_electronic_force_sign_0",
+      "passed": true,
+      "mutation": true,
+      "symbolic_residuals": [
+        "2*a/5 + 7*b/25 - 3*c/25 - d/5"
+      ]
+    },
+    {
+      "name": "scalar_force_1",
+      "passed": true,
+      "mutation": false,
+      "symbolic_residuals": [
+        "0"
+      ]
+    },
+    {
+      "name": "mutation_electronic_force_sign_1",
+      "passed": true,
+      "mutation": true,
+      "symbolic_residuals": [
+        "-4*a/25 + 2*b/25 + 6*c/25 + 9*d/25"
+      ]
+    },
+    {
+      "name": "scalar_force_2",
+      "passed": true,
+      "mutation": false,
+      "symbolic_residuals": [
+        "0"
+      ]
+    },
+    {
+      "name": "mutation_electronic_force_sign_2",
+      "passed": true,
+      "mutation": true,
+      "symbolic_residuals": [
+        "11*a/50 - b/5 + 2*c/25 + 7*d/50"
+      ]
+    },
+    {
+      "name": "fixed_joint_curvature",
+      "passed": true,
+      "mutation": false,
+      "symbolic_residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "common_affine_baseline",
+      "passed": true,
+      "mutation": false,
+      "symbolic_residuals": [
+        "0"
+      ]
+    },
+    {
+      "name": "mutation_omit_old_gbar_restoration",
+      "passed": true,
+      "mutation": true,
+      "symbolic_residuals": [
+        "3*u/25 - 3*v/50 + 3*w/100"
+      ]
+    },
+    {
+      "name": "mutation_processed_total_plus_electronic_double_count",
+      "passed": true,
+      "mutation": true,
+      "symbolic_residuals": [
+        "u*(10*a + 7*b - 3*c - 5*d)/50 + v*(-4*a + 2*b + 6*c + 9*d)/50 + w*(11*a - 10*b + 4*c + 7*d)/100"
+      ]
+    },
+    {
+      "name": "mutation_displaced_ewald_quadratic_double_count",
+      "passed": true,
+      "mutation": true,
+      "symbolic_residuals": [
+        "1/3",
+        "1/20",
+        "0",
+        "1/20",
+        "1/4",
+        "0",
+        "0",
+        "0",
+        "1/5"
+      ]
+    },
+    {
+      "name": "mutation_unsupported_state_curvature",
+      "passed": true,
+      "mutation": true,
+      "symbolic_residuals": [
+        "2*a",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "support_stays_separate",
+      "passed": true,
+      "mutation": false,
+      "symbolic_residuals": [
+        "0"
+      ]
+    },
+    {
+      "name": "polynomial_energy",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 2.7755575615628914e-17,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "polynomial_electronic_variation",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 8.326672684688674e-17,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "nonstationary_electronic_drift",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 1.5515838457795457e-17,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_falsely_stationary_electrons",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.053110164159194194,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "polynomial_force",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 6.938893903907228e-18,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "polynomial_acceleration",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 3.469446951953614e-18,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_fitted_zero_acceleration",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.027745098039215692,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "polynomial_velocity",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 3.469446951953614e-18,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "explicit_held_density_mismatch",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 0.0,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_assumed_reference_density",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.17500000000000002,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_omitted_held_density",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.07,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_omitted_held_gradient",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.05,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "boundary_energy",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 2.7755575615628914e-17,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "affine_probe_mean",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 0.0,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_missing_affine_constant",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.22499999999999998,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "separate_support_force",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 4.683753385137379e-17,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "separate_support_energy",
+      "passed": true,
+      "mutation": false,
+      "max_abs_residual": 1.7564075194265172e-17,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_cancellation_support",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.14150000000000001,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_processed_total_baseline_double_count",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.0678,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    },
+    {
+      "name": "mutation_extra_ionic_curvature_force",
+      "passed": true,
+      "mutation": true,
+      "max_abs_residual": 0.03666666666666667,
+      "atol": 2e-11,
+      "rtol": 2e-10
+    }
+  ],
+  "status": "passed_finite_oracles_only",
+  "executed_checks": 72
+}

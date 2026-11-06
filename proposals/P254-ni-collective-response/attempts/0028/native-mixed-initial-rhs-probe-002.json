@@ -1,0 +1,52 @@
+{
+  "schema": "P254-actual-Native-mixed-initial-RHS-v1",
+  "status": "FAIL",
+  "material_propagation": false,
+  "started_at": "2026-10-30T04:12:31.301427+00:00",
+  "checks": [],
+  "scope": "actual all-source self-consistent preparation; selected original full-PW ionic/field first and mixed initial RHS",
+  "limitations": [
+    "instantaneous initial curve only",
+    "no propagated energy/noise/full-q result",
+    "legacy nonzero density factors are not imported as raw-frame jets"
+  ],
+  "initialization": {
+    "path": "/var/tmp/p254-a28-matched-loaded-joint-initialize-002/result.json",
+    "bytes": 25705,
+    "sha256": "04ce58ae98afdf47ae31e35337201bf953701b6a284ce95a9e3a2c5be2581713"
+  },
+  "history_execution_proof": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/paired-contraction-consumer-003/result.json",
+    "bytes": 29006,
+    "sha256": "ee79ae737cacf1c2b8c276b928d9bd984e5d71584c2e701a5a2f613bb70bb966"
+  },
+  "traceback": "Traceback (most recent call last):\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_native_rhs_probe.py\", line 187, in main\n    execute(args, report, budget)\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_mixed_native_rhs_probe.py\", line 77, in execute\n    initial = zero_curve(args.directory/'initial.json', source=zero_binding,\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_native_initial.py\", line 47, in zero_curve\n    binding = publish_checkpoint(path, legs=legs, small=small, q=[0.,0.,0.],\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/mixed_response_storage.py\", line 242, in publish_checkpoint\n    raise ValueError('distinct original leg paths required')\nValueError: distinct original leg paths required\n",
+  "budget": {
+    "hamiltonian_actions": 0,
+    "action_columns": 0,
+    "output_bytes_reserved": 13137509056,
+    "elapsed_seconds": 458.9740873319097,
+    "max_actions": 32,
+    "max_seconds": 1102.0,
+    "max_bytes": 161061273600,
+    "max_memory_bytes": 4294967296,
+    "worker_memory_bytes": 4294967296,
+    "peak_aggregate_rss_bytes": 0,
+    "accounting": "q live cap; cumulative allocation/mapped-write/action costs never credited back; measured unlinks only; header/reservation slack retained; logical writes, not physical device I/O",
+    "memory_accounting": "parent plus child RSS; shared pages conservatively counted repeatedly",
+    "time_cap": "parent watchdog at 0.1 second intervals; native calls may be terminated",
+    "live_bytes_reserved": 13137509056,
+    "peak_live_bytes_reserved": 13137509056,
+    "cumulative_write_bytes_reserved": 13137509056,
+    "cumulative_allocation_bytes_reserved": 13137509056,
+    "mapped_overwrite_bytes_reserved": 0,
+    "retired_payload_bytes": 0
+  },
+  "ended_at": "2026-10-30T04:20:10.283703+00:00",
+  "measurements": {
+    "wall_seconds": 458.98234615894035,
+    "parent_cpu_seconds": 226.63205199499998,
+    "parent_peak_rss_bytes": 734728192,
+    "children_peak_process_rss_bytes": 87420928
+  }
+}

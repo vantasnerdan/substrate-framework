@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "parent_plan": "W2-nc-native-proof-plan.json",
+  "prior_amendment": "W2-nc-native-proof-amendment-03.json",
+  "scope": "A distinct native density-preconditioning attempt after explicit beta0.3 plain Broyden failed. No convergence-target relaxation, iteration-cap increase or physical-model change.",
+  "observed_failure": {
+    "generation": "scf/generation4",
+    "native_attempt": "4336cc7313524cbdbc75b8c1b386c048",
+    "evidence": "generation4/failure.json and source-snapshot/; actual native input differs from previously accepted generation2 only in outdir and explicit mixing_beta0.3",
+    "native": "Reached200 iterations without convergence at unchanged1e-11Ry threshold; reported late residuals fluctuate rather than monotonically approaching that threshold. No result.json was published.",
+    "controller": "Terminal exit2, zero automatic restarts. Native rejection was retained, not hidden by JOB DONE or repeated identical cold attempts.",
+    "cause_limit": "This observation does not establish the physical or numerical cause of the residual fluctuation. Lower beta alone was insufficient in this attempt."
+  },
+  "next_attempt": {
+    "generation": "scf/generation5",
+    "numerical_change": "Keep explicit mixing_beta0.3 and change density mixing_mode from native plain Broyden to local-TF. Write and audit both values as source-bound solver policy, not a reference-specific exception or an added compatibility/settings path.",
+    "method_primary_source": {
+      "title": "Quantum ESPRESSO7.5 PW input documentation",
+      "url": "https://www.quantum-espresso.org/Doc/INPUT_PW.html#mixing_mode",
+      "local_version_matched_source": "/opt/qebuild/q-e-qe-7.5/PW/Doc/INPUT_PW.def",
+      "lines": "2145-2167",
+      "documented_meaning": "plain=charge density Broyden mixing; local-TF adds local-density-dependent Thomas-Fermi screening. Documentation recommends the latter for highly inhomogeneous systems; no measured-inhomogeneity or convergence guarantee is inferred for this tooling geometry."
+    },
+    "unchanged": ["two-atom geometry", "SG15 Ni18/H1 pseudos", "PBE and spin2", "FD0.002Ry", "20bands per spin", "60/240Ry cutoffs", "full2x2x2 k mesh", "conv_thr1e-11Ry", "electron_maxstep200"],
+    "acceptance": ["Actual fresh FD convergence at unchanged threshold", "Independent native XML/text complete-mesh and numerical-policy checks", "Reserved actual native process/resource observations", "Completed-boundary SIGKILL and identical-command recovery with exact scientific SHA/size/mtime preservation", "Public-cache/tamper audits and independent complete-boundary review"],
+    "mv_generation": "Distinct MV generation5 after the writer change. Successful MV generation4 and its eight exact public-cache artifacts plus source snapshots are preserved; no historical receipt is re-pinned.",
+    "failure_policy": "Preserve nonconvergence and terminal exit2; diagnose using actual native evidence before a materially different amendment. No blind identical cold retries."
+  },
+  "limits": ["Registered numerical experiment, not a promised convergence result or certified residual mechanism", "No stationary material, physical loss, coherence or nuclear license", "No live W1 runtime source, executable or specification changes"]
+}

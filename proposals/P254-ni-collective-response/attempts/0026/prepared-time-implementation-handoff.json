@@ -1,0 +1,118 @@
+{
+  "schema": "prepared-time-implementation-handoff/1",
+  "owner": "PreparedTimeConsumer26",
+  "issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "registration": "proposals/P254-ni-collective-response/attempts/0026/continuation-registration.json section B",
+  "status": "Complete new source supplied for Root integration and authorized first execution; no numerical success claimed",
+  "worker_execution": {
+    "scientific_imports": false,
+    "numerical_execution": false,
+    "tests_builds_formatters": false,
+    "old_oracle_replay": false,
+    "git_process_provider_mutations": false,
+    "allowed_operation": "Standard-library original-byte SHA256/count collection and installed distribution metadata only"
+  },
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_time_evolution.py",
+      "bytes": 13572,
+      "sha256": "07b58ccf59b74dfe21689c92a4acc6221ad84ebe2857d3c1043bf8b5d7ba88e0"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_time_observables.py",
+      "bytes": 3542,
+      "sha256": "fa65a400ebf40b7df79a61425c0203a120cdbb434696647d87a1db6c976af6fa"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/run_prepared_time_oracle.py",
+      "bytes": 16494,
+      "sha256": "aede89adc587c5e532139b720df6571a6fbb3da35baeb95047ce7e7faa5a280a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/prepared_time_fixture.py",
+      "bytes": 10853,
+      "sha256": "9485107aebf24981faef8b1e8cba9a3b23718e9d101578fea6686a7813b0f161"
+    }
+  ],
+  "settled_inputs_unchanged": [
+    "src/substrate_framework/prepared_reference.py",
+    "src/substrate_framework/prepared_factor_dynamics.py",
+    "src/substrate_framework/prepared_covariance_source.py",
+    "src/substrate_framework/physical_factor_preparation.py",
+    "src/substrate_framework/physical_bilinear_preparation.py",
+    "proposals/P254-ni-collective-response/attempts/0026/run_prepared_factor_oracle.py",
+    "proposals/P254-ni-collective-response/attempts/0026/run_material_dyad_oracle.py"
+  ],
+  "source_access": {
+    "settled_reports": [
+      "proposals/P254-ni-collective-response/attempts/0026/prepared-model-implementation-handoff.json",
+      "proposals/P254-ni-collective-response/attempts/0026/reference-preparation-grounding.json",
+      "proposals/P254-ni-collective-response/attempts/0026/action-dynamics-grounding.json",
+      "proposals/P254-ni-collective-response/attempts/0026/new-implementation-source-binding-001.json"
+    ],
+    "new_local_scipy_version": "1.11.4",
+    "new_local_scipy_original_bytes": [
+      {"path":"/usr/lib/python3/dist-packages/scipy/__init__.py","bytes":6530,"sha256":"5df3106bce68233cec43e84208135d8f18fb6e07d2770fbc157fce32bab28c50"},
+      {"path":"/usr/lib/python3/dist-packages/scipy/version.py","bytes":267,"sha256":"8afc707ee04b7dfd969b10c658101db562d01172c0501cf2e266398ef6337775"},
+      {"path":"/usr/lib/python3/dist-packages/scipy/integrate/_ivp/ivp.py","bytes":28723,"sha256":"7d6aa7e41dd7008ac422d4318229295d68a369d4636ede09bffb7d7781c5db0e"},
+      {"path":"/usr/lib/python3/dist-packages/scipy/integrate/_ivp/base.py","bytes":10295,"sha256":"32579ffdd8269f4c338c5c59037a016ed1eb420adf759c3ff24d662d83593f80"},
+      {"path":"/usr/lib/python3/dist-packages/scipy/integrate/_ivp/common.py","bytes":14772,"sha256":"b0591dec5b4865b22a250aafa96a200a117154b299a09139016b5658ba9ec18d"},
+      {"path":"/usr/lib/python3/dist-packages/scipy/integrate/_ivp/rk.py","bytes":22766,"sha256":"7c3f6a18010dc7e17611e68a903d24faa0ab755484d172fbea60ac2b925515a0"},
+      {"path":"/usr/lib/python3/dist-packages/scipy/integrate/_ivp/dop853_coefficients.py","bytes":7237,"sha256":"3ab62f5b41eee97eec3a1dfb154e7c80d9200bbeca56961c95ec2ffc04463001"}
+    ],
+    "runtime_admission": "Driver binds fresh local source/report bytes and distribution version before SciPy import/reference invocation; loaded scipy.__file__, solve_ivp source, DOP853 inherited step source and actual RK step source must match those pre-bound original bytes. Runtime source_access is included in the result. Root must preserve its existing broader source inventory/admission requirements."
+  },
+  "production_interfaces": {
+    "constructor": "PreparedTimeEvolution(model, mean: FactorMean, sources: iterable[OrderedSource], *, identity: dict, limits: TimeLimits, reality: RealityTolerance, initial_time=0.)",
+    "required_identity_keys": ["model", "preparation", "coordinates", "sources", "budget"],
+    "identity_contract": "All keys are nonempty caller-authorized strings; coordinates must equal model.reference.coordinate_identity. Caller supplies real source-byte/model/preparation/budget binding authority, not a name inferred by this generic engine. Oracle sources identity hashes its full source-access record.",
+    "limits": "TimeLimits(max_steps: nonnegative int, max_mean_calls: nonnegative int, max_tangent_calls: nonnegative int, max_seconds: positive finite float)",
+    "reality": "RealityTolerance(atol: nonnegative finite float, rtol: nonnegative finite float); no implicit tolerance. Oracle passes atol=1e-12 and rtol=1e-10.",
+    "boundary": "TimeBoundary(mean: FactorMean, sources: tuple[OrderedSource,...], time: float, completed_steps: int)",
+    "step": "evolution.step(dt: positive finite float) -> completed TimeBoundary",
+    "stream": "evolution.stream(*, dt, steps: nonnegative int) yields completed TimeBoundary only",
+    "counts": "evolution.counts has reserved_mean, executed_mean, reserved_tangent, executed_tangent. Invocation counters increment before a call, including an invocation that raises.",
+    "elapsed": "evolution.elapsed_seconds is cumulative live-owner monotonic wall time, including time between yielded steps. Restoration carries checkpoint elapsed time and starts a new live-owner clock; offline storage downtime is not charged.",
+    "checkpoint": "evolution.checkpoint() -> detached JSON-compatible {payload, sha256}; payload schema prepared-time-boundary/1 includes all full-row arrays, independent complex legs, source labels/authorities, completed step/time, identity, limits, reality, cumulative reservations/executions/time, reality diagnostics and failed_attempt marker.",
+    "restore": "PreparedTimeEvolution.restore(model, checkpoint, *, identity, limits, reality) -> usable boundary owner. All supplied contracts must equal serialized contracts; content SHA and cumulative counters are checked. No callable/model is serialized: downstream owner reconstructs the identical model under the bound source identities. The content digest detects accidental changes, not adversarial authenticity.",
+    "ownership": "Single owner; exposed boundary arrays are not mutated by the engine, and callers must not mutate them while used. Thread concurrency is not supported. Failure blocks further calls on that owner; explicitly restoring its retained completed boundary is the only continuation path. Failed reservations/stages are not implicitly retried.",
+    "source_parts": "OrderedSource electronic, ionic and cross retain INITIAL covariance-origin labels and ordering AB/BA/right identity/preparation authority. Unknown ionic/cross remain None through RK stages, readouts and checkpoint restoration; total is None unless complete. Complex ket and bra remain independent."
+  },
+  "rk4_and_memory": {
+    "method": "Classical four-stage RK4 with weights 1/6,1/3,1/3,1/6 and stage offsets 1/2,1/2,1. Parameterized positive dt; full rows/all canonical coordinates; no projection/clipping/Hermitization/adaptive history.",
+    "stage_work": "Exactly one model.evaluate_mean per stage, shared with every selected active source part. Exactly one model.tangent_rhs per active part per stage, using that same MeanEvaluation. Physical boundary diagnostics are separate explicit readout work and do not invoke either RHS.",
+    "atomic_reservation": "Before any stage: reserve all four mean and four times active-source-part tangent calls, and check step/time cap. Insufficient reservation changes neither counters nor boundary. Failed stage preserves the prior boundary and consumed reservation/execution counters. Deadline is checked before each invocation and before publication; no preemption inside a scientific callback is claimed.",
+    "real_codomain": "For both raw classical u-dot and p-dot, every stage checks abs(imag) <= atol + rtol*abs(real), finite values, retains peak/last raw imaginary diagnostics, and refuses an excess. Only admitted ionic derivatives become real. Raw physical coefficients, electronic frames, electronic RHS and covariance tangents are not modified. Nonfinite or zero-allowance excess diagnostics remain JSON-representable.",
+    "memory": "O(sum_s npw_s*rank_s + ndof) mean and O(active_parts*(sum_s 2*npw_s*rank_s + 2*ndof)) tangent storage, with constant-factor boundary/stage/RHS/weighted-accumulation work only. No PW-square production matrices, no all-step/full-state history. Checkpoint serialization is an explicitly requested additional full boundary copy. Diagnostics emit rank-sized Gram arrays only on request. Tiny finite oracle alone retains its small comparison histories."
+  },
+  "physical_readouts": {
+    "regional_number_probe": "regional_number_probe(model, mask, *, identity): real full-grid mask in [0,1], same region for each spin, actual physical coupling quadrature, held-density mean included, units electrons/cell.",
+    "force": "Reuse settled total_force_probe(model, direction, identity=...): all-coordinate physical electronic gradient, curvature, declared held/offset/support force terms; no new force interpretation.",
+    "physical_readout": "physical_readout(model, boundary, probes: name->PreparedProbe): time, completed step, probe identity/units, separate mean, per-source ordered connected electronic/ionic/cross/total/complete/scope/right/preparation fields.",
+    "stream_readouts": "stream_readouts(evolution, probes, *, dt, steps) yields compact physical records without retaining trajectory states.",
+    "diagnostics": "boundary_diagnostics(model, mean) explicitly computes raw energy, traces and rank-sized Grams. Oracle measures energy/trace/Gram drift and full finite original-density Pauli eigenvalues/excursion. Nothing is repaired or promised preserved.",
+    "connection_scope": "Cov(A(t), B(initial)) for AB and Cov(B(initial), A(t)) for BA. Not equal-time Cov(A(t),B(t)); no unimplemented two-time/equal-time covariance claim."
+  },
+  "oracle": {
+    "proposed_invocation": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 proposals/P254-ni-collective-response/attempts/0026/run_prepared_time_oracle.py --result proposals/P254-ni-collective-response/attempts/0026/prepared-time-oracle-001.json",
+    "launch_authority": "Root alone authorizes and runs under remaining original oracle allowance; this is not a launch grant. Result path must not already exist; publication uses exclusive creation, no overwrite or retry.",
+    "first_operations": "Independent SymPy exact eight RK order conditions through order four, classical RK stability polynomial, and noncommutative moving-frame/complete-original commutator identity. No old primitive oracle import or rerun.",
+    "fixture": "Explicit nonstationary synthetic one-ion/all-three-coordinate preparation; two mixed-feedback spin sectors, three original orbitals each, rank-two nonorthogonal physical frames, complete empty original complement, finite masses and nonzero declared density/force/held/support offsets. Complex non-Hermitian ordered right probe. Both product and constructive Bernoulli-occupation-conditioned displaced full-line Gaussian joint preparations, each AB and BA; electronic marginal stays independently quasifree.",
+    "initial_independence": "Literal 64-state occupation-bit CAR construction evaluates every complete original electronic source entry, canonical Gaussian covariance supplies ionic sources, and conditional Fock/Gaussian means supply nonzero joint cross sources. None is obtained from a production tangent RHS.",
+    "reference": "One complete original-basis density-matrix plus full linear-variation DOP853 solve, rtol=1e-12/atol=1e-13, interval [0,0.1], samples 0 through 0.1 on 33 points. Direct commutator/Hamiltonian and canonical equations are independent of production factor dynamics. Source/version bound before invocation.",
+    "production_trajectories": "One 16-step and one 32-step RK4 trajectory; full original reconstructed density/variation/ionic trajectories and physical force/number means plus separate connected parts compare at rtol=1e-8/atol=1e-10. Reference trace/energy checks, actual production energy/trace/Gram/Pauli drift records, time-resolved transported AB-minus-BA commutators, collective normalization mutation, missing-connection transport mutation, Euler-method sensitivity, and half-step error refinement are reported.",
+    "restoration": "Serialize 16-step trajectory boundary after step8 through actual JSON; restore exact source/model/coordinate/preparation/budget/limit/reality identity and consumed counts; execute remaining8 steps. Compare each reconstructed remaining full state exactly to uninterrupted trajectory and compare actual recomputed physical readouts. Additional recovery work is explicitly counted, not misreported as part of the single baseline16 trajectory.",
+    "nominal_call_counts_if_successful": {"mean":224,"tangent":2688,"explanation":"4*(16+32+8) mean; 12 active origin parts times the same stage count. The 8-step continuation is the required separate completed-boundary recovery consumer."},
+    "per_owner_contract": "max32 completed steps;128 mean;1536 tangent;90 live-owner seconds; no automatic retry. These internal guards do not replace Root's remaining112.34195009479299-second original outer oracle budget.",
+    "outputs": "Exclusive --result JSON includes success/failure and traceback, all symbolic/numeric checks and raw residuals, pre-invocation source access, reference solver invocation/nfev, time-resolved physical readouts/diagnostics, actual reservation/execution counts/reality residuals/elapsed, complete checkpoint and restored remaining readouts. Exit0 only if new checks pass."
+  },
+  "limits_and_required_root_actions": [
+    "No worker execution occurred; prospective mathematical and finite-time comparison claims remain unestablished until Root's positive new oracle result.",
+    "Root should run only this newly changed oracle once under the existing source/resource admission, not old passing primitive oracles.",
+    "Root owns complete code/source review, actual invocation and result intake. No shared scientific/control modules or sibling files were edited.",
+    "The synthetic finite benchmark is not material calibration, long-time convergence, symplectic integration, guaranteed Pauli/Gram/energy preservation, physical D/T/width determination or a whole-domain Ni/H result.",
+    "Material time use remains gated on successful actual material-map smoke and explicit physical preparation/offset/support/held-sector authority; none is fabricated here.",
+    "Checkpoint is a completed-state consumer contract, not Native resume, adaptive-history restoration, in-flight-stage replay, supervisor-crash recovery or an unbounded material checkpoint writer.",
+    "Observed source-byte/version metadata is recorded above; no performance, passing-test or successful-numerical-result claim is made in this immutable handoff."
+  ]
+}

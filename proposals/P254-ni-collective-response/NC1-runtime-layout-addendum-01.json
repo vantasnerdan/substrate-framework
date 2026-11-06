@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "id": "NC1-runtime-layout-addendum-01",
+  "registered_at": "2026-10-19T23:17:36.574Z",
+  "parent": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/NC1-runtime-prelaunch-amendment-01.json",
+  "scope": "Registered before adding the extracted raw-snapshot validator or running any repaired-source smoke; no physical or native-output change.",
+  "reason": "Settled attempt_evidence.py is469 lines and mixes durable boundary catalog/reuse decisions with raw native snapshot validation. Separate those responsibilities before testing/freezing.",
+  "layout": {
+    "runtime/attempt_evidence.py": "Own durable new/changed/completed-force catalog, frozen source/force-result authority, candidate invocation selection and complete reconciliation. Public AttemptEvidence API unchanged.",
+    "runtime/native_evidence.py": "New parent-owned NativeProof(contract,hash_file).verify(path,attempt,source,events) plus private task/resource/ELF/snapshot checks, extracted from the settled implementation; one raw snapshot authority.",
+    "runtime/evidence_io.py": "Move strict JSON object decoder and shared require guard here beside existing atomic JSON and binary-safe digest; migrate all call sites without aliases."
+  },
+  "integration_details": {
+    "task_gaps": "Retain structured gaps in discrete sample events, but only capture first-post-banner admission snapshot when stable main task and no task gaps were observed; a transient gap is not a foreign CPU violation and later clean observation may supply the first proof.",
+    "event_tails": "Unparseable unfinished event tail is retained and cannot silently establish absence of relevant violations. Fail that invocation proof closed. Fully parsed contextual failure of another attempt still does not invalidate an earlier completed force.",
+    "supervision": "Bounded stop and stream joins already integrated; retained-handle-only signal/reap semantics unchanged."
+  },
+  "verification": "After this extraction settles, actual owned subprocess/orphan/unrelated-sibling smoke, deterministic exposing attempt/cache/tamper/event-fragment/MPI-selection regressions, original failing-before comparison, actual immutable publisher/strict consumers/repeat/refusals, then complete independent re-review. No NC1 Native until clear source package plus actual resource release and explicit parent grant.",
+  "unchanged": "All original physical settings, models, seeds, native executables, source6/G10 artifacts and live W1 source/unit/optimizer. Full G1-G5 remain open."
+}

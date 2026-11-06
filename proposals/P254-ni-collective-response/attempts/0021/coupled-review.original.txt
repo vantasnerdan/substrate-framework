@@ -1,0 +1,107 @@
+# COMPLETE0021 scientific/code review
+
+**overall_correctness: correct**  
+**confidence: 0.94**
+
+**Complete findings array: empty — 0 findings.** No findings were raised earlier in this review and subsequently omitted.
+
+The reviewed implementation and saved evidence support the declared bounded, held-reference two-atom/two-cell first-moment engineering deliverable. I found no actionable, patch-introduced defect in the coupling signs, inertia, spectral branches, normalization, finite energy/covariance scope, or actual consumer composition. This verdict does not establish a stationary material model, physical loss or domain extent, equilibrium quantum noise, or conserved total energy for the actual PW trajectory.
+
+## Scope and source identification
+
+- Implementation commit: `b31d5505de425955cbbaba115602354591c5fa09`
+- Completed-result commit: `88efeefece1195192efddaea8d14347ed38603d9`
+- Reviewed all six requested modules in full, the three new oracle implementations, actual driver and checkpoint consumer, and relevant COMPLETE0021 admissions/results.
+- Consumed settled 0019/0020 admissions and the reused finite-fixture/comparator definitions where necessary. No old proof, Native calculation, or numerical production was replayed.
+- The unrelated working-tree changes shown by the initial diff were not treated as part of this deliverable.
+
+All paths below are relative to `/home/administrator/projects/substrate-ni-collective`.
+
+## Scientific and code conclusions
+
+| Area | Exact source ranges inspected | Conclusion |
+|---|---|---|
+| Coupling and retarded sign | `src/substrate_framework/inertial_fermion_dynamics.py:161–224`; `pw_coupled_dynamics.py:30–45` | Electronic forcing is physical `+g*u + K*n`; ionic force is `-Cfrozen*u - gradient`. Eliminating the electronic block gives `Cfrozen + Cel(z) - z²M`, not the opposite susceptibility or inertia sign. |
+| Both spectral branches | `pw_electronic_dynamics.py:57–128`; `pw_independent_response.py:31–80` | Plus-ket and conjugated-minus-ket amplitudes have the required opposite evolution signs. Their driven denominators are `z-gap_plus` and `-z-gap_minus`. Minus-drive and observable conjugations preserve complex linearity rather than imposing an unwanted reality condition. |
+| Occupations, spin and volume | `pw_electronic_dynamics.py:70–80,108–128`; `pw_transition_space.py:24–86`; `qe_pw_response_frames.py:197–244,295–388` | Occupation/k weights enter physical contractions, not amplitude evolution. Explicit spin channels introduce no extra factor two. Density includes `1/omega`; the ionic-gradient contraction does not acquire an erroneous density-volume factor. Physical FFT storage excludes padding. Complete target spectra and every representably nonzero FD source remain retained. |
+| Actual inertia | `inertial_fermion_dynamics.py:47–58`; `qe_ionic_mass.py:17–33`; `material_modes.py:13–23` | The consumer uses Native species masses and one-based `ityp`, then repeats Cartesian masses. `AMU_RY = AMU_SI/(2*m_e)` agrees with the original QE constants and dynamics source inspected; there is no additional factor two. |
+| Generic conserved energy | `inertial_fermion_dynamics.py:226–277` | The implemented electronic term is the unitary-orbit second variation, `-½ Σw Tr(H0[S,[S,rho0]])`, alongside ionic kinetic/frozen, electron-ion and density-interaction terms. Equal-population perturbations are rejected by the energy API rather than silently assigned a pseudoinverse energy. Unequal-population zero-energy-gap sectors remain permitted. Conservation is not advertised as positivity or equilibrium. |
+| Classical covariance | `inertial_fermion_dynamics.py:279–300` | Preparation is an explicitly supplied real tangent-coordinate covariance, propagated with the adjoint. It is correctly distinguished from coupled quantum Gibbs covariance, quasifree occupation noise and FDT-derived equilibrium noise. |
+| Weighted absolute tolerances | `pw_coupled_dynamics.py:47–65`; `attempts/0021/run_local_kick.py:47–50,156–159` | Electronic absolute scales are proportional to `1/sqrt(weighted occupation)` and are repeated for both real components. No amplitudes or transition blocks are removed. Exact-zero weights retain coordinates with finite, unrestrictive tolerance. Documentation correctly states that SciPy’s RMS norm is not a per-component error guarantee. |
+| Actual integration and q transform | `attempts/0021/run_local_kick.py:93–127,139–174`; `time_pilot_checkpoints.py:74–92` | Actual frames, the point-specific PBE kernel, independently supplied raw frozen curvature and actual masses reach the coupled RHS. Gamma and half-b1 are checked against the complete two-cell grid. The initial localized H-y kick is transformed without an atomic-position phase; reconstruction uses inverse-FFT normalization `1/2`. |
+| Actual energy claims | `pw_coupled_dynamics.py:67–77`; `run_local_kick.py:103–104`; saved result and root decision | Diagnostics are explicitly raw per-q ionic kinetic/frozen quadratic energy and instantaneous electronic power. Neither integrated work nor these mechanical terms are substituted for conserved actual total electronic/coupled energy. |
+
+### Cross-boundary routing
+
+I followed the new transition descriptors and outputs through their consumers:
+
+- Both branch descriptors are processed by electronic evolution and observable contraction.
+- `state_layout` covers both branches when assigning coupled-state tolerances.
+- `PWResponseValue.density` reaches the actual kernel, and its returned potential reaches electronic evolution.
+- `ionic_gradient` reaches the ionic momentum derivative with the negative mechanical-force sign.
+- The interleaved real representation reaches the actual `solve_ivp` call without discarding imaginary components.
+- Saved complete states feed the two-cell reconstruction.
+
+No newly introduced value was silently dropped or routed to a no-op.
+
+## Independent oracle evidence
+
+These are **saved results read and assessed against their source**, not checks executed during this review.
+
+| Receipt | Observed result |
+|---|---|
+| `attempts/0021/inertial-oracle-001.json` | 137 checks; passed; no failures. Largest recorded scaled comparison error: `2.380047048514974e-14`. |
+| `electronic-time-oracle-001.json` | 121 checks; agreement true; no failures/errors. Largest ordinary recorded maximum-absolute comparison error: `1.097918095648494e-14`. |
+| `shared-space-regression-001.json` | Gamma and directed-q agreement true; 12 and 10 ordinary cases respectively. Its seven intentional directed-q mutations are exposed. |
+| `composition-oracle-002.json` | All 16 checks passed. Largest recorded real-IVP/original-exponential scaled error: `1.502272812551844e-14`. |
+
+The independence is substantive: the generic oracle includes symbolic action/metric identities and independently assembled original-basis equations; the electronic oracle uses original-PW-basis commutators, literal Fourier contractions and independent time evolution. The composition oracle checks the actual composed class against the original-basis coupled equations and exercises the real/imaginary adapter.
+
+Inspected mutations cover force and inertia signs/factors, omitted coupling, cross-spin coupling, weights, minus-branch evolution/conjugation, FFT maps, volume, spin multiplicity, covariance adjoint and an erroneous Fourier atomic phase.
+
+`composition-oracle-001.json` is visibly truncated at the final Boolean serialization. It was **not** counted as a successful oracle; the completed `002` receipt supplies that evidence.
+
+## Actual completed evidence
+
+Inspected registration, source inventory, source-wave admission, launch admission, root decision, identity/allocation, result, telemetry, first-output admission, preparation/terminal checkpoint receipts, and all ten sample records embedded in the result.
+
+The saved evidence records:
+
+- Gamma and half-b1 samples at `tau = 0, 0.25, 0.5, 0.75, 1`.
+- Complete complex state sizes of **234,840** and **234,572**.
+- **236 RHS actions per sector**.
+- First nonzero-time output at **97.066745 seconds**, within 150 seconds.
+- Completion at **411.863441 seconds**, without extending the registered allocation.
+- Actual Cartesian masses: three entries each of **53495.76153847361** and **918.7357970535257**.
+- Full-FD reference occupancy **19 electrons**, explicit-spin quadrature sums **1 and 1**, and a separately reported discrepancy from the saved SCF density.
+
+The reference discrepancy remains disclosed; it is not converted into a stationary-background or material-accuracy claim.
+
+## Verification boundaries
+
+- **Performed:** read-only patch/source inspection, consumer tracing, mathematical sign/normalization review, and saved JSON evidence inspection.
+- **Not performed:** builds, tests, formatters, oracle execution, integration/recovery smoke, Native execution, or new numerical production.
+- **Binary verification:** none. The reader rejected `two-cell-trajectory.npz` as non-UTF-8 binary; I did not decode its arrays or checkpoint NPZ arrays. Consequently, this report does not independently certify NPZ contents, reconstruction equality, or binary integrity.
+- **Hash verification:** no hashes were recomputed. Bindings inspected in admissions, oracle receipts and actual identity are receipt evidence, not independently rehashed bytes.
+- Physical loss, domain extent, equilibrium quantum covariance, actual total electronic energy, stationary large-material calibration and nuclear claims remain outside this clearance.
+
+## Report serialization schema
+
+The following is the requested JSON-report field specification, expressed without emitting a JSON payload:
+
+| Required field | Type / constraint |
+|---|---|
+| `schema_version` | Integer; value 1 |
+| `source_commit`, `result_commit`, `scope` | Strings |
+| `overall_correctness` | String enum: `correct`, `incorrect` |
+| `explanation` | String; 1–3 verdict-summary sentences |
+| `confidence` | Number in `[0,1]` |
+| `findings` | Complete array of finding objects; **this report has zero entries** |
+| `evidence_inspected` | Array of objects containing path, inspected ranges/selector, evidence kind and verification status |
+| `unverified_boundaries` | Array of strings |
+| `original_report_utf8_bytes` | Nonnegative integer or null |
+| `original_report_sha256` | 64-character hexadecimal string or null |
+
+Each finding object requires `title`, `body`, `priority`, `confidence`, `file_path`, `line_start` and `line_end`. Priority is 0–3; the line range must overlap the patch and contain at most ten lines. No partial or incremental findings collection may replace the complete array.
+
+**Original final-report UTF-8 byte count and SHA256:** not computed; both serialization fields are null. This response was not materialized or hashed, and no digest is inferred or fabricated.

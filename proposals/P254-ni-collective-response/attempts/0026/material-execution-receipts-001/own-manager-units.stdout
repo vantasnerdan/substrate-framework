@@ -1,0 +1,70 @@
+UNIT                                                            LOAD      ACTIVE   SUB     DESCRIPTION
+c5-fermi-oracle-checkpoint-g2.service                           loaded    failed   failed  /usr/bin/taskset -c 5 /home/administrator/projects/substrate-framework/.venv/bin/python -u proposals/P254-ni-collective-response/attempts/0007/run_oracle.py --manifest /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/source-manifest-generation0002.json --interrupt-after-state
+c5-fermi-oracle-checkpoint.service                              loaded    failed   failed  /usr/bin/taskset -c 5 /home/administrator/projects/substrate-framework/.venv/bin/python -u proposals/P254-ni-collective-response/attempts/0007/run_oracle.py --interrupt-after-state
+c5-fermi-oracle-recovery-g2.service                             loaded    failed   failed  /usr/bin/taskset -c 5 /home/administrator/projects/substrate-framework/.venv/bin/python -u proposals/P254-ni-collective-response/attempts/0007/run_oracle.py --manifest /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/source-manifest-generation0002.json
+c5-fermi-oracle-recovery.service                                loaded    failed   failed  /usr/bin/taskset -c 5 /home/administrator/projects/substrate-framework/.venv/bin/python -u proposals/P254-ni-collective-response/attempts/0007/run_oracle.py
+c5-nc-scf-generation3.service                                   loaded    failed   failed  Campaign5 mesh-audited runtime-bound SG15 NC NiH FD20 SCF and recovery
+c5-nc-scf-generation4.service                                   loaded    failed   failed  Campaign5 mesh-audited runtime-bound SG15 NC NiH FD20 SCF and recovery
+dbus.service                                                    loaded    active   running D-Bus User Message Bus
+dft-c5-checkpoint-commits.service                               loaded    failed   failed  Campaign5 checkpoint output commitment, independent compute cgroup
+dft-c5-gamma-cache-before.service                               loaded    failed   failed  Campaign5 actual PH cache boundary before
+dft-c5-gamma-species-proof-001.service                          loaded    failed   failed  /usr/bin/taskset -c 7 /home/administrator/projects/catalyst-dft/.venv/bin/python -u /home/administrator/projects/catalyst-collective/native/metadata-phonon/run_proof.py
+dft-c5-gamma-species-proof-002.service                          loaded    failed   failed  /usr/bin/taskset -c 7 /home/administrator/projects/catalyst-dft/.venv/bin/python -u /home/administrator/projects/catalyst-collective/native/metadata-phonon/run_proof_v2.py
+dft-c5-loaded-force-probes.service                              loaded    failed   failed  Campaign5 loaded native cold force probes serial checkpoint queue
+dft-c5-material.service                                         loaded    inactive dead    Campaign5 fully mobile stationary Ni/H structures
+dft-c5-metric-interrupt-0005.service                            loaded    failed   failed  P254 explicit checkpoint interruption smoke CPU5
+dft-c5-nc1-2-gamma.service                                      loaded    failed   failed  P254 NC1-2 serial full-mobile SG15 Gamma (new admission and exact grant required)
+dft-c5-nc1-context-material-001.service                         not-found failed   failed  dft-c5-nc1-context-material-001.service
+dft-c5-nc1-short-scratch-smoke-001.service                      loaded    failed   failed  P254 NC1 relative-scratch MPI5 nonstationary engineering smoke only
+dft-c5-w1-beta030-002.service                                   loaded    failed   failed  P254 W1 stable-release beta0.30 one-shot; explicit context/native root request required
+dft-c5-w1-empty-gamma-single-003.service                        loaded    failed   failed  W1 EMPTY Ni31 full93 Gamma PH1 CPU11; explicit Root only
+dft-c5-w1-empty-gamma-single-005.service                        loaded    active   running W1 EMPTY Ni31 full93 Gamma PH1 CPU11; explicit Root only
+dft-c5-w1-loaded-gamma-001.service                              loaded    active   running P254 admitted W1 loaded baseline full111 Gamma; explicit Root dispatch only
+dft-c5-w1-pristine-gamma-single-001.service                     loaded    failed   failed  W1 pristine Ni32 full96 Gamma PH1 CPU5; explicit Root only
+dft-c5-w1-pristine-gamma-single-002.service                     loaded    failed   failed  W1 pristine Ni32 full96 Gamma PH1 CPU5; explicit Root only
+dft-c5-w1-pristine-gamma-single-003.service                     loaded    active   running W1 pristine Ni32 full96 Gamma PH1 CPU5; explicit Root only
+dft-c5-w1-seeded-optimizer-001.service                          loaded    failed   failed  P254 distinct private003 seeded bounded optimizer; explicit Root dispatch only
+dft-c5-w1-seeded-optimizer-002.service                          loaded    failed   failed  P254 distinct private003 seeded bounded optimizer; explicit Root dispatch only
+dft-c5-w1-seeded-optimizer-003.service                          loaded    failed   failed  P254 distinct private003 seeded bounded optimizer; explicit Root dispatch only
+dft-c5-w1-seeded-optimizer-004.service                          loaded    failed   failed  P254 distinct private003 seeded bounded optimizer; explicit Root dispatch only
+dft-d1-watch.service                                            loaded    inactive dead    Campaign-4 watchdog (stuck detection, one-shot requeue, notify)
+dft-d1.service                                                  loaded    inactive dead    Campaign-4 dd-screening queue (self-healing FIFO, 2x6 cores)
+dft-eprelax.service                                             loaded    failed   failed  /usr/bin/mpirun --allow-run-as-root --mca btl self,vader -np 4 /home/administrator/projects/catalyst-dft/.venv/bin/gpaw python ep_relax.py
+dft-gate-envrefresh.service                                     loaded    inactive dead    One-shot: restart NEB gate onto pinned-BLAS env at step boundary
+dft-gate-escape.service                                         loaded    failed   failed  Campaign-3 NEB escape gate (bulk n6 vacancy escape, serial neb_run2, resume-capable)
+dft-gate.service                                                loaded    inactive dead    Campaign-3 NEB validation gate (serial neb_run2, resume-capable)
+dft-notify@dft-c5-nc1-2-gamma.service.service                   loaded    failed   failed  DFT failure email for dft-c5-nc1-2-gamma.service (journal tail via notify.py)
+dft-notify@dft-d1-watch.service.service                         loaded    inactive dead    DFT failure email for dft-d1-watch.service (journal tail via notify.py)
+dft-notify@dft-d1.service.service                               loaded    failed   failed  DFT failure email for dft-d1.service (journal tail via notify.py)
+dft-notify@dft-gate-escape.service.service                      loaded    inactive dead    DFT failure email for dft-gate-escape.service (journal tail via notify.py)
+dft-notify@dft-gate.service.service                             loaded    failed   failed  DFT failure email for dft-gate.service (journal tail via notify.py)
+dft-notify@dft-rung075.service.service                          loaded    inactive dead    DFT failure email for dft-rung075.service (journal tail via notify.py)
+dft-rung075.service                                             loaded    inactive dead    Campaign-3 cvg075_subocta rung chain (relax then SP, resume-capable)
+dft-watchdog.service                                            loaded    inactive dead    Campaign-3 progress watchdog (stale artifacts, crash loops, git lag, disk, boot mail)
+dirmngr.service                                                 loaded    inactive dead    GnuPG network certificate management daemon
+email-monitor.service                                           loaded    inactive dead    IMAP email monitor with herdr session injection
+gpg-agent.service                                               loaded    active   running GnuPG cryptographic agent and passphrase cache
+herdr-ember-fleet-dock.service                                  loaded    active   running Herdr Ember Fleet dock
+keyboxd.service                                                 loaded    inactive dead    GnuPG public key management service
+launchpadlib-cache-clean.service                                loaded    inactive dead    Clean up old files in the Launchpadlib cache
+p254-fermi-gauge-0010-v1.service                                loaded    active   exited  P254 exact explicit energy-gauge oracle0010
+p254-force-print-0009-v1.service                                loaded    active   exited  P254 bounded force-print enclosure correction0009
+p254-prepared-noise-0023.service                                loaded    failed   failed  P254 prepared quantum electronic fluctuation input
+p254-w1-force-sensitivity-0012-g001-1792455075679701675.service loaded    failed   failed  /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-001
+p254-w1-force-sensitivity-0012-g002-1792455320665336808.service loaded    failed   failed  /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-002
+p254-w1-force-sensitivity-0012-g003-1792455448469668071.service loaded    failed   failed  /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-003
+p254-w1-force-sensitivity-0012-g004-1792455491398080162.service loaded    failed   failed  /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-004
+p254-w1-force-sensitivity-0012-g005-1792455560647432812.service loaded    active   exited  /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-005
+p254-w1-force-sensitivity-0012-g006-1792455659257696606.service loaded    active   exited  /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-006
+p254-w1-force-sensitivity-0012-g007-1792456746267019256.service loaded    active   exited  /home/administrator/projects/substrate-framework/.venv/bin/python -B /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/run_oracle.py --generation /home/administrator/projects/substrate-force-sensitivity/proposals/P254-ni-collective-response/attempts/0012/generation-007
+p254-w1-primary-boundary-0008-v1.service                        loaded    active   exited  /home/administrator/projects/substrate-framework/.venv/bin/python /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0008/run_oracle.py
+pk-debconf-helper.service                                       loaded    inactive dead    debconf communication service
+report-web.service                                              loaded    active   running Ni-lattice report hub (loopback 8090, auth at pangolin layer)
+snapd.session-agent.service                                     loaded    inactive dead    snapd user session agent
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+62 loaded units listed.
+To show all installed unit files use 'systemctl list-unit-files'.

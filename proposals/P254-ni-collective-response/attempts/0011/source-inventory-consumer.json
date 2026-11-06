@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-10-19T20:03:21.874Z",
+  "scope": "Metadata syntax and required source-row structure only; observed count is not an acceptance assertion or science/native license.",
+  "argv": [
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "-c",
+    "import json,sys,yaml\nfrom pathlib import Path\ndoc=yaml.safe_load(Path(sys.argv[1]).read_text())\nrows=doc['source_inventory']\nif not isinstance(rows,list) or any(not isinstance(row,dict) or not {'source','access','extracted'} <= row.keys() for row in rows):\n    raise ValueError('Invalid source inventory consumer contract')\nprint(json.dumps({'source_inventory_rows':len(rows),'scope':'Changed YAML syntax and required source-row keys only; count is observed, not an acceptance assertion.'}))\n",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/proposal.yaml"
+  ],
+  "cwd": "/home/administrator/projects/substrate-ni-collective",
+  "exit": 0,
+  "stdout": "{\"source_inventory_rows\": 23, \"scope\": \"Changed YAML syntax and required source-row keys only; count is observed, not an acceptance assertion.\"}\n",
+  "stderr": "",
+  "first_invocation": {
+    "argv": [
+      "/home/administrator/projects/substrate-framework/.venv/bin/python",
+      "-c",
+      "import json,sys,yaml\nfrom pathlib import Path\ndoc=yaml.safe_load(Path(sys.argv[1]).read_text())\nrows=doc['source_inventory']\nif not isinstance(rows,list) or any(not isinstance(row,dict) or not {'source','access','extracted'} <= row.keys() for row in rows):\n    raise ValueError('Invalid source inventory consumer contract')\nprint(json.dumps({'source_inventory_rows':len(rows),'scope':'Changed YAML syntax and required source-row keys only; count is observed, not an acceptance assertion.'}))\n"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nIndexError: list index out of range\n",
+    "cause": "Controller omitted the actual script required sys.argv[1] source-inventory path; failed before opening YAML. Corrected only invocation, not consumer or source data.",
+    "preserved_in": "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/tracker-frontier-2026-10-19T20-02-38.303Z.json"
+  }
+}

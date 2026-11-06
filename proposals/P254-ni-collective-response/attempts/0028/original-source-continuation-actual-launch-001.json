@@ -1,0 +1,68 @@
+{
+  "schema": "P254-original-source-continuation-actual-launch-v1",
+  "actual_utc": "2026-10-31T07:16:22.835777+00:00",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-232.json",
+    "bytes": "2278",
+    "sha256": "a549326f39fee747e1ff4cd0b638d29a01d7cfa09204216b07cbbebf1d7692d5"
+  },
+  "allocation": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/original-source-cumulative-allocation-001.json",
+    "bytes": "1230",
+    "sha256": "ff6b151db9b1b82d06a8aab86e64be539152267c473b368684cb0180bfef3d36"
+  },
+  "argv": [
+    "systemd-run",
+    "--user",
+    "--unit=p254-a28-original-source-continuation-001.service",
+    "--working-directory=/home/administrator/projects/substrate-ni-collective",
+    "--property=CPUAffinity=6 7 8 9 10",
+    "--property=MemoryHigh=17179869184",
+    "--property=MemoryMax=19327352832",
+    "--property=MemorySwapMax=0",
+    "--property=LimitNOFILE=8192",
+    "--property=Nice=0",
+    "--property=KillMode=mixed",
+    "--property=Restart=no",
+    "--property=TimeoutStopSec=15s",
+    "--property=RuntimeMaxSec=21315s",
+    "--property=ExecStopPost=/usr/bin/python3 -c 'import os,json;from pathlib import Path;r=os.environ.get('\"'\"'SERVICE_RESULT'\"'\"','\"'\"'unknown'\"'\"');e=os.environ.get('\"'\"'EXIT_STATUS'\"'\"','\"'\"'unknown'\"'\"');tag='\"'\"'dft-hung'\"'\"' if r in ('\"'\"'timeout'\"'\"','\"'\"'watchdog'\"'\"') else '\"'\"'dft-done'\"'\"' if r=='\"'\"'success'\"'\"' and e=='\"'\"'0'\"'\"' else '\"'\"'dft-fail'\"'\"';p=Path('\"'\"'/var/tmp/p254-a28-loaded-raw-mixed-shared-003'\"'\"')/'\"'\"'continuation-unit-outcomes'\"'\"';p.mkdir(exist_ok=True);v=dict(unit='\"'\"'p254-a28-original-source-continuation-001.service'\"'\"',invocation=os.environ.get('\"'\"'INVOCATION_ID'\"'\"'),service_result=r,exit_code=os.environ.get('\"'\"'EXIT_CODE'\"'\"'),exit_status=e,tag=tag,scientific_acceptance_claimed=False);f=p/(str(v['\"'\"'invocation'\"'\"'])+'\"'\"'.json'\"'\"');f.write_text(json.dumps(v,indent=2)+chr(10));print('\"'\"'['\"'\"'+tag+'\"'\"']'\"'\"',json.dumps(v),flush=True)'",
+    "/usr/bin/env",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "BLIS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "PYTHONUNBUFFERED=1",
+    "PYTHONPATH=/home/administrator/.cache/dft/p254-a28-runtime:/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+    "/usr/bin/python3",
+    "/home/administrator/projects/catalyst-collective/runs/2026-10-19_collective-response/owner-frontiers/p254-original-source-continuation-20261031/run_original_mixed_continuation.py",
+    "--producer",
+    "/var/tmp/p254-a28-loaded-raw-mixed-shared-003",
+    "--producer-owner-sha256",
+    "c543177271dc775d91e71cbba6253be99de2b0448ef9c7639c4097af49b9ae25",
+    "--allocation",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/original-source-cumulative-allocation-001.json",
+    "--allocation-sha256",
+    "ff6b151db9b1b82d06a8aab86e64be539152267c473b368684cb0180bfef3d36",
+    "--output",
+    "/var/tmp/p254-a28-loaded-raw-mixed-shared-003/continuation-result-001.json"
+  ],
+  "launch_result": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Running as unit: p254-a28-original-source-continuation-001.service; invocation ID: b34eb20d36144c63aaee17f0a8a6b2b6\n"
+  },
+  "actual_first_unit": {
+    "exit": 0,
+    "stdout": "Restart=no\nTimeoutStopUSec=15s\nRuntimeMaxUSec=5h 55min 15s\nMainPID=2480721\nResult=success\nNRestarts=0\nExecMainStartTimestamp=Sat 2026-10-31 07:16:22 UTC\nControlGroup=/user.slice/user-1000.slice/user@1000.service/app.slice/p254-a28-original-source-continuation-001.service\nMemoryHigh=17179869184\nMemoryMax=19327352832\nMemorySwapMax=0\nLimitNOFILE=8192\nLimitNOFILESoft=8192\nCPUAffinity=6-10\nKillMode=mixed\nActiveState=active\nSubState=running\nInvocationID=b34eb20d36144c63aaee17f0a8a6b2b6\n",
+    "stderr": ""
+  },
+  "visibility": {
+    "tab": "w1:t42",
+    "pane": "w1:p42"
+  },
+  "cumulative_deadline_unix": 1793452283.6695175,
+  "manager_seconds": 21315,
+  "scope": "Actual service activation; not proof of completed Native startup, cache recovery or physical progress yet. Original frozen source/owner/start/ledger/cache remain unchanged; all non-time caps retained."
+}

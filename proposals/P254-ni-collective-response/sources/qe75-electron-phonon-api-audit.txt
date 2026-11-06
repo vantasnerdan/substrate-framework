@@ -1,0 +1,331 @@
+# QE7.5 PH native electron–phonon source audit
+
+## Scope and evidence status
+
+Read-only inspection of `/opt/qebuild/q-e-qe-7.5`. No code, inputs, outputs, jobs, Git state, or external messages were modified; no imports, programs, tests, simulations, builds, or formatters were run. Findings below are source facts unless explicitly marked **[INFERENCE]** or **candidate identity**. Primary papers were not acquired/read in this assignment: the references listed below are pointers actually present in inspected code/docs, not claims that their contents were independently verified.
+
+All shortened source paths below are relative to that QE root.
+
+## 1. Supported native path and reachable restrictions
+
+**There is no global collinear-LSDA/ultrasoft rejection on the ordinary native PH elphel path inspected here.** This is stronger than absence of a single error string:
+
+- `PW/src/set_spin_vars.f90:9–55` explicitly maps LSDA to `npol=1`, `nspin=nspin_mag=nspin_lsda=2`.
+- `LR_Modules/setup_nscf.f90:148–174` explicitly calls `set_kup_and_kdw` for LSDA, rather than rejecting it.
+- `PHonon/PH/elphon.f90:441–450` chooses `current_spin=isk(ikk)` for every initial k state.
+- `LR_Modules/apply_dpot_mod.f90:138–165` applies the corresponding spin component of the induced local potential; `LR_Modules/adddvscf.f90:90–132` uses the corresponding spin component of ultrasoft `int3`.
+- `PHonon/PH/dvqpsi_us_only.f90:91–114` selects spin and builds the energy-dependent ultrasoft nonlocal operator for every initial band.
+- `elphon.f90:395–396,560–606` constructs all-band complex matrices and writes them before any linewidth reduction.
+- The explicit spin/USPP restriction-string audit of `PHonon/PH/*.f90` and `LR_Modules/*.f90` found the restrictions below, not an additional global LSDA electron–phonon prohibition.
+
+This establishes implemented source support, **not numerical validation for the particular Ni/H structure, pseudopotentials, mesh, or installed executable**.
+
+### Reachability table
+
+| Path | Source-level status for collinear spin2 metal + GBRV USPP | Exact distinguishing facts |
+|---|---|---|
+| Ordinary `electron_phonon='simple'` | Implemented; no spin2/USPP prohibition found | Raw `elphel` matrices plus double-delta mode summaries. `phq_readin.f90:433–441`; `do_phonon.f90:130–148`. |
+| `electron_phonon='epa'` producer | Implemented; no spin2/USPP prohibition found | Same ordinary all-band vertex producer; writes full complex, unaveraged `prefix.epa.k`. `phq_readin.f90:442–444`; `elphon.f90:1738–1930`. |
+| `electron_phonon='interpolated'` | Implemented with explicit LSDA handling | Interpolates products of matrix elements over electronic k, **not** dvscf Fourier interpolation. Requires dense `a2Fsave`. `elphon.f90:839–936,977–1049`. |
+| `lambda_tetra` | Implemented with explicit spin2 handling | Forces `trans=.false.`; tetra occupations required; double-delta and automatically selected Fermi-surface band window. `phq_readin.f90:462–465,968–972`; `elph_tetra_mod.f90:294–310,426–429`. |
+| `gamma_tetra` | Implemented with explicit spin2 handling | Forces `trans=.false.`; retains phonon energy in transition delta, but only mode-on-shell summaries and an automatically FS-crossing band window. `phq_readin.f90:466–469`; `elph_tetra_mod.f90:758–780,1008–1046,1197–1253`. |
+| `electron_phonon='ahc'` | **Blocked for installed USPP**, irrespective of possible spin wording | `phq_readin.f90:782–787` errors for `okvan`; magnetic guard is written in terms of `domag`, which is not a synonym for collinear `lsda`. Tempting Cartesian/all-band AHC exports do not establish a supported GBRV path. |
+| `ldvscf_interpolate` / `dvscf_q2r` | **Blocked for LSDA** | `dvscf_interpolate.f90:253–257`; `dvscf_q2r.f90:309–311`. Do not transfer these errors to ordinary `elphel`. |
+| `electron_phonon='Wannier'` | Separate native EPIq/Wannier-oriented branch, not ordinary `el_ph_mat` export | Exact capitalized option selects `elph_mat`, forces `trans=.false.`, requires a band window and one pool. Uses rotated Cartesian potentials and stored real-space wavefunctions. `phq_readin.f90:445–448,494–502,748–750,826–834`; `openfilq.f90:118–125`; `ep_matrix_element_wannier.f90:343–526`. Not needed to obtain the ordinary raw XML/EPA matrices. |
+| Raman / frequency-dependent electric-field code | Separate branches with LSDA/USPP restrictions | E.g. `raman.f90:26–30`, `solve_e2.f90:81–82`, `solve_e_fpol.f90:96`. They are not evidence against the ordinary metal displacement/electron–phonon branch. |
+
+Other reachable ordinary-PH/electron–phonon restrictions:
+
+- Ground-state `gamma_only` storage is rejected: `phq_readin.f90:757–758`. A general-k storage calculation containing a Gamma point is a different matter.
+- Hubbard-U electron–phonon is explicitly rejected at `773–774`, despite unreachable partial Hubbard implementation inside `elphel`. Do not infer support from those terms.
+- Magnetic spin–orbit electron–phonon is rejected at `819–820`.
+- `nimage>1` is rejected for non-AHC electron–phonon at `836–837`; ordinary pools do have collect/distribute support.
+- Constrained magnetization `i_cons/=0` is rejected at `850–852`; two Fermi energies in a metal at `854–856`; arbitrary fixed occupations at `927–928`; `twochem` electron–phonon at `956`.
+- Meta-GGA and hybrid phonons are rejected at `795–799`; these are distinct from spin-PBE.
+- A `vc-relax` restart with `lmovecell` is rejected at `822–823`. This audit does not inspect or alter the frozen W1 relaxation.
+- Electron–phonon requires a metal occupation flag except specialized exceptions, and a nonblank `fildvscf` unless Fourier interpolation is selected: `930–936`.
+- Gamma–Gamma tricks are incompatible with electron–phonon: `900–925`.
+- Metallic macroscopic electric-field response is rejected at `957–958`; displacement electron–phonon does not require that response.
+- Tetrahedron DFPT does not support Bloechl-corrected `tetra_type=0`: `968–972`; `LR_Modules/setup_nbnd_occ.f90:73–76` permits optimized or linear tetrahedra.
+
+`elph`, `elph_mat`, and `el_ph_mat` are internal flags/arrays, not interchangeable user options. `phq_readin.f90:119–130,433–484` provides the input/dispatch contract. The generated public `INPUT_PH.txt:337–386` omits some source-recognized options (`prt`, `Wannier`, etc.).
+
+## 2. What the raw vertex actually is
+
+Use initial state `i=(n,k,s)`, final state `j=(m,k+q,s)`, and displacement pattern `p`. The source-informed operator identification is:
+
+`D^p_ji(k,q) = <psi_j | partial_p H_SCF − epsilon_i partial_p S | psi_i>`.
+
+For norm-conserving potentials `S=1`, this reduces to the statically screened Hamiltonian derivative. For ultrasoft potentials the **initial-state energy** is essential. The short comment `dV_SCF/du` at `elphon.f90:319–322` does not expose the whole ultrasoft convention.
+
+### Assembly trace
+
+1. `solve_linter.f90:184–236` computes the bare displacement RHS and stores it in `iubar` **before** the iterative response solve. It is not a conduction-projected matrix-element export.
+2. `dvqpsi_us.f90:10–19,109–198` computes the local pseudopotential derivative, then the nonlocal contribution from `dvqpsi_us_only` for all bands.
+3. `dvqpsi_us_only.f90:104–114` calls `compute_deff(deff,et(ibnd,ikk))`. `PW/src/compute_deff.f90:32–42` defines `deff = deeq(:,:,:,current_spin) − et*qq_at` for ultrasoft/PAW. Projector-derivative terms and `int1`/`int2` terms enter at `dvqpsi_us_only.f90:116–200`; the beta and momentum-times-beta contractions follow at `205–255`.
+4. `dvanqq.f90:10–23` documents `int1` and `int2` as augmentation-function derivatives/integrals with Veff/Vloc, tied to Dal Corso Eq. B20/B21. Thus even the routine called “bare” is not simply a Coulomb point-charge matrix element.
+5. `dfpt_kernels.f90:407–422` builds the induced Hartree/XC response from the self-consistent density. `LR_Modules/dv_of_drho.f90:17–46,72–94` explicitly describes Hartree+XC and sums up/down density for Hartree. This is coupled charge/longitudinal-spin **static** response, not independent spin channels for the screening calculation.
+6. Converged induced potentials are written only under `IF(convt)` at `solve_linter.f90:265–301`; the `elphel` call is there too.
+7. `elphel`, `elphon.f90:478–545`, reads/rebuilds the bare RHS, adds `apply_dpot_bands` for induced local potential, and adds ultrasoft `adddvscf`.
+8. `newdq.f90:91–126` computes `int3` from the induced potential and augmentation Q functions, with the explicit cell-volume factor `omega`; `adddvscf.f90:28–34,90–132` projects it through beta overlaps and adds it to the RHS.
+9. `elphon.f90:560–606` takes `<evq|dvpsi>` with `ZGEMM('C','N',...)`, sums distributed plane-wave contributions, and stores the complex matrices. First band index is final `m`; second is initial `n`.
+
+**Classification:** raw matrices are self-consistently statically screened, include nonlocal pseudopotential/projector terms, augmentation response and overlap-energy corrections, and are displacement-pattern-resolved. They are **not** bare ionic vertices, not merely the induced local `fildvscf`, not restricted to equal electronic energies in their ordinary producer, not normal-mode projected, and not yet multiplied by zero-point amplitudes.
+
+The ordinary `fildvscf` written by `solve_linter` is the **induced HXC part** used by this assembly. The later routine rebuilds the ionic and ultrasoft operator pieces. A saved local dielectric matrix or saved local potential alone is not this mixed vertex.
+
+### All-band access
+
+`elphon.f90:382–391` selects `1:nbnd` on both band axes whenever `elph_tetra==0` and not AHC. Thus ordinary `simple`, `interpolated`, `epa`, and `prt` matrix construction is not a Fermi-surface filter. `elph_nbnd_min/max` do **not** turn ordinary native XML/EPA into a different all-band window. `nbnd` is inherited from the native electronic save/NSCF state; a finite saved band basis is not completeness in the mathematical infinite-band sense.
+
+DFPT itself has occupied-plus-smearing-tail selection and may warn “Possibly too few bands”; see `LR_Modules/setup_nbnd_occ.f90:39–76`. That is separate from the output vertex band range.
+
+## 3. Native outputs: raw data already exist
+
+### A. Ordinary XML checkpoint: `elph.iq.irr.xml`
+
+`elphon.f90:598–607` writes this for ordinary non-tetra, non-AHC `elphel` calculations. Pool collection is implemented by `el_ph_collect.f90:10–62`.
+
+`ph_restart.f90:297–332` writes:
+
+- `DONE_ELPH`;
+- `NUMBER_OF_K = nksqtot` (includes the explicit spin-labelled list);
+- `NUMBER_OF_BANDS = nbnd`;
+- per calculated initial k: `COORDINATES_XK`;
+- per perturbation within the irrep: a **complex `nbnd × nbnd` `PARTIAL_ELPH`**.
+
+Filename is `tmp_dir_ph/prefix.phsave/elph.iq.irr.xml` (`ph_restart.f90:1319–1354`), ordinarily under `outdir/_ph0/`.
+
+The XML is **not a self-contained scientifically typed export**: it does not carry final k, spin tags, k/q weights, eigenvalues, EF, units, a separate dS, pseudopotential provenance, or electronic gauge fingerprints. It must be joined to the matching patterns/control/electronic state, not parsed as an isolated physical coupling table.
+
+Pattern files are `patterns.iq.xml`; their exact irrep/perturbation ordering and `DISPLACEMENT_PATTERN=u(:,imode)` are written at `ph_restart.f90:224–267`. `control_ph.xml` carries q coordinates and their `2 pi / a` unit tag (`410–433`). Concatenate irrep perturbations using `imode0=sum_previous npert`, exactly as the producer/recovery code does.
+
+### B. Documented `electron_phonon='epa'`: `prefix.epa.k`
+
+**The producer is useful even without executing `epa.x` or adopting an EPA approximation.** `INPUT_PH.txt:364–370` documents this option. `do_phonon.f90:147–148` calls `elphfil_epa`, and `elphon.f90:1914–1915` writes the unchanged full complex `el_ph_mat_collect` tensor.
+
+The Fortran unformatted sequential payload contains:
+
+- first-q header: dimensions, nspin, all q, q weights, mesh/offsets, symmetry flags and operations, cell/lattice, cutoffs, FFT dimensions, atom types and positions (`1813–1840`);
+- per-q: little-group data, npert, pattern matrix `u`, symmetry/rotation information (`1873–1902`);
+- full electronic k list, `wk`, **both initial and final k eigenvalues in the paired list**, weighted `wg`, `isk`, k/k+q index maps (`1903–1910`);
+- q phases `eigqts`, phonon `w2`, mass-scaled `dyn`, and every complex band/pattern matrix (`1911–1915`).
+
+The first index is fastest, following Fortran ordering. Header `EPA-Complex` is created at `1818`; there is no physical-unit/schema version layer. Binary record markers, integer/logical representation, endianness and compiler conventions are unresolved portability concerns.
+
+q and electronic k coordinates are converted to **crystal coordinates** immediately before serialization (`1819,1840,1872`); electronic energies remain internal Ry. EF is **not** written in this payload, nor is the electronic smearing specification: preserve the matching native XML/input/log for that contract.
+
+The distinction from downstream averaging is explicit in `PHonon/PH/epa.f90:10–19,247–355`: `epa.x` reads these raw matrices, forms products, performs k/q weighted sums/symmetrization and projects onto phonons/energy bins. Its averaged output loses information; `prefix.epa.k` has not yet lost it.
+
+### C. Selected-k `prt` is not the full export
+
+`elphon.f90:1389–1463` selects one k by `kx,ky,kz`, without a spin selector. With coincident spin-up/down coordinates, the loop records the last matching state in a pool; pool selection can add ambiguity. It is not a spin-complete k-resolved exporter.
+
+It prints all band pairs and phonon modes in meV, including averaged and unaveraged magnitudes (`1698–1721`). Further source risks:
+
+- it averages over degenerate phonon/electronic energies;
+- it suppresses imaginary/unstable-mode couplings;
+- `1562–1580` normalizes the magnitude using `sqrt(1/(2*w))`, but Re/Im uses `1/(sqrt(2)*w)`, not `1/sqrt(2*w)`;
+- `rotate_pattern_add.f90:92–125` reconstructs the complex vector with `u`, whereas the actual displacement inverse in `dfile_star.f90:224–230` and `ahc.f90:1283–1288` uses `CONJG(u)`.
+
+These are source-level discrepancies, not exercised numerical failures. Do not use the diagnostic Re/Im columns as an oracle for raw complex vertices without settling them.
+
+### D. Other tempting exports
+
+- `Wannier` writes `prefix_elph.mat.q_N` with a band window, patterns/modes and some metadata (`ep_matrix_element_wannier.f90:402–468`). It is a distinct native real-space/refolding branch, requires one pool, and is not a generic alias for ordinary `el_ph_mat` output.
+- AHC documentation advertises Cartesian gkk and electronic-energy files (`Doc/dfpt_self_energy.tex:85–115`), but USPP is rejected before reaching them. Partial AHC code is not support for GBRV.
+- `yambo`/`dvscf` have separate dispatch (`phq_readin.f90:451–461`, `do_phonon.f90:149–150`). They are not necessary to establish the ordinary raw native path; no Yambo downstream compatibility claim is made here.
+
+## 4. Units, normalization, phases and weights
+
+### Units and mode normalization
+
+- QE internal Rydberg units have `e^2=2`, electron mass `1/2`, `hbar=1`; `Modules/constants.f90:45–57` states this and defines `AMU_RY=AMU_SI/(2*m_e)`.
+- The Cartesian/pattern derivative has units **Ry/bohr**. The local derivative explicitly introduces `tpiba=2*pi/alat`, with no finite-displacement amplitude (`compute_dvloc.f90:95–112`); the nonlocal derivatives use the same factor.
+- Raw `D` has no atom-mass, zero-point-frequency, k-weight, or q-weight factor applied. No bare proton charge is substituted anywhere in this producer; material-specific pseudopotentials and the ground-state response define the operator.
+- Phonon `w2` is squared phonon energy/frequency in Ry atomic units. `dyndia.f90:68–105` diagonalizes the mass-scaled force matrix and stores `dyn(a,nu)=z(a,nu)/sqrt(AMU_RY*amass_atom)`.
+- Consequently `sum_a M_a dyn(a,mu)^* dyn(a,nu)=delta_mu,nu`, with `M_a=AMU_RY*amass_atom`. **Printed displacement eigenvectors are additionally Euclidean-normalized**, so they are not numerically the same array as internal `dyn` (`dyndia.f90:99–112`). Preserve/reconstruct the actual normalization rather than reusing a pretty-printed mode blindly.
+- For positive `w=sqrt(w2)`, the source magnitude convention is `|g_nu|^2 = |sum_a dyn(a,nu) D_a|^2/(2*w)` after consistent Cartesian reconstruction, yielding energy units Ry. A complex mode gauge/conjugation convention must be held fixed when defining g itself.
+- `RY_TO_GHZ` is derived from energy divided by Planck h, not angular-frequency conversion (`constants.f90:116–118`). Native reported `gamma [GHz]` is a converted linewidth quantity. It is not by itself a declared damping-rate/lifetime convention; do not silently choose a factor-of-two, h versus hbar, or eta-derived lifetime.
+
+### Electronic normalization and reference energy
+
+Ultrasoft wavefunctions are normalized in the S metric, not by forcing their plane-wave Euclidean norm to one. The explicit normalization is visible in `KS_Solvers/DENSE/gram_schmidt_k.f90:219–279`; `PW/src/s_psi.f90:113–175` supplies the overlap action. The final vertex contraction is the ordinary bra applied to the already generalized `dH−epsilon dS` RHS, not an extra insertion of S.
+
+`PW/src/pw_restart_new.f90:1340–1350` converts saved XML eigenvalues/EF from Hartree to Ry. Raw XML/EPA vertices use `et(initial,ikk)` without subtracting EF; EPA eigenvalues are written unchanged. `prt` converts eigenvalues to eV but also does not subtract EF (`elphon.f90:1715–1721`). An energy-reference shift must be applied consistently to H, nonlocal coefficients and eigenvalues when reasoning about the overlap correction.
+
+### k/q/spin measures
+
+- For finite q, initial/final states are interleaved; added k+q points have **zero integration weight** (`PW/src/set_kplusq.f90:10–20,53–64`). Gamma reuses the same point.
+- Spin-up and spin-down lists are explicit copies with the same spatial weights and separate `isk` (`set_kup_and_kdw.f90:9–40`). For LSDA the per-spin spatial measure integrates to one; do not append another degeneracy factor two. For nspin=1, `setup_nscf.f90:166–174` multiplies spatial weights by `degspin`.
+- `wg` is a **weighted occupation**, not f: `Modules/qexsd_copy.f90:728–746` constructs `wg=occupation*wk`. `Doc/dfpt_tetra.tex:43–46` states `wg/wk`. Because the added final k+q weights are zero, dividing their `wg/wk` does not recover their occupations; retain energies plus the occupation prescription, or matching independently weighted states.
+- `simple` uses `wk(ikk)` once, not a product of initial and final k weights (`elphon.f90:1287–1304`). Its comment that the two weights are equal is contradicted by the actual finite-q grid constructor; the executable formula uses the correct initial weight.
+- q mesh/star weights are generated in `q_points.f90:42–62` and stored in EPA, not folded into raw D. `qplot` weights are copied from input (`phq_readin.f90:696–715`); no automatic normalization claim is justified for arbitrary supplied weights.
+- Generic native k sampling is reduced to the small group of q (`setup_nscf.f90:118–127`); q sampling is also generally irreducible. “All bands” does not mean “every full-BZ k and q has been explicitly computed.” Weights/symmetry can recover invariant sums, but full complex band-resolved symmetry expansion requires consistent electronic sewing/gauge information, especially for degenerate bands—not merely copying a scalar |g|.
+- Fourier atom phases are explicit: `eigqts=exp(-i*2*pi*xq·tau)` in `phq_init.f90:97–104`. Native Cartesian k/q coordinates use `2*pi/alat`, and tau uses the native cell convention. Preserve this convention when comparing q and −q or changing reciprocal representatives.
+
+### Pattern-to-Cartesian inverse
+
+**Candidate identity with direct implementation precedent:** if `D_p=sum_a u(a,p) D_a`, then `D_a=sum_p CONJG(u(a,p))*D_p` for a complete orthonormal pattern basis. `compute_dvloc.f90:95–112` is linear in `uact`; `dfile_star.f90:224–230` implements this inverse directly; AHC uses the same conjugation (`ahc.f90:1283–1288`).
+
+This matters for genuinely complex patterns. Identity patterns are established natively when there are no symmetries (`set_irr_nosym.f90:10–39`), but this is not a requirement to change the frozen campaign input.
+
+Actual `dvscf_star%basis` default is **'modes'** (`phq_readin.f90:339–345`), despite the generated input documentation calling it Cartesian (`INPUT_PH.txt:786`). `elphon.f90:61–67` resets u to identity if that descriptor says Cartesian. Mixing a pattern-space stored potential with a Cartesian descriptor can therefore mismatch the rebuilt ionic term and saved induced term. The actual stored basis must win over a documentation default.
+
+## 5. Native linewidths versus a finite-frequency electron–hole bath
+
+### Ordinary simple/interpolated and lambda_tetra
+
+`elphon.f90:1260–1367` performs the small-phonon-energy/double-Fermi-surface construction:
+
+`A_pq = sum_(k,n,m,s) wk * delta_sigma(e_nk−EF) * delta_sigma(e_m,k+q−EF) * D_p^* D_q`.
+
+After symmetry transformation to Cartesian coordinates it computes `gamma_nu=(pi/2)*dyn_nu^dagger A dyn_nu`, and `lambda_nu=gamma_nu/(pi*w2_nu*dosef)` above its 20 cm−1 cutoff. DOS is divided by two and labelled states/spin/Ry/unit cell; for a magnetic system that printed convention is half the total DOS, not separately the majority or minority DOS (`1274–1277,1373–1375`).
+
+`simple` always uses **Gaussian delta kernels** (`ngauss1=0`, `w0gauss` calls at `1260,1290–1294`), although its EF/DOS recalculation uses user/internal `el_ph_ngauss`. The source default of the latter is 1 (`phq_readin.f90:273–275`); do not confuse that EF numerical prescription with the delta kernel or a physical electronic temperature.
+
+`interpolated` forms the same products, symmetry expands and linearly interpolates them (`elphon.f90:977–1049`), then uses Gaussian double deltas. It is not an interpolation of a coherent complex g gauge. `lambda_tetra` implements the double-delta formula with tetrahedron integration (`Doc/dfpt_tetra.tex:81–90`).
+
+These calculations return mode linewidth/coupling summaries and optionally Cartesian product tensors used for q2r/matdyn. They are not an explicit frequency-resolved bath matrix.
+
+### Important exception: gamma_tetra is not double-delta
+
+`Doc/dfpt_tetra.tex:92–105` explicitly gives occupation step differences and
+`delta(e_final−e_initial−omega_qnu)`.
+
+The implementation matches that distinction:
+
+- occupied initial tetrahedron trimming: `elph_tetra_mod.f90:780–835`;
+- unoccupied final-state trimming and transition-energy differences: `1008–1062`;
+- energy-conserving delta at `sqrt(abs(w2(nu)))`: `1197–1253`;
+- explicit up/down spin loops: `758–780`;
+- per-mode contraction and gamma normalization: `595–630,668–674`.
+
+Nevertheless this is **not a complete positive finite-frequency electron–hole spectral bath**:
+
+1. Frequencies are fixed to the computed phonon modes, not an arbitrary spectral axis/matrix export.
+2. `phq_setup.f90:413–426` automatically selects only bands with energies crossing EF somewhere. **[INFERENCE]** At finite transition energy, occupied or empty bands lying entirely just below/above EF can contribute although they do not cross EF; those can be omitted by this band-selection logic. The source does not guarantee complete finite-frequency transition coverage.
+3. Tetra modes skip the ordinary raw XML write (`elphon.f90:598–608`), unlike ordinary EPA/simple branches.
+4. Static DFPT screening is still used; a finite-energy delta does not make the vertex dynamically screened.
+5. Optimized tetrahedron interpolation/convergence has not been shown here to preserve a positive matrix measure on a finite mesh. Exact physical positivity and numerical positivity are separate claims.
+6. The source’s gamma_tetra summary still prints “double delta at Ef”; that output label is not the implemented formula (`elph_tetra_mod.f90:677–680`).
+
+### Candidate bath identity—not an implemented native export
+
+For a specified, consistently interpreted force vertex F, use an **energy** spectral variable E to avoid h/hbar ambiguity. A candidate absorptive matrix is
+
+`B_ab(q,E) = pi * sum_(k,n,m,s) wk * (f_nks−f_m,k+q,s) * F_a^* F_b * delta(E−[e_m,k+q,s−e_nks])`, for `E>0`.
+
+For monotone decreasing occupations and positive spatial weights, each on-support occupation difference is nonnegative; hence `c^dagger B c >= 0`. This is a source-informed mathematical candidate for root’s later oracle registration, **not a bath computed/verified in this audit**. Retarded-sign, Fourier-volume, mode normalization and linewidth conventions must be fixed explicitly before equating B to a self-energy or damping rate.
+
+The ordinary raw vertex producer provides much of the necessary material-derived information, but no investigated branch writes this complete frequency-dependent matrix with its physical occupation contract. A numerical resolvent broadening eta cannot establish a bath lifetime.
+
+## 6. Occupations can break spectral passivity
+
+`Modules/wgauss.f90:10–24,54–88` defines QE occupation approximations; `w0gauss.f90:10–18,43–75` defines their derivatives.
+
+- Fermi–Dirac is `n=-99`: f is bounded and monotone. Only with a declared equilibrium interpretation does its energy width correspond to kB*T.
+- Plain Gaussian is monotone, so it can preserve the occupation-ordering condition in the candidate spectral sum, but its width is not thereby a physical temperature.
+- Cold smearing (`n=-1`) has derivative proportional to `exp(-(x−1/sqrt(2))^2)*(2−sqrt(2)*x)`, which changes sign for `x>sqrt(2)`. Since `x=(mu−epsilon)/sigma`, it is not globally monotone as a function of energy. **Candidate implication:** there are ordered levels with `epsilon_i<epsilon_j` but `f_i<f_j`, giving a negative transition occupation difference and potentially negative spectral absorption.
+- Higher Methfessel–Paxton orders likewise use signed correction polynomials rather than a physical monotone probability distribution.
+
+Thus numerical occupation schemes can violate the monotonicity/passivity condition when interpreted literally as bath occupations. This is not proof that the frozen cold-smearing ground-state calculation is invalid as an integration method, and it is not permission to reinterpret its width as temperature. Retrofitting physical occupations also does not retroactively change which numerical state screened the existing static DFPT vertex.
+
+## 7. Required native files and recovery contract
+
+### Ground-state/native electronic intake
+
+For a fresh PH invocation, preserve the matching native `outdir/prefix.save` state, not only text eigenvalues:
+
+- `data-file-schema.xml`: structure, spin, bands, occupations, EF, cutoffs, symmetry and pseudopotential identity;
+- `charge-density.dat` or `.hdf5` including spin density (`PW/src/io_rho_xml.f90:139–179`; `Modules/io_base.f90:600–604,663–681`);
+- the exact UPF pseudopotentials reachable through the save/original pseudo directory (`PW/src/pw_restart_new.f90:1264–1268`; `read_file_new.f90:295–299`);
+- collected collinear spin wavefunctions `wfcupN.dat/.hdf5` and `wfcdwN.dat/.hdf5` (`pw_restart_new.f90:1560–1589`; physical suffixes `Modules/io_base.f90:208–214,264–268`). `read_file_ph` requires collected wavefunctions for a fresh run (`read_file_new.f90:122–150`).
+
+PH reconstructs the potential/nonlocal D coefficients from density and pseudopotentials (`read_file_new.f90:338,402–417`). These are not replaceable by bare valence charges.
+
+### q-specific electronic states
+
+`prepare_q.f90:194–218` distinguishes Gamma reuse from new-grid/finite-q NSCF. `run_nscf.f90:62–84` reloads q-specific bands if present; otherwise it starts from the saved potential, generates k/k+q, and computes bands (`88–120`). It writes configuration/native buffers rather than necessarily portable wavefunctions; `only_wfc` requests the portable all-state punch (`130–140`).
+
+Paths are normally `_ph0/prefix.q_iq/` for non-Gamma q when q directories are enabled (`prepare_q.f90:98–130`), while Gamma can reuse root electronic data. A non-dispersion, non-qplot run explicitly resets `lqdir=.false.` even after the earlier elph assignment (`phq_readin.f90:839–848`). Do not infer every native file’s path from a generic documentation sentence.
+
+`openfilq.f90:84–115` requires the matching native `prefix.wfc*` buffer (or in-memory equivalent) at Gamma/or the q-specific directory. An arbitrary separate NSCF calculation with a different grid/band gauge is not automatically the matching native state.
+
+### Re-evaluation from stored DFPT response (`trans=.false.`)
+
+The non-Fourier native `elphon` path requires:
+
+- saved induced `fildvscf` records with the correct FFT grid, spin dimension and perturbation ordering;
+- matching displacement patterns `patterns.iq.xml` and q mapping;
+- matching prior dynamical matrix `fildyn`/`fildynN`, because `elphon.f90:134–196` reads and diagonalizes it even when the requested downstream object is raw EPA;
+- current compatible electronic native save/q-specific states and exact pseudos, since bare/nonlocal/augmentation pieces are rebuilt;
+- normal native `phsave` control/status context as applicable.
+
+`check_initial_status.f90:154–158` selects `u_from_file` for this ordinary stored-response route; `phq_setup.f90:130–135` reads the pattern file. `elphon.f90:86–120` reads induced records, calls `newdq` and `elphel`. A saved dvscf file alone is not sufficient.
+
+Only the **interpolated-product** route additionally requires the dense `prefix.a2Fsave` generated by PW `la2f`; same nbnd and commensurate unshifted k/k+q coverage are enforced/documented (`elphon.f90:839–936`; `Doc/user_guide.tex:285–301`). This is not a requirement of ordinary EPA/simple raw output.
+
+### Recovery
+
+- `phq_readin.f90:654–685` reads `control_ph.xml` and `status_run.xml`; if missing/unreadable it disables full recovery and starts from scratch.
+- `ph_restart.f90:1041–1137` checks per-irrep DONE flags, including `DONE_ELPH`.
+- `phq_recover.f90:118–150` reloads all matching complex `elph.iq.irr.xml` blocks into the current array; `elphel` skips already-done irreps (`elphon.f90:393`).
+- Native plane-wave buffers and internal recovery data remain necessary for in-irrep restart. `openfilq.f90:128–142` errors when expected `.bar` is absent; `phq_recover.f90:69–78` describes stored iterative potential and ultrasoft coefficients; `check_restart_recover.f90:14–27` distinguishes `recover` and `restart_k` state.
+- Public recovery documentation is `INPUT_PH.txt:940–986`, including the requirement to retain identical displacement patterns when combining partial results.
+
+**Limits:** this is not a content-addressed provenance/recovery protocol. The elph reader reads dimensions into `idum` and coordinates into `xkdum` without validating them against the current band/k state (`ph_restart.f90:790–803`). It also does not validate pseudopotential identity, electronic gauge, occupations, or units. Existence/DONE flags are not proof that a checkpoint belongs to a changed grid or band window. `reduce_io` changes native persistence (`phq_readin.f90:732`; `run_nscf.f90:130–140`); no recovery drill was executed here.
+
+EPA binary export has a separate lifecycle: q1 replaces/creates the header and later q append (`elphon.f90:1797–1811,1813–1840`). It is not equivalent to per-irrep XML checkpointing, and no source-level guarantee was established here that arbitrary skipped/resumed q sequences repair or regenerate a complete EPA file. A run beginning after q1 needs special scrutiny because the writer assumes a preceding header.
+
+## 8. Narrow export/instrumentation point and unresolved off-shell issue
+
+**No new raw-vertex exporter is needed merely to obtain all saved bands at calculated k/q points:** the ordinary XML and EPA producers already write them.
+
+If root later needs an independently usable Cartesian force/overlap contract, the narrow existing boundary is:
+
+- `elphel`, `elphon.f90:560–606`, after `<evq|dvpsi>` and the intra-band-group reduction, before further sums;
+- its pool-collected per-irrep checkpoint writer `ph_restart.f90:297–332`, or the already comprehensive EPA payload at `elphon.f90:1903–1915`.
+
+Missing pieces for an explicitly separated ultrasoft operator contract are a separately exported `S'_ji=<psi_j|partial S|psi_i>`, the H′/energy-reference convention, and provenance/gauge/units metadata. This is identification of an instrumentation boundary, not an implementation or execution plan.
+
+A tempting helper is **not generic**: `PHonon/PH/psidspsi.f90:10–16,83–92` computes overlap derivatives only at q=0 and merely logs when called otherwise. `delta_sphi.f90:10–39` is a Hubbard-atomic-orbital derivative routine, not a full-band finite-q overlap exporter. Neither establishes an existing complete `dS(k,q)` export.
+
+**Candidate identity, not a campaign-model prescription:** with consistent q/−q gauges and Hermitian H′/S′,
+
+`D^q_ji − [D^(−q)_ij]^* = (epsilon_j−epsilon_i) S'^q_ji`.
+
+Therefore ordinary off-shell raw USPP D need not satisfy naive Hermitian reciprocity. At equal electronic energies the distinction disappears, which explains why a Fermi-surface summary can hide it. A candidate symmetric energy convention is
+
+`F_ji = H'_ji − (epsilon_i+epsilon_j) S'_ji/2 = D_ji + (epsilon_i−epsilon_j)S'_ji/2`.
+
+This is an algebraic option to test under a specified representation, **not proof that this alone is the unique physical force vertex for the eventual mixed-response model**. Any further electronic-basis connection, screening/double-counting, or dynamic response requirements remain root’s model decision. The source itself fixes the one-sided initial-energy convention, not that later choice.
+
+## 9. Candidate identities and exposing mutations for later registered oracles
+
+These are proposed checks rooted in the source; none was run or registered here.
+
+1. **Raw index/order and Cartesian round trip.** Reconstruct `D_a=sum_p u(a,p)^*D_p` and recover `D_p=sum_a u(a,p)D_a`, using a genuinely complex, nonsymmetric pattern set. Mutation: omit conjugation, transpose band axes, or swap irrep offsets. Real identity patterns alone cannot expose this error.
+2. **Ultrasoft energy-shift covariance.** Under a consistent common potential/energy shift `H→H+C S`, `epsilon_i→epsilon_i+C`, D must remain invariant. Mutation: remove the `−epsilon*qq_at` term or shift eigenvalues without shifting nonlocal D. This tests something an on-shell norm plot can miss.
+3. **Generalized reciprocity rather than naive Hermiticity.** Test the D/q/−q identity above with separately known S′ and nondegenerate electronic energies. Mutation: use epsilon_final instead of epsilon_initial or compare without atom/Bloch phase alignment. A naive `D=D†` expectation is the wrong USPP oracle off shell.
+4. **Metric and mode normalization.** Check electronic `<psi_m|S|psi_n>=delta_mn` and phonon `Z† M Z=I`; check the native `|g|²=|Z·D|²/(2*w)` conversion. Mutation: replace AMU_RY with AMU_AU, use Euclidean-normalized printed displacements, or divide by w instead of sqrt(w) at amplitude level. Raw D must not change under an isotope-only mass relabeling, whereas projected g/modes generally do.
+5. **Spin/k measure.** Sum only initial-k weights, with both explicit spin channels and no extra spin degeneracy. Mutation: use `wk(k)*wk(k+q)` (zero for native added final points), drop minority states, or multiply spin2 sums by two. Compare invariant sums rather than individual phase-sensitive amplitudes across independent eigensolves.
+6. **Spectral passivity.** For positive E, positive quadrature and monotone f, require the full matrix candidate B to be Hermitian positive semidefinite via quadratic forms, including mixed Cartesian components—not only positive diagonal mode rates. Mutation: invert an occupation pair; use cold-smearing levels in the sign-changing derivative tail; reverse `(f_i−f_j)`; use a signed delta approximation. Omitting a conjugate can spoil Hermiticity even if diagonals look plausible.
+7. **Finite-energy versus double-delta distinction.** For a controlled spectrum with an allowed transition separated by a finite phonon energy, compare the occupation-difference/energy-delta construction to the double-FS approximation; they should not be asserted identical at finite energy. Mutation: set the phonon energy to zero inside the transition delta or omit an entirely occupied/empty band that lies within the finite excitation window. Only a separately justified small-frequency limit can relate them.
+8. **Gauge covariance and degenerate subspaces.** Rephase electronic states or apply unitary rotations within exactly degenerate subspaces; coherent vertices transform, complete contracted products/spectral quadratic forms remain invariant. Mutation: combine matrices and eigenvalues from different gauges, square before a required coherent Cartesian/mode sum, or interpolate complex components without sewing data.
+9. **Recovery/provenance.** Compare uninterrupted and restored matrices with identical native state and patterns. Mutation: replace patterns, reorder k/spin points, or change nbnd while leaving DONE files. Native readers’ weak metadata validation means a separate provenance oracle is substantive, not redundant.
+10. **Translation check with the correct scope.** At q=0 an aligned rigid translation should leave electronic eigenvalues invariant; the diagonal generalized derivative provides a candidate check. Do not demand that every off-diagonal displacement vertex vanish—basis/translation commutator terms exist. Mutation: translate only H positions but not projector/overlap/phase data.
+
+## 10. Existing primary-method pointers actually found
+
+- **A. Dal Corso, Phys. Rev. B 64, 235118 (2001)**: `dvqpsi_us.f90:10–19`, `dvqpsi_us_only.f90:10–20`, `dvanqq.f90:10–23`, `LR_Modules/adddvscf.f90:28–34`; bibliography in `Doc/dfpt_tetra.tex:355–356`. This is the load-bearing native USPP DFPT/operator pointer.
+- **M. Wierzbowska et al., arXiv:cond-mat/0504077**: `Doc/INPUT_PH.txt:349–352`, for the interpolated coefficient route. Pointer: https://arxiv.org/abs/cond-mat/0504077 .
+- **M. Kawamura, Phys. Rev. B 89, 094515 (2014)** as printed in `Doc/dfpt_tetra.tex:358–359`; the note explains the double-delta and golden-rule branches. The printed bibliography is reported as found, not corrected using unread external material.
+- **G. Samsonidze and B. Kozinsky, Adv. Energy Mater. 2018, 1800246**, DOI https://doi.org/10.1002/aenm.201800246 and https://arxiv.org/abs/1511.08115 : `Doc/INPUT_PH.txt:364–370`, `PH/epa.f90:10–19`. This points to downstream EPA approximation, not a restriction that the native file must already be averaged.
+- **Methfessel–Paxton, Phys. Rev. B 40, 3616 (1989)** and **Marzari–Vanderbilt–DeVita–Payne, Phys. Rev. Lett. 82, 3296 (1999)**: `Modules/wgauss.f90:15–20`.
+- `LR_Modules/newdq.f90:150–154` points to **Phys. Rev. B 81, 075123 (2010), Eq.12** for the PAW-added terms; PAW extension is not needed to establish the installed ultrasoft path.
+- AHC pointers include Allen–Heine (1976), Allen–Cardona (1981/1983), Giustino RMP 89, 015003 (2017), and Lihm–Park PRB 101, 121102 (2020), listed in `Doc/dfpt_self_energy.tex:385–404`. Their presence does not override the USPP AHC guard.
+
+## Bottom line for integration
+
+The source audit supports a native collinear-spin2/USPP route to material-derived **complex, all-saved-band static displacement vertices** without EPW or dvscf Fourier interpolation. Ordinary checkpoint XML already contains the matrices; the documented EPA producer is an additional metadata-rich raw export. The remaining scientific blockers are not “no native g exists”: they are the exact ultrasoft off-shell/force convention, coherent Cartesian/gauge reconstruction, physically declared occupations and spectral measure, finite-band/full-BZ completeness, static-versus-dynamic screening, and provenance-safe recovery. Native linewidth numbers, including finite-energy gamma_tetra numbers, do not by themselves settle those blockers or specify an explicit physical bath.

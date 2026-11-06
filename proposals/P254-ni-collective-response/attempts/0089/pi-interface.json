@@ -1,0 +1,43 @@
+{
+  "schema": "p254-a89-complete-gamma-pi-interface-v1",
+  "owner": "P254 / canonical225 / research/P254-ni-collective-response / PR234",
+  "implementation": "attempts/0089/pi_history.py",
+  "purpose": "Independently ready CompletePi capability for the Gamma Jacobi/Picard block. Electronic Sigma completion is not a prerequisite. This is not a full G2 or six-array kernel publication.",
+  "publication": {
+    "api": "publish_pi(bank_root, output_catalog) -> pathlib.Path",
+    "cli": "python attempts/0089/pi_history.py publish --bank /var/tmp/p254-a87-bank-001 --output NEW/catalog.json",
+    "locking": "Open the existing bank serial.lock read-only and hold the same exclusive flock used by A87. Read/authenticate current committed immutable state and identity marker via bank_storage.load; never initialize, collect, rewrite or otherwise mutate bank storage.",
+    "required": "Exactly one committed joint entry and one committed cubic entry: globaljoint/all961/full114/all128 and complete inherited q1..63/replaced q0 cubic/all64/all961/full111. No EE, EI, joint Sigma numeric files or unused state.sources dependency is required.",
+    "identity": "Recompute A87 source_identity from the committed actual target provider and original preparation. Authenticate its separate original numerical reference/coefficient/U bindings and provider ancestry; never equate the actual provider with the original reference bundle.",
+    "composition": "Exactly A87 functional_bank.publish's Pi operation/order/layout: zero complex128 C-order [31,31,114,114]; for each greater,lesser,retarded order add all joint pairs, then add cubic pairs only in [:111,:111]. Retarded is an independently consumed raw source order, never filled from greater-minus-lesser.",
+    "durability": "Fresh catalog only, outside the entire bank root and never overwriting upstream sources. Unique sibling numeric directory; preserve and fsync an exact-byte committed-state snapshot, flush/close/fsync each numeric file, fsync numeric directory and parent, validate persisted raw causal output, then atomic fsynced JSON catalog and parent-directory fsync using existing A87/A77 primitives. Failed prepublication attempts may retain unreferenced numeric output; no complete catalog is manufactured.",
+    "return_and_cli": "API returns the durable catalog Path. Both publish and consume CLI print the actual complete saved-reader report as JSON; publish reopens its newly saved catalog rather than reporting producer intent."
+  },
+  "catalog": {
+    "schema": "p254-complete-gamma-pi-kernels-v1",
+    "status": "complete-gamma-pi",
+    "capability": "CompletePi",
+    "gamma_solve_eligible": true,
+    "full_solve_eligible": false,
+    "pi": "greater/lesser/retarded descriptors with absolute path, bytes, sha256, shape [31,31,114,114], dtype complex128. No sigma arrays or generic FullKernel capability.",
+    "identity_fields": ["input_dataset", "numerical_reference", "preparation_origin", "original_B_identity", "times_inverse_ry"],
+    "provenance": "committed_state preserves the unmodified archival binding of the actual immutable admitted bank generation; it is not an active file dependency after publication. committed_snapshot is the active owned byte-identical copy with the same bytes/sha256, preserving evidence after A77 collects old state JSON during later Sigma admissions. Consumers collecting catalog dependency graphs must omit only the top-level archival committed_state binding and authenticate committed_snapshot instead; never relabel either original path. consumed_sources contains only joint/cubic catalog bindings and actual committed Pi/cubic array descriptors. Bound source catalogs retain original timing, source provenance, failures, boundary_loss, replacement and recovery receipts unchanged; no upstream costs are reset. Unrelated Sigma descriptors can exist inside the authenticated original state/catalog metadata but are neither opened nor required."
+  },
+  "reader": {
+    "api": "PiKernels(catalog_path): .pi dict of greater/lesser/retarded read-only mmaps, .times full31 numpy array, .catalog parsed catalog dict, .bindings identity/provenance dict, .report actual saved consumer report, .close(), context manager",
+    "bindings": "Active dependencies only: dict(catalog=descriptor, input_dataset=descriptor, numerical_reference=descriptor, preparation_origin=descriptor, original_B_identity=descriptor, times_inverse_ry=list, committed_snapshot=descriptor, sources={joint:{catalog,arrays}, cubic:{catalog,arrays}}). Archival committed_state stays in .catalog only and must not be recursively reopened as an active dependency.",
+    "consumer": "consume(catalog_path) -> report dict, reading every saved pair and coordinate and closing maps before return",
+    "cli": "python attempts/0089/pi_history.py consume --catalog NEW/catalog.json",
+    "authentication": "Authenticate the owned committed-state snapshot, provider ancestry/original reference/preparation, selected joint/cubic catalogs and the actual committed COW numeric arrays, complete owned/completed metadata and full dimension/C-order/complex128 contract. Verify each published Pi pair exactly equals zero+joint+embedded111cubic. The original producer and bank admission already authenticated coefficient/implementation dependencies, source bitmaps and retained-base/old0/new0 replacement; carry that admission instead of recursively reopening unused historical metadata or replaying its upstream physical audits.",
+    "raw_contract": "Scan every raw source and output pair for finite complex values and existing A87 theta(0)=1 causal identity at maxabs defect <= 2e-12 * max(1,maxabs(expected)). This is a rejection threshold, never a repair, clipping, symmetrization or retarded refill. Actual unmodified causal defects are reported.",
+    "report": "p254-a89-saved-complete-gamma-pi-consumer-v1; actual catalog/bindings, 961 pairs, 961*114*114 scalar elements per order, norms/maxima/causal defect/sample(30,0,111,113), complete composition authentication and explicit Gamma-only eligibility.",
+    "lifetime": "All source/provenance mmaps are closed on successful validation or failure. Only three owned output read-only maps remain until close/context exit; close is idempotent. No sigma/.banks adapter or generic full-solve path is provided."
+  },
+  "scope_and_risks": [
+    "Original all31/full114/all128/bothspin/all12/original preparation/global64 raw-complex physical scope is retained. N64/order1/beta1 Gamma-solver policy remains the continuation owner's contract, not a new Pi transformation.",
+    "Consumer authenticates actual consumed joint/cubic catalogs and COW numeric files plus the owned exact-byte committed snapshot. Historical upstream catalog contents are provenance, not a recursively reopened active dependency tree. Normal A77 collection of original state JSON and obsolete Sigma COW arrays does not invalidate this Pi publication; the actual later EI1/EI2 admission and saved-Pi read demonstrated this.",
+    "Full SHA256 authentication and complete pair scans incur real disk/CPU costs; no Native/contraction evaluator is launched by this module.",
+    "No full G2, completed electron data, fixed point, physical calibration or calibrated-loss claim. Upstream paid and recovery costs remain in authenticated source catalogs."
+  ],
+  "implementation_verification": "Root exercised actual complete Pi publication and saved consume: actual-complete-Pi-publication.json. The resulting Pi drove the actual next Gamma block and exact-result reuse boundary. A second actual saved consume after productive EI1/EI2 admission and state GC retained complete Pi. No contraction evaluator or old physical-oracle suite was replayed by this Pi capability. Frozen A87 and older source/data are unchanged."
+}

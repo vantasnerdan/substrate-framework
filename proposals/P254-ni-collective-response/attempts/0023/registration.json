@@ -1,0 +1,82 @@
+{
+  "registered_at": "2026-10-27T21:05:15.698396+00:00",
+  "issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "source_inventory": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0023/source-inventory.json",
+    "bytes": "5233",
+    "sha256": "65e58a0a3fc381ab7ed2dc3e01f30c4e3202ad1e399d4bddd2a4b9c6dcec4291"
+  },
+  "objective": "Construct a reusable prepared quantum electronic fluctuation-source component for the existing Ni/H action, including actual operator data, instead of another deterministic trajectory.",
+  "definition_of_done": [
+    "Source-derived finite-BvK ordered two-point construction with independent real-space/full-Fock normalization and q/-q/zero-gap/complex-cross-channel oracle, sensitive to wrong weight, missing Pauli holes, lost zero-gap coherences and wrong transpose.",
+    "Actual Gamma/explicit plus-minus half-b1 operator preparation: raw source AND complete-target FD probabilities, uniform finite2x2x2 BvK normalization, six positive ionic-gradient operators and two spin-resolved periodic-uniform density Fourier probes. Preserve all directed transitions and zero-gap terms.",
+    "Actual ordered, symmetrized and commutator correlations at registered times, plus saved per-channel spectral recipes/metadata, exact saved-output readback and independent complete review.",
+    "Explicit handoff: these are initial quasi-free bilinear two-point data, not Gaussian higher moments, coupled equilibrium, an irreversible bath or a license to inject independent noise into the existing redundant delta-psi coordinates. Material transfer requires its own matched reference/operators; actual37atom curvature remains separate."
+  ],
+  "preparation": {
+    "state": "Auxiliary independent reconstructed-H0 grand-canonical quasi-free FD state at the existing common_mu/degauss. Fixed mean totalN is not exact canonical particle number. Numerical degauss is NOT claimed physicaltemperature.",
+    "raw_probabilities": "Reuse existing stable _fermi on actual energies/common_mu/degauss. Never use weighted_occupations as Bernoulli probabilities or divide weighted tails to reconstruct them.",
+    "observables": "g=+partial h/partial u inRy/bohr. Density probes are dimensionless spin-number Fourier operators; not pointwise density covariance. Physical ionic force is negative gradient, so mixed force/density signs require that explicit transform.",
+    "BvK": "Eight cells/full2x2x2 k mesh, one explicit spin per channel, q operators normalized1/sqrt(Ncells); no extra spinfactor. q pair conventions derived by independent finite real-space/Fock construction before actual use. Only availableGamma/half sectors are computed, not a full spatial domain covariance.",
+    "time_unit": "tau=t*Ry/hbar; energiesRy; ordered evolution uses the same isolated H0, no eta/bath rate."
+  },
+  "blocks_and_waves": [
+    {
+      "wave": "A-source",
+      "blocks": [
+        "Generic directed transition ordered correlation and paired symmetrized/commutator construction, with immediate independent oracle blocks.",
+        "Actual PW preparation adapter built against declared API, using existing FFT projector and raw FD/reference metadata."
+      ],
+      "execution_rule": "Both source slices settle; Root executes finite blocks bottom-up before actual adapter consumer. No child test/build/format or numerical execution."
+    },
+    {
+      "wave": "B-execution",
+      "blocks": [
+        "Root integrates source-bound finite and actual executable.",
+        "One bounded actual preparation run; preserve arrays and source identity before review."
+      ],
+      "prerequisite": "All A source inputs settled and new finite normalization/composition oracle passed."
+    },
+    {
+      "wave": "C-review",
+      "blocks": [
+        "Independent complete math/physical-preparation review and source/saved-output review; corrections consume full findings."
+      ],
+      "prerequisite": "Complete B artifacts, not partial output."
+    }
+  ],
+  "implementation_layout": {
+    "generic": "src/substrate_framework/quasifree_spectral_noise.py",
+    "generic_oracle": "attempts/0023/run_quantum_noise_oracle.py",
+    "actual_adapter": "src/substrate_framework/pw_prepared_noise.py",
+    "adapter_oracle": "attempts/0023/run_pw_noise_projection_oracle.py",
+    "root_driver": "attempts/0023/run_prepared_noise.py"
+  },
+  "shared_interface": {
+    "ordered_transition_correlation": "(source_energies, target_energies, source_occupations, target_occupations, operators, times, weight=1.0) -> complex array(ntimes,nobs,nobs); operators shape(nobs,ntarget,nsource). Defined as <delta A_minus_a(t) delta A_plus_b(0)> for A_plus=sum operators[a,t,s] c_t^dag c_s, A_minus=A_plus^dag. Weight=1/Ncells for BvK normalized operators.",
+    "paired_correlations": "(ordered_plus, ordered_minus_at_negative_times) -> dict symmetrized, commutator; opposite-sector/time transpose, not adjoint. Oracle establishes exact convention.",
+    "prepare_pw_noise": "(model, reciprocal_basis, mesh=(2,2,2)) -> (branches, metadata); branches maps plus/minus to lists of dicts with identity and all ordered_transition_correlation kwargs except times. Use PWTransitionSpace.to_pw and actual target_vectors for density projections; no huge target-grid construction.",
+    "coordination": "Source contracts fixed here; no consuming unsettled peer research. Root sole integration/source-bank/compute owner."
+  },
+  "allocation": {
+    "source_due": "2026-10-27T21:15:00+00:00",
+    "finite_oracle_cap_seconds": 90,
+    "actual_preparation_cap_seconds": 120,
+    "actual_first_preparation_due_seconds": 60,
+    "Root_decision_due": "2026-10-27T21:25:00+00:00",
+    "CPU": "6",
+    "BLAS_threads": 1,
+    "Native_and_cloud_calls": 0,
+    "times_tau_ry": [
+      -1,
+      -0.5,
+      -0.25,
+      0,
+      0.25,
+      0.5,
+      1
+    ],
+    "stop": "Source/normalization defect is repaired in its block; no arbitrary fitted amplitude/tolerance loosening. At cap preserve actual output and take Root decision, not retry/reset. No old Native or trajectory replay."
+  },
+  "whole_campaign": "Complete material calibration and MV/physical-ensemble matching, general materialelectronic operators and retained environment, transverse current/field coupling for the sourced EM route, manyregions/controls, lattice comparisons and nuclear transition-energy/product disposal remain required. A source-preparation component is not campaign completion."
+}

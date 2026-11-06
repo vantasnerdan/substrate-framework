@@ -1,0 +1,130 @@
+ACTUAL_ORACLE_PID 3995973 AFFINITY [5]
+RECOVERED_STATE_CHECKPOINT b18cc545e089d8e89b07e4812e07aa95a947f36a4cb9ef59ec33c37d708468d2 STATE_BLOCK_NOT_RECOMPUTED
+RECOVERED_BLOCK response cbf152f8d0895d52072b6d852e1ed499ae65cbb5a5864356ef35d08f336e66ea
+PASS [P254-attempt0007-finite-fermion] isothermal GC curvature equals full Fock divided difference
+PASS [P254-attempt0007-finite-fermion] GC minus isolated is exactly zero-frequency occupation covariance
+PASS [P254-attempt0007-finite-fermion] equating isolated zero response and isothermal GC rejected
+PASS [P254-attempt0007-finite-fermion] finite canonical differs from mean-number Legendre curvature
+PASS [P254-attempt0007-finite-fermion] mean-number projection changes GC curvature
+PASS [P254-attempt0007-finite-fermion] canonical number variance is exactly zero
+PASS [P254-attempt0007-finite-fermion] canonical factorized independent occupations mutation rejected
+PASS [P254-attempt0007-finite-fermion] GC curvature is exactly real symmetric
+PASS [P254-attempt0007-finite-fermion] GC independent expm free-energy derivative refinement
+PASS [P254-attempt0007-finite-fermion] mean_N_Legendre curvature is exactly real symmetric
+PASS [P254-attempt0007-finite-fermion] mean_N_Legendre independent expm free-energy derivative refinement
+PASS [P254-attempt0007-finite-fermion] canonical_N1 curvature is exactly real symmetric
+PASS [P254-attempt0007-finite-fermion] canonical_N1 independent expm free-energy derivative refinement
+PASS [P254-attempt0007-finite-fermion] isothermal GC curvature equals full Fock divided difference
+PASS [P254-attempt0007-finite-fermion] GC minus isolated is exactly zero-frequency occupation covariance
+PASS [P254-attempt0007-finite-fermion] equating isolated zero response and isothermal GC rejected
+PASS [P254-attempt0007-finite-fermion] finite canonical differs from mean-number Legendre curvature
+PASS [P254-attempt0007-finite-fermion] mean-number projection changes GC curvature
+PASS [P254-attempt0007-finite-fermion] canonical number variance is exactly zero
+PASS [P254-attempt0007-finite-fermion] canonical factorized independent occupations mutation rejected
+PASS [P254-attempt0007-finite-fermion] GC curvature is exactly real symmetric
+PASS [P254-attempt0007-finite-fermion] GC independent expm free-energy derivative refinement
+PASS [P254-attempt0007-finite-fermion] mean_N_Legendre curvature is exactly real symmetric
+PASS [P254-attempt0007-finite-fermion] mean_N_Legendre independent expm free-energy derivative refinement
+PASS [P254-attempt0007-finite-fermion] canonical_N1 curvature is exactly real symmetric
+PASS [P254-attempt0007-finite-fermion] canonical_N1 independent expm free-energy derivative refinement
+Traceback (most recent call last):
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/run_oracle.py", line 170, in execute
+    results[name] = cached_block(name, function, ledger, manifest_hash)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/run_oracle.py", line 94, in cached_block
+    result = function(ledger)
+             ^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/check_thermodynamics.py", line 76, in run
+    return serial(outputs)
+           ^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/fixtures.py", line 28, in serial
+    return [serial(x) for x in value]
+            ^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/fixtures.py", line 26, in serial
+    return {str(k): serial(v) for k, v in value.items()}
+                    ^^^^^^^^^
+  File "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0007/fixtures.py", line 30, in serial
+    return [[str(sp.simplify(value[i, j])) for j in range(value.cols)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/core/_print_helpers.py", line 29, in __str__
+    return sstr(self, order=None)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/printer.py", line 408, in __call__
+    return self.__wrapped__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 993, in sstr
+    s = p.doprint(expr)
+        ^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/printer.py", line 293, in doprint
+    return self._str(self._print(expr))
+                     ^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/printer.py", line 332, in _print
+    return printmethod(expr, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 365, in _print_Mul
+    a_str = [self.parenthesize(x, prec, strict=False) for x in a]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 37, in parenthesize
+    return "(%s)" % self._print(item)
+                    ^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/printer.py", line 332, in _print
+    return printmethod(expr, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 58, in _print_Add
+    t = self._print(term)
+        ^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/printer.py", line 332, in _print
+    return printmethod(expr, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 162, in _print_Function
+    return expr.func.__name__ + "(%s)" % self.stringify(expr.args, ", ")
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 42, in stringify
+    return sep.join([self.parenthesize(item, level) for item in args])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 39, in parenthesize
+    return self._print(item)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/printer.py", line 332, in _print
+    return printmethod(expr, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 365, in _print_Mul
+    a_str = [self.parenthesize(x, prec, strict=False) for x in a]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 39, in parenthesize
+    return self._print(item)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/printer.py", line 332, in _print
+    return printmethod(expr, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 661, in _print_Pow
+    e = self.parenthesize(expr.exp, PREC, strict=False)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 37, in parenthesize
+    return "(%s)" % self._print(item)
+                    ^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/printer.py", line 332, in _print
+    return printmethod(expr, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 58, in _print_Add
+    t = self._print(term)
+        ^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/printer.py", line 332, in _print
+    return printmethod(expr, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 162, in _print_Function
+    return expr.func.__name__ + "(%s)" % self.stringify(expr.args, ", ")
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 42, in stringify
+    return sep.join([self.parenthesize(item, level) for item in args])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 39, in parenthesize
+    return self._print(item)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/printer.py", line 332, in _print
+    return printmethod(expr, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/administrator/projects/substrate-framework/.venv/lib/python3.12/site-packages/sympy/printing/str.py", line 680, in _print_Integer
+    return str(expr.p)
+           ^^^^^^^^^^^
+ValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit

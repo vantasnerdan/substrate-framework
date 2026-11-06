@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""Actual source0 full-column moments; no whole-history reconstruction or resume."""
+import json, os, resource, sys
+from pathlib import Path
+from time import perf_counter, process_time
+import numpy as np
+import run_mixed_q_material as driver
+from substrate_framework.partitioned_q_storage import QBudget
+from substrate_framework.material_joint_response import RealBlochEdge
+from substrate_framework.material_physical_operators import physical_hamiltonian, physical_finiteq, PhysicalFieldVertices
+from mixed_material_dynamics import _Reader
+from mixed_frame_response import density_dyads_item
+from mixed_material_moments import response_blocks
+
+ROOT=Path('/var/tmp/p254-a28-direct-moment-smoke-001')
+A28=Path(driver.__file__).resolve().parent
+
+def main():
+    os.sched_setaffinity(0,{6})
+    ROOT.mkdir(exist_ok=False)
+    started=perf_counter()
+    budget=QBudget(max_actions=1,max_seconds=600,max_bytes=64*1024**2,
+                   max_memory_bytes=4*1024**3,worker_memory_bytes=4*1024**3)
+    report=dict(schema='P254-actual-direct-moment-smoke-v1',status='failed',cpu=6,
+        scope='Actual original source0 all9 products, not full128-source reduction',
+        all_original_columns=True,trajectory_resumed=False,physical_endpoint_claimed=False,
+        full_material_energy_complete=False,tolerance_relative=3e-10,
+        full_history_factory_repeated=False)
+    frames=coefficients=None
+    try:
+        with driver.watchdog(budget):
+            args=driver.parser().parse_args(sys.argv[1:])
+            print('DIRECT_MOMENT_001_inputs',flush=True)
+            sources=driver.source_closure([driver.file_binding(driver.__file__),*driver.existing_dependencies()])
+            inputs=driver.metadata_inputs(args)
+            case=driver.bind_saved_model(driver.load_case(args.case),inputs['saved'],
+                                        inputs['execution'].get('source_compatibility'))
+            prior_binding=driver.file_binding(A28/'native-shared-moment-smoke-failed-004.json')
+            prior=json.loads(driver.authenticate(prior_binding).read_text())
+            admission_binding=driver.file_binding(A28/'actual-baseline-frame-adoption-check-003.json')
+            admission=json.loads(driver.authenticate(admission_binding).read_text())
+            records=prior['native_consumer']['slots']
+            count=len(records)
+            def load(binding):
+                return np.load(driver.authenticate(binding),mmap_mode='r',allow_pickle=False)
+            frames=_Reader(count,lambda i:load(admission['items'][i]['cache_frame']))
+            coefficients=_Reader(count,lambda i:load(records[i]['coefficient']))
+            report.update(source_bindings=sources,prior=prior_binding,admission=admission_binding,
+                input_evaluation_node=prior['input_evaluation_node'],
+                original_reference=prior['original_reference'],model_identity=case.identity,
+                original_source_count=count,full_frame_shape=records[0]['shape'],block_size=args.block_size)
+            assert case.identity==prior['native_consumer']['model']
+            with driver.MappedMixedState(prior['input_evaluation_node'],budget=budget) as state:
+                assert tuple(state.target_plus)==tuple(range(count))
+                assert tuple(state.target_minus)==tuple(range(count))
+                assert np.array_equal(state.q,np.zeros(3))
+                jets={c:_Reader(count,lambda i,c=c:state.leg(c,i)) for c in driver.COMPONENTS}
+                blocks=density_dyads_item(0,frames,jets['plus'],jets['minus'],jets['mixed'],coefficients,
+                    target_plus=state.target_plus,target_minus=state.target_minus,
+                    source_weights=tuple(r['weight'] for r in records))
+                frame=case.grid.load_frame(case.ordered[0])
+                assert frame.basis.identity==records[0]['basis_identity']
+                basis=frame.basis
+                del frame
+                driver.check_loaded_sources(sources)
+                print('DIRECT_MOMENT_001_factory_ready',perf_counter()-started,flush=True)
+                cpu,wall=process_time(),perf_counter()
+                h0=physical_hamiltonian(case.background,basis,basis.slot.ispin,args.block_size)
+                edge=RealBlochEdge.create(case.grid.reference,basis,basis,np.zeros(3))
+                coupling=physical_finiteq(case.background.inputs,edge,h0.factors,h0.factors,args.block_size)
+                vertex=PhysicalFieldVertices(h0,projector_block_size=args.block_size)
+                print('DIRECT_MOMENT_001_moment_start',flush=True)
+                grouped=response_blocks({c:blocks[c] for c in driver.COMPONENTS},
+                    coupling=coupling,field_vertex=vertex,diagonal=True)
+                values={c+'-'+name:value for c,group in grouped.items() for name,value in group.items()}
+                outputs={}
+                for name,value in values.items():
+                    value=np.asarray(value)
+                    budget.reserve(value.nbytes+4096)
+                    path=ROOT/(name+'.npy')
+                    with path.open('xb') as stream:
+                        np.save(stream,value,allow_pickle=False)
+                        stream.flush(); os.fsync(stream.fileno())
+                    outputs[name]=driver.file_binding(path)
+                report['measurement']=dict(cpu_seconds=process_time()-cpu,elapsed_seconds=perf_counter()-wall,
+                    includes='Physical source factors, field vertex, all9 moment contractions and durable NPY output',
+                    excludes='Model/metadata factory, source frame authentication and physical basis loading')
+                reference=json.loads(driver.authenticate(prior['original_reference']).read_text())
+                if set(outputs)!=set(reference['arrays']):
+                    raise AssertionError('all9 original physical products required')
+                checks={}
+                for name,binding in outputs.items():
+                    expected=np.load(driver.authenticate(reference['arrays'][name]),allow_pickle=False)
+                    actual=np.load(driver.authenticate(binding),allow_pickle=False)
+                    if actual.shape!=expected.shape or not np.isfinite(actual).all():
+                        raise AssertionError('shape/nonfinite product: '+name)
+                    scale=float(np.max(np.abs(expected)))
+                    if scale==0:
+                        raise AssertionError('reference product lacks zero-mutation sensitivity')
+                    error=float(np.max(np.abs(actual-expected)))
+                    relative=error/scale
+                    checks[name]=dict(relative_error=relative,max_absolute_error=error,reference_max=scale,
+                        tolerance=3e-10,zero_mutant_relative_error=1.,bitwise_equal=bool(np.array_equal(actual,expected)),
+                        passed=relative<=3e-10)
+                report.update(outputs=outputs,checks=checks,source_indices_loaded=sorted(frames.cache),
+                    coefficient_indices_loaded=sorted(coefficients.cache),
+                    status='passed' if all(x['passed'] for x in checks.values()) else 'failed')
+                print('DIRECT_MOMENT_001_products_complete',flush=True)
+    except BaseException as error:
+        report['error']=type(error).__name__+': '+str(error)
+    finally:
+        if frames is not None: frames.close_frames()
+        if coefficients is not None: coefficients.close_frames()
+    report.update(total_elapsed_seconds=perf_counter()-started,budget=budget.snapshot(),
+        process_peak_rss_bytes=int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)*1024)
+    driver.exact_publish(ROOT/'result.json',report,budget=None)
+    print(json.dumps(dict(status=report['status'],result=str(ROOT/'result.json'),error=report.get('error'))),flush=True)
+    return 0 if report['status']=='passed' else 2
+
+if __name__=='__main__':
+    raise SystemExit(main())

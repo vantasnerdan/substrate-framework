@@ -1,0 +1,122 @@
+{
+  "registered_at": "2026-10-28T19:45:09.572963+00:00",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-004.json",
+    "bytes": "2895",
+    "sha256": "dbcebe5240a3ecd29808cac985098c72cae70edf80a4f039e66021c708217449"
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/force-noise-registration.json",
+      "bytes": "10740",
+      "sha256": "f55e567302ea89b0659f28e2acd7c75a8cb6e1de24a53b56de5ecb447a907008"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_force_noise_oracle.py",
+      "bytes": "12333",
+      "sha256": "89fe84872c56a299dffe16e09698f4b91627046be6f82fe31d5b567b3bdffb99"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_force_noise.py",
+      "bytes": "12990",
+      "sha256": "3f0db4fbb806d7df3e493bf8b47573141577536da52160418d10d22bc8149b41"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/finiteq-response-registration.json",
+      "bytes": "10470",
+      "sha256": "24522663a267882affc223d7d976bccddebc9ab8561f367702f0cf3b15d703c0"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_finiteq_response_oracle.py",
+      "bytes": "18247",
+      "sha256": "18b691cf11ac75c227e02c9e91d9a85430ec4deef130a553c663591a279a65bd"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_finiteq_material.py",
+      "bytes": "11817",
+      "sha256": "f79133386726cb1e48ead41c66e9bc0c2bc26f3d3c280deaef852d4a84669921"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_force_fluctuations.py",
+      "bytes": "10682",
+      "sha256": "9fd2e22d39bddc49fb75d582e4b5762efbd633253e7a138350fc57c1a6229545"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_bloch_response.py",
+      "bytes": "12977",
+      "sha256": "fb44780809bbec9de4e5f27742513123dff098dc01d23fc91884bb41b7b083a0"
+    }
+  ],
+  "executions": [
+    {
+      "label": "force-noise-oracle-001",
+      "argv": [
+        "timeout",
+        "60s",
+        "taskset",
+        "-c",
+        "9",
+        "env",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "NUMEXPR_NUM_THREADS=1",
+        "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_force_noise_oracle.py",
+        "--result",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/force-noise-oracle-001.json"
+      ]
+    },
+    {
+      "label": "finiteq-response-oracle-001",
+      "argv": [
+        "timeout",
+        "60s",
+        "taskset",
+        "-c",
+        "10",
+        "env",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "NUMEXPR_NUM_THREADS=1",
+        "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_finiteq_response_oracle.py",
+        "--result",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/finiteq-response-oracle-001.json"
+      ]
+    },
+    {
+      "label": "ionic-q-grid-material-001",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-ionic-q-grid-001.service",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=7",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=120s",
+        "--property=RuntimeMaxSec=120s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic_q_material.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic-q-grid-material-001",
+        "--complete-grid"
+      ]
+    }
+  ],
+  "scope": "Complete finite-q/frozen material grid and independent newly implemented equation checks. Actual force noise/finite-q material consumers follow only their own successful equation check. No full-grid trajectory or physical contact convergence claimed.",
+  "limits": "Each finite oracle60s; actual complete frozen-grid consumer120s including context. Independent cores7,9,10. All prior charges retained."
+}

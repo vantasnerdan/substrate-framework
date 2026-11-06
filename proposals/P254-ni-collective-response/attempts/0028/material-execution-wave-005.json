@@ -1,0 +1,108 @@
+{
+  "registered_at": "2026-10-28T19:51:30.764822+00:00",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-004.json",
+    "bytes": "2895",
+    "sha256": "dbcebe5240a3ecd29808cac985098c72cae70edf80a4f039e66021c708217449"
+  },
+  "oracles": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/force-noise-oracle-001.json",
+      "bytes": "37518",
+      "sha256": "dc4aafebc562ee950cbf6a0f5a55fe41aec3a276f26d1b7920864ce087bf28da"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/finiteq-response-oracle-001.json",
+      "bytes": "402723",
+      "sha256": "a6a0945b50c8a14cb5f61b88b1a92c8eb9aa74e888b0d80afdec2c290d6a934c"
+    }
+  ],
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_force_noise.py",
+      "bytes": "13196",
+      "sha256": "2b104264f80a21cf0fd023c55872017bf3e9954d23143c4768be12a107372f39"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_finiteq_material.py",
+      "bytes": "12132",
+      "sha256": "6bbbaa9732d29afef1947367b1af54b6c0678af64844aaa6aebdb31ad83f2b92"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/force-noise-registration.json",
+      "bytes": "10740",
+      "sha256": "f55e567302ea89b0659f28e2acd7c75a8cb6e1de24a53b56de5ecb447a907008"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/finiteq-response-registration.json",
+      "bytes": "10470",
+      "sha256": "24522663a267882affc223d7d976bccddebc9ab8561f367702f0cf3b15d703c0"
+    }
+  ],
+  "executions": [
+    {
+      "label": "material-force-noise-001",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-force-noise-001.service",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=6",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=120s",
+        "--property=RuntimeMaxSec=120s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_force_noise.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/material-force-noise-001",
+        "--scratch-directory",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "--block-size",
+        "8",
+        "--row-block-size",
+        "2048",
+        "--output-max-bytes",
+        "67108864"
+      ]
+    },
+    {
+      "label": "finiteq-material-001",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-finiteq-material-001.service",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=8",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=120s",
+        "--property=RuntimeMaxSec=120s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_finiteq_material.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/finiteq-material-001"
+      ]
+    }
+  ],
+  "limits": "Two independent120s pilots, each4GiB/swap0/oneBLASthread, CPUs6 and8; existing completed inputs retained. No Native/cloud action.",
+  "scope": "Actual complete-column selected-source equal-time physical noise; actual full-row selected-column rectangular operator/kernel validation. Neither is a full material trajectory or irreversible bath."
+}

@@ -1,0 +1,875 @@
+{
+  "preregistration_commit": "2cb8638a",
+  "allowance": 1e-10,
+  "scope": "finite original-basis held-reference unitary-orbit tangent; physical +g; independently supplied frozen curvature; no material or equilibrium-noise claim",
+  "versions": {
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "sympy": "1.14.0"
+  },
+  "budget": {
+    "wall_cap_seconds": 115,
+    "root_total_cap_seconds": 120,
+    "BLAS_threads": 1,
+    "CPU_allocation": 6
+  },
+  "missing_physical_inputs": [
+    "stationary full-target material action mapping",
+    "coupled-equilibrium covariance/noise and physical temperature identification",
+    "justified environment/population-relaxation or loss law"
+  ],
+  "energy_scope": "conserved action Hessian on admissible real unitary tangent; not guaranteed positive; excludes equal-population occupation/coherence perturbations; no work-integral definition",
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/screened_force_response.py",
+      "bytes": 3350,
+      "sha256": "bd07ecd13dd3bc7525d1eb29fd5ff0377b7f2118e3fffd9bfa7cc8d662167b93"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/variational_fermion_static.py",
+      "bytes": 6628,
+      "sha256": "b48b534190ece340da9a80660bc84b60cd4e9811df57999daae7c49618dd55bd"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/finite_fermion_response.py",
+      "bytes": 1970,
+      "sha256": "288eebb6c6caaa02367effde7b2236d5075e63be5ec8ac0812e1db4250a3c834"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/Modules/constants.f90",
+      "bytes": 5984,
+      "sha256": "56c39e90c6f0592aff13972cd090292024a3d4e9e86d0ce4fdfdb5643f1ac1c0"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PW/src/dynamics_module.f90",
+      "bytes": 84104,
+      "sha256": "d7f38fa0bff6f44c0396926baedee0ae474d3958a9b18dffbe00e2d7c26ad1c4"
+    },
+    {
+      "path": "/opt/qebuild/q-e-qe-7.5/PHonon/PH/dyndia.f90",
+      "bytes": 3605,
+      "sha256": "20e50d6021ce61236da9d09b44a759f1d86fde1768ef047eda186ace8f2b0d54"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0020/constructive-dynamics-source.original.txt",
+      "bytes": 19336,
+      "sha256": "9e95d6ad7d0217a2e277fcf7d4cc6a77db684b0fd756d703e175ec1f16a7c2aa"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0020/constructive-dynamics-source-correction.json",
+      "bytes": 1514,
+      "sha256": "332db248f353440b3a838c37733c50b49c035bcae46858aebecc63c559a562ee"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/registration.json",
+      "bytes": 6084,
+      "sha256": "6d2334f80f7f3273b324ddb982d451dc414c6e7c65455de8926dd8729479ddbc"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/source-inventory.json",
+      "bytes": 13138,
+      "sha256": "d90e1313c36c8062c336ab9fd4528d4ad5f7262ed728d2e6424fd2e169c3ab60"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0021/run_inertial_oracle.py",
+      "bytes": 24098,
+      "sha256": "037f9c6fd892f57b1ae5cac03505b6160b13420c445a236ea90b89caf3f53b4c"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/inertial_fermion_dynamics.py",
+      "bytes": 14476,
+      "sha256": "b121b4ef3e4b874834911a8b337e2900d45aaffb9d93ebd62e7755d08991687a"
+    }
+  ],
+  "details": {
+    "state_size": 22,
+    "real_tangent_dimension": 16,
+    "masses_ry": [
+      53495.76153847361,
+      918.7357970535257
+    ],
+    "time_samples": [
+      0.0,
+      0.33999999999999997,
+      0.6799999999999999,
+      1.02,
+      1.3599999999999999,
+      1.7
+    ],
+    "initial_energy_terms": {
+      "ionic_kinetic": 0.007438608285438986,
+      "ionic_frozen": 0.00035061743233342346,
+      "electronic_orbit": 0.05173904750890043,
+      "electron_ion": -0.0007867520946359483,
+      "density_interaction": 0.000433896227879552,
+      "total": 0.059175417359916445
+    },
+    "preparation": "real Gaussian tangent coordinates; seed 22521; covariance L L^T, displacement/electronic scale .025 and momentum rows scaled sqrt(M); zero ensemble mean independent of tested nonzero first moment",
+    "covariance_is_coupled_equilibrium": false,
+    "energy_metric_min_eigenvalue": 1.8693069716999716e-05,
+    "ivp_rhs_evaluations": 296
+  },
+  "wall_seconds": 0.3674503490328789,
+  "cpu_seconds": 0.35673447199999986,
+  "checks": [
+    {
+      "name": "source/screened_force_response.py",
+      "passed": true
+    },
+    {
+      "name": "source/variational_fermion_static.py",
+      "passed": true
+    },
+    {
+      "name": "source/finite_fermion_response.py",
+      "passed": true
+    },
+    {
+      "name": "source/constants.f90",
+      "passed": true
+    },
+    {
+      "name": "source/dynamics_module.f90",
+      "passed": true
+    },
+    {
+      "name": "source/dyndia.f90",
+      "passed": true
+    },
+    {
+      "name": "source/constructive-dynamics-source.original.txt",
+      "passed": true
+    },
+    {
+      "name": "source/constructive-dynamics-source-correction.json",
+      "passed": true
+    },
+    {
+      "name": "source/QE_Ry_mass_is_half_Hartree_mass",
+      "passed": true
+    },
+    {
+      "name": "source/preregistered_inventory",
+      "passed": true
+    },
+    {
+      "name": "symbolic/same_action_energy",
+      "passed": true
+    },
+    {
+      "name": "symbolic/electronic_retarded_sign",
+      "passed": true
+    },
+    {
+      "name": "symbolic/inertial_frequency_inverse",
+      "passed": true
+    },
+    {
+      "name": "symbolic/wrong_force_sign_exposed",
+      "passed": true
+    },
+    {
+      "name": "symbolic/Ry_mass_twofactor",
+      "passed": true
+    },
+    {
+      "name": "EOM/independent_original_basis_blocks",
+      "scaled_error": 1.7012955438937537e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "EOM/direct_full_rhs",
+      "scaled_error": 2.979212388069769e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "mass/unequal_source_values",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "mass/unequal",
+      "passed": true
+    },
+    {
+      "name": "mass/one_based_species_and_cartesian",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "force/physical_negative_gradient",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "mutation/force_sign",
+      "passed": true,
+      "scaled_separation": 0.06899177789049607,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "mutation/extra_factor_two",
+      "passed": true,
+      "scaled_separation": 0.001677114909903816,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "mutation/uniform_mass",
+      "passed": true,
+      "scaled_separation": 0.003283947441119024,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "mutation/dropped_electronic_ionic_drive",
+      "passed": true,
+      "scaled_separation": 0.008056961287146199,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "mutation/dropped_cross_spin_kernel",
+      "passed": true,
+      "scaled_separation": 0.0022527505659199064,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "mutation/implicit_spin_weights",
+      "passed": true,
+      "scaled_separation": 0.02016789776033673,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "time/independent_scipy_solver_success",
+      "passed": true,
+      "message": "The solver successfully reached the end of the integration interval."
+    },
+    {
+      "name": "time/all_samples",
+      "passed": true
+    },
+    {
+      "name": "time/direct_EOM/0",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/independent_exponential/0",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/populations/0",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/particle_spin/0",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/conserved/0",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/0/ionic_kinetic",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/0/ionic_frozen",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/0/electronic_orbit",
+      "scaled_error": 6.938893903907228e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/0/electron_ion",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/0/density_interaction",
+      "scaled_error": 1.6263032587282567e-19,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/direct_EOM/1",
+      "scaled_error": 6.448218242983179e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/independent_exponential/1",
+      "scaled_error": 5.295945899823801e-19,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/populations/1",
+      "scaled_error": 2.3893672442960515e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/particle_spin/1",
+      "scaled_error": 3.80450960967658e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/conserved/1",
+      "scaled_error": 6.938893903907228e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/1/ionic_kinetic",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/1/ionic_frozen",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/1/electronic_orbit",
+      "scaled_error": 2.0816681711721685e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/1/electron_ion",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/1/density_interaction",
+      "scaled_error": 3.2526065174565133e-19,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/direct_EOM/2",
+      "scaled_error": 4.2311997049100405e-15,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/independent_exponential/2",
+      "scaled_error": 9.6913257411697e-19,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/populations/2",
+      "scaled_error": 1.0560985167723952e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/particle_spin/2",
+      "scaled_error": 1.941271115318046e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/conserved/2",
+      "scaled_error": 2.0816681711721685e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/2/ionic_kinetic",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/2/ionic_frozen",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/2/electronic_orbit",
+      "scaled_error": 2.7755575615628914e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/2/electron_ion",
+      "scaled_error": 1.0842021724855044e-19,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/2/density_interaction",
+      "scaled_error": 3.2526065174565133e-19,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/direct_EOM/3",
+      "scaled_error": 2.3541112555933138e-15,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/independent_exponential/3",
+      "scaled_error": 1.8187271413222026e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/populations/3",
+      "scaled_error": 4.0968720457054723e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/particle_spin/3",
+      "scaled_error": 6.368443318871741e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/conserved/3",
+      "scaled_error": 6.938893903907228e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/3/ionic_kinetic",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/3/ionic_frozen",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/3/electronic_orbit",
+      "scaled_error": 2.0816681711721685e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/3/electron_ion",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/3/density_interaction",
+      "scaled_error": 1.6263032587282567e-19,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/direct_EOM/4",
+      "scaled_error": 4.539795349998234e-15,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/independent_exponential/4",
+      "scaled_error": 2.927071518243058e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/populations/4",
+      "scaled_error": 2.602106508725555e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/particle_spin/4",
+      "scaled_error": 3.23902637940103e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/conserved/4",
+      "scaled_error": 1.6653345369377348e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/4/ionic_kinetic",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/4/ionic_frozen",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/4/electronic_orbit",
+      "scaled_error": 4.163336342344337e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/4/electron_ion",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/4/density_interaction",
+      "scaled_error": 1.3552527156068805e-20,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/direct_EOM/5",
+      "scaled_error": 2.197519231264011e-15,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/independent_exponential/5",
+      "scaled_error": 9.124099230208444e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/populations/5",
+      "scaled_error": 1.5213691181375085e-15,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "time/particle_spin/5",
+      "scaled_error": 1.540857780539996e-15,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/conserved/5",
+      "scaled_error": 9.020562075079397e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/5/ionic_kinetic",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/5/ionic_frozen",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/5/electronic_orbit",
+      "scaled_error": 6.938893903907228e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/5/electron_ion",
+      "scaled_error": 5.421010862427522e-20,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/source_term/5/density_interaction",
+      "scaled_error": 2.168404344971009e-19,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "population/nonzero_trace_stationary",
+      "scaled_error": 3.528724147454064e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "population/weighted_number_spin_definition",
+      "scaled_error": 9.723863923621054e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/tangent_closed",
+      "scaled_error": 4.508724162787439e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/real_tangent_generator",
+      "scaled_error": 5.305407601538903e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/exact_metric_generator_identity",
+      "scaled_error": 2.380047048514974e-14,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "energy/mutation/wrong_force_sign",
+      "passed": true,
+      "scaled_separation": 0.002901657476850675,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "energy/mutation/dropped_drive",
+      "passed": true,
+      "scaled_separation": 2.204889053403263,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "energy/external_power",
+      "scaled_error": 1.4094628242311558e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/susceptibility_curvature/0",
+      "scaled_error": 1.4420932298999795e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/inertia_inverse/0",
+      "scaled_error": 1.1336926688508344e-20,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/full_original_basis/0",
+      "scaled_error": 2.6776425035111894e-19,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/composed_displacement/0",
+      "scaled_error": 8.619203662977285e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/physical_EOM_residual/0",
+      "scaled_error": 4.384959883010159e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/wrong_inertia_sign/0",
+      "passed": true,
+      "scaled_separation": 2.000194071325835,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "frequency/wrong_curvature_sign/0",
+      "passed": true,
+      "scaled_separation": 6.862701993189223e-05,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "frequency/susceptibility_curvature/1",
+      "scaled_error": 2.9583139234292864e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/inertia_inverse/1",
+      "scaled_error": 2.8529311336812407e-21,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/full_original_basis/1",
+      "scaled_error": 1.412824819251436e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/composed_displacement/1",
+      "scaled_error": 2.267238971456159e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/physical_EOM_residual/1",
+      "scaled_error": 7.016927275829489e-17,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "frequency/wrong_inertia_sign/1",
+      "passed": true,
+      "scaled_separation": 2.0000391021673196,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "frequency/wrong_curvature_sign/1",
+      "passed": true,
+      "scaled_separation": 1.0551965686267101e-05,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "covariance/declared_preparation",
+      "scaled_error": 1.502948626445801e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "covariance/independent_loading_propagation",
+      "scaled_error": 8.085530584738953e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "covariance/coordinate_recovery",
+      "scaled_error": 2.544343756340768e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "covariance/positive_semidefinite",
+      "passed": true
+    },
+    {
+      "name": "covariance/ensemble_energy_conservation",
+      "scaled_error": 2.782318187617533e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "covariance/zero_mean_preparation",
+      "scaled_error": 1.1156001616163346e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "covariance/explicit_ensemble",
+      "scaled_error": 4.849546187175246e-16,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "covariance/missing_adjoint_mutation",
+      "passed": true,
+      "scaled_separation": 0.0034084211114583,
+      "required_separation": 1e-08
+    },
+    {
+      "name": "null/zero_population/energy",
+      "scaled_error": 0.0,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "null/zero_population/all_EOM_entries_retained",
+      "passed": true
+    },
+    {
+      "name": "null/zero_population/outside_orbit_rejected",
+      "passed": true
+    },
+    {
+      "name": "null/zero_population/no_fake_oscillator",
+      "passed": true
+    },
+    {
+      "name": "null/zero_population/equal_population_coherence_rejected",
+      "passed": true
+    },
+    {
+      "name": "null/equal_population/energy",
+      "scaled_error": 3.469446951953614e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "null/equal_population/all_EOM_entries_retained",
+      "passed": true
+    },
+    {
+      "name": "null/equal_population/outside_orbit_rejected",
+      "passed": true
+    },
+    {
+      "name": "null/equal_population/no_fake_oscillator",
+      "passed": true
+    },
+    {
+      "name": "null/equal_population/equal_population_coherence_rejected",
+      "passed": true
+    },
+    {
+      "name": "null/energy_degeneracy/energy",
+      "scaled_error": 1.734723475976807e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "null/energy_degeneracy/all_EOM_entries_retained",
+      "passed": true
+    },
+    {
+      "name": "null/energy_degeneracy/outside_orbit_rejected",
+      "passed": true
+    },
+    {
+      "name": "null/energy_degeneracy/no_fake_oscillator",
+      "passed": true
+    },
+    {
+      "name": "null/energy_degeneracy/equal_population_coherence_rejected",
+      "passed": true
+    },
+    {
+      "name": "null/unequal_population_degenerate_energy/energy",
+      "scaled_error": 1.734723475976807e-18,
+      "allowance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "null/unequal_population_degenerate_energy/all_EOM_entries_retained",
+      "passed": true
+    },
+    {
+      "name": "null/unequal_population_degenerate_energy/outside_orbit_rejected",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "passed": true
+}

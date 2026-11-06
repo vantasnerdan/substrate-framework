@@ -1,0 +1,114 @@
+{
+  "check_count": 35,
+  "checks": [
+    "native stdout remains original raw-byte generation",
+    "native stdout ecutwfc_ry: baseline",
+    "native stdout ecutwfc_ry: mutations supplied",
+    "native stdout ecutwfc_ry: mutation 1 rejected",
+    "native stdout ecutrho_ry: baseline",
+    "native stdout ecutrho_ry: mutations supplied",
+    "native stdout ecutrho_ry: mutation 1 rejected",
+    "native stdout conv_thr_ry: baseline",
+    "native stdout conv_thr_ry: mutations supplied",
+    "native stdout conv_thr_ry: mutation 1 rejected",
+    "native stdout degauss_ry: baseline",
+    "native stdout degauss_ry: mutations supplied",
+    "native stdout degauss_ry: mutation 1 rejected",
+    "native stdout exchange-correlation is PBE",
+    "native stdout atom and type counts",
+    "Ni native pseudovalence identity: baseline",
+    "Ni native pseudovalence identity: mutations supplied",
+    "Ni native pseudovalence identity: mutation 1 rejected",
+    "Ni native pseudo MD5 raw-byte binding: baseline",
+    "Ni native pseudo MD5 raw-byte binding: mutations supplied",
+    "Ni native pseudo MD5 raw-byte binding: mutation 1 rejected",
+    "H native pseudovalence identity: baseline",
+    "H native pseudovalence identity: mutations supplied",
+    "H native pseudovalence identity: mutation 1 rejected",
+    "H native pseudo MD5 raw-byte binding: baseline",
+    "H native pseudo MD5 raw-byte binding: mutations supplied",
+    "H native pseudo MD5 raw-byte binding: mutation 1 rejected",
+    "native electron count equals independent exact composition dot pseudovalence: baseline",
+    "native electron count equals independent exact composition dot pseudovalence: mutations supplied",
+    "native electron count equals independent exact composition dot pseudovalence: mutation 1 rejected",
+    "SCF published geometry tolerance matches bound source: baseline",
+    "SCF published geometry tolerance matches bound source: mutations supplied",
+    "SCF published geometry tolerance matches bound source: mutation 1 rejected",
+    "published optimizer gate equals frozen relaxation gate",
+    "durable optimizer pending geometry equals published final"
+  ],
+  "electron_count": "564",
+  "geometry_publication_tolerance_angstrom": 2e-06,
+  "observed_stdout_settings": {
+    "conv_thr_ry": "1/10000000000",
+    "degauss_ry": "1/50",
+    "ecutrho_ry": "480",
+    "ecutwfc_ry": "40"
+  },
+  "pseudos": [
+    {
+      "count": 31,
+      "native_md5": "1ee80287db30b12d2bc1f57a5b5d6409",
+      "path": "/home/administrator/projects/catalyst-dft/pseudos/ni_pbe_v1.4.uspp.F.UPF",
+      "raw_sha256": "f76b86ce60cde3d83dfcc8df79ba05478db573d158289f1b226919442d977d25",
+      "species": "Ni",
+      "valence": "18"
+    },
+    {
+      "count": 6,
+      "native_md5": "761ae9a214b05c3daf00ab9f6b793d6f",
+      "path": "/home/administrator/projects/catalyst-dft/pseudos/h_pbe_v1.4.uspp.F.UPF",
+      "raw_sha256": "897f39441a8f0feb1f504af4cebce9dcf95c9cdc16858a7498991c74f1ad127b",
+      "species": "H",
+      "valence": "1"
+    }
+  ],
+  "registration_sha256": "e43550c037fb7a02fe9115d4936826b5a28a702db8978c2e96fd7a0b6aa269a2",
+  "runtime_end": {
+    "affinity": [
+      5
+    ],
+    "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-w1-primary-metadata-0008-001.service",
+    "cgroup_observed": {
+      "cpu.stat": "usage_usec 3682206\nuser_usec 3273814\nsystem_usec 408391\ncore_sched.force_idle_usec 0",
+      "memory.current": "112300032",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.max": "2147483648",
+      "memory.peak": "112300032"
+    },
+    "environment": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src"
+    },
+    "max_rss_kib": 147940,
+    "pid": 16333,
+    "proc_status": "Name:\tpython\nUmask:\t0002\nState:\tR (running)\nTgid:\t16333\nNgid:\t0\nPid:\t16333\nPPid:\t2867432\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t64\nGroups:\t4 27 1000 \nNStgid:\t16333\nNSpid:\t16333\nNSpgid:\t16333\nNSsid:\t16333\nKthread:\t0\nVmPeak:\t  315460 kB\nVmSize:\t  315460 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t  148132 kB\nVmRSS:\t  148132 kB\nRssAnon:\t  108640 kB\nRssFile:\t   39492 kB\nRssShmem:\t       0 kB\nVmData:\t  179468 kB\nVmStk:\t     132 kB\nVmExe:\t    2956 kB\nVmLib:\t   94008 kB\nVmPTE:\t     476 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t1\nSigQ:\t0/128196\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\t00000020\nCpus_allowed_list:\t5\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t3\nnonvoluntary_ctxt_switches:\t1682\nx86_Thread_features:\t\nx86_Thread_features_locked:\t\n"
+  },
+  "runtime_start": {
+    "affinity": [
+      5
+    ],
+    "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/p254-w1-primary-metadata-0008-001.service",
+    "cgroup_observed": {
+      "cpu.stat": "usage_usec 208849\nuser_usec 172219\nsystem_usec 36630\ncore_sched.force_idle_usec 0",
+      "memory.current": "15474688",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.max": "2147483648",
+      "memory.peak": "15474688"
+    },
+    "environment": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONPATH": "/home/administrator/projects/substrate-ni-collective/src"
+    },
+    "max_rss_kib": 31820,
+    "pid": 16333,
+    "proc_status": "Name:\tpython\nUmask:\t0002\nState:\tR (running)\nTgid:\t16333\nNgid:\t0\nPid:\t16333\nPPid:\t2867432\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t64\nGroups:\t4 27 1000 \nNStgid:\t16333\nNSpid:\t16333\nNSpgid:\t16333\nNSsid:\t16333\nKthread:\t0\nVmPeak:\t  110824 kB\nVmSize:\t  110824 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   31980 kB\nVmRSS:\t   31980 kB\nRssAnon:\t   14624 kB\nRssFile:\t   17356 kB\nRssShmem:\t       0 kB\nVmData:\t   50056 kB\nVmStk:\t     132 kB\nVmExe:\t    2956 kB\nVmLib:\t   37808 kB\nVmPTE:\t     168 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t1\nSigQ:\t0/128196\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\t00000020\nCpus_allowed_list:\t5\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t3\nnonvoluntary_ctxt_switches:\t96\nx86_Thread_features:\t\nx86_Thread_features_locked:\t\n"
+  },
+  "status": "complete"
+}

@@ -1,0 +1,29 @@
+{
+  "proposal_only": true,
+  "production_authority": false,
+  "reader_authority": false,
+  "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,sys,time\nfrom pathlib import Path\nroot=Path('/home/administrator/projects/substrate-ni-collective')\nfor path in (root/'src',root/'proposals/P254-ni-collective-response/attempts/0024',root/'proposals/P254-ni-collective-response/attempts/0025'):\n    sys.path.insert(0,str(path))\nfrom substrate_framework.material_bloch_output import preload_parsers,load_saved_bloch_coverage\nimport substrate_framework.material_bloch_production\nfrom material_run_contract import implementation,verify_consumers,runtime_context,_context,bound_json\npreload_parsers()\ngrant=json.loads(Path(sys.argv[1]).read_bytes())\n_context(grant,runtime_context())\nverify_consumers(grant,implementation())\nterminal_binding=json.loads(Path(sys.argv[2]).read_bytes())\ncoverage=load_saved_bloch_coverage(terminal_binding)\nverify_consumers(grant,implementation())\nprint(json.dumps(dict(scope='authenticated actual Bloch saved consumption, no production replay',coverage_identity=coverage.coverage_identity,source_count=len(coverage.source_receipts),slot_count=len(coverage.slot_records),probe_comparisons=dict(coverage.probe_comparisons)),sort_keys=True,allow_nan=False))\n",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-saved-reader-grant-001.json",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-actual-terminal-binding-001.json"
+  ],
+  "inline_source_sha256": "c1ed9b03c6069112a7c2021ed6e3a234119a28e80271b2f0acd893d9744d74c9",
+  "cwd": "/home/administrator/projects/substrate-ni-collective",
+  "requires": "Root must create the named source/context-bound reader grant with remaining_seconds<=30 and the original successful actual production terminal binding AFTER separately authorized production. Neither file/result is fabricated here.",
+  "runtime": {
+    "cpu": 7,
+    "MemoryMax": 4294967296,
+    "MemorySwapMax": 0,
+    "RuntimeMaxSec": 30,
+    "Restart": "no",
+    "threads": 1
+  },
+  "dependency_inventory": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-bloch-context-controls-001/material-bloch-dependency-universe.json",
+    "bytes": "2780562",
+    "sha256": "00bda0f4eb9fa70bab6a6ed6f98d5e1e2259136f4465b43a510b13488fa8a938"
+  },
+  "compound_authority": "Use same complete implementation source/dependency universe; _context and verify_consumers reuse inherited exact runtime predicates; archive reader authenticates producer recipe independently."
+}

@@ -1,0 +1,100 @@
+{
+  "schema": "P254-0026-prepared-model-implementation-handoff-v1",
+  "owner": "PreparedModelImplementation26",
+  "status": "Complete new primitive and independent oracle sources; NOT executed or mathematically admitted",
+  "immutable": true,
+  "canonical_issue": "https://github.com/vantasnerdan/substrate-framework/issues/225",
+  "scope": "Prepared declared joint-second-order common-functional bridge; moving full-row factor mean/tangent; selected ordered covariance source and readout. Root owns primitive execution and later finite-time composition.",
+  "owned_sources": [
+    {"path":"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_reference.py","bytes":"7090","sha256":"0fe578683f23f861c8aacfcc0abd02179da4108710505746e3d96b3444a6afbc"},
+    {"path":"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_factor_dynamics.py","bytes":"8354","sha256":"5f2afda50bd889ea7e1e0972584296126ce15eab4d38099054414af2a39c78fa"},
+    {"path":"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/prepared_covariance_source.py","bytes":"9651","sha256":"4d6d8ceccf792a9bde26d2d8acc27f32c57467dac49f8ea4e3ae3fbaaf7a81ff"},
+    {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/run_prepared_factor_oracle.py","bytes":"25819","sha256":"536d06f6c07ee150f73fe263147a492a7d4b4fe421f40a09c9bcb1c71bc973df"}
+  ],
+  "settled_inputs_read_and_raw_bound": [
+    {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/implementation-registration.json","bytes":"11647","sha256":"dc2289436be7f46d96922986ed4da4c205851a9b136b119efa1eda9785213a39"},
+    {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/reference-preparation-grounding.json","bytes":"65758","sha256":"3835295333716f2a5ec63f35ebde4599f561f3fb3e706ca362f70ead28536b7b"},
+    {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/action-dynamics-grounding.json","bytes":"75085","sha256":"681f2853b82d57132f1367bfc4e46f342c69493cb1dfe5fa5d52e7361c7c5d11"},
+    {"path":"/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0026/additional-source-access-001.json","bytes":"4336","sha256":"652fe4e9021efca7feaba1eeccd700272c818b8150c56ad76c9ed2a5085538fb"},
+    {"path":"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_factor_preparation.py","bytes":"11366","sha256":"3dd3767a13da9fd5f5d7559bc3f7a98cf00d365655a08980db551d011aa25b96"},
+    {"path":"/home/administrator/projects/substrate-ni-collective/src/substrate_framework/physical_bilinear_preparation.py","bytes":"6059","sha256":"8923e2ba00c526e9b8d74163dc053a973b930f9c4eb2524ef49187b5af230f67"}
+  ],
+  "existing_sources_changed": [],
+  "execution": {
+    "tests_builds_formatters_imports_scientific_runs": "NONE",
+    "performed": "Source reads, four new source writes and scoped source edit; stdlib-only original-byte SHA256/count metadata; this immutable handoff write.",
+    "not_claimed": "No oracle pass, numerical result, material smoke, compilation, finite-time result, scalability measurement or Git admission."
+  },
+  "defining_scalar": {
+    "energy": "sum_s w_s Tr(H0_s rho_s) + dv/2 sum(delta_n*K(delta_n)) + u.(G_active+G_held-Gbar-Fbar-Fsupport) + u.C.u/2 + sum(p*p/M)/2",
+    "density": "delta_n=n_active+n_held-nbar; each active sector density and gradient is weighted explicitly by w_s",
+    "hamiltonian": "H_s=H0_s+V_s[K(delta_n)]+g_s(u)",
+    "force": "Fbar+Fsupport-(G_active+G_held-Gbar)-C*u",
+    "interpretation": "Fixed source-labelled joint-second-order effective scalar; not full PBE recalibration at arbitrary D. W*delta_rho*u^2 is omitted at the declared Taylor order, not asserted physically zero.",
+    "support": "Mandatory explicitly authorized constant conservative support force. Zero requires an explicit no-support declaration, never an implicit fallback.",
+    "weights": "Uniform explicit independent sector convention w_s=1/N. Selected sectors plus an explicitly supplied held density/gradient are allowed. No implicit spin factor, IBZ multiplicity or invented missing sectors."
+  },
+  "apis": {
+    "prepared_reference.py": [
+      "DyadCoupling Protocol exactly consumes npw,nr,ndof,cell_volume_bohr3,grid_measure_bohr3; moments(left,right,coefficient=None), potential_action(field,vectors), ionic_action(direction,vectors).",
+      "PreparedSector(preparation, initial_frame, coupling, h0, density_component, weight, basis_identity, operator_authority): existing FactorPreparation is mandatory; h0 is MaterialHamiltonian.apply or a genuine full-row equivalent; density_component selects the spin/component column; d property exposes constant admitted raw density coefficients.",
+      "PreparedReference(nbar,gbar,fbar,held_density,held_gradient,curvature,masses,support_force,kernel,ncells,expansion_authority,offset_authority,coverage_authority,support_authority,coordinate_identity,state_authority): nbar/held_density are [nr,ncomponent], all gradients/forces/masses [ndof], C [ndof,ndof]. No optional physical defaults. kernel accepts complex [nr,ncomponent] and returns same shape. C unmassweighted, masses in Ry convention.",
+      "PreparedReference.validate_sectors(sectors) enforces full coordinate/grid agreement and w=1/N; returns physical grid measure."
+    ],
+    "prepared_factor_dynamics.py": [
+      "FactorMean(frames,u,p): one full-row [npw,rank] frame per sector and all ionic u,p. FactorTangent(ket,bra,u,p): ket [npw,rank], independent bra [rank,npw].",
+      "PreparedFactorDynamics(reference,sectors); initial_mean(u,p); mean(frames,u,p); tangent(ket,bra,u,p); zero_tangent().",
+      "evaluate_mean(state)->MeanEvaluation(model,state,active_density,active_gradient,delta_density,potential,h_frames,rhs,acceleration,energy). rhs is a FactorMean containing derivatives, not a physical state. It computes mean moments/K/H0-Psi once per stage.",
+      "tangent_moments(state,tangent)->(weighted_density,weighted_positive_gradient). tangent_rhs(evaluation,tangent)->FactorTangent derivative. Pass the SAME stage evaluation for all selected sources; it is checked against model identity and must not be mutated/reused after its state changes.",
+      "traces(state,tangent=None)->raw per-sector trace array. Means and trace variations are distinct; caller supplies any number/spin weights explicitly."
+    ],
+    "prepared_covariance_source.py": [
+      "PreparedProbe(actions,adjoints,u,p,constant,identity,units); actions/adjoints are tuples of genuine arbitrary-full-row actions. They are UNWEIGHTED; model applies sector weights. adjoint() explicitly conjugates coefficients and swaps actions.",
+      "FactorCrossPreparation(coefficients,state_authority,representation_authority): one [2*ndof,rank,rank] Hermitian raw coefficient array E per sector representing <delta rho_X y_j>=Psi E_j Psi^dagger, y=(u,p), X=sqrt(N)*delta rho. Reuses CrossPreparation collective scaling and authority convention without PW-square arrays. product(model,state_authority) constructs explicit authorized zeros.",
+      "PreparedCovariance(model, *, electronic_authority, ionic=None, cross=None): IonicPreparation is the existing canonical class. Cross requires ionic and explicit representable factor-cross authority. Electronic marginals must be the admitted independent gauge-invariant quasifree sectors.",
+      "source(right, *, ordering='AB')->OrderedSource(electronic,ionic,cross,ordering,right_identity,preparation_authority). Sources are INITIAL-time only, built from initial_frame; AB and BA are separate. Each known part is a FactorTangent and can be advanced independently by Root's later stepper; unknown ionic/cross remain None.",
+      "readout(model,state,tangent,probe)->complex physical trace pairing. probe_mean(model,state,probe)->separate uncentered per-cell mean. ordered_readout(model,state,source,probe)->electronic/ionic/cross/total/complete/ordering/scope; total is None unless both missing-state authorities are supplied.",
+      "total_force_probe(model,direction,*,identity)->PreparedProbe with -g electronic actions, -C.T*direction ionic coefficient, zero momentum coefficient, and the complete declared affine force offset."
+    ]
+  },
+  "factor_derivation": {
+    "mean": "rho=Psi D Psi^dagger, Psi_dot=-i H Psi, D fixed. Full PW rows remain on every frame.",
+    "tangent": "delta_rho=L Psi^dagger+Psi R. Ldot=-i(H L+deltaH Psi D); Rdot=i(R H+D Psi^dagger deltaH). R is an independent bra array, not L^dagger. deltaH need not be Hermitian, so its adjoint action is reconstructed using conjugate complex field/direction rather than identifying it with the ket drive.",
+    "physical_derivative": "Reconstruction MUST also include L Psi_dot^dagger and Psi_dot R. The resulting derivative is -i([H,delta_rho]+[deltaH,rho]). Leg derivatives alone are not the density derivative.",
+    "ordered_source_AB": "N*w_B*(I-rho) B rho, represented by ket=N*w_B*(B Psi-Psi D Psi^dagger B Psi)D and zero bra.",
+    "ordered_source_BA": "N*w_B*rho B(I-rho), represented by zero ket and bra=N*w_B*D*(B^dagger Psi-Psi D Psi^dagger B^dagger Psi)^dagger.",
+    "population": "No inverse D, no occupation-gap division, no population/degenerate-sector removal. Full complement enters B Psi and every subsequent full-row action.",
+    "normalization": "Mean uses w_s Tr(A rho). Collective readout uses w_s Tr(A X), X=sqrt(N)*delta rho, so electronic covariance is N sum_s w_s^2 CAR_s. Ionic y is canonical collective coordinate. N*w_s=1 ensures matching quantum mean/tangent commutator scaling for the explicit uniform modes."
+  },
+  "oracle": {
+    "proposed_invocation": "From repository root, using the accepted scientific Python environment: python proposals/P254-ni-collective-response/attempts/0026/run_prepared_factor_oracle.py --result proposals/P254-ni-collective-response/attempts/0026/prepared-factor-oracle-001.json",
+    "execution_owner": "Root only; new cumulative oracle wall allowance remains 120 seconds as registered, shared with the sibling block.",
+    "result": "Exclusive result creation; JSON passed/checks/failures/original_source_bindings. Nonzero exit on a failed claim; first failed block stops dependent comparisons. Raw-byte bindings are made at execution as well as in this handoff.",
+    "allowances": "Exact SymPy identities where available; numerical comparisons rtol=1e-10, atol=1e-12 with actual max-absolute residuals in every comparison.",
+    "ordered_blocks": [
+      "FIRST independent SymPy scalar differentiation: mixed spin K, nonzero density/force/support offsets, two coordinates, unequal masses, fixed C and coordinate-origin identity.",
+      "Small original-density-matrix mean/scalar/force comparisons using two nonorthogonal rank-two physical frames in three full modes each. Nonstationary H couples occupied source to initially empty complement; all two ionic coordinates retained.",
+      "Independent arbitrary complex ket/bra tangent reconstruction including moving-frame terms, mixed-spin feedback, ionic force, and trace conservation.",
+      "Literal occupation-bit CAR/Fock AB and BA: full reconstructed source entries, physical readout, explicit adjoint, separate mean/collective normalization, diagonal population and equal-occupation coherence.",
+      "Exact full-line canonical Gaussian ionic moments; explicit product source; constructive Bernoulli-occupation-conditioned displaced Gaussian mixture with nonzero cross and unchanged independent quasifree electronic marginals.",
+      "Missing cross remains partial; unsupported generic joint representation rejected. Invertible raw-factor change preserves physical mean and ordered source.",
+      "Instantaneous Jdot=LJ+JL^T using independent complete original-basis generator and moving expected CAR/canonical commutator; every production commutator source and moving factor derivative is compared to those complete-coordinate columns."
+    ],
+    "mutations": "Wrong force sign; missing reference force/density offsets; omitted full-space complement; omitted moving-frame connection; conjugating the ordered right probe; wrong collective normalization; dropping population/degenerate noise; fixed-reference commutator. Actual detection/residuals are recorded only when Root runs.",
+    "synthetic_authority": "Every state/population/Gaussian width/support value is an explicitly finite mathematical oracle input, never a material preparation. Dense matrices occur only in this tiny independent driver."
+  },
+  "limitations_and_integration_rules": [
+    "No scientific import, compile, test or oracle was executed by this worker. Source completeness is not a passing mathematical result. Root must run the new blocks in registered dependency order before composition is trusted.",
+    "No finite-time method, stage controller, trajectory, C(t,s), material time series or whole-domain result is implemented/claimed. The complete RHS/source/readout is the assigned primitive boundary; Root owns the later finite-time wave.",
+    "Actual material D/T/ionic widths/Gbar/Fbar/support/held remainder are not chosen. Mandatory inputs remain caller authority; no MV/degauss substitution or Native processed-force interpretation exists.",
+    "Only uniform explicit independent modes with weight exactly 1/N are admitted. IBZ multiplicities must not masquerade as independent modes. Selected-Gamma total means total within the supplied active/held effective model, not total full-k/BvK material coverage.",
+    "Fixed C is the supplied Taylor coefficient, not new-state full-PBE curvature. Constant conservative support is supported; arbitrary time-dependent forcing, constraints, baths and loss are not.",
+    "K complex linearity, physical self-transpose pairing, real-field Hermiticity and common original basis/geometry identity remain source-labelled action contracts. They are not inferred by random sampling or repaired. Raw Gram checking alone cannot prove the physical identity of two frames with equal Gram; caller must bind the exact admitted initial frame and operators.",
+    "MeanEvaluation and arrays are stage-local: do not mutate their referenced state while reusing the evaluation. Mean constructors require physical real u,p. Computed forces/energy retain tiny imaginary roundoff rather than silently projecting it; a later numerical real-state stepper must explicitly own any roundoff handling and preservation checks.",
+    "The exact mathematical mean preserves its Gram/Pauli representation; this implementation does not enforce that by orthonormalization or clipping. Numerical preservation and time-method stability belong to Root's later wave.",
+    "Representable joint cross coefficients require an actual declared joint construction and the stated quasifree independent electronic marginals. Shape/Hermiticity checks are not a general joint representability proof. Cross outside the retained initial factor span, non-quasifree electronic cumulants, exact canonical fixed-N electronic marginals and correlated electronic sectors are unsupported, not replaced by zeros.",
+    "Sources can evolve outside their initial factor span through full-row moving frames and independent tangent legs. No new rank truncation or material PW-square allocation is used. Sources describe covariance-column initial data, not sampled independent amplitude noise.",
+    "Electronic/ionic/cross labels on OrderedSource refer to initial covariance origin. After propagation each part can have both electronic and ionic components. They must not be relabelled by final coordinate location.",
+    "Stationary finite APIs and all pre-existing scientific modules remain untouched; accepted0025 physics and complete reports are carried rather than re-audited or rerun. No Native/provider/process/Git/PR actions were taken."
+  ]
+}

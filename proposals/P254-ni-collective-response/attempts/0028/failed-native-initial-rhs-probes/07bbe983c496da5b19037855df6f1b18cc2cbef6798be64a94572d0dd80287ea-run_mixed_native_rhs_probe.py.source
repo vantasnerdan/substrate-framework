@@ -1,0 +1,189 @@
+#!/usr/bin/env python3
+"""Actual all-source Native preparation and full-row selected-source mixed RHS.
+
+This is an instantaneous ionic/field initial-curve qualification, NOT an evolved
+material excitation energy, local-pulse result, noise, full-q comparison or heat.
+"""
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import resource
+import sys
+from time import perf_counter, process_time
+import traceback
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[3]
+sys.path[:0] = [str(ROOT/'src'), str(HERE), str(HERE.parent/'0025'), str(HERE.parent/'0024')]
+
+import numpy as np
+from matched_joint_case import load_case
+from run_joint_q_material import bindings as existing_dependencies
+from mixed_material_dynamics import NativeMixedDynamics
+from mixed_material_edge import NativeEdgeOperators
+from mixed_native_initial import zero_curve
+from mixed_response_storage import MappedMixedState
+from substrate_framework.material_physical_operators import PhysicalFrozenAction
+from substrate_framework.partitioned_q_storage import QBudget, sync_file
+from substrate_framework.partitioned_q_work import QWork
+from substrate_framework.streamed_material_state import authenticate, file_binding
+
+LOCAL = ('run_mixed_native_rhs_probe.py', 'mixed_native_initial.py',
+         'mixed_material_dynamics.py', 'mixed_material_edge.py',
+         'mixed_coordinate_response.py', 'mixed_frame_response.py',
+         'mixed_material_moments.py', 'mixed_physical_field_dyads.py',
+         'mixed_response_storage.py')
+
+
+def sources():
+    # Reuse the established Native action/parser closure, not a loaded-only
+    # inventory. load_case/make_history preload the selected real saved reader.
+    rows = existing_dependencies()+[file_binding(HERE/name) for name in LOCAL]
+    return list({r['path']: r for r in rows}.values())
+
+
+def require(report, name, condition, **details):
+    report['checks'].append(dict(name=name, passed=bool(condition), **details))
+    if not condition:
+        raise AssertionError(name)
+
+
+def execute(args, report, budget):
+    args.directory.mkdir(parents=True, exist_ok=False)
+    history_binding = file_binding(args.history)
+    zero_binding = file_binding(args.zero_source)
+    if history_binding['sha256'] != args.history_sha256 or zero_binding['sha256'] != args.zero_source_sha256:
+        raise ValueError('actual history/zero source digest differs')
+    case = load_case(args.case)
+    history = case.make_history(history_binding, budget, block_size=8)
+    case.bind_response(history, [0.,0.,0.])
+    history.set_interval(0., history.final.time)
+    dynamics = NativeMixedDynamics(case, {c: history for c in ('plus','minus','mixed')}, budget=budget)
+    initial = zero_curve(args.directory/'initial.json', source=zero_binding,
+                         dynamics=dynamics, budget=budget)
+    closure = sources()
+    identity = hashlib.sha256(json.dumps(dict(sources=closure, initial=initial), sort_keys=True).encode()).hexdigest()
+    work = QWork(args.directory/'work', budget, [10], identity)
+    report.update(source_bindings=closure, history=history_binding,
+                  literal_zero_source=zero_binding, initial=initial,
+                  model_identity=case.identity, source_count=dynamics.count)
+    with MappedMixedState(initial, budget=budget) as state:
+        prepared = dynamics.prepare(state, work)
+        try:
+            records = prepared.record['moment_records']
+            require(report, 'actual_all_source_zero_moment_barrier', len(records)==dynamics.count
+                    and all(set(r['arrays'])=={'all_moments_zero'} for r in records))
+            require(report, 'genuine_zero_electronic_initial_variations',
+                    all(not np.any(a) for m in prepared.moments.values() for a in m.values()))
+            index = max(range(dynamics.count), key=lambda i: int(np.prod(history.initial.slots[i].shape)))
+            psi = history.frame(index, 0.)
+            try:
+                rhs = prepared.edge_rhs(index, state)
+                shape = history.initial.slots[index].shape
+                require(report, 'all_original_rows_and_columns_retained',
+                        all(a.shape==shape and np.isfinite(a).all() for a in rhs.values()),
+                        source_index=index, original_shape=list(shape))
+                report['rhs'] = {c: budget.array(args.directory/(c+'-rhs.npy'), a) for c,a in rhs.items()}
+                for binding in report['rhs'].values():
+                    sync_file(binding['path'])
+                stage = history._stage(0.)[2]
+                operators = NativeEdgeOperators(dynamics, index, stage)
+                count = budget.actions
+                zero = operators.mean(index, np.zeros_like(psi))
+                require(report, 'exact_zero_mean_action_has_no_native_action',
+                        not np.any(zero) and budget.actions==count)
+                mean = operators.mean(index, psi)
+                near = operators.mean(index, psi*(2.**-40))
+                error = float(np.max(np.abs(near*(2.**40)-mean), initial=0))
+                require(report, 'nonzero_small_input_is_not_thresholded', error<1.e-10,
+                        rescaled_max_abs_defect=error, input_binary_scale_exponent=-40)
+                report['mean_action'] = budget.array(args.directory/'mean-action.npy', mean)
+                sync_file(report['mean_action']['path'])
+                # Independent finite derivative of two full physical frozen
+                # Hamiltonians, not a second call to perturbation/edge_rhs.
+                theta, epsilon = .375, .125
+                du = state.small['plus'].u+theta*state.small['mixed'].u
+                da = (state.small['plus'].coordinate+theta*state.small['mixed'].coordinate) @ case.field.polarizations
+                h0 = operators.bare(index)
+                coupling = operators.gamma_coupling(index)
+                spin = history.bases[index].slot.ispin
+                outputs = []
+                for sign in (1.,-1.):
+                    action = PhysicalFrozenAction(h0, coupling,
+                        potential=stage.potential[:,spin-1],
+                        direction=stage.u+sign*epsilon*du.reshape(stage.u.shape),
+                        shift=stage.shift+sign*epsilon*da)
+                    budget.action(psi)
+                    outputs.append(action.apply(psi))
+                expected = -1j*(outputs[0]-outputs[1])/(2*epsilon)
+                actual = rhs['plus']+theta*rhs['mixed']
+                error = float(np.max(np.abs(actual-expected), initial=0))
+                require(report, 'mixed_and_first_drives_match_full_physical_H_derivative',
+                        error<1.e-9, max_abs_defect=error,
+                        independent_path='finite full PhysicalFrozenAction at displaced ionic/field coordinates')
+                report.update(prepared=prepared.binding, selected_source_index=index,
+                              selected_shape=list(shape))
+                # Actual restore must retain the source-bound totals/context.
+                restored = dynamics.restore(prepared.binding, state, work)
+                try:
+                    require(report, 'restored_canonical_forcing_matches_saved_actual_context',
+                            all(np.array_equal(restored.small_rhs[c][k], prepared.small_rhs[c][k])
+                                for c in restored.small_rhs for k in restored.small_rhs[c]))
+                finally:
+                    restored.close()
+            finally:
+                if isinstance(psi, np.memmap):
+                    psi._mmap.close()
+        finally:
+            prepared.close()
+    for binding in closure:
+        authenticate(binding)
+    report['final_source_bindings'] = sources()
+    require(report, 'unchanged_declared_dependency_closure', report['final_source_bindings']==closure)
+    report['budget'] = budget.snapshot()
+    report['status'] = 'PASS'
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--case', required=True)
+    p.add_argument('--history', type=Path, required=True)
+    p.add_argument('--history-sha256', required=True)
+    p.add_argument('--zero-source', type=Path, required=True)
+    p.add_argument('--zero-source-sha256', required=True)
+    p.add_argument('--directory', type=Path, required=True)
+    p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--max-seconds', type=float, default=1800.)
+    args = p.parse_args()
+    budget = QBudget(max_actions=32, max_seconds=args.max_seconds, max_bytes=150<<30,
+                     max_memory_bytes=4<<30, worker_memory_bytes=4<<30)
+    started, cpu = perf_counter(), process_time()
+    report = dict(schema='P254-actual-Native-mixed-initial-RHS-v1', status='RUNNING',
+        material_propagation=False, started_at=datetime.now(timezone.utc).isoformat(), checks=[],
+        scope='actual all-source self-consistent preparation; selected original full-PW ionic/field first and mixed initial RHS',
+        limitations=['instantaneous initial curve only', 'no propagated energy/noise/full-q result',
+                     'legacy nonzero density factors are not imported as raw-frame jets'])
+    code = 0
+    try:
+        execute(args, report, budget)
+    except BaseException:
+        report.update(status='FAIL', traceback=traceback.format_exc(), budget=budget.snapshot())
+        code = 1
+    report.update(ended_at=datetime.now(timezone.utc).isoformat(), measurements=dict(
+        wall_seconds=perf_counter()-started, parent_cpu_seconds=process_time()-cpu,
+        parent_peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,
+        children_peak_process_rss_bytes=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss*1024))
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with args.output.open('x') as stream:
+        json.dump(report, stream, indent=2, allow_nan=False)
+        stream.write('\n')
+    print(json.dumps(dict(status=report['status'], output=str(args.output))))
+    if code:
+        print(report['traceback'], file=sys.stderr)
+    raise SystemExit(code)
+
+
+if __name__ == '__main__':
+    main()

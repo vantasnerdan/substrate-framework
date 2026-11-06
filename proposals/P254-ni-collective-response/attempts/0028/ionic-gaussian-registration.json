@@ -1,0 +1,20 @@
+{
+  "schema": "P254-ionic-gaussian-registration-v1",
+  "construction": "Conditional sudden-release product of independent ground-state harmonic traps at every original cell/atom/Cartesian coordinate; traps define preparation only and are absent from subsequent dynamical C(q).",
+  "reference": {"path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/full-common-reference-004/full-common-reference.json", "sha256": "9b7be6a210219069f8f46aae38c7ae1ba0b5c150cc35d953db8c6632084678f9", "bytes": "669274"},
+  "grid_shape": [4, 4, 4],
+  "coordinate_identity": "QE-original-atom-major-xyz-bohr-Ry",
+  "mass": "M_a=atomic_mass_amu[a]*AMU_RY repeated xyz; AMU_RY=amu_si/(2 electronmass_si); tau=t Ry/hbar, p=M du/dtau, [u,p]=i",
+  "stiffness": "kappa_a=Re C_aa(R=0), using the actual complete seven-axis common force lattice, not Gamma and not an eigenvalue",
+  "reality_relative_tolerance": 1e-10,
+  "reality_test": "Each |Im kappa_a| <= tolerance*|Re kappa_a|; original raw complex diagonals and residuals are published. Nonpositive real part or material imaginary part raises missing-preparation-input, with no fallback.",
+  "hamiltonian": "Hprep=sum_cell,a [p_cell,a^2/(2 M_a)+kappa_a u_cell,a^2/2]; omega_a=sqrt(kappa_a/M_a). Means u=p=0 at original coordinates.",
+  "state": "rho0=rho_electronic_original tensor product over all 64 cells and ionic coordinates |0_kappa><0_kappa|. This is an explicit new preparation hypothesis, not inferred from saved electrons or curvature.",
+  "moments": {"sym_uu": "delta_cells delta_ab/(2 M_a omega_a)", "sym_pp": "delta_cells delta_ab M_a omega_a/2", "sym_up": "0", "ordered_up": "+i delta_cells delta_ab/2", "ordered_pu": "-i delta_cells delta_ab/2", "uncertainty": "Vuu Vpp - Vup^2 = 1/4 per canonical mode; ordered W=V+i J/2 positive semidefinite", "electronic_ionic_connected": "zero in both orders by the explicitly declared tensor product, for all electronic observables, including raw-frame off-diagonal bilinears"},
+  "periodic_convention": "u(q)=64^-1/2 sum_R exp(-2pi i q.R) u_R, same for p; no atom-position phase. u(q)^dagger=u(-q); ordered <z(q)z(q')>=delta_(q+q',0) Wlocal, whereas <z(q)z(q')^dagger>=delta_(q,q') Wlocal. q labels are all integer indices/4 modulo 1.",
+  "mean_coordinate": "bar_z=sum_R z_R/64=z(q=0)/sqrt(64); covariance Wlocal/64 and [bar_u,bar_p]=i/64. It is not a canonical IonicPreparation; p_total=64 bar_p would be conjugate to bar_u.",
+  "reuse": ["substrate_framework.physical_bilinear_preparation.IonicPreparation", "substrate_framework.physical_bilinear_preparation.CrossPreparation.product", "substrate_framework.inertial_fermion_dynamics.ionic_masses_ry", "substrate_framework.material_force_lattice.validated_force_grid", "material_run_contract.binding/bound_json/recover_block"],
+  "sources": "No new external scientific result: elementary canonical oscillator algebra derived independently with SymPy and finite-Fock vacuum moments. Existing QE Ry mass and lattice Fourier source conventions are reused unchanged and bound by the oracle.",
+  "oracle": ["SymPy ground-state wavefunction and SI-to-Ry kinetic coefficient", "finite-Fock vacuum ordered uu/pp/up and CCR", "direct discrete Fourier sums versus production q-pair API", "q/-q conjugacy and 1/64 mean covariance", "wrong mass factor, frequency, up sign, q pairing and cell-factor sensitivities", "negative/zero/materially complex stiffness rejection without mutation", "explicit electronic/ionic tensor-product mixed moments"],
+  "nonclaims": ["experimental temperature", "thermal or relaxed joint equilibrium", "physical cooling protocol", "stabilization of dynamical C(q)", "equilibrium at original geometry", "second spin/k-point measure", "propagated trajectory"]
+}

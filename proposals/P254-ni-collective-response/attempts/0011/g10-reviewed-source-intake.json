@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-19T21:56:03.868Z",
+  "status": "Complete reviewed ordinary-NC engineering source admitted; full material campaign remains open.",
+  "native_repository": "giuliano-vantasner/catalyst-dft",
+  "native_bank": "0858dcd",
+  "native_package": {
+    "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10/complete-proof-package.json",
+    "sha256": "d9cc05fd2c57f711e6a4bcd824d852a007d48ee182fa5c7b9ec65f799a30f31c"
+  },
+  "native_summary": {
+    "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10/proof-summary.json",
+    "sha256": "2d1469e573395419458f093f835abb708060e1d078d178985d05c69dd82eeb14"
+  },
+  "native_admission": {
+    "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10-review/admission.json",
+    "sha256": "7390793d7471dfef53399f6649b42fc28ed7f8d6f0b808288776e2c0b066b07d",
+    "bytes": "4381",
+    "mtime_ns": "1792446801029342966"
+  },
+  "native_bank_projection": {
+    "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10-review/bank-scope.json",
+    "sha256": "b9ef15d79572a213e6e42189e0963bf47add5a7c6b47560296d2a7992b0ac56f",
+    "bytes": "97813",
+    "mtime_ns": "1792446801137341381"
+  },
+  "full_independent_reviews": [
+    {
+      "reviewer": "ReviewG10NativeProof",
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10-review/ReviewG10NativeProof.json",
+      "sha256": "4783b266dec17264ce010745226260ca45c5bf21ecbbb94196506548e044fff7",
+      "bytes": "4384",
+      "mtime_ns": "1792446683942062616",
+      "verdict": "correct",
+      "confidence": 0.9,
+      "findings": []
+    },
+    {
+      "reviewer": "ReviewG10GaugeOracle",
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/nc-proof/vertices/generation10-review/ReviewG10GaugeOracle.json",
+      "sha256": "d917c82999387d2136386356c294e293182ea58de0ee5bcb5a44b6ebf4f417c6",
+      "bytes": "5969",
+      "mtime_ns": "1792446683943062601",
+      "verdict": "correct",
+      "confidence": 0.95,
+      "findings": []
+    }
+  ],
+  "scientific_oracle": {
+    "receipt": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0010/proof-001/receipt.json",
+    "sha256": "bdc75b8ffdbd85fff224479eb91cd73869cc134a93efbdeb6d3e66b6ae34ad48",
+    "review": "ReviewG10GaugeOracle reviews all source/35 recorded checks and actual native integration, no rerun."
+  },
+  "proposal_source_consumer": "g10-source-inventory-consumer.json",
+  "scope": {
+    "model": "Two-atom nonstationary SG15 ordinary-NC Ni18/H1, collinear PBE FD; exact preregistered inputs only",
+    "mpi_ranks": 1,
+    "no_admission": [
+      "stationary or converged material",
+      "live GBRV Hamiltonian equivalence",
+      "independent offdiagonal or degenerate-block spectral validation",
+      "multi-rank writer",
+      "physical loss/lifetime/coherence",
+      "nuclear rate or energy-disposal mechanism",
+      "full G1-G5 campaign completion"
+    ],
+    "honesty_limits": [
+      "unconverged-code10 refusal is conservative policy, not observed lost final scalar",
+      "converged-code0 initializes fresh response, not stale final-potential reuse",
+      "converged-code10 interruption not claimed observed",
+      "no continuous resource/cpuset or unavailable postexit peak inference"
+    ]
+  },
+  "preservation": "Failed8/9, source6, gauge/oracle, frozen54, original283-input PH specs, nativebuild006 and live W1 remain unchanged.",
+  "verification": {
+    "post_full_native_affected_tests": "tests/test_qe_phonon.py:13 passed, once; generation10/affected-tests.json",
+    "review_execution": "Read-only source/artifact review; no builds/tests/native/DFT/oracle reruns; not an independent full-byte rehash or native reconstruction."
+  }
+}

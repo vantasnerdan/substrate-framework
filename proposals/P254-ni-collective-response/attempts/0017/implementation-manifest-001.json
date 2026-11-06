@@ -1,0 +1,53 @@
+{
+  "as_of": "2026-10-27T17:51:20.365490+00:00",
+  "argv": [
+    "taskset",
+    "-c",
+    "6",
+    "env",
+    "PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0017/run_hamiltonian_oracle.py",
+    "--gamma",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/response-operators-0016/generation-003/gamma/bundle/q-1",
+    "--half",
+    "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/response-operators-0016/generation-003/half-b1/bundle/q-1",
+    "--output",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0017/hamiltonian-oracle-001.json"
+  ],
+  "source_before_execution": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_pw_hamiltonian.py",
+      "bytes": "6141",
+      "sha256": "cb0b54d7b85ef4618a65f2a96590ddc16d5e4d16d225c699c8415edd3330052f"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0017/run_hamiltonian_oracle.py",
+      "bytes": "14189",
+      "sha256": "08cad505771070e792f18b68ef701205e2a5e7683a8be9f8cab75deab8b745f8"
+    }
+  ],
+  "preregistration": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0017/registration.json",
+    "bytes": "2750",
+    "sha256": "316bbe366a66b442cc334e6faf65bacb58548fd3f8f316bfa29fc6150c521fbe"
+  },
+  "bound_inputs": [
+    {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/response-operators-0016/generation-003/gamma/bundle/q-1/manifest.json",
+      "bytes": "221099",
+      "sha256": "d2725814eabbb06ad9e662b4dbff28fe339f7f3612b7589f124700f485d99278"
+    },
+    {
+      "path": "/home/administrator/projects/catalyst-nc-operator/runs/2026-10-19_collective-response/response-operators-0016/generation-003/half-b1/bundle/q-1/manifest.json",
+      "bytes": "221099",
+      "sha256": "c0ef5d5c4ec78e2a7f7a4fb8e82a129b205a95365591a339c13ce5a0eff5818b"
+    }
+  ],
+  "wall_cap_seconds": 180,
+  "correction_to_agent_suggested_command": "Root uses declared singletonCPU6, not agent suggestionCPU0-5; old frozen case CPU claims remain reserved."
+}

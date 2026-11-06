@@ -1,0 +1,17 @@
+[Unit]
+Description=P254 A27 actual conditional neutral preparation CPU8
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/administrator/projects/substrate-ni-collective
+ExecStart="/usr/bin/python3" "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/run_material_preparation_pilot.py" "--admission" "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-production-grant-001.json" "--output" "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-pilot-001"
+CPUAffinity=8
+MemoryMax=4294967296
+MemorySwapMax=0
+TimeoutStartSec=80
+RuntimeMaxSec=80
+TimeoutStopSec=2
+Restart=no
+Environment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+StandardOutput=append:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-production-controls-001/production-process.stdout
+StandardError=append:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0027/material-preparation-production-controls-001/production-process.stderr

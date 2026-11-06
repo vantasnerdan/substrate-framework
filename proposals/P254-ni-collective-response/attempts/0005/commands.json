@@ -1,0 +1,61 @@
+{
+  "bus_environment": {
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"
+  },
+  "canonical_unit_argv": [
+    "systemd-run",
+    "--user",
+    "--property=CPUAffinity=5",
+    "--property=MemoryMax=2G",
+    "--property=WorkingDirectory=/home/administrator/projects/substrate-ni-collective",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--unit=dft-c5-metric-oracle-0005",
+    "--description=P254 complete independent finite-matrix canonical oracle CPU5",
+    "--wait",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py",
+    "--run-id",
+    "canonical-01"
+  ],
+  "recovery_unit_argv": [
+    "systemd-run",
+    "--user",
+    "--property=CPUAffinity=5",
+    "--property=MemoryMax=2G",
+    "--property=WorkingDirectory=/home/administrator/projects/substrate-ni-collective",
+    "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src",
+    "--setenv=OMP_NUM_THREADS=1",
+    "--setenv=MKL_NUM_THREADS=1",
+    "--setenv=OPENBLAS_NUM_THREADS=1",
+    "--unit=dft-c5-metric-recovery-0005",
+    "--description=P254 explicit checkpoint recovery CPU5",
+    "--wait",
+    "/home/administrator/projects/substrate-framework/.venv/bin/python",
+    "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py",
+    "--run-id",
+    "recovery-01",
+    "--resume-from",
+    "interrupt-01"
+  ],
+  "canonical_pane_shell_command": "systemd-run --user --property=CPUAffinity=5 --property=MemoryMax=2G --property=WorkingDirectory=/home/administrator/projects/substrate-ni-collective --setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src --setenv=OMP_NUM_THREADS=1 --setenv=MKL_NUM_THREADS=1 --setenv=OPENBLAS_NUM_THREADS=1 --unit=dft-c5-metric-oracle-0005 '--description=P254 complete independent finite-matrix canonical oracle CPU5' --wait /home/administrator/projects/substrate-framework/.venv/bin/python /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py --run-id canonical-01; journalctl --user -u dft-c5-metric-oracle-0005 --no-pager -o cat",
+  "recovery_pane_shell_command": "systemd-run --user --property=CPUAffinity=5 --property=MemoryMax=2G --property=WorkingDirectory=/home/administrator/projects/substrate-ni-collective --setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src --setenv=OMP_NUM_THREADS=1 --setenv=MKL_NUM_THREADS=1 --setenv=OPENBLAS_NUM_THREADS=1 --unit=dft-c5-metric-recovery-0005 '--description=P254 explicit checkpoint recovery CPU5' --wait /home/administrator/projects/substrate-framework/.venv/bin/python /home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0005/runner.py --run-id recovery-01 --resume-from interrupt-01; journalctl --user -u dft-c5-metric-recovery-0005 --no-pager -o cat",
+  "interruption_signal_argv": [
+    "systemctl",
+    "--user",
+    "kill",
+    "--kill-whom=main",
+    "--signal=SIGTERM",
+    "dft-c5-metric-interrupt-0005.service"
+  ],
+  "herdr_submit": [
+    "herdr",
+    "pane",
+    "run",
+    "w1:pB",
+    "<pane_shell_command>"
+  ]
+}

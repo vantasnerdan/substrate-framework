@@ -1,0 +1,126 @@
+{
+  "registered_at": "2026-10-28T20:08:08.070451+00:00",
+  "root_decision": {
+    "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/root-allocation-decision-004.json",
+    "bytes": "2895",
+    "sha256": "dbcebe5240a3ecd29808cac985098c72cae70edf80a4f039e66021c708217449"
+  },
+  "source_bank": "d0e0a3ed",
+  "oracles": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reference-expansion-oracle-001.json",
+      "bytes": "3311",
+      "sha256": "c6e1fe1d3a9dcf66a1cc5e6569e595ce2bf16ca405fa8e2b40942d6ae715555a"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/field-derivative-oracle-001.json",
+      "bytes": "1821",
+      "sha256": "a3f1c72bc395435488e5fc99cc28a19a8a49a767efaab6da56069ac58aef7405"
+    }
+  ],
+  "sources": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_reference_expansion_material.py",
+      "bytes": "15176",
+      "sha256": "77ec2e61101a70ba59750b0d628589f42818da380568c224528acac3e8b708d4"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_field_derivatives.py",
+      "bytes": "11973",
+      "sha256": "681aa52f2ae54e8cf7a7b8b054b1282cf6e6a930ad1d853af38b6357f2451e5d"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reference-expansion-registration.json",
+      "bytes": "5389",
+      "sha256": "7f826b91b8df2e24351eb0ee7357f7c335477f85b984a04bc73001abebe1fc18"
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/field-derivative-registration.json",
+      "bytes": "12118",
+      "sha256": "59a47d8d32cad2367cedd6dc3c1ba2a62257a885a2ebac2fb6db0d571d7c6af4"
+    }
+  ],
+  "executions": [
+    {
+      "label": "reference-expansion-material-001",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-reference-expansion-001.service",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=6",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=300s",
+        "--property=RuntimeMaxSec=300s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_reference_expansion_material.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reference-expansion-material-001",
+        "--oracle",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/reference-expansion-oracle-001.json",
+        "--output-max-bytes",
+        "268435456",
+        "--block-size",
+        "8"
+      ],
+      "timeout": 315
+    },
+    {
+      "label": "field-derivatives-material-001",
+      "argv": [
+        "env",
+        "XDG_RUNTIME_DIR=/run/user/1000",
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus",
+        "systemd-run",
+        "--user",
+        "--unit=p254-a28-field-derivatives-001.service",
+        "--property=Type=oneshot",
+        "--property=RemainAfterExit=yes",
+        "--property=CPUAffinity=8",
+        "--property=MemoryMax=4294967296",
+        "--property=MemorySwapMax=0",
+        "--property=TimeoutStartSec=180s",
+        "--property=RuntimeMaxSec=180s",
+        "--setenv=OPENBLAS_NUM_THREADS=1",
+        "--setenv=OMP_NUM_THREADS=1",
+        "--setenv=MKL_NUM_THREADS=1",
+        "--setenv=NUMEXPR_NUM_THREADS=1",
+        "--setenv=PYTHONPATH=/home/administrator/projects/substrate-ni-collective/src:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0024:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0025:/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028",
+        "/usr/bin/python3",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_material_field_derivatives.py",
+        "--output",
+        "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/field-derivatives-material-001",
+        "--direction",
+        "1",
+        "0",
+        "0",
+        "--mixed-direction",
+        "0",
+        "1",
+        "0",
+        "--step-bohr-inv",
+        "0.004",
+        "--spacing-bohr-inv",
+        "0.04",
+        "--columns",
+        "2"
+      ],
+      "timeout": 195
+    }
+  ],
+  "allocation": "One300s full-column curvature/transport pilot and one180s exact-radial optical pilot, independent cores6/8 and4GiB each, oneBLASthread. Existing selected-source state/moments reused. All earlier time remains charged.",
+  "measured_basis": "Selected full-column density/gradient stage54.4s and H0 stage28.2s, actual initial force-noise actions/products51.3s, restoration~22s. New curvature and direct exact-radial work are not yet timed; caps are bounded pilots, not asserted performance.",
+  "scientific_expectation": "Completed source conditional/reference curvature split plus one directly checked transported slot; actual analytic UPF optical current/contact and independent representation/finite-step refinements.",
+  "recovery": "Whole selected-source expansion and optical payloads are single new completion boundaries; an interrupted attempt may lose their uncommitted work up to their respective cap, but all prior completed state/moment/spatial/noise data remain.",
+  "no_old_native_or_cloud_action": true
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "P254-clamped-array-registration-v1",
+  "status": "source-constructed-unexecuted",
+  "scope": "Full periodic 4x4x4, 37 original atoms, 111 ionic Cartesian coordinates per cell, plus ONE canonical global q0 field. Electrons are explicitly held at the original prepared state. This is a required CONTROL, not completion or replacement of joint electronic/ionic/field dynamics.",
+  "settled_inputs": {
+    "reference": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/full-common-reference-004/full-common-reference.json",
+      "bytes": "669274",
+      "sha256": "9b7be6a210219069f8f46aae38c7ae1ba0b5c150cc35d953db8c6632084678f9"
+    },
+    "ionic": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/ionic-gaussian-material-002/result.json",
+      "bytes": "18334",
+      "sha256": "b4b1dc36ddf5067cdb4d50547509e5fbae55629edf14352e5ec3ca4700d568af"
+    },
+    "joint": {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/joint-field-aggregate-001/result.json",
+      "bytes": "1351599",
+      "sha256": "cfcb1f9bc462c68363599f6c926e8c652c36f837e605138b15d47bcaca897aa5"
+    }
+  },
+  "construction_source_sha256": {
+    "src/substrate_framework/material_clamped_array.py": "5c415e660242ec065c198a76c7eaf31bf172388e4f8851108bab959283001f34",
+    "proposals/P254-ni-collective-response/attempts/0028/run_clamped_array_material.py": "75f51932356f368bf6b63e94afbfdfc29b2a79a1dd827fde4670472f9a49a6c4",
+    "proposals/P254-ni-collective-response/attempts/0028/run_clamped_array_oracle.py": "dd0a576539d218ea7f08bef69b8cc48731fcc0aba5d6b64304777601e88bd706",
+    "src/substrate_framework/material_joint_field_scalar.py": "c403841b6b36f83bf5b66cc5488870a79e7342890ae1e7932e8e032158d2210b",
+    "src/substrate_framework/ionic_gaussian_preparation.py": "85ddc70c2e856054bad33471424c788f704128049ba4eccb8ee1654d4238897e",
+    "src/substrate_framework/material_force_lattice.py": "5836ca4e76d9ae10ed6b4909d86667101ec409eac889602845a80d1ee9432a99",
+    "proposals/P254-ni-collective-response/attempts/0028/run_full_field_moments_material.py": "9f887f695f4061afc3eebf7a124440690bb6c8b7ce6a23241d038eaa228bedf4",
+    "proposals/P254-ni-collective-response/attempts/0025/material_run_contract.py": "8a8fe658b283db2b0a48d62434feb8714e04f806b02efb4b8bde9c0f60f66f6c",
+    "proposals/P254-ni-collective-response/attempts/0025/material_reference_output.py": "021f5bc6eb301183dc86941e72c4920b8321fcb18aa506a18b19312bb1b5b47a"
+  },
+  "scalar": "H_control = sum_R (p_R-Z E^T a)^T M^-1 (p_R-Z E^T a)/2 - sum_R F^T u_R + sum_RS u_R^T [C_frozen(R-S)+delta_R,S deltaC] u_S/2 + sum_R u_R^T T E^T a + N ell^T E^T a + N a^T E contact E^T a/2 + Pi^T Pi/(2 Mfield). The unchanged frozen electronic scalar constant is omitted, not inferred.",
+  "normalization": {
+    "fourier": "x_q = sum_R exp(-2pi i q.R) x_R / sqrt(N); C(q)=sum_R exp(-2pi i q.R) C(R)",
+    "gamma_order": "u_q,p_q,a,Pi",
+    "other_q_order": "u_q,p_q",
+    "gamma_u_a": "sqrt(N) T E^T",
+    "gamma_p_a": "-sqrt(N) M^-1 Z E^T",
+    "gamma_a_a": "N E (contact+Z^T M^-1 Z) E^T",
+    "affine_gradient": "(-sqrt(N) F,0,N E ell,0) at Gamma only",
+    "ordered_covariance": "W_q(t,s)=S_q(t) W0_q S_minus_q(s)^T, no dagger; real-space inverse Fourier uses 1/N",
+    "preparation": "Reuse saved local_ordered, omega_ry and masses_ry, and saved joint field ordered_covariance verbatim. Original tensor product, centered sudden release, not coupled equilibrium.",
+    "mean_CCR": "i/N for cell means, versus canonical i for orthonormal Gamma variables"
+  },
+  "kick": {
+    "local": "One original atom Cartesian canonical momentum displacement sqrt(2 M omega) at selected cell: added initial energy omega Ry, a coherent displacement rather than a one-phonon number state.",
+    "common": "Identical displacement divided by sqrt(N) in every cell: equal TOTAL initial added energy omega Ry.",
+    "covariance": "Both coherent displacements preserve the baseline connected covariance; no extra quantum noise invented."
+  },
+  "outputs": {
+    "inputs.json": "Authenticated settled inputs, current source bindings, original atom/cell/coordinate identities, raw coefficient/preparation defects, explicit times and kick, interpretation limits.",
+    "time-NNNN.npz": "Full all-atom/all-cell baseline canonical mean ions and global field; local/common kick mean deltas; ordered equal-time and two-time spatial readout blocks from every cell to kick cell for selected original atom coordinate (u,p); two-time commutators; field equal-/two-time covariance; ion-field two-time covariance.",
+    "time-NNNN.json": "Completed array binding/shapes, times, all three scenario energy/commutator/symplectic/reality/Hermiticity diagnostics. Emitted immediately per completed time.",
+    "result.json": "Final completed-time manifest. Earlier complete time receipts survive an interrupted later time. No restart/resume claim.",
+    "capacity": "Explicit total byte capacity; arrays outside repository; no full real-space 14208-square allocation. Selected readouts do not truncate internal atom/cell dynamics.",
+    "energy": "Complex mean and covariance energies plus drift relative to exact t=0 product state. No absolute electronic scalar claim."
+  },
+  "oracle": {
+    "independent": "SymPy differentiation of the real-cell homogeneous scalar, exact three-cell Fourier pairing, and separately assembled dense real-space SciPy exponential with affine source.",
+    "checks": ["Gamma sqrt(N), N and p-Za blocks", "orthonormal q/-q and per-cell-mean CCR scaling", "actual affine-force/current analogues", "original local-trap covariance prescription", "cross-cell mean propagation", "local-one-quantum and equal-total-energy common kick", "all-cell-pair connected equal-/two-time covariances", "field and ion-field covariance", "mean plus covariance energy conservation", "ordered CCR and paired symplectic conservation", "raw complex coefficient retention and exposed Hermiticity defect"],
+    "sensitive_controls": ["omit force", "omit cross-cell coupling", "omit deltaC", "omit mixed", "wrong sqrt(N)", "wrong p-Za sign", "omit contact", "wrong q pairing", "wrong covariance dagger", "wrong mean CCR normalization"],
+    "normalized_error": "norm(actual-reference)/max(1,norm(reference)) <= 3e-11; each negative control >= 1e-6",
+    "execution_status": "Not executed by source-construction worker; Root owns independent oracle and actual saved-input smoke. No passed evidence inferred."
+  },
+  "execution_limits": {"cpus": [6,7,8,9,10], "blas_omp_threads": 1, "numerical_execution_in_worker": false},
+  "no_claims": ["coupled electronic response", "propagated fermionic noise", "finite-q photons", "stability clipping", "ASR repair", "silent Hermitization", "fitted damping", "Markov bath", "FDT", "nuclear prediction", "irreversibility", "phase locking implies quantum advantage or entanglement"],
+  "root_commands_from_repository": [
+    "env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 taskset -c 6 python3 proposals/P254-ni-collective-response/attempts/0028/run_clamped_array_oracle.py --output /tmp/p254-clamped-array-oracle-001",
+    "env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 taskset -c 6 python3 proposals/P254-ni-collective-response/attempts/0028/run_clamped_array_material.py --oracle /tmp/p254-clamped-array-oracle-001/result.json --times 0 0.001 --reference-time 0 --kick-cell 0 0 0 --kick-atom 37 --kick-axis x --output /tmp/p254-clamped-array-material-001 --output-max-bytes 268435456"
+  ]
+}

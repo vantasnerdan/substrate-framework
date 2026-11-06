@@ -1,0 +1,1859 @@
+{
+  "schema": "P254-column-frame-krylov-oracle-v1",
+  "status": "passed",
+  "checks": {
+    "exponential": true,
+    "differential_equation": true,
+    "initial_state": true,
+    "duhamel_complement": true,
+    "raw_D_noncommuting": true,
+    "number_conserved": true,
+    "purity_conserved": true,
+    "sympy_real_shift_compensation": true,
+    "seed_action_reused": true,
+    "bound_dim1_time0": true,
+    "raw_shape_dim1_time0": true,
+    "bound_dim1_time1": true,
+    "raw_shape_dim1_time1": true,
+    "bound_dim1_time2": true,
+    "raw_shape_dim1_time2": true,
+    "bound_dim1_time3": true,
+    "raw_shape_dim1_time3": true,
+    "bound_dim2_time0": true,
+    "raw_shape_dim2_time0": true,
+    "bound_dim2_time1": true,
+    "raw_shape_dim2_time1": true,
+    "bound_dim2_time2": true,
+    "raw_shape_dim2_time2": true,
+    "bound_dim2_time3": true,
+    "raw_shape_dim2_time3": true,
+    "bound_dim3_time0": true,
+    "raw_shape_dim3_time0": true,
+    "bound_dim3_time1": true,
+    "raw_shape_dim3_time1": true,
+    "bound_dim3_time2": true,
+    "raw_shape_dim3_time2": true,
+    "bound_dim3_time3": true,
+    "raw_shape_dim3_time3": true,
+    "bound_dim4_time0": true,
+    "raw_shape_dim4_time0": true,
+    "bound_dim4_time1": true,
+    "raw_shape_dim4_time1": true,
+    "bound_dim4_time2": true,
+    "raw_shape_dim4_time2": true,
+    "bound_dim4_time3": true,
+    "raw_shape_dim4_time3": true,
+    "bound_dim5_time0": true,
+    "raw_shape_dim5_time0": true,
+    "bound_dim5_time1": true,
+    "raw_shape_dim5_time1": true,
+    "bound_dim5_time2": true,
+    "raw_shape_dim5_time2": true,
+    "bound_dim5_time3": true,
+    "raw_shape_dim5_time3": true,
+    "bound_dim6_time0": true,
+    "raw_shape_dim6_time0": true,
+    "bound_dim6_time1": true,
+    "raw_shape_dim6_time1": true,
+    "bound_dim6_time2": true,
+    "raw_shape_dim6_time2": true,
+    "bound_dim6_time3": true,
+    "raw_shape_dim6_time3": true,
+    "full_dimension_dense_match": true,
+    "initial_space_not_falsely_closed": true,
+    "refinement_reduces_error": true,
+    "batched_action_accounting": true,
+    "no_cross_column_projected_matrix": true,
+    "mutation_omit_original_column": true,
+    "mutation_wrong_sign": true,
+    "mutation_omit_shift_phase": true,
+    "mutation_normalize_raw_columns": true,
+    "mutation_diagonalize_D": true,
+    "mutation_false_convergence_if_residual_zeroed": true,
+    "unchanged_raw_D_number": true,
+    "unchanged_raw_D_purity": true,
+    "nonhermitian_signed_bound0": true,
+    "nonhermitian_growth0": true,
+    "nonhermitian_signed_bound1": true,
+    "nonhermitian_growth1": true,
+    "nonhermitian_full_dense": true,
+    "mutation_silent_hermitization": true,
+    "whole_decomposition_and_initial_residual_enclosed": true,
+    "initial_reconstruction_not_omitted": true,
+    "exact_breakdown_dense": true,
+    "exact_breakdown_stops": true,
+    "deliberate_breakdown_exercised": true,
+    "breakdown_not_false_convergence": true,
+    "work_cap_before_call": true,
+    "partial_batch_preserves_all_columns": true,
+    "changed_operator_seed_rejected": true,
+    "memory_cap_before_allocation": true
+  },
+  "symbolic": {
+    "H": "Matrix([[0, I], [-I, 0]])",
+    "frame": "Matrix([[2, 1], [0, 3]])",
+    "raw_D": "Matrix([[1, I/3], [-I/3, 2]])",
+    "exponential": "Matrix([[cos(t), sin(t)], [-sin(t), cos(t)]])",
+    "duhamel": "Matrix([[cos(t) - 1], [-sin(t)]])"
+  },
+  "stages": [
+    {
+      "diagnostics": {
+        "generation": 0,
+        "original_columns": 4,
+        "dimensions": [
+          1,
+          1,
+          1,
+          0
+        ],
+        "total_basis_vectors": 3,
+        "columns": [
+          {
+            "column": 0,
+            "dimension": 1,
+            "breakdown": false,
+            "residual_frobenius": 1.2294304571340204,
+            "residual_column_norms": [
+              1.2294304571340204
+            ],
+            "initial_error": 0.0,
+            "seed_action_defect": 1.5379903927645624e-16,
+            "orthogonality_frobenius": 0.0,
+            "projected_antihermitian_frobenius": 1.3877787807814457e-16
+          },
+          {
+            "column": 1,
+            "dimension": 1,
+            "breakdown": false,
+            "residual_frobenius": 1.4046268032037355,
+            "residual_column_norms": [
+              1.4046268032037355
+            ],
+            "initial_error": 3.424750116624316e-16,
+            "seed_action_defect": 7.977393650350771e-16,
+            "orthogonality_frobenius": 0.0,
+            "projected_antihermitian_frobenius": 8.326672684688674e-17
+          },
+          {
+            "column": 2,
+            "dimension": 1,
+            "breakdown": false,
+            "residual_frobenius": 1.0254370874115766,
+            "residual_column_norms": [
+              1.0254370874115764
+            ],
+            "initial_error": 1.7554167342883506e-16,
+            "seed_action_defect": 7.137019941966293e-16,
+            "orthogonality_frobenius": 4.440892098500626e-16,
+            "projected_antihermitian_frobenius": 1.1102230246251565e-16
+          },
+          {
+            "column": 3,
+            "dimension": 0,
+            "zero_original_column": true
+          }
+        ],
+        "requested_h_vector_columns": 0
+      },
+      "times": [
+        {
+          "actual_dense_error": 3.8484284159040614e-16,
+          "time": 0.0,
+          "absolute_error_envelope_estimate": 3.848428415904062e-16,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.0,
+              "cheap_envelope_estimate": 0.0,
+              "cell_taylor_envelope_estimate": 0.0,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 3.424750116624316e-16,
+              "cheap_envelope_estimate": 3.424750116624316e-16,
+              "cell_taylor_envelope_estimate": 3.424750116624316e-16,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 1.7554167342883506e-16,
+              "cheap_envelope_estimate": 1.7554167342883506e-16,
+              "cell_taylor_envelope_estimate": 1.7554167342883506e-16,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.00018116692081093788,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 0.74777234223584,
+          "time": 0.13,
+          "absolute_error_envelope_estimate": 0.7494259588982435,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.47569478252841646,
+              "cheap_envelope_estimate": 0.47569478252841646,
+              "cell_taylor_envelope_estimate": 0.4756947825284167,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 1.3877787807814457e-16,
+              "projected_two_sided_growth": 1.3877787807814457e-16,
+              "residual_compression_defect": 2.7694793740922077e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 0.512937127581227,
+              "cheap_envelope_estimate": 0.512937127581227,
+              "cell_taylor_envelope_estimate": 0.5129371275812271,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 8.326672684688674e-17,
+              "projected_two_sided_growth": 8.326672684688674e-17,
+              "residual_compression_defect": 2.651347637902923e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.26879219649110764,
+              "cheap_envelope_estimate": 0.26879219649110764,
+              "cell_taylor_envelope_estimate": 0.26879219649110775,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 1.1102230246251565e-16,
+              "projected_two_sided_growth": 1.1102230246251565e-16,
+              "residual_compression_defect": 2.4276368883058673e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0017222915776073933,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 1.2036498105275362,
+          "time": -0.21,
+          "absolute_error_envelope_estimate": 1.2106111643740853,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.7684300333151343,
+              "cheap_envelope_estimate": 0.7684300333151343,
+              "cell_taylor_envelope_estimate": 0.7684300333151345,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 1.3877787807814457e-16,
+              "residual_compression_defect": 2.7694793740922077e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 0.8285907445542895,
+              "cheap_envelope_estimate": 0.8285907445542895,
+              "cell_taylor_envelope_estimate": 0.8285907445542896,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 8.326672684688674e-17,
+              "residual_compression_defect": 2.651347637902923e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.43420277894717374,
+              "cheap_envelope_estimate": 0.43420277894717374,
+              "cell_taylor_envelope_estimate": 0.43420277894717396,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 1.1102230246251565e-16,
+              "residual_compression_defect": 2.4276368883058673e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0014532627537846565,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 2.095076379143565,
+          "time": 0.37,
+          "absolute_error_envelope_estimate": 2.1329815753257693,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 1.35390053488857,
+              "cheap_envelope_estimate": 1.35390053488857,
+              "cell_taylor_envelope_estimate": 1.3539005348885702,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 1.3877787807814457e-16,
+              "projected_two_sided_growth": 1.3877787807814457e-16,
+              "residual_compression_defect": 2.7694793740922077e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 1.4598979785004147,
+              "cheap_envelope_estimate": 1.459897978500415,
+              "cell_taylor_envelope_estimate": 1.4598979785004147,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 8.326672684688674e-17,
+              "projected_two_sided_growth": 8.326672684688674e-17,
+              "residual_compression_defect": 2.651347637902923e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.765023943859306,
+              "cheap_envelope_estimate": 0.765023943859306,
+              "cell_taylor_envelope_estimate": 0.7650239438593064,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 1.1102230246251565e-16,
+              "projected_two_sided_growth": 1.1102230246251565e-16,
+              "residual_compression_defect": 2.4276368883058673e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0014366158284246922,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        }
+      ]
+    },
+    {
+      "diagnostics": {
+        "generation": 1,
+        "original_columns": 4,
+        "dimensions": [
+          2,
+          2,
+          2,
+          0
+        ],
+        "total_basis_vectors": 6,
+        "columns": [
+          {
+            "column": 0,
+            "dimension": 2,
+            "breakdown": false,
+            "residual_frobenius": 1.2487090717570253,
+            "residual_column_norms": [
+              2.306595211858756e-16,
+              1.2487090717570253
+            ],
+            "initial_error": 0.0,
+            "seed_action_defect": 1.5379903927645624e-16,
+            "orthogonality_frobenius": 2.220988084178258e-16,
+            "projected_antihermitian_frobenius": 1.3018518929051675e-16
+          },
+          {
+            "column": 1,
+            "dimension": 2,
+            "breakdown": false,
+            "residual_frobenius": 1.069671101840828,
+            "residual_column_norms": [
+              2.92505449144803e-16,
+              1.0696711018408278
+            ],
+            "initial_error": 3.424750116624316e-16,
+            "seed_action_defect": 7.977393650350771e-16,
+            "orthogonality_frobenius": 9.813077866773595e-18,
+            "projected_antihermitian_frobenius": 7.007939324928157e-17
+          },
+          {
+            "column": 2,
+            "dimension": 2,
+            "breakdown": false,
+            "residual_frobenius": 1.4877457350538854,
+            "residual_column_norms": [
+              1.6751537584003937e-16,
+              1.4877457350538854
+            ],
+            "initial_error": 1.7554167342883506e-16,
+            "seed_action_defect": 7.137019941966293e-16,
+            "orthogonality_frobenius": 6.332287220439566e-16,
+            "projected_antihermitian_frobenius": 2.6622212897024595e-16
+          },
+          {
+            "column": 3,
+            "dimension": 0,
+            "zero_original_column": true
+          }
+        ],
+        "requested_h_vector_columns": 3
+      },
+      "times": [
+        {
+          "actual_dense_error": 3.8484284159040614e-16,
+          "time": 0.0,
+          "absolute_error_envelope_estimate": 3.848428415904062e-16,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.0,
+              "cheap_envelope_estimate": 0.0,
+              "cell_taylor_envelope_estimate": 0.0,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 3.424750116624316e-16,
+              "cheap_envelope_estimate": 3.424750116624316e-16,
+              "cell_taylor_envelope_estimate": 3.424750116624316e-16,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 1.7554167342883506e-16,
+              "cheap_envelope_estimate": 1.7554167342883506e-16,
+              "cell_taylor_envelope_estimate": 1.7554167342883506e-16,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0007021022029221058,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 0.058450378065404006,
+          "time": 0.13,
+          "absolute_error_envelope_estimate": 0.06581369758783469,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.043339536971456594,
+              "cheap_envelope_estimate": 0.4831541197665045,
+              "cell_taylor_envelope_estimate": 0.043339536971456594,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 1.2251903831398111e-16,
+              "projected_two_sided_growth": 1.2251903831398111e-16,
+              "residual_compression_defect": 2.5229344950275294e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 0.04000552702984345,
+              "cheap_envelope_estimate": 0.39061907489123837,
+              "cell_taylor_envelope_estimate": 0.04000552702984345,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 7.007602493830913e-17,
+              "projected_two_sided_growth": 7.007602493830913e-17,
+              "residual_compression_defect": 2.0723956610607772e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.02920077280393738,
+              "cheap_envelope_estimate": 0.38997462531302685,
+              "cell_taylor_envelope_estimate": 0.02920077280393738,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 2.6596990429383457e-16,
+              "projected_two_sided_growth": 2.6596990429383457e-16,
+              "residual_compression_defect": 1.8515278288508872e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0037485952489078045,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 0.1517433695604126,
+          "time": -0.21,
+          "absolute_error_envelope_estimate": 0.1710894002796252,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.11268649836731359,
+              "cheap_envelope_estimate": 0.7804797319305073,
+              "cell_taylor_envelope_estimate": 0.11268649836731359,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 1.2251903831398111e-16,
+              "residual_compression_defect": 2.5229344950275294e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 0.10390333161081908,
+              "cheap_envelope_estimate": 0.6310000440550771,
+              "cell_taylor_envelope_estimate": 0.10390333161081908,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 6.870858992368312e-19,
+              "projected_two_sided_growth": 7.007602493830913e-17,
+              "residual_compression_defect": 2.0723956610607772e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.07600943134853339,
+              "cheap_envelope_estimate": 0.6299590101210433,
+              "cell_taylor_envelope_estimate": 0.07600943134853339,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 2.6596990429383457e-16,
+              "residual_compression_defect": 1.8515278288508872e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.003518570214509964,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 0.4628739536164672,
+          "time": 0.37,
+          "absolute_error_envelope_estimate": 0.5242692646694054,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.3455334326351103,
+              "cheap_envelope_estimate": 1.375130956258513,
+              "cell_taylor_envelope_estimate": 0.3455334326351103,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 1.2251903831398111e-16,
+              "projected_two_sided_growth": 1.2251903831398111e-16,
+              "residual_compression_defect": 2.5229344950275294e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 0.31739911961087247,
+              "cheap_envelope_estimate": 1.111761982382755,
+              "cell_taylor_envelope_estimate": 0.31739911961087247,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 7.007602493830913e-17,
+              "projected_two_sided_growth": 7.007602493830913e-17,
+              "residual_compression_defect": 2.0723956610607772e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.2339288517447981,
+              "cheap_envelope_estimate": 1.1099277797370761,
+              "cell_taylor_envelope_estimate": 0.2339288517447981,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 2.6596990429383457e-16,
+              "projected_two_sided_growth": 2.6596990429383457e-16,
+              "residual_compression_defect": 1.8515278288508872e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0035117128863930702,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        }
+      ]
+    },
+    {
+      "diagnostics": {
+        "generation": 2,
+        "original_columns": 4,
+        "dimensions": [
+          3,
+          3,
+          3,
+          0
+        ],
+        "total_basis_vectors": 9,
+        "columns": [
+          {
+            "column": 0,
+            "dimension": 3,
+            "breakdown": false,
+            "residual_frobenius": 0.6315303926429061,
+            "residual_column_norms": [
+              2.309724214262959e-16,
+              3.7950421427661113e-16,
+              0.631530392642906
+            ],
+            "initial_error": 0.0,
+            "seed_action_defect": 1.5379903927645624e-16,
+            "orthogonality_frobenius": 3.0014225485378253e-16,
+            "projected_antihermitian_frobenius": 3.8340136020279817e-16
+          },
+          {
+            "column": 1,
+            "dimension": 3,
+            "breakdown": false,
+            "residual_frobenius": 0.7809021974354023,
+            "residual_column_norms": [
+              2.931631350771792e-16,
+              2.364575092865353e-16,
+              0.7809021974354023
+            ],
+            "initial_error": 3.424750116624316e-16,
+            "seed_action_defect": 7.977393650350771e-16,
+            "orthogonality_frobenius": 1.733508744238606e-16,
+            "projected_antihermitian_frobenius": 3.1036767632521254e-16
+          },
+          {
+            "column": 2,
+            "dimension": 3,
+            "breakdown": false,
+            "residual_frobenius": 0.46108051812628625,
+            "residual_column_norms": [
+              1.6431641039245924e-16,
+              3.842167750597072e-16,
+              0.46108051812628625
+            ],
+            "initial_error": 1.7554167342883506e-16,
+            "seed_action_defect": 7.137019941966293e-16,
+            "orthogonality_frobenius": 6.363385661795271e-16,
+            "projected_antihermitian_frobenius": 4.780288567665612e-16
+          },
+          {
+            "column": 3,
+            "dimension": 0,
+            "zero_original_column": true
+          }
+        ],
+        "requested_h_vector_columns": 6
+      },
+      "times": [
+        {
+          "actual_dense_error": 3.8484284159040614e-16,
+          "time": 0.0,
+          "absolute_error_envelope_estimate": 3.848428415904062e-16,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.0,
+              "cheap_envelope_estimate": 0.0,
+              "cell_taylor_envelope_estimate": 0.0,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 3.424750116624316e-16,
+              "cheap_envelope_estimate": 3.424750116624316e-16,
+              "cell_taylor_envelope_estimate": 3.424750116624316e-16,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 1.7554167342883506e-16,
+              "cheap_envelope_estimate": 1.7554167342883506e-16,
+              "cell_taylor_envelope_estimate": 1.7554167342883506e-16,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0003563361242413521,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 0.001680558374308352,
+          "time": 0.13,
+          "absolute_error_envelope_estimate": 0.001996377567423766,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.0012511844062042595,
+              "cheap_envelope_estimate": 0.24435356310324782,
+              "cell_taylor_envelope_estimate": 0.0012511844062042595,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 3.330147535959967e-16,
+              "projected_two_sided_growth": 3.330147535959967e-16,
+              "residual_compression_defect": 1.2256530327225745e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 0.001428983979383357,
+              "cheap_envelope_estimate": 0.2851673691266485,
+              "cell_taylor_envelope_estimate": 0.001428983979383357,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 2.063822822114217e-16,
+              "projected_two_sided_growth": 2.289275235608955e-16,
+              "residual_compression_defect": 2.5852763859536917e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.0006148705229963732,
+              "cheap_envelope_estimate": 0.12086050597142027,
+              "cell_taylor_envelope_estimate": 0.0006148705229963732,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 3.376375529612675e-16,
+              "projected_two_sided_growth": 3.376375529612675e-16,
+              "residual_compression_defect": 7.699514991262086e-17,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.00273729395121336,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 0.007047239410550807,
+          "time": -0.21,
+          "absolute_error_envelope_estimate": 0.008376386609321346,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.005250071344419099,
+              "cheap_envelope_estimate": 0.3947249865514003,
+              "cell_taylor_envelope_estimate": 0.005250071344419099,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 1.4748186675714038e-16,
+              "projected_two_sided_growth": 3.330147535959967e-16,
+              "residual_compression_defect": 1.2256530327225745e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 0.0059956793171802615,
+              "cheap_envelope_estimate": 0.46065498089689344,
+              "cell_taylor_envelope_estimate": 0.0059956793171802615,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 2.289275235608955e-16,
+              "projected_two_sided_growth": 2.289275235608955e-16,
+              "residual_compression_defect": 2.5852763859536917e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.002579231093342396,
+              "cheap_envelope_estimate": 0.19523620195383262,
+              "cell_taylor_envelope_estimate": 0.002579231093342396,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 3.298676916890636e-16,
+              "projected_two_sided_growth": 3.376375529612675e-16,
+              "residual_compression_defect": 7.699514991262086e-17,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0026482362300157547,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 0.037865112055624754,
+          "time": 0.37,
+          "absolute_error_envelope_estimate": 0.045094924117532,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.028270849253747815,
+              "cheap_envelope_estimate": 0.6954678334477055,
+              "cell_taylor_envelope_estimate": 0.028270849253747815,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 3.330147535959967e-16,
+              "projected_two_sided_growth": 3.330147535959967e-16,
+              "residual_compression_defect": 1.2256530327225745e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 0.03227751360249587,
+              "cheap_envelope_estimate": 0.8116302044373835,
+              "cell_taylor_envelope_estimate": 0.03227751360249587,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 2.063822822114217e-16,
+              "projected_two_sided_growth": 2.289275235608955e-16,
+              "residual_compression_defect": 2.5852763859536917e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.01387347754813225,
+              "cheap_envelope_estimate": 0.3439875939186574,
+              "cell_taylor_envelope_estimate": 0.01387347754813225,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 3.376375529612675e-16,
+              "projected_two_sided_growth": 3.376375529612675e-16,
+              "residual_compression_defect": 7.699514991262086e-17,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.002681329380720854,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        }
+      ]
+    },
+    {
+      "diagnostics": {
+        "generation": 3,
+        "original_columns": 4,
+        "dimensions": [
+          4,
+          4,
+          4,
+          0
+        ],
+        "total_basis_vectors": 12,
+        "columns": [
+          {
+            "column": 0,
+            "dimension": 4,
+            "breakdown": false,
+            "residual_frobenius": 0.42446762114072994,
+            "residual_column_norms": [
+              2.7755575615628914e-16,
+              3.82363906381468e-16,
+              1.594436429147036e-16,
+              0.42446762114072994
+            ],
+            "initial_error": 0.0,
+            "seed_action_defect": 1.5379903927645624e-16,
+            "orthogonality_frobenius": 3.0758951301698007e-16,
+            "projected_antihermitian_frobenius": 4.187839485471747e-16
+          },
+          {
+            "column": 1,
+            "dimension": 4,
+            "breakdown": false,
+            "residual_frobenius": 0.8040871883782057,
+            "residual_column_norms": [
+              3.483297094656094e-16,
+              2.3666104494658874e-16,
+              2.5210253502251575e-16,
+              0.8040871883782057
+            ],
+            "initial_error": 3.424750116624316e-16,
+            "seed_action_defect": 7.977393650350771e-16,
+            "orthogonality_frobenius": 1.9774325880327021e-16,
+            "projected_antihermitian_frobenius": 3.949478124194468e-16
+          },
+          {
+            "column": 2,
+            "dimension": 4,
+            "breakdown": false,
+            "residual_frobenius": 0.8990560519292274,
+            "residual_column_norms": [
+              1.7741735407952314e-16,
+              4.475989973903898e-16,
+              4.2203454951667946e-16,
+              0.8990560519292274
+            ],
+            "initial_error": 1.7554167342883506e-16,
+            "seed_action_defect": 7.137019941966293e-16,
+            "orthogonality_frobenius": 6.501858371212021e-16,
+            "projected_antihermitian_frobenius": 6.338034842769831e-16
+          },
+          {
+            "column": 3,
+            "dimension": 0,
+            "zero_original_column": true
+          }
+        ],
+        "requested_h_vector_columns": 9
+      },
+      "times": [
+        {
+          "actual_dense_error": 3.8484284159040614e-16,
+          "time": 0.0,
+          "absolute_error_envelope_estimate": 3.848428415904062e-16,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.0,
+              "cheap_envelope_estimate": 0.0,
+              "cell_taylor_envelope_estimate": 0.0,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 3.424750116624316e-16,
+              "cheap_envelope_estimate": 3.424750116624316e-16,
+              "cell_taylor_envelope_estimate": 3.424750116624316e-16,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 1.7554167342883506e-16,
+              "cheap_envelope_estimate": 1.7554167342883506e-16,
+              "cell_taylor_envelope_estimate": 1.7554167342883506e-16,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0003248103894293308,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 3.782310518775679e-05,
+          "time": 0.13,
+          "absolute_error_envelope_estimate": 4.72056429428099e-05,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 1.8146900445257814e-05,
+              "cheap_envelope_estimate": 0.16423623764746445,
+              "cell_taylor_envelope_estimate": 1.8146900445257814e-05,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 3.5030713598703306e-16,
+              "projected_two_sided_growth": 3.5030713598703306e-16,
+              "residual_compression_defect": 1.0659731080981682e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 3.9267080311095267e-05,
+              "cheap_envelope_estimate": 0.2936339900326952,
+              "cell_taylor_envelope_estimate": 3.9267080311095267e-05,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 2.1377444377155756e-16,
+              "projected_two_sided_growth": 3.189479506094418e-16,
+              "residual_compression_defect": 1.9827517492062503e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 1.889865428320107e-05,
+              "cheap_envelope_estimate": 0.23566462919405445,
+              "cell_taylor_envelope_estimate": 1.889865428320107e-05,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 3.5829649513574833e-16,
+              "projected_two_sided_growth": 5.091483823118112e-16,
+              "residual_compression_defect": 2.2185478841180394e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0026343301869928837,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 0.0002565683603268167,
+          "time": -0.21,
+          "absolute_error_envelope_estimate": 0.0003202133859985362,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.0001230718266589895,
+              "cheap_envelope_estimate": 0.26530469158436565,
+              "cell_taylor_envelope_estimate": 0.0001230718266589895,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 1.6167868140381236e-16,
+              "projected_two_sided_growth": 3.5030713598703306e-16,
+              "residual_compression_defect": 1.0659731080981682e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 0.00026635310439206795,
+              "cheap_envelope_estimate": 0.47433183005281504,
+              "cell_taylor_envelope_estimate": 0.00026635310439206795,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 3.189479506094418e-16,
+              "projected_two_sided_growth": 3.189479506094418e-16,
+              "residual_compression_defect": 1.9827517492062503e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.00012824181001598242,
+              "cheap_envelope_estimate": 0.38068901639039554,
+              "cell_taylor_envelope_estimate": 0.00012824181001598242,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 5.091483823118112e-16,
+              "projected_two_sided_growth": 5.091483823118112e-16,
+              "residual_compression_defect": 2.2185478841180394e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.002582671120762825,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 0.002440471730738325,
+          "time": 0.37,
+          "absolute_error_envelope_estimate": 0.0030458084770420154,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.001169801802915638,
+              "cheap_envelope_estimate": 0.46744159945816816,
+              "cell_taylor_envelope_estimate": 0.001169801802915638,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 3.5030713598703306e-16,
+              "projected_two_sided_growth": 3.5030713598703306e-16,
+              "residual_compression_defect": 1.0659731080981682e-16,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 0.002533175757587719,
+              "cheap_envelope_estimate": 0.8357275100930549,
+              "cell_taylor_envelope_estimate": 0.002533175757587719,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 2.1377444377155756e-16,
+              "projected_two_sided_growth": 3.189479506094418e-16,
+              "residual_compression_defect": 1.9827517492062503e-16,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 0.0012212835878231592,
+              "cheap_envelope_estimate": 0.6707377907830779,
+              "cell_taylor_envelope_estimate": 0.0012212835878231592,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 3.5829649513574833e-16,
+              "projected_two_sided_growth": 5.091483823118112e-16,
+              "residual_compression_defect": 2.2185478841180394e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.002604676876217127,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        }
+      ]
+    },
+    {
+      "diagnostics": {
+        "generation": 4,
+        "original_columns": 4,
+        "dimensions": [
+          5,
+          5,
+          5,
+          0
+        ],
+        "total_basis_vectors": 15,
+        "columns": [
+          {
+            "column": 0,
+            "dimension": 5,
+            "breakdown": false,
+            "residual_frobenius": 0.14113399391793757,
+            "residual_column_norms": [
+              2.7755575615628914e-16,
+              3.837465548675441e-16,
+              1.7826341206873999e-16,
+              2.966732183033997e-16,
+              0.14113399391793757
+            ],
+            "initial_error": 0.0,
+            "seed_action_defect": 1.5379903927645624e-16,
+            "orthogonality_frobenius": 3.992804398887199e-16,
+            "projected_antihermitian_frobenius": 4.707593347860547e-16
+          },
+          {
+            "column": 1,
+            "dimension": 5,
+            "breakdown": false,
+            "residual_frobenius": 0.21285063027026796,
+            "residual_column_norms": [
+              3.674994385712105e-16,
+              2.4328221185168933e-16,
+              2.276126435504334e-16,
+              1.577740299643925e-16,
+              0.21285063027026796
+            ],
+            "initial_error": 3.424750116624316e-16,
+            "seed_action_defect": 7.977393650350771e-16,
+            "orthogonality_frobenius": 2.344637772665602e-16,
+            "projected_antihermitian_frobenius": 4.795722192109832e-16
+          },
+          {
+            "column": 2,
+            "dimension": 5,
+            "breakdown": false,
+            "residual_frobenius": 0.4181040338893582,
+            "residual_column_norms": [
+              1.9007891615556373e-16,
+              4.475989973903898e-16,
+              4.468866192751675e-16,
+              1.716587549445839e-16,
+              0.4181040338893582
+            ],
+            "initial_error": 1.7554167342883506e-16,
+            "seed_action_defect": 7.137019941966293e-16,
+            "orthogonality_frobenius": 6.638511025953511e-16,
+            "projected_antihermitian_frobenius": 7.48319575397983e-16
+          },
+          {
+            "column": 3,
+            "dimension": 0,
+            "zero_original_column": true
+          }
+        ],
+        "requested_h_vector_columns": 12
+      },
+      "times": [
+        {
+          "actual_dense_error": 3.8484284159040614e-16,
+          "time": 0.0,
+          "absolute_error_envelope_estimate": 3.848428415904062e-16,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.0,
+              "cheap_envelope_estimate": 0.0,
+              "cell_taylor_envelope_estimate": 0.0,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 3.424750116624316e-16,
+              "cheap_envelope_estimate": 3.424750116624316e-16,
+              "cell_taylor_envelope_estimate": 3.424750116624316e-16,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 1.7554167342883506e-16,
+              "cheap_envelope_estimate": 1.7554167342883506e-16,
+              "cell_taylor_envelope_estimate": 1.7554167342883506e-16,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.00035158079117536545,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 2.4558915002990217e-07,
+          "time": 0.13,
+          "absolute_error_envelope_estimate": 3.2137294285295064e-07,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 6.983425766307262e-08,
+              "cheap_envelope_estimate": 0.05460797245959366,
+              "cell_taylor_envelope_estimate": 6.983425766307262e-08,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 3.859013468164252e-16,
+              "projected_two_sided_growth": 3.859013468164252e-16,
+              "residual_compression_defect": 2.2882574235218375e-17,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 2.2786656057400046e-07,
+              "cheap_envelope_estimate": 0.07772811300885435,
+              "cell_taylor_envelope_estimate": 2.2786656057400046e-07,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 2.8247052955648616e-16,
+              "projected_two_sided_growth": 3.52917551248664e-16,
+              "residual_compression_defect": 9.733020042080832e-17,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 2.1559354217320344e-07,
+              "cheap_envelope_estimate": 0.10959531599797351,
+              "cell_taylor_envelope_estimate": 2.1559354217320344e-07,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 4.039561658164473e-16,
+              "projected_two_sided_growth": 5.576076900431359e-16,
+              "residual_compression_defect": 1.1085955284783107e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0027432767674326897,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 2.693430451736495e-06,
+          "time": -0.21,
+          "absolute_error_envelope_estimate": 3.523896590458279e-06,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 7.656773175185634e-07,
+              "cheap_envelope_estimate": 0.08821287858857438,
+              "cell_taylor_envelope_estimate": 7.656773175185634e-07,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 1.7395825458236394e-16,
+              "projected_two_sided_growth": 3.859013468164252e-16,
+              "residual_compression_defect": 2.2882574235218375e-17,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 2.498457294728017e-06,
+              "cheap_envelope_estimate": 0.12556079793737987,
+              "cell_taylor_envelope_estimate": 2.498457294728017e-06,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 3.52917551248664e-16,
+              "projected_two_sided_growth": 3.52917551248664e-16,
+              "residual_compression_defect": 9.733020042080832e-17,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 2.364169319676876e-06,
+              "cheap_envelope_estimate": 0.17703858738134173,
+              "cell_taylor_envelope_estimate": 2.364169319676876e-06,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 5.576076900431359e-16,
+              "projected_two_sided_growth": 5.576076900431359e-16,
+              "residual_compression_defect": 1.1085955284783107e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0026774099096655846,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 4.5272996769464415e-05,
+          "time": 0.37,
+          "absolute_error_envelope_estimate": 5.9193545713346054e-05,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 1.2857938083516722e-05,
+              "cheap_envelope_estimate": 0.15542269084653584,
+              "cell_taylor_envelope_estimate": 1.2857938083516722e-05,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 3.859013468164252e-16,
+              "projected_two_sided_growth": 3.859013468164252e-16,
+              "residual_compression_defect": 2.2882574235218375e-17,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 4.196100200616394e-05,
+              "cheap_envelope_estimate": 0.22122616779443097,
+              "cell_taylor_envelope_estimate": 4.196100200616394e-05,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 2.8247052955648616e-16,
+              "projected_two_sided_growth": 3.52917551248664e-16,
+              "residual_compression_defect": 9.733020042080832e-17,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 3.9721827664360375e-05,
+              "cheap_envelope_estimate": 0.31192513014807816,
+              "cell_taylor_envelope_estimate": 3.9721827664360375e-05,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 4.039561658164473e-16,
+              "projected_two_sided_growth": 5.576076900431359e-16,
+              "residual_compression_defect": 1.1085955284783107e-16,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0027036210522055626,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        }
+      ]
+    },
+    {
+      "diagnostics": {
+        "generation": 5,
+        "original_columns": 4,
+        "dimensions": [
+          6,
+          6,
+          6,
+          0
+        ],
+        "total_basis_vectors": 18,
+        "columns": [
+          {
+            "column": 0,
+            "dimension": 6,
+            "breakdown": false,
+            "residual_frobenius": 8.296359230625492e-16,
+            "residual_column_norms": [
+              1.9675159943996247e-16,
+              4.1533497048326455e-16,
+              4.2276033262255756e-16,
+              5.023394977137847e-16,
+              2.0908995608969421e-16,
+              4.787019644065606e-17
+            ],
+            "initial_error": 0.0,
+            "seed_action_defect": 1.5379903927645624e-16,
+            "orthogonality_frobenius": 5.224873652247028e-16,
+            "projected_antihermitian_frobenius": 5.857502200506897e-16
+          },
+          {
+            "column": 1,
+            "dimension": 6,
+            "breakdown": false,
+            "residual_frobenius": 7.326985338773116e-16,
+            "residual_column_norms": [
+              2.578618454327226e-16,
+              5.57372888730528e-16,
+              3.206940271197429e-16,
+              1.8722159327344614e-16,
+              1.430594803732087e-16,
+              3.643177433780108e-17
+            ],
+            "initial_error": 3.424750116624316e-16,
+            "seed_action_defect": 7.977393650350771e-16,
+            "orthogonality_frobenius": 2.902599427925308e-16,
+            "projected_antihermitian_frobenius": 7.021343044773709e-16
+          },
+          {
+            "column": 2,
+            "dimension": 6,
+            "breakdown": false,
+            "residual_frobenius": 7.157307244322112e-16,
+            "residual_column_norms": [
+              3.9277219582215297e-16,
+              4.1413048855123353e-16,
+              3.3000834520223595e-16,
+              1.5731560566382466e-16,
+              2.1476969564646288e-16,
+              8.19553578544471e-17
+            ],
+            "initial_error": 1.7554167342883506e-16,
+            "seed_action_defect": 7.137019941966293e-16,
+            "orthogonality_frobenius": 4.677966078294272e-16,
+            "projected_antihermitian_frobenius": 7.156713063519646e-16
+          },
+          {
+            "column": 3,
+            "dimension": 0,
+            "zero_original_column": true
+          }
+        ],
+        "requested_h_vector_columns": 15
+      },
+      "times": [
+        {
+          "actual_dense_error": 3.8484284159040614e-16,
+          "time": 0.0,
+          "absolute_error_envelope_estimate": 3.848428415904062e-16,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 0.0,
+              "cheap_envelope_estimate": 0.0,
+              "cell_taylor_envelope_estimate": 0.0,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 3.424750116624316e-16,
+              "cheap_envelope_estimate": 3.424750116624316e-16,
+              "cell_taylor_envelope_estimate": 3.424750116624316e-16,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 1.7554167342883506e-16,
+              "cheap_envelope_estimate": 1.7554167342883506e-16,
+              "cell_taylor_envelope_estimate": 1.7554167342883506e-16,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 0.0,
+              "projected_two_sided_growth": 0.0,
+              "residual_compression_defect": 0.0,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.00030656391754746437,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 1.3406584549402482e-15,
+          "time": 0.13,
+          "absolute_error_envelope_estimate": 8.733808220743221e-16,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 1.3438918872306572e-16,
+              "cheap_envelope_estimate": 3.8051349535559617e-16,
+              "cell_taylor_envelope_estimate": 1.3438918872306572e-16,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 4.488754934647746e-16,
+              "projected_two_sided_growth": 4.488754934647746e-16,
+              "residual_compression_defect": 1.7565099853444381e-31,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 7.268509229838629e-16,
+              "cheap_envelope_estimate": 9.013554331516578e-16,
+              "cell_taylor_envelope_estimate": 7.268509229838629e-16,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 4.593595348641075e-16,
+              "projected_two_sided_growth": 4.593595348641075e-16,
+              "residual_compression_defect": 2.246503857141698e-31,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 4.652110726101449e-16,
+              "cheap_envelope_estimate": 5.502310277473488e-16,
+              "cell_taylor_envelope_estimate": 4.652110726101449e-16,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 3.2389215015263826e-16,
+              "projected_two_sided_growth": 5.309649641517259e-16,
+              "residual_compression_defect": 2.0769567589229153e-31,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0027150153182446957,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 1.2909559892533275e-15,
+          "time": -0.21,
+          "absolute_error_envelope_estimate": 1.2044844221139179e-15,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 2.3403289686331756e-16,
+              "cheap_envelope_estimate": 6.146756463436554e-16,
+              "cell_taylor_envelope_estimate": 2.3403289686331756e-16,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 2.5269411389521176e-16,
+              "projected_two_sided_growth": 4.488754934647746e-16,
+              "residual_compression_defect": 1.7565099853444381e-31,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 9.88364482798277e-16,
+              "cheap_envelope_estimate": 1.2452818463757967e-15,
+              "cell_taylor_envelope_estimate": 9.88364482798277e-16,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 3.9936073497804463e-16,
+              "projected_two_sided_growth": 4.593595348641075e-16,
+              "residual_compression_defect": 2.246503857141698e-31,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 6.474156126042657e-16,
+              "cheap_envelope_estimate": 7.808090919433575e-16,
+              "cell_taylor_envelope_estimate": 6.474156126042657e-16,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 5.309649641517259e-16,
+              "projected_two_sided_growth": 5.309649641517259e-16,
+              "residual_compression_defect": 2.0769567589229153e-31,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.002708827145397663,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        },
+        {
+          "actual_dense_error": 1.4241530362857387e-15,
+          "time": 0.37,
+          "absolute_error_envelope_estimate": 1.8046072214696696e-15,
+          "columns": [
+            {
+              "column": 0,
+              "absolute_error_envelope_estimate": 3.8810542801716266e-16,
+              "cheap_envelope_estimate": 1.082999948319774e-15,
+              "cell_taylor_envelope_estimate": 3.8810542801716266e-16,
+              "initial_error_term": 0.0,
+              "projected_forward_growth": 4.488754934647746e-16,
+              "projected_two_sided_growth": 4.488754934647746e-16,
+              "residual_compression_defect": 1.7565099853444381e-31,
+              "seed_action_defect": 1.5379903927645624e-16
+            },
+            {
+              "column": 1,
+              "absolute_error_envelope_estimate": 1.4552891566966976e-15,
+              "cheap_envelope_estimate": 1.9331346728240754e-15,
+              "cell_taylor_envelope_estimate": 1.4552891566966976e-15,
+              "initial_error_term": 3.424750116624316e-16,
+              "projected_forward_growth": 4.593595348641075e-16,
+              "projected_two_sided_growth": 4.593595348641075e-16,
+              "residual_compression_defect": 2.246503857141698e-31,
+              "seed_action_defect": 7.977393650350771e-16
+            },
+            {
+              "column": 2,
+              "absolute_error_envelope_estimate": 9.94039672711865e-16,
+              "cheap_envelope_estimate": 1.2419652203353742e-15,
+              "cell_taylor_envelope_estimate": 9.94039672711865e-16,
+              "initial_error_term": 1.7554167342883506e-16,
+              "projected_forward_growth": 3.2389215015263826e-16,
+              "projected_two_sided_growth": 5.309649641517259e-16,
+              "residual_compression_defect": 2.0769567589229153e-31,
+              "seed_action_defect": 7.137019941966293e-16
+            },
+            {
+              "column": 3,
+              "absolute_error_envelope_estimate": 0.0
+            }
+          ],
+          "ambient_growth_bound": 0.0,
+          "bound_cells": 4,
+          "bound_degree": 4,
+          "seconds": 0.0028208759613335133,
+          "qualification": "ordinary floating evaluation of full-row analytic envelopes; NOT interval certified"
+        }
+      ]
+    }
+  ],
+  "mutations": {
+    "omit_original_column": 2.016342402750395,
+    "wrong_sign": 7.043264308194664,
+    "omit_shift_phase": 4.18616344866222,
+    "normalize_raw_columns": 2.8655718711851095,
+    "diagonalize_D": 1.5578690840882514,
+    "false_convergence_if_residual_zeroed": 2.095076379143565,
+    "silent_hermitization": 0.34409380772449866
+  },
+  "finite_defect_case": {
+    "actual_error": 0.3765444716370463,
+    "absolute_error_envelope_estimate": 0.4403458513806044,
+    "cheap_envelope_estimate": 0.7026640420661994,
+    "cell_taylor_envelope_estimate": 0.4403458513806044,
+    "initial_error_term": 0.022598200323765246,
+    "projected_forward_growth": 0.16794494717703368,
+    "projected_two_sided_growth": 0.2679449471770337,
+    "residual_compression_defect": 8.850286483398653e-16,
+    "seed_action_defect": 0.0
+  },
+  "invariants": {
+    "initial": {
+      "number": {
+        "real": 13.505707032872316,
+        "imag": 2.7755575615628914e-17
+      },
+      "purity": {
+        "real": 99.15562614451821,
+        "imag": 3.9968028886505635e-15
+      },
+      "frame_frobenius": 4.562340566907402,
+      "gram_frobenius": 15.052104872139559,
+      "density_frobenius": 9.957691808070694,
+      "density_hermiticity_frobenius": 4.5989518247927605e-16,
+      "raw_D_hermiticity_frobenius": 0.0
+    },
+    "final": {
+      "number": {
+        "real": 13.505707032872316,
+        "imag": 2.7755575615628914e-17
+      },
+      "purity": {
+        "real": 99.1556261445182,
+        "imag": 2.220446049250313e-16
+      },
+      "frame_frobenius": 4.562340566907402,
+      "gram_frobenius": 15.052104872139559,
+      "density_frobenius": 9.957691808070695,
+      "density_hermiticity_frobenius": 1.1737504670095051e-16,
+      "raw_D_hermiticity_frobenius": 0.0
+    }
+  },
+  "source_bindings": [
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_column_krylov_oracle.py",
+      "sha256": "404f30867669037c007bdf14a0cd4ab87dacfa3cc06efff1aa126f718ef9600b",
+      "bytes": 11070
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_column_krylov_material.py",
+      "sha256": "02df9f1ee297278c515b661ac1877a55c030be94a0a62c4004ad4d423dfece0b",
+      "bytes": 18711
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_block_krylov_oracle.py",
+      "sha256": "a012b68644bfd4cbb1edc9efffc71c016647756d058020dbc7e8069c17e44e84",
+      "bytes": 9933
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_block_krylov_material.py",
+      "sha256": "4be1de2a35fa5df8ec09fd0072aaaec1dff3c4358717a2ac2ec254477999c643",
+      "bytes": 21111
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/run_streamed_material_evolution.py",
+      "sha256": "c48f986e592a6dd241b300c053c7ba6975abfdd797f8abaf97801dd040fb0d0e",
+      "bytes": 22333
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/column_frame_krylov.py",
+      "sha256": "0bd0d7a0bce310ff2c345a94b37cc85015a12f33e442698ea31c823acdaa3192",
+      "bytes": 12558
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/column_krylov_bounds.py",
+      "sha256": "9fff0c34088b29f2aaaa9fb6e723956b8b53c864a6d353ff9b791bbd51be07f1",
+      "bytes": 3539
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/full_frame_krylov.py",
+      "sha256": "cf12d5099fdfbb61c6c1e853fb33c982cde41f73e848d2c9801a29cb2f88cdd3",
+      "bytes": 13324
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/material_frozen_action.py",
+      "sha256": "463bc2845dbcef9439e7d29298f88866b6a6f26190b8dacea7fa0974f4c7b886",
+      "bytes": 7230
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_hamiltonian.py",
+      "sha256": "f7734635ecc3f86bbb4d35bc5dd1972fea49e1442fcdc2d17adf59f1d4e24093",
+      "bytes": 7295
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_material_evolution.py",
+      "sha256": "619f42e1fb92c66db9c322914046a4312f84056eb114ae3485be68b8316273f5",
+      "bytes": 14417
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_sector_executor.py",
+      "sha256": "1bf046198946f784bcc91e81277d99e4882b995a2661103f036d000ad45e4b15",
+      "bytes": 9085
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/streamed_material_state.py",
+      "sha256": "d075a1e15aafc397bf85506ab457179ceb7a27fb3e02fde5d61970c4377cc46d",
+      "bytes": 7942
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_dyads.py",
+      "sha256": "78c046fc67cd67ee764b1b20765647f9fa2cc2bb7ab779b4c9199a091947731b",
+      "bytes": 7324
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_ionic_action.py",
+      "sha256": "1135f801ab9a01d217dcedd4f51f13ac5d88233dd6e6050b3710d7a6577e8c05",
+      "bytes": 3727
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_ionic_action.py",
+      "sha256": "91e7c4f5f65a7ae5ead21e8ceff6ab9bbaf873c0ddead9285117f7fc2f54157c",
+      "bytes": 5807
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_qzero.py",
+      "sha256": "6888a35acb1a6b2d500f7340b804d3cc4f026c1c60eb7c7509009377f8f0ffd9",
+      "bytes": 3528
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_material_grid.py",
+      "sha256": "278351c5c137716b7e57f3db90d9918f5e1ee250c48e2be98e3acebf67b35896",
+      "bytes": 4145
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/src/substrate_framework/qe_bloch_dyads.py",
+      "sha256": "1fa0a286cbccbfb10488b9ab941cfad088eb0eca3fcba7500de29ac1d4ec6867",
+      "bytes": 3426
+    },
+    {
+      "path": "/home/administrator/projects/substrate-ni-collective/proposals/P254-ni-collective-response/attempts/0028/column-krylov-registration.json",
+      "sha256": "5e6bbcf75fe636ac3c2887890c32326d3ec825bcf04bc0d966dbc3816132db74",
+      "bytes": 16448
+    }
+  ],
+  "arrays": {
+    "path": "/var/tmp/p254-a28-column-krylov-oracle-001/oracle-arrays.npz",
+    "sha256": "6c5f4efa08e4b386babac1e3494463943517837e228fcde8010a82baf9b55efa",
+    "bytes": 19772
+  },
+  "seconds": 2.781818942166865,
+  "limitations": [
+    "Independent finite dense oracle, not material execution",
+    "Ordinary floating bounds, not interval certificates or H-action rounding enclosures",
+    "No joint physical dynamics, long-time accuracy or speedup claim"
+  ]
+}
