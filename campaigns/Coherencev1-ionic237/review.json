@@ -1,0 +1,136 @@
+{
+  "schema": "coherence-conditional-ionic-review-v1",
+  "assignment": "One substantive read-only review of the complete conditional ionic result; no campaign-wide or unfinished Native-cell review.",
+  "findings": [],
+  "overall_correctness": "correct",
+  "explanation": "No concrete correctness, applicability-labeling, or reproduction defect affecting the specified conditional claims was found. The source transformations, moving-charge kernel, recorded numerical result, and limited 100 eV model gate are consistent; physical atomic-response validity remains explicitly unestablished.",
+  "confidence": 0.95,
+  "scope": {
+    "supported": [
+      "The stated infinite, isotropic, stable, linear drift-diffusion moving-unit-charge response has U/U_static = asinh(s)/s with s = v/(2 D_collective kappa).",
+      "At fixed projectile speed corresponding to 0.25 keV CM, the saved 7200 s PdD profile gives the reported grid-cell maxima: 4.115861020629336e-5 eV among the 60 centers in the top 100 nm, and 0.10721302580300492 eV among all 127 cells.",
+      "The five recorded CM energies are 0.25, 0.5, 1.0, 2.5, and 6.5 keV. They reuse the explicitly identified 2.5 keV-CM run-end material state; they are not five independently evolved material profiles or a projectile slowing trajectory.",
+      "Using the reported 0.03 H per formula unit and cited cubic reference a = 4.206 angstrom at an assumed 300 K gives the recorded ideal-closure static upper value 24.190357368148142 eV. No room-temperature mobility or finite-speed oxide value is claimed.",
+      "These two evaluations do not reach the conditional 100 eV escalation gate. The result and effort explicitly distinguish that allocation decision from exclusion of all physical ionic mechanisms."
+    ],
+    "disputed": [],
+    "inconclusive_or_not_established": [
+      "Atomic-wavevector, strong-field, vibration-timescale, hopping, or inertial response of real PdD or BZY10 during a collision.",
+      "A physical or universal ionic-screening upper bound, fusion-yield prediction, or physical applicability theorem for the conditional continuum kernel.",
+      "Room-temperature oxide mobility, H-to-D mobility transfer, and a finite-speed oxide screening value.",
+      "The identified inertial/phonon alternative, which was not parameterized or executed.",
+      "Any unfinished Native vacancy result or broader campaign conclusion."
+    ]
+  },
+  "reviewed_files": [
+    "src/substrate_framework/ionic_diffusion.py",
+    "campaigns/Coherencev1-ionic237/verify.py",
+    "memory/giuliano/efforts/coherence-ionic-screening-237.md",
+    "coherencev1-work:pairs/run_ionic_estimate.py"
+  ],
+  "assessments": [
+    {
+      "topic": "Fourier, angular, radial factors and energy convention",
+      "disposition": "supported_within_declared_closure",
+      "references": [
+        "ionic_diffusion.py:12-34",
+        "campaigns/Coherencev1-ionic237/verify.py:14-55",
+        "memory/giuliano/efforts/coherence-ionic-screening-237.md:19-25"
+      ],
+      "reason": "The induced/background-subtracted kernel is kappa^2/[q^2(q^2+kappa^2-i(v/D)q cos(theta))]. The real angular integral is 2 atan(alpha q/(q^2+kappa^2))/(alpha q). With the three-dimensional inverse-Fourier normalization, J(alpha)=pi asinh(alpha/(2 kappa)) yields e kappa/(4 pi epsilon) times asinh(s)/s in eV. This is the stated unit-test-charge interaction-potential reduction, not the half-sized polarization self-energy. The zero-speed anchor, sign, and lab-energy speed conversion are consistent."
+    },
+    {
+      "topic": "Source compressibility, Darken mobility, and consumers",
+      "disposition": "supported_within_declared_closure",
+      "references": [
+        "ionic_diffusion.py:37-56",
+        "coherencev1-work:pairs/run_ionic_estimate.py:16-58",
+        "coherencev1@853c377:g4_beam/transport/transport.py:154-189,441-447,515-535",
+        "coherencev1-work:recomb/surface_io.py:8-18"
+      ],
+      "reason": "For the frozen local background, chi = n_M/(e mu_prime_eV), so kappa^2 = e n_M/(epsilon mu_prime_eV). The source lattice-gas flux gives D_collective = D_tr x(1-x/xmax) mu_prime_eV/kT_eV; Pd has xmax = 1 and its source D_of_x is constant. The driver passes that collective coefficient, rather than the tracer coefficient, to the moving-charge API. The returned (kappa, collective) tuple is unpacked in the same order in the row construction and energy scan, and the result dictionary is serialized without dispatch filtering. The derivative refinement residual is recorded below its declared tolerance."
+    },
+    {
+      "topic": "Mobile versus trapped density and numerical scope",
+      "disposition": "supported_for_saved_cellwise_evaluation",
+      "references": [
+        "coherencev1-work:pairs/run_ionic_estimate.py:23-58",
+        "result.json:/source_case",
+        "result.json:/PdD_parameters",
+        "result.json:/PdD_energy_scan",
+        "coherencev1:g4_beam/pairs/inputs/run-end-profiles.json:/records/6"
+      ],
+      "reason": "Selective evidence inspection found identical source case and zero mismatches in mobile x, cell center z, and local layer[6] metal density across all 127 result cells. Trapped xt is not added to mobile occupancy or susceptibility; v is not equilibrated. The local density is used consistently in susceptibility and reported mobile number density. The top-100-nm and whole-foil maxima are cellwise fixed-speed homogeneous-local estimates, not a finite-geometry, interface, transport-history, or continuous-profile applicability result."
+    },
+    {
+      "topic": "Oxide concentration, temperature, and unavailable mobility",
+      "disposition": "supported_as_an_explicit_ideal_static_estimate",
+      "references": [
+        "coherencev1-work:pairs/run_ionic_estimate.py:59-65,77-81",
+        "result.json:/oxide",
+        "https://arxiv.org/pdf/1106.1924v1, Experimental, pp. 3-4, Eqs. (2)-(3)"
+      ],
+      "reason": "The primary text calls its measured concentration 3 mol percent protons and cites the Pm3m cubic BaZrO3 reference with a = 4.206 angstrom as visually agreeing with the sample XRD. For one formula unit per cubic reference cell the driver uses 0.03/a^3 = 4.031934327502734e26 m^-3, without an extra oxygen-site, hydration-stoichiometry, or molar-unit multiplier. Using crystallite-local rather than porous-pellet average volume matches the stated local ideal closure. At the explicit 300 K assumption, ideal susceptibility gives the reported static value. The paper's room-temperature QENS background assumption is not converted into a measured diffusivity."
+    },
+    {
+      "topic": "Proof evidence and applicability gate",
+      "disposition": "supported_without_reexecuting_proof",
+      "references": [
+        "proof.json:/kernel_quadrature",
+        "proof.json:/material_crosscheck",
+        "proof.json:/source_Darken_Maxwell_identity_max_relative_error",
+        "output-bindings.json",
+        "result.json:/trigger",
+        "result.json:/physical_atomic_response_qualified",
+        "result.json:/applicability",
+        "memory/giuliano/efforts/coherence-ionic-screening-237.md:24-43"
+      ],
+      "reason": "The existing proof reports maximum kernel relative error 3.5028724056472656e-16, material relative error 7.66492478605624e-15, and Darken-Maxwell relative error 5.459843494814833e-16. The recorded source derivative step change is 2.4999142337943064e-7. The material crosscheck independently evaluates the saved maximum cell at each energy, not every source cell; source and cell-selection consistency were inspected separately. The source's fast-timescale and mean-field restrictions are expressly retained. No unsupported physical exclusion is used to close the model-only gate."
+    }
+  ],
+  "primary_sources_consumed": [
+    {
+      "url": "https://arxiv.org/pdf/1802.02777v2",
+      "local_extracted_text": "primary-source-cache:debeye-falkenhagen.txt",
+      "consumed": "Section II, pp. 2-3: small-potential, homogeneous-dielectric and mean-field assumptions; Poisson, continuity, current, and Debye-Falkenhagen Eqs. (1)-(4); explicit vibration/rotation-timescale warning on p. 3. The molecular-size restriction in the discussion on p. 9 was also inspected.",
+      "gap": "The capacitor paper does not establish atomic-collision applicability in PdD or BZY10; the three-dimensional moving-charge construction remains an explicitly declared conditional model."
+    },
+    {
+      "url": "https://arxiv.org/pdf/1106.1924v1",
+      "local_extracted_text": "primary-source-cache:bzy10-diffusivity.txt",
+      "consumed": "Experimental, pp. 3-4: cited cubic reference a = 4.206 angstrom, local versus 94-percent theoretical pellet density, reported 3 mol percent proton content, hydration-content Eq. (2), transport Eq. (3), and use of 300 K QENS data as an assumed immobile background. Results distinguish QENS self diffusion from impedance transport.",
+      "gap": "No measured room-temperature mobility, isotope-transferred mobility, or atomically valid dielectric response is recovered or inferred."
+    }
+  ],
+  "observed_evidence": {
+    "directory": "coherencev1-work:pairs/ionic-first-20261118",
+    "files_inspected": [
+      "result.json",
+      "proof.json",
+      "output-bindings.json",
+      "evaluate.argv",
+      "proof.argv"
+    ],
+    "result_sha256_matches_binding": true,
+    "proof_sha256_matches_binding": true,
+    "profile_transport_driver_api_sha256_match_result_bindings": true,
+    "profile_cell_count": 127,
+    "top100nm_cell_center_count": 60,
+    "mobile_x_z_local_metal_density_mismatch_indices": []
+  },
+  "execution_and_boundaries": {
+    "method": "Static diff/addition and complete target-file review, targeted pinned-source and primary-text inspection, and selective read-only JSON/provenance inspection.",
+    "proof_rerun": false,
+    "tests_builds_linters_formatters_generators_or_native_runs": false,
+    "source_code_changed": false,
+    "process_resource_infrastructure_account_or_repository_state_changed": false,
+    "only_filesystem_write": "coherencev1-work:sources/ionic-review-original-20261118t0032z.json",
+    "review_cap": "Eight source/code files inspected: four targets, pinned transport, two primary extracted texts, and the small serialization consumer. No recursive review or new production route.",
+    "minimum_corrections_required": []
+  },
+  "original_review": {
+    "bytes": 10839,
+    "sha256": "e939a52fb2703282d74320e542169f8e8fccd59f9b00235597202f284ee044ea"
+  },
+  "extract_role": "complete findings and assessments; source locators made portable"
+}
